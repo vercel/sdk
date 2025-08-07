@@ -91,6 +91,7 @@ export const TeamLimitedRole = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type TeamLimitedRole = ClosedEnum<typeof TeamLimitedRole>;
@@ -102,6 +103,7 @@ export const TeamLimitedTeamRoles = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type TeamLimitedTeamRoles = ClosedEnum<typeof TeamLimitedTeamRoles>;
@@ -112,6 +114,9 @@ export const TeamLimitedTeamPermissions = {
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
 } as const;
 export type TeamLimitedTeamPermissions = ClosedEnum<
   typeof TeamLimitedTeamPermissions

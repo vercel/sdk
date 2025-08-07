@@ -47,8 +47,8 @@ const value: models.GetDeploymentGitSource4 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource5 = {
-  type: "gitlab",
-  projectId: "<id>",
+  type: "github-limited",
+  repoId: "<id>",
 };
 ```
 
@@ -56,8 +56,9 @@ const value: models.GetDeploymentGitSource5 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource6 = {
-  type: "bitbucket",
-  repoUuid: "<id>",
+  type: "github-limited",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 
@@ -65,9 +66,8 @@ const value: models.GetDeploymentGitSource6 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource7 = {
-  type: "bitbucket",
-  owner: "<value>",
-  slug: "<value>",
+  type: "gitlab",
+  projectId: 1918.51,
 };
 ```
 
@@ -75,10 +75,8 @@ const value: models.GetDeploymentGitSource7 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource8 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://puny-rawhide.net",
+  type: "bitbucket",
+  repoUuid: "<id>",
 };
 ```
 
@@ -86,10 +84,9 @@ const value: models.GetDeploymentGitSource8 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource9 = {
-  type: "github",
-  ref: "<value>",
-  sha: "<value>",
-  repoId: 5739.74,
+  type: "bitbucket",
+  owner: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -97,11 +94,10 @@ const value: models.GetDeploymentGitSource9 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource10 = {
-  type: "github-custom-host",
-  host: "tiny-velocity.com",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 5632.25,
+  gitUrl: "https://which-barracks.name",
 };
 ```
 
@@ -109,10 +105,10 @@ const value: models.GetDeploymentGitSource10 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource11 = {
-  type: "gitlab",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  projectId: 5631.38,
+  repoId: 5631.38,
 };
 ```
 
@@ -120,6 +116,40 @@ const value: models.GetDeploymentGitSource11 = {
 
 ```typescript
 const value: models.GetDeploymentGitSource12 = {
+  type: "github-custom-host",
+  host: "precious-sediment.net",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 1532,
+};
+```
+
+### `models.GetDeploymentGitSource13`
+
+```typescript
+const value: models.GetDeploymentGitSource13 = {
+  type: "github-limited",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 5526.81,
+};
+```
+
+### `models.GetDeploymentGitSource14`
+
+```typescript
+const value: models.GetDeploymentGitSource14 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 1800.62,
+};
+```
+
+### `models.GetDeploymentGitSource15`
+
+```typescript
+const value: models.GetDeploymentGitSource15 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",

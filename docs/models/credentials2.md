@@ -6,8 +6,8 @@
 import { Credentials2 } from "@vercel/sdk/models/userevent.js";
 
 let value: Credentials2 = {
-  type: "github-app-custom-host",
-  host: "quiet-fax.name",
+  type: "github-oauth-custom-host",
+  host: "silver-perp.biz",
   id: "<id>",
 };
 ```

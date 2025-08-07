@@ -11,13 +11,18 @@ let value: ListAliasesMicrofrontends = {
   defaultApp: {
     projectId: "<id>",
   },
-  applications: [],
+  applications: [
+    {
+      fallbackHost: "<value>",
+      projectId: "<id>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `defaultApp`                                                             | [models.ListAliasesDefaultApp](../models/listaliasesdefaultapp.md)       | :heavy_check_mark:                                                       | N/A                                                                      |
-| `applications`                                                           | [models.ListAliasesApplications](../models/listaliasesapplications.md)[] | :heavy_check_mark:                                                       | A list of the deployment routing information for each project.           |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `defaultApp`                                 | [models.DefaultApp](../models/defaultapp.md) | :heavy_check_mark:                           | N/A                                          |
+| `applications`                               | *models.ListAliasesApplications*             | :heavy_check_mark:                           | N/A                                          |

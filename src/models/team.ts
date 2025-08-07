@@ -21,13 +21,13 @@ export type Connect = {
  */
 export type Connection = {
   /**
-   * The Identity Provider "type", for example Okta.
-   */
-  type: string;
-  /**
    * Current status of the connection.
    */
   status: string;
+  /**
+   * The Identity Provider "type", for example Okta.
+   */
+  type: string;
   /**
    * Current state of the connection.
    */
@@ -64,6 +64,18 @@ export type Directory = {
   lastReceivedWebhookEvent?: number | undefined;
 };
 
+/**
+ * The default redirect URI to use after successful SAML authentication.
+ */
+export const DefaultRedirectUri = {
+  VercelCom: "vercel.com",
+  V0Dev: "v0.dev",
+} as const;
+/**
+ * The default redirect URI to use after successful SAML authentication.
+ */
+export type DefaultRedirectUri = ClosedEnum<typeof DefaultRedirectUri>;
+
 export const Roles2 = {
   Owner: "OWNER",
   Member: "MEMBER",
@@ -71,6 +83,7 @@ export const Roles2 = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type Roles2 = ClosedEnum<typeof Roles2>;
@@ -100,6 +113,10 @@ export type Saml = {
    * When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
    */
   enforced: boolean;
+  /**
+   * The default redirect URI to use after successful SAML authentication.
+   */
+  defaultRedirectUri?: DefaultRedirectUri | undefined;
   /**
    * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
    */
@@ -147,6 +164,22 @@ export type ResourceConfig = {
  */
 export type RemoteCaching = {
   enabled?: boolean | undefined;
+};
+
+export type PasswordProtection = {
+  deploymentType: string;
+};
+
+export type SsoProtection = {
+  deploymentType: string;
+};
+
+/**
+ * Default deployment protection for this team
+ */
+export type DefaultDeploymentProtection = {
+  passwordProtection?: PasswordProtection | undefined;
+  ssoProtection?: SsoProtection | undefined;
 };
 
 /**
@@ -214,6 +247,7 @@ export const Role = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type Role = ClosedEnum<typeof Role>;
@@ -225,6 +259,7 @@ export const TeamRoles = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type TeamRoles = ClosedEnum<typeof TeamRoles>;
@@ -235,13 +270,16 @@ export const TeamPermissions = {
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
 } as const;
 export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
 
 export const Origin = {
-  Link: "link",
   Saml: "saml",
   Mail: "mail",
+  Link: "link",
   Import: "import",
   Teams: "teams",
   Github: "github",
@@ -275,13 +313,13 @@ export type JoinedFrom = {
 export type Membership = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements> | undefined;
-  teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: Role;
   teamRoles?: Array<TeamRoles> | undefined;
   teamPermissions?: Array<TeamPermissions> | undefined;
+  teamId?: string | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom | undefined;
@@ -329,6 +367,10 @@ export type Team = {
    * Is remote caching enabled for this team
    */
   remoteCaching?: RemoteCaching | undefined;
+  /**
+   * Default deployment protection for this team
+   */
+  defaultDeploymentProtection?: DefaultDeploymentProtection | undefined;
   /**
    * Whether toolbar is enabled on preview deployments
    */
@@ -433,8 +475,8 @@ export const Connection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string(),
   status: z.string(),
+  type: z.string(),
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
@@ -442,8 +484,8 @@ export const Connection$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Connection$Outbound = {
-  type: string;
   status: string;
+  type: string;
   state: string;
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
@@ -455,8 +497,8 @@ export const Connection$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Connection
 > = z.object({
-  type: z.string(),
   status: z.string(),
+  type: z.string(),
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
@@ -546,6 +588,27 @@ export function directoryFromJSON(
     (x) => Directory$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Directory' from JSON`,
   );
+}
+
+/** @internal */
+export const DefaultRedirectUri$inboundSchema: z.ZodNativeEnum<
+  typeof DefaultRedirectUri
+> = z.nativeEnum(DefaultRedirectUri);
+
+/** @internal */
+export const DefaultRedirectUri$outboundSchema: z.ZodNativeEnum<
+  typeof DefaultRedirectUri
+> = DefaultRedirectUri$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DefaultRedirectUri$ {
+  /** @deprecated use `DefaultRedirectUri$inboundSchema` instead. */
+  export const inboundSchema = DefaultRedirectUri$inboundSchema;
+  /** @deprecated use `DefaultRedirectUri$outboundSchema` instead. */
+  export const outboundSchema = DefaultRedirectUri$outboundSchema;
 }
 
 /** @internal */
@@ -661,6 +724,7 @@ export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
     connection: z.lazy(() => Connection$inboundSchema).optional(),
     directory: z.lazy(() => Directory$inboundSchema).optional(),
     enforced: z.boolean(),
+    defaultRedirectUri: DefaultRedirectUri$inboundSchema.optional(),
     roles: z.record(
       z.union([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]),
     ).optional(),
@@ -671,6 +735,7 @@ export type Saml$Outbound = {
   connection?: Connection$Outbound | undefined;
   directory?: Directory$Outbound | undefined;
   enforced: boolean;
+  defaultRedirectUri?: string | undefined;
   roles?: { [k: string]: Roles1$Outbound | string } | undefined;
 };
 
@@ -680,6 +745,7 @@ export const Saml$outboundSchema: z.ZodType<Saml$Outbound, z.ZodTypeDef, Saml> =
     connection: z.lazy(() => Connection$outboundSchema).optional(),
     directory: z.lazy(() => Directory$outboundSchema).optional(),
     enforced: z.boolean(),
+    defaultRedirectUri: DefaultRedirectUri$outboundSchema.optional(),
     roles: z.record(
       z.union([z.lazy(() => Roles1$outboundSchema), Roles2$outboundSchema]),
     ).optional(),
@@ -884,6 +950,170 @@ export function remoteCachingFromJSON(
     jsonString,
     (x) => RemoteCaching$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'RemoteCaching' from JSON`,
+  );
+}
+
+/** @internal */
+export const PasswordProtection$inboundSchema: z.ZodType<
+  PasswordProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: z.string(),
+});
+
+/** @internal */
+export type PasswordProtection$Outbound = {
+  deploymentType: string;
+};
+
+/** @internal */
+export const PasswordProtection$outboundSchema: z.ZodType<
+  PasswordProtection$Outbound,
+  z.ZodTypeDef,
+  PasswordProtection
+> = z.object({
+  deploymentType: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PasswordProtection$ {
+  /** @deprecated use `PasswordProtection$inboundSchema` instead. */
+  export const inboundSchema = PasswordProtection$inboundSchema;
+  /** @deprecated use `PasswordProtection$outboundSchema` instead. */
+  export const outboundSchema = PasswordProtection$outboundSchema;
+  /** @deprecated use `PasswordProtection$Outbound` instead. */
+  export type Outbound = PasswordProtection$Outbound;
+}
+
+export function passwordProtectionToJSON(
+  passwordProtection: PasswordProtection,
+): string {
+  return JSON.stringify(
+    PasswordProtection$outboundSchema.parse(passwordProtection),
+  );
+}
+
+export function passwordProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<PasswordProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PasswordProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PasswordProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const SsoProtection$inboundSchema: z.ZodType<
+  SsoProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: z.string(),
+});
+
+/** @internal */
+export type SsoProtection$Outbound = {
+  deploymentType: string;
+};
+
+/** @internal */
+export const SsoProtection$outboundSchema: z.ZodType<
+  SsoProtection$Outbound,
+  z.ZodTypeDef,
+  SsoProtection
+> = z.object({
+  deploymentType: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SsoProtection$ {
+  /** @deprecated use `SsoProtection$inboundSchema` instead. */
+  export const inboundSchema = SsoProtection$inboundSchema;
+  /** @deprecated use `SsoProtection$outboundSchema` instead. */
+  export const outboundSchema = SsoProtection$outboundSchema;
+  /** @deprecated use `SsoProtection$Outbound` instead. */
+  export type Outbound = SsoProtection$Outbound;
+}
+
+export function ssoProtectionToJSON(ssoProtection: SsoProtection): string {
+  return JSON.stringify(SsoProtection$outboundSchema.parse(ssoProtection));
+}
+
+export function ssoProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<SsoProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SsoProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const DefaultDeploymentProtection$inboundSchema: z.ZodType<
+  DefaultDeploymentProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  passwordProtection: z.lazy(() => PasswordProtection$inboundSchema).optional(),
+  ssoProtection: z.lazy(() => SsoProtection$inboundSchema).optional(),
+});
+
+/** @internal */
+export type DefaultDeploymentProtection$Outbound = {
+  passwordProtection?: PasswordProtection$Outbound | undefined;
+  ssoProtection?: SsoProtection$Outbound | undefined;
+};
+
+/** @internal */
+export const DefaultDeploymentProtection$outboundSchema: z.ZodType<
+  DefaultDeploymentProtection$Outbound,
+  z.ZodTypeDef,
+  DefaultDeploymentProtection
+> = z.object({
+  passwordProtection: z.lazy(() => PasswordProtection$outboundSchema)
+    .optional(),
+  ssoProtection: z.lazy(() => SsoProtection$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DefaultDeploymentProtection$ {
+  /** @deprecated use `DefaultDeploymentProtection$inboundSchema` instead. */
+  export const inboundSchema = DefaultDeploymentProtection$inboundSchema;
+  /** @deprecated use `DefaultDeploymentProtection$outboundSchema` instead. */
+  export const outboundSchema = DefaultDeploymentProtection$outboundSchema;
+  /** @deprecated use `DefaultDeploymentProtection$Outbound` instead. */
+  export type Outbound = DefaultDeploymentProtection$Outbound;
+}
+
+export function defaultDeploymentProtectionToJSON(
+  defaultDeploymentProtection: DefaultDeploymentProtection,
+): string {
+  return JSON.stringify(
+    DefaultDeploymentProtection$outboundSchema.parse(
+      defaultDeploymentProtection,
+    ),
+  );
+}
+
+export function defaultDeploymentProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultDeploymentProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultDeploymentProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultDeploymentProtection' from JSON`,
   );
 }
 
@@ -1265,13 +1495,13 @@ export const Membership$inboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$inboundSchema)).optional(),
-  teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$inboundSchema,
   teamRoles: z.array(TeamRoles$inboundSchema).optional(),
   teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
+  teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
@@ -1281,13 +1511,13 @@ export const Membership$inboundSchema: z.ZodType<
 export type Membership$Outbound = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements$Outbound> | undefined;
-  teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: string;
   teamRoles?: Array<string> | undefined;
   teamPermissions?: Array<string> | undefined;
+  teamId?: string | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom$Outbound | undefined;
@@ -1301,13 +1531,13 @@ export const Membership$outboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$outboundSchema)).optional(),
-  teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$outboundSchema,
   teamRoles: z.array(TeamRoles$outboundSchema).optional(),
   teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
+  teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$outboundSchema).optional(),
@@ -1355,6 +1585,9 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       resourceConfig: z.lazy(() => ResourceConfig$inboundSchema).optional(),
       previewDeploymentSuffix: z.nullable(z.string()).optional(),
       remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
+      defaultDeploymentProtection: z.lazy(() =>
+        DefaultDeploymentProtection$inboundSchema
+      ).optional(),
       enablePreviewFeedback: z.nullable(EnablePreviewFeedback$inboundSchema)
         .optional(),
       enableProductionFeedback: z.nullable(
@@ -1390,6 +1623,9 @@ export type Team$Outbound = {
   resourceConfig?: ResourceConfig$Outbound | undefined;
   previewDeploymentSuffix?: string | null | undefined;
   remoteCaching?: RemoteCaching$Outbound | undefined;
+  defaultDeploymentProtection?:
+    | DefaultDeploymentProtection$Outbound
+    | undefined;
   enablePreviewFeedback?: string | null | undefined;
   enableProductionFeedback?: string | null | undefined;
   sensitiveEnvironmentVariablePolicy?: string | null | undefined;
@@ -1419,6 +1655,9 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     resourceConfig: z.lazy(() => ResourceConfig$outboundSchema).optional(),
     previewDeploymentSuffix: z.nullable(z.string()).optional(),
     remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),
+    defaultDeploymentProtection: z.lazy(() =>
+      DefaultDeploymentProtection$outboundSchema
+    ).optional(),
     enablePreviewFeedback: z.nullable(EnablePreviewFeedback$outboundSchema)
       .optional(),
     enableProductionFeedback: z.nullable(

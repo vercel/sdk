@@ -173,8 +173,8 @@ func (o *UpdateProjectDataCacheSpeedInsights) GetPaidAt() *float64 {
 type UpdateProjectDataCacheEnvIDEnum string
 
 const (
-	UpdateProjectDataCacheEnvIDEnumProduction UpdateProjectDataCacheEnvIDEnum = "production"
 	UpdateProjectDataCacheEnvIDEnumPreview    UpdateProjectDataCacheEnvIDEnum = "preview"
+	UpdateProjectDataCacheEnvIDEnumProduction UpdateProjectDataCacheEnvIDEnum = "production"
 )
 
 func (e UpdateProjectDataCacheEnvIDEnum) ToPointer() *UpdateProjectDataCacheEnvIDEnum {
@@ -186,9 +186,9 @@ func (e *UpdateProjectDataCacheEnvIDEnum) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		*e = UpdateProjectDataCacheEnvIDEnum(v)
 		return nil
 	default:
@@ -281,6 +281,7 @@ func (o *UpdateProjectDataCacheAws) GetSecurityGroupID() string {
 type UpdateProjectDataCacheConnectConfiguration struct {
 	EnvID                  UpdateProjectDataCacheEnvIDUnion `json:"envId"`
 	ConnectConfigurationID string                           `json:"connectConfigurationId"`
+	Dc                     *string                          `json:"dc,omitempty"`
 	Passive                bool                             `json:"passive"`
 	BuildsEnabled          bool                             `json:"buildsEnabled"`
 	Aws                    *UpdateProjectDataCacheAws       `json:"aws,omitempty"`
@@ -300,6 +301,13 @@ func (o *UpdateProjectDataCacheConnectConfiguration) GetConnectConfigurationID()
 		return ""
 	}
 	return o.ConnectConfigurationID
+}
+
+func (o *UpdateProjectDataCacheConnectConfiguration) GetDc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Dc
 }
 
 func (o *UpdateProjectDataCacheConnectConfiguration) GetPassive() bool {
@@ -1855,8 +1863,8 @@ func (o *UpdateProjectDataCacheEnv) GetCustomEnvironmentIds() []string {
 type UpdateProjectDataCacheCustomEnvironmentType string
 
 const (
-	UpdateProjectDataCacheCustomEnvironmentTypeProduction  UpdateProjectDataCacheCustomEnvironmentType = "production"
 	UpdateProjectDataCacheCustomEnvironmentTypePreview     UpdateProjectDataCacheCustomEnvironmentType = "preview"
+	UpdateProjectDataCacheCustomEnvironmentTypeProduction  UpdateProjectDataCacheCustomEnvironmentType = "production"
 	UpdateProjectDataCacheCustomEnvironmentTypeDevelopment UpdateProjectDataCacheCustomEnvironmentType = "development"
 )
 
@@ -1869,9 +1877,9 @@ func (e *UpdateProjectDataCacheCustomEnvironmentType) UnmarshalJSON(data []byte)
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "development":
 		*e = UpdateProjectDataCacheCustomEnvironmentType(v)
@@ -2198,6 +2206,7 @@ const (
 	UpdateProjectDataCacheFrameworkSanity         UpdateProjectDataCacheFramework = "sanity"
 	UpdateProjectDataCacheFrameworkStorybook      UpdateProjectDataCacheFramework = "storybook"
 	UpdateProjectDataCacheFrameworkNitro          UpdateProjectDataCacheFramework = "nitro"
+	UpdateProjectDataCacheFrameworkHono           UpdateProjectDataCacheFramework = "hono"
 )
 
 func (e UpdateProjectDataCacheFramework) ToPointer() *UpdateProjectDataCacheFramework {
@@ -2302,6 +2311,8 @@ func (e *UpdateProjectDataCacheFramework) UnmarshalJSON(data []byte) error {
 	case "storybook":
 		fallthrough
 	case "nitro":
+		fallthrough
+	case "hono":
 		*e = UpdateProjectDataCacheFramework(v)
 		return nil
 	default:
@@ -2643,7 +2654,7 @@ func (e *UpdateProjectDataCacheTypeGithubCustomHost) UnmarshalJSON(data []byte) 
 	}
 }
 
-type UpdateProjectDataCacheDeployHook4 struct {
+type UpdateProjectDataCacheDeployHook5 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -2651,35 +2662,35 @@ type UpdateProjectDataCacheDeployHook4 struct {
 	URL       string   `json:"url"`
 }
 
-func (o *UpdateProjectDataCacheDeployHook4) GetCreatedAt() *float64 {
+func (o *UpdateProjectDataCacheDeployHook5) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectDataCacheDeployHook4) GetID() string {
+func (o *UpdateProjectDataCacheDeployHook5) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateProjectDataCacheDeployHook4) GetName() string {
+func (o *UpdateProjectDataCacheDeployHook5) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateProjectDataCacheDeployHook4) GetRef() string {
+func (o *UpdateProjectDataCacheDeployHook5) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *UpdateProjectDataCacheDeployHook4) GetURL() string {
+func (o *UpdateProjectDataCacheDeployHook5) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -2695,7 +2706,7 @@ type UpdateProjectDataCacheLinkGithubCustomHost struct {
 	Type             *UpdateProjectDataCacheTypeGithubCustomHost `json:"type,omitempty"`
 	Host             *string                                     `json:"host,omitempty"`
 	CreatedAt        *float64                                    `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectDataCacheDeployHook4         `json:"deployHooks"`
+	DeployHooks      []UpdateProjectDataCacheDeployHook5         `json:"deployHooks"`
 	GitCredentialID  *string                                     `json:"gitCredentialId,omitempty"`
 	UpdatedAt        *float64                                    `json:"updatedAt,omitempty"`
 	Sourceless       *bool                                       `json:"sourceless,omitempty"`
@@ -2751,9 +2762,9 @@ func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetDeployHooks() []UpdateProjectDataCacheDeployHook4 {
+func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetDeployHooks() []UpdateProjectDataCacheDeployHook5 {
 	if o == nil {
-		return []UpdateProjectDataCacheDeployHook4{}
+		return []UpdateProjectDataCacheDeployHook5{}
 	}
 	return o.DeployHooks
 }
@@ -2809,7 +2820,7 @@ func (e *UpdateProjectDataCacheTypeBitbucket) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateProjectDataCacheDeployHook3 struct {
+type UpdateProjectDataCacheDeployHook4 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -2817,35 +2828,35 @@ type UpdateProjectDataCacheDeployHook3 struct {
 	URL       string   `json:"url"`
 }
 
-func (o *UpdateProjectDataCacheDeployHook3) GetCreatedAt() *float64 {
+func (o *UpdateProjectDataCacheDeployHook4) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectDataCacheDeployHook3) GetID() string {
+func (o *UpdateProjectDataCacheDeployHook4) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateProjectDataCacheDeployHook3) GetName() string {
+func (o *UpdateProjectDataCacheDeployHook4) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateProjectDataCacheDeployHook3) GetRef() string {
+func (o *UpdateProjectDataCacheDeployHook4) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *UpdateProjectDataCacheDeployHook3) GetURL() string {
+func (o *UpdateProjectDataCacheDeployHook4) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -2860,7 +2871,7 @@ type UpdateProjectDataCacheLinkBitbucket struct {
 	UUID             *string                              `json:"uuid,omitempty"`
 	WorkspaceUUID    *string                              `json:"workspaceUuid,omitempty"`
 	CreatedAt        *float64                             `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectDataCacheDeployHook3  `json:"deployHooks"`
+	DeployHooks      []UpdateProjectDataCacheDeployHook4  `json:"deployHooks"`
 	GitCredentialID  *string                              `json:"gitCredentialId,omitempty"`
 	UpdatedAt        *float64                             `json:"updatedAt,omitempty"`
 	Sourceless       *bool                                `json:"sourceless,omitempty"`
@@ -2916,9 +2927,9 @@ func (o *UpdateProjectDataCacheLinkBitbucket) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetDeployHooks() []UpdateProjectDataCacheDeployHook3 {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetDeployHooks() []UpdateProjectDataCacheDeployHook4 {
 	if o == nil {
-		return []UpdateProjectDataCacheDeployHook3{}
+		return []UpdateProjectDataCacheDeployHook4{}
 	}
 	return o.DeployHooks
 }
@@ -2974,7 +2985,7 @@ func (e *UpdateProjectDataCacheTypeGitlab) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateProjectDataCacheDeployHook2 struct {
+type UpdateProjectDataCacheDeployHook3 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -2982,35 +2993,35 @@ type UpdateProjectDataCacheDeployHook2 struct {
 	URL       string   `json:"url"`
 }
 
-func (o *UpdateProjectDataCacheDeployHook2) GetCreatedAt() *float64 {
+func (o *UpdateProjectDataCacheDeployHook3) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectDataCacheDeployHook2) GetID() string {
+func (o *UpdateProjectDataCacheDeployHook3) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *UpdateProjectDataCacheDeployHook2) GetName() string {
+func (o *UpdateProjectDataCacheDeployHook3) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateProjectDataCacheDeployHook2) GetRef() string {
+func (o *UpdateProjectDataCacheDeployHook3) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *UpdateProjectDataCacheDeployHook2) GetURL() string {
+func (o *UpdateProjectDataCacheDeployHook3) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -3027,7 +3038,7 @@ type UpdateProjectDataCacheLinkGitlab struct {
 	ProjectURL       *string                             `json:"projectUrl,omitempty"`
 	Type             *UpdateProjectDataCacheTypeGitlab   `json:"type,omitempty"`
 	CreatedAt        *float64                            `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectDataCacheDeployHook2 `json:"deployHooks"`
+	DeployHooks      []UpdateProjectDataCacheDeployHook3 `json:"deployHooks"`
 	GitCredentialID  *string                             `json:"gitCredentialId,omitempty"`
 	UpdatedAt        *float64                            `json:"updatedAt,omitempty"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
@@ -3090,9 +3101,9 @@ func (o *UpdateProjectDataCacheLinkGitlab) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetDeployHooks() []UpdateProjectDataCacheDeployHook2 {
+func (o *UpdateProjectDataCacheLinkGitlab) GetDeployHooks() []UpdateProjectDataCacheDeployHook3 {
 	if o == nil {
-		return []UpdateProjectDataCacheDeployHook2{}
+		return []UpdateProjectDataCacheDeployHook3{}
 	}
 	return o.DeployHooks
 }
@@ -3119,6 +3130,164 @@ func (o *UpdateProjectDataCacheLinkGitlab) GetSourceless() *bool {
 }
 
 func (o *UpdateProjectDataCacheLinkGitlab) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
+type UpdateProjectDataCacheTypeGithubLimited string
+
+const (
+	UpdateProjectDataCacheTypeGithubLimitedGithubLimited UpdateProjectDataCacheTypeGithubLimited = "github-limited"
+)
+
+func (e UpdateProjectDataCacheTypeGithubLimited) ToPointer() *UpdateProjectDataCacheTypeGithubLimited {
+	return &e
+}
+func (e *UpdateProjectDataCacheTypeGithubLimited) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = UpdateProjectDataCacheTypeGithubLimited(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheTypeGithubLimited: %v", v)
+	}
+}
+
+type UpdateProjectDataCacheDeployHook2 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *UpdateProjectDataCacheDeployHook2) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDataCacheDeployHook2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *UpdateProjectDataCacheDeployHook2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateProjectDataCacheDeployHook2) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *UpdateProjectDataCacheDeployHook2) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type UpdateProjectDataCacheLinkGithubLimited struct {
+	Type      *UpdateProjectDataCacheTypeGithubLimited `json:"type,omitempty"`
+	CreatedAt *float64                                 `json:"createdAt,omitempty"`
+	UpdatedAt *float64                                 `json:"updatedAt,omitempty"`
+	Org       *string                                  `json:"org,omitempty"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+	RepoOwnerID      *float64                            `json:"repoOwnerId,omitempty"`
+	Repo             *string                             `json:"repo,omitempty"`
+	RepoID           *float64                            `json:"repoId,omitempty"`
+	DeployHooks      []UpdateProjectDataCacheDeployHook2 `json:"deployHooks"`
+	GitCredentialID  *string                             `json:"gitCredentialId,omitempty"`
+	Sourceless       *bool                               `json:"sourceless,omitempty"`
+	ProductionBranch *string                             `json:"productionBranch,omitempty"`
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetType() *UpdateProjectDataCacheTypeGithubLimited {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetRepoOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoOwnerID
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetDeployHooks() []UpdateProjectDataCacheDeployHook2 {
+	if o == nil {
+		return []UpdateProjectDataCacheDeployHook2{}
+	}
+	return o.DeployHooks
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetProductionBranch() *string {
 	if o == nil {
 		return nil
 	}
@@ -3287,6 +3456,7 @@ type UpdateProjectDataCacheLinkUnionType string
 
 const (
 	UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithub           UpdateProjectDataCacheLinkUnionType = "updateProjectDataCache_link_Github"
+	UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithubLimited    UpdateProjectDataCacheLinkUnionType = "updateProjectDataCache_link_GithubLimited"
 	UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGitlab           UpdateProjectDataCacheLinkUnionType = "updateProjectDataCache_link_Gitlab"
 	UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkBitbucket        UpdateProjectDataCacheLinkUnionType = "updateProjectDataCache_link_Bitbucket"
 	UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithubCustomHost UpdateProjectDataCacheLinkUnionType = "updateProjectDataCache_link_GithubCustomHost"
@@ -3294,6 +3464,7 @@ const (
 
 type UpdateProjectDataCacheLinkUnion struct {
 	UpdateProjectDataCacheLinkGithub           *UpdateProjectDataCacheLinkGithub           `queryParam:"inline"`
+	UpdateProjectDataCacheLinkGithubLimited    *UpdateProjectDataCacheLinkGithubLimited    `queryParam:"inline"`
 	UpdateProjectDataCacheLinkGitlab           *UpdateProjectDataCacheLinkGitlab           `queryParam:"inline"`
 	UpdateProjectDataCacheLinkBitbucket        *UpdateProjectDataCacheLinkBitbucket        `queryParam:"inline"`
 	UpdateProjectDataCacheLinkGithubCustomHost *UpdateProjectDataCacheLinkGithubCustomHost `queryParam:"inline"`
@@ -3307,6 +3478,15 @@ func CreateUpdateProjectDataCacheLinkUnionUpdateProjectDataCacheLinkGithub(updat
 	return UpdateProjectDataCacheLinkUnion{
 		UpdateProjectDataCacheLinkGithub: &updateProjectDataCacheLinkGithub,
 		Type:                             typ,
+	}
+}
+
+func CreateUpdateProjectDataCacheLinkUnionUpdateProjectDataCacheLinkGithubLimited(updateProjectDataCacheLinkGithubLimited UpdateProjectDataCacheLinkGithubLimited) UpdateProjectDataCacheLinkUnion {
+	typ := UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithubLimited
+
+	return UpdateProjectDataCacheLinkUnion{
+		UpdateProjectDataCacheLinkGithubLimited: &updateProjectDataCacheLinkGithubLimited,
+		Type:                                    typ,
 	}
 }
 
@@ -3346,6 +3526,13 @@ func (u *UpdateProjectDataCacheLinkUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var updateProjectDataCacheLinkGithubLimited UpdateProjectDataCacheLinkGithubLimited = UpdateProjectDataCacheLinkGithubLimited{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGithubLimited, "", true, true); err == nil {
+		u.UpdateProjectDataCacheLinkGithubLimited = &updateProjectDataCacheLinkGithubLimited
+		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithubLimited
+		return nil
+	}
+
 	var updateProjectDataCacheLinkBitbucket UpdateProjectDataCacheLinkBitbucket = UpdateProjectDataCacheLinkBitbucket{}
 	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkBitbucket, "", true, true); err == nil {
 		u.UpdateProjectDataCacheLinkBitbucket = &updateProjectDataCacheLinkBitbucket
@@ -3373,6 +3560,10 @@ func (u *UpdateProjectDataCacheLinkUnion) UnmarshalJSON(data []byte) error {
 func (u UpdateProjectDataCacheLinkUnion) MarshalJSON() ([]byte, error) {
 	if u.UpdateProjectDataCacheLinkGithub != nil {
 		return utils.MarshalJSON(u.UpdateProjectDataCacheLinkGithub, "", true)
+	}
+
+	if u.UpdateProjectDataCacheLinkGithubLimited != nil {
+		return utils.MarshalJSON(u.UpdateProjectDataCacheLinkGithubLimited, "", true)
 	}
 
 	if u.UpdateProjectDataCacheLinkGitlab != nil {
@@ -4730,11 +4921,11 @@ func (o *UpdateProjectDataCacheTargets) GetWithCache() *bool {
 }
 
 type UpdateProjectDataCachePermissions struct {
+	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
 	UserSudo                                 []components.ACLAction `json:"userSudo,omitempty"`
 	WebAuthn                                 []components.ACLAction `json:"webAuthn,omitempty"`
-	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	AccessGroup                              []components.ACLAction `json:"accessGroup,omitempty"`
 	AliasGlobal                              []components.ACLAction `json:"aliasGlobal,omitempty"`
 	AnalyticsSampling                        []components.ACLAction `json:"analyticsSampling,omitempty"`
@@ -4747,6 +4938,7 @@ type UpdateProjectDataCachePermissions struct {
 	BillingInvoiceLanguage                   []components.ACLAction `json:"billingInvoiceLanguage,omitempty"`
 	BillingPlan                              []components.ACLAction `json:"billingPlan,omitempty"`
 	BillingPurchaseOrder                     []components.ACLAction `json:"billingPurchaseOrder,omitempty"`
+	BillingRefund                            []components.ACLAction `json:"billingRefund,omitempty"`
 	BillingTaxID                             []components.ACLAction `json:"billingTaxId,omitempty"`
 	Blob                                     []components.ACLAction `json:"blob,omitempty"`
 	Budget                                   []components.ACLAction `json:"budget,omitempty"`
@@ -4756,6 +4948,7 @@ type UpdateProjectDataCachePermissions struct {
 	ConcurrentBuilds                         []components.ACLAction `json:"concurrentBuilds,omitempty"`
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
+	DefaultDeploymentProtection              []components.ACLAction `json:"defaultDeploymentProtection,omitempty"`
 	Domain                                   []components.ACLAction `json:"domain,omitempty"`
 	DomainAcceptDelegation                   []components.ACLAction `json:"domainAcceptDelegation,omitempty"`
 	DomainAuthCodes                          []components.ACLAction `json:"domainAuthCodes,omitempty"`
@@ -4788,6 +4981,7 @@ type UpdateProjectDataCachePermissions struct {
 	MarketplaceInstallationMember            []components.ACLAction `json:"marketplaceInstallationMember,omitempty"`
 	MarketplaceBillingData                   []components.ACLAction `json:"marketplaceBillingData,omitempty"`
 	MarketplaceInvoice                       []components.ACLAction `json:"marketplaceInvoice,omitempty"`
+	MarketplaceSettings                      []components.ACLAction `json:"marketplaceSettings,omitempty"`
 	MarketplaceExperimentationItem           []components.ACLAction `json:"marketplaceExperimentationItem,omitempty"`
 	MarketplaceExperimentationEdgeConfigData []components.ACLAction `json:"marketplaceExperimentationEdgeConfigData,omitempty"`
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
@@ -4814,6 +5008,7 @@ type UpdateProjectDataCachePermissions struct {
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
+	ObservabilityFunnel                      []components.ACLAction `json:"observabilityFunnel,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	VercelAppInstallation                    []components.ACLAction `json:"vercelAppInstallation,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -4877,6 +5072,7 @@ type UpdateProjectDataCachePermissions struct {
 	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
 	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
 	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
+	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
 	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
 	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
 	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
@@ -4927,6 +5123,7 @@ type UpdateProjectDataCachePermissions struct {
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
 	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
+	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
 	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
@@ -4934,6 +5131,13 @@ type UpdateProjectDataCachePermissions struct {
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
+}
+
+func (o *UpdateProjectDataCachePermissions) GetOauth2Connection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Oauth2Connection
 }
 
 func (o *UpdateProjectDataCachePermissions) GetUser() []components.ACLAction {
@@ -4962,13 +5166,6 @@ func (o *UpdateProjectDataCachePermissions) GetWebAuthn() []components.ACLAction
 		return nil
 	}
 	return o.WebAuthn
-}
-
-func (o *UpdateProjectDataCachePermissions) GetOauth2Connection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Oauth2Connection
 }
 
 func (o *UpdateProjectDataCachePermissions) GetAccessGroup() []components.ACLAction {
@@ -5055,6 +5252,13 @@ func (o *UpdateProjectDataCachePermissions) GetBillingPurchaseOrder() []componen
 	return o.BillingPurchaseOrder
 }
 
+func (o *UpdateProjectDataCachePermissions) GetBillingRefund() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BillingRefund
+}
+
 func (o *UpdateProjectDataCachePermissions) GetBillingTaxID() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5116,6 +5320,13 @@ func (o *UpdateProjectDataCachePermissions) GetConnectConfiguration() []componen
 		return nil
 	}
 	return o.ConnectConfiguration
+}
+
+func (o *UpdateProjectDataCachePermissions) GetDefaultDeploymentProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultDeploymentProtection
 }
 
 func (o *UpdateProjectDataCachePermissions) GetDomain() []components.ACLAction {
@@ -5342,6 +5553,13 @@ func (o *UpdateProjectDataCachePermissions) GetMarketplaceInvoice() []components
 	return o.MarketplaceInvoice
 }
 
+func (o *UpdateProjectDataCachePermissions) GetMarketplaceSettings() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.MarketplaceSettings
+}
+
 func (o *UpdateProjectDataCachePermissions) GetMarketplaceExperimentationItem() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5522,6 +5740,13 @@ func (o *UpdateProjectDataCachePermissions) GetObservabilityNotebook() []compone
 		return nil
 	}
 	return o.ObservabilityNotebook
+}
+
+func (o *UpdateProjectDataCachePermissions) GetObservabilityFunnel() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityFunnel
 }
 
 func (o *UpdateProjectDataCachePermissions) GetOpenTelemetryEndpoint() []components.ACLAction {
@@ -5965,6 +6190,13 @@ func (o *UpdateProjectDataCachePermissions) GetDeployment() []components.ACLActi
 	return o.Deployment
 }
 
+func (o *UpdateProjectDataCachePermissions) GetDeploymentBuildLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentBuildLogs
+}
+
 func (o *UpdateProjectDataCachePermissions) GetDeploymentCheck() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -6315,6 +6547,13 @@ func (o *UpdateProjectDataCachePermissions) GetProjectTier() []components.ACLAct
 	return o.ProjectTier
 }
 
+func (o *UpdateProjectDataCachePermissions) GetProjectOIDCToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectOIDCToken
+}
+
 func (o *UpdateProjectDataCachePermissions) GetSeawallConfig() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -6662,8 +6901,8 @@ func (u UpdateProjectDataCacheProtectionBypassUnion) MarshalJSON() ([]byte, erro
 type UpdateProjectDataCacheTrustedIpsDeploymentType2 string
 
 const (
-	UpdateProjectDataCacheTrustedIpsDeploymentType2Production                       UpdateProjectDataCacheTrustedIpsDeploymentType2 = "production"
 	UpdateProjectDataCacheTrustedIpsDeploymentType2Preview                          UpdateProjectDataCacheTrustedIpsDeploymentType2 = "preview"
+	UpdateProjectDataCacheTrustedIpsDeploymentType2Production                       UpdateProjectDataCacheTrustedIpsDeploymentType2 = "production"
 	UpdateProjectDataCacheTrustedIpsDeploymentType2All                              UpdateProjectDataCacheTrustedIpsDeploymentType2 = "all"
 	UpdateProjectDataCacheTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews UpdateProjectDataCacheTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
 	UpdateProjectDataCacheTrustedIpsDeploymentType2AllExceptCustomDomains           UpdateProjectDataCacheTrustedIpsDeploymentType2 = "all_except_custom_domains"
@@ -6678,9 +6917,9 @@ func (e *UpdateProjectDataCacheTrustedIpsDeploymentType2) UnmarshalJSON(data []b
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "all":
 		fallthrough
@@ -6708,8 +6947,8 @@ func (o *UpdateProjectDataCacheTrustedIps2) GetDeploymentType() UpdateProjectDat
 type UpdateProjectDataCacheTrustedIpsDeploymentType1 string
 
 const (
-	UpdateProjectDataCacheTrustedIpsDeploymentType1Production                       UpdateProjectDataCacheTrustedIpsDeploymentType1 = "production"
 	UpdateProjectDataCacheTrustedIpsDeploymentType1Preview                          UpdateProjectDataCacheTrustedIpsDeploymentType1 = "preview"
+	UpdateProjectDataCacheTrustedIpsDeploymentType1Production                       UpdateProjectDataCacheTrustedIpsDeploymentType1 = "production"
 	UpdateProjectDataCacheTrustedIpsDeploymentType1All                              UpdateProjectDataCacheTrustedIpsDeploymentType1 = "all"
 	UpdateProjectDataCacheTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews UpdateProjectDataCacheTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
 	UpdateProjectDataCacheTrustedIpsDeploymentType1AllExceptCustomDomains           UpdateProjectDataCacheTrustedIpsDeploymentType1 = "all_except_custom_domains"
@@ -6724,9 +6963,9 @@ func (e *UpdateProjectDataCacheTrustedIpsDeploymentType1) UnmarshalJSON(data []b
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "all":
 		fallthrough
@@ -6926,6 +7165,8 @@ func (e *UpdateProjectDataCacheCreateDeployments) UnmarshalJSON(data []byte) err
 type UpdateProjectDataCacheGitProviderOptions struct {
 	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
 	CreateDeployments UpdateProjectDataCacheCreateDeployments `json:"createDeployments"`
+	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheGitProviderOptions) GetCreateDeployments() UpdateProjectDataCacheCreateDeployments {
@@ -6933,6 +7174,13 @@ func (o *UpdateProjectDataCacheGitProviderOptions) GetCreateDeployments() Update
 		return UpdateProjectDataCacheCreateDeployments("")
 	}
 	return o.CreateDeployments
+}
+
+func (o *UpdateProjectDataCacheGitProviderOptions) GetDisableRepositoryDispatchEvents() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableRepositoryDispatchEvents
 }
 
 type UpdateProjectDataCacheWebAnalytics struct {
@@ -8267,6 +8515,7 @@ type UpdateProjectDataCacheResponseBody struct {
 	OidcTokenConfig                      *UpdateProjectDataCacheOidcTokenConfig                 `json:"oidcTokenConfig,omitempty"`
 	Tier                                 *UpdateProjectDataCacheTier                            `json:"tier,omitempty"`
 	Features                             *UpdateProjectDataCacheFeatures                        `json:"features,omitempty"`
+	V0                                   *bool                                                  `json:"v0,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetAccountID() string {
@@ -8778,6 +9027,13 @@ func (o *UpdateProjectDataCacheResponseBody) GetFeatures() *UpdateProjectDataCac
 		return nil
 	}
 	return o.Features
+}
+
+func (o *UpdateProjectDataCacheResponseBody) GetV0() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0
 }
 
 type UpdateProjectDataCacheResponse struct {

@@ -10,7 +10,7 @@ import { GetProjectsCustomEnvironments } from "@vercel/sdk/models/getprojectsop.
 let value: GetProjectsCustomEnvironments = {
   id: "<id>",
   slug: "<value>",
-  type: "preview",
+  type: "production",
   createdAt: 209.08,
   updatedAt: 7515.18,
 };

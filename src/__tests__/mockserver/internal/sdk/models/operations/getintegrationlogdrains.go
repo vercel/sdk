@@ -182,7 +182,7 @@ type GetIntegrationLogDrainsResponseBody struct {
 	// The headers to send with the request
 	Headers map[string]string `json:"headers,omitempty"`
 	// The environment of log drain
-	Environments []GetIntegrationLogDrainsEnvironment `json:"environments"`
+	Environments []GetIntegrationLogDrainsEnvironment `json:"environments,omitempty"`
 	// The branch regexp of log drain
 	Branch *string `json:"branch,omitempty"`
 	// The sampling rate of log drain
@@ -282,7 +282,7 @@ func (o *GetIntegrationLogDrainsResponseBody) GetHeaders() map[string]string {
 
 func (o *GetIntegrationLogDrainsResponseBody) GetEnvironments() []GetIntegrationLogDrainsEnvironment {
 	if o == nil {
-		return []GetIntegrationLogDrainsEnvironment{}
+		return nil
 	}
 	return o.Environments
 }

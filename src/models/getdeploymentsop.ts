@@ -313,6 +313,7 @@ export const GetDeploymentsFramework = {
   Sanity: "sanity",
   Storybook: "storybook",
   Nitro: "nitro",
+  Hono: "hono",
 } as const;
 export type GetDeploymentsFramework = ClosedEnum<
   typeof GetDeploymentsFramework

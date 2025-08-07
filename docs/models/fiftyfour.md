@@ -8,9 +8,8 @@ The payload of the event, if requested.
 import { FiftyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: FiftyFour = {
-  sha: "<value>",
-  gitUserPlatform: "<value>",
-  projectName: "<value>",
+  email: "Sheldon.Huels@gmail.com",
+  name: "<value>",
 };
 ```
 
@@ -18,6 +17,5 @@ let value: FiftyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `sha`              | *string*           | :heavy_check_mark: | N/A                |
-| `gitUserPlatform`  | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

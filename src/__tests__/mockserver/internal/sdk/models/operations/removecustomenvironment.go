@@ -71,8 +71,8 @@ func (o *RemoveCustomEnvironmentRequest) GetRequestBody() *RemoveCustomEnvironme
 type RemoveCustomEnvironmentType string
 
 const (
-	RemoveCustomEnvironmentTypeProduction  RemoveCustomEnvironmentType = "production"
 	RemoveCustomEnvironmentTypePreview     RemoveCustomEnvironmentType = "preview"
+	RemoveCustomEnvironmentTypeProduction  RemoveCustomEnvironmentType = "production"
 	RemoveCustomEnvironmentTypeDevelopment RemoveCustomEnvironmentType = "development"
 )
 
@@ -85,9 +85,9 @@ func (e *RemoveCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "development":
 		*e = RemoveCustomEnvironmentType(v)

@@ -529,6 +529,7 @@
                               "SECURITY",
                               "BILLING",
                               "VIEWER",
+                              "VIEWER_FOR_PLUS",
                               "CONTRIBUTOR"
                             ]
                           }
@@ -4049,6 +4050,16 @@
             }
           },
           {
+            "name": "autoUpdate",
+            "description": "Mark the check as running",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Mark the check as running",
+              "type": "boolean"
+            }
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -4181,13 +4192,16 @@
                               {
                                 "type": "string",
                                 "enum": [
-                                  "production",
-                                  "preview"
+                                  "preview",
+                                  "production"
                                 ]
                               }
                             ]
                           },
                           "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "dc": {
                             "type": "string"
                           },
                           "passive": {
@@ -4782,8 +4796,8 @@
                           "type": {
                             "type": "string",
                             "enum": [
-                              "production",
                               "preview",
+                              "production",
                               "development"
                             ],
                             "description": "The type of environment (production, preview, or development)"
@@ -4978,7 +4992,8 @@
                         "sanity-v3",
                         "sanity",
                         "storybook",
-                        "nitro"
+                        "nitro",
+                        "hono"
                       ]
                     },
                     "gitForkProtection": {
@@ -5364,6 +5379,77 @@
                             },
                             "updatedAt": {
                               "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
                             },
                             "sourceless": {
                               "type": "boolean"
@@ -6256,6 +6342,12 @@
                     },
                     "permissions": {
                       "properties": {
+                        "oauth2Connection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "user": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -6275,12 +6367,6 @@
                           "type": "array"
                         },
                         "webAuthn": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -6358,6 +6444,12 @@
                           },
                           "type": "array"
                         },
+                        "billingRefund": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingTaxId": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -6407,6 +6499,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "defaultDeploymentProtection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -6604,6 +6702,12 @@
                           },
                           "type": "array"
                         },
+                        "marketplaceSettings": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "marketplaceExperimentationItem": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -6755,6 +6859,12 @@
                           "type": "array"
                         },
                         "observabilityNotebook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityFunnel": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -7138,6 +7248,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentCheck": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -7438,6 +7554,12 @@
                           },
                           "type": "array"
                         },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -7600,8 +7722,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -7644,8 +7766,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -7685,6 +7807,10 @@
                             "disabled"
                           ],
                           "description": "Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead"
+                        },
+                        "disableRepositoryDispatchEvents": {
+                          "type": "boolean",
+                          "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
                         }
                       },
                       "required": [
@@ -8155,6 +8281,9 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "v0": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -9297,7 +9426,8 @@
                                 "sanity-v3",
                                 "sanity",
                                 "storybook",
-                                "nitro"
+                                "nitro",
+                                "hono"
                               ]
                             },
                             "commandForIgnoringBuildStep": {
@@ -10106,6 +10236,75 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "github-limited"
+                                  ]
+                                },
+                                "repoId": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "github-limited"
+                                  ]
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "org",
+                                "repo"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
                                     "gitlab"
                                   ]
                                 },
@@ -10302,6 +10501,38 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "github-limited"
+                                  ]
+                                },
+                                "ref": {
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "repoId": {
+                                  "type": "number"
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "ref",
+                                "sha",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
                                     "gitlab"
                                   ]
                                 },
@@ -10369,6 +10600,20 @@
                         },
                         "originCacheRegion": {
                           "type": "string"
+                        },
+                        "nodeVersion": {
+                          "type": "string",
+                          "enum": [
+                            "22.x",
+                            "20.x",
+                            "18.x",
+                            "16.x",
+                            "14.x",
+                            "12.x",
+                            "10.x",
+                            "8.10.x"
+                          ],
+                          "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
                         },
                         "project": {
                           "properties": {
@@ -11418,13 +11663,9 @@
                                   "type": "array",
                                   "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
                                 },
-                                "microfrontendsAliasEnabled": {
+                                "microfrontendsAlias2Enabled": {
                                   "type": "boolean",
-                                  "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
-                                },
-                                "previewEnvAliasEnabled": {
-                                  "type": "boolean",
-                                  "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
+                                  "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
                                 }
                               },
                               "required": [
@@ -11489,13 +11730,9 @@
                                   "type": "array",
                                   "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
                                 },
-                                "microfrontendsAliasEnabled": {
+                                "microfrontendsAlias2Enabled": {
                                   "type": "boolean",
-                                  "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
-                                },
-                                "previewEnvAliasEnabled": {
-                                  "type": "boolean",
-                                  "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
+                                  "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
                                 }
                               },
                               "required": [
@@ -12228,6 +12465,75 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "github-limited"
+                                  ]
+                                },
+                                "repoId": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "github-limited"
+                                  ]
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                },
+                                "ref": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "prId": {
+                                  "nullable": true,
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "org",
+                                "repo"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
                                     "gitlab"
                                   ]
                                 },
@@ -12424,6 +12730,38 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
+                                    "github-limited"
+                                  ]
+                                },
+                                "ref": {
+                                  "type": "string"
+                                },
+                                "sha": {
+                                  "type": "string"
+                                },
+                                "repoId": {
+                                  "type": "number"
+                                },
+                                "org": {
+                                  "type": "string"
+                                },
+                                "repo": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "ref",
+                                "sha",
+                                "repoId"
+                              ],
+                              "type": "object"
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
                                     "gitlab"
                                   ]
                                 },
@@ -12491,6 +12829,20 @@
                         },
                         "originCacheRegion": {
                           "type": "string"
+                        },
+                        "nodeVersion": {
+                          "type": "string",
+                          "enum": [
+                            "22.x",
+                            "20.x",
+                            "18.x",
+                            "16.x",
+                            "14.x",
+                            "12.x",
+                            "10.x",
+                            "8.10.x"
+                          ],
+                          "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
                         },
                         "project": {
                           "properties": {
@@ -12855,7 +13207,8 @@
                             "sanity-v3",
                             "sanity",
                             "storybook",
-                            "nitro"
+                            "nitro",
+                            "hono"
                           ]
                         },
                         "installCommand": {
@@ -12926,11 +13279,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
+                            "error",
+                            "timeout",
                             "skipped",
                             "pending",
-                            "ready",
-                            "error",
-                            "timeout"
+                            "ready"
                           ]
                         },
                         "startedAt": {
@@ -13106,18 +13459,18 @@
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
-                            "type": "string"
-                          },
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -13560,6 +13913,75 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "repoId": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                }
+                              ]
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "org",
+                            "repo"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "gitlab"
                               ]
                             },
@@ -13756,6 +14178,38 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "ref": {
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "ref",
+                            "sha",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "gitlab"
                               ]
                             },
@@ -13839,6 +14293,20 @@
                         "name"
                       ],
                       "type": "object"
+                    },
+                    "nodeVersion": {
+                      "type": "string",
+                      "enum": [
+                        "22.x",
+                        "20.x",
+                        "18.x",
+                        "16.x",
+                        "14.x",
+                        "12.x",
+                        "10.x",
+                        "8.10.x"
+                      ],
+                      "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
                     },
                     "readyState": {
                       "type": "string",
@@ -14050,9 +14518,9 @@
                     "plan": {
                       "type": "string",
                       "enum": [
+                        "hobby",
                         "pro",
-                        "enterprise",
-                        "hobby"
+                        "enterprise"
                       ]
                     },
                     "config": {
@@ -14063,15 +14531,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -14560,8 +15028,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "append",
                                         "set",
+                                        "append",
                                         "delete"
                                       ]
                                     },
@@ -14691,12 +15159,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "error",
                                   "filesystem",
+                                  "error",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -14822,13 +15290,9 @@
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
                             },
-                            "microfrontendsAliasEnabled": {
+                            "microfrontendsAlias2Enabled": {
                               "type": "boolean",
-                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
-                            },
-                            "previewEnvAliasEnabled": {
-                              "type": "boolean",
-                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
+                              "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
                             }
                           },
                           "required": [
@@ -14893,13 +15357,9 @@
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
                             },
-                            "microfrontendsAliasEnabled": {
+                            "microfrontendsAlias2Enabled": {
                               "type": "boolean",
-                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
-                            },
-                            "previewEnvAliasEnabled": {
-                              "type": "boolean",
-                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
+                              "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
                             }
                           },
                           "required": [
@@ -14959,8 +15419,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15012,8 +15472,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15066,8 +15526,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15376,6 +15836,26 @@
                         "type": "boolean",
                         "description": "Whether or not there have been modifications to the working tree since the latest commit",
                         "example": true
+                      },
+                      "ci": {
+                        "type": "boolean",
+                        "description": "True if process.env.CI was set when deploying",
+                        "example": true
+                      },
+                      "ciType": {
+                        "type": "string",
+                        "description": "The type of CI system used",
+                        "example": "github-actions"
+                      },
+                      "ciGitProviderUsername": {
+                        "type": "string",
+                        "description": "The username used for the Git Provider (e.g. GitHub) if their CI (e.g. GitHub Actions) was used, if available",
+                        "example": "rauchg"
+                      },
+                      "ciGitRepoVisibility": {
+                        "type": "string",
+                        "description": "The visibility of the Git repository if their CI (e.g. GitHub Actions) was used, if available",
+                        "example": "private"
                       }
                     }
                   },
@@ -15652,7 +16132,8 @@
                           "sanity-v3",
                           "sanity",
                           "storybook",
-                          "nitro"
+                          "nitro",
+                          "hono"
                         ],
                         "nullable": true
                       },
@@ -15879,7 +16360,8 @@
                             "sanity-v3",
                             "sanity",
                             "storybook",
-                            "nitro"
+                            "nitro",
+                            "hono"
                           ]
                         },
                         "commandForIgnoringBuildStep": {
@@ -16668,6 +17150,75 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "repoId": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                }
+                              ]
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "ref": {
+                              "nullable": true,
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "prId": {
+                              "nullable": true,
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "org",
+                            "repo"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "gitlab"
                               ]
                             },
@@ -16864,6 +17415,38 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "ref": {
+                              "type": "string"
+                            },
+                            "sha": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repo": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "ref",
+                            "sha",
+                            "repoId"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "gitlab"
                               ]
                             },
@@ -16934,6 +17517,20 @@
                     },
                     "originCacheRegion": {
                       "type": "string"
+                    },
+                    "nodeVersion": {
+                      "type": "string",
+                      "enum": [
+                        "22.x",
+                        "20.x",
+                        "18.x",
+                        "16.x",
+                        "14.x",
+                        "12.x",
+                        "10.x",
+                        "8.10.x"
+                      ],
+                      "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
                     },
                     "project": {
                       "properties": {
@@ -18000,13 +18597,9 @@
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
                             },
-                            "microfrontendsAliasEnabled": {
+                            "microfrontendsAlias2Enabled": {
                               "type": "boolean",
-                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
-                            },
-                            "previewEnvAliasEnabled": {
-                              "type": "boolean",
-                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
+                              "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
                             }
                           },
                           "required": [
@@ -18071,13 +18664,9 @@
                               "type": "array",
                               "description": "The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
                             },
-                            "microfrontendsAliasEnabled": {
+                            "microfrontendsAlias2Enabled": {
                               "type": "boolean",
-                              "description": "Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias."
-                            },
-                            "previewEnvAliasEnabled": {
-                              "type": "boolean",
-                              "description": "Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch."
+                              "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
                             }
                           },
                           "required": [
@@ -18817,6 +19406,12 @@
                               "updatedAt": {
                                 "nullable": true,
                                 "type": "number"
+                              },
+                              "ttl": {
+                                "type": "number"
+                              },
+                              "comment": {
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -18897,6 +19492,12 @@
                               "updatedAt": {
                                 "nullable": true,
                                 "type": "number"
+                              },
+                              "ttl": {
+                                "type": "number"
+                              },
+                              "comment": {
+                                "type": "string"
                               }
                             },
                             "required": [
@@ -20235,9 +20836,6 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
-          },
-          "500": {
-            "description": ""
           }
         },
         "parameters": [
@@ -21029,7 +21627,7 @@
             }
           },
           "409": {
-            "description": ""
+            "description": "The domain is not allowed to be used"
           },
           "500": {
             "description": ""
@@ -22417,6 +23015,9 @@
           },
           "409": {
             "description": ""
+          },
+          "412": {
+            "description": ""
           }
         },
         "parameters": [
@@ -22427,14 +23028,6 @@
             "schema": {
               "type": "string",
               "pattern": "^ecfg_"
-            }
-          },
-          {
-            "name": "dryRun",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -22463,8 +23056,7 @@
                 "type": "object",
                 "additionalProperties": false,
                 "required": [
-                  "items",
-                  "definition"
+                  "items"
                 ],
                 "properties": {
                   "items": {
@@ -22551,8 +23143,7 @@
                         }
                       ]
                     }
-                  },
-                  "definition": {}
+                  }
                 }
               }
             }
@@ -27500,10 +28091,12 @@
                       "type": "string"
                     },
                     "access_token": {
-                      "nullable": true
+                      "nullable": true,
+                      "type": "string"
                     },
                     "token_type": {
-                      "nullable": true
+                      "nullable": true,
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -27742,8 +28335,7 @@
                       "id",
                       "name",
                       "ownerId",
-                      "url",
-                      "environments"
+                      "url"
                     ],
                     "type": "object"
                   },
@@ -27950,8 +28542,7 @@
                     "id",
                     "name",
                     "ownerId",
-                    "url",
-                    "environments"
+                    "url"
                   ],
                   "type": "object"
                 }
@@ -28834,6 +29425,9 @@
               }
             }
           },
+          "409": {
+            "description": ""
+          },
           "412": {
             "description": ""
           }
@@ -28965,6 +29559,7 @@
                                   "SECURITY",
                                   "BILLING",
                                   "VIEWER",
+                                  "VIEWER_FOR_PLUS",
                                   "CONTRIBUTOR"
                                 ],
                                 "description": "The role of this user in the team.",
@@ -29498,13 +30093,16 @@
                                     {
                                       "type": "string",
                                       "enum": [
-                                        "production",
-                                        "preview"
+                                        "preview",
+                                        "production"
                                       ]
                                     }
                                   ]
                                 },
                                 "connectConfigurationId": {
+                                  "type": "string"
+                                },
+                                "dc": {
                                   "type": "string"
                                 },
                                 "passive": {
@@ -30103,8 +30701,8 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
-                                    "production",
                                     "preview",
+                                    "production",
                                     "development"
                                   ],
                                   "description": "The type of environment (production, preview, or development)"
@@ -30299,7 +30897,8 @@
                               "sanity-v3",
                               "sanity",
                               "storybook",
-                              "nitro"
+                              "nitro",
+                              "hono"
                             ]
                           },
                           "gitForkProtection": {
@@ -30685,6 +31284,77 @@
                                   },
                                   "updatedAt": {
                                     "type": "number"
+                                  },
+                                  "sourceless": {
+                                    "type": "boolean"
+                                  },
+                                  "productionBranch": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "deployHooks"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "github-limited"
+                                    ]
+                                  },
+                                  "repo": {
+                                    "type": "string"
+                                  },
+                                  "repoId": {
+                                    "type": "number"
+                                  },
+                                  "updatedAt": {
+                                    "type": "number"
+                                  },
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "org": {
+                                    "type": "string"
+                                  },
+                                  "repoOwnerId": {
+                                    "type": "number",
+                                    "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                                  },
+                                  "deployHooks": {
+                                    "items": {
+                                      "properties": {
+                                        "createdAt": {
+                                          "type": "number"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "ref": {
+                                          "type": "string"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "name",
+                                        "ref",
+                                        "url"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "gitCredentialId": {
+                                    "type": "string"
                                   },
                                   "sourceless": {
                                     "type": "boolean"
@@ -31619,6 +32289,12 @@
                                 },
                                 "type": "array"
                               },
+                              "deploymentBuildLogs": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "deploymentCheck": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -31919,6 +32595,12 @@
                                 },
                                 "type": "array"
                               },
+                              "projectOIDCToken": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "seawallConfig": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -31961,6 +32643,12 @@
                                 },
                                 "type": "array"
                               },
+                              "oauth2Connection": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "user": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -31980,12 +32668,6 @@
                                 "type": "array"
                               },
                               "webAuthn": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "oauth2Connection": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -32063,6 +32745,12 @@
                                 },
                                 "type": "array"
                               },
+                              "billingRefund": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "billingTaxId": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -32112,6 +32800,12 @@
                                 "type": "array"
                               },
                               "connectConfiguration": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "defaultDeploymentProtection": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -32309,6 +33003,12 @@
                                 },
                                 "type": "array"
                               },
+                              "marketplaceSettings": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "marketplaceExperimentationItem": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -32460,6 +33160,12 @@
                                 "type": "array"
                               },
                               "observabilityNotebook": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "observabilityFunnel": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -32921,8 +33627,8 @@
                                   "deploymentType": {
                                     "type": "string",
                                     "enum": [
-                                      "production",
                                       "preview",
+                                      "production",
                                       "all",
                                       "prod_deployment_urls_and_all_previews",
                                       "all_except_custom_domains"
@@ -32965,8 +33671,8 @@
                                   "deploymentType": {
                                     "type": "string",
                                     "enum": [
-                                      "production",
                                       "preview",
+                                      "production",
                                       "all",
                                       "prod_deployment_urls_and_all_previews",
                                       "all_except_custom_domains"
@@ -33006,6 +33712,10 @@
                                   "disabled"
                                 ],
                                 "description": "Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead"
+                              },
+                              "disableRepositoryDispatchEvents": {
+                                "type": "boolean",
+                                "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
                               }
                             },
                             "required": [
@@ -33476,6 +34186,9 @@
                               }
                             },
                             "type": "object"
+                          },
+                          "v0": {
+                            "type": "boolean"
                           }
                         },
                         "required": [
@@ -33767,13 +34480,16 @@
                               {
                                 "type": "string",
                                 "enum": [
-                                  "production",
-                                  "preview"
+                                  "preview",
+                                  "production"
                                 ]
                               }
                             ]
                           },
                           "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "dc": {
                             "type": "string"
                           },
                           "passive": {
@@ -34372,8 +35088,8 @@
                           "type": {
                             "type": "string",
                             "enum": [
-                              "production",
                               "preview",
+                              "production",
                               "development"
                             ],
                             "description": "The type of environment (production, preview, or development)"
@@ -34568,7 +35284,8 @@
                         "sanity-v3",
                         "sanity",
                         "storybook",
-                        "nitro"
+                        "nitro",
+                        "hono"
                       ]
                     },
                     "gitForkProtection": {
@@ -34954,6 +35671,77 @@
                             },
                             "updatedAt": {
                               "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
                             },
                             "sourceless": {
                               "type": "boolean"
@@ -35888,6 +36676,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentCheck": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -36188,6 +36982,12 @@
                           },
                           "type": "array"
                         },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -36230,6 +37030,12 @@
                           },
                           "type": "array"
                         },
+                        "oauth2Connection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "user": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -36249,12 +37055,6 @@
                           "type": "array"
                         },
                         "webAuthn": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -36332,6 +37132,12 @@
                           },
                           "type": "array"
                         },
+                        "billingRefund": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingTaxId": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -36381,6 +37187,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "defaultDeploymentProtection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -36578,6 +37390,12 @@
                           },
                           "type": "array"
                         },
+                        "marketplaceSettings": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "marketplaceExperimentationItem": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -36729,6 +37547,12 @@
                           "type": "array"
                         },
                         "observabilityNotebook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityFunnel": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -37190,8 +38014,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -37234,8 +38058,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -37275,6 +38099,10 @@
                             "disabled"
                           ],
                           "description": "Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead"
+                        },
+                        "disableRepositoryDispatchEvents": {
+                          "type": "boolean",
+                          "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
                         }
                       },
                       "required": [
@@ -37745,6 +38573,9 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "v0": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -37789,6 +38620,9 @@
           },
           "409": {
             "description": "A project with the provided name already exists."
+          },
+          "428": {
+            "description": "Owner does not have protection add-on"
           }
         },
         "parameters": [
@@ -37954,7 +38788,8 @@
                       "sanity-v3",
                       "sanity",
                       "storybook",
-                      "nitro"
+                      "nitro",
+                      "hono"
                     ]
                   },
                   "gitRepository": {
@@ -37968,6 +38803,7 @@
                         "description": "The Git Provider of the repository",
                         "enum": [
                           "github",
+                          "github-limited",
                           "gitlab",
                           "bitbucket"
                         ]
@@ -38277,13 +39113,16 @@
                               {
                                 "type": "string",
                                 "enum": [
-                                  "production",
-                                  "preview"
+                                  "preview",
+                                  "production"
                                 ]
                               }
                             ]
                           },
                           "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "dc": {
                             "type": "string"
                           },
                           "passive": {
@@ -38880,8 +39719,8 @@
                           "type": {
                             "type": "string",
                             "enum": [
-                              "production",
                               "preview",
+                              "production",
                               "development"
                             ],
                             "description": "The type of environment (production, preview, or development)"
@@ -39076,7 +39915,8 @@
                         "sanity-v3",
                         "sanity",
                         "storybook",
-                        "nitro"
+                        "nitro",
+                        "hono"
                       ]
                     },
                     "gitForkProtection": {
@@ -39462,6 +40302,77 @@
                             },
                             "updatedAt": {
                               "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
                             },
                             "sourceless": {
                               "type": "boolean"
@@ -40354,6 +41265,12 @@
                     },
                     "permissions": {
                       "properties": {
+                        "oauth2Connection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "user": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -40373,12 +41290,6 @@
                           "type": "array"
                         },
                         "webAuthn": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -40456,6 +41367,12 @@
                           },
                           "type": "array"
                         },
+                        "billingRefund": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingTaxId": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -40505,6 +41422,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "defaultDeploymentProtection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -40702,6 +41625,12 @@
                           },
                           "type": "array"
                         },
+                        "marketplaceSettings": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "marketplaceExperimentationItem": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -40853,6 +41782,12 @@
                           "type": "array"
                         },
                         "observabilityNotebook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityFunnel": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -41236,6 +42171,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentCheck": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -41536,6 +42477,12 @@
                           },
                           "type": "array"
                         },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -41698,8 +42645,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -41742,8 +42689,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -41783,6 +42730,10 @@
                             "disabled"
                           ],
                           "description": "Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead"
+                        },
+                        "disableRepositoryDispatchEvents": {
+                          "type": "boolean",
+                          "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
                         }
                       },
                       "required": [
@@ -42253,6 +43204,9 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "v0": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -42442,13 +43396,16 @@
                               {
                                 "type": "string",
                                 "enum": [
-                                  "production",
-                                  "preview"
+                                  "preview",
+                                  "production"
                                 ]
                               }
                             ]
                           },
                           "connectConfigurationId": {
+                            "type": "string"
+                          },
+                          "dc": {
                             "type": "string"
                           },
                           "passive": {
@@ -43038,8 +43995,8 @@
                           "type": {
                             "type": "string",
                             "enum": [
-                              "production",
                               "preview",
+                              "production",
                               "development"
                             ],
                             "description": "The type of environment (production, preview, or development)"
@@ -43234,7 +44191,8 @@
                         "sanity-v3",
                         "sanity",
                         "storybook",
-                        "nitro"
+                        "nitro",
+                        "hono"
                       ]
                     },
                     "gitForkProtection": {
@@ -43620,6 +44578,77 @@
                             },
                             "updatedAt": {
                               "type": "number"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
+                            },
+                            "productionBranch": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "deployHooks"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "github-limited"
+                              ]
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "number"
+                            },
+                            "createdAt": {
+                              "type": "number"
+                            },
+                            "org": {
+                              "type": "string"
+                            },
+                            "repoOwnerId": {
+                              "type": "number",
+                              "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "deployHooks": {
+                              "items": {
+                                "properties": {
+                                  "createdAt": {
+                                    "type": "number"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "ref": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "ref",
+                                  "url"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "gitCredentialId": {
+                              "type": "string"
                             },
                             "sourceless": {
                               "type": "boolean"
@@ -44554,6 +45583,12 @@
                           },
                           "type": "array"
                         },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "deploymentCheck": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -44854,6 +45889,12 @@
                           },
                           "type": "array"
                         },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "seawallConfig": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -44896,6 +45937,12 @@
                           },
                           "type": "array"
                         },
+                        "oauth2Connection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "user": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -44915,12 +45962,6 @@
                           "type": "array"
                         },
                         "webAuthn": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -44998,6 +46039,12 @@
                           },
                           "type": "array"
                         },
+                        "billingRefund": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "billingTaxId": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -45047,6 +46094,12 @@
                           "type": "array"
                         },
                         "connectConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "defaultDeploymentProtection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -45244,6 +46297,12 @@
                           },
                           "type": "array"
                         },
+                        "marketplaceSettings": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "marketplaceExperimentationItem": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -45395,6 +46454,12 @@
                           "type": "array"
                         },
                         "observabilityNotebook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityFunnel": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -45856,8 +46921,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -45900,8 +46965,8 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "production",
                                 "preview",
+                                "production",
                                 "all",
                                 "prod_deployment_urls_and_all_previews",
                                 "all_except_custom_domains"
@@ -45941,6 +47006,10 @@
                             "disabled"
                           ],
                           "description": "Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead"
+                        },
+                        "disableRepositoryDispatchEvents": {
+                          "type": "boolean",
+                          "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
                         }
                       },
                       "required": [
@@ -46411,6 +47480,9 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "v0": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -46590,7 +47662,8 @@
                       "sanity-v3",
                       "sanity",
                       "storybook",
-                      "nitro"
+                      "nitro",
+                      "hono"
                     ],
                     "type": "string",
                     "nullable": true
@@ -47059,8 +48132,8 @@
                     "type": {
                       "type": "string",
                       "enum": [
-                        "production",
                         "preview",
+                        "production",
                         "development"
                       ],
                       "description": "The type of environment (production, preview, or development)"
@@ -47359,8 +48432,8 @@
                           "type": {
                             "type": "string",
                             "enum": [
-                              "production",
                               "preview",
+                              "production",
                               "development"
                             ],
                             "description": "The type of environment (production, preview, or development)"
@@ -47611,8 +48684,8 @@
                     "type": {
                       "type": "string",
                       "enum": [
-                        "production",
                         "preview",
+                        "production",
                         "development"
                       ],
                       "description": "The type of environment (production, preview, or development)"
@@ -47863,8 +48936,8 @@
                     "type": {
                       "type": "string",
                       "enum": [
-                        "production",
                         "preview",
+                        "production",
                         "development"
                       ],
                       "description": "The type of environment (production, preview, or development)"
@@ -48156,8 +49229,8 @@
                     "type": {
                       "type": "string",
                       "enum": [
-                        "production",
                         "preview",
+                        "production",
                         "development"
                       ],
                       "description": "The type of environment (production, preview, or development)"
@@ -57877,7 +58950,69 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "partnerCalls": {
+                          "items": {
+                            "properties": {
+                              "installationId": {
+                                "type": "string"
+                              },
+                              "resourceIds": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "result": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "fulfilled",
+                                      "errored"
+                                    ]
+                                  },
+                                  "error": {
+                                    "type": "object"
+                                  },
+                                  "code": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              }
+                            },
+                            "required": [
+                              "installationId",
+                              "resourceIds",
+                              "result"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "resourceTransferErrors": {
+                          "items": {
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "partnerCalls",
+                        "resourceTransferErrors"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "type": "object"
+                    }
+                  ]
                 }
               }
             }
@@ -57914,6 +59049,9 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": ""
           }
         },
         "parameters": [
@@ -61844,150 +62982,91 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "properties": {
-                        "result": {
-                          "items": {
-                            "properties": {
-                              "OwnerId": {
-                                "type": "string"
-                              },
-                              "Id": {
-                                "type": "string"
-                              },
-                              "Domain": {
-                                "type": "string"
-                              },
-                              "Ip": {
-                                "type": "string"
-                              },
-                              "Action": {
-                                "type": "string",
-                                "enum": [
-                                  "block",
-                                  "bypass"
-                                ]
-                              },
-                              "ProjectId": {
-                                "type": "string"
-                              },
-                              "IsProjectRule": {
-                                "type": "boolean"
-                              },
-                              "Note": {
-                                "type": "string"
-                              },
-                              "CreatedAt": {
-                                "type": "string"
-                              },
-                              "ActorId": {
-                                "type": "string"
-                              },
-                              "UpdatedAt": {
-                                "type": "string"
-                              },
-                              "UpdatedAtHour": {
-                                "type": "string"
-                              },
-                              "DeletedAt": {
-                                "type": "string"
-                              },
-                              "ExpiresAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "type": "object"
+                  "properties": {
+                    "result": {
+                      "items": {
+                        "properties": {
+                          "OwnerId": {
+                            "type": "string"
                           },
-                          "type": "array"
+                          "Id": {
+                            "type": "string"
+                          },
+                          "Domain": {
+                            "type": "string"
+                          },
+                          "Ip": {
+                            "type": "string"
+                          },
+                          "Action": {
+                            "type": "string",
+                            "enum": [
+                              "block",
+                              "bypass"
+                            ]
+                          },
+                          "ProjectId": {
+                            "type": "string"
+                          },
+                          "IsProjectRule": {
+                            "type": "boolean"
+                          },
+                          "Note": {
+                            "type": "string"
+                          },
+                          "CreatedAt": {
+                            "type": "string"
+                          },
+                          "ActorId": {
+                            "type": "string"
+                          },
+                          "UpdatedAt": {
+                            "type": "string"
+                          },
+                          "UpdatedAtHour": {
+                            "type": "string"
+                          },
+                          "DeletedAt": {
+                            "type": "string"
+                          },
+                          "ExpiresAt": {
+                            "nullable": true,
+                            "type": "number"
+                          }
                         },
-                        "pagination": {
-                          "nullable": true
+                        "required": [
+                          "OwnerId",
+                          "Id",
+                          "Domain",
+                          "Ip",
+                          "CreatedAt",
+                          "UpdatedAt",
+                          "UpdatedAtHour"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "properties": {
+                        "OwnerId": {
+                          "type": "string"
+                        },
+                        "Id": {
+                          "type": "string"
                         }
                       },
                       "required": [
-                        "result",
-                        "pagination"
+                        "OwnerId",
+                        "Id"
                       ],
                       "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "result": {
-                          "items": {
-                            "properties": {
-                              "OwnerId": {
-                                "type": "string"
-                              },
-                              "Id": {
-                                "type": "string"
-                              },
-                              "Domain": {
-                                "type": "string"
-                              },
-                              "Ip": {
-                                "type": "string"
-                              },
-                              "Action": {
-                                "type": "string",
-                                "enum": [
-                                  "block",
-                                  "bypass"
-                                ]
-                              },
-                              "ProjectId": {
-                                "type": "string"
-                              },
-                              "IsProjectRule": {
-                                "type": "boolean"
-                              },
-                              "Note": {
-                                "type": "string"
-                              },
-                              "CreatedAt": {
-                                "type": "string"
-                              },
-                              "ActorId": {
-                                "type": "string"
-                              },
-                              "UpdatedAt": {
-                                "type": "string"
-                              },
-                              "UpdatedAtHour": {
-                                "type": "string"
-                              },
-                              "DeletedAt": {
-                                "type": "string"
-                              },
-                              "ExpiresAt": {
-                                "nullable": true,
-                                "type": "number"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
-                        "pagination": {
-                          "properties": {
-                            "OwnerId": {
-                              "type": "string"
-                            },
-                            "Id": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "OwnerId",
-                            "Id"
-                          ],
-                          "type": "object"
-                        }
-                      },
-                      "type": "object"
                     }
-                  ]
+                  },
+                  "required": [
+                    "result"
+                  ],
+                  "type": "object"
                 }
               }
             }
@@ -62045,7 +63124,7 @@
             "schema": {
               "type": "number",
               "example": 10,
-              "maximum": 128
+              "maximum": 256
             }
           },
           {
@@ -62591,7 +63670,8 @@
                               "VIEWER",
                               "BILLING",
                               "CONTRIBUTOR",
-                              "SECURITY"
+                              "SECURITY",
+                              "VIEWER_FOR_PLUS"
                             ],
                             "description": "Role of this user in the team.",
                             "example": "OWNER"
@@ -62744,7 +63824,8 @@
                               "VIEWER",
                               "BILLING",
                               "CONTRIBUTOR",
-                              "SECURITY"
+                              "SECURITY",
+                              "VIEWER_FOR_PLUS"
                             ]
                           },
                           "isDSyncUser": {
@@ -62991,6 +64072,7 @@
                             "SECURITY",
                             "BILLING",
                             "VIEWER",
+                            "VIEWER_FOR_PLUS",
                             "CONTRIBUTOR"
                           ],
                           "description": "The role used for the invitation",
@@ -63006,6 +64088,7 @@
                               "SECURITY",
                               "BILLING",
                               "VIEWER",
+                              "VIEWER_FOR_PLUS",
                               "CONTRIBUTOR"
                             ],
                             "description": "The team roles of the user",
@@ -63027,7 +64110,10 @@
                               "FullProductionDeployment",
                               "UsageViewer",
                               "EnvVariableManager",
-                              "EnvironmentManager"
+                              "EnvironmentManager",
+                              "V0Builder",
+                              "V0Chatter",
+                              "V0Viewer"
                             ],
                             "description": "The team permissions of the user",
                             "example": [
@@ -63066,6 +64152,7 @@
                             "SECURITY",
                             "BILLING",
                             "VIEWER",
+                            "VIEWER_FOR_PLUS",
                             "CONTRIBUTOR"
                           ]
                         },
@@ -63079,6 +64166,7 @@
                               "SECURITY",
                               "BILLING",
                               "VIEWER",
+                              "VIEWER_FOR_PLUS",
                               "CONTRIBUTOR"
                             ]
                           },
@@ -63092,7 +64180,10 @@
                               "FullProductionDeployment",
                               "UsageViewer",
                               "EnvVariableManager",
-                              "EnvironmentManager"
+                              "EnvironmentManager",
+                              "V0Builder",
+                              "V0Chatter",
+                              "V0Viewer"
                             ]
                           },
                           "type": "array"
@@ -63175,6 +64266,7 @@
                       "SECURITY",
                       "BILLING",
                       "VIEWER",
+                      "VIEWER_FOR_PLUS",
                       "CONTRIBUTOR"
                     ],
                     "description": "The role of the user to invite",
@@ -63185,6 +64277,7 @@
                       "SECURITY",
                       "BILLING",
                       "VIEWER",
+                      "VIEWER_FOR_PLUS",
                       "CONTRIBUTOR"
                     ],
                     "default": "MEMBER"
@@ -64206,6 +65299,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource.\nNot authorized to update the team. Must be an OWNER."
+          },
+          "428": {
+            "description": "Owner does not have protection add-on\nAdvanced Deployment Protection is not available for the user plan"
           }
         },
         "parameters": [
@@ -64294,6 +65390,7 @@
                                 "SECURITY",
                                 "BILLING",
                                 "VIEWER",
+                                "VIEWER_FOR_PLUS",
                                 "CONTRIBUTOR"
                               ]
                             },
@@ -64356,6 +65453,62 @@
                     "type": "boolean",
                     "example": false,
                     "description": "Display or hide IP addresses in Log Drains."
+                  },
+                  "defaultDeploymentProtection": {
+                    "type": "object",
+                    "description": "Default deployment protection settings for new projects.",
+                    "additionalProperties": false,
+                    "properties": {
+                      "passwordProtection": {
+                        "additionalProperties": false,
+                        "description": "Allows to protect project deployments with a password",
+                        "properties": {
+                          "deploymentType": {
+                            "description": "Specify if the password will apply to every Deployment Target or just Preview",
+                            "enum": [
+                              "all",
+                              "preview",
+                              "prod_deployment_urls_and_all_previews",
+                              "all_except_custom_domains"
+                            ],
+                            "type": "string"
+                          },
+                          "password": {
+                            "description": "The password that will be used to protect Project Deployments",
+                            "maxLength": 72,
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "deploymentType"
+                        ],
+                        "type": "object",
+                        "nullable": true
+                      },
+                      "ssoProtection": {
+                        "additionalProperties": false,
+                        "description": "Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team",
+                        "properties": {
+                          "deploymentType": {
+                            "default": "preview",
+                            "description": "Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview",
+                            "enum": [
+                              "all",
+                              "preview",
+                              "prod_deployment_urls_and_all_previews",
+                              "all_except_custom_domains"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "deploymentType"
+                        ],
+                        "type": "object",
+                        "nullable": true
+                      }
+                    }
                   }
                 }
               }
@@ -65583,6 +66736,8 @@
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
                           "project.rolling-release.approved",
+                          "deployment.checks.failed",
+                          "deployment.checks.succeeded",
                           "deployment-checks-completed",
                           "deployment-ready",
                           "deployment-prepared",
@@ -65654,6 +66809,8 @@
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
                           "project.rolling-release.approved",
+                          "deployment-checks-failed",
+                          "deployment-checks-succeeded",
                           "deployment-checks-completed",
                           "deployment-ready-legacy",
                           "deployment-prepared",
@@ -65843,6 +67000,8 @@
                         "project.rolling-release.aborted",
                         "project.rolling-release.completed",
                         "project.rolling-release.approved",
+                        "deployment.checks.failed",
+                        "deployment.checks.succeeded",
                         "deployment-checks-completed",
                         "deployment-ready",
                         "deployment-prepared",
@@ -65912,6 +67071,8 @@
                         "project.rolling-release.aborted",
                         "project.rolling-release.completed",
                         "project.rolling-release.approved",
+                        "deployment-checks-failed",
+                        "deployment-checks-succeeded",
                         "deployment-checks-completed",
                         "deployment-ready-legacy",
                         "deployment-prepared",
@@ -66032,7 +67193,8 @@
                                     "sanity-v3",
                                     "sanity",
                                     "storybook",
-                                    "nitro"
+                                    "nitro",
+                                    "hono"
                                   ]
                                 },
                                 "latestDeployment": {
@@ -66099,6 +67261,8 @@
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.approved",
+                                "deployment.checks.failed",
+                                "deployment.checks.succeeded",
                                 "deployment-checks-completed",
                                 "deployment-ready",
                                 "deployment-prepared",
@@ -66170,6 +67334,8 @@
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.approved",
+                                "deployment-checks-failed",
+                                "deployment-checks-succeeded",
                                 "deployment-checks-completed",
                                 "deployment-ready-legacy",
                                 "deployment-prepared",
@@ -66299,6 +67465,8 @@
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.approved",
+                                "deployment.checks.failed",
+                                "deployment.checks.succeeded",
                                 "deployment-checks-completed",
                                 "deployment-ready",
                                 "deployment-prepared",
@@ -66370,6 +67538,8 @@
                                 "project.rolling-release.aborted",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.approved",
+                                "deployment-checks-failed",
+                                "deployment-checks-succeeded",
                                 "deployment-checks-completed",
                                 "deployment-ready-legacy",
                                 "deployment-prepared",
@@ -66574,6 +67744,8 @@
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
                           "project.rolling-release.approved",
+                          "deployment.checks.failed",
+                          "deployment.checks.succeeded",
                           "deployment-checks-completed",
                           "deployment-ready",
                           "deployment-prepared",
@@ -66645,6 +67817,8 @@
                           "project.rolling-release.aborted",
                           "project.rolling-release.completed",
                           "project.rolling-release.approved",
+                          "deployment-checks-failed",
+                          "deployment-checks-succeeded",
                           "deployment-checks-completed",
                           "deployment-ready-legacy",
                           "deployment-prepared",
@@ -67504,34 +68678,93 @@
                                 "type": "object"
                               },
                               "applications": {
-                                "items": {
-                                  "properties": {
-                                    "projectId": {
-                                      "type": "string",
-                                      "description": "The project ID that should use the below configuration."
+                                "oneOf": [
+                                  {
+                                    "items": {
+                                      "properties": {
+                                        "fallbackHost": {
+                                          "type": "string",
+                                          "description": "This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch."
+                                        },
+                                        "projectId": {
+                                          "type": "string",
+                                          "description": "The project ID of the microfrontends application."
+                                        }
+                                      },
+                                      "required": [
+                                        "fallbackHost",
+                                        "projectId"
+                                      ],
+                                      "type": "object",
+                                      "description": "A list of the deployment routing information for each project."
                                     },
-                                    "fallbackHost": {
-                                      "type": "string",
-                                      "description": "This is always set and is the fallback host to send the request to if there is no deployment ID."
-                                    },
-                                    "deploymentId": {
-                                      "type": "string",
-                                      "description": "This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`."
-                                    },
-                                    "deploymentUrl": {
-                                      "type": "string",
-                                      "description": "This is used and set in the exact same way as `deploymentId`."
-                                    }
+                                    "type": "array",
+                                    "description": "A list of the deployment routing information for each project."
                                   },
-                                  "required": [
-                                    "projectId",
-                                    "fallbackHost"
-                                  ],
-                                  "type": "object",
-                                  "description": "A list of the deployment routing information for each project."
-                                },
-                                "type": "array",
-                                "description": "A list of the deployment routing information for each project."
+                                  {
+                                    "items": {
+                                      "properties": {
+                                        "fallbackHost": {
+                                          "type": "string",
+                                          "description": "This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch."
+                                        },
+                                        "branchAlias": {
+                                          "type": "string",
+                                          "description": "Could point to a branch without a deployment if the project was never deployed. The proxy will fallback to the fallbackHost if there is no deployment."
+                                        },
+                                        "projectId": {
+                                          "type": "string",
+                                          "description": "The project ID of the microfrontends application."
+                                        }
+                                      },
+                                      "required": [
+                                        "fallbackHost",
+                                        "branchAlias",
+                                        "projectId"
+                                      ],
+                                      "type": "object",
+                                      "description": "A list of the deployment routing information for each project."
+                                    },
+                                    "type": "array",
+                                    "description": "A list of the deployment routing information for each project."
+                                  },
+                                  {
+                                    "items": {
+                                      "properties": {
+                                        "deploymentId": {
+                                          "type": "string",
+                                          "description": "This is the deployment for the same commit, it could be a cancelled deployment. The proxy will fallback to the branchDeploymentId and then the fallbackDeploymentId."
+                                        },
+                                        "branchDeploymentId": {
+                                          "type": "string",
+                                          "description": "This is the latest non-cancelled deployment of the branch alias at the time the commit alias was created. It is possible there is no deployment for the branch, or this was set before the deployment was canceled, in which case this will point to a cancelled deployment, in either case the proxy will fallback to the fallbackDeploymentId."
+                                        },
+                                        "fallbackDeploymentId": {
+                                          "type": "string",
+                                          "description": "This is the deployment of the fallback host at the time the commit alias was created. It is possible for this to be a deleted deployment, in which case the proxy will show that the deployment is deleted. It will not use the fallbackHost, as a future deployment on the fallback host could be invalid for this deployment, and it could lead to confusion / incorrect behavior for the commit alias."
+                                        },
+                                        "fallbackHost": {
+                                          "type": "string",
+                                          "description": "Temporary for backwards compatibility. Can remove when metadata change is released"
+                                        },
+                                        "branchAlias": {
+                                          "type": "string"
+                                        },
+                                        "projectId": {
+                                          "type": "string",
+                                          "description": "The project ID of the microfrontends application."
+                                        }
+                                      },
+                                      "required": [
+                                        "projectId"
+                                      ],
+                                      "type": "object",
+                                      "description": "A list of the deployment routing information for each project."
+                                    },
+                                    "type": "array",
+                                    "description": "A list of the deployment routing information for each project."
+                                  }
+                                ]
                               }
                             },
                             "required": [
@@ -67722,296 +68955,7 @@
             "description": "The alias information",
             "content": {
               "application/json": {
-                "schema": {
-                  "properties": {
-                    "alias": {
-                      "type": "string",
-                      "description": "The alias name, it could be a `.vercel.app` subdomain or a custom domain",
-                      "example": "my-alias.vercel.app"
-                    },
-                    "created": {
-                      "type": "string",
-                      "format": "date-time",
-                      "description": "The date when the alias was created",
-                      "example": "2017-04-26T23:00:34.232Z"
-                    },
-                    "createdAt": {
-                      "type": "number",
-                      "description": "The date when the alias was created in milliseconds since the UNIX epoch",
-                      "example": 1540095775941,
-                      "nullable": true
-                    },
-                    "creator": {
-                      "properties": {
-                        "uid": {
-                          "type": "string",
-                          "description": "ID of the user who created the alias",
-                          "example": "96SnxkFiMyVKsK3pnoHfx3Hz"
-                        },
-                        "email": {
-                          "type": "string",
-                          "description": "Email of the user who created the alias",
-                          "example": "john-doe@gmail.com"
-                        },
-                        "username": {
-                          "type": "string",
-                          "description": "Username of the user who created the alias",
-                          "example": "john-doe"
-                        }
-                      },
-                      "required": [
-                        "uid",
-                        "email",
-                        "username"
-                      ],
-                      "type": "object",
-                      "description": "Information of the user who created the alias"
-                    },
-                    "deletedAt": {
-                      "type": "number",
-                      "description": "The date when the alias was deleted in milliseconds since the UNIX epoch",
-                      "example": 1540095775941,
-                      "nullable": true
-                    },
-                    "deployment": {
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "description": "The deployment unique identifier",
-                          "example": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx"
-                        },
-                        "url": {
-                          "type": "string",
-                          "description": "The deployment unique URL",
-                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
-                        },
-                        "meta": {
-                          "type": "string",
-                          "description": "The deployment metadata",
-                          "example": {}
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "url"
-                      ],
-                      "type": "object",
-                      "description": "A map with the deployment ID, URL and metadata"
-                    },
-                    "deploymentId": {
-                      "nullable": true,
-                      "type": "string",
-                      "description": "The deployment ID",
-                      "example": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx"
-                    },
-                    "projectId": {
-                      "nullable": true,
-                      "type": "string",
-                      "description": "The unique identifier of the project",
-                      "example": "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB"
-                    },
-                    "redirect": {
-                      "nullable": true,
-                      "type": "string",
-                      "description": "Target destination domain for redirect when the alias is a redirect"
-                    },
-                    "redirectStatusCode": {
-                      "nullable": true,
-                      "type": "number",
-                      "enum": [
-                        301,
-                        302,
-                        307,
-                        308
-                      ],
-                      "description": "Status code to be used on redirect"
-                    },
-                    "uid": {
-                      "type": "string",
-                      "description": "The unique identifier of the alias"
-                    },
-                    "updatedAt": {
-                      "type": "number",
-                      "description": "The date when the alias was updated in milliseconds since the UNIX epoch",
-                      "example": 1540095775941,
-                      "nullable": true
-                    },
-                    "protectionBypass": {
-                      "additionalProperties": {
-                        "oneOf": [
-                          {
-                            "properties": {
-                              "createdAt": {
-                                "type": "number"
-                              },
-                              "createdBy": {
-                                "type": "string"
-                              },
-                              "scope": {
-                                "type": "string",
-                                "enum": [
-                                  "shareable-link"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "createdAt",
-                              "createdBy",
-                              "scope"
-                            ],
-                            "type": "object",
-                            "description": "The protection bypass for the alias"
-                          },
-                          {
-                            "properties": {
-                              "createdAt": {
-                                "type": "number"
-                              },
-                              "lastUpdatedAt": {
-                                "type": "number"
-                              },
-                              "lastUpdatedBy": {
-                                "type": "string"
-                              },
-                              "access": {
-                                "type": "string",
-                                "enum": [
-                                  "requested",
-                                  "granted"
-                                ]
-                              },
-                              "scope": {
-                                "type": "string",
-                                "enum": [
-                                  "user"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "createdAt",
-                              "lastUpdatedAt",
-                              "lastUpdatedBy",
-                              "access",
-                              "scope"
-                            ],
-                            "type": "object",
-                            "description": "The protection bypass for the alias"
-                          },
-                          {
-                            "properties": {
-                              "createdAt": {
-                                "type": "number"
-                              },
-                              "createdBy": {
-                                "type": "string"
-                              },
-                              "scope": {
-                                "type": "string",
-                                "enum": [
-                                  "alias-protection-override"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "createdAt",
-                              "createdBy",
-                              "scope"
-                            ],
-                            "type": "object",
-                            "description": "The protection bypass for the alias"
-                          },
-                          {
-                            "properties": {
-                              "createdAt": {
-                                "type": "number"
-                              },
-                              "lastUpdatedAt": {
-                                "type": "number"
-                              },
-                              "lastUpdatedBy": {
-                                "type": "string"
-                              },
-                              "scope": {
-                                "type": "string",
-                                "enum": [
-                                  "email_invite"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "createdAt",
-                              "lastUpdatedAt",
-                              "lastUpdatedBy",
-                              "scope"
-                            ],
-                            "type": "object",
-                            "description": "The protection bypass for the alias"
-                          }
-                        ]
-                      },
-                      "type": "object",
-                      "description": "The protection bypass for the alias"
-                    },
-                    "microfrontends": {
-                      "properties": {
-                        "defaultApp": {
-                          "properties": {
-                            "projectId": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "projectId"
-                          ],
-                          "type": "object"
-                        },
-                        "applications": {
-                          "items": {
-                            "properties": {
-                              "projectId": {
-                                "type": "string",
-                                "description": "The project ID that should use the below configuration."
-                              },
-                              "fallbackHost": {
-                                "type": "string",
-                                "description": "This is always set and is the fallback host to send the request to if there is no deployment ID."
-                              },
-                              "deploymentId": {
-                                "type": "string",
-                                "description": "This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`."
-                              },
-                              "deploymentUrl": {
-                                "type": "string",
-                                "description": "This is used and set in the exact same way as `deploymentId`."
-                              }
-                            },
-                            "required": [
-                              "projectId",
-                              "fallbackHost"
-                            ],
-                            "type": "object",
-                            "description": "A list of the deployment routing information for each project."
-                          },
-                          "type": "array",
-                          "description": "A list of the deployment routing information for each project."
-                        }
-                      },
-                      "required": [
-                        "defaultApp",
-                        "applications"
-                      ],
-                      "type": "object",
-                      "description": "The microfrontends for the alias including the routing configuration"
-                    }
-                  },
-                  "required": [
-                    "alias",
-                    "created",
-                    "deploymentId",
-                    "projectId",
-                    "uid"
-                  ]
-                }
+                "schema": {}
               }
             }
           },
@@ -69454,7 +70398,8 @@
                                   "sanity-v3",
                                   "sanity",
                                   "storybook",
-                                  "nitro"
+                                  "nitro",
+                                  "hono"
                                 ]
                               },
                               "gitForkProtection": {
@@ -71498,22 +72443,6 @@
                   "id": {
                     "type": "string"
                   },
-                  "domain": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "id",
-                  "domain"
-                ],
-                "type": "object",
-                "description": "The payload of the event, if requested."
-              },
-              {
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
                   "value": {
                     "type": "string"
                   },
@@ -72403,6 +73332,33 @@
               },
               {
                 "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "prevAttackModeEnabled": {
+                    "type": "boolean"
+                  },
+                  "prevAttackModeActiveUntil": {
+                    "nullable": true,
+                    "type": "number"
+                  },
+                  "attackModeEnabled": {
+                    "type": "boolean"
+                  },
+                  "attackModeActiveUntil": {
+                    "nullable": true,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "attackModeEnabled"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "integrationId": {
                     "type": "string"
                   },
@@ -72601,7 +73557,7 @@
                                     "bitbucket",
                                     "google",
                                     "github-oauth",
-                                    "github-app"
+                                    "github-oauth-limited"
                                   ]
                                 },
                                 "id": {
@@ -72619,8 +73575,7 @@
                                 "type": {
                                   "type": "string",
                                   "enum": [
-                                    "github-oauth-custom-host",
-                                    "github-app-custom-host"
+                                    "github-oauth-custom-host"
                                   ]
                                 },
                                 "host": {
@@ -72756,6 +73711,7 @@
                           "github",
                           "gitlab",
                           "bitbucket",
+                          "github-limited",
                           "github-custom-host"
                         ]
                       },
@@ -72955,6 +73911,23 @@
                                 "type": "number"
                               },
                               "memory": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "security": {
+                            "properties": {
+                              "customRules": {
+                                "type": "number"
+                              },
+                              "ipBlocks": {
+                                "type": "number"
+                              },
+                              "ipBypass": {
+                                "type": "number"
+                              },
+                              "rateLimit": {
                                 "type": "number"
                               }
                             },
@@ -73205,6 +74178,7 @@
                                 "SECURITY",
                                 "BILLING",
                                 "VIEWER",
+                                "VIEWER_FOR_PLUS",
                                 "CONTRIBUTOR"
                               ]
                             },
@@ -73227,6 +74201,7 @@
                                   "SECURITY",
                                   "BILLING",
                                   "VIEWER",
+                                  "VIEWER_FOR_PLUS",
                                   "CONTRIBUTOR"
                                 ]
                               },
@@ -73240,7 +74215,10 @@
                                   "FullProductionDeployment",
                                   "UsageViewer",
                                   "EnvVariableManager",
-                                  "EnvironmentManager"
+                                  "EnvironmentManager",
+                                  "V0Builder",
+                                  "V0Chatter",
+                                  "V0Viewer"
                                 ]
                               },
                               "type": "array"
@@ -75086,6 +76064,7 @@
                             "SECURITY",
                             "BILLING",
                             "VIEWER",
+                            "VIEWER_FOR_PLUS",
                             "CONTRIBUTOR"
                           ]
                         },
@@ -75183,6 +76162,22 @@
                 },
                 "required": [
                   "plan"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "branch": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "projectName",
+                  "branch"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -75654,6 +76649,9 @@
                             "connectConfigurationId": {
                               "type": "string"
                             },
+                            "dc": {
+                              "type": "string"
+                            },
                             "passive": {
                               "type": "boolean"
                             },
@@ -75716,6 +76714,9 @@
                               ]
                             },
                             "connectConfigurationId": {
+                              "type": "string"
+                            },
+                            "dc": {
                               "type": "string"
                             },
                             "passive": {
@@ -75784,6 +76785,22 @@
                   }
                 },
                 "required": [
+                  "projectId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "source": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source",
                   "projectId"
                 ],
                 "type": "object",
@@ -76130,6 +77147,7 @@
                       "pricingPlan": {
                         "type": "string",
                         "enum": [
+                          "plus",
                           "legacy",
                           "unbundled"
                         ],
@@ -76222,6 +77240,7 @@
                           "pricingPlan": {
                             "type": "string",
                             "enum": [
+                              "plus",
                               "legacy",
                               "unbundled"
                             ],
@@ -77146,6 +78165,28 @@
               },
               {
                 "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "target": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "projectName",
+                  "tags"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "edgeConfigId": {
                     "type": "string"
                   },
@@ -77259,6 +78300,9 @@
                   "name": {
                     "type": "string"
                   },
+                  "fallbackEnvironment": {
+                    "type": "string"
+                  },
                   "prev": {
                     "properties": {
                       "name": {
@@ -77266,19 +78310,21 @@
                       },
                       "slug": {
                         "type": "string"
+                      },
+                      "fallbackEnvironment": {
+                        "type": "string"
                       }
                     },
                     "required": [
                       "name",
-                      "slug"
+                      "slug",
+                      "fallbackEnvironment"
                     ],
                     "type": "object"
                   }
                 },
                 "required": [
                   "id",
-                  "slug",
-                  "name",
                   "prev"
                 ],
                 "type": "object",
@@ -77883,6 +78929,7 @@
                     "enum": [
                       "email",
                       "saml",
+                      "app",
                       "github",
                       "gitlab",
                       "bitbucket",
@@ -77949,15 +78996,15 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "type": {
-                    "type": "string",
-                    "description": "The Identity Provider \"type\", for example Okta.",
-                    "example": "OktaSAML"
-                  },
                   "status": {
                     "type": "string",
                     "description": "Current status of the connection.",
                     "example": "linked"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The Identity Provider \"type\", for example Okta.",
+                    "example": "OktaSAML"
                   },
                   "state": {
                     "type": "string",
@@ -77976,8 +79023,8 @@
                   }
                 },
                 "required": [
-                  "type",
                   "status",
+                  "type",
                   "state",
                   "connectedAt"
                 ],
@@ -78019,6 +79066,14 @@
                 "type": "boolean",
                 "description": "When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider."
               },
+              "defaultRedirectUri": {
+                "type": "string",
+                "enum": [
+                  "vercel.com",
+                  "v0.dev"
+                ],
+                "description": "The default redirect URI to use after successful SAML authentication."
+              },
               "roles": {
                 "additionalProperties": {
                   "oneOf": [
@@ -78043,6 +79098,7 @@
                         "SECURITY",
                         "BILLING",
                         "VIEWER",
+                        "VIEWER_FOR_PLUS",
                         "CONTRIBUTOR"
                       ]
                     }
@@ -78128,6 +79184,34 @@
             },
             "type": "object",
             "description": "Is remote caching enabled for this team"
+          },
+          "defaultDeploymentProtection": {
+            "properties": {
+              "passwordProtection": {
+                "properties": {
+                  "deploymentType": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "deploymentType"
+                ],
+                "type": "object"
+              },
+              "ssoProtection": {
+                "properties": {
+                  "deploymentType": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "deploymentType"
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object",
+            "description": "Default deployment protection for this team"
           },
           "enablePreviewFeedback": {
             "nullable": true,
@@ -78233,9 +79317,6 @@
                 },
                 "type": "array"
               },
-              "teamId": {
-                "type": "string"
-              },
               "confirmed": {
                 "type": "boolean"
               },
@@ -78254,6 +79335,7 @@
                   "SECURITY",
                   "BILLING",
                   "VIEWER",
+                  "VIEWER_FOR_PLUS",
                   "CONTRIBUTOR"
                 ]
               },
@@ -78267,6 +79349,7 @@
                     "SECURITY",
                     "BILLING",
                     "VIEWER",
+                    "VIEWER_FOR_PLUS",
                     "CONTRIBUTOR"
                   ]
                 },
@@ -78280,10 +79363,16 @@
                     "FullProductionDeployment",
                     "UsageViewer",
                     "EnvVariableManager",
-                    "EnvironmentManager"
+                    "EnvironmentManager",
+                    "V0Builder",
+                    "V0Chatter",
+                    "V0Viewer"
                   ]
                 },
                 "type": "array"
+              },
+              "teamId": {
+                "type": "string"
               },
               "createdAt": {
                 "type": "number"
@@ -78296,9 +79385,9 @@
                   "origin": {
                     "type": "string",
                     "enum": [
-                      "link",
                       "saml",
                       "mail",
+                      "link",
                       "import",
                       "teams",
                       "github",
@@ -78544,6 +79633,7 @@
                   "SECURITY",
                   "BILLING",
                   "VIEWER",
+                  "VIEWER_FOR_PLUS",
                   "CONTRIBUTOR"
                 ]
               },
@@ -78557,6 +79647,7 @@
                     "SECURITY",
                     "BILLING",
                     "VIEWER",
+                    "VIEWER_FOR_PLUS",
                     "CONTRIBUTOR"
                   ]
                 },
@@ -78570,7 +79661,10 @@
                     "FullProductionDeployment",
                     "UsageViewer",
                     "EnvVariableManager",
-                    "EnvironmentManager"
+                    "EnvironmentManager",
+                    "V0Builder",
+                    "V0Chatter",
+                    "V0Viewer"
                   ]
                 },
                 "type": "array"
@@ -78738,7 +79832,8 @@
                         "otp",
                         "sms",
                         "invite",
-                        "google"
+                        "google",
+                        "app"
                       ]
                     },
                     "createdAt": {
@@ -78750,7 +79845,6 @@
                   },
                   "required": [
                     "type",
-                    "origin",
                     "createdAt"
                   ],
                   "type": "object",
@@ -78780,7 +79874,8 @@
                         "otp",
                         "sms",
                         "invite",
-                        "google"
+                        "google",
+                        "app"
                       ]
                     },
                     "createdAt": {
@@ -78793,7 +79888,6 @@
                   "required": [
                     "type",
                     "teamId",
-                    "origin",
                     "createdAt"
                   ],
                   "type": "object",
@@ -79043,6 +80137,28 @@
                 },
                 "type": "object",
                 "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "security": {
+                "properties": {
+                  "customRules": {
+                    "type": "number",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
+                  "ipBlocks": {
+                    "type": "number",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
+                  "ipBypass": {
+                    "type": "number",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  },
+                  "rateLimit": {
+                    "type": "number",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  }
+                },
+                "type": "object",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
               }
             },
             "type": "object",
@@ -79121,6 +80237,7 @@
               "github",
               "gitlab",
               "bitbucket",
+              "github-limited",
               "github-custom-host"
             ]
           },

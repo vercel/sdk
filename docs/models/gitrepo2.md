@@ -15,7 +15,7 @@ let value: GitRepo2 = {
   defaultBranch: "<value>",
   name: "<value>",
   private: true,
-  ownerType: "team",
+  ownerType: "user",
 };
 ```
 

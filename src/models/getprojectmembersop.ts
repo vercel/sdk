@@ -77,6 +77,7 @@ export const ResponseBodyTeamRole = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 /**

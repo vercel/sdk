@@ -14,13 +14,14 @@ import (
 type InviteUserToTeamRoleRequest string
 
 const (
-	InviteUserToTeamRoleRequestOwner       InviteUserToTeamRoleRequest = "OWNER"
-	InviteUserToTeamRoleRequestMember      InviteUserToTeamRoleRequest = "MEMBER"
-	InviteUserToTeamRoleRequestDeveloper   InviteUserToTeamRoleRequest = "DEVELOPER"
-	InviteUserToTeamRoleRequestSecurity    InviteUserToTeamRoleRequest = "SECURITY"
-	InviteUserToTeamRoleRequestBilling     InviteUserToTeamRoleRequest = "BILLING"
-	InviteUserToTeamRoleRequestViewer      InviteUserToTeamRoleRequest = "VIEWER"
-	InviteUserToTeamRoleRequestContributor InviteUserToTeamRoleRequest = "CONTRIBUTOR"
+	InviteUserToTeamRoleRequestOwner         InviteUserToTeamRoleRequest = "OWNER"
+	InviteUserToTeamRoleRequestMember        InviteUserToTeamRoleRequest = "MEMBER"
+	InviteUserToTeamRoleRequestDeveloper     InviteUserToTeamRoleRequest = "DEVELOPER"
+	InviteUserToTeamRoleRequestSecurity      InviteUserToTeamRoleRequest = "SECURITY"
+	InviteUserToTeamRoleRequestBilling       InviteUserToTeamRoleRequest = "BILLING"
+	InviteUserToTeamRoleRequestViewer        InviteUserToTeamRoleRequest = "VIEWER"
+	InviteUserToTeamRoleRequestViewerForPlus InviteUserToTeamRoleRequest = "VIEWER_FOR_PLUS"
+	InviteUserToTeamRoleRequestContributor   InviteUserToTeamRoleRequest = "CONTRIBUTOR"
 )
 
 func (e InviteUserToTeamRoleRequest) ToPointer() *InviteUserToTeamRoleRequest {
@@ -43,6 +44,8 @@ func (e *InviteUserToTeamRoleRequest) UnmarshalJSON(data []byte) error {
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
 		*e = InviteUserToTeamRoleRequest(v)
@@ -174,13 +177,14 @@ func (o *InviteUserToTeamRequest) GetRequestBody() InviteUserToTeamRequestBody {
 type InviteUserToTeamRoleResponse2 string
 
 const (
-	InviteUserToTeamRoleResponse2Owner       InviteUserToTeamRoleResponse2 = "OWNER"
-	InviteUserToTeamRoleResponse2Member      InviteUserToTeamRoleResponse2 = "MEMBER"
-	InviteUserToTeamRoleResponse2Developer   InviteUserToTeamRoleResponse2 = "DEVELOPER"
-	InviteUserToTeamRoleResponse2Security    InviteUserToTeamRoleResponse2 = "SECURITY"
-	InviteUserToTeamRoleResponse2Billing     InviteUserToTeamRoleResponse2 = "BILLING"
-	InviteUserToTeamRoleResponse2Viewer      InviteUserToTeamRoleResponse2 = "VIEWER"
-	InviteUserToTeamRoleResponse2Contributor InviteUserToTeamRoleResponse2 = "CONTRIBUTOR"
+	InviteUserToTeamRoleResponse2Owner         InviteUserToTeamRoleResponse2 = "OWNER"
+	InviteUserToTeamRoleResponse2Member        InviteUserToTeamRoleResponse2 = "MEMBER"
+	InviteUserToTeamRoleResponse2Developer     InviteUserToTeamRoleResponse2 = "DEVELOPER"
+	InviteUserToTeamRoleResponse2Security      InviteUserToTeamRoleResponse2 = "SECURITY"
+	InviteUserToTeamRoleResponse2Billing       InviteUserToTeamRoleResponse2 = "BILLING"
+	InviteUserToTeamRoleResponse2Viewer        InviteUserToTeamRoleResponse2 = "VIEWER"
+	InviteUserToTeamRoleResponse2ViewerForPlus InviteUserToTeamRoleResponse2 = "VIEWER_FOR_PLUS"
+	InviteUserToTeamRoleResponse2Contributor   InviteUserToTeamRoleResponse2 = "CONTRIBUTOR"
 )
 
 func (e InviteUserToTeamRoleResponse2) ToPointer() *InviteUserToTeamRoleResponse2 {
@@ -204,6 +208,8 @@ func (e *InviteUserToTeamRoleResponse2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = InviteUserToTeamRoleResponse2(v)
 		return nil
@@ -215,13 +221,14 @@ func (e *InviteUserToTeamRoleResponse2) UnmarshalJSON(data []byte) error {
 type InviteUserToTeamTeamRole2 string
 
 const (
-	InviteUserToTeamTeamRole2Owner       InviteUserToTeamTeamRole2 = "OWNER"
-	InviteUserToTeamTeamRole2Member      InviteUserToTeamTeamRole2 = "MEMBER"
-	InviteUserToTeamTeamRole2Developer   InviteUserToTeamTeamRole2 = "DEVELOPER"
-	InviteUserToTeamTeamRole2Security    InviteUserToTeamTeamRole2 = "SECURITY"
-	InviteUserToTeamTeamRole2Billing     InviteUserToTeamTeamRole2 = "BILLING"
-	InviteUserToTeamTeamRole2Viewer      InviteUserToTeamTeamRole2 = "VIEWER"
-	InviteUserToTeamTeamRole2Contributor InviteUserToTeamTeamRole2 = "CONTRIBUTOR"
+	InviteUserToTeamTeamRole2Owner         InviteUserToTeamTeamRole2 = "OWNER"
+	InviteUserToTeamTeamRole2Member        InviteUserToTeamTeamRole2 = "MEMBER"
+	InviteUserToTeamTeamRole2Developer     InviteUserToTeamTeamRole2 = "DEVELOPER"
+	InviteUserToTeamTeamRole2Security      InviteUserToTeamTeamRole2 = "SECURITY"
+	InviteUserToTeamTeamRole2Billing       InviteUserToTeamTeamRole2 = "BILLING"
+	InviteUserToTeamTeamRole2Viewer        InviteUserToTeamTeamRole2 = "VIEWER"
+	InviteUserToTeamTeamRole2ViewerForPlus InviteUserToTeamTeamRole2 = "VIEWER_FOR_PLUS"
+	InviteUserToTeamTeamRole2Contributor   InviteUserToTeamTeamRole2 = "CONTRIBUTOR"
 )
 
 func (e InviteUserToTeamTeamRole2) ToPointer() *InviteUserToTeamTeamRole2 {
@@ -245,6 +252,8 @@ func (e *InviteUserToTeamTeamRole2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = InviteUserToTeamTeamRole2(v)
 		return nil
@@ -261,6 +270,9 @@ const (
 	TeamPermission2UsageViewer              TeamPermission2 = "UsageViewer"
 	TeamPermission2EnvVariableManager       TeamPermission2 = "EnvVariableManager"
 	TeamPermission2EnvironmentManager       TeamPermission2 = "EnvironmentManager"
+	TeamPermission2V0Builder                TeamPermission2 = "V0Builder"
+	TeamPermission2V0Chatter                TeamPermission2 = "V0Chatter"
+	TeamPermission2V0Viewer                 TeamPermission2 = "V0Viewer"
 )
 
 func (e TeamPermission2) ToPointer() *TeamPermission2 {
@@ -281,6 +293,12 @@ func (e *TeamPermission2) UnmarshalJSON(data []byte) error {
 	case "EnvVariableManager":
 		fallthrough
 	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
 		*e = TeamPermission2(v)
 		return nil
 	default:
@@ -335,13 +353,14 @@ func (o *InviteUserToTeamResponseBody2) GetTeamPermissions() []TeamPermission2 {
 type InviteUserToTeamRoleResponse1 string
 
 const (
-	InviteUserToTeamRoleResponse1Owner       InviteUserToTeamRoleResponse1 = "OWNER"
-	InviteUserToTeamRoleResponse1Member      InviteUserToTeamRoleResponse1 = "MEMBER"
-	InviteUserToTeamRoleResponse1Developer   InviteUserToTeamRoleResponse1 = "DEVELOPER"
-	InviteUserToTeamRoleResponse1Security    InviteUserToTeamRoleResponse1 = "SECURITY"
-	InviteUserToTeamRoleResponse1Billing     InviteUserToTeamRoleResponse1 = "BILLING"
-	InviteUserToTeamRoleResponse1Viewer      InviteUserToTeamRoleResponse1 = "VIEWER"
-	InviteUserToTeamRoleResponse1Contributor InviteUserToTeamRoleResponse1 = "CONTRIBUTOR"
+	InviteUserToTeamRoleResponse1Owner         InviteUserToTeamRoleResponse1 = "OWNER"
+	InviteUserToTeamRoleResponse1Member        InviteUserToTeamRoleResponse1 = "MEMBER"
+	InviteUserToTeamRoleResponse1Developer     InviteUserToTeamRoleResponse1 = "DEVELOPER"
+	InviteUserToTeamRoleResponse1Security      InviteUserToTeamRoleResponse1 = "SECURITY"
+	InviteUserToTeamRoleResponse1Billing       InviteUserToTeamRoleResponse1 = "BILLING"
+	InviteUserToTeamRoleResponse1Viewer        InviteUserToTeamRoleResponse1 = "VIEWER"
+	InviteUserToTeamRoleResponse1ViewerForPlus InviteUserToTeamRoleResponse1 = "VIEWER_FOR_PLUS"
+	InviteUserToTeamRoleResponse1Contributor   InviteUserToTeamRoleResponse1 = "CONTRIBUTOR"
 )
 
 func (e InviteUserToTeamRoleResponse1) ToPointer() *InviteUserToTeamRoleResponse1 {
@@ -365,6 +384,8 @@ func (e *InviteUserToTeamRoleResponse1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = InviteUserToTeamRoleResponse1(v)
 		return nil
@@ -377,13 +398,14 @@ func (e *InviteUserToTeamRoleResponse1) UnmarshalJSON(data []byte) error {
 type InviteUserToTeamTeamRole1 string
 
 const (
-	InviteUserToTeamTeamRole1Owner       InviteUserToTeamTeamRole1 = "OWNER"
-	InviteUserToTeamTeamRole1Member      InviteUserToTeamTeamRole1 = "MEMBER"
-	InviteUserToTeamTeamRole1Developer   InviteUserToTeamTeamRole1 = "DEVELOPER"
-	InviteUserToTeamTeamRole1Security    InviteUserToTeamTeamRole1 = "SECURITY"
-	InviteUserToTeamTeamRole1Billing     InviteUserToTeamTeamRole1 = "BILLING"
-	InviteUserToTeamTeamRole1Viewer      InviteUserToTeamTeamRole1 = "VIEWER"
-	InviteUserToTeamTeamRole1Contributor InviteUserToTeamTeamRole1 = "CONTRIBUTOR"
+	InviteUserToTeamTeamRole1Owner         InviteUserToTeamTeamRole1 = "OWNER"
+	InviteUserToTeamTeamRole1Member        InviteUserToTeamTeamRole1 = "MEMBER"
+	InviteUserToTeamTeamRole1Developer     InviteUserToTeamTeamRole1 = "DEVELOPER"
+	InviteUserToTeamTeamRole1Security      InviteUserToTeamTeamRole1 = "SECURITY"
+	InviteUserToTeamTeamRole1Billing       InviteUserToTeamTeamRole1 = "BILLING"
+	InviteUserToTeamTeamRole1Viewer        InviteUserToTeamTeamRole1 = "VIEWER"
+	InviteUserToTeamTeamRole1ViewerForPlus InviteUserToTeamTeamRole1 = "VIEWER_FOR_PLUS"
+	InviteUserToTeamTeamRole1Contributor   InviteUserToTeamTeamRole1 = "CONTRIBUTOR"
 )
 
 func (e InviteUserToTeamTeamRole1) ToPointer() *InviteUserToTeamTeamRole1 {
@@ -407,6 +429,8 @@ func (e *InviteUserToTeamTeamRole1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = InviteUserToTeamTeamRole1(v)
 		return nil
@@ -424,6 +448,9 @@ const (
 	TeamPermission1UsageViewer              TeamPermission1 = "UsageViewer"
 	TeamPermission1EnvVariableManager       TeamPermission1 = "EnvVariableManager"
 	TeamPermission1EnvironmentManager       TeamPermission1 = "EnvironmentManager"
+	TeamPermission1V0Builder                TeamPermission1 = "V0Builder"
+	TeamPermission1V0Chatter                TeamPermission1 = "V0Chatter"
+	TeamPermission1V0Viewer                 TeamPermission1 = "V0Viewer"
 )
 
 func (e TeamPermission1) ToPointer() *TeamPermission1 {
@@ -444,6 +471,12 @@ func (e *TeamPermission1) UnmarshalJSON(data []byte) error {
 	case "EnvVariableManager":
 		fallthrough
 	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
 		*e = TeamPermission1(v)
 		return nil
 	default:

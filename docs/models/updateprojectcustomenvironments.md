@@ -10,7 +10,7 @@ import { UpdateProjectCustomEnvironments } from "@vercel/sdk/models/updateprojec
 let value: UpdateProjectCustomEnvironments = {
   id: "<id>",
   slug: "<value>",
-  type: "preview",
+  type: "production",
   createdAt: 3391.33,
   updatedAt: 5820.92,
 };

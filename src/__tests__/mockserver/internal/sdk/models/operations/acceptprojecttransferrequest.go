@@ -3,7 +3,11 @@
 package operations
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type PaidFeatures struct {
@@ -91,14 +95,182 @@ func (o *AcceptProjectTransferRequestRequest) GetRequestBody() *AcceptProjectTra
 	return o.RequestBody
 }
 
+type AcceptProjectTransferRequestResponseBody2 struct {
+}
+
+type AcceptProjectTransferRequestStatus string
+
+const (
+	AcceptProjectTransferRequestStatusFulfilled AcceptProjectTransferRequestStatus = "fulfilled"
+	AcceptProjectTransferRequestStatusErrored   AcceptProjectTransferRequestStatus = "errored"
+)
+
+func (e AcceptProjectTransferRequestStatus) ToPointer() *AcceptProjectTransferRequestStatus {
+	return &e
+}
+func (e *AcceptProjectTransferRequestStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "fulfilled":
+		fallthrough
+	case "errored":
+		*e = AcceptProjectTransferRequestStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AcceptProjectTransferRequestStatus: %v", v)
+	}
+}
+
+type AcceptProjectTransferRequestError struct {
+}
+
+type AcceptProjectTransferRequestResult struct {
+	Status AcceptProjectTransferRequestStatus `json:"status"`
+	Error  *AcceptProjectTransferRequestError `json:"error,omitempty"`
+	Code   *string                            `json:"code,omitempty"`
+}
+
+func (o *AcceptProjectTransferRequestResult) GetStatus() AcceptProjectTransferRequestStatus {
+	if o == nil {
+		return AcceptProjectTransferRequestStatus("")
+	}
+	return o.Status
+}
+
+func (o *AcceptProjectTransferRequestResult) GetError() *AcceptProjectTransferRequestError {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *AcceptProjectTransferRequestResult) GetCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+type PartnerCall struct {
+	InstallationID string                             `json:"installationId"`
+	ResourceIds    []string                           `json:"resourceIds"`
+	Result         AcceptProjectTransferRequestResult `json:"result"`
+}
+
+func (o *PartnerCall) GetInstallationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.InstallationID
+}
+
+func (o *PartnerCall) GetResourceIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ResourceIds
+}
+
+func (o *PartnerCall) GetResult() AcceptProjectTransferRequestResult {
+	if o == nil {
+		return AcceptProjectTransferRequestResult{}
+	}
+	return o.Result
+}
+
+type ResourceTransferError struct {
+}
+
+type AcceptProjectTransferRequestResponseBody1 struct {
+	PartnerCalls           []PartnerCall           `json:"partnerCalls"`
+	ResourceTransferErrors []ResourceTransferError `json:"resourceTransferErrors"`
+}
+
+func (o *AcceptProjectTransferRequestResponseBody1) GetPartnerCalls() []PartnerCall {
+	if o == nil {
+		return []PartnerCall{}
+	}
+	return o.PartnerCalls
+}
+
+func (o *AcceptProjectTransferRequestResponseBody1) GetResourceTransferErrors() []ResourceTransferError {
+	if o == nil {
+		return []ResourceTransferError{}
+	}
+	return o.ResourceTransferErrors
+}
+
+type AcceptProjectTransferRequestResponseBodyType string
+
+const (
+	AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody1 AcceptProjectTransferRequestResponseBodyType = "acceptProjectTransferRequest_ResponseBody_1"
+	AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody2 AcceptProjectTransferRequestResponseBodyType = "acceptProjectTransferRequest_ResponseBody_2"
+)
+
 // AcceptProjectTransferRequestResponseBody - The project has been transferred successfully.
 type AcceptProjectTransferRequestResponseBody struct {
+	AcceptProjectTransferRequestResponseBody1 *AcceptProjectTransferRequestResponseBody1 `queryParam:"inline"`
+	AcceptProjectTransferRequestResponseBody2 *AcceptProjectTransferRequestResponseBody2 `queryParam:"inline"`
+
+	Type AcceptProjectTransferRequestResponseBodyType
+}
+
+func CreateAcceptProjectTransferRequestResponseBodyAcceptProjectTransferRequestResponseBody1(acceptProjectTransferRequestResponseBody1 AcceptProjectTransferRequestResponseBody1) AcceptProjectTransferRequestResponseBody {
+	typ := AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody1
+
+	return AcceptProjectTransferRequestResponseBody{
+		AcceptProjectTransferRequestResponseBody1: &acceptProjectTransferRequestResponseBody1,
+		Type: typ,
+	}
+}
+
+func CreateAcceptProjectTransferRequestResponseBodyAcceptProjectTransferRequestResponseBody2(acceptProjectTransferRequestResponseBody2 AcceptProjectTransferRequestResponseBody2) AcceptProjectTransferRequestResponseBody {
+	typ := AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody2
+
+	return AcceptProjectTransferRequestResponseBody{
+		AcceptProjectTransferRequestResponseBody2: &acceptProjectTransferRequestResponseBody2,
+		Type: typ,
+	}
+}
+
+func (u *AcceptProjectTransferRequestResponseBody) UnmarshalJSON(data []byte) error {
+
+	var acceptProjectTransferRequestResponseBody2 AcceptProjectTransferRequestResponseBody2 = AcceptProjectTransferRequestResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &acceptProjectTransferRequestResponseBody2, "", true, true); err == nil {
+		u.AcceptProjectTransferRequestResponseBody2 = &acceptProjectTransferRequestResponseBody2
+		u.Type = AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody2
+		return nil
+	}
+
+	var acceptProjectTransferRequestResponseBody1 AcceptProjectTransferRequestResponseBody1 = AcceptProjectTransferRequestResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &acceptProjectTransferRequestResponseBody1, "", true, true); err == nil {
+		u.AcceptProjectTransferRequestResponseBody1 = &acceptProjectTransferRequestResponseBody1
+		u.Type = AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AcceptProjectTransferRequestResponseBody", string(data))
+}
+
+func (u AcceptProjectTransferRequestResponseBody) MarshalJSON() ([]byte, error) {
+	if u.AcceptProjectTransferRequestResponseBody1 != nil {
+		return utils.MarshalJSON(u.AcceptProjectTransferRequestResponseBody1, "", true)
+	}
+
+	if u.AcceptProjectTransferRequestResponseBody2 != nil {
+		return utils.MarshalJSON(u.AcceptProjectTransferRequestResponseBody2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type AcceptProjectTransferRequestResponseBody: all fields are null")
 }
 
 type AcceptProjectTransferRequestResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The project has been transferred successfully.
-	Object *AcceptProjectTransferRequestResponseBody
+	OneOf *AcceptProjectTransferRequestResponseBody
 }
 
 func (o *AcceptProjectTransferRequestResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -108,9 +280,9 @@ func (o *AcceptProjectTransferRequestResponse) GetHTTPMeta() components.HTTPMeta
 	return o.HTTPMeta
 }
 
-func (o *AcceptProjectTransferRequestResponse) GetObject() *AcceptProjectTransferRequestResponseBody {
+func (o *AcceptProjectTransferRequestResponse) GetOneOf() *AcceptProjectTransferRequestResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

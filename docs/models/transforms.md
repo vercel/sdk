@@ -7,7 +7,7 @@ import { Transforms } from "@vercel/sdk/models/createdeploymentop.js";
 
 let value: Transforms = {
   type: "request.headers",
-  op: "set",
+  op: "append",
   target: {
     key: "<key>",
   },

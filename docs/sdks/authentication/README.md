@@ -17,6 +17,7 @@ During the autorization process, Vercel sends the user to the provider [redirect
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="exchange-sso-token" method="post" path="/v1/integrations/sso/token" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -91,6 +92,7 @@ Retrieve a list of the current User's authentication tokens.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAuthTokens" method="get" path="/v5/user/tokens" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -160,6 +162,7 @@ Creates and returns a new authentication token for the currently authenticated U
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createAuthToken" method="post" path="/v3/user/tokens" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -242,6 +245,7 @@ Retrieve metadata about an authentication token belonging to the currently authe
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAuthToken" method="get" path="/v5/user/tokens/{tokenId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -317,6 +321,7 @@ Invalidate an authentication token, such that it will no longer be valid for fut
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteAuthToken" method="delete" path="/v3/user/tokens/{tokenId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

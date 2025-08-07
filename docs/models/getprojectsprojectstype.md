@@ -13,5 +13,5 @@ let value: GetProjectsProjectsType = "development";
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"preview" | "production" | "development"
 ```

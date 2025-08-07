@@ -582,74 +582,228 @@ func (u ListAliasesProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ListAliasesProtectionBypassUnion: all fields are null")
 }
 
-type ListAliasesDefaultApp struct {
+type DefaultApp struct {
 	ProjectID string `json:"projectId"`
 }
 
-func (o *ListAliasesDefaultApp) GetProjectID() string {
+func (o *DefaultApp) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-// ListAliasesApplication - A list of the deployment routing information for each project.
-type ListAliasesApplication struct {
-	// The project ID that should use the below configuration.
-	ProjectID string `json:"projectId"`
-	// This is always set and is the fallback host to send the request to if there is no deployment ID.
-	FallbackHost string `json:"fallbackHost"`
-	// This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`.
+// ListAliasesApplications3 - A list of the deployment routing information for each project.
+type ListAliasesApplications3 struct {
+	// This is the deployment for the same commit, it could be a cancelled deployment. The proxy will fallback to the branchDeploymentId and then the fallbackDeploymentId.
 	DeploymentID *string `json:"deploymentId,omitempty"`
-	// This is used and set in the exact same way as `deploymentId`.
-	DeploymentURL *string `json:"deploymentUrl,omitempty"`
+	// This is the latest non-cancelled deployment of the branch alias at the time the commit alias was created. It is possible there is no deployment for the branch, or this was set before the deployment was canceled, in which case this will point to a cancelled deployment, in either case the proxy will fallback to the fallbackDeploymentId.
+	BranchDeploymentID *string `json:"branchDeploymentId,omitempty"`
+	// This is the deployment of the fallback host at the time the commit alias was created. It is possible for this to be a deleted deployment, in which case the proxy will show that the deployment is deleted. It will not use the fallbackHost, as a future deployment on the fallback host could be invalid for this deployment, and it could lead to confusion / incorrect behavior for the commit alias.
+	FallbackDeploymentID *string `json:"fallbackDeploymentId,omitempty"`
+	// Temporary for backwards compatibility. Can remove when metadata change is released
+	FallbackHost *string `json:"fallbackHost,omitempty"`
+	BranchAlias  *string `json:"branchAlias,omitempty"`
+	// The project ID of the microfrontends application.
+	ProjectID string `json:"projectId"`
 }
 
-func (o *ListAliasesApplication) GetProjectID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProjectID
-}
-
-func (o *ListAliasesApplication) GetFallbackHost() string {
-	if o == nil {
-		return ""
-	}
-	return o.FallbackHost
-}
-
-func (o *ListAliasesApplication) GetDeploymentID() *string {
+func (o *ListAliasesApplications3) GetDeploymentID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DeploymentID
 }
 
-func (o *ListAliasesApplication) GetDeploymentURL() *string {
+func (o *ListAliasesApplications3) GetBranchDeploymentID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.DeploymentURL
+	return o.BranchDeploymentID
+}
+
+func (o *ListAliasesApplications3) GetFallbackDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FallbackDeploymentID
+}
+
+func (o *ListAliasesApplications3) GetFallbackHost() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FallbackHost
+}
+
+func (o *ListAliasesApplications3) GetBranchAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BranchAlias
+}
+
+func (o *ListAliasesApplications3) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// ListAliasesApplications2 - A list of the deployment routing information for each project.
+type ListAliasesApplications2 struct {
+	// This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch.
+	FallbackHost string `json:"fallbackHost"`
+	// Could point to a branch without a deployment if the project was never deployed. The proxy will fallback to the fallbackHost if there is no deployment.
+	BranchAlias string `json:"branchAlias"`
+	// The project ID of the microfrontends application.
+	ProjectID string `json:"projectId"`
+}
+
+func (o *ListAliasesApplications2) GetFallbackHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.FallbackHost
+}
+
+func (o *ListAliasesApplications2) GetBranchAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.BranchAlias
+}
+
+func (o *ListAliasesApplications2) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// ListAliasesApplications1 - A list of the deployment routing information for each project.
+type ListAliasesApplications1 struct {
+	// This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch.
+	FallbackHost string `json:"fallbackHost"`
+	// The project ID of the microfrontends application.
+	ProjectID string `json:"projectId"`
+}
+
+func (o *ListAliasesApplications1) GetFallbackHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.FallbackHost
+}
+
+func (o *ListAliasesApplications1) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+type ApplicationsType string
+
+const (
+	ApplicationsTypeArrayOfListAliasesApplications1 ApplicationsType = "arrayOfListAliasesApplications1"
+	ApplicationsTypeArrayOfListAliasesApplications2 ApplicationsType = "arrayOfListAliasesApplications2"
+	ApplicationsTypeArrayOfListAliasesApplications3 ApplicationsType = "arrayOfListAliasesApplications3"
+)
+
+type Applications struct {
+	ArrayOfListAliasesApplications1 []ListAliasesApplications1 `queryParam:"inline"`
+	ArrayOfListAliasesApplications2 []ListAliasesApplications2 `queryParam:"inline"`
+	ArrayOfListAliasesApplications3 []ListAliasesApplications3 `queryParam:"inline"`
+
+	Type ApplicationsType
+}
+
+func CreateApplicationsArrayOfListAliasesApplications1(arrayOfListAliasesApplications1 []ListAliasesApplications1) Applications {
+	typ := ApplicationsTypeArrayOfListAliasesApplications1
+
+	return Applications{
+		ArrayOfListAliasesApplications1: arrayOfListAliasesApplications1,
+		Type:                            typ,
+	}
+}
+
+func CreateApplicationsArrayOfListAliasesApplications2(arrayOfListAliasesApplications2 []ListAliasesApplications2) Applications {
+	typ := ApplicationsTypeArrayOfListAliasesApplications2
+
+	return Applications{
+		ArrayOfListAliasesApplications2: arrayOfListAliasesApplications2,
+		Type:                            typ,
+	}
+}
+
+func CreateApplicationsArrayOfListAliasesApplications3(arrayOfListAliasesApplications3 []ListAliasesApplications3) Applications {
+	typ := ApplicationsTypeArrayOfListAliasesApplications3
+
+	return Applications{
+		ArrayOfListAliasesApplications3: arrayOfListAliasesApplications3,
+		Type:                            typ,
+	}
+}
+
+func (u *Applications) UnmarshalJSON(data []byte) error {
+
+	var arrayOfListAliasesApplications1 []ListAliasesApplications1 = []ListAliasesApplications1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications1, "", true, true); err == nil {
+		u.ArrayOfListAliasesApplications1 = arrayOfListAliasesApplications1
+		u.Type = ApplicationsTypeArrayOfListAliasesApplications1
+		return nil
+	}
+
+	var arrayOfListAliasesApplications2 []ListAliasesApplications2 = []ListAliasesApplications2{}
+	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications2, "", true, true); err == nil {
+		u.ArrayOfListAliasesApplications2 = arrayOfListAliasesApplications2
+		u.Type = ApplicationsTypeArrayOfListAliasesApplications2
+		return nil
+	}
+
+	var arrayOfListAliasesApplications3 []ListAliasesApplications3 = []ListAliasesApplications3{}
+	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications3, "", true, true); err == nil {
+		u.ArrayOfListAliasesApplications3 = arrayOfListAliasesApplications3
+		u.Type = ApplicationsTypeArrayOfListAliasesApplications3
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Applications", string(data))
+}
+
+func (u Applications) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfListAliasesApplications1 != nil {
+		return utils.MarshalJSON(u.ArrayOfListAliasesApplications1, "", true)
+	}
+
+	if u.ArrayOfListAliasesApplications2 != nil {
+		return utils.MarshalJSON(u.ArrayOfListAliasesApplications2, "", true)
+	}
+
+	if u.ArrayOfListAliasesApplications3 != nil {
+		return utils.MarshalJSON(u.ArrayOfListAliasesApplications3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Applications: all fields are null")
 }
 
 // ListAliasesMicrofrontends - The microfrontends for the alias including the routing configuration
 type ListAliasesMicrofrontends struct {
-	DefaultApp ListAliasesDefaultApp `json:"defaultApp"`
-	// A list of the deployment routing information for each project.
-	Applications []ListAliasesApplication `json:"applications"`
+	DefaultApp   DefaultApp   `json:"defaultApp"`
+	Applications Applications `json:"applications"`
 }
 
-func (o *ListAliasesMicrofrontends) GetDefaultApp() ListAliasesDefaultApp {
+func (o *ListAliasesMicrofrontends) GetDefaultApp() DefaultApp {
 	if o == nil {
-		return ListAliasesDefaultApp{}
+		return DefaultApp{}
 	}
 	return o.DefaultApp
 }
 
-func (o *ListAliasesMicrofrontends) GetApplications() []ListAliasesApplication {
+func (o *ListAliasesMicrofrontends) GetApplications() Applications {
 	if o == nil {
-		return []ListAliasesApplication{}
+		return Applications{}
 	}
 	return o.Applications
 }

@@ -13,5 +13,5 @@ let value: CreateProjectProjectsType = "gitlab";
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket"
+"github" | "github-limited" | "gitlab" | "bitbucket"
 ```

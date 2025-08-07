@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -50,7 +51,9 @@ func testAcceptProjectTransferRequestAcceptProjectTransferRequest0(w http.Respon
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.AcceptProjectTransferRequestResponseBody = &operations.AcceptProjectTransferRequestResponseBody{}
+	var respBody *operations.AcceptProjectTransferRequestResponseBody = types.Pointer(operations.CreateAcceptProjectTransferRequestResponseBodyAcceptProjectTransferRequestResponseBody2(
+		operations.AcceptProjectTransferRequestResponseBody2{},
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

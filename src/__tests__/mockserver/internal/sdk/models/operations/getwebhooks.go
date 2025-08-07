@@ -91,6 +91,8 @@ const (
 	GetWebhooksEvent2ProjectRollingReleaseAborted                       GetWebhooksEvent2 = "project.rolling-release.aborted"
 	GetWebhooksEvent2ProjectRollingReleaseCompleted                     GetWebhooksEvent2 = "project.rolling-release.completed"
 	GetWebhooksEvent2ProjectRollingReleaseApproved                      GetWebhooksEvent2 = "project.rolling-release.approved"
+	GetWebhooksEvent2DeploymentChecksFailed                             GetWebhooksEvent2 = "deployment.checks.failed"
+	GetWebhooksEvent2DeploymentChecksSucceeded                          GetWebhooksEvent2 = "deployment.checks.succeeded"
 	GetWebhooksEvent2DeploymentChecksCompleted                          GetWebhooksEvent2 = "deployment-checks-completed"
 	GetWebhooksEvent2DeploymentReadyLegacy                              GetWebhooksEvent2 = "deployment-ready"
 	GetWebhooksEvent2DeploymentPrepared                                 GetWebhooksEvent2 = "deployment-prepared"
@@ -216,6 +218,10 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "project.rolling-release.completed":
 		fallthrough
 	case "project.rolling-release.approved":
+		fallthrough
+	case "deployment.checks.failed":
+		fallthrough
+	case "deployment.checks.succeeded":
 		fallthrough
 	case "deployment-checks-completed":
 		fallthrough
@@ -377,6 +383,7 @@ const (
 	GetWebhooksFrameworkSanity         GetWebhooksFramework = "sanity"
 	GetWebhooksFrameworkStorybook      GetWebhooksFramework = "storybook"
 	GetWebhooksFrameworkNitro          GetWebhooksFramework = "nitro"
+	GetWebhooksFrameworkHono           GetWebhooksFramework = "hono"
 )
 
 func (e GetWebhooksFramework) ToPointer() *GetWebhooksFramework {
@@ -481,6 +488,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "storybook":
 		fallthrough
 	case "nitro":
+		fallthrough
+	case "hono":
 		*e = GetWebhooksFramework(v)
 		return nil
 	default:
@@ -575,6 +584,8 @@ const (
 	GetWebhooksEvent1ProjectRollingReleaseAborted                       GetWebhooksEvent1 = "project.rolling-release.aborted"
 	GetWebhooksEvent1ProjectRollingReleaseCompleted                     GetWebhooksEvent1 = "project.rolling-release.completed"
 	GetWebhooksEvent1ProjectRollingReleaseApproved                      GetWebhooksEvent1 = "project.rolling-release.approved"
+	GetWebhooksEvent1DeploymentChecksFailed                             GetWebhooksEvent1 = "deployment.checks.failed"
+	GetWebhooksEvent1DeploymentChecksSucceeded                          GetWebhooksEvent1 = "deployment.checks.succeeded"
 	GetWebhooksEvent1DeploymentChecksCompleted                          GetWebhooksEvent1 = "deployment-checks-completed"
 	GetWebhooksEvent1DeploymentReadyLegacy                              GetWebhooksEvent1 = "deployment-ready"
 	GetWebhooksEvent1DeploymentPrepared                                 GetWebhooksEvent1 = "deployment-prepared"
@@ -700,6 +711,10 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "project.rolling-release.completed":
 		fallthrough
 	case "project.rolling-release.approved":
+		fallthrough
+	case "deployment.checks.failed":
+		fallthrough
+	case "deployment.checks.succeeded":
 		fallthrough
 	case "deployment-checks-completed":
 		fallthrough

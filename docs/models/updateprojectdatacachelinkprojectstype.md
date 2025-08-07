@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectDataCacheLinkProjectsType } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheLinkProjectsType = "bitbucket";
+let value: UpdateProjectDataCacheLinkProjectsType = "gitlab";
 ```
 
 ## Values
 
 ```typescript
-"bitbucket"
+"gitlab"
 ```

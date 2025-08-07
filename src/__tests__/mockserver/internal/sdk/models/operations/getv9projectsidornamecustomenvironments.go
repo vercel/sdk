@@ -63,8 +63,8 @@ func (o *AccountLimit) GetTotal() float64 {
 type GetV9ProjectsIDOrNameCustomEnvironmentsType string
 
 const (
-	GetV9ProjectsIDOrNameCustomEnvironmentsTypeProduction  GetV9ProjectsIDOrNameCustomEnvironmentsType = "production"
 	GetV9ProjectsIDOrNameCustomEnvironmentsTypePreview     GetV9ProjectsIDOrNameCustomEnvironmentsType = "preview"
+	GetV9ProjectsIDOrNameCustomEnvironmentsTypeProduction  GetV9ProjectsIDOrNameCustomEnvironmentsType = "production"
 	GetV9ProjectsIDOrNameCustomEnvironmentsTypeDevelopment GetV9ProjectsIDOrNameCustomEnvironmentsType = "development"
 )
 
@@ -77,9 +77,9 @@ func (e *GetV9ProjectsIDOrNameCustomEnvironmentsType) UnmarshalJSON(data []byte)
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "development":
 		*e = GetV9ProjectsIDOrNameCustomEnvironmentsType(v)

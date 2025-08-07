@@ -32,6 +32,7 @@ Fetches the best account or user’s contact info
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get-account-info" method="get" path="/v1/installations/{integrationConfigurationId}/account" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -107,6 +108,7 @@ Returns the member role and other information for a given member ID ("user_id" c
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get-member" method="get" path="/v1/installations/{integrationConfigurationId}/member/{memberId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -184,6 +186,7 @@ Partner notifies Vercel of any changes made to an Installation or a Resource. Ve
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="create-event" method="post" path="/v1/installations/{integrationConfigurationId}/events" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -269,6 +272,7 @@ Get all resources for a given installation ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get-integration-resources" method="get" path="/v1/installations/{integrationConfigurationId}/resources" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -344,6 +348,7 @@ Get a resource by its partner ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get-integration-resource" method="get" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -421,6 +426,7 @@ Delete a resource owned by the selected installation ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete-integration-resource" method="delete" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -498,6 +504,7 @@ This endpoint imports (upserts) a resource to Vercel's installation. This may be
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="import-resource" method="put" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -575,6 +582,7 @@ Sends the billing and usage data. The partner should do this at least once a day
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="submit-billing-data" method="post" path="/v1/installations/{integrationConfigurationId}/billing" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -748,6 +756,7 @@ This endpoint allows the partner to submit an invoice to Vercel. The invoice is 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="submit-invoice" method="post" path="/v1/installations/{integrationConfigurationId}/billing/invoices" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -873,6 +882,7 @@ Get Invoice details and status for a given invoice ID.<br/> <br/> See Billing Ev
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get-invoice" method="get" path="/v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -950,6 +960,7 @@ This endpoint allows the partner to request a refund for an invoice to Vercel. T
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="update-invoice" method="post" path="/v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}/actions" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1037,6 +1048,7 @@ Sends the prepayment balances. The partner should do this at least once a day an
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="submit-prepayment-balances" method="post" path="/v1/installations/{integrationConfigurationId}/billing/balance" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1112,6 +1124,7 @@ This endpoint is deprecated and replaced with the endpoint [Update Resource Secr
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="update-resource-secrets" method="put" path="/v1/installations/{integrationConfigurationId}/products/{integrationProductIdOrSlug}/resources/{resourceId}/secrets" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1197,6 +1210,7 @@ This endpoint updates the secrets of a resource. If a resource has projects conn
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="update-resource-secrets-by-id" method="put" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/secrets" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1274,6 +1288,7 @@ During the autorization process, Vercel sends the user to the provider [redirect
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="exchange-sso-token" method="post" path="/v1/integrations/sso/token" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1348,6 +1363,7 @@ Create one or multiple experimentation items
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items" method="post" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1425,6 +1441,7 @@ Patch an existing experimentation item
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}" method="patch" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1504,6 +1521,7 @@ Delete an existing experimentation item
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}" method="delete" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1583,6 +1601,7 @@ When the user enabled Edge Config syncing, then this endpoint can be used by the
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="head_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" method="head" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1660,6 +1679,7 @@ When the user enabled Edge Config syncing, then this endpoint can be used by the
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="put_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" method="put" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

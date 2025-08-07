@@ -17,5 +17,5 @@ let value: ExchangeSsoTokenResponseBody = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `idToken`          | *string*           | :heavy_check_mark: | N/A                |
-| `accessToken`      | *any*              | :heavy_check_mark: | N/A                |
-| `tokenType`        | *any*              | :heavy_check_mark: | N/A                |
+| `accessToken`      | *string*           | :heavy_check_mark: | N/A                |
+| `tokenType`        | *string*           | :heavy_check_mark: | N/A                |

@@ -29,6 +29,7 @@ Returns all Edge Configs.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigs" method="get" path="/v1/edge-config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -105,6 +106,7 @@ Creates an Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createEdgeConfig" method="post" path="/v1/edge-config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -187,6 +189,7 @@ Returns an Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfig" method="get" path="/v1/edge-config/{edgeConfigId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -266,6 +269,7 @@ Updates an Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateEdgeConfig" method="put" path="/v1/edge-config/{edgeConfigId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -351,6 +355,7 @@ Delete an Edge Config by id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteEdgeConfig" method="delete" path="/v1/edge-config/{edgeConfigId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -430,6 +435,7 @@ Returns all items of an Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigItems" method="get" path="/v1/edge-config/{edgeConfigId}/items" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -509,6 +515,7 @@ Update multiple Edge Config Items in batch.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchEdgeConfigItems" method="patch" path="/v1/edge-config/{edgeConfigId}/items" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -588,6 +595,7 @@ Returns the schema of an Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigSchema" method="get" path="/v1/edge-config/{edgeConfigId}/schema" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -667,6 +675,7 @@ Update an Edge Config's schema.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchEdgeConfigSchema" method="post" path="/v1/edge-config/{edgeConfigId}/schema" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -752,6 +761,7 @@ Deletes the schema of existing Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteEdgeConfigSchema" method="delete" path="/v1/edge-config/{edgeConfigId}/schema" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -831,6 +841,7 @@ Returns a specific Edge Config Item.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigItem" method="get" path="/v1/edge-config/{edgeConfigId}/item/{edgeConfigItemKey}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -912,6 +923,7 @@ Returns all tokens of an Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigTokens" method="get" path="/v1/edge-config/{edgeConfigId}/tokens" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -991,6 +1003,7 @@ Deletes one or more tokens of an existing Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteEdgeConfigTokens" method="delete" path="/v1/edge-config/{edgeConfigId}/tokens" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1084,6 +1097,7 @@ Return meta data about an Edge Config token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigToken" method="get" path="/v1/edge-config/{edgeConfigId}/token/{token}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1165,6 +1179,7 @@ Adds a token to an existing Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createEdgeConfigToken" method="post" path="/v1/edge-config/{edgeConfigId}/token" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1250,6 +1265,7 @@ Retrieves a specific version of an Edge Config from backup storage.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigBackup" method="get" path="/v1/edge-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1331,6 +1347,7 @@ Returns backups of an Edge Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEdgeConfigBackups" method="get" path="/v1/edge-config/{edgeConfigId}/backups" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

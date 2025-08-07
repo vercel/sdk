@@ -18,6 +18,7 @@ Retrieves all Aliases for the Deployment with the given ID. The authenticated us
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listDeploymentAliases" method="get" path="/v2/deployments/{id}/aliases" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -97,6 +98,7 @@ Creates a new alias for the deployment with the given deployment ID. The authent
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="assignAlias" method="post" path="/v2/deployments/{id}/aliases" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -184,6 +186,7 @@ Retrieves a list of aliases for the authenticated User or Team. When `domain` is
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAliases" method="get" path="/v4/aliases" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -275,6 +278,7 @@ Retrieves an Alias for the given host name or alias ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAlias" method="get" path="/v4/aliases/{idOrAlias}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -345,7 +349,7 @@ run();
 
 ### Response
 
-**Promise\<[models.GetAliasResponseBody](../../models/getaliasresponsebody.md)\>**
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 
@@ -362,6 +366,7 @@ Delete an Alias with the specified ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteAlias" method="delete" path="/v2/aliases/{aliasId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -441,6 +446,7 @@ Update the protection bypass for the alias or deployment URL (used for user acce
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchUrlProtectionBypass" method="patch" path="/aliases/{id}/protection-bypass" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

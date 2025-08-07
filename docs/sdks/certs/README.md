@@ -16,6 +16,7 @@ Get cert by id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCertById" method="get" path="/v8/certs/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -95,6 +96,7 @@ Remove cert
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeCert" method="delete" path="/v8/certs/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -174,6 +176,7 @@ Issue a new cert
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="issueCert" method="post" path="/v8/certs" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -251,6 +254,7 @@ Upload a cert
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadCert" method="put" path="/v8/certs" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

@@ -90,9 +90,9 @@ func (o *ExchangeSsoTokenRequest) GetGrantType() *GrantType {
 }
 
 type ExchangeSsoTokenResponseBody struct {
-	IDToken     string `json:"id_token"`
-	AccessToken any    `json:"access_token"`
-	TokenType   any    `json:"token_type"`
+	IDToken     string  `json:"id_token"`
+	AccessToken *string `json:"access_token"`
+	TokenType   *string `json:"token_type"`
 }
 
 func (o *ExchangeSsoTokenResponseBody) GetIDToken() string {
@@ -102,14 +102,14 @@ func (o *ExchangeSsoTokenResponseBody) GetIDToken() string {
 	return o.IDToken
 }
 
-func (o *ExchangeSsoTokenResponseBody) GetAccessToken() any {
+func (o *ExchangeSsoTokenResponseBody) GetAccessToken() *string {
 	if o == nil {
 		return nil
 	}
 	return o.AccessToken
 }
 
-func (o *ExchangeSsoTokenResponseBody) GetTokenType() any {
+func (o *ExchangeSsoTokenResponseBody) GetTokenType() *string {
 	if o == nil {
 		return nil
 	}

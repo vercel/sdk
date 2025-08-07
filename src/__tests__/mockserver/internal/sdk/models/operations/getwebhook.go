@@ -89,6 +89,8 @@ const (
 	GetWebhookEventProjectRollingReleaseAborted                       GetWebhookEvent = "project.rolling-release.aborted"
 	GetWebhookEventProjectRollingReleaseCompleted                     GetWebhookEvent = "project.rolling-release.completed"
 	GetWebhookEventProjectRollingReleaseApproved                      GetWebhookEvent = "project.rolling-release.approved"
+	GetWebhookEventDeploymentChecksFailed                             GetWebhookEvent = "deployment.checks.failed"
+	GetWebhookEventDeploymentChecksSucceeded                          GetWebhookEvent = "deployment.checks.succeeded"
 	GetWebhookEventDeploymentChecksCompleted                          GetWebhookEvent = "deployment-checks-completed"
 	GetWebhookEventDeploymentReadyLegacy                              GetWebhookEvent = "deployment-ready"
 	GetWebhookEventDeploymentPrepared                                 GetWebhookEvent = "deployment-prepared"
@@ -214,6 +216,10 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "project.rolling-release.completed":
 		fallthrough
 	case "project.rolling-release.approved":
+		fallthrough
+	case "deployment.checks.failed":
+		fallthrough
+	case "deployment.checks.succeeded":
 		fallthrough
 	case "deployment-checks-completed":
 		fallthrough

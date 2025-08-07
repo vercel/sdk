@@ -35,3 +35,18 @@ const value: models.UpdateProjectLink4 = {
 };
 ```
 
+### `models.UpdateProjectLink5`
+
+```typescript
+const value: models.UpdateProjectLink5 = {
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://grim-request.name/",
+    },
+  ],
+};
+```
+

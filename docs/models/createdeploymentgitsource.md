@@ -47,8 +47,8 @@ const value: models.CreateDeploymentGitSource4 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource5 = {
-  type: "gitlab",
-  projectId: 8037.32,
+  type: "github-limited",
+  repoId: 8037.32,
 };
 ```
 
@@ -56,8 +56,9 @@ const value: models.CreateDeploymentGitSource5 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource6 = {
-  type: "bitbucket",
-  repoUuid: "<id>",
+  type: "github-limited",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 
@@ -65,9 +66,8 @@ const value: models.CreateDeploymentGitSource6 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource7 = {
-  type: "bitbucket",
-  owner: "<value>",
-  slug: "<value>",
+  type: "gitlab",
+  projectId: "<id>",
 };
 ```
 
@@ -75,10 +75,8 @@ const value: models.CreateDeploymentGitSource7 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource8 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://yellowish-excess.org",
+  type: "bitbucket",
+  repoUuid: "<id>",
 };
 ```
 
@@ -86,10 +84,9 @@ const value: models.CreateDeploymentGitSource8 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource9 = {
-  type: "github",
-  ref: "<value>",
-  sha: "<value>",
-  repoId: 3742.69,
+  type: "bitbucket",
+  owner: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -97,11 +94,10 @@ const value: models.CreateDeploymentGitSource9 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource10 = {
-  type: "github-custom-host",
-  host: "svelte-roadway.net",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 8500.24,
+  gitUrl: "https://snappy-soliloquy.org",
 };
 ```
 
@@ -109,10 +105,10 @@ const value: models.CreateDeploymentGitSource10 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource11 = {
-  type: "gitlab",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  projectId: 4115.15,
+  repoId: 4115.15,
 };
 ```
 
@@ -120,6 +116,40 @@ const value: models.CreateDeploymentGitSource11 = {
 
 ```typescript
 const value: models.CreateDeploymentGitSource12 = {
+  type: "github-custom-host",
+  host: "ultimate-hope.info",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 2069.18,
+};
+```
+
+### `models.CreateDeploymentGitSource13`
+
+```typescript
+const value: models.CreateDeploymentGitSource13 = {
+  type: "github-limited",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 4560.03,
+};
+```
+
+### `models.CreateDeploymentGitSource14`
+
+```typescript
+const value: models.CreateDeploymentGitSource14 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 309.84,
+};
+```
+
+### `models.CreateDeploymentGitSource15`
+
+```typescript
+const value: models.CreateDeploymentGitSource15 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",

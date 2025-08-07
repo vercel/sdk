@@ -129,6 +129,8 @@ type Record2 struct {
 	Updated    *float64        `json:"updated"`
 	CreatedAt  *float64        `json:"createdAt"`
 	UpdatedAt  *float64        `json:"updatedAt"`
+	TTL        *float64        `json:"ttl,omitempty"`
+	Comment    *string         `json:"comment,omitempty"`
 }
 
 func (o *Record2) GetID() string {
@@ -215,6 +217,20 @@ func (o *Record2) GetUpdatedAt() *float64 {
 	return o.UpdatedAt
 }
 
+func (o *Record2) GetTTL() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TTL
+}
+
+func (o *Record2) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
 // GetRecordsResponseBody2 - Successful response retrieving a list of paginated DNS records.
 type GetRecordsResponseBody2 struct {
 	Records []Record2 `json:"records"`
@@ -299,6 +315,8 @@ type Record1 struct {
 	Updated    *float64        `json:"updated"`
 	CreatedAt  *float64        `json:"createdAt"`
 	UpdatedAt  *float64        `json:"updatedAt"`
+	TTL        *float64        `json:"ttl,omitempty"`
+	Comment    *string         `json:"comment,omitempty"`
 }
 
 func (o *Record1) GetID() string {
@@ -383,6 +401,20 @@ func (o *Record1) GetUpdatedAt() *float64 {
 		return nil
 	}
 	return o.UpdatedAt
+}
+
+func (o *Record1) GetTTL() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TTL
+}
+
+func (o *Record1) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
 }
 
 type GetRecordsResponseBody1 struct {

@@ -7,11 +7,11 @@ The acive pricing plan the team is billed with
 ```typescript
 import { PayloadPricingPlan } from "@vercel/sdk/models/userevent.js";
 
-let value: PayloadPricingPlan = "legacy";
+let value: PayloadPricingPlan = "plus";
 ```
 
 ## Values
 
 ```typescript
-"legacy" | "unbundled"
+"plus" | "legacy" | "unbundled"
 ```

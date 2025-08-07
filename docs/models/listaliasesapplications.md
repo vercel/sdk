@@ -1,23 +1,28 @@
 # ListAliasesApplications
 
-A list of the deployment routing information for each project.
 
-## Example Usage
+## Supported Types
+
+### `models.Applications1[]`
 
 ```typescript
-import { ListAliasesApplications } from "@vercel/sdk/models/listaliasesop.js";
-
-let value: ListAliasesApplications = {
-  projectId: "<id>",
-  fallbackHost: "<value>",
-};
+const value: models.Applications1[] = [
+  {
+    fallbackHost: "<value>",
+    projectId: "<id>",
+  },
+];
 ```
 
-## Fields
+### `models.Applications2[]`
 
-| Field                                                                                                                                                                                       | Type                                                                                                                                                                                        | Required                                                                                                                                                                                    | Description                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `projectId`                                                                                                                                                                                 | *string*                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                          | The project ID that should use the below configuration.                                                                                                                                     |
-| `fallbackHost`                                                                                                                                                                              | *string*                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                          | This is always set and is the fallback host to send the request to if there is no deployment ID.                                                                                            |
-| `deploymentId`                                                                                                                                                                              | *string*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                          | This is only set if there are changes to the application. This is the deployment ID to use for requests to that application. If this is unset, requests will be sent to the `fallbackHost`. |
-| `deploymentUrl`                                                                                                                                                                             | *string*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                          | This is used and set in the exact same way as `deploymentId`.                                                                                                                               |
+```typescript
+const value: models.Applications2[] = [];
+```
+
+### `models.Applications3[]`
+
+```typescript
+const value: models.Applications3[] = [];
+```
+

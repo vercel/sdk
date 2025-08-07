@@ -8,21 +8,12 @@ The payload of the event, if requested.
 import { OneHundredAndFortyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyThree = {
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  group: {
-    id: "<id>",
-    slug: "<value>",
-    name: "<value>",
-  },
+  action: "enable",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload143Project](../models/usereventpayload143project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload143Action](../models/usereventpayload143action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

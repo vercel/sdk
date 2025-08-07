@@ -13,5 +13,5 @@ let value: GetV9ProjectsIdOrNameCustomEnvironmentsType = "development";
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"preview" | "production" | "development"
 ```

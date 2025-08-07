@@ -42,3 +42,11 @@ const value: models.CreateProjectLink4 = {
 };
 ```
 
+### `models.CreateProjectLink5`
+
+```typescript
+const value: models.CreateProjectLink5 = {
+  deployHooks: [],
+};
+```
+

@@ -17,6 +17,10 @@ export type RerequestCheckRequest = {
    */
   checkId: string;
   /**
+   * Mark the check as running
+   */
+  autoUpdate?: boolean | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -36,6 +40,7 @@ export const RerequestCheckRequest$inboundSchema: z.ZodType<
 > = z.object({
   deploymentId: z.string(),
   checkId: z.string(),
+  autoUpdate: z.boolean().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -44,6 +49,7 @@ export const RerequestCheckRequest$inboundSchema: z.ZodType<
 export type RerequestCheckRequest$Outbound = {
   deploymentId: string;
   checkId: string;
+  autoUpdate?: boolean | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -56,6 +62,7 @@ export const RerequestCheckRequest$outboundSchema: z.ZodType<
 > = z.object({
   deploymentId: z.string(),
   checkId: z.string(),
+  autoUpdate: z.boolean().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

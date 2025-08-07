@@ -125,6 +125,28 @@ export type BuildMachine = {
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export type AuthUserSecurity = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  customRules?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  ipBlocks?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  ipBypass?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  rateLimit?: number | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -226,6 +248,10 @@ export type AuthUserResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   buildMachine?: BuildMachine | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  security?: AuthUserSecurity | undefined;
 };
 
 export const ViewPreference = {
@@ -266,6 +292,7 @@ export const ImportFlowGitProvider = {
   Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
 } as const;
 export type ImportFlowGitProvider = ClosedEnum<typeof ImportFlowGitProvider>;
@@ -679,6 +706,69 @@ export function buildMachineFromJSON(
 }
 
 /** @internal */
+export const AuthUserSecurity$inboundSchema: z.ZodType<
+  AuthUserSecurity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  customRules: z.number().optional(),
+  ipBlocks: z.number().optional(),
+  ipBypass: z.number().optional(),
+  rateLimit: z.number().optional(),
+});
+
+/** @internal */
+export type AuthUserSecurity$Outbound = {
+  customRules?: number | undefined;
+  ipBlocks?: number | undefined;
+  ipBypass?: number | undefined;
+  rateLimit?: number | undefined;
+};
+
+/** @internal */
+export const AuthUserSecurity$outboundSchema: z.ZodType<
+  AuthUserSecurity$Outbound,
+  z.ZodTypeDef,
+  AuthUserSecurity
+> = z.object({
+  customRules: z.number().optional(),
+  ipBlocks: z.number().optional(),
+  ipBypass: z.number().optional(),
+  rateLimit: z.number().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AuthUserSecurity$ {
+  /** @deprecated use `AuthUserSecurity$inboundSchema` instead. */
+  export const inboundSchema = AuthUserSecurity$inboundSchema;
+  /** @deprecated use `AuthUserSecurity$outboundSchema` instead. */
+  export const outboundSchema = AuthUserSecurity$outboundSchema;
+  /** @deprecated use `AuthUserSecurity$Outbound` instead. */
+  export type Outbound = AuthUserSecurity$Outbound;
+}
+
+export function authUserSecurityToJSON(
+  authUserSecurity: AuthUserSecurity,
+): string {
+  return JSON.stringify(
+    AuthUserSecurity$outboundSchema.parse(authUserSecurity),
+  );
+}
+
+export function authUserSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<AuthUserSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AuthUserSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserSecurity' from JSON`,
+  );
+}
+
+/** @internal */
 export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   AuthUserResourceConfig,
   z.ZodTypeDef,
@@ -710,6 +800,7 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
   customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => BuildMachine$inboundSchema).optional(),
+  security: z.lazy(() => AuthUserSecurity$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -739,6 +830,7 @@ export type AuthUserResourceConfig$Outbound = {
   flagsExplorerUnlimitedOverrides?: boolean | undefined;
   customEnvironmentsPerProject?: number | undefined;
   buildMachine?: BuildMachine$Outbound | undefined;
+  security?: AuthUserSecurity$Outbound | undefined;
 };
 
 /** @internal */
@@ -773,6 +865,7 @@ export const AuthUserResourceConfig$outboundSchema: z.ZodType<
   flagsExplorerUnlimitedOverrides: z.boolean().optional(),
   customEnvironmentsPerProject: z.number().optional(),
   buildMachine: z.lazy(() => BuildMachine$outboundSchema).optional(),
+  security: z.lazy(() => AuthUserSecurity$outboundSchema).optional(),
 });
 
 /**

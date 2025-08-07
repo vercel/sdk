@@ -59,6 +59,8 @@ const (
 	CreateWebhookEventRequestProjectRollingReleaseAborted                       CreateWebhookEventRequest = "project.rolling-release.aborted"
 	CreateWebhookEventRequestProjectRollingReleaseCompleted                     CreateWebhookEventRequest = "project.rolling-release.completed"
 	CreateWebhookEventRequestProjectRollingReleaseApproved                      CreateWebhookEventRequest = "project.rolling-release.approved"
+	CreateWebhookEventRequestDeploymentChecksFailed                             CreateWebhookEventRequest = "deployment.checks.failed"
+	CreateWebhookEventRequestDeploymentChecksSucceeded                          CreateWebhookEventRequest = "deployment.checks.succeeded"
 	CreateWebhookEventRequestDeploymentChecksCompleted                          CreateWebhookEventRequest = "deployment-checks-completed"
 	CreateWebhookEventRequestDeploymentReadyLegacy                              CreateWebhookEventRequest = "deployment-ready"
 	CreateWebhookEventRequestDeploymentPrepared                                 CreateWebhookEventRequest = "deployment-prepared"
@@ -184,6 +186,10 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "project.rolling-release.completed":
 		fallthrough
 	case "project.rolling-release.approved":
+		fallthrough
+	case "deployment.checks.failed":
+		fallthrough
+	case "deployment.checks.succeeded":
 		fallthrough
 	case "deployment-checks-completed":
 		fallthrough
@@ -337,6 +343,8 @@ const (
 	CreateWebhookEventResponseProjectRollingReleaseAborted                       CreateWebhookEventResponse = "project.rolling-release.aborted"
 	CreateWebhookEventResponseProjectRollingReleaseCompleted                     CreateWebhookEventResponse = "project.rolling-release.completed"
 	CreateWebhookEventResponseProjectRollingReleaseApproved                      CreateWebhookEventResponse = "project.rolling-release.approved"
+	CreateWebhookEventResponseDeploymentChecksFailed                             CreateWebhookEventResponse = "deployment.checks.failed"
+	CreateWebhookEventResponseDeploymentChecksSucceeded                          CreateWebhookEventResponse = "deployment.checks.succeeded"
 	CreateWebhookEventResponseDeploymentChecksCompleted                          CreateWebhookEventResponse = "deployment-checks-completed"
 	CreateWebhookEventResponseDeploymentReadyLegacy                              CreateWebhookEventResponse = "deployment-ready"
 	CreateWebhookEventResponseDeploymentPrepared                                 CreateWebhookEventResponse = "deployment-prepared"
@@ -462,6 +470,10 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "project.rolling-release.completed":
 		fallthrough
 	case "project.rolling-release.approved":
+		fallthrough
+	case "deployment.checks.failed":
+		fallthrough
+	case "deployment.checks.succeeded":
 		fallthrough
 	case "deployment-checks-completed":
 		fallthrough

@@ -20,6 +20,7 @@ export const PatchTeamRoles1 = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type PatchTeamRoles1 = ClosedEnum<typeof PatchTeamRoles1>;
@@ -45,6 +46,76 @@ export type PatchTeamRemoteCaching = {
    * Enable or disable remote caching for the team.
    */
   enabled?: boolean | undefined;
+};
+
+/**
+ * Specify if the password will apply to every Deployment Target or just Preview
+ */
+export const PatchTeamDeploymentType = {
+  All: "all",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+/**
+ * Specify if the password will apply to every Deployment Target or just Preview
+ */
+export type PatchTeamDeploymentType = ClosedEnum<
+  typeof PatchTeamDeploymentType
+>;
+
+/**
+ * Allows to protect project deployments with a password
+ */
+export type PatchTeamPasswordProtection = {
+  /**
+   * Specify if the password will apply to every Deployment Target or just Preview
+   */
+  deploymentType: PatchTeamDeploymentType;
+  /**
+   * The password that will be used to protect Project Deployments
+   */
+  password?: string | null | undefined;
+};
+
+/**
+ * Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+ */
+export const PatchTeamTeamsDeploymentType = {
+  All: "all",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  AllExceptCustomDomains: "all_except_custom_domains",
+} as const;
+/**
+ * Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+ */
+export type PatchTeamTeamsDeploymentType = ClosedEnum<
+  typeof PatchTeamTeamsDeploymentType
+>;
+
+/**
+ * Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
+ */
+export type PatchTeamSsoProtection = {
+  /**
+   * Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+   */
+  deploymentType?: PatchTeamTeamsDeploymentType | undefined;
+};
+
+/**
+ * Default deployment protection settings for new projects.
+ */
+export type PatchTeamDefaultDeploymentProtection = {
+  /**
+   * Allows to protect project deployments with a password
+   */
+  passwordProtection?: PatchTeamPasswordProtection | null | undefined;
+  /**
+   * Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
+   */
+  ssoProtection?: PatchTeamSsoProtection | null | undefined;
 };
 
 export type PatchTeamRequestBody = {
@@ -98,6 +169,12 @@ export type PatchTeamRequestBody = {
    * Display or hide IP addresses in Log Drains.
    */
   hideIpAddressesInLogDrains?: boolean | undefined;
+  /**
+   * Default deployment protection settings for new projects.
+   */
+  defaultDeploymentProtection?:
+    | PatchTeamDefaultDeploymentProtection
+    | undefined;
 };
 
 export type PatchTeamRequest = {
@@ -353,6 +430,231 @@ export function patchTeamRemoteCachingFromJSON(
 }
 
 /** @internal */
+export const PatchTeamDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamDeploymentType
+> = z.nativeEnum(PatchTeamDeploymentType);
+
+/** @internal */
+export const PatchTeamDeploymentType$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamDeploymentType
+> = PatchTeamDeploymentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchTeamDeploymentType$ {
+  /** @deprecated use `PatchTeamDeploymentType$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamDeploymentType$inboundSchema;
+  /** @deprecated use `PatchTeamDeploymentType$outboundSchema` instead. */
+  export const outboundSchema = PatchTeamDeploymentType$outboundSchema;
+}
+
+/** @internal */
+export const PatchTeamPasswordProtection$inboundSchema: z.ZodType<
+  PatchTeamPasswordProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: PatchTeamDeploymentType$inboundSchema,
+  password: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type PatchTeamPasswordProtection$Outbound = {
+  deploymentType: string;
+  password?: string | null | undefined;
+};
+
+/** @internal */
+export const PatchTeamPasswordProtection$outboundSchema: z.ZodType<
+  PatchTeamPasswordProtection$Outbound,
+  z.ZodTypeDef,
+  PatchTeamPasswordProtection
+> = z.object({
+  deploymentType: PatchTeamDeploymentType$outboundSchema,
+  password: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchTeamPasswordProtection$ {
+  /** @deprecated use `PatchTeamPasswordProtection$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamPasswordProtection$inboundSchema;
+  /** @deprecated use `PatchTeamPasswordProtection$outboundSchema` instead. */
+  export const outboundSchema = PatchTeamPasswordProtection$outboundSchema;
+  /** @deprecated use `PatchTeamPasswordProtection$Outbound` instead. */
+  export type Outbound = PatchTeamPasswordProtection$Outbound;
+}
+
+export function patchTeamPasswordProtectionToJSON(
+  patchTeamPasswordProtection: PatchTeamPasswordProtection,
+): string {
+  return JSON.stringify(
+    PatchTeamPasswordProtection$outboundSchema.parse(
+      patchTeamPasswordProtection,
+    ),
+  );
+}
+
+export function patchTeamPasswordProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamPasswordProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamPasswordProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamPasswordProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamTeamsDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamTeamsDeploymentType
+> = z.nativeEnum(PatchTeamTeamsDeploymentType);
+
+/** @internal */
+export const PatchTeamTeamsDeploymentType$outboundSchema: z.ZodNativeEnum<
+  typeof PatchTeamTeamsDeploymentType
+> = PatchTeamTeamsDeploymentType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchTeamTeamsDeploymentType$ {
+  /** @deprecated use `PatchTeamTeamsDeploymentType$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamTeamsDeploymentType$inboundSchema;
+  /** @deprecated use `PatchTeamTeamsDeploymentType$outboundSchema` instead. */
+  export const outboundSchema = PatchTeamTeamsDeploymentType$outboundSchema;
+}
+
+/** @internal */
+export const PatchTeamSsoProtection$inboundSchema: z.ZodType<
+  PatchTeamSsoProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: PatchTeamTeamsDeploymentType$inboundSchema.default("preview"),
+});
+
+/** @internal */
+export type PatchTeamSsoProtection$Outbound = {
+  deploymentType: string;
+};
+
+/** @internal */
+export const PatchTeamSsoProtection$outboundSchema: z.ZodType<
+  PatchTeamSsoProtection$Outbound,
+  z.ZodTypeDef,
+  PatchTeamSsoProtection
+> = z.object({
+  deploymentType: PatchTeamTeamsDeploymentType$outboundSchema.default(
+    "preview",
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchTeamSsoProtection$ {
+  /** @deprecated use `PatchTeamSsoProtection$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamSsoProtection$inboundSchema;
+  /** @deprecated use `PatchTeamSsoProtection$outboundSchema` instead. */
+  export const outboundSchema = PatchTeamSsoProtection$outboundSchema;
+  /** @deprecated use `PatchTeamSsoProtection$Outbound` instead. */
+  export type Outbound = PatchTeamSsoProtection$Outbound;
+}
+
+export function patchTeamSsoProtectionToJSON(
+  patchTeamSsoProtection: PatchTeamSsoProtection,
+): string {
+  return JSON.stringify(
+    PatchTeamSsoProtection$outboundSchema.parse(patchTeamSsoProtection),
+  );
+}
+
+export function patchTeamSsoProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamSsoProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchTeamSsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamSsoProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchTeamDefaultDeploymentProtection$inboundSchema: z.ZodType<
+  PatchTeamDefaultDeploymentProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  passwordProtection: z.nullable(
+    z.lazy(() => PatchTeamPasswordProtection$inboundSchema),
+  ).optional(),
+  ssoProtection: z.nullable(z.lazy(() => PatchTeamSsoProtection$inboundSchema))
+    .optional(),
+});
+
+/** @internal */
+export type PatchTeamDefaultDeploymentProtection$Outbound = {
+  passwordProtection?: PatchTeamPasswordProtection$Outbound | null | undefined;
+  ssoProtection?: PatchTeamSsoProtection$Outbound | null | undefined;
+};
+
+/** @internal */
+export const PatchTeamDefaultDeploymentProtection$outboundSchema: z.ZodType<
+  PatchTeamDefaultDeploymentProtection$Outbound,
+  z.ZodTypeDef,
+  PatchTeamDefaultDeploymentProtection
+> = z.object({
+  passwordProtection: z.nullable(
+    z.lazy(() => PatchTeamPasswordProtection$outboundSchema),
+  ).optional(),
+  ssoProtection: z.nullable(z.lazy(() => PatchTeamSsoProtection$outboundSchema))
+    .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchTeamDefaultDeploymentProtection$ {
+  /** @deprecated use `PatchTeamDefaultDeploymentProtection$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchTeamDefaultDeploymentProtection$inboundSchema;
+  /** @deprecated use `PatchTeamDefaultDeploymentProtection$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchTeamDefaultDeploymentProtection$outboundSchema;
+  /** @deprecated use `PatchTeamDefaultDeploymentProtection$Outbound` instead. */
+  export type Outbound = PatchTeamDefaultDeploymentProtection$Outbound;
+}
+
+export function patchTeamDefaultDeploymentProtectionToJSON(
+  patchTeamDefaultDeploymentProtection: PatchTeamDefaultDeploymentProtection,
+): string {
+  return JSON.stringify(
+    PatchTeamDefaultDeploymentProtection$outboundSchema.parse(
+      patchTeamDefaultDeploymentProtection,
+    ),
+  );
+}
+
+export function patchTeamDefaultDeploymentProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamDefaultDeploymentProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchTeamDefaultDeploymentProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamDefaultDeploymentProtection' from JSON`,
+  );
+}
+
+/** @internal */
 export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   PatchTeamRequestBody,
   z.ZodTypeDef,
@@ -372,6 +674,9 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   remoteCaching: z.lazy(() => PatchTeamRemoteCaching$inboundSchema).optional(),
   hideIpAddresses: z.boolean().optional(),
   hideIpAddressesInLogDrains: z.boolean().optional(),
+  defaultDeploymentProtection: z.lazy(() =>
+    PatchTeamDefaultDeploymentProtection$inboundSchema
+  ).optional(),
 });
 
 /** @internal */
@@ -390,6 +695,9 @@ export type PatchTeamRequestBody$Outbound = {
   remoteCaching?: PatchTeamRemoteCaching$Outbound | undefined;
   hideIpAddresses?: boolean | undefined;
   hideIpAddressesInLogDrains?: boolean | undefined;
+  defaultDeploymentProtection?:
+    | PatchTeamDefaultDeploymentProtection$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -412,6 +720,9 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   remoteCaching: z.lazy(() => PatchTeamRemoteCaching$outboundSchema).optional(),
   hideIpAddresses: z.boolean().optional(),
   hideIpAddressesInLogDrains: z.boolean().optional(),
+  defaultDeploymentProtection: z.lazy(() =>
+    PatchTeamDefaultDeploymentProtection$outboundSchema
+  ).optional(),
 });
 
 /**

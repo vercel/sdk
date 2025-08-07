@@ -8,12 +8,28 @@ The payload of the event, if requested.
 import { OneHundredAndFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFour = {
-  storeType: "postgres",
+  budget: {
+    budgetItem: {
+      type: "fixed",
+      fixedBudget: 3089.34,
+      previousSpend: [
+        8881.12,
+      ],
+      notifiedAt: [
+        6992.68,
+        7286.47,
+      ],
+      createdAt: 3556.79,
+      isActive: false,
+      teamId: "<id>",
+      id: "<id>",
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `budget`                                           | [models.PayloadBudget](../models/payloadbudget.md) | :heavy_check_mark:                                 | N/A                                                |

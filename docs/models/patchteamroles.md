@@ -6,7 +6,7 @@
 ### `models.PatchTeamRoles1`
 
 ```typescript
-const value: models.PatchTeamRoles1 = "MEMBER";
+const value: models.PatchTeamRoles1 = "DEVELOPER";
 ```
 
 ### `models.PatchTeamRoles2`

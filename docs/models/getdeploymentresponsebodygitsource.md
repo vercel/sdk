@@ -47,8 +47,8 @@ const value: models.GetDeploymentGitSourceDeployments4 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments5 = {
-  type: "gitlab",
-  projectId: 8837.73,
+  type: "github-limited",
+  repoId: 8837.73,
 };
 ```
 
@@ -56,8 +56,9 @@ const value: models.GetDeploymentGitSourceDeployments5 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments6 = {
-  type: "bitbucket",
-  repoUuid: "<id>",
+  type: "github-limited",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 
@@ -65,9 +66,8 @@ const value: models.GetDeploymentGitSourceDeployments6 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments7 = {
-  type: "bitbucket",
-  owner: "<value>",
-  slug: "<value>",
+  type: "gitlab",
+  projectId: "<id>",
 };
 ```
 
@@ -75,10 +75,8 @@ const value: models.GetDeploymentGitSourceDeployments7 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments8 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://usable-aftermath.org",
+  type: "bitbucket",
+  repoUuid: "<id>",
 };
 ```
 
@@ -86,10 +84,9 @@ const value: models.GetDeploymentGitSourceDeployments8 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments9 = {
-  type: "github",
-  ref: "<value>",
-  sha: "<value>",
-  repoId: 7220.78,
+  type: "bitbucket",
+  owner: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -97,11 +94,10 @@ const value: models.GetDeploymentGitSourceDeployments9 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments10 = {
-  type: "github-custom-host",
-  host: "overdue-mousse.com",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 1930.67,
+  gitUrl: "https://palatable-cod.biz",
 };
 ```
 
@@ -109,10 +105,10 @@ const value: models.GetDeploymentGitSourceDeployments10 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments11 = {
-  type: "gitlab",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  projectId: 3996.33,
+  repoId: 3996.33,
 };
 ```
 
@@ -120,6 +116,40 @@ const value: models.GetDeploymentGitSourceDeployments11 = {
 
 ```typescript
 const value: models.GetDeploymentGitSourceDeployments12 = {
+  type: "github-custom-host",
+  host: "peaceful-bog.info",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 2785.32,
+};
+```
+
+### `models.GetDeploymentGitSourceDeployments13`
+
+```typescript
+const value: models.GetDeploymentGitSourceDeployments13 = {
+  type: "github-limited",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 4465.75,
+};
+```
+
+### `models.GetDeploymentGitSourceDeployments14`
+
+```typescript
+const value: models.GetDeploymentGitSourceDeployments14 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 1976.41,
+};
+```
+
+### `models.GetDeploymentGitSourceDeployments15`
+
+```typescript
+const value: models.GetDeploymentGitSourceDeployments15 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",

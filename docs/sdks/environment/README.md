@@ -17,6 +17,7 @@ Creates a custom environment for the current project. Cannot be named 'Productio
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createCustomEnvironment" method="post" path="/v9/projects/{idOrName}/custom-environments" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -95,6 +96,7 @@ Retrieve custom environments for the project. Must not be named 'Production' or 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v9/projects/{idOrName}/custom-environments" method="get" path="/v9/projects/{idOrName}/custom-environments" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -173,6 +175,7 @@ Retrieve a custom environment for the project. Must not be named 'Production' or
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCustomEnvironment" method="get" path="/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -254,6 +257,7 @@ Update a custom environment for the project. Must not be named 'Production' or '
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateCustomEnvironment" method="patch" path="/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -334,6 +338,7 @@ Remove a custom environment for the project. Must not be named 'Production' or '
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeCustomEnvironment" method="delete" path="/v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

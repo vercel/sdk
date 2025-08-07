@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentyTwo = {
-  username: "Nathan_Ortiz",
+  mfaEnabled: false,
 };
 ```
 
@@ -16,4 +16,4 @@ let value: OneHundredAndTwentyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `username`         | *string*           | :heavy_check_mark: | N/A                |
+| `mfaEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |

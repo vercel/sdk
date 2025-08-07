@@ -25,22 +25,22 @@ const value: models.ListDeploymentAliasesProtectionBypass2 = {
 };
 ```
 
-### `models.ListDeploymentAliasesProtectionBypass3`
+### `models.ProtectionBypass3`
 
 ```typescript
-const value: models.ListDeploymentAliasesProtectionBypass3 = {
-  createdAt: 9196.66,
+const value: models.ProtectionBypass3 = {
+  createdAt: 8807.14,
   createdBy: "<value>",
   scope: "alias-protection-override",
 };
 ```
 
-### `models.ListDeploymentAliasesProtectionBypass4`
+### `models.ProtectionBypass4`
 
 ```typescript
-const value: models.ListDeploymentAliasesProtectionBypass4 = {
-  createdAt: 4237.01,
-  lastUpdatedAt: 7476.54,
+const value: models.ProtectionBypass4 = {
+  createdAt: 1686.45,
+  lastUpdatedAt: 8391.71,
   lastUpdatedBy: "<value>",
   scope: "email_invite",
 };

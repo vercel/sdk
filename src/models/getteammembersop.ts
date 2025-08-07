@@ -87,6 +87,7 @@ export const GetTeamMembersRole = {
   Billing: "BILLING",
   Contributor: "CONTRIBUTOR",
   Security: "SECURITY",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
 /**
  * Role of this user in the team.
@@ -212,6 +213,7 @@ export const GetTeamMembersTeamsRole = {
   Billing: "BILLING",
   Contributor: "CONTRIBUTOR",
   Security: "SECURITY",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
 } as const;
 export type GetTeamMembersTeamsRole = ClosedEnum<
   typeof GetTeamMembersTeamsRole

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DefaultApp } from "@vercel/sdk/models/getaliasop.js";
+import { DefaultApp } from "@vercel/sdk/models/listaliasesop.js";
 
 let value: DefaultApp = {
   projectId: "<id>",

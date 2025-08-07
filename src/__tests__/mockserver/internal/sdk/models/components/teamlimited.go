@@ -169,13 +169,14 @@ func (o *TeamLimitedEntitlement) GetEntitlement() string {
 type TeamLimitedRole string
 
 const (
-	TeamLimitedRoleOwner       TeamLimitedRole = "OWNER"
-	TeamLimitedRoleMember      TeamLimitedRole = "MEMBER"
-	TeamLimitedRoleDeveloper   TeamLimitedRole = "DEVELOPER"
-	TeamLimitedRoleSecurity    TeamLimitedRole = "SECURITY"
-	TeamLimitedRoleBilling     TeamLimitedRole = "BILLING"
-	TeamLimitedRoleViewer      TeamLimitedRole = "VIEWER"
-	TeamLimitedRoleContributor TeamLimitedRole = "CONTRIBUTOR"
+	TeamLimitedRoleOwner         TeamLimitedRole = "OWNER"
+	TeamLimitedRoleMember        TeamLimitedRole = "MEMBER"
+	TeamLimitedRoleDeveloper     TeamLimitedRole = "DEVELOPER"
+	TeamLimitedRoleSecurity      TeamLimitedRole = "SECURITY"
+	TeamLimitedRoleBilling       TeamLimitedRole = "BILLING"
+	TeamLimitedRoleViewer        TeamLimitedRole = "VIEWER"
+	TeamLimitedRoleViewerForPlus TeamLimitedRole = "VIEWER_FOR_PLUS"
+	TeamLimitedRoleContributor   TeamLimitedRole = "CONTRIBUTOR"
 )
 
 func (e TeamLimitedRole) ToPointer() *TeamLimitedRole {
@@ -199,6 +200,8 @@ func (e *TeamLimitedRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = TeamLimitedRole(v)
 		return nil
@@ -210,13 +213,14 @@ func (e *TeamLimitedRole) UnmarshalJSON(data []byte) error {
 type TeamLimitedTeamRole string
 
 const (
-	TeamLimitedTeamRoleOwner       TeamLimitedTeamRole = "OWNER"
-	TeamLimitedTeamRoleMember      TeamLimitedTeamRole = "MEMBER"
-	TeamLimitedTeamRoleDeveloper   TeamLimitedTeamRole = "DEVELOPER"
-	TeamLimitedTeamRoleSecurity    TeamLimitedTeamRole = "SECURITY"
-	TeamLimitedTeamRoleBilling     TeamLimitedTeamRole = "BILLING"
-	TeamLimitedTeamRoleViewer      TeamLimitedTeamRole = "VIEWER"
-	TeamLimitedTeamRoleContributor TeamLimitedTeamRole = "CONTRIBUTOR"
+	TeamLimitedTeamRoleOwner         TeamLimitedTeamRole = "OWNER"
+	TeamLimitedTeamRoleMember        TeamLimitedTeamRole = "MEMBER"
+	TeamLimitedTeamRoleDeveloper     TeamLimitedTeamRole = "DEVELOPER"
+	TeamLimitedTeamRoleSecurity      TeamLimitedTeamRole = "SECURITY"
+	TeamLimitedTeamRoleBilling       TeamLimitedTeamRole = "BILLING"
+	TeamLimitedTeamRoleViewer        TeamLimitedTeamRole = "VIEWER"
+	TeamLimitedTeamRoleViewerForPlus TeamLimitedTeamRole = "VIEWER_FOR_PLUS"
+	TeamLimitedTeamRoleContributor   TeamLimitedTeamRole = "CONTRIBUTOR"
 )
 
 func (e TeamLimitedTeamRole) ToPointer() *TeamLimitedTeamRole {
@@ -240,6 +244,8 @@ func (e *TeamLimitedTeamRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = TeamLimitedTeamRole(v)
 		return nil
@@ -256,6 +262,9 @@ const (
 	TeamLimitedTeamPermissionUsageViewer              TeamLimitedTeamPermission = "UsageViewer"
 	TeamLimitedTeamPermissionEnvVariableManager       TeamLimitedTeamPermission = "EnvVariableManager"
 	TeamLimitedTeamPermissionEnvironmentManager       TeamLimitedTeamPermission = "EnvironmentManager"
+	TeamLimitedTeamPermissionV0Builder                TeamLimitedTeamPermission = "V0Builder"
+	TeamLimitedTeamPermissionV0Chatter                TeamLimitedTeamPermission = "V0Chatter"
+	TeamLimitedTeamPermissionV0Viewer                 TeamLimitedTeamPermission = "V0Viewer"
 )
 
 func (e TeamLimitedTeamPermission) ToPointer() *TeamLimitedTeamPermission {
@@ -276,6 +285,12 @@ func (e *TeamLimitedTeamPermission) UnmarshalJSON(data []byte) error {
 	case "EnvVariableManager":
 		fallthrough
 	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
 		*e = TeamLimitedTeamPermission(v)
 		return nil
 	default:

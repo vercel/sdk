@@ -140,13 +140,14 @@ func (e *ComputedProjectRole) UnmarshalJSON(data []byte) error {
 type GetProjectMembersTeamRole string
 
 const (
-	GetProjectMembersTeamRoleOwner       GetProjectMembersTeamRole = "OWNER"
-	GetProjectMembersTeamRoleMember      GetProjectMembersTeamRole = "MEMBER"
-	GetProjectMembersTeamRoleDeveloper   GetProjectMembersTeamRole = "DEVELOPER"
-	GetProjectMembersTeamRoleSecurity    GetProjectMembersTeamRole = "SECURITY"
-	GetProjectMembersTeamRoleBilling     GetProjectMembersTeamRole = "BILLING"
-	GetProjectMembersTeamRoleViewer      GetProjectMembersTeamRole = "VIEWER"
-	GetProjectMembersTeamRoleContributor GetProjectMembersTeamRole = "CONTRIBUTOR"
+	GetProjectMembersTeamRoleOwner         GetProjectMembersTeamRole = "OWNER"
+	GetProjectMembersTeamRoleMember        GetProjectMembersTeamRole = "MEMBER"
+	GetProjectMembersTeamRoleDeveloper     GetProjectMembersTeamRole = "DEVELOPER"
+	GetProjectMembersTeamRoleSecurity      GetProjectMembersTeamRole = "SECURITY"
+	GetProjectMembersTeamRoleBilling       GetProjectMembersTeamRole = "BILLING"
+	GetProjectMembersTeamRoleViewer        GetProjectMembersTeamRole = "VIEWER"
+	GetProjectMembersTeamRoleViewerForPlus GetProjectMembersTeamRole = "VIEWER_FOR_PLUS"
+	GetProjectMembersTeamRoleContributor   GetProjectMembersTeamRole = "CONTRIBUTOR"
 )
 
 func (e GetProjectMembersTeamRole) ToPointer() *GetProjectMembersTeamRole {
@@ -169,6 +170,8 @@ func (e *GetProjectMembersTeamRole) UnmarshalJSON(data []byte) error {
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
 		*e = GetProjectMembersTeamRole(v)

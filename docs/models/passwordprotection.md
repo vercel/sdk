@@ -1,19 +1,17 @@
 # PasswordProtection
 
-
-## Supported Types
-
-### `models.PasswordProtection1`
+## Example Usage
 
 ```typescript
-const value: models.PasswordProtection1 = {
-  deploymentType: "all",
+import { PasswordProtection } from "@vercel/sdk/models/team.js";
+
+let value: PasswordProtection = {
+  deploymentType: "<value>",
 };
 ```
 
-### `models.PasswordProtection2`
+## Fields
 
-```typescript
-const value: models.PasswordProtection2 = "all_except_custom_domains";
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deploymentType`   | *string*           | :heavy_check_mark: | N/A                |

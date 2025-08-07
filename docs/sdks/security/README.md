@@ -20,6 +20,7 @@ Update the setting for determining if the project has Attack Challenge mode enab
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateAttackChallengeMode" method="post" path="/v1/security/attack-mode" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -105,6 +106,7 @@ Set the firewall configuration to provided rules and settings. Creates or overwr
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="putFirewallConfig" method="put" path="/v1/security/firewall/config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -190,6 +192,7 @@ Process updates to modify the existing firewall config for a project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateFirewallConfig" method="patch" path="/v1/security/firewall/config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -277,6 +280,7 @@ Retrieve the specified firewall configuration for a project. The deployed config
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getFirewallConfig" method="get" path="/v1/security/firewall/config/{configVersion}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -358,6 +362,7 @@ Retrieve active attack data within the last 24h window
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getActiveAttackStatus" method="get" path="/v1/security/firewall/attack-status" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -437,6 +442,7 @@ Retrieve the system bypass rules configured for the specified project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getBypassIp" method="get" path="/v1/security/firewall/bypass" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -518,6 +524,7 @@ Create new system bypass rules
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="addBypassIp" method="post" path="/v1/security/firewall/bypass" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -597,6 +604,7 @@ Remove system bypass rules
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeBypassIp" method="delete" path="/v1/security/firewall/bypass" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

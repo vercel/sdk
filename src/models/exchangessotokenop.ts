@@ -51,8 +51,8 @@ export type ExchangeSsoTokenRequestBody = {
 
 export type ExchangeSsoTokenResponseBody = {
   idToken: string;
-  accessToken?: any | null | undefined;
-  tokenType?: any | null | undefined;
+  accessToken: string | null;
+  tokenType: string | null;
 };
 
 /** @internal */
@@ -168,8 +168,8 @@ export const ExchangeSsoTokenResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id_token: z.string(),
-  access_token: z.nullable(z.any()).optional(),
-  token_type: z.nullable(z.any()).optional(),
+  access_token: z.nullable(z.string()),
+  token_type: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     "id_token": "idToken",
@@ -181,8 +181,8 @@ export const ExchangeSsoTokenResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type ExchangeSsoTokenResponseBody$Outbound = {
   id_token: string;
-  access_token?: any | null | undefined;
-  token_type?: any | null | undefined;
+  access_token: string | null;
+  token_type: string | null;
 };
 
 /** @internal */
@@ -192,8 +192,8 @@ export const ExchangeSsoTokenResponseBody$outboundSchema: z.ZodType<
   ExchangeSsoTokenResponseBody
 > = z.object({
   idToken: z.string(),
-  accessToken: z.nullable(z.any()).optional(),
-  tokenType: z.nullable(z.any()).optional(),
+  accessToken: z.nullable(z.string()),
+  tokenType: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     idToken: "id_token",

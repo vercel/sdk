@@ -268,9 +268,65 @@ export type GetDeploymentResponseBodyChecksConclusion = ClosedEnum<
   typeof GetDeploymentResponseBodyChecksConclusion
 >;
 
-export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type =
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type =
   {
     Bitbucket: "bitbucket",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type
+  >;
+
+export type GetDeploymentGitSource15 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type;
+  ref: string;
+  sha: string;
+  owner?: string | undefined;
+  slug?: string | undefined;
+  workspaceUuid: string;
+  repoUuid: string;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type =
+  {
+    Gitlab: "gitlab",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type
+  >;
+
+export type GetDeploymentGitSource14 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type;
+  ref: string;
+  sha: string;
+  projectId: number;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type =
+  {
+    GithubLimited: "github-limited",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type
+  >;
+
+export type GetDeploymentGitSource13 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type;
+  ref: string;
+  sha: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type =
+  {
+    GithubCustomHost: "github-custom-host",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type =
   ClosedEnum<
@@ -280,17 +336,17 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 export type GetDeploymentGitSource12 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type;
+  host: string;
   ref: string;
   sha: string;
-  owner?: string | undefined;
-  slug?: string | undefined;
-  workspaceUuid: string;
-  repoUuid: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type =
   {
-    Gitlab: "gitlab",
+    Github: "github",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type =
   ClosedEnum<
@@ -302,32 +358,34 @@ export type GetDeploymentGitSource11 = {
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type;
   ref: string;
   sha: string;
-  projectId: number;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type =
   {
-    GithubCustomHost: "github-custom-host",
+    Custom: "custom",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type =
   ClosedEnum<
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type
   >;
 
+/**
+ * Allows custom git sources (local folder mounted to the container) in test mode
+ */
 export type GetDeploymentGitSource10 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type;
-  host: string;
   ref: string;
   sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
+  gitUrl: string;
 };
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type =
   {
-    Github: "github",
+    Bitbucket: "bitbucket",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type =
   ClosedEnum<
@@ -337,45 +395,6 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 export type GetDeploymentGitSource9 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type;
-  ref: string;
-  sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
-};
-
-export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type =
-  {
-    Custom: "custom",
-  } as const;
-export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type =
-  ClosedEnum<
-    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type
-  >;
-
-/**
- * Allows custom git sources (local folder mounted to the container) in test mode
- */
-export type GetDeploymentGitSource8 = {
-  type:
-    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type;
-  ref: string;
-  sha: string;
-  gitUrl: string;
-};
-
-export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type =
-  {
-    Bitbucket: "bitbucket",
-  } as const;
-export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type =
-  ClosedEnum<
-    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type
-  >;
-
-export type GetDeploymentGitSource7 = {
-  type:
-    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type;
   owner: string;
   slug: string;
   ref?: string | null | undefined;
@@ -383,9 +402,48 @@ export type GetDeploymentGitSource7 = {
   prId?: number | null | undefined;
 };
 
-export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type =
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type =
   {
     Bitbucket: "bitbucket",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type
+  >;
+
+export type GetDeploymentGitSource8 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type;
+  workspaceUuid?: string | undefined;
+  repoUuid: string;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type =
+  {
+    Gitlab: "gitlab",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type
+  >;
+
+export type GetDeploymentGitSourceDeploymentsProjectId = string | number;
+
+export type GetDeploymentGitSource7 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type;
+  projectId: string | number;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type =
+  {
+    GithubLimited: "github-limited",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type =
   ClosedEnum<
@@ -395,8 +453,8 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 export type GetDeploymentGitSource6 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type;
-  workspaceUuid?: string | undefined;
-  repoUuid: string;
+  org: string;
+  repo: string;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -404,19 +462,21 @@ export type GetDeploymentGitSource6 = {
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type =
   {
-    Gitlab: "gitlab",
+    GithubLimited: "github-limited",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type =
   ClosedEnum<
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type
   >;
 
-export type GetDeploymentGitSourceDeploymentsProjectId = string | number;
+export type GetDeploymentGitSourceDeploymentsResponse200RepoId =
+  | string
+  | number;
 
 export type GetDeploymentGitSource5 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type;
-  projectId: string | number;
+  repoId: string | number;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -451,7 +511,7 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody23Type
   >;
 
-export type GetDeploymentGitSourceDeploymentsRepoId = string | number;
+export type GetDeploymentGitSourceDeploymentsResponseRepoId = string | number;
 
 export type GetDeploymentGitSource3 = {
   type:
@@ -491,7 +551,7 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody2Type
   >;
 
-export type GetDeploymentGitSourceRepoId = string | number;
+export type GetDeploymentGitSourceDeploymentsRepoId = string | number;
 
 export type GetDeploymentGitSource1 = {
   type:
@@ -503,18 +563,41 @@ export type GetDeploymentGitSource1 = {
 };
 
 export type ResponseBodyGitSource =
-  | GetDeploymentGitSource10
   | GetDeploymentGitSource12
+  | GetDeploymentGitSource15
   | GetDeploymentGitSource4
-  | GetDeploymentGitSource8
-  | GetDeploymentGitSource9
+  | GetDeploymentGitSource10
   | GetDeploymentGitSource11
+  | GetDeploymentGitSource13
+  | GetDeploymentGitSource14
   | GetDeploymentGitSource2
   | GetDeploymentGitSource3
-  | GetDeploymentGitSource7
+  | GetDeploymentGitSource6
+  | GetDeploymentGitSource9
   | GetDeploymentGitSource1
   | GetDeploymentGitSource5
-  | GetDeploymentGitSource6;
+  | GetDeploymentGitSource7
+  | GetDeploymentGitSource8;
+
+/**
+ * If set it overrides the `projectSettings.nodeVersion` for this deployment.
+ */
+export const GetDeploymentResponseBodyNodeVersion = {
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
+  EightDot10DotX: "8.10.x",
+} as const;
+/**
+ * If set it overrides the `projectSettings.nodeVersion` for this deployment.
+ */
+export type GetDeploymentResponseBodyNodeVersion = ClosedEnum<
+  typeof GetDeploymentResponseBodyNodeVersion
+>;
 
 export type GetDeploymentResponseBodyProject = {
   id: string;
@@ -631,21 +714,28 @@ export type GetDeploymentResponseBody2 = {
    */
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSource10
     | GetDeploymentGitSource12
+    | GetDeploymentGitSource15
     | GetDeploymentGitSource4
-    | GetDeploymentGitSource8
-    | GetDeploymentGitSource9
+    | GetDeploymentGitSource10
     | GetDeploymentGitSource11
+    | GetDeploymentGitSource13
+    | GetDeploymentGitSource14
     | GetDeploymentGitSource2
     | GetDeploymentGitSource3
-    | GetDeploymentGitSource7
+    | GetDeploymentGitSource6
+    | GetDeploymentGitSource9
     | GetDeploymentGitSource1
     | GetDeploymentGitSource5
-    | GetDeploymentGitSource6
+    | GetDeploymentGitSource7
+    | GetDeploymentGitSource8
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
+  /**
+   * If set it overrides the `projectSettings.nodeVersion` for this deployment.
+   */
+  nodeVersion?: GetDeploymentResponseBodyNodeVersion | undefined;
   project?: GetDeploymentResponseBodyProject | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
@@ -721,6 +811,7 @@ export const ResponseBodyFramework = {
   Sanity: "sanity",
   Storybook: "storybook",
   Nitro: "nitro",
+  Hono: "hono",
 } as const;
 export type ResponseBodyFramework = ClosedEnum<typeof ResponseBodyFramework>;
 
@@ -1081,9 +1172,65 @@ export type ResponseBodyChecksConclusion = ClosedEnum<
   typeof ResponseBodyChecksConclusion
 >;
 
-export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type =
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type =
   {
     Bitbucket: "bitbucket",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type
+  >;
+
+export type GetDeploymentGitSourceDeployments15 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type;
+  ref: string;
+  sha: string;
+  owner?: string | undefined;
+  slug?: string | undefined;
+  workspaceUuid: string;
+  repoUuid: string;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type =
+  {
+    Gitlab: "gitlab",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type
+  >;
+
+export type GetDeploymentGitSourceDeployments14 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type;
+  ref: string;
+  sha: string;
+  projectId: number;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type =
+  {
+    GithubLimited: "github-limited",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type
+  >;
+
+export type GetDeploymentGitSourceDeployments13 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type;
+  ref: string;
+  sha: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type =
+  {
+    GithubCustomHost: "github-custom-host",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type =
   ClosedEnum<
@@ -1093,17 +1240,17 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 export type GetDeploymentGitSourceDeployments12 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type;
+  host: string;
   ref: string;
   sha: string;
-  owner?: string | undefined;
-  slug?: string | undefined;
-  workspaceUuid: string;
-  repoUuid: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type =
   {
-    Gitlab: "gitlab",
+    Github: "github",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type =
   ClosedEnum<
@@ -1115,32 +1262,34 @@ export type GetDeploymentGitSourceDeployments11 = {
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type;
   ref: string;
   sha: string;
-  projectId: number;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type =
   {
-    GithubCustomHost: "github-custom-host",
+    Custom: "custom",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type =
   ClosedEnum<
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type
   >;
 
+/**
+ * Allows custom git sources (local folder mounted to the container) in test mode
+ */
 export type GetDeploymentGitSourceDeployments10 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type;
-  host: string;
   ref: string;
   sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
+  gitUrl: string;
 };
 
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type =
   {
-    Github: "github",
+    Bitbucket: "bitbucket",
   } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type =
   ClosedEnum<
@@ -1150,45 +1299,6 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 export type GetDeploymentGitSourceDeployments9 = {
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type;
-  ref: string;
-  sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
-};
-
-export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type =
-  {
-    Custom: "custom",
-  } as const;
-export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type =
-  ClosedEnum<
-    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type
-  >;
-
-/**
- * Allows custom git sources (local folder mounted to the container) in test mode
- */
-export type GetDeploymentGitSourceDeployments8 = {
-  type:
-    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type;
-  ref: string;
-  sha: string;
-  gitUrl: string;
-};
-
-export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType =
-  {
-    Bitbucket: "bitbucket",
-  } as const;
-export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType
-  >;
-
-export type GetDeploymentGitSourceDeployments7 = {
-  type:
-    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType;
   owner: string;
   slug: string;
   ref?: string | null | undefined;
@@ -1196,8 +1306,47 @@ export type GetDeploymentGitSourceDeployments7 = {
   prId?: number | null | undefined;
 };
 
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type =
+  {
+    Bitbucket: "bitbucket",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type
+  >;
+
+export type GetDeploymentGitSourceDeployments8 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type;
+  workspaceUuid?: string | undefined;
+  repoUuid: string;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
+};
+
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType =
+  {
+    Gitlab: "gitlab",
+  } as const;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType =
+  ClosedEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType
+  >;
+
+export type GetDeploymentGitSourceProjectId = string | number;
+
+export type GetDeploymentGitSourceDeployments7 = {
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType;
+  projectId: string | number;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
+};
+
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType = {
-  Bitbucket: "bitbucket",
+  GithubLimited: "github-limited",
 } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType =
   ClosedEnum<
@@ -1206,25 +1355,25 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType =
 
 export type GetDeploymentGitSourceDeployments6 = {
   type: GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType;
-  workspaceUuid?: string | undefined;
-  repoUuid: string;
+  org: string;
+  repo: string;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
 };
 
 export const GetDeploymentGitSourceDeploymentsResponse200Type = {
-  Gitlab: "gitlab",
+  GithubLimited: "github-limited",
 } as const;
 export type GetDeploymentGitSourceDeploymentsResponse200Type = ClosedEnum<
   typeof GetDeploymentGitSourceDeploymentsResponse200Type
 >;
 
-export type GetDeploymentGitSourceProjectId = string | number;
+export type GetDeploymentGitSourceRepoId = string | number;
 
 export type GetDeploymentGitSourceDeployments5 = {
   type: GetDeploymentGitSourceDeploymentsResponse200Type;
-  projectId: string | number;
+  repoId: string | number;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -1254,7 +1403,7 @@ export type GetDeploymentGitSourceDeploymentsType = ClosedEnum<
   typeof GetDeploymentGitSourceDeploymentsType
 >;
 
-export type GetDeploymentGitSourceDeploymentsResponse200RepoId =
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId =
   | string
   | number;
 
@@ -1292,7 +1441,9 @@ export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type
   >;
 
-export type GetDeploymentGitSourceDeploymentsResponseRepoId = string | number;
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId =
+  | string
+  | number;
 
 export type GetDeploymentGitSourceDeployments1 = {
   type:
@@ -1304,18 +1455,41 @@ export type GetDeploymentGitSourceDeployments1 = {
 };
 
 export type GetDeploymentResponseBodyGitSource =
-  | GetDeploymentGitSourceDeployments10
   | GetDeploymentGitSourceDeployments12
+  | GetDeploymentGitSourceDeployments15
   | GetDeploymentGitSourceDeployments4
-  | GetDeploymentGitSourceDeployments8
-  | GetDeploymentGitSourceDeployments9
+  | GetDeploymentGitSourceDeployments10
   | GetDeploymentGitSourceDeployments11
+  | GetDeploymentGitSourceDeployments13
+  | GetDeploymentGitSourceDeployments14
   | GetDeploymentGitSourceDeployments2
   | GetDeploymentGitSourceDeployments3
-  | GetDeploymentGitSourceDeployments7
+  | GetDeploymentGitSourceDeployments6
+  | GetDeploymentGitSourceDeployments9
   | GetDeploymentGitSourceDeployments1
   | GetDeploymentGitSourceDeployments5
-  | GetDeploymentGitSourceDeployments6;
+  | GetDeploymentGitSourceDeployments7
+  | GetDeploymentGitSourceDeployments8;
+
+/**
+ * If set it overrides the `projectSettings.nodeVersion` for this deployment.
+ */
+export const ResponseBodyNodeVersion = {
+  TwentyTwoDotX: "22.x",
+  TwentyDotX: "20.x",
+  EighteenDotX: "18.x",
+  SixteenDotX: "16.x",
+  FourteenDotX: "14.x",
+  TwelveDotX: "12.x",
+  TenDotX: "10.x",
+  EightDot10DotX: "8.10.x",
+} as const;
+/**
+ * If set it overrides the `projectSettings.nodeVersion` for this deployment.
+ */
+export type ResponseBodyNodeVersion = ClosedEnum<
+  typeof ResponseBodyNodeVersion
+>;
 
 export type ResponseBodyProject = {
   id: string;
@@ -1850,13 +2024,9 @@ export type GetDeploymentMicrofrontends2 = {
    */
   groupIds: Array<string>;
   /**
-   * Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+   * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
-  microfrontendsAliasEnabled?: boolean | undefined;
-  /**
-   * Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
-   */
-  previewEnvAliasEnabled?: boolean | undefined;
+  microfrontendsAlias2Enabled?: boolean | undefined;
 };
 
 export type GetDeploymentMicrofrontends1 = {
@@ -1877,13 +2047,9 @@ export type GetDeploymentMicrofrontends1 = {
    */
   groupIds: Array<string>;
   /**
-   * Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
+   * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
-  microfrontendsAliasEnabled?: boolean | undefined;
-  /**
-   * Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
-   */
-  previewEnvAliasEnabled?: boolean | undefined;
+  microfrontendsAlias2Enabled?: boolean | undefined;
 };
 
 export type ResponseBodyMicrofrontends =
@@ -2016,21 +2182,28 @@ export type GetDeploymentResponseBody1 = {
    */
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSourceDeployments10
     | GetDeploymentGitSourceDeployments12
+    | GetDeploymentGitSourceDeployments15
     | GetDeploymentGitSourceDeployments4
-    | GetDeploymentGitSourceDeployments8
-    | GetDeploymentGitSourceDeployments9
+    | GetDeploymentGitSourceDeployments10
     | GetDeploymentGitSourceDeployments11
+    | GetDeploymentGitSourceDeployments13
+    | GetDeploymentGitSourceDeployments14
     | GetDeploymentGitSourceDeployments2
     | GetDeploymentGitSourceDeployments3
-    | GetDeploymentGitSourceDeployments7
+    | GetDeploymentGitSourceDeployments6
+    | GetDeploymentGitSourceDeployments9
     | GetDeploymentGitSourceDeployments1
     | GetDeploymentGitSourceDeployments5
-    | GetDeploymentGitSourceDeployments6
+    | GetDeploymentGitSourceDeployments7
+    | GetDeploymentGitSourceDeployments8
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
+  /**
+   * If set it overrides the `projectSettings.nodeVersion` for this deployment.
+   */
+  nodeVersion?: ResponseBodyNodeVersion | undefined;
   project?: ResponseBodyProject | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
@@ -3179,6 +3352,300 @@ export namespace GetDeploymentResponseBodyChecksConclusion$ {
 }
 
 /** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type
+  > = z.nativeEnum(
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type,
+  );
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type
+  > =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentGitSource15$inboundSchema: z.ZodType<
+  GetDeploymentGitSource15,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$inboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  owner: z.string().optional(),
+  slug: z.string().optional(),
+  workspaceUuid: z.string(),
+  repoUuid: z.string(),
+});
+
+/** @internal */
+export type GetDeploymentGitSource15$Outbound = {
+  type: string;
+  ref: string;
+  sha: string;
+  owner?: string | undefined;
+  slug?: string | undefined;
+  workspaceUuid: string;
+  repoUuid: string;
+};
+
+/** @internal */
+export const GetDeploymentGitSource15$outboundSchema: z.ZodType<
+  GetDeploymentGitSource15$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitSource15
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody215Type$outboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  owner: z.string().optional(),
+  slug: z.string().optional(),
+  workspaceUuid: z.string(),
+  repoUuid: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSource15$ {
+  /** @deprecated use `GetDeploymentGitSource15$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentGitSource15$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSource15$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentGitSource15$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSource15$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSource15$Outbound;
+}
+
+export function getDeploymentGitSource15ToJSON(
+  getDeploymentGitSource15: GetDeploymentGitSource15,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSource15$outboundSchema.parse(getDeploymentGitSource15),
+  );
+}
+
+export function getDeploymentGitSource15FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitSource15, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentGitSource15$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSource15' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type
+  > = z.nativeEnum(
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type,
+  );
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type
+  > =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentGitSource14$inboundSchema: z.ZodType<
+  GetDeploymentGitSource14,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$inboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  projectId: z.number(),
+});
+
+/** @internal */
+export type GetDeploymentGitSource14$Outbound = {
+  type: string;
+  ref: string;
+  sha: string;
+  projectId: number;
+};
+
+/** @internal */
+export const GetDeploymentGitSource14$outboundSchema: z.ZodType<
+  GetDeploymentGitSource14$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitSource14
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type$outboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  projectId: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSource14$ {
+  /** @deprecated use `GetDeploymentGitSource14$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentGitSource14$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSource14$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentGitSource14$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSource14$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSource14$Outbound;
+}
+
+export function getDeploymentGitSource14ToJSON(
+  getDeploymentGitSource14: GetDeploymentGitSource14,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSource14$outboundSchema.parse(getDeploymentGitSource14),
+  );
+}
+
+export function getDeploymentGitSource14FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitSource14, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentGitSource14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSource14' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type
+  > = z.nativeEnum(
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type,
+  );
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type
+  > =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentGitSource13$inboundSchema: z.ZodType<
+  GetDeploymentGitSource13,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$inboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
+});
+
+/** @internal */
+export type GetDeploymentGitSource13$Outbound = {
+  type: string;
+  ref: string;
+  sha: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentGitSource13$outboundSchema: z.ZodType<
+  GetDeploymentGitSource13$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitSource13
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody213Type$outboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSource13$ {
+  /** @deprecated use `GetDeploymentGitSource13$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentGitSource13$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSource13$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentGitSource13$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSource13$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSource13$Outbound;
+}
+
+export function getDeploymentGitSource13ToJSON(
+  getDeploymentGitSource13: GetDeploymentGitSource13,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSource13$outboundSchema.parse(getDeploymentGitSource13),
+  );
+}
+
+export function getDeploymentGitSource13FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitSource13, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentGitSource13$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSource13' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type$inboundSchema:
   z.ZodNativeEnum<
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type
@@ -3214,23 +3681,23 @@ export const GetDeploymentGitSource12$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type$inboundSchema,
+  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  owner: z.string().optional(),
-  slug: z.string().optional(),
-  workspaceUuid: z.string(),
-  repoUuid: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /** @internal */
 export type GetDeploymentGitSource12$Outbound = {
   type: string;
+  host: string;
   ref: string;
   sha: string;
-  owner?: string | undefined;
-  slug?: string | undefined;
-  workspaceUuid: string;
-  repoUuid: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 /** @internal */
@@ -3241,12 +3708,12 @@ export const GetDeploymentGitSource12$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody212Type$outboundSchema,
+  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  owner: z.string().optional(),
-  slug: z.string().optional(),
-  workspaceUuid: z.string(),
-  repoUuid: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /**
@@ -3318,7 +3785,9 @@ export const GetDeploymentGitSource11$inboundSchema: z.ZodType<
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type$inboundSchema,
   ref: z.string(),
   sha: z.string(),
-  projectId: z.number(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /** @internal */
@@ -3326,7 +3795,9 @@ export type GetDeploymentGitSource11$Outbound = {
   type: string;
   ref: string;
   sha: string;
-  projectId: number;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 /** @internal */
@@ -3339,7 +3810,9 @@ export const GetDeploymentGitSource11$outboundSchema: z.ZodType<
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody211Type$outboundSchema,
   ref: z.string(),
   sha: z.string(),
-  projectId: z.number(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /**
@@ -3409,23 +3882,17 @@ export const GetDeploymentGitSource10$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type$inboundSchema,
-  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  gitUrl: z.string(),
 });
 
 /** @internal */
 export type GetDeploymentGitSource10$Outbound = {
   type: string;
-  host: string;
   ref: string;
   sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
+  gitUrl: string;
 };
 
 /** @internal */
@@ -3436,12 +3903,9 @@ export const GetDeploymentGitSource10$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody210Type$outboundSchema,
-  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  gitUrl: z.string(),
 });
 
 /**
@@ -3511,21 +3975,21 @@ export const GetDeploymentGitSource9$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type$inboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  owner: z.string(),
+  slug: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type GetDeploymentGitSource9$Outbound = {
   type: string;
-  ref: string;
-  sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
+  owner: string;
+  slug: string;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
 };
 
 /** @internal */
@@ -3536,11 +4000,11 @@ export const GetDeploymentGitSource9$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody29Type$outboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  owner: z.string(),
+  slug: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /**
@@ -3610,17 +4074,21 @@ export const GetDeploymentGitSource8$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type$inboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  gitUrl: z.string(),
+  workspaceUuid: z.string().optional(),
+  repoUuid: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type GetDeploymentGitSource8$Outbound = {
   type: string;
-  ref: string;
-  sha: string;
-  gitUrl: string;
+  workspaceUuid?: string | undefined;
+  repoUuid: string;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
 };
 
 /** @internal */
@@ -3631,9 +4099,11 @@ export const GetDeploymentGitSource8$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody28Type$outboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  gitUrl: z.string(),
+  workspaceUuid: z.string().optional(),
+  repoUuid: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /**
@@ -3696,6 +4166,66 @@ export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResp
 }
 
 /** @internal */
+export const GetDeploymentGitSourceDeploymentsProjectId$inboundSchema:
+  z.ZodType<GetDeploymentGitSourceDeploymentsProjectId, z.ZodTypeDef, unknown> =
+    z.union([z.string(), z.number()]);
+
+/** @internal */
+export type GetDeploymentGitSourceDeploymentsProjectId$Outbound =
+  | string
+  | number;
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsProjectId$outboundSchema:
+  z.ZodType<
+    GetDeploymentGitSourceDeploymentsProjectId$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentGitSourceDeploymentsProjectId
+  > = z.union([z.string(), z.number()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeploymentsProjectId$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsProjectId$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsProjectId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsProjectId$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsProjectId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsProjectId$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSourceDeploymentsProjectId$Outbound;
+}
+
+export function getDeploymentGitSourceDeploymentsProjectIdToJSON(
+  getDeploymentGitSourceDeploymentsProjectId:
+    GetDeploymentGitSourceDeploymentsProjectId,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSourceDeploymentsProjectId$outboundSchema.parse(
+      getDeploymentGitSourceDeploymentsProjectId,
+    ),
+  );
+}
+
+export function getDeploymentGitSourceDeploymentsProjectIdFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentGitSourceDeploymentsProjectId,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentGitSourceDeploymentsProjectId$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentGitSourceDeploymentsProjectId' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentGitSource7$inboundSchema: z.ZodType<
   GetDeploymentGitSource7,
   z.ZodTypeDef,
@@ -3703,8 +4233,7 @@ export const GetDeploymentGitSource7$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type$inboundSchema,
-  owner: z.string(),
-  slug: z.string(),
+  projectId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -3713,8 +4242,7 @@ export const GetDeploymentGitSource7$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentGitSource7$Outbound = {
   type: string;
-  owner: string;
-  slug: string;
+  projectId: string | number;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -3728,8 +4256,7 @@ export const GetDeploymentGitSource7$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody27Type$outboundSchema,
-  owner: z.string(),
-  slug: z.string(),
+  projectId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -3802,8 +4329,8 @@ export const GetDeploymentGitSource6$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type$inboundSchema,
-  workspaceUuid: z.string().optional(),
-  repoUuid: z.string(),
+  org: z.string(),
+  repo: z.string(),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -3812,8 +4339,8 @@ export const GetDeploymentGitSource6$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentGitSource6$Outbound = {
   type: string;
-  workspaceUuid?: string | undefined;
-  repoUuid: string;
+  org: string;
+  repo: string;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -3827,8 +4354,8 @@ export const GetDeploymentGitSource6$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type$outboundSchema,
-  workspaceUuid: z.string().optional(),
-  repoUuid: z.string(),
+  org: z.string(),
+  repo: z.string(),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -3894,62 +4421,66 @@ export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResp
 }
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsProjectId$inboundSchema:
-  z.ZodType<GetDeploymentGitSourceDeploymentsProjectId, z.ZodTypeDef, unknown> =
-    z.union([z.string(), z.number()]);
+export const GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema:
+  z.ZodType<
+    GetDeploymentGitSourceDeploymentsResponse200RepoId,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([z.string(), z.number()]);
 
 /** @internal */
-export type GetDeploymentGitSourceDeploymentsProjectId$Outbound =
+export type GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound =
   | string
   | number;
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsProjectId$outboundSchema:
+export const GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema:
   z.ZodType<
-    GetDeploymentGitSourceDeploymentsProjectId$Outbound,
+    GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound,
     z.ZodTypeDef,
-    GetDeploymentGitSourceDeploymentsProjectId
+    GetDeploymentGitSourceDeploymentsResponse200RepoId
   > = z.union([z.string(), z.number()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentGitSourceDeploymentsProjectId$ {
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsProjectId$inboundSchema` instead. */
+export namespace GetDeploymentGitSourceDeploymentsResponse200RepoId$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema` instead. */
   export const inboundSchema =
-    GetDeploymentGitSourceDeploymentsProjectId$inboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsProjectId$outboundSchema` instead. */
+    GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema` instead. */
   export const outboundSchema =
-    GetDeploymentGitSourceDeploymentsProjectId$outboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsProjectId$Outbound` instead. */
-  export type Outbound = GetDeploymentGitSourceDeploymentsProjectId$Outbound;
+    GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound` instead. */
+  export type Outbound =
+    GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound;
 }
 
-export function getDeploymentGitSourceDeploymentsProjectIdToJSON(
-  getDeploymentGitSourceDeploymentsProjectId:
-    GetDeploymentGitSourceDeploymentsProjectId,
+export function getDeploymentGitSourceDeploymentsResponse200RepoIdToJSON(
+  getDeploymentGitSourceDeploymentsResponse200RepoId:
+    GetDeploymentGitSourceDeploymentsResponse200RepoId,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceDeploymentsProjectId$outboundSchema.parse(
-      getDeploymentGitSourceDeploymentsProjectId,
+    GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema.parse(
+      getDeploymentGitSourceDeploymentsResponse200RepoId,
     ),
   );
 }
 
-export function getDeploymentGitSourceDeploymentsProjectIdFromJSON(
+export function getDeploymentGitSourceDeploymentsResponse200RepoIdFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentGitSourceDeploymentsProjectId,
+  GetDeploymentGitSourceDeploymentsResponse200RepoId,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentGitSourceDeploymentsProjectId$inboundSchema.parse(
+      GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetDeploymentGitSourceDeploymentsProjectId' from JSON`,
+    `Failed to parse 'GetDeploymentGitSourceDeploymentsResponse200RepoId' from JSON`,
   );
 }
 
@@ -3961,7 +4492,7 @@ export const GetDeploymentGitSource5$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type$inboundSchema,
-  projectId: z.union([z.string(), z.number()]),
+  repoId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -3970,7 +4501,7 @@ export const GetDeploymentGitSource5$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentGitSource5$Outbound = {
   type: string;
-  projectId: string | number;
+  repoId: string | number;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -3984,7 +4515,7 @@ export const GetDeploymentGitSource5$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody25Type$outboundSchema,
-  projectId: z.union([z.string(), z.number()]),
+  repoId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -4152,61 +4683,66 @@ export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResp
 }
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsRepoId$inboundSchema: z.ZodType<
-  GetDeploymentGitSourceDeploymentsRepoId,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.number()]);
+export const GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema:
+  z.ZodType<
+    GetDeploymentGitSourceDeploymentsResponseRepoId,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([z.string(), z.number()]);
 
 /** @internal */
-export type GetDeploymentGitSourceDeploymentsRepoId$Outbound = string | number;
+export type GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound =
+  | string
+  | number;
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsRepoId$outboundSchema: z.ZodType<
-  GetDeploymentGitSourceDeploymentsRepoId$Outbound,
-  z.ZodTypeDef,
-  GetDeploymentGitSourceDeploymentsRepoId
-> = z.union([z.string(), z.number()]);
+export const GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema:
+  z.ZodType<
+    GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound,
+    z.ZodTypeDef,
+    GetDeploymentGitSourceDeploymentsResponseRepoId
+  > = z.union([z.string(), z.number()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentGitSourceDeploymentsRepoId$ {
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsRepoId$inboundSchema` instead. */
+export namespace GetDeploymentGitSourceDeploymentsResponseRepoId$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema` instead. */
   export const inboundSchema =
-    GetDeploymentGitSourceDeploymentsRepoId$inboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsRepoId$outboundSchema` instead. */
+    GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema` instead. */
   export const outboundSchema =
-    GetDeploymentGitSourceDeploymentsRepoId$outboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsRepoId$Outbound` instead. */
-  export type Outbound = GetDeploymentGitSourceDeploymentsRepoId$Outbound;
+    GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound` instead. */
+  export type Outbound =
+    GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound;
 }
 
-export function getDeploymentGitSourceDeploymentsRepoIdToJSON(
-  getDeploymentGitSourceDeploymentsRepoId:
-    GetDeploymentGitSourceDeploymentsRepoId,
+export function getDeploymentGitSourceDeploymentsResponseRepoIdToJSON(
+  getDeploymentGitSourceDeploymentsResponseRepoId:
+    GetDeploymentGitSourceDeploymentsResponseRepoId,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceDeploymentsRepoId$outboundSchema.parse(
-      getDeploymentGitSourceDeploymentsRepoId,
+    GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema.parse(
+      getDeploymentGitSourceDeploymentsResponseRepoId,
     ),
   );
 }
 
-export function getDeploymentGitSourceDeploymentsRepoIdFromJSON(
+export function getDeploymentGitSourceDeploymentsResponseRepoIdFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentGitSourceDeploymentsRepoId,
+  GetDeploymentGitSourceDeploymentsResponseRepoId,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentGitSourceDeploymentsRepoId$inboundSchema.parse(
+      GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetDeploymentGitSourceDeploymentsRepoId' from JSON`,
+    `Failed to parse 'GetDeploymentGitSourceDeploymentsResponseRepoId' from JSON`,
   );
 }
 
@@ -4409,52 +4945,61 @@ export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResp
 }
 
 /** @internal */
-export const GetDeploymentGitSourceRepoId$inboundSchema: z.ZodType<
-  GetDeploymentGitSourceRepoId,
+export const GetDeploymentGitSourceDeploymentsRepoId$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeploymentsRepoId,
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
 
 /** @internal */
-export type GetDeploymentGitSourceRepoId$Outbound = string | number;
+export type GetDeploymentGitSourceDeploymentsRepoId$Outbound = string | number;
 
 /** @internal */
-export const GetDeploymentGitSourceRepoId$outboundSchema: z.ZodType<
-  GetDeploymentGitSourceRepoId$Outbound,
+export const GetDeploymentGitSourceDeploymentsRepoId$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeploymentsRepoId$Outbound,
   z.ZodTypeDef,
-  GetDeploymentGitSourceRepoId
+  GetDeploymentGitSourceDeploymentsRepoId
 > = z.union([z.string(), z.number()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentGitSourceRepoId$ {
-  /** @deprecated use `GetDeploymentGitSourceRepoId$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentGitSourceRepoId$inboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceRepoId$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentGitSourceRepoId$outboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceRepoId$Outbound` instead. */
-  export type Outbound = GetDeploymentGitSourceRepoId$Outbound;
+export namespace GetDeploymentGitSourceDeploymentsRepoId$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsRepoId$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsRepoId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsRepoId$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsRepoId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsRepoId$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSourceDeploymentsRepoId$Outbound;
 }
 
-export function getDeploymentGitSourceRepoIdToJSON(
-  getDeploymentGitSourceRepoId: GetDeploymentGitSourceRepoId,
+export function getDeploymentGitSourceDeploymentsRepoIdToJSON(
+  getDeploymentGitSourceDeploymentsRepoId:
+    GetDeploymentGitSourceDeploymentsRepoId,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceRepoId$outboundSchema.parse(
-      getDeploymentGitSourceRepoId,
+    GetDeploymentGitSourceDeploymentsRepoId$outboundSchema.parse(
+      getDeploymentGitSourceDeploymentsRepoId,
     ),
   );
 }
 
-export function getDeploymentGitSourceRepoIdFromJSON(
+export function getDeploymentGitSourceDeploymentsRepoIdFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentGitSourceRepoId, SDKValidationError> {
+): SafeParseResult<
+  GetDeploymentGitSourceDeploymentsRepoId,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentGitSourceRepoId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentGitSourceRepoId' from JSON`,
+    (x) =>
+      GetDeploymentGitSourceDeploymentsRepoId$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentGitSourceDeploymentsRepoId' from JSON`,
   );
 }
 
@@ -4532,34 +5077,40 @@ export const ResponseBodyGitSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentGitSource10$inboundSchema),
   z.lazy(() => GetDeploymentGitSource12$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource15$inboundSchema),
   z.lazy(() => GetDeploymentGitSource4$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource8$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource9$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource10$inboundSchema),
   z.lazy(() => GetDeploymentGitSource11$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource13$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource14$inboundSchema),
   z.lazy(() => GetDeploymentGitSource2$inboundSchema),
   z.lazy(() => GetDeploymentGitSource3$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource7$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource6$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource9$inboundSchema),
   z.lazy(() => GetDeploymentGitSource1$inboundSchema),
   z.lazy(() => GetDeploymentGitSource5$inboundSchema),
-  z.lazy(() => GetDeploymentGitSource6$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource7$inboundSchema),
+  z.lazy(() => GetDeploymentGitSource8$inboundSchema),
 ]);
 
 /** @internal */
 export type ResponseBodyGitSource$Outbound =
-  | GetDeploymentGitSource10$Outbound
   | GetDeploymentGitSource12$Outbound
+  | GetDeploymentGitSource15$Outbound
   | GetDeploymentGitSource4$Outbound
-  | GetDeploymentGitSource8$Outbound
-  | GetDeploymentGitSource9$Outbound
+  | GetDeploymentGitSource10$Outbound
   | GetDeploymentGitSource11$Outbound
+  | GetDeploymentGitSource13$Outbound
+  | GetDeploymentGitSource14$Outbound
   | GetDeploymentGitSource2$Outbound
   | GetDeploymentGitSource3$Outbound
-  | GetDeploymentGitSource7$Outbound
+  | GetDeploymentGitSource6$Outbound
+  | GetDeploymentGitSource9$Outbound
   | GetDeploymentGitSource1$Outbound
   | GetDeploymentGitSource5$Outbound
-  | GetDeploymentGitSource6$Outbound;
+  | GetDeploymentGitSource7$Outbound
+  | GetDeploymentGitSource8$Outbound;
 
 /** @internal */
 export const ResponseBodyGitSource$outboundSchema: z.ZodType<
@@ -4567,18 +5118,21 @@ export const ResponseBodyGitSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyGitSource
 > = z.union([
-  z.lazy(() => GetDeploymentGitSource10$outboundSchema),
   z.lazy(() => GetDeploymentGitSource12$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource15$outboundSchema),
   z.lazy(() => GetDeploymentGitSource4$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource8$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource9$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource10$outboundSchema),
   z.lazy(() => GetDeploymentGitSource11$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource13$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource14$outboundSchema),
   z.lazy(() => GetDeploymentGitSource2$outboundSchema),
   z.lazy(() => GetDeploymentGitSource3$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource7$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource6$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource9$outboundSchema),
   z.lazy(() => GetDeploymentGitSource1$outboundSchema),
   z.lazy(() => GetDeploymentGitSource5$outboundSchema),
-  z.lazy(() => GetDeploymentGitSource6$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource7$outboundSchema),
+  z.lazy(() => GetDeploymentGitSource8$outboundSchema),
 ]);
 
 /**
@@ -4610,6 +5164,30 @@ export function responseBodyGitSourceFromJSON(
     (x) => ResponseBodyGitSource$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ResponseBodyGitSource' from JSON`,
   );
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyNodeVersion$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyNodeVersion> = z.nativeEnum(
+    GetDeploymentResponseBodyNodeVersion,
+  );
+
+/** @internal */
+export const GetDeploymentResponseBodyNodeVersion$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyNodeVersion> =
+    GetDeploymentResponseBodyNodeVersion$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentResponseBodyNodeVersion$ {
+  /** @deprecated use `GetDeploymentResponseBodyNodeVersion$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentResponseBodyNodeVersion$inboundSchema;
+  /** @deprecated use `GetDeploymentResponseBodyNodeVersion$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentResponseBodyNodeVersion$outboundSchema;
 }
 
 /** @internal */
@@ -4893,21 +5471,25 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSource10$inboundSchema),
     z.lazy(() => GetDeploymentGitSource12$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource15$inboundSchema),
     z.lazy(() => GetDeploymentGitSource4$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource8$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource9$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource10$inboundSchema),
     z.lazy(() => GetDeploymentGitSource11$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource13$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource14$inboundSchema),
     z.lazy(() => GetDeploymentGitSource2$inboundSchema),
     z.lazy(() => GetDeploymentGitSource3$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource7$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource6$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource9$inboundSchema),
     z.lazy(() => GetDeploymentGitSource1$inboundSchema),
     z.lazy(() => GetDeploymentGitSource5$inboundSchema),
-    z.lazy(() => GetDeploymentGitSource6$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource7$inboundSchema),
+    z.lazy(() => GetDeploymentGitSource8$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
+  nodeVersion: GetDeploymentResponseBodyNodeVersion$inboundSchema.optional(),
   project: z.lazy(() => GetDeploymentResponseBodyProject$inboundSchema)
     .optional(),
   readySubstate: GetDeploymentResponseBodyReadySubstate$inboundSchema
@@ -4970,21 +5552,25 @@ export type GetDeploymentResponseBody2$Outbound = {
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSource10$Outbound
     | GetDeploymentGitSource12$Outbound
+    | GetDeploymentGitSource15$Outbound
     | GetDeploymentGitSource4$Outbound
-    | GetDeploymentGitSource8$Outbound
-    | GetDeploymentGitSource9$Outbound
+    | GetDeploymentGitSource10$Outbound
     | GetDeploymentGitSource11$Outbound
+    | GetDeploymentGitSource13$Outbound
+    | GetDeploymentGitSource14$Outbound
     | GetDeploymentGitSource2$Outbound
     | GetDeploymentGitSource3$Outbound
-    | GetDeploymentGitSource7$Outbound
+    | GetDeploymentGitSource6$Outbound
+    | GetDeploymentGitSource9$Outbound
     | GetDeploymentGitSource1$Outbound
     | GetDeploymentGitSource5$Outbound
-    | GetDeploymentGitSource6$Outbound
+    | GetDeploymentGitSource7$Outbound
+    | GetDeploymentGitSource8$Outbound
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
+  nodeVersion?: string | undefined;
   project?: GetDeploymentResponseBodyProject$Outbound | undefined;
   readySubstate?: string | undefined;
   regions: Array<string>;
@@ -5054,21 +5640,25 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSource10$outboundSchema),
     z.lazy(() => GetDeploymentGitSource12$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource15$outboundSchema),
     z.lazy(() => GetDeploymentGitSource4$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource8$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource9$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource10$outboundSchema),
     z.lazy(() => GetDeploymentGitSource11$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource13$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource14$outboundSchema),
     z.lazy(() => GetDeploymentGitSource2$outboundSchema),
     z.lazy(() => GetDeploymentGitSource3$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource7$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource6$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource9$outboundSchema),
     z.lazy(() => GetDeploymentGitSource1$outboundSchema),
     z.lazy(() => GetDeploymentGitSource5$outboundSchema),
-    z.lazy(() => GetDeploymentGitSource6$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource7$outboundSchema),
+    z.lazy(() => GetDeploymentGitSource8$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
+  nodeVersion: GetDeploymentResponseBodyNodeVersion$outboundSchema.optional(),
   project: z.lazy(() => GetDeploymentResponseBodyProject$outboundSchema)
     .optional(),
   readySubstate: GetDeploymentResponseBodyReadySubstate$outboundSchema
@@ -6955,6 +7545,315 @@ export namespace ResponseBodyChecksConclusion$ {
 }
 
 /** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type
+  > = z.nativeEnum(
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type,
+  );
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type
+  > =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentGitSourceDeployments15$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments15,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$inboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  owner: z.string().optional(),
+  slug: z.string().optional(),
+  workspaceUuid: z.string(),
+  repoUuid: z.string(),
+});
+
+/** @internal */
+export type GetDeploymentGitSourceDeployments15$Outbound = {
+  type: string;
+  ref: string;
+  sha: string;
+  owner?: string | undefined;
+  slug?: string | undefined;
+  workspaceUuid: string;
+  repoUuid: string;
+};
+
+/** @internal */
+export const GetDeploymentGitSourceDeployments15$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments15$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitSourceDeployments15
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody115Type$outboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  owner: z.string().optional(),
+  slug: z.string().optional(),
+  workspaceUuid: z.string(),
+  repoUuid: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeployments15$ {
+  /** @deprecated use `GetDeploymentGitSourceDeployments15$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeployments15$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeployments15$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeployments15$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeployments15$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSourceDeployments15$Outbound;
+}
+
+export function getDeploymentGitSourceDeployments15ToJSON(
+  getDeploymentGitSourceDeployments15: GetDeploymentGitSourceDeployments15,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSourceDeployments15$outboundSchema.parse(
+      getDeploymentGitSourceDeployments15,
+    ),
+  );
+}
+
+export function getDeploymentGitSourceDeployments15FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitSourceDeployments15, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentGitSourceDeployments15$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceDeployments15' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type
+  > = z.nativeEnum(
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type,
+  );
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type
+  > =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentGitSourceDeployments14$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments14,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$inboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  projectId: z.number(),
+});
+
+/** @internal */
+export type GetDeploymentGitSourceDeployments14$Outbound = {
+  type: string;
+  ref: string;
+  sha: string;
+  projectId: number;
+};
+
+/** @internal */
+export const GetDeploymentGitSourceDeployments14$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments14$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitSourceDeployments14
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody114Type$outboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  projectId: z.number(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeployments14$ {
+  /** @deprecated use `GetDeploymentGitSourceDeployments14$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeployments14$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeployments14$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeployments14$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeployments14$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSourceDeployments14$Outbound;
+}
+
+export function getDeploymentGitSourceDeployments14ToJSON(
+  getDeploymentGitSourceDeployments14: GetDeploymentGitSourceDeployments14,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSourceDeployments14$outboundSchema.parse(
+      getDeploymentGitSourceDeployments14,
+    ),
+  );
+}
+
+export function getDeploymentGitSourceDeployments14FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitSourceDeployments14, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentGitSourceDeployments14$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceDeployments14' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type
+  > = z.nativeEnum(
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type,
+  );
+
+/** @internal */
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type
+  > =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentGitSourceDeployments13$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments13,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$inboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
+});
+
+/** @internal */
+export type GetDeploymentGitSourceDeployments13$Outbound = {
+  type: string;
+  ref: string;
+  sha: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
+};
+
+/** @internal */
+export const GetDeploymentGitSourceDeployments13$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceDeployments13$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitSourceDeployments13
+> = z.object({
+  type:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody113Type$outboundSchema,
+  ref: z.string(),
+  sha: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceDeployments13$ {
+  /** @deprecated use `GetDeploymentGitSourceDeployments13$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentGitSourceDeployments13$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeployments13$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentGitSourceDeployments13$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeployments13$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSourceDeployments13$Outbound;
+}
+
+export function getDeploymentGitSourceDeployments13ToJSON(
+  getDeploymentGitSourceDeployments13: GetDeploymentGitSourceDeployments13,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSourceDeployments13$outboundSchema.parse(
+      getDeploymentGitSourceDeployments13,
+    ),
+  );
+}
+
+export function getDeploymentGitSourceDeployments13FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitSourceDeployments13, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentGitSourceDeployments13$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceDeployments13' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type$inboundSchema:
   z.ZodNativeEnum<
     typeof GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type
@@ -6990,23 +7889,23 @@ export const GetDeploymentGitSourceDeployments12$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type$inboundSchema,
+  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  owner: z.string().optional(),
-  slug: z.string().optional(),
-  workspaceUuid: z.string(),
-  repoUuid: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /** @internal */
 export type GetDeploymentGitSourceDeployments12$Outbound = {
   type: string;
+  host: string;
   ref: string;
   sha: string;
-  owner?: string | undefined;
-  slug?: string | undefined;
-  workspaceUuid: string;
-  repoUuid: string;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 /** @internal */
@@ -7017,12 +7916,12 @@ export const GetDeploymentGitSourceDeployments12$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody112Type$outboundSchema,
+  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  owner: z.string().optional(),
-  slug: z.string().optional(),
-  workspaceUuid: z.string(),
-  repoUuid: z.string(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /**
@@ -7099,7 +7998,9 @@ export const GetDeploymentGitSourceDeployments11$inboundSchema: z.ZodType<
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type$inboundSchema,
   ref: z.string(),
   sha: z.string(),
-  projectId: z.number(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /** @internal */
@@ -7107,7 +8008,9 @@ export type GetDeploymentGitSourceDeployments11$Outbound = {
   type: string;
   ref: string;
   sha: string;
-  projectId: number;
+  repoId: number;
+  org?: string | undefined;
+  repo?: string | undefined;
 };
 
 /** @internal */
@@ -7120,7 +8023,9 @@ export const GetDeploymentGitSourceDeployments11$outboundSchema: z.ZodType<
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody111Type$outboundSchema,
   ref: z.string(),
   sha: z.string(),
-  projectId: z.number(),
+  repoId: z.number(),
+  org: z.string().optional(),
+  repo: z.string().optional(),
 });
 
 /**
@@ -7195,23 +8100,17 @@ export const GetDeploymentGitSourceDeployments10$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type$inboundSchema,
-  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  gitUrl: z.string(),
 });
 
 /** @internal */
 export type GetDeploymentGitSourceDeployments10$Outbound = {
   type: string;
-  host: string;
   ref: string;
   sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
+  gitUrl: string;
 };
 
 /** @internal */
@@ -7222,12 +8121,9 @@ export const GetDeploymentGitSourceDeployments10$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody110Type$outboundSchema,
-  host: z.string(),
   ref: z.string(),
   sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  gitUrl: z.string(),
 });
 
 /**
@@ -7302,21 +8198,21 @@ export const GetDeploymentGitSourceDeployments9$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type$inboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  owner: z.string(),
+  slug: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type GetDeploymentGitSourceDeployments9$Outbound = {
   type: string;
-  ref: string;
-  sha: string;
-  repoId: number;
-  org?: string | undefined;
-  repo?: string | undefined;
+  owner: string;
+  slug: string;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
 };
 
 /** @internal */
@@ -7327,11 +8223,11 @@ export const GetDeploymentGitSourceDeployments9$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type$outboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  repoId: z.number(),
-  org: z.string().optional(),
-  repo: z.string().optional(),
+  owner: z.string(),
+  slug: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /**
@@ -7405,17 +8301,21 @@ export const GetDeploymentGitSourceDeployments8$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type$inboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  gitUrl: z.string(),
+  workspaceUuid: z.string().optional(),
+  repoUuid: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type GetDeploymentGitSourceDeployments8$Outbound = {
   type: string;
-  ref: string;
-  sha: string;
-  gitUrl: string;
+  workspaceUuid?: string | undefined;
+  repoUuid: string;
+  ref?: string | null | undefined;
+  sha?: string | undefined;
+  prId?: number | null | undefined;
 };
 
 /** @internal */
@@ -7426,9 +8326,11 @@ export const GetDeploymentGitSourceDeployments8$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody1Type$outboundSchema,
-  ref: z.string(),
-  sha: z.string(),
-  gitUrl: z.string(),
+  workspaceUuid: z.string().optional(),
+  repoUuid: z.string(),
+  ref: z.nullable(z.string()).optional(),
+  sha: z.string().optional(),
+  prId: z.nullable(z.number()).optional(),
 });
 
 /**
@@ -7495,6 +8397,56 @@ export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResp
 }
 
 /** @internal */
+export const GetDeploymentGitSourceProjectId$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceProjectId,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number()]);
+
+/** @internal */
+export type GetDeploymentGitSourceProjectId$Outbound = string | number;
+
+/** @internal */
+export const GetDeploymentGitSourceProjectId$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceProjectId$Outbound,
+  z.ZodTypeDef,
+  GetDeploymentGitSourceProjectId
+> = z.union([z.string(), z.number()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentGitSourceProjectId$ {
+  /** @deprecated use `GetDeploymentGitSourceProjectId$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentGitSourceProjectId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceProjectId$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentGitSourceProjectId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceProjectId$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSourceProjectId$Outbound;
+}
+
+export function getDeploymentGitSourceProjectIdToJSON(
+  getDeploymentGitSourceProjectId: GetDeploymentGitSourceProjectId,
+): string {
+  return JSON.stringify(
+    GetDeploymentGitSourceProjectId$outboundSchema.parse(
+      getDeploymentGitSourceProjectId,
+    ),
+  );
+}
+
+export function getDeploymentGitSourceProjectIdFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentGitSourceProjectId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentGitSourceProjectId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceProjectId' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentGitSourceDeployments7$inboundSchema: z.ZodType<
   GetDeploymentGitSourceDeployments7,
   z.ZodTypeDef,
@@ -7502,8 +8454,7 @@ export const GetDeploymentGitSourceDeployments7$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema,
-  owner: z.string(),
-  slug: z.string(),
+  projectId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -7512,8 +8463,7 @@ export const GetDeploymentGitSourceDeployments7$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentGitSourceDeployments7$Outbound = {
   type: string;
-  owner: string;
-  slug: string;
+  projectId: string | number;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -7527,8 +8477,7 @@ export const GetDeploymentGitSourceDeployments7$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$outboundSchema,
-  owner: z.string(),
-  slug: z.string(),
+  projectId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -7605,8 +8554,8 @@ export const GetDeploymentGitSourceDeployments6$inboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType$inboundSchema,
-  workspaceUuid: z.string().optional(),
-  repoUuid: z.string(),
+  org: z.string(),
+  repo: z.string(),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -7615,8 +8564,8 @@ export const GetDeploymentGitSourceDeployments6$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentGitSourceDeployments6$Outbound = {
   type: string;
-  workspaceUuid?: string | undefined;
-  repoUuid: string;
+  org: string;
+  repo: string;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -7630,8 +8579,8 @@ export const GetDeploymentGitSourceDeployments6$outboundSchema: z.ZodType<
 > = z.object({
   type:
     GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONType$outboundSchema,
-  workspaceUuid: z.string().optional(),
-  repoUuid: z.string(),
+  org: z.string(),
+  repo: z.string(),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -7696,52 +8645,52 @@ export namespace GetDeploymentGitSourceDeploymentsResponse200Type$ {
 }
 
 /** @internal */
-export const GetDeploymentGitSourceProjectId$inboundSchema: z.ZodType<
-  GetDeploymentGitSourceProjectId,
+export const GetDeploymentGitSourceRepoId$inboundSchema: z.ZodType<
+  GetDeploymentGitSourceRepoId,
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
 
 /** @internal */
-export type GetDeploymentGitSourceProjectId$Outbound = string | number;
+export type GetDeploymentGitSourceRepoId$Outbound = string | number;
 
 /** @internal */
-export const GetDeploymentGitSourceProjectId$outboundSchema: z.ZodType<
-  GetDeploymentGitSourceProjectId$Outbound,
+export const GetDeploymentGitSourceRepoId$outboundSchema: z.ZodType<
+  GetDeploymentGitSourceRepoId$Outbound,
   z.ZodTypeDef,
-  GetDeploymentGitSourceProjectId
+  GetDeploymentGitSourceRepoId
 > = z.union([z.string(), z.number()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentGitSourceProjectId$ {
-  /** @deprecated use `GetDeploymentGitSourceProjectId$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentGitSourceProjectId$inboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceProjectId$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentGitSourceProjectId$outboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceProjectId$Outbound` instead. */
-  export type Outbound = GetDeploymentGitSourceProjectId$Outbound;
+export namespace GetDeploymentGitSourceRepoId$ {
+  /** @deprecated use `GetDeploymentGitSourceRepoId$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentGitSourceRepoId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceRepoId$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentGitSourceRepoId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceRepoId$Outbound` instead. */
+  export type Outbound = GetDeploymentGitSourceRepoId$Outbound;
 }
 
-export function getDeploymentGitSourceProjectIdToJSON(
-  getDeploymentGitSourceProjectId: GetDeploymentGitSourceProjectId,
+export function getDeploymentGitSourceRepoIdToJSON(
+  getDeploymentGitSourceRepoId: GetDeploymentGitSourceRepoId,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceProjectId$outboundSchema.parse(
-      getDeploymentGitSourceProjectId,
+    GetDeploymentGitSourceRepoId$outboundSchema.parse(
+      getDeploymentGitSourceRepoId,
     ),
   );
 }
 
-export function getDeploymentGitSourceProjectIdFromJSON(
+export function getDeploymentGitSourceRepoIdFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentGitSourceProjectId, SDKValidationError> {
+): SafeParseResult<GetDeploymentGitSourceRepoId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentGitSourceProjectId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentGitSourceProjectId' from JSON`,
+    (x) => GetDeploymentGitSourceRepoId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceRepoId' from JSON`,
   );
 }
 
@@ -7752,7 +8701,7 @@ export const GetDeploymentGitSourceDeployments5$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: GetDeploymentGitSourceDeploymentsResponse200Type$inboundSchema,
-  projectId: z.union([z.string(), z.number()]),
+  repoId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -7761,7 +8710,7 @@ export const GetDeploymentGitSourceDeployments5$inboundSchema: z.ZodType<
 /** @internal */
 export type GetDeploymentGitSourceDeployments5$Outbound = {
   type: string;
-  projectId: string | number;
+  repoId: string | number;
   ref?: string | null | undefined;
   sha?: string | undefined;
   prId?: number | null | undefined;
@@ -7774,7 +8723,7 @@ export const GetDeploymentGitSourceDeployments5$outboundSchema: z.ZodType<
   GetDeploymentGitSourceDeployments5
 > = z.object({
   type: GetDeploymentGitSourceDeploymentsResponse200Type$outboundSchema,
-  projectId: z.union([z.string(), z.number()]),
+  repoId: z.union([z.string(), z.number()]),
   ref: z.nullable(z.string()).optional(),
   sha: z.string().optional(),
   prId: z.nullable(z.number()).optional(),
@@ -7939,66 +8888,66 @@ export namespace GetDeploymentGitSourceDeploymentsType$ {
 }
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema:
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$inboundSchema:
   z.ZodType<
-    GetDeploymentGitSourceDeploymentsResponse200RepoId,
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId,
     z.ZodTypeDef,
     unknown
   > = z.union([z.string(), z.number()]);
 
 /** @internal */
-export type GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound =
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$Outbound =
   | string
   | number;
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema:
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$outboundSchema:
   z.ZodType<
-    GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound,
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$Outbound,
     z.ZodTypeDef,
-    GetDeploymentGitSourceDeploymentsResponse200RepoId
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId
   > = z.union([z.string(), z.number()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentGitSourceDeploymentsResponse200RepoId$ {
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema` instead. */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$inboundSchema` instead. */
   export const inboundSchema =
-    GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema` instead. */
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$outboundSchema` instead. */
   export const outboundSchema =
-    GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound` instead. */
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$Outbound` instead. */
   export type Outbound =
-    GetDeploymentGitSourceDeploymentsResponse200RepoId$Outbound;
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$Outbound;
 }
 
-export function getDeploymentGitSourceDeploymentsResponse200RepoIdToJSON(
-  getDeploymentGitSourceDeploymentsResponse200RepoId:
-    GetDeploymentGitSourceDeploymentsResponse200RepoId,
+export function getDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoIdToJSON(
+  getDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceDeploymentsResponse200RepoId$outboundSchema.parse(
-      getDeploymentGitSourceDeploymentsResponse200RepoId,
-    ),
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$outboundSchema
+      .parse(
+        getDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId,
+      ),
   );
 }
 
-export function getDeploymentGitSourceDeploymentsResponse200RepoIdFromJSON(
+export function getDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoIdFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentGitSourceDeploymentsResponse200RepoId,
+  GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentGitSourceDeploymentsResponse200RepoId$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentGitSourceDeploymentsResponse200RepoId' from JSON`,
+      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyRepoId' from JSON`,
   );
 }
 
@@ -8198,66 +9147,64 @@ export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResp
 }
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema:
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$inboundSchema:
   z.ZodType<
-    GetDeploymentGitSourceDeploymentsResponseRepoId,
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId,
     z.ZodTypeDef,
     unknown
   > = z.union([z.string(), z.number()]);
 
 /** @internal */
-export type GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound =
+export type GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$Outbound =
   | string
   | number;
 
 /** @internal */
-export const GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema:
+export const GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$outboundSchema:
   z.ZodType<
-    GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound,
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$Outbound,
     z.ZodTypeDef,
-    GetDeploymentGitSourceDeploymentsResponseRepoId
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId
   > = z.union([z.string(), z.number()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentGitSourceDeploymentsResponseRepoId$ {
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema` instead. */
+export namespace GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$ {
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$inboundSchema` instead. */
   export const inboundSchema =
-    GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema` instead. */
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$inboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$outboundSchema` instead. */
   export const outboundSchema =
-    GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema;
-  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound` instead. */
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$outboundSchema;
+  /** @deprecated use `GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$Outbound` instead. */
   export type Outbound =
-    GetDeploymentGitSourceDeploymentsResponseRepoId$Outbound;
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$Outbound;
 }
 
-export function getDeploymentGitSourceDeploymentsResponseRepoIdToJSON(
-  getDeploymentGitSourceDeploymentsResponseRepoId:
-    GetDeploymentGitSourceDeploymentsResponseRepoId,
+export function getDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoIdToJSON(
+  getDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId:
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId,
 ): string {
   return JSON.stringify(
-    GetDeploymentGitSourceDeploymentsResponseRepoId$outboundSchema.parse(
-      getDeploymentGitSourceDeploymentsResponseRepoId,
-    ),
+    GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$outboundSchema
+      .parse(getDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId),
   );
 }
 
-export function getDeploymentGitSourceDeploymentsResponseRepoIdFromJSON(
+export function getDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoIdFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetDeploymentGitSourceDeploymentsResponseRepoId,
+  GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentGitSourceDeploymentsResponseRepoId' from JSON`,
+      GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONRepoId' from JSON`,
   );
 }
 
@@ -8339,34 +9286,40 @@ export const GetDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments12$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments15$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments13$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments14$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments5$inboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
 ]);
 
 /** @internal */
 export type GetDeploymentResponseBodyGitSource$Outbound =
-  | GetDeploymentGitSourceDeployments10$Outbound
   | GetDeploymentGitSourceDeployments12$Outbound
+  | GetDeploymentGitSourceDeployments15$Outbound
   | GetDeploymentGitSourceDeployments4$Outbound
-  | GetDeploymentGitSourceDeployments8$Outbound
-  | GetDeploymentGitSourceDeployments9$Outbound
+  | GetDeploymentGitSourceDeployments10$Outbound
   | GetDeploymentGitSourceDeployments11$Outbound
+  | GetDeploymentGitSourceDeployments13$Outbound
+  | GetDeploymentGitSourceDeployments14$Outbound
   | GetDeploymentGitSourceDeployments2$Outbound
   | GetDeploymentGitSourceDeployments3$Outbound
-  | GetDeploymentGitSourceDeployments7$Outbound
+  | GetDeploymentGitSourceDeployments6$Outbound
+  | GetDeploymentGitSourceDeployments9$Outbound
   | GetDeploymentGitSourceDeployments1$Outbound
   | GetDeploymentGitSourceDeployments5$Outbound
-  | GetDeploymentGitSourceDeployments6$Outbound;
+  | GetDeploymentGitSourceDeployments7$Outbound
+  | GetDeploymentGitSourceDeployments8$Outbound;
 
 /** @internal */
 export const GetDeploymentResponseBodyGitSource$outboundSchema: z.ZodType<
@@ -8374,18 +9327,21 @@ export const GetDeploymentResponseBodyGitSource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentResponseBodyGitSource
 > = z.union([
-  z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments12$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments15$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments13$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments14$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),
   z.lazy(() => GetDeploymentGitSourceDeployments5$outboundSchema),
-  z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
+  z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
 ]);
 
 /**
@@ -8421,6 +9377,27 @@ export function getDeploymentResponseBodyGitSourceFromJSON(
       GetDeploymentResponseBodyGitSource$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentResponseBodyGitSource' from JSON`,
   );
+}
+
+/** @internal */
+export const ResponseBodyNodeVersion$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyNodeVersion
+> = z.nativeEnum(ResponseBodyNodeVersion);
+
+/** @internal */
+export const ResponseBodyNodeVersion$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyNodeVersion
+> = ResponseBodyNodeVersion$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyNodeVersion$ {
+  /** @deprecated use `ResponseBodyNodeVersion$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyNodeVersion$inboundSchema;
+  /** @deprecated use `ResponseBodyNodeVersion$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyNodeVersion$outboundSchema;
 }
 
 /** @internal */
@@ -11821,8 +12798,7 @@ export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
-  microfrontendsAliasEnabled: z.boolean().optional(),
-  previewEnvAliasEnabled: z.boolean().optional(),
+  microfrontendsAlias2Enabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -11834,8 +12810,7 @@ export type GetDeploymentMicrofrontends2$Outbound = {
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
-  microfrontendsAliasEnabled?: boolean | undefined;
-  previewEnvAliasEnabled?: boolean | undefined;
+  microfrontendsAlias2Enabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -11851,8 +12826,7 @@ export const GetDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
-  microfrontendsAliasEnabled: z.boolean().optional(),
-  previewEnvAliasEnabled: z.boolean().optional(),
+  microfrontendsAlias2Enabled: z.boolean().optional(),
 });
 
 /**
@@ -11898,8 +12872,7 @@ export const GetDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
-  microfrontendsAliasEnabled: z.boolean().optional(),
-  previewEnvAliasEnabled: z.boolean().optional(),
+  microfrontendsAlias2Enabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -11908,8 +12881,7 @@ export type GetDeploymentMicrofrontends1$Outbound = {
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
-  microfrontendsAliasEnabled?: boolean | undefined;
-  previewEnvAliasEnabled?: boolean | undefined;
+  microfrontendsAlias2Enabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -11922,8 +12894,7 @@ export const GetDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
-  microfrontendsAliasEnabled: z.boolean().optional(),
-  previewEnvAliasEnabled: z.boolean().optional(),
+  microfrontendsAlias2Enabled: z.boolean().optional(),
 });
 
 /**
@@ -12341,21 +13312,25 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments12$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments15$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments4$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments10$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments11$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments13$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments14$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments2$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments3$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments9$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments1$inboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments5$inboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments6$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments7$inboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments8$inboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
+  nodeVersion: ResponseBodyNodeVersion$inboundSchema.optional(),
   project: z.lazy(() => ResponseBodyProject$inboundSchema).optional(),
   readySubstate: ResponseBodyReadySubstate$inboundSchema.optional(),
   regions: z.array(z.string()),
@@ -12469,21 +13444,25 @@ export type GetDeploymentResponseBody1$Outbound = {
   errorStep?: string | undefined;
   passiveRegions?: Array<string> | undefined;
   gitSource?:
-    | GetDeploymentGitSourceDeployments10$Outbound
     | GetDeploymentGitSourceDeployments12$Outbound
+    | GetDeploymentGitSourceDeployments15$Outbound
     | GetDeploymentGitSourceDeployments4$Outbound
-    | GetDeploymentGitSourceDeployments8$Outbound
-    | GetDeploymentGitSourceDeployments9$Outbound
+    | GetDeploymentGitSourceDeployments10$Outbound
     | GetDeploymentGitSourceDeployments11$Outbound
+    | GetDeploymentGitSourceDeployments13$Outbound
+    | GetDeploymentGitSourceDeployments14$Outbound
     | GetDeploymentGitSourceDeployments2$Outbound
     | GetDeploymentGitSourceDeployments3$Outbound
-    | GetDeploymentGitSourceDeployments7$Outbound
+    | GetDeploymentGitSourceDeployments6$Outbound
+    | GetDeploymentGitSourceDeployments9$Outbound
     | GetDeploymentGitSourceDeployments1$Outbound
     | GetDeploymentGitSourceDeployments5$Outbound
-    | GetDeploymentGitSourceDeployments6$Outbound
+    | GetDeploymentGitSourceDeployments7$Outbound
+    | GetDeploymentGitSourceDeployments8$Outbound
     | undefined;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
+  nodeVersion?: string | undefined;
   project?: ResponseBodyProject$Outbound | undefined;
   readySubstate?: string | undefined;
   regions: Array<string>;
@@ -12601,21 +13580,25 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
   errorStep: z.string().optional(),
   passiveRegions: z.array(z.string()).optional(),
   gitSource: z.union([
-    z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments12$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments15$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments4$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments10$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments11$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments13$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments14$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments2$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments3$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments9$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments1$outboundSchema),
     z.lazy(() => GetDeploymentGitSourceDeployments5$outboundSchema),
-    z.lazy(() => GetDeploymentGitSourceDeployments6$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments7$outboundSchema),
+    z.lazy(() => GetDeploymentGitSourceDeployments8$outboundSchema),
   ]).optional(),
   meta: z.record(z.string()),
   originCacheRegion: z.string().optional(),
+  nodeVersion: ResponseBodyNodeVersion$outboundSchema.optional(),
   project: z.lazy(() => ResponseBodyProject$outboundSchema).optional(),
   readySubstate: ResponseBodyReadySubstate$outboundSchema.optional(),
   regions: z.array(z.string()),

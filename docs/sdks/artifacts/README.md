@@ -18,6 +18,7 @@ Records an artifacts cache usage event. The body of this request is an array of 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="recordEvents" method="post" path="/v8/artifacts/events" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -116,6 +117,7 @@ Check the status of Remote Caching for this principal. Returns a JSON-encoded st
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="status" method="get" path="/v8/artifacts/status" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -192,6 +194,7 @@ Uploads a cache artifact identified by the `hash` specified on the path. The cac
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadArtifact" method="put" path="/v8/artifacts/{hash}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 import { openAsBlob } from "node:fs";
@@ -284,6 +287,7 @@ Downloads a cache artifact indentified by its `hash` specified on the request pa
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="downloadArtifact" method="get" path="/v8/artifacts/{hash}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -367,6 +371,7 @@ Check that a cache artifact with the given `hash` exists. This request returns r
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="artifactExists" method="head" path="/v8/artifacts/{hash}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -446,6 +451,7 @@ Query information about an array of artifacts.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="artifactQuery" method="post" path="/v8/artifacts" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

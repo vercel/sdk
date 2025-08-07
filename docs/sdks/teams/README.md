@@ -25,6 +25,7 @@ Get a paginated list of team members for the provided team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTeamMembers" method="get" path="/v3/teams/{teamId}/members" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -106,6 +107,7 @@ Invite a user to join the team specified in the URL. The authenticated user need
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="inviteUserToTeam" method="post" path="/v1/teams/{teamId}/members" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -210,6 +212,7 @@ Request access to a team as a member. An owner has to approve the request. Only 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="requestAccessToTeam" method="post" path="/v1/teams/{teamId}/request" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -305,6 +308,7 @@ Check the status of a join request. It'll respond with a 404 if the request has 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTeamAccessRequest" method="get" path="/v1/teams/{teamId}/request/{userId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -382,6 +386,7 @@ Join a team with a provided invite code or team ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="joinTeam" method="post" path="/v1/teams/{teamId}/members/teams/join" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -463,6 +468,7 @@ Update the membership of a Team Member on the Team specified by `teamId`, such a
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateTeamMember" method="patch" path="/v1/teams/{teamId}/members/{uid}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -576,6 +582,7 @@ Remove a Team Member from the Team, or dismiss a user that requested access, or 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeTeamMember" method="delete" path="/v1/teams/{teamId}/members/{uid}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -655,6 +662,7 @@ Get information for the Team specified by the `teamId` parameter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTeam" method="get" path="/v2/teams/{teamId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -732,6 +740,7 @@ Update the information of a Team specified by the `teamId` parameter. The reques
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchTeam" method="patch" path="/v2/teams/{teamId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -846,6 +855,7 @@ Get a paginated list of all the Teams the authenticated User is a member of.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getTeams" method="get" path="/v2/teams" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -924,6 +934,7 @@ Create a new Team under your account. You need to send a POST request with the d
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createTeam" method="post" path="/v1/teams" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1000,6 +1011,7 @@ Delete a team under your account. You need to send a `DELETE` request with the d
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteTeam" method="delete" path="/v1/teams/{teamId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1080,6 +1092,7 @@ Delete an active Team invite code.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteTeamInviteCode" method="delete" path="/v1/teams/{teamId}/invites/{inviteId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

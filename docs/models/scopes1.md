@@ -9,8 +9,7 @@ import { Scopes1 } from "@vercel/sdk/models/authtoken.js";
 
 let value: Scopes1 = {
   type: "user",
-  origin: "otp",
-  createdAt: 9263.32,
+  createdAt: 6949.11,
 };
 ```
 
@@ -20,6 +19,6 @@ let value: Scopes1 = {
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
 | `type`                                           | [models.ScopesType](../models/scopestype.md)     | :heavy_check_mark:                               | N/A                                              |
 | `sudo`                                           | [models.Sudo](../models/sudo.md)                 | :heavy_minus_sign:                               | N/A                                              |
-| `origin`                                         | [models.ScopesOrigin](../models/scopesorigin.md) | :heavy_check_mark:                               | N/A                                              |
+| `origin`                                         | [models.ScopesOrigin](../models/scopesorigin.md) | :heavy_minus_sign:                               | N/A                                              |
 | `createdAt`                                      | *number*                                         | :heavy_check_mark:                               | N/A                                              |
 | `expiresAt`                                      | *number*                                         | :heavy_minus_sign:                               | N/A                                              |

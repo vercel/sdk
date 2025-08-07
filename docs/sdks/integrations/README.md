@@ -16,6 +16,7 @@ Updates the deployment integration action for the specified integration installa
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="update-integration-deployment-action" method="patch" path="/v1/deployments/{deploymentId}/integrations/{integrationConfigurationId}/resources/{resourceId}/actions/{action}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -96,6 +97,7 @@ Allows to retrieve all configurations for an authenticated integration. When the
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getConfigurations" method="get" path="/v1/integrations/configurations" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -174,6 +176,7 @@ Allows to retrieve a the configuration with the provided id in case it exists. T
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getConfiguration" method="get" path="/v1/integrations/configuration/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -253,6 +256,7 @@ Allows to remove the configuration with the `id` provided in the parameters. The
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteConfiguration" method="delete" path="/v1/integrations/configuration/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

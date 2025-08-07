@@ -17,6 +17,7 @@ Creates a new check. This endpoint must be called with an OAuth2 or it will prod
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createCheck" method="post" path="/v1/deployments/{deploymentId}/checks" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -112,6 +113,7 @@ List all of the checks created for a deployment.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAllChecks" method="get" path="/v1/deployments/{deploymentId}/checks" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -191,6 +193,7 @@ Return a detailed response for a single check.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getCheck" method="get" path="/v1/deployments/{deploymentId}/checks/{checkId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -272,6 +275,7 @@ Update an existing check. This endpoint must be called with an OAuth2 or it will
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateCheck" method="patch" path="/v1/deployments/{deploymentId}/checks/{checkId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -423,6 +427,7 @@ Rerequest a selected check that has failed.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="rerequestCheck" method="post" path="/v1/deployments/{deploymentId}/checks/{checkId}/rerequest" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

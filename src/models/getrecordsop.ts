@@ -67,6 +67,8 @@ export type ResponseBodyRecords = {
   updated: number | null;
   createdAt: number | null;
   updatedAt: number | null;
+  ttl?: number | undefined;
+  comment?: string | undefined;
 };
 
 /**
@@ -109,6 +111,8 @@ export type Records = {
   updated: number | null;
   createdAt: number | null;
   updatedAt: number | null;
+  ttl?: number | undefined;
+  comment?: string | undefined;
 };
 
 export type GetRecordsResponseBody2 = {
@@ -231,6 +235,8 @@ export const ResponseBodyRecords$inboundSchema: z.ZodType<
   updated: z.nullable(z.number()),
   createdAt: z.nullable(z.number()),
   updatedAt: z.nullable(z.number()),
+  ttl: z.number().optional(),
+  comment: z.string().optional(),
 });
 
 /** @internal */
@@ -247,6 +253,8 @@ export type ResponseBodyRecords$Outbound = {
   updated: number | null;
   createdAt: number | null;
   updatedAt: number | null;
+  ttl?: number | undefined;
+  comment?: string | undefined;
 };
 
 /** @internal */
@@ -267,6 +275,8 @@ export const ResponseBodyRecords$outboundSchema: z.ZodType<
   updated: z.nullable(z.number()),
   createdAt: z.nullable(z.number()),
   updatedAt: z.nullable(z.number()),
+  ttl: z.number().optional(),
+  comment: z.string().optional(),
 });
 
 /**
@@ -389,6 +399,8 @@ export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
     updated: z.nullable(z.number()),
     createdAt: z.nullable(z.number()),
     updatedAt: z.nullable(z.number()),
+    ttl: z.number().optional(),
+    comment: z.string().optional(),
   });
 
 /** @internal */
@@ -405,6 +417,8 @@ export type Records$Outbound = {
   updated: number | null;
   createdAt: number | null;
   updatedAt: number | null;
+  ttl?: number | undefined;
+  comment?: string | undefined;
 };
 
 /** @internal */
@@ -425,6 +439,8 @@ export const Records$outboundSchema: z.ZodType<
   updated: z.nullable(z.number()),
   createdAt: z.nullable(z.number()),
   updatedAt: z.nullable(z.number()),
+  ttl: z.number().optional(),
+  comment: z.string().optional(),
 });
 
 /**

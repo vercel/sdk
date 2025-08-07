@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectDataCacheEnvId2 } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheEnvId2 = "preview";
+let value: UpdateProjectDataCacheEnvId2 = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

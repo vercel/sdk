@@ -38,72 +38,38 @@ export type GetBypassIpRequest = {
   slug?: string | undefined;
 };
 
-export const GetBypassIpResponseBodyAction = {
+export const GetBypassIpAction = {
   Block: "block",
   Bypass: "bypass",
 } as const;
-export type GetBypassIpResponseBodyAction = ClosedEnum<
-  typeof GetBypassIpResponseBodyAction
->;
+export type GetBypassIpAction = ClosedEnum<typeof GetBypassIpAction>;
 
-export type GetBypassIpResponseBodyResult = {
-  ownerId?: string | undefined;
-  id?: string | undefined;
-  domain?: string | undefined;
-  ip?: string | undefined;
-  action?: GetBypassIpResponseBodyAction | undefined;
+export type GetBypassIpResult = {
+  ownerId: string;
+  id: string;
+  domain: string;
+  ip: string;
+  action?: GetBypassIpAction | undefined;
   projectId?: string | undefined;
   isProjectRule?: boolean | undefined;
   note?: string | undefined;
-  createdAt?: string | undefined;
+  createdAt: string;
   actorId?: string | undefined;
-  updatedAt?: string | undefined;
-  updatedAtHour?: string | undefined;
+  updatedAt: string;
+  updatedAtHour: string;
   deletedAt?: string | undefined;
   expiresAt?: number | null | undefined;
 };
 
-export type GetBypassIpResponseBodyPagination = {
+export type GetBypassIpPagination = {
   ownerId: string;
   id: string;
 };
 
-export type GetBypassIpResponseBody2 = {
-  result?: Array<GetBypassIpResponseBodyResult> | undefined;
-  pagination?: GetBypassIpResponseBodyPagination | undefined;
+export type GetBypassIpResponseBody = {
+  result: Array<GetBypassIpResult>;
+  pagination?: GetBypassIpPagination | undefined;
 };
-
-export const ResponseBodyAction = {
-  Block: "block",
-  Bypass: "bypass",
-} as const;
-export type ResponseBodyAction = ClosedEnum<typeof ResponseBodyAction>;
-
-export type ResponseBodyResult = {
-  ownerId?: string | undefined;
-  id?: string | undefined;
-  domain?: string | undefined;
-  ip?: string | undefined;
-  action?: ResponseBodyAction | undefined;
-  projectId?: string | undefined;
-  isProjectRule?: boolean | undefined;
-  note?: string | undefined;
-  createdAt?: string | undefined;
-  actorId?: string | undefined;
-  updatedAt?: string | undefined;
-  updatedAtHour?: string | undefined;
-  deletedAt?: string | undefined;
-  expiresAt?: number | null | undefined;
-};
-
-export type GetBypassIpResponseBody1 = {
-  result: Array<ResponseBodyResult>;
-  pagination?: any | null | undefined;
-};
-
-export type GetBypassIpResponseBody =
-  | GetBypassIpResponseBody1
-  | GetBypassIpResponseBody2;
 
 /** @internal */
 export const GetBypassIpRequest$inboundSchema: z.ZodType<
@@ -181,44 +147,44 @@ export function getBypassIpRequestFromJSON(
 }
 
 /** @internal */
-export const GetBypassIpResponseBodyAction$inboundSchema: z.ZodNativeEnum<
-  typeof GetBypassIpResponseBodyAction
-> = z.nativeEnum(GetBypassIpResponseBodyAction);
+export const GetBypassIpAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetBypassIpAction
+> = z.nativeEnum(GetBypassIpAction);
 
 /** @internal */
-export const GetBypassIpResponseBodyAction$outboundSchema: z.ZodNativeEnum<
-  typeof GetBypassIpResponseBodyAction
-> = GetBypassIpResponseBodyAction$inboundSchema;
+export const GetBypassIpAction$outboundSchema: z.ZodNativeEnum<
+  typeof GetBypassIpAction
+> = GetBypassIpAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetBypassIpResponseBodyAction$ {
-  /** @deprecated use `GetBypassIpResponseBodyAction$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpResponseBodyAction$inboundSchema;
-  /** @deprecated use `GetBypassIpResponseBodyAction$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpResponseBodyAction$outboundSchema;
+export namespace GetBypassIpAction$ {
+  /** @deprecated use `GetBypassIpAction$inboundSchema` instead. */
+  export const inboundSchema = GetBypassIpAction$inboundSchema;
+  /** @deprecated use `GetBypassIpAction$outboundSchema` instead. */
+  export const outboundSchema = GetBypassIpAction$outboundSchema;
 }
 
 /** @internal */
-export const GetBypassIpResponseBodyResult$inboundSchema: z.ZodType<
-  GetBypassIpResponseBodyResult,
+export const GetBypassIpResult$inboundSchema: z.ZodType<
+  GetBypassIpResult,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  OwnerId: z.string().optional(),
-  Id: z.string().optional(),
-  Domain: z.string().optional(),
-  Ip: z.string().optional(),
-  Action: GetBypassIpResponseBodyAction$inboundSchema.optional(),
+  OwnerId: z.string(),
+  Id: z.string(),
+  Domain: z.string(),
+  Ip: z.string(),
+  Action: GetBypassIpAction$inboundSchema.optional(),
   ProjectId: z.string().optional(),
   IsProjectRule: z.boolean().optional(),
   Note: z.string().optional(),
-  CreatedAt: z.string().optional(),
+  CreatedAt: z.string(),
   ActorId: z.string().optional(),
-  UpdatedAt: z.string().optional(),
-  UpdatedAtHour: z.string().optional(),
+  UpdatedAt: z.string(),
+  UpdatedAtHour: z.string(),
   DeletedAt: z.string().optional(),
   ExpiresAt: z.nullable(z.number()).optional(),
 }).transform((v) => {
@@ -241,41 +207,41 @@ export const GetBypassIpResponseBodyResult$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetBypassIpResponseBodyResult$Outbound = {
-  OwnerId?: string | undefined;
-  Id?: string | undefined;
-  Domain?: string | undefined;
-  Ip?: string | undefined;
+export type GetBypassIpResult$Outbound = {
+  OwnerId: string;
+  Id: string;
+  Domain: string;
+  Ip: string;
   Action?: string | undefined;
   ProjectId?: string | undefined;
   IsProjectRule?: boolean | undefined;
   Note?: string | undefined;
-  CreatedAt?: string | undefined;
+  CreatedAt: string;
   ActorId?: string | undefined;
-  UpdatedAt?: string | undefined;
-  UpdatedAtHour?: string | undefined;
+  UpdatedAt: string;
+  UpdatedAtHour: string;
   DeletedAt?: string | undefined;
   ExpiresAt?: number | null | undefined;
 };
 
 /** @internal */
-export const GetBypassIpResponseBodyResult$outboundSchema: z.ZodType<
-  GetBypassIpResponseBodyResult$Outbound,
+export const GetBypassIpResult$outboundSchema: z.ZodType<
+  GetBypassIpResult$Outbound,
   z.ZodTypeDef,
-  GetBypassIpResponseBodyResult
+  GetBypassIpResult
 > = z.object({
-  ownerId: z.string().optional(),
-  id: z.string().optional(),
-  domain: z.string().optional(),
-  ip: z.string().optional(),
-  action: GetBypassIpResponseBodyAction$outboundSchema.optional(),
+  ownerId: z.string(),
+  id: z.string(),
+  domain: z.string(),
+  ip: z.string(),
+  action: GetBypassIpAction$outboundSchema.optional(),
   projectId: z.string().optional(),
   isProjectRule: z.boolean().optional(),
   note: z.string().optional(),
-  createdAt: z.string().optional(),
+  createdAt: z.string(),
   actorId: z.string().optional(),
-  updatedAt: z.string().optional(),
-  updatedAtHour: z.string().optional(),
+  updatedAt: z.string(),
+  updatedAtHour: z.string(),
   deletedAt: z.string().optional(),
   expiresAt: z.nullable(z.number()).optional(),
 }).transform((v) => {
@@ -301,38 +267,36 @@ export const GetBypassIpResponseBodyResult$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetBypassIpResponseBodyResult$ {
-  /** @deprecated use `GetBypassIpResponseBodyResult$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpResponseBodyResult$inboundSchema;
-  /** @deprecated use `GetBypassIpResponseBodyResult$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpResponseBodyResult$outboundSchema;
-  /** @deprecated use `GetBypassIpResponseBodyResult$Outbound` instead. */
-  export type Outbound = GetBypassIpResponseBodyResult$Outbound;
+export namespace GetBypassIpResult$ {
+  /** @deprecated use `GetBypassIpResult$inboundSchema` instead. */
+  export const inboundSchema = GetBypassIpResult$inboundSchema;
+  /** @deprecated use `GetBypassIpResult$outboundSchema` instead. */
+  export const outboundSchema = GetBypassIpResult$outboundSchema;
+  /** @deprecated use `GetBypassIpResult$Outbound` instead. */
+  export type Outbound = GetBypassIpResult$Outbound;
 }
 
-export function getBypassIpResponseBodyResultToJSON(
-  getBypassIpResponseBodyResult: GetBypassIpResponseBodyResult,
+export function getBypassIpResultToJSON(
+  getBypassIpResult: GetBypassIpResult,
 ): string {
   return JSON.stringify(
-    GetBypassIpResponseBodyResult$outboundSchema.parse(
-      getBypassIpResponseBodyResult,
-    ),
+    GetBypassIpResult$outboundSchema.parse(getBypassIpResult),
   );
 }
 
-export function getBypassIpResponseBodyResultFromJSON(
+export function getBypassIpResultFromJSON(
   jsonString: string,
-): SafeParseResult<GetBypassIpResponseBodyResult, SDKValidationError> {
+): SafeParseResult<GetBypassIpResult, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetBypassIpResponseBodyResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBypassIpResponseBodyResult' from JSON`,
+    (x) => GetBypassIpResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBypassIpResult' from JSON`,
   );
 }
 
 /** @internal */
-export const GetBypassIpResponseBodyPagination$inboundSchema: z.ZodType<
-  GetBypassIpResponseBodyPagination,
+export const GetBypassIpPagination$inboundSchema: z.ZodType<
+  GetBypassIpPagination,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -346,16 +310,16 @@ export const GetBypassIpResponseBodyPagination$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetBypassIpResponseBodyPagination$Outbound = {
+export type GetBypassIpPagination$Outbound = {
   OwnerId: string;
   Id: string;
 };
 
 /** @internal */
-export const GetBypassIpResponseBodyPagination$outboundSchema: z.ZodType<
-  GetBypassIpResponseBodyPagination$Outbound,
+export const GetBypassIpPagination$outboundSchema: z.ZodType<
+  GetBypassIpPagination$Outbound,
   z.ZodTypeDef,
-  GetBypassIpResponseBodyPagination
+  GetBypassIpPagination
 > = z.object({
   ownerId: z.string(),
   id: z.string(),
@@ -370,299 +334,30 @@ export const GetBypassIpResponseBodyPagination$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetBypassIpResponseBodyPagination$ {
-  /** @deprecated use `GetBypassIpResponseBodyPagination$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpResponseBodyPagination$inboundSchema;
-  /** @deprecated use `GetBypassIpResponseBodyPagination$outboundSchema` instead. */
-  export const outboundSchema =
-    GetBypassIpResponseBodyPagination$outboundSchema;
-  /** @deprecated use `GetBypassIpResponseBodyPagination$Outbound` instead. */
-  export type Outbound = GetBypassIpResponseBodyPagination$Outbound;
+export namespace GetBypassIpPagination$ {
+  /** @deprecated use `GetBypassIpPagination$inboundSchema` instead. */
+  export const inboundSchema = GetBypassIpPagination$inboundSchema;
+  /** @deprecated use `GetBypassIpPagination$outboundSchema` instead. */
+  export const outboundSchema = GetBypassIpPagination$outboundSchema;
+  /** @deprecated use `GetBypassIpPagination$Outbound` instead. */
+  export type Outbound = GetBypassIpPagination$Outbound;
 }
 
-export function getBypassIpResponseBodyPaginationToJSON(
-  getBypassIpResponseBodyPagination: GetBypassIpResponseBodyPagination,
+export function getBypassIpPaginationToJSON(
+  getBypassIpPagination: GetBypassIpPagination,
 ): string {
   return JSON.stringify(
-    GetBypassIpResponseBodyPagination$outboundSchema.parse(
-      getBypassIpResponseBodyPagination,
-    ),
+    GetBypassIpPagination$outboundSchema.parse(getBypassIpPagination),
   );
 }
 
-export function getBypassIpResponseBodyPaginationFromJSON(
+export function getBypassIpPaginationFromJSON(
   jsonString: string,
-): SafeParseResult<GetBypassIpResponseBodyPagination, SDKValidationError> {
+): SafeParseResult<GetBypassIpPagination, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetBypassIpResponseBodyPagination$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBypassIpResponseBodyPagination' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetBypassIpResponseBody2$inboundSchema: z.ZodType<
-  GetBypassIpResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  result: z.array(z.lazy(() => GetBypassIpResponseBodyResult$inboundSchema))
-    .optional(),
-  pagination: z.lazy(() => GetBypassIpResponseBodyPagination$inboundSchema)
-    .optional(),
-});
-
-/** @internal */
-export type GetBypassIpResponseBody2$Outbound = {
-  result?: Array<GetBypassIpResponseBodyResult$Outbound> | undefined;
-  pagination?: GetBypassIpResponseBodyPagination$Outbound | undefined;
-};
-
-/** @internal */
-export const GetBypassIpResponseBody2$outboundSchema: z.ZodType<
-  GetBypassIpResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetBypassIpResponseBody2
-> = z.object({
-  result: z.array(z.lazy(() => GetBypassIpResponseBodyResult$outboundSchema))
-    .optional(),
-  pagination: z.lazy(() => GetBypassIpResponseBodyPagination$outboundSchema)
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBypassIpResponseBody2$ {
-  /** @deprecated use `GetBypassIpResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpResponseBody2$inboundSchema;
-  /** @deprecated use `GetBypassIpResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpResponseBody2$outboundSchema;
-  /** @deprecated use `GetBypassIpResponseBody2$Outbound` instead. */
-  export type Outbound = GetBypassIpResponseBody2$Outbound;
-}
-
-export function getBypassIpResponseBody2ToJSON(
-  getBypassIpResponseBody2: GetBypassIpResponseBody2,
-): string {
-  return JSON.stringify(
-    GetBypassIpResponseBody2$outboundSchema.parse(getBypassIpResponseBody2),
-  );
-}
-
-export function getBypassIpResponseBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetBypassIpResponseBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetBypassIpResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBypassIpResponseBody2' from JSON`,
-  );
-}
-
-/** @internal */
-export const ResponseBodyAction$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyAction
-> = z.nativeEnum(ResponseBodyAction);
-
-/** @internal */
-export const ResponseBodyAction$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyAction
-> = ResponseBodyAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyAction$ {
-  /** @deprecated use `ResponseBodyAction$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyAction$inboundSchema;
-  /** @deprecated use `ResponseBodyAction$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyAction$outboundSchema;
-}
-
-/** @internal */
-export const ResponseBodyResult$inboundSchema: z.ZodType<
-  ResponseBodyResult,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  OwnerId: z.string().optional(),
-  Id: z.string().optional(),
-  Domain: z.string().optional(),
-  Ip: z.string().optional(),
-  Action: ResponseBodyAction$inboundSchema.optional(),
-  ProjectId: z.string().optional(),
-  IsProjectRule: z.boolean().optional(),
-  Note: z.string().optional(),
-  CreatedAt: z.string().optional(),
-  ActorId: z.string().optional(),
-  UpdatedAt: z.string().optional(),
-  UpdatedAtHour: z.string().optional(),
-  DeletedAt: z.string().optional(),
-  ExpiresAt: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "OwnerId": "ownerId",
-    "Id": "id",
-    "Domain": "domain",
-    "Ip": "ip",
-    "Action": "action",
-    "ProjectId": "projectId",
-    "IsProjectRule": "isProjectRule",
-    "Note": "note",
-    "CreatedAt": "createdAt",
-    "ActorId": "actorId",
-    "UpdatedAt": "updatedAt",
-    "UpdatedAtHour": "updatedAtHour",
-    "DeletedAt": "deletedAt",
-    "ExpiresAt": "expiresAt",
-  });
-});
-
-/** @internal */
-export type ResponseBodyResult$Outbound = {
-  OwnerId?: string | undefined;
-  Id?: string | undefined;
-  Domain?: string | undefined;
-  Ip?: string | undefined;
-  Action?: string | undefined;
-  ProjectId?: string | undefined;
-  IsProjectRule?: boolean | undefined;
-  Note?: string | undefined;
-  CreatedAt?: string | undefined;
-  ActorId?: string | undefined;
-  UpdatedAt?: string | undefined;
-  UpdatedAtHour?: string | undefined;
-  DeletedAt?: string | undefined;
-  ExpiresAt?: number | null | undefined;
-};
-
-/** @internal */
-export const ResponseBodyResult$outboundSchema: z.ZodType<
-  ResponseBodyResult$Outbound,
-  z.ZodTypeDef,
-  ResponseBodyResult
-> = z.object({
-  ownerId: z.string().optional(),
-  id: z.string().optional(),
-  domain: z.string().optional(),
-  ip: z.string().optional(),
-  action: ResponseBodyAction$outboundSchema.optional(),
-  projectId: z.string().optional(),
-  isProjectRule: z.boolean().optional(),
-  note: z.string().optional(),
-  createdAt: z.string().optional(),
-  actorId: z.string().optional(),
-  updatedAt: z.string().optional(),
-  updatedAtHour: z.string().optional(),
-  deletedAt: z.string().optional(),
-  expiresAt: z.nullable(z.number()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ownerId: "OwnerId",
-    id: "Id",
-    domain: "Domain",
-    ip: "Ip",
-    action: "Action",
-    projectId: "ProjectId",
-    isProjectRule: "IsProjectRule",
-    note: "Note",
-    createdAt: "CreatedAt",
-    actorId: "ActorId",
-    updatedAt: "UpdatedAt",
-    updatedAtHour: "UpdatedAtHour",
-    deletedAt: "DeletedAt",
-    expiresAt: "ExpiresAt",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyResult$ {
-  /** @deprecated use `ResponseBodyResult$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyResult$inboundSchema;
-  /** @deprecated use `ResponseBodyResult$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyResult$outboundSchema;
-  /** @deprecated use `ResponseBodyResult$Outbound` instead. */
-  export type Outbound = ResponseBodyResult$Outbound;
-}
-
-export function responseBodyResultToJSON(
-  responseBodyResult: ResponseBodyResult,
-): string {
-  return JSON.stringify(
-    ResponseBodyResult$outboundSchema.parse(responseBodyResult),
-  );
-}
-
-export function responseBodyResultFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyResult, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyResult' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetBypassIpResponseBody1$inboundSchema: z.ZodType<
-  GetBypassIpResponseBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  result: z.array(z.lazy(() => ResponseBodyResult$inboundSchema)),
-  pagination: z.nullable(z.any()).optional(),
-});
-
-/** @internal */
-export type GetBypassIpResponseBody1$Outbound = {
-  result: Array<ResponseBodyResult$Outbound>;
-  pagination?: any | null | undefined;
-};
-
-/** @internal */
-export const GetBypassIpResponseBody1$outboundSchema: z.ZodType<
-  GetBypassIpResponseBody1$Outbound,
-  z.ZodTypeDef,
-  GetBypassIpResponseBody1
-> = z.object({
-  result: z.array(z.lazy(() => ResponseBodyResult$outboundSchema)),
-  pagination: z.nullable(z.any()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBypassIpResponseBody1$ {
-  /** @deprecated use `GetBypassIpResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpResponseBody1$inboundSchema;
-  /** @deprecated use `GetBypassIpResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpResponseBody1$outboundSchema;
-  /** @deprecated use `GetBypassIpResponseBody1$Outbound` instead. */
-  export type Outbound = GetBypassIpResponseBody1$Outbound;
-}
-
-export function getBypassIpResponseBody1ToJSON(
-  getBypassIpResponseBody1: GetBypassIpResponseBody1,
-): string {
-  return JSON.stringify(
-    GetBypassIpResponseBody1$outboundSchema.parse(getBypassIpResponseBody1),
-  );
-}
-
-export function getBypassIpResponseBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetBypassIpResponseBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetBypassIpResponseBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetBypassIpResponseBody1' from JSON`,
+    (x) => GetBypassIpPagination$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBypassIpPagination' from JSON`,
   );
 }
 
@@ -671,25 +366,26 @@ export const GetBypassIpResponseBody$inboundSchema: z.ZodType<
   GetBypassIpResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetBypassIpResponseBody1$inboundSchema),
-  z.lazy(() => GetBypassIpResponseBody2$inboundSchema),
-]);
+> = z.object({
+  result: z.array(z.lazy(() => GetBypassIpResult$inboundSchema)),
+  pagination: z.lazy(() => GetBypassIpPagination$inboundSchema).optional(),
+});
 
 /** @internal */
-export type GetBypassIpResponseBody$Outbound =
-  | GetBypassIpResponseBody1$Outbound
-  | GetBypassIpResponseBody2$Outbound;
+export type GetBypassIpResponseBody$Outbound = {
+  result: Array<GetBypassIpResult$Outbound>;
+  pagination?: GetBypassIpPagination$Outbound | undefined;
+};
 
 /** @internal */
 export const GetBypassIpResponseBody$outboundSchema: z.ZodType<
   GetBypassIpResponseBody$Outbound,
   z.ZodTypeDef,
   GetBypassIpResponseBody
-> = z.union([
-  z.lazy(() => GetBypassIpResponseBody1$outboundSchema),
-  z.lazy(() => GetBypassIpResponseBody2$outboundSchema),
-]);
+> = z.object({
+  result: z.array(z.lazy(() => GetBypassIpResult$outboundSchema)),
+  pagination: z.lazy(() => GetBypassIpPagination$outboundSchema).optional(),
+});
 
 /**
  * @internal

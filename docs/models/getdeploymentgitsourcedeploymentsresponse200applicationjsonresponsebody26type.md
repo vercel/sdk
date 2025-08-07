@@ -7,11 +7,11 @@ import { GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody
 
 let value:
   GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody26Type =
-    "bitbucket";
+    "github-limited";
 ```
 
 ## Values
 
 ```typescript
-"bitbucket"
+"github-limited"
 ```

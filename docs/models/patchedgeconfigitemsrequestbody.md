@@ -13,7 +13,6 @@ let value: PatchEdgeConfigItemsRequestBody = {
       value: "<value>",
     },
   ],
-  definition: "<value>",
 };
 ```
 
@@ -22,4 +21,3 @@ let value: PatchEdgeConfigItemsRequestBody = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `items`            | *models.Items*[]   | :heavy_check_mark: | N/A                |
-| `definition`       | *any*              | :heavy_check_mark: | N/A                |

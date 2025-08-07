@@ -18,7 +18,7 @@ let value: UserEvent = {
     project: {
       name: "<value>",
     },
-    projectMembership: {},
+    removedMembership: {},
   },
 };
 ```

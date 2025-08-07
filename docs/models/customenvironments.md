@@ -10,7 +10,7 @@ import { CustomEnvironments } from "@vercel/sdk/models/updateprojectdatacacheop.
 let value: CustomEnvironments = {
   id: "<id>",
   slug: "<value>",
-  type: "preview",
+  type: "production",
   createdAt: 520.72,
   updatedAt: 5983.83,
 };

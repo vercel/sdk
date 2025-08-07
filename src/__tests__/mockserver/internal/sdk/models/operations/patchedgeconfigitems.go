@@ -527,8 +527,7 @@ func (u ItemUnion1) MarshalJSON() ([]byte, error) {
 }
 
 type PatchEdgeConfigItemsRequestBody struct {
-	Items      []ItemUnion1 `json:"items"`
-	Definition any          `json:"definition"`
+	Items []ItemUnion1 `json:"items"`
 }
 
 func (o *PatchEdgeConfigItemsRequestBody) GetItems() []ItemUnion1 {
@@ -538,16 +537,8 @@ func (o *PatchEdgeConfigItemsRequestBody) GetItems() []ItemUnion1 {
 	return o.Items
 }
 
-func (o *PatchEdgeConfigItemsRequestBody) GetDefinition() any {
-	if o == nil {
-		return nil
-	}
-	return o.Definition
-}
-
 type PatchEdgeConfigItemsRequest struct {
-	EdgeConfigID string  `pathParam:"style=simple,explode=false,name=edgeConfigId"`
-	DryRun       *string `queryParam:"style=form,explode=true,name=dryRun"`
+	EdgeConfigID string `pathParam:"style=simple,explode=false,name=edgeConfigId"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -560,13 +551,6 @@ func (o *PatchEdgeConfigItemsRequest) GetEdgeConfigID() string {
 		return ""
 	}
 	return o.EdgeConfigID
-}
-
-func (o *PatchEdgeConfigItemsRequest) GetDryRun() *string {
-	if o == nil {
-		return nil
-	}
-	return o.DryRun
 }
 
 func (o *PatchEdgeConfigItemsRequest) GetTeamID() *string {

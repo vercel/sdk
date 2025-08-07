@@ -13,6 +13,7 @@ Returns a stream of logs for a given deployment.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRuntimeLogs" method="get" path="/v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

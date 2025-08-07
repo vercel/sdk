@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndNineteen } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndNineteen = {
-  enabled: true,
-  totpVerified: false,
-};
+let value: OneHundredAndNineteen = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

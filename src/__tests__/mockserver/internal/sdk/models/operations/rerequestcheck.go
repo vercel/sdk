@@ -11,6 +11,8 @@ type RerequestCheckRequest struct {
 	DeploymentID string `pathParam:"style=simple,explode=false,name=deploymentId"`
 	// The check to rerun
 	CheckID string `pathParam:"style=simple,explode=false,name=checkId"`
+	// Mark the check as running
+	AutoUpdate *bool `queryParam:"style=form,explode=true,name=autoUpdate"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -29,6 +31,13 @@ func (o *RerequestCheckRequest) GetCheckID() string {
 		return ""
 	}
 	return o.CheckID
+}
+
+func (o *RerequestCheckRequest) GetAutoUpdate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AutoUpdate
 }
 
 func (o *RerequestCheckRequest) GetTeamID() *string {

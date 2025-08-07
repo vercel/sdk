@@ -22,6 +22,7 @@ Allows to purchase the specified domain.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="buyDomain" method="post" path="/v5/domains/buy" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -129,6 +130,7 @@ Check the price to purchase a domain and how long a single purchase period is.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="checkDomainPrice" method="get" path="/v4/domains/price" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -209,6 +211,7 @@ Check if a domain name is available for purchase.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="checkDomainStatus" method="get" path="/v4/domains/status" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -287,6 +290,7 @@ Fetch domain transfer availability or transfer status if a transfer is in progre
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDomainTransfer" method="get" path="/v1/domains/{domain}/registry" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -365,6 +369,7 @@ Get a Domain's configuration.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDomainConfig" method="get" path="/v6/domains/{domain}/config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -443,6 +448,7 @@ Get information for a single domain in an account or team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDomain" method="get" path="/v5/domains/{domain}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -522,6 +528,7 @@ Retrieves a list of domains registered for the authenticated user or team. By de
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDomains" method="get" path="/v5/domains" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -604,6 +611,7 @@ This endpoint is used for adding a new apex domain name with Vercel for the auth
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createOrTransferDomain" method="post" path="/v7/domains" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -691,6 +699,7 @@ Update or move apex domain.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchDomain" method="patch" path="/v3/domains/{domain}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -776,6 +785,7 @@ Delete a previously registered domain name from Vercel. Deleting a domain will a
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteDomain" method="delete" path="/v6/domains/{domain}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

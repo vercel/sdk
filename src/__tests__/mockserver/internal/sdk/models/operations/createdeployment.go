@@ -232,6 +232,14 @@ type GitMetadata struct {
 	CommitSha *string `json:"commitSha,omitempty"`
 	// Whether or not there have been modifications to the working tree since the latest commit
 	Dirty *bool `json:"dirty,omitempty"`
+	// True if process.env.CI was set when deploying
+	Ci *bool `json:"ci,omitempty"`
+	// The type of CI system used
+	CiType *string `json:"ciType,omitempty"`
+	// The username used for the Git Provider (e.g. GitHub) if their CI (e.g. GitHub Actions) was used, if available
+	CiGitProviderUsername *string `json:"ciGitProviderUsername,omitempty"`
+	// The visibility of the Git repository if their CI (e.g. GitHub Actions) was used, if available
+	CiGitRepoVisibility *string `json:"ciGitRepoVisibility,omitempty"`
 }
 
 func (o *GitMetadata) GetRemoteURL() *string {
@@ -281,6 +289,34 @@ func (o *GitMetadata) GetDirty() *bool {
 		return nil
 	}
 	return o.Dirty
+}
+
+func (o *GitMetadata) GetCi() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Ci
+}
+
+func (o *GitMetadata) GetCiType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CiType
+}
+
+func (o *GitMetadata) GetCiGitProviderUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CiGitProviderUsername
+}
+
+func (o *GitMetadata) GetCiGitRepoVisibility() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CiGitRepoVisibility
 }
 
 type TypeBitbucketRequest2 string
@@ -904,6 +940,7 @@ const (
 	CreateDeploymentFrameworkRequestSanity         CreateDeploymentFrameworkRequest = "sanity"
 	CreateDeploymentFrameworkRequestStorybook      CreateDeploymentFrameworkRequest = "storybook"
 	CreateDeploymentFrameworkRequestNitro          CreateDeploymentFrameworkRequest = "nitro"
+	CreateDeploymentFrameworkRequestHono           CreateDeploymentFrameworkRequest = "hono"
 )
 
 func (e CreateDeploymentFrameworkRequest) ToPointer() *CreateDeploymentFrameworkRequest {
@@ -1008,6 +1045,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "storybook":
 		fallthrough
 	case "nitro":
+		fallthrough
+	case "hono":
 		*e = CreateDeploymentFrameworkRequest(v)
 		return nil
 	default:
@@ -1015,24 +1054,24 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CreateDeploymentNodeVersion - Override the Node.js version that should be used for this deployment
-type CreateDeploymentNodeVersion string
+// CreateDeploymentNodeVersionRequest - Override the Node.js version that should be used for this deployment
+type CreateDeploymentNodeVersionRequest string
 
 const (
-	CreateDeploymentNodeVersionTwentyTwoDotX  CreateDeploymentNodeVersion = "22.x"
-	CreateDeploymentNodeVersionTwentyDotX     CreateDeploymentNodeVersion = "20.x"
-	CreateDeploymentNodeVersionEighteenDotX   CreateDeploymentNodeVersion = "18.x"
-	CreateDeploymentNodeVersionSixteenDotX    CreateDeploymentNodeVersion = "16.x"
-	CreateDeploymentNodeVersionFourteenDotX   CreateDeploymentNodeVersion = "14.x"
-	CreateDeploymentNodeVersionTwelveDotX     CreateDeploymentNodeVersion = "12.x"
-	CreateDeploymentNodeVersionTenDotX        CreateDeploymentNodeVersion = "10.x"
-	CreateDeploymentNodeVersionEightDot10DotX CreateDeploymentNodeVersion = "8.10.x"
+	CreateDeploymentNodeVersionRequestTwentyTwoDotX  CreateDeploymentNodeVersionRequest = "22.x"
+	CreateDeploymentNodeVersionRequestTwentyDotX     CreateDeploymentNodeVersionRequest = "20.x"
+	CreateDeploymentNodeVersionRequestEighteenDotX   CreateDeploymentNodeVersionRequest = "18.x"
+	CreateDeploymentNodeVersionRequestSixteenDotX    CreateDeploymentNodeVersionRequest = "16.x"
+	CreateDeploymentNodeVersionRequestFourteenDotX   CreateDeploymentNodeVersionRequest = "14.x"
+	CreateDeploymentNodeVersionRequestTwelveDotX     CreateDeploymentNodeVersionRequest = "12.x"
+	CreateDeploymentNodeVersionRequestTenDotX        CreateDeploymentNodeVersionRequest = "10.x"
+	CreateDeploymentNodeVersionRequestEightDot10DotX CreateDeploymentNodeVersionRequest = "8.10.x"
 )
 
-func (e CreateDeploymentNodeVersion) ToPointer() *CreateDeploymentNodeVersion {
+func (e CreateDeploymentNodeVersionRequest) ToPointer() *CreateDeploymentNodeVersionRequest {
 	return &e
 }
-func (e *CreateDeploymentNodeVersion) UnmarshalJSON(data []byte) error {
+func (e *CreateDeploymentNodeVersionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1053,10 +1092,10 @@ func (e *CreateDeploymentNodeVersion) UnmarshalJSON(data []byte) error {
 	case "10.x":
 		fallthrough
 	case "8.10.x":
-		*e = CreateDeploymentNodeVersion(v)
+		*e = CreateDeploymentNodeVersionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDeploymentNodeVersion: %v", v)
+		return fmt.Errorf("invalid value for CreateDeploymentNodeVersionRequest: %v", v)
 	}
 }
 
@@ -1072,7 +1111,7 @@ type ProjectSettingsRequest struct {
 	// The install command for this project. When `null` is used this value will be automatically detected
 	InstallCommand *string `json:"installCommand,omitempty"`
 	// Override the Node.js version that should be used for this deployment
-	NodeVersion *CreateDeploymentNodeVersion `json:"nodeVersion,omitempty"`
+	NodeVersion *CreateDeploymentNodeVersionRequest `json:"nodeVersion,omitempty"`
 	// The output directory of the project. When `null` is used this value will be automatically detected
 	OutputDirectory *string `json:"outputDirectory,omitempty"`
 	// The name of a directory or relative path to the source code of your project. When `null` is used it will default to the project root
@@ -1122,7 +1161,7 @@ func (o *ProjectSettingsRequest) GetInstallCommand() *string {
 	return o.InstallCommand
 }
 
-func (o *ProjectSettingsRequest) GetNodeVersion() *CreateDeploymentNodeVersion {
+func (o *ProjectSettingsRequest) GetNodeVersion() *CreateDeploymentNodeVersionRequest {
 	if o == nil {
 		return nil
 	}
@@ -1473,6 +1512,7 @@ const (
 	CreateDeploymentFrameworkLambdasSanity         CreateDeploymentFrameworkLambdas = "sanity"
 	CreateDeploymentFrameworkLambdasStorybook      CreateDeploymentFrameworkLambdas = "storybook"
 	CreateDeploymentFrameworkLambdasNitro          CreateDeploymentFrameworkLambdas = "nitro"
+	CreateDeploymentFrameworkLambdasHono           CreateDeploymentFrameworkLambdas = "hono"
 )
 
 func (e CreateDeploymentFrameworkLambdas) ToPointer() *CreateDeploymentFrameworkLambdas {
@@ -1577,6 +1617,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "storybook":
 		fallthrough
 	case "nitro":
+		fallthrough
+	case "hono":
 		*e = CreateDeploymentFrameworkLambdas(v)
 		return nil
 	default:
@@ -1748,11 +1790,11 @@ func (o *CreateDeploymentProjectSettingsLambdas) GetWebAnalytics() *CreateDeploy
 type CreateDeploymentIntegrationsStatus string
 
 const (
+	CreateDeploymentIntegrationsStatusError   CreateDeploymentIntegrationsStatus = "error"
+	CreateDeploymentIntegrationsStatusTimeout CreateDeploymentIntegrationsStatus = "timeout"
 	CreateDeploymentIntegrationsStatusSkipped CreateDeploymentIntegrationsStatus = "skipped"
 	CreateDeploymentIntegrationsStatusPending CreateDeploymentIntegrationsStatus = "pending"
 	CreateDeploymentIntegrationsStatusReady   CreateDeploymentIntegrationsStatus = "ready"
-	CreateDeploymentIntegrationsStatusError   CreateDeploymentIntegrationsStatus = "error"
-	CreateDeploymentIntegrationsStatusTimeout CreateDeploymentIntegrationsStatus = "timeout"
 )
 
 func (e CreateDeploymentIntegrationsStatus) ToPointer() *CreateDeploymentIntegrationsStatus {
@@ -1764,15 +1806,15 @@ func (e *CreateDeploymentIntegrationsStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "error":
+		fallthrough
+	case "timeout":
+		fallthrough
 	case "skipped":
 		fallthrough
 	case "pending":
 		fallthrough
 	case "ready":
-		fallthrough
-	case "error":
-		fallthrough
-	case "timeout":
 		*e = CreateDeploymentIntegrationsStatus(v)
 		return nil
 	default:
@@ -2084,8 +2126,8 @@ func (o *CreateDeploymentCreator) GetAvatar() *string {
 type CreateDeploymentLambdaReadyState string
 
 const (
-	CreateDeploymentLambdaReadyStateBuilding     CreateDeploymentLambdaReadyState = "BUILDING"
 	CreateDeploymentLambdaReadyStateError        CreateDeploymentLambdaReadyState = "ERROR"
+	CreateDeploymentLambdaReadyStateBuilding     CreateDeploymentLambdaReadyState = "BUILDING"
 	CreateDeploymentLambdaReadyStateInitializing CreateDeploymentLambdaReadyState = "INITIALIZING"
 	CreateDeploymentLambdaReadyStateReady        CreateDeploymentLambdaReadyState = "READY"
 )
@@ -2099,9 +2141,9 @@ func (e *CreateDeploymentLambdaReadyState) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "BUILDING":
-		fallthrough
 	case "ERROR":
+		fallthrough
+	case "BUILDING":
 		fallthrough
 	case "INITIALIZING":
 		fallthrough
@@ -2136,8 +2178,8 @@ func (o *CreateDeploymentOutput) GetFunctionName() string {
 type CreateDeploymentLambda struct {
 	ID           *string                           `json:"id,omitempty"`
 	CreatedAt    *float64                          `json:"createdAt,omitempty"`
-	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyState   *CreateDeploymentLambdaReadyState `json:"readyState,omitempty"`
+	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                          `json:"readyStateAt,omitempty"`
 	Output       []CreateDeploymentOutput          `json:"output"`
 }
@@ -2156,18 +2198,18 @@ func (o *CreateDeploymentLambda) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *CreateDeploymentLambda) GetEntrypoint() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Entrypoint
-}
-
 func (o *CreateDeploymentLambda) GetReadyState() *CreateDeploymentLambdaReadyState {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
+}
+
+func (o *CreateDeploymentLambda) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *CreateDeploymentLambda) GetReadyStateAt() *float64 {
@@ -2814,6 +2856,80 @@ func (o *CreateDeploymentGitSourceLambdasGitlab2) GetProjectID() float64 {
 	return o.ProjectID
 }
 
+type CreateDeploymentTypeGithubLimited3 string
+
+const (
+	CreateDeploymentTypeGithubLimited3GithubLimited CreateDeploymentTypeGithubLimited3 = "github-limited"
+)
+
+func (e CreateDeploymentTypeGithubLimited3) ToPointer() *CreateDeploymentTypeGithubLimited3 {
+	return &e
+}
+func (e *CreateDeploymentTypeGithubLimited3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = CreateDeploymentTypeGithubLimited3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentTypeGithubLimited3: %v", v)
+	}
+}
+
+type CreateDeploymentGitSourceGithubLimited3 struct {
+	Type   CreateDeploymentTypeGithubLimited3 `json:"type"`
+	Ref    string                             `json:"ref"`
+	Sha    string                             `json:"sha"`
+	RepoID float64                            `json:"repoId"`
+	Org    *string                            `json:"org,omitempty"`
+	Repo   *string                            `json:"repo,omitempty"`
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited3) GetType() CreateDeploymentTypeGithubLimited3 {
+	if o == nil {
+		return CreateDeploymentTypeGithubLimited3("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited3) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited3) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited3) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited3) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited3) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
 type CreateDeploymentTypeGithubCustomHost3 string
 
 const (
@@ -3306,6 +3422,209 @@ func (o *CreateDeploymentGitSourceLambdasGitlab1) GetPrID() *float64 {
 	return o.PrID
 }
 
+type CreateDeploymentTypeGithubLimited2 string
+
+const (
+	CreateDeploymentTypeGithubLimited2GithubLimited CreateDeploymentTypeGithubLimited2 = "github-limited"
+)
+
+func (e CreateDeploymentTypeGithubLimited2) ToPointer() *CreateDeploymentTypeGithubLimited2 {
+	return &e
+}
+func (e *CreateDeploymentTypeGithubLimited2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = CreateDeploymentTypeGithubLimited2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentTypeGithubLimited2: %v", v)
+	}
+}
+
+type CreateDeploymentGitSourceGithubLimited2 struct {
+	Type CreateDeploymentTypeGithubLimited2 `json:"type"`
+	Org  string                             `json:"org"`
+	Repo string                             `json:"repo"`
+	Ref  *string                            `json:"ref,omitempty"`
+	Sha  *string                            `json:"sha,omitempty"`
+	PrID *float64                           `json:"prId,omitempty"`
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited2) GetType() CreateDeploymentTypeGithubLimited2 {
+	if o == nil {
+		return CreateDeploymentTypeGithubLimited2("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited2) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited2) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited2) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited2) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited2) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type CreateDeploymentTypeGithubLimited1 string
+
+const (
+	CreateDeploymentTypeGithubLimited1GithubLimited CreateDeploymentTypeGithubLimited1 = "github-limited"
+)
+
+func (e CreateDeploymentTypeGithubLimited1) ToPointer() *CreateDeploymentTypeGithubLimited1 {
+	return &e
+}
+func (e *CreateDeploymentTypeGithubLimited1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = CreateDeploymentTypeGithubLimited1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentTypeGithubLimited1: %v", v)
+	}
+}
+
+type CreateDeploymentRepoIDLambdas3Type string
+
+const (
+	CreateDeploymentRepoIDLambdas3TypeStr    CreateDeploymentRepoIDLambdas3Type = "str"
+	CreateDeploymentRepoIDLambdas3TypeNumber CreateDeploymentRepoIDLambdas3Type = "number"
+)
+
+type CreateDeploymentRepoIDLambdas3 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CreateDeploymentRepoIDLambdas3Type
+}
+
+func CreateCreateDeploymentRepoIDLambdas3Str(str string) CreateDeploymentRepoIDLambdas3 {
+	typ := CreateDeploymentRepoIDLambdas3TypeStr
+
+	return CreateDeploymentRepoIDLambdas3{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentRepoIDLambdas3Number(number float64) CreateDeploymentRepoIDLambdas3 {
+	typ := CreateDeploymentRepoIDLambdas3TypeNumber
+
+	return CreateDeploymentRepoIDLambdas3{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CreateDeploymentRepoIDLambdas3) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CreateDeploymentRepoIDLambdas3TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CreateDeploymentRepoIDLambdas3TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateDeploymentRepoIDLambdas3", string(data))
+}
+
+func (u CreateDeploymentRepoIDLambdas3) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateDeploymentRepoIDLambdas3: all fields are null")
+}
+
+type CreateDeploymentGitSourceGithubLimited1 struct {
+	Type   CreateDeploymentTypeGithubLimited1 `json:"type"`
+	RepoID CreateDeploymentRepoIDLambdas3     `json:"repoId"`
+	Ref    *string                            `json:"ref,omitempty"`
+	Sha    *string                            `json:"sha,omitempty"`
+	PrID   *float64                           `json:"prId,omitempty"`
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited1) GetType() CreateDeploymentTypeGithubLimited1 {
+	if o == nil {
+		return CreateDeploymentTypeGithubLimited1("")
+	}
+	return o.Type
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited1) GetRepoID() CreateDeploymentRepoIDLambdas3 {
+	if o == nil {
+		return CreateDeploymentRepoIDLambdas3{}
+	}
+	return o.RepoID
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited1) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited1) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *CreateDeploymentGitSourceGithubLimited1) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
 type CreateDeploymentTypeGithubCustomHost2 string
 
 const (
@@ -3735,12 +4054,15 @@ const (
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub2    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_2"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost1 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_1"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost2 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_2"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited1    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubLimited_1"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited2    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubLimited_2"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGitlab1    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Gitlab_1"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket1 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_1"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket2 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_2"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceCustom            CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Custom"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub3    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_3"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost3 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_3"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited3    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubLimited_3"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGitlab2    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Gitlab_2"
 	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket3 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_3"
 )
@@ -3750,12 +4072,15 @@ type CreateDeploymentGitSourceLambdasUnion struct {
 	CreateDeploymentGitSourceLambdasGithub2    *CreateDeploymentGitSourceLambdasGithub2    `queryParam:"inline"`
 	CreateDeploymentGitSourceGithubCustomHost1 *CreateDeploymentGitSourceGithubCustomHost1 `queryParam:"inline"`
 	CreateDeploymentGitSourceGithubCustomHost2 *CreateDeploymentGitSourceGithubCustomHost2 `queryParam:"inline"`
+	CreateDeploymentGitSourceGithubLimited1    *CreateDeploymentGitSourceGithubLimited1    `queryParam:"inline"`
+	CreateDeploymentGitSourceGithubLimited2    *CreateDeploymentGitSourceGithubLimited2    `queryParam:"inline"`
 	CreateDeploymentGitSourceLambdasGitlab1    *CreateDeploymentGitSourceLambdasGitlab1    `queryParam:"inline"`
 	CreateDeploymentGitSourceLambdasBitbucket1 *CreateDeploymentGitSourceLambdasBitbucket1 `queryParam:"inline"`
 	CreateDeploymentGitSourceLambdasBitbucket2 *CreateDeploymentGitSourceLambdasBitbucket2 `queryParam:"inline"`
 	CreateDeploymentGitSourceCustom            *CreateDeploymentGitSourceCustom            `queryParam:"inline"`
 	CreateDeploymentGitSourceLambdasGithub3    *CreateDeploymentGitSourceLambdasGithub3    `queryParam:"inline"`
 	CreateDeploymentGitSourceGithubCustomHost3 *CreateDeploymentGitSourceGithubCustomHost3 `queryParam:"inline"`
+	CreateDeploymentGitSourceGithubLimited3    *CreateDeploymentGitSourceGithubLimited3    `queryParam:"inline"`
 	CreateDeploymentGitSourceLambdasGitlab2    *CreateDeploymentGitSourceLambdasGitlab2    `queryParam:"inline"`
 	CreateDeploymentGitSourceLambdasBitbucket3 *CreateDeploymentGitSourceLambdasBitbucket3 `queryParam:"inline"`
 
@@ -3795,6 +4120,24 @@ func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubC
 	return CreateDeploymentGitSourceLambdasUnion{
 		CreateDeploymentGitSourceGithubCustomHost2: &createDeploymentGitSourceGithubCustomHost2,
 		Type: typ,
+	}
+}
+
+func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubLimited1(createDeploymentGitSourceGithubLimited1 CreateDeploymentGitSourceGithubLimited1) CreateDeploymentGitSourceLambdasUnion {
+	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited1
+
+	return CreateDeploymentGitSourceLambdasUnion{
+		CreateDeploymentGitSourceGithubLimited1: &createDeploymentGitSourceGithubLimited1,
+		Type:                                    typ,
+	}
+}
+
+func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubLimited2(createDeploymentGitSourceGithubLimited2 CreateDeploymentGitSourceGithubLimited2) CreateDeploymentGitSourceLambdasUnion {
+	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited2
+
+	return CreateDeploymentGitSourceLambdasUnion{
+		CreateDeploymentGitSourceGithubLimited2: &createDeploymentGitSourceGithubLimited2,
+		Type:                                    typ,
 	}
 }
 
@@ -3852,6 +4195,15 @@ func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubC
 	}
 }
 
+func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubLimited3(createDeploymentGitSourceGithubLimited3 CreateDeploymentGitSourceGithubLimited3) CreateDeploymentGitSourceLambdasUnion {
+	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited3
+
+	return CreateDeploymentGitSourceLambdasUnion{
+		CreateDeploymentGitSourceGithubLimited3: &createDeploymentGitSourceGithubLimited3,
+		Type:                                    typ,
+	}
+}
+
 func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceLambdasGitlab2(createDeploymentGitSourceLambdasGitlab2 CreateDeploymentGitSourceLambdasGitlab2) CreateDeploymentGitSourceLambdasUnion {
 	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGitlab2
 
@@ -3886,13 +4238,6 @@ func (u *CreateDeploymentGitSourceLambdasUnion) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var createDeploymentGitSourceLambdasGithub1 CreateDeploymentGitSourceLambdasGithub1 = CreateDeploymentGitSourceLambdasGithub1{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithub1, "", true, true); err == nil {
-		u.CreateDeploymentGitSourceLambdasGithub1 = &createDeploymentGitSourceLambdasGithub1
-		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub1
-		return nil
-	}
-
 	var createDeploymentGitSourceLambdasGitlab1 CreateDeploymentGitSourceLambdasGitlab1 = CreateDeploymentGitSourceLambdasGitlab1{}
 	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGitlab1, "", true, true); err == nil {
 		u.CreateDeploymentGitSourceLambdasGitlab1 = &createDeploymentGitSourceLambdasGitlab1
@@ -3900,17 +4245,24 @@ func (u *CreateDeploymentGitSourceLambdasUnion) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var createDeploymentGitSourceLambdasGithub2 CreateDeploymentGitSourceLambdasGithub2 = CreateDeploymentGitSourceLambdasGithub2{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithub2, "", true, true); err == nil {
-		u.CreateDeploymentGitSourceLambdasGithub2 = &createDeploymentGitSourceLambdasGithub2
-		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub2
+	var createDeploymentGitSourceGithubLimited1 CreateDeploymentGitSourceGithubLimited1 = CreateDeploymentGitSourceGithubLimited1{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubLimited1, "", true, true); err == nil {
+		u.CreateDeploymentGitSourceGithubLimited1 = &createDeploymentGitSourceGithubLimited1
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited1
 		return nil
 	}
 
-	var createDeploymentGitSourceGithubCustomHost1 CreateDeploymentGitSourceGithubCustomHost1 = CreateDeploymentGitSourceGithubCustomHost1{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubCustomHost1, "", true, true); err == nil {
-		u.CreateDeploymentGitSourceGithubCustomHost1 = &createDeploymentGitSourceGithubCustomHost1
-		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost1
+	var createDeploymentGitSourceLambdasGithub1 CreateDeploymentGitSourceLambdasGithub1 = CreateDeploymentGitSourceLambdasGithub1{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithub1, "", true, true); err == nil {
+		u.CreateDeploymentGitSourceLambdasGithub1 = &createDeploymentGitSourceLambdasGithub1
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub1
+		return nil
+	}
+
+	var createDeploymentGitSourceGithubLimited2 CreateDeploymentGitSourceGithubLimited2 = CreateDeploymentGitSourceGithubLimited2{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubLimited2, "", true, true); err == nil {
+		u.CreateDeploymentGitSourceGithubLimited2 = &createDeploymentGitSourceGithubLimited2
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited2
 		return nil
 	}
 
@@ -3928,10 +4280,31 @@ func (u *CreateDeploymentGitSourceLambdasUnion) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
+	var createDeploymentGitSourceGithubCustomHost1 CreateDeploymentGitSourceGithubCustomHost1 = CreateDeploymentGitSourceGithubCustomHost1{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubCustomHost1, "", true, true); err == nil {
+		u.CreateDeploymentGitSourceGithubCustomHost1 = &createDeploymentGitSourceGithubCustomHost1
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost1
+		return nil
+	}
+
 	var createDeploymentGitSourceLambdasGithub3 CreateDeploymentGitSourceLambdasGithub3 = CreateDeploymentGitSourceLambdasGithub3{}
 	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithub3, "", true, true); err == nil {
 		u.CreateDeploymentGitSourceLambdasGithub3 = &createDeploymentGitSourceLambdasGithub3
 		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub3
+		return nil
+	}
+
+	var createDeploymentGitSourceGithubLimited3 CreateDeploymentGitSourceGithubLimited3 = CreateDeploymentGitSourceGithubLimited3{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubLimited3, "", true, true); err == nil {
+		u.CreateDeploymentGitSourceGithubLimited3 = &createDeploymentGitSourceGithubLimited3
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited3
+		return nil
+	}
+
+	var createDeploymentGitSourceLambdasGithub2 CreateDeploymentGitSourceLambdasGithub2 = CreateDeploymentGitSourceLambdasGithub2{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithub2, "", true, true); err == nil {
+		u.CreateDeploymentGitSourceLambdasGithub2 = &createDeploymentGitSourceLambdasGithub2
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub2
 		return nil
 	}
 
@@ -3976,6 +4349,14 @@ func (u CreateDeploymentGitSourceLambdasUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubCustomHost2, "", true)
 	}
 
+	if u.CreateDeploymentGitSourceGithubLimited1 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubLimited1, "", true)
+	}
+
+	if u.CreateDeploymentGitSourceGithubLimited2 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubLimited2, "", true)
+	}
+
 	if u.CreateDeploymentGitSourceLambdasGitlab1 != nil {
 		return utils.MarshalJSON(u.CreateDeploymentGitSourceLambdasGitlab1, "", true)
 	}
@@ -3998,6 +4379,10 @@ func (u CreateDeploymentGitSourceLambdasUnion) MarshalJSON() ([]byte, error) {
 
 	if u.CreateDeploymentGitSourceGithubCustomHost3 != nil {
 		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubCustomHost3, "", true)
+	}
+
+	if u.CreateDeploymentGitSourceGithubLimited3 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubLimited3, "", true)
 	}
 
 	if u.CreateDeploymentGitSourceLambdasGitlab2 != nil {
@@ -4036,6 +4421,51 @@ func (o *CreateDeploymentProject) GetFramework() *string {
 		return nil
 	}
 	return o.Framework
+}
+
+// CreateDeploymentNodeVersionLambdas - If set it overrides the `projectSettings.nodeVersion` for this deployment.
+type CreateDeploymentNodeVersionLambdas string
+
+const (
+	CreateDeploymentNodeVersionLambdasTwentyTwoDotX  CreateDeploymentNodeVersionLambdas = "22.x"
+	CreateDeploymentNodeVersionLambdasTwentyDotX     CreateDeploymentNodeVersionLambdas = "20.x"
+	CreateDeploymentNodeVersionLambdasEighteenDotX   CreateDeploymentNodeVersionLambdas = "18.x"
+	CreateDeploymentNodeVersionLambdasSixteenDotX    CreateDeploymentNodeVersionLambdas = "16.x"
+	CreateDeploymentNodeVersionLambdasFourteenDotX   CreateDeploymentNodeVersionLambdas = "14.x"
+	CreateDeploymentNodeVersionLambdasTwelveDotX     CreateDeploymentNodeVersionLambdas = "12.x"
+	CreateDeploymentNodeVersionLambdasTenDotX        CreateDeploymentNodeVersionLambdas = "10.x"
+	CreateDeploymentNodeVersionLambdasEightDot10DotX CreateDeploymentNodeVersionLambdas = "8.10.x"
+)
+
+func (e CreateDeploymentNodeVersionLambdas) ToPointer() *CreateDeploymentNodeVersionLambdas {
+	return &e
+}
+func (e *CreateDeploymentNodeVersionLambdas) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "22.x":
+		fallthrough
+	case "20.x":
+		fallthrough
+	case "18.x":
+		fallthrough
+	case "16.x":
+		fallthrough
+	case "14.x":
+		fallthrough
+	case "12.x":
+		fallthrough
+	case "10.x":
+		fallthrough
+	case "8.10.x":
+		*e = CreateDeploymentNodeVersionLambdas(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateDeploymentNodeVersionLambdas: %v", v)
+	}
 }
 
 type CreateDeploymentReadyState string
@@ -4369,9 +4799,9 @@ func (o *CreateDeploymentOidcTokenClaims) GetEnvironment() string {
 type CreateDeploymentPlan string
 
 const (
+	CreateDeploymentPlanHobby      CreateDeploymentPlan = "hobby"
 	CreateDeploymentPlanPro        CreateDeploymentPlan = "pro"
 	CreateDeploymentPlanEnterprise CreateDeploymentPlan = "enterprise"
-	CreateDeploymentPlanHobby      CreateDeploymentPlan = "hobby"
 )
 
 func (e CreateDeploymentPlan) ToPointer() *CreateDeploymentPlan {
@@ -4383,11 +4813,11 @@ func (e *CreateDeploymentPlan) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "hobby":
+		fallthrough
 	case "pro":
 		fallthrough
 	case "enterprise":
-		fallthrough
-	case "hobby":
 		*e = CreateDeploymentPlan(v)
 		return nil
 	default:
@@ -4398,8 +4828,8 @@ func (e *CreateDeploymentPlan) UnmarshalJSON(data []byte) error {
 type CreateDeploymentFunctionType string
 
 const (
-	CreateDeploymentFunctionTypeFluid    CreateDeploymentFunctionType = "fluid"
 	CreateDeploymentFunctionTypeStandard CreateDeploymentFunctionType = "standard"
+	CreateDeploymentFunctionTypeFluid    CreateDeploymentFunctionType = "fluid"
 )
 
 func (e CreateDeploymentFunctionType) ToPointer() *CreateDeploymentFunctionType {
@@ -4411,9 +4841,9 @@ func (e *CreateDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "fluid":
-		fallthrough
 	case "standard":
+		fallthrough
+	case "fluid":
 		*e = CreateDeploymentFunctionType(v)
 		return nil
 	default:
@@ -4424,8 +4854,8 @@ func (e *CreateDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 type CreateDeploymentFunctionMemoryType string
 
 const (
-	CreateDeploymentFunctionMemoryTypeStandard       CreateDeploymentFunctionMemoryType = "standard"
 	CreateDeploymentFunctionMemoryTypeStandardLegacy CreateDeploymentFunctionMemoryType = "standard_legacy"
+	CreateDeploymentFunctionMemoryTypeStandard       CreateDeploymentFunctionMemoryType = "standard"
 	CreateDeploymentFunctionMemoryTypePerformance    CreateDeploymentFunctionMemoryType = "performance"
 )
 
@@ -4438,9 +4868,9 @@ func (e *CreateDeploymentFunctionMemoryType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "standard_legacy":
+		fallthrough
+	case "standard":
 		fallthrough
 	case "performance":
 		*e = CreateDeploymentFunctionMemoryType(v)
@@ -4707,12 +5137,12 @@ func (o *CreateDeploymentRoute3) GetMiddleware() float64 {
 type CreateDeploymentHandle string
 
 const (
-	CreateDeploymentHandleError      CreateDeploymentHandle = "error"
 	CreateDeploymentHandleFilesystem CreateDeploymentHandle = "filesystem"
+	CreateDeploymentHandleError      CreateDeploymentHandle = "error"
 	CreateDeploymentHandleHit        CreateDeploymentHandle = "hit"
 	CreateDeploymentHandleMiss       CreateDeploymentHandle = "miss"
-	CreateDeploymentHandleRewrite    CreateDeploymentHandle = "rewrite"
 	CreateDeploymentHandleResource   CreateDeploymentHandle = "resource"
+	CreateDeploymentHandleRewrite    CreateDeploymentHandle = "rewrite"
 )
 
 func (e CreateDeploymentHandle) ToPointer() *CreateDeploymentHandle {
@@ -4724,17 +5154,17 @@ func (e *CreateDeploymentHandle) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "error":
-		fallthrough
 	case "filesystem":
+		fallthrough
+	case "error":
 		fallthrough
 	case "hit":
 		fallthrough
 	case "miss":
 		fallthrough
-	case "rewrite":
-		fallthrough
 	case "resource":
+		fallthrough
+	case "rewrite":
 		*e = CreateDeploymentHandle(v)
 		return nil
 	default:
@@ -6036,8 +6466,8 @@ func (e *CreateDeploymentTransformType) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOp string
 
 const (
-	CreateDeploymentOpAppend CreateDeploymentOp = "append"
 	CreateDeploymentOpSet    CreateDeploymentOp = "set"
+	CreateDeploymentOpAppend CreateDeploymentOp = "append"
 	CreateDeploymentOpDelete CreateDeploymentOp = "delete"
 )
 
@@ -6050,9 +6480,9 @@ func (e *CreateDeploymentOp) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "append":
-		fallthrough
 	case "set":
+		fallthrough
+	case "append":
 		fallthrough
 	case "delete":
 		*e = CreateDeploymentOp(v)
@@ -6770,10 +7200,8 @@ type CreateDeploymentMicrofrontends2 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
-	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
-	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
-	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
-	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
+	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
+	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
 }
 
 func (o *CreateDeploymentMicrofrontends2) GetApplications() map[string]CreateDeploymentApplications {
@@ -6811,18 +7239,11 @@ func (o *CreateDeploymentMicrofrontends2) GetGroupIds() []string {
 	return o.GroupIds
 }
 
-func (o *CreateDeploymentMicrofrontends2) GetMicrofrontendsAliasEnabled() *bool {
+func (o *CreateDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.MicrofrontendsAliasEnabled
-}
-
-func (o *CreateDeploymentMicrofrontends2) GetPreviewEnvAliasEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewEnvAliasEnabled
+	return o.MicrofrontendsAlias2Enabled
 }
 
 type CreateDeploymentMicrofrontends1 struct {
@@ -6834,10 +7255,8 @@ type CreateDeploymentMicrofrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
-	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
-	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
-	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
-	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
+	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
+	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
 }
 
 func (o *CreateDeploymentMicrofrontends1) GetIsDefaultApp() *bool {
@@ -6868,18 +7287,11 @@ func (o *CreateDeploymentMicrofrontends1) GetGroupIds() []string {
 	return o.GroupIds
 }
 
-func (o *CreateDeploymentMicrofrontends1) GetMicrofrontendsAliasEnabled() *bool {
+func (o *CreateDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.MicrofrontendsAliasEnabled
-}
-
-func (o *CreateDeploymentMicrofrontends1) GetPreviewEnvAliasEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewEnvAliasEnabled
+	return o.MicrofrontendsAlias2Enabled
 }
 
 type CreateDeploymentMicrofrontendsUnionType string
@@ -6971,8 +7383,8 @@ func (e *CreateDeploymentGitRepoTypeBitbucket) UnmarshalJSON(data []byte) error 
 type CreateDeploymentOwnerType3 string
 
 const (
-	CreateDeploymentOwnerType3Team CreateDeploymentOwnerType3 = "team"
 	CreateDeploymentOwnerType3User CreateDeploymentOwnerType3 = "user"
+	CreateDeploymentOwnerType3Team CreateDeploymentOwnerType3 = "team"
 )
 
 func (e CreateDeploymentOwnerType3) ToPointer() *CreateDeploymentOwnerType3 {
@@ -6984,9 +7396,9 @@ func (e *CreateDeploymentOwnerType3) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType3(v)
 		return nil
 	default:
@@ -7103,8 +7515,8 @@ func (e *CreateDeploymentGitRepoTypeGithub) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOwnerType2 string
 
 const (
-	CreateDeploymentOwnerType2Team CreateDeploymentOwnerType2 = "team"
 	CreateDeploymentOwnerType2User CreateDeploymentOwnerType2 = "user"
+	CreateDeploymentOwnerType2Team CreateDeploymentOwnerType2 = "team"
 )
 
 func (e CreateDeploymentOwnerType2) ToPointer() *CreateDeploymentOwnerType2 {
@@ -7116,9 +7528,9 @@ func (e *CreateDeploymentOwnerType2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType2(v)
 		return nil
 	default:
@@ -7235,8 +7647,8 @@ func (e *CreateDeploymentGitRepoTypeGitlab) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOwnerType1 string
 
 const (
-	CreateDeploymentOwnerType1Team CreateDeploymentOwnerType1 = "team"
 	CreateDeploymentOwnerType1User CreateDeploymentOwnerType1 = "user"
+	CreateDeploymentOwnerType1Team CreateDeploymentOwnerType1 = "team"
 )
 
 func (e CreateDeploymentOwnerType1) ToPointer() *CreateDeploymentOwnerType1 {
@@ -7248,9 +7660,9 @@ func (e *CreateDeploymentOwnerType1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType1(v)
 		return nil
 	default:
@@ -7589,10 +8001,12 @@ type CreateDeploymentResponseBody struct {
 	GitSource               *CreateDeploymentGitSourceLambdasUnion `json:"gitSource,omitempty"`
 	Meta                    map[string]string                      `json:"meta"`
 	Project                 *CreateDeploymentProject               `json:"project,omitempty"`
-	ReadyState              CreateDeploymentReadyState             `json:"readyState"`
-	Source                  *CreateDeploymentSource                `json:"source,omitempty"`
-	Target                  *CreateDeploymentTargetEnum            `json:"target,omitempty"`
-	ErrorMessage            *string                                `json:"errorMessage,omitempty"`
+	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
+	NodeVersion  *CreateDeploymentNodeVersionLambdas `json:"nodeVersion,omitempty"`
+	ReadyState   CreateDeploymentReadyState          `json:"readyState"`
+	Source       *CreateDeploymentSource             `json:"source,omitempty"`
+	Target       *CreateDeploymentTargetEnum         `json:"target,omitempty"`
+	ErrorMessage *string                             `json:"errorMessage,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions   []string                          `json:"passiveRegions,omitempty"`
 	Regions          []string                          `json:"regions"`
@@ -7928,6 +8342,13 @@ func (o *CreateDeploymentResponseBody) GetProject() *CreateDeploymentProject {
 		return nil
 	}
 	return o.Project
+}
+
+func (o *CreateDeploymentResponseBody) GetNodeVersion() *CreateDeploymentNodeVersionLambdas {
+	if o == nil {
+		return nil
+	}
+	return o.NodeVersion
 }
 
 func (o *CreateDeploymentResponseBody) GetReadyState() CreateDeploymentReadyState {

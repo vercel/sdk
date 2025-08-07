@@ -16,6 +16,7 @@ Creates a webhook
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createWebhook" method="post" path="/v1/webhooks" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -108,6 +109,7 @@ Get a list of webhooks
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getWebhooks" method="get" path="/v1/webhooks" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -184,6 +186,7 @@ Get a webhook
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getWebhook" method="get" path="/v1/webhooks/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -262,6 +265,7 @@ Deletes a webhook
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteWebhook" method="delete" path="/v1/webhooks/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

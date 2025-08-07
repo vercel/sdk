@@ -23,6 +23,7 @@ Allows to read an access group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="readAccessGroup" method="get" path="/v1/access-groups/{idOrName}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -101,6 +102,7 @@ Allows to update an access group metadata
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateAccessGroup" method="post" path="/v1/access-groups/{idOrName}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -213,6 +215,7 @@ Allows to delete an access group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteAccessGroup" method="delete" path="/v1/access-groups/{idOrName}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -291,6 +294,7 @@ List members of an access group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAccessGroupMembers" method="get" path="/v1/access-groups/{idOrName}/members" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -371,6 +375,7 @@ List access groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAccessGroups" method="get" path="/v1/access-groups" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -457,6 +462,7 @@ Allows to create an access group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createAccessGroup" method="post" path="/v1/access-groups" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -575,6 +581,7 @@ List projects of an access group
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listAccessGroupProjects" method="get" path="/v1/access-groups/{idOrName}/projects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -655,6 +662,7 @@ Allows creation of an access group project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createAccessGroupProject" method="post" path="/v1/access-groups/{accessGroupIdOrName}/projects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -741,6 +749,7 @@ Allows reading an access group project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="readAccessGroupProject" method="get" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -821,6 +830,7 @@ Allows update of an access group project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateAccessGroupProject" method="patch" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -907,6 +917,7 @@ Allows deletion of an access group project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteAccessGroupProject" method="delete" path="/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

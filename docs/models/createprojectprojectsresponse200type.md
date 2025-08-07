@@ -7,11 +7,11 @@ The type of environment (production, preview, or development)
 ```typescript
 import { CreateProjectProjectsResponse200Type } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectProjectsResponse200Type = "preview";
+let value: CreateProjectProjectsResponse200Type = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"preview" | "production" | "development"
 ```

@@ -16,6 +16,7 @@ Retrieves a list of DNS records created for a domain name. By default it returns
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRecords" method="get" path="/v4/domains/{domain}/records" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -101,6 +102,7 @@ Creates a DNS record for a domain.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createRecord" method="post" path="/v2/domains/{domain}/records" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -202,6 +204,7 @@ Updates an existing DNS record for a domain name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateRecord" method="patch" path="/v1/domains/records/{recordId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -299,6 +302,7 @@ Removes an existing DNS record from a domain name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeRecord" method="delete" path="/v2/domains/{domain}/records/{recordId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

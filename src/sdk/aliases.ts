@@ -17,7 +17,7 @@ import {
   DeleteAliasRequest,
   DeleteAliasResponseBody,
 } from "../models/deletealiasop.js";
-import { GetAliasRequest, GetAliasResponseBody } from "../models/getaliasop.js";
+import { GetAliasRequest } from "../models/getaliasop.js";
 import {
   ListAliasesRequest,
   ListAliasesResponseBody,
@@ -90,7 +90,7 @@ export class Aliases extends ClientSDK {
   async getAlias(
     request: GetAliasRequest,
     options?: RequestOptions,
-  ): Promise<GetAliasResponseBody> {
+  ): Promise<any> {
     return unwrapAsync(aliasesGetAlias(
       this,
       request,

@@ -2,15 +2,23 @@
 
 The project has been transferred successfully.
 
-## Example Usage
+
+## Supported Types
+
+### `models.AcceptProjectTransferRequestResponseBody1`
 
 ```typescript
-import { AcceptProjectTransferRequestResponseBody } from "@vercel/sdk/models/acceptprojecttransferrequestop.js";
-
-let value: AcceptProjectTransferRequestResponseBody = {};
+const value: models.AcceptProjectTransferRequestResponseBody1 = {
+  partnerCalls: [],
+  resourceTransferErrors: [
+    {},
+  ],
+};
 ```
 
-## Fields
+### `models.AcceptProjectTransferRequestResponseBody2`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: models.AcceptProjectTransferRequestResponseBody2 = {};
+```
+

@@ -19,6 +19,7 @@ export const InviteUserToTeamRole = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 /**
@@ -80,6 +81,7 @@ export const InviteUserToTeamResponseBodyRole = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type InviteUserToTeamResponseBodyRole = ClosedEnum<
@@ -93,6 +95,7 @@ export const InviteUserToTeamResponseBodyTeamRoles = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 export type InviteUserToTeamResponseBodyTeamRoles = ClosedEnum<
@@ -105,6 +108,9 @@ export const InviteUserToTeamResponseBodyTeamPermissions = {
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
 } as const;
 export type InviteUserToTeamResponseBodyTeamPermissions = ClosedEnum<
   typeof InviteUserToTeamResponseBodyTeamPermissions
@@ -130,6 +136,7 @@ export const ResponseBodyRole = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 /**
@@ -147,6 +154,7 @@ export const ResponseBodyTeamRoles = {
   Security: "SECURITY",
   Billing: "BILLING",
   Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 /**
@@ -163,6 +171,9 @@ export const ResponseBodyTeamPermissions = {
   UsageViewer: "UsageViewer",
   EnvVariableManager: "EnvVariableManager",
   EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
 } as const;
 /**
  * The team permissions of the user

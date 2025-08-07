@@ -57,8 +57,8 @@ export type SpeedInsights = {
 };
 
 export const UpdateProjectDataCacheEnvId2 = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type UpdateProjectDataCacheEnvId2 = ClosedEnum<
   typeof UpdateProjectDataCacheEnvId2
@@ -74,6 +74,7 @@ export type UpdateProjectDataCacheAws = {
 export type UpdateProjectDataCacheConnectConfigurations = {
   envId: string | UpdateProjectDataCacheEnvId2;
   connectConfigurationId: string;
+  dc?: string | undefined;
   passive: boolean;
   buildsEnabled: boolean;
   aws?: UpdateProjectDataCacheAws | undefined;
@@ -461,8 +462,8 @@ export type Env = {
  * The type of environment (production, preview, or development)
  */
 export const UpdateProjectDataCacheType = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
   Development: "development",
 } as const;
 /**
@@ -629,6 +630,7 @@ export const UpdateProjectDataCacheFramework = {
   Sanity: "sanity",
   Storybook: "storybook",
   Nitro: "nitro",
+  Hono: "hono",
 } as const;
 export type UpdateProjectDataCacheFramework = ClosedEnum<
   typeof UpdateProjectDataCacheFramework
@@ -799,8 +801,41 @@ export type LatestDeployments = {
   withCache?: boolean | undefined;
 };
 
-export const UpdateProjectDataCacheLinkProjectsResponseType = {
+export const UpdateProjectDataCacheLinkProjectsResponse200Type = {
   GithubCustomHost: "github-custom-host",
+} as const;
+export type UpdateProjectDataCacheLinkProjectsResponse200Type = ClosedEnum<
+  typeof UpdateProjectDataCacheLinkProjectsResponse200Type
+>;
+
+export type UpdateProjectDataCacheLinkProjectsResponseDeployHooks = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+export type Link5 = {
+  org?: string | undefined;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type?: UpdateProjectDataCacheLinkProjectsResponse200Type | undefined;
+  host?: string | undefined;
+  createdAt?: number | undefined;
+  deployHooks: Array<UpdateProjectDataCacheLinkProjectsResponseDeployHooks>;
+  gitCredentialId?: string | undefined;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch?: string | undefined;
+};
+
+export const UpdateProjectDataCacheLinkProjectsResponseType = {
+  Bitbucket: "bitbucket",
 } as const;
 export type UpdateProjectDataCacheLinkProjectsResponseType = ClosedEnum<
   typeof UpdateProjectDataCacheLinkProjectsResponseType
@@ -815,15 +850,12 @@ export type UpdateProjectDataCacheLinkProjectsDeployHooks = {
 };
 
 export type Link4 = {
-  org?: string | undefined;
-  /**
-   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
-   */
-  repoOwnerId?: number | undefined;
-  repo?: string | undefined;
-  repoId?: number | undefined;
+  name?: string | undefined;
+  slug?: string | undefined;
+  owner?: string | undefined;
   type?: UpdateProjectDataCacheLinkProjectsResponseType | undefined;
-  host?: string | undefined;
+  uuid?: string | undefined;
+  workspaceUuid?: string | undefined;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectDataCacheLinkProjectsDeployHooks>;
   gitCredentialId?: string | undefined;
@@ -833,7 +865,7 @@ export type Link4 = {
 };
 
 export const UpdateProjectDataCacheLinkProjectsType = {
-  Bitbucket: "bitbucket",
+  Gitlab: "gitlab",
 } as const;
 export type UpdateProjectDataCacheLinkProjectsType = ClosedEnum<
   typeof UpdateProjectDataCacheLinkProjectsType
@@ -848,12 +880,16 @@ export type UpdateProjectDataCacheLinkDeployHooks = {
 };
 
 export type Link3 = {
-  name?: string | undefined;
-  slug?: string | undefined;
-  owner?: string | undefined;
+  projectId?: string | undefined;
+  projectName?: string | undefined;
+  projectNameWithNamespace?: string | undefined;
+  projectNamespace?: string | undefined;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
+   */
+  projectOwnerId?: number | undefined;
+  projectUrl?: string | undefined;
   type?: UpdateProjectDataCacheLinkProjectsType | undefined;
-  uuid?: string | undefined;
-  workspaceUuid?: string | undefined;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectDataCacheLinkDeployHooks>;
   gitCredentialId?: string | undefined;
@@ -863,7 +899,7 @@ export type Link3 = {
 };
 
 export const UpdateProjectDataCacheLinkType = {
-  Gitlab: "gitlab",
+  GithubLimited: "github-limited",
 } as const;
 export type UpdateProjectDataCacheLinkType = ClosedEnum<
   typeof UpdateProjectDataCacheLinkType
@@ -878,20 +914,18 @@ export type LinkDeployHooks = {
 };
 
 export type Link2 = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  projectNameWithNamespace?: string | undefined;
-  projectNamespace?: string | undefined;
-  /**
-   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
-   */
-  projectOwnerId?: number | undefined;
-  projectUrl?: string | undefined;
   type?: UpdateProjectDataCacheLinkType | undefined;
   createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  org?: string | undefined;
+  /**
+   * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+   */
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
   deployHooks: Array<LinkDeployHooks>;
   gitCredentialId?: string | undefined;
-  updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
   productionBranch?: string | undefined;
 };
@@ -926,7 +960,7 @@ export type Link1 = {
   productionBranch?: string | undefined;
 };
 
-export type Link = Link1 | Link2 | Link3 | Link4;
+export type Link = Link1 | Link2 | Link3 | Link4 | Link5;
 
 export type UpdateProjectDataCacheMicrofrontends2 = {
   updatedAt: number;
@@ -1279,11 +1313,11 @@ export type Targets = {
 };
 
 export type Permissions = {
+  oauth2Connection?: Array<ACLAction> | undefined;
   user?: Array<ACLAction> | undefined;
   userConnection?: Array<ACLAction> | undefined;
   userSudo?: Array<ACLAction> | undefined;
   webAuthn?: Array<ACLAction> | undefined;
-  oauth2Connection?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
   aliasGlobal?: Array<ACLAction> | undefined;
   analyticsSampling?: Array<ACLAction> | undefined;
@@ -1296,6 +1330,7 @@ export type Permissions = {
   billingInvoiceLanguage?: Array<ACLAction> | undefined;
   billingPlan?: Array<ACLAction> | undefined;
   billingPurchaseOrder?: Array<ACLAction> | undefined;
+  billingRefund?: Array<ACLAction> | undefined;
   billingTaxId?: Array<ACLAction> | undefined;
   blob?: Array<ACLAction> | undefined;
   budget?: Array<ACLAction> | undefined;
@@ -1305,6 +1340,7 @@ export type Permissions = {
   concurrentBuilds?: Array<ACLAction> | undefined;
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
+  defaultDeploymentProtection?: Array<ACLAction> | undefined;
   domain?: Array<ACLAction> | undefined;
   domainAcceptDelegation?: Array<ACLAction> | undefined;
   domainAuthCodes?: Array<ACLAction> | undefined;
@@ -1337,6 +1373,7 @@ export type Permissions = {
   marketplaceInstallationMember?: Array<ACLAction> | undefined;
   marketplaceBillingData?: Array<ACLAction> | undefined;
   marketplaceInvoice?: Array<ACLAction> | undefined;
+  marketplaceSettings?: Array<ACLAction> | undefined;
   marketplaceExperimentationItem?: Array<ACLAction> | undefined;
   marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
   jobGlobal?: Array<ACLAction> | undefined;
@@ -1363,6 +1400,7 @@ export type Permissions = {
   notificationStatementOfReasons?: Array<ACLAction> | undefined;
   observabilityConfiguration?: Array<ACLAction> | undefined;
   observabilityNotebook?: Array<ACLAction> | undefined;
+  observabilityFunnel?: Array<ACLAction> | undefined;
   openTelemetryEndpoint?: Array<ACLAction> | undefined;
   vercelAppInstallation?: Array<ACLAction> | undefined;
   paymentMethod?: Array<ACLAction> | undefined;
@@ -1426,6 +1464,7 @@ export type Permissions = {
   connectConfigurationLink?: Array<ACLAction> | undefined;
   dataCacheNamespace?: Array<ACLAction> | undefined;
   deployment?: Array<ACLAction> | undefined;
+  deploymentBuildLogs?: Array<ACLAction> | undefined;
   deploymentCheck?: Array<ACLAction> | undefined;
   deploymentCheckPreview?: Array<ACLAction> | undefined;
   deploymentCheckReRunFromProductionBranch?: Array<ACLAction> | undefined;
@@ -1476,6 +1515,7 @@ export type Permissions = {
   projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectRollingRelease?: Array<ACLAction> | undefined;
   projectTier?: Array<ACLAction> | undefined;
+  projectOIDCToken?: Array<ACLAction> | undefined;
   seawallConfig?: Array<ACLAction> | undefined;
   skewProtection?: Array<ACLAction> | undefined;
   analytics?: Array<ACLAction> | undefined;
@@ -1545,8 +1585,8 @@ export type ProtectionBypass1 = {
 export type ProtectionBypass = ProtectionBypass1 | ProtectionBypass2;
 
 export const UpdateProjectDataCacheTrustedIpsDeploymentType = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
@@ -1560,8 +1600,8 @@ export type TrustedIps2 = {
 };
 
 export const TrustedIpsDeploymentType = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
   All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
@@ -1619,6 +1659,10 @@ export type GitProviderOptions = {
    * Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
    */
   createDeployments: CreateDeployments;
+  /**
+   * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+   */
+  disableRepositoryDispatchEvents?: boolean | undefined;
 };
 
 export type UpdateProjectDataCacheWebAnalytics = {
@@ -1917,7 +1961,7 @@ export type UpdateProjectDataCacheResponseBody = {
   id: string;
   ipBuckets?: Array<UpdateProjectDataCacheIpBuckets> | undefined;
   latestDeployments?: Array<LatestDeployments> | undefined;
-  link?: Link1 | Link2 | Link3 | Link4 | undefined;
+  link?: Link1 | Link2 | Link3 | Link4 | Link5 | undefined;
   microfrontends?:
     | UpdateProjectDataCacheMicrofrontends1
     | UpdateProjectDataCacheMicrofrontends2
@@ -1976,6 +2020,7 @@ export type UpdateProjectDataCacheResponseBody = {
   oidcTokenConfig?: UpdateProjectDataCacheOidcTokenConfig | undefined;
   tier?: UpdateProjectDataCacheTier | undefined;
   features?: Features | undefined;
+  v0?: boolean | undefined;
 };
 
 /** @internal */
@@ -2378,6 +2423,7 @@ export const UpdateProjectDataCacheConnectConfigurations$inboundSchema:
   > = z.object({
     envId: z.union([z.string(), UpdateProjectDataCacheEnvId2$inboundSchema]),
     connectConfigurationId: z.string(),
+    dc: z.string().optional(),
     passive: z.boolean(),
     buildsEnabled: z.boolean(),
     aws: z.lazy(() => UpdateProjectDataCacheAws$inboundSchema).optional(),
@@ -2389,6 +2435,7 @@ export const UpdateProjectDataCacheConnectConfigurations$inboundSchema:
 export type UpdateProjectDataCacheConnectConfigurations$Outbound = {
   envId: string | string;
   connectConfigurationId: string;
+  dc?: string | undefined;
   passive: boolean;
   buildsEnabled: boolean;
   aws?: UpdateProjectDataCacheAws$Outbound | undefined;
@@ -2405,6 +2452,7 @@ export const UpdateProjectDataCacheConnectConfigurations$outboundSchema:
   > = z.object({
     envId: z.union([z.string(), UpdateProjectDataCacheEnvId2$outboundSchema]),
     connectConfigurationId: z.string(),
+    dc: z.string().optional(),
     passive: z.boolean(),
     buildsEnabled: z.boolean(),
     aws: z.lazy(() => UpdateProjectDataCacheAws$outboundSchema).optional(),
@@ -5601,6 +5649,201 @@ export function latestDeploymentsFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectDataCacheLinkProjectsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheLinkProjectsResponse200Type> = z
+    .nativeEnum(UpdateProjectDataCacheLinkProjectsResponse200Type);
+
+/** @internal */
+export const UpdateProjectDataCacheLinkProjectsResponse200Type$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectDataCacheLinkProjectsResponse200Type> =
+    UpdateProjectDataCacheLinkProjectsResponse200Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheLinkProjectsResponse200Type$ {
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsResponse200Type$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheLinkProjectsResponse200Type$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsResponse200Type$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheLinkProjectsResponse200Type$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectDataCacheLinkProjectsResponseDeployHooks$inboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: z.number().optional(),
+    id: z.string(),
+    name: z.string(),
+    ref: z.string(),
+    url: z.string(),
+  });
+
+/** @internal */
+export type UpdateProjectDataCacheLinkProjectsResponseDeployHooks$Outbound = {
+  createdAt?: number | undefined;
+  id: string;
+  name: string;
+  ref: string;
+  url: string;
+};
+
+/** @internal */
+export const UpdateProjectDataCacheLinkProjectsResponseDeployHooks$outboundSchema:
+  z.ZodType<
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks$Outbound,
+    z.ZodTypeDef,
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks
+  > = z.object({
+    createdAt: z.number().optional(),
+    id: z.string(),
+    name: z.string(),
+    ref: z.string(),
+    url: z.string(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheLinkProjectsResponseDeployHooks$ {
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsResponseDeployHooks$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsResponseDeployHooks$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheLinkProjectsResponseDeployHooks$Outbound` instead. */
+  export type Outbound =
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks$Outbound;
+}
+
+export function updateProjectDataCacheLinkProjectsResponseDeployHooksToJSON(
+  updateProjectDataCacheLinkProjectsResponseDeployHooks:
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks$outboundSchema.parse(
+      updateProjectDataCacheLinkProjectsResponseDeployHooks,
+    ),
+  );
+}
+
+export function updateProjectDataCacheLinkProjectsResponseDeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectDataCacheLinkProjectsResponseDeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectDataCacheLinkProjectsResponseDeployHooks$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheLinkProjectsResponseDeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const Link5$inboundSchema: z.ZodType<Link5, z.ZodTypeDef, unknown> = z
+  .object({
+    org: z.string().optional(),
+    repoOwnerId: z.number().optional(),
+    repo: z.string().optional(),
+    repoId: z.number().optional(),
+    type: UpdateProjectDataCacheLinkProjectsResponse200Type$inboundSchema
+      .optional(),
+    host: z.string().optional(),
+    createdAt: z.number().optional(),
+    deployHooks: z.array(
+      z.lazy(() =>
+        UpdateProjectDataCacheLinkProjectsResponseDeployHooks$inboundSchema
+      ),
+    ),
+    gitCredentialId: z.string().optional(),
+    updatedAt: z.number().optional(),
+    sourceless: z.boolean().optional(),
+    productionBranch: z.string().optional(),
+  });
+
+/** @internal */
+export type Link5$Outbound = {
+  org?: string | undefined;
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
+  type?: string | undefined;
+  host?: string | undefined;
+  createdAt?: number | undefined;
+  deployHooks: Array<
+    UpdateProjectDataCacheLinkProjectsResponseDeployHooks$Outbound
+  >;
+  gitCredentialId?: string | undefined;
+  updatedAt?: number | undefined;
+  sourceless?: boolean | undefined;
+  productionBranch?: string | undefined;
+};
+
+/** @internal */
+export const Link5$outboundSchema: z.ZodType<
+  Link5$Outbound,
+  z.ZodTypeDef,
+  Link5
+> = z.object({
+  org: z.string().optional(),
+  repoOwnerId: z.number().optional(),
+  repo: z.string().optional(),
+  repoId: z.number().optional(),
+  type: UpdateProjectDataCacheLinkProjectsResponse200Type$outboundSchema
+    .optional(),
+  host: z.string().optional(),
+  createdAt: z.number().optional(),
+  deployHooks: z.array(
+    z.lazy(() =>
+      UpdateProjectDataCacheLinkProjectsResponseDeployHooks$outboundSchema
+    ),
+  ),
+  gitCredentialId: z.string().optional(),
+  updatedAt: z.number().optional(),
+  sourceless: z.boolean().optional(),
+  productionBranch: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Link5$ {
+  /** @deprecated use `Link5$inboundSchema` instead. */
+  export const inboundSchema = Link5$inboundSchema;
+  /** @deprecated use `Link5$outboundSchema` instead. */
+  export const outboundSchema = Link5$outboundSchema;
+  /** @deprecated use `Link5$Outbound` instead. */
+  export type Outbound = Link5$Outbound;
+}
+
+export function link5ToJSON(link5: Link5): string {
+  return JSON.stringify(Link5$outboundSchema.parse(link5));
+}
+
+export function link5FromJSON(
+  jsonString: string,
+): SafeParseResult<Link5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Link5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Link5' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDataCacheLinkProjectsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectDataCacheLinkProjectsResponseType> = z
     .nativeEnum(UpdateProjectDataCacheLinkProjectsResponseType);
@@ -5705,13 +5948,13 @@ export function updateProjectDataCacheLinkProjectsDeployHooksFromJSON(
 /** @internal */
 export const Link4$inboundSchema: z.ZodType<Link4, z.ZodTypeDef, unknown> = z
   .object({
-    org: z.string().optional(),
-    repoOwnerId: z.number().optional(),
-    repo: z.string().optional(),
-    repoId: z.number().optional(),
+    name: z.string().optional(),
+    slug: z.string().optional(),
+    owner: z.string().optional(),
     type: UpdateProjectDataCacheLinkProjectsResponseType$inboundSchema
       .optional(),
-    host: z.string().optional(),
+    uuid: z.string().optional(),
+    workspaceUuid: z.string().optional(),
     createdAt: z.number().optional(),
     deployHooks: z.array(
       z.lazy(() => UpdateProjectDataCacheLinkProjectsDeployHooks$inboundSchema),
@@ -5724,12 +5967,12 @@ export const Link4$inboundSchema: z.ZodType<Link4, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Link4$Outbound = {
-  org?: string | undefined;
-  repoOwnerId?: number | undefined;
-  repo?: string | undefined;
-  repoId?: number | undefined;
+  name?: string | undefined;
+  slug?: string | undefined;
+  owner?: string | undefined;
   type?: string | undefined;
-  host?: string | undefined;
+  uuid?: string | undefined;
+  workspaceUuid?: string | undefined;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectDataCacheLinkProjectsDeployHooks$Outbound>;
   gitCredentialId?: string | undefined;
@@ -5744,13 +5987,13 @@ export const Link4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Link4
 > = z.object({
-  org: z.string().optional(),
-  repoOwnerId: z.number().optional(),
-  repo: z.string().optional(),
-  repoId: z.number().optional(),
+  name: z.string().optional(),
+  slug: z.string().optional(),
+  owner: z.string().optional(),
   type: UpdateProjectDataCacheLinkProjectsResponseType$outboundSchema
     .optional(),
-  host: z.string().optional(),
+  uuid: z.string().optional(),
+  workspaceUuid: z.string().optional(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectDataCacheLinkProjectsDeployHooks$outboundSchema),
@@ -5886,12 +6129,13 @@ export function updateProjectDataCacheLinkDeployHooksFromJSON(
 /** @internal */
 export const Link3$inboundSchema: z.ZodType<Link3, z.ZodTypeDef, unknown> = z
   .object({
-    name: z.string().optional(),
-    slug: z.string().optional(),
-    owner: z.string().optional(),
+    projectId: z.string().optional(),
+    projectName: z.string().optional(),
+    projectNameWithNamespace: z.string().optional(),
+    projectNamespace: z.string().optional(),
+    projectOwnerId: z.number().optional(),
+    projectUrl: z.string().optional(),
     type: UpdateProjectDataCacheLinkProjectsType$inboundSchema.optional(),
-    uuid: z.string().optional(),
-    workspaceUuid: z.string().optional(),
     createdAt: z.number().optional(),
     deployHooks: z.array(
       z.lazy(() => UpdateProjectDataCacheLinkDeployHooks$inboundSchema),
@@ -5904,12 +6148,13 @@ export const Link3$inboundSchema: z.ZodType<Link3, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Link3$Outbound = {
-  name?: string | undefined;
-  slug?: string | undefined;
-  owner?: string | undefined;
+  projectId?: string | undefined;
+  projectName?: string | undefined;
+  projectNameWithNamespace?: string | undefined;
+  projectNamespace?: string | undefined;
+  projectOwnerId?: number | undefined;
+  projectUrl?: string | undefined;
   type?: string | undefined;
-  uuid?: string | undefined;
-  workspaceUuid?: string | undefined;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectDataCacheLinkDeployHooks$Outbound>;
   gitCredentialId?: string | undefined;
@@ -5924,12 +6169,13 @@ export const Link3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Link3
 > = z.object({
-  name: z.string().optional(),
-  slug: z.string().optional(),
-  owner: z.string().optional(),
+  projectId: z.string().optional(),
+  projectName: z.string().optional(),
+  projectNameWithNamespace: z.string().optional(),
+  projectNamespace: z.string().optional(),
+  projectOwnerId: z.number().optional(),
+  projectUrl: z.string().optional(),
   type: UpdateProjectDataCacheLinkProjectsType$outboundSchema.optional(),
-  uuid: z.string().optional(),
-  workspaceUuid: z.string().optional(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectDataCacheLinkDeployHooks$outboundSchema),
@@ -6055,34 +6301,30 @@ export function linkDeployHooksFromJSON(
 /** @internal */
 export const Link2$inboundSchema: z.ZodType<Link2, z.ZodTypeDef, unknown> = z
   .object({
-    projectId: z.string().optional(),
-    projectName: z.string().optional(),
-    projectNameWithNamespace: z.string().optional(),
-    projectNamespace: z.string().optional(),
-    projectOwnerId: z.number().optional(),
-    projectUrl: z.string().optional(),
     type: UpdateProjectDataCacheLinkType$inboundSchema.optional(),
     createdAt: z.number().optional(),
+    updatedAt: z.number().optional(),
+    org: z.string().optional(),
+    repoOwnerId: z.number().optional(),
+    repo: z.string().optional(),
+    repoId: z.number().optional(),
     deployHooks: z.array(z.lazy(() => LinkDeployHooks$inboundSchema)),
     gitCredentialId: z.string().optional(),
-    updatedAt: z.number().optional(),
     sourceless: z.boolean().optional(),
     productionBranch: z.string().optional(),
   });
 
 /** @internal */
 export type Link2$Outbound = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  projectNameWithNamespace?: string | undefined;
-  projectNamespace?: string | undefined;
-  projectOwnerId?: number | undefined;
-  projectUrl?: string | undefined;
   type?: string | undefined;
   createdAt?: number | undefined;
+  updatedAt?: number | undefined;
+  org?: string | undefined;
+  repoOwnerId?: number | undefined;
+  repo?: string | undefined;
+  repoId?: number | undefined;
   deployHooks: Array<LinkDeployHooks$Outbound>;
   gitCredentialId?: string | undefined;
-  updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
   productionBranch?: string | undefined;
 };
@@ -6093,17 +6335,15 @@ export const Link2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Link2
 > = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  projectNameWithNamespace: z.string().optional(),
-  projectNamespace: z.string().optional(),
-  projectOwnerId: z.number().optional(),
-  projectUrl: z.string().optional(),
   type: UpdateProjectDataCacheLinkType$outboundSchema.optional(),
   createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
+  org: z.string().optional(),
+  repoOwnerId: z.number().optional(),
+  repo: z.string().optional(),
+  repoId: z.number().optional(),
   deployHooks: z.array(z.lazy(() => LinkDeployHooks$outboundSchema)),
   gitCredentialId: z.string().optional(),
-  updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
   productionBranch: z.string().optional(),
 });
@@ -6300,6 +6540,7 @@ export const Link$inboundSchema: z.ZodType<Link, z.ZodTypeDef, unknown> = z
     z.lazy(() => Link2$inboundSchema),
     z.lazy(() => Link3$inboundSchema),
     z.lazy(() => Link4$inboundSchema),
+    z.lazy(() => Link5$inboundSchema),
   ]);
 
 /** @internal */
@@ -6307,7 +6548,8 @@ export type Link$Outbound =
   | Link1$Outbound
   | Link2$Outbound
   | Link3$Outbound
-  | Link4$Outbound;
+  | Link4$Outbound
+  | Link5$Outbound;
 
 /** @internal */
 export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
@@ -6316,6 +6558,7 @@ export const Link$outboundSchema: z.ZodType<Link$Outbound, z.ZodTypeDef, Link> =
     z.lazy(() => Link2$outboundSchema),
     z.lazy(() => Link3$outboundSchema),
     z.lazy(() => Link4$outboundSchema),
+    z.lazy(() => Link5$outboundSchema),
   ]);
 
 /**
@@ -8000,11 +8243,11 @@ export const Permissions$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  oauth2Connection: z.array(ACLAction$inboundSchema).optional(),
   user: z.array(ACLAction$inboundSchema).optional(),
   userConnection: z.array(ACLAction$inboundSchema).optional(),
   userSudo: z.array(ACLAction$inboundSchema).optional(),
   webAuthn: z.array(ACLAction$inboundSchema).optional(),
-  oauth2Connection: z.array(ACLAction$inboundSchema).optional(),
   accessGroup: z.array(ACLAction$inboundSchema).optional(),
   aliasGlobal: z.array(ACLAction$inboundSchema).optional(),
   analyticsSampling: z.array(ACLAction$inboundSchema).optional(),
@@ -8017,6 +8260,7 @@ export const Permissions$inboundSchema: z.ZodType<
   billingInvoiceLanguage: z.array(ACLAction$inboundSchema).optional(),
   billingPlan: z.array(ACLAction$inboundSchema).optional(),
   billingPurchaseOrder: z.array(ACLAction$inboundSchema).optional(),
+  billingRefund: z.array(ACLAction$inboundSchema).optional(),
   billingTaxId: z.array(ACLAction$inboundSchema).optional(),
   blob: z.array(ACLAction$inboundSchema).optional(),
   budget: z.array(ACLAction$inboundSchema).optional(),
@@ -8026,6 +8270,7 @@ export const Permissions$inboundSchema: z.ZodType<
   concurrentBuilds: z.array(ACLAction$inboundSchema).optional(),
   connect: z.array(ACLAction$inboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$inboundSchema).optional(),
+  defaultDeploymentProtection: z.array(ACLAction$inboundSchema).optional(),
   domain: z.array(ACLAction$inboundSchema).optional(),
   domainAcceptDelegation: z.array(ACLAction$inboundSchema).optional(),
   domainAuthCodes: z.array(ACLAction$inboundSchema).optional(),
@@ -8060,6 +8305,7 @@ export const Permissions$inboundSchema: z.ZodType<
   marketplaceInstallationMember: z.array(ACLAction$inboundSchema).optional(),
   marketplaceBillingData: z.array(ACLAction$inboundSchema).optional(),
   marketplaceInvoice: z.array(ACLAction$inboundSchema).optional(),
+  marketplaceSettings: z.array(ACLAction$inboundSchema).optional(),
   marketplaceExperimentationItem: z.array(ACLAction$inboundSchema).optional(),
   marketplaceExperimentationEdgeConfigData: z.array(ACLAction$inboundSchema)
     .optional(),
@@ -8087,6 +8333,7 @@ export const Permissions$inboundSchema: z.ZodType<
   notificationStatementOfReasons: z.array(ACLAction$inboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$inboundSchema).optional(),
   observabilityNotebook: z.array(ACLAction$inboundSchema).optional(),
+  observabilityFunnel: z.array(ACLAction$inboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$inboundSchema).optional(),
   vercelAppInstallation: z.array(ACLAction$inboundSchema).optional(),
   paymentMethod: z.array(ACLAction$inboundSchema).optional(),
@@ -8150,6 +8397,7 @@ export const Permissions$inboundSchema: z.ZodType<
   connectConfigurationLink: z.array(ACLAction$inboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$inboundSchema).optional(),
   deployment: z.array(ACLAction$inboundSchema).optional(),
+  deploymentBuildLogs: z.array(ACLAction$inboundSchema).optional(),
   deploymentCheck: z.array(ACLAction$inboundSchema).optional(),
   deploymentCheckPreview: z.array(ACLAction$inboundSchema).optional(),
   deploymentCheckReRunFromProductionBranch: z.array(ACLAction$inboundSchema)
@@ -8202,6 +8450,7 @@ export const Permissions$inboundSchema: z.ZodType<
   projectDeploymentExpiration: z.array(ACLAction$inboundSchema).optional(),
   projectRollingRelease: z.array(ACLAction$inboundSchema).optional(),
   projectTier: z.array(ACLAction$inboundSchema).optional(),
+  projectOIDCToken: z.array(ACLAction$inboundSchema).optional(),
   seawallConfig: z.array(ACLAction$inboundSchema).optional(),
   skewProtection: z.array(ACLAction$inboundSchema).optional(),
   analytics: z.array(ACLAction$inboundSchema).optional(),
@@ -8219,11 +8468,11 @@ export const Permissions$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Permissions$Outbound = {
+  oauth2Connection?: Array<string> | undefined;
   user?: Array<string> | undefined;
   userConnection?: Array<string> | undefined;
   userSudo?: Array<string> | undefined;
   webAuthn?: Array<string> | undefined;
-  oauth2Connection?: Array<string> | undefined;
   accessGroup?: Array<string> | undefined;
   aliasGlobal?: Array<string> | undefined;
   analyticsSampling?: Array<string> | undefined;
@@ -8236,6 +8485,7 @@ export type Permissions$Outbound = {
   billingInvoiceLanguage?: Array<string> | undefined;
   billingPlan?: Array<string> | undefined;
   billingPurchaseOrder?: Array<string> | undefined;
+  billingRefund?: Array<string> | undefined;
   billingTaxId?: Array<string> | undefined;
   blob?: Array<string> | undefined;
   budget?: Array<string> | undefined;
@@ -8245,6 +8495,7 @@ export type Permissions$Outbound = {
   concurrentBuilds?: Array<string> | undefined;
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
+  defaultDeploymentProtection?: Array<string> | undefined;
   domain?: Array<string> | undefined;
   domainAcceptDelegation?: Array<string> | undefined;
   domainAuthCodes?: Array<string> | undefined;
@@ -8277,6 +8528,7 @@ export type Permissions$Outbound = {
   marketplaceInstallationMember?: Array<string> | undefined;
   marketplaceBillingData?: Array<string> | undefined;
   marketplaceInvoice?: Array<string> | undefined;
+  marketplaceSettings?: Array<string> | undefined;
   marketplaceExperimentationItem?: Array<string> | undefined;
   marketplaceExperimentationEdgeConfigData?: Array<string> | undefined;
   jobGlobal?: Array<string> | undefined;
@@ -8303,6 +8555,7 @@ export type Permissions$Outbound = {
   notificationStatementOfReasons?: Array<string> | undefined;
   observabilityConfiguration?: Array<string> | undefined;
   observabilityNotebook?: Array<string> | undefined;
+  observabilityFunnel?: Array<string> | undefined;
   openTelemetryEndpoint?: Array<string> | undefined;
   vercelAppInstallation?: Array<string> | undefined;
   paymentMethod?: Array<string> | undefined;
@@ -8366,6 +8619,7 @@ export type Permissions$Outbound = {
   connectConfigurationLink?: Array<string> | undefined;
   dataCacheNamespace?: Array<string> | undefined;
   deployment?: Array<string> | undefined;
+  deploymentBuildLogs?: Array<string> | undefined;
   deploymentCheck?: Array<string> | undefined;
   deploymentCheckPreview?: Array<string> | undefined;
   deploymentCheckReRunFromProductionBranch?: Array<string> | undefined;
@@ -8416,6 +8670,7 @@ export type Permissions$Outbound = {
   projectDeploymentExpiration?: Array<string> | undefined;
   projectRollingRelease?: Array<string> | undefined;
   projectTier?: Array<string> | undefined;
+  projectOIDCToken?: Array<string> | undefined;
   seawallConfig?: Array<string> | undefined;
   skewProtection?: Array<string> | undefined;
   analytics?: Array<string> | undefined;
@@ -8431,11 +8686,11 @@ export const Permissions$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Permissions
 > = z.object({
+  oauth2Connection: z.array(ACLAction$outboundSchema).optional(),
   user: z.array(ACLAction$outboundSchema).optional(),
   userConnection: z.array(ACLAction$outboundSchema).optional(),
   userSudo: z.array(ACLAction$outboundSchema).optional(),
   webAuthn: z.array(ACLAction$outboundSchema).optional(),
-  oauth2Connection: z.array(ACLAction$outboundSchema).optional(),
   accessGroup: z.array(ACLAction$outboundSchema).optional(),
   aliasGlobal: z.array(ACLAction$outboundSchema).optional(),
   analyticsSampling: z.array(ACLAction$outboundSchema).optional(),
@@ -8448,6 +8703,7 @@ export const Permissions$outboundSchema: z.ZodType<
   billingInvoiceLanguage: z.array(ACLAction$outboundSchema).optional(),
   billingPlan: z.array(ACLAction$outboundSchema).optional(),
   billingPurchaseOrder: z.array(ACLAction$outboundSchema).optional(),
+  billingRefund: z.array(ACLAction$outboundSchema).optional(),
   billingTaxId: z.array(ACLAction$outboundSchema).optional(),
   blob: z.array(ACLAction$outboundSchema).optional(),
   budget: z.array(ACLAction$outboundSchema).optional(),
@@ -8457,6 +8713,7 @@ export const Permissions$outboundSchema: z.ZodType<
   concurrentBuilds: z.array(ACLAction$outboundSchema).optional(),
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
+  defaultDeploymentProtection: z.array(ACLAction$outboundSchema).optional(),
   domain: z.array(ACLAction$outboundSchema).optional(),
   domainAcceptDelegation: z.array(ACLAction$outboundSchema).optional(),
   domainAuthCodes: z.array(ACLAction$outboundSchema).optional(),
@@ -8493,6 +8750,7 @@ export const Permissions$outboundSchema: z.ZodType<
   marketplaceInstallationMember: z.array(ACLAction$outboundSchema).optional(),
   marketplaceBillingData: z.array(ACLAction$outboundSchema).optional(),
   marketplaceInvoice: z.array(ACLAction$outboundSchema).optional(),
+  marketplaceSettings: z.array(ACLAction$outboundSchema).optional(),
   marketplaceExperimentationItem: z.array(ACLAction$outboundSchema).optional(),
   marketplaceExperimentationEdgeConfigData: z.array(ACLAction$outboundSchema)
     .optional(),
@@ -8520,6 +8778,7 @@ export const Permissions$outboundSchema: z.ZodType<
   notificationStatementOfReasons: z.array(ACLAction$outboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$outboundSchema).optional(),
   observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
+  observabilityFunnel: z.array(ACLAction$outboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$outboundSchema).optional(),
   vercelAppInstallation: z.array(ACLAction$outboundSchema).optional(),
   paymentMethod: z.array(ACLAction$outboundSchema).optional(),
@@ -8583,6 +8842,7 @@ export const Permissions$outboundSchema: z.ZodType<
   connectConfigurationLink: z.array(ACLAction$outboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$outboundSchema).optional(),
   deployment: z.array(ACLAction$outboundSchema).optional(),
+  deploymentBuildLogs: z.array(ACLAction$outboundSchema).optional(),
   deploymentCheck: z.array(ACLAction$outboundSchema).optional(),
   deploymentCheckPreview: z.array(ACLAction$outboundSchema).optional(),
   deploymentCheckReRunFromProductionBranch: z.array(ACLAction$outboundSchema)
@@ -8635,6 +8895,7 @@ export const Permissions$outboundSchema: z.ZodType<
   projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectRollingRelease: z.array(ACLAction$outboundSchema).optional(),
   projectTier: z.array(ACLAction$outboundSchema).optional(),
+  projectOIDCToken: z.array(ACLAction$outboundSchema).optional(),
   seawallConfig: z.array(ACLAction$outboundSchema).optional(),
   skewProtection: z.array(ACLAction$outboundSchema).optional(),
   analytics: z.array(ACLAction$outboundSchema).optional(),
@@ -9447,11 +9708,13 @@ export const GitProviderOptions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   createDeployments: CreateDeployments$inboundSchema,
+  disableRepositoryDispatchEvents: z.boolean().optional(),
 });
 
 /** @internal */
 export type GitProviderOptions$Outbound = {
   createDeployments: string;
+  disableRepositoryDispatchEvents?: boolean | undefined;
 };
 
 /** @internal */
@@ -9461,6 +9724,7 @@ export const GitProviderOptions$outboundSchema: z.ZodType<
   GitProviderOptions
 > = z.object({
   createDeployments: CreateDeployments$outboundSchema,
+  disableRepositoryDispatchEvents: z.boolean().optional(),
 });
 
 /**
@@ -11022,6 +11286,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => Link2$inboundSchema),
     z.lazy(() => Link3$inboundSchema),
     z.lazy(() => Link4$inboundSchema),
+    z.lazy(() => Link5$inboundSchema),
   ]).optional(),
   microfrontends: z.union([
     z.lazy(() => UpdateProjectDataCacheMicrofrontends1$inboundSchema),
@@ -11096,6 +11361,7 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   ).optional(),
   tier: UpdateProjectDataCacheTier$inboundSchema.optional(),
   features: z.lazy(() => Features$inboundSchema).optional(),
+  v0: z.boolean().optional(),
 });
 
 /** @internal */
@@ -11136,6 +11402,7 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
     | Link2$Outbound
     | Link3$Outbound
     | Link4$Outbound
+    | Link5$Outbound
     | undefined;
   microfrontends?:
     | UpdateProjectDataCacheMicrofrontends1$Outbound
@@ -11195,6 +11462,7 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   oidcTokenConfig?: UpdateProjectDataCacheOidcTokenConfig$Outbound | undefined;
   tier?: string | undefined;
   features?: Features$Outbound | undefined;
+  v0?: boolean | undefined;
 };
 
 /** @internal */
@@ -11248,6 +11516,7 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => Link2$outboundSchema),
     z.lazy(() => Link3$outboundSchema),
     z.lazy(() => Link4$outboundSchema),
+    z.lazy(() => Link5$outboundSchema),
   ]).optional(),
   microfrontends: z.union([
     z.lazy(() => UpdateProjectDataCacheMicrofrontends1$outboundSchema),
@@ -11325,6 +11594,7 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   ).optional(),
   tier: UpdateProjectDataCacheTier$outboundSchema.optional(),
   features: z.lazy(() => Features$outboundSchema).optional(),
+  v0: z.boolean().optional(),
 });
 
 /**

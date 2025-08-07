@@ -15,6 +15,7 @@ Retrieves a list of all Integration log drains that are defined for the authenti
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getIntegrationLogDrains" method="get" path="/v2/integrations/log-drains" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -91,6 +92,7 @@ Creates an Integration log drain. This endpoint must be called with an OAuth2 cl
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createLogDrain" method="post" path="/v2/integrations/log-drains" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -179,6 +181,7 @@ Deletes the Integration log drain with the provided `id`. When using an OAuth2 T
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteIntegrationLogDrain" method="delete" path="/v1/integrations/log-drains/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

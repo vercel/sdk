@@ -1,0 +1,23 @@
+# GetDeploymentGitSource14
+
+## Example Usage
+
+```typescript
+import { GetDeploymentGitSource14 } from "@vercel/sdk/models/getdeploymentop.js";
+
+let value: GetDeploymentGitSource14 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 1800.62,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `type`                                                                                                                                                                               | [models.GetDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody214Type](../models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody214type.md) | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
+| `ref`                                                                                                                                                                                | *string*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
+| `sha`                                                                                                                                                                                | *string*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
+| `projectId`                                                                                                                                                                          | *number*                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                   | N/A                                                                                                                                                                                  |

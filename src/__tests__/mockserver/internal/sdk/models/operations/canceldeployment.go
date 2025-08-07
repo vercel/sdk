@@ -191,6 +191,7 @@ const (
 	CancelDeploymentFrameworkSanity         CancelDeploymentFramework = "sanity"
 	CancelDeploymentFrameworkStorybook      CancelDeploymentFramework = "storybook"
 	CancelDeploymentFrameworkNitro          CancelDeploymentFramework = "nitro"
+	CancelDeploymentFrameworkHono           CancelDeploymentFramework = "hono"
 )
 
 func (e CancelDeploymentFramework) ToPointer() *CancelDeploymentFramework {
@@ -295,6 +296,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "storybook":
 		fallthrough
 	case "nitro":
+		fallthrough
+	case "hono":
 		*e = CancelDeploymentFramework(v)
 		return nil
 	default:
@@ -1624,6 +1627,80 @@ func (o *CancelDeploymentGitSourceGitlab2) GetProjectID() float64 {
 	return o.ProjectID
 }
 
+type CancelDeploymentTypeGithubLimited3 string
+
+const (
+	CancelDeploymentTypeGithubLimited3GithubLimited CancelDeploymentTypeGithubLimited3 = "github-limited"
+)
+
+func (e CancelDeploymentTypeGithubLimited3) ToPointer() *CancelDeploymentTypeGithubLimited3 {
+	return &e
+}
+func (e *CancelDeploymentTypeGithubLimited3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = CancelDeploymentTypeGithubLimited3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentTypeGithubLimited3: %v", v)
+	}
+}
+
+type CancelDeploymentGitSourceGithubLimited3 struct {
+	Type   CancelDeploymentTypeGithubLimited3 `json:"type"`
+	Ref    string                             `json:"ref"`
+	Sha    string                             `json:"sha"`
+	RepoID float64                            `json:"repoId"`
+	Org    *string                            `json:"org,omitempty"`
+	Repo   *string                            `json:"repo,omitempty"`
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited3) GetType() CancelDeploymentTypeGithubLimited3 {
+	if o == nil {
+		return CancelDeploymentTypeGithubLimited3("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited3) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited3) GetSha() string {
+	if o == nil {
+		return ""
+	}
+	return o.Sha
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited3) GetRepoID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.RepoID
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited3) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited3) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
 type CancelDeploymentTypeGithubCustomHost3 string
 
 const (
@@ -2116,6 +2193,209 @@ func (o *CancelDeploymentGitSourceGitlab1) GetPrID() *float64 {
 	return o.PrID
 }
 
+type CancelDeploymentTypeGithubLimited2 string
+
+const (
+	CancelDeploymentTypeGithubLimited2GithubLimited CancelDeploymentTypeGithubLimited2 = "github-limited"
+)
+
+func (e CancelDeploymentTypeGithubLimited2) ToPointer() *CancelDeploymentTypeGithubLimited2 {
+	return &e
+}
+func (e *CancelDeploymentTypeGithubLimited2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = CancelDeploymentTypeGithubLimited2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentTypeGithubLimited2: %v", v)
+	}
+}
+
+type CancelDeploymentGitSourceGithubLimited2 struct {
+	Type CancelDeploymentTypeGithubLimited2 `json:"type"`
+	Org  string                             `json:"org"`
+	Repo string                             `json:"repo"`
+	Ref  *string                            `json:"ref,omitempty"`
+	Sha  *string                            `json:"sha,omitempty"`
+	PrID *float64                           `json:"prId,omitempty"`
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited2) GetType() CancelDeploymentTypeGithubLimited2 {
+	if o == nil {
+		return CancelDeploymentTypeGithubLimited2("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited2) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited2) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited2) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited2) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited2) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
+type CancelDeploymentTypeGithubLimited1 string
+
+const (
+	CancelDeploymentTypeGithubLimited1GithubLimited CancelDeploymentTypeGithubLimited1 = "github-limited"
+)
+
+func (e CancelDeploymentTypeGithubLimited1) ToPointer() *CancelDeploymentTypeGithubLimited1 {
+	return &e
+}
+func (e *CancelDeploymentTypeGithubLimited1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = CancelDeploymentTypeGithubLimited1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentTypeGithubLimited1: %v", v)
+	}
+}
+
+type CancelDeploymentRepoID3Type string
+
+const (
+	CancelDeploymentRepoID3TypeStr    CancelDeploymentRepoID3Type = "str"
+	CancelDeploymentRepoID3TypeNumber CancelDeploymentRepoID3Type = "number"
+)
+
+type CancelDeploymentRepoID3 struct {
+	Str    *string  `queryParam:"inline"`
+	Number *float64 `queryParam:"inline"`
+
+	Type CancelDeploymentRepoID3Type
+}
+
+func CreateCancelDeploymentRepoID3Str(str string) CancelDeploymentRepoID3 {
+	typ := CancelDeploymentRepoID3TypeStr
+
+	return CancelDeploymentRepoID3{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentRepoID3Number(number float64) CancelDeploymentRepoID3 {
+	typ := CancelDeploymentRepoID3TypeNumber
+
+	return CancelDeploymentRepoID3{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *CancelDeploymentRepoID3) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
+		u.Type = CancelDeploymentRepoID3TypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = CancelDeploymentRepoID3TypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CancelDeploymentRepoID3", string(data))
+}
+
+func (u CancelDeploymentRepoID3) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CancelDeploymentRepoID3: all fields are null")
+}
+
+type CancelDeploymentGitSourceGithubLimited1 struct {
+	Type   CancelDeploymentTypeGithubLimited1 `json:"type"`
+	RepoID CancelDeploymentRepoID3            `json:"repoId"`
+	Ref    *string                            `json:"ref,omitempty"`
+	Sha    *string                            `json:"sha,omitempty"`
+	PrID   *float64                           `json:"prId,omitempty"`
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited1) GetType() CancelDeploymentTypeGithubLimited1 {
+	if o == nil {
+		return CancelDeploymentTypeGithubLimited1("")
+	}
+	return o.Type
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited1) GetRepoID() CancelDeploymentRepoID3 {
+	if o == nil {
+		return CancelDeploymentRepoID3{}
+	}
+	return o.RepoID
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited1) GetRef() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ref
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited1) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *CancelDeploymentGitSourceGithubLimited1) GetPrID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PrID
+}
+
 type CancelDeploymentTypeGithubCustomHost2 string
 
 const (
@@ -2545,12 +2825,15 @@ const (
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub2           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Github_2"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubCustomHost1 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubCustomHost_1"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubCustomHost2 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubCustomHost_2"
+	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited1    CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubLimited_1"
+	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited2    CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubLimited_2"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGitlab1           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Gitlab_1"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceBitbucket1        CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Bitbucket_1"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceBitbucket2        CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Bitbucket_2"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceCustom            CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Custom"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub3           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Github_3"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubCustomHost3 CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubCustomHost_3"
+	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited3    CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_GithubLimited_3"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGitlab2           CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Gitlab_2"
 	CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceBitbucket3        CancelDeploymentGitSourceUnionType = "cancelDeployment_gitSource_Bitbucket_3"
 )
@@ -2560,12 +2843,15 @@ type CancelDeploymentGitSourceUnion struct {
 	CancelDeploymentGitSourceGithub2           *CancelDeploymentGitSourceGithub2           `queryParam:"inline"`
 	CancelDeploymentGitSourceGithubCustomHost1 *CancelDeploymentGitSourceGithubCustomHost1 `queryParam:"inline"`
 	CancelDeploymentGitSourceGithubCustomHost2 *CancelDeploymentGitSourceGithubCustomHost2 `queryParam:"inline"`
+	CancelDeploymentGitSourceGithubLimited1    *CancelDeploymentGitSourceGithubLimited1    `queryParam:"inline"`
+	CancelDeploymentGitSourceGithubLimited2    *CancelDeploymentGitSourceGithubLimited2    `queryParam:"inline"`
 	CancelDeploymentGitSourceGitlab1           *CancelDeploymentGitSourceGitlab1           `queryParam:"inline"`
 	CancelDeploymentGitSourceBitbucket1        *CancelDeploymentGitSourceBitbucket1        `queryParam:"inline"`
 	CancelDeploymentGitSourceBitbucket2        *CancelDeploymentGitSourceBitbucket2        `queryParam:"inline"`
 	CancelDeploymentGitSourceCustom            *CancelDeploymentGitSourceCustom            `queryParam:"inline"`
 	CancelDeploymentGitSourceGithub3           *CancelDeploymentGitSourceGithub3           `queryParam:"inline"`
 	CancelDeploymentGitSourceGithubCustomHost3 *CancelDeploymentGitSourceGithubCustomHost3 `queryParam:"inline"`
+	CancelDeploymentGitSourceGithubLimited3    *CancelDeploymentGitSourceGithubLimited3    `queryParam:"inline"`
 	CancelDeploymentGitSourceGitlab2           *CancelDeploymentGitSourceGitlab2           `queryParam:"inline"`
 	CancelDeploymentGitSourceBitbucket3        *CancelDeploymentGitSourceBitbucket3        `queryParam:"inline"`
 
@@ -2605,6 +2891,24 @@ func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceGithubCustomHo
 	return CancelDeploymentGitSourceUnion{
 		CancelDeploymentGitSourceGithubCustomHost2: &cancelDeploymentGitSourceGithubCustomHost2,
 		Type: typ,
+	}
+}
+
+func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceGithubLimited1(cancelDeploymentGitSourceGithubLimited1 CancelDeploymentGitSourceGithubLimited1) CancelDeploymentGitSourceUnion {
+	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited1
+
+	return CancelDeploymentGitSourceUnion{
+		CancelDeploymentGitSourceGithubLimited1: &cancelDeploymentGitSourceGithubLimited1,
+		Type:                                    typ,
+	}
+}
+
+func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceGithubLimited2(cancelDeploymentGitSourceGithubLimited2 CancelDeploymentGitSourceGithubLimited2) CancelDeploymentGitSourceUnion {
+	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited2
+
+	return CancelDeploymentGitSourceUnion{
+		CancelDeploymentGitSourceGithubLimited2: &cancelDeploymentGitSourceGithubLimited2,
+		Type:                                    typ,
 	}
 }
 
@@ -2662,6 +2966,15 @@ func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceGithubCustomHo
 	}
 }
 
+func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceGithubLimited3(cancelDeploymentGitSourceGithubLimited3 CancelDeploymentGitSourceGithubLimited3) CancelDeploymentGitSourceUnion {
+	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited3
+
+	return CancelDeploymentGitSourceUnion{
+		CancelDeploymentGitSourceGithubLimited3: &cancelDeploymentGitSourceGithubLimited3,
+		Type:                                    typ,
+	}
+}
+
 func CreateCancelDeploymentGitSourceUnionCancelDeploymentGitSourceGitlab2(cancelDeploymentGitSourceGitlab2 CancelDeploymentGitSourceGitlab2) CancelDeploymentGitSourceUnion {
 	typ := CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGitlab2
 
@@ -2696,13 +3009,6 @@ func (u *CancelDeploymentGitSourceUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var cancelDeploymentGitSourceGithub1 CancelDeploymentGitSourceGithub1 = CancelDeploymentGitSourceGithub1{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithub1, "", true, true); err == nil {
-		u.CancelDeploymentGitSourceGithub1 = &cancelDeploymentGitSourceGithub1
-		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub1
-		return nil
-	}
-
 	var cancelDeploymentGitSourceGitlab1 CancelDeploymentGitSourceGitlab1 = CancelDeploymentGitSourceGitlab1{}
 	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGitlab1, "", true, true); err == nil {
 		u.CancelDeploymentGitSourceGitlab1 = &cancelDeploymentGitSourceGitlab1
@@ -2710,17 +3016,24 @@ func (u *CancelDeploymentGitSourceUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var cancelDeploymentGitSourceGithub2 CancelDeploymentGitSourceGithub2 = CancelDeploymentGitSourceGithub2{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithub2, "", true, true); err == nil {
-		u.CancelDeploymentGitSourceGithub2 = &cancelDeploymentGitSourceGithub2
-		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub2
+	var cancelDeploymentGitSourceGithubLimited1 CancelDeploymentGitSourceGithubLimited1 = CancelDeploymentGitSourceGithubLimited1{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithubLimited1, "", true, true); err == nil {
+		u.CancelDeploymentGitSourceGithubLimited1 = &cancelDeploymentGitSourceGithubLimited1
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited1
 		return nil
 	}
 
-	var cancelDeploymentGitSourceGithubCustomHost1 CancelDeploymentGitSourceGithubCustomHost1 = CancelDeploymentGitSourceGithubCustomHost1{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithubCustomHost1, "", true, true); err == nil {
-		u.CancelDeploymentGitSourceGithubCustomHost1 = &cancelDeploymentGitSourceGithubCustomHost1
-		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubCustomHost1
+	var cancelDeploymentGitSourceGithub1 CancelDeploymentGitSourceGithub1 = CancelDeploymentGitSourceGithub1{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithub1, "", true, true); err == nil {
+		u.CancelDeploymentGitSourceGithub1 = &cancelDeploymentGitSourceGithub1
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub1
+		return nil
+	}
+
+	var cancelDeploymentGitSourceGithubLimited2 CancelDeploymentGitSourceGithubLimited2 = CancelDeploymentGitSourceGithubLimited2{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithubLimited2, "", true, true); err == nil {
+		u.CancelDeploymentGitSourceGithubLimited2 = &cancelDeploymentGitSourceGithubLimited2
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited2
 		return nil
 	}
 
@@ -2738,10 +3051,31 @@ func (u *CancelDeploymentGitSourceUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var cancelDeploymentGitSourceGithubCustomHost1 CancelDeploymentGitSourceGithubCustomHost1 = CancelDeploymentGitSourceGithubCustomHost1{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithubCustomHost1, "", true, true); err == nil {
+		u.CancelDeploymentGitSourceGithubCustomHost1 = &cancelDeploymentGitSourceGithubCustomHost1
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubCustomHost1
+		return nil
+	}
+
 	var cancelDeploymentGitSourceGithub3 CancelDeploymentGitSourceGithub3 = CancelDeploymentGitSourceGithub3{}
 	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithub3, "", true, true); err == nil {
 		u.CancelDeploymentGitSourceGithub3 = &cancelDeploymentGitSourceGithub3
 		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub3
+		return nil
+	}
+
+	var cancelDeploymentGitSourceGithubLimited3 CancelDeploymentGitSourceGithubLimited3 = CancelDeploymentGitSourceGithubLimited3{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithubLimited3, "", true, true); err == nil {
+		u.CancelDeploymentGitSourceGithubLimited3 = &cancelDeploymentGitSourceGithubLimited3
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithubLimited3
+		return nil
+	}
+
+	var cancelDeploymentGitSourceGithub2 CancelDeploymentGitSourceGithub2 = CancelDeploymentGitSourceGithub2{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentGitSourceGithub2, "", true, true); err == nil {
+		u.CancelDeploymentGitSourceGithub2 = &cancelDeploymentGitSourceGithub2
+		u.Type = CancelDeploymentGitSourceUnionTypeCancelDeploymentGitSourceGithub2
 		return nil
 	}
 
@@ -2786,6 +3120,14 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CancelDeploymentGitSourceGithubCustomHost2, "", true)
 	}
 
+	if u.CancelDeploymentGitSourceGithubLimited1 != nil {
+		return utils.MarshalJSON(u.CancelDeploymentGitSourceGithubLimited1, "", true)
+	}
+
+	if u.CancelDeploymentGitSourceGithubLimited2 != nil {
+		return utils.MarshalJSON(u.CancelDeploymentGitSourceGithubLimited2, "", true)
+	}
+
 	if u.CancelDeploymentGitSourceGitlab1 != nil {
 		return utils.MarshalJSON(u.CancelDeploymentGitSourceGitlab1, "", true)
 	}
@@ -2810,6 +3152,10 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CancelDeploymentGitSourceGithubCustomHost3, "", true)
 	}
 
+	if u.CancelDeploymentGitSourceGithubLimited3 != nil {
+		return utils.MarshalJSON(u.CancelDeploymentGitSourceGithubLimited3, "", true)
+	}
+
 	if u.CancelDeploymentGitSourceGitlab2 != nil {
 		return utils.MarshalJSON(u.CancelDeploymentGitSourceGitlab2, "", true)
 	}
@@ -2819,6 +3165,51 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type CancelDeploymentGitSourceUnion: all fields are null")
+}
+
+// CancelDeploymentNodeVersion - If set it overrides the `projectSettings.nodeVersion` for this deployment.
+type CancelDeploymentNodeVersion string
+
+const (
+	CancelDeploymentNodeVersionTwentyTwoDotX  CancelDeploymentNodeVersion = "22.x"
+	CancelDeploymentNodeVersionTwentyDotX     CancelDeploymentNodeVersion = "20.x"
+	CancelDeploymentNodeVersionEighteenDotX   CancelDeploymentNodeVersion = "18.x"
+	CancelDeploymentNodeVersionSixteenDotX    CancelDeploymentNodeVersion = "16.x"
+	CancelDeploymentNodeVersionFourteenDotX   CancelDeploymentNodeVersion = "14.x"
+	CancelDeploymentNodeVersionTwelveDotX     CancelDeploymentNodeVersion = "12.x"
+	CancelDeploymentNodeVersionTenDotX        CancelDeploymentNodeVersion = "10.x"
+	CancelDeploymentNodeVersionEightDot10DotX CancelDeploymentNodeVersion = "8.10.x"
+)
+
+func (e CancelDeploymentNodeVersion) ToPointer() *CancelDeploymentNodeVersion {
+	return &e
+}
+func (e *CancelDeploymentNodeVersion) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "22.x":
+		fallthrough
+	case "20.x":
+		fallthrough
+	case "18.x":
+		fallthrough
+	case "16.x":
+		fallthrough
+	case "14.x":
+		fallthrough
+	case "12.x":
+		fallthrough
+	case "10.x":
+		fallthrough
+	case "8.10.x":
+		*e = CancelDeploymentNodeVersion(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CancelDeploymentNodeVersion: %v", v)
+	}
 }
 
 type CancelDeploymentProject struct {
@@ -5902,10 +6293,8 @@ type CancelDeploymentMicrofrontends2 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
-	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
-	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
-	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
-	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
+	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
+	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
 }
 
 func (o *CancelDeploymentMicrofrontends2) GetApplications() map[string]CancelDeploymentApplications {
@@ -5943,18 +6332,11 @@ func (o *CancelDeploymentMicrofrontends2) GetGroupIds() []string {
 	return o.GroupIds
 }
 
-func (o *CancelDeploymentMicrofrontends2) GetMicrofrontendsAliasEnabled() *bool {
+func (o *CancelDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.MicrofrontendsAliasEnabled
-}
-
-func (o *CancelDeploymentMicrofrontends2) GetPreviewEnvAliasEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewEnvAliasEnabled
+	return o.MicrofrontendsAlias2Enabled
 }
 
 type CancelDeploymentMicrofrontends1 struct {
@@ -5966,10 +6348,8 @@ type CancelDeploymentMicrofrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
-	// Whether the MicrofrontendsAlias team flag should be considered enabled for this deployment or not. This is used to ensure that we don't accidentally switch an existing branch alias to a microfrontends branch alias.
-	MicrofrontendsAliasEnabled *bool `json:"microfrontendsAliasEnabled,omitempty"`
-	// Whether this deployment, if a preview deployment on the production branch, should get the -env-preview alias instead of a normal branch alias. This is used to always generate a microfrontends fallback on the preview branch.
-	PreviewEnvAliasEnabled *bool `json:"previewEnvAliasEnabled,omitempty"`
+	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
+	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
 }
 
 func (o *CancelDeploymentMicrofrontends1) GetIsDefaultApp() *bool {
@@ -6000,18 +6380,11 @@ func (o *CancelDeploymentMicrofrontends1) GetGroupIds() []string {
 	return o.GroupIds
 }
 
-func (o *CancelDeploymentMicrofrontends1) GetMicrofrontendsAliasEnabled() *bool {
+func (o *CancelDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool {
 	if o == nil {
 		return nil
 	}
-	return o.MicrofrontendsAliasEnabled
-}
-
-func (o *CancelDeploymentMicrofrontends1) GetPreviewEnvAliasEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PreviewEnvAliasEnabled
+	return o.MicrofrontendsAlias2Enabled
 }
 
 type CancelDeploymentMicrofrontendsUnionType string
@@ -6321,8 +6694,10 @@ type CancelDeploymentResponseBody struct {
 	Name              string                          `json:"name"`
 	Meta              map[string]string               `json:"meta"`
 	OriginCacheRegion *string                         `json:"originCacheRegion,omitempty"`
-	Project           *CancelDeploymentProject        `json:"project,omitempty"`
-	ReadyState        CancelDeploymentReadyState      `json:"readyState"`
+	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
+	NodeVersion *CancelDeploymentNodeVersion `json:"nodeVersion,omitempty"`
+	Project     *CancelDeploymentProject     `json:"project,omitempty"`
+	ReadyState  CancelDeploymentReadyState   `json:"readyState"`
 	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
 	ReadySubstate          *CancelDeploymentReadySubstate       `json:"readySubstate,omitempty"`
 	Regions                []string                             `json:"regions"`
@@ -6730,6 +7105,13 @@ func (o *CancelDeploymentResponseBody) GetOriginCacheRegion() *string {
 		return nil
 	}
 	return o.OriginCacheRegion
+}
+
+func (o *CancelDeploymentResponseBody) GetNodeVersion() *CancelDeploymentNodeVersion {
+	if o == nil {
+		return nil
+	}
+	return o.NodeVersion
 }
 
 func (o *CancelDeploymentResponseBody) GetProject() *CancelDeploymentProject {

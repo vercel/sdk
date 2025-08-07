@@ -6,11 +6,11 @@
 import { CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType =
-  "gitlab";
+  "github-limited";
 ```
 
 ## Values
 
 ```typescript
-"gitlab"
+"github-limited"
 ```

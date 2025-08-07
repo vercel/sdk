@@ -15,6 +15,7 @@ Lists all members of a project.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getProjectMembers" method="get" path="/v1/projects/{idOrName}/members" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -99,6 +100,7 @@ Adds a new member to the project.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="addProjectMember" method="post" path="/v1/projects/{idOrName}/members" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -189,6 +191,7 @@ Remove a member from a specific project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeProjectMember" method="delete" path="/v1/projects/{idOrName}/members/{uid}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

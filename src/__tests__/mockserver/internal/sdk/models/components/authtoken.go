@@ -46,6 +46,7 @@ const (
 	AuthTokenOrigin2Sms       AuthTokenOrigin2 = "sms"
 	AuthTokenOrigin2Invite    AuthTokenOrigin2 = "invite"
 	AuthTokenOrigin2Google    AuthTokenOrigin2 = "google"
+	AuthTokenOrigin2App       AuthTokenOrigin2 = "app"
 )
 
 func (e AuthTokenOrigin2) ToPointer() *AuthTokenOrigin2 {
@@ -78,6 +79,8 @@ func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 	case "invite":
 		fallthrough
 	case "google":
+		fallthrough
+	case "app":
 		*e = AuthTokenOrigin2(v)
 		return nil
 	default:
@@ -87,11 +90,11 @@ func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 
 // ScopeTeam - The access scopes granted to the token.
 type ScopeTeam struct {
-	Type      TypeTeam         `json:"type"`
-	TeamID    string           `json:"teamId"`
-	Origin    AuthTokenOrigin2 `json:"origin"`
-	CreatedAt float64          `json:"createdAt"`
-	ExpiresAt *float64         `json:"expiresAt,omitempty"`
+	Type      TypeTeam          `json:"type"`
+	TeamID    string            `json:"teamId"`
+	Origin    *AuthTokenOrigin2 `json:"origin,omitempty"`
+	CreatedAt float64           `json:"createdAt"`
+	ExpiresAt *float64          `json:"expiresAt,omitempty"`
 }
 
 func (o *ScopeTeam) GetType() TypeTeam {
@@ -108,9 +111,9 @@ func (o *ScopeTeam) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *ScopeTeam) GetOrigin() AuthTokenOrigin2 {
+func (o *ScopeTeam) GetOrigin() *AuthTokenOrigin2 {
 	if o == nil {
-		return AuthTokenOrigin2("")
+		return nil
 	}
 	return o.Origin
 }
@@ -216,6 +219,7 @@ const (
 	AuthTokenOrigin1Sms       AuthTokenOrigin1 = "sms"
 	AuthTokenOrigin1Invite    AuthTokenOrigin1 = "invite"
 	AuthTokenOrigin1Google    AuthTokenOrigin1 = "google"
+	AuthTokenOrigin1App       AuthTokenOrigin1 = "app"
 )
 
 func (e AuthTokenOrigin1) ToPointer() *AuthTokenOrigin1 {
@@ -248,6 +252,8 @@ func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 	case "invite":
 		fallthrough
 	case "google":
+		fallthrough
+	case "app":
 		*e = AuthTokenOrigin1(v)
 		return nil
 	default:
@@ -259,7 +265,7 @@ func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 type ScopeUser struct {
 	Type      AuthTokenTypeUser `json:"type"`
 	Sudo      *Sudo             `json:"sudo,omitempty"`
-	Origin    AuthTokenOrigin1  `json:"origin"`
+	Origin    *AuthTokenOrigin1 `json:"origin,omitempty"`
 	CreatedAt float64           `json:"createdAt"`
 	ExpiresAt *float64          `json:"expiresAt,omitempty"`
 }
@@ -278,9 +284,9 @@ func (o *ScopeUser) GetSudo() *Sudo {
 	return o.Sudo
 }
 
-func (o *ScopeUser) GetOrigin() AuthTokenOrigin1 {
+func (o *ScopeUser) GetOrigin() *AuthTokenOrigin1 {
 	if o == nil {
-		return AuthTokenOrigin1("")
+		return nil
 	}
 	return o.Origin
 }

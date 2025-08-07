@@ -19,6 +19,7 @@ Get the Rolling Releases billing status for a project. The team level billing st
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRollingReleaseBillingStatus" method="get" path="/v1/projects/{idOrName}/rolling-release/billing" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -98,6 +99,7 @@ Get the Rolling Releases configuration for a project. The project-level config i
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRollingReleaseConfig" method="get" path="/v1/projects/{idOrName}/rolling-release/config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -177,6 +179,7 @@ Disable Rolling Releases for a project means that future deployments will not un
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteRollingReleaseConfig" method="delete" path="/v1/projects/{idOrName}/rolling-release/config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -256,6 +259,7 @@ Update (or disable) Rolling Releases for a project. Changing the config never al
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateRollingReleaseConfig" method="patch" path="/v1/projects/{idOrName}/rolling-release/config" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -335,6 +339,7 @@ Return the Rolling Release for a project, regardless of whether the rollout is a
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRollingRelease" method="get" path="/v1/projects/{idOrName}/rolling-release" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -414,6 +419,7 @@ Advance a rollout to the next stage. This is only needed when rolling releases i
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="approveRollingReleaseStage" method="post" path="/v1/projects/{idOrName}/rolling-release/approve-stage" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -493,6 +499,7 @@ Force-complete a Rolling Release. The canary deployment will begin serving 100% 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="completeRollingRelease" method="post" path="/v1/projects/{idOrName}/rolling-release/complete" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

@@ -118,7 +118,6 @@ async function $do(
   const path = pathToFunc("/v1/edge-config/{edgeConfigId}/items")(pathParams);
 
   const query = encodeFormQuery({
-    "dryRun": payload.dryRun,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });
@@ -165,7 +164,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "402", "403", "404", "409", "4XX", "5XX"],
+    errorCodes: ["400", "401", "402", "403", "404", "409", "412", "4XX", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -196,7 +195,7 @@ async function $do(
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
     M.jsonErr(404, VercelNotFoundError$inboundSchema),
-    M.fail([402, 403, 409, "4XX"]),
+    M.fail([402, 403, 409, 412, "4XX"]),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {

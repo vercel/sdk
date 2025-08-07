@@ -47,8 +47,8 @@ const value: models.CancelDeploymentGitSource4 = {
 
 ```typescript
 const value: models.CancelDeploymentGitSource5 = {
-  type: "gitlab",
-  projectId: "<id>",
+  type: "github-limited",
+  repoId: "<id>",
 };
 ```
 
@@ -56,8 +56,9 @@ const value: models.CancelDeploymentGitSource5 = {
 
 ```typescript
 const value: models.GitSource6 = {
-  type: "bitbucket",
-  repoUuid: "<id>",
+  type: "github-limited",
+  org: "<value>",
+  repo: "<value>",
 };
 ```
 
@@ -65,9 +66,8 @@ const value: models.GitSource6 = {
 
 ```typescript
 const value: models.GitSource7 = {
-  type: "bitbucket",
-  owner: "<value>",
-  slug: "<value>",
+  type: "gitlab",
+  projectId: "<id>",
 };
 ```
 
@@ -75,10 +75,8 @@ const value: models.GitSource7 = {
 
 ```typescript
 const value: models.GitSource8 = {
-  type: "custom",
-  ref: "<value>",
-  sha: "<value>",
-  gitUrl: "https://teeming-electronics.name",
+  type: "bitbucket",
+  repoUuid: "<id>",
 };
 ```
 
@@ -86,10 +84,9 @@ const value: models.GitSource8 = {
 
 ```typescript
 const value: models.GitSource9 = {
-  type: "github",
-  ref: "<value>",
-  sha: "<value>",
-  repoId: 3080.91,
+  type: "bitbucket",
+  owner: "<value>",
+  slug: "<value>",
 };
 ```
 
@@ -97,11 +94,10 @@ const value: models.GitSource9 = {
 
 ```typescript
 const value: models.GitSource10 = {
-  type: "github-custom-host",
-  host: "elastic-yogurt.biz",
+  type: "custom",
   ref: "<value>",
   sha: "<value>",
-  repoId: 8369.17,
+  gitUrl: "https://zany-completion.org/",
 };
 ```
 
@@ -109,10 +105,10 @@ const value: models.GitSource10 = {
 
 ```typescript
 const value: models.GitSource11 = {
-  type: "gitlab",
+  type: "github",
   ref: "<value>",
   sha: "<value>",
-  projectId: 1177.12,
+  repoId: 1177.12,
 };
 ```
 
@@ -120,6 +116,40 @@ const value: models.GitSource11 = {
 
 ```typescript
 const value: models.GitSource12 = {
+  type: "github-custom-host",
+  host: "hefty-annual.net",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 7180.81,
+};
+```
+
+### `models.GitSource13`
+
+```typescript
+const value: models.GitSource13 = {
+  type: "github-limited",
+  ref: "<value>",
+  sha: "<value>",
+  repoId: 3858.32,
+};
+```
+
+### `models.GitSource14`
+
+```typescript
+const value: models.GitSource14 = {
+  type: "gitlab",
+  ref: "<value>",
+  sha: "<value>",
+  projectId: 2422.11,
+};
+```
+
+### `models.GitSource15`
+
+```typescript
+const value: models.GitSource15 = {
   type: "bitbucket",
   ref: "<value>",
   sha: "<value>",

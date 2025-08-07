@@ -673,6 +673,7 @@ const (
 	GetDeploymentsFrameworkSanity         GetDeploymentsFramework = "sanity"
 	GetDeploymentsFrameworkStorybook      GetDeploymentsFramework = "storybook"
 	GetDeploymentsFrameworkNitro          GetDeploymentsFramework = "nitro"
+	GetDeploymentsFrameworkHono           GetDeploymentsFramework = "hono"
 )
 
 func (e GetDeploymentsFramework) ToPointer() *GetDeploymentsFramework {
@@ -777,6 +778,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "storybook":
 		fallthrough
 	case "nitro":
+		fallthrough
+	case "hono":
 		*e = GetDeploymentsFramework(v)
 		return nil
 	default:

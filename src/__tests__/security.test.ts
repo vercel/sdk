@@ -317,7 +317,19 @@ test("Security Get Bypass Ip", async () => {
     slug: "my-team-url-slug",
   });
   expect(result).toBeDefined();
-  expect(result).toEqual({});
+  expect(result).toEqual({
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "second-newsletter.name",
+        ip: "165.112.228.246",
+        createdAt: "1716245811354",
+        updatedAt: "1735671604252",
+        updatedAtHour: "<value>",
+      },
+    ],
+  });
 });
 
 test("Security Add Bypass Ip", async () => {

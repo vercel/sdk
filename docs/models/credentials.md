@@ -16,8 +16,8 @@ const value: models.Credentials1 = {
 
 ```typescript
 const value: models.Credentials2 = {
-  type: "github-app-custom-host",
-  host: "quiet-fax.name",
+  type: "github-oauth-custom-host",
+  host: "silver-perp.biz",
   id: "<id>",
 };
 ```

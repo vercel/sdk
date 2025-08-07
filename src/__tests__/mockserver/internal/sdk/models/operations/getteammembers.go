@@ -155,13 +155,14 @@ func (o *GetTeamMembersBitbucket) GetLogin() *string {
 type GetTeamMembersMemberRole string
 
 const (
-	GetTeamMembersMemberRoleOwner       GetTeamMembersMemberRole = "OWNER"
-	GetTeamMembersMemberRoleMember      GetTeamMembersMemberRole = "MEMBER"
-	GetTeamMembersMemberRoleDeveloper   GetTeamMembersMemberRole = "DEVELOPER"
-	GetTeamMembersMemberRoleViewer      GetTeamMembersMemberRole = "VIEWER"
-	GetTeamMembersMemberRoleBilling     GetTeamMembersMemberRole = "BILLING"
-	GetTeamMembersMemberRoleContributor GetTeamMembersMemberRole = "CONTRIBUTOR"
-	GetTeamMembersMemberRoleSecurity    GetTeamMembersMemberRole = "SECURITY"
+	GetTeamMembersMemberRoleOwner         GetTeamMembersMemberRole = "OWNER"
+	GetTeamMembersMemberRoleMember        GetTeamMembersMemberRole = "MEMBER"
+	GetTeamMembersMemberRoleDeveloper     GetTeamMembersMemberRole = "DEVELOPER"
+	GetTeamMembersMemberRoleViewer        GetTeamMembersMemberRole = "VIEWER"
+	GetTeamMembersMemberRoleBilling       GetTeamMembersMemberRole = "BILLING"
+	GetTeamMembersMemberRoleContributor   GetTeamMembersMemberRole = "CONTRIBUTOR"
+	GetTeamMembersMemberRoleSecurity      GetTeamMembersMemberRole = "SECURITY"
+	GetTeamMembersMemberRoleViewerForPlus GetTeamMembersMemberRole = "VIEWER_FOR_PLUS"
 )
 
 func (e GetTeamMembersMemberRole) ToPointer() *GetTeamMembersMemberRole {
@@ -186,6 +187,8 @@ func (e *GetTeamMembersMemberRole) UnmarshalJSON(data []byte) error {
 	case "CONTRIBUTOR":
 		fallthrough
 	case "SECURITY":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		*e = GetTeamMembersMemberRole(v)
 		return nil
 	default:
@@ -590,13 +593,14 @@ func (o *GetTeamMembersMember) GetProjects() []GetTeamMembersProject {
 type EmailInviteCodeRole string
 
 const (
-	EmailInviteCodeRoleOwner       EmailInviteCodeRole = "OWNER"
-	EmailInviteCodeRoleMember      EmailInviteCodeRole = "MEMBER"
-	EmailInviteCodeRoleDeveloper   EmailInviteCodeRole = "DEVELOPER"
-	EmailInviteCodeRoleViewer      EmailInviteCodeRole = "VIEWER"
-	EmailInviteCodeRoleBilling     EmailInviteCodeRole = "BILLING"
-	EmailInviteCodeRoleContributor EmailInviteCodeRole = "CONTRIBUTOR"
-	EmailInviteCodeRoleSecurity    EmailInviteCodeRole = "SECURITY"
+	EmailInviteCodeRoleOwner         EmailInviteCodeRole = "OWNER"
+	EmailInviteCodeRoleMember        EmailInviteCodeRole = "MEMBER"
+	EmailInviteCodeRoleDeveloper     EmailInviteCodeRole = "DEVELOPER"
+	EmailInviteCodeRoleViewer        EmailInviteCodeRole = "VIEWER"
+	EmailInviteCodeRoleBilling       EmailInviteCodeRole = "BILLING"
+	EmailInviteCodeRoleContributor   EmailInviteCodeRole = "CONTRIBUTOR"
+	EmailInviteCodeRoleSecurity      EmailInviteCodeRole = "SECURITY"
+	EmailInviteCodeRoleViewerForPlus EmailInviteCodeRole = "VIEWER_FOR_PLUS"
 )
 
 func (e EmailInviteCodeRole) ToPointer() *EmailInviteCodeRole {
@@ -621,6 +625,8 @@ func (e *EmailInviteCodeRole) UnmarshalJSON(data []byte) error {
 	case "CONTRIBUTOR":
 		fallthrough
 	case "SECURITY":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		*e = EmailInviteCodeRole(v)
 		return nil
 	default:

@@ -1,19 +1,17 @@
 # SsoProtection
 
-
-## Supported Types
-
-### `models.SsoProtection1`
+## Example Usage
 
 ```typescript
-const value: models.SsoProtection1 = {
-  deploymentType: "all",
+import { SsoProtection } from "@vercel/sdk/models/team.js";
+
+let value: SsoProtection = {
+  deploymentType: "<value>",
 };
 ```
 
-### `models.SsoProtection2`
+## Fields
 
-```typescript
-const value: models.SsoProtection2 = "prod_deployment_urls_and_all_previews";
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deploymentType`   | *string*           | :heavy_check_mark: | N/A                |

@@ -68,13 +68,14 @@ func (o *ListAccessGroupMembersRequest) GetSlug() *string {
 type ListAccessGroupMembersTeamRole string
 
 const (
-	ListAccessGroupMembersTeamRoleOwner       ListAccessGroupMembersTeamRole = "OWNER"
-	ListAccessGroupMembersTeamRoleMember      ListAccessGroupMembersTeamRole = "MEMBER"
-	ListAccessGroupMembersTeamRoleDeveloper   ListAccessGroupMembersTeamRole = "DEVELOPER"
-	ListAccessGroupMembersTeamRoleSecurity    ListAccessGroupMembersTeamRole = "SECURITY"
-	ListAccessGroupMembersTeamRoleBilling     ListAccessGroupMembersTeamRole = "BILLING"
-	ListAccessGroupMembersTeamRoleViewer      ListAccessGroupMembersTeamRole = "VIEWER"
-	ListAccessGroupMembersTeamRoleContributor ListAccessGroupMembersTeamRole = "CONTRIBUTOR"
+	ListAccessGroupMembersTeamRoleOwner         ListAccessGroupMembersTeamRole = "OWNER"
+	ListAccessGroupMembersTeamRoleMember        ListAccessGroupMembersTeamRole = "MEMBER"
+	ListAccessGroupMembersTeamRoleDeveloper     ListAccessGroupMembersTeamRole = "DEVELOPER"
+	ListAccessGroupMembersTeamRoleSecurity      ListAccessGroupMembersTeamRole = "SECURITY"
+	ListAccessGroupMembersTeamRoleBilling       ListAccessGroupMembersTeamRole = "BILLING"
+	ListAccessGroupMembersTeamRoleViewer        ListAccessGroupMembersTeamRole = "VIEWER"
+	ListAccessGroupMembersTeamRoleViewerForPlus ListAccessGroupMembersTeamRole = "VIEWER_FOR_PLUS"
+	ListAccessGroupMembersTeamRoleContributor   ListAccessGroupMembersTeamRole = "CONTRIBUTOR"
 )
 
 func (e ListAccessGroupMembersTeamRole) ToPointer() *ListAccessGroupMembersTeamRole {
@@ -97,6 +98,8 @@ func (e *ListAccessGroupMembersTeamRole) UnmarshalJSON(data []byte) error {
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
 		*e = ListAccessGroupMembersTeamRole(v)

@@ -7,15 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { NinetyOne } from "@vercel/sdk/models/userevent.js";
 
-let value: NinetyOne = {
-  instances: 1265.96,
-  url: "https://warlike-saloon.biz",
-};
+let value: NinetyOne = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `instances`        | *number*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectId`           | *string*              | :heavy_minus_sign:    | N/A                   |
+| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
+| `newTargetPercentage` | *number*              | :heavy_minus_sign:    | N/A                   |

@@ -36,6 +36,7 @@ Update the data cache feature on a project.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateProjectDataCache" method="patch" path="/v1/data-cache/projects/{projectId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -121,6 +122,7 @@ Allows to retrieve the list of projects of the authenticated user or team. The l
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getProjects" method="get" path="/v10/projects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -201,6 +203,7 @@ Allows to create a new project with the provided configuration. It only requires
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createProject" method="post" path="/v11/projects" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -283,6 +286,7 @@ Update the fields of a project using either its `name` or `id`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateProject" method="patch" path="/v9/projects/{idOrName}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -368,6 +372,7 @@ Delete a specific project by passing either the project `id` or `name` in the UR
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteProject" method="delete" path="/v9/projects/{idOrName}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -446,6 +451,7 @@ Retrieve the domains associated with a given project by passing either the proje
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getProjectDomains" method="get" path="/v9/projects/{idOrName}/domains" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -534,6 +540,7 @@ Get project domain by project id/name and domain name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getProjectDomain" method="get" path="/v9/projects/{idOrName}/domains/{domain}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -614,6 +621,7 @@ Update a project domain's configuration, including the name, git branch and redi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateProjectDomain" method="patch" path="/v9/projects/{idOrName}/domains/{domain}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -704,6 +712,7 @@ Remove a domain from a project by passing the domain name and by specifying the 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeProjectDomain" method="delete" path="/v9/projects/{idOrName}/domains/{domain}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -785,6 +794,7 @@ Add a domain to the project by passing its domain name and by specifying the pro
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="addProjectDomain" method="post" path="/v10/projects/{idOrName}/domains" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -875,6 +885,7 @@ Move one project's domain to another project. Also allows the move of all redire
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="moveProjectDomain" method="post" path="/v1/projects/{idOrName}/domains/{domain}/move" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -955,6 +966,7 @@ Attempts to verify a project domain with `verified = false` by checking the corr
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="verifyProjectDomain" method="post" path="/v9/projects/{idOrName}/domains/{domain}/verify" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1035,6 +1047,7 @@ Retrieve the environment variables for a given project by passing either the pro
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="filterProjectEnvs" method="get" path="/v10/projects/{idOrName}/env" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1123,6 +1136,7 @@ Create one or more environment variables for a project by passing its `key`, `va
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createProjectEnv" method="post" path="/v10/projects/{idOrName}/env" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1229,6 +1243,7 @@ Retrieve the environment variable for a given project.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getProjectEnv" method="get" path="/v1/projects/{idOrName}/env/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1309,6 +1324,7 @@ Delete a specific environment variable for a given project by passing the enviro
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="removeProjectEnv" method="delete" path="/v9/projects/{idOrName}/env/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1392,6 +1408,7 @@ Edit a specific environment variable for a given project by passing the environm
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="editProjectEnv" method="patch" path="/v9/projects/{idOrName}/env/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1498,6 +1515,7 @@ Initiates a project transfer request from one team to another. <br/> Returns a `
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createProjectTransferRequest" method="post" path="/projects/{idOrName}/transfer-request" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1576,6 +1594,7 @@ Accept a project transfer request initated by another team. <br/> The `code` is 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="acceptProjectTransferRequest" method="put" path="/projects/transfer-request/{code}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1661,6 +1680,7 @@ Update the deployment protection automation bypass for a project
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateProjectProtectionBypass" method="patch" path="/v1/projects/{idOrName}/protection-bypass" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1742,6 +1762,7 @@ Allows users to promote a deployment to production. Note: This does NOT rebuild 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="requestPromote" method="post" path="/v10/projects/{projectId}/promote/{deploymentId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1822,6 +1843,7 @@ Get a list of aliases related to the last promote request with their mapping sta
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listPromoteAliases" method="get" path="/v1/projects/{projectId}/promote/aliases" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1907,6 +1929,7 @@ Pause a project by passing its project `id` in the URL. If the project does not 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="pauseProject" method="post" path="/v1/projects/{projectId}/pause" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -1985,6 +2008,7 @@ Unpause a project by passing its project `id` in the URL. If the project does no
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="unpauseProject" method="post" path="/v1/projects/{projectId}/unpause" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

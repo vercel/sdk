@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayload64Role } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventPayload64Role = "BILLING";
+let value: UserEventPayload64Role = "VIEWER";
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "CONTRIBUTOR"
+"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "VIEWER_FOR_PLUS" | "CONTRIBUTOR"
 ```

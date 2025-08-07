@@ -9,7 +9,6 @@ import { OneHundredAndThirtyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndThirtyFive = {
   project: {
-    id: "<id>",
     name: "<value>",
   },
   projectMembership: {},
@@ -21,4 +20,4 @@ let value: OneHundredAndThirtyFive = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload135Project](../models/usereventpayload135project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectMembership`                                                          | [models.PayloadProjectMembership](../models/payloadprojectmembership.md)     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

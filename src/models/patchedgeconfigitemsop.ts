@@ -68,12 +68,10 @@ export type Items = One1 | One2 | One3;
 
 export type PatchEdgeConfigItemsRequestBody = {
   items: Array<One1 | One2 | One3>;
-  definition?: any | undefined;
 };
 
 export type PatchEdgeConfigItemsRequest = {
   edgeConfigId: string;
-  dryRun?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -556,13 +554,11 @@ export const PatchEdgeConfigItemsRequestBody$inboundSchema: z.ZodType<
       z.lazy(() => One3$inboundSchema),
     ]),
   ),
-  definition: z.any().optional(),
 });
 
 /** @internal */
 export type PatchEdgeConfigItemsRequestBody$Outbound = {
   items: Array<One1$Outbound | One2$Outbound | One3$Outbound>;
-  definition?: any | undefined;
 };
 
 /** @internal */
@@ -578,7 +574,6 @@ export const PatchEdgeConfigItemsRequestBody$outboundSchema: z.ZodType<
       z.lazy(() => One3$outboundSchema),
     ]),
   ),
-  definition: z.any().optional(),
 });
 
 /**
@@ -621,7 +616,6 @@ export const PatchEdgeConfigItemsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   edgeConfigId: z.string(),
-  dryRun: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
   RequestBody: z.lazy(() => PatchEdgeConfigItemsRequestBody$inboundSchema)
@@ -635,7 +629,6 @@ export const PatchEdgeConfigItemsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type PatchEdgeConfigItemsRequest$Outbound = {
   edgeConfigId: string;
-  dryRun?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody?: PatchEdgeConfigItemsRequestBody$Outbound | undefined;
@@ -648,7 +641,6 @@ export const PatchEdgeConfigItemsRequest$outboundSchema: z.ZodType<
   PatchEdgeConfigItemsRequest
 > = z.object({
   edgeConfigId: z.string(),
-  dryRun: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
   requestBody: z.lazy(() => PatchEdgeConfigItemsRequestBody$outboundSchema)

@@ -24,13 +24,14 @@ func (o *Roles) GetAccessGroupID() string {
 type RolesEnum string
 
 const (
-	RolesEnumOwner       RolesEnum = "OWNER"
-	RolesEnumMember      RolesEnum = "MEMBER"
-	RolesEnumDeveloper   RolesEnum = "DEVELOPER"
-	RolesEnumSecurity    RolesEnum = "SECURITY"
-	RolesEnumBilling     RolesEnum = "BILLING"
-	RolesEnumViewer      RolesEnum = "VIEWER"
-	RolesEnumContributor RolesEnum = "CONTRIBUTOR"
+	RolesEnumOwner         RolesEnum = "OWNER"
+	RolesEnumMember        RolesEnum = "MEMBER"
+	RolesEnumDeveloper     RolesEnum = "DEVELOPER"
+	RolesEnumSecurity      RolesEnum = "SECURITY"
+	RolesEnumBilling       RolesEnum = "BILLING"
+	RolesEnumViewer        RolesEnum = "VIEWER"
+	RolesEnumViewerForPlus RolesEnum = "VIEWER_FOR_PLUS"
+	RolesEnumContributor   RolesEnum = "CONTRIBUTOR"
 )
 
 func (e RolesEnum) ToPointer() *RolesEnum {
@@ -53,6 +54,8 @@ func (e *RolesEnum) UnmarshalJSON(data []byte) error {
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
 		*e = RolesEnum(v)
@@ -159,6 +162,140 @@ func (o *RemoteCaching) GetEnabled() *bool {
 	return o.Enabled
 }
 
+// PatchTeamPasswordProtectionDeploymentType - Specify if the password will apply to every Deployment Target or just Preview
+type PatchTeamPasswordProtectionDeploymentType string
+
+const (
+	PatchTeamPasswordProtectionDeploymentTypeAll                              PatchTeamPasswordProtectionDeploymentType = "all"
+	PatchTeamPasswordProtectionDeploymentTypePreview                          PatchTeamPasswordProtectionDeploymentType = "preview"
+	PatchTeamPasswordProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews PatchTeamPasswordProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+	PatchTeamPasswordProtectionDeploymentTypeAllExceptCustomDomains           PatchTeamPasswordProtectionDeploymentType = "all_except_custom_domains"
+)
+
+func (e PatchTeamPasswordProtectionDeploymentType) ToPointer() *PatchTeamPasswordProtectionDeploymentType {
+	return &e
+}
+func (e *PatchTeamPasswordProtectionDeploymentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = PatchTeamPasswordProtectionDeploymentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PatchTeamPasswordProtectionDeploymentType: %v", v)
+	}
+}
+
+// PatchTeamPasswordProtection - Allows to protect project deployments with a password
+type PatchTeamPasswordProtection struct {
+	// Specify if the password will apply to every Deployment Target or just Preview
+	DeploymentType PatchTeamPasswordProtectionDeploymentType `json:"deploymentType"`
+	// The password that will be used to protect Project Deployments
+	Password *string `json:"password,omitempty"`
+}
+
+func (o *PatchTeamPasswordProtection) GetDeploymentType() PatchTeamPasswordProtectionDeploymentType {
+	if o == nil {
+		return PatchTeamPasswordProtectionDeploymentType("")
+	}
+	return o.DeploymentType
+}
+
+func (o *PatchTeamPasswordProtection) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+// PatchTeamSsoProtectionDeploymentType - Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+type PatchTeamSsoProtectionDeploymentType string
+
+const (
+	PatchTeamSsoProtectionDeploymentTypeAll                              PatchTeamSsoProtectionDeploymentType = "all"
+	PatchTeamSsoProtectionDeploymentTypePreview                          PatchTeamSsoProtectionDeploymentType = "preview"
+	PatchTeamSsoProtectionDeploymentTypeProdDeploymentUrlsAndAllPreviews PatchTeamSsoProtectionDeploymentType = "prod_deployment_urls_and_all_previews"
+	PatchTeamSsoProtectionDeploymentTypeAllExceptCustomDomains           PatchTeamSsoProtectionDeploymentType = "all_except_custom_domains"
+)
+
+func (e PatchTeamSsoProtectionDeploymentType) ToPointer() *PatchTeamSsoProtectionDeploymentType {
+	return &e
+}
+func (e *PatchTeamSsoProtectionDeploymentType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "preview":
+		fallthrough
+	case "prod_deployment_urls_and_all_previews":
+		fallthrough
+	case "all_except_custom_domains":
+		*e = PatchTeamSsoProtectionDeploymentType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PatchTeamSsoProtectionDeploymentType: %v", v)
+	}
+}
+
+// PatchTeamSsoProtection - Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
+type PatchTeamSsoProtection struct {
+	// Specify if the Vercel Authentication (SSO Protection) will apply to every Deployment Target or just Preview
+	DeploymentType *PatchTeamSsoProtectionDeploymentType `default:"preview" json:"deploymentType"`
+}
+
+func (p PatchTeamSsoProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchTeamSsoProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PatchTeamSsoProtection) GetDeploymentType() *PatchTeamSsoProtectionDeploymentType {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentType
+}
+
+// DefaultDeploymentProtection - Default deployment protection settings for new projects.
+type DefaultDeploymentProtection struct {
+	// Allows to protect project deployments with a password
+	PasswordProtection *PatchTeamPasswordProtection `json:"passwordProtection,omitempty"`
+	// Ensures visitors to your Preview Deployments are logged into Vercel and have a minimum of Viewer access on your team
+	SsoProtection *PatchTeamSsoProtection `json:"ssoProtection,omitempty"`
+}
+
+func (o *DefaultDeploymentProtection) GetPasswordProtection() *PatchTeamPasswordProtection {
+	if o == nil {
+		return nil
+	}
+	return o.PasswordProtection
+}
+
+func (o *DefaultDeploymentProtection) GetSsoProtection() *PatchTeamSsoProtection {
+	if o == nil {
+		return nil
+	}
+	return o.SsoProtection
+}
+
 type PatchTeamRequestBody struct {
 	// The hash value of an uploaded image.
 	Avatar *string `json:"avatar,omitempty"`
@@ -186,6 +323,8 @@ type PatchTeamRequestBody struct {
 	HideIPAddresses *bool `json:"hideIpAddresses,omitempty"`
 	// Display or hide IP addresses in Log Drains.
 	HideIPAddressesInLogDrains *bool `json:"hideIpAddressesInLogDrains,omitempty"`
+	// Default deployment protection settings for new projects.
+	DefaultDeploymentProtection *DefaultDeploymentProtection `json:"defaultDeploymentProtection,omitempty"`
 }
 
 func (o *PatchTeamRequestBody) GetAvatar() *string {
@@ -284,6 +423,13 @@ func (o *PatchTeamRequestBody) GetHideIPAddressesInLogDrains() *bool {
 		return nil
 	}
 	return o.HideIPAddressesInLogDrains
+}
+
+func (o *PatchTeamRequestBody) GetDefaultDeploymentProtection() *DefaultDeploymentProtection {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultDeploymentProtection
 }
 
 type PatchTeamRequest struct {

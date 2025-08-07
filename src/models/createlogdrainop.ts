@@ -192,7 +192,7 @@ export type CreateLogDrainResponseBody = {
   /**
    * The environment of log drain
    */
-  environments: Array<CreateLogDrainEnvironments>;
+  environments?: Array<CreateLogDrainEnvironments> | undefined;
   /**
    * The branch regexp of log drain
    */
@@ -508,7 +508,7 @@ export const CreateLogDrainResponseBody$inboundSchema: z.ZodType<
   sources: z.array(CreateLogDrainSources$inboundSchema).optional(),
   createdFrom: CreateLogDrainCreatedFrom$inboundSchema.optional(),
   headers: z.record(z.string()).optional(),
-  environments: z.array(CreateLogDrainEnvironments$inboundSchema),
+  environments: z.array(CreateLogDrainEnvironments$inboundSchema).optional(),
   branch: z.string().optional(),
   samplingRate: z.number().optional(),
 });
@@ -528,7 +528,7 @@ export type CreateLogDrainResponseBody$Outbound = {
   sources?: Array<string> | undefined;
   createdFrom?: string | undefined;
   headers?: { [k: string]: string } | undefined;
-  environments: Array<string>;
+  environments?: Array<string> | undefined;
   branch?: string | undefined;
   samplingRate?: number | undefined;
 };
@@ -552,7 +552,7 @@ export const CreateLogDrainResponseBody$outboundSchema: z.ZodType<
   sources: z.array(CreateLogDrainSources$outboundSchema).optional(),
   createdFrom: CreateLogDrainCreatedFrom$outboundSchema.optional(),
   headers: z.record(z.string()).optional(),
-  environments: z.array(CreateLogDrainEnvironments$outboundSchema),
+  environments: z.array(CreateLogDrainEnvironments$outboundSchema).optional(),
   branch: z.string().optional(),
   samplingRate: z.number().optional(),
 });

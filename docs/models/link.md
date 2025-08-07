@@ -42,3 +42,18 @@ const value: models.Link4 = {
 };
 ```
 
+### `models.Link5`
+
+```typescript
+const value: models.Link5 = {
+  deployHooks: [
+    {
+      id: "<id>",
+      name: "<value>",
+      ref: "<value>",
+      url: "https://fatal-bungalow.net",
+    },
+  ],
+};
+```
+

@@ -7,11 +7,11 @@ import { CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseB
 
 let value:
   CreateDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody5Type =
-    "gitlab";
+    "github-limited";
 ```
 
 ## Values
 
 ```typescript
-"gitlab"
+"github-limited"
 ```

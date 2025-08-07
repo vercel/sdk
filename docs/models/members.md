@@ -9,7 +9,7 @@ let value: Members = {
   email: "Felicity63@yahoo.com",
   uid: "<id>",
   username: "Brianne81",
-  teamRole: "BILLING",
+  teamRole: "VIEWER",
 };
 ```
 

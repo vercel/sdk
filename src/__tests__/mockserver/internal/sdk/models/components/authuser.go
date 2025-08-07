@@ -296,6 +296,46 @@ func (o *AuthUserBuildMachine) GetMemory() *float64 {
 	return o.Memory
 }
 
+// AuthUserSecurity - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserSecurity struct {
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	CustomRules *float64 `json:"customRules,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	IPBlocks *float64 `json:"ipBlocks,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	IPBypass *float64 `json:"ipBypass,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	RateLimit *float64 `json:"rateLimit,omitempty"`
+}
+
+func (o *AuthUserSecurity) GetCustomRules() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CustomRules
+}
+
+func (o *AuthUserSecurity) GetIPBlocks() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.IPBlocks
+}
+
+func (o *AuthUserSecurity) GetIPBypass() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.IPBypass
+}
+
+func (o *AuthUserSecurity) GetRateLimit() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
 // AuthUserResourceConfig - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type AuthUserResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -348,6 +388,8 @@ type AuthUserResourceConfig struct {
 	CustomEnvironmentsPerProject *float64 `json:"customEnvironmentsPerProject,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	BuildMachine *AuthUserBuildMachine `json:"buildMachine,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	Security *AuthUserSecurity `json:"security,omitempty"`
 }
 
 func (o *AuthUserResourceConfig) GetNodeType() *string {
@@ -523,6 +565,13 @@ func (o *AuthUserResourceConfig) GetBuildMachine() *AuthUserBuildMachine {
 		return nil
 	}
 	return o.BuildMachine
+}
+
+func (o *AuthUserResourceConfig) GetSecurity() *AuthUserSecurity {
+	if o == nil {
+		return nil
+	}
+	return o.Security
 }
 
 type AuthUserViewPreference string
@@ -771,6 +820,7 @@ const (
 	AuthUserImportFlowGitProviderGithub           AuthUserImportFlowGitProvider = "github"
 	AuthUserImportFlowGitProviderGitlab           AuthUserImportFlowGitProvider = "gitlab"
 	AuthUserImportFlowGitProviderBitbucket        AuthUserImportFlowGitProvider = "bitbucket"
+	AuthUserImportFlowGitProviderGithubLimited    AuthUserImportFlowGitProvider = "github-limited"
 	AuthUserImportFlowGitProviderGithubCustomHost AuthUserImportFlowGitProvider = "github-custom-host"
 )
 
@@ -788,6 +838,8 @@ func (e *AuthUserImportFlowGitProvider) UnmarshalJSON(data []byte) error {
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
+		fallthrough
+	case "github-limited":
 		fallthrough
 	case "github-custom-host":
 		*e = AuthUserImportFlowGitProvider(v)

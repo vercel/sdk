@@ -269,8 +269,8 @@ func (o *GetProjectsSpeedInsights) GetPaidAt() *float64 {
 type GetProjectsEnvIDEnum string
 
 const (
-	GetProjectsEnvIDEnumProduction GetProjectsEnvIDEnum = "production"
 	GetProjectsEnvIDEnumPreview    GetProjectsEnvIDEnum = "preview"
+	GetProjectsEnvIDEnumProduction GetProjectsEnvIDEnum = "production"
 )
 
 func (e GetProjectsEnvIDEnum) ToPointer() *GetProjectsEnvIDEnum {
@@ -282,9 +282,9 @@ func (e *GetProjectsEnvIDEnum) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		*e = GetProjectsEnvIDEnum(v)
 		return nil
 	default:
@@ -377,6 +377,7 @@ func (o *GetProjectsAws) GetSecurityGroupID() string {
 type GetProjectsConnectConfiguration struct {
 	EnvID                  GetProjectsEnvIDUnion `json:"envId"`
 	ConnectConfigurationID string                `json:"connectConfigurationId"`
+	Dc                     *string               `json:"dc,omitempty"`
 	Passive                bool                  `json:"passive"`
 	BuildsEnabled          bool                  `json:"buildsEnabled"`
 	Aws                    *GetProjectsAws       `json:"aws,omitempty"`
@@ -396,6 +397,13 @@ func (o *GetProjectsConnectConfiguration) GetConnectConfigurationID() string {
 		return ""
 	}
 	return o.ConnectConfigurationID
+}
+
+func (o *GetProjectsConnectConfiguration) GetDc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Dc
 }
 
 func (o *GetProjectsConnectConfiguration) GetPassive() bool {
@@ -1951,8 +1959,8 @@ func (o *GetProjectsEnv) GetCustomEnvironmentIds() []string {
 type GetProjectsCustomEnvironmentType string
 
 const (
-	GetProjectsCustomEnvironmentTypeProduction  GetProjectsCustomEnvironmentType = "production"
 	GetProjectsCustomEnvironmentTypePreview     GetProjectsCustomEnvironmentType = "preview"
+	GetProjectsCustomEnvironmentTypeProduction  GetProjectsCustomEnvironmentType = "production"
 	GetProjectsCustomEnvironmentTypeDevelopment GetProjectsCustomEnvironmentType = "development"
 )
 
@@ -1965,9 +1973,9 @@ func (e *GetProjectsCustomEnvironmentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "development":
 		*e = GetProjectsCustomEnvironmentType(v)
@@ -2294,6 +2302,7 @@ const (
 	GetProjectsFrameworkSanity         GetProjectsFramework = "sanity"
 	GetProjectsFrameworkStorybook      GetProjectsFramework = "storybook"
 	GetProjectsFrameworkNitro          GetProjectsFramework = "nitro"
+	GetProjectsFrameworkHono           GetProjectsFramework = "hono"
 )
 
 func (e GetProjectsFramework) ToPointer() *GetProjectsFramework {
@@ -2398,6 +2407,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "storybook":
 		fallthrough
 	case "nitro":
+		fallthrough
+	case "hono":
 		*e = GetProjectsFramework(v)
 		return nil
 	default:
@@ -2739,7 +2750,7 @@ func (e *GetProjectsTypeGithubCustomHost) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetProjectsDeployHook4 struct {
+type GetProjectsDeployHook5 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -2747,35 +2758,35 @@ type GetProjectsDeployHook4 struct {
 	URL       string   `json:"url"`
 }
 
-func (o *GetProjectsDeployHook4) GetCreatedAt() *float64 {
+func (o *GetProjectsDeployHook5) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *GetProjectsDeployHook4) GetID() string {
+func (o *GetProjectsDeployHook5) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetProjectsDeployHook4) GetName() string {
+func (o *GetProjectsDeployHook5) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetProjectsDeployHook4) GetRef() string {
+func (o *GetProjectsDeployHook5) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *GetProjectsDeployHook4) GetURL() string {
+func (o *GetProjectsDeployHook5) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -2791,7 +2802,7 @@ type GetProjectsLinkGithubCustomHost struct {
 	Type             *GetProjectsTypeGithubCustomHost `json:"type,omitempty"`
 	Host             *string                          `json:"host,omitempty"`
 	CreatedAt        *float64                         `json:"createdAt,omitempty"`
-	DeployHooks      []GetProjectsDeployHook4         `json:"deployHooks"`
+	DeployHooks      []GetProjectsDeployHook5         `json:"deployHooks"`
 	GitCredentialID  *string                          `json:"gitCredentialId,omitempty"`
 	UpdatedAt        *float64                         `json:"updatedAt,omitempty"`
 	Sourceless       *bool                            `json:"sourceless,omitempty"`
@@ -2847,9 +2858,9 @@ func (o *GetProjectsLinkGithubCustomHost) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *GetProjectsLinkGithubCustomHost) GetDeployHooks() []GetProjectsDeployHook4 {
+func (o *GetProjectsLinkGithubCustomHost) GetDeployHooks() []GetProjectsDeployHook5 {
 	if o == nil {
-		return []GetProjectsDeployHook4{}
+		return []GetProjectsDeployHook5{}
 	}
 	return o.DeployHooks
 }
@@ -2905,7 +2916,7 @@ func (e *GetProjectsTypeBitbucket) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetProjectsDeployHook3 struct {
+type GetProjectsDeployHook4 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -2913,35 +2924,35 @@ type GetProjectsDeployHook3 struct {
 	URL       string   `json:"url"`
 }
 
-func (o *GetProjectsDeployHook3) GetCreatedAt() *float64 {
+func (o *GetProjectsDeployHook4) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *GetProjectsDeployHook3) GetID() string {
+func (o *GetProjectsDeployHook4) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetProjectsDeployHook3) GetName() string {
+func (o *GetProjectsDeployHook4) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetProjectsDeployHook3) GetRef() string {
+func (o *GetProjectsDeployHook4) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *GetProjectsDeployHook3) GetURL() string {
+func (o *GetProjectsDeployHook4) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -2956,7 +2967,7 @@ type GetProjectsLinkBitbucket struct {
 	UUID             *string                   `json:"uuid,omitempty"`
 	WorkspaceUUID    *string                   `json:"workspaceUuid,omitempty"`
 	CreatedAt        *float64                  `json:"createdAt,omitempty"`
-	DeployHooks      []GetProjectsDeployHook3  `json:"deployHooks"`
+	DeployHooks      []GetProjectsDeployHook4  `json:"deployHooks"`
 	GitCredentialID  *string                   `json:"gitCredentialId,omitempty"`
 	UpdatedAt        *float64                  `json:"updatedAt,omitempty"`
 	Sourceless       *bool                     `json:"sourceless,omitempty"`
@@ -3012,9 +3023,9 @@ func (o *GetProjectsLinkBitbucket) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *GetProjectsLinkBitbucket) GetDeployHooks() []GetProjectsDeployHook3 {
+func (o *GetProjectsLinkBitbucket) GetDeployHooks() []GetProjectsDeployHook4 {
 	if o == nil {
-		return []GetProjectsDeployHook3{}
+		return []GetProjectsDeployHook4{}
 	}
 	return o.DeployHooks
 }
@@ -3070,7 +3081,7 @@ func (e *GetProjectsTypeGitlab) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type GetProjectsDeployHook2 struct {
+type GetProjectsDeployHook3 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -3078,35 +3089,35 @@ type GetProjectsDeployHook2 struct {
 	URL       string   `json:"url"`
 }
 
-func (o *GetProjectsDeployHook2) GetCreatedAt() *float64 {
+func (o *GetProjectsDeployHook3) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *GetProjectsDeployHook2) GetID() string {
+func (o *GetProjectsDeployHook3) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *GetProjectsDeployHook2) GetName() string {
+func (o *GetProjectsDeployHook3) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetProjectsDeployHook2) GetRef() string {
+func (o *GetProjectsDeployHook3) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *GetProjectsDeployHook2) GetURL() string {
+func (o *GetProjectsDeployHook3) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -3123,7 +3134,7 @@ type GetProjectsLinkGitlab struct {
 	ProjectURL       *string                  `json:"projectUrl,omitempty"`
 	Type             *GetProjectsTypeGitlab   `json:"type,omitempty"`
 	CreatedAt        *float64                 `json:"createdAt,omitempty"`
-	DeployHooks      []GetProjectsDeployHook2 `json:"deployHooks"`
+	DeployHooks      []GetProjectsDeployHook3 `json:"deployHooks"`
 	GitCredentialID  *string                  `json:"gitCredentialId,omitempty"`
 	UpdatedAt        *float64                 `json:"updatedAt,omitempty"`
 	Sourceless       *bool                    `json:"sourceless,omitempty"`
@@ -3186,9 +3197,9 @@ func (o *GetProjectsLinkGitlab) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *GetProjectsLinkGitlab) GetDeployHooks() []GetProjectsDeployHook2 {
+func (o *GetProjectsLinkGitlab) GetDeployHooks() []GetProjectsDeployHook3 {
 	if o == nil {
-		return []GetProjectsDeployHook2{}
+		return []GetProjectsDeployHook3{}
 	}
 	return o.DeployHooks
 }
@@ -3215,6 +3226,164 @@ func (o *GetProjectsLinkGitlab) GetSourceless() *bool {
 }
 
 func (o *GetProjectsLinkGitlab) GetProductionBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionBranch
+}
+
+type GetProjectsTypeGithubLimited string
+
+const (
+	GetProjectsTypeGithubLimitedGithubLimited GetProjectsTypeGithubLimited = "github-limited"
+)
+
+func (e GetProjectsTypeGithubLimited) ToPointer() *GetProjectsTypeGithubLimited {
+	return &e
+}
+func (e *GetProjectsTypeGithubLimited) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = GetProjectsTypeGithubLimited(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsTypeGithubLimited: %v", v)
+	}
+}
+
+type GetProjectsDeployHook2 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (o *GetProjectsDeployHook2) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsDeployHook2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetProjectsDeployHook2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetProjectsDeployHook2) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GetProjectsDeployHook2) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type GetProjectsLinkGithubLimited struct {
+	Type      *GetProjectsTypeGithubLimited `json:"type,omitempty"`
+	Repo      *string                       `json:"repo,omitempty"`
+	RepoID    *float64                      `json:"repoId,omitempty"`
+	UpdatedAt *float64                      `json:"updatedAt,omitempty"`
+	CreatedAt *float64                      `json:"createdAt,omitempty"`
+	Org       *string                       `json:"org,omitempty"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+	RepoOwnerID      *float64                 `json:"repoOwnerId,omitempty"`
+	DeployHooks      []GetProjectsDeployHook2 `json:"deployHooks"`
+	GitCredentialID  *string                  `json:"gitCredentialId,omitempty"`
+	Sourceless       *bool                    `json:"sourceless,omitempty"`
+	ProductionBranch *string                  `json:"productionBranch,omitempty"`
+}
+
+func (o *GetProjectsLinkGithubLimited) GetType() *GetProjectsTypeGithubLimited {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *GetProjectsLinkGithubLimited) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *GetProjectsLinkGithubLimited) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *GetProjectsLinkGithubLimited) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsLinkGithubLimited) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsLinkGithubLimited) GetOrg() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Org
+}
+
+func (o *GetProjectsLinkGithubLimited) GetRepoOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoOwnerID
+}
+
+func (o *GetProjectsLinkGithubLimited) GetDeployHooks() []GetProjectsDeployHook2 {
+	if o == nil {
+		return []GetProjectsDeployHook2{}
+	}
+	return o.DeployHooks
+}
+
+func (o *GetProjectsLinkGithubLimited) GetGitCredentialID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GitCredentialID
+}
+
+func (o *GetProjectsLinkGithubLimited) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *GetProjectsLinkGithubLimited) GetProductionBranch() *string {
 	if o == nil {
 		return nil
 	}
@@ -3383,6 +3552,7 @@ type GetProjectsLinkUnionType string
 
 const (
 	GetProjectsLinkUnionTypeGetProjectsLinkGithub           GetProjectsLinkUnionType = "getProjects_link_Github"
+	GetProjectsLinkUnionTypeGetProjectsLinkGithubLimited    GetProjectsLinkUnionType = "getProjects_link_GithubLimited"
 	GetProjectsLinkUnionTypeGetProjectsLinkGitlab           GetProjectsLinkUnionType = "getProjects_link_Gitlab"
 	GetProjectsLinkUnionTypeGetProjectsLinkBitbucket        GetProjectsLinkUnionType = "getProjects_link_Bitbucket"
 	GetProjectsLinkUnionTypeGetProjectsLinkGithubCustomHost GetProjectsLinkUnionType = "getProjects_link_GithubCustomHost"
@@ -3390,6 +3560,7 @@ const (
 
 type GetProjectsLinkUnion struct {
 	GetProjectsLinkGithub           *GetProjectsLinkGithub           `queryParam:"inline"`
+	GetProjectsLinkGithubLimited    *GetProjectsLinkGithubLimited    `queryParam:"inline"`
 	GetProjectsLinkGitlab           *GetProjectsLinkGitlab           `queryParam:"inline"`
 	GetProjectsLinkBitbucket        *GetProjectsLinkBitbucket        `queryParam:"inline"`
 	GetProjectsLinkGithubCustomHost *GetProjectsLinkGithubCustomHost `queryParam:"inline"`
@@ -3403,6 +3574,15 @@ func CreateGetProjectsLinkUnionGetProjectsLinkGithub(getProjectsLinkGithub GetPr
 	return GetProjectsLinkUnion{
 		GetProjectsLinkGithub: &getProjectsLinkGithub,
 		Type:                  typ,
+	}
+}
+
+func CreateGetProjectsLinkUnionGetProjectsLinkGithubLimited(getProjectsLinkGithubLimited GetProjectsLinkGithubLimited) GetProjectsLinkUnion {
+	typ := GetProjectsLinkUnionTypeGetProjectsLinkGithubLimited
+
+	return GetProjectsLinkUnion{
+		GetProjectsLinkGithubLimited: &getProjectsLinkGithubLimited,
+		Type:                         typ,
 	}
 }
 
@@ -3442,6 +3622,13 @@ func (u *GetProjectsLinkUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var getProjectsLinkGithubLimited GetProjectsLinkGithubLimited = GetProjectsLinkGithubLimited{}
+	if err := utils.UnmarshalJSON(data, &getProjectsLinkGithubLimited, "", true, true); err == nil {
+		u.GetProjectsLinkGithubLimited = &getProjectsLinkGithubLimited
+		u.Type = GetProjectsLinkUnionTypeGetProjectsLinkGithubLimited
+		return nil
+	}
+
 	var getProjectsLinkBitbucket GetProjectsLinkBitbucket = GetProjectsLinkBitbucket{}
 	if err := utils.UnmarshalJSON(data, &getProjectsLinkBitbucket, "", true, true); err == nil {
 		u.GetProjectsLinkBitbucket = &getProjectsLinkBitbucket
@@ -3469,6 +3656,10 @@ func (u *GetProjectsLinkUnion) UnmarshalJSON(data []byte) error {
 func (u GetProjectsLinkUnion) MarshalJSON() ([]byte, error) {
 	if u.GetProjectsLinkGithub != nil {
 		return utils.MarshalJSON(u.GetProjectsLinkGithub, "", true)
+	}
+
+	if u.GetProjectsLinkGithubLimited != nil {
+		return utils.MarshalJSON(u.GetProjectsLinkGithubLimited, "", true)
 	}
 
 	if u.GetProjectsLinkGitlab != nil {
@@ -4833,6 +5024,7 @@ type GetProjectsPermissions struct {
 	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
 	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
 	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
+	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
 	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
 	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
 	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
@@ -4883,6 +5075,7 @@ type GetProjectsPermissions struct {
 	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
 	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
 	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
+	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
 	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
@@ -4890,11 +5083,11 @@ type GetProjectsPermissions struct {
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
+	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
 	UserSudo                                 []components.ACLAction `json:"userSudo,omitempty"`
 	WebAuthn                                 []components.ACLAction `json:"webAuthn,omitempty"`
-	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	AccessGroup                              []components.ACLAction `json:"accessGroup,omitempty"`
 	AliasGlobal                              []components.ACLAction `json:"aliasGlobal,omitempty"`
 	AnalyticsSampling                        []components.ACLAction `json:"analyticsSampling,omitempty"`
@@ -4907,6 +5100,7 @@ type GetProjectsPermissions struct {
 	BillingInvoiceLanguage                   []components.ACLAction `json:"billingInvoiceLanguage,omitempty"`
 	BillingPlan                              []components.ACLAction `json:"billingPlan,omitempty"`
 	BillingPurchaseOrder                     []components.ACLAction `json:"billingPurchaseOrder,omitempty"`
+	BillingRefund                            []components.ACLAction `json:"billingRefund,omitempty"`
 	BillingTaxID                             []components.ACLAction `json:"billingTaxId,omitempty"`
 	Blob                                     []components.ACLAction `json:"blob,omitempty"`
 	Budget                                   []components.ACLAction `json:"budget,omitempty"`
@@ -4916,6 +5110,7 @@ type GetProjectsPermissions struct {
 	ConcurrentBuilds                         []components.ACLAction `json:"concurrentBuilds,omitempty"`
 	Connect                                  []components.ACLAction `json:"connect,omitempty"`
 	ConnectConfiguration                     []components.ACLAction `json:"connectConfiguration,omitempty"`
+	DefaultDeploymentProtection              []components.ACLAction `json:"defaultDeploymentProtection,omitempty"`
 	Domain                                   []components.ACLAction `json:"domain,omitempty"`
 	DomainAcceptDelegation                   []components.ACLAction `json:"domainAcceptDelegation,omitempty"`
 	DomainAuthCodes                          []components.ACLAction `json:"domainAuthCodes,omitempty"`
@@ -4948,6 +5143,7 @@ type GetProjectsPermissions struct {
 	MarketplaceInstallationMember            []components.ACLAction `json:"marketplaceInstallationMember,omitempty"`
 	MarketplaceBillingData                   []components.ACLAction `json:"marketplaceBillingData,omitempty"`
 	MarketplaceInvoice                       []components.ACLAction `json:"marketplaceInvoice,omitempty"`
+	MarketplaceSettings                      []components.ACLAction `json:"marketplaceSettings,omitempty"`
 	MarketplaceExperimentationItem           []components.ACLAction `json:"marketplaceExperimentationItem,omitempty"`
 	MarketplaceExperimentationEdgeConfigData []components.ACLAction `json:"marketplaceExperimentationEdgeConfigData,omitempty"`
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
@@ -4974,6 +5170,7 @@ type GetProjectsPermissions struct {
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
+	ObservabilityFunnel                      []components.ACLAction `json:"observabilityFunnel,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	VercelAppInstallation                    []components.ACLAction `json:"vercelAppInstallation,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
@@ -5079,6 +5276,13 @@ func (o *GetProjectsPermissions) GetDeployment() []components.ACLAction {
 		return nil
 	}
 	return o.Deployment
+}
+
+func (o *GetProjectsPermissions) GetDeploymentBuildLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentBuildLogs
 }
 
 func (o *GetProjectsPermissions) GetDeploymentCheck() []components.ACLAction {
@@ -5431,6 +5635,13 @@ func (o *GetProjectsPermissions) GetProjectTier() []components.ACLAction {
 	return o.ProjectTier
 }
 
+func (o *GetProjectsPermissions) GetProjectOIDCToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectOIDCToken
+}
+
 func (o *GetProjectsPermissions) GetSeawallConfig() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5480,6 +5691,13 @@ func (o *GetProjectsPermissions) GetSonar() []components.ACLAction {
 	return o.Sonar
 }
 
+func (o *GetProjectsPermissions) GetOauth2Connection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Oauth2Connection
+}
+
 func (o *GetProjectsPermissions) GetUser() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5506,13 +5724,6 @@ func (o *GetProjectsPermissions) GetWebAuthn() []components.ACLAction {
 		return nil
 	}
 	return o.WebAuthn
-}
-
-func (o *GetProjectsPermissions) GetOauth2Connection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Oauth2Connection
 }
 
 func (o *GetProjectsPermissions) GetAccessGroup() []components.ACLAction {
@@ -5599,6 +5810,13 @@ func (o *GetProjectsPermissions) GetBillingPurchaseOrder() []components.ACLActio
 	return o.BillingPurchaseOrder
 }
 
+func (o *GetProjectsPermissions) GetBillingRefund() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BillingRefund
+}
+
 func (o *GetProjectsPermissions) GetBillingTaxID() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5660,6 +5878,13 @@ func (o *GetProjectsPermissions) GetConnectConfiguration() []components.ACLActio
 		return nil
 	}
 	return o.ConnectConfiguration
+}
+
+func (o *GetProjectsPermissions) GetDefaultDeploymentProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultDeploymentProtection
 }
 
 func (o *GetProjectsPermissions) GetDomain() []components.ACLAction {
@@ -5886,6 +6111,13 @@ func (o *GetProjectsPermissions) GetMarketplaceInvoice() []components.ACLAction 
 	return o.MarketplaceInvoice
 }
 
+func (o *GetProjectsPermissions) GetMarketplaceSettings() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.MarketplaceSettings
+}
+
 func (o *GetProjectsPermissions) GetMarketplaceExperimentationItem() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -6066,6 +6298,13 @@ func (o *GetProjectsPermissions) GetObservabilityNotebook() []components.ACLActi
 		return nil
 	}
 	return o.ObservabilityNotebook
+}
+
+func (o *GetProjectsPermissions) GetObservabilityFunnel() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityFunnel
 }
 
 func (o *GetProjectsPermissions) GetOpenTelemetryEndpoint() []components.ACLAction {
@@ -6758,8 +6997,8 @@ func (u GetProjectsProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 type GetProjectsTrustedIpsDeploymentType2 string
 
 const (
-	GetProjectsTrustedIpsDeploymentType2Production                       GetProjectsTrustedIpsDeploymentType2 = "production"
 	GetProjectsTrustedIpsDeploymentType2Preview                          GetProjectsTrustedIpsDeploymentType2 = "preview"
+	GetProjectsTrustedIpsDeploymentType2Production                       GetProjectsTrustedIpsDeploymentType2 = "production"
 	GetProjectsTrustedIpsDeploymentType2All                              GetProjectsTrustedIpsDeploymentType2 = "all"
 	GetProjectsTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews GetProjectsTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
 	GetProjectsTrustedIpsDeploymentType2AllExceptCustomDomains           GetProjectsTrustedIpsDeploymentType2 = "all_except_custom_domains"
@@ -6774,9 +7013,9 @@ func (e *GetProjectsTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) error 
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "all":
 		fallthrough
@@ -6804,8 +7043,8 @@ func (o *GetProjectsTrustedIps2) GetDeploymentType() GetProjectsTrustedIpsDeploy
 type GetProjectsTrustedIpsDeploymentType1 string
 
 const (
-	GetProjectsTrustedIpsDeploymentType1Production                       GetProjectsTrustedIpsDeploymentType1 = "production"
 	GetProjectsTrustedIpsDeploymentType1Preview                          GetProjectsTrustedIpsDeploymentType1 = "preview"
+	GetProjectsTrustedIpsDeploymentType1Production                       GetProjectsTrustedIpsDeploymentType1 = "production"
 	GetProjectsTrustedIpsDeploymentType1All                              GetProjectsTrustedIpsDeploymentType1 = "all"
 	GetProjectsTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews GetProjectsTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
 	GetProjectsTrustedIpsDeploymentType1AllExceptCustomDomains           GetProjectsTrustedIpsDeploymentType1 = "all_except_custom_domains"
@@ -6820,9 +7059,9 @@ func (e *GetProjectsTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) error 
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		fallthrough
 	case "all":
 		fallthrough
@@ -7022,6 +7261,8 @@ func (e *GetProjectsCreateDeployments) UnmarshalJSON(data []byte) error {
 type GetProjectsGitProviderOptions struct {
 	// Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
 	CreateDeployments GetProjectsCreateDeployments `json:"createDeployments"`
+	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
+	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
 }
 
 func (o *GetProjectsGitProviderOptions) GetCreateDeployments() GetProjectsCreateDeployments {
@@ -7029,6 +7270,13 @@ func (o *GetProjectsGitProviderOptions) GetCreateDeployments() GetProjectsCreate
 		return GetProjectsCreateDeployments("")
 	}
 	return o.CreateDeployments
+}
+
+func (o *GetProjectsGitProviderOptions) GetDisableRepositoryDispatchEvents() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableRepositoryDispatchEvents
 }
 
 type GetProjectsWebAnalytics struct {
@@ -8363,6 +8611,7 @@ type GetProjectsProject struct {
 	OidcTokenConfig                      *GetProjectsOidcTokenConfig                 `json:"oidcTokenConfig,omitempty"`
 	Tier                                 *GetProjectsTier                            `json:"tier,omitempty"`
 	Features                             *GetProjectsFeatures                        `json:"features,omitempty"`
+	V0                                   *bool                                       `json:"v0,omitempty"`
 }
 
 func (o *GetProjectsProject) GetAccountID() string {
@@ -8874,6 +9123,13 @@ func (o *GetProjectsProject) GetFeatures() *GetProjectsFeatures {
 		return nil
 	}
 	return o.Features
+}
+
+func (o *GetProjectsProject) GetV0() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.V0
 }
 
 // GetProjectsResponseBody - The paginated list of projects

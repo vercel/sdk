@@ -24,6 +24,10 @@ let value: CreateDeploymentRequest = {
       commitRef: "main",
       commitSha: "dc36199b2234c6586ebe05ec94078a895c707e29",
       dirty: true,
+      ci: true,
+      ciType: "github-actions",
+      ciGitProviderUsername: "rauchg",
+      ciGitRepoVisibility: "private",
     },
     gitSource: {
       owner: "bitbucket_user",

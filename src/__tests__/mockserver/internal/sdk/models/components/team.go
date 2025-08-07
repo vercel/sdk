@@ -22,10 +22,10 @@ func (o *Connect) GetEnabled() *bool {
 
 // TeamConnection - Information for the SAML Single Sign-On configuration.
 type TeamConnection struct {
-	// The Identity Provider "type", for example Okta.
-	Type string `json:"type"`
 	// Current status of the connection.
 	Status string `json:"status"`
+	// The Identity Provider "type", for example Okta.
+	Type string `json:"type"`
 	// Current state of the connection.
 	State string `json:"state"`
 	// Timestamp (in milliseconds) of when the configuration was connected.
@@ -34,18 +34,18 @@ type TeamConnection struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 }
 
-func (o *TeamConnection) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
-}
-
 func (o *TeamConnection) GetStatus() string {
 	if o == nil {
 		return ""
 	}
 	return o.Status
+}
+
+func (o *TeamConnection) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
 }
 
 func (o *TeamConnection) GetState() string {
@@ -109,16 +109,44 @@ func (o *TeamDirectory) GetLastReceivedWebhookEvent() *float64 {
 	return o.LastReceivedWebhookEvent
 }
 
+// DefaultRedirectURI - The default redirect URI to use after successful SAML authentication.
+type DefaultRedirectURI string
+
+const (
+	DefaultRedirectURIVercelCom DefaultRedirectURI = "vercel.com"
+	DefaultRedirectURIV0Dev     DefaultRedirectURI = "v0.dev"
+)
+
+func (e DefaultRedirectURI) ToPointer() *DefaultRedirectURI {
+	return &e
+}
+func (e *DefaultRedirectURI) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vercel.com":
+		fallthrough
+	case "v0.dev":
+		*e = DefaultRedirectURI(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DefaultRedirectURI: %v", v)
+	}
+}
+
 type RolesEnum string
 
 const (
-	RolesEnumOwner       RolesEnum = "OWNER"
-	RolesEnumMember      RolesEnum = "MEMBER"
-	RolesEnumDeveloper   RolesEnum = "DEVELOPER"
-	RolesEnumSecurity    RolesEnum = "SECURITY"
-	RolesEnumBilling     RolesEnum = "BILLING"
-	RolesEnumViewer      RolesEnum = "VIEWER"
-	RolesEnumContributor RolesEnum = "CONTRIBUTOR"
+	RolesEnumOwner         RolesEnum = "OWNER"
+	RolesEnumMember        RolesEnum = "MEMBER"
+	RolesEnumDeveloper     RolesEnum = "DEVELOPER"
+	RolesEnumSecurity      RolesEnum = "SECURITY"
+	RolesEnumBilling       RolesEnum = "BILLING"
+	RolesEnumViewer        RolesEnum = "VIEWER"
+	RolesEnumViewerForPlus RolesEnum = "VIEWER_FOR_PLUS"
+	RolesEnumContributor   RolesEnum = "CONTRIBUTOR"
 )
 
 func (e RolesEnum) ToPointer() *RolesEnum {
@@ -141,6 +169,8 @@ func (e *RolesEnum) UnmarshalJSON(data []byte) error {
 	case "BILLING":
 		fallthrough
 	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
 		*e = RolesEnum(v)
@@ -233,6 +263,8 @@ type TeamSaml struct {
 	Directory *TeamDirectory `json:"directory,omitempty"`
 	// When `true`, interactions with the Team **must** be done with an authentication token that has been authenticated with the Team's SAML Single Sign-On provider.
 	Enforced bool `json:"enforced"`
+	// The default redirect URI to use after successful SAML authentication.
+	DefaultRedirectURI *DefaultRedirectURI `json:"defaultRedirectUri,omitempty"`
 	// When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
 	Roles map[string]RolesUnion `json:"roles,omitempty"`
 }
@@ -256,6 +288,13 @@ func (o *TeamSaml) GetEnforced() bool {
 		return false
 	}
 	return o.Enforced
+}
+
+func (o *TeamSaml) GetDefaultRedirectURI() *DefaultRedirectURI {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRedirectURI
 }
 
 func (o *TeamSaml) GetRoles() map[string]RolesUnion {
@@ -360,6 +399,48 @@ func (o *TeamRemoteCaching) GetEnabled() *bool {
 		return nil
 	}
 	return o.Enabled
+}
+
+type TeamPasswordProtection struct {
+	DeploymentType string `json:"deploymentType"`
+}
+
+func (o *TeamPasswordProtection) GetDeploymentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentType
+}
+
+type TeamSsoProtection struct {
+	DeploymentType string `json:"deploymentType"`
+}
+
+func (o *TeamSsoProtection) GetDeploymentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentType
+}
+
+// DefaultDeploymentProtection - Default deployment protection for this team
+type DefaultDeploymentProtection struct {
+	PasswordProtection *TeamPasswordProtection `json:"passwordProtection,omitempty"`
+	SsoProtection      *TeamSsoProtection      `json:"ssoProtection,omitempty"`
+}
+
+func (o *DefaultDeploymentProtection) GetPasswordProtection() *TeamPasswordProtection {
+	if o == nil {
+		return nil
+	}
+	return o.PasswordProtection
+}
+
+func (o *DefaultDeploymentProtection) GetSsoProtection() *TeamSsoProtection {
+	if o == nil {
+		return nil
+	}
+	return o.SsoProtection
 }
 
 // TeamEnablePreviewFeedback - Whether toolbar is enabled on preview deployments
@@ -503,13 +584,14 @@ func (o *TeamEntitlement) GetEntitlement() string {
 type TeamRole2 string
 
 const (
-	TeamRole2Owner       TeamRole2 = "OWNER"
-	TeamRole2Member      TeamRole2 = "MEMBER"
-	TeamRole2Developer   TeamRole2 = "DEVELOPER"
-	TeamRole2Security    TeamRole2 = "SECURITY"
-	TeamRole2Billing     TeamRole2 = "BILLING"
-	TeamRole2Viewer      TeamRole2 = "VIEWER"
-	TeamRole2Contributor TeamRole2 = "CONTRIBUTOR"
+	TeamRole2Owner         TeamRole2 = "OWNER"
+	TeamRole2Member        TeamRole2 = "MEMBER"
+	TeamRole2Developer     TeamRole2 = "DEVELOPER"
+	TeamRole2Security      TeamRole2 = "SECURITY"
+	TeamRole2Billing       TeamRole2 = "BILLING"
+	TeamRole2Viewer        TeamRole2 = "VIEWER"
+	TeamRole2ViewerForPlus TeamRole2 = "VIEWER_FOR_PLUS"
+	TeamRole2Contributor   TeamRole2 = "CONTRIBUTOR"
 )
 
 func (e TeamRole2) ToPointer() *TeamRole2 {
@@ -533,6 +615,8 @@ func (e *TeamRole2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = TeamRole2(v)
 		return nil
@@ -544,13 +628,14 @@ func (e *TeamRole2) UnmarshalJSON(data []byte) error {
 type TeamTeamRole string
 
 const (
-	TeamTeamRoleOwner       TeamTeamRole = "OWNER"
-	TeamTeamRoleMember      TeamTeamRole = "MEMBER"
-	TeamTeamRoleDeveloper   TeamTeamRole = "DEVELOPER"
-	TeamTeamRoleSecurity    TeamTeamRole = "SECURITY"
-	TeamTeamRoleBilling     TeamTeamRole = "BILLING"
-	TeamTeamRoleViewer      TeamTeamRole = "VIEWER"
-	TeamTeamRoleContributor TeamTeamRole = "CONTRIBUTOR"
+	TeamTeamRoleOwner         TeamTeamRole = "OWNER"
+	TeamTeamRoleMember        TeamTeamRole = "MEMBER"
+	TeamTeamRoleDeveloper     TeamTeamRole = "DEVELOPER"
+	TeamTeamRoleSecurity      TeamTeamRole = "SECURITY"
+	TeamTeamRoleBilling       TeamTeamRole = "BILLING"
+	TeamTeamRoleViewer        TeamTeamRole = "VIEWER"
+	TeamTeamRoleViewerForPlus TeamTeamRole = "VIEWER_FOR_PLUS"
+	TeamTeamRoleContributor   TeamTeamRole = "CONTRIBUTOR"
 )
 
 func (e TeamTeamRole) ToPointer() *TeamTeamRole {
@@ -574,6 +659,8 @@ func (e *TeamTeamRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "VIEWER":
 		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
 	case "CONTRIBUTOR":
 		*e = TeamTeamRole(v)
 		return nil
@@ -590,6 +677,9 @@ const (
 	TeamTeamPermissionUsageViewer              TeamTeamPermission = "UsageViewer"
 	TeamTeamPermissionEnvVariableManager       TeamTeamPermission = "EnvVariableManager"
 	TeamTeamPermissionEnvironmentManager       TeamTeamPermission = "EnvironmentManager"
+	TeamTeamPermissionV0Builder                TeamTeamPermission = "V0Builder"
+	TeamTeamPermissionV0Chatter                TeamTeamPermission = "V0Chatter"
+	TeamTeamPermissionV0Viewer                 TeamTeamPermission = "V0Viewer"
 )
 
 func (e TeamTeamPermission) ToPointer() *TeamTeamPermission {
@@ -610,6 +700,12 @@ func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
 	case "EnvVariableManager":
 		fallthrough
 	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
 		*e = TeamTeamPermission(v)
 		return nil
 	default:
@@ -620,9 +716,9 @@ func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
 type TeamOrigin2 string
 
 const (
-	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Saml              TeamOrigin2 = "saml"
 	TeamOrigin2Mail              TeamOrigin2 = "mail"
+	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Import            TeamOrigin2 = "import"
 	TeamOrigin2Teams             TeamOrigin2 = "teams"
 	TeamOrigin2Github            TeamOrigin2 = "github"
@@ -642,11 +738,11 @@ func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "link":
-		fallthrough
 	case "saml":
 		fallthrough
 	case "mail":
+		fallthrough
+	case "link":
 		fallthrough
 	case "import":
 		fallthrough
@@ -828,13 +924,13 @@ func (o *TeamJoinedFrom2) GetDsyncConnectedAt() *float64 {
 type TeamMembership struct {
 	UID               *string              `json:"uid,omitempty"`
 	Entitlements      []TeamEntitlement    `json:"entitlements,omitempty"`
-	TeamID            *string              `json:"teamId,omitempty"`
 	Confirmed         bool                 `json:"confirmed"`
 	ConfirmedAt       float64              `json:"confirmedAt"`
 	AccessRequestedAt *float64             `json:"accessRequestedAt,omitempty"`
 	Role              TeamRole2            `json:"role"`
 	TeamRoles         []TeamTeamRole       `json:"teamRoles,omitempty"`
 	TeamPermissions   []TeamTeamPermission `json:"teamPermissions,omitempty"`
+	TeamID            *string              `json:"teamId,omitempty"`
 	CreatedAt         float64              `json:"createdAt"`
 	Created           float64              `json:"created"`
 	JoinedFrom        *TeamJoinedFrom2     `json:"joinedFrom,omitempty"`
@@ -852,13 +948,6 @@ func (o *TeamMembership) GetEntitlements() []TeamEntitlement {
 		return nil
 	}
 	return o.Entitlements
-}
-
-func (o *TeamMembership) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 func (o *TeamMembership) GetConfirmed() bool {
@@ -901,6 +990,13 @@ func (o *TeamMembership) GetTeamPermissions() []TeamTeamPermission {
 		return nil
 	}
 	return o.TeamPermissions
+}
+
+func (o *TeamMembership) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *TeamMembership) GetCreatedAt() float64 {
@@ -946,6 +1042,8 @@ type Team struct {
 	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
 	// Is remote caching enabled for this team
 	RemoteCaching *TeamRemoteCaching `json:"remoteCaching,omitempty"`
+	// Default deployment protection for this team
+	DefaultDeploymentProtection *DefaultDeploymentProtection `json:"defaultDeploymentProtection,omitempty"`
 	// Whether toolbar is enabled on preview deployments
 	EnablePreviewFeedback *TeamEnablePreviewFeedback `json:"enablePreviewFeedback,omitempty"`
 	// Whether toolbar is enabled on production deployments
@@ -1058,6 +1156,13 @@ func (o *Team) GetRemoteCaching() *TeamRemoteCaching {
 		return nil
 	}
 	return o.RemoteCaching
+}
+
+func (o *Team) GetDefaultDeploymentProtection() *DefaultDeploymentProtection {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultDeploymentProtection
 }
 
 func (o *Team) GetEnablePreviewFeedback() *TeamEnablePreviewFeedback {

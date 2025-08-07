@@ -25,6 +25,7 @@ export const AuthTokenScopesOrigin = {
   Sms: "sms",
   Invite: "invite",
   Google: "google",
+  App: "app",
 } as const;
 export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
 
@@ -34,7 +35,7 @@ export type AuthTokenScopesOrigin = ClosedEnum<typeof AuthTokenScopesOrigin>;
 export type Scopes2 = {
   type: AuthTokenScopesType;
   teamId: string;
-  origin: AuthTokenScopesOrigin;
+  origin?: AuthTokenScopesOrigin | undefined;
   createdAt: number;
   expiresAt?: number | undefined;
 };
@@ -77,6 +78,7 @@ export const ScopesOrigin = {
   Sms: "sms",
   Invite: "invite",
   Google: "google",
+  App: "app",
 } as const;
 export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;
 
@@ -86,7 +88,7 @@ export type ScopesOrigin = ClosedEnum<typeof ScopesOrigin>;
 export type Scopes1 = {
   type: ScopesType;
   sudo?: Sudo | undefined;
-  origin: ScopesOrigin;
+  origin?: ScopesOrigin | undefined;
   createdAt: number;
   expiresAt?: number | undefined;
 };
@@ -178,7 +180,7 @@ export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
   z.object({
     type: AuthTokenScopesType$inboundSchema,
     teamId: z.string(),
-    origin: AuthTokenScopesOrigin$inboundSchema,
+    origin: AuthTokenScopesOrigin$inboundSchema.optional(),
     createdAt: z.number(),
     expiresAt: z.number().optional(),
   });
@@ -187,7 +189,7 @@ export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
 export type Scopes2$Outbound = {
   type: string;
   teamId: string;
-  origin: string;
+  origin?: string | undefined;
   createdAt: number;
   expiresAt?: number | undefined;
 };
@@ -200,7 +202,7 @@ export const Scopes2$outboundSchema: z.ZodType<
 > = z.object({
   type: AuthTokenScopesType$outboundSchema,
   teamId: z.string(),
-  origin: AuthTokenScopesOrigin$outboundSchema,
+  origin: AuthTokenScopesOrigin$outboundSchema.optional(),
   createdAt: z.number(),
   expiresAt: z.number().optional(),
 });
@@ -343,7 +345,7 @@ export const Scopes1$inboundSchema: z.ZodType<Scopes1, z.ZodTypeDef, unknown> =
   z.object({
     type: ScopesType$inboundSchema,
     sudo: z.lazy(() => Sudo$inboundSchema).optional(),
-    origin: ScopesOrigin$inboundSchema,
+    origin: ScopesOrigin$inboundSchema.optional(),
     createdAt: z.number(),
     expiresAt: z.number().optional(),
   });
@@ -352,7 +354,7 @@ export const Scopes1$inboundSchema: z.ZodType<Scopes1, z.ZodTypeDef, unknown> =
 export type Scopes1$Outbound = {
   type: string;
   sudo?: Sudo$Outbound | undefined;
-  origin: string;
+  origin?: string | undefined;
   createdAt: number;
   expiresAt?: number | undefined;
 };
@@ -365,7 +367,7 @@ export const Scopes1$outboundSchema: z.ZodType<
 > = z.object({
   type: ScopesType$outboundSchema,
   sudo: z.lazy(() => Sudo$outboundSchema).optional(),
-  origin: ScopesOrigin$outboundSchema,
+  origin: ScopesOrigin$outboundSchema.optional(),
   createdAt: z.number(),
   expiresAt: z.number().optional(),
 });

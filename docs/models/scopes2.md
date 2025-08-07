@@ -10,8 +10,7 @@ import { Scopes2 } from "@vercel/sdk/models/authtoken.js";
 let value: Scopes2 = {
   type: "team",
   teamId: "<id>",
-  origin: "sms",
-  createdAt: 7800.98,
+  createdAt: 7880.82,
 };
 ```
 
@@ -21,6 +20,6 @@ let value: Scopes2 = {
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | `type`                                                             | [models.AuthTokenScopesType](../models/authtokenscopestype.md)     | :heavy_check_mark:                                                 | N/A                                                                |
 | `teamId`                                                           | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `origin`                                                           | [models.AuthTokenScopesOrigin](../models/authtokenscopesorigin.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `origin`                                                           | [models.AuthTokenScopesOrigin](../models/authtokenscopesorigin.md) | :heavy_minus_sign:                                                 | N/A                                                                |
 | `createdAt`                                                        | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
 | `expiresAt`                                                        | *number*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |

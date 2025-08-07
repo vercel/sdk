@@ -7,11 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundred } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundred = {};
+let value: OneHundred = {
+  bio: "<value>",
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |
+| `bio`              | *string*           | :heavy_check_mark: | N/A                |

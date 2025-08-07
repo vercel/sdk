@@ -75,6 +75,8 @@ export const GetWebhookEvents = {
   ProjectRollingReleaseAborted: "project.rolling-release.aborted",
   ProjectRollingReleaseCompleted: "project.rolling-release.completed",
   ProjectRollingReleaseApproved: "project.rolling-release.approved",
+  DeploymentChecksFailed: "deployment.checks.failed",
+  DeploymentChecksSucceeded: "deployment.checks.succeeded",
   DeploymentChecksCompleted: "deployment-checks-completed",
   DeploymentReadyLegacy: "deployment-ready",
   DeploymentPrepared: "deployment-prepared",

@@ -8,7 +8,7 @@ import { GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments } from "@vercel/sdk
 let value: GetV9ProjectsIdOrNameCustomEnvironmentsEnvironments = {
   id: "<id>",
   slug: "<value>",
-  type: "preview",
+  type: "production",
   createdAt: 6634.58,
   updatedAt: 6102.18,
 };

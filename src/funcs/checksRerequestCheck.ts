@@ -124,6 +124,7 @@ async function $do(
   )(pathParams);
 
   const query = encodeFormQuery({
+    "autoUpdate": payload.autoUpdate,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });

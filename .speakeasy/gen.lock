@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: ee4477fcb9a95b72d7f2b80b7e3ba05b
+  docChecksum: fab0a951abfbb17c42c34f1524d66b83
   docVersion: 0.0.1
-  speakeasyVersion: 1.581.0
-  generationVersion: 2.656.5
-  releaseVersion: 1.10.0
-  configChecksum: 782d943732a36ae38a9febd967c979b1
+  speakeasyVersion: 1.599.0
+  generationVersion: 2.675.0
+  releaseVersion: 1.10.1
+  configChecksum: 1eccb1ba5e9962947e74bd2d9d7f26f4
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -16,7 +16,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.12
-    core: 3.21.14
+    core: 3.21.20
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -54,6 +54,11 @@ generatedFiles:
   - docs/models/acceptprojecttransferrequestrequest.md
   - docs/models/acceptprojecttransferrequestrequestbody.md
   - docs/models/acceptprojecttransferrequestresponsebody.md
+  - docs/models/acceptprojecttransferrequestresponsebody1.md
+  - docs/models/acceptprojecttransferrequestresponsebody2.md
+  - docs/models/acceptprojecttransferrequestresponsebodyerror.md
+  - docs/models/acceptprojecttransferrequestresponsebodyresult.md
+  - docs/models/acceptprojecttransferrequestresponsebodystatus.md
   - docs/models/access.md
   - docs/models/accessgroup.md
   - docs/models/accessgroups.md
@@ -71,9 +76,7 @@ generatedFiles:
   - docs/models/addbypassipresponsebody.md
   - docs/models/addbypassipresponsebody1.md
   - docs/models/addbypassipresponsebody2.md
-  - docs/models/addbypassipresponsebodyaction.md
   - docs/models/addbypassipresponsebodyresult.md
-  - docs/models/addbypassipresponsebodysecurityresult.md
   - docs/models/addprojectdomainredirectstatuscode.md
   - docs/models/addprojectdomainrequest.md
   - docs/models/addprojectdomainrequestbody.md
@@ -102,6 +105,9 @@ generatedFiles:
   - docs/models/anomalies.md
   - docs/models/anomalyalerts.md
   - docs/models/applications.md
+  - docs/models/applications1.md
+  - docs/models/applications2.md
+  - docs/models/applications3.md
   - docs/models/approverollingreleasestageactivestage.md
   - docs/models/approverollingreleasestageadvancementtype.md
   - docs/models/approverollingreleasestagecanarydeployment.md
@@ -139,6 +145,7 @@ generatedFiles:
   - docs/models/authuserlimited.md
   - docs/models/authuserremotecaching.md
   - docs/models/authuserresourceconfig.md
+  - docs/models/authusersecurity.md
   - docs/models/availableslots.md
   - docs/models/aws.md
   - docs/models/backup.md
@@ -235,12 +242,16 @@ generatedFiles:
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody12type.md
+  - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody13type.md
+  - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody14type.md
+  - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody15type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody7type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody8type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody9type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebodytype.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsontype.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200type.md
+  - docs/models/canceldeploymentgitsourcedeploymentsresponserepoid.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponsetype.md
   - docs/models/canceldeploymentgitsourcedeploymentstype.md
   - docs/models/canceldeploymentgitsourceprojectid.md
@@ -267,6 +278,7 @@ generatedFiles:
   - docs/models/canceldeploymentmissingdeploymentsvalue.md
   - docs/models/canceldeploymentmissingtype.md
   - docs/models/canceldeploymentmissingvalue.md
+  - docs/models/canceldeploymentnodeversion.md
   - docs/models/canceldeploymentoidctokenclaims.md
   - docs/models/canceldeploymentoomreport.md
   - docs/models/canceldeploymentoutput.md
@@ -425,6 +437,9 @@ generatedFiles:
   - docs/models/createdeploymentgitsource10.md
   - docs/models/createdeploymentgitsource11.md
   - docs/models/createdeploymentgitsource12.md
+  - docs/models/createdeploymentgitsource13.md
+  - docs/models/createdeploymentgitsource14.md
+  - docs/models/createdeploymentgitsource15.md
   - docs/models/createdeploymentgitsource2.md
   - docs/models/createdeploymentgitsource3.md
   - docs/models/createdeploymentgitsource4.md
@@ -433,11 +448,15 @@ generatedFiles:
   - docs/models/createdeploymentgitsource7.md
   - docs/models/createdeploymentgitsource8.md
   - docs/models/createdeploymentgitsource9.md
+  - docs/models/createdeploymentgitsourcedeploymentsrepoid.md
   - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbodytype.md
   - docs/models/createdeploymentgitsourcedeploymentsrequesttype.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody12type.md
+  - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody13type.md
+  - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody14type.md
+  - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody15type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody5type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody6type.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody7type.md
@@ -455,9 +474,9 @@ generatedFiles:
   - docs/models/createdeploymentmicrofrontends.md
   - docs/models/createdeploymentmicrofrontends1.md
   - docs/models/createdeploymentmicrofrontends2.md
-  - docs/models/createdeploymentmicrofrontendsapplications.md
   - docs/models/createdeploymentmissingtype.md
   - docs/models/createdeploymentmissingvalue.md
+  - docs/models/createdeploymentnodeversion.md
   - docs/models/createdeploymentoutput.md
   - docs/models/createdeploymentplan.md
   - docs/models/createdeploymentproject.md
@@ -680,8 +699,11 @@ generatedFiles:
   - docs/models/createprojectlink2.md
   - docs/models/createprojectlink3.md
   - docs/models/createprojectlink4.md
+  - docs/models/createprojectlink5.md
   - docs/models/createprojectlinkdeployhooks.md
   - docs/models/createprojectlinkprojectsdeployhooks.md
+  - docs/models/createprojectlinkprojectsresponse200applicationjsondeployhooks.md
+  - docs/models/createprojectlinkprojectsresponse200applicationjsontype.md
   - docs/models/createprojectlinkprojectsresponse200deployhooks.md
   - docs/models/createprojectlinkprojectsresponse200type.md
   - docs/models/createprojectlinkprojectsresponsedeployhooks.md
@@ -818,6 +840,8 @@ generatedFiles:
   - docs/models/ddosalerts.md
   - docs/models/decrypt.md
   - docs/models/defaultapp.md
+  - docs/models/defaultdeploymentprotection.md
+  - docs/models/defaultredirecturi.md
   - docs/models/defaultresourceconfig.md
   - docs/models/definitions.md
   - docs/models/deleteaccessgroupprojectrequest.md
@@ -1138,18 +1162,7 @@ generatedFiles:
   - docs/models/getactiveattackstatusresponsebody.md
   - docs/models/getactiveattackstatusresponsebody1.md
   - docs/models/getactiveattackstatusresponsebody2.md
-  - docs/models/getaliascreator.md
-  - docs/models/getaliasdeployment.md
-  - docs/models/getaliasmicrofrontends.md
-  - docs/models/getaliasprotectionbypass.md
-  - docs/models/getaliasprotectionbypass1.md
-  - docs/models/getaliasprotectionbypass2.md
-  - docs/models/getaliasprotectionbypassaliasesresponse200scope.md
-  - docs/models/getaliasprotectionbypassaliasesresponsescope.md
-  - docs/models/getaliasprotectionbypassaliasesscope.md
-  - docs/models/getaliasprotectionbypassscope.md
   - docs/models/getaliasrequest.md
-  - docs/models/getaliasresponsebody.md
   - docs/models/getallcheckschecksresponse200applicationjsonsource.md
   - docs/models/getallcheckschecksresponse200source.md
   - docs/models/getallcheckschecksresponsesource.md
@@ -1170,13 +1183,11 @@ generatedFiles:
   - docs/models/getauthtokenresponsebody.md
   - docs/models/getauthuserresponsebody.md
   - docs/models/getauthuseruser.md
+  - docs/models/getbypassipaction.md
+  - docs/models/getbypassippagination.md
   - docs/models/getbypassiprequest.md
   - docs/models/getbypassipresponsebody.md
-  - docs/models/getbypassipresponsebody1.md
-  - docs/models/getbypassipresponsebody2.md
-  - docs/models/getbypassipresponsebodyaction.md
-  - docs/models/getbypassipresponsebodypagination.md
-  - docs/models/getbypassipresponsebodyresult.md
+  - docs/models/getbypassipresult.md
   - docs/models/getcertbyidrequest.md
   - docs/models/getcertbyidresponsebody.md
   - docs/models/getcheckchecksresponse200applicationjsonsource.md
@@ -1271,6 +1282,9 @@ generatedFiles:
   - docs/models/getdeploymentgitsource10.md
   - docs/models/getdeploymentgitsource11.md
   - docs/models/getdeploymentgitsource12.md
+  - docs/models/getdeploymentgitsource13.md
+  - docs/models/getdeploymentgitsource14.md
+  - docs/models/getdeploymentgitsource15.md
   - docs/models/getdeploymentgitsource2.md
   - docs/models/getdeploymentgitsource3.md
   - docs/models/getdeploymentgitsource4.md
@@ -1283,6 +1297,9 @@ generatedFiles:
   - docs/models/getdeploymentgitsourcedeployments10.md
   - docs/models/getdeploymentgitsourcedeployments11.md
   - docs/models/getdeploymentgitsourcedeployments12.md
+  - docs/models/getdeploymentgitsourcedeployments13.md
+  - docs/models/getdeploymentgitsourcedeployments14.md
+  - docs/models/getdeploymentgitsourcedeployments15.md
   - docs/models/getdeploymentgitsourcedeployments2.md
   - docs/models/getdeploymentgitsourcedeployments3.md
   - docs/models/getdeploymentgitsourcedeployments4.md
@@ -1293,15 +1310,22 @@ generatedFiles:
   - docs/models/getdeploymentgitsourcedeployments9.md
   - docs/models/getdeploymentgitsourcedeploymentsprojectid.md
   - docs/models/getdeploymentgitsourcedeploymentsrepoid.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonrepoid.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody110type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody111type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody112type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody113type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody114type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody115type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody19type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody1type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody210type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody211type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody212type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody213type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody214type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody215type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody22type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody23type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody24type.md
@@ -1311,6 +1335,7 @@ generatedFiles:
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody28type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody29type.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody2type.md
+  - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebodyrepoid.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebodytype.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200applicationjsontype.md
   - docs/models/getdeploymentgitsourcedeploymentsresponse200repoid.md
@@ -1355,6 +1380,7 @@ generatedFiles:
   - docs/models/getdeploymentresponsebodydeploymentstype.md
   - docs/models/getdeploymentresponsebodygitsource.md
   - docs/models/getdeploymentresponsebodylambdas.md
+  - docs/models/getdeploymentresponsebodynodeversion.md
   - docs/models/getdeploymentresponsebodyoidctokenclaims.md
   - docs/models/getdeploymentresponsebodyoomreport.md
   - docs/models/getdeploymentresponsebodyoutput.md
@@ -1733,8 +1759,11 @@ generatedFiles:
   - docs/models/getprojectslink2.md
   - docs/models/getprojectslink3.md
   - docs/models/getprojectslink4.md
+  - docs/models/getprojectslink5.md
   - docs/models/getprojectslinkdeployhooks.md
   - docs/models/getprojectslinkprojectsdeployhooks.md
+  - docs/models/getprojectslinkprojectsresponse200applicationjsondeployhooks.md
+  - docs/models/getprojectslinkprojectsresponse200applicationjsontype.md
   - docs/models/getprojectslinkprojectsresponse200deployhooks.md
   - docs/models/getprojectslinkprojectsresponse200type.md
   - docs/models/getprojectslinkprojectsresponsedeployhooks.md
@@ -1916,6 +1945,9 @@ generatedFiles:
   - docs/models/gitsource10.md
   - docs/models/gitsource11.md
   - docs/models/gitsource12.md
+  - docs/models/gitsource13.md
+  - docs/models/gitsource14.md
+  - docs/models/gitsource15.md
   - docs/models/gitsource2.md
   - docs/models/gitsource3.md
   - docs/models/gitsource4.md
@@ -2005,6 +2037,7 @@ generatedFiles:
   - docs/models/link2.md
   - docs/models/link3.md
   - docs/models/link4.md
+  - docs/models/link5.md
   - docs/models/linkdeployhooks.md
   - docs/models/linktype.md
   - docs/models/listaccessgroupmemberspagination.md
@@ -2023,7 +2056,6 @@ generatedFiles:
   - docs/models/listaliasesaliases.md
   - docs/models/listaliasesapplications.md
   - docs/models/listaliasescreator.md
-  - docs/models/listaliasesdefaultapp.md
   - docs/models/listaliasesdeployment.md
   - docs/models/listaliasesmicrofrontends.md
   - docs/models/listaliasesprotectionbypass.md
@@ -2031,7 +2063,6 @@ generatedFiles:
   - docs/models/listaliasesprotectionbypass2.md
   - docs/models/listaliasesprotectionbypass3.md
   - docs/models/listaliasesprotectionbypass4.md
-  - docs/models/listaliasesprotectionbypassaccess.md
   - docs/models/listaliasesprotectionbypassaliasesresponse200scope.md
   - docs/models/listaliasesprotectionbypassaliasesresponsescope.md
   - docs/models/listaliasesprotectionbypassaliasesscope.md
@@ -2042,8 +2073,6 @@ generatedFiles:
   - docs/models/listdeploymentaliasesprotectionbypass.md
   - docs/models/listdeploymentaliasesprotectionbypass1.md
   - docs/models/listdeploymentaliasesprotectionbypass2.md
-  - docs/models/listdeploymentaliasesprotectionbypass3.md
-  - docs/models/listdeploymentaliasesprotectionbypass4.md
   - docs/models/listdeploymentaliasesprotectionbypassaccess.md
   - docs/models/listdeploymentaliasesprotectionbypassaliasesresponse200scope.md
   - docs/models/listdeploymentaliasesprotectionbypassaliasesresponsescope.md
@@ -2144,8 +2173,11 @@ generatedFiles:
   - docs/models/onehundredandeleven.md
   - docs/models/onehundredandfifteen.md
   - docs/models/onehundredandfifty.md
+  - docs/models/onehundredandfiftyfive.md
   - docs/models/onehundredandfiftyfour.md
   - docs/models/onehundredandfiftyone.md
+  - docs/models/onehundredandfiftyseven.md
+  - docs/models/onehundredandfiftysix.md
   - docs/models/onehundredandfiftythree.md
   - docs/models/onehundredandfiftytwo.md
   - docs/models/onehundredandfive.md
@@ -2215,6 +2247,7 @@ generatedFiles:
   - docs/models/ownertype.md
   - docs/models/pagination.md
   - docs/models/paidfeatures.md
+  - docs/models/partnercalls.md
   - docs/models/passwordprotection.md
   - docs/models/passwordprotection1.md
   - docs/models/passwordprotection2.md
@@ -2235,6 +2268,9 @@ generatedFiles:
   - docs/models/patchedgeconfigschemarequest.md
   - docs/models/patchedgeconfigschemarequestbody.md
   - docs/models/patchedgeconfigschemaresponsebody.md
+  - docs/models/patchteamdefaultdeploymentprotection.md
+  - docs/models/patchteamdeploymenttype.md
+  - docs/models/patchteampasswordprotection.md
   - docs/models/patchteamremotecaching.md
   - docs/models/patchteamrequest.md
   - docs/models/patchteamrequestbody.md
@@ -2242,6 +2278,8 @@ generatedFiles:
   - docs/models/patchteamroles1.md
   - docs/models/patchteamroles2.md
   - docs/models/patchteamsaml.md
+  - docs/models/patchteamssoprotection.md
+  - docs/models/patchteamteamsdeploymenttype.md
   - docs/models/patchurlprotectionbypassrequest.md
   - docs/models/patchurlprotectionbypassrequestbody.md
   - docs/models/patchurlprotectionbypassrequestbody1.md
@@ -2292,6 +2330,7 @@ generatedFiles:
   - docs/models/payloadoldteam.md
   - docs/models/payloadorigin.md
   - docs/models/payloadoveragereason.md
+  - docs/models/payloadpasswordprotection.md
   - docs/models/payloadpaths.md
   - docs/models/payloadpeering.md
   - docs/models/payloadpreferredscopesandgitnamespaces.md
@@ -2308,8 +2347,10 @@ generatedFiles:
   - docs/models/payloadremotecaching.md
   - docs/models/payloadresourceconfig.md
   - docs/models/payloadrole.md
+  - docs/models/payloadsecurity.md
   - docs/models/payloadsoftblock.md
   - docs/models/payloadsourceimages.md
+  - docs/models/payloadssoprotection.md
   - docs/models/payloadtarget.md
   - docs/models/payloadteam.md
   - docs/models/payloadteampermissions.md
@@ -2652,6 +2693,7 @@ generatedFiles:
   - docs/models/resourceconfig.md
   - docs/models/resourcelimits.md
   - docs/models/resources.md
+  - docs/models/resourcetransfererrors.md
   - docs/models/responsebody.md
   - docs/models/responsebody1.md
   - docs/models/responsebody2.md
@@ -2702,6 +2744,7 @@ generatedFiles:
   - docs/models/responsebodymembers.md
   - docs/models/responsebodymetadata.md
   - docs/models/responsebodymicrofrontends.md
+  - docs/models/responsebodynodeversion.md
   - docs/models/responsebodynotification.md
   - docs/models/responsebodyoidctokenclaims.md
   - docs/models/responsebodyoomreport.md
@@ -3131,6 +3174,8 @@ generatedFiles:
   - docs/models/updateprojectdatacacheissuermode.md
   - docs/models/updateprojectdatacachelinkdeployhooks.md
   - docs/models/updateprojectdatacachelinkprojectsdeployhooks.md
+  - docs/models/updateprojectdatacachelinkprojectsresponse200type.md
+  - docs/models/updateprojectdatacachelinkprojectsresponsedeployhooks.md
   - docs/models/updateprojectdatacachelinkprojectsresponsetype.md
   - docs/models/updateprojectdatacachelinkprojectstype.md
   - docs/models/updateprojectdatacachelinktype.md
@@ -3230,8 +3275,11 @@ generatedFiles:
   - docs/models/updateprojectlink2.md
   - docs/models/updateprojectlink3.md
   - docs/models/updateprojectlink4.md
+  - docs/models/updateprojectlink5.md
   - docs/models/updateprojectlinkdeployhooks.md
   - docs/models/updateprojectlinkprojectsdeployhooks.md
+  - docs/models/updateprojectlinkprojectsresponse200applicationjsondeployhooks.md
+  - docs/models/updateprojectlinkprojectsresponse200applicationjsontype.md
   - docs/models/updateprojectlinkprojectsresponse200deployhooks.md
   - docs/models/updateprojectlinkprojectsresponse200type.md
   - docs/models/updateprojectlinkprojectsresponsedeployhooks.md
@@ -3382,36 +3430,36 @@ generatedFiles:
   - docs/models/usereventenvid2.md
   - docs/models/usereventmicrofrontends1.md
   - docs/models/usereventmicrofrontends2.md
-  - docs/models/usereventpayload101type.md
-  - docs/models/usereventpayload102type.md
-  - docs/models/usereventpayload113user.md
-  - docs/models/usereventpayload133project.md
-  - docs/models/usereventpayload134project.md
+  - docs/models/usereventpayload103type.md
+  - docs/models/usereventpayload104type.md
+  - docs/models/usereventpayload115user.md
   - docs/models/usereventpayload135project.md
-  - docs/models/usereventpayload135role.md
   - docs/models/usereventpayload136project.md
-  - docs/models/usereventpayload136role.md
-  - docs/models/usereventpayload140action.md
-  - docs/models/usereventpayload143project.md
-  - docs/models/usereventpayload144prevproject.md
-  - docs/models/usereventpayload144project.md
-  - docs/models/usereventpayload151configuration.md
-  - docs/models/usereventpayload151team.md
-  - docs/models/usereventpayload152configuration.md
-  - docs/models/usereventpayload152team.md
-  - docs/models/usereventpayload153configuration.md
-  - docs/models/usereventpayload153team.md
+  - docs/models/usereventpayload137project.md
+  - docs/models/usereventpayload137role.md
+  - docs/models/usereventpayload138project.md
+  - docs/models/usereventpayload138role.md
+  - docs/models/usereventpayload143action.md
+  - docs/models/usereventpayload146project.md
+  - docs/models/usereventpayload147prevproject.md
+  - docs/models/usereventpayload147project.md
+  - docs/models/usereventpayload154configuration.md
+  - docs/models/usereventpayload154team.md
+  - docs/models/usereventpayload155configuration.md
+  - docs/models/usereventpayload155team.md
+  - docs/models/usereventpayload156configuration.md
+  - docs/models/usereventpayload156team.md
   - docs/models/usereventpayload29team.md
   - docs/models/usereventpayload31project.md
   - docs/models/usereventpayload32configuration.md
   - docs/models/usereventpayload32team.md
   - docs/models/usereventpayload36project.md
-  - docs/models/usereventpayload47newteam.md
-  - docs/models/usereventpayload47oldteam.md
-  - docs/models/usereventpayload58oldenvvartype.md
-  - docs/models/usereventpayload58target.md
-  - docs/models/usereventpayload58type.md
-  - docs/models/usereventpayload62action.md
+  - docs/models/usereventpayload46newteam.md
+  - docs/models/usereventpayload46oldteam.md
+  - docs/models/usereventpayload57oldenvvartype.md
+  - docs/models/usereventpayload57target.md
+  - docs/models/usereventpayload57type.md
+  - docs/models/usereventpayload61action.md
   - docs/models/usereventpayload64action.md
   - docs/models/usereventpayload64blockreason.md
   - docs/models/usereventpayload64name.md
@@ -3424,11 +3472,11 @@ generatedFiles:
   - docs/models/usereventpayload64type.md
   - docs/models/usereventpayload6accessgroup.md
   - docs/models/usereventpayload76role.md
-  - docs/models/usereventpayload84action.md
-  - docs/models/usereventpayload86project.md
-  - docs/models/usereventpayload86team.md
-  - docs/models/usereventpayload94team.md
-  - docs/models/usereventpayload95team.md
+  - docs/models/usereventpayload85action.md
+  - docs/models/usereventpayload87project.md
+  - docs/models/usereventpayload87team.md
+  - docs/models/usereventpayload96team.md
+  - docs/models/usereventpayload97team.md
   - docs/models/usereventpayloadaccessgroup.md
   - docs/models/usereventpayloadaction.md
   - docs/models/usereventpayloadblockreason.md
@@ -4533,6 +4581,7 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - src/types/streams.ts
+  - temp/example.ts
   - tsconfig.json
 examples:
   post_/domains:
@@ -5626,7 +5675,7 @@ examples:
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
       requestBody:
-        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitAuthorEmail": "kyliau@example.com", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
+        application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitAuthorEmail": "kyliau@example.com", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true, "ci": true, "ciType": "github-actions", "ciGitProviderUsername": "rauchg", "ciGitRepoVisibility": "private"}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
           application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "plan": "enterprise", "routes": [], "createdIn": "<value>"}
@@ -6918,7 +6967,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {}
+          application/json: {"result": [{"OwnerId": "<id>", "Id": "<id>", "Domain": "qualified-deployment.com", "Ip": "19ec:86ef:21ca:4c18:ff56:0d9d:0c1b:5188", "CreatedAt": "1713485715426", "UpdatedAt": "1735689426367", "UpdatedAtHour": "<value>"}]}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7080,7 +7129,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7098,7 +7147,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

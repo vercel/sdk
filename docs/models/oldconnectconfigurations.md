@@ -21,6 +21,7 @@ let value: OldConnectConfigurations = {
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `envId`                        | *models.EnvId*                 | :heavy_check_mark:             | N/A                            |
 | `connectConfigurationId`       | *string*                       | :heavy_check_mark:             | N/A                            |
+| `dc`                           | *string*                       | :heavy_minus_sign:             | N/A                            |
 | `passive`                      | *boolean*                      | :heavy_check_mark:             | N/A                            |
 | `buildsEnabled`                | *boolean*                      | :heavy_check_mark:             | N/A                            |
 | `aws`                          | [models.Aws](../models/aws.md) | :heavy_minus_sign:             | N/A                            |

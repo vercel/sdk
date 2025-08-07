@@ -13,5 +13,5 @@ let value: ResponseBodyTeamPermissions = "CreateProject";
 ## Values
 
 ```typescript
-"CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager"
+"CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager" | "V0Builder" | "V0Chatter" | "V0Viewer"
 ```

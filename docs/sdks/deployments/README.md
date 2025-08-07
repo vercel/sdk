@@ -22,6 +22,7 @@ Get the build logs of a deployment by deployment ID and build ID. It can work as
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDeploymentEvents" method="get" path="/v3/deployments/{idOrUrl}/events" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -118,6 +119,7 @@ Updates the deployment integration action for the specified integration installa
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="update-integration-deployment-action" method="patch" path="/v1/deployments/{deploymentId}/integrations/{integrationConfigurationId}/resources/{resourceId}/actions/{action}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -198,6 +200,7 @@ Retrieves information for a deployment either by supplying its ID (`id` property
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDeployment" method="get" path="/v13/deployments/{idOrUrl}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -278,6 +281,7 @@ Create a new deployment with all the required and intended data. If the deployme
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createDeployment" method="post" path="/v13/deployments" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -304,6 +308,10 @@ async function run() {
         commitRef: "main",
         commitSha: "dc36199b2234c6586ebe05ec94078a895c707e29",
         dirty: true,
+        ci: true,
+        ciType: "github-actions",
+        ciGitProviderUsername: "rauchg",
+        ciGitRepoVisibility: "private",
       },
       gitSource: {
         org: "vercel",
@@ -364,6 +372,10 @@ async function run() {
         commitRef: "main",
         commitSha: "dc36199b2234c6586ebe05ec94078a895c707e29",
         dirty: true,
+        ci: true,
+        ciType: "github-actions",
+        ciGitProviderUsername: "rauchg",
+        ciGitRepoVisibility: "private",
       },
       gitSource: {
         org: "vercel",
@@ -423,6 +435,7 @@ This endpoint allows you to cancel a deployment which is currently building, by 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="cancelDeployment" method="patch" path="/v12/deployments/{id}/cancel" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -502,6 +515,7 @@ Before you create a deployment you need to upload the required files for that de
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadFile" method="post" path="/v2/files" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -578,6 +592,7 @@ Allows to retrieve the file structure of the source code of a deployment by supp
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listDeploymentFiles" method="get" path="/v6/deployments/{id}/files" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -657,6 +672,7 @@ Allows to retrieve the content of a file by supplying the file identifier and th
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDeploymentFileContents" method="get" path="/v8/deployments/{id}/files/{fileId}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -738,6 +754,7 @@ List deployments under the authenticated user or team. If a deployment hasn't fi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getDeployments" method="get" path="/v6/deployments" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
@@ -835,6 +852,7 @@ This API allows you to delete a deployment, either by supplying its `id` in the 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteDeployment" method="delete" path="/v13/deployments/{id}" -->
 ```typescript
 import { Vercel } from "@vercel/sdk";
 

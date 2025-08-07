@@ -7,11 +7,11 @@ The type of environment (production, preview, or development)
 ```typescript
 import { UpdateProjectProjectsType } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectProjectsType = "preview";
+let value: UpdateProjectProjectsType = "production";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview" | "development"
+"preview" | "production" | "development"
 ```

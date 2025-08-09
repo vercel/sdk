@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsAction } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsAction = "rate_limit";
+let value: GetProjectsAction = "deny";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log" | "bypass" | "rate_limit" | "redirect"
+"log" | "challenge" | "deny"
 ```

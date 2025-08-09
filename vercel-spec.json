@@ -6882,6 +6882,12 @@
                           },
                           "type": "array"
                         },
+                        "vercelAppInstallationRequest": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "paymentMethod": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -7868,298 +7874,6 @@
                         "firewallConfigVersion": {
                           "type": "number"
                         },
-                        "firewallRoutes": {
-                          "items": {
-                            "properties": {
-                              "src": {
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "properties": {
-                                      "re": {
-                                        "type": "string"
-                                      },
-                                      "eq": {
-                                        "type": "string"
-                                      },
-                                      "neq": {
-                                        "type": "string"
-                                      },
-                                      "inc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "ninc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "pre": {
-                                        "type": "string"
-                                      },
-                                      "suf": {
-                                        "type": "string"
-                                      },
-                                      "gt": {
-                                        "type": "number"
-                                      },
-                                      "gte": {
-                                        "type": "number"
-                                      },
-                                      "lt": {
-                                        "type": "number"
-                                      },
-                                      "lte": {
-                                        "type": "number"
-                                      }
-                                    },
-                                    "type": "object"
-                                  }
-                                ]
-                              },
-                              "has": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "missing": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "dest": {
-                                "type": "string"
-                              },
-                              "status": {
-                                "type": "number"
-                              },
-                              "handle": {
-                                "type": "string",
-                                "enum": [
-                                  "init",
-                                  "finalize"
-                                ]
-                              },
-                              "mitigate": {
-                                "properties": {
-                                  "action": {
-                                    "type": "string",
-                                    "enum": [
-                                      "deny",
-                                      "challenge",
-                                      "log",
-                                      "bypass",
-                                      "rate_limit",
-                                      "redirect"
-                                    ]
-                                  },
-                                  "rule_id": {
-                                    "type": "string"
-                                  },
-                                  "ttl": {
-                                    "type": "number"
-                                  },
-                                  "erl": {
-                                    "properties": {
-                                      "algo": {
-                                        "type": "string",
-                                        "enum": [
-                                          "fixed_window",
-                                          "token_bucket"
-                                        ]
-                                      },
-                                      "window": {
-                                        "type": "number"
-                                      },
-                                      "limit": {
-                                        "type": "number"
-                                      },
-                                      "keys": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      }
-                                    },
-                                    "required": [
-                                      "algo",
-                                      "window",
-                                      "limit",
-                                      "keys"
-                                    ],
-                                    "type": "object"
-                                  }
-                                },
-                                "required": [
-                                  "action",
-                                  "rule_id"
-                                ],
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
                         "firewallSeawallEnabled": {
                           "type": "boolean"
                         },
@@ -8186,9 +7900,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -8205,9 +7919,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -8224,9 +7938,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -13279,11 +12993,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
-                            "timeout",
                             "skipped",
                             "pending",
-                            "ready"
+                            "ready",
+                            "error",
+                            "timeout"
                           ]
                         },
                         "startedAt": {
@@ -13459,18 +13173,18 @@
                           "createdAt": {
                             "type": "number"
                           },
-                          "readyState": {
-                            "type": "string",
-                            "enum": [
-                              "ERROR",
-                              "BUILDING",
-                              "INITIALIZING",
-                              "READY"
-                            ]
-                          },
                           "entrypoint": {
                             "nullable": true,
                             "type": "string"
+                          },
+                          "readyState": {
+                            "type": "string",
+                            "enum": [
+                              "BUILDING",
+                              "ERROR",
+                              "INITIALIZING",
+                              "READY"
+                            ]
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -14531,15 +14245,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -15028,8 +14742,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "set",
                                         "append",
+                                        "set",
                                         "delete"
                                       ]
                                     },
@@ -15159,12 +14873,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "filesystem",
                                   "error",
+                                  "filesystem",
                                   "hit",
                                   "miss",
-                                  "resource",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -15419,8 +15133,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15472,8 +15186,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15526,8 +15240,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -21859,6 +21573,9 @@
             }
           },
           "409": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           }
         },
@@ -33183,6 +32900,12 @@
                                 },
                                 "type": "array"
                               },
+                              "vercelAppInstallationRequest": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "paymentMethod": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -33773,298 +33496,6 @@
                               "firewallConfigVersion": {
                                 "type": "number"
                               },
-                              "firewallRoutes": {
-                                "items": {
-                                  "properties": {
-                                    "src": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    },
-                                    "has": {
-                                      "items": {
-                                        "properties": {
-                                          "type": {
-                                            "type": "string",
-                                            "enum": [
-                                              "path",
-                                              "host",
-                                              "method",
-                                              "header",
-                                              "cookie",
-                                              "query",
-                                              "ip_address",
-                                              "protocol",
-                                              "scheme",
-                                              "environment",
-                                              "region",
-                                              "initial_request_path"
-                                            ]
-                                          },
-                                          "key": {
-                                            "type": "string"
-                                          },
-                                          "value": {
-                                            "oneOf": [
-                                              {
-                                                "type": "string"
-                                              },
-                                              {
-                                                "properties": {
-                                                  "re": {
-                                                    "type": "string"
-                                                  },
-                                                  "eq": {
-                                                    "type": "string"
-                                                  },
-                                                  "neq": {
-                                                    "type": "string"
-                                                  },
-                                                  "inc": {
-                                                    "items": {
-                                                      "type": "string"
-                                                    },
-                                                    "type": "array"
-                                                  },
-                                                  "ninc": {
-                                                    "items": {
-                                                      "type": "string"
-                                                    },
-                                                    "type": "array"
-                                                  },
-                                                  "pre": {
-                                                    "type": "string"
-                                                  },
-                                                  "suf": {
-                                                    "type": "string"
-                                                  },
-                                                  "gt": {
-                                                    "type": "number"
-                                                  },
-                                                  "gte": {
-                                                    "type": "number"
-                                                  },
-                                                  "lt": {
-                                                    "type": "number"
-                                                  },
-                                                  "lte": {
-                                                    "type": "number"
-                                                  }
-                                                },
-                                                "type": "object"
-                                              }
-                                            ]
-                                          }
-                                        },
-                                        "required": [
-                                          "type"
-                                        ],
-                                        "type": "object"
-                                      },
-                                      "type": "array"
-                                    },
-                                    "missing": {
-                                      "items": {
-                                        "properties": {
-                                          "type": {
-                                            "type": "string",
-                                            "enum": [
-                                              "path",
-                                              "host",
-                                              "method",
-                                              "header",
-                                              "cookie",
-                                              "query",
-                                              "ip_address",
-                                              "protocol",
-                                              "scheme",
-                                              "environment",
-                                              "region",
-                                              "initial_request_path"
-                                            ]
-                                          },
-                                          "key": {
-                                            "type": "string"
-                                          },
-                                          "value": {
-                                            "oneOf": [
-                                              {
-                                                "type": "string"
-                                              },
-                                              {
-                                                "properties": {
-                                                  "re": {
-                                                    "type": "string"
-                                                  },
-                                                  "eq": {
-                                                    "type": "string"
-                                                  },
-                                                  "neq": {
-                                                    "type": "string"
-                                                  },
-                                                  "inc": {
-                                                    "items": {
-                                                      "type": "string"
-                                                    },
-                                                    "type": "array"
-                                                  },
-                                                  "ninc": {
-                                                    "items": {
-                                                      "type": "string"
-                                                    },
-                                                    "type": "array"
-                                                  },
-                                                  "pre": {
-                                                    "type": "string"
-                                                  },
-                                                  "suf": {
-                                                    "type": "string"
-                                                  },
-                                                  "gt": {
-                                                    "type": "number"
-                                                  },
-                                                  "gte": {
-                                                    "type": "number"
-                                                  },
-                                                  "lt": {
-                                                    "type": "number"
-                                                  },
-                                                  "lte": {
-                                                    "type": "number"
-                                                  }
-                                                },
-                                                "type": "object"
-                                              }
-                                            ]
-                                          }
-                                        },
-                                        "required": [
-                                          "type"
-                                        ],
-                                        "type": "object"
-                                      },
-                                      "type": "array"
-                                    },
-                                    "dest": {
-                                      "type": "string"
-                                    },
-                                    "status": {
-                                      "type": "number"
-                                    },
-                                    "handle": {
-                                      "type": "string",
-                                      "enum": [
-                                        "init",
-                                        "finalize"
-                                      ]
-                                    },
-                                    "mitigate": {
-                                      "properties": {
-                                        "action": {
-                                          "type": "string",
-                                          "enum": [
-                                            "deny",
-                                            "challenge",
-                                            "log",
-                                            "bypass",
-                                            "rate_limit",
-                                            "redirect"
-                                          ]
-                                        },
-                                        "rule_id": {
-                                          "type": "string"
-                                        },
-                                        "ttl": {
-                                          "type": "number"
-                                        },
-                                        "erl": {
-                                          "properties": {
-                                            "algo": {
-                                              "type": "string",
-                                              "enum": [
-                                                "fixed_window",
-                                                "token_bucket"
-                                              ]
-                                            },
-                                            "window": {
-                                              "type": "number"
-                                            },
-                                            "limit": {
-                                              "type": "number"
-                                            },
-                                            "keys": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            }
-                                          },
-                                          "required": [
-                                            "algo",
-                                            "window",
-                                            "limit",
-                                            "keys"
-                                          ],
-                                          "type": "object"
-                                        }
-                                      },
-                                      "required": [
-                                        "action",
-                                        "rule_id"
-                                      ],
-                                      "type": "object"
-                                    }
-                                  },
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
                               "firewallSeawallEnabled": {
                                 "type": "boolean"
                               },
@@ -34091,9 +33522,9 @@
                                       "action": {
                                         "type": "string",
                                         "enum": [
-                                          "deny",
+                                          "log",
                                           "challenge",
-                                          "log"
+                                          "deny"
                                         ]
                                       }
                                     },
@@ -34110,9 +33541,9 @@
                                       "action": {
                                         "type": "string",
                                         "enum": [
-                                          "deny",
+                                          "log",
                                           "challenge",
-                                          "log"
+                                          "deny"
                                         ]
                                       }
                                     },
@@ -34129,9 +33560,9 @@
                                       "action": {
                                         "type": "string",
                                         "enum": [
-                                          "deny",
+                                          "log",
                                           "challenge",
-                                          "log"
+                                          "deny"
                                         ]
                                       }
                                     },
@@ -37570,6 +37001,12 @@
                           },
                           "type": "array"
                         },
+                        "vercelAppInstallationRequest": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "paymentMethod": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -38160,298 +37597,6 @@
                         "firewallConfigVersion": {
                           "type": "number"
                         },
-                        "firewallRoutes": {
-                          "items": {
-                            "properties": {
-                              "src": {
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "properties": {
-                                      "re": {
-                                        "type": "string"
-                                      },
-                                      "eq": {
-                                        "type": "string"
-                                      },
-                                      "neq": {
-                                        "type": "string"
-                                      },
-                                      "inc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "ninc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "pre": {
-                                        "type": "string"
-                                      },
-                                      "suf": {
-                                        "type": "string"
-                                      },
-                                      "gt": {
-                                        "type": "number"
-                                      },
-                                      "gte": {
-                                        "type": "number"
-                                      },
-                                      "lt": {
-                                        "type": "number"
-                                      },
-                                      "lte": {
-                                        "type": "number"
-                                      }
-                                    },
-                                    "type": "object"
-                                  }
-                                ]
-                              },
-                              "has": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "missing": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "dest": {
-                                "type": "string"
-                              },
-                              "status": {
-                                "type": "number"
-                              },
-                              "handle": {
-                                "type": "string",
-                                "enum": [
-                                  "init",
-                                  "finalize"
-                                ]
-                              },
-                              "mitigate": {
-                                "properties": {
-                                  "action": {
-                                    "type": "string",
-                                    "enum": [
-                                      "deny",
-                                      "challenge",
-                                      "log",
-                                      "bypass",
-                                      "rate_limit",
-                                      "redirect"
-                                    ]
-                                  },
-                                  "rule_id": {
-                                    "type": "string"
-                                  },
-                                  "ttl": {
-                                    "type": "number"
-                                  },
-                                  "erl": {
-                                    "properties": {
-                                      "algo": {
-                                        "type": "string",
-                                        "enum": [
-                                          "fixed_window",
-                                          "token_bucket"
-                                        ]
-                                      },
-                                      "window": {
-                                        "type": "number"
-                                      },
-                                      "limit": {
-                                        "type": "number"
-                                      },
-                                      "keys": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      }
-                                    },
-                                    "required": [
-                                      "algo",
-                                      "window",
-                                      "limit",
-                                      "keys"
-                                    ],
-                                    "type": "object"
-                                  }
-                                },
-                                "required": [
-                                  "action",
-                                  "rule_id"
-                                ],
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
                         "firewallSeawallEnabled": {
                           "type": "boolean"
                         },
@@ -38478,9 +37623,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -38497,9 +37642,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -38516,9 +37661,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -41805,6 +40950,12 @@
                           },
                           "type": "array"
                         },
+                        "vercelAppInstallationRequest": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "paymentMethod": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -42791,298 +41942,6 @@
                         "firewallConfigVersion": {
                           "type": "number"
                         },
-                        "firewallRoutes": {
-                          "items": {
-                            "properties": {
-                              "src": {
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "properties": {
-                                      "re": {
-                                        "type": "string"
-                                      },
-                                      "eq": {
-                                        "type": "string"
-                                      },
-                                      "neq": {
-                                        "type": "string"
-                                      },
-                                      "inc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "ninc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "pre": {
-                                        "type": "string"
-                                      },
-                                      "suf": {
-                                        "type": "string"
-                                      },
-                                      "gt": {
-                                        "type": "number"
-                                      },
-                                      "gte": {
-                                        "type": "number"
-                                      },
-                                      "lt": {
-                                        "type": "number"
-                                      },
-                                      "lte": {
-                                        "type": "number"
-                                      }
-                                    },
-                                    "type": "object"
-                                  }
-                                ]
-                              },
-                              "has": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "missing": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "dest": {
-                                "type": "string"
-                              },
-                              "status": {
-                                "type": "number"
-                              },
-                              "handle": {
-                                "type": "string",
-                                "enum": [
-                                  "init",
-                                  "finalize"
-                                ]
-                              },
-                              "mitigate": {
-                                "properties": {
-                                  "action": {
-                                    "type": "string",
-                                    "enum": [
-                                      "deny",
-                                      "challenge",
-                                      "log",
-                                      "bypass",
-                                      "rate_limit",
-                                      "redirect"
-                                    ]
-                                  },
-                                  "rule_id": {
-                                    "type": "string"
-                                  },
-                                  "ttl": {
-                                    "type": "number"
-                                  },
-                                  "erl": {
-                                    "properties": {
-                                      "algo": {
-                                        "type": "string",
-                                        "enum": [
-                                          "fixed_window",
-                                          "token_bucket"
-                                        ]
-                                      },
-                                      "window": {
-                                        "type": "number"
-                                      },
-                                      "limit": {
-                                        "type": "number"
-                                      },
-                                      "keys": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      }
-                                    },
-                                    "required": [
-                                      "algo",
-                                      "window",
-                                      "limit",
-                                      "keys"
-                                    ],
-                                    "type": "object"
-                                  }
-                                },
-                                "required": [
-                                  "action",
-                                  "rule_id"
-                                ],
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
                         "firewallSeawallEnabled": {
                           "type": "boolean"
                         },
@@ -43109,9 +41968,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -43128,9 +41987,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -43147,9 +42006,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -46477,6 +45336,12 @@
                           },
                           "type": "array"
                         },
+                        "vercelAppInstallationRequest": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "paymentMethod": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -47067,298 +45932,6 @@
                         "firewallConfigVersion": {
                           "type": "number"
                         },
-                        "firewallRoutes": {
-                          "items": {
-                            "properties": {
-                              "src": {
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "properties": {
-                                      "re": {
-                                        "type": "string"
-                                      },
-                                      "eq": {
-                                        "type": "string"
-                                      },
-                                      "neq": {
-                                        "type": "string"
-                                      },
-                                      "inc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "ninc": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "pre": {
-                                        "type": "string"
-                                      },
-                                      "suf": {
-                                        "type": "string"
-                                      },
-                                      "gt": {
-                                        "type": "number"
-                                      },
-                                      "gte": {
-                                        "type": "number"
-                                      },
-                                      "lt": {
-                                        "type": "number"
-                                      },
-                                      "lte": {
-                                        "type": "number"
-                                      }
-                                    },
-                                    "type": "object"
-                                  }
-                                ]
-                              },
-                              "has": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "missing": {
-                                "items": {
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "path",
-                                        "host",
-                                        "method",
-                                        "header",
-                                        "cookie",
-                                        "query",
-                                        "ip_address",
-                                        "protocol",
-                                        "scheme",
-                                        "environment",
-                                        "region",
-                                        "initial_request_path"
-                                      ]
-                                    },
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "properties": {
-                                            "re": {
-                                              "type": "string"
-                                            },
-                                            "eq": {
-                                              "type": "string"
-                                            },
-                                            "neq": {
-                                              "type": "string"
-                                            },
-                                            "inc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "ninc": {
-                                              "items": {
-                                                "type": "string"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "pre": {
-                                              "type": "string"
-                                            },
-                                            "suf": {
-                                              "type": "string"
-                                            },
-                                            "gt": {
-                                              "type": "number"
-                                            },
-                                            "gte": {
-                                              "type": "number"
-                                            },
-                                            "lt": {
-                                              "type": "number"
-                                            },
-                                            "lte": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "dest": {
-                                "type": "string"
-                              },
-                              "status": {
-                                "type": "number"
-                              },
-                              "handle": {
-                                "type": "string",
-                                "enum": [
-                                  "init",
-                                  "finalize"
-                                ]
-                              },
-                              "mitigate": {
-                                "properties": {
-                                  "action": {
-                                    "type": "string",
-                                    "enum": [
-                                      "deny",
-                                      "challenge",
-                                      "log",
-                                      "bypass",
-                                      "rate_limit",
-                                      "redirect"
-                                    ]
-                                  },
-                                  "rule_id": {
-                                    "type": "string"
-                                  },
-                                  "ttl": {
-                                    "type": "number"
-                                  },
-                                  "erl": {
-                                    "properties": {
-                                      "algo": {
-                                        "type": "string",
-                                        "enum": [
-                                          "fixed_window",
-                                          "token_bucket"
-                                        ]
-                                      },
-                                      "window": {
-                                        "type": "number"
-                                      },
-                                      "limit": {
-                                        "type": "number"
-                                      },
-                                      "keys": {
-                                        "items": {
-                                          "type": "string"
-                                        },
-                                        "type": "array"
-                                      }
-                                    },
-                                    "required": [
-                                      "algo",
-                                      "window",
-                                      "limit",
-                                      "keys"
-                                    ],
-                                    "type": "object"
-                                  }
-                                },
-                                "required": [
-                                  "action",
-                                  "rule_id"
-                                ],
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
                         "firewallSeawallEnabled": {
                           "type": "boolean"
                         },
@@ -47385,9 +45958,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -47404,9 +45977,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -47423,9 +45996,9 @@
                                 "action": {
                                   "type": "string",
                                   "enum": [
-                                    "deny",
+                                    "log",
                                     "challenge",
-                                    "log"
+                                    "deny"
                                   ]
                                 }
                               },
@@ -60170,7 +58743,8 @@
                                               "geo_as_number",
                                               "ja4_digest",
                                               "ja3_digest",
-                                              "rate_limit_api_id"
+                                              "rate_limit_api_id",
+                                              "bot_name"
                                             ]
                                           },
                                           "op": {
@@ -62384,7 +60958,8 @@
                                           "geo_as_number",
                                           "ja4_digest",
                                           "ja3_digest",
-                                          "rate_limit_api_id"
+                                          "rate_limit_api_id",
+                                          "bot_name"
                                         ],
                                         "description": "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
                                       },
@@ -78727,6 +77302,22 @@
               },
               {
                 "properties": {
+                  "appName": {
+                    "type": "string"
+                  },
+                  "appId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "appName",
+                  "appId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "team": {
                     "properties": {
                       "id": {
@@ -78996,15 +77587,15 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "status": {
-                    "type": "string",
-                    "description": "Current status of the connection.",
-                    "example": "linked"
-                  },
                   "type": {
                     "type": "string",
                     "description": "The Identity Provider \"type\", for example Okta.",
                     "example": "OktaSAML"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "Current status of the connection.",
+                    "example": "linked"
                   },
                   "state": {
                     "type": "string",
@@ -79023,8 +77614,8 @@
                   }
                 },
                 "required": [
-                  "status",
                   "type",
+                  "status",
                   "state",
                   "connectedAt"
                 ],
@@ -79070,7 +77661,8 @@
                 "type": "string",
                 "enum": [
                   "vercel.com",
-                  "v0.dev"
+                  "v0.dev",
+                  "v0.app"
                 ],
                 "description": "The default redirect URI to use after successful SAML authentication."
               },
@@ -79317,6 +77909,9 @@
                 },
                 "type": "array"
               },
+              "teamId": {
+                "type": "string"
+              },
               "confirmed": {
                 "type": "boolean"
               },
@@ -79371,9 +77966,6 @@
                 },
                 "type": "array"
               },
-              "teamId": {
-                "type": "string"
-              },
               "createdAt": {
                 "type": "number"
               },
@@ -79385,9 +77977,9 @@
                   "origin": {
                     "type": "string",
                     "enum": [
+                      "link",
                       "saml",
                       "mail",
-                      "link",
                       "import",
                       "teams",
                       "github",

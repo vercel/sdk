@@ -1,19 +1,23 @@
 # Has
 
-## Example Usage
+
+## Supported Types
+
+### `models.Has1`
 
 ```typescript
-import { Has } from "@vercel/sdk/models/updateprojectdatacacheop.js";
-
-let value: Has = {
-  type: "method",
+const value: models.Has1 = {
+  type: "host",
+  value: {},
 };
 ```
 
-## Fields
+### `models.Has2`
 
-| Field                                                                                                                                                                                    | Type                                                                                                                                                                                     | Required                                                                                                                                                                                 | Description                                                                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                                                   | [models.UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodySecurityType](../models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodysecuritytype.md) | :heavy_check_mark:                                                                                                                                                                       | N/A                                                                                                                                                                                      |
-| `key`                                                                                                                                                                                    | *string*                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                       | N/A                                                                                                                                                                                      |
-| `value`                                                                                                                                                                                  | *models.UpdateProjectDataCacheProjectsValue*                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                       | N/A                                                                                                                                                                                      |
+```typescript
+const value: models.Has2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+

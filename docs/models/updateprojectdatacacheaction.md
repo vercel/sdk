@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectDataCacheAction } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: UpdateProjectDataCacheAction = "log";
+let value: UpdateProjectDataCacheAction = "deny";
 ```
 
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"log" | "challenge" | "deny"
 ```

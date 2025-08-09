@@ -5889,6 +5889,7 @@ type CreateProjectPermissions struct {
 	ObservabilityFunnel                      []components.ACLAction `json:"observabilityFunnel,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	VercelAppInstallation                    []components.ACLAction `json:"vercelAppInstallation,omitempty"`
+	VercelAppInstallationRequest             []components.ACLAction `json:"vercelAppInstallationRequest,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
 	Permissions                              []components.ACLAction `json:"permissions,omitempty"`
 	Postgres                                 []components.ACLAction `json:"postgres,omitempty"`
@@ -7037,6 +7038,13 @@ func (o *CreateProjectPermissions) GetVercelAppInstallation() []components.ACLAc
 	return o.VercelAppInstallation
 }
 
+func (o *CreateProjectPermissions) GetVercelAppInstallationRequest() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.VercelAppInstallationRequest
+}
+
 func (o *CreateProjectPermissions) GetPaymentMethod() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -8038,859 +8046,12 @@ func (o *CreateProjectWebAnalytics) GetHasData() *bool {
 	return o.HasData
 }
 
-type CreateProjectSrc struct {
-	Re   *string  `json:"re,omitempty"`
-	Eq   *string  `json:"eq,omitempty"`
-	Neq  *string  `json:"neq,omitempty"`
-	Inc  []string `json:"inc,omitempty"`
-	Ninc []string `json:"ninc,omitempty"`
-	Pre  *string  `json:"pre,omitempty"`
-	Suf  *string  `json:"suf,omitempty"`
-	Gt   *float64 `json:"gt,omitempty"`
-	Gte  *float64 `json:"gte,omitempty"`
-	Lt   *float64 `json:"lt,omitempty"`
-	Lte  *float64 `json:"lte,omitempty"`
-}
-
-func (o *CreateProjectSrc) GetRe() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Re
-}
-
-func (o *CreateProjectSrc) GetEq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Eq
-}
-
-func (o *CreateProjectSrc) GetNeq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Neq
-}
-
-func (o *CreateProjectSrc) GetInc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Inc
-}
-
-func (o *CreateProjectSrc) GetNinc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Ninc
-}
-
-func (o *CreateProjectSrc) GetPre() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Pre
-}
-
-func (o *CreateProjectSrc) GetSuf() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Suf
-}
-
-func (o *CreateProjectSrc) GetGt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gt
-}
-
-func (o *CreateProjectSrc) GetGte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gte
-}
-
-func (o *CreateProjectSrc) GetLt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lt
-}
-
-func (o *CreateProjectSrc) GetLte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lte
-}
-
-type CreateProjectSrcUnionType string
-
-const (
-	CreateProjectSrcUnionTypeStr              CreateProjectSrcUnionType = "str"
-	CreateProjectSrcUnionTypeCreateProjectSrc CreateProjectSrcUnionType = "createProject_src"
-)
-
-type CreateProjectSrcUnion struct {
-	Str              *string           `queryParam:"inline"`
-	CreateProjectSrc *CreateProjectSrc `queryParam:"inline"`
-
-	Type CreateProjectSrcUnionType
-}
-
-func CreateCreateProjectSrcUnionStr(str string) CreateProjectSrcUnion {
-	typ := CreateProjectSrcUnionTypeStr
-
-	return CreateProjectSrcUnion{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateCreateProjectSrcUnionCreateProjectSrc(createProjectSrc CreateProjectSrc) CreateProjectSrcUnion {
-	typ := CreateProjectSrcUnionTypeCreateProjectSrc
-
-	return CreateProjectSrcUnion{
-		CreateProjectSrc: &createProjectSrc,
-		Type:             typ,
-	}
-}
-
-func (u *CreateProjectSrcUnion) UnmarshalJSON(data []byte) error {
-
-	var createProjectSrc CreateProjectSrc = CreateProjectSrc{}
-	if err := utils.UnmarshalJSON(data, &createProjectSrc, "", true, true); err == nil {
-		u.CreateProjectSrc = &createProjectSrc
-		u.Type = CreateProjectSrcUnionTypeCreateProjectSrc
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = CreateProjectSrcUnionTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectSrcUnion", string(data))
-}
-
-func (u CreateProjectSrcUnion) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.CreateProjectSrc != nil {
-		return utils.MarshalJSON(u.CreateProjectSrc, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateProjectSrcUnion: all fields are null")
-}
-
-type CreateProjectHasType string
-
-const (
-	CreateProjectHasTypePath               CreateProjectHasType = "path"
-	CreateProjectHasTypeHost               CreateProjectHasType = "host"
-	CreateProjectHasTypeMethod             CreateProjectHasType = "method"
-	CreateProjectHasTypeHeader             CreateProjectHasType = "header"
-	CreateProjectHasTypeCookie             CreateProjectHasType = "cookie"
-	CreateProjectHasTypeQuery              CreateProjectHasType = "query"
-	CreateProjectHasTypeIPAddress          CreateProjectHasType = "ip_address"
-	CreateProjectHasTypeProtocol           CreateProjectHasType = "protocol"
-	CreateProjectHasTypeScheme             CreateProjectHasType = "scheme"
-	CreateProjectHasTypeEnvironment        CreateProjectHasType = "environment"
-	CreateProjectHasTypeRegion             CreateProjectHasType = "region"
-	CreateProjectHasTypeInitialRequestPath CreateProjectHasType = "initial_request_path"
-)
-
-func (e CreateProjectHasType) ToPointer() *CreateProjectHasType {
-	return &e
-}
-func (e *CreateProjectHasType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "path":
-		fallthrough
-	case "host":
-		fallthrough
-	case "method":
-		fallthrough
-	case "header":
-		fallthrough
-	case "cookie":
-		fallthrough
-	case "query":
-		fallthrough
-	case "ip_address":
-		fallthrough
-	case "protocol":
-		fallthrough
-	case "scheme":
-		fallthrough
-	case "environment":
-		fallthrough
-	case "region":
-		fallthrough
-	case "initial_request_path":
-		*e = CreateProjectHasType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectHasType: %v", v)
-	}
-}
-
-type CreateProjectValueHas struct {
-	Re   *string  `json:"re,omitempty"`
-	Eq   *string  `json:"eq,omitempty"`
-	Neq  *string  `json:"neq,omitempty"`
-	Inc  []string `json:"inc,omitempty"`
-	Ninc []string `json:"ninc,omitempty"`
-	Pre  *string  `json:"pre,omitempty"`
-	Suf  *string  `json:"suf,omitempty"`
-	Gt   *float64 `json:"gt,omitempty"`
-	Gte  *float64 `json:"gte,omitempty"`
-	Lt   *float64 `json:"lt,omitempty"`
-	Lte  *float64 `json:"lte,omitempty"`
-}
-
-func (o *CreateProjectValueHas) GetRe() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Re
-}
-
-func (o *CreateProjectValueHas) GetEq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Eq
-}
-
-func (o *CreateProjectValueHas) GetNeq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Neq
-}
-
-func (o *CreateProjectValueHas) GetInc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Inc
-}
-
-func (o *CreateProjectValueHas) GetNinc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Ninc
-}
-
-func (o *CreateProjectValueHas) GetPre() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Pre
-}
-
-func (o *CreateProjectValueHas) GetSuf() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Suf
-}
-
-func (o *CreateProjectValueHas) GetGt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gt
-}
-
-func (o *CreateProjectValueHas) GetGte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gte
-}
-
-func (o *CreateProjectValueHas) GetLt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lt
-}
-
-func (o *CreateProjectValueHas) GetLte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lte
-}
-
-type CreateProjectHasValueUnionType string
-
-const (
-	CreateProjectHasValueUnionTypeStr                   CreateProjectHasValueUnionType = "str"
-	CreateProjectHasValueUnionTypeCreateProjectValueHas CreateProjectHasValueUnionType = "createProject_value_has"
-)
-
-type CreateProjectHasValueUnion struct {
-	Str                   *string                `queryParam:"inline"`
-	CreateProjectValueHas *CreateProjectValueHas `queryParam:"inline"`
-
-	Type CreateProjectHasValueUnionType
-}
-
-func CreateCreateProjectHasValueUnionStr(str string) CreateProjectHasValueUnion {
-	typ := CreateProjectHasValueUnionTypeStr
-
-	return CreateProjectHasValueUnion{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateCreateProjectHasValueUnionCreateProjectValueHas(createProjectValueHas CreateProjectValueHas) CreateProjectHasValueUnion {
-	typ := CreateProjectHasValueUnionTypeCreateProjectValueHas
-
-	return CreateProjectHasValueUnion{
-		CreateProjectValueHas: &createProjectValueHas,
-		Type:                  typ,
-	}
-}
-
-func (u *CreateProjectHasValueUnion) UnmarshalJSON(data []byte) error {
-
-	var createProjectValueHas CreateProjectValueHas = CreateProjectValueHas{}
-	if err := utils.UnmarshalJSON(data, &createProjectValueHas, "", true, true); err == nil {
-		u.CreateProjectValueHas = &createProjectValueHas
-		u.Type = CreateProjectHasValueUnionTypeCreateProjectValueHas
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = CreateProjectHasValueUnionTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectHasValueUnion", string(data))
-}
-
-func (u CreateProjectHasValueUnion) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.CreateProjectValueHas != nil {
-		return utils.MarshalJSON(u.CreateProjectValueHas, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateProjectHasValueUnion: all fields are null")
-}
-
-type CreateProjectHas struct {
-	Type  CreateProjectHasType        `json:"type"`
-	Key   *string                     `json:"key,omitempty"`
-	Value *CreateProjectHasValueUnion `json:"value,omitempty"`
-}
-
-func (o *CreateProjectHas) GetType() CreateProjectHasType {
-	if o == nil {
-		return CreateProjectHasType("")
-	}
-	return o.Type
-}
-
-func (o *CreateProjectHas) GetKey() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Key
-}
-
-func (o *CreateProjectHas) GetValue() *CreateProjectHasValueUnion {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type CreateProjectMissingType string
-
-const (
-	CreateProjectMissingTypePath               CreateProjectMissingType = "path"
-	CreateProjectMissingTypeHost               CreateProjectMissingType = "host"
-	CreateProjectMissingTypeMethod             CreateProjectMissingType = "method"
-	CreateProjectMissingTypeHeader             CreateProjectMissingType = "header"
-	CreateProjectMissingTypeCookie             CreateProjectMissingType = "cookie"
-	CreateProjectMissingTypeQuery              CreateProjectMissingType = "query"
-	CreateProjectMissingTypeIPAddress          CreateProjectMissingType = "ip_address"
-	CreateProjectMissingTypeProtocol           CreateProjectMissingType = "protocol"
-	CreateProjectMissingTypeScheme             CreateProjectMissingType = "scheme"
-	CreateProjectMissingTypeEnvironment        CreateProjectMissingType = "environment"
-	CreateProjectMissingTypeRegion             CreateProjectMissingType = "region"
-	CreateProjectMissingTypeInitialRequestPath CreateProjectMissingType = "initial_request_path"
-)
-
-func (e CreateProjectMissingType) ToPointer() *CreateProjectMissingType {
-	return &e
-}
-func (e *CreateProjectMissingType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "path":
-		fallthrough
-	case "host":
-		fallthrough
-	case "method":
-		fallthrough
-	case "header":
-		fallthrough
-	case "cookie":
-		fallthrough
-	case "query":
-		fallthrough
-	case "ip_address":
-		fallthrough
-	case "protocol":
-		fallthrough
-	case "scheme":
-		fallthrough
-	case "environment":
-		fallthrough
-	case "region":
-		fallthrough
-	case "initial_request_path":
-		*e = CreateProjectMissingType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectMissingType: %v", v)
-	}
-}
-
-type CreateProjectValueMissing struct {
-	Re   *string  `json:"re,omitempty"`
-	Eq   *string  `json:"eq,omitempty"`
-	Neq  *string  `json:"neq,omitempty"`
-	Inc  []string `json:"inc,omitempty"`
-	Ninc []string `json:"ninc,omitempty"`
-	Pre  *string  `json:"pre,omitempty"`
-	Suf  *string  `json:"suf,omitempty"`
-	Gt   *float64 `json:"gt,omitempty"`
-	Gte  *float64 `json:"gte,omitempty"`
-	Lt   *float64 `json:"lt,omitempty"`
-	Lte  *float64 `json:"lte,omitempty"`
-}
-
-func (o *CreateProjectValueMissing) GetRe() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Re
-}
-
-func (o *CreateProjectValueMissing) GetEq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Eq
-}
-
-func (o *CreateProjectValueMissing) GetNeq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Neq
-}
-
-func (o *CreateProjectValueMissing) GetInc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Inc
-}
-
-func (o *CreateProjectValueMissing) GetNinc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Ninc
-}
-
-func (o *CreateProjectValueMissing) GetPre() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Pre
-}
-
-func (o *CreateProjectValueMissing) GetSuf() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Suf
-}
-
-func (o *CreateProjectValueMissing) GetGt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gt
-}
-
-func (o *CreateProjectValueMissing) GetGte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gte
-}
-
-func (o *CreateProjectValueMissing) GetLt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lt
-}
-
-func (o *CreateProjectValueMissing) GetLte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lte
-}
-
-type CreateProjectMissingValueUnionType string
-
-const (
-	CreateProjectMissingValueUnionTypeStr                       CreateProjectMissingValueUnionType = "str"
-	CreateProjectMissingValueUnionTypeCreateProjectValueMissing CreateProjectMissingValueUnionType = "createProject_value_missing"
-)
-
-type CreateProjectMissingValueUnion struct {
-	Str                       *string                    `queryParam:"inline"`
-	CreateProjectValueMissing *CreateProjectValueMissing `queryParam:"inline"`
-
-	Type CreateProjectMissingValueUnionType
-}
-
-func CreateCreateProjectMissingValueUnionStr(str string) CreateProjectMissingValueUnion {
-	typ := CreateProjectMissingValueUnionTypeStr
-
-	return CreateProjectMissingValueUnion{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateCreateProjectMissingValueUnionCreateProjectValueMissing(createProjectValueMissing CreateProjectValueMissing) CreateProjectMissingValueUnion {
-	typ := CreateProjectMissingValueUnionTypeCreateProjectValueMissing
-
-	return CreateProjectMissingValueUnion{
-		CreateProjectValueMissing: &createProjectValueMissing,
-		Type:                      typ,
-	}
-}
-
-func (u *CreateProjectMissingValueUnion) UnmarshalJSON(data []byte) error {
-
-	var createProjectValueMissing CreateProjectValueMissing = CreateProjectValueMissing{}
-	if err := utils.UnmarshalJSON(data, &createProjectValueMissing, "", true, true); err == nil {
-		u.CreateProjectValueMissing = &createProjectValueMissing
-		u.Type = CreateProjectMissingValueUnionTypeCreateProjectValueMissing
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = CreateProjectMissingValueUnionTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectMissingValueUnion", string(data))
-}
-
-func (u CreateProjectMissingValueUnion) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.CreateProjectValueMissing != nil {
-		return utils.MarshalJSON(u.CreateProjectValueMissing, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateProjectMissingValueUnion: all fields are null")
-}
-
-type CreateProjectMissing struct {
-	Type  CreateProjectMissingType        `json:"type"`
-	Key   *string                         `json:"key,omitempty"`
-	Value *CreateProjectMissingValueUnion `json:"value,omitempty"`
-}
-
-func (o *CreateProjectMissing) GetType() CreateProjectMissingType {
-	if o == nil {
-		return CreateProjectMissingType("")
-	}
-	return o.Type
-}
-
-func (o *CreateProjectMissing) GetKey() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Key
-}
-
-func (o *CreateProjectMissing) GetValue() *CreateProjectMissingValueUnion {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type CreateProjectHandle string
-
-const (
-	CreateProjectHandleInit     CreateProjectHandle = "init"
-	CreateProjectHandleFinalize CreateProjectHandle = "finalize"
-)
-
-func (e CreateProjectHandle) ToPointer() *CreateProjectHandle {
-	return &e
-}
-func (e *CreateProjectHandle) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "init":
-		fallthrough
-	case "finalize":
-		*e = CreateProjectHandle(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectHandle: %v", v)
-	}
-}
-
-type CreateProjectFirewallRouteAction string
-
-const (
-	CreateProjectFirewallRouteActionDeny      CreateProjectFirewallRouteAction = "deny"
-	CreateProjectFirewallRouteActionChallenge CreateProjectFirewallRouteAction = "challenge"
-	CreateProjectFirewallRouteActionLog       CreateProjectFirewallRouteAction = "log"
-	CreateProjectFirewallRouteActionBypass    CreateProjectFirewallRouteAction = "bypass"
-	CreateProjectFirewallRouteActionRateLimit CreateProjectFirewallRouteAction = "rate_limit"
-	CreateProjectFirewallRouteActionRedirect  CreateProjectFirewallRouteAction = "redirect"
-)
-
-func (e CreateProjectFirewallRouteAction) ToPointer() *CreateProjectFirewallRouteAction {
-	return &e
-}
-func (e *CreateProjectFirewallRouteAction) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "deny":
-		fallthrough
-	case "challenge":
-		fallthrough
-	case "log":
-		fallthrough
-	case "bypass":
-		fallthrough
-	case "rate_limit":
-		fallthrough
-	case "redirect":
-		*e = CreateProjectFirewallRouteAction(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectFirewallRouteAction: %v", v)
-	}
-}
-
-type CreateProjectAlgo string
-
-const (
-	CreateProjectAlgoFixedWindow CreateProjectAlgo = "fixed_window"
-	CreateProjectAlgoTokenBucket CreateProjectAlgo = "token_bucket"
-)
-
-func (e CreateProjectAlgo) ToPointer() *CreateProjectAlgo {
-	return &e
-}
-func (e *CreateProjectAlgo) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "fixed_window":
-		fallthrough
-	case "token_bucket":
-		*e = CreateProjectAlgo(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectAlgo: %v", v)
-	}
-}
-
-type CreateProjectErl struct {
-	Algo   CreateProjectAlgo `json:"algo"`
-	Window float64           `json:"window"`
-	Limit  float64           `json:"limit"`
-	Keys   []string          `json:"keys"`
-}
-
-func (o *CreateProjectErl) GetAlgo() CreateProjectAlgo {
-	if o == nil {
-		return CreateProjectAlgo("")
-	}
-	return o.Algo
-}
-
-func (o *CreateProjectErl) GetWindow() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Window
-}
-
-func (o *CreateProjectErl) GetLimit() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Limit
-}
-
-func (o *CreateProjectErl) GetKeys() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Keys
-}
-
-type CreateProjectMitigate struct {
-	Action CreateProjectFirewallRouteAction `json:"action"`
-	RuleID string                           `json:"rule_id"`
-	TTL    *float64                         `json:"ttl,omitempty"`
-	Erl    *CreateProjectErl                `json:"erl,omitempty"`
-}
-
-func (o *CreateProjectMitigate) GetAction() CreateProjectFirewallRouteAction {
-	if o == nil {
-		return CreateProjectFirewallRouteAction("")
-	}
-	return o.Action
-}
-
-func (o *CreateProjectMitigate) GetRuleID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RuleID
-}
-
-func (o *CreateProjectMitigate) GetTTL() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TTL
-}
-
-func (o *CreateProjectMitigate) GetErl() *CreateProjectErl {
-	if o == nil {
-		return nil
-	}
-	return o.Erl
-}
-
-type CreateProjectFirewallRoute struct {
-	Src      *CreateProjectSrcUnion `json:"src,omitempty"`
-	Has      []CreateProjectHas     `json:"has,omitempty"`
-	Missing  []CreateProjectMissing `json:"missing,omitempty"`
-	Dest     *string                `json:"dest,omitempty"`
-	Status   *float64               `json:"status,omitempty"`
-	Handle   *CreateProjectHandle   `json:"handle,omitempty"`
-	Mitigate *CreateProjectMitigate `json:"mitigate,omitempty"`
-}
-
-func (o *CreateProjectFirewallRoute) GetSrc() *CreateProjectSrcUnion {
-	if o == nil {
-		return nil
-	}
-	return o.Src
-}
-
-func (o *CreateProjectFirewallRoute) GetHas() []CreateProjectHas {
-	if o == nil {
-		return nil
-	}
-	return o.Has
-}
-
-func (o *CreateProjectFirewallRoute) GetMissing() []CreateProjectMissing {
-	if o == nil {
-		return nil
-	}
-	return o.Missing
-}
-
-func (o *CreateProjectFirewallRoute) GetDest() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Dest
-}
-
-func (o *CreateProjectFirewallRoute) GetStatus() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *CreateProjectFirewallRoute) GetHandle() *CreateProjectHandle {
-	if o == nil {
-		return nil
-	}
-	return o.Handle
-}
-
-func (o *CreateProjectFirewallRoute) GetMitigate() *CreateProjectMitigate {
-	if o == nil {
-		return nil
-	}
-	return o.Mitigate
-}
-
 type CreateProjectBotFilterAction string
 
 const (
-	CreateProjectBotFilterActionDeny      CreateProjectBotFilterAction = "deny"
-	CreateProjectBotFilterActionChallenge CreateProjectBotFilterAction = "challenge"
 	CreateProjectBotFilterActionLog       CreateProjectBotFilterAction = "log"
+	CreateProjectBotFilterActionChallenge CreateProjectBotFilterAction = "challenge"
+	CreateProjectBotFilterActionDeny      CreateProjectBotFilterAction = "deny"
 )
 
 func (e CreateProjectBotFilterAction) ToPointer() *CreateProjectBotFilterAction {
@@ -8902,11 +8063,11 @@ func (e *CreateProjectBotFilterAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "deny":
+	case "log":
 		fallthrough
 	case "challenge":
 		fallthrough
-	case "log":
+	case "deny":
 		*e = CreateProjectBotFilterAction(v)
 		return nil
 	default:
@@ -8936,9 +8097,9 @@ func (o *CreateProjectBotFilter) GetAction() *CreateProjectBotFilterAction {
 type CreateProjectAiBotsAction string
 
 const (
-	CreateProjectAiBotsActionDeny      CreateProjectAiBotsAction = "deny"
-	CreateProjectAiBotsActionChallenge CreateProjectAiBotsAction = "challenge"
 	CreateProjectAiBotsActionLog       CreateProjectAiBotsAction = "log"
+	CreateProjectAiBotsActionChallenge CreateProjectAiBotsAction = "challenge"
+	CreateProjectAiBotsActionDeny      CreateProjectAiBotsAction = "deny"
 )
 
 func (e CreateProjectAiBotsAction) ToPointer() *CreateProjectAiBotsAction {
@@ -8950,11 +8111,11 @@ func (e *CreateProjectAiBotsAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "deny":
+	case "log":
 		fallthrough
 	case "challenge":
 		fallthrough
-	case "log":
+	case "deny":
 		*e = CreateProjectAiBotsAction(v)
 		return nil
 	default:
@@ -8984,9 +8145,9 @@ func (o *CreateProjectAiBots) GetAction() *CreateProjectAiBotsAction {
 type CreateProjectOwaspAction string
 
 const (
-	CreateProjectOwaspActionDeny      CreateProjectOwaspAction = "deny"
-	CreateProjectOwaspActionChallenge CreateProjectOwaspAction = "challenge"
 	CreateProjectOwaspActionLog       CreateProjectOwaspAction = "log"
+	CreateProjectOwaspActionChallenge CreateProjectOwaspAction = "challenge"
+	CreateProjectOwaspActionDeny      CreateProjectOwaspAction = "deny"
 )
 
 func (e CreateProjectOwaspAction) ToPointer() *CreateProjectOwaspAction {
@@ -8998,11 +8159,11 @@ func (e *CreateProjectOwaspAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "deny":
+	case "log":
 		fallthrough
 	case "challenge":
 		fallthrough
-	case "log":
+	case "deny":
 		*e = CreateProjectOwaspAction(v)
 		return nil
 	default:
@@ -9057,19 +8218,18 @@ func (o *CreateProjectManagedRules) GetOwasp() CreateProjectOwasp {
 }
 
 type CreateProjectSecurity struct {
-	AttackModeEnabled      *bool                        `json:"attackModeEnabled,omitempty"`
-	AttackModeUpdatedAt    *float64                     `json:"attackModeUpdatedAt,omitempty"`
-	FirewallEnabled        *bool                        `json:"firewallEnabled,omitempty"`
-	FirewallUpdatedAt      *float64                     `json:"firewallUpdatedAt,omitempty"`
-	AttackModeActiveUntil  *float64                     `json:"attackModeActiveUntil,omitempty"`
-	FirewallConfigVersion  *float64                     `json:"firewallConfigVersion,omitempty"`
-	FirewallRoutes         []CreateProjectFirewallRoute `json:"firewallRoutes,omitempty"`
-	FirewallSeawallEnabled *bool                        `json:"firewallSeawallEnabled,omitempty"`
-	Ja3Enabled             *bool                        `json:"ja3Enabled,omitempty"`
-	Ja4Enabled             *bool                        `json:"ja4Enabled,omitempty"`
-	FirewallBypassIps      []string                     `json:"firewallBypassIps,omitempty"`
-	ManagedRules           *CreateProjectManagedRules   `json:"managedRules,omitempty"`
-	BotIDEnabled           *bool                        `json:"botIdEnabled,omitempty"`
+	AttackModeEnabled      *bool                      `json:"attackModeEnabled,omitempty"`
+	AttackModeUpdatedAt    *float64                   `json:"attackModeUpdatedAt,omitempty"`
+	FirewallEnabled        *bool                      `json:"firewallEnabled,omitempty"`
+	FirewallUpdatedAt      *float64                   `json:"firewallUpdatedAt,omitempty"`
+	AttackModeActiveUntil  *float64                   `json:"attackModeActiveUntil,omitempty"`
+	FirewallConfigVersion  *float64                   `json:"firewallConfigVersion,omitempty"`
+	FirewallSeawallEnabled *bool                      `json:"firewallSeawallEnabled,omitempty"`
+	Ja3Enabled             *bool                      `json:"ja3Enabled,omitempty"`
+	Ja4Enabled             *bool                      `json:"ja4Enabled,omitempty"`
+	FirewallBypassIps      []string                   `json:"firewallBypassIps,omitempty"`
+	ManagedRules           *CreateProjectManagedRules `json:"managedRules,omitempty"`
+	BotIDEnabled           *bool                      `json:"botIdEnabled,omitempty"`
 }
 
 func (o *CreateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -9112,13 +8272,6 @@ func (o *CreateProjectSecurity) GetFirewallConfigVersion() *float64 {
 		return nil
 	}
 	return o.FirewallConfigVersion
-}
-
-func (o *CreateProjectSecurity) GetFirewallRoutes() []CreateProjectFirewallRoute {
-	if o == nil {
-		return nil
-	}
-	return o.FirewallRoutes
 }
 
 func (o *CreateProjectSecurity) GetFirewallSeawallEnabled() *bool {

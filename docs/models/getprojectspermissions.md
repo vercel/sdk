@@ -168,6 +168,7 @@ let value: GetProjectsPermissions = {};
 | `observabilityFunnel`                        | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `openTelemetryEndpoint`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `vercelAppInstallation`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `vercelAppInstallationRequest`               | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `paymentMethod`                              | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `permissions`                                | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `postgres`                                   | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

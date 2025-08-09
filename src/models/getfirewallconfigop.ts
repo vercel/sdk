@@ -299,6 +299,7 @@ export const GetFirewallConfigType = {
   Ja4Digest: "ja4_digest",
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
+  BotName: "bot_name",
 } as const;
 /**
  * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.

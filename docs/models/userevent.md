@@ -17,8 +17,9 @@ let value: UserEvent = {
   payload: {
     project: {
       name: "<value>",
+      id: "<id>",
     },
-    removedMembership: {},
+    projectMembership: {},
   },
 };
 ```

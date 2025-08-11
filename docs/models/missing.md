@@ -1,19 +1,23 @@
 # Missing
 
-## Example Usage
+
+## Supported Types
+
+### `models.Missing1`
 
 ```typescript
-import { Missing } from "@vercel/sdk/models/updateprojectdatacacheop.js";
-
-let value: Missing = {
+const value: models.Missing1 = {
   type: "host",
+  value: {},
 };
 ```
 
-## Fields
+### `models.Missing2`
 
-| Field                                                                                                                                                                                                                | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                                                                                                                                                                                                               | [models.UpdateProjectDataCacheProjectsResponse200ApplicationJSONResponseBodySecurityFirewallRoutesType](../models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodysecurityfirewallroutestype.md) | :heavy_check_mark:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
-| `key`                                                                                                                                                                                                                | *string*                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
-| `value`                                                                                                                                                                                                              | *models.UpdateProjectDataCacheValue*                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+```typescript
+const value: models.Missing2 = {
+  type: "header",
+  key: "<key>",
+};
+```
+

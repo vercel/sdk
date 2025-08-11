@@ -16,4 +16,4 @@ let value: Has1 = {
 | Field                                  | Type                                   | Required                               | Description                            |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
 | `type`                                 | [models.HasType](../models/hastype.md) | :heavy_check_mark:                     | N/A                                    |
-| `value`                                | *models.HasValue*                      | :heavy_check_mark:                     | N/A                                    |
+| `value`                                | *models.CreateDeploymentHasValue*      | :heavy_check_mark:                     | N/A                                    |

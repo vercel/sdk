@@ -1428,10 +1428,10 @@ type CreateProjectEnvType string
 
 const (
 	CreateProjectEnvTypeSystem    CreateProjectEnvType = "system"
+	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 	CreateProjectEnvTypeEncrypted CreateProjectEnvType = "encrypted"
 	CreateProjectEnvTypePlain     CreateProjectEnvType = "plain"
 	CreateProjectEnvTypeSensitive CreateProjectEnvType = "sensitive"
-	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 )
 
 func (e CreateProjectEnvType) ToPointer() *CreateProjectEnvType {
@@ -1445,13 +1445,13 @@ func (e *CreateProjectEnvType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = CreateProjectEnvType(v)
 		return nil
 	default:
@@ -4015,17 +4015,17 @@ func (o *CreateProjectDeployHook2) GetURL() string {
 }
 
 type CreateProjectLinkGithubLimited struct {
-	Type      *CreateProjectTypeGithubLimited `json:"type,omitempty"`
-	Repo      *string                         `json:"repo,omitempty"`
-	RepoID    *float64                        `json:"repoId,omitempty"`
-	UpdatedAt *float64                        `json:"updatedAt,omitempty"`
-	CreatedAt *float64                        `json:"createdAt,omitempty"`
-	Org       *string                         `json:"org,omitempty"`
+	Type       *CreateProjectTypeGithubLimited `json:"type,omitempty"`
+	UpdatedAt  *float64                        `json:"updatedAt,omitempty"`
+	CreatedAt  *float64                        `json:"createdAt,omitempty"`
+	Repo       *string                         `json:"repo,omitempty"`
+	Sourceless *bool                           `json:"sourceless,omitempty"`
+	Org        *string                         `json:"org,omitempty"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                   `json:"repoOwnerId,omitempty"`
+	RepoID           *float64                   `json:"repoId,omitempty"`
 	DeployHooks      []CreateProjectDeployHook2 `json:"deployHooks"`
 	GitCredentialID  *string                    `json:"gitCredentialId,omitempty"`
-	Sourceless       *bool                      `json:"sourceless,omitempty"`
 	ProductionBranch *string                    `json:"productionBranch,omitempty"`
 }
 
@@ -4034,20 +4034,6 @@ func (o *CreateProjectLinkGithubLimited) GetType() *CreateProjectTypeGithubLimit
 		return nil
 	}
 	return o.Type
-}
-
-func (o *CreateProjectLinkGithubLimited) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
-}
-
-func (o *CreateProjectLinkGithubLimited) GetRepoID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoID
 }
 
 func (o *CreateProjectLinkGithubLimited) GetUpdatedAt() *float64 {
@@ -4064,6 +4050,20 @@ func (o *CreateProjectLinkGithubLimited) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
+func (o *CreateProjectLinkGithubLimited) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *CreateProjectLinkGithubLimited) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
 func (o *CreateProjectLinkGithubLimited) GetOrg() *string {
 	if o == nil {
 		return nil
@@ -4078,6 +4078,13 @@ func (o *CreateProjectLinkGithubLimited) GetRepoOwnerID() *float64 {
 	return o.RepoOwnerID
 }
 
+func (o *CreateProjectLinkGithubLimited) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
 func (o *CreateProjectLinkGithubLimited) GetDeployHooks() []CreateProjectDeployHook2 {
 	if o == nil {
 		return []CreateProjectDeployHook2{}
@@ -4090,13 +4097,6 @@ func (o *CreateProjectLinkGithubLimited) GetGitCredentialID() *string {
 		return nil
 	}
 	return o.GitCredentialID
-}
-
-func (o *CreateProjectLinkGithubLimited) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
 }
 
 func (o *CreateProjectLinkGithubLimited) GetProductionBranch() *string {
@@ -4942,8 +4942,8 @@ func (o *CreateProjectDefaultResourceConfig) GetBuildMachineType() *CreateProjec
 type CreateProjectSsoProtectionDeploymentTypeResponse string
 
 const (
-	CreateProjectSsoProtectionDeploymentTypeResponsePreview                          CreateProjectSsoProtectionDeploymentTypeResponse = "preview"
 	CreateProjectSsoProtectionDeploymentTypeResponseAll                              CreateProjectSsoProtectionDeploymentTypeResponse = "all"
+	CreateProjectSsoProtectionDeploymentTypeResponsePreview                          CreateProjectSsoProtectionDeploymentTypeResponse = "preview"
 	CreateProjectSsoProtectionDeploymentTypeResponseProdDeploymentUrlsAndAllPreviews CreateProjectSsoProtectionDeploymentTypeResponse = "prod_deployment_urls_and_all_previews"
 	CreateProjectSsoProtectionDeploymentTypeResponseAllExceptCustomDomains           CreateProjectSsoProtectionDeploymentTypeResponse = "all_except_custom_domains"
 )
@@ -4957,9 +4957,9 @@ func (e *CreateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
@@ -5733,72 +5733,6 @@ func (o *CreateProjectTargets) GetWithCache() *bool {
 }
 
 type CreateProjectPermissions struct {
-	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
-	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
-	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
-	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
-	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
-	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
-	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
-	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
-	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
-	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
-	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
-	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
-	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
-	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
-	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
-	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
-	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
-	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
-	Environments                             []components.ACLAction `json:"environments,omitempty"`
-	Logs                                     []components.ACLAction `json:"logs,omitempty"`
-	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
-	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
-	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
-	Job                                      []components.ACLAction `json:"job,omitempty"`
-	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
-	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
-	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
-	Project                                  []components.ACLAction `json:"project,omitempty"`
-	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
-	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
-	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
-	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
-	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
-	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
-	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
-	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
-	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
-	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
-	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
-	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
-	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
-	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
-	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
-	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
-	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
-	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
-	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
-	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
-	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
-	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
-	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
-	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
-	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
-	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
-	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
-	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
-	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
-	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
-	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
-	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
-	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
-	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
-	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
-	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
-	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
-	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
 	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
@@ -5889,6 +5823,7 @@ type CreateProjectPermissions struct {
 	ObservabilityFunnel                      []components.ACLAction `json:"observabilityFunnel,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	VercelAppInstallation                    []components.ACLAction `json:"vercelAppInstallation,omitempty"`
+	VercelAppInstallationRequest             []components.ACLAction `json:"vercelAppInstallationRequest,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
 	Permissions                              []components.ACLAction `json:"permissions,omitempty"`
 	Postgres                                 []components.ACLAction `json:"postgres,omitempty"`
@@ -5943,468 +5878,72 @@ type CreateProjectPermissions struct {
 	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	APIKey                                   []components.ACLAction `json:"apiKey,omitempty"`
 	APIKeyOwnedBySelf                        []components.ACLAction `json:"apiKeyOwnedBySelf,omitempty"`
-}
-
-func (o *CreateProjectPermissions) GetAliasProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProject
-}
-
-func (o *CreateProjectPermissions) GetAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetBuildMachine() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachine
-}
-
-func (o *CreateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionAliasProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetConnectConfigurationLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ConnectConfigurationLink
-}
-
-func (o *CreateProjectPermissions) GetDataCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DataCacheNamespace
-}
-
-func (o *CreateProjectPermissions) GetDeployment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Deployment
-}
-
-func (o *CreateProjectPermissions) GetDeploymentBuildLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentBuildLogs
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheck
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheckPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckPreview
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckReRunFromProductionBranch
-}
-
-func (o *CreateProjectPermissions) GetDeploymentProductionGit() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentProductionGit
-}
-
-func (o *CreateProjectPermissions) GetDeploymentV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentV0
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPreview
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPrivate() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPrivate
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPromote() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPromote
-}
-
-func (o *CreateProjectPermissions) GetDeploymentRollback() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentRollback
-}
-
-func (o *CreateProjectPermissions) GetEdgeCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.EdgeCacheNamespace
-}
-
-func (o *CreateProjectPermissions) GetEnvironments() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Environments
-}
-
-func (o *CreateProjectPermissions) GetLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Logs
-}
-
-func (o *CreateProjectPermissions) GetLogsPreset() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.LogsPreset
-}
-
-func (o *CreateProjectPermissions) GetPasswordProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.PasswordProtection
-}
-
-func (o *CreateProjectPermissions) GetOptionsAllowlist() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OptionsAllowlist
-}
-
-func (o *CreateProjectPermissions) GetJob() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Job
-}
-
-func (o *CreateProjectPermissions) GetObservabilityData() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ObservabilityData
-}
-
-func (o *CreateProjectPermissions) GetOnDemandBuild() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandBuild
-}
-
-func (o *CreateProjectPermissions) GetOnDemandConcurrency() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandConcurrency
-}
-
-func (o *CreateProjectPermissions) GetProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Project
-}
-
-func (o *CreateProjectPermissions) GetProjectFromV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFromV0
-}
-
-func (o *CreateProjectPermissions) GetProjectAccessGroup() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAccessGroup
-}
-
-func (o *CreateProjectPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsSampling
-}
-
-func (o *CreateProjectPermissions) GetProjectCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheck
-}
-
-func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheckRun
-}
-
-func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentHook
-}
-
-func (o *CreateProjectPermissions) GetProjectDomain() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomain
-}
-
-func (o *CreateProjectPermissions) GetProjectDomainMove() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainMove
-}
-
-func (o *CreateProjectPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainCheckConfig
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVars() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVars
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsProduction
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsUnownedByIntegration
-}
-
-func (o *CreateProjectPermissions) GetProjectFlags() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFlags
-}
-
-func (o *CreateProjectPermissions) GetProjectID() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectID
-}
-
-func (o *CreateProjectPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectIntegrationConfiguration
-}
-
-func (o *CreateProjectPermissions) GetProjectLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectLink
-}
-
-func (o *CreateProjectPermissions) GetProjectMember() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMember
-}
-
-func (o *CreateProjectPermissions) GetProjectMonitoring() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMonitoring
-}
-
-func (o *CreateProjectPermissions) GetProjectPermissions() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectPermissions
-}
-
-func (o *CreateProjectPermissions) GetProjectProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProductionBranch
-}
-
-func (o *CreateProjectPermissions) GetProjectTransfer() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransfer
-}
-
-func (o *CreateProjectPermissions) GetProjectTransferOut() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransferOut
-}
-
-func (o *CreateProjectPermissions) GetProjectProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetProjectUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectUsage
-}
-
-func (o *CreateProjectPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsUsage
-}
-
-func (o *CreateProjectPermissions) GetProjectSupportCase() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCase
-}
-
-func (o *CreateProjectPermissions) GetProjectSupportCaseComment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCaseComment
-}
-
-func (o *CreateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentExpiration
-}
-
-func (o *CreateProjectPermissions) GetProjectRollingRelease() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectRollingRelease
-}
-
-func (o *CreateProjectPermissions) GetProjectTier() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTier
-}
-
-func (o *CreateProjectPermissions) GetProjectOIDCToken() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectOIDCToken
-}
-
-func (o *CreateProjectPermissions) GetSeawallConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SeawallConfig
-}
-
-func (o *CreateProjectPermissions) GetSkewProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SkewProtection
-}
-
-func (o *CreateProjectPermissions) GetAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Analytics
-}
-
-func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedIps
-}
-
-func (o *CreateProjectPermissions) GetWebAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.WebAnalytics
-}
-
-func (o *CreateProjectPermissions) GetSharedEnvVarConnection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SharedEnvVarConnection
-}
-
-func (o *CreateProjectPermissions) GetSonar() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Sonar
+	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
+	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
+	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
+	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
+	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
+	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
+	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
+	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
+	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
+	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
+	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
+	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
+	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
+	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
+	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
+	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
+	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
+	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
+	Environments                             []components.ACLAction `json:"environments,omitempty"`
+	Logs                                     []components.ACLAction `json:"logs,omitempty"`
+	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
+	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
+	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
+	Job                                      []components.ACLAction `json:"job,omitempty"`
+	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
+	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
+	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
+	Project                                  []components.ACLAction `json:"project,omitempty"`
+	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
+	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
+	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
+	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
+	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
+	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
+	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
+	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
+	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
+	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
+	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
+	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
+	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
+	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
+	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
+	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
+	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
+	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
+	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
+	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
+	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
+	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
+	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
+	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
+	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
+	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
+	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
+	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
+	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
+	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
+	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
+	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
+	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
+	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
+	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
 }
 
 func (o *CreateProjectPermissions) GetOauth2Connection() []components.ACLAction {
@@ -7037,6 +6576,13 @@ func (o *CreateProjectPermissions) GetVercelAppInstallation() []components.ACLAc
 	return o.VercelAppInstallation
 }
 
+func (o *CreateProjectPermissions) GetVercelAppInstallationRequest() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.VercelAppInstallationRequest
+}
+
 func (o *CreateProjectPermissions) GetPaymentMethod() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -7415,6 +6961,468 @@ func (o *CreateProjectPermissions) GetAPIKeyOwnedBySelf() []components.ACLAction
 	return o.APIKeyOwnedBySelf
 }
 
+func (o *CreateProjectPermissions) GetAliasProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProject
+}
+
+func (o *CreateProjectPermissions) GetAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetBuildMachine() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
+func (o *CreateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionAliasProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetConnectConfigurationLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurationLink
+}
+
+func (o *CreateProjectPermissions) GetDataCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DataCacheNamespace
+}
+
+func (o *CreateProjectPermissions) GetDeployment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Deployment
+}
+
+func (o *CreateProjectPermissions) GetDeploymentBuildLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentBuildLogs
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheck
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheckPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckPreview
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckReRunFromProductionBranch
+}
+
+func (o *CreateProjectPermissions) GetDeploymentProductionGit() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentProductionGit
+}
+
+func (o *CreateProjectPermissions) GetDeploymentV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentV0
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPreview
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPrivate() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPrivate
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPromote() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPromote
+}
+
+func (o *CreateProjectPermissions) GetDeploymentRollback() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentRollback
+}
+
+func (o *CreateProjectPermissions) GetEdgeCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeCacheNamespace
+}
+
+func (o *CreateProjectPermissions) GetEnvironments() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Environments
+}
+
+func (o *CreateProjectPermissions) GetLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Logs
+}
+
+func (o *CreateProjectPermissions) GetLogsPreset() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.LogsPreset
+}
+
+func (o *CreateProjectPermissions) GetPasswordProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PasswordProtection
+}
+
+func (o *CreateProjectPermissions) GetOptionsAllowlist() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OptionsAllowlist
+}
+
+func (o *CreateProjectPermissions) GetJob() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Job
+}
+
+func (o *CreateProjectPermissions) GetObservabilityData() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityData
+}
+
+func (o *CreateProjectPermissions) GetOnDemandBuild() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandBuild
+}
+
+func (o *CreateProjectPermissions) GetOnDemandConcurrency() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandConcurrency
+}
+
+func (o *CreateProjectPermissions) GetProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *CreateProjectPermissions) GetProjectFromV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFromV0
+}
+
+func (o *CreateProjectPermissions) GetProjectAccessGroup() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAccessGroup
+}
+
+func (o *CreateProjectPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsSampling
+}
+
+func (o *CreateProjectPermissions) GetProjectCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheck
+}
+
+func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheckRun
+}
+
+func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentHook
+}
+
+func (o *CreateProjectPermissions) GetProjectDomain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomain
+}
+
+func (o *CreateProjectPermissions) GetProjectDomainMove() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainMove
+}
+
+func (o *CreateProjectPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainCheckConfig
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVars() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVars
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsProduction
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsUnownedByIntegration
+}
+
+func (o *CreateProjectPermissions) GetProjectFlags() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlags
+}
+
+func (o *CreateProjectPermissions) GetProjectID() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *CreateProjectPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIntegrationConfiguration
+}
+
+func (o *CreateProjectPermissions) GetProjectLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectLink
+}
+
+func (o *CreateProjectPermissions) GetProjectMember() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMember
+}
+
+func (o *CreateProjectPermissions) GetProjectMonitoring() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMonitoring
+}
+
+func (o *CreateProjectPermissions) GetProjectPermissions() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectPermissions
+}
+
+func (o *CreateProjectPermissions) GetProjectProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProductionBranch
+}
+
+func (o *CreateProjectPermissions) GetProjectTransfer() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransfer
+}
+
+func (o *CreateProjectPermissions) GetProjectTransferOut() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransferOut
+}
+
+func (o *CreateProjectPermissions) GetProjectProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetProjectUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectUsage
+}
+
+func (o *CreateProjectPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsUsage
+}
+
+func (o *CreateProjectPermissions) GetProjectSupportCase() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCase
+}
+
+func (o *CreateProjectPermissions) GetProjectSupportCaseComment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCaseComment
+}
+
+func (o *CreateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentExpiration
+}
+
+func (o *CreateProjectPermissions) GetProjectRollingRelease() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRollingRelease
+}
+
+func (o *CreateProjectPermissions) GetProjectTier() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTier
+}
+
+func (o *CreateProjectPermissions) GetProjectOIDCToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectOIDCToken
+}
+
+func (o *CreateProjectPermissions) GetSeawallConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SeawallConfig
+}
+
+func (o *CreateProjectPermissions) GetSkewProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtection
+}
+
+func (o *CreateProjectPermissions) GetAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Analytics
+}
+
+func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedIps
+}
+
+func (o *CreateProjectPermissions) GetWebAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.WebAnalytics
+}
+
+func (o *CreateProjectPermissions) GetSharedEnvVarConnection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SharedEnvVarConnection
+}
+
+func (o *CreateProjectPermissions) GetSonar() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Sonar
+}
+
 type CreateProjectLastRollbackTarget struct {
 }
 
@@ -7713,11 +7721,11 @@ func (u CreateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectTrustedIpsDeploymentType2 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
-	CreateProjectTrustedIpsDeploymentType2Production                       CreateProjectTrustedIpsDeploymentType2 = "production"
 	CreateProjectTrustedIpsDeploymentType2All                              CreateProjectTrustedIpsDeploymentType2 = "all"
+	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
 	CreateProjectTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType2AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType2 = "all_except_custom_domains"
+	CreateProjectTrustedIpsDeploymentType2Production                       CreateProjectTrustedIpsDeploymentType2 = "production"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType2) ToPointer() *CreateProjectTrustedIpsDeploymentType2 {
@@ -7729,15 +7737,15 @@ func (e *CreateProjectTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
-	case "production":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
+		fallthrough
+	case "production":
 		*e = CreateProjectTrustedIpsDeploymentType2(v)
 		return nil
 	default:
@@ -7759,11 +7767,11 @@ func (o *CreateProjectTrustedIps2) GetDeploymentType() CreateProjectTrustedIpsDe
 type CreateProjectTrustedIpsDeploymentType1 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
-	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
 	CreateProjectTrustedIpsDeploymentType1All                              CreateProjectTrustedIpsDeploymentType1 = "all"
+	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
 	CreateProjectTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType1AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType1 = "all_except_custom_domains"
+	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType1) ToPointer() *CreateProjectTrustedIpsDeploymentType1 {
@@ -7775,15 +7783,15 @@ func (e *CreateProjectTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
-	case "production":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
+		fallthrough
+	case "production":
 		*e = CreateProjectTrustedIpsDeploymentType1(v)
 		return nil
 	default:
@@ -8038,859 +8046,12 @@ func (o *CreateProjectWebAnalytics) GetHasData() *bool {
 	return o.HasData
 }
 
-type CreateProjectSrc struct {
-	Re   *string  `json:"re,omitempty"`
-	Eq   *string  `json:"eq,omitempty"`
-	Neq  *string  `json:"neq,omitempty"`
-	Inc  []string `json:"inc,omitempty"`
-	Ninc []string `json:"ninc,omitempty"`
-	Pre  *string  `json:"pre,omitempty"`
-	Suf  *string  `json:"suf,omitempty"`
-	Gt   *float64 `json:"gt,omitempty"`
-	Gte  *float64 `json:"gte,omitempty"`
-	Lt   *float64 `json:"lt,omitempty"`
-	Lte  *float64 `json:"lte,omitempty"`
-}
-
-func (o *CreateProjectSrc) GetRe() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Re
-}
-
-func (o *CreateProjectSrc) GetEq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Eq
-}
-
-func (o *CreateProjectSrc) GetNeq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Neq
-}
-
-func (o *CreateProjectSrc) GetInc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Inc
-}
-
-func (o *CreateProjectSrc) GetNinc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Ninc
-}
-
-func (o *CreateProjectSrc) GetPre() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Pre
-}
-
-func (o *CreateProjectSrc) GetSuf() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Suf
-}
-
-func (o *CreateProjectSrc) GetGt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gt
-}
-
-func (o *CreateProjectSrc) GetGte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gte
-}
-
-func (o *CreateProjectSrc) GetLt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lt
-}
-
-func (o *CreateProjectSrc) GetLte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lte
-}
-
-type CreateProjectSrcUnionType string
-
-const (
-	CreateProjectSrcUnionTypeStr              CreateProjectSrcUnionType = "str"
-	CreateProjectSrcUnionTypeCreateProjectSrc CreateProjectSrcUnionType = "createProject_src"
-)
-
-type CreateProjectSrcUnion struct {
-	Str              *string           `queryParam:"inline"`
-	CreateProjectSrc *CreateProjectSrc `queryParam:"inline"`
-
-	Type CreateProjectSrcUnionType
-}
-
-func CreateCreateProjectSrcUnionStr(str string) CreateProjectSrcUnion {
-	typ := CreateProjectSrcUnionTypeStr
-
-	return CreateProjectSrcUnion{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateCreateProjectSrcUnionCreateProjectSrc(createProjectSrc CreateProjectSrc) CreateProjectSrcUnion {
-	typ := CreateProjectSrcUnionTypeCreateProjectSrc
-
-	return CreateProjectSrcUnion{
-		CreateProjectSrc: &createProjectSrc,
-		Type:             typ,
-	}
-}
-
-func (u *CreateProjectSrcUnion) UnmarshalJSON(data []byte) error {
-
-	var createProjectSrc CreateProjectSrc = CreateProjectSrc{}
-	if err := utils.UnmarshalJSON(data, &createProjectSrc, "", true, true); err == nil {
-		u.CreateProjectSrc = &createProjectSrc
-		u.Type = CreateProjectSrcUnionTypeCreateProjectSrc
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = CreateProjectSrcUnionTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectSrcUnion", string(data))
-}
-
-func (u CreateProjectSrcUnion) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.CreateProjectSrc != nil {
-		return utils.MarshalJSON(u.CreateProjectSrc, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateProjectSrcUnion: all fields are null")
-}
-
-type CreateProjectHasType string
-
-const (
-	CreateProjectHasTypePath               CreateProjectHasType = "path"
-	CreateProjectHasTypeHost               CreateProjectHasType = "host"
-	CreateProjectHasTypeMethod             CreateProjectHasType = "method"
-	CreateProjectHasTypeHeader             CreateProjectHasType = "header"
-	CreateProjectHasTypeCookie             CreateProjectHasType = "cookie"
-	CreateProjectHasTypeQuery              CreateProjectHasType = "query"
-	CreateProjectHasTypeIPAddress          CreateProjectHasType = "ip_address"
-	CreateProjectHasTypeProtocol           CreateProjectHasType = "protocol"
-	CreateProjectHasTypeScheme             CreateProjectHasType = "scheme"
-	CreateProjectHasTypeEnvironment        CreateProjectHasType = "environment"
-	CreateProjectHasTypeRegion             CreateProjectHasType = "region"
-	CreateProjectHasTypeInitialRequestPath CreateProjectHasType = "initial_request_path"
-)
-
-func (e CreateProjectHasType) ToPointer() *CreateProjectHasType {
-	return &e
-}
-func (e *CreateProjectHasType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "path":
-		fallthrough
-	case "host":
-		fallthrough
-	case "method":
-		fallthrough
-	case "header":
-		fallthrough
-	case "cookie":
-		fallthrough
-	case "query":
-		fallthrough
-	case "ip_address":
-		fallthrough
-	case "protocol":
-		fallthrough
-	case "scheme":
-		fallthrough
-	case "environment":
-		fallthrough
-	case "region":
-		fallthrough
-	case "initial_request_path":
-		*e = CreateProjectHasType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectHasType: %v", v)
-	}
-}
-
-type CreateProjectValueHas struct {
-	Re   *string  `json:"re,omitempty"`
-	Eq   *string  `json:"eq,omitempty"`
-	Neq  *string  `json:"neq,omitempty"`
-	Inc  []string `json:"inc,omitempty"`
-	Ninc []string `json:"ninc,omitempty"`
-	Pre  *string  `json:"pre,omitempty"`
-	Suf  *string  `json:"suf,omitempty"`
-	Gt   *float64 `json:"gt,omitempty"`
-	Gte  *float64 `json:"gte,omitempty"`
-	Lt   *float64 `json:"lt,omitempty"`
-	Lte  *float64 `json:"lte,omitempty"`
-}
-
-func (o *CreateProjectValueHas) GetRe() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Re
-}
-
-func (o *CreateProjectValueHas) GetEq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Eq
-}
-
-func (o *CreateProjectValueHas) GetNeq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Neq
-}
-
-func (o *CreateProjectValueHas) GetInc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Inc
-}
-
-func (o *CreateProjectValueHas) GetNinc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Ninc
-}
-
-func (o *CreateProjectValueHas) GetPre() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Pre
-}
-
-func (o *CreateProjectValueHas) GetSuf() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Suf
-}
-
-func (o *CreateProjectValueHas) GetGt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gt
-}
-
-func (o *CreateProjectValueHas) GetGte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gte
-}
-
-func (o *CreateProjectValueHas) GetLt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lt
-}
-
-func (o *CreateProjectValueHas) GetLte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lte
-}
-
-type CreateProjectHasValueUnionType string
-
-const (
-	CreateProjectHasValueUnionTypeStr                   CreateProjectHasValueUnionType = "str"
-	CreateProjectHasValueUnionTypeCreateProjectValueHas CreateProjectHasValueUnionType = "createProject_value_has"
-)
-
-type CreateProjectHasValueUnion struct {
-	Str                   *string                `queryParam:"inline"`
-	CreateProjectValueHas *CreateProjectValueHas `queryParam:"inline"`
-
-	Type CreateProjectHasValueUnionType
-}
-
-func CreateCreateProjectHasValueUnionStr(str string) CreateProjectHasValueUnion {
-	typ := CreateProjectHasValueUnionTypeStr
-
-	return CreateProjectHasValueUnion{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateCreateProjectHasValueUnionCreateProjectValueHas(createProjectValueHas CreateProjectValueHas) CreateProjectHasValueUnion {
-	typ := CreateProjectHasValueUnionTypeCreateProjectValueHas
-
-	return CreateProjectHasValueUnion{
-		CreateProjectValueHas: &createProjectValueHas,
-		Type:                  typ,
-	}
-}
-
-func (u *CreateProjectHasValueUnion) UnmarshalJSON(data []byte) error {
-
-	var createProjectValueHas CreateProjectValueHas = CreateProjectValueHas{}
-	if err := utils.UnmarshalJSON(data, &createProjectValueHas, "", true, true); err == nil {
-		u.CreateProjectValueHas = &createProjectValueHas
-		u.Type = CreateProjectHasValueUnionTypeCreateProjectValueHas
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = CreateProjectHasValueUnionTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectHasValueUnion", string(data))
-}
-
-func (u CreateProjectHasValueUnion) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.CreateProjectValueHas != nil {
-		return utils.MarshalJSON(u.CreateProjectValueHas, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateProjectHasValueUnion: all fields are null")
-}
-
-type CreateProjectHas struct {
-	Type  CreateProjectHasType        `json:"type"`
-	Key   *string                     `json:"key,omitempty"`
-	Value *CreateProjectHasValueUnion `json:"value,omitempty"`
-}
-
-func (o *CreateProjectHas) GetType() CreateProjectHasType {
-	if o == nil {
-		return CreateProjectHasType("")
-	}
-	return o.Type
-}
-
-func (o *CreateProjectHas) GetKey() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Key
-}
-
-func (o *CreateProjectHas) GetValue() *CreateProjectHasValueUnion {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type CreateProjectMissingType string
-
-const (
-	CreateProjectMissingTypePath               CreateProjectMissingType = "path"
-	CreateProjectMissingTypeHost               CreateProjectMissingType = "host"
-	CreateProjectMissingTypeMethod             CreateProjectMissingType = "method"
-	CreateProjectMissingTypeHeader             CreateProjectMissingType = "header"
-	CreateProjectMissingTypeCookie             CreateProjectMissingType = "cookie"
-	CreateProjectMissingTypeQuery              CreateProjectMissingType = "query"
-	CreateProjectMissingTypeIPAddress          CreateProjectMissingType = "ip_address"
-	CreateProjectMissingTypeProtocol           CreateProjectMissingType = "protocol"
-	CreateProjectMissingTypeScheme             CreateProjectMissingType = "scheme"
-	CreateProjectMissingTypeEnvironment        CreateProjectMissingType = "environment"
-	CreateProjectMissingTypeRegion             CreateProjectMissingType = "region"
-	CreateProjectMissingTypeInitialRequestPath CreateProjectMissingType = "initial_request_path"
-)
-
-func (e CreateProjectMissingType) ToPointer() *CreateProjectMissingType {
-	return &e
-}
-func (e *CreateProjectMissingType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "path":
-		fallthrough
-	case "host":
-		fallthrough
-	case "method":
-		fallthrough
-	case "header":
-		fallthrough
-	case "cookie":
-		fallthrough
-	case "query":
-		fallthrough
-	case "ip_address":
-		fallthrough
-	case "protocol":
-		fallthrough
-	case "scheme":
-		fallthrough
-	case "environment":
-		fallthrough
-	case "region":
-		fallthrough
-	case "initial_request_path":
-		*e = CreateProjectMissingType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectMissingType: %v", v)
-	}
-}
-
-type CreateProjectValueMissing struct {
-	Re   *string  `json:"re,omitempty"`
-	Eq   *string  `json:"eq,omitempty"`
-	Neq  *string  `json:"neq,omitempty"`
-	Inc  []string `json:"inc,omitempty"`
-	Ninc []string `json:"ninc,omitempty"`
-	Pre  *string  `json:"pre,omitempty"`
-	Suf  *string  `json:"suf,omitempty"`
-	Gt   *float64 `json:"gt,omitempty"`
-	Gte  *float64 `json:"gte,omitempty"`
-	Lt   *float64 `json:"lt,omitempty"`
-	Lte  *float64 `json:"lte,omitempty"`
-}
-
-func (o *CreateProjectValueMissing) GetRe() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Re
-}
-
-func (o *CreateProjectValueMissing) GetEq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Eq
-}
-
-func (o *CreateProjectValueMissing) GetNeq() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Neq
-}
-
-func (o *CreateProjectValueMissing) GetInc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Inc
-}
-
-func (o *CreateProjectValueMissing) GetNinc() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Ninc
-}
-
-func (o *CreateProjectValueMissing) GetPre() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Pre
-}
-
-func (o *CreateProjectValueMissing) GetSuf() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Suf
-}
-
-func (o *CreateProjectValueMissing) GetGt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gt
-}
-
-func (o *CreateProjectValueMissing) GetGte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Gte
-}
-
-func (o *CreateProjectValueMissing) GetLt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lt
-}
-
-func (o *CreateProjectValueMissing) GetLte() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Lte
-}
-
-type CreateProjectMissingValueUnionType string
-
-const (
-	CreateProjectMissingValueUnionTypeStr                       CreateProjectMissingValueUnionType = "str"
-	CreateProjectMissingValueUnionTypeCreateProjectValueMissing CreateProjectMissingValueUnionType = "createProject_value_missing"
-)
-
-type CreateProjectMissingValueUnion struct {
-	Str                       *string                    `queryParam:"inline"`
-	CreateProjectValueMissing *CreateProjectValueMissing `queryParam:"inline"`
-
-	Type CreateProjectMissingValueUnionType
-}
-
-func CreateCreateProjectMissingValueUnionStr(str string) CreateProjectMissingValueUnion {
-	typ := CreateProjectMissingValueUnionTypeStr
-
-	return CreateProjectMissingValueUnion{
-		Str:  &str,
-		Type: typ,
-	}
-}
-
-func CreateCreateProjectMissingValueUnionCreateProjectValueMissing(createProjectValueMissing CreateProjectValueMissing) CreateProjectMissingValueUnion {
-	typ := CreateProjectMissingValueUnionTypeCreateProjectValueMissing
-
-	return CreateProjectMissingValueUnion{
-		CreateProjectValueMissing: &createProjectValueMissing,
-		Type:                      typ,
-	}
-}
-
-func (u *CreateProjectMissingValueUnion) UnmarshalJSON(data []byte) error {
-
-	var createProjectValueMissing CreateProjectValueMissing = CreateProjectValueMissing{}
-	if err := utils.UnmarshalJSON(data, &createProjectValueMissing, "", true, true); err == nil {
-		u.CreateProjectValueMissing = &createProjectValueMissing
-		u.Type = CreateProjectMissingValueUnionTypeCreateProjectValueMissing
-		return nil
-	}
-
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = CreateProjectMissingValueUnionTypeStr
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectMissingValueUnion", string(data))
-}
-
-func (u CreateProjectMissingValueUnion) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
-	}
-
-	if u.CreateProjectValueMissing != nil {
-		return utils.MarshalJSON(u.CreateProjectValueMissing, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CreateProjectMissingValueUnion: all fields are null")
-}
-
-type CreateProjectMissing struct {
-	Type  CreateProjectMissingType        `json:"type"`
-	Key   *string                         `json:"key,omitempty"`
-	Value *CreateProjectMissingValueUnion `json:"value,omitempty"`
-}
-
-func (o *CreateProjectMissing) GetType() CreateProjectMissingType {
-	if o == nil {
-		return CreateProjectMissingType("")
-	}
-	return o.Type
-}
-
-func (o *CreateProjectMissing) GetKey() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Key
-}
-
-func (o *CreateProjectMissing) GetValue() *CreateProjectMissingValueUnion {
-	if o == nil {
-		return nil
-	}
-	return o.Value
-}
-
-type CreateProjectHandle string
-
-const (
-	CreateProjectHandleInit     CreateProjectHandle = "init"
-	CreateProjectHandleFinalize CreateProjectHandle = "finalize"
-)
-
-func (e CreateProjectHandle) ToPointer() *CreateProjectHandle {
-	return &e
-}
-func (e *CreateProjectHandle) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "init":
-		fallthrough
-	case "finalize":
-		*e = CreateProjectHandle(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectHandle: %v", v)
-	}
-}
-
-type CreateProjectFirewallRouteAction string
-
-const (
-	CreateProjectFirewallRouteActionDeny      CreateProjectFirewallRouteAction = "deny"
-	CreateProjectFirewallRouteActionChallenge CreateProjectFirewallRouteAction = "challenge"
-	CreateProjectFirewallRouteActionLog       CreateProjectFirewallRouteAction = "log"
-	CreateProjectFirewallRouteActionBypass    CreateProjectFirewallRouteAction = "bypass"
-	CreateProjectFirewallRouteActionRateLimit CreateProjectFirewallRouteAction = "rate_limit"
-	CreateProjectFirewallRouteActionRedirect  CreateProjectFirewallRouteAction = "redirect"
-)
-
-func (e CreateProjectFirewallRouteAction) ToPointer() *CreateProjectFirewallRouteAction {
-	return &e
-}
-func (e *CreateProjectFirewallRouteAction) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "deny":
-		fallthrough
-	case "challenge":
-		fallthrough
-	case "log":
-		fallthrough
-	case "bypass":
-		fallthrough
-	case "rate_limit":
-		fallthrough
-	case "redirect":
-		*e = CreateProjectFirewallRouteAction(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectFirewallRouteAction: %v", v)
-	}
-}
-
-type CreateProjectAlgo string
-
-const (
-	CreateProjectAlgoFixedWindow CreateProjectAlgo = "fixed_window"
-	CreateProjectAlgoTokenBucket CreateProjectAlgo = "token_bucket"
-)
-
-func (e CreateProjectAlgo) ToPointer() *CreateProjectAlgo {
-	return &e
-}
-func (e *CreateProjectAlgo) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "fixed_window":
-		fallthrough
-	case "token_bucket":
-		*e = CreateProjectAlgo(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectAlgo: %v", v)
-	}
-}
-
-type CreateProjectErl struct {
-	Algo   CreateProjectAlgo `json:"algo"`
-	Window float64           `json:"window"`
-	Limit  float64           `json:"limit"`
-	Keys   []string          `json:"keys"`
-}
-
-func (o *CreateProjectErl) GetAlgo() CreateProjectAlgo {
-	if o == nil {
-		return CreateProjectAlgo("")
-	}
-	return o.Algo
-}
-
-func (o *CreateProjectErl) GetWindow() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Window
-}
-
-func (o *CreateProjectErl) GetLimit() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Limit
-}
-
-func (o *CreateProjectErl) GetKeys() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Keys
-}
-
-type CreateProjectMitigate struct {
-	Action CreateProjectFirewallRouteAction `json:"action"`
-	RuleID string                           `json:"rule_id"`
-	TTL    *float64                         `json:"ttl,omitempty"`
-	Erl    *CreateProjectErl                `json:"erl,omitempty"`
-}
-
-func (o *CreateProjectMitigate) GetAction() CreateProjectFirewallRouteAction {
-	if o == nil {
-		return CreateProjectFirewallRouteAction("")
-	}
-	return o.Action
-}
-
-func (o *CreateProjectMitigate) GetRuleID() string {
-	if o == nil {
-		return ""
-	}
-	return o.RuleID
-}
-
-func (o *CreateProjectMitigate) GetTTL() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TTL
-}
-
-func (o *CreateProjectMitigate) GetErl() *CreateProjectErl {
-	if o == nil {
-		return nil
-	}
-	return o.Erl
-}
-
-type CreateProjectFirewallRoute struct {
-	Src      *CreateProjectSrcUnion `json:"src,omitempty"`
-	Has      []CreateProjectHas     `json:"has,omitempty"`
-	Missing  []CreateProjectMissing `json:"missing,omitempty"`
-	Dest     *string                `json:"dest,omitempty"`
-	Status   *float64               `json:"status,omitempty"`
-	Handle   *CreateProjectHandle   `json:"handle,omitempty"`
-	Mitigate *CreateProjectMitigate `json:"mitigate,omitempty"`
-}
-
-func (o *CreateProjectFirewallRoute) GetSrc() *CreateProjectSrcUnion {
-	if o == nil {
-		return nil
-	}
-	return o.Src
-}
-
-func (o *CreateProjectFirewallRoute) GetHas() []CreateProjectHas {
-	if o == nil {
-		return nil
-	}
-	return o.Has
-}
-
-func (o *CreateProjectFirewallRoute) GetMissing() []CreateProjectMissing {
-	if o == nil {
-		return nil
-	}
-	return o.Missing
-}
-
-func (o *CreateProjectFirewallRoute) GetDest() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Dest
-}
-
-func (o *CreateProjectFirewallRoute) GetStatus() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.Status
-}
-
-func (o *CreateProjectFirewallRoute) GetHandle() *CreateProjectHandle {
-	if o == nil {
-		return nil
-	}
-	return o.Handle
-}
-
-func (o *CreateProjectFirewallRoute) GetMitigate() *CreateProjectMitigate {
-	if o == nil {
-		return nil
-	}
-	return o.Mitigate
-}
-
 type CreateProjectBotFilterAction string
 
 const (
-	CreateProjectBotFilterActionDeny      CreateProjectBotFilterAction = "deny"
-	CreateProjectBotFilterActionChallenge CreateProjectBotFilterAction = "challenge"
 	CreateProjectBotFilterActionLog       CreateProjectBotFilterAction = "log"
+	CreateProjectBotFilterActionChallenge CreateProjectBotFilterAction = "challenge"
+	CreateProjectBotFilterActionDeny      CreateProjectBotFilterAction = "deny"
 )
 
 func (e CreateProjectBotFilterAction) ToPointer() *CreateProjectBotFilterAction {
@@ -8902,11 +8063,11 @@ func (e *CreateProjectBotFilterAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "deny":
+	case "log":
 		fallthrough
 	case "challenge":
 		fallthrough
-	case "log":
+	case "deny":
 		*e = CreateProjectBotFilterAction(v)
 		return nil
 	default:
@@ -8936,9 +8097,9 @@ func (o *CreateProjectBotFilter) GetAction() *CreateProjectBotFilterAction {
 type CreateProjectAiBotsAction string
 
 const (
-	CreateProjectAiBotsActionDeny      CreateProjectAiBotsAction = "deny"
-	CreateProjectAiBotsActionChallenge CreateProjectAiBotsAction = "challenge"
 	CreateProjectAiBotsActionLog       CreateProjectAiBotsAction = "log"
+	CreateProjectAiBotsActionChallenge CreateProjectAiBotsAction = "challenge"
+	CreateProjectAiBotsActionDeny      CreateProjectAiBotsAction = "deny"
 )
 
 func (e CreateProjectAiBotsAction) ToPointer() *CreateProjectAiBotsAction {
@@ -8950,11 +8111,11 @@ func (e *CreateProjectAiBotsAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "deny":
+	case "log":
 		fallthrough
 	case "challenge":
 		fallthrough
-	case "log":
+	case "deny":
 		*e = CreateProjectAiBotsAction(v)
 		return nil
 	default:
@@ -8984,9 +8145,9 @@ func (o *CreateProjectAiBots) GetAction() *CreateProjectAiBotsAction {
 type CreateProjectOwaspAction string
 
 const (
-	CreateProjectOwaspActionDeny      CreateProjectOwaspAction = "deny"
-	CreateProjectOwaspActionChallenge CreateProjectOwaspAction = "challenge"
 	CreateProjectOwaspActionLog       CreateProjectOwaspAction = "log"
+	CreateProjectOwaspActionChallenge CreateProjectOwaspAction = "challenge"
+	CreateProjectOwaspActionDeny      CreateProjectOwaspAction = "deny"
 )
 
 func (e CreateProjectOwaspAction) ToPointer() *CreateProjectOwaspAction {
@@ -8998,11 +8159,11 @@ func (e *CreateProjectOwaspAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "deny":
+	case "log":
 		fallthrough
 	case "challenge":
 		fallthrough
-	case "log":
+	case "deny":
 		*e = CreateProjectOwaspAction(v)
 		return nil
 	default:
@@ -9057,19 +8218,18 @@ func (o *CreateProjectManagedRules) GetOwasp() CreateProjectOwasp {
 }
 
 type CreateProjectSecurity struct {
-	AttackModeEnabled      *bool                        `json:"attackModeEnabled,omitempty"`
-	AttackModeUpdatedAt    *float64                     `json:"attackModeUpdatedAt,omitempty"`
-	FirewallEnabled        *bool                        `json:"firewallEnabled,omitempty"`
-	FirewallUpdatedAt      *float64                     `json:"firewallUpdatedAt,omitempty"`
-	AttackModeActiveUntil  *float64                     `json:"attackModeActiveUntil,omitempty"`
-	FirewallConfigVersion  *float64                     `json:"firewallConfigVersion,omitempty"`
-	FirewallRoutes         []CreateProjectFirewallRoute `json:"firewallRoutes,omitempty"`
-	FirewallSeawallEnabled *bool                        `json:"firewallSeawallEnabled,omitempty"`
-	Ja3Enabled             *bool                        `json:"ja3Enabled,omitempty"`
-	Ja4Enabled             *bool                        `json:"ja4Enabled,omitempty"`
-	FirewallBypassIps      []string                     `json:"firewallBypassIps,omitempty"`
-	ManagedRules           *CreateProjectManagedRules   `json:"managedRules,omitempty"`
-	BotIDEnabled           *bool                        `json:"botIdEnabled,omitempty"`
+	AttackModeEnabled      *bool                      `json:"attackModeEnabled,omitempty"`
+	AttackModeUpdatedAt    *float64                   `json:"attackModeUpdatedAt,omitempty"`
+	FirewallEnabled        *bool                      `json:"firewallEnabled,omitempty"`
+	FirewallUpdatedAt      *float64                   `json:"firewallUpdatedAt,omitempty"`
+	AttackModeActiveUntil  *float64                   `json:"attackModeActiveUntil,omitempty"`
+	FirewallConfigVersion  *float64                   `json:"firewallConfigVersion,omitempty"`
+	FirewallSeawallEnabled *bool                      `json:"firewallSeawallEnabled,omitempty"`
+	Ja3Enabled             *bool                      `json:"ja3Enabled,omitempty"`
+	Ja4Enabled             *bool                      `json:"ja4Enabled,omitempty"`
+	FirewallBypassIps      []string                   `json:"firewallBypassIps,omitempty"`
+	ManagedRules           *CreateProjectManagedRules `json:"managedRules,omitempty"`
+	BotIDEnabled           *bool                      `json:"botIdEnabled,omitempty"`
 }
 
 func (o *CreateProjectSecurity) GetAttackModeEnabled() *bool {
@@ -9112,13 +8272,6 @@ func (o *CreateProjectSecurity) GetFirewallConfigVersion() *float64 {
 		return nil
 	}
 	return o.FirewallConfigVersion
-}
-
-func (o *CreateProjectSecurity) GetFirewallRoutes() []CreateProjectFirewallRoute {
-	if o == nil {
-		return nil
-	}
-	return o.FirewallRoutes
 }
 
 func (o *CreateProjectSecurity) GetFirewallSeawallEnabled() *bool {

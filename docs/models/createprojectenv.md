@@ -6,7 +6,7 @@
 import { CreateProjectEnv } from "@vercel/sdk/models/createprojectop.js";
 
 let value: CreateProjectEnv = {
-  type: "plain",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

@@ -22,10 +22,10 @@ func (o *Connect) GetEnabled() *bool {
 
 // TeamConnection - Information for the SAML Single Sign-On configuration.
 type TeamConnection struct {
-	// Current status of the connection.
-	Status string `json:"status"`
 	// The Identity Provider "type", for example Okta.
 	Type string `json:"type"`
+	// Current status of the connection.
+	Status string `json:"status"`
 	// Current state of the connection.
 	State string `json:"state"`
 	// Timestamp (in milliseconds) of when the configuration was connected.
@@ -34,18 +34,18 @@ type TeamConnection struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 }
 
-func (o *TeamConnection) GetStatus() string {
-	if o == nil {
-		return ""
-	}
-	return o.Status
-}
-
 func (o *TeamConnection) GetType() string {
 	if o == nil {
 		return ""
 	}
 	return o.Type
+}
+
+func (o *TeamConnection) GetStatus() string {
+	if o == nil {
+		return ""
+	}
+	return o.Status
 }
 
 func (o *TeamConnection) GetState() string {
@@ -115,6 +115,7 @@ type DefaultRedirectURI string
 const (
 	DefaultRedirectURIVercelCom DefaultRedirectURI = "vercel.com"
 	DefaultRedirectURIV0Dev     DefaultRedirectURI = "v0.dev"
+	DefaultRedirectURIV0App     DefaultRedirectURI = "v0.app"
 )
 
 func (e DefaultRedirectURI) ToPointer() *DefaultRedirectURI {
@@ -129,6 +130,8 @@ func (e *DefaultRedirectURI) UnmarshalJSON(data []byte) error {
 	case "vercel.com":
 		fallthrough
 	case "v0.dev":
+		fallthrough
+	case "v0.app":
 		*e = DefaultRedirectURI(v)
 		return nil
 	default:
@@ -716,9 +719,9 @@ func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
 type TeamOrigin2 string
 
 const (
+	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Saml              TeamOrigin2 = "saml"
 	TeamOrigin2Mail              TeamOrigin2 = "mail"
-	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Import            TeamOrigin2 = "import"
 	TeamOrigin2Teams             TeamOrigin2 = "teams"
 	TeamOrigin2Github            TeamOrigin2 = "github"
@@ -738,11 +741,11 @@ func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "link":
+		fallthrough
 	case "saml":
 		fallthrough
 	case "mail":
-		fallthrough
-	case "link":
 		fallthrough
 	case "import":
 		fallthrough
@@ -924,13 +927,13 @@ func (o *TeamJoinedFrom2) GetDsyncConnectedAt() *float64 {
 type TeamMembership struct {
 	UID               *string              `json:"uid,omitempty"`
 	Entitlements      []TeamEntitlement    `json:"entitlements,omitempty"`
+	TeamID            *string              `json:"teamId,omitempty"`
 	Confirmed         bool                 `json:"confirmed"`
 	ConfirmedAt       float64              `json:"confirmedAt"`
 	AccessRequestedAt *float64             `json:"accessRequestedAt,omitempty"`
 	Role              TeamRole2            `json:"role"`
 	TeamRoles         []TeamTeamRole       `json:"teamRoles,omitempty"`
 	TeamPermissions   []TeamTeamPermission `json:"teamPermissions,omitempty"`
-	TeamID            *string              `json:"teamId,omitempty"`
 	CreatedAt         float64              `json:"createdAt"`
 	Created           float64              `json:"created"`
 	JoinedFrom        *TeamJoinedFrom2     `json:"joinedFrom,omitempty"`
@@ -948,6 +951,13 @@ func (o *TeamMembership) GetEntitlements() []TeamEntitlement {
 		return nil
 	}
 	return o.Entitlements
+}
+
+func (o *TeamMembership) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *TeamMembership) GetConfirmed() bool {
@@ -990,13 +1000,6 @@ func (o *TeamMembership) GetTeamPermissions() []TeamTeamPermission {
 		return nil
 	}
 	return o.TeamPermissions
-}
-
-func (o *TeamMembership) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 func (o *TeamMembership) GetCreatedAt() float64 {

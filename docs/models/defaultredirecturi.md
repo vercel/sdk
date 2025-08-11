@@ -7,11 +7,11 @@ The default redirect URI to use after successful SAML authentication.
 ```typescript
 import { DefaultRedirectUri } from "@vercel/sdk/models/team.js";
 
-let value: DefaultRedirectUri = "vercel.com";
+let value: DefaultRedirectUri = "v0.dev";
 ```
 
 ## Values
 
 ```typescript
-"vercel.com" | "v0.dev"
+"vercel.com" | "v0.dev" | "v0.app"
 ```

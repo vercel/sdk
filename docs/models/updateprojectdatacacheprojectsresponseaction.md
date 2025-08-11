@@ -11,5 +11,5 @@ let value: UpdateProjectDataCacheProjectsResponseAction = "challenge";
 ## Values
 
 ```typescript
-"deny" | "challenge" | "log"
+"log" | "challenge" | "deny"
 ```

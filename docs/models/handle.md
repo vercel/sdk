@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Handle } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+import { Handle } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: Handle = "finalize";
+let value: Handle = "rewrite";
 ```
 
 ## Values
 
 ```typescript
-"init" | "finalize"
+"filesystem" | "error" | "hit" | "miss" | "resource" | "rewrite"
 ```

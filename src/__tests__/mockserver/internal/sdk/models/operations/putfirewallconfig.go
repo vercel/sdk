@@ -2158,6 +2158,7 @@ const (
 	ActiveTypeJa4Digest        ActiveType = "ja4_digest"
 	ActiveTypeJa3Digest        ActiveType = "ja3_digest"
 	ActiveTypeRateLimitAPIID   ActiveType = "rate_limit_api_id"
+	ActiveTypeBotName          ActiveType = "bot_name"
 )
 
 func (e ActiveType) ToPointer() *ActiveType {
@@ -2212,6 +2213,8 @@ func (e *ActiveType) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
+		fallthrough
+	case "bot_name":
 		*e = ActiveType(v)
 		return nil
 	default:

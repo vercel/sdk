@@ -1609,19 +1609,8 @@ const value: models.OneHundredAndFiftyThree = {
 
 ```typescript
 const value: models.OneHundredAndFiftyFour = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-    accountId: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
+  appName: "<value>",
+  appId: "<id>",
 };
 ```
 
@@ -1638,6 +1627,9 @@ const value: models.OneHundredAndFiftyFive = {
   },
   peering: {
     id: "<id>",
+    accountId: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
 };
 ```
@@ -1663,11 +1655,28 @@ const value: models.OneHundredAndFiftySix = {
 
 ```typescript
 const value: models.OneHundredAndFiftySeven = {
-  grantType: "urn:ietf:params:oauth:grant-type:device_code",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.OneHundredAndFiftyEight`
+
+```typescript
+const value: models.OneHundredAndFiftyEight = {
+  grantType: "authorization_code",
   appName: "<value>",
-  atTTL: 2195.44,
+  atTTL: 4957.29,
   scope: "<value>",
-  authMethod: "bitbucket",
+  authMethod: "gitlab",
 };
 ```
 

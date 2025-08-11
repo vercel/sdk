@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.Missing1`
+### `models.CancelDeploymentMissing1`
 
 ```typescript
-const value: models.Missing1 = {
+const value: models.CancelDeploymentMissing1 = {
   type: "host",
-  value: {},
+  value: "<value>",
 };
 ```
 
-### `models.Missing2`
+### `models.CancelDeploymentMissing2`
 
 ```typescript
-const value: models.Missing2 = {
+const value: models.CancelDeploymentMissing2 = {
   type: "header",
   key: "<key>",
 };

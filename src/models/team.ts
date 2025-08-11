@@ -21,13 +21,13 @@ export type Connect = {
  */
 export type Connection = {
   /**
-   * Current status of the connection.
-   */
-  status: string;
-  /**
    * The Identity Provider "type", for example Okta.
    */
   type: string;
+  /**
+   * Current status of the connection.
+   */
+  status: string;
   /**
    * Current state of the connection.
    */
@@ -70,6 +70,7 @@ export type Directory = {
 export const DefaultRedirectUri = {
   VercelCom: "vercel.com",
   V0Dev: "v0.dev",
+  V0App: "v0.app",
 } as const;
 /**
  * The default redirect URI to use after successful SAML authentication.
@@ -277,9 +278,9 @@ export const TeamPermissions = {
 export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
 
 export const Origin = {
+  Link: "link",
   Saml: "saml",
   Mail: "mail",
-  Link: "link",
   Import: "import",
   Teams: "teams",
   Github: "github",
@@ -313,13 +314,13 @@ export type JoinedFrom = {
 export type Membership = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements> | undefined;
+  teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: Role;
   teamRoles?: Array<TeamRoles> | undefined;
   teamPermissions?: Array<TeamPermissions> | undefined;
-  teamId?: string | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom | undefined;
@@ -475,8 +476,8 @@ export const Connection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string(),
   type: z.string(),
+  status: z.string(),
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
@@ -484,8 +485,8 @@ export const Connection$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Connection$Outbound = {
-  status: string;
   type: string;
+  status: string;
   state: string;
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
@@ -497,8 +498,8 @@ export const Connection$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Connection
 > = z.object({
-  status: z.string(),
   type: z.string(),
+  status: z.string(),
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
@@ -1495,13 +1496,13 @@ export const Membership$inboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$inboundSchema)).optional(),
+  teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$inboundSchema,
   teamRoles: z.array(TeamRoles$inboundSchema).optional(),
   teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
-  teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
@@ -1511,13 +1512,13 @@ export const Membership$inboundSchema: z.ZodType<
 export type Membership$Outbound = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements$Outbound> | undefined;
+  teamId?: string | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: string;
   teamRoles?: Array<string> | undefined;
   teamPermissions?: Array<string> | undefined;
-  teamId?: string | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom$Outbound | undefined;
@@ -1531,13 +1532,13 @@ export const Membership$outboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$outboundSchema)).optional(),
+  teamId: z.string().optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: Role$outboundSchema,
   teamRoles: z.array(TeamRoles$outboundSchema).optional(),
   teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
-  teamId: z.string().optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$outboundSchema).optional(),

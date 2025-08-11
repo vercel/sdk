@@ -12,7 +12,7 @@ let value: CreateDeploymentValue2 = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `eq`               | *models.Eq*        | :heavy_minus_sign: | N/A                |
+| `eq`               | *models.ValueEq*   | :heavy_minus_sign: | N/A                |
 | `neq`              | *string*           | :heavy_minus_sign: | N/A                |
 | `inc`              | *string*[]         | :heavy_minus_sign: | N/A                |
 | `ninc`             | *string*[]         | :heavy_minus_sign: | N/A                |

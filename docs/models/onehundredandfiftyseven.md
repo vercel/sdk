@@ -8,21 +8,24 @@ The payload of the event, if requested.
 import { OneHundredAndFiftySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftySeven = {
-  grantType: "urn:ietf:params:oauth:grant-type:device_code",
-  appName: "<value>",
-  atTTL: 2195.44,
-  scope: "<value>",
-  authMethod: "bitbucket",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `grantType`                                  | [models.GrantType](../models/granttype.md)   | :heavy_check_mark:                           | N/A                                          |
-| `appName`                                    | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `atTTL`                                      | *number*                                     | :heavy_check_mark:                           | access_token TTL                             |
-| `rtTTL`                                      | *number*                                     | :heavy_minus_sign:                           | refresh_token TTL                            |
-| `scope`                                      | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `authMethod`                                 | [models.AuthMethod](../models/authmethod.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `team`                                                                                   | [models.UserEventPayload157Team](../models/usereventpayload157team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `configuration`                                                                          | [models.UserEventPayload157Configuration](../models/usereventpayload157configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |

@@ -3,7 +3,12 @@
 package operations
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
+	"time"
 )
 
 type GetAliasRequest struct {
@@ -72,10 +77,799 @@ func (o *GetAliasRequest) GetSlug() *string {
 	return o.Slug
 }
 
+// GetAliasCreator - Information of the user who created the alias
+type GetAliasCreator struct {
+	// ID of the user who created the alias
+	UID string `json:"uid"`
+	// Email of the user who created the alias
+	Email string `json:"email"`
+	// Username of the user who created the alias
+	Username string `json:"username"`
+}
+
+func (o *GetAliasCreator) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *GetAliasCreator) GetEmail() string {
+	if o == nil {
+		return ""
+	}
+	return o.Email
+}
+
+func (o *GetAliasCreator) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
+// GetAliasDeployment - A map with the deployment ID, URL and metadata
+type GetAliasDeployment struct {
+	// The deployment unique identifier
+	ID string `json:"id"`
+	// The deployment unique URL
+	URL string `json:"url"`
+	// The deployment metadata
+	Meta *string `json:"meta,omitempty"`
+}
+
+func (o *GetAliasDeployment) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetAliasDeployment) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+func (o *GetAliasDeployment) GetMeta() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+type GetAliasScopeEmailInvite string
+
+const (
+	GetAliasScopeEmailInviteEmailInvite GetAliasScopeEmailInvite = "email_invite"
+)
+
+func (e GetAliasScopeEmailInvite) ToPointer() *GetAliasScopeEmailInvite {
+	return &e
+}
+func (e *GetAliasScopeEmailInvite) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "email_invite":
+		*e = GetAliasScopeEmailInvite(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAliasScopeEmailInvite: %v", v)
+	}
+}
+
+// GetAliasProtectionBypassEmailInvite - The protection bypass for the alias
+type GetAliasProtectionBypassEmailInvite struct {
+	CreatedAt     float64                  `json:"createdAt"`
+	LastUpdatedAt float64                  `json:"lastUpdatedAt"`
+	LastUpdatedBy string                   `json:"lastUpdatedBy"`
+	Scope         GetAliasScopeEmailInvite `json:"scope"`
+}
+
+func (o *GetAliasProtectionBypassEmailInvite) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetAliasProtectionBypassEmailInvite) GetLastUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.LastUpdatedAt
+}
+
+func (o *GetAliasProtectionBypassEmailInvite) GetLastUpdatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.LastUpdatedBy
+}
+
+func (o *GetAliasProtectionBypassEmailInvite) GetScope() GetAliasScopeEmailInvite {
+	if o == nil {
+		return GetAliasScopeEmailInvite("")
+	}
+	return o.Scope
+}
+
+type GetAliasScopeAliasProtectionOverride string
+
+const (
+	GetAliasScopeAliasProtectionOverrideAliasProtectionOverride GetAliasScopeAliasProtectionOverride = "alias-protection-override"
+)
+
+func (e GetAliasScopeAliasProtectionOverride) ToPointer() *GetAliasScopeAliasProtectionOverride {
+	return &e
+}
+func (e *GetAliasScopeAliasProtectionOverride) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "alias-protection-override":
+		*e = GetAliasScopeAliasProtectionOverride(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAliasScopeAliasProtectionOverride: %v", v)
+	}
+}
+
+// GetAliasProtectionBypassAliasProtectionOverride - The protection bypass for the alias
+type GetAliasProtectionBypassAliasProtectionOverride struct {
+	CreatedAt float64                              `json:"createdAt"`
+	CreatedBy string                               `json:"createdBy"`
+	Scope     GetAliasScopeAliasProtectionOverride `json:"scope"`
+}
+
+func (o *GetAliasProtectionBypassAliasProtectionOverride) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetAliasProtectionBypassAliasProtectionOverride) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *GetAliasProtectionBypassAliasProtectionOverride) GetScope() GetAliasScopeAliasProtectionOverride {
+	if o == nil {
+		return GetAliasScopeAliasProtectionOverride("")
+	}
+	return o.Scope
+}
+
+type GetAliasAccess string
+
+const (
+	GetAliasAccessRequested GetAliasAccess = "requested"
+	GetAliasAccessGranted   GetAliasAccess = "granted"
+)
+
+func (e GetAliasAccess) ToPointer() *GetAliasAccess {
+	return &e
+}
+func (e *GetAliasAccess) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "requested":
+		fallthrough
+	case "granted":
+		*e = GetAliasAccess(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAliasAccess: %v", v)
+	}
+}
+
+type GetAliasScopeUser string
+
+const (
+	GetAliasScopeUserUser GetAliasScopeUser = "user"
+)
+
+func (e GetAliasScopeUser) ToPointer() *GetAliasScopeUser {
+	return &e
+}
+func (e *GetAliasScopeUser) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		*e = GetAliasScopeUser(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAliasScopeUser: %v", v)
+	}
+}
+
+// GetAliasProtectionBypassUser - The protection bypass for the alias
+type GetAliasProtectionBypassUser struct {
+	CreatedAt     float64           `json:"createdAt"`
+	LastUpdatedAt float64           `json:"lastUpdatedAt"`
+	LastUpdatedBy string            `json:"lastUpdatedBy"`
+	Access        GetAliasAccess    `json:"access"`
+	Scope         GetAliasScopeUser `json:"scope"`
+}
+
+func (o *GetAliasProtectionBypassUser) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetAliasProtectionBypassUser) GetLastUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.LastUpdatedAt
+}
+
+func (o *GetAliasProtectionBypassUser) GetLastUpdatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.LastUpdatedBy
+}
+
+func (o *GetAliasProtectionBypassUser) GetAccess() GetAliasAccess {
+	if o == nil {
+		return GetAliasAccess("")
+	}
+	return o.Access
+}
+
+func (o *GetAliasProtectionBypassUser) GetScope() GetAliasScopeUser {
+	if o == nil {
+		return GetAliasScopeUser("")
+	}
+	return o.Scope
+}
+
+type GetAliasScopeShareableLink string
+
+const (
+	GetAliasScopeShareableLinkShareableLink GetAliasScopeShareableLink = "shareable-link"
+)
+
+func (e GetAliasScopeShareableLink) ToPointer() *GetAliasScopeShareableLink {
+	return &e
+}
+func (e *GetAliasScopeShareableLink) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "shareable-link":
+		*e = GetAliasScopeShareableLink(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAliasScopeShareableLink: %v", v)
+	}
+}
+
+// GetAliasProtectionBypassShareableLink - The protection bypass for the alias
+type GetAliasProtectionBypassShareableLink struct {
+	CreatedAt float64                    `json:"createdAt"`
+	CreatedBy string                     `json:"createdBy"`
+	Scope     GetAliasScopeShareableLink `json:"scope"`
+}
+
+func (o *GetAliasProtectionBypassShareableLink) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetAliasProtectionBypassShareableLink) GetCreatedBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedBy
+}
+
+func (o *GetAliasProtectionBypassShareableLink) GetScope() GetAliasScopeShareableLink {
+	if o == nil {
+		return GetAliasScopeShareableLink("")
+	}
+	return o.Scope
+}
+
+type GetAliasProtectionBypassUnionType string
+
+const (
+	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink           GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_ShareableLink"
+	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser                    GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_User"
+	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_AliasProtectionOverride"
+	GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassEmailInvite             GetAliasProtectionBypassUnionType = "getAlias_protectionBypass_EmailInvite"
+)
+
+type GetAliasProtectionBypassUnion struct {
+	GetAliasProtectionBypassShareableLink           *GetAliasProtectionBypassShareableLink           `queryParam:"inline"`
+	GetAliasProtectionBypassUser                    *GetAliasProtectionBypassUser                    `queryParam:"inline"`
+	GetAliasProtectionBypassAliasProtectionOverride *GetAliasProtectionBypassAliasProtectionOverride `queryParam:"inline"`
+	GetAliasProtectionBypassEmailInvite             *GetAliasProtectionBypassEmailInvite             `queryParam:"inline"`
+
+	Type GetAliasProtectionBypassUnionType
+}
+
+func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassShareableLink(getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
+
+	return GetAliasProtectionBypassUnion{
+		GetAliasProtectionBypassShareableLink: &getAliasProtectionBypassShareableLink,
+		Type:                                  typ,
+	}
+}
+
+func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassUser(getAliasProtectionBypassUser GetAliasProtectionBypassUser) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser
+
+	return GetAliasProtectionBypassUnion{
+		GetAliasProtectionBypassUser: &getAliasProtectionBypassUser,
+		Type:                         typ,
+	}
+}
+
+func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassAliasProtectionOverride(getAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride
+
+	return GetAliasProtectionBypassUnion{
+		GetAliasProtectionBypassAliasProtectionOverride: &getAliasProtectionBypassAliasProtectionOverride,
+		Type: typ,
+	}
+}
+
+func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassEmailInvite(getAliasProtectionBypassEmailInvite GetAliasProtectionBypassEmailInvite) GetAliasProtectionBypassUnion {
+	typ := GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassEmailInvite
+
+	return GetAliasProtectionBypassUnion{
+		GetAliasProtectionBypassEmailInvite: &getAliasProtectionBypassEmailInvite,
+		Type:                                typ,
+	}
+}
+
+func (u *GetAliasProtectionBypassUnion) UnmarshalJSON(data []byte) error {
+
+	var getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink = GetAliasProtectionBypassShareableLink{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassShareableLink, "", true, true); err == nil {
+		u.GetAliasProtectionBypassShareableLink = &getAliasProtectionBypassShareableLink
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
+		return nil
+	}
+
+	var getAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride = GetAliasProtectionBypassAliasProtectionOverride{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassAliasProtectionOverride, "", true, true); err == nil {
+		u.GetAliasProtectionBypassAliasProtectionOverride = &getAliasProtectionBypassAliasProtectionOverride
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride
+		return nil
+	}
+
+	var getAliasProtectionBypassEmailInvite GetAliasProtectionBypassEmailInvite = GetAliasProtectionBypassEmailInvite{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassEmailInvite, "", true, true); err == nil {
+		u.GetAliasProtectionBypassEmailInvite = &getAliasProtectionBypassEmailInvite
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassEmailInvite
+		return nil
+	}
+
+	var getAliasProtectionBypassUser GetAliasProtectionBypassUser = GetAliasProtectionBypassUser{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassUser, "", true, true); err == nil {
+		u.GetAliasProtectionBypassUser = &getAliasProtectionBypassUser
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetAliasProtectionBypassUnion", string(data))
+}
+
+func (u GetAliasProtectionBypassUnion) MarshalJSON() ([]byte, error) {
+	if u.GetAliasProtectionBypassShareableLink != nil {
+		return utils.MarshalJSON(u.GetAliasProtectionBypassShareableLink, "", true)
+	}
+
+	if u.GetAliasProtectionBypassUser != nil {
+		return utils.MarshalJSON(u.GetAliasProtectionBypassUser, "", true)
+	}
+
+	if u.GetAliasProtectionBypassAliasProtectionOverride != nil {
+		return utils.MarshalJSON(u.GetAliasProtectionBypassAliasProtectionOverride, "", true)
+	}
+
+	if u.GetAliasProtectionBypassEmailInvite != nil {
+		return utils.MarshalJSON(u.GetAliasProtectionBypassEmailInvite, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetAliasProtectionBypassUnion: all fields are null")
+}
+
+type GetAliasDefaultApp struct {
+	ProjectID string `json:"projectId"`
+}
+
+func (o *GetAliasDefaultApp) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// GetAliasApplications3 - A list of the deployment routing information for each project.
+type GetAliasApplications3 struct {
+	// This is the deployment for the same commit, it could be a cancelled deployment. The proxy will fallback to the branchDeploymentId and then the fallbackDeploymentId.
+	DeploymentID *string `json:"deploymentId,omitempty"`
+	// This is the latest non-cancelled deployment of the branch alias at the time the commit alias was created. It is possible there is no deployment for the branch, or this was set before the deployment was canceled, in which case this will point to a cancelled deployment, in either case the proxy will fallback to the fallbackDeploymentId.
+	BranchDeploymentID *string `json:"branchDeploymentId,omitempty"`
+	// This is the deployment of the fallback host at the time the commit alias was created. It is possible for this to be a deleted deployment, in which case the proxy will show that the deployment is deleted. It will not use the fallbackHost, as a future deployment on the fallback host could be invalid for this deployment, and it could lead to confusion / incorrect behavior for the commit alias.
+	FallbackDeploymentID *string `json:"fallbackDeploymentId,omitempty"`
+	// Temporary for backwards compatibility. Can remove when metadata change is released
+	FallbackHost *string `json:"fallbackHost,omitempty"`
+	BranchAlias  *string `json:"branchAlias,omitempty"`
+	// The project ID of the microfrontends application.
+	ProjectID string `json:"projectId"`
+}
+
+func (o *GetAliasApplications3) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *GetAliasApplications3) GetBranchDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BranchDeploymentID
+}
+
+func (o *GetAliasApplications3) GetFallbackDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FallbackDeploymentID
+}
+
+func (o *GetAliasApplications3) GetFallbackHost() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FallbackHost
+}
+
+func (o *GetAliasApplications3) GetBranchAlias() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BranchAlias
+}
+
+func (o *GetAliasApplications3) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// GetAliasApplications2 - A list of the deployment routing information for each project.
+type GetAliasApplications2 struct {
+	// This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch.
+	FallbackHost string `json:"fallbackHost"`
+	// Could point to a branch without a deployment if the project was never deployed. The proxy will fallback to the fallbackHost if there is no deployment.
+	BranchAlias string `json:"branchAlias"`
+	// The project ID of the microfrontends application.
+	ProjectID string `json:"projectId"`
+}
+
+func (o *GetAliasApplications2) GetFallbackHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.FallbackHost
+}
+
+func (o *GetAliasApplications2) GetBranchAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.BranchAlias
+}
+
+func (o *GetAliasApplications2) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+// GetAliasApplications1 - A list of the deployment routing information for each project.
+type GetAliasApplications1 struct {
+	// This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch.
+	FallbackHost string `json:"fallbackHost"`
+	// The project ID of the microfrontends application.
+	ProjectID string `json:"projectId"`
+}
+
+func (o *GetAliasApplications1) GetFallbackHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.FallbackHost
+}
+
+func (o *GetAliasApplications1) GetProjectID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectID
+}
+
+type GetAliasApplicationsUnionType string
+
+const (
+	GetAliasApplicationsUnionTypeArrayOfGetAliasApplications1 GetAliasApplicationsUnionType = "arrayOfGetAliasApplications1"
+	GetAliasApplicationsUnionTypeArrayOfGetAliasApplications2 GetAliasApplicationsUnionType = "arrayOfGetAliasApplications2"
+	GetAliasApplicationsUnionTypeArrayOfGetAliasApplications3 GetAliasApplicationsUnionType = "arrayOfGetAliasApplications3"
+)
+
+type GetAliasApplicationsUnion struct {
+	ArrayOfGetAliasApplications1 []GetAliasApplications1 `queryParam:"inline"`
+	ArrayOfGetAliasApplications2 []GetAliasApplications2 `queryParam:"inline"`
+	ArrayOfGetAliasApplications3 []GetAliasApplications3 `queryParam:"inline"`
+
+	Type GetAliasApplicationsUnionType
+}
+
+func CreateGetAliasApplicationsUnionArrayOfGetAliasApplications1(arrayOfGetAliasApplications1 []GetAliasApplications1) GetAliasApplicationsUnion {
+	typ := GetAliasApplicationsUnionTypeArrayOfGetAliasApplications1
+
+	return GetAliasApplicationsUnion{
+		ArrayOfGetAliasApplications1: arrayOfGetAliasApplications1,
+		Type:                         typ,
+	}
+}
+
+func CreateGetAliasApplicationsUnionArrayOfGetAliasApplications2(arrayOfGetAliasApplications2 []GetAliasApplications2) GetAliasApplicationsUnion {
+	typ := GetAliasApplicationsUnionTypeArrayOfGetAliasApplications2
+
+	return GetAliasApplicationsUnion{
+		ArrayOfGetAliasApplications2: arrayOfGetAliasApplications2,
+		Type:                         typ,
+	}
+}
+
+func CreateGetAliasApplicationsUnionArrayOfGetAliasApplications3(arrayOfGetAliasApplications3 []GetAliasApplications3) GetAliasApplicationsUnion {
+	typ := GetAliasApplicationsUnionTypeArrayOfGetAliasApplications3
+
+	return GetAliasApplicationsUnion{
+		ArrayOfGetAliasApplications3: arrayOfGetAliasApplications3,
+		Type:                         typ,
+	}
+}
+
+func (u *GetAliasApplicationsUnion) UnmarshalJSON(data []byte) error {
+
+	var arrayOfGetAliasApplications1 []GetAliasApplications1 = []GetAliasApplications1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications1, "", true, true); err == nil {
+		u.ArrayOfGetAliasApplications1 = arrayOfGetAliasApplications1
+		u.Type = GetAliasApplicationsUnionTypeArrayOfGetAliasApplications1
+		return nil
+	}
+
+	var arrayOfGetAliasApplications2 []GetAliasApplications2 = []GetAliasApplications2{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications2, "", true, true); err == nil {
+		u.ArrayOfGetAliasApplications2 = arrayOfGetAliasApplications2
+		u.Type = GetAliasApplicationsUnionTypeArrayOfGetAliasApplications2
+		return nil
+	}
+
+	var arrayOfGetAliasApplications3 []GetAliasApplications3 = []GetAliasApplications3{}
+	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications3, "", true, true); err == nil {
+		u.ArrayOfGetAliasApplications3 = arrayOfGetAliasApplications3
+		u.Type = GetAliasApplicationsUnionTypeArrayOfGetAliasApplications3
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetAliasApplicationsUnion", string(data))
+}
+
+func (u GetAliasApplicationsUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfGetAliasApplications1 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetAliasApplications1, "", true)
+	}
+
+	if u.ArrayOfGetAliasApplications2 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetAliasApplications2, "", true)
+	}
+
+	if u.ArrayOfGetAliasApplications3 != nil {
+		return utils.MarshalJSON(u.ArrayOfGetAliasApplications3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetAliasApplicationsUnion: all fields are null")
+}
+
+// GetAliasMicrofrontends - The microfrontends for the alias including the routing configuration
+type GetAliasMicrofrontends struct {
+	DefaultApp   GetAliasDefaultApp        `json:"defaultApp"`
+	Applications GetAliasApplicationsUnion `json:"applications"`
+}
+
+func (o *GetAliasMicrofrontends) GetDefaultApp() GetAliasDefaultApp {
+	if o == nil {
+		return GetAliasDefaultApp{}
+	}
+	return o.DefaultApp
+}
+
+func (o *GetAliasMicrofrontends) GetApplications() GetAliasApplicationsUnion {
+	if o == nil {
+		return GetAliasApplicationsUnion{}
+	}
+	return o.Applications
+}
+
+type GetAliasResponseBody struct {
+	// The alias name, it could be a `.vercel.app` subdomain or a custom domain
+	Alias string `json:"alias"`
+	// The date when the alias was created
+	Created time.Time `json:"created"`
+	// The date when the alias was created in milliseconds since the UNIX epoch
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	// Information of the user who created the alias
+	Creator *GetAliasCreator `json:"creator,omitempty"`
+	// The date when the alias was deleted in milliseconds since the UNIX epoch
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	// A map with the deployment ID, URL and metadata
+	Deployment *GetAliasDeployment `json:"deployment,omitempty"`
+	// The deployment ID
+	DeploymentID *string `json:"deploymentId"`
+	// The unique identifier of the project
+	ProjectID *string `json:"projectId"`
+	// Target destination domain for redirect when the alias is a redirect
+	Redirect *string `json:"redirect,omitempty"`
+	// Status code to be used on redirect
+	RedirectStatusCode *float64 `json:"redirectStatusCode,omitempty"`
+	// The unique identifier of the alias
+	UID string `json:"uid"`
+	// The date when the alias was updated in milliseconds since the UNIX epoch
+	UpdatedAt *float64 `json:"updatedAt,omitempty"`
+	// The protection bypass for the alias
+	ProtectionBypass map[string]GetAliasProtectionBypassUnion `json:"protectionBypass,omitempty"`
+	// The microfrontends for the alias including the routing configuration
+	Microfrontends *GetAliasMicrofrontends `json:"microfrontends,omitempty"`
+}
+
+func (g GetAliasResponseBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasResponseBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetAliasResponseBody) GetAlias() string {
+	if o == nil {
+		return ""
+	}
+	return o.Alias
+}
+
+func (o *GetAliasResponseBody) GetCreated() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.Created
+}
+
+func (o *GetAliasResponseBody) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetAliasResponseBody) GetCreator() *GetAliasCreator {
+	if o == nil {
+		return nil
+	}
+	return o.Creator
+}
+
+func (o *GetAliasResponseBody) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *GetAliasResponseBody) GetDeployment() *GetAliasDeployment {
+	if o == nil {
+		return nil
+	}
+	return o.Deployment
+}
+
+func (o *GetAliasResponseBody) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *GetAliasResponseBody) GetProjectID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *GetAliasResponseBody) GetRedirect() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Redirect
+}
+
+func (o *GetAliasResponseBody) GetRedirectStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RedirectStatusCode
+}
+
+func (o *GetAliasResponseBody) GetUID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UID
+}
+
+func (o *GetAliasResponseBody) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetAliasResponseBody) GetProtectionBypass() map[string]GetAliasProtectionBypassUnion {
+	if o == nil {
+		return nil
+	}
+	return o.ProtectionBypass
+}
+
+func (o *GetAliasResponseBody) GetMicrofrontends() *GetAliasMicrofrontends {
+	if o == nil {
+		return nil
+	}
+	return o.Microfrontends
+}
+
 type GetAliasResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The alias information
-	Any any
+	ResponseBodies []GetAliasResponseBody
 }
 
 func (o *GetAliasResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -85,9 +879,9 @@ func (o *GetAliasResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetAliasResponse) GetAny() any {
+func (o *GetAliasResponse) GetResponseBodies() []GetAliasResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.Any
+	return o.ResponseBodies
 }

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 0a7003b47e5ef03c09c8e0d822e6090a
+  docChecksum: 9ff079ede120b058596bc3946e23d59c
   docVersion: 0.0.1
-  speakeasyVersion: 1.602.0
+  speakeasyVersion: 1.603.0
   generationVersion: 2.681.1
-  releaseVersion: 1.10.3
-  configChecksum: 630600defe9b6471c5d163f3c1645a1e
+  releaseVersion: 1.10.4
+  configChecksum: 506c059abe3268b7b9c9259bd2d8b01f
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -470,6 +470,7 @@ generatedFiles:
   - docs/models/createdeploymentmicrofrontends.md
   - docs/models/createdeploymentmicrofrontends1.md
   - docs/models/createdeploymentmicrofrontends2.md
+  - docs/models/createdeploymentmicrofrontendsapplications.md
   - docs/models/createdeploymentmissingtype.md
   - docs/models/createdeploymentmissingvalue.md
   - docs/models/createdeploymentnodeversion.md
@@ -1141,7 +1142,18 @@ generatedFiles:
   - docs/models/getactiveattackstatusresponsebody.md
   - docs/models/getactiveattackstatusresponsebody1.md
   - docs/models/getactiveattackstatusresponsebody2.md
+  - docs/models/getaliascreator.md
+  - docs/models/getaliasdeployment.md
+  - docs/models/getaliasmicrofrontends.md
+  - docs/models/getaliasprotectionbypass.md
+  - docs/models/getaliasprotectionbypass1.md
+  - docs/models/getaliasprotectionbypass2.md
+  - docs/models/getaliasprotectionbypassaliasesresponse200scope.md
+  - docs/models/getaliasprotectionbypassaliasesresponsescope.md
+  - docs/models/getaliasprotectionbypassaliasesscope.md
+  - docs/models/getaliasprotectionbypassscope.md
   - docs/models/getaliasrequest.md
+  - docs/models/getaliasresponsebody.md
   - docs/models/getallcheckschecksresponse200applicationjsonsource.md
   - docs/models/getallcheckschecksresponse200source.md
   - docs/models/getallcheckschecksresponsesource.md
@@ -2018,7 +2030,11 @@ generatedFiles:
   - docs/models/listaccessgroupsresponsebody2.md
   - docs/models/listaliasesaliases.md
   - docs/models/listaliasesapplications.md
+  - docs/models/listaliasesapplications1.md
+  - docs/models/listaliasesapplications2.md
+  - docs/models/listaliasesapplications3.md
   - docs/models/listaliasescreator.md
+  - docs/models/listaliasesdefaultapp.md
   - docs/models/listaliasesdeployment.md
   - docs/models/listaliasesmicrofrontends.md
   - docs/models/listaliasesprotectionbypass.md
@@ -2026,6 +2042,7 @@ generatedFiles:
   - docs/models/listaliasesprotectionbypass2.md
   - docs/models/listaliasesprotectionbypass3.md
   - docs/models/listaliasesprotectionbypass4.md
+  - docs/models/listaliasesprotectionbypassaccess.md
   - docs/models/listaliasesprotectionbypassaliasesresponse200scope.md
   - docs/models/listaliasesprotectionbypassaliasesresponsescope.md
   - docs/models/listaliasesprotectionbypassaliasesscope.md
@@ -2036,6 +2053,8 @@ generatedFiles:
   - docs/models/listdeploymentaliasesprotectionbypass.md
   - docs/models/listdeploymentaliasesprotectionbypass1.md
   - docs/models/listdeploymentaliasesprotectionbypass2.md
+  - docs/models/listdeploymentaliasesprotectionbypass3.md
+  - docs/models/listdeploymentaliasesprotectionbypass4.md
   - docs/models/listdeploymentaliasesprotectionbypassaccess.md
   - docs/models/listdeploymentaliasesprotectionbypassaliasesresponse200scope.md
   - docs/models/listdeploymentaliasesprotectionbypassaliasesresponsescope.md
@@ -7280,7 +7299,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"alias": "my-alias.vercel.app", "created": "2017-04-26T23:00:34.232Z", "createdAt": 1540095775941, "creator": {"uid": "96SnxkFiMyVKsK3pnoHfx3Hz", "email": "john-doe@gmail.com", "username": "john-doe"}, "deletedAt": 1540095775941, "deployment": {"id": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx", "url": "my-instant-deployment-3ij3cxz9qr.now.sh", "meta": "{}"}, "deploymentId": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx", "projectId": "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB", "uid": "<id>", "updatedAt": 1540095775941}
+          application/json: [{"alias": "my-alias.vercel.app", "created": "2017-04-26T23:00:34.232Z", "createdAt": 1540095775941, "creator": {"uid": "96SnxkFiMyVKsK3pnoHfx3Hz", "email": "john-doe@gmail.com", "username": "john-doe"}, "deletedAt": 1540095775941, "deployment": {"id": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx", "url": "my-instant-deployment-3ij3cxz9qr.now.sh", "meta": "{}"}, "deploymentId": "dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx", "projectId": "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB", "uid": "<id>", "updatedAt": 1540095775941}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

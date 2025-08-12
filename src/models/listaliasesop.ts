@@ -127,11 +127,13 @@ export type ListAliasesProtectionBypass3 = {
   scope: ListAliasesProtectionBypassAliasesResponseScope;
 };
 
-export const ProtectionBypassAccess = {
+export const ListAliasesProtectionBypassAccess = {
   Requested: "requested",
   Granted: "granted",
 } as const;
-export type ProtectionBypassAccess = ClosedEnum<typeof ProtectionBypassAccess>;
+export type ListAliasesProtectionBypassAccess = ClosedEnum<
+  typeof ListAliasesProtectionBypassAccess
+>;
 
 export const ListAliasesProtectionBypassAliasesScope = {
   User: "user",
@@ -147,7 +149,7 @@ export type ListAliasesProtectionBypass2 = {
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
-  access: ProtectionBypassAccess;
+  access: ListAliasesProtectionBypassAccess;
   scope: ListAliasesProtectionBypassAliasesScope;
 };
 
@@ -173,14 +175,14 @@ export type ListAliasesProtectionBypass =
   | ListAliasesProtectionBypass1
   | ListAliasesProtectionBypass3;
 
-export type DefaultApp = {
+export type ListAliasesDefaultApp = {
   projectId: string;
 };
 
 /**
  * A list of the deployment routing information for each project.
  */
-export type Applications3 = {
+export type ListAliasesApplications3 = {
   /**
    * This is the deployment for the same commit, it could be a cancelled deployment. The proxy will fallback to the branchDeploymentId and then the fallbackDeploymentId.
    */
@@ -207,7 +209,7 @@ export type Applications3 = {
 /**
  * A list of the deployment routing information for each project.
  */
-export type Applications2 = {
+export type ListAliasesApplications2 = {
   /**
    * This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch.
    */
@@ -225,7 +227,7 @@ export type Applications2 = {
 /**
  * A list of the deployment routing information for each project.
  */
-export type Applications1 = {
+export type ListAliasesApplications1 = {
   /**
    * This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch.
    */
@@ -237,19 +239,19 @@ export type Applications1 = {
 };
 
 export type ListAliasesApplications =
-  | Array<Applications1>
-  | Array<Applications2>
-  | Array<Applications3>;
+  | Array<ListAliasesApplications1>
+  | Array<ListAliasesApplications2>
+  | Array<ListAliasesApplications3>;
 
 /**
  * The microfrontends for the alias including the routing configuration
  */
 export type ListAliasesMicrofrontends = {
-  defaultApp: DefaultApp;
+  defaultApp: ListAliasesDefaultApp;
   applications:
-    | Array<Applications1>
-    | Array<Applications2>
-    | Array<Applications3>;
+    | Array<ListAliasesApplications1>
+    | Array<ListAliasesApplications2>
+    | Array<ListAliasesApplications3>;
 };
 
 export type ListAliasesAliases = {
@@ -741,24 +743,25 @@ export function listAliasesProtectionBypass3FromJSON(
 }
 
 /** @internal */
-export const ProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
-  typeof ProtectionBypassAccess
-> = z.nativeEnum(ProtectionBypassAccess);
+export const ListAliasesProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
+  typeof ListAliasesProtectionBypassAccess
+> = z.nativeEnum(ListAliasesProtectionBypassAccess);
 
 /** @internal */
-export const ProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
-  typeof ProtectionBypassAccess
-> = ProtectionBypassAccess$inboundSchema;
+export const ListAliasesProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
+  typeof ListAliasesProtectionBypassAccess
+> = ListAliasesProtectionBypassAccess$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ProtectionBypassAccess$ {
-  /** @deprecated use `ProtectionBypassAccess$inboundSchema` instead. */
-  export const inboundSchema = ProtectionBypassAccess$inboundSchema;
-  /** @deprecated use `ProtectionBypassAccess$outboundSchema` instead. */
-  export const outboundSchema = ProtectionBypassAccess$outboundSchema;
+export namespace ListAliasesProtectionBypassAccess$ {
+  /** @deprecated use `ListAliasesProtectionBypassAccess$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesProtectionBypassAccess$inboundSchema;
+  /** @deprecated use `ListAliasesProtectionBypassAccess$outboundSchema` instead. */
+  export const outboundSchema =
+    ListAliasesProtectionBypassAccess$outboundSchema;
 }
 
 /** @internal */
@@ -793,7 +796,7 @@ export const ListAliasesProtectionBypass2$inboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  access: ProtectionBypassAccess$inboundSchema,
+  access: ListAliasesProtectionBypassAccess$inboundSchema,
   scope: ListAliasesProtectionBypassAliasesScope$inboundSchema,
 });
 
@@ -815,7 +818,7 @@ export const ListAliasesProtectionBypass2$outboundSchema: z.ZodType<
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
   lastUpdatedBy: z.string(),
-  access: ProtectionBypassAccess$outboundSchema,
+  access: ListAliasesProtectionBypassAccess$outboundSchema,
   scope: ListAliasesProtectionBypassAliasesScope$outboundSchema,
 });
 
@@ -1000,8 +1003,8 @@ export function listAliasesProtectionBypassFromJSON(
 }
 
 /** @internal */
-export const DefaultApp$inboundSchema: z.ZodType<
-  DefaultApp,
+export const ListAliasesDefaultApp$inboundSchema: z.ZodType<
+  ListAliasesDefaultApp,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1009,15 +1012,15 @@ export const DefaultApp$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type DefaultApp$Outbound = {
+export type ListAliasesDefaultApp$Outbound = {
   projectId: string;
 };
 
 /** @internal */
-export const DefaultApp$outboundSchema: z.ZodType<
-  DefaultApp$Outbound,
+export const ListAliasesDefaultApp$outboundSchema: z.ZodType<
+  ListAliasesDefaultApp$Outbound,
   z.ZodTypeDef,
-  DefaultApp
+  ListAliasesDefaultApp
 > = z.object({
   projectId: z.string(),
 });
@@ -1026,32 +1029,36 @@ export const DefaultApp$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DefaultApp$ {
-  /** @deprecated use `DefaultApp$inboundSchema` instead. */
-  export const inboundSchema = DefaultApp$inboundSchema;
-  /** @deprecated use `DefaultApp$outboundSchema` instead. */
-  export const outboundSchema = DefaultApp$outboundSchema;
-  /** @deprecated use `DefaultApp$Outbound` instead. */
-  export type Outbound = DefaultApp$Outbound;
+export namespace ListAliasesDefaultApp$ {
+  /** @deprecated use `ListAliasesDefaultApp$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesDefaultApp$inboundSchema;
+  /** @deprecated use `ListAliasesDefaultApp$outboundSchema` instead. */
+  export const outboundSchema = ListAliasesDefaultApp$outboundSchema;
+  /** @deprecated use `ListAliasesDefaultApp$Outbound` instead. */
+  export type Outbound = ListAliasesDefaultApp$Outbound;
 }
 
-export function defaultAppToJSON(defaultApp: DefaultApp): string {
-  return JSON.stringify(DefaultApp$outboundSchema.parse(defaultApp));
+export function listAliasesDefaultAppToJSON(
+  listAliasesDefaultApp: ListAliasesDefaultApp,
+): string {
+  return JSON.stringify(
+    ListAliasesDefaultApp$outboundSchema.parse(listAliasesDefaultApp),
+  );
 }
 
-export function defaultAppFromJSON(
+export function listAliasesDefaultAppFromJSON(
   jsonString: string,
-): SafeParseResult<DefaultApp, SDKValidationError> {
+): SafeParseResult<ListAliasesDefaultApp, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DefaultApp$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultApp' from JSON`,
+    (x) => ListAliasesDefaultApp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesDefaultApp' from JSON`,
   );
 }
 
 /** @internal */
-export const Applications3$inboundSchema: z.ZodType<
-  Applications3,
+export const ListAliasesApplications3$inboundSchema: z.ZodType<
+  ListAliasesApplications3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1064,7 +1071,7 @@ export const Applications3$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Applications3$Outbound = {
+export type ListAliasesApplications3$Outbound = {
   deploymentId?: string | undefined;
   branchDeploymentId?: string | undefined;
   fallbackDeploymentId?: string | undefined;
@@ -1074,10 +1081,10 @@ export type Applications3$Outbound = {
 };
 
 /** @internal */
-export const Applications3$outboundSchema: z.ZodType<
-  Applications3$Outbound,
+export const ListAliasesApplications3$outboundSchema: z.ZodType<
+  ListAliasesApplications3$Outbound,
   z.ZodTypeDef,
-  Applications3
+  ListAliasesApplications3
 > = z.object({
   deploymentId: z.string().optional(),
   branchDeploymentId: z.string().optional(),
@@ -1091,32 +1098,36 @@ export const Applications3$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Applications3$ {
-  /** @deprecated use `Applications3$inboundSchema` instead. */
-  export const inboundSchema = Applications3$inboundSchema;
-  /** @deprecated use `Applications3$outboundSchema` instead. */
-  export const outboundSchema = Applications3$outboundSchema;
-  /** @deprecated use `Applications3$Outbound` instead. */
-  export type Outbound = Applications3$Outbound;
+export namespace ListAliasesApplications3$ {
+  /** @deprecated use `ListAliasesApplications3$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesApplications3$inboundSchema;
+  /** @deprecated use `ListAliasesApplications3$outboundSchema` instead. */
+  export const outboundSchema = ListAliasesApplications3$outboundSchema;
+  /** @deprecated use `ListAliasesApplications3$Outbound` instead. */
+  export type Outbound = ListAliasesApplications3$Outbound;
 }
 
-export function applications3ToJSON(applications3: Applications3): string {
-  return JSON.stringify(Applications3$outboundSchema.parse(applications3));
+export function listAliasesApplications3ToJSON(
+  listAliasesApplications3: ListAliasesApplications3,
+): string {
+  return JSON.stringify(
+    ListAliasesApplications3$outboundSchema.parse(listAliasesApplications3),
+  );
 }
 
-export function applications3FromJSON(
+export function listAliasesApplications3FromJSON(
   jsonString: string,
-): SafeParseResult<Applications3, SDKValidationError> {
+): SafeParseResult<ListAliasesApplications3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Applications3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Applications3' from JSON`,
+    (x) => ListAliasesApplications3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications3' from JSON`,
   );
 }
 
 /** @internal */
-export const Applications2$inboundSchema: z.ZodType<
-  Applications2,
+export const ListAliasesApplications2$inboundSchema: z.ZodType<
+  ListAliasesApplications2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1126,17 +1137,17 @@ export const Applications2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Applications2$Outbound = {
+export type ListAliasesApplications2$Outbound = {
   fallbackHost: string;
   branchAlias: string;
   projectId: string;
 };
 
 /** @internal */
-export const Applications2$outboundSchema: z.ZodType<
-  Applications2$Outbound,
+export const ListAliasesApplications2$outboundSchema: z.ZodType<
+  ListAliasesApplications2$Outbound,
   z.ZodTypeDef,
-  Applications2
+  ListAliasesApplications2
 > = z.object({
   fallbackHost: z.string(),
   branchAlias: z.string(),
@@ -1147,32 +1158,36 @@ export const Applications2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Applications2$ {
-  /** @deprecated use `Applications2$inboundSchema` instead. */
-  export const inboundSchema = Applications2$inboundSchema;
-  /** @deprecated use `Applications2$outboundSchema` instead. */
-  export const outboundSchema = Applications2$outboundSchema;
-  /** @deprecated use `Applications2$Outbound` instead. */
-  export type Outbound = Applications2$Outbound;
+export namespace ListAliasesApplications2$ {
+  /** @deprecated use `ListAliasesApplications2$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesApplications2$inboundSchema;
+  /** @deprecated use `ListAliasesApplications2$outboundSchema` instead. */
+  export const outboundSchema = ListAliasesApplications2$outboundSchema;
+  /** @deprecated use `ListAliasesApplications2$Outbound` instead. */
+  export type Outbound = ListAliasesApplications2$Outbound;
 }
 
-export function applications2ToJSON(applications2: Applications2): string {
-  return JSON.stringify(Applications2$outboundSchema.parse(applications2));
+export function listAliasesApplications2ToJSON(
+  listAliasesApplications2: ListAliasesApplications2,
+): string {
+  return JSON.stringify(
+    ListAliasesApplications2$outboundSchema.parse(listAliasesApplications2),
+  );
 }
 
-export function applications2FromJSON(
+export function listAliasesApplications2FromJSON(
   jsonString: string,
-): SafeParseResult<Applications2, SDKValidationError> {
+): SafeParseResult<ListAliasesApplications2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Applications2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Applications2' from JSON`,
+    (x) => ListAliasesApplications2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications2' from JSON`,
   );
 }
 
 /** @internal */
-export const Applications1$inboundSchema: z.ZodType<
-  Applications1,
+export const ListAliasesApplications1$inboundSchema: z.ZodType<
+  ListAliasesApplications1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1181,16 +1196,16 @@ export const Applications1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Applications1$Outbound = {
+export type ListAliasesApplications1$Outbound = {
   fallbackHost: string;
   projectId: string;
 };
 
 /** @internal */
-export const Applications1$outboundSchema: z.ZodType<
-  Applications1$Outbound,
+export const ListAliasesApplications1$outboundSchema: z.ZodType<
+  ListAliasesApplications1$Outbound,
   z.ZodTypeDef,
-  Applications1
+  ListAliasesApplications1
 > = z.object({
   fallbackHost: z.string(),
   projectId: z.string(),
@@ -1200,26 +1215,30 @@ export const Applications1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Applications1$ {
-  /** @deprecated use `Applications1$inboundSchema` instead. */
-  export const inboundSchema = Applications1$inboundSchema;
-  /** @deprecated use `Applications1$outboundSchema` instead. */
-  export const outboundSchema = Applications1$outboundSchema;
-  /** @deprecated use `Applications1$Outbound` instead. */
-  export type Outbound = Applications1$Outbound;
+export namespace ListAliasesApplications1$ {
+  /** @deprecated use `ListAliasesApplications1$inboundSchema` instead. */
+  export const inboundSchema = ListAliasesApplications1$inboundSchema;
+  /** @deprecated use `ListAliasesApplications1$outboundSchema` instead. */
+  export const outboundSchema = ListAliasesApplications1$outboundSchema;
+  /** @deprecated use `ListAliasesApplications1$Outbound` instead. */
+  export type Outbound = ListAliasesApplications1$Outbound;
 }
 
-export function applications1ToJSON(applications1: Applications1): string {
-  return JSON.stringify(Applications1$outboundSchema.parse(applications1));
+export function listAliasesApplications1ToJSON(
+  listAliasesApplications1: ListAliasesApplications1,
+): string {
+  return JSON.stringify(
+    ListAliasesApplications1$outboundSchema.parse(listAliasesApplications1),
+  );
 }
 
-export function applications1FromJSON(
+export function listAliasesApplications1FromJSON(
   jsonString: string,
-): SafeParseResult<Applications1, SDKValidationError> {
+): SafeParseResult<ListAliasesApplications1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Applications1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Applications1' from JSON`,
+    (x) => ListAliasesApplications1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAliasesApplications1' from JSON`,
   );
 }
 
@@ -1229,16 +1248,16 @@ export const ListAliasesApplications$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.array(z.lazy(() => Applications1$inboundSchema)),
-  z.array(z.lazy(() => Applications2$inboundSchema)),
-  z.array(z.lazy(() => Applications3$inboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
 ]);
 
 /** @internal */
 export type ListAliasesApplications$Outbound =
-  | Array<Applications1$Outbound>
-  | Array<Applications2$Outbound>
-  | Array<Applications3$Outbound>;
+  | Array<ListAliasesApplications1$Outbound>
+  | Array<ListAliasesApplications2$Outbound>
+  | Array<ListAliasesApplications3$Outbound>;
 
 /** @internal */
 export const ListAliasesApplications$outboundSchema: z.ZodType<
@@ -1246,9 +1265,9 @@ export const ListAliasesApplications$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListAliasesApplications
 > = z.union([
-  z.array(z.lazy(() => Applications1$outboundSchema)),
-  z.array(z.lazy(() => Applications2$outboundSchema)),
-  z.array(z.lazy(() => Applications3$outboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications1$outboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications2$outboundSchema)),
+  z.array(z.lazy(() => ListAliasesApplications3$outboundSchema)),
 ]);
 
 /**
@@ -1288,21 +1307,21 @@ export const ListAliasesMicrofrontends$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  defaultApp: z.lazy(() => DefaultApp$inboundSchema),
+  defaultApp: z.lazy(() => ListAliasesDefaultApp$inboundSchema),
   applications: z.union([
-    z.array(z.lazy(() => Applications1$inboundSchema)),
-    z.array(z.lazy(() => Applications2$inboundSchema)),
-    z.array(z.lazy(() => Applications3$inboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications1$inboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications2$inboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications3$inboundSchema)),
   ]),
 });
 
 /** @internal */
 export type ListAliasesMicrofrontends$Outbound = {
-  defaultApp: DefaultApp$Outbound;
+  defaultApp: ListAliasesDefaultApp$Outbound;
   applications:
-    | Array<Applications1$Outbound>
-    | Array<Applications2$Outbound>
-    | Array<Applications3$Outbound>;
+    | Array<ListAliasesApplications1$Outbound>
+    | Array<ListAliasesApplications2$Outbound>
+    | Array<ListAliasesApplications3$Outbound>;
 };
 
 /** @internal */
@@ -1311,11 +1330,11 @@ export const ListAliasesMicrofrontends$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListAliasesMicrofrontends
 > = z.object({
-  defaultApp: z.lazy(() => DefaultApp$outboundSchema),
+  defaultApp: z.lazy(() => ListAliasesDefaultApp$outboundSchema),
   applications: z.union([
-    z.array(z.lazy(() => Applications1$outboundSchema)),
-    z.array(z.lazy(() => Applications2$outboundSchema)),
-    z.array(z.lazy(() => Applications3$outboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications1$outboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications2$outboundSchema)),
+    z.array(z.lazy(() => ListAliasesApplications3$outboundSchema)),
   ]),
 });
 

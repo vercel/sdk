@@ -1,22 +1,28 @@
 # Applications
 
-A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
 
-## Example Usage
+## Supported Types
+
+### `models.Applications1[]`
 
 ```typescript
-import { Applications } from "@vercel/sdk/models/createdeploymentop.js";
-
-let value: Applications = {
-  productionHost: "<value>",
-};
+const value: models.Applications1[] = [
+  {
+    fallbackHost: "<value>",
+    projectId: "<id>",
+  },
+];
 ```
 
-## Fields
+### `models.Applications2[]`
 
-| Field                                                                                                                                                                                                                                                                | Type                                                                                                                                                                                                                                                                 | Required                                                                                                                                                                                                                                                             | Description                                                                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `isDefaultApp`                                                                                                                                                                                                                                                       | *boolean*                                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                  |
-| `productionHost`                                                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                   | This is the production alias, it will always show the most up to date of each application.                                                                                                                                                                           |
-| `deploymentAlias`                                                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                   | Use the fixed deploymentAlias and deploymentHost so that the microfrontend preview stays in sync with the deployment. These are only present for mono-repos when a single commit creates multiple deployments. If they are not present, productionHost will be used. |
-| `deploymentHost`                                                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                  |
+```typescript
+const value: models.Applications2[] = [];
+```
+
+### `models.Applications3[]`
+
+```typescript
+const value: models.Applications3[] = [];
+```
+

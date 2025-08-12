@@ -1,11 +1,11 @@
-# DefaultApp
+# ListAliasesDefaultApp
 
 ## Example Usage
 
 ```typescript
-import { DefaultApp } from "@vercel/sdk/models/getaliasop.js";
+import { ListAliasesDefaultApp } from "@vercel/sdk/models/listaliasesop.js";
 
-let value: DefaultApp = {
+let value: ListAliasesDefaultApp = {
   projectId: "<id>",
 };
 ```

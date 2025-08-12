@@ -1,13 +1,13 @@
-# Applications3
+# ListAliasesApplications3
 
 A list of the deployment routing information for each project.
 
 ## Example Usage
 
 ```typescript
-import { Applications3 } from "@vercel/sdk/models/getaliasop.js";
+import { ListAliasesApplications3 } from "@vercel/sdk/models/listaliasesop.js";
 
-let value: Applications3 = {
+let value: ListAliasesApplications3 = {
   projectId: "<id>",
 };
 ```

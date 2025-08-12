@@ -34,7 +34,7 @@ export type ListDeploymentAliasesProtectionBypassAliasesResponse200Scope =
 /**
  * The protection bypass for the alias
  */
-export type ProtectionBypass4 = {
+export type ListDeploymentAliasesProtectionBypass4 = {
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
@@ -50,7 +50,7 @@ export type ListDeploymentAliasesProtectionBypassAliasesResponseScope =
 /**
  * The protection bypass for the alias
  */
-export type ProtectionBypass3 = {
+export type ListDeploymentAliasesProtectionBypass3 = {
   createdAt: number;
   createdBy: string;
   scope: ListDeploymentAliasesProtectionBypassAliasesResponseScope;
@@ -100,9 +100,9 @@ export type ListDeploymentAliasesProtectionBypass1 = {
 
 export type ListDeploymentAliasesProtectionBypass =
   | ListDeploymentAliasesProtectionBypass2
-  | ProtectionBypass4
+  | ListDeploymentAliasesProtectionBypass4
   | ListDeploymentAliasesProtectionBypass1
-  | ProtectionBypass3;
+  | ListDeploymentAliasesProtectionBypass3;
 
 /**
  * A list of the aliases assigned to the deployment
@@ -130,9 +130,9 @@ export type Aliases = {
   protectionBypass?: {
     [k: string]:
       | ListDeploymentAliasesProtectionBypass2
-      | ProtectionBypass4
+      | ListDeploymentAliasesProtectionBypass4
       | ListDeploymentAliasesProtectionBypass1
-      | ProtectionBypass3;
+      | ListDeploymentAliasesProtectionBypass3;
   } | undefined;
 };
 
@@ -237,8 +237,8 @@ export namespace ListDeploymentAliasesProtectionBypassAliasesResponse200Scope$ {
 }
 
 /** @internal */
-export const ProtectionBypass4$inboundSchema: z.ZodType<
-  ProtectionBypass4,
+export const ListDeploymentAliasesProtectionBypass4$inboundSchema: z.ZodType<
+  ListDeploymentAliasesProtectionBypass4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -250,7 +250,7 @@ export const ProtectionBypass4$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ProtectionBypass4$Outbound = {
+export type ListDeploymentAliasesProtectionBypass4$Outbound = {
   createdAt: number;
   lastUpdatedAt: number;
   lastUpdatedBy: string;
@@ -258,10 +258,10 @@ export type ProtectionBypass4$Outbound = {
 };
 
 /** @internal */
-export const ProtectionBypass4$outboundSchema: z.ZodType<
-  ProtectionBypass4$Outbound,
+export const ListDeploymentAliasesProtectionBypass4$outboundSchema: z.ZodType<
+  ListDeploymentAliasesProtectionBypass4$Outbound,
   z.ZodTypeDef,
-  ProtectionBypass4
+  ListDeploymentAliasesProtectionBypass4
 > = z.object({
   createdAt: z.number(),
   lastUpdatedAt: z.number(),
@@ -274,30 +274,36 @@ export const ProtectionBypass4$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ProtectionBypass4$ {
-  /** @deprecated use `ProtectionBypass4$inboundSchema` instead. */
-  export const inboundSchema = ProtectionBypass4$inboundSchema;
-  /** @deprecated use `ProtectionBypass4$outboundSchema` instead. */
-  export const outboundSchema = ProtectionBypass4$outboundSchema;
-  /** @deprecated use `ProtectionBypass4$Outbound` instead. */
-  export type Outbound = ProtectionBypass4$Outbound;
+export namespace ListDeploymentAliasesProtectionBypass4$ {
+  /** @deprecated use `ListDeploymentAliasesProtectionBypass4$inboundSchema` instead. */
+  export const inboundSchema =
+    ListDeploymentAliasesProtectionBypass4$inboundSchema;
+  /** @deprecated use `ListDeploymentAliasesProtectionBypass4$outboundSchema` instead. */
+  export const outboundSchema =
+    ListDeploymentAliasesProtectionBypass4$outboundSchema;
+  /** @deprecated use `ListDeploymentAliasesProtectionBypass4$Outbound` instead. */
+  export type Outbound = ListDeploymentAliasesProtectionBypass4$Outbound;
 }
 
-export function protectionBypass4ToJSON(
-  protectionBypass4: ProtectionBypass4,
+export function listDeploymentAliasesProtectionBypass4ToJSON(
+  listDeploymentAliasesProtectionBypass4:
+    ListDeploymentAliasesProtectionBypass4,
 ): string {
   return JSON.stringify(
-    ProtectionBypass4$outboundSchema.parse(protectionBypass4),
+    ListDeploymentAliasesProtectionBypass4$outboundSchema.parse(
+      listDeploymentAliasesProtectionBypass4,
+    ),
   );
 }
 
-export function protectionBypass4FromJSON(
+export function listDeploymentAliasesProtectionBypass4FromJSON(
   jsonString: string,
-): SafeParseResult<ProtectionBypass4, SDKValidationError> {
+): SafeParseResult<ListDeploymentAliasesProtectionBypass4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ProtectionBypass4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProtectionBypass4' from JSON`,
+    (x) =>
+      ListDeploymentAliasesProtectionBypass4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDeploymentAliasesProtectionBypass4' from JSON`,
   );
 }
 
@@ -327,8 +333,8 @@ export namespace ListDeploymentAliasesProtectionBypassAliasesResponseScope$ {
 }
 
 /** @internal */
-export const ProtectionBypass3$inboundSchema: z.ZodType<
-  ProtectionBypass3,
+export const ListDeploymentAliasesProtectionBypass3$inboundSchema: z.ZodType<
+  ListDeploymentAliasesProtectionBypass3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -339,17 +345,17 @@ export const ProtectionBypass3$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ProtectionBypass3$Outbound = {
+export type ListDeploymentAliasesProtectionBypass3$Outbound = {
   createdAt: number;
   createdBy: string;
   scope: string;
 };
 
 /** @internal */
-export const ProtectionBypass3$outboundSchema: z.ZodType<
-  ProtectionBypass3$Outbound,
+export const ListDeploymentAliasesProtectionBypass3$outboundSchema: z.ZodType<
+  ListDeploymentAliasesProtectionBypass3$Outbound,
   z.ZodTypeDef,
-  ProtectionBypass3
+  ListDeploymentAliasesProtectionBypass3
 > = z.object({
   createdAt: z.number(),
   createdBy: z.string(),
@@ -361,30 +367,36 @@ export const ProtectionBypass3$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ProtectionBypass3$ {
-  /** @deprecated use `ProtectionBypass3$inboundSchema` instead. */
-  export const inboundSchema = ProtectionBypass3$inboundSchema;
-  /** @deprecated use `ProtectionBypass3$outboundSchema` instead. */
-  export const outboundSchema = ProtectionBypass3$outboundSchema;
-  /** @deprecated use `ProtectionBypass3$Outbound` instead. */
-  export type Outbound = ProtectionBypass3$Outbound;
+export namespace ListDeploymentAliasesProtectionBypass3$ {
+  /** @deprecated use `ListDeploymentAliasesProtectionBypass3$inboundSchema` instead. */
+  export const inboundSchema =
+    ListDeploymentAliasesProtectionBypass3$inboundSchema;
+  /** @deprecated use `ListDeploymentAliasesProtectionBypass3$outboundSchema` instead. */
+  export const outboundSchema =
+    ListDeploymentAliasesProtectionBypass3$outboundSchema;
+  /** @deprecated use `ListDeploymentAliasesProtectionBypass3$Outbound` instead. */
+  export type Outbound = ListDeploymentAliasesProtectionBypass3$Outbound;
 }
 
-export function protectionBypass3ToJSON(
-  protectionBypass3: ProtectionBypass3,
+export function listDeploymentAliasesProtectionBypass3ToJSON(
+  listDeploymentAliasesProtectionBypass3:
+    ListDeploymentAliasesProtectionBypass3,
 ): string {
   return JSON.stringify(
-    ProtectionBypass3$outboundSchema.parse(protectionBypass3),
+    ListDeploymentAliasesProtectionBypass3$outboundSchema.parse(
+      listDeploymentAliasesProtectionBypass3,
+    ),
   );
 }
 
-export function protectionBypass3FromJSON(
+export function listDeploymentAliasesProtectionBypass3FromJSON(
   jsonString: string,
-): SafeParseResult<ProtectionBypass3, SDKValidationError> {
+): SafeParseResult<ListDeploymentAliasesProtectionBypass3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ProtectionBypass3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProtectionBypass3' from JSON`,
+    (x) =>
+      ListDeploymentAliasesProtectionBypass3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListDeploymentAliasesProtectionBypass3' from JSON`,
   );
 }
 
@@ -602,17 +614,17 @@ export const ListDeploymentAliasesProtectionBypass$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
-  z.lazy(() => ProtectionBypass4$inboundSchema),
+  z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
-  z.lazy(() => ProtectionBypass3$inboundSchema),
+  z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
 ]);
 
 /** @internal */
 export type ListDeploymentAliasesProtectionBypass$Outbound =
   | ListDeploymentAliasesProtectionBypass2$Outbound
-  | ProtectionBypass4$Outbound
+  | ListDeploymentAliasesProtectionBypass4$Outbound
   | ListDeploymentAliasesProtectionBypass1$Outbound
-  | ProtectionBypass3$Outbound;
+  | ListDeploymentAliasesProtectionBypass3$Outbound;
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass$outboundSchema: z.ZodType<
@@ -621,9 +633,9 @@ export const ListDeploymentAliasesProtectionBypass$outboundSchema: z.ZodType<
   ListDeploymentAliasesProtectionBypass
 > = z.union([
   z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
-  z.lazy(() => ProtectionBypass4$outboundSchema),
+  z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
   z.lazy(() => ListDeploymentAliasesProtectionBypass1$outboundSchema),
-  z.lazy(() => ProtectionBypass3$outboundSchema),
+  z.lazy(() => ListDeploymentAliasesProtectionBypass3$outboundSchema),
 ]);
 
 /**
@@ -672,9 +684,9 @@ export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
     protectionBypass: z.record(
       z.union([
         z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
-        z.lazy(() => ProtectionBypass4$inboundSchema),
+        z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
         z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
-        z.lazy(() => ProtectionBypass3$inboundSchema),
+        z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
       ]),
     ).optional(),
   });
@@ -688,9 +700,9 @@ export type Aliases$Outbound = {
   protectionBypass?: {
     [k: string]:
       | ListDeploymentAliasesProtectionBypass2$Outbound
-      | ProtectionBypass4$Outbound
+      | ListDeploymentAliasesProtectionBypass4$Outbound
       | ListDeploymentAliasesProtectionBypass1$Outbound
-      | ProtectionBypass3$Outbound;
+      | ListDeploymentAliasesProtectionBypass3$Outbound;
   } | undefined;
 };
 
@@ -707,9 +719,9 @@ export const Aliases$outboundSchema: z.ZodType<
   protectionBypass: z.record(
     z.union([
       z.lazy(() => ListDeploymentAliasesProtectionBypass2$outboundSchema),
-      z.lazy(() => ProtectionBypass4$outboundSchema),
+      z.lazy(() => ListDeploymentAliasesProtectionBypass4$outboundSchema),
       z.lazy(() => ListDeploymentAliasesProtectionBypass1$outboundSchema),
-      z.lazy(() => ProtectionBypass3$outboundSchema),
+      z.lazy(() => ListDeploymentAliasesProtectionBypass3$outboundSchema),
     ]),
   ).optional(),
 });

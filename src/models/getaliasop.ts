@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -36,6 +37,265 @@ export type GetAliasRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+};
+
+/**
+ * Information of the user who created the alias
+ */
+export type GetAliasCreator = {
+  /**
+   * ID of the user who created the alias
+   */
+  uid: string;
+  /**
+   * Email of the user who created the alias
+   */
+  email: string;
+  /**
+   * Username of the user who created the alias
+   */
+  username: string;
+};
+
+/**
+ * A map with the deployment ID, URL and metadata
+ */
+export type GetAliasDeployment = {
+  /**
+   * The deployment unique identifier
+   */
+  id: string;
+  /**
+   * The deployment unique URL
+   */
+  url: string;
+  /**
+   * The deployment metadata
+   */
+  meta?: string | undefined;
+};
+
+export const GetAliasProtectionBypassAliasesResponse200Scope = {
+  EmailInvite: "email_invite",
+} as const;
+export type GetAliasProtectionBypassAliasesResponse200Scope = ClosedEnum<
+  typeof GetAliasProtectionBypassAliasesResponse200Scope
+>;
+
+/**
+ * The protection bypass for the alias
+ */
+export type ProtectionBypass4 = {
+  createdAt: number;
+  lastUpdatedAt: number;
+  lastUpdatedBy: string;
+  scope: GetAliasProtectionBypassAliasesResponse200Scope;
+};
+
+export const GetAliasProtectionBypassAliasesResponseScope = {
+  AliasProtectionOverride: "alias-protection-override",
+} as const;
+export type GetAliasProtectionBypassAliasesResponseScope = ClosedEnum<
+  typeof GetAliasProtectionBypassAliasesResponseScope
+>;
+
+/**
+ * The protection bypass for the alias
+ */
+export type ProtectionBypass3 = {
+  createdAt: number;
+  createdBy: string;
+  scope: GetAliasProtectionBypassAliasesResponseScope;
+};
+
+export const ProtectionBypassAccess = {
+  Requested: "requested",
+  Granted: "granted",
+} as const;
+export type ProtectionBypassAccess = ClosedEnum<typeof ProtectionBypassAccess>;
+
+export const GetAliasProtectionBypassAliasesScope = {
+  User: "user",
+} as const;
+export type GetAliasProtectionBypassAliasesScope = ClosedEnum<
+  typeof GetAliasProtectionBypassAliasesScope
+>;
+
+/**
+ * The protection bypass for the alias
+ */
+export type GetAliasProtectionBypass2 = {
+  createdAt: number;
+  lastUpdatedAt: number;
+  lastUpdatedBy: string;
+  access: ProtectionBypassAccess;
+  scope: GetAliasProtectionBypassAliasesScope;
+};
+
+export const GetAliasProtectionBypassScope = {
+  ShareableLink: "shareable-link",
+} as const;
+export type GetAliasProtectionBypassScope = ClosedEnum<
+  typeof GetAliasProtectionBypassScope
+>;
+
+/**
+ * The protection bypass for the alias
+ */
+export type GetAliasProtectionBypass1 = {
+  createdAt: number;
+  createdBy: string;
+  scope: GetAliasProtectionBypassScope;
+};
+
+export type GetAliasProtectionBypass =
+  | GetAliasProtectionBypass2
+  | ProtectionBypass4
+  | GetAliasProtectionBypass1
+  | ProtectionBypass3;
+
+export type DefaultApp = {
+  projectId: string;
+};
+
+/**
+ * A list of the deployment routing information for each project.
+ */
+export type Applications3 = {
+  /**
+   * This is the deployment for the same commit, it could be a cancelled deployment. The proxy will fallback to the branchDeploymentId and then the fallbackDeploymentId.
+   */
+  deploymentId?: string | undefined;
+  /**
+   * This is the latest non-cancelled deployment of the branch alias at the time the commit alias was created. It is possible there is no deployment for the branch, or this was set before the deployment was canceled, in which case this will point to a cancelled deployment, in either case the proxy will fallback to the fallbackDeploymentId.
+   */
+  branchDeploymentId?: string | undefined;
+  /**
+   * This is the deployment of the fallback host at the time the commit alias was created. It is possible for this to be a deleted deployment, in which case the proxy will show that the deployment is deleted. It will not use the fallbackHost, as a future deployment on the fallback host could be invalid for this deployment, and it could lead to confusion / incorrect behavior for the commit alias.
+   */
+  fallbackDeploymentId?: string | undefined;
+  /**
+   * Temporary for backwards compatibility. Can remove when metadata change is released
+   */
+  fallbackHost?: string | undefined;
+  branchAlias?: string | undefined;
+  /**
+   * The project ID of the microfrontends application.
+   */
+  projectId: string;
+};
+
+/**
+ * A list of the deployment routing information for each project.
+ */
+export type Applications2 = {
+  /**
+   * This is always set. For branch aliases, it's used as the fallback if there is no deployment for the branch.
+   */
+  fallbackHost: string;
+  /**
+   * Could point to a branch without a deployment if the project was never deployed. The proxy will fallback to the fallbackHost if there is no deployment.
+   */
+  branchAlias: string;
+  /**
+   * The project ID of the microfrontends application.
+   */
+  projectId: string;
+};
+
+/**
+ * A list of the deployment routing information for each project.
+ */
+export type Applications1 = {
+  /**
+   * This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch.
+   */
+  fallbackHost: string;
+  /**
+   * The project ID of the microfrontends application.
+   */
+  projectId: string;
+};
+
+export type Applications =
+  | Array<Applications1>
+  | Array<Applications2>
+  | Array<Applications3>;
+
+/**
+ * The microfrontends for the alias including the routing configuration
+ */
+export type GetAliasMicrofrontends = {
+  defaultApp: DefaultApp;
+  applications:
+    | Array<Applications1>
+    | Array<Applications2>
+    | Array<Applications3>;
+};
+
+export type GetAliasResponseBody = {
+  /**
+   * The alias name, it could be a `.vercel.app` subdomain or a custom domain
+   */
+  alias: string;
+  /**
+   * The date when the alias was created
+   */
+  created: Date;
+  /**
+   * The date when the alias was created in milliseconds since the UNIX epoch
+   */
+  createdAt?: number | undefined;
+  /**
+   * Information of the user who created the alias
+   */
+  creator?: GetAliasCreator | undefined;
+  /**
+   * The date when the alias was deleted in milliseconds since the UNIX epoch
+   */
+  deletedAt?: number | undefined;
+  /**
+   * A map with the deployment ID, URL and metadata
+   */
+  deployment?: GetAliasDeployment | undefined;
+  /**
+   * The deployment ID
+   */
+  deploymentId: string | null;
+  /**
+   * The unique identifier of the project
+   */
+  projectId: string | null;
+  /**
+   * Target destination domain for redirect when the alias is a redirect
+   */
+  redirect?: string | null | undefined;
+  /**
+   * Status code to be used on redirect
+   */
+  redirectStatusCode?: number | null | undefined;
+  /**
+   * The unique identifier of the alias
+   */
+  uid: string;
+  /**
+   * The date when the alias was updated in milliseconds since the UNIX epoch
+   */
+  updatedAt?: number | undefined;
+  /**
+   * The protection bypass for the alias
+   */
+  protectionBypass?: {
+    [k: string]:
+      | GetAliasProtectionBypass2
+      | ProtectionBypass4
+      | GetAliasProtectionBypass1
+      | ProtectionBypass3;
+  } | undefined;
+  /**
+   * The microfrontends for the alias including the routing configuration
+   */
+  microfrontends?: GetAliasMicrofrontends | undefined;
 };
 
 /** @internal */
@@ -105,5 +365,1007 @@ export function getAliasRequestFromJSON(
     jsonString,
     (x) => GetAliasRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetAliasRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasCreator$inboundSchema: z.ZodType<
+  GetAliasCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  uid: z.string(),
+  email: z.string(),
+  username: z.string(),
+});
+
+/** @internal */
+export type GetAliasCreator$Outbound = {
+  uid: string;
+  email: string;
+  username: string;
+};
+
+/** @internal */
+export const GetAliasCreator$outboundSchema: z.ZodType<
+  GetAliasCreator$Outbound,
+  z.ZodTypeDef,
+  GetAliasCreator
+> = z.object({
+  uid: z.string(),
+  email: z.string(),
+  username: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasCreator$ {
+  /** @deprecated use `GetAliasCreator$inboundSchema` instead. */
+  export const inboundSchema = GetAliasCreator$inboundSchema;
+  /** @deprecated use `GetAliasCreator$outboundSchema` instead. */
+  export const outboundSchema = GetAliasCreator$outboundSchema;
+  /** @deprecated use `GetAliasCreator$Outbound` instead. */
+  export type Outbound = GetAliasCreator$Outbound;
+}
+
+export function getAliasCreatorToJSON(
+  getAliasCreator: GetAliasCreator,
+): string {
+  return JSON.stringify(GetAliasCreator$outboundSchema.parse(getAliasCreator));
+}
+
+export function getAliasCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasDeployment$inboundSchema: z.ZodType<
+  GetAliasDeployment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  url: z.string(),
+  meta: z.string().optional(),
+});
+
+/** @internal */
+export type GetAliasDeployment$Outbound = {
+  id: string;
+  url: string;
+  meta?: string | undefined;
+};
+
+/** @internal */
+export const GetAliasDeployment$outboundSchema: z.ZodType<
+  GetAliasDeployment$Outbound,
+  z.ZodTypeDef,
+  GetAliasDeployment
+> = z.object({
+  id: z.string(),
+  url: z.string(),
+  meta: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasDeployment$ {
+  /** @deprecated use `GetAliasDeployment$inboundSchema` instead. */
+  export const inboundSchema = GetAliasDeployment$inboundSchema;
+  /** @deprecated use `GetAliasDeployment$outboundSchema` instead. */
+  export const outboundSchema = GetAliasDeployment$outboundSchema;
+  /** @deprecated use `GetAliasDeployment$Outbound` instead. */
+  export type Outbound = GetAliasDeployment$Outbound;
+}
+
+export function getAliasDeploymentToJSON(
+  getAliasDeployment: GetAliasDeployment,
+): string {
+  return JSON.stringify(
+    GetAliasDeployment$outboundSchema.parse(getAliasDeployment),
+  );
+}
+
+export function getAliasDeploymentFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasDeployment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasDeployment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasDeployment' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema:
+  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponse200Scope> = z
+    .nativeEnum(GetAliasProtectionBypassAliasesResponse200Scope);
+
+/** @internal */
+export const GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema:
+  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponse200Scope> =
+    GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasProtectionBypassAliasesResponse200Scope$ {
+  /** @deprecated use `GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema` instead. */
+  export const inboundSchema =
+    GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema;
+  /** @deprecated use `GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema` instead. */
+  export const outboundSchema =
+    GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema;
+}
+
+/** @internal */
+export const ProtectionBypass4$inboundSchema: z.ZodType<
+  ProtectionBypass4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  lastUpdatedAt: z.number(),
+  lastUpdatedBy: z.string(),
+  scope: GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema,
+});
+
+/** @internal */
+export type ProtectionBypass4$Outbound = {
+  createdAt: number;
+  lastUpdatedAt: number;
+  lastUpdatedBy: string;
+  scope: string;
+};
+
+/** @internal */
+export const ProtectionBypass4$outboundSchema: z.ZodType<
+  ProtectionBypass4$Outbound,
+  z.ZodTypeDef,
+  ProtectionBypass4
+> = z.object({
+  createdAt: z.number(),
+  lastUpdatedAt: z.number(),
+  lastUpdatedBy: z.string(),
+  scope: GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ProtectionBypass4$ {
+  /** @deprecated use `ProtectionBypass4$inboundSchema` instead. */
+  export const inboundSchema = ProtectionBypass4$inboundSchema;
+  /** @deprecated use `ProtectionBypass4$outboundSchema` instead. */
+  export const outboundSchema = ProtectionBypass4$outboundSchema;
+  /** @deprecated use `ProtectionBypass4$Outbound` instead. */
+  export type Outbound = ProtectionBypass4$Outbound;
+}
+
+export function protectionBypass4ToJSON(
+  protectionBypass4: ProtectionBypass4,
+): string {
+  return JSON.stringify(
+    ProtectionBypass4$outboundSchema.parse(protectionBypass4),
+  );
+}
+
+export function protectionBypass4FromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionBypass4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionBypass4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionBypass4' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasProtectionBypassAliasesResponseScope$inboundSchema:
+  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponseScope> = z
+    .nativeEnum(GetAliasProtectionBypassAliasesResponseScope);
+
+/** @internal */
+export const GetAliasProtectionBypassAliasesResponseScope$outboundSchema:
+  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponseScope> =
+    GetAliasProtectionBypassAliasesResponseScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasProtectionBypassAliasesResponseScope$ {
+  /** @deprecated use `GetAliasProtectionBypassAliasesResponseScope$inboundSchema` instead. */
+  export const inboundSchema =
+    GetAliasProtectionBypassAliasesResponseScope$inboundSchema;
+  /** @deprecated use `GetAliasProtectionBypassAliasesResponseScope$outboundSchema` instead. */
+  export const outboundSchema =
+    GetAliasProtectionBypassAliasesResponseScope$outboundSchema;
+}
+
+/** @internal */
+export const ProtectionBypass3$inboundSchema: z.ZodType<
+  ProtectionBypass3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetAliasProtectionBypassAliasesResponseScope$inboundSchema,
+});
+
+/** @internal */
+export type ProtectionBypass3$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+};
+
+/** @internal */
+export const ProtectionBypass3$outboundSchema: z.ZodType<
+  ProtectionBypass3$Outbound,
+  z.ZodTypeDef,
+  ProtectionBypass3
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetAliasProtectionBypassAliasesResponseScope$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ProtectionBypass3$ {
+  /** @deprecated use `ProtectionBypass3$inboundSchema` instead. */
+  export const inboundSchema = ProtectionBypass3$inboundSchema;
+  /** @deprecated use `ProtectionBypass3$outboundSchema` instead. */
+  export const outboundSchema = ProtectionBypass3$outboundSchema;
+  /** @deprecated use `ProtectionBypass3$Outbound` instead. */
+  export type Outbound = ProtectionBypass3$Outbound;
+}
+
+export function protectionBypass3ToJSON(
+  protectionBypass3: ProtectionBypass3,
+): string {
+  return JSON.stringify(
+    ProtectionBypass3$outboundSchema.parse(protectionBypass3),
+  );
+}
+
+export function protectionBypass3FromJSON(
+  jsonString: string,
+): SafeParseResult<ProtectionBypass3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProtectionBypass3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProtectionBypass3' from JSON`,
+  );
+}
+
+/** @internal */
+export const ProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
+  typeof ProtectionBypassAccess
+> = z.nativeEnum(ProtectionBypassAccess);
+
+/** @internal */
+export const ProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
+  typeof ProtectionBypassAccess
+> = ProtectionBypassAccess$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ProtectionBypassAccess$ {
+  /** @deprecated use `ProtectionBypassAccess$inboundSchema` instead. */
+  export const inboundSchema = ProtectionBypassAccess$inboundSchema;
+  /** @deprecated use `ProtectionBypassAccess$outboundSchema` instead. */
+  export const outboundSchema = ProtectionBypassAccess$outboundSchema;
+}
+
+/** @internal */
+export const GetAliasProtectionBypassAliasesScope$inboundSchema:
+  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesScope> = z.nativeEnum(
+    GetAliasProtectionBypassAliasesScope,
+  );
+
+/** @internal */
+export const GetAliasProtectionBypassAliasesScope$outboundSchema:
+  z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesScope> =
+    GetAliasProtectionBypassAliasesScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasProtectionBypassAliasesScope$ {
+  /** @deprecated use `GetAliasProtectionBypassAliasesScope$inboundSchema` instead. */
+  export const inboundSchema =
+    GetAliasProtectionBypassAliasesScope$inboundSchema;
+  /** @deprecated use `GetAliasProtectionBypassAliasesScope$outboundSchema` instead. */
+  export const outboundSchema =
+    GetAliasProtectionBypassAliasesScope$outboundSchema;
+}
+
+/** @internal */
+export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
+  GetAliasProtectionBypass2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  lastUpdatedAt: z.number(),
+  lastUpdatedBy: z.string(),
+  access: ProtectionBypassAccess$inboundSchema,
+  scope: GetAliasProtectionBypassAliasesScope$inboundSchema,
+});
+
+/** @internal */
+export type GetAliasProtectionBypass2$Outbound = {
+  createdAt: number;
+  lastUpdatedAt: number;
+  lastUpdatedBy: string;
+  access: string;
+  scope: string;
+};
+
+/** @internal */
+export const GetAliasProtectionBypass2$outboundSchema: z.ZodType<
+  GetAliasProtectionBypass2$Outbound,
+  z.ZodTypeDef,
+  GetAliasProtectionBypass2
+> = z.object({
+  createdAt: z.number(),
+  lastUpdatedAt: z.number(),
+  lastUpdatedBy: z.string(),
+  access: ProtectionBypassAccess$outboundSchema,
+  scope: GetAliasProtectionBypassAliasesScope$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasProtectionBypass2$ {
+  /** @deprecated use `GetAliasProtectionBypass2$inboundSchema` instead. */
+  export const inboundSchema = GetAliasProtectionBypass2$inboundSchema;
+  /** @deprecated use `GetAliasProtectionBypass2$outboundSchema` instead. */
+  export const outboundSchema = GetAliasProtectionBypass2$outboundSchema;
+  /** @deprecated use `GetAliasProtectionBypass2$Outbound` instead. */
+  export type Outbound = GetAliasProtectionBypass2$Outbound;
+}
+
+export function getAliasProtectionBypass2ToJSON(
+  getAliasProtectionBypass2: GetAliasProtectionBypass2,
+): string {
+  return JSON.stringify(
+    GetAliasProtectionBypass2$outboundSchema.parse(getAliasProtectionBypass2),
+  );
+}
+
+export function getAliasProtectionBypass2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasProtectionBypass2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasProtectionBypass2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasProtectionBypass2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
+  typeof GetAliasProtectionBypassScope
+> = z.nativeEnum(GetAliasProtectionBypassScope);
+
+/** @internal */
+export const GetAliasProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
+  typeof GetAliasProtectionBypassScope
+> = GetAliasProtectionBypassScope$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasProtectionBypassScope$ {
+  /** @deprecated use `GetAliasProtectionBypassScope$inboundSchema` instead. */
+  export const inboundSchema = GetAliasProtectionBypassScope$inboundSchema;
+  /** @deprecated use `GetAliasProtectionBypassScope$outboundSchema` instead. */
+  export const outboundSchema = GetAliasProtectionBypassScope$outboundSchema;
+}
+
+/** @internal */
+export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
+  GetAliasProtectionBypass1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetAliasProtectionBypassScope$inboundSchema,
+});
+
+/** @internal */
+export type GetAliasProtectionBypass1$Outbound = {
+  createdAt: number;
+  createdBy: string;
+  scope: string;
+};
+
+/** @internal */
+export const GetAliasProtectionBypass1$outboundSchema: z.ZodType<
+  GetAliasProtectionBypass1$Outbound,
+  z.ZodTypeDef,
+  GetAliasProtectionBypass1
+> = z.object({
+  createdAt: z.number(),
+  createdBy: z.string(),
+  scope: GetAliasProtectionBypassScope$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasProtectionBypass1$ {
+  /** @deprecated use `GetAliasProtectionBypass1$inboundSchema` instead. */
+  export const inboundSchema = GetAliasProtectionBypass1$inboundSchema;
+  /** @deprecated use `GetAliasProtectionBypass1$outboundSchema` instead. */
+  export const outboundSchema = GetAliasProtectionBypass1$outboundSchema;
+  /** @deprecated use `GetAliasProtectionBypass1$Outbound` instead. */
+  export type Outbound = GetAliasProtectionBypass1$Outbound;
+}
+
+export function getAliasProtectionBypass1ToJSON(
+  getAliasProtectionBypass1: GetAliasProtectionBypass1,
+): string {
+  return JSON.stringify(
+    GetAliasProtectionBypass1$outboundSchema.parse(getAliasProtectionBypass1),
+  );
+}
+
+export function getAliasProtectionBypass1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasProtectionBypass1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasProtectionBypass1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasProtectionBypass1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasProtectionBypass$inboundSchema: z.ZodType<
+  GetAliasProtectionBypass,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
+  z.lazy(() => ProtectionBypass4$inboundSchema),
+  z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
+  z.lazy(() => ProtectionBypass3$inboundSchema),
+]);
+
+/** @internal */
+export type GetAliasProtectionBypass$Outbound =
+  | GetAliasProtectionBypass2$Outbound
+  | ProtectionBypass4$Outbound
+  | GetAliasProtectionBypass1$Outbound
+  | ProtectionBypass3$Outbound;
+
+/** @internal */
+export const GetAliasProtectionBypass$outboundSchema: z.ZodType<
+  GetAliasProtectionBypass$Outbound,
+  z.ZodTypeDef,
+  GetAliasProtectionBypass
+> = z.union([
+  z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
+  z.lazy(() => ProtectionBypass4$outboundSchema),
+  z.lazy(() => GetAliasProtectionBypass1$outboundSchema),
+  z.lazy(() => ProtectionBypass3$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasProtectionBypass$ {
+  /** @deprecated use `GetAliasProtectionBypass$inboundSchema` instead. */
+  export const inboundSchema = GetAliasProtectionBypass$inboundSchema;
+  /** @deprecated use `GetAliasProtectionBypass$outboundSchema` instead. */
+  export const outboundSchema = GetAliasProtectionBypass$outboundSchema;
+  /** @deprecated use `GetAliasProtectionBypass$Outbound` instead. */
+  export type Outbound = GetAliasProtectionBypass$Outbound;
+}
+
+export function getAliasProtectionBypassToJSON(
+  getAliasProtectionBypass: GetAliasProtectionBypass,
+): string {
+  return JSON.stringify(
+    GetAliasProtectionBypass$outboundSchema.parse(getAliasProtectionBypass),
+  );
+}
+
+export function getAliasProtectionBypassFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasProtectionBypass, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasProtectionBypass$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasProtectionBypass' from JSON`,
+  );
+}
+
+/** @internal */
+export const DefaultApp$inboundSchema: z.ZodType<
+  DefaultApp,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: z.string(),
+});
+
+/** @internal */
+export type DefaultApp$Outbound = {
+  projectId: string;
+};
+
+/** @internal */
+export const DefaultApp$outboundSchema: z.ZodType<
+  DefaultApp$Outbound,
+  z.ZodTypeDef,
+  DefaultApp
+> = z.object({
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DefaultApp$ {
+  /** @deprecated use `DefaultApp$inboundSchema` instead. */
+  export const inboundSchema = DefaultApp$inboundSchema;
+  /** @deprecated use `DefaultApp$outboundSchema` instead. */
+  export const outboundSchema = DefaultApp$outboundSchema;
+  /** @deprecated use `DefaultApp$Outbound` instead. */
+  export type Outbound = DefaultApp$Outbound;
+}
+
+export function defaultAppToJSON(defaultApp: DefaultApp): string {
+  return JSON.stringify(DefaultApp$outboundSchema.parse(defaultApp));
+}
+
+export function defaultAppFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultApp, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultApp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultApp' from JSON`,
+  );
+}
+
+/** @internal */
+export const Applications3$inboundSchema: z.ZodType<
+  Applications3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentId: z.string().optional(),
+  branchDeploymentId: z.string().optional(),
+  fallbackDeploymentId: z.string().optional(),
+  fallbackHost: z.string().optional(),
+  branchAlias: z.string().optional(),
+  projectId: z.string(),
+});
+
+/** @internal */
+export type Applications3$Outbound = {
+  deploymentId?: string | undefined;
+  branchDeploymentId?: string | undefined;
+  fallbackDeploymentId?: string | undefined;
+  fallbackHost?: string | undefined;
+  branchAlias?: string | undefined;
+  projectId: string;
+};
+
+/** @internal */
+export const Applications3$outboundSchema: z.ZodType<
+  Applications3$Outbound,
+  z.ZodTypeDef,
+  Applications3
+> = z.object({
+  deploymentId: z.string().optional(),
+  branchDeploymentId: z.string().optional(),
+  fallbackDeploymentId: z.string().optional(),
+  fallbackHost: z.string().optional(),
+  branchAlias: z.string().optional(),
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Applications3$ {
+  /** @deprecated use `Applications3$inboundSchema` instead. */
+  export const inboundSchema = Applications3$inboundSchema;
+  /** @deprecated use `Applications3$outboundSchema` instead. */
+  export const outboundSchema = Applications3$outboundSchema;
+  /** @deprecated use `Applications3$Outbound` instead. */
+  export type Outbound = Applications3$Outbound;
+}
+
+export function applications3ToJSON(applications3: Applications3): string {
+  return JSON.stringify(Applications3$outboundSchema.parse(applications3));
+}
+
+export function applications3FromJSON(
+  jsonString: string,
+): SafeParseResult<Applications3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Applications3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Applications3' from JSON`,
+  );
+}
+
+/** @internal */
+export const Applications2$inboundSchema: z.ZodType<
+  Applications2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fallbackHost: z.string(),
+  branchAlias: z.string(),
+  projectId: z.string(),
+});
+
+/** @internal */
+export type Applications2$Outbound = {
+  fallbackHost: string;
+  branchAlias: string;
+  projectId: string;
+};
+
+/** @internal */
+export const Applications2$outboundSchema: z.ZodType<
+  Applications2$Outbound,
+  z.ZodTypeDef,
+  Applications2
+> = z.object({
+  fallbackHost: z.string(),
+  branchAlias: z.string(),
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Applications2$ {
+  /** @deprecated use `Applications2$inboundSchema` instead. */
+  export const inboundSchema = Applications2$inboundSchema;
+  /** @deprecated use `Applications2$outboundSchema` instead. */
+  export const outboundSchema = Applications2$outboundSchema;
+  /** @deprecated use `Applications2$Outbound` instead. */
+  export type Outbound = Applications2$Outbound;
+}
+
+export function applications2ToJSON(applications2: Applications2): string {
+  return JSON.stringify(Applications2$outboundSchema.parse(applications2));
+}
+
+export function applications2FromJSON(
+  jsonString: string,
+): SafeParseResult<Applications2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Applications2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Applications2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Applications1$inboundSchema: z.ZodType<
+  Applications1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fallbackHost: z.string(),
+  projectId: z.string(),
+});
+
+/** @internal */
+export type Applications1$Outbound = {
+  fallbackHost: string;
+  projectId: string;
+};
+
+/** @internal */
+export const Applications1$outboundSchema: z.ZodType<
+  Applications1$Outbound,
+  z.ZodTypeDef,
+  Applications1
+> = z.object({
+  fallbackHost: z.string(),
+  projectId: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Applications1$ {
+  /** @deprecated use `Applications1$inboundSchema` instead. */
+  export const inboundSchema = Applications1$inboundSchema;
+  /** @deprecated use `Applications1$outboundSchema` instead. */
+  export const outboundSchema = Applications1$outboundSchema;
+  /** @deprecated use `Applications1$Outbound` instead. */
+  export type Outbound = Applications1$Outbound;
+}
+
+export function applications1ToJSON(applications1: Applications1): string {
+  return JSON.stringify(Applications1$outboundSchema.parse(applications1));
+}
+
+export function applications1FromJSON(
+  jsonString: string,
+): SafeParseResult<Applications1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Applications1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Applications1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Applications$inboundSchema: z.ZodType<
+  Applications,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.array(z.lazy(() => Applications1$inboundSchema)),
+  z.array(z.lazy(() => Applications2$inboundSchema)),
+  z.array(z.lazy(() => Applications3$inboundSchema)),
+]);
+
+/** @internal */
+export type Applications$Outbound =
+  | Array<Applications1$Outbound>
+  | Array<Applications2$Outbound>
+  | Array<Applications3$Outbound>;
+
+/** @internal */
+export const Applications$outboundSchema: z.ZodType<
+  Applications$Outbound,
+  z.ZodTypeDef,
+  Applications
+> = z.union([
+  z.array(z.lazy(() => Applications1$outboundSchema)),
+  z.array(z.lazy(() => Applications2$outboundSchema)),
+  z.array(z.lazy(() => Applications3$outboundSchema)),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Applications$ {
+  /** @deprecated use `Applications$inboundSchema` instead. */
+  export const inboundSchema = Applications$inboundSchema;
+  /** @deprecated use `Applications$outboundSchema` instead. */
+  export const outboundSchema = Applications$outboundSchema;
+  /** @deprecated use `Applications$Outbound` instead. */
+  export type Outbound = Applications$Outbound;
+}
+
+export function applicationsToJSON(applications: Applications): string {
+  return JSON.stringify(Applications$outboundSchema.parse(applications));
+}
+
+export function applicationsFromJSON(
+  jsonString: string,
+): SafeParseResult<Applications, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Applications$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Applications' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasMicrofrontends$inboundSchema: z.ZodType<
+  GetAliasMicrofrontends,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  defaultApp: z.lazy(() => DefaultApp$inboundSchema),
+  applications: z.union([
+    z.array(z.lazy(() => Applications1$inboundSchema)),
+    z.array(z.lazy(() => Applications2$inboundSchema)),
+    z.array(z.lazy(() => Applications3$inboundSchema)),
+  ]),
+});
+
+/** @internal */
+export type GetAliasMicrofrontends$Outbound = {
+  defaultApp: DefaultApp$Outbound;
+  applications:
+    | Array<Applications1$Outbound>
+    | Array<Applications2$Outbound>
+    | Array<Applications3$Outbound>;
+};
+
+/** @internal */
+export const GetAliasMicrofrontends$outboundSchema: z.ZodType<
+  GetAliasMicrofrontends$Outbound,
+  z.ZodTypeDef,
+  GetAliasMicrofrontends
+> = z.object({
+  defaultApp: z.lazy(() => DefaultApp$outboundSchema),
+  applications: z.union([
+    z.array(z.lazy(() => Applications1$outboundSchema)),
+    z.array(z.lazy(() => Applications2$outboundSchema)),
+    z.array(z.lazy(() => Applications3$outboundSchema)),
+  ]),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasMicrofrontends$ {
+  /** @deprecated use `GetAliasMicrofrontends$inboundSchema` instead. */
+  export const inboundSchema = GetAliasMicrofrontends$inboundSchema;
+  /** @deprecated use `GetAliasMicrofrontends$outboundSchema` instead. */
+  export const outboundSchema = GetAliasMicrofrontends$outboundSchema;
+  /** @deprecated use `GetAliasMicrofrontends$Outbound` instead. */
+  export type Outbound = GetAliasMicrofrontends$Outbound;
+}
+
+export function getAliasMicrofrontendsToJSON(
+  getAliasMicrofrontends: GetAliasMicrofrontends,
+): string {
+  return JSON.stringify(
+    GetAliasMicrofrontends$outboundSchema.parse(getAliasMicrofrontends),
+  );
+}
+
+export function getAliasMicrofrontendsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasMicrofrontends, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasMicrofrontends$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasMicrofrontends' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetAliasResponseBody$inboundSchema: z.ZodType<
+  GetAliasResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: z.string(),
+  created: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  createdAt: z.number().optional(),
+  creator: z.lazy(() => GetAliasCreator$inboundSchema).optional(),
+  deletedAt: z.number().optional(),
+  deployment: z.lazy(() => GetAliasDeployment$inboundSchema).optional(),
+  deploymentId: z.nullable(z.string()),
+  projectId: z.nullable(z.string()),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  uid: z.string(),
+  updatedAt: z.number().optional(),
+  protectionBypass: z.record(
+    z.union([
+      z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
+      z.lazy(() => ProtectionBypass4$inboundSchema),
+      z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
+      z.lazy(() => ProtectionBypass3$inboundSchema),
+    ]),
+  ).optional(),
+  microfrontends: z.lazy(() => GetAliasMicrofrontends$inboundSchema).optional(),
+});
+
+/** @internal */
+export type GetAliasResponseBody$Outbound = {
+  alias: string;
+  created: string;
+  createdAt?: number | undefined;
+  creator?: GetAliasCreator$Outbound | undefined;
+  deletedAt?: number | undefined;
+  deployment?: GetAliasDeployment$Outbound | undefined;
+  deploymentId: string | null;
+  projectId: string | null;
+  redirect?: string | null | undefined;
+  redirectStatusCode?: number | null | undefined;
+  uid: string;
+  updatedAt?: number | undefined;
+  protectionBypass?: {
+    [k: string]:
+      | GetAliasProtectionBypass2$Outbound
+      | ProtectionBypass4$Outbound
+      | GetAliasProtectionBypass1$Outbound
+      | ProtectionBypass3$Outbound;
+  } | undefined;
+  microfrontends?: GetAliasMicrofrontends$Outbound | undefined;
+};
+
+/** @internal */
+export const GetAliasResponseBody$outboundSchema: z.ZodType<
+  GetAliasResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetAliasResponseBody
+> = z.object({
+  alias: z.string(),
+  created: z.date().transform(v => v.toISOString()),
+  createdAt: z.number().optional(),
+  creator: z.lazy(() => GetAliasCreator$outboundSchema).optional(),
+  deletedAt: z.number().optional(),
+  deployment: z.lazy(() => GetAliasDeployment$outboundSchema).optional(),
+  deploymentId: z.nullable(z.string()),
+  projectId: z.nullable(z.string()),
+  redirect: z.nullable(z.string()).optional(),
+  redirectStatusCode: z.nullable(z.number()).optional(),
+  uid: z.string(),
+  updatedAt: z.number().optional(),
+  protectionBypass: z.record(
+    z.union([
+      z.lazy(() => GetAliasProtectionBypass2$outboundSchema),
+      z.lazy(() => ProtectionBypass4$outboundSchema),
+      z.lazy(() => GetAliasProtectionBypass1$outboundSchema),
+      z.lazy(() => ProtectionBypass3$outboundSchema),
+    ]),
+  ).optional(),
+  microfrontends: z.lazy(() => GetAliasMicrofrontends$outboundSchema)
+    .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetAliasResponseBody$ {
+  /** @deprecated use `GetAliasResponseBody$inboundSchema` instead. */
+  export const inboundSchema = GetAliasResponseBody$inboundSchema;
+  /** @deprecated use `GetAliasResponseBody$outboundSchema` instead. */
+  export const outboundSchema = GetAliasResponseBody$outboundSchema;
+  /** @deprecated use `GetAliasResponseBody$Outbound` instead. */
+  export type Outbound = GetAliasResponseBody$Outbound;
+}
+
+export function getAliasResponseBodyToJSON(
+  getAliasResponseBody: GetAliasResponseBody,
+): string {
+  return JSON.stringify(
+    GetAliasResponseBody$outboundSchema.parse(getAliasResponseBody),
+  );
+}
+
+export function getAliasResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAliasResponseBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAliasResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAliasResponseBody' from JSON`,
   );
 }

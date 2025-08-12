@@ -3,26 +3,21 @@
 
 ## Supported Types
 
-### `models.Applications1[]`
+### `models.ListAliasesApplications1[]`
 
 ```typescript
-const value: models.Applications1[] = [
-  {
-    fallbackHost: "<value>",
-    projectId: "<id>",
-  },
-];
+const value: models.ListAliasesApplications1[] = [];
 ```
 
-### `models.Applications2[]`
+### `models.ListAliasesApplications2[]`
 
 ```typescript
-const value: models.Applications2[] = [];
+const value: models.ListAliasesApplications2[] = [];
 ```
 
-### `models.Applications3[]`
+### `models.ListAliasesApplications3[]`
 
 ```typescript
-const value: models.Applications3[] = [];
+const value: models.ListAliasesApplications3[] = [];
 ```
 

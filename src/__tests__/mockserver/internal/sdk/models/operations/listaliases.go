@@ -582,11 +582,11 @@ func (u ListAliasesProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ListAliasesProtectionBypassUnion: all fields are null")
 }
 
-type DefaultApp struct {
+type ListAliasesDefaultApp struct {
 	ProjectID string `json:"projectId"`
 }
 
-func (o *DefaultApp) GetProjectID() string {
+func (o *ListAliasesDefaultApp) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
@@ -703,76 +703,76 @@ func (o *ListAliasesApplications1) GetProjectID() string {
 	return o.ProjectID
 }
 
-type ApplicationsType string
+type ListAliasesApplicationsUnionType string
 
 const (
-	ApplicationsTypeArrayOfListAliasesApplications1 ApplicationsType = "arrayOfListAliasesApplications1"
-	ApplicationsTypeArrayOfListAliasesApplications2 ApplicationsType = "arrayOfListAliasesApplications2"
-	ApplicationsTypeArrayOfListAliasesApplications3 ApplicationsType = "arrayOfListAliasesApplications3"
+	ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications1 ListAliasesApplicationsUnionType = "arrayOfListAliasesApplications1"
+	ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications2 ListAliasesApplicationsUnionType = "arrayOfListAliasesApplications2"
+	ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications3 ListAliasesApplicationsUnionType = "arrayOfListAliasesApplications3"
 )
 
-type Applications struct {
+type ListAliasesApplicationsUnion struct {
 	ArrayOfListAliasesApplications1 []ListAliasesApplications1 `queryParam:"inline"`
 	ArrayOfListAliasesApplications2 []ListAliasesApplications2 `queryParam:"inline"`
 	ArrayOfListAliasesApplications3 []ListAliasesApplications3 `queryParam:"inline"`
 
-	Type ApplicationsType
+	Type ListAliasesApplicationsUnionType
 }
 
-func CreateApplicationsArrayOfListAliasesApplications1(arrayOfListAliasesApplications1 []ListAliasesApplications1) Applications {
-	typ := ApplicationsTypeArrayOfListAliasesApplications1
+func CreateListAliasesApplicationsUnionArrayOfListAliasesApplications1(arrayOfListAliasesApplications1 []ListAliasesApplications1) ListAliasesApplicationsUnion {
+	typ := ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications1
 
-	return Applications{
+	return ListAliasesApplicationsUnion{
 		ArrayOfListAliasesApplications1: arrayOfListAliasesApplications1,
 		Type:                            typ,
 	}
 }
 
-func CreateApplicationsArrayOfListAliasesApplications2(arrayOfListAliasesApplications2 []ListAliasesApplications2) Applications {
-	typ := ApplicationsTypeArrayOfListAliasesApplications2
+func CreateListAliasesApplicationsUnionArrayOfListAliasesApplications2(arrayOfListAliasesApplications2 []ListAliasesApplications2) ListAliasesApplicationsUnion {
+	typ := ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications2
 
-	return Applications{
+	return ListAliasesApplicationsUnion{
 		ArrayOfListAliasesApplications2: arrayOfListAliasesApplications2,
 		Type:                            typ,
 	}
 }
 
-func CreateApplicationsArrayOfListAliasesApplications3(arrayOfListAliasesApplications3 []ListAliasesApplications3) Applications {
-	typ := ApplicationsTypeArrayOfListAliasesApplications3
+func CreateListAliasesApplicationsUnionArrayOfListAliasesApplications3(arrayOfListAliasesApplications3 []ListAliasesApplications3) ListAliasesApplicationsUnion {
+	typ := ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications3
 
-	return Applications{
+	return ListAliasesApplicationsUnion{
 		ArrayOfListAliasesApplications3: arrayOfListAliasesApplications3,
 		Type:                            typ,
 	}
 }
 
-func (u *Applications) UnmarshalJSON(data []byte) error {
+func (u *ListAliasesApplicationsUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfListAliasesApplications1 []ListAliasesApplications1 = []ListAliasesApplications1{}
 	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications1, "", true, true); err == nil {
 		u.ArrayOfListAliasesApplications1 = arrayOfListAliasesApplications1
-		u.Type = ApplicationsTypeArrayOfListAliasesApplications1
+		u.Type = ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications1
 		return nil
 	}
 
 	var arrayOfListAliasesApplications2 []ListAliasesApplications2 = []ListAliasesApplications2{}
 	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications2, "", true, true); err == nil {
 		u.ArrayOfListAliasesApplications2 = arrayOfListAliasesApplications2
-		u.Type = ApplicationsTypeArrayOfListAliasesApplications2
+		u.Type = ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications2
 		return nil
 	}
 
 	var arrayOfListAliasesApplications3 []ListAliasesApplications3 = []ListAliasesApplications3{}
 	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications3, "", true, true); err == nil {
 		u.ArrayOfListAliasesApplications3 = arrayOfListAliasesApplications3
-		u.Type = ApplicationsTypeArrayOfListAliasesApplications3
+		u.Type = ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Applications", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ListAliasesApplicationsUnion", string(data))
 }
 
-func (u Applications) MarshalJSON() ([]byte, error) {
+func (u ListAliasesApplicationsUnion) MarshalJSON() ([]byte, error) {
 	if u.ArrayOfListAliasesApplications1 != nil {
 		return utils.MarshalJSON(u.ArrayOfListAliasesApplications1, "", true)
 	}
@@ -785,25 +785,25 @@ func (u Applications) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ArrayOfListAliasesApplications3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Applications: all fields are null")
+	return nil, errors.New("could not marshal union type ListAliasesApplicationsUnion: all fields are null")
 }
 
 // ListAliasesMicrofrontends - The microfrontends for the alias including the routing configuration
 type ListAliasesMicrofrontends struct {
-	DefaultApp   DefaultApp   `json:"defaultApp"`
-	Applications Applications `json:"applications"`
+	DefaultApp   ListAliasesDefaultApp        `json:"defaultApp"`
+	Applications ListAliasesApplicationsUnion `json:"applications"`
 }
 
-func (o *ListAliasesMicrofrontends) GetDefaultApp() DefaultApp {
+func (o *ListAliasesMicrofrontends) GetDefaultApp() ListAliasesDefaultApp {
 	if o == nil {
-		return DefaultApp{}
+		return ListAliasesDefaultApp{}
 	}
 	return o.DefaultApp
 }
 
-func (o *ListAliasesMicrofrontends) GetApplications() Applications {
+func (o *ListAliasesMicrofrontends) GetApplications() ListAliasesApplicationsUnion {
 	if o == nil {
-		return Applications{}
+		return ListAliasesApplicationsUnion{}
 	}
 	return o.Applications
 }

@@ -1,13 +1,13 @@
-# Applications2
+# ListAliasesApplications2
 
 A list of the deployment routing information for each project.
 
 ## Example Usage
 
 ```typescript
-import { Applications2 } from "@vercel/sdk/models/getaliasop.js";
+import { ListAliasesApplications2 } from "@vercel/sdk/models/listaliasesop.js";
 
-let value: Applications2 = {
+let value: ListAliasesApplications2 = {
   fallbackHost: "<value>",
   branchAlias: "<value>",
   projectId: "<id>",

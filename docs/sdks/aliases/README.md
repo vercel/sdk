@@ -349,7 +349,7 @@ run();
 
 ### Response
 
-**Promise\<[any](../../models/.md)\>**
+**Promise\<[models.GetAliasResponseBody[]](../../models/.md)\>**
 
 ### Errors
 

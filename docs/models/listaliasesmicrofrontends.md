@@ -22,7 +22,7 @@ let value: ListAliasesMicrofrontends = {
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `defaultApp`                                 | [models.DefaultApp](../models/defaultapp.md) | :heavy_check_mark:                           | N/A                                          |
-| `applications`                               | *models.ListAliasesApplications*             | :heavy_check_mark:                           | N/A                                          |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `defaultApp`                                                       | [models.ListAliasesDefaultApp](../models/listaliasesdefaultapp.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `applications`                                                     | *models.ListAliasesApplications*                                   | :heavy_check_mark:                                                 | N/A                                                                |

@@ -38,6 +38,8 @@ func (e *Strict) UnmarshalJSON(data []byte) error {
 type GetDomainConfigRequest struct {
 	// The name of the domain.
 	Domain string `pathParam:"style=simple,explode=false,name=domain"`
+	// The project id or name that will be associated with the domain. Use this when the domain is not yet associated with a project.
+	ProjectIDOrName *string `queryParam:"style=form,explode=true,name=projectIdOrName"`
 	// When true, the response will only include the nameservers assigned directly to the specified domain. When false and there are no nameservers assigned directly to the specified domain, the response will include the nameservers of the domain's parent zone.
 	Strict *Strict `queryParam:"style=form,explode=true,name=strict"`
 	// The Team identifier to perform the request on behalf of.
@@ -51,6 +53,13 @@ func (o *GetDomainConfigRequest) GetDomain() string {
 		return ""
 	}
 	return o.Domain
+}
+
+func (o *GetDomainConfigRequest) GetProjectIDOrName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIDOrName
 }
 
 func (o *GetDomainConfigRequest) GetStrict() *Strict {
@@ -134,11 +143,23 @@ func (e *AcceptedChallenge) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// RecommendedIPv4 - Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
+type RecommendedIPv4 struct {
+}
+
+// RecommendedCNAME - Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
+type RecommendedCNAME struct {
+}
+
 type GetDomainConfigResponseBody struct {
 	// How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
 	ConfiguredBy *ConfiguredBy `json:"configuredBy,omitempty"`
 	// Which challenge types the domain can use for issuing certs.
 	AcceptedChallenges []AcceptedChallenge `json:"acceptedChallenges,omitempty"`
+	// Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
+	RecommendedIPv4 []RecommendedIPv4 `json:"recommendedIPv4,omitempty"`
+	// Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
+	RecommendedCNAME []RecommendedCNAME `json:"recommendedCNAME,omitempty"`
 	// Whether or not the domain is configured AND we can automatically generate a TLS certificate.
 	Misconfigured bool `json:"misconfigured"`
 }
@@ -155,6 +176,20 @@ func (o *GetDomainConfigResponseBody) GetAcceptedChallenges() []AcceptedChalleng
 		return nil
 	}
 	return o.AcceptedChallenges
+}
+
+func (o *GetDomainConfigResponseBody) GetRecommendedIPv4() []RecommendedIPv4 {
+	if o == nil {
+		return nil
+	}
+	return o.RecommendedIPv4
+}
+
+func (o *GetDomainConfigResponseBody) GetRecommendedCNAME() []RecommendedCNAME {
+	if o == nil {
+		return nil
+	}
+	return o.RecommendedCNAME
 }
 
 func (o *GetDomainConfigResponseBody) GetMisconfigured() bool {

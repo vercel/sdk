@@ -36,10 +36,9 @@ const value: models.Team = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   membership: {
     confirmed: false,
-    confirmedAt: 2738.3,
-    role: "MEMBER",
-    createdAt: 7074.8,
-    created: 7786.93,
+    role: "DEVELOPER",
+    createdAt: 2222.52,
+    created: 7074.8,
   },
   createdAt: 1630748523395,
 };
@@ -73,10 +72,9 @@ const value: models.TeamLimited = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   membership: {
     confirmed: true,
-    confirmedAt: 7470.91,
-    role: "DEVELOPER",
-    createdAt: 964.08,
-    created: 6198.36,
+    role: "VIEWER",
+    createdAt: 3706.61,
+    created: 964.08,
   },
   createdAt: 1630748523395,
 };

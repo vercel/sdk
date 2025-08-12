@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the @vercel/sdk SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx projectsUpdateProject.ts
+ * npm run build && npx tsx projectsUpdateProject.example.ts
  */
 
 import { Vercel } from "@vercel/sdk";

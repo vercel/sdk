@@ -684,7 +684,6 @@ export const PutFirewallConfigSecurityType = {
   Ja4Digest: "ja4_digest",
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
-  BotName: "bot_name",
 } as const;
 export type PutFirewallConfigSecurityType = ClosedEnum<
   typeof PutFirewallConfigSecurityType

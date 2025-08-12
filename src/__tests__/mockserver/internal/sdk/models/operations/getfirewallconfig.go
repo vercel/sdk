@@ -683,7 +683,6 @@ const (
 	GetFirewallConfigTypeJa4Digest        GetFirewallConfigType = "ja4_digest"
 	GetFirewallConfigTypeJa3Digest        GetFirewallConfigType = "ja3_digest"
 	GetFirewallConfigTypeRateLimitAPIID   GetFirewallConfigType = "rate_limit_api_id"
-	GetFirewallConfigTypeBotName          GetFirewallConfigType = "bot_name"
 )
 
 func (e GetFirewallConfigType) ToPointer() *GetFirewallConfigType {
@@ -738,8 +737,6 @@ func (e *GetFirewallConfigType) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
-		fallthrough
-	case "bot_name":
 		*e = GetFirewallConfigType(v)
 		return nil
 	default:

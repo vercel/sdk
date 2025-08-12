@@ -9,10 +9,9 @@ import { TeamLimitedMembership } from "@vercel/sdk/models/teamlimited.js";
 
 let value: TeamLimitedMembership = {
   confirmed: true,
-  confirmedAt: 9004.58,
   role: "CONTRIBUTOR",
-  createdAt: 2303.75,
-  created: 9633.32,
+  createdAt: 9880.38,
+  created: 2303.75,
 };
 ```
 
@@ -24,7 +23,6 @@ let value: TeamLimitedMembership = {
 | `entitlements`                                                                 | [models.TeamLimitedEntitlements](../models/teamlimitedentitlements.md)[]       | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `teamId`                                                                       | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `confirmed`                                                                    | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |
-| `confirmedAt`                                                                  | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `accessRequestedAt`                                                            | *number*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
 | `role`                                                                         | [models.TeamLimitedRole](../models/teamlimitedrole.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
 | `teamRoles`                                                                    | [models.TeamLimitedTeamRoles](../models/teamlimitedteamroles.md)[]             | :heavy_minus_sign:                                                             | N/A                                                                            |

@@ -37,10 +37,9 @@ let value: Team = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   membership: {
     confirmed: false,
-    confirmedAt: 2738.3,
-    role: "MEMBER",
-    createdAt: 7074.8,
-    created: 7786.93,
+    role: "DEVELOPER",
+    createdAt: 2222.52,
+    created: 7074.8,
   },
   createdAt: 1630748523395,
 };

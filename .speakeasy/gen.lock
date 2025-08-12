@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 51c6dc6ca49369916afcb13da1217ce3
+  docChecksum: 0a7003b47e5ef03c09c8e0d822e6090a
   docVersion: 0.0.1
-  speakeasyVersion: 1.600.2
-  generationVersion: 2.677.3
-  releaseVersion: 1.10.2
-  configChecksum: b0ff1852edf79c5ee31ba8ff28e1ed53
+  speakeasyVersion: 1.602.0
+  generationVersion: 2.681.1
+  releaseVersion: 1.10.3
+  configChecksum: 630600defe9b6471c5d163f3c1645a1e
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -24,7 +24,7 @@ features:
     enumUnions: 0.1.0
     enums: 2.82.1
     envVarSecurityUsage: 0.1.2
-    examples: 2.82.2
+    examples: 2.82.3
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -2457,6 +2457,8 @@ generatedFiles:
   - docs/models/reason.md
   - docs/models/reasons.md
   - docs/models/recentsviewpreference.md
+  - docs/models/recommendedcname.md
+  - docs/models/recommendedipv4.md
   - docs/models/recordeventsrequest.md
   - docs/models/records.md
   - docs/models/recordtype.md
@@ -7066,7 +7068,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "confirmedAt": 4040.18, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -7084,7 +7086,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false}
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "confirmedAt": 3200.42, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":

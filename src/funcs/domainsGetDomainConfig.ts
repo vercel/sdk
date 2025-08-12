@@ -112,6 +112,7 @@ async function $do(
   const path = pathToFunc("/v6/domains/{domain}/config")(pathParams);
 
   const query = encodeFormQuery({
+    "projectIdOrName": payload.projectIdOrName,
     "slug": payload.slug,
     "strict": payload.strict,
     "teamId": payload.teamId,

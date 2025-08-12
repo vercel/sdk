@@ -161,7 +161,6 @@ export type TeamLimitedMembership = {
   entitlements?: Array<TeamLimitedEntitlements> | undefined;
   teamId?: string | undefined;
   confirmed: boolean;
-  confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: TeamLimitedRole;
   teamRoles?: Array<TeamLimitedTeamRoles> | undefined;
@@ -697,7 +696,6 @@ export const TeamLimitedMembership$inboundSchema: z.ZodType<
     .optional(),
   teamId: z.string().optional(),
   confirmed: z.boolean(),
-  confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: TeamLimitedRole$inboundSchema,
   teamRoles: z.array(TeamLimitedTeamRoles$inboundSchema).optional(),
@@ -713,7 +711,6 @@ export type TeamLimitedMembership$Outbound = {
   entitlements?: Array<TeamLimitedEntitlements$Outbound> | undefined;
   teamId?: string | undefined;
   confirmed: boolean;
-  confirmedAt: number;
   accessRequestedAt?: number | undefined;
   role: string;
   teamRoles?: Array<string> | undefined;
@@ -734,7 +731,6 @@ export const TeamLimitedMembership$outboundSchema: z.ZodType<
     .optional(),
   teamId: z.string().optional(),
   confirmed: z.boolean(),
-  confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   role: TeamLimitedRole$outboundSchema,
   teamRoles: z.array(TeamLimitedTeamRoles$outboundSchema).optional(),

@@ -80,11 +80,10 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		Name:                    types.String("My Team"),
 		Avatar:                  types.String("6eb07268bcfadd309905ffb1579354084c24655c"),
 		Membership: components.TeamMembership{
-			Confirmed:   true,
-			ConfirmedAt: 3200.42,
-			Role:        components.TeamRole2Contributor,
-			CreatedAt:   6209.44,
-			Created:     5994.92,
+			Confirmed: true,
+			Role:      components.TeamRole2Contributor,
+			CreatedAt: 6209.44,
+			Created:   5994.92,
 		},
 		CreatedAt: 1630748523395,
 	}

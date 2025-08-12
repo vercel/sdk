@@ -192,7 +192,6 @@ test("Teams Get Team", async () => {
     avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
     membership: {
       confirmed: false,
-      confirmedAt: 4040.18,
       role: "SECURITY",
       createdAt: 1519.81,
       created: 619.38,
@@ -266,7 +265,6 @@ test("Teams Patch Team", async () => {
     avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
     membership: {
       confirmed: true,
-      confirmedAt: 3200.42,
       role: "CONTRIBUTOR",
       createdAt: 6209.44,
       created: 5994.92,

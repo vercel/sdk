@@ -32,10 +32,9 @@ let value: TeamLimited = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   membership: {
     confirmed: true,
-    confirmedAt: 7470.91,
-    role: "DEVELOPER",
-    createdAt: 964.08,
-    created: 6198.36,
+    role: "VIEWER",
+    createdAt: 3706.61,
+    created: 964.08,
   },
   createdAt: 1630748523395,
 };

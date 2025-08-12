@@ -929,7 +929,6 @@ type TeamMembership struct {
 	Entitlements      []TeamEntitlement    `json:"entitlements,omitempty"`
 	TeamID            *string              `json:"teamId,omitempty"`
 	Confirmed         bool                 `json:"confirmed"`
-	ConfirmedAt       float64              `json:"confirmedAt"`
 	AccessRequestedAt *float64             `json:"accessRequestedAt,omitempty"`
 	Role              TeamRole2            `json:"role"`
 	TeamRoles         []TeamTeamRole       `json:"teamRoles,omitempty"`
@@ -965,13 +964,6 @@ func (o *TeamMembership) GetConfirmed() bool {
 		return false
 	}
 	return o.Confirmed
-}
-
-func (o *TeamMembership) GetConfirmedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.ConfirmedAt
 }
 
 func (o *TeamMembership) GetAccessRequestedAt() *float64 {

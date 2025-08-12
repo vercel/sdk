@@ -9,10 +9,9 @@ import { Membership } from "@vercel/sdk/models/team.js";
 
 let value: Membership = {
   confirmed: false,
-  confirmedAt: 149.12,
-  role: "MEMBER",
-  createdAt: 8507.09,
-  created: 408.14,
+  role: "OWNER",
+  createdAt: 2058.4,
+  created: 8507.09,
 };
 ```
 
@@ -24,7 +23,6 @@ let value: Membership = {
 | `entitlements`                                           | [models.Entitlements](../models/entitlements.md)[]       | :heavy_minus_sign:                                       | N/A                                                      |
 | `teamId`                                                 | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
 | `confirmed`                                              | *boolean*                                                | :heavy_check_mark:                                       | N/A                                                      |
-| `confirmedAt`                                            | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `accessRequestedAt`                                      | *number*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
 | `role`                                                   | [models.Role](../models/role.md)                         | :heavy_check_mark:                                       | N/A                                                      |
 | `teamRoles`                                              | [models.TeamRoles](../models/teamroles.md)[]             | :heavy_minus_sign:                                       | N/A                                                      |

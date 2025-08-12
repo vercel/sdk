@@ -709,10 +709,6 @@ actions:
   - target: $.paths['/v4/aliases'].get.responses['200'].content['application/json'].schema.properties['aliases'].items.properties.deletedAt
     update:
       nullable: true
-  - target: $.paths['/v4/aliases/{idOrAlias}'].get.responses['200'].content['application/json'].schema.type
-    remove: true
-  - target: $.paths['/v4/aliases/{idOrAlias}'].get.responses['200'].content['application/json'].schema.items
-    remove: true
   - target: $.paths['/v4/aliases/{idOrAlias}'].get.responses['200'].content['application/json'].schema.properties.createdAt
     update:
       nullable: true

@@ -5796,6 +5796,7 @@ type CreateProjectPermissions struct {
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
 	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
@@ -6385,6 +6386,13 @@ func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *CreateProjectPermissions) GetV0Chat() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.V0Chat
 }
 
 func (o *CreateProjectPermissions) GetWebAnalytics() []components.ACLAction {

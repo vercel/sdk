@@ -145,10 +145,42 @@ func (e *AcceptedChallenge) UnmarshalJSON(data []byte) error {
 
 // RecommendedIPv4 - Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
 type RecommendedIPv4 struct {
+	Rank  float64  `json:"rank"`
+	Value []string `json:"value"`
+}
+
+func (o *RecommendedIPv4) GetRank() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Rank
+}
+
+func (o *RecommendedIPv4) GetValue() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Value
 }
 
 // RecommendedCNAME - Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
 type RecommendedCNAME struct {
+	Rank  float64 `json:"rank"`
+	Value string  `json:"value"`
+}
+
+func (o *RecommendedCNAME) GetRank() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Rank
+}
+
+func (o *RecommendedCNAME) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
 }
 
 type GetDomainConfigResponseBody struct {

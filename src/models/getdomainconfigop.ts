@@ -72,12 +72,18 @@ export type AcceptedChallenges = ClosedEnum<typeof AcceptedChallenges>;
 /**
  * Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
  */
-export type RecommendedIPv4 = {};
+export type RecommendedIPv4 = {
+  rank: number;
+  value: Array<string>;
+};
 
 /**
  * Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
  */
-export type RecommendedCNAME = {};
+export type RecommendedCNAME = {
+  rank: number;
+  value: string;
+};
 
 export type GetDomainConfigResponseBody = {
   /**
@@ -232,17 +238,26 @@ export const RecommendedIPv4$inboundSchema: z.ZodType<
   RecommendedIPv4,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.array(z.string()),
+});
 
 /** @internal */
-export type RecommendedIPv4$Outbound = {};
+export type RecommendedIPv4$Outbound = {
+  rank: number;
+  value: Array<string>;
+};
 
 /** @internal */
 export const RecommendedIPv4$outboundSchema: z.ZodType<
   RecommendedIPv4$Outbound,
   z.ZodTypeDef,
   RecommendedIPv4
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.array(z.string()),
+});
 
 /**
  * @internal
@@ -278,17 +293,26 @@ export const RecommendedCNAME$inboundSchema: z.ZodType<
   RecommendedCNAME,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.string(),
+});
 
 /** @internal */
-export type RecommendedCNAME$Outbound = {};
+export type RecommendedCNAME$Outbound = {
+  rank: number;
+  value: string;
+};
 
 /** @internal */
 export const RecommendedCNAME$outboundSchema: z.ZodType<
   RecommendedCNAME$Outbound,
   z.ZodTypeDef,
   RecommendedCNAME
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.string(),
+});
 
 /**
  * @internal

@@ -7590,6 +7590,12 @@
                           },
                           "type": "array"
                         },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "webAnalytics": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -20520,6 +20526,21 @@
                     },
                     "recommendedIPv4": {
                       "items": {
+                        "properties": {
+                          "rank": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "rank",
+                          "value"
+                        ],
                         "type": "object",
                         "description": "Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable."
                       },
@@ -20528,6 +20549,18 @@
                     },
                     "recommendedCNAME": {
                       "items": {
+                        "properties": {
+                          "rank": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "rank",
+                          "value"
+                        ],
                         "type": "object",
                         "description": "Recommended CNAMEs for the domain. rank=1 is the preferred value to use."
                       },
@@ -32371,6 +32404,12 @@
                                 },
                                 "type": "array"
                               },
+                              "v0Chat": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
                               "webAnalytics": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -36467,6 +36506,12 @@
                           "type": "array"
                         },
                         "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -41687,6 +41732,12 @@
                           },
                           "type": "array"
                         },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "webAnalytics": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -44802,6 +44853,12 @@
                           "type": "array"
                         },
                         "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -77963,15 +78020,15 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "type": {
-                    "type": "string",
-                    "description": "The Identity Provider \"type\", for example Okta.",
-                    "example": "OktaSAML"
-                  },
                   "status": {
                     "type": "string",
                     "description": "Current status of the connection.",
                     "example": "linked"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The Identity Provider \"type\", for example Okta.",
+                    "example": "OktaSAML"
                   },
                   "state": {
                     "type": "string",
@@ -77990,8 +78047,8 @@
                   }
                 },
                 "required": [
-                  "type",
                   "status",
+                  "type",
                   "state",
                   "connectedAt"
                 ],
@@ -78285,9 +78342,6 @@
                 },
                 "type": "array"
               },
-              "teamId": {
-                "type": "string"
-              },
               "confirmed": {
                 "type": "boolean"
               },
@@ -78339,6 +78393,9 @@
                 },
                 "type": "array"
               },
+              "teamId": {
+                "type": "string"
+              },
               "createdAt": {
                 "type": "number"
               },
@@ -78350,9 +78407,9 @@
                   "origin": {
                     "type": "string",
                     "enum": [
-                      "link",
                       "saml",
                       "mail",
+                      "link",
                       "import",
                       "teams",
                       "github",

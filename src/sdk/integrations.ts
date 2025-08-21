@@ -5,6 +5,7 @@
 import { deploymentsUpdateIntegrationDeploymentAction } from "../funcs/deploymentsUpdateIntegrationDeploymentAction.js";
 import { integrationsDeleteConfiguration } from "../funcs/integrationsDeleteConfiguration.js";
 import { integrationsGetConfiguration } from "../funcs/integrationsGetConfiguration.js";
+import { integrationsGetConfigurationProducts } from "../funcs/integrationsGetConfigurationProducts.js";
 import { integrationsGetConfigurations } from "../funcs/integrationsGetConfigurations.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { DeleteConfigurationRequest } from "../models/deleteconfigurationop.js";
@@ -12,6 +13,10 @@ import {
   GetConfigurationRequest,
   GetConfigurationResponseBody,
 } from "../models/getconfigurationop.js";
+import {
+  GetConfigurationProductsRequest,
+  GetConfigurationProductsResponseBody,
+} from "../models/getconfigurationproductsop.js";
 import {
   GetConfigurationsRequest,
   GetConfigurationsResponseBody,
@@ -82,6 +87,23 @@ export class Integrations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(integrationsDeleteConfiguration(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List products for integration configuration
+   *
+   * @remarks
+   * Lists all products available for an integration configuration. Use this endpoint to discover what integration products are available for your integration configuration. The returned product IDs or slugs can then be used with storage provisioning endpoints like `POST /v1/storage/stores/integration/direct`. ## Workflow 1. Get your integration configurations: `GET /v1/integrations/configurations` 2. **Use this endpoint**: Get products for a configuration: `GET /v1/integrations/configuration/{id}/products` 3. Create storage resource: `POST /v1/storage/stores/integration/direct` ## Response Returns an array of products with their IDs, slugs, names, supported protocols, and metadata requirements. Each product represents a different type of resource you can provision. The `metadataSchema` field contains a JSON Schema that defines: - **Required metadata**: Fields that must be provided during storage creation - **Optional metadata**: Fields that can be provided but are not mandatory - **Field validation**: Data types, allowed values, and constraints Use this schema to validate metadata before calling the storage creation endpoint.
+   */
+  async getConfigurationProducts(
+    request: GetConfigurationProductsRequest,
+    options?: RequestOptions,
+  ): Promise<GetConfigurationProductsResponseBody> {
+    return unwrapAsync(integrationsGetConfigurationProducts(
       this,
       request,
       options,

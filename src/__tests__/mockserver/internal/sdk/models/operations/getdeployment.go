@@ -129,17 +129,17 @@ func (o *GetDeploymentOutput2) GetFunctionName() string {
 
 // GetDeploymentLambda2 - A partial representation of a Build used by the deployment endpoint.
 type GetDeploymentLambda2 struct {
-	ID           *string                         `json:"id,omitempty"`
+	ID           string                          `json:"id"`
 	CreatedAt    *float64                        `json:"createdAt,omitempty"`
-	Entrypoint   *string                         `json:"entrypoint,omitempty"`
 	ReadyState   *GetDeploymentLambdaReadyState2 `json:"readyState,omitempty"`
+	Entrypoint   *string                         `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                        `json:"readyStateAt,omitempty"`
 	Output       []GetDeploymentOutput2          `json:"output"`
 }
 
-func (o *GetDeploymentLambda2) GetID() *string {
+func (o *GetDeploymentLambda2) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
@@ -151,18 +151,18 @@ func (o *GetDeploymentLambda2) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *GetDeploymentLambda2) GetEntrypoint() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Entrypoint
-}
-
 func (o *GetDeploymentLambda2) GetReadyState() *GetDeploymentLambdaReadyState2 {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
+}
+
+func (o *GetDeploymentLambda2) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *GetDeploymentLambda2) GetReadyStateAt() *float64 {
@@ -681,29 +681,6 @@ func (o *GetDeploymentAliasWarning2) GetAction() *string {
 	return o.Action
 }
 
-type GetDeploymentTypeLambdas2 string
-
-const (
-	GetDeploymentTypeLambdas2Lambdas GetDeploymentTypeLambdas2 = "LAMBDAS"
-)
-
-func (e GetDeploymentTypeLambdas2) ToPointer() *GetDeploymentTypeLambdas2 {
-	return &e
-}
-func (e *GetDeploymentTypeLambdas2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "LAMBDAS":
-		*e = GetDeploymentTypeLambdas2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentTypeLambdas2: %v", v)
-	}
-}
-
 type GetDeploymentReadyState2 string
 
 const (
@@ -739,6 +716,29 @@ func (e *GetDeploymentReadyState2) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for GetDeploymentReadyState2: %v", v)
+	}
+}
+
+type GetDeploymentTypeLambdas2 string
+
+const (
+	GetDeploymentTypeLambdas2Lambdas GetDeploymentTypeLambdas2 = "LAMBDAS"
+)
+
+func (e GetDeploymentTypeLambdas2) ToPointer() *GetDeploymentTypeLambdas2 {
+	return &e
+}
+func (e *GetDeploymentTypeLambdas2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "LAMBDAS":
+		*e = GetDeploymentTypeLambdas2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentTypeLambdas2: %v", v)
 	}
 }
 
@@ -2773,10 +2773,10 @@ type Lambdas2 struct {
 	OomReport                *GetDeploymentOomReport2              `json:"oomReport,omitempty"`
 	AliasWarning             *GetDeploymentAliasWarning2           `json:"aliasWarning,omitempty"`
 	ID                       string                                `json:"id"`
-	Name                     string                                `json:"name"`
-	Type                     GetDeploymentTypeLambdas2             `json:"type"`
 	CreatedAt                float64                               `json:"createdAt"`
 	ReadyState               GetDeploymentReadyState2              `json:"readyState"`
+	Name                     string                                `json:"name"`
+	Type                     GetDeploymentTypeLambdas2             `json:"type"`
 	AliasError               *GetDeploymentAliasError2             `json:"aliasError,omitempty"`
 	AliasFinal               *string                               `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
@@ -2960,20 +2960,6 @@ func (o *Lambdas2) GetID() string {
 	return o.ID
 }
 
-func (o *Lambdas2) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *Lambdas2) GetType() GetDeploymentTypeLambdas2 {
-	if o == nil {
-		return GetDeploymentTypeLambdas2("")
-	}
-	return o.Type
-}
-
 func (o *Lambdas2) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -2986,6 +2972,20 @@ func (o *Lambdas2) GetReadyState() GetDeploymentReadyState2 {
 		return GetDeploymentReadyState2("")
 	}
 	return o.ReadyState
+}
+
+func (o *Lambdas2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Lambdas2) GetType() GetDeploymentTypeLambdas2 {
+	if o == nil {
+		return GetDeploymentTypeLambdas2("")
+	}
+	return o.Type
 }
 
 func (o *Lambdas2) GetAliasError() *GetDeploymentAliasError2 {
@@ -3343,6 +3343,8 @@ const (
 	GetDeploymentFrameworkStorybook      GetDeploymentFramework = "storybook"
 	GetDeploymentFrameworkNitro          GetDeploymentFramework = "nitro"
 	GetDeploymentFrameworkHono           GetDeploymentFramework = "hono"
+	GetDeploymentFrameworkExpress        GetDeploymentFramework = "express"
+	GetDeploymentFrameworkXmcp           GetDeploymentFramework = "xmcp"
 )
 
 func (e GetDeploymentFramework) ToPointer() *GetDeploymentFramework {
@@ -3449,6 +3451,10 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = GetDeploymentFramework(v)
 		return nil
 	default:
@@ -4006,17 +4012,17 @@ func (o *GetDeploymentOutput1) GetFunctionName() string {
 
 // GetDeploymentLambda1 - A partial representation of a Build used by the deployment endpoint.
 type GetDeploymentLambda1 struct {
-	ID           *string                         `json:"id,omitempty"`
+	ID           string                          `json:"id"`
 	CreatedAt    *float64                        `json:"createdAt,omitempty"`
-	Entrypoint   *string                         `json:"entrypoint,omitempty"`
 	ReadyState   *GetDeploymentLambdaReadyState1 `json:"readyState,omitempty"`
+	Entrypoint   *string                         `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                        `json:"readyStateAt,omitempty"`
 	Output       []GetDeploymentOutput1          `json:"output"`
 }
 
-func (o *GetDeploymentLambda1) GetID() *string {
+func (o *GetDeploymentLambda1) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
@@ -4028,18 +4034,18 @@ func (o *GetDeploymentLambda1) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *GetDeploymentLambda1) GetEntrypoint() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Entrypoint
-}
-
 func (o *GetDeploymentLambda1) GetReadyState() *GetDeploymentLambdaReadyState1 {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
+}
+
+func (o *GetDeploymentLambda1) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *GetDeploymentLambda1) GetReadyStateAt() *float64 {
@@ -4558,29 +4564,6 @@ func (o *GetDeploymentAliasWarning1) GetAction() *string {
 	return o.Action
 }
 
-type GetDeploymentTypeLambdas1 string
-
-const (
-	GetDeploymentTypeLambdas1Lambdas GetDeploymentTypeLambdas1 = "LAMBDAS"
-)
-
-func (e GetDeploymentTypeLambdas1) ToPointer() *GetDeploymentTypeLambdas1 {
-	return &e
-}
-func (e *GetDeploymentTypeLambdas1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "LAMBDAS":
-		*e = GetDeploymentTypeLambdas1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDeploymentTypeLambdas1: %v", v)
-	}
-}
-
 type GetDeploymentReadyState1 string
 
 const (
@@ -4616,6 +4599,29 @@ func (e *GetDeploymentReadyState1) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for GetDeploymentReadyState1: %v", v)
+	}
+}
+
+type GetDeploymentTypeLambdas1 string
+
+const (
+	GetDeploymentTypeLambdas1Lambdas GetDeploymentTypeLambdas1 = "LAMBDAS"
+)
+
+func (e GetDeploymentTypeLambdas1) ToPointer() *GetDeploymentTypeLambdas1 {
+	return &e
+}
+func (e *GetDeploymentTypeLambdas1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "LAMBDAS":
+		*e = GetDeploymentTypeLambdas1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentTypeLambdas1: %v", v)
 	}
 }
 
@@ -9822,10 +9828,10 @@ type Lambdas1 struct {
 	OomReport                *GetDeploymentOomReport1              `json:"oomReport,omitempty"`
 	AliasWarning             *GetDeploymentAliasWarning1           `json:"aliasWarning,omitempty"`
 	ID                       string                                `json:"id"`
-	Name                     string                                `json:"name"`
-	Type                     GetDeploymentTypeLambdas1             `json:"type"`
 	CreatedAt                float64                               `json:"createdAt"`
 	ReadyState               GetDeploymentReadyState1              `json:"readyState"`
+	Name                     string                                `json:"name"`
+	Type                     GetDeploymentTypeLambdas1             `json:"type"`
 	AliasError               *GetDeploymentAliasError1             `json:"aliasError,omitempty"`
 	AliasFinal               *string                               `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
@@ -10118,20 +10124,6 @@ func (o *Lambdas1) GetID() string {
 	return o.ID
 }
 
-func (o *Lambdas1) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *Lambdas1) GetType() GetDeploymentTypeLambdas1 {
-	if o == nil {
-		return GetDeploymentTypeLambdas1("")
-	}
-	return o.Type
-}
-
 func (o *Lambdas1) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -10144,6 +10136,20 @@ func (o *Lambdas1) GetReadyState() GetDeploymentReadyState1 {
 		return GetDeploymentReadyState1("")
 	}
 	return o.ReadyState
+}
+
+func (o *Lambdas1) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Lambdas1) GetType() GetDeploymentTypeLambdas1 {
+	if o == nil {
+		return GetDeploymentTypeLambdas1("")
+	}
+	return o.Type
 }
 
 func (o *Lambdas1) GetAliasError() *GetDeploymentAliasError1 {

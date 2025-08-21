@@ -113,6 +113,10 @@ export type RequestBodyRevoke = {
 
 export type PatchUrlProtectionBypassRequestBody1 = {
   /**
+   * Optional time the shareable link is valid for in seconds. If not provided, the shareable link will never expire.
+   */
+  ttl?: number | undefined;
+  /**
    * Optional instructions for revoking and regenerating a shareable link
    */
   revoke?: RequestBodyRevoke | undefined;
@@ -618,11 +622,13 @@ export const PatchUrlProtectionBypassRequestBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  ttl: z.number().optional(),
   revoke: z.lazy(() => RequestBodyRevoke$inboundSchema).optional(),
 });
 
 /** @internal */
 export type PatchUrlProtectionBypassRequestBody1$Outbound = {
+  ttl?: number | undefined;
   revoke?: RequestBodyRevoke$Outbound | undefined;
 };
 
@@ -632,6 +638,7 @@ export const PatchUrlProtectionBypassRequestBody1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody1
 > = z.object({
+  ttl: z.number().optional(),
   revoke: z.lazy(() => RequestBodyRevoke$outboundSchema).optional(),
 });
 

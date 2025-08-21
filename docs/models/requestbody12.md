@@ -9,12 +9,8 @@ import { RequestBody12 } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: RequestBody12 = {
   action: "<value>",
-  id: "<id>",
-  value: {
-    "key": {
-      active: true,
-    },
-  },
+  id: "bot_protection",
+  value: {},
 };
 ```
 
@@ -23,5 +19,5 @@ let value: RequestBody12 = {
 | Field                                                                                                                                              | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
 | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `action`                                                                                                                                           | *string*                                                                                                                                           | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
-| `id`                                                                                                                                               | *string*                                                                                                                                           | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
+| `id`                                                                                                                                               | [models.UpdateFirewallConfigRequestBodyId](../models/updatefirewallconfigrequestbodyid.md)                                                         | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |
 | `value`                                                                                                                                            | Record<string, [models.UpdateFirewallConfigRequestBodySecurityRequest12Value](../models/updatefirewallconfigrequestbodysecurityrequest12value.md)> | :heavy_check_mark:                                                                                                                                 | N/A                                                                                                                                                |

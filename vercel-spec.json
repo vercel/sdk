@@ -270,6 +270,7 @@
                     }
                   },
                   "required": [
+                    "entitlements",
                     "name",
                     "createdAt",
                     "teamId",
@@ -937,6 +938,15 @@
               "application/json": {
                 "schema": {
                   "properties": {
+                    "entitlements": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "v0"
+                        ]
+                      },
+                      "type": "array"
+                    },
                     "membersCount": {
                       "type": "number"
                     },
@@ -991,6 +1001,7 @@
                     }
                   },
                   "required": [
+                    "entitlements",
                     "membersCount",
                     "projectsCount",
                     "name",
@@ -4993,7 +5004,9 @@
                         "sanity",
                         "storybook",
                         "nitro",
-                        "hono"
+                        "hono",
+                        "express",
+                        "xmcp"
                       ]
                     },
                     "gitForkProtection": {
@@ -5388,6 +5401,10 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -5459,6 +5476,10 @@
                             }
                           },
                           "required": [
+                            "type",
+                            "org",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -5536,6 +5557,14 @@
                             }
                           },
                           "required": [
+                            "projectId",
+                            "projectName",
+                            "projectNameWithNamespace",
+                            "projectNamespace",
+                            "projectUrl",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -5609,6 +5638,14 @@
                             }
                           },
                           "required": [
+                            "name",
+                            "slug",
+                            "owner",
+                            "type",
+                            "uuid",
+                            "workspaceUuid",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -5683,6 +5720,11 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "host",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -5853,10 +5895,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rollbackDescription": {
                       "properties": {
@@ -5971,10 +6013,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rootDirectory": {
                       "nullable": true,
@@ -7590,6 +7632,12 @@
                           },
                           "type": "array"
                         },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "webAnalytics": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -9141,7 +9189,9 @@
                                 "sanity",
                                 "storybook",
                                 "nitro",
-                                "hono"
+                                "hono",
+                                "express",
+                                "xmcp"
                               ]
                             },
                             "commandForIgnoringBuildStep": {
@@ -9396,10 +9446,6 @@
                               "createdAt": {
                                 "type": "number"
                               },
-                              "entrypoint": {
-                                "nullable": true,
-                                "type": "string"
-                              },
                               "readyState": {
                                 "type": "string",
                                 "enum": [
@@ -9408,6 +9454,10 @@
                                   "INITIALIZING",
                                   "READY"
                                 ]
+                              },
+                              "entrypoint": {
+                                "nullable": true,
+                                "type": "string"
                               },
                               "readyStateAt": {
                                 "type": "number"
@@ -9432,6 +9482,7 @@
                               }
                             },
                             "required": [
+                              "id",
                               "output"
                             ],
                             "type": "object",
@@ -9693,15 +9744,6 @@
                         "id": {
                           "type": "string"
                         },
-                        "name": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "LAMBDAS"
-                          ]
-                        },
                         "createdAt": {
                           "type": "number"
                         },
@@ -9714,6 +9756,15 @@
                             "INITIALIZING",
                             "READY",
                             "CANCELED"
+                          ]
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "LAMBDAS"
                           ]
                         },
                         "aliasError": {
@@ -11552,10 +11603,10 @@
                         "public",
                         "status",
                         "id",
-                        "name",
-                        "type",
                         "createdAt",
                         "readyState",
+                        "name",
+                        "type",
                         "meta",
                         "regions",
                         "url",
@@ -11625,10 +11676,6 @@
                               "createdAt": {
                                 "type": "number"
                               },
-                              "entrypoint": {
-                                "nullable": true,
-                                "type": "string"
-                              },
                               "readyState": {
                                 "type": "string",
                                 "enum": [
@@ -11637,6 +11684,10 @@
                                   "INITIALIZING",
                                   "READY"
                                 ]
+                              },
+                              "entrypoint": {
+                                "nullable": true,
+                                "type": "string"
                               },
                               "readyStateAt": {
                                 "type": "number"
@@ -11661,6 +11712,7 @@
                               }
                             },
                             "required": [
+                              "id",
                               "output"
                             ],
                             "type": "object",
@@ -11922,15 +11974,6 @@
                         "id": {
                           "type": "string"
                         },
-                        "name": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "LAMBDAS"
-                          ]
-                        },
                         "createdAt": {
                           "type": "number"
                         },
@@ -11943,6 +11986,15 @@
                             "INITIALIZING",
                             "READY",
                             "CANCELED"
+                          ]
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "LAMBDAS"
                           ]
                         },
                         "aliasError": {
@@ -12681,10 +12733,10 @@
                         "public",
                         "status",
                         "id",
-                        "name",
-                        "type",
                         "createdAt",
                         "readyState",
+                        "name",
+                        "type",
                         "meta",
                         "regions",
                         "url",
@@ -12922,7 +12974,9 @@
                             "sanity",
                             "storybook",
                             "nitro",
-                            "hono"
+                            "hono",
+                            "express",
+                            "xmcp"
                           ]
                         },
                         "installCommand": {
@@ -13173,10 +13227,6 @@
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
-                            "type": "string"
-                          },
                           "readyState": {
                             "type": "string",
                             "enum": [
@@ -13185,6 +13235,10 @@
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -13209,6 +13263,7 @@
                           }
                         },
                         "required": [
+                          "id",
                           "output"
                         ],
                         "type": "object",
@@ -15847,7 +15902,9 @@
                           "sanity",
                           "storybook",
                           "nitro",
-                          "hono"
+                          "hono",
+                          "express",
+                          "xmcp"
                         ],
                         "nullable": true
                       },
@@ -16075,7 +16132,9 @@
                             "sanity",
                             "storybook",
                             "nitro",
-                            "hono"
+                            "hono",
+                            "express",
+                            "xmcp"
                           ]
                         },
                         "commandForIgnoringBuildStep": {
@@ -16330,10 +16389,6 @@
                           "createdAt": {
                             "type": "number"
                           },
-                          "entrypoint": {
-                            "nullable": true,
-                            "type": "string"
-                          },
                           "readyState": {
                             "type": "string",
                             "enum": [
@@ -16342,6 +16397,10 @@
                               "INITIALIZING",
                               "READY"
                             ]
+                          },
+                          "entrypoint": {
+                            "nullable": true,
+                            "type": "string"
                           },
                           "readyStateAt": {
                             "type": "number"
@@ -16366,6 +16425,7 @@
                           }
                         },
                         "required": [
+                          "id",
                           "output"
                         ],
                         "type": "object",
@@ -20520,6 +20580,21 @@
                     },
                     "recommendedIPv4": {
                       "items": {
+                        "properties": {
+                          "rank": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "rank",
+                          "value"
+                        ],
                         "type": "object",
                         "description": "Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable."
                       },
@@ -20528,6 +20603,18 @@
                     },
                     "recommendedCNAME": {
                       "items": {
+                        "properties": {
+                          "rank": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "rank",
+                          "value"
+                        ],
                         "type": "object",
                         "description": "Recommended CNAMEs for the domain. rank=1 is the preferred value to use."
                       },
@@ -20540,6 +20627,10 @@
                     }
                   },
                   "required": [
+                    "configuredBy",
+                    "acceptedChallenges",
+                    "recommendedIPv4",
+                    "recommendedCNAME",
                     "misconfigured"
                   ],
                   "type": "object"
@@ -22043,6 +22134,10 @@
                         }
                       ]
                     },
+                    "syncedToDynamoAt": {
+                      "type": "number",
+                      "description": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+                    },
                     "sizeInBytes": {
                       "type": "number"
                     },
@@ -22051,6 +22146,12 @@
                     }
                   },
                   "required": [
+                    "createdAt",
+                    "updatedAt",
+                    "id",
+                    "slug",
+                    "ownerId",
+                    "digest",
                     "sizeInBytes",
                     "itemCount"
                   ],
@@ -22236,6 +22337,10 @@
                         }
                       ]
                     },
+                    "syncedToDynamoAt": {
+                      "type": "number",
+                      "description": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+                    },
                     "sizeInBytes": {
                       "type": "number"
                     },
@@ -22244,6 +22349,12 @@
                     }
                   },
                   "required": [
+                    "createdAt",
+                    "updatedAt",
+                    "id",
+                    "slug",
+                    "ownerId",
+                    "digest",
                     "sizeInBytes",
                     "itemCount"
                   ],
@@ -22418,6 +22529,10 @@
                         }
                       ]
                     },
+                    "syncedToDynamoAt": {
+                      "type": "number",
+                      "description": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+                    },
                     "sizeInBytes": {
                       "type": "number"
                     },
@@ -22426,6 +22541,12 @@
                     }
                   },
                   "required": [
+                    "createdAt",
+                    "updatedAt",
+                    "id",
+                    "slug",
+                    "ownerId",
+                    "digest",
                     "sizeInBytes",
                     "itemCount"
                   ],
@@ -27816,6 +27937,2361 @@
         ]
       }
     },
+    "/v1/integrations/configuration/{id}/products": {
+      "get": {
+        "description": "Lists all products available for an integration configuration. Use this endpoint to discover what integration products are available for your integration configuration. The returned product IDs or slugs can then be used with storage provisioning endpoints like `POST /v1/storage/stores/integration/direct`. ## Workflow 1. Get your integration configurations: `GET /v1/integrations/configurations` 2. **Use this endpoint**: Get products for a configuration: `GET /v1/integrations/configuration/{id}/products` 3. Create storage resource: `POST /v1/storage/stores/integration/direct` ## Response Returns an array of products with their IDs, slugs, names, supported protocols, and metadata requirements. Each product represents a different type of resource you can provision. The `metadataSchema` field contains a JSON Schema that defines: - **Required metadata**: Fields that must be provided during storage creation - **Optional metadata**: Fields that can be provided but are not mandatory - **Field validation**: Data types, allowed values, and constraints Use this schema to validate metadata before calling the storage creation endpoint.",
+        "operationId": "getConfigurationProducts",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List products for integration configuration",
+        "tags": [
+          "integrations"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of products available for this integration configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "products": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "protocols": {
+                            "properties": {
+                              "storage": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  },
+                                  "repl": {
+                                    "properties": {
+                                      "enabled": {
+                                        "type": "boolean"
+                                      },
+                                      "supportsReadOnlyMode": {
+                                        "type": "boolean"
+                                      },
+                                      "welcomeMessage": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "enabled",
+                                      "supportsReadOnlyMode"
+                                    ],
+                                    "type": "object"
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "experimentation": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  },
+                                  "edgeConfigSyncingSupport": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "ai": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "authentication": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "observability": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "video": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "workflow": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "checks": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "logDrain": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  },
+                                  "format": {
+                                    "type": "string",
+                                    "enum": [
+                                      "json",
+                                      "ndjson"
+                                    ]
+                                  },
+                                  "endpoint": {
+                                    "type": "string"
+                                  },
+                                  "headers": {
+                                    "additionalProperties": {
+                                      "type": "string"
+                                    },
+                                    "type": "object"
+                                  }
+                                },
+                                "required": [
+                                  "status",
+                                  "format",
+                                  "endpoint"
+                                ],
+                                "type": "object"
+                              },
+                              "messaging": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              },
+                              "other": {
+                                "properties": {
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "disabled",
+                                      "enabled"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "status"
+                                ],
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "primaryProtocol": {
+                            "type": "string",
+                            "enum": [
+                              "storage",
+                              "experimentation",
+                              "ai",
+                              "observability",
+                              "video",
+                              "authentication",
+                              "workflow",
+                              "checks",
+                              "logDrain",
+                              "messaging",
+                              "other"
+                            ]
+                          },
+                          "metadataSchema": {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "object"
+                                ]
+                              },
+                              "properties": {
+                                "additionalProperties": {
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "string"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "input"
+                                          ]
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "minLength": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "maxLength": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "pattern": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "default": {
+                                          "type": "string"
+                                        },
+                                        "enum": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:placeholder": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "number"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "input"
+                                          ]
+                                        },
+                                        "minimum": {
+                                          "type": "number"
+                                        },
+                                        "maximum": {
+                                          "type": "number"
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "default": {
+                                          "type": "number"
+                                        },
+                                        "exclusiveMinimum": {
+                                          "type": "number"
+                                        },
+                                        "exclusiveMaximum": {
+                                          "type": "number"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:placeholder": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "boolean"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "toggle"
+                                          ]
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "default": {
+                                          "type": "boolean"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "array"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "slider"
+                                          ]
+                                        },
+                                        "ui:steps": {
+                                          "items": {
+                                            "type": "number"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "number"
+                                              ]
+                                            },
+                                            "description": {
+                                              "type": "string"
+                                            },
+                                            "minimum": {
+                                              "type": "number"
+                                            },
+                                            "exclusiveMinimum": {
+                                              "type": "number"
+                                            },
+                                            "maximum": {
+                                              "type": "number"
+                                            },
+                                            "exclusiveMaximum": {
+                                              "type": "number"
+                                            },
+                                            "default": {
+                                              "type": "number"
+                                            }
+                                          },
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "minItems": {
+                                          "type": "number"
+                                        },
+                                        "maxItems": {
+                                          "type": "number"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "default": {
+                                          "items": {
+                                            "type": "number"
+                                          },
+                                          "type": "array"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control",
+                                        "ui:steps",
+                                        "items"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "string"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "select"
+                                          ]
+                                        },
+                                        "ui:options": {
+                                          "items": {
+                                            "properties": {
+                                              "value": {
+                                                "type": "string"
+                                              },
+                                              "label": {
+                                                "type": "string"
+                                              },
+                                              "disabled": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "boolean"
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "expr": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "expr"
+                                                    ],
+                                                    "type": "object"
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "update",
+                                                      "create"
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              "hidden": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "boolean"
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "expr": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "expr"
+                                                    ],
+                                                    "type": "object"
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "update",
+                                                      "create"
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "value",
+                                              "label"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "minLength": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "maxLength": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "pattern": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "default": {
+                                          "type": "string"
+                                        },
+                                        "enum": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:placeholder": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control",
+                                        "ui:options"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "array"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "multi-select"
+                                          ]
+                                        },
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "string"
+                                              ]
+                                            },
+                                            "description": {
+                                              "type": "string"
+                                            },
+                                            "minLength": {
+                                              "type": "object",
+                                              "properties": {
+                                                "__@BRAND@446263": {
+                                                  "type": "object"
+                                                }
+                                              },
+                                              "required": [
+                                                "__@BRAND@446263"
+                                              ]
+                                            },
+                                            "maxLength": {
+                                              "type": "object",
+                                              "properties": {
+                                                "__@BRAND@446263": {
+                                                  "type": "object"
+                                                }
+                                              },
+                                              "required": [
+                                                "__@BRAND@446263"
+                                              ]
+                                            },
+                                            "pattern": {
+                                              "type": "object",
+                                              "properties": {
+                                                "__@BRAND@446263": {
+                                                  "type": "object"
+                                                }
+                                              },
+                                              "required": [
+                                                "__@BRAND@446263"
+                                              ]
+                                            },
+                                            "default": {
+                                              "type": "string"
+                                            },
+                                            "enum": {
+                                              "items": {
+                                                "type": "string"
+                                              },
+                                              "type": "array"
+                                            }
+                                          },
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:options": {
+                                          "items": {
+                                            "properties": {
+                                              "value": {
+                                                "type": "string"
+                                              },
+                                              "label": {
+                                                "type": "string"
+                                              },
+                                              "disabled": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "boolean"
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "expr": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "expr"
+                                                    ],
+                                                    "type": "object"
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "update",
+                                                      "create"
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              "hidden": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "boolean"
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "expr": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "expr"
+                                                    ],
+                                                    "type": "object"
+                                                  },
+                                                  {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "update",
+                                                      "create"
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "value",
+                                              "label"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "minItems": {
+                                          "type": "number"
+                                        },
+                                        "maxItems": {
+                                          "type": "number"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:placeholder": {
+                                          "type": "string"
+                                        },
+                                        "default": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "example": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control",
+                                        "items",
+                                        "ui:options"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "string"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "vercel-region"
+                                          ]
+                                        },
+                                        "ui:options": {
+                                          "items": {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "string"
+                                                  },
+                                                  "label": {
+                                                    "type": "string"
+                                                  },
+                                                  "disabled": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  "hidden": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
+                                                  "value",
+                                                  "label"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "__@BRAND@446263": {
+                                                    "type": "object"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "__@BRAND@446263"
+                                                ]
+                                              },
+                                              {
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "__@BRAND@446263": {
+                                                        "type": "object"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "__@BRAND@446263"
+                                                    ]
+                                                  },
+                                                  "disabled": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  "hidden": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
+                                                  "value"
+                                                ],
+                                                "type": "object"
+                                              }
+                                            ]
+                                          },
+                                          "type": "array"
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "minLength": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "maxLength": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "pattern": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "default": {
+                                          "type": "string"
+                                        },
+                                        "enum": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:placeholder": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control",
+                                        "ui:options"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "array"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "multi-vercel-region"
+                                          ]
+                                        },
+                                        "items": {
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "string"
+                                              ]
+                                            },
+                                            "description": {
+                                              "type": "string"
+                                            },
+                                            "minLength": {
+                                              "type": "object",
+                                              "properties": {
+                                                "__@BRAND@446263": {
+                                                  "type": "object"
+                                                }
+                                              },
+                                              "required": [
+                                                "__@BRAND@446263"
+                                              ]
+                                            },
+                                            "maxLength": {
+                                              "type": "object",
+                                              "properties": {
+                                                "__@BRAND@446263": {
+                                                  "type": "object"
+                                                }
+                                              },
+                                              "required": [
+                                                "__@BRAND@446263"
+                                              ]
+                                            },
+                                            "pattern": {
+                                              "type": "object",
+                                              "properties": {
+                                                "__@BRAND@446263": {
+                                                  "type": "object"
+                                                }
+                                              },
+                                              "required": [
+                                                "__@BRAND@446263"
+                                              ]
+                                            },
+                                            "default": {
+                                              "type": "string"
+                                            },
+                                            "enum": {
+                                              "items": {
+                                                "type": "string"
+                                              },
+                                              "type": "array"
+                                            }
+                                          },
+                                          "required": [
+                                            "type"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:options": {
+                                          "items": {
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "string"
+                                                  },
+                                                  "label": {
+                                                    "type": "string"
+                                                  },
+                                                  "disabled": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  "hidden": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
+                                                  "value",
+                                                  "label"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "__@BRAND@446263": {
+                                                    "type": "object"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "__@BRAND@446263"
+                                                ]
+                                              },
+                                              {
+                                                "properties": {
+                                                  "value": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "__@BRAND@446263": {
+                                                        "type": "object"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "__@BRAND@446263"
+                                                    ]
+                                                  },
+                                                  "disabled": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  "hidden": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "boolean"
+                                                      },
+                                                      {
+                                                        "properties": {
+                                                          "expr": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "expr"
+                                                        ],
+                                                        "type": "object"
+                                                      },
+                                                      {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "update",
+                                                          "create"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
+                                                  "value"
+                                                ],
+                                                "type": "object"
+                                              }
+                                            ]
+                                          },
+                                          "type": "array"
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "minItems": {
+                                          "type": "number"
+                                        },
+                                        "maxItems": {
+                                          "type": "number"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:placeholder": {
+                                          "type": "string"
+                                        },
+                                        "default": {
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "__@BRAND@446263": {
+                                                "type": "object"
+                                              }
+                                            },
+                                            "required": [
+                                              "__@BRAND@446263"
+                                            ]
+                                          },
+                                          "type": "array"
+                                        },
+                                        "example": {
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "__@BRAND@446263": {
+                                                "type": "object"
+                                              }
+                                            },
+                                            "required": [
+                                              "__@BRAND@446263"
+                                            ]
+                                          },
+                                          "type": "array"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control",
+                                        "items",
+                                        "ui:options"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "value": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@446263": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@446263"
+                                          ]
+                                        },
+                                        "disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "value"
+                                      ],
+                                      "type": "object"
+                                    }
+                                  ]
+                                },
+                                "type": "object"
+                              },
+                              "required": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "properties"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "name",
+                          "protocols",
+                          "metadataSchema"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "integration": {
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "slug",
+                        "name"
+                      ],
+                      "type": "object"
+                    },
+                    "configuration": {
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "products",
+                    "integration",
+                    "configuration"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID of the integration configuration",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ID of the integration configuration",
+              "example": "icfg_cuwj0AdCdH3BwWT4LPijCC7t"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/v1/integrations/sso/token": {
       "post": {
         "description": "During the autorization process, Vercel sends the user to the provider [redirectLoginUrl](https://vercel.com/docs/integrations/create-integration/submit-integration#redirect-login-url), that includes the OAuth authorization `code` parameter. The provider then calls the SSO Token Exchange endpoint with the sent code and receives the OIDC token. They log the user in based on this token and redirects the user back to the Vercel account using deep-link parameters included the redirectLoginUrl. Providers should not persist the returned `id_token` in a database since the token will expire. See [**Authentication with SSO**](https://vercel.com/docs/integrations/create-integration/marketplace-api#authentication-with-sso) for more details.",
@@ -30644,7 +33120,9 @@
                               "sanity",
                               "storybook",
                               "nitro",
-                              "hono"
+                              "hono",
+                              "express",
+                              "xmcp"
                             ]
                           },
                           "gitForkProtection": {
@@ -31039,6 +33517,10 @@
                                   }
                                 },
                                 "required": [
+                                  "org",
+                                  "type",
+                                  "gitCredentialId",
+                                  "productionBranch",
                                   "deployHooks"
                                 ],
                                 "type": "object"
@@ -31110,6 +33592,10 @@
                                   }
                                 },
                                 "required": [
+                                  "type",
+                                  "org",
+                                  "gitCredentialId",
+                                  "productionBranch",
                                   "deployHooks"
                                 ],
                                 "type": "object"
@@ -31187,6 +33673,14 @@
                                   }
                                 },
                                 "required": [
+                                  "projectId",
+                                  "projectName",
+                                  "projectNameWithNamespace",
+                                  "projectNamespace",
+                                  "projectUrl",
+                                  "type",
+                                  "gitCredentialId",
+                                  "productionBranch",
                                   "deployHooks"
                                 ],
                                 "type": "object"
@@ -31260,6 +33754,14 @@
                                   }
                                 },
                                 "required": [
+                                  "name",
+                                  "slug",
+                                  "owner",
+                                  "type",
+                                  "uuid",
+                                  "workspaceUuid",
+                                  "gitCredentialId",
+                                  "productionBranch",
                                   "deployHooks"
                                 ],
                                 "type": "object"
@@ -31334,6 +33836,11 @@
                                   }
                                 },
                                 "required": [
+                                  "org",
+                                  "type",
+                                  "host",
+                                  "gitCredentialId",
+                                  "productionBranch",
                                   "deployHooks"
                                 ],
                                 "type": "object"
@@ -31504,10 +34011,10 @@
                                 ]
                               }
                             },
+                            "type": "object",
                             "required": [
                               "functionDefaultRegions"
-                            ],
-                            "type": "object"
+                            ]
                           },
                           "rollbackDescription": {
                             "properties": {
@@ -31622,10 +34129,10 @@
                                 ]
                               }
                             },
+                            "type": "object",
                             "required": [
                               "functionDefaultRegions"
-                            ],
-                            "type": "object"
+                            ]
                           },
                           "rootDirectory": {
                             "nullable": true,
@@ -32366,6 +34873,12 @@
                                 "type": "array"
                               },
                               "trustedIps": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "v0Chat": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -34745,7 +37258,9 @@
                         "sanity",
                         "storybook",
                         "nitro",
-                        "hono"
+                        "hono",
+                        "express",
+                        "xmcp"
                       ]
                     },
                     "gitForkProtection": {
@@ -35140,6 +37655,10 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -35211,6 +37730,10 @@
                             }
                           },
                           "required": [
+                            "type",
+                            "org",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -35288,6 +37811,14 @@
                             }
                           },
                           "required": [
+                            "projectId",
+                            "projectName",
+                            "projectNameWithNamespace",
+                            "projectNamespace",
+                            "projectUrl",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -35361,6 +37892,14 @@
                             }
                           },
                           "required": [
+                            "name",
+                            "slug",
+                            "owner",
+                            "type",
+                            "uuid",
+                            "workspaceUuid",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -35435,6 +37974,11 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "host",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -35605,10 +38149,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rollbackDescription": {
                       "properties": {
@@ -35723,10 +38267,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rootDirectory": {
                       "nullable": true,
@@ -36467,6 +39011,12 @@
                           "type": "array"
                         },
                         "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -37792,11 +40342,34 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
           "409": {
             "description": "A project with the provided name already exists."
           },
           "428": {
             "description": "Owner does not have protection add-on"
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -37832,6 +40405,11 @@
                   },
                   "enableProductionFeedback": {
                     "description": "Opt-in to production toolbar on the project level",
+                    "type": "boolean",
+                    "nullable": true
+                  },
+                  "previewDeploymentsDisabled": {
+                    "description": "Specifies whether preview deployments are disabled for this project.",
                     "type": "boolean",
                     "nullable": true
                   },
@@ -37963,7 +40541,9 @@
                       "sanity",
                       "storybook",
                       "nitro",
-                      "hono"
+                      "hono",
+                      "express",
+                      "xmcp"
                     ]
                   },
                   "gitRepository": {
@@ -39090,7 +41670,9 @@
                         "sanity",
                         "storybook",
                         "nitro",
-                        "hono"
+                        "hono",
+                        "express",
+                        "xmcp"
                       ]
                     },
                     "gitForkProtection": {
@@ -39485,6 +42067,10 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -39556,6 +42142,10 @@
                             }
                           },
                           "required": [
+                            "type",
+                            "org",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -39633,6 +42223,14 @@
                             }
                           },
                           "required": [
+                            "projectId",
+                            "projectName",
+                            "projectNameWithNamespace",
+                            "projectNamespace",
+                            "projectUrl",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -39706,6 +42304,14 @@
                             }
                           },
                           "required": [
+                            "name",
+                            "slug",
+                            "owner",
+                            "type",
+                            "uuid",
+                            "workspaceUuid",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -39780,6 +42386,11 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "host",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -39950,10 +42561,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rollbackDescription": {
                       "properties": {
@@ -40068,10 +42679,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rootDirectory": {
                       "nullable": true,
@@ -41682,6 +44293,12 @@
                           "type": "array"
                         },
                         "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -43080,7 +45697,9 @@
                         "sanity",
                         "storybook",
                         "nitro",
-                        "hono"
+                        "hono",
+                        "express",
+                        "xmcp"
                       ]
                     },
                     "gitForkProtection": {
@@ -43475,6 +46094,10 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -43546,6 +46169,10 @@
                             }
                           },
                           "required": [
+                            "type",
+                            "org",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -43623,6 +46250,14 @@
                             }
                           },
                           "required": [
+                            "projectId",
+                            "projectName",
+                            "projectNameWithNamespace",
+                            "projectNamespace",
+                            "projectUrl",
+                            "type",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -43696,6 +46331,14 @@
                             }
                           },
                           "required": [
+                            "name",
+                            "slug",
+                            "owner",
+                            "type",
+                            "uuid",
+                            "workspaceUuid",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -43770,6 +46413,11 @@
                             }
                           },
                           "required": [
+                            "org",
+                            "type",
+                            "host",
+                            "gitCredentialId",
+                            "productionBranch",
                             "deployHooks"
                           ],
                           "type": "object"
@@ -43940,10 +46588,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rollbackDescription": {
                       "properties": {
@@ -44058,10 +46706,10 @@
                           ]
                         }
                       },
+                      "type": "object",
                       "required": [
                         "functionDefaultRegions"
-                      ],
-                      "type": "object"
+                      ]
                     },
                     "rootDirectory": {
                       "nullable": true,
@@ -44802,6 +47450,12 @@
                           "type": "array"
                         },
                         "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -46265,7 +48919,9 @@
                       "sanity",
                       "storybook",
                       "nitro",
-                      "hono"
+                      "hono",
+                      "express",
+                      "xmcp"
                     ],
                     "type": "string",
                     "nullable": true
@@ -49954,6 +52610,11 @@
                           "type": "boolean"
                         }
                       },
+                      "required": [
+                        "type",
+                        "value",
+                        "key"
+                      ],
                       "type": "object"
                     },
                     {
@@ -50367,6 +53028,11 @@
                                 "type": "boolean"
                               }
                             },
+                            "required": [
+                              "type",
+                              "value",
+                              "key"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -50792,6 +53458,11 @@
                                 "type": "boolean"
                               }
                             },
+                            "required": [
+                              "type",
+                              "value",
+                              "key"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -51351,6 +54022,11 @@
                               "type": "boolean"
                             }
                           },
+                          "required": [
+                            "type",
+                            "value",
+                            "key"
+                          ],
                           "type": "object"
                         },
                         {
@@ -51753,6 +54429,11 @@
                                 "type": "boolean"
                               }
                             },
+                            "required": [
+                              "type",
+                              "value",
+                              "key"
+                            ],
                             "type": "object"
                           },
                           "type": "array"
@@ -51885,8 +54566,31 @@
           "403": {
             "description": "You do not have permission to access this resource.\nThe environment variable cannot be created because it already exists\nAdditional permissions are required to create production environment variables"
           },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
           "409": {
             "description": "The project is being transfered and creating an environment variable is not possible"
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -55211,8 +57915,31 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
           "409": {
             "description": "The project is being transfered and removing an environment variable is not possible"
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -58758,6 +61485,7 @@
                                               "query",
                                               "cookie",
                                               "target_path",
+                                              "route",
                                               "raw_path",
                                               "ip_address",
                                               "protocol",
@@ -58772,7 +61500,8 @@
                                               "geo_as_number",
                                               "ja4_digest",
                                               "ja3_digest",
-                                              "rate_limit_api_id"
+                                              "rate_limit_api_id",
+                                              "server_action"
                                             ]
                                           },
                                           "op": {
@@ -59451,6 +62180,7 @@
                                         "query",
                                         "cookie",
                                         "target_path",
+                                        "route",
                                         "raw_path",
                                         "ip_address",
                                         "region",
@@ -59861,6 +62591,7 @@
                                           "query",
                                           "cookie",
                                           "target_path",
+                                          "route",
                                           "raw_path",
                                           "ip_address",
                                           "region",
@@ -59875,7 +62606,8 @@
                                           "geo_as_number",
                                           "ja4_digest",
                                           "ja3_digest",
-                                          "rate_limit_api_id"
+                                          "rate_limit_api_id",
+                                          "server_action"
                                         ]
                                       },
                                       "op": {
@@ -60108,6 +62840,7 @@
                                           "query",
                                           "cookie",
                                           "target_path",
+                                          "route",
                                           "raw_path",
                                           "ip_address",
                                           "region",
@@ -60122,7 +62855,8 @@
                                           "geo_as_number",
                                           "ja4_digest",
                                           "ja3_digest",
-                                          "rate_limit_api_id"
+                                          "rate_limit_api_id",
+                                          "server_action"
                                         ]
                                       },
                                       "op": {
@@ -60532,7 +63266,7 @@
                     "additionalProperties": false
                   },
                   {
-                    "description": "Remove an IPBlocking rule",
+                    "description": "Remove an IP Blocking rule",
                     "type": "object",
                     "properties": {
                       "action": {
@@ -60565,7 +63299,13 @@
                         ]
                       },
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "ai_bots",
+                          "bot_filter",
+                          "bot_protection",
+                          "owasp"
+                        ]
                       },
                       "value": {
                         "type": "object",
@@ -60603,7 +63343,13 @@
                         "type": "string"
                       },
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "ai_bots",
+                          "bot_filter",
+                          "bot_protection",
+                          "owasp"
+                        ]
                       },
                       "value": {
                         "type": "object",
@@ -60637,7 +63383,7 @@
                     "additionalProperties": false
                   },
                   {
-                    "description": "Toggle botID",
+                    "description": "Toggle bot ID",
                     "type": "object",
                     "properties": {
                       "action": {
@@ -60972,6 +63718,7 @@
                                           "query",
                                           "cookie",
                                           "target_path",
+                                          "route",
                                           "raw_path",
                                           "ip_address",
                                           "protocol",
@@ -60986,7 +63733,8 @@
                                           "geo_as_number",
                                           "ja4_digest",
                                           "ja3_digest",
-                                          "rate_limit_api_id"
+                                          "rate_limit_api_id",
+                                          "server_action"
                                         ],
                                         "description": "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
                                       },
@@ -62383,6 +65131,10 @@
                                   ]
                                 }
                               },
+                              "required": [
+                                "name",
+                                "id"
+                              ],
                               "type": "object",
                               "description": "Array of project memberships"
                             },
@@ -62647,158 +65399,94 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "properties": {
-                        "uid": {
-                          "type": "string",
-                          "description": "The ID of the invited user",
-                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
-                        },
-                        "username": {
-                          "type": "string",
-                          "description": "The username of the invited user",
-                          "example": "john-doe"
-                        },
-                        "email": {
-                          "type": "string",
-                          "description": "The email of the invited user. Not included if the user was invited via their UID.",
-                          "example": "john@user.co"
-                        },
-                        "role": {
-                          "type": "string",
-                          "enum": [
-                            "OWNER",
-                            "MEMBER",
-                            "DEVELOPER",
-                            "SECURITY",
-                            "BILLING",
-                            "VIEWER",
-                            "VIEWER_FOR_PLUS",
-                            "CONTRIBUTOR"
-                          ],
-                          "description": "The role used for the invitation",
-                          "example": "MEMBER"
-                        },
-                        "teamRoles": {
-                          "items": {
-                            "type": "string",
-                            "enum": [
-                              "OWNER",
-                              "MEMBER",
-                              "DEVELOPER",
-                              "SECURITY",
-                              "BILLING",
-                              "VIEWER",
-                              "VIEWER_FOR_PLUS",
-                              "CONTRIBUTOR"
-                            ],
-                            "description": "The team roles of the user",
-                            "example": [
-                              "MEMBER"
-                            ]
-                          },
-                          "type": "array",
-                          "description": "The team roles of the user",
-                          "example": [
-                            "MEMBER"
-                          ]
-                        },
-                        "teamPermissions": {
-                          "items": {
-                            "type": "string",
-                            "enum": [
-                              "CreateProject",
-                              "FullProductionDeployment",
-                              "UsageViewer",
-                              "EnvVariableManager",
-                              "EnvironmentManager",
-                              "V0Builder",
-                              "V0Chatter",
-                              "V0Viewer"
-                            ],
-                            "description": "The team permissions of the user",
-                            "example": [
-                              "CreateProject"
-                            ]
-                          },
-                          "type": "array",
-                          "description": "The team permissions of the user",
-                          "example": [
-                            "CreateProject"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "uid",
-                        "username",
-                        "role"
-                      ],
-                      "type": "object",
-                      "description": "The member was successfully added to the team"
+                  "properties": {
+                    "uid": {
+                      "type": "string",
+                      "description": "The ID of the invited user",
+                      "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
                     },
-                    {
-                      "properties": {
-                        "uid": {
-                          "type": "string"
-                        },
-                        "username": {
-                          "type": "string"
-                        },
-                        "role": {
-                          "type": "string",
-                          "enum": [
-                            "OWNER",
-                            "MEMBER",
-                            "DEVELOPER",
-                            "SECURITY",
-                            "BILLING",
-                            "VIEWER",
-                            "VIEWER_FOR_PLUS",
-                            "CONTRIBUTOR"
-                          ]
-                        },
-                        "teamRoles": {
-                          "items": {
-                            "type": "string",
-                            "enum": [
-                              "OWNER",
-                              "MEMBER",
-                              "DEVELOPER",
-                              "SECURITY",
-                              "BILLING",
-                              "VIEWER",
-                              "VIEWER_FOR_PLUS",
-                              "CONTRIBUTOR"
-                            ]
-                          },
-                          "type": "array"
-                        },
-                        "teamPermissions": {
-                          "items": {
-                            "type": "string",
-                            "enum": [
-                              "CreateProject",
-                              "FullProductionDeployment",
-                              "UsageViewer",
-                              "EnvVariableManager",
-                              "EnvironmentManager",
-                              "V0Builder",
-                              "V0Chatter",
-                              "V0Viewer"
-                            ]
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "required": [
-                        "uid",
-                        "username",
-                        "role"
+                    "username": {
+                      "type": "string",
+                      "description": "The username of the invited user",
+                      "example": "john-doe"
+                    },
+                    "email": {
+                      "type": "string",
+                      "description": "The email of the invited user.",
+                      "example": "john@user.co"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "OWNER",
+                        "MEMBER",
+                        "DEVELOPER",
+                        "SECURITY",
+                        "BILLING",
+                        "VIEWER",
+                        "VIEWER_FOR_PLUS",
+                        "CONTRIBUTOR"
                       ],
-                      "type": "object"
+                      "description": "The role used for the invitation",
+                      "example": "MEMBER"
+                    },
+                    "teamRoles": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "OWNER",
+                          "MEMBER",
+                          "DEVELOPER",
+                          "SECURITY",
+                          "BILLING",
+                          "VIEWER",
+                          "VIEWER_FOR_PLUS",
+                          "CONTRIBUTOR"
+                        ],
+                        "description": "The team roles of the user",
+                        "example": [
+                          "MEMBER"
+                        ]
+                      },
+                      "type": "array",
+                      "description": "The team roles of the user",
+                      "example": [
+                        "MEMBER"
+                      ]
+                    },
+                    "teamPermissions": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "CreateProject",
+                          "FullProductionDeployment",
+                          "UsageViewer",
+                          "EnvVariableManager",
+                          "EnvironmentManager",
+                          "V0Builder",
+                          "V0Chatter",
+                          "V0Viewer"
+                        ],
+                        "description": "The team permissions of the user",
+                        "example": [
+                          "CreateProject"
+                        ]
+                      },
+                      "type": "array",
+                      "description": "The team permissions of the user",
+                      "example": [
+                        "CreateProject"
+                      ]
                     }
-                  ]
+                  },
+                  "required": [
+                    "uid",
+                    "username",
+                    "email",
+                    "role"
+                  ],
+                  "type": "object",
+                  "description": "The member was successfully added to the team"
                 }
               }
             }
@@ -62847,12 +65535,10 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "email"
+                ],
                 "properties": {
-                  "uid": {
-                    "type": "string",
-                    "description": "The id of the user to invite",
-                    "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
-                  },
                   "email": {
                     "type": "string",
                     "format": "email",
@@ -65796,7 +68482,9 @@
                                     "sanity",
                                     "storybook",
                                     "nitro",
-                                    "hono"
+                                    "hono",
+                                    "express",
+                                    "xmcp"
                                   ]
                                 },
                                 "latestDeployment": {
@@ -66678,6 +69366,9 @@
                                       "enum": [
                                         "shareable-link"
                                       ]
+                                    },
+                                    "expires": {
+                                      "type": "number"
                                     }
                                   },
                                   "required": [
@@ -67166,6 +69857,9 @@
                                       "enum": [
                                         "shareable-link"
                                       ]
+                                    },
+                                    "expires": {
+                                      "type": "number"
                                     }
                                   },
                                   "required": [
@@ -67685,6 +70379,9 @@
                                   "enum": [
                                     "shareable-link"
                                   ]
+                                },
+                                "expires": {
+                                  "type": "number"
                                 }
                               },
                               "required": [
@@ -68234,6 +70931,11 @@
                   {
                     "type": "object",
                     "properties": {
+                      "ttl": {
+                        "description": "Optional time the shareable link is valid for in seconds. If not provided, the shareable link will never expire.",
+                        "type": "number",
+                        "maximum": 63072000
+                      },
                       "revoke": {
                         "description": "Optional instructions for revoking and regenerating a shareable link",
                         "type": "object",
@@ -69292,6 +71994,25 @@
                             "description": "Vercel URL to inspect the deployment.",
                             "example": "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq"
                           },
+                          "errorCode": {
+                            "type": "string",
+                            "description": "Error code when the deployment is in an error state.",
+                            "example": "BUILD_FAILED"
+                          },
+                          "errorMessage": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "Error message when the deployment is in an canceled or error state.",
+                            "example": "The Deployment has been canceled because this project was not affected"
+                          },
+                          "oomReport": {
+                            "type": "string",
+                            "enum": [
+                              "out-of-memory"
+                            ],
+                            "description": "Indicates if the deployment encountered an out-of-memory error.",
+                            "example": "out-of-memory"
+                          },
                           "isRollbackCandidate": {
                             "nullable": true,
                             "type": "boolean",
@@ -69350,7 +72071,9 @@
                                   "sanity",
                                   "storybook",
                                   "nitro",
-                                  "hono"
+                                  "hono",
+                                  "express",
+                                  "xmcp"
                                 ]
                               },
                               "gitForkProtection": {
@@ -72456,6 +75179,9 @@
                             "type": "string"
                           }
                         },
+                        "required": [
+                          "updatedAt"
+                        ],
                         "type": "object"
                       },
                       "acceptanceState": {
@@ -73237,6 +75963,11 @@
                             }
                           },
                           "required": [
+                            "created",
+                            "createdAt",
+                            "role",
+                            "confirmed",
+                            "confirmedAt",
                             "teamId"
                           ],
                           "type": "object"
@@ -74098,6 +76829,10 @@
                                 "type": "number"
                               }
                             },
+                            "required": [
+                              "updatedAt",
+                              "blockReason"
+                            ],
                             "type": "object"
                           },
                           "monitoring": {
@@ -74127,6 +76862,8 @@
                               }
                             },
                             "required": [
+                              "updatedAt",
+                              "blockReason",
                               "blockType"
                             ],
                             "type": "object",
@@ -74159,6 +76896,8 @@
                               }
                             },
                             "required": [
+                              "updatedAt",
+                              "blockReason",
                               "blockType"
                             ],
                             "type": "object"
@@ -74302,6 +77041,8 @@
                               }
                             },
                             "required": [
+                              "updatedAt",
+                              "blockReason",
                               "overageReason"
                             ],
                             "type": "object"
@@ -74370,6 +77111,8 @@
                               }
                             },
                             "required": [
+                              "updatedAt",
+                              "blockReason",
                               "overageReason"
                             ],
                             "type": "object"
@@ -74438,6 +77181,8 @@
                               }
                             },
                             "required": [
+                              "updatedAt",
+                              "blockReason",
                               "overageReason"
                             ],
                             "type": "object"
@@ -75785,6 +78530,10 @@
                     "type": "number"
                   }
                 },
+                "required": [
+                  "projectId",
+                  "projectName"
+                ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -76964,6 +79713,11 @@
                         "type": "string"
                       }
                     },
+                    "required": [
+                      "role",
+                      "uid",
+                      "createdAt"
+                    ],
                     "type": "object"
                   }
                 },
@@ -77010,6 +79764,11 @@
                         "type": "string"
                       }
                     },
+                    "required": [
+                      "role",
+                      "uid",
+                      "createdAt"
+                    ],
                     "type": "object"
                   }
                 },
@@ -78143,6 +80902,16 @@
             "type": "string",
             "description": "The hostname that is current set as preview deployment suffix.",
             "example": "example.dev"
+          },
+          "disableHardAutoBlocks": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
           },
           "remoteCaching": {
             "properties": {

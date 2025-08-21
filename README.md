@@ -406,6 +406,7 @@ run();
 * [getConfigurations](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
 * [getConfiguration](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 * [deleteConfiguration](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
+* [getConfigurationProducts](docs/sdks/integrations/README.md#getconfigurationproducts) - List products for integration configuration
 
 ### [logDrains](docs/sdks/logdrains/README.md)
 
@@ -627,6 +628,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentUpdateCustomEnvironment`](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
+- [`integrationsGetConfigurationProducts`](docs/sdks/integrations/README.md#getconfigurationproducts) - List products for integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
 - [`logDrainsCreateLogDrain`](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
 - [`logDrainsDeleteIntegrationLogDrain`](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
@@ -905,8 +907,8 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 102 of 173 methods.*
-* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): . Status code `429`. Applicable to 1 of 173 methods.*
+* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 106 of 174 methods.*
+* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): . Status code `429`. Applicable to 4 of 174 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

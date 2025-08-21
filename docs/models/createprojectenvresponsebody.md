@@ -8,15 +8,12 @@ The environment variable was created successfully
 import { CreateProjectEnvResponseBody } from "@vercel/sdk/models/createprojectenvop.js";
 
 let value: CreateProjectEnvResponseBody = {
-  created: {},
-  failed: [
-    {
-      error: {
-        code: "<value>",
-        message: "<value>",
-      },
-    },
-  ],
+  created: {
+    type: "sensitive",
+    value: "<value>",
+    key: "<key>",
+  },
+  failed: [],
 };
 ```
 

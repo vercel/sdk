@@ -545,16 +545,16 @@ export type CreateProjectEnvCreatedInternalContentHint = {
 
 export type Created2 = {
   target?: Array<string> | CreateProjectEnvTargetProjects2 | undefined;
-  type?: CreateProjectEnvCreatedType | undefined;
+  type: CreateProjectEnvCreatedType;
   /**
    * This is used to identiy variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value?: string | undefined;
+  value: string;
   vsmValue?: string | undefined;
   id?: string | undefined;
-  key?: string | undefined;
+  key: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -876,16 +876,16 @@ export type CreatedInternalContentHint = {
 
 export type Created1 = {
   target?: Array<CreateProjectEnvTarget1> | CreateProjectEnvTarget2 | undefined;
-  type?: CreatedType | undefined;
+  type: CreatedType;
   /**
    * This is used to identiy variables that have been migrated from type secret to sensitive.
    */
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value?: string | undefined;
+  value: string;
   vsmValue?: string | undefined;
   id?: string | undefined;
-  key?: string | undefined;
+  key: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -3387,13 +3387,13 @@ export const Created2$inboundSchema: z.ZodType<
     z.array(z.string()),
     CreateProjectEnvTargetProjects2$inboundSchema,
   ]).optional(),
-  type: CreateProjectEnvCreatedType$inboundSchema.optional(),
+  type: CreateProjectEnvCreatedType$inboundSchema,
   sunsetSecretId: z.string().optional(),
   decrypted: z.boolean().optional(),
-  value: z.string().optional(),
+  value: z.string(),
   vsmValue: z.string().optional(),
   id: z.string().optional(),
-  key: z.string().optional(),
+  key: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
@@ -3432,13 +3432,13 @@ export const Created2$inboundSchema: z.ZodType<
 /** @internal */
 export type Created2$Outbound = {
   target?: Array<string> | string | undefined;
-  type?: string | undefined;
+  type: string;
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value?: string | undefined;
+  value: string;
   vsmValue?: string | undefined;
   id?: string | undefined;
-  key?: string | undefined;
+  key: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -3484,13 +3484,13 @@ export const Created2$outboundSchema: z.ZodType<
     z.array(z.string()),
     CreateProjectEnvTargetProjects2$outboundSchema,
   ]).optional(),
-  type: CreateProjectEnvCreatedType$outboundSchema.optional(),
+  type: CreateProjectEnvCreatedType$outboundSchema,
   sunsetSecretId: z.string().optional(),
   decrypted: z.boolean().optional(),
-  value: z.string().optional(),
+  value: z.string(),
   vsmValue: z.string().optional(),
   id: z.string().optional(),
-  key: z.string().optional(),
+  key: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
@@ -5163,13 +5163,13 @@ export const Created1$inboundSchema: z.ZodType<
     z.array(CreateProjectEnvTarget1$inboundSchema),
     CreateProjectEnvTarget2$inboundSchema,
   ]).optional(),
-  type: CreatedType$inboundSchema.optional(),
+  type: CreatedType$inboundSchema,
   sunsetSecretId: z.string().optional(),
   decrypted: z.boolean().optional(),
-  value: z.string().optional(),
+  value: z.string(),
   vsmValue: z.string().optional(),
   id: z.string().optional(),
-  key: z.string().optional(),
+  key: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
@@ -5208,13 +5208,13 @@ export const Created1$inboundSchema: z.ZodType<
 /** @internal */
 export type Created1$Outbound = {
   target?: Array<string> | string | undefined;
-  type?: string | undefined;
+  type: string;
   sunsetSecretId?: string | undefined;
   decrypted?: boolean | undefined;
-  value?: string | undefined;
+  value: string;
   vsmValue?: string | undefined;
   id?: string | undefined;
-  key?: string | undefined;
+  key: string;
   configurationId?: string | null | undefined;
   createdAt?: number | undefined;
   updatedAt?: number | undefined;
@@ -5257,13 +5257,13 @@ export const Created1$outboundSchema: z.ZodType<
     z.array(CreateProjectEnvTarget1$outboundSchema),
     CreateProjectEnvTarget2$outboundSchema,
   ]).optional(),
-  type: CreatedType$outboundSchema.optional(),
+  type: CreatedType$outboundSchema,
   sunsetSecretId: z.string().optional(),
   decrypted: z.boolean().optional(),
-  value: z.string().optional(),
+  value: z.string(),
   vsmValue: z.string().optional(),
   id: z.string().optional(),
-  key: z.string().optional(),
+  key: z.string(),
   configurationId: z.nullable(z.string()).optional(),
   createdAt: z.number().optional(),
   updatedAt: z.number().optional(),

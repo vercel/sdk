@@ -5,7 +5,9 @@
 ```typescript
 import { Abuse } from "@vercel/sdk/models/userevent.js";
 
-let value: Abuse = {};
+let value: Abuse = {
+  updatedAt: 72.13,
+};
 ```
 
 ## Fields
@@ -18,7 +20,7 @@ let value: Abuse = {};
 | `gitLineageBlocks`                                                                                | *number*                                                                                          | :heavy_minus_sign:                                                                                | Since September 2023. How often did this owner trigger an actual git lineage deploy block?        |
 | `gitLineageBlocksDry`                                                                             | *number*                                                                                          | :heavy_minus_sign:                                                                                | Since September 2023. How often did this owner trigger a git lineage deploy block dry run?        |
 | `scanner`                                                                                         | *string*                                                                                          | :heavy_minus_sign:                                                                                | Since November 2021. Guides the abuse scanner in build container.                                 |
-| `updatedAt`                                                                                       | *number*                                                                                          | :heavy_minus_sign:                                                                                | Since November 2021                                                                               |
+| `updatedAt`                                                                                       | *number*                                                                                          | :heavy_check_mark:                                                                                | Since November 2021                                                                               |
 | `creationUserAgent`                                                                               | *string*                                                                                          | :heavy_minus_sign:                                                                                | N/A                                                                                               |
 | `creationIp`                                                                                      | *string*                                                                                          | :heavy_minus_sign:                                                                                | N/A                                                                                               |
 | `removedPhoneNumbers`                                                                             | *string*                                                                                          | :heavy_minus_sign:                                                                                | N/A                                                                                               |

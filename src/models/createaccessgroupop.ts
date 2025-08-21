@@ -57,7 +57,15 @@ export type CreateAccessGroupRequest = {
   requestBody: CreateAccessGroupRequestBody;
 };
 
+export const CreateAccessGroupEntitlements = {
+  V0: "v0",
+} as const;
+export type CreateAccessGroupEntitlements = ClosedEnum<
+  typeof CreateAccessGroupEntitlements
+>;
+
 export type CreateAccessGroupResponseBody = {
+  entitlements: Array<CreateAccessGroupEntitlements>;
   membersCount: number;
   projectsCount: number;
   /**
@@ -301,11 +309,33 @@ export function createAccessGroupRequestFromJSON(
 }
 
 /** @internal */
+export const CreateAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
+  typeof CreateAccessGroupEntitlements
+> = z.nativeEnum(CreateAccessGroupEntitlements);
+
+/** @internal */
+export const CreateAccessGroupEntitlements$outboundSchema: z.ZodNativeEnum<
+  typeof CreateAccessGroupEntitlements
+> = CreateAccessGroupEntitlements$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateAccessGroupEntitlements$ {
+  /** @deprecated use `CreateAccessGroupEntitlements$inboundSchema` instead. */
+  export const inboundSchema = CreateAccessGroupEntitlements$inboundSchema;
+  /** @deprecated use `CreateAccessGroupEntitlements$outboundSchema` instead. */
+  export const outboundSchema = CreateAccessGroupEntitlements$outboundSchema;
+}
+
+/** @internal */
 export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
   CreateAccessGroupResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  entitlements: z.array(CreateAccessGroupEntitlements$inboundSchema),
   membersCount: z.number(),
   projectsCount: z.number(),
   name: z.string(),
@@ -319,6 +349,7 @@ export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateAccessGroupResponseBody$Outbound = {
+  entitlements: Array<string>;
   membersCount: number;
   projectsCount: number;
   name: string;
@@ -336,6 +367,7 @@ export const CreateAccessGroupResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateAccessGroupResponseBody
 > = z.object({
+  entitlements: z.array(CreateAccessGroupEntitlements$outboundSchema),
   membersCount: z.number(),
   projectsCount: z.number(),
   name: z.string(),

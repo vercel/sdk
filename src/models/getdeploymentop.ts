@@ -59,10 +59,10 @@ export type GetDeploymentResponseBodyOutput = {
  * A partial representation of a Build used by the deployment endpoint.
  */
 export type ResponseBodyLambdas = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?: GetDeploymentResponseBodyDeploymentsReadyState | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<GetDeploymentResponseBodyOutput>;
 };
@@ -225,13 +225,6 @@ export type ResponseBodyAliasWarning = {
   action?: string | undefined;
 };
 
-export const GetDeploymentResponseBodyDeploymentsType = {
-  Lambdas: "LAMBDAS",
-} as const;
-export type GetDeploymentResponseBodyDeploymentsType = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsType
->;
-
 export const GetDeploymentResponseBodyReadyState = {
   Queued: "QUEUED",
   Building: "BUILDING",
@@ -242,6 +235,13 @@ export const GetDeploymentResponseBodyReadyState = {
 } as const;
 export type GetDeploymentResponseBodyReadyState = ClosedEnum<
   typeof GetDeploymentResponseBodyReadyState
+>;
+
+export const GetDeploymentResponseBodyDeploymentsType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type GetDeploymentResponseBodyDeploymentsType = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsType
 >;
 
 export type GetDeploymentResponseBodyAliasError = {
@@ -685,10 +685,10 @@ export type GetDeploymentResponseBody2 = {
   oomReport?: ResponseBodyOomReport | undefined;
   aliasWarning?: ResponseBodyAliasWarning | null | undefined;
   id: string;
-  name: string;
-  type: GetDeploymentResponseBodyDeploymentsType;
   createdAt: number;
   readyState: GetDeploymentResponseBodyReadyState;
+  name: string;
+  type: GetDeploymentResponseBodyDeploymentsType;
   aliasError?: GetDeploymentResponseBodyAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   /**
@@ -812,6 +812,8 @@ export const ResponseBodyFramework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 export type ResponseBodyFramework = ClosedEnum<typeof ResponseBodyFramework>;
 
@@ -960,12 +962,12 @@ export type ResponseBodyOutput = {
  * A partial representation of a Build used by the deployment endpoint.
  */
 export type GetDeploymentResponseBodyLambdas = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?:
     | GetDeploymentResponseBodyDeploymentsResponseReadyState
     | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<ResponseBodyOutput>;
 };
@@ -1131,13 +1133,6 @@ export type GetDeploymentResponseBodyAliasWarning = {
   action?: string | undefined;
 };
 
-export const GetDeploymentResponseBodyType = {
-  Lambdas: "LAMBDAS",
-} as const;
-export type GetDeploymentResponseBodyType = ClosedEnum<
-  typeof GetDeploymentResponseBodyType
->;
-
 export const ResponseBodyReadyState = {
   Queued: "QUEUED",
   Building: "BUILDING",
@@ -1147,6 +1142,13 @@ export const ResponseBodyReadyState = {
   Canceled: "CANCELED",
 } as const;
 export type ResponseBodyReadyState = ClosedEnum<typeof ResponseBodyReadyState>;
+
+export const GetDeploymentResponseBodyType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type GetDeploymentResponseBodyType = ClosedEnum<
+  typeof GetDeploymentResponseBodyType
+>;
 
 export type ResponseBodyAliasError = {
   code: string;
@@ -2155,10 +2157,10 @@ export type GetDeploymentResponseBody1 = {
   oomReport?: GetDeploymentResponseBodyOomReport | undefined;
   aliasWarning?: GetDeploymentResponseBodyAliasWarning | null | undefined;
   id: string;
-  name: string;
-  type: GetDeploymentResponseBodyType;
   createdAt: number;
   readyState: ResponseBodyReadyState;
+  name: string;
+  type: GetDeploymentResponseBodyType;
   aliasError?: ResponseBodyAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   /**
@@ -2476,21 +2478,21 @@ export const ResponseBodyLambdas$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
   readyState: GetDeploymentResponseBodyDeploymentsReadyState$inboundSchema
     .optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => GetDeploymentResponseBodyOutput$inboundSchema)),
 });
 
 /** @internal */
 export type ResponseBodyLambdas$Outbound = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?: string | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<GetDeploymentResponseBodyOutput$Outbound>;
 };
@@ -2501,11 +2503,11 @@ export const ResponseBodyLambdas$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ResponseBodyLambdas
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
   readyState: GetDeploymentResponseBodyDeploymentsReadyState$outboundSchema
     .optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => GetDeploymentResponseBodyOutput$outboundSchema)),
 });
@@ -3199,29 +3201,6 @@ export function responseBodyAliasWarningFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsType> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsType);
-
-/** @internal */
-export const GetDeploymentResponseBodyDeploymentsType$outboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsType> =
-    GetDeploymentResponseBodyDeploymentsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentResponseBodyDeploymentsType$ {
-  /** @deprecated use `GetDeploymentResponseBodyDeploymentsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentResponseBodyDeploymentsType$inboundSchema;
-  /** @deprecated use `GetDeploymentResponseBodyDeploymentsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentResponseBodyDeploymentsType$outboundSchema;
-}
-
-/** @internal */
 export const GetDeploymentResponseBodyReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentResponseBodyReadyState
 > = z.nativeEnum(GetDeploymentResponseBodyReadyState);
@@ -3242,6 +3221,29 @@ export namespace GetDeploymentResponseBodyReadyState$ {
   /** @deprecated use `GetDeploymentResponseBodyReadyState$outboundSchema` instead. */
   export const outboundSchema =
     GetDeploymentResponseBodyReadyState$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsType> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsType);
+
+/** @internal */
+export const GetDeploymentResponseBodyDeploymentsType$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsType> =
+    GetDeploymentResponseBodyDeploymentsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentResponseBodyDeploymentsType$ {
+  /** @deprecated use `GetDeploymentResponseBodyDeploymentsType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentResponseBodyDeploymentsType$inboundSchema;
+  /** @deprecated use `GetDeploymentResponseBodyDeploymentsType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentResponseBodyDeploymentsType$outboundSchema;
 }
 
 /** @internal */
@@ -5450,10 +5452,10 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   aliasWarning: z.nullable(z.lazy(() => ResponseBodyAliasWarning$inboundSchema))
     .optional(),
   id: z.string(),
-  name: z.string(),
-  type: GetDeploymentResponseBodyDeploymentsType$inboundSchema,
   createdAt: z.number(),
   readyState: GetDeploymentResponseBodyReadyState$inboundSchema,
+  name: z.string(),
+  type: GetDeploymentResponseBodyDeploymentsType$inboundSchema,
   aliasError: z.nullable(
     z.lazy(() => GetDeploymentResponseBodyAliasError$inboundSchema),
   ).optional(),
@@ -5534,10 +5536,10 @@ export type GetDeploymentResponseBody2$Outbound = {
   oomReport?: string | undefined;
   aliasWarning?: ResponseBodyAliasWarning$Outbound | null | undefined;
   id: string;
-  name: string;
-  type: string;
   createdAt: number;
   readyState: string;
+  name: string;
+  type: string;
   aliasError?: GetDeploymentResponseBodyAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -5619,10 +5621,10 @@ export const GetDeploymentResponseBody2$outboundSchema: z.ZodType<
     z.lazy(() => ResponseBodyAliasWarning$outboundSchema),
   ).optional(),
   id: z.string(),
-  name: z.string(),
-  type: GetDeploymentResponseBodyDeploymentsType$outboundSchema,
   createdAt: z.number(),
   readyState: GetDeploymentResponseBodyReadyState$outboundSchema,
+  name: z.string(),
+  type: GetDeploymentResponseBodyDeploymentsType$outboundSchema,
   aliasError: z.nullable(
     z.lazy(() => GetDeploymentResponseBodyAliasError$outboundSchema),
   ).optional(),
@@ -6621,22 +6623,22 @@ export const GetDeploymentResponseBodyLambdas$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
   readyState:
     GetDeploymentResponseBodyDeploymentsResponseReadyState$inboundSchema
       .optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => ResponseBodyOutput$inboundSchema)),
 });
 
 /** @internal */
 export type GetDeploymentResponseBodyLambdas$Outbound = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?: string | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<ResponseBodyOutput$Outbound>;
 };
@@ -6647,12 +6649,12 @@ export const GetDeploymentResponseBodyLambdas$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentResponseBodyLambdas
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
   readyState:
     GetDeploymentResponseBodyDeploymentsResponseReadyState$outboundSchema
       .optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => ResponseBodyOutput$outboundSchema)),
 });
@@ -7406,27 +7408,6 @@ export function getDeploymentResponseBodyAliasWarningFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentResponseBodyType
-> = z.nativeEnum(GetDeploymentResponseBodyType);
-
-/** @internal */
-export const GetDeploymentResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentResponseBodyType
-> = GetDeploymentResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentResponseBodyType$ {
-  /** @deprecated use `GetDeploymentResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentResponseBodyType$inboundSchema;
-  /** @deprecated use `GetDeploymentResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentResponseBodyType$outboundSchema;
-}
-
-/** @internal */
 export const ResponseBodyReadyState$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyReadyState
 > = z.nativeEnum(ResponseBodyReadyState);
@@ -7445,6 +7426,27 @@ export namespace ResponseBodyReadyState$ {
   export const inboundSchema = ResponseBodyReadyState$inboundSchema;
   /** @deprecated use `ResponseBodyReadyState$outboundSchema` instead. */
   export const outboundSchema = ResponseBodyReadyState$outboundSchema;
+}
+
+/** @internal */
+export const GetDeploymentResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyType
+> = z.nativeEnum(GetDeploymentResponseBodyType);
+
+/** @internal */
+export const GetDeploymentResponseBodyType$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyType
+> = GetDeploymentResponseBodyType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentResponseBodyType$ {
+  /** @deprecated use `GetDeploymentResponseBodyType$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentResponseBodyType$inboundSchema;
+  /** @deprecated use `GetDeploymentResponseBodyType$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentResponseBodyType$outboundSchema;
 }
 
 /** @internal */
@@ -13289,10 +13291,10 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentResponseBodyAliasWarning$inboundSchema),
   ).optional(),
   id: z.string(),
-  name: z.string(),
-  type: GetDeploymentResponseBodyType$inboundSchema,
   createdAt: z.number(),
   readyState: ResponseBodyReadyState$inboundSchema,
+  name: z.string(),
+  type: GetDeploymentResponseBodyType$inboundSchema,
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$inboundSchema))
     .optional(),
   aliasFinal: z.nullable(z.string()).optional(),
@@ -13422,10 +13424,10 @@ export type GetDeploymentResponseBody1$Outbound = {
     | null
     | undefined;
   id: string;
-  name: string;
-  type: string;
   createdAt: number;
   readyState: string;
+  name: string;
+  type: string;
   aliasError?: ResponseBodyAliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -13557,10 +13559,10 @@ export const GetDeploymentResponseBody1$outboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentResponseBodyAliasWarning$outboundSchema),
   ).optional(),
   id: z.string(),
-  name: z.string(),
-  type: GetDeploymentResponseBodyType$outboundSchema,
   createdAt: z.number(),
   readyState: ResponseBodyReadyState$outboundSchema,
+  name: z.string(),
+  type: GetDeploymentResponseBodyType$outboundSchema,
   aliasError: z.nullable(z.lazy(() => ResponseBodyAliasError$outboundSchema))
     .optional(),
   aliasFinal: z.nullable(z.string()).optional(),

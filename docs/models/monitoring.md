@@ -8,7 +8,9 @@ A soft block indicates a temporary pause in data collection (ex limit exceeded f
 import { Monitoring } from "@vercel/sdk/models/userevent.js";
 
 let value: Monitoring = {
-  blockType: "soft",
+  updatedAt: 4865.72,
+  blockReason: "admin_override",
+  blockType: "hard",
 };
 ```
 
@@ -16,8 +18,8 @@ let value: Monitoring = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `updatedAt`                                                  | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `updatedAt`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
 | `blockedFrom`                                                | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `blockedUntil`                                               | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `blockReason`                                                | [models.PayloadBlockReason](../models/payloadblockreason.md) | :heavy_minus_sign:                                           | N/A                                                          |
+| `blockReason`                                                | [models.PayloadBlockReason](../models/payloadblockreason.md) | :heavy_check_mark:                                           | N/A                                                          |
 | `blockType`                                                  | [models.BlockType](../models/blocktype.md)                   | :heavy_check_mark:                                           | N/A                                                          |

@@ -8,7 +8,7 @@ import { PutFirewallConfigConditionGroup } from "@vercel/sdk/models/putfirewallc
 let value: PutFirewallConfigConditionGroup = {
   conditions: [
     {
-      type: "rate_limit_api_id",
+      type: "server_action",
       op: "gt",
     },
   ],

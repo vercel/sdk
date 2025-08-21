@@ -91,6 +91,8 @@ export const CancelDeploymentFramework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 export type CancelDeploymentFramework = ClosedEnum<
   typeof CancelDeploymentFramework
@@ -245,10 +247,10 @@ export type CancelDeploymentOutput = {
  * A partial representation of a Build used by the deployment endpoint.
  */
 export type CancelDeploymentLambdas = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?: CancelDeploymentDeploymentsReadyState | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CancelDeploymentOutput>;
 };
@@ -2524,20 +2526,20 @@ export const CancelDeploymentLambdas$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
   readyState: CancelDeploymentDeploymentsReadyState$inboundSchema.optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => CancelDeploymentOutput$inboundSchema)),
 });
 
 /** @internal */
 export type CancelDeploymentLambdas$Outbound = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?: string | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CancelDeploymentOutput$Outbound>;
 };
@@ -2548,10 +2550,10 @@ export const CancelDeploymentLambdas$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentLambdas
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
   readyState: CancelDeploymentDeploymentsReadyState$outboundSchema.optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => CancelDeploymentOutput$outboundSchema)),
 });

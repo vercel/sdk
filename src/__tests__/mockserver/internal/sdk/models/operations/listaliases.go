@@ -452,6 +452,7 @@ type ListAliasesProtectionBypassShareableLink struct {
 	CreatedAt float64                       `json:"createdAt"`
 	CreatedBy string                        `json:"createdBy"`
 	Scope     ListAliasesScopeShareableLink `json:"scope"`
+	Expires   *float64                      `json:"expires,omitempty"`
 }
 
 func (o *ListAliasesProtectionBypassShareableLink) GetCreatedAt() float64 {
@@ -473,6 +474,13 @@ func (o *ListAliasesProtectionBypassShareableLink) GetScope() ListAliasesScopeSh
 		return ListAliasesScopeShareableLink("")
 	}
 	return o.Scope
+}
+
+func (o *ListAliasesProtectionBypassShareableLink) GetExpires() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Expires
 }
 
 type ListAliasesProtectionBypassUnionType string
@@ -531,17 +539,17 @@ func CreateListAliasesProtectionBypassUnionListAliasesProtectionBypassEmailInvit
 
 func (u *ListAliasesProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var listAliasesProtectionBypassShareableLink ListAliasesProtectionBypassShareableLink = ListAliasesProtectionBypassShareableLink{}
-	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassShareableLink, "", true, true); err == nil {
-		u.ListAliasesProtectionBypassShareableLink = &listAliasesProtectionBypassShareableLink
-		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassShareableLink
-		return nil
-	}
-
 	var listAliasesProtectionBypassAliasProtectionOverride ListAliasesProtectionBypassAliasProtectionOverride = ListAliasesProtectionBypassAliasProtectionOverride{}
 	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassAliasProtectionOverride, "", true, true); err == nil {
 		u.ListAliasesProtectionBypassAliasProtectionOverride = &listAliasesProtectionBypassAliasProtectionOverride
 		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassAliasProtectionOverride
+		return nil
+	}
+
+	var listAliasesProtectionBypassShareableLink ListAliasesProtectionBypassShareableLink = ListAliasesProtectionBypassShareableLink{}
+	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassShareableLink, "", true, true); err == nil {
+		u.ListAliasesProtectionBypassShareableLink = &listAliasesProtectionBypassShareableLink
+		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassShareableLink
 		return nil
 	}
 

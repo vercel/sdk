@@ -11,7 +11,11 @@ let value: OneHundredAndThirtySix = {
   project: {
     name: "<value>",
   },
-  removedMembership: {},
+  removedMembership: {
+    role: "ADMIN",
+    uid: "<id>",
+    createdAt: 5391.89,
+  },
 };
 ```
 

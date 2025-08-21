@@ -370,6 +370,7 @@ type GetAliasProtectionBypassShareableLink struct {
 	CreatedAt float64                    `json:"createdAt"`
 	CreatedBy string                     `json:"createdBy"`
 	Scope     GetAliasScopeShareableLink `json:"scope"`
+	Expires   *float64                   `json:"expires,omitempty"`
 }
 
 func (o *GetAliasProtectionBypassShareableLink) GetCreatedAt() float64 {
@@ -391,6 +392,13 @@ func (o *GetAliasProtectionBypassShareableLink) GetScope() GetAliasScopeShareabl
 		return GetAliasScopeShareableLink("")
 	}
 	return o.Scope
+}
+
+func (o *GetAliasProtectionBypassShareableLink) GetExpires() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Expires
 }
 
 type GetAliasProtectionBypassUnionType string
@@ -449,17 +457,17 @@ func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassEmailInvite(getA
 
 func (u *GetAliasProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink = GetAliasProtectionBypassShareableLink{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassShareableLink, "", true, true); err == nil {
-		u.GetAliasProtectionBypassShareableLink = &getAliasProtectionBypassShareableLink
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
-		return nil
-	}
-
 	var getAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride = GetAliasProtectionBypassAliasProtectionOverride{}
 	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassAliasProtectionOverride, "", true, true); err == nil {
 		u.GetAliasProtectionBypassAliasProtectionOverride = &getAliasProtectionBypassAliasProtectionOverride
 		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride
+		return nil
+	}
+
+	var getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink = GetAliasProtectionBypassShareableLink{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassShareableLink, "", true, true); err == nil {
+		u.GetAliasProtectionBypassShareableLink = &getAliasProtectionBypassShareableLink
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
 		return nil
 	}
 

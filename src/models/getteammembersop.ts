@@ -141,8 +141,8 @@ export type GetTeamMembersTeamsResponseRole = ClosedEnum<
  * Array of project memberships
  */
 export type GetTeamMembersProjects = {
-  name?: string | undefined;
-  id?: string | undefined;
+  name: string;
+  id: string;
   role?: GetTeamMembersTeamsResponseRole | undefined;
 };
 
@@ -718,15 +718,15 @@ export const GetTeamMembersProjects$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  id: z.string().optional(),
+  name: z.string(),
+  id: z.string(),
   role: GetTeamMembersTeamsResponseRole$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetTeamMembersProjects$Outbound = {
-  name?: string | undefined;
-  id?: string | undefined;
+  name: string;
+  id: string;
   role?: string | undefined;
 };
 
@@ -736,8 +736,8 @@ export const GetTeamMembersProjects$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTeamMembersProjects
 > = z.object({
-  name: z.string().optional(),
-  id: z.string().optional(),
+  name: z.string(),
+  id: z.string(),
   role: GetTeamMembersTeamsResponseRole$outboundSchema.optional(),
 });
 

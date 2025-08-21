@@ -265,6 +265,19 @@ export type GetDeploymentsChecks = {
   deploymentAlias: GetDeploymentsDeploymentAlias;
 };
 
+/**
+ * Indicates if the deployment encountered an out-of-memory error.
+ */
+export const GetDeploymentsOomReport = {
+  OutOfMemory: "out-of-memory",
+} as const;
+/**
+ * Indicates if the deployment encountered an out-of-memory error.
+ */
+export type GetDeploymentsOomReport = ClosedEnum<
+  typeof GetDeploymentsOomReport
+>;
+
 export const GetDeploymentsFramework = {
   Blitzjs: "blitzjs",
   Nextjs: "nextjs",
@@ -314,6 +327,8 @@ export const GetDeploymentsFramework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 export type GetDeploymentsFramework = ClosedEnum<
   typeof GetDeploymentsFramework
@@ -501,6 +516,18 @@ export type Deployments = {
    * Vercel URL to inspect the deployment.
    */
   inspectorUrl: string | null;
+  /**
+   * Error code when the deployment is in an error state.
+   */
+  errorCode?: string | undefined;
+  /**
+   * Error message when the deployment is in an canceled or error state.
+   */
+  errorMessage?: string | null | undefined;
+  /**
+   * Indicates if the deployment encountered an out-of-memory error.
+   */
+  oomReport?: GetDeploymentsOomReport | undefined;
   /**
    * Deployment can be used for instant rollback
    */
@@ -1126,6 +1153,27 @@ export function getDeploymentsChecksFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentsOomReport$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsOomReport
+> = z.nativeEnum(GetDeploymentsOomReport);
+
+/** @internal */
+export const GetDeploymentsOomReport$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentsOomReport
+> = GetDeploymentsOomReport$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentsOomReport$ {
+  /** @deprecated use `GetDeploymentsOomReport$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentsOomReport$inboundSchema;
+  /** @deprecated use `GetDeploymentsOomReport$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentsOomReport$outboundSchema;
+}
+
+/** @internal */
 export const GetDeploymentsFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsFramework
 > = z.nativeEnum(GetDeploymentsFramework);
@@ -1565,6 +1613,9 @@ export const Deployments$inboundSchema: z.ZodType<
   checksConclusion: GetDeploymentsChecksConclusion$inboundSchema.optional(),
   checks: z.lazy(() => GetDeploymentsChecks$inboundSchema).optional(),
   inspectorUrl: z.nullable(z.string()),
+  errorCode: z.string().optional(),
+  errorMessage: z.nullable(z.string()).optional(),
+  oomReport: GetDeploymentsOomReport$inboundSchema.optional(),
   isRollbackCandidate: z.nullable(z.boolean()).optional(),
   projectSettings: z.lazy(() => GetDeploymentsProjectSettings$inboundSchema)
     .optional(),
@@ -1605,6 +1656,9 @@ export type Deployments$Outbound = {
   checksConclusion?: string | undefined;
   checks?: GetDeploymentsChecks$Outbound | undefined;
   inspectorUrl: string | null;
+  errorCode?: string | undefined;
+  errorMessage?: string | null | undefined;
+  oomReport?: string | undefined;
   isRollbackCandidate?: boolean | null | undefined;
   projectSettings?: GetDeploymentsProjectSettings$Outbound | undefined;
   connectBuildsEnabled?: boolean | undefined;
@@ -1648,6 +1702,9 @@ export const Deployments$outboundSchema: z.ZodType<
   checksConclusion: GetDeploymentsChecksConclusion$outboundSchema.optional(),
   checks: z.lazy(() => GetDeploymentsChecks$outboundSchema).optional(),
   inspectorUrl: z.nullable(z.string()),
+  errorCode: z.string().optional(),
+  errorMessage: z.nullable(z.string()).optional(),
+  oomReport: GetDeploymentsOomReport$outboundSchema.optional(),
   isRollbackCandidate: z.nullable(z.boolean()).optional(),
   projectSettings: z.lazy(() => GetDeploymentsProjectSettings$outboundSchema)
     .optional(),

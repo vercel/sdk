@@ -113,10 +113,10 @@ test("Deployments Get Deployment", async () => {
     public: false,
     status: "BUILDING",
     id: "<id>",
-    name: "<value>",
-    type: "LAMBDAS",
     createdAt: 548.4,
     readyState: "ERROR",
+    name: "<value>",
+    type: "LAMBDAS",
     meta: {
       "key": "<value>",
       "key1": "<value>",

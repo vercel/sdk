@@ -10,7 +10,7 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// UpdateFirewallConfigRequestBody2 - Toggle botID
+// UpdateFirewallConfigRequestBody2 - Toggle bot ID
 type UpdateFirewallConfigRequestBody2 struct {
 	Action string  `json:"action"`
 	ID     *string `json:"id,omitempty"`
@@ -36,6 +36,38 @@ func (o *UpdateFirewallConfigRequestBody2) GetValue() bool {
 		return false
 	}
 	return o.Value
+}
+
+type ID3 string
+
+const (
+	ID3AiBots        ID3 = "ai_bots"
+	ID3BotFilter     ID3 = "bot_filter"
+	ID3BotProtection ID3 = "bot_protection"
+	ID3Owasp         ID3 = "owasp"
+)
+
+func (e ID3) ToPointer() *ID3 {
+	return &e
+}
+func (e *ID3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ai_bots":
+		fallthrough
+	case "bot_filter":
+		fallthrough
+	case "bot_protection":
+		fallthrough
+	case "owasp":
+		*e = ID3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ID3: %v", v)
+	}
 }
 
 type ValueActionEnum5 string
@@ -89,7 +121,7 @@ func (o *UpdateFirewallConfigValue7) GetAction() *ValueActionEnum5 {
 // UpdateFirewallConfigRequestBody1 - Update a managed rule group
 type UpdateFirewallConfigRequestBody1 struct {
 	Action string                                `json:"action"`
-	ID     string                                `json:"id"`
+	ID     ID3                                   `json:"id"`
 	Value  map[string]UpdateFirewallConfigValue7 `json:"value"`
 }
 
@@ -100,9 +132,9 @@ func (o *UpdateFirewallConfigRequestBody1) GetAction() string {
 	return o.Action
 }
 
-func (o *UpdateFirewallConfigRequestBody1) GetID() string {
+func (o *UpdateFirewallConfigRequestBody1) GetID() ID3 {
 	if o == nil {
-		return ""
+		return ID3("")
 	}
 	return o.ID
 }
@@ -134,6 +166,38 @@ func (e *ActionManagedRulesUpdate) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for ActionManagedRulesUpdate: %v", v)
+	}
+}
+
+type ID2 string
+
+const (
+	ID2AiBots        ID2 = "ai_bots"
+	ID2BotFilter     ID2 = "bot_filter"
+	ID2BotProtection ID2 = "bot_protection"
+	ID2Owasp         ID2 = "owasp"
+)
+
+func (e ID2) ToPointer() *ID2 {
+	return &e
+}
+func (e *ID2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ai_bots":
+		fallthrough
+	case "bot_filter":
+		fallthrough
+	case "bot_protection":
+		fallthrough
+	case "owasp":
+		*e = ID2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ID2: %v", v)
 	}
 }
 
@@ -188,7 +252,7 @@ func (o *UpdateFirewallConfigValue6) GetActive() bool {
 // ManagedRulesUpdate - Update a managed ruleset
 type ManagedRulesUpdate struct {
 	Action ActionManagedRulesUpdate   `json:"action"`
-	ID     string                     `json:"id"`
+	ID     ID2                        `json:"id"`
 	Value  UpdateFirewallConfigValue6 `json:"value"`
 }
 
@@ -199,9 +263,9 @@ func (o *ManagedRulesUpdate) GetAction() ActionManagedRulesUpdate {
 	return o.Action
 }
 
-func (o *ManagedRulesUpdate) GetID() string {
+func (o *ManagedRulesUpdate) GetID() ID2 {
 	if o == nil {
-		return ""
+		return ID2("")
 	}
 	return o.ID
 }
@@ -236,7 +300,7 @@ func (e *ActionIPRemove) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// IPRemove - Remove an IPBlocking rule
+// IPRemove - Remove an IP Blocking rule
 type IPRemove struct {
 	Action ActionIPRemove `json:"action"`
 	ID     string         `json:"id"`
@@ -574,26 +638,26 @@ func (e *ActionCrsUpdate) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ID string
+type ID1 string
 
 const (
-	IDSd   ID = "sd"
-	IDMa   ID = "ma"
-	IDLfi  ID = "lfi"
-	IDRfi  ID = "rfi"
-	IDRce  ID = "rce"
-	IDPhp  ID = "php"
-	IDGen  ID = "gen"
-	IDXSS  ID = "xss"
-	IDSqli ID = "sqli"
-	IDSf   ID = "sf"
-	IDJava ID = "java"
+	ID1Sd   ID1 = "sd"
+	ID1Ma   ID1 = "ma"
+	ID1Lfi  ID1 = "lfi"
+	ID1Rfi  ID1 = "rfi"
+	ID1Rce  ID1 = "rce"
+	ID1Php  ID1 = "php"
+	ID1Gen  ID1 = "gen"
+	ID1XSS  ID1 = "xss"
+	ID1Sqli ID1 = "sqli"
+	ID1Sf   ID1 = "sf"
+	ID1Java ID1 = "java"
 )
 
-func (e ID) ToPointer() *ID {
+func (e ID1) ToPointer() *ID1 {
 	return &e
 }
-func (e *ID) UnmarshalJSON(data []byte) error {
+func (e *ID1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -620,10 +684,10 @@ func (e *ID) UnmarshalJSON(data []byte) error {
 	case "sf":
 		fallthrough
 	case "java":
-		*e = ID(v)
+		*e = ID1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ID: %v", v)
+		return fmt.Errorf("invalid value for ID1: %v", v)
 	}
 }
 
@@ -675,7 +739,7 @@ func (o *UpdateFirewallConfigValue3) GetAction() ValueActionEnum1 {
 // CrsUpdate - Enable a managed rule
 type CrsUpdate struct {
 	Action ActionCrsUpdate            `json:"action"`
-	ID     ID                         `json:"id"`
+	ID     ID1                        `json:"id"`
 	Value  UpdateFirewallConfigValue3 `json:"value"`
 }
 
@@ -686,9 +750,9 @@ func (o *CrsUpdate) GetAction() ActionCrsUpdate {
 	return o.Action
 }
 
-func (o *CrsUpdate) GetID() ID {
+func (o *CrsUpdate) GetID() ID1 {
 	if o == nil {
-		return ID("")
+		return ID1("")
 	}
 	return o.ID
 }
@@ -835,6 +899,7 @@ const (
 	UpdateFirewallConfigType2Query            UpdateFirewallConfigType2 = "query"
 	UpdateFirewallConfigType2Cookie           UpdateFirewallConfigType2 = "cookie"
 	UpdateFirewallConfigType2TargetPath       UpdateFirewallConfigType2 = "target_path"
+	UpdateFirewallConfigType2Route            UpdateFirewallConfigType2 = "route"
 	UpdateFirewallConfigType2RawPath          UpdateFirewallConfigType2 = "raw_path"
 	UpdateFirewallConfigType2IPAddress        UpdateFirewallConfigType2 = "ip_address"
 	UpdateFirewallConfigType2Region           UpdateFirewallConfigType2 = "region"
@@ -850,6 +915,7 @@ const (
 	UpdateFirewallConfigType2Ja4Digest        UpdateFirewallConfigType2 = "ja4_digest"
 	UpdateFirewallConfigType2Ja3Digest        UpdateFirewallConfigType2 = "ja3_digest"
 	UpdateFirewallConfigType2RateLimitAPIID   UpdateFirewallConfigType2 = "rate_limit_api_id"
+	UpdateFirewallConfigType2ServerAction     UpdateFirewallConfigType2 = "server_action"
 )
 
 func (e UpdateFirewallConfigType2) ToPointer() *UpdateFirewallConfigType2 {
@@ -874,6 +940,8 @@ func (e *UpdateFirewallConfigType2) UnmarshalJSON(data []byte) error {
 	case "cookie":
 		fallthrough
 	case "target_path":
+		fallthrough
+	case "route":
 		fallthrough
 	case "raw_path":
 		fallthrough
@@ -904,6 +972,8 @@ func (e *UpdateFirewallConfigType2) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
+		fallthrough
+	case "server_action":
 		*e = UpdateFirewallConfigType2(v)
 		return nil
 	default:
@@ -1617,6 +1687,7 @@ const (
 	UpdateFirewallConfigType1Query            UpdateFirewallConfigType1 = "query"
 	UpdateFirewallConfigType1Cookie           UpdateFirewallConfigType1 = "cookie"
 	UpdateFirewallConfigType1TargetPath       UpdateFirewallConfigType1 = "target_path"
+	UpdateFirewallConfigType1Route            UpdateFirewallConfigType1 = "route"
 	UpdateFirewallConfigType1RawPath          UpdateFirewallConfigType1 = "raw_path"
 	UpdateFirewallConfigType1IPAddress        UpdateFirewallConfigType1 = "ip_address"
 	UpdateFirewallConfigType1Region           UpdateFirewallConfigType1 = "region"
@@ -1632,6 +1703,7 @@ const (
 	UpdateFirewallConfigType1Ja4Digest        UpdateFirewallConfigType1 = "ja4_digest"
 	UpdateFirewallConfigType1Ja3Digest        UpdateFirewallConfigType1 = "ja3_digest"
 	UpdateFirewallConfigType1RateLimitAPIID   UpdateFirewallConfigType1 = "rate_limit_api_id"
+	UpdateFirewallConfigType1ServerAction     UpdateFirewallConfigType1 = "server_action"
 )
 
 func (e UpdateFirewallConfigType1) ToPointer() *UpdateFirewallConfigType1 {
@@ -1656,6 +1728,8 @@ func (e *UpdateFirewallConfigType1) UnmarshalJSON(data []byte) error {
 	case "cookie":
 		fallthrough
 	case "target_path":
+		fallthrough
+	case "route":
 		fallthrough
 	case "raw_path":
 		fallthrough
@@ -1686,6 +1760,8 @@ func (e *UpdateFirewallConfigType1) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
+		fallthrough
+	case "server_action":
 		*e = UpdateFirewallConfigType1(v)
 		return nil
 	default:

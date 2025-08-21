@@ -392,6 +392,69 @@ func (o *TeamResourceConfig) GetBuildEntitlements() *TeamBuildEntitlements {
 	return o.BuildEntitlements
 }
 
+type DisableHardAutoBlocksType string
+
+const (
+	DisableHardAutoBlocksTypeNumber  DisableHardAutoBlocksType = "number"
+	DisableHardAutoBlocksTypeBoolean DisableHardAutoBlocksType = "boolean"
+)
+
+type DisableHardAutoBlocks struct {
+	Number  *float64 `queryParam:"inline"`
+	Boolean *bool    `queryParam:"inline"`
+
+	Type DisableHardAutoBlocksType
+}
+
+func CreateDisableHardAutoBlocksNumber(number float64) DisableHardAutoBlocks {
+	typ := DisableHardAutoBlocksTypeNumber
+
+	return DisableHardAutoBlocks{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateDisableHardAutoBlocksBoolean(boolean bool) DisableHardAutoBlocks {
+	typ := DisableHardAutoBlocksTypeBoolean
+
+	return DisableHardAutoBlocks{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func (u *DisableHardAutoBlocks) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+		u.Number = &number
+		u.Type = DisableHardAutoBlocksTypeNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+		u.Boolean = &boolean
+		u.Type = DisableHardAutoBlocksTypeBoolean
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DisableHardAutoBlocks", string(data))
+}
+
+func (u DisableHardAutoBlocks) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DisableHardAutoBlocks: all fields are null")
+}
+
 // TeamRemoteCaching - Is remote caching enabled for this team
 type TeamRemoteCaching struct {
 	Enabled *bool `json:"enabled,omitempty"`
@@ -1034,7 +1097,8 @@ type Team struct {
 	StagingPrefix  string              `json:"stagingPrefix"`
 	ResourceConfig *TeamResourceConfig `json:"resourceConfig,omitempty"`
 	// The hostname that is current set as preview deployment suffix.
-	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
+	PreviewDeploymentSuffix *string                `json:"previewDeploymentSuffix,omitempty"`
+	DisableHardAutoBlocks   *DisableHardAutoBlocks `json:"disableHardAutoBlocks,omitempty"`
 	// Is remote caching enabled for this team
 	RemoteCaching *TeamRemoteCaching `json:"remoteCaching,omitempty"`
 	// Default deployment protection for this team
@@ -1144,6 +1208,13 @@ func (o *Team) GetPreviewDeploymentSuffix() *string {
 		return nil
 	}
 	return o.PreviewDeploymentSuffix
+}
+
+func (o *Team) GetDisableHardAutoBlocks() *DisableHardAutoBlocks {
+	if o == nil {
+		return nil
+	}
+	return o.DisableHardAutoBlocks
 }
 
 func (o *Team) GetRemoteCaching() *TeamRemoteCaching {

@@ -146,6 +146,7 @@ export type GetAliasProtectionBypass1 = {
   createdAt: number;
   createdBy: string;
   scope: GetAliasProtectionBypassScope;
+  expires?: number | undefined;
 };
 
 export type GetAliasProtectionBypass =
@@ -796,6 +797,7 @@ export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: GetAliasProtectionBypassScope$inboundSchema,
+  expires: z.number().optional(),
 });
 
 /** @internal */
@@ -803,6 +805,7 @@ export type GetAliasProtectionBypass1$Outbound = {
   createdAt: number;
   createdBy: string;
   scope: string;
+  expires?: number | undefined;
 };
 
 /** @internal */
@@ -814,6 +817,7 @@ export const GetAliasProtectionBypass1$outboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: GetAliasProtectionBypassScope$outboundSchema,
+  expires: z.number().optional(),
 });
 
 /**

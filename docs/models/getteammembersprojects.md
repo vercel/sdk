@@ -7,13 +7,16 @@ Array of project memberships
 ```typescript
 import { GetTeamMembersProjects } from "@vercel/sdk/models/getteammembersop.js";
 
-let value: GetTeamMembersProjects = {};
+let value: GetTeamMembersProjects = {
+  name: "<value>",
+  id: "<id>",
+};
 ```
 
 ## Fields
 
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `name`                                                                                 | *string*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
-| `id`                                                                                   | *string*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `name`                                                                                 | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `id`                                                                                   | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
 | `role`                                                                                 | [models.GetTeamMembersTeamsResponseRole](../models/getteammembersteamsresponserole.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |

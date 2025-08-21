@@ -167,6 +167,7 @@ export type ListAliasesProtectionBypass1 = {
   createdAt: number;
   createdBy: string;
   scope: ListAliasesProtectionBypassScope;
+  expires?: number | undefined;
 };
 
 export type ListAliasesProtectionBypass =
@@ -885,6 +886,7 @@ export const ListAliasesProtectionBypass1$inboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: ListAliasesProtectionBypassScope$inboundSchema,
+  expires: z.number().optional(),
 });
 
 /** @internal */
@@ -892,6 +894,7 @@ export type ListAliasesProtectionBypass1$Outbound = {
   createdAt: number;
   createdBy: string;
   scope: string;
+  expires?: number | undefined;
 };
 
 /** @internal */
@@ -903,6 +906,7 @@ export const ListAliasesProtectionBypass1$outboundSchema: z.ZodType<
   createdAt: z.number(),
   createdBy: z.string(),
   scope: ListAliasesProtectionBypassScope$outboundSchema,
+  expires: z.number().optional(),
 });
 
 /**

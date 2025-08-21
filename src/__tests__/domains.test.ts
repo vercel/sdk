@@ -130,6 +130,12 @@ test("Domains Get Domain Config", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
+    configuredBy: null,
+    acceptedChallenges: [
+      "http-01",
+    ],
+    recommendedIPv4: [],
+    recommendedCNAME: [],
     misconfigured: false,
   });
 });

@@ -70,7 +70,7 @@ export type UpdateAccessGroupEntitlements = ClosedEnum<
 >;
 
 export type UpdateAccessGroupResponseBody = {
-  entitlements?: Array<UpdateAccessGroupEntitlements> | undefined;
+  entitlements: Array<UpdateAccessGroupEntitlements>;
   /**
    * The name of this access group.
    */
@@ -346,7 +346,7 @@ export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entitlements: z.array(UpdateAccessGroupEntitlements$inboundSchema).optional(),
+  entitlements: z.array(UpdateAccessGroupEntitlements$inboundSchema),
   name: z.string(),
   createdAt: z.string(),
   teamId: z.string(),
@@ -360,7 +360,7 @@ export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UpdateAccessGroupResponseBody$Outbound = {
-  entitlements?: Array<string> | undefined;
+  entitlements: Array<string>;
   name: string;
   createdAt: string;
   teamId: string;
@@ -378,8 +378,7 @@ export const UpdateAccessGroupResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateAccessGroupResponseBody
 > = z.object({
-  entitlements: z.array(UpdateAccessGroupEntitlements$outboundSchema)
-    .optional(),
+  entitlements: z.array(UpdateAccessGroupEntitlements$outboundSchema),
   name: z.string(),
   createdAt: z.string(),
   teamId: z.string(),

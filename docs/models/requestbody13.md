@@ -1,6 +1,6 @@
 # RequestBody13
 
-Toggle botID
+Toggle bot ID
 
 ## Example Usage
 

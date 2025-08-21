@@ -72,30 +72,36 @@ export type AcceptedChallenges = ClosedEnum<typeof AcceptedChallenges>;
 /**
  * Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
  */
-export type RecommendedIPv4 = {};
+export type RecommendedIPv4 = {
+  rank: number;
+  value: Array<string>;
+};
 
 /**
  * Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
  */
-export type RecommendedCNAME = {};
+export type RecommendedCNAME = {
+  rank: number;
+  value: string;
+};
 
 export type GetDomainConfigResponseBody = {
   /**
    * How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
    */
-  configuredBy?: ConfiguredBy | null | undefined;
+  configuredBy: ConfiguredBy | null;
   /**
    * Which challenge types the domain can use for issuing certs.
    */
-  acceptedChallenges?: Array<AcceptedChallenges> | undefined;
+  acceptedChallenges: Array<AcceptedChallenges>;
   /**
    * Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
    */
-  recommendedIPv4?: Array<RecommendedIPv4> | undefined;
+  recommendedIPv4: Array<RecommendedIPv4>;
   /**
    * Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
    */
-  recommendedCNAME?: Array<RecommendedCNAME> | undefined;
+  recommendedCNAME: Array<RecommendedCNAME>;
   /**
    * Whether or not the domain is configured AND we can automatically generate a TLS certificate.
    */
@@ -232,17 +238,26 @@ export const RecommendedIPv4$inboundSchema: z.ZodType<
   RecommendedIPv4,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.array(z.string()),
+});
 
 /** @internal */
-export type RecommendedIPv4$Outbound = {};
+export type RecommendedIPv4$Outbound = {
+  rank: number;
+  value: Array<string>;
+};
 
 /** @internal */
 export const RecommendedIPv4$outboundSchema: z.ZodType<
   RecommendedIPv4$Outbound,
   z.ZodTypeDef,
   RecommendedIPv4
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.array(z.string()),
+});
 
 /**
  * @internal
@@ -278,17 +293,26 @@ export const RecommendedCNAME$inboundSchema: z.ZodType<
   RecommendedCNAME,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.string(),
+});
 
 /** @internal */
-export type RecommendedCNAME$Outbound = {};
+export type RecommendedCNAME$Outbound = {
+  rank: number;
+  value: string;
+};
 
 /** @internal */
 export const RecommendedCNAME$outboundSchema: z.ZodType<
   RecommendedCNAME$Outbound,
   z.ZodTypeDef,
   RecommendedCNAME
-> = z.object({});
+> = z.object({
+  rank: z.number(),
+  value: z.string(),
+});
 
 /**
  * @internal
@@ -327,21 +351,19 @@ export const GetDomainConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuredBy: z.nullable(ConfiguredBy$inboundSchema).optional(),
-  acceptedChallenges: z.array(AcceptedChallenges$inboundSchema).optional(),
-  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$inboundSchema))
-    .optional(),
-  recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema))
-    .optional(),
+  configuredBy: z.nullable(ConfiguredBy$inboundSchema),
+  acceptedChallenges: z.array(AcceptedChallenges$inboundSchema),
+  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$inboundSchema)),
+  recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema)),
   misconfigured: z.boolean(),
 });
 
 /** @internal */
 export type GetDomainConfigResponseBody$Outbound = {
-  configuredBy?: string | null | undefined;
-  acceptedChallenges?: Array<string> | undefined;
-  recommendedIPv4?: Array<RecommendedIPv4$Outbound> | undefined;
-  recommendedCNAME?: Array<RecommendedCNAME$Outbound> | undefined;
+  configuredBy: string | null;
+  acceptedChallenges: Array<string>;
+  recommendedIPv4: Array<RecommendedIPv4$Outbound>;
+  recommendedCNAME: Array<RecommendedCNAME$Outbound>;
   misconfigured: boolean;
 };
 
@@ -351,12 +373,10 @@ export const GetDomainConfigResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDomainConfigResponseBody
 > = z.object({
-  configuredBy: z.nullable(ConfiguredBy$outboundSchema).optional(),
-  acceptedChallenges: z.array(AcceptedChallenges$outboundSchema).optional(),
-  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$outboundSchema))
-    .optional(),
-  recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$outboundSchema))
-    .optional(),
+  configuredBy: z.nullable(ConfiguredBy$outboundSchema),
+  acceptedChallenges: z.array(AcceptedChallenges$outboundSchema),
+  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$outboundSchema)),
+  recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$outboundSchema)),
   misconfigured: z.boolean(),
 });
 

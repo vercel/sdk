@@ -66,6 +66,8 @@ export const UpdateProjectFramework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -1012,6 +1014,8 @@ export const UpdateProjectProjectsFramework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<
   typeof UpdateProjectProjectsFramework
@@ -1195,23 +1199,23 @@ export type UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks = {
 };
 
 export type UpdateProjectLink5 = {
-  org?: string | undefined;
+  org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
    */
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type?: UpdateProjectLinkProjectsResponse200ApplicationJSONType | undefined;
-  host?: string | undefined;
+  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType;
+  host: string;
   createdAt?: number | undefined;
   deployHooks: Array<
     UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks
   >;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 export const UpdateProjectLinkProjectsResponse200Type = {
@@ -1230,18 +1234,18 @@ export type UpdateProjectLinkProjectsResponse200DeployHooks = {
 };
 
 export type UpdateProjectLink4 = {
-  name?: string | undefined;
-  slug?: string | undefined;
-  owner?: string | undefined;
-  type?: UpdateProjectLinkProjectsResponse200Type | undefined;
-  uuid?: string | undefined;
-  workspaceUuid?: string | undefined;
+  name: string;
+  slug: string;
+  owner: string;
+  type: UpdateProjectLinkProjectsResponse200Type;
+  uuid: string;
+  workspaceUuid: string;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponse200DeployHooks>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 export const UpdateProjectLinkProjectsResponseType = {
@@ -1260,22 +1264,22 @@ export type UpdateProjectLinkProjectsResponseDeployHooks = {
 };
 
 export type UpdateProjectLink3 = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  projectNameWithNamespace?: string | undefined;
-  projectNamespace?: string | undefined;
+  projectId: string;
+  projectName: string;
+  projectNameWithNamespace: string;
+  projectNamespace: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
    */
   projectOwnerId?: number | undefined;
-  projectUrl?: string | undefined;
-  type?: UpdateProjectLinkProjectsResponseType | undefined;
+  projectUrl: string;
+  type: UpdateProjectLinkProjectsResponseType;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponseDeployHooks>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 export const UpdateProjectLinkProjectsType = {
@@ -1294,20 +1298,20 @@ export type UpdateProjectLinkProjectsDeployHooks = {
 };
 
 export type UpdateProjectLink2 = {
-  type?: UpdateProjectLinkProjectsType | undefined;
+  type: UpdateProjectLinkProjectsType;
   repo?: string | undefined;
   repoId?: number | undefined;
   updatedAt?: number | undefined;
   createdAt?: number | undefined;
-  org?: string | undefined;
+  org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
    */
   repoOwnerId?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsDeployHooks>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 export const UpdateProjectLinkType = {
@@ -1324,28 +1328,28 @@ export type UpdateProjectLinkDeployHooks = {
 };
 
 export type UpdateProjectLink1 = {
-  org?: string | undefined;
+  org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
    */
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type?: UpdateProjectLinkType | undefined;
+  type: UpdateProjectLinkType;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkDeployHooks>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 export type UpdateProjectLink =
-  | UpdateProjectLink1
-  | UpdateProjectLink2
   | UpdateProjectLink3
   | UpdateProjectLink4
-  | UpdateProjectLink5;
+  | UpdateProjectLink5
+  | UpdateProjectLink1
+  | UpdateProjectLink2;
 
 export type UpdateProjectMicrofrontends2 = {
   updatedAt: number;
@@ -1761,6 +1765,7 @@ export type UpdateProjectPermissions = {
   skewProtection?: Array<ACLAction> | undefined;
   analytics?: Array<ACLAction> | undefined;
   trustedIps?: Array<ACLAction> | undefined;
+  v0Chat?: Array<ACLAction> | undefined;
   webAnalytics?: Array<ACLAction> | undefined;
   sharedEnvVarConnection?: Array<ACLAction> | undefined;
   sonar?: Array<ACLAction> | undefined;
@@ -2200,11 +2205,11 @@ export type UpdateProjectResponseBody = {
   ipBuckets?: Array<UpdateProjectIpBuckets> | undefined;
   latestDeployments?: Array<UpdateProjectLatestDeployments> | undefined;
   link?:
-    | UpdateProjectLink1
-    | UpdateProjectLink2
     | UpdateProjectLink3
     | UpdateProjectLink4
     | UpdateProjectLink5
+    | UpdateProjectLink1
+    | UpdateProjectLink2
     | undefined;
   microfrontends?:
     | UpdateProjectMicrofrontends1
@@ -6874,41 +6879,40 @@ export const UpdateProjectLink5$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  org: z.string().optional(),
+  org: z.string(),
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType$inboundSchema
-    .optional(),
-  host: z.string().optional(),
+  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType$inboundSchema,
+  host: z.string(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() =>
       UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema
     ),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /** @internal */
 export type UpdateProjectLink5$Outbound = {
-  org?: string | undefined;
+  org: string;
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type?: string | undefined;
-  host?: string | undefined;
+  type: string;
+  host: string;
   createdAt?: number | undefined;
   deployHooks: Array<
     UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks$Outbound
   >;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 /** @internal */
@@ -6917,23 +6921,22 @@ export const UpdateProjectLink5$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink5
 > = z.object({
-  org: z.string().optional(),
+  org: z.string(),
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType$outboundSchema
-    .optional(),
-  host: z.string().optional(),
+  type: UpdateProjectLinkProjectsResponse200ApplicationJSONType$outboundSchema,
+  host: z.string(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() =>
       UpdateProjectLinkProjectsResponse200ApplicationJSONDeployHooks$outboundSchema
     ),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /**
@@ -7076,36 +7079,36 @@ export const UpdateProjectLink4$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
-  slug: z.string().optional(),
-  owner: z.string().optional(),
-  type: UpdateProjectLinkProjectsResponse200Type$inboundSchema.optional(),
-  uuid: z.string().optional(),
-  workspaceUuid: z.string().optional(),
+  name: z.string(),
+  slug: z.string(),
+  owner: z.string(),
+  type: UpdateProjectLinkProjectsResponse200Type$inboundSchema,
+  uuid: z.string(),
+  workspaceUuid: z.string(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsResponse200DeployHooks$inboundSchema),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /** @internal */
 export type UpdateProjectLink4$Outbound = {
-  name?: string | undefined;
-  slug?: string | undefined;
-  owner?: string | undefined;
-  type?: string | undefined;
-  uuid?: string | undefined;
-  workspaceUuid?: string | undefined;
+  name: string;
+  slug: string;
+  owner: string;
+  type: string;
+  uuid: string;
+  workspaceUuid: string;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponse200DeployHooks$Outbound>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 /** @internal */
@@ -7114,22 +7117,22 @@ export const UpdateProjectLink4$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink4
 > = z.object({
-  name: z.string().optional(),
-  slug: z.string().optional(),
-  owner: z.string().optional(),
-  type: UpdateProjectLinkProjectsResponse200Type$outboundSchema.optional(),
-  uuid: z.string().optional(),
-  workspaceUuid: z.string().optional(),
+  name: z.string(),
+  slug: z.string(),
+  owner: z.string(),
+  type: UpdateProjectLinkProjectsResponse200Type$outboundSchema,
+  uuid: z.string(),
+  workspaceUuid: z.string(),
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() =>
       UpdateProjectLinkProjectsResponse200DeployHooks$outboundSchema
     ),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /**
@@ -7272,38 +7275,38 @@ export const UpdateProjectLink3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  projectNameWithNamespace: z.string().optional(),
-  projectNamespace: z.string().optional(),
+  projectId: z.string(),
+  projectName: z.string(),
+  projectNameWithNamespace: z.string(),
+  projectNamespace: z.string(),
   projectOwnerId: z.number().optional(),
-  projectUrl: z.string().optional(),
-  type: UpdateProjectLinkProjectsResponseType$inboundSchema.optional(),
+  projectUrl: z.string(),
+  type: UpdateProjectLinkProjectsResponseType$inboundSchema,
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsResponseDeployHooks$inboundSchema),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /** @internal */
 export type UpdateProjectLink3$Outbound = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-  projectNameWithNamespace?: string | undefined;
-  projectNamespace?: string | undefined;
+  projectId: string;
+  projectName: string;
+  projectNameWithNamespace: string;
+  projectNamespace: string;
   projectOwnerId?: number | undefined;
-  projectUrl?: string | undefined;
-  type?: string | undefined;
+  projectUrl: string;
+  type: string;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsResponseDeployHooks$Outbound>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 /** @internal */
@@ -7312,21 +7315,21 @@ export const UpdateProjectLink3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink3
 > = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
-  projectNameWithNamespace: z.string().optional(),
-  projectNamespace: z.string().optional(),
+  projectId: z.string(),
+  projectName: z.string(),
+  projectNameWithNamespace: z.string(),
+  projectNamespace: z.string(),
   projectOwnerId: z.number().optional(),
-  projectUrl: z.string().optional(),
-  type: UpdateProjectLinkProjectsResponseType$outboundSchema.optional(),
+  projectUrl: z.string(),
+  type: UpdateProjectLinkProjectsResponseType$outboundSchema,
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsResponseDeployHooks$outboundSchema),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /**
@@ -7458,34 +7461,34 @@ export const UpdateProjectLink2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UpdateProjectLinkProjectsType$inboundSchema.optional(),
+  type: UpdateProjectLinkProjectsType$inboundSchema,
   repo: z.string().optional(),
   repoId: z.number().optional(),
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
-  org: z.string().optional(),
+  org: z.string(),
   repoOwnerId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsDeployHooks$inboundSchema),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /** @internal */
 export type UpdateProjectLink2$Outbound = {
-  type?: string | undefined;
+  type: string;
   repo?: string | undefined;
   repoId?: number | undefined;
   updatedAt?: number | undefined;
   createdAt?: number | undefined;
-  org?: string | undefined;
+  org: string;
   repoOwnerId?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsDeployHooks$Outbound>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 /** @internal */
@@ -7494,19 +7497,19 @@ export const UpdateProjectLink2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink2
 > = z.object({
-  type: UpdateProjectLinkProjectsType$outboundSchema.optional(),
+  type: UpdateProjectLinkProjectsType$outboundSchema,
   repo: z.string().optional(),
   repoId: z.number().optional(),
   updatedAt: z.number().optional(),
   createdAt: z.number().optional(),
-  org: z.string().optional(),
+  org: z.string(),
   repoOwnerId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsDeployHooks$outboundSchema),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /**
@@ -7635,34 +7638,34 @@ export const UpdateProjectLink1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  org: z.string().optional(),
+  org: z.string(),
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkType$inboundSchema.optional(),
+  type: UpdateProjectLinkType$inboundSchema,
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkDeployHooks$inboundSchema),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /** @internal */
 export type UpdateProjectLink1$Outbound = {
-  org?: string | undefined;
+  org: string;
   repoOwnerId?: number | undefined;
   repo?: string | undefined;
   repoId?: number | undefined;
-  type?: string | undefined;
+  type: string;
   createdAt?: number | undefined;
   deployHooks: Array<UpdateProjectLinkDeployHooks$Outbound>;
-  gitCredentialId?: string | undefined;
+  gitCredentialId: string;
   updatedAt?: number | undefined;
   sourceless?: boolean | undefined;
-  productionBranch?: string | undefined;
+  productionBranch: string;
 };
 
 /** @internal */
@@ -7671,19 +7674,19 @@ export const UpdateProjectLink1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink1
 > = z.object({
-  org: z.string().optional(),
+  org: z.string(),
   repoOwnerId: z.number().optional(),
   repo: z.string().optional(),
   repoId: z.number().optional(),
-  type: UpdateProjectLinkType$outboundSchema.optional(),
+  type: UpdateProjectLinkType$outboundSchema,
   createdAt: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkDeployHooks$outboundSchema),
   ),
-  gitCredentialId: z.string().optional(),
+  gitCredentialId: z.string(),
   updatedAt: z.number().optional(),
   sourceless: z.boolean().optional(),
-  productionBranch: z.string().optional(),
+  productionBranch: z.string(),
 });
 
 /**
@@ -7723,20 +7726,20 @@ export const UpdateProjectLink$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => UpdateProjectLink1$inboundSchema),
-  z.lazy(() => UpdateProjectLink2$inboundSchema),
   z.lazy(() => UpdateProjectLink3$inboundSchema),
   z.lazy(() => UpdateProjectLink4$inboundSchema),
   z.lazy(() => UpdateProjectLink5$inboundSchema),
+  z.lazy(() => UpdateProjectLink1$inboundSchema),
+  z.lazy(() => UpdateProjectLink2$inboundSchema),
 ]);
 
 /** @internal */
 export type UpdateProjectLink$Outbound =
-  | UpdateProjectLink1$Outbound
-  | UpdateProjectLink2$Outbound
   | UpdateProjectLink3$Outbound
   | UpdateProjectLink4$Outbound
-  | UpdateProjectLink5$Outbound;
+  | UpdateProjectLink5$Outbound
+  | UpdateProjectLink1$Outbound
+  | UpdateProjectLink2$Outbound;
 
 /** @internal */
 export const UpdateProjectLink$outboundSchema: z.ZodType<
@@ -7744,11 +7747,11 @@ export const UpdateProjectLink$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectLink
 > = z.union([
-  z.lazy(() => UpdateProjectLink1$outboundSchema),
-  z.lazy(() => UpdateProjectLink2$outboundSchema),
   z.lazy(() => UpdateProjectLink3$outboundSchema),
   z.lazy(() => UpdateProjectLink4$outboundSchema),
   z.lazy(() => UpdateProjectLink5$outboundSchema),
+  z.lazy(() => UpdateProjectLink1$outboundSchema),
+  z.lazy(() => UpdateProjectLink2$outboundSchema),
 ]);
 
 /**
@@ -9508,6 +9511,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   skewProtection: z.array(ACLAction$inboundSchema).optional(),
   analytics: z.array(ACLAction$inboundSchema).optional(),
   trustedIps: z.array(ACLAction$inboundSchema).optional(),
+  v0Chat: z.array(ACLAction$inboundSchema).optional(),
   webAnalytics: z.array(ACLAction$inboundSchema).optional(),
   sharedEnvVarConnection: z.array(ACLAction$inboundSchema).optional(),
   sonar: z.array(ACLAction$inboundSchema).optional(),
@@ -9732,6 +9736,7 @@ export type UpdateProjectPermissions$Outbound = {
   skewProtection?: Array<string> | undefined;
   analytics?: Array<string> | undefined;
   trustedIps?: Array<string> | undefined;
+  v0Chat?: Array<string> | undefined;
   webAnalytics?: Array<string> | undefined;
   sharedEnvVarConnection?: Array<string> | undefined;
   sonar?: Array<string> | undefined;
@@ -9953,6 +9958,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   skewProtection: z.array(ACLAction$outboundSchema).optional(),
   analytics: z.array(ACLAction$outboundSchema).optional(),
   trustedIps: z.array(ACLAction$outboundSchema).optional(),
+  v0Chat: z.array(ACLAction$outboundSchema).optional(),
   webAnalytics: z.array(ACLAction$outboundSchema).optional(),
   sharedEnvVarConnection: z.array(ACLAction$outboundSchema).optional(),
   sonar: z.array(ACLAction$outboundSchema).optional(),
@@ -11653,11 +11659,11 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectLatestDeployments$inboundSchema),
   ).optional(),
   link: z.union([
-    z.lazy(() => UpdateProjectLink1$inboundSchema),
-    z.lazy(() => UpdateProjectLink2$inboundSchema),
     z.lazy(() => UpdateProjectLink3$inboundSchema),
     z.lazy(() => UpdateProjectLink4$inboundSchema),
     z.lazy(() => UpdateProjectLink5$inboundSchema),
+    z.lazy(() => UpdateProjectLink1$inboundSchema),
+    z.lazy(() => UpdateProjectLink2$inboundSchema),
   ]).optional(),
   microfrontends: z.union([
     z.lazy(() => UpdateProjectMicrofrontends1$inboundSchema),
@@ -11785,11 +11791,11 @@ export type UpdateProjectResponseBody$Outbound = {
     | Array<UpdateProjectLatestDeployments$Outbound>
     | undefined;
   link?:
-    | UpdateProjectLink1$Outbound
-    | UpdateProjectLink2$Outbound
     | UpdateProjectLink3$Outbound
     | UpdateProjectLink4$Outbound
     | UpdateProjectLink5$Outbound
+    | UpdateProjectLink1$Outbound
+    | UpdateProjectLink2$Outbound
     | undefined;
   microfrontends?:
     | UpdateProjectMicrofrontends1$Outbound
@@ -11907,11 +11913,11 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectLatestDeployments$outboundSchema),
   ).optional(),
   link: z.union([
-    z.lazy(() => UpdateProjectLink1$outboundSchema),
-    z.lazy(() => UpdateProjectLink2$outboundSchema),
     z.lazy(() => UpdateProjectLink3$outboundSchema),
     z.lazy(() => UpdateProjectLink4$outboundSchema),
     z.lazy(() => UpdateProjectLink5$outboundSchema),
+    z.lazy(() => UpdateProjectLink1$outboundSchema),
+    z.lazy(() => UpdateProjectLink2$outboundSchema),
   ]).optional(),
   microfrontends: z.union([
     z.lazy(() => UpdateProjectMicrofrontends1$outboundSchema),

@@ -8,7 +8,11 @@ The list of environment variables for the given project
 ### `models.FilterProjectEnvsResponseBody1`
 
 ```typescript
-const value: models.FilterProjectEnvsResponseBody1 = {};
+const value: models.FilterProjectEnvsResponseBody1 = {
+  type: "sensitive",
+  value: "<value>",
+  key: "<key>",
+};
 ```
 
 ### `models.FilterProjectEnvsResponseBody2`

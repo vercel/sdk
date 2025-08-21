@@ -630,6 +630,7 @@ const (
 	PutFirewallConfigTypeRequestQuery            PutFirewallConfigTypeRequest = "query"
 	PutFirewallConfigTypeRequestCookie           PutFirewallConfigTypeRequest = "cookie"
 	PutFirewallConfigTypeRequestTargetPath       PutFirewallConfigTypeRequest = "target_path"
+	PutFirewallConfigTypeRequestRoute            PutFirewallConfigTypeRequest = "route"
 	PutFirewallConfigTypeRequestRawPath          PutFirewallConfigTypeRequest = "raw_path"
 	PutFirewallConfigTypeRequestIPAddress        PutFirewallConfigTypeRequest = "ip_address"
 	PutFirewallConfigTypeRequestRegion           PutFirewallConfigTypeRequest = "region"
@@ -669,6 +670,8 @@ func (e *PutFirewallConfigTypeRequest) UnmarshalJSON(data []byte) error {
 	case "cookie":
 		fallthrough
 	case "target_path":
+		fallthrough
+	case "route":
 		fallthrough
 	case "raw_path":
 		fallthrough
@@ -2143,6 +2146,7 @@ const (
 	ActiveTypeQuery            ActiveType = "query"
 	ActiveTypeCookie           ActiveType = "cookie"
 	ActiveTypeTargetPath       ActiveType = "target_path"
+	ActiveTypeRoute            ActiveType = "route"
 	ActiveTypeRawPath          ActiveType = "raw_path"
 	ActiveTypeIPAddress        ActiveType = "ip_address"
 	ActiveTypeProtocol         ActiveType = "protocol"
@@ -2158,6 +2162,7 @@ const (
 	ActiveTypeJa4Digest        ActiveType = "ja4_digest"
 	ActiveTypeJa3Digest        ActiveType = "ja3_digest"
 	ActiveTypeRateLimitAPIID   ActiveType = "rate_limit_api_id"
+	ActiveTypeServerAction     ActiveType = "server_action"
 )
 
 func (e ActiveType) ToPointer() *ActiveType {
@@ -2182,6 +2187,8 @@ func (e *ActiveType) UnmarshalJSON(data []byte) error {
 	case "cookie":
 		fallthrough
 	case "target_path":
+		fallthrough
+	case "route":
 		fallthrough
 	case "raw_path":
 		fallthrough
@@ -2212,6 +2219,8 @@ func (e *ActiveType) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
+		fallthrough
+	case "server_action":
 		*e = ActiveType(v)
 		return nil
 	default:

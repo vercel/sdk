@@ -62,7 +62,7 @@ export const TagIds = {
 } as const;
 export type TagIds = ClosedEnum<typeof TagIds>;
 
-export type Integration = {
+export type ResponseBodyIntegration = {
   name: string;
   icon: string;
   isLegacy: boolean;
@@ -121,7 +121,7 @@ export type GetConfigurationsResponseBodyInstallationType = ClosedEnum<
 >;
 
 export type GetConfigurationsResponseBody2 = {
-  integration: Integration;
+  integration: ResponseBodyIntegration;
   /**
    * A timestamp that tells you when the configuration was installed successfully
    */
@@ -443,8 +443,8 @@ export namespace TagIds$ {
 }
 
 /** @internal */
-export const Integration$inboundSchema: z.ZodType<
-  Integration,
+export const ResponseBodyIntegration$inboundSchema: z.ZodType<
+  ResponseBodyIntegration,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -457,7 +457,7 @@ export const Integration$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Integration$Outbound = {
+export type ResponseBodyIntegration$Outbound = {
   name: string;
   icon: string;
   isLegacy: boolean;
@@ -467,10 +467,10 @@ export type Integration$Outbound = {
 };
 
 /** @internal */
-export const Integration$outboundSchema: z.ZodType<
-  Integration$Outbound,
+export const ResponseBodyIntegration$outboundSchema: z.ZodType<
+  ResponseBodyIntegration$Outbound,
   z.ZodTypeDef,
-  Integration
+  ResponseBodyIntegration
 > = z.object({
   name: z.string(),
   icon: z.string(),
@@ -484,26 +484,30 @@ export const Integration$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Integration$ {
-  /** @deprecated use `Integration$inboundSchema` instead. */
-  export const inboundSchema = Integration$inboundSchema;
-  /** @deprecated use `Integration$outboundSchema` instead. */
-  export const outboundSchema = Integration$outboundSchema;
-  /** @deprecated use `Integration$Outbound` instead. */
-  export type Outbound = Integration$Outbound;
+export namespace ResponseBodyIntegration$ {
+  /** @deprecated use `ResponseBodyIntegration$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyIntegration$inboundSchema;
+  /** @deprecated use `ResponseBodyIntegration$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyIntegration$outboundSchema;
+  /** @deprecated use `ResponseBodyIntegration$Outbound` instead. */
+  export type Outbound = ResponseBodyIntegration$Outbound;
 }
 
-export function integrationToJSON(integration: Integration): string {
-  return JSON.stringify(Integration$outboundSchema.parse(integration));
+export function responseBodyIntegrationToJSON(
+  responseBodyIntegration: ResponseBodyIntegration,
+): string {
+  return JSON.stringify(
+    ResponseBodyIntegration$outboundSchema.parse(responseBodyIntegration),
+  );
 }
 
-export function integrationFromJSON(
+export function responseBodyIntegrationFromJSON(
   jsonString: string,
-): SafeParseResult<Integration, SDKValidationError> {
+): SafeParseResult<ResponseBodyIntegration, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Integration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Integration' from JSON`,
+    (x) => ResponseBodyIntegration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyIntegration' from JSON`,
   );
 }
 
@@ -603,7 +607,7 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integration: z.lazy(() => Integration$inboundSchema),
+  integration: z.lazy(() => ResponseBodyIntegration$inboundSchema),
   completedAt: z.number().optional(),
   createdAt: z.number(),
   id: z.string(),
@@ -628,7 +632,7 @@ export const GetConfigurationsResponseBody2$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetConfigurationsResponseBody2$Outbound = {
-  integration: Integration$Outbound;
+  integration: ResponseBodyIntegration$Outbound;
   completedAt?: number | undefined;
   createdAt: number;
   id: string;
@@ -655,7 +659,7 @@ export const GetConfigurationsResponseBody2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationsResponseBody2
 > = z.object({
-  integration: z.lazy(() => Integration$outboundSchema),
+  integration: z.lazy(() => ResponseBodyIntegration$outboundSchema),
   completedAt: z.number().optional(),
   createdAt: z.number(),
   id: z.string(),

@@ -272,6 +272,7 @@ type ListDeploymentAliasesProtectionBypassShareableLink struct {
 	CreatedAt float64                                 `json:"createdAt"`
 	CreatedBy string                                  `json:"createdBy"`
 	Scope     ListDeploymentAliasesScopeShareableLink `json:"scope"`
+	Expires   *float64                                `json:"expires,omitempty"`
 }
 
 func (o *ListDeploymentAliasesProtectionBypassShareableLink) GetCreatedAt() float64 {
@@ -293,6 +294,13 @@ func (o *ListDeploymentAliasesProtectionBypassShareableLink) GetScope() ListDepl
 		return ListDeploymentAliasesScopeShareableLink("")
 	}
 	return o.Scope
+}
+
+func (o *ListDeploymentAliasesProtectionBypassShareableLink) GetExpires() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Expires
 }
 
 type ListDeploymentAliasesProtectionBypassUnionType string
@@ -351,17 +359,17 @@ func CreateListDeploymentAliasesProtectionBypassUnionListDeploymentAliasesProtec
 
 func (u *ListDeploymentAliasesProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var listDeploymentAliasesProtectionBypassShareableLink ListDeploymentAliasesProtectionBypassShareableLink = ListDeploymentAliasesProtectionBypassShareableLink{}
-	if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassShareableLink, "", true, true); err == nil {
-		u.ListDeploymentAliasesProtectionBypassShareableLink = &listDeploymentAliasesProtectionBypassShareableLink
-		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassShareableLink
-		return nil
-	}
-
 	var listDeploymentAliasesProtectionBypassAliasProtectionOverride ListDeploymentAliasesProtectionBypassAliasProtectionOverride = ListDeploymentAliasesProtectionBypassAliasProtectionOverride{}
 	if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassAliasProtectionOverride, "", true, true); err == nil {
 		u.ListDeploymentAliasesProtectionBypassAliasProtectionOverride = &listDeploymentAliasesProtectionBypassAliasProtectionOverride
 		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassAliasProtectionOverride
+		return nil
+	}
+
+	var listDeploymentAliasesProtectionBypassShareableLink ListDeploymentAliasesProtectionBypassShareableLink = ListDeploymentAliasesProtectionBypassShareableLink{}
+	if err := utils.UnmarshalJSON(data, &listDeploymentAliasesProtectionBypassShareableLink, "", true, true); err == nil {
+		u.ListDeploymentAliasesProtectionBypassShareableLink = &listDeploymentAliasesProtectionBypassShareableLink
+		u.Type = ListDeploymentAliasesProtectionBypassUnionTypeListDeploymentAliasesProtectionBypassShareableLink
 		return nil
 	}
 

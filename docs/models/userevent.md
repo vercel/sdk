@@ -16,8 +16,8 @@ let value: UserEvent = {
   principalId: "<id>",
   payload: {
     project: {
-      name: "<value>",
       id: "<id>",
+      name: "<value>",
     },
     projectMembership: {},
   },

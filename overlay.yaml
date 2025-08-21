@@ -1601,3 +1601,9 @@ actions:
         required:
           - operation
           - key
+  # Reference: CI failure context for OpenAPI linting
+  # https://github.com/vercel/sdk/actions/runs/17084773667/job/48446595024#step:5:2313
+  - target: $.paths..requestBody..["application/json"]..exclusiveMinimum
+    remove: true
+  - target: $.paths..requestBody..["application/json"]..exclusiveMaximum
+    remove: true            

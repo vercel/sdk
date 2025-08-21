@@ -219,59 +219,61 @@ func (u GetEdgeConfigPurposeUnion) MarshalJSON() ([]byte, error) {
 
 // GetEdgeConfigResponseBody - The EdgeConfig.
 type GetEdgeConfigResponseBody struct {
-	CreatedAt *float64 `json:"createdAt,omitempty"`
-	UpdatedAt *float64 `json:"updatedAt,omitempty"`
-	ID        *string  `json:"id,omitempty"`
+	CreatedAt float64 `json:"createdAt"`
+	UpdatedAt float64 `json:"updatedAt"`
+	ID        string  `json:"id"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
-	Slug    *string `json:"slug,omitempty"`
-	OwnerID *string `json:"ownerId,omitempty"`
-	Digest  *string `json:"digest,omitempty"`
+	Slug    string `json:"slug"`
+	OwnerID string `json:"ownerId"`
+	Digest  string `json:"digest"`
 	// Keeps track of the current state of the Edge Config while it gets transferred.
-	Transfer    *GetEdgeConfigTransfer     `json:"transfer,omitempty"`
-	Schema      *GetEdgeConfigSchema       `json:"schema,omitempty"`
-	Purpose     *GetEdgeConfigPurposeUnion `json:"purpose,omitempty"`
-	SizeInBytes float64                    `json:"sizeInBytes"`
-	ItemCount   float64                    `json:"itemCount"`
+	Transfer *GetEdgeConfigTransfer     `json:"transfer,omitempty"`
+	Schema   *GetEdgeConfigSchema       `json:"schema,omitempty"`
+	Purpose  *GetEdgeConfigPurposeUnion `json:"purpose,omitempty"`
+	// Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
+	SyncedToDynamoAt *float64 `json:"syncedToDynamoAt,omitempty"`
+	SizeInBytes      float64  `json:"sizeInBytes"`
+	ItemCount        float64  `json:"itemCount"`
 }
 
-func (o *GetEdgeConfigResponseBody) GetCreatedAt() *float64 {
+func (o *GetEdgeConfigResponseBody) GetCreatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.CreatedAt
 }
 
-func (o *GetEdgeConfigResponseBody) GetUpdatedAt() *float64 {
+func (o *GetEdgeConfigResponseBody) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *GetEdgeConfigResponseBody) GetID() *string {
+func (o *GetEdgeConfigResponseBody) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
 
-func (o *GetEdgeConfigResponseBody) GetSlug() *string {
+func (o *GetEdgeConfigResponseBody) GetSlug() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Slug
 }
 
-func (o *GetEdgeConfigResponseBody) GetOwnerID() *string {
+func (o *GetEdgeConfigResponseBody) GetOwnerID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.OwnerID
 }
 
-func (o *GetEdgeConfigResponseBody) GetDigest() *string {
+func (o *GetEdgeConfigResponseBody) GetDigest() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Digest
 }
@@ -295,6 +297,13 @@ func (o *GetEdgeConfigResponseBody) GetPurpose() *GetEdgeConfigPurposeUnion {
 		return nil
 	}
 	return o.Purpose
+}
+
+func (o *GetEdgeConfigResponseBody) GetSyncedToDynamoAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.SyncedToDynamoAt
 }
 
 func (o *GetEdgeConfigResponseBody) GetSizeInBytes() float64 {

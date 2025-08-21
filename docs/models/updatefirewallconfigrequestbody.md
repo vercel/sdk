@@ -122,9 +122,9 @@ const value: models.UpdateFirewallConfigRequestBody10 = {
 ```typescript
 const value: models.RequestBody11 = {
   action: "managedRules.update",
-  id: "<id>",
+  id: "owasp",
   value: {
-    active: false,
+    active: true,
   },
 };
 ```
@@ -134,12 +134,8 @@ const value: models.RequestBody11 = {
 ```typescript
 const value: models.RequestBody12 = {
   action: "<value>",
-  id: "<id>",
-  value: {
-    "key": {
-      active: true,
-    },
-  },
+  id: "bot_protection",
+  value: {},
 };
 ```
 

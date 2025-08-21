@@ -6263,3 +6263,36 @@ workflows:
             type: simple
     x-speakeasy-test-group: marketplace
     x-speakeasy-test-rebuild: true
+  - workflowId: getConfigurationProducts
+    steps:
+      - stepId: test
+        operationId: getConfigurationProducts
+        parameters:
+          - name: id
+            in: path
+            value: icfg_cuwj0AdCdH3BwWT4LPijCC7t
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "products": [],
+                "integration": {
+                  "id": "\u003cid\u003e",
+                  "slug": "\u003cvalue\u003e",
+                  "name": "\u003cvalue\u003e"
+                },
+                "configuration": {
+                  "id": "\u003cid\u003e"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: integrations
+    x-speakeasy-test-rebuild: true

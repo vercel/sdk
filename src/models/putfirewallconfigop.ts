@@ -241,6 +241,7 @@ export const PutFirewallConfigType = {
   Query: "query",
   Cookie: "cookie",
   TargetPath: "target_path",
+  Route: "route",
   RawPath: "raw_path",
   IpAddress: "ip_address",
   Region: "region",
@@ -669,6 +670,7 @@ export const PutFirewallConfigSecurityType = {
   Query: "query",
   Cookie: "cookie",
   TargetPath: "target_path",
+  Route: "route",
   RawPath: "raw_path",
   IpAddress: "ip_address",
   Protocol: "protocol",
@@ -684,6 +686,7 @@ export const PutFirewallConfigSecurityType = {
   Ja4Digest: "ja4_digest",
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
+  ServerAction: "server_action",
 } as const;
 export type PutFirewallConfigSecurityType = ClosedEnum<
   typeof PutFirewallConfigSecurityType

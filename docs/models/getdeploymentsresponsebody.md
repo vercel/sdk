@@ -39,6 +39,10 @@ let value: GetDeploymentsResponseBody = {
       ready: 1609492210000,
       inspectorUrl:
         "https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq",
+      errorCode: "BUILD_FAILED",
+      errorMessage:
+        "The Deployment has been canceled because this project was not affected",
+      oomReport: "out-of-memory",
     },
   ],
 };

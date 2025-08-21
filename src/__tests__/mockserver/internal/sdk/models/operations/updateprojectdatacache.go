@@ -2207,6 +2207,8 @@ const (
 	UpdateProjectDataCacheFrameworkStorybook      UpdateProjectDataCacheFramework = "storybook"
 	UpdateProjectDataCacheFrameworkNitro          UpdateProjectDataCacheFramework = "nitro"
 	UpdateProjectDataCacheFrameworkHono           UpdateProjectDataCacheFramework = "hono"
+	UpdateProjectDataCacheFrameworkExpress        UpdateProjectDataCacheFramework = "express"
+	UpdateProjectDataCacheFrameworkXmcp           UpdateProjectDataCacheFramework = "xmcp"
 )
 
 func (e UpdateProjectDataCacheFramework) ToPointer() *UpdateProjectDataCacheFramework {
@@ -2313,6 +2315,10 @@ func (e *UpdateProjectDataCacheFramework) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = UpdateProjectDataCacheFramework(v)
 		return nil
 	default:
@@ -2698,24 +2704,24 @@ func (o *UpdateProjectDataCacheDeployHook5) GetURL() string {
 }
 
 type UpdateProjectDataCacheLinkGithubCustomHost struct {
-	Org *string `json:"org,omitempty"`
+	Org string `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
-	RepoOwnerID      *float64                                    `json:"repoOwnerId,omitempty"`
-	Repo             *string                                     `json:"repo,omitempty"`
-	RepoID           *float64                                    `json:"repoId,omitempty"`
-	Type             *UpdateProjectDataCacheTypeGithubCustomHost `json:"type,omitempty"`
-	Host             *string                                     `json:"host,omitempty"`
-	CreatedAt        *float64                                    `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectDataCacheDeployHook5         `json:"deployHooks"`
-	GitCredentialID  *string                                     `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                                    `json:"updatedAt,omitempty"`
-	Sourceless       *bool                                       `json:"sourceless,omitempty"`
-	ProductionBranch *string                                     `json:"productionBranch,omitempty"`
+	RepoOwnerID      *float64                                   `json:"repoOwnerId,omitempty"`
+	Repo             *string                                    `json:"repo,omitempty"`
+	RepoID           *float64                                   `json:"repoId,omitempty"`
+	Type             UpdateProjectDataCacheTypeGithubCustomHost `json:"type"`
+	Host             string                                     `json:"host"`
+	CreatedAt        *float64                                   `json:"createdAt,omitempty"`
+	DeployHooks      []UpdateProjectDataCacheDeployHook5        `json:"deployHooks"`
+	GitCredentialID  string                                     `json:"gitCredentialId"`
+	UpdatedAt        *float64                                   `json:"updatedAt,omitempty"`
+	Sourceless       *bool                                      `json:"sourceless,omitempty"`
+	ProductionBranch string                                     `json:"productionBranch"`
 }
 
-func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetOrg() *string {
+func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetOrg() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Org
 }
@@ -2741,16 +2747,16 @@ func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetRepoID() *float64 {
 	return o.RepoID
 }
 
-func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetType() *UpdateProjectDataCacheTypeGithubCustomHost {
+func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetType() UpdateProjectDataCacheTypeGithubCustomHost {
 	if o == nil {
-		return nil
+		return UpdateProjectDataCacheTypeGithubCustomHost("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetHost() *string {
+func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetHost() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Host
 }
@@ -2769,9 +2775,9 @@ func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetDeployHooks() []UpdatePr
 	return o.DeployHooks
 }
 
-func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetGitCredentialID() *string {
+func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -2790,9 +2796,9 @@ func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetProductionBranch() *string {
+func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -2864,58 +2870,58 @@ func (o *UpdateProjectDataCacheDeployHook4) GetURL() string {
 }
 
 type UpdateProjectDataCacheLinkBitbucket struct {
-	Name             *string                              `json:"name,omitempty"`
-	Slug             *string                              `json:"slug,omitempty"`
-	Owner            *string                              `json:"owner,omitempty"`
-	Type             *UpdateProjectDataCacheTypeBitbucket `json:"type,omitempty"`
-	UUID             *string                              `json:"uuid,omitempty"`
-	WorkspaceUUID    *string                              `json:"workspaceUuid,omitempty"`
-	CreatedAt        *float64                             `json:"createdAt,omitempty"`
-	DeployHooks      []UpdateProjectDataCacheDeployHook4  `json:"deployHooks"`
-	GitCredentialID  *string                              `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                             `json:"updatedAt,omitempty"`
-	Sourceless       *bool                                `json:"sourceless,omitempty"`
-	ProductionBranch *string                              `json:"productionBranch,omitempty"`
+	Name             string                              `json:"name"`
+	Slug             string                              `json:"slug"`
+	Owner            string                              `json:"owner"`
+	Type             UpdateProjectDataCacheTypeBitbucket `json:"type"`
+	UUID             string                              `json:"uuid"`
+	WorkspaceUUID    string                              `json:"workspaceUuid"`
+	CreatedAt        *float64                            `json:"createdAt,omitempty"`
+	DeployHooks      []UpdateProjectDataCacheDeployHook4 `json:"deployHooks"`
+	GitCredentialID  string                              `json:"gitCredentialId"`
+	UpdatedAt        *float64                            `json:"updatedAt,omitempty"`
+	Sourceless       *bool                               `json:"sourceless,omitempty"`
+	ProductionBranch string                              `json:"productionBranch"`
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetName() *string {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetSlug() *string {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetSlug() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Slug
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetOwner() *string {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetOwner() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Owner
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetType() *UpdateProjectDataCacheTypeBitbucket {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetType() UpdateProjectDataCacheTypeBitbucket {
 	if o == nil {
-		return nil
+		return UpdateProjectDataCacheTypeBitbucket("")
 	}
 	return o.Type
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetUUID() *string {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetUUID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.UUID
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetWorkspaceUUID() *string {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetWorkspaceUUID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.WorkspaceUUID
 }
@@ -2934,9 +2940,9 @@ func (o *UpdateProjectDataCacheLinkBitbucket) GetDeployHooks() []UpdateProjectDa
 	return o.DeployHooks
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetGitCredentialID() *string {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -2955,9 +2961,9 @@ func (o *UpdateProjectDataCacheLinkBitbucket) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *UpdateProjectDataCacheLinkBitbucket) GetProductionBranch() *string {
+func (o *UpdateProjectDataCacheLinkBitbucket) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -3029,46 +3035,46 @@ func (o *UpdateProjectDataCacheDeployHook3) GetURL() string {
 }
 
 type UpdateProjectDataCacheLinkGitlab struct {
-	ProjectID                *string `json:"projectId,omitempty"`
-	ProjectName              *string `json:"projectName,omitempty"`
-	ProjectNameWithNamespace *string `json:"projectNameWithNamespace,omitempty"`
-	ProjectNamespace         *string `json:"projectNamespace,omitempty"`
+	ProjectID                string `json:"projectId"`
+	ProjectName              string `json:"projectName"`
+	ProjectNameWithNamespace string `json:"projectNameWithNamespace"`
+	ProjectNamespace         string `json:"projectNamespace"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
 	ProjectOwnerID   *float64                            `json:"projectOwnerId,omitempty"`
-	ProjectURL       *string                             `json:"projectUrl,omitempty"`
-	Type             *UpdateProjectDataCacheTypeGitlab   `json:"type,omitempty"`
+	ProjectURL       string                              `json:"projectUrl"`
+	Type             UpdateProjectDataCacheTypeGitlab    `json:"type"`
 	CreatedAt        *float64                            `json:"createdAt,omitempty"`
 	DeployHooks      []UpdateProjectDataCacheDeployHook3 `json:"deployHooks"`
-	GitCredentialID  *string                             `json:"gitCredentialId,omitempty"`
+	GitCredentialID  string                              `json:"gitCredentialId"`
 	UpdatedAt        *float64                            `json:"updatedAt,omitempty"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
-	ProductionBranch *string                             `json:"productionBranch,omitempty"`
+	ProductionBranch string                              `json:"productionBranch"`
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetProjectID() *string {
+func (o *UpdateProjectDataCacheLinkGitlab) GetProjectID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetProjectName() *string {
+func (o *UpdateProjectDataCacheLinkGitlab) GetProjectName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectName
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetProjectNameWithNamespace() *string {
+func (o *UpdateProjectDataCacheLinkGitlab) GetProjectNameWithNamespace() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectNameWithNamespace
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetProjectNamespace() *string {
+func (o *UpdateProjectDataCacheLinkGitlab) GetProjectNamespace() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectNamespace
 }
@@ -3080,16 +3086,16 @@ func (o *UpdateProjectDataCacheLinkGitlab) GetProjectOwnerID() *float64 {
 	return o.ProjectOwnerID
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetProjectURL() *string {
+func (o *UpdateProjectDataCacheLinkGitlab) GetProjectURL() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectURL
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetType() *UpdateProjectDataCacheTypeGitlab {
+func (o *UpdateProjectDataCacheLinkGitlab) GetType() UpdateProjectDataCacheTypeGitlab {
 	if o == nil {
-		return nil
+		return UpdateProjectDataCacheTypeGitlab("")
 	}
 	return o.Type
 }
@@ -3108,9 +3114,9 @@ func (o *UpdateProjectDataCacheLinkGitlab) GetDeployHooks() []UpdateProjectDataC
 	return o.DeployHooks
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetGitCredentialID() *string {
+func (o *UpdateProjectDataCacheLinkGitlab) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -3129,9 +3135,9 @@ func (o *UpdateProjectDataCacheLinkGitlab) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *UpdateProjectDataCacheLinkGitlab) GetProductionBranch() *string {
+func (o *UpdateProjectDataCacheLinkGitlab) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -3203,23 +3209,23 @@ func (o *UpdateProjectDataCacheDeployHook2) GetURL() string {
 }
 
 type UpdateProjectDataCacheLinkGithubLimited struct {
-	Type      *UpdateProjectDataCacheTypeGithubLimited `json:"type,omitempty"`
-	CreatedAt *float64                                 `json:"createdAt,omitempty"`
-	UpdatedAt *float64                                 `json:"updatedAt,omitempty"`
-	Org       *string                                  `json:"org,omitempty"`
+	Type      UpdateProjectDataCacheTypeGithubLimited `json:"type"`
+	CreatedAt *float64                                `json:"createdAt,omitempty"`
+	UpdatedAt *float64                                `json:"updatedAt,omitempty"`
+	Org       string                                  `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                            `json:"repoOwnerId,omitempty"`
 	Repo             *string                             `json:"repo,omitempty"`
 	RepoID           *float64                            `json:"repoId,omitempty"`
 	DeployHooks      []UpdateProjectDataCacheDeployHook2 `json:"deployHooks"`
-	GitCredentialID  *string                             `json:"gitCredentialId,omitempty"`
+	GitCredentialID  string                              `json:"gitCredentialId"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
-	ProductionBranch *string                             `json:"productionBranch,omitempty"`
+	ProductionBranch string                              `json:"productionBranch"`
 }
 
-func (o *UpdateProjectDataCacheLinkGithubLimited) GetType() *UpdateProjectDataCacheTypeGithubLimited {
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetType() UpdateProjectDataCacheTypeGithubLimited {
 	if o == nil {
-		return nil
+		return UpdateProjectDataCacheTypeGithubLimited("")
 	}
 	return o.Type
 }
@@ -3238,9 +3244,9 @@ func (o *UpdateProjectDataCacheLinkGithubLimited) GetUpdatedAt() *float64 {
 	return o.UpdatedAt
 }
 
-func (o *UpdateProjectDataCacheLinkGithubLimited) GetOrg() *string {
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetOrg() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Org
 }
@@ -3273,9 +3279,9 @@ func (o *UpdateProjectDataCacheLinkGithubLimited) GetDeployHooks() []UpdateProje
 	return o.DeployHooks
 }
 
-func (o *UpdateProjectDataCacheLinkGithubLimited) GetGitCredentialID() *string {
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -3287,9 +3293,9 @@ func (o *UpdateProjectDataCacheLinkGithubLimited) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *UpdateProjectDataCacheLinkGithubLimited) GetProductionBranch() *string {
+func (o *UpdateProjectDataCacheLinkGithubLimited) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -3361,23 +3367,23 @@ func (o *UpdateProjectDataCacheDeployHook1) GetURL() string {
 }
 
 type UpdateProjectDataCacheLinkGithub struct {
-	Org *string `json:"org,omitempty"`
+	Org string `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                            `json:"repoOwnerId,omitempty"`
 	Repo             *string                             `json:"repo,omitempty"`
 	RepoID           *float64                            `json:"repoId,omitempty"`
-	Type             *UpdateProjectDataCacheTypeGithub   `json:"type,omitempty"`
+	Type             UpdateProjectDataCacheTypeGithub    `json:"type"`
 	CreatedAt        *float64                            `json:"createdAt,omitempty"`
 	DeployHooks      []UpdateProjectDataCacheDeployHook1 `json:"deployHooks"`
-	GitCredentialID  *string                             `json:"gitCredentialId,omitempty"`
+	GitCredentialID  string                              `json:"gitCredentialId"`
 	UpdatedAt        *float64                            `json:"updatedAt,omitempty"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
-	ProductionBranch *string                             `json:"productionBranch,omitempty"`
+	ProductionBranch string                              `json:"productionBranch"`
 }
 
-func (o *UpdateProjectDataCacheLinkGithub) GetOrg() *string {
+func (o *UpdateProjectDataCacheLinkGithub) GetOrg() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Org
 }
@@ -3403,9 +3409,9 @@ func (o *UpdateProjectDataCacheLinkGithub) GetRepoID() *float64 {
 	return o.RepoID
 }
 
-func (o *UpdateProjectDataCacheLinkGithub) GetType() *UpdateProjectDataCacheTypeGithub {
+func (o *UpdateProjectDataCacheLinkGithub) GetType() UpdateProjectDataCacheTypeGithub {
 	if o == nil {
-		return nil
+		return UpdateProjectDataCacheTypeGithub("")
 	}
 	return o.Type
 }
@@ -3424,9 +3430,9 @@ func (o *UpdateProjectDataCacheLinkGithub) GetDeployHooks() []UpdateProjectDataC
 	return o.DeployHooks
 }
 
-func (o *UpdateProjectDataCacheLinkGithub) GetGitCredentialID() *string {
+func (o *UpdateProjectDataCacheLinkGithub) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -3445,9 +3451,9 @@ func (o *UpdateProjectDataCacheLinkGithub) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *UpdateProjectDataCacheLinkGithub) GetProductionBranch() *string {
+func (o *UpdateProjectDataCacheLinkGithub) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -5129,6 +5135,7 @@ type UpdateProjectDataCachePermissions struct {
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
 	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
@@ -6588,6 +6595,13 @@ func (o *UpdateProjectDataCachePermissions) GetTrustedIps() []components.ACLActi
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *UpdateProjectDataCachePermissions) GetV0Chat() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.V0Chat
 }
 
 func (o *UpdateProjectDataCachePermissions) GetWebAnalytics() []components.ACLAction {

@@ -192,6 +192,8 @@ const (
 	CancelDeploymentFrameworkStorybook      CancelDeploymentFramework = "storybook"
 	CancelDeploymentFrameworkNitro          CancelDeploymentFramework = "nitro"
 	CancelDeploymentFrameworkHono           CancelDeploymentFramework = "hono"
+	CancelDeploymentFrameworkExpress        CancelDeploymentFramework = "express"
+	CancelDeploymentFrameworkXmcp           CancelDeploymentFramework = "xmcp"
 )
 
 func (e CancelDeploymentFramework) ToPointer() *CancelDeploymentFramework {
@@ -298,6 +300,10 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = CancelDeploymentFramework(v)
 		return nil
 	default:
@@ -855,17 +861,17 @@ func (o *CancelDeploymentOutput) GetFunctionName() string {
 
 // CancelDeploymentLambda - A partial representation of a Build used by the deployment endpoint.
 type CancelDeploymentLambda struct {
-	ID           *string                           `json:"id,omitempty"`
+	ID           string                            `json:"id"`
 	CreatedAt    *float64                          `json:"createdAt,omitempty"`
-	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyState   *CancelDeploymentLambdaReadyState `json:"readyState,omitempty"`
+	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                          `json:"readyStateAt,omitempty"`
 	Output       []CancelDeploymentOutput          `json:"output"`
 }
 
-func (o *CancelDeploymentLambda) GetID() *string {
+func (o *CancelDeploymentLambda) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
@@ -877,18 +883,18 @@ func (o *CancelDeploymentLambda) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *CancelDeploymentLambda) GetEntrypoint() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Entrypoint
-}
-
 func (o *CancelDeploymentLambda) GetReadyState() *CancelDeploymentLambdaReadyState {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
+}
+
+func (o *CancelDeploymentLambda) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *CancelDeploymentLambda) GetReadyStateAt() *float64 {

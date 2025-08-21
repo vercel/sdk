@@ -978,7 +978,10 @@ const value: models.Ninety = {
 ### `models.NinetyOne`
 
 ```typescript
-const value: models.NinetyOne = {};
+const value: models.NinetyOne = {
+  projectId: "<id>",
+  projectName: "<value>",
+};
 ```
 
 ### `models.NinetyTwo`
@@ -1395,7 +1398,11 @@ const value: models.OneHundredAndThirtyFive = {
   project: {
     name: "<value>",
   },
-  projectMembership: {},
+  projectMembership: {
+    role: "PROJECT_VIEWER",
+    uid: "<id>",
+    createdAt: 5892.14,
+  },
 };
 ```
 
@@ -1406,7 +1413,11 @@ const value: models.OneHundredAndThirtySix = {
   project: {
     name: "<value>",
   },
-  removedMembership: {},
+  removedMembership: {
+    role: "ADMIN",
+    uid: "<id>",
+    createdAt: 5391.89,
+  },
 };
 ```
 

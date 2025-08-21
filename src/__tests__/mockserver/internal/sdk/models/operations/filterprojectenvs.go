@@ -1319,14 +1319,14 @@ func (o *FilterProjectEnvsEnvInternalContentHint2) GetEncryptedValue() string {
 
 type FilterProjectEnvsEnv2 struct {
 	Target *FilterProjectEnvsEnvTargetUnion2 `json:"target,omitempty"`
-	Type   *FilterProjectEnvsEnvType2        `json:"type,omitempty"`
+	Type   FilterProjectEnvsEnvType2         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                                `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                                  `json:"decrypted,omitempty"`
-	Value             *string                                `json:"value,omitempty"`
+	Value             string                                 `json:"value"`
 	VsmValue          *string                                `json:"vsmValue,omitempty"`
 	ID                *string                                `json:"id,omitempty"`
-	Key               *string                                `json:"key,omitempty"`
+	Key               string                                 `json:"key"`
 	ConfigurationID   *string                                `json:"configurationId,omitempty"`
 	CreatedAt         *float64                               `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                               `json:"updatedAt,omitempty"`
@@ -1350,9 +1350,9 @@ func (o *FilterProjectEnvsEnv2) GetTarget() *FilterProjectEnvsEnvTargetUnion2 {
 	return o.Target
 }
 
-func (o *FilterProjectEnvsEnv2) GetType() *FilterProjectEnvsEnvType2 {
+func (o *FilterProjectEnvsEnv2) GetType() FilterProjectEnvsEnvType2 {
 	if o == nil {
-		return nil
+		return FilterProjectEnvsEnvType2("")
 	}
 	return o.Type
 }
@@ -1371,9 +1371,9 @@ func (o *FilterProjectEnvsEnv2) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *FilterProjectEnvsEnv2) GetValue() *string {
+func (o *FilterProjectEnvsEnv2) GetValue() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Value
 }
@@ -1392,9 +1392,9 @@ func (o *FilterProjectEnvsEnv2) GetID() *string {
 	return o.ID
 }
 
-func (o *FilterProjectEnvsEnv2) GetKey() *string {
+func (o *FilterProjectEnvsEnv2) GetKey() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Key
 }
@@ -2707,14 +2707,14 @@ func (o *FilterProjectEnvsEnvInternalContentHint1) GetEncryptedValue() string {
 
 type FilterProjectEnvsEnv1 struct {
 	Target *FilterProjectEnvsEnvTargetUnion1 `json:"target,omitempty"`
-	Type   *FilterProjectEnvsEnvType1        `json:"type,omitempty"`
+	Type   FilterProjectEnvsEnvType1         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                                `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                                  `json:"decrypted,omitempty"`
-	Value             *string                                `json:"value,omitempty"`
+	Value             string                                 `json:"value"`
 	VsmValue          *string                                `json:"vsmValue,omitempty"`
 	ID                *string                                `json:"id,omitempty"`
-	Key               *string                                `json:"key,omitempty"`
+	Key               string                                 `json:"key"`
 	ConfigurationID   *string                                `json:"configurationId,omitempty"`
 	CreatedAt         *float64                               `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                               `json:"updatedAt,omitempty"`
@@ -2738,9 +2738,9 @@ func (o *FilterProjectEnvsEnv1) GetTarget() *FilterProjectEnvsEnvTargetUnion1 {
 	return o.Target
 }
 
-func (o *FilterProjectEnvsEnv1) GetType() *FilterProjectEnvsEnvType1 {
+func (o *FilterProjectEnvsEnv1) GetType() FilterProjectEnvsEnvType1 {
 	if o == nil {
-		return nil
+		return FilterProjectEnvsEnvType1("")
 	}
 	return o.Type
 }
@@ -2759,9 +2759,9 @@ func (o *FilterProjectEnvsEnv1) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *FilterProjectEnvsEnv1) GetValue() *string {
+func (o *FilterProjectEnvsEnv1) GetValue() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Value
 }
@@ -2780,9 +2780,9 @@ func (o *FilterProjectEnvsEnv1) GetID() *string {
 	return o.ID
 }
 
-func (o *FilterProjectEnvsEnv1) GetKey() *string {
+func (o *FilterProjectEnvsEnv1) GetKey() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Key
 }
@@ -4103,14 +4103,14 @@ func (o *FilterProjectEnvsInternalContentHint) GetEncryptedValue() string {
 
 type FilterProjectEnvsResponseBody1 struct {
 	Target *FilterProjectEnvsTargetUnion `json:"target,omitempty"`
-	Type   *FilterProjectEnvsType        `json:"type,omitempty"`
+	Type   FilterProjectEnvsType         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
-	Value             *string                            `json:"value,omitempty"`
+	Value             string                             `json:"value"`
 	VsmValue          *string                            `json:"vsmValue,omitempty"`
 	ID                *string                            `json:"id,omitempty"`
-	Key               *string                            `json:"key,omitempty"`
+	Key               string                             `json:"key"`
 	ConfigurationID   *string                            `json:"configurationId,omitempty"`
 	CreatedAt         *float64                           `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                           `json:"updatedAt,omitempty"`
@@ -4134,9 +4134,9 @@ func (o *FilterProjectEnvsResponseBody1) GetTarget() *FilterProjectEnvsTargetUni
 	return o.Target
 }
 
-func (o *FilterProjectEnvsResponseBody1) GetType() *FilterProjectEnvsType {
+func (o *FilterProjectEnvsResponseBody1) GetType() FilterProjectEnvsType {
 	if o == nil {
-		return nil
+		return FilterProjectEnvsType("")
 	}
 	return o.Type
 }
@@ -4155,9 +4155,9 @@ func (o *FilterProjectEnvsResponseBody1) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *FilterProjectEnvsResponseBody1) GetValue() *string {
+func (o *FilterProjectEnvsResponseBody1) GetValue() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Value
 }
@@ -4176,9 +4176,9 @@ func (o *FilterProjectEnvsResponseBody1) GetID() *string {
 	return o.ID
 }
 
-func (o *FilterProjectEnvsResponseBody1) GetKey() *string {
+func (o *FilterProjectEnvsResponseBody1) GetKey() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Key
 }

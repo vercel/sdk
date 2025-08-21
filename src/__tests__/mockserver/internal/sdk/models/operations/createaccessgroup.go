@@ -117,9 +117,33 @@ func (o *CreateAccessGroupRequest) GetRequestBody() CreateAccessGroupRequestBody
 	return o.RequestBody
 }
 
+type CreateAccessGroupEntitlement string
+
+const (
+	CreateAccessGroupEntitlementV0 CreateAccessGroupEntitlement = "v0"
+)
+
+func (e CreateAccessGroupEntitlement) ToPointer() *CreateAccessGroupEntitlement {
+	return &e
+}
+func (e *CreateAccessGroupEntitlement) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "v0":
+		*e = CreateAccessGroupEntitlement(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateAccessGroupEntitlement: %v", v)
+	}
+}
+
 type CreateAccessGroupResponseBody struct {
-	MembersCount  float64 `json:"membersCount"`
-	ProjectsCount float64 `json:"projectsCount"`
+	Entitlements  []CreateAccessGroupEntitlement `json:"entitlements"`
+	MembersCount  float64                        `json:"membersCount"`
+	ProjectsCount float64                        `json:"projectsCount"`
 	// The name of this access group.
 	Name string `json:"name"`
 	// Timestamp in milliseconds when the access group was created.
@@ -134,6 +158,13 @@ type CreateAccessGroupResponseBody struct {
 	TeamRoles []string `json:"teamRoles,omitempty"`
 	// Permissions that the team has in the access group.
 	TeamPermissions []string `json:"teamPermissions,omitempty"`
+}
+
+func (o *CreateAccessGroupResponseBody) GetEntitlements() []CreateAccessGroupEntitlement {
+	if o == nil {
+		return []CreateAccessGroupEntitlement{}
+	}
+	return o.Entitlements
 }
 
 func (o *CreateAccessGroupResponseBody) GetMembersCount() float64 {

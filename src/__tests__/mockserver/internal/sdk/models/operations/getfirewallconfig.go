@@ -668,6 +668,7 @@ const (
 	GetFirewallConfigTypeQuery            GetFirewallConfigType = "query"
 	GetFirewallConfigTypeCookie           GetFirewallConfigType = "cookie"
 	GetFirewallConfigTypeTargetPath       GetFirewallConfigType = "target_path"
+	GetFirewallConfigTypeRoute            GetFirewallConfigType = "route"
 	GetFirewallConfigTypeRawPath          GetFirewallConfigType = "raw_path"
 	GetFirewallConfigTypeIPAddress        GetFirewallConfigType = "ip_address"
 	GetFirewallConfigTypeProtocol         GetFirewallConfigType = "protocol"
@@ -683,6 +684,7 @@ const (
 	GetFirewallConfigTypeJa4Digest        GetFirewallConfigType = "ja4_digest"
 	GetFirewallConfigTypeJa3Digest        GetFirewallConfigType = "ja3_digest"
 	GetFirewallConfigTypeRateLimitAPIID   GetFirewallConfigType = "rate_limit_api_id"
+	GetFirewallConfigTypeServerAction     GetFirewallConfigType = "server_action"
 )
 
 func (e GetFirewallConfigType) ToPointer() *GetFirewallConfigType {
@@ -707,6 +709,8 @@ func (e *GetFirewallConfigType) UnmarshalJSON(data []byte) error {
 	case "cookie":
 		fallthrough
 	case "target_path":
+		fallthrough
+	case "route":
 		fallthrough
 	case "raw_path":
 		fallthrough
@@ -737,6 +741,8 @@ func (e *GetFirewallConfigType) UnmarshalJSON(data []byte) error {
 	case "ja3_digest":
 		fallthrough
 	case "rate_limit_api_id":
+		fallthrough
+	case "server_action":
 		*e = GetFirewallConfigType(v)
 		return nil
 	default:

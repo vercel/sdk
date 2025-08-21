@@ -609,9 +609,9 @@ export const UserEventPayloadRole = {
 export type UserEventPayloadRole = ClosedEnum<typeof UserEventPayloadRole>;
 
 export type RemovedMembership = {
-  role?: UserEventPayloadRole | undefined;
-  uid?: string | undefined;
-  createdAt?: number | undefined;
+  role: UserEventPayloadRole;
+  uid: string;
+  createdAt: number;
   username?: string | undefined;
 };
 
@@ -636,9 +636,9 @@ export const PayloadRole = {
 export type PayloadRole = ClosedEnum<typeof PayloadRole>;
 
 export type ProjectMembership = {
-  role?: PayloadRole | undefined;
-  uid?: string | undefined;
-  createdAt?: number | undefined;
+  role: PayloadRole;
+  uid: string;
+  createdAt: number;
   username?: string | undefined;
 };
 
@@ -1315,8 +1315,8 @@ export type NinetyTwo = {
  * The payload of the event, if requested.
  */
 export type NinetyOne = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
+  projectId: string;
+  projectName: string;
   newTargetPercentage?: number | undefined;
 };
 
@@ -1982,7 +1982,7 @@ export type Abuse = {
   /**
    * Since November 2021
    */
-  updatedAt?: number | undefined;
+  updatedAt: number;
   creationUserAgent?: string | undefined;
   creationIp?: string | undefined;
   removedPhoneNumbers?: string | undefined;
@@ -2327,12 +2327,12 @@ export type UserEventPayloadJoinedFrom = {
 };
 
 export type Teams = {
-  created?: number | undefined;
-  createdAt?: number | undefined;
+  created: number;
+  createdAt: number;
   teamId: string;
-  role?: UserEventPayload64Role | undefined;
-  confirmed?: boolean | undefined;
-  confirmedAt?: number | undefined;
+  role: UserEventPayload64Role;
+  confirmed: boolean;
+  confirmedAt: number;
   accessRequestedAt?: number | undefined;
   teamRoles?: Array<PayloadTeamRoles> | undefined;
   teamPermissions?: Array<PayloadTeamPermissions> | undefined;
@@ -2687,10 +2687,10 @@ export const BlockReason = {
 export type BlockReason = ClosedEnum<typeof BlockReason>;
 
 export type PayloadWebAnalytics = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: BlockReason | undefined;
+  blockReason: BlockReason;
   graceEmailSentAt?: number | undefined;
 };
 
@@ -2710,10 +2710,10 @@ export type BlockType = ClosedEnum<typeof BlockType>;
  * A soft block indicates a temporary pause in data collection (ex limit exceeded for the current cycle) A hard block indicates a stoppage in data collection that requires manual intervention (ex upgrading a pro trial)
  */
 export type Monitoring = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: PayloadBlockReason | undefined;
+  blockReason: PayloadBlockReason;
   blockType: BlockType;
 };
 
@@ -2732,10 +2732,10 @@ export const PayloadBlockType = {
 export type PayloadBlockType = ClosedEnum<typeof PayloadBlockType>;
 
 export type ObservabilityPlus = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: UserEventPayloadBlockReason | undefined;
+  blockReason: UserEventPayloadBlockReason;
   blockType: PayloadBlockType;
 };
 
@@ -2837,12 +2837,10 @@ export const OverageReason = {
 export type OverageReason = ClosedEnum<typeof OverageReason>;
 
 export type BlobT = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?:
-    | UserEventPayload64NewOwnerFeatureBlocksBlobBlockReason
-    | undefined;
+  blockReason: UserEventPayload64NewOwnerFeatureBlocksBlobBlockReason;
   overageReason: OverageReason;
 };
 
@@ -2898,12 +2896,10 @@ export const PayloadOverageReason = {
 export type PayloadOverageReason = ClosedEnum<typeof PayloadOverageReason>;
 
 export type Postgres = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?:
-    | UserEventPayload64NewOwnerFeatureBlocksPostgresBlockReason
-    | undefined;
+  blockReason: UserEventPayload64NewOwnerFeatureBlocksPostgresBlockReason;
   overageReason: PayloadOverageReason;
 };
 
@@ -2961,12 +2957,10 @@ export type UserEventPayloadOverageReason = ClosedEnum<
 >;
 
 export type Redis = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?:
-    | UserEventPayload64NewOwnerFeatureBlocksRedisBlockReason
-    | undefined;
+  blockReason: UserEventPayload64NewOwnerFeatureBlocksRedisBlockReason;
   overageReason: UserEventPayloadOverageReason;
 };
 
@@ -4377,6 +4371,7 @@ export type Payload =
   | EightySeven
   | EightyNine
   | Ninety
+  | NinetyOne
   | NinetyThree
   | NinetyFour
   | NinetySeven
@@ -4458,7 +4453,6 @@ export type Payload =
   | FiftyFive
   | FiftySix
   | FiftySeven
-  | NinetyOne
   | OneHundredAndTwo
   | OneHundredAndTen
   | OneHundredAndEleven
@@ -4578,6 +4572,7 @@ export type UserEvent = {
     | EightySeven
     | EightyNine
     | Ninety
+    | NinetyOne
     | NinetyThree
     | NinetyFour
     | NinetySeven
@@ -4659,7 +4654,6 @@ export type UserEvent = {
     | FiftyFive
     | FiftySix
     | FiftySeven
-    | NinetyOne
     | OneHundredAndTwo
     | OneHundredAndTen
     | OneHundredAndEleven
@@ -8325,17 +8319,17 @@ export const RemovedMembership$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: UserEventPayloadRole$inboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
+  role: UserEventPayloadRole$inboundSchema,
+  uid: z.string(),
+  createdAt: z.number(),
   username: z.string().optional(),
 });
 
 /** @internal */
 export type RemovedMembership$Outbound = {
-  role?: string | undefined;
-  uid?: string | undefined;
-  createdAt?: number | undefined;
+  role: string;
+  uid: string;
+  createdAt: number;
   username?: string | undefined;
 };
 
@@ -8345,9 +8339,9 @@ export const RemovedMembership$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemovedMembership
 > = z.object({
-  role: UserEventPayloadRole$outboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
+  role: UserEventPayloadRole$outboundSchema,
+  uid: z.string(),
+  createdAt: z.number(),
   username: z.string().optional(),
 });
 
@@ -8521,17 +8515,17 @@ export const ProjectMembership$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: PayloadRole$inboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
+  role: PayloadRole$inboundSchema,
+  uid: z.string(),
+  createdAt: z.number(),
   username: z.string().optional(),
 });
 
 /** @internal */
 export type ProjectMembership$Outbound = {
-  role?: string | undefined;
-  uid?: string | undefined;
-  createdAt?: number | undefined;
+  role: string;
+  uid: string;
+  createdAt: number;
   username?: string | undefined;
 };
 
@@ -8541,9 +8535,9 @@ export const ProjectMembership$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ProjectMembership
 > = z.object({
-  role: PayloadRole$outboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
+  role: PayloadRole$outboundSchema,
+  uid: z.string(),
+  createdAt: z.number(),
   username: z.string().optional(),
 });
 
@@ -12438,15 +12432,15 @@ export const NinetyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
+  projectId: z.string(),
+  projectName: z.string(),
   newTargetPercentage: z.number().optional(),
 });
 
 /** @internal */
 export type NinetyOne$Outbound = {
-  projectId?: string | undefined;
-  projectName?: string | undefined;
+  projectId: string;
+  projectName: string;
   newTargetPercentage?: number | undefined;
 };
 
@@ -12456,8 +12450,8 @@ export const NinetyOne$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NinetyOne
 > = z.object({
-  projectId: z.string().optional(),
-  projectName: z.string().optional(),
+  projectId: z.string(),
+  projectName: z.string(),
   newTargetPercentage: z.number().optional(),
 });
 
@@ -16548,7 +16542,7 @@ export const Abuse$inboundSchema: z.ZodType<Abuse, z.ZodTypeDef, unknown> = z
     gitLineageBlocks: z.number().optional(),
     gitLineageBlocksDry: z.number().optional(),
     scanner: z.string().optional(),
-    updatedAt: z.number().optional(),
+    updatedAt: z.number(),
     creationUserAgent: z.string().optional(),
     creationIp: z.string().optional(),
     removedPhoneNumbers: z.string().optional(),
@@ -16562,7 +16556,7 @@ export type Abuse$Outbound = {
   gitLineageBlocks?: number | undefined;
   gitLineageBlocksDry?: number | undefined;
   scanner?: string | undefined;
-  updatedAt?: number | undefined;
+  updatedAt: number;
   creationUserAgent?: string | undefined;
   creationIp?: string | undefined;
   removedPhoneNumbers?: string | undefined;
@@ -16580,7 +16574,7 @@ export const Abuse$outboundSchema: z.ZodType<
   gitLineageBlocks: z.number().optional(),
   gitLineageBlocksDry: z.number().optional(),
   scanner: z.string().optional(),
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   creationUserAgent: z.string().optional(),
   creationIp: z.string().optional(),
   removedPhoneNumbers: z.string().optional(),
@@ -18622,12 +18616,12 @@ export function userEventPayloadJoinedFromFromJSON(
 /** @internal */
 export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
   .object({
-    created: z.number().optional(),
-    createdAt: z.number().optional(),
+    created: z.number(),
+    createdAt: z.number(),
     teamId: z.string(),
-    role: UserEventPayload64Role$inboundSchema.optional(),
-    confirmed: z.boolean().optional(),
-    confirmedAt: z.number().optional(),
+    role: UserEventPayload64Role$inboundSchema,
+    confirmed: z.boolean(),
+    confirmedAt: z.number(),
     accessRequestedAt: z.number().optional(),
     teamRoles: z.array(PayloadTeamRoles$inboundSchema).optional(),
     teamPermissions: z.array(PayloadTeamPermissions$inboundSchema).optional(),
@@ -18637,12 +18631,12 @@ export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Teams$Outbound = {
-  created?: number | undefined;
-  createdAt?: number | undefined;
+  created: number;
+  createdAt: number;
   teamId: string;
-  role?: string | undefined;
-  confirmed?: boolean | undefined;
-  confirmedAt?: number | undefined;
+  role: string;
+  confirmed: boolean;
+  confirmedAt: number;
   accessRequestedAt?: number | undefined;
   teamRoles?: Array<string> | undefined;
   teamPermissions?: Array<string> | undefined;
@@ -18655,12 +18649,12 @@ export const Teams$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Teams
 > = z.object({
-  created: z.number().optional(),
-  createdAt: z.number().optional(),
+  created: z.number(),
+  createdAt: z.number(),
   teamId: z.string(),
-  role: UserEventPayload64Role$outboundSchema.optional(),
-  confirmed: z.boolean().optional(),
-  confirmedAt: z.number().optional(),
+  role: UserEventPayload64Role$outboundSchema,
+  confirmed: z.boolean(),
+  confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
   teamRoles: z.array(PayloadTeamRoles$outboundSchema).optional(),
   teamPermissions: z.array(PayloadTeamPermissions$outboundSchema).optional(),
@@ -21434,19 +21428,19 @@ export const PayloadWebAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: BlockReason$inboundSchema.optional(),
+  blockReason: BlockReason$inboundSchema,
   graceEmailSentAt: z.number().optional(),
 });
 
 /** @internal */
 export type PayloadWebAnalytics$Outbound = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: string | undefined;
+  blockReason: string;
   graceEmailSentAt?: number | undefined;
 };
 
@@ -21456,10 +21450,10 @@ export const PayloadWebAnalytics$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayloadWebAnalytics
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: BlockReason$outboundSchema.optional(),
+  blockReason: BlockReason$outboundSchema,
   graceEmailSentAt: z.number().optional(),
 });
 
@@ -21540,19 +21534,19 @@ export const Monitoring$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: PayloadBlockReason$inboundSchema.optional(),
+  blockReason: PayloadBlockReason$inboundSchema,
   blockType: BlockType$inboundSchema,
 });
 
 /** @internal */
 export type Monitoring$Outbound = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: string | undefined;
+  blockReason: string;
   blockType: string;
 };
 
@@ -21562,10 +21556,10 @@ export const Monitoring$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Monitoring
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: PayloadBlockReason$outboundSchema.optional(),
+  blockReason: PayloadBlockReason$outboundSchema,
   blockType: BlockType$outboundSchema,
 });
 
@@ -21644,19 +21638,19 @@ export const ObservabilityPlus$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: UserEventPayloadBlockReason$inboundSchema.optional(),
+  blockReason: UserEventPayloadBlockReason$inboundSchema,
   blockType: PayloadBlockType$inboundSchema,
 });
 
 /** @internal */
 export type ObservabilityPlus$Outbound = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: string | undefined;
+  blockReason: string;
   blockType: string;
 };
 
@@ -21666,10 +21660,10 @@ export const ObservabilityPlus$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ObservabilityPlus
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: UserEventPayloadBlockReason$outboundSchema.optional(),
+  blockReason: UserEventPayloadBlockReason$outboundSchema,
   blockType: PayloadBlockType$outboundSchema,
 });
 
@@ -22017,21 +22011,20 @@ export namespace OverageReason$ {
 /** @internal */
 export const BlobT$inboundSchema: z.ZodType<BlobT, z.ZodTypeDef, unknown> = z
   .object({
-    updatedAt: z.number().optional(),
+    updatedAt: z.number(),
     blockedFrom: z.number().optional(),
     blockedUntil: z.number().optional(),
     blockReason:
-      UserEventPayload64NewOwnerFeatureBlocksBlobBlockReason$inboundSchema
-        .optional(),
+      UserEventPayload64NewOwnerFeatureBlocksBlobBlockReason$inboundSchema,
     overageReason: OverageReason$inboundSchema,
   });
 
 /** @internal */
 export type BlobT$Outbound = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: string | undefined;
+  blockReason: string;
   overageReason: string;
 };
 
@@ -22041,12 +22034,11 @@ export const BlobT$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BlobT
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload64NewOwnerFeatureBlocksBlobBlockReason$outboundSchema
-      .optional(),
+    UserEventPayload64NewOwnerFeatureBlocksBlobBlockReason$outboundSchema,
   overageReason: OverageReason$outboundSchema,
 });
 
@@ -22129,21 +22121,20 @@ export const Postgres$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload64NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema
-      .optional(),
+    UserEventPayload64NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema,
   overageReason: PayloadOverageReason$inboundSchema,
 });
 
 /** @internal */
 export type Postgres$Outbound = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: string | undefined;
+  blockReason: string;
   overageReason: string;
 };
 
@@ -22153,12 +22144,11 @@ export const Postgres$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Postgres
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload64NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema
-      .optional(),
+    UserEventPayload64NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema,
   overageReason: PayloadOverageReason$outboundSchema,
 });
 
@@ -22238,21 +22228,20 @@ export namespace UserEventPayloadOverageReason$ {
 /** @internal */
 export const Redis$inboundSchema: z.ZodType<Redis, z.ZodTypeDef, unknown> = z
   .object({
-    updatedAt: z.number().optional(),
+    updatedAt: z.number(),
     blockedFrom: z.number().optional(),
     blockedUntil: z.number().optional(),
     blockReason:
-      UserEventPayload64NewOwnerFeatureBlocksRedisBlockReason$inboundSchema
-        .optional(),
+      UserEventPayload64NewOwnerFeatureBlocksRedisBlockReason$inboundSchema,
     overageReason: UserEventPayloadOverageReason$inboundSchema,
   });
 
 /** @internal */
 export type Redis$Outbound = {
-  updatedAt?: number | undefined;
+  updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason?: string | undefined;
+  blockReason: string;
   overageReason: string;
 };
 
@@ -22262,12 +22251,11 @@ export const Redis$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Redis
 > = z.object({
-  updatedAt: z.number().optional(),
+  updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload64NewOwnerFeatureBlocksRedisBlockReason$outboundSchema
-      .optional(),
+    UserEventPayload64NewOwnerFeatureBlocksRedisBlockReason$outboundSchema,
   overageReason: UserEventPayloadOverageReason$outboundSchema,
 });
 
@@ -29110,6 +29098,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => EightySeven$inboundSchema),
     z.lazy(() => EightyNine$inboundSchema),
     z.lazy(() => Ninety$inboundSchema),
+    z.lazy(() => NinetyOne$inboundSchema),
     z.lazy(() => NinetyThree$inboundSchema),
     z.lazy(() => NinetyFour$inboundSchema),
     z.lazy(() => NinetySeven$inboundSchema),
@@ -29191,7 +29180,6 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => FiftyFive$inboundSchema),
     z.lazy(() => FiftySix$inboundSchema),
     z.lazy(() => FiftySeven$inboundSchema),
-    z.lazy(() => NinetyOne$inboundSchema),
     z.lazy(() => OneHundredAndTwo$inboundSchema),
     z.lazy(() => OneHundredAndTen$inboundSchema),
     z.lazy(() => OneHundredAndEleven$inboundSchema),
@@ -29272,6 +29260,7 @@ export type Payload$Outbound =
   | EightySeven$Outbound
   | EightyNine$Outbound
   | Ninety$Outbound
+  | NinetyOne$Outbound
   | NinetyThree$Outbound
   | NinetyFour$Outbound
   | NinetySeven$Outbound
@@ -29353,7 +29342,6 @@ export type Payload$Outbound =
   | FiftyFive$Outbound
   | FiftySix$Outbound
   | FiftySeven$Outbound
-  | NinetyOne$Outbound
   | OneHundredAndTwo$Outbound
   | OneHundredAndTen$Outbound
   | OneHundredAndEleven$Outbound
@@ -29437,6 +29425,7 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => EightySeven$outboundSchema),
   z.lazy(() => EightyNine$outboundSchema),
   z.lazy(() => Ninety$outboundSchema),
+  z.lazy(() => NinetyOne$outboundSchema),
   z.lazy(() => NinetyThree$outboundSchema),
   z.lazy(() => NinetyFour$outboundSchema),
   z.lazy(() => NinetySeven$outboundSchema),
@@ -29518,7 +29507,6 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => FiftyFive$outboundSchema),
   z.lazy(() => FiftySix$outboundSchema),
   z.lazy(() => FiftySeven$outboundSchema),
-  z.lazy(() => NinetyOne$outboundSchema),
   z.lazy(() => OneHundredAndTwo$outboundSchema),
   z.lazy(() => OneHundredAndTen$outboundSchema),
   z.lazy(() => OneHundredAndEleven$outboundSchema),
@@ -29649,6 +29637,7 @@ export const UserEvent$inboundSchema: z.ZodType<
     z.lazy(() => EightySeven$inboundSchema),
     z.lazy(() => EightyNine$inboundSchema),
     z.lazy(() => Ninety$inboundSchema),
+    z.lazy(() => NinetyOne$inboundSchema),
     z.lazy(() => NinetyThree$inboundSchema),
     z.lazy(() => NinetyFour$inboundSchema),
     z.lazy(() => NinetySeven$inboundSchema),
@@ -29730,7 +29719,6 @@ export const UserEvent$inboundSchema: z.ZodType<
     z.lazy(() => FiftyFive$inboundSchema),
     z.lazy(() => FiftySix$inboundSchema),
     z.lazy(() => FiftySeven$inboundSchema),
-    z.lazy(() => NinetyOne$inboundSchema),
     z.lazy(() => OneHundredAndTwo$inboundSchema),
     z.lazy(() => OneHundredAndTen$inboundSchema),
     z.lazy(() => OneHundredAndEleven$inboundSchema),
@@ -29823,6 +29811,7 @@ export type UserEvent$Outbound = {
     | EightySeven$Outbound
     | EightyNine$Outbound
     | Ninety$Outbound
+    | NinetyOne$Outbound
     | NinetyThree$Outbound
     | NinetyFour$Outbound
     | NinetySeven$Outbound
@@ -29904,7 +29893,6 @@ export type UserEvent$Outbound = {
     | FiftyFive$Outbound
     | FiftySix$Outbound
     | FiftySeven$Outbound
-    | NinetyOne$Outbound
     | OneHundredAndTwo$Outbound
     | OneHundredAndTen$Outbound
     | OneHundredAndEleven$Outbound
@@ -30009,6 +29997,7 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => EightySeven$outboundSchema),
     z.lazy(() => EightyNine$outboundSchema),
     z.lazy(() => Ninety$outboundSchema),
+    z.lazy(() => NinetyOne$outboundSchema),
     z.lazy(() => NinetyThree$outboundSchema),
     z.lazy(() => NinetyFour$outboundSchema),
     z.lazy(() => NinetySeven$outboundSchema),
@@ -30090,7 +30079,6 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => FiftyFive$outboundSchema),
     z.lazy(() => FiftySix$outboundSchema),
     z.lazy(() => FiftySeven$outboundSchema),
-    z.lazy(() => NinetyOne$outboundSchema),
     z.lazy(() => OneHundredAndTwo$outboundSchema),
     z.lazy(() => OneHundredAndTen$outboundSchema),
     z.lazy(() => OneHundredAndEleven$outboundSchema),

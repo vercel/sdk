@@ -58,10 +58,10 @@ func testGetDeploymentGetDeployment0(w http.ResponseWriter, req *http.Request) {
 			Public:     false,
 			Status:     operations.GetDeploymentStatus2Building,
 			ID:         "<id>",
-			Name:       "<value>",
-			Type:       operations.GetDeploymentTypeLambdas2Lambdas,
 			CreatedAt:  548.4,
 			ReadyState: operations.GetDeploymentReadyState2Error,
+			Name:       "<value>",
+			Type:       operations.GetDeploymentTypeLambdas2Lambdas,
 			Meta: map[string]string{
 				"key":  "<value>",
 				"key1": "<value>",

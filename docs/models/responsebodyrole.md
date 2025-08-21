@@ -1,17 +1,17 @@
 # ResponseBodyRole
 
-The role used for the invitation
+Role of this user in the project.
 
 ## Example Usage
 
 ```typescript
-import { ResponseBodyRole } from "@vercel/sdk/models/inviteusertoteamop.js";
+import { ResponseBodyRole } from "@vercel/sdk/models/getprojectmembersop.js";
 
-let value: ResponseBodyRole = "MEMBER";
+let value: ResponseBodyRole = "ADMIN";
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "VIEWER_FOR_PLUS" | "CONTRIBUTOR"
+"ADMIN" | "PROJECT_DEVELOPER" | "PROJECT_VIEWER"
 ```

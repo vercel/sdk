@@ -1,6 +1,6 @@
 # UpdateFirewallConfigRequestBody10
 
-Remove an IPBlocking rule
+Remove an IP Blocking rule
 
 ## Example Usage
 

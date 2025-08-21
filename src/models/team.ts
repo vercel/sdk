@@ -160,6 +160,8 @@ export type ResourceConfig = {
   buildEntitlements?: BuildEntitlements | undefined;
 };
 
+export type DisableHardAutoBlocks = number | boolean;
+
 /**
  * Is remote caching enabled for this team
  */
@@ -363,6 +365,7 @@ export type Team = {
    * The hostname that is current set as preview deployment suffix.
    */
   previewDeploymentSuffix?: string | null | undefined;
+  disableHardAutoBlocks?: number | boolean | undefined;
   /**
    * Is remote caching enabled for this team
    */
@@ -900,6 +903,54 @@ export function resourceConfigFromJSON(
     jsonString,
     (x) => ResourceConfig$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ResourceConfig' from JSON`,
+  );
+}
+
+/** @internal */
+export const DisableHardAutoBlocks$inboundSchema: z.ZodType<
+  DisableHardAutoBlocks,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.boolean()]);
+
+/** @internal */
+export type DisableHardAutoBlocks$Outbound = number | boolean;
+
+/** @internal */
+export const DisableHardAutoBlocks$outboundSchema: z.ZodType<
+  DisableHardAutoBlocks$Outbound,
+  z.ZodTypeDef,
+  DisableHardAutoBlocks
+> = z.union([z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DisableHardAutoBlocks$ {
+  /** @deprecated use `DisableHardAutoBlocks$inboundSchema` instead. */
+  export const inboundSchema = DisableHardAutoBlocks$inboundSchema;
+  /** @deprecated use `DisableHardAutoBlocks$outboundSchema` instead. */
+  export const outboundSchema = DisableHardAutoBlocks$outboundSchema;
+  /** @deprecated use `DisableHardAutoBlocks$Outbound` instead. */
+  export type Outbound = DisableHardAutoBlocks$Outbound;
+}
+
+export function disableHardAutoBlocksToJSON(
+  disableHardAutoBlocks: DisableHardAutoBlocks,
+): string {
+  return JSON.stringify(
+    DisableHardAutoBlocks$outboundSchema.parse(disableHardAutoBlocks),
+  );
+}
+
+export function disableHardAutoBlocksFromJSON(
+  jsonString: string,
+): SafeParseResult<DisableHardAutoBlocks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DisableHardAutoBlocks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DisableHardAutoBlocks' from JSON`,
   );
 }
 
@@ -1581,6 +1632,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       stagingPrefix: z.string(),
       resourceConfig: z.lazy(() => ResourceConfig$inboundSchema).optional(),
       previewDeploymentSuffix: z.nullable(z.string()).optional(),
+      disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
       remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
       defaultDeploymentProtection: z.lazy(() =>
         DefaultDeploymentProtection$inboundSchema
@@ -1619,6 +1671,7 @@ export type Team$Outbound = {
   stagingPrefix: string;
   resourceConfig?: ResourceConfig$Outbound | undefined;
   previewDeploymentSuffix?: string | null | undefined;
+  disableHardAutoBlocks?: number | boolean | undefined;
   remoteCaching?: RemoteCaching$Outbound | undefined;
   defaultDeploymentProtection?:
     | DefaultDeploymentProtection$Outbound
@@ -1651,6 +1704,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     stagingPrefix: z.string(),
     resourceConfig: z.lazy(() => ResourceConfig$outboundSchema).optional(),
     previewDeploymentSuffix: z.nullable(z.string()).optional(),
+    disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
     remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),
     defaultDeploymentProtection: z.lazy(() =>
       DefaultDeploymentProtection$outboundSchema

@@ -191,7 +191,7 @@ func (e *TagID) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Integration struct {
+type GetConfigurationsIntegration struct {
 	Name                string   `json:"name"`
 	Icon                string   `json:"icon"`
 	IsLegacy            bool     `json:"isLegacy"`
@@ -200,42 +200,42 @@ type Integration struct {
 	TagIds              []TagID  `json:"tagIds,omitempty"`
 }
 
-func (o *Integration) GetName() string {
+func (o *GetConfigurationsIntegration) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Integration) GetIcon() string {
+func (o *GetConfigurationsIntegration) GetIcon() string {
 	if o == nil {
 		return ""
 	}
 	return o.Icon
 }
 
-func (o *Integration) GetIsLegacy() bool {
+func (o *GetConfigurationsIntegration) GetIsLegacy() bool {
 	if o == nil {
 		return false
 	}
 	return o.IsLegacy
 }
 
-func (o *Integration) GetFlags() []string {
+func (o *GetConfigurationsIntegration) GetFlags() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Flags
 }
 
-func (o *Integration) GetAssignedBetaLabelAt() *float64 {
+func (o *GetConfigurationsIntegration) GetAssignedBetaLabelAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.AssignedBetaLabelAt
 }
 
-func (o *Integration) GetTagIds() []TagID {
+func (o *GetConfigurationsIntegration) GetTagIds() []TagID {
 	if o == nil {
 		return nil
 	}
@@ -364,7 +364,7 @@ func (e *GetConfigurationsInstallationTypeResponse2) UnmarshalJSON(data []byte) 
 }
 
 type GetConfigurationsIntegrationConfiguration2 struct {
-	Integration Integration `json:"integration"`
+	Integration GetConfigurationsIntegration `json:"integration"`
 	// A timestamp that tells you when the configuration was installed successfully
 	CompletedAt *float64 `json:"completedAt,omitempty"`
 	// A timestamp that tells you when the configuration was created
@@ -401,9 +401,9 @@ type GetConfigurationsIntegrationConfiguration2 struct {
 	InstallationType *GetConfigurationsInstallationTypeResponse2 `json:"installationType,omitempty"`
 }
 
-func (o *GetConfigurationsIntegrationConfiguration2) GetIntegration() Integration {
+func (o *GetConfigurationsIntegrationConfiguration2) GetIntegration() GetConfigurationsIntegration {
 	if o == nil {
-		return Integration{}
+		return GetConfigurationsIntegration{}
 	}
 	return o.Integration
 }

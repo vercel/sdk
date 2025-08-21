@@ -145,21 +145,53 @@ func (e *AcceptedChallenge) UnmarshalJSON(data []byte) error {
 
 // RecommendedIPv4 - Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
 type RecommendedIPv4 struct {
+	Rank  float64  `json:"rank"`
+	Value []string `json:"value"`
+}
+
+func (o *RecommendedIPv4) GetRank() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Rank
+}
+
+func (o *RecommendedIPv4) GetValue() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Value
 }
 
 // RecommendedCNAME - Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
 type RecommendedCNAME struct {
+	Rank  float64 `json:"rank"`
+	Value string  `json:"value"`
+}
+
+func (o *RecommendedCNAME) GetRank() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Rank
+}
+
+func (o *RecommendedCNAME) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
 }
 
 type GetDomainConfigResponseBody struct {
 	// How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.
-	ConfiguredBy *ConfiguredBy `json:"configuredBy,omitempty"`
+	ConfiguredBy *ConfiguredBy `json:"configuredBy"`
 	// Which challenge types the domain can use for issuing certs.
-	AcceptedChallenges []AcceptedChallenge `json:"acceptedChallenges,omitempty"`
+	AcceptedChallenges []AcceptedChallenge `json:"acceptedChallenges"`
 	// Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.
-	RecommendedIPv4 []RecommendedIPv4 `json:"recommendedIPv4,omitempty"`
+	RecommendedIPv4 []RecommendedIPv4 `json:"recommendedIPv4"`
 	// Recommended CNAMEs for the domain. rank=1 is the preferred value to use.
-	RecommendedCNAME []RecommendedCNAME `json:"recommendedCNAME,omitempty"`
+	RecommendedCNAME []RecommendedCNAME `json:"recommendedCNAME"`
 	// Whether or not the domain is configured AND we can automatically generate a TLS certificate.
 	Misconfigured bool `json:"misconfigured"`
 }
@@ -173,21 +205,21 @@ func (o *GetDomainConfigResponseBody) GetConfiguredBy() *ConfiguredBy {
 
 func (o *GetDomainConfigResponseBody) GetAcceptedChallenges() []AcceptedChallenge {
 	if o == nil {
-		return nil
+		return []AcceptedChallenge{}
 	}
 	return o.AcceptedChallenges
 }
 
 func (o *GetDomainConfigResponseBody) GetRecommendedIPv4() []RecommendedIPv4 {
 	if o == nil {
-		return nil
+		return []RecommendedIPv4{}
 	}
 	return o.RecommendedIPv4
 }
 
 func (o *GetDomainConfigResponseBody) GetRecommendedCNAME() []RecommendedCNAME {
 	if o == nil {
-		return nil
+		return []RecommendedCNAME{}
 	}
 	return o.RecommendedCNAME
 }

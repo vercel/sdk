@@ -38,3 +38,31 @@ test("Integrations Delete Configuration", async () => {
     slug: "my-team-url-slug",
   });
 });
+
+test("Integrations Get Configuration Products", async () => {
+  const testHttpClient = createTestHTTPClient("getConfigurationProducts");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.integrations.getConfigurationProducts({
+    id: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    products: [],
+    integration: {
+      id: "<id>",
+      slug: "<value>",
+      name: "<value>",
+    },
+    configuration: {
+      id: "<id>",
+    },
+  });
+});

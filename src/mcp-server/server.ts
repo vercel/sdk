@@ -97,6 +97,7 @@ import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemo
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
+import { tool$integrationsGetConfigurationProducts } from "./tools/integrationsGetConfigurationProducts.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
 import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js";
 import { tool$logDrainsDeleteIntegrationLogDrain } from "./tools/logDrainsDeleteIntegrationLogDrain.js";
@@ -195,7 +196,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.10.4",
+    version: "1.10.5",
   });
 
   const client = new VercelCore({
@@ -284,6 +285,7 @@ export function createMCPServer(deps: {
   tool(tool$integrationsGetConfigurations);
   tool(tool$integrationsGetConfiguration);
   tool(tool$integrationsDeleteConfiguration);
+  tool(tool$integrationsGetConfigurationProducts);
   tool(tool$domainsBuyDomain);
   tool(tool$domainsCheckDomainPrice);
   tool(tool$domainsCheckDomainStatus);

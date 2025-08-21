@@ -277,6 +277,8 @@ export const Framework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 /**
  * The framework that is being used for this project. When `null` is used no framework is selected
@@ -488,6 +490,8 @@ export const CreateDeploymentFramework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 export type CreateDeploymentFramework = ClosedEnum<
   typeof CreateDeploymentFramework
@@ -636,10 +640,10 @@ export type CreateDeploymentOutput = {
  * A partial representation of a Build used by the deployment endpoint.
  */
 export type Lambdas = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?: CreateDeploymentReadyState | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CreateDeploymentOutput>;
 };
@@ -3905,20 +3909,20 @@ export function createDeploymentOutputFromJSON(
 /** @internal */
 export const Lambdas$inboundSchema: z.ZodType<Lambdas, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.string().optional(),
+    id: z.string(),
     createdAt: z.number().optional(),
-    entrypoint: z.nullable(z.string()).optional(),
     readyState: CreateDeploymentReadyState$inboundSchema.optional(),
+    entrypoint: z.nullable(z.string()).optional(),
     readyStateAt: z.number().optional(),
     output: z.array(z.lazy(() => CreateDeploymentOutput$inboundSchema)),
   });
 
 /** @internal */
 export type Lambdas$Outbound = {
-  id?: string | undefined;
+  id: string;
   createdAt?: number | undefined;
-  entrypoint?: string | null | undefined;
   readyState?: string | undefined;
+  entrypoint?: string | null | undefined;
   readyStateAt?: number | undefined;
   output: Array<CreateDeploymentOutput$Outbound>;
 };
@@ -3929,10 +3933,10 @@ export const Lambdas$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Lambdas
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   createdAt: z.number().optional(),
-  entrypoint: z.nullable(z.string()).optional(),
   readyState: CreateDeploymentReadyState$outboundSchema.optional(),
+  entrypoint: z.nullable(z.string()).optional(),
   readyStateAt: z.number().optional(),
   output: z.array(z.lazy(() => CreateDeploymentOutput$outboundSchema)),
 });

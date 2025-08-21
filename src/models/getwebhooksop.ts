@@ -186,6 +186,8 @@ export const GetWebhooksResponseBodyFramework = {
   Storybook: "storybook",
   Nitro: "nitro",
   Hono: "hono",
+  Express: "express",
+  Xmcp: "xmcp",
 } as const;
 export type GetWebhooksResponseBodyFramework = ClosedEnum<
   typeof GetWebhooksResponseBodyFramework

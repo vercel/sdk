@@ -284,6 +284,7 @@ export const GetFirewallConfigType = {
   Query: "query",
   Cookie: "cookie",
   TargetPath: "target_path",
+  Route: "route",
   RawPath: "raw_path",
   IpAddress: "ip_address",
   Protocol: "protocol",
@@ -299,6 +300,7 @@ export const GetFirewallConfigType = {
   Ja4Digest: "ja4_digest",
   Ja3Digest: "ja3_digest",
   RateLimitApiId: "rate_limit_api_id",
+  ServerAction: "server_action",
 } as const;
 /**
  * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.

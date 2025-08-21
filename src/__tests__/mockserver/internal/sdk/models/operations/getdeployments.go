@@ -623,6 +623,30 @@ func (o *GetDeploymentsChecks) GetDeploymentAlias() GetDeploymentsDeploymentAlia
 	return o.DeploymentAlias
 }
 
+// GetDeploymentsOomReport - Indicates if the deployment encountered an out-of-memory error.
+type GetDeploymentsOomReport string
+
+const (
+	GetDeploymentsOomReportOutOfMemory GetDeploymentsOomReport = "out-of-memory"
+)
+
+func (e GetDeploymentsOomReport) ToPointer() *GetDeploymentsOomReport {
+	return &e
+}
+func (e *GetDeploymentsOomReport) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "out-of-memory":
+		*e = GetDeploymentsOomReport(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDeploymentsOomReport: %v", v)
+	}
+}
+
 type GetDeploymentsFramework string
 
 const (
@@ -674,6 +698,8 @@ const (
 	GetDeploymentsFrameworkStorybook      GetDeploymentsFramework = "storybook"
 	GetDeploymentsFrameworkNitro          GetDeploymentsFramework = "nitro"
 	GetDeploymentsFrameworkHono           GetDeploymentsFramework = "hono"
+	GetDeploymentsFrameworkExpress        GetDeploymentsFramework = "express"
+	GetDeploymentsFrameworkXmcp           GetDeploymentsFramework = "xmcp"
 )
 
 func (e GetDeploymentsFramework) ToPointer() *GetDeploymentsFramework {
@@ -780,6 +806,10 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = GetDeploymentsFramework(v)
 		return nil
 	default:
@@ -1168,6 +1198,12 @@ type GetDeploymentsDeployment struct {
 	Checks *GetDeploymentsChecks `json:"checks,omitempty"`
 	// Vercel URL to inspect the deployment.
 	InspectorURL *string `json:"inspectorUrl"`
+	// Error code when the deployment is in an error state.
+	ErrorCode *string `json:"errorCode,omitempty"`
+	// Error message when the deployment is in an canceled or error state.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+	// Indicates if the deployment encountered an out-of-memory error.
+	OomReport *GetDeploymentsOomReport `json:"oomReport,omitempty"`
 	// Deployment can be used for instant rollback
 	IsRollbackCandidate *bool `json:"isRollbackCandidate,omitempty"`
 	// The project settings which was used for this deployment
@@ -1366,6 +1402,27 @@ func (o *GetDeploymentsDeployment) GetInspectorURL() *string {
 		return nil
 	}
 	return o.InspectorURL
+}
+
+func (o *GetDeploymentsDeployment) GetErrorCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorCode
+}
+
+func (o *GetDeploymentsDeployment) GetErrorMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorMessage
+}
+
+func (o *GetDeploymentsDeployment) GetOomReport() *GetDeploymentsOomReport {
+	if o == nil {
+		return nil
+	}
+	return o.OomReport
 }
 
 func (o *GetDeploymentsDeployment) GetIsRollbackCandidate() *bool {

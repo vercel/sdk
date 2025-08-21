@@ -1,0 +1,17 @@
+# InviteUserToTeamTeamPermissions
+
+The team permissions of the user
+
+## Example Usage
+
+```typescript
+import { InviteUserToTeamTeamPermissions } from "@vercel/sdk/models/inviteusertoteamop.js";
+
+let value: InviteUserToTeamTeamPermissions = "CreateProject";
+```
+
+## Values
+
+```typescript
+"CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager" | "V0Builder" | "V0Chatter" | "V0Viewer"
+```

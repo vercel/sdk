@@ -60,6 +60,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/installations/{integrationConfigurationId}/resources", pathGetV1InstallationsIntegrationConfigurationIDResources(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}", pathGetV1InstallationsIntegrationConfigurationIDResourcesResourceID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/integrations/configuration/{id}", pathGetV1IntegrationsConfigurationID(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/v1/integrations/configuration/{id}/products", pathGetV1IntegrationsConfigurationIDProducts(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/env/{id}", pathGetV1ProjectsIDOrNameEnvID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/rolling-release", pathGetV1ProjectsIDOrNameRollingRelease(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/rolling-release/billing", pathGetV1ProjectsIDOrNameRollingReleaseBilling(dir, rt)),

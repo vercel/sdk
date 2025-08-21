@@ -435,21 +435,21 @@ func (e *MemberProjectRole) UnmarshalJSON(data []byte) error {
 
 // GetTeamMembersProject - Array of project memberships
 type GetTeamMembersProject struct {
-	Name *string            `json:"name,omitempty"`
-	ID   *string            `json:"id,omitempty"`
+	Name string             `json:"name"`
+	ID   string             `json:"id"`
 	Role *MemberProjectRole `json:"role,omitempty"`
 }
 
-func (o *GetTeamMembersProject) GetName() *string {
+func (o *GetTeamMembersProject) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
 
-func (o *GetTeamMembersProject) GetID() *string {
+func (o *GetTeamMembersProject) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }

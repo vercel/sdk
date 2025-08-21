@@ -158,7 +158,7 @@ func (e *UpdateAccessGroupEntitlement) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateAccessGroupResponseBody struct {
-	Entitlements []UpdateAccessGroupEntitlement `json:"entitlements,omitempty"`
+	Entitlements []UpdateAccessGroupEntitlement `json:"entitlements"`
 	// The name of this access group.
 	Name string `json:"name"`
 	// Timestamp in milliseconds when the access group was created.
@@ -181,7 +181,7 @@ type UpdateAccessGroupResponseBody struct {
 
 func (o *UpdateAccessGroupResponseBody) GetEntitlements() []UpdateAccessGroupEntitlement {
 	if o == nil {
-		return nil
+		return []UpdateAccessGroupEntitlement{}
 	}
 	return o.Entitlements
 }

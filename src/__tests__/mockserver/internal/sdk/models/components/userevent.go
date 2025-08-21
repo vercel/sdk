@@ -2215,29 +2215,29 @@ func (e *RemovedMembershipRole) UnmarshalJSON(data []byte) error {
 }
 
 type RemovedMembership struct {
-	Role      *RemovedMembershipRole `json:"role,omitempty"`
-	UID       *string                `json:"uid,omitempty"`
-	CreatedAt *float64               `json:"createdAt,omitempty"`
-	Username  *string                `json:"username,omitempty"`
+	Role      RemovedMembershipRole `json:"role"`
+	UID       string                `json:"uid"`
+	CreatedAt float64               `json:"createdAt"`
+	Username  *string               `json:"username,omitempty"`
 }
 
-func (o *RemovedMembership) GetRole() *RemovedMembershipRole {
+func (o *RemovedMembership) GetRole() RemovedMembershipRole {
 	if o == nil {
-		return nil
+		return RemovedMembershipRole("")
 	}
 	return o.Role
 }
 
-func (o *RemovedMembership) GetUID() *string {
+func (o *RemovedMembership) GetUID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.UID
 }
 
-func (o *RemovedMembership) GetCreatedAt() *float64 {
+func (o *RemovedMembership) GetCreatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.CreatedAt
 }
@@ -2318,29 +2318,29 @@ func (e *ProjectMembershipRole1) UnmarshalJSON(data []byte) error {
 }
 
 type ProjectMembership1 struct {
-	Role      *ProjectMembershipRole1 `json:"role,omitempty"`
-	UID       *string                 `json:"uid,omitempty"`
-	CreatedAt *float64                `json:"createdAt,omitempty"`
-	Username  *string                 `json:"username,omitempty"`
+	Role      ProjectMembershipRole1 `json:"role"`
+	UID       string                 `json:"uid"`
+	CreatedAt float64                `json:"createdAt"`
+	Username  *string                `json:"username,omitempty"`
 }
 
-func (o *ProjectMembership1) GetRole() *ProjectMembershipRole1 {
+func (o *ProjectMembership1) GetRole() ProjectMembershipRole1 {
 	if o == nil {
-		return nil
+		return ProjectMembershipRole1("")
 	}
 	return o.Role
 }
 
-func (o *ProjectMembership1) GetUID() *string {
+func (o *ProjectMembership1) GetUID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.UID
 }
 
-func (o *ProjectMembership1) GetCreatedAt() *float64 {
+func (o *ProjectMembership1) GetCreatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.CreatedAt
 }
@@ -4294,21 +4294,21 @@ func (o *Payload92) GetGitScope() string {
 
 // Payload91 - The payload of the event, if requested.
 type Payload91 struct {
-	ProjectID           *string  `json:"projectId,omitempty"`
-	ProjectName         *string  `json:"projectName,omitempty"`
+	ProjectID           string   `json:"projectId"`
+	ProjectName         string   `json:"projectName"`
 	NewTargetPercentage *float64 `json:"newTargetPercentage,omitempty"`
 }
 
-func (o *Payload91) GetProjectID() *string {
+func (o *Payload91) GetProjectID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Payload91) GetProjectName() *string {
+func (o *Payload91) GetProjectName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectName
 }
@@ -7111,10 +7111,10 @@ type Abuse struct {
 	// Since November 2021. Guides the abuse scanner in build container.
 	Scanner *string `json:"scanner,omitempty"`
 	// Since November 2021
-	UpdatedAt           *float64 `json:"updatedAt,omitempty"`
-	CreationUserAgent   *string  `json:"creationUserAgent,omitempty"`
-	CreationIP          *string  `json:"creationIp,omitempty"`
-	RemovedPhoneNumbers *string  `json:"removedPhoneNumbers,omitempty"`
+	UpdatedAt           float64 `json:"updatedAt"`
+	CreationUserAgent   *string `json:"creationUserAgent,omitempty"`
+	CreationIP          *string `json:"creationIp,omitempty"`
+	RemovedPhoneNumbers *string `json:"removedPhoneNumbers,omitempty"`
 }
 
 func (o *Abuse) GetBlockHistory() []BlockHistory {
@@ -7159,9 +7159,9 @@ func (o *Abuse) GetScanner() *string {
 	return o.Scanner
 }
 
-func (o *Abuse) GetUpdatedAt() *float64 {
+func (o *Abuse) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
@@ -8885,28 +8885,28 @@ func (o *TeamJoinedFrom1) GetDsyncConnectedAt() *float64 {
 }
 
 type TeamUser struct {
-	Created           *float64                  `json:"created,omitempty"`
-	CreatedAt         *float64                  `json:"createdAt,omitempty"`
+	Created           float64                   `json:"created"`
+	CreatedAt         float64                   `json:"createdAt"`
 	TeamID            string                    `json:"teamId"`
-	Role              *TeamRole1                `json:"role,omitempty"`
-	Confirmed         *bool                     `json:"confirmed,omitempty"`
-	ConfirmedAt       *float64                  `json:"confirmedAt,omitempty"`
+	Role              TeamRole1                 `json:"role"`
+	Confirmed         bool                      `json:"confirmed"`
+	ConfirmedAt       float64                   `json:"confirmedAt"`
 	AccessRequestedAt *float64                  `json:"accessRequestedAt,omitempty"`
 	TeamRoles         []UserEventTeamRole       `json:"teamRoles,omitempty"`
 	TeamPermissions   []UserEventTeamPermission `json:"teamPermissions,omitempty"`
 	JoinedFrom        *TeamJoinedFrom1          `json:"joinedFrom,omitempty"`
 }
 
-func (o *TeamUser) GetCreated() *float64 {
+func (o *TeamUser) GetCreated() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.Created
 }
 
-func (o *TeamUser) GetCreatedAt() *float64 {
+func (o *TeamUser) GetCreatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.CreatedAt
 }
@@ -8918,23 +8918,23 @@ func (o *TeamUser) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *TeamUser) GetRole() *TeamRole1 {
+func (o *TeamUser) GetRole() TeamRole1 {
 	if o == nil {
-		return nil
+		return TeamRole1("")
 	}
 	return o.Role
 }
 
-func (o *TeamUser) GetConfirmed() *bool {
+func (o *TeamUser) GetConfirmed() bool {
 	if o == nil {
-		return nil
+		return false
 	}
 	return o.Confirmed
 }
 
-func (o *TeamUser) GetConfirmedAt() *float64 {
+func (o *TeamUser) GetConfirmedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.ConfirmedAt
 }
@@ -10502,16 +10502,16 @@ func (e *WebAnalyticsBlockReason) UnmarshalJSON(data []byte) error {
 }
 
 type UserEventWebAnalytics struct {
-	UpdatedAt        *float64                 `json:"updatedAt,omitempty"`
-	BlockedFrom      *float64                 `json:"blockedFrom,omitempty"`
-	BlockedUntil     *float64                 `json:"blockedUntil,omitempty"`
-	BlockReason      *WebAnalyticsBlockReason `json:"blockReason,omitempty"`
-	GraceEmailSentAt *float64                 `json:"graceEmailSentAt,omitempty"`
+	UpdatedAt        float64                 `json:"updatedAt"`
+	BlockedFrom      *float64                `json:"blockedFrom,omitempty"`
+	BlockedUntil     *float64                `json:"blockedUntil,omitempty"`
+	BlockReason      WebAnalyticsBlockReason `json:"blockReason"`
+	GraceEmailSentAt *float64                `json:"graceEmailSentAt,omitempty"`
 }
 
-func (o *UserEventWebAnalytics) GetUpdatedAt() *float64 {
+func (o *UserEventWebAnalytics) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
@@ -10530,9 +10530,9 @@ func (o *UserEventWebAnalytics) GetBlockedUntil() *float64 {
 	return o.BlockedUntil
 }
 
-func (o *UserEventWebAnalytics) GetBlockReason() *WebAnalyticsBlockReason {
+func (o *UserEventWebAnalytics) GetBlockReason() WebAnalyticsBlockReason {
 	if o == nil {
-		return nil
+		return WebAnalyticsBlockReason("")
 	}
 	return o.BlockReason
 }
@@ -10598,16 +10598,16 @@ func (e *MonitoringBlockType) UnmarshalJSON(data []byte) error {
 
 // Monitoring - A soft block indicates a temporary pause in data collection (ex limit exceeded for the current cycle) A hard block indicates a stoppage in data collection that requires manual intervention (ex upgrading a pro trial)
 type Monitoring struct {
-	UpdatedAt    *float64               `json:"updatedAt,omitempty"`
-	BlockedFrom  *float64               `json:"blockedFrom,omitempty"`
-	BlockedUntil *float64               `json:"blockedUntil,omitempty"`
-	BlockReason  *MonitoringBlockReason `json:"blockReason,omitempty"`
-	BlockType    MonitoringBlockType    `json:"blockType"`
+	UpdatedAt    float64               `json:"updatedAt"`
+	BlockedFrom  *float64              `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64              `json:"blockedUntil,omitempty"`
+	BlockReason  MonitoringBlockReason `json:"blockReason"`
+	BlockType    MonitoringBlockType   `json:"blockType"`
 }
 
-func (o *Monitoring) GetUpdatedAt() *float64 {
+func (o *Monitoring) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
@@ -10626,9 +10626,9 @@ func (o *Monitoring) GetBlockedUntil() *float64 {
 	return o.BlockedUntil
 }
 
-func (o *Monitoring) GetBlockReason() *MonitoringBlockReason {
+func (o *Monitoring) GetBlockReason() MonitoringBlockReason {
 	if o == nil {
-		return nil
+		return MonitoringBlockReason("")
 	}
 	return o.BlockReason
 }
@@ -10693,16 +10693,16 @@ func (e *ObservabilityPlusBlockType) UnmarshalJSON(data []byte) error {
 }
 
 type ObservabilityPlus struct {
-	UpdatedAt    *float64                      `json:"updatedAt,omitempty"`
-	BlockedFrom  *float64                      `json:"blockedFrom,omitempty"`
-	BlockedUntil *float64                      `json:"blockedUntil,omitempty"`
-	BlockReason  *ObservabilityPlusBlockReason `json:"blockReason,omitempty"`
-	BlockType    ObservabilityPlusBlockType    `json:"blockType"`
+	UpdatedAt    float64                      `json:"updatedAt"`
+	BlockedFrom  *float64                     `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64                     `json:"blockedUntil,omitempty"`
+	BlockReason  ObservabilityPlusBlockReason `json:"blockReason"`
+	BlockType    ObservabilityPlusBlockType   `json:"blockType"`
 }
 
-func (o *ObservabilityPlus) GetUpdatedAt() *float64 {
+func (o *ObservabilityPlus) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
@@ -10721,9 +10721,9 @@ func (o *ObservabilityPlus) GetBlockedUntil() *float64 {
 	return o.BlockedUntil
 }
 
-func (o *ObservabilityPlus) GetBlockReason() *ObservabilityPlusBlockReason {
+func (o *ObservabilityPlus) GetBlockReason() ObservabilityPlusBlockReason {
 	if o == nil {
-		return nil
+		return ObservabilityPlusBlockReason("")
 	}
 	return o.BlockReason
 }
@@ -11082,16 +11082,16 @@ func (e *BlobOverageReason) UnmarshalJSON(data []byte) error {
 }
 
 type Blob struct {
-	UpdatedAt     *float64          `json:"updatedAt,omitempty"`
+	UpdatedAt     float64           `json:"updatedAt"`
 	BlockedFrom   *float64          `json:"blockedFrom,omitempty"`
 	BlockedUntil  *float64          `json:"blockedUntil,omitempty"`
-	BlockReason   *BlobBlockReason  `json:"blockReason,omitempty"`
+	BlockReason   BlobBlockReason   `json:"blockReason"`
 	OverageReason BlobOverageReason `json:"overageReason"`
 }
 
-func (o *Blob) GetUpdatedAt() *float64 {
+func (o *Blob) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
@@ -11110,9 +11110,9 @@ func (o *Blob) GetBlockedUntil() *float64 {
 	return o.BlockedUntil
 }
 
-func (o *Blob) GetBlockReason() *BlobBlockReason {
+func (o *Blob) GetBlockReason() BlobBlockReason {
 	if o == nil {
-		return nil
+		return BlobBlockReason("")
 	}
 	return o.BlockReason
 }
@@ -11288,16 +11288,16 @@ func (e *PostgresOverageReason) UnmarshalJSON(data []byte) error {
 }
 
 type Postgres struct {
-	UpdatedAt     *float64              `json:"updatedAt,omitempty"`
+	UpdatedAt     float64               `json:"updatedAt"`
 	BlockedFrom   *float64              `json:"blockedFrom,omitempty"`
 	BlockedUntil  *float64              `json:"blockedUntil,omitempty"`
-	BlockReason   *PostgresBlockReason  `json:"blockReason,omitempty"`
+	BlockReason   PostgresBlockReason   `json:"blockReason"`
 	OverageReason PostgresOverageReason `json:"overageReason"`
 }
 
-func (o *Postgres) GetUpdatedAt() *float64 {
+func (o *Postgres) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
@@ -11316,9 +11316,9 @@ func (o *Postgres) GetBlockedUntil() *float64 {
 	return o.BlockedUntil
 }
 
-func (o *Postgres) GetBlockReason() *PostgresBlockReason {
+func (o *Postgres) GetBlockReason() PostgresBlockReason {
 	if o == nil {
-		return nil
+		return PostgresBlockReason("")
 	}
 	return o.BlockReason
 }
@@ -11494,16 +11494,16 @@ func (e *RedisOverageReason) UnmarshalJSON(data []byte) error {
 }
 
 type Redis struct {
-	UpdatedAt     *float64           `json:"updatedAt,omitempty"`
+	UpdatedAt     float64            `json:"updatedAt"`
 	BlockedFrom   *float64           `json:"blockedFrom,omitempty"`
 	BlockedUntil  *float64           `json:"blockedUntil,omitempty"`
-	BlockReason   *RedisBlockReason  `json:"blockReason,omitempty"`
+	BlockReason   RedisBlockReason   `json:"blockReason"`
 	OverageReason RedisOverageReason `json:"overageReason"`
 }
 
-func (o *Redis) GetUpdatedAt() *float64 {
+func (o *Redis) GetUpdatedAt() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.UpdatedAt
 }
@@ -11522,9 +11522,9 @@ func (o *Redis) GetBlockedUntil() *float64 {
 	return o.BlockedUntil
 }
 
-func (o *Redis) GetBlockReason() *RedisBlockReason {
+func (o *Redis) GetBlockReason() RedisBlockReason {
 	if o == nil {
-		return nil
+		return RedisBlockReason("")
 	}
 	return o.BlockReason
 }

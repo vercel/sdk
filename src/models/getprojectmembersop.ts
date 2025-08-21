@@ -42,7 +42,7 @@ export type GetProjectMembersRequest = {
 /**
  * Role of this user in the project.
  */
-export const GetProjectMembersResponseBodyRole = {
+export const ResponseBodyRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
   ProjectViewer: "PROJECT_VIEWER",
@@ -50,9 +50,7 @@ export const GetProjectMembersResponseBodyRole = {
 /**
  * Role of this user in the project.
  */
-export type GetProjectMembersResponseBodyRole = ClosedEnum<
-  typeof GetProjectMembersResponseBodyRole
->;
+export type ResponseBodyRole = ClosedEnum<typeof ResponseBodyRole>;
 
 /**
  * Role of this user in the project.
@@ -97,7 +95,7 @@ export type ResponseBodyMembers = {
   /**
    * Role of this user in the project.
    */
-  role: GetProjectMembersResponseBodyRole;
+  role: ResponseBodyRole;
   /**
    * Role of this user in the project.
    */
@@ -230,25 +228,24 @@ export function getProjectMembersRequestFromJSON(
 }
 
 /** @internal */
-export const GetProjectMembersResponseBodyRole$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectMembersResponseBodyRole
-> = z.nativeEnum(GetProjectMembersResponseBodyRole);
+export const ResponseBodyRole$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyRole
+> = z.nativeEnum(ResponseBodyRole);
 
 /** @internal */
-export const GetProjectMembersResponseBodyRole$outboundSchema: z.ZodNativeEnum<
-  typeof GetProjectMembersResponseBodyRole
-> = GetProjectMembersResponseBodyRole$inboundSchema;
+export const ResponseBodyRole$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyRole
+> = ResponseBodyRole$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetProjectMembersResponseBodyRole$ {
-  /** @deprecated use `GetProjectMembersResponseBodyRole$inboundSchema` instead. */
-  export const inboundSchema = GetProjectMembersResponseBodyRole$inboundSchema;
-  /** @deprecated use `GetProjectMembersResponseBodyRole$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectMembersResponseBodyRole$outboundSchema;
+export namespace ResponseBodyRole$ {
+  /** @deprecated use `ResponseBodyRole$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyRole$inboundSchema;
+  /** @deprecated use `ResponseBodyRole$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyRole$outboundSchema;
 }
 
 /** @internal */
@@ -301,7 +298,7 @@ export const ResponseBodyMembers$inboundSchema: z.ZodType<
 > = z.object({
   avatar: z.string().optional(),
   email: z.string(),
-  role: GetProjectMembersResponseBodyRole$inboundSchema,
+  role: ResponseBodyRole$inboundSchema,
   computedProjectRole: ComputedProjectRole$inboundSchema,
   uid: z.string(),
   username: z.string(),
@@ -331,7 +328,7 @@ export const ResponseBodyMembers$outboundSchema: z.ZodType<
 > = z.object({
   avatar: z.string().optional(),
   email: z.string(),
-  role: GetProjectMembersResponseBodyRole$outboundSchema,
+  role: ResponseBodyRole$outboundSchema,
   computedProjectRole: ComputedProjectRole$outboundSchema,
   uid: z.string(),
   username: z.string(),

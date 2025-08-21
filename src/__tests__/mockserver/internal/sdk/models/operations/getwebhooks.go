@@ -384,6 +384,8 @@ const (
 	GetWebhooksFrameworkStorybook      GetWebhooksFramework = "storybook"
 	GetWebhooksFrameworkNitro          GetWebhooksFramework = "nitro"
 	GetWebhooksFrameworkHono           GetWebhooksFramework = "hono"
+	GetWebhooksFrameworkExpress        GetWebhooksFramework = "express"
+	GetWebhooksFrameworkXmcp           GetWebhooksFramework = "xmcp"
 )
 
 func (e GetWebhooksFramework) ToPointer() *GetWebhooksFramework {
@@ -490,6 +492,10 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = GetWebhooksFramework(v)
 		return nil
 	default:

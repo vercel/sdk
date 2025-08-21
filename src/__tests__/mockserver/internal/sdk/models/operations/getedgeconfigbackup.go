@@ -89,35 +89,35 @@ func (o *GetEdgeConfigBackupUser2) GetAvatar() *string {
 	return o.Avatar
 }
 
-type Items2 struct {
+type GetEdgeConfigBackupItems2 struct {
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
-func (o *Items2) GetUpdatedAt() float64 {
+func (o *GetEdgeConfigBackupItems2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *Items2) GetValue() *components.EdgeConfigItemValue {
+func (o *GetEdgeConfigBackupItems2) GetValue() *components.EdgeConfigItemValue {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *Items2) GetDescription() *string {
+func (o *GetEdgeConfigBackupItems2) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *Items2) GetCreatedAt() float64 {
+func (o *GetEdgeConfigBackupItems2) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -125,8 +125,8 @@ func (o *Items2) GetCreatedAt() float64 {
 }
 
 type GetEdgeConfigBackupBackup2 struct {
-	Digest string            `json:"digest"`
-	Items  map[string]Items2 `json:"items"`
+	Digest string                               `json:"digest"`
+	Items  map[string]GetEdgeConfigBackupItems2 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
@@ -139,9 +139,9 @@ func (o *GetEdgeConfigBackupBackup2) GetDigest() string {
 	return o.Digest
 }
 
-func (o *GetEdgeConfigBackupBackup2) GetItems() map[string]Items2 {
+func (o *GetEdgeConfigBackupBackup2) GetItems() map[string]GetEdgeConfigBackupItems2 {
 	if o == nil {
-		return map[string]Items2{}
+		return map[string]GetEdgeConfigBackupItems2{}
 	}
 	return o.Items
 }
@@ -238,35 +238,35 @@ func (o *GetEdgeConfigBackupResponseBody2) GetMetadata() GetEdgeConfigBackupMeta
 	return o.Metadata
 }
 
-type Items1 struct {
+type GetEdgeConfigBackupItems1 struct {
 	UpdatedAt   float64                         `json:"updatedAt"`
 	Value       *components.EdgeConfigItemValue `json:"value"`
 	Description *string                         `json:"description,omitempty"`
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
-func (o *Items1) GetUpdatedAt() float64 {
+func (o *GetEdgeConfigBackupItems1) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UpdatedAt
 }
 
-func (o *Items1) GetValue() *components.EdgeConfigItemValue {
+func (o *GetEdgeConfigBackupItems1) GetValue() *components.EdgeConfigItemValue {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *Items1) GetDescription() *string {
+func (o *GetEdgeConfigBackupItems1) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *Items1) GetCreatedAt() float64 {
+func (o *GetEdgeConfigBackupItems1) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -274,8 +274,8 @@ func (o *Items1) GetCreatedAt() float64 {
 }
 
 type GetEdgeConfigBackupBackup1 struct {
-	Digest string            `json:"digest"`
-	Items  map[string]Items1 `json:"items"`
+	Digest string                               `json:"digest"`
+	Items  map[string]GetEdgeConfigBackupItems1 `json:"items"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
@@ -288,9 +288,9 @@ func (o *GetEdgeConfigBackupBackup1) GetDigest() string {
 	return o.Digest
 }
 
-func (o *GetEdgeConfigBackupBackup1) GetItems() map[string]Items1 {
+func (o *GetEdgeConfigBackupBackup1) GetItems() map[string]GetEdgeConfigBackupItems1 {
 	if o == nil {
-		return map[string]Items1{}
+		return map[string]GetEdgeConfigBackupItems1{}
 	}
 	return o.Items
 }

@@ -302,8 +302,17 @@ func (o *PatchURLProtectionBypassRevoke) GetRegenerate() bool {
 }
 
 type PatchURLProtectionBypassRequestBody1 struct {
+	// Optional time the shareable link is valid for in seconds. If not provided, the shareable link will never expire.
+	TTL *float64 `json:"ttl,omitempty"`
 	// Optional instructions for revoking and regenerating a shareable link
 	Revoke *PatchURLProtectionBypassRevoke `json:"revoke,omitempty"`
+}
+
+func (o *PatchURLProtectionBypassRequestBody1) GetTTL() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TTL
 }
 
 func (o *PatchURLProtectionBypassRequestBody1) GetRevoke() *PatchURLProtectionBypassRevoke {
@@ -358,13 +367,6 @@ func CreatePatchURLProtectionBypassRequestBodyPatchURLProtectionBypassRequestBod
 
 func (u *PatchURLProtectionBypassRequestBody) UnmarshalJSON(data []byte) error {
 
-	var patchURLProtectionBypassRequestBody1 PatchURLProtectionBypassRequestBody1 = PatchURLProtectionBypassRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody1, "", true, true); err == nil {
-		u.PatchURLProtectionBypassRequestBody1 = &patchURLProtectionBypassRequestBody1
-		u.Type = PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody1
-		return nil
-	}
-
 	var patchURLProtectionBypassRequestBody2 PatchURLProtectionBypassRequestBody2 = PatchURLProtectionBypassRequestBody2{}
 	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody2, "", true, true); err == nil {
 		u.PatchURLProtectionBypassRequestBody2 = &patchURLProtectionBypassRequestBody2
@@ -376,6 +378,13 @@ func (u *PatchURLProtectionBypassRequestBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody3, "", true, true); err == nil {
 		u.PatchURLProtectionBypassRequestBody3 = &patchURLProtectionBypassRequestBody3
 		u.Type = PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody3
+		return nil
+	}
+
+	var patchURLProtectionBypassRequestBody1 PatchURLProtectionBypassRequestBody1 = PatchURLProtectionBypassRequestBody1{}
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody1, "", true, true); err == nil {
+		u.PatchURLProtectionBypassRequestBody1 = &patchURLProtectionBypassRequestBody1
+		u.Type = PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody1
 		return nil
 	}
 

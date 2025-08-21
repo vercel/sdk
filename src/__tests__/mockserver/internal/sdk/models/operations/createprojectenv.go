@@ -1946,14 +1946,14 @@ func (o *CreateProjectEnvInternalContentHint2) GetEncryptedValue() string {
 
 type Created2 struct {
 	Target *CreatedTargetUnion2 `json:"target,omitempty"`
-	Type   *CreatedType2        `json:"type,omitempty"`
+	Type   CreatedType2         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
-	Value             *string                            `json:"value,omitempty"`
+	Value             string                             `json:"value"`
 	VsmValue          *string                            `json:"vsmValue,omitempty"`
 	ID                *string                            `json:"id,omitempty"`
-	Key               *string                            `json:"key,omitempty"`
+	Key               string                             `json:"key"`
 	ConfigurationID   *string                            `json:"configurationId,omitempty"`
 	CreatedAt         *float64                           `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                           `json:"updatedAt,omitempty"`
@@ -1977,9 +1977,9 @@ func (o *Created2) GetTarget() *CreatedTargetUnion2 {
 	return o.Target
 }
 
-func (o *Created2) GetType() *CreatedType2 {
+func (o *Created2) GetType() CreatedType2 {
 	if o == nil {
-		return nil
+		return CreatedType2("")
 	}
 	return o.Type
 }
@@ -1998,9 +1998,9 @@ func (o *Created2) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *Created2) GetValue() *string {
+func (o *Created2) GetValue() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Value
 }
@@ -2019,9 +2019,9 @@ func (o *Created2) GetID() *string {
 	return o.ID
 }
 
-func (o *Created2) GetKey() *string {
+func (o *Created2) GetKey() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Key
 }
@@ -3322,14 +3322,14 @@ func (o *CreateProjectEnvInternalContentHint1) GetEncryptedValue() string {
 
 type Created1 struct {
 	Target *CreatedTargetUnion1 `json:"target,omitempty"`
-	Type   *CreatedType1        `json:"type,omitempty"`
+	Type   CreatedType1         `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
-	Value             *string                            `json:"value,omitempty"`
+	Value             string                             `json:"value"`
 	VsmValue          *string                            `json:"vsmValue,omitempty"`
 	ID                *string                            `json:"id,omitempty"`
-	Key               *string                            `json:"key,omitempty"`
+	Key               string                             `json:"key"`
 	ConfigurationID   *string                            `json:"configurationId,omitempty"`
 	CreatedAt         *float64                           `json:"createdAt,omitempty"`
 	UpdatedAt         *float64                           `json:"updatedAt,omitempty"`
@@ -3353,9 +3353,9 @@ func (o *Created1) GetTarget() *CreatedTargetUnion1 {
 	return o.Target
 }
 
-func (o *Created1) GetType() *CreatedType1 {
+func (o *Created1) GetType() CreatedType1 {
 	if o == nil {
-		return nil
+		return CreatedType1("")
 	}
 	return o.Type
 }
@@ -3374,9 +3374,9 @@ func (o *Created1) GetDecrypted() *bool {
 	return o.Decrypted
 }
 
-func (o *Created1) GetValue() *string {
+func (o *Created1) GetValue() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Value
 }
@@ -3395,9 +3395,9 @@ func (o *Created1) GetID() *string {
 	return o.ID
 }
 
-func (o *Created1) GetKey() *string {
+func (o *Created1) GetKey() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Key
 }

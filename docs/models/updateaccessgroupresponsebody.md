@@ -6,6 +6,9 @@
 import { UpdateAccessGroupResponseBody } from "@vercel/sdk/models/updateaccessgroupop.js";
 
 let value: UpdateAccessGroupResponseBody = {
+  entitlements: [
+    "v0",
+  ],
   name: "my-access-group",
   createdAt: "1588720733602",
   teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",
@@ -27,7 +30,7 @@ let value: UpdateAccessGroupResponseBody = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `entitlements`                                                                       | [models.UpdateAccessGroupEntitlements](../models/updateaccessgroupentitlements.md)[] | :heavy_minus_sign:                                                                   | N/A                                                                                  |                                                                                      |
+| `entitlements`                                                                       | [models.UpdateAccessGroupEntitlements](../models/updateaccessgroupentitlements.md)[] | :heavy_check_mark:                                                                   | N/A                                                                                  |                                                                                      |
 | `name`                                                                               | *string*                                                                             | :heavy_check_mark:                                                                   | The name of this access group.                                                       | my-access-group                                                                      |
 | `createdAt`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | Timestamp in milliseconds when the access group was created.                         | 1588720733602                                                                        |
 | `teamId`                                                                             | *string*                                                                             | :heavy_check_mark:                                                                   | ID of the team that this access group belongs to.                                    | team_123a6c5209bc3778245d011443644c8d27dc2c50                                        |

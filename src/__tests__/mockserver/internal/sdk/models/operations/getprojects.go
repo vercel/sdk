@@ -2303,6 +2303,8 @@ const (
 	GetProjectsFrameworkStorybook      GetProjectsFramework = "storybook"
 	GetProjectsFrameworkNitro          GetProjectsFramework = "nitro"
 	GetProjectsFrameworkHono           GetProjectsFramework = "hono"
+	GetProjectsFrameworkExpress        GetProjectsFramework = "express"
+	GetProjectsFrameworkXmcp           GetProjectsFramework = "xmcp"
 )
 
 func (e GetProjectsFramework) ToPointer() *GetProjectsFramework {
@@ -2409,6 +2411,10 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = GetProjectsFramework(v)
 		return nil
 	default:
@@ -2794,24 +2800,24 @@ func (o *GetProjectsDeployHook5) GetURL() string {
 }
 
 type GetProjectsLinkGithubCustomHost struct {
-	Org *string `json:"org,omitempty"`
+	Org string `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
-	RepoOwnerID      *float64                         `json:"repoOwnerId,omitempty"`
-	Repo             *string                          `json:"repo,omitempty"`
-	RepoID           *float64                         `json:"repoId,omitempty"`
-	Type             *GetProjectsTypeGithubCustomHost `json:"type,omitempty"`
-	Host             *string                          `json:"host,omitempty"`
-	CreatedAt        *float64                         `json:"createdAt,omitempty"`
-	DeployHooks      []GetProjectsDeployHook5         `json:"deployHooks"`
-	GitCredentialID  *string                          `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                         `json:"updatedAt,omitempty"`
-	Sourceless       *bool                            `json:"sourceless,omitempty"`
-	ProductionBranch *string                          `json:"productionBranch,omitempty"`
+	RepoOwnerID      *float64                        `json:"repoOwnerId,omitempty"`
+	Repo             *string                         `json:"repo,omitempty"`
+	RepoID           *float64                        `json:"repoId,omitempty"`
+	Type             GetProjectsTypeGithubCustomHost `json:"type"`
+	Host             string                          `json:"host"`
+	CreatedAt        *float64                        `json:"createdAt,omitempty"`
+	DeployHooks      []GetProjectsDeployHook5        `json:"deployHooks"`
+	GitCredentialID  string                          `json:"gitCredentialId"`
+	UpdatedAt        *float64                        `json:"updatedAt,omitempty"`
+	Sourceless       *bool                           `json:"sourceless,omitempty"`
+	ProductionBranch string                          `json:"productionBranch"`
 }
 
-func (o *GetProjectsLinkGithubCustomHost) GetOrg() *string {
+func (o *GetProjectsLinkGithubCustomHost) GetOrg() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Org
 }
@@ -2837,16 +2843,16 @@ func (o *GetProjectsLinkGithubCustomHost) GetRepoID() *float64 {
 	return o.RepoID
 }
 
-func (o *GetProjectsLinkGithubCustomHost) GetType() *GetProjectsTypeGithubCustomHost {
+func (o *GetProjectsLinkGithubCustomHost) GetType() GetProjectsTypeGithubCustomHost {
 	if o == nil {
-		return nil
+		return GetProjectsTypeGithubCustomHost("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectsLinkGithubCustomHost) GetHost() *string {
+func (o *GetProjectsLinkGithubCustomHost) GetHost() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Host
 }
@@ -2865,9 +2871,9 @@ func (o *GetProjectsLinkGithubCustomHost) GetDeployHooks() []GetProjectsDeployHo
 	return o.DeployHooks
 }
 
-func (o *GetProjectsLinkGithubCustomHost) GetGitCredentialID() *string {
+func (o *GetProjectsLinkGithubCustomHost) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -2886,9 +2892,9 @@ func (o *GetProjectsLinkGithubCustomHost) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *GetProjectsLinkGithubCustomHost) GetProductionBranch() *string {
+func (o *GetProjectsLinkGithubCustomHost) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -2960,58 +2966,58 @@ func (o *GetProjectsDeployHook4) GetURL() string {
 }
 
 type GetProjectsLinkBitbucket struct {
-	Name             *string                   `json:"name,omitempty"`
-	Slug             *string                   `json:"slug,omitempty"`
-	Owner            *string                   `json:"owner,omitempty"`
-	Type             *GetProjectsTypeBitbucket `json:"type,omitempty"`
-	UUID             *string                   `json:"uuid,omitempty"`
-	WorkspaceUUID    *string                   `json:"workspaceUuid,omitempty"`
-	CreatedAt        *float64                  `json:"createdAt,omitempty"`
-	DeployHooks      []GetProjectsDeployHook4  `json:"deployHooks"`
-	GitCredentialID  *string                   `json:"gitCredentialId,omitempty"`
-	UpdatedAt        *float64                  `json:"updatedAt,omitempty"`
-	Sourceless       *bool                     `json:"sourceless,omitempty"`
-	ProductionBranch *string                   `json:"productionBranch,omitempty"`
+	Name             string                   `json:"name"`
+	Slug             string                   `json:"slug"`
+	Owner            string                   `json:"owner"`
+	Type             GetProjectsTypeBitbucket `json:"type"`
+	UUID             string                   `json:"uuid"`
+	WorkspaceUUID    string                   `json:"workspaceUuid"`
+	CreatedAt        *float64                 `json:"createdAt,omitempty"`
+	DeployHooks      []GetProjectsDeployHook4 `json:"deployHooks"`
+	GitCredentialID  string                   `json:"gitCredentialId"`
+	UpdatedAt        *float64                 `json:"updatedAt,omitempty"`
+	Sourceless       *bool                    `json:"sourceless,omitempty"`
+	ProductionBranch string                   `json:"productionBranch"`
 }
 
-func (o *GetProjectsLinkBitbucket) GetName() *string {
+func (o *GetProjectsLinkBitbucket) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
 
-func (o *GetProjectsLinkBitbucket) GetSlug() *string {
+func (o *GetProjectsLinkBitbucket) GetSlug() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Slug
 }
 
-func (o *GetProjectsLinkBitbucket) GetOwner() *string {
+func (o *GetProjectsLinkBitbucket) GetOwner() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Owner
 }
 
-func (o *GetProjectsLinkBitbucket) GetType() *GetProjectsTypeBitbucket {
+func (o *GetProjectsLinkBitbucket) GetType() GetProjectsTypeBitbucket {
 	if o == nil {
-		return nil
+		return GetProjectsTypeBitbucket("")
 	}
 	return o.Type
 }
 
-func (o *GetProjectsLinkBitbucket) GetUUID() *string {
+func (o *GetProjectsLinkBitbucket) GetUUID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.UUID
 }
 
-func (o *GetProjectsLinkBitbucket) GetWorkspaceUUID() *string {
+func (o *GetProjectsLinkBitbucket) GetWorkspaceUUID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.WorkspaceUUID
 }
@@ -3030,9 +3036,9 @@ func (o *GetProjectsLinkBitbucket) GetDeployHooks() []GetProjectsDeployHook4 {
 	return o.DeployHooks
 }
 
-func (o *GetProjectsLinkBitbucket) GetGitCredentialID() *string {
+func (o *GetProjectsLinkBitbucket) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -3051,9 +3057,9 @@ func (o *GetProjectsLinkBitbucket) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *GetProjectsLinkBitbucket) GetProductionBranch() *string {
+func (o *GetProjectsLinkBitbucket) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -3125,46 +3131,46 @@ func (o *GetProjectsDeployHook3) GetURL() string {
 }
 
 type GetProjectsLinkGitlab struct {
-	ProjectID                *string `json:"projectId,omitempty"`
-	ProjectName              *string `json:"projectName,omitempty"`
-	ProjectNameWithNamespace *string `json:"projectNameWithNamespace,omitempty"`
-	ProjectNamespace         *string `json:"projectNamespace,omitempty"`
+	ProjectID                string `json:"projectId"`
+	ProjectName              string `json:"projectName"`
+	ProjectNameWithNamespace string `json:"projectNameWithNamespace"`
+	ProjectNamespace         string `json:"projectNamespace"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes. This is the id of the top level group that a namespace belongs to. Gitlab supports group nesting (up to 20 levels).
 	ProjectOwnerID   *float64                 `json:"projectOwnerId,omitempty"`
-	ProjectURL       *string                  `json:"projectUrl,omitempty"`
-	Type             *GetProjectsTypeGitlab   `json:"type,omitempty"`
+	ProjectURL       string                   `json:"projectUrl"`
+	Type             GetProjectsTypeGitlab    `json:"type"`
 	CreatedAt        *float64                 `json:"createdAt,omitempty"`
 	DeployHooks      []GetProjectsDeployHook3 `json:"deployHooks"`
-	GitCredentialID  *string                  `json:"gitCredentialId,omitempty"`
+	GitCredentialID  string                   `json:"gitCredentialId"`
 	UpdatedAt        *float64                 `json:"updatedAt,omitempty"`
 	Sourceless       *bool                    `json:"sourceless,omitempty"`
-	ProductionBranch *string                  `json:"productionBranch,omitempty"`
+	ProductionBranch string                   `json:"productionBranch"`
 }
 
-func (o *GetProjectsLinkGitlab) GetProjectID() *string {
+func (o *GetProjectsLinkGitlab) GetProjectID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *GetProjectsLinkGitlab) GetProjectName() *string {
+func (o *GetProjectsLinkGitlab) GetProjectName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectName
 }
 
-func (o *GetProjectsLinkGitlab) GetProjectNameWithNamespace() *string {
+func (o *GetProjectsLinkGitlab) GetProjectNameWithNamespace() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectNameWithNamespace
 }
 
-func (o *GetProjectsLinkGitlab) GetProjectNamespace() *string {
+func (o *GetProjectsLinkGitlab) GetProjectNamespace() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectNamespace
 }
@@ -3176,16 +3182,16 @@ func (o *GetProjectsLinkGitlab) GetProjectOwnerID() *float64 {
 	return o.ProjectOwnerID
 }
 
-func (o *GetProjectsLinkGitlab) GetProjectURL() *string {
+func (o *GetProjectsLinkGitlab) GetProjectURL() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProjectURL
 }
 
-func (o *GetProjectsLinkGitlab) GetType() *GetProjectsTypeGitlab {
+func (o *GetProjectsLinkGitlab) GetType() GetProjectsTypeGitlab {
 	if o == nil {
-		return nil
+		return GetProjectsTypeGitlab("")
 	}
 	return o.Type
 }
@@ -3204,9 +3210,9 @@ func (o *GetProjectsLinkGitlab) GetDeployHooks() []GetProjectsDeployHook3 {
 	return o.DeployHooks
 }
 
-func (o *GetProjectsLinkGitlab) GetGitCredentialID() *string {
+func (o *GetProjectsLinkGitlab) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -3225,9 +3231,9 @@ func (o *GetProjectsLinkGitlab) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *GetProjectsLinkGitlab) GetProductionBranch() *string {
+func (o *GetProjectsLinkGitlab) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -3299,23 +3305,23 @@ func (o *GetProjectsDeployHook2) GetURL() string {
 }
 
 type GetProjectsLinkGithubLimited struct {
-	Type      *GetProjectsTypeGithubLimited `json:"type,omitempty"`
-	Repo      *string                       `json:"repo,omitempty"`
-	RepoID    *float64                      `json:"repoId,omitempty"`
-	UpdatedAt *float64                      `json:"updatedAt,omitempty"`
-	CreatedAt *float64                      `json:"createdAt,omitempty"`
-	Org       *string                       `json:"org,omitempty"`
+	Type      GetProjectsTypeGithubLimited `json:"type"`
+	Repo      *string                      `json:"repo,omitempty"`
+	RepoID    *float64                     `json:"repoId,omitempty"`
+	UpdatedAt *float64                     `json:"updatedAt,omitempty"`
+	CreatedAt *float64                     `json:"createdAt,omitempty"`
+	Org       string                       `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                 `json:"repoOwnerId,omitempty"`
 	DeployHooks      []GetProjectsDeployHook2 `json:"deployHooks"`
-	GitCredentialID  *string                  `json:"gitCredentialId,omitempty"`
+	GitCredentialID  string                   `json:"gitCredentialId"`
 	Sourceless       *bool                    `json:"sourceless,omitempty"`
-	ProductionBranch *string                  `json:"productionBranch,omitempty"`
+	ProductionBranch string                   `json:"productionBranch"`
 }
 
-func (o *GetProjectsLinkGithubLimited) GetType() *GetProjectsTypeGithubLimited {
+func (o *GetProjectsLinkGithubLimited) GetType() GetProjectsTypeGithubLimited {
 	if o == nil {
-		return nil
+		return GetProjectsTypeGithubLimited("")
 	}
 	return o.Type
 }
@@ -3348,9 +3354,9 @@ func (o *GetProjectsLinkGithubLimited) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *GetProjectsLinkGithubLimited) GetOrg() *string {
+func (o *GetProjectsLinkGithubLimited) GetOrg() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Org
 }
@@ -3369,9 +3375,9 @@ func (o *GetProjectsLinkGithubLimited) GetDeployHooks() []GetProjectsDeployHook2
 	return o.DeployHooks
 }
 
-func (o *GetProjectsLinkGithubLimited) GetGitCredentialID() *string {
+func (o *GetProjectsLinkGithubLimited) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -3383,9 +3389,9 @@ func (o *GetProjectsLinkGithubLimited) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *GetProjectsLinkGithubLimited) GetProductionBranch() *string {
+func (o *GetProjectsLinkGithubLimited) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -3457,23 +3463,23 @@ func (o *GetProjectsDeployHook1) GetURL() string {
 }
 
 type GetProjectsLinkGithub struct {
-	Org *string `json:"org,omitempty"`
+	Org string `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                 `json:"repoOwnerId,omitempty"`
 	Repo             *string                  `json:"repo,omitempty"`
 	RepoID           *float64                 `json:"repoId,omitempty"`
-	Type             *GetProjectsTypeGithub   `json:"type,omitempty"`
+	Type             GetProjectsTypeGithub    `json:"type"`
 	CreatedAt        *float64                 `json:"createdAt,omitempty"`
 	DeployHooks      []GetProjectsDeployHook1 `json:"deployHooks"`
-	GitCredentialID  *string                  `json:"gitCredentialId,omitempty"`
+	GitCredentialID  string                   `json:"gitCredentialId"`
 	UpdatedAt        *float64                 `json:"updatedAt,omitempty"`
 	Sourceless       *bool                    `json:"sourceless,omitempty"`
-	ProductionBranch *string                  `json:"productionBranch,omitempty"`
+	ProductionBranch string                   `json:"productionBranch"`
 }
 
-func (o *GetProjectsLinkGithub) GetOrg() *string {
+func (o *GetProjectsLinkGithub) GetOrg() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Org
 }
@@ -3499,9 +3505,9 @@ func (o *GetProjectsLinkGithub) GetRepoID() *float64 {
 	return o.RepoID
 }
 
-func (o *GetProjectsLinkGithub) GetType() *GetProjectsTypeGithub {
+func (o *GetProjectsLinkGithub) GetType() GetProjectsTypeGithub {
 	if o == nil {
-		return nil
+		return GetProjectsTypeGithub("")
 	}
 	return o.Type
 }
@@ -3520,9 +3526,9 @@ func (o *GetProjectsLinkGithub) GetDeployHooks() []GetProjectsDeployHook1 {
 	return o.DeployHooks
 }
 
-func (o *GetProjectsLinkGithub) GetGitCredentialID() *string {
+func (o *GetProjectsLinkGithub) GetGitCredentialID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.GitCredentialID
 }
@@ -3541,9 +3547,9 @@ func (o *GetProjectsLinkGithub) GetSourceless() *bool {
 	return o.Sourceless
 }
 
-func (o *GetProjectsLinkGithub) GetProductionBranch() *string {
+func (o *GetProjectsLinkGithub) GetProductionBranch() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ProductionBranch
 }
@@ -5080,6 +5086,7 @@ type GetProjectsPermissions struct {
 	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
 	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
 	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
 	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
 	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
 	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
@@ -5669,6 +5676,13 @@ func (o *GetProjectsPermissions) GetTrustedIps() []components.ACLAction {
 		return nil
 	}
 	return o.TrustedIps
+}
+
+func (o *GetProjectsPermissions) GetV0Chat() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.V0Chat
 }
 
 func (o *GetProjectsPermissions) GetWebAnalytics() []components.ACLAction {

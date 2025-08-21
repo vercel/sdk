@@ -941,6 +941,8 @@ const (
 	CreateDeploymentFrameworkRequestStorybook      CreateDeploymentFrameworkRequest = "storybook"
 	CreateDeploymentFrameworkRequestNitro          CreateDeploymentFrameworkRequest = "nitro"
 	CreateDeploymentFrameworkRequestHono           CreateDeploymentFrameworkRequest = "hono"
+	CreateDeploymentFrameworkRequestExpress        CreateDeploymentFrameworkRequest = "express"
+	CreateDeploymentFrameworkRequestXmcp           CreateDeploymentFrameworkRequest = "xmcp"
 )
 
 func (e CreateDeploymentFrameworkRequest) ToPointer() *CreateDeploymentFrameworkRequest {
@@ -1047,6 +1049,10 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = CreateDeploymentFrameworkRequest(v)
 		return nil
 	default:
@@ -1513,6 +1519,8 @@ const (
 	CreateDeploymentFrameworkLambdasStorybook      CreateDeploymentFrameworkLambdas = "storybook"
 	CreateDeploymentFrameworkLambdasNitro          CreateDeploymentFrameworkLambdas = "nitro"
 	CreateDeploymentFrameworkLambdasHono           CreateDeploymentFrameworkLambdas = "hono"
+	CreateDeploymentFrameworkLambdasExpress        CreateDeploymentFrameworkLambdas = "express"
+	CreateDeploymentFrameworkLambdasXmcp           CreateDeploymentFrameworkLambdas = "xmcp"
 )
 
 func (e CreateDeploymentFrameworkLambdas) ToPointer() *CreateDeploymentFrameworkLambdas {
@@ -1619,6 +1627,10 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "nitro":
 		fallthrough
 	case "hono":
+		fallthrough
+	case "express":
+		fallthrough
+	case "xmcp":
 		*e = CreateDeploymentFrameworkLambdas(v)
 		return nil
 	default:
@@ -2176,17 +2188,17 @@ func (o *CreateDeploymentOutput) GetFunctionName() string {
 
 // CreateDeploymentLambda - A partial representation of a Build used by the deployment endpoint.
 type CreateDeploymentLambda struct {
-	ID           *string                           `json:"id,omitempty"`
+	ID           string                            `json:"id"`
 	CreatedAt    *float64                          `json:"createdAt,omitempty"`
-	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyState   *CreateDeploymentLambdaReadyState `json:"readyState,omitempty"`
+	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                          `json:"readyStateAt,omitempty"`
 	Output       []CreateDeploymentOutput          `json:"output"`
 }
 
-func (o *CreateDeploymentLambda) GetID() *string {
+func (o *CreateDeploymentLambda) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
@@ -2198,18 +2210,18 @@ func (o *CreateDeploymentLambda) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *CreateDeploymentLambda) GetEntrypoint() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Entrypoint
-}
-
 func (o *CreateDeploymentLambda) GetReadyState() *CreateDeploymentLambdaReadyState {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyState
+}
+
+func (o *CreateDeploymentLambda) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *CreateDeploymentLambda) GetReadyStateAt() *float64 {

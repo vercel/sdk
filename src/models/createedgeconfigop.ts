@@ -65,21 +65,25 @@ export type CreateEdgeConfigPurpose = Purpose1 | Purpose2;
  * An Edge Config
  */
 export type CreateEdgeConfigResponseBody = {
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  id?: string | undefined;
+  createdAt: number;
+  updatedAt: number;
+  id: string;
   /**
    * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
    */
-  slug?: string | undefined;
-  ownerId?: string | undefined;
-  digest?: string | undefined;
+  slug: string;
+  ownerId: string;
+  digest: string;
   /**
    * Keeps track of the current state of the Edge Config while it gets transferred.
    */
   transfer?: CreateEdgeConfigTransfer | undefined;
   schema?: CreateEdgeConfigSchema | undefined;
   purpose?: Purpose1 | Purpose2 | undefined;
+  /**
+   * Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating.
+   */
+  syncedToDynamoAt?: number | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -527,33 +531,35 @@ export const CreateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  id: z.string().optional(),
-  slug: z.string().optional(),
-  ownerId: z.string().optional(),
-  digest: z.string().optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+  id: z.string(),
+  slug: z.string(),
+  ownerId: z.string(),
+  digest: z.string(),
   transfer: z.lazy(() => CreateEdgeConfigTransfer$inboundSchema).optional(),
   schema: z.lazy(() => CreateEdgeConfigSchema$inboundSchema).optional(),
   purpose: z.union([
     z.lazy(() => Purpose1$inboundSchema),
     z.lazy(() => Purpose2$inboundSchema),
   ]).optional(),
+  syncedToDynamoAt: z.number().optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });
 
 /** @internal */
 export type CreateEdgeConfigResponseBody$Outbound = {
-  createdAt?: number | undefined;
-  updatedAt?: number | undefined;
-  id?: string | undefined;
-  slug?: string | undefined;
-  ownerId?: string | undefined;
-  digest?: string | undefined;
+  createdAt: number;
+  updatedAt: number;
+  id: string;
+  slug: string;
+  ownerId: string;
+  digest: string;
   transfer?: CreateEdgeConfigTransfer$Outbound | undefined;
   schema?: CreateEdgeConfigSchema$Outbound | undefined;
   purpose?: Purpose1$Outbound | Purpose2$Outbound | undefined;
+  syncedToDynamoAt?: number | undefined;
   sizeInBytes: number;
   itemCount: number;
 };
@@ -564,18 +570,19 @@ export const CreateEdgeConfigResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEdgeConfigResponseBody
 > = z.object({
-  createdAt: z.number().optional(),
-  updatedAt: z.number().optional(),
-  id: z.string().optional(),
-  slug: z.string().optional(),
-  ownerId: z.string().optional(),
-  digest: z.string().optional(),
+  createdAt: z.number(),
+  updatedAt: z.number(),
+  id: z.string(),
+  slug: z.string(),
+  ownerId: z.string(),
+  digest: z.string(),
   transfer: z.lazy(() => CreateEdgeConfigTransfer$outboundSchema).optional(),
   schema: z.lazy(() => CreateEdgeConfigSchema$outboundSchema).optional(),
   purpose: z.union([
     z.lazy(() => Purpose1$outboundSchema),
     z.lazy(() => Purpose2$outboundSchema),
   ]).optional(),
+  syncedToDynamoAt: z.number().optional(),
   sizeInBytes: z.number(),
   itemCount: z.number(),
 });

@@ -25,7 +25,7 @@ jobs:
       pnpm_version: 8.3.1
       set_version: ${{ github.event.inputs.set_version }}
       speakeasy_version: latest
-      enable_sdk_changelog_july_2025: true
+      enable_sdk_changelog: true
       target: vercel
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}

@@ -6,7 +6,7 @@
 import { ResponseBodyEnvs } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: ResponseBodyEnvs = {
-  type: "plain",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

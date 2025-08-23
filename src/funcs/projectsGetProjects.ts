@@ -108,6 +108,7 @@ async function $do(
     "deprecated": payload.deprecated,
     "edgeConfigId": payload.edgeConfigId,
     "edgeConfigTokenId": payload.edgeConfigTokenId,
+    "elasticConcurrencyEnabled": payload.elasticConcurrencyEnabled,
     "excludeRepos": payload.excludeRepos,
     "from": payload.from,
     "gitForkProtection": payload.gitForkProtection,

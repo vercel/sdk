@@ -134,6 +134,7 @@ async function run() {
   const result = await vercel.projects.getProjects({
     gitForkProtection: "1",
     repoUrl: "https://github.com/vercel/next.js",
+    elasticConcurrencyEnabled: "1",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });
@@ -162,6 +163,7 @@ async function run() {
   const res = await projectsGetProjects(vercel, {
     gitForkProtection: "1",
     repoUrl: "https://github.com/vercel/next.js",
+    elasticConcurrencyEnabled: "1",
     teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     slug: "my-team-url-slug",
   });

@@ -1,11 +1,11 @@
-# UiOptionsAtBRANDAt446263
+# AtBRANDAt447943
 
 ## Example Usage
 
 ```typescript
-import { UiOptionsAtBRANDAt446263 } from "@vercel/sdk/models/getconfigurationproductsop.js";
+import { AtBRANDAt447943 } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
-let value: UiOptionsAtBRANDAt446263 = {};
+let value: AtBRANDAt447943 = {};
 ```
 
 ## Fields

@@ -3866,6 +3866,7 @@ type UpdateProjectDataCacheResourceConfig struct {
 	FunctionZeroConfigFailover *bool                                                          `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                                          `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *UpdateProjectDataCacheResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
+	IsNSNBDisabled             *bool                                                          `json:"isNSNBDisabled,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheResourceConfig) GetFluid() *bool {
@@ -3915,6 +3916,13 @@ func (o *UpdateProjectDataCacheResourceConfig) GetBuildMachineType() *UpdateProj
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *UpdateProjectDataCacheResourceConfig) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
 }
 
 // UpdateProjectDataCacheRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -4082,6 +4090,7 @@ type UpdateProjectDataCacheDefaultResourceConfig struct {
 	FunctionZeroConfigFailover *bool                                                                 `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool                                                                 `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *UpdateProjectDataCacheDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
+	IsNSNBDisabled             *bool                                                                 `json:"isNSNBDisabled,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheDefaultResourceConfig) GetFluid() *bool {
@@ -4131,6 +4140,13 @@ func (o *UpdateProjectDataCacheDefaultResourceConfig) GetBuildMachineType() *Upd
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *UpdateProjectDataCacheDefaultResourceConfig) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
 }
 
 type UpdateProjectDataCacheSsoProtectionDeploymentType string

@@ -123,6 +123,7 @@ export type UpdateProjectResourceConfig = {
    */
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /**
@@ -1430,6 +1431,7 @@ export type UpdateProjectProjectsBuildMachineType = ClosedEnum<
 >;
 
 export type UpdateProjectProjectsResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1437,8 +1439,8 @@ export type UpdateProjectProjectsResourceConfig = {
     | UpdateProjectProjectsFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsBuildMachineType | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /**
@@ -1517,6 +1519,7 @@ export type UpdateProjectProjectsResponseBuildMachineType = ClosedEnum<
 >;
 
 export type UpdateProjectDefaultResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1524,8 +1527,8 @@ export type UpdateProjectDefaultResourceConfig = {
     | UpdateProjectProjectsResponseFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsResponseBuildMachineType | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 export const UpdateProjectProjectsResponseDeploymentType = {
@@ -2379,6 +2382,7 @@ export const UpdateProjectResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -2390,6 +2394,7 @@ export type UpdateProjectResourceConfig$Outbound = {
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -2406,6 +2411,7 @@ export const UpdateProjectResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
   elasticConcurrencyEnabled: z.boolean().optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /**
@@ -8222,26 +8228,28 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     UpdateProjectProjectsFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsBuildMachineType$inboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type UpdateProjectProjectsResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -8250,15 +8258,16 @@ export const UpdateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectProjectsResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     UpdateProjectProjectsFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsBuildMachineType$outboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /**
@@ -8540,6 +8549,7 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
@@ -8547,20 +8557,21 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectProjectsResponseFunctionDefaultMemoryType$inboundSchema
       .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$inboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type UpdateProjectDefaultResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -8569,6 +8580,7 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectDefaultResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
@@ -8576,9 +8588,9 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectProjectsResponseFunctionDefaultMemoryType$outboundSchema
       .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$outboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /**

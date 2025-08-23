@@ -7,7 +7,7 @@ import { RoutesTransforms } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: RoutesTransforms = {
   type: "response.headers",
-  op: "append",
+  op: "set",
   target: {
     key: "<key>",
   },

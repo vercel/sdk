@@ -1051,6 +1051,7 @@ export type UpdateProjectDataCacheResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectDataCacheProjectsBuildMachineType | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /**
@@ -1138,6 +1139,7 @@ export type DefaultResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectDataCacheBuildMachineType | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 export const UpdateProjectDataCacheDeploymentType = {
@@ -6894,6 +6896,7 @@ export const UpdateProjectDataCacheResourceConfig$inboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectDataCacheProjectsBuildMachineType$inboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6905,6 +6908,7 @@ export type UpdateProjectDataCacheResourceConfig$Outbound = {
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -6923,6 +6927,7 @@ export const UpdateProjectDataCacheResourceConfig$outboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType:
     UpdateProjectDataCacheProjectsBuildMachineType$outboundSchema.optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /**
@@ -7195,6 +7200,7 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectDataCacheBuildMachineType$inboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
@@ -7206,6 +7212,7 @@ export type DefaultResourceConfig$Outbound = {
   functionZeroConfigFailover?: boolean | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -7223,6 +7230,7 @@ export const DefaultResourceConfig$outboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectDataCacheBuildMachineType$outboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /**

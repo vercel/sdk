@@ -526,11 +526,11 @@ export type CreateDeploymentProjectSettings = {
 };
 
 export const CreateDeploymentDeploymentsStatus = {
+  Error: "error",
+  Timeout: "timeout",
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
-  Error: "error",
-  Timeout: "timeout",
 } as const;
 export type CreateDeploymentDeploymentsStatus = ClosedEnum<
   typeof CreateDeploymentDeploymentsStatus
@@ -622,8 +622,8 @@ export type Creator = {
 };
 
 export const CreateDeploymentReadyState = {
-  Building: "BUILDING",
   Error: "ERROR",
+  Building: "BUILDING",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -1214,14 +1214,14 @@ export const CreateDeploymentPlan = {
 export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
 export const FunctionType = {
-  Fluid: "fluid",
   Standard: "standard",
+  Fluid: "fluid",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
 export const FunctionMemoryType = {
-  Standard: "standard",
   StandardLegacy: "standard_legacy",
+  Standard: "standard",
   Performance: "performance",
 } as const;
 export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
@@ -1305,12 +1305,12 @@ export type Routes3 = {
 };
 
 export const Handle = {
-  Error: "error",
   Filesystem: "filesystem",
+  Error: "error",
   Hit: "hit",
   Miss: "miss",
-  Rewrite: "rewrite",
   Resource: "resource",
+  Rewrite: "rewrite",
 } as const;
 export type Handle = ClosedEnum<typeof Handle>;
 
@@ -1469,8 +1469,8 @@ export const RoutesType = {
 export type RoutesType = ClosedEnum<typeof RoutesType>;
 
 export const CreateDeploymentRoutesOp = {
-  Append: "append",
   Set: "set",
+  Append: "append",
   Delete: "delete",
 } as const;
 export type CreateDeploymentRoutesOp = ClosedEnum<
@@ -1649,8 +1649,8 @@ export type CreateDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CreateDeploymentGitRepoOwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type CreateDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CreateDeploymentGitRepoOwnerType
@@ -1677,8 +1677,8 @@ export type CreateDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const GitRepoOwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
 
@@ -1701,8 +1701,8 @@ export const GitRepoType = {
 export type GitRepoType = ClosedEnum<typeof GitRepoType>;
 
 export const OwnerType = {
-  Team: "team",
   User: "user",
+  Team: "team",
 } as const;
 export type OwnerType = ClosedEnum<typeof OwnerType>;
 

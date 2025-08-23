@@ -37,6 +37,33 @@ func (e *GitForkProtection) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// ElasticConcurrencyEnabled - Filter results by projects with elastic concurrency enabled
+type ElasticConcurrencyEnabled string
+
+const (
+	ElasticConcurrencyEnabledOne  ElasticConcurrencyEnabled = "1"
+	ElasticConcurrencyEnabledZero ElasticConcurrencyEnabled = "0"
+)
+
+func (e ElasticConcurrencyEnabled) ToPointer() *ElasticConcurrencyEnabled {
+	return &e
+}
+func (e *ElasticConcurrencyEnabled) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "1":
+		fallthrough
+	case "0":
+		*e = ElasticConcurrencyEnabled(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ElasticConcurrencyEnabled: %v", v)
+	}
+}
+
 type GetProjectsRequest struct {
 	// Query only projects updated after the given timestamp
 	From *string `queryParam:"style=form,explode=true,name=from"`
@@ -59,6 +86,8 @@ type GetProjectsRequest struct {
 	// Filter results by connected Edge Config Token ID
 	EdgeConfigTokenID *string `queryParam:"style=form,explode=true,name=edgeConfigTokenId"`
 	Deprecated        *bool   `queryParam:"style=form,explode=true,name=deprecated"`
+	// Filter results by projects with elastic concurrency enabled
+	ElasticConcurrencyEnabled *ElasticConcurrencyEnabled `queryParam:"style=form,explode=true,name=elasticConcurrencyEnabled"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -140,6 +169,13 @@ func (o *GetProjectsRequest) GetDeprecated() *bool {
 		return nil
 	}
 	return o.Deprecated
+}
+
+func (o *GetProjectsRequest) GetElasticConcurrencyEnabled() *ElasticConcurrencyEnabled {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *GetProjectsRequest) GetTeamID() *string {
@@ -3955,13 +3991,21 @@ func (e *GetProjectsResourceConfigBuildMachineType) UnmarshalJSON(data []byte) e
 }
 
 type GetProjectsResourceConfig struct {
+	ElasticConcurrencyEnabled  *bool                                               `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                               `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                            `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                            `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *GetProjectsResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                               `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                               `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *GetProjectsResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
+	IsNSNBDisabled             *bool                                               `json:"isNSNBDisabled,omitempty"`
+}
+
+func (o *GetProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *GetProjectsResourceConfig) GetFluid() *bool {
@@ -3999,18 +4043,18 @@ func (o *GetProjectsResourceConfig) GetFunctionZeroConfigFailover() *bool {
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *GetProjectsResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
-}
-
 func (o *GetProjectsResourceConfig) GetBuildMachineType() *GetProjectsResourceConfigBuildMachineType {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *GetProjectsResourceConfig) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
 }
 
 // GetProjectsRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -4171,13 +4215,21 @@ func (e *GetProjectsDefaultResourceConfigBuildMachineType) UnmarshalJSON(data []
 }
 
 type GetProjectsDefaultResourceConfig struct {
+	ElasticConcurrencyEnabled  *bool                                                      `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                      `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                   `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                   `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *GetProjectsDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                      `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                                      `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *GetProjectsDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
+	IsNSNBDisabled             *bool                                                      `json:"isNSNBDisabled,omitempty"`
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *GetProjectsDefaultResourceConfig) GetFluid() *bool {
@@ -4215,18 +4267,18 @@ func (o *GetProjectsDefaultResourceConfig) GetFunctionZeroConfigFailover() *bool
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *GetProjectsDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
-}
-
 func (o *GetProjectsDefaultResourceConfig) GetBuildMachineType() *GetProjectsDefaultResourceConfigBuildMachineType {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *GetProjectsDefaultResourceConfig) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
 }
 
 type GetProjectsSsoProtectionDeploymentType string

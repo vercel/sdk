@@ -32,6 +32,20 @@ export const GitForkProtection = {
  */
 export type GitForkProtection = ClosedEnum<typeof GitForkProtection>;
 
+/**
+ * Filter results by projects with elastic concurrency enabled
+ */
+export const ElasticConcurrencyEnabled = {
+  One: "1",
+  Zero: "0",
+} as const;
+/**
+ * Filter results by projects with elastic concurrency enabled
+ */
+export type ElasticConcurrencyEnabled = ClosedEnum<
+  typeof ElasticConcurrencyEnabled
+>;
+
 export type GetProjectsRequest = {
   /**
    * Query only projects updated after the given timestamp
@@ -74,6 +88,10 @@ export type GetProjectsRequest = {
    */
   edgeConfigTokenId?: string | undefined;
   deprecated?: boolean | undefined;
+  /**
+   * Filter results by projects with elastic concurrency enabled
+   */
+  elasticConcurrencyEnabled?: ElasticConcurrencyEnabled | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -1074,13 +1092,14 @@ export type GetProjectsBuildMachineType = ClosedEnum<
 >;
 
 export type GetProjectsResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: GetProjectsFunctionDefaultMemoryType | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: GetProjectsBuildMachineType | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /**
@@ -1159,6 +1178,7 @@ export type GetProjectsProjectsBuildMachineType = ClosedEnum<
 >;
 
 export type GetProjectsDefaultResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1166,8 +1186,8 @@ export type GetProjectsDefaultResourceConfig = {
     | GetProjectsProjectsFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: GetProjectsProjectsBuildMachineType | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 export const GetProjectsDeploymentType = {
@@ -1943,6 +1963,27 @@ export namespace GitForkProtection$ {
 }
 
 /** @internal */
+export const ElasticConcurrencyEnabled$inboundSchema: z.ZodNativeEnum<
+  typeof ElasticConcurrencyEnabled
+> = z.nativeEnum(ElasticConcurrencyEnabled);
+
+/** @internal */
+export const ElasticConcurrencyEnabled$outboundSchema: z.ZodNativeEnum<
+  typeof ElasticConcurrencyEnabled
+> = ElasticConcurrencyEnabled$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ElasticConcurrencyEnabled$ {
+  /** @deprecated use `ElasticConcurrencyEnabled$inboundSchema` instead. */
+  export const inboundSchema = ElasticConcurrencyEnabled$inboundSchema;
+  /** @deprecated use `ElasticConcurrencyEnabled$outboundSchema` instead. */
+  export const outboundSchema = ElasticConcurrencyEnabled$outboundSchema;
+}
+
+/** @internal */
 export const GetProjectsRequest$inboundSchema: z.ZodType<
   GetProjectsRequest,
   z.ZodTypeDef,
@@ -1959,6 +2000,7 @@ export const GetProjectsRequest$inboundSchema: z.ZodType<
   edgeConfigId: z.string().optional(),
   edgeConfigTokenId: z.string().optional(),
   deprecated: z.boolean().optional(),
+  elasticConcurrencyEnabled: ElasticConcurrencyEnabled$inboundSchema.optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -1976,6 +2018,7 @@ export type GetProjectsRequest$Outbound = {
   edgeConfigId?: string | undefined;
   edgeConfigTokenId?: string | undefined;
   deprecated?: boolean | undefined;
+  elasticConcurrencyEnabled?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -1997,6 +2040,8 @@ export const GetProjectsRequest$outboundSchema: z.ZodType<
   edgeConfigId: z.string().optional(),
   edgeConfigTokenId: z.string().optional(),
   deprecated: z.boolean().optional(),
+  elasticConcurrencyEnabled: ElasticConcurrencyEnabled$outboundSchema
+    .optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -6919,25 +6964,27 @@ export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: GetProjectsFunctionDefaultMemoryType$inboundSchema
     .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: GetProjectsBuildMachineType$inboundSchema.optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type GetProjectsResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -6946,14 +6993,15 @@ export const GetProjectsResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType: GetProjectsFunctionDefaultMemoryType$outboundSchema
     .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: GetProjectsBuildMachineType$outboundSchema.optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /**
@@ -7226,26 +7274,28 @@ export const GetProjectsDefaultResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     GetProjectsProjectsFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: GetProjectsProjectsBuildMachineType$inboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type GetProjectsDefaultResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
+  isNSNBDisabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -7254,15 +7304,16 @@ export const GetProjectsDefaultResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsDefaultResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     GetProjectsProjectsFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: GetProjectsProjectsBuildMachineType$outboundSchema
     .optional(),
+  isNSNBDisabled: z.boolean().optional(),
 });
 
 /**

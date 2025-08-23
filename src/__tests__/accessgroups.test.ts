@@ -245,9 +245,7 @@ test("Access Groups Create Access Group", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    entitlements: [
-      "v0",
-    ],
+    entitlements: [],
     membersCount: 446.92,
     projectsCount: 5113.22,
     name: "my-access-group",

@@ -288,6 +288,7 @@ type UpdateProjectResourceConfigRequest struct {
 	// Specifies whether Zero Config Failover is enabled for this project.
 	FunctionZeroConfigFailover *bool `json:"functionZeroConfigFailover,omitempty"`
 	ElasticConcurrencyEnabled  *bool `json:"elasticConcurrencyEnabled,omitempty"`
+	IsNSNBDisabled             *bool `json:"isNSNBDisabled,omitempty"`
 }
 
 func (o *UpdateProjectResourceConfigRequest) GetBuildMachineType() *UpdateProjectBuildMachineTypeRequest {
@@ -337,6 +338,13 @@ func (o *UpdateProjectResourceConfigRequest) GetElasticConcurrencyEnabled() *boo
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *UpdateProjectResourceConfigRequest) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
 }
 
 // UpdateProjectIssuerModeRequest - team: `https://oidc.vercel.com/[team_slug]` global: `https://oidc.vercel.com`
@@ -4844,13 +4852,21 @@ func (e *UpdateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 }
 
 type UpdateProjectResourceConfigResponse struct {
+	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                      `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *UpdateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
+	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *UpdateProjectResourceConfigResponse) GetFluid() *bool {
@@ -4888,18 +4904,18 @@ func (o *UpdateProjectResourceConfigResponse) GetFunctionZeroConfigFailover() *b
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *UpdateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
-}
-
 func (o *UpdateProjectResourceConfigResponse) GetBuildMachineType() *UpdateProjectResourceConfigBuildMachineTypeResponse {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
 }
 
 // UpdateProjectRollbackDescription - Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
@@ -5060,13 +5076,21 @@ func (e *UpdateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 }
 
 type UpdateProjectDefaultResourceConfig struct {
+	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                        `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                     `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                     `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *UpdateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
+	IsNSNBDisabled             *bool                                                        `json:"isNSNBDisabled,omitempty"`
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *UpdateProjectDefaultResourceConfig) GetFluid() *bool {
@@ -5104,18 +5128,18 @@ func (o *UpdateProjectDefaultResourceConfig) GetFunctionZeroConfigFailover() *bo
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
-}
-
 func (o *UpdateProjectDefaultResourceConfig) GetBuildMachineType() *UpdateProjectDefaultResourceConfigBuildMachineType {
 	if o == nil {
 		return nil
 	}
 	return o.BuildMachineType
+}
+
+func (o *UpdateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsNSNBDisabled
 }
 
 type UpdateProjectSsoProtectionDeploymentTypeResponse string

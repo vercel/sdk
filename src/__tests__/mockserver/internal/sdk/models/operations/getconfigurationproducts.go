@@ -707,18 +707,18 @@ func (e *GetConfigurationProductsType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ValueAtBRANDAt446263 struct {
+type ValueAtBRANDAt447943 struct {
 }
 
 type GetConfigurationProductsValue struct {
-	AtBRANDAt446263 ValueAtBRANDAt446263 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 ValueAtBRANDAt447943 `json:"__@BRAND@447943"`
 }
 
-func (o *GetConfigurationProductsValue) GetAtBRANDAt446263() ValueAtBRANDAt446263 {
+func (o *GetConfigurationProductsValue) GetAtBRANDAt447943() ValueAtBRANDAt447943 {
 	if o == nil {
-		return ValueAtBRANDAt446263{}
+		return ValueAtBRANDAt447943{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type DisabledEnum string
@@ -1061,46 +1061,46 @@ func (e *TypeString5) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type MinLengthAtBRANDAt446263String2 struct {
+type MinLengthAtBRANDAt447943String2 struct {
 }
 
 type MinLengthString2 struct {
-	AtBRANDAt446263 MinLengthAtBRANDAt446263String2 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MinLengthAtBRANDAt447943String2 `json:"__@BRAND@447943"`
 }
 
-func (o *MinLengthString2) GetAtBRANDAt446263() MinLengthAtBRANDAt446263String2 {
+func (o *MinLengthString2) GetAtBRANDAt447943() MinLengthAtBRANDAt447943String2 {
 	if o == nil {
-		return MinLengthAtBRANDAt446263String2{}
+		return MinLengthAtBRANDAt447943String2{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type MaxLengthAtBRANDAt446263String2 struct {
+type MaxLengthAtBRANDAt447943String2 struct {
 }
 
 type MaxLengthString2 struct {
-	AtBRANDAt446263 MaxLengthAtBRANDAt446263String2 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MaxLengthAtBRANDAt447943String2 `json:"__@BRAND@447943"`
 }
 
-func (o *MaxLengthString2) GetAtBRANDAt446263() MaxLengthAtBRANDAt446263String2 {
+func (o *MaxLengthString2) GetAtBRANDAt447943() MaxLengthAtBRANDAt447943String2 {
 	if o == nil {
-		return MaxLengthAtBRANDAt446263String2{}
+		return MaxLengthAtBRANDAt447943String2{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type PatternAtBRANDAt446263String2 struct {
+type PatternAtBRANDAt447943String2 struct {
 }
 
 type PatternString2 struct {
-	AtBRANDAt446263 PatternAtBRANDAt446263String2 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 PatternAtBRANDAt447943String2 `json:"__@BRAND@447943"`
 }
 
-func (o *PatternString2) GetAtBRANDAt446263() PatternAtBRANDAt446263String2 {
+func (o *PatternString2) GetAtBRANDAt447943() PatternAtBRANDAt447943String2 {
 	if o == nil {
-		return PatternAtBRANDAt446263String2{}
+		return PatternAtBRANDAt447943String2{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type ItemsString2 struct {
@@ -1162,18 +1162,18 @@ func (o *ItemsString2) GetEnum() []string {
 	return o.Enum
 }
 
-type UIOptionValueAtBRANDAt4462632 struct {
+type UIOptionValueAtBRANDAt4479432 struct {
 }
 
 type UIOptionValue2 struct {
-	AtBRANDAt446263 UIOptionValueAtBRANDAt4462632 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 UIOptionValueAtBRANDAt4479432 `json:"__@BRAND@447943"`
 }
 
-func (o *UIOptionValue2) GetAtBRANDAt446263() UIOptionValueAtBRANDAt4462632 {
+func (o *UIOptionValue2) GetAtBRANDAt447943() UIOptionValueAtBRANDAt4479432 {
 	if o == nil {
-		return UIOptionValueAtBRANDAt4462632{}
+		return UIOptionValueAtBRANDAt4479432{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type UIOptionDisabledEnum4 string
@@ -1447,18 +1447,18 @@ func (o *UIOption8) GetHidden() *UIOptionHiddenUnion6 {
 	return o.Hidden
 }
 
-type UIOptionAtBRANDAt4462632 struct {
+type UIOptionAtBRANDAt4479432 struct {
 }
 
 type UIOption7 struct {
-	AtBRANDAt446263 UIOptionAtBRANDAt4462632 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 UIOptionAtBRANDAt4479432 `json:"__@BRAND@447943"`
 }
 
-func (o *UIOption7) GetAtBRANDAt446263() UIOptionAtBRANDAt4462632 {
+func (o *UIOption7) GetAtBRANDAt447943() UIOptionAtBRANDAt4479432 {
 	if o == nil {
-		return UIOptionAtBRANDAt4462632{}
+		return UIOptionAtBRANDAt4479432{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type UIOptionDisabledEnum3 string
@@ -2276,32 +2276,32 @@ func (o *UIFormattedValue8) GetExpr() string {
 	return o.Expr
 }
 
-type DefaultAtBRANDAt446263 struct {
+type DefaultAtBRANDAt447943 struct {
 }
 
 type Default struct {
-	AtBRANDAt446263 DefaultAtBRANDAt446263 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 DefaultAtBRANDAt447943 `json:"__@BRAND@447943"`
 }
 
-func (o *Default) GetAtBRANDAt446263() DefaultAtBRANDAt446263 {
+func (o *Default) GetAtBRANDAt447943() DefaultAtBRANDAt447943 {
 	if o == nil {
-		return DefaultAtBRANDAt446263{}
+		return DefaultAtBRANDAt447943{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type ExampleAtBRANDAt446263 struct {
+type ExampleAtBRANDAt447943 struct {
 }
 
 type Example struct {
-	AtBRANDAt446263 ExampleAtBRANDAt446263 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 ExampleAtBRANDAt447943 `json:"__@BRAND@447943"`
 }
 
-func (o *Example) GetAtBRANDAt446263() ExampleAtBRANDAt446263 {
+func (o *Example) GetAtBRANDAt447943() ExampleAtBRANDAt447943 {
 	if o == nil {
-		return ExampleAtBRANDAt446263{}
+		return ExampleAtBRANDAt447943{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type PropertiesMultiVercelRegion struct {
@@ -2481,18 +2481,18 @@ func (e *UIControlVercelRegion) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UIOptionValueAtBRANDAt4462631 struct {
+type UIOptionValueAtBRANDAt4479431 struct {
 }
 
 type UIOptionValue1 struct {
-	AtBRANDAt446263 UIOptionValueAtBRANDAt4462631 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 UIOptionValueAtBRANDAt4479431 `json:"__@BRAND@447943"`
 }
 
-func (o *UIOptionValue1) GetAtBRANDAt446263() UIOptionValueAtBRANDAt4462631 {
+func (o *UIOptionValue1) GetAtBRANDAt447943() UIOptionValueAtBRANDAt4479431 {
 	if o == nil {
-		return UIOptionValueAtBRANDAt4462631{}
+		return UIOptionValueAtBRANDAt4479431{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type UIOptionDisabledEnum2 string
@@ -2766,18 +2766,18 @@ func (o *UIOption5) GetHidden() *UIOptionHiddenUnion4 {
 	return o.Hidden
 }
 
-type UIOptionAtBRANDAt4462631 struct {
+type UIOptionAtBRANDAt4479431 struct {
 }
 
 type UIOption4 struct {
-	AtBRANDAt446263 UIOptionAtBRANDAt4462631 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 UIOptionAtBRANDAt4479431 `json:"__@BRAND@447943"`
 }
 
-func (o *UIOption4) GetAtBRANDAt446263() UIOptionAtBRANDAt4462631 {
+func (o *UIOption4) GetAtBRANDAt447943() UIOptionAtBRANDAt4479431 {
 	if o == nil {
-		return UIOptionAtBRANDAt4462631{}
+		return UIOptionAtBRANDAt4479431{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type UIOptionDisabledEnum1 string
@@ -3144,46 +3144,46 @@ func (u UIOptionUnion1) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UIOptionUnion1: all fields are null")
 }
 
-type MinLengthAtBRANDAt4462633 struct {
+type MinLengthAtBRANDAt4479433 struct {
 }
 
 type MinLength3 struct {
-	AtBRANDAt446263 MinLengthAtBRANDAt4462633 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MinLengthAtBRANDAt4479433 `json:"__@BRAND@447943"`
 }
 
-func (o *MinLength3) GetAtBRANDAt446263() MinLengthAtBRANDAt4462633 {
+func (o *MinLength3) GetAtBRANDAt447943() MinLengthAtBRANDAt4479433 {
 	if o == nil {
-		return MinLengthAtBRANDAt4462633{}
+		return MinLengthAtBRANDAt4479433{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type MaxLengthAtBRANDAt4462633 struct {
+type MaxLengthAtBRANDAt4479433 struct {
 }
 
 type MaxLength3 struct {
-	AtBRANDAt446263 MaxLengthAtBRANDAt4462633 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MaxLengthAtBRANDAt4479433 `json:"__@BRAND@447943"`
 }
 
-func (o *MaxLength3) GetAtBRANDAt446263() MaxLengthAtBRANDAt4462633 {
+func (o *MaxLength3) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479433 {
 	if o == nil {
-		return MaxLengthAtBRANDAt4462633{}
+		return MaxLengthAtBRANDAt4479433{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type PatternAtBRANDAt4462633 struct {
+type PatternAtBRANDAt4479433 struct {
 }
 
 type Pattern3 struct {
-	AtBRANDAt446263 PatternAtBRANDAt4462633 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 PatternAtBRANDAt4479433 `json:"__@BRAND@447943"`
 }
 
-func (o *Pattern3) GetAtBRANDAt446263() PatternAtBRANDAt4462633 {
+func (o *Pattern3) GetAtBRANDAt447943() PatternAtBRANDAt4479433 {
 	if o == nil {
-		return PatternAtBRANDAt4462633{}
+		return PatternAtBRANDAt4479433{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type UIReadOnlyEnum7 string
@@ -3837,46 +3837,46 @@ func (e *TypeString3) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type MinLengthAtBRANDAt446263String1 struct {
+type MinLengthAtBRANDAt447943String1 struct {
 }
 
 type MinLengthString1 struct {
-	AtBRANDAt446263 MinLengthAtBRANDAt446263String1 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MinLengthAtBRANDAt447943String1 `json:"__@BRAND@447943"`
 }
 
-func (o *MinLengthString1) GetAtBRANDAt446263() MinLengthAtBRANDAt446263String1 {
+func (o *MinLengthString1) GetAtBRANDAt447943() MinLengthAtBRANDAt447943String1 {
 	if o == nil {
-		return MinLengthAtBRANDAt446263String1{}
+		return MinLengthAtBRANDAt447943String1{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type MaxLengthAtBRANDAt446263String1 struct {
+type MaxLengthAtBRANDAt447943String1 struct {
 }
 
 type MaxLengthString1 struct {
-	AtBRANDAt446263 MaxLengthAtBRANDAt446263String1 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MaxLengthAtBRANDAt447943String1 `json:"__@BRAND@447943"`
 }
 
-func (o *MaxLengthString1) GetAtBRANDAt446263() MaxLengthAtBRANDAt446263String1 {
+func (o *MaxLengthString1) GetAtBRANDAt447943() MaxLengthAtBRANDAt447943String1 {
 	if o == nil {
-		return MaxLengthAtBRANDAt446263String1{}
+		return MaxLengthAtBRANDAt447943String1{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type PatternAtBRANDAt446263String1 struct {
+type PatternAtBRANDAt447943String1 struct {
 }
 
 type PatternString1 struct {
-	AtBRANDAt446263 PatternAtBRANDAt446263String1 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 PatternAtBRANDAt447943String1 `json:"__@BRAND@447943"`
 }
 
-func (o *PatternString1) GetAtBRANDAt446263() PatternAtBRANDAt446263String1 {
+func (o *PatternString1) GetAtBRANDAt447943() PatternAtBRANDAt447943String1 {
 	if o == nil {
-		return PatternAtBRANDAt446263String1{}
+		return PatternAtBRANDAt447943String1{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type ItemsString1 struct {
@@ -5124,46 +5124,46 @@ func (o *UIOption1) GetHidden() *UIOptionHiddenUnion1 {
 	return o.Hidden
 }
 
-type MinLengthAtBRANDAt4462632 struct {
+type MinLengthAtBRANDAt4479432 struct {
 }
 
 type MinLength2 struct {
-	AtBRANDAt446263 MinLengthAtBRANDAt4462632 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MinLengthAtBRANDAt4479432 `json:"__@BRAND@447943"`
 }
 
-func (o *MinLength2) GetAtBRANDAt446263() MinLengthAtBRANDAt4462632 {
+func (o *MinLength2) GetAtBRANDAt447943() MinLengthAtBRANDAt4479432 {
 	if o == nil {
-		return MinLengthAtBRANDAt4462632{}
+		return MinLengthAtBRANDAt4479432{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type MaxLengthAtBRANDAt4462632 struct {
+type MaxLengthAtBRANDAt4479432 struct {
 }
 
 type MaxLength2 struct {
-	AtBRANDAt446263 MaxLengthAtBRANDAt4462632 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MaxLengthAtBRANDAt4479432 `json:"__@BRAND@447943"`
 }
 
-func (o *MaxLength2) GetAtBRANDAt446263() MaxLengthAtBRANDAt4462632 {
+func (o *MaxLength2) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479432 {
 	if o == nil {
-		return MaxLengthAtBRANDAt4462632{}
+		return MaxLengthAtBRANDAt4479432{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type PatternAtBRANDAt4462632 struct {
+type PatternAtBRANDAt4479432 struct {
 }
 
 type Pattern2 struct {
-	AtBRANDAt446263 PatternAtBRANDAt4462632 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 PatternAtBRANDAt4479432 `json:"__@BRAND@447943"`
 }
 
-func (o *Pattern2) GetAtBRANDAt446263() PatternAtBRANDAt4462632 {
+func (o *Pattern2) GetAtBRANDAt447943() PatternAtBRANDAt4479432 {
 	if o == nil {
-		return PatternAtBRANDAt4462632{}
+		return PatternAtBRANDAt4479432{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type UIReadOnlyEnum5 string
@@ -7688,46 +7688,46 @@ func (e *UIControlInput1) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type MinLengthAtBRANDAt4462631 struct {
+type MinLengthAtBRANDAt4479431 struct {
 }
 
 type MinLength1 struct {
-	AtBRANDAt446263 MinLengthAtBRANDAt4462631 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MinLengthAtBRANDAt4479431 `json:"__@BRAND@447943"`
 }
 
-func (o *MinLength1) GetAtBRANDAt446263() MinLengthAtBRANDAt4462631 {
+func (o *MinLength1) GetAtBRANDAt447943() MinLengthAtBRANDAt4479431 {
 	if o == nil {
-		return MinLengthAtBRANDAt4462631{}
+		return MinLengthAtBRANDAt4479431{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type MaxLengthAtBRANDAt4462631 struct {
+type MaxLengthAtBRANDAt4479431 struct {
 }
 
 type MaxLength1 struct {
-	AtBRANDAt446263 MaxLengthAtBRANDAt4462631 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 MaxLengthAtBRANDAt4479431 `json:"__@BRAND@447943"`
 }
 
-func (o *MaxLength1) GetAtBRANDAt446263() MaxLengthAtBRANDAt4462631 {
+func (o *MaxLength1) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479431 {
 	if o == nil {
-		return MaxLengthAtBRANDAt4462631{}
+		return MaxLengthAtBRANDAt4479431{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
-type PatternAtBRANDAt4462631 struct {
+type PatternAtBRANDAt4479431 struct {
 }
 
 type Pattern1 struct {
-	AtBRANDAt446263 PatternAtBRANDAt4462631 `json:"__@BRAND@446263"`
+	AtBRANDAt447943 PatternAtBRANDAt4479431 `json:"__@BRAND@447943"`
 }
 
-func (o *Pattern1) GetAtBRANDAt446263() PatternAtBRANDAt4462631 {
+func (o *Pattern1) GetAtBRANDAt447943() PatternAtBRANDAt4479431 {
 	if o == nil {
-		return PatternAtBRANDAt4462631{}
+		return PatternAtBRANDAt4479431{}
 	}
-	return o.AtBRANDAt446263
+	return o.AtBRANDAt447943
 }
 
 type UIReadOnlyEnum1 string

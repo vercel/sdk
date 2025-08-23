@@ -5893,6 +5893,9 @@
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -6011,6 +6014,9 @@
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -13047,11 +13053,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
+                            "error",
+                            "timeout",
                             "skipped",
                             "pending",
-                            "ready",
-                            "error",
-                            "timeout"
+                            "ready"
                           ]
                         },
                         "startedAt": {
@@ -13230,8 +13236,8 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
@@ -14300,15 +14306,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -14797,8 +14803,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "append",
                                         "set",
+                                        "append",
                                         "delete"
                                       ]
                                     },
@@ -14928,12 +14934,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "error",
                                   "filesystem",
+                                  "error",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -15188,8 +15194,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15241,8 +15247,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15295,8 +15301,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -16209,11 +16215,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
+                            "error",
+                            "timeout",
                             "skipped",
                             "pending",
-                            "ready",
-                            "error",
-                            "timeout"
+                            "ready"
                           ]
                         },
                         "startedAt": {
@@ -16392,8 +16398,8 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
@@ -16458,10 +16464,10 @@
                         "name": {
                           "type": "string"
                         },
-                        "avatar": {
+                        "slug": {
                           "type": "string"
                         },
-                        "slug": {
+                        "avatar": {
                           "type": "string"
                         }
                       },
@@ -17944,8 +17950,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "append",
                                         "set",
+                                        "append",
                                         "delete"
                                       ]
                                     },
@@ -18075,12 +18081,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "error",
                                   "filesystem",
+                                  "error",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -18159,8 +18165,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -18212,8 +18218,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -18266,8 +18272,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -18460,15 +18466,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -28225,34 +28231,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "default": {
@@ -28935,34 +28941,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "default": {
@@ -29120,34 +29126,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@446263": {
+                                                "__@BRAND@447943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@446263"
+                                                "__@BRAND@447943"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@446263": {
+                                                "__@BRAND@447943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@446263"
+                                                "__@BRAND@447943"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@446263": {
+                                                "__@BRAND@447943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@446263"
+                                                "__@BRAND@447943"
                                               ]
                                             },
                                             "default": {
@@ -29458,12 +29464,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@446263": {
+                                                  "__@BRAND@447943": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@446263"
+                                                  "__@BRAND@447943"
                                                 ]
                                               },
                                               {
@@ -29471,12 +29477,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@446263": {
+                                                      "__@BRAND@447943": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@446263"
+                                                      "__@BRAND@447943"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -29545,34 +29551,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "default": {
@@ -29730,34 +29736,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@446263": {
+                                                "__@BRAND@447943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@446263"
+                                                "__@BRAND@447943"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@446263": {
+                                                "__@BRAND@447943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@446263"
+                                                "__@BRAND@447943"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@446263": {
+                                                "__@BRAND@447943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@446263"
+                                                "__@BRAND@447943"
                                               ]
                                             },
                                             "default": {
@@ -29846,12 +29852,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@446263": {
+                                                  "__@BRAND@447943": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@446263"
+                                                  "__@BRAND@447943"
                                                 ]
                                               },
                                               {
@@ -29859,12 +29865,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@446263": {
+                                                      "__@BRAND@447943": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@446263"
+                                                      "__@BRAND@447943"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30050,12 +30056,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@446263": {
+                                              "__@BRAND@447943": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@446263"
+                                              "__@BRAND@447943"
                                             ]
                                           },
                                           "type": "array"
@@ -30064,12 +30070,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@446263": {
+                                              "__@BRAND@447943": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@446263"
+                                              "__@BRAND@447943"
                                             ]
                                           },
                                           "type": "array"
@@ -30088,12 +30094,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@446263": {
+                                            "__@BRAND@447943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@446263"
+                                            "__@BRAND@447943"
                                           ]
                                         },
                                         "disabled": {
@@ -33977,6 +33983,9 @@
                           },
                           "resourceConfig": {
                             "properties": {
+                              "elasticConcurrencyEnabled": {
+                                "type": "boolean"
+                              },
                               "fluid": {
                                 "type": "boolean"
                               },
@@ -34000,15 +34009,15 @@
                               "functionZeroConfigFailover": {
                                 "type": "boolean"
                               },
-                              "elasticConcurrencyEnabled": {
-                                "type": "boolean"
-                              },
                               "buildMachineType": {
                                 "type": "string",
                                 "enum": [
                                   "enhanced",
                                   "turbo"
                                 ]
+                              },
+                              "isNSNBDisabled": {
+                                "type": "boolean"
                               }
                             },
                             "type": "object",
@@ -34095,6 +34104,9 @@
                           },
                           "defaultResourceConfig": {
                             "properties": {
+                              "elasticConcurrencyEnabled": {
+                                "type": "boolean"
+                              },
                               "fluid": {
                                 "type": "boolean"
                               },
@@ -34118,15 +34130,15 @@
                               "functionZeroConfigFailover": {
                                 "type": "boolean"
                               },
-                              "elasticConcurrencyEnabled": {
-                                "type": "boolean"
-                              },
                               "buildMachineType": {
                                 "type": "string",
                                 "enum": [
                                   "enhanced",
                                   "turbo"
                                 ]
+                              },
+                              "isNSNBDisabled": {
+                                "type": "boolean"
                               }
                             },
                             "type": "object",
@@ -36321,6 +36333,20 @@
             }
           },
           {
+            "name": "elasticConcurrencyEnabled",
+            "description": "Filter results by projects with elastic concurrency enabled",
+            "in": "query",
+            "schema": {
+              "description": "Filter results by projects with elastic concurrency enabled",
+              "type": "string",
+              "enum": [
+                "1",
+                "0"
+              ],
+              "example": "1"
+            }
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -36666,10 +36692,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -37671,17 +37697,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
-                              "type": "number"
-                            },
                             "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -37689,6 +37715,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -37721,9 +37750,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -38147,6 +38173,9 @@
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -38265,6 +38294,9 @@
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -38300,8 +38332,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -38638,408 +38670,6 @@
                     },
                     "permissions": {
                       "properties": {
-                        "aliasProject": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "aliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "buildMachine": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "productionAliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "connectConfigurationLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "dataCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deployment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentBuildLogs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckReRunFromProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentProductionGit": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPrivate": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPromote": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentRollback": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "edgeCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "environments": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logsPreset": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "passwordProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "optionsAllowlist": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "job": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "observabilityData": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandBuild": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandConcurrency": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "project": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFromV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAccessGroup": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsSampling": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheckRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentHook": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainMove": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainCheckConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVars": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsProduction": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsUnownedByIntegration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFlags": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectId": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectIntegrationConfiguration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMember": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMonitoring": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectPermissions": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransfer": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransferOut": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCase": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCaseComment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentExpiration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectRollingRelease": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTier": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectOIDCToken": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "seawallConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "skewProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "analytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "trustedIps": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "v0Chat": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "webAnalytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sharedEnvVarConnection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sonar": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -39909,6 +39539,408 @@
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
+                        },
+                        "aliasProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "productionAliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectConfigurationLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "dataCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deployment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckReRunFromProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentProductionGit": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPrivate": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPromote": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentRollback": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "edgeCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "environments": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logsPreset": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "passwordProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "optionsAllowlist": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "job": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "project": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFromV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAccessGroup": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsSampling": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheckRun": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentHook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainCheckConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVars": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsProduction": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsUnownedByIntegration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectId": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectIntegrationConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMember": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMonitoring": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectPermissions": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransfer": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransferOut": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCase": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCaseComment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentExpiration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectRollingRelease": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTier": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "seawallConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "skewProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "analytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "webAnalytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sharedEnvVarConnection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sonar": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
                         }
                       },
                       "type": "object"
@@ -40030,11 +40062,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -40074,11 +40106,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -40707,6 +40739,9 @@
                           "enhanced",
                           "turbo"
                         ]
+                      },
+                      "isNSNBDisabled": {
+                        "type": "boolean"
                       }
                     },
                     "additionalProperties": false
@@ -42527,6 +42562,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -42550,15 +42588,15 @@
                         "functionZeroConfigFailover": {
                           "type": "boolean"
                         },
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -42645,6 +42683,9 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -42668,15 +42709,15 @@
                         "functionZeroConfigFailover": {
                           "type": "boolean"
                         },
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -46554,6 +46595,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -46577,15 +46621,15 @@
                         "functionZeroConfigFailover": {
                           "type": "boolean"
                         },
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -46672,6 +46716,9 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -46695,15 +46742,15 @@
                         "functionZeroConfigFailover": {
                           "type": "boolean"
                         },
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "buildMachineType": {
                           "type": "string",
                           "enum": [
                             "enhanced",
                             "turbo"
                           ]
+                        },
+                        "isNSNBDisabled": {
+                          "type": "boolean"
                         }
                       },
                       "type": "object",
@@ -49017,6 +49064,9 @@
                         ]
                       },
                       "elasticConcurrencyEnabled": {
+                        "type": "boolean"
+                      },
+                      "isNSNBDisabled": {
                         "type": "boolean"
                       }
                     },
@@ -52235,10 +52285,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -52653,10 +52703,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -53083,10 +53133,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -53647,10 +53697,10 @@
                               "type": "string",
                               "enum": [
                                 "system",
+                                "secret",
                                 "encrypted",
                                 "plain",
-                                "sensitive",
-                                "secret"
+                                "sensitive"
                               ]
                             },
                             "sunsetSecretId": {
@@ -54054,10 +54104,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -56165,10 +56215,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -56580,10 +56630,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -56990,10 +57040,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -57508,10 +57558,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {

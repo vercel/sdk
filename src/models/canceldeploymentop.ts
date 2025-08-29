@@ -127,11 +127,11 @@ export type CancelDeploymentProjectSettings = {
 };
 
 export const CancelDeploymentDeploymentsStatus = {
-  Error: "error",
-  Timeout: "timeout",
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
+  Error: "error",
+  Timeout: "timeout",
 } as const;
 export type CancelDeploymentDeploymentsStatus = ClosedEnum<
   typeof CancelDeploymentDeploymentsStatus
@@ -229,8 +229,8 @@ export type CancelDeploymentCreator = {
 };
 
 export const CancelDeploymentDeploymentsReadyState = {
-  Error: "ERROR",
   Building: "BUILDING",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -268,8 +268,8 @@ export type CancelDeploymentStatus = ClosedEnum<typeof CancelDeploymentStatus>;
 export type CancelDeploymentTeam = {
   id: string;
   name: string;
-  slug: string;
   avatar?: string | undefined;
+  slug: string;
 };
 
 export type CancelDeploymentCustomEnvironment2 = {
@@ -891,6 +891,7 @@ export type CancelDeploymentFunctions = {
   experimentalTriggers?:
     | Array<CancelDeploymentExperimentalTriggers>
     | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 export const CancelDeploymentPlan = {
@@ -907,12 +908,12 @@ export type CancelDeploymentRoutes3 = {
 };
 
 export const RoutesHandle = {
-  Filesystem: "filesystem",
   Error: "error",
+  Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
-  Resource: "resource",
   Rewrite: "rewrite",
+  Resource: "resource",
 } as const;
 export type RoutesHandle = ClosedEnum<typeof RoutesHandle>;
 
@@ -1081,8 +1082,8 @@ export type CancelDeploymentRoutesType = ClosedEnum<
 >;
 
 export const RoutesOp = {
-  Set: "set",
   Append: "append",
+  Set: "set",
   Delete: "delete",
 } as const;
 export type RoutesOp = ClosedEnum<typeof RoutesOp>;
@@ -1167,8 +1168,8 @@ export type CancelDeploymentGitRepoDeploymentsResponseType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoDeploymentsResponseOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CancelDeploymentGitRepoDeploymentsResponseOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoDeploymentsResponseOwnerType
@@ -1195,8 +1196,8 @@ export type CancelDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoDeploymentsOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CancelDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoDeploymentsOwnerType
@@ -1223,8 +1224,8 @@ export type CancelDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CancelDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoOwnerType
@@ -1342,16 +1343,16 @@ export type CancelDeploymentMicrofrontends =
   | CancelDeploymentMicrofrontends1;
 
 export const CancelDeploymentFunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type CancelDeploymentFunctionType = ClosedEnum<
   typeof CancelDeploymentFunctionType
 >;
 
 export const CancelDeploymentFunctionMemoryType = {
-  StandardLegacy: "standard_legacy",
   Standard: "standard",
+  StandardLegacy: "standard_legacy",
   Performance: "performance",
 } as const;
 export type CancelDeploymentFunctionMemoryType = ClosedEnum<
@@ -2618,16 +2619,16 @@ export const CancelDeploymentTeam$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  slug: z.string(),
   avatar: z.string().optional(),
+  slug: z.string(),
 });
 
 /** @internal */
 export type CancelDeploymentTeam$Outbound = {
   id: string;
   name: string;
-  slug: string;
   avatar?: string | undefined;
+  slug: string;
 };
 
 /** @internal */
@@ -2638,8 +2639,8 @@ export const CancelDeploymentTeam$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  slug: z.string(),
   avatar: z.string().optional(),
+  slug: z.string(),
 });
 
 /**
@@ -5552,6 +5553,7 @@ export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => CancelDeploymentExperimentalTriggers$inboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /** @internal */
@@ -5565,6 +5567,7 @@ export type CancelDeploymentFunctions$Outbound = {
   experimentalTriggers?:
     | Array<CancelDeploymentExperimentalTriggers$Outbound>
     | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 /** @internal */
@@ -5582,6 +5585,7 @@ export const CancelDeploymentFunctions$outboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => CancelDeploymentExperimentalTriggers$outboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /**

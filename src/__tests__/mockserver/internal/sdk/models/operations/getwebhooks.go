@@ -284,6 +284,17 @@ type GetWebhooksResponseBody2 struct {
 	ProjectIds []string `json:"projectIds,omitempty"`
 }
 
+func (g GetWebhooksResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetWebhooksResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"events", "id", "url", "ownerId", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetWebhooksResponseBody2) GetEvents() []GetWebhooksEvent2 {
 	if o == nil {
 		return []GetWebhooksEvent2{}
@@ -508,6 +519,17 @@ type ProjectsMetadatum struct {
 	Name             string                `json:"name"`
 	Framework        *GetWebhooksFramework `json:"framework,omitempty"`
 	LatestDeployment *string               `json:"latestDeployment,omitempty"`
+}
+
+func (p ProjectsMetadatum) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectsMetadatum) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ProjectsMetadatum) GetID() string {
@@ -784,6 +806,17 @@ type GetWebhooksResponseBody1 struct {
 	ProjectIds []string `json:"projectIds,omitempty"`
 }
 
+func (g GetWebhooksResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetWebhooksResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectsMetadata", "events", "id", "url", "ownerId", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetWebhooksResponseBody1) GetProjectsMetadata() []ProjectsMetadatum {
 	if o == nil {
 		return nil
@@ -875,14 +908,14 @@ func CreateGetWebhooksResponseBodyArrayOfGetWebhooksResponseBody2(arrayOfGetWebh
 func (u *GetWebhooksResponseBody) UnmarshalJSON(data []byte) error {
 
 	var arrayOfGetWebhooksResponseBody1 []GetWebhooksResponseBody1 = []GetWebhooksResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody1, "", true, nil); err == nil {
 		u.ArrayOfGetWebhooksResponseBody1 = arrayOfGetWebhooksResponseBody1
 		u.Type = GetWebhooksResponseBodyTypeArrayOfGetWebhooksResponseBody1
 		return nil
 	}
 
 	var arrayOfGetWebhooksResponseBody2 []GetWebhooksResponseBody2 = []GetWebhooksResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody2, "", true, nil); err == nil {
 		u.ArrayOfGetWebhooksResponseBody2 = arrayOfGetWebhooksResponseBody2
 		u.Type = GetWebhooksResponseBodyTypeArrayOfGetWebhooksResponseBody2
 		return nil

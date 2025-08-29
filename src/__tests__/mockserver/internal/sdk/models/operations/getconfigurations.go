@@ -200,6 +200,17 @@ type GetConfigurationsIntegration struct {
 	TagIds              []TagID  `json:"tagIds,omitempty"`
 }
 
+func (g GetConfigurationsIntegration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationsIntegration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "icon", "isLegacy"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetConfigurationsIntegration) GetName() string {
 	if o == nil {
 		return ""
@@ -246,10 +257,11 @@ func (o *GetConfigurationsIntegration) GetTagIds() []TagID {
 type GetConfigurationsSource2 string
 
 const (
-	GetConfigurationsSource2Marketplace  GetConfigurationsSource2 = "marketplace"
-	GetConfigurationsSource2DeployButton GetConfigurationsSource2 = "deploy-button"
-	GetConfigurationsSource2External     GetConfigurationsSource2 = "external"
-	GetConfigurationsSource2V0           GetConfigurationsSource2 = "v0"
+	GetConfigurationsSource2Marketplace    GetConfigurationsSource2 = "marketplace"
+	GetConfigurationsSource2DeployButton   GetConfigurationsSource2 = "deploy-button"
+	GetConfigurationsSource2External       GetConfigurationsSource2 = "external"
+	GetConfigurationsSource2V0             GetConfigurationsSource2 = "v0"
+	GetConfigurationsSource2ResourceClaims GetConfigurationsSource2 = "resource-claims"
 )
 
 func (e GetConfigurationsSource2) ToPointer() *GetConfigurationsSource2 {
@@ -268,6 +280,8 @@ func (e *GetConfigurationsSource2) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "v0":
+		fallthrough
+	case "resource-claims":
 		*e = GetConfigurationsSource2(v)
 		return nil
 	default:
@@ -399,6 +413,17 @@ type GetConfigurationsIntegrationConfiguration2 struct {
 	DisabledReason    *GetConfigurationsDisabledReason2 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationsInstallationTypeResponse2 `json:"installationType,omitempty"`
+}
+
+func (g GetConfigurationsIntegrationConfiguration2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationsIntegrationConfiguration2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"integration", "createdAt", "id", "integrationId", "ownerId", "slug", "type", "updatedAt", "userId", "scopes"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetConfigurationsIntegrationConfiguration2) GetIntegration() GetConfigurationsIntegration {
@@ -538,10 +563,11 @@ func (o *GetConfigurationsIntegrationConfiguration2) GetInstallationType() *GetC
 type GetConfigurationsSource1 string
 
 const (
-	GetConfigurationsSource1Marketplace  GetConfigurationsSource1 = "marketplace"
-	GetConfigurationsSource1DeployButton GetConfigurationsSource1 = "deploy-button"
-	GetConfigurationsSource1External     GetConfigurationsSource1 = "external"
-	GetConfigurationsSource1V0           GetConfigurationsSource1 = "v0"
+	GetConfigurationsSource1Marketplace    GetConfigurationsSource1 = "marketplace"
+	GetConfigurationsSource1DeployButton   GetConfigurationsSource1 = "deploy-button"
+	GetConfigurationsSource1External       GetConfigurationsSource1 = "external"
+	GetConfigurationsSource1V0             GetConfigurationsSource1 = "v0"
+	GetConfigurationsSource1ResourceClaims GetConfigurationsSource1 = "resource-claims"
 )
 
 func (e GetConfigurationsSource1) ToPointer() *GetConfigurationsSource1 {
@@ -560,6 +586,8 @@ func (e *GetConfigurationsSource1) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "v0":
+		fallthrough
+	case "resource-claims":
 		*e = GetConfigurationsSource1(v)
 		return nil
 	default:
@@ -691,6 +719,17 @@ type GetConfigurationsIntegrationConfiguration1 struct {
 	DisabledReason    *GetConfigurationsDisabledReason1 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationsInstallationTypeResponse1 `json:"installationType,omitempty"`
+}
+
+func (g GetConfigurationsIntegrationConfiguration1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationsIntegrationConfiguration1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetConfigurationsIntegrationConfiguration1) GetCompletedAt() *float64 {
@@ -855,14 +894,14 @@ func CreateGetConfigurationsResponseBodyArrayOfGetConfigurationsIntegrationConfi
 func (u *GetConfigurationsResponseBody) UnmarshalJSON(data []byte) error {
 
 	var arrayOfGetConfigurationsIntegrationConfiguration1 []GetConfigurationsIntegrationConfiguration1 = []GetConfigurationsIntegrationConfiguration1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsIntegrationConfiguration1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsIntegrationConfiguration1, "", true, nil); err == nil {
 		u.ArrayOfGetConfigurationsIntegrationConfiguration1 = arrayOfGetConfigurationsIntegrationConfiguration1
 		u.Type = GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration1
 		return nil
 	}
 
 	var arrayOfGetConfigurationsIntegrationConfiguration2 []GetConfigurationsIntegrationConfiguration2 = []GetConfigurationsIntegrationConfiguration2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsIntegrationConfiguration2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetConfigurationsIntegrationConfiguration2, "", true, nil); err == nil {
 		u.ArrayOfGetConfigurationsIntegrationConfiguration2 = arrayOfGetConfigurationsIntegrationConfiguration2
 		u.Type = GetConfigurationsResponseBodyTypeArrayOfGetConfigurationsIntegrationConfiguration2
 		return nil

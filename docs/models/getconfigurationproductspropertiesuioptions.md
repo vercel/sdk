@@ -16,7 +16,7 @@ const value: models.UiOptions1 = {
 
 ```typescript
 const value: models.UiOptions2 = {
-  atBRANDAt447943: {},
+  atBRANDAt467029: {},
 };
 ```
 
@@ -25,7 +25,7 @@ const value: models.UiOptions2 = {
 ```typescript
 const value: models.UiOptions3 = {
   value: {
-    atBRANDAt447943: {},
+    atBRANDAt467029: {},
   },
 };
 ```

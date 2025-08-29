@@ -6296,3 +6296,34 @@ workflows:
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
+  - workflowId: get_/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans
+    steps:
+      - stepId: test
+        operationId: get_/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans
+        parameters:
+          - name: integrationIdOrSlug
+            in: path
+            value: <value>
+          - name: productIdOrSlug
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "plans": [
+                  {
+                    "type": "prepayment",
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "scope": "resource",
+                    "description": "cope unless hierarchy versus ouch more regarding tabulate",
+                    "paymentMethodRequired": false
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true

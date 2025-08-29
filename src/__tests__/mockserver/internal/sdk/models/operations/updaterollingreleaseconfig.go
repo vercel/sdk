@@ -49,6 +49,17 @@ type UpdateRollingReleaseConfigStage struct {
 	Duration *float64 `json:"duration,omitempty"`
 }
 
+func (u UpdateRollingReleaseConfigStage) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRollingReleaseConfigStage) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"targetPercentage"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateRollingReleaseConfigStage) GetTargetPercentage() float64 {
 	if o == nil {
 		return 0.0
@@ -74,6 +85,17 @@ type UpdateRollingReleaseConfigRollingRelease struct {
 	Stages []UpdateRollingReleaseConfigStage `json:"stages,omitempty"`
 }
 
+func (u UpdateRollingReleaseConfigRollingRelease) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRollingReleaseConfigRollingRelease) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateRollingReleaseConfigRollingRelease) GetStages() []UpdateRollingReleaseConfigStage {
 	if o == nil {
 		return nil
@@ -85,6 +107,17 @@ type UpdateRollingReleaseConfigResponseBody2 struct {
 	RollingRelease *UpdateRollingReleaseConfigRollingRelease `json:"rollingRelease"`
 }
 
+func (u UpdateRollingReleaseConfigResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRollingReleaseConfigResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"rollingRelease"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateRollingReleaseConfigResponseBody2) GetRollingRelease() *UpdateRollingReleaseConfigRollingRelease {
 	if o == nil {
 		return nil
@@ -94,6 +127,17 @@ func (o *UpdateRollingReleaseConfigResponseBody2) GetRollingRelease() *UpdateRol
 
 type UpdateRollingReleaseConfigResponseBody1 struct {
 	RollingRelease any `json:"rollingRelease"`
+}
+
+func (u UpdateRollingReleaseConfigResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateRollingReleaseConfigResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"rollingRelease"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateRollingReleaseConfigResponseBody1) GetRollingRelease() any {
@@ -138,14 +182,14 @@ func CreateUpdateRollingReleaseConfigResponseBodyUpdateRollingReleaseConfigRespo
 func (u *UpdateRollingReleaseConfigResponseBody) UnmarshalJSON(data []byte) error {
 
 	var updateRollingReleaseConfigResponseBody1 UpdateRollingReleaseConfigResponseBody1 = UpdateRollingReleaseConfigResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &updateRollingReleaseConfigResponseBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateRollingReleaseConfigResponseBody1, "", true, nil); err == nil {
 		u.UpdateRollingReleaseConfigResponseBody1 = &updateRollingReleaseConfigResponseBody1
 		u.Type = UpdateRollingReleaseConfigResponseBodyTypeUpdateRollingReleaseConfigResponseBody1
 		return nil
 	}
 
 	var updateRollingReleaseConfigResponseBody2 UpdateRollingReleaseConfigResponseBody2 = UpdateRollingReleaseConfigResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &updateRollingReleaseConfigResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateRollingReleaseConfigResponseBody2, "", true, nil); err == nil {
 		u.UpdateRollingReleaseConfigResponseBody2 = &updateRollingReleaseConfigResponseBody2
 		u.Type = UpdateRollingReleaseConfigResponseBodyTypeUpdateRollingReleaseConfigResponseBody2
 		return nil

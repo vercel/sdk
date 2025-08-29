@@ -191,6 +191,17 @@ func (o *EditProjectEnvRequest) GetRequestBody() EditProjectEnvRequestBody {
 type EditProjectEnvResponseBody2 struct {
 }
 
+func (e EditProjectEnvResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type EditProjectEnvResponseBodyTargetEnum string
 
 const (
@@ -255,14 +266,14 @@ func CreateEditProjectEnvTargetUnionEditProjectEnvResponseBodyTargetEnum(editPro
 func (u *EditProjectEnvTargetUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = EditProjectEnvTargetUnionTypeArrayOfStr
 		return nil
 	}
 
 	var editProjectEnvResponseBodyTargetEnum EditProjectEnvResponseBodyTargetEnum = EditProjectEnvResponseBodyTargetEnum("")
-	if err := utils.UnmarshalJSON(data, &editProjectEnvResponseBodyTargetEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvResponseBodyTargetEnum, "", true, nil); err == nil {
 		u.EditProjectEnvResponseBodyTargetEnum = &editProjectEnvResponseBodyTargetEnum
 		u.Type = EditProjectEnvTargetUnionTypeEditProjectEnvResponseBodyTargetEnum
 		return nil
@@ -346,6 +357,17 @@ type EditProjectEnvContentHintFlagsConnectionString struct {
 	ProjectID string                                  `json:"projectId"`
 }
 
+func (e EditProjectEnvContentHintFlagsConnectionString) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintFlagsConnectionString) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintFlagsConnectionString) GetType() EditProjectEnvTypeFlagsConnectionString {
 	if o == nil {
 		return EditProjectEnvTypeFlagsConnectionString("")
@@ -389,6 +411,17 @@ type EditProjectEnvContentHintIntegrationStoreSecret struct {
 	IntegrationID              string                                   `json:"integrationId"`
 	IntegrationProductID       string                                   `json:"integrationProductId"`
 	IntegrationConfigurationID string                                   `json:"integrationConfigurationId"`
+}
+
+func (e EditProjectEnvContentHintIntegrationStoreSecret) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintIntegrationStoreSecret) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvContentHintIntegrationStoreSecret) GetType() EditProjectEnvTypeIntegrationStoreSecret {
@@ -454,6 +487,17 @@ type EditProjectEnvContentHintPostgresURLNoSsl struct {
 	StoreID string                             `json:"storeId"`
 }
 
+func (e EditProjectEnvContentHintPostgresURLNoSsl) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresURLNoSsl) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintPostgresURLNoSsl) GetType() EditProjectEnvTypePostgresURLNoSsl {
 	if o == nil {
 		return EditProjectEnvTypePostgresURLNoSsl("")
@@ -494,6 +538,17 @@ func (e *EditProjectEnvTypePostgresDatabase) UnmarshalJSON(data []byte) error {
 type EditProjectEnvContentHintPostgresDatabase struct {
 	Type    EditProjectEnvTypePostgresDatabase `json:"type"`
 	StoreID string                             `json:"storeId"`
+}
+
+func (e EditProjectEnvContentHintPostgresDatabase) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresDatabase) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvContentHintPostgresDatabase) GetType() EditProjectEnvTypePostgresDatabase {
@@ -538,6 +593,17 @@ type EditProjectEnvContentHintPostgresPassword struct {
 	StoreID string                             `json:"storeId"`
 }
 
+func (e EditProjectEnvContentHintPostgresPassword) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresPassword) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintPostgresPassword) GetType() EditProjectEnvTypePostgresPassword {
 	if o == nil {
 		return EditProjectEnvTypePostgresPassword("")
@@ -578,6 +644,17 @@ func (e *EditProjectEnvTypePostgresHost) UnmarshalJSON(data []byte) error {
 type EditProjectEnvContentHintPostgresHost struct {
 	Type    EditProjectEnvTypePostgresHost `json:"type"`
 	StoreID string                         `json:"storeId"`
+}
+
+func (e EditProjectEnvContentHintPostgresHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvContentHintPostgresHost) GetType() EditProjectEnvTypePostgresHost {
@@ -622,6 +699,17 @@ type EditProjectEnvContentHintPostgresUser struct {
 	StoreID string                         `json:"storeId"`
 }
 
+func (e EditProjectEnvContentHintPostgresUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintPostgresUser) GetType() EditProjectEnvTypePostgresUser {
 	if o == nil {
 		return EditProjectEnvTypePostgresUser("")
@@ -662,6 +750,17 @@ func (e *EditProjectEnvTypePostgresPrismaURL) UnmarshalJSON(data []byte) error {
 type EditProjectEnvContentHintPostgresPrismaURL struct {
 	Type    EditProjectEnvTypePostgresPrismaURL `json:"type"`
 	StoreID string                              `json:"storeId"`
+}
+
+func (e EditProjectEnvContentHintPostgresPrismaURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresPrismaURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvContentHintPostgresPrismaURL) GetType() EditProjectEnvTypePostgresPrismaURL {
@@ -706,6 +805,17 @@ type EditProjectEnvContentHintPostgresURLNonPooling struct {
 	StoreID string                                  `json:"storeId"`
 }
 
+func (e EditProjectEnvContentHintPostgresURLNonPooling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresURLNonPooling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintPostgresURLNonPooling) GetType() EditProjectEnvTypePostgresURLNonPooling {
 	if o == nil {
 		return EditProjectEnvTypePostgresURLNonPooling("")
@@ -746,6 +856,17 @@ func (e *EditProjectEnvTypePostgresURL) UnmarshalJSON(data []byte) error {
 type EditProjectEnvContentHintPostgresURL struct {
 	Type    EditProjectEnvTypePostgresURL `json:"type"`
 	StoreID string                        `json:"storeId"`
+}
+
+func (e EditProjectEnvContentHintPostgresURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintPostgresURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvContentHintPostgresURL) GetType() EditProjectEnvTypePostgresURL {
@@ -790,6 +911,17 @@ type EditProjectEnvContentHintBlobReadWriteToken struct {
 	StoreID string                               `json:"storeId"`
 }
 
+func (e EditProjectEnvContentHintBlobReadWriteToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintBlobReadWriteToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintBlobReadWriteToken) GetType() EditProjectEnvTypeBlobReadWriteToken {
 	if o == nil {
 		return EditProjectEnvTypeBlobReadWriteToken("")
@@ -830,6 +962,17 @@ func (e *EditProjectEnvTypeRedisRestAPIReadOnlyToken) UnmarshalJSON(data []byte)
 type EditProjectEnvContentHintRedisRestAPIReadOnlyToken struct {
 	Type    EditProjectEnvTypeRedisRestAPIReadOnlyToken `json:"type"`
 	StoreID string                                      `json:"storeId"`
+}
+
+func (e EditProjectEnvContentHintRedisRestAPIReadOnlyToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintRedisRestAPIReadOnlyToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvContentHintRedisRestAPIReadOnlyToken) GetType() EditProjectEnvTypeRedisRestAPIReadOnlyToken {
@@ -874,6 +1017,17 @@ type EditProjectEnvContentHintRedisRestAPIToken struct {
 	StoreID string                              `json:"storeId"`
 }
 
+func (e EditProjectEnvContentHintRedisRestAPIToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintRedisRestAPIToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintRedisRestAPIToken) GetType() EditProjectEnvTypeRedisRestAPIToken {
 	if o == nil {
 		return EditProjectEnvTypeRedisRestAPIToken("")
@@ -916,6 +1070,17 @@ type EditProjectEnvContentHintRedisRestAPIURL struct {
 	StoreID string                            `json:"storeId"`
 }
 
+func (e EditProjectEnvContentHintRedisRestAPIURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintRedisRestAPIURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvContentHintRedisRestAPIURL) GetType() EditProjectEnvTypeRedisRestAPIURL {
 	if o == nil {
 		return EditProjectEnvTypeRedisRestAPIURL("")
@@ -956,6 +1121,17 @@ func (e *EditProjectEnvTypeRedisURL) UnmarshalJSON(data []byte) error {
 type EditProjectEnvContentHintRedisURL struct {
 	Type    EditProjectEnvTypeRedisURL `json:"type"`
 	StoreID string                     `json:"storeId"`
+}
+
+func (e EditProjectEnvContentHintRedisURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvContentHintRedisURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvContentHintRedisURL) GetType() EditProjectEnvTypeRedisURL {
@@ -1149,108 +1325,108 @@ func CreateEditProjectEnvContentHintUnionEditProjectEnvContentHintFlagsConnectio
 
 func (u *EditProjectEnvContentHintUnion) UnmarshalJSON(data []byte) error {
 
-	var editProjectEnvContentHintPostgresURLNonPooling EditProjectEnvContentHintPostgresURLNonPooling = EditProjectEnvContentHintPostgresURLNonPooling{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresURLNonPooling, "", true, true); err == nil {
-		u.EditProjectEnvContentHintPostgresURLNonPooling = &editProjectEnvContentHintPostgresURLNonPooling
-		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresURLNonPooling
+	var editProjectEnvContentHintIntegrationStoreSecret EditProjectEnvContentHintIntegrationStoreSecret = EditProjectEnvContentHintIntegrationStoreSecret{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintIntegrationStoreSecret, "", true, nil); err == nil {
+		u.EditProjectEnvContentHintIntegrationStoreSecret = &editProjectEnvContentHintIntegrationStoreSecret
+		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintIntegrationStoreSecret
 		return nil
 	}
 
-	var editProjectEnvContentHintPostgresPassword EditProjectEnvContentHintPostgresPassword = EditProjectEnvContentHintPostgresPassword{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresPassword, "", true, true); err == nil {
-		u.EditProjectEnvContentHintPostgresPassword = &editProjectEnvContentHintPostgresPassword
-		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresPassword
+	var editProjectEnvContentHintRedisURL EditProjectEnvContentHintRedisURL = EditProjectEnvContentHintRedisURL{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisURL, "", true, nil); err == nil {
+		u.EditProjectEnvContentHintRedisURL = &editProjectEnvContentHintRedisURL
+		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintRedisURL
+		return nil
+	}
+
+	var editProjectEnvContentHintRedisRestAPIURL EditProjectEnvContentHintRedisRestAPIURL = EditProjectEnvContentHintRedisRestAPIURL{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisRestAPIURL, "", true, nil); err == nil {
+		u.EditProjectEnvContentHintRedisRestAPIURL = &editProjectEnvContentHintRedisRestAPIURL
+		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintRedisRestAPIURL
 		return nil
 	}
 
 	var editProjectEnvContentHintRedisRestAPIToken EditProjectEnvContentHintRedisRestAPIToken = EditProjectEnvContentHintRedisRestAPIToken{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisRestAPIToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisRestAPIToken, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintRedisRestAPIToken = &editProjectEnvContentHintRedisRestAPIToken
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintRedisRestAPIToken
 		return nil
 	}
 
 	var editProjectEnvContentHintRedisRestAPIReadOnlyToken EditProjectEnvContentHintRedisRestAPIReadOnlyToken = EditProjectEnvContentHintRedisRestAPIReadOnlyToken{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisRestAPIReadOnlyToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisRestAPIReadOnlyToken, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintRedisRestAPIReadOnlyToken = &editProjectEnvContentHintRedisRestAPIReadOnlyToken
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintRedisRestAPIReadOnlyToken
 		return nil
 	}
 
 	var editProjectEnvContentHintBlobReadWriteToken EditProjectEnvContentHintBlobReadWriteToken = EditProjectEnvContentHintBlobReadWriteToken{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintBlobReadWriteToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintBlobReadWriteToken, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintBlobReadWriteToken = &editProjectEnvContentHintBlobReadWriteToken
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintBlobReadWriteToken
 		return nil
 	}
 
 	var editProjectEnvContentHintPostgresURL EditProjectEnvContentHintPostgresURL = EditProjectEnvContentHintPostgresURL{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresURL, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintPostgresURL = &editProjectEnvContentHintPostgresURL
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresURL
 		return nil
 	}
 
-	var editProjectEnvContentHintRedisRestAPIURL EditProjectEnvContentHintRedisRestAPIURL = EditProjectEnvContentHintRedisRestAPIURL{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisRestAPIURL, "", true, true); err == nil {
-		u.EditProjectEnvContentHintRedisRestAPIURL = &editProjectEnvContentHintRedisRestAPIURL
-		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintRedisRestAPIURL
-		return nil
-	}
-
-	var editProjectEnvContentHintPostgresUser EditProjectEnvContentHintPostgresUser = EditProjectEnvContentHintPostgresUser{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresUser, "", true, true); err == nil {
-		u.EditProjectEnvContentHintPostgresUser = &editProjectEnvContentHintPostgresUser
-		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresUser
-		return nil
-	}
-
-	var editProjectEnvContentHintRedisURL EditProjectEnvContentHintRedisURL = EditProjectEnvContentHintRedisURL{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintRedisURL, "", true, true); err == nil {
-		u.EditProjectEnvContentHintRedisURL = &editProjectEnvContentHintRedisURL
-		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintRedisURL
-		return nil
-	}
-
-	var editProjectEnvContentHintPostgresHost EditProjectEnvContentHintPostgresHost = EditProjectEnvContentHintPostgresHost{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresHost, "", true, true); err == nil {
-		u.EditProjectEnvContentHintPostgresHost = &editProjectEnvContentHintPostgresHost
-		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresHost
+	var editProjectEnvContentHintPostgresURLNonPooling EditProjectEnvContentHintPostgresURLNonPooling = EditProjectEnvContentHintPostgresURLNonPooling{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresURLNonPooling, "", true, nil); err == nil {
+		u.EditProjectEnvContentHintPostgresURLNonPooling = &editProjectEnvContentHintPostgresURLNonPooling
+		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresURLNonPooling
 		return nil
 	}
 
 	var editProjectEnvContentHintPostgresPrismaURL EditProjectEnvContentHintPostgresPrismaURL = EditProjectEnvContentHintPostgresPrismaURL{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresPrismaURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresPrismaURL, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintPostgresPrismaURL = &editProjectEnvContentHintPostgresPrismaURL
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresPrismaURL
 		return nil
 	}
 
+	var editProjectEnvContentHintPostgresUser EditProjectEnvContentHintPostgresUser = EditProjectEnvContentHintPostgresUser{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresUser, "", true, nil); err == nil {
+		u.EditProjectEnvContentHintPostgresUser = &editProjectEnvContentHintPostgresUser
+		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresUser
+		return nil
+	}
+
+	var editProjectEnvContentHintPostgresHost EditProjectEnvContentHintPostgresHost = EditProjectEnvContentHintPostgresHost{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresHost, "", true, nil); err == nil {
+		u.EditProjectEnvContentHintPostgresHost = &editProjectEnvContentHintPostgresHost
+		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresHost
+		return nil
+	}
+
+	var editProjectEnvContentHintPostgresPassword EditProjectEnvContentHintPostgresPassword = EditProjectEnvContentHintPostgresPassword{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresPassword, "", true, nil); err == nil {
+		u.EditProjectEnvContentHintPostgresPassword = &editProjectEnvContentHintPostgresPassword
+		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresPassword
+		return nil
+	}
+
 	var editProjectEnvContentHintPostgresDatabase EditProjectEnvContentHintPostgresDatabase = EditProjectEnvContentHintPostgresDatabase{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresDatabase, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresDatabase, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintPostgresDatabase = &editProjectEnvContentHintPostgresDatabase
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresDatabase
 		return nil
 	}
 
 	var editProjectEnvContentHintPostgresURLNoSsl EditProjectEnvContentHintPostgresURLNoSsl = EditProjectEnvContentHintPostgresURLNoSsl{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresURLNoSsl, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintPostgresURLNoSsl, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintPostgresURLNoSsl = &editProjectEnvContentHintPostgresURLNoSsl
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintPostgresURLNoSsl
 		return nil
 	}
 
 	var editProjectEnvContentHintFlagsConnectionString EditProjectEnvContentHintFlagsConnectionString = EditProjectEnvContentHintFlagsConnectionString{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintFlagsConnectionString, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintFlagsConnectionString, "", true, nil); err == nil {
 		u.EditProjectEnvContentHintFlagsConnectionString = &editProjectEnvContentHintFlagsConnectionString
 		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintFlagsConnectionString
-		return nil
-	}
-
-	var editProjectEnvContentHintIntegrationStoreSecret EditProjectEnvContentHintIntegrationStoreSecret = EditProjectEnvContentHintIntegrationStoreSecret{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvContentHintIntegrationStoreSecret, "", true, true); err == nil {
-		u.EditProjectEnvContentHintIntegrationStoreSecret = &editProjectEnvContentHintIntegrationStoreSecret
-		u.Type = EditProjectEnvContentHintUnionTypeEditProjectEnvContentHintIntegrationStoreSecret
 		return nil
 	}
 
@@ -1351,6 +1527,17 @@ type EditProjectEnvInternalContentHint struct {
 	EncryptedValue string `json:"encryptedValue"`
 }
 
+func (e EditProjectEnvInternalContentHint) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvInternalContentHint) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "encryptedValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EditProjectEnvInternalContentHint) GetType() EditProjectEnvTypeFlagsSecret {
 	if o == nil {
 		return EditProjectEnvTypeFlagsSecret("")
@@ -1387,6 +1574,17 @@ type EditProjectEnvResponseBody1 struct {
 	InternalContentHint  *EditProjectEnvInternalContentHint `json:"internalContentHint,omitempty"`
 	Comment              *string                            `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                           `json:"customEnvironmentIds,omitempty"`
+}
+
+func (e EditProjectEnvResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EditProjectEnvResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "value", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EditProjectEnvResponseBody1) GetTarget() *EditProjectEnvTargetUnion {
@@ -1557,17 +1755,17 @@ func CreateEditProjectEnvResponseBodyEditProjectEnvResponseBody2(editProjectEnvR
 
 func (u *EditProjectEnvResponseBody) UnmarshalJSON(data []byte) error {
 
-	var editProjectEnvResponseBody2 EditProjectEnvResponseBody2 = EditProjectEnvResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvResponseBody2, "", true, true); err == nil {
-		u.EditProjectEnvResponseBody2 = &editProjectEnvResponseBody2
-		u.Type = EditProjectEnvResponseBodyUnionTypeEditProjectEnvResponseBody2
+	var editProjectEnvResponseBody1 EditProjectEnvResponseBody1 = EditProjectEnvResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvResponseBody1, "", true, nil); err == nil {
+		u.EditProjectEnvResponseBody1 = &editProjectEnvResponseBody1
+		u.Type = EditProjectEnvResponseBodyUnionTypeEditProjectEnvResponseBody1
 		return nil
 	}
 
-	var editProjectEnvResponseBody1 EditProjectEnvResponseBody1 = EditProjectEnvResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &editProjectEnvResponseBody1, "", true, true); err == nil {
-		u.EditProjectEnvResponseBody1 = &editProjectEnvResponseBody1
-		u.Type = EditProjectEnvResponseBodyUnionTypeEditProjectEnvResponseBody1
+	var editProjectEnvResponseBody2 EditProjectEnvResponseBody2 = EditProjectEnvResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &editProjectEnvResponseBody2, "", true, nil); err == nil {
+		u.EditProjectEnvResponseBody2 = &editProjectEnvResponseBody2
+		u.Type = EditProjectEnvResponseBodyUnionTypeEditProjectEnvResponseBody2
 		return nil
 	}
 

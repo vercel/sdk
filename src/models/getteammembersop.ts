@@ -219,6 +219,34 @@ export type GetTeamMembersTeamsRole = ClosedEnum<
   typeof GetTeamMembersTeamsRole
 >;
 
+export const GetTeamMembersTeamRoles = {
+  Owner: "OWNER",
+  Member: "MEMBER",
+  Developer: "DEVELOPER",
+  Viewer: "VIEWER",
+  Billing: "BILLING",
+  Contributor: "CONTRIBUTOR",
+  Security: "SECURITY",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+} as const;
+export type GetTeamMembersTeamRoles = ClosedEnum<
+  typeof GetTeamMembersTeamRoles
+>;
+
+export const GetTeamMembersTeamPermissions = {
+  CreateProject: "CreateProject",
+  FullProductionDeployment: "FullProductionDeployment",
+  UsageViewer: "UsageViewer",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
+} as const;
+export type GetTeamMembersTeamPermissions = ClosedEnum<
+  typeof GetTeamMembersTeamPermissions
+>;
+
 export const GetTeamMembersTeamsProjects = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
@@ -233,6 +261,8 @@ export type EmailInviteCodes = {
   id: string;
   email?: string | undefined;
   role?: GetTeamMembersTeamsRole | undefined;
+  teamRoles?: Array<GetTeamMembersTeamRoles> | undefined;
+  teamPermissions?: Array<GetTeamMembersTeamPermissions> | undefined;
   isDSyncUser: boolean;
   createdAt?: number | undefined;
   expired?: boolean | undefined;
@@ -889,6 +919,48 @@ export namespace GetTeamMembersTeamsRole$ {
 }
 
 /** @internal */
+export const GetTeamMembersTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersTeamRoles
+> = z.nativeEnum(GetTeamMembersTeamRoles);
+
+/** @internal */
+export const GetTeamMembersTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersTeamRoles
+> = GetTeamMembersTeamRoles$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTeamMembersTeamRoles$ {
+  /** @deprecated use `GetTeamMembersTeamRoles$inboundSchema` instead. */
+  export const inboundSchema = GetTeamMembersTeamRoles$inboundSchema;
+  /** @deprecated use `GetTeamMembersTeamRoles$outboundSchema` instead. */
+  export const outboundSchema = GetTeamMembersTeamRoles$outboundSchema;
+}
+
+/** @internal */
+export const GetTeamMembersTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersTeamPermissions
+> = z.nativeEnum(GetTeamMembersTeamPermissions);
+
+/** @internal */
+export const GetTeamMembersTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersTeamPermissions
+> = GetTeamMembersTeamPermissions$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetTeamMembersTeamPermissions$ {
+  /** @deprecated use `GetTeamMembersTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = GetTeamMembersTeamPermissions$inboundSchema;
+  /** @deprecated use `GetTeamMembersTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = GetTeamMembersTeamPermissions$outboundSchema;
+}
+
+/** @internal */
 export const GetTeamMembersTeamsProjects$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsProjects
 > = z.nativeEnum(GetTeamMembersTeamsProjects);
@@ -919,6 +991,9 @@ export const EmailInviteCodes$inboundSchema: z.ZodType<
   id: z.string(),
   email: z.string().optional(),
   role: GetTeamMembersTeamsRole$inboundSchema.optional(),
+  teamRoles: z.array(GetTeamMembersTeamRoles$inboundSchema).optional(),
+  teamPermissions: z.array(GetTeamMembersTeamPermissions$inboundSchema)
+    .optional(),
   isDSyncUser: z.boolean(),
   createdAt: z.number().optional(),
   expired: z.boolean().optional(),
@@ -932,6 +1007,8 @@ export type EmailInviteCodes$Outbound = {
   id: string;
   email?: string | undefined;
   role?: string | undefined;
+  teamRoles?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
   isDSyncUser: boolean;
   createdAt?: number | undefined;
   expired?: boolean | undefined;
@@ -949,6 +1026,9 @@ export const EmailInviteCodes$outboundSchema: z.ZodType<
   id: z.string(),
   email: z.string().optional(),
   role: GetTeamMembersTeamsRole$outboundSchema.optional(),
+  teamRoles: z.array(GetTeamMembersTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(GetTeamMembersTeamPermissions$outboundSchema)
+    .optional(),
   isDSyncUser: z.boolean(),
   createdAt: z.number().optional(),
   expired: z.boolean().optional(),

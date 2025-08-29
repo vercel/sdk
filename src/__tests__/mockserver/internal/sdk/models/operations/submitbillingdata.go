@@ -22,7 +22,7 @@ func (s SubmitBillingDataPeriod) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitBillingDataPeriod) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"start", "end"}); err != nil {
 		return err
 	}
 	return nil
@@ -70,7 +70,7 @@ func (s SubmitBillingDataItem) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitBillingDataItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"billingPlanId", "name", "price", "quantity", "units", "total"}); err != nil {
 		return err
 	}
 	return nil
@@ -168,7 +168,7 @@ func (s SubmitBillingDataDiscount) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitBillingDataDiscount) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"billingPlanId", "name", "amount"}); err != nil {
 		return err
 	}
 	return nil
@@ -228,6 +228,17 @@ type Billing2 struct {
 	Discounts []SubmitBillingDataDiscount `json:"discounts,omitempty"`
 }
 
+func (b Billing2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *Billing2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"items"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Billing2) GetItems() []SubmitBillingDataItem {
 	if o == nil {
 		return []SubmitBillingDataItem{}
@@ -270,7 +281,7 @@ func (b Billing1) MarshalJSON() ([]byte, error) {
 }
 
 func (b *Billing1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"billingPlanId", "name", "price", "quantity", "units", "total"}); err != nil {
 		return err
 	}
 	return nil
@@ -382,14 +393,14 @@ func CreateBillingUnionBilling2(billing2 Billing2) BillingUnion {
 func (u *BillingUnion) UnmarshalJSON(data []byte) error {
 
 	var billing2 Billing2 = Billing2{}
-	if err := utils.UnmarshalJSON(data, &billing2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &billing2, "", true, nil); err == nil {
 		u.Billing2 = &billing2
 		u.Type = BillingUnionTypeBilling2
 		return nil
 	}
 
 	var arrayOfBilling1 []Billing1 = []Billing1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfBilling1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfBilling1, "", true, nil); err == nil {
 		u.ArrayOfBilling1 = arrayOfBilling1
 		u.Type = BillingUnionTypeArrayOfBilling1
 		return nil
@@ -523,7 +534,7 @@ func (s SubmitBillingDataRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitBillingDataRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"timestamp", "eod", "period", "billing", "usage"}); err != nil {
 		return err
 	}
 	return nil

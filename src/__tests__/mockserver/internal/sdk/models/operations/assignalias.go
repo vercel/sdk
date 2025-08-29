@@ -84,7 +84,7 @@ func (a AssignAliasResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AssignAliasResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"uid", "alias", "created"}); err != nil {
 		return err
 	}
 	return nil

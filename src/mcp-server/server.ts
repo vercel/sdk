@@ -95,6 +95,7 @@ import { tool$environmentGetCustomEnvironment } from "./tools/environmentGetCust
 import { tool$environmentGetV9ProjectsIdOrNameCustomEnvironments } from "./tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
 import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemoveCustomEnvironment.js";
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
+import { tool$getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans } from "./tools/getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurationProducts } from "./tools/integrationsGetConfigurationProducts.js";
@@ -196,7 +197,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.10.6",
+    version: "1.10.7",
   });
 
   const client = new VercelCore({
@@ -226,6 +227,9 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(
+    tool$getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans,
+  );
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);

@@ -817,21 +817,21 @@ func CreatePutFirewallConfigValueRequestNumber(number float64) PutFirewallConfig
 func (u *PutFirewallConfigValueRequest) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = PutFirewallConfigValueRequestTypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = PutFirewallConfigValueRequestTypeArrayOfStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = PutFirewallConfigValueRequestTypeNumber
 		return nil
@@ -1042,14 +1042,14 @@ func CreateRuleActionUnionAny(anyT any) RuleActionUnion {
 func (u *RuleActionUnion) UnmarshalJSON(data []byte) error {
 
 	var rateLimitActionRuleRequestBodyEnum RateLimitActionRuleRequestBodyEnum = RateLimitActionRuleRequestBodyEnum("")
-	if err := utils.UnmarshalJSON(data, &rateLimitActionRuleRequestBodyEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rateLimitActionRuleRequestBodyEnum, "", true, nil); err == nil {
 		u.RateLimitActionRuleRequestBodyEnum = &rateLimitActionRuleRequestBodyEnum
 		u.Type = RuleActionUnionTypeRateLimitActionRuleRequestBodyEnum
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = RuleActionUnionTypeAny
 		return nil
@@ -1076,6 +1076,17 @@ type PutFirewallConfigRateLimitRequest struct {
 	Limit  float64                      `json:"limit"`
 	Keys   []string                     `json:"keys"`
 	Action *RuleActionUnion             `json:"action,omitempty"`
+}
+
+func (p PutFirewallConfigRateLimitRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PutFirewallConfigRateLimitRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PutFirewallConfigRateLimitRequest) GetAlgo() PutFirewallConfigAlgoRequest {
@@ -1148,14 +1159,14 @@ func CreatePutFirewallConfigRateLimitUnionAny(anyT any) PutFirewallConfigRateLim
 func (u *PutFirewallConfigRateLimitUnion) UnmarshalJSON(data []byte) error {
 
 	var putFirewallConfigRateLimitRequest PutFirewallConfigRateLimitRequest = PutFirewallConfigRateLimitRequest{}
-	if err := utils.UnmarshalJSON(data, &putFirewallConfigRateLimitRequest, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &putFirewallConfigRateLimitRequest, "", true, nil); err == nil {
 		u.PutFirewallConfigRateLimitRequest = &putFirewallConfigRateLimitRequest
 		u.Type = PutFirewallConfigRateLimitUnionTypePutFirewallConfigRateLimitRequest
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = PutFirewallConfigRateLimitUnionTypeAny
 		return nil
@@ -1179,6 +1190,17 @@ func (u PutFirewallConfigRateLimitUnion) MarshalJSON() ([]byte, error) {
 type PutFirewallConfigRedirectRequest struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
+}
+
+func (p PutFirewallConfigRedirectRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PutFirewallConfigRedirectRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PutFirewallConfigRedirectRequest) GetLocation() string {
@@ -1230,14 +1252,14 @@ func CreatePutFirewallConfigRedirectUnionAny(anyT any) PutFirewallConfigRedirect
 func (u *PutFirewallConfigRedirectUnion) UnmarshalJSON(data []byte) error {
 
 	var putFirewallConfigRedirectRequest PutFirewallConfigRedirectRequest = PutFirewallConfigRedirectRequest{}
-	if err := utils.UnmarshalJSON(data, &putFirewallConfigRedirectRequest, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &putFirewallConfigRedirectRequest, "", true, nil); err == nil {
 		u.PutFirewallConfigRedirectRequest = &putFirewallConfigRedirectRequest
 		u.Type = PutFirewallConfigRedirectUnionTypePutFirewallConfigRedirectRequest
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = PutFirewallConfigRedirectUnionTypeAny
 		return nil
@@ -2336,21 +2358,21 @@ func CreateActiveValueArrayOfStr(arrayOfStr []string) ActiveValue {
 func (u *ActiveValue) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = ActiveValueTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = ActiveValueTypeNumber
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = ActiveValueTypeArrayOfStr
 		return nil

@@ -49,6 +49,17 @@ type TeamLimitedConnection struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 }
 
+func (t TeamLimitedConnection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamLimitedConnection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "status", "state", "connectedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *TeamLimitedConnection) GetType() string {
 	if o == nil {
 		return ""
@@ -96,6 +107,17 @@ type TeamLimitedDirectory struct {
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
 }
 
+func (t TeamLimitedDirectory) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamLimitedDirectory) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "state", "connectedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *TeamLimitedDirectory) GetType() string {
 	if o == nil {
 		return ""
@@ -134,6 +156,17 @@ type TeamLimitedSaml struct {
 	Enforced bool `json:"enforced"`
 }
 
+func (t TeamLimitedSaml) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamLimitedSaml) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"enforced"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *TeamLimitedSaml) GetConnection() *TeamLimitedConnection {
 	if o == nil {
 		return nil
@@ -157,6 +190,17 @@ func (o *TeamLimitedSaml) GetEnforced() bool {
 
 type TeamLimitedEntitlement struct {
 	Entitlement string `json:"entitlement"`
+}
+
+func (t TeamLimitedEntitlement) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamLimitedEntitlement) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"entitlement"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamLimitedEntitlement) GetEntitlement() string {
@@ -386,14 +430,14 @@ func CreateTeamLimitedGitUserIDNumber(number float64) TeamLimitedGitUserID {
 func (u *TeamLimitedGitUserID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = TeamLimitedGitUserIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = TeamLimitedGitUserIDTypeNumber
 		return nil
@@ -426,6 +470,17 @@ type TeamLimitedJoinedFrom struct {
 	IdpUserID        *string               `json:"idpUserId,omitempty"`
 	DsyncUserID      *string               `json:"dsyncUserId,omitempty"`
 	DsyncConnectedAt *float64              `json:"dsyncConnectedAt,omitempty"`
+}
+
+func (t TeamLimitedJoinedFrom) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamLimitedJoinedFrom) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"origin"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamLimitedJoinedFrom) GetOrigin() TeamLimitedOrigin {
@@ -518,6 +573,17 @@ type TeamLimitedMembership struct {
 	CreatedAt         float64                     `json:"createdAt"`
 	Created           float64                     `json:"created"`
 	JoinedFrom        *TeamLimitedJoinedFrom      `json:"joinedFrom,omitempty"`
+}
+
+func (t TeamLimitedMembership) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamLimitedMembership) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"confirmed", "role", "createdAt", "created"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamLimitedMembership) GetUID() *string {
@@ -616,6 +682,17 @@ type TeamLimited struct {
 	Membership TeamLimitedMembership `json:"membership"`
 	// UNIX timestamp (in milliseconds) when the Team was created.
 	CreatedAt float64 `json:"createdAt"`
+}
+
+func (t TeamLimited) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamLimited) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"limited", "limitedBy", "id", "slug", "name", "avatar", "membership", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamLimited) GetLimited() bool {

@@ -79,6 +79,7 @@ export const GetConfigurationsResponseBodyIntegrationsSource = {
   DeployButton: "deploy-button",
   External: "external",
   V0: "v0",
+  ResourceClaims: "resource-claims",
 } as const;
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -198,6 +199,7 @@ export const GetConfigurationsResponseBodySource = {
   DeployButton: "deploy-button",
   External: "external",
   V0: "v0",
+  ResourceClaims: "resource-claims",
 } as const;
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.

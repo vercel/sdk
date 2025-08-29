@@ -55,6 +55,17 @@ type GetDeploymentCreator2 struct {
 	Avatar   *string `json:"avatar,omitempty"`
 }
 
+func (g GetDeploymentCreator2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCreator2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"uid"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentCreator2) GetUID() string {
 	if o == nil {
 		return ""
@@ -113,6 +124,17 @@ type GetDeploymentOutput2 struct {
 	FunctionName string `json:"functionName"`
 }
 
+func (g GetDeploymentOutput2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOutput2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"path", "functionName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentOutput2) GetPath() string {
 	if o == nil {
 		return ""
@@ -135,6 +157,17 @@ type GetDeploymentLambda2 struct {
 	Entrypoint   *string                         `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                        `json:"readyStateAt,omitempty"`
 	Output       []GetDeploymentOutput2          `json:"output"`
+}
+
+func (g GetDeploymentLambda2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentLambda2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "output"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentLambda2) GetID() string {
@@ -224,6 +257,17 @@ type GetDeploymentTeam2 struct {
 	Avatar *string `json:"avatar,omitempty"`
 }
 
+func (g GetDeploymentTeam2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentTeam2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name", "slug"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentTeam2) GetID() string {
 	if o == nil {
 		return ""
@@ -254,6 +298,17 @@ func (o *GetDeploymentTeam2) GetAvatar() *string {
 
 type GetDeploymentCustomEnvironment4 struct {
 	ID string `json:"id"`
+}
+
+func (g GetDeploymentCustomEnvironment4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCustomEnvironment4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentCustomEnvironment4) GetID() string {
@@ -331,6 +386,17 @@ type GetDeploymentBranchMatcher2 struct {
 	Pattern string `json:"pattern"`
 }
 
+func (g GetDeploymentBranchMatcher2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentBranchMatcher2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "pattern"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentBranchMatcher2) GetType() GetDeploymentBranchMatcherType2 {
 	if o == nil {
 		return GetDeploymentBranchMatcherType2("")
@@ -351,6 +417,17 @@ type GetDeploymentVerification2 struct {
 	Domain string `json:"domain"`
 	Value  string `json:"value"`
 	Reason string `json:"reason"`
+}
+
+func (g GetDeploymentVerification2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentVerification2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "domain", "value", "reason"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentVerification2) GetType() string {
@@ -396,6 +473,17 @@ type GetDeploymentDomain2 struct {
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
 	Verification []GetDeploymentVerification2 `json:"verification,omitempty"`
+}
+
+func (g GetDeploymentDomain2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentDomain2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "apexName", "projectId", "verified"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentDomain2) GetName() string {
@@ -497,6 +585,17 @@ type GetDeploymentCustomEnvironment3 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
+func (g GetDeploymentCustomEnvironment3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCustomEnvironment3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug", "type", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentCustomEnvironment3) GetID() string {
 	if o == nil {
 		return ""
@@ -594,17 +693,17 @@ func CreateGetDeploymentCustomEnvironmentUnion2GetDeploymentCustomEnvironment4(g
 
 func (u *GetDeploymentCustomEnvironmentUnion2) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentCustomEnvironment4 GetDeploymentCustomEnvironment4 = GetDeploymentCustomEnvironment4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment4, "", true, true); err == nil {
-		u.GetDeploymentCustomEnvironment4 = &getDeploymentCustomEnvironment4
-		u.Type = GetDeploymentCustomEnvironmentUnion2TypeGetDeploymentCustomEnvironment4
+	var getDeploymentCustomEnvironment3 GetDeploymentCustomEnvironment3 = GetDeploymentCustomEnvironment3{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment3, "", true, nil); err == nil {
+		u.GetDeploymentCustomEnvironment3 = &getDeploymentCustomEnvironment3
+		u.Type = GetDeploymentCustomEnvironmentUnion2TypeGetDeploymentCustomEnvironment3
 		return nil
 	}
 
-	var getDeploymentCustomEnvironment3 GetDeploymentCustomEnvironment3 = GetDeploymentCustomEnvironment3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment3, "", true, true); err == nil {
-		u.GetDeploymentCustomEnvironment3 = &getDeploymentCustomEnvironment3
-		u.Type = GetDeploymentCustomEnvironmentUnion2TypeGetDeploymentCustomEnvironment3
+	var getDeploymentCustomEnvironment4 GetDeploymentCustomEnvironment4 = GetDeploymentCustomEnvironment4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment4, "", true, nil); err == nil {
+		u.GetDeploymentCustomEnvironment4 = &getDeploymentCustomEnvironment4
+		u.Type = GetDeploymentCustomEnvironmentUnion2TypeGetDeploymentCustomEnvironment4
 		return nil
 	}
 
@@ -651,6 +750,17 @@ type GetDeploymentAliasWarning2 struct {
 	Message string  `json:"message"`
 	Link    *string `json:"link,omitempty"`
 	Action  *string `json:"action,omitempty"`
+}
+
+func (g GetDeploymentAliasWarning2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentAliasWarning2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"code", "message"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentAliasWarning2) GetCode() string {
@@ -745,6 +855,17 @@ func (e *GetDeploymentTypeLambdas2) UnmarshalJSON(data []byte) error {
 type GetDeploymentAliasError2 struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
+}
+
+func (g GetDeploymentAliasError2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentAliasError2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"code", "message"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentAliasError2) GetCode() string {
@@ -855,6 +976,17 @@ type GetDeploymentGitSourceBitbucket6 struct {
 	RepoUUID      string                               `json:"repoUuid"`
 }
 
+func (g GetDeploymentGitSourceBitbucket6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceBitbucket6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "workspaceUuid", "repoUuid"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceBitbucket6) GetType() GetDeploymentGitSourceTypeBitbucket6 {
 	if o == nil {
 		return GetDeploymentGitSourceTypeBitbucket6("")
@@ -934,6 +1066,17 @@ type GetDeploymentGitSourceGitlab4 struct {
 	ProjectID float64                           `json:"projectId"`
 }
 
+func (g GetDeploymentGitSourceGitlab4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGitlab4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceGitlab4) GetType() GetDeploymentGitSourceTypeGitlab4 {
 	if o == nil {
 		return GetDeploymentGitSourceTypeGitlab4("")
@@ -992,6 +1135,17 @@ type GetDeploymentGitSourceGithubLimited6 struct {
 	RepoID float64                         `json:"repoId"`
 	Org    *string                         `json:"org,omitempty"`
 	Repo   *string                         `json:"repo,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubLimited6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubLimited6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubLimited6) GetType() GetDeploymentTypeGithubLimited6 {
@@ -1067,6 +1221,17 @@ type GetDeploymentGitSourceGithubCustomHost6 struct {
 	RepoID float64                            `json:"repoId"`
 	Org    *string                            `json:"org,omitempty"`
 	Repo   *string                            `json:"repo,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubCustomHost6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubCustomHost6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "host", "ref", "sha", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubCustomHost6) GetType() GetDeploymentTypeGithubCustomHost6 {
@@ -1150,6 +1315,17 @@ type GetDeploymentGitSourceGithub6 struct {
 	Repo   *string                           `json:"repo,omitempty"`
 }
 
+func (g GetDeploymentGitSourceGithub6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithub6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "repoId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceGithub6) GetType() GetDeploymentGitSourceTypeGithub6 {
 	if o == nil {
 		return GetDeploymentGitSourceTypeGithub6("")
@@ -1223,6 +1399,17 @@ type GetDeploymentGitSourceCustom2 struct {
 	GitURL string                   `json:"gitUrl"`
 }
 
+func (g GetDeploymentGitSourceCustom2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceCustom2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "gitUrl"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceCustom2) GetType() GetDeploymentTypeCustom2 {
 	if o == nil {
 		return GetDeploymentTypeCustom2("")
@@ -1281,6 +1468,17 @@ type GetDeploymentGitSourceBitbucket5 struct {
 	Ref   *string                              `json:"ref,omitempty"`
 	Sha   *string                              `json:"sha,omitempty"`
 	PrID  *float64                             `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceBitbucket5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceBitbucket5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "owner", "slug"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceBitbucket5) GetType() GetDeploymentGitSourceTypeBitbucket5 {
@@ -1355,6 +1553,17 @@ type GetDeploymentGitSourceBitbucket4 struct {
 	Ref           *string                              `json:"ref,omitempty"`
 	Sha           *string                              `json:"sha,omitempty"`
 	PrID          *float64                             `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceBitbucket4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceBitbucket4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "repoUuid"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceBitbucket4) GetType() GetDeploymentGitSourceTypeBitbucket4 {
@@ -1457,14 +1666,14 @@ func CreateGetDeploymentProjectID2Number(number float64) GetDeploymentProjectID2
 func (u *GetDeploymentProjectID2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentProjectID2TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentProjectID2TypeNumber
 		return nil
@@ -1491,6 +1700,17 @@ type GetDeploymentGitSourceGitlab3 struct {
 	Ref       *string                           `json:"ref,omitempty"`
 	Sha       *string                           `json:"sha,omitempty"`
 	PrID      *float64                          `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGitlab3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGitlab3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGitlab3) GetType() GetDeploymentGitSourceTypeGitlab3 {
@@ -1558,6 +1778,17 @@ type GetDeploymentGitSourceGithubLimited5 struct {
 	Ref  *string                         `json:"ref,omitempty"`
 	Sha  *string                         `json:"sha,omitempty"`
 	PrID *float64                        `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubLimited5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubLimited5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "org", "repo"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubLimited5) GetType() GetDeploymentTypeGithubLimited5 {
@@ -1660,14 +1891,14 @@ func CreateGetDeploymentRepoID6Number(number float64) GetDeploymentRepoID6 {
 func (u *GetDeploymentRepoID6) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentRepoID6TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentRepoID6TypeNumber
 		return nil
@@ -1694,6 +1925,17 @@ type GetDeploymentGitSourceGithubLimited4 struct {
 	Ref    *string                         `json:"ref,omitempty"`
 	Sha    *string                         `json:"sha,omitempty"`
 	PrID   *float64                        `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubLimited4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubLimited4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubLimited4) GetType() GetDeploymentTypeGithubLimited4 {
@@ -1762,6 +2004,17 @@ type GetDeploymentGitSourceGithubCustomHost5 struct {
 	Ref  *string                            `json:"ref,omitempty"`
 	Sha  *string                            `json:"sha,omitempty"`
 	PrID *float64                           `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubCustomHost5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubCustomHost5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "host", "org", "repo"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubCustomHost5) GetType() GetDeploymentTypeGithubCustomHost5 {
@@ -1871,14 +2124,14 @@ func CreateGetDeploymentRepoID5Number(number float64) GetDeploymentRepoID5 {
 func (u *GetDeploymentRepoID5) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentRepoID5TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentRepoID5TypeNumber
 		return nil
@@ -1906,6 +2159,17 @@ type GetDeploymentGitSourceGithubCustomHost4 struct {
 	Ref    *string                            `json:"ref,omitempty"`
 	Sha    *string                            `json:"sha,omitempty"`
 	PrID   *float64                           `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubCustomHost4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubCustomHost4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "host", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubCustomHost4) GetType() GetDeploymentTypeGithubCustomHost4 {
@@ -1980,6 +2244,17 @@ type GetDeploymentGitSourceGithub5 struct {
 	Ref  *string                           `json:"ref,omitempty"`
 	Sha  *string                           `json:"sha,omitempty"`
 	PrID *float64                          `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithub5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithub5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "org", "repo"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithub5) GetType() GetDeploymentGitSourceTypeGithub5 {
@@ -2082,14 +2357,14 @@ func CreateGetDeploymentRepoID4Number(number float64) GetDeploymentRepoID4 {
 func (u *GetDeploymentRepoID4) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentRepoID4TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentRepoID4TypeNumber
 		return nil
@@ -2116,6 +2391,17 @@ type GetDeploymentGitSourceGithub4 struct {
 	Ref    *string                           `json:"ref,omitempty"`
 	Sha    *string                           `json:"sha,omitempty"`
 	PrID   *float64                          `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithub4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithub4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithub4) GetType() GetDeploymentGitSourceTypeGithub4 {
@@ -2330,108 +2616,108 @@ func CreateGetDeploymentGitSourceUnion2GetDeploymentGitSourceBitbucket6(getDeplo
 
 func (u *GetDeploymentGitSourceUnion2) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentGitSourceCustom2 GetDeploymentGitSourceCustom2 = GetDeploymentGitSourceCustom2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceCustom2, "", true, true); err == nil {
-		u.GetDeploymentGitSourceCustom2 = &getDeploymentGitSourceCustom2
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceCustom2
-		return nil
-	}
-
-	var getDeploymentGitSourceGitlab4 GetDeploymentGitSourceGitlab4 = GetDeploymentGitSourceGitlab4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab4, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGitlab4 = &getDeploymentGitSourceGitlab4
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGitlab4
-		return nil
-	}
-
-	var getDeploymentGitSourceGitlab3 GetDeploymentGitSourceGitlab3 = GetDeploymentGitSourceGitlab3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab3, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGitlab3 = &getDeploymentGitSourceGitlab3
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGitlab3
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubLimited4 GetDeploymentGitSourceGithubLimited4 = GetDeploymentGitSourceGithubLimited4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited4, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubLimited4 = &getDeploymentGitSourceGithubLimited4
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubLimited4
-		return nil
-	}
-
-	var getDeploymentGitSourceGithub4 GetDeploymentGitSourceGithub4 = GetDeploymentGitSourceGithub4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub4, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithub4 = &getDeploymentGitSourceGithub4
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithub4
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubLimited5 GetDeploymentGitSourceGithubLimited5 = GetDeploymentGitSourceGithubLimited5{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited5, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubLimited5 = &getDeploymentGitSourceGithubLimited5
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubLimited5
-		return nil
-	}
-
-	var getDeploymentGitSourceBitbucket4 GetDeploymentGitSourceBitbucket4 = GetDeploymentGitSourceBitbucket4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket4, "", true, true); err == nil {
-		u.GetDeploymentGitSourceBitbucket4 = &getDeploymentGitSourceBitbucket4
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceBitbucket4
-		return nil
-	}
-
-	var getDeploymentGitSourceBitbucket5 GetDeploymentGitSourceBitbucket5 = GetDeploymentGitSourceBitbucket5{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket5, "", true, true); err == nil {
-		u.GetDeploymentGitSourceBitbucket5 = &getDeploymentGitSourceBitbucket5
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceBitbucket5
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubCustomHost4 GetDeploymentGitSourceGithubCustomHost4 = GetDeploymentGitSourceGithubCustomHost4{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost4, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubCustomHost4 = &getDeploymentGitSourceGithubCustomHost4
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubCustomHost4
-		return nil
-	}
-
-	var getDeploymentGitSourceGithub6 GetDeploymentGitSourceGithub6 = GetDeploymentGitSourceGithub6{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub6, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithub6 = &getDeploymentGitSourceGithub6
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithub6
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubLimited6 GetDeploymentGitSourceGithubLimited6 = GetDeploymentGitSourceGithubLimited6{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited6, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubLimited6 = &getDeploymentGitSourceGithubLimited6
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubLimited6
-		return nil
-	}
-
-	var getDeploymentGitSourceGithub5 GetDeploymentGitSourceGithub5 = GetDeploymentGitSourceGithub5{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub5, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithub5 = &getDeploymentGitSourceGithub5
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithub5
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubCustomHost5 GetDeploymentGitSourceGithubCustomHost5 = GetDeploymentGitSourceGithubCustomHost5{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost5, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubCustomHost5 = &getDeploymentGitSourceGithubCustomHost5
-		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubCustomHost5
-		return nil
-	}
-
 	var getDeploymentGitSourceGithubCustomHost6 GetDeploymentGitSourceGithubCustomHost6 = GetDeploymentGitSourceGithubCustomHost6{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost6, "", true, nil); err == nil {
 		u.GetDeploymentGitSourceGithubCustomHost6 = &getDeploymentGitSourceGithubCustomHost6
 		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubCustomHost6
 		return nil
 	}
 
 	var getDeploymentGitSourceBitbucket6 GetDeploymentGitSourceBitbucket6 = GetDeploymentGitSourceBitbucket6{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket6, "", true, nil); err == nil {
 		u.GetDeploymentGitSourceBitbucket6 = &getDeploymentGitSourceBitbucket6
 		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceBitbucket6
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubCustomHost5 GetDeploymentGitSourceGithubCustomHost5 = GetDeploymentGitSourceGithubCustomHost5{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost5, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubCustomHost5 = &getDeploymentGitSourceGithubCustomHost5
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubCustomHost5
+		return nil
+	}
+
+	var getDeploymentGitSourceCustom2 GetDeploymentGitSourceCustom2 = GetDeploymentGitSourceCustom2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceCustom2, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceCustom2 = &getDeploymentGitSourceCustom2
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceCustom2
+		return nil
+	}
+
+	var getDeploymentGitSourceGithub6 GetDeploymentGitSourceGithub6 = GetDeploymentGitSourceGithub6{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub6, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithub6 = &getDeploymentGitSourceGithub6
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithub6
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubLimited6 GetDeploymentGitSourceGithubLimited6 = GetDeploymentGitSourceGithubLimited6{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited6, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubLimited6 = &getDeploymentGitSourceGithubLimited6
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubLimited6
+		return nil
+	}
+
+	var getDeploymentGitSourceGitlab4 GetDeploymentGitSourceGitlab4 = GetDeploymentGitSourceGitlab4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab4, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGitlab4 = &getDeploymentGitSourceGitlab4
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGitlab4
+		return nil
+	}
+
+	var getDeploymentGitSourceGithub5 GetDeploymentGitSourceGithub5 = GetDeploymentGitSourceGithub5{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub5, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithub5 = &getDeploymentGitSourceGithub5
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithub5
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubCustomHost4 GetDeploymentGitSourceGithubCustomHost4 = GetDeploymentGitSourceGithubCustomHost4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost4, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubCustomHost4 = &getDeploymentGitSourceGithubCustomHost4
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubCustomHost4
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubLimited5 GetDeploymentGitSourceGithubLimited5 = GetDeploymentGitSourceGithubLimited5{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited5, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubLimited5 = &getDeploymentGitSourceGithubLimited5
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubLimited5
+		return nil
+	}
+
+	var getDeploymentGitSourceBitbucket5 GetDeploymentGitSourceBitbucket5 = GetDeploymentGitSourceBitbucket5{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket5, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceBitbucket5 = &getDeploymentGitSourceBitbucket5
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceBitbucket5
+		return nil
+	}
+
+	var getDeploymentGitSourceGithub4 GetDeploymentGitSourceGithub4 = GetDeploymentGitSourceGithub4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub4, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithub4 = &getDeploymentGitSourceGithub4
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithub4
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubLimited4 GetDeploymentGitSourceGithubLimited4 = GetDeploymentGitSourceGithubLimited4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited4, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubLimited4 = &getDeploymentGitSourceGithubLimited4
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGithubLimited4
+		return nil
+	}
+
+	var getDeploymentGitSourceGitlab3 GetDeploymentGitSourceGitlab3 = GetDeploymentGitSourceGitlab3{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab3, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGitlab3 = &getDeploymentGitSourceGitlab3
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceGitlab3
+		return nil
+	}
+
+	var getDeploymentGitSourceBitbucket4 GetDeploymentGitSourceBitbucket4 = GetDeploymentGitSourceBitbucket4{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket4, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceBitbucket4 = &getDeploymentGitSourceBitbucket4
+		u.Type = GetDeploymentGitSourceUnion2TypeGetDeploymentGitSourceBitbucket4
 		return nil
 	}
 
@@ -2551,6 +2837,17 @@ type GetDeploymentProject2 struct {
 	ID        string  `json:"id"`
 	Name      string  `json:"name"`
 	Framework *string `json:"framework,omitempty"`
+}
+
+func (g GetDeploymentProject2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentProject2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentProject2) GetID() string {
@@ -2686,6 +2983,17 @@ type GetDeploymentOidcTokenClaims2 struct {
 	Environment string `json:"environment"`
 }
 
+func (g GetDeploymentOidcTokenClaims2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOidcTokenClaims2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentOidcTokenClaims2) GetIss() string {
 	if o == nil {
 		return ""
@@ -2811,6 +3119,17 @@ type Lambdas2 struct {
 	URL                    string                         `json:"url"`
 	Version                float64                        `json:"version"`
 	OidcTokenClaims        *GetDeploymentOidcTokenClaims2 `json:"oidcTokenClaims,omitempty"`
+}
+
+func (l Lambdas2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *Lambdas2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"aliasAssigned", "bootedAt", "buildingAt", "buildSkipped", "creator", "public", "status", "id", "createdAt", "readyState", "name", "type", "meta", "regions", "url", "version"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Lambdas2) GetAlias() []string {
@@ -3226,14 +3545,14 @@ func CreateGetDeploymentAliasAssignedAtBoolean(boolean bool) GetDeploymentAliasA
 func (u *GetDeploymentAliasAssignedAt) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentAliasAssignedAtTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = GetDeploymentAliasAssignedAtTypeBoolean
 		return nil
@@ -3258,6 +3577,17 @@ type GetDeploymentBuild1 struct {
 	Env []string `json:"env"`
 }
 
+func (g GetDeploymentBuild1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentBuild1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"env"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentBuild1) GetEnv() []string {
 	if o == nil {
 		return []string{}
@@ -3269,6 +3599,17 @@ type GetDeploymentBuild2 struct {
 	Use    string         `json:"use"`
 	Src    *string        `json:"src,omitempty"`
 	Config map[string]any `json:"config,omitempty"`
+}
+
+func (g GetDeploymentBuild2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentBuild2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"use"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentBuild2) GetUse() string {
@@ -3471,6 +3812,17 @@ type GetDeploymentSpeedInsights struct {
 	PaidAt     *float64 `json:"paidAt,omitempty"`
 }
 
+func (g GetDeploymentSpeedInsights) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentSpeedInsights) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentSpeedInsights) GetID() string {
 	if o == nil {
 		return ""
@@ -3521,6 +3873,17 @@ type GetDeploymentWebAnalytics struct {
 	HasData    *bool    `json:"hasData,omitempty"`
 }
 
+func (g GetDeploymentWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentWebAnalytics) GetID() string {
 	if o == nil {
 		return ""
@@ -3565,6 +3928,17 @@ type GetDeploymentProjectSettings struct {
 	OutputDirectory             *string                     `json:"outputDirectory,omitempty"`
 	SpeedInsights               *GetDeploymentSpeedInsights `json:"speedInsights,omitempty"`
 	WebAnalytics                *GetDeploymentWebAnalytics  `json:"webAnalytics,omitempty"`
+}
+
+func (g GetDeploymentProjectSettings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentProjectSettings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentProjectSettings) GetBuildCommand() *string {
@@ -3666,6 +4040,17 @@ type GetDeploymentIntegrations struct {
 	SkippedBy   *string                         `json:"skippedBy,omitempty"`
 }
 
+func (g GetDeploymentIntegrations) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentIntegrations) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"status", "startedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentIntegrations) GetStatus() GetDeploymentIntegrationsStatus {
 	if o == nil {
 		return GetDeploymentIntegrationsStatus("")
@@ -3741,6 +4126,17 @@ type GetDeploymentRemotePattern struct {
 	Search *string `json:"search,omitempty"`
 }
 
+func (g GetDeploymentRemotePattern) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentRemotePattern) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"hostname"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentRemotePattern) GetProtocol() *GetDeploymentProtocol {
 	if o == nil {
 		return nil
@@ -3781,6 +4177,17 @@ type GetDeploymentLocalPattern struct {
 	Pathname *string `json:"pathname,omitempty"`
 	// Can be literal query string such as `?v=1` or empty string meaning no query string.
 	Search *string `json:"search,omitempty"`
+}
+
+func (g GetDeploymentLocalPattern) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentLocalPattern) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentLocalPattern) GetPathname() *string {
@@ -3862,6 +4269,17 @@ type GetDeploymentImages struct {
 	ContentDispositionType *GetDeploymentContentDispositionType `json:"contentDispositionType,omitempty"`
 }
 
+func (g GetDeploymentImages) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentImages) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentImages) GetSizes() []float64 {
 	if o == nil {
 		return nil
@@ -3938,6 +4356,17 @@ type GetDeploymentCreator1 struct {
 	Avatar   *string `json:"avatar,omitempty"`
 }
 
+func (g GetDeploymentCreator1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCreator1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"uid"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentCreator1) GetUID() string {
 	if o == nil {
 		return ""
@@ -3996,6 +4425,17 @@ type GetDeploymentOutput1 struct {
 	FunctionName string `json:"functionName"`
 }
 
+func (g GetDeploymentOutput1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOutput1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"path", "functionName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentOutput1) GetPath() string {
 	if o == nil {
 		return ""
@@ -4018,6 +4458,17 @@ type GetDeploymentLambda1 struct {
 	Entrypoint   *string                         `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                        `json:"readyStateAt,omitempty"`
 	Output       []GetDeploymentOutput1          `json:"output"`
+}
+
+func (g GetDeploymentLambda1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentLambda1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "output"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentLambda1) GetID() string {
@@ -4107,6 +4558,17 @@ type GetDeploymentTeam1 struct {
 	Avatar *string `json:"avatar,omitempty"`
 }
 
+func (g GetDeploymentTeam1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentTeam1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name", "slug"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentTeam1) GetID() string {
 	if o == nil {
 		return ""
@@ -4137,6 +4599,17 @@ func (o *GetDeploymentTeam1) GetAvatar() *string {
 
 type GetDeploymentCustomEnvironment2 struct {
 	ID string `json:"id"`
+}
+
+func (g GetDeploymentCustomEnvironment2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCustomEnvironment2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentCustomEnvironment2) GetID() string {
@@ -4214,6 +4687,17 @@ type GetDeploymentBranchMatcher1 struct {
 	Pattern string `json:"pattern"`
 }
 
+func (g GetDeploymentBranchMatcher1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentBranchMatcher1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "pattern"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentBranchMatcher1) GetType() GetDeploymentBranchMatcherType1 {
 	if o == nil {
 		return GetDeploymentBranchMatcherType1("")
@@ -4234,6 +4718,17 @@ type GetDeploymentVerification1 struct {
 	Domain string `json:"domain"`
 	Value  string `json:"value"`
 	Reason string `json:"reason"`
+}
+
+func (g GetDeploymentVerification1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentVerification1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "domain", "value", "reason"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentVerification1) GetType() string {
@@ -4279,6 +4774,17 @@ type GetDeploymentDomain1 struct {
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
 	Verification []GetDeploymentVerification1 `json:"verification,omitempty"`
+}
+
+func (g GetDeploymentDomain1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentDomain1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "apexName", "projectId", "verified"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentDomain1) GetName() string {
@@ -4380,6 +4886,17 @@ type GetDeploymentCustomEnvironment1 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 }
 
+func (g GetDeploymentCustomEnvironment1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCustomEnvironment1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug", "type", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentCustomEnvironment1) GetID() string {
 	if o == nil {
 		return ""
@@ -4477,17 +4994,17 @@ func CreateGetDeploymentCustomEnvironmentUnion1GetDeploymentCustomEnvironment2(g
 
 func (u *GetDeploymentCustomEnvironmentUnion1) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentCustomEnvironment2 GetDeploymentCustomEnvironment2 = GetDeploymentCustomEnvironment2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment2, "", true, true); err == nil {
-		u.GetDeploymentCustomEnvironment2 = &getDeploymentCustomEnvironment2
-		u.Type = GetDeploymentCustomEnvironmentUnion1TypeGetDeploymentCustomEnvironment2
+	var getDeploymentCustomEnvironment1 GetDeploymentCustomEnvironment1 = GetDeploymentCustomEnvironment1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment1, "", true, nil); err == nil {
+		u.GetDeploymentCustomEnvironment1 = &getDeploymentCustomEnvironment1
+		u.Type = GetDeploymentCustomEnvironmentUnion1TypeGetDeploymentCustomEnvironment1
 		return nil
 	}
 
-	var getDeploymentCustomEnvironment1 GetDeploymentCustomEnvironment1 = GetDeploymentCustomEnvironment1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment1, "", true, true); err == nil {
-		u.GetDeploymentCustomEnvironment1 = &getDeploymentCustomEnvironment1
-		u.Type = GetDeploymentCustomEnvironmentUnion1TypeGetDeploymentCustomEnvironment1
+	var getDeploymentCustomEnvironment2 GetDeploymentCustomEnvironment2 = GetDeploymentCustomEnvironment2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentCustomEnvironment2, "", true, nil); err == nil {
+		u.GetDeploymentCustomEnvironment2 = &getDeploymentCustomEnvironment2
+		u.Type = GetDeploymentCustomEnvironmentUnion1TypeGetDeploymentCustomEnvironment2
 		return nil
 	}
 
@@ -4534,6 +5051,17 @@ type GetDeploymentAliasWarning1 struct {
 	Message string  `json:"message"`
 	Link    *string `json:"link,omitempty"`
 	Action  *string `json:"action,omitempty"`
+}
+
+func (g GetDeploymentAliasWarning1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentAliasWarning1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"code", "message"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentAliasWarning1) GetCode() string {
@@ -4628,6 +5156,17 @@ func (e *GetDeploymentTypeLambdas1) UnmarshalJSON(data []byte) error {
 type GetDeploymentAliasError1 struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
+}
+
+func (g GetDeploymentAliasError1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentAliasError1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"code", "message"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentAliasError1) GetCode() string {
@@ -4738,6 +5277,17 @@ type GetDeploymentGitSourceBitbucket3 struct {
 	RepoUUID      string                               `json:"repoUuid"`
 }
 
+func (g GetDeploymentGitSourceBitbucket3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceBitbucket3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "workspaceUuid", "repoUuid"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceBitbucket3) GetType() GetDeploymentGitSourceTypeBitbucket3 {
 	if o == nil {
 		return GetDeploymentGitSourceTypeBitbucket3("")
@@ -4817,6 +5367,17 @@ type GetDeploymentGitSourceGitlab2 struct {
 	ProjectID float64                           `json:"projectId"`
 }
 
+func (g GetDeploymentGitSourceGitlab2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGitlab2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceGitlab2) GetType() GetDeploymentGitSourceTypeGitlab2 {
 	if o == nil {
 		return GetDeploymentGitSourceTypeGitlab2("")
@@ -4875,6 +5436,17 @@ type GetDeploymentGitSourceGithubLimited3 struct {
 	RepoID float64                         `json:"repoId"`
 	Org    *string                         `json:"org,omitempty"`
 	Repo   *string                         `json:"repo,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubLimited3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubLimited3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubLimited3) GetType() GetDeploymentTypeGithubLimited3 {
@@ -4950,6 +5522,17 @@ type GetDeploymentGitSourceGithubCustomHost3 struct {
 	RepoID float64                            `json:"repoId"`
 	Org    *string                            `json:"org,omitempty"`
 	Repo   *string                            `json:"repo,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubCustomHost3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubCustomHost3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "host", "ref", "sha", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubCustomHost3) GetType() GetDeploymentTypeGithubCustomHost3 {
@@ -5033,6 +5616,17 @@ type GetDeploymentGitSourceGithub3 struct {
 	Repo   *string                           `json:"repo,omitempty"`
 }
 
+func (g GetDeploymentGitSourceGithub3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithub3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "repoId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceGithub3) GetType() GetDeploymentGitSourceTypeGithub3 {
 	if o == nil {
 		return GetDeploymentGitSourceTypeGithub3("")
@@ -5106,6 +5700,17 @@ type GetDeploymentGitSourceCustom1 struct {
 	GitURL string                   `json:"gitUrl"`
 }
 
+func (g GetDeploymentGitSourceCustom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceCustom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ref", "sha", "gitUrl"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitSourceCustom1) GetType() GetDeploymentTypeCustom1 {
 	if o == nil {
 		return GetDeploymentTypeCustom1("")
@@ -5164,6 +5769,17 @@ type GetDeploymentGitSourceBitbucket2 struct {
 	Ref   *string                              `json:"ref,omitempty"`
 	Sha   *string                              `json:"sha,omitempty"`
 	PrID  *float64                             `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceBitbucket2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceBitbucket2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "owner", "slug"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceBitbucket2) GetType() GetDeploymentGitSourceTypeBitbucket2 {
@@ -5238,6 +5854,17 @@ type GetDeploymentGitSourceBitbucket1 struct {
 	Ref           *string                              `json:"ref,omitempty"`
 	Sha           *string                              `json:"sha,omitempty"`
 	PrID          *float64                             `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceBitbucket1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceBitbucket1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "repoUuid"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceBitbucket1) GetType() GetDeploymentGitSourceTypeBitbucket1 {
@@ -5340,14 +5967,14 @@ func CreateGetDeploymentProjectID1Number(number float64) GetDeploymentProjectID1
 func (u *GetDeploymentProjectID1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentProjectID1TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentProjectID1TypeNumber
 		return nil
@@ -5374,6 +6001,17 @@ type GetDeploymentGitSourceGitlab1 struct {
 	Ref       *string                           `json:"ref,omitempty"`
 	Sha       *string                           `json:"sha,omitempty"`
 	PrID      *float64                          `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGitlab1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGitlab1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGitlab1) GetType() GetDeploymentGitSourceTypeGitlab1 {
@@ -5441,6 +6079,17 @@ type GetDeploymentGitSourceGithubLimited2 struct {
 	Ref  *string                         `json:"ref,omitempty"`
 	Sha  *string                         `json:"sha,omitempty"`
 	PrID *float64                        `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubLimited2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubLimited2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "org", "repo"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubLimited2) GetType() GetDeploymentTypeGithubLimited2 {
@@ -5543,14 +6192,14 @@ func CreateGetDeploymentRepoID3Number(number float64) GetDeploymentRepoID3 {
 func (u *GetDeploymentRepoID3) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentRepoID3TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentRepoID3TypeNumber
 		return nil
@@ -5577,6 +6226,17 @@ type GetDeploymentGitSourceGithubLimited1 struct {
 	Ref    *string                         `json:"ref,omitempty"`
 	Sha    *string                         `json:"sha,omitempty"`
 	PrID   *float64                        `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubLimited1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubLimited1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubLimited1) GetType() GetDeploymentTypeGithubLimited1 {
@@ -5645,6 +6305,17 @@ type GetDeploymentGitSourceGithubCustomHost2 struct {
 	Ref  *string                            `json:"ref,omitempty"`
 	Sha  *string                            `json:"sha,omitempty"`
 	PrID *float64                           `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubCustomHost2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubCustomHost2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "host", "org", "repo"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubCustomHost2) GetType() GetDeploymentTypeGithubCustomHost2 {
@@ -5754,14 +6425,14 @@ func CreateGetDeploymentRepoID2Number(number float64) GetDeploymentRepoID2 {
 func (u *GetDeploymentRepoID2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentRepoID2TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentRepoID2TypeNumber
 		return nil
@@ -5789,6 +6460,17 @@ type GetDeploymentGitSourceGithubCustomHost1 struct {
 	Ref    *string                            `json:"ref,omitempty"`
 	Sha    *string                            `json:"sha,omitempty"`
 	PrID   *float64                           `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithubCustomHost1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithubCustomHost1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "host", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithubCustomHost1) GetType() GetDeploymentTypeGithubCustomHost1 {
@@ -5863,6 +6545,17 @@ type GetDeploymentGitSourceGithub2 struct {
 	Ref  *string                           `json:"ref,omitempty"`
 	Sha  *string                           `json:"sha,omitempty"`
 	PrID *float64                          `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithub2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithub2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "org", "repo"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithub2) GetType() GetDeploymentGitSourceTypeGithub2 {
@@ -5965,14 +6658,14 @@ func CreateGetDeploymentRepoID1Number(number float64) GetDeploymentRepoID1 {
 func (u *GetDeploymentRepoID1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentRepoID1TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentRepoID1TypeNumber
 		return nil
@@ -5999,6 +6692,17 @@ type GetDeploymentGitSourceGithub1 struct {
 	Ref    *string                           `json:"ref,omitempty"`
 	Sha    *string                           `json:"sha,omitempty"`
 	PrID   *float64                          `json:"prId,omitempty"`
+}
+
+func (g GetDeploymentGitSourceGithub1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitSourceGithub1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "repoId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitSourceGithub1) GetType() GetDeploymentGitSourceTypeGithub1 {
@@ -6213,108 +6917,108 @@ func CreateGetDeploymentGitSourceUnion1GetDeploymentGitSourceBitbucket3(getDeplo
 
 func (u *GetDeploymentGitSourceUnion1) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentGitSourceCustom1 GetDeploymentGitSourceCustom1 = GetDeploymentGitSourceCustom1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceCustom1, "", true, true); err == nil {
-		u.GetDeploymentGitSourceCustom1 = &getDeploymentGitSourceCustom1
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceCustom1
-		return nil
-	}
-
-	var getDeploymentGitSourceGitlab2 GetDeploymentGitSourceGitlab2 = GetDeploymentGitSourceGitlab2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab2, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGitlab2 = &getDeploymentGitSourceGitlab2
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGitlab2
-		return nil
-	}
-
-	var getDeploymentGitSourceGitlab1 GetDeploymentGitSourceGitlab1 = GetDeploymentGitSourceGitlab1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab1, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGitlab1 = &getDeploymentGitSourceGitlab1
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGitlab1
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubLimited1 GetDeploymentGitSourceGithubLimited1 = GetDeploymentGitSourceGithubLimited1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited1, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubLimited1 = &getDeploymentGitSourceGithubLimited1
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubLimited1
-		return nil
-	}
-
-	var getDeploymentGitSourceGithub1 GetDeploymentGitSourceGithub1 = GetDeploymentGitSourceGithub1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub1, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithub1 = &getDeploymentGitSourceGithub1
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithub1
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubLimited2 GetDeploymentGitSourceGithubLimited2 = GetDeploymentGitSourceGithubLimited2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited2, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubLimited2 = &getDeploymentGitSourceGithubLimited2
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubLimited2
-		return nil
-	}
-
-	var getDeploymentGitSourceBitbucket1 GetDeploymentGitSourceBitbucket1 = GetDeploymentGitSourceBitbucket1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket1, "", true, true); err == nil {
-		u.GetDeploymentGitSourceBitbucket1 = &getDeploymentGitSourceBitbucket1
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceBitbucket1
-		return nil
-	}
-
-	var getDeploymentGitSourceBitbucket2 GetDeploymentGitSourceBitbucket2 = GetDeploymentGitSourceBitbucket2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket2, "", true, true); err == nil {
-		u.GetDeploymentGitSourceBitbucket2 = &getDeploymentGitSourceBitbucket2
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceBitbucket2
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubCustomHost1 GetDeploymentGitSourceGithubCustomHost1 = GetDeploymentGitSourceGithubCustomHost1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost1, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubCustomHost1 = &getDeploymentGitSourceGithubCustomHost1
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubCustomHost1
-		return nil
-	}
-
-	var getDeploymentGitSourceGithub3 GetDeploymentGitSourceGithub3 = GetDeploymentGitSourceGithub3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub3, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithub3 = &getDeploymentGitSourceGithub3
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithub3
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubLimited3 GetDeploymentGitSourceGithubLimited3 = GetDeploymentGitSourceGithubLimited3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited3, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubLimited3 = &getDeploymentGitSourceGithubLimited3
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubLimited3
-		return nil
-	}
-
-	var getDeploymentGitSourceGithub2 GetDeploymentGitSourceGithub2 = GetDeploymentGitSourceGithub2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub2, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithub2 = &getDeploymentGitSourceGithub2
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithub2
-		return nil
-	}
-
-	var getDeploymentGitSourceGithubCustomHost2 GetDeploymentGitSourceGithubCustomHost2 = GetDeploymentGitSourceGithubCustomHost2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost2, "", true, true); err == nil {
-		u.GetDeploymentGitSourceGithubCustomHost2 = &getDeploymentGitSourceGithubCustomHost2
-		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubCustomHost2
-		return nil
-	}
-
 	var getDeploymentGitSourceGithubCustomHost3 GetDeploymentGitSourceGithubCustomHost3 = GetDeploymentGitSourceGithubCustomHost3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost3, "", true, nil); err == nil {
 		u.GetDeploymentGitSourceGithubCustomHost3 = &getDeploymentGitSourceGithubCustomHost3
 		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubCustomHost3
 		return nil
 	}
 
 	var getDeploymentGitSourceBitbucket3 GetDeploymentGitSourceBitbucket3 = GetDeploymentGitSourceBitbucket3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket3, "", true, nil); err == nil {
 		u.GetDeploymentGitSourceBitbucket3 = &getDeploymentGitSourceBitbucket3
 		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceBitbucket3
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubCustomHost2 GetDeploymentGitSourceGithubCustomHost2 = GetDeploymentGitSourceGithubCustomHost2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost2, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubCustomHost2 = &getDeploymentGitSourceGithubCustomHost2
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubCustomHost2
+		return nil
+	}
+
+	var getDeploymentGitSourceCustom1 GetDeploymentGitSourceCustom1 = GetDeploymentGitSourceCustom1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceCustom1, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceCustom1 = &getDeploymentGitSourceCustom1
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceCustom1
+		return nil
+	}
+
+	var getDeploymentGitSourceGithub3 GetDeploymentGitSourceGithub3 = GetDeploymentGitSourceGithub3{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub3, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithub3 = &getDeploymentGitSourceGithub3
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithub3
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubLimited3 GetDeploymentGitSourceGithubLimited3 = GetDeploymentGitSourceGithubLimited3{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited3, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubLimited3 = &getDeploymentGitSourceGithubLimited3
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubLimited3
+		return nil
+	}
+
+	var getDeploymentGitSourceGitlab2 GetDeploymentGitSourceGitlab2 = GetDeploymentGitSourceGitlab2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab2, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGitlab2 = &getDeploymentGitSourceGitlab2
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGitlab2
+		return nil
+	}
+
+	var getDeploymentGitSourceGithub2 GetDeploymentGitSourceGithub2 = GetDeploymentGitSourceGithub2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub2, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithub2 = &getDeploymentGitSourceGithub2
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithub2
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubCustomHost1 GetDeploymentGitSourceGithubCustomHost1 = GetDeploymentGitSourceGithubCustomHost1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubCustomHost1, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubCustomHost1 = &getDeploymentGitSourceGithubCustomHost1
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubCustomHost1
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubLimited2 GetDeploymentGitSourceGithubLimited2 = GetDeploymentGitSourceGithubLimited2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited2, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubLimited2 = &getDeploymentGitSourceGithubLimited2
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubLimited2
+		return nil
+	}
+
+	var getDeploymentGitSourceBitbucket2 GetDeploymentGitSourceBitbucket2 = GetDeploymentGitSourceBitbucket2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket2, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceBitbucket2 = &getDeploymentGitSourceBitbucket2
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceBitbucket2
+		return nil
+	}
+
+	var getDeploymentGitSourceGithub1 GetDeploymentGitSourceGithub1 = GetDeploymentGitSourceGithub1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithub1, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithub1 = &getDeploymentGitSourceGithub1
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithub1
+		return nil
+	}
+
+	var getDeploymentGitSourceGithubLimited1 GetDeploymentGitSourceGithubLimited1 = GetDeploymentGitSourceGithubLimited1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGithubLimited1, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGithubLimited1 = &getDeploymentGitSourceGithubLimited1
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGithubLimited1
+		return nil
+	}
+
+	var getDeploymentGitSourceGitlab1 GetDeploymentGitSourceGitlab1 = GetDeploymentGitSourceGitlab1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceGitlab1, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceGitlab1 = &getDeploymentGitSourceGitlab1
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceGitlab1
+		return nil
+	}
+
+	var getDeploymentGitSourceBitbucket1 GetDeploymentGitSourceBitbucket1 = GetDeploymentGitSourceBitbucket1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitSourceBitbucket1, "", true, nil); err == nil {
+		u.GetDeploymentGitSourceBitbucket1 = &getDeploymentGitSourceBitbucket1
+		u.Type = GetDeploymentGitSourceUnion1TypeGetDeploymentGitSourceBitbucket1
 		return nil
 	}
 
@@ -6434,6 +7138,17 @@ type GetDeploymentProject1 struct {
 	ID        string  `json:"id"`
 	Name      string  `json:"name"`
 	Framework *string `json:"framework,omitempty"`
+}
+
+func (g GetDeploymentProject1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentProject1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentProject1) GetID() string {
@@ -6569,6 +7284,17 @@ type GetDeploymentOidcTokenClaims1 struct {
 	Environment string `json:"environment"`
 }
 
+func (g GetDeploymentOidcTokenClaims1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOidcTokenClaims1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentOidcTokenClaims1) GetIss() string {
 	if o == nil {
 		return ""
@@ -6666,6 +7392,17 @@ type GetDeploymentCron struct {
 	Path     string `json:"path"`
 }
 
+func (g GetDeploymentCron) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentCron) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"schedule", "path"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentCron) GetSchedule() string {
 	if o == nil {
 		return ""
@@ -6746,6 +7483,17 @@ type GetDeploymentExperimentalTrigger struct {
 	InitialDelaySeconds *float64 `json:"initialDelaySeconds,omitempty"`
 }
 
+func (g GetDeploymentExperimentalTrigger) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentExperimentalTrigger) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "topic", "consumer"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentExperimentalTrigger) GetType() GetDeploymentFunctionsType {
 	if o == nil {
 		return GetDeploymentFunctionsType("")
@@ -6796,6 +7544,18 @@ type GetDeploymentFunctions struct {
 	IncludeFiles         *string                            `json:"includeFiles,omitempty"`
 	ExcludeFiles         *string                            `json:"excludeFiles,omitempty"`
 	ExperimentalTriggers []GetDeploymentExperimentalTrigger `json:"experimentalTriggers,omitempty"`
+	SupportsCancellation *bool                              `json:"supportsCancellation,omitempty"`
+}
+
+func (g GetDeploymentFunctions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentFunctions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentFunctions) GetArchitecture() *GetDeploymentArchitecture {
@@ -6847,10 +7607,28 @@ func (o *GetDeploymentFunctions) GetExperimentalTriggers() []GetDeploymentExperi
 	return o.ExperimentalTriggers
 }
 
+func (o *GetDeploymentFunctions) GetSupportsCancellation() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsCancellation
+}
+
 type GetDeploymentRoute3 struct {
 	Src        string  `json:"src"`
 	Continue   bool    `json:"continue"`
 	Middleware float64 `json:"middleware"`
+}
+
+func (g GetDeploymentRoute3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentRoute3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"src", "continue", "middleware"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentRoute3) GetSrc() string {
@@ -6917,6 +7695,17 @@ type GetDeploymentRoute2 struct {
 	Src    *string             `json:"src,omitempty"`
 	Dest   *string             `json:"dest,omitempty"`
 	Status *float64            `json:"status,omitempty"`
+}
+
+func (g GetDeploymentRoute2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentRoute2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"handle"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentRoute2) GetHandle() GetDeploymentHandle {
@@ -7011,14 +7800,14 @@ func CreateGetDeploymentHasEq2Number(number float64) GetDeploymentHasEq2 {
 func (u *GetDeploymentHasEq2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentHasEq2TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentHasEq2TypeNumber
 		return nil
@@ -7051,6 +7840,17 @@ type GetDeploymentHasValue2 struct {
 	Gte  *float64             `json:"gte,omitempty"`
 	Lt   *float64             `json:"lt,omitempty"`
 	Lte  *float64             `json:"lte,omitempty"`
+}
+
+func (g GetDeploymentHasValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentHasValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentHasValue2) GetEq() *GetDeploymentHasEq2 {
@@ -7165,14 +7965,14 @@ func CreateGetDeploymentHasValueUnion2GetDeploymentHasValue2(getDeploymentHasVal
 func (u *GetDeploymentHasValueUnion2) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentHasValue2 GetDeploymentHasValue2 = GetDeploymentHasValue2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue2, "", true, nil); err == nil {
 		u.GetDeploymentHasValue2 = &getDeploymentHasValue2
 		u.Type = GetDeploymentHasValueUnion2TypeGetDeploymentHasValue2
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentHasValueUnion2TypeStr
 		return nil
@@ -7197,6 +7997,17 @@ type GetDeploymentHas struct {
 	Type  GetDeploymentHasType         `json:"type"`
 	Key   string                       `json:"key"`
 	Value *GetDeploymentHasValueUnion2 `json:"value,omitempty"`
+}
+
+func (g GetDeploymentHas) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentHas) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentHas) GetType() GetDeploymentHasType {
@@ -7278,14 +8089,14 @@ func CreateGetDeploymentHasEq1Number(number float64) GetDeploymentHasEq1 {
 func (u *GetDeploymentHasEq1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentHasEq1TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentHasEq1TypeNumber
 		return nil
@@ -7318,6 +8129,17 @@ type GetDeploymentHasValue1 struct {
 	Gte  *float64             `json:"gte,omitempty"`
 	Lt   *float64             `json:"lt,omitempty"`
 	Lte  *float64             `json:"lte,omitempty"`
+}
+
+func (g GetDeploymentHasValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentHasValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentHasValue1) GetEq() *GetDeploymentHasEq1 {
@@ -7432,14 +8254,14 @@ func CreateGetDeploymentHasValueUnion1GetDeploymentHasValue1(getDeploymentHasVal
 func (u *GetDeploymentHasValueUnion1) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentHasValue1 GetDeploymentHasValue1 = GetDeploymentHasValue1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue1, "", true, nil); err == nil {
 		u.GetDeploymentHasValue1 = &getDeploymentHasValue1
 		u.Type = GetDeploymentHasValueUnion1TypeGetDeploymentHasValue1
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentHasValueUnion1TypeStr
 		return nil
@@ -7463,6 +8285,17 @@ func (u GetDeploymentHasValueUnion1) MarshalJSON() ([]byte, error) {
 type GetDeploymentHasHost struct {
 	Type  GetDeploymentHasTypeHost    `json:"type"`
 	Value GetDeploymentHasValueUnion1 `json:"value"`
+}
+
+func (g GetDeploymentHasHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentHasHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentHasHost) GetType() GetDeploymentHasTypeHost {
@@ -7514,14 +8347,14 @@ func CreateGetDeploymentHasUnionGetDeploymentHas(getDeploymentHas GetDeploymentH
 func (u *GetDeploymentHasUnion) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentHasHost GetDeploymentHasHost = GetDeploymentHasHost{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentHasHost, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentHasHost, "", true, nil); err == nil {
 		u.GetDeploymentHasHost = &getDeploymentHasHost
 		u.Type = GetDeploymentHasUnionTypeGetDeploymentHasHost
 		return nil
 	}
 
 	var getDeploymentHas GetDeploymentHas = GetDeploymentHas{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentHas, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentHas, "", true, nil); err == nil {
 		u.GetDeploymentHas = &getDeploymentHas
 		u.Type = GetDeploymentHasUnionTypeGetDeploymentHas
 		return nil
@@ -7606,14 +8439,14 @@ func CreateGetDeploymentMissingEq2Number(number float64) GetDeploymentMissingEq2
 func (u *GetDeploymentMissingEq2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentMissingEq2TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentMissingEq2TypeNumber
 		return nil
@@ -7646,6 +8479,17 @@ type GetDeploymentMissingValue2 struct {
 	Gte  *float64                 `json:"gte,omitempty"`
 	Lt   *float64                 `json:"lt,omitempty"`
 	Lte  *float64                 `json:"lte,omitempty"`
+}
+
+func (g GetDeploymentMissingValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentMissingValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentMissingValue2) GetEq() *GetDeploymentMissingEq2 {
@@ -7760,14 +8604,14 @@ func CreateGetDeploymentMissingValueUnion2GetDeploymentMissingValue2(getDeployme
 func (u *GetDeploymentMissingValueUnion2) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentMissingValue2 GetDeploymentMissingValue2 = GetDeploymentMissingValue2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue2, "", true, nil); err == nil {
 		u.GetDeploymentMissingValue2 = &getDeploymentMissingValue2
 		u.Type = GetDeploymentMissingValueUnion2TypeGetDeploymentMissingValue2
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentMissingValueUnion2TypeStr
 		return nil
@@ -7792,6 +8636,17 @@ type GetDeploymentMissing struct {
 	Type  GetDeploymentMissingType         `json:"type"`
 	Key   string                           `json:"key"`
 	Value *GetDeploymentMissingValueUnion2 `json:"value,omitempty"`
+}
+
+func (g GetDeploymentMissing) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentMissing) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentMissing) GetType() GetDeploymentMissingType {
@@ -7873,14 +8728,14 @@ func CreateGetDeploymentMissingEq1Number(number float64) GetDeploymentMissingEq1
 func (u *GetDeploymentMissingEq1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentMissingEq1TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentMissingEq1TypeNumber
 		return nil
@@ -7913,6 +8768,17 @@ type GetDeploymentMissingValue1 struct {
 	Gte  *float64                 `json:"gte,omitempty"`
 	Lt   *float64                 `json:"lt,omitempty"`
 	Lte  *float64                 `json:"lte,omitempty"`
+}
+
+func (g GetDeploymentMissingValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentMissingValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentMissingValue1) GetEq() *GetDeploymentMissingEq1 {
@@ -8027,14 +8893,14 @@ func CreateGetDeploymentMissingValueUnion1GetDeploymentMissingValue1(getDeployme
 func (u *GetDeploymentMissingValueUnion1) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentMissingValue1 GetDeploymentMissingValue1 = GetDeploymentMissingValue1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue1, "", true, nil); err == nil {
 		u.GetDeploymentMissingValue1 = &getDeploymentMissingValue1
 		u.Type = GetDeploymentMissingValueUnion1TypeGetDeploymentMissingValue1
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentMissingValueUnion1TypeStr
 		return nil
@@ -8058,6 +8924,17 @@ func (u GetDeploymentMissingValueUnion1) MarshalJSON() ([]byte, error) {
 type GetDeploymentMissingHost struct {
 	Type  GetDeploymentMissingTypeHost    `json:"type"`
 	Value GetDeploymentMissingValueUnion1 `json:"value"`
+}
+
+func (g GetDeploymentMissingHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentMissingHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentMissingHost) GetType() GetDeploymentMissingTypeHost {
@@ -8109,14 +8986,14 @@ func CreateGetDeploymentMissingUnionGetDeploymentMissing(getDeploymentMissing Ge
 func (u *GetDeploymentMissingUnion) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentMissingHost GetDeploymentMissingHost = GetDeploymentMissingHost{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMissingHost, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentMissingHost, "", true, nil); err == nil {
 		u.GetDeploymentMissingHost = &getDeploymentMissingHost
 		u.Type = GetDeploymentMissingUnionTypeGetDeploymentMissingHost
 		return nil
 	}
 
 	var getDeploymentMissing GetDeploymentMissing = GetDeploymentMissing{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMissing, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentMissing, "", true, nil); err == nil {
 		u.GetDeploymentMissing = &getDeploymentMissing
 		u.Type = GetDeploymentMissingUnionTypeGetDeploymentMissing
 		return nil
@@ -8165,6 +9042,17 @@ func (e *GetDeploymentAction) UnmarshalJSON(data []byte) error {
 
 type GetDeploymentMitigate struct {
 	Action GetDeploymentAction `json:"action"`
+}
+
+func (g GetDeploymentMitigate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentMitigate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentMitigate) GetAction() GetDeploymentAction {
@@ -8267,14 +9155,14 @@ func CreateGetDeploymentKeyEqNumber(number float64) GetDeploymentKeyEq {
 func (u *GetDeploymentKeyEq) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentKeyEqTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentKeyEqTypeNumber
 		return nil
@@ -8306,6 +9194,17 @@ type GetDeploymentKey struct {
 	Gte  *float64            `json:"gte,omitempty"`
 	Lt   *float64            `json:"lt,omitempty"`
 	Lte  *float64            `json:"lte,omitempty"`
+}
+
+func (g GetDeploymentKey) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentKey) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentKey) GetEq() *GetDeploymentKeyEq {
@@ -8413,14 +9312,14 @@ func CreateGetDeploymentKeyUnionGetDeploymentKey(getDeploymentKey GetDeploymentK
 func (u *GetDeploymentKeyUnion) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentKey GetDeploymentKey = GetDeploymentKey{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentKey, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentKey, "", true, nil); err == nil {
 		u.GetDeploymentKey = &getDeploymentKey
 		u.Type = GetDeploymentKeyUnionTypeGetDeploymentKey
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentKeyUnionTypeStr
 		return nil
@@ -8443,6 +9342,17 @@ func (u GetDeploymentKeyUnion) MarshalJSON() ([]byte, error) {
 
 type GetDeploymentRouteTarget struct {
 	Key GetDeploymentKeyUnion `json:"key"`
+}
+
+func (g GetDeploymentRouteTarget) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentRouteTarget) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentRouteTarget) GetKey() GetDeploymentKeyUnion {
@@ -8487,14 +9397,14 @@ func CreateGetDeploymentArgsArrayOfStr(arrayOfStr []string) GetDeploymentArgs {
 func (u *GetDeploymentArgs) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentArgsTypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = GetDeploymentArgsTypeArrayOfStr
 		return nil
@@ -8520,6 +9430,17 @@ type GetDeploymentTransform struct {
 	Op     GetDeploymentOp            `json:"op"`
 	Target GetDeploymentRouteTarget   `json:"target"`
 	Args   *GetDeploymentArgs         `json:"args,omitempty"`
+}
+
+func (g GetDeploymentTransform) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentTransform) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "op", "target"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentTransform) GetType() GetDeploymentTransformType {
@@ -8553,6 +9474,17 @@ func (o *GetDeploymentTransform) GetArgs() *GetDeploymentArgs {
 type GetDeploymentLocale struct {
 	Redirect map[string]string `json:"redirect,omitempty"`
 	Cookie   *string           `json:"cookie,omitempty"`
+}
+
+func (g GetDeploymentLocale) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentLocale) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentLocale) GetRedirect() map[string]string {
@@ -8591,6 +9523,17 @@ type GetDeploymentRoute1 struct {
 	MiddlewareRawSrc []string `json:"middlewareRawSrc,omitempty"`
 	// A middleware index in the `middleware` key under the build result
 	Middleware *float64 `json:"middleware,omitempty"`
+}
+
+func (g GetDeploymentRoute1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentRoute1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"src"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentRoute1) GetSrc() string {
@@ -8765,23 +9708,23 @@ func CreateGetDeploymentRouteUnionGetDeploymentRoute3(getDeploymentRoute3 GetDep
 func (u *GetDeploymentRouteUnion) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentRoute3 GetDeploymentRoute3 = GetDeploymentRoute3{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentRoute3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentRoute3, "", true, nil); err == nil {
 		u.GetDeploymentRoute3 = &getDeploymentRoute3
 		u.Type = GetDeploymentRouteUnionTypeGetDeploymentRoute3
 		return nil
 	}
 
-	var getDeploymentRoute2 GetDeploymentRoute2 = GetDeploymentRoute2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentRoute2, "", true, true); err == nil {
-		u.GetDeploymentRoute2 = &getDeploymentRoute2
-		u.Type = GetDeploymentRouteUnionTypeGetDeploymentRoute2
+	var getDeploymentRoute1 GetDeploymentRoute1 = GetDeploymentRoute1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentRoute1, "", true, nil); err == nil {
+		u.GetDeploymentRoute1 = &getDeploymentRoute1
+		u.Type = GetDeploymentRouteUnionTypeGetDeploymentRoute1
 		return nil
 	}
 
-	var getDeploymentRoute1 GetDeploymentRoute1 = GetDeploymentRoute1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentRoute1, "", true, true); err == nil {
-		u.GetDeploymentRoute1 = &getDeploymentRoute1
-		u.Type = GetDeploymentRouteUnionTypeGetDeploymentRoute1
+	var getDeploymentRoute2 GetDeploymentRoute2 = GetDeploymentRoute2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentRoute2, "", true, nil); err == nil {
+		u.GetDeploymentRoute2 = &getDeploymentRoute2
+		u.Type = GetDeploymentRouteUnionTypeGetDeploymentRoute2
 		return nil
 	}
 
@@ -8864,6 +9807,17 @@ type GetDeploymentGitRepoBitbucket struct {
 	Name          string                            `json:"name"`
 	Private       bool                              `json:"private"`
 	OwnerType     GetDeploymentOwnerType3           `json:"ownerType"`
+}
+
+func (g GetDeploymentGitRepoBitbucket) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitRepoBitbucket) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"owner", "repoUuid", "slug", "type", "workspaceUuid", "path", "defaultBranch", "name", "private", "ownerType"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentGitRepoBitbucket) GetOwner() string {
@@ -8998,6 +9952,17 @@ type GetDeploymentGitRepoGithub struct {
 	OwnerType     GetDeploymentOwnerType2        `json:"ownerType"`
 }
 
+func (g GetDeploymentGitRepoGithub) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitRepoGithub) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"org", "repo", "repoId", "type", "repoOwnerId", "path", "defaultBranch", "name", "private", "ownerType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitRepoGithub) GetOrg() string {
 	if o == nil {
 		return ""
@@ -9129,6 +10094,17 @@ type GetDeploymentGitRepoGitlab struct {
 	OwnerType     GetDeploymentOwnerType1        `json:"ownerType"`
 }
 
+func (g GetDeploymentGitRepoGitlab) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentGitRepoGitlab) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"namespace", "projectId", "type", "url", "path", "defaultBranch", "name", "private", "ownerType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentGitRepoGitlab) GetNamespace() string {
 	if o == nil {
 		return ""
@@ -9237,24 +10213,24 @@ func CreateGetDeploymentGitRepoUnionGetDeploymentGitRepoBitbucket(getDeploymentG
 
 func (u *GetDeploymentGitRepoUnion) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentGitRepoGitlab GetDeploymentGitRepoGitlab = GetDeploymentGitRepoGitlab{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitRepoGitlab, "", true, true); err == nil {
-		u.GetDeploymentGitRepoGitlab = &getDeploymentGitRepoGitlab
-		u.Type = GetDeploymentGitRepoUnionTypeGetDeploymentGitRepoGitlab
-		return nil
-	}
-
 	var getDeploymentGitRepoGithub GetDeploymentGitRepoGithub = GetDeploymentGitRepoGithub{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitRepoGithub, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitRepoGithub, "", true, nil); err == nil {
 		u.GetDeploymentGitRepoGithub = &getDeploymentGitRepoGithub
 		u.Type = GetDeploymentGitRepoUnionTypeGetDeploymentGitRepoGithub
 		return nil
 	}
 
 	var getDeploymentGitRepoBitbucket GetDeploymentGitRepoBitbucket = GetDeploymentGitRepoBitbucket{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentGitRepoBitbucket, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitRepoBitbucket, "", true, nil); err == nil {
 		u.GetDeploymentGitRepoBitbucket = &getDeploymentGitRepoBitbucket
 		u.Type = GetDeploymentGitRepoUnionTypeGetDeploymentGitRepoBitbucket
+		return nil
+	}
+
+	var getDeploymentGitRepoGitlab GetDeploymentGitRepoGitlab = GetDeploymentGitRepoGitlab{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentGitRepoGitlab, "", true, nil); err == nil {
+		u.GetDeploymentGitRepoGitlab = &getDeploymentGitRepoGitlab
+		u.Type = GetDeploymentGitRepoUnionTypeGetDeploymentGitRepoGitlab
 		return nil
 	}
 
@@ -9281,9 +10257,31 @@ func (u GetDeploymentGitRepoUnion) MarshalJSON() ([]byte, error) {
 type GetDeploymentFlags2 struct {
 }
 
+func (g GetDeploymentFlags2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentFlags2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type GetDeploymentOption struct {
 	Value *components.FlagJSONValue `json:"value"`
 	Label *string                   `json:"label,omitempty"`
+}
+
+func (g GetDeploymentOption) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentOption) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentOption) GetValue() *components.FlagJSONValue {
@@ -9304,6 +10302,17 @@ type GetDeploymentDefinitions struct {
 	Options     []GetDeploymentOption `json:"options,omitempty"`
 	URL         *string               `json:"url,omitempty"`
 	Description *string               `json:"description,omitempty"`
+}
+
+func (g GetDeploymentDefinitions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentDefinitions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentDefinitions) GetOptions() []GetDeploymentOption {
@@ -9330,6 +10339,17 @@ func (o *GetDeploymentDefinitions) GetDescription() *string {
 // GetDeploymentFlags1 - Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
 type GetDeploymentFlags1 struct {
 	Definitions map[string]GetDeploymentDefinitions `json:"definitions"`
+}
+
+func (g GetDeploymentFlags1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentFlags1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"definitions"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentFlags1) GetDefinitions() map[string]GetDeploymentDefinitions {
@@ -9374,14 +10394,14 @@ func CreateGetDeploymentFlagsUnionArrayOfGetDeploymentFlags2(arrayOfGetDeploymen
 func (u *GetDeploymentFlagsUnion) UnmarshalJSON(data []byte) error {
 
 	var getDeploymentFlags1 GetDeploymentFlags1 = GetDeploymentFlags1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentFlags1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDeploymentFlags1, "", true, nil); err == nil {
 		u.GetDeploymentFlags1 = &getDeploymentFlags1
 		u.Type = GetDeploymentFlagsUnionTypeGetDeploymentFlags1
 		return nil
 	}
 
 	var arrayOfGetDeploymentFlags2 []GetDeploymentFlags2 = []GetDeploymentFlags2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetDeploymentFlags2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetDeploymentFlags2, "", true, nil); err == nil {
 		u.ArrayOfGetDeploymentFlags2 = arrayOfGetDeploymentFlags2
 		u.Type = GetDeploymentFlagsUnionTypeArrayOfGetDeploymentFlags2
 		return nil
@@ -9410,6 +10430,17 @@ type GetDeploymentApplications struct {
 	// Use the fixed deploymentAlias and deploymentHost so that the microfrontend preview stays in sync with the deployment. These are only present for mono-repos when a single commit creates multiple deployments. If they are not present, productionHost will be used.
 	DeploymentAlias *string `json:"deploymentAlias,omitempty"`
 	DeploymentHost  *string `json:"deploymentHost,omitempty"`
+}
+
+func (g GetDeploymentApplications) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentApplications) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"productionHost"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentApplications) GetIsDefaultApp() *bool {
@@ -9452,6 +10483,17 @@ type GetDeploymentMicrofrontends2 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+}
+
+func (g GetDeploymentMicrofrontends2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentMicrofrontends2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"isDefaultApp", "defaultAppProjectName", "groupIds"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentMicrofrontends2) GetApplications() map[string]GetDeploymentApplications {
@@ -9507,6 +10549,17 @@ type GetDeploymentMicrofrontends1 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+}
+
+func (g GetDeploymentMicrofrontends1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentMicrofrontends1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"defaultAppProjectName", "groupIds"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentMicrofrontends1) GetIsDefaultApp() *bool {
@@ -9578,17 +10631,17 @@ func CreateGetDeploymentMicrofrontendsUnionGetDeploymentMicrofrontends2(getDeplo
 
 func (u *GetDeploymentMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentMicrofrontends1 GetDeploymentMicrofrontends1 = GetDeploymentMicrofrontends1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMicrofrontends1, "", true, true); err == nil {
-		u.GetDeploymentMicrofrontends1 = &getDeploymentMicrofrontends1
-		u.Type = GetDeploymentMicrofrontendsUnionTypeGetDeploymentMicrofrontends1
+	var getDeploymentMicrofrontends2 GetDeploymentMicrofrontends2 = GetDeploymentMicrofrontends2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentMicrofrontends2, "", true, nil); err == nil {
+		u.GetDeploymentMicrofrontends2 = &getDeploymentMicrofrontends2
+		u.Type = GetDeploymentMicrofrontendsUnionTypeGetDeploymentMicrofrontends2
 		return nil
 	}
 
-	var getDeploymentMicrofrontends2 GetDeploymentMicrofrontends2 = GetDeploymentMicrofrontends2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMicrofrontends2, "", true, true); err == nil {
-		u.GetDeploymentMicrofrontends2 = &getDeploymentMicrofrontends2
-		u.Type = GetDeploymentMicrofrontendsUnionTypeGetDeploymentMicrofrontends2
+	var getDeploymentMicrofrontends1 GetDeploymentMicrofrontends1 = GetDeploymentMicrofrontends1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentMicrofrontends1, "", true, nil); err == nil {
+		u.GetDeploymentMicrofrontends1 = &getDeploymentMicrofrontends1
+		u.Type = GetDeploymentMicrofrontendsUnionTypeGetDeploymentMicrofrontends1
 		return nil
 	}
 
@@ -9671,6 +10724,17 @@ type GetDeploymentConfig struct {
 	SecureComputePrimaryRegion  *string                         `json:"secureComputePrimaryRegion"`
 	SecureComputeFallbackRegion *string                         `json:"secureComputeFallbackRegion"`
 	IsUsingActiveCPU            *bool                           `json:"isUsingActiveCPU,omitempty"`
+}
+
+func (g GetDeploymentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"functionType", "functionMemoryType", "functionTimeout", "secureComputePrimaryRegion", "secureComputeFallbackRegion"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentConfig) GetVersion() *float64 {
@@ -9758,6 +10822,17 @@ type GetDeploymentDeploymentAlias struct {
 	CompletedAt *float64           `json:"completedAt,omitempty"`
 }
 
+func (g GetDeploymentDeploymentAlias) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentDeploymentAlias) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"state", "startedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentDeploymentAlias) GetState() GetDeploymentState {
 	if o == nil {
 		return GetDeploymentState("")
@@ -9782,6 +10857,17 @@ func (o *GetDeploymentDeploymentAlias) GetCompletedAt() *float64 {
 type GetDeploymentChecks struct {
 	// Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
 	DeploymentAlias GetDeploymentDeploymentAlias `json:"deployment-alias"`
+}
+
+func (g GetDeploymentChecks) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentChecks) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"deployment-alias"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDeploymentChecks) GetDeploymentAlias() GetDeploymentDeploymentAlias {
@@ -9884,6 +10970,17 @@ type Lambdas1 struct {
 	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 	Config *GetDeploymentConfig `json:"config,omitempty"`
 	Checks *GetDeploymentChecks `json:"checks,omitempty"`
+}
+
+func (l Lambdas1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *Lambdas1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"build", "env", "inspectorUrl", "isInConcurrentBuildsQueue", "isInSystemBuildsQueue", "projectSettings", "aliasAssigned", "bootedAt", "buildingAt", "buildSkipped", "creator", "public", "status", "id", "createdAt", "readyState", "name", "type", "meta", "regions", "url", "version", "projectId", "plan", "createdIn", "ownerId", "routes"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Lambdas1) GetAliasAssignedAt() *GetDeploymentAliasAssignedAt {
@@ -10503,17 +11600,17 @@ func CreateGetDeploymentResponseBodyLambdas2(lambdas2 Lambdas2) GetDeploymentRes
 
 func (u *GetDeploymentResponseBody) UnmarshalJSON(data []byte) error {
 
-	var lambdas2 Lambdas2 = Lambdas2{}
-	if err := utils.UnmarshalJSON(data, &lambdas2, "", true, true); err == nil {
-		u.Lambdas2 = &lambdas2
-		u.Type = GetDeploymentResponseBodyTypeLambdas2
+	var lambdas1 Lambdas1 = Lambdas1{}
+	if err := utils.UnmarshalJSON(data, &lambdas1, "", true, nil); err == nil {
+		u.Lambdas1 = &lambdas1
+		u.Type = GetDeploymentResponseBodyTypeLambdas1
 		return nil
 	}
 
-	var lambdas1 Lambdas1 = Lambdas1{}
-	if err := utils.UnmarshalJSON(data, &lambdas1, "", true, true); err == nil {
-		u.Lambdas1 = &lambdas1
-		u.Type = GetDeploymentResponseBodyTypeLambdas1
+	var lambdas2 Lambdas2 = Lambdas2{}
+	if err := utils.UnmarshalJSON(data, &lambdas2, "", true, nil); err == nil {
+		u.Lambdas2 = &lambdas2
+		u.Type = GetDeploymentResponseBodyTypeLambdas2
 		return nil
 	}
 

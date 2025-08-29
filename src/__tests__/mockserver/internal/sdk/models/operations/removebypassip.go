@@ -17,6 +17,17 @@ type RemoveBypassIPRequestBody2 struct {
 	Note         *string `json:"note,omitempty"`
 }
 
+func (r RemoveBypassIPRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveBypassIPRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"projectScope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveBypassIPRequestBody2) GetDomain() *string {
 	if o == nil {
 		return nil
@@ -58,6 +69,17 @@ type RemoveBypassIPRequestBody1 struct {
 	SourceIP     *string `json:"sourceIp,omitempty"`
 	AllSources   *bool   `json:"allSources,omitempty"`
 	Note         *string `json:"note,omitempty"`
+}
+
+func (r RemoveBypassIPRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveBypassIPRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"domain"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveBypassIPRequestBody1) GetDomain() string {
@@ -130,14 +152,14 @@ func CreateRemoveBypassIPRequestBodyRemoveBypassIPRequestBody2(removeBypassIPReq
 func (u *RemoveBypassIPRequestBody) UnmarshalJSON(data []byte) error {
 
 	var removeBypassIPRequestBody1 RemoveBypassIPRequestBody1 = RemoveBypassIPRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &removeBypassIPRequestBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeBypassIPRequestBody1, "", true, nil); err == nil {
 		u.RemoveBypassIPRequestBody1 = &removeBypassIPRequestBody1
 		u.Type = RemoveBypassIPRequestBodyTypeRemoveBypassIPRequestBody1
 		return nil
 	}
 
 	var removeBypassIPRequestBody2 RemoveBypassIPRequestBody2 = RemoveBypassIPRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &removeBypassIPRequestBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeBypassIPRequestBody2, "", true, nil); err == nil {
 		u.RemoveBypassIPRequestBody2 = &removeBypassIPRequestBody2
 		u.Type = RemoveBypassIPRequestBodyTypeRemoveBypassIPRequestBody2
 		return nil

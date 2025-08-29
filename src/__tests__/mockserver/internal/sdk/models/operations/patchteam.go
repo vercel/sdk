@@ -14,6 +14,17 @@ type Roles struct {
 	AccessGroupID string `json:"accessGroupId"`
 }
 
+func (r Roles) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Roles) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"accessGroupId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Roles) GetAccessGroupID() string {
 	if o == nil {
 		return ""
@@ -100,14 +111,14 @@ func CreateRolesUnionRoles(roles Roles) RolesUnion {
 func (u *RolesUnion) UnmarshalJSON(data []byte) error {
 
 	var roles Roles = Roles{}
-	if err := utils.UnmarshalJSON(data, &roles, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &roles, "", true, nil); err == nil {
 		u.Roles = &roles
 		u.Type = RolesUnionTypeRoles
 		return nil
 	}
 
 	var rolesEnum RolesEnum = RolesEnum("")
-	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, nil); err == nil {
 		u.RolesEnum = &rolesEnum
 		u.Type = RolesUnionTypeRolesEnum
 		return nil
@@ -261,7 +272,7 @@ func (p PatchTeamSsoProtection) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PatchTeamSsoProtection) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -858,21 +858,21 @@ func CreateGetFirewallConfigValueArrayOfStr(arrayOfStr []string) GetFirewallConf
 func (u *GetFirewallConfigValue) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetFirewallConfigValueTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetFirewallConfigValueTypeNumber
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = GetFirewallConfigValueTypeArrayOfStr
 		return nil

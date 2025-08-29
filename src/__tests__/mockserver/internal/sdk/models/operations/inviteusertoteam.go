@@ -118,7 +118,7 @@ func (i InviteUserToTeamRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (i *InviteUserToTeamRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"email"}); err != nil {
 		return err
 	}
 	return nil
@@ -254,24 +254,24 @@ func (e *InviteUserToTeamTeamRole) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TeamPermission - The team permissions of the user
-type TeamPermission string
+// InviteUserToTeamTeamPermission - The team permissions of the user
+type InviteUserToTeamTeamPermission string
 
 const (
-	TeamPermissionCreateProject            TeamPermission = "CreateProject"
-	TeamPermissionFullProductionDeployment TeamPermission = "FullProductionDeployment"
-	TeamPermissionUsageViewer              TeamPermission = "UsageViewer"
-	TeamPermissionEnvVariableManager       TeamPermission = "EnvVariableManager"
-	TeamPermissionEnvironmentManager       TeamPermission = "EnvironmentManager"
-	TeamPermissionV0Builder                TeamPermission = "V0Builder"
-	TeamPermissionV0Chatter                TeamPermission = "V0Chatter"
-	TeamPermissionV0Viewer                 TeamPermission = "V0Viewer"
+	InviteUserToTeamTeamPermissionCreateProject            InviteUserToTeamTeamPermission = "CreateProject"
+	InviteUserToTeamTeamPermissionFullProductionDeployment InviteUserToTeamTeamPermission = "FullProductionDeployment"
+	InviteUserToTeamTeamPermissionUsageViewer              InviteUserToTeamTeamPermission = "UsageViewer"
+	InviteUserToTeamTeamPermissionEnvVariableManager       InviteUserToTeamTeamPermission = "EnvVariableManager"
+	InviteUserToTeamTeamPermissionEnvironmentManager       InviteUserToTeamTeamPermission = "EnvironmentManager"
+	InviteUserToTeamTeamPermissionV0Builder                InviteUserToTeamTeamPermission = "V0Builder"
+	InviteUserToTeamTeamPermissionV0Chatter                InviteUserToTeamTeamPermission = "V0Chatter"
+	InviteUserToTeamTeamPermissionV0Viewer                 InviteUserToTeamTeamPermission = "V0Viewer"
 )
 
-func (e TeamPermission) ToPointer() *TeamPermission {
+func (e InviteUserToTeamTeamPermission) ToPointer() *InviteUserToTeamTeamPermission {
 	return &e
 }
-func (e *TeamPermission) UnmarshalJSON(data []byte) error {
+func (e *InviteUserToTeamTeamPermission) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -292,10 +292,10 @@ func (e *TeamPermission) UnmarshalJSON(data []byte) error {
 	case "V0Chatter":
 		fallthrough
 	case "V0Viewer":
-		*e = TeamPermission(v)
+		*e = InviteUserToTeamTeamPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TeamPermission: %v", v)
+		return fmt.Errorf("invalid value for InviteUserToTeamTeamPermission: %v", v)
 	}
 }
 
@@ -312,7 +312,7 @@ type InviteUserToTeamResponseBody struct {
 	// The team roles of the user
 	TeamRoles []InviteUserToTeamTeamRole `json:"teamRoles,omitempty"`
 	// The team permissions of the user
-	TeamPermissions []TeamPermission `json:"teamPermissions,omitempty"`
+	TeamPermissions []InviteUserToTeamTeamPermission `json:"teamPermissions,omitempty"`
 }
 
 func (o *InviteUserToTeamResponseBody) GetUID() string {
@@ -350,7 +350,7 @@ func (o *InviteUserToTeamResponseBody) GetTeamRoles() []InviteUserToTeamTeamRole
 	return o.TeamRoles
 }
 
-func (o *InviteUserToTeamResponseBody) GetTeamPermissions() []TeamPermission {
+func (o *InviteUserToTeamResponseBody) GetTeamPermissions() []InviteUserToTeamTeamPermission {
 	if o == nil {
 		return nil
 	}

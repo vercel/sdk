@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/utils"
+	"time"
 )
 
 type PaidFeatures struct {
@@ -37,10 +38,49 @@ func (o *PaidFeatures) GetPreviewDeploymentSuffix() *bool {
 	return o.PreviewDeploymentSuffix
 }
 
+type AcceptedPolicies struct {
+	Eula                 time.Time            `json:"eula"`
+	Privacy              time.Time            `json:"privacy"`
+	AdditionalProperties map[string]time.Time `additionalProperties:"true" json:"-"`
+}
+
+func (a AcceptedPolicies) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AcceptedPolicies) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"eula", "privacy"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AcceptedPolicies) GetEula() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.Eula
+}
+
+func (o *AcceptedPolicies) GetPrivacy() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.Privacy
+}
+
+func (o *AcceptedPolicies) GetAdditionalProperties() map[string]time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
 type AcceptProjectTransferRequestRequestBody struct {
 	// The desired name for the project
-	NewProjectName *string       `json:"newProjectName,omitempty"`
-	PaidFeatures   *PaidFeatures `json:"paidFeatures,omitempty"`
+	NewProjectName   *string                     `json:"newProjectName,omitempty"`
+	PaidFeatures     *PaidFeatures               `json:"paidFeatures,omitempty"`
+	AcceptedPolicies map[string]AcceptedPolicies `json:"acceptedPolicies,omitempty"`
 }
 
 func (o *AcceptProjectTransferRequestRequestBody) GetNewProjectName() *string {
@@ -55,6 +95,13 @@ func (o *AcceptProjectTransferRequestRequestBody) GetPaidFeatures() *PaidFeature
 		return nil
 	}
 	return o.PaidFeatures
+}
+
+func (o *AcceptProjectTransferRequestRequestBody) GetAcceptedPolicies() map[string]AcceptedPolicies {
+	if o == nil {
+		return nil
+	}
+	return o.AcceptedPolicies
 }
 
 type AcceptProjectTransferRequestRequest struct {
@@ -98,6 +145,17 @@ func (o *AcceptProjectTransferRequestRequest) GetRequestBody() *AcceptProjectTra
 type AcceptProjectTransferRequestResponseBody2 struct {
 }
 
+func (a AcceptProjectTransferRequestResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AcceptProjectTransferRequestResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type AcceptProjectTransferRequestStatus string
 
 const (
@@ -127,10 +185,32 @@ func (e *AcceptProjectTransferRequestStatus) UnmarshalJSON(data []byte) error {
 type AcceptProjectTransferRequestError struct {
 }
 
+func (a AcceptProjectTransferRequestError) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AcceptProjectTransferRequestError) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type AcceptProjectTransferRequestResult struct {
 	Status AcceptProjectTransferRequestStatus `json:"status"`
 	Error  *AcceptProjectTransferRequestError `json:"error,omitempty"`
 	Code   *string                            `json:"code,omitempty"`
+}
+
+func (a AcceptProjectTransferRequestResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AcceptProjectTransferRequestResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"status"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AcceptProjectTransferRequestResult) GetStatus() AcceptProjectTransferRequestStatus {
@@ -160,6 +240,17 @@ type PartnerCall struct {
 	Result         AcceptProjectTransferRequestResult `json:"result"`
 }
 
+func (p PartnerCall) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PartnerCall) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"installationId", "resourceIds", "result"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PartnerCall) GetInstallationID() string {
 	if o == nil {
 		return ""
@@ -184,9 +275,31 @@ func (o *PartnerCall) GetResult() AcceptProjectTransferRequestResult {
 type ResourceTransferError struct {
 }
 
+func (r ResourceTransferError) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResourceTransferError) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type AcceptProjectTransferRequestResponseBody1 struct {
 	PartnerCalls           []PartnerCall           `json:"partnerCalls"`
 	ResourceTransferErrors []ResourceTransferError `json:"resourceTransferErrors"`
+}
+
+func (a AcceptProjectTransferRequestResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AcceptProjectTransferRequestResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"partnerCalls", "resourceTransferErrors"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AcceptProjectTransferRequestResponseBody1) GetPartnerCalls() []PartnerCall {
@@ -238,17 +351,17 @@ func CreateAcceptProjectTransferRequestResponseBodyAcceptProjectTransferRequestR
 
 func (u *AcceptProjectTransferRequestResponseBody) UnmarshalJSON(data []byte) error {
 
-	var acceptProjectTransferRequestResponseBody2 AcceptProjectTransferRequestResponseBody2 = AcceptProjectTransferRequestResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &acceptProjectTransferRequestResponseBody2, "", true, true); err == nil {
-		u.AcceptProjectTransferRequestResponseBody2 = &acceptProjectTransferRequestResponseBody2
-		u.Type = AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody2
+	var acceptProjectTransferRequestResponseBody1 AcceptProjectTransferRequestResponseBody1 = AcceptProjectTransferRequestResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &acceptProjectTransferRequestResponseBody1, "", true, nil); err == nil {
+		u.AcceptProjectTransferRequestResponseBody1 = &acceptProjectTransferRequestResponseBody1
+		u.Type = AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody1
 		return nil
 	}
 
-	var acceptProjectTransferRequestResponseBody1 AcceptProjectTransferRequestResponseBody1 = AcceptProjectTransferRequestResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &acceptProjectTransferRequestResponseBody1, "", true, true); err == nil {
-		u.AcceptProjectTransferRequestResponseBody1 = &acceptProjectTransferRequestResponseBody1
-		u.Type = AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody1
+	var acceptProjectTransferRequestResponseBody2 AcceptProjectTransferRequestResponseBody2 = AcceptProjectTransferRequestResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &acceptProjectTransferRequestResponseBody2, "", true, nil); err == nil {
+		u.AcceptProjectTransferRequestResponseBody2 = &acceptProjectTransferRequestResponseBody2
+		u.Type = AcceptProjectTransferRequestResponseBodyTypeAcceptProjectTransferRequestResponseBody2
 		return nil
 	}
 

@@ -4354,22 +4354,28 @@
                       "nullable": true,
                       "properties": {
                         "expirationDays": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep non-production deployments (mostly preview deployments) before soft deletion."
                         },
                         "expirationDaysProduction": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep production deployments before soft deletion."
                         },
                         "expirationDaysCanceled": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep canceled deployments before soft deletion."
                         },
                         "expirationDaysErrored": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep errored deployments before soft deletion."
                         },
                         "deploymentsToKeep": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Minimum number of production deployments to keep for this project, even if they are over the production expiration limit."
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "description": "Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects."
                     },
                     "devCommand": {
                       "nullable": true,
@@ -10603,6 +10609,9 @@
                                   "description": "Queue trigger event for Vercel's queue system. Handles \"queue/v1beta\" events with queue-specific configuration."
                                 },
                                 "type": "array"
+                              },
+                              "supportsCancellation": {
+                                "type": "boolean"
                               }
                             },
                             "type": "object"
@@ -13053,11 +13062,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
-                            "timeout",
                             "skipped",
                             "pending",
-                            "ready"
+                            "ready",
+                            "error",
+                            "timeout"
                           ]
                         },
                         "startedAt": {
@@ -13236,8 +13245,8 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "ERROR",
                               "BUILDING",
+                              "ERROR",
                               "INITIALIZING",
                               "READY"
                             ]
@@ -14306,15 +14315,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -14410,6 +14419,9 @@
                               "description": "Queue trigger event for Vercel's queue system. Handles \"queue/v1beta\" events with queue-specific configuration."
                             },
                             "type": "array"
+                          },
+                          "supportsCancellation": {
+                            "type": "boolean"
                           }
                         },
                         "type": "object"
@@ -14803,8 +14815,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "set",
                                         "append",
+                                        "set",
                                         "delete"
                                       ]
                                     },
@@ -14934,12 +14946,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "filesystem",
                                   "error",
+                                  "filesystem",
                                   "hit",
                                   "miss",
-                                  "resource",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -15194,8 +15206,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15247,8 +15259,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15301,8 +15313,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -16215,11 +16227,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
-                            "timeout",
                             "skipped",
                             "pending",
-                            "ready"
+                            "ready",
+                            "error",
+                            "timeout"
                           ]
                         },
                         "startedAt": {
@@ -16398,8 +16410,8 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "ERROR",
                               "BUILDING",
+                              "ERROR",
                               "INITIALIZING",
                               "READY"
                             ]
@@ -16464,10 +16476,10 @@
                         "name": {
                           "type": "string"
                         },
-                        "slug": {
+                        "avatar": {
                           "type": "string"
                         },
-                        "avatar": {
+                        "slug": {
                           "type": "string"
                         }
                       },
@@ -17535,6 +17547,9 @@
                               "description": "Queue trigger event for Vercel's queue system. Handles \"queue/v1beta\" events with queue-specific configuration."
                             },
                             "type": "array"
+                          },
+                          "supportsCancellation": {
+                            "type": "boolean"
                           }
                         },
                         "type": "object"
@@ -17950,8 +17965,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "set",
                                         "append",
+                                        "set",
                                         "delete"
                                       ]
                                     },
@@ -18081,12 +18096,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "filesystem",
                                   "error",
+                                  "filesystem",
                                   "hit",
                                   "miss",
-                                  "resource",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -18165,8 +18180,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -18218,8 +18233,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -18272,8 +18287,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -18466,15 +18481,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -18922,11 +18937,6 @@
                     },
                     "period": {
                       "type": "number",
-                      "enum": [
-                        1,
-                        2,
-                        10
-                      ],
                       "description": "The number of years the domain could be held before paying again.",
                       "example": 1
                     }
@@ -18963,6 +18973,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -24462,6 +24475,207 @@
         ]
       }
     },
+    "/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans": {
+      "get": {
+        "description": "",
+        "security": [],
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "plans": {
+                      "items": {
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "prepayment",
+                              "subscription"
+                            ]
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "scope": {
+                            "type": "string",
+                            "enum": [
+                              "installation",
+                              "resource"
+                            ]
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "paymentMethodRequired": {
+                            "type": "boolean"
+                          },
+                          "preauthorizationAmount": {
+                            "type": "number"
+                          },
+                          "initialCharge": {
+                            "type": "string"
+                          },
+                          "minimumAmount": {
+                            "type": "string"
+                          },
+                          "maximumAmount": {
+                            "type": "string"
+                          },
+                          "maximumAmountAutoPurchasePerPeriod": {
+                            "type": "string"
+                          },
+                          "cost": {
+                            "type": "string"
+                          },
+                          "details": {
+                            "items": {
+                              "properties": {
+                                "label": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "label"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "highlightedDetails": {
+                            "items": {
+                              "properties": {
+                                "label": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "label"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "quote": {
+                            "items": {
+                              "properties": {
+                                "line": {
+                                  "type": "string"
+                                },
+                                "amount": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "line",
+                                "amount"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "effectiveDate": {
+                            "type": "string"
+                          },
+                          "disabled": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "id",
+                          "name",
+                          "scope",
+                          "description",
+                          "paymentMethodRequired"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "plans"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "integrationIdOrSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "productIdOrSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metadata",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/v1/installations/{integrationConfigurationId}/account": {
       "get": {
         "description": "Fetches the best account or user’s contact info",
@@ -26921,7 +27135,8 @@
                               "marketplace",
                               "deploy-button",
                               "external",
-                              "v0"
+                              "v0",
+                              "resource-claims"
                             ],
                             "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
                             "example": "marketplace"
@@ -27108,7 +27323,8 @@
                               "marketplace",
                               "deploy-button",
                               "external",
-                              "v0"
+                              "v0",
+                              "resource-claims"
                             ],
                             "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
                             "example": "marketplace"
@@ -27353,7 +27569,8 @@
                             "marketplace",
                             "deploy-button",
                             "external",
-                            "v0"
+                            "v0",
+                            "resource-claims"
                           ],
                           "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
                           "example": "marketplace"
@@ -27693,7 +27910,8 @@
                             "marketplace",
                             "deploy-button",
                             "external",
-                            "v0"
+                            "v0",
+                            "resource-claims"
                           ],
                           "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
                           "example": "marketplace"
@@ -28231,34 +28449,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "default": {
@@ -28941,34 +29159,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "default": {
@@ -29126,34 +29344,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@447943": {
+                                                "__@BRAND@467029": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@447943"
+                                                "__@BRAND@467029"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@447943": {
+                                                "__@BRAND@467029": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@447943"
+                                                "__@BRAND@467029"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@447943": {
+                                                "__@BRAND@467029": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@447943"
+                                                "__@BRAND@467029"
                                               ]
                                             },
                                             "default": {
@@ -29464,12 +29682,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@447943": {
+                                                  "__@BRAND@467029": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@447943"
+                                                  "__@BRAND@467029"
                                                 ]
                                               },
                                               {
@@ -29477,12 +29695,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@447943": {
+                                                      "__@BRAND@467029": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@447943"
+                                                      "__@BRAND@467029"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -29551,34 +29769,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "default": {
@@ -29736,34 +29954,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@447943": {
+                                                "__@BRAND@467029": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@447943"
+                                                "__@BRAND@467029"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@447943": {
+                                                "__@BRAND@467029": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@447943"
+                                                "__@BRAND@467029"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@447943": {
+                                                "__@BRAND@467029": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@447943"
+                                                "__@BRAND@467029"
                                               ]
                                             },
                                             "default": {
@@ -29852,12 +30070,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@447943": {
+                                                  "__@BRAND@467029": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@447943"
+                                                  "__@BRAND@467029"
                                                 ]
                                               },
                                               {
@@ -29865,12 +30083,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@447943": {
+                                                      "__@BRAND@467029": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@447943"
+                                                      "__@BRAND@467029"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30056,12 +30274,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@447943": {
+                                              "__@BRAND@467029": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@447943"
+                                              "__@BRAND@467029"
                                             ]
                                           },
                                           "type": "array"
@@ -30070,12 +30288,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@447943": {
+                                              "__@BRAND@467029": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@447943"
+                                              "__@BRAND@467029"
                                             ]
                                           },
                                           "type": "array"
@@ -30094,12 +30312,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@447943": {
+                                            "__@BRAND@467029": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@447943"
+                                            "__@BRAND@467029"
                                           ]
                                         },
                                         "disabled": {
@@ -30346,6 +30564,9 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": ""
           },
           "404": {
             "description": "",
@@ -32472,22 +32693,28 @@
                             "nullable": true,
                             "properties": {
                               "expirationDays": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "Number of days to keep non-production deployments (mostly preview deployments) before soft deletion."
                               },
                               "expirationDaysProduction": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "Number of days to keep production deployments before soft deletion."
                               },
                               "expirationDaysCanceled": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "Number of days to keep canceled deployments before soft deletion."
                               },
                               "expirationDaysErrored": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "Number of days to keep errored deployments before soft deletion."
                               },
                               "deploymentsToKeep": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "Minimum number of production deployments to keep for this project, even if they are over the production expiration limit."
                               }
                             },
-                            "type": "object"
+                            "type": "object",
+                            "description": "Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects."
                           },
                           "devCommand": {
                             "nullable": true,
@@ -36630,22 +36857,28 @@
                       "nullable": true,
                       "properties": {
                         "expirationDays": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep non-production deployments (mostly preview deployments) before soft deletion."
                         },
                         "expirationDaysProduction": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep production deployments before soft deletion."
                         },
                         "expirationDaysCanceled": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep canceled deployments before soft deletion."
                         },
                         "expirationDaysErrored": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep errored deployments before soft deletion."
                         },
                         "deploymentsToKeep": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Minimum number of production deployments to keep for this project, even if they are over the production expiration limit."
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "description": "Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects."
                     },
                     "devCommand": {
                       "nullable": true,
@@ -41053,22 +41286,28 @@
                       "nullable": true,
                       "properties": {
                         "expirationDays": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep non-production deployments (mostly preview deployments) before soft deletion."
                         },
                         "expirationDaysProduction": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep production deployments before soft deletion."
                         },
                         "expirationDaysCanceled": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep canceled deployments before soft deletion."
                         },
                         "expirationDaysErrored": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep errored deployments before soft deletion."
                         },
                         "deploymentsToKeep": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Minimum number of production deployments to keep for this project, even if they are over the production expiration limit."
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "description": "Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects."
                     },
                     "devCommand": {
                       "nullable": true,
@@ -41113,10 +41352,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -42118,17 +42357,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
-                              "type": "number"
-                            },
                             "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -42136,6 +42375,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -42168,9 +42410,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -42562,9 +42801,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -42586,6 +42822,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -42683,9 +42922,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -42707,6 +42943,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -42753,8 +42992,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -44483,11 +44722,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -44527,11 +44766,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -45093,22 +45332,28 @@
                       "nullable": true,
                       "properties": {
                         "expirationDays": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep non-production deployments (mostly preview deployments) before soft deletion."
                         },
                         "expirationDaysProduction": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep production deployments before soft deletion."
                         },
                         "expirationDaysCanceled": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep canceled deployments before soft deletion."
                         },
                         "expirationDaysErrored": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Number of days to keep errored deployments before soft deletion."
                         },
                         "deploymentsToKeep": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "Minimum number of production deployments to keep for this project, even if they are over the production expiration limit."
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "description": "Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects."
                     },
                     "devCommand": {
                       "nullable": true,
@@ -45146,10 +45391,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -46151,17 +46396,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
-                              "type": "number"
-                            },
                             "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -46169,6 +46414,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -46201,9 +46449,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -46595,9 +46840,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -46619,6 +46861,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -46716,9 +46961,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -46740,6 +46982,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -46786,8 +47031,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -47124,408 +47369,6 @@
                     },
                     "permissions": {
                       "properties": {
-                        "aliasProject": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "aliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "buildMachine": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "productionAliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "connectConfigurationLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "dataCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deployment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentBuildLogs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckReRunFromProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentProductionGit": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPrivate": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPromote": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentRollback": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "edgeCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "environments": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logsPreset": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "passwordProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "optionsAllowlist": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "job": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "observabilityData": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandBuild": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandConcurrency": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "project": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFromV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAccessGroup": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsSampling": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheckRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentHook": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainMove": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainCheckConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVars": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsProduction": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsUnownedByIntegration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFlags": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectId": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectIntegrationConfiguration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMember": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMonitoring": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectPermissions": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransfer": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransferOut": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCase": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCaseComment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentExpiration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectRollingRelease": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTier": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectOIDCToken": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "seawallConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "skewProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "analytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "trustedIps": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "v0Chat": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "webAnalytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sharedEnvVarConnection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sonar": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -48395,6 +48238,408 @@
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
+                        },
+                        "aliasProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "productionAliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectConfigurationLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "dataCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deployment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckReRunFromProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentProductionGit": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPrivate": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPromote": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentRollback": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "edgeCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "environments": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logsPreset": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "passwordProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "optionsAllowlist": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "job": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "project": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFromV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAccessGroup": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsSampling": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheckRun": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentHook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainCheckConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVars": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsProduction": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsUnownedByIntegration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectId": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectIntegrationConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMember": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMonitoring": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectPermissions": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransfer": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransferOut": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCase": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCaseComment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentExpiration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectRollingRelease": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTier": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "seawallConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "skewProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "analytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "webAnalytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sharedEnvVarConnection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sonar": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
                         }
                       },
                       "type": "object"
@@ -48516,11 +48761,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -48560,11 +48805,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -52285,10 +52530,10 @@
                           "type": "string",
                           "enum": [
                             "system",
-                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive"
+                            "sensitive",
+                            "secret"
                           ]
                         },
                         "sunsetSecretId": {
@@ -52703,10 +52948,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
-                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive"
+                                  "sensitive",
+                                  "secret"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -53133,10 +53378,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
-                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive"
+                                  "sensitive",
+                                  "secret"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -60493,6 +60738,30 @@
                         "nullable": true
                       }
                     }
+                  },
+                  "acceptedPolicies": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "required": [
+                        "eula",
+                        "privacy"
+                      ],
+                      "properties": {
+                        "eula": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "privacy": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -65231,6 +65500,38 @@
                               "SECURITY",
                               "VIEWER_FOR_PLUS"
                             ]
+                          },
+                          "teamRoles": {
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "OWNER",
+                                "MEMBER",
+                                "DEVELOPER",
+                                "VIEWER",
+                                "BILLING",
+                                "CONTRIBUTOR",
+                                "SECURITY",
+                                "VIEWER_FOR_PLUS"
+                              ]
+                            },
+                            "type": "array"
+                          },
+                          "teamPermissions": {
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "CreateProject",
+                                "FullProductionDeployment",
+                                "UsageViewer",
+                                "EnvVariableManager",
+                                "EnvironmentManager",
+                                "V0Builder",
+                                "V0Chatter",
+                                "V0Viewer"
+                              ]
+                            },
+                            "type": "array"
                           },
                           "isDSyncUser": {
                             "type": "boolean"
@@ -79250,6 +79551,24 @@
                   },
                   "origin": {
                     "type": "string"
+                  },
+                  "teamRoles": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "teamPermissions": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "entitlements": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 },
                 "required": [
@@ -79941,6 +80260,25 @@
                 "required": [
                   "projectName",
                   "tags"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "urls": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "projectName",
+                  "urls"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -80952,6 +81290,11 @@
             "type": "string",
             "description": "The hostname that is current set as preview deployment suffix.",
             "example": "example.dev"
+          },
+          "platform": {
+            "type": "boolean",
+            "description": "Whether the team is a platform team.",
+            "example": true
           },
           "disableHardAutoBlocks": {
             "oneOf": [

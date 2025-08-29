@@ -46,6 +46,17 @@ type AnomalyAlerts struct {
 	StddevRequests      float64 `json:"stddev_requests"`
 }
 
+func (a AnomalyAlerts) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AnomalyAlerts) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"at_minute", "zscore", "total_requests_minute", "avg_requests", "stddev_requests"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AnomalyAlerts) GetAtMinute() string {
 	if o == nil {
 		return ""
@@ -86,6 +97,17 @@ type DdosAlerts struct {
 	TotalReqs float64 `json:"totalReqs"`
 }
 
+func (d DdosAlerts) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DdosAlerts) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"atMinute", "totalReqs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DdosAlerts) GetAtMinute() string {
 	if o == nil {
 		return ""
@@ -103,6 +125,17 @@ func (o *DdosAlerts) GetTotalReqs() float64 {
 type AffectedHostMap struct {
 	AnomalyAlerts map[string]AnomalyAlerts `json:"anomalyAlerts,omitempty"`
 	DdosAlerts    map[string]DdosAlerts    `json:"ddosAlerts,omitempty"`
+}
+
+func (a AffectedHostMap) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AffectedHostMap) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AffectedHostMap) GetAnomalyAlerts() map[string]AnomalyAlerts {
@@ -127,6 +160,17 @@ type Anomaly struct {
 	AtMinute        float64                    `json:"atMinute"`
 	State           *string                    `json:"state,omitempty"`
 	AffectedHostMap map[string]AffectedHostMap `json:"affectedHostMap"`
+}
+
+func (a Anomaly) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *Anomaly) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"ownerId", "projectId", "startTime", "endTime", "atMinute", "affectedHostMap"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Anomaly) GetOwnerID() string {
@@ -182,6 +226,17 @@ type GetActiveAttackStatusResponseBody2 struct {
 	Anomalies []Anomaly `json:"anomalies"`
 }
 
+func (g GetActiveAttackStatusResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetActiveAttackStatusResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"anomalies"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetActiveAttackStatusResponseBody2) GetAnomalies() []Anomaly {
 	if o == nil {
 		return []Anomaly{}
@@ -190,6 +245,17 @@ func (o *GetActiveAttackStatusResponseBody2) GetAnomalies() []Anomaly {
 }
 
 type GetActiveAttackStatusResponseBody1 struct {
+}
+
+func (g GetActiveAttackStatusResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetActiveAttackStatusResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type GetActiveAttackStatusResponseBodyType string
@@ -226,17 +292,17 @@ func CreateGetActiveAttackStatusResponseBodyGetActiveAttackStatusResponseBody2(g
 
 func (u *GetActiveAttackStatusResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getActiveAttackStatusResponseBody1 GetActiveAttackStatusResponseBody1 = GetActiveAttackStatusResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getActiveAttackStatusResponseBody1, "", true, true); err == nil {
-		u.GetActiveAttackStatusResponseBody1 = &getActiveAttackStatusResponseBody1
-		u.Type = GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody1
+	var getActiveAttackStatusResponseBody2 GetActiveAttackStatusResponseBody2 = GetActiveAttackStatusResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &getActiveAttackStatusResponseBody2, "", true, nil); err == nil {
+		u.GetActiveAttackStatusResponseBody2 = &getActiveAttackStatusResponseBody2
+		u.Type = GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody2
 		return nil
 	}
 
-	var getActiveAttackStatusResponseBody2 GetActiveAttackStatusResponseBody2 = GetActiveAttackStatusResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getActiveAttackStatusResponseBody2, "", true, true); err == nil {
-		u.GetActiveAttackStatusResponseBody2 = &getActiveAttackStatusResponseBody2
-		u.Type = GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody2
+	var getActiveAttackStatusResponseBody1 GetActiveAttackStatusResponseBody1 = GetActiveAttackStatusResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &getActiveAttackStatusResponseBody1, "", true, nil); err == nil {
+		u.GetActiveAttackStatusResponseBody1 = &getActiveAttackStatusResponseBody1
+		u.Type = GetActiveAttackStatusResponseBodyTypeGetActiveAttackStatusResponseBody1
 		return nil
 	}
 

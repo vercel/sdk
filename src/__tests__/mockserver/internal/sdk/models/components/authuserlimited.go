@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 // AuthUserLimited - A limited form of data for the currently authenticated User, due to the authentication token missing privileges to read the full User data.
 type AuthUserLimited struct {
 	// Property indicating that this User data contains only limited information, due to the authentication token missing privileges to read the full User data. Re-login with email, GitHub, GitLab or Bitbucket in order to upgrade the authentication token with the necessary privileges.
@@ -18,6 +22,17 @@ type AuthUserLimited struct {
 	Avatar *string `json:"avatar"`
 	// The user's default team.
 	DefaultTeamID *string `json:"defaultTeamId"`
+}
+
+func (a AuthUserLimited) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserLimited) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"limited", "id", "email", "name", "username", "avatar", "defaultTeamId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserLimited) GetLimited() bool {

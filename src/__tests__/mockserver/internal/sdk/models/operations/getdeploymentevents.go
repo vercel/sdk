@@ -73,14 +73,14 @@ func CreateStatusCodeStr(str string) StatusCode {
 func (u *StatusCode) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = StatusCodeTypeNumber
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = StatusCodeTypeStr
 		return nil
@@ -131,7 +131,7 @@ func (g GetDeploymentEventsRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetDeploymentEventsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"idOrUrl"}); err != nil {
 		return err
 	}
 	return nil
@@ -228,6 +228,17 @@ type StreamJSONInfo struct {
 	Path       *string `json:"path,omitempty"`
 	Step       *string `json:"step,omitempty"`
 	ReadyState *string `json:"readyState,omitempty"`
+}
+
+func (s StreamJSONInfo) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StreamJSONInfo) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"type", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *StreamJSONInfo) GetType() string {
@@ -366,6 +377,17 @@ type ResponseBodyStreamJSON2 struct {
 	Level        *GetDeploymentEventsStreamJSONLevel `json:"level,omitempty"`
 }
 
+func (r ResponseBodyStreamJSON2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResponseBodyStreamJSON2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"created", "date", "deploymentId", "id", "info", "serial", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ResponseBodyStreamJSON2) GetCreated() float64 {
 	if o == nil {
 		return 0.0
@@ -492,6 +514,17 @@ type StreamJSONPayloadInfo struct {
 	Path       *string `json:"path,omitempty"`
 	Step       *string `json:"step,omitempty"`
 	ReadyState *string `json:"readyState,omitempty"`
+}
+
+func (s StreamJSONPayloadInfo) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StreamJSONPayloadInfo) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"type", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *StreamJSONPayloadInfo) GetType() string {
@@ -629,6 +662,17 @@ type StreamJSONProxy struct {
 	LambdaRegion     *string                `json:"lambdaRegion,omitempty"`
 	WafAction        *StreamJSONWafAction   `json:"wafAction,omitempty"`
 	WafRuleID        *string                `json:"wafRuleId,omitempty"`
+}
+
+func (s StreamJSONProxy) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StreamJSONProxy) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"timestamp", "method", "host", "path", "userAgent", "referer", "region"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *StreamJSONProxy) GetTimestamp() float64 {
@@ -777,6 +821,17 @@ type StreamJSONPayload struct {
 	Proxy        *StreamJSONProxy       `json:"proxy,omitempty"`
 }
 
+func (s StreamJSONPayload) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StreamJSONPayload) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"deploymentId", "id", "date", "serial"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *StreamJSONPayload) GetDeploymentID() string {
 	if o == nil {
 		return ""
@@ -853,6 +908,17 @@ type ResponseBodyStreamJSON1 struct {
 	Payload StreamJSONPayload `json:"payload"`
 }
 
+func (r ResponseBodyStreamJSON1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResponseBodyStreamJSON1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "created", "payload"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ResponseBodyStreamJSON1) GetType() StreamJSONType1 {
 	if o == nil {
 		return StreamJSONType1("")
@@ -908,17 +974,17 @@ func CreateGetDeploymentEventsResponseBodyResponseBodyStreamJSON2(responseBodySt
 
 func (u *GetDeploymentEventsResponseBody) UnmarshalJSON(data []byte) error {
 
-	var responseBodyStreamJSON1 ResponseBodyStreamJSON1 = ResponseBodyStreamJSON1{}
-	if err := utils.UnmarshalJSON(data, &responseBodyStreamJSON1, "", true, true); err == nil {
-		u.ResponseBodyStreamJSON1 = &responseBodyStreamJSON1
-		u.Type = GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON1
+	var responseBodyStreamJSON2 ResponseBodyStreamJSON2 = ResponseBodyStreamJSON2{}
+	if err := utils.UnmarshalJSON(data, &responseBodyStreamJSON2, "", true, nil); err == nil {
+		u.ResponseBodyStreamJSON2 = &responseBodyStreamJSON2
+		u.Type = GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON2
 		return nil
 	}
 
-	var responseBodyStreamJSON2 ResponseBodyStreamJSON2 = ResponseBodyStreamJSON2{}
-	if err := utils.UnmarshalJSON(data, &responseBodyStreamJSON2, "", true, true); err == nil {
-		u.ResponseBodyStreamJSON2 = &responseBodyStreamJSON2
-		u.Type = GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON2
+	var responseBodyStreamJSON1 ResponseBodyStreamJSON1 = ResponseBodyStreamJSON1{}
+	if err := utils.UnmarshalJSON(data, &responseBodyStreamJSON1, "", true, nil); err == nil {
+		u.ResponseBodyStreamJSON1 = &responseBodyStreamJSON1
+		u.Type = GetDeploymentEventsResponseBodyTypeResponseBodyStreamJSON1
 		return nil
 	}
 
@@ -944,6 +1010,17 @@ type Info struct {
 	Path       *string `json:"path,omitempty"`
 	Step       *string `json:"step,omitempty"`
 	ReadyState *string `json:"readyState,omitempty"`
+}
+
+func (i Info) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *Info) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"type", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Info) GetType() string {
@@ -1082,6 +1159,17 @@ type GetDeploymentEventsResponseBody2 struct {
 	Level        *GetDeploymentEventsLevel `json:"level,omitempty"`
 }
 
+func (g GetDeploymentEventsResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentEventsResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"created", "date", "deploymentId", "id", "info", "serial", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentEventsResponseBody2) GetCreated() float64 {
 	if o == nil {
 		return 0.0
@@ -1208,6 +1296,17 @@ type PayloadInfo struct {
 	Path       *string `json:"path,omitempty"`
 	Step       *string `json:"step,omitempty"`
 	ReadyState *string `json:"readyState,omitempty"`
+}
+
+func (p PayloadInfo) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PayloadInfo) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PayloadInfo) GetType() string {
@@ -1345,6 +1444,17 @@ type Proxy struct {
 	LambdaRegion     *string      `json:"lambdaRegion,omitempty"`
 	WafAction        *WafAction   `json:"wafAction,omitempty"`
 	WafRuleID        *string      `json:"wafRuleId,omitempty"`
+}
+
+func (p Proxy) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Proxy) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"timestamp", "method", "host", "path", "userAgent", "referer", "region"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Proxy) GetTimestamp() float64 {
@@ -1493,6 +1603,17 @@ type Payload struct {
 	Proxy        *Proxy       `json:"proxy,omitempty"`
 }
 
+func (p Payload) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"deploymentId", "id", "date", "serial"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload) GetDeploymentID() string {
 	if o == nil {
 		return ""
@@ -1569,6 +1690,17 @@ type GetDeploymentEventsResponseBody1 struct {
 	Payload Payload                  `json:"payload"`
 }
 
+func (g GetDeploymentEventsResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDeploymentEventsResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "created", "payload"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetDeploymentEventsResponseBody1) GetType() GetDeploymentEventsType1 {
 	if o == nil {
 		return GetDeploymentEventsType1("")
@@ -1624,17 +1756,17 @@ func CreateGetDeploymentEventsResponseBodyUnionGetDeploymentEventsResponseBody2(
 
 func (u *GetDeploymentEventsResponseBodyUnion) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentEventsResponseBody1 GetDeploymentEventsResponseBody1 = GetDeploymentEventsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBody1, "", true, true); err == nil {
-		u.GetDeploymentEventsResponseBody1 = &getDeploymentEventsResponseBody1
-		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody1
+	var getDeploymentEventsResponseBody2 GetDeploymentEventsResponseBody2 = GetDeploymentEventsResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBody2, "", true, nil); err == nil {
+		u.GetDeploymentEventsResponseBody2 = &getDeploymentEventsResponseBody2
+		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody2
 		return nil
 	}
 
-	var getDeploymentEventsResponseBody2 GetDeploymentEventsResponseBody2 = GetDeploymentEventsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBody2, "", true, true); err == nil {
-		u.GetDeploymentEventsResponseBody2 = &getDeploymentEventsResponseBody2
-		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody2
+	var getDeploymentEventsResponseBody1 GetDeploymentEventsResponseBody1 = GetDeploymentEventsResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentEventsResponseBody1, "", true, nil); err == nil {
+		u.GetDeploymentEventsResponseBody1 = &getDeploymentEventsResponseBody1
+		u.Type = GetDeploymentEventsResponseBodyUnionTypeGetDeploymentEventsResponseBody1
 		return nil
 	}
 

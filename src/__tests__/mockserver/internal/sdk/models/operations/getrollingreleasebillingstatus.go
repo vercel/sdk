@@ -69,6 +69,17 @@ type AvailableSlots struct {
 	Message        string               `json:"message"`
 }
 
+func (a AvailableSlots) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AvailableSlots) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"availableSlots", "reason", "message"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AvailableSlots) GetAvailableSlots() float64 {
 	if o == nil {
 		return 0.0
@@ -118,6 +129,17 @@ type NoAvailableSlots struct {
 	Reason          ReasonNoAvailableSlots `json:"reason"`
 	Message         string                 `json:"message"`
 	EnabledProjects []string               `json:"enabledProjects"`
+}
+
+func (n NoAvailableSlots) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NoAvailableSlots) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"availableSlots", "reason", "message", "enabledProjects"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NoAvailableSlots) GetAvailableSlots() float64 {
@@ -200,6 +222,17 @@ type UnlimitedSlots struct {
 	Message        string               `json:"message"`
 }
 
+func (u UnlimitedSlots) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UnlimitedSlots) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"availableSlots", "reason", "message"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UnlimitedSlots) GetAvailableSlots() AvailableSlotsEnum {
 	if o == nil {
 		return AvailableSlotsEnum("")
@@ -248,6 +281,17 @@ type PlanNotSupported struct {
 	AvailableSlots float64                `json:"availableSlots"`
 	Reason         ReasonPlanNotSupported `json:"reason"`
 	Message        string                 `json:"message"`
+}
+
+func (p PlanNotSupported) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PlanNotSupported) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"availableSlots", "reason", "message"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PlanNotSupported) GetAvailableSlots() float64 {
@@ -327,31 +371,31 @@ func CreateGetRollingReleaseBillingStatusResponseBodyAvailableSlots(availableSlo
 
 func (u *GetRollingReleaseBillingStatusResponseBody) UnmarshalJSON(data []byte) error {
 
+	var noAvailableSlots NoAvailableSlots = NoAvailableSlots{}
+	if err := utils.UnmarshalJSON(data, &noAvailableSlots, "", true, nil); err == nil {
+		u.NoAvailableSlots = &noAvailableSlots
+		u.Type = GetRollingReleaseBillingStatusResponseBodyTypeNoAvailableSlots
+		return nil
+	}
+
 	var planNotSupported PlanNotSupported = PlanNotSupported{}
-	if err := utils.UnmarshalJSON(data, &planNotSupported, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &planNotSupported, "", true, nil); err == nil {
 		u.PlanNotSupported = &planNotSupported
 		u.Type = GetRollingReleaseBillingStatusResponseBodyTypePlanNotSupported
 		return nil
 	}
 
 	var unlimitedSlots UnlimitedSlots = UnlimitedSlots{}
-	if err := utils.UnmarshalJSON(data, &unlimitedSlots, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &unlimitedSlots, "", true, nil); err == nil {
 		u.UnlimitedSlots = &unlimitedSlots
 		u.Type = GetRollingReleaseBillingStatusResponseBodyTypeUnlimitedSlots
 		return nil
 	}
 
 	var availableSlots AvailableSlots = AvailableSlots{}
-	if err := utils.UnmarshalJSON(data, &availableSlots, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &availableSlots, "", true, nil); err == nil {
 		u.AvailableSlots = &availableSlots
 		u.Type = GetRollingReleaseBillingStatusResponseBodyTypeAvailableSlots
-		return nil
-	}
-
-	var noAvailableSlots NoAvailableSlots = NoAvailableSlots{}
-	if err := utils.UnmarshalJSON(data, &noAvailableSlots, "", true, true); err == nil {
-		u.NoAvailableSlots = &noAvailableSlots
-		u.Type = GetRollingReleaseBillingStatusResponseBodyTypeNoAvailableSlots
 		return nil
 	}
 

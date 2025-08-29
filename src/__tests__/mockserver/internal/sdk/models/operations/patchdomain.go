@@ -16,6 +16,17 @@ type PatchDomainRequestBody2 struct {
 	Destination *string `json:"destination,omitempty"`
 }
 
+func (p PatchDomainRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchDomainRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PatchDomainRequestBody2) GetOp() *string {
 	if o == nil {
 		return nil
@@ -39,6 +50,17 @@ type PatchDomainRequestBody1 struct {
 	CustomNameservers []string `json:"customNameservers,omitempty"`
 	// Specifies whether this is a DNS zone that intends to use Vercel's nameservers.
 	Zone *bool `json:"zone,omitempty"`
+}
+
+func (p PatchDomainRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchDomainRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchDomainRequestBody1) GetOp() *string {
@@ -103,17 +125,17 @@ func CreatePatchDomainRequestBodyPatchDomainRequestBody2(patchDomainRequestBody2
 
 func (u *PatchDomainRequestBody) UnmarshalJSON(data []byte) error {
 
-	var patchDomainRequestBody2 PatchDomainRequestBody2 = PatchDomainRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &patchDomainRequestBody2, "", true, true); err == nil {
-		u.PatchDomainRequestBody2 = &patchDomainRequestBody2
-		u.Type = PatchDomainRequestBodyTypePatchDomainRequestBody2
+	var patchDomainRequestBody1 PatchDomainRequestBody1 = PatchDomainRequestBody1{}
+	if err := utils.UnmarshalJSON(data, &patchDomainRequestBody1, "", true, nil); err == nil {
+		u.PatchDomainRequestBody1 = &patchDomainRequestBody1
+		u.Type = PatchDomainRequestBodyTypePatchDomainRequestBody1
 		return nil
 	}
 
-	var patchDomainRequestBody1 PatchDomainRequestBody1 = PatchDomainRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &patchDomainRequestBody1, "", true, true); err == nil {
-		u.PatchDomainRequestBody1 = &patchDomainRequestBody1
-		u.Type = PatchDomainRequestBodyTypePatchDomainRequestBody1
+	var patchDomainRequestBody2 PatchDomainRequestBody2 = PatchDomainRequestBody2{}
+	if err := utils.UnmarshalJSON(data, &patchDomainRequestBody2, "", true, nil); err == nil {
+		u.PatchDomainRequestBody2 = &patchDomainRequestBody2
+		u.Type = PatchDomainRequestBodyTypePatchDomainRequestBody2
 		return nil
 	}
 
@@ -175,6 +197,17 @@ type PatchDomainResponseBody3 struct {
 	Zone              *bool    `json:"zone,omitempty"`
 }
 
+func (p PatchDomainResponseBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchDomainResponseBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PatchDomainResponseBody3) GetRenew() *bool {
 	if o == nil {
 		return nil
@@ -201,6 +234,17 @@ type PatchDomainResponseBody2 struct {
 	Token string `json:"token"`
 }
 
+func (p PatchDomainResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchDomainResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"moved", "token"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PatchDomainResponseBody2) GetMoved() bool {
 	if o == nil {
 		return false
@@ -217,6 +261,17 @@ func (o *PatchDomainResponseBody2) GetToken() string {
 
 type PatchDomainResponseBody1 struct {
 	Moved bool `json:"moved"`
+}
+
+func (p PatchDomainResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchDomainResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"moved"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchDomainResponseBody1) GetMoved() bool {
@@ -271,22 +326,22 @@ func CreatePatchDomainResponseBodyPatchDomainResponseBody3(patchDomainResponseBo
 
 func (u *PatchDomainResponseBody) UnmarshalJSON(data []byte) error {
 
-	var patchDomainResponseBody1 PatchDomainResponseBody1 = PatchDomainResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &patchDomainResponseBody1, "", true, true); err == nil {
-		u.PatchDomainResponseBody1 = &patchDomainResponseBody1
-		u.Type = PatchDomainResponseBodyTypePatchDomainResponseBody1
-		return nil
-	}
-
 	var patchDomainResponseBody2 PatchDomainResponseBody2 = PatchDomainResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &patchDomainResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchDomainResponseBody2, "", true, nil); err == nil {
 		u.PatchDomainResponseBody2 = &patchDomainResponseBody2
 		u.Type = PatchDomainResponseBodyTypePatchDomainResponseBody2
 		return nil
 	}
 
+	var patchDomainResponseBody1 PatchDomainResponseBody1 = PatchDomainResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &patchDomainResponseBody1, "", true, nil); err == nil {
+		u.PatchDomainResponseBody1 = &patchDomainResponseBody1
+		u.Type = PatchDomainResponseBodyTypePatchDomainResponseBody1
+		return nil
+	}
+
 	var patchDomainResponseBody3 PatchDomainResponseBody3 = PatchDomainResponseBody3{}
-	if err := utils.UnmarshalJSON(data, &patchDomainResponseBody3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchDomainResponseBody3, "", true, nil); err == nil {
 		u.PatchDomainResponseBody3 = &patchDomainResponseBody3
 		u.Type = PatchDomainResponseBodyTypePatchDomainResponseBody3
 		return nil

@@ -97,6 +97,17 @@ type ScopeTeam struct {
 	ExpiresAt *float64          `json:"expiresAt,omitempty"`
 }
 
+func (s ScopeTeam) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScopeTeam) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"type", "teamId", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ScopeTeam) GetType() TypeTeam {
 	if o == nil {
 		return TypeTeam("")
@@ -191,6 +202,17 @@ type Sudo struct {
 	ExpiresAt float64    `json:"expiresAt"`
 }
 
+func (s Sudo) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Sudo) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"origin", "expiresAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Sudo) GetOrigin() SudoOrigin {
 	if o == nil {
 		return SudoOrigin("")
@@ -270,6 +292,17 @@ type ScopeUser struct {
 	ExpiresAt *float64          `json:"expiresAt,omitempty"`
 }
 
+func (s ScopeUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScopeUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"type", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ScopeUser) GetType() AuthTokenTypeUser {
 	if o == nil {
 		return AuthTokenTypeUser("")
@@ -339,17 +372,17 @@ func CreateScopeScopeTeam(scopeTeam ScopeTeam) Scope {
 
 func (u *Scope) UnmarshalJSON(data []byte) error {
 
-	var scopeUser ScopeUser = ScopeUser{}
-	if err := utils.UnmarshalJSON(data, &scopeUser, "", true, true); err == nil {
-		u.ScopeUser = &scopeUser
-		u.Type = ScopeTypeScopeUser
+	var scopeTeam ScopeTeam = ScopeTeam{}
+	if err := utils.UnmarshalJSON(data, &scopeTeam, "", true, nil); err == nil {
+		u.ScopeTeam = &scopeTeam
+		u.Type = ScopeTypeScopeTeam
 		return nil
 	}
 
-	var scopeTeam ScopeTeam = ScopeTeam{}
-	if err := utils.UnmarshalJSON(data, &scopeTeam, "", true, true); err == nil {
-		u.ScopeTeam = &scopeTeam
-		u.Type = ScopeTypeScopeTeam
+	var scopeUser ScopeUser = ScopeUser{}
+	if err := utils.UnmarshalJSON(data, &scopeUser, "", true, nil); err == nil {
+		u.ScopeUser = &scopeUser
+		u.Type = ScopeTypeScopeUser
 		return nil
 	}
 

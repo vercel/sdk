@@ -77,14 +77,14 @@ func CreateDescription3Any(anyT any) Description3 {
 func (u *Description3) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = Description3TypeStr
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = Description3TypeAny
 		return nil
@@ -110,6 +110,17 @@ type PatchEdgeConfigItemsItem3 struct {
 	Key         string        `json:"key"`
 	Value       any           `json:"value,omitempty"`
 	Description *Description3 `json:"description"`
+}
+
+func (p PatchEdgeConfigItemsItem3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchEdgeConfigItemsItem3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"operation", "key", "description"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchEdgeConfigItemsItem3) GetOperation() Operation3 {
@@ -207,14 +218,14 @@ func CreateDescription2Any(anyT any) Description2 {
 func (u *Description2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = Description2TypeStr
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = Description2TypeAny
 		return nil
@@ -240,6 +251,17 @@ type PatchEdgeConfigItemsItem2 struct {
 	Key         string        `json:"key"`
 	Value       any           `json:"value"`
 	Description *Description2 `json:"description,omitempty"`
+}
+
+func (p PatchEdgeConfigItemsItem2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchEdgeConfigItemsItem2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"operation", "key", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchEdgeConfigItemsItem2) GetOperation() Operation2 {
@@ -337,14 +359,14 @@ func CreateDescription1Any(anyT any) Description1 {
 func (u *Description1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = Description1TypeStr
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = Description1TypeAny
 		return nil
@@ -370,6 +392,17 @@ type PatchEdgeConfigItemsItem1 struct {
 	Key         string        `json:"key"`
 	Value       any           `json:"value"`
 	Description *Description1 `json:"description,omitempty"`
+}
+
+func (p PatchEdgeConfigItemsItem1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchEdgeConfigItemsItem1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"operation", "key", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchEdgeConfigItemsItem1) GetOperation() Operation1 {
@@ -446,21 +479,21 @@ func CreateItemUnion2PatchEdgeConfigItemsItem3(patchEdgeConfigItemsItem3 PatchEd
 func (u *ItemUnion2) UnmarshalJSON(data []byte) error {
 
 	var patchEdgeConfigItemsItem1 PatchEdgeConfigItemsItem1 = PatchEdgeConfigItemsItem1{}
-	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem1, "", true, nil); err == nil {
 		u.PatchEdgeConfigItemsItem1 = &patchEdgeConfigItemsItem1
 		u.Type = ItemUnion2TypePatchEdgeConfigItemsItem1
 		return nil
 	}
 
 	var patchEdgeConfigItemsItem2 PatchEdgeConfigItemsItem2 = PatchEdgeConfigItemsItem2{}
-	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem2, "", true, nil); err == nil {
 		u.PatchEdgeConfigItemsItem2 = &patchEdgeConfigItemsItem2
 		u.Type = ItemUnion2TypePatchEdgeConfigItemsItem2
 		return nil
 	}
 
 	var patchEdgeConfigItemsItem3 PatchEdgeConfigItemsItem3 = PatchEdgeConfigItemsItem3{}
-	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchEdgeConfigItemsItem3, "", true, nil); err == nil {
 		u.PatchEdgeConfigItemsItem3 = &patchEdgeConfigItemsItem3
 		u.Type = ItemUnion2TypePatchEdgeConfigItemsItem3
 		return nil
@@ -509,7 +542,7 @@ func CreateItemUnion1ItemUnion2(itemUnion2 ItemUnion2) ItemUnion1 {
 func (u *ItemUnion1) UnmarshalJSON(data []byte) error {
 
 	var itemUnion2 ItemUnion2 = ItemUnion2{}
-	if err := utils.UnmarshalJSON(data, &itemUnion2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &itemUnion2, "", true, nil); err == nil {
 		u.ItemUnion2 = &itemUnion2
 		u.Type = ItemUnion1TypeItemUnion2
 		return nil

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  collectExtraKeys as collectExtraKeys$,
+  safeParse,
+} from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -15,12 +18,19 @@ export type PaidFeatures = {
   previewDeploymentSuffix?: boolean | null | undefined;
 };
 
+export type AcceptedPolicies = {
+  eula: Date;
+  privacy: Date;
+  additionalProperties?: { [k: string]: Date };
+};
+
 export type AcceptProjectTransferRequestRequestBody = {
   /**
    * The desired name for the project
    */
   newProjectName?: string | undefined;
   paidFeatures?: PaidFeatures | undefined;
+  acceptedPolicies?: { [k: string]: AcceptedPolicies } | undefined;
 };
 
 export type AcceptProjectTransferRequestRequest = {
@@ -134,6 +144,78 @@ export function paidFeaturesFromJSON(
 }
 
 /** @internal */
+export const AcceptedPolicies$inboundSchema: z.ZodType<
+  AcceptedPolicies,
+  z.ZodTypeDef,
+  unknown
+> = collectExtraKeys$(
+  z.object({
+    eula: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    privacy: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  }).catchall(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ),
+  "additionalProperties",
+  true,
+);
+
+/** @internal */
+export type AcceptedPolicies$Outbound = {
+  eula: string;
+  privacy: string;
+  [additionalProperties: string]: unknown;
+};
+
+/** @internal */
+export const AcceptedPolicies$outboundSchema: z.ZodType<
+  AcceptedPolicies$Outbound,
+  z.ZodTypeDef,
+  AcceptedPolicies
+> = z.object({
+  eula: z.date().transform(v => v.toISOString()),
+  privacy: z.date().transform(v => v.toISOString()),
+  additionalProperties: z.record(z.date().transform(v => v.toISOString())),
+}).transform((v) => {
+  return {
+    ...v.additionalProperties,
+    ...remap$(v, {
+      additionalProperties: null,
+    }),
+  };
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AcceptedPolicies$ {
+  /** @deprecated use `AcceptedPolicies$inboundSchema` instead. */
+  export const inboundSchema = AcceptedPolicies$inboundSchema;
+  /** @deprecated use `AcceptedPolicies$outboundSchema` instead. */
+  export const outboundSchema = AcceptedPolicies$outboundSchema;
+  /** @deprecated use `AcceptedPolicies$Outbound` instead. */
+  export type Outbound = AcceptedPolicies$Outbound;
+}
+
+export function acceptedPoliciesToJSON(
+  acceptedPolicies: AcceptedPolicies,
+): string {
+  return JSON.stringify(
+    AcceptedPolicies$outboundSchema.parse(acceptedPolicies),
+  );
+}
+
+export function acceptedPoliciesFromJSON(
+  jsonString: string,
+): SafeParseResult<AcceptedPolicies, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcceptedPolicies$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcceptedPolicies' from JSON`,
+  );
+}
+
+/** @internal */
 export const AcceptProjectTransferRequestRequestBody$inboundSchema: z.ZodType<
   AcceptProjectTransferRequestRequestBody,
   z.ZodTypeDef,
@@ -141,12 +223,15 @@ export const AcceptProjectTransferRequestRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   newProjectName: z.string().optional(),
   paidFeatures: z.lazy(() => PaidFeatures$inboundSchema).optional(),
+  acceptedPolicies: z.record(z.lazy(() => AcceptedPolicies$inboundSchema))
+    .optional(),
 });
 
 /** @internal */
 export type AcceptProjectTransferRequestRequestBody$Outbound = {
   newProjectName?: string | undefined;
   paidFeatures?: PaidFeatures$Outbound | undefined;
+  acceptedPolicies?: { [k: string]: AcceptedPolicies$Outbound } | undefined;
 };
 
 /** @internal */
@@ -157,6 +242,8 @@ export const AcceptProjectTransferRequestRequestBody$outboundSchema: z.ZodType<
 > = z.object({
   newProjectName: z.string().optional(),
   paidFeatures: z.lazy(() => PaidFeatures$outboundSchema).optional(),
+  acceptedPolicies: z.record(z.lazy(() => AcceptedPolicies$outboundSchema))
+    .optional(),
 });
 
 /**

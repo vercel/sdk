@@ -11,5 +11,5 @@ let value: CreateDeploymentRoutesOp = "delete";
 ## Values
 
 ```typescript
-"set" | "append" | "delete"
+"append" | "set" | "delete"
 ```

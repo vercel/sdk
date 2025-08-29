@@ -202,6 +202,17 @@ type GetProjectMembersMember struct {
 	TeamRole GetProjectMembersTeamRole `json:"teamRole"`
 }
 
+func (g GetProjectMembersMember) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectMembersMember) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"email", "role", "computedProjectRole", "uid", "username", "createdAt", "teamRole"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetProjectMembersMember) GetAvatar() *string {
 	if o == nil {
 		return nil
@@ -275,6 +286,17 @@ type GetProjectMembersPagination struct {
 	Prev *float64 `json:"prev"`
 }
 
+func (g GetProjectMembersPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectMembersPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"hasNext", "count", "next", "prev"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetProjectMembersPagination) GetHasNext() bool {
 	if o == nil {
 		return false
@@ -309,6 +331,17 @@ type GetProjectMembersResponseBody2 struct {
 	Pagination GetProjectMembersPagination `json:"pagination"`
 }
 
+func (g GetProjectMembersResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectMembersResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"members", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetProjectMembersResponseBody2) GetMembers() []GetProjectMembersMember {
 	if o == nil {
 		return []GetProjectMembersMember{}
@@ -324,6 +357,17 @@ func (o *GetProjectMembersResponseBody2) GetPagination() GetProjectMembersPagina
 }
 
 type GetProjectMembersResponseBody1 struct {
+}
+
+func (g GetProjectMembersResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectMembersResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type GetProjectMembersResponseBodyType string
@@ -361,17 +405,17 @@ func CreateGetProjectMembersResponseBodyGetProjectMembersResponseBody2(getProjec
 
 func (u *GetProjectMembersResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getProjectMembersResponseBody1 GetProjectMembersResponseBody1 = GetProjectMembersResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getProjectMembersResponseBody1, "", true, true); err == nil {
-		u.GetProjectMembersResponseBody1 = &getProjectMembersResponseBody1
-		u.Type = GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody1
+	var getProjectMembersResponseBody2 GetProjectMembersResponseBody2 = GetProjectMembersResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &getProjectMembersResponseBody2, "", true, nil); err == nil {
+		u.GetProjectMembersResponseBody2 = &getProjectMembersResponseBody2
+		u.Type = GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody2
 		return nil
 	}
 
-	var getProjectMembersResponseBody2 GetProjectMembersResponseBody2 = GetProjectMembersResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getProjectMembersResponseBody2, "", true, true); err == nil {
-		u.GetProjectMembersResponseBody2 = &getProjectMembersResponseBody2
-		u.Type = GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody2
+	var getProjectMembersResponseBody1 GetProjectMembersResponseBody1 = GetProjectMembersResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &getProjectMembersResponseBody1, "", true, nil); err == nil {
+		u.GetProjectMembersResponseBody1 = &getProjectMembersResponseBody1
+		u.Type = GetProjectMembersResponseBodyTypeGetProjectMembersResponseBody1
 		return nil
 	}
 

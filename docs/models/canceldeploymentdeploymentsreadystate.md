@@ -11,5 +11,5 @@ let value: CancelDeploymentDeploymentsReadyState = "INITIALIZING";
 ## Values
 
 ```typescript
-"ERROR" | "BUILDING" | "INITIALIZING" | "READY"
+"BUILDING" | "ERROR" | "INITIALIZING" | "READY"
 ```

@@ -51,6 +51,17 @@ type AddProjectMemberRequestBody3 struct {
 	Role AddProjectMemberRole3 `json:"role"`
 }
 
+func (a AddProjectMemberRequestBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddProjectMemberRequestBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"email", "role"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AddProjectMemberRequestBody3) GetUID() *string {
 	if o == nil {
 		return nil
@@ -120,6 +131,17 @@ type AddProjectMemberRequestBody2 struct {
 	Role AddProjectMemberRole2 `json:"role"`
 }
 
+func (a AddProjectMemberRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddProjectMemberRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"username", "role"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AddProjectMemberRequestBody2) GetUID() *string {
 	if o == nil {
 		return nil
@@ -187,6 +209,17 @@ type AddProjectMemberRequestBody1 struct {
 	Email *string `json:"email,omitempty"`
 	// The project role of the member that will be added.
 	Role AddProjectMemberRole1 `json:"role"`
+}
+
+func (a AddProjectMemberRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddProjectMemberRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"uid", "role"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AddProjectMemberRequestBody1) GetUID() string {
@@ -263,21 +296,21 @@ func CreateAddProjectMemberRequestBodyAddProjectMemberRequestBody3(addProjectMem
 func (u *AddProjectMemberRequestBody) UnmarshalJSON(data []byte) error {
 
 	var addProjectMemberRequestBody1 AddProjectMemberRequestBody1 = AddProjectMemberRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &addProjectMemberRequestBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &addProjectMemberRequestBody1, "", true, nil); err == nil {
 		u.AddProjectMemberRequestBody1 = &addProjectMemberRequestBody1
 		u.Type = AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody1
 		return nil
 	}
 
 	var addProjectMemberRequestBody2 AddProjectMemberRequestBody2 = AddProjectMemberRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &addProjectMemberRequestBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &addProjectMemberRequestBody2, "", true, nil); err == nil {
 		u.AddProjectMemberRequestBody2 = &addProjectMemberRequestBody2
 		u.Type = AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody2
 		return nil
 	}
 
 	var addProjectMemberRequestBody3 AddProjectMemberRequestBody3 = AddProjectMemberRequestBody3{}
-	if err := utils.UnmarshalJSON(data, &addProjectMemberRequestBody3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &addProjectMemberRequestBody3, "", true, nil); err == nil {
 		u.AddProjectMemberRequestBody3 = &addProjectMemberRequestBody3
 		u.Type = AddProjectMemberRequestBodyTypeAddProjectMemberRequestBody3
 		return nil

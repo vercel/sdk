@@ -103,6 +103,17 @@ type GetConfigurationNotification struct {
 	Href    *string               `json:"href,omitempty"`
 }
 
+func (g GetConfigurationNotification) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationNotification) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"level", "title"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetConfigurationNotification) GetLevel() GetConfigurationLevel {
 	if o == nil {
 		return GetConfigurationLevel("")
@@ -159,6 +170,17 @@ type Requester2 struct {
 	Email *string `json:"email,omitempty"`
 }
 
+func (r Requester2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Requester2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Requester2) GetName() string {
 	if o == nil {
 		return ""
@@ -185,6 +207,17 @@ type TransferRequestTransferFromMarketplace struct {
 	ApprovedAt      *float64                    `json:"approvedAt,omitempty"`
 	ApprovedBy      *string                     `json:"approvedBy,omitempty"`
 	AuthorizationID *string                     `json:"authorizationId,omitempty"`
+}
+
+func (t TransferRequestTransferFromMarketplace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransferRequestTransferFromMarketplace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"kind", "requestId", "transferId", "requester", "createdAt", "expiresAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransferRequestTransferFromMarketplace) GetKind() KindTransferFromMarketplace {
@@ -349,6 +382,17 @@ type GetConfigurationBillingPlan struct {
 	PreauthorizationAmount *float64               `json:"preauthorizationAmount,omitempty"`
 }
 
+func (g GetConfigurationBillingPlan) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationBillingPlan) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "type", "name", "description"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetConfigurationBillingPlan) GetID() string {
 	if o == nil {
 		return ""
@@ -403,6 +447,17 @@ type Requester1 struct {
 	Email *string `json:"email,omitempty"`
 }
 
+func (r Requester1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Requester1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Requester1) GetName() string {
 	if o == nil {
 		return ""
@@ -431,6 +486,17 @@ type TransferRequestTransferToMarketplace struct {
 	ApprovedAt      *float64                     `json:"approvedAt,omitempty"`
 	ApprovedBy      *string                      `json:"approvedBy,omitempty"`
 	AuthorizationID *string                      `json:"authorizationId,omitempty"`
+}
+
+func (t TransferRequestTransferToMarketplace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransferRequestTransferToMarketplace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"kind", "requestId", "transferId", "requester", "createdAt", "expiresAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransferRequestTransferToMarketplace) GetKind() KindTransferToMarketplace {
@@ -558,17 +624,17 @@ func CreateTransferRequestTransferRequestTransferFromMarketplace(transferRequest
 
 func (u *TransferRequest) UnmarshalJSON(data []byte) error {
 
-	var transferRequestTransferFromMarketplace TransferRequestTransferFromMarketplace = TransferRequestTransferFromMarketplace{}
-	if err := utils.UnmarshalJSON(data, &transferRequestTransferFromMarketplace, "", true, true); err == nil {
-		u.TransferRequestTransferFromMarketplace = &transferRequestTransferFromMarketplace
-		u.Type = TransferRequestUnionTypeTransferRequestTransferFromMarketplace
+	var transferRequestTransferToMarketplace TransferRequestTransferToMarketplace = TransferRequestTransferToMarketplace{}
+	if err := utils.UnmarshalJSON(data, &transferRequestTransferToMarketplace, "", true, nil); err == nil {
+		u.TransferRequestTransferToMarketplace = &transferRequestTransferToMarketplace
+		u.Type = TransferRequestUnionTypeTransferRequestTransferToMarketplace
 		return nil
 	}
 
-	var transferRequestTransferToMarketplace TransferRequestTransferToMarketplace = TransferRequestTransferToMarketplace{}
-	if err := utils.UnmarshalJSON(data, &transferRequestTransferToMarketplace, "", true, true); err == nil {
-		u.TransferRequestTransferToMarketplace = &transferRequestTransferToMarketplace
-		u.Type = TransferRequestUnionTypeTransferRequestTransferToMarketplace
+	var transferRequestTransferFromMarketplace TransferRequestTransferFromMarketplace = TransferRequestTransferFromMarketplace{}
+	if err := utils.UnmarshalJSON(data, &transferRequestTransferFromMarketplace, "", true, nil); err == nil {
+		u.TransferRequestTransferFromMarketplace = &transferRequestTransferFromMarketplace
+		u.Type = TransferRequestUnionTypeTransferRequestTransferFromMarketplace
 		return nil
 	}
 
@@ -591,10 +657,11 @@ func (u TransferRequest) MarshalJSON() ([]byte, error) {
 type GetConfigurationSource2 string
 
 const (
-	GetConfigurationSource2Marketplace  GetConfigurationSource2 = "marketplace"
-	GetConfigurationSource2DeployButton GetConfigurationSource2 = "deploy-button"
-	GetConfigurationSource2External     GetConfigurationSource2 = "external"
-	GetConfigurationSource2V0           GetConfigurationSource2 = "v0"
+	GetConfigurationSource2Marketplace    GetConfigurationSource2 = "marketplace"
+	GetConfigurationSource2DeployButton   GetConfigurationSource2 = "deploy-button"
+	GetConfigurationSource2External       GetConfigurationSource2 = "external"
+	GetConfigurationSource2V0             GetConfigurationSource2 = "v0"
+	GetConfigurationSource2ResourceClaims GetConfigurationSource2 = "resource-claims"
 )
 
 func (e GetConfigurationSource2) ToPointer() *GetConfigurationSource2 {
@@ -613,6 +680,8 @@ func (e *GetConfigurationSource2) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "v0":
+		fallthrough
+	case "resource-claims":
 		*e = GetConfigurationSource2(v)
 		return nil
 	default:
@@ -748,6 +817,17 @@ type GetConfigurationIntegrationConfiguration2 struct {
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType          *GetConfigurationInstallationType2 `json:"installationType,omitempty"`
 	CanConfigureOpenTelemetry *bool                              `json:"canConfigureOpenTelemetry,omitempty"`
+}
+
+func (g GetConfigurationIntegrationConfiguration2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationIntegrationConfiguration2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectSelection", "notification", "transferRequest", "createdAt", "id", "integrationId", "ownerId", "slug", "type", "updatedAt", "userId", "scopes"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetConfigurationIntegrationConfiguration2) GetProjectSelection() ProjectSelection {
@@ -908,10 +988,11 @@ func (o *GetConfigurationIntegrationConfiguration2) GetCanConfigureOpenTelemetry
 type GetConfigurationSource1 string
 
 const (
-	GetConfigurationSource1Marketplace  GetConfigurationSource1 = "marketplace"
-	GetConfigurationSource1DeployButton GetConfigurationSource1 = "deploy-button"
-	GetConfigurationSource1External     GetConfigurationSource1 = "external"
-	GetConfigurationSource1V0           GetConfigurationSource1 = "v0"
+	GetConfigurationSource1Marketplace    GetConfigurationSource1 = "marketplace"
+	GetConfigurationSource1DeployButton   GetConfigurationSource1 = "deploy-button"
+	GetConfigurationSource1External       GetConfigurationSource1 = "external"
+	GetConfigurationSource1V0             GetConfigurationSource1 = "v0"
+	GetConfigurationSource1ResourceClaims GetConfigurationSource1 = "resource-claims"
 )
 
 func (e GetConfigurationSource1) ToPointer() *GetConfigurationSource1 {
@@ -930,6 +1011,8 @@ func (e *GetConfigurationSource1) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "v0":
+		fallthrough
+	case "resource-claims":
 		*e = GetConfigurationSource1(v)
 		return nil
 	default:
@@ -1061,6 +1144,17 @@ type GetConfigurationIntegrationConfiguration1 struct {
 	DisabledReason    *GetConfigurationDisabledReason1 `json:"disabledReason,omitempty"`
 	// Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
 	InstallationType *GetConfigurationInstallationType1 `json:"installationType,omitempty"`
+}
+
+func (g GetConfigurationIntegrationConfiguration1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationIntegrationConfiguration1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "id", "integrationId", "ownerId", "slug", "type", "updatedAt", "userId", "scopes"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetConfigurationIntegrationConfiguration1) GetCompletedAt() *float64 {
@@ -1224,17 +1318,17 @@ func CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration2
 
 func (u *GetConfigurationResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getConfigurationIntegrationConfiguration1 GetConfigurationIntegrationConfiguration1 = GetConfigurationIntegrationConfiguration1{}
-	if err := utils.UnmarshalJSON(data, &getConfigurationIntegrationConfiguration1, "", true, true); err == nil {
-		u.GetConfigurationIntegrationConfiguration1 = &getConfigurationIntegrationConfiguration1
-		u.Type = GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration1
+	var getConfigurationIntegrationConfiguration2 GetConfigurationIntegrationConfiguration2 = GetConfigurationIntegrationConfiguration2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationIntegrationConfiguration2, "", true, nil); err == nil {
+		u.GetConfigurationIntegrationConfiguration2 = &getConfigurationIntegrationConfiguration2
+		u.Type = GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration2
 		return nil
 	}
 
-	var getConfigurationIntegrationConfiguration2 GetConfigurationIntegrationConfiguration2 = GetConfigurationIntegrationConfiguration2{}
-	if err := utils.UnmarshalJSON(data, &getConfigurationIntegrationConfiguration2, "", true, true); err == nil {
-		u.GetConfigurationIntegrationConfiguration2 = &getConfigurationIntegrationConfiguration2
-		u.Type = GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration2
+	var getConfigurationIntegrationConfiguration1 GetConfigurationIntegrationConfiguration1 = GetConfigurationIntegrationConfiguration1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationIntegrationConfiguration1, "", true, nil); err == nil {
+		u.GetConfigurationIntegrationConfiguration1 = &getConfigurationIntegrationConfiguration1
+		u.Type = GetConfigurationResponseBodyTypeGetConfigurationIntegrationConfiguration1
 		return nil
 	}
 

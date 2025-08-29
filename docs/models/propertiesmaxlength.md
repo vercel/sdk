@@ -6,7 +6,7 @@
 import { PropertiesMaxLength } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: PropertiesMaxLength = {
-  atBRANDAt447943: {},
+  atBRANDAt467029: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: PropertiesMaxLength = {
 
 | Field                                                                                                                                                              | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `atBRANDAt447943`                                                                                                                                                  | [models.GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt447943](../models/getconfigurationproductspropertiesintegrationsresponseatbrandat447943.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `atBRANDAt467029`                                                                                                                                                  | [models.GetConfigurationProductsPropertiesIntegrationsResponseAtBRANDAt467029](../models/getconfigurationproductspropertiesintegrationsresponseatbrandat467029.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |

@@ -526,11 +526,11 @@ export type CreateDeploymentProjectSettings = {
 };
 
 export const CreateDeploymentDeploymentsStatus = {
-  Error: "error",
-  Timeout: "timeout",
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
+  Error: "error",
+  Timeout: "timeout",
 } as const;
 export type CreateDeploymentDeploymentsStatus = ClosedEnum<
   typeof CreateDeploymentDeploymentsStatus
@@ -622,8 +622,8 @@ export type Creator = {
 };
 
 export const CreateDeploymentReadyState = {
-  Error: "ERROR",
   Building: "BUILDING",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -1214,14 +1214,14 @@ export const CreateDeploymentPlan = {
 export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
 export const FunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
 export const FunctionMemoryType = {
-  StandardLegacy: "standard_legacy",
   Standard: "standard",
+  StandardLegacy: "standard_legacy",
   Performance: "performance",
 } as const;
 export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
@@ -1296,6 +1296,7 @@ export type Functions = {
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?: Array<ExperimentalTriggers> | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 export type Routes3 = {
@@ -1305,12 +1306,12 @@ export type Routes3 = {
 };
 
 export const Handle = {
-  Filesystem: "filesystem",
   Error: "error",
+  Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
-  Resource: "resource",
   Rewrite: "rewrite",
+  Resource: "resource",
 } as const;
 export type Handle = ClosedEnum<typeof Handle>;
 
@@ -1469,8 +1470,8 @@ export const RoutesType = {
 export type RoutesType = ClosedEnum<typeof RoutesType>;
 
 export const CreateDeploymentRoutesOp = {
-  Set: "set",
   Append: "append",
+  Set: "set",
   Delete: "delete",
 } as const;
 export type CreateDeploymentRoutesOp = ClosedEnum<
@@ -1649,8 +1650,8 @@ export type CreateDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CreateDeploymentGitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CreateDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CreateDeploymentGitRepoOwnerType
@@ -1677,8 +1678,8 @@ export type CreateDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const GitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
 
@@ -1701,8 +1702,8 @@ export const GitRepoType = {
 export type GitRepoType = ClosedEnum<typeof GitRepoType>;
 
 export const OwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type OwnerType = ClosedEnum<typeof OwnerType>;
 
@@ -6962,6 +6963,7 @@ export const Functions$inboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ExperimentalTriggers$inboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6973,6 +6975,7 @@ export type Functions$Outbound = {
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?: Array<ExperimentalTriggers$Outbound> | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 /** @internal */
@@ -6990,6 +6993,7 @@ export const Functions$outboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ExperimentalTriggers$outboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /**

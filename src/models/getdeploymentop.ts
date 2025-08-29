@@ -1615,6 +1615,7 @@ export type ResponseBodyFunctions = {
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?: Array<ResponseBodyExperimentalTriggers> | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 export type GetDeploymentRoutes3 = {
@@ -9825,6 +9826,7 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ResponseBodyExperimentalTriggers$inboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /** @internal */
@@ -9838,6 +9840,7 @@ export type ResponseBodyFunctions$Outbound = {
   experimentalTriggers?:
     | Array<ResponseBodyExperimentalTriggers$Outbound>
     | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 /** @internal */
@@ -9855,6 +9858,7 @@ export const ResponseBodyFunctions$outboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ResponseBodyExperimentalTriggers$outboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /**

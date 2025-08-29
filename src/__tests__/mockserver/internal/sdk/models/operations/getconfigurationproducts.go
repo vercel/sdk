@@ -707,18 +707,40 @@ func (e *GetConfigurationProductsType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ValueAtBRANDAt447943 struct {
+type ValueAtBRANDAt467029 struct {
+}
+
+func (v ValueAtBRANDAt467029) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *ValueAtBRANDAt467029) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type GetConfigurationProductsValue struct {
-	AtBRANDAt447943 ValueAtBRANDAt447943 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 ValueAtBRANDAt467029 `json:"__@BRAND@467029"`
 }
 
-func (o *GetConfigurationProductsValue) GetAtBRANDAt447943() ValueAtBRANDAt447943 {
-	if o == nil {
-		return ValueAtBRANDAt447943{}
+func (g GetConfigurationProductsValue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsValue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *GetConfigurationProductsValue) GetAtBRANDAt467029() ValueAtBRANDAt467029 {
+	if o == nil {
+		return ValueAtBRANDAt467029{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type DisabledEnum string
@@ -749,6 +771,17 @@ func (e *DisabledEnum) UnmarshalJSON(data []byte) error {
 
 type Disabled struct {
 	Expr string `json:"expr"`
+}
+
+func (d Disabled) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Disabled) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Disabled) GetExpr() string {
@@ -804,21 +837,21 @@ func CreateDisabledUnionDisabledEnum(disabledEnum DisabledEnum) DisabledUnion {
 func (u *DisabledUnion) UnmarshalJSON(data []byte) error {
 
 	var disabled Disabled = Disabled{}
-	if err := utils.UnmarshalJSON(data, &disabled, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &disabled, "", true, nil); err == nil {
 		u.Disabled = &disabled
 		u.Type = DisabledUnionTypeDisabled
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = DisabledUnionTypeBoolean
 		return nil
 	}
 
 	var disabledEnum DisabledEnum = DisabledEnum("")
-	if err := utils.UnmarshalJSON(data, &disabledEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &disabledEnum, "", true, nil); err == nil {
 		u.DisabledEnum = &disabledEnum
 		u.Type = DisabledUnionTypeDisabledEnum
 		return nil
@@ -871,6 +904,17 @@ func (e *HiddenEnum) UnmarshalJSON(data []byte) error {
 
 type Hidden struct {
 	Expr string `json:"expr"`
+}
+
+func (h Hidden) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *Hidden) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Hidden) GetExpr() string {
@@ -926,21 +970,21 @@ func CreateHiddenUnionHiddenEnum(hiddenEnum HiddenEnum) HiddenUnion {
 func (u *HiddenUnion) UnmarshalJSON(data []byte) error {
 
 	var hidden Hidden = Hidden{}
-	if err := utils.UnmarshalJSON(data, &hidden, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &hidden, "", true, nil); err == nil {
 		u.Hidden = &hidden
 		u.Type = HiddenUnionTypeHidden
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = HiddenUnionTypeBoolean
 		return nil
 	}
 
 	var hiddenEnum HiddenEnum = HiddenEnum("")
-	if err := utils.UnmarshalJSON(data, &hiddenEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &hiddenEnum, "", true, nil); err == nil {
 		u.HiddenEnum = &hiddenEnum
 		u.Type = HiddenUnionTypeHiddenEnum
 		return nil
@@ -969,6 +1013,17 @@ type Properties struct {
 	Value    GetConfigurationProductsValue `json:"value"`
 	Disabled *DisabledUnion                `json:"disabled,omitempty"`
 	Hidden   *HiddenUnion                  `json:"hidden,omitempty"`
+}
+
+func (p Properties) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Properties) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Properties) GetValue() GetConfigurationProductsValue {
@@ -1061,46 +1116,112 @@ func (e *TypeString5) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type MinLengthAtBRANDAt447943String2 struct {
+type MinLengthAtBRANDAt467029String2 struct {
+}
+
+func (m MinLengthAtBRANDAt467029String2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthAtBRANDAt467029String2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MinLengthString2 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt447943String2 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MinLengthAtBRANDAt467029String2 `json:"__@BRAND@467029"`
 }
 
-func (o *MinLengthString2) GetAtBRANDAt447943() MinLengthAtBRANDAt447943String2 {
-	if o == nil {
-		return MinLengthAtBRANDAt447943String2{}
+func (m MinLengthString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt447943String2 struct {
+func (o *MinLengthString2) GetAtBRANDAt467029() MinLengthAtBRANDAt467029String2 {
+	if o == nil {
+		return MinLengthAtBRANDAt467029String2{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type MaxLengthAtBRANDAt467029String2 struct {
+}
+
+func (m MaxLengthAtBRANDAt467029String2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt467029String2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MaxLengthString2 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt447943String2 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MaxLengthAtBRANDAt467029String2 `json:"__@BRAND@467029"`
 }
 
-func (o *MaxLengthString2) GetAtBRANDAt447943() MaxLengthAtBRANDAt447943String2 {
-	if o == nil {
-		return MaxLengthAtBRANDAt447943String2{}
+func (m MaxLengthString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt447943String2 struct {
+func (o *MaxLengthString2) GetAtBRANDAt467029() MaxLengthAtBRANDAt467029String2 {
+	if o == nil {
+		return MaxLengthAtBRANDAt467029String2{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type PatternAtBRANDAt467029String2 struct {
+}
+
+func (p PatternAtBRANDAt467029String2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt467029String2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type PatternString2 struct {
-	AtBRANDAt447943 PatternAtBRANDAt447943String2 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 PatternAtBRANDAt467029String2 `json:"__@BRAND@467029"`
 }
 
-func (o *PatternString2) GetAtBRANDAt447943() PatternAtBRANDAt447943String2 {
-	if o == nil {
-		return PatternAtBRANDAt447943String2{}
+func (p PatternString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *PatternString2) GetAtBRANDAt467029() PatternAtBRANDAt467029String2 {
+	if o == nil {
+		return PatternAtBRANDAt467029String2{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type ItemsString2 struct {
@@ -1111,6 +1232,17 @@ type ItemsString2 struct {
 	Pattern     *PatternString2   `json:"pattern,omitempty"`
 	Default     *string           `json:"default,omitempty"`
 	Enum        []string          `json:"enum,omitempty"`
+}
+
+func (i ItemsString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *ItemsString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ItemsString2) GetType() TypeString5 {
@@ -1162,18 +1294,40 @@ func (o *ItemsString2) GetEnum() []string {
 	return o.Enum
 }
 
-type UIOptionValueAtBRANDAt4479432 struct {
+type UIOptionValueAtBRANDAt4670292 struct {
+}
+
+func (u UIOptionValueAtBRANDAt4670292) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionValueAtBRANDAt4670292) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type UIOptionValue2 struct {
-	AtBRANDAt447943 UIOptionValueAtBRANDAt4479432 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 UIOptionValueAtBRANDAt4670292 `json:"__@BRAND@467029"`
 }
 
-func (o *UIOptionValue2) GetAtBRANDAt447943() UIOptionValueAtBRANDAt4479432 {
-	if o == nil {
-		return UIOptionValueAtBRANDAt4479432{}
+func (u UIOptionValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *UIOptionValue2) GetAtBRANDAt467029() UIOptionValueAtBRANDAt4670292 {
+	if o == nil {
+		return UIOptionValueAtBRANDAt4670292{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type UIOptionDisabledEnum4 string
@@ -1204,6 +1358,17 @@ func (e *UIOptionDisabledEnum4) UnmarshalJSON(data []byte) error {
 
 type UIOptionDisabled4 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionDisabled4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionDisabled4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionDisabled4) GetExpr() string {
@@ -1259,21 +1424,21 @@ func CreateUIOptionDisabledUnion6UIOptionDisabledEnum4(uiOptionDisabledEnum4 UIO
 func (u *UIOptionDisabledUnion6) UnmarshalJSON(data []byte) error {
 
 	var uiOptionDisabled4 UIOptionDisabled4 = UIOptionDisabled4{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabled4, "", true, nil); err == nil {
 		u.UIOptionDisabled4 = &uiOptionDisabled4
 		u.Type = UIOptionDisabledUnion6TypeUIOptionDisabled4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionDisabledUnion6TypeBoolean
 		return nil
 	}
 
 	var uiOptionDisabledEnum4 UIOptionDisabledEnum4 = UIOptionDisabledEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum4, "", true, nil); err == nil {
 		u.UIOptionDisabledEnum4 = &uiOptionDisabledEnum4
 		u.Type = UIOptionDisabledUnion6TypeUIOptionDisabledEnum4
 		return nil
@@ -1326,6 +1491,17 @@ func (e *UIOptionHiddenEnum4) UnmarshalJSON(data []byte) error {
 
 type UIOptionHidden4 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionHidden4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionHidden4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionHidden4) GetExpr() string {
@@ -1381,21 +1557,21 @@ func CreateUIOptionHiddenUnion6UIOptionHiddenEnum4(uiOptionHiddenEnum4 UIOptionH
 func (u *UIOptionHiddenUnion6) UnmarshalJSON(data []byte) error {
 
 	var uiOptionHidden4 UIOptionHidden4 = UIOptionHidden4{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHidden4, "", true, nil); err == nil {
 		u.UIOptionHidden4 = &uiOptionHidden4
 		u.Type = UIOptionHiddenUnion6TypeUIOptionHidden4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionHiddenUnion6TypeBoolean
 		return nil
 	}
 
 	var uiOptionHiddenEnum4 UIOptionHiddenEnum4 = UIOptionHiddenEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum4, "", true, nil); err == nil {
 		u.UIOptionHiddenEnum4 = &uiOptionHiddenEnum4
 		u.Type = UIOptionHiddenUnion6TypeUIOptionHiddenEnum4
 		return nil
@@ -1426,6 +1602,17 @@ type UIOption8 struct {
 	Hidden   *UIOptionHiddenUnion6   `json:"hidden,omitempty"`
 }
 
+func (u UIOption8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIOption8) GetValue() UIOptionValue2 {
 	if o == nil {
 		return UIOptionValue2{}
@@ -1447,18 +1634,40 @@ func (o *UIOption8) GetHidden() *UIOptionHiddenUnion6 {
 	return o.Hidden
 }
 
-type UIOptionAtBRANDAt4479432 struct {
+type UIOptionAtBRANDAt4670292 struct {
+}
+
+func (u UIOptionAtBRANDAt4670292) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionAtBRANDAt4670292) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type UIOption7 struct {
-	AtBRANDAt447943 UIOptionAtBRANDAt4479432 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 UIOptionAtBRANDAt4670292 `json:"__@BRAND@467029"`
 }
 
-func (o *UIOption7) GetAtBRANDAt447943() UIOptionAtBRANDAt4479432 {
-	if o == nil {
-		return UIOptionAtBRANDAt4479432{}
+func (u UIOption7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *UIOption7) GetAtBRANDAt467029() UIOptionAtBRANDAt4670292 {
+	if o == nil {
+		return UIOptionAtBRANDAt4670292{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type UIOptionDisabledEnum3 string
@@ -1489,6 +1698,17 @@ func (e *UIOptionDisabledEnum3) UnmarshalJSON(data []byte) error {
 
 type UIOptionDisabled3 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionDisabled3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionDisabled3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionDisabled3) GetExpr() string {
@@ -1544,21 +1764,21 @@ func CreateUIOptionDisabledUnion5UIOptionDisabledEnum3(uiOptionDisabledEnum3 UIO
 func (u *UIOptionDisabledUnion5) UnmarshalJSON(data []byte) error {
 
 	var uiOptionDisabled3 UIOptionDisabled3 = UIOptionDisabled3{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabled3, "", true, nil); err == nil {
 		u.UIOptionDisabled3 = &uiOptionDisabled3
 		u.Type = UIOptionDisabledUnion5TypeUIOptionDisabled3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionDisabledUnion5TypeBoolean
 		return nil
 	}
 
 	var uiOptionDisabledEnum3 UIOptionDisabledEnum3 = UIOptionDisabledEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum3, "", true, nil); err == nil {
 		u.UIOptionDisabledEnum3 = &uiOptionDisabledEnum3
 		u.Type = UIOptionDisabledUnion5TypeUIOptionDisabledEnum3
 		return nil
@@ -1611,6 +1831,17 @@ func (e *UIOptionHiddenEnum3) UnmarshalJSON(data []byte) error {
 
 type UIOptionHidden3 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionHidden3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionHidden3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionHidden3) GetExpr() string {
@@ -1666,21 +1897,21 @@ func CreateUIOptionHiddenUnion5UIOptionHiddenEnum3(uiOptionHiddenEnum3 UIOptionH
 func (u *UIOptionHiddenUnion5) UnmarshalJSON(data []byte) error {
 
 	var uiOptionHidden3 UIOptionHidden3 = UIOptionHidden3{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHidden3, "", true, nil); err == nil {
 		u.UIOptionHidden3 = &uiOptionHidden3
 		u.Type = UIOptionHiddenUnion5TypeUIOptionHidden3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionHiddenUnion5TypeBoolean
 		return nil
 	}
 
 	var uiOptionHiddenEnum3 UIOptionHiddenEnum3 = UIOptionHiddenEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum3, "", true, nil); err == nil {
 		u.UIOptionHiddenEnum3 = &uiOptionHiddenEnum3
 		u.Type = UIOptionHiddenUnion5TypeUIOptionHiddenEnum3
 		return nil
@@ -1710,6 +1941,17 @@ type UIOption6 struct {
 	Label    string                  `json:"label"`
 	Disabled *UIOptionDisabledUnion5 `json:"disabled,omitempty"`
 	Hidden   *UIOptionHiddenUnion5   `json:"hidden,omitempty"`
+}
+
+func (u UIOption6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOption6) GetValue() string {
@@ -1785,24 +2027,24 @@ func CreateUIOptionUnion2UIOption8(uiOption8 UIOption8) UIOptionUnion2 {
 
 func (u *UIOptionUnion2) UnmarshalJSON(data []byte) error {
 
+	var uiOption6 UIOption6 = UIOption6{}
+	if err := utils.UnmarshalJSON(data, &uiOption6, "", true, nil); err == nil {
+		u.UIOption6 = &uiOption6
+		u.Type = UIOptionUnion2TypeUIOption6
+		return nil
+	}
+
 	var uiOption7 UIOption7 = UIOption7{}
-	if err := utils.UnmarshalJSON(data, &uiOption7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOption7, "", true, nil); err == nil {
 		u.UIOption7 = &uiOption7
 		u.Type = UIOptionUnion2TypeUIOption7
 		return nil
 	}
 
 	var uiOption8 UIOption8 = UIOption8{}
-	if err := utils.UnmarshalJSON(data, &uiOption8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOption8, "", true, nil); err == nil {
 		u.UIOption8 = &uiOption8
 		u.Type = UIOptionUnion2TypeUIOption8
-		return nil
-	}
-
-	var uiOption6 UIOption6 = UIOption6{}
-	if err := utils.UnmarshalJSON(data, &uiOption6, "", true, true); err == nil {
-		u.UIOption6 = &uiOption6
-		u.Type = UIOptionUnion2TypeUIOption6
 		return nil
 	}
 
@@ -1853,6 +2095,17 @@ func (e *UIReadOnlyEnum8) UnmarshalJSON(data []byte) error {
 
 type UIReadOnly8 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIReadOnly8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIReadOnly8) GetExpr() string {
@@ -1908,21 +2161,21 @@ func CreateUIReadOnlyUnion8UIReadOnlyEnum8(uiReadOnlyEnum8 UIReadOnlyEnum8) UIRe
 func (u *UIReadOnlyUnion8) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly8 UIReadOnly8 = UIReadOnly8{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly8, "", true, nil); err == nil {
 		u.UIReadOnly8 = &uiReadOnly8
 		u.Type = UIReadOnlyUnion8TypeUIReadOnly8
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion8TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum8 UIReadOnlyEnum8 = UIReadOnlyEnum8("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum8, "", true, nil); err == nil {
 		u.UIReadOnlyEnum8 = &uiReadOnlyEnum8
 		u.Type = UIReadOnlyUnion8TypeUIReadOnlyEnum8
 		return nil
@@ -1975,6 +2228,17 @@ func (e *UIHiddenEnum8) UnmarshalJSON(data []byte) error {
 
 type UIHidden8 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden8) GetExpr() string {
@@ -2030,21 +2294,21 @@ func CreateUIHiddenUnion8UIHiddenEnum8(uiHiddenEnum8 UIHiddenEnum8) UIHiddenUnio
 func (u *UIHiddenUnion8) UnmarshalJSON(data []byte) error {
 
 	var uiHidden8 UIHidden8 = UIHidden8{}
-	if err := utils.UnmarshalJSON(data, &uiHidden8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden8, "", true, nil); err == nil {
 		u.UIHidden8 = &uiHidden8
 		u.Type = UIHiddenUnion8TypeUIHidden8
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion8TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum8 UIHiddenEnum8 = UIHiddenEnum8("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum8, "", true, nil); err == nil {
 		u.UIHiddenEnum8 = &uiHiddenEnum8
 		u.Type = UIHiddenUnion8TypeUIHiddenEnum8
 		return nil
@@ -2097,6 +2361,17 @@ func (e *UIDisabledEnum8) UnmarshalJSON(data []byte) error {
 
 type UIDisabled8 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled8) GetExpr() string {
@@ -2152,21 +2427,21 @@ func CreateUIDisabledUnion8UIDisabledEnum8(uiDisabledEnum8 UIDisabledEnum8) UIDi
 func (u *UIDisabledUnion8) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled8 UIDisabled8 = UIDisabled8{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled8, "", true, nil); err == nil {
 		u.UIDisabled8 = &uiDisabled8
 		u.Type = UIDisabledUnion8TypeUIDisabled8
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion8TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum8 UIDisabledEnum8 = UIDisabledEnum8("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum8, "", true, nil); err == nil {
 		u.UIDisabledEnum8 = &uiDisabledEnum8
 		u.Type = UIDisabledUnion8TypeUIDisabledEnum8
 		return nil
@@ -2193,6 +2468,17 @@ func (u UIDisabledUnion8) MarshalJSON() ([]byte, error) {
 
 type UIDescription8 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription8) GetExpr() string {
@@ -2237,14 +2523,14 @@ func CreateUIDescriptionUnion8UIDescription8(uiDescription8 UIDescription8) UIDe
 func (u *UIDescriptionUnion8) UnmarshalJSON(data []byte) error {
 
 	var uiDescription8 UIDescription8 = UIDescription8{}
-	if err := utils.UnmarshalJSON(data, &uiDescription8, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription8, "", true, nil); err == nil {
 		u.UIDescription8 = &uiDescription8
 		u.Type = UIDescriptionUnion8TypeUIDescription8
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion8TypeStr
 		return nil
@@ -2269,6 +2555,17 @@ type UIFormattedValue8 struct {
 	Expr string `json:"expr"`
 }
 
+func (u UIFormattedValue8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIFormattedValue8) GetExpr() string {
 	if o == nil {
 		return ""
@@ -2276,32 +2573,76 @@ func (o *UIFormattedValue8) GetExpr() string {
 	return o.Expr
 }
 
-type DefaultAtBRANDAt447943 struct {
+type DefaultAtBRANDAt467029 struct {
+}
+
+func (d DefaultAtBRANDAt467029) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DefaultAtBRANDAt467029) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Default struct {
-	AtBRANDAt447943 DefaultAtBRANDAt447943 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 DefaultAtBRANDAt467029 `json:"__@BRAND@467029"`
 }
 
-func (o *Default) GetAtBRANDAt447943() DefaultAtBRANDAt447943 {
-	if o == nil {
-		return DefaultAtBRANDAt447943{}
+func (d Default) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Default) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type ExampleAtBRANDAt447943 struct {
+func (o *Default) GetAtBRANDAt467029() DefaultAtBRANDAt467029 {
+	if o == nil {
+		return DefaultAtBRANDAt467029{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type ExampleAtBRANDAt467029 struct {
+}
+
+func (e ExampleAtBRANDAt467029) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ExampleAtBRANDAt467029) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Example struct {
-	AtBRANDAt447943 ExampleAtBRANDAt447943 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 ExampleAtBRANDAt467029 `json:"__@BRAND@467029"`
 }
 
-func (o *Example) GetAtBRANDAt447943() ExampleAtBRANDAt447943 {
-	if o == nil {
-		return ExampleAtBRANDAt447943{}
+func (e Example) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *Example) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *Example) GetAtBRANDAt467029() ExampleAtBRANDAt467029 {
+	if o == nil {
+		return ExampleAtBRANDAt467029{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type PropertiesMultiVercelRegion struct {
@@ -2321,6 +2662,17 @@ type PropertiesMultiVercelRegion struct {
 	UIPlaceholder    *string                    `json:"ui:placeholder,omitempty"`
 	Default          []Default                  `json:"default,omitempty"`
 	Example          []Example                  `json:"example,omitempty"`
+}
+
+func (p PropertiesMultiVercelRegion) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesMultiVercelRegion) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control", "items", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesMultiVercelRegion) GetType() TypeArray3 {
@@ -2481,18 +2833,40 @@ func (e *UIControlVercelRegion) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UIOptionValueAtBRANDAt4479431 struct {
+type UIOptionValueAtBRANDAt4670291 struct {
+}
+
+func (u UIOptionValueAtBRANDAt4670291) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionValueAtBRANDAt4670291) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type UIOptionValue1 struct {
-	AtBRANDAt447943 UIOptionValueAtBRANDAt4479431 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 UIOptionValueAtBRANDAt4670291 `json:"__@BRAND@467029"`
 }
 
-func (o *UIOptionValue1) GetAtBRANDAt447943() UIOptionValueAtBRANDAt4479431 {
-	if o == nil {
-		return UIOptionValueAtBRANDAt4479431{}
+func (u UIOptionValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *UIOptionValue1) GetAtBRANDAt467029() UIOptionValueAtBRANDAt4670291 {
+	if o == nil {
+		return UIOptionValueAtBRANDAt4670291{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type UIOptionDisabledEnum2 string
@@ -2523,6 +2897,17 @@ func (e *UIOptionDisabledEnum2) UnmarshalJSON(data []byte) error {
 
 type UIOptionDisabled2 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionDisabled2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionDisabled2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionDisabled2) GetExpr() string {
@@ -2578,21 +2963,21 @@ func CreateUIOptionDisabledUnion4UIOptionDisabledEnum2(uiOptionDisabledEnum2 UIO
 func (u *UIOptionDisabledUnion4) UnmarshalJSON(data []byte) error {
 
 	var uiOptionDisabled2 UIOptionDisabled2 = UIOptionDisabled2{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabled2, "", true, nil); err == nil {
 		u.UIOptionDisabled2 = &uiOptionDisabled2
 		u.Type = UIOptionDisabledUnion4TypeUIOptionDisabled2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionDisabledUnion4TypeBoolean
 		return nil
 	}
 
 	var uiOptionDisabledEnum2 UIOptionDisabledEnum2 = UIOptionDisabledEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum2, "", true, nil); err == nil {
 		u.UIOptionDisabledEnum2 = &uiOptionDisabledEnum2
 		u.Type = UIOptionDisabledUnion4TypeUIOptionDisabledEnum2
 		return nil
@@ -2645,6 +3030,17 @@ func (e *UIOptionHiddenEnum2) UnmarshalJSON(data []byte) error {
 
 type UIOptionHidden2 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionHidden2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionHidden2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionHidden2) GetExpr() string {
@@ -2700,21 +3096,21 @@ func CreateUIOptionHiddenUnion4UIOptionHiddenEnum2(uiOptionHiddenEnum2 UIOptionH
 func (u *UIOptionHiddenUnion4) UnmarshalJSON(data []byte) error {
 
 	var uiOptionHidden2 UIOptionHidden2 = UIOptionHidden2{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHidden2, "", true, nil); err == nil {
 		u.UIOptionHidden2 = &uiOptionHidden2
 		u.Type = UIOptionHiddenUnion4TypeUIOptionHidden2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionHiddenUnion4TypeBoolean
 		return nil
 	}
 
 	var uiOptionHiddenEnum2 UIOptionHiddenEnum2 = UIOptionHiddenEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum2, "", true, nil); err == nil {
 		u.UIOptionHiddenEnum2 = &uiOptionHiddenEnum2
 		u.Type = UIOptionHiddenUnion4TypeUIOptionHiddenEnum2
 		return nil
@@ -2745,6 +3141,17 @@ type UIOption5 struct {
 	Hidden   *UIOptionHiddenUnion4   `json:"hidden,omitempty"`
 }
 
+func (u UIOption5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIOption5) GetValue() UIOptionValue1 {
 	if o == nil {
 		return UIOptionValue1{}
@@ -2766,18 +3173,40 @@ func (o *UIOption5) GetHidden() *UIOptionHiddenUnion4 {
 	return o.Hidden
 }
 
-type UIOptionAtBRANDAt4479431 struct {
+type UIOptionAtBRANDAt4670291 struct {
+}
+
+func (u UIOptionAtBRANDAt4670291) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionAtBRANDAt4670291) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type UIOption4 struct {
-	AtBRANDAt447943 UIOptionAtBRANDAt4479431 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 UIOptionAtBRANDAt4670291 `json:"__@BRAND@467029"`
 }
 
-func (o *UIOption4) GetAtBRANDAt447943() UIOptionAtBRANDAt4479431 {
-	if o == nil {
-		return UIOptionAtBRANDAt4479431{}
+func (u UIOption4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *UIOption4) GetAtBRANDAt467029() UIOptionAtBRANDAt4670291 {
+	if o == nil {
+		return UIOptionAtBRANDAt4670291{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type UIOptionDisabledEnum1 string
@@ -2808,6 +3237,17 @@ func (e *UIOptionDisabledEnum1) UnmarshalJSON(data []byte) error {
 
 type UIOptionDisabled1 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionDisabled1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionDisabled1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionDisabled1) GetExpr() string {
@@ -2863,21 +3303,21 @@ func CreateUIOptionDisabledUnion3UIOptionDisabledEnum1(uiOptionDisabledEnum1 UIO
 func (u *UIOptionDisabledUnion3) UnmarshalJSON(data []byte) error {
 
 	var uiOptionDisabled1 UIOptionDisabled1 = UIOptionDisabled1{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabled1, "", true, nil); err == nil {
 		u.UIOptionDisabled1 = &uiOptionDisabled1
 		u.Type = UIOptionDisabledUnion3TypeUIOptionDisabled1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionDisabledUnion3TypeBoolean
 		return nil
 	}
 
 	var uiOptionDisabledEnum1 UIOptionDisabledEnum1 = UIOptionDisabledEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum1, "", true, nil); err == nil {
 		u.UIOptionDisabledEnum1 = &uiOptionDisabledEnum1
 		u.Type = UIOptionDisabledUnion3TypeUIOptionDisabledEnum1
 		return nil
@@ -2930,6 +3370,17 @@ func (e *UIOptionHiddenEnum1) UnmarshalJSON(data []byte) error {
 
 type UIOptionHidden1 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIOptionHidden1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOptionHidden1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOptionHidden1) GetExpr() string {
@@ -2985,21 +3436,21 @@ func CreateUIOptionHiddenUnion3UIOptionHiddenEnum1(uiOptionHiddenEnum1 UIOptionH
 func (u *UIOptionHiddenUnion3) UnmarshalJSON(data []byte) error {
 
 	var uiOptionHidden1 UIOptionHidden1 = UIOptionHidden1{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHidden1, "", true, nil); err == nil {
 		u.UIOptionHidden1 = &uiOptionHidden1
 		u.Type = UIOptionHiddenUnion3TypeUIOptionHidden1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionHiddenUnion3TypeBoolean
 		return nil
 	}
 
 	var uiOptionHiddenEnum1 UIOptionHiddenEnum1 = UIOptionHiddenEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum1, "", true, nil); err == nil {
 		u.UIOptionHiddenEnum1 = &uiOptionHiddenEnum1
 		u.Type = UIOptionHiddenUnion3TypeUIOptionHiddenEnum1
 		return nil
@@ -3029,6 +3480,17 @@ type UIOption3 struct {
 	Label    string                  `json:"label"`
 	Disabled *UIOptionDisabledUnion3 `json:"disabled,omitempty"`
 	Hidden   *UIOptionHiddenUnion3   `json:"hidden,omitempty"`
+}
+
+func (u UIOption3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOption3) GetValue() string {
@@ -3104,24 +3566,24 @@ func CreateUIOptionUnion1UIOption5(uiOption5 UIOption5) UIOptionUnion1 {
 
 func (u *UIOptionUnion1) UnmarshalJSON(data []byte) error {
 
+	var uiOption3 UIOption3 = UIOption3{}
+	if err := utils.UnmarshalJSON(data, &uiOption3, "", true, nil); err == nil {
+		u.UIOption3 = &uiOption3
+		u.Type = UIOptionUnion1TypeUIOption3
+		return nil
+	}
+
 	var uiOption4 UIOption4 = UIOption4{}
-	if err := utils.UnmarshalJSON(data, &uiOption4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOption4, "", true, nil); err == nil {
 		u.UIOption4 = &uiOption4
 		u.Type = UIOptionUnion1TypeUIOption4
 		return nil
 	}
 
 	var uiOption5 UIOption5 = UIOption5{}
-	if err := utils.UnmarshalJSON(data, &uiOption5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiOption5, "", true, nil); err == nil {
 		u.UIOption5 = &uiOption5
 		u.Type = UIOptionUnion1TypeUIOption5
-		return nil
-	}
-
-	var uiOption3 UIOption3 = UIOption3{}
-	if err := utils.UnmarshalJSON(data, &uiOption3, "", true, true); err == nil {
-		u.UIOption3 = &uiOption3
-		u.Type = UIOptionUnion1TypeUIOption3
 		return nil
 	}
 
@@ -3144,46 +3606,112 @@ func (u UIOptionUnion1) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UIOptionUnion1: all fields are null")
 }
 
-type MinLengthAtBRANDAt4479433 struct {
+type MinLengthAtBRANDAt4670293 struct {
+}
+
+func (m MinLengthAtBRANDAt4670293) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthAtBRANDAt4670293) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MinLength3 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt4479433 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MinLengthAtBRANDAt4670293 `json:"__@BRAND@467029"`
 }
 
-func (o *MinLength3) GetAtBRANDAt447943() MinLengthAtBRANDAt4479433 {
-	if o == nil {
-		return MinLengthAtBRANDAt4479433{}
+func (m MinLength3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLength3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt4479433 struct {
+func (o *MinLength3) GetAtBRANDAt467029() MinLengthAtBRANDAt4670293 {
+	if o == nil {
+		return MinLengthAtBRANDAt4670293{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type MaxLengthAtBRANDAt4670293 struct {
+}
+
+func (m MaxLengthAtBRANDAt4670293) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt4670293) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MaxLength3 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt4479433 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MaxLengthAtBRANDAt4670293 `json:"__@BRAND@467029"`
 }
 
-func (o *MaxLength3) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479433 {
-	if o == nil {
-		return MaxLengthAtBRANDAt4479433{}
+func (m MaxLength3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLength3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt4479433 struct {
+func (o *MaxLength3) GetAtBRANDAt467029() MaxLengthAtBRANDAt4670293 {
+	if o == nil {
+		return MaxLengthAtBRANDAt4670293{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type PatternAtBRANDAt4670293 struct {
+}
+
+func (p PatternAtBRANDAt4670293) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt4670293) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Pattern3 struct {
-	AtBRANDAt447943 PatternAtBRANDAt4479433 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 PatternAtBRANDAt4670293 `json:"__@BRAND@467029"`
 }
 
-func (o *Pattern3) GetAtBRANDAt447943() PatternAtBRANDAt4479433 {
-	if o == nil {
-		return PatternAtBRANDAt4479433{}
+func (p Pattern3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Pattern3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *Pattern3) GetAtBRANDAt467029() PatternAtBRANDAt4670293 {
+	if o == nil {
+		return PatternAtBRANDAt4670293{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type UIReadOnlyEnum7 string
@@ -3214,6 +3742,17 @@ func (e *UIReadOnlyEnum7) UnmarshalJSON(data []byte) error {
 
 type UIReadOnly7 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIReadOnly7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIReadOnly7) GetExpr() string {
@@ -3269,21 +3808,21 @@ func CreateUIReadOnlyUnion7UIReadOnlyEnum7(uiReadOnlyEnum7 UIReadOnlyEnum7) UIRe
 func (u *UIReadOnlyUnion7) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly7 UIReadOnly7 = UIReadOnly7{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly7, "", true, nil); err == nil {
 		u.UIReadOnly7 = &uiReadOnly7
 		u.Type = UIReadOnlyUnion7TypeUIReadOnly7
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion7TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum7 UIReadOnlyEnum7 = UIReadOnlyEnum7("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum7, "", true, nil); err == nil {
 		u.UIReadOnlyEnum7 = &uiReadOnlyEnum7
 		u.Type = UIReadOnlyUnion7TypeUIReadOnlyEnum7
 		return nil
@@ -3336,6 +3875,17 @@ func (e *UIHiddenEnum7) UnmarshalJSON(data []byte) error {
 
 type UIHidden7 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden7) GetExpr() string {
@@ -3391,21 +3941,21 @@ func CreateUIHiddenUnion7UIHiddenEnum7(uiHiddenEnum7 UIHiddenEnum7) UIHiddenUnio
 func (u *UIHiddenUnion7) UnmarshalJSON(data []byte) error {
 
 	var uiHidden7 UIHidden7 = UIHidden7{}
-	if err := utils.UnmarshalJSON(data, &uiHidden7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden7, "", true, nil); err == nil {
 		u.UIHidden7 = &uiHidden7
 		u.Type = UIHiddenUnion7TypeUIHidden7
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion7TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum7 UIHiddenEnum7 = UIHiddenEnum7("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum7, "", true, nil); err == nil {
 		u.UIHiddenEnum7 = &uiHiddenEnum7
 		u.Type = UIHiddenUnion7TypeUIHiddenEnum7
 		return nil
@@ -3458,6 +4008,17 @@ func (e *UIDisabledEnum7) UnmarshalJSON(data []byte) error {
 
 type UIDisabled7 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled7) GetExpr() string {
@@ -3513,21 +4074,21 @@ func CreateUIDisabledUnion7UIDisabledEnum7(uiDisabledEnum7 UIDisabledEnum7) UIDi
 func (u *UIDisabledUnion7) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled7 UIDisabled7 = UIDisabled7{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled7, "", true, nil); err == nil {
 		u.UIDisabled7 = &uiDisabled7
 		u.Type = UIDisabledUnion7TypeUIDisabled7
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion7TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum7 UIDisabledEnum7 = UIDisabledEnum7("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum7, "", true, nil); err == nil {
 		u.UIDisabledEnum7 = &uiDisabledEnum7
 		u.Type = UIDisabledUnion7TypeUIDisabledEnum7
 		return nil
@@ -3554,6 +4115,17 @@ func (u UIDisabledUnion7) MarshalJSON() ([]byte, error) {
 
 type UIDescription7 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription7) GetExpr() string {
@@ -3598,14 +4170,14 @@ func CreateUIDescriptionUnion7UIDescription7(uiDescription7 UIDescription7) UIDe
 func (u *UIDescriptionUnion7) UnmarshalJSON(data []byte) error {
 
 	var uiDescription7 UIDescription7 = UIDescription7{}
-	if err := utils.UnmarshalJSON(data, &uiDescription7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription7, "", true, nil); err == nil {
 		u.UIDescription7 = &uiDescription7
 		u.Type = UIDescriptionUnion7TypeUIDescription7
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion7TypeStr
 		return nil
@@ -3628,6 +4200,17 @@ func (u UIDescriptionUnion7) MarshalJSON() ([]byte, error) {
 
 type UIFormattedValue7 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIFormattedValue7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIFormattedValue7) GetExpr() string {
@@ -3654,6 +4237,17 @@ type PropertiesVercelRegion struct {
 	UIDescription    *UIDescriptionUnion7  `json:"ui:description,omitempty"`
 	UIFormattedValue *UIFormattedValue7    `json:"ui:formatted-value,omitempty"`
 	UIPlaceholder    *string               `json:"ui:placeholder,omitempty"`
+}
+
+func (p PropertiesVercelRegion) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesVercelRegion) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesVercelRegion) GetType() TypeString4 {
@@ -3837,46 +4431,112 @@ func (e *TypeString3) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type MinLengthAtBRANDAt447943String1 struct {
+type MinLengthAtBRANDAt467029String1 struct {
+}
+
+func (m MinLengthAtBRANDAt467029String1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthAtBRANDAt467029String1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MinLengthString1 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt447943String1 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MinLengthAtBRANDAt467029String1 `json:"__@BRAND@467029"`
 }
 
-func (o *MinLengthString1) GetAtBRANDAt447943() MinLengthAtBRANDAt447943String1 {
-	if o == nil {
-		return MinLengthAtBRANDAt447943String1{}
+func (m MinLengthString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt447943String1 struct {
+func (o *MinLengthString1) GetAtBRANDAt467029() MinLengthAtBRANDAt467029String1 {
+	if o == nil {
+		return MinLengthAtBRANDAt467029String1{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type MaxLengthAtBRANDAt467029String1 struct {
+}
+
+func (m MaxLengthAtBRANDAt467029String1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt467029String1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MaxLengthString1 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt447943String1 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MaxLengthAtBRANDAt467029String1 `json:"__@BRAND@467029"`
 }
 
-func (o *MaxLengthString1) GetAtBRANDAt447943() MaxLengthAtBRANDAt447943String1 {
-	if o == nil {
-		return MaxLengthAtBRANDAt447943String1{}
+func (m MaxLengthString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt447943String1 struct {
+func (o *MaxLengthString1) GetAtBRANDAt467029() MaxLengthAtBRANDAt467029String1 {
+	if o == nil {
+		return MaxLengthAtBRANDAt467029String1{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type PatternAtBRANDAt467029String1 struct {
+}
+
+func (p PatternAtBRANDAt467029String1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt467029String1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type PatternString1 struct {
-	AtBRANDAt447943 PatternAtBRANDAt447943String1 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 PatternAtBRANDAt467029String1 `json:"__@BRAND@467029"`
 }
 
-func (o *PatternString1) GetAtBRANDAt447943() PatternAtBRANDAt447943String1 {
-	if o == nil {
-		return PatternAtBRANDAt447943String1{}
+func (p PatternString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *PatternString1) GetAtBRANDAt467029() PatternAtBRANDAt467029String1 {
+	if o == nil {
+		return PatternAtBRANDAt467029String1{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type ItemsString1 struct {
@@ -3887,6 +4547,17 @@ type ItemsString1 struct {
 	Pattern     *PatternString1   `json:"pattern,omitempty"`
 	Default     *string           `json:"default,omitempty"`
 	Enum        []string          `json:"enum,omitempty"`
+}
+
+func (i ItemsString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *ItemsString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ItemsString1) GetType() TypeString3 {
@@ -3968,6 +4639,17 @@ type DisabledUIOption2 struct {
 	Expr string `json:"expr"`
 }
 
+func (d DisabledUIOption2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DisabledUIOption2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DisabledUIOption2) GetExpr() string {
 	if o == nil {
 		return ""
@@ -4021,21 +4703,21 @@ func CreateUIOptionDisabledUnion2DisabledUIOptionEnum2(disabledUIOptionEnum2 Dis
 func (u *UIOptionDisabledUnion2) UnmarshalJSON(data []byte) error {
 
 	var disabledUIOption2 DisabledUIOption2 = DisabledUIOption2{}
-	if err := utils.UnmarshalJSON(data, &disabledUIOption2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &disabledUIOption2, "", true, nil); err == nil {
 		u.DisabledUIOption2 = &disabledUIOption2
 		u.Type = UIOptionDisabledUnion2TypeDisabledUIOption2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionDisabledUnion2TypeBoolean
 		return nil
 	}
 
 	var disabledUIOptionEnum2 DisabledUIOptionEnum2 = DisabledUIOptionEnum2("")
-	if err := utils.UnmarshalJSON(data, &disabledUIOptionEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &disabledUIOptionEnum2, "", true, nil); err == nil {
 		u.DisabledUIOptionEnum2 = &disabledUIOptionEnum2
 		u.Type = UIOptionDisabledUnion2TypeDisabledUIOptionEnum2
 		return nil
@@ -4088,6 +4770,17 @@ func (e *HiddenUIOptionEnum2) UnmarshalJSON(data []byte) error {
 
 type HiddenUIOption2 struct {
 	Expr string `json:"expr"`
+}
+
+func (h HiddenUIOption2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HiddenUIOption2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *HiddenUIOption2) GetExpr() string {
@@ -4143,21 +4836,21 @@ func CreateUIOptionHiddenUnion2HiddenUIOptionEnum2(hiddenUIOptionEnum2 HiddenUIO
 func (u *UIOptionHiddenUnion2) UnmarshalJSON(data []byte) error {
 
 	var hiddenUIOption2 HiddenUIOption2 = HiddenUIOption2{}
-	if err := utils.UnmarshalJSON(data, &hiddenUIOption2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &hiddenUIOption2, "", true, nil); err == nil {
 		u.HiddenUIOption2 = &hiddenUIOption2
 		u.Type = UIOptionHiddenUnion2TypeHiddenUIOption2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionHiddenUnion2TypeBoolean
 		return nil
 	}
 
 	var hiddenUIOptionEnum2 HiddenUIOptionEnum2 = HiddenUIOptionEnum2("")
-	if err := utils.UnmarshalJSON(data, &hiddenUIOptionEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &hiddenUIOptionEnum2, "", true, nil); err == nil {
 		u.HiddenUIOptionEnum2 = &hiddenUIOptionEnum2
 		u.Type = UIOptionHiddenUnion2TypeHiddenUIOptionEnum2
 		return nil
@@ -4187,6 +4880,17 @@ type UIOption2 struct {
 	Label    string                  `json:"label"`
 	Disabled *UIOptionDisabledUnion2 `json:"disabled,omitempty"`
 	Hidden   *UIOptionHiddenUnion2   `json:"hidden,omitempty"`
+}
+
+func (u UIOption2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIOption2) GetValue() string {
@@ -4247,6 +4951,17 @@ type UIReadOnly6 struct {
 	Expr string `json:"expr"`
 }
 
+func (u UIReadOnly6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIReadOnly6) GetExpr() string {
 	if o == nil {
 		return ""
@@ -4300,21 +5015,21 @@ func CreateUIReadOnlyUnion6UIReadOnlyEnum6(uiReadOnlyEnum6 UIReadOnlyEnum6) UIRe
 func (u *UIReadOnlyUnion6) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly6 UIReadOnly6 = UIReadOnly6{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly6, "", true, nil); err == nil {
 		u.UIReadOnly6 = &uiReadOnly6
 		u.Type = UIReadOnlyUnion6TypeUIReadOnly6
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion6TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum6 UIReadOnlyEnum6 = UIReadOnlyEnum6("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum6, "", true, nil); err == nil {
 		u.UIReadOnlyEnum6 = &uiReadOnlyEnum6
 		u.Type = UIReadOnlyUnion6TypeUIReadOnlyEnum6
 		return nil
@@ -4367,6 +5082,17 @@ func (e *UIHiddenEnum6) UnmarshalJSON(data []byte) error {
 
 type UIHidden6 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden6) GetExpr() string {
@@ -4422,21 +5148,21 @@ func CreateUIHiddenUnion6UIHiddenEnum6(uiHiddenEnum6 UIHiddenEnum6) UIHiddenUnio
 func (u *UIHiddenUnion6) UnmarshalJSON(data []byte) error {
 
 	var uiHidden6 UIHidden6 = UIHidden6{}
-	if err := utils.UnmarshalJSON(data, &uiHidden6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden6, "", true, nil); err == nil {
 		u.UIHidden6 = &uiHidden6
 		u.Type = UIHiddenUnion6TypeUIHidden6
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion6TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum6 UIHiddenEnum6 = UIHiddenEnum6("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum6, "", true, nil); err == nil {
 		u.UIHiddenEnum6 = &uiHiddenEnum6
 		u.Type = UIHiddenUnion6TypeUIHiddenEnum6
 		return nil
@@ -4489,6 +5215,17 @@ func (e *UIDisabledEnum6) UnmarshalJSON(data []byte) error {
 
 type UIDisabled6 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled6) GetExpr() string {
@@ -4544,21 +5281,21 @@ func CreateUIDisabledUnion6UIDisabledEnum6(uiDisabledEnum6 UIDisabledEnum6) UIDi
 func (u *UIDisabledUnion6) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled6 UIDisabled6 = UIDisabled6{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled6, "", true, nil); err == nil {
 		u.UIDisabled6 = &uiDisabled6
 		u.Type = UIDisabledUnion6TypeUIDisabled6
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion6TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum6 UIDisabledEnum6 = UIDisabledEnum6("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum6, "", true, nil); err == nil {
 		u.UIDisabledEnum6 = &uiDisabledEnum6
 		u.Type = UIDisabledUnion6TypeUIDisabledEnum6
 		return nil
@@ -4585,6 +5322,17 @@ func (u UIDisabledUnion6) MarshalJSON() ([]byte, error) {
 
 type UIDescription6 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription6) GetExpr() string {
@@ -4629,14 +5377,14 @@ func CreateUIDescriptionUnion6UIDescription6(uiDescription6 UIDescription6) UIDe
 func (u *UIDescriptionUnion6) UnmarshalJSON(data []byte) error {
 
 	var uiDescription6 UIDescription6 = UIDescription6{}
-	if err := utils.UnmarshalJSON(data, &uiDescription6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription6, "", true, nil); err == nil {
 		u.UIDescription6 = &uiDescription6
 		u.Type = UIDescriptionUnion6TypeUIDescription6
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion6TypeStr
 		return nil
@@ -4659,6 +5407,17 @@ func (u UIDescriptionUnion6) MarshalJSON() ([]byte, error) {
 
 type UIFormattedValue6 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIFormattedValue6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIFormattedValue6) GetExpr() string {
@@ -4685,6 +5444,17 @@ type PropertiesMultiSelect struct {
 	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
 	Default          []string             `json:"default,omitempty"`
 	Example          []string             `json:"example,omitempty"`
+}
+
+func (p PropertiesMultiSelect) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesMultiSelect) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control", "items", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesMultiSelect) GetType() TypeArray2 {
@@ -4875,6 +5645,17 @@ type DisabledUIOption1 struct {
 	Expr string `json:"expr"`
 }
 
+func (d DisabledUIOption1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DisabledUIOption1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DisabledUIOption1) GetExpr() string {
 	if o == nil {
 		return ""
@@ -4928,21 +5709,21 @@ func CreateUIOptionDisabledUnion1DisabledUIOptionEnum1(disabledUIOptionEnum1 Dis
 func (u *UIOptionDisabledUnion1) UnmarshalJSON(data []byte) error {
 
 	var disabledUIOption1 DisabledUIOption1 = DisabledUIOption1{}
-	if err := utils.UnmarshalJSON(data, &disabledUIOption1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &disabledUIOption1, "", true, nil); err == nil {
 		u.DisabledUIOption1 = &disabledUIOption1
 		u.Type = UIOptionDisabledUnion1TypeDisabledUIOption1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionDisabledUnion1TypeBoolean
 		return nil
 	}
 
 	var disabledUIOptionEnum1 DisabledUIOptionEnum1 = DisabledUIOptionEnum1("")
-	if err := utils.UnmarshalJSON(data, &disabledUIOptionEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &disabledUIOptionEnum1, "", true, nil); err == nil {
 		u.DisabledUIOptionEnum1 = &disabledUIOptionEnum1
 		u.Type = UIOptionDisabledUnion1TypeDisabledUIOptionEnum1
 		return nil
@@ -4995,6 +5776,17 @@ func (e *HiddenUIOptionEnum1) UnmarshalJSON(data []byte) error {
 
 type HiddenUIOption1 struct {
 	Expr string `json:"expr"`
+}
+
+func (h HiddenUIOption1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HiddenUIOption1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *HiddenUIOption1) GetExpr() string {
@@ -5050,21 +5842,21 @@ func CreateUIOptionHiddenUnion1HiddenUIOptionEnum1(hiddenUIOptionEnum1 HiddenUIO
 func (u *UIOptionHiddenUnion1) UnmarshalJSON(data []byte) error {
 
 	var hiddenUIOption1 HiddenUIOption1 = HiddenUIOption1{}
-	if err := utils.UnmarshalJSON(data, &hiddenUIOption1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &hiddenUIOption1, "", true, nil); err == nil {
 		u.HiddenUIOption1 = &hiddenUIOption1
 		u.Type = UIOptionHiddenUnion1TypeHiddenUIOption1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIOptionHiddenUnion1TypeBoolean
 		return nil
 	}
 
 	var hiddenUIOptionEnum1 HiddenUIOptionEnum1 = HiddenUIOptionEnum1("")
-	if err := utils.UnmarshalJSON(data, &hiddenUIOptionEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &hiddenUIOptionEnum1, "", true, nil); err == nil {
 		u.HiddenUIOptionEnum1 = &hiddenUIOptionEnum1
 		u.Type = UIOptionHiddenUnion1TypeHiddenUIOptionEnum1
 		return nil
@@ -5096,6 +5888,17 @@ type UIOption1 struct {
 	Hidden   *UIOptionHiddenUnion1   `json:"hidden,omitempty"`
 }
 
+func (u UIOption1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIOption1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIOption1) GetValue() string {
 	if o == nil {
 		return ""
@@ -5124,46 +5927,112 @@ func (o *UIOption1) GetHidden() *UIOptionHiddenUnion1 {
 	return o.Hidden
 }
 
-type MinLengthAtBRANDAt4479432 struct {
+type MinLengthAtBRANDAt4670292 struct {
+}
+
+func (m MinLengthAtBRANDAt4670292) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthAtBRANDAt4670292) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MinLength2 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt4479432 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MinLengthAtBRANDAt4670292 `json:"__@BRAND@467029"`
 }
 
-func (o *MinLength2) GetAtBRANDAt447943() MinLengthAtBRANDAt4479432 {
-	if o == nil {
-		return MinLengthAtBRANDAt4479432{}
+func (m MinLength2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLength2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt4479432 struct {
+func (o *MinLength2) GetAtBRANDAt467029() MinLengthAtBRANDAt4670292 {
+	if o == nil {
+		return MinLengthAtBRANDAt4670292{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type MaxLengthAtBRANDAt4670292 struct {
+}
+
+func (m MaxLengthAtBRANDAt4670292) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt4670292) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MaxLength2 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt4479432 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MaxLengthAtBRANDAt4670292 `json:"__@BRAND@467029"`
 }
 
-func (o *MaxLength2) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479432 {
-	if o == nil {
-		return MaxLengthAtBRANDAt4479432{}
+func (m MaxLength2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLength2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt4479432 struct {
+func (o *MaxLength2) GetAtBRANDAt467029() MaxLengthAtBRANDAt4670292 {
+	if o == nil {
+		return MaxLengthAtBRANDAt4670292{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type PatternAtBRANDAt4670292 struct {
+}
+
+func (p PatternAtBRANDAt4670292) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt4670292) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Pattern2 struct {
-	AtBRANDAt447943 PatternAtBRANDAt4479432 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 PatternAtBRANDAt4670292 `json:"__@BRAND@467029"`
 }
 
-func (o *Pattern2) GetAtBRANDAt447943() PatternAtBRANDAt4479432 {
-	if o == nil {
-		return PatternAtBRANDAt4479432{}
+func (p Pattern2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Pattern2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *Pattern2) GetAtBRANDAt467029() PatternAtBRANDAt4670292 {
+	if o == nil {
+		return PatternAtBRANDAt4670292{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type UIReadOnlyEnum5 string
@@ -5194,6 +6063,17 @@ func (e *UIReadOnlyEnum5) UnmarshalJSON(data []byte) error {
 
 type UIReadOnly5 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIReadOnly5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIReadOnly5) GetExpr() string {
@@ -5249,21 +6129,21 @@ func CreateUIReadOnlyUnion5UIReadOnlyEnum5(uiReadOnlyEnum5 UIReadOnlyEnum5) UIRe
 func (u *UIReadOnlyUnion5) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly5 UIReadOnly5 = UIReadOnly5{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly5, "", true, nil); err == nil {
 		u.UIReadOnly5 = &uiReadOnly5
 		u.Type = UIReadOnlyUnion5TypeUIReadOnly5
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion5TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum5 UIReadOnlyEnum5 = UIReadOnlyEnum5("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum5, "", true, nil); err == nil {
 		u.UIReadOnlyEnum5 = &uiReadOnlyEnum5
 		u.Type = UIReadOnlyUnion5TypeUIReadOnlyEnum5
 		return nil
@@ -5316,6 +6196,17 @@ func (e *UIHiddenEnum5) UnmarshalJSON(data []byte) error {
 
 type UIHidden5 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden5) GetExpr() string {
@@ -5371,21 +6262,21 @@ func CreateUIHiddenUnion5UIHiddenEnum5(uiHiddenEnum5 UIHiddenEnum5) UIHiddenUnio
 func (u *UIHiddenUnion5) UnmarshalJSON(data []byte) error {
 
 	var uiHidden5 UIHidden5 = UIHidden5{}
-	if err := utils.UnmarshalJSON(data, &uiHidden5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden5, "", true, nil); err == nil {
 		u.UIHidden5 = &uiHidden5
 		u.Type = UIHiddenUnion5TypeUIHidden5
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion5TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum5 UIHiddenEnum5 = UIHiddenEnum5("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum5, "", true, nil); err == nil {
 		u.UIHiddenEnum5 = &uiHiddenEnum5
 		u.Type = UIHiddenUnion5TypeUIHiddenEnum5
 		return nil
@@ -5438,6 +6329,17 @@ func (e *UIDisabledEnum5) UnmarshalJSON(data []byte) error {
 
 type UIDisabled5 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled5) GetExpr() string {
@@ -5493,21 +6395,21 @@ func CreateUIDisabledUnion5UIDisabledEnum5(uiDisabledEnum5 UIDisabledEnum5) UIDi
 func (u *UIDisabledUnion5) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled5 UIDisabled5 = UIDisabled5{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled5, "", true, nil); err == nil {
 		u.UIDisabled5 = &uiDisabled5
 		u.Type = UIDisabledUnion5TypeUIDisabled5
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion5TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum5 UIDisabledEnum5 = UIDisabledEnum5("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum5, "", true, nil); err == nil {
 		u.UIDisabledEnum5 = &uiDisabledEnum5
 		u.Type = UIDisabledUnion5TypeUIDisabledEnum5
 		return nil
@@ -5534,6 +6436,17 @@ func (u UIDisabledUnion5) MarshalJSON() ([]byte, error) {
 
 type UIDescription5 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription5) GetExpr() string {
@@ -5578,14 +6491,14 @@ func CreateUIDescriptionUnion5UIDescription5(uiDescription5 UIDescription5) UIDe
 func (u *UIDescriptionUnion5) UnmarshalJSON(data []byte) error {
 
 	var uiDescription5 UIDescription5 = UIDescription5{}
-	if err := utils.UnmarshalJSON(data, &uiDescription5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription5, "", true, nil); err == nil {
 		u.UIDescription5 = &uiDescription5
 		u.Type = UIDescriptionUnion5TypeUIDescription5
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion5TypeStr
 		return nil
@@ -5608,6 +6521,17 @@ func (u UIDescriptionUnion5) MarshalJSON() ([]byte, error) {
 
 type UIFormattedValue5 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIFormattedValue5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIFormattedValue5) GetExpr() string {
@@ -5634,6 +6558,17 @@ type PropertiesSelect struct {
 	UIDescription    *UIDescriptionUnion5 `json:"ui:description,omitempty"`
 	UIFormattedValue *UIFormattedValue5   `json:"ui:formatted-value,omitempty"`
 	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
+}
+
+func (p PropertiesSelect) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesSelect) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesSelect) GetType() TypeString2 {
@@ -5827,6 +6762,17 @@ type ItemsNumber struct {
 	Default          *float64    `json:"default,omitempty"`
 }
 
+func (i ItemsNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *ItemsNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ItemsNumber) GetType() TypeNumber2 {
 	if o == nil {
 		return TypeNumber2("")
@@ -5906,6 +6852,17 @@ type UIReadOnly4 struct {
 	Expr string `json:"expr"`
 }
 
+func (u UIReadOnly4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIReadOnly4) GetExpr() string {
 	if o == nil {
 		return ""
@@ -5959,21 +6916,21 @@ func CreateUIReadOnlyUnion4UIReadOnlyEnum4(uiReadOnlyEnum4 UIReadOnlyEnum4) UIRe
 func (u *UIReadOnlyUnion4) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly4 UIReadOnly4 = UIReadOnly4{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly4, "", true, nil); err == nil {
 		u.UIReadOnly4 = &uiReadOnly4
 		u.Type = UIReadOnlyUnion4TypeUIReadOnly4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion4TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum4 UIReadOnlyEnum4 = UIReadOnlyEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum4, "", true, nil); err == nil {
 		u.UIReadOnlyEnum4 = &uiReadOnlyEnum4
 		u.Type = UIReadOnlyUnion4TypeUIReadOnlyEnum4
 		return nil
@@ -6026,6 +6983,17 @@ func (e *UIHiddenEnum4) UnmarshalJSON(data []byte) error {
 
 type UIHidden4 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden4) GetExpr() string {
@@ -6081,21 +7049,21 @@ func CreateUIHiddenUnion4UIHiddenEnum4(uiHiddenEnum4 UIHiddenEnum4) UIHiddenUnio
 func (u *UIHiddenUnion4) UnmarshalJSON(data []byte) error {
 
 	var uiHidden4 UIHidden4 = UIHidden4{}
-	if err := utils.UnmarshalJSON(data, &uiHidden4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden4, "", true, nil); err == nil {
 		u.UIHidden4 = &uiHidden4
 		u.Type = UIHiddenUnion4TypeUIHidden4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion4TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum4 UIHiddenEnum4 = UIHiddenEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum4, "", true, nil); err == nil {
 		u.UIHiddenEnum4 = &uiHiddenEnum4
 		u.Type = UIHiddenUnion4TypeUIHiddenEnum4
 		return nil
@@ -6148,6 +7116,17 @@ func (e *UIDisabledEnum4) UnmarshalJSON(data []byte) error {
 
 type UIDisabled4 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled4) GetExpr() string {
@@ -6203,21 +7182,21 @@ func CreateUIDisabledUnion4UIDisabledEnum4(uiDisabledEnum4 UIDisabledEnum4) UIDi
 func (u *UIDisabledUnion4) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled4 UIDisabled4 = UIDisabled4{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled4, "", true, nil); err == nil {
 		u.UIDisabled4 = &uiDisabled4
 		u.Type = UIDisabledUnion4TypeUIDisabled4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion4TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum4 UIDisabledEnum4 = UIDisabledEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum4, "", true, nil); err == nil {
 		u.UIDisabledEnum4 = &uiDisabledEnum4
 		u.Type = UIDisabledUnion4TypeUIDisabledEnum4
 		return nil
@@ -6244,6 +7223,17 @@ func (u UIDisabledUnion4) MarshalJSON() ([]byte, error) {
 
 type UIDescription4 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription4) GetExpr() string {
@@ -6288,14 +7278,14 @@ func CreateUIDescriptionUnion4UIDescription4(uiDescription4 UIDescription4) UIDe
 func (u *UIDescriptionUnion4) UnmarshalJSON(data []byte) error {
 
 	var uiDescription4 UIDescription4 = UIDescription4{}
-	if err := utils.UnmarshalJSON(data, &uiDescription4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription4, "", true, nil); err == nil {
 		u.UIDescription4 = &uiDescription4
 		u.Type = UIDescriptionUnion4TypeUIDescription4
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion4TypeStr
 		return nil
@@ -6320,6 +7310,17 @@ type UIFormattedValue4 struct {
 	Expr string `json:"expr"`
 }
 
+func (u UIFormattedValue4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIFormattedValue4) GetExpr() string {
 	if o == nil {
 		return ""
@@ -6342,6 +7343,17 @@ type PropertiesSlider struct {
 	UIDescription    *UIDescriptionUnion4 `json:"ui:description,omitempty"`
 	UIFormattedValue *UIFormattedValue4   `json:"ui:formatted-value,omitempty"`
 	Default          []float64            `json:"default,omitempty"`
+}
+
+func (p PropertiesSlider) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesSlider) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control", "ui:steps", "items"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesSlider) GetType() TypeArray1 {
@@ -6518,6 +7530,17 @@ type UIReadOnly3 struct {
 	Expr string `json:"expr"`
 }
 
+func (u UIReadOnly3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIReadOnly3) GetExpr() string {
 	if o == nil {
 		return ""
@@ -6571,21 +7594,21 @@ func CreateUIReadOnlyUnion3UIReadOnlyEnum3(uiReadOnlyEnum3 UIReadOnlyEnum3) UIRe
 func (u *UIReadOnlyUnion3) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly3 UIReadOnly3 = UIReadOnly3{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly3, "", true, nil); err == nil {
 		u.UIReadOnly3 = &uiReadOnly3
 		u.Type = UIReadOnlyUnion3TypeUIReadOnly3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion3TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum3 UIReadOnlyEnum3 = UIReadOnlyEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum3, "", true, nil); err == nil {
 		u.UIReadOnlyEnum3 = &uiReadOnlyEnum3
 		u.Type = UIReadOnlyUnion3TypeUIReadOnlyEnum3
 		return nil
@@ -6638,6 +7661,17 @@ func (e *UIHiddenEnum3) UnmarshalJSON(data []byte) error {
 
 type UIHidden3 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden3) GetExpr() string {
@@ -6693,21 +7727,21 @@ func CreateUIHiddenUnion3UIHiddenEnum3(uiHiddenEnum3 UIHiddenEnum3) UIHiddenUnio
 func (u *UIHiddenUnion3) UnmarshalJSON(data []byte) error {
 
 	var uiHidden3 UIHidden3 = UIHidden3{}
-	if err := utils.UnmarshalJSON(data, &uiHidden3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden3, "", true, nil); err == nil {
 		u.UIHidden3 = &uiHidden3
 		u.Type = UIHiddenUnion3TypeUIHidden3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion3TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum3 UIHiddenEnum3 = UIHiddenEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum3, "", true, nil); err == nil {
 		u.UIHiddenEnum3 = &uiHiddenEnum3
 		u.Type = UIHiddenUnion3TypeUIHiddenEnum3
 		return nil
@@ -6760,6 +7794,17 @@ func (e *UIDisabledEnum3) UnmarshalJSON(data []byte) error {
 
 type UIDisabled3 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled3) GetExpr() string {
@@ -6815,21 +7860,21 @@ func CreateUIDisabledUnion3UIDisabledEnum3(uiDisabledEnum3 UIDisabledEnum3) UIDi
 func (u *UIDisabledUnion3) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled3 UIDisabled3 = UIDisabled3{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled3, "", true, nil); err == nil {
 		u.UIDisabled3 = &uiDisabled3
 		u.Type = UIDisabledUnion3TypeUIDisabled3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion3TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum3 UIDisabledEnum3 = UIDisabledEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum3, "", true, nil); err == nil {
 		u.UIDisabledEnum3 = &uiDisabledEnum3
 		u.Type = UIDisabledUnion3TypeUIDisabledEnum3
 		return nil
@@ -6856,6 +7901,17 @@ func (u UIDisabledUnion3) MarshalJSON() ([]byte, error) {
 
 type UIDescription3 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription3) GetExpr() string {
@@ -6900,14 +7956,14 @@ func CreateUIDescriptionUnion3UIDescription3(uiDescription3 UIDescription3) UIDe
 func (u *UIDescriptionUnion3) UnmarshalJSON(data []byte) error {
 
 	var uiDescription3 UIDescription3 = UIDescription3{}
-	if err := utils.UnmarshalJSON(data, &uiDescription3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription3, "", true, nil); err == nil {
 		u.UIDescription3 = &uiDescription3
 		u.Type = UIDescriptionUnion3TypeUIDescription3
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion3TypeStr
 		return nil
@@ -6932,6 +7988,17 @@ type UIFormattedValue3 struct {
 	Expr string `json:"expr"`
 }
 
+func (u UIFormattedValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIFormattedValue3) GetExpr() string {
 	if o == nil {
 		return ""
@@ -6950,6 +8017,17 @@ type PropertiesToggle struct {
 	UIDisabled       *UIDisabledUnion3    `json:"ui:disabled,omitempty"`
 	UIDescription    *UIDescriptionUnion3 `json:"ui:description,omitempty"`
 	UIFormattedValue *UIFormattedValue3   `json:"ui:formatted-value,omitempty"`
+}
+
+func (p PropertiesToggle) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesToggle) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesToggle) GetType() TypeBoolean {
@@ -7098,6 +8176,17 @@ type UIReadOnly2 struct {
 	Expr string `json:"expr"`
 }
 
+func (u UIReadOnly2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UIReadOnly2) GetExpr() string {
 	if o == nil {
 		return ""
@@ -7151,21 +8240,21 @@ func CreateUIReadOnlyUnion2UIReadOnlyEnum2(uiReadOnlyEnum2 UIReadOnlyEnum2) UIRe
 func (u *UIReadOnlyUnion2) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly2 UIReadOnly2 = UIReadOnly2{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly2, "", true, nil); err == nil {
 		u.UIReadOnly2 = &uiReadOnly2
 		u.Type = UIReadOnlyUnion2TypeUIReadOnly2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion2TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum2 UIReadOnlyEnum2 = UIReadOnlyEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum2, "", true, nil); err == nil {
 		u.UIReadOnlyEnum2 = &uiReadOnlyEnum2
 		u.Type = UIReadOnlyUnion2TypeUIReadOnlyEnum2
 		return nil
@@ -7218,6 +8307,17 @@ func (e *UIHiddenEnum2) UnmarshalJSON(data []byte) error {
 
 type UIHidden2 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden2) GetExpr() string {
@@ -7273,21 +8373,21 @@ func CreateUIHiddenUnion2UIHiddenEnum2(uiHiddenEnum2 UIHiddenEnum2) UIHiddenUnio
 func (u *UIHiddenUnion2) UnmarshalJSON(data []byte) error {
 
 	var uiHidden2 UIHidden2 = UIHidden2{}
-	if err := utils.UnmarshalJSON(data, &uiHidden2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden2, "", true, nil); err == nil {
 		u.UIHidden2 = &uiHidden2
 		u.Type = UIHiddenUnion2TypeUIHidden2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion2TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum2 UIHiddenEnum2 = UIHiddenEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum2, "", true, nil); err == nil {
 		u.UIHiddenEnum2 = &uiHiddenEnum2
 		u.Type = UIHiddenUnion2TypeUIHiddenEnum2
 		return nil
@@ -7340,6 +8440,17 @@ func (e *UIDisabledEnum2) UnmarshalJSON(data []byte) error {
 
 type UIDisabled2 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled2) GetExpr() string {
@@ -7395,21 +8506,21 @@ func CreateUIDisabledUnion2UIDisabledEnum2(uiDisabledEnum2 UIDisabledEnum2) UIDi
 func (u *UIDisabledUnion2) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled2 UIDisabled2 = UIDisabled2{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled2, "", true, nil); err == nil {
 		u.UIDisabled2 = &uiDisabled2
 		u.Type = UIDisabledUnion2TypeUIDisabled2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion2TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum2 UIDisabledEnum2 = UIDisabledEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum2, "", true, nil); err == nil {
 		u.UIDisabledEnum2 = &uiDisabledEnum2
 		u.Type = UIDisabledUnion2TypeUIDisabledEnum2
 		return nil
@@ -7436,6 +8547,17 @@ func (u UIDisabledUnion2) MarshalJSON() ([]byte, error) {
 
 type UIDescription2 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription2) GetExpr() string {
@@ -7480,14 +8602,14 @@ func CreateUIDescriptionUnion2UIDescription2(uiDescription2 UIDescription2) UIDe
 func (u *UIDescriptionUnion2) UnmarshalJSON(data []byte) error {
 
 	var uiDescription2 UIDescription2 = UIDescription2{}
-	if err := utils.UnmarshalJSON(data, &uiDescription2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription2, "", true, nil); err == nil {
 		u.UIDescription2 = &uiDescription2
 		u.Type = UIDescriptionUnion2TypeUIDescription2
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion2TypeStr
 		return nil
@@ -7510,6 +8632,17 @@ func (u UIDescriptionUnion2) MarshalJSON() ([]byte, error) {
 
 type UIFormattedValue2 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIFormattedValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIFormattedValue2) GetExpr() string {
@@ -7535,6 +8668,17 @@ type PropertiesNumber struct {
 	UIDescription    *UIDescriptionUnion2 `json:"ui:description,omitempty"`
 	UIFormattedValue *UIFormattedValue2   `json:"ui:formatted-value,omitempty"`
 	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
+}
+
+func (p PropertiesNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesNumber) GetType() TypeNumber1 {
@@ -7688,46 +8832,112 @@ func (e *UIControlInput1) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type MinLengthAtBRANDAt4479431 struct {
+type MinLengthAtBRANDAt4670291 struct {
+}
+
+func (m MinLengthAtBRANDAt4670291) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthAtBRANDAt4670291) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MinLength1 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt4479431 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MinLengthAtBRANDAt4670291 `json:"__@BRAND@467029"`
 }
 
-func (o *MinLength1) GetAtBRANDAt447943() MinLengthAtBRANDAt4479431 {
-	if o == nil {
-		return MinLengthAtBRANDAt4479431{}
+func (m MinLength1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLength1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt4479431 struct {
+func (o *MinLength1) GetAtBRANDAt467029() MinLengthAtBRANDAt4670291 {
+	if o == nil {
+		return MinLengthAtBRANDAt4670291{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type MaxLengthAtBRANDAt4670291 struct {
+}
+
+func (m MaxLengthAtBRANDAt4670291) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt4670291) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type MaxLength1 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt4479431 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 MaxLengthAtBRANDAt4670291 `json:"__@BRAND@467029"`
 }
 
-func (o *MaxLength1) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479431 {
-	if o == nil {
-		return MaxLengthAtBRANDAt4479431{}
+func (m MaxLength1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLength1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt4479431 struct {
+func (o *MaxLength1) GetAtBRANDAt467029() MaxLengthAtBRANDAt4670291 {
+	if o == nil {
+		return MaxLengthAtBRANDAt4670291{}
+	}
+	return o.AtBRANDAt467029
+}
+
+type PatternAtBRANDAt4670291 struct {
+}
+
+func (p PatternAtBRANDAt4670291) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt4670291) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Pattern1 struct {
-	AtBRANDAt447943 PatternAtBRANDAt4479431 `json:"__@BRAND@447943"`
+	AtBRANDAt467029 PatternAtBRANDAt4670291 `json:"__@BRAND@467029"`
 }
 
-func (o *Pattern1) GetAtBRANDAt447943() PatternAtBRANDAt4479431 {
-	if o == nil {
-		return PatternAtBRANDAt4479431{}
+func (p Pattern1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Pattern1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"__@BRAND@467029"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *Pattern1) GetAtBRANDAt467029() PatternAtBRANDAt4670291 {
+	if o == nil {
+		return PatternAtBRANDAt4670291{}
+	}
+	return o.AtBRANDAt467029
 }
 
 type UIReadOnlyEnum1 string
@@ -7758,6 +8968,17 @@ func (e *UIReadOnlyEnum1) UnmarshalJSON(data []byte) error {
 
 type UIReadOnly1 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIReadOnly1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIReadOnly1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIReadOnly1) GetExpr() string {
@@ -7813,21 +9034,21 @@ func CreateUIReadOnlyUnion1UIReadOnlyEnum1(uiReadOnlyEnum1 UIReadOnlyEnum1) UIRe
 func (u *UIReadOnlyUnion1) UnmarshalJSON(data []byte) error {
 
 	var uiReadOnly1 UIReadOnly1 = UIReadOnly1{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnly1, "", true, nil); err == nil {
 		u.UIReadOnly1 = &uiReadOnly1
 		u.Type = UIReadOnlyUnion1TypeUIReadOnly1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIReadOnlyUnion1TypeBoolean
 		return nil
 	}
 
 	var uiReadOnlyEnum1 UIReadOnlyEnum1 = UIReadOnlyEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum1, "", true, nil); err == nil {
 		u.UIReadOnlyEnum1 = &uiReadOnlyEnum1
 		u.Type = UIReadOnlyUnion1TypeUIReadOnlyEnum1
 		return nil
@@ -7880,6 +9101,17 @@ func (e *UIHiddenEnum1) UnmarshalJSON(data []byte) error {
 
 type UIHidden1 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIHidden1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIHidden1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIHidden1) GetExpr() string {
@@ -7935,21 +9167,21 @@ func CreateUIHiddenUnion1UIHiddenEnum1(uiHiddenEnum1 UIHiddenEnum1) UIHiddenUnio
 func (u *UIHiddenUnion1) UnmarshalJSON(data []byte) error {
 
 	var uiHidden1 UIHidden1 = UIHidden1{}
-	if err := utils.UnmarshalJSON(data, &uiHidden1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHidden1, "", true, nil); err == nil {
 		u.UIHidden1 = &uiHidden1
 		u.Type = UIHiddenUnion1TypeUIHidden1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIHiddenUnion1TypeBoolean
 		return nil
 	}
 
 	var uiHiddenEnum1 UIHiddenEnum1 = UIHiddenEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiHiddenEnum1, "", true, nil); err == nil {
 		u.UIHiddenEnum1 = &uiHiddenEnum1
 		u.Type = UIHiddenUnion1TypeUIHiddenEnum1
 		return nil
@@ -8002,6 +9234,17 @@ func (e *UIDisabledEnum1) UnmarshalJSON(data []byte) error {
 
 type UIDisabled1 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDisabled1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDisabled1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDisabled1) GetExpr() string {
@@ -8057,21 +9300,21 @@ func CreateUIDisabledUnion1UIDisabledEnum1(uiDisabledEnum1 UIDisabledEnum1) UIDi
 func (u *UIDisabledUnion1) UnmarshalJSON(data []byte) error {
 
 	var uiDisabled1 UIDisabled1 = UIDisabled1{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabled1, "", true, nil); err == nil {
 		u.UIDisabled1 = &uiDisabled1
 		u.Type = UIDisabledUnion1TypeUIDisabled1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UIDisabledUnion1TypeBoolean
 		return nil
 	}
 
 	var uiDisabledEnum1 UIDisabledEnum1 = UIDisabledEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDisabledEnum1, "", true, nil); err == nil {
 		u.UIDisabledEnum1 = &uiDisabledEnum1
 		u.Type = UIDisabledUnion1TypeUIDisabledEnum1
 		return nil
@@ -8098,6 +9341,17 @@ func (u UIDisabledUnion1) MarshalJSON() ([]byte, error) {
 
 type UIDescription1 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIDescription1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIDescription1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIDescription1) GetExpr() string {
@@ -8142,14 +9396,14 @@ func CreateUIDescriptionUnion1UIDescription1(uiDescription1 UIDescription1) UIDe
 func (u *UIDescriptionUnion1) UnmarshalJSON(data []byte) error {
 
 	var uiDescription1 UIDescription1 = UIDescription1{}
-	if err := utils.UnmarshalJSON(data, &uiDescription1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &uiDescription1, "", true, nil); err == nil {
 		u.UIDescription1 = &uiDescription1
 		u.Type = UIDescriptionUnion1TypeUIDescription1
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UIDescriptionUnion1TypeStr
 		return nil
@@ -8172,6 +9426,17 @@ func (u UIDescriptionUnion1) MarshalJSON() ([]byte, error) {
 
 type UIFormattedValue1 struct {
 	Expr string `json:"expr"`
+}
+
+func (u UIFormattedValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UIFormattedValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UIFormattedValue1) GetExpr() string {
@@ -8197,6 +9462,17 @@ type PropertiesStringInput struct {
 	UIDescription    *UIDescriptionUnion1 `json:"ui:description,omitempty"`
 	UIFormattedValue *UIFormattedValue1   `json:"ui:formatted-value,omitempty"`
 	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
+}
+
+func (p PropertiesStringInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesStringInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PropertiesStringInput) GetType() TypeString1 {
@@ -8415,66 +9691,66 @@ func CreatePropertiesUnionProperties(properties Properties) PropertiesUnion {
 
 func (u *PropertiesUnion) UnmarshalJSON(data []byte) error {
 
-	var properties Properties = Properties{}
-	if err := utils.UnmarshalJSON(data, &properties, "", true, true); err == nil {
-		u.Properties = &properties
-		u.Type = PropertiesUnionTypeProperties
-		return nil
-	}
-
-	var propertiesToggle PropertiesToggle = PropertiesToggle{}
-	if err := utils.UnmarshalJSON(data, &propertiesToggle, "", true, true); err == nil {
-		u.PropertiesToggle = &propertiesToggle
-		u.Type = PropertiesUnionTypePropertiesToggle
-		return nil
-	}
-
 	var propertiesSlider PropertiesSlider = PropertiesSlider{}
-	if err := utils.UnmarshalJSON(data, &propertiesSlider, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &propertiesSlider, "", true, nil); err == nil {
 		u.PropertiesSlider = &propertiesSlider
 		u.Type = PropertiesUnionTypePropertiesSlider
 		return nil
 	}
 
+	var propertiesMultiSelect PropertiesMultiSelect = PropertiesMultiSelect{}
+	if err := utils.UnmarshalJSON(data, &propertiesMultiSelect, "", true, nil); err == nil {
+		u.PropertiesMultiSelect = &propertiesMultiSelect
+		u.Type = PropertiesUnionTypePropertiesMultiSelect
+		return nil
+	}
+
+	var propertiesMultiVercelRegion PropertiesMultiVercelRegion = PropertiesMultiVercelRegion{}
+	if err := utils.UnmarshalJSON(data, &propertiesMultiVercelRegion, "", true, nil); err == nil {
+		u.PropertiesMultiVercelRegion = &propertiesMultiVercelRegion
+		u.Type = PropertiesUnionTypePropertiesMultiVercelRegion
+		return nil
+	}
+
+	var propertiesSelect PropertiesSelect = PropertiesSelect{}
+	if err := utils.UnmarshalJSON(data, &propertiesSelect, "", true, nil); err == nil {
+		u.PropertiesSelect = &propertiesSelect
+		u.Type = PropertiesUnionTypePropertiesSelect
+		return nil
+	}
+
+	var propertiesVercelRegion PropertiesVercelRegion = PropertiesVercelRegion{}
+	if err := utils.UnmarshalJSON(data, &propertiesVercelRegion, "", true, nil); err == nil {
+		u.PropertiesVercelRegion = &propertiesVercelRegion
+		u.Type = PropertiesUnionTypePropertiesVercelRegion
+		return nil
+	}
+
 	var propertiesStringInput PropertiesStringInput = PropertiesStringInput{}
-	if err := utils.UnmarshalJSON(data, &propertiesStringInput, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &propertiesStringInput, "", true, nil); err == nil {
 		u.PropertiesStringInput = &propertiesStringInput
 		u.Type = PropertiesUnionTypePropertiesStringInput
 		return nil
 	}
 
 	var propertiesNumber PropertiesNumber = PropertiesNumber{}
-	if err := utils.UnmarshalJSON(data, &propertiesNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &propertiesNumber, "", true, nil); err == nil {
 		u.PropertiesNumber = &propertiesNumber
 		u.Type = PropertiesUnionTypePropertiesNumber
 		return nil
 	}
 
-	var propertiesSelect PropertiesSelect = PropertiesSelect{}
-	if err := utils.UnmarshalJSON(data, &propertiesSelect, "", true, true); err == nil {
-		u.PropertiesSelect = &propertiesSelect
-		u.Type = PropertiesUnionTypePropertiesSelect
+	var propertiesToggle PropertiesToggle = PropertiesToggle{}
+	if err := utils.UnmarshalJSON(data, &propertiesToggle, "", true, nil); err == nil {
+		u.PropertiesToggle = &propertiesToggle
+		u.Type = PropertiesUnionTypePropertiesToggle
 		return nil
 	}
 
-	var propertiesMultiSelect PropertiesMultiSelect = PropertiesMultiSelect{}
-	if err := utils.UnmarshalJSON(data, &propertiesMultiSelect, "", true, true); err == nil {
-		u.PropertiesMultiSelect = &propertiesMultiSelect
-		u.Type = PropertiesUnionTypePropertiesMultiSelect
-		return nil
-	}
-
-	var propertiesVercelRegion PropertiesVercelRegion = PropertiesVercelRegion{}
-	if err := utils.UnmarshalJSON(data, &propertiesVercelRegion, "", true, true); err == nil {
-		u.PropertiesVercelRegion = &propertiesVercelRegion
-		u.Type = PropertiesUnionTypePropertiesVercelRegion
-		return nil
-	}
-
-	var propertiesMultiVercelRegion PropertiesMultiVercelRegion = PropertiesMultiVercelRegion{}
-	if err := utils.UnmarshalJSON(data, &propertiesMultiVercelRegion, "", true, true); err == nil {
-		u.PropertiesMultiVercelRegion = &propertiesMultiVercelRegion
-		u.Type = PropertiesUnionTypePropertiesMultiVercelRegion
+	var properties Properties = Properties{}
+	if err := utils.UnmarshalJSON(data, &properties, "", true, nil); err == nil {
+		u.Properties = &properties
+		u.Type = PropertiesUnionTypeProperties
 		return nil
 	}
 

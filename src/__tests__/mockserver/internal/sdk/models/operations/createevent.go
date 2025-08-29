@@ -41,6 +41,17 @@ type EventResourceUpdated struct {
 	ResourceID string `json:"resourceId"`
 }
 
+func (e EventResourceUpdated) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EventResourceUpdated) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "productId", "resourceId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EventResourceUpdated) GetType() TypeResourceUpdated {
 	if o == nil {
 		return TypeResourceUpdated("")
@@ -91,6 +102,17 @@ type EventInstallationUpdated struct {
 	BillingPlanID *string `json:"billingPlanId,omitempty"`
 }
 
+func (e EventInstallationUpdated) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EventInstallationUpdated) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EventInstallationUpdated) GetType() TypeInstallationUpdated {
 	if o == nil {
 		return TypeInstallationUpdated("")
@@ -139,17 +161,17 @@ func CreateEventEventResourceUpdated(eventResourceUpdated EventResourceUpdated) 
 
 func (u *Event) UnmarshalJSON(data []byte) error {
 
-	var eventInstallationUpdated EventInstallationUpdated = EventInstallationUpdated{}
-	if err := utils.UnmarshalJSON(data, &eventInstallationUpdated, "", true, true); err == nil {
-		u.EventInstallationUpdated = &eventInstallationUpdated
-		u.Type = EventTypeEventInstallationUpdated
+	var eventResourceUpdated EventResourceUpdated = EventResourceUpdated{}
+	if err := utils.UnmarshalJSON(data, &eventResourceUpdated, "", true, nil); err == nil {
+		u.EventResourceUpdated = &eventResourceUpdated
+		u.Type = EventTypeEventResourceUpdated
 		return nil
 	}
 
-	var eventResourceUpdated EventResourceUpdated = EventResourceUpdated{}
-	if err := utils.UnmarshalJSON(data, &eventResourceUpdated, "", true, true); err == nil {
-		u.EventResourceUpdated = &eventResourceUpdated
-		u.Type = EventTypeEventResourceUpdated
+	var eventInstallationUpdated EventInstallationUpdated = EventInstallationUpdated{}
+	if err := utils.UnmarshalJSON(data, &eventInstallationUpdated, "", true, nil); err == nil {
+		u.EventInstallationUpdated = &eventInstallationUpdated
+		u.Type = EventTypeEventInstallationUpdated
 		return nil
 	}
 

@@ -1462,9 +1462,11 @@ const value: models.OneHundredAndThirtyNine = {
 
 ```typescript
 const value: models.OneHundredAndForty = {
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
-  edgeConfigDigest: "<value>",
+  projectName: "<value>",
+  urls: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
@@ -1474,8 +1476,7 @@ const value: models.OneHundredAndForty = {
 const value: models.OneHundredAndFortyOne = {
   edgeConfigId: "<id>",
   edgeConfigSlug: "<value>",
-  edgeConfigTokenId: "<id>",
-  label: "<value>",
+  edgeConfigDigest: "<value>",
 };
 ```
 
@@ -1485,9 +1486,8 @@ const value: models.OneHundredAndFortyOne = {
 const value: models.OneHundredAndFortyTwo = {
   edgeConfigId: "<id>",
   edgeConfigSlug: "<value>",
-  edgeConfigTokenIds: [
-    "<value 1>",
-  ],
+  edgeConfigTokenId: "<id>",
+  label: "<value>",
 };
 ```
 
@@ -1495,7 +1495,9 @@ const value: models.OneHundredAndFortyTwo = {
 
 ```typescript
 const value: models.OneHundredAndFortyThree = {
-  action: "enable",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenIds: [],
 };
 ```
 
@@ -1503,9 +1505,7 @@ const value: models.OneHundredAndFortyThree = {
 
 ```typescript
 const value: models.OneHundredAndFortyFour = {
-  id: "<id>",
-  slug: "<value>",
-  name: "<value>",
+  action: "enable",
 };
 ```
 
@@ -1513,6 +1513,16 @@ const value: models.OneHundredAndFortyFour = {
 
 ```typescript
 const value: models.OneHundredAndFortyFive = {
+  id: "<id>",
+  slug: "<value>",
+  name: "<value>",
+};
+```
+
+### `models.OneHundredAndFortySix`
+
+```typescript
+const value: models.OneHundredAndFortySix = {
   id: "<id>",
   prev: {
     name: "<value>",
@@ -1522,10 +1532,10 @@ const value: models.OneHundredAndFortyFive = {
 };
 ```
 
-### `models.OneHundredAndFortySix`
+### `models.OneHundredAndFortySeven`
 
 ```typescript
-const value: models.OneHundredAndFortySix = {
+const value: models.OneHundredAndFortySeven = {
   project: {
     id: "<id>",
     name: "<value>",
@@ -1538,10 +1548,10 @@ const value: models.OneHundredAndFortySix = {
 };
 ```
 
-### `models.OneHundredAndFortySeven`
+### `models.OneHundredAndFortyEight`
 
 ```typescript
-const value: models.OneHundredAndFortySeven = {
+const value: models.OneHundredAndFortyEight = {
   project: {
     id: "<id>",
     name: "<value>",
@@ -1557,20 +1567,12 @@ const value: models.OneHundredAndFortySeven = {
 };
 ```
 
-### `models.OneHundredAndFortyEight`
-
-```typescript
-const value: models.OneHundredAndFortyEight = {
-  projectId: "<id>",
-  projectName: "<value>",
-};
-```
-
 ### `models.OneHundredAndFortyNine`
 
 ```typescript
 const value: models.OneHundredAndFortyNine = {
-  tier: "pro",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -1578,8 +1580,7 @@ const value: models.OneHundredAndFortyNine = {
 
 ```typescript
 const value: models.OneHundredAndFifty = {
-  oldName: "<value>",
-  newName: "<value>",
+  tier: "pro",
 };
 ```
 
@@ -1587,12 +1588,8 @@ const value: models.OneHundredAndFifty = {
 
 ```typescript
 const value: models.OneHundredAndFiftyOne = {
-  appName: "<value>",
-  scopes: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  oldName: "<value>",
+  newName: "<value>",
 };
 ```
 
@@ -1601,7 +1598,7 @@ const value: models.OneHundredAndFiftyOne = {
 ```typescript
 const value: models.OneHundredAndFiftyTwo = {
   appName: "<value>",
-  nextScopes: [
+  scopes: [
     "<value 1>",
     "<value 2>",
   ],
@@ -1613,6 +1610,9 @@ const value: models.OneHundredAndFiftyTwo = {
 ```typescript
 const value: models.OneHundredAndFiftyThree = {
   appName: "<value>",
+  nextScopes: [
+    "<value 1>",
+  ],
 };
 ```
 
@@ -1621,7 +1621,6 @@ const value: models.OneHundredAndFiftyThree = {
 ```typescript
 const value: models.OneHundredAndFiftyFour = {
   appName: "<value>",
-  appId: "<id>",
 };
 ```
 
@@ -1629,19 +1628,8 @@ const value: models.OneHundredAndFiftyFour = {
 
 ```typescript
 const value: models.OneHundredAndFiftyFive = {
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-    accountId: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
+  appName: "<value>",
+  appId: "<id>",
 };
 ```
 
@@ -1658,6 +1646,9 @@ const value: models.OneHundredAndFiftySix = {
   },
   peering: {
     id: "<id>",
+    accountId: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
 };
 ```
@@ -1683,11 +1674,28 @@ const value: models.OneHundredAndFiftySeven = {
 
 ```typescript
 const value: models.OneHundredAndFiftyEight = {
-  grantType: "authorization_code",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
+};
+```
+
+### `models.OneHundredAndFiftyNine`
+
+```typescript
+const value: models.OneHundredAndFiftyNine = {
+  grantType: "refresh_token",
   appName: "<value>",
-  atTTL: 4957.29,
+  atTTL: 4739.55,
   scope: "<value>",
-  authMethod: "gitlab",
+  authMethod: "app",
 };
 ```
 

@@ -365,6 +365,10 @@ export type Team = {
    * The hostname that is current set as preview deployment suffix.
    */
   previewDeploymentSuffix?: string | null | undefined;
+  /**
+   * Whether the team is a platform team.
+   */
+  platform?: boolean | undefined;
   disableHardAutoBlocks?: number | boolean | undefined;
   /**
    * Is remote caching enabled for this team
@@ -1632,6 +1636,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       stagingPrefix: z.string(),
       resourceConfig: z.lazy(() => ResourceConfig$inboundSchema).optional(),
       previewDeploymentSuffix: z.nullable(z.string()).optional(),
+      platform: z.boolean().optional(),
       disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
       remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
       defaultDeploymentProtection: z.lazy(() =>
@@ -1671,6 +1676,7 @@ export type Team$Outbound = {
   stagingPrefix: string;
   resourceConfig?: ResourceConfig$Outbound | undefined;
   previewDeploymentSuffix?: string | null | undefined;
+  platform?: boolean | undefined;
   disableHardAutoBlocks?: number | boolean | undefined;
   remoteCaching?: RemoteCaching$Outbound | undefined;
   defaultDeploymentProtection?:
@@ -1704,6 +1710,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     stagingPrefix: z.string(),
     resourceConfig: z.lazy(() => ResourceConfig$outboundSchema).optional(),
     previewDeploymentSuffix: z.nullable(z.string()).optional(),
+    platform: z.boolean().optional(),
     disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
     remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),
     defaultDeploymentProtection: z.lazy(() =>

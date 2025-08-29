@@ -117,6 +117,17 @@ type CreateEdgeConfigPurposeExperimentation struct {
 	ResourceID string                              `json:"resourceId"`
 }
 
+func (c CreateEdgeConfigPurposeExperimentation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateEdgeConfigPurposeExperimentation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "resourceId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateEdgeConfigPurposeExperimentation) GetType() CreateEdgeConfigTypeExperimentation {
 	if o == nil {
 		return CreateEdgeConfigTypeExperimentation("")
@@ -157,6 +168,17 @@ func (e *CreateEdgeConfigTypeFlags) UnmarshalJSON(data []byte) error {
 type CreateEdgeConfigPurposeFlags struct {
 	Type      CreateEdgeConfigTypeFlags `json:"type"`
 	ProjectID string                    `json:"projectId"`
+}
+
+func (c CreateEdgeConfigPurposeFlags) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateEdgeConfigPurposeFlags) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateEdgeConfigPurposeFlags) GetType() CreateEdgeConfigTypeFlags {
@@ -208,14 +230,14 @@ func CreateCreateEdgeConfigPurposeUnionCreateEdgeConfigPurposeExperimentation(cr
 func (u *CreateEdgeConfigPurposeUnion) UnmarshalJSON(data []byte) error {
 
 	var createEdgeConfigPurposeFlags CreateEdgeConfigPurposeFlags = CreateEdgeConfigPurposeFlags{}
-	if err := utils.UnmarshalJSON(data, &createEdgeConfigPurposeFlags, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createEdgeConfigPurposeFlags, "", true, nil); err == nil {
 		u.CreateEdgeConfigPurposeFlags = &createEdgeConfigPurposeFlags
 		u.Type = CreateEdgeConfigPurposeUnionTypeCreateEdgeConfigPurposeFlags
 		return nil
 	}
 
 	var createEdgeConfigPurposeExperimentation CreateEdgeConfigPurposeExperimentation = CreateEdgeConfigPurposeExperimentation{}
-	if err := utils.UnmarshalJSON(data, &createEdgeConfigPurposeExperimentation, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createEdgeConfigPurposeExperimentation, "", true, nil); err == nil {
 		u.CreateEdgeConfigPurposeExperimentation = &createEdgeConfigPurposeExperimentation
 		u.Type = CreateEdgeConfigPurposeUnionTypeCreateEdgeConfigPurposeExperimentation
 		return nil

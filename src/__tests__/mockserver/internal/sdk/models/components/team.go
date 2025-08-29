@@ -13,6 +13,17 @@ type Connect struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
+func (c Connect) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Connect) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Connect) GetEnabled() *bool {
 	if o == nil {
 		return nil
@@ -32,6 +43,17 @@ type TeamConnection struct {
 	ConnectedAt float64 `json:"connectedAt"`
 	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+}
+
+func (t TeamConnection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamConnection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "status", "state", "connectedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamConnection) GetType() string {
@@ -79,6 +101,17 @@ type TeamDirectory struct {
 	ConnectedAt float64 `json:"connectedAt"`
 	// Timestamp (in milliseconds) of when the last webhook event was received from WorkOS.
 	LastReceivedWebhookEvent *float64 `json:"lastReceivedWebhookEvent,omitempty"`
+}
+
+func (t TeamDirectory) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamDirectory) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "state", "connectedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamDirectory) GetType() string {
@@ -188,6 +221,17 @@ type Roles struct {
 	AccessGroupID string `json:"accessGroupId"`
 }
 
+func (r Roles) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Roles) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"accessGroupId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Roles) GetAccessGroupID() string {
 	if o == nil {
 		return ""
@@ -230,14 +274,14 @@ func CreateRolesUnionRolesEnum(rolesEnum RolesEnum) RolesUnion {
 func (u *RolesUnion) UnmarshalJSON(data []byte) error {
 
 	var roles Roles = Roles{}
-	if err := utils.UnmarshalJSON(data, &roles, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &roles, "", true, nil); err == nil {
 		u.Roles = &roles
 		u.Type = RolesUnionTypeRoles
 		return nil
 	}
 
 	var rolesEnum RolesEnum = RolesEnum("")
-	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, nil); err == nil {
 		u.RolesEnum = &rolesEnum
 		u.Type = RolesUnionTypeRolesEnum
 		return nil
@@ -270,6 +314,17 @@ type TeamSaml struct {
 	DefaultRedirectURI *DefaultRedirectURI `json:"defaultRedirectUri,omitempty"`
 	// When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
 	Roles map[string]RolesUnion `json:"roles,omitempty"`
+}
+
+func (t TeamSaml) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamSaml) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"enforced"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamSaml) GetConnection() *TeamConnection {
@@ -311,6 +366,17 @@ type TeamBuildEntitlements struct {
 	EnhancedBuilds *bool `json:"enhancedBuilds,omitempty"`
 }
 
+func (t TeamBuildEntitlements) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamBuildEntitlements) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *TeamBuildEntitlements) GetEnhancedBuilds() *bool {
 	if o == nil {
 		return nil
@@ -334,6 +400,17 @@ type TeamResourceConfig struct {
 	// The maximum number of postgres databases an account can create.
 	PostgresDatabases *float64               `json:"postgresDatabases,omitempty"`
 	BuildEntitlements *TeamBuildEntitlements `json:"buildEntitlements,omitempty"`
+}
+
+func (t TeamResourceConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamResourceConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamResourceConfig) GetConcurrentBuilds() *float64 {
@@ -427,14 +504,14 @@ func CreateDisableHardAutoBlocksBoolean(boolean bool) DisableHardAutoBlocks {
 func (u *DisableHardAutoBlocks) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = DisableHardAutoBlocksTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = DisableHardAutoBlocksTypeBoolean
 		return nil
@@ -460,6 +537,17 @@ type TeamRemoteCaching struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
+func (t TeamRemoteCaching) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamRemoteCaching) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *TeamRemoteCaching) GetEnabled() *bool {
 	if o == nil {
 		return nil
@@ -469,6 +557,17 @@ func (o *TeamRemoteCaching) GetEnabled() *bool {
 
 type TeamPasswordProtection struct {
 	DeploymentType string `json:"deploymentType"`
+}
+
+func (t TeamPasswordProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamPasswordProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamPasswordProtection) GetDeploymentType() string {
@@ -482,6 +581,17 @@ type TeamSsoProtection struct {
 	DeploymentType string `json:"deploymentType"`
 }
 
+func (t TeamSsoProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamSsoProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *TeamSsoProtection) GetDeploymentType() string {
 	if o == nil {
 		return ""
@@ -493,6 +603,17 @@ func (o *TeamSsoProtection) GetDeploymentType() string {
 type DefaultDeploymentProtection struct {
 	PasswordProtection *TeamPasswordProtection `json:"passwordProtection,omitempty"`
 	SsoProtection      *TeamSsoProtection      `json:"ssoProtection,omitempty"`
+}
+
+func (d DefaultDeploymentProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DefaultDeploymentProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DefaultDeploymentProtection) GetPasswordProtection() *TeamPasswordProtection {
@@ -622,6 +743,17 @@ type IPBucket struct {
 	SupportUntil *float64 `json:"supportUntil,omitempty"`
 }
 
+func (i IPBucket) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IPBucket) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"bucket"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *IPBucket) GetBucket() string {
 	if o == nil {
 		return ""
@@ -638,6 +770,17 @@ func (o *IPBucket) GetSupportUntil() *float64 {
 
 type TeamEntitlement struct {
 	Entitlement string `json:"entitlement"`
+}
+
+func (t TeamEntitlement) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamEntitlement) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"entitlement"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamEntitlement) GetEntitlement() string {
@@ -867,14 +1010,14 @@ func CreateTeamGitUserID2Number(number float64) TeamGitUserID2 {
 func (u *TeamGitUserID2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = TeamGitUserID2TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = TeamGitUserID2TypeNumber
 		return nil
@@ -907,6 +1050,17 @@ type TeamJoinedFrom2 struct {
 	IdpUserID        *string         `json:"idpUserId,omitempty"`
 	DsyncUserID      *string         `json:"dsyncUserId,omitempty"`
 	DsyncConnectedAt *float64        `json:"dsyncConnectedAt,omitempty"`
+}
+
+func (t TeamJoinedFrom2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamJoinedFrom2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"origin"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamJoinedFrom2) GetOrigin() TeamOrigin2 {
@@ -999,6 +1153,17 @@ type TeamMembership struct {
 	CreatedAt         float64              `json:"createdAt"`
 	Created           float64              `json:"created"`
 	JoinedFrom        *TeamJoinedFrom2     `json:"joinedFrom,omitempty"`
+}
+
+func (t TeamMembership) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamMembership) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"confirmed", "role", "createdAt", "created"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamMembership) GetUID() *string {
@@ -1097,8 +1262,10 @@ type Team struct {
 	StagingPrefix  string              `json:"stagingPrefix"`
 	ResourceConfig *TeamResourceConfig `json:"resourceConfig,omitempty"`
 	// The hostname that is current set as preview deployment suffix.
-	PreviewDeploymentSuffix *string                `json:"previewDeploymentSuffix,omitempty"`
-	DisableHardAutoBlocks   *DisableHardAutoBlocks `json:"disableHardAutoBlocks,omitempty"`
+	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
+	// Whether the team is a platform team.
+	Platform              *bool                  `json:"platform,omitempty"`
+	DisableHardAutoBlocks *DisableHardAutoBlocks `json:"disableHardAutoBlocks,omitempty"`
 	// Is remote caching enabled for this team
 	RemoteCaching *TeamRemoteCaching `json:"remoteCaching,omitempty"`
 	// Default deployment protection for this team
@@ -1134,7 +1301,7 @@ func (t Team) MarshalJSON() ([]byte, error) {
 }
 
 func (t *Team) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"creatorId", "updatedAt", "description", "stagingPrefix", "id", "slug", "name", "avatar", "membership", "createdAt"}); err != nil {
 		return err
 	}
 	return nil
@@ -1208,6 +1375,13 @@ func (o *Team) GetPreviewDeploymentSuffix() *string {
 		return nil
 	}
 	return o.PreviewDeploymentSuffix
+}
+
+func (o *Team) GetPlatform() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Platform
 }
 
 func (o *Team) GetDisableHardAutoBlocks() *DisableHardAutoBlocks {

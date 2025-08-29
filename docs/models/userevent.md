@@ -16,10 +16,10 @@ let value: UserEvent = {
   principalId: "<id>",
   payload: {
     project: {
-      id: "<id>",
       name: "<value>",
+      role: "PROJECT_DEVELOPER",
+      invitedUserName: "<value>",
     },
-    projectMembership: {},
   },
 };
 ```

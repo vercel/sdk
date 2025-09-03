@@ -1156,7 +1156,7 @@ actions:
         - project-created-legacy
         - project-removed-legacy
         - domain-created-legacy
-        - deployment 
+        - deployment
         - integration-configuration-permission-updated
         - integration-configuration-removed-legacy
         - integration-configuration-scope-change-confirmed-legacy

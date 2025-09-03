@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 // Pagination - This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
 type Pagination struct {
 	// Amount of items in the current page.
@@ -10,6 +14,17 @@ type Pagination struct {
 	Next *float64 `json:"next"`
 	// Timestamp that must be used to request the previous page.
 	Prev *float64 `json:"prev"`
+}
+
+func (p Pagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Pagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"count", "next", "prev"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Pagination) GetCount() float64 {

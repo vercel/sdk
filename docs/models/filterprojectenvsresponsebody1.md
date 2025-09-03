@@ -6,7 +6,7 @@
 import { FilterProjectEnvsResponseBody1 } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: FilterProjectEnvsResponseBody1 = {
-  type: "plain",
+  type: "sensitive",
   value: "<value>",
   key: "<key>",
 };

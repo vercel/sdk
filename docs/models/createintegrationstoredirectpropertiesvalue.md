@@ -1,0 +1,17 @@
+# CreateIntegrationStoreDirectPropertiesValue
+
+## Example Usage
+
+```typescript
+import { CreateIntegrationStoreDirectPropertiesValue } from "@vercel/sdk/models/createintegrationstoredirectop.js";
+
+let value: CreateIntegrationStoreDirectPropertiesValue = {
+  atBRANDAt7822: {},
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                                      | Type                                                                                                                                                                                                                                                       | Required                                                                                                                                                                                                                                                   | Description                                                                                                                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `atBRANDAt7822`                                                                                                                                                                                                                                            | [models.CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductAtBRANDAt7822](../models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat7822.md) | :heavy_check_mark:                                                                                                                                                                                                                                         | N/A                                                                                                                                                                                                                                                        |

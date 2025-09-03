@@ -23,6 +23,12 @@ let value: PatchTeamRequestBody = {
   },
   hideIpAddresses: false,
   hideIpAddressesInLogDrains: false,
+  defaultExpirationSettings: {
+    expiration: "1y",
+    expirationProduction: "1y",
+    expirationCanceled: "1y",
+    expirationErrored: "1y",
+  },
 };
 ```
 
@@ -45,3 +51,4 @@ let value: PatchTeamRequestBody = {
 | `hideIpAddresses`                                                                                | *boolean*                                                                                        | :heavy_minus_sign:                                                                               | Display or hide IP addresses in Monitoring queries.                                              | false                                                                                            |
 | `hideIpAddressesInLogDrains`                                                                     | *boolean*                                                                                        | :heavy_minus_sign:                                                                               | Display or hide IP addresses in Log Drains.                                                      | false                                                                                            |
 | `defaultDeploymentProtection`                                                                    | [models.PatchTeamDefaultDeploymentProtection](../models/patchteamdefaultdeploymentprotection.md) | :heavy_minus_sign:                                                                               | Default deployment protection settings for new projects.                                         |                                                                                                  |
+| `defaultExpirationSettings`                                                                      | [models.PatchTeamDefaultExpirationSettings](../models/patchteamdefaultexpirationsettings.md)     | :heavy_minus_sign:                                                                               | N/A                                                                                              |                                                                                                  |

@@ -69,7 +69,7 @@ export type GetIntegrationResourceNotification = {
   href?: string | undefined;
 };
 
-export type Metadata =
+export type GetIntegrationResourceMetadata =
   | string
   | number
   | boolean
@@ -398,8 +398,8 @@ export function getIntegrationResourceNotificationFromJSON(
 }
 
 /** @internal */
-export const Metadata$inboundSchema: z.ZodType<
-  Metadata,
+export const GetIntegrationResourceMetadata$inboundSchema: z.ZodType<
+  GetIntegrationResourceMetadata,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -411,7 +411,7 @@ export const Metadata$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type Metadata$Outbound =
+export type GetIntegrationResourceMetadata$Outbound =
   | string
   | number
   | boolean
@@ -419,10 +419,10 @@ export type Metadata$Outbound =
   | Array<number>;
 
 /** @internal */
-export const Metadata$outboundSchema: z.ZodType<
-  Metadata$Outbound,
+export const GetIntegrationResourceMetadata$outboundSchema: z.ZodType<
+  GetIntegrationResourceMetadata$Outbound,
   z.ZodTypeDef,
-  Metadata
+  GetIntegrationResourceMetadata
 > = z.union([
   z.string(),
   z.number(),
@@ -435,26 +435,32 @@ export const Metadata$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Metadata$ {
-  /** @deprecated use `Metadata$inboundSchema` instead. */
-  export const inboundSchema = Metadata$inboundSchema;
-  /** @deprecated use `Metadata$outboundSchema` instead. */
-  export const outboundSchema = Metadata$outboundSchema;
-  /** @deprecated use `Metadata$Outbound` instead. */
-  export type Outbound = Metadata$Outbound;
+export namespace GetIntegrationResourceMetadata$ {
+  /** @deprecated use `GetIntegrationResourceMetadata$inboundSchema` instead. */
+  export const inboundSchema = GetIntegrationResourceMetadata$inboundSchema;
+  /** @deprecated use `GetIntegrationResourceMetadata$outboundSchema` instead. */
+  export const outboundSchema = GetIntegrationResourceMetadata$outboundSchema;
+  /** @deprecated use `GetIntegrationResourceMetadata$Outbound` instead. */
+  export type Outbound = GetIntegrationResourceMetadata$Outbound;
 }
 
-export function metadataToJSON(metadata: Metadata): string {
-  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+export function getIntegrationResourceMetadataToJSON(
+  getIntegrationResourceMetadata: GetIntegrationResourceMetadata,
+): string {
+  return JSON.stringify(
+    GetIntegrationResourceMetadata$outboundSchema.parse(
+      getIntegrationResourceMetadata,
+    ),
+  );
 }
 
-export function metadataFromJSON(
+export function getIntegrationResourceMetadataFromJSON(
   jsonString: string,
-): SafeParseResult<Metadata, SDKValidationError> {
+): SafeParseResult<GetIntegrationResourceMetadata, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Metadata' from JSON`,
+    (x) => GetIntegrationResourceMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourceMetadata' from JSON`,
   );
 }
 

@@ -133,6 +133,17 @@ type Record2 struct {
 	Comment    *string         `json:"comment,omitempty"`
 }
 
+func (r Record2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Record2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "slug", "name", "type", "value", "creator", "created", "updated", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Record2) GetID() string {
 	if o == nil {
 		return ""
@@ -238,6 +249,17 @@ type GetRecordsResponseBody2 struct {
 	Pagination components.Pagination `json:"pagination"`
 }
 
+func (g GetRecordsResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetRecordsResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"records", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetRecordsResponseBody2) GetRecords() []Record2 {
 	if o == nil {
 		return []Record2{}
@@ -317,6 +339,17 @@ type Record1 struct {
 	UpdatedAt  *float64        `json:"updatedAt"`
 	TTL        *float64        `json:"ttl,omitempty"`
 	Comment    *string         `json:"comment,omitempty"`
+}
+
+func (r Record1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Record1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "slug", "name", "type", "value", "creator", "created", "updated", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Record1) GetID() string {
@@ -421,6 +454,17 @@ type GetRecordsResponseBody1 struct {
 	Records []Record1 `json:"records"`
 }
 
+func (g GetRecordsResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetRecordsResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"records"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetRecordsResponseBody1) GetRecords() []Record1 {
 	if o == nil {
 		return []Record1{}
@@ -474,22 +518,22 @@ func CreateGetRecordsResponseBodyGetRecordsResponseBody2(getRecordsResponseBody2
 
 func (u *GetRecordsResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getRecordsResponseBody1 GetRecordsResponseBody1 = GetRecordsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getRecordsResponseBody1, "", true, true); err == nil {
-		u.GetRecordsResponseBody1 = &getRecordsResponseBody1
-		u.Type = GetRecordsResponseBodyTypeGetRecordsResponseBody1
-		return nil
-	}
-
 	var getRecordsResponseBody2 GetRecordsResponseBody2 = GetRecordsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getRecordsResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getRecordsResponseBody2, "", true, nil); err == nil {
 		u.GetRecordsResponseBody2 = &getRecordsResponseBody2
 		u.Type = GetRecordsResponseBodyTypeGetRecordsResponseBody2
 		return nil
 	}
 
+	var getRecordsResponseBody1 GetRecordsResponseBody1 = GetRecordsResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &getRecordsResponseBody1, "", true, nil); err == nil {
+		u.GetRecordsResponseBody1 = &getRecordsResponseBody1
+		u.Type = GetRecordsResponseBodyTypeGetRecordsResponseBody1
+		return nil
+	}
+
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetRecordsResponseBodyTypeStr
 		return nil

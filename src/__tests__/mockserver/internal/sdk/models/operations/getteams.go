@@ -73,17 +73,17 @@ func CreateGetTeamsTeamTeamLimited(teamLimited components.TeamLimited) GetTeamsT
 
 func (u *GetTeamsTeam) UnmarshalJSON(data []byte) error {
 
-	var teamLimited components.TeamLimited = components.TeamLimited{}
-	if err := utils.UnmarshalJSON(data, &teamLimited, "", true, true); err == nil {
-		u.TeamLimited = &teamLimited
-		u.Type = GetTeamsTeamTypeTeamLimited
+	var team components.Team = components.Team{}
+	if err := utils.UnmarshalJSON(data, &team, "", true, nil); err == nil {
+		u.Team = &team
+		u.Type = GetTeamsTeamTypeTeam
 		return nil
 	}
 
-	var team components.Team = components.Team{}
-	if err := utils.UnmarshalJSON(data, &team, "", true, true); err == nil {
-		u.Team = &team
-		u.Type = GetTeamsTeamTypeTeam
+	var teamLimited components.TeamLimited = components.TeamLimited{}
+	if err := utils.UnmarshalJSON(data, &teamLimited, "", true, nil); err == nil {
+		u.TeamLimited = &teamLimited
+		u.Type = GetTeamsTeamTypeTeamLimited
 		return nil
 	}
 

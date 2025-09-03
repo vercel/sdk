@@ -186,6 +186,16 @@ export type DefaultDeploymentProtection = {
 };
 
 /**
+ * Default deployment expiration settings for this team
+ */
+export type DefaultExpirationSettings = {
+  expiration?: string | undefined;
+  expirationProduction?: string | undefined;
+  expirationCanceled?: string | undefined;
+  expirationErrored?: string | undefined;
+};
+
+/**
  * Whether toolbar is enabled on preview deployments
  */
 export const EnablePreviewFeedback = {
@@ -268,6 +278,7 @@ export const TeamRoles = {
 export type TeamRoles = ClosedEnum<typeof TeamRoles>;
 
 export const TeamPermissions = {
+  IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",
@@ -365,6 +376,10 @@ export type Team = {
    * The hostname that is current set as preview deployment suffix.
    */
   previewDeploymentSuffix?: string | null | undefined;
+  /**
+   * Whether the team is a platform team.
+   */
+  platform?: boolean | undefined;
   disableHardAutoBlocks?: number | boolean | undefined;
   /**
    * Is remote caching enabled for this team
@@ -374,6 +389,10 @@ export type Team = {
    * Default deployment protection for this team
    */
   defaultDeploymentProtection?: DefaultDeploymentProtection | undefined;
+  /**
+   * Default deployment expiration settings for this team
+   */
+  defaultExpirationSettings?: DefaultExpirationSettings | undefined;
   /**
    * Whether toolbar is enabled on preview deployments
    */
@@ -1169,6 +1188,69 @@ export function defaultDeploymentProtectionFromJSON(
 }
 
 /** @internal */
+export const DefaultExpirationSettings$inboundSchema: z.ZodType<
+  DefaultExpirationSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expiration: z.string().optional(),
+  expirationProduction: z.string().optional(),
+  expirationCanceled: z.string().optional(),
+  expirationErrored: z.string().optional(),
+});
+
+/** @internal */
+export type DefaultExpirationSettings$Outbound = {
+  expiration?: string | undefined;
+  expirationProduction?: string | undefined;
+  expirationCanceled?: string | undefined;
+  expirationErrored?: string | undefined;
+};
+
+/** @internal */
+export const DefaultExpirationSettings$outboundSchema: z.ZodType<
+  DefaultExpirationSettings$Outbound,
+  z.ZodTypeDef,
+  DefaultExpirationSettings
+> = z.object({
+  expiration: z.string().optional(),
+  expirationProduction: z.string().optional(),
+  expirationCanceled: z.string().optional(),
+  expirationErrored: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DefaultExpirationSettings$ {
+  /** @deprecated use `DefaultExpirationSettings$inboundSchema` instead. */
+  export const inboundSchema = DefaultExpirationSettings$inboundSchema;
+  /** @deprecated use `DefaultExpirationSettings$outboundSchema` instead. */
+  export const outboundSchema = DefaultExpirationSettings$outboundSchema;
+  /** @deprecated use `DefaultExpirationSettings$Outbound` instead. */
+  export type Outbound = DefaultExpirationSettings$Outbound;
+}
+
+export function defaultExpirationSettingsToJSON(
+  defaultExpirationSettings: DefaultExpirationSettings,
+): string {
+  return JSON.stringify(
+    DefaultExpirationSettings$outboundSchema.parse(defaultExpirationSettings),
+  );
+}
+
+export function defaultExpirationSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultExpirationSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultExpirationSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultExpirationSettings' from JSON`,
+  );
+}
+
+/** @internal */
 export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
   typeof EnablePreviewFeedback
 > = z.nativeEnum(EnablePreviewFeedback);
@@ -1632,10 +1714,14 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       stagingPrefix: z.string(),
       resourceConfig: z.lazy(() => ResourceConfig$inboundSchema).optional(),
       previewDeploymentSuffix: z.nullable(z.string()).optional(),
+      platform: z.boolean().optional(),
       disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
       remoteCaching: z.lazy(() => RemoteCaching$inboundSchema).optional(),
       defaultDeploymentProtection: z.lazy(() =>
         DefaultDeploymentProtection$inboundSchema
+      ).optional(),
+      defaultExpirationSettings: z.lazy(() =>
+        DefaultExpirationSettings$inboundSchema
       ).optional(),
       enablePreviewFeedback: z.nullable(EnablePreviewFeedback$inboundSchema)
         .optional(),
@@ -1671,11 +1757,13 @@ export type Team$Outbound = {
   stagingPrefix: string;
   resourceConfig?: ResourceConfig$Outbound | undefined;
   previewDeploymentSuffix?: string | null | undefined;
+  platform?: boolean | undefined;
   disableHardAutoBlocks?: number | boolean | undefined;
   remoteCaching?: RemoteCaching$Outbound | undefined;
   defaultDeploymentProtection?:
     | DefaultDeploymentProtection$Outbound
     | undefined;
+  defaultExpirationSettings?: DefaultExpirationSettings$Outbound | undefined;
   enablePreviewFeedback?: string | null | undefined;
   enableProductionFeedback?: string | null | undefined;
   sensitiveEnvironmentVariablePolicy?: string | null | undefined;
@@ -1704,10 +1792,14 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     stagingPrefix: z.string(),
     resourceConfig: z.lazy(() => ResourceConfig$outboundSchema).optional(),
     previewDeploymentSuffix: z.nullable(z.string()).optional(),
+    platform: z.boolean().optional(),
     disableHardAutoBlocks: z.union([z.number(), z.boolean()]).optional(),
     remoteCaching: z.lazy(() => RemoteCaching$outboundSchema).optional(),
     defaultDeploymentProtection: z.lazy(() =>
       DefaultDeploymentProtection$outboundSchema
+    ).optional(),
+    defaultExpirationSettings: z.lazy(() =>
+      DefaultExpirationSettings$outboundSchema
     ).optional(),
     enablePreviewFeedback: z.nullable(EnablePreviewFeedback$outboundSchema)
       .optional(),

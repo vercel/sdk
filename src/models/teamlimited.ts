@@ -109,6 +109,7 @@ export const TeamLimitedTeamRoles = {
 export type TeamLimitedTeamRoles = ClosedEnum<typeof TeamLimitedTeamRoles>;
 
 export const TeamLimitedTeamPermissions = {
+  IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",

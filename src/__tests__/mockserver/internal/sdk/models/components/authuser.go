@@ -191,6 +191,17 @@ type AuthUserSoftBlock struct {
 	BlockedDueToOverageType *AuthUserBlockedDueToOverageType `json:"blockedDueToOverageType,omitempty"`
 }
 
+func (a AuthUserSoftBlock) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserSoftBlock) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"blockedAt", "reason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AuthUserSoftBlock) GetBlockedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -216,10 +227,32 @@ func (o *AuthUserSoftBlock) GetBlockedDueToOverageType() *AuthUserBlockedDueToOv
 type AuthUserBilling struct {
 }
 
+func (a AuthUserBilling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserBilling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // AuthUserBuildEntitlements - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type AuthUserBuildEntitlements struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	EnhancedBuilds *bool `json:"enhancedBuilds,omitempty"`
+}
+
+func (a AuthUserBuildEntitlements) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserBuildEntitlements) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserBuildEntitlements) GetEnhancedBuilds() *bool {
@@ -268,6 +301,17 @@ type AuthUserBuildMachine struct {
 	Memory *float64 `json:"memory,omitempty"`
 }
 
+func (a AuthUserBuildMachine) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserBuildMachine) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AuthUserBuildMachine) GetPurchaseType() *AuthUserPurchaseType {
 	if o == nil {
 		return nil
@@ -306,6 +350,17 @@ type AuthUserSecurity struct {
 	IPBypass *float64 `json:"ipBypass,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	RateLimit *float64 `json:"rateLimit,omitempty"`
+}
+
+func (a AuthUserSecurity) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserSecurity) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserSecurity) GetCustomRules() *float64 {
@@ -390,6 +445,17 @@ type AuthUserResourceConfig struct {
 	BuildMachine *AuthUserBuildMachine `json:"buildMachine,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	Security *AuthUserSecurity `json:"security,omitempty"`
+}
+
+func (a AuthUserResourceConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserResourceConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserResourceConfig) GetNodeType() *string {
@@ -660,6 +726,17 @@ type AuthUserActiveDashboardView struct {
 	RecentsViewPreference   *AuthUserRecentsViewPreference   `json:"recentsViewPreference,omitempty"`
 }
 
+func (a AuthUserActiveDashboardView) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserActiveDashboardView) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"scopeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AuthUserActiveDashboardView) GetScopeID() string {
 	if o == nil {
 		return ""
@@ -723,14 +800,14 @@ func CreateAuthUserImportFlowGitNamespaceNumber(number float64) AuthUserImportFl
 func (u *AuthUserImportFlowGitNamespace) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = AuthUserImportFlowGitNamespaceTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = AuthUserImportFlowGitNamespaceTypeNumber
 		return nil
@@ -786,14 +863,14 @@ func CreateAuthUserImportFlowGitNamespaceIDNumber(number float64) AuthUserImport
 func (u *AuthUserImportFlowGitNamespaceID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = AuthUserImportFlowGitNamespaceIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = AuthUserImportFlowGitNamespaceIDTypeNumber
 		return nil
@@ -817,9 +894,9 @@ func (u AuthUserImportFlowGitNamespaceID) MarshalJSON() ([]byte, error) {
 type AuthUserImportFlowGitProvider string
 
 const (
-	AuthUserImportFlowGitProviderGithub           AuthUserImportFlowGitProvider = "github"
 	AuthUserImportFlowGitProviderGitlab           AuthUserImportFlowGitProvider = "gitlab"
 	AuthUserImportFlowGitProviderBitbucket        AuthUserImportFlowGitProvider = "bitbucket"
+	AuthUserImportFlowGitProviderGithub           AuthUserImportFlowGitProvider = "github"
 	AuthUserImportFlowGitProviderGithubLimited    AuthUserImportFlowGitProvider = "github-limited"
 	AuthUserImportFlowGitProviderGithubCustomHost AuthUserImportFlowGitProvider = "github-custom-host"
 )
@@ -833,11 +910,11 @@ func (e *AuthUserImportFlowGitProvider) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "github":
-		fallthrough
 	case "gitlab":
 		fallthrough
 	case "bitbucket":
+		fallthrough
+	case "github":
 		fallthrough
 	case "github-limited":
 		fallthrough
@@ -884,14 +961,14 @@ func CreateAuthUserGitNamespaceIDNumber(number float64) AuthUserGitNamespaceID {
 func (u *AuthUserGitNamespaceID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = AuthUserGitNamespaceIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = AuthUserGitNamespaceIDTypeNumber
 		return nil
@@ -917,6 +994,17 @@ type AuthUserPreferredScopesAndGitNamespace struct {
 	GitNamespaceID *AuthUserGitNamespaceID `json:"gitNamespaceId"`
 }
 
+func (a AuthUserPreferredScopesAndGitNamespace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserPreferredScopesAndGitNamespace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"scopeId", "gitNamespaceId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AuthUserPreferredScopesAndGitNamespace) GetScopeID() string {
 	if o == nil {
 		return ""
@@ -934,6 +1022,17 @@ func (o *AuthUserPreferredScopesAndGitNamespace) GetGitNamespaceID() *AuthUserGi
 type AuthUserDismissal struct {
 	ScopeID   string  `json:"scopeId"`
 	CreatedAt float64 `json:"createdAt"`
+}
+
+func (a AuthUserDismissal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserDismissal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"scopeId", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserDismissal) GetScopeID() string {
@@ -956,6 +1055,17 @@ type AuthUserDismissedToast struct {
 	Dismissals []AuthUserDismissal `json:"dismissals"`
 }
 
+func (a AuthUserDismissedToast) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserDismissedToast) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "dismissals"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AuthUserDismissedToast) GetName() string {
 	if o == nil {
 		return ""
@@ -974,6 +1084,17 @@ func (o *AuthUserDismissedToast) GetDismissals() []AuthUserDismissal {
 type AuthUserFavoriteProjectsAndSpace struct {
 	TeamID    string `json:"teamId"`
 	ProjectID string `json:"projectId"`
+}
+
+func (a AuthUserFavoriteProjectsAndSpace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserFavoriteProjectsAndSpace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"teamId", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserFavoriteProjectsAndSpace) GetTeamID() string {
@@ -995,6 +1116,17 @@ type AuthUserRemoteCaching struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
+func (a AuthUserRemoteCaching) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserRemoteCaching) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AuthUserRemoteCaching) GetEnabled() *bool {
 	if o == nil {
 		return nil
@@ -1005,6 +1137,17 @@ func (o *AuthUserRemoteCaching) GetEnabled() *bool {
 // AuthUserDataCache - data cache settings
 type AuthUserDataCache struct {
 	ExcessBillingEnabled *bool `json:"excessBillingEnabled,omitempty"`
+}
+
+func (a AuthUserDataCache) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserDataCache) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserDataCache) GetExcessBillingEnabled() *bool {
@@ -1018,6 +1161,17 @@ type AuthUserWebAnalytics struct {
 	BlockedFrom        *float64 `json:"blockedFrom,omitempty"`
 	BlockedUntil       *float64 `json:"blockedUntil,omitempty"`
 	IsCurrentlyBlocked bool     `json:"isCurrentlyBlocked"`
+}
+
+func (a AuthUserWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"isCurrentlyBlocked"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserWebAnalytics) GetBlockedFrom() *float64 {
@@ -1044,6 +1198,17 @@ func (o *AuthUserWebAnalytics) GetIsCurrentlyBlocked() bool {
 // AuthUserFeatureBlocks - Feature blocks for the user
 type AuthUserFeatureBlocks struct {
 	WebAnalytics *AuthUserWebAnalytics `json:"webAnalytics,omitempty"`
+}
+
+func (a AuthUserFeatureBlocks) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserFeatureBlocks) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUserFeatureBlocks) GetWebAnalytics() *AuthUserWebAnalytics {
@@ -1095,6 +1260,17 @@ type AuthUser struct {
 	Avatar *string `json:"avatar"`
 	// The user's default team.
 	DefaultTeamID *string `json:"defaultTeamId"`
+}
+
+func (a AuthUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"createdAt", "softBlock", "billing", "resourceConfig", "stagingPrefix", "hasTrialAvailable", "id", "email", "name", "username", "avatar", "defaultTeamId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AuthUser) GetCreatedAt() float64 {

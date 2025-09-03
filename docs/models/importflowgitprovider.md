@@ -11,5 +11,5 @@ let value: ImportFlowGitProvider = "github-limited";
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket" | "github-limited" | "github-custom-host"
+"gitlab" | "bitbucket" | "github" | "github-limited" | "github-custom-host"
 ```

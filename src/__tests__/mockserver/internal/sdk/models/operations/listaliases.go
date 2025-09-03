@@ -47,14 +47,14 @@ func CreateListAliasesDomainStr(str string) ListAliasesDomain {
 func (u *ListAliasesDomain) UnmarshalJSON(data []byte) error {
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = ListAliasesDomainTypeArrayOfStr
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = ListAliasesDomainTypeStr
 		return nil
@@ -252,6 +252,17 @@ type ListAliasesProtectionBypassEmailInvite struct {
 	Scope         ListAliasesScopeEmailInvite `json:"scope"`
 }
 
+func (l ListAliasesProtectionBypassEmailInvite) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAliasesProtectionBypassEmailInvite) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"createdAt", "lastUpdatedAt", "lastUpdatedBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListAliasesProtectionBypassEmailInvite) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -308,6 +319,17 @@ type ListAliasesProtectionBypassAliasProtectionOverride struct {
 	CreatedAt float64                                 `json:"createdAt"`
 	CreatedBy string                                  `json:"createdBy"`
 	Scope     ListAliasesScopeAliasProtectionOverride `json:"scope"`
+}
+
+func (l ListAliasesProtectionBypassAliasProtectionOverride) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAliasesProtectionBypassAliasProtectionOverride) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"createdAt", "createdBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListAliasesProtectionBypassAliasProtectionOverride) GetCreatedAt() float64 {
@@ -389,6 +411,17 @@ type ListAliasesProtectionBypassUser struct {
 	Scope         ListAliasesScopeUser `json:"scope"`
 }
 
+func (l ListAliasesProtectionBypassUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAliasesProtectionBypassUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"createdAt", "lastUpdatedAt", "lastUpdatedBy", "access", "scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListAliasesProtectionBypassUser) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -453,6 +486,17 @@ type ListAliasesProtectionBypassShareableLink struct {
 	CreatedBy string                        `json:"createdBy"`
 	Scope     ListAliasesScopeShareableLink `json:"scope"`
 	Expires   *float64                      `json:"expires,omitempty"`
+}
+
+func (l ListAliasesProtectionBypassShareableLink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAliasesProtectionBypassShareableLink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"createdAt", "createdBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListAliasesProtectionBypassShareableLink) GetCreatedAt() float64 {
@@ -539,31 +583,31 @@ func CreateListAliasesProtectionBypassUnionListAliasesProtectionBypassEmailInvit
 
 func (u *ListAliasesProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var listAliasesProtectionBypassAliasProtectionOverride ListAliasesProtectionBypassAliasProtectionOverride = ListAliasesProtectionBypassAliasProtectionOverride{}
-	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassAliasProtectionOverride, "", true, true); err == nil {
-		u.ListAliasesProtectionBypassAliasProtectionOverride = &listAliasesProtectionBypassAliasProtectionOverride
-		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassAliasProtectionOverride
-		return nil
-	}
-
-	var listAliasesProtectionBypassShareableLink ListAliasesProtectionBypassShareableLink = ListAliasesProtectionBypassShareableLink{}
-	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassShareableLink, "", true, true); err == nil {
-		u.ListAliasesProtectionBypassShareableLink = &listAliasesProtectionBypassShareableLink
-		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassShareableLink
+	var listAliasesProtectionBypassUser ListAliasesProtectionBypassUser = ListAliasesProtectionBypassUser{}
+	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassUser, "", true, nil); err == nil {
+		u.ListAliasesProtectionBypassUser = &listAliasesProtectionBypassUser
+		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassUser
 		return nil
 	}
 
 	var listAliasesProtectionBypassEmailInvite ListAliasesProtectionBypassEmailInvite = ListAliasesProtectionBypassEmailInvite{}
-	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassEmailInvite, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassEmailInvite, "", true, nil); err == nil {
 		u.ListAliasesProtectionBypassEmailInvite = &listAliasesProtectionBypassEmailInvite
 		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassEmailInvite
 		return nil
 	}
 
-	var listAliasesProtectionBypassUser ListAliasesProtectionBypassUser = ListAliasesProtectionBypassUser{}
-	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassUser, "", true, true); err == nil {
-		u.ListAliasesProtectionBypassUser = &listAliasesProtectionBypassUser
-		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassUser
+	var listAliasesProtectionBypassShareableLink ListAliasesProtectionBypassShareableLink = ListAliasesProtectionBypassShareableLink{}
+	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassShareableLink, "", true, nil); err == nil {
+		u.ListAliasesProtectionBypassShareableLink = &listAliasesProtectionBypassShareableLink
+		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassShareableLink
+		return nil
+	}
+
+	var listAliasesProtectionBypassAliasProtectionOverride ListAliasesProtectionBypassAliasProtectionOverride = ListAliasesProtectionBypassAliasProtectionOverride{}
+	if err := utils.UnmarshalJSON(data, &listAliasesProtectionBypassAliasProtectionOverride, "", true, nil); err == nil {
+		u.ListAliasesProtectionBypassAliasProtectionOverride = &listAliasesProtectionBypassAliasProtectionOverride
+		u.Type = ListAliasesProtectionBypassUnionTypeListAliasesProtectionBypassAliasProtectionOverride
 		return nil
 	}
 
@@ -614,6 +658,17 @@ type ListAliasesApplications3 struct {
 	BranchAlias  *string `json:"branchAlias,omitempty"`
 	// The project ID of the microfrontends application.
 	ProjectID string `json:"projectId"`
+}
+
+func (l ListAliasesApplications3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAliasesApplications3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListAliasesApplications3) GetDeploymentID() *string {
@@ -668,6 +723,17 @@ type ListAliasesApplications2 struct {
 	ProjectID string `json:"projectId"`
 }
 
+func (l ListAliasesApplications2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAliasesApplications2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"fallbackHost", "branchAlias", "projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListAliasesApplications2) GetFallbackHost() string {
 	if o == nil {
 		return ""
@@ -695,6 +761,17 @@ type ListAliasesApplications1 struct {
 	FallbackHost string `json:"fallbackHost"`
 	// The project ID of the microfrontends application.
 	ProjectID string `json:"projectId"`
+}
+
+func (l ListAliasesApplications1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAliasesApplications1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"fallbackHost", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListAliasesApplications1) GetFallbackHost() string {
@@ -757,21 +834,21 @@ func CreateListAliasesApplicationsUnionArrayOfListAliasesApplications3(arrayOfLi
 func (u *ListAliasesApplicationsUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfListAliasesApplications1 []ListAliasesApplications1 = []ListAliasesApplications1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications1, "", true, nil); err == nil {
 		u.ArrayOfListAliasesApplications1 = arrayOfListAliasesApplications1
 		u.Type = ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications1
 		return nil
 	}
 
 	var arrayOfListAliasesApplications2 []ListAliasesApplications2 = []ListAliasesApplications2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications2, "", true, nil); err == nil {
 		u.ArrayOfListAliasesApplications2 = arrayOfListAliasesApplications2
 		u.Type = ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications2
 		return nil
 	}
 
 	var arrayOfListAliasesApplications3 []ListAliasesApplications3 = []ListAliasesApplications3{}
-	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfListAliasesApplications3, "", true, nil); err == nil {
 		u.ArrayOfListAliasesApplications3 = arrayOfListAliasesApplications3
 		u.Type = ListAliasesApplicationsUnionTypeArrayOfListAliasesApplications3
 		return nil
@@ -852,7 +929,7 @@ func (l ListAliasesAlias) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListAliasesAlias) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"alias", "created", "deploymentId", "projectId", "uid"}); err != nil {
 		return err
 	}
 	return nil

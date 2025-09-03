@@ -21,6 +21,17 @@ type AddBypassIPRequestBody2 struct {
 	Note *string  `json:"note,omitempty"`
 }
 
+func (a AddBypassIPRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddBypassIPRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"projectScope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AddBypassIPRequestBody2) GetDomain() *string {
 	if o == nil {
 		return nil
@@ -72,6 +83,17 @@ type AddBypassIPRequestBody1 struct {
 	// Time to live in milliseconds
 	TTL  *float64 `json:"ttl,omitempty"`
 	Note *string  `json:"note,omitempty"`
+}
+
+func (a AddBypassIPRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddBypassIPRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"domain"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AddBypassIPRequestBody1) GetDomain() string {
@@ -151,14 +173,14 @@ func CreateAddBypassIPRequestBodyAddBypassIPRequestBody2(addBypassIPRequestBody2
 func (u *AddBypassIPRequestBody) UnmarshalJSON(data []byte) error {
 
 	var addBypassIPRequestBody1 AddBypassIPRequestBody1 = AddBypassIPRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &addBypassIPRequestBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &addBypassIPRequestBody1, "", true, nil); err == nil {
 		u.AddBypassIPRequestBody1 = &addBypassIPRequestBody1
 		u.Type = AddBypassIPRequestBodyTypeAddBypassIPRequestBody1
 		return nil
 	}
 
 	var addBypassIPRequestBody2 AddBypassIPRequestBody2 = AddBypassIPRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &addBypassIPRequestBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &addBypassIPRequestBody2, "", true, nil); err == nil {
 		u.AddBypassIPRequestBody2 = &addBypassIPRequestBody2
 		u.Type = AddBypassIPRequestBodyTypeAddBypassIPRequestBody2
 		return nil
@@ -257,6 +279,17 @@ type AddBypassIPResult2 struct {
 	UpdatedAtHour string             `json:"UpdatedAtHour"`
 	DeletedAt     *string            `json:"DeletedAt,omitempty"`
 	ExpiresAt     *float64           `json:"ExpiresAt,omitempty"`
+}
+
+func (a AddBypassIPResult2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddBypassIPResult2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"OwnerId", "Id", "Domain", "Ip", "CreatedAt", "UpdatedAt", "UpdatedAtHour"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AddBypassIPResult2) GetOwnerID() string {
@@ -362,6 +395,17 @@ type AddBypassIPResponseBody2 struct {
 	Result []AddBypassIPResult2 `json:"result,omitempty"`
 }
 
+func (a AddBypassIPResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddBypassIPResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"ok"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AddBypassIPResponseBody2) GetOk() bool {
 	if o == nil {
 		return false
@@ -384,6 +428,17 @@ type AddBypassIPResult1 struct {
 	ProjectID     string  `json:"ProjectId"`
 	Note          string  `json:"Note"`
 	IsProjectRule bool    `json:"IsProjectRule"`
+}
+
+func (a AddBypassIPResult1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddBypassIPResult1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"OwnerId", "Id", "Domain", "ProjectId", "Note", "IsProjectRule"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AddBypassIPResult1) GetOwnerID() string {
@@ -441,6 +496,17 @@ type AddBypassIPResponseBody1 struct {
 	Pagination any                  `json:"pagination"`
 }
 
+func (a AddBypassIPResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddBypassIPResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"ok", "result", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AddBypassIPResponseBody1) GetOk() bool {
 	if o == nil {
 		return false
@@ -496,17 +562,17 @@ func CreateAddBypassIPResponseBodyAddBypassIPResponseBody2(addBypassIPResponseBo
 
 func (u *AddBypassIPResponseBody) UnmarshalJSON(data []byte) error {
 
-	var addBypassIPResponseBody2 AddBypassIPResponseBody2 = AddBypassIPResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &addBypassIPResponseBody2, "", true, true); err == nil {
-		u.AddBypassIPResponseBody2 = &addBypassIPResponseBody2
-		u.Type = AddBypassIPResponseBodyTypeAddBypassIPResponseBody2
+	var addBypassIPResponseBody1 AddBypassIPResponseBody1 = AddBypassIPResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &addBypassIPResponseBody1, "", true, nil); err == nil {
+		u.AddBypassIPResponseBody1 = &addBypassIPResponseBody1
+		u.Type = AddBypassIPResponseBodyTypeAddBypassIPResponseBody1
 		return nil
 	}
 
-	var addBypassIPResponseBody1 AddBypassIPResponseBody1 = AddBypassIPResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &addBypassIPResponseBody1, "", true, true); err == nil {
-		u.AddBypassIPResponseBody1 = &addBypassIPResponseBody1
-		u.Type = AddBypassIPResponseBodyTypeAddBypassIPResponseBody1
+	var addBypassIPResponseBody2 AddBypassIPResponseBody2 = AddBypassIPResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &addBypassIPResponseBody2, "", true, nil); err == nil {
+		u.AddBypassIPResponseBody2 = &addBypassIPResponseBody2
+		u.Type = AddBypassIPResponseBodyTypeAddBypassIPResponseBody2
 		return nil
 	}
 

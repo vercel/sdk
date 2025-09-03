@@ -59,6 +59,7 @@ const (
 	GetWebhooksEvent2DomainRenewalFailed                                GetWebhooksEvent2 = "domain.renewal.failed"
 	GetWebhooksEvent2DomainAutoRenewChanged                             GetWebhooksEvent2 = "domain.auto-renew.changed"
 	GetWebhooksEvent2DeploymentCreated                                  GetWebhooksEvent2 = "deployment.created"
+	GetWebhooksEvent2DeploymentCleanup                                  GetWebhooksEvent2 = "deployment.cleanup"
 	GetWebhooksEvent2DeploymentError                                    GetWebhooksEvent2 = "deployment.error"
 	GetWebhooksEvent2DeploymentCanceled                                 GetWebhooksEvent2 = "deployment.canceled"
 	GetWebhooksEvent2DeploymentSucceeded                                GetWebhooksEvent2 = "deployment.succeeded"
@@ -111,6 +112,7 @@ const (
 	GetWebhooksEvent2MarketplaceInvoiceNotpaid                          GetWebhooksEvent2 = "marketplace.invoice.notpaid"
 	GetWebhooksEvent2MarketplaceInvoiceRefunded                         GetWebhooksEvent2 = "marketplace.invoice.refunded"
 	GetWebhooksEvent2ObservabilityAnomaly                               GetWebhooksEvent2 = "observability.anomaly"
+	GetWebhooksEvent2ObservabilityAnomalyError                          GetWebhooksEvent2 = "observability.anomaly-error"
 	GetWebhooksEvent2TestWebhook                                        GetWebhooksEvent2 = "test-webhook"
 )
 
@@ -154,6 +156,8 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.cleanup":
 		fallthrough
 	case "deployment.error":
 		fallthrough
@@ -259,6 +263,8 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.anomaly":
 		fallthrough
+	case "observability.anomaly-error":
+		fallthrough
 	case "test-webhook":
 		*e = GetWebhooksEvent2(v)
 		return nil
@@ -282,6 +288,17 @@ type GetWebhooksResponseBody2 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	// The ID of the projects the webhook is associated with
 	ProjectIds []string `json:"projectIds,omitempty"`
+}
+
+func (g GetWebhooksResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetWebhooksResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"events", "id", "url", "ownerId", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetWebhooksResponseBody2) GetEvents() []GetWebhooksEvent2 {
@@ -503,35 +520,46 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ProjectsMetadatum struct {
+type GetWebhooksProjectsMetadatum struct {
 	ID               string                `json:"id"`
 	Name             string                `json:"name"`
 	Framework        *GetWebhooksFramework `json:"framework,omitempty"`
 	LatestDeployment *string               `json:"latestDeployment,omitempty"`
 }
 
-func (o *ProjectsMetadatum) GetID() string {
+func (g GetWebhooksProjectsMetadatum) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetWebhooksProjectsMetadatum) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetWebhooksProjectsMetadatum) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ProjectsMetadatum) GetName() string {
+func (o *GetWebhooksProjectsMetadatum) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ProjectsMetadatum) GetFramework() *GetWebhooksFramework {
+func (o *GetWebhooksProjectsMetadatum) GetFramework() *GetWebhooksFramework {
 	if o == nil {
 		return nil
 	}
 	return o.Framework
 }
 
-func (o *ProjectsMetadatum) GetLatestDeployment() *string {
+func (o *GetWebhooksProjectsMetadatum) GetLatestDeployment() *string {
 	if o == nil {
 		return nil
 	}
@@ -558,6 +586,7 @@ const (
 	GetWebhooksEvent1DomainRenewalFailed                                GetWebhooksEvent1 = "domain.renewal.failed"
 	GetWebhooksEvent1DomainAutoRenewChanged                             GetWebhooksEvent1 = "domain.auto-renew.changed"
 	GetWebhooksEvent1DeploymentCreated                                  GetWebhooksEvent1 = "deployment.created"
+	GetWebhooksEvent1DeploymentCleanup                                  GetWebhooksEvent1 = "deployment.cleanup"
 	GetWebhooksEvent1DeploymentError                                    GetWebhooksEvent1 = "deployment.error"
 	GetWebhooksEvent1DeploymentCanceled                                 GetWebhooksEvent1 = "deployment.canceled"
 	GetWebhooksEvent1DeploymentSucceeded                                GetWebhooksEvent1 = "deployment.succeeded"
@@ -610,6 +639,7 @@ const (
 	GetWebhooksEvent1MarketplaceInvoiceNotpaid                          GetWebhooksEvent1 = "marketplace.invoice.notpaid"
 	GetWebhooksEvent1MarketplaceInvoiceRefunded                         GetWebhooksEvent1 = "marketplace.invoice.refunded"
 	GetWebhooksEvent1ObservabilityAnomaly                               GetWebhooksEvent1 = "observability.anomaly"
+	GetWebhooksEvent1ObservabilityAnomalyError                          GetWebhooksEvent1 = "observability.anomaly-error"
 	GetWebhooksEvent1TestWebhook                                        GetWebhooksEvent1 = "test-webhook"
 )
 
@@ -653,6 +683,8 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.cleanup":
 		fallthrough
 	case "deployment.error":
 		fallthrough
@@ -758,6 +790,8 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.anomaly":
 		fallthrough
+	case "observability.anomaly-error":
+		fallthrough
 	case "test-webhook":
 		*e = GetWebhooksEvent1(v)
 		return nil
@@ -767,7 +801,7 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 }
 
 type GetWebhooksResponseBody1 struct {
-	ProjectsMetadata []ProjectsMetadatum `json:"projectsMetadata"`
+	ProjectsMetadata []GetWebhooksProjectsMetadatum `json:"projectsMetadata"`
 	// The webhooks events
 	Events []GetWebhooksEvent1 `json:"events"`
 	// The webhook id
@@ -784,7 +818,18 @@ type GetWebhooksResponseBody1 struct {
 	ProjectIds []string `json:"projectIds,omitempty"`
 }
 
-func (o *GetWebhooksResponseBody1) GetProjectsMetadata() []ProjectsMetadatum {
+func (g GetWebhooksResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetWebhooksResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectsMetadata", "events", "id", "url", "ownerId", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetWebhooksResponseBody1) GetProjectsMetadata() []GetWebhooksProjectsMetadatum {
 	if o == nil {
 		return nil
 	}
@@ -875,14 +920,14 @@ func CreateGetWebhooksResponseBodyArrayOfGetWebhooksResponseBody2(arrayOfGetWebh
 func (u *GetWebhooksResponseBody) UnmarshalJSON(data []byte) error {
 
 	var arrayOfGetWebhooksResponseBody1 []GetWebhooksResponseBody1 = []GetWebhooksResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody1, "", true, nil); err == nil {
 		u.ArrayOfGetWebhooksResponseBody1 = arrayOfGetWebhooksResponseBody1
 		u.Type = GetWebhooksResponseBodyTypeArrayOfGetWebhooksResponseBody1
 		return nil
 	}
 
 	var arrayOfGetWebhooksResponseBody2 []GetWebhooksResponseBody2 = []GetWebhooksResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetWebhooksResponseBody2, "", true, nil); err == nil {
 		u.ArrayOfGetWebhooksResponseBody2 = arrayOfGetWebhooksResponseBody2
 		u.Type = GetWebhooksResponseBodyTypeArrayOfGetWebhooksResponseBody2
 		return nil

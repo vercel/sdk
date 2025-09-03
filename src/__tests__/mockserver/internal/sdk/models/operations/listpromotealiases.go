@@ -80,6 +80,17 @@ type ListPromoteAliasesAlias struct {
 	ID     string `json:"id"`
 }
 
+func (l ListPromoteAliasesAlias) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListPromoteAliasesAlias) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"status", "alias", "id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListPromoteAliasesAlias) GetStatus() string {
 	if o == nil {
 		return ""
@@ -107,6 +118,17 @@ type ListPromoteAliasesResponseBody2 struct {
 	Pagination components.Pagination `json:"pagination"`
 }
 
+func (l ListPromoteAliasesResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListPromoteAliasesResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"aliases", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListPromoteAliasesResponseBody2) GetAliases() []ListPromoteAliasesAlias {
 	if o == nil {
 		return []ListPromoteAliasesAlias{}
@@ -122,6 +144,17 @@ func (o *ListPromoteAliasesResponseBody2) GetPagination() components.Pagination 
 }
 
 type ListPromoteAliasesResponseBody1 struct {
+}
+
+func (l ListPromoteAliasesResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListPromoteAliasesResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type ListPromoteAliasesResponseBodyType string
@@ -158,17 +191,17 @@ func CreateListPromoteAliasesResponseBodyListPromoteAliasesResponseBody2(listPro
 
 func (u *ListPromoteAliasesResponseBody) UnmarshalJSON(data []byte) error {
 
-	var listPromoteAliasesResponseBody1 ListPromoteAliasesResponseBody1 = ListPromoteAliasesResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &listPromoteAliasesResponseBody1, "", true, true); err == nil {
-		u.ListPromoteAliasesResponseBody1 = &listPromoteAliasesResponseBody1
-		u.Type = ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody1
+	var listPromoteAliasesResponseBody2 ListPromoteAliasesResponseBody2 = ListPromoteAliasesResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &listPromoteAliasesResponseBody2, "", true, nil); err == nil {
+		u.ListPromoteAliasesResponseBody2 = &listPromoteAliasesResponseBody2
+		u.Type = ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody2
 		return nil
 	}
 
-	var listPromoteAliasesResponseBody2 ListPromoteAliasesResponseBody2 = ListPromoteAliasesResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &listPromoteAliasesResponseBody2, "", true, true); err == nil {
-		u.ListPromoteAliasesResponseBody2 = &listPromoteAliasesResponseBody2
-		u.Type = ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody2
+	var listPromoteAliasesResponseBody1 ListPromoteAliasesResponseBody1 = ListPromoteAliasesResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &listPromoteAliasesResponseBody1, "", true, nil); err == nil {
+		u.ListPromoteAliasesResponseBody1 = &listPromoteAliasesResponseBody1
+		u.Type = ListPromoteAliasesResponseBodyTypeListPromoteAliasesResponseBody1
 		return nil
 	}
 

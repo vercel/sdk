@@ -44,6 +44,17 @@ type UpdateIntegrationDeploymentActionSecret struct {
 	Value string `json:"value"`
 }
 
+func (u UpdateIntegrationDeploymentActionSecret) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateIntegrationDeploymentActionSecret) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateIntegrationDeploymentActionSecret) GetName() string {
 	if o == nil {
 		return ""
@@ -61,6 +72,17 @@ func (o *UpdateIntegrationDeploymentActionSecret) GetValue() string {
 type Outcome struct {
 	Kind    string                                    `json:"kind"`
 	Secrets []UpdateIntegrationDeploymentActionSecret `json:"secrets"`
+}
+
+func (o Outcome) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *Outcome) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"kind", "secrets"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Outcome) GetKind() string {
@@ -101,7 +123,7 @@ func CreateOutcomeUnionOutcome(outcome Outcome) OutcomeUnion {
 func (u *OutcomeUnion) UnmarshalJSON(data []byte) error {
 
 	var outcome Outcome = Outcome{}
-	if err := utils.UnmarshalJSON(data, &outcome, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &outcome, "", true, nil); err == nil {
 		u.Outcome = &outcome
 		u.Type = OutcomeUnionTypeOutcome
 		return nil

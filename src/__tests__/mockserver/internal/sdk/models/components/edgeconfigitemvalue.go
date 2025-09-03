@@ -76,35 +76,35 @@ func CreateEdgeConfigItemValueArrayOfEdgeConfigItemValue(arrayOfEdgeConfigItemVa
 func (u *EdgeConfigItemValue) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = EdgeConfigItemValueTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = EdgeConfigItemValueTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = EdgeConfigItemValueTypeBoolean
 		return nil
 	}
 
 	var mapOfEdgeConfigItemValue map[string]*EdgeConfigItemValue = map[string]*EdgeConfigItemValue{}
-	if err := utils.UnmarshalJSON(data, &mapOfEdgeConfigItemValue, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &mapOfEdgeConfigItemValue, "", true, nil); err == nil {
 		u.MapOfEdgeConfigItemValue = mapOfEdgeConfigItemValue
 		u.Type = EdgeConfigItemValueTypeMapOfEdgeConfigItemValue
 		return nil
 	}
 
 	var arrayOfEdgeConfigItemValue []*EdgeConfigItemValue = []*EdgeConfigItemValue{}
-	if err := utils.UnmarshalJSON(data, &arrayOfEdgeConfigItemValue, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfEdgeConfigItemValue, "", true, nil); err == nil {
 		u.ArrayOfEdgeConfigItemValue = arrayOfEdgeConfigItemValue
 		u.Type = EdgeConfigItemValueTypeArrayOfEdgeConfigItemValue
 		return nil

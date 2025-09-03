@@ -170,6 +170,17 @@ type GetAliasProtectionBypassEmailInvite struct {
 	Scope         GetAliasScopeEmailInvite `json:"scope"`
 }
 
+func (g GetAliasProtectionBypassEmailInvite) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasProtectionBypassEmailInvite) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "lastUpdatedAt", "lastUpdatedBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetAliasProtectionBypassEmailInvite) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -226,6 +237,17 @@ type GetAliasProtectionBypassAliasProtectionOverride struct {
 	CreatedAt float64                              `json:"createdAt"`
 	CreatedBy string                               `json:"createdBy"`
 	Scope     GetAliasScopeAliasProtectionOverride `json:"scope"`
+}
+
+func (g GetAliasProtectionBypassAliasProtectionOverride) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasProtectionBypassAliasProtectionOverride) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "createdBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetAliasProtectionBypassAliasProtectionOverride) GetCreatedAt() float64 {
@@ -307,6 +329,17 @@ type GetAliasProtectionBypassUser struct {
 	Scope         GetAliasScopeUser `json:"scope"`
 }
 
+func (g GetAliasProtectionBypassUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasProtectionBypassUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "lastUpdatedAt", "lastUpdatedBy", "access", "scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetAliasProtectionBypassUser) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -371,6 +404,17 @@ type GetAliasProtectionBypassShareableLink struct {
 	CreatedBy string                     `json:"createdBy"`
 	Scope     GetAliasScopeShareableLink `json:"scope"`
 	Expires   *float64                   `json:"expires,omitempty"`
+}
+
+func (g GetAliasProtectionBypassShareableLink) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasProtectionBypassShareableLink) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"createdAt", "createdBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetAliasProtectionBypassShareableLink) GetCreatedAt() float64 {
@@ -457,31 +501,31 @@ func CreateGetAliasProtectionBypassUnionGetAliasProtectionBypassEmailInvite(getA
 
 func (u *GetAliasProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var getAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride = GetAliasProtectionBypassAliasProtectionOverride{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassAliasProtectionOverride, "", true, true); err == nil {
-		u.GetAliasProtectionBypassAliasProtectionOverride = &getAliasProtectionBypassAliasProtectionOverride
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride
-		return nil
-	}
-
-	var getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink = GetAliasProtectionBypassShareableLink{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassShareableLink, "", true, true); err == nil {
-		u.GetAliasProtectionBypassShareableLink = &getAliasProtectionBypassShareableLink
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
+	var getAliasProtectionBypassUser GetAliasProtectionBypassUser = GetAliasProtectionBypassUser{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassUser, "", true, nil); err == nil {
+		u.GetAliasProtectionBypassUser = &getAliasProtectionBypassUser
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser
 		return nil
 	}
 
 	var getAliasProtectionBypassEmailInvite GetAliasProtectionBypassEmailInvite = GetAliasProtectionBypassEmailInvite{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassEmailInvite, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassEmailInvite, "", true, nil); err == nil {
 		u.GetAliasProtectionBypassEmailInvite = &getAliasProtectionBypassEmailInvite
 		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassEmailInvite
 		return nil
 	}
 
-	var getAliasProtectionBypassUser GetAliasProtectionBypassUser = GetAliasProtectionBypassUser{}
-	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassUser, "", true, true); err == nil {
-		u.GetAliasProtectionBypassUser = &getAliasProtectionBypassUser
-		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassUser
+	var getAliasProtectionBypassShareableLink GetAliasProtectionBypassShareableLink = GetAliasProtectionBypassShareableLink{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassShareableLink, "", true, nil); err == nil {
+		u.GetAliasProtectionBypassShareableLink = &getAliasProtectionBypassShareableLink
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassShareableLink
+		return nil
+	}
+
+	var getAliasProtectionBypassAliasProtectionOverride GetAliasProtectionBypassAliasProtectionOverride = GetAliasProtectionBypassAliasProtectionOverride{}
+	if err := utils.UnmarshalJSON(data, &getAliasProtectionBypassAliasProtectionOverride, "", true, nil); err == nil {
+		u.GetAliasProtectionBypassAliasProtectionOverride = &getAliasProtectionBypassAliasProtectionOverride
+		u.Type = GetAliasProtectionBypassUnionTypeGetAliasProtectionBypassAliasProtectionOverride
 		return nil
 	}
 
@@ -532,6 +576,17 @@ type GetAliasApplications3 struct {
 	BranchAlias  *string `json:"branchAlias,omitempty"`
 	// The project ID of the microfrontends application.
 	ProjectID string `json:"projectId"`
+}
+
+func (g GetAliasApplications3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasApplications3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetAliasApplications3) GetDeploymentID() *string {
@@ -586,6 +641,17 @@ type GetAliasApplications2 struct {
 	ProjectID string `json:"projectId"`
 }
 
+func (g GetAliasApplications2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasApplications2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"fallbackHost", "branchAlias", "projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetAliasApplications2) GetFallbackHost() string {
 	if o == nil {
 		return ""
@@ -613,6 +679,17 @@ type GetAliasApplications1 struct {
 	FallbackHost string `json:"fallbackHost"`
 	// The project ID of the microfrontends application.
 	ProjectID string `json:"projectId"`
+}
+
+func (g GetAliasApplications1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAliasApplications1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"fallbackHost", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetAliasApplications1) GetFallbackHost() string {
@@ -675,21 +752,21 @@ func CreateGetAliasApplicationsUnionArrayOfGetAliasApplications3(arrayOfGetAlias
 func (u *GetAliasApplicationsUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfGetAliasApplications1 []GetAliasApplications1 = []GetAliasApplications1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications1, "", true, nil); err == nil {
 		u.ArrayOfGetAliasApplications1 = arrayOfGetAliasApplications1
 		u.Type = GetAliasApplicationsUnionTypeArrayOfGetAliasApplications1
 		return nil
 	}
 
 	var arrayOfGetAliasApplications2 []GetAliasApplications2 = []GetAliasApplications2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications2, "", true, nil); err == nil {
 		u.ArrayOfGetAliasApplications2 = arrayOfGetAliasApplications2
 		u.Type = GetAliasApplicationsUnionTypeArrayOfGetAliasApplications2
 		return nil
 	}
 
 	var arrayOfGetAliasApplications3 []GetAliasApplications3 = []GetAliasApplications3{}
-	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfGetAliasApplications3, "", true, nil); err == nil {
 		u.ArrayOfGetAliasApplications3 = arrayOfGetAliasApplications3
 		u.Type = GetAliasApplicationsUnionTypeArrayOfGetAliasApplications3
 		return nil
@@ -770,7 +847,7 @@ func (g GetAliasResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetAliasResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"alias", "created", "deploymentId", "projectId", "uid"}); err != nil {
 		return err
 	}
 	return nil

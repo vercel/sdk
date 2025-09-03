@@ -18,8 +18,8 @@ let value: UpdateInvoiceRequest = {
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `integrationConfigurationId`                                             | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `invoiceId`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `requestBody`                                                            | [models.UpdateInvoiceRequestBody](../models/updateinvoicerequestbody.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `integrationConfigurationId`      | *string*                          | :heavy_check_mark:                | N/A                               |
+| `invoiceId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
+| `requestBody`                     | *models.UpdateInvoiceRequestBody* | :heavy_check_mark:                | N/A                               |

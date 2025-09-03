@@ -87,9 +87,31 @@ func (o *UploadFileRequest) GetRequestBody() *io.Reader {
 type UploadFileResponseBody2 struct {
 }
 
+func (u UploadFileResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UploadFileResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type UploadFileResponseBody1 struct {
 	// Array of URLs where the file was updated
 	Urls []string `json:"urls"`
+}
+
+func (u UploadFileResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UploadFileResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"urls"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UploadFileResponseBody1) GetUrls() []string {
@@ -135,17 +157,17 @@ func CreateUploadFileResponseBodyUploadFileResponseBody2(uploadFileResponseBody2
 
 func (u *UploadFileResponseBody) UnmarshalJSON(data []byte) error {
 
-	var uploadFileResponseBody2 UploadFileResponseBody2 = UploadFileResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &uploadFileResponseBody2, "", true, true); err == nil {
-		u.UploadFileResponseBody2 = &uploadFileResponseBody2
-		u.Type = UploadFileResponseBodyTypeUploadFileResponseBody2
+	var uploadFileResponseBody1 UploadFileResponseBody1 = UploadFileResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &uploadFileResponseBody1, "", true, nil); err == nil {
+		u.UploadFileResponseBody1 = &uploadFileResponseBody1
+		u.Type = UploadFileResponseBodyTypeUploadFileResponseBody1
 		return nil
 	}
 
-	var uploadFileResponseBody1 UploadFileResponseBody1 = UploadFileResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &uploadFileResponseBody1, "", true, true); err == nil {
-		u.UploadFileResponseBody1 = &uploadFileResponseBody1
-		u.Type = UploadFileResponseBodyTypeUploadFileResponseBody1
+	var uploadFileResponseBody2 UploadFileResponseBody2 = UploadFileResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &uploadFileResponseBody2, "", true, nil); err == nil {
+		u.UploadFileResponseBody2 = &uploadFileResponseBody2
+		u.Type = UploadFileResponseBodyTypeUploadFileResponseBody2
 		return nil
 	}
 

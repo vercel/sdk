@@ -64,6 +64,17 @@ type Override struct {
 	Action PatchURLProtectionBypassAction `json:"action"`
 }
 
+func (o Override) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *Override) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"scope", "action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Override) GetScope() OverrideScope {
 	if o == nil {
 		return OverrideScope("")
@@ -80,6 +91,17 @@ func (o *Override) GetAction() PatchURLProtectionBypassAction {
 
 type PatchURLProtectionBypassRequestBody3 struct {
 	Override Override `json:"override"`
+}
+
+func (p PatchURLProtectionBypassRequestBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchURLProtectionBypassRequestBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"override"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchURLProtectionBypassRequestBody3) GetOverride() Override {
@@ -123,6 +145,17 @@ type PatchURLProtectionBypassScope2 struct {
 	Email string `json:"email"`
 	// Invitation status for the user scoped bypass.
 	Access PatchURLProtectionBypassAccess2 `json:"access"`
+}
+
+func (p PatchURLProtectionBypassScope2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchURLProtectionBypassScope2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"email", "access"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchURLProtectionBypassScope2) GetUserID() *string {
@@ -182,6 +215,17 @@ type PatchURLProtectionBypassScope1 struct {
 	Access PatchURLProtectionBypassAccess1 `json:"access"`
 }
 
+func (p PatchURLProtectionBypassScope1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchURLProtectionBypassScope1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"userId", "access"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PatchURLProtectionBypassScope1) GetUserID() string {
 	if o == nil {
 		return ""
@@ -239,14 +283,14 @@ func CreateScopePatchURLProtectionBypassScope2(patchURLProtectionBypassScope2 Pa
 func (u *Scope) UnmarshalJSON(data []byte) error {
 
 	var patchURLProtectionBypassScope1 PatchURLProtectionBypassScope1 = PatchURLProtectionBypassScope1{}
-	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassScope1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassScope1, "", true, nil); err == nil {
 		u.PatchURLProtectionBypassScope1 = &patchURLProtectionBypassScope1
 		u.Type = ScopeTypePatchURLProtectionBypassScope1
 		return nil
 	}
 
 	var patchURLProtectionBypassScope2 PatchURLProtectionBypassScope2 = PatchURLProtectionBypassScope2{}
-	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassScope2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassScope2, "", true, nil); err == nil {
 		u.PatchURLProtectionBypassScope2 = &patchURLProtectionBypassScope2
 		u.Type = ScopeTypePatchURLProtectionBypassScope2
 		return nil
@@ -272,6 +316,17 @@ type PatchURLProtectionBypassRequestBody2 struct {
 	Scope Scope `json:"scope"`
 }
 
+func (p PatchURLProtectionBypassRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchURLProtectionBypassRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PatchURLProtectionBypassRequestBody2) GetScope() Scope {
 	if o == nil {
 		return Scope{}
@@ -285,6 +340,17 @@ type PatchURLProtectionBypassRevoke struct {
 	Secret string `json:"secret"`
 	// Whether or not a new shareable link should be created after the provided secret is revoked
 	Regenerate bool `json:"regenerate"`
+}
+
+func (p PatchURLProtectionBypassRevoke) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchURLProtectionBypassRevoke) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"secret", "regenerate"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchURLProtectionBypassRevoke) GetSecret() string {
@@ -306,6 +372,17 @@ type PatchURLProtectionBypassRequestBody1 struct {
 	TTL *float64 `json:"ttl,omitempty"`
 	// Optional instructions for revoking and regenerating a shareable link
 	Revoke *PatchURLProtectionBypassRevoke `json:"revoke,omitempty"`
+}
+
+func (p PatchURLProtectionBypassRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchURLProtectionBypassRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchURLProtectionBypassRequestBody1) GetTTL() *float64 {
@@ -368,21 +445,21 @@ func CreatePatchURLProtectionBypassRequestBodyPatchURLProtectionBypassRequestBod
 func (u *PatchURLProtectionBypassRequestBody) UnmarshalJSON(data []byte) error {
 
 	var patchURLProtectionBypassRequestBody2 PatchURLProtectionBypassRequestBody2 = PatchURLProtectionBypassRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody2, "", true, nil); err == nil {
 		u.PatchURLProtectionBypassRequestBody2 = &patchURLProtectionBypassRequestBody2
 		u.Type = PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody2
 		return nil
 	}
 
 	var patchURLProtectionBypassRequestBody3 PatchURLProtectionBypassRequestBody3 = PatchURLProtectionBypassRequestBody3{}
-	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody3, "", true, nil); err == nil {
 		u.PatchURLProtectionBypassRequestBody3 = &patchURLProtectionBypassRequestBody3
 		u.Type = PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody3
 		return nil
 	}
 
 	var patchURLProtectionBypassRequestBody1 PatchURLProtectionBypassRequestBody1 = PatchURLProtectionBypassRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchURLProtectionBypassRequestBody1, "", true, nil); err == nil {
 		u.PatchURLProtectionBypassRequestBody1 = &patchURLProtectionBypassRequestBody1
 		u.Type = PatchURLProtectionBypassRequestBodyTypePatchURLProtectionBypassRequestBody1
 		return nil

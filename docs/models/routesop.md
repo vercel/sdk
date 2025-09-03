@@ -5,11 +5,11 @@
 ```typescript
 import { RoutesOp } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: RoutesOp = "append";
+let value: RoutesOp = "set";
 ```
 
 ## Values
 
 ```typescript
-"set" | "append" | "delete"
+"append" | "set" | "delete"
 ```

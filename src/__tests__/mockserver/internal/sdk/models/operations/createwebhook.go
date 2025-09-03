@@ -27,6 +27,7 @@ const (
 	CreateWebhookEventRequestDomainRenewalFailed                                CreateWebhookEventRequest = "domain.renewal.failed"
 	CreateWebhookEventRequestDomainAutoRenewChanged                             CreateWebhookEventRequest = "domain.auto-renew.changed"
 	CreateWebhookEventRequestDeploymentCreated                                  CreateWebhookEventRequest = "deployment.created"
+	CreateWebhookEventRequestDeploymentCleanup                                  CreateWebhookEventRequest = "deployment.cleanup"
 	CreateWebhookEventRequestDeploymentError                                    CreateWebhookEventRequest = "deployment.error"
 	CreateWebhookEventRequestDeploymentCanceled                                 CreateWebhookEventRequest = "deployment.canceled"
 	CreateWebhookEventRequestDeploymentSucceeded                                CreateWebhookEventRequest = "deployment.succeeded"
@@ -79,6 +80,7 @@ const (
 	CreateWebhookEventRequestMarketplaceInvoiceNotpaid                          CreateWebhookEventRequest = "marketplace.invoice.notpaid"
 	CreateWebhookEventRequestMarketplaceInvoiceRefunded                         CreateWebhookEventRequest = "marketplace.invoice.refunded"
 	CreateWebhookEventRequestObservabilityAnomaly                               CreateWebhookEventRequest = "observability.anomaly"
+	CreateWebhookEventRequestObservabilityAnomalyError                          CreateWebhookEventRequest = "observability.anomaly-error"
 	CreateWebhookEventRequestTestWebhook                                        CreateWebhookEventRequest = "test-webhook"
 )
 
@@ -122,6 +124,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.cleanup":
 		fallthrough
 	case "deployment.error":
 		fallthrough
@@ -226,6 +230,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 	case "marketplace.invoice.refunded":
 		fallthrough
 	case "observability.anomaly":
+		fallthrough
+	case "observability.anomaly-error":
 		fallthrough
 	case "test-webhook":
 		*e = CreateWebhookEventRequest(v)
@@ -311,6 +317,7 @@ const (
 	CreateWebhookEventResponseDomainRenewalFailed                                CreateWebhookEventResponse = "domain.renewal.failed"
 	CreateWebhookEventResponseDomainAutoRenewChanged                             CreateWebhookEventResponse = "domain.auto-renew.changed"
 	CreateWebhookEventResponseDeploymentCreated                                  CreateWebhookEventResponse = "deployment.created"
+	CreateWebhookEventResponseDeploymentCleanup                                  CreateWebhookEventResponse = "deployment.cleanup"
 	CreateWebhookEventResponseDeploymentError                                    CreateWebhookEventResponse = "deployment.error"
 	CreateWebhookEventResponseDeploymentCanceled                                 CreateWebhookEventResponse = "deployment.canceled"
 	CreateWebhookEventResponseDeploymentSucceeded                                CreateWebhookEventResponse = "deployment.succeeded"
@@ -363,6 +370,7 @@ const (
 	CreateWebhookEventResponseMarketplaceInvoiceNotpaid                          CreateWebhookEventResponse = "marketplace.invoice.notpaid"
 	CreateWebhookEventResponseMarketplaceInvoiceRefunded                         CreateWebhookEventResponse = "marketplace.invoice.refunded"
 	CreateWebhookEventResponseObservabilityAnomaly                               CreateWebhookEventResponse = "observability.anomaly"
+	CreateWebhookEventResponseObservabilityAnomalyError                          CreateWebhookEventResponse = "observability.anomaly-error"
 	CreateWebhookEventResponseTestWebhook                                        CreateWebhookEventResponse = "test-webhook"
 )
 
@@ -406,6 +414,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "domain.auto-renew.changed":
 		fallthrough
 	case "deployment.created":
+		fallthrough
+	case "deployment.cleanup":
 		fallthrough
 	case "deployment.error":
 		fallthrough
@@ -510,6 +520,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "marketplace.invoice.refunded":
 		fallthrough
 	case "observability.anomaly":
+		fallthrough
+	case "observability.anomaly-error":
 		fallthrough
 	case "test-webhook":
 		*e = CreateWebhookEventResponse(v)

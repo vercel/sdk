@@ -207,14 +207,14 @@ func CreateFilterProjectEnvsEnvTargetUnion2FilterProjectEnvsTargetEnvEnum4(filte
 func (u *FilterProjectEnvsEnvTargetUnion2) UnmarshalJSON(data []byte) error {
 
 	var arrayOfFilterProjectEnvsTargetEnvEnum3 []FilterProjectEnvsTargetEnvEnum3 = []FilterProjectEnvsTargetEnvEnum3{}
-	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetEnvEnum3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetEnvEnum3, "", true, nil); err == nil {
 		u.ArrayOfFilterProjectEnvsTargetEnvEnum3 = arrayOfFilterProjectEnvsTargetEnvEnum3
 		u.Type = FilterProjectEnvsEnvTargetUnion2TypeArrayOfFilterProjectEnvsTargetEnvEnum3
 		return nil
 	}
 
 	var filterProjectEnvsTargetEnvEnum4 FilterProjectEnvsTargetEnvEnum4 = FilterProjectEnvsTargetEnvEnum4("")
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsTargetEnvEnum4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsTargetEnvEnum4, "", true, nil); err == nil {
 		u.FilterProjectEnvsTargetEnvEnum4 = &filterProjectEnvsTargetEnvEnum4
 		u.Type = FilterProjectEnvsEnvTargetUnion2TypeFilterProjectEnvsTargetEnvEnum4
 		return nil
@@ -239,10 +239,10 @@ type FilterProjectEnvsEnvType2 string
 
 const (
 	FilterProjectEnvsEnvType2System    FilterProjectEnvsEnvType2 = "system"
-	FilterProjectEnvsEnvType2Secret    FilterProjectEnvsEnvType2 = "secret"
 	FilterProjectEnvsEnvType2Encrypted FilterProjectEnvsEnvType2 = "encrypted"
 	FilterProjectEnvsEnvType2Plain     FilterProjectEnvsEnvType2 = "plain"
 	FilterProjectEnvsEnvType2Sensitive FilterProjectEnvsEnvType2 = "sensitive"
+	FilterProjectEnvsEnvType2Secret    FilterProjectEnvsEnvType2 = "secret"
 )
 
 func (e FilterProjectEnvsEnvType2) ToPointer() *FilterProjectEnvsEnvType2 {
@@ -256,13 +256,13 @@ func (e *FilterProjectEnvsEnvType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsEnvType2(v)
 		return nil
 	default:
@@ -296,6 +296,17 @@ func (e *FilterProjectEnvsEnvTypeFlagsConnectionString2) UnmarshalJSON(data []by
 type FilterProjectEnvsContentHintEnvFlagsConnectionString2 struct {
 	Type      FilterProjectEnvsEnvTypeFlagsConnectionString2 `json:"type"`
 	ProjectID string                                         `json:"projectId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvFlagsConnectionString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvFlagsConnectionString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvFlagsConnectionString2) GetType() FilterProjectEnvsEnvTypeFlagsConnectionString2 {
@@ -341,6 +352,17 @@ type FilterProjectEnvsContentHintEnvIntegrationStoreSecret2 struct {
 	IntegrationID              string                                          `json:"integrationId"`
 	IntegrationProductID       string                                          `json:"integrationProductId"`
 	IntegrationConfigurationID string                                          `json:"integrationConfigurationId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvIntegrationStoreSecret2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvIntegrationStoreSecret2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvIntegrationStoreSecret2) GetType() FilterProjectEnvsEnvTypeIntegrationStoreSecret2 {
@@ -406,6 +428,17 @@ type FilterProjectEnvsContentHintEnvPostgresURLNoSsl2 struct {
 	StoreID string                                    `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresURLNoSsl2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresURLNoSsl2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresURLNoSsl2) GetType() FilterProjectEnvsEnvTypePostgresURLNoSsl2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresURLNoSsl2("")
@@ -446,6 +479,17 @@ func (e *FilterProjectEnvsEnvTypePostgresDatabase2) UnmarshalJSON(data []byte) e
 type FilterProjectEnvsContentHintEnvPostgresDatabase2 struct {
 	Type    FilterProjectEnvsEnvTypePostgresDatabase2 `json:"type"`
 	StoreID string                                    `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresDatabase2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresDatabase2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresDatabase2) GetType() FilterProjectEnvsEnvTypePostgresDatabase2 {
@@ -490,6 +534,17 @@ type FilterProjectEnvsContentHintEnvPostgresPassword2 struct {
 	StoreID string                                    `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresPassword2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresPassword2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresPassword2) GetType() FilterProjectEnvsEnvTypePostgresPassword2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresPassword2("")
@@ -530,6 +585,17 @@ func (e *FilterProjectEnvsEnvTypePostgresHost2) UnmarshalJSON(data []byte) error
 type FilterProjectEnvsContentHintEnvPostgresHost2 struct {
 	Type    FilterProjectEnvsEnvTypePostgresHost2 `json:"type"`
 	StoreID string                                `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresHost2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresHost2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresHost2) GetType() FilterProjectEnvsEnvTypePostgresHost2 {
@@ -574,6 +640,17 @@ type FilterProjectEnvsContentHintEnvPostgresUser2 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresUser2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresUser2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresUser2) GetType() FilterProjectEnvsEnvTypePostgresUser2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresUser2("")
@@ -614,6 +691,17 @@ func (e *FilterProjectEnvsEnvTypePostgresPrismaURL2) UnmarshalJSON(data []byte) 
 type FilterProjectEnvsContentHintEnvPostgresPrismaURL2 struct {
 	Type    FilterProjectEnvsEnvTypePostgresPrismaURL2 `json:"type"`
 	StoreID string                                     `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresPrismaURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresPrismaURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresPrismaURL2) GetType() FilterProjectEnvsEnvTypePostgresPrismaURL2 {
@@ -658,6 +746,17 @@ type FilterProjectEnvsContentHintEnvPostgresURLNonPooling2 struct {
 	StoreID string                                         `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresURLNonPooling2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresURLNonPooling2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresURLNonPooling2) GetType() FilterProjectEnvsEnvTypePostgresURLNonPooling2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresURLNonPooling2("")
@@ -698,6 +797,17 @@ func (e *FilterProjectEnvsEnvTypePostgresURL2) UnmarshalJSON(data []byte) error 
 type FilterProjectEnvsContentHintEnvPostgresURL2 struct {
 	Type    FilterProjectEnvsEnvTypePostgresURL2 `json:"type"`
 	StoreID string                               `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresURL2) GetType() FilterProjectEnvsEnvTypePostgresURL2 {
@@ -742,6 +852,17 @@ type FilterProjectEnvsContentHintEnvBlobReadWriteToken2 struct {
 	StoreID string                                      `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvBlobReadWriteToken2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvBlobReadWriteToken2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvBlobReadWriteToken2) GetType() FilterProjectEnvsEnvTypeBlobReadWriteToken2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeBlobReadWriteToken2("")
@@ -782,6 +903,17 @@ func (e *FilterProjectEnvsEnvTypeRedisRestAPIReadOnlyToken2) UnmarshalJSON(data 
 type FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2 struct {
 	Type    FilterProjectEnvsEnvTypeRedisRestAPIReadOnlyToken2 `json:"type"`
 	StoreID string                                             `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2) GetType() FilterProjectEnvsEnvTypeRedisRestAPIReadOnlyToken2 {
@@ -826,6 +958,17 @@ type FilterProjectEnvsContentHintEnvRedisRestAPIToken2 struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvRedisRestAPIToken2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisRestAPIToken2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvRedisRestAPIToken2) GetType() FilterProjectEnvsEnvTypeRedisRestAPIToken2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeRedisRestAPIToken2("")
@@ -868,6 +1011,17 @@ type FilterProjectEnvsContentHintEnvRedisRestAPIURL2 struct {
 	StoreID string                                   `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvRedisRestAPIURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisRestAPIURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvRedisRestAPIURL2) GetType() FilterProjectEnvsEnvTypeRedisRestAPIURL2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeRedisRestAPIURL2("")
@@ -908,6 +1062,17 @@ func (e *FilterProjectEnvsEnvTypeRedisURL2) UnmarshalJSON(data []byte) error {
 type FilterProjectEnvsContentHintEnvRedisURL2 struct {
 	Type    FilterProjectEnvsEnvTypeRedisURL2 `json:"type"`
 	StoreID string                            `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvRedisURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvRedisURL2) GetType() FilterProjectEnvsEnvTypeRedisURL2 {
@@ -1101,108 +1266,108 @@ func CreateFilterProjectEnvsEnvContentHintUnion2FilterProjectEnvsContentHintEnvF
 
 func (u *FilterProjectEnvsEnvContentHintUnion2) UnmarshalJSON(data []byte) error {
 
-	var filterProjectEnvsContentHintEnvPostgresURLNonPooling2 FilterProjectEnvsContentHintEnvPostgresURLNonPooling2 = FilterProjectEnvsContentHintEnvPostgresURLNonPooling2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNonPooling2, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresURLNonPooling2 = &filterProjectEnvsContentHintEnvPostgresURLNonPooling2
-		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresURLNonPooling2
+	var filterProjectEnvsContentHintEnvIntegrationStoreSecret2 FilterProjectEnvsContentHintEnvIntegrationStoreSecret2 = FilterProjectEnvsContentHintEnvIntegrationStoreSecret2{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvIntegrationStoreSecret2, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvIntegrationStoreSecret2 = &filterProjectEnvsContentHintEnvIntegrationStoreSecret2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvIntegrationStoreSecret2
 		return nil
 	}
 
-	var filterProjectEnvsContentHintEnvPostgresPassword2 FilterProjectEnvsContentHintEnvPostgresPassword2 = FilterProjectEnvsContentHintEnvPostgresPassword2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPassword2, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresPassword2 = &filterProjectEnvsContentHintEnvPostgresPassword2
-		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresPassword2
+	var filterProjectEnvsContentHintEnvRedisURL2 FilterProjectEnvsContentHintEnvRedisURL2 = FilterProjectEnvsContentHintEnvRedisURL2{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisURL2, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvRedisURL2 = &filterProjectEnvsContentHintEnvRedisURL2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvRedisURL2
+		return nil
+	}
+
+	var filterProjectEnvsContentHintEnvRedisRestAPIURL2 FilterProjectEnvsContentHintEnvRedisRestAPIURL2 = FilterProjectEnvsContentHintEnvRedisRestAPIURL2{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIURL2, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvRedisRestAPIURL2 = &filterProjectEnvsContentHintEnvRedisRestAPIURL2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvRedisRestAPIURL2
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvRedisRestAPIToken2 FilterProjectEnvsContentHintEnvRedisRestAPIToken2 = FilterProjectEnvsContentHintEnvRedisRestAPIToken2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIToken2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIToken2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvRedisRestAPIToken2 = &filterProjectEnvsContentHintEnvRedisRestAPIToken2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvRedisRestAPIToken2
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2 FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2 = FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2 = &filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken2
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvBlobReadWriteToken2 FilterProjectEnvsContentHintEnvBlobReadWriteToken2 = FilterProjectEnvsContentHintEnvBlobReadWriteToken2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvBlobReadWriteToken2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvBlobReadWriteToken2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvBlobReadWriteToken2 = &filterProjectEnvsContentHintEnvBlobReadWriteToken2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvBlobReadWriteToken2
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvPostgresURL2 FilterProjectEnvsContentHintEnvPostgresURL2 = FilterProjectEnvsContentHintEnvPostgresURL2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURL2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURL2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresURL2 = &filterProjectEnvsContentHintEnvPostgresURL2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresURL2
 		return nil
 	}
 
-	var filterProjectEnvsContentHintEnvRedisRestAPIURL2 FilterProjectEnvsContentHintEnvRedisRestAPIURL2 = FilterProjectEnvsContentHintEnvRedisRestAPIURL2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIURL2, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvRedisRestAPIURL2 = &filterProjectEnvsContentHintEnvRedisRestAPIURL2
-		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvRedisRestAPIURL2
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvPostgresUser2 FilterProjectEnvsContentHintEnvPostgresUser2 = FilterProjectEnvsContentHintEnvPostgresUser2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresUser2, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresUser2 = &filterProjectEnvsContentHintEnvPostgresUser2
-		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresUser2
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvRedisURL2 FilterProjectEnvsContentHintEnvRedisURL2 = FilterProjectEnvsContentHintEnvRedisURL2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisURL2, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvRedisURL2 = &filterProjectEnvsContentHintEnvRedisURL2
-		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvRedisURL2
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvPostgresHost2 FilterProjectEnvsContentHintEnvPostgresHost2 = FilterProjectEnvsContentHintEnvPostgresHost2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresHost2, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresHost2 = &filterProjectEnvsContentHintEnvPostgresHost2
-		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresHost2
+	var filterProjectEnvsContentHintEnvPostgresURLNonPooling2 FilterProjectEnvsContentHintEnvPostgresURLNonPooling2 = FilterProjectEnvsContentHintEnvPostgresURLNonPooling2{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNonPooling2, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresURLNonPooling2 = &filterProjectEnvsContentHintEnvPostgresURLNonPooling2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresURLNonPooling2
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvPostgresPrismaURL2 FilterProjectEnvsContentHintEnvPostgresPrismaURL2 = FilterProjectEnvsContentHintEnvPostgresPrismaURL2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPrismaURL2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPrismaURL2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresPrismaURL2 = &filterProjectEnvsContentHintEnvPostgresPrismaURL2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresPrismaURL2
 		return nil
 	}
 
+	var filterProjectEnvsContentHintEnvPostgresUser2 FilterProjectEnvsContentHintEnvPostgresUser2 = FilterProjectEnvsContentHintEnvPostgresUser2{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresUser2, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresUser2 = &filterProjectEnvsContentHintEnvPostgresUser2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresUser2
+		return nil
+	}
+
+	var filterProjectEnvsContentHintEnvPostgresHost2 FilterProjectEnvsContentHintEnvPostgresHost2 = FilterProjectEnvsContentHintEnvPostgresHost2{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresHost2, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresHost2 = &filterProjectEnvsContentHintEnvPostgresHost2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresHost2
+		return nil
+	}
+
+	var filterProjectEnvsContentHintEnvPostgresPassword2 FilterProjectEnvsContentHintEnvPostgresPassword2 = FilterProjectEnvsContentHintEnvPostgresPassword2{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPassword2, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresPassword2 = &filterProjectEnvsContentHintEnvPostgresPassword2
+		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresPassword2
+		return nil
+	}
+
 	var filterProjectEnvsContentHintEnvPostgresDatabase2 FilterProjectEnvsContentHintEnvPostgresDatabase2 = FilterProjectEnvsContentHintEnvPostgresDatabase2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresDatabase2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresDatabase2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresDatabase2 = &filterProjectEnvsContentHintEnvPostgresDatabase2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresDatabase2
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvPostgresURLNoSsl2 FilterProjectEnvsContentHintEnvPostgresURLNoSsl2 = FilterProjectEnvsContentHintEnvPostgresURLNoSsl2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNoSsl2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNoSsl2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresURLNoSsl2 = &filterProjectEnvsContentHintEnvPostgresURLNoSsl2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvPostgresURLNoSsl2
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvFlagsConnectionString2 FilterProjectEnvsContentHintEnvFlagsConnectionString2 = FilterProjectEnvsContentHintEnvFlagsConnectionString2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvFlagsConnectionString2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvFlagsConnectionString2, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvFlagsConnectionString2 = &filterProjectEnvsContentHintEnvFlagsConnectionString2
 		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvFlagsConnectionString2
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvIntegrationStoreSecret2 FilterProjectEnvsContentHintEnvIntegrationStoreSecret2 = FilterProjectEnvsContentHintEnvIntegrationStoreSecret2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvIntegrationStoreSecret2, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvIntegrationStoreSecret2 = &filterProjectEnvsContentHintEnvIntegrationStoreSecret2
-		u.Type = FilterProjectEnvsEnvContentHintUnion2TypeFilterProjectEnvsContentHintEnvIntegrationStoreSecret2
 		return nil
 	}
 
@@ -1303,6 +1468,17 @@ type FilterProjectEnvsEnvInternalContentHint2 struct {
 	EncryptedValue string `json:"encryptedValue"`
 }
 
+func (f FilterProjectEnvsEnvInternalContentHint2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsEnvInternalContentHint2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "encryptedValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsEnvInternalContentHint2) GetType() FilterProjectEnvsEnvTypeFlagsSecret2 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeFlagsSecret2("")
@@ -1341,6 +1517,17 @@ type FilterProjectEnvsEnv2 struct {
 	Comment              *string                                   `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                                  `json:"customEnvironmentIds,omitempty"`
 	System               *bool                                     `json:"system,omitempty"`
+}
+
+func (f FilterProjectEnvsEnv2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsEnv2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "value", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsEnv2) GetTarget() *FilterProjectEnvsEnvTargetUnion2 {
@@ -1495,6 +1682,17 @@ type FilterProjectEnvsResponseBody3 struct {
 	Envs []FilterProjectEnvsEnv2 `json:"envs"`
 }
 
+func (f FilterProjectEnvsResponseBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsResponseBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"envs"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsResponseBody3) GetEnvs() []FilterProjectEnvsEnv2 {
 	if o == nil {
 		return []FilterProjectEnvsEnv2{}
@@ -1595,14 +1793,14 @@ func CreateFilterProjectEnvsEnvTargetUnion1FilterProjectEnvsTargetEnvEnum2(filte
 func (u *FilterProjectEnvsEnvTargetUnion1) UnmarshalJSON(data []byte) error {
 
 	var arrayOfFilterProjectEnvsTargetEnvEnum1 []FilterProjectEnvsTargetEnvEnum1 = []FilterProjectEnvsTargetEnvEnum1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetEnvEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetEnvEnum1, "", true, nil); err == nil {
 		u.ArrayOfFilterProjectEnvsTargetEnvEnum1 = arrayOfFilterProjectEnvsTargetEnvEnum1
 		u.Type = FilterProjectEnvsEnvTargetUnion1TypeArrayOfFilterProjectEnvsTargetEnvEnum1
 		return nil
 	}
 
 	var filterProjectEnvsTargetEnvEnum2 FilterProjectEnvsTargetEnvEnum2 = FilterProjectEnvsTargetEnvEnum2("")
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsTargetEnvEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsTargetEnvEnum2, "", true, nil); err == nil {
 		u.FilterProjectEnvsTargetEnvEnum2 = &filterProjectEnvsTargetEnvEnum2
 		u.Type = FilterProjectEnvsEnvTargetUnion1TypeFilterProjectEnvsTargetEnvEnum2
 		return nil
@@ -1627,10 +1825,10 @@ type FilterProjectEnvsEnvType1 string
 
 const (
 	FilterProjectEnvsEnvType1System    FilterProjectEnvsEnvType1 = "system"
-	FilterProjectEnvsEnvType1Secret    FilterProjectEnvsEnvType1 = "secret"
 	FilterProjectEnvsEnvType1Encrypted FilterProjectEnvsEnvType1 = "encrypted"
 	FilterProjectEnvsEnvType1Plain     FilterProjectEnvsEnvType1 = "plain"
 	FilterProjectEnvsEnvType1Sensitive FilterProjectEnvsEnvType1 = "sensitive"
+	FilterProjectEnvsEnvType1Secret    FilterProjectEnvsEnvType1 = "secret"
 )
 
 func (e FilterProjectEnvsEnvType1) ToPointer() *FilterProjectEnvsEnvType1 {
@@ -1644,13 +1842,13 @@ func (e *FilterProjectEnvsEnvType1) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsEnvType1(v)
 		return nil
 	default:
@@ -1684,6 +1882,17 @@ func (e *FilterProjectEnvsEnvTypeFlagsConnectionString1) UnmarshalJSON(data []by
 type FilterProjectEnvsContentHintEnvFlagsConnectionString1 struct {
 	Type      FilterProjectEnvsEnvTypeFlagsConnectionString1 `json:"type"`
 	ProjectID string                                         `json:"projectId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvFlagsConnectionString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvFlagsConnectionString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvFlagsConnectionString1) GetType() FilterProjectEnvsEnvTypeFlagsConnectionString1 {
@@ -1729,6 +1938,17 @@ type FilterProjectEnvsContentHintEnvIntegrationStoreSecret1 struct {
 	IntegrationID              string                                          `json:"integrationId"`
 	IntegrationProductID       string                                          `json:"integrationProductId"`
 	IntegrationConfigurationID string                                          `json:"integrationConfigurationId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvIntegrationStoreSecret1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvIntegrationStoreSecret1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvIntegrationStoreSecret1) GetType() FilterProjectEnvsEnvTypeIntegrationStoreSecret1 {
@@ -1794,6 +2014,17 @@ type FilterProjectEnvsContentHintEnvPostgresURLNoSsl1 struct {
 	StoreID string                                    `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresURLNoSsl1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresURLNoSsl1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresURLNoSsl1) GetType() FilterProjectEnvsEnvTypePostgresURLNoSsl1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresURLNoSsl1("")
@@ -1834,6 +2065,17 @@ func (e *FilterProjectEnvsEnvTypePostgresDatabase1) UnmarshalJSON(data []byte) e
 type FilterProjectEnvsContentHintEnvPostgresDatabase1 struct {
 	Type    FilterProjectEnvsEnvTypePostgresDatabase1 `json:"type"`
 	StoreID string                                    `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresDatabase1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresDatabase1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresDatabase1) GetType() FilterProjectEnvsEnvTypePostgresDatabase1 {
@@ -1878,6 +2120,17 @@ type FilterProjectEnvsContentHintEnvPostgresPassword1 struct {
 	StoreID string                                    `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresPassword1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresPassword1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresPassword1) GetType() FilterProjectEnvsEnvTypePostgresPassword1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresPassword1("")
@@ -1918,6 +2171,17 @@ func (e *FilterProjectEnvsEnvTypePostgresHost1) UnmarshalJSON(data []byte) error
 type FilterProjectEnvsContentHintEnvPostgresHost1 struct {
 	Type    FilterProjectEnvsEnvTypePostgresHost1 `json:"type"`
 	StoreID string                                `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresHost1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresHost1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresHost1) GetType() FilterProjectEnvsEnvTypePostgresHost1 {
@@ -1962,6 +2226,17 @@ type FilterProjectEnvsContentHintEnvPostgresUser1 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresUser1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresUser1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresUser1) GetType() FilterProjectEnvsEnvTypePostgresUser1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresUser1("")
@@ -2002,6 +2277,17 @@ func (e *FilterProjectEnvsEnvTypePostgresPrismaURL1) UnmarshalJSON(data []byte) 
 type FilterProjectEnvsContentHintEnvPostgresPrismaURL1 struct {
 	Type    FilterProjectEnvsEnvTypePostgresPrismaURL1 `json:"type"`
 	StoreID string                                     `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresPrismaURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresPrismaURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresPrismaURL1) GetType() FilterProjectEnvsEnvTypePostgresPrismaURL1 {
@@ -2046,6 +2332,17 @@ type FilterProjectEnvsContentHintEnvPostgresURLNonPooling1 struct {
 	StoreID string                                         `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvPostgresURLNonPooling1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresURLNonPooling1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvPostgresURLNonPooling1) GetType() FilterProjectEnvsEnvTypePostgresURLNonPooling1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypePostgresURLNonPooling1("")
@@ -2086,6 +2383,17 @@ func (e *FilterProjectEnvsEnvTypePostgresURL1) UnmarshalJSON(data []byte) error 
 type FilterProjectEnvsContentHintEnvPostgresURL1 struct {
 	Type    FilterProjectEnvsEnvTypePostgresURL1 `json:"type"`
 	StoreID string                               `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvPostgresURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvPostgresURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvPostgresURL1) GetType() FilterProjectEnvsEnvTypePostgresURL1 {
@@ -2130,6 +2438,17 @@ type FilterProjectEnvsContentHintEnvBlobReadWriteToken1 struct {
 	StoreID string                                      `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvBlobReadWriteToken1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvBlobReadWriteToken1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvBlobReadWriteToken1) GetType() FilterProjectEnvsEnvTypeBlobReadWriteToken1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeBlobReadWriteToken1("")
@@ -2170,6 +2489,17 @@ func (e *FilterProjectEnvsEnvTypeRedisRestAPIReadOnlyToken1) UnmarshalJSON(data 
 type FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1 struct {
 	Type    FilterProjectEnvsEnvTypeRedisRestAPIReadOnlyToken1 `json:"type"`
 	StoreID string                                             `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1) GetType() FilterProjectEnvsEnvTypeRedisRestAPIReadOnlyToken1 {
@@ -2214,6 +2544,17 @@ type FilterProjectEnvsContentHintEnvRedisRestAPIToken1 struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvRedisRestAPIToken1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisRestAPIToken1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvRedisRestAPIToken1) GetType() FilterProjectEnvsEnvTypeRedisRestAPIToken1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeRedisRestAPIToken1("")
@@ -2256,6 +2597,17 @@ type FilterProjectEnvsContentHintEnvRedisRestAPIURL1 struct {
 	StoreID string                                   `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintEnvRedisRestAPIURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisRestAPIURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintEnvRedisRestAPIURL1) GetType() FilterProjectEnvsEnvTypeRedisRestAPIURL1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeRedisRestAPIURL1("")
@@ -2296,6 +2648,17 @@ func (e *FilterProjectEnvsEnvTypeRedisURL1) UnmarshalJSON(data []byte) error {
 type FilterProjectEnvsContentHintEnvRedisURL1 struct {
 	Type    FilterProjectEnvsEnvTypeRedisURL1 `json:"type"`
 	StoreID string                            `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintEnvRedisURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintEnvRedisURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintEnvRedisURL1) GetType() FilterProjectEnvsEnvTypeRedisURL1 {
@@ -2489,108 +2852,108 @@ func CreateFilterProjectEnvsEnvContentHintUnion1FilterProjectEnvsContentHintEnvF
 
 func (u *FilterProjectEnvsEnvContentHintUnion1) UnmarshalJSON(data []byte) error {
 
-	var filterProjectEnvsContentHintEnvPostgresURLNonPooling1 FilterProjectEnvsContentHintEnvPostgresURLNonPooling1 = FilterProjectEnvsContentHintEnvPostgresURLNonPooling1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNonPooling1, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresURLNonPooling1 = &filterProjectEnvsContentHintEnvPostgresURLNonPooling1
-		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresURLNonPooling1
+	var filterProjectEnvsContentHintEnvIntegrationStoreSecret1 FilterProjectEnvsContentHintEnvIntegrationStoreSecret1 = FilterProjectEnvsContentHintEnvIntegrationStoreSecret1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvIntegrationStoreSecret1, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvIntegrationStoreSecret1 = &filterProjectEnvsContentHintEnvIntegrationStoreSecret1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvIntegrationStoreSecret1
 		return nil
 	}
 
-	var filterProjectEnvsContentHintEnvPostgresPassword1 FilterProjectEnvsContentHintEnvPostgresPassword1 = FilterProjectEnvsContentHintEnvPostgresPassword1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPassword1, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresPassword1 = &filterProjectEnvsContentHintEnvPostgresPassword1
-		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresPassword1
+	var filterProjectEnvsContentHintEnvRedisURL1 FilterProjectEnvsContentHintEnvRedisURL1 = FilterProjectEnvsContentHintEnvRedisURL1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisURL1, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvRedisURL1 = &filterProjectEnvsContentHintEnvRedisURL1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvRedisURL1
+		return nil
+	}
+
+	var filterProjectEnvsContentHintEnvRedisRestAPIURL1 FilterProjectEnvsContentHintEnvRedisRestAPIURL1 = FilterProjectEnvsContentHintEnvRedisRestAPIURL1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIURL1, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvRedisRestAPIURL1 = &filterProjectEnvsContentHintEnvRedisRestAPIURL1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvRedisRestAPIURL1
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvRedisRestAPIToken1 FilterProjectEnvsContentHintEnvRedisRestAPIToken1 = FilterProjectEnvsContentHintEnvRedisRestAPIToken1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIToken1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIToken1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvRedisRestAPIToken1 = &filterProjectEnvsContentHintEnvRedisRestAPIToken1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvRedisRestAPIToken1
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1 FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1 = FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1 = &filterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvRedisRestAPIReadOnlyToken1
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvBlobReadWriteToken1 FilterProjectEnvsContentHintEnvBlobReadWriteToken1 = FilterProjectEnvsContentHintEnvBlobReadWriteToken1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvBlobReadWriteToken1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvBlobReadWriteToken1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvBlobReadWriteToken1 = &filterProjectEnvsContentHintEnvBlobReadWriteToken1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvBlobReadWriteToken1
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvPostgresURL1 FilterProjectEnvsContentHintEnvPostgresURL1 = FilterProjectEnvsContentHintEnvPostgresURL1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURL1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURL1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresURL1 = &filterProjectEnvsContentHintEnvPostgresURL1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresURL1
 		return nil
 	}
 
-	var filterProjectEnvsContentHintEnvRedisRestAPIURL1 FilterProjectEnvsContentHintEnvRedisRestAPIURL1 = FilterProjectEnvsContentHintEnvRedisRestAPIURL1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisRestAPIURL1, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvRedisRestAPIURL1 = &filterProjectEnvsContentHintEnvRedisRestAPIURL1
-		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvRedisRestAPIURL1
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvPostgresUser1 FilterProjectEnvsContentHintEnvPostgresUser1 = FilterProjectEnvsContentHintEnvPostgresUser1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresUser1, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresUser1 = &filterProjectEnvsContentHintEnvPostgresUser1
-		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresUser1
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvRedisURL1 FilterProjectEnvsContentHintEnvRedisURL1 = FilterProjectEnvsContentHintEnvRedisURL1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvRedisURL1, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvRedisURL1 = &filterProjectEnvsContentHintEnvRedisURL1
-		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvRedisURL1
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvPostgresHost1 FilterProjectEnvsContentHintEnvPostgresHost1 = FilterProjectEnvsContentHintEnvPostgresHost1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresHost1, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvPostgresHost1 = &filterProjectEnvsContentHintEnvPostgresHost1
-		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresHost1
+	var filterProjectEnvsContentHintEnvPostgresURLNonPooling1 FilterProjectEnvsContentHintEnvPostgresURLNonPooling1 = FilterProjectEnvsContentHintEnvPostgresURLNonPooling1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNonPooling1, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresURLNonPooling1 = &filterProjectEnvsContentHintEnvPostgresURLNonPooling1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresURLNonPooling1
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvPostgresPrismaURL1 FilterProjectEnvsContentHintEnvPostgresPrismaURL1 = FilterProjectEnvsContentHintEnvPostgresPrismaURL1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPrismaURL1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPrismaURL1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresPrismaURL1 = &filterProjectEnvsContentHintEnvPostgresPrismaURL1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresPrismaURL1
 		return nil
 	}
 
+	var filterProjectEnvsContentHintEnvPostgresUser1 FilterProjectEnvsContentHintEnvPostgresUser1 = FilterProjectEnvsContentHintEnvPostgresUser1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresUser1, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresUser1 = &filterProjectEnvsContentHintEnvPostgresUser1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresUser1
+		return nil
+	}
+
+	var filterProjectEnvsContentHintEnvPostgresHost1 FilterProjectEnvsContentHintEnvPostgresHost1 = FilterProjectEnvsContentHintEnvPostgresHost1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresHost1, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresHost1 = &filterProjectEnvsContentHintEnvPostgresHost1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresHost1
+		return nil
+	}
+
+	var filterProjectEnvsContentHintEnvPostgresPassword1 FilterProjectEnvsContentHintEnvPostgresPassword1 = FilterProjectEnvsContentHintEnvPostgresPassword1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresPassword1, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintEnvPostgresPassword1 = &filterProjectEnvsContentHintEnvPostgresPassword1
+		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresPassword1
+		return nil
+	}
+
 	var filterProjectEnvsContentHintEnvPostgresDatabase1 FilterProjectEnvsContentHintEnvPostgresDatabase1 = FilterProjectEnvsContentHintEnvPostgresDatabase1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresDatabase1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresDatabase1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresDatabase1 = &filterProjectEnvsContentHintEnvPostgresDatabase1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresDatabase1
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvPostgresURLNoSsl1 FilterProjectEnvsContentHintEnvPostgresURLNoSsl1 = FilterProjectEnvsContentHintEnvPostgresURLNoSsl1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNoSsl1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvPostgresURLNoSsl1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvPostgresURLNoSsl1 = &filterProjectEnvsContentHintEnvPostgresURLNoSsl1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvPostgresURLNoSsl1
 		return nil
 	}
 
 	var filterProjectEnvsContentHintEnvFlagsConnectionString1 FilterProjectEnvsContentHintEnvFlagsConnectionString1 = FilterProjectEnvsContentHintEnvFlagsConnectionString1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvFlagsConnectionString1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvFlagsConnectionString1, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintEnvFlagsConnectionString1 = &filterProjectEnvsContentHintEnvFlagsConnectionString1
 		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvFlagsConnectionString1
-		return nil
-	}
-
-	var filterProjectEnvsContentHintEnvIntegrationStoreSecret1 FilterProjectEnvsContentHintEnvIntegrationStoreSecret1 = FilterProjectEnvsContentHintEnvIntegrationStoreSecret1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintEnvIntegrationStoreSecret1, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintEnvIntegrationStoreSecret1 = &filterProjectEnvsContentHintEnvIntegrationStoreSecret1
-		u.Type = FilterProjectEnvsEnvContentHintUnion1TypeFilterProjectEnvsContentHintEnvIntegrationStoreSecret1
 		return nil
 	}
 
@@ -2691,6 +3054,17 @@ type FilterProjectEnvsEnvInternalContentHint1 struct {
 	EncryptedValue string `json:"encryptedValue"`
 }
 
+func (f FilterProjectEnvsEnvInternalContentHint1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsEnvInternalContentHint1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "encryptedValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsEnvInternalContentHint1) GetType() FilterProjectEnvsEnvTypeFlagsSecret1 {
 	if o == nil {
 		return FilterProjectEnvsEnvTypeFlagsSecret1("")
@@ -2729,6 +3103,17 @@ type FilterProjectEnvsEnv1 struct {
 	Comment              *string                                   `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                                  `json:"customEnvironmentIds,omitempty"`
 	System               *bool                                     `json:"system,omitempty"`
+}
+
+func (f FilterProjectEnvsEnv1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsEnv1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "value", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsEnv1) GetTarget() *FilterProjectEnvsEnvTargetUnion1 {
@@ -2884,6 +3269,17 @@ type FilterProjectEnvsResponseBody2 struct {
 	Pagination components.Pagination `json:"pagination"`
 }
 
+func (f FilterProjectEnvsResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"envs", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsResponseBody2) GetEnvs() []FilterProjectEnvsEnv1 {
 	if o == nil {
 		return []FilterProjectEnvsEnv1{}
@@ -2991,14 +3387,14 @@ func CreateFilterProjectEnvsTargetUnionFilterProjectEnvsTargetEnum2(filterProjec
 func (u *FilterProjectEnvsTargetUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfFilterProjectEnvsTargetEnum1 []FilterProjectEnvsTargetEnum1 = []FilterProjectEnvsTargetEnum1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfFilterProjectEnvsTargetEnum1, "", true, nil); err == nil {
 		u.ArrayOfFilterProjectEnvsTargetEnum1 = arrayOfFilterProjectEnvsTargetEnum1
 		u.Type = FilterProjectEnvsTargetUnionTypeArrayOfFilterProjectEnvsTargetEnum1
 		return nil
 	}
 
 	var filterProjectEnvsTargetEnum2 FilterProjectEnvsTargetEnum2 = FilterProjectEnvsTargetEnum2("")
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsTargetEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsTargetEnum2, "", true, nil); err == nil {
 		u.FilterProjectEnvsTargetEnum2 = &filterProjectEnvsTargetEnum2
 		u.Type = FilterProjectEnvsTargetUnionTypeFilterProjectEnvsTargetEnum2
 		return nil
@@ -3023,10 +3419,10 @@ type FilterProjectEnvsType string
 
 const (
 	FilterProjectEnvsTypeSystem    FilterProjectEnvsType = "system"
-	FilterProjectEnvsTypeSecret    FilterProjectEnvsType = "secret"
 	FilterProjectEnvsTypeEncrypted FilterProjectEnvsType = "encrypted"
 	FilterProjectEnvsTypePlain     FilterProjectEnvsType = "plain"
 	FilterProjectEnvsTypeSensitive FilterProjectEnvsType = "sensitive"
+	FilterProjectEnvsTypeSecret    FilterProjectEnvsType = "secret"
 )
 
 func (e FilterProjectEnvsType) ToPointer() *FilterProjectEnvsType {
@@ -3040,13 +3436,13 @@ func (e *FilterProjectEnvsType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = FilterProjectEnvsType(v)
 		return nil
 	default:
@@ -3080,6 +3476,17 @@ func (e *FilterProjectEnvsTypeFlagsConnectionString) UnmarshalJSON(data []byte) 
 type FilterProjectEnvsContentHintFlagsConnectionString struct {
 	Type      FilterProjectEnvsTypeFlagsConnectionString `json:"type"`
 	ProjectID string                                     `json:"projectId"`
+}
+
+func (f FilterProjectEnvsContentHintFlagsConnectionString) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintFlagsConnectionString) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintFlagsConnectionString) GetType() FilterProjectEnvsTypeFlagsConnectionString {
@@ -3125,6 +3532,17 @@ type FilterProjectEnvsContentHintIntegrationStoreSecret struct {
 	IntegrationID              string                                      `json:"integrationId"`
 	IntegrationProductID       string                                      `json:"integrationProductId"`
 	IntegrationConfigurationID string                                      `json:"integrationConfigurationId"`
+}
+
+func (f FilterProjectEnvsContentHintIntegrationStoreSecret) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintIntegrationStoreSecret) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintIntegrationStoreSecret) GetType() FilterProjectEnvsTypeIntegrationStoreSecret {
@@ -3190,6 +3608,17 @@ type FilterProjectEnvsContentHintPostgresURLNoSsl struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintPostgresURLNoSsl) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresURLNoSsl) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintPostgresURLNoSsl) GetType() FilterProjectEnvsTypePostgresURLNoSsl {
 	if o == nil {
 		return FilterProjectEnvsTypePostgresURLNoSsl("")
@@ -3230,6 +3659,17 @@ func (e *FilterProjectEnvsTypePostgresDatabase) UnmarshalJSON(data []byte) error
 type FilterProjectEnvsContentHintPostgresDatabase struct {
 	Type    FilterProjectEnvsTypePostgresDatabase `json:"type"`
 	StoreID string                                `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintPostgresDatabase) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresDatabase) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintPostgresDatabase) GetType() FilterProjectEnvsTypePostgresDatabase {
@@ -3274,6 +3714,17 @@ type FilterProjectEnvsContentHintPostgresPassword struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintPostgresPassword) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresPassword) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintPostgresPassword) GetType() FilterProjectEnvsTypePostgresPassword {
 	if o == nil {
 		return FilterProjectEnvsTypePostgresPassword("")
@@ -3314,6 +3765,17 @@ func (e *FilterProjectEnvsTypePostgresHost) UnmarshalJSON(data []byte) error {
 type FilterProjectEnvsContentHintPostgresHost struct {
 	Type    FilterProjectEnvsTypePostgresHost `json:"type"`
 	StoreID string                            `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintPostgresHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintPostgresHost) GetType() FilterProjectEnvsTypePostgresHost {
@@ -3358,6 +3820,17 @@ type FilterProjectEnvsContentHintPostgresUser struct {
 	StoreID string                            `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintPostgresUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintPostgresUser) GetType() FilterProjectEnvsTypePostgresUser {
 	if o == nil {
 		return FilterProjectEnvsTypePostgresUser("")
@@ -3398,6 +3871,17 @@ func (e *FilterProjectEnvsTypePostgresPrismaURL) UnmarshalJSON(data []byte) erro
 type FilterProjectEnvsContentHintPostgresPrismaURL struct {
 	Type    FilterProjectEnvsTypePostgresPrismaURL `json:"type"`
 	StoreID string                                 `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintPostgresPrismaURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresPrismaURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintPostgresPrismaURL) GetType() FilterProjectEnvsTypePostgresPrismaURL {
@@ -3442,6 +3926,17 @@ type FilterProjectEnvsContentHintPostgresURLNonPooling struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintPostgresURLNonPooling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresURLNonPooling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintPostgresURLNonPooling) GetType() FilterProjectEnvsTypePostgresURLNonPooling {
 	if o == nil {
 		return FilterProjectEnvsTypePostgresURLNonPooling("")
@@ -3482,6 +3977,17 @@ func (e *FilterProjectEnvsTypePostgresURL) UnmarshalJSON(data []byte) error {
 type FilterProjectEnvsContentHintPostgresURL struct {
 	Type    FilterProjectEnvsTypePostgresURL `json:"type"`
 	StoreID string                           `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintPostgresURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintPostgresURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintPostgresURL) GetType() FilterProjectEnvsTypePostgresURL {
@@ -3526,6 +4032,17 @@ type FilterProjectEnvsContentHintBlobReadWriteToken struct {
 	StoreID string                                  `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintBlobReadWriteToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintBlobReadWriteToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintBlobReadWriteToken) GetType() FilterProjectEnvsTypeBlobReadWriteToken {
 	if o == nil {
 		return FilterProjectEnvsTypeBlobReadWriteToken("")
@@ -3566,6 +4083,17 @@ func (e *FilterProjectEnvsTypeRedisRestAPIReadOnlyToken) UnmarshalJSON(data []by
 type FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken struct {
 	Type    FilterProjectEnvsTypeRedisRestAPIReadOnlyToken `json:"type"`
 	StoreID string                                         `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken) GetType() FilterProjectEnvsTypeRedisRestAPIReadOnlyToken {
@@ -3610,6 +4138,17 @@ type FilterProjectEnvsContentHintRedisRestAPIToken struct {
 	StoreID string                                 `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintRedisRestAPIToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintRedisRestAPIToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintRedisRestAPIToken) GetType() FilterProjectEnvsTypeRedisRestAPIToken {
 	if o == nil {
 		return FilterProjectEnvsTypeRedisRestAPIToken("")
@@ -3652,6 +4191,17 @@ type FilterProjectEnvsContentHintRedisRestAPIURL struct {
 	StoreID string                               `json:"storeId"`
 }
 
+func (f FilterProjectEnvsContentHintRedisRestAPIURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintRedisRestAPIURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsContentHintRedisRestAPIURL) GetType() FilterProjectEnvsTypeRedisRestAPIURL {
 	if o == nil {
 		return FilterProjectEnvsTypeRedisRestAPIURL("")
@@ -3692,6 +4242,17 @@ func (e *FilterProjectEnvsTypeRedisURL) UnmarshalJSON(data []byte) error {
 type FilterProjectEnvsContentHintRedisURL struct {
 	Type    FilterProjectEnvsTypeRedisURL `json:"type"`
 	StoreID string                        `json:"storeId"`
+}
+
+func (f FilterProjectEnvsContentHintRedisURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsContentHintRedisURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsContentHintRedisURL) GetType() FilterProjectEnvsTypeRedisURL {
@@ -3885,108 +4446,108 @@ func CreateFilterProjectEnvsContentHintUnionFilterProjectEnvsContentHintFlagsCon
 
 func (u *FilterProjectEnvsContentHintUnion) UnmarshalJSON(data []byte) error {
 
-	var filterProjectEnvsContentHintPostgresURLNonPooling FilterProjectEnvsContentHintPostgresURLNonPooling = FilterProjectEnvsContentHintPostgresURLNonPooling{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresURLNonPooling, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintPostgresURLNonPooling = &filterProjectEnvsContentHintPostgresURLNonPooling
-		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresURLNonPooling
+	var filterProjectEnvsContentHintIntegrationStoreSecret FilterProjectEnvsContentHintIntegrationStoreSecret = FilterProjectEnvsContentHintIntegrationStoreSecret{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintIntegrationStoreSecret, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintIntegrationStoreSecret = &filterProjectEnvsContentHintIntegrationStoreSecret
+		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintIntegrationStoreSecret
 		return nil
 	}
 
-	var filterProjectEnvsContentHintPostgresPassword FilterProjectEnvsContentHintPostgresPassword = FilterProjectEnvsContentHintPostgresPassword{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresPassword, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintPostgresPassword = &filterProjectEnvsContentHintPostgresPassword
-		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresPassword
+	var filterProjectEnvsContentHintRedisURL FilterProjectEnvsContentHintRedisURL = FilterProjectEnvsContentHintRedisURL{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisURL, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintRedisURL = &filterProjectEnvsContentHintRedisURL
+		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintRedisURL
+		return nil
+	}
+
+	var filterProjectEnvsContentHintRedisRestAPIURL FilterProjectEnvsContentHintRedisRestAPIURL = FilterProjectEnvsContentHintRedisRestAPIURL{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisRestAPIURL, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintRedisRestAPIURL = &filterProjectEnvsContentHintRedisRestAPIURL
+		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintRedisRestAPIURL
 		return nil
 	}
 
 	var filterProjectEnvsContentHintRedisRestAPIToken FilterProjectEnvsContentHintRedisRestAPIToken = FilterProjectEnvsContentHintRedisRestAPIToken{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisRestAPIToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisRestAPIToken, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintRedisRestAPIToken = &filterProjectEnvsContentHintRedisRestAPIToken
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintRedisRestAPIToken
 		return nil
 	}
 
 	var filterProjectEnvsContentHintRedisRestAPIReadOnlyToken FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken = FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisRestAPIReadOnlyToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisRestAPIReadOnlyToken, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintRedisRestAPIReadOnlyToken = &filterProjectEnvsContentHintRedisRestAPIReadOnlyToken
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintRedisRestAPIReadOnlyToken
 		return nil
 	}
 
 	var filterProjectEnvsContentHintBlobReadWriteToken FilterProjectEnvsContentHintBlobReadWriteToken = FilterProjectEnvsContentHintBlobReadWriteToken{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintBlobReadWriteToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintBlobReadWriteToken, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintBlobReadWriteToken = &filterProjectEnvsContentHintBlobReadWriteToken
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintBlobReadWriteToken
 		return nil
 	}
 
 	var filterProjectEnvsContentHintPostgresURL FilterProjectEnvsContentHintPostgresURL = FilterProjectEnvsContentHintPostgresURL{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresURL, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintPostgresURL = &filterProjectEnvsContentHintPostgresURL
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresURL
 		return nil
 	}
 
-	var filterProjectEnvsContentHintRedisRestAPIURL FilterProjectEnvsContentHintRedisRestAPIURL = FilterProjectEnvsContentHintRedisRestAPIURL{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisRestAPIURL, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintRedisRestAPIURL = &filterProjectEnvsContentHintRedisRestAPIURL
-		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintRedisRestAPIURL
-		return nil
-	}
-
-	var filterProjectEnvsContentHintPostgresUser FilterProjectEnvsContentHintPostgresUser = FilterProjectEnvsContentHintPostgresUser{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresUser, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintPostgresUser = &filterProjectEnvsContentHintPostgresUser
-		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresUser
-		return nil
-	}
-
-	var filterProjectEnvsContentHintRedisURL FilterProjectEnvsContentHintRedisURL = FilterProjectEnvsContentHintRedisURL{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintRedisURL, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintRedisURL = &filterProjectEnvsContentHintRedisURL
-		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintRedisURL
-		return nil
-	}
-
-	var filterProjectEnvsContentHintPostgresHost FilterProjectEnvsContentHintPostgresHost = FilterProjectEnvsContentHintPostgresHost{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresHost, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintPostgresHost = &filterProjectEnvsContentHintPostgresHost
-		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresHost
+	var filterProjectEnvsContentHintPostgresURLNonPooling FilterProjectEnvsContentHintPostgresURLNonPooling = FilterProjectEnvsContentHintPostgresURLNonPooling{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresURLNonPooling, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintPostgresURLNonPooling = &filterProjectEnvsContentHintPostgresURLNonPooling
+		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresURLNonPooling
 		return nil
 	}
 
 	var filterProjectEnvsContentHintPostgresPrismaURL FilterProjectEnvsContentHintPostgresPrismaURL = FilterProjectEnvsContentHintPostgresPrismaURL{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresPrismaURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresPrismaURL, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintPostgresPrismaURL = &filterProjectEnvsContentHintPostgresPrismaURL
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresPrismaURL
 		return nil
 	}
 
+	var filterProjectEnvsContentHintPostgresUser FilterProjectEnvsContentHintPostgresUser = FilterProjectEnvsContentHintPostgresUser{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresUser, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintPostgresUser = &filterProjectEnvsContentHintPostgresUser
+		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresUser
+		return nil
+	}
+
+	var filterProjectEnvsContentHintPostgresHost FilterProjectEnvsContentHintPostgresHost = FilterProjectEnvsContentHintPostgresHost{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresHost, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintPostgresHost = &filterProjectEnvsContentHintPostgresHost
+		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresHost
+		return nil
+	}
+
+	var filterProjectEnvsContentHintPostgresPassword FilterProjectEnvsContentHintPostgresPassword = FilterProjectEnvsContentHintPostgresPassword{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresPassword, "", true, nil); err == nil {
+		u.FilterProjectEnvsContentHintPostgresPassword = &filterProjectEnvsContentHintPostgresPassword
+		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresPassword
+		return nil
+	}
+
 	var filterProjectEnvsContentHintPostgresDatabase FilterProjectEnvsContentHintPostgresDatabase = FilterProjectEnvsContentHintPostgresDatabase{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresDatabase, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresDatabase, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintPostgresDatabase = &filterProjectEnvsContentHintPostgresDatabase
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresDatabase
 		return nil
 	}
 
 	var filterProjectEnvsContentHintPostgresURLNoSsl FilterProjectEnvsContentHintPostgresURLNoSsl = FilterProjectEnvsContentHintPostgresURLNoSsl{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresURLNoSsl, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintPostgresURLNoSsl, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintPostgresURLNoSsl = &filterProjectEnvsContentHintPostgresURLNoSsl
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintPostgresURLNoSsl
 		return nil
 	}
 
 	var filterProjectEnvsContentHintFlagsConnectionString FilterProjectEnvsContentHintFlagsConnectionString = FilterProjectEnvsContentHintFlagsConnectionString{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintFlagsConnectionString, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintFlagsConnectionString, "", true, nil); err == nil {
 		u.FilterProjectEnvsContentHintFlagsConnectionString = &filterProjectEnvsContentHintFlagsConnectionString
 		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintFlagsConnectionString
-		return nil
-	}
-
-	var filterProjectEnvsContentHintIntegrationStoreSecret FilterProjectEnvsContentHintIntegrationStoreSecret = FilterProjectEnvsContentHintIntegrationStoreSecret{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsContentHintIntegrationStoreSecret, "", true, true); err == nil {
-		u.FilterProjectEnvsContentHintIntegrationStoreSecret = &filterProjectEnvsContentHintIntegrationStoreSecret
-		u.Type = FilterProjectEnvsContentHintUnionTypeFilterProjectEnvsContentHintIntegrationStoreSecret
 		return nil
 	}
 
@@ -4087,6 +4648,17 @@ type FilterProjectEnvsInternalContentHint struct {
 	EncryptedValue string `json:"encryptedValue"`
 }
 
+func (f FilterProjectEnvsInternalContentHint) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsInternalContentHint) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "encryptedValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FilterProjectEnvsInternalContentHint) GetType() FilterProjectEnvsTypeFlagsSecret {
 	if o == nil {
 		return FilterProjectEnvsTypeFlagsSecret("")
@@ -4125,6 +4697,17 @@ type FilterProjectEnvsResponseBody1 struct {
 	Comment              *string                               `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                              `json:"customEnvironmentIds,omitempty"`
 	System               *bool                                 `json:"system,omitempty"`
+}
+
+func (f FilterProjectEnvsResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterProjectEnvsResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type", "value", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterProjectEnvsResponseBody1) GetTarget() *FilterProjectEnvsTargetUnion {
@@ -4320,24 +4903,24 @@ func CreateFilterProjectEnvsResponseBodyFilterProjectEnvsResponseBody3(filterPro
 
 func (u *FilterProjectEnvsResponseBody) UnmarshalJSON(data []byte) error {
 
-	var filterProjectEnvsResponseBody3 FilterProjectEnvsResponseBody3 = FilterProjectEnvsResponseBody3{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsResponseBody3, "", true, true); err == nil {
-		u.FilterProjectEnvsResponseBody3 = &filterProjectEnvsResponseBody3
-		u.Type = FilterProjectEnvsResponseBodyTypeFilterProjectEnvsResponseBody3
+	var filterProjectEnvsResponseBody1 FilterProjectEnvsResponseBody1 = FilterProjectEnvsResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsResponseBody1, "", true, nil); err == nil {
+		u.FilterProjectEnvsResponseBody1 = &filterProjectEnvsResponseBody1
+		u.Type = FilterProjectEnvsResponseBodyTypeFilterProjectEnvsResponseBody1
 		return nil
 	}
 
 	var filterProjectEnvsResponseBody2 FilterProjectEnvsResponseBody2 = FilterProjectEnvsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsResponseBody2, "", true, nil); err == nil {
 		u.FilterProjectEnvsResponseBody2 = &filterProjectEnvsResponseBody2
 		u.Type = FilterProjectEnvsResponseBodyTypeFilterProjectEnvsResponseBody2
 		return nil
 	}
 
-	var filterProjectEnvsResponseBody1 FilterProjectEnvsResponseBody1 = FilterProjectEnvsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &filterProjectEnvsResponseBody1, "", true, true); err == nil {
-		u.FilterProjectEnvsResponseBody1 = &filterProjectEnvsResponseBody1
-		u.Type = FilterProjectEnvsResponseBodyTypeFilterProjectEnvsResponseBody1
+	var filterProjectEnvsResponseBody3 FilterProjectEnvsResponseBody3 = FilterProjectEnvsResponseBody3{}
+	if err := utils.UnmarshalJSON(data, &filterProjectEnvsResponseBody3, "", true, nil); err == nil {
+		u.FilterProjectEnvsResponseBody3 = &filterProjectEnvsResponseBody3
+		u.Type = FilterProjectEnvsResponseBodyTypeFilterProjectEnvsResponseBody3
 		return nil
 	}
 

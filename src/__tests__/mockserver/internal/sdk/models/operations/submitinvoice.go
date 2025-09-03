@@ -21,7 +21,7 @@ func (s SubmitInvoicePeriod) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitInvoicePeriod) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"start", "end"}); err != nil {
 		return err
 	}
 	return nil
@@ -65,7 +65,7 @@ func (s SubmitInvoiceItem) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitInvoiceItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"billingPlanId", "name", "price", "quantity", "units", "total"}); err != nil {
 		return err
 	}
 	return nil
@@ -161,7 +161,7 @@ func (s SubmitInvoiceDiscount) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitInvoiceDiscount) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"billingPlanId", "name", "amount"}); err != nil {
 		return err
 	}
 	return nil
@@ -281,7 +281,7 @@ func (s SubmitInvoiceRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitInvoiceRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"invoiceDate", "period", "items"}); err != nil {
 		return err
 	}
 	return nil

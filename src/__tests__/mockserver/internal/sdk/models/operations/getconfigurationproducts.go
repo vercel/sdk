@@ -66,27 +66,27 @@ func (e *StorageStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Repl struct {
+type GetConfigurationProductsRepl struct {
 	Enabled              bool    `json:"enabled"`
 	SupportsReadOnlyMode bool    `json:"supportsReadOnlyMode"`
 	WelcomeMessage       *string `json:"welcomeMessage,omitempty"`
 }
 
-func (o *Repl) GetEnabled() bool {
+func (o *GetConfigurationProductsRepl) GetEnabled() bool {
 	if o == nil {
 		return false
 	}
 	return o.Enabled
 }
 
-func (o *Repl) GetSupportsReadOnlyMode() bool {
+func (o *GetConfigurationProductsRepl) GetSupportsReadOnlyMode() bool {
 	if o == nil {
 		return false
 	}
 	return o.SupportsReadOnlyMode
 }
 
-func (o *Repl) GetWelcomeMessage() *string {
+func (o *GetConfigurationProductsRepl) GetWelcomeMessage() *string {
 	if o == nil {
 		return nil
 	}
@@ -94,8 +94,8 @@ func (o *Repl) GetWelcomeMessage() *string {
 }
 
 type Storage struct {
-	Status StorageStatus `json:"status"`
-	Repl   *Repl         `json:"repl,omitempty"`
+	Status StorageStatus                 `json:"status"`
+	Repl   *GetConfigurationProductsRepl `json:"repl,omitempty"`
 }
 
 func (o *Storage) GetStatus() StorageStatus {
@@ -105,7 +105,7 @@ func (o *Storage) GetStatus() StorageStatus {
 	return o.Status
 }
 
-func (o *Storage) GetRepl() *Repl {
+func (o *Storage) GetRepl() *GetConfigurationProductsRepl {
 	if o == nil {
 		return nil
 	}
@@ -707,31 +707,53 @@ func (e *GetConfigurationProductsType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ValueAtBRANDAt447943 struct {
+type ValueAtBRANDAt502540 struct {
+}
+
+func (v ValueAtBRANDAt502540) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *ValueAtBRANDAt502540) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type GetConfigurationProductsValue struct {
-	AtBRANDAt447943 ValueAtBRANDAt447943 `json:"__@BRAND@447943"`
+	AtBRANDAt502540 ValueAtBRANDAt502540 `json:"__@BRAND@502540"`
 }
 
-func (o *GetConfigurationProductsValue) GetAtBRANDAt447943() ValueAtBRANDAt447943 {
-	if o == nil {
-		return ValueAtBRANDAt447943{}
+func (g GetConfigurationProductsValue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsValue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type DisabledEnum string
+func (o *GetConfigurationProductsValue) GetAtBRANDAt502540() ValueAtBRANDAt502540 {
+	if o == nil {
+		return ValueAtBRANDAt502540{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type GetConfigurationProductsDisabledEnum string
 
 const (
-	DisabledEnumUpdate DisabledEnum = "update"
-	DisabledEnumCreate DisabledEnum = "create"
+	GetConfigurationProductsDisabledEnumUpdate GetConfigurationProductsDisabledEnum = "update"
+	GetConfigurationProductsDisabledEnumCreate GetConfigurationProductsDisabledEnum = "create"
 )
 
-func (e DisabledEnum) ToPointer() *DisabledEnum {
+func (e GetConfigurationProductsDisabledEnum) ToPointer() *GetConfigurationProductsDisabledEnum {
 	return &e
 }
-func (e *DisabledEnum) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsDisabledEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -740,120 +762,131 @@ func (e *DisabledEnum) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = DisabledEnum(v)
+		*e = GetConfigurationProductsDisabledEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DisabledEnum: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsDisabledEnum: %v", v)
 	}
 }
 
-type Disabled struct {
+type GetConfigurationProductsDisabled struct {
 	Expr string `json:"expr"`
 }
 
-func (o *Disabled) GetExpr() string {
+func (g GetConfigurationProductsDisabled) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsDisabled) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsDisabled) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type DisabledUnionType string
+type GetConfigurationProductsDisabledUnionType string
 
 const (
-	DisabledUnionTypeBoolean      DisabledUnionType = "boolean"
-	DisabledUnionTypeDisabled     DisabledUnionType = "disabled"
-	DisabledUnionTypeDisabledEnum DisabledUnionType = "disabled_enum"
+	GetConfigurationProductsDisabledUnionTypeBoolean                              GetConfigurationProductsDisabledUnionType = "boolean"
+	GetConfigurationProductsDisabledUnionTypeGetConfigurationProductsDisabled     GetConfigurationProductsDisabledUnionType = "getConfigurationProducts_disabled"
+	GetConfigurationProductsDisabledUnionTypeGetConfigurationProductsDisabledEnum GetConfigurationProductsDisabledUnionType = "getConfigurationProducts_disabled_enum"
 )
 
-type DisabledUnion struct {
-	Boolean      *bool         `queryParam:"inline"`
-	Disabled     *Disabled     `queryParam:"inline"`
-	DisabledEnum *DisabledEnum `queryParam:"inline"`
+type GetConfigurationProductsDisabledUnion struct {
+	Boolean                              *bool                                 `queryParam:"inline"`
+	GetConfigurationProductsDisabled     *GetConfigurationProductsDisabled     `queryParam:"inline"`
+	GetConfigurationProductsDisabledEnum *GetConfigurationProductsDisabledEnum `queryParam:"inline"`
 
-	Type DisabledUnionType
+	Type GetConfigurationProductsDisabledUnionType
 }
 
-func CreateDisabledUnionBoolean(boolean bool) DisabledUnion {
-	typ := DisabledUnionTypeBoolean
+func CreateGetConfigurationProductsDisabledUnionBoolean(boolean bool) GetConfigurationProductsDisabledUnion {
+	typ := GetConfigurationProductsDisabledUnionTypeBoolean
 
-	return DisabledUnion{
+	return GetConfigurationProductsDisabledUnion{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateDisabledUnionDisabled(disabled Disabled) DisabledUnion {
-	typ := DisabledUnionTypeDisabled
+func CreateGetConfigurationProductsDisabledUnionGetConfigurationProductsDisabled(getConfigurationProductsDisabled GetConfigurationProductsDisabled) GetConfigurationProductsDisabledUnion {
+	typ := GetConfigurationProductsDisabledUnionTypeGetConfigurationProductsDisabled
 
-	return DisabledUnion{
-		Disabled: &disabled,
-		Type:     typ,
+	return GetConfigurationProductsDisabledUnion{
+		GetConfigurationProductsDisabled: &getConfigurationProductsDisabled,
+		Type:                             typ,
 	}
 }
 
-func CreateDisabledUnionDisabledEnum(disabledEnum DisabledEnum) DisabledUnion {
-	typ := DisabledUnionTypeDisabledEnum
+func CreateGetConfigurationProductsDisabledUnionGetConfigurationProductsDisabledEnum(getConfigurationProductsDisabledEnum GetConfigurationProductsDisabledEnum) GetConfigurationProductsDisabledUnion {
+	typ := GetConfigurationProductsDisabledUnionTypeGetConfigurationProductsDisabledEnum
 
-	return DisabledUnion{
-		DisabledEnum: &disabledEnum,
-		Type:         typ,
+	return GetConfigurationProductsDisabledUnion{
+		GetConfigurationProductsDisabledEnum: &getConfigurationProductsDisabledEnum,
+		Type:                                 typ,
 	}
 }
 
-func (u *DisabledUnion) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsDisabledUnion) UnmarshalJSON(data []byte) error {
 
-	var disabled Disabled = Disabled{}
-	if err := utils.UnmarshalJSON(data, &disabled, "", true, true); err == nil {
-		u.Disabled = &disabled
-		u.Type = DisabledUnionTypeDisabled
+	var getConfigurationProductsDisabled GetConfigurationProductsDisabled = GetConfigurationProductsDisabled{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsDisabled, "", true, nil); err == nil {
+		u.GetConfigurationProductsDisabled = &getConfigurationProductsDisabled
+		u.Type = GetConfigurationProductsDisabledUnionTypeGetConfigurationProductsDisabled
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = DisabledUnionTypeBoolean
+		u.Type = GetConfigurationProductsDisabledUnionTypeBoolean
 		return nil
 	}
 
-	var disabledEnum DisabledEnum = DisabledEnum("")
-	if err := utils.UnmarshalJSON(data, &disabledEnum, "", true, true); err == nil {
-		u.DisabledEnum = &disabledEnum
-		u.Type = DisabledUnionTypeDisabledEnum
+	var getConfigurationProductsDisabledEnum GetConfigurationProductsDisabledEnum = GetConfigurationProductsDisabledEnum("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsDisabledEnum, "", true, nil); err == nil {
+		u.GetConfigurationProductsDisabledEnum = &getConfigurationProductsDisabledEnum
+		u.Type = GetConfigurationProductsDisabledUnionTypeGetConfigurationProductsDisabledEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DisabledUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsDisabledUnion", string(data))
 }
 
-func (u DisabledUnion) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsDisabledUnion) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.Disabled != nil {
-		return utils.MarshalJSON(u.Disabled, "", true)
+	if u.GetConfigurationProductsDisabled != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsDisabled, "", true)
 	}
 
-	if u.DisabledEnum != nil {
-		return utils.MarshalJSON(u.DisabledEnum, "", true)
+	if u.GetConfigurationProductsDisabledEnum != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsDisabledEnum, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type DisabledUnion: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsDisabledUnion: all fields are null")
 }
 
-type HiddenEnum string
+type GetConfigurationProductsHiddenEnum string
 
 const (
-	HiddenEnumUpdate HiddenEnum = "update"
-	HiddenEnumCreate HiddenEnum = "create"
+	GetConfigurationProductsHiddenEnumUpdate GetConfigurationProductsHiddenEnum = "update"
+	GetConfigurationProductsHiddenEnumCreate GetConfigurationProductsHiddenEnum = "create"
 )
 
-func (e HiddenEnum) ToPointer() *HiddenEnum {
+func (e GetConfigurationProductsHiddenEnum) ToPointer() *GetConfigurationProductsHiddenEnum {
 	return &e
 }
-func (e *HiddenEnum) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsHiddenEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -862,156 +895,178 @@ func (e *HiddenEnum) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = HiddenEnum(v)
+		*e = GetConfigurationProductsHiddenEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for HiddenEnum: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsHiddenEnum: %v", v)
 	}
 }
 
-type Hidden struct {
+type GetConfigurationProductsHidden struct {
 	Expr string `json:"expr"`
 }
 
-func (o *Hidden) GetExpr() string {
+func (g GetConfigurationProductsHidden) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsHidden) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsHidden) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type HiddenUnionType string
+type GetConfigurationProductsHiddenUnionType string
 
 const (
-	HiddenUnionTypeBoolean    HiddenUnionType = "boolean"
-	HiddenUnionTypeHidden     HiddenUnionType = "hidden"
-	HiddenUnionTypeHiddenEnum HiddenUnionType = "hidden_enum"
+	GetConfigurationProductsHiddenUnionTypeBoolean                            GetConfigurationProductsHiddenUnionType = "boolean"
+	GetConfigurationProductsHiddenUnionTypeGetConfigurationProductsHidden     GetConfigurationProductsHiddenUnionType = "getConfigurationProducts_hidden"
+	GetConfigurationProductsHiddenUnionTypeGetConfigurationProductsHiddenEnum GetConfigurationProductsHiddenUnionType = "getConfigurationProducts_hidden_enum"
 )
 
-type HiddenUnion struct {
-	Boolean    *bool       `queryParam:"inline"`
-	Hidden     *Hidden     `queryParam:"inline"`
-	HiddenEnum *HiddenEnum `queryParam:"inline"`
+type GetConfigurationProductsHiddenUnion struct {
+	Boolean                            *bool                               `queryParam:"inline"`
+	GetConfigurationProductsHidden     *GetConfigurationProductsHidden     `queryParam:"inline"`
+	GetConfigurationProductsHiddenEnum *GetConfigurationProductsHiddenEnum `queryParam:"inline"`
 
-	Type HiddenUnionType
+	Type GetConfigurationProductsHiddenUnionType
 }
 
-func CreateHiddenUnionBoolean(boolean bool) HiddenUnion {
-	typ := HiddenUnionTypeBoolean
+func CreateGetConfigurationProductsHiddenUnionBoolean(boolean bool) GetConfigurationProductsHiddenUnion {
+	typ := GetConfigurationProductsHiddenUnionTypeBoolean
 
-	return HiddenUnion{
+	return GetConfigurationProductsHiddenUnion{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateHiddenUnionHidden(hidden Hidden) HiddenUnion {
-	typ := HiddenUnionTypeHidden
+func CreateGetConfigurationProductsHiddenUnionGetConfigurationProductsHidden(getConfigurationProductsHidden GetConfigurationProductsHidden) GetConfigurationProductsHiddenUnion {
+	typ := GetConfigurationProductsHiddenUnionTypeGetConfigurationProductsHidden
 
-	return HiddenUnion{
-		Hidden: &hidden,
-		Type:   typ,
+	return GetConfigurationProductsHiddenUnion{
+		GetConfigurationProductsHidden: &getConfigurationProductsHidden,
+		Type:                           typ,
 	}
 }
 
-func CreateHiddenUnionHiddenEnum(hiddenEnum HiddenEnum) HiddenUnion {
-	typ := HiddenUnionTypeHiddenEnum
+func CreateGetConfigurationProductsHiddenUnionGetConfigurationProductsHiddenEnum(getConfigurationProductsHiddenEnum GetConfigurationProductsHiddenEnum) GetConfigurationProductsHiddenUnion {
+	typ := GetConfigurationProductsHiddenUnionTypeGetConfigurationProductsHiddenEnum
 
-	return HiddenUnion{
-		HiddenEnum: &hiddenEnum,
-		Type:       typ,
+	return GetConfigurationProductsHiddenUnion{
+		GetConfigurationProductsHiddenEnum: &getConfigurationProductsHiddenEnum,
+		Type:                               typ,
 	}
 }
 
-func (u *HiddenUnion) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsHiddenUnion) UnmarshalJSON(data []byte) error {
 
-	var hidden Hidden = Hidden{}
-	if err := utils.UnmarshalJSON(data, &hidden, "", true, true); err == nil {
-		u.Hidden = &hidden
-		u.Type = HiddenUnionTypeHidden
+	var getConfigurationProductsHidden GetConfigurationProductsHidden = GetConfigurationProductsHidden{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsHidden, "", true, nil); err == nil {
+		u.GetConfigurationProductsHidden = &getConfigurationProductsHidden
+		u.Type = GetConfigurationProductsHiddenUnionTypeGetConfigurationProductsHidden
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = HiddenUnionTypeBoolean
+		u.Type = GetConfigurationProductsHiddenUnionTypeBoolean
 		return nil
 	}
 
-	var hiddenEnum HiddenEnum = HiddenEnum("")
-	if err := utils.UnmarshalJSON(data, &hiddenEnum, "", true, true); err == nil {
-		u.HiddenEnum = &hiddenEnum
-		u.Type = HiddenUnionTypeHiddenEnum
+	var getConfigurationProductsHiddenEnum GetConfigurationProductsHiddenEnum = GetConfigurationProductsHiddenEnum("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsHiddenEnum, "", true, nil); err == nil {
+		u.GetConfigurationProductsHiddenEnum = &getConfigurationProductsHiddenEnum
+		u.Type = GetConfigurationProductsHiddenUnionTypeGetConfigurationProductsHiddenEnum
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for HiddenUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsHiddenUnion", string(data))
 }
 
-func (u HiddenUnion) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsHiddenUnion) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.Hidden != nil {
-		return utils.MarshalJSON(u.Hidden, "", true)
+	if u.GetConfigurationProductsHidden != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsHidden, "", true)
 	}
 
-	if u.HiddenEnum != nil {
-		return utils.MarshalJSON(u.HiddenEnum, "", true)
+	if u.GetConfigurationProductsHiddenEnum != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsHiddenEnum, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type HiddenUnion: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsHiddenUnion: all fields are null")
 }
 
-type Properties struct {
-	Value    GetConfigurationProductsValue `json:"value"`
-	Disabled *DisabledUnion                `json:"disabled,omitempty"`
-	Hidden   *HiddenUnion                  `json:"hidden,omitempty"`
+type GetConfigurationProductsProperties struct {
+	Value    GetConfigurationProductsValue          `json:"value"`
+	Disabled *GetConfigurationProductsDisabledUnion `json:"disabled,omitempty"`
+	Hidden   *GetConfigurationProductsHiddenUnion   `json:"hidden,omitempty"`
 }
 
-func (o *Properties) GetValue() GetConfigurationProductsValue {
+func (g GetConfigurationProductsProperties) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsProperties) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsProperties) GetValue() GetConfigurationProductsValue {
 	if o == nil {
 		return GetConfigurationProductsValue{}
 	}
 	return o.Value
 }
 
-func (o *Properties) GetDisabled() *DisabledUnion {
+func (o *GetConfigurationProductsProperties) GetDisabled() *GetConfigurationProductsDisabledUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *Properties) GetHidden() *HiddenUnion {
+func (o *GetConfigurationProductsProperties) GetHidden() *GetConfigurationProductsHiddenUnion {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type TypeArray3 string
+type GetConfigurationProductsTypeArray3 string
 
 const (
-	TypeArray3Array TypeArray3 = "array"
+	GetConfigurationProductsTypeArray3Array GetConfigurationProductsTypeArray3 = "array"
 )
 
-func (e TypeArray3) ToPointer() *TypeArray3 {
+func (e GetConfigurationProductsTypeArray3) ToPointer() *GetConfigurationProductsTypeArray3 {
 	return &e
 }
-func (e *TypeArray3) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeArray3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "array":
-		*e = TypeArray3(v)
+		*e = GetConfigurationProductsTypeArray3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeArray3: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeArray3: %v", v)
 	}
 }
 
@@ -1038,155 +1093,254 @@ func (e *UIControlMultiVercelRegion) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type TypeString5 string
+type GetConfigurationProductsTypeString5 string
 
 const (
-	TypeString5String TypeString5 = "string"
+	GetConfigurationProductsTypeString5String GetConfigurationProductsTypeString5 = "string"
 )
 
-func (e TypeString5) ToPointer() *TypeString5 {
+func (e GetConfigurationProductsTypeString5) ToPointer() *GetConfigurationProductsTypeString5 {
 	return &e
 }
-func (e *TypeString5) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeString5) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "string":
-		*e = TypeString5(v)
+		*e = GetConfigurationProductsTypeString5(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeString5: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeString5: %v", v)
 	}
 }
 
-type MinLengthAtBRANDAt447943String2 struct {
+type MinLengthAtBRANDAt502540String2 struct {
 }
 
-type MinLengthString2 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt447943String2 `json:"__@BRAND@447943"`
+func (m MinLengthAtBRANDAt502540String2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (o *MinLengthString2) GetAtBRANDAt447943() MinLengthAtBRANDAt447943String2 {
-	if o == nil {
-		return MinLengthAtBRANDAt447943String2{}
+func (m *MinLengthAtBRANDAt502540String2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt447943String2 struct {
+type GetConfigurationProductsMinLengthString2 struct {
+	AtBRANDAt502540 MinLengthAtBRANDAt502540String2 `json:"__@BRAND@502540"`
 }
 
-type MaxLengthString2 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt447943String2 `json:"__@BRAND@447943"`
+func (g GetConfigurationProductsMinLengthString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
 }
 
-func (o *MaxLengthString2) GetAtBRANDAt447943() MaxLengthAtBRANDAt447943String2 {
-	if o == nil {
-		return MaxLengthAtBRANDAt447943String2{}
+func (g *GetConfigurationProductsMinLengthString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt447943String2 struct {
-}
-
-type PatternString2 struct {
-	AtBRANDAt447943 PatternAtBRANDAt447943String2 `json:"__@BRAND@447943"`
-}
-
-func (o *PatternString2) GetAtBRANDAt447943() PatternAtBRANDAt447943String2 {
+func (o *GetConfigurationProductsMinLengthString2) GetAtBRANDAt502540() MinLengthAtBRANDAt502540String2 {
 	if o == nil {
-		return PatternAtBRANDAt447943String2{}
+		return MinLengthAtBRANDAt502540String2{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type ItemsString2 struct {
-	Type        TypeString5       `json:"type"`
-	Description *string           `json:"description,omitempty"`
-	MinLength   *MinLengthString2 `json:"minLength,omitempty"`
-	MaxLength   *MaxLengthString2 `json:"maxLength,omitempty"`
-	Pattern     *PatternString2   `json:"pattern,omitempty"`
-	Default     *string           `json:"default,omitempty"`
-	Enum        []string          `json:"enum,omitempty"`
+type MaxLengthAtBRANDAt502540String2 struct {
 }
 
-func (o *ItemsString2) GetType() TypeString5 {
+func (m MaxLengthAtBRANDAt502540String2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt502540String2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsMaxLengthString2 struct {
+	AtBRANDAt502540 MaxLengthAtBRANDAt502540String2 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsMaxLengthString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsMaxLengthString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsMaxLengthString2) GetAtBRANDAt502540() MaxLengthAtBRANDAt502540String2 {
 	if o == nil {
-		return TypeString5("")
+		return MaxLengthAtBRANDAt502540String2{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type PatternAtBRANDAt502540String2 struct {
+}
+
+func (p PatternAtBRANDAt502540String2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt502540String2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsPatternString2 struct {
+	AtBRANDAt502540 PatternAtBRANDAt502540String2 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsPatternString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPatternString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPatternString2) GetAtBRANDAt502540() PatternAtBRANDAt502540String2 {
+	if o == nil {
+		return PatternAtBRANDAt502540String2{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type GetConfigurationProductsItemsString2 struct {
+	Type        GetConfigurationProductsTypeString5       `json:"type"`
+	Description *string                                   `json:"description,omitempty"`
+	MinLength   *GetConfigurationProductsMinLengthString2 `json:"minLength,omitempty"`
+	MaxLength   *GetConfigurationProductsMaxLengthString2 `json:"maxLength,omitempty"`
+	Pattern     *GetConfigurationProductsPatternString2   `json:"pattern,omitempty"`
+	Default     *string                                   `json:"default,omitempty"`
+	Enum        []string                                  `json:"enum,omitempty"`
+}
+
+func (g GetConfigurationProductsItemsString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsItemsString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsItemsString2) GetType() GetConfigurationProductsTypeString5 {
+	if o == nil {
+		return GetConfigurationProductsTypeString5("")
 	}
 	return o.Type
 }
 
-func (o *ItemsString2) GetDescription() *string {
+func (o *GetConfigurationProductsItemsString2) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *ItemsString2) GetMinLength() *MinLengthString2 {
+func (o *GetConfigurationProductsItemsString2) GetMinLength() *GetConfigurationProductsMinLengthString2 {
 	if o == nil {
 		return nil
 	}
 	return o.MinLength
 }
 
-func (o *ItemsString2) GetMaxLength() *MaxLengthString2 {
+func (o *GetConfigurationProductsItemsString2) GetMaxLength() *GetConfigurationProductsMaxLengthString2 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxLength
 }
 
-func (o *ItemsString2) GetPattern() *PatternString2 {
+func (o *GetConfigurationProductsItemsString2) GetPattern() *GetConfigurationProductsPatternString2 {
 	if o == nil {
 		return nil
 	}
 	return o.Pattern
 }
 
-func (o *ItemsString2) GetDefault() *string {
+func (o *GetConfigurationProductsItemsString2) GetDefault() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *ItemsString2) GetEnum() []string {
+func (o *GetConfigurationProductsItemsString2) GetEnum() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Enum
 }
 
-type UIOptionValueAtBRANDAt4479432 struct {
+type UIOptionValueAtBRANDAt5025402 struct {
 }
 
-type UIOptionValue2 struct {
-	AtBRANDAt447943 UIOptionValueAtBRANDAt4479432 `json:"__@BRAND@447943"`
+func (u UIOptionValueAtBRANDAt5025402) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (o *UIOptionValue2) GetAtBRANDAt447943() UIOptionValueAtBRANDAt4479432 {
-	if o == nil {
-		return UIOptionValueAtBRANDAt4479432{}
+func (u *UIOptionValueAtBRANDAt5025402) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type UIOptionDisabledEnum4 string
+type GetConfigurationProductsUIOptionValue2 struct {
+	AtBRANDAt502540 UIOptionValueAtBRANDAt5025402 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsUIOptionValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionValue2) GetAtBRANDAt502540() UIOptionValueAtBRANDAt5025402 {
+	if o == nil {
+		return UIOptionValueAtBRANDAt5025402{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type GetConfigurationProductsUIOptionDisabledEnum4 string
 
 const (
-	UIOptionDisabledEnum4Update UIOptionDisabledEnum4 = "update"
-	UIOptionDisabledEnum4Create UIOptionDisabledEnum4 = "create"
+	GetConfigurationProductsUIOptionDisabledEnum4Update GetConfigurationProductsUIOptionDisabledEnum4 = "update"
+	GetConfigurationProductsUIOptionDisabledEnum4Create GetConfigurationProductsUIOptionDisabledEnum4 = "create"
 )
 
-func (e UIOptionDisabledEnum4) ToPointer() *UIOptionDisabledEnum4 {
+func (e GetConfigurationProductsUIOptionDisabledEnum4) ToPointer() *GetConfigurationProductsUIOptionDisabledEnum4 {
 	return &e
 }
-func (e *UIOptionDisabledEnum4) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionDisabledEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1195,120 +1349,131 @@ func (e *UIOptionDisabledEnum4) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionDisabledEnum4(v)
+		*e = GetConfigurationProductsUIOptionDisabledEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionDisabledEnum4: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionDisabledEnum4: %v", v)
 	}
 }
 
-type UIOptionDisabled4 struct {
+type GetConfigurationProductsUIOptionDisabled4 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionDisabled4) GetExpr() string {
+func (g GetConfigurationProductsUIOptionDisabled4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionDisabled4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionDisabled4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionDisabledUnion6Type string
+type GetConfigurationProductsUIOptionDisabledUnion6Type string
 
 const (
-	UIOptionDisabledUnion6TypeBoolean               UIOptionDisabledUnion6Type = "boolean"
-	UIOptionDisabledUnion6TypeUIOptionDisabled4     UIOptionDisabledUnion6Type = "ui:option_disabled_4"
-	UIOptionDisabledUnion6TypeUIOptionDisabledEnum4 UIOptionDisabledUnion6Type = "ui:option_disabled_enum_4"
+	GetConfigurationProductsUIOptionDisabledUnion6TypeBoolean                                       GetConfigurationProductsUIOptionDisabledUnion6Type = "boolean"
+	GetConfigurationProductsUIOptionDisabledUnion6TypeGetConfigurationProductsUIOptionDisabled4     GetConfigurationProductsUIOptionDisabledUnion6Type = "getConfigurationProducts_ui:option_disabled_4"
+	GetConfigurationProductsUIOptionDisabledUnion6TypeGetConfigurationProductsUIOptionDisabledEnum4 GetConfigurationProductsUIOptionDisabledUnion6Type = "getConfigurationProducts_ui:option_disabled_enum_4"
 )
 
-type UIOptionDisabledUnion6 struct {
-	Boolean               *bool                  `queryParam:"inline"`
-	UIOptionDisabled4     *UIOptionDisabled4     `queryParam:"inline"`
-	UIOptionDisabledEnum4 *UIOptionDisabledEnum4 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionDisabledUnion6 struct {
+	Boolean                                       *bool                                          `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabled4     *GetConfigurationProductsUIOptionDisabled4     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabledEnum4 *GetConfigurationProductsUIOptionDisabledEnum4 `queryParam:"inline"`
 
-	Type UIOptionDisabledUnion6Type
+	Type GetConfigurationProductsUIOptionDisabledUnion6Type
 }
 
-func CreateUIOptionDisabledUnion6Boolean(boolean bool) UIOptionDisabledUnion6 {
-	typ := UIOptionDisabledUnion6TypeBoolean
+func CreateGetConfigurationProductsUIOptionDisabledUnion6Boolean(boolean bool) GetConfigurationProductsUIOptionDisabledUnion6 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion6TypeBoolean
 
-	return UIOptionDisabledUnion6{
+	return GetConfigurationProductsUIOptionDisabledUnion6{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion6UIOptionDisabled4(uiOptionDisabled4 UIOptionDisabled4) UIOptionDisabledUnion6 {
-	typ := UIOptionDisabledUnion6TypeUIOptionDisabled4
+func CreateGetConfigurationProductsUIOptionDisabledUnion6GetConfigurationProductsUIOptionDisabled4(getConfigurationProductsUIOptionDisabled4 GetConfigurationProductsUIOptionDisabled4) GetConfigurationProductsUIOptionDisabledUnion6 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion6TypeGetConfigurationProductsUIOptionDisabled4
 
-	return UIOptionDisabledUnion6{
-		UIOptionDisabled4: &uiOptionDisabled4,
-		Type:              typ,
+	return GetConfigurationProductsUIOptionDisabledUnion6{
+		GetConfigurationProductsUIOptionDisabled4: &getConfigurationProductsUIOptionDisabled4,
+		Type: typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion6UIOptionDisabledEnum4(uiOptionDisabledEnum4 UIOptionDisabledEnum4) UIOptionDisabledUnion6 {
-	typ := UIOptionDisabledUnion6TypeUIOptionDisabledEnum4
+func CreateGetConfigurationProductsUIOptionDisabledUnion6GetConfigurationProductsUIOptionDisabledEnum4(getConfigurationProductsUIOptionDisabledEnum4 GetConfigurationProductsUIOptionDisabledEnum4) GetConfigurationProductsUIOptionDisabledUnion6 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion6TypeGetConfigurationProductsUIOptionDisabledEnum4
 
-	return UIOptionDisabledUnion6{
-		UIOptionDisabledEnum4: &uiOptionDisabledEnum4,
-		Type:                  typ,
+	return GetConfigurationProductsUIOptionDisabledUnion6{
+		GetConfigurationProductsUIOptionDisabledEnum4: &getConfigurationProductsUIOptionDisabledEnum4,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionDisabledUnion6) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionDisabledUnion6) UnmarshalJSON(data []byte) error {
 
-	var uiOptionDisabled4 UIOptionDisabled4 = UIOptionDisabled4{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled4, "", true, true); err == nil {
-		u.UIOptionDisabled4 = &uiOptionDisabled4
-		u.Type = UIOptionDisabledUnion6TypeUIOptionDisabled4
+	var getConfigurationProductsUIOptionDisabled4 GetConfigurationProductsUIOptionDisabled4 = GetConfigurationProductsUIOptionDisabled4{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabled4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabled4 = &getConfigurationProductsUIOptionDisabled4
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion6TypeGetConfigurationProductsUIOptionDisabled4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionDisabledUnion6TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion6TypeBoolean
 		return nil
 	}
 
-	var uiOptionDisabledEnum4 UIOptionDisabledEnum4 = UIOptionDisabledEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum4, "", true, true); err == nil {
-		u.UIOptionDisabledEnum4 = &uiOptionDisabledEnum4
-		u.Type = UIOptionDisabledUnion6TypeUIOptionDisabledEnum4
+	var getConfigurationProductsUIOptionDisabledEnum4 GetConfigurationProductsUIOptionDisabledEnum4 = GetConfigurationProductsUIOptionDisabledEnum4("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabledEnum4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabledEnum4 = &getConfigurationProductsUIOptionDisabledEnum4
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion6TypeGetConfigurationProductsUIOptionDisabledEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionDisabledUnion6", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionDisabledUnion6", string(data))
 }
 
-func (u UIOptionDisabledUnion6) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionDisabledUnion6) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionDisabled4 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabled4, "", true)
+	if u.GetConfigurationProductsUIOptionDisabled4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabled4, "", true)
 	}
 
-	if u.UIOptionDisabledEnum4 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabledEnum4, "", true)
+	if u.GetConfigurationProductsUIOptionDisabledEnum4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabledEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionDisabledUnion6: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionDisabledUnion6: all fields are null")
 }
 
-type UIOptionHiddenEnum4 string
+type GetConfigurationProductsUIOptionHiddenEnum4 string
 
 const (
-	UIOptionHiddenEnum4Update UIOptionHiddenEnum4 = "update"
-	UIOptionHiddenEnum4Create UIOptionHiddenEnum4 = "create"
+	GetConfigurationProductsUIOptionHiddenEnum4Update GetConfigurationProductsUIOptionHiddenEnum4 = "update"
+	GetConfigurationProductsUIOptionHiddenEnum4Create GetConfigurationProductsUIOptionHiddenEnum4 = "create"
 )
 
-func (e UIOptionHiddenEnum4) ToPointer() *UIOptionHiddenEnum4 {
+func (e GetConfigurationProductsUIOptionHiddenEnum4) ToPointer() *GetConfigurationProductsUIOptionHiddenEnum4 {
 	return &e
 }
-func (e *UIOptionHiddenEnum4) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionHiddenEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1317,161 +1482,205 @@ func (e *UIOptionHiddenEnum4) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionHiddenEnum4(v)
+		*e = GetConfigurationProductsUIOptionHiddenEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionHiddenEnum4: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionHiddenEnum4: %v", v)
 	}
 }
 
-type UIOptionHidden4 struct {
+type GetConfigurationProductsUIOptionHidden4 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionHidden4) GetExpr() string {
+func (g GetConfigurationProductsUIOptionHidden4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionHidden4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionHidden4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionHiddenUnion6Type string
+type GetConfigurationProductsUIOptionHiddenUnion6Type string
 
 const (
-	UIOptionHiddenUnion6TypeBoolean             UIOptionHiddenUnion6Type = "boolean"
-	UIOptionHiddenUnion6TypeUIOptionHidden4     UIOptionHiddenUnion6Type = "ui:option_hidden_4"
-	UIOptionHiddenUnion6TypeUIOptionHiddenEnum4 UIOptionHiddenUnion6Type = "ui:option_hidden_enum_4"
+	GetConfigurationProductsUIOptionHiddenUnion6TypeBoolean                                     GetConfigurationProductsUIOptionHiddenUnion6Type = "boolean"
+	GetConfigurationProductsUIOptionHiddenUnion6TypeGetConfigurationProductsUIOptionHidden4     GetConfigurationProductsUIOptionHiddenUnion6Type = "getConfigurationProducts_ui:option_hidden_4"
+	GetConfigurationProductsUIOptionHiddenUnion6TypeGetConfigurationProductsUIOptionHiddenEnum4 GetConfigurationProductsUIOptionHiddenUnion6Type = "getConfigurationProducts_ui:option_hidden_enum_4"
 )
 
-type UIOptionHiddenUnion6 struct {
-	Boolean             *bool                `queryParam:"inline"`
-	UIOptionHidden4     *UIOptionHidden4     `queryParam:"inline"`
-	UIOptionHiddenEnum4 *UIOptionHiddenEnum4 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionHiddenUnion6 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHidden4     *GetConfigurationProductsUIOptionHidden4     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHiddenEnum4 *GetConfigurationProductsUIOptionHiddenEnum4 `queryParam:"inline"`
 
-	Type UIOptionHiddenUnion6Type
+	Type GetConfigurationProductsUIOptionHiddenUnion6Type
 }
 
-func CreateUIOptionHiddenUnion6Boolean(boolean bool) UIOptionHiddenUnion6 {
-	typ := UIOptionHiddenUnion6TypeBoolean
+func CreateGetConfigurationProductsUIOptionHiddenUnion6Boolean(boolean bool) GetConfigurationProductsUIOptionHiddenUnion6 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion6TypeBoolean
 
-	return UIOptionHiddenUnion6{
+	return GetConfigurationProductsUIOptionHiddenUnion6{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion6UIOptionHidden4(uiOptionHidden4 UIOptionHidden4) UIOptionHiddenUnion6 {
-	typ := UIOptionHiddenUnion6TypeUIOptionHidden4
+func CreateGetConfigurationProductsUIOptionHiddenUnion6GetConfigurationProductsUIOptionHidden4(getConfigurationProductsUIOptionHidden4 GetConfigurationProductsUIOptionHidden4) GetConfigurationProductsUIOptionHiddenUnion6 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion6TypeGetConfigurationProductsUIOptionHidden4
 
-	return UIOptionHiddenUnion6{
-		UIOptionHidden4: &uiOptionHidden4,
-		Type:            typ,
+	return GetConfigurationProductsUIOptionHiddenUnion6{
+		GetConfigurationProductsUIOptionHidden4: &getConfigurationProductsUIOptionHidden4,
+		Type:                                    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion6UIOptionHiddenEnum4(uiOptionHiddenEnum4 UIOptionHiddenEnum4) UIOptionHiddenUnion6 {
-	typ := UIOptionHiddenUnion6TypeUIOptionHiddenEnum4
+func CreateGetConfigurationProductsUIOptionHiddenUnion6GetConfigurationProductsUIOptionHiddenEnum4(getConfigurationProductsUIOptionHiddenEnum4 GetConfigurationProductsUIOptionHiddenEnum4) GetConfigurationProductsUIOptionHiddenUnion6 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion6TypeGetConfigurationProductsUIOptionHiddenEnum4
 
-	return UIOptionHiddenUnion6{
-		UIOptionHiddenEnum4: &uiOptionHiddenEnum4,
-		Type:                typ,
+	return GetConfigurationProductsUIOptionHiddenUnion6{
+		GetConfigurationProductsUIOptionHiddenEnum4: &getConfigurationProductsUIOptionHiddenEnum4,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionHiddenUnion6) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionHiddenUnion6) UnmarshalJSON(data []byte) error {
 
-	var uiOptionHidden4 UIOptionHidden4 = UIOptionHidden4{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden4, "", true, true); err == nil {
-		u.UIOptionHidden4 = &uiOptionHidden4
-		u.Type = UIOptionHiddenUnion6TypeUIOptionHidden4
+	var getConfigurationProductsUIOptionHidden4 GetConfigurationProductsUIOptionHidden4 = GetConfigurationProductsUIOptionHidden4{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHidden4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHidden4 = &getConfigurationProductsUIOptionHidden4
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion6TypeGetConfigurationProductsUIOptionHidden4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionHiddenUnion6TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion6TypeBoolean
 		return nil
 	}
 
-	var uiOptionHiddenEnum4 UIOptionHiddenEnum4 = UIOptionHiddenEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum4, "", true, true); err == nil {
-		u.UIOptionHiddenEnum4 = &uiOptionHiddenEnum4
-		u.Type = UIOptionHiddenUnion6TypeUIOptionHiddenEnum4
+	var getConfigurationProductsUIOptionHiddenEnum4 GetConfigurationProductsUIOptionHiddenEnum4 = GetConfigurationProductsUIOptionHiddenEnum4("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHiddenEnum4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHiddenEnum4 = &getConfigurationProductsUIOptionHiddenEnum4
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion6TypeGetConfigurationProductsUIOptionHiddenEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionHiddenUnion6", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionHiddenUnion6", string(data))
 }
 
-func (u UIOptionHiddenUnion6) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionHiddenUnion6) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionHidden4 != nil {
-		return utils.MarshalJSON(u.UIOptionHidden4, "", true)
+	if u.GetConfigurationProductsUIOptionHidden4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHidden4, "", true)
 	}
 
-	if u.UIOptionHiddenEnum4 != nil {
-		return utils.MarshalJSON(u.UIOptionHiddenEnum4, "", true)
+	if u.GetConfigurationProductsUIOptionHiddenEnum4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHiddenEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionHiddenUnion6: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionHiddenUnion6: all fields are null")
 }
 
-type UIOption8 struct {
-	Value    UIOptionValue2          `json:"value"`
-	Disabled *UIOptionDisabledUnion6 `json:"disabled,omitempty"`
-	Hidden   *UIOptionHiddenUnion6   `json:"hidden,omitempty"`
+type GetConfigurationProductsUIOption8 struct {
+	Value    GetConfigurationProductsUIOptionValue2          `json:"value"`
+	Disabled *GetConfigurationProductsUIOptionDisabledUnion6 `json:"disabled,omitempty"`
+	Hidden   *GetConfigurationProductsUIOptionHiddenUnion6   `json:"hidden,omitempty"`
 }
 
-func (o *UIOption8) GetValue() UIOptionValue2 {
+func (g GetConfigurationProductsUIOption8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption8) GetValue() GetConfigurationProductsUIOptionValue2 {
 	if o == nil {
-		return UIOptionValue2{}
+		return GetConfigurationProductsUIOptionValue2{}
 	}
 	return o.Value
 }
 
-func (o *UIOption8) GetDisabled() *UIOptionDisabledUnion6 {
+func (o *GetConfigurationProductsUIOption8) GetDisabled() *GetConfigurationProductsUIOptionDisabledUnion6 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *UIOption8) GetHidden() *UIOptionHiddenUnion6 {
+func (o *GetConfigurationProductsUIOption8) GetHidden() *GetConfigurationProductsUIOptionHiddenUnion6 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type UIOptionAtBRANDAt4479432 struct {
+type UIOptionAtBRANDAt5025402 struct {
 }
 
-type UIOption7 struct {
-	AtBRANDAt447943 UIOptionAtBRANDAt4479432 `json:"__@BRAND@447943"`
+func (u UIOptionAtBRANDAt5025402) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (o *UIOption7) GetAtBRANDAt447943() UIOptionAtBRANDAt4479432 {
-	if o == nil {
-		return UIOptionAtBRANDAt4479432{}
+func (u *UIOptionAtBRANDAt5025402) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type UIOptionDisabledEnum3 string
+type GetConfigurationProductsUIOption7 struct {
+	AtBRANDAt502540 UIOptionAtBRANDAt5025402 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsUIOption7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption7) GetAtBRANDAt502540() UIOptionAtBRANDAt5025402 {
+	if o == nil {
+		return UIOptionAtBRANDAt5025402{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type GetConfigurationProductsUIOptionDisabledEnum3 string
 
 const (
-	UIOptionDisabledEnum3Update UIOptionDisabledEnum3 = "update"
-	UIOptionDisabledEnum3Create UIOptionDisabledEnum3 = "create"
+	GetConfigurationProductsUIOptionDisabledEnum3Update GetConfigurationProductsUIOptionDisabledEnum3 = "update"
+	GetConfigurationProductsUIOptionDisabledEnum3Create GetConfigurationProductsUIOptionDisabledEnum3 = "create"
 )
 
-func (e UIOptionDisabledEnum3) ToPointer() *UIOptionDisabledEnum3 {
+func (e GetConfigurationProductsUIOptionDisabledEnum3) ToPointer() *GetConfigurationProductsUIOptionDisabledEnum3 {
 	return &e
 }
-func (e *UIOptionDisabledEnum3) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionDisabledEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1480,120 +1689,131 @@ func (e *UIOptionDisabledEnum3) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionDisabledEnum3(v)
+		*e = GetConfigurationProductsUIOptionDisabledEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionDisabledEnum3: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionDisabledEnum3: %v", v)
 	}
 }
 
-type UIOptionDisabled3 struct {
+type GetConfigurationProductsUIOptionDisabled3 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionDisabled3) GetExpr() string {
+func (g GetConfigurationProductsUIOptionDisabled3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionDisabled3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionDisabled3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionDisabledUnion5Type string
+type GetConfigurationProductsUIOptionDisabledUnion5Type string
 
 const (
-	UIOptionDisabledUnion5TypeBoolean               UIOptionDisabledUnion5Type = "boolean"
-	UIOptionDisabledUnion5TypeUIOptionDisabled3     UIOptionDisabledUnion5Type = "ui:option_disabled_3"
-	UIOptionDisabledUnion5TypeUIOptionDisabledEnum3 UIOptionDisabledUnion5Type = "ui:option_disabled_enum_3"
+	GetConfigurationProductsUIOptionDisabledUnion5TypeBoolean                                       GetConfigurationProductsUIOptionDisabledUnion5Type = "boolean"
+	GetConfigurationProductsUIOptionDisabledUnion5TypeGetConfigurationProductsUIOptionDisabled3     GetConfigurationProductsUIOptionDisabledUnion5Type = "getConfigurationProducts_ui:option_disabled_3"
+	GetConfigurationProductsUIOptionDisabledUnion5TypeGetConfigurationProductsUIOptionDisabledEnum3 GetConfigurationProductsUIOptionDisabledUnion5Type = "getConfigurationProducts_ui:option_disabled_enum_3"
 )
 
-type UIOptionDisabledUnion5 struct {
-	Boolean               *bool                  `queryParam:"inline"`
-	UIOptionDisabled3     *UIOptionDisabled3     `queryParam:"inline"`
-	UIOptionDisabledEnum3 *UIOptionDisabledEnum3 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionDisabledUnion5 struct {
+	Boolean                                       *bool                                          `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabled3     *GetConfigurationProductsUIOptionDisabled3     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabledEnum3 *GetConfigurationProductsUIOptionDisabledEnum3 `queryParam:"inline"`
 
-	Type UIOptionDisabledUnion5Type
+	Type GetConfigurationProductsUIOptionDisabledUnion5Type
 }
 
-func CreateUIOptionDisabledUnion5Boolean(boolean bool) UIOptionDisabledUnion5 {
-	typ := UIOptionDisabledUnion5TypeBoolean
+func CreateGetConfigurationProductsUIOptionDisabledUnion5Boolean(boolean bool) GetConfigurationProductsUIOptionDisabledUnion5 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion5TypeBoolean
 
-	return UIOptionDisabledUnion5{
+	return GetConfigurationProductsUIOptionDisabledUnion5{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion5UIOptionDisabled3(uiOptionDisabled3 UIOptionDisabled3) UIOptionDisabledUnion5 {
-	typ := UIOptionDisabledUnion5TypeUIOptionDisabled3
+func CreateGetConfigurationProductsUIOptionDisabledUnion5GetConfigurationProductsUIOptionDisabled3(getConfigurationProductsUIOptionDisabled3 GetConfigurationProductsUIOptionDisabled3) GetConfigurationProductsUIOptionDisabledUnion5 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion5TypeGetConfigurationProductsUIOptionDisabled3
 
-	return UIOptionDisabledUnion5{
-		UIOptionDisabled3: &uiOptionDisabled3,
-		Type:              typ,
+	return GetConfigurationProductsUIOptionDisabledUnion5{
+		GetConfigurationProductsUIOptionDisabled3: &getConfigurationProductsUIOptionDisabled3,
+		Type: typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion5UIOptionDisabledEnum3(uiOptionDisabledEnum3 UIOptionDisabledEnum3) UIOptionDisabledUnion5 {
-	typ := UIOptionDisabledUnion5TypeUIOptionDisabledEnum3
+func CreateGetConfigurationProductsUIOptionDisabledUnion5GetConfigurationProductsUIOptionDisabledEnum3(getConfigurationProductsUIOptionDisabledEnum3 GetConfigurationProductsUIOptionDisabledEnum3) GetConfigurationProductsUIOptionDisabledUnion5 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion5TypeGetConfigurationProductsUIOptionDisabledEnum3
 
-	return UIOptionDisabledUnion5{
-		UIOptionDisabledEnum3: &uiOptionDisabledEnum3,
-		Type:                  typ,
+	return GetConfigurationProductsUIOptionDisabledUnion5{
+		GetConfigurationProductsUIOptionDisabledEnum3: &getConfigurationProductsUIOptionDisabledEnum3,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionDisabledUnion5) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionDisabledUnion5) UnmarshalJSON(data []byte) error {
 
-	var uiOptionDisabled3 UIOptionDisabled3 = UIOptionDisabled3{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled3, "", true, true); err == nil {
-		u.UIOptionDisabled3 = &uiOptionDisabled3
-		u.Type = UIOptionDisabledUnion5TypeUIOptionDisabled3
+	var getConfigurationProductsUIOptionDisabled3 GetConfigurationProductsUIOptionDisabled3 = GetConfigurationProductsUIOptionDisabled3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabled3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabled3 = &getConfigurationProductsUIOptionDisabled3
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion5TypeGetConfigurationProductsUIOptionDisabled3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionDisabledUnion5TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion5TypeBoolean
 		return nil
 	}
 
-	var uiOptionDisabledEnum3 UIOptionDisabledEnum3 = UIOptionDisabledEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum3, "", true, true); err == nil {
-		u.UIOptionDisabledEnum3 = &uiOptionDisabledEnum3
-		u.Type = UIOptionDisabledUnion5TypeUIOptionDisabledEnum3
+	var getConfigurationProductsUIOptionDisabledEnum3 GetConfigurationProductsUIOptionDisabledEnum3 = GetConfigurationProductsUIOptionDisabledEnum3("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabledEnum3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabledEnum3 = &getConfigurationProductsUIOptionDisabledEnum3
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion5TypeGetConfigurationProductsUIOptionDisabledEnum3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionDisabledUnion5", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionDisabledUnion5", string(data))
 }
 
-func (u UIOptionDisabledUnion5) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionDisabledUnion5) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionDisabled3 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabled3, "", true)
+	if u.GetConfigurationProductsUIOptionDisabled3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabled3, "", true)
 	}
 
-	if u.UIOptionDisabledEnum3 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabledEnum3, "", true)
+	if u.GetConfigurationProductsUIOptionDisabledEnum3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabledEnum3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionDisabledUnion5: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionDisabledUnion5: all fields are null")
 }
 
-type UIOptionHiddenEnum3 string
+type GetConfigurationProductsUIOptionHiddenEnum3 string
 
 const (
-	UIOptionHiddenEnum3Update UIOptionHiddenEnum3 = "update"
-	UIOptionHiddenEnum3Create UIOptionHiddenEnum3 = "create"
+	GetConfigurationProductsUIOptionHiddenEnum3Update GetConfigurationProductsUIOptionHiddenEnum3 = "update"
+	GetConfigurationProductsUIOptionHiddenEnum3Create GetConfigurationProductsUIOptionHiddenEnum3 = "create"
 )
 
-func (e UIOptionHiddenEnum3) ToPointer() *UIOptionHiddenEnum3 {
+func (e GetConfigurationProductsUIOptionHiddenEnum3) ToPointer() *GetConfigurationProductsUIOptionHiddenEnum3 {
 	return &e
 }
-func (e *UIOptionHiddenEnum3) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionHiddenEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1602,240 +1822,262 @@ func (e *UIOptionHiddenEnum3) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionHiddenEnum3(v)
+		*e = GetConfigurationProductsUIOptionHiddenEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionHiddenEnum3: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionHiddenEnum3: %v", v)
 	}
 }
 
-type UIOptionHidden3 struct {
+type GetConfigurationProductsUIOptionHidden3 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionHidden3) GetExpr() string {
+func (g GetConfigurationProductsUIOptionHidden3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionHidden3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionHidden3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionHiddenUnion5Type string
+type GetConfigurationProductsUIOptionHiddenUnion5Type string
 
 const (
-	UIOptionHiddenUnion5TypeBoolean             UIOptionHiddenUnion5Type = "boolean"
-	UIOptionHiddenUnion5TypeUIOptionHidden3     UIOptionHiddenUnion5Type = "ui:option_hidden_3"
-	UIOptionHiddenUnion5TypeUIOptionHiddenEnum3 UIOptionHiddenUnion5Type = "ui:option_hidden_enum_3"
+	GetConfigurationProductsUIOptionHiddenUnion5TypeBoolean                                     GetConfigurationProductsUIOptionHiddenUnion5Type = "boolean"
+	GetConfigurationProductsUIOptionHiddenUnion5TypeGetConfigurationProductsUIOptionHidden3     GetConfigurationProductsUIOptionHiddenUnion5Type = "getConfigurationProducts_ui:option_hidden_3"
+	GetConfigurationProductsUIOptionHiddenUnion5TypeGetConfigurationProductsUIOptionHiddenEnum3 GetConfigurationProductsUIOptionHiddenUnion5Type = "getConfigurationProducts_ui:option_hidden_enum_3"
 )
 
-type UIOptionHiddenUnion5 struct {
-	Boolean             *bool                `queryParam:"inline"`
-	UIOptionHidden3     *UIOptionHidden3     `queryParam:"inline"`
-	UIOptionHiddenEnum3 *UIOptionHiddenEnum3 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionHiddenUnion5 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHidden3     *GetConfigurationProductsUIOptionHidden3     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHiddenEnum3 *GetConfigurationProductsUIOptionHiddenEnum3 `queryParam:"inline"`
 
-	Type UIOptionHiddenUnion5Type
+	Type GetConfigurationProductsUIOptionHiddenUnion5Type
 }
 
-func CreateUIOptionHiddenUnion5Boolean(boolean bool) UIOptionHiddenUnion5 {
-	typ := UIOptionHiddenUnion5TypeBoolean
+func CreateGetConfigurationProductsUIOptionHiddenUnion5Boolean(boolean bool) GetConfigurationProductsUIOptionHiddenUnion5 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion5TypeBoolean
 
-	return UIOptionHiddenUnion5{
+	return GetConfigurationProductsUIOptionHiddenUnion5{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion5UIOptionHidden3(uiOptionHidden3 UIOptionHidden3) UIOptionHiddenUnion5 {
-	typ := UIOptionHiddenUnion5TypeUIOptionHidden3
+func CreateGetConfigurationProductsUIOptionHiddenUnion5GetConfigurationProductsUIOptionHidden3(getConfigurationProductsUIOptionHidden3 GetConfigurationProductsUIOptionHidden3) GetConfigurationProductsUIOptionHiddenUnion5 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion5TypeGetConfigurationProductsUIOptionHidden3
 
-	return UIOptionHiddenUnion5{
-		UIOptionHidden3: &uiOptionHidden3,
-		Type:            typ,
+	return GetConfigurationProductsUIOptionHiddenUnion5{
+		GetConfigurationProductsUIOptionHidden3: &getConfigurationProductsUIOptionHidden3,
+		Type:                                    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion5UIOptionHiddenEnum3(uiOptionHiddenEnum3 UIOptionHiddenEnum3) UIOptionHiddenUnion5 {
-	typ := UIOptionHiddenUnion5TypeUIOptionHiddenEnum3
+func CreateGetConfigurationProductsUIOptionHiddenUnion5GetConfigurationProductsUIOptionHiddenEnum3(getConfigurationProductsUIOptionHiddenEnum3 GetConfigurationProductsUIOptionHiddenEnum3) GetConfigurationProductsUIOptionHiddenUnion5 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion5TypeGetConfigurationProductsUIOptionHiddenEnum3
 
-	return UIOptionHiddenUnion5{
-		UIOptionHiddenEnum3: &uiOptionHiddenEnum3,
-		Type:                typ,
+	return GetConfigurationProductsUIOptionHiddenUnion5{
+		GetConfigurationProductsUIOptionHiddenEnum3: &getConfigurationProductsUIOptionHiddenEnum3,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionHiddenUnion5) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionHiddenUnion5) UnmarshalJSON(data []byte) error {
 
-	var uiOptionHidden3 UIOptionHidden3 = UIOptionHidden3{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden3, "", true, true); err == nil {
-		u.UIOptionHidden3 = &uiOptionHidden3
-		u.Type = UIOptionHiddenUnion5TypeUIOptionHidden3
+	var getConfigurationProductsUIOptionHidden3 GetConfigurationProductsUIOptionHidden3 = GetConfigurationProductsUIOptionHidden3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHidden3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHidden3 = &getConfigurationProductsUIOptionHidden3
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion5TypeGetConfigurationProductsUIOptionHidden3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionHiddenUnion5TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion5TypeBoolean
 		return nil
 	}
 
-	var uiOptionHiddenEnum3 UIOptionHiddenEnum3 = UIOptionHiddenEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum3, "", true, true); err == nil {
-		u.UIOptionHiddenEnum3 = &uiOptionHiddenEnum3
-		u.Type = UIOptionHiddenUnion5TypeUIOptionHiddenEnum3
+	var getConfigurationProductsUIOptionHiddenEnum3 GetConfigurationProductsUIOptionHiddenEnum3 = GetConfigurationProductsUIOptionHiddenEnum3("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHiddenEnum3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHiddenEnum3 = &getConfigurationProductsUIOptionHiddenEnum3
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion5TypeGetConfigurationProductsUIOptionHiddenEnum3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionHiddenUnion5", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionHiddenUnion5", string(data))
 }
 
-func (u UIOptionHiddenUnion5) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionHiddenUnion5) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionHidden3 != nil {
-		return utils.MarshalJSON(u.UIOptionHidden3, "", true)
+	if u.GetConfigurationProductsUIOptionHidden3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHidden3, "", true)
 	}
 
-	if u.UIOptionHiddenEnum3 != nil {
-		return utils.MarshalJSON(u.UIOptionHiddenEnum3, "", true)
+	if u.GetConfigurationProductsUIOptionHiddenEnum3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHiddenEnum3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionHiddenUnion5: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionHiddenUnion5: all fields are null")
 }
 
-type UIOption6 struct {
-	Value    string                  `json:"value"`
-	Label    string                  `json:"label"`
-	Disabled *UIOptionDisabledUnion5 `json:"disabled,omitempty"`
-	Hidden   *UIOptionHiddenUnion5   `json:"hidden,omitempty"`
+type GetConfigurationProductsUIOption6 struct {
+	Value    string                                          `json:"value"`
+	Label    string                                          `json:"label"`
+	Disabled *GetConfigurationProductsUIOptionDisabledUnion5 `json:"disabled,omitempty"`
+	Hidden   *GetConfigurationProductsUIOptionHiddenUnion5   `json:"hidden,omitempty"`
 }
 
-func (o *UIOption6) GetValue() string {
+func (g GetConfigurationProductsUIOption6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption6) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *UIOption6) GetLabel() string {
+func (o *GetConfigurationProductsUIOption6) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *UIOption6) GetDisabled() *UIOptionDisabledUnion5 {
+func (o *GetConfigurationProductsUIOption6) GetDisabled() *GetConfigurationProductsUIOptionDisabledUnion5 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *UIOption6) GetHidden() *UIOptionHiddenUnion5 {
+func (o *GetConfigurationProductsUIOption6) GetHidden() *GetConfigurationProductsUIOptionHiddenUnion5 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type UIOptionUnion2Type string
+type GetConfigurationProductsUIOptionUnion2Type string
 
 const (
-	UIOptionUnion2TypeUIOption6 UIOptionUnion2Type = "ui:option_6"
-	UIOptionUnion2TypeUIOption7 UIOptionUnion2Type = "ui:option_7"
-	UIOptionUnion2TypeUIOption8 UIOptionUnion2Type = "ui:option_8"
+	GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption6 GetConfigurationProductsUIOptionUnion2Type = "getConfigurationProducts_ui:option_6"
+	GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption7 GetConfigurationProductsUIOptionUnion2Type = "getConfigurationProducts_ui:option_7"
+	GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption8 GetConfigurationProductsUIOptionUnion2Type = "getConfigurationProducts_ui:option_8"
 )
 
-type UIOptionUnion2 struct {
-	UIOption6 *UIOption6 `queryParam:"inline"`
-	UIOption7 *UIOption7 `queryParam:"inline"`
-	UIOption8 *UIOption8 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionUnion2 struct {
+	GetConfigurationProductsUIOption6 *GetConfigurationProductsUIOption6 `queryParam:"inline"`
+	GetConfigurationProductsUIOption7 *GetConfigurationProductsUIOption7 `queryParam:"inline"`
+	GetConfigurationProductsUIOption8 *GetConfigurationProductsUIOption8 `queryParam:"inline"`
 
-	Type UIOptionUnion2Type
+	Type GetConfigurationProductsUIOptionUnion2Type
 }
 
-func CreateUIOptionUnion2UIOption6(uiOption6 UIOption6) UIOptionUnion2 {
-	typ := UIOptionUnion2TypeUIOption6
+func CreateGetConfigurationProductsUIOptionUnion2GetConfigurationProductsUIOption6(getConfigurationProductsUIOption6 GetConfigurationProductsUIOption6) GetConfigurationProductsUIOptionUnion2 {
+	typ := GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption6
 
-	return UIOptionUnion2{
-		UIOption6: &uiOption6,
-		Type:      typ,
+	return GetConfigurationProductsUIOptionUnion2{
+		GetConfigurationProductsUIOption6: &getConfigurationProductsUIOption6,
+		Type:                              typ,
 	}
 }
 
-func CreateUIOptionUnion2UIOption7(uiOption7 UIOption7) UIOptionUnion2 {
-	typ := UIOptionUnion2TypeUIOption7
+func CreateGetConfigurationProductsUIOptionUnion2GetConfigurationProductsUIOption7(getConfigurationProductsUIOption7 GetConfigurationProductsUIOption7) GetConfigurationProductsUIOptionUnion2 {
+	typ := GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption7
 
-	return UIOptionUnion2{
-		UIOption7: &uiOption7,
-		Type:      typ,
+	return GetConfigurationProductsUIOptionUnion2{
+		GetConfigurationProductsUIOption7: &getConfigurationProductsUIOption7,
+		Type:                              typ,
 	}
 }
 
-func CreateUIOptionUnion2UIOption8(uiOption8 UIOption8) UIOptionUnion2 {
-	typ := UIOptionUnion2TypeUIOption8
+func CreateGetConfigurationProductsUIOptionUnion2GetConfigurationProductsUIOption8(getConfigurationProductsUIOption8 GetConfigurationProductsUIOption8) GetConfigurationProductsUIOptionUnion2 {
+	typ := GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption8
 
-	return UIOptionUnion2{
-		UIOption8: &uiOption8,
-		Type:      typ,
+	return GetConfigurationProductsUIOptionUnion2{
+		GetConfigurationProductsUIOption8: &getConfigurationProductsUIOption8,
+		Type:                              typ,
 	}
 }
 
-func (u *UIOptionUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionUnion2) UnmarshalJSON(data []byte) error {
 
-	var uiOption7 UIOption7 = UIOption7{}
-	if err := utils.UnmarshalJSON(data, &uiOption7, "", true, true); err == nil {
-		u.UIOption7 = &uiOption7
-		u.Type = UIOptionUnion2TypeUIOption7
+	var getConfigurationProductsUIOption6 GetConfigurationProductsUIOption6 = GetConfigurationProductsUIOption6{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOption6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOption6 = &getConfigurationProductsUIOption6
+		u.Type = GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption6
 		return nil
 	}
 
-	var uiOption8 UIOption8 = UIOption8{}
-	if err := utils.UnmarshalJSON(data, &uiOption8, "", true, true); err == nil {
-		u.UIOption8 = &uiOption8
-		u.Type = UIOptionUnion2TypeUIOption8
+	var getConfigurationProductsUIOption7 GetConfigurationProductsUIOption7 = GetConfigurationProductsUIOption7{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOption7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOption7 = &getConfigurationProductsUIOption7
+		u.Type = GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption7
 		return nil
 	}
 
-	var uiOption6 UIOption6 = UIOption6{}
-	if err := utils.UnmarshalJSON(data, &uiOption6, "", true, true); err == nil {
-		u.UIOption6 = &uiOption6
-		u.Type = UIOptionUnion2TypeUIOption6
+	var getConfigurationProductsUIOption8 GetConfigurationProductsUIOption8 = GetConfigurationProductsUIOption8{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOption8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOption8 = &getConfigurationProductsUIOption8
+		u.Type = GetConfigurationProductsUIOptionUnion2TypeGetConfigurationProductsUIOption8
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionUnion2", string(data))
 }
 
-func (u UIOptionUnion2) MarshalJSON() ([]byte, error) {
-	if u.UIOption6 != nil {
-		return utils.MarshalJSON(u.UIOption6, "", true)
+func (u GetConfigurationProductsUIOptionUnion2) MarshalJSON() ([]byte, error) {
+	if u.GetConfigurationProductsUIOption6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOption6, "", true)
 	}
 
-	if u.UIOption7 != nil {
-		return utils.MarshalJSON(u.UIOption7, "", true)
+	if u.GetConfigurationProductsUIOption7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOption7, "", true)
 	}
 
-	if u.UIOption8 != nil {
-		return utils.MarshalJSON(u.UIOption8, "", true)
+	if u.GetConfigurationProductsUIOption8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOption8, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionUnion2: all fields are null")
 }
 
-type UIReadOnlyEnum8 string
+type GetConfigurationProductsUIReadOnlyEnum8 string
 
 const (
-	UIReadOnlyEnum8Update UIReadOnlyEnum8 = "update"
-	UIReadOnlyEnum8Create UIReadOnlyEnum8 = "create"
+	GetConfigurationProductsUIReadOnlyEnum8Update GetConfigurationProductsUIReadOnlyEnum8 = "update"
+	GetConfigurationProductsUIReadOnlyEnum8Create GetConfigurationProductsUIReadOnlyEnum8 = "create"
 )
 
-func (e UIReadOnlyEnum8) ToPointer() *UIReadOnlyEnum8 {
+func (e GetConfigurationProductsUIReadOnlyEnum8) ToPointer() *GetConfigurationProductsUIReadOnlyEnum8 {
 	return &e
 }
-func (e *UIReadOnlyEnum8) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum8) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1844,120 +2086,131 @@ func (e *UIReadOnlyEnum8) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum8(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum8(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum8: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum8: %v", v)
 	}
 }
 
-type UIReadOnly8 struct {
+type GetConfigurationProductsUIReadOnly8 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly8) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly8) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion8Type string
+type GetConfigurationProductsUIReadOnlyUnion8Type string
 
 const (
-	UIReadOnlyUnion8TypeBoolean         UIReadOnlyUnion8Type = "boolean"
-	UIReadOnlyUnion8TypeUIReadOnly8     UIReadOnlyUnion8Type = "ui:read-only_8"
-	UIReadOnlyUnion8TypeUIReadOnlyEnum8 UIReadOnlyUnion8Type = "ui:read-only_enum_8"
+	GetConfigurationProductsUIReadOnlyUnion8TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion8Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnly8     GetConfigurationProductsUIReadOnlyUnion8Type = "getConfigurationProducts_ui:read-only_8"
+	GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnlyEnum8 GetConfigurationProductsUIReadOnlyUnion8Type = "getConfigurationProducts_ui:read-only_enum_8"
 )
 
-type UIReadOnlyUnion8 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly8     *UIReadOnly8     `queryParam:"inline"`
-	UIReadOnlyEnum8 *UIReadOnlyEnum8 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion8 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly8     *GetConfigurationProductsUIReadOnly8     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum8 *GetConfigurationProductsUIReadOnlyEnum8 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion8Type
+	Type GetConfigurationProductsUIReadOnlyUnion8Type
 }
 
-func CreateUIReadOnlyUnion8Boolean(boolean bool) UIReadOnlyUnion8 {
-	typ := UIReadOnlyUnion8TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion8Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion8 {
+	typ := GetConfigurationProductsUIReadOnlyUnion8TypeBoolean
 
-	return UIReadOnlyUnion8{
+	return GetConfigurationProductsUIReadOnlyUnion8{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion8UIReadOnly8(uiReadOnly8 UIReadOnly8) UIReadOnlyUnion8 {
-	typ := UIReadOnlyUnion8TypeUIReadOnly8
+func CreateGetConfigurationProductsUIReadOnlyUnion8GetConfigurationProductsUIReadOnly8(getConfigurationProductsUIReadOnly8 GetConfigurationProductsUIReadOnly8) GetConfigurationProductsUIReadOnlyUnion8 {
+	typ := GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnly8
 
-	return UIReadOnlyUnion8{
-		UIReadOnly8: &uiReadOnly8,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion8{
+		GetConfigurationProductsUIReadOnly8: &getConfigurationProductsUIReadOnly8,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion8UIReadOnlyEnum8(uiReadOnlyEnum8 UIReadOnlyEnum8) UIReadOnlyUnion8 {
-	typ := UIReadOnlyUnion8TypeUIReadOnlyEnum8
+func CreateGetConfigurationProductsUIReadOnlyUnion8GetConfigurationProductsUIReadOnlyEnum8(getConfigurationProductsUIReadOnlyEnum8 GetConfigurationProductsUIReadOnlyEnum8) GetConfigurationProductsUIReadOnlyUnion8 {
+	typ := GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnlyEnum8
 
-	return UIReadOnlyUnion8{
-		UIReadOnlyEnum8: &uiReadOnlyEnum8,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion8{
+		GetConfigurationProductsUIReadOnlyEnum8: &getConfigurationProductsUIReadOnlyEnum8,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion8) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion8) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly8 UIReadOnly8 = UIReadOnly8{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly8, "", true, true); err == nil {
-		u.UIReadOnly8 = &uiReadOnly8
-		u.Type = UIReadOnlyUnion8TypeUIReadOnly8
+	var getConfigurationProductsUIReadOnly8 GetConfigurationProductsUIReadOnly8 = GetConfigurationProductsUIReadOnly8{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly8 = &getConfigurationProductsUIReadOnly8
+		u.Type = GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnly8
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion8TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion8TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum8 UIReadOnlyEnum8 = UIReadOnlyEnum8("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum8, "", true, true); err == nil {
-		u.UIReadOnlyEnum8 = &uiReadOnlyEnum8
-		u.Type = UIReadOnlyUnion8TypeUIReadOnlyEnum8
+	var getConfigurationProductsUIReadOnlyEnum8 GetConfigurationProductsUIReadOnlyEnum8 = GetConfigurationProductsUIReadOnlyEnum8("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum8 = &getConfigurationProductsUIReadOnlyEnum8
+		u.Type = GetConfigurationProductsUIReadOnlyUnion8TypeGetConfigurationProductsUIReadOnlyEnum8
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion8", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion8", string(data))
 }
 
-func (u UIReadOnlyUnion8) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion8) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly8 != nil {
-		return utils.MarshalJSON(u.UIReadOnly8, "", true)
+	if u.GetConfigurationProductsUIReadOnly8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly8, "", true)
 	}
 
-	if u.UIReadOnlyEnum8 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum8, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum8, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion8: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion8: all fields are null")
 }
 
-type UIHiddenEnum8 string
+type GetConfigurationProductsUIHiddenEnum8 string
 
 const (
-	UIHiddenEnum8Update UIHiddenEnum8 = "update"
-	UIHiddenEnum8Create UIHiddenEnum8 = "create"
+	GetConfigurationProductsUIHiddenEnum8Update GetConfigurationProductsUIHiddenEnum8 = "update"
+	GetConfigurationProductsUIHiddenEnum8Create GetConfigurationProductsUIHiddenEnum8 = "create"
 )
 
-func (e UIHiddenEnum8) ToPointer() *UIHiddenEnum8 {
+func (e GetConfigurationProductsUIHiddenEnum8) ToPointer() *GetConfigurationProductsUIHiddenEnum8 {
 	return &e
 }
-func (e *UIHiddenEnum8) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum8) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1966,120 +2219,131 @@ func (e *UIHiddenEnum8) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum8(v)
+		*e = GetConfigurationProductsUIHiddenEnum8(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum8: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum8: %v", v)
 	}
 }
 
-type UIHidden8 struct {
+type GetConfigurationProductsUIHidden8 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden8) GetExpr() string {
+func (g GetConfigurationProductsUIHidden8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden8) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion8Type string
+type GetConfigurationProductsUIHiddenUnion8Type string
 
 const (
-	UIHiddenUnion8TypeBoolean       UIHiddenUnion8Type = "boolean"
-	UIHiddenUnion8TypeUIHidden8     UIHiddenUnion8Type = "ui:hidden_8"
-	UIHiddenUnion8TypeUIHiddenEnum8 UIHiddenUnion8Type = "ui:hidden_enum_8"
+	GetConfigurationProductsUIHiddenUnion8TypeBoolean                               GetConfigurationProductsUIHiddenUnion8Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHidden8     GetConfigurationProductsUIHiddenUnion8Type = "getConfigurationProducts_ui:hidden_8"
+	GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHiddenEnum8 GetConfigurationProductsUIHiddenUnion8Type = "getConfigurationProducts_ui:hidden_enum_8"
 )
 
-type UIHiddenUnion8 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden8     *UIHidden8     `queryParam:"inline"`
-	UIHiddenEnum8 *UIHiddenEnum8 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion8 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden8     *GetConfigurationProductsUIHidden8     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum8 *GetConfigurationProductsUIHiddenEnum8 `queryParam:"inline"`
 
-	Type UIHiddenUnion8Type
+	Type GetConfigurationProductsUIHiddenUnion8Type
 }
 
-func CreateUIHiddenUnion8Boolean(boolean bool) UIHiddenUnion8 {
-	typ := UIHiddenUnion8TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion8Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion8 {
+	typ := GetConfigurationProductsUIHiddenUnion8TypeBoolean
 
-	return UIHiddenUnion8{
+	return GetConfigurationProductsUIHiddenUnion8{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion8UIHidden8(uiHidden8 UIHidden8) UIHiddenUnion8 {
-	typ := UIHiddenUnion8TypeUIHidden8
+func CreateGetConfigurationProductsUIHiddenUnion8GetConfigurationProductsUIHidden8(getConfigurationProductsUIHidden8 GetConfigurationProductsUIHidden8) GetConfigurationProductsUIHiddenUnion8 {
+	typ := GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHidden8
 
-	return UIHiddenUnion8{
-		UIHidden8: &uiHidden8,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion8{
+		GetConfigurationProductsUIHidden8: &getConfigurationProductsUIHidden8,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion8UIHiddenEnum8(uiHiddenEnum8 UIHiddenEnum8) UIHiddenUnion8 {
-	typ := UIHiddenUnion8TypeUIHiddenEnum8
+func CreateGetConfigurationProductsUIHiddenUnion8GetConfigurationProductsUIHiddenEnum8(getConfigurationProductsUIHiddenEnum8 GetConfigurationProductsUIHiddenEnum8) GetConfigurationProductsUIHiddenUnion8 {
+	typ := GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHiddenEnum8
 
-	return UIHiddenUnion8{
-		UIHiddenEnum8: &uiHiddenEnum8,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion8{
+		GetConfigurationProductsUIHiddenEnum8: &getConfigurationProductsUIHiddenEnum8,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion8) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion8) UnmarshalJSON(data []byte) error {
 
-	var uiHidden8 UIHidden8 = UIHidden8{}
-	if err := utils.UnmarshalJSON(data, &uiHidden8, "", true, true); err == nil {
-		u.UIHidden8 = &uiHidden8
-		u.Type = UIHiddenUnion8TypeUIHidden8
+	var getConfigurationProductsUIHidden8 GetConfigurationProductsUIHidden8 = GetConfigurationProductsUIHidden8{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden8 = &getConfigurationProductsUIHidden8
+		u.Type = GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHidden8
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion8TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion8TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum8 UIHiddenEnum8 = UIHiddenEnum8("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum8, "", true, true); err == nil {
-		u.UIHiddenEnum8 = &uiHiddenEnum8
-		u.Type = UIHiddenUnion8TypeUIHiddenEnum8
+	var getConfigurationProductsUIHiddenEnum8 GetConfigurationProductsUIHiddenEnum8 = GetConfigurationProductsUIHiddenEnum8("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum8 = &getConfigurationProductsUIHiddenEnum8
+		u.Type = GetConfigurationProductsUIHiddenUnion8TypeGetConfigurationProductsUIHiddenEnum8
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion8", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion8", string(data))
 }
 
-func (u UIHiddenUnion8) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion8) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden8 != nil {
-		return utils.MarshalJSON(u.UIHidden8, "", true)
+	if u.GetConfigurationProductsUIHidden8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden8, "", true)
 	}
 
-	if u.UIHiddenEnum8 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum8, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum8, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion8: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion8: all fields are null")
 }
 
-type UIDisabledEnum8 string
+type GetConfigurationProductsUIDisabledEnum8 string
 
 const (
-	UIDisabledEnum8Update UIDisabledEnum8 = "update"
-	UIDisabledEnum8Create UIDisabledEnum8 = "create"
+	GetConfigurationProductsUIDisabledEnum8Update GetConfigurationProductsUIDisabledEnum8 = "update"
+	GetConfigurationProductsUIDisabledEnum8Create GetConfigurationProductsUIDisabledEnum8 = "create"
 )
 
-func (e UIDisabledEnum8) ToPointer() *UIDisabledEnum8 {
+func (e GetConfigurationProductsUIDisabledEnum8) ToPointer() *GetConfigurationProductsUIDisabledEnum8 {
 	return &e
 }
-func (e *UIDisabledEnum8) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum8) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2088,244 +2352,332 @@ func (e *UIDisabledEnum8) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum8(v)
+		*e = GetConfigurationProductsUIDisabledEnum8(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum8: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum8: %v", v)
 	}
 }
 
-type UIDisabled8 struct {
+type GetConfigurationProductsUIDisabled8 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled8) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled8) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion8Type string
+type GetConfigurationProductsUIDisabledUnion8Type string
 
 const (
-	UIDisabledUnion8TypeBoolean         UIDisabledUnion8Type = "boolean"
-	UIDisabledUnion8TypeUIDisabled8     UIDisabledUnion8Type = "ui:disabled_8"
-	UIDisabledUnion8TypeUIDisabledEnum8 UIDisabledUnion8Type = "ui:disabled_enum_8"
+	GetConfigurationProductsUIDisabledUnion8TypeBoolean                                 GetConfigurationProductsUIDisabledUnion8Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabled8     GetConfigurationProductsUIDisabledUnion8Type = "getConfigurationProducts_ui:disabled_8"
+	GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabledEnum8 GetConfigurationProductsUIDisabledUnion8Type = "getConfigurationProducts_ui:disabled_enum_8"
 )
 
-type UIDisabledUnion8 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled8     *UIDisabled8     `queryParam:"inline"`
-	UIDisabledEnum8 *UIDisabledEnum8 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion8 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled8     *GetConfigurationProductsUIDisabled8     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum8 *GetConfigurationProductsUIDisabledEnum8 `queryParam:"inline"`
 
-	Type UIDisabledUnion8Type
+	Type GetConfigurationProductsUIDisabledUnion8Type
 }
 
-func CreateUIDisabledUnion8Boolean(boolean bool) UIDisabledUnion8 {
-	typ := UIDisabledUnion8TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion8Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion8 {
+	typ := GetConfigurationProductsUIDisabledUnion8TypeBoolean
 
-	return UIDisabledUnion8{
+	return GetConfigurationProductsUIDisabledUnion8{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion8UIDisabled8(uiDisabled8 UIDisabled8) UIDisabledUnion8 {
-	typ := UIDisabledUnion8TypeUIDisabled8
+func CreateGetConfigurationProductsUIDisabledUnion8GetConfigurationProductsUIDisabled8(getConfigurationProductsUIDisabled8 GetConfigurationProductsUIDisabled8) GetConfigurationProductsUIDisabledUnion8 {
+	typ := GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabled8
 
-	return UIDisabledUnion8{
-		UIDisabled8: &uiDisabled8,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion8{
+		GetConfigurationProductsUIDisabled8: &getConfigurationProductsUIDisabled8,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion8UIDisabledEnum8(uiDisabledEnum8 UIDisabledEnum8) UIDisabledUnion8 {
-	typ := UIDisabledUnion8TypeUIDisabledEnum8
+func CreateGetConfigurationProductsUIDisabledUnion8GetConfigurationProductsUIDisabledEnum8(getConfigurationProductsUIDisabledEnum8 GetConfigurationProductsUIDisabledEnum8) GetConfigurationProductsUIDisabledUnion8 {
+	typ := GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabledEnum8
 
-	return UIDisabledUnion8{
-		UIDisabledEnum8: &uiDisabledEnum8,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion8{
+		GetConfigurationProductsUIDisabledEnum8: &getConfigurationProductsUIDisabledEnum8,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion8) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion8) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled8 UIDisabled8 = UIDisabled8{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled8, "", true, true); err == nil {
-		u.UIDisabled8 = &uiDisabled8
-		u.Type = UIDisabledUnion8TypeUIDisabled8
+	var getConfigurationProductsUIDisabled8 GetConfigurationProductsUIDisabled8 = GetConfigurationProductsUIDisabled8{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled8 = &getConfigurationProductsUIDisabled8
+		u.Type = GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabled8
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion8TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion8TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum8 UIDisabledEnum8 = UIDisabledEnum8("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum8, "", true, true); err == nil {
-		u.UIDisabledEnum8 = &uiDisabledEnum8
-		u.Type = UIDisabledUnion8TypeUIDisabledEnum8
+	var getConfigurationProductsUIDisabledEnum8 GetConfigurationProductsUIDisabledEnum8 = GetConfigurationProductsUIDisabledEnum8("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum8 = &getConfigurationProductsUIDisabledEnum8
+		u.Type = GetConfigurationProductsUIDisabledUnion8TypeGetConfigurationProductsUIDisabledEnum8
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion8", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion8", string(data))
 }
 
-func (u UIDisabledUnion8) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion8) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled8 != nil {
-		return utils.MarshalJSON(u.UIDisabled8, "", true)
+	if u.GetConfigurationProductsUIDisabled8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled8, "", true)
 	}
 
-	if u.UIDisabledEnum8 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum8, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum8, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion8: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion8: all fields are null")
 }
 
-type UIDescription8 struct {
+type GetConfigurationProductsUIDescription8 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription8) GetExpr() string {
+func (g GetConfigurationProductsUIDescription8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription8) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion8Type string
+type GetConfigurationProductsUIDescriptionUnion8Type string
 
 const (
-	UIDescriptionUnion8TypeStr            UIDescriptionUnion8Type = "str"
-	UIDescriptionUnion8TypeUIDescription8 UIDescriptionUnion8Type = "ui:description_8"
+	GetConfigurationProductsUIDescriptionUnion8TypeStr                                    GetConfigurationProductsUIDescriptionUnion8Type = "str"
+	GetConfigurationProductsUIDescriptionUnion8TypeGetConfigurationProductsUIDescription8 GetConfigurationProductsUIDescriptionUnion8Type = "getConfigurationProducts_ui:description_8"
 )
 
-type UIDescriptionUnion8 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription8 *UIDescription8 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion8 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription8 *GetConfigurationProductsUIDescription8 `queryParam:"inline"`
 
-	Type UIDescriptionUnion8Type
+	Type GetConfigurationProductsUIDescriptionUnion8Type
 }
 
-func CreateUIDescriptionUnion8Str(str string) UIDescriptionUnion8 {
-	typ := UIDescriptionUnion8TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion8Str(str string) GetConfigurationProductsUIDescriptionUnion8 {
+	typ := GetConfigurationProductsUIDescriptionUnion8TypeStr
 
-	return UIDescriptionUnion8{
+	return GetConfigurationProductsUIDescriptionUnion8{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion8UIDescription8(uiDescription8 UIDescription8) UIDescriptionUnion8 {
-	typ := UIDescriptionUnion8TypeUIDescription8
+func CreateGetConfigurationProductsUIDescriptionUnion8GetConfigurationProductsUIDescription8(getConfigurationProductsUIDescription8 GetConfigurationProductsUIDescription8) GetConfigurationProductsUIDescriptionUnion8 {
+	typ := GetConfigurationProductsUIDescriptionUnion8TypeGetConfigurationProductsUIDescription8
 
-	return UIDescriptionUnion8{
-		UIDescription8: &uiDescription8,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion8{
+		GetConfigurationProductsUIDescription8: &getConfigurationProductsUIDescription8,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion8) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion8) UnmarshalJSON(data []byte) error {
 
-	var uiDescription8 UIDescription8 = UIDescription8{}
-	if err := utils.UnmarshalJSON(data, &uiDescription8, "", true, true); err == nil {
-		u.UIDescription8 = &uiDescription8
-		u.Type = UIDescriptionUnion8TypeUIDescription8
+	var getConfigurationProductsUIDescription8 GetConfigurationProductsUIDescription8 = GetConfigurationProductsUIDescription8{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription8, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription8 = &getConfigurationProductsUIDescription8
+		u.Type = GetConfigurationProductsUIDescriptionUnion8TypeGetConfigurationProductsUIDescription8
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion8TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion8TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion8", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion8", string(data))
 }
 
-func (u UIDescriptionUnion8) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion8) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription8 != nil {
-		return utils.MarshalJSON(u.UIDescription8, "", true)
+	if u.GetConfigurationProductsUIDescription8 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription8, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion8: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion8: all fields are null")
 }
 
-type UIFormattedValue8 struct {
+type GetConfigurationProductsUIFormattedValue8 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue8) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue8) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type DefaultAtBRANDAt447943 struct {
+type DefaultAtBRANDAt502540 struct {
+}
+
+func (d DefaultAtBRANDAt502540) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DefaultAtBRANDAt502540) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Default struct {
-	AtBRANDAt447943 DefaultAtBRANDAt447943 `json:"__@BRAND@447943"`
+	AtBRANDAt502540 DefaultAtBRANDAt502540 `json:"__@BRAND@502540"`
 }
 
-func (o *Default) GetAtBRANDAt447943() DefaultAtBRANDAt447943 {
-	if o == nil {
-		return DefaultAtBRANDAt447943{}
+func (d Default) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Default) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type ExampleAtBRANDAt447943 struct {
+func (o *Default) GetAtBRANDAt502540() DefaultAtBRANDAt502540 {
+	if o == nil {
+		return DefaultAtBRANDAt502540{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type ExampleAtBRANDAt502540 struct {
+}
+
+func (e ExampleAtBRANDAt502540) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ExampleAtBRANDAt502540) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type Example struct {
-	AtBRANDAt447943 ExampleAtBRANDAt447943 `json:"__@BRAND@447943"`
+	AtBRANDAt502540 ExampleAtBRANDAt502540 `json:"__@BRAND@502540"`
 }
 
-func (o *Example) GetAtBRANDAt447943() ExampleAtBRANDAt447943 {
-	if o == nil {
-		return ExampleAtBRANDAt447943{}
+func (e Example) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *Example) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
+}
+
+func (o *Example) GetAtBRANDAt502540() ExampleAtBRANDAt502540 {
+	if o == nil {
+		return ExampleAtBRANDAt502540{}
+	}
+	return o.AtBRANDAt502540
 }
 
 type PropertiesMultiVercelRegion struct {
-	Type             TypeArray3                 `json:"type"`
-	UIControl        UIControlMultiVercelRegion `json:"ui:control"`
-	Items            ItemsString2               `json:"items"`
-	UIOptions        []UIOptionUnion2           `json:"ui:options"`
-	Description      *string                    `json:"description,omitempty"`
-	MinItems         *float64                   `json:"minItems,omitempty"`
-	MaxItems         *float64                   `json:"maxItems,omitempty"`
-	UILabel          *string                    `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion8          `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion8            `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion8          `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion8       `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue8         `json:"ui:formatted-value,omitempty"`
-	UIPlaceholder    *string                    `json:"ui:placeholder,omitempty"`
-	Default          []Default                  `json:"default,omitempty"`
-	Example          []Example                  `json:"example,omitempty"`
+	Type             GetConfigurationProductsTypeArray3           `json:"type"`
+	UIControl        UIControlMultiVercelRegion                   `json:"ui:control"`
+	Items            GetConfigurationProductsItemsString2         `json:"items"`
+	UIOptions        []GetConfigurationProductsUIOptionUnion2     `json:"ui:options"`
+	Description      *string                                      `json:"description,omitempty"`
+	MinItems         *float64                                     `json:"minItems,omitempty"`
+	MaxItems         *float64                                     `json:"maxItems,omitempty"`
+	UILabel          *string                                      `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion8    `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion8      `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion8    `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion8 `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue8   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
+	Default          []Default                                    `json:"default,omitempty"`
+	Example          []Example                                    `json:"example,omitempty"`
 }
 
-func (o *PropertiesMultiVercelRegion) GetType() TypeArray3 {
+func (p PropertiesMultiVercelRegion) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PropertiesMultiVercelRegion) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "ui:control", "items", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PropertiesMultiVercelRegion) GetType() GetConfigurationProductsTypeArray3 {
 	if o == nil {
-		return TypeArray3("")
+		return GetConfigurationProductsTypeArray3("")
 	}
 	return o.Type
 }
@@ -2337,16 +2689,16 @@ func (o *PropertiesMultiVercelRegion) GetUIControl() UIControlMultiVercelRegion 
 	return o.UIControl
 }
 
-func (o *PropertiesMultiVercelRegion) GetItems() ItemsString2 {
+func (o *PropertiesMultiVercelRegion) GetItems() GetConfigurationProductsItemsString2 {
 	if o == nil {
-		return ItemsString2{}
+		return GetConfigurationProductsItemsString2{}
 	}
 	return o.Items
 }
 
-func (o *PropertiesMultiVercelRegion) GetUIOptions() []UIOptionUnion2 {
+func (o *PropertiesMultiVercelRegion) GetUIOptions() []GetConfigurationProductsUIOptionUnion2 {
 	if o == nil {
-		return []UIOptionUnion2{}
+		return []GetConfigurationProductsUIOptionUnion2{}
 	}
 	return o.UIOptions
 }
@@ -2379,35 +2731,35 @@ func (o *PropertiesMultiVercelRegion) GetUILabel() *string {
 	return o.UILabel
 }
 
-func (o *PropertiesMultiVercelRegion) GetUIReadOnly() *UIReadOnlyUnion8 {
+func (o *PropertiesMultiVercelRegion) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesMultiVercelRegion) GetUIHidden() *UIHiddenUnion8 {
+func (o *PropertiesMultiVercelRegion) GetUIHidden() *GetConfigurationProductsUIHiddenUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesMultiVercelRegion) GetUIDisabled() *UIDisabledUnion8 {
+func (o *PropertiesMultiVercelRegion) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesMultiVercelRegion) GetUIDescription() *UIDescriptionUnion8 {
+func (o *PropertiesMultiVercelRegion) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion8 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesMultiVercelRegion) GetUIFormattedValue() *UIFormattedValue8 {
+func (o *PropertiesMultiVercelRegion) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue8 {
 	if o == nil {
 		return nil
 	}
@@ -2435,77 +2787,99 @@ func (o *PropertiesMultiVercelRegion) GetExample() []Example {
 	return o.Example
 }
 
-type TypeString4 string
+type GetConfigurationProductsTypeString4 string
 
 const (
-	TypeString4String TypeString4 = "string"
+	GetConfigurationProductsTypeString4String GetConfigurationProductsTypeString4 = "string"
 )
 
-func (e TypeString4) ToPointer() *TypeString4 {
+func (e GetConfigurationProductsTypeString4) ToPointer() *GetConfigurationProductsTypeString4 {
 	return &e
 }
-func (e *TypeString4) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeString4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "string":
-		*e = TypeString4(v)
+		*e = GetConfigurationProductsTypeString4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeString4: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeString4: %v", v)
 	}
 }
 
-type UIControlVercelRegion string
+type GetConfigurationProductsUIControlVercelRegion string
 
 const (
-	UIControlVercelRegionVercelRegion UIControlVercelRegion = "vercel-region"
+	GetConfigurationProductsUIControlVercelRegionVercelRegion GetConfigurationProductsUIControlVercelRegion = "vercel-region"
 )
 
-func (e UIControlVercelRegion) ToPointer() *UIControlVercelRegion {
+func (e GetConfigurationProductsUIControlVercelRegion) ToPointer() *GetConfigurationProductsUIControlVercelRegion {
 	return &e
 }
-func (e *UIControlVercelRegion) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIControlVercelRegion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "vercel-region":
-		*e = UIControlVercelRegion(v)
+		*e = GetConfigurationProductsUIControlVercelRegion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIControlVercelRegion: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIControlVercelRegion: %v", v)
 	}
 }
 
-type UIOptionValueAtBRANDAt4479431 struct {
+type UIOptionValueAtBRANDAt5025401 struct {
 }
 
-type UIOptionValue1 struct {
-	AtBRANDAt447943 UIOptionValueAtBRANDAt4479431 `json:"__@BRAND@447943"`
+func (u UIOptionValueAtBRANDAt5025401) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (o *UIOptionValue1) GetAtBRANDAt447943() UIOptionValueAtBRANDAt4479431 {
+func (u *UIOptionValueAtBRANDAt5025401) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsUIOptionValue1 struct {
+	AtBRANDAt502540 UIOptionValueAtBRANDAt5025401 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsUIOptionValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionValue1) GetAtBRANDAt502540() UIOptionValueAtBRANDAt5025401 {
 	if o == nil {
-		return UIOptionValueAtBRANDAt4479431{}
+		return UIOptionValueAtBRANDAt5025401{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type UIOptionDisabledEnum2 string
+type GetConfigurationProductsUIOptionDisabledEnum2 string
 
 const (
-	UIOptionDisabledEnum2Update UIOptionDisabledEnum2 = "update"
-	UIOptionDisabledEnum2Create UIOptionDisabledEnum2 = "create"
+	GetConfigurationProductsUIOptionDisabledEnum2Update GetConfigurationProductsUIOptionDisabledEnum2 = "update"
+	GetConfigurationProductsUIOptionDisabledEnum2Create GetConfigurationProductsUIOptionDisabledEnum2 = "create"
 )
 
-func (e UIOptionDisabledEnum2) ToPointer() *UIOptionDisabledEnum2 {
+func (e GetConfigurationProductsUIOptionDisabledEnum2) ToPointer() *GetConfigurationProductsUIOptionDisabledEnum2 {
 	return &e
 }
-func (e *UIOptionDisabledEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionDisabledEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2514,120 +2888,131 @@ func (e *UIOptionDisabledEnum2) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionDisabledEnum2(v)
+		*e = GetConfigurationProductsUIOptionDisabledEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionDisabledEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionDisabledEnum2: %v", v)
 	}
 }
 
-type UIOptionDisabled2 struct {
+type GetConfigurationProductsUIOptionDisabled2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionDisabled2) GetExpr() string {
+func (g GetConfigurationProductsUIOptionDisabled2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionDisabled2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionDisabled2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionDisabledUnion4Type string
+type GetConfigurationProductsUIOptionDisabledUnion4Type string
 
 const (
-	UIOptionDisabledUnion4TypeBoolean               UIOptionDisabledUnion4Type = "boolean"
-	UIOptionDisabledUnion4TypeUIOptionDisabled2     UIOptionDisabledUnion4Type = "ui:option_disabled_2"
-	UIOptionDisabledUnion4TypeUIOptionDisabledEnum2 UIOptionDisabledUnion4Type = "ui:option_disabled_enum_2"
+	GetConfigurationProductsUIOptionDisabledUnion4TypeBoolean                                       GetConfigurationProductsUIOptionDisabledUnion4Type = "boolean"
+	GetConfigurationProductsUIOptionDisabledUnion4TypeGetConfigurationProductsUIOptionDisabled2     GetConfigurationProductsUIOptionDisabledUnion4Type = "getConfigurationProducts_ui:option_disabled_2"
+	GetConfigurationProductsUIOptionDisabledUnion4TypeGetConfigurationProductsUIOptionDisabledEnum2 GetConfigurationProductsUIOptionDisabledUnion4Type = "getConfigurationProducts_ui:option_disabled_enum_2"
 )
 
-type UIOptionDisabledUnion4 struct {
-	Boolean               *bool                  `queryParam:"inline"`
-	UIOptionDisabled2     *UIOptionDisabled2     `queryParam:"inline"`
-	UIOptionDisabledEnum2 *UIOptionDisabledEnum2 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionDisabledUnion4 struct {
+	Boolean                                       *bool                                          `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabled2     *GetConfigurationProductsUIOptionDisabled2     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabledEnum2 *GetConfigurationProductsUIOptionDisabledEnum2 `queryParam:"inline"`
 
-	Type UIOptionDisabledUnion4Type
+	Type GetConfigurationProductsUIOptionDisabledUnion4Type
 }
 
-func CreateUIOptionDisabledUnion4Boolean(boolean bool) UIOptionDisabledUnion4 {
-	typ := UIOptionDisabledUnion4TypeBoolean
+func CreateGetConfigurationProductsUIOptionDisabledUnion4Boolean(boolean bool) GetConfigurationProductsUIOptionDisabledUnion4 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion4TypeBoolean
 
-	return UIOptionDisabledUnion4{
+	return GetConfigurationProductsUIOptionDisabledUnion4{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion4UIOptionDisabled2(uiOptionDisabled2 UIOptionDisabled2) UIOptionDisabledUnion4 {
-	typ := UIOptionDisabledUnion4TypeUIOptionDisabled2
+func CreateGetConfigurationProductsUIOptionDisabledUnion4GetConfigurationProductsUIOptionDisabled2(getConfigurationProductsUIOptionDisabled2 GetConfigurationProductsUIOptionDisabled2) GetConfigurationProductsUIOptionDisabledUnion4 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion4TypeGetConfigurationProductsUIOptionDisabled2
 
-	return UIOptionDisabledUnion4{
-		UIOptionDisabled2: &uiOptionDisabled2,
-		Type:              typ,
+	return GetConfigurationProductsUIOptionDisabledUnion4{
+		GetConfigurationProductsUIOptionDisabled2: &getConfigurationProductsUIOptionDisabled2,
+		Type: typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion4UIOptionDisabledEnum2(uiOptionDisabledEnum2 UIOptionDisabledEnum2) UIOptionDisabledUnion4 {
-	typ := UIOptionDisabledUnion4TypeUIOptionDisabledEnum2
+func CreateGetConfigurationProductsUIOptionDisabledUnion4GetConfigurationProductsUIOptionDisabledEnum2(getConfigurationProductsUIOptionDisabledEnum2 GetConfigurationProductsUIOptionDisabledEnum2) GetConfigurationProductsUIOptionDisabledUnion4 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion4TypeGetConfigurationProductsUIOptionDisabledEnum2
 
-	return UIOptionDisabledUnion4{
-		UIOptionDisabledEnum2: &uiOptionDisabledEnum2,
-		Type:                  typ,
+	return GetConfigurationProductsUIOptionDisabledUnion4{
+		GetConfigurationProductsUIOptionDisabledEnum2: &getConfigurationProductsUIOptionDisabledEnum2,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionDisabledUnion4) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionDisabledUnion4) UnmarshalJSON(data []byte) error {
 
-	var uiOptionDisabled2 UIOptionDisabled2 = UIOptionDisabled2{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled2, "", true, true); err == nil {
-		u.UIOptionDisabled2 = &uiOptionDisabled2
-		u.Type = UIOptionDisabledUnion4TypeUIOptionDisabled2
+	var getConfigurationProductsUIOptionDisabled2 GetConfigurationProductsUIOptionDisabled2 = GetConfigurationProductsUIOptionDisabled2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabled2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabled2 = &getConfigurationProductsUIOptionDisabled2
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion4TypeGetConfigurationProductsUIOptionDisabled2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionDisabledUnion4TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion4TypeBoolean
 		return nil
 	}
 
-	var uiOptionDisabledEnum2 UIOptionDisabledEnum2 = UIOptionDisabledEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum2, "", true, true); err == nil {
-		u.UIOptionDisabledEnum2 = &uiOptionDisabledEnum2
-		u.Type = UIOptionDisabledUnion4TypeUIOptionDisabledEnum2
+	var getConfigurationProductsUIOptionDisabledEnum2 GetConfigurationProductsUIOptionDisabledEnum2 = GetConfigurationProductsUIOptionDisabledEnum2("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabledEnum2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabledEnum2 = &getConfigurationProductsUIOptionDisabledEnum2
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion4TypeGetConfigurationProductsUIOptionDisabledEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionDisabledUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionDisabledUnion4", string(data))
 }
 
-func (u UIOptionDisabledUnion4) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionDisabledUnion4) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionDisabled2 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabled2, "", true)
+	if u.GetConfigurationProductsUIOptionDisabled2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabled2, "", true)
 	}
 
-	if u.UIOptionDisabledEnum2 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabledEnum2, "", true)
+	if u.GetConfigurationProductsUIOptionDisabledEnum2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabledEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionDisabledUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionDisabledUnion4: all fields are null")
 }
 
-type UIOptionHiddenEnum2 string
+type GetConfigurationProductsUIOptionHiddenEnum2 string
 
 const (
-	UIOptionHiddenEnum2Update UIOptionHiddenEnum2 = "update"
-	UIOptionHiddenEnum2Create UIOptionHiddenEnum2 = "create"
+	GetConfigurationProductsUIOptionHiddenEnum2Update GetConfigurationProductsUIOptionHiddenEnum2 = "update"
+	GetConfigurationProductsUIOptionHiddenEnum2Create GetConfigurationProductsUIOptionHiddenEnum2 = "create"
 )
 
-func (e UIOptionHiddenEnum2) ToPointer() *UIOptionHiddenEnum2 {
+func (e GetConfigurationProductsUIOptionHiddenEnum2) ToPointer() *GetConfigurationProductsUIOptionHiddenEnum2 {
 	return &e
 }
-func (e *UIOptionHiddenEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionHiddenEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2636,161 +3021,205 @@ func (e *UIOptionHiddenEnum2) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionHiddenEnum2(v)
+		*e = GetConfigurationProductsUIOptionHiddenEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionHiddenEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionHiddenEnum2: %v", v)
 	}
 }
 
-type UIOptionHidden2 struct {
+type GetConfigurationProductsUIOptionHidden2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionHidden2) GetExpr() string {
+func (g GetConfigurationProductsUIOptionHidden2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionHidden2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionHidden2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionHiddenUnion4Type string
+type GetConfigurationProductsUIOptionHiddenUnion4Type string
 
 const (
-	UIOptionHiddenUnion4TypeBoolean             UIOptionHiddenUnion4Type = "boolean"
-	UIOptionHiddenUnion4TypeUIOptionHidden2     UIOptionHiddenUnion4Type = "ui:option_hidden_2"
-	UIOptionHiddenUnion4TypeUIOptionHiddenEnum2 UIOptionHiddenUnion4Type = "ui:option_hidden_enum_2"
+	GetConfigurationProductsUIOptionHiddenUnion4TypeBoolean                                     GetConfigurationProductsUIOptionHiddenUnion4Type = "boolean"
+	GetConfigurationProductsUIOptionHiddenUnion4TypeGetConfigurationProductsUIOptionHidden2     GetConfigurationProductsUIOptionHiddenUnion4Type = "getConfigurationProducts_ui:option_hidden_2"
+	GetConfigurationProductsUIOptionHiddenUnion4TypeGetConfigurationProductsUIOptionHiddenEnum2 GetConfigurationProductsUIOptionHiddenUnion4Type = "getConfigurationProducts_ui:option_hidden_enum_2"
 )
 
-type UIOptionHiddenUnion4 struct {
-	Boolean             *bool                `queryParam:"inline"`
-	UIOptionHidden2     *UIOptionHidden2     `queryParam:"inline"`
-	UIOptionHiddenEnum2 *UIOptionHiddenEnum2 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionHiddenUnion4 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHidden2     *GetConfigurationProductsUIOptionHidden2     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHiddenEnum2 *GetConfigurationProductsUIOptionHiddenEnum2 `queryParam:"inline"`
 
-	Type UIOptionHiddenUnion4Type
+	Type GetConfigurationProductsUIOptionHiddenUnion4Type
 }
 
-func CreateUIOptionHiddenUnion4Boolean(boolean bool) UIOptionHiddenUnion4 {
-	typ := UIOptionHiddenUnion4TypeBoolean
+func CreateGetConfigurationProductsUIOptionHiddenUnion4Boolean(boolean bool) GetConfigurationProductsUIOptionHiddenUnion4 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion4TypeBoolean
 
-	return UIOptionHiddenUnion4{
+	return GetConfigurationProductsUIOptionHiddenUnion4{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion4UIOptionHidden2(uiOptionHidden2 UIOptionHidden2) UIOptionHiddenUnion4 {
-	typ := UIOptionHiddenUnion4TypeUIOptionHidden2
+func CreateGetConfigurationProductsUIOptionHiddenUnion4GetConfigurationProductsUIOptionHidden2(getConfigurationProductsUIOptionHidden2 GetConfigurationProductsUIOptionHidden2) GetConfigurationProductsUIOptionHiddenUnion4 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion4TypeGetConfigurationProductsUIOptionHidden2
 
-	return UIOptionHiddenUnion4{
-		UIOptionHidden2: &uiOptionHidden2,
-		Type:            typ,
+	return GetConfigurationProductsUIOptionHiddenUnion4{
+		GetConfigurationProductsUIOptionHidden2: &getConfigurationProductsUIOptionHidden2,
+		Type:                                    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion4UIOptionHiddenEnum2(uiOptionHiddenEnum2 UIOptionHiddenEnum2) UIOptionHiddenUnion4 {
-	typ := UIOptionHiddenUnion4TypeUIOptionHiddenEnum2
+func CreateGetConfigurationProductsUIOptionHiddenUnion4GetConfigurationProductsUIOptionHiddenEnum2(getConfigurationProductsUIOptionHiddenEnum2 GetConfigurationProductsUIOptionHiddenEnum2) GetConfigurationProductsUIOptionHiddenUnion4 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion4TypeGetConfigurationProductsUIOptionHiddenEnum2
 
-	return UIOptionHiddenUnion4{
-		UIOptionHiddenEnum2: &uiOptionHiddenEnum2,
-		Type:                typ,
+	return GetConfigurationProductsUIOptionHiddenUnion4{
+		GetConfigurationProductsUIOptionHiddenEnum2: &getConfigurationProductsUIOptionHiddenEnum2,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionHiddenUnion4) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionHiddenUnion4) UnmarshalJSON(data []byte) error {
 
-	var uiOptionHidden2 UIOptionHidden2 = UIOptionHidden2{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden2, "", true, true); err == nil {
-		u.UIOptionHidden2 = &uiOptionHidden2
-		u.Type = UIOptionHiddenUnion4TypeUIOptionHidden2
+	var getConfigurationProductsUIOptionHidden2 GetConfigurationProductsUIOptionHidden2 = GetConfigurationProductsUIOptionHidden2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHidden2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHidden2 = &getConfigurationProductsUIOptionHidden2
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion4TypeGetConfigurationProductsUIOptionHidden2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionHiddenUnion4TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion4TypeBoolean
 		return nil
 	}
 
-	var uiOptionHiddenEnum2 UIOptionHiddenEnum2 = UIOptionHiddenEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum2, "", true, true); err == nil {
-		u.UIOptionHiddenEnum2 = &uiOptionHiddenEnum2
-		u.Type = UIOptionHiddenUnion4TypeUIOptionHiddenEnum2
+	var getConfigurationProductsUIOptionHiddenEnum2 GetConfigurationProductsUIOptionHiddenEnum2 = GetConfigurationProductsUIOptionHiddenEnum2("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHiddenEnum2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHiddenEnum2 = &getConfigurationProductsUIOptionHiddenEnum2
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion4TypeGetConfigurationProductsUIOptionHiddenEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionHiddenUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionHiddenUnion4", string(data))
 }
 
-func (u UIOptionHiddenUnion4) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionHiddenUnion4) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionHidden2 != nil {
-		return utils.MarshalJSON(u.UIOptionHidden2, "", true)
+	if u.GetConfigurationProductsUIOptionHidden2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHidden2, "", true)
 	}
 
-	if u.UIOptionHiddenEnum2 != nil {
-		return utils.MarshalJSON(u.UIOptionHiddenEnum2, "", true)
+	if u.GetConfigurationProductsUIOptionHiddenEnum2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHiddenEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionHiddenUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionHiddenUnion4: all fields are null")
 }
 
-type UIOption5 struct {
-	Value    UIOptionValue1          `json:"value"`
-	Disabled *UIOptionDisabledUnion4 `json:"disabled,omitempty"`
-	Hidden   *UIOptionHiddenUnion4   `json:"hidden,omitempty"`
+type GetConfigurationProductsUIOption5 struct {
+	Value    GetConfigurationProductsUIOptionValue1          `json:"value"`
+	Disabled *GetConfigurationProductsUIOptionDisabledUnion4 `json:"disabled,omitempty"`
+	Hidden   *GetConfigurationProductsUIOptionHiddenUnion4   `json:"hidden,omitempty"`
 }
 
-func (o *UIOption5) GetValue() UIOptionValue1 {
+func (g GetConfigurationProductsUIOption5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption5) GetValue() GetConfigurationProductsUIOptionValue1 {
 	if o == nil {
-		return UIOptionValue1{}
+		return GetConfigurationProductsUIOptionValue1{}
 	}
 	return o.Value
 }
 
-func (o *UIOption5) GetDisabled() *UIOptionDisabledUnion4 {
+func (o *GetConfigurationProductsUIOption5) GetDisabled() *GetConfigurationProductsUIOptionDisabledUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *UIOption5) GetHidden() *UIOptionHiddenUnion4 {
+func (o *GetConfigurationProductsUIOption5) GetHidden() *GetConfigurationProductsUIOptionHiddenUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type UIOptionAtBRANDAt4479431 struct {
+type UIOptionAtBRANDAt5025401 struct {
 }
 
-type UIOption4 struct {
-	AtBRANDAt447943 UIOptionAtBRANDAt4479431 `json:"__@BRAND@447943"`
+func (u UIOptionAtBRANDAt5025401) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (o *UIOption4) GetAtBRANDAt447943() UIOptionAtBRANDAt4479431 {
-	if o == nil {
-		return UIOptionAtBRANDAt4479431{}
+func (u *UIOptionAtBRANDAt5025401) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type UIOptionDisabledEnum1 string
+type GetConfigurationProductsUIOption4 struct {
+	AtBRANDAt502540 UIOptionAtBRANDAt5025401 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsUIOption4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption4) GetAtBRANDAt502540() UIOptionAtBRANDAt5025401 {
+	if o == nil {
+		return UIOptionAtBRANDAt5025401{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type GetConfigurationProductsUIOptionDisabledEnum1 string
 
 const (
-	UIOptionDisabledEnum1Update UIOptionDisabledEnum1 = "update"
-	UIOptionDisabledEnum1Create UIOptionDisabledEnum1 = "create"
+	GetConfigurationProductsUIOptionDisabledEnum1Update GetConfigurationProductsUIOptionDisabledEnum1 = "update"
+	GetConfigurationProductsUIOptionDisabledEnum1Create GetConfigurationProductsUIOptionDisabledEnum1 = "create"
 )
 
-func (e UIOptionDisabledEnum1) ToPointer() *UIOptionDisabledEnum1 {
+func (e GetConfigurationProductsUIOptionDisabledEnum1) ToPointer() *GetConfigurationProductsUIOptionDisabledEnum1 {
 	return &e
 }
-func (e *UIOptionDisabledEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionDisabledEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2799,120 +3228,131 @@ func (e *UIOptionDisabledEnum1) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionDisabledEnum1(v)
+		*e = GetConfigurationProductsUIOptionDisabledEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionDisabledEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionDisabledEnum1: %v", v)
 	}
 }
 
-type UIOptionDisabled1 struct {
+type GetConfigurationProductsUIOptionDisabled1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionDisabled1) GetExpr() string {
+func (g GetConfigurationProductsUIOptionDisabled1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionDisabled1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionDisabled1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionDisabledUnion3Type string
+type GetConfigurationProductsUIOptionDisabledUnion3Type string
 
 const (
-	UIOptionDisabledUnion3TypeBoolean               UIOptionDisabledUnion3Type = "boolean"
-	UIOptionDisabledUnion3TypeUIOptionDisabled1     UIOptionDisabledUnion3Type = "ui:option_disabled_1"
-	UIOptionDisabledUnion3TypeUIOptionDisabledEnum1 UIOptionDisabledUnion3Type = "ui:option_disabled_enum_1"
+	GetConfigurationProductsUIOptionDisabledUnion3TypeBoolean                                       GetConfigurationProductsUIOptionDisabledUnion3Type = "boolean"
+	GetConfigurationProductsUIOptionDisabledUnion3TypeGetConfigurationProductsUIOptionDisabled1     GetConfigurationProductsUIOptionDisabledUnion3Type = "getConfigurationProducts_ui:option_disabled_1"
+	GetConfigurationProductsUIOptionDisabledUnion3TypeGetConfigurationProductsUIOptionDisabledEnum1 GetConfigurationProductsUIOptionDisabledUnion3Type = "getConfigurationProducts_ui:option_disabled_enum_1"
 )
 
-type UIOptionDisabledUnion3 struct {
-	Boolean               *bool                  `queryParam:"inline"`
-	UIOptionDisabled1     *UIOptionDisabled1     `queryParam:"inline"`
-	UIOptionDisabledEnum1 *UIOptionDisabledEnum1 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionDisabledUnion3 struct {
+	Boolean                                       *bool                                          `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabled1     *GetConfigurationProductsUIOptionDisabled1     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionDisabledEnum1 *GetConfigurationProductsUIOptionDisabledEnum1 `queryParam:"inline"`
 
-	Type UIOptionDisabledUnion3Type
+	Type GetConfigurationProductsUIOptionDisabledUnion3Type
 }
 
-func CreateUIOptionDisabledUnion3Boolean(boolean bool) UIOptionDisabledUnion3 {
-	typ := UIOptionDisabledUnion3TypeBoolean
+func CreateGetConfigurationProductsUIOptionDisabledUnion3Boolean(boolean bool) GetConfigurationProductsUIOptionDisabledUnion3 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion3TypeBoolean
 
-	return UIOptionDisabledUnion3{
+	return GetConfigurationProductsUIOptionDisabledUnion3{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion3UIOptionDisabled1(uiOptionDisabled1 UIOptionDisabled1) UIOptionDisabledUnion3 {
-	typ := UIOptionDisabledUnion3TypeUIOptionDisabled1
+func CreateGetConfigurationProductsUIOptionDisabledUnion3GetConfigurationProductsUIOptionDisabled1(getConfigurationProductsUIOptionDisabled1 GetConfigurationProductsUIOptionDisabled1) GetConfigurationProductsUIOptionDisabledUnion3 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion3TypeGetConfigurationProductsUIOptionDisabled1
 
-	return UIOptionDisabledUnion3{
-		UIOptionDisabled1: &uiOptionDisabled1,
-		Type:              typ,
+	return GetConfigurationProductsUIOptionDisabledUnion3{
+		GetConfigurationProductsUIOptionDisabled1: &getConfigurationProductsUIOptionDisabled1,
+		Type: typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion3UIOptionDisabledEnum1(uiOptionDisabledEnum1 UIOptionDisabledEnum1) UIOptionDisabledUnion3 {
-	typ := UIOptionDisabledUnion3TypeUIOptionDisabledEnum1
+func CreateGetConfigurationProductsUIOptionDisabledUnion3GetConfigurationProductsUIOptionDisabledEnum1(getConfigurationProductsUIOptionDisabledEnum1 GetConfigurationProductsUIOptionDisabledEnum1) GetConfigurationProductsUIOptionDisabledUnion3 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion3TypeGetConfigurationProductsUIOptionDisabledEnum1
 
-	return UIOptionDisabledUnion3{
-		UIOptionDisabledEnum1: &uiOptionDisabledEnum1,
-		Type:                  typ,
+	return GetConfigurationProductsUIOptionDisabledUnion3{
+		GetConfigurationProductsUIOptionDisabledEnum1: &getConfigurationProductsUIOptionDisabledEnum1,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionDisabledUnion3) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionDisabledUnion3) UnmarshalJSON(data []byte) error {
 
-	var uiOptionDisabled1 UIOptionDisabled1 = UIOptionDisabled1{}
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabled1, "", true, true); err == nil {
-		u.UIOptionDisabled1 = &uiOptionDisabled1
-		u.Type = UIOptionDisabledUnion3TypeUIOptionDisabled1
+	var getConfigurationProductsUIOptionDisabled1 GetConfigurationProductsUIOptionDisabled1 = GetConfigurationProductsUIOptionDisabled1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabled1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabled1 = &getConfigurationProductsUIOptionDisabled1
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion3TypeGetConfigurationProductsUIOptionDisabled1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionDisabledUnion3TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion3TypeBoolean
 		return nil
 	}
 
-	var uiOptionDisabledEnum1 UIOptionDisabledEnum1 = UIOptionDisabledEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiOptionDisabledEnum1, "", true, true); err == nil {
-		u.UIOptionDisabledEnum1 = &uiOptionDisabledEnum1
-		u.Type = UIOptionDisabledUnion3TypeUIOptionDisabledEnum1
+	var getConfigurationProductsUIOptionDisabledEnum1 GetConfigurationProductsUIOptionDisabledEnum1 = GetConfigurationProductsUIOptionDisabledEnum1("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionDisabledEnum1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionDisabledEnum1 = &getConfigurationProductsUIOptionDisabledEnum1
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion3TypeGetConfigurationProductsUIOptionDisabledEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionDisabledUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionDisabledUnion3", string(data))
 }
 
-func (u UIOptionDisabledUnion3) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionDisabledUnion3) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionDisabled1 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabled1, "", true)
+	if u.GetConfigurationProductsUIOptionDisabled1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabled1, "", true)
 	}
 
-	if u.UIOptionDisabledEnum1 != nil {
-		return utils.MarshalJSON(u.UIOptionDisabledEnum1, "", true)
+	if u.GetConfigurationProductsUIOptionDisabledEnum1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionDisabledEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionDisabledUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionDisabledUnion3: all fields are null")
 }
 
-type UIOptionHiddenEnum1 string
+type GetConfigurationProductsUIOptionHiddenEnum1 string
 
 const (
-	UIOptionHiddenEnum1Update UIOptionHiddenEnum1 = "update"
-	UIOptionHiddenEnum1Create UIOptionHiddenEnum1 = "create"
+	GetConfigurationProductsUIOptionHiddenEnum1Update GetConfigurationProductsUIOptionHiddenEnum1 = "update"
+	GetConfigurationProductsUIOptionHiddenEnum1Create GetConfigurationProductsUIOptionHiddenEnum1 = "create"
 )
 
-func (e UIOptionHiddenEnum1) ToPointer() *UIOptionHiddenEnum1 {
+func (e GetConfigurationProductsUIOptionHiddenEnum1) ToPointer() *GetConfigurationProductsUIOptionHiddenEnum1 {
 	return &e
 }
-func (e *UIOptionHiddenEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIOptionHiddenEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2921,282 +3361,370 @@ func (e *UIOptionHiddenEnum1) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIOptionHiddenEnum1(v)
+		*e = GetConfigurationProductsUIOptionHiddenEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIOptionHiddenEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIOptionHiddenEnum1: %v", v)
 	}
 }
 
-type UIOptionHidden1 struct {
+type GetConfigurationProductsUIOptionHidden1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIOptionHidden1) GetExpr() string {
+func (g GetConfigurationProductsUIOptionHidden1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOptionHidden1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOptionHidden1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionHiddenUnion3Type string
+type GetConfigurationProductsUIOptionHiddenUnion3Type string
 
 const (
-	UIOptionHiddenUnion3TypeBoolean             UIOptionHiddenUnion3Type = "boolean"
-	UIOptionHiddenUnion3TypeUIOptionHidden1     UIOptionHiddenUnion3Type = "ui:option_hidden_1"
-	UIOptionHiddenUnion3TypeUIOptionHiddenEnum1 UIOptionHiddenUnion3Type = "ui:option_hidden_enum_1"
+	GetConfigurationProductsUIOptionHiddenUnion3TypeBoolean                                     GetConfigurationProductsUIOptionHiddenUnion3Type = "boolean"
+	GetConfigurationProductsUIOptionHiddenUnion3TypeGetConfigurationProductsUIOptionHidden1     GetConfigurationProductsUIOptionHiddenUnion3Type = "getConfigurationProducts_ui:option_hidden_1"
+	GetConfigurationProductsUIOptionHiddenUnion3TypeGetConfigurationProductsUIOptionHiddenEnum1 GetConfigurationProductsUIOptionHiddenUnion3Type = "getConfigurationProducts_ui:option_hidden_enum_1"
 )
 
-type UIOptionHiddenUnion3 struct {
-	Boolean             *bool                `queryParam:"inline"`
-	UIOptionHidden1     *UIOptionHidden1     `queryParam:"inline"`
-	UIOptionHiddenEnum1 *UIOptionHiddenEnum1 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionHiddenUnion3 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHidden1     *GetConfigurationProductsUIOptionHidden1     `queryParam:"inline"`
+	GetConfigurationProductsUIOptionHiddenEnum1 *GetConfigurationProductsUIOptionHiddenEnum1 `queryParam:"inline"`
 
-	Type UIOptionHiddenUnion3Type
+	Type GetConfigurationProductsUIOptionHiddenUnion3Type
 }
 
-func CreateUIOptionHiddenUnion3Boolean(boolean bool) UIOptionHiddenUnion3 {
-	typ := UIOptionHiddenUnion3TypeBoolean
+func CreateGetConfigurationProductsUIOptionHiddenUnion3Boolean(boolean bool) GetConfigurationProductsUIOptionHiddenUnion3 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion3TypeBoolean
 
-	return UIOptionHiddenUnion3{
+	return GetConfigurationProductsUIOptionHiddenUnion3{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion3UIOptionHidden1(uiOptionHidden1 UIOptionHidden1) UIOptionHiddenUnion3 {
-	typ := UIOptionHiddenUnion3TypeUIOptionHidden1
+func CreateGetConfigurationProductsUIOptionHiddenUnion3GetConfigurationProductsUIOptionHidden1(getConfigurationProductsUIOptionHidden1 GetConfigurationProductsUIOptionHidden1) GetConfigurationProductsUIOptionHiddenUnion3 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion3TypeGetConfigurationProductsUIOptionHidden1
 
-	return UIOptionHiddenUnion3{
-		UIOptionHidden1: &uiOptionHidden1,
-		Type:            typ,
+	return GetConfigurationProductsUIOptionHiddenUnion3{
+		GetConfigurationProductsUIOptionHidden1: &getConfigurationProductsUIOptionHidden1,
+		Type:                                    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion3UIOptionHiddenEnum1(uiOptionHiddenEnum1 UIOptionHiddenEnum1) UIOptionHiddenUnion3 {
-	typ := UIOptionHiddenUnion3TypeUIOptionHiddenEnum1
+func CreateGetConfigurationProductsUIOptionHiddenUnion3GetConfigurationProductsUIOptionHiddenEnum1(getConfigurationProductsUIOptionHiddenEnum1 GetConfigurationProductsUIOptionHiddenEnum1) GetConfigurationProductsUIOptionHiddenUnion3 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion3TypeGetConfigurationProductsUIOptionHiddenEnum1
 
-	return UIOptionHiddenUnion3{
-		UIOptionHiddenEnum1: &uiOptionHiddenEnum1,
-		Type:                typ,
+	return GetConfigurationProductsUIOptionHiddenUnion3{
+		GetConfigurationProductsUIOptionHiddenEnum1: &getConfigurationProductsUIOptionHiddenEnum1,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionHiddenUnion3) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionHiddenUnion3) UnmarshalJSON(data []byte) error {
 
-	var uiOptionHidden1 UIOptionHidden1 = UIOptionHidden1{}
-	if err := utils.UnmarshalJSON(data, &uiOptionHidden1, "", true, true); err == nil {
-		u.UIOptionHidden1 = &uiOptionHidden1
-		u.Type = UIOptionHiddenUnion3TypeUIOptionHidden1
+	var getConfigurationProductsUIOptionHidden1 GetConfigurationProductsUIOptionHidden1 = GetConfigurationProductsUIOptionHidden1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHidden1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHidden1 = &getConfigurationProductsUIOptionHidden1
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion3TypeGetConfigurationProductsUIOptionHidden1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionHiddenUnion3TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion3TypeBoolean
 		return nil
 	}
 
-	var uiOptionHiddenEnum1 UIOptionHiddenEnum1 = UIOptionHiddenEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiOptionHiddenEnum1, "", true, true); err == nil {
-		u.UIOptionHiddenEnum1 = &uiOptionHiddenEnum1
-		u.Type = UIOptionHiddenUnion3TypeUIOptionHiddenEnum1
+	var getConfigurationProductsUIOptionHiddenEnum1 GetConfigurationProductsUIOptionHiddenEnum1 = GetConfigurationProductsUIOptionHiddenEnum1("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOptionHiddenEnum1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOptionHiddenEnum1 = &getConfigurationProductsUIOptionHiddenEnum1
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion3TypeGetConfigurationProductsUIOptionHiddenEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionHiddenUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionHiddenUnion3", string(data))
 }
 
-func (u UIOptionHiddenUnion3) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionHiddenUnion3) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIOptionHidden1 != nil {
-		return utils.MarshalJSON(u.UIOptionHidden1, "", true)
+	if u.GetConfigurationProductsUIOptionHidden1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHidden1, "", true)
 	}
 
-	if u.UIOptionHiddenEnum1 != nil {
-		return utils.MarshalJSON(u.UIOptionHiddenEnum1, "", true)
+	if u.GetConfigurationProductsUIOptionHiddenEnum1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOptionHiddenEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionHiddenUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionHiddenUnion3: all fields are null")
 }
 
-type UIOption3 struct {
-	Value    string                  `json:"value"`
-	Label    string                  `json:"label"`
-	Disabled *UIOptionDisabledUnion3 `json:"disabled,omitempty"`
-	Hidden   *UIOptionHiddenUnion3   `json:"hidden,omitempty"`
+type GetConfigurationProductsUIOption3 struct {
+	Value    string                                          `json:"value"`
+	Label    string                                          `json:"label"`
+	Disabled *GetConfigurationProductsUIOptionDisabledUnion3 `json:"disabled,omitempty"`
+	Hidden   *GetConfigurationProductsUIOptionHiddenUnion3   `json:"hidden,omitempty"`
 }
 
-func (o *UIOption3) GetValue() string {
+func (g GetConfigurationProductsUIOption3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption3) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *UIOption3) GetLabel() string {
+func (o *GetConfigurationProductsUIOption3) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *UIOption3) GetDisabled() *UIOptionDisabledUnion3 {
+func (o *GetConfigurationProductsUIOption3) GetDisabled() *GetConfigurationProductsUIOptionDisabledUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *UIOption3) GetHidden() *UIOptionHiddenUnion3 {
+func (o *GetConfigurationProductsUIOption3) GetHidden() *GetConfigurationProductsUIOptionHiddenUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type UIOptionUnion1Type string
+type GetConfigurationProductsUIOptionUnion1Type string
 
 const (
-	UIOptionUnion1TypeUIOption3 UIOptionUnion1Type = "ui:option_3"
-	UIOptionUnion1TypeUIOption4 UIOptionUnion1Type = "ui:option_4"
-	UIOptionUnion1TypeUIOption5 UIOptionUnion1Type = "ui:option_5"
+	GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption3 GetConfigurationProductsUIOptionUnion1Type = "getConfigurationProducts_ui:option_3"
+	GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption4 GetConfigurationProductsUIOptionUnion1Type = "getConfigurationProducts_ui:option_4"
+	GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption5 GetConfigurationProductsUIOptionUnion1Type = "getConfigurationProducts_ui:option_5"
 )
 
-type UIOptionUnion1 struct {
-	UIOption3 *UIOption3 `queryParam:"inline"`
-	UIOption4 *UIOption4 `queryParam:"inline"`
-	UIOption5 *UIOption5 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionUnion1 struct {
+	GetConfigurationProductsUIOption3 *GetConfigurationProductsUIOption3 `queryParam:"inline"`
+	GetConfigurationProductsUIOption4 *GetConfigurationProductsUIOption4 `queryParam:"inline"`
+	GetConfigurationProductsUIOption5 *GetConfigurationProductsUIOption5 `queryParam:"inline"`
 
-	Type UIOptionUnion1Type
+	Type GetConfigurationProductsUIOptionUnion1Type
 }
 
-func CreateUIOptionUnion1UIOption3(uiOption3 UIOption3) UIOptionUnion1 {
-	typ := UIOptionUnion1TypeUIOption3
+func CreateGetConfigurationProductsUIOptionUnion1GetConfigurationProductsUIOption3(getConfigurationProductsUIOption3 GetConfigurationProductsUIOption3) GetConfigurationProductsUIOptionUnion1 {
+	typ := GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption3
 
-	return UIOptionUnion1{
-		UIOption3: &uiOption3,
-		Type:      typ,
+	return GetConfigurationProductsUIOptionUnion1{
+		GetConfigurationProductsUIOption3: &getConfigurationProductsUIOption3,
+		Type:                              typ,
 	}
 }
 
-func CreateUIOptionUnion1UIOption4(uiOption4 UIOption4) UIOptionUnion1 {
-	typ := UIOptionUnion1TypeUIOption4
+func CreateGetConfigurationProductsUIOptionUnion1GetConfigurationProductsUIOption4(getConfigurationProductsUIOption4 GetConfigurationProductsUIOption4) GetConfigurationProductsUIOptionUnion1 {
+	typ := GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption4
 
-	return UIOptionUnion1{
-		UIOption4: &uiOption4,
-		Type:      typ,
+	return GetConfigurationProductsUIOptionUnion1{
+		GetConfigurationProductsUIOption4: &getConfigurationProductsUIOption4,
+		Type:                              typ,
 	}
 }
 
-func CreateUIOptionUnion1UIOption5(uiOption5 UIOption5) UIOptionUnion1 {
-	typ := UIOptionUnion1TypeUIOption5
+func CreateGetConfigurationProductsUIOptionUnion1GetConfigurationProductsUIOption5(getConfigurationProductsUIOption5 GetConfigurationProductsUIOption5) GetConfigurationProductsUIOptionUnion1 {
+	typ := GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption5
 
-	return UIOptionUnion1{
-		UIOption5: &uiOption5,
-		Type:      typ,
+	return GetConfigurationProductsUIOptionUnion1{
+		GetConfigurationProductsUIOption5: &getConfigurationProductsUIOption5,
+		Type:                              typ,
 	}
 }
 
-func (u *UIOptionUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionUnion1) UnmarshalJSON(data []byte) error {
 
-	var uiOption4 UIOption4 = UIOption4{}
-	if err := utils.UnmarshalJSON(data, &uiOption4, "", true, true); err == nil {
-		u.UIOption4 = &uiOption4
-		u.Type = UIOptionUnion1TypeUIOption4
+	var getConfigurationProductsUIOption3 GetConfigurationProductsUIOption3 = GetConfigurationProductsUIOption3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOption3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOption3 = &getConfigurationProductsUIOption3
+		u.Type = GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption3
 		return nil
 	}
 
-	var uiOption5 UIOption5 = UIOption5{}
-	if err := utils.UnmarshalJSON(data, &uiOption5, "", true, true); err == nil {
-		u.UIOption5 = &uiOption5
-		u.Type = UIOptionUnion1TypeUIOption5
+	var getConfigurationProductsUIOption4 GetConfigurationProductsUIOption4 = GetConfigurationProductsUIOption4{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOption4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOption4 = &getConfigurationProductsUIOption4
+		u.Type = GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption4
 		return nil
 	}
 
-	var uiOption3 UIOption3 = UIOption3{}
-	if err := utils.UnmarshalJSON(data, &uiOption3, "", true, true); err == nil {
-		u.UIOption3 = &uiOption3
-		u.Type = UIOptionUnion1TypeUIOption3
+	var getConfigurationProductsUIOption5 GetConfigurationProductsUIOption5 = GetConfigurationProductsUIOption5{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIOption5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIOption5 = &getConfigurationProductsUIOption5
+		u.Type = GetConfigurationProductsUIOptionUnion1TypeGetConfigurationProductsUIOption5
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionUnion1", string(data))
 }
 
-func (u UIOptionUnion1) MarshalJSON() ([]byte, error) {
-	if u.UIOption3 != nil {
-		return utils.MarshalJSON(u.UIOption3, "", true)
+func (u GetConfigurationProductsUIOptionUnion1) MarshalJSON() ([]byte, error) {
+	if u.GetConfigurationProductsUIOption3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOption3, "", true)
 	}
 
-	if u.UIOption4 != nil {
-		return utils.MarshalJSON(u.UIOption4, "", true)
+	if u.GetConfigurationProductsUIOption4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOption4, "", true)
 	}
 
-	if u.UIOption5 != nil {
-		return utils.MarshalJSON(u.UIOption5, "", true)
+	if u.GetConfigurationProductsUIOption5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIOption5, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionUnion1: all fields are null")
 }
 
-type MinLengthAtBRANDAt4479433 struct {
+type MinLengthAtBRANDAt5025403 struct {
 }
 
-type MinLength3 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt4479433 `json:"__@BRAND@447943"`
+func (m MinLengthAtBRANDAt5025403) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (o *MinLength3) GetAtBRANDAt447943() MinLengthAtBRANDAt4479433 {
+func (m *MinLengthAtBRANDAt5025403) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsMinLength3 struct {
+	AtBRANDAt502540 MinLengthAtBRANDAt5025403 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsMinLength3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsMinLength3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsMinLength3) GetAtBRANDAt502540() MinLengthAtBRANDAt5025403 {
 	if o == nil {
-		return MinLengthAtBRANDAt4479433{}
+		return MinLengthAtBRANDAt5025403{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type MaxLengthAtBRANDAt4479433 struct {
+type MaxLengthAtBRANDAt5025403 struct {
 }
 
-type MaxLength3 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt4479433 `json:"__@BRAND@447943"`
+func (m MaxLengthAtBRANDAt5025403) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (o *MaxLength3) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479433 {
+func (m *MaxLengthAtBRANDAt5025403) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsMaxLength3 struct {
+	AtBRANDAt502540 MaxLengthAtBRANDAt5025403 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsMaxLength3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsMaxLength3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsMaxLength3) GetAtBRANDAt502540() MaxLengthAtBRANDAt5025403 {
 	if o == nil {
-		return MaxLengthAtBRANDAt4479433{}
+		return MaxLengthAtBRANDAt5025403{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type PatternAtBRANDAt4479433 struct {
+type PatternAtBRANDAt5025403 struct {
 }
 
-type Pattern3 struct {
-	AtBRANDAt447943 PatternAtBRANDAt4479433 `json:"__@BRAND@447943"`
+func (p PatternAtBRANDAt5025403) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (o *Pattern3) GetAtBRANDAt447943() PatternAtBRANDAt4479433 {
+func (p *PatternAtBRANDAt5025403) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsPattern3 struct {
+	AtBRANDAt502540 PatternAtBRANDAt5025403 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsPattern3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPattern3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPattern3) GetAtBRANDAt502540() PatternAtBRANDAt5025403 {
 	if o == nil {
-		return PatternAtBRANDAt4479433{}
+		return PatternAtBRANDAt5025403{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type UIReadOnlyEnum7 string
+type GetConfigurationProductsUIReadOnlyEnum7 string
 
 const (
-	UIReadOnlyEnum7Update UIReadOnlyEnum7 = "update"
-	UIReadOnlyEnum7Create UIReadOnlyEnum7 = "create"
+	GetConfigurationProductsUIReadOnlyEnum7Update GetConfigurationProductsUIReadOnlyEnum7 = "update"
+	GetConfigurationProductsUIReadOnlyEnum7Create GetConfigurationProductsUIReadOnlyEnum7 = "create"
 )
 
-func (e UIReadOnlyEnum7) ToPointer() *UIReadOnlyEnum7 {
+func (e GetConfigurationProductsUIReadOnlyEnum7) ToPointer() *GetConfigurationProductsUIReadOnlyEnum7 {
 	return &e
 }
-func (e *UIReadOnlyEnum7) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum7) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3205,120 +3733,131 @@ func (e *UIReadOnlyEnum7) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum7(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum7(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum7: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum7: %v", v)
 	}
 }
 
-type UIReadOnly7 struct {
+type GetConfigurationProductsUIReadOnly7 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly7) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly7) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion7Type string
+type GetConfigurationProductsUIReadOnlyUnion7Type string
 
 const (
-	UIReadOnlyUnion7TypeBoolean         UIReadOnlyUnion7Type = "boolean"
-	UIReadOnlyUnion7TypeUIReadOnly7     UIReadOnlyUnion7Type = "ui:read-only_7"
-	UIReadOnlyUnion7TypeUIReadOnlyEnum7 UIReadOnlyUnion7Type = "ui:read-only_enum_7"
+	GetConfigurationProductsUIReadOnlyUnion7TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion7Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnly7     GetConfigurationProductsUIReadOnlyUnion7Type = "getConfigurationProducts_ui:read-only_7"
+	GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnlyEnum7 GetConfigurationProductsUIReadOnlyUnion7Type = "getConfigurationProducts_ui:read-only_enum_7"
 )
 
-type UIReadOnlyUnion7 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly7     *UIReadOnly7     `queryParam:"inline"`
-	UIReadOnlyEnum7 *UIReadOnlyEnum7 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion7 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly7     *GetConfigurationProductsUIReadOnly7     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum7 *GetConfigurationProductsUIReadOnlyEnum7 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion7Type
+	Type GetConfigurationProductsUIReadOnlyUnion7Type
 }
 
-func CreateUIReadOnlyUnion7Boolean(boolean bool) UIReadOnlyUnion7 {
-	typ := UIReadOnlyUnion7TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion7Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion7 {
+	typ := GetConfigurationProductsUIReadOnlyUnion7TypeBoolean
 
-	return UIReadOnlyUnion7{
+	return GetConfigurationProductsUIReadOnlyUnion7{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion7UIReadOnly7(uiReadOnly7 UIReadOnly7) UIReadOnlyUnion7 {
-	typ := UIReadOnlyUnion7TypeUIReadOnly7
+func CreateGetConfigurationProductsUIReadOnlyUnion7GetConfigurationProductsUIReadOnly7(getConfigurationProductsUIReadOnly7 GetConfigurationProductsUIReadOnly7) GetConfigurationProductsUIReadOnlyUnion7 {
+	typ := GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnly7
 
-	return UIReadOnlyUnion7{
-		UIReadOnly7: &uiReadOnly7,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion7{
+		GetConfigurationProductsUIReadOnly7: &getConfigurationProductsUIReadOnly7,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion7UIReadOnlyEnum7(uiReadOnlyEnum7 UIReadOnlyEnum7) UIReadOnlyUnion7 {
-	typ := UIReadOnlyUnion7TypeUIReadOnlyEnum7
+func CreateGetConfigurationProductsUIReadOnlyUnion7GetConfigurationProductsUIReadOnlyEnum7(getConfigurationProductsUIReadOnlyEnum7 GetConfigurationProductsUIReadOnlyEnum7) GetConfigurationProductsUIReadOnlyUnion7 {
+	typ := GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnlyEnum7
 
-	return UIReadOnlyUnion7{
-		UIReadOnlyEnum7: &uiReadOnlyEnum7,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion7{
+		GetConfigurationProductsUIReadOnlyEnum7: &getConfigurationProductsUIReadOnlyEnum7,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion7) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion7) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly7 UIReadOnly7 = UIReadOnly7{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly7, "", true, true); err == nil {
-		u.UIReadOnly7 = &uiReadOnly7
-		u.Type = UIReadOnlyUnion7TypeUIReadOnly7
+	var getConfigurationProductsUIReadOnly7 GetConfigurationProductsUIReadOnly7 = GetConfigurationProductsUIReadOnly7{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly7 = &getConfigurationProductsUIReadOnly7
+		u.Type = GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnly7
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion7TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion7TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum7 UIReadOnlyEnum7 = UIReadOnlyEnum7("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum7, "", true, true); err == nil {
-		u.UIReadOnlyEnum7 = &uiReadOnlyEnum7
-		u.Type = UIReadOnlyUnion7TypeUIReadOnlyEnum7
+	var getConfigurationProductsUIReadOnlyEnum7 GetConfigurationProductsUIReadOnlyEnum7 = GetConfigurationProductsUIReadOnlyEnum7("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum7 = &getConfigurationProductsUIReadOnlyEnum7
+		u.Type = GetConfigurationProductsUIReadOnlyUnion7TypeGetConfigurationProductsUIReadOnlyEnum7
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion7", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion7", string(data))
 }
 
-func (u UIReadOnlyUnion7) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion7) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly7 != nil {
-		return utils.MarshalJSON(u.UIReadOnly7, "", true)
+	if u.GetConfigurationProductsUIReadOnly7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly7, "", true)
 	}
 
-	if u.UIReadOnlyEnum7 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum7, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum7, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion7: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion7: all fields are null")
 }
 
-type UIHiddenEnum7 string
+type GetConfigurationProductsUIHiddenEnum7 string
 
 const (
-	UIHiddenEnum7Update UIHiddenEnum7 = "update"
-	UIHiddenEnum7Create UIHiddenEnum7 = "create"
+	GetConfigurationProductsUIHiddenEnum7Update GetConfigurationProductsUIHiddenEnum7 = "update"
+	GetConfigurationProductsUIHiddenEnum7Create GetConfigurationProductsUIHiddenEnum7 = "create"
 )
 
-func (e UIHiddenEnum7) ToPointer() *UIHiddenEnum7 {
+func (e GetConfigurationProductsUIHiddenEnum7) ToPointer() *GetConfigurationProductsUIHiddenEnum7 {
 	return &e
 }
-func (e *UIHiddenEnum7) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum7) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3327,120 +3866,131 @@ func (e *UIHiddenEnum7) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum7(v)
+		*e = GetConfigurationProductsUIHiddenEnum7(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum7: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum7: %v", v)
 	}
 }
 
-type UIHidden7 struct {
+type GetConfigurationProductsUIHidden7 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden7) GetExpr() string {
+func (g GetConfigurationProductsUIHidden7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden7) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion7Type string
+type GetConfigurationProductsUIHiddenUnion7Type string
 
 const (
-	UIHiddenUnion7TypeBoolean       UIHiddenUnion7Type = "boolean"
-	UIHiddenUnion7TypeUIHidden7     UIHiddenUnion7Type = "ui:hidden_7"
-	UIHiddenUnion7TypeUIHiddenEnum7 UIHiddenUnion7Type = "ui:hidden_enum_7"
+	GetConfigurationProductsUIHiddenUnion7TypeBoolean                               GetConfigurationProductsUIHiddenUnion7Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHidden7     GetConfigurationProductsUIHiddenUnion7Type = "getConfigurationProducts_ui:hidden_7"
+	GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHiddenEnum7 GetConfigurationProductsUIHiddenUnion7Type = "getConfigurationProducts_ui:hidden_enum_7"
 )
 
-type UIHiddenUnion7 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden7     *UIHidden7     `queryParam:"inline"`
-	UIHiddenEnum7 *UIHiddenEnum7 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion7 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden7     *GetConfigurationProductsUIHidden7     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum7 *GetConfigurationProductsUIHiddenEnum7 `queryParam:"inline"`
 
-	Type UIHiddenUnion7Type
+	Type GetConfigurationProductsUIHiddenUnion7Type
 }
 
-func CreateUIHiddenUnion7Boolean(boolean bool) UIHiddenUnion7 {
-	typ := UIHiddenUnion7TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion7Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion7 {
+	typ := GetConfigurationProductsUIHiddenUnion7TypeBoolean
 
-	return UIHiddenUnion7{
+	return GetConfigurationProductsUIHiddenUnion7{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion7UIHidden7(uiHidden7 UIHidden7) UIHiddenUnion7 {
-	typ := UIHiddenUnion7TypeUIHidden7
+func CreateGetConfigurationProductsUIHiddenUnion7GetConfigurationProductsUIHidden7(getConfigurationProductsUIHidden7 GetConfigurationProductsUIHidden7) GetConfigurationProductsUIHiddenUnion7 {
+	typ := GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHidden7
 
-	return UIHiddenUnion7{
-		UIHidden7: &uiHidden7,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion7{
+		GetConfigurationProductsUIHidden7: &getConfigurationProductsUIHidden7,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion7UIHiddenEnum7(uiHiddenEnum7 UIHiddenEnum7) UIHiddenUnion7 {
-	typ := UIHiddenUnion7TypeUIHiddenEnum7
+func CreateGetConfigurationProductsUIHiddenUnion7GetConfigurationProductsUIHiddenEnum7(getConfigurationProductsUIHiddenEnum7 GetConfigurationProductsUIHiddenEnum7) GetConfigurationProductsUIHiddenUnion7 {
+	typ := GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHiddenEnum7
 
-	return UIHiddenUnion7{
-		UIHiddenEnum7: &uiHiddenEnum7,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion7{
+		GetConfigurationProductsUIHiddenEnum7: &getConfigurationProductsUIHiddenEnum7,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion7) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion7) UnmarshalJSON(data []byte) error {
 
-	var uiHidden7 UIHidden7 = UIHidden7{}
-	if err := utils.UnmarshalJSON(data, &uiHidden7, "", true, true); err == nil {
-		u.UIHidden7 = &uiHidden7
-		u.Type = UIHiddenUnion7TypeUIHidden7
+	var getConfigurationProductsUIHidden7 GetConfigurationProductsUIHidden7 = GetConfigurationProductsUIHidden7{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden7 = &getConfigurationProductsUIHidden7
+		u.Type = GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHidden7
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion7TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion7TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum7 UIHiddenEnum7 = UIHiddenEnum7("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum7, "", true, true); err == nil {
-		u.UIHiddenEnum7 = &uiHiddenEnum7
-		u.Type = UIHiddenUnion7TypeUIHiddenEnum7
+	var getConfigurationProductsUIHiddenEnum7 GetConfigurationProductsUIHiddenEnum7 = GetConfigurationProductsUIHiddenEnum7("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum7 = &getConfigurationProductsUIHiddenEnum7
+		u.Type = GetConfigurationProductsUIHiddenUnion7TypeGetConfigurationProductsUIHiddenEnum7
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion7", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion7", string(data))
 }
 
-func (u UIHiddenUnion7) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion7) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden7 != nil {
-		return utils.MarshalJSON(u.UIHidden7, "", true)
+	if u.GetConfigurationProductsUIHidden7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden7, "", true)
 	}
 
-	if u.UIHiddenEnum7 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum7, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum7, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion7: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion7: all fields are null")
 }
 
-type UIDisabledEnum7 string
+type GetConfigurationProductsUIDisabledEnum7 string
 
 const (
-	UIDisabledEnum7Update UIDisabledEnum7 = "update"
-	UIDisabledEnum7Create UIDisabledEnum7 = "create"
+	GetConfigurationProductsUIDisabledEnum7Update GetConfigurationProductsUIDisabledEnum7 = "update"
+	GetConfigurationProductsUIDisabledEnum7Create GetConfigurationProductsUIDisabledEnum7 = "create"
 )
 
-func (e UIDisabledEnum7) ToPointer() *UIDisabledEnum7 {
+func (e GetConfigurationProductsUIDisabledEnum7) ToPointer() *GetConfigurationProductsUIDisabledEnum7 {
 	return &e
 }
-func (e *UIDisabledEnum7) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum7) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3449,506 +3999,627 @@ func (e *UIDisabledEnum7) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum7(v)
+		*e = GetConfigurationProductsUIDisabledEnum7(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum7: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum7: %v", v)
 	}
 }
 
-type UIDisabled7 struct {
+type GetConfigurationProductsUIDisabled7 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled7) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled7) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion7Type string
+type GetConfigurationProductsUIDisabledUnion7Type string
 
 const (
-	UIDisabledUnion7TypeBoolean         UIDisabledUnion7Type = "boolean"
-	UIDisabledUnion7TypeUIDisabled7     UIDisabledUnion7Type = "ui:disabled_7"
-	UIDisabledUnion7TypeUIDisabledEnum7 UIDisabledUnion7Type = "ui:disabled_enum_7"
+	GetConfigurationProductsUIDisabledUnion7TypeBoolean                                 GetConfigurationProductsUIDisabledUnion7Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabled7     GetConfigurationProductsUIDisabledUnion7Type = "getConfigurationProducts_ui:disabled_7"
+	GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabledEnum7 GetConfigurationProductsUIDisabledUnion7Type = "getConfigurationProducts_ui:disabled_enum_7"
 )
 
-type UIDisabledUnion7 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled7     *UIDisabled7     `queryParam:"inline"`
-	UIDisabledEnum7 *UIDisabledEnum7 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion7 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled7     *GetConfigurationProductsUIDisabled7     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum7 *GetConfigurationProductsUIDisabledEnum7 `queryParam:"inline"`
 
-	Type UIDisabledUnion7Type
+	Type GetConfigurationProductsUIDisabledUnion7Type
 }
 
-func CreateUIDisabledUnion7Boolean(boolean bool) UIDisabledUnion7 {
-	typ := UIDisabledUnion7TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion7Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion7 {
+	typ := GetConfigurationProductsUIDisabledUnion7TypeBoolean
 
-	return UIDisabledUnion7{
+	return GetConfigurationProductsUIDisabledUnion7{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion7UIDisabled7(uiDisabled7 UIDisabled7) UIDisabledUnion7 {
-	typ := UIDisabledUnion7TypeUIDisabled7
+func CreateGetConfigurationProductsUIDisabledUnion7GetConfigurationProductsUIDisabled7(getConfigurationProductsUIDisabled7 GetConfigurationProductsUIDisabled7) GetConfigurationProductsUIDisabledUnion7 {
+	typ := GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabled7
 
-	return UIDisabledUnion7{
-		UIDisabled7: &uiDisabled7,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion7{
+		GetConfigurationProductsUIDisabled7: &getConfigurationProductsUIDisabled7,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion7UIDisabledEnum7(uiDisabledEnum7 UIDisabledEnum7) UIDisabledUnion7 {
-	typ := UIDisabledUnion7TypeUIDisabledEnum7
+func CreateGetConfigurationProductsUIDisabledUnion7GetConfigurationProductsUIDisabledEnum7(getConfigurationProductsUIDisabledEnum7 GetConfigurationProductsUIDisabledEnum7) GetConfigurationProductsUIDisabledUnion7 {
+	typ := GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabledEnum7
 
-	return UIDisabledUnion7{
-		UIDisabledEnum7: &uiDisabledEnum7,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion7{
+		GetConfigurationProductsUIDisabledEnum7: &getConfigurationProductsUIDisabledEnum7,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion7) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion7) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled7 UIDisabled7 = UIDisabled7{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled7, "", true, true); err == nil {
-		u.UIDisabled7 = &uiDisabled7
-		u.Type = UIDisabledUnion7TypeUIDisabled7
+	var getConfigurationProductsUIDisabled7 GetConfigurationProductsUIDisabled7 = GetConfigurationProductsUIDisabled7{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled7 = &getConfigurationProductsUIDisabled7
+		u.Type = GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabled7
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion7TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion7TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum7 UIDisabledEnum7 = UIDisabledEnum7("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum7, "", true, true); err == nil {
-		u.UIDisabledEnum7 = &uiDisabledEnum7
-		u.Type = UIDisabledUnion7TypeUIDisabledEnum7
+	var getConfigurationProductsUIDisabledEnum7 GetConfigurationProductsUIDisabledEnum7 = GetConfigurationProductsUIDisabledEnum7("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum7 = &getConfigurationProductsUIDisabledEnum7
+		u.Type = GetConfigurationProductsUIDisabledUnion7TypeGetConfigurationProductsUIDisabledEnum7
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion7", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion7", string(data))
 }
 
-func (u UIDisabledUnion7) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion7) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled7 != nil {
-		return utils.MarshalJSON(u.UIDisabled7, "", true)
+	if u.GetConfigurationProductsUIDisabled7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled7, "", true)
 	}
 
-	if u.UIDisabledEnum7 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum7, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum7, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion7: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion7: all fields are null")
 }
 
-type UIDescription7 struct {
+type GetConfigurationProductsUIDescription7 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription7) GetExpr() string {
+func (g GetConfigurationProductsUIDescription7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription7) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion7Type string
+type GetConfigurationProductsUIDescriptionUnion7Type string
 
 const (
-	UIDescriptionUnion7TypeStr            UIDescriptionUnion7Type = "str"
-	UIDescriptionUnion7TypeUIDescription7 UIDescriptionUnion7Type = "ui:description_7"
+	GetConfigurationProductsUIDescriptionUnion7TypeStr                                    GetConfigurationProductsUIDescriptionUnion7Type = "str"
+	GetConfigurationProductsUIDescriptionUnion7TypeGetConfigurationProductsUIDescription7 GetConfigurationProductsUIDescriptionUnion7Type = "getConfigurationProducts_ui:description_7"
 )
 
-type UIDescriptionUnion7 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription7 *UIDescription7 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion7 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription7 *GetConfigurationProductsUIDescription7 `queryParam:"inline"`
 
-	Type UIDescriptionUnion7Type
+	Type GetConfigurationProductsUIDescriptionUnion7Type
 }
 
-func CreateUIDescriptionUnion7Str(str string) UIDescriptionUnion7 {
-	typ := UIDescriptionUnion7TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion7Str(str string) GetConfigurationProductsUIDescriptionUnion7 {
+	typ := GetConfigurationProductsUIDescriptionUnion7TypeStr
 
-	return UIDescriptionUnion7{
+	return GetConfigurationProductsUIDescriptionUnion7{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion7UIDescription7(uiDescription7 UIDescription7) UIDescriptionUnion7 {
-	typ := UIDescriptionUnion7TypeUIDescription7
+func CreateGetConfigurationProductsUIDescriptionUnion7GetConfigurationProductsUIDescription7(getConfigurationProductsUIDescription7 GetConfigurationProductsUIDescription7) GetConfigurationProductsUIDescriptionUnion7 {
+	typ := GetConfigurationProductsUIDescriptionUnion7TypeGetConfigurationProductsUIDescription7
 
-	return UIDescriptionUnion7{
-		UIDescription7: &uiDescription7,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion7{
+		GetConfigurationProductsUIDescription7: &getConfigurationProductsUIDescription7,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion7) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion7) UnmarshalJSON(data []byte) error {
 
-	var uiDescription7 UIDescription7 = UIDescription7{}
-	if err := utils.UnmarshalJSON(data, &uiDescription7, "", true, true); err == nil {
-		u.UIDescription7 = &uiDescription7
-		u.Type = UIDescriptionUnion7TypeUIDescription7
+	var getConfigurationProductsUIDescription7 GetConfigurationProductsUIDescription7 = GetConfigurationProductsUIDescription7{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription7, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription7 = &getConfigurationProductsUIDescription7
+		u.Type = GetConfigurationProductsUIDescriptionUnion7TypeGetConfigurationProductsUIDescription7
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion7TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion7TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion7", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion7", string(data))
 }
 
-func (u UIDescriptionUnion7) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion7) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription7 != nil {
-		return utils.MarshalJSON(u.UIDescription7, "", true)
+	if u.GetConfigurationProductsUIDescription7 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription7, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion7: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion7: all fields are null")
 }
 
-type UIFormattedValue7 struct {
+type GetConfigurationProductsUIFormattedValue7 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue7) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue7) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type PropertiesVercelRegion struct {
-	Type             TypeString4           `json:"type"`
-	UIControl        UIControlVercelRegion `json:"ui:control"`
-	UIOptions        []UIOptionUnion1      `json:"ui:options"`
-	Description      *string               `json:"description,omitempty"`
-	MinLength        *MinLength3           `json:"minLength,omitempty"`
-	MaxLength        *MaxLength3           `json:"maxLength,omitempty"`
-	Pattern          *Pattern3             `json:"pattern,omitempty"`
-	Default          *string               `json:"default,omitempty"`
-	Enum             []string              `json:"enum,omitempty"`
-	UILabel          *string               `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion7     `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion7       `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion7     `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion7  `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue7    `json:"ui:formatted-value,omitempty"`
-	UIPlaceholder    *string               `json:"ui:placeholder,omitempty"`
+type GetConfigurationProductsPropertiesVercelRegion struct {
+	Type             GetConfigurationProductsTypeString4           `json:"type"`
+	UIControl        GetConfigurationProductsUIControlVercelRegion `json:"ui:control"`
+	UIOptions        []GetConfigurationProductsUIOptionUnion1      `json:"ui:options"`
+	Description      *string                                       `json:"description,omitempty"`
+	MinLength        *GetConfigurationProductsMinLength3           `json:"minLength,omitempty"`
+	MaxLength        *GetConfigurationProductsMaxLength3           `json:"maxLength,omitempty"`
+	Pattern          *GetConfigurationProductsPattern3             `json:"pattern,omitempty"`
+	Default          *string                                       `json:"default,omitempty"`
+	Enum             []string                                      `json:"enum,omitempty"`
+	UILabel          *string                                       `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion7     `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion7       `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion7     `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion7  `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue7    `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                       `json:"ui:placeholder,omitempty"`
 }
 
-func (o *PropertiesVercelRegion) GetType() TypeString4 {
+func (g GetConfigurationProductsPropertiesVercelRegion) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPropertiesVercelRegion) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ui:control", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetType() GetConfigurationProductsTypeString4 {
 	if o == nil {
-		return TypeString4("")
+		return GetConfigurationProductsTypeString4("")
 	}
 	return o.Type
 }
 
-func (o *PropertiesVercelRegion) GetUIControl() UIControlVercelRegion {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIControl() GetConfigurationProductsUIControlVercelRegion {
 	if o == nil {
-		return UIControlVercelRegion("")
+		return GetConfigurationProductsUIControlVercelRegion("")
 	}
 	return o.UIControl
 }
 
-func (o *PropertiesVercelRegion) GetUIOptions() []UIOptionUnion1 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIOptions() []GetConfigurationProductsUIOptionUnion1 {
 	if o == nil {
-		return []UIOptionUnion1{}
+		return []GetConfigurationProductsUIOptionUnion1{}
 	}
 	return o.UIOptions
 }
 
-func (o *PropertiesVercelRegion) GetDescription() *string {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PropertiesVercelRegion) GetMinLength() *MinLength3 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetMinLength() *GetConfigurationProductsMinLength3 {
 	if o == nil {
 		return nil
 	}
 	return o.MinLength
 }
 
-func (o *PropertiesVercelRegion) GetMaxLength() *MaxLength3 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetMaxLength() *GetConfigurationProductsMaxLength3 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxLength
 }
 
-func (o *PropertiesVercelRegion) GetPattern() *Pattern3 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetPattern() *GetConfigurationProductsPattern3 {
 	if o == nil {
 		return nil
 	}
 	return o.Pattern
 }
 
-func (o *PropertiesVercelRegion) GetDefault() *string {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetDefault() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *PropertiesVercelRegion) GetEnum() []string {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetEnum() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Enum
 }
 
-func (o *PropertiesVercelRegion) GetUILabel() *string {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *PropertiesVercelRegion) GetUIReadOnly() *UIReadOnlyUnion7 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion7 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesVercelRegion) GetUIHidden() *UIHiddenUnion7 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIHidden() *GetConfigurationProductsUIHiddenUnion7 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesVercelRegion) GetUIDisabled() *UIDisabledUnion7 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion7 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesVercelRegion) GetUIDescription() *UIDescriptionUnion7 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion7 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesVercelRegion) GetUIFormattedValue() *UIFormattedValue7 {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue7 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-func (o *PropertiesVercelRegion) GetUIPlaceholder() *string {
+func (o *GetConfigurationProductsPropertiesVercelRegion) GetUIPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UIPlaceholder
 }
 
-type TypeArray2 string
+type GetConfigurationProductsTypeArray2 string
 
 const (
-	TypeArray2Array TypeArray2 = "array"
+	GetConfigurationProductsTypeArray2Array GetConfigurationProductsTypeArray2 = "array"
 )
 
-func (e TypeArray2) ToPointer() *TypeArray2 {
+func (e GetConfigurationProductsTypeArray2) ToPointer() *GetConfigurationProductsTypeArray2 {
 	return &e
 }
-func (e *TypeArray2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeArray2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "array":
-		*e = TypeArray2(v)
+		*e = GetConfigurationProductsTypeArray2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeArray2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeArray2: %v", v)
 	}
 }
 
-type UIControlMultiSelect string
+type GetConfigurationProductsUIControlMultiSelect string
 
 const (
-	UIControlMultiSelectMultiSelect UIControlMultiSelect = "multi-select"
+	GetConfigurationProductsUIControlMultiSelectMultiSelect GetConfigurationProductsUIControlMultiSelect = "multi-select"
 )
 
-func (e UIControlMultiSelect) ToPointer() *UIControlMultiSelect {
+func (e GetConfigurationProductsUIControlMultiSelect) ToPointer() *GetConfigurationProductsUIControlMultiSelect {
 	return &e
 }
-func (e *UIControlMultiSelect) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIControlMultiSelect) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "multi-select":
-		*e = UIControlMultiSelect(v)
+		*e = GetConfigurationProductsUIControlMultiSelect(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIControlMultiSelect: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIControlMultiSelect: %v", v)
 	}
 }
 
-type TypeString3 string
+type GetConfigurationProductsTypeString3 string
 
 const (
-	TypeString3String TypeString3 = "string"
+	GetConfigurationProductsTypeString3String GetConfigurationProductsTypeString3 = "string"
 )
 
-func (e TypeString3) ToPointer() *TypeString3 {
+func (e GetConfigurationProductsTypeString3) ToPointer() *GetConfigurationProductsTypeString3 {
 	return &e
 }
-func (e *TypeString3) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeString3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "string":
-		*e = TypeString3(v)
+		*e = GetConfigurationProductsTypeString3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeString3: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeString3: %v", v)
 	}
 }
 
-type MinLengthAtBRANDAt447943String1 struct {
+type MinLengthAtBRANDAt502540String1 struct {
 }
 
-type MinLengthString1 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt447943String1 `json:"__@BRAND@447943"`
+func (m MinLengthAtBRANDAt502540String1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (o *MinLengthString1) GetAtBRANDAt447943() MinLengthAtBRANDAt447943String1 {
-	if o == nil {
-		return MinLengthAtBRANDAt447943String1{}
+func (m *MinLengthAtBRANDAt502540String1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt447943String1 struct {
+type GetConfigurationProductsMinLengthString1 struct {
+	AtBRANDAt502540 MinLengthAtBRANDAt502540String1 `json:"__@BRAND@502540"`
 }
 
-type MaxLengthString1 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt447943String1 `json:"__@BRAND@447943"`
+func (g GetConfigurationProductsMinLengthString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
 }
 
-func (o *MaxLengthString1) GetAtBRANDAt447943() MaxLengthAtBRANDAt447943String1 {
-	if o == nil {
-		return MaxLengthAtBRANDAt447943String1{}
+func (g *GetConfigurationProductsMinLengthString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt447943String1 struct {
-}
-
-type PatternString1 struct {
-	AtBRANDAt447943 PatternAtBRANDAt447943String1 `json:"__@BRAND@447943"`
-}
-
-func (o *PatternString1) GetAtBRANDAt447943() PatternAtBRANDAt447943String1 {
+func (o *GetConfigurationProductsMinLengthString1) GetAtBRANDAt502540() MinLengthAtBRANDAt502540String1 {
 	if o == nil {
-		return PatternAtBRANDAt447943String1{}
+		return MinLengthAtBRANDAt502540String1{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type ItemsString1 struct {
-	Type        TypeString3       `json:"type"`
-	Description *string           `json:"description,omitempty"`
-	MinLength   *MinLengthString1 `json:"minLength,omitempty"`
-	MaxLength   *MaxLengthString1 `json:"maxLength,omitempty"`
-	Pattern     *PatternString1   `json:"pattern,omitempty"`
-	Default     *string           `json:"default,omitempty"`
-	Enum        []string          `json:"enum,omitempty"`
+type MaxLengthAtBRANDAt502540String1 struct {
 }
 
-func (o *ItemsString1) GetType() TypeString3 {
+func (m MaxLengthAtBRANDAt502540String1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt502540String1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsMaxLengthString1 struct {
+	AtBRANDAt502540 MaxLengthAtBRANDAt502540String1 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsMaxLengthString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsMaxLengthString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsMaxLengthString1) GetAtBRANDAt502540() MaxLengthAtBRANDAt502540String1 {
 	if o == nil {
-		return TypeString3("")
+		return MaxLengthAtBRANDAt502540String1{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type PatternAtBRANDAt502540String1 struct {
+}
+
+func (p PatternAtBRANDAt502540String1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt502540String1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsPatternString1 struct {
+	AtBRANDAt502540 PatternAtBRANDAt502540String1 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsPatternString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPatternString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPatternString1) GetAtBRANDAt502540() PatternAtBRANDAt502540String1 {
+	if o == nil {
+		return PatternAtBRANDAt502540String1{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type GetConfigurationProductsItemsString1 struct {
+	Type        GetConfigurationProductsTypeString3       `json:"type"`
+	Description *string                                   `json:"description,omitempty"`
+	MinLength   *GetConfigurationProductsMinLengthString1 `json:"minLength,omitempty"`
+	MaxLength   *GetConfigurationProductsMaxLengthString1 `json:"maxLength,omitempty"`
+	Pattern     *GetConfigurationProductsPatternString1   `json:"pattern,omitempty"`
+	Default     *string                                   `json:"default,omitempty"`
+	Enum        []string                                  `json:"enum,omitempty"`
+}
+
+func (g GetConfigurationProductsItemsString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsItemsString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsItemsString1) GetType() GetConfigurationProductsTypeString3 {
+	if o == nil {
+		return GetConfigurationProductsTypeString3("")
 	}
 	return o.Type
 }
 
-func (o *ItemsString1) GetDescription() *string {
+func (o *GetConfigurationProductsItemsString1) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *ItemsString1) GetMinLength() *MinLengthString1 {
+func (o *GetConfigurationProductsItemsString1) GetMinLength() *GetConfigurationProductsMinLengthString1 {
 	if o == nil {
 		return nil
 	}
 	return o.MinLength
 }
 
-func (o *ItemsString1) GetMaxLength() *MaxLengthString1 {
+func (o *GetConfigurationProductsItemsString1) GetMaxLength() *GetConfigurationProductsMaxLengthString1 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxLength
 }
 
-func (o *ItemsString1) GetPattern() *PatternString1 {
+func (o *GetConfigurationProductsItemsString1) GetPattern() *GetConfigurationProductsPatternString1 {
 	if o == nil {
 		return nil
 	}
 	return o.Pattern
 }
 
-func (o *ItemsString1) GetDefault() *string {
+func (o *GetConfigurationProductsItemsString1) GetDefault() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *ItemsString1) GetEnum() []string {
+func (o *GetConfigurationProductsItemsString1) GetEnum() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Enum
 }
 
-type DisabledUIOptionEnum2 string
+type GetConfigurationProductsDisabledUIOptionEnum2 string
 
 const (
-	DisabledUIOptionEnum2Update DisabledUIOptionEnum2 = "update"
-	DisabledUIOptionEnum2Create DisabledUIOptionEnum2 = "create"
+	GetConfigurationProductsDisabledUIOptionEnum2Update GetConfigurationProductsDisabledUIOptionEnum2 = "update"
+	GetConfigurationProductsDisabledUIOptionEnum2Create GetConfigurationProductsDisabledUIOptionEnum2 = "create"
 )
 
-func (e DisabledUIOptionEnum2) ToPointer() *DisabledUIOptionEnum2 {
+func (e GetConfigurationProductsDisabledUIOptionEnum2) ToPointer() *GetConfigurationProductsDisabledUIOptionEnum2 {
 	return &e
 }
-func (e *DisabledUIOptionEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsDisabledUIOptionEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3957,120 +4628,131 @@ func (e *DisabledUIOptionEnum2) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = DisabledUIOptionEnum2(v)
+		*e = GetConfigurationProductsDisabledUIOptionEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DisabledUIOptionEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsDisabledUIOptionEnum2: %v", v)
 	}
 }
 
-type DisabledUIOption2 struct {
+type GetConfigurationProductsDisabledUIOption2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *DisabledUIOption2) GetExpr() string {
+func (g GetConfigurationProductsDisabledUIOption2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsDisabledUIOption2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsDisabledUIOption2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionDisabledUnion2Type string
+type GetConfigurationProductsUIOptionDisabledUnion2Type string
 
 const (
-	UIOptionDisabledUnion2TypeBoolean               UIOptionDisabledUnion2Type = "boolean"
-	UIOptionDisabledUnion2TypeDisabledUIOption2     UIOptionDisabledUnion2Type = "disabled_ui:option_2"
-	UIOptionDisabledUnion2TypeDisabledUIOptionEnum2 UIOptionDisabledUnion2Type = "disabled_ui:option_enum_2"
+	GetConfigurationProductsUIOptionDisabledUnion2TypeBoolean                                       GetConfigurationProductsUIOptionDisabledUnion2Type = "boolean"
+	GetConfigurationProductsUIOptionDisabledUnion2TypeGetConfigurationProductsDisabledUIOption2     GetConfigurationProductsUIOptionDisabledUnion2Type = "getConfigurationProducts_disabled_ui:option_2"
+	GetConfigurationProductsUIOptionDisabledUnion2TypeGetConfigurationProductsDisabledUIOptionEnum2 GetConfigurationProductsUIOptionDisabledUnion2Type = "getConfigurationProducts_disabled_ui:option_enum_2"
 )
 
-type UIOptionDisabledUnion2 struct {
-	Boolean               *bool                  `queryParam:"inline"`
-	DisabledUIOption2     *DisabledUIOption2     `queryParam:"inline"`
-	DisabledUIOptionEnum2 *DisabledUIOptionEnum2 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionDisabledUnion2 struct {
+	Boolean                                       *bool                                          `queryParam:"inline"`
+	GetConfigurationProductsDisabledUIOption2     *GetConfigurationProductsDisabledUIOption2     `queryParam:"inline"`
+	GetConfigurationProductsDisabledUIOptionEnum2 *GetConfigurationProductsDisabledUIOptionEnum2 `queryParam:"inline"`
 
-	Type UIOptionDisabledUnion2Type
+	Type GetConfigurationProductsUIOptionDisabledUnion2Type
 }
 
-func CreateUIOptionDisabledUnion2Boolean(boolean bool) UIOptionDisabledUnion2 {
-	typ := UIOptionDisabledUnion2TypeBoolean
+func CreateGetConfigurationProductsUIOptionDisabledUnion2Boolean(boolean bool) GetConfigurationProductsUIOptionDisabledUnion2 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion2TypeBoolean
 
-	return UIOptionDisabledUnion2{
+	return GetConfigurationProductsUIOptionDisabledUnion2{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion2DisabledUIOption2(disabledUIOption2 DisabledUIOption2) UIOptionDisabledUnion2 {
-	typ := UIOptionDisabledUnion2TypeDisabledUIOption2
+func CreateGetConfigurationProductsUIOptionDisabledUnion2GetConfigurationProductsDisabledUIOption2(getConfigurationProductsDisabledUIOption2 GetConfigurationProductsDisabledUIOption2) GetConfigurationProductsUIOptionDisabledUnion2 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion2TypeGetConfigurationProductsDisabledUIOption2
 
-	return UIOptionDisabledUnion2{
-		DisabledUIOption2: &disabledUIOption2,
-		Type:              typ,
+	return GetConfigurationProductsUIOptionDisabledUnion2{
+		GetConfigurationProductsDisabledUIOption2: &getConfigurationProductsDisabledUIOption2,
+		Type: typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion2DisabledUIOptionEnum2(disabledUIOptionEnum2 DisabledUIOptionEnum2) UIOptionDisabledUnion2 {
-	typ := UIOptionDisabledUnion2TypeDisabledUIOptionEnum2
+func CreateGetConfigurationProductsUIOptionDisabledUnion2GetConfigurationProductsDisabledUIOptionEnum2(getConfigurationProductsDisabledUIOptionEnum2 GetConfigurationProductsDisabledUIOptionEnum2) GetConfigurationProductsUIOptionDisabledUnion2 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion2TypeGetConfigurationProductsDisabledUIOptionEnum2
 
-	return UIOptionDisabledUnion2{
-		DisabledUIOptionEnum2: &disabledUIOptionEnum2,
-		Type:                  typ,
+	return GetConfigurationProductsUIOptionDisabledUnion2{
+		GetConfigurationProductsDisabledUIOptionEnum2: &getConfigurationProductsDisabledUIOptionEnum2,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionDisabledUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionDisabledUnion2) UnmarshalJSON(data []byte) error {
 
-	var disabledUIOption2 DisabledUIOption2 = DisabledUIOption2{}
-	if err := utils.UnmarshalJSON(data, &disabledUIOption2, "", true, true); err == nil {
-		u.DisabledUIOption2 = &disabledUIOption2
-		u.Type = UIOptionDisabledUnion2TypeDisabledUIOption2
+	var getConfigurationProductsDisabledUIOption2 GetConfigurationProductsDisabledUIOption2 = GetConfigurationProductsDisabledUIOption2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsDisabledUIOption2, "", true, nil); err == nil {
+		u.GetConfigurationProductsDisabledUIOption2 = &getConfigurationProductsDisabledUIOption2
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion2TypeGetConfigurationProductsDisabledUIOption2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionDisabledUnion2TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion2TypeBoolean
 		return nil
 	}
 
-	var disabledUIOptionEnum2 DisabledUIOptionEnum2 = DisabledUIOptionEnum2("")
-	if err := utils.UnmarshalJSON(data, &disabledUIOptionEnum2, "", true, true); err == nil {
-		u.DisabledUIOptionEnum2 = &disabledUIOptionEnum2
-		u.Type = UIOptionDisabledUnion2TypeDisabledUIOptionEnum2
+	var getConfigurationProductsDisabledUIOptionEnum2 GetConfigurationProductsDisabledUIOptionEnum2 = GetConfigurationProductsDisabledUIOptionEnum2("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsDisabledUIOptionEnum2, "", true, nil); err == nil {
+		u.GetConfigurationProductsDisabledUIOptionEnum2 = &getConfigurationProductsDisabledUIOptionEnum2
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion2TypeGetConfigurationProductsDisabledUIOptionEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionDisabledUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionDisabledUnion2", string(data))
 }
 
-func (u UIOptionDisabledUnion2) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionDisabledUnion2) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.DisabledUIOption2 != nil {
-		return utils.MarshalJSON(u.DisabledUIOption2, "", true)
+	if u.GetConfigurationProductsDisabledUIOption2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsDisabledUIOption2, "", true)
 	}
 
-	if u.DisabledUIOptionEnum2 != nil {
-		return utils.MarshalJSON(u.DisabledUIOptionEnum2, "", true)
+	if u.GetConfigurationProductsDisabledUIOptionEnum2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsDisabledUIOptionEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionDisabledUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionDisabledUnion2: all fields are null")
 }
 
-type HiddenUIOptionEnum2 string
+type GetConfigurationProductsHiddenUIOptionEnum2 string
 
 const (
-	HiddenUIOptionEnum2Update HiddenUIOptionEnum2 = "update"
-	HiddenUIOptionEnum2Create HiddenUIOptionEnum2 = "create"
+	GetConfigurationProductsHiddenUIOptionEnum2Update GetConfigurationProductsHiddenUIOptionEnum2 = "update"
+	GetConfigurationProductsHiddenUIOptionEnum2Create GetConfigurationProductsHiddenUIOptionEnum2 = "create"
 )
 
-func (e HiddenUIOptionEnum2) ToPointer() *HiddenUIOptionEnum2 {
+func (e GetConfigurationProductsHiddenUIOptionEnum2) ToPointer() *GetConfigurationProductsHiddenUIOptionEnum2 {
 	return &e
 }
-func (e *HiddenUIOptionEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsHiddenUIOptionEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4079,155 +4761,177 @@ func (e *HiddenUIOptionEnum2) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = HiddenUIOptionEnum2(v)
+		*e = GetConfigurationProductsHiddenUIOptionEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for HiddenUIOptionEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsHiddenUIOptionEnum2: %v", v)
 	}
 }
 
-type HiddenUIOption2 struct {
+type GetConfigurationProductsHiddenUIOption2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *HiddenUIOption2) GetExpr() string {
+func (g GetConfigurationProductsHiddenUIOption2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsHiddenUIOption2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsHiddenUIOption2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionHiddenUnion2Type string
+type GetConfigurationProductsUIOptionHiddenUnion2Type string
 
 const (
-	UIOptionHiddenUnion2TypeBoolean             UIOptionHiddenUnion2Type = "boolean"
-	UIOptionHiddenUnion2TypeHiddenUIOption2     UIOptionHiddenUnion2Type = "hidden_ui:option_2"
-	UIOptionHiddenUnion2TypeHiddenUIOptionEnum2 UIOptionHiddenUnion2Type = "hidden_ui:option_enum_2"
+	GetConfigurationProductsUIOptionHiddenUnion2TypeBoolean                                     GetConfigurationProductsUIOptionHiddenUnion2Type = "boolean"
+	GetConfigurationProductsUIOptionHiddenUnion2TypeGetConfigurationProductsHiddenUIOption2     GetConfigurationProductsUIOptionHiddenUnion2Type = "getConfigurationProducts_hidden_ui:option_2"
+	GetConfigurationProductsUIOptionHiddenUnion2TypeGetConfigurationProductsHiddenUIOptionEnum2 GetConfigurationProductsUIOptionHiddenUnion2Type = "getConfigurationProducts_hidden_ui:option_enum_2"
 )
 
-type UIOptionHiddenUnion2 struct {
-	Boolean             *bool                `queryParam:"inline"`
-	HiddenUIOption2     *HiddenUIOption2     `queryParam:"inline"`
-	HiddenUIOptionEnum2 *HiddenUIOptionEnum2 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionHiddenUnion2 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	GetConfigurationProductsHiddenUIOption2     *GetConfigurationProductsHiddenUIOption2     `queryParam:"inline"`
+	GetConfigurationProductsHiddenUIOptionEnum2 *GetConfigurationProductsHiddenUIOptionEnum2 `queryParam:"inline"`
 
-	Type UIOptionHiddenUnion2Type
+	Type GetConfigurationProductsUIOptionHiddenUnion2Type
 }
 
-func CreateUIOptionHiddenUnion2Boolean(boolean bool) UIOptionHiddenUnion2 {
-	typ := UIOptionHiddenUnion2TypeBoolean
+func CreateGetConfigurationProductsUIOptionHiddenUnion2Boolean(boolean bool) GetConfigurationProductsUIOptionHiddenUnion2 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion2TypeBoolean
 
-	return UIOptionHiddenUnion2{
+	return GetConfigurationProductsUIOptionHiddenUnion2{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion2HiddenUIOption2(hiddenUIOption2 HiddenUIOption2) UIOptionHiddenUnion2 {
-	typ := UIOptionHiddenUnion2TypeHiddenUIOption2
+func CreateGetConfigurationProductsUIOptionHiddenUnion2GetConfigurationProductsHiddenUIOption2(getConfigurationProductsHiddenUIOption2 GetConfigurationProductsHiddenUIOption2) GetConfigurationProductsUIOptionHiddenUnion2 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion2TypeGetConfigurationProductsHiddenUIOption2
 
-	return UIOptionHiddenUnion2{
-		HiddenUIOption2: &hiddenUIOption2,
-		Type:            typ,
+	return GetConfigurationProductsUIOptionHiddenUnion2{
+		GetConfigurationProductsHiddenUIOption2: &getConfigurationProductsHiddenUIOption2,
+		Type:                                    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion2HiddenUIOptionEnum2(hiddenUIOptionEnum2 HiddenUIOptionEnum2) UIOptionHiddenUnion2 {
-	typ := UIOptionHiddenUnion2TypeHiddenUIOptionEnum2
+func CreateGetConfigurationProductsUIOptionHiddenUnion2GetConfigurationProductsHiddenUIOptionEnum2(getConfigurationProductsHiddenUIOptionEnum2 GetConfigurationProductsHiddenUIOptionEnum2) GetConfigurationProductsUIOptionHiddenUnion2 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion2TypeGetConfigurationProductsHiddenUIOptionEnum2
 
-	return UIOptionHiddenUnion2{
-		HiddenUIOptionEnum2: &hiddenUIOptionEnum2,
-		Type:                typ,
+	return GetConfigurationProductsUIOptionHiddenUnion2{
+		GetConfigurationProductsHiddenUIOptionEnum2: &getConfigurationProductsHiddenUIOptionEnum2,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionHiddenUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionHiddenUnion2) UnmarshalJSON(data []byte) error {
 
-	var hiddenUIOption2 HiddenUIOption2 = HiddenUIOption2{}
-	if err := utils.UnmarshalJSON(data, &hiddenUIOption2, "", true, true); err == nil {
-		u.HiddenUIOption2 = &hiddenUIOption2
-		u.Type = UIOptionHiddenUnion2TypeHiddenUIOption2
+	var getConfigurationProductsHiddenUIOption2 GetConfigurationProductsHiddenUIOption2 = GetConfigurationProductsHiddenUIOption2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsHiddenUIOption2, "", true, nil); err == nil {
+		u.GetConfigurationProductsHiddenUIOption2 = &getConfigurationProductsHiddenUIOption2
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion2TypeGetConfigurationProductsHiddenUIOption2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionHiddenUnion2TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion2TypeBoolean
 		return nil
 	}
 
-	var hiddenUIOptionEnum2 HiddenUIOptionEnum2 = HiddenUIOptionEnum2("")
-	if err := utils.UnmarshalJSON(data, &hiddenUIOptionEnum2, "", true, true); err == nil {
-		u.HiddenUIOptionEnum2 = &hiddenUIOptionEnum2
-		u.Type = UIOptionHiddenUnion2TypeHiddenUIOptionEnum2
+	var getConfigurationProductsHiddenUIOptionEnum2 GetConfigurationProductsHiddenUIOptionEnum2 = GetConfigurationProductsHiddenUIOptionEnum2("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsHiddenUIOptionEnum2, "", true, nil); err == nil {
+		u.GetConfigurationProductsHiddenUIOptionEnum2 = &getConfigurationProductsHiddenUIOptionEnum2
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion2TypeGetConfigurationProductsHiddenUIOptionEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionHiddenUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionHiddenUnion2", string(data))
 }
 
-func (u UIOptionHiddenUnion2) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionHiddenUnion2) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.HiddenUIOption2 != nil {
-		return utils.MarshalJSON(u.HiddenUIOption2, "", true)
+	if u.GetConfigurationProductsHiddenUIOption2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsHiddenUIOption2, "", true)
 	}
 
-	if u.HiddenUIOptionEnum2 != nil {
-		return utils.MarshalJSON(u.HiddenUIOptionEnum2, "", true)
+	if u.GetConfigurationProductsHiddenUIOptionEnum2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsHiddenUIOptionEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionHiddenUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionHiddenUnion2: all fields are null")
 }
 
-type UIOption2 struct {
-	Value    string                  `json:"value"`
-	Label    string                  `json:"label"`
-	Disabled *UIOptionDisabledUnion2 `json:"disabled,omitempty"`
-	Hidden   *UIOptionHiddenUnion2   `json:"hidden,omitempty"`
+type GetConfigurationProductsUIOption2 struct {
+	Value    string                                          `json:"value"`
+	Label    string                                          `json:"label"`
+	Disabled *GetConfigurationProductsUIOptionDisabledUnion2 `json:"disabled,omitempty"`
+	Hidden   *GetConfigurationProductsUIOptionHiddenUnion2   `json:"hidden,omitempty"`
 }
 
-func (o *UIOption2) GetValue() string {
+func (g GetConfigurationProductsUIOption2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *UIOption2) GetLabel() string {
+func (o *GetConfigurationProductsUIOption2) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *UIOption2) GetDisabled() *UIOptionDisabledUnion2 {
+func (o *GetConfigurationProductsUIOption2) GetDisabled() *GetConfigurationProductsUIOptionDisabledUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *UIOption2) GetHidden() *UIOptionHiddenUnion2 {
+func (o *GetConfigurationProductsUIOption2) GetHidden() *GetConfigurationProductsUIOptionHiddenUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type UIReadOnlyEnum6 string
+type GetConfigurationProductsUIReadOnlyEnum6 string
 
 const (
-	UIReadOnlyEnum6Update UIReadOnlyEnum6 = "update"
-	UIReadOnlyEnum6Create UIReadOnlyEnum6 = "create"
+	GetConfigurationProductsUIReadOnlyEnum6Update GetConfigurationProductsUIReadOnlyEnum6 = "update"
+	GetConfigurationProductsUIReadOnlyEnum6Create GetConfigurationProductsUIReadOnlyEnum6 = "create"
 )
 
-func (e UIReadOnlyEnum6) ToPointer() *UIReadOnlyEnum6 {
+func (e GetConfigurationProductsUIReadOnlyEnum6) ToPointer() *GetConfigurationProductsUIReadOnlyEnum6 {
 	return &e
 }
-func (e *UIReadOnlyEnum6) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum6) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4236,120 +4940,131 @@ func (e *UIReadOnlyEnum6) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum6(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum6(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum6: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum6: %v", v)
 	}
 }
 
-type UIReadOnly6 struct {
+type GetConfigurationProductsUIReadOnly6 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly6) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly6) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion6Type string
+type GetConfigurationProductsUIReadOnlyUnion6Type string
 
 const (
-	UIReadOnlyUnion6TypeBoolean         UIReadOnlyUnion6Type = "boolean"
-	UIReadOnlyUnion6TypeUIReadOnly6     UIReadOnlyUnion6Type = "ui:read-only_6"
-	UIReadOnlyUnion6TypeUIReadOnlyEnum6 UIReadOnlyUnion6Type = "ui:read-only_enum_6"
+	GetConfigurationProductsUIReadOnlyUnion6TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion6Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnly6     GetConfigurationProductsUIReadOnlyUnion6Type = "getConfigurationProducts_ui:read-only_6"
+	GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnlyEnum6 GetConfigurationProductsUIReadOnlyUnion6Type = "getConfigurationProducts_ui:read-only_enum_6"
 )
 
-type UIReadOnlyUnion6 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly6     *UIReadOnly6     `queryParam:"inline"`
-	UIReadOnlyEnum6 *UIReadOnlyEnum6 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion6 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly6     *GetConfigurationProductsUIReadOnly6     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum6 *GetConfigurationProductsUIReadOnlyEnum6 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion6Type
+	Type GetConfigurationProductsUIReadOnlyUnion6Type
 }
 
-func CreateUIReadOnlyUnion6Boolean(boolean bool) UIReadOnlyUnion6 {
-	typ := UIReadOnlyUnion6TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion6Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion6 {
+	typ := GetConfigurationProductsUIReadOnlyUnion6TypeBoolean
 
-	return UIReadOnlyUnion6{
+	return GetConfigurationProductsUIReadOnlyUnion6{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion6UIReadOnly6(uiReadOnly6 UIReadOnly6) UIReadOnlyUnion6 {
-	typ := UIReadOnlyUnion6TypeUIReadOnly6
+func CreateGetConfigurationProductsUIReadOnlyUnion6GetConfigurationProductsUIReadOnly6(getConfigurationProductsUIReadOnly6 GetConfigurationProductsUIReadOnly6) GetConfigurationProductsUIReadOnlyUnion6 {
+	typ := GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnly6
 
-	return UIReadOnlyUnion6{
-		UIReadOnly6: &uiReadOnly6,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion6{
+		GetConfigurationProductsUIReadOnly6: &getConfigurationProductsUIReadOnly6,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion6UIReadOnlyEnum6(uiReadOnlyEnum6 UIReadOnlyEnum6) UIReadOnlyUnion6 {
-	typ := UIReadOnlyUnion6TypeUIReadOnlyEnum6
+func CreateGetConfigurationProductsUIReadOnlyUnion6GetConfigurationProductsUIReadOnlyEnum6(getConfigurationProductsUIReadOnlyEnum6 GetConfigurationProductsUIReadOnlyEnum6) GetConfigurationProductsUIReadOnlyUnion6 {
+	typ := GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnlyEnum6
 
-	return UIReadOnlyUnion6{
-		UIReadOnlyEnum6: &uiReadOnlyEnum6,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion6{
+		GetConfigurationProductsUIReadOnlyEnum6: &getConfigurationProductsUIReadOnlyEnum6,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion6) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion6) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly6 UIReadOnly6 = UIReadOnly6{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly6, "", true, true); err == nil {
-		u.UIReadOnly6 = &uiReadOnly6
-		u.Type = UIReadOnlyUnion6TypeUIReadOnly6
+	var getConfigurationProductsUIReadOnly6 GetConfigurationProductsUIReadOnly6 = GetConfigurationProductsUIReadOnly6{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly6 = &getConfigurationProductsUIReadOnly6
+		u.Type = GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnly6
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion6TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion6TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum6 UIReadOnlyEnum6 = UIReadOnlyEnum6("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum6, "", true, true); err == nil {
-		u.UIReadOnlyEnum6 = &uiReadOnlyEnum6
-		u.Type = UIReadOnlyUnion6TypeUIReadOnlyEnum6
+	var getConfigurationProductsUIReadOnlyEnum6 GetConfigurationProductsUIReadOnlyEnum6 = GetConfigurationProductsUIReadOnlyEnum6("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum6 = &getConfigurationProductsUIReadOnlyEnum6
+		u.Type = GetConfigurationProductsUIReadOnlyUnion6TypeGetConfigurationProductsUIReadOnlyEnum6
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion6", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion6", string(data))
 }
 
-func (u UIReadOnlyUnion6) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion6) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly6 != nil {
-		return utils.MarshalJSON(u.UIReadOnly6, "", true)
+	if u.GetConfigurationProductsUIReadOnly6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly6, "", true)
 	}
 
-	if u.UIReadOnlyEnum6 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum6, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum6, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion6: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion6: all fields are null")
 }
 
-type UIHiddenEnum6 string
+type GetConfigurationProductsUIHiddenEnum6 string
 
 const (
-	UIHiddenEnum6Update UIHiddenEnum6 = "update"
-	UIHiddenEnum6Create UIHiddenEnum6 = "create"
+	GetConfigurationProductsUIHiddenEnum6Update GetConfigurationProductsUIHiddenEnum6 = "update"
+	GetConfigurationProductsUIHiddenEnum6Create GetConfigurationProductsUIHiddenEnum6 = "create"
 )
 
-func (e UIHiddenEnum6) ToPointer() *UIHiddenEnum6 {
+func (e GetConfigurationProductsUIHiddenEnum6) ToPointer() *GetConfigurationProductsUIHiddenEnum6 {
 	return &e
 }
-func (e *UIHiddenEnum6) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum6) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4358,120 +5073,131 @@ func (e *UIHiddenEnum6) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum6(v)
+		*e = GetConfigurationProductsUIHiddenEnum6(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum6: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum6: %v", v)
 	}
 }
 
-type UIHidden6 struct {
+type GetConfigurationProductsUIHidden6 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden6) GetExpr() string {
+func (g GetConfigurationProductsUIHidden6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden6) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion6Type string
+type GetConfigurationProductsUIHiddenUnion6Type string
 
 const (
-	UIHiddenUnion6TypeBoolean       UIHiddenUnion6Type = "boolean"
-	UIHiddenUnion6TypeUIHidden6     UIHiddenUnion6Type = "ui:hidden_6"
-	UIHiddenUnion6TypeUIHiddenEnum6 UIHiddenUnion6Type = "ui:hidden_enum_6"
+	GetConfigurationProductsUIHiddenUnion6TypeBoolean                               GetConfigurationProductsUIHiddenUnion6Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHidden6     GetConfigurationProductsUIHiddenUnion6Type = "getConfigurationProducts_ui:hidden_6"
+	GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHiddenEnum6 GetConfigurationProductsUIHiddenUnion6Type = "getConfigurationProducts_ui:hidden_enum_6"
 )
 
-type UIHiddenUnion6 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden6     *UIHidden6     `queryParam:"inline"`
-	UIHiddenEnum6 *UIHiddenEnum6 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion6 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden6     *GetConfigurationProductsUIHidden6     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum6 *GetConfigurationProductsUIHiddenEnum6 `queryParam:"inline"`
 
-	Type UIHiddenUnion6Type
+	Type GetConfigurationProductsUIHiddenUnion6Type
 }
 
-func CreateUIHiddenUnion6Boolean(boolean bool) UIHiddenUnion6 {
-	typ := UIHiddenUnion6TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion6Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion6 {
+	typ := GetConfigurationProductsUIHiddenUnion6TypeBoolean
 
-	return UIHiddenUnion6{
+	return GetConfigurationProductsUIHiddenUnion6{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion6UIHidden6(uiHidden6 UIHidden6) UIHiddenUnion6 {
-	typ := UIHiddenUnion6TypeUIHidden6
+func CreateGetConfigurationProductsUIHiddenUnion6GetConfigurationProductsUIHidden6(getConfigurationProductsUIHidden6 GetConfigurationProductsUIHidden6) GetConfigurationProductsUIHiddenUnion6 {
+	typ := GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHidden6
 
-	return UIHiddenUnion6{
-		UIHidden6: &uiHidden6,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion6{
+		GetConfigurationProductsUIHidden6: &getConfigurationProductsUIHidden6,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion6UIHiddenEnum6(uiHiddenEnum6 UIHiddenEnum6) UIHiddenUnion6 {
-	typ := UIHiddenUnion6TypeUIHiddenEnum6
+func CreateGetConfigurationProductsUIHiddenUnion6GetConfigurationProductsUIHiddenEnum6(getConfigurationProductsUIHiddenEnum6 GetConfigurationProductsUIHiddenEnum6) GetConfigurationProductsUIHiddenUnion6 {
+	typ := GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHiddenEnum6
 
-	return UIHiddenUnion6{
-		UIHiddenEnum6: &uiHiddenEnum6,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion6{
+		GetConfigurationProductsUIHiddenEnum6: &getConfigurationProductsUIHiddenEnum6,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion6) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion6) UnmarshalJSON(data []byte) error {
 
-	var uiHidden6 UIHidden6 = UIHidden6{}
-	if err := utils.UnmarshalJSON(data, &uiHidden6, "", true, true); err == nil {
-		u.UIHidden6 = &uiHidden6
-		u.Type = UIHiddenUnion6TypeUIHidden6
+	var getConfigurationProductsUIHidden6 GetConfigurationProductsUIHidden6 = GetConfigurationProductsUIHidden6{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden6 = &getConfigurationProductsUIHidden6
+		u.Type = GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHidden6
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion6TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion6TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum6 UIHiddenEnum6 = UIHiddenEnum6("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum6, "", true, true); err == nil {
-		u.UIHiddenEnum6 = &uiHiddenEnum6
-		u.Type = UIHiddenUnion6TypeUIHiddenEnum6
+	var getConfigurationProductsUIHiddenEnum6 GetConfigurationProductsUIHiddenEnum6 = GetConfigurationProductsUIHiddenEnum6("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum6 = &getConfigurationProductsUIHiddenEnum6
+		u.Type = GetConfigurationProductsUIHiddenUnion6TypeGetConfigurationProductsUIHiddenEnum6
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion6", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion6", string(data))
 }
 
-func (u UIHiddenUnion6) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion6) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden6 != nil {
-		return utils.MarshalJSON(u.UIHidden6, "", true)
+	if u.GetConfigurationProductsUIHidden6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden6, "", true)
 	}
 
-	if u.UIHiddenEnum6 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum6, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum6, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion6: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion6: all fields are null")
 }
 
-type UIDisabledEnum6 string
+type GetConfigurationProductsUIDisabledEnum6 string
 
 const (
-	UIDisabledEnum6Update UIDisabledEnum6 = "update"
-	UIDisabledEnum6Create UIDisabledEnum6 = "create"
+	GetConfigurationProductsUIDisabledEnum6Update GetConfigurationProductsUIDisabledEnum6 = "update"
+	GetConfigurationProductsUIDisabledEnum6Create GetConfigurationProductsUIDisabledEnum6 = "create"
 )
 
-func (e UIDisabledEnum6) ToPointer() *UIDisabledEnum6 {
+func (e GetConfigurationProductsUIDisabledEnum6) ToPointer() *GetConfigurationProductsUIDisabledEnum6 {
 	return &e
 }
-func (e *UIDisabledEnum6) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum6) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4480,382 +5206,426 @@ func (e *UIDisabledEnum6) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum6(v)
+		*e = GetConfigurationProductsUIDisabledEnum6(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum6: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum6: %v", v)
 	}
 }
 
-type UIDisabled6 struct {
+type GetConfigurationProductsUIDisabled6 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled6) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled6) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion6Type string
+type GetConfigurationProductsUIDisabledUnion6Type string
 
 const (
-	UIDisabledUnion6TypeBoolean         UIDisabledUnion6Type = "boolean"
-	UIDisabledUnion6TypeUIDisabled6     UIDisabledUnion6Type = "ui:disabled_6"
-	UIDisabledUnion6TypeUIDisabledEnum6 UIDisabledUnion6Type = "ui:disabled_enum_6"
+	GetConfigurationProductsUIDisabledUnion6TypeBoolean                                 GetConfigurationProductsUIDisabledUnion6Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabled6     GetConfigurationProductsUIDisabledUnion6Type = "getConfigurationProducts_ui:disabled_6"
+	GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabledEnum6 GetConfigurationProductsUIDisabledUnion6Type = "getConfigurationProducts_ui:disabled_enum_6"
 )
 
-type UIDisabledUnion6 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled6     *UIDisabled6     `queryParam:"inline"`
-	UIDisabledEnum6 *UIDisabledEnum6 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion6 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled6     *GetConfigurationProductsUIDisabled6     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum6 *GetConfigurationProductsUIDisabledEnum6 `queryParam:"inline"`
 
-	Type UIDisabledUnion6Type
+	Type GetConfigurationProductsUIDisabledUnion6Type
 }
 
-func CreateUIDisabledUnion6Boolean(boolean bool) UIDisabledUnion6 {
-	typ := UIDisabledUnion6TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion6Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion6 {
+	typ := GetConfigurationProductsUIDisabledUnion6TypeBoolean
 
-	return UIDisabledUnion6{
+	return GetConfigurationProductsUIDisabledUnion6{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion6UIDisabled6(uiDisabled6 UIDisabled6) UIDisabledUnion6 {
-	typ := UIDisabledUnion6TypeUIDisabled6
+func CreateGetConfigurationProductsUIDisabledUnion6GetConfigurationProductsUIDisabled6(getConfigurationProductsUIDisabled6 GetConfigurationProductsUIDisabled6) GetConfigurationProductsUIDisabledUnion6 {
+	typ := GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabled6
 
-	return UIDisabledUnion6{
-		UIDisabled6: &uiDisabled6,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion6{
+		GetConfigurationProductsUIDisabled6: &getConfigurationProductsUIDisabled6,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion6UIDisabledEnum6(uiDisabledEnum6 UIDisabledEnum6) UIDisabledUnion6 {
-	typ := UIDisabledUnion6TypeUIDisabledEnum6
+func CreateGetConfigurationProductsUIDisabledUnion6GetConfigurationProductsUIDisabledEnum6(getConfigurationProductsUIDisabledEnum6 GetConfigurationProductsUIDisabledEnum6) GetConfigurationProductsUIDisabledUnion6 {
+	typ := GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabledEnum6
 
-	return UIDisabledUnion6{
-		UIDisabledEnum6: &uiDisabledEnum6,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion6{
+		GetConfigurationProductsUIDisabledEnum6: &getConfigurationProductsUIDisabledEnum6,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion6) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion6) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled6 UIDisabled6 = UIDisabled6{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled6, "", true, true); err == nil {
-		u.UIDisabled6 = &uiDisabled6
-		u.Type = UIDisabledUnion6TypeUIDisabled6
+	var getConfigurationProductsUIDisabled6 GetConfigurationProductsUIDisabled6 = GetConfigurationProductsUIDisabled6{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled6 = &getConfigurationProductsUIDisabled6
+		u.Type = GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabled6
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion6TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion6TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum6 UIDisabledEnum6 = UIDisabledEnum6("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum6, "", true, true); err == nil {
-		u.UIDisabledEnum6 = &uiDisabledEnum6
-		u.Type = UIDisabledUnion6TypeUIDisabledEnum6
+	var getConfigurationProductsUIDisabledEnum6 GetConfigurationProductsUIDisabledEnum6 = GetConfigurationProductsUIDisabledEnum6("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum6 = &getConfigurationProductsUIDisabledEnum6
+		u.Type = GetConfigurationProductsUIDisabledUnion6TypeGetConfigurationProductsUIDisabledEnum6
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion6", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion6", string(data))
 }
 
-func (u UIDisabledUnion6) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion6) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled6 != nil {
-		return utils.MarshalJSON(u.UIDisabled6, "", true)
+	if u.GetConfigurationProductsUIDisabled6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled6, "", true)
 	}
 
-	if u.UIDisabledEnum6 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum6, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum6, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion6: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion6: all fields are null")
 }
 
-type UIDescription6 struct {
+type GetConfigurationProductsUIDescription6 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription6) GetExpr() string {
+func (g GetConfigurationProductsUIDescription6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription6) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion6Type string
+type GetConfigurationProductsUIDescriptionUnion6Type string
 
 const (
-	UIDescriptionUnion6TypeStr            UIDescriptionUnion6Type = "str"
-	UIDescriptionUnion6TypeUIDescription6 UIDescriptionUnion6Type = "ui:description_6"
+	GetConfigurationProductsUIDescriptionUnion6TypeStr                                    GetConfigurationProductsUIDescriptionUnion6Type = "str"
+	GetConfigurationProductsUIDescriptionUnion6TypeGetConfigurationProductsUIDescription6 GetConfigurationProductsUIDescriptionUnion6Type = "getConfigurationProducts_ui:description_6"
 )
 
-type UIDescriptionUnion6 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription6 *UIDescription6 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion6 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription6 *GetConfigurationProductsUIDescription6 `queryParam:"inline"`
 
-	Type UIDescriptionUnion6Type
+	Type GetConfigurationProductsUIDescriptionUnion6Type
 }
 
-func CreateUIDescriptionUnion6Str(str string) UIDescriptionUnion6 {
-	typ := UIDescriptionUnion6TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion6Str(str string) GetConfigurationProductsUIDescriptionUnion6 {
+	typ := GetConfigurationProductsUIDescriptionUnion6TypeStr
 
-	return UIDescriptionUnion6{
+	return GetConfigurationProductsUIDescriptionUnion6{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion6UIDescription6(uiDescription6 UIDescription6) UIDescriptionUnion6 {
-	typ := UIDescriptionUnion6TypeUIDescription6
+func CreateGetConfigurationProductsUIDescriptionUnion6GetConfigurationProductsUIDescription6(getConfigurationProductsUIDescription6 GetConfigurationProductsUIDescription6) GetConfigurationProductsUIDescriptionUnion6 {
+	typ := GetConfigurationProductsUIDescriptionUnion6TypeGetConfigurationProductsUIDescription6
 
-	return UIDescriptionUnion6{
-		UIDescription6: &uiDescription6,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion6{
+		GetConfigurationProductsUIDescription6: &getConfigurationProductsUIDescription6,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion6) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion6) UnmarshalJSON(data []byte) error {
 
-	var uiDescription6 UIDescription6 = UIDescription6{}
-	if err := utils.UnmarshalJSON(data, &uiDescription6, "", true, true); err == nil {
-		u.UIDescription6 = &uiDescription6
-		u.Type = UIDescriptionUnion6TypeUIDescription6
+	var getConfigurationProductsUIDescription6 GetConfigurationProductsUIDescription6 = GetConfigurationProductsUIDescription6{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription6, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription6 = &getConfigurationProductsUIDescription6
+		u.Type = GetConfigurationProductsUIDescriptionUnion6TypeGetConfigurationProductsUIDescription6
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion6TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion6TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion6", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion6", string(data))
 }
 
-func (u UIDescriptionUnion6) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion6) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription6 != nil {
-		return utils.MarshalJSON(u.UIDescription6, "", true)
+	if u.GetConfigurationProductsUIDescription6 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription6, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion6: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion6: all fields are null")
 }
 
-type UIFormattedValue6 struct {
+type GetConfigurationProductsUIFormattedValue6 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue6) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue6) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type PropertiesMultiSelect struct {
-	Type             TypeArray2           `json:"type"`
-	UIControl        UIControlMultiSelect `json:"ui:control"`
-	Items            ItemsString1         `json:"items"`
-	UIOptions        []UIOption2          `json:"ui:options"`
-	Description      *string              `json:"description,omitempty"`
-	MinItems         *float64             `json:"minItems,omitempty"`
-	MaxItems         *float64             `json:"maxItems,omitempty"`
-	UILabel          *string              `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion6    `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion6      `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion6    `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion6 `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue6   `json:"ui:formatted-value,omitempty"`
-	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
-	Default          []string             `json:"default,omitempty"`
-	Example          []string             `json:"example,omitempty"`
+type GetConfigurationProductsPropertiesMultiSelect struct {
+	Type             GetConfigurationProductsTypeArray2           `json:"type"`
+	UIControl        GetConfigurationProductsUIControlMultiSelect `json:"ui:control"`
+	Items            GetConfigurationProductsItemsString1         `json:"items"`
+	UIOptions        []GetConfigurationProductsUIOption2          `json:"ui:options"`
+	Description      *string                                      `json:"description,omitempty"`
+	MinItems         *float64                                     `json:"minItems,omitempty"`
+	MaxItems         *float64                                     `json:"maxItems,omitempty"`
+	UILabel          *string                                      `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion6    `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion6      `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion6    `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion6 `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue6   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
+	Default          []string                                     `json:"default,omitempty"`
+	Example          []string                                     `json:"example,omitempty"`
 }
 
-func (o *PropertiesMultiSelect) GetType() TypeArray2 {
+func (g GetConfigurationProductsPropertiesMultiSelect) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPropertiesMultiSelect) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ui:control", "items", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetType() GetConfigurationProductsTypeArray2 {
 	if o == nil {
-		return TypeArray2("")
+		return GetConfigurationProductsTypeArray2("")
 	}
 	return o.Type
 }
 
-func (o *PropertiesMultiSelect) GetUIControl() UIControlMultiSelect {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIControl() GetConfigurationProductsUIControlMultiSelect {
 	if o == nil {
-		return UIControlMultiSelect("")
+		return GetConfigurationProductsUIControlMultiSelect("")
 	}
 	return o.UIControl
 }
 
-func (o *PropertiesMultiSelect) GetItems() ItemsString1 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetItems() GetConfigurationProductsItemsString1 {
 	if o == nil {
-		return ItemsString1{}
+		return GetConfigurationProductsItemsString1{}
 	}
 	return o.Items
 }
 
-func (o *PropertiesMultiSelect) GetUIOptions() []UIOption2 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIOptions() []GetConfigurationProductsUIOption2 {
 	if o == nil {
-		return []UIOption2{}
+		return []GetConfigurationProductsUIOption2{}
 	}
 	return o.UIOptions
 }
 
-func (o *PropertiesMultiSelect) GetDescription() *string {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PropertiesMultiSelect) GetMinItems() *float64 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetMinItems() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinItems
 }
 
-func (o *PropertiesMultiSelect) GetMaxItems() *float64 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetMaxItems() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxItems
 }
 
-func (o *PropertiesMultiSelect) GetUILabel() *string {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *PropertiesMultiSelect) GetUIReadOnly() *UIReadOnlyUnion6 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion6 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesMultiSelect) GetUIHidden() *UIHiddenUnion6 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIHidden() *GetConfigurationProductsUIHiddenUnion6 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesMultiSelect) GetUIDisabled() *UIDisabledUnion6 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion6 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesMultiSelect) GetUIDescription() *UIDescriptionUnion6 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion6 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesMultiSelect) GetUIFormattedValue() *UIFormattedValue6 {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue6 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-func (o *PropertiesMultiSelect) GetUIPlaceholder() *string {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetUIPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UIPlaceholder
 }
 
-func (o *PropertiesMultiSelect) GetDefault() []string {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetDefault() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *PropertiesMultiSelect) GetExample() []string {
+func (o *GetConfigurationProductsPropertiesMultiSelect) GetExample() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Example
 }
 
-type TypeString2 string
+type GetConfigurationProductsTypeString2 string
 
 const (
-	TypeString2String TypeString2 = "string"
+	GetConfigurationProductsTypeString2String GetConfigurationProductsTypeString2 = "string"
 )
 
-func (e TypeString2) ToPointer() *TypeString2 {
+func (e GetConfigurationProductsTypeString2) ToPointer() *GetConfigurationProductsTypeString2 {
 	return &e
 }
-func (e *TypeString2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeString2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "string":
-		*e = TypeString2(v)
+		*e = GetConfigurationProductsTypeString2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeString2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeString2: %v", v)
 	}
 }
 
-type UIControlSelect string
+type GetConfigurationProductsUIControlSelect string
 
 const (
-	UIControlSelectSelect UIControlSelect = "select"
+	GetConfigurationProductsUIControlSelectSelect GetConfigurationProductsUIControlSelect = "select"
 )
 
-func (e UIControlSelect) ToPointer() *UIControlSelect {
+func (e GetConfigurationProductsUIControlSelect) ToPointer() *GetConfigurationProductsUIControlSelect {
 	return &e
 }
-func (e *UIControlSelect) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIControlSelect) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "select":
-		*e = UIControlSelect(v)
+		*e = GetConfigurationProductsUIControlSelect(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIControlSelect: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIControlSelect: %v", v)
 	}
 }
 
-type DisabledUIOptionEnum1 string
+type GetConfigurationProductsDisabledUIOptionEnum1 string
 
 const (
-	DisabledUIOptionEnum1Update DisabledUIOptionEnum1 = "update"
-	DisabledUIOptionEnum1Create DisabledUIOptionEnum1 = "create"
+	GetConfigurationProductsDisabledUIOptionEnum1Update GetConfigurationProductsDisabledUIOptionEnum1 = "update"
+	GetConfigurationProductsDisabledUIOptionEnum1Create GetConfigurationProductsDisabledUIOptionEnum1 = "create"
 )
 
-func (e DisabledUIOptionEnum1) ToPointer() *DisabledUIOptionEnum1 {
+func (e GetConfigurationProductsDisabledUIOptionEnum1) ToPointer() *GetConfigurationProductsDisabledUIOptionEnum1 {
 	return &e
 }
-func (e *DisabledUIOptionEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsDisabledUIOptionEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4864,120 +5634,131 @@ func (e *DisabledUIOptionEnum1) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = DisabledUIOptionEnum1(v)
+		*e = GetConfigurationProductsDisabledUIOptionEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DisabledUIOptionEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsDisabledUIOptionEnum1: %v", v)
 	}
 }
 
-type DisabledUIOption1 struct {
+type GetConfigurationProductsDisabledUIOption1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *DisabledUIOption1) GetExpr() string {
+func (g GetConfigurationProductsDisabledUIOption1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsDisabledUIOption1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsDisabledUIOption1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionDisabledUnion1Type string
+type GetConfigurationProductsUIOptionDisabledUnion1Type string
 
 const (
-	UIOptionDisabledUnion1TypeBoolean               UIOptionDisabledUnion1Type = "boolean"
-	UIOptionDisabledUnion1TypeDisabledUIOption1     UIOptionDisabledUnion1Type = "disabled_ui:option_1"
-	UIOptionDisabledUnion1TypeDisabledUIOptionEnum1 UIOptionDisabledUnion1Type = "disabled_ui:option_enum_1"
+	GetConfigurationProductsUIOptionDisabledUnion1TypeBoolean                                       GetConfigurationProductsUIOptionDisabledUnion1Type = "boolean"
+	GetConfigurationProductsUIOptionDisabledUnion1TypeGetConfigurationProductsDisabledUIOption1     GetConfigurationProductsUIOptionDisabledUnion1Type = "getConfigurationProducts_disabled_ui:option_1"
+	GetConfigurationProductsUIOptionDisabledUnion1TypeGetConfigurationProductsDisabledUIOptionEnum1 GetConfigurationProductsUIOptionDisabledUnion1Type = "getConfigurationProducts_disabled_ui:option_enum_1"
 )
 
-type UIOptionDisabledUnion1 struct {
-	Boolean               *bool                  `queryParam:"inline"`
-	DisabledUIOption1     *DisabledUIOption1     `queryParam:"inline"`
-	DisabledUIOptionEnum1 *DisabledUIOptionEnum1 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionDisabledUnion1 struct {
+	Boolean                                       *bool                                          `queryParam:"inline"`
+	GetConfigurationProductsDisabledUIOption1     *GetConfigurationProductsDisabledUIOption1     `queryParam:"inline"`
+	GetConfigurationProductsDisabledUIOptionEnum1 *GetConfigurationProductsDisabledUIOptionEnum1 `queryParam:"inline"`
 
-	Type UIOptionDisabledUnion1Type
+	Type GetConfigurationProductsUIOptionDisabledUnion1Type
 }
 
-func CreateUIOptionDisabledUnion1Boolean(boolean bool) UIOptionDisabledUnion1 {
-	typ := UIOptionDisabledUnion1TypeBoolean
+func CreateGetConfigurationProductsUIOptionDisabledUnion1Boolean(boolean bool) GetConfigurationProductsUIOptionDisabledUnion1 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion1TypeBoolean
 
-	return UIOptionDisabledUnion1{
+	return GetConfigurationProductsUIOptionDisabledUnion1{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion1DisabledUIOption1(disabledUIOption1 DisabledUIOption1) UIOptionDisabledUnion1 {
-	typ := UIOptionDisabledUnion1TypeDisabledUIOption1
+func CreateGetConfigurationProductsUIOptionDisabledUnion1GetConfigurationProductsDisabledUIOption1(getConfigurationProductsDisabledUIOption1 GetConfigurationProductsDisabledUIOption1) GetConfigurationProductsUIOptionDisabledUnion1 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion1TypeGetConfigurationProductsDisabledUIOption1
 
-	return UIOptionDisabledUnion1{
-		DisabledUIOption1: &disabledUIOption1,
-		Type:              typ,
+	return GetConfigurationProductsUIOptionDisabledUnion1{
+		GetConfigurationProductsDisabledUIOption1: &getConfigurationProductsDisabledUIOption1,
+		Type: typ,
 	}
 }
 
-func CreateUIOptionDisabledUnion1DisabledUIOptionEnum1(disabledUIOptionEnum1 DisabledUIOptionEnum1) UIOptionDisabledUnion1 {
-	typ := UIOptionDisabledUnion1TypeDisabledUIOptionEnum1
+func CreateGetConfigurationProductsUIOptionDisabledUnion1GetConfigurationProductsDisabledUIOptionEnum1(getConfigurationProductsDisabledUIOptionEnum1 GetConfigurationProductsDisabledUIOptionEnum1) GetConfigurationProductsUIOptionDisabledUnion1 {
+	typ := GetConfigurationProductsUIOptionDisabledUnion1TypeGetConfigurationProductsDisabledUIOptionEnum1
 
-	return UIOptionDisabledUnion1{
-		DisabledUIOptionEnum1: &disabledUIOptionEnum1,
-		Type:                  typ,
+	return GetConfigurationProductsUIOptionDisabledUnion1{
+		GetConfigurationProductsDisabledUIOptionEnum1: &getConfigurationProductsDisabledUIOptionEnum1,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionDisabledUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionDisabledUnion1) UnmarshalJSON(data []byte) error {
 
-	var disabledUIOption1 DisabledUIOption1 = DisabledUIOption1{}
-	if err := utils.UnmarshalJSON(data, &disabledUIOption1, "", true, true); err == nil {
-		u.DisabledUIOption1 = &disabledUIOption1
-		u.Type = UIOptionDisabledUnion1TypeDisabledUIOption1
+	var getConfigurationProductsDisabledUIOption1 GetConfigurationProductsDisabledUIOption1 = GetConfigurationProductsDisabledUIOption1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsDisabledUIOption1, "", true, nil); err == nil {
+		u.GetConfigurationProductsDisabledUIOption1 = &getConfigurationProductsDisabledUIOption1
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion1TypeGetConfigurationProductsDisabledUIOption1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionDisabledUnion1TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion1TypeBoolean
 		return nil
 	}
 
-	var disabledUIOptionEnum1 DisabledUIOptionEnum1 = DisabledUIOptionEnum1("")
-	if err := utils.UnmarshalJSON(data, &disabledUIOptionEnum1, "", true, true); err == nil {
-		u.DisabledUIOptionEnum1 = &disabledUIOptionEnum1
-		u.Type = UIOptionDisabledUnion1TypeDisabledUIOptionEnum1
+	var getConfigurationProductsDisabledUIOptionEnum1 GetConfigurationProductsDisabledUIOptionEnum1 = GetConfigurationProductsDisabledUIOptionEnum1("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsDisabledUIOptionEnum1, "", true, nil); err == nil {
+		u.GetConfigurationProductsDisabledUIOptionEnum1 = &getConfigurationProductsDisabledUIOptionEnum1
+		u.Type = GetConfigurationProductsUIOptionDisabledUnion1TypeGetConfigurationProductsDisabledUIOptionEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionDisabledUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionDisabledUnion1", string(data))
 }
 
-func (u UIOptionDisabledUnion1) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionDisabledUnion1) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.DisabledUIOption1 != nil {
-		return utils.MarshalJSON(u.DisabledUIOption1, "", true)
+	if u.GetConfigurationProductsDisabledUIOption1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsDisabledUIOption1, "", true)
 	}
 
-	if u.DisabledUIOptionEnum1 != nil {
-		return utils.MarshalJSON(u.DisabledUIOptionEnum1, "", true)
+	if u.GetConfigurationProductsDisabledUIOptionEnum1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsDisabledUIOptionEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionDisabledUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionDisabledUnion1: all fields are null")
 }
 
-type HiddenUIOptionEnum1 string
+type GetConfigurationProductsHiddenUIOptionEnum1 string
 
 const (
-	HiddenUIOptionEnum1Update HiddenUIOptionEnum1 = "update"
-	HiddenUIOptionEnum1Create HiddenUIOptionEnum1 = "create"
+	GetConfigurationProductsHiddenUIOptionEnum1Update GetConfigurationProductsHiddenUIOptionEnum1 = "update"
+	GetConfigurationProductsHiddenUIOptionEnum1Create GetConfigurationProductsHiddenUIOptionEnum1 = "create"
 )
 
-func (e HiddenUIOptionEnum1) ToPointer() *HiddenUIOptionEnum1 {
+func (e GetConfigurationProductsHiddenUIOptionEnum1) ToPointer() *GetConfigurationProductsHiddenUIOptionEnum1 {
 	return &e
 }
-func (e *HiddenUIOptionEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsHiddenUIOptionEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4986,197 +5767,285 @@ func (e *HiddenUIOptionEnum1) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = HiddenUIOptionEnum1(v)
+		*e = GetConfigurationProductsHiddenUIOptionEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for HiddenUIOptionEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsHiddenUIOptionEnum1: %v", v)
 	}
 }
 
-type HiddenUIOption1 struct {
+type GetConfigurationProductsHiddenUIOption1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *HiddenUIOption1) GetExpr() string {
+func (g GetConfigurationProductsHiddenUIOption1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsHiddenUIOption1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsHiddenUIOption1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIOptionHiddenUnion1Type string
+type GetConfigurationProductsUIOptionHiddenUnion1Type string
 
 const (
-	UIOptionHiddenUnion1TypeBoolean             UIOptionHiddenUnion1Type = "boolean"
-	UIOptionHiddenUnion1TypeHiddenUIOption1     UIOptionHiddenUnion1Type = "hidden_ui:option_1"
-	UIOptionHiddenUnion1TypeHiddenUIOptionEnum1 UIOptionHiddenUnion1Type = "hidden_ui:option_enum_1"
+	GetConfigurationProductsUIOptionHiddenUnion1TypeBoolean                                     GetConfigurationProductsUIOptionHiddenUnion1Type = "boolean"
+	GetConfigurationProductsUIOptionHiddenUnion1TypeGetConfigurationProductsHiddenUIOption1     GetConfigurationProductsUIOptionHiddenUnion1Type = "getConfigurationProducts_hidden_ui:option_1"
+	GetConfigurationProductsUIOptionHiddenUnion1TypeGetConfigurationProductsHiddenUIOptionEnum1 GetConfigurationProductsUIOptionHiddenUnion1Type = "getConfigurationProducts_hidden_ui:option_enum_1"
 )
 
-type UIOptionHiddenUnion1 struct {
-	Boolean             *bool                `queryParam:"inline"`
-	HiddenUIOption1     *HiddenUIOption1     `queryParam:"inline"`
-	HiddenUIOptionEnum1 *HiddenUIOptionEnum1 `queryParam:"inline"`
+type GetConfigurationProductsUIOptionHiddenUnion1 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	GetConfigurationProductsHiddenUIOption1     *GetConfigurationProductsHiddenUIOption1     `queryParam:"inline"`
+	GetConfigurationProductsHiddenUIOptionEnum1 *GetConfigurationProductsHiddenUIOptionEnum1 `queryParam:"inline"`
 
-	Type UIOptionHiddenUnion1Type
+	Type GetConfigurationProductsUIOptionHiddenUnion1Type
 }
 
-func CreateUIOptionHiddenUnion1Boolean(boolean bool) UIOptionHiddenUnion1 {
-	typ := UIOptionHiddenUnion1TypeBoolean
+func CreateGetConfigurationProductsUIOptionHiddenUnion1Boolean(boolean bool) GetConfigurationProductsUIOptionHiddenUnion1 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion1TypeBoolean
 
-	return UIOptionHiddenUnion1{
+	return GetConfigurationProductsUIOptionHiddenUnion1{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion1HiddenUIOption1(hiddenUIOption1 HiddenUIOption1) UIOptionHiddenUnion1 {
-	typ := UIOptionHiddenUnion1TypeHiddenUIOption1
+func CreateGetConfigurationProductsUIOptionHiddenUnion1GetConfigurationProductsHiddenUIOption1(getConfigurationProductsHiddenUIOption1 GetConfigurationProductsHiddenUIOption1) GetConfigurationProductsUIOptionHiddenUnion1 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion1TypeGetConfigurationProductsHiddenUIOption1
 
-	return UIOptionHiddenUnion1{
-		HiddenUIOption1: &hiddenUIOption1,
-		Type:            typ,
+	return GetConfigurationProductsUIOptionHiddenUnion1{
+		GetConfigurationProductsHiddenUIOption1: &getConfigurationProductsHiddenUIOption1,
+		Type:                                    typ,
 	}
 }
 
-func CreateUIOptionHiddenUnion1HiddenUIOptionEnum1(hiddenUIOptionEnum1 HiddenUIOptionEnum1) UIOptionHiddenUnion1 {
-	typ := UIOptionHiddenUnion1TypeHiddenUIOptionEnum1
+func CreateGetConfigurationProductsUIOptionHiddenUnion1GetConfigurationProductsHiddenUIOptionEnum1(getConfigurationProductsHiddenUIOptionEnum1 GetConfigurationProductsHiddenUIOptionEnum1) GetConfigurationProductsUIOptionHiddenUnion1 {
+	typ := GetConfigurationProductsUIOptionHiddenUnion1TypeGetConfigurationProductsHiddenUIOptionEnum1
 
-	return UIOptionHiddenUnion1{
-		HiddenUIOptionEnum1: &hiddenUIOptionEnum1,
-		Type:                typ,
+	return GetConfigurationProductsUIOptionHiddenUnion1{
+		GetConfigurationProductsHiddenUIOptionEnum1: &getConfigurationProductsHiddenUIOptionEnum1,
+		Type: typ,
 	}
 }
 
-func (u *UIOptionHiddenUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIOptionHiddenUnion1) UnmarshalJSON(data []byte) error {
 
-	var hiddenUIOption1 HiddenUIOption1 = HiddenUIOption1{}
-	if err := utils.UnmarshalJSON(data, &hiddenUIOption1, "", true, true); err == nil {
-		u.HiddenUIOption1 = &hiddenUIOption1
-		u.Type = UIOptionHiddenUnion1TypeHiddenUIOption1
+	var getConfigurationProductsHiddenUIOption1 GetConfigurationProductsHiddenUIOption1 = GetConfigurationProductsHiddenUIOption1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsHiddenUIOption1, "", true, nil); err == nil {
+		u.GetConfigurationProductsHiddenUIOption1 = &getConfigurationProductsHiddenUIOption1
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion1TypeGetConfigurationProductsHiddenUIOption1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIOptionHiddenUnion1TypeBoolean
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion1TypeBoolean
 		return nil
 	}
 
-	var hiddenUIOptionEnum1 HiddenUIOptionEnum1 = HiddenUIOptionEnum1("")
-	if err := utils.UnmarshalJSON(data, &hiddenUIOptionEnum1, "", true, true); err == nil {
-		u.HiddenUIOptionEnum1 = &hiddenUIOptionEnum1
-		u.Type = UIOptionHiddenUnion1TypeHiddenUIOptionEnum1
+	var getConfigurationProductsHiddenUIOptionEnum1 GetConfigurationProductsHiddenUIOptionEnum1 = GetConfigurationProductsHiddenUIOptionEnum1("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsHiddenUIOptionEnum1, "", true, nil); err == nil {
+		u.GetConfigurationProductsHiddenUIOptionEnum1 = &getConfigurationProductsHiddenUIOptionEnum1
+		u.Type = GetConfigurationProductsUIOptionHiddenUnion1TypeGetConfigurationProductsHiddenUIOptionEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIOptionHiddenUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIOptionHiddenUnion1", string(data))
 }
 
-func (u UIOptionHiddenUnion1) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIOptionHiddenUnion1) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.HiddenUIOption1 != nil {
-		return utils.MarshalJSON(u.HiddenUIOption1, "", true)
+	if u.GetConfigurationProductsHiddenUIOption1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsHiddenUIOption1, "", true)
 	}
 
-	if u.HiddenUIOptionEnum1 != nil {
-		return utils.MarshalJSON(u.HiddenUIOptionEnum1, "", true)
+	if u.GetConfigurationProductsHiddenUIOptionEnum1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsHiddenUIOptionEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIOptionHiddenUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIOptionHiddenUnion1: all fields are null")
 }
 
-type UIOption1 struct {
-	Value    string                  `json:"value"`
-	Label    string                  `json:"label"`
-	Disabled *UIOptionDisabledUnion1 `json:"disabled,omitempty"`
-	Hidden   *UIOptionHiddenUnion1   `json:"hidden,omitempty"`
+type GetConfigurationProductsUIOption1 struct {
+	Value    string                                          `json:"value"`
+	Label    string                                          `json:"label"`
+	Disabled *GetConfigurationProductsUIOptionDisabledUnion1 `json:"disabled,omitempty"`
+	Hidden   *GetConfigurationProductsUIOptionHiddenUnion1   `json:"hidden,omitempty"`
 }
 
-func (o *UIOption1) GetValue() string {
+func (g GetConfigurationProductsUIOption1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIOption1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"value", "label"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIOption1) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *UIOption1) GetLabel() string {
+func (o *GetConfigurationProductsUIOption1) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *UIOption1) GetDisabled() *UIOptionDisabledUnion1 {
+func (o *GetConfigurationProductsUIOption1) GetDisabled() *GetConfigurationProductsUIOptionDisabledUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.Disabled
 }
 
-func (o *UIOption1) GetHidden() *UIOptionHiddenUnion1 {
+func (o *GetConfigurationProductsUIOption1) GetHidden() *GetConfigurationProductsUIOptionHiddenUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.Hidden
 }
 
-type MinLengthAtBRANDAt4479432 struct {
+type MinLengthAtBRANDAt5025402 struct {
 }
 
-type MinLength2 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt4479432 `json:"__@BRAND@447943"`
+func (m MinLengthAtBRANDAt5025402) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (o *MinLength2) GetAtBRANDAt447943() MinLengthAtBRANDAt4479432 {
-	if o == nil {
-		return MinLengthAtBRANDAt4479432{}
+func (m *MinLengthAtBRANDAt5025402) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type MaxLengthAtBRANDAt4479432 struct {
+type GetConfigurationProductsMinLength2 struct {
+	AtBRANDAt502540 MinLengthAtBRANDAt5025402 `json:"__@BRAND@502540"`
 }
 
-type MaxLength2 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt4479432 `json:"__@BRAND@447943"`
+func (g GetConfigurationProductsMinLength2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
 }
 
-func (o *MaxLength2) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479432 {
-	if o == nil {
-		return MaxLengthAtBRANDAt4479432{}
+func (g *GetConfigurationProductsMinLength2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
 	}
-	return o.AtBRANDAt447943
+	return nil
 }
 
-type PatternAtBRANDAt4479432 struct {
-}
-
-type Pattern2 struct {
-	AtBRANDAt447943 PatternAtBRANDAt4479432 `json:"__@BRAND@447943"`
-}
-
-func (o *Pattern2) GetAtBRANDAt447943() PatternAtBRANDAt4479432 {
+func (o *GetConfigurationProductsMinLength2) GetAtBRANDAt502540() MinLengthAtBRANDAt5025402 {
 	if o == nil {
-		return PatternAtBRANDAt4479432{}
+		return MinLengthAtBRANDAt5025402{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type UIReadOnlyEnum5 string
+type MaxLengthAtBRANDAt5025402 struct {
+}
+
+func (m MaxLengthAtBRANDAt5025402) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt5025402) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsMaxLength2 struct {
+	AtBRANDAt502540 MaxLengthAtBRANDAt5025402 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsMaxLength2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsMaxLength2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsMaxLength2) GetAtBRANDAt502540() MaxLengthAtBRANDAt5025402 {
+	if o == nil {
+		return MaxLengthAtBRANDAt5025402{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type PatternAtBRANDAt5025402 struct {
+}
+
+func (p PatternAtBRANDAt5025402) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt5025402) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsPattern2 struct {
+	AtBRANDAt502540 PatternAtBRANDAt5025402 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsPattern2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPattern2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPattern2) GetAtBRANDAt502540() PatternAtBRANDAt5025402 {
+	if o == nil {
+		return PatternAtBRANDAt5025402{}
+	}
+	return o.AtBRANDAt502540
+}
+
+type GetConfigurationProductsUIReadOnlyEnum5 string
 
 const (
-	UIReadOnlyEnum5Update UIReadOnlyEnum5 = "update"
-	UIReadOnlyEnum5Create UIReadOnlyEnum5 = "create"
+	GetConfigurationProductsUIReadOnlyEnum5Update GetConfigurationProductsUIReadOnlyEnum5 = "update"
+	GetConfigurationProductsUIReadOnlyEnum5Create GetConfigurationProductsUIReadOnlyEnum5 = "create"
 )
 
-func (e UIReadOnlyEnum5) ToPointer() *UIReadOnlyEnum5 {
+func (e GetConfigurationProductsUIReadOnlyEnum5) ToPointer() *GetConfigurationProductsUIReadOnlyEnum5 {
 	return &e
 }
-func (e *UIReadOnlyEnum5) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum5) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5185,120 +6054,131 @@ func (e *UIReadOnlyEnum5) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum5(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum5(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum5: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum5: %v", v)
 	}
 }
 
-type UIReadOnly5 struct {
+type GetConfigurationProductsUIReadOnly5 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly5) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly5) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion5Type string
+type GetConfigurationProductsUIReadOnlyUnion5Type string
 
 const (
-	UIReadOnlyUnion5TypeBoolean         UIReadOnlyUnion5Type = "boolean"
-	UIReadOnlyUnion5TypeUIReadOnly5     UIReadOnlyUnion5Type = "ui:read-only_5"
-	UIReadOnlyUnion5TypeUIReadOnlyEnum5 UIReadOnlyUnion5Type = "ui:read-only_enum_5"
+	GetConfigurationProductsUIReadOnlyUnion5TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion5Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnly5     GetConfigurationProductsUIReadOnlyUnion5Type = "getConfigurationProducts_ui:read-only_5"
+	GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnlyEnum5 GetConfigurationProductsUIReadOnlyUnion5Type = "getConfigurationProducts_ui:read-only_enum_5"
 )
 
-type UIReadOnlyUnion5 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly5     *UIReadOnly5     `queryParam:"inline"`
-	UIReadOnlyEnum5 *UIReadOnlyEnum5 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion5 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly5     *GetConfigurationProductsUIReadOnly5     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum5 *GetConfigurationProductsUIReadOnlyEnum5 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion5Type
+	Type GetConfigurationProductsUIReadOnlyUnion5Type
 }
 
-func CreateUIReadOnlyUnion5Boolean(boolean bool) UIReadOnlyUnion5 {
-	typ := UIReadOnlyUnion5TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion5Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion5 {
+	typ := GetConfigurationProductsUIReadOnlyUnion5TypeBoolean
 
-	return UIReadOnlyUnion5{
+	return GetConfigurationProductsUIReadOnlyUnion5{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion5UIReadOnly5(uiReadOnly5 UIReadOnly5) UIReadOnlyUnion5 {
-	typ := UIReadOnlyUnion5TypeUIReadOnly5
+func CreateGetConfigurationProductsUIReadOnlyUnion5GetConfigurationProductsUIReadOnly5(getConfigurationProductsUIReadOnly5 GetConfigurationProductsUIReadOnly5) GetConfigurationProductsUIReadOnlyUnion5 {
+	typ := GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnly5
 
-	return UIReadOnlyUnion5{
-		UIReadOnly5: &uiReadOnly5,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion5{
+		GetConfigurationProductsUIReadOnly5: &getConfigurationProductsUIReadOnly5,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion5UIReadOnlyEnum5(uiReadOnlyEnum5 UIReadOnlyEnum5) UIReadOnlyUnion5 {
-	typ := UIReadOnlyUnion5TypeUIReadOnlyEnum5
+func CreateGetConfigurationProductsUIReadOnlyUnion5GetConfigurationProductsUIReadOnlyEnum5(getConfigurationProductsUIReadOnlyEnum5 GetConfigurationProductsUIReadOnlyEnum5) GetConfigurationProductsUIReadOnlyUnion5 {
+	typ := GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnlyEnum5
 
-	return UIReadOnlyUnion5{
-		UIReadOnlyEnum5: &uiReadOnlyEnum5,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion5{
+		GetConfigurationProductsUIReadOnlyEnum5: &getConfigurationProductsUIReadOnlyEnum5,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion5) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion5) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly5 UIReadOnly5 = UIReadOnly5{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly5, "", true, true); err == nil {
-		u.UIReadOnly5 = &uiReadOnly5
-		u.Type = UIReadOnlyUnion5TypeUIReadOnly5
+	var getConfigurationProductsUIReadOnly5 GetConfigurationProductsUIReadOnly5 = GetConfigurationProductsUIReadOnly5{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly5 = &getConfigurationProductsUIReadOnly5
+		u.Type = GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnly5
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion5TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion5TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum5 UIReadOnlyEnum5 = UIReadOnlyEnum5("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum5, "", true, true); err == nil {
-		u.UIReadOnlyEnum5 = &uiReadOnlyEnum5
-		u.Type = UIReadOnlyUnion5TypeUIReadOnlyEnum5
+	var getConfigurationProductsUIReadOnlyEnum5 GetConfigurationProductsUIReadOnlyEnum5 = GetConfigurationProductsUIReadOnlyEnum5("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum5 = &getConfigurationProductsUIReadOnlyEnum5
+		u.Type = GetConfigurationProductsUIReadOnlyUnion5TypeGetConfigurationProductsUIReadOnlyEnum5
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion5", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion5", string(data))
 }
 
-func (u UIReadOnlyUnion5) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion5) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly5 != nil {
-		return utils.MarshalJSON(u.UIReadOnly5, "", true)
+	if u.GetConfigurationProductsUIReadOnly5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly5, "", true)
 	}
 
-	if u.UIReadOnlyEnum5 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum5, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum5, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion5: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion5: all fields are null")
 }
 
-type UIHiddenEnum5 string
+type GetConfigurationProductsUIHiddenEnum5 string
 
 const (
-	UIHiddenEnum5Update UIHiddenEnum5 = "update"
-	UIHiddenEnum5Create UIHiddenEnum5 = "create"
+	GetConfigurationProductsUIHiddenEnum5Update GetConfigurationProductsUIHiddenEnum5 = "update"
+	GetConfigurationProductsUIHiddenEnum5Create GetConfigurationProductsUIHiddenEnum5 = "create"
 )
 
-func (e UIHiddenEnum5) ToPointer() *UIHiddenEnum5 {
+func (e GetConfigurationProductsUIHiddenEnum5) ToPointer() *GetConfigurationProductsUIHiddenEnum5 {
 	return &e
 }
-func (e *UIHiddenEnum5) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum5) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5307,120 +6187,131 @@ func (e *UIHiddenEnum5) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum5(v)
+		*e = GetConfigurationProductsUIHiddenEnum5(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum5: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum5: %v", v)
 	}
 }
 
-type UIHidden5 struct {
+type GetConfigurationProductsUIHidden5 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden5) GetExpr() string {
+func (g GetConfigurationProductsUIHidden5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden5) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion5Type string
+type GetConfigurationProductsUIHiddenUnion5Type string
 
 const (
-	UIHiddenUnion5TypeBoolean       UIHiddenUnion5Type = "boolean"
-	UIHiddenUnion5TypeUIHidden5     UIHiddenUnion5Type = "ui:hidden_5"
-	UIHiddenUnion5TypeUIHiddenEnum5 UIHiddenUnion5Type = "ui:hidden_enum_5"
+	GetConfigurationProductsUIHiddenUnion5TypeBoolean                               GetConfigurationProductsUIHiddenUnion5Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHidden5     GetConfigurationProductsUIHiddenUnion5Type = "getConfigurationProducts_ui:hidden_5"
+	GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHiddenEnum5 GetConfigurationProductsUIHiddenUnion5Type = "getConfigurationProducts_ui:hidden_enum_5"
 )
 
-type UIHiddenUnion5 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden5     *UIHidden5     `queryParam:"inline"`
-	UIHiddenEnum5 *UIHiddenEnum5 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion5 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden5     *GetConfigurationProductsUIHidden5     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum5 *GetConfigurationProductsUIHiddenEnum5 `queryParam:"inline"`
 
-	Type UIHiddenUnion5Type
+	Type GetConfigurationProductsUIHiddenUnion5Type
 }
 
-func CreateUIHiddenUnion5Boolean(boolean bool) UIHiddenUnion5 {
-	typ := UIHiddenUnion5TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion5Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion5 {
+	typ := GetConfigurationProductsUIHiddenUnion5TypeBoolean
 
-	return UIHiddenUnion5{
+	return GetConfigurationProductsUIHiddenUnion5{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion5UIHidden5(uiHidden5 UIHidden5) UIHiddenUnion5 {
-	typ := UIHiddenUnion5TypeUIHidden5
+func CreateGetConfigurationProductsUIHiddenUnion5GetConfigurationProductsUIHidden5(getConfigurationProductsUIHidden5 GetConfigurationProductsUIHidden5) GetConfigurationProductsUIHiddenUnion5 {
+	typ := GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHidden5
 
-	return UIHiddenUnion5{
-		UIHidden5: &uiHidden5,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion5{
+		GetConfigurationProductsUIHidden5: &getConfigurationProductsUIHidden5,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion5UIHiddenEnum5(uiHiddenEnum5 UIHiddenEnum5) UIHiddenUnion5 {
-	typ := UIHiddenUnion5TypeUIHiddenEnum5
+func CreateGetConfigurationProductsUIHiddenUnion5GetConfigurationProductsUIHiddenEnum5(getConfigurationProductsUIHiddenEnum5 GetConfigurationProductsUIHiddenEnum5) GetConfigurationProductsUIHiddenUnion5 {
+	typ := GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHiddenEnum5
 
-	return UIHiddenUnion5{
-		UIHiddenEnum5: &uiHiddenEnum5,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion5{
+		GetConfigurationProductsUIHiddenEnum5: &getConfigurationProductsUIHiddenEnum5,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion5) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion5) UnmarshalJSON(data []byte) error {
 
-	var uiHidden5 UIHidden5 = UIHidden5{}
-	if err := utils.UnmarshalJSON(data, &uiHidden5, "", true, true); err == nil {
-		u.UIHidden5 = &uiHidden5
-		u.Type = UIHiddenUnion5TypeUIHidden5
+	var getConfigurationProductsUIHidden5 GetConfigurationProductsUIHidden5 = GetConfigurationProductsUIHidden5{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden5 = &getConfigurationProductsUIHidden5
+		u.Type = GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHidden5
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion5TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion5TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum5 UIHiddenEnum5 = UIHiddenEnum5("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum5, "", true, true); err == nil {
-		u.UIHiddenEnum5 = &uiHiddenEnum5
-		u.Type = UIHiddenUnion5TypeUIHiddenEnum5
+	var getConfigurationProductsUIHiddenEnum5 GetConfigurationProductsUIHiddenEnum5 = GetConfigurationProductsUIHiddenEnum5("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum5 = &getConfigurationProductsUIHiddenEnum5
+		u.Type = GetConfigurationProductsUIHiddenUnion5TypeGetConfigurationProductsUIHiddenEnum5
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion5", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion5", string(data))
 }
 
-func (u UIHiddenUnion5) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion5) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden5 != nil {
-		return utils.MarshalJSON(u.UIHidden5, "", true)
+	if u.GetConfigurationProductsUIHidden5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden5, "", true)
 	}
 
-	if u.UIHiddenEnum5 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum5, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum5, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion5: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion5: all fields are null")
 }
 
-type UIDisabledEnum5 string
+type GetConfigurationProductsUIDisabledEnum5 string
 
 const (
-	UIDisabledEnum5Update UIDisabledEnum5 = "update"
-	UIDisabledEnum5Create UIDisabledEnum5 = "create"
+	GetConfigurationProductsUIDisabledEnum5Update GetConfigurationProductsUIDisabledEnum5 = "update"
+	GetConfigurationProductsUIDisabledEnum5Create GetConfigurationProductsUIDisabledEnum5 = "create"
 )
 
-func (e UIDisabledEnum5) ToPointer() *UIDisabledEnum5 {
+func (e GetConfigurationProductsUIDisabledEnum5) ToPointer() *GetConfigurationProductsUIDisabledEnum5 {
 	return &e
 }
-func (e *UIDisabledEnum5) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum5) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5429,464 +6320,519 @@ func (e *UIDisabledEnum5) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum5(v)
+		*e = GetConfigurationProductsUIDisabledEnum5(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum5: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum5: %v", v)
 	}
 }
 
-type UIDisabled5 struct {
+type GetConfigurationProductsUIDisabled5 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled5) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled5) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion5Type string
+type GetConfigurationProductsUIDisabledUnion5Type string
 
 const (
-	UIDisabledUnion5TypeBoolean         UIDisabledUnion5Type = "boolean"
-	UIDisabledUnion5TypeUIDisabled5     UIDisabledUnion5Type = "ui:disabled_5"
-	UIDisabledUnion5TypeUIDisabledEnum5 UIDisabledUnion5Type = "ui:disabled_enum_5"
+	GetConfigurationProductsUIDisabledUnion5TypeBoolean                                 GetConfigurationProductsUIDisabledUnion5Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabled5     GetConfigurationProductsUIDisabledUnion5Type = "getConfigurationProducts_ui:disabled_5"
+	GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabledEnum5 GetConfigurationProductsUIDisabledUnion5Type = "getConfigurationProducts_ui:disabled_enum_5"
 )
 
-type UIDisabledUnion5 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled5     *UIDisabled5     `queryParam:"inline"`
-	UIDisabledEnum5 *UIDisabledEnum5 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion5 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled5     *GetConfigurationProductsUIDisabled5     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum5 *GetConfigurationProductsUIDisabledEnum5 `queryParam:"inline"`
 
-	Type UIDisabledUnion5Type
+	Type GetConfigurationProductsUIDisabledUnion5Type
 }
 
-func CreateUIDisabledUnion5Boolean(boolean bool) UIDisabledUnion5 {
-	typ := UIDisabledUnion5TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion5Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion5 {
+	typ := GetConfigurationProductsUIDisabledUnion5TypeBoolean
 
-	return UIDisabledUnion5{
+	return GetConfigurationProductsUIDisabledUnion5{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion5UIDisabled5(uiDisabled5 UIDisabled5) UIDisabledUnion5 {
-	typ := UIDisabledUnion5TypeUIDisabled5
+func CreateGetConfigurationProductsUIDisabledUnion5GetConfigurationProductsUIDisabled5(getConfigurationProductsUIDisabled5 GetConfigurationProductsUIDisabled5) GetConfigurationProductsUIDisabledUnion5 {
+	typ := GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabled5
 
-	return UIDisabledUnion5{
-		UIDisabled5: &uiDisabled5,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion5{
+		GetConfigurationProductsUIDisabled5: &getConfigurationProductsUIDisabled5,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion5UIDisabledEnum5(uiDisabledEnum5 UIDisabledEnum5) UIDisabledUnion5 {
-	typ := UIDisabledUnion5TypeUIDisabledEnum5
+func CreateGetConfigurationProductsUIDisabledUnion5GetConfigurationProductsUIDisabledEnum5(getConfigurationProductsUIDisabledEnum5 GetConfigurationProductsUIDisabledEnum5) GetConfigurationProductsUIDisabledUnion5 {
+	typ := GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabledEnum5
 
-	return UIDisabledUnion5{
-		UIDisabledEnum5: &uiDisabledEnum5,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion5{
+		GetConfigurationProductsUIDisabledEnum5: &getConfigurationProductsUIDisabledEnum5,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion5) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion5) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled5 UIDisabled5 = UIDisabled5{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled5, "", true, true); err == nil {
-		u.UIDisabled5 = &uiDisabled5
-		u.Type = UIDisabledUnion5TypeUIDisabled5
+	var getConfigurationProductsUIDisabled5 GetConfigurationProductsUIDisabled5 = GetConfigurationProductsUIDisabled5{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled5 = &getConfigurationProductsUIDisabled5
+		u.Type = GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabled5
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion5TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion5TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum5 UIDisabledEnum5 = UIDisabledEnum5("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum5, "", true, true); err == nil {
-		u.UIDisabledEnum5 = &uiDisabledEnum5
-		u.Type = UIDisabledUnion5TypeUIDisabledEnum5
+	var getConfigurationProductsUIDisabledEnum5 GetConfigurationProductsUIDisabledEnum5 = GetConfigurationProductsUIDisabledEnum5("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum5 = &getConfigurationProductsUIDisabledEnum5
+		u.Type = GetConfigurationProductsUIDisabledUnion5TypeGetConfigurationProductsUIDisabledEnum5
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion5", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion5", string(data))
 }
 
-func (u UIDisabledUnion5) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion5) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled5 != nil {
-		return utils.MarshalJSON(u.UIDisabled5, "", true)
+	if u.GetConfigurationProductsUIDisabled5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled5, "", true)
 	}
 
-	if u.UIDisabledEnum5 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum5, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum5, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion5: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion5: all fields are null")
 }
 
-type UIDescription5 struct {
+type GetConfigurationProductsUIDescription5 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription5) GetExpr() string {
+func (g GetConfigurationProductsUIDescription5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription5) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion5Type string
+type GetConfigurationProductsUIDescriptionUnion5Type string
 
 const (
-	UIDescriptionUnion5TypeStr            UIDescriptionUnion5Type = "str"
-	UIDescriptionUnion5TypeUIDescription5 UIDescriptionUnion5Type = "ui:description_5"
+	GetConfigurationProductsUIDescriptionUnion5TypeStr                                    GetConfigurationProductsUIDescriptionUnion5Type = "str"
+	GetConfigurationProductsUIDescriptionUnion5TypeGetConfigurationProductsUIDescription5 GetConfigurationProductsUIDescriptionUnion5Type = "getConfigurationProducts_ui:description_5"
 )
 
-type UIDescriptionUnion5 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription5 *UIDescription5 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion5 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription5 *GetConfigurationProductsUIDescription5 `queryParam:"inline"`
 
-	Type UIDescriptionUnion5Type
+	Type GetConfigurationProductsUIDescriptionUnion5Type
 }
 
-func CreateUIDescriptionUnion5Str(str string) UIDescriptionUnion5 {
-	typ := UIDescriptionUnion5TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion5Str(str string) GetConfigurationProductsUIDescriptionUnion5 {
+	typ := GetConfigurationProductsUIDescriptionUnion5TypeStr
 
-	return UIDescriptionUnion5{
+	return GetConfigurationProductsUIDescriptionUnion5{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion5UIDescription5(uiDescription5 UIDescription5) UIDescriptionUnion5 {
-	typ := UIDescriptionUnion5TypeUIDescription5
+func CreateGetConfigurationProductsUIDescriptionUnion5GetConfigurationProductsUIDescription5(getConfigurationProductsUIDescription5 GetConfigurationProductsUIDescription5) GetConfigurationProductsUIDescriptionUnion5 {
+	typ := GetConfigurationProductsUIDescriptionUnion5TypeGetConfigurationProductsUIDescription5
 
-	return UIDescriptionUnion5{
-		UIDescription5: &uiDescription5,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion5{
+		GetConfigurationProductsUIDescription5: &getConfigurationProductsUIDescription5,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion5) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion5) UnmarshalJSON(data []byte) error {
 
-	var uiDescription5 UIDescription5 = UIDescription5{}
-	if err := utils.UnmarshalJSON(data, &uiDescription5, "", true, true); err == nil {
-		u.UIDescription5 = &uiDescription5
-		u.Type = UIDescriptionUnion5TypeUIDescription5
+	var getConfigurationProductsUIDescription5 GetConfigurationProductsUIDescription5 = GetConfigurationProductsUIDescription5{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription5, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription5 = &getConfigurationProductsUIDescription5
+		u.Type = GetConfigurationProductsUIDescriptionUnion5TypeGetConfigurationProductsUIDescription5
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion5TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion5TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion5", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion5", string(data))
 }
 
-func (u UIDescriptionUnion5) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion5) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription5 != nil {
-		return utils.MarshalJSON(u.UIDescription5, "", true)
+	if u.GetConfigurationProductsUIDescription5 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription5, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion5: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion5: all fields are null")
 }
 
-type UIFormattedValue5 struct {
+type GetConfigurationProductsUIFormattedValue5 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue5) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue5) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type PropertiesSelect struct {
-	Type             TypeString2          `json:"type"`
-	UIControl        UIControlSelect      `json:"ui:control"`
-	UIOptions        []UIOption1          `json:"ui:options"`
-	Description      *string              `json:"description,omitempty"`
-	MinLength        *MinLength2          `json:"minLength,omitempty"`
-	MaxLength        *MaxLength2          `json:"maxLength,omitempty"`
-	Pattern          *Pattern2            `json:"pattern,omitempty"`
-	Default          *string              `json:"default,omitempty"`
-	Enum             []string             `json:"enum,omitempty"`
-	UILabel          *string              `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion5    `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion5      `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion5    `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion5 `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue5   `json:"ui:formatted-value,omitempty"`
-	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
+type GetConfigurationProductsPropertiesSelect struct {
+	Type             GetConfigurationProductsTypeString2          `json:"type"`
+	UIControl        GetConfigurationProductsUIControlSelect      `json:"ui:control"`
+	UIOptions        []GetConfigurationProductsUIOption1          `json:"ui:options"`
+	Description      *string                                      `json:"description,omitempty"`
+	MinLength        *GetConfigurationProductsMinLength2          `json:"minLength,omitempty"`
+	MaxLength        *GetConfigurationProductsMaxLength2          `json:"maxLength,omitempty"`
+	Pattern          *GetConfigurationProductsPattern2            `json:"pattern,omitempty"`
+	Default          *string                                      `json:"default,omitempty"`
+	Enum             []string                                     `json:"enum,omitempty"`
+	UILabel          *string                                      `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion5    `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion5      `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion5    `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion5 `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue5   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 }
 
-func (o *PropertiesSelect) GetType() TypeString2 {
+func (g GetConfigurationProductsPropertiesSelect) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPropertiesSelect) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ui:control", "ui:options"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPropertiesSelect) GetType() GetConfigurationProductsTypeString2 {
 	if o == nil {
-		return TypeString2("")
+		return GetConfigurationProductsTypeString2("")
 	}
 	return o.Type
 }
 
-func (o *PropertiesSelect) GetUIControl() UIControlSelect {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIControl() GetConfigurationProductsUIControlSelect {
 	if o == nil {
-		return UIControlSelect("")
+		return GetConfigurationProductsUIControlSelect("")
 	}
 	return o.UIControl
 }
 
-func (o *PropertiesSelect) GetUIOptions() []UIOption1 {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIOptions() []GetConfigurationProductsUIOption1 {
 	if o == nil {
-		return []UIOption1{}
+		return []GetConfigurationProductsUIOption1{}
 	}
 	return o.UIOptions
 }
 
-func (o *PropertiesSelect) GetDescription() *string {
+func (o *GetConfigurationProductsPropertiesSelect) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PropertiesSelect) GetMinLength() *MinLength2 {
+func (o *GetConfigurationProductsPropertiesSelect) GetMinLength() *GetConfigurationProductsMinLength2 {
 	if o == nil {
 		return nil
 	}
 	return o.MinLength
 }
 
-func (o *PropertiesSelect) GetMaxLength() *MaxLength2 {
+func (o *GetConfigurationProductsPropertiesSelect) GetMaxLength() *GetConfigurationProductsMaxLength2 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxLength
 }
 
-func (o *PropertiesSelect) GetPattern() *Pattern2 {
+func (o *GetConfigurationProductsPropertiesSelect) GetPattern() *GetConfigurationProductsPattern2 {
 	if o == nil {
 		return nil
 	}
 	return o.Pattern
 }
 
-func (o *PropertiesSelect) GetDefault() *string {
+func (o *GetConfigurationProductsPropertiesSelect) GetDefault() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *PropertiesSelect) GetEnum() []string {
+func (o *GetConfigurationProductsPropertiesSelect) GetEnum() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Enum
 }
 
-func (o *PropertiesSelect) GetUILabel() *string {
+func (o *GetConfigurationProductsPropertiesSelect) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *PropertiesSelect) GetUIReadOnly() *UIReadOnlyUnion5 {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion5 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesSelect) GetUIHidden() *UIHiddenUnion5 {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIHidden() *GetConfigurationProductsUIHiddenUnion5 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesSelect) GetUIDisabled() *UIDisabledUnion5 {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion5 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesSelect) GetUIDescription() *UIDescriptionUnion5 {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion5 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesSelect) GetUIFormattedValue() *UIFormattedValue5 {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue5 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-func (o *PropertiesSelect) GetUIPlaceholder() *string {
+func (o *GetConfigurationProductsPropertiesSelect) GetUIPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UIPlaceholder
 }
 
-type TypeArray1 string
+type GetConfigurationProductsTypeArray1 string
 
 const (
-	TypeArray1Array TypeArray1 = "array"
+	GetConfigurationProductsTypeArray1Array GetConfigurationProductsTypeArray1 = "array"
 )
 
-func (e TypeArray1) ToPointer() *TypeArray1 {
+func (e GetConfigurationProductsTypeArray1) ToPointer() *GetConfigurationProductsTypeArray1 {
 	return &e
 }
-func (e *TypeArray1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeArray1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "array":
-		*e = TypeArray1(v)
+		*e = GetConfigurationProductsTypeArray1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeArray1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeArray1: %v", v)
 	}
 }
 
-type UIControlSlider string
+type GetConfigurationProductsUIControlSlider string
 
 const (
-	UIControlSliderSlider UIControlSlider = "slider"
+	GetConfigurationProductsUIControlSliderSlider GetConfigurationProductsUIControlSlider = "slider"
 )
 
-func (e UIControlSlider) ToPointer() *UIControlSlider {
+func (e GetConfigurationProductsUIControlSlider) ToPointer() *GetConfigurationProductsUIControlSlider {
 	return &e
 }
-func (e *UIControlSlider) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIControlSlider) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "slider":
-		*e = UIControlSlider(v)
+		*e = GetConfigurationProductsUIControlSlider(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIControlSlider: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIControlSlider: %v", v)
 	}
 }
 
-type TypeNumber2 string
+type GetConfigurationProductsTypeNumber2 string
 
 const (
-	TypeNumber2Number TypeNumber2 = "number"
+	GetConfigurationProductsTypeNumber2Number GetConfigurationProductsTypeNumber2 = "number"
 )
 
-func (e TypeNumber2) ToPointer() *TypeNumber2 {
+func (e GetConfigurationProductsTypeNumber2) ToPointer() *GetConfigurationProductsTypeNumber2 {
 	return &e
 }
-func (e *TypeNumber2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeNumber2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "number":
-		*e = TypeNumber2(v)
+		*e = GetConfigurationProductsTypeNumber2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeNumber2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeNumber2: %v", v)
 	}
 }
 
-type ItemsNumber struct {
-	Type             TypeNumber2 `json:"type"`
-	Description      *string     `json:"description,omitempty"`
-	Minimum          *float64    `json:"minimum,omitempty"`
-	ExclusiveMinimum *float64    `json:"exclusiveMinimum,omitempty"`
-	Maximum          *float64    `json:"maximum,omitempty"`
-	ExclusiveMaximum *float64    `json:"exclusiveMaximum,omitempty"`
-	Default          *float64    `json:"default,omitempty"`
+type GetConfigurationProductsItemsNumber struct {
+	Type             GetConfigurationProductsTypeNumber2 `json:"type"`
+	Description      *string                             `json:"description,omitempty"`
+	Minimum          *float64                            `json:"minimum,omitempty"`
+	ExclusiveMinimum *float64                            `json:"exclusiveMinimum,omitempty"`
+	Maximum          *float64                            `json:"maximum,omitempty"`
+	ExclusiveMaximum *float64                            `json:"exclusiveMaximum,omitempty"`
+	Default          *float64                            `json:"default,omitempty"`
 }
 
-func (o *ItemsNumber) GetType() TypeNumber2 {
+func (g GetConfigurationProductsItemsNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsItemsNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsItemsNumber) GetType() GetConfigurationProductsTypeNumber2 {
 	if o == nil {
-		return TypeNumber2("")
+		return GetConfigurationProductsTypeNumber2("")
 	}
 	return o.Type
 }
 
-func (o *ItemsNumber) GetDescription() *string {
+func (o *GetConfigurationProductsItemsNumber) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *ItemsNumber) GetMinimum() *float64 {
+func (o *GetConfigurationProductsItemsNumber) GetMinimum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Minimum
 }
 
-func (o *ItemsNumber) GetExclusiveMinimum() *float64 {
+func (o *GetConfigurationProductsItemsNumber) GetExclusiveMinimum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExclusiveMinimum
 }
 
-func (o *ItemsNumber) GetMaximum() *float64 {
+func (o *GetConfigurationProductsItemsNumber) GetMaximum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Maximum
 }
 
-func (o *ItemsNumber) GetExclusiveMaximum() *float64 {
+func (o *GetConfigurationProductsItemsNumber) GetExclusiveMaximum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExclusiveMaximum
 }
 
-func (o *ItemsNumber) GetDefault() *float64 {
+func (o *GetConfigurationProductsItemsNumber) GetDefault() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-type UIReadOnlyEnum4 string
+type GetConfigurationProductsUIReadOnlyEnum4 string
 
 const (
-	UIReadOnlyEnum4Update UIReadOnlyEnum4 = "update"
-	UIReadOnlyEnum4Create UIReadOnlyEnum4 = "create"
+	GetConfigurationProductsUIReadOnlyEnum4Update GetConfigurationProductsUIReadOnlyEnum4 = "update"
+	GetConfigurationProductsUIReadOnlyEnum4Create GetConfigurationProductsUIReadOnlyEnum4 = "create"
 )
 
-func (e UIReadOnlyEnum4) ToPointer() *UIReadOnlyEnum4 {
+func (e GetConfigurationProductsUIReadOnlyEnum4) ToPointer() *GetConfigurationProductsUIReadOnlyEnum4 {
 	return &e
 }
-func (e *UIReadOnlyEnum4) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -5895,120 +6841,131 @@ func (e *UIReadOnlyEnum4) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum4(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum4: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum4: %v", v)
 	}
 }
 
-type UIReadOnly4 struct {
+type GetConfigurationProductsUIReadOnly4 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly4) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion4Type string
+type GetConfigurationProductsUIReadOnlyUnion4Type string
 
 const (
-	UIReadOnlyUnion4TypeBoolean         UIReadOnlyUnion4Type = "boolean"
-	UIReadOnlyUnion4TypeUIReadOnly4     UIReadOnlyUnion4Type = "ui:read-only_4"
-	UIReadOnlyUnion4TypeUIReadOnlyEnum4 UIReadOnlyUnion4Type = "ui:read-only_enum_4"
+	GetConfigurationProductsUIReadOnlyUnion4TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion4Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnly4     GetConfigurationProductsUIReadOnlyUnion4Type = "getConfigurationProducts_ui:read-only_4"
+	GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnlyEnum4 GetConfigurationProductsUIReadOnlyUnion4Type = "getConfigurationProducts_ui:read-only_enum_4"
 )
 
-type UIReadOnlyUnion4 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly4     *UIReadOnly4     `queryParam:"inline"`
-	UIReadOnlyEnum4 *UIReadOnlyEnum4 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion4 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly4     *GetConfigurationProductsUIReadOnly4     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum4 *GetConfigurationProductsUIReadOnlyEnum4 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion4Type
+	Type GetConfigurationProductsUIReadOnlyUnion4Type
 }
 
-func CreateUIReadOnlyUnion4Boolean(boolean bool) UIReadOnlyUnion4 {
-	typ := UIReadOnlyUnion4TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion4Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion4 {
+	typ := GetConfigurationProductsUIReadOnlyUnion4TypeBoolean
 
-	return UIReadOnlyUnion4{
+	return GetConfigurationProductsUIReadOnlyUnion4{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion4UIReadOnly4(uiReadOnly4 UIReadOnly4) UIReadOnlyUnion4 {
-	typ := UIReadOnlyUnion4TypeUIReadOnly4
+func CreateGetConfigurationProductsUIReadOnlyUnion4GetConfigurationProductsUIReadOnly4(getConfigurationProductsUIReadOnly4 GetConfigurationProductsUIReadOnly4) GetConfigurationProductsUIReadOnlyUnion4 {
+	typ := GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnly4
 
-	return UIReadOnlyUnion4{
-		UIReadOnly4: &uiReadOnly4,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion4{
+		GetConfigurationProductsUIReadOnly4: &getConfigurationProductsUIReadOnly4,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion4UIReadOnlyEnum4(uiReadOnlyEnum4 UIReadOnlyEnum4) UIReadOnlyUnion4 {
-	typ := UIReadOnlyUnion4TypeUIReadOnlyEnum4
+func CreateGetConfigurationProductsUIReadOnlyUnion4GetConfigurationProductsUIReadOnlyEnum4(getConfigurationProductsUIReadOnlyEnum4 GetConfigurationProductsUIReadOnlyEnum4) GetConfigurationProductsUIReadOnlyUnion4 {
+	typ := GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnlyEnum4
 
-	return UIReadOnlyUnion4{
-		UIReadOnlyEnum4: &uiReadOnlyEnum4,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion4{
+		GetConfigurationProductsUIReadOnlyEnum4: &getConfigurationProductsUIReadOnlyEnum4,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion4) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion4) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly4 UIReadOnly4 = UIReadOnly4{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly4, "", true, true); err == nil {
-		u.UIReadOnly4 = &uiReadOnly4
-		u.Type = UIReadOnlyUnion4TypeUIReadOnly4
+	var getConfigurationProductsUIReadOnly4 GetConfigurationProductsUIReadOnly4 = GetConfigurationProductsUIReadOnly4{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly4 = &getConfigurationProductsUIReadOnly4
+		u.Type = GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnly4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion4TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion4TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum4 UIReadOnlyEnum4 = UIReadOnlyEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum4, "", true, true); err == nil {
-		u.UIReadOnlyEnum4 = &uiReadOnlyEnum4
-		u.Type = UIReadOnlyUnion4TypeUIReadOnlyEnum4
+	var getConfigurationProductsUIReadOnlyEnum4 GetConfigurationProductsUIReadOnlyEnum4 = GetConfigurationProductsUIReadOnlyEnum4("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum4 = &getConfigurationProductsUIReadOnlyEnum4
+		u.Type = GetConfigurationProductsUIReadOnlyUnion4TypeGetConfigurationProductsUIReadOnlyEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion4", string(data))
 }
 
-func (u UIReadOnlyUnion4) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion4) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly4 != nil {
-		return utils.MarshalJSON(u.UIReadOnly4, "", true)
+	if u.GetConfigurationProductsUIReadOnly4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly4, "", true)
 	}
 
-	if u.UIReadOnlyEnum4 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum4, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion4: all fields are null")
 }
 
-type UIHiddenEnum4 string
+type GetConfigurationProductsUIHiddenEnum4 string
 
 const (
-	UIHiddenEnum4Update UIHiddenEnum4 = "update"
-	UIHiddenEnum4Create UIHiddenEnum4 = "create"
+	GetConfigurationProductsUIHiddenEnum4Update GetConfigurationProductsUIHiddenEnum4 = "update"
+	GetConfigurationProductsUIHiddenEnum4Create GetConfigurationProductsUIHiddenEnum4 = "create"
 )
 
-func (e UIHiddenEnum4) ToPointer() *UIHiddenEnum4 {
+func (e GetConfigurationProductsUIHiddenEnum4) ToPointer() *GetConfigurationProductsUIHiddenEnum4 {
 	return &e
 }
-func (e *UIHiddenEnum4) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -6017,120 +6974,131 @@ func (e *UIHiddenEnum4) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum4(v)
+		*e = GetConfigurationProductsUIHiddenEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum4: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum4: %v", v)
 	}
 }
 
-type UIHidden4 struct {
+type GetConfigurationProductsUIHidden4 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden4) GetExpr() string {
+func (g GetConfigurationProductsUIHidden4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion4Type string
+type GetConfigurationProductsUIHiddenUnion4Type string
 
 const (
-	UIHiddenUnion4TypeBoolean       UIHiddenUnion4Type = "boolean"
-	UIHiddenUnion4TypeUIHidden4     UIHiddenUnion4Type = "ui:hidden_4"
-	UIHiddenUnion4TypeUIHiddenEnum4 UIHiddenUnion4Type = "ui:hidden_enum_4"
+	GetConfigurationProductsUIHiddenUnion4TypeBoolean                               GetConfigurationProductsUIHiddenUnion4Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHidden4     GetConfigurationProductsUIHiddenUnion4Type = "getConfigurationProducts_ui:hidden_4"
+	GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHiddenEnum4 GetConfigurationProductsUIHiddenUnion4Type = "getConfigurationProducts_ui:hidden_enum_4"
 )
 
-type UIHiddenUnion4 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden4     *UIHidden4     `queryParam:"inline"`
-	UIHiddenEnum4 *UIHiddenEnum4 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion4 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden4     *GetConfigurationProductsUIHidden4     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum4 *GetConfigurationProductsUIHiddenEnum4 `queryParam:"inline"`
 
-	Type UIHiddenUnion4Type
+	Type GetConfigurationProductsUIHiddenUnion4Type
 }
 
-func CreateUIHiddenUnion4Boolean(boolean bool) UIHiddenUnion4 {
-	typ := UIHiddenUnion4TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion4Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion4 {
+	typ := GetConfigurationProductsUIHiddenUnion4TypeBoolean
 
-	return UIHiddenUnion4{
+	return GetConfigurationProductsUIHiddenUnion4{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion4UIHidden4(uiHidden4 UIHidden4) UIHiddenUnion4 {
-	typ := UIHiddenUnion4TypeUIHidden4
+func CreateGetConfigurationProductsUIHiddenUnion4GetConfigurationProductsUIHidden4(getConfigurationProductsUIHidden4 GetConfigurationProductsUIHidden4) GetConfigurationProductsUIHiddenUnion4 {
+	typ := GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHidden4
 
-	return UIHiddenUnion4{
-		UIHidden4: &uiHidden4,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion4{
+		GetConfigurationProductsUIHidden4: &getConfigurationProductsUIHidden4,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion4UIHiddenEnum4(uiHiddenEnum4 UIHiddenEnum4) UIHiddenUnion4 {
-	typ := UIHiddenUnion4TypeUIHiddenEnum4
+func CreateGetConfigurationProductsUIHiddenUnion4GetConfigurationProductsUIHiddenEnum4(getConfigurationProductsUIHiddenEnum4 GetConfigurationProductsUIHiddenEnum4) GetConfigurationProductsUIHiddenUnion4 {
+	typ := GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHiddenEnum4
 
-	return UIHiddenUnion4{
-		UIHiddenEnum4: &uiHiddenEnum4,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion4{
+		GetConfigurationProductsUIHiddenEnum4: &getConfigurationProductsUIHiddenEnum4,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion4) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion4) UnmarshalJSON(data []byte) error {
 
-	var uiHidden4 UIHidden4 = UIHidden4{}
-	if err := utils.UnmarshalJSON(data, &uiHidden4, "", true, true); err == nil {
-		u.UIHidden4 = &uiHidden4
-		u.Type = UIHiddenUnion4TypeUIHidden4
+	var getConfigurationProductsUIHidden4 GetConfigurationProductsUIHidden4 = GetConfigurationProductsUIHidden4{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden4 = &getConfigurationProductsUIHidden4
+		u.Type = GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHidden4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion4TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion4TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum4 UIHiddenEnum4 = UIHiddenEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum4, "", true, true); err == nil {
-		u.UIHiddenEnum4 = &uiHiddenEnum4
-		u.Type = UIHiddenUnion4TypeUIHiddenEnum4
+	var getConfigurationProductsUIHiddenEnum4 GetConfigurationProductsUIHiddenEnum4 = GetConfigurationProductsUIHiddenEnum4("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum4 = &getConfigurationProductsUIHiddenEnum4
+		u.Type = GetConfigurationProductsUIHiddenUnion4TypeGetConfigurationProductsUIHiddenEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion4", string(data))
 }
 
-func (u UIHiddenUnion4) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion4) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden4 != nil {
-		return utils.MarshalJSON(u.UIHidden4, "", true)
+	if u.GetConfigurationProductsUIHidden4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden4, "", true)
 	}
 
-	if u.UIHiddenEnum4 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum4, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion4: all fields are null")
 }
 
-type UIDisabledEnum4 string
+type GetConfigurationProductsUIDisabledEnum4 string
 
 const (
-	UIDisabledEnum4Update UIDisabledEnum4 = "update"
-	UIDisabledEnum4Create UIDisabledEnum4 = "create"
+	GetConfigurationProductsUIDisabledEnum4Update GetConfigurationProductsUIDisabledEnum4 = "update"
+	GetConfigurationProductsUIDisabledEnum4Create GetConfigurationProductsUIDisabledEnum4 = "create"
 )
 
-func (e UIDisabledEnum4) ToPointer() *UIDisabledEnum4 {
+func (e GetConfigurationProductsUIDisabledEnum4) ToPointer() *GetConfigurationProductsUIDisabledEnum4 {
 	return &e
 }
-func (e *UIDisabledEnum4) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -6139,366 +7107,410 @@ func (e *UIDisabledEnum4) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum4(v)
+		*e = GetConfigurationProductsUIDisabledEnum4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum4: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum4: %v", v)
 	}
 }
 
-type UIDisabled4 struct {
+type GetConfigurationProductsUIDisabled4 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled4) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion4Type string
+type GetConfigurationProductsUIDisabledUnion4Type string
 
 const (
-	UIDisabledUnion4TypeBoolean         UIDisabledUnion4Type = "boolean"
-	UIDisabledUnion4TypeUIDisabled4     UIDisabledUnion4Type = "ui:disabled_4"
-	UIDisabledUnion4TypeUIDisabledEnum4 UIDisabledUnion4Type = "ui:disabled_enum_4"
+	GetConfigurationProductsUIDisabledUnion4TypeBoolean                                 GetConfigurationProductsUIDisabledUnion4Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabled4     GetConfigurationProductsUIDisabledUnion4Type = "getConfigurationProducts_ui:disabled_4"
+	GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabledEnum4 GetConfigurationProductsUIDisabledUnion4Type = "getConfigurationProducts_ui:disabled_enum_4"
 )
 
-type UIDisabledUnion4 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled4     *UIDisabled4     `queryParam:"inline"`
-	UIDisabledEnum4 *UIDisabledEnum4 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion4 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled4     *GetConfigurationProductsUIDisabled4     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum4 *GetConfigurationProductsUIDisabledEnum4 `queryParam:"inline"`
 
-	Type UIDisabledUnion4Type
+	Type GetConfigurationProductsUIDisabledUnion4Type
 }
 
-func CreateUIDisabledUnion4Boolean(boolean bool) UIDisabledUnion4 {
-	typ := UIDisabledUnion4TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion4Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion4 {
+	typ := GetConfigurationProductsUIDisabledUnion4TypeBoolean
 
-	return UIDisabledUnion4{
+	return GetConfigurationProductsUIDisabledUnion4{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion4UIDisabled4(uiDisabled4 UIDisabled4) UIDisabledUnion4 {
-	typ := UIDisabledUnion4TypeUIDisabled4
+func CreateGetConfigurationProductsUIDisabledUnion4GetConfigurationProductsUIDisabled4(getConfigurationProductsUIDisabled4 GetConfigurationProductsUIDisabled4) GetConfigurationProductsUIDisabledUnion4 {
+	typ := GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabled4
 
-	return UIDisabledUnion4{
-		UIDisabled4: &uiDisabled4,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion4{
+		GetConfigurationProductsUIDisabled4: &getConfigurationProductsUIDisabled4,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion4UIDisabledEnum4(uiDisabledEnum4 UIDisabledEnum4) UIDisabledUnion4 {
-	typ := UIDisabledUnion4TypeUIDisabledEnum4
+func CreateGetConfigurationProductsUIDisabledUnion4GetConfigurationProductsUIDisabledEnum4(getConfigurationProductsUIDisabledEnum4 GetConfigurationProductsUIDisabledEnum4) GetConfigurationProductsUIDisabledUnion4 {
+	typ := GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabledEnum4
 
-	return UIDisabledUnion4{
-		UIDisabledEnum4: &uiDisabledEnum4,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion4{
+		GetConfigurationProductsUIDisabledEnum4: &getConfigurationProductsUIDisabledEnum4,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion4) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion4) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled4 UIDisabled4 = UIDisabled4{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled4, "", true, true); err == nil {
-		u.UIDisabled4 = &uiDisabled4
-		u.Type = UIDisabledUnion4TypeUIDisabled4
+	var getConfigurationProductsUIDisabled4 GetConfigurationProductsUIDisabled4 = GetConfigurationProductsUIDisabled4{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled4 = &getConfigurationProductsUIDisabled4
+		u.Type = GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabled4
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion4TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion4TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum4 UIDisabledEnum4 = UIDisabledEnum4("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum4, "", true, true); err == nil {
-		u.UIDisabledEnum4 = &uiDisabledEnum4
-		u.Type = UIDisabledUnion4TypeUIDisabledEnum4
+	var getConfigurationProductsUIDisabledEnum4 GetConfigurationProductsUIDisabledEnum4 = GetConfigurationProductsUIDisabledEnum4("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum4 = &getConfigurationProductsUIDisabledEnum4
+		u.Type = GetConfigurationProductsUIDisabledUnion4TypeGetConfigurationProductsUIDisabledEnum4
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion4", string(data))
 }
 
-func (u UIDisabledUnion4) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion4) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled4 != nil {
-		return utils.MarshalJSON(u.UIDisabled4, "", true)
+	if u.GetConfigurationProductsUIDisabled4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled4, "", true)
 	}
 
-	if u.UIDisabledEnum4 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum4, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion4: all fields are null")
 }
 
-type UIDescription4 struct {
+type GetConfigurationProductsUIDescription4 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription4) GetExpr() string {
+func (g GetConfigurationProductsUIDescription4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion4Type string
+type GetConfigurationProductsUIDescriptionUnion4Type string
 
 const (
-	UIDescriptionUnion4TypeStr            UIDescriptionUnion4Type = "str"
-	UIDescriptionUnion4TypeUIDescription4 UIDescriptionUnion4Type = "ui:description_4"
+	GetConfigurationProductsUIDescriptionUnion4TypeStr                                    GetConfigurationProductsUIDescriptionUnion4Type = "str"
+	GetConfigurationProductsUIDescriptionUnion4TypeGetConfigurationProductsUIDescription4 GetConfigurationProductsUIDescriptionUnion4Type = "getConfigurationProducts_ui:description_4"
 )
 
-type UIDescriptionUnion4 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription4 *UIDescription4 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion4 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription4 *GetConfigurationProductsUIDescription4 `queryParam:"inline"`
 
-	Type UIDescriptionUnion4Type
+	Type GetConfigurationProductsUIDescriptionUnion4Type
 }
 
-func CreateUIDescriptionUnion4Str(str string) UIDescriptionUnion4 {
-	typ := UIDescriptionUnion4TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion4Str(str string) GetConfigurationProductsUIDescriptionUnion4 {
+	typ := GetConfigurationProductsUIDescriptionUnion4TypeStr
 
-	return UIDescriptionUnion4{
+	return GetConfigurationProductsUIDescriptionUnion4{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion4UIDescription4(uiDescription4 UIDescription4) UIDescriptionUnion4 {
-	typ := UIDescriptionUnion4TypeUIDescription4
+func CreateGetConfigurationProductsUIDescriptionUnion4GetConfigurationProductsUIDescription4(getConfigurationProductsUIDescription4 GetConfigurationProductsUIDescription4) GetConfigurationProductsUIDescriptionUnion4 {
+	typ := GetConfigurationProductsUIDescriptionUnion4TypeGetConfigurationProductsUIDescription4
 
-	return UIDescriptionUnion4{
-		UIDescription4: &uiDescription4,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion4{
+		GetConfigurationProductsUIDescription4: &getConfigurationProductsUIDescription4,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion4) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion4) UnmarshalJSON(data []byte) error {
 
-	var uiDescription4 UIDescription4 = UIDescription4{}
-	if err := utils.UnmarshalJSON(data, &uiDescription4, "", true, true); err == nil {
-		u.UIDescription4 = &uiDescription4
-		u.Type = UIDescriptionUnion4TypeUIDescription4
+	var getConfigurationProductsUIDescription4 GetConfigurationProductsUIDescription4 = GetConfigurationProductsUIDescription4{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription4, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription4 = &getConfigurationProductsUIDescription4
+		u.Type = GetConfigurationProductsUIDescriptionUnion4TypeGetConfigurationProductsUIDescription4
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion4TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion4TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion4", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion4", string(data))
 }
 
-func (u UIDescriptionUnion4) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion4) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription4 != nil {
-		return utils.MarshalJSON(u.UIDescription4, "", true)
+	if u.GetConfigurationProductsUIDescription4 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription4, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion4: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion4: all fields are null")
 }
 
-type UIFormattedValue4 struct {
+type GetConfigurationProductsUIFormattedValue4 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue4) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue4) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type PropertiesSlider struct {
-	Type             TypeArray1           `json:"type"`
-	UIControl        UIControlSlider      `json:"ui:control"`
-	UISteps          []float64            `json:"ui:steps"`
-	Items            ItemsNumber          `json:"items"`
-	Description      *string              `json:"description,omitempty"`
-	MinItems         *float64             `json:"minItems,omitempty"`
-	MaxItems         *float64             `json:"maxItems,omitempty"`
-	UILabel          *string              `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion4    `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion4      `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion4    `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion4 `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue4   `json:"ui:formatted-value,omitempty"`
-	Default          []float64            `json:"default,omitempty"`
+type GetConfigurationProductsPropertiesSlider struct {
+	Type             GetConfigurationProductsTypeArray1           `json:"type"`
+	UIControl        GetConfigurationProductsUIControlSlider      `json:"ui:control"`
+	UISteps          []float64                                    `json:"ui:steps"`
+	Items            GetConfigurationProductsItemsNumber          `json:"items"`
+	Description      *string                                      `json:"description,omitempty"`
+	MinItems         *float64                                     `json:"minItems,omitempty"`
+	MaxItems         *float64                                     `json:"maxItems,omitempty"`
+	UILabel          *string                                      `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion4    `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion4      `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion4    `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion4 `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue4   `json:"ui:formatted-value,omitempty"`
+	Default          []float64                                    `json:"default,omitempty"`
 }
 
-func (o *PropertiesSlider) GetType() TypeArray1 {
+func (g GetConfigurationProductsPropertiesSlider) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPropertiesSlider) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ui:control", "ui:steps", "items"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPropertiesSlider) GetType() GetConfigurationProductsTypeArray1 {
 	if o == nil {
-		return TypeArray1("")
+		return GetConfigurationProductsTypeArray1("")
 	}
 	return o.Type
 }
 
-func (o *PropertiesSlider) GetUIControl() UIControlSlider {
+func (o *GetConfigurationProductsPropertiesSlider) GetUIControl() GetConfigurationProductsUIControlSlider {
 	if o == nil {
-		return UIControlSlider("")
+		return GetConfigurationProductsUIControlSlider("")
 	}
 	return o.UIControl
 }
 
-func (o *PropertiesSlider) GetUISteps() []float64 {
+func (o *GetConfigurationProductsPropertiesSlider) GetUISteps() []float64 {
 	if o == nil {
 		return []float64{}
 	}
 	return o.UISteps
 }
 
-func (o *PropertiesSlider) GetItems() ItemsNumber {
+func (o *GetConfigurationProductsPropertiesSlider) GetItems() GetConfigurationProductsItemsNumber {
 	if o == nil {
-		return ItemsNumber{}
+		return GetConfigurationProductsItemsNumber{}
 	}
 	return o.Items
 }
 
-func (o *PropertiesSlider) GetDescription() *string {
+func (o *GetConfigurationProductsPropertiesSlider) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PropertiesSlider) GetMinItems() *float64 {
+func (o *GetConfigurationProductsPropertiesSlider) GetMinItems() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinItems
 }
 
-func (o *PropertiesSlider) GetMaxItems() *float64 {
+func (o *GetConfigurationProductsPropertiesSlider) GetMaxItems() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxItems
 }
 
-func (o *PropertiesSlider) GetUILabel() *string {
+func (o *GetConfigurationProductsPropertiesSlider) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *PropertiesSlider) GetUIReadOnly() *UIReadOnlyUnion4 {
+func (o *GetConfigurationProductsPropertiesSlider) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesSlider) GetUIHidden() *UIHiddenUnion4 {
+func (o *GetConfigurationProductsPropertiesSlider) GetUIHidden() *GetConfigurationProductsUIHiddenUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesSlider) GetUIDisabled() *UIDisabledUnion4 {
+func (o *GetConfigurationProductsPropertiesSlider) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesSlider) GetUIDescription() *UIDescriptionUnion4 {
+func (o *GetConfigurationProductsPropertiesSlider) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion4 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesSlider) GetUIFormattedValue() *UIFormattedValue4 {
+func (o *GetConfigurationProductsPropertiesSlider) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue4 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-func (o *PropertiesSlider) GetDefault() []float64 {
+func (o *GetConfigurationProductsPropertiesSlider) GetDefault() []float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-type TypeBoolean string
+type GetConfigurationProductsTypeBoolean string
 
 const (
-	TypeBooleanBoolean TypeBoolean = "boolean"
+	GetConfigurationProductsTypeBooleanBoolean GetConfigurationProductsTypeBoolean = "boolean"
 )
 
-func (e TypeBoolean) ToPointer() *TypeBoolean {
+func (e GetConfigurationProductsTypeBoolean) ToPointer() *GetConfigurationProductsTypeBoolean {
 	return &e
 }
-func (e *TypeBoolean) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeBoolean) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "boolean":
-		*e = TypeBoolean(v)
+		*e = GetConfigurationProductsTypeBoolean(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeBoolean: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeBoolean: %v", v)
 	}
 }
 
-type UIControlToggle string
+type GetConfigurationProductsUIControlToggle string
 
 const (
-	UIControlToggleToggle UIControlToggle = "toggle"
+	GetConfigurationProductsUIControlToggleToggle GetConfigurationProductsUIControlToggle = "toggle"
 )
 
-func (e UIControlToggle) ToPointer() *UIControlToggle {
+func (e GetConfigurationProductsUIControlToggle) ToPointer() *GetConfigurationProductsUIControlToggle {
 	return &e
 }
-func (e *UIControlToggle) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIControlToggle) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "toggle":
-		*e = UIControlToggle(v)
+		*e = GetConfigurationProductsUIControlToggle(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIControlToggle: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIControlToggle: %v", v)
 	}
 }
 
-type UIReadOnlyEnum3 string
+type GetConfigurationProductsUIReadOnlyEnum3 string
 
 const (
-	UIReadOnlyEnum3Update UIReadOnlyEnum3 = "update"
-	UIReadOnlyEnum3Create UIReadOnlyEnum3 = "create"
+	GetConfigurationProductsUIReadOnlyEnum3Update GetConfigurationProductsUIReadOnlyEnum3 = "update"
+	GetConfigurationProductsUIReadOnlyEnum3Create GetConfigurationProductsUIReadOnlyEnum3 = "create"
 )
 
-func (e UIReadOnlyEnum3) ToPointer() *UIReadOnlyEnum3 {
+func (e GetConfigurationProductsUIReadOnlyEnum3) ToPointer() *GetConfigurationProductsUIReadOnlyEnum3 {
 	return &e
 }
-func (e *UIReadOnlyEnum3) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -6507,120 +7519,131 @@ func (e *UIReadOnlyEnum3) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum3(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum3: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum3: %v", v)
 	}
 }
 
-type UIReadOnly3 struct {
+type GetConfigurationProductsUIReadOnly3 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly3) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion3Type string
+type GetConfigurationProductsUIReadOnlyUnion3Type string
 
 const (
-	UIReadOnlyUnion3TypeBoolean         UIReadOnlyUnion3Type = "boolean"
-	UIReadOnlyUnion3TypeUIReadOnly3     UIReadOnlyUnion3Type = "ui:read-only_3"
-	UIReadOnlyUnion3TypeUIReadOnlyEnum3 UIReadOnlyUnion3Type = "ui:read-only_enum_3"
+	GetConfigurationProductsUIReadOnlyUnion3TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion3Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnly3     GetConfigurationProductsUIReadOnlyUnion3Type = "getConfigurationProducts_ui:read-only_3"
+	GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnlyEnum3 GetConfigurationProductsUIReadOnlyUnion3Type = "getConfigurationProducts_ui:read-only_enum_3"
 )
 
-type UIReadOnlyUnion3 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly3     *UIReadOnly3     `queryParam:"inline"`
-	UIReadOnlyEnum3 *UIReadOnlyEnum3 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion3 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly3     *GetConfigurationProductsUIReadOnly3     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum3 *GetConfigurationProductsUIReadOnlyEnum3 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion3Type
+	Type GetConfigurationProductsUIReadOnlyUnion3Type
 }
 
-func CreateUIReadOnlyUnion3Boolean(boolean bool) UIReadOnlyUnion3 {
-	typ := UIReadOnlyUnion3TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion3Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion3 {
+	typ := GetConfigurationProductsUIReadOnlyUnion3TypeBoolean
 
-	return UIReadOnlyUnion3{
+	return GetConfigurationProductsUIReadOnlyUnion3{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion3UIReadOnly3(uiReadOnly3 UIReadOnly3) UIReadOnlyUnion3 {
-	typ := UIReadOnlyUnion3TypeUIReadOnly3
+func CreateGetConfigurationProductsUIReadOnlyUnion3GetConfigurationProductsUIReadOnly3(getConfigurationProductsUIReadOnly3 GetConfigurationProductsUIReadOnly3) GetConfigurationProductsUIReadOnlyUnion3 {
+	typ := GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnly3
 
-	return UIReadOnlyUnion3{
-		UIReadOnly3: &uiReadOnly3,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion3{
+		GetConfigurationProductsUIReadOnly3: &getConfigurationProductsUIReadOnly3,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion3UIReadOnlyEnum3(uiReadOnlyEnum3 UIReadOnlyEnum3) UIReadOnlyUnion3 {
-	typ := UIReadOnlyUnion3TypeUIReadOnlyEnum3
+func CreateGetConfigurationProductsUIReadOnlyUnion3GetConfigurationProductsUIReadOnlyEnum3(getConfigurationProductsUIReadOnlyEnum3 GetConfigurationProductsUIReadOnlyEnum3) GetConfigurationProductsUIReadOnlyUnion3 {
+	typ := GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnlyEnum3
 
-	return UIReadOnlyUnion3{
-		UIReadOnlyEnum3: &uiReadOnlyEnum3,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion3{
+		GetConfigurationProductsUIReadOnlyEnum3: &getConfigurationProductsUIReadOnlyEnum3,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion3) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion3) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly3 UIReadOnly3 = UIReadOnly3{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly3, "", true, true); err == nil {
-		u.UIReadOnly3 = &uiReadOnly3
-		u.Type = UIReadOnlyUnion3TypeUIReadOnly3
+	var getConfigurationProductsUIReadOnly3 GetConfigurationProductsUIReadOnly3 = GetConfigurationProductsUIReadOnly3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly3 = &getConfigurationProductsUIReadOnly3
+		u.Type = GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnly3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion3TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion3TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum3 UIReadOnlyEnum3 = UIReadOnlyEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum3, "", true, true); err == nil {
-		u.UIReadOnlyEnum3 = &uiReadOnlyEnum3
-		u.Type = UIReadOnlyUnion3TypeUIReadOnlyEnum3
+	var getConfigurationProductsUIReadOnlyEnum3 GetConfigurationProductsUIReadOnlyEnum3 = GetConfigurationProductsUIReadOnlyEnum3("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum3 = &getConfigurationProductsUIReadOnlyEnum3
+		u.Type = GetConfigurationProductsUIReadOnlyUnion3TypeGetConfigurationProductsUIReadOnlyEnum3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion3", string(data))
 }
 
-func (u UIReadOnlyUnion3) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion3) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly3 != nil {
-		return utils.MarshalJSON(u.UIReadOnly3, "", true)
+	if u.GetConfigurationProductsUIReadOnly3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly3, "", true)
 	}
 
-	if u.UIReadOnlyEnum3 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum3, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion3: all fields are null")
 }
 
-type UIHiddenEnum3 string
+type GetConfigurationProductsUIHiddenEnum3 string
 
 const (
-	UIHiddenEnum3Update UIHiddenEnum3 = "update"
-	UIHiddenEnum3Create UIHiddenEnum3 = "create"
+	GetConfigurationProductsUIHiddenEnum3Update GetConfigurationProductsUIHiddenEnum3 = "update"
+	GetConfigurationProductsUIHiddenEnum3Create GetConfigurationProductsUIHiddenEnum3 = "create"
 )
 
-func (e UIHiddenEnum3) ToPointer() *UIHiddenEnum3 {
+func (e GetConfigurationProductsUIHiddenEnum3) ToPointer() *GetConfigurationProductsUIHiddenEnum3 {
 	return &e
 }
-func (e *UIHiddenEnum3) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -6629,120 +7652,131 @@ func (e *UIHiddenEnum3) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum3(v)
+		*e = GetConfigurationProductsUIHiddenEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum3: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum3: %v", v)
 	}
 }
 
-type UIHidden3 struct {
+type GetConfigurationProductsUIHidden3 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden3) GetExpr() string {
+func (g GetConfigurationProductsUIHidden3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion3Type string
+type GetConfigurationProductsUIHiddenUnion3Type string
 
 const (
-	UIHiddenUnion3TypeBoolean       UIHiddenUnion3Type = "boolean"
-	UIHiddenUnion3TypeUIHidden3     UIHiddenUnion3Type = "ui:hidden_3"
-	UIHiddenUnion3TypeUIHiddenEnum3 UIHiddenUnion3Type = "ui:hidden_enum_3"
+	GetConfigurationProductsUIHiddenUnion3TypeBoolean                               GetConfigurationProductsUIHiddenUnion3Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHidden3     GetConfigurationProductsUIHiddenUnion3Type = "getConfigurationProducts_ui:hidden_3"
+	GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHiddenEnum3 GetConfigurationProductsUIHiddenUnion3Type = "getConfigurationProducts_ui:hidden_enum_3"
 )
 
-type UIHiddenUnion3 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden3     *UIHidden3     `queryParam:"inline"`
-	UIHiddenEnum3 *UIHiddenEnum3 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion3 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden3     *GetConfigurationProductsUIHidden3     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum3 *GetConfigurationProductsUIHiddenEnum3 `queryParam:"inline"`
 
-	Type UIHiddenUnion3Type
+	Type GetConfigurationProductsUIHiddenUnion3Type
 }
 
-func CreateUIHiddenUnion3Boolean(boolean bool) UIHiddenUnion3 {
-	typ := UIHiddenUnion3TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion3Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion3 {
+	typ := GetConfigurationProductsUIHiddenUnion3TypeBoolean
 
-	return UIHiddenUnion3{
+	return GetConfigurationProductsUIHiddenUnion3{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion3UIHidden3(uiHidden3 UIHidden3) UIHiddenUnion3 {
-	typ := UIHiddenUnion3TypeUIHidden3
+func CreateGetConfigurationProductsUIHiddenUnion3GetConfigurationProductsUIHidden3(getConfigurationProductsUIHidden3 GetConfigurationProductsUIHidden3) GetConfigurationProductsUIHiddenUnion3 {
+	typ := GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHidden3
 
-	return UIHiddenUnion3{
-		UIHidden3: &uiHidden3,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion3{
+		GetConfigurationProductsUIHidden3: &getConfigurationProductsUIHidden3,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion3UIHiddenEnum3(uiHiddenEnum3 UIHiddenEnum3) UIHiddenUnion3 {
-	typ := UIHiddenUnion3TypeUIHiddenEnum3
+func CreateGetConfigurationProductsUIHiddenUnion3GetConfigurationProductsUIHiddenEnum3(getConfigurationProductsUIHiddenEnum3 GetConfigurationProductsUIHiddenEnum3) GetConfigurationProductsUIHiddenUnion3 {
+	typ := GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHiddenEnum3
 
-	return UIHiddenUnion3{
-		UIHiddenEnum3: &uiHiddenEnum3,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion3{
+		GetConfigurationProductsUIHiddenEnum3: &getConfigurationProductsUIHiddenEnum3,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion3) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion3) UnmarshalJSON(data []byte) error {
 
-	var uiHidden3 UIHidden3 = UIHidden3{}
-	if err := utils.UnmarshalJSON(data, &uiHidden3, "", true, true); err == nil {
-		u.UIHidden3 = &uiHidden3
-		u.Type = UIHiddenUnion3TypeUIHidden3
+	var getConfigurationProductsUIHidden3 GetConfigurationProductsUIHidden3 = GetConfigurationProductsUIHidden3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden3 = &getConfigurationProductsUIHidden3
+		u.Type = GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHidden3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion3TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion3TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum3 UIHiddenEnum3 = UIHiddenEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum3, "", true, true); err == nil {
-		u.UIHiddenEnum3 = &uiHiddenEnum3
-		u.Type = UIHiddenUnion3TypeUIHiddenEnum3
+	var getConfigurationProductsUIHiddenEnum3 GetConfigurationProductsUIHiddenEnum3 = GetConfigurationProductsUIHiddenEnum3("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum3 = &getConfigurationProductsUIHiddenEnum3
+		u.Type = GetConfigurationProductsUIHiddenUnion3TypeGetConfigurationProductsUIHiddenEnum3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion3", string(data))
 }
 
-func (u UIHiddenUnion3) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion3) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden3 != nil {
-		return utils.MarshalJSON(u.UIHidden3, "", true)
+	if u.GetConfigurationProductsUIHidden3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden3, "", true)
 	}
 
-	if u.UIHiddenEnum3 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum3, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion3: all fields are null")
 }
 
-type UIDisabledEnum3 string
+type GetConfigurationProductsUIDisabledEnum3 string
 
 const (
-	UIDisabledEnum3Update UIDisabledEnum3 = "update"
-	UIDisabledEnum3Create UIDisabledEnum3 = "create"
+	GetConfigurationProductsUIDisabledEnum3Update GetConfigurationProductsUIDisabledEnum3 = "update"
+	GetConfigurationProductsUIDisabledEnum3Create GetConfigurationProductsUIDisabledEnum3 = "create"
 )
 
-func (e UIDisabledEnum3) ToPointer() *UIDisabledEnum3 {
+func (e GetConfigurationProductsUIDisabledEnum3) ToPointer() *GetConfigurationProductsUIDisabledEnum3 {
 	return &e
 }
-func (e *UIDisabledEnum3) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -6751,334 +7785,378 @@ func (e *UIDisabledEnum3) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum3(v)
+		*e = GetConfigurationProductsUIDisabledEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum3: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum3: %v", v)
 	}
 }
 
-type UIDisabled3 struct {
+type GetConfigurationProductsUIDisabled3 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled3) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion3Type string
+type GetConfigurationProductsUIDisabledUnion3Type string
 
 const (
-	UIDisabledUnion3TypeBoolean         UIDisabledUnion3Type = "boolean"
-	UIDisabledUnion3TypeUIDisabled3     UIDisabledUnion3Type = "ui:disabled_3"
-	UIDisabledUnion3TypeUIDisabledEnum3 UIDisabledUnion3Type = "ui:disabled_enum_3"
+	GetConfigurationProductsUIDisabledUnion3TypeBoolean                                 GetConfigurationProductsUIDisabledUnion3Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabled3     GetConfigurationProductsUIDisabledUnion3Type = "getConfigurationProducts_ui:disabled_3"
+	GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabledEnum3 GetConfigurationProductsUIDisabledUnion3Type = "getConfigurationProducts_ui:disabled_enum_3"
 )
 
-type UIDisabledUnion3 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled3     *UIDisabled3     `queryParam:"inline"`
-	UIDisabledEnum3 *UIDisabledEnum3 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion3 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled3     *GetConfigurationProductsUIDisabled3     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum3 *GetConfigurationProductsUIDisabledEnum3 `queryParam:"inline"`
 
-	Type UIDisabledUnion3Type
+	Type GetConfigurationProductsUIDisabledUnion3Type
 }
 
-func CreateUIDisabledUnion3Boolean(boolean bool) UIDisabledUnion3 {
-	typ := UIDisabledUnion3TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion3Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion3 {
+	typ := GetConfigurationProductsUIDisabledUnion3TypeBoolean
 
-	return UIDisabledUnion3{
+	return GetConfigurationProductsUIDisabledUnion3{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion3UIDisabled3(uiDisabled3 UIDisabled3) UIDisabledUnion3 {
-	typ := UIDisabledUnion3TypeUIDisabled3
+func CreateGetConfigurationProductsUIDisabledUnion3GetConfigurationProductsUIDisabled3(getConfigurationProductsUIDisabled3 GetConfigurationProductsUIDisabled3) GetConfigurationProductsUIDisabledUnion3 {
+	typ := GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabled3
 
-	return UIDisabledUnion3{
-		UIDisabled3: &uiDisabled3,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion3{
+		GetConfigurationProductsUIDisabled3: &getConfigurationProductsUIDisabled3,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion3UIDisabledEnum3(uiDisabledEnum3 UIDisabledEnum3) UIDisabledUnion3 {
-	typ := UIDisabledUnion3TypeUIDisabledEnum3
+func CreateGetConfigurationProductsUIDisabledUnion3GetConfigurationProductsUIDisabledEnum3(getConfigurationProductsUIDisabledEnum3 GetConfigurationProductsUIDisabledEnum3) GetConfigurationProductsUIDisabledUnion3 {
+	typ := GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabledEnum3
 
-	return UIDisabledUnion3{
-		UIDisabledEnum3: &uiDisabledEnum3,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion3{
+		GetConfigurationProductsUIDisabledEnum3: &getConfigurationProductsUIDisabledEnum3,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion3) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion3) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled3 UIDisabled3 = UIDisabled3{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled3, "", true, true); err == nil {
-		u.UIDisabled3 = &uiDisabled3
-		u.Type = UIDisabledUnion3TypeUIDisabled3
+	var getConfigurationProductsUIDisabled3 GetConfigurationProductsUIDisabled3 = GetConfigurationProductsUIDisabled3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled3 = &getConfigurationProductsUIDisabled3
+		u.Type = GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabled3
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion3TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion3TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum3 UIDisabledEnum3 = UIDisabledEnum3("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum3, "", true, true); err == nil {
-		u.UIDisabledEnum3 = &uiDisabledEnum3
-		u.Type = UIDisabledUnion3TypeUIDisabledEnum3
+	var getConfigurationProductsUIDisabledEnum3 GetConfigurationProductsUIDisabledEnum3 = GetConfigurationProductsUIDisabledEnum3("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum3 = &getConfigurationProductsUIDisabledEnum3
+		u.Type = GetConfigurationProductsUIDisabledUnion3TypeGetConfigurationProductsUIDisabledEnum3
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion3", string(data))
 }
 
-func (u UIDisabledUnion3) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion3) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled3 != nil {
-		return utils.MarshalJSON(u.UIDisabled3, "", true)
+	if u.GetConfigurationProductsUIDisabled3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled3, "", true)
 	}
 
-	if u.UIDisabledEnum3 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum3, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion3: all fields are null")
 }
 
-type UIDescription3 struct {
+type GetConfigurationProductsUIDescription3 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription3) GetExpr() string {
+func (g GetConfigurationProductsUIDescription3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion3Type string
+type GetConfigurationProductsUIDescriptionUnion3Type string
 
 const (
-	UIDescriptionUnion3TypeStr            UIDescriptionUnion3Type = "str"
-	UIDescriptionUnion3TypeUIDescription3 UIDescriptionUnion3Type = "ui:description_3"
+	GetConfigurationProductsUIDescriptionUnion3TypeStr                                    GetConfigurationProductsUIDescriptionUnion3Type = "str"
+	GetConfigurationProductsUIDescriptionUnion3TypeGetConfigurationProductsUIDescription3 GetConfigurationProductsUIDescriptionUnion3Type = "getConfigurationProducts_ui:description_3"
 )
 
-type UIDescriptionUnion3 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription3 *UIDescription3 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion3 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription3 *GetConfigurationProductsUIDescription3 `queryParam:"inline"`
 
-	Type UIDescriptionUnion3Type
+	Type GetConfigurationProductsUIDescriptionUnion3Type
 }
 
-func CreateUIDescriptionUnion3Str(str string) UIDescriptionUnion3 {
-	typ := UIDescriptionUnion3TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion3Str(str string) GetConfigurationProductsUIDescriptionUnion3 {
+	typ := GetConfigurationProductsUIDescriptionUnion3TypeStr
 
-	return UIDescriptionUnion3{
+	return GetConfigurationProductsUIDescriptionUnion3{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion3UIDescription3(uiDescription3 UIDescription3) UIDescriptionUnion3 {
-	typ := UIDescriptionUnion3TypeUIDescription3
+func CreateGetConfigurationProductsUIDescriptionUnion3GetConfigurationProductsUIDescription3(getConfigurationProductsUIDescription3 GetConfigurationProductsUIDescription3) GetConfigurationProductsUIDescriptionUnion3 {
+	typ := GetConfigurationProductsUIDescriptionUnion3TypeGetConfigurationProductsUIDescription3
 
-	return UIDescriptionUnion3{
-		UIDescription3: &uiDescription3,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion3{
+		GetConfigurationProductsUIDescription3: &getConfigurationProductsUIDescription3,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion3) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion3) UnmarshalJSON(data []byte) error {
 
-	var uiDescription3 UIDescription3 = UIDescription3{}
-	if err := utils.UnmarshalJSON(data, &uiDescription3, "", true, true); err == nil {
-		u.UIDescription3 = &uiDescription3
-		u.Type = UIDescriptionUnion3TypeUIDescription3
+	var getConfigurationProductsUIDescription3 GetConfigurationProductsUIDescription3 = GetConfigurationProductsUIDescription3{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription3, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription3 = &getConfigurationProductsUIDescription3
+		u.Type = GetConfigurationProductsUIDescriptionUnion3TypeGetConfigurationProductsUIDescription3
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion3TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion3TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion3", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion3", string(data))
 }
 
-func (u UIDescriptionUnion3) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion3) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription3 != nil {
-		return utils.MarshalJSON(u.UIDescription3, "", true)
+	if u.GetConfigurationProductsUIDescription3 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription3, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion3: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion3: all fields are null")
 }
 
-type UIFormattedValue3 struct {
+type GetConfigurationProductsUIFormattedValue3 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue3) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue3) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type PropertiesToggle struct {
-	Type             TypeBoolean          `json:"type"`
-	UIControl        UIControlToggle      `json:"ui:control"`
-	Description      *string              `json:"description,omitempty"`
-	Default          *bool                `json:"default,omitempty"`
-	UILabel          *string              `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion3    `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion3      `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion3    `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion3 `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue3   `json:"ui:formatted-value,omitempty"`
+type GetConfigurationProductsPropertiesToggle struct {
+	Type             GetConfigurationProductsTypeBoolean          `json:"type"`
+	UIControl        GetConfigurationProductsUIControlToggle      `json:"ui:control"`
+	Description      *string                                      `json:"description,omitempty"`
+	Default          *bool                                        `json:"default,omitempty"`
+	UILabel          *string                                      `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion3    `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion3      `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion3    `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion3 `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue3   `json:"ui:formatted-value,omitempty"`
 }
 
-func (o *PropertiesToggle) GetType() TypeBoolean {
+func (g GetConfigurationProductsPropertiesToggle) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPropertiesToggle) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPropertiesToggle) GetType() GetConfigurationProductsTypeBoolean {
 	if o == nil {
-		return TypeBoolean("")
+		return GetConfigurationProductsTypeBoolean("")
 	}
 	return o.Type
 }
 
-func (o *PropertiesToggle) GetUIControl() UIControlToggle {
+func (o *GetConfigurationProductsPropertiesToggle) GetUIControl() GetConfigurationProductsUIControlToggle {
 	if o == nil {
-		return UIControlToggle("")
+		return GetConfigurationProductsUIControlToggle("")
 	}
 	return o.UIControl
 }
 
-func (o *PropertiesToggle) GetDescription() *string {
+func (o *GetConfigurationProductsPropertiesToggle) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PropertiesToggle) GetDefault() *bool {
+func (o *GetConfigurationProductsPropertiesToggle) GetDefault() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *PropertiesToggle) GetUILabel() *string {
+func (o *GetConfigurationProductsPropertiesToggle) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *PropertiesToggle) GetUIReadOnly() *UIReadOnlyUnion3 {
+func (o *GetConfigurationProductsPropertiesToggle) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesToggle) GetUIHidden() *UIHiddenUnion3 {
+func (o *GetConfigurationProductsPropertiesToggle) GetUIHidden() *GetConfigurationProductsUIHiddenUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesToggle) GetUIDisabled() *UIDisabledUnion3 {
+func (o *GetConfigurationProductsPropertiesToggle) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesToggle) GetUIDescription() *UIDescriptionUnion3 {
+func (o *GetConfigurationProductsPropertiesToggle) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion3 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesToggle) GetUIFormattedValue() *UIFormattedValue3 {
+func (o *GetConfigurationProductsPropertiesToggle) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue3 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-type TypeNumber1 string
+type GetConfigurationProductsTypeNumber1 string
 
 const (
-	TypeNumber1Number TypeNumber1 = "number"
+	GetConfigurationProductsTypeNumber1Number GetConfigurationProductsTypeNumber1 = "number"
 )
 
-func (e TypeNumber1) ToPointer() *TypeNumber1 {
+func (e GetConfigurationProductsTypeNumber1) ToPointer() *GetConfigurationProductsTypeNumber1 {
 	return &e
 }
-func (e *TypeNumber1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeNumber1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "number":
-		*e = TypeNumber1(v)
+		*e = GetConfigurationProductsTypeNumber1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeNumber1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeNumber1: %v", v)
 	}
 }
 
-type UIControlInput2 string
+type GetConfigurationProductsUIControlInput2 string
 
 const (
-	UIControlInput2Input UIControlInput2 = "input"
+	GetConfigurationProductsUIControlInput2Input GetConfigurationProductsUIControlInput2 = "input"
 )
 
-func (e UIControlInput2) ToPointer() *UIControlInput2 {
+func (e GetConfigurationProductsUIControlInput2) ToPointer() *GetConfigurationProductsUIControlInput2 {
 	return &e
 }
-func (e *UIControlInput2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIControlInput2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "input":
-		*e = UIControlInput2(v)
+		*e = GetConfigurationProductsUIControlInput2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIControlInput2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIControlInput2: %v", v)
 	}
 }
 
-type UIReadOnlyEnum2 string
+type GetConfigurationProductsUIReadOnlyEnum2 string
 
 const (
-	UIReadOnlyEnum2Update UIReadOnlyEnum2 = "update"
-	UIReadOnlyEnum2Create UIReadOnlyEnum2 = "create"
+	GetConfigurationProductsUIReadOnlyEnum2Update GetConfigurationProductsUIReadOnlyEnum2 = "update"
+	GetConfigurationProductsUIReadOnlyEnum2Create GetConfigurationProductsUIReadOnlyEnum2 = "create"
 )
 
-func (e UIReadOnlyEnum2) ToPointer() *UIReadOnlyEnum2 {
+func (e GetConfigurationProductsUIReadOnlyEnum2) ToPointer() *GetConfigurationProductsUIReadOnlyEnum2 {
 	return &e
 }
-func (e *UIReadOnlyEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7087,120 +8165,131 @@ func (e *UIReadOnlyEnum2) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum2(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum2: %v", v)
 	}
 }
 
-type UIReadOnly2 struct {
+type GetConfigurationProductsUIReadOnly2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly2) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion2Type string
+type GetConfigurationProductsUIReadOnlyUnion2Type string
 
 const (
-	UIReadOnlyUnion2TypeBoolean         UIReadOnlyUnion2Type = "boolean"
-	UIReadOnlyUnion2TypeUIReadOnly2     UIReadOnlyUnion2Type = "ui:read-only_2"
-	UIReadOnlyUnion2TypeUIReadOnlyEnum2 UIReadOnlyUnion2Type = "ui:read-only_enum_2"
+	GetConfigurationProductsUIReadOnlyUnion2TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion2Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnly2     GetConfigurationProductsUIReadOnlyUnion2Type = "getConfigurationProducts_ui:read-only_2"
+	GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnlyEnum2 GetConfigurationProductsUIReadOnlyUnion2Type = "getConfigurationProducts_ui:read-only_enum_2"
 )
 
-type UIReadOnlyUnion2 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly2     *UIReadOnly2     `queryParam:"inline"`
-	UIReadOnlyEnum2 *UIReadOnlyEnum2 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion2 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly2     *GetConfigurationProductsUIReadOnly2     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum2 *GetConfigurationProductsUIReadOnlyEnum2 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion2Type
+	Type GetConfigurationProductsUIReadOnlyUnion2Type
 }
 
-func CreateUIReadOnlyUnion2Boolean(boolean bool) UIReadOnlyUnion2 {
-	typ := UIReadOnlyUnion2TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion2Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion2 {
+	typ := GetConfigurationProductsUIReadOnlyUnion2TypeBoolean
 
-	return UIReadOnlyUnion2{
+	return GetConfigurationProductsUIReadOnlyUnion2{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion2UIReadOnly2(uiReadOnly2 UIReadOnly2) UIReadOnlyUnion2 {
-	typ := UIReadOnlyUnion2TypeUIReadOnly2
+func CreateGetConfigurationProductsUIReadOnlyUnion2GetConfigurationProductsUIReadOnly2(getConfigurationProductsUIReadOnly2 GetConfigurationProductsUIReadOnly2) GetConfigurationProductsUIReadOnlyUnion2 {
+	typ := GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnly2
 
-	return UIReadOnlyUnion2{
-		UIReadOnly2: &uiReadOnly2,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion2{
+		GetConfigurationProductsUIReadOnly2: &getConfigurationProductsUIReadOnly2,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion2UIReadOnlyEnum2(uiReadOnlyEnum2 UIReadOnlyEnum2) UIReadOnlyUnion2 {
-	typ := UIReadOnlyUnion2TypeUIReadOnlyEnum2
+func CreateGetConfigurationProductsUIReadOnlyUnion2GetConfigurationProductsUIReadOnlyEnum2(getConfigurationProductsUIReadOnlyEnum2 GetConfigurationProductsUIReadOnlyEnum2) GetConfigurationProductsUIReadOnlyUnion2 {
+	typ := GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnlyEnum2
 
-	return UIReadOnlyUnion2{
-		UIReadOnlyEnum2: &uiReadOnlyEnum2,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion2{
+		GetConfigurationProductsUIReadOnlyEnum2: &getConfigurationProductsUIReadOnlyEnum2,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion2) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly2 UIReadOnly2 = UIReadOnly2{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly2, "", true, true); err == nil {
-		u.UIReadOnly2 = &uiReadOnly2
-		u.Type = UIReadOnlyUnion2TypeUIReadOnly2
+	var getConfigurationProductsUIReadOnly2 GetConfigurationProductsUIReadOnly2 = GetConfigurationProductsUIReadOnly2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly2 = &getConfigurationProductsUIReadOnly2
+		u.Type = GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnly2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion2TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion2TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum2 UIReadOnlyEnum2 = UIReadOnlyEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum2, "", true, true); err == nil {
-		u.UIReadOnlyEnum2 = &uiReadOnlyEnum2
-		u.Type = UIReadOnlyUnion2TypeUIReadOnlyEnum2
+	var getConfigurationProductsUIReadOnlyEnum2 GetConfigurationProductsUIReadOnlyEnum2 = GetConfigurationProductsUIReadOnlyEnum2("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum2 = &getConfigurationProductsUIReadOnlyEnum2
+		u.Type = GetConfigurationProductsUIReadOnlyUnion2TypeGetConfigurationProductsUIReadOnlyEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion2", string(data))
 }
 
-func (u UIReadOnlyUnion2) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion2) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly2 != nil {
-		return utils.MarshalJSON(u.UIReadOnly2, "", true)
+	if u.GetConfigurationProductsUIReadOnly2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly2, "", true)
 	}
 
-	if u.UIReadOnlyEnum2 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum2, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion2: all fields are null")
 }
 
-type UIHiddenEnum2 string
+type GetConfigurationProductsUIHiddenEnum2 string
 
 const (
-	UIHiddenEnum2Update UIHiddenEnum2 = "update"
-	UIHiddenEnum2Create UIHiddenEnum2 = "create"
+	GetConfigurationProductsUIHiddenEnum2Update GetConfigurationProductsUIHiddenEnum2 = "update"
+	GetConfigurationProductsUIHiddenEnum2Create GetConfigurationProductsUIHiddenEnum2 = "create"
 )
 
-func (e UIHiddenEnum2) ToPointer() *UIHiddenEnum2 {
+func (e GetConfigurationProductsUIHiddenEnum2) ToPointer() *GetConfigurationProductsUIHiddenEnum2 {
 	return &e
 }
-func (e *UIHiddenEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7209,120 +8298,131 @@ func (e *UIHiddenEnum2) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum2(v)
+		*e = GetConfigurationProductsUIHiddenEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum2: %v", v)
 	}
 }
 
-type UIHidden2 struct {
+type GetConfigurationProductsUIHidden2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden2) GetExpr() string {
+func (g GetConfigurationProductsUIHidden2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion2Type string
+type GetConfigurationProductsUIHiddenUnion2Type string
 
 const (
-	UIHiddenUnion2TypeBoolean       UIHiddenUnion2Type = "boolean"
-	UIHiddenUnion2TypeUIHidden2     UIHiddenUnion2Type = "ui:hidden_2"
-	UIHiddenUnion2TypeUIHiddenEnum2 UIHiddenUnion2Type = "ui:hidden_enum_2"
+	GetConfigurationProductsUIHiddenUnion2TypeBoolean                               GetConfigurationProductsUIHiddenUnion2Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHidden2     GetConfigurationProductsUIHiddenUnion2Type = "getConfigurationProducts_ui:hidden_2"
+	GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHiddenEnum2 GetConfigurationProductsUIHiddenUnion2Type = "getConfigurationProducts_ui:hidden_enum_2"
 )
 
-type UIHiddenUnion2 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden2     *UIHidden2     `queryParam:"inline"`
-	UIHiddenEnum2 *UIHiddenEnum2 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion2 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden2     *GetConfigurationProductsUIHidden2     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum2 *GetConfigurationProductsUIHiddenEnum2 `queryParam:"inline"`
 
-	Type UIHiddenUnion2Type
+	Type GetConfigurationProductsUIHiddenUnion2Type
 }
 
-func CreateUIHiddenUnion2Boolean(boolean bool) UIHiddenUnion2 {
-	typ := UIHiddenUnion2TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion2Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion2 {
+	typ := GetConfigurationProductsUIHiddenUnion2TypeBoolean
 
-	return UIHiddenUnion2{
+	return GetConfigurationProductsUIHiddenUnion2{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion2UIHidden2(uiHidden2 UIHidden2) UIHiddenUnion2 {
-	typ := UIHiddenUnion2TypeUIHidden2
+func CreateGetConfigurationProductsUIHiddenUnion2GetConfigurationProductsUIHidden2(getConfigurationProductsUIHidden2 GetConfigurationProductsUIHidden2) GetConfigurationProductsUIHiddenUnion2 {
+	typ := GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHidden2
 
-	return UIHiddenUnion2{
-		UIHidden2: &uiHidden2,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion2{
+		GetConfigurationProductsUIHidden2: &getConfigurationProductsUIHidden2,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion2UIHiddenEnum2(uiHiddenEnum2 UIHiddenEnum2) UIHiddenUnion2 {
-	typ := UIHiddenUnion2TypeUIHiddenEnum2
+func CreateGetConfigurationProductsUIHiddenUnion2GetConfigurationProductsUIHiddenEnum2(getConfigurationProductsUIHiddenEnum2 GetConfigurationProductsUIHiddenEnum2) GetConfigurationProductsUIHiddenUnion2 {
+	typ := GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHiddenEnum2
 
-	return UIHiddenUnion2{
-		UIHiddenEnum2: &uiHiddenEnum2,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion2{
+		GetConfigurationProductsUIHiddenEnum2: &getConfigurationProductsUIHiddenEnum2,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion2) UnmarshalJSON(data []byte) error {
 
-	var uiHidden2 UIHidden2 = UIHidden2{}
-	if err := utils.UnmarshalJSON(data, &uiHidden2, "", true, true); err == nil {
-		u.UIHidden2 = &uiHidden2
-		u.Type = UIHiddenUnion2TypeUIHidden2
+	var getConfigurationProductsUIHidden2 GetConfigurationProductsUIHidden2 = GetConfigurationProductsUIHidden2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden2 = &getConfigurationProductsUIHidden2
+		u.Type = GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHidden2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion2TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion2TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum2 UIHiddenEnum2 = UIHiddenEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum2, "", true, true); err == nil {
-		u.UIHiddenEnum2 = &uiHiddenEnum2
-		u.Type = UIHiddenUnion2TypeUIHiddenEnum2
+	var getConfigurationProductsUIHiddenEnum2 GetConfigurationProductsUIHiddenEnum2 = GetConfigurationProductsUIHiddenEnum2("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum2 = &getConfigurationProductsUIHiddenEnum2
+		u.Type = GetConfigurationProductsUIHiddenUnion2TypeGetConfigurationProductsUIHiddenEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion2", string(data))
 }
 
-func (u UIHiddenUnion2) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion2) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden2 != nil {
-		return utils.MarshalJSON(u.UIHidden2, "", true)
+	if u.GetConfigurationProductsUIHidden2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden2, "", true)
 	}
 
-	if u.UIHiddenEnum2 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum2, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion2: all fields are null")
 }
 
-type UIDisabledEnum2 string
+type GetConfigurationProductsUIDisabledEnum2 string
 
 const (
-	UIDisabledEnum2Update UIDisabledEnum2 = "update"
-	UIDisabledEnum2Create UIDisabledEnum2 = "create"
+	GetConfigurationProductsUIDisabledEnum2Update GetConfigurationProductsUIDisabledEnum2 = "update"
+	GetConfigurationProductsUIDisabledEnum2Create GetConfigurationProductsUIDisabledEnum2 = "create"
 )
 
-func (e UIDisabledEnum2) ToPointer() *UIDisabledEnum2 {
+func (e GetConfigurationProductsUIDisabledEnum2) ToPointer() *GetConfigurationProductsUIDisabledEnum2 {
 	return &e
 }
-func (e *UIDisabledEnum2) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7331,416 +8431,526 @@ func (e *UIDisabledEnum2) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum2(v)
+		*e = GetConfigurationProductsUIDisabledEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum2: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum2: %v", v)
 	}
 }
 
-type UIDisabled2 struct {
+type GetConfigurationProductsUIDisabled2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled2) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion2Type string
+type GetConfigurationProductsUIDisabledUnion2Type string
 
 const (
-	UIDisabledUnion2TypeBoolean         UIDisabledUnion2Type = "boolean"
-	UIDisabledUnion2TypeUIDisabled2     UIDisabledUnion2Type = "ui:disabled_2"
-	UIDisabledUnion2TypeUIDisabledEnum2 UIDisabledUnion2Type = "ui:disabled_enum_2"
+	GetConfigurationProductsUIDisabledUnion2TypeBoolean                                 GetConfigurationProductsUIDisabledUnion2Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabled2     GetConfigurationProductsUIDisabledUnion2Type = "getConfigurationProducts_ui:disabled_2"
+	GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabledEnum2 GetConfigurationProductsUIDisabledUnion2Type = "getConfigurationProducts_ui:disabled_enum_2"
 )
 
-type UIDisabledUnion2 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled2     *UIDisabled2     `queryParam:"inline"`
-	UIDisabledEnum2 *UIDisabledEnum2 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion2 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled2     *GetConfigurationProductsUIDisabled2     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum2 *GetConfigurationProductsUIDisabledEnum2 `queryParam:"inline"`
 
-	Type UIDisabledUnion2Type
+	Type GetConfigurationProductsUIDisabledUnion2Type
 }
 
-func CreateUIDisabledUnion2Boolean(boolean bool) UIDisabledUnion2 {
-	typ := UIDisabledUnion2TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion2Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion2 {
+	typ := GetConfigurationProductsUIDisabledUnion2TypeBoolean
 
-	return UIDisabledUnion2{
+	return GetConfigurationProductsUIDisabledUnion2{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion2UIDisabled2(uiDisabled2 UIDisabled2) UIDisabledUnion2 {
-	typ := UIDisabledUnion2TypeUIDisabled2
+func CreateGetConfigurationProductsUIDisabledUnion2GetConfigurationProductsUIDisabled2(getConfigurationProductsUIDisabled2 GetConfigurationProductsUIDisabled2) GetConfigurationProductsUIDisabledUnion2 {
+	typ := GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabled2
 
-	return UIDisabledUnion2{
-		UIDisabled2: &uiDisabled2,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion2{
+		GetConfigurationProductsUIDisabled2: &getConfigurationProductsUIDisabled2,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion2UIDisabledEnum2(uiDisabledEnum2 UIDisabledEnum2) UIDisabledUnion2 {
-	typ := UIDisabledUnion2TypeUIDisabledEnum2
+func CreateGetConfigurationProductsUIDisabledUnion2GetConfigurationProductsUIDisabledEnum2(getConfigurationProductsUIDisabledEnum2 GetConfigurationProductsUIDisabledEnum2) GetConfigurationProductsUIDisabledUnion2 {
+	typ := GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabledEnum2
 
-	return UIDisabledUnion2{
-		UIDisabledEnum2: &uiDisabledEnum2,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion2{
+		GetConfigurationProductsUIDisabledEnum2: &getConfigurationProductsUIDisabledEnum2,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion2) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled2 UIDisabled2 = UIDisabled2{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled2, "", true, true); err == nil {
-		u.UIDisabled2 = &uiDisabled2
-		u.Type = UIDisabledUnion2TypeUIDisabled2
+	var getConfigurationProductsUIDisabled2 GetConfigurationProductsUIDisabled2 = GetConfigurationProductsUIDisabled2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled2 = &getConfigurationProductsUIDisabled2
+		u.Type = GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabled2
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion2TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion2TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum2 UIDisabledEnum2 = UIDisabledEnum2("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum2, "", true, true); err == nil {
-		u.UIDisabledEnum2 = &uiDisabledEnum2
-		u.Type = UIDisabledUnion2TypeUIDisabledEnum2
+	var getConfigurationProductsUIDisabledEnum2 GetConfigurationProductsUIDisabledEnum2 = GetConfigurationProductsUIDisabledEnum2("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum2 = &getConfigurationProductsUIDisabledEnum2
+		u.Type = GetConfigurationProductsUIDisabledUnion2TypeGetConfigurationProductsUIDisabledEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion2", string(data))
 }
 
-func (u UIDisabledUnion2) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion2) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled2 != nil {
-		return utils.MarshalJSON(u.UIDisabled2, "", true)
+	if u.GetConfigurationProductsUIDisabled2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled2, "", true)
 	}
 
-	if u.UIDisabledEnum2 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum2, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion2: all fields are null")
 }
 
-type UIDescription2 struct {
+type GetConfigurationProductsUIDescription2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription2) GetExpr() string {
+func (g GetConfigurationProductsUIDescription2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion2Type string
+type GetConfigurationProductsUIDescriptionUnion2Type string
 
 const (
-	UIDescriptionUnion2TypeStr            UIDescriptionUnion2Type = "str"
-	UIDescriptionUnion2TypeUIDescription2 UIDescriptionUnion2Type = "ui:description_2"
+	GetConfigurationProductsUIDescriptionUnion2TypeStr                                    GetConfigurationProductsUIDescriptionUnion2Type = "str"
+	GetConfigurationProductsUIDescriptionUnion2TypeGetConfigurationProductsUIDescription2 GetConfigurationProductsUIDescriptionUnion2Type = "getConfigurationProducts_ui:description_2"
 )
 
-type UIDescriptionUnion2 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription2 *UIDescription2 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion2 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription2 *GetConfigurationProductsUIDescription2 `queryParam:"inline"`
 
-	Type UIDescriptionUnion2Type
+	Type GetConfigurationProductsUIDescriptionUnion2Type
 }
 
-func CreateUIDescriptionUnion2Str(str string) UIDescriptionUnion2 {
-	typ := UIDescriptionUnion2TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion2Str(str string) GetConfigurationProductsUIDescriptionUnion2 {
+	typ := GetConfigurationProductsUIDescriptionUnion2TypeStr
 
-	return UIDescriptionUnion2{
+	return GetConfigurationProductsUIDescriptionUnion2{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion2UIDescription2(uiDescription2 UIDescription2) UIDescriptionUnion2 {
-	typ := UIDescriptionUnion2TypeUIDescription2
+func CreateGetConfigurationProductsUIDescriptionUnion2GetConfigurationProductsUIDescription2(getConfigurationProductsUIDescription2 GetConfigurationProductsUIDescription2) GetConfigurationProductsUIDescriptionUnion2 {
+	typ := GetConfigurationProductsUIDescriptionUnion2TypeGetConfigurationProductsUIDescription2
 
-	return UIDescriptionUnion2{
-		UIDescription2: &uiDescription2,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion2{
+		GetConfigurationProductsUIDescription2: &getConfigurationProductsUIDescription2,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion2) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion2) UnmarshalJSON(data []byte) error {
 
-	var uiDescription2 UIDescription2 = UIDescription2{}
-	if err := utils.UnmarshalJSON(data, &uiDescription2, "", true, true); err == nil {
-		u.UIDescription2 = &uiDescription2
-		u.Type = UIDescriptionUnion2TypeUIDescription2
+	var getConfigurationProductsUIDescription2 GetConfigurationProductsUIDescription2 = GetConfigurationProductsUIDescription2{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription2, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription2 = &getConfigurationProductsUIDescription2
+		u.Type = GetConfigurationProductsUIDescriptionUnion2TypeGetConfigurationProductsUIDescription2
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion2TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion2TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion2", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion2", string(data))
 }
 
-func (u UIDescriptionUnion2) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion2) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription2 != nil {
-		return utils.MarshalJSON(u.UIDescription2, "", true)
+	if u.GetConfigurationProductsUIDescription2 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion2: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion2: all fields are null")
 }
 
-type UIFormattedValue2 struct {
+type GetConfigurationProductsUIFormattedValue2 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue2) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue2) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type PropertiesNumber struct {
-	Type             TypeNumber1          `json:"type"`
-	UIControl        UIControlInput2      `json:"ui:control"`
-	Minimum          *float64             `json:"minimum,omitempty"`
-	Maximum          *float64             `json:"maximum,omitempty"`
-	Description      *string              `json:"description,omitempty"`
-	Default          *float64             `json:"default,omitempty"`
-	ExclusiveMinimum *float64             `json:"exclusiveMinimum,omitempty"`
-	ExclusiveMaximum *float64             `json:"exclusiveMaximum,omitempty"`
-	UILabel          *string              `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion2    `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion2      `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion2    `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion2 `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue2   `json:"ui:formatted-value,omitempty"`
-	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
+type GetConfigurationProductsPropertiesNumber struct {
+	Type             GetConfigurationProductsTypeNumber1          `json:"type"`
+	UIControl        GetConfigurationProductsUIControlInput2      `json:"ui:control"`
+	Minimum          *float64                                     `json:"minimum,omitempty"`
+	Maximum          *float64                                     `json:"maximum,omitempty"`
+	Description      *string                                      `json:"description,omitempty"`
+	Default          *float64                                     `json:"default,omitempty"`
+	ExclusiveMinimum *float64                                     `json:"exclusiveMinimum,omitempty"`
+	ExclusiveMaximum *float64                                     `json:"exclusiveMaximum,omitempty"`
+	UILabel          *string                                      `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion2    `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion2      `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion2    `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion2 `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue2   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 }
 
-func (o *PropertiesNumber) GetType() TypeNumber1 {
+func (g GetConfigurationProductsPropertiesNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPropertiesNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPropertiesNumber) GetType() GetConfigurationProductsTypeNumber1 {
 	if o == nil {
-		return TypeNumber1("")
+		return GetConfigurationProductsTypeNumber1("")
 	}
 	return o.Type
 }
 
-func (o *PropertiesNumber) GetUIControl() UIControlInput2 {
+func (o *GetConfigurationProductsPropertiesNumber) GetUIControl() GetConfigurationProductsUIControlInput2 {
 	if o == nil {
-		return UIControlInput2("")
+		return GetConfigurationProductsUIControlInput2("")
 	}
 	return o.UIControl
 }
 
-func (o *PropertiesNumber) GetMinimum() *float64 {
+func (o *GetConfigurationProductsPropertiesNumber) GetMinimum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Minimum
 }
 
-func (o *PropertiesNumber) GetMaximum() *float64 {
+func (o *GetConfigurationProductsPropertiesNumber) GetMaximum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Maximum
 }
 
-func (o *PropertiesNumber) GetDescription() *string {
+func (o *GetConfigurationProductsPropertiesNumber) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PropertiesNumber) GetDefault() *float64 {
+func (o *GetConfigurationProductsPropertiesNumber) GetDefault() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *PropertiesNumber) GetExclusiveMinimum() *float64 {
+func (o *GetConfigurationProductsPropertiesNumber) GetExclusiveMinimum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExclusiveMinimum
 }
 
-func (o *PropertiesNumber) GetExclusiveMaximum() *float64 {
+func (o *GetConfigurationProductsPropertiesNumber) GetExclusiveMaximum() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ExclusiveMaximum
 }
 
-func (o *PropertiesNumber) GetUILabel() *string {
+func (o *GetConfigurationProductsPropertiesNumber) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *PropertiesNumber) GetUIReadOnly() *UIReadOnlyUnion2 {
+func (o *GetConfigurationProductsPropertiesNumber) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesNumber) GetUIHidden() *UIHiddenUnion2 {
+func (o *GetConfigurationProductsPropertiesNumber) GetUIHidden() *GetConfigurationProductsUIHiddenUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesNumber) GetUIDisabled() *UIDisabledUnion2 {
+func (o *GetConfigurationProductsPropertiesNumber) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesNumber) GetUIDescription() *UIDescriptionUnion2 {
+func (o *GetConfigurationProductsPropertiesNumber) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesNumber) GetUIFormattedValue() *UIFormattedValue2 {
+func (o *GetConfigurationProductsPropertiesNumber) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue2 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-func (o *PropertiesNumber) GetUIPlaceholder() *string {
+func (o *GetConfigurationProductsPropertiesNumber) GetUIPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UIPlaceholder
 }
 
-type TypeString1 string
+type GetConfigurationProductsTypeString1 string
 
 const (
-	TypeString1String TypeString1 = "string"
+	GetConfigurationProductsTypeString1String GetConfigurationProductsTypeString1 = "string"
 )
 
-func (e TypeString1) ToPointer() *TypeString1 {
+func (e GetConfigurationProductsTypeString1) ToPointer() *GetConfigurationProductsTypeString1 {
 	return &e
 }
-func (e *TypeString1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsTypeString1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "string":
-		*e = TypeString1(v)
+		*e = GetConfigurationProductsTypeString1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeString1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsTypeString1: %v", v)
 	}
 }
 
-type UIControlInput1 string
+type GetConfigurationProductsUIControlInput1 string
 
 const (
-	UIControlInput1Input UIControlInput1 = "input"
+	GetConfigurationProductsUIControlInput1Input GetConfigurationProductsUIControlInput1 = "input"
 )
 
-func (e UIControlInput1) ToPointer() *UIControlInput1 {
+func (e GetConfigurationProductsUIControlInput1) ToPointer() *GetConfigurationProductsUIControlInput1 {
 	return &e
 }
-func (e *UIControlInput1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIControlInput1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "input":
-		*e = UIControlInput1(v)
+		*e = GetConfigurationProductsUIControlInput1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIControlInput1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIControlInput1: %v", v)
 	}
 }
 
-type MinLengthAtBRANDAt4479431 struct {
+type MinLengthAtBRANDAt5025401 struct {
 }
 
-type MinLength1 struct {
-	AtBRANDAt447943 MinLengthAtBRANDAt4479431 `json:"__@BRAND@447943"`
+func (m MinLengthAtBRANDAt5025401) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (o *MinLength1) GetAtBRANDAt447943() MinLengthAtBRANDAt4479431 {
+func (m *MinLengthAtBRANDAt5025401) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsMinLength1 struct {
+	AtBRANDAt502540 MinLengthAtBRANDAt5025401 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsMinLength1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsMinLength1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsMinLength1) GetAtBRANDAt502540() MinLengthAtBRANDAt5025401 {
 	if o == nil {
-		return MinLengthAtBRANDAt4479431{}
+		return MinLengthAtBRANDAt5025401{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type MaxLengthAtBRANDAt4479431 struct {
+type MaxLengthAtBRANDAt5025401 struct {
 }
 
-type MaxLength1 struct {
-	AtBRANDAt447943 MaxLengthAtBRANDAt4479431 `json:"__@BRAND@447943"`
+func (m MaxLengthAtBRANDAt5025401) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (o *MaxLength1) GetAtBRANDAt447943() MaxLengthAtBRANDAt4479431 {
+func (m *MaxLengthAtBRANDAt5025401) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsMaxLength1 struct {
+	AtBRANDAt502540 MaxLengthAtBRANDAt5025401 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsMaxLength1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsMaxLength1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsMaxLength1) GetAtBRANDAt502540() MaxLengthAtBRANDAt5025401 {
 	if o == nil {
-		return MaxLengthAtBRANDAt4479431{}
+		return MaxLengthAtBRANDAt5025401{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type PatternAtBRANDAt4479431 struct {
+type PatternAtBRANDAt5025401 struct {
 }
 
-type Pattern1 struct {
-	AtBRANDAt447943 PatternAtBRANDAt4479431 `json:"__@BRAND@447943"`
+func (p PatternAtBRANDAt5025401) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (o *Pattern1) GetAtBRANDAt447943() PatternAtBRANDAt4479431 {
+func (p *PatternAtBRANDAt5025401) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type GetConfigurationProductsPattern1 struct {
+	AtBRANDAt502540 PatternAtBRANDAt5025401 `json:"__@BRAND@502540"`
+}
+
+func (g GetConfigurationProductsPattern1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPattern1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"__@BRAND@502540"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPattern1) GetAtBRANDAt502540() PatternAtBRANDAt5025401 {
 	if o == nil {
-		return PatternAtBRANDAt4479431{}
+		return PatternAtBRANDAt5025401{}
 	}
-	return o.AtBRANDAt447943
+	return o.AtBRANDAt502540
 }
 
-type UIReadOnlyEnum1 string
+type GetConfigurationProductsUIReadOnlyEnum1 string
 
 const (
-	UIReadOnlyEnum1Update UIReadOnlyEnum1 = "update"
-	UIReadOnlyEnum1Create UIReadOnlyEnum1 = "create"
+	GetConfigurationProductsUIReadOnlyEnum1Update GetConfigurationProductsUIReadOnlyEnum1 = "update"
+	GetConfigurationProductsUIReadOnlyEnum1Create GetConfigurationProductsUIReadOnlyEnum1 = "create"
 )
 
-func (e UIReadOnlyEnum1) ToPointer() *UIReadOnlyEnum1 {
+func (e GetConfigurationProductsUIReadOnlyEnum1) ToPointer() *GetConfigurationProductsUIReadOnlyEnum1 {
 	return &e
 }
-func (e *UIReadOnlyEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIReadOnlyEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7749,120 +8959,131 @@ func (e *UIReadOnlyEnum1) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIReadOnlyEnum1(v)
+		*e = GetConfigurationProductsUIReadOnlyEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIReadOnlyEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIReadOnlyEnum1: %v", v)
 	}
 }
 
-type UIReadOnly1 struct {
+type GetConfigurationProductsUIReadOnly1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIReadOnly1) GetExpr() string {
+func (g GetConfigurationProductsUIReadOnly1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIReadOnly1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIReadOnly1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIReadOnlyUnion1Type string
+type GetConfigurationProductsUIReadOnlyUnion1Type string
 
 const (
-	UIReadOnlyUnion1TypeBoolean         UIReadOnlyUnion1Type = "boolean"
-	UIReadOnlyUnion1TypeUIReadOnly1     UIReadOnlyUnion1Type = "ui:read-only_1"
-	UIReadOnlyUnion1TypeUIReadOnlyEnum1 UIReadOnlyUnion1Type = "ui:read-only_enum_1"
+	GetConfigurationProductsUIReadOnlyUnion1TypeBoolean                                 GetConfigurationProductsUIReadOnlyUnion1Type = "boolean"
+	GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnly1     GetConfigurationProductsUIReadOnlyUnion1Type = "getConfigurationProducts_ui:read-only_1"
+	GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnlyEnum1 GetConfigurationProductsUIReadOnlyUnion1Type = "getConfigurationProducts_ui:read-only_enum_1"
 )
 
-type UIReadOnlyUnion1 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIReadOnly1     *UIReadOnly1     `queryParam:"inline"`
-	UIReadOnlyEnum1 *UIReadOnlyEnum1 `queryParam:"inline"`
+type GetConfigurationProductsUIReadOnlyUnion1 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnly1     *GetConfigurationProductsUIReadOnly1     `queryParam:"inline"`
+	GetConfigurationProductsUIReadOnlyEnum1 *GetConfigurationProductsUIReadOnlyEnum1 `queryParam:"inline"`
 
-	Type UIReadOnlyUnion1Type
+	Type GetConfigurationProductsUIReadOnlyUnion1Type
 }
 
-func CreateUIReadOnlyUnion1Boolean(boolean bool) UIReadOnlyUnion1 {
-	typ := UIReadOnlyUnion1TypeBoolean
+func CreateGetConfigurationProductsUIReadOnlyUnion1Boolean(boolean bool) GetConfigurationProductsUIReadOnlyUnion1 {
+	typ := GetConfigurationProductsUIReadOnlyUnion1TypeBoolean
 
-	return UIReadOnlyUnion1{
+	return GetConfigurationProductsUIReadOnlyUnion1{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIReadOnlyUnion1UIReadOnly1(uiReadOnly1 UIReadOnly1) UIReadOnlyUnion1 {
-	typ := UIReadOnlyUnion1TypeUIReadOnly1
+func CreateGetConfigurationProductsUIReadOnlyUnion1GetConfigurationProductsUIReadOnly1(getConfigurationProductsUIReadOnly1 GetConfigurationProductsUIReadOnly1) GetConfigurationProductsUIReadOnlyUnion1 {
+	typ := GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnly1
 
-	return UIReadOnlyUnion1{
-		UIReadOnly1: &uiReadOnly1,
-		Type:        typ,
+	return GetConfigurationProductsUIReadOnlyUnion1{
+		GetConfigurationProductsUIReadOnly1: &getConfigurationProductsUIReadOnly1,
+		Type:                                typ,
 	}
 }
 
-func CreateUIReadOnlyUnion1UIReadOnlyEnum1(uiReadOnlyEnum1 UIReadOnlyEnum1) UIReadOnlyUnion1 {
-	typ := UIReadOnlyUnion1TypeUIReadOnlyEnum1
+func CreateGetConfigurationProductsUIReadOnlyUnion1GetConfigurationProductsUIReadOnlyEnum1(getConfigurationProductsUIReadOnlyEnum1 GetConfigurationProductsUIReadOnlyEnum1) GetConfigurationProductsUIReadOnlyUnion1 {
+	typ := GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnlyEnum1
 
-	return UIReadOnlyUnion1{
-		UIReadOnlyEnum1: &uiReadOnlyEnum1,
-		Type:            typ,
+	return GetConfigurationProductsUIReadOnlyUnion1{
+		GetConfigurationProductsUIReadOnlyEnum1: &getConfigurationProductsUIReadOnlyEnum1,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIReadOnlyUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIReadOnlyUnion1) UnmarshalJSON(data []byte) error {
 
-	var uiReadOnly1 UIReadOnly1 = UIReadOnly1{}
-	if err := utils.UnmarshalJSON(data, &uiReadOnly1, "", true, true); err == nil {
-		u.UIReadOnly1 = &uiReadOnly1
-		u.Type = UIReadOnlyUnion1TypeUIReadOnly1
+	var getConfigurationProductsUIReadOnly1 GetConfigurationProductsUIReadOnly1 = GetConfigurationProductsUIReadOnly1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnly1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnly1 = &getConfigurationProductsUIReadOnly1
+		u.Type = GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnly1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIReadOnlyUnion1TypeBoolean
+		u.Type = GetConfigurationProductsUIReadOnlyUnion1TypeBoolean
 		return nil
 	}
 
-	var uiReadOnlyEnum1 UIReadOnlyEnum1 = UIReadOnlyEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiReadOnlyEnum1, "", true, true); err == nil {
-		u.UIReadOnlyEnum1 = &uiReadOnlyEnum1
-		u.Type = UIReadOnlyUnion1TypeUIReadOnlyEnum1
+	var getConfigurationProductsUIReadOnlyEnum1 GetConfigurationProductsUIReadOnlyEnum1 = GetConfigurationProductsUIReadOnlyEnum1("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIReadOnlyEnum1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIReadOnlyEnum1 = &getConfigurationProductsUIReadOnlyEnum1
+		u.Type = GetConfigurationProductsUIReadOnlyUnion1TypeGetConfigurationProductsUIReadOnlyEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIReadOnlyUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIReadOnlyUnion1", string(data))
 }
 
-func (u UIReadOnlyUnion1) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIReadOnlyUnion1) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIReadOnly1 != nil {
-		return utils.MarshalJSON(u.UIReadOnly1, "", true)
+	if u.GetConfigurationProductsUIReadOnly1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnly1, "", true)
 	}
 
-	if u.UIReadOnlyEnum1 != nil {
-		return utils.MarshalJSON(u.UIReadOnlyEnum1, "", true)
+	if u.GetConfigurationProductsUIReadOnlyEnum1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIReadOnlyEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIReadOnlyUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIReadOnlyUnion1: all fields are null")
 }
 
-type UIHiddenEnum1 string
+type GetConfigurationProductsUIHiddenEnum1 string
 
 const (
-	UIHiddenEnum1Update UIHiddenEnum1 = "update"
-	UIHiddenEnum1Create UIHiddenEnum1 = "create"
+	GetConfigurationProductsUIHiddenEnum1Update GetConfigurationProductsUIHiddenEnum1 = "update"
+	GetConfigurationProductsUIHiddenEnum1Create GetConfigurationProductsUIHiddenEnum1 = "create"
 )
 
-func (e UIHiddenEnum1) ToPointer() *UIHiddenEnum1 {
+func (e GetConfigurationProductsUIHiddenEnum1) ToPointer() *GetConfigurationProductsUIHiddenEnum1 {
 	return &e
 }
-func (e *UIHiddenEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIHiddenEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7871,120 +9092,131 @@ func (e *UIHiddenEnum1) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIHiddenEnum1(v)
+		*e = GetConfigurationProductsUIHiddenEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIHiddenEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIHiddenEnum1: %v", v)
 	}
 }
 
-type UIHidden1 struct {
+type GetConfigurationProductsUIHidden1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIHidden1) GetExpr() string {
+func (g GetConfigurationProductsUIHidden1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIHidden1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIHidden1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIHiddenUnion1Type string
+type GetConfigurationProductsUIHiddenUnion1Type string
 
 const (
-	UIHiddenUnion1TypeBoolean       UIHiddenUnion1Type = "boolean"
-	UIHiddenUnion1TypeUIHidden1     UIHiddenUnion1Type = "ui:hidden_1"
-	UIHiddenUnion1TypeUIHiddenEnum1 UIHiddenUnion1Type = "ui:hidden_enum_1"
+	GetConfigurationProductsUIHiddenUnion1TypeBoolean                               GetConfigurationProductsUIHiddenUnion1Type = "boolean"
+	GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHidden1     GetConfigurationProductsUIHiddenUnion1Type = "getConfigurationProducts_ui:hidden_1"
+	GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHiddenEnum1 GetConfigurationProductsUIHiddenUnion1Type = "getConfigurationProducts_ui:hidden_enum_1"
 )
 
-type UIHiddenUnion1 struct {
-	Boolean       *bool          `queryParam:"inline"`
-	UIHidden1     *UIHidden1     `queryParam:"inline"`
-	UIHiddenEnum1 *UIHiddenEnum1 `queryParam:"inline"`
+type GetConfigurationProductsUIHiddenUnion1 struct {
+	Boolean                               *bool                                  `queryParam:"inline"`
+	GetConfigurationProductsUIHidden1     *GetConfigurationProductsUIHidden1     `queryParam:"inline"`
+	GetConfigurationProductsUIHiddenEnum1 *GetConfigurationProductsUIHiddenEnum1 `queryParam:"inline"`
 
-	Type UIHiddenUnion1Type
+	Type GetConfigurationProductsUIHiddenUnion1Type
 }
 
-func CreateUIHiddenUnion1Boolean(boolean bool) UIHiddenUnion1 {
-	typ := UIHiddenUnion1TypeBoolean
+func CreateGetConfigurationProductsUIHiddenUnion1Boolean(boolean bool) GetConfigurationProductsUIHiddenUnion1 {
+	typ := GetConfigurationProductsUIHiddenUnion1TypeBoolean
 
-	return UIHiddenUnion1{
+	return GetConfigurationProductsUIHiddenUnion1{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIHiddenUnion1UIHidden1(uiHidden1 UIHidden1) UIHiddenUnion1 {
-	typ := UIHiddenUnion1TypeUIHidden1
+func CreateGetConfigurationProductsUIHiddenUnion1GetConfigurationProductsUIHidden1(getConfigurationProductsUIHidden1 GetConfigurationProductsUIHidden1) GetConfigurationProductsUIHiddenUnion1 {
+	typ := GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHidden1
 
-	return UIHiddenUnion1{
-		UIHidden1: &uiHidden1,
-		Type:      typ,
+	return GetConfigurationProductsUIHiddenUnion1{
+		GetConfigurationProductsUIHidden1: &getConfigurationProductsUIHidden1,
+		Type:                              typ,
 	}
 }
 
-func CreateUIHiddenUnion1UIHiddenEnum1(uiHiddenEnum1 UIHiddenEnum1) UIHiddenUnion1 {
-	typ := UIHiddenUnion1TypeUIHiddenEnum1
+func CreateGetConfigurationProductsUIHiddenUnion1GetConfigurationProductsUIHiddenEnum1(getConfigurationProductsUIHiddenEnum1 GetConfigurationProductsUIHiddenEnum1) GetConfigurationProductsUIHiddenUnion1 {
+	typ := GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHiddenEnum1
 
-	return UIHiddenUnion1{
-		UIHiddenEnum1: &uiHiddenEnum1,
-		Type:          typ,
+	return GetConfigurationProductsUIHiddenUnion1{
+		GetConfigurationProductsUIHiddenEnum1: &getConfigurationProductsUIHiddenEnum1,
+		Type:                                  typ,
 	}
 }
 
-func (u *UIHiddenUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIHiddenUnion1) UnmarshalJSON(data []byte) error {
 
-	var uiHidden1 UIHidden1 = UIHidden1{}
-	if err := utils.UnmarshalJSON(data, &uiHidden1, "", true, true); err == nil {
-		u.UIHidden1 = &uiHidden1
-		u.Type = UIHiddenUnion1TypeUIHidden1
+	var getConfigurationProductsUIHidden1 GetConfigurationProductsUIHidden1 = GetConfigurationProductsUIHidden1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHidden1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHidden1 = &getConfigurationProductsUIHidden1
+		u.Type = GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHidden1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIHiddenUnion1TypeBoolean
+		u.Type = GetConfigurationProductsUIHiddenUnion1TypeBoolean
 		return nil
 	}
 
-	var uiHiddenEnum1 UIHiddenEnum1 = UIHiddenEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiHiddenEnum1, "", true, true); err == nil {
-		u.UIHiddenEnum1 = &uiHiddenEnum1
-		u.Type = UIHiddenUnion1TypeUIHiddenEnum1
+	var getConfigurationProductsUIHiddenEnum1 GetConfigurationProductsUIHiddenEnum1 = GetConfigurationProductsUIHiddenEnum1("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIHiddenEnum1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIHiddenEnum1 = &getConfigurationProductsUIHiddenEnum1
+		u.Type = GetConfigurationProductsUIHiddenUnion1TypeGetConfigurationProductsUIHiddenEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIHiddenUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIHiddenUnion1", string(data))
 }
 
-func (u UIHiddenUnion1) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIHiddenUnion1) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIHidden1 != nil {
-		return utils.MarshalJSON(u.UIHidden1, "", true)
+	if u.GetConfigurationProductsUIHidden1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHidden1, "", true)
 	}
 
-	if u.UIHiddenEnum1 != nil {
-		return utils.MarshalJSON(u.UIHiddenEnum1, "", true)
+	if u.GetConfigurationProductsUIHiddenEnum1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIHiddenEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIHiddenUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIHiddenUnion1: all fields are null")
 }
 
-type UIDisabledEnum1 string
+type GetConfigurationProductsUIDisabledEnum1 string
 
 const (
-	UIDisabledEnum1Update UIDisabledEnum1 = "update"
-	UIDisabledEnum1Create UIDisabledEnum1 = "create"
+	GetConfigurationProductsUIDisabledEnum1Update GetConfigurationProductsUIDisabledEnum1 = "update"
+	GetConfigurationProductsUIDisabledEnum1Create GetConfigurationProductsUIDisabledEnum1 = "create"
 )
 
-func (e UIDisabledEnum1) ToPointer() *UIDisabledEnum1 {
+func (e GetConfigurationProductsUIDisabledEnum1) ToPointer() *GetConfigurationProductsUIDisabledEnum1 {
 	return &e
 }
-func (e *UIDisabledEnum1) UnmarshalJSON(data []byte) error {
+func (e *GetConfigurationProductsUIDisabledEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -7993,608 +9225,652 @@ func (e *UIDisabledEnum1) UnmarshalJSON(data []byte) error {
 	case "update":
 		fallthrough
 	case "create":
-		*e = UIDisabledEnum1(v)
+		*e = GetConfigurationProductsUIDisabledEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UIDisabledEnum1: %v", v)
+		return fmt.Errorf("invalid value for GetConfigurationProductsUIDisabledEnum1: %v", v)
 	}
 }
 
-type UIDisabled1 struct {
+type GetConfigurationProductsUIDisabled1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDisabled1) GetExpr() string {
+func (g GetConfigurationProductsUIDisabled1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDisabled1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDisabled1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDisabledUnion1Type string
+type GetConfigurationProductsUIDisabledUnion1Type string
 
 const (
-	UIDisabledUnion1TypeBoolean         UIDisabledUnion1Type = "boolean"
-	UIDisabledUnion1TypeUIDisabled1     UIDisabledUnion1Type = "ui:disabled_1"
-	UIDisabledUnion1TypeUIDisabledEnum1 UIDisabledUnion1Type = "ui:disabled_enum_1"
+	GetConfigurationProductsUIDisabledUnion1TypeBoolean                                 GetConfigurationProductsUIDisabledUnion1Type = "boolean"
+	GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabled1     GetConfigurationProductsUIDisabledUnion1Type = "getConfigurationProducts_ui:disabled_1"
+	GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabledEnum1 GetConfigurationProductsUIDisabledUnion1Type = "getConfigurationProducts_ui:disabled_enum_1"
 )
 
-type UIDisabledUnion1 struct {
-	Boolean         *bool            `queryParam:"inline"`
-	UIDisabled1     *UIDisabled1     `queryParam:"inline"`
-	UIDisabledEnum1 *UIDisabledEnum1 `queryParam:"inline"`
+type GetConfigurationProductsUIDisabledUnion1 struct {
+	Boolean                                 *bool                                    `queryParam:"inline"`
+	GetConfigurationProductsUIDisabled1     *GetConfigurationProductsUIDisabled1     `queryParam:"inline"`
+	GetConfigurationProductsUIDisabledEnum1 *GetConfigurationProductsUIDisabledEnum1 `queryParam:"inline"`
 
-	Type UIDisabledUnion1Type
+	Type GetConfigurationProductsUIDisabledUnion1Type
 }
 
-func CreateUIDisabledUnion1Boolean(boolean bool) UIDisabledUnion1 {
-	typ := UIDisabledUnion1TypeBoolean
+func CreateGetConfigurationProductsUIDisabledUnion1Boolean(boolean bool) GetConfigurationProductsUIDisabledUnion1 {
+	typ := GetConfigurationProductsUIDisabledUnion1TypeBoolean
 
-	return UIDisabledUnion1{
+	return GetConfigurationProductsUIDisabledUnion1{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateUIDisabledUnion1UIDisabled1(uiDisabled1 UIDisabled1) UIDisabledUnion1 {
-	typ := UIDisabledUnion1TypeUIDisabled1
+func CreateGetConfigurationProductsUIDisabledUnion1GetConfigurationProductsUIDisabled1(getConfigurationProductsUIDisabled1 GetConfigurationProductsUIDisabled1) GetConfigurationProductsUIDisabledUnion1 {
+	typ := GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabled1
 
-	return UIDisabledUnion1{
-		UIDisabled1: &uiDisabled1,
-		Type:        typ,
+	return GetConfigurationProductsUIDisabledUnion1{
+		GetConfigurationProductsUIDisabled1: &getConfigurationProductsUIDisabled1,
+		Type:                                typ,
 	}
 }
 
-func CreateUIDisabledUnion1UIDisabledEnum1(uiDisabledEnum1 UIDisabledEnum1) UIDisabledUnion1 {
-	typ := UIDisabledUnion1TypeUIDisabledEnum1
+func CreateGetConfigurationProductsUIDisabledUnion1GetConfigurationProductsUIDisabledEnum1(getConfigurationProductsUIDisabledEnum1 GetConfigurationProductsUIDisabledEnum1) GetConfigurationProductsUIDisabledUnion1 {
+	typ := GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabledEnum1
 
-	return UIDisabledUnion1{
-		UIDisabledEnum1: &uiDisabledEnum1,
-		Type:            typ,
+	return GetConfigurationProductsUIDisabledUnion1{
+		GetConfigurationProductsUIDisabledEnum1: &getConfigurationProductsUIDisabledEnum1,
+		Type:                                    typ,
 	}
 }
 
-func (u *UIDisabledUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDisabledUnion1) UnmarshalJSON(data []byte) error {
 
-	var uiDisabled1 UIDisabled1 = UIDisabled1{}
-	if err := utils.UnmarshalJSON(data, &uiDisabled1, "", true, true); err == nil {
-		u.UIDisabled1 = &uiDisabled1
-		u.Type = UIDisabledUnion1TypeUIDisabled1
+	var getConfigurationProductsUIDisabled1 GetConfigurationProductsUIDisabled1 = GetConfigurationProductsUIDisabled1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabled1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabled1 = &getConfigurationProductsUIDisabled1
+		u.Type = GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabled1
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = UIDisabledUnion1TypeBoolean
+		u.Type = GetConfigurationProductsUIDisabledUnion1TypeBoolean
 		return nil
 	}
 
-	var uiDisabledEnum1 UIDisabledEnum1 = UIDisabledEnum1("")
-	if err := utils.UnmarshalJSON(data, &uiDisabledEnum1, "", true, true); err == nil {
-		u.UIDisabledEnum1 = &uiDisabledEnum1
-		u.Type = UIDisabledUnion1TypeUIDisabledEnum1
+	var getConfigurationProductsUIDisabledEnum1 GetConfigurationProductsUIDisabledEnum1 = GetConfigurationProductsUIDisabledEnum1("")
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDisabledEnum1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDisabledEnum1 = &getConfigurationProductsUIDisabledEnum1
+		u.Type = GetConfigurationProductsUIDisabledUnion1TypeGetConfigurationProductsUIDisabledEnum1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDisabledUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDisabledUnion1", string(data))
 }
 
-func (u UIDisabledUnion1) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDisabledUnion1) MarshalJSON() ([]byte, error) {
 	if u.Boolean != nil {
 		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.UIDisabled1 != nil {
-		return utils.MarshalJSON(u.UIDisabled1, "", true)
+	if u.GetConfigurationProductsUIDisabled1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabled1, "", true)
 	}
 
-	if u.UIDisabledEnum1 != nil {
-		return utils.MarshalJSON(u.UIDisabledEnum1, "", true)
+	if u.GetConfigurationProductsUIDisabledEnum1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDisabledEnum1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDisabledUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDisabledUnion1: all fields are null")
 }
 
-type UIDescription1 struct {
+type GetConfigurationProductsUIDescription1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIDescription1) GetExpr() string {
+func (g GetConfigurationProductsUIDescription1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIDescription1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIDescription1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type UIDescriptionUnion1Type string
+type GetConfigurationProductsUIDescriptionUnion1Type string
 
 const (
-	UIDescriptionUnion1TypeStr            UIDescriptionUnion1Type = "str"
-	UIDescriptionUnion1TypeUIDescription1 UIDescriptionUnion1Type = "ui:description_1"
+	GetConfigurationProductsUIDescriptionUnion1TypeStr                                    GetConfigurationProductsUIDescriptionUnion1Type = "str"
+	GetConfigurationProductsUIDescriptionUnion1TypeGetConfigurationProductsUIDescription1 GetConfigurationProductsUIDescriptionUnion1Type = "getConfigurationProducts_ui:description_1"
 )
 
-type UIDescriptionUnion1 struct {
-	Str            *string         `queryParam:"inline"`
-	UIDescription1 *UIDescription1 `queryParam:"inline"`
+type GetConfigurationProductsUIDescriptionUnion1 struct {
+	Str                                    *string                                 `queryParam:"inline"`
+	GetConfigurationProductsUIDescription1 *GetConfigurationProductsUIDescription1 `queryParam:"inline"`
 
-	Type UIDescriptionUnion1Type
+	Type GetConfigurationProductsUIDescriptionUnion1Type
 }
 
-func CreateUIDescriptionUnion1Str(str string) UIDescriptionUnion1 {
-	typ := UIDescriptionUnion1TypeStr
+func CreateGetConfigurationProductsUIDescriptionUnion1Str(str string) GetConfigurationProductsUIDescriptionUnion1 {
+	typ := GetConfigurationProductsUIDescriptionUnion1TypeStr
 
-	return UIDescriptionUnion1{
+	return GetConfigurationProductsUIDescriptionUnion1{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateUIDescriptionUnion1UIDescription1(uiDescription1 UIDescription1) UIDescriptionUnion1 {
-	typ := UIDescriptionUnion1TypeUIDescription1
+func CreateGetConfigurationProductsUIDescriptionUnion1GetConfigurationProductsUIDescription1(getConfigurationProductsUIDescription1 GetConfigurationProductsUIDescription1) GetConfigurationProductsUIDescriptionUnion1 {
+	typ := GetConfigurationProductsUIDescriptionUnion1TypeGetConfigurationProductsUIDescription1
 
-	return UIDescriptionUnion1{
-		UIDescription1: &uiDescription1,
-		Type:           typ,
+	return GetConfigurationProductsUIDescriptionUnion1{
+		GetConfigurationProductsUIDescription1: &getConfigurationProductsUIDescription1,
+		Type:                                   typ,
 	}
 }
 
-func (u *UIDescriptionUnion1) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsUIDescriptionUnion1) UnmarshalJSON(data []byte) error {
 
-	var uiDescription1 UIDescription1 = UIDescription1{}
-	if err := utils.UnmarshalJSON(data, &uiDescription1, "", true, true); err == nil {
-		u.UIDescription1 = &uiDescription1
-		u.Type = UIDescriptionUnion1TypeUIDescription1
+	var getConfigurationProductsUIDescription1 GetConfigurationProductsUIDescription1 = GetConfigurationProductsUIDescription1{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsUIDescription1, "", true, nil); err == nil {
+		u.GetConfigurationProductsUIDescription1 = &getConfigurationProductsUIDescription1
+		u.Type = GetConfigurationProductsUIDescriptionUnion1TypeGetConfigurationProductsUIDescription1
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = UIDescriptionUnion1TypeStr
+		u.Type = GetConfigurationProductsUIDescriptionUnion1TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UIDescriptionUnion1", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsUIDescriptionUnion1", string(data))
 }
 
-func (u UIDescriptionUnion1) MarshalJSON() ([]byte, error) {
+func (u GetConfigurationProductsUIDescriptionUnion1) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.UIDescription1 != nil {
-		return utils.MarshalJSON(u.UIDescription1, "", true)
+	if u.GetConfigurationProductsUIDescription1 != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsUIDescription1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UIDescriptionUnion1: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsUIDescriptionUnion1: all fields are null")
 }
 
-type UIFormattedValue1 struct {
+type GetConfigurationProductsUIFormattedValue1 struct {
 	Expr string `json:"expr"`
 }
 
-func (o *UIFormattedValue1) GetExpr() string {
+func (g GetConfigurationProductsUIFormattedValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsUIFormattedValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsUIFormattedValue1) GetExpr() string {
 	if o == nil {
 		return ""
 	}
 	return o.Expr
 }
 
-type PropertiesStringInput struct {
-	Type             TypeString1          `json:"type"`
-	UIControl        UIControlInput1      `json:"ui:control"`
-	Description      *string              `json:"description,omitempty"`
-	MinLength        *MinLength1          `json:"minLength,omitempty"`
-	MaxLength        *MaxLength1          `json:"maxLength,omitempty"`
-	Pattern          *Pattern1            `json:"pattern,omitempty"`
-	Default          *string              `json:"default,omitempty"`
-	Enum             []string             `json:"enum,omitempty"`
-	UILabel          *string              `json:"ui:label,omitempty"`
-	UIReadOnly       *UIReadOnlyUnion1    `json:"ui:read-only,omitempty"`
-	UIHidden         *UIHiddenUnion1      `json:"ui:hidden,omitempty"`
-	UIDisabled       *UIDisabledUnion1    `json:"ui:disabled,omitempty"`
-	UIDescription    *UIDescriptionUnion1 `json:"ui:description,omitempty"`
-	UIFormattedValue *UIFormattedValue1   `json:"ui:formatted-value,omitempty"`
-	UIPlaceholder    *string              `json:"ui:placeholder,omitempty"`
+type GetConfigurationProductsPropertiesStringInput struct {
+	Type             GetConfigurationProductsTypeString1          `json:"type"`
+	UIControl        GetConfigurationProductsUIControlInput1      `json:"ui:control"`
+	Description      *string                                      `json:"description,omitempty"`
+	MinLength        *GetConfigurationProductsMinLength1          `json:"minLength,omitempty"`
+	MaxLength        *GetConfigurationProductsMaxLength1          `json:"maxLength,omitempty"`
+	Pattern          *GetConfigurationProductsPattern1            `json:"pattern,omitempty"`
+	Default          *string                                      `json:"default,omitempty"`
+	Enum             []string                                     `json:"enum,omitempty"`
+	UILabel          *string                                      `json:"ui:label,omitempty"`
+	UIReadOnly       *GetConfigurationProductsUIReadOnlyUnion1    `json:"ui:read-only,omitempty"`
+	UIHidden         *GetConfigurationProductsUIHiddenUnion1      `json:"ui:hidden,omitempty"`
+	UIDisabled       *GetConfigurationProductsUIDisabledUnion1    `json:"ui:disabled,omitempty"`
+	UIDescription    *GetConfigurationProductsUIDescriptionUnion1 `json:"ui:description,omitempty"`
+	UIFormattedValue *GetConfigurationProductsUIFormattedValue1   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                      `json:"ui:placeholder,omitempty"`
 }
 
-func (o *PropertiesStringInput) GetType() TypeString1 {
+func (g GetConfigurationProductsPropertiesStringInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConfigurationProductsPropertiesStringInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetConfigurationProductsPropertiesStringInput) GetType() GetConfigurationProductsTypeString1 {
 	if o == nil {
-		return TypeString1("")
+		return GetConfigurationProductsTypeString1("")
 	}
 	return o.Type
 }
 
-func (o *PropertiesStringInput) GetUIControl() UIControlInput1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIControl() GetConfigurationProductsUIControlInput1 {
 	if o == nil {
-		return UIControlInput1("")
+		return GetConfigurationProductsUIControlInput1("")
 	}
 	return o.UIControl
 }
 
-func (o *PropertiesStringInput) GetDescription() *string {
+func (o *GetConfigurationProductsPropertiesStringInput) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *PropertiesStringInput) GetMinLength() *MinLength1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetMinLength() *GetConfigurationProductsMinLength1 {
 	if o == nil {
 		return nil
 	}
 	return o.MinLength
 }
 
-func (o *PropertiesStringInput) GetMaxLength() *MaxLength1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetMaxLength() *GetConfigurationProductsMaxLength1 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxLength
 }
 
-func (o *PropertiesStringInput) GetPattern() *Pattern1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetPattern() *GetConfigurationProductsPattern1 {
 	if o == nil {
 		return nil
 	}
 	return o.Pattern
 }
 
-func (o *PropertiesStringInput) GetDefault() *string {
+func (o *GetConfigurationProductsPropertiesStringInput) GetDefault() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Default
 }
 
-func (o *PropertiesStringInput) GetEnum() []string {
+func (o *GetConfigurationProductsPropertiesStringInput) GetEnum() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Enum
 }
 
-func (o *PropertiesStringInput) GetUILabel() *string {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUILabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UILabel
 }
 
-func (o *PropertiesStringInput) GetUIReadOnly() *UIReadOnlyUnion1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIReadOnly() *GetConfigurationProductsUIReadOnlyUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.UIReadOnly
 }
 
-func (o *PropertiesStringInput) GetUIHidden() *UIHiddenUnion1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIHidden() *GetConfigurationProductsUIHiddenUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.UIHidden
 }
 
-func (o *PropertiesStringInput) GetUIDisabled() *UIDisabledUnion1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIDisabled() *GetConfigurationProductsUIDisabledUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDisabled
 }
 
-func (o *PropertiesStringInput) GetUIDescription() *UIDescriptionUnion1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIDescription() *GetConfigurationProductsUIDescriptionUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.UIDescription
 }
 
-func (o *PropertiesStringInput) GetUIFormattedValue() *UIFormattedValue1 {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIFormattedValue() *GetConfigurationProductsUIFormattedValue1 {
 	if o == nil {
 		return nil
 	}
 	return o.UIFormattedValue
 }
 
-func (o *PropertiesStringInput) GetUIPlaceholder() *string {
+func (o *GetConfigurationProductsPropertiesStringInput) GetUIPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UIPlaceholder
 }
 
-type PropertiesUnionType string
+type GetConfigurationProductsPropertiesUnionType string
 
 const (
-	PropertiesUnionTypePropertiesStringInput       PropertiesUnionType = "properties_String_Input"
-	PropertiesUnionTypePropertiesNumber            PropertiesUnionType = "properties_Number"
-	PropertiesUnionTypePropertiesToggle            PropertiesUnionType = "properties_Toggle"
-	PropertiesUnionTypePropertiesSlider            PropertiesUnionType = "properties_Slider"
-	PropertiesUnionTypePropertiesSelect            PropertiesUnionType = "properties_Select"
-	PropertiesUnionTypePropertiesMultiSelect       PropertiesUnionType = "properties_MultiSelect"
-	PropertiesUnionTypePropertiesVercelRegion      PropertiesUnionType = "properties_VercelRegion"
-	PropertiesUnionTypePropertiesMultiVercelRegion PropertiesUnionType = "properties_MultiVercelRegion"
-	PropertiesUnionTypeProperties                  PropertiesUnionType = "properties"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesStringInput  GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties_String_Input"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesNumber       GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties_Number"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesToggle       GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties_Toggle"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesSlider       GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties_Slider"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesSelect       GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties_Select"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesMultiSelect  GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties_MultiSelect"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesVercelRegion GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties_VercelRegion"
+	GetConfigurationProductsPropertiesUnionTypePropertiesMultiVercelRegion                    GetConfigurationProductsPropertiesUnionType = "properties_MultiVercelRegion"
+	GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsProperties             GetConfigurationProductsPropertiesUnionType = "getConfigurationProducts_properties"
 )
 
-type PropertiesUnion struct {
-	PropertiesStringInput       *PropertiesStringInput       `queryParam:"inline"`
-	PropertiesNumber            *PropertiesNumber            `queryParam:"inline"`
-	PropertiesToggle            *PropertiesToggle            `queryParam:"inline"`
-	PropertiesSlider            *PropertiesSlider            `queryParam:"inline"`
-	PropertiesSelect            *PropertiesSelect            `queryParam:"inline"`
-	PropertiesMultiSelect       *PropertiesMultiSelect       `queryParam:"inline"`
-	PropertiesVercelRegion      *PropertiesVercelRegion      `queryParam:"inline"`
-	PropertiesMultiVercelRegion *PropertiesMultiVercelRegion `queryParam:"inline"`
-	Properties                  *Properties                  `queryParam:"inline"`
+type GetConfigurationProductsPropertiesUnion struct {
+	GetConfigurationProductsPropertiesStringInput  *GetConfigurationProductsPropertiesStringInput  `queryParam:"inline"`
+	GetConfigurationProductsPropertiesNumber       *GetConfigurationProductsPropertiesNumber       `queryParam:"inline"`
+	GetConfigurationProductsPropertiesToggle       *GetConfigurationProductsPropertiesToggle       `queryParam:"inline"`
+	GetConfigurationProductsPropertiesSlider       *GetConfigurationProductsPropertiesSlider       `queryParam:"inline"`
+	GetConfigurationProductsPropertiesSelect       *GetConfigurationProductsPropertiesSelect       `queryParam:"inline"`
+	GetConfigurationProductsPropertiesMultiSelect  *GetConfigurationProductsPropertiesMultiSelect  `queryParam:"inline"`
+	GetConfigurationProductsPropertiesVercelRegion *GetConfigurationProductsPropertiesVercelRegion `queryParam:"inline"`
+	PropertiesMultiVercelRegion                    *PropertiesMultiVercelRegion                    `queryParam:"inline"`
+	GetConfigurationProductsProperties             *GetConfigurationProductsProperties             `queryParam:"inline"`
 
-	Type PropertiesUnionType
+	Type GetConfigurationProductsPropertiesUnionType
 }
 
-func CreatePropertiesUnionPropertiesStringInput(propertiesStringInput PropertiesStringInput) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesStringInput
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsPropertiesStringInput(getConfigurationProductsPropertiesStringInput GetConfigurationProductsPropertiesStringInput) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesStringInput
 
-	return PropertiesUnion{
-		PropertiesStringInput: &propertiesStringInput,
-		Type:                  typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsPropertiesStringInput: &getConfigurationProductsPropertiesStringInput,
+		Type: typ,
 	}
 }
 
-func CreatePropertiesUnionPropertiesNumber(propertiesNumber PropertiesNumber) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesNumber
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsPropertiesNumber(getConfigurationProductsPropertiesNumber GetConfigurationProductsPropertiesNumber) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesNumber
 
-	return PropertiesUnion{
-		PropertiesNumber: &propertiesNumber,
-		Type:             typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsPropertiesNumber: &getConfigurationProductsPropertiesNumber,
+		Type:                                     typ,
 	}
 }
 
-func CreatePropertiesUnionPropertiesToggle(propertiesToggle PropertiesToggle) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesToggle
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsPropertiesToggle(getConfigurationProductsPropertiesToggle GetConfigurationProductsPropertiesToggle) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesToggle
 
-	return PropertiesUnion{
-		PropertiesToggle: &propertiesToggle,
-		Type:             typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsPropertiesToggle: &getConfigurationProductsPropertiesToggle,
+		Type:                                     typ,
 	}
 }
 
-func CreatePropertiesUnionPropertiesSlider(propertiesSlider PropertiesSlider) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesSlider
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsPropertiesSlider(getConfigurationProductsPropertiesSlider GetConfigurationProductsPropertiesSlider) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesSlider
 
-	return PropertiesUnion{
-		PropertiesSlider: &propertiesSlider,
-		Type:             typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsPropertiesSlider: &getConfigurationProductsPropertiesSlider,
+		Type:                                     typ,
 	}
 }
 
-func CreatePropertiesUnionPropertiesSelect(propertiesSelect PropertiesSelect) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesSelect
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsPropertiesSelect(getConfigurationProductsPropertiesSelect GetConfigurationProductsPropertiesSelect) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesSelect
 
-	return PropertiesUnion{
-		PropertiesSelect: &propertiesSelect,
-		Type:             typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsPropertiesSelect: &getConfigurationProductsPropertiesSelect,
+		Type:                                     typ,
 	}
 }
 
-func CreatePropertiesUnionPropertiesMultiSelect(propertiesMultiSelect PropertiesMultiSelect) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesMultiSelect
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsPropertiesMultiSelect(getConfigurationProductsPropertiesMultiSelect GetConfigurationProductsPropertiesMultiSelect) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesMultiSelect
 
-	return PropertiesUnion{
-		PropertiesMultiSelect: &propertiesMultiSelect,
-		Type:                  typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsPropertiesMultiSelect: &getConfigurationProductsPropertiesMultiSelect,
+		Type: typ,
 	}
 }
 
-func CreatePropertiesUnionPropertiesVercelRegion(propertiesVercelRegion PropertiesVercelRegion) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesVercelRegion
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsPropertiesVercelRegion(getConfigurationProductsPropertiesVercelRegion GetConfigurationProductsPropertiesVercelRegion) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesVercelRegion
 
-	return PropertiesUnion{
-		PropertiesVercelRegion: &propertiesVercelRegion,
-		Type:                   typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsPropertiesVercelRegion: &getConfigurationProductsPropertiesVercelRegion,
+		Type: typ,
 	}
 }
 
-func CreatePropertiesUnionPropertiesMultiVercelRegion(propertiesMultiVercelRegion PropertiesMultiVercelRegion) PropertiesUnion {
-	typ := PropertiesUnionTypePropertiesMultiVercelRegion
+func CreateGetConfigurationProductsPropertiesUnionPropertiesMultiVercelRegion(propertiesMultiVercelRegion PropertiesMultiVercelRegion) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypePropertiesMultiVercelRegion
 
-	return PropertiesUnion{
+	return GetConfigurationProductsPropertiesUnion{
 		PropertiesMultiVercelRegion: &propertiesMultiVercelRegion,
 		Type:                        typ,
 	}
 }
 
-func CreatePropertiesUnionProperties(properties Properties) PropertiesUnion {
-	typ := PropertiesUnionTypeProperties
+func CreateGetConfigurationProductsPropertiesUnionGetConfigurationProductsProperties(getConfigurationProductsProperties GetConfigurationProductsProperties) GetConfigurationProductsPropertiesUnion {
+	typ := GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsProperties
 
-	return PropertiesUnion{
-		Properties: &properties,
-		Type:       typ,
+	return GetConfigurationProductsPropertiesUnion{
+		GetConfigurationProductsProperties: &getConfigurationProductsProperties,
+		Type:                               typ,
 	}
 }
 
-func (u *PropertiesUnion) UnmarshalJSON(data []byte) error {
+func (u *GetConfigurationProductsPropertiesUnion) UnmarshalJSON(data []byte) error {
 
-	var properties Properties = Properties{}
-	if err := utils.UnmarshalJSON(data, &properties, "", true, true); err == nil {
-		u.Properties = &properties
-		u.Type = PropertiesUnionTypeProperties
+	var getConfigurationProductsPropertiesSlider GetConfigurationProductsPropertiesSlider = GetConfigurationProductsPropertiesSlider{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsPropertiesSlider, "", true, nil); err == nil {
+		u.GetConfigurationProductsPropertiesSlider = &getConfigurationProductsPropertiesSlider
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesSlider
 		return nil
 	}
 
-	var propertiesToggle PropertiesToggle = PropertiesToggle{}
-	if err := utils.UnmarshalJSON(data, &propertiesToggle, "", true, true); err == nil {
-		u.PropertiesToggle = &propertiesToggle
-		u.Type = PropertiesUnionTypePropertiesToggle
-		return nil
-	}
-
-	var propertiesSlider PropertiesSlider = PropertiesSlider{}
-	if err := utils.UnmarshalJSON(data, &propertiesSlider, "", true, true); err == nil {
-		u.PropertiesSlider = &propertiesSlider
-		u.Type = PropertiesUnionTypePropertiesSlider
-		return nil
-	}
-
-	var propertiesStringInput PropertiesStringInput = PropertiesStringInput{}
-	if err := utils.UnmarshalJSON(data, &propertiesStringInput, "", true, true); err == nil {
-		u.PropertiesStringInput = &propertiesStringInput
-		u.Type = PropertiesUnionTypePropertiesStringInput
-		return nil
-	}
-
-	var propertiesNumber PropertiesNumber = PropertiesNumber{}
-	if err := utils.UnmarshalJSON(data, &propertiesNumber, "", true, true); err == nil {
-		u.PropertiesNumber = &propertiesNumber
-		u.Type = PropertiesUnionTypePropertiesNumber
-		return nil
-	}
-
-	var propertiesSelect PropertiesSelect = PropertiesSelect{}
-	if err := utils.UnmarshalJSON(data, &propertiesSelect, "", true, true); err == nil {
-		u.PropertiesSelect = &propertiesSelect
-		u.Type = PropertiesUnionTypePropertiesSelect
-		return nil
-	}
-
-	var propertiesMultiSelect PropertiesMultiSelect = PropertiesMultiSelect{}
-	if err := utils.UnmarshalJSON(data, &propertiesMultiSelect, "", true, true); err == nil {
-		u.PropertiesMultiSelect = &propertiesMultiSelect
-		u.Type = PropertiesUnionTypePropertiesMultiSelect
-		return nil
-	}
-
-	var propertiesVercelRegion PropertiesVercelRegion = PropertiesVercelRegion{}
-	if err := utils.UnmarshalJSON(data, &propertiesVercelRegion, "", true, true); err == nil {
-		u.PropertiesVercelRegion = &propertiesVercelRegion
-		u.Type = PropertiesUnionTypePropertiesVercelRegion
+	var getConfigurationProductsPropertiesMultiSelect GetConfigurationProductsPropertiesMultiSelect = GetConfigurationProductsPropertiesMultiSelect{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsPropertiesMultiSelect, "", true, nil); err == nil {
+		u.GetConfigurationProductsPropertiesMultiSelect = &getConfigurationProductsPropertiesMultiSelect
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesMultiSelect
 		return nil
 	}
 
 	var propertiesMultiVercelRegion PropertiesMultiVercelRegion = PropertiesMultiVercelRegion{}
-	if err := utils.UnmarshalJSON(data, &propertiesMultiVercelRegion, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &propertiesMultiVercelRegion, "", true, nil); err == nil {
 		u.PropertiesMultiVercelRegion = &propertiesMultiVercelRegion
-		u.Type = PropertiesUnionTypePropertiesMultiVercelRegion
+		u.Type = GetConfigurationProductsPropertiesUnionTypePropertiesMultiVercelRegion
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PropertiesUnion", string(data))
+	var getConfigurationProductsPropertiesSelect GetConfigurationProductsPropertiesSelect = GetConfigurationProductsPropertiesSelect{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsPropertiesSelect, "", true, nil); err == nil {
+		u.GetConfigurationProductsPropertiesSelect = &getConfigurationProductsPropertiesSelect
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesSelect
+		return nil
+	}
+
+	var getConfigurationProductsPropertiesVercelRegion GetConfigurationProductsPropertiesVercelRegion = GetConfigurationProductsPropertiesVercelRegion{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsPropertiesVercelRegion, "", true, nil); err == nil {
+		u.GetConfigurationProductsPropertiesVercelRegion = &getConfigurationProductsPropertiesVercelRegion
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesVercelRegion
+		return nil
+	}
+
+	var getConfigurationProductsPropertiesStringInput GetConfigurationProductsPropertiesStringInput = GetConfigurationProductsPropertiesStringInput{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsPropertiesStringInput, "", true, nil); err == nil {
+		u.GetConfigurationProductsPropertiesStringInput = &getConfigurationProductsPropertiesStringInput
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesStringInput
+		return nil
+	}
+
+	var getConfigurationProductsPropertiesNumber GetConfigurationProductsPropertiesNumber = GetConfigurationProductsPropertiesNumber{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsPropertiesNumber, "", true, nil); err == nil {
+		u.GetConfigurationProductsPropertiesNumber = &getConfigurationProductsPropertiesNumber
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesNumber
+		return nil
+	}
+
+	var getConfigurationProductsPropertiesToggle GetConfigurationProductsPropertiesToggle = GetConfigurationProductsPropertiesToggle{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsPropertiesToggle, "", true, nil); err == nil {
+		u.GetConfigurationProductsPropertiesToggle = &getConfigurationProductsPropertiesToggle
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsPropertiesToggle
+		return nil
+	}
+
+	var getConfigurationProductsProperties GetConfigurationProductsProperties = GetConfigurationProductsProperties{}
+	if err := utils.UnmarshalJSON(data, &getConfigurationProductsProperties, "", true, nil); err == nil {
+		u.GetConfigurationProductsProperties = &getConfigurationProductsProperties
+		u.Type = GetConfigurationProductsPropertiesUnionTypeGetConfigurationProductsProperties
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetConfigurationProductsPropertiesUnion", string(data))
 }
 
-func (u PropertiesUnion) MarshalJSON() ([]byte, error) {
-	if u.PropertiesStringInput != nil {
-		return utils.MarshalJSON(u.PropertiesStringInput, "", true)
+func (u GetConfigurationProductsPropertiesUnion) MarshalJSON() ([]byte, error) {
+	if u.GetConfigurationProductsPropertiesStringInput != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsPropertiesStringInput, "", true)
 	}
 
-	if u.PropertiesNumber != nil {
-		return utils.MarshalJSON(u.PropertiesNumber, "", true)
+	if u.GetConfigurationProductsPropertiesNumber != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsPropertiesNumber, "", true)
 	}
 
-	if u.PropertiesToggle != nil {
-		return utils.MarshalJSON(u.PropertiesToggle, "", true)
+	if u.GetConfigurationProductsPropertiesToggle != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsPropertiesToggle, "", true)
 	}
 
-	if u.PropertiesSlider != nil {
-		return utils.MarshalJSON(u.PropertiesSlider, "", true)
+	if u.GetConfigurationProductsPropertiesSlider != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsPropertiesSlider, "", true)
 	}
 
-	if u.PropertiesSelect != nil {
-		return utils.MarshalJSON(u.PropertiesSelect, "", true)
+	if u.GetConfigurationProductsPropertiesSelect != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsPropertiesSelect, "", true)
 	}
 
-	if u.PropertiesMultiSelect != nil {
-		return utils.MarshalJSON(u.PropertiesMultiSelect, "", true)
+	if u.GetConfigurationProductsPropertiesMultiSelect != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsPropertiesMultiSelect, "", true)
 	}
 
-	if u.PropertiesVercelRegion != nil {
-		return utils.MarshalJSON(u.PropertiesVercelRegion, "", true)
+	if u.GetConfigurationProductsPropertiesVercelRegion != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsPropertiesVercelRegion, "", true)
 	}
 
 	if u.PropertiesMultiVercelRegion != nil {
 		return utils.MarshalJSON(u.PropertiesMultiVercelRegion, "", true)
 	}
 
-	if u.Properties != nil {
-		return utils.MarshalJSON(u.Properties, "", true)
+	if u.GetConfigurationProductsProperties != nil {
+		return utils.MarshalJSON(u.GetConfigurationProductsProperties, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type PropertiesUnion: all fields are null")
+	return nil, errors.New("could not marshal union type GetConfigurationProductsPropertiesUnion: all fields are null")
 }
 
-type MetadataSchema struct {
-	Type       GetConfigurationProductsType `json:"type"`
-	Properties map[string]PropertiesUnion   `json:"properties"`
-	Required   []string                     `json:"required,omitempty"`
+type GetConfigurationProductsMetadataSchema struct {
+	Type       GetConfigurationProductsType                       `json:"type"`
+	Properties map[string]GetConfigurationProductsPropertiesUnion `json:"properties"`
+	Required   []string                                           `json:"required,omitempty"`
 }
 
-func (o *MetadataSchema) GetType() GetConfigurationProductsType {
+func (o *GetConfigurationProductsMetadataSchema) GetType() GetConfigurationProductsType {
 	if o == nil {
 		return GetConfigurationProductsType("")
 	}
 	return o.Type
 }
 
-func (o *MetadataSchema) GetProperties() map[string]PropertiesUnion {
+func (o *GetConfigurationProductsMetadataSchema) GetProperties() map[string]GetConfigurationProductsPropertiesUnion {
 	if o == nil {
-		return map[string]PropertiesUnion{}
+		return map[string]GetConfigurationProductsPropertiesUnion{}
 	}
 	return o.Properties
 }
 
-func (o *MetadataSchema) GetRequired() []string {
+func (o *GetConfigurationProductsMetadataSchema) GetRequired() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-type Product struct {
-	ID              string           `json:"id"`
-	Slug            string           `json:"slug"`
-	Name            string           `json:"name"`
-	Protocols       Protocols        `json:"protocols"`
-	PrimaryProtocol *PrimaryProtocol `json:"primaryProtocol,omitempty"`
-	MetadataSchema  MetadataSchema   `json:"metadataSchema"`
+type GetConfigurationProductsProduct struct {
+	ID              string                                 `json:"id"`
+	Slug            string                                 `json:"slug"`
+	Name            string                                 `json:"name"`
+	Protocols       Protocols                              `json:"protocols"`
+	PrimaryProtocol *PrimaryProtocol                       `json:"primaryProtocol,omitempty"`
+	MetadataSchema  GetConfigurationProductsMetadataSchema `json:"metadataSchema"`
 }
 
-func (o *Product) GetID() string {
+func (o *GetConfigurationProductsProduct) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Product) GetSlug() string {
+func (o *GetConfigurationProductsProduct) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *Product) GetName() string {
+func (o *GetConfigurationProductsProduct) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Product) GetProtocols() Protocols {
+func (o *GetConfigurationProductsProduct) GetProtocols() Protocols {
 	if o == nil {
 		return Protocols{}
 	}
 	return o.Protocols
 }
 
-func (o *Product) GetPrimaryProtocol() *PrimaryProtocol {
+func (o *GetConfigurationProductsProduct) GetPrimaryProtocol() *PrimaryProtocol {
 	if o == nil {
 		return nil
 	}
 	return o.PrimaryProtocol
 }
 
-func (o *Product) GetMetadataSchema() MetadataSchema {
+func (o *GetConfigurationProductsProduct) GetMetadataSchema() GetConfigurationProductsMetadataSchema {
 	if o == nil {
-		return MetadataSchema{}
+		return GetConfigurationProductsMetadataSchema{}
 	}
 	return o.MetadataSchema
 }
@@ -8639,14 +9915,14 @@ func (o *Configuration) GetID() string {
 
 // GetConfigurationProductsResponseBody - List of products available for this integration configuration
 type GetConfigurationProductsResponseBody struct {
-	Products      []Product                           `json:"products"`
+	Products      []GetConfigurationProductsProduct   `json:"products"`
 	Integration   GetConfigurationProductsIntegration `json:"integration"`
 	Configuration Configuration                       `json:"configuration"`
 }
 
-func (o *GetConfigurationProductsResponseBody) GetProducts() []Product {
+func (o *GetConfigurationProductsResponseBody) GetProducts() []GetConfigurationProductsProduct {
 	if o == nil {
-		return []Product{}
+		return []GetConfigurationProductsProduct{}
 	}
 	return o.Products
 }

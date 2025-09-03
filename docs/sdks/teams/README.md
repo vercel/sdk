@@ -768,6 +768,12 @@ async function run() {
       },
       hideIpAddresses: false,
       hideIpAddressesInLogDrains: false,
+      defaultExpirationSettings: {
+        expiration: "1y",
+        expirationProduction: "1y",
+        expirationCanceled: "1y",
+        expirationErrored: "1y",
+      },
     },
   });
 
@@ -813,6 +819,12 @@ async function run() {
       },
       hideIpAddresses: false,
       hideIpAddressesInLogDrains: false,
+      defaultExpirationSettings: {
+        expiration: "1y",
+        expirationProduction: "1y",
+        expirationCanceled: "1y",
+        expirationErrored: "1y",
+      },
     },
   });
   if (res.ok) {

@@ -6,11 +6,11 @@
 import { UpdateFirewallConfigRequestBodySecurityRequestAction } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequestAction =
-  "rules.remove";
+  "rules.update";
 ```
 
 ## Values
 
 ```typescript
-"rules.remove"
+"rules.update"
 ```

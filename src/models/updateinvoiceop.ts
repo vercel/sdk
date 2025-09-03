@@ -9,13 +9,13 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const UpdateInvoiceAction = {
+export const RequestBodyAction = {
   Refund: "refund",
 } as const;
-export type UpdateInvoiceAction = ClosedEnum<typeof UpdateInvoiceAction>;
+export type RequestBodyAction = ClosedEnum<typeof RequestBodyAction>;
 
-export type UpdateInvoiceRequestBody = {
-  action: UpdateInvoiceAction;
+export type UpdateInvoiceRequestBody1 = {
+  action: RequestBodyAction;
   /**
    * Refund reason.
    */
@@ -26,31 +26,93 @@ export type UpdateInvoiceRequestBody = {
   total: string;
 };
 
+export type UpdateInvoiceRequestBody = UpdateInvoiceRequestBody1;
+
 export type UpdateInvoiceRequest = {
   integrationConfigurationId: string;
   invoiceId: string;
-  requestBody: UpdateInvoiceRequestBody;
+  requestBody: UpdateInvoiceRequestBody1;
 };
 
 /** @internal */
-export const UpdateInvoiceAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateInvoiceAction
-> = z.nativeEnum(UpdateInvoiceAction);
+export const RequestBodyAction$inboundSchema: z.ZodNativeEnum<
+  typeof RequestBodyAction
+> = z.nativeEnum(RequestBodyAction);
 
 /** @internal */
-export const UpdateInvoiceAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateInvoiceAction
-> = UpdateInvoiceAction$inboundSchema;
+export const RequestBodyAction$outboundSchema: z.ZodNativeEnum<
+  typeof RequestBodyAction
+> = RequestBodyAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateInvoiceAction$ {
-  /** @deprecated use `UpdateInvoiceAction$inboundSchema` instead. */
-  export const inboundSchema = UpdateInvoiceAction$inboundSchema;
-  /** @deprecated use `UpdateInvoiceAction$outboundSchema` instead. */
-  export const outboundSchema = UpdateInvoiceAction$outboundSchema;
+export namespace RequestBodyAction$ {
+  /** @deprecated use `RequestBodyAction$inboundSchema` instead. */
+  export const inboundSchema = RequestBodyAction$inboundSchema;
+  /** @deprecated use `RequestBodyAction$outboundSchema` instead. */
+  export const outboundSchema = RequestBodyAction$outboundSchema;
+}
+
+/** @internal */
+export const UpdateInvoiceRequestBody1$inboundSchema: z.ZodType<
+  UpdateInvoiceRequestBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: RequestBodyAction$inboundSchema,
+  reason: z.string(),
+  total: z.string(),
+});
+
+/** @internal */
+export type UpdateInvoiceRequestBody1$Outbound = {
+  action: string;
+  reason: string;
+  total: string;
+};
+
+/** @internal */
+export const UpdateInvoiceRequestBody1$outboundSchema: z.ZodType<
+  UpdateInvoiceRequestBody1$Outbound,
+  z.ZodTypeDef,
+  UpdateInvoiceRequestBody1
+> = z.object({
+  action: RequestBodyAction$outboundSchema,
+  reason: z.string(),
+  total: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateInvoiceRequestBody1$ {
+  /** @deprecated use `UpdateInvoiceRequestBody1$inboundSchema` instead. */
+  export const inboundSchema = UpdateInvoiceRequestBody1$inboundSchema;
+  /** @deprecated use `UpdateInvoiceRequestBody1$outboundSchema` instead. */
+  export const outboundSchema = UpdateInvoiceRequestBody1$outboundSchema;
+  /** @deprecated use `UpdateInvoiceRequestBody1$Outbound` instead. */
+  export type Outbound = UpdateInvoiceRequestBody1$Outbound;
+}
+
+export function updateInvoiceRequestBody1ToJSON(
+  updateInvoiceRequestBody1: UpdateInvoiceRequestBody1,
+): string {
+  return JSON.stringify(
+    UpdateInvoiceRequestBody1$outboundSchema.parse(updateInvoiceRequestBody1),
+  );
+}
+
+export function updateInvoiceRequestBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateInvoiceRequestBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateInvoiceRequestBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateInvoiceRequestBody1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -58,29 +120,18 @@ export const UpdateInvoiceRequestBody$inboundSchema: z.ZodType<
   UpdateInvoiceRequestBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: UpdateInvoiceAction$inboundSchema,
-  reason: z.string(),
-  total: z.string(),
-});
+> = z.lazy(() => UpdateInvoiceRequestBody1$inboundSchema);
 
 /** @internal */
-export type UpdateInvoiceRequestBody$Outbound = {
-  action: string;
-  reason: string;
-  total: string;
-};
+export type UpdateInvoiceRequestBody$Outbound =
+  UpdateInvoiceRequestBody1$Outbound;
 
 /** @internal */
 export const UpdateInvoiceRequestBody$outboundSchema: z.ZodType<
   UpdateInvoiceRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateInvoiceRequestBody
-> = z.object({
-  action: UpdateInvoiceAction$outboundSchema,
-  reason: z.string(),
-  total: z.string(),
-});
+> = z.lazy(() => UpdateInvoiceRequestBody1$outboundSchema);
 
 /**
  * @internal
@@ -121,7 +172,7 @@ export const UpdateInvoiceRequest$inboundSchema: z.ZodType<
 > = z.object({
   integrationConfigurationId: z.string(),
   invoiceId: z.string(),
-  RequestBody: z.lazy(() => UpdateInvoiceRequestBody$inboundSchema),
+  RequestBody: z.lazy(() => UpdateInvoiceRequestBody1$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -132,7 +183,7 @@ export const UpdateInvoiceRequest$inboundSchema: z.ZodType<
 export type UpdateInvoiceRequest$Outbound = {
   integrationConfigurationId: string;
   invoiceId: string;
-  RequestBody: UpdateInvoiceRequestBody$Outbound;
+  RequestBody: UpdateInvoiceRequestBody1$Outbound;
 };
 
 /** @internal */
@@ -143,7 +194,7 @@ export const UpdateInvoiceRequest$outboundSchema: z.ZodType<
 > = z.object({
   integrationConfigurationId: z.string(),
   invoiceId: z.string(),
-  requestBody: z.lazy(() => UpdateInvoiceRequestBody$outboundSchema),
+  requestBody: z.lazy(() => UpdateInvoiceRequestBody1$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

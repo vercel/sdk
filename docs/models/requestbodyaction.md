@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { RequestBodyAction } from "@vercel/sdk/models/updatefirewallconfigop.js";
+import { RequestBodyAction } from "@vercel/sdk/models/updateinvoiceop.js";
 
-let value: RequestBodyAction = "firewallEnabled";
+let value: RequestBodyAction = "refund";
 ```
 
 ## Values
 
 ```typescript
-"firewallEnabled"
+"refund"
 ```

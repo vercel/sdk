@@ -30,6 +30,7 @@ const value: models.Team = {
   description: "Our mission is to make cloud computing accessible to everyone.",
   stagingPrefix: "<value>",
   previewDeploymentSuffix: "example.dev",
+  platform: true,
   id: "team_nllPyCtREAqxxdyFKbbMDlxd",
   slug: "my-team",
   name: "My Team",

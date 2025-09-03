@@ -27,6 +27,12 @@ let value: PatchTeamRequest = {
     },
     hideIpAddresses: false,
     hideIpAddressesInLogDrains: false,
+    defaultExpirationSettings: {
+      expiration: "1y",
+      expirationProduction: "1y",
+      expirationCanceled: "1y",
+      expirationErrored: "1y",
+    },
   },
 };
 ```

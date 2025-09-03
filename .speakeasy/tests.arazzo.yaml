@@ -6296,3 +6296,99 @@ workflows:
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
+  - workflowId: get_/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans
+    steps:
+      - stepId: test
+        operationId: get_/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans
+        parameters:
+          - name: integrationIdOrSlug
+            in: path
+            value: <value>
+          - name: productIdOrSlug
+            in: path
+            value: <value>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "plans": [
+                  {
+                    "type": "prepayment",
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "scope": "resource",
+                    "description": "cope unless hierarchy versus ouch more regarding tabulate",
+                    "paymentMethodRequired": false
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: Vercel
+    x-speakeasy-test-rebuild: true
+  - workflowId: createIntegrationStoreDirect
+    steps:
+      - stepId: test
+        operationId: createIntegrationStoreDirect
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            billingPlanId: bp_abc123def456
+            externalId: dev-db-001
+            integrationConfigurationId: icfg_cuwj0AdCdH3BwWT4LPijCC7t
+            integrationProductIdOrSlug: iap_postgres_db
+            metadata:
+              environment: development
+              project: my-app
+              tags:
+                - database
+                - postgres
+            name: my-dev-database
+            paymentMethodId: pm_1AbcDefGhiJklMno
+            prepaymentAmountCents: 5000
+            protocolSettings:
+              experimentation:
+                edgeConfigSyncingEnabled: true
+            source: api
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "store": {
+                  "projectsMetadata": [
+                    {
+                      "id": "\u003cid\u003e",
+                      "projectId": "\u003cid\u003e",
+                      "name": "\u003cvalue\u003e",
+                      "environments": [],
+                      "envVarPrefix": "\u003cvalue\u003e",
+                      "environmentVariables": [
+                        "\u003cvalue 1\u003e",
+                        "\u003cvalue 2\u003e"
+                      ]
+                    }
+                  ],
+                  "usageQuotaExceeded": true,
+                  "status": "available",
+                  "externalResourceId": "\u003cid\u003e",
+                  "product": {
+                    "value": {
+                      "__@BRAND@7822": {}
+                    }
+                  },
+                  "secrets": []
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: integrations
+    x-speakeasy-test-rebuild: true

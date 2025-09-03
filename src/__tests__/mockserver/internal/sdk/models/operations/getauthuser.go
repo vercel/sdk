@@ -43,17 +43,17 @@ func CreateGetAuthUserUserAuthUserLimited(authUserLimited components.AuthUserLim
 
 func (u *GetAuthUserUser) UnmarshalJSON(data []byte) error {
 
-	var authUserLimited components.AuthUserLimited = components.AuthUserLimited{}
-	if err := utils.UnmarshalJSON(data, &authUserLimited, "", true, true); err == nil {
-		u.AuthUserLimited = &authUserLimited
-		u.Type = GetAuthUserUserTypeAuthUserLimited
+	var authUser components.AuthUser = components.AuthUser{}
+	if err := utils.UnmarshalJSON(data, &authUser, "", true, nil); err == nil {
+		u.AuthUser = &authUser
+		u.Type = GetAuthUserUserTypeAuthUser
 		return nil
 	}
 
-	var authUser components.AuthUser = components.AuthUser{}
-	if err := utils.UnmarshalJSON(data, &authUser, "", true, true); err == nil {
-		u.AuthUser = &authUser
-		u.Type = GetAuthUserUserTypeAuthUser
+	var authUserLimited components.AuthUserLimited = components.AuthUserLimited{}
+	if err := utils.UnmarshalJSON(data, &authUserLimited, "", true, nil); err == nil {
+		u.AuthUserLimited = &authUserLimited
+		u.Type = GetAuthUserUserTypeAuthUserLimited
 		return nil
 	}
 

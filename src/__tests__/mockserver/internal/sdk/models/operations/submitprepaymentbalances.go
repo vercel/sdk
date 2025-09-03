@@ -59,7 +59,7 @@ func (s SubmitPrepaymentBalancesRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SubmitPrepaymentBalancesRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"timestamp", "balances"}); err != nil {
 		return err
 	}
 	return nil

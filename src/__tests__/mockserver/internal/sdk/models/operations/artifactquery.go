@@ -54,6 +54,17 @@ type ArtifactQueryError struct {
 	Message string `json:"message"`
 }
 
+func (a ArtifactQueryError) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ArtifactQueryError) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"message"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ArtifactQueryError) GetMessage() string {
 	if o == nil {
 		return ""
@@ -63,6 +74,17 @@ func (o *ArtifactQueryError) GetMessage() string {
 
 type ArtifactQueryResponseBody2 struct {
 	Error ArtifactQueryError `json:"error"`
+}
+
+func (a ArtifactQueryResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ArtifactQueryResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"error"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ArtifactQueryResponseBody2) GetError() ArtifactQueryError {
@@ -76,6 +98,17 @@ type ArtifactQueryResponseBody1 struct {
 	Size           float64 `json:"size"`
 	TaskDurationMs float64 `json:"taskDurationMs"`
 	Tag            *string `json:"tag,omitempty"`
+}
+
+func (a ArtifactQueryResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ArtifactQueryResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"size", "taskDurationMs"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ArtifactQueryResponseBody1) GetSize() float64 {
@@ -133,17 +166,17 @@ func CreateArtifactQueryResponseBodyUnionArtifactQueryResponseBody2(artifactQuer
 
 func (u *ArtifactQueryResponseBodyUnion) UnmarshalJSON(data []byte) error {
 
-	var artifactQueryResponseBody2 ArtifactQueryResponseBody2 = ArtifactQueryResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &artifactQueryResponseBody2, "", true, true); err == nil {
-		u.ArtifactQueryResponseBody2 = &artifactQueryResponseBody2
-		u.Type = ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody2
+	var artifactQueryResponseBody1 ArtifactQueryResponseBody1 = ArtifactQueryResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &artifactQueryResponseBody1, "", true, nil); err == nil {
+		u.ArtifactQueryResponseBody1 = &artifactQueryResponseBody1
+		u.Type = ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody1
 		return nil
 	}
 
-	var artifactQueryResponseBody1 ArtifactQueryResponseBody1 = ArtifactQueryResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &artifactQueryResponseBody1, "", true, true); err == nil {
-		u.ArtifactQueryResponseBody1 = &artifactQueryResponseBody1
-		u.Type = ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody1
+	var artifactQueryResponseBody2 ArtifactQueryResponseBody2 = ArtifactQueryResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &artifactQueryResponseBody2, "", true, nil); err == nil {
+		u.ArtifactQueryResponseBody2 = &artifactQueryResponseBody2
+		u.Type = ArtifactQueryResponseBodyUnionTypeArtifactQueryResponseBody2
 		return nil
 	}
 

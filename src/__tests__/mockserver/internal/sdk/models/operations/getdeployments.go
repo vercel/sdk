@@ -432,14 +432,14 @@ func CreateGetDeploymentsAliasAssignedBoolean(boolean bool) GetDeploymentsAliasA
 func (u *GetDeploymentsAliasAssigned) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetDeploymentsAliasAssignedTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = GetDeploymentsAliasAssignedTypeBoolean
 		return nil

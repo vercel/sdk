@@ -54,6 +54,17 @@ type GetEdgeConfigBackupUser2 struct {
 	Avatar   *string `json:"avatar,omitempty"`
 }
 
+func (g GetEdgeConfigBackupUser2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupUser2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "username", "email"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetEdgeConfigBackupUser2) GetID() string {
 	if o == nil {
 		return ""
@@ -96,6 +107,17 @@ type GetEdgeConfigBackupItems2 struct {
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
+func (g GetEdgeConfigBackupItems2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupItems2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt", "value", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetEdgeConfigBackupItems2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -130,6 +152,17 @@ type GetEdgeConfigBackupBackup2 struct {
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (g GetEdgeConfigBackupBackup2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupBackup2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"digest", "items", "slug", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetEdgeConfigBackupBackup2) GetDigest() string {
@@ -167,6 +200,17 @@ type GetEdgeConfigBackupMetadata2 struct {
 	ItemsBytes *float64 `json:"itemsBytes,omitempty"`
 }
 
+func (g GetEdgeConfigBackupMetadata2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupMetadata2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetEdgeConfigBackupMetadata2) GetUpdatedAt() *string {
 	if o == nil {
 		return nil
@@ -201,6 +245,17 @@ type GetEdgeConfigBackupResponseBody2 struct {
 	LastModified float64                      `json:"lastModified"`
 	Backup       GetEdgeConfigBackupBackup2   `json:"backup"`
 	Metadata     GetEdgeConfigBackupMetadata2 `json:"metadata"`
+}
+
+func (g GetEdgeConfigBackupResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"user", "id", "lastModified", "backup", "metadata"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetEdgeConfigBackupResponseBody2) GetUser() GetEdgeConfigBackupUser2 {
@@ -245,6 +300,17 @@ type GetEdgeConfigBackupItems1 struct {
 	CreatedAt   float64                         `json:"createdAt"`
 }
 
+func (g GetEdgeConfigBackupItems1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupItems1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt", "value", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetEdgeConfigBackupItems1) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -279,6 +345,17 @@ type GetEdgeConfigBackupBackup1 struct {
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug      string  `json:"slug"`
 	UpdatedAt float64 `json:"updatedAt"`
+}
+
+func (g GetEdgeConfigBackupBackup1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupBackup1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"digest", "items", "slug", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetEdgeConfigBackupBackup1) GetDigest() string {
@@ -316,6 +393,17 @@ type GetEdgeConfigBackupMetadata1 struct {
 	ItemsBytes *float64 `json:"itemsBytes,omitempty"`
 }
 
+func (g GetEdgeConfigBackupMetadata1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupMetadata1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetEdgeConfigBackupMetadata1) GetUpdatedAt() *string {
 	if o == nil {
 		return nil
@@ -350,6 +438,17 @@ type GetEdgeConfigBackupUser1 struct {
 	Email    string  `json:"email"`
 	Name     *string `json:"name,omitempty"`
 	Avatar   *string `json:"avatar,omitempty"`
+}
+
+func (g GetEdgeConfigBackupUser1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupUser1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "username", "email"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetEdgeConfigBackupUser1) GetID() string {
@@ -394,6 +493,17 @@ type GetEdgeConfigBackupResponseBody1 struct {
 	Backup       GetEdgeConfigBackupBackup1   `json:"backup"`
 	Metadata     GetEdgeConfigBackupMetadata1 `json:"metadata"`
 	User         *GetEdgeConfigBackupUser1    `json:"user,omitempty"`
+}
+
+func (g GetEdgeConfigBackupResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetEdgeConfigBackupResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "lastModified", "backup", "metadata"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetEdgeConfigBackupResponseBody1) GetID() string {
@@ -465,17 +575,17 @@ func CreateGetEdgeConfigBackupResponseBodyGetEdgeConfigBackupResponseBody2(getEd
 
 func (u *GetEdgeConfigBackupResponseBody) UnmarshalJSON(data []byte) error {
 
-	var getEdgeConfigBackupResponseBody1 GetEdgeConfigBackupResponseBody1 = GetEdgeConfigBackupResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getEdgeConfigBackupResponseBody1, "", true, true); err == nil {
-		u.GetEdgeConfigBackupResponseBody1 = &getEdgeConfigBackupResponseBody1
-		u.Type = GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody1
+	var getEdgeConfigBackupResponseBody2 GetEdgeConfigBackupResponseBody2 = GetEdgeConfigBackupResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &getEdgeConfigBackupResponseBody2, "", true, nil); err == nil {
+		u.GetEdgeConfigBackupResponseBody2 = &getEdgeConfigBackupResponseBody2
+		u.Type = GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody2
 		return nil
 	}
 
-	var getEdgeConfigBackupResponseBody2 GetEdgeConfigBackupResponseBody2 = GetEdgeConfigBackupResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getEdgeConfigBackupResponseBody2, "", true, true); err == nil {
-		u.GetEdgeConfigBackupResponseBody2 = &getEdgeConfigBackupResponseBody2
-		u.Type = GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody2
+	var getEdgeConfigBackupResponseBody1 GetEdgeConfigBackupResponseBody1 = GetEdgeConfigBackupResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &getEdgeConfigBackupResponseBody1, "", true, nil); err == nil {
+		u.GetEdgeConfigBackupResponseBody1 = &getEdgeConfigBackupResponseBody1
+		u.Type = GetEdgeConfigBackupResponseBodyTypeGetEdgeConfigBackupResponseBody1
 		return nil
 	}
 

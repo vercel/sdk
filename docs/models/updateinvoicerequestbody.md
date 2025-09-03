@@ -1,21 +1,15 @@
 # UpdateInvoiceRequestBody
 
-## Example Usage
+
+## Supported Types
+
+### `models.UpdateInvoiceRequestBody1`
 
 ```typescript
-import { UpdateInvoiceRequestBody } from "@vercel/sdk/models/updateinvoiceop.js";
-
-let value: UpdateInvoiceRequestBody = {
+const value: models.UpdateInvoiceRequestBody1 = {
   action: "refund",
   reason: "<value>",
   total: "<value>",
 };
 ```
 
-## Fields
-
-| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `action`                                                                                        | [models.UpdateInvoiceAction](../models/updateinvoiceaction.md)                                  | :heavy_check_mark:                                                                              | N/A                                                                                             |
-| `reason`                                                                                        | *string*                                                                                        | :heavy_check_mark:                                                                              | Refund reason.                                                                                  |
-| `total`                                                                                         | *string*                                                                                        | :heavy_check_mark:                                                                              | The total amount to be refunded. Must be less than or equal to the total amount of the invoice. |

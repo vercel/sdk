@@ -318,17 +318,7 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "whole-godparent.net",
-        ip: "ce11:0cbd:fbab:2e3e:b95b:ac0d:ddef:79f1",
-        createdAt: "1725180754472",
-        updatedAt: "1735661142441",
-        updatedAtHour: "<value>",
-      },
-    ],
+    result: [],
   });
 });
 

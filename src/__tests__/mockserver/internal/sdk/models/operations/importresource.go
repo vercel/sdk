@@ -73,19 +73,19 @@ func (e *ImportResourceType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Detail struct {
+type ImportResourceDetail struct {
 	Label string  `json:"label"`
 	Value *string `json:"value,omitempty"`
 }
 
-func (o *Detail) GetLabel() string {
+func (o *ImportResourceDetail) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *Detail) GetValue() *string {
+func (o *ImportResourceDetail) GetValue() *string {
 	if o == nil {
 		return nil
 	}
@@ -112,16 +112,16 @@ func (o *HeightlightedDetail) GetValue() *string {
 }
 
 type ImportResourceBillingPlan struct {
-	ID                    string                `json:"id"`
-	Type                  ImportResourceType    `json:"type"`
-	Name                  string                `json:"name"`
-	Description           *string               `json:"description,omitempty"`
-	PaymentMethodRequired *bool                 `json:"paymentMethodRequired,omitempty"`
-	Cost                  *string               `json:"cost,omitempty"`
-	Details               []Detail              `json:"details,omitempty"`
-	HeightlightedDetails  []HeightlightedDetail `json:"heightlightedDetails,omitempty"`
-	EffectiveDate         *string               `json:"effectiveDate,omitempty"`
-	AdditionalProperties  map[string]any        `additionalProperties:"true" json:"-"`
+	ID                    string                 `json:"id"`
+	Type                  ImportResourceType     `json:"type"`
+	Name                  string                 `json:"name"`
+	Description           *string                `json:"description,omitempty"`
+	PaymentMethodRequired *bool                  `json:"paymentMethodRequired,omitempty"`
+	Cost                  *string                `json:"cost,omitempty"`
+	Details               []ImportResourceDetail `json:"details,omitempty"`
+	HeightlightedDetails  []HeightlightedDetail  `json:"heightlightedDetails,omitempty"`
+	EffectiveDate         *string                `json:"effectiveDate,omitempty"`
+	AdditionalProperties  map[string]any         `additionalProperties:"true" json:"-"`
 }
 
 func (i ImportResourceBillingPlan) MarshalJSON() ([]byte, error) {
@@ -129,7 +129,7 @@ func (i ImportResourceBillingPlan) MarshalJSON() ([]byte, error) {
 }
 
 func (i *ImportResourceBillingPlan) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"id", "type", "name"}); err != nil {
 		return err
 	}
 	return nil
@@ -177,7 +177,7 @@ func (o *ImportResourceBillingPlan) GetCost() *string {
 	return o.Cost
 }
 
-func (o *ImportResourceBillingPlan) GetDetails() []Detail {
+func (o *ImportResourceBillingPlan) GetDetails() []ImportResourceDetail {
 	if o == nil {
 		return nil
 	}

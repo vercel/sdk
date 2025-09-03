@@ -26,6 +26,7 @@ export const Events = {
   DomainRenewalFailed: "domain.renewal.failed",
   DomainAutoRenewChanged: "domain.auto-renew.changed",
   DeploymentCreated: "deployment.created",
+  DeploymentCleanup: "deployment.cleanup",
   DeploymentError: "deployment.error",
   DeploymentCanceled: "deployment.canceled",
   DeploymentSucceeded: "deployment.succeeded",
@@ -83,6 +84,7 @@ export const Events = {
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
+  ObservabilityAnomalyError: "observability.anomaly-error",
   TestWebhook: "test-webhook",
 } as const;
 export type Events = ClosedEnum<typeof Events>;
@@ -125,6 +127,7 @@ export const CreateWebhookEvents = {
   DomainRenewalFailed: "domain.renewal.failed",
   DomainAutoRenewChanged: "domain.auto-renew.changed",
   DeploymentCreated: "deployment.created",
+  DeploymentCleanup: "deployment.cleanup",
   DeploymentError: "deployment.error",
   DeploymentCanceled: "deployment.canceled",
   DeploymentSucceeded: "deployment.succeeded",
@@ -182,6 +185,7 @@ export const CreateWebhookEvents = {
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
+  ObservabilityAnomalyError: "observability.anomaly-error",
   TestWebhook: "test-webhook",
 } as const;
 /**

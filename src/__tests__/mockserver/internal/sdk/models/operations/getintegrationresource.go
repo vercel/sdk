@@ -242,35 +242,35 @@ func CreateGetIntegrationResourceMetadataArrayOfNumber(arrayOfNumber []float64) 
 func (u *GetIntegrationResourceMetadata) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetIntegrationResourceMetadataTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetIntegrationResourceMetadataTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = GetIntegrationResourceMetadataTypeBoolean
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = GetIntegrationResourceMetadataTypeArrayOfStr
 		return nil
 	}
 
 	var arrayOfNumber []float64 = []float64{}
-	if err := utils.UnmarshalJSON(data, &arrayOfNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfNumber, "", true, nil); err == nil {
 		u.ArrayOfNumber = arrayOfNumber
 		u.Type = GetIntegrationResourceMetadataTypeArrayOfNumber
 		return nil

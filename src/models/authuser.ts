@@ -289,9 +289,9 @@ export type ImportFlowGitNamespace = string | number;
 export type ImportFlowGitNamespaceId = string | number;
 
 export const ImportFlowGitProvider = {
-  Github: "github",
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
+  Github: "github",
   GithubLimited: "github-limited",
   GithubCustomHost: "github-custom-host",
 } as const;

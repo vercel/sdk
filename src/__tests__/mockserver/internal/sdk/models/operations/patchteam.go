@@ -14,6 +14,17 @@ type Roles struct {
 	AccessGroupID string `json:"accessGroupId"`
 }
 
+func (r Roles) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Roles) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"accessGroupId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Roles) GetAccessGroupID() string {
 	if o == nil {
 		return ""
@@ -100,14 +111,14 @@ func CreateRolesUnionRoles(roles Roles) RolesUnion {
 func (u *RolesUnion) UnmarshalJSON(data []byte) error {
 
 	var roles Roles = Roles{}
-	if err := utils.UnmarshalJSON(data, &roles, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &roles, "", true, nil); err == nil {
 		u.Roles = &roles
 		u.Type = RolesUnionTypeRoles
 		return nil
 	}
 
 	var rolesEnum RolesEnum = RolesEnum("")
-	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rolesEnum, "", true, nil); err == nil {
 		u.RolesEnum = &rolesEnum
 		u.Type = RolesUnionTypeRolesEnum
 		return nil
@@ -261,7 +272,7 @@ func (p PatchTeamSsoProtection) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PatchTeamSsoProtection) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -296,6 +307,237 @@ func (o *DefaultDeploymentProtection) GetSsoProtection() *PatchTeamSsoProtection
 	return o.SsoProtection
 }
 
+// Expiration - The time period to keep non-production deployments for
+type Expiration string
+
+const (
+	ExpirationOney      Expiration = "1y"
+	ExpirationSixm      Expiration = "6m"
+	ExpirationThreem    Expiration = "3m"
+	ExpirationTwom      Expiration = "2m"
+	ExpirationOnem      Expiration = "1m"
+	ExpirationTwow      Expiration = "2w"
+	ExpirationOnew      Expiration = "1w"
+	ExpirationOned      Expiration = "1d"
+	ExpirationUnlimited Expiration = "unlimited"
+)
+
+func (e Expiration) ToPointer() *Expiration {
+	return &e
+}
+func (e *Expiration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "1y":
+		fallthrough
+	case "6m":
+		fallthrough
+	case "3m":
+		fallthrough
+	case "2m":
+		fallthrough
+	case "1m":
+		fallthrough
+	case "2w":
+		fallthrough
+	case "1w":
+		fallthrough
+	case "1d":
+		fallthrough
+	case "unlimited":
+		*e = Expiration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Expiration: %v", v)
+	}
+}
+
+// ExpirationProduction - The time period to keep production deployments for
+type ExpirationProduction string
+
+const (
+	ExpirationProductionOney      ExpirationProduction = "1y"
+	ExpirationProductionSixm      ExpirationProduction = "6m"
+	ExpirationProductionThreem    ExpirationProduction = "3m"
+	ExpirationProductionTwom      ExpirationProduction = "2m"
+	ExpirationProductionOnem      ExpirationProduction = "1m"
+	ExpirationProductionTwow      ExpirationProduction = "2w"
+	ExpirationProductionOnew      ExpirationProduction = "1w"
+	ExpirationProductionOned      ExpirationProduction = "1d"
+	ExpirationProductionUnlimited ExpirationProduction = "unlimited"
+)
+
+func (e ExpirationProduction) ToPointer() *ExpirationProduction {
+	return &e
+}
+func (e *ExpirationProduction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "1y":
+		fallthrough
+	case "6m":
+		fallthrough
+	case "3m":
+		fallthrough
+	case "2m":
+		fallthrough
+	case "1m":
+		fallthrough
+	case "2w":
+		fallthrough
+	case "1w":
+		fallthrough
+	case "1d":
+		fallthrough
+	case "unlimited":
+		*e = ExpirationProduction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ExpirationProduction: %v", v)
+	}
+}
+
+// ExpirationCanceled - The time period to keep canceled deployments for
+type ExpirationCanceled string
+
+const (
+	ExpirationCanceledOney      ExpirationCanceled = "1y"
+	ExpirationCanceledSixm      ExpirationCanceled = "6m"
+	ExpirationCanceledThreem    ExpirationCanceled = "3m"
+	ExpirationCanceledTwom      ExpirationCanceled = "2m"
+	ExpirationCanceledOnem      ExpirationCanceled = "1m"
+	ExpirationCanceledTwow      ExpirationCanceled = "2w"
+	ExpirationCanceledOnew      ExpirationCanceled = "1w"
+	ExpirationCanceledOned      ExpirationCanceled = "1d"
+	ExpirationCanceledUnlimited ExpirationCanceled = "unlimited"
+)
+
+func (e ExpirationCanceled) ToPointer() *ExpirationCanceled {
+	return &e
+}
+func (e *ExpirationCanceled) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "1y":
+		fallthrough
+	case "6m":
+		fallthrough
+	case "3m":
+		fallthrough
+	case "2m":
+		fallthrough
+	case "1m":
+		fallthrough
+	case "2w":
+		fallthrough
+	case "1w":
+		fallthrough
+	case "1d":
+		fallthrough
+	case "unlimited":
+		*e = ExpirationCanceled(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ExpirationCanceled: %v", v)
+	}
+}
+
+// ExpirationErrored - The time period to keep errored deployments for
+type ExpirationErrored string
+
+const (
+	ExpirationErroredOney      ExpirationErrored = "1y"
+	ExpirationErroredSixm      ExpirationErrored = "6m"
+	ExpirationErroredThreem    ExpirationErrored = "3m"
+	ExpirationErroredTwom      ExpirationErrored = "2m"
+	ExpirationErroredOnem      ExpirationErrored = "1m"
+	ExpirationErroredTwow      ExpirationErrored = "2w"
+	ExpirationErroredOnew      ExpirationErrored = "1w"
+	ExpirationErroredOned      ExpirationErrored = "1d"
+	ExpirationErroredUnlimited ExpirationErrored = "unlimited"
+)
+
+func (e ExpirationErrored) ToPointer() *ExpirationErrored {
+	return &e
+}
+func (e *ExpirationErrored) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "1y":
+		fallthrough
+	case "6m":
+		fallthrough
+	case "3m":
+		fallthrough
+	case "2m":
+		fallthrough
+	case "1m":
+		fallthrough
+	case "2w":
+		fallthrough
+	case "1w":
+		fallthrough
+	case "1d":
+		fallthrough
+	case "unlimited":
+		*e = ExpirationErrored(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ExpirationErrored: %v", v)
+	}
+}
+
+type DefaultExpirationSettings struct {
+	// The time period to keep non-production deployments for
+	Expiration *Expiration `json:"expiration,omitempty"`
+	// The time period to keep production deployments for
+	ExpirationProduction *ExpirationProduction `json:"expirationProduction,omitempty"`
+	// The time period to keep canceled deployments for
+	ExpirationCanceled *ExpirationCanceled `json:"expirationCanceled,omitempty"`
+	// The time period to keep errored deployments for
+	ExpirationErrored *ExpirationErrored `json:"expirationErrored,omitempty"`
+}
+
+func (o *DefaultExpirationSettings) GetExpiration() *Expiration {
+	if o == nil {
+		return nil
+	}
+	return o.Expiration
+}
+
+func (o *DefaultExpirationSettings) GetExpirationProduction() *ExpirationProduction {
+	if o == nil {
+		return nil
+	}
+	return o.ExpirationProduction
+}
+
+func (o *DefaultExpirationSettings) GetExpirationCanceled() *ExpirationCanceled {
+	if o == nil {
+		return nil
+	}
+	return o.ExpirationCanceled
+}
+
+func (o *DefaultExpirationSettings) GetExpirationErrored() *ExpirationErrored {
+	if o == nil {
+		return nil
+	}
+	return o.ExpirationErrored
+}
+
 type PatchTeamRequestBody struct {
 	// The hash value of an uploaded image.
 	Avatar *string `json:"avatar,omitempty"`
@@ -325,6 +567,7 @@ type PatchTeamRequestBody struct {
 	HideIPAddressesInLogDrains *bool `json:"hideIpAddressesInLogDrains,omitempty"`
 	// Default deployment protection settings for new projects.
 	DefaultDeploymentProtection *DefaultDeploymentProtection `json:"defaultDeploymentProtection,omitempty"`
+	DefaultExpirationSettings   *DefaultExpirationSettings   `json:"defaultExpirationSettings,omitempty"`
 }
 
 func (o *PatchTeamRequestBody) GetAvatar() *string {
@@ -430,6 +673,13 @@ func (o *PatchTeamRequestBody) GetDefaultDeploymentProtection() *DefaultDeployme
 		return nil
 	}
 	return o.DefaultDeploymentProtection
+}
+
+func (o *PatchTeamRequestBody) GetDefaultExpirationSettings() *DefaultExpirationSettings {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultExpirationSettings
 }
 
 type PatchTeamRequest struct {

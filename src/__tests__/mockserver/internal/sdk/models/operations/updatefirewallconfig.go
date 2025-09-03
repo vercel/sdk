@@ -17,6 +17,17 @@ type UpdateFirewallConfigRequestBody2 struct {
 	Value  bool    `json:"value"`
 }
 
+func (u UpdateFirewallConfigRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"action", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateFirewallConfigRequestBody2) GetAction() string {
 	if o == nil {
 		return ""
@@ -104,6 +115,17 @@ type UpdateFirewallConfigValue7 struct {
 	Action *ValueActionEnum5 `json:"action,omitempty"`
 }
 
+func (u UpdateFirewallConfigValue7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigValue7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"active"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateFirewallConfigValue7) GetActive() bool {
 	if o == nil {
 		return false
@@ -123,6 +145,17 @@ type UpdateFirewallConfigRequestBody1 struct {
 	Action string                                `json:"action"`
 	ID     ID3                                   `json:"id"`
 	Value  map[string]UpdateFirewallConfigValue7 `json:"value"`
+}
+
+func (u UpdateFirewallConfigRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"action", "id", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigRequestBody1) GetAction() string {
@@ -235,6 +268,17 @@ type UpdateFirewallConfigValue6 struct {
 	Active bool              `json:"active"`
 }
 
+func (u UpdateFirewallConfigValue6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigValue6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"active"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateFirewallConfigValue6) GetAction() *ValueActionEnum4 {
 	if o == nil {
 		return nil
@@ -254,6 +298,17 @@ type ManagedRulesUpdate struct {
 	Action ActionManagedRulesUpdate   `json:"action"`
 	ID     ID2                        `json:"id"`
 	Value  UpdateFirewallConfigValue6 `json:"value"`
+}
+
+func (m ManagedRulesUpdate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *ManagedRulesUpdate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"action", "id", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ManagedRulesUpdate) GetAction() ActionManagedRulesUpdate {
@@ -305,6 +360,17 @@ type IPRemove struct {
 	Action ActionIPRemove `json:"action"`
 	ID     string         `json:"id"`
 	Value  any            `json:"value,omitempty"`
+}
+
+func (i IPRemove) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IPRemove) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"action", "id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *IPRemove) GetAction() ActionIPRemove {
@@ -390,6 +456,17 @@ type UpdateFirewallConfigValue5 struct {
 	Action   ValueActionEnum3 `json:"action"`
 }
 
+func (u UpdateFirewallConfigValue5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigValue5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"hostname", "ip", "action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateFirewallConfigValue5) GetHostname() string {
 	if o == nil {
 		return ""
@@ -423,6 +500,17 @@ type IPUpdate struct {
 	Action ActionIPUpdate             `json:"action"`
 	ID     string                     `json:"id"`
 	Value  UpdateFirewallConfigValue5 `json:"value"`
+}
+
+func (i IPUpdate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IPUpdate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"action", "id", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *IPUpdate) GetAction() ActionIPUpdate {
@@ -508,6 +596,17 @@ type UpdateFirewallConfigValue4 struct {
 	Action   ValueActionEnum2 `json:"action"`
 }
 
+func (u UpdateFirewallConfigValue4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigValue4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"hostname", "ip", "action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateFirewallConfigValue4) GetHostname() string {
 	if o == nil {
 		return ""
@@ -541,6 +640,17 @@ type IPInsert struct {
 	Action ActionIPInsert             `json:"action"`
 	ID     any                        `json:"id,omitempty"`
 	Value  UpdateFirewallConfigValue4 `json:"value"`
+}
+
+func (i IPInsert) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IPInsert) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"action", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *IPInsert) GetAction() ActionIPInsert {
@@ -592,6 +702,17 @@ type CrsDisable struct {
 	Action ActionCrsDisable `json:"action"`
 	ID     any              `json:"id,omitempty"`
 	Value  any              `json:"value,omitempty"`
+}
+
+func (c CrsDisable) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CrsDisable) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CrsDisable) GetAction() ActionCrsDisable {
@@ -722,6 +843,17 @@ type UpdateFirewallConfigValue3 struct {
 	Action ValueActionEnum1 `json:"action"`
 }
 
+func (u UpdateFirewallConfigValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"active", "action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateFirewallConfigValue3) GetActive() bool {
 	if o == nil {
 		return false
@@ -741,6 +873,17 @@ type CrsUpdate struct {
 	Action ActionCrsUpdate            `json:"action"`
 	ID     ID1                        `json:"id"`
 	Value  UpdateFirewallConfigValue3 `json:"value"`
+}
+
+func (c CrsUpdate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CrsUpdate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action", "id", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CrsUpdate) GetAction() ActionCrsUpdate {
@@ -794,6 +937,17 @@ type RulesPriority struct {
 	Value  float64             `json:"value"`
 }
 
+func (r RulesPriority) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RulesPriority) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"action", "id", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RulesPriority) GetAction() ActionRulesPriority {
 	if o == nil {
 		return ActionRulesPriority("")
@@ -843,6 +997,17 @@ type RulesRemove struct {
 	Action ActionRulesRemove `json:"action"`
 	ID     string            `json:"id"`
 	Value  any               `json:"value,omitempty"`
+}
+
+func (r RulesRemove) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RulesRemove) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"action", "id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RulesRemove) GetAction() ActionRulesRemove {
@@ -1089,21 +1254,21 @@ func CreateUpdateFirewallConfigConditionValue2Number(number float64) UpdateFirew
 func (u *UpdateFirewallConfigConditionValue2) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UpdateFirewallConfigConditionValue2TypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = UpdateFirewallConfigConditionValue2TypeArrayOfStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = UpdateFirewallConfigConditionValue2TypeNumber
 		return nil
@@ -1134,6 +1299,17 @@ type UpdateFirewallConfigCondition2 struct {
 	Neg   *bool                                `json:"neg,omitempty"`
 	Key   *string                              `json:"key,omitempty"`
 	Value *UpdateFirewallConfigConditionValue2 `json:"value,omitempty"`
+}
+
+func (u UpdateFirewallConfigCondition2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigCondition2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "op"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigCondition2) GetType() UpdateFirewallConfigType2 {
@@ -1173,6 +1349,17 @@ func (o *UpdateFirewallConfigCondition2) GetValue() *UpdateFirewallConfigConditi
 
 type UpdateFirewallConfigConditionGroup2 struct {
 	Conditions []UpdateFirewallConfigCondition2 `json:"conditions"`
+}
+
+func (u UpdateFirewallConfigConditionGroup2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigConditionGroup2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"conditions"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigConditionGroup2) GetConditions() []UpdateFirewallConfigCondition2 {
@@ -1313,14 +1500,14 @@ func CreateValueActionUnion2Any(anyT any) ValueActionUnion2 {
 func (u *ValueActionUnion2) UnmarshalJSON(data []byte) error {
 
 	var rateLimitActionValueEnum2 RateLimitActionValueEnum2 = RateLimitActionValueEnum2("")
-	if err := utils.UnmarshalJSON(data, &rateLimitActionValueEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rateLimitActionValueEnum2, "", true, nil); err == nil {
 		u.RateLimitActionValueEnum2 = &rateLimitActionValueEnum2
 		u.Type = ValueActionUnion2TypeRateLimitActionValueEnum2
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = ValueActionUnion2TypeAny
 		return nil
@@ -1347,6 +1534,17 @@ type UpdateFirewallConfigRateLimit2 struct {
 	Limit  float64                   `json:"limit"`
 	Keys   []string                  `json:"keys"`
 	Action *ValueActionUnion2        `json:"action,omitempty"`
+}
+
+func (u UpdateFirewallConfigRateLimit2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigRateLimit2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigRateLimit2) GetAlgo() UpdateFirewallConfigAlgo2 {
@@ -1419,14 +1617,14 @@ func CreateUpdateFirewallConfigRateLimitUnion2Any(anyT any) UpdateFirewallConfig
 func (u *UpdateFirewallConfigRateLimitUnion2) UnmarshalJSON(data []byte) error {
 
 	var updateFirewallConfigRateLimit2 UpdateFirewallConfigRateLimit2 = UpdateFirewallConfigRateLimit2{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRateLimit2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRateLimit2, "", true, nil); err == nil {
 		u.UpdateFirewallConfigRateLimit2 = &updateFirewallConfigRateLimit2
 		u.Type = UpdateFirewallConfigRateLimitUnion2TypeUpdateFirewallConfigRateLimit2
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = UpdateFirewallConfigRateLimitUnion2TypeAny
 		return nil
@@ -1450,6 +1648,17 @@ func (u UpdateFirewallConfigRateLimitUnion2) MarshalJSON() ([]byte, error) {
 type UpdateFirewallConfigRedirect2 struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
+}
+
+func (u UpdateFirewallConfigRedirect2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigRedirect2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigRedirect2) GetLocation() string {
@@ -1501,14 +1710,14 @@ func CreateUpdateFirewallConfigRedirectUnion2Any(anyT any) UpdateFirewallConfigR
 func (u *UpdateFirewallConfigRedirectUnion2) UnmarshalJSON(data []byte) error {
 
 	var updateFirewallConfigRedirect2 UpdateFirewallConfigRedirect2 = UpdateFirewallConfigRedirect2{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRedirect2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRedirect2, "", true, nil); err == nil {
 		u.UpdateFirewallConfigRedirect2 = &updateFirewallConfigRedirect2
 		u.Type = UpdateFirewallConfigRedirectUnion2TypeUpdateFirewallConfigRedirect2
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = UpdateFirewallConfigRedirectUnion2TypeAny
 		return nil
@@ -1535,6 +1744,17 @@ type UpdateFirewallConfigMitigate2 struct {
 	Redirect       *UpdateFirewallConfigRedirectUnion2  `json:"redirect,omitempty"`
 	ActionDuration *string                              `json:"actionDuration,omitempty"`
 	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
+}
+
+func (u UpdateFirewallConfigMitigate2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigMitigate2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigMitigate2) GetAction() ValueMitigateActionEnum2 {
@@ -1576,6 +1796,17 @@ type ValueAction2 struct {
 	Mitigate *UpdateFirewallConfigMitigate2 `json:"mitigate,omitempty"`
 }
 
+func (v ValueAction2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *ValueAction2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ValueAction2) GetMitigate() *UpdateFirewallConfigMitigate2 {
 	if o == nil {
 		return nil
@@ -1589,6 +1820,17 @@ type UpdateFirewallConfigValue2 struct {
 	Active         bool                                  `json:"active"`
 	ConditionGroup []UpdateFirewallConfigConditionGroup2 `json:"conditionGroup"`
 	Action         ValueAction2                          `json:"action"`
+}
+
+func (u UpdateFirewallConfigValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "active", "conditionGroup", "action"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigValue2) GetName() string {
@@ -1631,6 +1873,17 @@ type RulesUpdate struct {
 	Action ActionRulesUpdate          `json:"action"`
 	ID     string                     `json:"id"`
 	Value  UpdateFirewallConfigValue2 `json:"value"`
+}
+
+func (r RulesUpdate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RulesUpdate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"action", "id", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RulesUpdate) GetAction() ActionRulesUpdate {
@@ -1877,21 +2130,21 @@ func CreateUpdateFirewallConfigConditionValue1Number(number float64) UpdateFirew
 func (u *UpdateFirewallConfigConditionValue1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UpdateFirewallConfigConditionValue1TypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = UpdateFirewallConfigConditionValue1TypeArrayOfStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = UpdateFirewallConfigConditionValue1TypeNumber
 		return nil
@@ -1922,6 +2175,17 @@ type UpdateFirewallConfigCondition1 struct {
 	Neg   *bool                                `json:"neg,omitempty"`
 	Key   *string                              `json:"key,omitempty"`
 	Value *UpdateFirewallConfigConditionValue1 `json:"value,omitempty"`
+}
+
+func (u UpdateFirewallConfigCondition1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigCondition1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "op"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigCondition1) GetType() UpdateFirewallConfigType1 {
@@ -1961,6 +2225,17 @@ func (o *UpdateFirewallConfigCondition1) GetValue() *UpdateFirewallConfigConditi
 
 type UpdateFirewallConfigConditionGroup1 struct {
 	Conditions []UpdateFirewallConfigCondition1 `json:"conditions"`
+}
+
+func (u UpdateFirewallConfigConditionGroup1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigConditionGroup1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"conditions"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigConditionGroup1) GetConditions() []UpdateFirewallConfigCondition1 {
@@ -2101,14 +2376,14 @@ func CreateValueActionUnion1Any(anyT any) ValueActionUnion1 {
 func (u *ValueActionUnion1) UnmarshalJSON(data []byte) error {
 
 	var rateLimitActionValueEnum1 RateLimitActionValueEnum1 = RateLimitActionValueEnum1("")
-	if err := utils.UnmarshalJSON(data, &rateLimitActionValueEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rateLimitActionValueEnum1, "", true, nil); err == nil {
 		u.RateLimitActionValueEnum1 = &rateLimitActionValueEnum1
 		u.Type = ValueActionUnion1TypeRateLimitActionValueEnum1
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = ValueActionUnion1TypeAny
 		return nil
@@ -2135,6 +2410,17 @@ type UpdateFirewallConfigRateLimit1 struct {
 	Limit  float64                   `json:"limit"`
 	Keys   []string                  `json:"keys"`
 	Action *ValueActionUnion1        `json:"action,omitempty"`
+}
+
+func (u UpdateFirewallConfigRateLimit1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigRateLimit1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigRateLimit1) GetAlgo() UpdateFirewallConfigAlgo1 {
@@ -2207,14 +2493,14 @@ func CreateUpdateFirewallConfigRateLimitUnion1Any(anyT any) UpdateFirewallConfig
 func (u *UpdateFirewallConfigRateLimitUnion1) UnmarshalJSON(data []byte) error {
 
 	var updateFirewallConfigRateLimit1 UpdateFirewallConfigRateLimit1 = UpdateFirewallConfigRateLimit1{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRateLimit1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRateLimit1, "", true, nil); err == nil {
 		u.UpdateFirewallConfigRateLimit1 = &updateFirewallConfigRateLimit1
 		u.Type = UpdateFirewallConfigRateLimitUnion1TypeUpdateFirewallConfigRateLimit1
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = UpdateFirewallConfigRateLimitUnion1TypeAny
 		return nil
@@ -2238,6 +2524,17 @@ func (u UpdateFirewallConfigRateLimitUnion1) MarshalJSON() ([]byte, error) {
 type UpdateFirewallConfigRedirect1 struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
+}
+
+func (u UpdateFirewallConfigRedirect1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigRedirect1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigRedirect1) GetLocation() string {
@@ -2289,14 +2586,14 @@ func CreateUpdateFirewallConfigRedirectUnion1Any(anyT any) UpdateFirewallConfigR
 func (u *UpdateFirewallConfigRedirectUnion1) UnmarshalJSON(data []byte) error {
 
 	var updateFirewallConfigRedirect1 UpdateFirewallConfigRedirect1 = UpdateFirewallConfigRedirect1{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRedirect1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRedirect1, "", true, nil); err == nil {
 		u.UpdateFirewallConfigRedirect1 = &updateFirewallConfigRedirect1
 		u.Type = UpdateFirewallConfigRedirectUnion1TypeUpdateFirewallConfigRedirect1
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = UpdateFirewallConfigRedirectUnion1TypeAny
 		return nil
@@ -2323,6 +2620,17 @@ type UpdateFirewallConfigMitigate1 struct {
 	Redirect       *UpdateFirewallConfigRedirectUnion1  `json:"redirect,omitempty"`
 	ActionDuration *string                              `json:"actionDuration,omitempty"`
 	BypassSystem   *bool                                `json:"bypassSystem,omitempty"`
+}
+
+func (u UpdateFirewallConfigMitigate1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigMitigate1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigMitigate1) GetAction() ValueMitigateActionEnum1 {
@@ -2364,6 +2672,17 @@ type ValueAction1 struct {
 	Mitigate *UpdateFirewallConfigMitigate1 `json:"mitigate,omitempty"`
 }
 
+func (v ValueAction1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *ValueAction1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ValueAction1) GetMitigate() *UpdateFirewallConfigMitigate1 {
 	if o == nil {
 		return nil
@@ -2377,6 +2696,17 @@ type UpdateFirewallConfigValue1 struct {
 	Active         bool                                  `json:"active"`
 	ConditionGroup []UpdateFirewallConfigConditionGroup1 `json:"conditionGroup"`
 	Action         ValueAction1                          `json:"action"`
+}
+
+func (u UpdateFirewallConfigValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateFirewallConfigValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "active", "conditionGroup", "action"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateFirewallConfigValue1) GetName() string {
@@ -2419,6 +2749,17 @@ type RulesInsert struct {
 	Action ActionRulesInsert          `json:"action"`
 	ID     any                        `json:"id,omitempty"`
 	Value  UpdateFirewallConfigValue1 `json:"value"`
+}
+
+func (r RulesInsert) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RulesInsert) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"action", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RulesInsert) GetAction() ActionRulesInsert {
@@ -2470,6 +2811,17 @@ type FirewallEnabled struct {
 	Action ActionFirewallEnabled `json:"action"`
 	ID     any                   `json:"id,omitempty"`
 	Value  bool                  `json:"value"`
+}
+
+func (f FirewallEnabled) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FirewallEnabled) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"action", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FirewallEnabled) GetAction() ActionFirewallEnabled {
@@ -2648,94 +3000,94 @@ func CreateUpdateFirewallConfigRequestBodyUpdateFirewallConfigRequestBody2(updat
 
 func (u *UpdateFirewallConfigRequestBody) UnmarshalJSON(data []byte) error {
 
-	var firewallEnabled FirewallEnabled = FirewallEnabled{}
-	if err := utils.UnmarshalJSON(data, &firewallEnabled, "", true, true); err == nil {
-		u.FirewallEnabled = &firewallEnabled
-		u.Type = UpdateFirewallConfigRequestBodyTypeFirewallEnabled
-		return nil
-	}
-
-	var rulesInsert RulesInsert = RulesInsert{}
-	if err := utils.UnmarshalJSON(data, &rulesInsert, "", true, true); err == nil {
-		u.RulesInsert = &rulesInsert
-		u.Type = UpdateFirewallConfigRequestBodyTypeRulesInsert
-		return nil
-	}
-
 	var rulesUpdate RulesUpdate = RulesUpdate{}
-	if err := utils.UnmarshalJSON(data, &rulesUpdate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rulesUpdate, "", true, nil); err == nil {
 		u.RulesUpdate = &rulesUpdate
 		u.Type = UpdateFirewallConfigRequestBodyTypeRulesUpdate
 		return nil
 	}
 
-	var rulesRemove RulesRemove = RulesRemove{}
-	if err := utils.UnmarshalJSON(data, &rulesRemove, "", true, true); err == nil {
-		u.RulesRemove = &rulesRemove
-		u.Type = UpdateFirewallConfigRequestBodyTypeRulesRemove
-		return nil
-	}
-
 	var rulesPriority RulesPriority = RulesPriority{}
-	if err := utils.UnmarshalJSON(data, &rulesPriority, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &rulesPriority, "", true, nil); err == nil {
 		u.RulesPriority = &rulesPriority
 		u.Type = UpdateFirewallConfigRequestBodyTypeRulesPriority
 		return nil
 	}
 
 	var crsUpdate CrsUpdate = CrsUpdate{}
-	if err := utils.UnmarshalJSON(data, &crsUpdate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &crsUpdate, "", true, nil); err == nil {
 		u.CrsUpdate = &crsUpdate
 		u.Type = UpdateFirewallConfigRequestBodyTypeCrsUpdate
 		return nil
 	}
 
-	var crsDisable CrsDisable = CrsDisable{}
-	if err := utils.UnmarshalJSON(data, &crsDisable, "", true, true); err == nil {
-		u.CrsDisable = &crsDisable
-		u.Type = UpdateFirewallConfigRequestBodyTypeCrsDisable
-		return nil
-	}
-
-	var ipInsert IPInsert = IPInsert{}
-	if err := utils.UnmarshalJSON(data, &ipInsert, "", true, true); err == nil {
-		u.IPInsert = &ipInsert
-		u.Type = UpdateFirewallConfigRequestBodyTypeIPInsert
-		return nil
-	}
-
 	var ipUpdate IPUpdate = IPUpdate{}
-	if err := utils.UnmarshalJSON(data, &ipUpdate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &ipUpdate, "", true, nil); err == nil {
 		u.IPUpdate = &ipUpdate
 		u.Type = UpdateFirewallConfigRequestBodyTypeIPUpdate
 		return nil
 	}
 
-	var ipRemove IPRemove = IPRemove{}
-	if err := utils.UnmarshalJSON(data, &ipRemove, "", true, true); err == nil {
-		u.IPRemove = &ipRemove
-		u.Type = UpdateFirewallConfigRequestBodyTypeIPRemove
-		return nil
-	}
-
 	var managedRulesUpdate ManagedRulesUpdate = ManagedRulesUpdate{}
-	if err := utils.UnmarshalJSON(data, &managedRulesUpdate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &managedRulesUpdate, "", true, nil); err == nil {
 		u.ManagedRulesUpdate = &managedRulesUpdate
 		u.Type = UpdateFirewallConfigRequestBodyTypeManagedRulesUpdate
 		return nil
 	}
 
 	var updateFirewallConfigRequestBody1 UpdateFirewallConfigRequestBody1 = UpdateFirewallConfigRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody1, "", true, nil); err == nil {
 		u.UpdateFirewallConfigRequestBody1 = &updateFirewallConfigRequestBody1
 		u.Type = UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody1
 		return nil
 	}
 
+	var firewallEnabled FirewallEnabled = FirewallEnabled{}
+	if err := utils.UnmarshalJSON(data, &firewallEnabled, "", true, nil); err == nil {
+		u.FirewallEnabled = &firewallEnabled
+		u.Type = UpdateFirewallConfigRequestBodyTypeFirewallEnabled
+		return nil
+	}
+
+	var rulesInsert RulesInsert = RulesInsert{}
+	if err := utils.UnmarshalJSON(data, &rulesInsert, "", true, nil); err == nil {
+		u.RulesInsert = &rulesInsert
+		u.Type = UpdateFirewallConfigRequestBodyTypeRulesInsert
+		return nil
+	}
+
+	var rulesRemove RulesRemove = RulesRemove{}
+	if err := utils.UnmarshalJSON(data, &rulesRemove, "", true, nil); err == nil {
+		u.RulesRemove = &rulesRemove
+		u.Type = UpdateFirewallConfigRequestBodyTypeRulesRemove
+		return nil
+	}
+
+	var ipInsert IPInsert = IPInsert{}
+	if err := utils.UnmarshalJSON(data, &ipInsert, "", true, nil); err == nil {
+		u.IPInsert = &ipInsert
+		u.Type = UpdateFirewallConfigRequestBodyTypeIPInsert
+		return nil
+	}
+
+	var ipRemove IPRemove = IPRemove{}
+	if err := utils.UnmarshalJSON(data, &ipRemove, "", true, nil); err == nil {
+		u.IPRemove = &ipRemove
+		u.Type = UpdateFirewallConfigRequestBodyTypeIPRemove
+		return nil
+	}
+
 	var updateFirewallConfigRequestBody2 UpdateFirewallConfigRequestBody2 = UpdateFirewallConfigRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateFirewallConfigRequestBody2, "", true, nil); err == nil {
 		u.UpdateFirewallConfigRequestBody2 = &updateFirewallConfigRequestBody2
 		u.Type = UpdateFirewallConfigRequestBodyTypeUpdateFirewallConfigRequestBody2
+		return nil
+	}
+
+	var crsDisable CrsDisable = CrsDisable{}
+	if err := utils.UnmarshalJSON(data, &crsDisable, "", true, nil); err == nil {
+		u.CrsDisable = &crsDisable
+		u.Type = UpdateFirewallConfigRequestBodyTypeCrsDisable
 		return nil
 	}
 

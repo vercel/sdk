@@ -231,14 +231,14 @@ func CreateUpdateProjectDataCacheEnvIDUnionUpdateProjectDataCacheEnvIDEnum(updat
 func (u *UpdateProjectDataCacheEnvIDUnion) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UpdateProjectDataCacheEnvIDUnionTypeStr
 		return nil
 	}
 
 	var updateProjectDataCacheEnvIDEnum UpdateProjectDataCacheEnvIDEnum = UpdateProjectDataCacheEnvIDEnum("")
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheEnvIDEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheEnvIDEnum, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheEnvIDEnum = &updateProjectDataCacheEnvIDEnum
 		u.Type = UpdateProjectDataCacheEnvIDUnionTypeUpdateProjectDataCacheEnvIDEnum
 		return nil
@@ -448,12 +448,18 @@ func (o *UpdateProjectDataCacheDataCache) GetUnlimited() *bool {
 	return o.Unlimited
 }
 
+// UpdateProjectDataCacheDeploymentExpiration - Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 type UpdateProjectDataCacheDeploymentExpiration struct {
-	ExpirationDays           *float64 `json:"expirationDays,omitempty"`
+	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
+	ExpirationDays *float64 `json:"expirationDays,omitempty"`
+	// Number of days to keep production deployments before soft deletion.
 	ExpirationDaysProduction *float64 `json:"expirationDaysProduction,omitempty"`
-	ExpirationDaysCanceled   *float64 `json:"expirationDaysCanceled,omitempty"`
-	ExpirationDaysErrored    *float64 `json:"expirationDaysErrored,omitempty"`
-	DeploymentsToKeep        *float64 `json:"deploymentsToKeep,omitempty"`
+	// Number of days to keep canceled deployments before soft deletion.
+	ExpirationDaysCanceled *float64 `json:"expirationDaysCanceled,omitempty"`
+	// Number of days to keep errored deployments before soft deletion.
+	ExpirationDaysErrored *float64 `json:"expirationDaysErrored,omitempty"`
+	// Minimum number of production deployments to keep for this project, even if they are over the production expiration limit.
+	DeploymentsToKeep *float64 `json:"deploymentsToKeep,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheDeploymentExpiration) GetExpirationDays() *float64 {
@@ -584,14 +590,14 @@ func CreateUpdateProjectDataCacheTargetUnionUpdateProjectDataCacheTargetEnum2(up
 func (u *UpdateProjectDataCacheTargetUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfUpdateProjectDataCacheTargetEnum1 []UpdateProjectDataCacheTargetEnum1 = []UpdateProjectDataCacheTargetEnum1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfUpdateProjectDataCacheTargetEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfUpdateProjectDataCacheTargetEnum1, "", true, nil); err == nil {
 		u.ArrayOfUpdateProjectDataCacheTargetEnum1 = arrayOfUpdateProjectDataCacheTargetEnum1
 		u.Type = UpdateProjectDataCacheTargetUnionTypeArrayOfUpdateProjectDataCacheTargetEnum1
 		return nil
 	}
 
 	var updateProjectDataCacheTargetEnum2 UpdateProjectDataCacheTargetEnum2 = UpdateProjectDataCacheTargetEnum2("")
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheTargetEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheTargetEnum2, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheTargetEnum2 = &updateProjectDataCacheTargetEnum2
 		u.Type = UpdateProjectDataCacheTargetUnionTypeUpdateProjectDataCacheTargetEnum2
 		return nil
@@ -675,6 +681,17 @@ type UpdateProjectDataCacheContentHintFlagsConnectionString struct {
 	ProjectID string                                          `json:"projectId"`
 }
 
+func (u UpdateProjectDataCacheContentHintFlagsConnectionString) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintFlagsConnectionString) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintFlagsConnectionString) GetType() UpdateProjectDataCacheTypeFlagsConnectionString {
 	if o == nil {
 		return UpdateProjectDataCacheTypeFlagsConnectionString("")
@@ -718,6 +735,17 @@ type UpdateProjectDataCacheContentHintIntegrationStoreSecret struct {
 	IntegrationID              string                                           `json:"integrationId"`
 	IntegrationProductID       string                                           `json:"integrationProductId"`
 	IntegrationConfigurationID string                                           `json:"integrationConfigurationId"`
+}
+
+func (u UpdateProjectDataCacheContentHintIntegrationStoreSecret) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintIntegrationStoreSecret) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheContentHintIntegrationStoreSecret) GetType() UpdateProjectDataCacheTypeIntegrationStoreSecret {
@@ -783,6 +811,17 @@ type UpdateProjectDataCacheContentHintPostgresURLNoSsl struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (u UpdateProjectDataCacheContentHintPostgresURLNoSsl) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresURLNoSsl) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintPostgresURLNoSsl) GetType() UpdateProjectDataCacheTypePostgresURLNoSsl {
 	if o == nil {
 		return UpdateProjectDataCacheTypePostgresURLNoSsl("")
@@ -823,6 +862,17 @@ func (e *UpdateProjectDataCacheTypePostgresDatabase) UnmarshalJSON(data []byte) 
 type UpdateProjectDataCacheContentHintPostgresDatabase struct {
 	Type    UpdateProjectDataCacheTypePostgresDatabase `json:"type"`
 	StoreID string                                     `json:"storeId"`
+}
+
+func (u UpdateProjectDataCacheContentHintPostgresDatabase) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresDatabase) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheContentHintPostgresDatabase) GetType() UpdateProjectDataCacheTypePostgresDatabase {
@@ -867,6 +917,17 @@ type UpdateProjectDataCacheContentHintPostgresPassword struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (u UpdateProjectDataCacheContentHintPostgresPassword) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresPassword) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintPostgresPassword) GetType() UpdateProjectDataCacheTypePostgresPassword {
 	if o == nil {
 		return UpdateProjectDataCacheTypePostgresPassword("")
@@ -907,6 +968,17 @@ func (e *UpdateProjectDataCacheTypePostgresHost) UnmarshalJSON(data []byte) erro
 type UpdateProjectDataCacheContentHintPostgresHost struct {
 	Type    UpdateProjectDataCacheTypePostgresHost `json:"type"`
 	StoreID string                                 `json:"storeId"`
+}
+
+func (u UpdateProjectDataCacheContentHintPostgresHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheContentHintPostgresHost) GetType() UpdateProjectDataCacheTypePostgresHost {
@@ -951,6 +1023,17 @@ type UpdateProjectDataCacheContentHintPostgresUser struct {
 	StoreID string                                 `json:"storeId"`
 }
 
+func (u UpdateProjectDataCacheContentHintPostgresUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintPostgresUser) GetType() UpdateProjectDataCacheTypePostgresUser {
 	if o == nil {
 		return UpdateProjectDataCacheTypePostgresUser("")
@@ -991,6 +1074,17 @@ func (e *UpdateProjectDataCacheTypePostgresPrismaURL) UnmarshalJSON(data []byte)
 type UpdateProjectDataCacheContentHintPostgresPrismaURL struct {
 	Type    UpdateProjectDataCacheTypePostgresPrismaURL `json:"type"`
 	StoreID string                                      `json:"storeId"`
+}
+
+func (u UpdateProjectDataCacheContentHintPostgresPrismaURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresPrismaURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheContentHintPostgresPrismaURL) GetType() UpdateProjectDataCacheTypePostgresPrismaURL {
@@ -1035,6 +1129,17 @@ type UpdateProjectDataCacheContentHintPostgresURLNonPooling struct {
 	StoreID string                                          `json:"storeId"`
 }
 
+func (u UpdateProjectDataCacheContentHintPostgresURLNonPooling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresURLNonPooling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintPostgresURLNonPooling) GetType() UpdateProjectDataCacheTypePostgresURLNonPooling {
 	if o == nil {
 		return UpdateProjectDataCacheTypePostgresURLNonPooling("")
@@ -1075,6 +1180,17 @@ func (e *UpdateProjectDataCacheTypePostgresURL) UnmarshalJSON(data []byte) error
 type UpdateProjectDataCacheContentHintPostgresURL struct {
 	Type    UpdateProjectDataCacheTypePostgresURL `json:"type"`
 	StoreID string                                `json:"storeId"`
+}
+
+func (u UpdateProjectDataCacheContentHintPostgresURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintPostgresURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheContentHintPostgresURL) GetType() UpdateProjectDataCacheTypePostgresURL {
@@ -1119,6 +1235,17 @@ type UpdateProjectDataCacheContentHintBlobReadWriteToken struct {
 	StoreID string                                       `json:"storeId"`
 }
 
+func (u UpdateProjectDataCacheContentHintBlobReadWriteToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintBlobReadWriteToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintBlobReadWriteToken) GetType() UpdateProjectDataCacheTypeBlobReadWriteToken {
 	if o == nil {
 		return UpdateProjectDataCacheTypeBlobReadWriteToken("")
@@ -1159,6 +1286,17 @@ func (e *UpdateProjectDataCacheTypeRedisRestAPIReadOnlyToken) UnmarshalJSON(data
 type UpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken struct {
 	Type    UpdateProjectDataCacheTypeRedisRestAPIReadOnlyToken `json:"type"`
 	StoreID string                                              `json:"storeId"`
+}
+
+func (u UpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken) GetType() UpdateProjectDataCacheTypeRedisRestAPIReadOnlyToken {
@@ -1203,6 +1341,17 @@ type UpdateProjectDataCacheContentHintRedisRestAPIToken struct {
 	StoreID string                                      `json:"storeId"`
 }
 
+func (u UpdateProjectDataCacheContentHintRedisRestAPIToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintRedisRestAPIToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintRedisRestAPIToken) GetType() UpdateProjectDataCacheTypeRedisRestAPIToken {
 	if o == nil {
 		return UpdateProjectDataCacheTypeRedisRestAPIToken("")
@@ -1245,6 +1394,17 @@ type UpdateProjectDataCacheContentHintRedisRestAPIURL struct {
 	StoreID string                                    `json:"storeId"`
 }
 
+func (u UpdateProjectDataCacheContentHintRedisRestAPIURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintRedisRestAPIURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheContentHintRedisRestAPIURL) GetType() UpdateProjectDataCacheTypeRedisRestAPIURL {
 	if o == nil {
 		return UpdateProjectDataCacheTypeRedisRestAPIURL("")
@@ -1285,6 +1445,17 @@ func (e *UpdateProjectDataCacheTypeRedisURL) UnmarshalJSON(data []byte) error {
 type UpdateProjectDataCacheContentHintRedisURL struct {
 	Type    UpdateProjectDataCacheTypeRedisURL `json:"type"`
 	StoreID string                             `json:"storeId"`
+}
+
+func (u UpdateProjectDataCacheContentHintRedisURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheContentHintRedisURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheContentHintRedisURL) GetType() UpdateProjectDataCacheTypeRedisURL {
@@ -1478,108 +1649,108 @@ func CreateUpdateProjectDataCacheContentHintUnionUpdateProjectDataCacheContentHi
 
 func (u *UpdateProjectDataCacheContentHintUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectDataCacheContentHintPostgresURLNonPooling UpdateProjectDataCacheContentHintPostgresURLNonPooling = UpdateProjectDataCacheContentHintPostgresURLNonPooling{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresURLNonPooling, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHintPostgresURLNonPooling = &updateProjectDataCacheContentHintPostgresURLNonPooling
-		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresURLNonPooling
+	var updateProjectDataCacheContentHintIntegrationStoreSecret UpdateProjectDataCacheContentHintIntegrationStoreSecret = UpdateProjectDataCacheContentHintIntegrationStoreSecret{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintIntegrationStoreSecret, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheContentHintIntegrationStoreSecret = &updateProjectDataCacheContentHintIntegrationStoreSecret
+		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintIntegrationStoreSecret
 		return nil
 	}
 
-	var updateProjectDataCacheContentHintPostgresPassword UpdateProjectDataCacheContentHintPostgresPassword = UpdateProjectDataCacheContentHintPostgresPassword{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresPassword, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHintPostgresPassword = &updateProjectDataCacheContentHintPostgresPassword
-		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresPassword
+	var updateProjectDataCacheContentHintRedisURL UpdateProjectDataCacheContentHintRedisURL = UpdateProjectDataCacheContentHintRedisURL{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisURL, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheContentHintRedisURL = &updateProjectDataCacheContentHintRedisURL
+		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintRedisURL
+		return nil
+	}
+
+	var updateProjectDataCacheContentHintRedisRestAPIURL UpdateProjectDataCacheContentHintRedisRestAPIURL = UpdateProjectDataCacheContentHintRedisRestAPIURL{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisRestAPIURL, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheContentHintRedisRestAPIURL = &updateProjectDataCacheContentHintRedisRestAPIURL
+		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintRedisRestAPIURL
 		return nil
 	}
 
 	var updateProjectDataCacheContentHintRedisRestAPIToken UpdateProjectDataCacheContentHintRedisRestAPIToken = UpdateProjectDataCacheContentHintRedisRestAPIToken{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisRestAPIToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisRestAPIToken, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintRedisRestAPIToken = &updateProjectDataCacheContentHintRedisRestAPIToken
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintRedisRestAPIToken
 		return nil
 	}
 
 	var updateProjectDataCacheContentHintRedisRestAPIReadOnlyToken UpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken = UpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisRestAPIReadOnlyToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisRestAPIReadOnlyToken, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken = &updateProjectDataCacheContentHintRedisRestAPIReadOnlyToken
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintRedisRestAPIReadOnlyToken
 		return nil
 	}
 
 	var updateProjectDataCacheContentHintBlobReadWriteToken UpdateProjectDataCacheContentHintBlobReadWriteToken = UpdateProjectDataCacheContentHintBlobReadWriteToken{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintBlobReadWriteToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintBlobReadWriteToken, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintBlobReadWriteToken = &updateProjectDataCacheContentHintBlobReadWriteToken
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintBlobReadWriteToken
 		return nil
 	}
 
 	var updateProjectDataCacheContentHintPostgresURL UpdateProjectDataCacheContentHintPostgresURL = UpdateProjectDataCacheContentHintPostgresURL{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresURL, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintPostgresURL = &updateProjectDataCacheContentHintPostgresURL
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresURL
 		return nil
 	}
 
-	var updateProjectDataCacheContentHintRedisRestAPIURL UpdateProjectDataCacheContentHintRedisRestAPIURL = UpdateProjectDataCacheContentHintRedisRestAPIURL{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisRestAPIURL, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHintRedisRestAPIURL = &updateProjectDataCacheContentHintRedisRestAPIURL
-		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintRedisRestAPIURL
-		return nil
-	}
-
-	var updateProjectDataCacheContentHintPostgresUser UpdateProjectDataCacheContentHintPostgresUser = UpdateProjectDataCacheContentHintPostgresUser{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresUser, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHintPostgresUser = &updateProjectDataCacheContentHintPostgresUser
-		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresUser
-		return nil
-	}
-
-	var updateProjectDataCacheContentHintRedisURL UpdateProjectDataCacheContentHintRedisURL = UpdateProjectDataCacheContentHintRedisURL{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintRedisURL, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHintRedisURL = &updateProjectDataCacheContentHintRedisURL
-		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintRedisURL
-		return nil
-	}
-
-	var updateProjectDataCacheContentHintPostgresHost UpdateProjectDataCacheContentHintPostgresHost = UpdateProjectDataCacheContentHintPostgresHost{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresHost, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHintPostgresHost = &updateProjectDataCacheContentHintPostgresHost
-		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresHost
+	var updateProjectDataCacheContentHintPostgresURLNonPooling UpdateProjectDataCacheContentHintPostgresURLNonPooling = UpdateProjectDataCacheContentHintPostgresURLNonPooling{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresURLNonPooling, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheContentHintPostgresURLNonPooling = &updateProjectDataCacheContentHintPostgresURLNonPooling
+		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresURLNonPooling
 		return nil
 	}
 
 	var updateProjectDataCacheContentHintPostgresPrismaURL UpdateProjectDataCacheContentHintPostgresPrismaURL = UpdateProjectDataCacheContentHintPostgresPrismaURL{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresPrismaURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresPrismaURL, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintPostgresPrismaURL = &updateProjectDataCacheContentHintPostgresPrismaURL
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresPrismaURL
 		return nil
 	}
 
+	var updateProjectDataCacheContentHintPostgresUser UpdateProjectDataCacheContentHintPostgresUser = UpdateProjectDataCacheContentHintPostgresUser{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresUser, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheContentHintPostgresUser = &updateProjectDataCacheContentHintPostgresUser
+		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresUser
+		return nil
+	}
+
+	var updateProjectDataCacheContentHintPostgresHost UpdateProjectDataCacheContentHintPostgresHost = UpdateProjectDataCacheContentHintPostgresHost{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresHost, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheContentHintPostgresHost = &updateProjectDataCacheContentHintPostgresHost
+		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresHost
+		return nil
+	}
+
+	var updateProjectDataCacheContentHintPostgresPassword UpdateProjectDataCacheContentHintPostgresPassword = UpdateProjectDataCacheContentHintPostgresPassword{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresPassword, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheContentHintPostgresPassword = &updateProjectDataCacheContentHintPostgresPassword
+		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresPassword
+		return nil
+	}
+
 	var updateProjectDataCacheContentHintPostgresDatabase UpdateProjectDataCacheContentHintPostgresDatabase = UpdateProjectDataCacheContentHintPostgresDatabase{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresDatabase, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresDatabase, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintPostgresDatabase = &updateProjectDataCacheContentHintPostgresDatabase
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresDatabase
 		return nil
 	}
 
 	var updateProjectDataCacheContentHintPostgresURLNoSsl UpdateProjectDataCacheContentHintPostgresURLNoSsl = UpdateProjectDataCacheContentHintPostgresURLNoSsl{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresURLNoSsl, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintPostgresURLNoSsl, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintPostgresURLNoSsl = &updateProjectDataCacheContentHintPostgresURLNoSsl
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintPostgresURLNoSsl
 		return nil
 	}
 
 	var updateProjectDataCacheContentHintFlagsConnectionString UpdateProjectDataCacheContentHintFlagsConnectionString = UpdateProjectDataCacheContentHintFlagsConnectionString{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintFlagsConnectionString, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintFlagsConnectionString, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheContentHintFlagsConnectionString = &updateProjectDataCacheContentHintFlagsConnectionString
 		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintFlagsConnectionString
-		return nil
-	}
-
-	var updateProjectDataCacheContentHintIntegrationStoreSecret UpdateProjectDataCacheContentHintIntegrationStoreSecret = UpdateProjectDataCacheContentHintIntegrationStoreSecret{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheContentHintIntegrationStoreSecret, "", true, true); err == nil {
-		u.UpdateProjectDataCacheContentHintIntegrationStoreSecret = &updateProjectDataCacheContentHintIntegrationStoreSecret
-		u.Type = UpdateProjectDataCacheContentHintUnionTypeUpdateProjectDataCacheContentHintIntegrationStoreSecret
 		return nil
 	}
 
@@ -2668,6 +2839,17 @@ type UpdateProjectDataCacheDeployHook5 struct {
 	URL       string   `json:"url"`
 }
 
+func (u UpdateProjectDataCacheDeployHook5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheDeployHook5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheDeployHook5) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -2717,6 +2899,17 @@ type UpdateProjectDataCacheLinkGithubCustomHost struct {
 	UpdatedAt        *float64                                   `json:"updatedAt,omitempty"`
 	Sourceless       *bool                                      `json:"sourceless,omitempty"`
 	ProductionBranch string                                     `json:"productionBranch"`
+}
+
+func (u UpdateProjectDataCacheLinkGithubCustomHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheLinkGithubCustomHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"org", "type", "host", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheLinkGithubCustomHost) GetOrg() string {
@@ -2834,6 +3027,17 @@ type UpdateProjectDataCacheDeployHook4 struct {
 	URL       string   `json:"url"`
 }
 
+func (u UpdateProjectDataCacheDeployHook4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheDeployHook4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheDeployHook4) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -2882,6 +3086,17 @@ type UpdateProjectDataCacheLinkBitbucket struct {
 	UpdatedAt        *float64                            `json:"updatedAt,omitempty"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
 	ProductionBranch string                              `json:"productionBranch"`
+}
+
+func (u UpdateProjectDataCacheLinkBitbucket) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheLinkBitbucket) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "slug", "owner", "type", "uuid", "workspaceUuid", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheLinkBitbucket) GetName() string {
@@ -2999,6 +3214,17 @@ type UpdateProjectDataCacheDeployHook3 struct {
 	URL       string   `json:"url"`
 }
 
+func (u UpdateProjectDataCacheDeployHook3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheDeployHook3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheDeployHook3) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -3049,6 +3275,17 @@ type UpdateProjectDataCacheLinkGitlab struct {
 	UpdatedAt        *float64                            `json:"updatedAt,omitempty"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
 	ProductionBranch string                              `json:"productionBranch"`
+}
+
+func (u UpdateProjectDataCacheLinkGitlab) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheLinkGitlab) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"projectId", "projectName", "projectNameWithNamespace", "projectNamespace", "projectUrl", "type", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheLinkGitlab) GetProjectID() string {
@@ -3173,6 +3410,17 @@ type UpdateProjectDataCacheDeployHook2 struct {
 	URL       string   `json:"url"`
 }
 
+func (u UpdateProjectDataCacheDeployHook2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheDeployHook2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheDeployHook2) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -3221,6 +3469,17 @@ type UpdateProjectDataCacheLinkGithubLimited struct {
 	GitCredentialID  string                              `json:"gitCredentialId"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
 	ProductionBranch string                              `json:"productionBranch"`
+}
+
+func (u UpdateProjectDataCacheLinkGithubLimited) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheLinkGithubLimited) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "org", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheLinkGithubLimited) GetType() UpdateProjectDataCacheTypeGithubLimited {
@@ -3331,6 +3590,17 @@ type UpdateProjectDataCacheDeployHook1 struct {
 	URL       string   `json:"url"`
 }
 
+func (u UpdateProjectDataCacheDeployHook1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheDeployHook1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheDeployHook1) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -3379,6 +3649,17 @@ type UpdateProjectDataCacheLinkGithub struct {
 	UpdatedAt        *float64                            `json:"updatedAt,omitempty"`
 	Sourceless       *bool                               `json:"sourceless,omitempty"`
 	ProductionBranch string                              `json:"productionBranch"`
+}
+
+func (u UpdateProjectDataCacheLinkGithub) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheLinkGithub) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"org", "type", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheLinkGithub) GetOrg() string {
@@ -3525,38 +3806,38 @@ func CreateUpdateProjectDataCacheLinkUnionUpdateProjectDataCacheLinkGithubCustom
 
 func (u *UpdateProjectDataCacheLinkUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectDataCacheLinkGithub UpdateProjectDataCacheLinkGithub = UpdateProjectDataCacheLinkGithub{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGithub, "", true, true); err == nil {
-		u.UpdateProjectDataCacheLinkGithub = &updateProjectDataCacheLinkGithub
-		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithub
-		return nil
-	}
-
-	var updateProjectDataCacheLinkGithubLimited UpdateProjectDataCacheLinkGithubLimited = UpdateProjectDataCacheLinkGithubLimited{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGithubLimited, "", true, true); err == nil {
-		u.UpdateProjectDataCacheLinkGithubLimited = &updateProjectDataCacheLinkGithubLimited
-		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithubLimited
+	var updateProjectDataCacheLinkGitlab UpdateProjectDataCacheLinkGitlab = UpdateProjectDataCacheLinkGitlab{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGitlab, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheLinkGitlab = &updateProjectDataCacheLinkGitlab
+		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGitlab
 		return nil
 	}
 
 	var updateProjectDataCacheLinkBitbucket UpdateProjectDataCacheLinkBitbucket = UpdateProjectDataCacheLinkBitbucket{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkBitbucket, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkBitbucket, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheLinkBitbucket = &updateProjectDataCacheLinkBitbucket
 		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkBitbucket
 		return nil
 	}
 
 	var updateProjectDataCacheLinkGithubCustomHost UpdateProjectDataCacheLinkGithubCustomHost = UpdateProjectDataCacheLinkGithubCustomHost{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGithubCustomHost, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGithubCustomHost, "", true, nil); err == nil {
 		u.UpdateProjectDataCacheLinkGithubCustomHost = &updateProjectDataCacheLinkGithubCustomHost
 		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithubCustomHost
 		return nil
 	}
 
-	var updateProjectDataCacheLinkGitlab UpdateProjectDataCacheLinkGitlab = UpdateProjectDataCacheLinkGitlab{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGitlab, "", true, true); err == nil {
-		u.UpdateProjectDataCacheLinkGitlab = &updateProjectDataCacheLinkGitlab
-		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGitlab
+	var updateProjectDataCacheLinkGithub UpdateProjectDataCacheLinkGithub = UpdateProjectDataCacheLinkGithub{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGithub, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheLinkGithub = &updateProjectDataCacheLinkGithub
+		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithub
+		return nil
+	}
+
+	var updateProjectDataCacheLinkGithubLimited UpdateProjectDataCacheLinkGithubLimited = UpdateProjectDataCacheLinkGithubLimited{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheLinkGithubLimited, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheLinkGithubLimited = &updateProjectDataCacheLinkGithubLimited
+		u.Type = UpdateProjectDataCacheLinkUnionTypeUpdateProjectDataCacheLinkGithubLimited
 		return nil
 	}
 
@@ -3593,6 +3874,17 @@ type UpdateProjectDataCacheMicrofrontends2 struct {
 	Enabled   bool    `json:"enabled"`
 }
 
+func (u UpdateProjectDataCacheMicrofrontends2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheMicrofrontends2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheMicrofrontends2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -3627,6 +3919,17 @@ type UpdateProjectDataCacheMicrofrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+}
+
+func (u UpdateProjectDataCacheMicrofrontends1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheMicrofrontends1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheMicrofrontends1) GetUpdatedAt() float64 {
@@ -3705,17 +4008,17 @@ func CreateUpdateProjectDataCacheMicrofrontendsUnionUpdateProjectDataCacheMicrof
 
 func (u *UpdateProjectDataCacheMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectDataCacheMicrofrontends2 UpdateProjectDataCacheMicrofrontends2 = UpdateProjectDataCacheMicrofrontends2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheMicrofrontends2, "", true, true); err == nil {
-		u.UpdateProjectDataCacheMicrofrontends2 = &updateProjectDataCacheMicrofrontends2
-		u.Type = UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends2
+	var updateProjectDataCacheMicrofrontends1 UpdateProjectDataCacheMicrofrontends1 = UpdateProjectDataCacheMicrofrontends1{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheMicrofrontends1, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheMicrofrontends1 = &updateProjectDataCacheMicrofrontends1
+		u.Type = UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends1
 		return nil
 	}
 
-	var updateProjectDataCacheMicrofrontends1 UpdateProjectDataCacheMicrofrontends1 = UpdateProjectDataCacheMicrofrontends1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheMicrofrontends1, "", true, true); err == nil {
-		u.UpdateProjectDataCacheMicrofrontends1 = &updateProjectDataCacheMicrofrontends1
-		u.Type = UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends1
+	var updateProjectDataCacheMicrofrontends2 UpdateProjectDataCacheMicrofrontends2 = UpdateProjectDataCacheMicrofrontends2{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheMicrofrontends2, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheMicrofrontends2 = &updateProjectDataCacheMicrofrontends2
+		u.Type = UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends2
 		return nil
 	}
 
@@ -4227,14 +4530,14 @@ func CreateUpdateProjectDataCacheAliasAssignedBoolean(boolean bool) UpdateProjec
 func (u *UpdateProjectDataCacheAliasAssigned) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = UpdateProjectDataCacheAliasAssignedTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = UpdateProjectDataCacheAliasAssignedTypeBoolean
 		return nil
@@ -6786,6 +7089,17 @@ type UpdateProjectDataCacheProtectionBypassAutomationBypass struct {
 	Scope     UpdateProjectDataCacheScopeAutomationBypass `json:"scope"`
 }
 
+func (u UpdateProjectDataCacheProtectionBypassAutomationBypass) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheProtectionBypassAutomationBypass) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"createdAt", "createdBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheProtectionBypassAutomationBypass) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -6836,6 +7150,17 @@ type UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass struct {
 	Scope           UpdateProjectDataCacheScopeIntegrationAutomationBypass `json:"scope"`
 	IntegrationID   string                                                 `json:"integrationId"`
 	ConfigurationID string                                                 `json:"configurationId"`
+}
+
+func (u UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"createdAt", "createdBy", "scope", "integrationId", "configurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass) GetCreatedAt() float64 {
@@ -6907,17 +7232,17 @@ func CreateUpdateProjectDataCacheProtectionBypassUnionUpdateProjectDataCacheProt
 
 func (u *UpdateProjectDataCacheProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectDataCacheProtectionBypassAutomationBypass UpdateProjectDataCacheProtectionBypassAutomationBypass = UpdateProjectDataCacheProtectionBypassAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheProtectionBypassAutomationBypass, "", true, true); err == nil {
-		u.UpdateProjectDataCacheProtectionBypassAutomationBypass = &updateProjectDataCacheProtectionBypassAutomationBypass
-		u.Type = UpdateProjectDataCacheProtectionBypassUnionTypeUpdateProjectDataCacheProtectionBypassAutomationBypass
+	var updateProjectDataCacheProtectionBypassIntegrationAutomationBypass UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass = UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheProtectionBypassIntegrationAutomationBypass, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass = &updateProjectDataCacheProtectionBypassIntegrationAutomationBypass
+		u.Type = UpdateProjectDataCacheProtectionBypassUnionTypeUpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass
 		return nil
 	}
 
-	var updateProjectDataCacheProtectionBypassIntegrationAutomationBypass UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass = UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheProtectionBypassIntegrationAutomationBypass, "", true, true); err == nil {
-		u.UpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass = &updateProjectDataCacheProtectionBypassIntegrationAutomationBypass
-		u.Type = UpdateProjectDataCacheProtectionBypassUnionTypeUpdateProjectDataCacheProtectionBypassIntegrationAutomationBypass
+	var updateProjectDataCacheProtectionBypassAutomationBypass UpdateProjectDataCacheProtectionBypassAutomationBypass = UpdateProjectDataCacheProtectionBypassAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheProtectionBypassAutomationBypass, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheProtectionBypassAutomationBypass = &updateProjectDataCacheProtectionBypassAutomationBypass
+		u.Type = UpdateProjectDataCacheProtectionBypassUnionTypeUpdateProjectDataCacheProtectionBypassAutomationBypass
 		return nil
 	}
 
@@ -6975,6 +7300,17 @@ type UpdateProjectDataCacheTrustedIps2 struct {
 	DeploymentType UpdateProjectDataCacheTrustedIpsDeploymentType2 `json:"deploymentType"`
 }
 
+func (u UpdateProjectDataCacheTrustedIps2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheTrustedIps2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheTrustedIps2) GetDeploymentType() UpdateProjectDataCacheTrustedIpsDeploymentType2 {
 	if o == nil {
 		return UpdateProjectDataCacheTrustedIpsDeploymentType2("")
@@ -7022,6 +7358,17 @@ type UpdateProjectDataCacheAddress struct {
 	Note  *string `json:"note,omitempty"`
 }
 
+func (u UpdateProjectDataCacheAddress) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheAddress) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateProjectDataCacheAddress) GetValue() string {
 	if o == nil {
 		return ""
@@ -7066,6 +7413,17 @@ type UpdateProjectDataCacheTrustedIps1 struct {
 	DeploymentType UpdateProjectDataCacheTrustedIpsDeploymentType1 `json:"deploymentType"`
 	Addresses      []UpdateProjectDataCacheAddress                 `json:"addresses"`
 	ProtectionMode UpdateProjectDataCacheProtectionMode            `json:"protectionMode"`
+}
+
+func (u UpdateProjectDataCacheTrustedIps1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheTrustedIps1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"deploymentType", "addresses", "protectionMode"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateProjectDataCacheTrustedIps1) GetDeploymentType() UpdateProjectDataCacheTrustedIpsDeploymentType1 {
@@ -7123,17 +7481,17 @@ func CreateUpdateProjectDataCacheTrustedIpsUnionUpdateProjectDataCacheTrustedIps
 
 func (u *UpdateProjectDataCacheTrustedIpsUnion) UnmarshalJSON(data []byte) error {
 
-	var updateProjectDataCacheTrustedIps2 UpdateProjectDataCacheTrustedIps2 = UpdateProjectDataCacheTrustedIps2{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheTrustedIps2, "", true, true); err == nil {
-		u.UpdateProjectDataCacheTrustedIps2 = &updateProjectDataCacheTrustedIps2
-		u.Type = UpdateProjectDataCacheTrustedIpsUnionTypeUpdateProjectDataCacheTrustedIps2
+	var updateProjectDataCacheTrustedIps1 UpdateProjectDataCacheTrustedIps1 = UpdateProjectDataCacheTrustedIps1{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheTrustedIps1, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheTrustedIps1 = &updateProjectDataCacheTrustedIps1
+		u.Type = UpdateProjectDataCacheTrustedIpsUnionTypeUpdateProjectDataCacheTrustedIps1
 		return nil
 	}
 
-	var updateProjectDataCacheTrustedIps1 UpdateProjectDataCacheTrustedIps1 = UpdateProjectDataCacheTrustedIps1{}
-	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheTrustedIps1, "", true, true); err == nil {
-		u.UpdateProjectDataCacheTrustedIps1 = &updateProjectDataCacheTrustedIps1
-		u.Type = UpdateProjectDataCacheTrustedIpsUnionTypeUpdateProjectDataCacheTrustedIps1
+	var updateProjectDataCacheTrustedIps2 UpdateProjectDataCacheTrustedIps2 = UpdateProjectDataCacheTrustedIps2{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheTrustedIps2, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheTrustedIps2 = &updateProjectDataCacheTrustedIps2
+		u.Type = UpdateProjectDataCacheTrustedIpsUnionTypeUpdateProjectDataCacheTrustedIps2
 		return nil
 	}
 
@@ -7639,28 +7997,29 @@ type UpdateProjectDataCacheResponseBody struct {
 	CustomerSupportCodeVisibility    *bool                                        `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                            *UpdateProjectDataCacheCrons                 `json:"crons,omitempty"`
 	DataCache                        *UpdateProjectDataCacheDataCache             `json:"dataCache,omitempty"`
-	DeploymentExpiration             *UpdateProjectDataCacheDeploymentExpiration  `json:"deploymentExpiration,omitempty"`
-	DevCommand                       *string                                      `json:"devCommand,omitempty"`
-	DirectoryListing                 bool                                         `json:"directoryListing"`
-	InstallCommand                   *string                                      `json:"installCommand,omitempty"`
-	Env                              []UpdateProjectDataCacheEnv                  `json:"env,omitempty"`
-	CustomEnvironments               []UpdateProjectDataCacheCustomEnvironment    `json:"customEnvironments,omitempty"`
-	Framework                        *UpdateProjectDataCacheFramework             `json:"framework,omitempty"`
-	GitForkProtection                *bool                                        `json:"gitForkProtection,omitempty"`
-	GitLFS                           *bool                                        `json:"gitLFS,omitempty"`
-	ID                               string                                       `json:"id"`
-	IPBuckets                        []UpdateProjectDataCacheIPBucket             `json:"ipBuckets,omitempty"`
-	LatestDeployments                []UpdateProjectDataCacheLatestDeployment     `json:"latestDeployments,omitempty"`
-	Link                             *UpdateProjectDataCacheLinkUnion             `json:"link,omitempty"`
-	Microfrontends                   *UpdateProjectDataCacheMicrofrontendsUnion   `json:"microfrontends,omitempty"`
-	Name                             string                                       `json:"name"`
-	NodeVersion                      UpdateProjectDataCacheNodeVersion            `json:"nodeVersion"`
-	OptionsAllowlist                 *UpdateProjectDataCacheOptionsAllowlist      `json:"optionsAllowlist,omitempty"`
-	OutputDirectory                  *string                                      `json:"outputDirectory,omitempty"`
-	PasswordProtection               *UpdateProjectDataCachePasswordProtection    `json:"passwordProtection,omitempty"`
-	ProductionDeploymentsFastLane    *bool                                        `json:"productionDeploymentsFastLane,omitempty"`
-	PublicSource                     *bool                                        `json:"publicSource,omitempty"`
-	ResourceConfig                   UpdateProjectDataCacheResourceConfig         `json:"resourceConfig"`
+	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
+	DeploymentExpiration          *UpdateProjectDataCacheDeploymentExpiration `json:"deploymentExpiration,omitempty"`
+	DevCommand                    *string                                     `json:"devCommand,omitempty"`
+	DirectoryListing              bool                                        `json:"directoryListing"`
+	InstallCommand                *string                                     `json:"installCommand,omitempty"`
+	Env                           []UpdateProjectDataCacheEnv                 `json:"env,omitempty"`
+	CustomEnvironments            []UpdateProjectDataCacheCustomEnvironment   `json:"customEnvironments,omitempty"`
+	Framework                     *UpdateProjectDataCacheFramework            `json:"framework,omitempty"`
+	GitForkProtection             *bool                                       `json:"gitForkProtection,omitempty"`
+	GitLFS                        *bool                                       `json:"gitLFS,omitempty"`
+	ID                            string                                      `json:"id"`
+	IPBuckets                     []UpdateProjectDataCacheIPBucket            `json:"ipBuckets,omitempty"`
+	LatestDeployments             []UpdateProjectDataCacheLatestDeployment    `json:"latestDeployments,omitempty"`
+	Link                          *UpdateProjectDataCacheLinkUnion            `json:"link,omitempty"`
+	Microfrontends                *UpdateProjectDataCacheMicrofrontendsUnion  `json:"microfrontends,omitempty"`
+	Name                          string                                      `json:"name"`
+	NodeVersion                   UpdateProjectDataCacheNodeVersion           `json:"nodeVersion"`
+	OptionsAllowlist              *UpdateProjectDataCacheOptionsAllowlist     `json:"optionsAllowlist,omitempty"`
+	OutputDirectory               *string                                     `json:"outputDirectory,omitempty"`
+	PasswordProtection            *UpdateProjectDataCachePasswordProtection   `json:"passwordProtection,omitempty"`
+	ProductionDeploymentsFastLane *bool                                       `json:"productionDeploymentsFastLane,omitempty"`
+	PublicSource                  *bool                                       `json:"publicSource,omitempty"`
+	ResourceConfig                UpdateProjectDataCacheResourceConfig        `json:"resourceConfig"`
 	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
 	RollbackDescription *UpdateProjectDataCacheRollbackDescription `json:"rollbackDescription,omitempty"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out

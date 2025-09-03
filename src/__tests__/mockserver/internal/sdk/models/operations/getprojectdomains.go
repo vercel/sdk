@@ -181,7 +181,7 @@ func (g GetProjectDomainsRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetProjectDomainsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"idOrName"}); err != nil {
 		return err
 	}
 	return nil
@@ -293,6 +293,17 @@ type GetProjectDomainsVerification2 struct {
 	Reason string `json:"reason"`
 }
 
+func (g GetProjectDomainsVerification2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectDomainsVerification2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "domain", "value", "reason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetProjectDomainsVerification2) GetType() string {
 	if o == nil {
 		return ""
@@ -335,6 +346,17 @@ type GetProjectDomainsDomain2 struct {
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
 	Verification []GetProjectDomainsVerification2 `json:"verification,omitempty"`
+}
+
+func (g GetProjectDomainsDomain2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectDomainsDomain2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "apexName", "projectId", "verified"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetProjectDomainsDomain2) GetName() string {
@@ -420,6 +442,17 @@ type GetProjectDomainsResponseBody2 struct {
 	Pagination components.Pagination `json:"pagination"`
 }
 
+func (g GetProjectDomainsResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectDomainsResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"domains", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetProjectDomainsResponseBody2) GetDomains() []GetProjectDomainsDomain2 {
 	if o == nil {
 		return []GetProjectDomainsDomain2{}
@@ -440,6 +473,17 @@ type GetProjectDomainsVerification1 struct {
 	Domain string `json:"domain"`
 	Value  string `json:"value"`
 	Reason string `json:"reason"`
+}
+
+func (g GetProjectDomainsVerification1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectDomainsVerification1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "domain", "value", "reason"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetProjectDomainsVerification1) GetType() string {
@@ -484,6 +528,17 @@ type GetProjectDomainsDomain1 struct {
 	Verified bool `json:"verified"`
 	// A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`.
 	Verification []GetProjectDomainsVerification1 `json:"verification,omitempty"`
+}
+
+func (g GetProjectDomainsDomain1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectDomainsDomain1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "apexName", "projectId", "verified"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetProjectDomainsDomain1) GetName() string {
@@ -569,6 +624,17 @@ type GetProjectDomainsPagination struct {
 	Prev  *float64 `json:"prev"`
 }
 
+func (g GetProjectDomainsPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectDomainsPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"count", "next", "prev"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *GetProjectDomainsPagination) GetCount() float64 {
 	if o == nil {
 		return 0.0
@@ -593,6 +659,17 @@ func (o *GetProjectDomainsPagination) GetPrev() *float64 {
 type GetProjectDomainsResponseBody1 struct {
 	Domains    []GetProjectDomainsDomain1  `json:"domains"`
 	Pagination GetProjectDomainsPagination `json:"pagination"`
+}
+
+func (g GetProjectDomainsResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectDomainsResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"domains", "pagination"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetProjectDomainsResponseBody1) GetDomains() []GetProjectDomainsDomain1 {
@@ -645,14 +722,14 @@ func CreateGetProjectDomainsResponseBodyGetProjectDomainsResponseBody2(getProjec
 func (u *GetProjectDomainsResponseBody) UnmarshalJSON(data []byte) error {
 
 	var getProjectDomainsResponseBody1 GetProjectDomainsResponseBody1 = GetProjectDomainsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &getProjectDomainsResponseBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getProjectDomainsResponseBody1, "", true, nil); err == nil {
 		u.GetProjectDomainsResponseBody1 = &getProjectDomainsResponseBody1
 		u.Type = GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody1
 		return nil
 	}
 
 	var getProjectDomainsResponseBody2 GetProjectDomainsResponseBody2 = GetProjectDomainsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &getProjectDomainsResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &getProjectDomainsResponseBody2, "", true, nil); err == nil {
 		u.GetProjectDomainsResponseBody2 = &getProjectDomainsResponseBody2
 		u.Type = GetProjectDomainsResponseBodyTypeGetProjectDomainsResponseBody2
 		return nil

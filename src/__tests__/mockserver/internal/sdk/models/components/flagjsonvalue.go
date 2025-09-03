@@ -76,35 +76,35 @@ func CreateFlagJSONValueMapOfFlagJSONValue(mapOfFlagJSONValue map[string]*FlagJS
 func (u *FlagJSONValue) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = FlagJSONValueTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = FlagJSONValueTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = FlagJSONValueTypeBoolean
 		return nil
 	}
 
 	var arrayOfFlagJSONValue []*FlagJSONValue = []*FlagJSONValue{}
-	if err := utils.UnmarshalJSON(data, &arrayOfFlagJSONValue, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfFlagJSONValue, "", true, nil); err == nil {
 		u.ArrayOfFlagJSONValue = arrayOfFlagJSONValue
 		u.Type = FlagJSONValueTypeArrayOfFlagJSONValue
 		return nil
 	}
 
 	var mapOfFlagJSONValue map[string]*FlagJSONValue = map[string]*FlagJSONValue{}
-	if err := utils.UnmarshalJSON(data, &mapOfFlagJSONValue, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &mapOfFlagJSONValue, "", true, nil); err == nil {
 		u.MapOfFlagJSONValue = mapOfFlagJSONValue
 		u.Type = FlagJSONValueTypeMapOfFlagJSONValue
 		return nil

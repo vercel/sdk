@@ -22,6 +22,17 @@ type CreateOrTransferDomainRequestBody3 struct {
 	ExpectedPrice *float64 `json:"expectedPrice,omitempty"`
 }
 
+func (c CreateOrTransferDomainRequestBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateOrTransferDomainRequestBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "method"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateOrTransferDomainRequestBody3) GetName() string {
 	if o == nil {
 		return ""
@@ -60,6 +71,17 @@ type CreateOrTransferDomainRequestBody2 struct {
 	Token *string `json:"token,omitempty"`
 }
 
+func (c CreateOrTransferDomainRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateOrTransferDomainRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "method"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateOrTransferDomainRequestBody2) GetName() string {
 	if o == nil {
 		return ""
@@ -90,6 +112,17 @@ type CreateOrTransferDomainRequestBody1 struct {
 	Zone       *bool `json:"zone,omitempty"`
 	// The domain operation to perform. It can be either `add` or `transfer-in`.
 	Method *string `json:"method,omitempty"`
+}
+
+func (c CreateOrTransferDomainRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateOrTransferDomainRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateOrTransferDomainRequestBody1) GetName() string {
@@ -166,23 +199,23 @@ func CreateCreateOrTransferDomainRequestBodyCreateOrTransferDomainRequestBody3(c
 func (u *CreateOrTransferDomainRequestBody) UnmarshalJSON(data []byte) error {
 
 	var createOrTransferDomainRequestBody2 CreateOrTransferDomainRequestBody2 = CreateOrTransferDomainRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &createOrTransferDomainRequestBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createOrTransferDomainRequestBody2, "", true, nil); err == nil {
 		u.CreateOrTransferDomainRequestBody2 = &createOrTransferDomainRequestBody2
 		u.Type = CreateOrTransferDomainRequestBodyTypeCreateOrTransferDomainRequestBody2
 		return nil
 	}
 
-	var createOrTransferDomainRequestBody1 CreateOrTransferDomainRequestBody1 = CreateOrTransferDomainRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &createOrTransferDomainRequestBody1, "", true, true); err == nil {
-		u.CreateOrTransferDomainRequestBody1 = &createOrTransferDomainRequestBody1
-		u.Type = CreateOrTransferDomainRequestBodyTypeCreateOrTransferDomainRequestBody1
+	var createOrTransferDomainRequestBody3 CreateOrTransferDomainRequestBody3 = CreateOrTransferDomainRequestBody3{}
+	if err := utils.UnmarshalJSON(data, &createOrTransferDomainRequestBody3, "", true, nil); err == nil {
+		u.CreateOrTransferDomainRequestBody3 = &createOrTransferDomainRequestBody3
+		u.Type = CreateOrTransferDomainRequestBodyTypeCreateOrTransferDomainRequestBody3
 		return nil
 	}
 
-	var createOrTransferDomainRequestBody3 CreateOrTransferDomainRequestBody3 = CreateOrTransferDomainRequestBody3{}
-	if err := utils.UnmarshalJSON(data, &createOrTransferDomainRequestBody3, "", true, true); err == nil {
-		u.CreateOrTransferDomainRequestBody3 = &createOrTransferDomainRequestBody3
-		u.Type = CreateOrTransferDomainRequestBodyTypeCreateOrTransferDomainRequestBody3
+	var createOrTransferDomainRequestBody1 CreateOrTransferDomainRequestBody1 = CreateOrTransferDomainRequestBody1{}
+	if err := utils.UnmarshalJSON(data, &createOrTransferDomainRequestBody1, "", true, nil); err == nil {
+		u.CreateOrTransferDomainRequestBody1 = &createOrTransferDomainRequestBody1
+		u.Type = CreateOrTransferDomainRequestBodyTypeCreateOrTransferDomainRequestBody1
 		return nil
 	}
 

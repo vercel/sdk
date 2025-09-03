@@ -66,3 +66,68 @@ test("Integrations Get Configuration Products", async () => {
     },
   });
 });
+
+test("Integrations Create Integration Store Direct", async () => {
+  const testHttpClient = createTestHTTPClient("createIntegrationStoreDirect");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.integrations.createIntegrationStoreDirect({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      name: "my-dev-database",
+      integrationConfigurationId: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
+      integrationProductIdOrSlug: "iap_postgres_db",
+      metadata: {
+        "environment": "development",
+        "project": "my-app",
+        "tags": [
+          "database",
+          "postgres",
+        ],
+      },
+      externalId: "dev-db-001",
+      protocolSettings: {
+        "experimentation": {
+          "edgeConfigSyncingEnabled": true,
+        },
+      },
+      source: "api",
+      billingPlanId: "bp_abc123def456",
+      paymentMethodId: "pm_1AbcDefGhiJklMno",
+      prepaymentAmountCents: 5000,
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    store: {
+      projectsMetadata: [
+        {
+          id: "<id>",
+          projectId: "<id>",
+          name: "<value>",
+          environments: [],
+          envVarPrefix: "<value>",
+          environmentVariables: [
+            "<value 1>",
+            "<value 2>",
+          ],
+        },
+      ],
+      usageQuotaExceeded: true,
+      status: "available",
+      externalResourceId: "<id>",
+      product: {
+        value: {
+          atBRANDAt7822: {},
+        },
+      },
+      secrets: [],
+    },
+  });
+});

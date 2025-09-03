@@ -151,14 +151,14 @@ func CreateRemoveProjectEnvTargetUnion3RemoveProjectEnvTargetEnum6(removeProject
 func (u *RemoveProjectEnvTargetUnion3) UnmarshalJSON(data []byte) error {
 
 	var arrayOfRemoveProjectEnvTargetEnum5 []RemoveProjectEnvTargetEnum5 = []RemoveProjectEnvTargetEnum5{}
-	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvTargetEnum5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvTargetEnum5, "", true, nil); err == nil {
 		u.ArrayOfRemoveProjectEnvTargetEnum5 = arrayOfRemoveProjectEnvTargetEnum5
 		u.Type = RemoveProjectEnvTargetUnion3TypeArrayOfRemoveProjectEnvTargetEnum5
 		return nil
 	}
 
 	var removeProjectEnvTargetEnum6 RemoveProjectEnvTargetEnum6 = RemoveProjectEnvTargetEnum6("")
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvTargetEnum6, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvTargetEnum6, "", true, nil); err == nil {
 		u.RemoveProjectEnvTargetEnum6 = &removeProjectEnvTargetEnum6
 		u.Type = RemoveProjectEnvTargetUnion3TypeRemoveProjectEnvTargetEnum6
 		return nil
@@ -183,10 +183,10 @@ type RemoveProjectEnvType3 string
 
 const (
 	RemoveProjectEnvType3System    RemoveProjectEnvType3 = "system"
-	RemoveProjectEnvType3Secret    RemoveProjectEnvType3 = "secret"
 	RemoveProjectEnvType3Encrypted RemoveProjectEnvType3 = "encrypted"
 	RemoveProjectEnvType3Plain     RemoveProjectEnvType3 = "plain"
 	RemoveProjectEnvType3Sensitive RemoveProjectEnvType3 = "sensitive"
+	RemoveProjectEnvType3Secret    RemoveProjectEnvType3 = "secret"
 )
 
 func (e RemoveProjectEnvType3) ToPointer() *RemoveProjectEnvType3 {
@@ -200,13 +200,13 @@ func (e *RemoveProjectEnvType3) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = RemoveProjectEnvType3(v)
 		return nil
 	default:
@@ -240,6 +240,17 @@ func (e *RemoveProjectEnvTypeFlagsConnectionString3) UnmarshalJSON(data []byte) 
 type RemoveProjectEnvContentHintFlagsConnectionString3 struct {
 	Type      RemoveProjectEnvTypeFlagsConnectionString3 `json:"type"`
 	ProjectID string                                     `json:"projectId"`
+}
+
+func (r RemoveProjectEnvContentHintFlagsConnectionString3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintFlagsConnectionString3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintFlagsConnectionString3) GetType() RemoveProjectEnvTypeFlagsConnectionString3 {
@@ -285,6 +296,17 @@ type RemoveProjectEnvContentHintIntegrationStoreSecret3 struct {
 	IntegrationID              string                                      `json:"integrationId"`
 	IntegrationProductID       string                                      `json:"integrationProductId"`
 	IntegrationConfigurationID string                                      `json:"integrationConfigurationId"`
+}
+
+func (r RemoveProjectEnvContentHintIntegrationStoreSecret3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintIntegrationStoreSecret3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintIntegrationStoreSecret3) GetType() RemoveProjectEnvTypeIntegrationStoreSecret3 {
@@ -350,6 +372,17 @@ type RemoveProjectEnvContentHintPostgresURLNoSsl3 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresURLNoSsl3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURLNoSsl3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresURLNoSsl3) GetType() RemoveProjectEnvTypePostgresURLNoSsl3 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresURLNoSsl3("")
@@ -390,6 +423,17 @@ func (e *RemoveProjectEnvTypePostgresDatabase3) UnmarshalJSON(data []byte) error
 type RemoveProjectEnvContentHintPostgresDatabase3 struct {
 	Type    RemoveProjectEnvTypePostgresDatabase3 `json:"type"`
 	StoreID string                                `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresDatabase3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresDatabase3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresDatabase3) GetType() RemoveProjectEnvTypePostgresDatabase3 {
@@ -434,6 +478,17 @@ type RemoveProjectEnvContentHintPostgresPassword3 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresPassword3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresPassword3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresPassword3) GetType() RemoveProjectEnvTypePostgresPassword3 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresPassword3("")
@@ -474,6 +529,17 @@ func (e *RemoveProjectEnvTypePostgresHost3) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintPostgresHost3 struct {
 	Type    RemoveProjectEnvTypePostgresHost3 `json:"type"`
 	StoreID string                            `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresHost3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresHost3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresHost3) GetType() RemoveProjectEnvTypePostgresHost3 {
@@ -518,6 +584,17 @@ type RemoveProjectEnvContentHintPostgresUser3 struct {
 	StoreID string                            `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresUser3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresUser3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresUser3) GetType() RemoveProjectEnvTypePostgresUser3 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresUser3("")
@@ -558,6 +635,17 @@ func (e *RemoveProjectEnvTypePostgresPrismaURL3) UnmarshalJSON(data []byte) erro
 type RemoveProjectEnvContentHintPostgresPrismaURL3 struct {
 	Type    RemoveProjectEnvTypePostgresPrismaURL3 `json:"type"`
 	StoreID string                                 `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresPrismaURL3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresPrismaURL3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresPrismaURL3) GetType() RemoveProjectEnvTypePostgresPrismaURL3 {
@@ -602,6 +690,17 @@ type RemoveProjectEnvContentHintPostgresURLNonPooling3 struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresURLNonPooling3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURLNonPooling3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresURLNonPooling3) GetType() RemoveProjectEnvTypePostgresURLNonPooling3 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresURLNonPooling3("")
@@ -642,6 +741,17 @@ func (e *RemoveProjectEnvTypePostgresURL3) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintPostgresURL3 struct {
 	Type    RemoveProjectEnvTypePostgresURL3 `json:"type"`
 	StoreID string                           `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresURL3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURL3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresURL3) GetType() RemoveProjectEnvTypePostgresURL3 {
@@ -686,6 +796,17 @@ type RemoveProjectEnvContentHintBlobReadWriteToken3 struct {
 	StoreID string                                  `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintBlobReadWriteToken3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintBlobReadWriteToken3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintBlobReadWriteToken3) GetType() RemoveProjectEnvTypeBlobReadWriteToken3 {
 	if o == nil {
 		return RemoveProjectEnvTypeBlobReadWriteToken3("")
@@ -726,6 +847,17 @@ func (e *RemoveProjectEnvTypeRedisRestAPIReadOnlyToken3) UnmarshalJSON(data []by
 type RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 struct {
 	Type    RemoveProjectEnvTypeRedisRestAPIReadOnlyToken3 `json:"type"`
 	StoreID string                                         `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3) GetType() RemoveProjectEnvTypeRedisRestAPIReadOnlyToken3 {
@@ -770,6 +902,17 @@ type RemoveProjectEnvContentHintRedisRestAPIToken3 struct {
 	StoreID string                                 `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintRedisRestAPIToken3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIToken3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintRedisRestAPIToken3) GetType() RemoveProjectEnvTypeRedisRestAPIToken3 {
 	if o == nil {
 		return RemoveProjectEnvTypeRedisRestAPIToken3("")
@@ -812,6 +955,17 @@ type RemoveProjectEnvContentHintRedisRestAPIURL3 struct {
 	StoreID string                               `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintRedisRestAPIURL3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIURL3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintRedisRestAPIURL3) GetType() RemoveProjectEnvTypeRedisRestAPIURL3 {
 	if o == nil {
 		return RemoveProjectEnvTypeRedisRestAPIURL3("")
@@ -852,6 +1006,17 @@ func (e *RemoveProjectEnvTypeRedisURL3) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintRedisURL3 struct {
 	Type    RemoveProjectEnvTypeRedisURL3 `json:"type"`
 	StoreID string                        `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintRedisURL3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisURL3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintRedisURL3) GetType() RemoveProjectEnvTypeRedisURL3 {
@@ -1045,108 +1210,108 @@ func CreateRemoveProjectEnvContentHintUnion3RemoveProjectEnvContentHintFlagsConn
 
 func (u *RemoveProjectEnvContentHintUnion3) UnmarshalJSON(data []byte) error {
 
-	var removeProjectEnvContentHintPostgresURLNonPooling3 RemoveProjectEnvContentHintPostgresURLNonPooling3 = RemoveProjectEnvContentHintPostgresURLNonPooling3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling3, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNonPooling3 = &removeProjectEnvContentHintPostgresURLNonPooling3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNonPooling3
+	var removeProjectEnvContentHintIntegrationStoreSecret3 RemoveProjectEnvContentHintIntegrationStoreSecret3 = RemoveProjectEnvContentHintIntegrationStoreSecret3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret3, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintIntegrationStoreSecret3 = &removeProjectEnvContentHintIntegrationStoreSecret3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintIntegrationStoreSecret3
 		return nil
 	}
 
-	var removeProjectEnvContentHintPostgresPassword3 RemoveProjectEnvContentHintPostgresPassword3 = RemoveProjectEnvContentHintPostgresPassword3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword3, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPassword3 = &removeProjectEnvContentHintPostgresPassword3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPassword3
+	var removeProjectEnvContentHintRedisURL3 RemoveProjectEnvContentHintRedisURL3 = RemoveProjectEnvContentHintRedisURL3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL3, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintRedisURL3 = &removeProjectEnvContentHintRedisURL3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisURL3
+		return nil
+	}
+
+	var removeProjectEnvContentHintRedisRestAPIURL3 RemoveProjectEnvContentHintRedisRestAPIURL3 = RemoveProjectEnvContentHintRedisRestAPIURL3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL3, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintRedisRestAPIURL3 = &removeProjectEnvContentHintRedisRestAPIURL3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIURL3
 		return nil
 	}
 
 	var removeProjectEnvContentHintRedisRestAPIToken3 RemoveProjectEnvContentHintRedisRestAPIToken3 = RemoveProjectEnvContentHintRedisRestAPIToken3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintRedisRestAPIToken3 = &removeProjectEnvContentHintRedisRestAPIToken3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIToken3
 		return nil
 	}
 
 	var removeProjectEnvContentHintRedisRestAPIReadOnlyToken3 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 = RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3 = &removeProjectEnvContentHintRedisRestAPIReadOnlyToken3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken3
 		return nil
 	}
 
 	var removeProjectEnvContentHintBlobReadWriteToken3 RemoveProjectEnvContentHintBlobReadWriteToken3 = RemoveProjectEnvContentHintBlobReadWriteToken3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintBlobReadWriteToken3 = &removeProjectEnvContentHintBlobReadWriteToken3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintBlobReadWriteToken3
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresURL3 RemoveProjectEnvContentHintPostgresURL3 = RemoveProjectEnvContentHintPostgresURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresURL3 = &removeProjectEnvContentHintPostgresURL3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURL3
 		return nil
 	}
 
-	var removeProjectEnvContentHintRedisRestAPIURL3 RemoveProjectEnvContentHintRedisRestAPIURL3 = RemoveProjectEnvContentHintRedisRestAPIURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL3, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIURL3 = &removeProjectEnvContentHintRedisRestAPIURL3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisRestAPIURL3
-		return nil
-	}
-
-	var removeProjectEnvContentHintPostgresUser3 RemoveProjectEnvContentHintPostgresUser3 = RemoveProjectEnvContentHintPostgresUser3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser3, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresUser3 = &removeProjectEnvContentHintPostgresUser3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresUser3
-		return nil
-	}
-
-	var removeProjectEnvContentHintRedisURL3 RemoveProjectEnvContentHintRedisURL3 = RemoveProjectEnvContentHintRedisURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL3, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintRedisURL3 = &removeProjectEnvContentHintRedisURL3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintRedisURL3
-		return nil
-	}
-
-	var removeProjectEnvContentHintPostgresHost3 RemoveProjectEnvContentHintPostgresHost3 = RemoveProjectEnvContentHintPostgresHost3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost3, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresHost3 = &removeProjectEnvContentHintPostgresHost3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresHost3
+	var removeProjectEnvContentHintPostgresURLNonPooling3 RemoveProjectEnvContentHintPostgresURLNonPooling3 = RemoveProjectEnvContentHintPostgresURLNonPooling3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling3, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresURLNonPooling3 = &removeProjectEnvContentHintPostgresURLNonPooling3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNonPooling3
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresPrismaURL3 RemoveProjectEnvContentHintPostgresPrismaURL3 = RemoveProjectEnvContentHintPostgresPrismaURL3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresPrismaURL3 = &removeProjectEnvContentHintPostgresPrismaURL3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPrismaURL3
 		return nil
 	}
 
+	var removeProjectEnvContentHintPostgresUser3 RemoveProjectEnvContentHintPostgresUser3 = RemoveProjectEnvContentHintPostgresUser3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser3, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresUser3 = &removeProjectEnvContentHintPostgresUser3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresUser3
+		return nil
+	}
+
+	var removeProjectEnvContentHintPostgresHost3 RemoveProjectEnvContentHintPostgresHost3 = RemoveProjectEnvContentHintPostgresHost3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost3, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresHost3 = &removeProjectEnvContentHintPostgresHost3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresHost3
+		return nil
+	}
+
+	var removeProjectEnvContentHintPostgresPassword3 RemoveProjectEnvContentHintPostgresPassword3 = RemoveProjectEnvContentHintPostgresPassword3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword3, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresPassword3 = &removeProjectEnvContentHintPostgresPassword3
+		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresPassword3
+		return nil
+	}
+
 	var removeProjectEnvContentHintPostgresDatabase3 RemoveProjectEnvContentHintPostgresDatabase3 = RemoveProjectEnvContentHintPostgresDatabase3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresDatabase3 = &removeProjectEnvContentHintPostgresDatabase3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresDatabase3
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresURLNoSsl3 RemoveProjectEnvContentHintPostgresURLNoSsl3 = RemoveProjectEnvContentHintPostgresURLNoSsl3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresURLNoSsl3 = &removeProjectEnvContentHintPostgresURLNoSsl3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintPostgresURLNoSsl3
 		return nil
 	}
 
 	var removeProjectEnvContentHintFlagsConnectionString3 RemoveProjectEnvContentHintFlagsConnectionString3 = RemoveProjectEnvContentHintFlagsConnectionString3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString3, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintFlagsConnectionString3 = &removeProjectEnvContentHintFlagsConnectionString3
 		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintFlagsConnectionString3
-		return nil
-	}
-
-	var removeProjectEnvContentHintIntegrationStoreSecret3 RemoveProjectEnvContentHintIntegrationStoreSecret3 = RemoveProjectEnvContentHintIntegrationStoreSecret3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret3, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintIntegrationStoreSecret3 = &removeProjectEnvContentHintIntegrationStoreSecret3
-		u.Type = RemoveProjectEnvContentHintUnion3TypeRemoveProjectEnvContentHintIntegrationStoreSecret3
 		return nil
 	}
 
@@ -1247,6 +1412,17 @@ type RemoveProjectEnvInternalContentHint3 struct {
 	EncryptedValue string `json:"encryptedValue"`
 }
 
+func (r RemoveProjectEnvInternalContentHint3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvInternalContentHint3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "encryptedValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvInternalContentHint3) GetType() RemoveProjectEnvTypeFlagsSecret3 {
 	if o == nil {
 		return RemoveProjectEnvTypeFlagsSecret3("")
@@ -1284,6 +1460,17 @@ type RemoveProjectEnvResponseBody3 struct {
 	InternalContentHint  *RemoveProjectEnvInternalContentHint3 `json:"internalContentHint,omitempty"`
 	Comment              *string                               `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                              `json:"customEnvironmentIds,omitempty"`
+}
+
+func (r RemoveProjectEnvResponseBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvResponseBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "value", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody3) GetTarget() *RemoveProjectEnvTargetUnion3 {
@@ -1519,14 +1706,14 @@ func CreateRemoveProjectEnvTargetUnion2RemoveProjectEnvTargetEnum4(removeProject
 func (u *RemoveProjectEnvTargetUnion2) UnmarshalJSON(data []byte) error {
 
 	var arrayOfRemoveProjectEnvTargetEnum3 []RemoveProjectEnvTargetEnum3 = []RemoveProjectEnvTargetEnum3{}
-	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvTargetEnum3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvTargetEnum3, "", true, nil); err == nil {
 		u.ArrayOfRemoveProjectEnvTargetEnum3 = arrayOfRemoveProjectEnvTargetEnum3
 		u.Type = RemoveProjectEnvTargetUnion2TypeArrayOfRemoveProjectEnvTargetEnum3
 		return nil
 	}
 
 	var removeProjectEnvTargetEnum4 RemoveProjectEnvTargetEnum4 = RemoveProjectEnvTargetEnum4("")
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvTargetEnum4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvTargetEnum4, "", true, nil); err == nil {
 		u.RemoveProjectEnvTargetEnum4 = &removeProjectEnvTargetEnum4
 		u.Type = RemoveProjectEnvTargetUnion2TypeRemoveProjectEnvTargetEnum4
 		return nil
@@ -1551,10 +1738,10 @@ type RemoveProjectEnvType2 string
 
 const (
 	RemoveProjectEnvType2System    RemoveProjectEnvType2 = "system"
-	RemoveProjectEnvType2Secret    RemoveProjectEnvType2 = "secret"
 	RemoveProjectEnvType2Encrypted RemoveProjectEnvType2 = "encrypted"
 	RemoveProjectEnvType2Plain     RemoveProjectEnvType2 = "plain"
 	RemoveProjectEnvType2Sensitive RemoveProjectEnvType2 = "sensitive"
+	RemoveProjectEnvType2Secret    RemoveProjectEnvType2 = "secret"
 )
 
 func (e RemoveProjectEnvType2) ToPointer() *RemoveProjectEnvType2 {
@@ -1568,13 +1755,13 @@ func (e *RemoveProjectEnvType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = RemoveProjectEnvType2(v)
 		return nil
 	default:
@@ -1608,6 +1795,17 @@ func (e *RemoveProjectEnvTypeFlagsConnectionString2) UnmarshalJSON(data []byte) 
 type RemoveProjectEnvContentHintFlagsConnectionString2 struct {
 	Type      RemoveProjectEnvTypeFlagsConnectionString2 `json:"type"`
 	ProjectID string                                     `json:"projectId"`
+}
+
+func (r RemoveProjectEnvContentHintFlagsConnectionString2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintFlagsConnectionString2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintFlagsConnectionString2) GetType() RemoveProjectEnvTypeFlagsConnectionString2 {
@@ -1653,6 +1851,17 @@ type RemoveProjectEnvContentHintIntegrationStoreSecret2 struct {
 	IntegrationID              string                                      `json:"integrationId"`
 	IntegrationProductID       string                                      `json:"integrationProductId"`
 	IntegrationConfigurationID string                                      `json:"integrationConfigurationId"`
+}
+
+func (r RemoveProjectEnvContentHintIntegrationStoreSecret2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintIntegrationStoreSecret2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintIntegrationStoreSecret2) GetType() RemoveProjectEnvTypeIntegrationStoreSecret2 {
@@ -1718,6 +1927,17 @@ type RemoveProjectEnvContentHintPostgresURLNoSsl2 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresURLNoSsl2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURLNoSsl2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresURLNoSsl2) GetType() RemoveProjectEnvTypePostgresURLNoSsl2 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresURLNoSsl2("")
@@ -1758,6 +1978,17 @@ func (e *RemoveProjectEnvTypePostgresDatabase2) UnmarshalJSON(data []byte) error
 type RemoveProjectEnvContentHintPostgresDatabase2 struct {
 	Type    RemoveProjectEnvTypePostgresDatabase2 `json:"type"`
 	StoreID string                                `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresDatabase2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresDatabase2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresDatabase2) GetType() RemoveProjectEnvTypePostgresDatabase2 {
@@ -1802,6 +2033,17 @@ type RemoveProjectEnvContentHintPostgresPassword2 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresPassword2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresPassword2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresPassword2) GetType() RemoveProjectEnvTypePostgresPassword2 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresPassword2("")
@@ -1842,6 +2084,17 @@ func (e *RemoveProjectEnvTypePostgresHost2) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintPostgresHost2 struct {
 	Type    RemoveProjectEnvTypePostgresHost2 `json:"type"`
 	StoreID string                            `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresHost2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresHost2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresHost2) GetType() RemoveProjectEnvTypePostgresHost2 {
@@ -1886,6 +2139,17 @@ type RemoveProjectEnvContentHintPostgresUser2 struct {
 	StoreID string                            `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresUser2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresUser2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresUser2) GetType() RemoveProjectEnvTypePostgresUser2 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresUser2("")
@@ -1926,6 +2190,17 @@ func (e *RemoveProjectEnvTypePostgresPrismaURL2) UnmarshalJSON(data []byte) erro
 type RemoveProjectEnvContentHintPostgresPrismaURL2 struct {
 	Type    RemoveProjectEnvTypePostgresPrismaURL2 `json:"type"`
 	StoreID string                                 `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresPrismaURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresPrismaURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresPrismaURL2) GetType() RemoveProjectEnvTypePostgresPrismaURL2 {
@@ -1970,6 +2245,17 @@ type RemoveProjectEnvContentHintPostgresURLNonPooling2 struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresURLNonPooling2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURLNonPooling2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresURLNonPooling2) GetType() RemoveProjectEnvTypePostgresURLNonPooling2 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresURLNonPooling2("")
@@ -2010,6 +2296,17 @@ func (e *RemoveProjectEnvTypePostgresURL2) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintPostgresURL2 struct {
 	Type    RemoveProjectEnvTypePostgresURL2 `json:"type"`
 	StoreID string                           `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresURL2) GetType() RemoveProjectEnvTypePostgresURL2 {
@@ -2054,6 +2351,17 @@ type RemoveProjectEnvContentHintBlobReadWriteToken2 struct {
 	StoreID string                                  `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintBlobReadWriteToken2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintBlobReadWriteToken2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintBlobReadWriteToken2) GetType() RemoveProjectEnvTypeBlobReadWriteToken2 {
 	if o == nil {
 		return RemoveProjectEnvTypeBlobReadWriteToken2("")
@@ -2094,6 +2402,17 @@ func (e *RemoveProjectEnvTypeRedisRestAPIReadOnlyToken2) UnmarshalJSON(data []by
 type RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 struct {
 	Type    RemoveProjectEnvTypeRedisRestAPIReadOnlyToken2 `json:"type"`
 	StoreID string                                         `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2) GetType() RemoveProjectEnvTypeRedisRestAPIReadOnlyToken2 {
@@ -2138,6 +2457,17 @@ type RemoveProjectEnvContentHintRedisRestAPIToken2 struct {
 	StoreID string                                 `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintRedisRestAPIToken2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIToken2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintRedisRestAPIToken2) GetType() RemoveProjectEnvTypeRedisRestAPIToken2 {
 	if o == nil {
 		return RemoveProjectEnvTypeRedisRestAPIToken2("")
@@ -2180,6 +2510,17 @@ type RemoveProjectEnvContentHintRedisRestAPIURL2 struct {
 	StoreID string                               `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintRedisRestAPIURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintRedisRestAPIURL2) GetType() RemoveProjectEnvTypeRedisRestAPIURL2 {
 	if o == nil {
 		return RemoveProjectEnvTypeRedisRestAPIURL2("")
@@ -2220,6 +2561,17 @@ func (e *RemoveProjectEnvTypeRedisURL2) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintRedisURL2 struct {
 	Type    RemoveProjectEnvTypeRedisURL2 `json:"type"`
 	StoreID string                        `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintRedisURL2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisURL2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintRedisURL2) GetType() RemoveProjectEnvTypeRedisURL2 {
@@ -2413,108 +2765,108 @@ func CreateRemoveProjectEnvContentHintUnion2RemoveProjectEnvContentHintFlagsConn
 
 func (u *RemoveProjectEnvContentHintUnion2) UnmarshalJSON(data []byte) error {
 
-	var removeProjectEnvContentHintPostgresURLNonPooling2 RemoveProjectEnvContentHintPostgresURLNonPooling2 = RemoveProjectEnvContentHintPostgresURLNonPooling2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling2, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNonPooling2 = &removeProjectEnvContentHintPostgresURLNonPooling2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNonPooling2
+	var removeProjectEnvContentHintIntegrationStoreSecret2 RemoveProjectEnvContentHintIntegrationStoreSecret2 = RemoveProjectEnvContentHintIntegrationStoreSecret2{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret2, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintIntegrationStoreSecret2 = &removeProjectEnvContentHintIntegrationStoreSecret2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintIntegrationStoreSecret2
 		return nil
 	}
 
-	var removeProjectEnvContentHintPostgresPassword2 RemoveProjectEnvContentHintPostgresPassword2 = RemoveProjectEnvContentHintPostgresPassword2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword2, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPassword2 = &removeProjectEnvContentHintPostgresPassword2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPassword2
+	var removeProjectEnvContentHintRedisURL2 RemoveProjectEnvContentHintRedisURL2 = RemoveProjectEnvContentHintRedisURL2{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL2, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintRedisURL2 = &removeProjectEnvContentHintRedisURL2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisURL2
+		return nil
+	}
+
+	var removeProjectEnvContentHintRedisRestAPIURL2 RemoveProjectEnvContentHintRedisRestAPIURL2 = RemoveProjectEnvContentHintRedisRestAPIURL2{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL2, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintRedisRestAPIURL2 = &removeProjectEnvContentHintRedisRestAPIURL2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIURL2
 		return nil
 	}
 
 	var removeProjectEnvContentHintRedisRestAPIToken2 RemoveProjectEnvContentHintRedisRestAPIToken2 = RemoveProjectEnvContentHintRedisRestAPIToken2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintRedisRestAPIToken2 = &removeProjectEnvContentHintRedisRestAPIToken2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIToken2
 		return nil
 	}
 
 	var removeProjectEnvContentHintRedisRestAPIReadOnlyToken2 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 = RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2 = &removeProjectEnvContentHintRedisRestAPIReadOnlyToken2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken2
 		return nil
 	}
 
 	var removeProjectEnvContentHintBlobReadWriteToken2 RemoveProjectEnvContentHintBlobReadWriteToken2 = RemoveProjectEnvContentHintBlobReadWriteToken2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintBlobReadWriteToken2 = &removeProjectEnvContentHintBlobReadWriteToken2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintBlobReadWriteToken2
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresURL2 RemoveProjectEnvContentHintPostgresURL2 = RemoveProjectEnvContentHintPostgresURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresURL2 = &removeProjectEnvContentHintPostgresURL2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURL2
 		return nil
 	}
 
-	var removeProjectEnvContentHintRedisRestAPIURL2 RemoveProjectEnvContentHintRedisRestAPIURL2 = RemoveProjectEnvContentHintRedisRestAPIURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL2, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIURL2 = &removeProjectEnvContentHintRedisRestAPIURL2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisRestAPIURL2
-		return nil
-	}
-
-	var removeProjectEnvContentHintPostgresUser2 RemoveProjectEnvContentHintPostgresUser2 = RemoveProjectEnvContentHintPostgresUser2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser2, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresUser2 = &removeProjectEnvContentHintPostgresUser2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresUser2
-		return nil
-	}
-
-	var removeProjectEnvContentHintRedisURL2 RemoveProjectEnvContentHintRedisURL2 = RemoveProjectEnvContentHintRedisURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL2, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintRedisURL2 = &removeProjectEnvContentHintRedisURL2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintRedisURL2
-		return nil
-	}
-
-	var removeProjectEnvContentHintPostgresHost2 RemoveProjectEnvContentHintPostgresHost2 = RemoveProjectEnvContentHintPostgresHost2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost2, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresHost2 = &removeProjectEnvContentHintPostgresHost2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresHost2
+	var removeProjectEnvContentHintPostgresURLNonPooling2 RemoveProjectEnvContentHintPostgresURLNonPooling2 = RemoveProjectEnvContentHintPostgresURLNonPooling2{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling2, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresURLNonPooling2 = &removeProjectEnvContentHintPostgresURLNonPooling2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNonPooling2
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresPrismaURL2 RemoveProjectEnvContentHintPostgresPrismaURL2 = RemoveProjectEnvContentHintPostgresPrismaURL2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresPrismaURL2 = &removeProjectEnvContentHintPostgresPrismaURL2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPrismaURL2
 		return nil
 	}
 
+	var removeProjectEnvContentHintPostgresUser2 RemoveProjectEnvContentHintPostgresUser2 = RemoveProjectEnvContentHintPostgresUser2{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser2, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresUser2 = &removeProjectEnvContentHintPostgresUser2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresUser2
+		return nil
+	}
+
+	var removeProjectEnvContentHintPostgresHost2 RemoveProjectEnvContentHintPostgresHost2 = RemoveProjectEnvContentHintPostgresHost2{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost2, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresHost2 = &removeProjectEnvContentHintPostgresHost2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresHost2
+		return nil
+	}
+
+	var removeProjectEnvContentHintPostgresPassword2 RemoveProjectEnvContentHintPostgresPassword2 = RemoveProjectEnvContentHintPostgresPassword2{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword2, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresPassword2 = &removeProjectEnvContentHintPostgresPassword2
+		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresPassword2
+		return nil
+	}
+
 	var removeProjectEnvContentHintPostgresDatabase2 RemoveProjectEnvContentHintPostgresDatabase2 = RemoveProjectEnvContentHintPostgresDatabase2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresDatabase2 = &removeProjectEnvContentHintPostgresDatabase2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresDatabase2
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresURLNoSsl2 RemoveProjectEnvContentHintPostgresURLNoSsl2 = RemoveProjectEnvContentHintPostgresURLNoSsl2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresURLNoSsl2 = &removeProjectEnvContentHintPostgresURLNoSsl2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintPostgresURLNoSsl2
 		return nil
 	}
 
 	var removeProjectEnvContentHintFlagsConnectionString2 RemoveProjectEnvContentHintFlagsConnectionString2 = RemoveProjectEnvContentHintFlagsConnectionString2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString2, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintFlagsConnectionString2 = &removeProjectEnvContentHintFlagsConnectionString2
 		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintFlagsConnectionString2
-		return nil
-	}
-
-	var removeProjectEnvContentHintIntegrationStoreSecret2 RemoveProjectEnvContentHintIntegrationStoreSecret2 = RemoveProjectEnvContentHintIntegrationStoreSecret2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret2, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintIntegrationStoreSecret2 = &removeProjectEnvContentHintIntegrationStoreSecret2
-		u.Type = RemoveProjectEnvContentHintUnion2TypeRemoveProjectEnvContentHintIntegrationStoreSecret2
 		return nil
 	}
 
@@ -2615,6 +2967,17 @@ type RemoveProjectEnvInternalContentHint2 struct {
 	EncryptedValue string `json:"encryptedValue"`
 }
 
+func (r RemoveProjectEnvInternalContentHint2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvInternalContentHint2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "encryptedValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvInternalContentHint2) GetType() RemoveProjectEnvTypeFlagsSecret2 {
 	if o == nil {
 		return RemoveProjectEnvTypeFlagsSecret2("")
@@ -2653,6 +3016,17 @@ type RemoveProjectEnvResponseBody2 struct {
 	InternalContentHint  *RemoveProjectEnvInternalContentHint2 `json:"internalContentHint,omitempty"`
 	Comment              *string                               `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                              `json:"customEnvironmentIds,omitempty"`
+}
+
+func (r RemoveProjectEnvResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "value", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody2) GetSystem() *bool {
@@ -2895,14 +3269,14 @@ func CreateRemoveProjectEnvTargetUnion1RemoveProjectEnvTargetEnum2(removeProject
 func (u *RemoveProjectEnvTargetUnion1) UnmarshalJSON(data []byte) error {
 
 	var arrayOfRemoveProjectEnvTargetEnum1 []RemoveProjectEnvTargetEnum1 = []RemoveProjectEnvTargetEnum1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvTargetEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvTargetEnum1, "", true, nil); err == nil {
 		u.ArrayOfRemoveProjectEnvTargetEnum1 = arrayOfRemoveProjectEnvTargetEnum1
 		u.Type = RemoveProjectEnvTargetUnion1TypeArrayOfRemoveProjectEnvTargetEnum1
 		return nil
 	}
 
 	var removeProjectEnvTargetEnum2 RemoveProjectEnvTargetEnum2 = RemoveProjectEnvTargetEnum2("")
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvTargetEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvTargetEnum2, "", true, nil); err == nil {
 		u.RemoveProjectEnvTargetEnum2 = &removeProjectEnvTargetEnum2
 		u.Type = RemoveProjectEnvTargetUnion1TypeRemoveProjectEnvTargetEnum2
 		return nil
@@ -2927,10 +3301,10 @@ type RemoveProjectEnvType1 string
 
 const (
 	RemoveProjectEnvType1System    RemoveProjectEnvType1 = "system"
-	RemoveProjectEnvType1Secret    RemoveProjectEnvType1 = "secret"
 	RemoveProjectEnvType1Encrypted RemoveProjectEnvType1 = "encrypted"
 	RemoveProjectEnvType1Plain     RemoveProjectEnvType1 = "plain"
 	RemoveProjectEnvType1Sensitive RemoveProjectEnvType1 = "sensitive"
+	RemoveProjectEnvType1Secret    RemoveProjectEnvType1 = "secret"
 )
 
 func (e RemoveProjectEnvType1) ToPointer() *RemoveProjectEnvType1 {
@@ -2944,13 +3318,13 @@ func (e *RemoveProjectEnvType1) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = RemoveProjectEnvType1(v)
 		return nil
 	default:
@@ -2984,6 +3358,17 @@ func (e *RemoveProjectEnvTypeFlagsConnectionString1) UnmarshalJSON(data []byte) 
 type RemoveProjectEnvContentHintFlagsConnectionString1 struct {
 	Type      RemoveProjectEnvTypeFlagsConnectionString1 `json:"type"`
 	ProjectID string                                     `json:"projectId"`
+}
+
+func (r RemoveProjectEnvContentHintFlagsConnectionString1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintFlagsConnectionString1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintFlagsConnectionString1) GetType() RemoveProjectEnvTypeFlagsConnectionString1 {
@@ -3029,6 +3414,17 @@ type RemoveProjectEnvContentHintIntegrationStoreSecret1 struct {
 	IntegrationID              string                                      `json:"integrationId"`
 	IntegrationProductID       string                                      `json:"integrationProductId"`
 	IntegrationConfigurationID string                                      `json:"integrationConfigurationId"`
+}
+
+func (r RemoveProjectEnvContentHintIntegrationStoreSecret1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintIntegrationStoreSecret1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintIntegrationStoreSecret1) GetType() RemoveProjectEnvTypeIntegrationStoreSecret1 {
@@ -3094,6 +3490,17 @@ type RemoveProjectEnvContentHintPostgresURLNoSsl1 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresURLNoSsl1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURLNoSsl1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresURLNoSsl1) GetType() RemoveProjectEnvTypePostgresURLNoSsl1 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresURLNoSsl1("")
@@ -3134,6 +3541,17 @@ func (e *RemoveProjectEnvTypePostgresDatabase1) UnmarshalJSON(data []byte) error
 type RemoveProjectEnvContentHintPostgresDatabase1 struct {
 	Type    RemoveProjectEnvTypePostgresDatabase1 `json:"type"`
 	StoreID string                                `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresDatabase1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresDatabase1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresDatabase1) GetType() RemoveProjectEnvTypePostgresDatabase1 {
@@ -3178,6 +3596,17 @@ type RemoveProjectEnvContentHintPostgresPassword1 struct {
 	StoreID string                                `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresPassword1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresPassword1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresPassword1) GetType() RemoveProjectEnvTypePostgresPassword1 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresPassword1("")
@@ -3218,6 +3647,17 @@ func (e *RemoveProjectEnvTypePostgresHost1) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintPostgresHost1 struct {
 	Type    RemoveProjectEnvTypePostgresHost1 `json:"type"`
 	StoreID string                            `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresHost1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresHost1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresHost1) GetType() RemoveProjectEnvTypePostgresHost1 {
@@ -3262,6 +3702,17 @@ type RemoveProjectEnvContentHintPostgresUser1 struct {
 	StoreID string                            `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresUser1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresUser1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresUser1) GetType() RemoveProjectEnvTypePostgresUser1 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresUser1("")
@@ -3302,6 +3753,17 @@ func (e *RemoveProjectEnvTypePostgresPrismaURL1) UnmarshalJSON(data []byte) erro
 type RemoveProjectEnvContentHintPostgresPrismaURL1 struct {
 	Type    RemoveProjectEnvTypePostgresPrismaURL1 `json:"type"`
 	StoreID string                                 `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresPrismaURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresPrismaURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresPrismaURL1) GetType() RemoveProjectEnvTypePostgresPrismaURL1 {
@@ -3346,6 +3808,17 @@ type RemoveProjectEnvContentHintPostgresURLNonPooling1 struct {
 	StoreID string                                     `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintPostgresURLNonPooling1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURLNonPooling1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintPostgresURLNonPooling1) GetType() RemoveProjectEnvTypePostgresURLNonPooling1 {
 	if o == nil {
 		return RemoveProjectEnvTypePostgresURLNonPooling1("")
@@ -3386,6 +3859,17 @@ func (e *RemoveProjectEnvTypePostgresURL1) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintPostgresURL1 struct {
 	Type    RemoveProjectEnvTypePostgresURL1 `json:"type"`
 	StoreID string                           `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintPostgresURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintPostgresURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintPostgresURL1) GetType() RemoveProjectEnvTypePostgresURL1 {
@@ -3430,6 +3914,17 @@ type RemoveProjectEnvContentHintBlobReadWriteToken1 struct {
 	StoreID string                                  `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintBlobReadWriteToken1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintBlobReadWriteToken1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintBlobReadWriteToken1) GetType() RemoveProjectEnvTypeBlobReadWriteToken1 {
 	if o == nil {
 		return RemoveProjectEnvTypeBlobReadWriteToken1("")
@@ -3470,6 +3965,17 @@ func (e *RemoveProjectEnvTypeRedisRestAPIReadOnlyToken1) UnmarshalJSON(data []by
 type RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 struct {
 	Type    RemoveProjectEnvTypeRedisRestAPIReadOnlyToken1 `json:"type"`
 	StoreID string                                         `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1) GetType() RemoveProjectEnvTypeRedisRestAPIReadOnlyToken1 {
@@ -3514,6 +4020,17 @@ type RemoveProjectEnvContentHintRedisRestAPIToken1 struct {
 	StoreID string                                 `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintRedisRestAPIToken1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIToken1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintRedisRestAPIToken1) GetType() RemoveProjectEnvTypeRedisRestAPIToken1 {
 	if o == nil {
 		return RemoveProjectEnvTypeRedisRestAPIToken1("")
@@ -3556,6 +4073,17 @@ type RemoveProjectEnvContentHintRedisRestAPIURL1 struct {
 	StoreID string                               `json:"storeId"`
 }
 
+func (r RemoveProjectEnvContentHintRedisRestAPIURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisRestAPIURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvContentHintRedisRestAPIURL1) GetType() RemoveProjectEnvTypeRedisRestAPIURL1 {
 	if o == nil {
 		return RemoveProjectEnvTypeRedisRestAPIURL1("")
@@ -3596,6 +4124,17 @@ func (e *RemoveProjectEnvTypeRedisURL1) UnmarshalJSON(data []byte) error {
 type RemoveProjectEnvContentHintRedisURL1 struct {
 	Type    RemoveProjectEnvTypeRedisURL1 `json:"type"`
 	StoreID string                        `json:"storeId"`
+}
+
+func (r RemoveProjectEnvContentHintRedisURL1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvContentHintRedisURL1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvContentHintRedisURL1) GetType() RemoveProjectEnvTypeRedisURL1 {
@@ -3789,108 +4328,108 @@ func CreateRemoveProjectEnvContentHintUnion1RemoveProjectEnvContentHintFlagsConn
 
 func (u *RemoveProjectEnvContentHintUnion1) UnmarshalJSON(data []byte) error {
 
-	var removeProjectEnvContentHintPostgresURLNonPooling1 RemoveProjectEnvContentHintPostgresURLNonPooling1 = RemoveProjectEnvContentHintPostgresURLNonPooling1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling1, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresURLNonPooling1 = &removeProjectEnvContentHintPostgresURLNonPooling1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNonPooling1
+	var removeProjectEnvContentHintIntegrationStoreSecret1 RemoveProjectEnvContentHintIntegrationStoreSecret1 = RemoveProjectEnvContentHintIntegrationStoreSecret1{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret1, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintIntegrationStoreSecret1 = &removeProjectEnvContentHintIntegrationStoreSecret1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintIntegrationStoreSecret1
 		return nil
 	}
 
-	var removeProjectEnvContentHintPostgresPassword1 RemoveProjectEnvContentHintPostgresPassword1 = RemoveProjectEnvContentHintPostgresPassword1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword1, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresPassword1 = &removeProjectEnvContentHintPostgresPassword1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPassword1
+	var removeProjectEnvContentHintRedisURL1 RemoveProjectEnvContentHintRedisURL1 = RemoveProjectEnvContentHintRedisURL1{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL1, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintRedisURL1 = &removeProjectEnvContentHintRedisURL1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisURL1
+		return nil
+	}
+
+	var removeProjectEnvContentHintRedisRestAPIURL1 RemoveProjectEnvContentHintRedisRestAPIURL1 = RemoveProjectEnvContentHintRedisRestAPIURL1{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL1, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintRedisRestAPIURL1 = &removeProjectEnvContentHintRedisRestAPIURL1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIURL1
 		return nil
 	}
 
 	var removeProjectEnvContentHintRedisRestAPIToken1 RemoveProjectEnvContentHintRedisRestAPIToken1 = RemoveProjectEnvContentHintRedisRestAPIToken1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIToken1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintRedisRestAPIToken1 = &removeProjectEnvContentHintRedisRestAPIToken1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIToken1
 		return nil
 	}
 
 	var removeProjectEnvContentHintRedisRestAPIReadOnlyToken1 RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 = RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIReadOnlyToken1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1 = &removeProjectEnvContentHintRedisRestAPIReadOnlyToken1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIReadOnlyToken1
 		return nil
 	}
 
 	var removeProjectEnvContentHintBlobReadWriteToken1 RemoveProjectEnvContentHintBlobReadWriteToken1 = RemoveProjectEnvContentHintBlobReadWriteToken1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintBlobReadWriteToken1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintBlobReadWriteToken1 = &removeProjectEnvContentHintBlobReadWriteToken1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintBlobReadWriteToken1
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresURL1 RemoveProjectEnvContentHintPostgresURL1 = RemoveProjectEnvContentHintPostgresURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURL1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresURL1 = &removeProjectEnvContentHintPostgresURL1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURL1
 		return nil
 	}
 
-	var removeProjectEnvContentHintRedisRestAPIURL1 RemoveProjectEnvContentHintRedisRestAPIURL1 = RemoveProjectEnvContentHintRedisRestAPIURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisRestAPIURL1, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintRedisRestAPIURL1 = &removeProjectEnvContentHintRedisRestAPIURL1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisRestAPIURL1
-		return nil
-	}
-
-	var removeProjectEnvContentHintPostgresUser1 RemoveProjectEnvContentHintPostgresUser1 = RemoveProjectEnvContentHintPostgresUser1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser1, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresUser1 = &removeProjectEnvContentHintPostgresUser1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresUser1
-		return nil
-	}
-
-	var removeProjectEnvContentHintRedisURL1 RemoveProjectEnvContentHintRedisURL1 = RemoveProjectEnvContentHintRedisURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintRedisURL1, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintRedisURL1 = &removeProjectEnvContentHintRedisURL1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintRedisURL1
-		return nil
-	}
-
-	var removeProjectEnvContentHintPostgresHost1 RemoveProjectEnvContentHintPostgresHost1 = RemoveProjectEnvContentHintPostgresHost1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost1, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintPostgresHost1 = &removeProjectEnvContentHintPostgresHost1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresHost1
+	var removeProjectEnvContentHintPostgresURLNonPooling1 RemoveProjectEnvContentHintPostgresURLNonPooling1 = RemoveProjectEnvContentHintPostgresURLNonPooling1{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNonPooling1, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresURLNonPooling1 = &removeProjectEnvContentHintPostgresURLNonPooling1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNonPooling1
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresPrismaURL1 RemoveProjectEnvContentHintPostgresPrismaURL1 = RemoveProjectEnvContentHintPostgresPrismaURL1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPrismaURL1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresPrismaURL1 = &removeProjectEnvContentHintPostgresPrismaURL1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPrismaURL1
 		return nil
 	}
 
+	var removeProjectEnvContentHintPostgresUser1 RemoveProjectEnvContentHintPostgresUser1 = RemoveProjectEnvContentHintPostgresUser1{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresUser1, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresUser1 = &removeProjectEnvContentHintPostgresUser1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresUser1
+		return nil
+	}
+
+	var removeProjectEnvContentHintPostgresHost1 RemoveProjectEnvContentHintPostgresHost1 = RemoveProjectEnvContentHintPostgresHost1{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresHost1, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresHost1 = &removeProjectEnvContentHintPostgresHost1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresHost1
+		return nil
+	}
+
+	var removeProjectEnvContentHintPostgresPassword1 RemoveProjectEnvContentHintPostgresPassword1 = RemoveProjectEnvContentHintPostgresPassword1{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresPassword1, "", true, nil); err == nil {
+		u.RemoveProjectEnvContentHintPostgresPassword1 = &removeProjectEnvContentHintPostgresPassword1
+		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresPassword1
+		return nil
+	}
+
 	var removeProjectEnvContentHintPostgresDatabase1 RemoveProjectEnvContentHintPostgresDatabase1 = RemoveProjectEnvContentHintPostgresDatabase1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresDatabase1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresDatabase1 = &removeProjectEnvContentHintPostgresDatabase1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresDatabase1
 		return nil
 	}
 
 	var removeProjectEnvContentHintPostgresURLNoSsl1 RemoveProjectEnvContentHintPostgresURLNoSsl1 = RemoveProjectEnvContentHintPostgresURLNoSsl1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintPostgresURLNoSsl1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintPostgresURLNoSsl1 = &removeProjectEnvContentHintPostgresURLNoSsl1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintPostgresURLNoSsl1
 		return nil
 	}
 
 	var removeProjectEnvContentHintFlagsConnectionString1 RemoveProjectEnvContentHintFlagsConnectionString1 = RemoveProjectEnvContentHintFlagsConnectionString1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintFlagsConnectionString1, "", true, nil); err == nil {
 		u.RemoveProjectEnvContentHintFlagsConnectionString1 = &removeProjectEnvContentHintFlagsConnectionString1
 		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintFlagsConnectionString1
-		return nil
-	}
-
-	var removeProjectEnvContentHintIntegrationStoreSecret1 RemoveProjectEnvContentHintIntegrationStoreSecret1 = RemoveProjectEnvContentHintIntegrationStoreSecret1{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvContentHintIntegrationStoreSecret1, "", true, true); err == nil {
-		u.RemoveProjectEnvContentHintIntegrationStoreSecret1 = &removeProjectEnvContentHintIntegrationStoreSecret1
-		u.Type = RemoveProjectEnvContentHintUnion1TypeRemoveProjectEnvContentHintIntegrationStoreSecret1
 		return nil
 	}
 
@@ -3991,6 +4530,17 @@ type RemoveProjectEnvInternalContentHint1 struct {
 	EncryptedValue string `json:"encryptedValue"`
 }
 
+func (r RemoveProjectEnvInternalContentHint1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvInternalContentHint1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "encryptedValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoveProjectEnvInternalContentHint1) GetType() RemoveProjectEnvTypeFlagsSecret1 {
 	if o == nil {
 		return RemoveProjectEnvTypeFlagsSecret1("")
@@ -4028,6 +4578,17 @@ type RemoveProjectEnvResponseBody1 struct {
 	InternalContentHint  *RemoveProjectEnvInternalContentHint1 `json:"internalContentHint,omitempty"`
 	Comment              *string                               `json:"comment,omitempty"`
 	CustomEnvironmentIds []string                              `json:"customEnvironmentIds,omitempty"`
+}
+
+func (r RemoveProjectEnvResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoveProjectEnvResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type", "value", "key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemoveProjectEnvResponseBody1) GetTarget() *RemoveProjectEnvTargetUnion1 {
@@ -4216,22 +4777,22 @@ func CreateRemoveProjectEnvResponseBodyRemoveProjectEnvResponseBody3(removeProje
 
 func (u *RemoveProjectEnvResponseBody) UnmarshalJSON(data []byte) error {
 
-	var removeProjectEnvResponseBody3 RemoveProjectEnvResponseBody3 = RemoveProjectEnvResponseBody3{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvResponseBody3, "", true, true); err == nil {
-		u.RemoveProjectEnvResponseBody3 = &removeProjectEnvResponseBody3
-		u.Type = RemoveProjectEnvResponseBodyTypeRemoveProjectEnvResponseBody3
-		return nil
-	}
-
 	var removeProjectEnvResponseBody2 RemoveProjectEnvResponseBody2 = RemoveProjectEnvResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &removeProjectEnvResponseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvResponseBody2, "", true, nil); err == nil {
 		u.RemoveProjectEnvResponseBody2 = &removeProjectEnvResponseBody2
 		u.Type = RemoveProjectEnvResponseBodyTypeRemoveProjectEnvResponseBody2
 		return nil
 	}
 
+	var removeProjectEnvResponseBody3 RemoveProjectEnvResponseBody3 = RemoveProjectEnvResponseBody3{}
+	if err := utils.UnmarshalJSON(data, &removeProjectEnvResponseBody3, "", true, nil); err == nil {
+		u.RemoveProjectEnvResponseBody3 = &removeProjectEnvResponseBody3
+		u.Type = RemoveProjectEnvResponseBodyTypeRemoveProjectEnvResponseBody3
+		return nil
+	}
+
 	var arrayOfRemoveProjectEnvResponseBody1 []RemoveProjectEnvResponseBody1 = []RemoveProjectEnvResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvResponseBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfRemoveProjectEnvResponseBody1, "", true, nil); err == nil {
 		u.ArrayOfRemoveProjectEnvResponseBody1 = arrayOfRemoveProjectEnvResponseBody1
 		u.Type = RemoveProjectEnvResponseBodyTypeArrayOfRemoveProjectEnvResponseBody1
 		return nil

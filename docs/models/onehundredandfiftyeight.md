@@ -8,21 +8,26 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftyEight = {
-  grantType: "authorization_code",
-  appName: "<value>",
-  atTTL: 4957.29,
-  scope: "<value>",
-  authMethod: "gitlab",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+    accountId: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `grantType`                                  | [models.GrantType](../models/granttype.md)   | :heavy_check_mark:                           | N/A                                          |
-| `appName`                                    | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `atTTL`                                      | *number*                                     | :heavy_check_mark:                           | access_token TTL                             |
-| `rtTTL`                                      | *number*                                     | :heavy_minus_sign:                           | refresh_token TTL                            |
-| `scope`                                      | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `authMethod`                                 | [models.AuthMethod](../models/authmethod.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `team`                                                                                   | [models.UserEventPayload158Team](../models/usereventpayload158team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `configuration`                                                                          | [models.UserEventPayload158Configuration](../models/usereventpayload158configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

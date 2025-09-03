@@ -67,6 +67,17 @@ type CreateRecordHTTPS struct {
 	Params   *string  `json:"params,omitempty"`
 }
 
+func (c CreateRecordHTTPS) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordHTTPS) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"priority", "target"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateRecordHTTPS) GetPriority() *float64 {
 	if o == nil {
 		return nil
@@ -96,6 +107,17 @@ type CreateRecordRequestBody10 struct {
 	HTTPS CreateRecordHTTPS `json:"https"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
+}
+
+func (c CreateRecordRequestBody10) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody10) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "https"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateRecordRequestBody10) GetType() CreateRecordType10 {
@@ -188,6 +210,17 @@ type CreateRecordRequestBody9 struct {
 	Value *string `json:"value,omitempty"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
+}
+
+func (c CreateRecordRequestBody9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateRecordRequestBody9) GetName() string {
@@ -287,6 +320,17 @@ type CreateRecordRequestBody8 struct {
 	Comment *string `json:"comment,omitempty"`
 }
 
+func (c CreateRecordRequestBody8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateRecordRequestBody8) GetType() CreateRecordType8 {
 	if o == nil {
 		return CreateRecordType8("")
@@ -373,6 +417,17 @@ type CreateRecordSrv struct {
 	Target   string   `json:"target"`
 }
 
+func (c CreateRecordSrv) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordSrv) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"priority", "weight", "port", "target"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateRecordSrv) GetPriority() *float64 {
 	if o == nil {
 		return nil
@@ -409,6 +464,17 @@ type CreateRecordRequestBody7 struct {
 	Srv CreateRecordSrv `json:"srv"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
+}
+
+func (c CreateRecordRequestBody7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "srv"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateRecordRequestBody7) GetType() CreateRecordType7 {
@@ -502,6 +568,17 @@ type CreateRecordRequestBody6 struct {
 	MxPriority float64 `json:"mxPriority"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
+}
+
+func (c CreateRecordRequestBody6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "type", "value", "mxPriority"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateRecordRequestBody6) GetName() string {
@@ -610,6 +687,17 @@ type CreateRecordRequestBody5 struct {
 	Comment *string `json:"comment,omitempty"`
 }
 
+func (c CreateRecordRequestBody5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateRecordRequestBody5) GetName() string {
 	if o == nil {
 		return ""
@@ -707,6 +795,17 @@ type CreateRecordRequestBody4 struct {
 	Value string `json:"value"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
+}
+
+func (c CreateRecordRequestBody4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "type", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateRecordRequestBody4) GetName() string {
@@ -808,6 +907,17 @@ type CreateRecordRequestBody3 struct {
 	Comment *string `json:"comment,omitempty"`
 }
 
+func (c CreateRecordRequestBody3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateRecordRequestBody3) GetName() string {
 	if o == nil {
 		return ""
@@ -907,6 +1017,17 @@ type CreateRecordRequestBody2 struct {
 	Comment *string `json:"comment,omitempty"`
 }
 
+func (c CreateRecordRequestBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateRecordRequestBody2) GetName() string {
 	if o == nil {
 		return ""
@@ -1004,6 +1125,17 @@ type CreateRecordRequestBody1 struct {
 	Value string `json:"value"`
 	// A comment to add context on what this DNS record is for
 	Comment *string `json:"comment,omitempty"`
+}
+
+func (c CreateRecordRequestBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordRequestBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "type", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateRecordRequestBody1) GetName() string {
@@ -1163,73 +1295,73 @@ func CreateCreateRecordRequestBodyCreateRecordRequestBody10(createRecordRequestB
 
 func (u *CreateRecordRequestBody) UnmarshalJSON(data []byte) error {
 
-	var createRecordRequestBody7 CreateRecordRequestBody7 = CreateRecordRequestBody7{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody7, "", true, true); err == nil {
-		u.CreateRecordRequestBody7 = &createRecordRequestBody7
-		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody7
-		return nil
-	}
-
-	var createRecordRequestBody8 CreateRecordRequestBody8 = CreateRecordRequestBody8{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody8, "", true, true); err == nil {
-		u.CreateRecordRequestBody8 = &createRecordRequestBody8
-		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody8
-		return nil
-	}
-
-	var createRecordRequestBody10 CreateRecordRequestBody10 = CreateRecordRequestBody10{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody10, "", true, true); err == nil {
-		u.CreateRecordRequestBody10 = &createRecordRequestBody10
-		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody10
+	var createRecordRequestBody6 CreateRecordRequestBody6 = CreateRecordRequestBody6{}
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody6, "", true, nil); err == nil {
+		u.CreateRecordRequestBody6 = &createRecordRequestBody6
+		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody6
 		return nil
 	}
 
 	var createRecordRequestBody1 CreateRecordRequestBody1 = CreateRecordRequestBody1{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody1, "", true, nil); err == nil {
 		u.CreateRecordRequestBody1 = &createRecordRequestBody1
 		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody1
 		return nil
 	}
 
 	var createRecordRequestBody2 CreateRecordRequestBody2 = CreateRecordRequestBody2{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody2, "", true, nil); err == nil {
 		u.CreateRecordRequestBody2 = &createRecordRequestBody2
 		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody2
 		return nil
 	}
 
 	var createRecordRequestBody3 CreateRecordRequestBody3 = CreateRecordRequestBody3{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody3, "", true, nil); err == nil {
 		u.CreateRecordRequestBody3 = &createRecordRequestBody3
 		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody3
 		return nil
 	}
 
 	var createRecordRequestBody4 CreateRecordRequestBody4 = CreateRecordRequestBody4{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody4, "", true, nil); err == nil {
 		u.CreateRecordRequestBody4 = &createRecordRequestBody4
 		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody4
 		return nil
 	}
 
 	var createRecordRequestBody5 CreateRecordRequestBody5 = CreateRecordRequestBody5{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody5, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody5, "", true, nil); err == nil {
 		u.CreateRecordRequestBody5 = &createRecordRequestBody5
 		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody5
 		return nil
 	}
 
+	var createRecordRequestBody7 CreateRecordRequestBody7 = CreateRecordRequestBody7{}
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody7, "", true, nil); err == nil {
+		u.CreateRecordRequestBody7 = &createRecordRequestBody7
+		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody7
+		return nil
+	}
+
+	var createRecordRequestBody8 CreateRecordRequestBody8 = CreateRecordRequestBody8{}
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody8, "", true, nil); err == nil {
+		u.CreateRecordRequestBody8 = &createRecordRequestBody8
+		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody8
+		return nil
+	}
+
 	var createRecordRequestBody9 CreateRecordRequestBody9 = CreateRecordRequestBody9{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody9, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody9, "", true, nil); err == nil {
 		u.CreateRecordRequestBody9 = &createRecordRequestBody9
 		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody9
 		return nil
 	}
 
-	var createRecordRequestBody6 CreateRecordRequestBody6 = CreateRecordRequestBody6{}
-	if err := utils.UnmarshalJSON(data, &createRecordRequestBody6, "", true, true); err == nil {
-		u.CreateRecordRequestBody6 = &createRecordRequestBody6
-		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody6
+	var createRecordRequestBody10 CreateRecordRequestBody10 = CreateRecordRequestBody10{}
+	if err := utils.UnmarshalJSON(data, &createRecordRequestBody10, "", true, nil); err == nil {
+		u.CreateRecordRequestBody10 = &createRecordRequestBody10
+		u.Type = CreateRecordRequestBodyTypeCreateRecordRequestBody10
 		return nil
 	}
 
@@ -1323,6 +1455,17 @@ type CreateRecordResponseBody2 struct {
 	UID string `json:"uid"`
 }
 
+func (c CreateRecordResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"uid"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateRecordResponseBody2) GetUID() string {
 	if o == nil {
 		return ""
@@ -1333,6 +1476,17 @@ func (o *CreateRecordResponseBody2) GetUID() string {
 type CreateRecordResponseBody1 struct {
 	UID     string  `json:"uid"`
 	Updated float64 `json:"updated"`
+}
+
+func (c CreateRecordResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRecordResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"uid", "updated"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateRecordResponseBody1) GetUID() string {
@@ -1384,17 +1538,17 @@ func CreateCreateRecordResponseBodyCreateRecordResponseBody2(createRecordRespons
 
 func (u *CreateRecordResponseBody) UnmarshalJSON(data []byte) error {
 
-	var createRecordResponseBody2 CreateRecordResponseBody2 = CreateRecordResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &createRecordResponseBody2, "", true, true); err == nil {
-		u.CreateRecordResponseBody2 = &createRecordResponseBody2
-		u.Type = CreateRecordResponseBodyTypeCreateRecordResponseBody2
+	var createRecordResponseBody1 CreateRecordResponseBody1 = CreateRecordResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &createRecordResponseBody1, "", true, nil); err == nil {
+		u.CreateRecordResponseBody1 = &createRecordResponseBody1
+		u.Type = CreateRecordResponseBodyTypeCreateRecordResponseBody1
 		return nil
 	}
 
-	var createRecordResponseBody1 CreateRecordResponseBody1 = CreateRecordResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &createRecordResponseBody1, "", true, true); err == nil {
-		u.CreateRecordResponseBody1 = &createRecordResponseBody1
-		u.Type = CreateRecordResponseBodyTypeCreateRecordResponseBody1
+	var createRecordResponseBody2 CreateRecordResponseBody2 = CreateRecordResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &createRecordResponseBody2, "", true, nil); err == nil {
+		u.CreateRecordResponseBody2 = &createRecordResponseBody2
+		u.Type = CreateRecordResponseBodyTypeCreateRecordResponseBody2
 		return nil
 	}
 

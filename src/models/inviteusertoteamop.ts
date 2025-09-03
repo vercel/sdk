@@ -114,6 +114,7 @@ export type InviteUserToTeamTeamRoles = ClosedEnum<
  * The team permissions of the user
  */
 export const InviteUserToTeamTeamPermissions = {
+  IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
   UsageViewer: "UsageViewer",

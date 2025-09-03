@@ -117,14 +117,14 @@ func CreateGetTeamAccessRequestGitUserIDNumber(number float64) GetTeamAccessRequ
 func (u *GetTeamAccessRequestGitUserID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetTeamAccessRequestGitUserIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetTeamAccessRequestGitUserIDTypeNumber
 		return nil

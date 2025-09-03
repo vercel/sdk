@@ -46,7 +46,7 @@ func testGetConfigurationProductsGetConfigurationProducts0(w http.ResponseWriter
 		return
 	}
 	var respBody *operations.GetConfigurationProductsResponseBody = &operations.GetConfigurationProductsResponseBody{
-		Products: []operations.Product{},
+		Products: []operations.GetConfigurationProductsProduct{},
 		Integration: operations.GetConfigurationProductsIntegration{
 			ID:   "<id>",
 			Slug: "<value>",

@@ -127,11 +127,11 @@ export type CancelDeploymentProjectSettings = {
 };
 
 export const CancelDeploymentDeploymentsStatus = {
-  Error: "error",
-  Timeout: "timeout",
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
+  Error: "error",
+  Timeout: "timeout",
 } as const;
 export type CancelDeploymentDeploymentsStatus = ClosedEnum<
   typeof CancelDeploymentDeploymentsStatus
@@ -229,8 +229,8 @@ export type CancelDeploymentCreator = {
 };
 
 export const CancelDeploymentDeploymentsReadyState = {
-  Error: "ERROR",
   Building: "BUILDING",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -268,8 +268,8 @@ export type CancelDeploymentStatus = ClosedEnum<typeof CancelDeploymentStatus>;
 export type CancelDeploymentTeam = {
   id: string;
   name: string;
-  slug: string;
   avatar?: string | undefined;
+  slug: string;
 };
 
 export type CancelDeploymentCustomEnvironment2 = {
@@ -891,6 +891,7 @@ export type CancelDeploymentFunctions = {
   experimentalTriggers?:
     | Array<CancelDeploymentExperimentalTriggers>
     | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 export const CancelDeploymentPlan = {
@@ -907,12 +908,12 @@ export type CancelDeploymentRoutes3 = {
 };
 
 export const RoutesHandle = {
-  Filesystem: "filesystem",
   Error: "error",
+  Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
-  Resource: "resource",
   Rewrite: "rewrite",
+  Resource: "resource",
 } as const;
 export type RoutesHandle = ClosedEnum<typeof RoutesHandle>;
 
@@ -1081,8 +1082,8 @@ export type CancelDeploymentRoutesType = ClosedEnum<
 >;
 
 export const RoutesOp = {
-  Set: "set",
   Append: "append",
+  Set: "set",
   Delete: "delete",
 } as const;
 export type RoutesOp = ClosedEnum<typeof RoutesOp>;
@@ -1167,8 +1168,8 @@ export type CancelDeploymentGitRepoDeploymentsResponseType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoDeploymentsResponseOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CancelDeploymentGitRepoDeploymentsResponseOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoDeploymentsResponseOwnerType
@@ -1195,8 +1196,8 @@ export type CancelDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoDeploymentsOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CancelDeploymentGitRepoDeploymentsOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoDeploymentsOwnerType
@@ -1223,8 +1224,8 @@ export type CancelDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const CancelDeploymentGitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CancelDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CancelDeploymentGitRepoOwnerType
@@ -1275,7 +1276,7 @@ export type CancelDeploymentFlags =
   | Array<CancelDeploymentFlags2>;
 
 /**
- * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
+ * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
  */
 export type MicrofrontendsApplications = {
   isDefaultApp?: boolean | undefined;
@@ -1290,12 +1291,31 @@ export type MicrofrontendsApplications = {
   deploymentHost?: string | undefined;
 };
 
+/**
+ * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+ */
+export const MicrofrontendsMfeConfigUploadState = {
+  Error: "error",
+  Success: "success",
+  NoConfig: "no_config",
+} as const;
+/**
+ * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+ */
+export type MicrofrontendsMfeConfigUploadState = ClosedEnum<
+  typeof MicrofrontendsMfeConfigUploadState
+>;
+
 export type CancelDeploymentMicrofrontends2 = {
+  isDefaultApp: boolean;
   /**
-   * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
+   * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
    */
   applications?: { [k: string]: MicrofrontendsApplications } | undefined;
-  isDefaultApp: boolean;
+  /**
+   * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+   */
+  mfeConfigUploadState?: MicrofrontendsMfeConfigUploadState | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
    */
@@ -1315,9 +1335,6 @@ export type CancelDeploymentMicrofrontends2 = {
 };
 
 export type CancelDeploymentMicrofrontends1 = {
-  /**
-   * Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-   */
   isDefaultApp?: boolean | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
@@ -1342,16 +1359,16 @@ export type CancelDeploymentMicrofrontends =
   | CancelDeploymentMicrofrontends1;
 
 export const CancelDeploymentFunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type CancelDeploymentFunctionType = ClosedEnum<
   typeof CancelDeploymentFunctionType
 >;
 
 export const CancelDeploymentFunctionMemoryType = {
-  StandardLegacy: "standard_legacy",
   Standard: "standard",
+  StandardLegacy: "standard_legacy",
   Performance: "performance",
 } as const;
 export type CancelDeploymentFunctionMemoryType = ClosedEnum<
@@ -2618,16 +2635,16 @@ export const CancelDeploymentTeam$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  slug: z.string(),
   avatar: z.string().optional(),
+  slug: z.string(),
 });
 
 /** @internal */
 export type CancelDeploymentTeam$Outbound = {
   id: string;
   name: string;
-  slug: string;
   avatar?: string | undefined;
+  slug: string;
 };
 
 /** @internal */
@@ -2638,8 +2655,8 @@ export const CancelDeploymentTeam$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   name: z.string(),
-  slug: z.string(),
   avatar: z.string().optional(),
+  slug: z.string(),
 });
 
 /**
@@ -5552,6 +5569,7 @@ export const CancelDeploymentFunctions$inboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => CancelDeploymentExperimentalTriggers$inboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /** @internal */
@@ -5565,6 +5583,7 @@ export type CancelDeploymentFunctions$Outbound = {
   experimentalTriggers?:
     | Array<CancelDeploymentExperimentalTriggers$Outbound>
     | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 /** @internal */
@@ -5582,6 +5601,7 @@ export const CancelDeploymentFunctions$outboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => CancelDeploymentExperimentalTriggers$outboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /**
@@ -8519,14 +8539,38 @@ export function microfrontendsApplicationsFromJSON(
 }
 
 /** @internal */
+export const MicrofrontendsMfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
+  typeof MicrofrontendsMfeConfigUploadState
+> = z.nativeEnum(MicrofrontendsMfeConfigUploadState);
+
+/** @internal */
+export const MicrofrontendsMfeConfigUploadState$outboundSchema: z.ZodNativeEnum<
+  typeof MicrofrontendsMfeConfigUploadState
+> = MicrofrontendsMfeConfigUploadState$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MicrofrontendsMfeConfigUploadState$ {
+  /** @deprecated use `MicrofrontendsMfeConfigUploadState$inboundSchema` instead. */
+  export const inboundSchema = MicrofrontendsMfeConfigUploadState$inboundSchema;
+  /** @deprecated use `MicrofrontendsMfeConfigUploadState$outboundSchema` instead. */
+  export const outboundSchema =
+    MicrofrontendsMfeConfigUploadState$outboundSchema;
+}
+
+/** @internal */
 export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   CancelDeploymentMicrofrontends2,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isDefaultApp: z.boolean(),
   applications: z.record(z.lazy(() => MicrofrontendsApplications$inboundSchema))
     .optional(),
-  isDefaultApp: z.boolean(),
+  mfeConfigUploadState: MicrofrontendsMfeConfigUploadState$inboundSchema
+    .optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
@@ -8535,10 +8579,11 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CancelDeploymentMicrofrontends2$Outbound = {
+  isDefaultApp: boolean;
   applications?:
     | { [k: string]: MicrofrontendsApplications$Outbound }
     | undefined;
-  isDefaultApp: boolean;
+  mfeConfigUploadState?: string | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
@@ -8551,10 +8596,12 @@ export const CancelDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentMicrofrontends2
 > = z.object({
+  isDefaultApp: z.boolean(),
   applications: z.record(
     z.lazy(() => MicrofrontendsApplications$outboundSchema),
   ).optional(),
-  isDefaultApp: z.boolean(),
+  mfeConfigUploadState: MicrofrontendsMfeConfigUploadState$outboundSchema
+    .optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),

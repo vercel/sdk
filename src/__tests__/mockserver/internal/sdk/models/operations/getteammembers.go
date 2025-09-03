@@ -201,12 +201,12 @@ type GetTeamMembersOrigin string
 const (
 	GetTeamMembersOriginTeams             GetTeamMembersOrigin = "teams"
 	GetTeamMembersOriginLink              GetTeamMembersOrigin = "link"
-	GetTeamMembersOriginSaml              GetTeamMembersOrigin = "saml"
+	GetTeamMembersOriginMail              GetTeamMembersOrigin = "mail"
+	GetTeamMembersOriginImport            GetTeamMembersOrigin = "import"
 	GetTeamMembersOriginGithub            GetTeamMembersOrigin = "github"
 	GetTeamMembersOriginGitlab            GetTeamMembersOrigin = "gitlab"
 	GetTeamMembersOriginBitbucket         GetTeamMembersOrigin = "bitbucket"
-	GetTeamMembersOriginMail              GetTeamMembersOrigin = "mail"
-	GetTeamMembersOriginImport            GetTeamMembersOrigin = "import"
+	GetTeamMembersOriginSaml              GetTeamMembersOrigin = "saml"
 	GetTeamMembersOriginDsync             GetTeamMembersOrigin = "dsync"
 	GetTeamMembersOriginFeedback          GetTeamMembersOrigin = "feedback"
 	GetTeamMembersOriginOrganizationTeams GetTeamMembersOrigin = "organization-teams"
@@ -225,7 +225,9 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "link":
 		fallthrough
-	case "saml":
+	case "mail":
+		fallthrough
+	case "import":
 		fallthrough
 	case "github":
 		fallthrough
@@ -233,9 +235,7 @@ func (e *GetTeamMembersOrigin) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "bitbucket":
 		fallthrough
-	case "mail":
-		fallthrough
-	case "import":
+	case "saml":
 		fallthrough
 	case "dsync":
 		fallthrough
@@ -284,14 +284,14 @@ func CreateGetTeamMembersGitUserIDNumber(number float64) GetTeamMembersGitUserID
 func (u *GetTeamMembersGitUserID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetTeamMembersGitUserIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GetTeamMembersGitUserIDTypeNumber
 		return nil
@@ -634,6 +634,97 @@ func (e *EmailInviteCodeRole) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetTeamMembersTeamRole string
+
+const (
+	GetTeamMembersTeamRoleOwner         GetTeamMembersTeamRole = "OWNER"
+	GetTeamMembersTeamRoleMember        GetTeamMembersTeamRole = "MEMBER"
+	GetTeamMembersTeamRoleDeveloper     GetTeamMembersTeamRole = "DEVELOPER"
+	GetTeamMembersTeamRoleViewer        GetTeamMembersTeamRole = "VIEWER"
+	GetTeamMembersTeamRoleBilling       GetTeamMembersTeamRole = "BILLING"
+	GetTeamMembersTeamRoleContributor   GetTeamMembersTeamRole = "CONTRIBUTOR"
+	GetTeamMembersTeamRoleSecurity      GetTeamMembersTeamRole = "SECURITY"
+	GetTeamMembersTeamRoleViewerForPlus GetTeamMembersTeamRole = "VIEWER_FOR_PLUS"
+)
+
+func (e GetTeamMembersTeamRole) ToPointer() *GetTeamMembersTeamRole {
+	return &e
+}
+func (e *GetTeamMembersTeamRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "CONTRIBUTOR":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
+		*e = GetTeamMembersTeamRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetTeamMembersTeamRole: %v", v)
+	}
+}
+
+type GetTeamMembersTeamPermission string
+
+const (
+	GetTeamMembersTeamPermissionIntegrationManager       GetTeamMembersTeamPermission = "IntegrationManager"
+	GetTeamMembersTeamPermissionCreateProject            GetTeamMembersTeamPermission = "CreateProject"
+	GetTeamMembersTeamPermissionFullProductionDeployment GetTeamMembersTeamPermission = "FullProductionDeployment"
+	GetTeamMembersTeamPermissionUsageViewer              GetTeamMembersTeamPermission = "UsageViewer"
+	GetTeamMembersTeamPermissionEnvVariableManager       GetTeamMembersTeamPermission = "EnvVariableManager"
+	GetTeamMembersTeamPermissionEnvironmentManager       GetTeamMembersTeamPermission = "EnvironmentManager"
+	GetTeamMembersTeamPermissionV0Builder                GetTeamMembersTeamPermission = "V0Builder"
+	GetTeamMembersTeamPermissionV0Chatter                GetTeamMembersTeamPermission = "V0Chatter"
+	GetTeamMembersTeamPermissionV0Viewer                 GetTeamMembersTeamPermission = "V0Viewer"
+)
+
+func (e GetTeamMembersTeamPermission) ToPointer() *GetTeamMembersTeamPermission {
+	return &e
+}
+func (e *GetTeamMembersTeamPermission) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "IntegrationManager":
+		fallthrough
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
+		*e = GetTeamMembersTeamPermission(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetTeamMembersTeamPermission: %v", v)
+	}
+}
+
 type Projects string
 
 const (
@@ -664,15 +755,17 @@ func (e *Projects) UnmarshalJSON(data []byte) error {
 }
 
 type EmailInviteCode struct {
-	AccessGroups []string             `json:"accessGroups,omitempty"`
-	ID           string               `json:"id"`
-	Email        *string              `json:"email,omitempty"`
-	Role         *EmailInviteCodeRole `json:"role,omitempty"`
-	IsDSyncUser  bool                 `json:"isDSyncUser"`
-	CreatedAt    *float64             `json:"createdAt,omitempty"`
-	Expired      *bool                `json:"expired,omitempty"`
-	Projects     map[string]Projects  `json:"projects,omitempty"`
-	Entitlements []string             `json:"entitlements,omitempty"`
+	AccessGroups    []string                       `json:"accessGroups,omitempty"`
+	ID              string                         `json:"id"`
+	Email           *string                        `json:"email,omitempty"`
+	Role            *EmailInviteCodeRole           `json:"role,omitempty"`
+	TeamRoles       []GetTeamMembersTeamRole       `json:"teamRoles,omitempty"`
+	TeamPermissions []GetTeamMembersTeamPermission `json:"teamPermissions,omitempty"`
+	IsDSyncUser     bool                           `json:"isDSyncUser"`
+	CreatedAt       *float64                       `json:"createdAt,omitempty"`
+	Expired         *bool                          `json:"expired,omitempty"`
+	Projects        map[string]Projects            `json:"projects,omitempty"`
+	Entitlements    []string                       `json:"entitlements,omitempty"`
 }
 
 func (o *EmailInviteCode) GetAccessGroups() []string {
@@ -701,6 +794,20 @@ func (o *EmailInviteCode) GetRole() *EmailInviteCodeRole {
 		return nil
 	}
 	return o.Role
+}
+
+func (o *EmailInviteCode) GetTeamRoles() []GetTeamMembersTeamRole {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *EmailInviteCode) GetTeamPermissions() []GetTeamMembersTeamPermission {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 func (o *EmailInviteCode) GetIsDSyncUser() bool {

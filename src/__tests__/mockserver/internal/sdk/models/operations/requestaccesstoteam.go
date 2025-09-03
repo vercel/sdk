@@ -88,14 +88,14 @@ func CreateGitUserIDRequestNumber(number float64) GitUserIDRequest {
 func (u *GitUserIDRequest) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GitUserIDRequestTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = GitUserIDRequestTypeNumber
 		return nil
@@ -291,14 +291,14 @@ func CreateRequestAccessToTeamGitUserIDResponseNumber(number float64) RequestAcc
 func (u *RequestAccessToTeamGitUserIDResponse) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = RequestAccessToTeamGitUserIDResponseTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = RequestAccessToTeamGitUserIDResponseTypeNumber
 		return nil

@@ -104,14 +104,14 @@ func CreateEnvironmentVariableTargetUnionArrayOfTargetEnvironmentVariableEnum2(a
 func (u *EnvironmentVariableTargetUnion) UnmarshalJSON(data []byte) error {
 
 	var targetEnvironmentVariableEnum1 TargetEnvironmentVariableEnum1 = TargetEnvironmentVariableEnum1("")
-	if err := utils.UnmarshalJSON(data, &targetEnvironmentVariableEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &targetEnvironmentVariableEnum1, "", true, nil); err == nil {
 		u.TargetEnvironmentVariableEnum1 = &targetEnvironmentVariableEnum1
 		u.Type = EnvironmentVariableTargetUnionTypeTargetEnvironmentVariableEnum1
 		return nil
 	}
 
 	var arrayOfTargetEnvironmentVariableEnum2 []TargetEnvironmentVariableEnum2 = []TargetEnvironmentVariableEnum2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfTargetEnvironmentVariableEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfTargetEnvironmentVariableEnum2, "", true, nil); err == nil {
 		u.ArrayOfTargetEnvironmentVariableEnum2 = arrayOfTargetEnvironmentVariableEnum2
 		u.Type = EnvironmentVariableTargetUnionTypeArrayOfTargetEnvironmentVariableEnum2
 		return nil
@@ -528,7 +528,7 @@ func (c CreateProjectOidcTokenConfigRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateProjectOidcTokenConfigRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -1066,14 +1066,14 @@ func CreateCreateProjectEnvIDUnionCreateProjectEnvIDEnum(createProjectEnvIDEnum 
 func (u *CreateProjectEnvIDUnion) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = CreateProjectEnvIDUnionTypeStr
 		return nil
 	}
 
 	var createProjectEnvIDEnum CreateProjectEnvIDEnum = CreateProjectEnvIDEnum("")
-	if err := utils.UnmarshalJSON(data, &createProjectEnvIDEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectEnvIDEnum, "", true, nil); err == nil {
 		u.CreateProjectEnvIDEnum = &createProjectEnvIDEnum
 		u.Type = CreateProjectEnvIDUnionTypeCreateProjectEnvIDEnum
 		return nil
@@ -1283,12 +1283,18 @@ func (o *CreateProjectDataCache) GetUnlimited() *bool {
 	return o.Unlimited
 }
 
+// CreateProjectDeploymentExpiration - Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
 type CreateProjectDeploymentExpiration struct {
-	ExpirationDays           *float64 `json:"expirationDays,omitempty"`
+	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
+	ExpirationDays *float64 `json:"expirationDays,omitempty"`
+	// Number of days to keep production deployments before soft deletion.
 	ExpirationDaysProduction *float64 `json:"expirationDaysProduction,omitempty"`
-	ExpirationDaysCanceled   *float64 `json:"expirationDaysCanceled,omitempty"`
-	ExpirationDaysErrored    *float64 `json:"expirationDaysErrored,omitempty"`
-	DeploymentsToKeep        *float64 `json:"deploymentsToKeep,omitempty"`
+	// Number of days to keep canceled deployments before soft deletion.
+	ExpirationDaysCanceled *float64 `json:"expirationDaysCanceled,omitempty"`
+	// Number of days to keep errored deployments before soft deletion.
+	ExpirationDaysErrored *float64 `json:"expirationDaysErrored,omitempty"`
+	// Minimum number of production deployments to keep for this project, even if they are over the production expiration limit.
+	DeploymentsToKeep *float64 `json:"deploymentsToKeep,omitempty"`
 }
 
 func (o *CreateProjectDeploymentExpiration) GetExpirationDays() *float64 {
@@ -1419,14 +1425,14 @@ func CreateCreateProjectEnvTargetUnionCreateProjectTargetEnvEnum2(createProjectT
 func (u *CreateProjectEnvTargetUnion) UnmarshalJSON(data []byte) error {
 
 	var arrayOfCreateProjectTargetEnvEnum1 []CreateProjectTargetEnvEnum1 = []CreateProjectTargetEnvEnum1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfCreateProjectTargetEnvEnum1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfCreateProjectTargetEnvEnum1, "", true, nil); err == nil {
 		u.ArrayOfCreateProjectTargetEnvEnum1 = arrayOfCreateProjectTargetEnvEnum1
 		u.Type = CreateProjectEnvTargetUnionTypeArrayOfCreateProjectTargetEnvEnum1
 		return nil
 	}
 
 	var createProjectTargetEnvEnum2 CreateProjectTargetEnvEnum2 = CreateProjectTargetEnvEnum2("")
-	if err := utils.UnmarshalJSON(data, &createProjectTargetEnvEnum2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectTargetEnvEnum2, "", true, nil); err == nil {
 		u.CreateProjectTargetEnvEnum2 = &createProjectTargetEnvEnum2
 		u.Type = CreateProjectEnvTargetUnionTypeCreateProjectTargetEnvEnum2
 		return nil
@@ -1451,10 +1457,10 @@ type CreateProjectEnvType string
 
 const (
 	CreateProjectEnvTypeSystem    CreateProjectEnvType = "system"
-	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 	CreateProjectEnvTypeEncrypted CreateProjectEnvType = "encrypted"
 	CreateProjectEnvTypePlain     CreateProjectEnvType = "plain"
 	CreateProjectEnvTypeSensitive CreateProjectEnvType = "sensitive"
+	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 )
 
 func (e CreateProjectEnvType) ToPointer() *CreateProjectEnvType {
@@ -1468,13 +1474,13 @@ func (e *CreateProjectEnvType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = CreateProjectEnvType(v)
 		return nil
 	default:
@@ -1508,6 +1514,17 @@ func (e *CreateProjectTypeFlagsConnectionString) UnmarshalJSON(data []byte) erro
 type CreateProjectContentHintFlagsConnectionString struct {
 	Type      CreateProjectTypeFlagsConnectionString `json:"type"`
 	ProjectID string                                 `json:"projectId"`
+}
+
+func (c CreateProjectContentHintFlagsConnectionString) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintFlagsConnectionString) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintFlagsConnectionString) GetType() CreateProjectTypeFlagsConnectionString {
@@ -1553,6 +1570,17 @@ type CreateProjectContentHintIntegrationStoreSecret struct {
 	IntegrationID              string                                  `json:"integrationId"`
 	IntegrationProductID       string                                  `json:"integrationProductId"`
 	IntegrationConfigurationID string                                  `json:"integrationConfigurationId"`
+}
+
+func (c CreateProjectContentHintIntegrationStoreSecret) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintIntegrationStoreSecret) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId", "integrationId", "integrationProductId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintIntegrationStoreSecret) GetType() CreateProjectTypeIntegrationStoreSecret {
@@ -1618,6 +1646,17 @@ type CreateProjectContentHintPostgresURLNoSsl struct {
 	StoreID string                            `json:"storeId"`
 }
 
+func (c CreateProjectContentHintPostgresURLNoSsl) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresURLNoSsl) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectContentHintPostgresURLNoSsl) GetType() CreateProjectTypePostgresURLNoSsl {
 	if o == nil {
 		return CreateProjectTypePostgresURLNoSsl("")
@@ -1658,6 +1697,17 @@ func (e *CreateProjectTypePostgresDatabase) UnmarshalJSON(data []byte) error {
 type CreateProjectContentHintPostgresDatabase struct {
 	Type    CreateProjectTypePostgresDatabase `json:"type"`
 	StoreID string                            `json:"storeId"`
+}
+
+func (c CreateProjectContentHintPostgresDatabase) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresDatabase) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintPostgresDatabase) GetType() CreateProjectTypePostgresDatabase {
@@ -1702,6 +1752,17 @@ type CreateProjectContentHintPostgresPassword struct {
 	StoreID string                            `json:"storeId"`
 }
 
+func (c CreateProjectContentHintPostgresPassword) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresPassword) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectContentHintPostgresPassword) GetType() CreateProjectTypePostgresPassword {
 	if o == nil {
 		return CreateProjectTypePostgresPassword("")
@@ -1742,6 +1803,17 @@ func (e *CreateProjectTypePostgresHost) UnmarshalJSON(data []byte) error {
 type CreateProjectContentHintPostgresHost struct {
 	Type    CreateProjectTypePostgresHost `json:"type"`
 	StoreID string                        `json:"storeId"`
+}
+
+func (c CreateProjectContentHintPostgresHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintPostgresHost) GetType() CreateProjectTypePostgresHost {
@@ -1786,6 +1858,17 @@ type CreateProjectContentHintPostgresUser struct {
 	StoreID string                        `json:"storeId"`
 }
 
+func (c CreateProjectContentHintPostgresUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectContentHintPostgresUser) GetType() CreateProjectTypePostgresUser {
 	if o == nil {
 		return CreateProjectTypePostgresUser("")
@@ -1826,6 +1909,17 @@ func (e *CreateProjectTypePostgresPrismaURL) UnmarshalJSON(data []byte) error {
 type CreateProjectContentHintPostgresPrismaURL struct {
 	Type    CreateProjectTypePostgresPrismaURL `json:"type"`
 	StoreID string                             `json:"storeId"`
+}
+
+func (c CreateProjectContentHintPostgresPrismaURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresPrismaURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintPostgresPrismaURL) GetType() CreateProjectTypePostgresPrismaURL {
@@ -1870,6 +1964,17 @@ type CreateProjectContentHintPostgresURLNonPooling struct {
 	StoreID string                                 `json:"storeId"`
 }
 
+func (c CreateProjectContentHintPostgresURLNonPooling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresURLNonPooling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectContentHintPostgresURLNonPooling) GetType() CreateProjectTypePostgresURLNonPooling {
 	if o == nil {
 		return CreateProjectTypePostgresURLNonPooling("")
@@ -1910,6 +2015,17 @@ func (e *CreateProjectTypePostgresURL) UnmarshalJSON(data []byte) error {
 type CreateProjectContentHintPostgresURL struct {
 	Type    CreateProjectTypePostgresURL `json:"type"`
 	StoreID string                       `json:"storeId"`
+}
+
+func (c CreateProjectContentHintPostgresURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintPostgresURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintPostgresURL) GetType() CreateProjectTypePostgresURL {
@@ -1954,6 +2070,17 @@ type CreateProjectContentHintBlobReadWriteToken struct {
 	StoreID string                              `json:"storeId"`
 }
 
+func (c CreateProjectContentHintBlobReadWriteToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintBlobReadWriteToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectContentHintBlobReadWriteToken) GetType() CreateProjectTypeBlobReadWriteToken {
 	if o == nil {
 		return CreateProjectTypeBlobReadWriteToken("")
@@ -1994,6 +2121,17 @@ func (e *CreateProjectTypeRedisRestAPIReadOnlyToken) UnmarshalJSON(data []byte) 
 type CreateProjectContentHintRedisRestAPIReadOnlyToken struct {
 	Type    CreateProjectTypeRedisRestAPIReadOnlyToken `json:"type"`
 	StoreID string                                     `json:"storeId"`
+}
+
+func (c CreateProjectContentHintRedisRestAPIReadOnlyToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintRedisRestAPIReadOnlyToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintRedisRestAPIReadOnlyToken) GetType() CreateProjectTypeRedisRestAPIReadOnlyToken {
@@ -2038,6 +2176,17 @@ type CreateProjectContentHintRedisRestAPIToken struct {
 	StoreID string                             `json:"storeId"`
 }
 
+func (c CreateProjectContentHintRedisRestAPIToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintRedisRestAPIToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectContentHintRedisRestAPIToken) GetType() CreateProjectTypeRedisRestAPIToken {
 	if o == nil {
 		return CreateProjectTypeRedisRestAPIToken("")
@@ -2080,6 +2229,17 @@ type CreateProjectContentHintRedisRestAPIURL struct {
 	StoreID string                           `json:"storeId"`
 }
 
+func (c CreateProjectContentHintRedisRestAPIURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintRedisRestAPIURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectContentHintRedisRestAPIURL) GetType() CreateProjectTypeRedisRestAPIURL {
 	if o == nil {
 		return CreateProjectTypeRedisRestAPIURL("")
@@ -2120,6 +2280,17 @@ func (e *CreateProjectTypeRedisURL) UnmarshalJSON(data []byte) error {
 type CreateProjectContentHintRedisURL struct {
 	Type    CreateProjectTypeRedisURL `json:"type"`
 	StoreID string                    `json:"storeId"`
+}
+
+func (c CreateProjectContentHintRedisURL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectContentHintRedisURL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "storeId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectContentHintRedisURL) GetType() CreateProjectTypeRedisURL {
@@ -2313,108 +2484,108 @@ func CreateCreateProjectContentHintUnionCreateProjectContentHintFlagsConnectionS
 
 func (u *CreateProjectContentHintUnion) UnmarshalJSON(data []byte) error {
 
-	var createProjectContentHintPostgresURLNonPooling CreateProjectContentHintPostgresURLNonPooling = CreateProjectContentHintPostgresURLNonPooling{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresURLNonPooling, "", true, true); err == nil {
-		u.CreateProjectContentHintPostgresURLNonPooling = &createProjectContentHintPostgresURLNonPooling
-		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresURLNonPooling
+	var createProjectContentHintIntegrationStoreSecret CreateProjectContentHintIntegrationStoreSecret = CreateProjectContentHintIntegrationStoreSecret{}
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintIntegrationStoreSecret, "", true, nil); err == nil {
+		u.CreateProjectContentHintIntegrationStoreSecret = &createProjectContentHintIntegrationStoreSecret
+		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintIntegrationStoreSecret
 		return nil
 	}
 
-	var createProjectContentHintPostgresPassword CreateProjectContentHintPostgresPassword = CreateProjectContentHintPostgresPassword{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresPassword, "", true, true); err == nil {
-		u.CreateProjectContentHintPostgresPassword = &createProjectContentHintPostgresPassword
-		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresPassword
+	var createProjectContentHintRedisURL CreateProjectContentHintRedisURL = CreateProjectContentHintRedisURL{}
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisURL, "", true, nil); err == nil {
+		u.CreateProjectContentHintRedisURL = &createProjectContentHintRedisURL
+		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintRedisURL
+		return nil
+	}
+
+	var createProjectContentHintRedisRestAPIURL CreateProjectContentHintRedisRestAPIURL = CreateProjectContentHintRedisRestAPIURL{}
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisRestAPIURL, "", true, nil); err == nil {
+		u.CreateProjectContentHintRedisRestAPIURL = &createProjectContentHintRedisRestAPIURL
+		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintRedisRestAPIURL
 		return nil
 	}
 
 	var createProjectContentHintRedisRestAPIToken CreateProjectContentHintRedisRestAPIToken = CreateProjectContentHintRedisRestAPIToken{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisRestAPIToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisRestAPIToken, "", true, nil); err == nil {
 		u.CreateProjectContentHintRedisRestAPIToken = &createProjectContentHintRedisRestAPIToken
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintRedisRestAPIToken
 		return nil
 	}
 
 	var createProjectContentHintRedisRestAPIReadOnlyToken CreateProjectContentHintRedisRestAPIReadOnlyToken = CreateProjectContentHintRedisRestAPIReadOnlyToken{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisRestAPIReadOnlyToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisRestAPIReadOnlyToken, "", true, nil); err == nil {
 		u.CreateProjectContentHintRedisRestAPIReadOnlyToken = &createProjectContentHintRedisRestAPIReadOnlyToken
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintRedisRestAPIReadOnlyToken
 		return nil
 	}
 
 	var createProjectContentHintBlobReadWriteToken CreateProjectContentHintBlobReadWriteToken = CreateProjectContentHintBlobReadWriteToken{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintBlobReadWriteToken, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintBlobReadWriteToken, "", true, nil); err == nil {
 		u.CreateProjectContentHintBlobReadWriteToken = &createProjectContentHintBlobReadWriteToken
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintBlobReadWriteToken
 		return nil
 	}
 
 	var createProjectContentHintPostgresURL CreateProjectContentHintPostgresURL = CreateProjectContentHintPostgresURL{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresURL, "", true, nil); err == nil {
 		u.CreateProjectContentHintPostgresURL = &createProjectContentHintPostgresURL
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresURL
 		return nil
 	}
 
-	var createProjectContentHintRedisRestAPIURL CreateProjectContentHintRedisRestAPIURL = CreateProjectContentHintRedisRestAPIURL{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisRestAPIURL, "", true, true); err == nil {
-		u.CreateProjectContentHintRedisRestAPIURL = &createProjectContentHintRedisRestAPIURL
-		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintRedisRestAPIURL
-		return nil
-	}
-
-	var createProjectContentHintPostgresUser CreateProjectContentHintPostgresUser = CreateProjectContentHintPostgresUser{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresUser, "", true, true); err == nil {
-		u.CreateProjectContentHintPostgresUser = &createProjectContentHintPostgresUser
-		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresUser
-		return nil
-	}
-
-	var createProjectContentHintRedisURL CreateProjectContentHintRedisURL = CreateProjectContentHintRedisURL{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintRedisURL, "", true, true); err == nil {
-		u.CreateProjectContentHintRedisURL = &createProjectContentHintRedisURL
-		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintRedisURL
-		return nil
-	}
-
-	var createProjectContentHintPostgresHost CreateProjectContentHintPostgresHost = CreateProjectContentHintPostgresHost{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresHost, "", true, true); err == nil {
-		u.CreateProjectContentHintPostgresHost = &createProjectContentHintPostgresHost
-		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresHost
+	var createProjectContentHintPostgresURLNonPooling CreateProjectContentHintPostgresURLNonPooling = CreateProjectContentHintPostgresURLNonPooling{}
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresURLNonPooling, "", true, nil); err == nil {
+		u.CreateProjectContentHintPostgresURLNonPooling = &createProjectContentHintPostgresURLNonPooling
+		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresURLNonPooling
 		return nil
 	}
 
 	var createProjectContentHintPostgresPrismaURL CreateProjectContentHintPostgresPrismaURL = CreateProjectContentHintPostgresPrismaURL{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresPrismaURL, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresPrismaURL, "", true, nil); err == nil {
 		u.CreateProjectContentHintPostgresPrismaURL = &createProjectContentHintPostgresPrismaURL
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresPrismaURL
 		return nil
 	}
 
+	var createProjectContentHintPostgresUser CreateProjectContentHintPostgresUser = CreateProjectContentHintPostgresUser{}
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresUser, "", true, nil); err == nil {
+		u.CreateProjectContentHintPostgresUser = &createProjectContentHintPostgresUser
+		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresUser
+		return nil
+	}
+
+	var createProjectContentHintPostgresHost CreateProjectContentHintPostgresHost = CreateProjectContentHintPostgresHost{}
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresHost, "", true, nil); err == nil {
+		u.CreateProjectContentHintPostgresHost = &createProjectContentHintPostgresHost
+		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresHost
+		return nil
+	}
+
+	var createProjectContentHintPostgresPassword CreateProjectContentHintPostgresPassword = CreateProjectContentHintPostgresPassword{}
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresPassword, "", true, nil); err == nil {
+		u.CreateProjectContentHintPostgresPassword = &createProjectContentHintPostgresPassword
+		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresPassword
+		return nil
+	}
+
 	var createProjectContentHintPostgresDatabase CreateProjectContentHintPostgresDatabase = CreateProjectContentHintPostgresDatabase{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresDatabase, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresDatabase, "", true, nil); err == nil {
 		u.CreateProjectContentHintPostgresDatabase = &createProjectContentHintPostgresDatabase
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresDatabase
 		return nil
 	}
 
 	var createProjectContentHintPostgresURLNoSsl CreateProjectContentHintPostgresURLNoSsl = CreateProjectContentHintPostgresURLNoSsl{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresURLNoSsl, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintPostgresURLNoSsl, "", true, nil); err == nil {
 		u.CreateProjectContentHintPostgresURLNoSsl = &createProjectContentHintPostgresURLNoSsl
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintPostgresURLNoSsl
 		return nil
 	}
 
 	var createProjectContentHintFlagsConnectionString CreateProjectContentHintFlagsConnectionString = CreateProjectContentHintFlagsConnectionString{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintFlagsConnectionString, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectContentHintFlagsConnectionString, "", true, nil); err == nil {
 		u.CreateProjectContentHintFlagsConnectionString = &createProjectContentHintFlagsConnectionString
 		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintFlagsConnectionString
-		return nil
-	}
-
-	var createProjectContentHintIntegrationStoreSecret CreateProjectContentHintIntegrationStoreSecret = CreateProjectContentHintIntegrationStoreSecret{}
-	if err := utils.UnmarshalJSON(data, &createProjectContentHintIntegrationStoreSecret, "", true, true); err == nil {
-		u.CreateProjectContentHintIntegrationStoreSecret = &createProjectContentHintIntegrationStoreSecret
-		u.Type = CreateProjectContentHintUnionTypeCreateProjectContentHintIntegrationStoreSecret
 		return nil
 	}
 
@@ -3503,6 +3674,17 @@ type CreateProjectDeployHook5 struct {
 	URL       string   `json:"url"`
 }
 
+func (c CreateProjectDeployHook5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectDeployHook5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectDeployHook5) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -3552,6 +3734,17 @@ type CreateProjectLinkGithubCustomHost struct {
 	UpdatedAt        *float64                          `json:"updatedAt,omitempty"`
 	Sourceless       *bool                             `json:"sourceless,omitempty"`
 	ProductionBranch string                            `json:"productionBranch"`
+}
+
+func (c CreateProjectLinkGithubCustomHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectLinkGithubCustomHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"org", "type", "host", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectLinkGithubCustomHost) GetOrg() string {
@@ -3669,6 +3862,17 @@ type CreateProjectDeployHook4 struct {
 	URL       string   `json:"url"`
 }
 
+func (c CreateProjectDeployHook4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectDeployHook4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectDeployHook4) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -3717,6 +3921,17 @@ type CreateProjectLinkBitbucket struct {
 	UpdatedAt        *float64                   `json:"updatedAt,omitempty"`
 	Sourceless       *bool                      `json:"sourceless,omitempty"`
 	ProductionBranch string                     `json:"productionBranch"`
+}
+
+func (c CreateProjectLinkBitbucket) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectLinkBitbucket) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "slug", "owner", "type", "uuid", "workspaceUuid", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectLinkBitbucket) GetName() string {
@@ -3834,6 +4049,17 @@ type CreateProjectDeployHook3 struct {
 	URL       string   `json:"url"`
 }
 
+func (c CreateProjectDeployHook3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectDeployHook3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectDeployHook3) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -3884,6 +4110,17 @@ type CreateProjectLinkGitlab struct {
 	UpdatedAt        *float64                   `json:"updatedAt,omitempty"`
 	Sourceless       *bool                      `json:"sourceless,omitempty"`
 	ProductionBranch string                     `json:"productionBranch"`
+}
+
+func (c CreateProjectLinkGitlab) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectLinkGitlab) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"projectId", "projectName", "projectNameWithNamespace", "projectNamespace", "projectUrl", "type", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectLinkGitlab) GetProjectID() string {
@@ -4008,6 +4245,17 @@ type CreateProjectDeployHook2 struct {
 	URL       string   `json:"url"`
 }
 
+func (c CreateProjectDeployHook2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectDeployHook2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectDeployHook2) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -4044,18 +4292,29 @@ func (o *CreateProjectDeployHook2) GetURL() string {
 }
 
 type CreateProjectLinkGithubLimited struct {
-	Type       CreateProjectTypeGithubLimited `json:"type"`
-	UpdatedAt  *float64                       `json:"updatedAt,omitempty"`
-	CreatedAt  *float64                       `json:"createdAt,omitempty"`
-	Repo       *string                        `json:"repo,omitempty"`
-	Sourceless *bool                          `json:"sourceless,omitempty"`
-	Org        string                         `json:"org"`
+	Type      CreateProjectTypeGithubLimited `json:"type"`
+	Repo      *string                        `json:"repo,omitempty"`
+	RepoID    *float64                       `json:"repoId,omitempty"`
+	UpdatedAt *float64                       `json:"updatedAt,omitempty"`
+	CreatedAt *float64                       `json:"createdAt,omitempty"`
+	Org       string                         `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                   `json:"repoOwnerId,omitempty"`
-	RepoID           *float64                   `json:"repoId,omitempty"`
 	DeployHooks      []CreateProjectDeployHook2 `json:"deployHooks"`
 	GitCredentialID  string                     `json:"gitCredentialId"`
+	Sourceless       *bool                      `json:"sourceless,omitempty"`
 	ProductionBranch string                     `json:"productionBranch"`
+}
+
+func (c CreateProjectLinkGithubLimited) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectLinkGithubLimited) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "org", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectLinkGithubLimited) GetType() CreateProjectTypeGithubLimited {
@@ -4063,6 +4322,20 @@ func (o *CreateProjectLinkGithubLimited) GetType() CreateProjectTypeGithubLimite
 		return CreateProjectTypeGithubLimited("")
 	}
 	return o.Type
+}
+
+func (o *CreateProjectLinkGithubLimited) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *CreateProjectLinkGithubLimited) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
 }
 
 func (o *CreateProjectLinkGithubLimited) GetUpdatedAt() *float64 {
@@ -4079,20 +4352,6 @@ func (o *CreateProjectLinkGithubLimited) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *CreateProjectLinkGithubLimited) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
-}
-
-func (o *CreateProjectLinkGithubLimited) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
-}
-
 func (o *CreateProjectLinkGithubLimited) GetOrg() string {
 	if o == nil {
 		return ""
@@ -4107,13 +4366,6 @@ func (o *CreateProjectLinkGithubLimited) GetRepoOwnerID() *float64 {
 	return o.RepoOwnerID
 }
 
-func (o *CreateProjectLinkGithubLimited) GetRepoID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoID
-}
-
 func (o *CreateProjectLinkGithubLimited) GetDeployHooks() []CreateProjectDeployHook2 {
 	if o == nil {
 		return []CreateProjectDeployHook2{}
@@ -4126,6 +4378,13 @@ func (o *CreateProjectLinkGithubLimited) GetGitCredentialID() string {
 		return ""
 	}
 	return o.GitCredentialID
+}
+
+func (o *CreateProjectLinkGithubLimited) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
 }
 
 func (o *CreateProjectLinkGithubLimited) GetProductionBranch() string {
@@ -4164,6 +4423,17 @@ type CreateProjectDeployHook1 struct {
 	Name      string   `json:"name"`
 	Ref       string   `json:"ref"`
 	URL       string   `json:"url"`
+}
+
+func (c CreateProjectDeployHook1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectDeployHook1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectDeployHook1) GetCreatedAt() *float64 {
@@ -4214,6 +4484,17 @@ type CreateProjectLinkGithub struct {
 	UpdatedAt        *float64                   `json:"updatedAt,omitempty"`
 	Sourceless       *bool                      `json:"sourceless,omitempty"`
 	ProductionBranch string                     `json:"productionBranch"`
+}
+
+func (c CreateProjectLinkGithub) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectLinkGithub) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"org", "type", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectLinkGithub) GetOrg() string {
@@ -4360,38 +4641,38 @@ func CreateCreateProjectLinkUnionCreateProjectLinkGithubCustomHost(createProject
 
 func (u *CreateProjectLinkUnion) UnmarshalJSON(data []byte) error {
 
-	var createProjectLinkGithub CreateProjectLinkGithub = CreateProjectLinkGithub{}
-	if err := utils.UnmarshalJSON(data, &createProjectLinkGithub, "", true, true); err == nil {
-		u.CreateProjectLinkGithub = &createProjectLinkGithub
-		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkGithub
-		return nil
-	}
-
-	var createProjectLinkGithubLimited CreateProjectLinkGithubLimited = CreateProjectLinkGithubLimited{}
-	if err := utils.UnmarshalJSON(data, &createProjectLinkGithubLimited, "", true, true); err == nil {
-		u.CreateProjectLinkGithubLimited = &createProjectLinkGithubLimited
-		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkGithubLimited
+	var createProjectLinkGitlab CreateProjectLinkGitlab = CreateProjectLinkGitlab{}
+	if err := utils.UnmarshalJSON(data, &createProjectLinkGitlab, "", true, nil); err == nil {
+		u.CreateProjectLinkGitlab = &createProjectLinkGitlab
+		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkGitlab
 		return nil
 	}
 
 	var createProjectLinkBitbucket CreateProjectLinkBitbucket = CreateProjectLinkBitbucket{}
-	if err := utils.UnmarshalJSON(data, &createProjectLinkBitbucket, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectLinkBitbucket, "", true, nil); err == nil {
 		u.CreateProjectLinkBitbucket = &createProjectLinkBitbucket
 		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkBitbucket
 		return nil
 	}
 
 	var createProjectLinkGithubCustomHost CreateProjectLinkGithubCustomHost = CreateProjectLinkGithubCustomHost{}
-	if err := utils.UnmarshalJSON(data, &createProjectLinkGithubCustomHost, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &createProjectLinkGithubCustomHost, "", true, nil); err == nil {
 		u.CreateProjectLinkGithubCustomHost = &createProjectLinkGithubCustomHost
 		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkGithubCustomHost
 		return nil
 	}
 
-	var createProjectLinkGitlab CreateProjectLinkGitlab = CreateProjectLinkGitlab{}
-	if err := utils.UnmarshalJSON(data, &createProjectLinkGitlab, "", true, true); err == nil {
-		u.CreateProjectLinkGitlab = &createProjectLinkGitlab
-		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkGitlab
+	var createProjectLinkGithub CreateProjectLinkGithub = CreateProjectLinkGithub{}
+	if err := utils.UnmarshalJSON(data, &createProjectLinkGithub, "", true, nil); err == nil {
+		u.CreateProjectLinkGithub = &createProjectLinkGithub
+		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkGithub
+		return nil
+	}
+
+	var createProjectLinkGithubLimited CreateProjectLinkGithubLimited = CreateProjectLinkGithubLimited{}
+	if err := utils.UnmarshalJSON(data, &createProjectLinkGithubLimited, "", true, nil); err == nil {
+		u.CreateProjectLinkGithubLimited = &createProjectLinkGithubLimited
+		u.Type = CreateProjectLinkUnionTypeCreateProjectLinkGithubLimited
 		return nil
 	}
 
@@ -4428,6 +4709,17 @@ type CreateProjectMicrofrontends2 struct {
 	Enabled   bool    `json:"enabled"`
 }
 
+func (c CreateProjectMicrofrontends2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectMicrofrontends2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectMicrofrontends2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -4462,6 +4754,17 @@ type CreateProjectMicrofrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+}
+
+func (c CreateProjectMicrofrontends1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectMicrofrontends1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectMicrofrontends1) GetUpdatedAt() float64 {
@@ -4540,17 +4843,17 @@ func CreateCreateProjectMicrofrontendsUnionCreateProjectMicrofrontends2(createPr
 
 func (u *CreateProjectMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
-	var createProjectMicrofrontends2 CreateProjectMicrofrontends2 = CreateProjectMicrofrontends2{}
-	if err := utils.UnmarshalJSON(data, &createProjectMicrofrontends2, "", true, true); err == nil {
-		u.CreateProjectMicrofrontends2 = &createProjectMicrofrontends2
-		u.Type = CreateProjectMicrofrontendsUnionTypeCreateProjectMicrofrontends2
+	var createProjectMicrofrontends1 CreateProjectMicrofrontends1 = CreateProjectMicrofrontends1{}
+	if err := utils.UnmarshalJSON(data, &createProjectMicrofrontends1, "", true, nil); err == nil {
+		u.CreateProjectMicrofrontends1 = &createProjectMicrofrontends1
+		u.Type = CreateProjectMicrofrontendsUnionTypeCreateProjectMicrofrontends1
 		return nil
 	}
 
-	var createProjectMicrofrontends1 CreateProjectMicrofrontends1 = CreateProjectMicrofrontends1{}
-	if err := utils.UnmarshalJSON(data, &createProjectMicrofrontends1, "", true, true); err == nil {
-		u.CreateProjectMicrofrontends1 = &createProjectMicrofrontends1
-		u.Type = CreateProjectMicrofrontendsUnionTypeCreateProjectMicrofrontends1
+	var createProjectMicrofrontends2 CreateProjectMicrofrontends2 = CreateProjectMicrofrontends2{}
+	if err := utils.UnmarshalJSON(data, &createProjectMicrofrontends2, "", true, nil); err == nil {
+		u.CreateProjectMicrofrontends2 = &createProjectMicrofrontends2
+		u.Type = CreateProjectMicrofrontendsUnionTypeCreateProjectMicrofrontends2
 		return nil
 	}
 
@@ -4694,14 +4997,21 @@ func (e *CreateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 }
 
 type CreateProjectResourceConfigResponse struct {
+	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                      `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *CreateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *CreateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
+}
+
+func (o *CreateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *CreateProjectResourceConfigResponse) GetFluid() *bool {
@@ -4737,13 +5047,6 @@ func (o *CreateProjectResourceConfigResponse) GetFunctionZeroConfigFailover() *b
 		return nil
 	}
 	return o.FunctionZeroConfigFailover
-}
-
-func (o *CreateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
 }
 
 func (o *CreateProjectResourceConfigResponse) GetBuildMachineType() *CreateProjectResourceConfigBuildMachineTypeResponse {
@@ -4918,14 +5221,21 @@ func (e *CreateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 }
 
 type CreateProjectDefaultResourceConfig struct {
+	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                        `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                     `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                     `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *CreateProjectDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
-	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *CreateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                        `json:"isNSNBDisabled,omitempty"`
+}
+
+func (o *CreateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *CreateProjectDefaultResourceConfig) GetFluid() *bool {
@@ -4963,13 +5273,6 @@ func (o *CreateProjectDefaultResourceConfig) GetFunctionZeroConfigFailover() *bo
 	return o.FunctionZeroConfigFailover
 }
 
-func (o *CreateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
-}
-
 func (o *CreateProjectDefaultResourceConfig) GetBuildMachineType() *CreateProjectDefaultResourceConfigBuildMachineType {
 	if o == nil {
 		return nil
@@ -4987,8 +5290,8 @@ func (o *CreateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {
 type CreateProjectSsoProtectionDeploymentTypeResponse string
 
 const (
-	CreateProjectSsoProtectionDeploymentTypeResponseAll                              CreateProjectSsoProtectionDeploymentTypeResponse = "all"
 	CreateProjectSsoProtectionDeploymentTypeResponsePreview                          CreateProjectSsoProtectionDeploymentTypeResponse = "preview"
+	CreateProjectSsoProtectionDeploymentTypeResponseAll                              CreateProjectSsoProtectionDeploymentTypeResponse = "all"
 	CreateProjectSsoProtectionDeploymentTypeResponseProdDeploymentUrlsAndAllPreviews CreateProjectSsoProtectionDeploymentTypeResponse = "prod_deployment_urls_and_all_previews"
 	CreateProjectSsoProtectionDeploymentTypeResponseAllExceptCustomDomains           CreateProjectSsoProtectionDeploymentTypeResponse = "all_except_custom_domains"
 )
@@ -5002,9 +5305,9 @@ func (e *CreateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []
 		return err
 	}
 	switch v {
-	case "all":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
@@ -5062,14 +5365,14 @@ func CreateCreateProjectAliasAssignedBoolean(boolean bool) CreateProjectAliasAss
 func (u *CreateProjectAliasAssigned) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = CreateProjectAliasAssignedTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = CreateProjectAliasAssignedTypeBoolean
 		return nil
@@ -5778,6 +6081,73 @@ func (o *CreateProjectTargets) GetWithCache() *bool {
 }
 
 type CreateProjectPermissions struct {
+	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
+	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
+	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
+	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
+	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
+	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
+	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
+	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
+	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
+	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
+	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
+	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
+	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
+	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
+	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
+	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
+	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
+	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
+	Environments                             []components.ACLAction `json:"environments,omitempty"`
+	Logs                                     []components.ACLAction `json:"logs,omitempty"`
+	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
+	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
+	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
+	Job                                      []components.ACLAction `json:"job,omitempty"`
+	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
+	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
+	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
+	Project                                  []components.ACLAction `json:"project,omitempty"`
+	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
+	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
+	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
+	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
+	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
+	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
+	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
+	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
+	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
+	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
+	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
+	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
+	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
+	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
+	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
+	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
+	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
+	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
+	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
+	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
+	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
+	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
+	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
+	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
+	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
+	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
+	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
+	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
+	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
+	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
+	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
+	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
+	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
+	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
+	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
+	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
 	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
@@ -5923,73 +6293,475 @@ type CreateProjectPermissions struct {
 	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	APIKey                                   []components.ACLAction `json:"apiKey,omitempty"`
 	APIKeyOwnedBySelf                        []components.ACLAction `json:"apiKeyOwnedBySelf,omitempty"`
-	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
-	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
-	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
-	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
-	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
-	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
-	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
-	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
-	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
-	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
-	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
-	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
-	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
-	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
-	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
-	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
-	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
-	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
-	Environments                             []components.ACLAction `json:"environments,omitempty"`
-	Logs                                     []components.ACLAction `json:"logs,omitempty"`
-	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
-	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
-	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
-	Job                                      []components.ACLAction `json:"job,omitempty"`
-	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
-	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
-	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
-	Project                                  []components.ACLAction `json:"project,omitempty"`
-	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
-	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
-	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
-	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
-	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
-	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
-	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
-	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
-	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
-	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
-	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
-	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
-	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
-	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
-	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
-	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
-	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
-	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
-	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
-	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
-	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
-	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
-	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
-	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
-	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
-	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
-	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
-	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
-	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
-	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
-	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
-	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
-	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
-	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
-	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
-	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
-	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
-	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
-	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
+}
+
+func (o *CreateProjectPermissions) GetAliasProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProject
+}
+
+func (o *CreateProjectPermissions) GetAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetBuildMachine() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
+func (o *CreateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionAliasProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetConnectConfigurationLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurationLink
+}
+
+func (o *CreateProjectPermissions) GetDataCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DataCacheNamespace
+}
+
+func (o *CreateProjectPermissions) GetDeployment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Deployment
+}
+
+func (o *CreateProjectPermissions) GetDeploymentBuildLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentBuildLogs
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheck
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheckPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckPreview
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckReRunFromProductionBranch
+}
+
+func (o *CreateProjectPermissions) GetDeploymentProductionGit() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentProductionGit
+}
+
+func (o *CreateProjectPermissions) GetDeploymentV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentV0
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPreview
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPrivate() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPrivate
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPromote() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPromote
+}
+
+func (o *CreateProjectPermissions) GetDeploymentRollback() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentRollback
+}
+
+func (o *CreateProjectPermissions) GetEdgeCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeCacheNamespace
+}
+
+func (o *CreateProjectPermissions) GetEnvironments() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Environments
+}
+
+func (o *CreateProjectPermissions) GetLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Logs
+}
+
+func (o *CreateProjectPermissions) GetLogsPreset() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.LogsPreset
+}
+
+func (o *CreateProjectPermissions) GetPasswordProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PasswordProtection
+}
+
+func (o *CreateProjectPermissions) GetOptionsAllowlist() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OptionsAllowlist
+}
+
+func (o *CreateProjectPermissions) GetJob() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Job
+}
+
+func (o *CreateProjectPermissions) GetObservabilityData() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityData
+}
+
+func (o *CreateProjectPermissions) GetOnDemandBuild() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandBuild
+}
+
+func (o *CreateProjectPermissions) GetOnDemandConcurrency() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandConcurrency
+}
+
+func (o *CreateProjectPermissions) GetProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *CreateProjectPermissions) GetProjectFromV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFromV0
+}
+
+func (o *CreateProjectPermissions) GetProjectAccessGroup() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAccessGroup
+}
+
+func (o *CreateProjectPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsSampling
+}
+
+func (o *CreateProjectPermissions) GetProjectCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheck
+}
+
+func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheckRun
+}
+
+func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentHook
+}
+
+func (o *CreateProjectPermissions) GetProjectDomain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomain
+}
+
+func (o *CreateProjectPermissions) GetProjectDomainMove() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainMove
+}
+
+func (o *CreateProjectPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainCheckConfig
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVars() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVars
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsProduction
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsUnownedByIntegration
+}
+
+func (o *CreateProjectPermissions) GetProjectFlags() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlags
+}
+
+func (o *CreateProjectPermissions) GetProjectID() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *CreateProjectPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIntegrationConfiguration
+}
+
+func (o *CreateProjectPermissions) GetProjectLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectLink
+}
+
+func (o *CreateProjectPermissions) GetProjectMember() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMember
+}
+
+func (o *CreateProjectPermissions) GetProjectMonitoring() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMonitoring
+}
+
+func (o *CreateProjectPermissions) GetProjectPermissions() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectPermissions
+}
+
+func (o *CreateProjectPermissions) GetProjectProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProductionBranch
+}
+
+func (o *CreateProjectPermissions) GetProjectTransfer() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransfer
+}
+
+func (o *CreateProjectPermissions) GetProjectTransferOut() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransferOut
+}
+
+func (o *CreateProjectPermissions) GetProjectProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetProjectUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectUsage
+}
+
+func (o *CreateProjectPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsUsage
+}
+
+func (o *CreateProjectPermissions) GetProjectSupportCase() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCase
+}
+
+func (o *CreateProjectPermissions) GetProjectSupportCaseComment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCaseComment
+}
+
+func (o *CreateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentExpiration
+}
+
+func (o *CreateProjectPermissions) GetProjectRollingRelease() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRollingRelease
+}
+
+func (o *CreateProjectPermissions) GetProjectTier() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTier
+}
+
+func (o *CreateProjectPermissions) GetProjectOIDCToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectOIDCToken
+}
+
+func (o *CreateProjectPermissions) GetSeawallConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SeawallConfig
+}
+
+func (o *CreateProjectPermissions) GetSkewProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtection
+}
+
+func (o *CreateProjectPermissions) GetAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Analytics
+}
+
+func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedIps
+}
+
+func (o *CreateProjectPermissions) GetV0Chat() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.V0Chat
+}
+
+func (o *CreateProjectPermissions) GetWebAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.WebAnalytics
+}
+
+func (o *CreateProjectPermissions) GetSharedEnvVarConnection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SharedEnvVarConnection
+}
+
+func (o *CreateProjectPermissions) GetSonar() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Sonar
 }
 
 func (o *CreateProjectPermissions) GetOauth2Connection() []components.ACLAction {
@@ -7007,475 +7779,6 @@ func (o *CreateProjectPermissions) GetAPIKeyOwnedBySelf() []components.ACLAction
 	return o.APIKeyOwnedBySelf
 }
 
-func (o *CreateProjectPermissions) GetAliasProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProject
-}
-
-func (o *CreateProjectPermissions) GetAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetBuildMachine() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachine
-}
-
-func (o *CreateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionAliasProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetConnectConfigurationLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ConnectConfigurationLink
-}
-
-func (o *CreateProjectPermissions) GetDataCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DataCacheNamespace
-}
-
-func (o *CreateProjectPermissions) GetDeployment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Deployment
-}
-
-func (o *CreateProjectPermissions) GetDeploymentBuildLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentBuildLogs
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheck
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheckPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckPreview
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckReRunFromProductionBranch
-}
-
-func (o *CreateProjectPermissions) GetDeploymentProductionGit() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentProductionGit
-}
-
-func (o *CreateProjectPermissions) GetDeploymentV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentV0
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPreview
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPrivate() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPrivate
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPromote() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPromote
-}
-
-func (o *CreateProjectPermissions) GetDeploymentRollback() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentRollback
-}
-
-func (o *CreateProjectPermissions) GetEdgeCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.EdgeCacheNamespace
-}
-
-func (o *CreateProjectPermissions) GetEnvironments() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Environments
-}
-
-func (o *CreateProjectPermissions) GetLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Logs
-}
-
-func (o *CreateProjectPermissions) GetLogsPreset() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.LogsPreset
-}
-
-func (o *CreateProjectPermissions) GetPasswordProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.PasswordProtection
-}
-
-func (o *CreateProjectPermissions) GetOptionsAllowlist() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OptionsAllowlist
-}
-
-func (o *CreateProjectPermissions) GetJob() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Job
-}
-
-func (o *CreateProjectPermissions) GetObservabilityData() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ObservabilityData
-}
-
-func (o *CreateProjectPermissions) GetOnDemandBuild() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandBuild
-}
-
-func (o *CreateProjectPermissions) GetOnDemandConcurrency() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandConcurrency
-}
-
-func (o *CreateProjectPermissions) GetProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Project
-}
-
-func (o *CreateProjectPermissions) GetProjectFromV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFromV0
-}
-
-func (o *CreateProjectPermissions) GetProjectAccessGroup() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAccessGroup
-}
-
-func (o *CreateProjectPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsSampling
-}
-
-func (o *CreateProjectPermissions) GetProjectCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheck
-}
-
-func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheckRun
-}
-
-func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentHook
-}
-
-func (o *CreateProjectPermissions) GetProjectDomain() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomain
-}
-
-func (o *CreateProjectPermissions) GetProjectDomainMove() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainMove
-}
-
-func (o *CreateProjectPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainCheckConfig
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVars() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVars
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsProduction
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsUnownedByIntegration
-}
-
-func (o *CreateProjectPermissions) GetProjectFlags() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFlags
-}
-
-func (o *CreateProjectPermissions) GetProjectID() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectID
-}
-
-func (o *CreateProjectPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectIntegrationConfiguration
-}
-
-func (o *CreateProjectPermissions) GetProjectLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectLink
-}
-
-func (o *CreateProjectPermissions) GetProjectMember() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMember
-}
-
-func (o *CreateProjectPermissions) GetProjectMonitoring() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMonitoring
-}
-
-func (o *CreateProjectPermissions) GetProjectPermissions() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectPermissions
-}
-
-func (o *CreateProjectPermissions) GetProjectProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProductionBranch
-}
-
-func (o *CreateProjectPermissions) GetProjectTransfer() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransfer
-}
-
-func (o *CreateProjectPermissions) GetProjectTransferOut() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransferOut
-}
-
-func (o *CreateProjectPermissions) GetProjectProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetProjectUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectUsage
-}
-
-func (o *CreateProjectPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsUsage
-}
-
-func (o *CreateProjectPermissions) GetProjectSupportCase() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCase
-}
-
-func (o *CreateProjectPermissions) GetProjectSupportCaseComment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCaseComment
-}
-
-func (o *CreateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentExpiration
-}
-
-func (o *CreateProjectPermissions) GetProjectRollingRelease() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectRollingRelease
-}
-
-func (o *CreateProjectPermissions) GetProjectTier() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTier
-}
-
-func (o *CreateProjectPermissions) GetProjectOIDCToken() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectOIDCToken
-}
-
-func (o *CreateProjectPermissions) GetSeawallConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SeawallConfig
-}
-
-func (o *CreateProjectPermissions) GetSkewProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SkewProtection
-}
-
-func (o *CreateProjectPermissions) GetAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Analytics
-}
-
-func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedIps
-}
-
-func (o *CreateProjectPermissions) GetV0Chat() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.V0Chat
-}
-
-func (o *CreateProjectPermissions) GetWebAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.WebAnalytics
-}
-
-func (o *CreateProjectPermissions) GetSharedEnvVarConnection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SharedEnvVarConnection
-}
-
-func (o *CreateProjectPermissions) GetSonar() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Sonar
-}
-
 type CreateProjectLastRollbackTarget struct {
 }
 
@@ -7621,6 +7924,17 @@ type CreateProjectProtectionBypassAutomationBypass struct {
 	Scope     CreateProjectScopeAutomationBypass `json:"scope"`
 }
 
+func (c CreateProjectProtectionBypassAutomationBypass) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectProtectionBypassAutomationBypass) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"createdAt", "createdBy", "scope"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CreateProjectProtectionBypassAutomationBypass) GetCreatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -7671,6 +7985,17 @@ type CreateProjectProtectionBypassIntegrationAutomationBypass struct {
 	Scope           CreateProjectScopeIntegrationAutomationBypass `json:"scope"`
 	IntegrationID   string                                        `json:"integrationId"`
 	ConfigurationID string                                        `json:"configurationId"`
+}
+
+func (c CreateProjectProtectionBypassIntegrationAutomationBypass) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectProtectionBypassIntegrationAutomationBypass) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"createdAt", "createdBy", "scope", "integrationId", "configurationId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectProtectionBypassIntegrationAutomationBypass) GetCreatedAt() float64 {
@@ -7742,17 +8067,17 @@ func CreateCreateProjectProtectionBypassUnionCreateProjectProtectionBypassAutoma
 
 func (u *CreateProjectProtectionBypassUnion) UnmarshalJSON(data []byte) error {
 
-	var createProjectProtectionBypassAutomationBypass CreateProjectProtectionBypassAutomationBypass = CreateProjectProtectionBypassAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &createProjectProtectionBypassAutomationBypass, "", true, true); err == nil {
-		u.CreateProjectProtectionBypassAutomationBypass = &createProjectProtectionBypassAutomationBypass
-		u.Type = CreateProjectProtectionBypassUnionTypeCreateProjectProtectionBypassAutomationBypass
+	var createProjectProtectionBypassIntegrationAutomationBypass CreateProjectProtectionBypassIntegrationAutomationBypass = CreateProjectProtectionBypassIntegrationAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &createProjectProtectionBypassIntegrationAutomationBypass, "", true, nil); err == nil {
+		u.CreateProjectProtectionBypassIntegrationAutomationBypass = &createProjectProtectionBypassIntegrationAutomationBypass
+		u.Type = CreateProjectProtectionBypassUnionTypeCreateProjectProtectionBypassIntegrationAutomationBypass
 		return nil
 	}
 
-	var createProjectProtectionBypassIntegrationAutomationBypass CreateProjectProtectionBypassIntegrationAutomationBypass = CreateProjectProtectionBypassIntegrationAutomationBypass{}
-	if err := utils.UnmarshalJSON(data, &createProjectProtectionBypassIntegrationAutomationBypass, "", true, true); err == nil {
-		u.CreateProjectProtectionBypassIntegrationAutomationBypass = &createProjectProtectionBypassIntegrationAutomationBypass
-		u.Type = CreateProjectProtectionBypassUnionTypeCreateProjectProtectionBypassIntegrationAutomationBypass
+	var createProjectProtectionBypassAutomationBypass CreateProjectProtectionBypassAutomationBypass = CreateProjectProtectionBypassAutomationBypass{}
+	if err := utils.UnmarshalJSON(data, &createProjectProtectionBypassAutomationBypass, "", true, nil); err == nil {
+		u.CreateProjectProtectionBypassAutomationBypass = &createProjectProtectionBypassAutomationBypass
+		u.Type = CreateProjectProtectionBypassUnionTypeCreateProjectProtectionBypassAutomationBypass
 		return nil
 	}
 
@@ -7774,11 +8099,11 @@ func (u CreateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectTrustedIpsDeploymentType2 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType2All                              CreateProjectTrustedIpsDeploymentType2 = "all"
 	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
+	CreateProjectTrustedIpsDeploymentType2Production                       CreateProjectTrustedIpsDeploymentType2 = "production"
+	CreateProjectTrustedIpsDeploymentType2All                              CreateProjectTrustedIpsDeploymentType2 = "all"
 	CreateProjectTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType2AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType2 = "all_except_custom_domains"
-	CreateProjectTrustedIpsDeploymentType2Production                       CreateProjectTrustedIpsDeploymentType2 = "production"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType2) ToPointer() *CreateProjectTrustedIpsDeploymentType2 {
@@ -7790,15 +8115,15 @@ func (e *CreateProjectTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "all":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
+		fallthrough
+	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
-		fallthrough
-	case "production":
 		*e = CreateProjectTrustedIpsDeploymentType2(v)
 		return nil
 	default:
@@ -7808,6 +8133,17 @@ func (e *CreateProjectTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) erro
 
 type CreateProjectTrustedIps2 struct {
 	DeploymentType CreateProjectTrustedIpsDeploymentType2 `json:"deploymentType"`
+}
+
+func (c CreateProjectTrustedIps2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectTrustedIps2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectTrustedIps2) GetDeploymentType() CreateProjectTrustedIpsDeploymentType2 {
@@ -7820,11 +8156,11 @@ func (o *CreateProjectTrustedIps2) GetDeploymentType() CreateProjectTrustedIpsDe
 type CreateProjectTrustedIpsDeploymentType1 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType1All                              CreateProjectTrustedIpsDeploymentType1 = "all"
 	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
+	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
+	CreateProjectTrustedIpsDeploymentType1All                              CreateProjectTrustedIpsDeploymentType1 = "all"
 	CreateProjectTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType1AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType1 = "all_except_custom_domains"
-	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType1) ToPointer() *CreateProjectTrustedIpsDeploymentType1 {
@@ -7836,15 +8172,15 @@ func (e *CreateProjectTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "all":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
+		fallthrough
+	case "all":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
-		fallthrough
-	case "production":
 		*e = CreateProjectTrustedIpsDeploymentType1(v)
 		return nil
 	default:
@@ -7855,6 +8191,17 @@ func (e *CreateProjectTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) erro
 type CreateProjectAddress struct {
 	Value string  `json:"value"`
 	Note  *string `json:"note,omitempty"`
+}
+
+func (c CreateProjectAddress) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectAddress) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectAddress) GetValue() string {
@@ -7901,6 +8248,17 @@ type CreateProjectTrustedIps1 struct {
 	DeploymentType CreateProjectTrustedIpsDeploymentType1 `json:"deploymentType"`
 	Addresses      []CreateProjectAddress                 `json:"addresses"`
 	ProtectionMode CreateProjectProtectionMode            `json:"protectionMode"`
+}
+
+func (c CreateProjectTrustedIps1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectTrustedIps1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"deploymentType", "addresses", "protectionMode"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateProjectTrustedIps1) GetDeploymentType() CreateProjectTrustedIpsDeploymentType1 {
@@ -7958,17 +8316,17 @@ func CreateCreateProjectTrustedIpsUnionCreateProjectTrustedIps2(createProjectTru
 
 func (u *CreateProjectTrustedIpsUnion) UnmarshalJSON(data []byte) error {
 
-	var createProjectTrustedIps2 CreateProjectTrustedIps2 = CreateProjectTrustedIps2{}
-	if err := utils.UnmarshalJSON(data, &createProjectTrustedIps2, "", true, true); err == nil {
-		u.CreateProjectTrustedIps2 = &createProjectTrustedIps2
-		u.Type = CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps2
+	var createProjectTrustedIps1 CreateProjectTrustedIps1 = CreateProjectTrustedIps1{}
+	if err := utils.UnmarshalJSON(data, &createProjectTrustedIps1, "", true, nil); err == nil {
+		u.CreateProjectTrustedIps1 = &createProjectTrustedIps1
+		u.Type = CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps1
 		return nil
 	}
 
-	var createProjectTrustedIps1 CreateProjectTrustedIps1 = CreateProjectTrustedIps1{}
-	if err := utils.UnmarshalJSON(data, &createProjectTrustedIps1, "", true, true); err == nil {
-		u.CreateProjectTrustedIps1 = &createProjectTrustedIps1
-		u.Type = CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps1
+	var createProjectTrustedIps2 CreateProjectTrustedIps2 = CreateProjectTrustedIps2{}
+	if err := utils.UnmarshalJSON(data, &createProjectTrustedIps2, "", true, nil); err == nil {
+		u.CreateProjectTrustedIps2 = &createProjectTrustedIps2
+		u.Type = CreateProjectTrustedIpsUnionTypeCreateProjectTrustedIps2
 		return nil
 	}
 
@@ -8475,28 +8833,29 @@ type CreateProjectResponseBody struct {
 	CustomerSupportCodeVisibility    *bool                               `json:"customerSupportCodeVisibility,omitempty"`
 	Crons                            *CreateProjectCrons                 `json:"crons,omitempty"`
 	DataCache                        *CreateProjectDataCache             `json:"dataCache,omitempty"`
-	DeploymentExpiration             *CreateProjectDeploymentExpiration  `json:"deploymentExpiration,omitempty"`
-	DevCommand                       *string                             `json:"devCommand,omitempty"`
-	DirectoryListing                 bool                                `json:"directoryListing"`
-	InstallCommand                   *string                             `json:"installCommand,omitempty"`
-	Env                              []CreateProjectEnv                  `json:"env,omitempty"`
-	CustomEnvironments               []CreateProjectCustomEnvironment    `json:"customEnvironments,omitempty"`
-	Framework                        *CreateProjectFrameworkResponseBody `json:"framework,omitempty"`
-	GitForkProtection                *bool                               `json:"gitForkProtection,omitempty"`
-	GitLFS                           *bool                               `json:"gitLFS,omitempty"`
-	ID                               string                              `json:"id"`
-	IPBuckets                        []CreateProjectIPBucket             `json:"ipBuckets,omitempty"`
-	LatestDeployments                []CreateProjectLatestDeployment     `json:"latestDeployments,omitempty"`
-	Link                             *CreateProjectLinkUnion             `json:"link,omitempty"`
-	Microfrontends                   *CreateProjectMicrofrontendsUnion   `json:"microfrontends,omitempty"`
-	Name                             string                              `json:"name"`
-	NodeVersion                      CreateProjectNodeVersion            `json:"nodeVersion"`
-	OptionsAllowlist                 *CreateProjectOptionsAllowlist      `json:"optionsAllowlist,omitempty"`
-	OutputDirectory                  *string                             `json:"outputDirectory,omitempty"`
-	PasswordProtection               *CreateProjectPasswordProtection    `json:"passwordProtection,omitempty"`
-	ProductionDeploymentsFastLane    *bool                               `json:"productionDeploymentsFastLane,omitempty"`
-	PublicSource                     *bool                               `json:"publicSource,omitempty"`
-	ResourceConfig                   CreateProjectResourceConfigResponse `json:"resourceConfig"`
+	// Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
+	DeploymentExpiration          *CreateProjectDeploymentExpiration  `json:"deploymentExpiration,omitempty"`
+	DevCommand                    *string                             `json:"devCommand,omitempty"`
+	DirectoryListing              bool                                `json:"directoryListing"`
+	InstallCommand                *string                             `json:"installCommand,omitempty"`
+	Env                           []CreateProjectEnv                  `json:"env,omitempty"`
+	CustomEnvironments            []CreateProjectCustomEnvironment    `json:"customEnvironments,omitempty"`
+	Framework                     *CreateProjectFrameworkResponseBody `json:"framework,omitempty"`
+	GitForkProtection             *bool                               `json:"gitForkProtection,omitempty"`
+	GitLFS                        *bool                               `json:"gitLFS,omitempty"`
+	ID                            string                              `json:"id"`
+	IPBuckets                     []CreateProjectIPBucket             `json:"ipBuckets,omitempty"`
+	LatestDeployments             []CreateProjectLatestDeployment     `json:"latestDeployments,omitempty"`
+	Link                          *CreateProjectLinkUnion             `json:"link,omitempty"`
+	Microfrontends                *CreateProjectMicrofrontendsUnion   `json:"microfrontends,omitempty"`
+	Name                          string                              `json:"name"`
+	NodeVersion                   CreateProjectNodeVersion            `json:"nodeVersion"`
+	OptionsAllowlist              *CreateProjectOptionsAllowlist      `json:"optionsAllowlist,omitempty"`
+	OutputDirectory               *string                             `json:"outputDirectory,omitempty"`
+	PasswordProtection            *CreateProjectPasswordProtection    `json:"passwordProtection,omitempty"`
+	ProductionDeploymentsFastLane *bool                               `json:"productionDeploymentsFastLane,omitempty"`
+	PublicSource                  *bool                               `json:"publicSource,omitempty"`
+	ResourceConfig                CreateProjectResourceConfigResponse `json:"resourceConfig"`
 	// Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.
 	RollbackDescription *CreateProjectRollbackDescription `json:"rollbackDescription,omitempty"`
 	// Project-level rolling release configuration that defines how deployments should be gradually rolled out

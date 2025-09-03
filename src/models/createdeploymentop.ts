@@ -526,11 +526,11 @@ export type CreateDeploymentProjectSettings = {
 };
 
 export const CreateDeploymentDeploymentsStatus = {
-  Error: "error",
-  Timeout: "timeout",
   Skipped: "skipped",
   Pending: "pending",
   Ready: "ready",
+  Error: "error",
+  Timeout: "timeout",
 } as const;
 export type CreateDeploymentDeploymentsStatus = ClosedEnum<
   typeof CreateDeploymentDeploymentsStatus
@@ -622,8 +622,8 @@ export type Creator = {
 };
 
 export const CreateDeploymentReadyState = {
-  Error: "ERROR",
   Building: "BUILDING",
+  Error: "ERROR",
   Initializing: "INITIALIZING",
   Ready: "READY",
 } as const;
@@ -1154,24 +1154,17 @@ export const CreateDeploymentTarget = {
 } as const;
 export type CreateDeploymentTarget = ClosedEnum<typeof CreateDeploymentTarget>;
 
+export type AliasError = {
+  code: string;
+  message: string;
+};
+
 export type AliasWarning = {
   code: string;
   message: string;
   link?: string | undefined;
   action?: string | undefined;
 };
-
-export type AliasError = {
-  code: string;
-  message: string;
-};
-
-export const ChecksState = {
-  Registered: "registered",
-  Running: "running",
-  Completed: "completed",
-} as const;
-export type ChecksState = ClosedEnum<typeof ChecksState>;
 
 export const ChecksConclusion = {
   Succeeded: "succeeded",
@@ -1180,6 +1173,25 @@ export const ChecksConclusion = {
   Canceled: "canceled",
 } as const;
 export type ChecksConclusion = ClosedEnum<typeof ChecksConclusion>;
+
+export const ChecksState = {
+  Registered: "registered",
+  Running: "running",
+  Completed: "completed",
+} as const;
+export type ChecksState = ClosedEnum<typeof ChecksState>;
+
+export type OidcTokenClaims = {
+  iss: string;
+  sub: string;
+  scope: string;
+  aud: string;
+  owner: string;
+  ownerId: string;
+  project: string;
+  projectId: string;
+  environment: string;
+};
 
 /**
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
@@ -1194,18 +1206,6 @@ export const ReadySubstate = {
  */
 export type ReadySubstate = ClosedEnum<typeof ReadySubstate>;
 
-export type OidcTokenClaims = {
-  iss: string;
-  sub: string;
-  scope: string;
-  aud: string;
-  owner: string;
-  ownerId: string;
-  project: string;
-  projectId: string;
-  environment: string;
-};
-
 export const CreateDeploymentPlan = {
   Hobby: "hobby",
   Pro: "pro",
@@ -1214,14 +1214,14 @@ export const CreateDeploymentPlan = {
 export type CreateDeploymentPlan = ClosedEnum<typeof CreateDeploymentPlan>;
 
 export const FunctionType = {
-  Standard: "standard",
   Fluid: "fluid",
+  Standard: "standard",
 } as const;
 export type FunctionType = ClosedEnum<typeof FunctionType>;
 
 export const FunctionMemoryType = {
-  StandardLegacy: "standard_legacy",
   Standard: "standard",
+  StandardLegacy: "standard_legacy",
   Performance: "performance",
 } as const;
 export type FunctionMemoryType = ClosedEnum<typeof FunctionMemoryType>;
@@ -1296,6 +1296,7 @@ export type Functions = {
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?: Array<ExperimentalTriggers> | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 export type Routes3 = {
@@ -1305,12 +1306,12 @@ export type Routes3 = {
 };
 
 export const Handle = {
-  Filesystem: "filesystem",
   Error: "error",
+  Filesystem: "filesystem",
   Hit: "hit",
   Miss: "miss",
-  Resource: "resource",
   Rewrite: "rewrite",
+  Resource: "resource",
 } as const;
 export type Handle = ClosedEnum<typeof Handle>;
 
@@ -1469,8 +1470,8 @@ export const RoutesType = {
 export type RoutesType = ClosedEnum<typeof RoutesType>;
 
 export const CreateDeploymentRoutesOp = {
-  Set: "set",
   Append: "append",
+  Set: "set",
   Delete: "delete",
 } as const;
 export type CreateDeploymentRoutesOp = ClosedEnum<
@@ -1573,7 +1574,7 @@ export type CreateDeploymentChecks = {
 };
 
 /**
- * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
+ * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
  */
 export type CreateDeploymentMicrofrontendsApplications = {
   isDefaultApp?: boolean | undefined;
@@ -1588,14 +1589,31 @@ export type CreateDeploymentMicrofrontendsApplications = {
   deploymentHost?: string | undefined;
 };
 
+/**
+ * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+ */
+export const MfeConfigUploadState = {
+  Error: "error",
+  Success: "success",
+  NoConfig: "no_config",
+} as const;
+/**
+ * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+ */
+export type MfeConfigUploadState = ClosedEnum<typeof MfeConfigUploadState>;
+
 export type CreateDeploymentMicrofrontends2 = {
+  isDefaultApp: boolean;
   /**
-   * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
+   * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
    */
   applications?:
     | { [k: string]: CreateDeploymentMicrofrontendsApplications }
     | undefined;
-  isDefaultApp: boolean;
+  /**
+   * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+   */
+  mfeConfigUploadState?: MfeConfigUploadState | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
    */
@@ -1615,9 +1633,6 @@ export type CreateDeploymentMicrofrontends2 = {
 };
 
 export type CreateDeploymentMicrofrontends1 = {
-  /**
-   * Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-   */
   isDefaultApp?: boolean | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
@@ -1641,6 +1656,31 @@ export type CreateDeploymentMicrofrontends =
   | CreateDeploymentMicrofrontends2
   | CreateDeploymentMicrofrontends1;
 
+/**
+ * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
+ */
+export type Flags2 = {};
+
+export type Options = {
+  value: FlagJSONValue | null;
+  label?: string | undefined;
+};
+
+export type FlagsDefinitions = {
+  options?: Array<Options> | undefined;
+  url?: string | undefined;
+  description?: string | undefined;
+};
+
+/**
+ * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
+ */
+export type Flags1 = {
+  definitions: { [k: string]: FlagsDefinitions };
+};
+
+export type Flags = Flags1 | Array<Flags2>;
+
 export const CreateDeploymentGitRepoDeploymentsType = {
   Bitbucket: "bitbucket",
 } as const;
@@ -1649,8 +1689,8 @@ export type CreateDeploymentGitRepoDeploymentsType = ClosedEnum<
 >;
 
 export const CreateDeploymentGitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type CreateDeploymentGitRepoOwnerType = ClosedEnum<
   typeof CreateDeploymentGitRepoOwnerType
@@ -1677,8 +1717,8 @@ export type CreateDeploymentGitRepoType = ClosedEnum<
 >;
 
 export const GitRepoOwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type GitRepoOwnerType = ClosedEnum<typeof GitRepoOwnerType>;
 
@@ -1701,8 +1741,8 @@ export const GitRepoType = {
 export type GitRepoType = ClosedEnum<typeof GitRepoType>;
 
 export const OwnerType = {
-  User: "user",
   Team: "team",
+  User: "user",
 } as const;
 export type OwnerType = ClosedEnum<typeof OwnerType>;
 
@@ -1719,31 +1759,6 @@ export type GitRepo1 = {
 };
 
 export type GitRepo = GitRepo2 | GitRepo3 | GitRepo1;
-
-/**
- * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
- */
-export type Flags2 = {};
-
-export type Options = {
-  value: FlagJSONValue | null;
-  label?: string | undefined;
-};
-
-export type FlagsDefinitions = {
-  options?: Array<Options> | undefined;
-  url?: string | undefined;
-  description?: string | undefined;
-};
-
-/**
- * Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags.
- */
-export type Flags1 = {
-  definitions: { [k: string]: FlagsDefinitions };
-};
-
-export type Flags = Flags1 | Array<Flags2>;
 
 /**
  * The successfully created deployment
@@ -1826,22 +1841,23 @@ export type CreateDeploymentResponseBody = {
    */
   passiveRegions?: Array<string> | undefined;
   regions: Array<string>;
-  aliasWarning?: AliasWarning | null | undefined;
   aliasError?: AliasError | null | undefined;
   aliasFinal?: string | null | undefined;
+  aliasWarning?: AliasWarning | null | undefined;
   automaticAliases?: Array<string> | undefined;
   buildErrorAt?: number | undefined;
-  checksState?: ChecksState | undefined;
+  canceledAt?: number | undefined;
   checksConclusion?: ChecksConclusion | undefined;
+  checksState?: ChecksState | undefined;
   /**
    * Computed field that is only available for deployments with a microfrontend configuration.
    */
   defaultRoute?: string | undefined;
-  canceledAt?: number | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorStep?: string | undefined;
   originCacheRegion?: string | undefined;
+  oidcTokenClaims?: OidcTokenClaims | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
@@ -1849,7 +1865,6 @@ export type CreateDeploymentResponseBody = {
   softDeletedByRetention?: boolean | undefined;
   undeletedAt?: number | undefined;
   url: string;
-  oidcTokenClaims?: OidcTokenClaims | undefined;
   projectId: string;
   ownerId: string;
   monorepoManager?: string | null | undefined;
@@ -1873,8 +1888,8 @@ export type CreateDeploymentResponseBody = {
    * Since November 2023 this field defines a Secure Compute network that will only be used to deploy passive lambdas to (as in passiveRegions)
    */
   passiveConnectConfigurationId?: string | undefined;
-  gitRepo?: GitRepo2 | GitRepo3 | GitRepo1 | null | undefined;
   flags?: Flags1 | Array<Flags2> | undefined;
+  gitRepo?: GitRepo2 | GitRepo3 | GitRepo1 | null | undefined;
 };
 
 /** @internal */
@@ -6454,6 +6469,59 @@ export namespace CreateDeploymentTarget$ {
 }
 
 /** @internal */
+export const AliasError$inboundSchema: z.ZodType<
+  AliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: z.string(),
+  message: z.string(),
+});
+
+/** @internal */
+export type AliasError$Outbound = {
+  code: string;
+  message: string;
+};
+
+/** @internal */
+export const AliasError$outboundSchema: z.ZodType<
+  AliasError$Outbound,
+  z.ZodTypeDef,
+  AliasError
+> = z.object({
+  code: z.string(),
+  message: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AliasError$ {
+  /** @deprecated use `AliasError$inboundSchema` instead. */
+  export const inboundSchema = AliasError$inboundSchema;
+  /** @deprecated use `AliasError$outboundSchema` instead. */
+  export const outboundSchema = AliasError$outboundSchema;
+  /** @deprecated use `AliasError$Outbound` instead. */
+  export type Outbound = AliasError$Outbound;
+}
+
+export function aliasErrorToJSON(aliasError: AliasError): string {
+  return JSON.stringify(AliasError$outboundSchema.parse(aliasError));
+}
+
+export function aliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<AliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AliasError' from JSON`,
+  );
+}
+
+/** @internal */
 export const AliasWarning$inboundSchema: z.ZodType<
   AliasWarning,
   z.ZodTypeDef,
@@ -6513,78 +6581,6 @@ export function aliasWarningFromJSON(
 }
 
 /** @internal */
-export const AliasError$inboundSchema: z.ZodType<
-  AliasError,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  code: z.string(),
-  message: z.string(),
-});
-
-/** @internal */
-export type AliasError$Outbound = {
-  code: string;
-  message: string;
-};
-
-/** @internal */
-export const AliasError$outboundSchema: z.ZodType<
-  AliasError$Outbound,
-  z.ZodTypeDef,
-  AliasError
-> = z.object({
-  code: z.string(),
-  message: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AliasError$ {
-  /** @deprecated use `AliasError$inboundSchema` instead. */
-  export const inboundSchema = AliasError$inboundSchema;
-  /** @deprecated use `AliasError$outboundSchema` instead. */
-  export const outboundSchema = AliasError$outboundSchema;
-  /** @deprecated use `AliasError$Outbound` instead. */
-  export type Outbound = AliasError$Outbound;
-}
-
-export function aliasErrorToJSON(aliasError: AliasError): string {
-  return JSON.stringify(AliasError$outboundSchema.parse(aliasError));
-}
-
-export function aliasErrorFromJSON(
-  jsonString: string,
-): SafeParseResult<AliasError, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AliasError$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AliasError' from JSON`,
-  );
-}
-
-/** @internal */
-export const ChecksState$inboundSchema: z.ZodNativeEnum<typeof ChecksState> = z
-  .nativeEnum(ChecksState);
-
-/** @internal */
-export const ChecksState$outboundSchema: z.ZodNativeEnum<typeof ChecksState> =
-  ChecksState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChecksState$ {
-  /** @deprecated use `ChecksState$inboundSchema` instead. */
-  export const inboundSchema = ChecksState$inboundSchema;
-  /** @deprecated use `ChecksState$outboundSchema` instead. */
-  export const outboundSchema = ChecksState$outboundSchema;
-}
-
-/** @internal */
 export const ChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof ChecksConclusion
 > = z.nativeEnum(ChecksConclusion);
@@ -6606,24 +6602,22 @@ export namespace ChecksConclusion$ {
 }
 
 /** @internal */
-export const ReadySubstate$inboundSchema: z.ZodNativeEnum<
-  typeof ReadySubstate
-> = z.nativeEnum(ReadySubstate);
+export const ChecksState$inboundSchema: z.ZodNativeEnum<typeof ChecksState> = z
+  .nativeEnum(ChecksState);
 
 /** @internal */
-export const ReadySubstate$outboundSchema: z.ZodNativeEnum<
-  typeof ReadySubstate
-> = ReadySubstate$inboundSchema;
+export const ChecksState$outboundSchema: z.ZodNativeEnum<typeof ChecksState> =
+  ChecksState$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ReadySubstate$ {
-  /** @deprecated use `ReadySubstate$inboundSchema` instead. */
-  export const inboundSchema = ReadySubstate$inboundSchema;
-  /** @deprecated use `ReadySubstate$outboundSchema` instead. */
-  export const outboundSchema = ReadySubstate$outboundSchema;
+export namespace ChecksState$ {
+  /** @deprecated use `ChecksState$inboundSchema` instead. */
+  export const inboundSchema = ChecksState$inboundSchema;
+  /** @deprecated use `ChecksState$outboundSchema` instead. */
+  export const outboundSchema = ChecksState$outboundSchema;
 }
 
 /** @internal */
@@ -6710,6 +6704,27 @@ export function oidcTokenClaimsFromJSON(
     (x) => OidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OidcTokenClaims' from JSON`,
   );
+}
+
+/** @internal */
+export const ReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof ReadySubstate
+> = z.nativeEnum(ReadySubstate);
+
+/** @internal */
+export const ReadySubstate$outboundSchema: z.ZodNativeEnum<
+  typeof ReadySubstate
+> = ReadySubstate$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ReadySubstate$ {
+  /** @deprecated use `ReadySubstate$inboundSchema` instead. */
+  export const inboundSchema = ReadySubstate$inboundSchema;
+  /** @deprecated use `ReadySubstate$outboundSchema` instead. */
+  export const outboundSchema = ReadySubstate$outboundSchema;
 }
 
 /** @internal */
@@ -6962,6 +6977,7 @@ export const Functions$inboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ExperimentalTriggers$inboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6973,6 +6989,7 @@ export type Functions$Outbound = {
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?: Array<ExperimentalTriggers$Outbound> | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 /** @internal */
@@ -6990,6 +7007,7 @@ export const Functions$outboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ExperimentalTriggers$outboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /**
@@ -9211,15 +9229,37 @@ export function createDeploymentMicrofrontendsApplicationsFromJSON(
 }
 
 /** @internal */
+export const MfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
+  typeof MfeConfigUploadState
+> = z.nativeEnum(MfeConfigUploadState);
+
+/** @internal */
+export const MfeConfigUploadState$outboundSchema: z.ZodNativeEnum<
+  typeof MfeConfigUploadState
+> = MfeConfigUploadState$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MfeConfigUploadState$ {
+  /** @deprecated use `MfeConfigUploadState$inboundSchema` instead. */
+  export const inboundSchema = MfeConfigUploadState$inboundSchema;
+  /** @deprecated use `MfeConfigUploadState$outboundSchema` instead. */
+  export const outboundSchema = MfeConfigUploadState$outboundSchema;
+}
+
+/** @internal */
 export const CreateDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   CreateDeploymentMicrofrontends2,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isDefaultApp: z.boolean(),
   applications: z.record(
     z.lazy(() => CreateDeploymentMicrofrontendsApplications$inboundSchema),
   ).optional(),
-  isDefaultApp: z.boolean(),
+  mfeConfigUploadState: MfeConfigUploadState$inboundSchema.optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
@@ -9228,10 +9268,11 @@ export const CreateDeploymentMicrofrontends2$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateDeploymentMicrofrontends2$Outbound = {
+  isDefaultApp: boolean;
   applications?: {
     [k: string]: CreateDeploymentMicrofrontendsApplications$Outbound;
   } | undefined;
-  isDefaultApp: boolean;
+  mfeConfigUploadState?: string | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
@@ -9244,10 +9285,11 @@ export const CreateDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDeploymentMicrofrontends2
 > = z.object({
+  isDefaultApp: z.boolean(),
   applications: z.record(
     z.lazy(() => CreateDeploymentMicrofrontendsApplications$outboundSchema),
   ).optional(),
-  isDefaultApp: z.boolean(),
+  mfeConfigUploadState: MfeConfigUploadState$outboundSchema.optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
@@ -9410,6 +9452,251 @@ export function createDeploymentMicrofrontendsFromJSON(
     jsonString,
     (x) => CreateDeploymentMicrofrontends$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateDeploymentMicrofrontends' from JSON`,
+  );
+}
+
+/** @internal */
+export const Flags2$inboundSchema: z.ZodType<Flags2, z.ZodTypeDef, unknown> = z
+  .object({});
+
+/** @internal */
+export type Flags2$Outbound = {};
+
+/** @internal */
+export const Flags2$outboundSchema: z.ZodType<
+  Flags2$Outbound,
+  z.ZodTypeDef,
+  Flags2
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Flags2$ {
+  /** @deprecated use `Flags2$inboundSchema` instead. */
+  export const inboundSchema = Flags2$inboundSchema;
+  /** @deprecated use `Flags2$outboundSchema` instead. */
+  export const outboundSchema = Flags2$outboundSchema;
+  /** @deprecated use `Flags2$Outbound` instead. */
+  export type Outbound = Flags2$Outbound;
+}
+
+export function flags2ToJSON(flags2: Flags2): string {
+  return JSON.stringify(Flags2$outboundSchema.parse(flags2));
+}
+
+export function flags2FromJSON(
+  jsonString: string,
+): SafeParseResult<Flags2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Flags2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Flags2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
+  z.object({
+    value: z.nullable(FlagJSONValue$inboundSchema),
+    label: z.string().optional(),
+  });
+
+/** @internal */
+export type Options$Outbound = {
+  value: FlagJSONValue$Outbound | null;
+  label?: string | undefined;
+};
+
+/** @internal */
+export const Options$outboundSchema: z.ZodType<
+  Options$Outbound,
+  z.ZodTypeDef,
+  Options
+> = z.object({
+  value: z.nullable(FlagJSONValue$outboundSchema),
+  label: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Options$ {
+  /** @deprecated use `Options$inboundSchema` instead. */
+  export const inboundSchema = Options$inboundSchema;
+  /** @deprecated use `Options$outboundSchema` instead. */
+  export const outboundSchema = Options$outboundSchema;
+  /** @deprecated use `Options$Outbound` instead. */
+  export type Outbound = Options$Outbound;
+}
+
+export function optionsToJSON(options: Options): string {
+  return JSON.stringify(Options$outboundSchema.parse(options));
+}
+
+export function optionsFromJSON(
+  jsonString: string,
+): SafeParseResult<Options, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Options$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Options' from JSON`,
+  );
+}
+
+/** @internal */
+export const FlagsDefinitions$inboundSchema: z.ZodType<
+  FlagsDefinitions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  options: z.array(z.lazy(() => Options$inboundSchema)).optional(),
+  url: z.string().optional(),
+  description: z.string().optional(),
+});
+
+/** @internal */
+export type FlagsDefinitions$Outbound = {
+  options?: Array<Options$Outbound> | undefined;
+  url?: string | undefined;
+  description?: string | undefined;
+};
+
+/** @internal */
+export const FlagsDefinitions$outboundSchema: z.ZodType<
+  FlagsDefinitions$Outbound,
+  z.ZodTypeDef,
+  FlagsDefinitions
+> = z.object({
+  options: z.array(z.lazy(() => Options$outboundSchema)).optional(),
+  url: z.string().optional(),
+  description: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FlagsDefinitions$ {
+  /** @deprecated use `FlagsDefinitions$inboundSchema` instead. */
+  export const inboundSchema = FlagsDefinitions$inboundSchema;
+  /** @deprecated use `FlagsDefinitions$outboundSchema` instead. */
+  export const outboundSchema = FlagsDefinitions$outboundSchema;
+  /** @deprecated use `FlagsDefinitions$Outbound` instead. */
+  export type Outbound = FlagsDefinitions$Outbound;
+}
+
+export function flagsDefinitionsToJSON(
+  flagsDefinitions: FlagsDefinitions,
+): string {
+  return JSON.stringify(
+    FlagsDefinitions$outboundSchema.parse(flagsDefinitions),
+  );
+}
+
+export function flagsDefinitionsFromJSON(
+  jsonString: string,
+): SafeParseResult<FlagsDefinitions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FlagsDefinitions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FlagsDefinitions' from JSON`,
+  );
+}
+
+/** @internal */
+export const Flags1$inboundSchema: z.ZodType<Flags1, z.ZodTypeDef, unknown> = z
+  .object({
+    definitions: z.record(z.lazy(() => FlagsDefinitions$inboundSchema)),
+  });
+
+/** @internal */
+export type Flags1$Outbound = {
+  definitions: { [k: string]: FlagsDefinitions$Outbound };
+};
+
+/** @internal */
+export const Flags1$outboundSchema: z.ZodType<
+  Flags1$Outbound,
+  z.ZodTypeDef,
+  Flags1
+> = z.object({
+  definitions: z.record(z.lazy(() => FlagsDefinitions$outboundSchema)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Flags1$ {
+  /** @deprecated use `Flags1$inboundSchema` instead. */
+  export const inboundSchema = Flags1$inboundSchema;
+  /** @deprecated use `Flags1$outboundSchema` instead. */
+  export const outboundSchema = Flags1$outboundSchema;
+  /** @deprecated use `Flags1$Outbound` instead. */
+  export type Outbound = Flags1$Outbound;
+}
+
+export function flags1ToJSON(flags1: Flags1): string {
+  return JSON.stringify(Flags1$outboundSchema.parse(flags1));
+}
+
+export function flags1FromJSON(
+  jsonString: string,
+): SafeParseResult<Flags1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Flags1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Flags1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Flags$inboundSchema: z.ZodType<Flags, z.ZodTypeDef, unknown> = z
+  .union([
+    z.lazy(() => Flags1$inboundSchema),
+    z.array(z.lazy(() => Flags2$inboundSchema)),
+  ]);
+
+/** @internal */
+export type Flags$Outbound = Flags1$Outbound | Array<Flags2$Outbound>;
+
+/** @internal */
+export const Flags$outboundSchema: z.ZodType<
+  Flags$Outbound,
+  z.ZodTypeDef,
+  Flags
+> = z.union([
+  z.lazy(() => Flags1$outboundSchema),
+  z.array(z.lazy(() => Flags2$outboundSchema)),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Flags$ {
+  /** @deprecated use `Flags$inboundSchema` instead. */
+  export const inboundSchema = Flags$inboundSchema;
+  /** @deprecated use `Flags$outboundSchema` instead. */
+  export const outboundSchema = Flags$outboundSchema;
+  /** @deprecated use `Flags$Outbound` instead. */
+  export type Outbound = Flags$Outbound;
+}
+
+export function flagsToJSON(flags: Flags): string {
+  return JSON.stringify(Flags$outboundSchema.parse(flags));
+}
+
+export function flagsFromJSON(
+  jsonString: string,
+): SafeParseResult<Flags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Flags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Flags' from JSON`,
   );
 }
 
@@ -9819,251 +10106,6 @@ export function gitRepoFromJSON(
 }
 
 /** @internal */
-export const Flags2$inboundSchema: z.ZodType<Flags2, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
-export type Flags2$Outbound = {};
-
-/** @internal */
-export const Flags2$outboundSchema: z.ZodType<
-  Flags2$Outbound,
-  z.ZodTypeDef,
-  Flags2
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Flags2$ {
-  /** @deprecated use `Flags2$inboundSchema` instead. */
-  export const inboundSchema = Flags2$inboundSchema;
-  /** @deprecated use `Flags2$outboundSchema` instead. */
-  export const outboundSchema = Flags2$outboundSchema;
-  /** @deprecated use `Flags2$Outbound` instead. */
-  export type Outbound = Flags2$Outbound;
-}
-
-export function flags2ToJSON(flags2: Flags2): string {
-  return JSON.stringify(Flags2$outboundSchema.parse(flags2));
-}
-
-export function flags2FromJSON(
-  jsonString: string,
-): SafeParseResult<Flags2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Flags2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Flags2' from JSON`,
-  );
-}
-
-/** @internal */
-export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
-  z.object({
-    value: z.nullable(FlagJSONValue$inboundSchema),
-    label: z.string().optional(),
-  });
-
-/** @internal */
-export type Options$Outbound = {
-  value: FlagJSONValue$Outbound | null;
-  label?: string | undefined;
-};
-
-/** @internal */
-export const Options$outboundSchema: z.ZodType<
-  Options$Outbound,
-  z.ZodTypeDef,
-  Options
-> = z.object({
-  value: z.nullable(FlagJSONValue$outboundSchema),
-  label: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Options$ {
-  /** @deprecated use `Options$inboundSchema` instead. */
-  export const inboundSchema = Options$inboundSchema;
-  /** @deprecated use `Options$outboundSchema` instead. */
-  export const outboundSchema = Options$outboundSchema;
-  /** @deprecated use `Options$Outbound` instead. */
-  export type Outbound = Options$Outbound;
-}
-
-export function optionsToJSON(options: Options): string {
-  return JSON.stringify(Options$outboundSchema.parse(options));
-}
-
-export function optionsFromJSON(
-  jsonString: string,
-): SafeParseResult<Options, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Options$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Options' from JSON`,
-  );
-}
-
-/** @internal */
-export const FlagsDefinitions$inboundSchema: z.ZodType<
-  FlagsDefinitions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  options: z.array(z.lazy(() => Options$inboundSchema)).optional(),
-  url: z.string().optional(),
-  description: z.string().optional(),
-});
-
-/** @internal */
-export type FlagsDefinitions$Outbound = {
-  options?: Array<Options$Outbound> | undefined;
-  url?: string | undefined;
-  description?: string | undefined;
-};
-
-/** @internal */
-export const FlagsDefinitions$outboundSchema: z.ZodType<
-  FlagsDefinitions$Outbound,
-  z.ZodTypeDef,
-  FlagsDefinitions
-> = z.object({
-  options: z.array(z.lazy(() => Options$outboundSchema)).optional(),
-  url: z.string().optional(),
-  description: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FlagsDefinitions$ {
-  /** @deprecated use `FlagsDefinitions$inboundSchema` instead. */
-  export const inboundSchema = FlagsDefinitions$inboundSchema;
-  /** @deprecated use `FlagsDefinitions$outboundSchema` instead. */
-  export const outboundSchema = FlagsDefinitions$outboundSchema;
-  /** @deprecated use `FlagsDefinitions$Outbound` instead. */
-  export type Outbound = FlagsDefinitions$Outbound;
-}
-
-export function flagsDefinitionsToJSON(
-  flagsDefinitions: FlagsDefinitions,
-): string {
-  return JSON.stringify(
-    FlagsDefinitions$outboundSchema.parse(flagsDefinitions),
-  );
-}
-
-export function flagsDefinitionsFromJSON(
-  jsonString: string,
-): SafeParseResult<FlagsDefinitions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FlagsDefinitions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FlagsDefinitions' from JSON`,
-  );
-}
-
-/** @internal */
-export const Flags1$inboundSchema: z.ZodType<Flags1, z.ZodTypeDef, unknown> = z
-  .object({
-    definitions: z.record(z.lazy(() => FlagsDefinitions$inboundSchema)),
-  });
-
-/** @internal */
-export type Flags1$Outbound = {
-  definitions: { [k: string]: FlagsDefinitions$Outbound };
-};
-
-/** @internal */
-export const Flags1$outboundSchema: z.ZodType<
-  Flags1$Outbound,
-  z.ZodTypeDef,
-  Flags1
-> = z.object({
-  definitions: z.record(z.lazy(() => FlagsDefinitions$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Flags1$ {
-  /** @deprecated use `Flags1$inboundSchema` instead. */
-  export const inboundSchema = Flags1$inboundSchema;
-  /** @deprecated use `Flags1$outboundSchema` instead. */
-  export const outboundSchema = Flags1$outboundSchema;
-  /** @deprecated use `Flags1$Outbound` instead. */
-  export type Outbound = Flags1$Outbound;
-}
-
-export function flags1ToJSON(flags1: Flags1): string {
-  return JSON.stringify(Flags1$outboundSchema.parse(flags1));
-}
-
-export function flags1FromJSON(
-  jsonString: string,
-): SafeParseResult<Flags1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Flags1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Flags1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Flags$inboundSchema: z.ZodType<Flags, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => Flags1$inboundSchema),
-    z.array(z.lazy(() => Flags2$inboundSchema)),
-  ]);
-
-/** @internal */
-export type Flags$Outbound = Flags1$Outbound | Array<Flags2$Outbound>;
-
-/** @internal */
-export const Flags$outboundSchema: z.ZodType<
-  Flags$Outbound,
-  z.ZodTypeDef,
-  Flags
-> = z.union([
-  z.lazy(() => Flags1$outboundSchema),
-  z.array(z.lazy(() => Flags2$outboundSchema)),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Flags$ {
-  /** @deprecated use `Flags$inboundSchema` instead. */
-  export const inboundSchema = Flags$inboundSchema;
-  /** @deprecated use `Flags$outboundSchema` instead. */
-  export const outboundSchema = Flags$outboundSchema;
-  /** @deprecated use `Flags$Outbound` instead. */
-  export type Outbound = Flags$Outbound;
-}
-
-export function flagsToJSON(flags: Flags): string {
-  return JSON.stringify(Flags$outboundSchema.parse(flags));
-}
-
-export function flagsFromJSON(
-  jsonString: string,
-): SafeParseResult<Flags, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Flags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Flags' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   CreateDeploymentResponseBody,
   z.ZodTypeDef,
@@ -10137,24 +10179,24 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   errorMessage: z.nullable(z.string()).optional(),
   passiveRegions: z.array(z.string()).optional(),
   regions: z.array(z.string()),
-  aliasWarning: z.nullable(z.lazy(() => AliasWarning$inboundSchema)).optional(),
   aliasError: z.nullable(z.lazy(() => AliasError$inboundSchema)).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
+  aliasWarning: z.nullable(z.lazy(() => AliasWarning$inboundSchema)).optional(),
   automaticAliases: z.array(z.string()).optional(),
   buildErrorAt: z.number().optional(),
-  checksState: ChecksState$inboundSchema.optional(),
-  checksConclusion: ChecksConclusion$inboundSchema.optional(),
-  defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  checksConclusion: ChecksConclusion$inboundSchema.optional(),
+  checksState: ChecksState$inboundSchema.optional(),
+  defaultRoute: z.string().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorStep: z.string().optional(),
   originCacheRegion: z.string().optional(),
+  oidcTokenClaims: z.lazy(() => OidcTokenClaims$inboundSchema).optional(),
   readySubstate: ReadySubstate$inboundSchema.optional(),
   softDeletedByRetention: z.boolean().optional(),
   undeletedAt: z.number().optional(),
   url: z.string(),
-  oidcTokenClaims: z.lazy(() => OidcTokenClaims$inboundSchema).optional(),
   projectId: z.string(),
   ownerId: z.string(),
   monorepoManager: z.nullable(z.string()).optional(),
@@ -10181,6 +10223,10 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
   passiveConnectConfigurationId: z.string().optional(),
+  flags: z.union([
+    z.lazy(() => Flags1$inboundSchema),
+    z.array(z.lazy(() => Flags2$inboundSchema)),
+  ]).optional(),
   gitRepo: z.nullable(
     z.union([
       z.lazy(() => GitRepo2$inboundSchema),
@@ -10188,10 +10234,6 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => GitRepo1$inboundSchema),
     ]),
   ).optional(),
-  flags: z.union([
-    z.lazy(() => Flags1$inboundSchema),
-    z.array(z.lazy(() => Flags2$inboundSchema)),
-  ]).optional(),
 });
 
 /** @internal */
@@ -10264,24 +10306,24 @@ export type CreateDeploymentResponseBody$Outbound = {
   errorMessage?: string | null | undefined;
   passiveRegions?: Array<string> | undefined;
   regions: Array<string>;
-  aliasWarning?: AliasWarning$Outbound | null | undefined;
   aliasError?: AliasError$Outbound | null | undefined;
   aliasFinal?: string | null | undefined;
+  aliasWarning?: AliasWarning$Outbound | null | undefined;
   automaticAliases?: Array<string> | undefined;
   buildErrorAt?: number | undefined;
-  checksState?: string | undefined;
-  checksConclusion?: string | undefined;
-  defaultRoute?: string | undefined;
   canceledAt?: number | undefined;
+  checksConclusion?: string | undefined;
+  checksState?: string | undefined;
+  defaultRoute?: string | undefined;
   errorCode?: string | undefined;
   errorLink?: string | undefined;
   errorStep?: string | undefined;
   originCacheRegion?: string | undefined;
+  oidcTokenClaims?: OidcTokenClaims$Outbound | undefined;
   readySubstate?: string | undefined;
   softDeletedByRetention?: boolean | undefined;
   undeletedAt?: number | undefined;
   url: string;
-  oidcTokenClaims?: OidcTokenClaims$Outbound | undefined;
   projectId: string;
   ownerId: string;
   monorepoManager?: string | null | undefined;
@@ -10299,13 +10341,13 @@ export type CreateDeploymentResponseBody$Outbound = {
   connectConfigurationId?: string | undefined;
   createdIn: string;
   passiveConnectConfigurationId?: string | undefined;
+  flags?: Flags1$Outbound | Array<Flags2$Outbound> | undefined;
   gitRepo?:
     | GitRepo2$Outbound
     | GitRepo3$Outbound
     | GitRepo1$Outbound
     | null
     | undefined;
-  flags?: Flags1$Outbound | Array<Flags2$Outbound> | undefined;
 };
 
 /** @internal */
@@ -10382,25 +10424,25 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   errorMessage: z.nullable(z.string()).optional(),
   passiveRegions: z.array(z.string()).optional(),
   regions: z.array(z.string()),
-  aliasWarning: z.nullable(z.lazy(() => AliasWarning$outboundSchema))
-    .optional(),
   aliasError: z.nullable(z.lazy(() => AliasError$outboundSchema)).optional(),
   aliasFinal: z.nullable(z.string()).optional(),
+  aliasWarning: z.nullable(z.lazy(() => AliasWarning$outboundSchema))
+    .optional(),
   automaticAliases: z.array(z.string()).optional(),
   buildErrorAt: z.number().optional(),
-  checksState: ChecksState$outboundSchema.optional(),
-  checksConclusion: ChecksConclusion$outboundSchema.optional(),
-  defaultRoute: z.string().optional(),
   canceledAt: z.number().optional(),
+  checksConclusion: ChecksConclusion$outboundSchema.optional(),
+  checksState: ChecksState$outboundSchema.optional(),
+  defaultRoute: z.string().optional(),
   errorCode: z.string().optional(),
   errorLink: z.string().optional(),
   errorStep: z.string().optional(),
   originCacheRegion: z.string().optional(),
+  oidcTokenClaims: z.lazy(() => OidcTokenClaims$outboundSchema).optional(),
   readySubstate: ReadySubstate$outboundSchema.optional(),
   softDeletedByRetention: z.boolean().optional(),
   undeletedAt: z.number().optional(),
   url: z.string(),
-  oidcTokenClaims: z.lazy(() => OidcTokenClaims$outboundSchema).optional(),
   projectId: z.string(),
   ownerId: z.string(),
   monorepoManager: z.nullable(z.string()).optional(),
@@ -10427,6 +10469,10 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
   connectConfigurationId: z.string().optional(),
   createdIn: z.string(),
   passiveConnectConfigurationId: z.string().optional(),
+  flags: z.union([
+    z.lazy(() => Flags1$outboundSchema),
+    z.array(z.lazy(() => Flags2$outboundSchema)),
+  ]).optional(),
   gitRepo: z.nullable(
     z.union([
       z.lazy(() => GitRepo2$outboundSchema),
@@ -10434,10 +10480,6 @@ export const CreateDeploymentResponseBody$outboundSchema: z.ZodType<
       z.lazy(() => GitRepo1$outboundSchema),
     ]),
   ).optional(),
-  flags: z.union([
-    z.lazy(() => Flags1$outboundSchema),
-    z.array(z.lazy(() => Flags2$outboundSchema)),
-  ]).optional(),
 });
 
 /**

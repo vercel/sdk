@@ -11,5 +11,5 @@ let value: RoutesHandle = "hit";
 ## Values
 
 ```typescript
-"filesystem" | "error" | "hit" | "miss" | "resource" | "rewrite"
+"error" | "filesystem" | "hit" | "miss" | "rewrite" | "resource"
 ```

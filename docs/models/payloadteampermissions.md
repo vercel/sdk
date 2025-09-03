@@ -11,5 +11,5 @@ let value: PayloadTeamPermissions = "V0Chatter";
 ## Values
 
 ```typescript
-"CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager" | "V0Builder" | "V0Chatter" | "V0Viewer"
+"IntegrationManager" | "CreateProject" | "FullProductionDeployment" | "UsageViewer" | "EnvVariableManager" | "EnvironmentManager" | "V0Builder" | "V0Chatter" | "V0Viewer"
 ```

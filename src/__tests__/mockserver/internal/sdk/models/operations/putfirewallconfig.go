@@ -10,17 +10,17 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type SdActionRequestBody string
+type SdActionRequest string
 
 const (
-	SdActionRequestBodyDeny SdActionRequestBody = "deny"
-	SdActionRequestBodyLog  SdActionRequestBody = "log"
+	SdActionRequestDeny SdActionRequest = "deny"
+	SdActionRequestLog  SdActionRequest = "log"
 )
 
-func (e SdActionRequestBody) ToPointer() *SdActionRequestBody {
+func (e SdActionRequest) ToPointer() *SdActionRequest {
 	return &e
 }
-func (e *SdActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *SdActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,17 +29,17 @@ func (e *SdActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = SdActionRequestBody(v)
+		*e = SdActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SdActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for SdActionRequest: %v", v)
 	}
 }
 
 // SdRequest - Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.
 type SdRequest struct {
-	Active bool                `json:"active"`
-	Action SdActionRequestBody `json:"action"`
+	Active bool            `json:"active"`
+	Action SdActionRequest `json:"action"`
 }
 
 func (o *SdRequest) GetActive() bool {
@@ -49,24 +49,24 @@ func (o *SdRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *SdRequest) GetAction() SdActionRequestBody {
+func (o *SdRequest) GetAction() SdActionRequest {
 	if o == nil {
-		return SdActionRequestBody("")
+		return SdActionRequest("")
 	}
 	return o.Action
 }
 
-type MaActionRequestBody string
+type MaActionRequest string
 
 const (
-	MaActionRequestBodyDeny MaActionRequestBody = "deny"
-	MaActionRequestBodyLog  MaActionRequestBody = "log"
+	MaActionRequestDeny MaActionRequest = "deny"
+	MaActionRequestLog  MaActionRequest = "log"
 )
 
-func (e MaActionRequestBody) ToPointer() *MaActionRequestBody {
+func (e MaActionRequest) ToPointer() *MaActionRequest {
 	return &e
 }
-func (e *MaActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *MaActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -75,17 +75,17 @@ func (e *MaActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = MaActionRequestBody(v)
+		*e = MaActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for MaActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for MaActionRequest: %v", v)
 	}
 }
 
 // MaRequest - Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.
 type MaRequest struct {
-	Active bool                `json:"active"`
-	Action MaActionRequestBody `json:"action"`
+	Active bool            `json:"active"`
+	Action MaActionRequest `json:"action"`
 }
 
 func (o *MaRequest) GetActive() bool {
@@ -95,24 +95,24 @@ func (o *MaRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *MaRequest) GetAction() MaActionRequestBody {
+func (o *MaRequest) GetAction() MaActionRequest {
 	if o == nil {
-		return MaActionRequestBody("")
+		return MaActionRequest("")
 	}
 	return o.Action
 }
 
-type LfiActionRequestBody string
+type LfiActionRequest string
 
 const (
-	LfiActionRequestBodyDeny LfiActionRequestBody = "deny"
-	LfiActionRequestBodyLog  LfiActionRequestBody = "log"
+	LfiActionRequestDeny LfiActionRequest = "deny"
+	LfiActionRequestLog  LfiActionRequest = "log"
 )
 
-func (e LfiActionRequestBody) ToPointer() *LfiActionRequestBody {
+func (e LfiActionRequest) ToPointer() *LfiActionRequest {
 	return &e
 }
-func (e *LfiActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *LfiActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -121,17 +121,17 @@ func (e *LfiActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = LfiActionRequestBody(v)
+		*e = LfiActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for LfiActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for LfiActionRequest: %v", v)
 	}
 }
 
 // LfiRequest - Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.
 type LfiRequest struct {
-	Active bool                 `json:"active"`
-	Action LfiActionRequestBody `json:"action"`
+	Active bool             `json:"active"`
+	Action LfiActionRequest `json:"action"`
 }
 
 func (o *LfiRequest) GetActive() bool {
@@ -141,24 +141,24 @@ func (o *LfiRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *LfiRequest) GetAction() LfiActionRequestBody {
+func (o *LfiRequest) GetAction() LfiActionRequest {
 	if o == nil {
-		return LfiActionRequestBody("")
+		return LfiActionRequest("")
 	}
 	return o.Action
 }
 
-type RfiActionRequestBody string
+type RfiActionRequest string
 
 const (
-	RfiActionRequestBodyDeny RfiActionRequestBody = "deny"
-	RfiActionRequestBodyLog  RfiActionRequestBody = "log"
+	RfiActionRequestDeny RfiActionRequest = "deny"
+	RfiActionRequestLog  RfiActionRequest = "log"
 )
 
-func (e RfiActionRequestBody) ToPointer() *RfiActionRequestBody {
+func (e RfiActionRequest) ToPointer() *RfiActionRequest {
 	return &e
 }
-func (e *RfiActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RfiActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -167,17 +167,17 @@ func (e *RfiActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = RfiActionRequestBody(v)
+		*e = RfiActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RfiActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RfiActionRequest: %v", v)
 	}
 }
 
 // RfiRequest - Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.
 type RfiRequest struct {
-	Active bool                 `json:"active"`
-	Action RfiActionRequestBody `json:"action"`
+	Active bool             `json:"active"`
+	Action RfiActionRequest `json:"action"`
 }
 
 func (o *RfiRequest) GetActive() bool {
@@ -187,24 +187,24 @@ func (o *RfiRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *RfiRequest) GetAction() RfiActionRequestBody {
+func (o *RfiRequest) GetAction() RfiActionRequest {
 	if o == nil {
-		return RfiActionRequestBody("")
+		return RfiActionRequest("")
 	}
 	return o.Action
 }
 
-type RceActionRequestBody string
+type RceActionRequest string
 
 const (
-	RceActionRequestBodyDeny RceActionRequestBody = "deny"
-	RceActionRequestBodyLog  RceActionRequestBody = "log"
+	RceActionRequestDeny RceActionRequest = "deny"
+	RceActionRequestLog  RceActionRequest = "log"
 )
 
-func (e RceActionRequestBody) ToPointer() *RceActionRequestBody {
+func (e RceActionRequest) ToPointer() *RceActionRequest {
 	return &e
 }
-func (e *RceActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RceActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -213,17 +213,17 @@ func (e *RceActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = RceActionRequestBody(v)
+		*e = RceActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RceActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RceActionRequest: %v", v)
 	}
 }
 
 // RceRequest - Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.
 type RceRequest struct {
-	Active bool                 `json:"active"`
-	Action RceActionRequestBody `json:"action"`
+	Active bool             `json:"active"`
+	Action RceActionRequest `json:"action"`
 }
 
 func (o *RceRequest) GetActive() bool {
@@ -233,24 +233,24 @@ func (o *RceRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *RceRequest) GetAction() RceActionRequestBody {
+func (o *RceRequest) GetAction() RceActionRequest {
 	if o == nil {
-		return RceActionRequestBody("")
+		return RceActionRequest("")
 	}
 	return o.Action
 }
 
-type PhpActionRequestBody string
+type PhpActionRequest string
 
 const (
-	PhpActionRequestBodyDeny PhpActionRequestBody = "deny"
-	PhpActionRequestBodyLog  PhpActionRequestBody = "log"
+	PhpActionRequestDeny PhpActionRequest = "deny"
+	PhpActionRequestLog  PhpActionRequest = "log"
 )
 
-func (e PhpActionRequestBody) ToPointer() *PhpActionRequestBody {
+func (e PhpActionRequest) ToPointer() *PhpActionRequest {
 	return &e
 }
-func (e *PhpActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *PhpActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -259,17 +259,17 @@ func (e *PhpActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = PhpActionRequestBody(v)
+		*e = PhpActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PhpActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for PhpActionRequest: %v", v)
 	}
 }
 
 // PhpRequest - PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.
 type PhpRequest struct {
-	Active bool                 `json:"active"`
-	Action PhpActionRequestBody `json:"action"`
+	Active bool             `json:"active"`
+	Action PhpActionRequest `json:"action"`
 }
 
 func (o *PhpRequest) GetActive() bool {
@@ -279,24 +279,24 @@ func (o *PhpRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *PhpRequest) GetAction() PhpActionRequestBody {
+func (o *PhpRequest) GetAction() PhpActionRequest {
 	if o == nil {
-		return PhpActionRequestBody("")
+		return PhpActionRequest("")
 	}
 	return o.Action
 }
 
-type GenActionRequestBody string
+type GenActionRequest string
 
 const (
-	GenActionRequestBodyDeny GenActionRequestBody = "deny"
-	GenActionRequestBodyLog  GenActionRequestBody = "log"
+	GenActionRequestDeny GenActionRequest = "deny"
+	GenActionRequestLog  GenActionRequest = "log"
 )
 
-func (e GenActionRequestBody) ToPointer() *GenActionRequestBody {
+func (e GenActionRequest) ToPointer() *GenActionRequest {
 	return &e
 }
-func (e *GenActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *GenActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -305,17 +305,17 @@ func (e *GenActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = GenActionRequestBody(v)
+		*e = GenActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GenActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for GenActionRequest: %v", v)
 	}
 }
 
 // GenRequest - Generic Attack - Provide broad protection from various undefined or novel attack vectors.
 type GenRequest struct {
-	Active bool                 `json:"active"`
-	Action GenActionRequestBody `json:"action"`
+	Active bool             `json:"active"`
+	Action GenActionRequest `json:"action"`
 }
 
 func (o *GenRequest) GetActive() bool {
@@ -325,24 +325,24 @@ func (o *GenRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *GenRequest) GetAction() GenActionRequestBody {
+func (o *GenRequest) GetAction() GenActionRequest {
 	if o == nil {
-		return GenActionRequestBody("")
+		return GenActionRequest("")
 	}
 	return o.Action
 }
 
-type XSSActionRequestBody string
+type XSSActionRequest string
 
 const (
-	XSSActionRequestBodyDeny XSSActionRequestBody = "deny"
-	XSSActionRequestBodyLog  XSSActionRequestBody = "log"
+	XSSActionRequestDeny XSSActionRequest = "deny"
+	XSSActionRequestLog  XSSActionRequest = "log"
 )
 
-func (e XSSActionRequestBody) ToPointer() *XSSActionRequestBody {
+func (e XSSActionRequest) ToPointer() *XSSActionRequest {
 	return &e
 }
-func (e *XSSActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *XSSActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -351,17 +351,17 @@ func (e *XSSActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = XSSActionRequestBody(v)
+		*e = XSSActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for XSSActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for XSSActionRequest: %v", v)
 	}
 }
 
 // XSSRequest - XSS Attack - Prevent injection of malicious scripts into trusted webpages.
 type XSSRequest struct {
-	Active bool                 `json:"active"`
-	Action XSSActionRequestBody `json:"action"`
+	Active bool             `json:"active"`
+	Action XSSActionRequest `json:"action"`
 }
 
 func (o *XSSRequest) GetActive() bool {
@@ -371,24 +371,24 @@ func (o *XSSRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *XSSRequest) GetAction() XSSActionRequestBody {
+func (o *XSSRequest) GetAction() XSSActionRequest {
 	if o == nil {
-		return XSSActionRequestBody("")
+		return XSSActionRequest("")
 	}
 	return o.Action
 }
 
-type SqliActionRequestBody string
+type SqliActionRequest string
 
 const (
-	SqliActionRequestBodyDeny SqliActionRequestBody = "deny"
-	SqliActionRequestBodyLog  SqliActionRequestBody = "log"
+	SqliActionRequestDeny SqliActionRequest = "deny"
+	SqliActionRequestLog  SqliActionRequest = "log"
 )
 
-func (e SqliActionRequestBody) ToPointer() *SqliActionRequestBody {
+func (e SqliActionRequest) ToPointer() *SqliActionRequest {
 	return &e
 }
-func (e *SqliActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *SqliActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -397,17 +397,17 @@ func (e *SqliActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = SqliActionRequestBody(v)
+		*e = SqliActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SqliActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for SqliActionRequest: %v", v)
 	}
 }
 
 // SqliRequest - SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.
 type SqliRequest struct {
-	Active bool                  `json:"active"`
-	Action SqliActionRequestBody `json:"action"`
+	Active bool              `json:"active"`
+	Action SqliActionRequest `json:"action"`
 }
 
 func (o *SqliRequest) GetActive() bool {
@@ -417,24 +417,24 @@ func (o *SqliRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *SqliRequest) GetAction() SqliActionRequestBody {
+func (o *SqliRequest) GetAction() SqliActionRequest {
 	if o == nil {
-		return SqliActionRequestBody("")
+		return SqliActionRequest("")
 	}
 	return o.Action
 }
 
-type SfActionRequestBody string
+type SfActionRequest string
 
 const (
-	SfActionRequestBodyDeny SfActionRequestBody = "deny"
-	SfActionRequestBodyLog  SfActionRequestBody = "log"
+	SfActionRequestDeny SfActionRequest = "deny"
+	SfActionRequestLog  SfActionRequest = "log"
 )
 
-func (e SfActionRequestBody) ToPointer() *SfActionRequestBody {
+func (e SfActionRequest) ToPointer() *SfActionRequest {
 	return &e
 }
-func (e *SfActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *SfActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -443,17 +443,17 @@ func (e *SfActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = SfActionRequestBody(v)
+		*e = SfActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SfActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for SfActionRequest: %v", v)
 	}
 }
 
 // SfRequest - Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.
 type SfRequest struct {
-	Active bool                `json:"active"`
-	Action SfActionRequestBody `json:"action"`
+	Active bool            `json:"active"`
+	Action SfActionRequest `json:"action"`
 }
 
 func (o *SfRequest) GetActive() bool {
@@ -463,24 +463,24 @@ func (o *SfRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *SfRequest) GetAction() SfActionRequestBody {
+func (o *SfRequest) GetAction() SfActionRequest {
 	if o == nil {
-		return SfActionRequestBody("")
+		return SfActionRequest("")
 	}
 	return o.Action
 }
 
-type JavaActionRequestBody string
+type JavaActionRequest string
 
 const (
-	JavaActionRequestBodyDeny JavaActionRequestBody = "deny"
-	JavaActionRequestBodyLog  JavaActionRequestBody = "log"
+	JavaActionRequestDeny JavaActionRequest = "deny"
+	JavaActionRequestLog  JavaActionRequest = "log"
 )
 
-func (e JavaActionRequestBody) ToPointer() *JavaActionRequestBody {
+func (e JavaActionRequest) ToPointer() *JavaActionRequest {
 	return &e
 }
-func (e *JavaActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *JavaActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -489,17 +489,17 @@ func (e *JavaActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "log":
-		*e = JavaActionRequestBody(v)
+		*e = JavaActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for JavaActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for JavaActionRequest: %v", v)
 	}
 }
 
 // JavaRequest - Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.
 type JavaRequest struct {
-	Active bool                  `json:"active"`
-	Action JavaActionRequestBody `json:"action"`
+	Active bool              `json:"active"`
+	Action JavaActionRequest `json:"action"`
 }
 
 func (o *JavaRequest) GetActive() bool {
@@ -509,9 +509,9 @@ func (o *JavaRequest) GetActive() bool {
 	return o.Active
 }
 
-func (o *JavaRequest) GetAction() JavaActionRequestBody {
+func (o *JavaRequest) GetAction() JavaActionRequest {
 	if o == nil {
-		return JavaActionRequestBody("")
+		return JavaActionRequest("")
 	}
 	return o.Action
 }
@@ -817,21 +817,21 @@ func CreatePutFirewallConfigValueRequestNumber(number float64) PutFirewallConfig
 func (u *PutFirewallConfigValueRequest) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = PutFirewallConfigValueRequestTypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = PutFirewallConfigValueRequestTypeArrayOfStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = PutFirewallConfigValueRequestTypeNumber
 		return nil
@@ -911,21 +911,21 @@ func (o *PutFirewallConfigConditionGroupRequest) GetConditions() []PutFirewallCo
 	return o.Conditions
 }
 
-type RuleActionRequestBodyEnum string
+type RuleActionRequestEnum string
 
 const (
-	RuleActionRequestBodyEnumLog       RuleActionRequestBodyEnum = "log"
-	RuleActionRequestBodyEnumChallenge RuleActionRequestBodyEnum = "challenge"
-	RuleActionRequestBodyEnumDeny      RuleActionRequestBodyEnum = "deny"
-	RuleActionRequestBodyEnumBypass    RuleActionRequestBodyEnum = "bypass"
-	RuleActionRequestBodyEnumRateLimit RuleActionRequestBodyEnum = "rate_limit"
-	RuleActionRequestBodyEnumRedirect  RuleActionRequestBodyEnum = "redirect"
+	RuleActionRequestEnumLog       RuleActionRequestEnum = "log"
+	RuleActionRequestEnumChallenge RuleActionRequestEnum = "challenge"
+	RuleActionRequestEnumDeny      RuleActionRequestEnum = "deny"
+	RuleActionRequestEnumBypass    RuleActionRequestEnum = "bypass"
+	RuleActionRequestEnumRateLimit RuleActionRequestEnum = "rate_limit"
+	RuleActionRequestEnumRedirect  RuleActionRequestEnum = "redirect"
 )
 
-func (e RuleActionRequestBodyEnum) ToPointer() *RuleActionRequestBodyEnum {
+func (e RuleActionRequestEnum) ToPointer() *RuleActionRequestEnum {
 	return &e
 }
-func (e *RuleActionRequestBodyEnum) UnmarshalJSON(data []byte) error {
+func (e *RuleActionRequestEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -942,10 +942,10 @@ func (e *RuleActionRequestBodyEnum) UnmarshalJSON(data []byte) error {
 	case "rate_limit":
 		fallthrough
 	case "redirect":
-		*e = RuleActionRequestBodyEnum(v)
+		*e = RuleActionRequestEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RuleActionRequestBodyEnum: %v", v)
+		return fmt.Errorf("invalid value for RuleActionRequestEnum: %v", v)
 	}
 }
 
@@ -975,19 +975,19 @@ func (e *PutFirewallConfigAlgoRequest) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type RateLimitActionRuleRequestBodyEnum string
+type RateLimitActionRuleRequestEnum string
 
 const (
-	RateLimitActionRuleRequestBodyEnumLog       RateLimitActionRuleRequestBodyEnum = "log"
-	RateLimitActionRuleRequestBodyEnumChallenge RateLimitActionRuleRequestBodyEnum = "challenge"
-	RateLimitActionRuleRequestBodyEnumDeny      RateLimitActionRuleRequestBodyEnum = "deny"
-	RateLimitActionRuleRequestBodyEnumRateLimit RateLimitActionRuleRequestBodyEnum = "rate_limit"
+	RateLimitActionRuleRequestEnumLog       RateLimitActionRuleRequestEnum = "log"
+	RateLimitActionRuleRequestEnumChallenge RateLimitActionRuleRequestEnum = "challenge"
+	RateLimitActionRuleRequestEnumDeny      RateLimitActionRuleRequestEnum = "deny"
+	RateLimitActionRuleRequestEnumRateLimit RateLimitActionRuleRequestEnum = "rate_limit"
 )
 
-func (e RateLimitActionRuleRequestBodyEnum) ToPointer() *RateLimitActionRuleRequestBodyEnum {
+func (e RateLimitActionRuleRequestEnum) ToPointer() *RateLimitActionRuleRequestEnum {
 	return &e
 }
-func (e *RateLimitActionRuleRequestBodyEnum) UnmarshalJSON(data []byte) error {
+func (e *RateLimitActionRuleRequestEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1000,33 +1000,33 @@ func (e *RateLimitActionRuleRequestBodyEnum) UnmarshalJSON(data []byte) error {
 	case "deny":
 		fallthrough
 	case "rate_limit":
-		*e = RateLimitActionRuleRequestBodyEnum(v)
+		*e = RateLimitActionRuleRequestEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RateLimitActionRuleRequestBodyEnum: %v", v)
+		return fmt.Errorf("invalid value for RateLimitActionRuleRequestEnum: %v", v)
 	}
 }
 
 type RuleActionUnionType string
 
 const (
-	RuleActionUnionTypeRateLimitActionRuleRequestBodyEnum RuleActionUnionType = "rateLimit_action_rule_RequestBody_enum"
-	RuleActionUnionTypeAny                                RuleActionUnionType = "any"
+	RuleActionUnionTypeRateLimitActionRuleRequestEnum RuleActionUnionType = "rateLimit_action_rule_request_enum"
+	RuleActionUnionTypeAny                            RuleActionUnionType = "any"
 )
 
 type RuleActionUnion struct {
-	RateLimitActionRuleRequestBodyEnum *RateLimitActionRuleRequestBodyEnum `queryParam:"inline"`
-	Any                                any                                 `queryParam:"inline"`
+	RateLimitActionRuleRequestEnum *RateLimitActionRuleRequestEnum `queryParam:"inline"`
+	Any                            any                             `queryParam:"inline"`
 
 	Type RuleActionUnionType
 }
 
-func CreateRuleActionUnionRateLimitActionRuleRequestBodyEnum(rateLimitActionRuleRequestBodyEnum RateLimitActionRuleRequestBodyEnum) RuleActionUnion {
-	typ := RuleActionUnionTypeRateLimitActionRuleRequestBodyEnum
+func CreateRuleActionUnionRateLimitActionRuleRequestEnum(rateLimitActionRuleRequestEnum RateLimitActionRuleRequestEnum) RuleActionUnion {
+	typ := RuleActionUnionTypeRateLimitActionRuleRequestEnum
 
 	return RuleActionUnion{
-		RateLimitActionRuleRequestBodyEnum: &rateLimitActionRuleRequestBodyEnum,
-		Type:                               typ,
+		RateLimitActionRuleRequestEnum: &rateLimitActionRuleRequestEnum,
+		Type:                           typ,
 	}
 }
 
@@ -1041,15 +1041,15 @@ func CreateRuleActionUnionAny(anyT any) RuleActionUnion {
 
 func (u *RuleActionUnion) UnmarshalJSON(data []byte) error {
 
-	var rateLimitActionRuleRequestBodyEnum RateLimitActionRuleRequestBodyEnum = RateLimitActionRuleRequestBodyEnum("")
-	if err := utils.UnmarshalJSON(data, &rateLimitActionRuleRequestBodyEnum, "", true, true); err == nil {
-		u.RateLimitActionRuleRequestBodyEnum = &rateLimitActionRuleRequestBodyEnum
-		u.Type = RuleActionUnionTypeRateLimitActionRuleRequestBodyEnum
+	var rateLimitActionRuleRequestEnum RateLimitActionRuleRequestEnum = RateLimitActionRuleRequestEnum("")
+	if err := utils.UnmarshalJSON(data, &rateLimitActionRuleRequestEnum, "", true, nil); err == nil {
+		u.RateLimitActionRuleRequestEnum = &rateLimitActionRuleRequestEnum
+		u.Type = RuleActionUnionTypeRateLimitActionRuleRequestEnum
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = RuleActionUnionTypeAny
 		return nil
@@ -1059,8 +1059,8 @@ func (u *RuleActionUnion) UnmarshalJSON(data []byte) error {
 }
 
 func (u RuleActionUnion) MarshalJSON() ([]byte, error) {
-	if u.RateLimitActionRuleRequestBodyEnum != nil {
-		return utils.MarshalJSON(u.RateLimitActionRuleRequestBodyEnum, "", true)
+	if u.RateLimitActionRuleRequestEnum != nil {
+		return utils.MarshalJSON(u.RateLimitActionRuleRequestEnum, "", true)
 	}
 
 	if u.Any != nil {
@@ -1076,6 +1076,17 @@ type PutFirewallConfigRateLimitRequest struct {
 	Limit  float64                      `json:"limit"`
 	Keys   []string                     `json:"keys"`
 	Action *RuleActionUnion             `json:"action,omitempty"`
+}
+
+func (p PutFirewallConfigRateLimitRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PutFirewallConfigRateLimitRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"algo", "window", "limit", "keys"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PutFirewallConfigRateLimitRequest) GetAlgo() PutFirewallConfigAlgoRequest {
@@ -1148,14 +1159,14 @@ func CreatePutFirewallConfigRateLimitUnionAny(anyT any) PutFirewallConfigRateLim
 func (u *PutFirewallConfigRateLimitUnion) UnmarshalJSON(data []byte) error {
 
 	var putFirewallConfigRateLimitRequest PutFirewallConfigRateLimitRequest = PutFirewallConfigRateLimitRequest{}
-	if err := utils.UnmarshalJSON(data, &putFirewallConfigRateLimitRequest, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &putFirewallConfigRateLimitRequest, "", true, nil); err == nil {
 		u.PutFirewallConfigRateLimitRequest = &putFirewallConfigRateLimitRequest
 		u.Type = PutFirewallConfigRateLimitUnionTypePutFirewallConfigRateLimitRequest
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = PutFirewallConfigRateLimitUnionTypeAny
 		return nil
@@ -1179,6 +1190,17 @@ func (u PutFirewallConfigRateLimitUnion) MarshalJSON() ([]byte, error) {
 type PutFirewallConfigRedirectRequest struct {
 	Location  string `json:"location"`
 	Permanent bool   `json:"permanent"`
+}
+
+func (p PutFirewallConfigRedirectRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PutFirewallConfigRedirectRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"location", "permanent"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PutFirewallConfigRedirectRequest) GetLocation() string {
@@ -1230,14 +1252,14 @@ func CreatePutFirewallConfigRedirectUnionAny(anyT any) PutFirewallConfigRedirect
 func (u *PutFirewallConfigRedirectUnion) UnmarshalJSON(data []byte) error {
 
 	var putFirewallConfigRedirectRequest PutFirewallConfigRedirectRequest = PutFirewallConfigRedirectRequest{}
-	if err := utils.UnmarshalJSON(data, &putFirewallConfigRedirectRequest, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &putFirewallConfigRedirectRequest, "", true, nil); err == nil {
 		u.PutFirewallConfigRedirectRequest = &putFirewallConfigRedirectRequest
 		u.Type = PutFirewallConfigRedirectUnionTypePutFirewallConfigRedirectRequest
 		return nil
 	}
 
 	var anyVar any = nil
-	if err := utils.UnmarshalJSON(data, &anyVar, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &anyVar, "", true, nil); err == nil {
 		u.Any = anyVar
 		u.Type = PutFirewallConfigRedirectUnionTypeAny
 		return nil
@@ -1259,16 +1281,16 @@ func (u PutFirewallConfigRedirectUnion) MarshalJSON() ([]byte, error) {
 }
 
 type PutFirewallConfigMitigateRequest struct {
-	Action         RuleActionRequestBodyEnum        `json:"action"`
+	Action         RuleActionRequestEnum            `json:"action"`
 	RateLimit      *PutFirewallConfigRateLimitUnion `json:"rateLimit,omitempty"`
 	Redirect       *PutFirewallConfigRedirectUnion  `json:"redirect,omitempty"`
 	ActionDuration *string                          `json:"actionDuration,omitempty"`
 	BypassSystem   *bool                            `json:"bypassSystem,omitempty"`
 }
 
-func (o *PutFirewallConfigMitigateRequest) GetAction() RuleActionRequestBodyEnum {
+func (o *PutFirewallConfigMitigateRequest) GetAction() RuleActionRequestEnum {
 	if o == nil {
-		return RuleActionRequestBodyEnum("")
+		return RuleActionRequestEnum("")
 	}
 	return o.Action
 }
@@ -1301,11 +1323,11 @@ func (o *PutFirewallConfigMitigateRequest) GetBypassSystem() *bool {
 	return o.BypassSystem
 }
 
-type RuleActionRequestBody struct {
+type RuleActionRequest struct {
 	Mitigate *PutFirewallConfigMitigateRequest `json:"mitigate,omitempty"`
 }
 
-func (o *RuleActionRequestBody) GetMitigate() *PutFirewallConfigMitigateRequest {
+func (o *RuleActionRequest) GetMitigate() *PutFirewallConfigMitigateRequest {
 	if o == nil {
 		return nil
 	}
@@ -1318,7 +1340,7 @@ type RuleRequest struct {
 	Description    *string                                  `json:"description,omitempty"`
 	Active         bool                                     `json:"active"`
 	ConditionGroup []PutFirewallConfigConditionGroupRequest `json:"conditionGroup"`
-	Action         RuleActionRequestBody                    `json:"action"`
+	Action         RuleActionRequest                        `json:"action"`
 }
 
 func (o *RuleRequest) GetID() *string {
@@ -1356,26 +1378,26 @@ func (o *RuleRequest) GetConditionGroup() []PutFirewallConfigConditionGroupReque
 	return o.ConditionGroup
 }
 
-func (o *RuleRequest) GetAction() RuleActionRequestBody {
+func (o *RuleRequest) GetAction() RuleActionRequest {
 	if o == nil {
-		return RuleActionRequestBody{}
+		return RuleActionRequest{}
 	}
 	return o.Action
 }
 
-type IPActionRequestBody string
+type IPActionRequest string
 
 const (
-	IPActionRequestBodyDeny      IPActionRequestBody = "deny"
-	IPActionRequestBodyChallenge IPActionRequestBody = "challenge"
-	IPActionRequestBodyLog       IPActionRequestBody = "log"
-	IPActionRequestBodyBypass    IPActionRequestBody = "bypass"
+	IPActionRequestDeny      IPActionRequest = "deny"
+	IPActionRequestChallenge IPActionRequest = "challenge"
+	IPActionRequestLog       IPActionRequest = "log"
+	IPActionRequestBypass    IPActionRequest = "bypass"
 )
 
-func (e IPActionRequestBody) ToPointer() *IPActionRequestBody {
+func (e IPActionRequest) ToPointer() *IPActionRequest {
 	return &e
 }
-func (e *IPActionRequestBody) UnmarshalJSON(data []byte) error {
+func (e *IPActionRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1388,19 +1410,19 @@ func (e *IPActionRequestBody) UnmarshalJSON(data []byte) error {
 	case "log":
 		fallthrough
 	case "bypass":
-		*e = IPActionRequestBody(v)
+		*e = IPActionRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for IPActionRequestBody: %v", v)
+		return fmt.Errorf("invalid value for IPActionRequest: %v", v)
 	}
 }
 
 type IPRequest struct {
-	ID       *string             `json:"id,omitempty"`
-	Hostname string              `json:"hostname"`
-	IP       string              `json:"ip"`
-	Notes    *string             `json:"notes,omitempty"`
-	Action   IPActionRequestBody `json:"action"`
+	ID       *string         `json:"id,omitempty"`
+	Hostname string          `json:"hostname"`
+	IP       string          `json:"ip"`
+	Notes    *string         `json:"notes,omitempty"`
+	Action   IPActionRequest `json:"action"`
 }
 
 func (o *IPRequest) GetID() *string {
@@ -1431,9 +1453,9 @@ func (o *IPRequest) GetNotes() *string {
 	return o.Notes
 }
 
-func (o *IPRequest) GetAction() IPActionRequestBody {
+func (o *IPRequest) GetAction() IPActionRequest {
 	if o == nil {
-		return IPActionRequestBody("")
+		return IPActionRequest("")
 	}
 	return o.Action
 }
@@ -2336,21 +2358,21 @@ func CreateActiveValueArrayOfStr(arrayOfStr []string) ActiveValue {
 func (u *ActiveValue) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = ActiveValueTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = ActiveValueTypeNumber
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = ActiveValueTypeArrayOfStr
 		return nil

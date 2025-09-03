@@ -118,6 +118,101 @@ export type PatchTeamDefaultDeploymentProtection = {
   ssoProtection?: PatchTeamSsoProtection | null | undefined;
 };
 
+/**
+ * The time period to keep non-production deployments for
+ */
+export const Expiration = {
+  Oney: "1y",
+  Sixm: "6m",
+  Threem: "3m",
+  Twom: "2m",
+  Onem: "1m",
+  Twow: "2w",
+  Onew: "1w",
+  Oned: "1d",
+  Unlimited: "unlimited",
+} as const;
+/**
+ * The time period to keep non-production deployments for
+ */
+export type Expiration = ClosedEnum<typeof Expiration>;
+
+/**
+ * The time period to keep production deployments for
+ */
+export const ExpirationProduction = {
+  Oney: "1y",
+  Sixm: "6m",
+  Threem: "3m",
+  Twom: "2m",
+  Onem: "1m",
+  Twow: "2w",
+  Onew: "1w",
+  Oned: "1d",
+  Unlimited: "unlimited",
+} as const;
+/**
+ * The time period to keep production deployments for
+ */
+export type ExpirationProduction = ClosedEnum<typeof ExpirationProduction>;
+
+/**
+ * The time period to keep canceled deployments for
+ */
+export const ExpirationCanceled = {
+  Oney: "1y",
+  Sixm: "6m",
+  Threem: "3m",
+  Twom: "2m",
+  Onem: "1m",
+  Twow: "2w",
+  Onew: "1w",
+  Oned: "1d",
+  Unlimited: "unlimited",
+} as const;
+/**
+ * The time period to keep canceled deployments for
+ */
+export type ExpirationCanceled = ClosedEnum<typeof ExpirationCanceled>;
+
+/**
+ * The time period to keep errored deployments for
+ */
+export const ExpirationErrored = {
+  Oney: "1y",
+  Sixm: "6m",
+  Threem: "3m",
+  Twom: "2m",
+  Onem: "1m",
+  Twow: "2w",
+  Onew: "1w",
+  Oned: "1d",
+  Unlimited: "unlimited",
+} as const;
+/**
+ * The time period to keep errored deployments for
+ */
+export type ExpirationErrored = ClosedEnum<typeof ExpirationErrored>;
+
+export type PatchTeamDefaultExpirationSettings = {
+  /**
+   * The time period to keep non-production deployments for
+   */
+  expiration?: Expiration | undefined;
+  /**
+   * The time period to keep production deployments for
+   */
+  expirationProduction?: ExpirationProduction | undefined;
+  /**
+   * The time period to keep canceled deployments for
+   */
+  expirationCanceled?: ExpirationCanceled | undefined;
+  /**
+   * The time period to keep errored deployments for
+   */
+  expirationErrored?: ExpirationErrored | undefined;
+};
+
 export type PatchTeamRequestBody = {
   /**
    * The hash value of an uploaded image.
@@ -175,6 +270,7 @@ export type PatchTeamRequestBody = {
   defaultDeploymentProtection?:
     | PatchTeamDefaultDeploymentProtection
     | undefined;
+  defaultExpirationSettings?: PatchTeamDefaultExpirationSettings | undefined;
 };
 
 export type PatchTeamRequest = {
@@ -655,6 +751,155 @@ export function patchTeamDefaultDeploymentProtectionFromJSON(
 }
 
 /** @internal */
+export const Expiration$inboundSchema: z.ZodNativeEnum<typeof Expiration> = z
+  .nativeEnum(Expiration);
+
+/** @internal */
+export const Expiration$outboundSchema: z.ZodNativeEnum<typeof Expiration> =
+  Expiration$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Expiration$ {
+  /** @deprecated use `Expiration$inboundSchema` instead. */
+  export const inboundSchema = Expiration$inboundSchema;
+  /** @deprecated use `Expiration$outboundSchema` instead. */
+  export const outboundSchema = Expiration$outboundSchema;
+}
+
+/** @internal */
+export const ExpirationProduction$inboundSchema: z.ZodNativeEnum<
+  typeof ExpirationProduction
+> = z.nativeEnum(ExpirationProduction);
+
+/** @internal */
+export const ExpirationProduction$outboundSchema: z.ZodNativeEnum<
+  typeof ExpirationProduction
+> = ExpirationProduction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ExpirationProduction$ {
+  /** @deprecated use `ExpirationProduction$inboundSchema` instead. */
+  export const inboundSchema = ExpirationProduction$inboundSchema;
+  /** @deprecated use `ExpirationProduction$outboundSchema` instead. */
+  export const outboundSchema = ExpirationProduction$outboundSchema;
+}
+
+/** @internal */
+export const ExpirationCanceled$inboundSchema: z.ZodNativeEnum<
+  typeof ExpirationCanceled
+> = z.nativeEnum(ExpirationCanceled);
+
+/** @internal */
+export const ExpirationCanceled$outboundSchema: z.ZodNativeEnum<
+  typeof ExpirationCanceled
+> = ExpirationCanceled$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ExpirationCanceled$ {
+  /** @deprecated use `ExpirationCanceled$inboundSchema` instead. */
+  export const inboundSchema = ExpirationCanceled$inboundSchema;
+  /** @deprecated use `ExpirationCanceled$outboundSchema` instead. */
+  export const outboundSchema = ExpirationCanceled$outboundSchema;
+}
+
+/** @internal */
+export const ExpirationErrored$inboundSchema: z.ZodNativeEnum<
+  typeof ExpirationErrored
+> = z.nativeEnum(ExpirationErrored);
+
+/** @internal */
+export const ExpirationErrored$outboundSchema: z.ZodNativeEnum<
+  typeof ExpirationErrored
+> = ExpirationErrored$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ExpirationErrored$ {
+  /** @deprecated use `ExpirationErrored$inboundSchema` instead. */
+  export const inboundSchema = ExpirationErrored$inboundSchema;
+  /** @deprecated use `ExpirationErrored$outboundSchema` instead. */
+  export const outboundSchema = ExpirationErrored$outboundSchema;
+}
+
+/** @internal */
+export const PatchTeamDefaultExpirationSettings$inboundSchema: z.ZodType<
+  PatchTeamDefaultExpirationSettings,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  expiration: Expiration$inboundSchema.optional(),
+  expirationProduction: ExpirationProduction$inboundSchema.optional(),
+  expirationCanceled: ExpirationCanceled$inboundSchema.optional(),
+  expirationErrored: ExpirationErrored$inboundSchema.optional(),
+});
+
+/** @internal */
+export type PatchTeamDefaultExpirationSettings$Outbound = {
+  expiration?: string | undefined;
+  expirationProduction?: string | undefined;
+  expirationCanceled?: string | undefined;
+  expirationErrored?: string | undefined;
+};
+
+/** @internal */
+export const PatchTeamDefaultExpirationSettings$outboundSchema: z.ZodType<
+  PatchTeamDefaultExpirationSettings$Outbound,
+  z.ZodTypeDef,
+  PatchTeamDefaultExpirationSettings
+> = z.object({
+  expiration: Expiration$outboundSchema.optional(),
+  expirationProduction: ExpirationProduction$outboundSchema.optional(),
+  expirationCanceled: ExpirationCanceled$outboundSchema.optional(),
+  expirationErrored: ExpirationErrored$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchTeamDefaultExpirationSettings$ {
+  /** @deprecated use `PatchTeamDefaultExpirationSettings$inboundSchema` instead. */
+  export const inboundSchema = PatchTeamDefaultExpirationSettings$inboundSchema;
+  /** @deprecated use `PatchTeamDefaultExpirationSettings$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchTeamDefaultExpirationSettings$outboundSchema;
+  /** @deprecated use `PatchTeamDefaultExpirationSettings$Outbound` instead. */
+  export type Outbound = PatchTeamDefaultExpirationSettings$Outbound;
+}
+
+export function patchTeamDefaultExpirationSettingsToJSON(
+  patchTeamDefaultExpirationSettings: PatchTeamDefaultExpirationSettings,
+): string {
+  return JSON.stringify(
+    PatchTeamDefaultExpirationSettings$outboundSchema.parse(
+      patchTeamDefaultExpirationSettings,
+    ),
+  );
+}
+
+export function patchTeamDefaultExpirationSettingsFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchTeamDefaultExpirationSettings, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchTeamDefaultExpirationSettings$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchTeamDefaultExpirationSettings' from JSON`,
+  );
+}
+
+/** @internal */
 export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   PatchTeamRequestBody,
   z.ZodTypeDef,
@@ -677,6 +922,9 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
   defaultDeploymentProtection: z.lazy(() =>
     PatchTeamDefaultDeploymentProtection$inboundSchema
   ).optional(),
+  defaultExpirationSettings: z.lazy(() =>
+    PatchTeamDefaultExpirationSettings$inboundSchema
+  ).optional(),
 });
 
 /** @internal */
@@ -697,6 +945,9 @@ export type PatchTeamRequestBody$Outbound = {
   hideIpAddressesInLogDrains?: boolean | undefined;
   defaultDeploymentProtection?:
     | PatchTeamDefaultDeploymentProtection$Outbound
+    | undefined;
+  defaultExpirationSettings?:
+    | PatchTeamDefaultExpirationSettings$Outbound
     | undefined;
 };
 
@@ -722,6 +973,9 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   hideIpAddressesInLogDrains: z.boolean().optional(),
   defaultDeploymentProtection: z.lazy(() =>
     PatchTeamDefaultDeploymentProtection$outboundSchema
+  ).optional(),
+  defaultExpirationSettings: z.lazy(() =>
+    PatchTeamDefaultExpirationSettings$outboundSchema
   ).optional(),
 });
 

@@ -109,6 +109,17 @@ type AccessGroup struct {
 	TeamPermissions []string `json:"teamPermissions,omitempty"`
 }
 
+func (a AccessGroup) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AccessGroup) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"isDsyncManaged", "name", "createdAt", "teamId", "updatedAt", "accessGroupId", "membersCount", "projectsCount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AccessGroup) GetMembers() []string {
 	if o == nil {
 		return nil
@@ -205,6 +216,17 @@ type ListAccessGroupsPagination struct {
 	Next  *string `json:"next"`
 }
 
+func (l ListAccessGroupsPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAccessGroupsPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"count", "next"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListAccessGroupsPagination) GetCount() float64 {
 	if o == nil {
 		return 0.0
@@ -224,6 +246,17 @@ type ListAccessGroupsResponseBody2 struct {
 	Pagination   ListAccessGroupsPagination `json:"pagination"`
 }
 
+func (l ListAccessGroupsResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAccessGroupsResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"accessGroups", "pagination"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ListAccessGroupsResponseBody2) GetAccessGroups() []AccessGroup {
 	if o == nil {
 		return []AccessGroup{}
@@ -239,6 +272,17 @@ func (o *ListAccessGroupsResponseBody2) GetPagination() ListAccessGroupsPaginati
 }
 
 type ListAccessGroupsResponseBody1 struct {
+}
+
+func (l ListAccessGroupsResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListAccessGroupsResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type ListAccessGroupsResponseBodyType string
@@ -275,17 +319,17 @@ func CreateListAccessGroupsResponseBodyListAccessGroupsResponseBody2(listAccessG
 
 func (u *ListAccessGroupsResponseBody) UnmarshalJSON(data []byte) error {
 
-	var listAccessGroupsResponseBody1 ListAccessGroupsResponseBody1 = ListAccessGroupsResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &listAccessGroupsResponseBody1, "", true, true); err == nil {
-		u.ListAccessGroupsResponseBody1 = &listAccessGroupsResponseBody1
-		u.Type = ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody1
+	var listAccessGroupsResponseBody2 ListAccessGroupsResponseBody2 = ListAccessGroupsResponseBody2{}
+	if err := utils.UnmarshalJSON(data, &listAccessGroupsResponseBody2, "", true, nil); err == nil {
+		u.ListAccessGroupsResponseBody2 = &listAccessGroupsResponseBody2
+		u.Type = ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody2
 		return nil
 	}
 
-	var listAccessGroupsResponseBody2 ListAccessGroupsResponseBody2 = ListAccessGroupsResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &listAccessGroupsResponseBody2, "", true, true); err == nil {
-		u.ListAccessGroupsResponseBody2 = &listAccessGroupsResponseBody2
-		u.Type = ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody2
+	var listAccessGroupsResponseBody1 ListAccessGroupsResponseBody1 = ListAccessGroupsResponseBody1{}
+	if err := utils.UnmarshalJSON(data, &listAccessGroupsResponseBody1, "", true, nil); err == nil {
+		u.ListAccessGroupsResponseBody1 = &listAccessGroupsResponseBody1
+		u.Type = ListAccessGroupsResponseBodyTypeListAccessGroupsResponseBody1
 		return nil
 	}
 

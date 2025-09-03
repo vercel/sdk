@@ -4,8 +4,10 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type UpdateInvoiceAction string
@@ -31,7 +33,7 @@ func (e *UpdateInvoiceAction) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type UpdateInvoiceRequestBody struct {
+type Refund struct {
 	Action UpdateInvoiceAction `json:"action"`
 	// Refund reason.
 	Reason string `json:"reason"`
@@ -39,25 +41,77 @@ type UpdateInvoiceRequestBody struct {
 	Total string `json:"total"`
 }
 
-func (o *UpdateInvoiceRequestBody) GetAction() UpdateInvoiceAction {
+func (r Refund) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Refund) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"action", "reason", "total"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Refund) GetAction() UpdateInvoiceAction {
 	if o == nil {
 		return UpdateInvoiceAction("")
 	}
 	return o.Action
 }
 
-func (o *UpdateInvoiceRequestBody) GetReason() string {
+func (o *Refund) GetReason() string {
 	if o == nil {
 		return ""
 	}
 	return o.Reason
 }
 
-func (o *UpdateInvoiceRequestBody) GetTotal() string {
+func (o *Refund) GetTotal() string {
 	if o == nil {
 		return ""
 	}
 	return o.Total
+}
+
+type UpdateInvoiceRequestBodyType string
+
+const (
+	UpdateInvoiceRequestBodyTypeRefund UpdateInvoiceRequestBodyType = "Refund"
+)
+
+type UpdateInvoiceRequestBody struct {
+	Refund *Refund `queryParam:"inline"`
+
+	Type UpdateInvoiceRequestBodyType
+}
+
+func CreateUpdateInvoiceRequestBodyRefund(refund Refund) UpdateInvoiceRequestBody {
+	typ := UpdateInvoiceRequestBodyTypeRefund
+
+	return UpdateInvoiceRequestBody{
+		Refund: &refund,
+		Type:   typ,
+	}
+}
+
+func (u *UpdateInvoiceRequestBody) UnmarshalJSON(data []byte) error {
+
+	var refund Refund = Refund{}
+	if err := utils.UnmarshalJSON(data, &refund, "", true, nil); err == nil {
+		u.Refund = &refund
+		u.Type = UpdateInvoiceRequestBodyTypeRefund
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateInvoiceRequestBody", string(data))
+}
+
+func (u UpdateInvoiceRequestBody) MarshalJSON() ([]byte, error) {
+	if u.Refund != nil {
+		return utils.MarshalJSON(u.Refund, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateInvoiceRequestBody: all fields are null")
 }
 
 type UpdateInvoiceRequest struct {

@@ -19,3 +19,6 @@ let value: OneHundredAndTwelve = {
 | `role`             | *string*           | :heavy_minus_sign: | N/A                |
 | `uid`              | *string*           | :heavy_check_mark: | N/A                |
 | `origin`           | *string*           | :heavy_minus_sign: | N/A                |
+| `teamRoles`        | *string*[]         | :heavy_minus_sign: | N/A                |
+| `teamPermissions`  | *string*[]         | :heavy_minus_sign: | N/A                |
+| `entitlements`     | *string*[]         | :heavy_minus_sign: | N/A                |

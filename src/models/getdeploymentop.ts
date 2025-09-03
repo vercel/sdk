@@ -1615,6 +1615,7 @@ export type ResponseBodyFunctions = {
   includeFiles?: string | undefined;
   excludeFiles?: string | undefined;
   experimentalTriggers?: Array<ResponseBodyExperimentalTriggers> | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 export type GetDeploymentRoutes3 = {
@@ -1992,7 +1993,7 @@ export type ResponseBodyFlags =
   | Array<GetDeploymentFlags2>;
 
 /**
- * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
+ * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
  */
 export type GetDeploymentMicrofrontendsApplications = {
   isDefaultApp?: boolean | undefined;
@@ -2007,14 +2008,35 @@ export type GetDeploymentMicrofrontendsApplications = {
   deploymentHost?: string | undefined;
 };
 
+/**
+ * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+ */
+export const GetDeploymentMicrofrontendsMfeConfigUploadState = {
+  Error: "error",
+  Success: "success",
+  NoConfig: "no_config",
+} as const;
+/**
+ * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+ */
+export type GetDeploymentMicrofrontendsMfeConfigUploadState = ClosedEnum<
+  typeof GetDeploymentMicrofrontendsMfeConfigUploadState
+>;
+
 export type GetDeploymentMicrofrontends2 = {
+  isDefaultApp: boolean;
   /**
-   * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment.
+   * A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
    */
   applications?:
     | { [k: string]: GetDeploymentMicrofrontendsApplications }
     | undefined;
-  isDefaultApp: boolean;
+  /**
+   * The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+   */
+  mfeConfigUploadState?:
+    | GetDeploymentMicrofrontendsMfeConfigUploadState
+    | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
    */
@@ -2034,9 +2056,6 @@ export type GetDeploymentMicrofrontends2 = {
 };
 
 export type GetDeploymentMicrofrontends1 = {
-  /**
-   * Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-   */
   isDefaultApp?: boolean | undefined;
   /**
    * The project name of the default app of this deployment's microfrontends group.
@@ -9825,6 +9844,7 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ResponseBodyExperimentalTriggers$inboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /** @internal */
@@ -9838,6 +9858,7 @@ export type ResponseBodyFunctions$Outbound = {
   experimentalTriggers?:
     | Array<ResponseBodyExperimentalTriggers$Outbound>
     | undefined;
+  supportsCancellation?: boolean | undefined;
 };
 
 /** @internal */
@@ -9855,6 +9876,7 @@ export const ResponseBodyFunctions$outboundSchema: z.ZodType<
   experimentalTriggers: z.array(
     z.lazy(() => ResponseBodyExperimentalTriggers$outboundSchema),
   ).optional(),
+  supportsCancellation: z.boolean().optional(),
 });
 
 /**
@@ -12786,15 +12808,40 @@ export function getDeploymentMicrofrontendsApplicationsFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentMicrofrontendsMfeConfigUploadState$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentMicrofrontendsMfeConfigUploadState> = z
+    .nativeEnum(GetDeploymentMicrofrontendsMfeConfigUploadState);
+
+/** @internal */
+export const GetDeploymentMicrofrontendsMfeConfigUploadState$outboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentMicrofrontendsMfeConfigUploadState> =
+    GetDeploymentMicrofrontendsMfeConfigUploadState$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDeploymentMicrofrontendsMfeConfigUploadState$ {
+  /** @deprecated use `GetDeploymentMicrofrontendsMfeConfigUploadState$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDeploymentMicrofrontendsMfeConfigUploadState$inboundSchema;
+  /** @deprecated use `GetDeploymentMicrofrontendsMfeConfigUploadState$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDeploymentMicrofrontendsMfeConfigUploadState$outboundSchema;
+}
+
+/** @internal */
 export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   GetDeploymentMicrofrontends2,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isDefaultApp: z.boolean(),
   applications: z.record(
     z.lazy(() => GetDeploymentMicrofrontendsApplications$inboundSchema),
   ).optional(),
-  isDefaultApp: z.boolean(),
+  mfeConfigUploadState:
+    GetDeploymentMicrofrontendsMfeConfigUploadState$inboundSchema.optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
@@ -12803,10 +12850,11 @@ export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetDeploymentMicrofrontends2$Outbound = {
+  isDefaultApp: boolean;
   applications?: {
     [k: string]: GetDeploymentMicrofrontendsApplications$Outbound;
   } | undefined;
-  isDefaultApp: boolean;
+  mfeConfigUploadState?: string | undefined;
   defaultAppProjectName: string;
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
@@ -12819,10 +12867,12 @@ export const GetDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentMicrofrontends2
 > = z.object({
+  isDefaultApp: z.boolean(),
   applications: z.record(
     z.lazy(() => GetDeploymentMicrofrontendsApplications$outboundSchema),
   ).optional(),
-  isDefaultApp: z.boolean(),
+  mfeConfigUploadState:
+    GetDeploymentMicrofrontendsMfeConfigUploadState$outboundSchema.optional(),
   defaultAppProjectName: z.string(),
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),

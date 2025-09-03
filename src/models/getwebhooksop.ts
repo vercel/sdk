@@ -40,6 +40,7 @@ export const GetWebhooksResponseBodyEvents = {
   DomainRenewalFailed: "domain.renewal.failed",
   DomainAutoRenewChanged: "domain.auto-renew.changed",
   DeploymentCreated: "deployment.created",
+  DeploymentCleanup: "deployment.cleanup",
   DeploymentError: "deployment.error",
   DeploymentCanceled: "deployment.canceled",
   DeploymentSucceeded: "deployment.succeeded",
@@ -97,6 +98,7 @@ export const GetWebhooksResponseBodyEvents = {
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
+  ObservabilityAnomalyError: "observability.anomaly-error",
   TestWebhook: "test-webhook",
 } as const;
 /**
@@ -193,7 +195,7 @@ export type GetWebhooksResponseBodyFramework = ClosedEnum<
   typeof GetWebhooksResponseBodyFramework
 >;
 
-export type ProjectsMetadata = {
+export type ResponseBodyProjectsMetadata = {
   id: string;
   name: string;
   framework?: GetWebhooksResponseBodyFramework | null | undefined;
@@ -220,6 +222,7 @@ export const ResponseBodyEvents = {
   DomainRenewalFailed: "domain.renewal.failed",
   DomainAutoRenewChanged: "domain.auto-renew.changed",
   DeploymentCreated: "deployment.created",
+  DeploymentCleanup: "deployment.cleanup",
   DeploymentError: "deployment.error",
   DeploymentCanceled: "deployment.canceled",
   DeploymentSucceeded: "deployment.succeeded",
@@ -277,6 +280,7 @@ export const ResponseBodyEvents = {
   MarketplaceInvoiceNotpaid: "marketplace.invoice.notpaid",
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
+  ObservabilityAnomalyError: "observability.anomaly-error",
   TestWebhook: "test-webhook",
 } as const;
 /**
@@ -285,7 +289,7 @@ export const ResponseBodyEvents = {
 export type ResponseBodyEvents = ClosedEnum<typeof ResponseBodyEvents>;
 
 export type GetWebhooksResponseBody1 = {
-  projectsMetadata: Array<ProjectsMetadata> | null;
+  projectsMetadata: Array<ResponseBodyProjectsMetadata> | null;
   /**
    * The webhooks events
    */
@@ -495,8 +499,8 @@ export namespace GetWebhooksResponseBodyFramework$ {
 }
 
 /** @internal */
-export const ProjectsMetadata$inboundSchema: z.ZodType<
-  ProjectsMetadata,
+export const ResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
+  ResponseBodyProjectsMetadata,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -508,7 +512,7 @@ export const ProjectsMetadata$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ProjectsMetadata$Outbound = {
+export type ResponseBodyProjectsMetadata$Outbound = {
   id: string;
   name: string;
   framework?: string | null | undefined;
@@ -516,10 +520,10 @@ export type ProjectsMetadata$Outbound = {
 };
 
 /** @internal */
-export const ProjectsMetadata$outboundSchema: z.ZodType<
-  ProjectsMetadata$Outbound,
+export const ResponseBodyProjectsMetadata$outboundSchema: z.ZodType<
+  ResponseBodyProjectsMetadata$Outbound,
   z.ZodTypeDef,
-  ProjectsMetadata
+  ResponseBodyProjectsMetadata
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -532,30 +536,32 @@ export const ProjectsMetadata$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ProjectsMetadata$ {
-  /** @deprecated use `ProjectsMetadata$inboundSchema` instead. */
-  export const inboundSchema = ProjectsMetadata$inboundSchema;
-  /** @deprecated use `ProjectsMetadata$outboundSchema` instead. */
-  export const outboundSchema = ProjectsMetadata$outboundSchema;
-  /** @deprecated use `ProjectsMetadata$Outbound` instead. */
-  export type Outbound = ProjectsMetadata$Outbound;
+export namespace ResponseBodyProjectsMetadata$ {
+  /** @deprecated use `ResponseBodyProjectsMetadata$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyProjectsMetadata$inboundSchema;
+  /** @deprecated use `ResponseBodyProjectsMetadata$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyProjectsMetadata$outboundSchema;
+  /** @deprecated use `ResponseBodyProjectsMetadata$Outbound` instead. */
+  export type Outbound = ResponseBodyProjectsMetadata$Outbound;
 }
 
-export function projectsMetadataToJSON(
-  projectsMetadata: ProjectsMetadata,
+export function responseBodyProjectsMetadataToJSON(
+  responseBodyProjectsMetadata: ResponseBodyProjectsMetadata,
 ): string {
   return JSON.stringify(
-    ProjectsMetadata$outboundSchema.parse(projectsMetadata),
+    ResponseBodyProjectsMetadata$outboundSchema.parse(
+      responseBodyProjectsMetadata,
+    ),
   );
 }
 
-export function projectsMetadataFromJSON(
+export function responseBodyProjectsMetadataFromJSON(
   jsonString: string,
-): SafeParseResult<ProjectsMetadata, SDKValidationError> {
+): SafeParseResult<ResponseBodyProjectsMetadata, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ProjectsMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProjectsMetadata' from JSON`,
+    (x) => ResponseBodyProjectsMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyProjectsMetadata' from JSON`,
   );
 }
 
@@ -587,7 +593,7 @@ export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectsMetadata: z.nullable(
-    z.array(z.lazy(() => ProjectsMetadata$inboundSchema)),
+    z.array(z.lazy(() => ResponseBodyProjectsMetadata$inboundSchema)),
   ),
   events: z.array(ResponseBodyEvents$inboundSchema),
   id: z.string(),
@@ -600,7 +606,7 @@ export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetWebhooksResponseBody1$Outbound = {
-  projectsMetadata: Array<ProjectsMetadata$Outbound> | null;
+  projectsMetadata: Array<ResponseBodyProjectsMetadata$Outbound> | null;
   events: Array<string>;
   id: string;
   url: string;
@@ -617,7 +623,7 @@ export const GetWebhooksResponseBody1$outboundSchema: z.ZodType<
   GetWebhooksResponseBody1
 > = z.object({
   projectsMetadata: z.nullable(
-    z.array(z.lazy(() => ProjectsMetadata$outboundSchema)),
+    z.array(z.lazy(() => ResponseBodyProjectsMetadata$outboundSchema)),
   ),
   events: z.array(ResponseBodyEvents$outboundSchema),
   id: z.string(),

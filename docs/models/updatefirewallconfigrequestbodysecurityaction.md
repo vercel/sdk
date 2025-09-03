@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateFirewallConfigRequestBodySecurityAction } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
-let value: UpdateFirewallConfigRequestBodySecurityAction = "rules.update";
+let value: UpdateFirewallConfigRequestBodySecurityAction = "rules.insert";
 ```
 
 ## Values
 
 ```typescript
-"rules.update"
+"rules.insert"
 ```

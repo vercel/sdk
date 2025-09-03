@@ -199,6 +199,17 @@ type PrincipalApp struct {
 	Name     string           `json:"name"`
 }
 
+func (p PrincipalApp) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrincipalApp) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "clientId", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PrincipalApp) GetType() PrincipalTypeApp {
 	if o == nil {
 		return PrincipalTypeApp("")
@@ -251,6 +262,17 @@ type PrincipalUser struct {
 	Slug     *string            `json:"slug,omitempty"`
 	UID      string             `json:"uid"`
 	Username string             `json:"username"`
+}
+
+func (p PrincipalUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrincipalUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"avatar", "email", "uid", "username"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PrincipalUser) GetType() *PrincipalTypeUser {
@@ -329,17 +351,17 @@ func CreatePrincipalPrincipalApp(principalApp PrincipalApp) Principal {
 
 func (u *Principal) UnmarshalJSON(data []byte) error {
 
-	var principalApp PrincipalApp = PrincipalApp{}
-	if err := utils.UnmarshalJSON(data, &principalApp, "", true, true); err == nil {
-		u.PrincipalApp = &principalApp
-		u.Type = PrincipalTypePrincipalApp
+	var principalUser PrincipalUser = PrincipalUser{}
+	if err := utils.UnmarshalJSON(data, &principalUser, "", true, nil); err == nil {
+		u.PrincipalUser = &principalUser
+		u.Type = PrincipalTypePrincipalUser
 		return nil
 	}
 
-	var principalUser PrincipalUser = PrincipalUser{}
-	if err := utils.UnmarshalJSON(data, &principalUser, "", true, true); err == nil {
-		u.PrincipalUser = &principalUser
-		u.Type = PrincipalTypePrincipalUser
+	var principalApp PrincipalApp = PrincipalApp{}
+	if err := utils.UnmarshalJSON(data, &principalApp, "", true, nil); err == nil {
+		u.PrincipalApp = &principalApp
+		u.Type = PrincipalTypePrincipalApp
 		return nil
 	}
 
@@ -386,6 +408,17 @@ type ViaApp struct {
 	Type     ViaTypeApp `json:"type"`
 	ClientID string     `json:"clientId"`
 	Name     string     `json:"name"`
+}
+
+func (v ViaApp) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *ViaApp) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, []string{"type", "clientId", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ViaApp) GetType() ViaTypeApp {
@@ -440,6 +473,17 @@ type ViaUser struct {
 	Slug     *string      `json:"slug,omitempty"`
 	UID      string       `json:"uid"`
 	Username string       `json:"username"`
+}
+
+func (v ViaUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *ViaUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, []string{"avatar", "email", "uid", "username"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ViaUser) GetType() *ViaTypeUser {
@@ -518,17 +562,17 @@ func CreateViaViaApp(viaApp ViaApp) Via {
 
 func (u *Via) UnmarshalJSON(data []byte) error {
 
-	var viaApp ViaApp = ViaApp{}
-	if err := utils.UnmarshalJSON(data, &viaApp, "", true, true); err == nil {
-		u.ViaApp = &viaApp
-		u.Type = ViaTypeViaApp
+	var viaUser ViaUser = ViaUser{}
+	if err := utils.UnmarshalJSON(data, &viaUser, "", true, nil); err == nil {
+		u.ViaUser = &viaUser
+		u.Type = ViaTypeViaUser
 		return nil
 	}
 
-	var viaUser ViaUser = ViaUser{}
-	if err := utils.UnmarshalJSON(data, &viaUser, "", true, true); err == nil {
-		u.ViaUser = &viaUser
-		u.Type = ViaTypeViaUser
+	var viaApp ViaApp = ViaApp{}
+	if err := utils.UnmarshalJSON(data, &viaApp, "", true, nil); err == nil {
+		u.ViaApp = &viaApp
+		u.Type = ViaTypeViaApp
 		return nil
 	}
 
@@ -635,8 +679,8 @@ func (e *AuthMethod) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Payload158 - The payload of the event, if requested.
-type Payload158 struct {
+// Payload161 - The payload of the event, if requested.
+type Payload161 struct {
 	GrantType GrantType `json:"grantType"`
 	AppName   string    `json:"appName"`
 	// access_token TTL
@@ -647,42 +691,53 @@ type Payload158 struct {
 	AuthMethod AuthMethod `json:"authMethod"`
 }
 
-func (o *Payload158) GetGrantType() GrantType {
+func (p Payload161) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload161) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"grantType", "appName", "atTTL", "scope", "authMethod"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload161) GetGrantType() GrantType {
 	if o == nil {
 		return GrantType("")
 	}
 	return o.GrantType
 }
 
-func (o *Payload158) GetAppName() string {
+func (o *Payload161) GetAppName() string {
 	if o == nil {
 		return ""
 	}
 	return o.AppName
 }
 
-func (o *Payload158) GetAtTTL() float64 {
+func (o *Payload161) GetAtTTL() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.AtTTL
 }
 
-func (o *Payload158) GetRtTTL() *float64 {
+func (o *Payload161) GetRtTTL() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.RtTTL
 }
 
-func (o *Payload158) GetScope() string {
+func (o *Payload161) GetScope() string {
 	if o == nil {
 		return ""
 	}
 	return o.Scope
 }
 
-func (o *Payload158) GetAuthMethod() AuthMethod {
+func (o *Payload161) GetAuthMethod() AuthMethod {
 	if o == nil {
 		return AuthMethod("")
 	}
@@ -692,6 +747,17 @@ func (o *Payload158) GetAuthMethod() AuthMethod {
 type UserEventTeam10 struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (u UserEventTeam10) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam10) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventTeam10) GetID() string {
@@ -713,6 +779,17 @@ type Configuration8 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (c Configuration8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Configuration8) GetID() string {
 	if o == nil {
 		return ""
@@ -732,6 +809,17 @@ type Peering3 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (p Peering3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Peering3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Peering3) GetID() string {
 	if o == nil {
 		return ""
@@ -746,36 +834,47 @@ func (o *Peering3) GetName() *string {
 	return o.Name
 }
 
-// Payload157 - The payload of the event, if requested.
-type Payload157 struct {
+// Payload160 - The payload of the event, if requested.
+type Payload160 struct {
 	Team          UserEventTeam10 `json:"team"`
 	Configuration Configuration8  `json:"configuration"`
 	Peering       Peering3        `json:"peering"`
 	NewName       *string         `json:"newName,omitempty"`
 }
 
-func (o *Payload157) GetTeam() UserEventTeam10 {
+func (p Payload160) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload160) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "peering"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload160) GetTeam() UserEventTeam10 {
 	if o == nil {
 		return UserEventTeam10{}
 	}
 	return o.Team
 }
 
-func (o *Payload157) GetConfiguration() Configuration8 {
+func (o *Payload160) GetConfiguration() Configuration8 {
 	if o == nil {
 		return Configuration8{}
 	}
 	return o.Configuration
 }
 
-func (o *Payload157) GetPeering() Peering3 {
+func (o *Payload160) GetPeering() Peering3 {
 	if o == nil {
 		return Peering3{}
 	}
 	return o.Peering
 }
 
-func (o *Payload157) GetNewName() *string {
+func (o *Payload160) GetNewName() *string {
 	if o == nil {
 		return nil
 	}
@@ -785,6 +884,17 @@ func (o *Payload157) GetNewName() *string {
 type UserEventTeam9 struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (u UserEventTeam9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventTeam9) GetID() string {
@@ -806,6 +916,17 @@ type Configuration7 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (c Configuration7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Configuration7) GetID() string {
 	if o == nil {
 		return ""
@@ -825,6 +946,17 @@ type Peering2 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (p Peering2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Peering2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Peering2) GetID() string {
 	if o == nil {
 		return ""
@@ -839,28 +971,39 @@ func (o *Peering2) GetName() *string {
 	return o.Name
 }
 
-// Payload156 - The payload of the event, if requested.
-type Payload156 struct {
+// Payload159 - The payload of the event, if requested.
+type Payload159 struct {
 	Team          UserEventTeam9 `json:"team"`
 	Configuration Configuration7 `json:"configuration"`
 	Peering       Peering2       `json:"peering"`
 }
 
-func (o *Payload156) GetTeam() UserEventTeam9 {
+func (p Payload159) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload159) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "peering"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload159) GetTeam() UserEventTeam9 {
 	if o == nil {
 		return UserEventTeam9{}
 	}
 	return o.Team
 }
 
-func (o *Payload156) GetConfiguration() Configuration7 {
+func (o *Payload159) GetConfiguration() Configuration7 {
 	if o == nil {
 		return Configuration7{}
 	}
 	return o.Configuration
 }
 
-func (o *Payload156) GetPeering() Peering2 {
+func (o *Payload159) GetPeering() Peering2 {
 	if o == nil {
 		return Peering2{}
 	}
@@ -870,6 +1013,17 @@ func (o *Payload156) GetPeering() Peering2 {
 type UserEventTeam8 struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (u UserEventTeam8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventTeam8) GetID() string {
@@ -891,6 +1045,17 @@ type Configuration6 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (c Configuration6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Configuration6) GetID() string {
 	if o == nil {
 		return ""
@@ -910,6 +1075,17 @@ type Peering1 struct {
 	AccountID string `json:"accountId"`
 	Region    string `json:"region"`
 	VpcID     string `json:"vpcId"`
+}
+
+func (p Peering1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Peering1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "accountId", "region", "vpcId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Peering1) GetID() string {
@@ -940,38 +1116,160 @@ func (o *Peering1) GetVpcID() string {
 	return o.VpcID
 }
 
-// Payload155 - The payload of the event, if requested.
-type Payload155 struct {
+// Payload158 - The payload of the event, if requested.
+type Payload158 struct {
 	Team          UserEventTeam8 `json:"team"`
 	Configuration Configuration6 `json:"configuration"`
 	Peering       Peering1       `json:"peering"`
 }
 
-func (o *Payload155) GetTeam() UserEventTeam8 {
+func (p Payload158) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload158) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "peering"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload158) GetTeam() UserEventTeam8 {
 	if o == nil {
 		return UserEventTeam8{}
 	}
 	return o.Team
 }
 
-func (o *Payload155) GetConfiguration() Configuration6 {
+func (o *Payload158) GetConfiguration() Configuration6 {
 	if o == nil {
 		return Configuration6{}
 	}
 	return o.Configuration
 }
 
-func (o *Payload155) GetPeering() Peering1 {
+func (o *Payload158) GetPeering() Peering1 {
 	if o == nil {
 		return Peering1{}
 	}
 	return o.Peering
 }
 
+// Payload157 - The payload of the event, if requested.
+type Payload157 struct {
+	AppName        string  `json:"appName"`
+	AppID          *string `json:"appId,omitempty"`
+	InstallationID *string `json:"installationId,omitempty"`
+}
+
+func (p Payload157) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload157) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload157) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *Payload157) GetAppID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AppID
+}
+
+func (o *Payload157) GetInstallationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InstallationID
+}
+
+// Payload156 - The payload of the event, if requested.
+type Payload156 struct {
+	AppName string  `json:"appName"`
+	AppID   *string `json:"appId,omitempty"`
+}
+
+func (p Payload156) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload156) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload156) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *Payload156) GetAppID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AppID
+}
+
+// Payload155 - The payload of the event, if requested.
+type Payload155 struct {
+	AppName string `json:"appName"`
+	AppID   string `json:"appId"`
+}
+
+func (p Payload155) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload155) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName", "appId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload155) GetAppName() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppName
+}
+
+func (o *Payload155) GetAppID() string {
+	if o == nil {
+		return ""
+	}
+	return o.AppID
+}
+
 // Payload154 - The payload of the event, if requested.
 type Payload154 struct {
 	AppName string `json:"appName"`
-	AppID   string `json:"appId"`
+}
+
+func (p Payload154) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload154) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload154) GetAppName() string {
@@ -981,16 +1279,21 @@ func (o *Payload154) GetAppName() string {
 	return o.AppName
 }
 
-func (o *Payload154) GetAppID() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppID
-}
-
 // Payload153 - The payload of the event, if requested.
 type Payload153 struct {
-	AppName string `json:"appName"`
+	AppName    string   `json:"appName"`
+	NextScopes []string `json:"nextScopes"`
+}
+
+func (p Payload153) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload153) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName", "nextScopes"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload153) GetAppName() string {
@@ -1000,10 +1303,28 @@ func (o *Payload153) GetAppName() string {
 	return o.AppName
 }
 
+func (o *Payload153) GetNextScopes() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.NextScopes
+}
+
 // Payload152 - The payload of the event, if requested.
 type Payload152 struct {
-	AppName    string   `json:"appName"`
-	NextScopes []string `json:"nextScopes"`
+	AppName string   `json:"appName"`
+	Scopes  []string `json:"scopes"`
+}
+
+func (p Payload152) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload152) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"appName", "scopes"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload152) GetAppName() string {
@@ -1013,47 +1334,38 @@ func (o *Payload152) GetAppName() string {
 	return o.AppName
 }
 
-func (o *Payload152) GetNextScopes() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.NextScopes
-}
-
-// Payload151 - The payload of the event, if requested.
-type Payload151 struct {
-	AppName string   `json:"appName"`
-	Scopes  []string `json:"scopes"`
-}
-
-func (o *Payload151) GetAppName() string {
-	if o == nil {
-		return ""
-	}
-	return o.AppName
-}
-
-func (o *Payload151) GetScopes() []string {
+func (o *Payload152) GetScopes() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Scopes
 }
 
-// Payload150 - The payload of the event, if requested.
-type Payload150 struct {
+// Payload151 - The payload of the event, if requested.
+type Payload151 struct {
 	OldName string `json:"oldName"`
 	NewName string `json:"newName"`
 }
 
-func (o *Payload150) GetOldName() string {
+func (p Payload151) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload151) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"oldName", "newName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload151) GetOldName() string {
 	if o == nil {
 		return ""
 	}
 	return o.OldName
 }
 
-func (o *Payload150) GetNewName() string {
+func (o *Payload151) GetNewName() string {
 	if o == nil {
 		return ""
 	}
@@ -1086,12 +1398,23 @@ func (e *Tier) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Payload149 - The payload of the event, if requested.
-type Payload149 struct {
+// Payload150 - The payload of the event, if requested.
+type Payload150 struct {
 	Tier Tier `json:"tier"`
 }
 
-func (o *Payload149) GetTier() Tier {
+func (p Payload150) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload150) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"tier"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload150) GetTier() Tier {
 	if o == nil {
 		return Tier("")
 	}
@@ -1104,6 +1427,17 @@ type ProjectWebAnalytics struct {
 	CanceledAt *float64 `json:"canceledAt,omitempty"`
 	EnabledAt  *float64 `json:"enabledAt,omitempty"`
 	HasData    *bool    `json:"hasData,omitempty"`
+}
+
+func (p ProjectWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ProjectWebAnalytics) GetID() string {
@@ -1149,6 +1483,17 @@ type PrevProjectWebAnalytics struct {
 	HasData    *bool    `json:"hasData,omitempty"`
 }
 
+func (p PrevProjectWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrevProjectWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PrevProjectWebAnalytics) GetID() string {
 	if o == nil {
 		return ""
@@ -1184,36 +1529,47 @@ func (o *PrevProjectWebAnalytics) GetHasData() *bool {
 	return o.HasData
 }
 
-// Payload148 - The payload of the event, if requested.
-type Payload148 struct {
+// Payload149 - The payload of the event, if requested.
+type Payload149 struct {
 	ProjectID               string                   `json:"projectId"`
 	ProjectName             string                   `json:"projectName"`
 	ProjectWebAnalytics     *ProjectWebAnalytics     `json:"projectWebAnalytics,omitempty"`
 	PrevProjectWebAnalytics *PrevProjectWebAnalytics `json:"prevProjectWebAnalytics,omitempty"`
 }
 
-func (o *Payload148) GetProjectID() string {
+func (p Payload149) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload149) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "projectName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload149) GetProjectID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectID
 }
 
-func (o *Payload148) GetProjectName() string {
+func (o *Payload149) GetProjectName() string {
 	if o == nil {
 		return ""
 	}
 	return o.ProjectName
 }
 
-func (o *Payload148) GetProjectWebAnalytics() *ProjectWebAnalytics {
+func (o *Payload149) GetProjectWebAnalytics() *ProjectWebAnalytics {
 	if o == nil {
 		return nil
 	}
 	return o.ProjectWebAnalytics
 }
 
-func (o *Payload148) GetPrevProjectWebAnalytics() *PrevProjectWebAnalytics {
+func (o *Payload149) GetPrevProjectWebAnalytics() *PrevProjectWebAnalytics {
 	if o == nil {
 		return nil
 	}
@@ -1224,6 +1580,17 @@ type Microfrontends2 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	GroupIds  []any   `json:"groupIds"`
 	Enabled   bool    `json:"enabled"`
+}
+
+func (m Microfrontends2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *Microfrontends2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Microfrontends2) GetUpdatedAt() float64 {
@@ -1260,6 +1627,17 @@ type Microfrontends1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+}
+
+func (m Microfrontends1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *Microfrontends1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Microfrontends1) GetUpdatedAt() float64 {
@@ -1338,17 +1716,17 @@ func CreateMicrofrontendsUnionMicrofrontends2(microfrontends2 Microfrontends2) M
 
 func (u *MicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
-	var microfrontends2 Microfrontends2 = Microfrontends2{}
-	if err := utils.UnmarshalJSON(data, &microfrontends2, "", true, true); err == nil {
-		u.Microfrontends2 = &microfrontends2
-		u.Type = MicrofrontendsUnionTypeMicrofrontends2
+	var microfrontends1 Microfrontends1 = Microfrontends1{}
+	if err := utils.UnmarshalJSON(data, &microfrontends1, "", true, nil); err == nil {
+		u.Microfrontends1 = &microfrontends1
+		u.Type = MicrofrontendsUnionTypeMicrofrontends1
 		return nil
 	}
 
-	var microfrontends1 Microfrontends1 = Microfrontends1{}
-	if err := utils.UnmarshalJSON(data, &microfrontends1, "", true, true); err == nil {
-		u.Microfrontends1 = &microfrontends1
-		u.Type = MicrofrontendsUnionTypeMicrofrontends1
+	var microfrontends2 Microfrontends2 = Microfrontends2{}
+	if err := utils.UnmarshalJSON(data, &microfrontends2, "", true, nil); err == nil {
+		u.Microfrontends2 = &microfrontends2
+		u.Type = MicrofrontendsUnionTypeMicrofrontends2
 		return nil
 	}
 
@@ -1371,6 +1749,17 @@ type Project12 struct {
 	ID             string               `json:"id"`
 	Name           string               `json:"name"`
 	Microfrontends *MicrofrontendsUnion `json:"microfrontends,omitempty"`
+}
+
+func (p Project12) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project12) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project12) GetID() string {
@@ -1398,6 +1787,17 @@ type MicrofrontendsPrev2 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	GroupIds  []any   `json:"groupIds"`
 	Enabled   bool    `json:"enabled"`
+}
+
+func (m MicrofrontendsPrev2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MicrofrontendsPrev2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *MicrofrontendsPrev2) GetUpdatedAt() float64 {
@@ -1434,6 +1834,17 @@ type MicrofrontendsPrev1 struct {
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
 	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+}
+
+func (m MicrofrontendsPrev1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MicrofrontendsPrev1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *MicrofrontendsPrev1) GetUpdatedAt() float64 {
@@ -1512,17 +1923,17 @@ func CreatePrevMicrofrontendsUnionMicrofrontendsPrev2(microfrontendsPrev2 Microf
 
 func (u *PrevMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
-	var microfrontendsPrev2 MicrofrontendsPrev2 = MicrofrontendsPrev2{}
-	if err := utils.UnmarshalJSON(data, &microfrontendsPrev2, "", true, true); err == nil {
-		u.MicrofrontendsPrev2 = &microfrontendsPrev2
-		u.Type = PrevMicrofrontendsUnionTypeMicrofrontendsPrev2
+	var microfrontendsPrev1 MicrofrontendsPrev1 = MicrofrontendsPrev1{}
+	if err := utils.UnmarshalJSON(data, &microfrontendsPrev1, "", true, nil); err == nil {
+		u.MicrofrontendsPrev1 = &microfrontendsPrev1
+		u.Type = PrevMicrofrontendsUnionTypeMicrofrontendsPrev1
 		return nil
 	}
 
-	var microfrontendsPrev1 MicrofrontendsPrev1 = MicrofrontendsPrev1{}
-	if err := utils.UnmarshalJSON(data, &microfrontendsPrev1, "", true, true); err == nil {
-		u.MicrofrontendsPrev1 = &microfrontendsPrev1
-		u.Type = PrevMicrofrontendsUnionTypeMicrofrontendsPrev1
+	var microfrontendsPrev2 MicrofrontendsPrev2 = MicrofrontendsPrev2{}
+	if err := utils.UnmarshalJSON(data, &microfrontendsPrev2, "", true, nil); err == nil {
+		u.MicrofrontendsPrev2 = &microfrontendsPrev2
+		u.Type = PrevMicrofrontendsUnionTypeMicrofrontendsPrev2
 		return nil
 	}
 
@@ -1545,6 +1956,17 @@ type PrevProject struct {
 	Microfrontends *PrevMicrofrontendsUnion `json:"microfrontends,omitempty"`
 }
 
+func (p PrevProject) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrevProject) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PrevProject) GetMicrofrontends() *PrevMicrofrontendsUnion {
 	if o == nil {
 		return nil
@@ -1554,6 +1976,17 @@ func (o *PrevProject) GetMicrofrontends() *PrevMicrofrontendsUnion {
 
 type Prev2 struct {
 	Project PrevProject `json:"project"`
+}
+
+func (p Prev2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Prev2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Prev2) GetProject() PrevProject {
@@ -1567,6 +2000,17 @@ type Group2 struct {
 	ID   string `json:"id"`
 	Slug string `json:"slug"`
 	Name string `json:"name"`
+}
+
+func (g Group2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *Group2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Group2) GetID() string {
@@ -1590,28 +2034,39 @@ func (o *Group2) GetName() string {
 	return o.Name
 }
 
-// Payload147 - The payload of the event, if requested.
-type Payload147 struct {
+// Payload148 - The payload of the event, if requested.
+type Payload148 struct {
 	Project Project12 `json:"project"`
 	Prev    Prev2     `json:"prev"`
 	Group   Group2    `json:"group"`
 }
 
-func (o *Payload147) GetProject() Project12 {
+func (p Payload148) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload148) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "prev", "group"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload148) GetProject() Project12 {
 	if o == nil {
 		return Project12{}
 	}
 	return o.Project
 }
 
-func (o *Payload147) GetPrev() Prev2 {
+func (o *Payload148) GetPrev() Prev2 {
 	if o == nil {
 		return Prev2{}
 	}
 	return o.Prev
 }
 
-func (o *Payload147) GetGroup() Group2 {
+func (o *Payload148) GetGroup() Group2 {
 	if o == nil {
 		return Group2{}
 	}
@@ -1621,6 +2076,17 @@ func (o *Payload147) GetGroup() Group2 {
 type Project11 struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (p Project11) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project11) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project11) GetID() string {
@@ -1641,6 +2107,17 @@ type Group1 struct {
 	ID   string `json:"id"`
 	Slug string `json:"slug"`
 	Name string `json:"name"`
+}
+
+func (g Group1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *Group1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "slug", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Group1) GetID() string {
@@ -1664,20 +2141,31 @@ func (o *Group1) GetName() string {
 	return o.Name
 }
 
-// Payload146 - The payload of the event, if requested.
-type Payload146 struct {
+// Payload147 - The payload of the event, if requested.
+type Payload147 struct {
 	Project Project11 `json:"project"`
 	Group   Group1    `json:"group"`
 }
 
-func (o *Payload146) GetProject() Project11 {
+func (p Payload147) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload147) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "group"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload147) GetProject() Project11 {
 	if o == nil {
 		return Project11{}
 	}
 	return o.Project
 }
 
-func (o *Payload146) GetGroup() Group1 {
+func (o *Payload147) GetGroup() Group1 {
 	if o == nil {
 		return Group1{}
 	}
@@ -1688,6 +2176,17 @@ type Prev1 struct {
 	Name                string `json:"name"`
 	Slug                string `json:"slug"`
 	FallbackEnvironment string `json:"fallbackEnvironment"`
+}
+
+func (p Prev1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Prev1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "slug", "fallbackEnvironment"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Prev1) GetName() string {
@@ -1711,13 +2210,77 @@ func (o *Prev1) GetFallbackEnvironment() string {
 	return o.FallbackEnvironment
 }
 
-// Payload145 - The payload of the event, if requested.
-type Payload145 struct {
+// Payload146 - The payload of the event, if requested.
+type Payload146 struct {
 	ID                  string  `json:"id"`
 	Slug                *string `json:"slug,omitempty"`
 	Name                *string `json:"name,omitempty"`
 	FallbackEnvironment *string `json:"fallbackEnvironment,omitempty"`
 	Prev                Prev1   `json:"prev"`
+}
+
+func (p Payload146) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload146) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "prev"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload146) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Payload146) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *Payload146) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Payload146) GetFallbackEnvironment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FallbackEnvironment
+}
+
+func (o *Payload146) GetPrev() Prev1 {
+	if o == nil {
+		return Prev1{}
+	}
+	return o.Prev
+}
+
+// Payload145 - The payload of the event, if requested.
+type Payload145 struct {
+	ID   string `json:"id"`
+	Slug string `json:"slug"`
+	Name string `json:"name"`
+}
+
+func (p Payload145) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload145) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "slug", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload145) GetID() string {
@@ -1727,56 +2290,14 @@ func (o *Payload145) GetID() string {
 	return o.ID
 }
 
-func (o *Payload145) GetSlug() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Slug
-}
-
-func (o *Payload145) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-func (o *Payload145) GetFallbackEnvironment() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FallbackEnvironment
-}
-
-func (o *Payload145) GetPrev() Prev1 {
-	if o == nil {
-		return Prev1{}
-	}
-	return o.Prev
-}
-
-// Payload144 - The payload of the event, if requested.
-type Payload144 struct {
-	ID   string `json:"id"`
-	Slug string `json:"slug"`
-	Name string `json:"name"`
-}
-
-func (o *Payload144) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *Payload144) GetSlug() string {
+func (o *Payload145) GetSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.Slug
 }
 
-func (o *Payload144) GetName() string {
+func (o *Payload145) GetName() string {
 	if o == nil {
 		return ""
 	}
@@ -1809,24 +2330,86 @@ func (e *Action5) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Payload143 - The payload of the event, if requested.
-type Payload143 struct {
+// Payload144 - The payload of the event, if requested.
+type Payload144 struct {
 	Action Action5 `json:"action"`
 }
 
-func (o *Payload143) GetAction() Action5 {
+func (p Payload144) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload144) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload144) GetAction() Action5 {
 	if o == nil {
 		return Action5("")
 	}
 	return o.Action
 }
 
-// Payload142 - The payload of the event, if requested.
-type Payload142 struct {
+// Payload143 - The payload of the event, if requested.
+type Payload143 struct {
 	EdgeConfigID   string `json:"edgeConfigId"`
 	EdgeConfigSlug string `json:"edgeConfigSlug"`
 	// ids of deleted tokens
 	EdgeConfigTokenIds []string `json:"edgeConfigTokenIds"`
+}
+
+func (p Payload143) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload143) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"edgeConfigId", "edgeConfigSlug", "edgeConfigTokenIds"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload143) GetEdgeConfigID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigID
+}
+
+func (o *Payload143) GetEdgeConfigSlug() string {
+	if o == nil {
+		return ""
+	}
+	return o.EdgeConfigSlug
+}
+
+func (o *Payload143) GetEdgeConfigTokenIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.EdgeConfigTokenIds
+}
+
+// Payload142 - The payload of the event, if requested.
+type Payload142 struct {
+	EdgeConfigID      string `json:"edgeConfigId"`
+	EdgeConfigSlug    string `json:"edgeConfigSlug"`
+	EdgeConfigTokenID string `json:"edgeConfigTokenId"`
+	Label             string `json:"label"`
+}
+
+func (p Payload142) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload142) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"edgeConfigId", "edgeConfigSlug", "edgeConfigTokenId", "label"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload142) GetEdgeConfigID() string {
@@ -1843,19 +2426,36 @@ func (o *Payload142) GetEdgeConfigSlug() string {
 	return o.EdgeConfigSlug
 }
 
-func (o *Payload142) GetEdgeConfigTokenIds() []string {
+func (o *Payload142) GetEdgeConfigTokenID() string {
 	if o == nil {
-		return []string{}
+		return ""
 	}
-	return o.EdgeConfigTokenIds
+	return o.EdgeConfigTokenID
+}
+
+func (o *Payload142) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
 }
 
 // Payload141 - The payload of the event, if requested.
 type Payload141 struct {
-	EdgeConfigID      string `json:"edgeConfigId"`
-	EdgeConfigSlug    string `json:"edgeConfigSlug"`
-	EdgeConfigTokenID string `json:"edgeConfigTokenId"`
-	Label             string `json:"label"`
+	EdgeConfigID     string `json:"edgeConfigId"`
+	EdgeConfigSlug   string `json:"edgeConfigSlug"`
+	EdgeConfigDigest string `json:"edgeConfigDigest"`
+}
+
+func (p Payload141) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload141) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"edgeConfigId", "edgeConfigSlug", "edgeConfigDigest"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload141) GetEdgeConfigID() string {
@@ -1872,46 +2472,42 @@ func (o *Payload141) GetEdgeConfigSlug() string {
 	return o.EdgeConfigSlug
 }
 
-func (o *Payload141) GetEdgeConfigTokenID() string {
-	if o == nil {
-		return ""
-	}
-	return o.EdgeConfigTokenID
-}
-
-func (o *Payload141) GetLabel() string {
-	if o == nil {
-		return ""
-	}
-	return o.Label
-}
-
-// Payload140 - The payload of the event, if requested.
-type Payload140 struct {
-	EdgeConfigID     string `json:"edgeConfigId"`
-	EdgeConfigSlug   string `json:"edgeConfigSlug"`
-	EdgeConfigDigest string `json:"edgeConfigDigest"`
-}
-
-func (o *Payload140) GetEdgeConfigID() string {
-	if o == nil {
-		return ""
-	}
-	return o.EdgeConfigID
-}
-
-func (o *Payload140) GetEdgeConfigSlug() string {
-	if o == nil {
-		return ""
-	}
-	return o.EdgeConfigSlug
-}
-
-func (o *Payload140) GetEdgeConfigDigest() string {
+func (o *Payload141) GetEdgeConfigDigest() string {
 	if o == nil {
 		return ""
 	}
 	return o.EdgeConfigDigest
+}
+
+// Payload140 - The payload of the event, if requested.
+type Payload140 struct {
+	ProjectName string   `json:"projectName"`
+	Urls        []string `json:"urls"`
+}
+
+func (p Payload140) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload140) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "urls"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Payload140) GetProjectName() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProjectName
+}
+
+func (o *Payload140) GetUrls() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Urls
 }
 
 // Payload139 - The payload of the event, if requested.
@@ -1919,6 +2515,17 @@ type Payload139 struct {
 	ProjectName string   `json:"projectName"`
 	Tags        []string `json:"tags"`
 	Target      *string  `json:"target,omitempty"`
+}
+
+func (p Payload139) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload139) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "tags"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload139) GetProjectName() string {
@@ -1979,6 +2586,17 @@ type Project10 struct {
 	InvitedUserID   *string     `json:"invitedUserId,omitempty"`
 }
 
+func (p Project10) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project10) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "role", "invitedUserName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Project10) GetName() string {
 	if o == nil {
 		return ""
@@ -2019,6 +2637,17 @@ type Payload138 struct {
 	Project Project10 `json:"project"`
 }
 
+func (p Payload138) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload138) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload138) GetProject() Project10 {
 	if o == nil {
 		return Project10{}
@@ -2029,6 +2658,17 @@ func (o *Payload138) GetProject() Project10 {
 type Project9 struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (p Project9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project9) GetID() string {
@@ -2111,6 +2751,17 @@ type ProjectMembership2 struct {
 	PreviousRole *ProjectMembershipPreviousRole `json:"previousRole,omitempty"`
 }
 
+func (p ProjectMembership2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectMembership2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ProjectMembership2) GetRole() *ProjectMembershipRole2 {
 	if o == nil {
 		return nil
@@ -2152,6 +2803,17 @@ type Payload137 struct {
 	ProjectMembership ProjectMembership2 `json:"projectMembership"`
 }
 
+func (p Payload137) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload137) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "projectMembership"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload137) GetProject() Project9 {
 	if o == nil {
 		return Project9{}
@@ -2169,6 +2831,17 @@ func (o *Payload137) GetProjectMembership() ProjectMembership2 {
 type Project8 struct {
 	Name string  `json:"name"`
 	ID   *string `json:"id,omitempty"`
+}
+
+func (p Project8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project8) GetName() string {
@@ -2221,6 +2894,17 @@ type RemovedMembership struct {
 	Username  *string               `json:"username,omitempty"`
 }
 
+func (r RemovedMembership) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemovedMembership) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"role", "uid", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemovedMembership) GetRole() RemovedMembershipRole {
 	if o == nil {
 		return RemovedMembershipRole("")
@@ -2255,6 +2939,17 @@ type Payload136 struct {
 	RemovedMembership RemovedMembership `json:"removedMembership"`
 }
 
+func (p Payload136) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload136) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "removedMembership"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload136) GetProject() Project8 {
 	if o == nil {
 		return Project8{}
@@ -2272,6 +2967,17 @@ func (o *Payload136) GetRemovedMembership() RemovedMembership {
 type Project7 struct {
 	Name string  `json:"name"`
 	ID   *string `json:"id,omitempty"`
+}
+
+func (p Project7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project7) GetName() string {
@@ -2324,6 +3030,17 @@ type ProjectMembership1 struct {
 	Username  *string                `json:"username,omitempty"`
 }
 
+func (p ProjectMembership1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectMembership1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"role", "uid", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ProjectMembership1) GetRole() ProjectMembershipRole1 {
 	if o == nil {
 		return ProjectMembershipRole1("")
@@ -2358,6 +3075,17 @@ type Payload135 struct {
 	ProjectMembership *ProjectMembership1 `json:"projectMembership"`
 }
 
+func (p Payload135) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload135) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "projectMembership"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload135) GetProject() Project7 {
 	if o == nil {
 		return Project7{}
@@ -2378,6 +3106,17 @@ type Payload134 struct {
 	NewProjectName      string  `json:"newProjectName"`
 	OriginAccountName   string  `json:"originAccountName"`
 	TransferID          *string `json:"transferId,omitempty"`
+}
+
+func (p Payload134) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload134) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"previousProjectName", "newProjectName", "originAccountName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload134) GetPreviousProjectName() string {
@@ -2416,6 +3155,17 @@ type Payload133 struct {
 	TransferID             *string `json:"transferId,omitempty"`
 }
 
+func (p Payload133) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload133) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"previousProjectName", "newProjectName", "destinationAccountName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload133) GetPreviousProjectName() string {
 	if o == nil {
 		return ""
@@ -2451,6 +3201,17 @@ type Payload132 struct {
 	TransferID             *string `json:"transferId,omitempty"`
 }
 
+func (p Payload132) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload132) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "destinationAccountName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload132) GetProjectName() string {
 	if o == nil {
 		return ""
@@ -2480,6 +3241,17 @@ type Payload131 struct {
 	DestinationAccountName string  `json:"destinationAccountName"`
 	DestinationAccountID   string  `json:"destinationAccountId"`
 	TransferID             *string `json:"transferId,omitempty"`
+}
+
+func (p Payload131) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload131) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "projectName", "originAccountName", "destinationAccountName", "destinationAccountId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload131) GetProjectID() string {
@@ -2534,6 +3306,17 @@ type Payload130 struct {
 	BitbucketUsername *string `json:"bitbucketUsername,omitempty"`
 }
 
+func (p Payload130) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload130) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"requestedTeamName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload130) GetRequestedTeamName() string {
 	if o == nil {
 		return ""
@@ -2584,6 +3367,17 @@ type Payload129 struct {
 	GithubUsername    *string `json:"githubUsername,omitempty"`
 	GitlabUsername    *string `json:"gitlabUsername,omitempty"`
 	BitbucketUsername *string `json:"bitbucketUsername,omitempty"`
+}
+
+func (p Payload129) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload129) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"teamName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload129) GetTeamName() string {
@@ -2638,6 +3432,17 @@ type Payload128 struct {
 	BitbucketUsername *string `json:"bitbucketUsername,omitempty"`
 	UpdatedUID        *string `json:"updatedUid,omitempty"`
 	TeamID            *string `json:"teamId,omitempty"`
+}
+
+func (p Payload128) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload128) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"teamName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload128) GetTeamName() string {
@@ -2702,6 +3507,17 @@ type Payload127 struct {
 	Currency *string  `json:"currency,omitempty"`
 }
 
+func (p Payload127) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload127) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload127) GetPrice() *float64 {
 	if o == nil {
 		return nil
@@ -2720,6 +3536,17 @@ func (o *Payload127) GetCurrency() *string {
 type Payload126 struct {
 	PreviewDeploymentSuffix         *string `json:"previewDeploymentSuffix,omitempty"`
 	PreviousPreviewDeploymentSuffix *string `json:"previousPreviewDeploymentSuffix,omitempty"`
+}
+
+func (p Payload126) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload126) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload126) GetPreviewDeploymentSuffix() *string {
@@ -2741,6 +3568,17 @@ type Payload125 struct {
 	Price    *float64 `json:"price,omitempty"`
 	Currency *string  `json:"currency,omitempty"`
 	Enabled  *bool    `json:"enabled,omitempty"`
+}
+
+func (p Payload125) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload125) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload125) GetPrice() *float64 {
@@ -2769,6 +3607,17 @@ type Payload124 struct {
 	Username string `json:"username"`
 }
 
+func (p Payload124) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload124) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"username"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload124) GetUsername() string {
 	if o == nil {
 		return ""
@@ -2780,6 +3629,17 @@ func (o *Payload124) GetUsername() string {
 type Payload123 struct {
 	Email     string `json:"email"`
 	PrevEmail string `json:"prevEmail"`
+}
+
+func (p Payload123) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload123) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"email", "prevEmail"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload123) GetEmail() string {
@@ -2801,6 +3661,17 @@ type Payload122 struct {
 	MfaEnabled bool `json:"mfaEnabled"`
 }
 
+func (p Payload122) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload122) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"mfaEnabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload122) GetMfaEnabled() bool {
 	if o == nil {
 		return false
@@ -2812,6 +3683,17 @@ func (o *Payload122) GetMfaEnabled() bool {
 type Payload121 struct {
 	Enabled      bool `json:"enabled"`
 	TotpVerified bool `json:"totpVerified"`
+}
+
+func (p Payload121) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload121) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"enabled", "totpVerified"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload121) GetEnabled() bool {
@@ -2833,6 +3715,17 @@ type Previous struct {
 	TotpVerified bool `json:"totpVerified"`
 }
 
+func (p Previous) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Previous) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"enabled", "totpVerified"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Previous) GetEnabled() bool {
 	if o == nil {
 		return false
@@ -2850,6 +3743,17 @@ func (o *Previous) GetTotpVerified() bool {
 type Next struct {
 	Enabled      bool `json:"enabled"`
 	TotpVerified bool `json:"totpVerified"`
+}
+
+func (n Next) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *Next) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"enabled", "totpVerified"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Next) GetEnabled() bool {
@@ -2872,6 +3776,17 @@ type Payload120 struct {
 	Next     Next     `json:"next"`
 }
 
+func (p Payload120) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload120) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"previous", "next"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload120) GetPrevious() Previous {
 	if o == nil {
 		return Previous{}
@@ -2891,6 +3806,17 @@ type UserEventRemoteCaching struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
+func (u UserEventRemoteCaching) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventRemoteCaching) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventRemoteCaching) GetEnabled() *bool {
 	if o == nil {
 		return nil
@@ -2902,6 +3828,17 @@ func (o *UserEventRemoteCaching) GetEnabled() *bool {
 type Payload119 struct {
 	// Represents configuration for remote caching
 	RemoteCaching *UserEventRemoteCaching `json:"remoteCaching,omitempty"`
+}
+
+func (p Payload119) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload119) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload119) GetRemoteCaching() *UserEventRemoteCaching {
@@ -2916,6 +3853,17 @@ type Payload118 struct {
 	Slug *string `json:"slug,omitempty"`
 }
 
+func (p Payload118) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload118) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload118) GetSlug() *string {
 	if o == nil {
 		return nil
@@ -2926,6 +3874,17 @@ func (o *Payload118) GetSlug() *string {
 // Payload117 - The payload of the event, if requested.
 type Payload117 struct {
 	Name *string `json:"name,omitempty"`
+}
+
+func (p Payload117) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload117) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload117) GetName() *string {
@@ -2940,6 +3899,17 @@ type Payload116 struct {
 	Enforced bool `json:"enforced"`
 }
 
+func (p Payload116) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload116) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"enforced"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload116) GetEnforced() bool {
 	if o == nil {
 		return false
@@ -2950,6 +3920,17 @@ func (o *Payload116) GetEnforced() bool {
 type PayloadUser3 struct {
 	ID       string `json:"id"`
 	Username string `json:"username"`
+}
+
+func (p PayloadUser3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PayloadUser3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "username"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PayloadUser3) GetID() string {
@@ -2971,6 +3952,17 @@ type Payload115 struct {
 	Entitlement        string       `json:"entitlement"`
 	User               PayloadUser3 `json:"user"`
 	PreviousCanceledAt *string      `json:"previousCanceledAt,omitempty"`
+}
+
+func (p Payload115) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload115) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"entitlement", "user"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload115) GetEntitlement() string {
@@ -2999,6 +3991,17 @@ type PayloadUser2 struct {
 	Username string `json:"username"`
 }
 
+func (p PayloadUser2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PayloadUser2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "username"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PayloadUser2) GetID() string {
 	if o == nil {
 		return ""
@@ -3019,6 +4022,17 @@ type Payload114 struct {
 	User        PayloadUser2 `json:"user"`
 }
 
+func (p Payload114) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload114) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"entitlement", "user"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload114) GetEntitlement() string {
 	if o == nil {
 		return ""
@@ -3036,6 +4050,17 @@ func (o *Payload114) GetUser() PayloadUser2 {
 type UpdatedUser struct {
 	Username string `json:"username"`
 	Email    string `json:"email"`
+}
+
+func (u UpdatedUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdatedUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"username", "email"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdatedUser) GetUsername() string {
@@ -3059,6 +4084,17 @@ type Payload113 struct {
 	Role          *string      `json:"role,omitempty"`
 	PreviousRole  string       `json:"previousRole"`
 	UpdatedUID    *string      `json:"updatedUid,omitempty"`
+}
+
+func (p Payload113) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload113) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"previousRole"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload113) GetDirectoryType() *string {
@@ -3098,9 +4134,23 @@ func (o *Payload113) GetUpdatedUID() *string {
 
 // Payload112 - The payload of the event, if requested.
 type Payload112 struct {
-	Role   *string `json:"role,omitempty"`
-	UID    string  `json:"uid"`
-	Origin *string `json:"origin,omitempty"`
+	Role            *string  `json:"role,omitempty"`
+	UID             string   `json:"uid"`
+	Origin          *string  `json:"origin,omitempty"`
+	TeamRoles       []string `json:"teamRoles,omitempty"`
+	TeamPermissions []string `json:"teamPermissions,omitempty"`
+	Entitlements    []string `json:"entitlements,omitempty"`
+}
+
+func (p Payload112) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload112) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"uid"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload112) GetRole() *string {
@@ -3124,9 +4174,41 @@ func (o *Payload112) GetOrigin() *string {
 	return o.Origin
 }
 
+func (o *Payload112) GetTeamRoles() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *Payload112) GetTeamPermissions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
+}
+
+func (o *Payload112) GetEntitlements() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Entitlements
+}
+
 type DeletedUser struct {
 	Username string `json:"username"`
 	Email    string `json:"email"`
+}
+
+func (d DeletedUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeletedUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"username", "email"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeletedUser) GetUsername() string {
@@ -3151,6 +4233,17 @@ type Payload111 struct {
 	GitlabUsername    *string      `json:"gitlabUsername,omitempty"`
 	BitbucketUsername *string      `json:"bitbucketUsername,omitempty"`
 	DirectoryType     *string      `json:"directoryType,omitempty"`
+}
+
+func (p Payload111) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload111) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload111) GetDeletedUser() *DeletedUser {
@@ -3200,6 +4293,17 @@ type InvitedUser struct {
 	Email    string `json:"email"`
 }
 
+func (i InvitedUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvitedUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"username", "email"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *InvitedUser) GetUsername() string {
 	if o == nil {
 		return ""
@@ -3223,6 +4327,17 @@ type Payload110 struct {
 	InvitationRole *string      `json:"invitationRole,omitempty"`
 	Entitlements   []string     `json:"entitlements,omitempty"`
 	InvitedUID     *string      `json:"invitedUid,omitempty"`
+}
+
+func (p Payload110) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload110) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload110) GetDirectoryType() *string {
@@ -3279,6 +4394,17 @@ type UserEventReason struct {
 	Description string `json:"description"`
 }
 
+func (u UserEventReason) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventReason) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"slug", "description"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventReason) GetSlug() string {
 	if o == nil {
 		return ""
@@ -3299,6 +4425,17 @@ type Payload109 struct {
 	TeamID  string            `json:"teamId"`
 	By      string            `json:"by"`
 	Reasons []UserEventReason `json:"reasons,omitempty"`
+}
+
+func (p Payload109) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload109) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"slug", "teamId", "by"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload109) GetSlug() string {
@@ -3334,6 +4471,17 @@ type Payload108 struct {
 	Slug string `json:"slug"`
 }
 
+func (p Payload108) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload108) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"slug"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload108) GetSlug() string {
 	if o == nil {
 		return ""
@@ -3344,6 +4492,17 @@ func (o *Payload108) GetSlug() string {
 type Store struct {
 	Name string `json:"name"`
 	ID   string `json:"id"`
+}
+
+func (s Store) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Store) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"name", "id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Store) GetName() string {
@@ -3364,6 +4523,17 @@ func (o *Store) GetID() string {
 type Payload107 struct {
 	Store   Store   `json:"store"`
 	OwnerID *string `json:"ownerId,omitempty"`
+}
+
+func (p Payload107) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload107) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"store"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload107) GetStore() Store {
@@ -3409,6 +4579,17 @@ func (e *StoreType) UnmarshalJSON(data []byte) error {
 // Payload106 - The payload of the event, if requested.
 type Payload106 struct {
 	StoreType StoreType `json:"storeType"`
+}
+
+func (p Payload106) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload106) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"storeType"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload106) GetStoreType() StoreType {
@@ -3461,6 +4642,17 @@ type Payload105 struct {
 	ComputeUnitsMin       *float64     `json:"computeUnitsMin,omitempty"`
 	SuspendTimeoutSeconds *float64     `json:"suspendTimeoutSeconds,omitempty"`
 	Type                  PayloadType2 `json:"type"`
+}
+
+func (p Payload105) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload105) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload105) GetID() string {
@@ -3589,6 +4781,17 @@ type BudgetItem struct {
 	ID string `json:"id"`
 }
 
+func (b BudgetItem) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BudgetItem) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "fixedBudget", "previousSpend", "notifiedAt", "createdAt", "isActive", "teamId", "id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *BudgetItem) GetType() BudgetType {
 	if o == nil {
 		return BudgetType("")
@@ -3685,6 +4888,17 @@ type Budget struct {
 	BudgetItem BudgetItem `json:"budgetItem"`
 }
 
+func (b Budget) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *Budget) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"budgetItem"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Budget) GetBudgetItem() BudgetItem {
 	if o == nil {
 		return BudgetItem{}
@@ -3695,6 +4909,17 @@ func (o *Budget) GetBudgetItem() BudgetItem {
 // Payload104 - The payload of the event, if requested.
 type Payload104 struct {
 	Budget Budget `json:"budget"`
+}
+
+func (p Payload104) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload104) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"budget"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload104) GetBudget() Budget {
@@ -3786,6 +5011,17 @@ type BudgetFixed struct {
 	TeamID string `json:"teamId"`
 	// Sort key that needs to be unique per teamId
 	ID string `json:"id"`
+}
+
+func (b BudgetFixed) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BudgetFixed) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "fixedBudget", "previousSpend", "notifiedAt", "createdAt", "isActive", "teamId", "id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BudgetFixed) GetType() TypeFixed {
@@ -3885,6 +5121,17 @@ type Payload103 struct {
 	Budget BudgetFixed `json:"budget"`
 }
 
+func (p Payload103) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload103) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"budget"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload103) GetBudget() BudgetFixed {
 	if o == nil {
 		return BudgetFixed{}
@@ -3897,6 +5144,17 @@ type Payload102 struct {
 	WebhookURL *string `json:"webhookUrl,omitempty"`
 }
 
+func (p Payload102) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload102) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload102) GetWebhookURL() *string {
 	if o == nil {
 		return nil
@@ -3907,6 +5165,17 @@ func (o *Payload102) GetWebhookURL() *string {
 type ScalingRules struct {
 	Min float64 `json:"min"`
 	Max float64 `json:"max"`
+}
+
+func (s ScalingRules) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScalingRules) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"min", "max"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ScalingRules) GetMin() float64 {
@@ -3929,6 +5198,17 @@ type Payload101 struct {
 	Min          float64                 `json:"min"`
 	Max          float64                 `json:"max"`
 	URL          string                  `json:"url"`
+}
+
+func (p Payload101) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload101) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"scalingRules", "min", "max", "url"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload101) GetScalingRules() map[string]ScalingRules {
@@ -3964,6 +5244,17 @@ type Payload100 struct {
 	Bio string `json:"bio"`
 }
 
+func (p Payload100) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload100) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"bio"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload100) GetBio() string {
 	if o == nil {
 		return ""
@@ -3976,6 +5267,17 @@ type Payload99 struct {
 	OldName string  `json:"oldName"`
 	NewName string  `json:"newName"`
 	UID     *string `json:"uid,omitempty"`
+}
+
+func (p Payload99) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload99) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"oldName", "newName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload99) GetOldName() string {
@@ -4001,6 +5303,17 @@ func (o *Payload99) GetUID() *string {
 
 type Name struct {
 	Name string `json:"name"`
+}
+
+func (n Name) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *Name) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Name) GetName() string {
@@ -4045,14 +5358,14 @@ func CreateNameUnionName(name Name) NameUnion {
 func (u *NameUnion) UnmarshalJSON(data []byte) error {
 
 	var name Name = Name{}
-	if err := utils.UnmarshalJSON(data, &name, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &name, "", true, nil); err == nil {
 		u.Name = &name
 		u.Type = NameUnionTypeName
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = NameUnionTypeStr
 		return nil
@@ -4079,6 +5392,17 @@ type Payload98 struct {
 	Name NameUnion `json:"name"`
 }
 
+func (p Payload98) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload98) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"uid", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload98) GetUID() string {
 	if o == nil {
 		return ""
@@ -4096,6 +5420,17 @@ func (o *Payload98) GetName() NameUnion {
 type UserEventTeam7 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
+}
+
+func (u UserEventTeam7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventTeam7) GetID() string {
@@ -4116,6 +5451,17 @@ type PreviousRule2 struct {
 	Email string `json:"email"`
 }
 
+func (p PreviousRule2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PreviousRule2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"email"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PreviousRule2) GetEmail() string {
 	if o == nil {
 		return ""
@@ -4127,6 +5473,17 @@ func (o *PreviousRule2) GetEmail() string {
 type Payload97 struct {
 	Team         UserEventTeam7 `json:"team"`
 	PreviousRule PreviousRule2  `json:"previousRule"`
+}
+
+func (p Payload97) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload97) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "previousRule"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload97) GetTeam() UserEventTeam7 {
@@ -4148,6 +5505,17 @@ type UserEventTeam6 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (u UserEventTeam6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventTeam6) GetID() string {
 	if o == nil {
 		return ""
@@ -4166,6 +5534,17 @@ type PreviousRule1 struct {
 	Email string `json:"email"`
 }
 
+func (p PreviousRule1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PreviousRule1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"email"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PreviousRule1) GetEmail() string {
 	if o == nil {
 		return ""
@@ -4175,6 +5554,17 @@ func (o *PreviousRule1) GetEmail() string {
 
 type NextRule struct {
 	Email string `json:"email"`
+}
+
+func (n NextRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NextRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"email"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NextRule) GetEmail() string {
@@ -4189,6 +5579,17 @@ type Payload96 struct {
 	Team         UserEventTeam6 `json:"team"`
 	PreviousRule *PreviousRule1 `json:"previousRule,omitempty"`
 	NextRule     *NextRule      `json:"nextRule,omitempty"`
+}
+
+func (p Payload96) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload96) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload96) GetTeam() UserEventTeam6 {
@@ -4217,6 +5618,17 @@ type Payload95 struct {
 	Email string `json:"email"`
 }
 
+func (p Payload95) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload95) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"email"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload95) GetEmail() string {
 	if o == nil {
 		return ""
@@ -4228,6 +5640,17 @@ func (o *Payload95) GetEmail() string {
 type Payload94 struct {
 	Email    string `json:"email"`
 	Verified bool   `json:"verified"`
+}
+
+func (p Payload94) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload94) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"email", "verified"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload94) GetEmail() string {
@@ -4250,6 +5673,17 @@ type Payload93 struct {
 	URL       string  `json:"url"`
 }
 
+func (p Payload93) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload93) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"instances", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload93) GetInstances() float64 {
 	if o == nil {
 		return 0.0
@@ -4269,6 +5703,17 @@ type Payload92 struct {
 	GitProvider                string `json:"gitProvider"`
 	GitProviderGroupDescriptor string `json:"gitProviderGroupDescriptor"`
 	GitScope                   string `json:"gitScope"`
+}
+
+func (p Payload92) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload92) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"gitProvider", "gitProviderGroupDescriptor", "gitScope"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload92) GetGitProvider() string {
@@ -4299,6 +5744,17 @@ type Payload91 struct {
 	NewTargetPercentage *float64 `json:"newTargetPercentage,omitempty"`
 }
 
+func (p Payload91) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload91) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "projectName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload91) GetProjectID() string {
 	if o == nil {
 		return ""
@@ -4326,6 +5782,17 @@ type Payload90 struct {
 	ProjectName string `json:"projectName"`
 }
 
+func (p Payload90) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload90) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "projectName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload90) GetProjectID() string {
 	if o == nil {
 		return ""
@@ -4344,6 +5811,17 @@ func (o *Payload90) GetProjectName() string {
 type Payload89 struct {
 	Source    string `json:"source"`
 	ProjectID string `json:"projectId"`
+}
+
+func (p Payload89) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload89) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"source", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload89) GetSource() string {
@@ -4365,6 +5843,17 @@ type Payload88 struct {
 	ProjectID string `json:"projectId"`
 }
 
+func (p Payload88) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload88) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload88) GetProjectID() string {
 	if o == nil {
 		return ""
@@ -4375,6 +5864,17 @@ func (o *Payload88) GetProjectID() string {
 type UserEventTeam5 struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (u UserEventTeam5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventTeam5) GetID() string {
@@ -4452,14 +5952,14 @@ func CreateOldConnectConfigurationEnvIDUnionEnvIDOldConnectConfigurationEnum(env
 func (u *OldConnectConfigurationEnvIDUnion) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = OldConnectConfigurationEnvIDUnionTypeStr
 		return nil
 	}
 
 	var envIDOldConnectConfigurationEnum EnvIDOldConnectConfigurationEnum = EnvIDOldConnectConfigurationEnum("")
-	if err := utils.UnmarshalJSON(data, &envIDOldConnectConfigurationEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &envIDOldConnectConfigurationEnum, "", true, nil); err == nil {
 		u.EnvIDOldConnectConfigurationEnum = &envIDOldConnectConfigurationEnum
 		u.Type = OldConnectConfigurationEnvIDUnionTypeEnvIDOldConnectConfigurationEnum
 		return nil
@@ -4485,6 +5985,17 @@ type OldConnectConfigurationAws struct {
 	SecurityGroupID string   `json:"securityGroupId"`
 }
 
+func (o OldConnectConfigurationAws) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldConnectConfigurationAws) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"subnetIds", "securityGroupId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldConnectConfigurationAws) GetSubnetIds() []string {
 	if o == nil {
 		return []string{}
@@ -4508,6 +6019,17 @@ type OldConnectConfiguration struct {
 	Aws                    *OldConnectConfigurationAws       `json:"aws,omitempty"`
 	CreatedAt              float64                           `json:"createdAt"`
 	UpdatedAt              float64                           `json:"updatedAt"`
+}
+
+func (o OldConnectConfiguration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldConnectConfiguration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"envId", "connectConfigurationId", "passive", "buildsEnabled", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *OldConnectConfiguration) GetEnvID() OldConnectConfigurationEnvIDUnion {
@@ -4627,14 +6149,14 @@ func CreateNewConnectConfigurationEnvIDUnionEnvIDNewConnectConfigurationEnum(env
 func (u *NewConnectConfigurationEnvIDUnion) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = NewConnectConfigurationEnvIDUnionTypeStr
 		return nil
 	}
 
 	var envIDNewConnectConfigurationEnum EnvIDNewConnectConfigurationEnum = EnvIDNewConnectConfigurationEnum("")
-	if err := utils.UnmarshalJSON(data, &envIDNewConnectConfigurationEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &envIDNewConnectConfigurationEnum, "", true, nil); err == nil {
 		u.EnvIDNewConnectConfigurationEnum = &envIDNewConnectConfigurationEnum
 		u.Type = NewConnectConfigurationEnvIDUnionTypeEnvIDNewConnectConfigurationEnum
 		return nil
@@ -4660,6 +6182,17 @@ type NewConnectConfigurationAws struct {
 	SecurityGroupID string   `json:"securityGroupId"`
 }
 
+func (n NewConnectConfigurationAws) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewConnectConfigurationAws) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"subnetIds", "securityGroupId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *NewConnectConfigurationAws) GetSubnetIds() []string {
 	if o == nil {
 		return []string{}
@@ -4683,6 +6216,17 @@ type NewConnectConfiguration struct {
 	Aws                    *NewConnectConfigurationAws       `json:"aws,omitempty"`
 	CreatedAt              float64                           `json:"createdAt"`
 	UpdatedAt              float64                           `json:"updatedAt"`
+}
+
+func (n NewConnectConfiguration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewConnectConfiguration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"envId", "connectConfigurationId", "passive", "buildsEnabled", "createdAt", "updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NewConnectConfiguration) GetEnvID() NewConnectConfigurationEnvIDUnion {
@@ -4748,6 +6292,17 @@ type Project6 struct {
 	NewConnectConfigurations []NewConnectConfiguration `json:"newConnectConfigurations"`
 }
 
+func (p Project6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "oldConnectConfigurations", "newConnectConfigurations"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Project6) GetID() string {
 	if o == nil {
 		return ""
@@ -4782,6 +6337,17 @@ type Payload87 struct {
 	Project Project6       `json:"project"`
 }
 
+func (p Payload87) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload87) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "project"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload87) GetTeam() UserEventTeam5 {
 	if o == nil {
 		return UserEventTeam5{}
@@ -4800,6 +6366,17 @@ func (o *Payload87) GetProject() Project6 {
 type Payload86 struct {
 	Name    string `json:"name"`
 	OwnerID string `json:"ownerId"`
+}
+
+func (p Payload86) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload86) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "ownerId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload86) GetName() string {
@@ -4851,6 +6428,17 @@ type Payload85 struct {
 	Action      Action4 `json:"action"`
 }
 
+func (p Payload85) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload85) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload85) GetProjectName() string {
 	if o == nil {
 		return ""
@@ -4869,6 +6457,17 @@ type OptionsAllowlistPath struct {
 	Value string `json:"value"`
 }
 
+func (o OptionsAllowlistPath) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OptionsAllowlistPath) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OptionsAllowlistPath) GetValue() string {
 	if o == nil {
 		return ""
@@ -4878,6 +6477,17 @@ func (o *OptionsAllowlistPath) GetValue() string {
 
 type OptionsAllowlist struct {
 	Paths []OptionsAllowlistPath `json:"paths"`
+}
+
+func (o OptionsAllowlist) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OptionsAllowlist) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"paths"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *OptionsAllowlist) GetPaths() []OptionsAllowlistPath {
@@ -4891,6 +6501,17 @@ type OldOptionsAllowlistPath struct {
 	Value string `json:"value"`
 }
 
+func (o OldOptionsAllowlistPath) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldOptionsAllowlistPath) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldOptionsAllowlistPath) GetValue() string {
 	if o == nil {
 		return ""
@@ -4900,6 +6521,17 @@ func (o *OldOptionsAllowlistPath) GetValue() string {
 
 type OldOptionsAllowlist struct {
 	Paths []OldOptionsAllowlistPath `json:"paths"`
+}
+
+func (o OldOptionsAllowlist) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldOptionsAllowlist) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"paths"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *OldOptionsAllowlist) GetPaths() []OldOptionsAllowlistPath {
@@ -4914,6 +6546,17 @@ type Payload84 struct {
 	ProjectName         string               `json:"projectName"`
 	OptionsAllowlist    *OptionsAllowlist    `json:"optionsAllowlist,omitempty"`
 	OldOptionsAllowlist *OldOptionsAllowlist `json:"oldOptionsAllowlist,omitempty"`
+}
+
+func (p Payload84) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload84) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload84) GetProjectName() string {
@@ -5014,6 +6657,17 @@ type Payload83 struct {
 	OldTrustedIps    *OldTrustedIps `json:"oldTrustedIps,omitempty"`
 	AddedAddresses   []string       `json:"addedAddresses,omitempty"`
 	RemovedAddresses []string       `json:"removedAddresses,omitempty"`
+}
+
+func (p Payload83) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload83) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload83) GetProjectName() string {
@@ -5119,6 +6773,17 @@ type UserEventPasswordProtection struct {
 	DeploymentType PasswordProtectionDeploymentType `json:"deploymentType"`
 }
 
+func (u UserEventPasswordProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventPasswordProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventPasswordProtection) GetDeploymentType() PasswordProtectionDeploymentType {
 	if o == nil {
 		return PasswordProtectionDeploymentType("")
@@ -5161,14 +6826,14 @@ func CreatePasswordProtectionPasswordProtectionEnum(passwordProtectionEnum Passw
 func (u *PasswordProtection) UnmarshalJSON(data []byte) error {
 
 	var userEventPasswordProtection UserEventPasswordProtection = UserEventPasswordProtection{}
-	if err := utils.UnmarshalJSON(data, &userEventPasswordProtection, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &userEventPasswordProtection, "", true, nil); err == nil {
 		u.UserEventPasswordProtection = &userEventPasswordProtection
 		u.Type = PasswordProtectionTypeUserEventPasswordProtection
 		return nil
 	}
 
 	var passwordProtectionEnum PasswordProtectionEnum = PasswordProtectionEnum("")
-	if err := utils.UnmarshalJSON(data, &passwordProtectionEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &passwordProtectionEnum, "", true, nil); err == nil {
 		u.PasswordProtectionEnum = &passwordProtectionEnum
 		u.Type = PasswordProtectionTypePasswordProtectionEnum
 		return nil
@@ -5257,6 +6922,17 @@ type OldPasswordProtection struct {
 	DeploymentType OldPasswordProtectionDeploymentType `json:"deploymentType"`
 }
 
+func (o OldPasswordProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldPasswordProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldPasswordProtection) GetDeploymentType() OldPasswordProtectionDeploymentType {
 	if o == nil {
 		return OldPasswordProtectionDeploymentType("")
@@ -5299,14 +6975,14 @@ func CreateOldPasswordProtectionUnionOldPasswordProtectionEnum(oldPasswordProtec
 func (u *OldPasswordProtectionUnion) UnmarshalJSON(data []byte) error {
 
 	var oldPasswordProtection OldPasswordProtection = OldPasswordProtection{}
-	if err := utils.UnmarshalJSON(data, &oldPasswordProtection, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &oldPasswordProtection, "", true, nil); err == nil {
 		u.OldPasswordProtection = &oldPasswordProtection
 		u.Type = OldPasswordProtectionUnionTypeOldPasswordProtection
 		return nil
 	}
 
 	var oldPasswordProtectionEnum OldPasswordProtectionEnum = OldPasswordProtectionEnum("")
-	if err := utils.UnmarshalJSON(data, &oldPasswordProtectionEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &oldPasswordProtectionEnum, "", true, nil); err == nil {
 		u.OldPasswordProtectionEnum = &oldPasswordProtectionEnum
 		u.Type = OldPasswordProtectionUnionTypeOldPasswordProtectionEnum
 		return nil
@@ -5332,6 +7008,17 @@ type Payload82 struct {
 	ProjectName           string                      `json:"projectName"`
 	PasswordProtection    *PasswordProtection         `json:"passwordProtection"`
 	OldPasswordProtection *OldPasswordProtectionUnion `json:"oldPasswordProtection"`
+}
+
+func (p Payload82) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload82) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "passwordProtection", "oldPasswordProtection"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload82) GetProjectName() string {
@@ -5423,6 +7110,17 @@ type UserEventSsoProtection struct {
 	DeploymentType SsoProtectionDeploymentType `json:"deploymentType"`
 }
 
+func (u UserEventSsoProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventSsoProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventSsoProtection) GetDeploymentType() SsoProtectionDeploymentType {
 	if o == nil {
 		return SsoProtectionDeploymentType("")
@@ -5465,14 +7163,14 @@ func CreateSsoProtectionSsoProtectionEnum(ssoProtectionEnum SsoProtectionEnum) S
 func (u *SsoProtection) UnmarshalJSON(data []byte) error {
 
 	var userEventSsoProtection UserEventSsoProtection = UserEventSsoProtection{}
-	if err := utils.UnmarshalJSON(data, &userEventSsoProtection, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &userEventSsoProtection, "", true, nil); err == nil {
 		u.UserEventSsoProtection = &userEventSsoProtection
 		u.Type = SsoProtectionTypeUserEventSsoProtection
 		return nil
 	}
 
 	var ssoProtectionEnum SsoProtectionEnum = SsoProtectionEnum("")
-	if err := utils.UnmarshalJSON(data, &ssoProtectionEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &ssoProtectionEnum, "", true, nil); err == nil {
 		u.SsoProtectionEnum = &ssoProtectionEnum
 		u.Type = SsoProtectionTypeSsoProtectionEnum
 		return nil
@@ -5561,6 +7259,17 @@ type OldSsoProtection struct {
 	DeploymentType OldSsoProtectionDeploymentType `json:"deploymentType"`
 }
 
+func (o OldSsoProtection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldSsoProtection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"deploymentType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldSsoProtection) GetDeploymentType() OldSsoProtectionDeploymentType {
 	if o == nil {
 		return OldSsoProtectionDeploymentType("")
@@ -5603,14 +7312,14 @@ func CreateOldSsoProtectionUnionOldSsoProtectionEnum(oldSsoProtectionEnum OldSso
 func (u *OldSsoProtectionUnion) UnmarshalJSON(data []byte) error {
 
 	var oldSsoProtection OldSsoProtection = OldSsoProtection{}
-	if err := utils.UnmarshalJSON(data, &oldSsoProtection, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &oldSsoProtection, "", true, nil); err == nil {
 		u.OldSsoProtection = &oldSsoProtection
 		u.Type = OldSsoProtectionUnionTypeOldSsoProtection
 		return nil
 	}
 
 	var oldSsoProtectionEnum OldSsoProtectionEnum = OldSsoProtectionEnum("")
-	if err := utils.UnmarshalJSON(data, &oldSsoProtectionEnum, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &oldSsoProtectionEnum, "", true, nil); err == nil {
 		u.OldSsoProtectionEnum = &oldSsoProtectionEnum
 		u.Type = OldSsoProtectionUnionTypeOldSsoProtectionEnum
 		return nil
@@ -5636,6 +7345,17 @@ type Payload81 struct {
 	ProjectName      string                 `json:"projectName"`
 	SsoProtection    *SsoProtection         `json:"ssoProtection"`
 	OldSsoProtection *OldSsoProtectionUnion `json:"oldSsoProtection"`
+}
+
+func (p Payload81) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload81) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "ssoProtection", "oldSsoProtection"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload81) GetProjectName() string {
@@ -5665,6 +7385,17 @@ type Payload80 struct {
 	ProjectID   string  `json:"projectId"`
 }
 
+func (p Payload80) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload80) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload80) GetProjectName() *string {
 	if o == nil {
 		return nil
@@ -5685,6 +7416,17 @@ type Payload79 struct {
 	ProjectID            string         `json:"projectId"`
 	ProjectAnalytics     map[string]any `json:"projectAnalytics,omitempty"`
 	PrevProjectAnalytics map[string]any `json:"prevProjectAnalytics,omitempty"`
+}
+
+func (p Payload79) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload79) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload79) GetProjectName() *string {
@@ -5723,6 +7465,17 @@ type ProjectAnalytics struct {
 	PaidAt              *float64 `json:"paidAt,omitempty"`
 	SampleRatePercent   *float64 `json:"sampleRatePercent,omitempty"`
 	SpendLimitInDollars *float64 `json:"spendLimitInDollars,omitempty"`
+}
+
+func (p ProjectAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *ProjectAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "disabledAt", "enabledAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ProjectAnalytics) GetID() string {
@@ -5784,6 +7537,17 @@ type PrevProjectAnalytics struct {
 	SpendLimitInDollars *float64 `json:"spendLimitInDollars,omitempty"`
 }
 
+func (p PrevProjectAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrevProjectAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "disabledAt", "enabledAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PrevProjectAnalytics) GetID() string {
 	if o == nil {
 		return ""
@@ -5841,6 +7605,17 @@ type Payload78 struct {
 	PrevProjectAnalytics *PrevProjectAnalytics `json:"prevProjectAnalytics"`
 }
 
+func (p Payload78) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload78) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "projectAnalytics", "prevProjectAnalytics"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload78) GetProjectName() *string {
 	if o == nil {
 		return nil
@@ -5873,6 +7648,17 @@ func (o *Payload78) GetPrevProjectAnalytics() *PrevProjectAnalytics {
 type Payload77 struct {
 	ProjectName string `json:"projectName"`
 	Branch      string `json:"branch"`
+}
+
+func (p Payload77) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload77) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "branch"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload77) GetProjectName() string {
@@ -6021,14 +7807,14 @@ func CreateRemovedUsersGitUserIDNumber(number float64) RemovedUsersGitUserID {
 func (u *RemovedUsersGitUserID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = RemovedUsersGitUserIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = RemovedUsersGitUserIDTypeNumber
 		return nil
@@ -6061,6 +7847,17 @@ type RemovedUsersJoinedFrom struct {
 	IdpUserID        *string                `json:"idpUserId,omitempty"`
 	DsyncUserID      *string                `json:"dsyncUserId,omitempty"`
 	DsyncConnectedAt *float64               `json:"dsyncConnectedAt,omitempty"`
+}
+
+func (r RemovedUsersJoinedFrom) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemovedUsersJoinedFrom) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"origin"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RemovedUsersJoinedFrom) GetOrigin() RemovedUsersOrigin {
@@ -6147,6 +7944,17 @@ type RemovedUsers struct {
 	JoinedFrom  *RemovedUsersJoinedFrom `json:"joinedFrom,omitempty"`
 }
 
+func (r RemovedUsers) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemovedUsers) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"role", "confirmed"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemovedUsers) GetRole() RemovedUsersRole {
 	if o == nil {
 		return RemovedUsersRole("")
@@ -6184,6 +7992,17 @@ type Payload76 struct {
 	UserAgent      *string                 `json:"userAgent,omitempty"`
 	IsReactivate   *bool                   `json:"isReactivate,omitempty"`
 	IsTrialUpgrade *bool                   `json:"isTrialUpgrade,omitempty"`
+}
+
+func (p Payload76) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload76) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"plan"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload76) GetPlan() string {
@@ -6240,6 +8059,17 @@ type Payload75 struct {
 	ProjectName string `json:"projectName"`
 }
 
+func (p Payload75) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload75) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload75) GetProjectName() string {
 	if o == nil {
 		return ""
@@ -6252,6 +8082,17 @@ type Payload74 struct {
 	ProjectID      string `json:"projectId"`
 	ToDeploymentID string `json:"toDeploymentId"`
 	ProjectName    string `json:"projectName"`
+}
+
+func (p Payload74) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload74) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "toDeploymentId", "projectName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload74) GetProjectID() string {
@@ -6281,6 +8122,17 @@ type Payload73 struct {
 	IntegrationName *string `json:"integrationName,omitempty"`
 }
 
+func (p Payload73) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload73) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"drainUrl"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload73) GetDrainURL() *string {
 	if o == nil {
 		return nil
@@ -6301,6 +8153,17 @@ type Payload72 struct {
 	IntegrationName *string `json:"integrationName,omitempty"`
 }
 
+func (p Payload72) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload72) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"logDrainUrl"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload72) GetLogDrainURL() string {
 	if o == nil {
 		return ""
@@ -6319,6 +8182,17 @@ func (o *Payload72) GetIntegrationName() *string {
 type Payload71 struct {
 	LogDrainURL     *string `json:"logDrainUrl"`
 	IntegrationName *string `json:"integrationName,omitempty"`
+}
+
+func (p Payload71) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload71) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"logDrainUrl"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload71) GetLogDrainURL() *string {
@@ -6378,6 +8252,17 @@ func (e *BrowserName) UnmarshalJSON(data []byte) error {
 
 type Browser struct {
 	Name BrowserName `json:"name"`
+}
+
+func (b Browser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *Browser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Browser) GetName() BrowserName {
@@ -6450,6 +8335,17 @@ type Os struct {
 	Name OsName `json:"name"`
 }
 
+func (o Os) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *Os) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Os) GetName() OsName {
 	if o == nil {
 		return OsName("")
@@ -6462,6 +8358,17 @@ type UserAgent struct {
 	Ua      string  `json:"ua"`
 	Program string  `json:"program"`
 	Os      Os      `json:"os"`
+}
+
+func (u UserAgent) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserAgent) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"browser", "ua", "program", "os"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserAgent) GetBrowser() Browser {
@@ -6496,6 +8403,17 @@ type CityNames struct {
 	En string `json:"en"`
 }
 
+func (c CityNames) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CityNames) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"en"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CityNames) GetEn() string {
 	if o == nil {
 		return ""
@@ -6505,6 +8423,17 @@ func (o *CityNames) GetEn() string {
 
 type City struct {
 	Names CityNames `json:"names"`
+}
+
+func (c City) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *City) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"names"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *City) GetNames() CityNames {
@@ -6518,6 +8447,17 @@ type CountryNames struct {
 	En string `json:"en"`
 }
 
+func (c CountryNames) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CountryNames) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"en"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *CountryNames) GetEn() string {
 	if o == nil {
 		return ""
@@ -6527,6 +8467,17 @@ func (o *CountryNames) GetEn() string {
 
 type Country struct {
 	Names CountryNames `json:"names"`
+}
+
+func (c Country) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Country) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"names"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Country) GetNames() CountryNames {
@@ -6540,6 +8491,17 @@ type MostSpecificSubdivisionNames struct {
 	En string `json:"en"`
 }
 
+func (m MostSpecificSubdivisionNames) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MostSpecificSubdivisionNames) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"en"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *MostSpecificSubdivisionNames) GetEn() string {
 	if o == nil {
 		return ""
@@ -6549,6 +8511,17 @@ func (o *MostSpecificSubdivisionNames) GetEn() string {
 
 type MostSpecificSubdivision struct {
 	Names MostSpecificSubdivisionNames `json:"names"`
+}
+
+func (m MostSpecificSubdivision) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MostSpecificSubdivision) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"names"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *MostSpecificSubdivision) GetNames() MostSpecificSubdivisionNames {
@@ -6563,6 +8536,17 @@ type Geolocation struct {
 	Country                 Country                  `json:"country"`
 	MostSpecificSubdivision *MostSpecificSubdivision `json:"most_specific_subdivision,omitempty"`
 	RegionName              *string                  `json:"regionName,omitempty"`
+}
+
+func (g Geolocation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *Geolocation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"country"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Geolocation) GetCity() *City {
@@ -6607,6 +8591,17 @@ type Payload70 struct {
 	Env          *string      `json:"env,omitempty"`
 	Os           *string      `json:"os,omitempty"`
 	Username     *string      `json:"username,omitempty"`
+}
+
+func (p Payload70) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload70) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"viaGithub", "viaGitlab", "viaBitbucket", "viaGoogle", "viaSamlSso", "viaPasskey"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload70) GetUserAgent() *UserAgent {
@@ -6704,6 +8699,17 @@ type Payload69 struct {
 	ConfirmedScopes []string `json:"confirmedScopes"`
 }
 
+func (p Payload69) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload69) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"integrationId", "configurationId", "integrationSlug", "integrationName", "ownerId", "confirmedScopes"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload69) GetIntegrationID() string {
 	if o == nil {
 		return ""
@@ -6762,6 +8768,17 @@ type Payload68 struct {
 	Reason           *string `json:"reason,omitempty"`
 }
 
+func (p Payload68) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload68) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "fromDeploymentId", "toDeploymentId", "projectName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload68) GetProjectID() string {
 	if o == nil {
 		return ""
@@ -6805,6 +8822,17 @@ type Payload67 struct {
 	IntegrationName string   `json:"integrationName"`
 	OwnerID         string   `json:"ownerId"`
 	ProjectIds      []string `json:"projectIds,omitempty"`
+}
+
+func (p Payload67) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload67) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"integrationId", "configurationId", "integrationSlug", "integrationName", "ownerId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload67) GetIntegrationID() string {
@@ -6858,6 +8886,17 @@ type Payload66 struct {
 	OwnerID         string  `json:"ownerId"`
 	BillingPlanID   string  `json:"billingPlanId"`
 	BillingPlanName *string `json:"billingPlanName,omitempty"`
+}
+
+func (p Payload66) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload66) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"integrationId", "configurationId", "integrationSlug", "integrationName", "ownerId", "billingPlanId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload66) GetIntegrationID() string {
@@ -6916,6 +8955,17 @@ type Configuration5 struct {
 	IntegrationName *string `json:"integrationName,omitempty"`
 }
 
+func (c Configuration5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"integrationId", "configurationId", "integrationSlug"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Configuration5) GetIntegrationID() string {
 	if o == nil {
 		return ""
@@ -6948,6 +8998,17 @@ func (o *Configuration5) GetIntegrationName() *string {
 type Payload65 struct {
 	Configurations []Configuration5 `json:"configurations"`
 	OwnerID        string           `json:"ownerId"`
+}
+
+func (p Payload65) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload65) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"configurations", "ownerId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload65) GetConfigurations() []Configuration5 {
@@ -7002,6 +9063,17 @@ type BlockHistory struct {
 	Actor      *string            `json:"actor,omitempty"`
 	StatusCode *float64           `json:"statusCode,omitempty"`
 	Comment    *string            `json:"comment,omitempty"`
+}
+
+func (b BlockHistory) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BlockHistory) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"action", "createdAt", "reason"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BlockHistory) GetAction() BlockHistoryAction {
@@ -7062,6 +9134,17 @@ type History struct {
 	At      float64 `json:"at"`
 }
 
+func (h History) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *History) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"scanner", "reason", "by", "byId", "at"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *History) GetScanner() string {
 	if o == nil {
 		return ""
@@ -7115,6 +9198,17 @@ type Abuse struct {
 	CreationUserAgent   *string `json:"creationUserAgent,omitempty"`
 	CreationIP          *string `json:"creationIp,omitempty"`
 	RemovedPhoneNumbers *string `json:"removedPhoneNumbers,omitempty"`
+}
+
+func (a Abuse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *Abuse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"updatedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Abuse) GetBlockHistory() []BlockHistory {
@@ -7220,6 +9314,17 @@ type UserEventBilling struct {
 	Plan Plan `json:"plan"`
 }
 
+func (u UserEventBilling) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventBilling) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"plan"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventBilling) GetPlan() Plan {
 	if o == nil {
 		return Plan("")
@@ -7254,6 +9359,17 @@ type CredentialGithubOauthCustomHost struct {
 	Type TypeGithubOauthCustomHost `json:"type"`
 	Host string                    `json:"host"`
 	ID   string                    `json:"id"`
+}
+
+func (c CredentialGithubOauthCustomHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CredentialGithubOauthCustomHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "host", "id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CredentialGithubOauthCustomHost) GetType() TypeGithubOauthCustomHost {
@@ -7317,6 +9433,17 @@ type Credential struct {
 	ID   string         `json:"id"`
 }
 
+func (c Credential) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Credential) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Credential) GetType() CredentialType {
 	if o == nil {
 		return CredentialType("")
@@ -7365,17 +9492,17 @@ func CreateCredentialUnionCredentialGithubOauthCustomHost(credentialGithubOauthC
 
 func (u *CredentialUnion) UnmarshalJSON(data []byte) error {
 
-	var credential Credential = Credential{}
-	if err := utils.UnmarshalJSON(data, &credential, "", true, true); err == nil {
-		u.Credential = &credential
-		u.Type = CredentialUnionTypeCredential
+	var credentialGithubOauthCustomHost CredentialGithubOauthCustomHost = CredentialGithubOauthCustomHost{}
+	if err := utils.UnmarshalJSON(data, &credentialGithubOauthCustomHost, "", true, nil); err == nil {
+		u.CredentialGithubOauthCustomHost = &credentialGithubOauthCustomHost
+		u.Type = CredentialUnionTypeCredentialGithubOauthCustomHost
 		return nil
 	}
 
-	var credentialGithubOauthCustomHost CredentialGithubOauthCustomHost = CredentialGithubOauthCustomHost{}
-	if err := utils.UnmarshalJSON(data, &credentialGithubOauthCustomHost, "", true, true); err == nil {
-		u.CredentialGithubOauthCustomHost = &credentialGithubOauthCustomHost
-		u.Type = CredentialUnionTypeCredentialGithubOauthCustomHost
+	var credential Credential = Credential{}
+	if err := utils.UnmarshalJSON(data, &credential, "", true, nil); err == nil {
+		u.Credential = &credential
+		u.Type = CredentialUnionTypeCredential
 		return nil
 	}
 
@@ -7398,6 +9525,17 @@ type UserEventDataCache struct {
 	ExcessBillingEnabled *bool `json:"excessBillingEnabled,omitempty"`
 }
 
+func (u UserEventDataCache) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventDataCache) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventDataCache) GetExcessBillingEnabled() *bool {
 	if o == nil {
 		return nil
@@ -7408,6 +9546,17 @@ func (o *UserEventDataCache) GetExcessBillingEnabled() *bool {
 type UserEventDismissal struct {
 	ScopeID   string  `json:"scopeId"`
 	CreatedAt float64 `json:"createdAt"`
+}
+
+func (u UserEventDismissal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventDismissal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"scopeId", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventDismissal) GetScopeID() string {
@@ -7429,6 +9578,17 @@ type UserEventDismissedToast struct {
 	Dismissals []UserEventDismissal `json:"dismissals"`
 }
 
+func (u UserEventDismissedToast) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventDismissedToast) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name", "dismissals"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventDismissedToast) GetName() string {
 	if o == nil {
 		return ""
@@ -7446,6 +9606,17 @@ func (o *UserEventDismissedToast) GetDismissals() []UserEventDismissal {
 type UserEventFavoriteProjectsAndSpace struct {
 	TeamID    string `json:"teamId"`
 	ProjectID string `json:"projectId"`
+}
+
+func (u UserEventFavoriteProjectsAndSpace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventFavoriteProjectsAndSpace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"teamId", "projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventFavoriteProjectsAndSpace) GetTeamID() string {
@@ -7497,14 +9668,14 @@ func CreateUserEventImportFlowGitNamespaceNumber(number float64) UserEventImport
 func (u *UserEventImportFlowGitNamespace) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UserEventImportFlowGitNamespaceTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = UserEventImportFlowGitNamespaceTypeNumber
 		return nil
@@ -7560,14 +9731,14 @@ func CreateUserEventImportFlowGitNamespaceIDNumber(number float64) UserEventImpo
 func (u *UserEventImportFlowGitNamespaceID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UserEventImportFlowGitNamespaceIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = UserEventImportFlowGitNamespaceIDTypeNumber
 		return nil
@@ -7658,14 +9829,14 @@ func CreateUserEventGitNamespaceIDNumber(number float64) UserEventGitNamespaceID
 func (u *UserEventGitNamespaceID) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = UserEventGitNamespaceIDTypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = UserEventGitNamespaceIDTypeNumber
 		return nil
@@ -7689,6 +9860,17 @@ func (u UserEventGitNamespaceID) MarshalJSON() ([]byte, error) {
 type UserEventPreferredScopesAndGitNamespace struct {
 	ScopeID        string                   `json:"scopeId"`
 	GitNamespaceID *UserEventGitNamespaceID `json:"gitNamespaceId"`
+}
+
+func (u UserEventPreferredScopesAndGitNamespace) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventPreferredScopesAndGitNamespace) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"scopeId", "gitNamespaceId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventPreferredScopesAndGitNamespace) GetScopeID() string {
@@ -7740,14 +9922,14 @@ func CreatePreventAutoBlockingBoolean(boolean bool) PreventAutoBlocking {
 func (u *PreventAutoBlocking) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = PreventAutoBlockingTypeNumber
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = PreventAutoBlockingTypeBoolean
 		return nil
@@ -7773,6 +9955,17 @@ type RemoteCachingUser struct {
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
+func (r RemoteCachingUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RemoteCachingUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RemoteCachingUser) GetEnabled() *bool {
 	if o == nil {
 		return nil
@@ -7782,6 +9975,17 @@ func (o *RemoteCachingUser) GetEnabled() *bool {
 
 type UserEventBuildEntitlements struct {
 	EnhancedBuilds *bool `json:"enhancedBuilds,omitempty"`
+}
+
+func (u UserEventBuildEntitlements) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventBuildEntitlements) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventBuildEntitlements) GetEnhancedBuilds() *bool {
@@ -7824,6 +10028,17 @@ type UserEventBuildMachine struct {
 	Memory                *float64               `json:"memory,omitempty"`
 }
 
+func (u UserEventBuildMachine) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventBuildMachine) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventBuildMachine) GetPurchaseType() *UserEventPurchaseType {
 	if o == nil {
 		return nil
@@ -7857,6 +10072,17 @@ type UserEventSecurity struct {
 	IPBlocks    *float64 `json:"ipBlocks,omitempty"`
 	IPBypass    *float64 `json:"ipBypass,omitempty"`
 	RateLimit   *float64 `json:"rateLimit,omitempty"`
+}
+
+func (u UserEventSecurity) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventSecurity) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventSecurity) GetCustomRules() *float64 {
@@ -7914,6 +10140,17 @@ type UserEventResourceConfig struct {
 	CustomEnvironmentsPerProject    *float64                    `json:"customEnvironmentsPerProject,omitempty"`
 	BuildMachine                    *UserEventBuildMachine      `json:"buildMachine,omitempty"`
 	Security                        *UserEventSecurity          `json:"security,omitempty"`
+}
+
+func (u UserEventResourceConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventResourceConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventResourceConfig) GetNodeType() *string {
@@ -8103,6 +10340,17 @@ type ResourceLimits struct {
 	Duration float64 `json:"duration"`
 }
 
+func (r ResourceLimits) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResourceLimits) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"max", "duration"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ResourceLimits) GetMax() float64 {
 	if o == nil {
 		return 0.0
@@ -8202,6 +10450,17 @@ type UserEventActiveDashboardView struct {
 	RecentsViewPreference   *UserEventRecentsViewPreference   `json:"recentsViewPreference,omitempty"`
 }
 
+func (u UserEventActiveDashboardView) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventActiveDashboardView) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"scopeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventActiveDashboardView) GetScopeID() string {
 	if o == nil {
 		return ""
@@ -8235,6 +10494,17 @@ type SecondaryEmail struct {
 	Verified bool   `json:"verified"`
 }
 
+func (s SecondaryEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SecondaryEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"email", "verified"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *SecondaryEmail) GetEmail() string {
 	if o == nil {
 		return ""
@@ -8253,6 +10523,17 @@ type Rules struct {
 	Email string `json:"email"`
 }
 
+func (r Rules) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Rules) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"email"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Rules) GetEmail() string {
 	if o == nil {
 		return ""
@@ -8262,6 +10543,17 @@ func (o *Rules) GetEmail() string {
 
 type EmailNotifications struct {
 	Rules map[string]Rules `json:"rules,omitempty"`
+}
+
+func (e EmailNotifications) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EmailNotifications) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EmailNotifications) GetRules() map[string]Rules {
@@ -8274,6 +10566,17 @@ func (o *EmailNotifications) GetRules() map[string]Rules {
 type SiftScoresReason struct {
 	Name  string `json:"name"`
 	Value string `json:"value"`
+}
+
+func (s SiftScoresReason) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SiftScoresReason) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"name", "value"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SiftScoresReason) GetName() string {
@@ -8293,6 +10596,17 @@ func (o *SiftScoresReason) GetValue() string {
 type SiftScores struct {
 	Score   float64            `json:"score"`
 	Reasons []SiftScoresReason `json:"reasons"`
+}
+
+func (s SiftScores) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SiftScores) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"score", "reasons"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SiftScores) GetScore() float64 {
@@ -8334,6 +10648,17 @@ func (e *NameString) UnmarshalJSON(data []byte) error {
 
 type SiftRoute struct {
 	Name NameString `json:"name"`
+}
+
+func (s SiftRoute) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SiftRoute) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SiftRoute) GetName() NameString {
@@ -8524,6 +10849,17 @@ type UserEventSoftBlock struct {
 	BlockedDueToOverageType *UserEventBlockedDueToOverageType `json:"blockedDueToOverageType,omitempty"`
 }
 
+func (u UserEventSoftBlock) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventSoftBlock) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"blockedAt", "reason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventSoftBlock) GetBlockedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -8636,6 +10972,7 @@ func (e *UserEventTeamRole) UnmarshalJSON(data []byte) error {
 type UserEventTeamPermission string
 
 const (
+	UserEventTeamPermissionIntegrationManager       UserEventTeamPermission = "IntegrationManager"
 	UserEventTeamPermissionCreateProject            UserEventTeamPermission = "CreateProject"
 	UserEventTeamPermissionFullProductionDeployment UserEventTeamPermission = "FullProductionDeployment"
 	UserEventTeamPermissionUsageViewer              UserEventTeamPermission = "UsageViewer"
@@ -8655,6 +10992,8 @@ func (e *UserEventTeamPermission) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "IntegrationManager":
+		fallthrough
 	case "CreateProject":
 		fallthrough
 	case "FullProductionDeployment":
@@ -8765,14 +11104,14 @@ func CreateTeamGitUserID1Number(number float64) TeamGitUserID1 {
 func (u *TeamGitUserID1) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = TeamGitUserID1TypeStr
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = TeamGitUserID1TypeNumber
 		return nil
@@ -8805,6 +11144,17 @@ type TeamJoinedFrom1 struct {
 	IdpUserID        *string         `json:"idpUserId,omitempty"`
 	DsyncUserID      *string         `json:"dsyncUserId,omitempty"`
 	DsyncConnectedAt *float64        `json:"dsyncConnectedAt,omitempty"`
+}
+
+func (t TeamJoinedFrom1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamJoinedFrom1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"origin"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamJoinedFrom1) GetOrigin() TeamOrigin1 {
@@ -8895,6 +11245,17 @@ type TeamUser struct {
 	TeamRoles         []UserEventTeamRole       `json:"teamRoles,omitempty"`
 	TeamPermissions   []UserEventTeamPermission `json:"teamPermissions,omitempty"`
 	JoinedFrom        *TeamJoinedFrom1          `json:"joinedFrom,omitempty"`
+}
+
+func (t TeamUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"created", "createdAt", "teamId", "role", "confirmed", "confirmedAt"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamUser) GetCreated() float64 {
@@ -8996,6 +11357,17 @@ type UsageAlerts struct {
 	BlockingAt *float64 `json:"blockingAt,omitempty"`
 }
 
+func (u UsageAlerts) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UsageAlerts) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UsageAlerts) GetWarningAt() *float64 {
 	if o == nil {
 		return nil
@@ -9014,6 +11386,17 @@ type AnalyticsUsage struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (a AnalyticsUsage) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AnalyticsUsage) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AnalyticsUsage) GetCurrentThreshold() float64 {
@@ -9043,6 +11426,17 @@ type Artifacts struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (a Artifacts) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *Artifacts) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Artifacts) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9068,6 +11462,17 @@ type Bandwidth struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (b Bandwidth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *Bandwidth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Bandwidth) GetCurrentThreshold() float64 {
@@ -9097,6 +11502,17 @@ type BlobTotalAdvancedRequests struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (b BlobTotalAdvancedRequests) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BlobTotalAdvancedRequests) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *BlobTotalAdvancedRequests) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9122,6 +11538,17 @@ type BlobTotalAvgSizeInBytes struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (b BlobTotalAvgSizeInBytes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BlobTotalAvgSizeInBytes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BlobTotalAvgSizeInBytes) GetCurrentThreshold() float64 {
@@ -9151,6 +11578,17 @@ type BlobTotalGetResponseObjectSizeInBytes struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (b BlobTotalGetResponseObjectSizeInBytes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BlobTotalGetResponseObjectSizeInBytes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *BlobTotalGetResponseObjectSizeInBytes) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9176,6 +11614,17 @@ type BlobTotalSimpleRequests struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (b BlobTotalSimpleRequests) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BlobTotalSimpleRequests) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BlobTotalSimpleRequests) GetCurrentThreshold() float64 {
@@ -9205,6 +11654,17 @@ type ConnectDataTransfer struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (c ConnectDataTransfer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConnectDataTransfer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ConnectDataTransfer) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9230,6 +11690,17 @@ type DataCacheRead struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (d DataCacheRead) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DataCacheRead) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DataCacheRead) GetCurrentThreshold() float64 {
@@ -9259,6 +11730,17 @@ type DataCacheWrite struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (d DataCacheWrite) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DataCacheWrite) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DataCacheWrite) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9284,6 +11766,17 @@ type EdgeConfigRead struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (e EdgeConfigRead) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EdgeConfigRead) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EdgeConfigRead) GetCurrentThreshold() float64 {
@@ -9313,6 +11806,17 @@ type EdgeConfigWrite struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (e EdgeConfigWrite) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EdgeConfigWrite) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EdgeConfigWrite) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9338,6 +11842,17 @@ type EdgeFunctionExecutionUnits struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (e EdgeFunctionExecutionUnits) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EdgeFunctionExecutionUnits) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EdgeFunctionExecutionUnits) GetCurrentThreshold() float64 {
@@ -9367,6 +11882,17 @@ type EdgeMiddlewareInvocations struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (e EdgeMiddlewareInvocations) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EdgeMiddlewareInvocations) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EdgeMiddlewareInvocations) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9392,6 +11918,17 @@ type EdgeRequestAdditionalCPUDuration struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (e EdgeRequestAdditionalCPUDuration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EdgeRequestAdditionalCPUDuration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EdgeRequestAdditionalCPUDuration) GetCurrentThreshold() float64 {
@@ -9421,6 +11958,17 @@ type EdgeRequest struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (e EdgeRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EdgeRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *EdgeRequest) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9446,6 +11994,17 @@ type ElasticConcurrencyBuildSlots struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (e ElasticConcurrencyBuildSlots) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ElasticConcurrencyBuildSlots) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ElasticConcurrencyBuildSlots) GetCurrentThreshold() float64 {
@@ -9475,6 +12034,17 @@ type FastDataTransfer struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (f FastDataTransfer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FastDataTransfer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FastDataTransfer) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9500,6 +12070,17 @@ type FastOriginTransfer struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (f FastOriginTransfer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FastOriginTransfer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FastOriginTransfer) GetCurrentThreshold() float64 {
@@ -9529,6 +12110,17 @@ type FluidCPUDuration struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (f FluidCPUDuration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FluidCPUDuration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FluidCPUDuration) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9554,6 +12146,17 @@ type FluidDuration struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (f FluidDuration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FluidDuration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FluidDuration) GetCurrentThreshold() float64 {
@@ -9583,6 +12186,17 @@ type FunctionDuration struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (f FunctionDuration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FunctionDuration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FunctionDuration) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9608,6 +12222,17 @@ type FunctionInvocation struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (f FunctionInvocation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FunctionInvocation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FunctionInvocation) GetCurrentThreshold() float64 {
@@ -9637,6 +12262,17 @@ type ImageOptimizationCacheRead struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (i ImageOptimizationCacheRead) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *ImageOptimizationCacheRead) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ImageOptimizationCacheRead) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9662,6 +12298,17 @@ type ImageOptimizationCacheWrite struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (i ImageOptimizationCacheWrite) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *ImageOptimizationCacheWrite) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ImageOptimizationCacheWrite) GetCurrentThreshold() float64 {
@@ -9691,6 +12338,17 @@ type OverageUsageAlertsImageOptimizationTransformation struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (o OverageUsageAlertsImageOptimizationTransformation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OverageUsageAlertsImageOptimizationTransformation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OverageUsageAlertsImageOptimizationTransformation) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9716,6 +12374,17 @@ type LogDrainsVolume struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (l LogDrainsVolume) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *LogDrainsVolume) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *LogDrainsVolume) GetCurrentThreshold() float64 {
@@ -9745,6 +12414,17 @@ type MonitoringMetric struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (m MonitoringMetric) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MonitoringMetric) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *MonitoringMetric) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9770,6 +12450,17 @@ type BlobDataTransfer struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (b BlobDataTransfer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BlobDataTransfer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BlobDataTransfer) GetCurrentThreshold() float64 {
@@ -9799,6 +12490,17 @@ type ObservabilityEvent struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (o ObservabilityEvent) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *ObservabilityEvent) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ObservabilityEvent) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9824,6 +12526,17 @@ type OnDemandConcurrencyMinutes struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o OnDemandConcurrencyMinutes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OnDemandConcurrencyMinutes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *OnDemandConcurrencyMinutes) GetCurrentThreshold() float64 {
@@ -9853,6 +12566,17 @@ type RuntimeCacheRead struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (r RuntimeCacheRead) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RuntimeCacheRead) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RuntimeCacheRead) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9878,6 +12602,17 @@ type RuntimeCacheWrite struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (r RuntimeCacheWrite) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RuntimeCacheWrite) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RuntimeCacheWrite) GetCurrentThreshold() float64 {
@@ -9907,6 +12642,17 @@ type ServerlessFunctionExecution struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (s ServerlessFunctionExecution) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ServerlessFunctionExecution) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ServerlessFunctionExecution) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9932,6 +12678,17 @@ type OverageUsageAlertsSourceImages struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (o OverageUsageAlertsSourceImages) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OverageUsageAlertsSourceImages) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *OverageUsageAlertsSourceImages) GetCurrentThreshold() float64 {
@@ -9961,6 +12718,17 @@ type WafOwaspExcessBytes struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (w WafOwaspExcessBytes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WafOwaspExcessBytes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *WafOwaspExcessBytes) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -9986,6 +12754,17 @@ type WafOwaspRequests struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (w WafOwaspRequests) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WafOwaspRequests) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *WafOwaspRequests) GetCurrentThreshold() float64 {
@@ -10015,6 +12794,17 @@ type WafRateLimitRequest struct {
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
 }
 
+func (w WafRateLimitRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WafRateLimitRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *WafRateLimitRequest) GetCurrentThreshold() float64 {
 	if o == nil {
 		return 0.0
@@ -10040,6 +12830,17 @@ type WebAnalyticsEvent struct {
 	CurrentThreshold float64  `json:"currentThreshold"`
 	WarningAt        *float64 `json:"warningAt,omitempty"`
 	BlockedAt        *float64 `json:"blockedAt,omitempty"`
+}
+
+func (w WebAnalyticsEvent) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(w, "", false)
+}
+
+func (w *WebAnalyticsEvent) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &w, "", false, []string{"currentThreshold"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *WebAnalyticsEvent) GetCurrentThreshold() float64 {
@@ -10103,6 +12904,17 @@ type OverageUsageAlerts struct {
 	WafOwaspRequests                      *WafOwaspRequests                                  `json:"wafOwaspRequests,omitempty"`
 	WafRateLimitRequest                   *WafRateLimitRequest                               `json:"wafRateLimitRequest,omitempty"`
 	WebAnalyticsEvent                     *WebAnalyticsEvent                                 `json:"webAnalyticsEvent,omitempty"`
+}
+
+func (o OverageUsageAlerts) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OverageUsageAlerts) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *OverageUsageAlerts) GetAnalyticsUsage() *AnalyticsUsage {
@@ -10394,6 +13206,17 @@ type OverageMetadata struct {
 	IncreasedOnDemandEmailAttemptedAt *float64 `json:"increasedOnDemandEmailAttemptedAt,omitempty"`
 }
 
+func (o OverageMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OverageMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OverageMetadata) GetFirstTimeOnDemandNotificationSentAt() *float64 {
 	if o == nil {
 		return nil
@@ -10509,6 +13332,17 @@ type UserEventWebAnalytics struct {
 	GraceEmailSentAt *float64                `json:"graceEmailSentAt,omitempty"`
 }
 
+func (u UserEventWebAnalytics) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventWebAnalytics) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"updatedAt", "blockReason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventWebAnalytics) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -10603,6 +13437,17 @@ type Monitoring struct {
 	BlockedUntil *float64              `json:"blockedUntil,omitempty"`
 	BlockReason  MonitoringBlockReason `json:"blockReason"`
 	BlockType    MonitoringBlockType   `json:"blockType"`
+}
+
+func (m Monitoring) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *Monitoring) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "blockReason", "blockType"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Monitoring) GetUpdatedAt() float64 {
@@ -10700,6 +13545,17 @@ type ObservabilityPlus struct {
 	BlockType    ObservabilityPlusBlockType   `json:"blockType"`
 }
 
+func (o ObservabilityPlus) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *ObservabilityPlus) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"updatedAt", "blockReason", "blockType"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ObservabilityPlus) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -10768,6 +13624,17 @@ type FeatureBlocksDataCache struct {
 	BlockReason  DataCacheBlockReason `json:"blockReason"`
 }
 
+func (f FeatureBlocksDataCache) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FeatureBlocksDataCache) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"updatedAt", "blockReason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FeatureBlocksDataCache) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -10829,6 +13696,17 @@ type FeatureBlocksImageOptimizationTransformation struct {
 	BlockReason  ImageOptimizationTransformationBlockReason `json:"blockReason"`
 }
 
+func (f FeatureBlocksImageOptimizationTransformation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FeatureBlocksImageOptimizationTransformation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"updatedAt", "blockReason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FeatureBlocksImageOptimizationTransformation) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -10888,6 +13766,17 @@ type FeatureBlocksSourceImages struct {
 	BlockedFrom  *float64                `json:"blockedFrom,omitempty"`
 	BlockedUntil *float64                `json:"blockedUntil,omitempty"`
 	BlockReason  SourceImagesBlockReason `json:"blockReason"`
+}
+
+func (f FeatureBlocksSourceImages) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FeatureBlocksSourceImages) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"updatedAt", "blockReason"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FeatureBlocksSourceImages) GetUpdatedAt() float64 {
@@ -11087,6 +13976,17 @@ type Blob struct {
 	BlockedUntil  *float64          `json:"blockedUntil,omitempty"`
 	BlockReason   BlobBlockReason   `json:"blockReason"`
 	OverageReason BlobOverageReason `json:"overageReason"`
+}
+
+func (b Blob) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *Blob) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"updatedAt", "blockReason", "overageReason"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Blob) GetUpdatedAt() float64 {
@@ -11295,6 +14195,17 @@ type Postgres struct {
 	OverageReason PostgresOverageReason `json:"overageReason"`
 }
 
+func (p Postgres) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Postgres) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"updatedAt", "blockReason", "overageReason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Postgres) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -11501,6 +14412,17 @@ type Redis struct {
 	OverageReason RedisOverageReason `json:"overageReason"`
 }
 
+func (r Redis) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Redis) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"updatedAt", "blockReason", "overageReason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Redis) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -11548,6 +14470,17 @@ type UserEventFeatureBlocks struct {
 	Blob                            *Blob                                         `json:"blob,omitempty"`
 	Postgres                        *Postgres                                     `json:"postgres,omitempty"`
 	Redis                           *Redis                                        `json:"redis,omitempty"`
+}
+
+func (u UserEventFeatureBlocks) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventFeatureBlocks) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventFeatureBlocks) GetWebAnalytics() *UserEventWebAnalytics {
@@ -11654,6 +14587,17 @@ type NorthstarMigration struct {
 	EndTime float64 `json:"endTime"`
 }
 
+func (n NorthstarMigration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NorthstarMigration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"teamId", "projects", "stores", "integrationConfigurations", "integrationClients", "startTime", "endTime"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *NorthstarMigration) GetTeamID() string {
 	if o == nil {
 		return ""
@@ -11708,6 +14652,17 @@ type Totp struct {
 	CreatedAt float64 `json:"createdAt"`
 }
 
+func (t Totp) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *Totp) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"secret", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Totp) GetSecret() string {
 	if o == nil {
 		return ""
@@ -11728,6 +14683,17 @@ type MfaConfiguration struct {
 	EnabledAt     *float64 `json:"enabledAt,omitempty"`
 	RecoveryCodes []string `json:"recoveryCodes"`
 	Totp          *Totp    `json:"totp,omitempty"`
+}
+
+func (m MfaConfiguration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MfaConfiguration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"enabled", "recoveryCodes"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *MfaConfiguration) GetEnabled() bool {
@@ -11845,6 +14811,17 @@ type NewOwner struct {
 	OpportunityID *string `json:"opportunityId,omitempty"`
 	// MFA configuration. When enabled, the user will be required to provide a second factor of authentication when logging in.
 	MfaConfiguration *MfaConfiguration `json:"mfaConfiguration,omitempty"`
+}
+
+func (n NewOwner) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewOwner) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"billing", "blocked", "createdAt", "deploymentSecret", "email", "id", "platformVersion", "stagingPrefix", "sysToken", "type", "username", "updatedAt", "version"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NewOwner) GetAbuse() *Abuse {
@@ -12361,6 +15338,17 @@ type Payload64 struct {
 	NewOwner        *NewOwner `json:"newOwner"`
 }
 
+func (p Payload64) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload64) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"userId", "integrationId", "configurationId", "integrationSlug", "newOwner"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload64) GetUserID() string {
 	if o == nil {
 		return ""
@@ -12410,6 +15398,17 @@ type Payload63 struct {
 	IntegrationName string `json:"integrationName"`
 }
 
+func (p Payload63) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload63) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"integrationId", "integrationSlug", "integrationName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload63) GetIntegrationID() string {
 	if o == nil {
 		return ""
@@ -12438,6 +15437,17 @@ type Payload62 struct {
 	PrevAttackModeActiveUntil *float64 `json:"prevAttackModeActiveUntil,omitempty"`
 	AttackModeEnabled         bool     `json:"attackModeEnabled"`
 	AttackModeActiveUntil     *float64 `json:"attackModeActiveUntil,omitempty"`
+}
+
+func (p Payload62) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload62) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "attackModeEnabled"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload62) GetProjectID() string {
@@ -12509,6 +15519,17 @@ type RuleGroups struct {
 	Action *RuleGroupsAction `json:"action,omitempty"`
 }
 
+func (r RuleGroups) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RuleGroups) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"active"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RuleGroups) GetActive() bool {
 	if o == nil {
 		return false
@@ -12528,6 +15549,17 @@ type Payload61 struct {
 	ProjectID   string                `json:"projectId"`
 	RulesetName string                `json:"rulesetName"`
 	RuleGroups  map[string]RuleGroups `json:"ruleGroups"`
+}
+
+func (p Payload61) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload61) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "rulesetName", "ruleGroups"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload61) GetProjectID() string {
@@ -12588,6 +15620,17 @@ type Payload60 struct {
 	Action      *Action3 `json:"action,omitempty"`
 }
 
+func (p Payload60) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload60) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "rulesetName", "active"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload60) GetProjectID() string {
 	if o == nil {
 		return ""
@@ -12623,6 +15666,17 @@ type Payload59 struct {
 	Source    string `json:"source"`
 }
 
+func (p Payload59) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload59) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "scope", "source"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload59) GetProjectID() string {
 	if o == nil {
 		return ""
@@ -12647,6 +15701,17 @@ func (o *Payload59) GetSource() string {
 type ConfigChange struct {
 }
 
+func (c ConfigChange) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConfigChange) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // Payload58 - The payload of the event, if requested.
 type Payload58 struct {
 	ProjectID         string         `json:"projectId"`
@@ -12654,6 +15719,17 @@ type Payload58 struct {
 	ConfigVersion     float64        `json:"configVersion"`
 	ConfigChangeCount float64        `json:"configChangeCount"`
 	ConfigChanges     []ConfigChange `json:"configChanges"`
+}
+
+func (p Payload58) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload58) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectId", "restore", "configVersion", "configChangeCount", "configChanges"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload58) GetProjectID() string {
@@ -12798,7 +15874,7 @@ func (o OldEnvVar) MarshalJSON() ([]byte, error) {
 }
 
 func (o *OldEnvVar) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &o, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -13037,7 +16113,7 @@ func (n NewEnvVar) MarshalJSON() ([]byte, error) {
 }
 
 func (n *NewEnvVar) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -13232,6 +16308,17 @@ type OldProject struct {
 	ProjectID   string  `json:"projectId"`
 }
 
+func (o OldProject) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldProject) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldProject) GetProjectName() *string {
 	if o == nil {
 		return nil
@@ -13249,6 +16336,17 @@ func (o *OldProject) GetProjectID() string {
 type NewProject struct {
 	ProjectName *string `json:"projectName,omitempty"`
 	ProjectID   string  `json:"projectId"`
+}
+
+func (n NewProject) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewProject) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"projectId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NewProject) GetProjectName() *string {
@@ -13276,6 +16374,17 @@ type UpdateDiff struct {
 	OldProjects  []OldProject `json:"oldProjects,omitempty"`
 	NewProjects  []NewProject `json:"newProjects,omitempty"`
 	ChangedValue bool         `json:"changedValue"`
+}
+
+func (u UpdateDiff) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDiff) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "changedValue"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateDiff) GetID() string {
@@ -13353,6 +16462,17 @@ type Payload57 struct {
 	OldEnvVar  *OldEnvVar  `json:"oldEnvVar,omitempty"`
 	NewEnvVar  *NewEnvVar  `json:"newEnvVar,omitempty"`
 	UpdateDiff *UpdateDiff `json:"updateDiff,omitempty"`
+}
+
+func (p Payload57) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload57) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload57) GetOldEnvVar() *OldEnvVar {
@@ -13485,7 +16605,7 @@ func (p Payload56) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Payload56) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -13659,14 +16779,14 @@ func CreateTargetArrayOfStr(arrayOfStr []string) Target {
 func (u *Target) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = TargetTypeStr
 		return nil
 	}
 
 	var arrayOfStr []string = []string{}
-	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfStr, "", true, nil); err == nil {
 		u.ArrayOfStr = arrayOfStr
 		u.Type = TargetTypeArrayOfStr
 		return nil
@@ -13698,6 +16818,17 @@ type Payload55 struct {
 	EdgeConfigID      *string `json:"edgeConfigId,omitempty"`
 	EdgeConfigTokenID *string `json:"edgeConfigTokenId,omitempty"`
 	Source            *string `json:"source,omitempty"`
+}
+
+func (p Payload55) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload55) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload55) GetKey() *string {
@@ -13769,6 +16900,17 @@ type Payload54 struct {
 	Name  string `json:"name"`
 }
 
+func (p Payload54) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload54) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"email", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload54) GetEmail() string {
 	if o == nil {
 		return ""
@@ -13788,6 +16930,17 @@ type Payload53 struct {
 	Sha             string `json:"sha"`
 	GitUserPlatform string `json:"gitUserPlatform"`
 	ProjectName     string `json:"projectName"`
+}
+
+func (p Payload53) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload53) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"sha", "gitUserPlatform", "projectName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload53) GetSha() string {
@@ -13818,6 +16971,17 @@ type Payload52 struct {
 	Currency *string  `json:"currency,omitempty"`
 }
 
+func (p Payload52) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload52) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload52) GetName() string {
 	if o == nil {
 		return ""
@@ -13845,6 +17009,17 @@ type Payload51 struct {
 	Domain string `json:"domain"`
 }
 
+func (p Payload51) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload51) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"domain"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload51) GetRenew() *bool {
 	if o == nil {
 		return nil
@@ -13864,6 +17039,17 @@ type Payload50 struct {
 	Name            string `json:"name"`
 	DestinationID   string `json:"destinationId"`
 	DestinationName string `json:"destinationName"`
+}
+
+func (p Payload50) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload50) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "destinationId", "destinationName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload50) GetName() string {
@@ -13894,6 +17080,17 @@ type Payload49 struct {
 	DestinationName *string `json:"destinationName"`
 }
 
+func (p Payload49) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload49) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "destinationId", "destinationName"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload49) GetName() string {
 	if o == nil {
 		return ""
@@ -13920,6 +17117,17 @@ type Payload48 struct {
 	Name     string  `json:"name"`
 	FromID   *string `json:"fromId"`
 	FromName *string `json:"fromName"`
+}
+
+func (p Payload48) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload48) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "fromId", "fromName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload48) GetName() string {
@@ -13949,6 +17157,17 @@ type Payload47 struct {
 	Name     string `json:"name"`
 }
 
+func (p Payload47) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload47) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"domainId", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload47) GetDomainID() string {
 	if o == nil {
 		return ""
@@ -13967,6 +17186,17 @@ type OldTeam4 struct {
 	Name string `json:"name"`
 }
 
+func (o OldTeam4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldTeam4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldTeam4) GetName() string {
 	if o == nil {
 		return ""
@@ -13976,6 +17206,17 @@ func (o *OldTeam4) GetName() string {
 
 type NewTeam4 struct {
 	Name string `json:"name"`
+}
+
+func (n NewTeam4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewTeam4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NewTeam4) GetName() string {
@@ -13990,6 +17231,17 @@ type Payload46 struct {
 	Name    string    `json:"name"`
 	OldTeam *OldTeam4 `json:"oldTeam,omitempty"`
 	NewTeam *NewTeam4 `json:"newTeam,omitempty"`
+}
+
+func (p Payload46) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload46) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload46) GetName() string {
@@ -14019,6 +17271,17 @@ type Payload45 struct {
 	UserID    string `json:"userId"`
 	TeamID    string `json:"teamId"`
 	OwnerName string `json:"ownerName"`
+}
+
+func (p Payload45) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload45) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "userId", "teamId", "ownerName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload45) GetName() string {
@@ -14055,6 +17318,17 @@ type Payload44 struct {
 	CdnEnabled bool   `json:"cdnEnabled"`
 }
 
+func (p Payload44) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload44) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "cdnEnabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload44) GetName() string {
 	if o == nil {
 		return ""
@@ -14074,6 +17348,17 @@ type Payload43 struct {
 	Name     string  `json:"name"`
 	Price    float64 `json:"price"`
 	Currency *string `json:"currency,omitempty"`
+}
+
+func (p Payload43) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload43) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "price"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload43) GetName() string {
@@ -14102,6 +17387,17 @@ type Payload42 struct {
 	Name string `json:"name"`
 }
 
+func (p Payload42) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload42) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload42) GetName() string {
 	if o == nil {
 		return ""
@@ -14116,6 +17412,17 @@ type Payload41 struct {
 	Name   string `json:"name"`
 	Domain string `json:"domain"`
 	Type   string `json:"type"`
+}
+
+func (p Payload41) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload41) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "value", "name", "domain", "type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload41) GetID() string {
@@ -14161,6 +17468,17 @@ type Payload40 struct {
 	Domain     string   `json:"domain"`
 	Type       string   `json:"type"`
 	MxPriority *float64 `json:"mxPriority,omitempty"`
+}
+
+func (p Payload40) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload40) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "value", "name", "domain", "type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload40) GetID() string {
@@ -14212,6 +17530,17 @@ type Deployment3 struct {
 	Meta map[string]string `json:"meta"`
 }
 
+func (d Deployment3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Deployment3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "name", "url", "meta"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Deployment3) GetID() string {
 	if o == nil {
 		return ""
@@ -14247,6 +17576,17 @@ type Payload39 struct {
 	URL          string      `json:"url"`
 }
 
+func (p Payload39) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload39) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"deployment", "deploymentId", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload39) GetDeployment() Deployment3 {
 	if o == nil {
 		return Deployment3{}
@@ -14272,6 +17612,17 @@ type OldTeam3 struct {
 	Name string `json:"name"`
 }
 
+func (o OldTeam3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldTeam3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldTeam3) GetName() string {
 	if o == nil {
 		return ""
@@ -14281,6 +17632,17 @@ func (o *OldTeam3) GetName() string {
 
 type NewTeam3 struct {
 	Name string `json:"name"`
+}
+
+func (n NewTeam3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewTeam3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NewTeam3) GetName() string {
@@ -14295,6 +17657,17 @@ type Payload38 struct {
 	URL     string    `json:"url"`
 	OldTeam *OldTeam3 `json:"oldTeam,omitempty"`
 	NewTeam *NewTeam3 `json:"newTeam,omitempty"`
+}
+
+func (p Payload38) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload38) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"url"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload38) GetURL() string {
@@ -14323,6 +17696,17 @@ type Deployment2 struct {
 	Name string            `json:"name"`
 	URL  string            `json:"url"`
 	Meta map[string]string `json:"meta"`
+}
+
+func (d Deployment2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Deployment2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "name", "url", "meta"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Deployment2) GetID() string {
@@ -14367,6 +17751,17 @@ type Payload37 struct {
 	ProjectID    *string      `json:"projectId,omitempty"`
 	Regions      []string     `json:"regions,omitempty"`
 	Type         *string      `json:"type,omitempty"`
+}
+
+func (p Payload37) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload37) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"url"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload37) GetName() *string {
@@ -14457,6 +17852,17 @@ type Project5 struct {
 	Name string `json:"name"`
 }
 
+func (p Project5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Project5) GetName() string {
 	if o == nil {
 		return ""
@@ -14469,6 +17875,17 @@ type DeployHook struct {
 	ID        string  `json:"id"`
 	Name      string  `json:"name"`
 	Ref       string  `json:"ref"`
+}
+
+func (d DeployHook) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeployHook) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"createdAt", "id", "name", "ref"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeployHook) GetCreatedAt() float64 {
@@ -14504,6 +17921,17 @@ type Job struct {
 	State      string     `json:"state"`
 }
 
+func (j Job) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(j, "", false)
+}
+
+func (j *Job) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &j, "", false, []string{"deployHook", "state"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Job) GetDeployHook() DeployHook {
 	if o == nil {
 		return DeployHook{}
@@ -14522,6 +17950,17 @@ func (o *Job) GetState() string {
 type Payload36 struct {
 	Project Project5 `json:"project"`
 	Job     Job      `json:"job"`
+}
+
+func (p Payload36) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload36) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"project", "job"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload36) GetProject() Project5 {
@@ -14543,6 +17982,17 @@ type Payload35 struct {
 	BitbucketEmail string  `json:"bitbucketEmail"`
 	BitbucketLogin string  `json:"bitbucketLogin"`
 	BitbucketName  *string `json:"bitbucketName,omitempty"`
+}
+
+func (p Payload35) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload35) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"bitbucketEmail", "bitbucketLogin"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload35) GetBitbucketEmail() string {
@@ -14573,6 +18023,17 @@ type Payload34 struct {
 	GitlabName  *string `json:"gitlabName,omitempty"`
 }
 
+func (p Payload34) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload34) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"gitlabLogin", "gitlabEmail"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload34) GetGitlabLogin() string {
 	if o == nil {
 		return ""
@@ -14599,6 +18060,17 @@ type Payload33 struct {
 	GithubLogin string `json:"githubLogin"`
 }
 
+func (p Payload33) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload33) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"githubLogin"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload33) GetGithubLogin() string {
 	if o == nil {
 		return ""
@@ -14609,6 +18081,17 @@ func (o *Payload33) GetGithubLogin() string {
 type UserEventTeam4 struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
+}
+
+func (u UserEventTeam4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserEventTeam4) GetID() string {
@@ -14630,6 +18113,17 @@ type Configuration4 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (c Configuration4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Configuration4) GetID() string {
 	if o == nil {
 		return ""
@@ -14649,6 +18143,17 @@ type Payload32 struct {
 	Team          UserEventTeam4 `json:"team"`
 	Configuration Configuration4 `json:"configuration"`
 	NewName       string         `json:"newName"`
+}
+
+func (p Payload32) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload32) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "newName"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload32) GetTeam() UserEventTeam4 {
@@ -14677,6 +18182,17 @@ type UserEventTeam3 struct {
 	Name string `json:"name"`
 }
 
+func (u UserEventTeam3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventTeam3) GetID() string {
 	if o == nil {
 		return ""
@@ -14694,6 +18210,17 @@ func (o *UserEventTeam3) GetName() string {
 type Configuration3 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
+}
+
+func (c Configuration3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Configuration3) GetID() string {
@@ -14715,6 +18242,17 @@ type Project4 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (p Project4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Project4) GetID() string {
 	if o == nil {
 		return ""
@@ -14734,6 +18272,17 @@ type Payload31 struct {
 	Team          UserEventTeam3 `json:"team"`
 	Configuration Configuration3 `json:"configuration"`
 	Project       Project4       `json:"project"`
+}
+
+func (p Payload31) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload31) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "project"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload31) GetTeam() UserEventTeam3 {
@@ -14762,6 +18311,17 @@ type UserEventTeam2 struct {
 	Name string `json:"name"`
 }
 
+func (u UserEventTeam2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventTeam2) GetID() string {
 	if o == nil {
 		return ""
@@ -14781,6 +18341,17 @@ type Configuration2 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (c Configuration2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Configuration2) GetID() string {
 	if o == nil {
 		return ""
@@ -14798,6 +18369,17 @@ func (o *Configuration2) GetName() *string {
 type Project3 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
+}
+
+func (p Project3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project3) GetID() string {
@@ -14821,6 +18403,17 @@ type Payload30 struct {
 	Project       Project3       `json:"project"`
 	BuildsEnabled *bool          `json:"buildsEnabled,omitempty"`
 	Passive       *bool          `json:"passive,omitempty"`
+}
+
+func (p Payload30) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload30) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "project"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload30) GetTeam() UserEventTeam2 {
@@ -14863,6 +18456,17 @@ type UserEventTeam1 struct {
 	Name string `json:"name"`
 }
 
+func (u UserEventTeam1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventTeam1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UserEventTeam1) GetID() string {
 	if o == nil {
 		return ""
@@ -14882,6 +18486,17 @@ type Configuration1 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (c Configuration1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Configuration1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Configuration1) GetID() string {
 	if o == nil {
 		return ""
@@ -14899,6 +18514,17 @@ func (o *Configuration1) GetName() *string {
 type Project2 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
+}
+
+func (p Project2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project2) GetID() string {
@@ -14921,6 +18547,17 @@ type Payload29 struct {
 	Configuration Configuration1 `json:"configuration"`
 	Project       Project2       `json:"project"`
 	BuildsEnabled *bool          `json:"buildsEnabled,omitempty"`
+}
+
+func (p Payload29) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload29) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"team", "configuration", "project"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload29) GetTeam() UserEventTeam1 {
@@ -14956,6 +18593,17 @@ type Payload28 struct {
 	Suffix string `json:"suffix"`
 }
 
+func (p Payload28) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload28) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"suffix"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload28) GetSuffix() string {
 	if o == nil {
 		return ""
@@ -14967,6 +18615,17 @@ func (o *Payload28) GetSuffix() string {
 type Payload27 struct {
 	Status string `json:"status"`
 	Suffix string `json:"suffix"`
+}
+
+func (p Payload27) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload27) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"status", "suffix"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload27) GetStatus() string {
@@ -14989,6 +18648,17 @@ type Payload26 struct {
 	Suffix string  `json:"suffix"`
 }
 
+func (p Payload26) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload26) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"suffix"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload26) GetReason() *string {
 	if o == nil {
 		return nil
@@ -15007,6 +18677,17 @@ func (o *Payload26) GetSuffix() string {
 type Payload25 struct {
 	Cn  *string  `json:"cn,omitempty"`
 	Cns []string `json:"cns,omitempty"`
+}
+
+func (p Payload25) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload25) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload25) GetCn() *string {
@@ -15028,6 +18709,17 @@ type Payload24 struct {
 	ID  string   `json:"id"`
 	Cn  *string  `json:"cn,omitempty"`
 	Cns []string `json:"cns,omitempty"`
+}
+
+func (p Payload24) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload24) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload24) GetID() string {
@@ -15057,6 +18749,17 @@ type Payload23 struct {
 	Dst string `json:"dst"`
 }
 
+func (p Payload23) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload23) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"src", "dst"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload23) GetSrc() string {
 	if o == nil {
 		return ""
@@ -15075,6 +18778,17 @@ type OldTeam2 struct {
 	Name string `json:"name"`
 }
 
+func (o OldTeam2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldTeam2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldTeam2) GetName() string {
 	if o == nil {
 		return ""
@@ -15084,6 +18798,17 @@ func (o *OldTeam2) GetName() string {
 
 type NewTeam2 struct {
 	Name string `json:"name"`
+}
+
+func (n NewTeam2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewTeam2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NewTeam2) GetName() string {
@@ -15098,6 +18823,17 @@ type Payload22 struct {
 	ID      string    `json:"id"`
 	OldTeam *OldTeam2 `json:"oldTeam,omitempty"`
 	NewTeam *NewTeam2 `json:"newTeam,omitempty"`
+}
+
+func (p Payload22) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload22) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload22) GetID() string {
@@ -15128,6 +18864,17 @@ type Payload21 struct {
 	ID  *string  `json:"id,omitempty"`
 }
 
+func (p Payload21) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload21) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload21) GetCn() *string {
 	if o == nil {
 		return nil
@@ -15155,6 +18902,17 @@ type Payload20 struct {
 	Cns    []string `json:"cns,omitempty"`
 	Custom bool     `json:"custom"`
 	ID     *string  `json:"id,omitempty"`
+}
+
+func (p Payload20) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload20) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"custom"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload20) GetCn() *string {
@@ -15190,6 +18948,17 @@ type Payload19 struct {
 	Avatar *string `json:"avatar,omitempty"`
 }
 
+func (p Payload19) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload19) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload19) GetAvatar() *string {
 	if o == nil {
 		return nil
@@ -15201,6 +18970,17 @@ func (o *Payload19) GetAvatar() *string {
 type Payload18 struct {
 	ProjectName          string `json:"projectName"`
 	AutoExposeSystemEnvs bool   `json:"autoExposeSystemEnvs"`
+}
+
+func (p Payload18) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload18) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "autoExposeSystemEnvs"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload18) GetProjectName() string {
@@ -15223,6 +19003,17 @@ type Payload17 struct {
 	DeploymentURL string `json:"deploymentUrl"`
 }
 
+func (p Payload17) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload17) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"alias", "deploymentUrl"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload17) GetAlias() string {
 	if o == nil {
 		return ""
@@ -15243,6 +19034,17 @@ type Payload16 struct {
 	Alias        string  `json:"alias"`
 	AliasID      string  `json:"aliasId"`
 	DeploymentID *string `json:"deploymentId"`
+}
+
+func (p Payload16) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload16) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"alias", "aliasId", "deploymentId"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload16) GetName() *string {
@@ -15277,6 +19079,17 @@ type OldTeam1 struct {
 	Name string `json:"name"`
 }
 
+func (o OldTeam1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OldTeam1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *OldTeam1) GetName() string {
 	if o == nil {
 		return ""
@@ -15286,6 +19099,17 @@ func (o *OldTeam1) GetName() string {
 
 type NewTeam1 struct {
 	Name string `json:"name"`
+}
+
+func (n NewTeam1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NewTeam1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NewTeam1) GetName() string {
@@ -15301,6 +19125,17 @@ type Payload15 struct {
 	Alias   string    `json:"alias"`
 	OldTeam *OldTeam1 `json:"oldTeam,omitempty"`
 	NewTeam *NewTeam1 `json:"newTeam,omitempty"`
+}
+
+func (p Payload15) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload15) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"alias"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload15) GetName() *string {
@@ -15337,6 +19172,17 @@ type Payload14 struct {
 	Email *string `json:"email,omitempty"`
 }
 
+func (p Payload14) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload14) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload14) GetAlias() *string {
 	if o == nil {
 		return nil
@@ -15356,6 +19202,17 @@ type Payload13 struct {
 	Alias    *string `json:"alias,omitempty"`
 	Email    *string `json:"email,omitempty"`
 	Username *string `json:"username,omitempty"`
+}
+
+func (p Payload13) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload13) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload13) GetAlias() *string {
@@ -15412,6 +19269,17 @@ type Payload12 struct {
 	Action      Action2 `json:"action"`
 }
 
+func (p Payload12) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload12) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "alias", "action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload12) GetProjectName() string {
 	if o == nil {
 		return ""
@@ -15439,6 +19307,17 @@ type Payload11 struct {
 	AliasID  *string `json:"aliasId,omitempty"`
 	UserID   *string `json:"userId,omitempty"`
 	Username *string `json:"username,omitempty"`
+}
+
+func (p Payload11) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload11) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload11) GetAlias() *string {
@@ -15476,6 +19355,17 @@ type Payload10 struct {
 	Username *string `json:"username,omitempty"`
 }
 
+func (p Payload10) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload10) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload10) GetAlias() *string {
 	if o == nil {
 		return nil
@@ -15502,6 +19392,17 @@ type Payload9 struct {
 	Alias *string `json:"alias,omitempty"`
 }
 
+func (p Payload9) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload9) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload9) GetAlias() *string {
 	if o == nil {
 		return nil
@@ -15514,6 +19415,17 @@ type Payload8 struct {
 	AliasID     *string `json:"aliasId,omitempty"`
 	Alias       *string `json:"alias,omitempty"`
 	ProjectName *string `json:"projectName,omitempty"`
+}
+
+func (p Payload8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload8) GetAliasID() *string {
@@ -15542,6 +19454,17 @@ type Deployment1 struct {
 	Name string            `json:"name"`
 	URL  string            `json:"url"`
 	Meta map[string]string `json:"meta"`
+}
+
+func (d Deployment1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Deployment1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "name", "url", "meta"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Deployment1) GetID() string {
@@ -15586,6 +19509,17 @@ type Payload7 struct {
 	Target             *string      `json:"target,omitempty"`
 	System             *bool        `json:"system,omitempty"`
 	AliasUpdatedAt     *float64     `json:"aliasUpdatedAt,omitempty"`
+}
+
+func (p Payload7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload7) GetAlias() *string {
@@ -15677,6 +19611,17 @@ type AccessGroup4 struct {
 	Name string `json:"name"`
 }
 
+func (a AccessGroup4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AccessGroup4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AccessGroup4) GetID() string {
 	if o == nil {
 		return ""
@@ -15694,6 +19639,17 @@ func (o *AccessGroup4) GetName() string {
 type Project1 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
+}
+
+func (p Project1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Project1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Project1) GetID() string {
@@ -15776,6 +19732,17 @@ type Payload6 struct {
 	PreviousRole *PreviousRole `json:"previous_role,omitempty"`
 }
 
+func (p Payload6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroup", "project"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload6) GetAccessGroup() AccessGroup4 {
 	if o == nil {
 		return AccessGroup4{}
@@ -15809,6 +19776,17 @@ type AccessGroup3 struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (a AccessGroup3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AccessGroup3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AccessGroup3) GetID() string {
 	if o == nil {
 		return ""
@@ -15826,6 +19804,17 @@ func (o *AccessGroup3) GetName() *string {
 type PayloadUser1 struct {
 	ID       string  `json:"id"`
 	Username *string `json:"username,omitempty"`
+}
+
+func (p PayloadUser1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PayloadUser1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PayloadUser1) GetID() string {
@@ -15847,6 +19836,17 @@ type Payload5 struct {
 	AccessGroup   AccessGroup3 `json:"accessGroup"`
 	User          PayloadUser1 `json:"user"`
 	DirectoryType *string      `json:"directoryType,omitempty"`
+}
+
+func (p Payload5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroup", "user"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload5) GetAccessGroup() AccessGroup3 {
@@ -15875,6 +19875,17 @@ type AccessGroup2 struct {
 	Name string `json:"name"`
 }
 
+func (a AccessGroup2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AccessGroup2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AccessGroup2) GetID() string {
 	if o == nil {
 		return ""
@@ -15893,6 +19904,17 @@ func (o *AccessGroup2) GetName() string {
 type Payload4 struct {
 	Author      string       `json:"author"`
 	AccessGroup AccessGroup2 `json:"accessGroup"`
+}
+
+func (p Payload4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"author", "accessGroup"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload4) GetAuthor() string {
@@ -15914,6 +19936,17 @@ type AccessGroup1 struct {
 	Name string `json:"name"`
 }
 
+func (a AccessGroup1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AccessGroup1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AccessGroup1) GetID() string {
 	if o == nil {
 		return ""
@@ -15931,6 +19964,17 @@ func (o *AccessGroup1) GetName() string {
 // Payload3 - The payload of the event, if requested.
 type Payload3 struct {
 	AccessGroup AccessGroup1 `json:"accessGroup"`
+}
+
+func (p Payload3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"accessGroup"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Payload3) GetAccessGroup() AccessGroup1 {
@@ -15983,6 +20027,17 @@ type Payload2 struct {
 	ProjectID string  `json:"projectId"`
 }
 
+func (p Payload2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"action", "id", "slug", "projectId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *Payload2) GetAction() Action1 {
 	if o == nil {
 		return Action1("")
@@ -16013,6 +20068,17 @@ func (o *Payload2) GetProjectID() string {
 
 // Payload1 - The payload of the event, if requested.
 type Payload1 struct {
+}
+
+func (p Payload1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Payload1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 type PayloadUnionType string
@@ -16176,6 +20242,9 @@ const (
 	PayloadUnionTypePayload156 PayloadUnionType = "payload_156"
 	PayloadUnionTypePayload157 PayloadUnionType = "payload_157"
 	PayloadUnionTypePayload158 PayloadUnionType = "payload_158"
+	PayloadUnionTypePayload159 PayloadUnionType = "payload_159"
+	PayloadUnionTypePayload160 PayloadUnionType = "payload_160"
+	PayloadUnionTypePayload161 PayloadUnionType = "payload_161"
 )
 
 type PayloadUnion struct {
@@ -16337,6 +20406,9 @@ type PayloadUnion struct {
 	Payload156 *Payload156 `queryParam:"inline"`
 	Payload157 *Payload157 `queryParam:"inline"`
 	Payload158 *Payload158 `queryParam:"inline"`
+	Payload159 *Payload159 `queryParam:"inline"`
+	Payload160 *Payload160 `queryParam:"inline"`
+	Payload161 *Payload161 `queryParam:"inline"`
 
 	Type PayloadUnionType
 }
@@ -17763,1111 +21835,1159 @@ func CreatePayloadUnionPayload158(payload158 Payload158) PayloadUnion {
 	}
 }
 
+func CreatePayloadUnionPayload159(payload159 Payload159) PayloadUnion {
+	typ := PayloadUnionTypePayload159
+
+	return PayloadUnion{
+		Payload159: &payload159,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload160(payload160 Payload160) PayloadUnion {
+	typ := PayloadUnionTypePayload160
+
+	return PayloadUnion{
+		Payload160: &payload160,
+		Type:       typ,
+	}
+}
+
+func CreatePayloadUnionPayload161(payload161 Payload161) PayloadUnion {
+	typ := PayloadUnionTypePayload161
+
+	return PayloadUnion{
+		Payload161: &payload161,
+		Type:       typ,
+	}
+}
+
 func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 
-	var payload1 Payload1 = Payload1{}
-	if err := utils.UnmarshalJSON(data, &payload1, "", true, true); err == nil {
-		u.Payload1 = &payload1
-		u.Type = PayloadUnionTypePayload1
+	var payload66 Payload66 = Payload66{}
+	if err := utils.UnmarshalJSON(data, &payload66, "", true, nil); err == nil {
+		u.Payload66 = &payload66
+		u.Type = PayloadUnionTypePayload66
 		return nil
 	}
 
-	var payload102 Payload102 = Payload102{}
-	if err := utils.UnmarshalJSON(data, &payload102, "", true, true); err == nil {
-		u.Payload102 = &payload102
-		u.Type = PayloadUnionTypePayload102
+	var payload69 Payload69 = Payload69{}
+	if err := utils.UnmarshalJSON(data, &payload69, "", true, nil); err == nil {
+		u.Payload69 = &payload69
+		u.Type = PayloadUnionTypePayload69
 		return nil
 	}
 
-	var payload42 Payload42 = Payload42{}
-	if err := utils.UnmarshalJSON(data, &payload42, "", true, true); err == nil {
-		u.Payload42 = &payload42
-		u.Type = PayloadUnionTypePayload42
+	var payload70 Payload70 = Payload70{}
+	if err := utils.UnmarshalJSON(data, &payload70, "", true, nil); err == nil {
+		u.Payload70 = &payload70
+		u.Type = PayloadUnionTypePayload70
 		return nil
 	}
 
-	var payload117 Payload117 = Payload117{}
-	if err := utils.UnmarshalJSON(data, &payload117, "", true, true); err == nil {
-		u.Payload117 = &payload117
-		u.Type = PayloadUnionTypePayload117
+	var payload40 Payload40 = Payload40{}
+	if err := utils.UnmarshalJSON(data, &payload40, "", true, nil); err == nil {
+		u.Payload40 = &payload40
+		u.Type = PayloadUnionTypePayload40
 		return nil
 	}
 
-	var payload118 Payload118 = Payload118{}
-	if err := utils.UnmarshalJSON(data, &payload118, "", true, true); err == nil {
-		u.Payload118 = &payload118
-		u.Type = PayloadUnionTypePayload118
+	var payload41 Payload41 = Payload41{}
+	if err := utils.UnmarshalJSON(data, &payload41, "", true, nil); err == nil {
+		u.Payload41 = &payload41
+		u.Type = PayloadUnionTypePayload41
 		return nil
 	}
 
-	var payload108 Payload108 = Payload108{}
-	if err := utils.UnmarshalJSON(data, &payload108, "", true, true); err == nil {
-		u.Payload108 = &payload108
-		u.Type = PayloadUnionTypePayload108
+	var payload58 Payload58 = Payload58{}
+	if err := utils.UnmarshalJSON(data, &payload58, "", true, nil); err == nil {
+		u.Payload58 = &payload58
+		u.Type = PayloadUnionTypePayload58
 		return nil
 	}
 
-	var payload106 Payload106 = Payload106{}
-	if err := utils.UnmarshalJSON(data, &payload106, "", true, true); err == nil {
-		u.Payload106 = &payload106
-		u.Type = PayloadUnionTypePayload106
+	var payload64 Payload64 = Payload64{}
+	if err := utils.UnmarshalJSON(data, &payload64, "", true, nil); err == nil {
+		u.Payload64 = &payload64
+		u.Type = PayloadUnionTypePayload64
 		return nil
 	}
 
-	var payload119 Payload119 = Payload119{}
-	if err := utils.UnmarshalJSON(data, &payload119, "", true, true); err == nil {
-		u.Payload119 = &payload119
-		u.Type = PayloadUnionTypePayload119
+	var payload67 Payload67 = Payload67{}
+	if err := utils.UnmarshalJSON(data, &payload67, "", true, nil); err == nil {
+		u.Payload67 = &payload67
+		u.Type = PayloadUnionTypePayload67
 		return nil
 	}
 
-	var payload9 Payload9 = Payload9{}
-	if err := utils.UnmarshalJSON(data, &payload9, "", true, true); err == nil {
-		u.Payload9 = &payload9
-		u.Type = PayloadUnionTypePayload9
+	var payload131 Payload131 = Payload131{}
+	if err := utils.UnmarshalJSON(data, &payload131, "", true, nil); err == nil {
+		u.Payload131 = &payload131
+		u.Type = PayloadUnionTypePayload131
 		return nil
 	}
 
-	var payload104 Payload104 = Payload104{}
-	if err := utils.UnmarshalJSON(data, &payload104, "", true, true); err == nil {
-		u.Payload104 = &payload104
-		u.Type = PayloadUnionTypePayload104
+	var payload161 Payload161 = Payload161{}
+	if err := utils.UnmarshalJSON(data, &payload161, "", true, nil); err == nil {
+		u.Payload161 = &payload161
+		u.Type = PayloadUnionTypePayload161
 		return nil
 	}
 
-	var payload153 Payload153 = Payload153{}
-	if err := utils.UnmarshalJSON(data, &payload153, "", true, true); err == nil {
-		u.Payload153 = &payload153
-		u.Type = PayloadUnionTypePayload153
+	var payload2 Payload2 = Payload2{}
+	if err := utils.UnmarshalJSON(data, &payload2, "", true, nil); err == nil {
+		u.Payload2 = &payload2
+		u.Type = PayloadUnionTypePayload2
 		return nil
 	}
 
-	var payload103 Payload103 = Payload103{}
-	if err := utils.UnmarshalJSON(data, &payload103, "", true, true); err == nil {
-		u.Payload103 = &payload103
-		u.Type = PayloadUnionTypePayload103
+	var payload45 Payload45 = Payload45{}
+	if err := utils.UnmarshalJSON(data, &payload45, "", true, nil); err == nil {
+		u.Payload45 = &payload45
+		u.Type = PayloadUnionTypePayload45
 		return nil
 	}
 
-	var payload28 Payload28 = Payload28{}
-	if err := utils.UnmarshalJSON(data, &payload28, "", true, true); err == nil {
-		u.Payload28 = &payload28
-		u.Type = PayloadUnionTypePayload28
+	var payload68 Payload68 = Payload68{}
+	if err := utils.UnmarshalJSON(data, &payload68, "", true, nil); err == nil {
+		u.Payload68 = &payload68
+		u.Type = PayloadUnionTypePayload68
 		return nil
 	}
 
-	var payload3 Payload3 = Payload3{}
-	if err := utils.UnmarshalJSON(data, &payload3, "", true, true); err == nil {
-		u.Payload3 = &payload3
-		u.Type = PayloadUnionTypePayload3
+	var payload101 Payload101 = Payload101{}
+	if err := utils.UnmarshalJSON(data, &payload101, "", true, nil); err == nil {
+		u.Payload101 = &payload101
+		u.Type = PayloadUnionTypePayload101
 		return nil
 	}
 
-	var payload88 Payload88 = Payload88{}
-	if err := utils.UnmarshalJSON(data, &payload88, "", true, true); err == nil {
-		u.Payload88 = &payload88
-		u.Type = PayloadUnionTypePayload88
+	var payload142 Payload142 = Payload142{}
+	if err := utils.UnmarshalJSON(data, &payload142, "", true, nil); err == nil {
+		u.Payload142 = &payload142
+		u.Type = PayloadUnionTypePayload142
 		return nil
 	}
 
-	var payload100 Payload100 = Payload100{}
-	if err := utils.UnmarshalJSON(data, &payload100, "", true, true); err == nil {
-		u.Payload100 = &payload100
-		u.Type = PayloadUnionTypePayload100
+	var payload12 Payload12 = Payload12{}
+	if err := utils.UnmarshalJSON(data, &payload12, "", true, nil); err == nil {
+		u.Payload12 = &payload12
+		u.Type = PayloadUnionTypePayload12
 		return nil
 	}
 
-	var payload122 Payload122 = Payload122{}
-	if err := utils.UnmarshalJSON(data, &payload122, "", true, true); err == nil {
-		u.Payload122 = &payload122
-		u.Type = PayloadUnionTypePayload122
+	var payload16 Payload16 = Payload16{}
+	if err := utils.UnmarshalJSON(data, &payload16, "", true, nil); err == nil {
+		u.Payload16 = &payload16
+		u.Type = PayloadUnionTypePayload16
 		return nil
 	}
 
-	var payload116 Payload116 = Payload116{}
-	if err := utils.UnmarshalJSON(data, &payload116, "", true, true); err == nil {
-		u.Payload116 = &payload116
-		u.Type = PayloadUnionTypePayload116
+	var payload29 Payload29 = Payload29{}
+	if err := utils.UnmarshalJSON(data, &payload29, "", true, nil); err == nil {
+		u.Payload29 = &payload29
+		u.Type = PayloadUnionTypePayload29
 		return nil
 	}
 
-	var payload19 Payload19 = Payload19{}
-	if err := utils.UnmarshalJSON(data, &payload19, "", true, true); err == nil {
-		u.Payload19 = &payload19
-		u.Type = PayloadUnionTypePayload19
+	var payload30 Payload30 = Payload30{}
+	if err := utils.UnmarshalJSON(data, &payload30, "", true, nil); err == nil {
+		u.Payload30 = &payload30
+		u.Type = PayloadUnionTypePayload30
 		return nil
 	}
 
-	var payload75 Payload75 = Payload75{}
-	if err := utils.UnmarshalJSON(data, &payload75, "", true, true); err == nil {
-		u.Payload75 = &payload75
-		u.Type = PayloadUnionTypePayload75
+	var payload31 Payload31 = Payload31{}
+	if err := utils.UnmarshalJSON(data, &payload31, "", true, nil); err == nil {
+		u.Payload31 = &payload31
+		u.Type = PayloadUnionTypePayload31
 		return nil
 	}
 
-	var payload124 Payload124 = Payload124{}
-	if err := utils.UnmarshalJSON(data, &payload124, "", true, true); err == nil {
-		u.Payload124 = &payload124
-		u.Type = PayloadUnionTypePayload124
+	var payload32 Payload32 = Payload32{}
+	if err := utils.UnmarshalJSON(data, &payload32, "", true, nil); err == nil {
+		u.Payload32 = &payload32
+		u.Type = PayloadUnionTypePayload32
 		return nil
 	}
 
-	var payload138 Payload138 = Payload138{}
-	if err := utils.UnmarshalJSON(data, &payload138, "", true, true); err == nil {
-		u.Payload138 = &payload138
-		u.Type = PayloadUnionTypePayload138
+	var payload39 Payload39 = Payload39{}
+	if err := utils.UnmarshalJSON(data, &payload39, "", true, nil); err == nil {
+		u.Payload39 = &payload39
+		u.Type = PayloadUnionTypePayload39
 		return nil
 	}
 
-	var payload95 Payload95 = Payload95{}
-	if err := utils.UnmarshalJSON(data, &payload95, "", true, true); err == nil {
-		u.Payload95 = &payload95
-		u.Type = PayloadUnionTypePayload95
+	var payload48 Payload48 = Payload48{}
+	if err := utils.UnmarshalJSON(data, &payload48, "", true, nil); err == nil {
+		u.Payload48 = &payload48
+		u.Type = PayloadUnionTypePayload48
 		return nil
 	}
 
-	var payload143 Payload143 = Payload143{}
-	if err := utils.UnmarshalJSON(data, &payload143, "", true, true); err == nil {
-		u.Payload143 = &payload143
-		u.Type = PayloadUnionTypePayload143
+	var payload49 Payload49 = Payload49{}
+	if err := utils.UnmarshalJSON(data, &payload49, "", true, nil); err == nil {
+		u.Payload49 = &payload49
+		u.Type = PayloadUnionTypePayload49
 		return nil
 	}
 
-	var payload33 Payload33 = Payload33{}
-	if err := utils.UnmarshalJSON(data, &payload33, "", true, true); err == nil {
-		u.Payload33 = &payload33
-		u.Type = PayloadUnionTypePayload33
+	var payload50 Payload50 = Payload50{}
+	if err := utils.UnmarshalJSON(data, &payload50, "", true, nil); err == nil {
+		u.Payload50 = &payload50
+		u.Type = PayloadUnionTypePayload50
 		return nil
 	}
 
-	var payload149 Payload149 = Payload149{}
-	if err := utils.UnmarshalJSON(data, &payload149, "", true, true); err == nil {
-		u.Payload149 = &payload149
-		u.Type = PayloadUnionTypePayload149
+	var payload53 Payload53 = Payload53{}
+	if err := utils.UnmarshalJSON(data, &payload53, "", true, nil); err == nil {
+		u.Payload53 = &payload53
+		u.Type = PayloadUnionTypePayload53
 		return nil
 	}
 
-	var payload86 Payload86 = Payload86{}
-	if err := utils.UnmarshalJSON(data, &payload86, "", true, true); err == nil {
-		u.Payload86 = &payload86
-		u.Type = PayloadUnionTypePayload86
+	var payload59 Payload59 = Payload59{}
+	if err := utils.UnmarshalJSON(data, &payload59, "", true, nil); err == nil {
+		u.Payload59 = &payload59
+		u.Type = PayloadUnionTypePayload59
 		return nil
 	}
 
-	var payload71 Payload71 = Payload71{}
-	if err := utils.UnmarshalJSON(data, &payload71, "", true, true); err == nil {
-		u.Payload71 = &payload71
-		u.Type = PayloadUnionTypePayload71
+	var payload60 Payload60 = Payload60{}
+	if err := utils.UnmarshalJSON(data, &payload60, "", true, nil); err == nil {
+		u.Payload60 = &payload60
+		u.Type = PayloadUnionTypePayload60
 		return nil
 	}
 
-	var payload26 Payload26 = Payload26{}
-	if err := utils.UnmarshalJSON(data, &payload26, "", true, true); err == nil {
-		u.Payload26 = &payload26
-		u.Type = PayloadUnionTypePayload26
-		return nil
-	}
-
-	var payload4 Payload4 = Payload4{}
-	if err := utils.UnmarshalJSON(data, &payload4, "", true, true); err == nil {
-		u.Payload4 = &payload4
-		u.Type = PayloadUnionTypePayload4
-		return nil
-	}
-
-	var payload107 Payload107 = Payload107{}
-	if err := utils.UnmarshalJSON(data, &payload107, "", true, true); err == nil {
-		u.Payload107 = &payload107
-		u.Type = PayloadUnionTypePayload107
-		return nil
-	}
-
-	var payload154 Payload154 = Payload154{}
-	if err := utils.UnmarshalJSON(data, &payload154, "", true, true); err == nil {
-		u.Payload154 = &payload154
-		u.Type = PayloadUnionTypePayload154
-		return nil
-	}
-
-	var payload25 Payload25 = Payload25{}
-	if err := utils.UnmarshalJSON(data, &payload25, "", true, true); err == nil {
-		u.Payload25 = &payload25
-		u.Type = PayloadUnionTypePayload25
-		return nil
-	}
-
-	var payload120 Payload120 = Payload120{}
-	if err := utils.UnmarshalJSON(data, &payload120, "", true, true); err == nil {
-		u.Payload120 = &payload120
-		u.Type = PayloadUnionTypePayload120
-		return nil
-	}
-
-	var payload14 Payload14 = Payload14{}
-	if err := utils.UnmarshalJSON(data, &payload14, "", true, true); err == nil {
-		u.Payload14 = &payload14
-		u.Type = PayloadUnionTypePayload14
-		return nil
-	}
-
-	var payload36 Payload36 = Payload36{}
-	if err := utils.UnmarshalJSON(data, &payload36, "", true, true); err == nil {
-		u.Payload36 = &payload36
-		u.Type = PayloadUnionTypePayload36
-		return nil
-	}
-
-	var payload146 Payload146 = Payload146{}
-	if err := utils.UnmarshalJSON(data, &payload146, "", true, true); err == nil {
-		u.Payload146 = &payload146
-		u.Type = PayloadUnionTypePayload146
-		return nil
-	}
-
-	var payload98 Payload98 = Payload98{}
-	if err := utils.UnmarshalJSON(data, &payload98, "", true, true); err == nil {
-		u.Payload98 = &payload98
-		u.Type = PayloadUnionTypePayload98
-		return nil
-	}
-
-	var payload97 Payload97 = Payload97{}
-	if err := utils.UnmarshalJSON(data, &payload97, "", true, true); err == nil {
-		u.Payload97 = &payload97
-		u.Type = PayloadUnionTypePayload97
-		return nil
-	}
-
-	var payload152 Payload152 = Payload152{}
-	if err := utils.UnmarshalJSON(data, &payload152, "", true, true); err == nil {
-		u.Payload152 = &payload152
-		u.Type = PayloadUnionTypePayload152
-		return nil
-	}
-
-	var payload94 Payload94 = Payload94{}
-	if err := utils.UnmarshalJSON(data, &payload94, "", true, true); err == nil {
-		u.Payload94 = &payload94
-		u.Type = PayloadUnionTypePayload94
-		return nil
-	}
-
-	var payload23 Payload23 = Payload23{}
-	if err := utils.UnmarshalJSON(data, &payload23, "", true, true); err == nil {
-		u.Payload23 = &payload23
-		u.Type = PayloadUnionTypePayload23
-		return nil
-	}
-
-	var payload93 Payload93 = Payload93{}
-	if err := utils.UnmarshalJSON(data, &payload93, "", true, true); err == nil {
-		u.Payload93 = &payload93
-		u.Type = PayloadUnionTypePayload93
-		return nil
-	}
-
-	var payload44 Payload44 = Payload44{}
-	if err := utils.UnmarshalJSON(data, &payload44, "", true, true); err == nil {
-		u.Payload44 = &payload44
-		u.Type = PayloadUnionTypePayload44
-		return nil
-	}
-
-	var payload90 Payload90 = Payload90{}
-	if err := utils.UnmarshalJSON(data, &payload90, "", true, true); err == nil {
-		u.Payload90 = &payload90
-		u.Type = PayloadUnionTypePayload90
-		return nil
-	}
-
-	var payload89 Payload89 = Payload89{}
-	if err := utils.UnmarshalJSON(data, &payload89, "", true, true); err == nil {
-		u.Payload89 = &payload89
-		u.Type = PayloadUnionTypePayload89
-		return nil
-	}
-
-	var payload47 Payload47 = Payload47{}
-	if err := utils.UnmarshalJSON(data, &payload47, "", true, true); err == nil {
-		u.Payload47 = &payload47
-		u.Type = PayloadUnionTypePayload47
-		return nil
-	}
-
-	var payload151 Payload151 = Payload151{}
-	if err := utils.UnmarshalJSON(data, &payload151, "", true, true); err == nil {
-		u.Payload151 = &payload151
-		u.Type = PayloadUnionTypePayload151
-		return nil
-	}
-
-	var payload87 Payload87 = Payload87{}
-	if err := utils.UnmarshalJSON(data, &payload87, "", true, true); err == nil {
-		u.Payload87 = &payload87
-		u.Type = PayloadUnionTypePayload87
-		return nil
-	}
-
-	var payload114 Payload114 = Payload114{}
-	if err := utils.UnmarshalJSON(data, &payload114, "", true, true); err == nil {
-		u.Payload114 = &payload114
-		u.Type = PayloadUnionTypePayload114
-		return nil
-	}
-
-	var payload51 Payload51 = Payload51{}
-	if err := utils.UnmarshalJSON(data, &payload51, "", true, true); err == nil {
-		u.Payload51 = &payload51
-		u.Type = PayloadUnionTypePayload51
-		return nil
-	}
-
-	var payload85 Payload85 = Payload85{}
-	if err := utils.UnmarshalJSON(data, &payload85, "", true, true); err == nil {
-		u.Payload85 = &payload85
-		u.Type = PayloadUnionTypePayload85
-		return nil
-	}
-
-	var payload121 Payload121 = Payload121{}
-	if err := utils.UnmarshalJSON(data, &payload121, "", true, true); err == nil {
-		u.Payload121 = &payload121
-		u.Type = PayloadUnionTypePayload121
-		return nil
-	}
-
-	var payload54 Payload54 = Payload54{}
-	if err := utils.UnmarshalJSON(data, &payload54, "", true, true); err == nil {
-		u.Payload54 = &payload54
-		u.Type = PayloadUnionTypePayload54
-		return nil
-	}
-
-	var payload80 Payload80 = Payload80{}
-	if err := utils.UnmarshalJSON(data, &payload80, "", true, true); err == nil {
-		u.Payload80 = &payload80
-		u.Type = PayloadUnionTypePayload80
-		return nil
-	}
-
-	var payload17 Payload17 = Payload17{}
-	if err := utils.UnmarshalJSON(data, &payload17, "", true, true); err == nil {
-		u.Payload17 = &payload17
-		u.Type = PayloadUnionTypePayload17
-		return nil
-	}
-
-	var payload18 Payload18 = Payload18{}
-	if err := utils.UnmarshalJSON(data, &payload18, "", true, true); err == nil {
-		u.Payload18 = &payload18
-		u.Type = PayloadUnionTypePayload18
-		return nil
-	}
-
-	var payload77 Payload77 = Payload77{}
-	if err := utils.UnmarshalJSON(data, &payload77, "", true, true); err == nil {
-		u.Payload77 = &payload77
-		u.Type = PayloadUnionTypePayload77
-		return nil
-	}
-
-	var payload123 Payload123 = Payload123{}
-	if err := utils.UnmarshalJSON(data, &payload123, "", true, true); err == nil {
-		u.Payload123 = &payload123
-		u.Type = PayloadUnionTypePayload123
-		return nil
-	}
-
-	var payload137 Payload137 = Payload137{}
-	if err := utils.UnmarshalJSON(data, &payload137, "", true, true); err == nil {
-		u.Payload137 = &payload137
-		u.Type = PayloadUnionTypePayload137
-		return nil
-	}
-
-	var payload150 Payload150 = Payload150{}
-	if err := utils.UnmarshalJSON(data, &payload150, "", true, true); err == nil {
-		u.Payload150 = &payload150
-		u.Type = PayloadUnionTypePayload150
-		return nil
-	}
-
-	var payload136 Payload136 = Payload136{}
-	if err := utils.UnmarshalJSON(data, &payload136, "", true, true); err == nil {
-		u.Payload136 = &payload136
-		u.Type = PayloadUnionTypePayload136
-		return nil
-	}
-
-	var payload73 Payload73 = Payload73{}
-	if err := utils.UnmarshalJSON(data, &payload73, "", true, true); err == nil {
-		u.Payload73 = &payload73
-		u.Type = PayloadUnionTypePayload73
-		return nil
-	}
-
-	var payload135 Payload135 = Payload135{}
-	if err := utils.UnmarshalJSON(data, &payload135, "", true, true); err == nil {
-		u.Payload135 = &payload135
-		u.Type = PayloadUnionTypePayload135
-		return nil
-	}
-
-	var payload65 Payload65 = Payload65{}
-	if err := utils.UnmarshalJSON(data, &payload65, "", true, true); err == nil {
-		u.Payload65 = &payload65
-		u.Type = PayloadUnionTypePayload65
-		return nil
-	}
-
-	var payload72 Payload72 = Payload72{}
-	if err := utils.UnmarshalJSON(data, &payload72, "", true, true); err == nil {
-		u.Payload72 = &payload72
-		u.Type = PayloadUnionTypePayload72
-		return nil
-	}
-
-	var payload127 Payload127 = Payload127{}
-	if err := utils.UnmarshalJSON(data, &payload127, "", true, true); err == nil {
-		u.Payload127 = &payload127
-		u.Type = PayloadUnionTypePayload127
-		return nil
-	}
-
-	var payload126 Payload126 = Payload126{}
-	if err := utils.UnmarshalJSON(data, &payload126, "", true, true); err == nil {
-		u.Payload126 = &payload126
-		u.Type = PayloadUnionTypePayload126
-		return nil
-	}
-
-	var payload27 Payload27 = Payload27{}
-	if err := utils.UnmarshalJSON(data, &payload27, "", true, true); err == nil {
-		u.Payload27 = &payload27
-		u.Type = PayloadUnionTypePayload27
-		return nil
-	}
-
-	var payload125 Payload125 = Payload125{}
-	if err := utils.UnmarshalJSON(data, &payload125, "", true, true); err == nil {
-		u.Payload125 = &payload125
-		u.Type = PayloadUnionTypePayload125
-		return nil
-	}
-
-	var payload91 Payload91 = Payload91{}
-	if err := utils.UnmarshalJSON(data, &payload91, "", true, true); err == nil {
-		u.Payload91 = &payload91
-		u.Type = PayloadUnionTypePayload91
-		return nil
-	}
-
-	var payload132 Payload132 = Payload132{}
-	if err := utils.UnmarshalJSON(data, &payload132, "", true, true); err == nil {
-		u.Payload132 = &payload132
-		u.Type = PayloadUnionTypePayload132
+	var payload61 Payload61 = Payload61{}
+	if err := utils.UnmarshalJSON(data, &payload61, "", true, nil); err == nil {
+		u.Payload61 = &payload61
+		u.Type = PayloadUnionTypePayload61
 		return nil
 	}
 
 	var payload63 Payload63 = Payload63{}
-	if err := utils.UnmarshalJSON(data, &payload63, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload63, "", true, nil); err == nil {
 		u.Payload63 = &payload63
 		u.Type = PayloadUnionTypePayload63
 		return nil
 	}
 
 	var payload74 Payload74 = Payload74{}
-	if err := utils.UnmarshalJSON(data, &payload74, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload74, "", true, nil); err == nil {
 		u.Payload74 = &payload74
 		u.Type = PayloadUnionTypePayload74
 		return nil
 	}
 
-	var payload61 Payload61 = Payload61{}
-	if err := utils.UnmarshalJSON(data, &payload61, "", true, true); err == nil {
-		u.Payload61 = &payload61
-		u.Type = PayloadUnionTypePayload61
-		return nil
-	}
-
-	var payload59 Payload59 = Payload59{}
-	if err := utils.UnmarshalJSON(data, &payload59, "", true, true); err == nil {
-		u.Payload59 = &payload59
-		u.Type = PayloadUnionTypePayload59
-		return nil
-	}
-
-	var payload22 Payload22 = Payload22{}
-	if err := utils.UnmarshalJSON(data, &payload22, "", true, true); err == nil {
-		u.Payload22 = &payload22
-		u.Type = PayloadUnionTypePayload22
-		return nil
-	}
-
-	var payload57 Payload57 = Payload57{}
-	if err := utils.UnmarshalJSON(data, &payload57, "", true, true); err == nil {
-		u.Payload57 = &payload57
-		u.Type = PayloadUnionTypePayload57
-		return nil
-	}
-
-	var payload139 Payload139 = Payload139{}
-	if err := utils.UnmarshalJSON(data, &payload139, "", true, true); err == nil {
-		u.Payload139 = &payload139
-		u.Type = PayloadUnionTypePayload139
-		return nil
-	}
-
-	var payload140 Payload140 = Payload140{}
-	if err := utils.UnmarshalJSON(data, &payload140, "", true, true); err == nil {
-		u.Payload140 = &payload140
-		u.Type = PayloadUnionTypePayload140
+	var payload78 Payload78 = Payload78{}
+	if err := utils.UnmarshalJSON(data, &payload78, "", true, nil); err == nil {
+		u.Payload78 = &payload78
+		u.Type = PayloadUnionTypePayload78
 		return nil
 	}
 
 	var payload81 Payload81 = Payload81{}
-	if err := utils.UnmarshalJSON(data, &payload81, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload81, "", true, nil); err == nil {
 		u.Payload81 = &payload81
 		u.Type = PayloadUnionTypePayload81
 		return nil
 	}
 
 	var payload82 Payload82 = Payload82{}
-	if err := utils.UnmarshalJSON(data, &payload82, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload82, "", true, nil); err == nil {
 		u.Payload82 = &payload82
 		u.Type = PayloadUnionTypePayload82
 		return nil
 	}
 
-	var payload53 Payload53 = Payload53{}
-	if err := utils.UnmarshalJSON(data, &payload53, "", true, true); err == nil {
-		u.Payload53 = &payload53
-		u.Type = PayloadUnionTypePayload53
-		return nil
-	}
-
-	var payload84 Payload84 = Payload84{}
-	if err := utils.UnmarshalJSON(data, &payload84, "", true, true); err == nil {
-		u.Payload84 = &payload84
-		u.Type = PayloadUnionTypePayload84
-		return nil
-	}
-
-	var payload52 Payload52 = Payload52{}
-	if err := utils.UnmarshalJSON(data, &payload52, "", true, true); err == nil {
-		u.Payload52 = &payload52
-		u.Type = PayloadUnionTypePayload52
-		return nil
-	}
-
-	var payload50 Payload50 = Payload50{}
-	if err := utils.UnmarshalJSON(data, &payload50, "", true, true); err == nil {
-		u.Payload50 = &payload50
-		u.Type = PayloadUnionTypePayload50
-		return nil
-	}
-
-	var payload49 Payload49 = Payload49{}
-	if err := utils.UnmarshalJSON(data, &payload49, "", true, true); err == nil {
-		u.Payload49 = &payload49
-		u.Type = PayloadUnionTypePayload49
-		return nil
-	}
-
-	var payload48 Payload48 = Payload48{}
-	if err := utils.UnmarshalJSON(data, &payload48, "", true, true); err == nil {
-		u.Payload48 = &payload48
-		u.Type = PayloadUnionTypePayload48
-		return nil
-	}
-
-	var payload46 Payload46 = Payload46{}
-	if err := utils.UnmarshalJSON(data, &payload46, "", true, true); err == nil {
-		u.Payload46 = &payload46
-		u.Type = PayloadUnionTypePayload46
-		return nil
-	}
-
-	var payload142 Payload142 = Payload142{}
-	if err := utils.UnmarshalJSON(data, &payload142, "", true, true); err == nil {
-		u.Payload142 = &payload142
-		u.Type = PayloadUnionTypePayload142
-		return nil
-	}
-
-	var payload21 Payload21 = Payload21{}
-	if err := utils.UnmarshalJSON(data, &payload21, "", true, true); err == nil {
-		u.Payload21 = &payload21
-		u.Type = PayloadUnionTypePayload21
-		return nil
-	}
-
 	var payload92 Payload92 = Payload92{}
-	if err := utils.UnmarshalJSON(data, &payload92, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload92, "", true, nil); err == nil {
 		u.Payload92 = &payload92
 		u.Type = PayloadUnionTypePayload92
 		return nil
 	}
 
-	var payload43 Payload43 = Payload43{}
-	if err := utils.UnmarshalJSON(data, &payload43, "", true, true); err == nil {
-		u.Payload43 = &payload43
-		u.Type = PayloadUnionTypePayload43
-		return nil
-	}
-
-	var payload24 Payload24 = Payload24{}
-	if err := utils.UnmarshalJSON(data, &payload24, "", true, true); err == nil {
-		u.Payload24 = &payload24
-		u.Type = PayloadUnionTypePayload24
-		return nil
-	}
-
-	var payload144 Payload144 = Payload144{}
-	if err := utils.UnmarshalJSON(data, &payload144, "", true, true); err == nil {
-		u.Payload144 = &payload144
-		u.Type = PayloadUnionTypePayload144
-		return nil
-	}
-
-	var payload96 Payload96 = Payload96{}
-	if err := utils.UnmarshalJSON(data, &payload96, "", true, true); err == nil {
-		u.Payload96 = &payload96
-		u.Type = PayloadUnionTypePayload96
-		return nil
-	}
-
-	var payload39 Payload39 = Payload39{}
-	if err := utils.UnmarshalJSON(data, &payload39, "", true, true); err == nil {
-		u.Payload39 = &payload39
-		u.Type = PayloadUnionTypePayload39
-		return nil
-	}
-
-	var payload38 Payload38 = Payload38{}
-	if err := utils.UnmarshalJSON(data, &payload38, "", true, true); err == nil {
-		u.Payload38 = &payload38
-		u.Type = PayloadUnionTypePayload38
-		return nil
-	}
-
-	var payload99 Payload99 = Payload99{}
-	if err := utils.UnmarshalJSON(data, &payload99, "", true, true); err == nil {
-		u.Payload99 = &payload99
-		u.Type = PayloadUnionTypePayload99
-		return nil
-	}
-
-	var payload35 Payload35 = Payload35{}
-	if err := utils.UnmarshalJSON(data, &payload35, "", true, true); err == nil {
-		u.Payload35 = &payload35
-		u.Type = PayloadUnionTypePayload35
-		return nil
-	}
-
-	var payload34 Payload34 = Payload34{}
-	if err := utils.UnmarshalJSON(data, &payload34, "", true, true); err == nil {
-		u.Payload34 = &payload34
-		u.Type = PayloadUnionTypePayload34
-		return nil
-	}
-
-	var payload13 Payload13 = Payload13{}
-	if err := utils.UnmarshalJSON(data, &payload13, "", true, true); err == nil {
-		u.Payload13 = &payload13
-		u.Type = PayloadUnionTypePayload13
-		return nil
-	}
-
-	var payload12 Payload12 = Payload12{}
-	if err := utils.UnmarshalJSON(data, &payload12, "", true, true); err == nil {
-		u.Payload12 = &payload12
-		u.Type = PayloadUnionTypePayload12
-		return nil
-	}
-
-	var payload10 Payload10 = Payload10{}
-	if err := utils.UnmarshalJSON(data, &payload10, "", true, true); err == nil {
-		u.Payload10 = &payload10
-		u.Type = PayloadUnionTypePayload10
-		return nil
-	}
-
-	var payload8 Payload8 = Payload8{}
-	if err := utils.UnmarshalJSON(data, &payload8, "", true, true); err == nil {
-		u.Payload8 = &payload8
-		u.Type = PayloadUnionTypePayload8
-		return nil
-	}
-
-	var payload32 Payload32 = Payload32{}
-	if err := utils.UnmarshalJSON(data, &payload32, "", true, true); err == nil {
-		u.Payload32 = &payload32
-		u.Type = PayloadUnionTypePayload32
-		return nil
-	}
-
-	var payload31 Payload31 = Payload31{}
-	if err := utils.UnmarshalJSON(data, &payload31, "", true, true); err == nil {
-		u.Payload31 = &payload31
-		u.Type = PayloadUnionTypePayload31
-		return nil
-	}
-
-	var payload155 Payload155 = Payload155{}
-	if err := utils.UnmarshalJSON(data, &payload155, "", true, true); err == nil {
-		u.Payload155 = &payload155
-		u.Type = PayloadUnionTypePayload155
-		return nil
-	}
-
-	var payload5 Payload5 = Payload5{}
-	if err := utils.UnmarshalJSON(data, &payload5, "", true, true); err == nil {
-		u.Payload5 = &payload5
-		u.Type = PayloadUnionTypePayload5
-		return nil
-	}
-
-	var payload147 Payload147 = Payload147{}
-	if err := utils.UnmarshalJSON(data, &payload147, "", true, true); err == nil {
-		u.Payload147 = &payload147
-		u.Type = PayloadUnionTypePayload147
-		return nil
-	}
-
-	var payload156 Payload156 = Payload156{}
-	if err := utils.UnmarshalJSON(data, &payload156, "", true, true); err == nil {
-		u.Payload156 = &payload156
-		u.Type = PayloadUnionTypePayload156
-		return nil
-	}
-
-	var payload112 Payload112 = Payload112{}
-	if err := utils.UnmarshalJSON(data, &payload112, "", true, true); err == nil {
-		u.Payload112 = &payload112
-		u.Type = PayloadUnionTypePayload112
-		return nil
-	}
-
-	var payload115 Payload115 = Payload115{}
-	if err := utils.UnmarshalJSON(data, &payload115, "", true, true); err == nil {
-		u.Payload115 = &payload115
-		u.Type = PayloadUnionTypePayload115
-		return nil
-	}
-
-	var payload78 Payload78 = Payload78{}
-	if err := utils.UnmarshalJSON(data, &payload78, "", true, true); err == nil {
-		u.Payload78 = &payload78
-		u.Type = PayloadUnionTypePayload78
-		return nil
-	}
-
-	var payload148 Payload148 = Payload148{}
-	if err := utils.UnmarshalJSON(data, &payload148, "", true, true); err == nil {
-		u.Payload148 = &payload148
-		u.Type = PayloadUnionTypePayload148
-		return nil
-	}
-
-	var payload157 Payload157 = Payload157{}
-	if err := utils.UnmarshalJSON(data, &payload157, "", true, true); err == nil {
-		u.Payload157 = &payload157
-		u.Type = PayloadUnionTypePayload157
-		return nil
-	}
-
-	var payload2 Payload2 = Payload2{}
-	if err := utils.UnmarshalJSON(data, &payload2, "", true, true); err == nil {
-		u.Payload2 = &payload2
-		u.Type = PayloadUnionTypePayload2
-		return nil
-	}
-
 	var payload109 Payload109 = Payload109{}
-	if err := utils.UnmarshalJSON(data, &payload109, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload109, "", true, nil); err == nil {
 		u.Payload109 = &payload109
 		u.Type = PayloadUnionTypePayload109
 		return nil
 	}
 
-	var payload6 Payload6 = Payload6{}
-	if err := utils.UnmarshalJSON(data, &payload6, "", true, true); err == nil {
-		u.Payload6 = &payload6
-		u.Type = PayloadUnionTypePayload6
-		return nil
-	}
-
-	var payload101 Payload101 = Payload101{}
-	if err := utils.UnmarshalJSON(data, &payload101, "", true, true); err == nil {
-		u.Payload101 = &payload101
-		u.Type = PayloadUnionTypePayload101
-		return nil
-	}
-
-	var payload11 Payload11 = Payload11{}
-	if err := utils.UnmarshalJSON(data, &payload11, "", true, true); err == nil {
-		u.Payload11 = &payload11
-		u.Type = PayloadUnionTypePayload11
-		return nil
-	}
-
-	var payload79 Payload79 = Payload79{}
-	if err := utils.UnmarshalJSON(data, &payload79, "", true, true); err == nil {
-		u.Payload79 = &payload79
-		u.Type = PayloadUnionTypePayload79
-		return nil
-	}
-
-	var payload15 Payload15 = Payload15{}
-	if err := utils.UnmarshalJSON(data, &payload15, "", true, true); err == nil {
-		u.Payload15 = &payload15
-		u.Type = PayloadUnionTypePayload15
-		return nil
-	}
-
-	var payload16 Payload16 = Payload16{}
-	if err := utils.UnmarshalJSON(data, &payload16, "", true, true); err == nil {
-		u.Payload16 = &payload16
-		u.Type = PayloadUnionTypePayload16
-		return nil
-	}
-
-	var payload20 Payload20 = Payload20{}
-	if err := utils.UnmarshalJSON(data, &payload20, "", true, true); err == nil {
-		u.Payload20 = &payload20
-		u.Type = PayloadUnionTypePayload20
-		return nil
-	}
-
-	var payload29 Payload29 = Payload29{}
-	if err := utils.UnmarshalJSON(data, &payload29, "", true, true); err == nil {
-		u.Payload29 = &payload29
-		u.Type = PayloadUnionTypePayload29
-		return nil
-	}
-
-	var payload45 Payload45 = Payload45{}
-	if err := utils.UnmarshalJSON(data, &payload45, "", true, true); err == nil {
-		u.Payload45 = &payload45
-		u.Type = PayloadUnionTypePayload45
-		return nil
-	}
-
-	var payload141 Payload141 = Payload141{}
-	if err := utils.UnmarshalJSON(data, &payload141, "", true, true); err == nil {
-		u.Payload141 = &payload141
-		u.Type = PayloadUnionTypePayload141
-		return nil
-	}
-
-	var payload60 Payload60 = Payload60{}
-	if err := utils.UnmarshalJSON(data, &payload60, "", true, true); err == nil {
-		u.Payload60 = &payload60
-		u.Type = PayloadUnionTypePayload60
-		return nil
-	}
-
-	var payload134 Payload134 = Payload134{}
-	if err := utils.UnmarshalJSON(data, &payload134, "", true, true); err == nil {
-		u.Payload134 = &payload134
-		u.Type = PayloadUnionTypePayload134
-		return nil
-	}
-
 	var payload133 Payload133 = Payload133{}
-	if err := utils.UnmarshalJSON(data, &payload133, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload133, "", true, nil); err == nil {
 		u.Payload133 = &payload133
 		u.Type = PayloadUnionTypePayload133
 		return nil
 	}
 
-	var payload41 Payload41 = Payload41{}
-	if err := utils.UnmarshalJSON(data, &payload41, "", true, true); err == nil {
-		u.Payload41 = &payload41
-		u.Type = PayloadUnionTypePayload41
+	var payload134 Payload134 = Payload134{}
+	if err := utils.UnmarshalJSON(data, &payload134, "", true, nil); err == nil {
+		u.Payload134 = &payload134
+		u.Type = PayloadUnionTypePayload134
 		return nil
 	}
 
-	var payload83 Payload83 = Payload83{}
-	if err := utils.UnmarshalJSON(data, &payload83, "", true, true); err == nil {
-		u.Payload83 = &payload83
-		u.Type = PayloadUnionTypePayload83
+	var payload141 Payload141 = Payload141{}
+	if err := utils.UnmarshalJSON(data, &payload141, "", true, nil); err == nil {
+		u.Payload141 = &payload141
+		u.Type = PayloadUnionTypePayload141
 		return nil
 	}
 
-	var payload68 Payload68 = Payload68{}
-	if err := utils.UnmarshalJSON(data, &payload68, "", true, true); err == nil {
-		u.Payload68 = &payload68
-		u.Type = PayloadUnionTypePayload68
-		return nil
-	}
-
-	var payload113 Payload113 = Payload113{}
-	if err := utils.UnmarshalJSON(data, &payload113, "", true, true); err == nil {
-		u.Payload113 = &payload113
-		u.Type = PayloadUnionTypePayload113
-		return nil
-	}
-
-	var payload62 Payload62 = Payload62{}
-	if err := utils.UnmarshalJSON(data, &payload62, "", true, true); err == nil {
-		u.Payload62 = &payload62
-		u.Type = PayloadUnionTypePayload62
-		return nil
-	}
-
-	var payload30 Payload30 = Payload30{}
-	if err := utils.UnmarshalJSON(data, &payload30, "", true, true); err == nil {
-		u.Payload30 = &payload30
-		u.Type = PayloadUnionTypePayload30
-		return nil
-	}
-
-	var payload58 Payload58 = Payload58{}
-	if err := utils.UnmarshalJSON(data, &payload58, "", true, true); err == nil {
-		u.Payload58 = &payload58
-		u.Type = PayloadUnionTypePayload58
+	var payload143 Payload143 = Payload143{}
+	if err := utils.UnmarshalJSON(data, &payload143, "", true, nil); err == nil {
+		u.Payload143 = &payload143
+		u.Type = PayloadUnionTypePayload143
 		return nil
 	}
 
 	var payload145 Payload145 = Payload145{}
-	if err := utils.UnmarshalJSON(data, &payload145, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload145, "", true, nil); err == nil {
 		u.Payload145 = &payload145
 		u.Type = PayloadUnionTypePayload145
 		return nil
 	}
 
-	var payload40 Payload40 = Payload40{}
-	if err := utils.UnmarshalJSON(data, &payload40, "", true, true); err == nil {
-		u.Payload40 = &payload40
-		u.Type = PayloadUnionTypePayload40
-		return nil
-	}
-
-	var payload131 Payload131 = Payload131{}
-	if err := utils.UnmarshalJSON(data, &payload131, "", true, true); err == nil {
-		u.Payload131 = &payload131
-		u.Type = PayloadUnionTypePayload131
-		return nil
-	}
-
-	var payload67 Payload67 = Payload67{}
-	if err := utils.UnmarshalJSON(data, &payload67, "", true, true); err == nil {
-		u.Payload67 = &payload67
-		u.Type = PayloadUnionTypePayload67
+	var payload148 Payload148 = Payload148{}
+	if err := utils.UnmarshalJSON(data, &payload148, "", true, nil); err == nil {
+		u.Payload148 = &payload148
+		u.Type = PayloadUnionTypePayload148
 		return nil
 	}
 
 	var payload158 Payload158 = Payload158{}
-	if err := utils.UnmarshalJSON(data, &payload158, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload158, "", true, nil); err == nil {
 		u.Payload158 = &payload158
 		u.Type = PayloadUnionTypePayload158
 		return nil
 	}
 
-	var payload111 Payload111 = Payload111{}
-	if err := utils.UnmarshalJSON(data, &payload111, "", true, true); err == nil {
-		u.Payload111 = &payload111
-		u.Type = PayloadUnionTypePayload111
+	var payload159 Payload159 = Payload159{}
+	if err := utils.UnmarshalJSON(data, &payload159, "", true, nil); err == nil {
+		u.Payload159 = &payload159
+		u.Type = PayloadUnionTypePayload159
+		return nil
+	}
+
+	var payload160 Payload160 = Payload160{}
+	if err := utils.UnmarshalJSON(data, &payload160, "", true, nil); err == nil {
+		u.Payload160 = &payload160
+		u.Type = PayloadUnionTypePayload160
+		return nil
+	}
+
+	var payload4 Payload4 = Payload4{}
+	if err := utils.UnmarshalJSON(data, &payload4, "", true, nil); err == nil {
+		u.Payload4 = &payload4
+		u.Type = PayloadUnionTypePayload4
+		return nil
+	}
+
+	var payload5 Payload5 = Payload5{}
+	if err := utils.UnmarshalJSON(data, &payload5, "", true, nil); err == nil {
+		u.Payload5 = &payload5
+		u.Type = PayloadUnionTypePayload5
+		return nil
+	}
+
+	var payload6 Payload6 = Payload6{}
+	if err := utils.UnmarshalJSON(data, &payload6, "", true, nil); err == nil {
+		u.Payload6 = &payload6
+		u.Type = PayloadUnionTypePayload6
+		return nil
+	}
+
+	var payload17 Payload17 = Payload17{}
+	if err := utils.UnmarshalJSON(data, &payload17, "", true, nil); err == nil {
+		u.Payload17 = &payload17
+		u.Type = PayloadUnionTypePayload17
+		return nil
+	}
+
+	var payload18 Payload18 = Payload18{}
+	if err := utils.UnmarshalJSON(data, &payload18, "", true, nil); err == nil {
+		u.Payload18 = &payload18
+		u.Type = PayloadUnionTypePayload18
+		return nil
+	}
+
+	var payload23 Payload23 = Payload23{}
+	if err := utils.UnmarshalJSON(data, &payload23, "", true, nil); err == nil {
+		u.Payload23 = &payload23
+		u.Type = PayloadUnionTypePayload23
+		return nil
+	}
+
+	var payload27 Payload27 = Payload27{}
+	if err := utils.UnmarshalJSON(data, &payload27, "", true, nil); err == nil {
+		u.Payload27 = &payload27
+		u.Type = PayloadUnionTypePayload27
+		return nil
+	}
+
+	var payload34 Payload34 = Payload34{}
+	if err := utils.UnmarshalJSON(data, &payload34, "", true, nil); err == nil {
+		u.Payload34 = &payload34
+		u.Type = PayloadUnionTypePayload34
+		return nil
+	}
+
+	var payload35 Payload35 = Payload35{}
+	if err := utils.UnmarshalJSON(data, &payload35, "", true, nil); err == nil {
+		u.Payload35 = &payload35
+		u.Type = PayloadUnionTypePayload35
+		return nil
+	}
+
+	var payload36 Payload36 = Payload36{}
+	if err := utils.UnmarshalJSON(data, &payload36, "", true, nil); err == nil {
+		u.Payload36 = &payload36
+		u.Type = PayloadUnionTypePayload36
+		return nil
+	}
+
+	var payload43 Payload43 = Payload43{}
+	if err := utils.UnmarshalJSON(data, &payload43, "", true, nil); err == nil {
+		u.Payload43 = &payload43
+		u.Type = PayloadUnionTypePayload43
+		return nil
+	}
+
+	var payload44 Payload44 = Payload44{}
+	if err := utils.UnmarshalJSON(data, &payload44, "", true, nil); err == nil {
+		u.Payload44 = &payload44
+		u.Type = PayloadUnionTypePayload44
+		return nil
+	}
+
+	var payload47 Payload47 = Payload47{}
+	if err := utils.UnmarshalJSON(data, &payload47, "", true, nil); err == nil {
+		u.Payload47 = &payload47
+		u.Type = PayloadUnionTypePayload47
+		return nil
+	}
+
+	var payload54 Payload54 = Payload54{}
+	if err := utils.UnmarshalJSON(data, &payload54, "", true, nil); err == nil {
+		u.Payload54 = &payload54
+		u.Type = PayloadUnionTypePayload54
+		return nil
+	}
+
+	var payload62 Payload62 = Payload62{}
+	if err := utils.UnmarshalJSON(data, &payload62, "", true, nil); err == nil {
+		u.Payload62 = &payload62
+		u.Type = PayloadUnionTypePayload62
+		return nil
+	}
+
+	var payload65 Payload65 = Payload65{}
+	if err := utils.UnmarshalJSON(data, &payload65, "", true, nil); err == nil {
+		u.Payload65 = &payload65
+		u.Type = PayloadUnionTypePayload65
+		return nil
+	}
+
+	var payload77 Payload77 = Payload77{}
+	if err := utils.UnmarshalJSON(data, &payload77, "", true, nil); err == nil {
+		u.Payload77 = &payload77
+		u.Type = PayloadUnionTypePayload77
+		return nil
+	}
+
+	var payload85 Payload85 = Payload85{}
+	if err := utils.UnmarshalJSON(data, &payload85, "", true, nil); err == nil {
+		u.Payload85 = &payload85
+		u.Type = PayloadUnionTypePayload85
+		return nil
+	}
+
+	var payload86 Payload86 = Payload86{}
+	if err := utils.UnmarshalJSON(data, &payload86, "", true, nil); err == nil {
+		u.Payload86 = &payload86
+		u.Type = PayloadUnionTypePayload86
+		return nil
+	}
+
+	var payload87 Payload87 = Payload87{}
+	if err := utils.UnmarshalJSON(data, &payload87, "", true, nil); err == nil {
+		u.Payload87 = &payload87
+		u.Type = PayloadUnionTypePayload87
+		return nil
+	}
+
+	var payload89 Payload89 = Payload89{}
+	if err := utils.UnmarshalJSON(data, &payload89, "", true, nil); err == nil {
+		u.Payload89 = &payload89
+		u.Type = PayloadUnionTypePayload89
+		return nil
+	}
+
+	var payload90 Payload90 = Payload90{}
+	if err := utils.UnmarshalJSON(data, &payload90, "", true, nil); err == nil {
+		u.Payload90 = &payload90
+		u.Type = PayloadUnionTypePayload90
+		return nil
+	}
+
+	var payload91 Payload91 = Payload91{}
+	if err := utils.UnmarshalJSON(data, &payload91, "", true, nil); err == nil {
+		u.Payload91 = &payload91
+		u.Type = PayloadUnionTypePayload91
+		return nil
+	}
+
+	var payload93 Payload93 = Payload93{}
+	if err := utils.UnmarshalJSON(data, &payload93, "", true, nil); err == nil {
+		u.Payload93 = &payload93
+		u.Type = PayloadUnionTypePayload93
+		return nil
+	}
+
+	var payload94 Payload94 = Payload94{}
+	if err := utils.UnmarshalJSON(data, &payload94, "", true, nil); err == nil {
+		u.Payload94 = &payload94
+		u.Type = PayloadUnionTypePayload94
+		return nil
+	}
+
+	var payload97 Payload97 = Payload97{}
+	if err := utils.UnmarshalJSON(data, &payload97, "", true, nil); err == nil {
+		u.Payload97 = &payload97
+		u.Type = PayloadUnionTypePayload97
+		return nil
+	}
+
+	var payload98 Payload98 = Payload98{}
+	if err := utils.UnmarshalJSON(data, &payload98, "", true, nil); err == nil {
+		u.Payload98 = &payload98
+		u.Type = PayloadUnionTypePayload98
+		return nil
+	}
+
+	var payload99 Payload99 = Payload99{}
+	if err := utils.UnmarshalJSON(data, &payload99, "", true, nil); err == nil {
+		u.Payload99 = &payload99
+		u.Type = PayloadUnionTypePayload99
 		return nil
 	}
 
 	var payload105 Payload105 = Payload105{}
-	if err := utils.UnmarshalJSON(data, &payload105, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload105, "", true, nil); err == nil {
 		u.Payload105 = &payload105
 		u.Type = PayloadUnionTypePayload105
 		return nil
 	}
 
-	var payload130 Payload130 = Payload130{}
-	if err := utils.UnmarshalJSON(data, &payload130, "", true, true); err == nil {
-		u.Payload130 = &payload130
-		u.Type = PayloadUnionTypePayload130
+	var payload114 Payload114 = Payload114{}
+	if err := utils.UnmarshalJSON(data, &payload114, "", true, nil); err == nil {
+		u.Payload114 = &payload114
+		u.Type = PayloadUnionTypePayload114
 		return nil
 	}
 
-	var payload129 Payload129 = Payload129{}
-	if err := utils.UnmarshalJSON(data, &payload129, "", true, true); err == nil {
-		u.Payload129 = &payload129
-		u.Type = PayloadUnionTypePayload129
+	var payload115 Payload115 = Payload115{}
+	if err := utils.UnmarshalJSON(data, &payload115, "", true, nil); err == nil {
+		u.Payload115 = &payload115
+		u.Type = PayloadUnionTypePayload115
 		return nil
 	}
 
-	var payload64 Payload64 = Payload64{}
-	if err := utils.UnmarshalJSON(data, &payload64, "", true, true); err == nil {
-		u.Payload64 = &payload64
-		u.Type = PayloadUnionTypePayload64
+	var payload120 Payload120 = Payload120{}
+	if err := utils.UnmarshalJSON(data, &payload120, "", true, nil); err == nil {
+		u.Payload120 = &payload120
+		u.Type = PayloadUnionTypePayload120
 		return nil
 	}
 
-	var payload69 Payload69 = Payload69{}
-	if err := utils.UnmarshalJSON(data, &payload69, "", true, true); err == nil {
-		u.Payload69 = &payload69
-		u.Type = PayloadUnionTypePayload69
+	var payload121 Payload121 = Payload121{}
+	if err := utils.UnmarshalJSON(data, &payload121, "", true, nil); err == nil {
+		u.Payload121 = &payload121
+		u.Type = PayloadUnionTypePayload121
 		return nil
 	}
 
-	var payload76 Payload76 = Payload76{}
-	if err := utils.UnmarshalJSON(data, &payload76, "", true, true); err == nil {
-		u.Payload76 = &payload76
-		u.Type = PayloadUnionTypePayload76
+	var payload123 Payload123 = Payload123{}
+	if err := utils.UnmarshalJSON(data, &payload123, "", true, nil); err == nil {
+		u.Payload123 = &payload123
+		u.Type = PayloadUnionTypePayload123
 		return nil
 	}
 
-	var payload110 Payload110 = Payload110{}
-	if err := utils.UnmarshalJSON(data, &payload110, "", true, true); err == nil {
-		u.Payload110 = &payload110
-		u.Type = PayloadUnionTypePayload110
+	var payload132 Payload132 = Payload132{}
+	if err := utils.UnmarshalJSON(data, &payload132, "", true, nil); err == nil {
+		u.Payload132 = &payload132
+		u.Type = PayloadUnionTypePayload132
 		return nil
 	}
 
-	var payload66 Payload66 = Payload66{}
-	if err := utils.UnmarshalJSON(data, &payload66, "", true, true); err == nil {
-		u.Payload66 = &payload66
-		u.Type = PayloadUnionTypePayload66
+	var payload135 Payload135 = Payload135{}
+	if err := utils.UnmarshalJSON(data, &payload135, "", true, nil); err == nil {
+		u.Payload135 = &payload135
+		u.Type = PayloadUnionTypePayload135
 		return nil
 	}
 
-	var payload128 Payload128 = Payload128{}
-	if err := utils.UnmarshalJSON(data, &payload128, "", true, true); err == nil {
-		u.Payload128 = &payload128
-		u.Type = PayloadUnionTypePayload128
+	var payload136 Payload136 = Payload136{}
+	if err := utils.UnmarshalJSON(data, &payload136, "", true, nil); err == nil {
+		u.Payload136 = &payload136
+		u.Type = PayloadUnionTypePayload136
 		return nil
 	}
 
-	var payload55 Payload55 = Payload55{}
-	if err := utils.UnmarshalJSON(data, &payload55, "", true, true); err == nil {
-		u.Payload55 = &payload55
-		u.Type = PayloadUnionTypePayload55
+	var payload137 Payload137 = Payload137{}
+	if err := utils.UnmarshalJSON(data, &payload137, "", true, nil); err == nil {
+		u.Payload137 = &payload137
+		u.Type = PayloadUnionTypePayload137
+		return nil
+	}
+
+	var payload139 Payload139 = Payload139{}
+	if err := utils.UnmarshalJSON(data, &payload139, "", true, nil); err == nil {
+		u.Payload139 = &payload139
+		u.Type = PayloadUnionTypePayload139
+		return nil
+	}
+
+	var payload140 Payload140 = Payload140{}
+	if err := utils.UnmarshalJSON(data, &payload140, "", true, nil); err == nil {
+		u.Payload140 = &payload140
+		u.Type = PayloadUnionTypePayload140
+		return nil
+	}
+
+	var payload146 Payload146 = Payload146{}
+	if err := utils.UnmarshalJSON(data, &payload146, "", true, nil); err == nil {
+		u.Payload146 = &payload146
+		u.Type = PayloadUnionTypePayload146
+		return nil
+	}
+
+	var payload147 Payload147 = Payload147{}
+	if err := utils.UnmarshalJSON(data, &payload147, "", true, nil); err == nil {
+		u.Payload147 = &payload147
+		u.Type = PayloadUnionTypePayload147
+		return nil
+	}
+
+	var payload149 Payload149 = Payload149{}
+	if err := utils.UnmarshalJSON(data, &payload149, "", true, nil); err == nil {
+		u.Payload149 = &payload149
+		u.Type = PayloadUnionTypePayload149
+		return nil
+	}
+
+	var payload151 Payload151 = Payload151{}
+	if err := utils.UnmarshalJSON(data, &payload151, "", true, nil); err == nil {
+		u.Payload151 = &payload151
+		u.Type = PayloadUnionTypePayload151
+		return nil
+	}
+
+	var payload152 Payload152 = Payload152{}
+	if err := utils.UnmarshalJSON(data, &payload152, "", true, nil); err == nil {
+		u.Payload152 = &payload152
+		u.Type = PayloadUnionTypePayload152
+		return nil
+	}
+
+	var payload153 Payload153 = Payload153{}
+	if err := utils.UnmarshalJSON(data, &payload153, "", true, nil); err == nil {
+		u.Payload153 = &payload153
+		u.Type = PayloadUnionTypePayload153
+		return nil
+	}
+
+	var payload155 Payload155 = Payload155{}
+	if err := utils.UnmarshalJSON(data, &payload155, "", true, nil); err == nil {
+		u.Payload155 = &payload155
+		u.Type = PayloadUnionTypePayload155
+		return nil
+	}
+
+	var payload3 Payload3 = Payload3{}
+	if err := utils.UnmarshalJSON(data, &payload3, "", true, nil); err == nil {
+		u.Payload3 = &payload3
+		u.Type = PayloadUnionTypePayload3
+		return nil
+	}
+
+	var payload15 Payload15 = Payload15{}
+	if err := utils.UnmarshalJSON(data, &payload15, "", true, nil); err == nil {
+		u.Payload15 = &payload15
+		u.Type = PayloadUnionTypePayload15
+		return nil
+	}
+
+	var payload20 Payload20 = Payload20{}
+	if err := utils.UnmarshalJSON(data, &payload20, "", true, nil); err == nil {
+		u.Payload20 = &payload20
+		u.Type = PayloadUnionTypePayload20
+		return nil
+	}
+
+	var payload22 Payload22 = Payload22{}
+	if err := utils.UnmarshalJSON(data, &payload22, "", true, nil); err == nil {
+		u.Payload22 = &payload22
+		u.Type = PayloadUnionTypePayload22
+		return nil
+	}
+
+	var payload24 Payload24 = Payload24{}
+	if err := utils.UnmarshalJSON(data, &payload24, "", true, nil); err == nil {
+		u.Payload24 = &payload24
+		u.Type = PayloadUnionTypePayload24
+		return nil
+	}
+
+	var payload26 Payload26 = Payload26{}
+	if err := utils.UnmarshalJSON(data, &payload26, "", true, nil); err == nil {
+		u.Payload26 = &payload26
+		u.Type = PayloadUnionTypePayload26
+		return nil
+	}
+
+	var payload28 Payload28 = Payload28{}
+	if err := utils.UnmarshalJSON(data, &payload28, "", true, nil); err == nil {
+		u.Payload28 = &payload28
+		u.Type = PayloadUnionTypePayload28
+		return nil
+	}
+
+	var payload33 Payload33 = Payload33{}
+	if err := utils.UnmarshalJSON(data, &payload33, "", true, nil); err == nil {
+		u.Payload33 = &payload33
+		u.Type = PayloadUnionTypePayload33
 		return nil
 	}
 
 	var payload37 Payload37 = Payload37{}
-	if err := utils.UnmarshalJSON(data, &payload37, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload37, "", true, nil); err == nil {
 		u.Payload37 = &payload37
 		u.Type = PayloadUnionTypePayload37
 		return nil
 	}
 
-	var payload70 Payload70 = Payload70{}
-	if err := utils.UnmarshalJSON(data, &payload70, "", true, true); err == nil {
-		u.Payload70 = &payload70
-		u.Type = PayloadUnionTypePayload70
+	var payload38 Payload38 = Payload38{}
+	if err := utils.UnmarshalJSON(data, &payload38, "", true, nil); err == nil {
+		u.Payload38 = &payload38
+		u.Type = PayloadUnionTypePayload38
+		return nil
+	}
+
+	var payload42 Payload42 = Payload42{}
+	if err := utils.UnmarshalJSON(data, &payload42, "", true, nil); err == nil {
+		u.Payload42 = &payload42
+		u.Type = PayloadUnionTypePayload42
+		return nil
+	}
+
+	var payload46 Payload46 = Payload46{}
+	if err := utils.UnmarshalJSON(data, &payload46, "", true, nil); err == nil {
+		u.Payload46 = &payload46
+		u.Type = PayloadUnionTypePayload46
+		return nil
+	}
+
+	var payload51 Payload51 = Payload51{}
+	if err := utils.UnmarshalJSON(data, &payload51, "", true, nil); err == nil {
+		u.Payload51 = &payload51
+		u.Type = PayloadUnionTypePayload51
+		return nil
+	}
+
+	var payload52 Payload52 = Payload52{}
+	if err := utils.UnmarshalJSON(data, &payload52, "", true, nil); err == nil {
+		u.Payload52 = &payload52
+		u.Type = PayloadUnionTypePayload52
+		return nil
+	}
+
+	var payload71 Payload71 = Payload71{}
+	if err := utils.UnmarshalJSON(data, &payload71, "", true, nil); err == nil {
+		u.Payload71 = &payload71
+		u.Type = PayloadUnionTypePayload71
+		return nil
+	}
+
+	var payload72 Payload72 = Payload72{}
+	if err := utils.UnmarshalJSON(data, &payload72, "", true, nil); err == nil {
+		u.Payload72 = &payload72
+		u.Type = PayloadUnionTypePayload72
+		return nil
+	}
+
+	var payload73 Payload73 = Payload73{}
+	if err := utils.UnmarshalJSON(data, &payload73, "", true, nil); err == nil {
+		u.Payload73 = &payload73
+		u.Type = PayloadUnionTypePayload73
+		return nil
+	}
+
+	var payload75 Payload75 = Payload75{}
+	if err := utils.UnmarshalJSON(data, &payload75, "", true, nil); err == nil {
+		u.Payload75 = &payload75
+		u.Type = PayloadUnionTypePayload75
+		return nil
+	}
+
+	var payload76 Payload76 = Payload76{}
+	if err := utils.UnmarshalJSON(data, &payload76, "", true, nil); err == nil {
+		u.Payload76 = &payload76
+		u.Type = PayloadUnionTypePayload76
+		return nil
+	}
+
+	var payload79 Payload79 = Payload79{}
+	if err := utils.UnmarshalJSON(data, &payload79, "", true, nil); err == nil {
+		u.Payload79 = &payload79
+		u.Type = PayloadUnionTypePayload79
+		return nil
+	}
+
+	var payload80 Payload80 = Payload80{}
+	if err := utils.UnmarshalJSON(data, &payload80, "", true, nil); err == nil {
+		u.Payload80 = &payload80
+		u.Type = PayloadUnionTypePayload80
+		return nil
+	}
+
+	var payload83 Payload83 = Payload83{}
+	if err := utils.UnmarshalJSON(data, &payload83, "", true, nil); err == nil {
+		u.Payload83 = &payload83
+		u.Type = PayloadUnionTypePayload83
+		return nil
+	}
+
+	var payload84 Payload84 = Payload84{}
+	if err := utils.UnmarshalJSON(data, &payload84, "", true, nil); err == nil {
+		u.Payload84 = &payload84
+		u.Type = PayloadUnionTypePayload84
+		return nil
+	}
+
+	var payload88 Payload88 = Payload88{}
+	if err := utils.UnmarshalJSON(data, &payload88, "", true, nil); err == nil {
+		u.Payload88 = &payload88
+		u.Type = PayloadUnionTypePayload88
+		return nil
+	}
+
+	var payload95 Payload95 = Payload95{}
+	if err := utils.UnmarshalJSON(data, &payload95, "", true, nil); err == nil {
+		u.Payload95 = &payload95
+		u.Type = PayloadUnionTypePayload95
+		return nil
+	}
+
+	var payload96 Payload96 = Payload96{}
+	if err := utils.UnmarshalJSON(data, &payload96, "", true, nil); err == nil {
+		u.Payload96 = &payload96
+		u.Type = PayloadUnionTypePayload96
+		return nil
+	}
+
+	var payload100 Payload100 = Payload100{}
+	if err := utils.UnmarshalJSON(data, &payload100, "", true, nil); err == nil {
+		u.Payload100 = &payload100
+		u.Type = PayloadUnionTypePayload100
+		return nil
+	}
+
+	var payload103 Payload103 = Payload103{}
+	if err := utils.UnmarshalJSON(data, &payload103, "", true, nil); err == nil {
+		u.Payload103 = &payload103
+		u.Type = PayloadUnionTypePayload103
+		return nil
+	}
+
+	var payload104 Payload104 = Payload104{}
+	if err := utils.UnmarshalJSON(data, &payload104, "", true, nil); err == nil {
+		u.Payload104 = &payload104
+		u.Type = PayloadUnionTypePayload104
+		return nil
+	}
+
+	var payload106 Payload106 = Payload106{}
+	if err := utils.UnmarshalJSON(data, &payload106, "", true, nil); err == nil {
+		u.Payload106 = &payload106
+		u.Type = PayloadUnionTypePayload106
+		return nil
+	}
+
+	var payload107 Payload107 = Payload107{}
+	if err := utils.UnmarshalJSON(data, &payload107, "", true, nil); err == nil {
+		u.Payload107 = &payload107
+		u.Type = PayloadUnionTypePayload107
+		return nil
+	}
+
+	var payload108 Payload108 = Payload108{}
+	if err := utils.UnmarshalJSON(data, &payload108, "", true, nil); err == nil {
+		u.Payload108 = &payload108
+		u.Type = PayloadUnionTypePayload108
+		return nil
+	}
+
+	var payload112 Payload112 = Payload112{}
+	if err := utils.UnmarshalJSON(data, &payload112, "", true, nil); err == nil {
+		u.Payload112 = &payload112
+		u.Type = PayloadUnionTypePayload112
+		return nil
+	}
+
+	var payload113 Payload113 = Payload113{}
+	if err := utils.UnmarshalJSON(data, &payload113, "", true, nil); err == nil {
+		u.Payload113 = &payload113
+		u.Type = PayloadUnionTypePayload113
+		return nil
+	}
+
+	var payload116 Payload116 = Payload116{}
+	if err := utils.UnmarshalJSON(data, &payload116, "", true, nil); err == nil {
+		u.Payload116 = &payload116
+		u.Type = PayloadUnionTypePayload116
+		return nil
+	}
+
+	var payload122 Payload122 = Payload122{}
+	if err := utils.UnmarshalJSON(data, &payload122, "", true, nil); err == nil {
+		u.Payload122 = &payload122
+		u.Type = PayloadUnionTypePayload122
+		return nil
+	}
+
+	var payload124 Payload124 = Payload124{}
+	if err := utils.UnmarshalJSON(data, &payload124, "", true, nil); err == nil {
+		u.Payload124 = &payload124
+		u.Type = PayloadUnionTypePayload124
+		return nil
+	}
+
+	var payload128 Payload128 = Payload128{}
+	if err := utils.UnmarshalJSON(data, &payload128, "", true, nil); err == nil {
+		u.Payload128 = &payload128
+		u.Type = PayloadUnionTypePayload128
+		return nil
+	}
+
+	var payload129 Payload129 = Payload129{}
+	if err := utils.UnmarshalJSON(data, &payload129, "", true, nil); err == nil {
+		u.Payload129 = &payload129
+		u.Type = PayloadUnionTypePayload129
+		return nil
+	}
+
+	var payload130 Payload130 = Payload130{}
+	if err := utils.UnmarshalJSON(data, &payload130, "", true, nil); err == nil {
+		u.Payload130 = &payload130
+		u.Type = PayloadUnionTypePayload130
+		return nil
+	}
+
+	var payload138 Payload138 = Payload138{}
+	if err := utils.UnmarshalJSON(data, &payload138, "", true, nil); err == nil {
+		u.Payload138 = &payload138
+		u.Type = PayloadUnionTypePayload138
+		return nil
+	}
+
+	var payload144 Payload144 = Payload144{}
+	if err := utils.UnmarshalJSON(data, &payload144, "", true, nil); err == nil {
+		u.Payload144 = &payload144
+		u.Type = PayloadUnionTypePayload144
+		return nil
+	}
+
+	var payload150 Payload150 = Payload150{}
+	if err := utils.UnmarshalJSON(data, &payload150, "", true, nil); err == nil {
+		u.Payload150 = &payload150
+		u.Type = PayloadUnionTypePayload150
+		return nil
+	}
+
+	var payload154 Payload154 = Payload154{}
+	if err := utils.UnmarshalJSON(data, &payload154, "", true, nil); err == nil {
+		u.Payload154 = &payload154
+		u.Type = PayloadUnionTypePayload154
+		return nil
+	}
+
+	var payload156 Payload156 = Payload156{}
+	if err := utils.UnmarshalJSON(data, &payload156, "", true, nil); err == nil {
+		u.Payload156 = &payload156
+		u.Type = PayloadUnionTypePayload156
+		return nil
+	}
+
+	var payload157 Payload157 = Payload157{}
+	if err := utils.UnmarshalJSON(data, &payload157, "", true, nil); err == nil {
+		u.Payload157 = &payload157
+		u.Type = PayloadUnionTypePayload157
+		return nil
+	}
+
+	var payload1 Payload1 = Payload1{}
+	if err := utils.UnmarshalJSON(data, &payload1, "", true, nil); err == nil {
+		u.Payload1 = &payload1
+		u.Type = PayloadUnionTypePayload1
 		return nil
 	}
 
 	var payload7 Payload7 = Payload7{}
-	if err := utils.UnmarshalJSON(data, &payload7, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload7, "", true, nil); err == nil {
 		u.Payload7 = &payload7
 		u.Type = PayloadUnionTypePayload7
 		return nil
 	}
 
+	var payload8 Payload8 = Payload8{}
+	if err := utils.UnmarshalJSON(data, &payload8, "", true, nil); err == nil {
+		u.Payload8 = &payload8
+		u.Type = PayloadUnionTypePayload8
+		return nil
+	}
+
+	var payload9 Payload9 = Payload9{}
+	if err := utils.UnmarshalJSON(data, &payload9, "", true, nil); err == nil {
+		u.Payload9 = &payload9
+		u.Type = PayloadUnionTypePayload9
+		return nil
+	}
+
+	var payload10 Payload10 = Payload10{}
+	if err := utils.UnmarshalJSON(data, &payload10, "", true, nil); err == nil {
+		u.Payload10 = &payload10
+		u.Type = PayloadUnionTypePayload10
+		return nil
+	}
+
+	var payload11 Payload11 = Payload11{}
+	if err := utils.UnmarshalJSON(data, &payload11, "", true, nil); err == nil {
+		u.Payload11 = &payload11
+		u.Type = PayloadUnionTypePayload11
+		return nil
+	}
+
+	var payload13 Payload13 = Payload13{}
+	if err := utils.UnmarshalJSON(data, &payload13, "", true, nil); err == nil {
+		u.Payload13 = &payload13
+		u.Type = PayloadUnionTypePayload13
+		return nil
+	}
+
+	var payload14 Payload14 = Payload14{}
+	if err := utils.UnmarshalJSON(data, &payload14, "", true, nil); err == nil {
+		u.Payload14 = &payload14
+		u.Type = PayloadUnionTypePayload14
+		return nil
+	}
+
+	var payload19 Payload19 = Payload19{}
+	if err := utils.UnmarshalJSON(data, &payload19, "", true, nil); err == nil {
+		u.Payload19 = &payload19
+		u.Type = PayloadUnionTypePayload19
+		return nil
+	}
+
+	var payload21 Payload21 = Payload21{}
+	if err := utils.UnmarshalJSON(data, &payload21, "", true, nil); err == nil {
+		u.Payload21 = &payload21
+		u.Type = PayloadUnionTypePayload21
+		return nil
+	}
+
+	var payload25 Payload25 = Payload25{}
+	if err := utils.UnmarshalJSON(data, &payload25, "", true, nil); err == nil {
+		u.Payload25 = &payload25
+		u.Type = PayloadUnionTypePayload25
+		return nil
+	}
+
+	var payload55 Payload55 = Payload55{}
+	if err := utils.UnmarshalJSON(data, &payload55, "", true, nil); err == nil {
+		u.Payload55 = &payload55
+		u.Type = PayloadUnionTypePayload55
+		return nil
+	}
+
 	var payload56 Payload56 = Payload56{}
-	if err := utils.UnmarshalJSON(data, &payload56, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &payload56, "", true, nil); err == nil {
 		u.Payload56 = &payload56
 		u.Type = PayloadUnionTypePayload56
+		return nil
+	}
+
+	var payload57 Payload57 = Payload57{}
+	if err := utils.UnmarshalJSON(data, &payload57, "", true, nil); err == nil {
+		u.Payload57 = &payload57
+		u.Type = PayloadUnionTypePayload57
+		return nil
+	}
+
+	var payload102 Payload102 = Payload102{}
+	if err := utils.UnmarshalJSON(data, &payload102, "", true, nil); err == nil {
+		u.Payload102 = &payload102
+		u.Type = PayloadUnionTypePayload102
+		return nil
+	}
+
+	var payload110 Payload110 = Payload110{}
+	if err := utils.UnmarshalJSON(data, &payload110, "", true, nil); err == nil {
+		u.Payload110 = &payload110
+		u.Type = PayloadUnionTypePayload110
+		return nil
+	}
+
+	var payload111 Payload111 = Payload111{}
+	if err := utils.UnmarshalJSON(data, &payload111, "", true, nil); err == nil {
+		u.Payload111 = &payload111
+		u.Type = PayloadUnionTypePayload111
+		return nil
+	}
+
+	var payload117 Payload117 = Payload117{}
+	if err := utils.UnmarshalJSON(data, &payload117, "", true, nil); err == nil {
+		u.Payload117 = &payload117
+		u.Type = PayloadUnionTypePayload117
+		return nil
+	}
+
+	var payload118 Payload118 = Payload118{}
+	if err := utils.UnmarshalJSON(data, &payload118, "", true, nil); err == nil {
+		u.Payload118 = &payload118
+		u.Type = PayloadUnionTypePayload118
+		return nil
+	}
+
+	var payload119 Payload119 = Payload119{}
+	if err := utils.UnmarshalJSON(data, &payload119, "", true, nil); err == nil {
+		u.Payload119 = &payload119
+		u.Type = PayloadUnionTypePayload119
+		return nil
+	}
+
+	var payload125 Payload125 = Payload125{}
+	if err := utils.UnmarshalJSON(data, &payload125, "", true, nil); err == nil {
+		u.Payload125 = &payload125
+		u.Type = PayloadUnionTypePayload125
+		return nil
+	}
+
+	var payload126 Payload126 = Payload126{}
+	if err := utils.UnmarshalJSON(data, &payload126, "", true, nil); err == nil {
+		u.Payload126 = &payload126
+		u.Type = PayloadUnionTypePayload126
+		return nil
+	}
+
+	var payload127 Payload127 = Payload127{}
+	if err := utils.UnmarshalJSON(data, &payload127, "", true, nil); err == nil {
+		u.Payload127 = &payload127
+		u.Type = PayloadUnionTypePayload127
 		return nil
 	}
 
@@ -19505,6 +23625,18 @@ func (u PayloadUnion) MarshalJSON() ([]byte, error) {
 
 	if u.Payload158 != nil {
 		return utils.MarshalJSON(u.Payload158, "", true)
+	}
+
+	if u.Payload159 != nil {
+		return utils.MarshalJSON(u.Payload159, "", true)
+	}
+
+	if u.Payload160 != nil {
+		return utils.MarshalJSON(u.Payload160, "", true)
+	}
+
+	if u.Payload161 != nil {
+		return utils.MarshalJSON(u.Payload161, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PayloadUnion: all fields are null")

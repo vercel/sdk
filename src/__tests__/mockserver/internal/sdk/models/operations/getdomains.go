@@ -100,6 +100,30 @@ func (o *GetDomainsCreator) GetID() string {
 	return o.ID
 }
 
+// GetDomainsRegistrar - Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
+type GetDomainsRegistrar string
+
+const (
+	GetDomainsRegistrarNew GetDomainsRegistrar = "new"
+)
+
+func (e GetDomainsRegistrar) ToPointer() *GetDomainsRegistrar {
+	return &e
+}
+func (e *GetDomainsRegistrar) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "new":
+		*e = GetDomainsRegistrar(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDomainsRegistrar: %v", v)
+	}
+}
+
 // GetDomainsServiceType - The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
 type GetDomainsServiceType string
 
@@ -141,7 +165,9 @@ type GetDomainsDomain struct {
 	CustomNameservers []string `json:"customNameservers,omitempty"`
 	// An object containing information of the domain creator, including the user's id, username, and email.
 	Creator GetDomainsCreator `json:"creator"`
-	TeamID  *string           `json:"teamId"`
+	// Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
+	Registrar *GetDomainsRegistrar `json:"registrar,omitempty"`
+	TeamID    *string              `json:"teamId"`
 	// Timestamp in milliseconds when the domain was created in the registry.
 	CreatedAt float64 `json:"createdAt"`
 	// If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
@@ -198,6 +224,13 @@ func (o *GetDomainsDomain) GetCreator() GetDomainsCreator {
 		return GetDomainsCreator{}
 	}
 	return o.Creator
+}
+
+func (o *GetDomainsDomain) GetRegistrar() *GetDomainsRegistrar {
+	if o == nil {
+		return nil
+	}
+	return o.Registrar
 }
 
 func (o *GetDomainsDomain) GetTeamID() *string {

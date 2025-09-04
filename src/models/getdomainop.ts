@@ -35,6 +35,17 @@ export type GetDomainCreator = {
 };
 
 /**
+ * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
+ */
+export const Registrar = {
+  New: "new",
+} as const;
+/**
+ * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
+ */
+export type Registrar = ClosedEnum<typeof Registrar>;
+
+/**
  * The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
  */
 export const ServiceType = {
@@ -69,6 +80,10 @@ export type GetDomainDomain = {
    * An object containing information of the domain creator, including the user's id, username, and email.
    */
   creator: GetDomainCreator;
+  /**
+   * Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
+   */
+  registrar?: Registrar | undefined;
   teamId: string | null;
   /**
    * If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
@@ -247,6 +262,25 @@ export function getDomainCreatorFromJSON(
 }
 
 /** @internal */
+export const Registrar$inboundSchema: z.ZodNativeEnum<typeof Registrar> = z
+  .nativeEnum(Registrar);
+
+/** @internal */
+export const Registrar$outboundSchema: z.ZodNativeEnum<typeof Registrar> =
+  Registrar$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Registrar$ {
+  /** @deprecated use `Registrar$inboundSchema` instead. */
+  export const inboundSchema = Registrar$inboundSchema;
+  /** @deprecated use `Registrar$outboundSchema` instead. */
+  export const outboundSchema = Registrar$outboundSchema;
+}
+
+/** @internal */
 export const ServiceType$inboundSchema: z.ZodNativeEnum<typeof ServiceType> = z
   .nativeEnum(ServiceType);
 
@@ -277,6 +311,7 @@ export const GetDomainDomain$inboundSchema: z.ZodType<
   intendedNameservers: z.array(z.string()),
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => GetDomainCreator$inboundSchema),
+  registrar: Registrar$inboundSchema.optional(),
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),
   name: z.string(),
@@ -299,6 +334,7 @@ export type GetDomainDomain$Outbound = {
   intendedNameservers: Array<string>;
   customNameservers?: Array<string> | undefined;
   creator: GetDomainCreator$Outbound;
+  registrar?: string | undefined;
   teamId: string | null;
   boughtAt: number | null;
   name: string;
@@ -325,6 +361,7 @@ export const GetDomainDomain$outboundSchema: z.ZodType<
   intendedNameservers: z.array(z.string()),
   customNameservers: z.array(z.string()).optional(),
   creator: z.lazy(() => GetDomainCreator$outboundSchema),
+  registrar: Registrar$outboundSchema.optional(),
   teamId: z.nullable(z.string()),
   boughtAt: z.nullable(z.number()),
   name: z.string(),

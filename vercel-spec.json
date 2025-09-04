@@ -20856,6 +20856,13 @@
                             "email": "demo@example.com"
                           }
                         },
+                        "registrar": {
+                          "type": "string",
+                          "enum": [
+                            "new"
+                          ],
+                          "description": "Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com."
+                        },
                         "teamId": {
                           "nullable": true,
                           "type": "string"
@@ -21107,6 +21114,13 @@
                               "username": "vercel_user",
                               "email": "demo@example.com"
                             }
+                          },
+                          "registrar": {
+                            "type": "string",
+                            "enum": [
+                              "new"
+                            ],
+                            "description": "Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com."
                           },
                           "teamId": {
                             "nullable": true,
@@ -21375,6 +21389,13 @@
                             "username": "vercel_user",
                             "email": "demo@example.com"
                           }
+                        },
+                        "registrar": {
+                          "type": "string",
+                          "enum": [
+                            "new"
+                          ],
+                          "description": "Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com."
                         },
                         "name": {
                           "type": "string",
@@ -28589,34 +28610,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "default": {
@@ -29299,34 +29320,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "default": {
@@ -29484,34 +29505,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@502540": {
+                                                "__@BRAND@502640": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@502540"
+                                                "__@BRAND@502640"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@502540": {
+                                                "__@BRAND@502640": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@502540"
+                                                "__@BRAND@502640"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@502540": {
+                                                "__@BRAND@502640": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@502540"
+                                                "__@BRAND@502640"
                                               ]
                                             },
                                             "default": {
@@ -29822,12 +29843,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@502540": {
+                                                  "__@BRAND@502640": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@502540"
+                                                  "__@BRAND@502640"
                                                 ]
                                               },
                                               {
@@ -29835,12 +29856,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@502540": {
+                                                      "__@BRAND@502640": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@502540"
+                                                      "__@BRAND@502640"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -29909,34 +29930,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "default": {
@@ -30094,34 +30115,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@502540": {
+                                                "__@BRAND@502640": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@502540"
+                                                "__@BRAND@502640"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@502540": {
+                                                "__@BRAND@502640": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@502540"
+                                                "__@BRAND@502640"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@502540": {
+                                                "__@BRAND@502640": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@502540"
+                                                "__@BRAND@502640"
                                               ]
                                             },
                                             "default": {
@@ -30210,12 +30231,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@502540": {
+                                                  "__@BRAND@502640": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@502540"
+                                                  "__@BRAND@502640"
                                                 ]
                                               },
                                               {
@@ -30223,12 +30244,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@502540": {
+                                                      "__@BRAND@502640": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@502540"
+                                                      "__@BRAND@502640"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30414,12 +30435,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@502540": {
+                                              "__@BRAND@502640": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@502540"
+                                              "__@BRAND@502640"
                                             ]
                                           },
                                           "type": "array"
@@ -30428,12 +30449,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@502540": {
+                                              "__@BRAND@502640": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@502540"
+                                              "__@BRAND@502640"
                                             ]
                                           },
                                           "type": "array"
@@ -30452,12 +30473,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@502540": {
+                                            "__@BRAND@502640": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@502540"
+                                            "__@BRAND@502640"
                                           ]
                                         },
                                         "disabled": {
@@ -65699,34 +65720,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "description": {
@@ -66409,34 +66430,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "description": {
@@ -66585,34 +66606,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7822": {
+                                                  "__@BRAND@7825": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7822"
+                                                  "__@BRAND@7825"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7822": {
+                                                  "__@BRAND@7825": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7822"
+                                                  "__@BRAND@7825"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7822": {
+                                                  "__@BRAND@7825": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7822"
+                                                  "__@BRAND@7825"
                                                 ]
                                               },
                                               "default": {
@@ -66929,12 +66950,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@7822": {
+                                                    "__@BRAND@7825": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@7822"
+                                                    "__@BRAND@7825"
                                                   ]
                                                 },
                                                 {
@@ -66942,12 +66963,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@7822": {
+                                                        "__@BRAND@7825": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@7822"
+                                                        "__@BRAND@7825"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -67019,34 +67040,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "description": {
@@ -67178,12 +67199,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7822": {
+                                              "__@BRAND@7825": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7822"
+                                              "__@BRAND@7825"
                                             ]
                                           },
                                           "disabled": {
@@ -67428,12 +67449,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@7822": {
+                                "__@BRAND@7825": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@7822"
+                                "__@BRAND@7825"
                               ]
                             },
                             "disabled": {

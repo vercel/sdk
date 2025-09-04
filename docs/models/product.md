@@ -7,7 +7,7 @@ import { Product } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: Product = {
   value: {
-    atBRANDAt7822: {},
+    atBRANDAt7825: {},
   },
 };
 ```

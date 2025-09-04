@@ -311,6 +311,30 @@ func (o *CreateOrTransferDomainCreator) GetID() string {
 	return o.ID
 }
 
+// CreateOrTransferDomainRegistrar - Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
+type CreateOrTransferDomainRegistrar string
+
+const (
+	CreateOrTransferDomainRegistrarNew CreateOrTransferDomainRegistrar = "new"
+)
+
+func (e CreateOrTransferDomainRegistrar) ToPointer() *CreateOrTransferDomainRegistrar {
+	return &e
+}
+func (e *CreateOrTransferDomainRegistrar) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "new":
+		*e = CreateOrTransferDomainRegistrar(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateOrTransferDomainRegistrar: %v", v)
+	}
+}
+
 // CreateOrTransferDomainServiceType - The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.
 type CreateOrTransferDomainServiceType string
 
@@ -352,6 +376,8 @@ type CreateOrTransferDomainDomain struct {
 	CustomNameservers []string `json:"customNameservers,omitempty"`
 	// An object containing information of the domain creator, including the user's id, username, and email.
 	Creator CreateOrTransferDomainCreator `json:"creator"`
+	// Whether or not the domain is registered with Name.com. If set to `true`, the domain is registered with Name.com.
+	Registrar *CreateOrTransferDomainRegistrar `json:"registrar,omitempty"`
 	// The domain name.
 	Name string `json:"name"`
 	// If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.
@@ -409,6 +435,13 @@ func (o *CreateOrTransferDomainDomain) GetCreator() CreateOrTransferDomainCreato
 		return CreateOrTransferDomainCreator{}
 	}
 	return o.Creator
+}
+
+func (o *CreateOrTransferDomainDomain) GetRegistrar() *CreateOrTransferDomainRegistrar {
+	if o == nil {
+		return nil
+	}
+	return o.Registrar
 }
 
 func (o *CreateOrTransferDomainDomain) GetName() string {

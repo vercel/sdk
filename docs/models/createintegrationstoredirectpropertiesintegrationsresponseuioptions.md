@@ -16,7 +16,7 @@ const value: models.CreateIntegrationStoreDirectUiOptions1 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectUiOptions2 = {
-  atBRANDAt7822: {},
+  atBRANDAt7825: {},
 };
 ```
 
@@ -25,7 +25,7 @@ const value: models.CreateIntegrationStoreDirectUiOptions2 = {
 ```typescript
 const value: models.CreateIntegrationStoreDirectUiOptions3 = {
   value: {
-    atBRANDAt7822: {},
+    atBRANDAt7825: {},
   },
 };
 ```

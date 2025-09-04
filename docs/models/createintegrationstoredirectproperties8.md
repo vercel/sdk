@@ -7,7 +7,7 @@ import { CreateIntegrationStoreDirectProperties8 } from "@vercel/sdk/models/crea
 
 let value: CreateIntegrationStoreDirectProperties8 = {
   value: {
-    atBRANDAt7822: {},
+    atBRANDAt7825: {},
   },
 };
 ```

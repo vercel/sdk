@@ -844,14 +844,14 @@ func (e *CreateIntegrationStoreDirectTypeObject) UnmarshalJSON(data []byte) erro
 	}
 }
 
-type PropertiesValueAtBRANDAt7822 struct {
+type PropertiesValueAtBRANDAt7825 struct {
 }
 
-func (p PropertiesValueAtBRANDAt7822) MarshalJSON() ([]byte, error) {
+func (p PropertiesValueAtBRANDAt7825) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *PropertiesValueAtBRANDAt7822) UnmarshalJSON(data []byte) error {
+func (p *PropertiesValueAtBRANDAt7825) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
@@ -859,7 +859,7 @@ func (p *PropertiesValueAtBRANDAt7822) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectPropertiesValue struct {
-	AtBRANDAt7822 PropertiesValueAtBRANDAt7822 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 PropertiesValueAtBRANDAt7825 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectPropertiesValue) MarshalJSON() ([]byte, error) {
@@ -867,17 +867,17 @@ func (c CreateIntegrationStoreDirectPropertiesValue) MarshalJSON() ([]byte, erro
 }
 
 func (c *CreateIntegrationStoreDirectPropertiesValue) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPropertiesValue) GetAtBRANDAt7822() PropertiesValueAtBRANDAt7822 {
+func (o *CreateIntegrationStoreDirectPropertiesValue) GetAtBRANDAt7825() PropertiesValueAtBRANDAt7825 {
 	if o == nil {
-		return PropertiesValueAtBRANDAt7822{}
+		return PropertiesValueAtBRANDAt7825{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectPropertiesDisabledEnum string
@@ -1230,14 +1230,14 @@ func (e *CreateIntegrationStoreDirectUIControlVercelRegion) UnmarshalJSON(data [
 	}
 }
 
-type UIOptionValueAtBRANDAt7822 struct {
+type UIOptionValueAtBRANDAt7825 struct {
 }
 
-func (u UIOptionValueAtBRANDAt7822) MarshalJSON() ([]byte, error) {
+func (u UIOptionValueAtBRANDAt7825) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UIOptionValueAtBRANDAt7822) UnmarshalJSON(data []byte) error {
+func (u *UIOptionValueAtBRANDAt7825) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
@@ -1245,7 +1245,7 @@ func (u *UIOptionValueAtBRANDAt7822) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectUIOptionValue struct {
-	AtBRANDAt7822 UIOptionValueAtBRANDAt7822 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 UIOptionValueAtBRANDAt7825 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectUIOptionValue) MarshalJSON() ([]byte, error) {
@@ -1253,17 +1253,17 @@ func (c CreateIntegrationStoreDirectUIOptionValue) MarshalJSON() ([]byte, error)
 }
 
 func (c *CreateIntegrationStoreDirectUIOptionValue) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectUIOptionValue) GetAtBRANDAt7822() UIOptionValueAtBRANDAt7822 {
+func (o *CreateIntegrationStoreDirectUIOptionValue) GetAtBRANDAt7825() UIOptionValueAtBRANDAt7825 {
 	if o == nil {
-		return UIOptionValueAtBRANDAt7822{}
+		return UIOptionValueAtBRANDAt7825{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectUIOptionDisabledEnum2 string
@@ -1570,14 +1570,14 @@ func (o *CreateIntegrationStoreDirectUIOption5) GetHidden() *CreateIntegrationSt
 	return o.Hidden
 }
 
-type UIOptionAtBRANDAt7822 struct {
+type UIOptionAtBRANDAt7825 struct {
 }
 
-func (u UIOptionAtBRANDAt7822) MarshalJSON() ([]byte, error) {
+func (u UIOptionAtBRANDAt7825) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(u, "", false)
 }
 
-func (u *UIOptionAtBRANDAt7822) UnmarshalJSON(data []byte) error {
+func (u *UIOptionAtBRANDAt7825) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
@@ -1585,7 +1585,7 @@ func (u *UIOptionAtBRANDAt7822) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectUIOption4 struct {
-	AtBRANDAt7822 UIOptionAtBRANDAt7822 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 UIOptionAtBRANDAt7825 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectUIOption4) MarshalJSON() ([]byte, error) {
@@ -1593,17 +1593,17 @@ func (c CreateIntegrationStoreDirectUIOption4) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectUIOption4) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectUIOption4) GetAtBRANDAt7822() UIOptionAtBRANDAt7822 {
+func (o *CreateIntegrationStoreDirectUIOption4) GetAtBRANDAt7825() UIOptionAtBRANDAt7825 {
 	if o == nil {
-		return UIOptionAtBRANDAt7822{}
+		return UIOptionAtBRANDAt7825{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectUIOptionDisabledEnum1 string
@@ -2003,14 +2003,14 @@ func (u CreateIntegrationStoreDirectUIOptionUnion) MarshalJSON() ([]byte, error)
 	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIOptionUnion: all fields are null")
 }
 
-type MaxLengthAtBRANDAt78223 struct {
+type MaxLengthAtBRANDAt78253 struct {
 }
 
-func (m MaxLengthAtBRANDAt78223) MarshalJSON() ([]byte, error) {
+func (m MaxLengthAtBRANDAt78253) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MaxLengthAtBRANDAt78223) UnmarshalJSON(data []byte) error {
+func (m *MaxLengthAtBRANDAt78253) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -2018,7 +2018,7 @@ func (m *MaxLengthAtBRANDAt78223) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMaxLength3 struct {
-	AtBRANDAt7822 MaxLengthAtBRANDAt78223 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MaxLengthAtBRANDAt78253 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMaxLength3) MarshalJSON() ([]byte, error) {
@@ -2026,27 +2026,27 @@ func (c CreateIntegrationStoreDirectMaxLength3) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectMaxLength3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMaxLength3) GetAtBRANDAt7822() MaxLengthAtBRANDAt78223 {
+func (o *CreateIntegrationStoreDirectMaxLength3) GetAtBRANDAt7825() MaxLengthAtBRANDAt78253 {
 	if o == nil {
-		return MaxLengthAtBRANDAt78223{}
+		return MaxLengthAtBRANDAt78253{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type MinLengthAtBRANDAt78223 struct {
+type MinLengthAtBRANDAt78253 struct {
 }
 
-func (m MinLengthAtBRANDAt78223) MarshalJSON() ([]byte, error) {
+func (m MinLengthAtBRANDAt78253) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MinLengthAtBRANDAt78223) UnmarshalJSON(data []byte) error {
+func (m *MinLengthAtBRANDAt78253) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -2054,7 +2054,7 @@ func (m *MinLengthAtBRANDAt78223) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMinLength3 struct {
-	AtBRANDAt7822 MinLengthAtBRANDAt78223 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MinLengthAtBRANDAt78253 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMinLength3) MarshalJSON() ([]byte, error) {
@@ -2062,27 +2062,27 @@ func (c CreateIntegrationStoreDirectMinLength3) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectMinLength3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMinLength3) GetAtBRANDAt7822() MinLengthAtBRANDAt78223 {
+func (o *CreateIntegrationStoreDirectMinLength3) GetAtBRANDAt7825() MinLengthAtBRANDAt78253 {
 	if o == nil {
-		return MinLengthAtBRANDAt78223{}
+		return MinLengthAtBRANDAt78253{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type PatternAtBRANDAt78223 struct {
+type PatternAtBRANDAt78253 struct {
 }
 
-func (p PatternAtBRANDAt78223) MarshalJSON() ([]byte, error) {
+func (p PatternAtBRANDAt78253) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *PatternAtBRANDAt78223) UnmarshalJSON(data []byte) error {
+func (p *PatternAtBRANDAt78253) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
@@ -2090,7 +2090,7 @@ func (p *PatternAtBRANDAt78223) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectPattern3 struct {
-	AtBRANDAt7822 PatternAtBRANDAt78223 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 PatternAtBRANDAt78253 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectPattern3) MarshalJSON() ([]byte, error) {
@@ -2098,17 +2098,17 @@ func (c CreateIntegrationStoreDirectPattern3) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectPattern3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPattern3) GetAtBRANDAt7822() PatternAtBRANDAt78223 {
+func (o *CreateIntegrationStoreDirectPattern3) GetAtBRANDAt7825() PatternAtBRANDAt78253 {
 	if o == nil {
-		return PatternAtBRANDAt78223{}
+		return PatternAtBRANDAt78253{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectUIReadOnlyEnum7 string
@@ -2805,14 +2805,14 @@ func (e *CreateIntegrationStoreDirectTypeString3) UnmarshalJSON(data []byte) err
 	}
 }
 
-type MinLengthAtBRANDAt7822String struct {
+type MinLengthAtBRANDAt7825String struct {
 }
 
-func (m MinLengthAtBRANDAt7822String) MarshalJSON() ([]byte, error) {
+func (m MinLengthAtBRANDAt7825String) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MinLengthAtBRANDAt7822String) UnmarshalJSON(data []byte) error {
+func (m *MinLengthAtBRANDAt7825String) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -2820,7 +2820,7 @@ func (m *MinLengthAtBRANDAt7822String) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMinLengthString struct {
-	AtBRANDAt7822 MinLengthAtBRANDAt7822String `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MinLengthAtBRANDAt7825String `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMinLengthString) MarshalJSON() ([]byte, error) {
@@ -2828,27 +2828,27 @@ func (c CreateIntegrationStoreDirectMinLengthString) MarshalJSON() ([]byte, erro
 }
 
 func (c *CreateIntegrationStoreDirectMinLengthString) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMinLengthString) GetAtBRANDAt7822() MinLengthAtBRANDAt7822String {
+func (o *CreateIntegrationStoreDirectMinLengthString) GetAtBRANDAt7825() MinLengthAtBRANDAt7825String {
 	if o == nil {
-		return MinLengthAtBRANDAt7822String{}
+		return MinLengthAtBRANDAt7825String{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type MaxLengthAtBRANDAt7822String struct {
+type MaxLengthAtBRANDAt7825String struct {
 }
 
-func (m MaxLengthAtBRANDAt7822String) MarshalJSON() ([]byte, error) {
+func (m MaxLengthAtBRANDAt7825String) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MaxLengthAtBRANDAt7822String) UnmarshalJSON(data []byte) error {
+func (m *MaxLengthAtBRANDAt7825String) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -2856,7 +2856,7 @@ func (m *MaxLengthAtBRANDAt7822String) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMaxLengthString struct {
-	AtBRANDAt7822 MaxLengthAtBRANDAt7822String `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MaxLengthAtBRANDAt7825String `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMaxLengthString) MarshalJSON() ([]byte, error) {
@@ -2864,27 +2864,27 @@ func (c CreateIntegrationStoreDirectMaxLengthString) MarshalJSON() ([]byte, erro
 }
 
 func (c *CreateIntegrationStoreDirectMaxLengthString) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMaxLengthString) GetAtBRANDAt7822() MaxLengthAtBRANDAt7822String {
+func (o *CreateIntegrationStoreDirectMaxLengthString) GetAtBRANDAt7825() MaxLengthAtBRANDAt7825String {
 	if o == nil {
-		return MaxLengthAtBRANDAt7822String{}
+		return MaxLengthAtBRANDAt7825String{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type PatternAtBRANDAt7822String struct {
+type PatternAtBRANDAt7825String struct {
 }
 
-func (p PatternAtBRANDAt7822String) MarshalJSON() ([]byte, error) {
+func (p PatternAtBRANDAt7825String) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *PatternAtBRANDAt7822String) UnmarshalJSON(data []byte) error {
+func (p *PatternAtBRANDAt7825String) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
@@ -2892,7 +2892,7 @@ func (p *PatternAtBRANDAt7822String) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectPatternString struct {
-	AtBRANDAt7822 PatternAtBRANDAt7822String `json:"__@BRAND@7822"`
+	AtBRANDAt7825 PatternAtBRANDAt7825String `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectPatternString) MarshalJSON() ([]byte, error) {
@@ -2900,17 +2900,17 @@ func (c CreateIntegrationStoreDirectPatternString) MarshalJSON() ([]byte, error)
 }
 
 func (c *CreateIntegrationStoreDirectPatternString) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPatternString) GetAtBRANDAt7822() PatternAtBRANDAt7822String {
+func (o *CreateIntegrationStoreDirectPatternString) GetAtBRANDAt7825() PatternAtBRANDAt7825String {
 	if o == nil {
-		return PatternAtBRANDAt7822String{}
+		return PatternAtBRANDAt7825String{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectItemsString struct {
@@ -4324,14 +4324,14 @@ func (o *CreateIntegrationStoreDirectUIOption1) GetHidden() *CreateIntegrationSt
 	return o.Hidden
 }
 
-type MaxLengthAtBRANDAt78222 struct {
+type MaxLengthAtBRANDAt78252 struct {
 }
 
-func (m MaxLengthAtBRANDAt78222) MarshalJSON() ([]byte, error) {
+func (m MaxLengthAtBRANDAt78252) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MaxLengthAtBRANDAt78222) UnmarshalJSON(data []byte) error {
+func (m *MaxLengthAtBRANDAt78252) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -4339,7 +4339,7 @@ func (m *MaxLengthAtBRANDAt78222) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMaxLength2 struct {
-	AtBRANDAt7822 MaxLengthAtBRANDAt78222 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MaxLengthAtBRANDAt78252 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMaxLength2) MarshalJSON() ([]byte, error) {
@@ -4347,27 +4347,27 @@ func (c CreateIntegrationStoreDirectMaxLength2) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectMaxLength2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMaxLength2) GetAtBRANDAt7822() MaxLengthAtBRANDAt78222 {
+func (o *CreateIntegrationStoreDirectMaxLength2) GetAtBRANDAt7825() MaxLengthAtBRANDAt78252 {
 	if o == nil {
-		return MaxLengthAtBRANDAt78222{}
+		return MaxLengthAtBRANDAt78252{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type MinLengthAtBRANDAt78222 struct {
+type MinLengthAtBRANDAt78252 struct {
 }
 
-func (m MinLengthAtBRANDAt78222) MarshalJSON() ([]byte, error) {
+func (m MinLengthAtBRANDAt78252) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MinLengthAtBRANDAt78222) UnmarshalJSON(data []byte) error {
+func (m *MinLengthAtBRANDAt78252) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -4375,7 +4375,7 @@ func (m *MinLengthAtBRANDAt78222) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMinLength2 struct {
-	AtBRANDAt7822 MinLengthAtBRANDAt78222 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MinLengthAtBRANDAt78252 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMinLength2) MarshalJSON() ([]byte, error) {
@@ -4383,27 +4383,27 @@ func (c CreateIntegrationStoreDirectMinLength2) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectMinLength2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMinLength2) GetAtBRANDAt7822() MinLengthAtBRANDAt78222 {
+func (o *CreateIntegrationStoreDirectMinLength2) GetAtBRANDAt7825() MinLengthAtBRANDAt78252 {
 	if o == nil {
-		return MinLengthAtBRANDAt78222{}
+		return MinLengthAtBRANDAt78252{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type PatternAtBRANDAt78222 struct {
+type PatternAtBRANDAt78252 struct {
 }
 
-func (p PatternAtBRANDAt78222) MarshalJSON() ([]byte, error) {
+func (p PatternAtBRANDAt78252) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *PatternAtBRANDAt78222) UnmarshalJSON(data []byte) error {
+func (p *PatternAtBRANDAt78252) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
@@ -4411,7 +4411,7 @@ func (p *PatternAtBRANDAt78222) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectPattern2 struct {
-	AtBRANDAt7822 PatternAtBRANDAt78222 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 PatternAtBRANDAt78252 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectPattern2) MarshalJSON() ([]byte, error) {
@@ -4419,17 +4419,17 @@ func (c CreateIntegrationStoreDirectPattern2) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectPattern2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPattern2) GetAtBRANDAt7822() PatternAtBRANDAt78222 {
+func (o *CreateIntegrationStoreDirectPattern2) GetAtBRANDAt7825() PatternAtBRANDAt78252 {
 	if o == nil {
-		return PatternAtBRANDAt78222{}
+		return PatternAtBRANDAt78252{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectUIReadOnlyEnum5 string
@@ -7229,14 +7229,14 @@ func (e *CreateIntegrationStoreDirectUIControlInput1) UnmarshalJSON(data []byte)
 	}
 }
 
-type MaxLengthAtBRANDAt78221 struct {
+type MaxLengthAtBRANDAt78251 struct {
 }
 
-func (m MaxLengthAtBRANDAt78221) MarshalJSON() ([]byte, error) {
+func (m MaxLengthAtBRANDAt78251) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MaxLengthAtBRANDAt78221) UnmarshalJSON(data []byte) error {
+func (m *MaxLengthAtBRANDAt78251) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -7244,7 +7244,7 @@ func (m *MaxLengthAtBRANDAt78221) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMaxLength1 struct {
-	AtBRANDAt7822 MaxLengthAtBRANDAt78221 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MaxLengthAtBRANDAt78251 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMaxLength1) MarshalJSON() ([]byte, error) {
@@ -7252,27 +7252,27 @@ func (c CreateIntegrationStoreDirectMaxLength1) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectMaxLength1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMaxLength1) GetAtBRANDAt7822() MaxLengthAtBRANDAt78221 {
+func (o *CreateIntegrationStoreDirectMaxLength1) GetAtBRANDAt7825() MaxLengthAtBRANDAt78251 {
 	if o == nil {
-		return MaxLengthAtBRANDAt78221{}
+		return MaxLengthAtBRANDAt78251{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type MinLengthAtBRANDAt78221 struct {
+type MinLengthAtBRANDAt78251 struct {
 }
 
-func (m MinLengthAtBRANDAt78221) MarshalJSON() ([]byte, error) {
+func (m MinLengthAtBRANDAt78251) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(m, "", false)
 }
 
-func (m *MinLengthAtBRANDAt78221) UnmarshalJSON(data []byte) error {
+func (m *MinLengthAtBRANDAt78251) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
@@ -7280,7 +7280,7 @@ func (m *MinLengthAtBRANDAt78221) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectMinLength1 struct {
-	AtBRANDAt7822 MinLengthAtBRANDAt78221 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 MinLengthAtBRANDAt78251 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectMinLength1) MarshalJSON() ([]byte, error) {
@@ -7288,27 +7288,27 @@ func (c CreateIntegrationStoreDirectMinLength1) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectMinLength1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectMinLength1) GetAtBRANDAt7822() MinLengthAtBRANDAt78221 {
+func (o *CreateIntegrationStoreDirectMinLength1) GetAtBRANDAt7825() MinLengthAtBRANDAt78251 {
 	if o == nil {
-		return MinLengthAtBRANDAt78221{}
+		return MinLengthAtBRANDAt78251{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
-type PatternAtBRANDAt78221 struct {
+type PatternAtBRANDAt78251 struct {
 }
 
-func (p PatternAtBRANDAt78221) MarshalJSON() ([]byte, error) {
+func (p PatternAtBRANDAt78251) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *PatternAtBRANDAt78221) UnmarshalJSON(data []byte) error {
+func (p *PatternAtBRANDAt78251) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
@@ -7316,7 +7316,7 @@ func (p *PatternAtBRANDAt78221) UnmarshalJSON(data []byte) error {
 }
 
 type CreateIntegrationStoreDirectPattern1 struct {
-	AtBRANDAt7822 PatternAtBRANDAt78221 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 PatternAtBRANDAt78251 `json:"__@BRAND@7825"`
 }
 
 func (c CreateIntegrationStoreDirectPattern1) MarshalJSON() ([]byte, error) {
@@ -7324,17 +7324,17 @@ func (c CreateIntegrationStoreDirectPattern1) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIntegrationStoreDirectPattern1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7822"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@7825"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateIntegrationStoreDirectPattern1) GetAtBRANDAt7822() PatternAtBRANDAt78221 {
+func (o *CreateIntegrationStoreDirectPattern1) GetAtBRANDAt7825() PatternAtBRANDAt78251 {
 	if o == nil {
-		return PatternAtBRANDAt78221{}
+		return PatternAtBRANDAt78251{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectUIReadOnlyEnum1 string
@@ -8535,18 +8535,18 @@ func (o *Guide) GetSteps() []Step {
 	return o.Steps
 }
 
-type ValueAtBRANDAt7822 struct {
+type ValueAtBRANDAt7825 struct {
 }
 
 type CreateIntegrationStoreDirectValue struct {
-	AtBRANDAt7822 ValueAtBRANDAt7822 `json:"__@BRAND@7822"`
+	AtBRANDAt7825 ValueAtBRANDAt7825 `json:"__@BRAND@7825"`
 }
 
-func (o *CreateIntegrationStoreDirectValue) GetAtBRANDAt7822() ValueAtBRANDAt7822 {
+func (o *CreateIntegrationStoreDirectValue) GetAtBRANDAt7825() ValueAtBRANDAt7825 {
 	if o == nil {
-		return ValueAtBRANDAt7822{}
+		return ValueAtBRANDAt7825{}
 	}
-	return o.AtBRANDAt7822
+	return o.AtBRANDAt7825
 }
 
 type CreateIntegrationStoreDirectDisabledEnum string

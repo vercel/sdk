@@ -22,6 +22,9 @@ test("Access Groups Read Access Group Id", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
+    teamPermissions: [
+      "CreateProject",
+    ],
     isDsyncManaged: true,
     name: "my-access-group",
     createdAt: "1588720733602",
@@ -33,9 +36,6 @@ test("Access Groups Read Access Group Id", async () => {
     teamRoles: [
       "DEVELOPER",
       "BILLING",
-    ],
-    teamPermissions: [
-      "CreateProject",
     ],
   });
 });
@@ -56,6 +56,9 @@ test("Access Groups Read Access Group Name", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
+    teamPermissions: [
+      "CreateProject",
+    ],
     isDsyncManaged: true,
     name: "my-access-group",
     createdAt: "1588720733602",
@@ -67,9 +70,6 @@ test("Access Groups Read Access Group Name", async () => {
     teamRoles: [
       "DEVELOPER",
       "BILLING",
-    ],
-    teamPermissions: [
-      "CreateProject",
     ],
   });
 });
@@ -107,9 +107,7 @@ test("Access Groups Update Access Group", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    entitlements: [
-      "v0",
-    ],
+    entitlements: [],
     name: "my-access-group",
     createdAt: "1588720733602",
     teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",

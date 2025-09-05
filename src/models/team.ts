@@ -189,10 +189,26 @@ export type DefaultDeploymentProtection = {
  * Default deployment expiration settings for this team
  */
 export type DefaultExpirationSettings = {
-  expiration?: string | undefined;
-  expirationProduction?: string | undefined;
-  expirationCanceled?: string | undefined;
-  expirationErrored?: string | undefined;
+  /**
+   * Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
+   */
+  expirationDays?: number | undefined;
+  /**
+   * Number of days to keep production deployments before soft deletion.
+   */
+  expirationDaysProduction?: number | undefined;
+  /**
+   * Number of days to keep canceled deployments before soft deletion.
+   */
+  expirationDaysCanceled?: number | undefined;
+  /**
+   * Number of days to keep errored deployments before soft deletion.
+   */
+  expirationDaysErrored?: number | undefined;
+  /**
+   * Minimum number of production deployments to keep for this project, even if they are over the production expiration limit.
+   */
+  deploymentsToKeep?: number | undefined;
 };
 
 /**
@@ -1193,18 +1209,20 @@ export const DefaultExpirationSettings$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  expiration: z.string().optional(),
-  expirationProduction: z.string().optional(),
-  expirationCanceled: z.string().optional(),
-  expirationErrored: z.string().optional(),
+  expirationDays: z.number().optional(),
+  expirationDaysProduction: z.number().optional(),
+  expirationDaysCanceled: z.number().optional(),
+  expirationDaysErrored: z.number().optional(),
+  deploymentsToKeep: z.number().optional(),
 });
 
 /** @internal */
 export type DefaultExpirationSettings$Outbound = {
-  expiration?: string | undefined;
-  expirationProduction?: string | undefined;
-  expirationCanceled?: string | undefined;
-  expirationErrored?: string | undefined;
+  expirationDays?: number | undefined;
+  expirationDaysProduction?: number | undefined;
+  expirationDaysCanceled?: number | undefined;
+  expirationDaysErrored?: number | undefined;
+  deploymentsToKeep?: number | undefined;
 };
 
 /** @internal */
@@ -1213,10 +1231,11 @@ export const DefaultExpirationSettings$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DefaultExpirationSettings
 > = z.object({
-  expiration: z.string().optional(),
-  expirationProduction: z.string().optional(),
-  expirationCanceled: z.string().optional(),
-  expirationErrored: z.string().optional(),
+  expirationDays: z.number().optional(),
+  expirationDaysProduction: z.number().optional(),
+  expirationDaysCanceled: z.number().optional(),
+  expirationDaysErrored: z.number().optional(),
+  deploymentsToKeep: z.number().optional(),
 });
 
 /**

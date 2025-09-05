@@ -632,10 +632,16 @@ func (o *DefaultDeploymentProtection) GetSsoProtection() *TeamSsoProtection {
 
 // DefaultExpirationSettings - Default deployment expiration settings for this team
 type DefaultExpirationSettings struct {
-	Expiration           *string `json:"expiration,omitempty"`
-	ExpirationProduction *string `json:"expirationProduction,omitempty"`
-	ExpirationCanceled   *string `json:"expirationCanceled,omitempty"`
-	ExpirationErrored    *string `json:"expirationErrored,omitempty"`
+	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
+	ExpirationDays *float64 `json:"expirationDays,omitempty"`
+	// Number of days to keep production deployments before soft deletion.
+	ExpirationDaysProduction *float64 `json:"expirationDaysProduction,omitempty"`
+	// Number of days to keep canceled deployments before soft deletion.
+	ExpirationDaysCanceled *float64 `json:"expirationDaysCanceled,omitempty"`
+	// Number of days to keep errored deployments before soft deletion.
+	ExpirationDaysErrored *float64 `json:"expirationDaysErrored,omitempty"`
+	// Minimum number of production deployments to keep for this project, even if they are over the production expiration limit.
+	DeploymentsToKeep *float64 `json:"deploymentsToKeep,omitempty"`
 }
 
 func (d DefaultExpirationSettings) MarshalJSON() ([]byte, error) {
@@ -649,32 +655,39 @@ func (d *DefaultExpirationSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DefaultExpirationSettings) GetExpiration() *string {
+func (o *DefaultExpirationSettings) GetExpirationDays() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Expiration
+	return o.ExpirationDays
 }
 
-func (o *DefaultExpirationSettings) GetExpirationProduction() *string {
+func (o *DefaultExpirationSettings) GetExpirationDaysProduction() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.ExpirationProduction
+	return o.ExpirationDaysProduction
 }
 
-func (o *DefaultExpirationSettings) GetExpirationCanceled() *string {
+func (o *DefaultExpirationSettings) GetExpirationDaysCanceled() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.ExpirationCanceled
+	return o.ExpirationDaysCanceled
 }
 
-func (o *DefaultExpirationSettings) GetExpirationErrored() *string {
+func (o *DefaultExpirationSettings) GetExpirationDaysErrored() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.ExpirationErrored
+	return o.ExpirationDaysErrored
+}
+
+func (o *DefaultExpirationSettings) GetDeploymentsToKeep() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentsToKeep
 }
 
 // TeamEnablePreviewFeedback - Whether toolbar is enabled on preview deployments

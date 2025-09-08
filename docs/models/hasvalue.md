@@ -1,17 +1,17 @@
 # HasValue
 
-
-## Supported Types
-
-### `string`
+## Example Usage
 
 ```typescript
-const value: string = "<value>";
+import { HasValue } from "@vercel/sdk/models/updateprojectdatacacheop.js";
+
+let value: HasValue = {
+  eq: "<value>",
+};
 ```
 
-### `models.CreateDeploymentValue2`
+## Fields
 
-```typescript
-const value: models.CreateDeploymentValue2 = {};
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `eq`               | *string*           | :heavy_check_mark: | N/A                |

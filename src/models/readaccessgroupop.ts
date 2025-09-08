@@ -20,6 +20,21 @@ export type ReadAccessGroupRequest = {
   slug?: string | undefined;
 };
 
+export const ReadAccessGroupTeamPermissions = {
+  IntegrationManager: "IntegrationManager",
+  CreateProject: "CreateProject",
+  FullProductionDeployment: "FullProductionDeployment",
+  UsageViewer: "UsageViewer",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
+} as const;
+export type ReadAccessGroupTeamPermissions = ClosedEnum<
+  typeof ReadAccessGroupTeamPermissions
+>;
+
 export const ReadAccessGroupEntitlements = {
   V0: "v0",
 } as const;
@@ -28,6 +43,7 @@ export type ReadAccessGroupEntitlements = ClosedEnum<
 >;
 
 export type ReadAccessGroupResponseBody = {
+  teamPermissions?: Array<ReadAccessGroupTeamPermissions> | undefined;
   entitlements?: Array<ReadAccessGroupEntitlements> | undefined;
   isDsyncManaged: boolean;
   /**
@@ -62,10 +78,6 @@ export type ReadAccessGroupResponseBody = {
    * Roles that the team has in the access group.
    */
   teamRoles?: Array<string> | undefined;
-  /**
-   * Permissions that the team has in the access group.
-   */
-  teamPermissions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -129,6 +141,27 @@ export function readAccessGroupRequestFromJSON(
 }
 
 /** @internal */
+export const ReadAccessGroupTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof ReadAccessGroupTeamPermissions
+> = z.nativeEnum(ReadAccessGroupTeamPermissions);
+
+/** @internal */
+export const ReadAccessGroupTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof ReadAccessGroupTeamPermissions
+> = ReadAccessGroupTeamPermissions$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ReadAccessGroupTeamPermissions$ {
+  /** @deprecated use `ReadAccessGroupTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = ReadAccessGroupTeamPermissions$inboundSchema;
+  /** @deprecated use `ReadAccessGroupTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = ReadAccessGroupTeamPermissions$outboundSchema;
+}
+
+/** @internal */
 export const ReadAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupEntitlements
 > = z.nativeEnum(ReadAccessGroupEntitlements);
@@ -155,6 +188,8 @@ export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  teamPermissions: z.array(ReadAccessGroupTeamPermissions$inboundSchema)
+    .optional(),
   entitlements: z.array(ReadAccessGroupEntitlements$inboundSchema).optional(),
   isDsyncManaged: z.boolean(),
   name: z.string(),
@@ -165,11 +200,11 @@ export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   membersCount: z.number(),
   projectsCount: z.number(),
   teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
 });
 
 /** @internal */
 export type ReadAccessGroupResponseBody$Outbound = {
+  teamPermissions?: Array<string> | undefined;
   entitlements?: Array<string> | undefined;
   isDsyncManaged: boolean;
   name: string;
@@ -180,7 +215,6 @@ export type ReadAccessGroupResponseBody$Outbound = {
   membersCount: number;
   projectsCount: number;
   teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -189,6 +223,8 @@ export const ReadAccessGroupResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ReadAccessGroupResponseBody
 > = z.object({
+  teamPermissions: z.array(ReadAccessGroupTeamPermissions$outboundSchema)
+    .optional(),
   entitlements: z.array(ReadAccessGroupEntitlements$outboundSchema).optional(),
   isDsyncManaged: z.boolean(),
   name: z.string(),
@@ -199,7 +235,6 @@ export const ReadAccessGroupResponseBody$outboundSchema: z.ZodType<
   membersCount: z.number(),
   projectsCount: z.number(),
   teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
 });
 
 /**

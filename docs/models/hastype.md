@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { HasType } from "@vercel/sdk/models/createdeploymentop.js";
+import { HasType } from "@vercel/sdk/models/updateprojectdatacacheop.js";
 
-let value: HasType = "host";
+let value: HasType = "header";
 ```
 
 ## Values
 
 ```typescript
-"host"
+"header"
 ```

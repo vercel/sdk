@@ -6,11 +6,11 @@
 import { UpdateProjectLinkProjectsResponse200ApplicationJSONType } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectLinkProjectsResponse200ApplicationJSONType =
-  "github-custom-host";
+  "bitbucket";
 ```
 
 ## Values
 
 ```typescript
-"github-custom-host"
+"bitbucket"
 ```

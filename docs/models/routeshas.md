@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.CancelDeploymentHas1`
+### `models.CreateDeploymentHas1`
 
 ```typescript
-const value: models.CancelDeploymentHas1 = {
+const value: models.CreateDeploymentHas1 = {
   type: "host",
   value: "<value>",
 };
 ```
 
-### `models.CancelDeploymentHas2`
+### `models.CreateDeploymentHas2`
 
 ```typescript
-const value: models.CancelDeploymentHas2 = {
+const value: models.CreateDeploymentHas2 = {
   type: "query",
   key: "<key>",
 };

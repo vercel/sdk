@@ -1,0 +1,32 @@
+# CreateProjectBlockHistory3
+
+## Example Usage
+
+```typescript
+import { CreateProjectBlockHistory3 } from "@vercel/sdk/models/createprojectop.js";
+
+let value: CreateProjectBlockHistory3 = {
+  action: "route-blocked",
+  route: {
+    has: [],
+    mitigate: {
+      action: "block_legal_cwc",
+    },
+  },
+  reason: "<value>",
+  createdAt: 8396.94,
+};
+```
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                               | [models.CreateProjectBlockHistoryProjectsResponseAction](../models/createprojectblockhistoryprojectsresponseaction.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `route`                                                                                                                | *models.CreateProjectBlockHistoryRoute*                                                                                | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `reason`                                                                                                               | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `createdAt`                                                                                                            | *number*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `caseId`                                                                                                               | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `actor`                                                                                                                | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `comment`                                                                                                              | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `isCascading`                                                                                                          | *boolean*                                                                                                              | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |

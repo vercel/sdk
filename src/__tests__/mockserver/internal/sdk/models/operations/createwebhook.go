@@ -63,18 +63,19 @@ const (
 	CreateWebhookEventRequestDeploymentChecksFailed                             CreateWebhookEventRequest = "deployment.checks.failed"
 	CreateWebhookEventRequestDeploymentChecksSucceeded                          CreateWebhookEventRequest = "deployment.checks.succeeded"
 	CreateWebhookEventRequestDeploymentChecksCompleted                          CreateWebhookEventRequest = "deployment-checks-completed"
-	CreateWebhookEventRequestDeploymentReadyLegacy                              CreateWebhookEventRequest = "deployment-ready"
-	CreateWebhookEventRequestDeploymentPrepared                                 CreateWebhookEventRequest = "deployment-prepared"
-	CreateWebhookEventRequestDeploymentErrorLegacy                              CreateWebhookEventRequest = "deployment-error"
-	CreateWebhookEventRequestDeploymentCheckRerequestedLegacy                   CreateWebhookEventRequest = "deployment-check-rerequested"
-	CreateWebhookEventRequestDeploymentCanceledLegacy                           CreateWebhookEventRequest = "deployment-canceled"
-	CreateWebhookEventRequestProjectCreatedLegacy                               CreateWebhookEventRequest = "project-created"
-	CreateWebhookEventRequestProjectRemovedLegacy                               CreateWebhookEventRequest = "project-removed"
-	CreateWebhookEventRequestDomainCreatedLegacy                                CreateWebhookEventRequest = "domain-created"
+	CreateWebhookEventRequestDeploymentReadyHyphen                              CreateWebhookEventRequest = "deployment-ready"
+	CreateWebhookEventRequestDeploymentPreparedHyphen                           CreateWebhookEventRequest = "deployment-prepared"
+	CreateWebhookEventRequestDeploymentErrorHyphen                              CreateWebhookEventRequest = "deployment-error"
+	CreateWebhookEventRequestDeploymentCheckRerequestedHyphen                   CreateWebhookEventRequest = "deployment-check-rerequested"
+	CreateWebhookEventRequestDeploymentCanceledHyphen                           CreateWebhookEventRequest = "deployment-canceled"
+	CreateWebhookEventRequestProjectCreatedHyphen                               CreateWebhookEventRequest = "project-created"
+	CreateWebhookEventRequestProjectRemovedHyphen                               CreateWebhookEventRequest = "project-removed"
+	CreateWebhookEventRequestDomainCreatedHyphen                                CreateWebhookEventRequest = "domain-created"
 	CreateWebhookEventRequestDeployment                                         CreateWebhookEventRequest = "deployment"
-	CreateWebhookEventRequestIntegrationConfigurationPermissionUpdated          CreateWebhookEventRequest = "integration-configuration-permission-updated"
-	CreateWebhookEventRequestIntegrationConfigurationRemovedLegacy              CreateWebhookEventRequest = "integration-configuration-removed"
-	CreateWebhookEventRequestIntegrationConfigurationScopeChangeConfirmedLegacy CreateWebhookEventRequest = "integration-configuration-scope-change-confirmed"
+	CreateWebhookEventRequestIntegrationConfigurationPermissionUpdatedHyphen    CreateWebhookEventRequest = "integration-configuration-permission-updated"
+	CreateWebhookEventRequestIntegrationConfigurationRemovedHyphen              CreateWebhookEventRequest = "integration-configuration-removed"
+	CreateWebhookEventRequestIntegrationConfigurationScopeChangeConfirmedHyphen CreateWebhookEventRequest = "integration-configuration-scope-change-confirmed"
+	CreateWebhookEventRequestMarketplaceMemberChanged                           CreateWebhookEventRequest = "marketplace.member.changed"
 	CreateWebhookEventRequestMarketplaceInvoiceCreated                          CreateWebhookEventRequest = "marketplace.invoice.created"
 	CreateWebhookEventRequestMarketplaceInvoicePaid                             CreateWebhookEventRequest = "marketplace.invoice.paid"
 	CreateWebhookEventRequestMarketplaceInvoiceNotpaid                          CreateWebhookEventRequest = "marketplace.invoice.notpaid"
@@ -221,6 +222,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "integration-configuration-scope-change-confirmed":
 		fallthrough
+	case "marketplace.member.changed":
+		fallthrough
 	case "marketplace.invoice.created":
 		fallthrough
 	case "marketplace.invoice.paid":
@@ -353,18 +356,19 @@ const (
 	CreateWebhookEventResponseDeploymentChecksFailed                             CreateWebhookEventResponse = "deployment.checks.failed"
 	CreateWebhookEventResponseDeploymentChecksSucceeded                          CreateWebhookEventResponse = "deployment.checks.succeeded"
 	CreateWebhookEventResponseDeploymentChecksCompleted                          CreateWebhookEventResponse = "deployment-checks-completed"
-	CreateWebhookEventResponseDeploymentReadyLegacy                              CreateWebhookEventResponse = "deployment-ready"
-	CreateWebhookEventResponseDeploymentPrepared                                 CreateWebhookEventResponse = "deployment-prepared"
-	CreateWebhookEventResponseDeploymentErrorLegacy                              CreateWebhookEventResponse = "deployment-error"
-	CreateWebhookEventResponseDeploymentCheckRerequestedLegacy                   CreateWebhookEventResponse = "deployment-check-rerequested"
-	CreateWebhookEventResponseDeploymentCanceledLegacy                           CreateWebhookEventResponse = "deployment-canceled"
-	CreateWebhookEventResponseProjectCreatedLegacy                               CreateWebhookEventResponse = "project-created"
-	CreateWebhookEventResponseProjectRemovedLegacy                               CreateWebhookEventResponse = "project-removed"
-	CreateWebhookEventResponseDomainCreatedLegacy                                CreateWebhookEventResponse = "domain-created"
+	CreateWebhookEventResponseDeploymentReadyHyphen                              CreateWebhookEventResponse = "deployment-ready"
+	CreateWebhookEventResponseDeploymentPreparedHyphen                           CreateWebhookEventResponse = "deployment-prepared"
+	CreateWebhookEventResponseDeploymentErrorHyphen                              CreateWebhookEventResponse = "deployment-error"
+	CreateWebhookEventResponseDeploymentCheckRerequestedHyphen                   CreateWebhookEventResponse = "deployment-check-rerequested"
+	CreateWebhookEventResponseDeploymentCanceledHyphen                           CreateWebhookEventResponse = "deployment-canceled"
+	CreateWebhookEventResponseProjectCreatedHyphen                               CreateWebhookEventResponse = "project-created"
+	CreateWebhookEventResponseProjectRemovedHyphen                               CreateWebhookEventResponse = "project-removed"
+	CreateWebhookEventResponseDomainCreatedHyphen                                CreateWebhookEventResponse = "domain-created"
 	CreateWebhookEventResponseDeployment                                         CreateWebhookEventResponse = "deployment"
-	CreateWebhookEventResponseIntegrationConfigurationPermissionUpdated          CreateWebhookEventResponse = "integration-configuration-permission-updated"
-	CreateWebhookEventResponseIntegrationConfigurationRemovedLegacy              CreateWebhookEventResponse = "integration-configuration-removed"
-	CreateWebhookEventResponseIntegrationConfigurationScopeChangeConfirmedLegacy CreateWebhookEventResponse = "integration-configuration-scope-change-confirmed"
+	CreateWebhookEventResponseIntegrationConfigurationPermissionUpdatedHyphen    CreateWebhookEventResponse = "integration-configuration-permission-updated"
+	CreateWebhookEventResponseIntegrationConfigurationRemovedHyphen              CreateWebhookEventResponse = "integration-configuration-removed"
+	CreateWebhookEventResponseIntegrationConfigurationScopeChangeConfirmedHyphen CreateWebhookEventResponse = "integration-configuration-scope-change-confirmed"
+	CreateWebhookEventResponseMarketplaceMemberChanged                           CreateWebhookEventResponse = "marketplace.member.changed"
 	CreateWebhookEventResponseMarketplaceInvoiceCreated                          CreateWebhookEventResponse = "marketplace.invoice.created"
 	CreateWebhookEventResponseMarketplaceInvoicePaid                             CreateWebhookEventResponse = "marketplace.invoice.paid"
 	CreateWebhookEventResponseMarketplaceInvoiceNotpaid                          CreateWebhookEventResponse = "marketplace.invoice.notpaid"
@@ -510,6 +514,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "integration-configuration-removed":
 		fallthrough
 	case "integration-configuration-scope-change-confirmed":
+		fallthrough
+	case "marketplace.member.changed":
 		fallthrough
 	case "marketplace.invoice.created":
 		fallthrough

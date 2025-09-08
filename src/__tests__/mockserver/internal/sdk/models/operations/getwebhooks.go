@@ -95,18 +95,19 @@ const (
 	GetWebhooksEvent2DeploymentChecksFailed                             GetWebhooksEvent2 = "deployment.checks.failed"
 	GetWebhooksEvent2DeploymentChecksSucceeded                          GetWebhooksEvent2 = "deployment.checks.succeeded"
 	GetWebhooksEvent2DeploymentChecksCompleted                          GetWebhooksEvent2 = "deployment-checks-completed"
-	GetWebhooksEvent2DeploymentReadyLegacy                              GetWebhooksEvent2 = "deployment-ready"
-	GetWebhooksEvent2DeploymentPrepared                                 GetWebhooksEvent2 = "deployment-prepared"
-	GetWebhooksEvent2DeploymentErrorLegacy                              GetWebhooksEvent2 = "deployment-error"
-	GetWebhooksEvent2DeploymentCheckRerequestedLegacy                   GetWebhooksEvent2 = "deployment-check-rerequested"
-	GetWebhooksEvent2DeploymentCanceledLegacy                           GetWebhooksEvent2 = "deployment-canceled"
-	GetWebhooksEvent2ProjectCreatedLegacy                               GetWebhooksEvent2 = "project-created"
-	GetWebhooksEvent2ProjectRemovedLegacy                               GetWebhooksEvent2 = "project-removed"
-	GetWebhooksEvent2DomainCreatedLegacy                                GetWebhooksEvent2 = "domain-created"
+	GetWebhooksEvent2DeploymentReadyHyphen                              GetWebhooksEvent2 = "deployment-ready"
+	GetWebhooksEvent2DeploymentPreparedHyphen                           GetWebhooksEvent2 = "deployment-prepared"
+	GetWebhooksEvent2DeploymentErrorHyphen                              GetWebhooksEvent2 = "deployment-error"
+	GetWebhooksEvent2DeploymentCheckRerequestedHyphen                   GetWebhooksEvent2 = "deployment-check-rerequested"
+	GetWebhooksEvent2DeploymentCanceledHyphen                           GetWebhooksEvent2 = "deployment-canceled"
+	GetWebhooksEvent2ProjectCreatedHyphen                               GetWebhooksEvent2 = "project-created"
+	GetWebhooksEvent2ProjectRemovedHyphen                               GetWebhooksEvent2 = "project-removed"
+	GetWebhooksEvent2DomainCreatedHyphen                                GetWebhooksEvent2 = "domain-created"
 	GetWebhooksEvent2Deployment                                         GetWebhooksEvent2 = "deployment"
-	GetWebhooksEvent2IntegrationConfigurationPermissionUpdated          GetWebhooksEvent2 = "integration-configuration-permission-updated"
-	GetWebhooksEvent2IntegrationConfigurationRemovedLegacy              GetWebhooksEvent2 = "integration-configuration-removed"
-	GetWebhooksEvent2IntegrationConfigurationScopeChangeConfirmedLegacy GetWebhooksEvent2 = "integration-configuration-scope-change-confirmed"
+	GetWebhooksEvent2IntegrationConfigurationPermissionUpdatedHyphen    GetWebhooksEvent2 = "integration-configuration-permission-updated"
+	GetWebhooksEvent2IntegrationConfigurationRemovedHyphen              GetWebhooksEvent2 = "integration-configuration-removed"
+	GetWebhooksEvent2IntegrationConfigurationScopeChangeConfirmedHyphen GetWebhooksEvent2 = "integration-configuration-scope-change-confirmed"
+	GetWebhooksEvent2MarketplaceMemberChanged                           GetWebhooksEvent2 = "marketplace.member.changed"
 	GetWebhooksEvent2MarketplaceInvoiceCreated                          GetWebhooksEvent2 = "marketplace.invoice.created"
 	GetWebhooksEvent2MarketplaceInvoicePaid                             GetWebhooksEvent2 = "marketplace.invoice.paid"
 	GetWebhooksEvent2MarketplaceInvoiceNotpaid                          GetWebhooksEvent2 = "marketplace.invoice.notpaid"
@@ -252,6 +253,8 @@ func (e *GetWebhooksEvent2) UnmarshalJSON(data []byte) error {
 	case "integration-configuration-removed":
 		fallthrough
 	case "integration-configuration-scope-change-confirmed":
+		fallthrough
+	case "marketplace.member.changed":
 		fallthrough
 	case "marketplace.invoice.created":
 		fallthrough
@@ -622,18 +625,19 @@ const (
 	GetWebhooksEvent1DeploymentChecksFailed                             GetWebhooksEvent1 = "deployment.checks.failed"
 	GetWebhooksEvent1DeploymentChecksSucceeded                          GetWebhooksEvent1 = "deployment.checks.succeeded"
 	GetWebhooksEvent1DeploymentChecksCompleted                          GetWebhooksEvent1 = "deployment-checks-completed"
-	GetWebhooksEvent1DeploymentReadyLegacy                              GetWebhooksEvent1 = "deployment-ready"
-	GetWebhooksEvent1DeploymentPrepared                                 GetWebhooksEvent1 = "deployment-prepared"
-	GetWebhooksEvent1DeploymentErrorLegacy                              GetWebhooksEvent1 = "deployment-error"
-	GetWebhooksEvent1DeploymentCheckRerequestedLegacy                   GetWebhooksEvent1 = "deployment-check-rerequested"
-	GetWebhooksEvent1DeploymentCanceledLegacy                           GetWebhooksEvent1 = "deployment-canceled"
-	GetWebhooksEvent1ProjectCreatedLegacy                               GetWebhooksEvent1 = "project-created"
-	GetWebhooksEvent1ProjectRemovedLegacy                               GetWebhooksEvent1 = "project-removed"
-	GetWebhooksEvent1DomainCreatedLegacy                                GetWebhooksEvent1 = "domain-created"
+	GetWebhooksEvent1DeploymentReadyHyphen                              GetWebhooksEvent1 = "deployment-ready"
+	GetWebhooksEvent1DeploymentPreparedHyphen                           GetWebhooksEvent1 = "deployment-prepared"
+	GetWebhooksEvent1DeploymentErrorHyphen                              GetWebhooksEvent1 = "deployment-error"
+	GetWebhooksEvent1DeploymentCheckRerequestedHyphen                   GetWebhooksEvent1 = "deployment-check-rerequested"
+	GetWebhooksEvent1DeploymentCanceledHyphen                           GetWebhooksEvent1 = "deployment-canceled"
+	GetWebhooksEvent1ProjectCreatedHyphen                               GetWebhooksEvent1 = "project-created"
+	GetWebhooksEvent1ProjectRemovedHyphen                               GetWebhooksEvent1 = "project-removed"
+	GetWebhooksEvent1DomainCreatedHyphen                                GetWebhooksEvent1 = "domain-created"
 	GetWebhooksEvent1Deployment                                         GetWebhooksEvent1 = "deployment"
-	GetWebhooksEvent1IntegrationConfigurationPermissionUpdated          GetWebhooksEvent1 = "integration-configuration-permission-updated"
-	GetWebhooksEvent1IntegrationConfigurationRemovedLegacy              GetWebhooksEvent1 = "integration-configuration-removed"
-	GetWebhooksEvent1IntegrationConfigurationScopeChangeConfirmedLegacy GetWebhooksEvent1 = "integration-configuration-scope-change-confirmed"
+	GetWebhooksEvent1IntegrationConfigurationPermissionUpdatedHyphen    GetWebhooksEvent1 = "integration-configuration-permission-updated"
+	GetWebhooksEvent1IntegrationConfigurationRemovedHyphen              GetWebhooksEvent1 = "integration-configuration-removed"
+	GetWebhooksEvent1IntegrationConfigurationScopeChangeConfirmedHyphen GetWebhooksEvent1 = "integration-configuration-scope-change-confirmed"
+	GetWebhooksEvent1MarketplaceMemberChanged                           GetWebhooksEvent1 = "marketplace.member.changed"
 	GetWebhooksEvent1MarketplaceInvoiceCreated                          GetWebhooksEvent1 = "marketplace.invoice.created"
 	GetWebhooksEvent1MarketplaceInvoicePaid                             GetWebhooksEvent1 = "marketplace.invoice.paid"
 	GetWebhooksEvent1MarketplaceInvoiceNotpaid                          GetWebhooksEvent1 = "marketplace.invoice.notpaid"
@@ -779,6 +783,8 @@ func (e *GetWebhooksEvent1) UnmarshalJSON(data []byte) error {
 	case "integration-configuration-removed":
 		fallthrough
 	case "integration-configuration-scope-change-confirmed":
+		fallthrough
+	case "marketplace.member.changed":
 		fallthrough
 	case "marketplace.invoice.created":
 		fallthrough

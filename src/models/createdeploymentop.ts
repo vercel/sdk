@@ -1322,13 +1322,13 @@ export type Routes2 = {
   status?: number | undefined;
 };
 
-export const CreateDeploymentHasType = {
+export const CreateDeploymentHasDeploymentsType = {
   Header: "header",
   Cookie: "cookie",
   Query: "query",
 } as const;
-export type CreateDeploymentHasType = ClosedEnum<
-  typeof CreateDeploymentHasType
+export type CreateDeploymentHasDeploymentsType = ClosedEnum<
+  typeof CreateDeploymentHasDeploymentsType
 >;
 
 export type ValueEq = string | number;
@@ -1347,18 +1347,22 @@ export type CreateDeploymentValue2 = {
   lte?: number | undefined;
 };
 
-export type HasValue = CreateDeploymentValue2 | string;
+export type CreateDeploymentHasDeploymentsValue =
+  | CreateDeploymentValue2
+  | string;
 
-export type Has2 = {
-  type: CreateDeploymentHasType;
+export type CreateDeploymentHas2 = {
+  type: CreateDeploymentHasDeploymentsType;
   key: string;
   value?: CreateDeploymentValue2 | string | undefined;
 };
 
-export const HasType = {
+export const CreateDeploymentHasType = {
   Host: "host",
 } as const;
-export type HasType = ClosedEnum<typeof HasType>;
+export type CreateDeploymentHasType = ClosedEnum<
+  typeof CreateDeploymentHasType
+>;
 
 export type Eq = string | number;
 
@@ -1380,12 +1384,12 @@ export type CreateDeploymentHasValue =
   | CreateDeploymentValueDeploymentsResponse2002
   | string;
 
-export type Has1 = {
-  type: HasType;
+export type CreateDeploymentHas1 = {
+  type: CreateDeploymentHasType;
   value: CreateDeploymentValueDeploymentsResponse2002 | string;
 };
 
-export type Has = Has1 | Has2;
+export type RoutesHas = CreateDeploymentHas1 | CreateDeploymentHas2;
 
 export const CreateDeploymentMissingType = {
   Header: "header",
@@ -1458,7 +1462,7 @@ export const RoutesAction = {
 } as const;
 export type RoutesAction = ClosedEnum<typeof RoutesAction>;
 
-export type CreateDeploymentRoutesMitigate = {
+export type RoutesMitigate = {
   action: RoutesAction;
 };
 
@@ -1493,7 +1497,7 @@ export type Key2 = {
   lte?: number | undefined;
 };
 
-export type Key = Key2 | string;
+export type RoutesKey = Key2 | string;
 
 export type RoutesTarget = {
   key: Key2 | string;
@@ -1524,9 +1528,9 @@ export type Routes1 = {
   check?: boolean | undefined;
   important?: boolean | undefined;
   status?: number | undefined;
-  has?: Array<Has1 | Has2> | undefined;
+  has?: Array<CreateDeploymentHas1 | CreateDeploymentHas2> | undefined;
   missing?: Array<Missing1 | Missing2> | undefined;
-  mitigate?: CreateDeploymentRoutesMitigate | undefined;
+  mitigate?: RoutesMitigate | undefined;
   transforms?: Array<Transforms> | undefined;
   locale?: Locale | undefined;
   /**
@@ -7166,24 +7170,25 @@ export function routes2FromJSON(
 }
 
 /** @internal */
-export const CreateDeploymentHasType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentHasType
-> = z.nativeEnum(CreateDeploymentHasType);
+export const CreateDeploymentHasDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentHasDeploymentsType
+> = z.nativeEnum(CreateDeploymentHasDeploymentsType);
 
 /** @internal */
-export const CreateDeploymentHasType$outboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentHasType
-> = CreateDeploymentHasType$inboundSchema;
+export const CreateDeploymentHasDeploymentsType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentHasDeploymentsType
+> = CreateDeploymentHasDeploymentsType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateDeploymentHasType$ {
-  /** @deprecated use `CreateDeploymentHasType$inboundSchema` instead. */
-  export const inboundSchema = CreateDeploymentHasType$inboundSchema;
-  /** @deprecated use `CreateDeploymentHasType$outboundSchema` instead. */
-  export const outboundSchema = CreateDeploymentHasType$outboundSchema;
+export namespace CreateDeploymentHasDeploymentsType$ {
+  /** @deprecated use `CreateDeploymentHasDeploymentsType$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentHasDeploymentsType$inboundSchema;
+  /** @deprecated use `CreateDeploymentHasDeploymentsType$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateDeploymentHasDeploymentsType$outboundSchema;
 }
 
 /** @internal */
@@ -7312,122 +7317,145 @@ export function createDeploymentValue2FromJSON(
 }
 
 /** @internal */
-export const HasValue$inboundSchema: z.ZodType<
-  HasValue,
+export const CreateDeploymentHasDeploymentsValue$inboundSchema: z.ZodType<
+  CreateDeploymentHasDeploymentsValue,
   z.ZodTypeDef,
   unknown
 > = z.union([z.lazy(() => CreateDeploymentValue2$inboundSchema), z.string()]);
 
 /** @internal */
-export type HasValue$Outbound = CreateDeploymentValue2$Outbound | string;
+export type CreateDeploymentHasDeploymentsValue$Outbound =
+  | CreateDeploymentValue2$Outbound
+  | string;
 
 /** @internal */
-export const HasValue$outboundSchema: z.ZodType<
-  HasValue$Outbound,
+export const CreateDeploymentHasDeploymentsValue$outboundSchema: z.ZodType<
+  CreateDeploymentHasDeploymentsValue$Outbound,
   z.ZodTypeDef,
-  HasValue
+  CreateDeploymentHasDeploymentsValue
 > = z.union([z.lazy(() => CreateDeploymentValue2$outboundSchema), z.string()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HasValue$ {
-  /** @deprecated use `HasValue$inboundSchema` instead. */
-  export const inboundSchema = HasValue$inboundSchema;
-  /** @deprecated use `HasValue$outboundSchema` instead. */
-  export const outboundSchema = HasValue$outboundSchema;
-  /** @deprecated use `HasValue$Outbound` instead. */
-  export type Outbound = HasValue$Outbound;
+export namespace CreateDeploymentHasDeploymentsValue$ {
+  /** @deprecated use `CreateDeploymentHasDeploymentsValue$inboundSchema` instead. */
+  export const inboundSchema =
+    CreateDeploymentHasDeploymentsValue$inboundSchema;
+  /** @deprecated use `CreateDeploymentHasDeploymentsValue$outboundSchema` instead. */
+  export const outboundSchema =
+    CreateDeploymentHasDeploymentsValue$outboundSchema;
+  /** @deprecated use `CreateDeploymentHasDeploymentsValue$Outbound` instead. */
+  export type Outbound = CreateDeploymentHasDeploymentsValue$Outbound;
 }
 
-export function hasValueToJSON(hasValue: HasValue): string {
-  return JSON.stringify(HasValue$outboundSchema.parse(hasValue));
+export function createDeploymentHasDeploymentsValueToJSON(
+  createDeploymentHasDeploymentsValue: CreateDeploymentHasDeploymentsValue,
+): string {
+  return JSON.stringify(
+    CreateDeploymentHasDeploymentsValue$outboundSchema.parse(
+      createDeploymentHasDeploymentsValue,
+    ),
+  );
 }
 
-export function hasValueFromJSON(
+export function createDeploymentHasDeploymentsValueFromJSON(
   jsonString: string,
-): SafeParseResult<HasValue, SDKValidationError> {
+): SafeParseResult<CreateDeploymentHasDeploymentsValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => HasValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HasValue' from JSON`,
+    (x) =>
+      CreateDeploymentHasDeploymentsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentHasDeploymentsValue' from JSON`,
   );
 }
 
 /** @internal */
-export const Has2$inboundSchema: z.ZodType<Has2, z.ZodTypeDef, unknown> = z
-  .object({
-    type: CreateDeploymentHasType$inboundSchema,
-    key: z.string(),
-    value: z.union([
-      z.lazy(() => CreateDeploymentValue2$inboundSchema),
-      z.string(),
-    ]).optional(),
-  });
+export const CreateDeploymentHas2$inboundSchema: z.ZodType<
+  CreateDeploymentHas2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CreateDeploymentHasDeploymentsType$inboundSchema,
+  key: z.string(),
+  value: z.union([
+    z.lazy(() => CreateDeploymentValue2$inboundSchema),
+    z.string(),
+  ]).optional(),
+});
 
 /** @internal */
-export type Has2$Outbound = {
+export type CreateDeploymentHas2$Outbound = {
   type: string;
   key: string;
   value?: CreateDeploymentValue2$Outbound | string | undefined;
 };
 
 /** @internal */
-export const Has2$outboundSchema: z.ZodType<Has2$Outbound, z.ZodTypeDef, Has2> =
-  z.object({
-    type: CreateDeploymentHasType$outboundSchema,
-    key: z.string(),
-    value: z.union([
-      z.lazy(() => CreateDeploymentValue2$outboundSchema),
-      z.string(),
-    ]).optional(),
-  });
+export const CreateDeploymentHas2$outboundSchema: z.ZodType<
+  CreateDeploymentHas2$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentHas2
+> = z.object({
+  type: CreateDeploymentHasDeploymentsType$outboundSchema,
+  key: z.string(),
+  value: z.union([
+    z.lazy(() => CreateDeploymentValue2$outboundSchema),
+    z.string(),
+  ]).optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Has2$ {
-  /** @deprecated use `Has2$inboundSchema` instead. */
-  export const inboundSchema = Has2$inboundSchema;
-  /** @deprecated use `Has2$outboundSchema` instead. */
-  export const outboundSchema = Has2$outboundSchema;
-  /** @deprecated use `Has2$Outbound` instead. */
-  export type Outbound = Has2$Outbound;
+export namespace CreateDeploymentHas2$ {
+  /** @deprecated use `CreateDeploymentHas2$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentHas2$inboundSchema;
+  /** @deprecated use `CreateDeploymentHas2$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentHas2$outboundSchema;
+  /** @deprecated use `CreateDeploymentHas2$Outbound` instead. */
+  export type Outbound = CreateDeploymentHas2$Outbound;
 }
 
-export function has2ToJSON(has2: Has2): string {
-  return JSON.stringify(Has2$outboundSchema.parse(has2));
+export function createDeploymentHas2ToJSON(
+  createDeploymentHas2: CreateDeploymentHas2,
+): string {
+  return JSON.stringify(
+    CreateDeploymentHas2$outboundSchema.parse(createDeploymentHas2),
+  );
 }
 
-export function has2FromJSON(
+export function createDeploymentHas2FromJSON(
   jsonString: string,
-): SafeParseResult<Has2, SDKValidationError> {
+): SafeParseResult<CreateDeploymentHas2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Has2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Has2' from JSON`,
+    (x) => CreateDeploymentHas2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentHas2' from JSON`,
   );
 }
 
 /** @internal */
-export const HasType$inboundSchema: z.ZodNativeEnum<typeof HasType> = z
-  .nativeEnum(HasType);
+export const CreateDeploymentHasType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentHasType
+> = z.nativeEnum(CreateDeploymentHasType);
 
 /** @internal */
-export const HasType$outboundSchema: z.ZodNativeEnum<typeof HasType> =
-  HasType$inboundSchema;
+export const CreateDeploymentHasType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDeploymentHasType
+> = CreateDeploymentHasType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HasType$ {
-  /** @deprecated use `HasType$inboundSchema` instead. */
-  export const inboundSchema = HasType$inboundSchema;
-  /** @deprecated use `HasType$outboundSchema` instead. */
-  export const outboundSchema = HasType$outboundSchema;
+export namespace CreateDeploymentHasType$ {
+  /** @deprecated use `CreateDeploymentHasType$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentHasType$inboundSchema;
+  /** @deprecated use `CreateDeploymentHasType$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentHasType$outboundSchema;
 }
 
 /** @internal */
@@ -7624,97 +7652,117 @@ export function createDeploymentHasValueFromJSON(
 }
 
 /** @internal */
-export const Has1$inboundSchema: z.ZodType<Has1, z.ZodTypeDef, unknown> = z
-  .object({
-    type: HasType$inboundSchema,
-    value: z.union([
-      z.lazy(() => CreateDeploymentValueDeploymentsResponse2002$inboundSchema),
-      z.string(),
-    ]),
-  });
+export const CreateDeploymentHas1$inboundSchema: z.ZodType<
+  CreateDeploymentHas1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: CreateDeploymentHasType$inboundSchema,
+  value: z.union([
+    z.lazy(() => CreateDeploymentValueDeploymentsResponse2002$inboundSchema),
+    z.string(),
+  ]),
+});
 
 /** @internal */
-export type Has1$Outbound = {
+export type CreateDeploymentHas1$Outbound = {
   type: string;
   value: CreateDeploymentValueDeploymentsResponse2002$Outbound | string;
 };
 
 /** @internal */
-export const Has1$outboundSchema: z.ZodType<Has1$Outbound, z.ZodTypeDef, Has1> =
-  z.object({
-    type: HasType$outboundSchema,
-    value: z.union([
-      z.lazy(() => CreateDeploymentValueDeploymentsResponse2002$outboundSchema),
-      z.string(),
-    ]),
-  });
+export const CreateDeploymentHas1$outboundSchema: z.ZodType<
+  CreateDeploymentHas1$Outbound,
+  z.ZodTypeDef,
+  CreateDeploymentHas1
+> = z.object({
+  type: CreateDeploymentHasType$outboundSchema,
+  value: z.union([
+    z.lazy(() => CreateDeploymentValueDeploymentsResponse2002$outboundSchema),
+    z.string(),
+  ]),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Has1$ {
-  /** @deprecated use `Has1$inboundSchema` instead. */
-  export const inboundSchema = Has1$inboundSchema;
-  /** @deprecated use `Has1$outboundSchema` instead. */
-  export const outboundSchema = Has1$outboundSchema;
-  /** @deprecated use `Has1$Outbound` instead. */
-  export type Outbound = Has1$Outbound;
+export namespace CreateDeploymentHas1$ {
+  /** @deprecated use `CreateDeploymentHas1$inboundSchema` instead. */
+  export const inboundSchema = CreateDeploymentHas1$inboundSchema;
+  /** @deprecated use `CreateDeploymentHas1$outboundSchema` instead. */
+  export const outboundSchema = CreateDeploymentHas1$outboundSchema;
+  /** @deprecated use `CreateDeploymentHas1$Outbound` instead. */
+  export type Outbound = CreateDeploymentHas1$Outbound;
 }
 
-export function has1ToJSON(has1: Has1): string {
-  return JSON.stringify(Has1$outboundSchema.parse(has1));
+export function createDeploymentHas1ToJSON(
+  createDeploymentHas1: CreateDeploymentHas1,
+): string {
+  return JSON.stringify(
+    CreateDeploymentHas1$outboundSchema.parse(createDeploymentHas1),
+  );
 }
 
-export function has1FromJSON(
+export function createDeploymentHas1FromJSON(
   jsonString: string,
-): SafeParseResult<Has1, SDKValidationError> {
+): SafeParseResult<CreateDeploymentHas1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Has1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Has1' from JSON`,
+    (x) => CreateDeploymentHas1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentHas1' from JSON`,
   );
 }
 
 /** @internal */
-export const Has$inboundSchema: z.ZodType<Has, z.ZodTypeDef, unknown> = z.union(
-  [z.lazy(() => Has1$inboundSchema), z.lazy(() => Has2$inboundSchema)],
-);
+export const RoutesHas$inboundSchema: z.ZodType<
+  RoutesHas,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateDeploymentHas1$inboundSchema),
+  z.lazy(() => CreateDeploymentHas2$inboundSchema),
+]);
 
 /** @internal */
-export type Has$Outbound = Has1$Outbound | Has2$Outbound;
+export type RoutesHas$Outbound =
+  | CreateDeploymentHas1$Outbound
+  | CreateDeploymentHas2$Outbound;
 
 /** @internal */
-export const Has$outboundSchema: z.ZodType<Has$Outbound, z.ZodTypeDef, Has> = z
-  .union([
-    z.lazy(() => Has1$outboundSchema),
-    z.lazy(() => Has2$outboundSchema),
-  ]);
+export const RoutesHas$outboundSchema: z.ZodType<
+  RoutesHas$Outbound,
+  z.ZodTypeDef,
+  RoutesHas
+> = z.union([
+  z.lazy(() => CreateDeploymentHas1$outboundSchema),
+  z.lazy(() => CreateDeploymentHas2$outboundSchema),
+]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Has$ {
-  /** @deprecated use `Has$inboundSchema` instead. */
-  export const inboundSchema = Has$inboundSchema;
-  /** @deprecated use `Has$outboundSchema` instead. */
-  export const outboundSchema = Has$outboundSchema;
-  /** @deprecated use `Has$Outbound` instead. */
-  export type Outbound = Has$Outbound;
+export namespace RoutesHas$ {
+  /** @deprecated use `RoutesHas$inboundSchema` instead. */
+  export const inboundSchema = RoutesHas$inboundSchema;
+  /** @deprecated use `RoutesHas$outboundSchema` instead. */
+  export const outboundSchema = RoutesHas$outboundSchema;
+  /** @deprecated use `RoutesHas$Outbound` instead. */
+  export type Outbound = RoutesHas$Outbound;
 }
 
-export function hasToJSON(has: Has): string {
-  return JSON.stringify(Has$outboundSchema.parse(has));
+export function routesHasToJSON(routesHas: RoutesHas): string {
+  return JSON.stringify(RoutesHas$outboundSchema.parse(routesHas));
 }
 
-export function hasFromJSON(
+export function routesHasFromJSON(
   jsonString: string,
-): SafeParseResult<Has, SDKValidationError> {
+): SafeParseResult<RoutesHas, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Has$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Has' from JSON`,
+    (x) => RoutesHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesHas' from JSON`,
   );
 }
 
@@ -8342,8 +8390,8 @@ export namespace RoutesAction$ {
 }
 
 /** @internal */
-export const CreateDeploymentRoutesMitigate$inboundSchema: z.ZodType<
-  CreateDeploymentRoutesMitigate,
+export const RoutesMitigate$inboundSchema: z.ZodType<
+  RoutesMitigate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -8351,15 +8399,15 @@ export const CreateDeploymentRoutesMitigate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CreateDeploymentRoutesMitigate$Outbound = {
+export type RoutesMitigate$Outbound = {
   action: string;
 };
 
 /** @internal */
-export const CreateDeploymentRoutesMitigate$outboundSchema: z.ZodType<
-  CreateDeploymentRoutesMitigate$Outbound,
+export const RoutesMitigate$outboundSchema: z.ZodType<
+  RoutesMitigate$Outbound,
   z.ZodTypeDef,
-  CreateDeploymentRoutesMitigate
+  RoutesMitigate
 > = z.object({
   action: RoutesAction$outboundSchema,
 });
@@ -8368,32 +8416,26 @@ export const CreateDeploymentRoutesMitigate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreateDeploymentRoutesMitigate$ {
-  /** @deprecated use `CreateDeploymentRoutesMitigate$inboundSchema` instead. */
-  export const inboundSchema = CreateDeploymentRoutesMitigate$inboundSchema;
-  /** @deprecated use `CreateDeploymentRoutesMitigate$outboundSchema` instead. */
-  export const outboundSchema = CreateDeploymentRoutesMitigate$outboundSchema;
-  /** @deprecated use `CreateDeploymentRoutesMitigate$Outbound` instead. */
-  export type Outbound = CreateDeploymentRoutesMitigate$Outbound;
+export namespace RoutesMitigate$ {
+  /** @deprecated use `RoutesMitigate$inboundSchema` instead. */
+  export const inboundSchema = RoutesMitigate$inboundSchema;
+  /** @deprecated use `RoutesMitigate$outboundSchema` instead. */
+  export const outboundSchema = RoutesMitigate$outboundSchema;
+  /** @deprecated use `RoutesMitigate$Outbound` instead. */
+  export type Outbound = RoutesMitigate$Outbound;
 }
 
-export function createDeploymentRoutesMitigateToJSON(
-  createDeploymentRoutesMitigate: CreateDeploymentRoutesMitigate,
-): string {
-  return JSON.stringify(
-    CreateDeploymentRoutesMitigate$outboundSchema.parse(
-      createDeploymentRoutesMitigate,
-    ),
-  );
+export function routesMitigateToJSON(routesMitigate: RoutesMitigate): string {
+  return JSON.stringify(RoutesMitigate$outboundSchema.parse(routesMitigate));
 }
 
-export function createDeploymentRoutesMitigateFromJSON(
+export function routesMitigateFromJSON(
   jsonString: string,
-): SafeParseResult<CreateDeploymentRoutesMitigate, SDKValidationError> {
+): SafeParseResult<RoutesMitigate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDeploymentRoutesMitigate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentRoutesMitigate' from JSON`,
+    (x) => RoutesMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesMitigate' from JSON`,
   );
 }
 
@@ -8550,41 +8592,46 @@ export function key2FromJSON(
 }
 
 /** @internal */
-export const Key$inboundSchema: z.ZodType<Key, z.ZodTypeDef, unknown> = z.union(
-  [z.lazy(() => Key2$inboundSchema), z.string()],
-);
+export const RoutesKey$inboundSchema: z.ZodType<
+  RoutesKey,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => Key2$inboundSchema), z.string()]);
 
 /** @internal */
-export type Key$Outbound = Key2$Outbound | string;
+export type RoutesKey$Outbound = Key2$Outbound | string;
 
 /** @internal */
-export const Key$outboundSchema: z.ZodType<Key$Outbound, z.ZodTypeDef, Key> = z
-  .union([z.lazy(() => Key2$outboundSchema), z.string()]);
+export const RoutesKey$outboundSchema: z.ZodType<
+  RoutesKey$Outbound,
+  z.ZodTypeDef,
+  RoutesKey
+> = z.union([z.lazy(() => Key2$outboundSchema), z.string()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Key$ {
-  /** @deprecated use `Key$inboundSchema` instead. */
-  export const inboundSchema = Key$inboundSchema;
-  /** @deprecated use `Key$outboundSchema` instead. */
-  export const outboundSchema = Key$outboundSchema;
-  /** @deprecated use `Key$Outbound` instead. */
-  export type Outbound = Key$Outbound;
+export namespace RoutesKey$ {
+  /** @deprecated use `RoutesKey$inboundSchema` instead. */
+  export const inboundSchema = RoutesKey$inboundSchema;
+  /** @deprecated use `RoutesKey$outboundSchema` instead. */
+  export const outboundSchema = RoutesKey$outboundSchema;
+  /** @deprecated use `RoutesKey$Outbound` instead. */
+  export type Outbound = RoutesKey$Outbound;
 }
 
-export function keyToJSON(key: Key): string {
-  return JSON.stringify(Key$outboundSchema.parse(key));
+export function routesKeyToJSON(routesKey: RoutesKey): string {
+  return JSON.stringify(RoutesKey$outboundSchema.parse(routesKey));
 }
 
-export function keyFromJSON(
+export function routesKeyFromJSON(
   jsonString: string,
-): SafeParseResult<Key, SDKValidationError> {
+): SafeParseResult<RoutesKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Key$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Key' from JSON`,
+    (x) => RoutesKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoutesKey' from JSON`,
   );
 }
 
@@ -8800,8 +8847,8 @@ export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
     status: z.number().optional(),
     has: z.array(
       z.union([
-        z.lazy(() => Has1$inboundSchema),
-        z.lazy(() => Has2$inboundSchema),
+        z.lazy(() => CreateDeploymentHas1$inboundSchema),
+        z.lazy(() => CreateDeploymentHas2$inboundSchema),
       ]),
     ).optional(),
     missing: z.array(
@@ -8810,8 +8857,7 @@ export const Routes1$inboundSchema: z.ZodType<Routes1, z.ZodTypeDef, unknown> =
         z.lazy(() => Missing2$inboundSchema),
       ]),
     ).optional(),
-    mitigate: z.lazy(() => CreateDeploymentRoutesMitigate$inboundSchema)
-      .optional(),
+    mitigate: z.lazy(() => RoutesMitigate$inboundSchema).optional(),
     transforms: z.array(z.lazy(() => Transforms$inboundSchema)).optional(),
     locale: z.lazy(() => Locale$inboundSchema).optional(),
     middlewarePath: z.string().optional(),
@@ -8831,9 +8877,11 @@ export type Routes1$Outbound = {
   check?: boolean | undefined;
   important?: boolean | undefined;
   status?: number | undefined;
-  has?: Array<Has1$Outbound | Has2$Outbound> | undefined;
+  has?:
+    | Array<CreateDeploymentHas1$Outbound | CreateDeploymentHas2$Outbound>
+    | undefined;
   missing?: Array<Missing1$Outbound | Missing2$Outbound> | undefined;
-  mitigate?: CreateDeploymentRoutesMitigate$Outbound | undefined;
+  mitigate?: RoutesMitigate$Outbound | undefined;
   transforms?: Array<Transforms$Outbound> | undefined;
   locale?: Locale$Outbound | undefined;
   middlewarePath?: string | undefined;
@@ -8859,8 +8907,8 @@ export const Routes1$outboundSchema: z.ZodType<
   status: z.number().optional(),
   has: z.array(
     z.union([
-      z.lazy(() => Has1$outboundSchema),
-      z.lazy(() => Has2$outboundSchema),
+      z.lazy(() => CreateDeploymentHas1$outboundSchema),
+      z.lazy(() => CreateDeploymentHas2$outboundSchema),
     ]),
   ).optional(),
   missing: z.array(
@@ -8869,8 +8917,7 @@ export const Routes1$outboundSchema: z.ZodType<
       z.lazy(() => Missing2$outboundSchema),
     ]),
   ).optional(),
-  mitigate: z.lazy(() => CreateDeploymentRoutesMitigate$outboundSchema)
-    .optional(),
+  mitigate: z.lazy(() => RoutesMitigate$outboundSchema).optional(),
   transforms: z.array(z.lazy(() => Transforms$outboundSchema)).optional(),
   locale: z.lazy(() => Locale$outboundSchema).optional(),
   middlewarePath: z.string().optional(),

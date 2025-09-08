@@ -5,11 +5,11 @@
 ```typescript
 import { GetDeploymentHasType } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: GetDeploymentHasType = "cookie";
+let value: GetDeploymentHasType = "host";
 ```
 
 ## Values
 
 ```typescript
-"header" | "cookie" | "query"
+"host"
 ```

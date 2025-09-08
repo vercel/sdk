@@ -1457,10 +1457,10 @@ type CreateProjectEnvType string
 
 const (
 	CreateProjectEnvTypeSystem    CreateProjectEnvType = "system"
+	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 	CreateProjectEnvTypeEncrypted CreateProjectEnvType = "encrypted"
 	CreateProjectEnvTypePlain     CreateProjectEnvType = "plain"
 	CreateProjectEnvTypeSensitive CreateProjectEnvType = "sensitive"
-	CreateProjectEnvTypeSecret    CreateProjectEnvType = "secret"
 )
 
 func (e CreateProjectEnvType) ToPointer() *CreateProjectEnvType {
@@ -1474,13 +1474,13 @@ func (e *CreateProjectEnvType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = CreateProjectEnvType(v)
 		return nil
 	default:
@@ -3643,26 +3643,26 @@ func (o *CreateProjectLatestDeployment) GetWithCache() *bool {
 	return o.WithCache
 }
 
-type CreateProjectTypeGithubCustomHost string
+type CreateProjectTypeBitbucket string
 
 const (
-	CreateProjectTypeGithubCustomHostGithubCustomHost CreateProjectTypeGithubCustomHost = "github-custom-host"
+	CreateProjectTypeBitbucketBitbucket CreateProjectTypeBitbucket = "bitbucket"
 )
 
-func (e CreateProjectTypeGithubCustomHost) ToPointer() *CreateProjectTypeGithubCustomHost {
+func (e CreateProjectTypeBitbucket) ToPointer() *CreateProjectTypeBitbucket {
 	return &e
 }
-func (e *CreateProjectTypeGithubCustomHost) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectTypeBitbucket) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
-	case "github-custom-host":
-		*e = CreateProjectTypeGithubCustomHost(v)
+	case "bitbucket":
+		*e = CreateProjectTypeBitbucket(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateProjectTypeGithubCustomHost: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectTypeBitbucket: %v", v)
 	}
 }
 
@@ -3720,194 +3720,6 @@ func (o *CreateProjectDeployHook5) GetURL() string {
 	return o.URL
 }
 
-type CreateProjectLinkGithubCustomHost struct {
-	Org string `json:"org"`
-	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
-	RepoOwnerID      *float64                          `json:"repoOwnerId,omitempty"`
-	Repo             *string                           `json:"repo,omitempty"`
-	RepoID           *float64                          `json:"repoId,omitempty"`
-	Type             CreateProjectTypeGithubCustomHost `json:"type"`
-	Host             string                            `json:"host"`
-	CreatedAt        *float64                          `json:"createdAt,omitempty"`
-	DeployHooks      []CreateProjectDeployHook5        `json:"deployHooks"`
-	GitCredentialID  string                            `json:"gitCredentialId"`
-	UpdatedAt        *float64                          `json:"updatedAt,omitempty"`
-	Sourceless       *bool                             `json:"sourceless,omitempty"`
-	ProductionBranch string                            `json:"productionBranch"`
-}
-
-func (c CreateProjectLinkGithubCustomHost) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateProjectLinkGithubCustomHost) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"org", "type", "host", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetOrg() string {
-	if o == nil {
-		return ""
-	}
-	return o.Org
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetRepoOwnerID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoOwnerID
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetRepoID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoID
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetType() CreateProjectTypeGithubCustomHost {
-	if o == nil {
-		return CreateProjectTypeGithubCustomHost("")
-	}
-	return o.Type
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetHost() string {
-	if o == nil {
-		return ""
-	}
-	return o.Host
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetDeployHooks() []CreateProjectDeployHook5 {
-	if o == nil {
-		return []CreateProjectDeployHook5{}
-	}
-	return o.DeployHooks
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetGitCredentialID() string {
-	if o == nil {
-		return ""
-	}
-	return o.GitCredentialID
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
-}
-
-func (o *CreateProjectLinkGithubCustomHost) GetProductionBranch() string {
-	if o == nil {
-		return ""
-	}
-	return o.ProductionBranch
-}
-
-type CreateProjectTypeBitbucket string
-
-const (
-	CreateProjectTypeBitbucketBitbucket CreateProjectTypeBitbucket = "bitbucket"
-)
-
-func (e CreateProjectTypeBitbucket) ToPointer() *CreateProjectTypeBitbucket {
-	return &e
-}
-func (e *CreateProjectTypeBitbucket) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "bitbucket":
-		*e = CreateProjectTypeBitbucket(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectTypeBitbucket: %v", v)
-	}
-}
-
-type CreateProjectDeployHook4 struct {
-	CreatedAt *float64 `json:"createdAt,omitempty"`
-	ID        string   `json:"id"`
-	Name      string   `json:"name"`
-	Ref       string   `json:"ref"`
-	URL       string   `json:"url"`
-}
-
-func (c CreateProjectDeployHook4) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateProjectDeployHook4) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CreateProjectDeployHook4) GetCreatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
-}
-
-func (o *CreateProjectDeployHook4) GetID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ID
-}
-
-func (o *CreateProjectDeployHook4) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *CreateProjectDeployHook4) GetRef() string {
-	if o == nil {
-		return ""
-	}
-	return o.Ref
-}
-
-func (o *CreateProjectDeployHook4) GetURL() string {
-	if o == nil {
-		return ""
-	}
-	return o.URL
-}
-
 type CreateProjectLinkBitbucket struct {
 	Name             string                     `json:"name"`
 	Slug             string                     `json:"slug"`
@@ -3916,7 +3728,7 @@ type CreateProjectLinkBitbucket struct {
 	UUID             string                     `json:"uuid"`
 	WorkspaceUUID    string                     `json:"workspaceUuid"`
 	CreatedAt        *float64                   `json:"createdAt,omitempty"`
-	DeployHooks      []CreateProjectDeployHook4 `json:"deployHooks"`
+	DeployHooks      []CreateProjectDeployHook5 `json:"deployHooks"`
 	GitCredentialID  string                     `json:"gitCredentialId"`
 	UpdatedAt        *float64                   `json:"updatedAt,omitempty"`
 	Sourceless       *bool                      `json:"sourceless,omitempty"`
@@ -3983,9 +3795,9 @@ func (o *CreateProjectLinkBitbucket) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *CreateProjectLinkBitbucket) GetDeployHooks() []CreateProjectDeployHook4 {
+func (o *CreateProjectLinkBitbucket) GetDeployHooks() []CreateProjectDeployHook5 {
 	if o == nil {
-		return []CreateProjectDeployHook4{}
+		return []CreateProjectDeployHook5{}
 	}
 	return o.DeployHooks
 }
@@ -4041,7 +3853,7 @@ func (e *CreateProjectTypeGitlab) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type CreateProjectDeployHook3 struct {
+type CreateProjectDeployHook4 struct {
 	CreatedAt *float64 `json:"createdAt,omitempty"`
 	ID        string   `json:"id"`
 	Name      string   `json:"name"`
@@ -4049,46 +3861,46 @@ type CreateProjectDeployHook3 struct {
 	URL       string   `json:"url"`
 }
 
-func (c CreateProjectDeployHook3) MarshalJSON() ([]byte, error) {
+func (c CreateProjectDeployHook4) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateProjectDeployHook3) UnmarshalJSON(data []byte) error {
+func (c *CreateProjectDeployHook4) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateProjectDeployHook3) GetCreatedAt() *float64 {
+func (o *CreateProjectDeployHook4) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *CreateProjectDeployHook3) GetID() string {
+func (o *CreateProjectDeployHook4) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *CreateProjectDeployHook3) GetName() string {
+func (o *CreateProjectDeployHook4) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *CreateProjectDeployHook3) GetRef() string {
+func (o *CreateProjectDeployHook4) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *CreateProjectDeployHook3) GetURL() string {
+func (o *CreateProjectDeployHook4) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -4105,7 +3917,7 @@ type CreateProjectLinkGitlab struct {
 	ProjectURL       string                     `json:"projectUrl"`
 	Type             CreateProjectTypeGitlab    `json:"type"`
 	CreatedAt        *float64                   `json:"createdAt,omitempty"`
-	DeployHooks      []CreateProjectDeployHook3 `json:"deployHooks"`
+	DeployHooks      []CreateProjectDeployHook4 `json:"deployHooks"`
 	GitCredentialID  string                     `json:"gitCredentialId"`
 	UpdatedAt        *float64                   `json:"updatedAt,omitempty"`
 	Sourceless       *bool                      `json:"sourceless,omitempty"`
@@ -4179,9 +3991,9 @@ func (o *CreateProjectLinkGitlab) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *CreateProjectLinkGitlab) GetDeployHooks() []CreateProjectDeployHook3 {
+func (o *CreateProjectLinkGitlab) GetDeployHooks() []CreateProjectDeployHook4 {
 	if o == nil {
-		return []CreateProjectDeployHook3{}
+		return []CreateProjectDeployHook4{}
 	}
 	return o.DeployHooks
 }
@@ -4208,6 +4020,194 @@ func (o *CreateProjectLinkGitlab) GetSourceless() *bool {
 }
 
 func (o *CreateProjectLinkGitlab) GetProductionBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.ProductionBranch
+}
+
+type CreateProjectTypeGithubCustomHost string
+
+const (
+	CreateProjectTypeGithubCustomHostGithubCustomHost CreateProjectTypeGithubCustomHost = "github-custom-host"
+)
+
+func (e CreateProjectTypeGithubCustomHost) ToPointer() *CreateProjectTypeGithubCustomHost {
+	return &e
+}
+func (e *CreateProjectTypeGithubCustomHost) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-custom-host":
+		*e = CreateProjectTypeGithubCustomHost(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectTypeGithubCustomHost: %v", v)
+	}
+}
+
+type CreateProjectDeployHook3 struct {
+	CreatedAt *float64 `json:"createdAt,omitempty"`
+	ID        string   `json:"id"`
+	Name      string   `json:"name"`
+	Ref       string   `json:"ref"`
+	URL       string   `json:"url"`
+}
+
+func (c CreateProjectDeployHook3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectDeployHook3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "ref", "url"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectDeployHook3) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectDeployHook3) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *CreateProjectDeployHook3) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateProjectDeployHook3) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *CreateProjectDeployHook3) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
+type CreateProjectLinkGithubCustomHost struct {
+	Org string `json:"org"`
+	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
+	RepoOwnerID      *float64                          `json:"repoOwnerId,omitempty"`
+	Repo             *string                           `json:"repo,omitempty"`
+	RepoID           *float64                          `json:"repoId,omitempty"`
+	Type             CreateProjectTypeGithubCustomHost `json:"type"`
+	Host             string                            `json:"host"`
+	CreatedAt        *float64                          `json:"createdAt,omitempty"`
+	DeployHooks      []CreateProjectDeployHook3        `json:"deployHooks"`
+	GitCredentialID  string                            `json:"gitCredentialId"`
+	UpdatedAt        *float64                          `json:"updatedAt,omitempty"`
+	Sourceless       *bool                             `json:"sourceless,omitempty"`
+	ProductionBranch string                            `json:"productionBranch"`
+}
+
+func (c CreateProjectLinkGithubCustomHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectLinkGithubCustomHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"org", "type", "host", "deployHooks", "gitCredentialId", "productionBranch"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetRepoOwnerID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoOwnerID
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetType() CreateProjectTypeGithubCustomHost {
+	if o == nil {
+		return CreateProjectTypeGithubCustomHost("")
+	}
+	return o.Type
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetHost() string {
+	if o == nil {
+		return ""
+	}
+	return o.Host
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetCreatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetDeployHooks() []CreateProjectDeployHook3 {
+	if o == nil {
+		return []CreateProjectDeployHook3{}
+	}
+	return o.DeployHooks
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetGitCredentialID() string {
+	if o == nil {
+		return ""
+	}
+	return o.GitCredentialID
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
+}
+
+func (o *CreateProjectLinkGithubCustomHost) GetProductionBranch() string {
 	if o == nil {
 		return ""
 	}
@@ -4292,17 +4292,17 @@ func (o *CreateProjectDeployHook2) GetURL() string {
 }
 
 type CreateProjectLinkGithubLimited struct {
-	Type      CreateProjectTypeGithubLimited `json:"type"`
-	Repo      *string                        `json:"repo,omitempty"`
-	RepoID    *float64                       `json:"repoId,omitempty"`
-	UpdatedAt *float64                       `json:"updatedAt,omitempty"`
-	CreatedAt *float64                       `json:"createdAt,omitempty"`
-	Org       string                         `json:"org"`
+	Type       CreateProjectTypeGithubLimited `json:"type"`
+	UpdatedAt  *float64                       `json:"updatedAt,omitempty"`
+	CreatedAt  *float64                       `json:"createdAt,omitempty"`
+	Repo       *string                        `json:"repo,omitempty"`
+	Sourceless *bool                          `json:"sourceless,omitempty"`
+	Org        string                         `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                   `json:"repoOwnerId,omitempty"`
+	RepoID           *float64                   `json:"repoId,omitempty"`
 	DeployHooks      []CreateProjectDeployHook2 `json:"deployHooks"`
 	GitCredentialID  string                     `json:"gitCredentialId"`
-	Sourceless       *bool                      `json:"sourceless,omitempty"`
 	ProductionBranch string                     `json:"productionBranch"`
 }
 
@@ -4324,20 +4324,6 @@ func (o *CreateProjectLinkGithubLimited) GetType() CreateProjectTypeGithubLimite
 	return o.Type
 }
 
-func (o *CreateProjectLinkGithubLimited) GetRepo() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Repo
-}
-
-func (o *CreateProjectLinkGithubLimited) GetRepoID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoID
-}
-
 func (o *CreateProjectLinkGithubLimited) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
@@ -4350,6 +4336,20 @@ func (o *CreateProjectLinkGithubLimited) GetCreatedAt() *float64 {
 		return nil
 	}
 	return o.CreatedAt
+}
+
+func (o *CreateProjectLinkGithubLimited) GetRepo() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Repo
+}
+
+func (o *CreateProjectLinkGithubLimited) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
 }
 
 func (o *CreateProjectLinkGithubLimited) GetOrg() string {
@@ -4366,6 +4366,13 @@ func (o *CreateProjectLinkGithubLimited) GetRepoOwnerID() *float64 {
 	return o.RepoOwnerID
 }
 
+func (o *CreateProjectLinkGithubLimited) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
 func (o *CreateProjectLinkGithubLimited) GetDeployHooks() []CreateProjectDeployHook2 {
 	if o == nil {
 		return []CreateProjectDeployHook2{}
@@ -4378,13 +4385,6 @@ func (o *CreateProjectLinkGithubLimited) GetGitCredentialID() string {
 		return ""
 	}
 	return o.GitCredentialID
-}
-
-func (o *CreateProjectLinkGithubLimited) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
 }
 
 func (o *CreateProjectLinkGithubLimited) GetProductionBranch() string {
@@ -4579,17 +4579,17 @@ type CreateProjectLinkUnionType string
 const (
 	CreateProjectLinkUnionTypeCreateProjectLinkGithub           CreateProjectLinkUnionType = "createProject_link_Github"
 	CreateProjectLinkUnionTypeCreateProjectLinkGithubLimited    CreateProjectLinkUnionType = "createProject_link_GithubLimited"
+	CreateProjectLinkUnionTypeCreateProjectLinkGithubCustomHost CreateProjectLinkUnionType = "createProject_link_GithubCustomHost"
 	CreateProjectLinkUnionTypeCreateProjectLinkGitlab           CreateProjectLinkUnionType = "createProject_link_Gitlab"
 	CreateProjectLinkUnionTypeCreateProjectLinkBitbucket        CreateProjectLinkUnionType = "createProject_link_Bitbucket"
-	CreateProjectLinkUnionTypeCreateProjectLinkGithubCustomHost CreateProjectLinkUnionType = "createProject_link_GithubCustomHost"
 )
 
 type CreateProjectLinkUnion struct {
 	CreateProjectLinkGithub           *CreateProjectLinkGithub           `queryParam:"inline"`
 	CreateProjectLinkGithubLimited    *CreateProjectLinkGithubLimited    `queryParam:"inline"`
+	CreateProjectLinkGithubCustomHost *CreateProjectLinkGithubCustomHost `queryParam:"inline"`
 	CreateProjectLinkGitlab           *CreateProjectLinkGitlab           `queryParam:"inline"`
 	CreateProjectLinkBitbucket        *CreateProjectLinkBitbucket        `queryParam:"inline"`
-	CreateProjectLinkGithubCustomHost *CreateProjectLinkGithubCustomHost `queryParam:"inline"`
 
 	Type CreateProjectLinkUnionType
 }
@@ -4612,6 +4612,15 @@ func CreateCreateProjectLinkUnionCreateProjectLinkGithubLimited(createProjectLin
 	}
 }
 
+func CreateCreateProjectLinkUnionCreateProjectLinkGithubCustomHost(createProjectLinkGithubCustomHost CreateProjectLinkGithubCustomHost) CreateProjectLinkUnion {
+	typ := CreateProjectLinkUnionTypeCreateProjectLinkGithubCustomHost
+
+	return CreateProjectLinkUnion{
+		CreateProjectLinkGithubCustomHost: &createProjectLinkGithubCustomHost,
+		Type:                              typ,
+	}
+}
+
 func CreateCreateProjectLinkUnionCreateProjectLinkGitlab(createProjectLinkGitlab CreateProjectLinkGitlab) CreateProjectLinkUnion {
 	typ := CreateProjectLinkUnionTypeCreateProjectLinkGitlab
 
@@ -4627,15 +4636,6 @@ func CreateCreateProjectLinkUnionCreateProjectLinkBitbucket(createProjectLinkBit
 	return CreateProjectLinkUnion{
 		CreateProjectLinkBitbucket: &createProjectLinkBitbucket,
 		Type:                       typ,
-	}
-}
-
-func CreateCreateProjectLinkUnionCreateProjectLinkGithubCustomHost(createProjectLinkGithubCustomHost CreateProjectLinkGithubCustomHost) CreateProjectLinkUnion {
-	typ := CreateProjectLinkUnionTypeCreateProjectLinkGithubCustomHost
-
-	return CreateProjectLinkUnion{
-		CreateProjectLinkGithubCustomHost: &createProjectLinkGithubCustomHost,
-		Type:                              typ,
 	}
 }
 
@@ -4688,16 +4688,16 @@ func (u CreateProjectLinkUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateProjectLinkGithubLimited, "", true)
 	}
 
+	if u.CreateProjectLinkGithubCustomHost != nil {
+		return utils.MarshalJSON(u.CreateProjectLinkGithubCustomHost, "", true)
+	}
+
 	if u.CreateProjectLinkGitlab != nil {
 		return utils.MarshalJSON(u.CreateProjectLinkGitlab, "", true)
 	}
 
 	if u.CreateProjectLinkBitbucket != nil {
 		return utils.MarshalJSON(u.CreateProjectLinkBitbucket, "", true)
-	}
-
-	if u.CreateProjectLinkGithubCustomHost != nil {
-		return utils.MarshalJSON(u.CreateProjectLinkGithubCustomHost, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateProjectLinkUnion: all fields are null")
@@ -4997,21 +4997,14 @@ func (e *CreateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 }
 
 type CreateProjectResourceConfigResponse struct {
-	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                      `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *CreateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *CreateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
-}
-
-func (o *CreateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
 }
 
 func (o *CreateProjectResourceConfigResponse) GetFluid() *bool {
@@ -5047,6 +5040,13 @@ func (o *CreateProjectResourceConfigResponse) GetFunctionZeroConfigFailover() *b
 		return nil
 	}
 	return o.FunctionZeroConfigFailover
+}
+
+func (o *CreateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *CreateProjectResourceConfigResponse) GetBuildMachineType() *CreateProjectResourceConfigBuildMachineTypeResponse {
@@ -5221,21 +5221,14 @@ func (e *CreateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 }
 
 type CreateProjectDefaultResourceConfig struct {
-	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                        `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                     `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                     `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *CreateProjectDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *CreateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                        `json:"isNSNBDisabled,omitempty"`
-}
-
-func (o *CreateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
 }
 
 func (o *CreateProjectDefaultResourceConfig) GetFluid() *bool {
@@ -5273,6 +5266,13 @@ func (o *CreateProjectDefaultResourceConfig) GetFunctionZeroConfigFailover() *bo
 	return o.FunctionZeroConfigFailover
 }
 
+func (o *CreateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
+}
+
 func (o *CreateProjectDefaultResourceConfig) GetBuildMachineType() *CreateProjectDefaultResourceConfigBuildMachineType {
 	if o == nil {
 		return nil
@@ -5290,8 +5290,8 @@ func (o *CreateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {
 type CreateProjectSsoProtectionDeploymentTypeResponse string
 
 const (
-	CreateProjectSsoProtectionDeploymentTypeResponsePreview                          CreateProjectSsoProtectionDeploymentTypeResponse = "preview"
 	CreateProjectSsoProtectionDeploymentTypeResponseAll                              CreateProjectSsoProtectionDeploymentTypeResponse = "all"
+	CreateProjectSsoProtectionDeploymentTypeResponsePreview                          CreateProjectSsoProtectionDeploymentTypeResponse = "preview"
 	CreateProjectSsoProtectionDeploymentTypeResponseProdDeploymentUrlsAndAllPreviews CreateProjectSsoProtectionDeploymentTypeResponse = "prod_deployment_urls_and_all_previews"
 	CreateProjectSsoProtectionDeploymentTypeResponseAllExceptCustomDomains           CreateProjectSsoProtectionDeploymentTypeResponse = "all_except_custom_domains"
 )
@@ -5305,9 +5305,9 @@ func (e *CreateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
@@ -6081,73 +6081,6 @@ func (o *CreateProjectTargets) GetWithCache() *bool {
 }
 
 type CreateProjectPermissions struct {
-	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
-	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
-	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
-	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
-	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
-	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
-	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
-	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
-	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
-	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
-	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
-	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
-	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
-	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
-	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
-	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
-	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
-	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
-	Environments                             []components.ACLAction `json:"environments,omitempty"`
-	Logs                                     []components.ACLAction `json:"logs,omitempty"`
-	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
-	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
-	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
-	Job                                      []components.ACLAction `json:"job,omitempty"`
-	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
-	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
-	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
-	Project                                  []components.ACLAction `json:"project,omitempty"`
-	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
-	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
-	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
-	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
-	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
-	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
-	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
-	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
-	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
-	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
-	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
-	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
-	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
-	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
-	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
-	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
-	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
-	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
-	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
-	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
-	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
-	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
-	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
-	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
-	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
-	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
-	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
-	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
-	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
-	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
-	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
-	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
-	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
-	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
-	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
-	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
-	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
-	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
-	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
 	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
@@ -6234,6 +6167,7 @@ type CreateProjectPermissions struct {
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
+	Alerts                                   []components.ACLAction `json:"alerts,omitempty"`
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	ObservabilityFunnel                      []components.ACLAction `json:"observabilityFunnel,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
@@ -6293,475 +6227,73 @@ type CreateProjectPermissions struct {
 	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	APIKey                                   []components.ACLAction `json:"apiKey,omitempty"`
 	APIKeyOwnedBySelf                        []components.ACLAction `json:"apiKeyOwnedBySelf,omitempty"`
-}
-
-func (o *CreateProjectPermissions) GetAliasProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProject
-}
-
-func (o *CreateProjectPermissions) GetAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetBuildMachine() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachine
-}
-
-func (o *CreateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionAliasProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetConnectConfigurationLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ConnectConfigurationLink
-}
-
-func (o *CreateProjectPermissions) GetDataCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DataCacheNamespace
-}
-
-func (o *CreateProjectPermissions) GetDeployment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Deployment
-}
-
-func (o *CreateProjectPermissions) GetDeploymentBuildLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentBuildLogs
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheck
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheckPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckPreview
-}
-
-func (o *CreateProjectPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckReRunFromProductionBranch
-}
-
-func (o *CreateProjectPermissions) GetDeploymentProductionGit() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentProductionGit
-}
-
-func (o *CreateProjectPermissions) GetDeploymentV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentV0
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPreview
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPrivate() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPrivate
-}
-
-func (o *CreateProjectPermissions) GetDeploymentPromote() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPromote
-}
-
-func (o *CreateProjectPermissions) GetDeploymentRollback() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentRollback
-}
-
-func (o *CreateProjectPermissions) GetEdgeCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.EdgeCacheNamespace
-}
-
-func (o *CreateProjectPermissions) GetEnvironments() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Environments
-}
-
-func (o *CreateProjectPermissions) GetLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Logs
-}
-
-func (o *CreateProjectPermissions) GetLogsPreset() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.LogsPreset
-}
-
-func (o *CreateProjectPermissions) GetPasswordProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.PasswordProtection
-}
-
-func (o *CreateProjectPermissions) GetOptionsAllowlist() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OptionsAllowlist
-}
-
-func (o *CreateProjectPermissions) GetJob() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Job
-}
-
-func (o *CreateProjectPermissions) GetObservabilityData() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ObservabilityData
-}
-
-func (o *CreateProjectPermissions) GetOnDemandBuild() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandBuild
-}
-
-func (o *CreateProjectPermissions) GetOnDemandConcurrency() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandConcurrency
-}
-
-func (o *CreateProjectPermissions) GetProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Project
-}
-
-func (o *CreateProjectPermissions) GetProjectFromV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFromV0
-}
-
-func (o *CreateProjectPermissions) GetProjectAccessGroup() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAccessGroup
-}
-
-func (o *CreateProjectPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsSampling
-}
-
-func (o *CreateProjectPermissions) GetProjectCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheck
-}
-
-func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheckRun
-}
-
-func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentHook
-}
-
-func (o *CreateProjectPermissions) GetProjectDomain() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomain
-}
-
-func (o *CreateProjectPermissions) GetProjectDomainMove() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainMove
-}
-
-func (o *CreateProjectPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainCheckConfig
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVars() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVars
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsProduction
-}
-
-func (o *CreateProjectPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsUnownedByIntegration
-}
-
-func (o *CreateProjectPermissions) GetProjectFlags() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFlags
-}
-
-func (o *CreateProjectPermissions) GetProjectID() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectID
-}
-
-func (o *CreateProjectPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectIntegrationConfiguration
-}
-
-func (o *CreateProjectPermissions) GetProjectLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectLink
-}
-
-func (o *CreateProjectPermissions) GetProjectMember() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMember
-}
-
-func (o *CreateProjectPermissions) GetProjectMonitoring() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMonitoring
-}
-
-func (o *CreateProjectPermissions) GetProjectPermissions() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectPermissions
-}
-
-func (o *CreateProjectPermissions) GetProjectProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProductionBranch
-}
-
-func (o *CreateProjectPermissions) GetProjectTransfer() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransfer
-}
-
-func (o *CreateProjectPermissions) GetProjectTransferOut() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransferOut
-}
-
-func (o *CreateProjectPermissions) GetProjectProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProtectionBypass
-}
-
-func (o *CreateProjectPermissions) GetProjectUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectUsage
-}
-
-func (o *CreateProjectPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsUsage
-}
-
-func (o *CreateProjectPermissions) GetProjectSupportCase() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCase
-}
-
-func (o *CreateProjectPermissions) GetProjectSupportCaseComment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCaseComment
-}
-
-func (o *CreateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentExpiration
-}
-
-func (o *CreateProjectPermissions) GetProjectRollingRelease() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectRollingRelease
-}
-
-func (o *CreateProjectPermissions) GetProjectTier() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTier
-}
-
-func (o *CreateProjectPermissions) GetProjectOIDCToken() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectOIDCToken
-}
-
-func (o *CreateProjectPermissions) GetSeawallConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SeawallConfig
-}
-
-func (o *CreateProjectPermissions) GetSkewProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SkewProtection
-}
-
-func (o *CreateProjectPermissions) GetAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Analytics
-}
-
-func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedIps
-}
-
-func (o *CreateProjectPermissions) GetV0Chat() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.V0Chat
-}
-
-func (o *CreateProjectPermissions) GetWebAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.WebAnalytics
-}
-
-func (o *CreateProjectPermissions) GetSharedEnvVarConnection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SharedEnvVarConnection
-}
-
-func (o *CreateProjectPermissions) GetSonar() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Sonar
+	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
+	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
+	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
+	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
+	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
+	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
+	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
+	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
+	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
+	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
+	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
+	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
+	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
+	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
+	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
+	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
+	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
+	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
+	Environments                             []components.ACLAction `json:"environments,omitempty"`
+	Logs                                     []components.ACLAction `json:"logs,omitempty"`
+	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
+	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
+	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
+	Job                                      []components.ACLAction `json:"job,omitempty"`
+	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
+	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
+	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
+	Project                                  []components.ACLAction `json:"project,omitempty"`
+	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
+	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
+	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
+	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
+	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
+	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
+	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
+	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
+	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
+	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
+	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
+	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
+	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
+	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
+	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
+	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
+	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
+	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
+	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
+	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
+	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
+	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
+	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
+	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
+	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
+	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
+	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
+	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
+	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
+	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
+	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
+	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
+	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
+	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
+	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
+	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
 }
 
 func (o *CreateProjectPermissions) GetOauth2Connection() []components.ACLAction {
@@ -7366,6 +6898,13 @@ func (o *CreateProjectPermissions) GetObservabilityConfiguration() []components.
 	return o.ObservabilityConfiguration
 }
 
+func (o *CreateProjectPermissions) GetAlerts() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Alerts
+}
+
 func (o *CreateProjectPermissions) GetObservabilityNotebook() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -7779,6 +7318,475 @@ func (o *CreateProjectPermissions) GetAPIKeyOwnedBySelf() []components.ACLAction
 	return o.APIKeyOwnedBySelf
 }
 
+func (o *CreateProjectPermissions) GetAliasProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProject
+}
+
+func (o *CreateProjectPermissions) GetAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetBuildMachine() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
+func (o *CreateProjectPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionAliasProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetConnectConfigurationLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurationLink
+}
+
+func (o *CreateProjectPermissions) GetDataCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DataCacheNamespace
+}
+
+func (o *CreateProjectPermissions) GetDeployment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Deployment
+}
+
+func (o *CreateProjectPermissions) GetDeploymentBuildLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentBuildLogs
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheck
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheckPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckPreview
+}
+
+func (o *CreateProjectPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckReRunFromProductionBranch
+}
+
+func (o *CreateProjectPermissions) GetDeploymentProductionGit() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentProductionGit
+}
+
+func (o *CreateProjectPermissions) GetDeploymentV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentV0
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPreview
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPrivate() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPrivate
+}
+
+func (o *CreateProjectPermissions) GetDeploymentPromote() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPromote
+}
+
+func (o *CreateProjectPermissions) GetDeploymentRollback() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentRollback
+}
+
+func (o *CreateProjectPermissions) GetEdgeCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeCacheNamespace
+}
+
+func (o *CreateProjectPermissions) GetEnvironments() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Environments
+}
+
+func (o *CreateProjectPermissions) GetLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Logs
+}
+
+func (o *CreateProjectPermissions) GetLogsPreset() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.LogsPreset
+}
+
+func (o *CreateProjectPermissions) GetPasswordProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PasswordProtection
+}
+
+func (o *CreateProjectPermissions) GetOptionsAllowlist() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OptionsAllowlist
+}
+
+func (o *CreateProjectPermissions) GetJob() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Job
+}
+
+func (o *CreateProjectPermissions) GetObservabilityData() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityData
+}
+
+func (o *CreateProjectPermissions) GetOnDemandBuild() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandBuild
+}
+
+func (o *CreateProjectPermissions) GetOnDemandConcurrency() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandConcurrency
+}
+
+func (o *CreateProjectPermissions) GetProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *CreateProjectPermissions) GetProjectFromV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFromV0
+}
+
+func (o *CreateProjectPermissions) GetProjectAccessGroup() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAccessGroup
+}
+
+func (o *CreateProjectPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsSampling
+}
+
+func (o *CreateProjectPermissions) GetProjectCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheck
+}
+
+func (o *CreateProjectPermissions) GetProjectCheckRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheckRun
+}
+
+func (o *CreateProjectPermissions) GetProjectDeploymentHook() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentHook
+}
+
+func (o *CreateProjectPermissions) GetProjectDomain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomain
+}
+
+func (o *CreateProjectPermissions) GetProjectDomainMove() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainMove
+}
+
+func (o *CreateProjectPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainCheckConfig
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVars() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVars
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsProduction
+}
+
+func (o *CreateProjectPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsUnownedByIntegration
+}
+
+func (o *CreateProjectPermissions) GetProjectFlags() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlags
+}
+
+func (o *CreateProjectPermissions) GetProjectID() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *CreateProjectPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIntegrationConfiguration
+}
+
+func (o *CreateProjectPermissions) GetProjectLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectLink
+}
+
+func (o *CreateProjectPermissions) GetProjectMember() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMember
+}
+
+func (o *CreateProjectPermissions) GetProjectMonitoring() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMonitoring
+}
+
+func (o *CreateProjectPermissions) GetProjectPermissions() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectPermissions
+}
+
+func (o *CreateProjectPermissions) GetProjectProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProductionBranch
+}
+
+func (o *CreateProjectPermissions) GetProjectTransfer() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransfer
+}
+
+func (o *CreateProjectPermissions) GetProjectTransferOut() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransferOut
+}
+
+func (o *CreateProjectPermissions) GetProjectProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProtectionBypass
+}
+
+func (o *CreateProjectPermissions) GetProjectUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectUsage
+}
+
+func (o *CreateProjectPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsUsage
+}
+
+func (o *CreateProjectPermissions) GetProjectSupportCase() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCase
+}
+
+func (o *CreateProjectPermissions) GetProjectSupportCaseComment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCaseComment
+}
+
+func (o *CreateProjectPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentExpiration
+}
+
+func (o *CreateProjectPermissions) GetProjectRollingRelease() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRollingRelease
+}
+
+func (o *CreateProjectPermissions) GetProjectTier() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTier
+}
+
+func (o *CreateProjectPermissions) GetProjectOIDCToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectOIDCToken
+}
+
+func (o *CreateProjectPermissions) GetSeawallConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SeawallConfig
+}
+
+func (o *CreateProjectPermissions) GetSkewProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtection
+}
+
+func (o *CreateProjectPermissions) GetAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Analytics
+}
+
+func (o *CreateProjectPermissions) GetTrustedIps() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedIps
+}
+
+func (o *CreateProjectPermissions) GetV0Chat() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.V0Chat
+}
+
+func (o *CreateProjectPermissions) GetWebAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.WebAnalytics
+}
+
+func (o *CreateProjectPermissions) GetSharedEnvVarConnection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SharedEnvVarConnection
+}
+
+func (o *CreateProjectPermissions) GetSonar() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Sonar
+}
+
 type CreateProjectLastRollbackTarget struct {
 }
 
@@ -8099,11 +8107,11 @@ func (u CreateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectTrustedIpsDeploymentType2 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
-	CreateProjectTrustedIpsDeploymentType2Production                       CreateProjectTrustedIpsDeploymentType2 = "production"
 	CreateProjectTrustedIpsDeploymentType2All                              CreateProjectTrustedIpsDeploymentType2 = "all"
+	CreateProjectTrustedIpsDeploymentType2Preview                          CreateProjectTrustedIpsDeploymentType2 = "preview"
 	CreateProjectTrustedIpsDeploymentType2ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType2 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType2AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType2 = "all_except_custom_domains"
+	CreateProjectTrustedIpsDeploymentType2Production                       CreateProjectTrustedIpsDeploymentType2 = "production"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType2) ToPointer() *CreateProjectTrustedIpsDeploymentType2 {
@@ -8115,15 +8123,15 @@ func (e *CreateProjectTrustedIpsDeploymentType2) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
-	case "production":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
+		fallthrough
+	case "production":
 		*e = CreateProjectTrustedIpsDeploymentType2(v)
 		return nil
 	default:
@@ -8156,11 +8164,11 @@ func (o *CreateProjectTrustedIps2) GetDeploymentType() CreateProjectTrustedIpsDe
 type CreateProjectTrustedIpsDeploymentType1 string
 
 const (
-	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
-	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
 	CreateProjectTrustedIpsDeploymentType1All                              CreateProjectTrustedIpsDeploymentType1 = "all"
+	CreateProjectTrustedIpsDeploymentType1Preview                          CreateProjectTrustedIpsDeploymentType1 = "preview"
 	CreateProjectTrustedIpsDeploymentType1ProdDeploymentUrlsAndAllPreviews CreateProjectTrustedIpsDeploymentType1 = "prod_deployment_urls_and_all_previews"
 	CreateProjectTrustedIpsDeploymentType1AllExceptCustomDomains           CreateProjectTrustedIpsDeploymentType1 = "all_except_custom_domains"
+	CreateProjectTrustedIpsDeploymentType1Production                       CreateProjectTrustedIpsDeploymentType1 = "production"
 )
 
 func (e CreateProjectTrustedIpsDeploymentType1) ToPointer() *CreateProjectTrustedIpsDeploymentType1 {
@@ -8172,15 +8180,15 @@ func (e *CreateProjectTrustedIpsDeploymentType1) UnmarshalJSON(data []byte) erro
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
-	case "production":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
+		fallthrough
+	case "production":
 		*e = CreateProjectTrustedIpsDeploymentType1(v)
 		return nil
 	default:
@@ -8815,6 +8823,1937 @@ func (o *CreateProjectFeatures) GetWebAnalytics() *bool {
 	return o.WebAnalytics
 }
 
+type CreateProjectHistory struct {
+	Scanner string  `json:"scanner"`
+	Reason  string  `json:"reason"`
+	By      string  `json:"by"`
+	ByID    string  `json:"byId"`
+	At      float64 `json:"at"`
+}
+
+func (o *CreateProjectHistory) GetScanner() string {
+	if o == nil {
+		return ""
+	}
+	return o.Scanner
+}
+
+func (o *CreateProjectHistory) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *CreateProjectHistory) GetBy() string {
+	if o == nil {
+		return ""
+	}
+	return o.By
+}
+
+func (o *CreateProjectHistory) GetByID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ByID
+}
+
+func (o *CreateProjectHistory) GetAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.At
+}
+
+type CreateProjectActionBlocked string
+
+const (
+	CreateProjectActionBlockedBlocked CreateProjectActionBlocked = "blocked"
+)
+
+func (e CreateProjectActionBlocked) ToPointer() *CreateProjectActionBlocked {
+	return &e
+}
+func (e *CreateProjectActionBlocked) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blocked":
+		*e = CreateProjectActionBlocked(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectActionBlocked: %v", v)
+	}
+}
+
+type CreateProjectBlock struct {
+	Action      CreateProjectActionBlocked `json:"action"`
+	Reason      string                     `json:"reason"`
+	StatusCode  float64                    `json:"statusCode"`
+	CreatedAt   float64                    `json:"createdAt"`
+	CaseID      *string                    `json:"caseId,omitempty"`
+	Actor       *string                    `json:"actor,omitempty"`
+	Comment     *string                    `json:"comment,omitempty"`
+	IsCascading *bool                      `json:"isCascading,omitempty"`
+}
+
+func (o *CreateProjectBlock) GetAction() CreateProjectActionBlocked {
+	if o == nil {
+		return CreateProjectActionBlocked("")
+	}
+	return o.Action
+}
+
+func (o *CreateProjectBlock) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *CreateProjectBlock) GetStatusCode() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateProjectBlock) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectBlock) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *CreateProjectBlock) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *CreateProjectBlock) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *CreateProjectBlock) GetIsCascading() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsCascading
+}
+
+type CreateProjectActionRouteUnblocked string
+
+const (
+	CreateProjectActionRouteUnblockedRouteUnblocked CreateProjectActionRouteUnblocked = "route-unblocked"
+)
+
+func (e CreateProjectActionRouteUnblocked) ToPointer() *CreateProjectActionRouteUnblocked {
+	return &e
+}
+func (e *CreateProjectActionRouteUnblocked) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "route-unblocked":
+		*e = CreateProjectActionRouteUnblocked(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectActionRouteUnblocked: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryTypeHost2 string
+
+const (
+	CreateProjectBlockHistoryTypeHost2Host CreateProjectBlockHistoryTypeHost2 = "host"
+)
+
+func (e CreateProjectBlockHistoryTypeHost2) ToPointer() *CreateProjectBlockHistoryTypeHost2 {
+	return &e
+}
+func (e *CreateProjectBlockHistoryTypeHost2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "host":
+		*e = CreateProjectBlockHistoryTypeHost2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBlockHistoryTypeHost2: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryValue4 struct {
+	Eq string `json:"eq"`
+}
+
+func (c CreateProjectBlockHistoryValue4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryValue4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryValue4) GetEq() string {
+	if o == nil {
+		return ""
+	}
+	return o.Eq
+}
+
+type CreateProjectBlockHistoryHasHost2 struct {
+	Type  CreateProjectBlockHistoryTypeHost2 `json:"type"`
+	Value CreateProjectBlockHistoryValue4    `json:"value"`
+}
+
+func (c CreateProjectBlockHistoryHasHost2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryHasHost2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryHasHost2) GetType() CreateProjectBlockHistoryTypeHost2 {
+	if o == nil {
+		return CreateProjectBlockHistoryTypeHost2("")
+	}
+	return o.Type
+}
+
+func (o *CreateProjectBlockHistoryHasHost2) GetValue() CreateProjectBlockHistoryValue4 {
+	if o == nil {
+		return CreateProjectBlockHistoryValue4{}
+	}
+	return o.Value
+}
+
+type CreateProjectBlockHistoryTypeHeader2 string
+
+const (
+	CreateProjectBlockHistoryTypeHeader2Header CreateProjectBlockHistoryTypeHeader2 = "header"
+)
+
+func (e CreateProjectBlockHistoryTypeHeader2) ToPointer() *CreateProjectBlockHistoryTypeHeader2 {
+	return &e
+}
+func (e *CreateProjectBlockHistoryTypeHeader2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "header":
+		*e = CreateProjectBlockHistoryTypeHeader2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBlockHistoryTypeHeader2: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryKey2 string
+
+const (
+	CreateProjectBlockHistoryKey2XVercelIPCountry CreateProjectBlockHistoryKey2 = "x-vercel-ip-country"
+)
+
+func (e CreateProjectBlockHistoryKey2) ToPointer() *CreateProjectBlockHistoryKey2 {
+	return &e
+}
+func (e *CreateProjectBlockHistoryKey2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "x-vercel-ip-country":
+		*e = CreateProjectBlockHistoryKey2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBlockHistoryKey2: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryValue3 struct {
+	Eq string `json:"eq"`
+}
+
+func (c CreateProjectBlockHistoryValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryValue3) GetEq() string {
+	if o == nil {
+		return ""
+	}
+	return o.Eq
+}
+
+type CreateProjectBlockHistoryHasXVercelIPCountry2 struct {
+	Type  CreateProjectBlockHistoryTypeHeader2 `json:"type"`
+	Key   CreateProjectBlockHistoryKey2        `json:"key"`
+	Value CreateProjectBlockHistoryValue3      `json:"value"`
+}
+
+func (c CreateProjectBlockHistoryHasXVercelIPCountry2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryHasXVercelIPCountry2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "key", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryHasXVercelIPCountry2) GetType() CreateProjectBlockHistoryTypeHeader2 {
+	if o == nil {
+		return CreateProjectBlockHistoryTypeHeader2("")
+	}
+	return o.Type
+}
+
+func (o *CreateProjectBlockHistoryHasXVercelIPCountry2) GetKey() CreateProjectBlockHistoryKey2 {
+	if o == nil {
+		return CreateProjectBlockHistoryKey2("")
+	}
+	return o.Key
+}
+
+func (o *CreateProjectBlockHistoryHasXVercelIPCountry2) GetValue() CreateProjectBlockHistoryValue3 {
+	if o == nil {
+		return CreateProjectBlockHistoryValue3{}
+	}
+	return o.Value
+}
+
+type CreateProjectBlockHistoryHasUnion2Type string
+
+const (
+	CreateProjectBlockHistoryHasUnion2TypeCreateProjectBlockHistoryHasXVercelIPCountry2 CreateProjectBlockHistoryHasUnion2Type = "createProject_blockHistory_has_XVercelIPCountry_2"
+	CreateProjectBlockHistoryHasUnion2TypeCreateProjectBlockHistoryHasHost2             CreateProjectBlockHistoryHasUnion2Type = "createProject_blockHistory_has_Host_2"
+)
+
+type CreateProjectBlockHistoryHasUnion2 struct {
+	CreateProjectBlockHistoryHasXVercelIPCountry2 *CreateProjectBlockHistoryHasXVercelIPCountry2 `queryParam:"inline"`
+	CreateProjectBlockHistoryHasHost2             *CreateProjectBlockHistoryHasHost2             `queryParam:"inline"`
+
+	Type CreateProjectBlockHistoryHasUnion2Type
+}
+
+func CreateCreateProjectBlockHistoryHasUnion2CreateProjectBlockHistoryHasXVercelIPCountry2(createProjectBlockHistoryHasXVercelIPCountry2 CreateProjectBlockHistoryHasXVercelIPCountry2) CreateProjectBlockHistoryHasUnion2 {
+	typ := CreateProjectBlockHistoryHasUnion2TypeCreateProjectBlockHistoryHasXVercelIPCountry2
+
+	return CreateProjectBlockHistoryHasUnion2{
+		CreateProjectBlockHistoryHasXVercelIPCountry2: &createProjectBlockHistoryHasXVercelIPCountry2,
+		Type: typ,
+	}
+}
+
+func CreateCreateProjectBlockHistoryHasUnion2CreateProjectBlockHistoryHasHost2(createProjectBlockHistoryHasHost2 CreateProjectBlockHistoryHasHost2) CreateProjectBlockHistoryHasUnion2 {
+	typ := CreateProjectBlockHistoryHasUnion2TypeCreateProjectBlockHistoryHasHost2
+
+	return CreateProjectBlockHistoryHasUnion2{
+		CreateProjectBlockHistoryHasHost2: &createProjectBlockHistoryHasHost2,
+		Type:                              typ,
+	}
+}
+
+func (u *CreateProjectBlockHistoryHasUnion2) UnmarshalJSON(data []byte) error {
+
+	var createProjectBlockHistoryHasXVercelIPCountry2 CreateProjectBlockHistoryHasXVercelIPCountry2 = CreateProjectBlockHistoryHasXVercelIPCountry2{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryHasXVercelIPCountry2, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryHasXVercelIPCountry2 = &createProjectBlockHistoryHasXVercelIPCountry2
+		u.Type = CreateProjectBlockHistoryHasUnion2TypeCreateProjectBlockHistoryHasXVercelIPCountry2
+		return nil
+	}
+
+	var createProjectBlockHistoryHasHost2 CreateProjectBlockHistoryHasHost2 = CreateProjectBlockHistoryHasHost2{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryHasHost2, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryHasHost2 = &createProjectBlockHistoryHasHost2
+		u.Type = CreateProjectBlockHistoryHasUnion2TypeCreateProjectBlockHistoryHasHost2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectBlockHistoryHasUnion2", string(data))
+}
+
+func (u CreateProjectBlockHistoryHasUnion2) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectBlockHistoryHasXVercelIPCountry2 != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryHasXVercelIPCountry2, "", true)
+	}
+
+	if u.CreateProjectBlockHistoryHasHost2 != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryHasHost2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectBlockHistoryHasUnion2: all fields are null")
+}
+
+type CreateProjectRouteAction2 string
+
+const (
+	CreateProjectRouteAction2BlockLegalCwc CreateProjectRouteAction2 = "block_legal_cwc"
+)
+
+func (e CreateProjectRouteAction2) ToPointer() *CreateProjectRouteAction2 {
+	return &e
+}
+func (e *CreateProjectRouteAction2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "block_legal_cwc":
+		*e = CreateProjectRouteAction2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectRouteAction2: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryMitigate2 struct {
+	Action CreateProjectRouteAction2 `json:"action"`
+}
+
+func (c CreateProjectBlockHistoryMitigate2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryMitigate2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryMitigate2) GetAction() CreateProjectRouteAction2 {
+	if o == nil {
+		return CreateProjectRouteAction2("")
+	}
+	return o.Action
+}
+
+type CreateProjectRoute4 struct {
+	Has      []CreateProjectBlockHistoryHasUnion2 `json:"has"`
+	Mitigate CreateProjectBlockHistoryMitigate2   `json:"mitigate"`
+	Src      *string                              `json:"src,omitempty"`
+}
+
+func (c CreateProjectRoute4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectRoute4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"has", "mitigate"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectRoute4) GetHas() []CreateProjectBlockHistoryHasUnion2 {
+	if o == nil {
+		return []CreateProjectBlockHistoryHasUnion2{}
+	}
+	return o.Has
+}
+
+func (o *CreateProjectRoute4) GetMitigate() CreateProjectBlockHistoryMitigate2 {
+	if o == nil {
+		return CreateProjectBlockHistoryMitigate2{}
+	}
+	return o.Mitigate
+}
+
+func (o *CreateProjectRoute4) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+type CreateProjectRoute3 struct {
+	Src    string  `json:"src"`
+	Status float64 `json:"status"`
+}
+
+func (c CreateProjectRoute3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectRoute3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"src", "status"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectRoute3) GetSrc() string {
+	if o == nil {
+		return ""
+	}
+	return o.Src
+}
+
+func (o *CreateProjectRoute3) GetStatus() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Status
+}
+
+type CreateProjectRouteUnion2Type string
+
+const (
+	CreateProjectRouteUnion2TypeCreateProjectRoute3 CreateProjectRouteUnion2Type = "createProject_route_3"
+	CreateProjectRouteUnion2TypeCreateProjectRoute4 CreateProjectRouteUnion2Type = "createProject_route_4"
+)
+
+type CreateProjectRouteUnion2 struct {
+	CreateProjectRoute3 *CreateProjectRoute3 `queryParam:"inline"`
+	CreateProjectRoute4 *CreateProjectRoute4 `queryParam:"inline"`
+
+	Type CreateProjectRouteUnion2Type
+}
+
+func CreateCreateProjectRouteUnion2CreateProjectRoute3(createProjectRoute3 CreateProjectRoute3) CreateProjectRouteUnion2 {
+	typ := CreateProjectRouteUnion2TypeCreateProjectRoute3
+
+	return CreateProjectRouteUnion2{
+		CreateProjectRoute3: &createProjectRoute3,
+		Type:                typ,
+	}
+}
+
+func CreateCreateProjectRouteUnion2CreateProjectRoute4(createProjectRoute4 CreateProjectRoute4) CreateProjectRouteUnion2 {
+	typ := CreateProjectRouteUnion2TypeCreateProjectRoute4
+
+	return CreateProjectRouteUnion2{
+		CreateProjectRoute4: &createProjectRoute4,
+		Type:                typ,
+	}
+}
+
+func (u *CreateProjectRouteUnion2) UnmarshalJSON(data []byte) error {
+
+	var createProjectRoute3 CreateProjectRoute3 = CreateProjectRoute3{}
+	if err := utils.UnmarshalJSON(data, &createProjectRoute3, "", true, nil); err == nil {
+		u.CreateProjectRoute3 = &createProjectRoute3
+		u.Type = CreateProjectRouteUnion2TypeCreateProjectRoute3
+		return nil
+	}
+
+	var createProjectRoute4 CreateProjectRoute4 = CreateProjectRoute4{}
+	if err := utils.UnmarshalJSON(data, &createProjectRoute4, "", true, nil); err == nil {
+		u.CreateProjectRoute4 = &createProjectRoute4
+		u.Type = CreateProjectRouteUnion2TypeCreateProjectRoute4
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectRouteUnion2", string(data))
+}
+
+func (u CreateProjectRouteUnion2) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectRoute3 != nil {
+		return utils.MarshalJSON(u.CreateProjectRoute3, "", true)
+	}
+
+	if u.CreateProjectRoute4 != nil {
+		return utils.MarshalJSON(u.CreateProjectRoute4, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectRouteUnion2: all fields are null")
+}
+
+type CreateProjectBlockHistoryRouteUnblocked struct {
+	Action      CreateProjectActionRouteUnblocked `json:"action"`
+	Route       CreateProjectRouteUnion2          `json:"route"`
+	StatusCode  *float64                          `json:"statusCode,omitempty"`
+	CreatedAt   float64                           `json:"createdAt"`
+	CaseID      *string                           `json:"caseId,omitempty"`
+	Actor       *string                           `json:"actor,omitempty"`
+	Comment     *string                           `json:"comment,omitempty"`
+	IsCascading *bool                             `json:"isCascading,omitempty"`
+}
+
+func (c CreateProjectBlockHistoryRouteUnblocked) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryRouteUnblocked) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action", "route", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetAction() CreateProjectActionRouteUnblocked {
+	if o == nil {
+		return CreateProjectActionRouteUnblocked("")
+	}
+	return o.Action
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetRoute() CreateProjectRouteUnion2 {
+	if o == nil {
+		return CreateProjectRouteUnion2{}
+	}
+	return o.Route
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetStatusCode() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.StatusCode
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *CreateProjectBlockHistoryRouteUnblocked) GetIsCascading() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsCascading
+}
+
+type CreateProjectActionRouteBlocked string
+
+const (
+	CreateProjectActionRouteBlockedRouteBlocked CreateProjectActionRouteBlocked = "route-blocked"
+)
+
+func (e CreateProjectActionRouteBlocked) ToPointer() *CreateProjectActionRouteBlocked {
+	return &e
+}
+func (e *CreateProjectActionRouteBlocked) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "route-blocked":
+		*e = CreateProjectActionRouteBlocked(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectActionRouteBlocked: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryTypeHost1 string
+
+const (
+	CreateProjectBlockHistoryTypeHost1Host CreateProjectBlockHistoryTypeHost1 = "host"
+)
+
+func (e CreateProjectBlockHistoryTypeHost1) ToPointer() *CreateProjectBlockHistoryTypeHost1 {
+	return &e
+}
+func (e *CreateProjectBlockHistoryTypeHost1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "host":
+		*e = CreateProjectBlockHistoryTypeHost1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBlockHistoryTypeHost1: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryValue2 struct {
+	Eq string `json:"eq"`
+}
+
+func (c CreateProjectBlockHistoryValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryValue2) GetEq() string {
+	if o == nil {
+		return ""
+	}
+	return o.Eq
+}
+
+type CreateProjectBlockHistoryHasHost1 struct {
+	Type  CreateProjectBlockHistoryTypeHost1 `json:"type"`
+	Value CreateProjectBlockHistoryValue2    `json:"value"`
+}
+
+func (c CreateProjectBlockHistoryHasHost1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryHasHost1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryHasHost1) GetType() CreateProjectBlockHistoryTypeHost1 {
+	if o == nil {
+		return CreateProjectBlockHistoryTypeHost1("")
+	}
+	return o.Type
+}
+
+func (o *CreateProjectBlockHistoryHasHost1) GetValue() CreateProjectBlockHistoryValue2 {
+	if o == nil {
+		return CreateProjectBlockHistoryValue2{}
+	}
+	return o.Value
+}
+
+type CreateProjectBlockHistoryTypeHeader1 string
+
+const (
+	CreateProjectBlockHistoryTypeHeader1Header CreateProjectBlockHistoryTypeHeader1 = "header"
+)
+
+func (e CreateProjectBlockHistoryTypeHeader1) ToPointer() *CreateProjectBlockHistoryTypeHeader1 {
+	return &e
+}
+func (e *CreateProjectBlockHistoryTypeHeader1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "header":
+		*e = CreateProjectBlockHistoryTypeHeader1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBlockHistoryTypeHeader1: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryKey1 string
+
+const (
+	CreateProjectBlockHistoryKey1XVercelIPCountry CreateProjectBlockHistoryKey1 = "x-vercel-ip-country"
+)
+
+func (e CreateProjectBlockHistoryKey1) ToPointer() *CreateProjectBlockHistoryKey1 {
+	return &e
+}
+func (e *CreateProjectBlockHistoryKey1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "x-vercel-ip-country":
+		*e = CreateProjectBlockHistoryKey1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBlockHistoryKey1: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryValue1 struct {
+	Eq string `json:"eq"`
+}
+
+func (c CreateProjectBlockHistoryValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryValue1) GetEq() string {
+	if o == nil {
+		return ""
+	}
+	return o.Eq
+}
+
+type CreateProjectBlockHistoryHasXVercelIPCountry1 struct {
+	Type  CreateProjectBlockHistoryTypeHeader1 `json:"type"`
+	Key   CreateProjectBlockHistoryKey1        `json:"key"`
+	Value CreateProjectBlockHistoryValue1      `json:"value"`
+}
+
+func (c CreateProjectBlockHistoryHasXVercelIPCountry1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryHasXVercelIPCountry1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "key", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryHasXVercelIPCountry1) GetType() CreateProjectBlockHistoryTypeHeader1 {
+	if o == nil {
+		return CreateProjectBlockHistoryTypeHeader1("")
+	}
+	return o.Type
+}
+
+func (o *CreateProjectBlockHistoryHasXVercelIPCountry1) GetKey() CreateProjectBlockHistoryKey1 {
+	if o == nil {
+		return CreateProjectBlockHistoryKey1("")
+	}
+	return o.Key
+}
+
+func (o *CreateProjectBlockHistoryHasXVercelIPCountry1) GetValue() CreateProjectBlockHistoryValue1 {
+	if o == nil {
+		return CreateProjectBlockHistoryValue1{}
+	}
+	return o.Value
+}
+
+type CreateProjectBlockHistoryHasUnion1Type string
+
+const (
+	CreateProjectBlockHistoryHasUnion1TypeCreateProjectBlockHistoryHasXVercelIPCountry1 CreateProjectBlockHistoryHasUnion1Type = "createProject_blockHistory_has_XVercelIPCountry_1"
+	CreateProjectBlockHistoryHasUnion1TypeCreateProjectBlockHistoryHasHost1             CreateProjectBlockHistoryHasUnion1Type = "createProject_blockHistory_has_Host_1"
+)
+
+type CreateProjectBlockHistoryHasUnion1 struct {
+	CreateProjectBlockHistoryHasXVercelIPCountry1 *CreateProjectBlockHistoryHasXVercelIPCountry1 `queryParam:"inline"`
+	CreateProjectBlockHistoryHasHost1             *CreateProjectBlockHistoryHasHost1             `queryParam:"inline"`
+
+	Type CreateProjectBlockHistoryHasUnion1Type
+}
+
+func CreateCreateProjectBlockHistoryHasUnion1CreateProjectBlockHistoryHasXVercelIPCountry1(createProjectBlockHistoryHasXVercelIPCountry1 CreateProjectBlockHistoryHasXVercelIPCountry1) CreateProjectBlockHistoryHasUnion1 {
+	typ := CreateProjectBlockHistoryHasUnion1TypeCreateProjectBlockHistoryHasXVercelIPCountry1
+
+	return CreateProjectBlockHistoryHasUnion1{
+		CreateProjectBlockHistoryHasXVercelIPCountry1: &createProjectBlockHistoryHasXVercelIPCountry1,
+		Type: typ,
+	}
+}
+
+func CreateCreateProjectBlockHistoryHasUnion1CreateProjectBlockHistoryHasHost1(createProjectBlockHistoryHasHost1 CreateProjectBlockHistoryHasHost1) CreateProjectBlockHistoryHasUnion1 {
+	typ := CreateProjectBlockHistoryHasUnion1TypeCreateProjectBlockHistoryHasHost1
+
+	return CreateProjectBlockHistoryHasUnion1{
+		CreateProjectBlockHistoryHasHost1: &createProjectBlockHistoryHasHost1,
+		Type:                              typ,
+	}
+}
+
+func (u *CreateProjectBlockHistoryHasUnion1) UnmarshalJSON(data []byte) error {
+
+	var createProjectBlockHistoryHasXVercelIPCountry1 CreateProjectBlockHistoryHasXVercelIPCountry1 = CreateProjectBlockHistoryHasXVercelIPCountry1{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryHasXVercelIPCountry1, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryHasXVercelIPCountry1 = &createProjectBlockHistoryHasXVercelIPCountry1
+		u.Type = CreateProjectBlockHistoryHasUnion1TypeCreateProjectBlockHistoryHasXVercelIPCountry1
+		return nil
+	}
+
+	var createProjectBlockHistoryHasHost1 CreateProjectBlockHistoryHasHost1 = CreateProjectBlockHistoryHasHost1{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryHasHost1, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryHasHost1 = &createProjectBlockHistoryHasHost1
+		u.Type = CreateProjectBlockHistoryHasUnion1TypeCreateProjectBlockHistoryHasHost1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectBlockHistoryHasUnion1", string(data))
+}
+
+func (u CreateProjectBlockHistoryHasUnion1) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectBlockHistoryHasXVercelIPCountry1 != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryHasXVercelIPCountry1, "", true)
+	}
+
+	if u.CreateProjectBlockHistoryHasHost1 != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryHasHost1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectBlockHistoryHasUnion1: all fields are null")
+}
+
+type CreateProjectRouteAction1 string
+
+const (
+	CreateProjectRouteAction1BlockLegalCwc CreateProjectRouteAction1 = "block_legal_cwc"
+)
+
+func (e CreateProjectRouteAction1) ToPointer() *CreateProjectRouteAction1 {
+	return &e
+}
+func (e *CreateProjectRouteAction1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "block_legal_cwc":
+		*e = CreateProjectRouteAction1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectRouteAction1: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryMitigate1 struct {
+	Action CreateProjectRouteAction1 `json:"action"`
+}
+
+func (c CreateProjectBlockHistoryMitigate1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryMitigate1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryMitigate1) GetAction() CreateProjectRouteAction1 {
+	if o == nil {
+		return CreateProjectRouteAction1("")
+	}
+	return o.Action
+}
+
+type CreateProjectRoute2 struct {
+	Has      []CreateProjectBlockHistoryHasUnion1 `json:"has"`
+	Mitigate CreateProjectBlockHistoryMitigate1   `json:"mitigate"`
+	Src      *string                              `json:"src,omitempty"`
+}
+
+func (c CreateProjectRoute2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectRoute2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"has", "mitigate"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectRoute2) GetHas() []CreateProjectBlockHistoryHasUnion1 {
+	if o == nil {
+		return []CreateProjectBlockHistoryHasUnion1{}
+	}
+	return o.Has
+}
+
+func (o *CreateProjectRoute2) GetMitigate() CreateProjectBlockHistoryMitigate1 {
+	if o == nil {
+		return CreateProjectBlockHistoryMitigate1{}
+	}
+	return o.Mitigate
+}
+
+func (o *CreateProjectRoute2) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+type CreateProjectRoute1 struct {
+	Src    string  `json:"src"`
+	Status float64 `json:"status"`
+}
+
+func (c CreateProjectRoute1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectRoute1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"src", "status"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectRoute1) GetSrc() string {
+	if o == nil {
+		return ""
+	}
+	return o.Src
+}
+
+func (o *CreateProjectRoute1) GetStatus() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Status
+}
+
+type CreateProjectRouteUnion1Type string
+
+const (
+	CreateProjectRouteUnion1TypeCreateProjectRoute1 CreateProjectRouteUnion1Type = "createProject_route_1"
+	CreateProjectRouteUnion1TypeCreateProjectRoute2 CreateProjectRouteUnion1Type = "createProject_route_2"
+)
+
+type CreateProjectRouteUnion1 struct {
+	CreateProjectRoute1 *CreateProjectRoute1 `queryParam:"inline"`
+	CreateProjectRoute2 *CreateProjectRoute2 `queryParam:"inline"`
+
+	Type CreateProjectRouteUnion1Type
+}
+
+func CreateCreateProjectRouteUnion1CreateProjectRoute1(createProjectRoute1 CreateProjectRoute1) CreateProjectRouteUnion1 {
+	typ := CreateProjectRouteUnion1TypeCreateProjectRoute1
+
+	return CreateProjectRouteUnion1{
+		CreateProjectRoute1: &createProjectRoute1,
+		Type:                typ,
+	}
+}
+
+func CreateCreateProjectRouteUnion1CreateProjectRoute2(createProjectRoute2 CreateProjectRoute2) CreateProjectRouteUnion1 {
+	typ := CreateProjectRouteUnion1TypeCreateProjectRoute2
+
+	return CreateProjectRouteUnion1{
+		CreateProjectRoute2: &createProjectRoute2,
+		Type:                typ,
+	}
+}
+
+func (u *CreateProjectRouteUnion1) UnmarshalJSON(data []byte) error {
+
+	var createProjectRoute1 CreateProjectRoute1 = CreateProjectRoute1{}
+	if err := utils.UnmarshalJSON(data, &createProjectRoute1, "", true, nil); err == nil {
+		u.CreateProjectRoute1 = &createProjectRoute1
+		u.Type = CreateProjectRouteUnion1TypeCreateProjectRoute1
+		return nil
+	}
+
+	var createProjectRoute2 CreateProjectRoute2 = CreateProjectRoute2{}
+	if err := utils.UnmarshalJSON(data, &createProjectRoute2, "", true, nil); err == nil {
+		u.CreateProjectRoute2 = &createProjectRoute2
+		u.Type = CreateProjectRouteUnion1TypeCreateProjectRoute2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectRouteUnion1", string(data))
+}
+
+func (u CreateProjectRouteUnion1) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectRoute1 != nil {
+		return utils.MarshalJSON(u.CreateProjectRoute1, "", true)
+	}
+
+	if u.CreateProjectRoute2 != nil {
+		return utils.MarshalJSON(u.CreateProjectRoute2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectRouteUnion1: all fields are null")
+}
+
+type CreateProjectBlockHistoryRouteBlocked struct {
+	Action      CreateProjectActionRouteBlocked `json:"action"`
+	Route       CreateProjectRouteUnion1        `json:"route"`
+	Reason      string                          `json:"reason"`
+	CreatedAt   float64                         `json:"createdAt"`
+	CaseID      *string                         `json:"caseId,omitempty"`
+	Actor       *string                         `json:"actor,omitempty"`
+	Comment     *string                         `json:"comment,omitempty"`
+	IsCascading *bool                           `json:"isCascading,omitempty"`
+}
+
+func (c CreateProjectBlockHistoryRouteBlocked) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryRouteBlocked) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action", "route", "reason", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetAction() CreateProjectActionRouteBlocked {
+	if o == nil {
+		return CreateProjectActionRouteBlocked("")
+	}
+	return o.Action
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetRoute() CreateProjectRouteUnion1 {
+	if o == nil {
+		return CreateProjectRouteUnion1{}
+	}
+	return o.Route
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *CreateProjectBlockHistoryRouteBlocked) GetIsCascading() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsCascading
+}
+
+type CreateProjectActionUnblocked string
+
+const (
+	CreateProjectActionUnblockedUnblocked CreateProjectActionUnblocked = "unblocked"
+)
+
+func (e CreateProjectActionUnblocked) ToPointer() *CreateProjectActionUnblocked {
+	return &e
+}
+func (e *CreateProjectActionUnblocked) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unblocked":
+		*e = CreateProjectActionUnblocked(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectActionUnblocked: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryUnblocked struct {
+	Action      CreateProjectActionUnblocked `json:"action"`
+	CreatedAt   float64                      `json:"createdAt"`
+	CaseID      *string                      `json:"caseId,omitempty"`
+	Actor       *string                      `json:"actor,omitempty"`
+	Comment     *string                      `json:"comment,omitempty"`
+	IsCascading *bool                        `json:"isCascading,omitempty"`
+}
+
+func (c CreateProjectBlockHistoryUnblocked) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryUnblocked) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryUnblocked) GetAction() CreateProjectActionUnblocked {
+	if o == nil {
+		return CreateProjectActionUnblocked("")
+	}
+	return o.Action
+}
+
+func (o *CreateProjectBlockHistoryUnblocked) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectBlockHistoryUnblocked) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *CreateProjectBlockHistoryUnblocked) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *CreateProjectBlockHistoryUnblocked) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *CreateProjectBlockHistoryUnblocked) GetIsCascading() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsCascading
+}
+
+type CreateProjectBlockHistoryActionBlocked string
+
+const (
+	CreateProjectBlockHistoryActionBlockedBlocked CreateProjectBlockHistoryActionBlocked = "blocked"
+)
+
+func (e CreateProjectBlockHistoryActionBlocked) ToPointer() *CreateProjectBlockHistoryActionBlocked {
+	return &e
+}
+func (e *CreateProjectBlockHistoryActionBlocked) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blocked":
+		*e = CreateProjectBlockHistoryActionBlocked(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectBlockHistoryActionBlocked: %v", v)
+	}
+}
+
+type CreateProjectBlockHistoryBlocked struct {
+	Action      CreateProjectBlockHistoryActionBlocked `json:"action"`
+	Reason      string                                 `json:"reason"`
+	StatusCode  float64                                `json:"statusCode"`
+	CreatedAt   float64                                `json:"createdAt"`
+	CaseID      *string                                `json:"caseId,omitempty"`
+	Actor       *string                                `json:"actor,omitempty"`
+	Comment     *string                                `json:"comment,omitempty"`
+	IsCascading *bool                                  `json:"isCascading,omitempty"`
+}
+
+func (c CreateProjectBlockHistoryBlocked) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectBlockHistoryBlocked) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action", "reason", "statusCode", "createdAt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetAction() CreateProjectBlockHistoryActionBlocked {
+	if o == nil {
+		return CreateProjectBlockHistoryActionBlocked("")
+	}
+	return o.Action
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetStatusCode() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
+func (o *CreateProjectBlockHistoryBlocked) GetIsCascading() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsCascading
+}
+
+type CreateProjectBlockHistoryUnionType string
+
+const (
+	CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryBlocked        CreateProjectBlockHistoryUnionType = "createProject_blockHistory_Blocked"
+	CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryUnblocked      CreateProjectBlockHistoryUnionType = "createProject_blockHistory_Unblocked"
+	CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryRouteBlocked   CreateProjectBlockHistoryUnionType = "createProject_blockHistory_RouteBlocked"
+	CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryRouteUnblocked CreateProjectBlockHistoryUnionType = "createProject_blockHistory_RouteUnblocked"
+)
+
+type CreateProjectBlockHistoryUnion struct {
+	CreateProjectBlockHistoryBlocked        *CreateProjectBlockHistoryBlocked        `queryParam:"inline"`
+	CreateProjectBlockHistoryUnblocked      *CreateProjectBlockHistoryUnblocked      `queryParam:"inline"`
+	CreateProjectBlockHistoryRouteBlocked   *CreateProjectBlockHistoryRouteBlocked   `queryParam:"inline"`
+	CreateProjectBlockHistoryRouteUnblocked *CreateProjectBlockHistoryRouteUnblocked `queryParam:"inline"`
+
+	Type CreateProjectBlockHistoryUnionType
+}
+
+func CreateCreateProjectBlockHistoryUnionCreateProjectBlockHistoryBlocked(createProjectBlockHistoryBlocked CreateProjectBlockHistoryBlocked) CreateProjectBlockHistoryUnion {
+	typ := CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryBlocked
+
+	return CreateProjectBlockHistoryUnion{
+		CreateProjectBlockHistoryBlocked: &createProjectBlockHistoryBlocked,
+		Type:                             typ,
+	}
+}
+
+func CreateCreateProjectBlockHistoryUnionCreateProjectBlockHistoryUnblocked(createProjectBlockHistoryUnblocked CreateProjectBlockHistoryUnblocked) CreateProjectBlockHistoryUnion {
+	typ := CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryUnblocked
+
+	return CreateProjectBlockHistoryUnion{
+		CreateProjectBlockHistoryUnblocked: &createProjectBlockHistoryUnblocked,
+		Type:                               typ,
+	}
+}
+
+func CreateCreateProjectBlockHistoryUnionCreateProjectBlockHistoryRouteBlocked(createProjectBlockHistoryRouteBlocked CreateProjectBlockHistoryRouteBlocked) CreateProjectBlockHistoryUnion {
+	typ := CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryRouteBlocked
+
+	return CreateProjectBlockHistoryUnion{
+		CreateProjectBlockHistoryRouteBlocked: &createProjectBlockHistoryRouteBlocked,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateProjectBlockHistoryUnionCreateProjectBlockHistoryRouteUnblocked(createProjectBlockHistoryRouteUnblocked CreateProjectBlockHistoryRouteUnblocked) CreateProjectBlockHistoryUnion {
+	typ := CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryRouteUnblocked
+
+	return CreateProjectBlockHistoryUnion{
+		CreateProjectBlockHistoryRouteUnblocked: &createProjectBlockHistoryRouteUnblocked,
+		Type:                                    typ,
+	}
+}
+
+func (u *CreateProjectBlockHistoryUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectBlockHistoryBlocked CreateProjectBlockHistoryBlocked = CreateProjectBlockHistoryBlocked{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryBlocked, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryBlocked = &createProjectBlockHistoryBlocked
+		u.Type = CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryBlocked
+		return nil
+	}
+
+	var createProjectBlockHistoryRouteBlocked CreateProjectBlockHistoryRouteBlocked = CreateProjectBlockHistoryRouteBlocked{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryRouteBlocked, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryRouteBlocked = &createProjectBlockHistoryRouteBlocked
+		u.Type = CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryRouteBlocked
+		return nil
+	}
+
+	var createProjectBlockHistoryRouteUnblocked CreateProjectBlockHistoryRouteUnblocked = CreateProjectBlockHistoryRouteUnblocked{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryRouteUnblocked, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryRouteUnblocked = &createProjectBlockHistoryRouteUnblocked
+		u.Type = CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryRouteUnblocked
+		return nil
+	}
+
+	var createProjectBlockHistoryUnblocked CreateProjectBlockHistoryUnblocked = CreateProjectBlockHistoryUnblocked{}
+	if err := utils.UnmarshalJSON(data, &createProjectBlockHistoryUnblocked, "", true, nil); err == nil {
+		u.CreateProjectBlockHistoryUnblocked = &createProjectBlockHistoryUnblocked
+		u.Type = CreateProjectBlockHistoryUnionTypeCreateProjectBlockHistoryUnblocked
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectBlockHistoryUnion", string(data))
+}
+
+func (u CreateProjectBlockHistoryUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectBlockHistoryBlocked != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryBlocked, "", true)
+	}
+
+	if u.CreateProjectBlockHistoryUnblocked != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryUnblocked, "", true)
+	}
+
+	if u.CreateProjectBlockHistoryRouteBlocked != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryRouteBlocked, "", true)
+	}
+
+	if u.CreateProjectBlockHistoryRouteUnblocked != nil {
+		return utils.MarshalJSON(u.CreateProjectBlockHistoryRouteUnblocked, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectBlockHistoryUnion: all fields are null")
+}
+
+type CreateProjectAbuse struct {
+	Scanner      *string                          `json:"scanner,omitempty"`
+	History      []CreateProjectHistory           `json:"history"`
+	UpdatedAt    float64                          `json:"updatedAt"`
+	Block        *CreateProjectBlock              `json:"block,omitempty"`
+	BlockHistory []CreateProjectBlockHistoryUnion `json:"blockHistory,omitempty"`
+}
+
+func (o *CreateProjectAbuse) GetScanner() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Scanner
+}
+
+func (o *CreateProjectAbuse) GetHistory() []CreateProjectHistory {
+	if o == nil {
+		return []CreateProjectHistory{}
+	}
+	return o.History
+}
+
+func (o *CreateProjectAbuse) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *CreateProjectAbuse) GetBlock() *CreateProjectBlock {
+	if o == nil {
+		return nil
+	}
+	return o.Block
+}
+
+func (o *CreateProjectAbuse) GetBlockHistory() []CreateProjectBlockHistoryUnion {
+	if o == nil {
+		return nil
+	}
+	return o.BlockHistory
+}
+
+type CreateProjectInternalRouteTypeHost string
+
+const (
+	CreateProjectInternalRouteTypeHostHost CreateProjectInternalRouteTypeHost = "host"
+)
+
+func (e CreateProjectInternalRouteTypeHost) ToPointer() *CreateProjectInternalRouteTypeHost {
+	return &e
+}
+func (e *CreateProjectInternalRouteTypeHost) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "host":
+		*e = CreateProjectInternalRouteTypeHost(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectInternalRouteTypeHost: %v", v)
+	}
+}
+
+type CreateProjectInternalRouteValue2 struct {
+	Eq string `json:"eq"`
+}
+
+func (c CreateProjectInternalRouteValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectInternalRouteValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectInternalRouteValue2) GetEq() string {
+	if o == nil {
+		return ""
+	}
+	return o.Eq
+}
+
+type CreateProjectInternalRouteHasHost struct {
+	Type  CreateProjectInternalRouteTypeHost `json:"type"`
+	Value CreateProjectInternalRouteValue2   `json:"value"`
+}
+
+func (c CreateProjectInternalRouteHasHost) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectInternalRouteHasHost) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectInternalRouteHasHost) GetType() CreateProjectInternalRouteTypeHost {
+	if o == nil {
+		return CreateProjectInternalRouteTypeHost("")
+	}
+	return o.Type
+}
+
+func (o *CreateProjectInternalRouteHasHost) GetValue() CreateProjectInternalRouteValue2 {
+	if o == nil {
+		return CreateProjectInternalRouteValue2{}
+	}
+	return o.Value
+}
+
+type CreateProjectInternalRouteTypeHeader string
+
+const (
+	CreateProjectInternalRouteTypeHeaderHeader CreateProjectInternalRouteTypeHeader = "header"
+)
+
+func (e CreateProjectInternalRouteTypeHeader) ToPointer() *CreateProjectInternalRouteTypeHeader {
+	return &e
+}
+func (e *CreateProjectInternalRouteTypeHeader) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "header":
+		*e = CreateProjectInternalRouteTypeHeader(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectInternalRouteTypeHeader: %v", v)
+	}
+}
+
+type CreateProjectInternalRouteKey string
+
+const (
+	CreateProjectInternalRouteKeyXVercelIPCountry CreateProjectInternalRouteKey = "x-vercel-ip-country"
+)
+
+func (e CreateProjectInternalRouteKey) ToPointer() *CreateProjectInternalRouteKey {
+	return &e
+}
+func (e *CreateProjectInternalRouteKey) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "x-vercel-ip-country":
+		*e = CreateProjectInternalRouteKey(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectInternalRouteKey: %v", v)
+	}
+}
+
+type CreateProjectInternalRouteValue1 struct {
+	Eq string `json:"eq"`
+}
+
+func (c CreateProjectInternalRouteValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectInternalRouteValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectInternalRouteValue1) GetEq() string {
+	if o == nil {
+		return ""
+	}
+	return o.Eq
+}
+
+type CreateProjectInternalRouteHasXVercelIPCountry struct {
+	Type  CreateProjectInternalRouteTypeHeader `json:"type"`
+	Key   CreateProjectInternalRouteKey        `json:"key"`
+	Value CreateProjectInternalRouteValue1     `json:"value"`
+}
+
+func (c CreateProjectInternalRouteHasXVercelIPCountry) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectInternalRouteHasXVercelIPCountry) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "key", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectInternalRouteHasXVercelIPCountry) GetType() CreateProjectInternalRouteTypeHeader {
+	if o == nil {
+		return CreateProjectInternalRouteTypeHeader("")
+	}
+	return o.Type
+}
+
+func (o *CreateProjectInternalRouteHasXVercelIPCountry) GetKey() CreateProjectInternalRouteKey {
+	if o == nil {
+		return CreateProjectInternalRouteKey("")
+	}
+	return o.Key
+}
+
+func (o *CreateProjectInternalRouteHasXVercelIPCountry) GetValue() CreateProjectInternalRouteValue1 {
+	if o == nil {
+		return CreateProjectInternalRouteValue1{}
+	}
+	return o.Value
+}
+
+type CreateProjectInternalRouteHasUnionType string
+
+const (
+	CreateProjectInternalRouteHasUnionTypeCreateProjectInternalRouteHasXVercelIPCountry CreateProjectInternalRouteHasUnionType = "createProject_internalRoute_has_XVercelIPCountry"
+	CreateProjectInternalRouteHasUnionTypeCreateProjectInternalRouteHasHost             CreateProjectInternalRouteHasUnionType = "createProject_internalRoute_has_Host"
+)
+
+type CreateProjectInternalRouteHasUnion struct {
+	CreateProjectInternalRouteHasXVercelIPCountry *CreateProjectInternalRouteHasXVercelIPCountry `queryParam:"inline"`
+	CreateProjectInternalRouteHasHost             *CreateProjectInternalRouteHasHost             `queryParam:"inline"`
+
+	Type CreateProjectInternalRouteHasUnionType
+}
+
+func CreateCreateProjectInternalRouteHasUnionCreateProjectInternalRouteHasXVercelIPCountry(createProjectInternalRouteHasXVercelIPCountry CreateProjectInternalRouteHasXVercelIPCountry) CreateProjectInternalRouteHasUnion {
+	typ := CreateProjectInternalRouteHasUnionTypeCreateProjectInternalRouteHasXVercelIPCountry
+
+	return CreateProjectInternalRouteHasUnion{
+		CreateProjectInternalRouteHasXVercelIPCountry: &createProjectInternalRouteHasXVercelIPCountry,
+		Type: typ,
+	}
+}
+
+func CreateCreateProjectInternalRouteHasUnionCreateProjectInternalRouteHasHost(createProjectInternalRouteHasHost CreateProjectInternalRouteHasHost) CreateProjectInternalRouteHasUnion {
+	typ := CreateProjectInternalRouteHasUnionTypeCreateProjectInternalRouteHasHost
+
+	return CreateProjectInternalRouteHasUnion{
+		CreateProjectInternalRouteHasHost: &createProjectInternalRouteHasHost,
+		Type:                              typ,
+	}
+}
+
+func (u *CreateProjectInternalRouteHasUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectInternalRouteHasXVercelIPCountry CreateProjectInternalRouteHasXVercelIPCountry = CreateProjectInternalRouteHasXVercelIPCountry{}
+	if err := utils.UnmarshalJSON(data, &createProjectInternalRouteHasXVercelIPCountry, "", true, nil); err == nil {
+		u.CreateProjectInternalRouteHasXVercelIPCountry = &createProjectInternalRouteHasXVercelIPCountry
+		u.Type = CreateProjectInternalRouteHasUnionTypeCreateProjectInternalRouteHasXVercelIPCountry
+		return nil
+	}
+
+	var createProjectInternalRouteHasHost CreateProjectInternalRouteHasHost = CreateProjectInternalRouteHasHost{}
+	if err := utils.UnmarshalJSON(data, &createProjectInternalRouteHasHost, "", true, nil); err == nil {
+		u.CreateProjectInternalRouteHasHost = &createProjectInternalRouteHasHost
+		u.Type = CreateProjectInternalRouteHasUnionTypeCreateProjectInternalRouteHasHost
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectInternalRouteHasUnion", string(data))
+}
+
+func (u CreateProjectInternalRouteHasUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectInternalRouteHasXVercelIPCountry != nil {
+		return utils.MarshalJSON(u.CreateProjectInternalRouteHasXVercelIPCountry, "", true)
+	}
+
+	if u.CreateProjectInternalRouteHasHost != nil {
+		return utils.MarshalJSON(u.CreateProjectInternalRouteHasHost, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectInternalRouteHasUnion: all fields are null")
+}
+
+type CreateProjectInternalRouteAction string
+
+const (
+	CreateProjectInternalRouteActionBlockLegalCwc CreateProjectInternalRouteAction = "block_legal_cwc"
+)
+
+func (e CreateProjectInternalRouteAction) ToPointer() *CreateProjectInternalRouteAction {
+	return &e
+}
+func (e *CreateProjectInternalRouteAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "block_legal_cwc":
+		*e = CreateProjectInternalRouteAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectInternalRouteAction: %v", v)
+	}
+}
+
+type CreateProjectInternalRouteMitigate struct {
+	Action CreateProjectInternalRouteAction `json:"action"`
+}
+
+func (c CreateProjectInternalRouteMitigate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectInternalRouteMitigate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"action"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectInternalRouteMitigate) GetAction() CreateProjectInternalRouteAction {
+	if o == nil {
+		return CreateProjectInternalRouteAction("")
+	}
+	return o.Action
+}
+
+type CreateProjectInternalRoute2 struct {
+	Has      []CreateProjectInternalRouteHasUnion `json:"has"`
+	Mitigate CreateProjectInternalRouteMitigate   `json:"mitigate"`
+	Src      *string                              `json:"src,omitempty"`
+}
+
+func (c CreateProjectInternalRoute2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectInternalRoute2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"has", "mitigate"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectInternalRoute2) GetHas() []CreateProjectInternalRouteHasUnion {
+	if o == nil {
+		return []CreateProjectInternalRouteHasUnion{}
+	}
+	return o.Has
+}
+
+func (o *CreateProjectInternalRoute2) GetMitigate() CreateProjectInternalRouteMitigate {
+	if o == nil {
+		return CreateProjectInternalRouteMitigate{}
+	}
+	return o.Mitigate
+}
+
+func (o *CreateProjectInternalRoute2) GetSrc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Src
+}
+
+type CreateProjectInternalRoute1 struct {
+	Src    string  `json:"src"`
+	Status float64 `json:"status"`
+}
+
+func (c CreateProjectInternalRoute1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectInternalRoute1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"src", "status"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectInternalRoute1) GetSrc() string {
+	if o == nil {
+		return ""
+	}
+	return o.Src
+}
+
+func (o *CreateProjectInternalRoute1) GetStatus() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Status
+}
+
+type CreateProjectInternalRouteUnionType string
+
+const (
+	CreateProjectInternalRouteUnionTypeCreateProjectInternalRoute1 CreateProjectInternalRouteUnionType = "createProject_internalRoute_1"
+	CreateProjectInternalRouteUnionTypeCreateProjectInternalRoute2 CreateProjectInternalRouteUnionType = "createProject_internalRoute_2"
+)
+
+type CreateProjectInternalRouteUnion struct {
+	CreateProjectInternalRoute1 *CreateProjectInternalRoute1 `queryParam:"inline"`
+	CreateProjectInternalRoute2 *CreateProjectInternalRoute2 `queryParam:"inline"`
+
+	Type CreateProjectInternalRouteUnionType
+}
+
+func CreateCreateProjectInternalRouteUnionCreateProjectInternalRoute1(createProjectInternalRoute1 CreateProjectInternalRoute1) CreateProjectInternalRouteUnion {
+	typ := CreateProjectInternalRouteUnionTypeCreateProjectInternalRoute1
+
+	return CreateProjectInternalRouteUnion{
+		CreateProjectInternalRoute1: &createProjectInternalRoute1,
+		Type:                        typ,
+	}
+}
+
+func CreateCreateProjectInternalRouteUnionCreateProjectInternalRoute2(createProjectInternalRoute2 CreateProjectInternalRoute2) CreateProjectInternalRouteUnion {
+	typ := CreateProjectInternalRouteUnionTypeCreateProjectInternalRoute2
+
+	return CreateProjectInternalRouteUnion{
+		CreateProjectInternalRoute2: &createProjectInternalRoute2,
+		Type:                        typ,
+	}
+}
+
+func (u *CreateProjectInternalRouteUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectInternalRoute1 CreateProjectInternalRoute1 = CreateProjectInternalRoute1{}
+	if err := utils.UnmarshalJSON(data, &createProjectInternalRoute1, "", true, nil); err == nil {
+		u.CreateProjectInternalRoute1 = &createProjectInternalRoute1
+		u.Type = CreateProjectInternalRouteUnionTypeCreateProjectInternalRoute1
+		return nil
+	}
+
+	var createProjectInternalRoute2 CreateProjectInternalRoute2 = CreateProjectInternalRoute2{}
+	if err := utils.UnmarshalJSON(data, &createProjectInternalRoute2, "", true, nil); err == nil {
+		u.CreateProjectInternalRoute2 = &createProjectInternalRoute2
+		u.Type = CreateProjectInternalRouteUnionTypeCreateProjectInternalRoute2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectInternalRouteUnion", string(data))
+}
+
+func (u CreateProjectInternalRouteUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectInternalRoute1 != nil {
+		return utils.MarshalJSON(u.CreateProjectInternalRoute1, "", true)
+	}
+
+	if u.CreateProjectInternalRoute2 != nil {
+		return utils.MarshalJSON(u.CreateProjectInternalRoute2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectInternalRouteUnion: all fields are null")
+}
+
 // CreateProjectResponseBody - The project was successfuly created
 type CreateProjectResponseBody struct {
 	AccountID                        string                              `json:"accountId"`
@@ -8894,6 +10833,8 @@ type CreateProjectResponseBody struct {
 	Tier                                 *CreateProjectTier                            `json:"tier,omitempty"`
 	Features                             *CreateProjectFeatures                        `json:"features,omitempty"`
 	V0                                   *bool                                         `json:"v0,omitempty"`
+	Abuse                                *CreateProjectAbuse                           `json:"abuse,omitempty"`
+	InternalRoutes                       []CreateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
 }
 
 func (o *CreateProjectResponseBody) GetAccountID() string {
@@ -9412,6 +11353,20 @@ func (o *CreateProjectResponseBody) GetV0() *bool {
 		return nil
 	}
 	return o.V0
+}
+
+func (o *CreateProjectResponseBody) GetAbuse() *CreateProjectAbuse {
+	if o == nil {
+		return nil
+	}
+	return o.Abuse
+}
+
+func (o *CreateProjectResponseBody) GetInternalRoutes() []CreateProjectInternalRouteUnion {
+	if o == nil {
+		return nil
+	}
+	return o.InternalRoutes
 }
 
 type CreateProjectResponse struct {

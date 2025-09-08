@@ -7,8 +7,11 @@
 
 ```typescript
 const value: models.Has1 = {
-  type: "host",
-  value: {},
+  type: "header",
+  key: "x-vercel-ip-country",
+  value: {
+    eq: "<value>",
+  },
 };
 ```
 
@@ -16,8 +19,10 @@ const value: models.Has1 = {
 
 ```typescript
 const value: models.Has2 = {
-  type: "header",
-  key: "<key>",
+  type: "host",
+  value: {
+    eq: "<value>",
+  },
 };
 ```
 

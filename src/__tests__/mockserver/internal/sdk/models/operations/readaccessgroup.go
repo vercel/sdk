@@ -37,6 +37,53 @@ func (o *ReadAccessGroupRequest) GetSlug() *string {
 	return o.Slug
 }
 
+type ReadAccessGroupTeamPermission string
+
+const (
+	ReadAccessGroupTeamPermissionIntegrationManager       ReadAccessGroupTeamPermission = "IntegrationManager"
+	ReadAccessGroupTeamPermissionCreateProject            ReadAccessGroupTeamPermission = "CreateProject"
+	ReadAccessGroupTeamPermissionFullProductionDeployment ReadAccessGroupTeamPermission = "FullProductionDeployment"
+	ReadAccessGroupTeamPermissionUsageViewer              ReadAccessGroupTeamPermission = "UsageViewer"
+	ReadAccessGroupTeamPermissionEnvVariableManager       ReadAccessGroupTeamPermission = "EnvVariableManager"
+	ReadAccessGroupTeamPermissionEnvironmentManager       ReadAccessGroupTeamPermission = "EnvironmentManager"
+	ReadAccessGroupTeamPermissionV0Builder                ReadAccessGroupTeamPermission = "V0Builder"
+	ReadAccessGroupTeamPermissionV0Chatter                ReadAccessGroupTeamPermission = "V0Chatter"
+	ReadAccessGroupTeamPermissionV0Viewer                 ReadAccessGroupTeamPermission = "V0Viewer"
+)
+
+func (e ReadAccessGroupTeamPermission) ToPointer() *ReadAccessGroupTeamPermission {
+	return &e
+}
+func (e *ReadAccessGroupTeamPermission) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "IntegrationManager":
+		fallthrough
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
+		*e = ReadAccessGroupTeamPermission(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ReadAccessGroupTeamPermission: %v", v)
+	}
+}
+
 type ReadAccessGroupEntitlement string
 
 const (
@@ -61,8 +108,9 @@ func (e *ReadAccessGroupEntitlement) UnmarshalJSON(data []byte) error {
 }
 
 type ReadAccessGroupResponseBody struct {
-	Entitlements   []ReadAccessGroupEntitlement `json:"entitlements,omitempty"`
-	IsDsyncManaged bool                         `json:"isDsyncManaged"`
+	TeamPermissions []ReadAccessGroupTeamPermission `json:"teamPermissions,omitempty"`
+	Entitlements    []ReadAccessGroupEntitlement    `json:"entitlements,omitempty"`
+	IsDsyncManaged  bool                            `json:"isDsyncManaged"`
 	// The name of this access group.
 	Name string `json:"name"`
 	// Timestamp in milliseconds when the access group was created.
@@ -79,8 +127,13 @@ type ReadAccessGroupResponseBody struct {
 	ProjectsCount float64 `json:"projectsCount"`
 	// Roles that the team has in the access group.
 	TeamRoles []string `json:"teamRoles,omitempty"`
-	// Permissions that the team has in the access group.
-	TeamPermissions []string `json:"teamPermissions,omitempty"`
+}
+
+func (o *ReadAccessGroupResponseBody) GetTeamPermissions() []ReadAccessGroupTeamPermission {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 func (o *ReadAccessGroupResponseBody) GetEntitlements() []ReadAccessGroupEntitlement {
@@ -151,13 +204,6 @@ func (o *ReadAccessGroupResponseBody) GetTeamRoles() []string {
 		return nil
 	}
 	return o.TeamRoles
-}
-
-func (o *ReadAccessGroupResponseBody) GetTeamPermissions() []string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamPermissions
 }
 
 type ReadAccessGroupResponse struct {

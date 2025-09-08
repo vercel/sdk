@@ -989,7 +989,9 @@ export type CancelDeploymentHas1 = {
   value: CancelDeploymentValue2 | string;
 };
 
-export type RoutesHas = CancelDeploymentHas1 | CancelDeploymentHas2;
+export type CancelDeploymentRoutesHas =
+  | CancelDeploymentHas1
+  | CancelDeploymentHas2;
 
 export const CancelDeploymentMissingDeploymentsType = {
   Header: "header",
@@ -1068,7 +1070,7 @@ export type CancelDeploymentRoutesAction = ClosedEnum<
   typeof CancelDeploymentRoutesAction
 >;
 
-export type RoutesMitigate = {
+export type CancelDeploymentRoutesMitigate = {
   action: CancelDeploymentRoutesAction;
 };
 
@@ -1103,7 +1105,7 @@ export type CancelDeploymentKey2 = {
   lte?: number | undefined;
 };
 
-export type RoutesKey = CancelDeploymentKey2 | string;
+export type CancelDeploymentRoutesKey = CancelDeploymentKey2 | string;
 
 export type CancelDeploymentRoutesTarget = {
   key: CancelDeploymentKey2 | string;
@@ -1138,7 +1140,7 @@ export type CancelDeploymentRoutes1 = {
   missing?:
     | Array<CancelDeploymentMissing1 | CancelDeploymentMissing2>
     | undefined;
-  mitigate?: RoutesMitigate | undefined;
+  mitigate?: CancelDeploymentRoutesMitigate | undefined;
   transforms?: Array<RoutesTransforms> | undefined;
   locale?: RoutesLocale | undefined;
   /**
@@ -6353,8 +6355,8 @@ export function cancelDeploymentHas1FromJSON(
 }
 
 /** @internal */
-export const RoutesHas$inboundSchema: z.ZodType<
-  RoutesHas,
+export const CancelDeploymentRoutesHas$inboundSchema: z.ZodType<
+  CancelDeploymentRoutesHas,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -6363,15 +6365,15 @@ export const RoutesHas$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type RoutesHas$Outbound =
+export type CancelDeploymentRoutesHas$Outbound =
   | CancelDeploymentHas1$Outbound
   | CancelDeploymentHas2$Outbound;
 
 /** @internal */
-export const RoutesHas$outboundSchema: z.ZodType<
-  RoutesHas$Outbound,
+export const CancelDeploymentRoutesHas$outboundSchema: z.ZodType<
+  CancelDeploymentRoutesHas$Outbound,
   z.ZodTypeDef,
-  RoutesHas
+  CancelDeploymentRoutesHas
 > = z.union([
   z.lazy(() => CancelDeploymentHas1$outboundSchema),
   z.lazy(() => CancelDeploymentHas2$outboundSchema),
@@ -6381,26 +6383,30 @@ export const RoutesHas$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RoutesHas$ {
-  /** @deprecated use `RoutesHas$inboundSchema` instead. */
-  export const inboundSchema = RoutesHas$inboundSchema;
-  /** @deprecated use `RoutesHas$outboundSchema` instead. */
-  export const outboundSchema = RoutesHas$outboundSchema;
-  /** @deprecated use `RoutesHas$Outbound` instead. */
-  export type Outbound = RoutesHas$Outbound;
+export namespace CancelDeploymentRoutesHas$ {
+  /** @deprecated use `CancelDeploymentRoutesHas$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentRoutesHas$inboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesHas$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentRoutesHas$outboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesHas$Outbound` instead. */
+  export type Outbound = CancelDeploymentRoutesHas$Outbound;
 }
 
-export function routesHasToJSON(routesHas: RoutesHas): string {
-  return JSON.stringify(RoutesHas$outboundSchema.parse(routesHas));
+export function cancelDeploymentRoutesHasToJSON(
+  cancelDeploymentRoutesHas: CancelDeploymentRoutesHas,
+): string {
+  return JSON.stringify(
+    CancelDeploymentRoutesHas$outboundSchema.parse(cancelDeploymentRoutesHas),
+  );
 }
 
-export function routesHasFromJSON(
+export function cancelDeploymentRoutesHasFromJSON(
   jsonString: string,
-): SafeParseResult<RoutesHas, SDKValidationError> {
+): SafeParseResult<CancelDeploymentRoutesHas, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RoutesHas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RoutesHas' from JSON`,
+    (x) => CancelDeploymentRoutesHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentRoutesHas' from JSON`,
   );
 }
 
@@ -7096,8 +7102,8 @@ export namespace CancelDeploymentRoutesAction$ {
 }
 
 /** @internal */
-export const RoutesMitigate$inboundSchema: z.ZodType<
-  RoutesMitigate,
+export const CancelDeploymentRoutesMitigate$inboundSchema: z.ZodType<
+  CancelDeploymentRoutesMitigate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7105,15 +7111,15 @@ export const RoutesMitigate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type RoutesMitigate$Outbound = {
+export type CancelDeploymentRoutesMitigate$Outbound = {
   action: string;
 };
 
 /** @internal */
-export const RoutesMitigate$outboundSchema: z.ZodType<
-  RoutesMitigate$Outbound,
+export const CancelDeploymentRoutesMitigate$outboundSchema: z.ZodType<
+  CancelDeploymentRoutesMitigate$Outbound,
   z.ZodTypeDef,
-  RoutesMitigate
+  CancelDeploymentRoutesMitigate
 > = z.object({
   action: CancelDeploymentRoutesAction$outboundSchema,
 });
@@ -7122,26 +7128,32 @@ export const RoutesMitigate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RoutesMitigate$ {
-  /** @deprecated use `RoutesMitigate$inboundSchema` instead. */
-  export const inboundSchema = RoutesMitigate$inboundSchema;
-  /** @deprecated use `RoutesMitigate$outboundSchema` instead. */
-  export const outboundSchema = RoutesMitigate$outboundSchema;
-  /** @deprecated use `RoutesMitigate$Outbound` instead. */
-  export type Outbound = RoutesMitigate$Outbound;
+export namespace CancelDeploymentRoutesMitigate$ {
+  /** @deprecated use `CancelDeploymentRoutesMitigate$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentRoutesMitigate$inboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesMitigate$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentRoutesMitigate$outboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesMitigate$Outbound` instead. */
+  export type Outbound = CancelDeploymentRoutesMitigate$Outbound;
 }
 
-export function routesMitigateToJSON(routesMitigate: RoutesMitigate): string {
-  return JSON.stringify(RoutesMitigate$outboundSchema.parse(routesMitigate));
+export function cancelDeploymentRoutesMitigateToJSON(
+  cancelDeploymentRoutesMitigate: CancelDeploymentRoutesMitigate,
+): string {
+  return JSON.stringify(
+    CancelDeploymentRoutesMitigate$outboundSchema.parse(
+      cancelDeploymentRoutesMitigate,
+    ),
+  );
 }
 
-export function routesMitigateFromJSON(
+export function cancelDeploymentRoutesMitigateFromJSON(
   jsonString: string,
-): SafeParseResult<RoutesMitigate, SDKValidationError> {
+): SafeParseResult<CancelDeploymentRoutesMitigate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RoutesMitigate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RoutesMitigate' from JSON`,
+    (x) => CancelDeploymentRoutesMitigate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentRoutesMitigate' from JSON`,
   );
 }
 
@@ -7315,46 +7327,52 @@ export function cancelDeploymentKey2FromJSON(
 }
 
 /** @internal */
-export const RoutesKey$inboundSchema: z.ZodType<
-  RoutesKey,
+export const CancelDeploymentRoutesKey$inboundSchema: z.ZodType<
+  CancelDeploymentRoutesKey,
   z.ZodTypeDef,
   unknown
 > = z.union([z.lazy(() => CancelDeploymentKey2$inboundSchema), z.string()]);
 
 /** @internal */
-export type RoutesKey$Outbound = CancelDeploymentKey2$Outbound | string;
+export type CancelDeploymentRoutesKey$Outbound =
+  | CancelDeploymentKey2$Outbound
+  | string;
 
 /** @internal */
-export const RoutesKey$outboundSchema: z.ZodType<
-  RoutesKey$Outbound,
+export const CancelDeploymentRoutesKey$outboundSchema: z.ZodType<
+  CancelDeploymentRoutesKey$Outbound,
   z.ZodTypeDef,
-  RoutesKey
+  CancelDeploymentRoutesKey
 > = z.union([z.lazy(() => CancelDeploymentKey2$outboundSchema), z.string()]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RoutesKey$ {
-  /** @deprecated use `RoutesKey$inboundSchema` instead. */
-  export const inboundSchema = RoutesKey$inboundSchema;
-  /** @deprecated use `RoutesKey$outboundSchema` instead. */
-  export const outboundSchema = RoutesKey$outboundSchema;
-  /** @deprecated use `RoutesKey$Outbound` instead. */
-  export type Outbound = RoutesKey$Outbound;
+export namespace CancelDeploymentRoutesKey$ {
+  /** @deprecated use `CancelDeploymentRoutesKey$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentRoutesKey$inboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesKey$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentRoutesKey$outboundSchema;
+  /** @deprecated use `CancelDeploymentRoutesKey$Outbound` instead. */
+  export type Outbound = CancelDeploymentRoutesKey$Outbound;
 }
 
-export function routesKeyToJSON(routesKey: RoutesKey): string {
-  return JSON.stringify(RoutesKey$outboundSchema.parse(routesKey));
+export function cancelDeploymentRoutesKeyToJSON(
+  cancelDeploymentRoutesKey: CancelDeploymentRoutesKey,
+): string {
+  return JSON.stringify(
+    CancelDeploymentRoutesKey$outboundSchema.parse(cancelDeploymentRoutesKey),
+  );
 }
 
-export function routesKeyFromJSON(
+export function cancelDeploymentRoutesKeyFromJSON(
   jsonString: string,
-): SafeParseResult<RoutesKey, SDKValidationError> {
+): SafeParseResult<CancelDeploymentRoutesKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => RoutesKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RoutesKey' from JSON`,
+    (x) => CancelDeploymentRoutesKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentRoutesKey' from JSON`,
   );
 }
 
@@ -7602,7 +7620,8 @@ export const CancelDeploymentRoutes1$inboundSchema: z.ZodType<
       z.lazy(() => CancelDeploymentMissing2$inboundSchema),
     ]),
   ).optional(),
-  mitigate: z.lazy(() => RoutesMitigate$inboundSchema).optional(),
+  mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$inboundSchema)
+    .optional(),
   transforms: z.array(z.lazy(() => RoutesTransforms$inboundSchema)).optional(),
   locale: z.lazy(() => RoutesLocale$inboundSchema).optional(),
   middlewarePath: z.string().optional(),
@@ -7630,7 +7649,7 @@ export type CancelDeploymentRoutes1$Outbound = {
       CancelDeploymentMissing1$Outbound | CancelDeploymentMissing2$Outbound
     >
     | undefined;
-  mitigate?: RoutesMitigate$Outbound | undefined;
+  mitigate?: CancelDeploymentRoutesMitigate$Outbound | undefined;
   transforms?: Array<RoutesTransforms$Outbound> | undefined;
   locale?: RoutesLocale$Outbound | undefined;
   middlewarePath?: string | undefined;
@@ -7666,7 +7685,8 @@ export const CancelDeploymentRoutes1$outboundSchema: z.ZodType<
       z.lazy(() => CancelDeploymentMissing2$outboundSchema),
     ]),
   ).optional(),
-  mitigate: z.lazy(() => RoutesMitigate$outboundSchema).optional(),
+  mitigate: z.lazy(() => CancelDeploymentRoutesMitigate$outboundSchema)
+    .optional(),
   transforms: z.array(z.lazy(() => RoutesTransforms$outboundSchema)).optional(),
   locale: z.lazy(() => RoutesLocale$outboundSchema).optional(),
   middlewarePath: z.string().optional(),

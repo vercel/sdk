@@ -33,10 +33,10 @@ func (o *Connect) GetEnabled() *bool {
 
 // TeamConnection - Information for the SAML Single Sign-On configuration.
 type TeamConnection struct {
-	// The Identity Provider "type", for example Okta.
-	Type string `json:"type"`
 	// Current status of the connection.
 	Status string `json:"status"`
+	// The Identity Provider "type", for example Okta.
+	Type string `json:"type"`
 	// Current state of the connection.
 	State string `json:"state"`
 	// Timestamp (in milliseconds) of when the configuration was connected.
@@ -50,17 +50,10 @@ func (t TeamConnection) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TeamConnection) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "status", "state", "connectedAt"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"status", "type", "state", "connectedAt"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *TeamConnection) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
 }
 
 func (o *TeamConnection) GetStatus() string {
@@ -68,6 +61,13 @@ func (o *TeamConnection) GetStatus() string {
 		return ""
 	}
 	return o.Status
+}
+
+func (o *TeamConnection) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
 }
 
 func (o *TeamConnection) GetState() string {
@@ -632,10 +632,16 @@ func (o *DefaultDeploymentProtection) GetSsoProtection() *TeamSsoProtection {
 
 // DefaultExpirationSettings - Default deployment expiration settings for this team
 type DefaultExpirationSettings struct {
-	Expiration           *string `json:"expiration,omitempty"`
-	ExpirationProduction *string `json:"expirationProduction,omitempty"`
-	ExpirationCanceled   *string `json:"expirationCanceled,omitempty"`
-	ExpirationErrored    *string `json:"expirationErrored,omitempty"`
+	// Number of days to keep non-production deployments (mostly preview deployments) before soft deletion.
+	ExpirationDays *float64 `json:"expirationDays,omitempty"`
+	// Number of days to keep production deployments before soft deletion.
+	ExpirationDaysProduction *float64 `json:"expirationDaysProduction,omitempty"`
+	// Number of days to keep canceled deployments before soft deletion.
+	ExpirationDaysCanceled *float64 `json:"expirationDaysCanceled,omitempty"`
+	// Number of days to keep errored deployments before soft deletion.
+	ExpirationDaysErrored *float64 `json:"expirationDaysErrored,omitempty"`
+	// Minimum number of production deployments to keep for this project, even if they are over the production expiration limit.
+	DeploymentsToKeep *float64 `json:"deploymentsToKeep,omitempty"`
 }
 
 func (d DefaultExpirationSettings) MarshalJSON() ([]byte, error) {
@@ -649,32 +655,39 @@ func (d *DefaultExpirationSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DefaultExpirationSettings) GetExpiration() *string {
+func (o *DefaultExpirationSettings) GetExpirationDays() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Expiration
+	return o.ExpirationDays
 }
 
-func (o *DefaultExpirationSettings) GetExpirationProduction() *string {
+func (o *DefaultExpirationSettings) GetExpirationDaysProduction() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.ExpirationProduction
+	return o.ExpirationDaysProduction
 }
 
-func (o *DefaultExpirationSettings) GetExpirationCanceled() *string {
+func (o *DefaultExpirationSettings) GetExpirationDaysCanceled() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.ExpirationCanceled
+	return o.ExpirationDaysCanceled
 }
 
-func (o *DefaultExpirationSettings) GetExpirationErrored() *string {
+func (o *DefaultExpirationSettings) GetExpirationDaysErrored() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.ExpirationErrored
+	return o.ExpirationDaysErrored
+}
+
+func (o *DefaultExpirationSettings) GetDeploymentsToKeep() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentsToKeep
 }
 
 // TeamEnablePreviewFeedback - Whether toolbar is enabled on preview deployments
@@ -975,9 +988,9 @@ func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
 type TeamOrigin2 string
 
 const (
-	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Saml              TeamOrigin2 = "saml"
 	TeamOrigin2Mail              TeamOrigin2 = "mail"
+	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Import            TeamOrigin2 = "import"
 	TeamOrigin2Teams             TeamOrigin2 = "teams"
 	TeamOrigin2Github            TeamOrigin2 = "github"
@@ -997,11 +1010,11 @@ func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "link":
-		fallthrough
 	case "saml":
 		fallthrough
 	case "mail":
+		fallthrough
+	case "link":
 		fallthrough
 	case "import":
 		fallthrough
@@ -1194,12 +1207,12 @@ func (o *TeamJoinedFrom2) GetDsyncConnectedAt() *float64 {
 type TeamMembership struct {
 	UID               *string              `json:"uid,omitempty"`
 	Entitlements      []TeamEntitlement    `json:"entitlements,omitempty"`
-	TeamID            *string              `json:"teamId,omitempty"`
 	Confirmed         bool                 `json:"confirmed"`
 	AccessRequestedAt *float64             `json:"accessRequestedAt,omitempty"`
 	Role              TeamRole2            `json:"role"`
 	TeamRoles         []TeamTeamRole       `json:"teamRoles,omitempty"`
 	TeamPermissions   []TeamTeamPermission `json:"teamPermissions,omitempty"`
+	TeamID            *string              `json:"teamId,omitempty"`
 	CreatedAt         float64              `json:"createdAt"`
 	Created           float64              `json:"created"`
 	JoinedFrom        *TeamJoinedFrom2     `json:"joinedFrom,omitempty"`
@@ -1228,13 +1241,6 @@ func (o *TeamMembership) GetEntitlements() []TeamEntitlement {
 		return nil
 	}
 	return o.Entitlements
-}
-
-func (o *TeamMembership) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 func (o *TeamMembership) GetConfirmed() bool {
@@ -1270,6 +1276,13 @@ func (o *TeamMembership) GetTeamPermissions() []TeamTeamPermission {
 		return nil
 	}
 	return o.TeamPermissions
+}
+
+func (o *TeamMembership) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *TeamMembership) GetCreatedAt() float64 {

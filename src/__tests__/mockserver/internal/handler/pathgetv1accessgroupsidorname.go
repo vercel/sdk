@@ -48,6 +48,9 @@ func testReadAccessGroupReadAccessGroupId0(w http.ResponseWriter, req *http.Requ
 		return
 	}
 	var respBody *operations.ReadAccessGroupResponseBody = &operations.ReadAccessGroupResponseBody{
+		TeamPermissions: []operations.ReadAccessGroupTeamPermission{
+			operations.ReadAccessGroupTeamPermissionCreateProject,
+		},
 		IsDsyncManaged: true,
 		Name:           "my-access-group",
 		CreatedAt:      "1588720733602",
@@ -59,9 +62,6 @@ func testReadAccessGroupReadAccessGroupId0(w http.ResponseWriter, req *http.Requ
 		TeamRoles: []string{
 			"DEVELOPER",
 			"BILLING",
-		},
-		TeamPermissions: []string{
-			"CreateProject",
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
@@ -96,6 +96,9 @@ func testReadAccessGroupReadAccessGroupName0(w http.ResponseWriter, req *http.Re
 		return
 	}
 	var respBody *operations.ReadAccessGroupResponseBody = &operations.ReadAccessGroupResponseBody{
+		TeamPermissions: []operations.ReadAccessGroupTeamPermission{
+			operations.ReadAccessGroupTeamPermissionCreateProject,
+		},
 		IsDsyncManaged: true,
 		Name:           "my-access-group",
 		CreatedAt:      "1588720733602",
@@ -107,9 +110,6 @@ func testReadAccessGroupReadAccessGroupName0(w http.ResponseWriter, req *http.Re
 		TeamRoles: []string{
 			"DEVELOPER",
 			"BILLING",
-		},
-		TeamPermissions: []string{
-			"CreateProject",
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

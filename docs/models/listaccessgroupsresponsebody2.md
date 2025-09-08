@@ -20,9 +20,6 @@ let value: ListAccessGroupsResponseBody2 = {
         "DEVELOPER",
         "BILLING",
       ],
-      teamPermissions: [
-        "CreateProject",
-      ],
     },
   ],
   pagination: {

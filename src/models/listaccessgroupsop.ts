@@ -46,6 +46,7 @@ export type AccessGroups = {
   members?: Array<string> | undefined;
   projects?: Array<string> | undefined;
   entitlements?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
   isDsyncManaged: boolean;
   /**
    * The name of this access group.
@@ -79,10 +80,6 @@ export type AccessGroups = {
    * Roles that the team has in the access group.
    */
   teamRoles?: Array<string> | undefined;
-  /**
-   * Permissions that the team has in the access group.
-   */
-  teamPermissions?: Array<string> | undefined;
 };
 
 export type ResponseBodyPagination = {
@@ -185,6 +182,7 @@ export const AccessGroups$inboundSchema: z.ZodType<
   members: z.array(z.string()).optional(),
   projects: z.array(z.string()).optional(),
   entitlements: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
   isDsyncManaged: z.boolean(),
   name: z.string(),
   createdAt: z.string(),
@@ -194,7 +192,6 @@ export const AccessGroups$inboundSchema: z.ZodType<
   membersCount: z.number(),
   projectsCount: z.number(),
   teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
 });
 
 /** @internal */
@@ -202,6 +199,7 @@ export type AccessGroups$Outbound = {
   members?: Array<string> | undefined;
   projects?: Array<string> | undefined;
   entitlements?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
   isDsyncManaged: boolean;
   name: string;
   createdAt: string;
@@ -211,7 +209,6 @@ export type AccessGroups$Outbound = {
   membersCount: number;
   projectsCount: number;
   teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -223,6 +220,7 @@ export const AccessGroups$outboundSchema: z.ZodType<
   members: z.array(z.string()).optional(),
   projects: z.array(z.string()).optional(),
   entitlements: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
   isDsyncManaged: z.boolean(),
   name: z.string(),
   createdAt: z.string(),
@@ -232,7 +230,6 @@ export const AccessGroups$outboundSchema: z.ZodType<
   membersCount: z.number(),
   projectsCount: z.number(),
   teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
 });
 
 /**

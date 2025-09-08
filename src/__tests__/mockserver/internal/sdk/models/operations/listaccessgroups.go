@@ -85,10 +85,11 @@ func (o *ListAccessGroupsRequest) GetSlug() *string {
 }
 
 type AccessGroup struct {
-	Members        []string `json:"members,omitempty"`
-	Projects       []string `json:"projects,omitempty"`
-	Entitlements   []string `json:"entitlements,omitempty"`
-	IsDsyncManaged bool     `json:"isDsyncManaged"`
+	Members         []string `json:"members,omitempty"`
+	Projects        []string `json:"projects,omitempty"`
+	Entitlements    []string `json:"entitlements,omitempty"`
+	TeamPermissions []string `json:"teamPermissions,omitempty"`
+	IsDsyncManaged  bool     `json:"isDsyncManaged"`
 	// The name of this access group.
 	Name string `json:"name"`
 	// Timestamp in milliseconds when the access group was created.
@@ -105,8 +106,6 @@ type AccessGroup struct {
 	ProjectsCount float64 `json:"projectsCount"`
 	// Roles that the team has in the access group.
 	TeamRoles []string `json:"teamRoles,omitempty"`
-	// Permissions that the team has in the access group.
-	TeamPermissions []string `json:"teamPermissions,omitempty"`
 }
 
 func (a AccessGroup) MarshalJSON() ([]byte, error) {
@@ -139,6 +138,13 @@ func (o *AccessGroup) GetEntitlements() []string {
 		return nil
 	}
 	return o.Entitlements
+}
+
+func (o *AccessGroup) GetTeamPermissions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 func (o *AccessGroup) GetIsDsyncManaged() bool {
@@ -202,13 +208,6 @@ func (o *AccessGroup) GetTeamRoles() []string {
 		return nil
 	}
 	return o.TeamRoles
-}
-
-func (o *AccessGroup) GetTeamPermissions() []string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamPermissions
 }
 
 type ListAccessGroupsPagination struct {

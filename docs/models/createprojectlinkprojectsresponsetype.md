@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectLinkProjectsResponseType } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectLinkProjectsResponseType = "gitlab";
+let value: CreateProjectLinkProjectsResponseType = "github-custom-host";
 ```
 
 ## Values
 
 ```typescript
-"gitlab"
+"github-custom-host"
 ```

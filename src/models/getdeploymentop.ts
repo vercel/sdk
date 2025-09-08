@@ -1643,12 +1643,14 @@ export type GetDeploymentRoutes2 = {
   status?: number | undefined;
 };
 
-export const GetDeploymentHasType = {
+export const GetDeploymentHasDeploymentsType = {
   Header: "header",
   Cookie: "cookie",
   Query: "query",
 } as const;
-export type GetDeploymentHasType = ClosedEnum<typeof GetDeploymentHasType>;
+export type GetDeploymentHasDeploymentsType = ClosedEnum<
+  typeof GetDeploymentHasDeploymentsType
+>;
 
 export type GetDeploymentValueDeploymentsResponse200Eq = string | number;
 
@@ -1669,17 +1671,15 @@ export type GetDeploymentValue2 = {
 export type GetDeploymentHasDeploymentsValue = GetDeploymentValue2 | string;
 
 export type GetDeploymentHas2 = {
-  type: GetDeploymentHasType;
+  type: GetDeploymentHasDeploymentsType;
   key: string;
   value?: GetDeploymentValue2 | string | undefined;
 };
 
-export const GetDeploymentHasDeploymentsType = {
+export const GetDeploymentHasType = {
   Host: "host",
 } as const;
-export type GetDeploymentHasDeploymentsType = ClosedEnum<
-  typeof GetDeploymentHasDeploymentsType
->;
+export type GetDeploymentHasType = ClosedEnum<typeof GetDeploymentHasType>;
 
 export type GetDeploymentValueDeploymentsResponseEq = string | number;
 
@@ -1702,7 +1702,7 @@ export type GetDeploymentHasValue =
   | string;
 
 export type GetDeploymentHas1 = {
-  type: GetDeploymentHasDeploymentsType;
+  type: GetDeploymentHasType;
   value: GetDeploymentValueDeploymentsResponse2002 | string;
 };
 
@@ -10055,24 +10055,24 @@ export function getDeploymentRoutes2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentHasType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentHasType
-> = z.nativeEnum(GetDeploymentHasType);
+export const GetDeploymentHasDeploymentsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentHasDeploymentsType
+> = z.nativeEnum(GetDeploymentHasDeploymentsType);
 
 /** @internal */
-export const GetDeploymentHasType$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentHasType
-> = GetDeploymentHasType$inboundSchema;
+export const GetDeploymentHasDeploymentsType$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentHasDeploymentsType
+> = GetDeploymentHasDeploymentsType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentHasType$ {
-  /** @deprecated use `GetDeploymentHasType$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentHasType$inboundSchema;
-  /** @deprecated use `GetDeploymentHasType$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentHasType$outboundSchema;
+export namespace GetDeploymentHasDeploymentsType$ {
+  /** @deprecated use `GetDeploymentHasDeploymentsType$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentHasDeploymentsType$inboundSchema;
+  /** @deprecated use `GetDeploymentHasDeploymentsType$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentHasDeploymentsType$outboundSchema;
 }
 
 /** @internal */
@@ -10277,7 +10277,7 @@ export const GetDeploymentHas2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentHasType$inboundSchema,
+  type: GetDeploymentHasDeploymentsType$inboundSchema,
   key: z.string(),
   value: z.union([z.lazy(() => GetDeploymentValue2$inboundSchema), z.string()])
     .optional(),
@@ -10296,7 +10296,7 @@ export const GetDeploymentHas2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentHas2
 > = z.object({
-  type: GetDeploymentHasType$outboundSchema,
+  type: GetDeploymentHasDeploymentsType$outboundSchema,
   key: z.string(),
   value: z.union([z.lazy(() => GetDeploymentValue2$outboundSchema), z.string()])
     .optional(),
@@ -10334,24 +10334,24 @@ export function getDeploymentHas2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentHasDeploymentsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentHasDeploymentsType
-> = z.nativeEnum(GetDeploymentHasDeploymentsType);
+export const GetDeploymentHasType$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentHasType
+> = z.nativeEnum(GetDeploymentHasType);
 
 /** @internal */
-export const GetDeploymentHasDeploymentsType$outboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentHasDeploymentsType
-> = GetDeploymentHasDeploymentsType$inboundSchema;
+export const GetDeploymentHasType$outboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentHasType
+> = GetDeploymentHasType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDeploymentHasDeploymentsType$ {
-  /** @deprecated use `GetDeploymentHasDeploymentsType$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentHasDeploymentsType$inboundSchema;
-  /** @deprecated use `GetDeploymentHasDeploymentsType$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentHasDeploymentsType$outboundSchema;
+export namespace GetDeploymentHasType$ {
+  /** @deprecated use `GetDeploymentHasType$inboundSchema` instead. */
+  export const inboundSchema = GetDeploymentHasType$inboundSchema;
+  /** @deprecated use `GetDeploymentHasType$outboundSchema` instead. */
+  export const outboundSchema = GetDeploymentHasType$outboundSchema;
 }
 
 /** @internal */
@@ -10571,7 +10571,7 @@ export const GetDeploymentHas1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: GetDeploymentHasDeploymentsType$inboundSchema,
+  type: GetDeploymentHasType$inboundSchema,
   value: z.union([
     z.lazy(() => GetDeploymentValueDeploymentsResponse2002$inboundSchema),
     z.string(),
@@ -10590,7 +10590,7 @@ export const GetDeploymentHas1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentHas1
 > = z.object({
-  type: GetDeploymentHasDeploymentsType$outboundSchema,
+  type: GetDeploymentHasType$outboundSchema,
   value: z.union([
     z.lazy(() => GetDeploymentValueDeploymentsResponse2002$outboundSchema),
     z.string(),

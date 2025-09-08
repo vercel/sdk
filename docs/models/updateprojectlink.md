@@ -31,12 +31,9 @@ const value: models.UpdateProjectLink2 = {
 
 ```typescript
 const value: models.UpdateProjectLink3 = {
-  projectId: "<id>",
-  projectName: "<value>",
-  projectNameWithNamespace: "<value>",
-  projectNamespace: "<value>",
-  projectUrl: "https://these-railway.info/",
-  type: "gitlab",
+  org: "<value>",
+  type: "github-custom-host",
+  host: "fatherly-stay.net",
   deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
@@ -47,20 +44,13 @@ const value: models.UpdateProjectLink3 = {
 
 ```typescript
 const value: models.UpdateProjectLink4 = {
-  name: "<value>",
-  slug: "<value>",
-  owner: "<value>",
-  type: "bitbucket",
-  uuid: "29c344fb-ec55-4e0b-9ed8-51a768225fd2",
-  workspaceUuid: "<id>",
-  deployHooks: [
-    {
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-      url: "https://rundown-violin.com/",
-    },
-  ],
+  projectId: "<id>",
+  projectName: "<value>",
+  projectNameWithNamespace: "<value>",
+  projectNamespace: "<value>",
+  projectUrl: "https://pleasant-resource.biz/",
+  type: "gitlab",
+  deployHooks: [],
   gitCredentialId: "<id>",
   productionBranch: "<value>",
 };
@@ -70,15 +60,18 @@ const value: models.UpdateProjectLink4 = {
 
 ```typescript
 const value: models.UpdateProjectLink5 = {
-  org: "<value>",
-  type: "github-custom-host",
-  host: "outrageous-embossing.info",
+  name: "<value>",
+  slug: "<value>",
+  owner: "<value>",
+  type: "bitbucket",
+  uuid: "945badaa-aa44-426f-bd2a-eb05c09da18e",
+  workspaceUuid: "<id>",
   deployHooks: [
     {
       id: "<id>",
       name: "<value>",
       ref: "<value>",
-      url: "https://tight-peony.name",
+      url: "https://inconsequential-monster.org",
     },
   ],
   gitCredentialId: "<id>",

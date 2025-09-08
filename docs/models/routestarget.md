@@ -14,4 +14,4 @@ let value: RoutesTarget = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `key`              | *models.Key*       | :heavy_check_mark: | N/A                |
+| `key`              | *models.RoutesKey* | :heavy_check_mark: | N/A                |

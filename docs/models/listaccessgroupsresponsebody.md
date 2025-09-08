@@ -27,9 +27,6 @@ const value: models.ListAccessGroupsResponseBody2 = {
         "DEVELOPER",
         "BILLING",
       ],
-      teamPermissions: [
-        "CreateProject",
-      ],
     },
   ],
   pagination: {

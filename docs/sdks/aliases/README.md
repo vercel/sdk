@@ -442,7 +442,62 @@ run();
 
 ## patchUrlProtectionBypass
 
-Update the protection bypass for the alias or deployment URL (used for user access & comment access for deployments). Used as shareable links and user scoped access for Vercel Authentication and also to allow external (logged in) people to comment on previews for Preview Comments (next-live-mode).
+Manage shareable links for password-protected deployments. This endpoint allows you to:
+
+- **Create shareable links** that bypass password protection
+- **Revoke existing shareable links** 
+- **Regenerate shareable links** (revoke old + create new)
+
+Shareable links are useful for:
+- Sharing protected previews with external stakeholders
+- Allowing comments on protected deployments
+- Providing temporary access without sharing passwords
+
+### Use Cases
+
+**Create a new shareable link** (when none exists):
+```typescript
+const result = await vercel.aliases.patchUrlProtectionBypass({
+  id: "dpl_example123",
+  requestBody: {} // Empty object creates new shareable link
+});
+```
+
+**Create shareable link with expiration**:
+```typescript
+const result = await vercel.aliases.patchUrlProtectionBypass({
+  id: "dpl_example123", 
+  requestBody: {
+    ttl: 3600 // Expires in 1 hour (requires feature flag)
+  }
+});
+```
+
+**Revoke existing shareable link**:
+```typescript
+const result = await vercel.aliases.patchUrlProtectionBypass({
+  id: "dpl_example123",
+  requestBody: {
+    revoke: {
+      secret: "a4bf65933e4773cb4d84a8dc800e433b", // Current link secret
+      regenerate: false // Just revoke, don't create new one
+    }
+  }
+});
+```
+
+**Regenerate shareable link** (revoke + create new):
+```typescript
+const result = await vercel.aliases.patchUrlProtectionBypass({
+  id: "dpl_example123", 
+  requestBody: {
+    revoke: {
+      secret: "a4bf65933e4773cb4d84a8dc800e433b", // Current link secret
+      regenerate: true // Revoke old and create new
+    }
+  }
+});
+```
 
 ### Example Usage
 
@@ -455,13 +510,33 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.aliases.patchUrlProtectionBypass({
-    id: "<id>",
-    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-    slug: "my-team-url-slug",
-  });
+  try {
+    // Create a new shareable link
+    const result = await vercel.aliases.patchUrlProtectionBypass({
+      id: "dpl_example123",
+      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+      requestBody: {} // Creates new shareable link
+    });
 
-  console.log(result);
+    console.log("Shareable link created:", result);
+    
+    // Extract the shareable link secret
+    const protectionBypass = result.protectionBypass;
+    const shareableLink = Object.entries(protectionBypass || {})
+      .find(([, bypass]) => bypass.scope === 'shareable-link');
+    
+    if (shareableLink) {
+      const [secret, details] = shareableLink;
+      console.log("Secret:", secret);
+      console.log("Created at:", new Date(details.createdAt));
+    }
+  } catch (error) {
+    if (error.statusCode === 409) {
+      console.log("Shareable link already exists - use regenerate instead");
+    } else {
+      console.error("Error:", error);
+    }
+  }
 }
 
 run();

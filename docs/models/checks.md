@@ -11,8 +11,9 @@ let value: Checks = {
   integrationId: "<id>",
   name: "<value>",
   rerequestable: false,
-  status: "registered",
-  updatedAt: 5455.02,
+  blocking: true,
+  status: "running",
+  updatedAt: 7646.44,
 };
 ```
 
@@ -30,6 +31,7 @@ let value: Checks = {
 | `output`                                                             | [models.GetAllChecksOutput](../models/getallchecksoutput.md)         | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `path`                                                               | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `rerequestable`                                                      | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
+| `blocking`                                                           | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
 | `startedAt`                                                          | *number*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
 | `status`                                                             | [models.GetAllChecksStatus](../models/getallchecksstatus.md)         | :heavy_check_mark:                                                   | N/A                                                                  |
 | `updatedAt`                                                          | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |

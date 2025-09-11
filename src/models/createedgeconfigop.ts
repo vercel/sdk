@@ -67,6 +67,7 @@ export type CreateEdgeConfigPurpose = Purpose1 | Purpose2;
 export type CreateEdgeConfigResponseBody = {
   createdAt: number;
   updatedAt: number;
+  deletedAt?: number | undefined;
   id: string;
   /**
    * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
@@ -533,6 +534,7 @@ export const CreateEdgeConfigResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   updatedAt: z.number(),
+  deletedAt: z.number().optional(),
   id: z.string(),
   slug: z.string(),
   ownerId: z.string(),
@@ -552,6 +554,7 @@ export const CreateEdgeConfigResponseBody$inboundSchema: z.ZodType<
 export type CreateEdgeConfigResponseBody$Outbound = {
   createdAt: number;
   updatedAt: number;
+  deletedAt?: number | undefined;
   id: string;
   slug: string;
   ownerId: string;
@@ -572,6 +575,7 @@ export const CreateEdgeConfigResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   updatedAt: z.number(),
+  deletedAt: z.number().optional(),
   id: z.string(),
   slug: z.string(),
   ownerId: z.string(),

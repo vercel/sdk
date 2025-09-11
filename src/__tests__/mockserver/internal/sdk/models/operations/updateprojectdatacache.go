@@ -2372,6 +2372,7 @@ const (
 	UpdateProjectDataCacheFrameworkVitepress      UpdateProjectDataCacheFramework = "vitepress"
 	UpdateProjectDataCacheFrameworkVuepress       UpdateProjectDataCacheFramework = "vuepress"
 	UpdateProjectDataCacheFrameworkParcel         UpdateProjectDataCacheFramework = "parcel"
+	UpdateProjectDataCacheFrameworkFastapi        UpdateProjectDataCacheFramework = "fastapi"
 	UpdateProjectDataCacheFrameworkFasthtml       UpdateProjectDataCacheFramework = "fasthtml"
 	UpdateProjectDataCacheFrameworkSanityV3       UpdateProjectDataCacheFramework = "sanity-v3"
 	UpdateProjectDataCacheFrameworkSanity         UpdateProjectDataCacheFramework = "sanity"
@@ -2474,6 +2475,8 @@ func (e *UpdateProjectDataCacheFramework) UnmarshalJSON(data []byte) error {
 	case "vuepress":
 		fallthrough
 	case "parcel":
+		fallthrough
+	case "fastapi":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -5312,6 +5315,7 @@ type UpdateProjectDataCachePermissions struct {
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
 	Drain                                    []components.ACLAction `json:"drain,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
+	TraceDrain                               []components.ACLAction `json:"traceDrain,omitempty"`
 	Monitoring                               []components.ACLAction `json:"Monitoring,omitempty"`
 	MonitoringSettings                       []components.ACLAction `json:"monitoringSettings,omitempty"`
 	MonitoringQuery                          []components.ACLAction `json:"monitoringQuery,omitempty"`
@@ -5921,6 +5925,13 @@ func (o *UpdateProjectDataCachePermissions) GetLogDrain() []components.ACLAction
 		return nil
 	}
 	return o.LogDrain
+}
+
+func (o *UpdateProjectDataCachePermissions) GetTraceDrain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TraceDrain
 }
 
 func (o *UpdateProjectDataCachePermissions) GetMonitoring() []components.ACLAction {

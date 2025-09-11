@@ -66,6 +66,7 @@ test("Checks Get All Checks", async () => {
         integrationId: "<id>",
         name: "<value>",
         rerequestable: false,
+        blocking: false,
         status: "completed",
         updatedAt: 5993.81,
       },

@@ -13,5 +13,5 @@ let value: GetTeamMembersRole = "OWNER";
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "VIEWER" | "BILLING" | "CONTRIBUTOR" | "SECURITY" | "VIEWER_FOR_PLUS"
+"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "VIEWER_FOR_PLUS" | "CONTRIBUTOR"
 ```

@@ -13,8 +13,9 @@ let value: GetAllChecksResponseBody = {
       integrationId: "<id>",
       name: "<value>",
       rerequestable: false,
-      status: "registered",
-      updatedAt: 5455.02,
+      blocking: true,
+      status: "running",
+      updatedAt: 7646.44,
     },
   ],
 };

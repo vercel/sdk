@@ -56,6 +56,7 @@ const (
 	UpdateProjectFrameworkRequestVitepress      UpdateProjectFrameworkRequest = "vitepress"
 	UpdateProjectFrameworkRequestVuepress       UpdateProjectFrameworkRequest = "vuepress"
 	UpdateProjectFrameworkRequestParcel         UpdateProjectFrameworkRequest = "parcel"
+	UpdateProjectFrameworkRequestFastapi        UpdateProjectFrameworkRequest = "fastapi"
 	UpdateProjectFrameworkRequestFasthtml       UpdateProjectFrameworkRequest = "fasthtml"
 	UpdateProjectFrameworkRequestSanityV3       UpdateProjectFrameworkRequest = "sanity-v3"
 	UpdateProjectFrameworkRequestSanity         UpdateProjectFrameworkRequest = "sanity"
@@ -158,6 +159,8 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "vuepress":
 		fallthrough
 	case "parcel":
+		fallthrough
+	case "fastapi":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -3376,6 +3379,7 @@ const (
 	UpdateProjectFrameworkResponseBodyVitepress      UpdateProjectFrameworkResponseBody = "vitepress"
 	UpdateProjectFrameworkResponseBodyVuepress       UpdateProjectFrameworkResponseBody = "vuepress"
 	UpdateProjectFrameworkResponseBodyParcel         UpdateProjectFrameworkResponseBody = "parcel"
+	UpdateProjectFrameworkResponseBodyFastapi        UpdateProjectFrameworkResponseBody = "fastapi"
 	UpdateProjectFrameworkResponseBodyFasthtml       UpdateProjectFrameworkResponseBody = "fasthtml"
 	UpdateProjectFrameworkResponseBodySanityV3       UpdateProjectFrameworkResponseBody = "sanity-v3"
 	UpdateProjectFrameworkResponseBodySanity         UpdateProjectFrameworkResponseBody = "sanity"
@@ -3478,6 +3482,8 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "vuepress":
 		fallthrough
 	case "parcel":
+		fallthrough
+	case "fastapi":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -6383,6 +6389,7 @@ type UpdateProjectPermissions struct {
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
 	Drain                                    []components.ACLAction `json:"drain,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
+	TraceDrain                               []components.ACLAction `json:"traceDrain,omitempty"`
 	Monitoring                               []components.ACLAction `json:"Monitoring,omitempty"`
 	MonitoringSettings                       []components.ACLAction `json:"monitoringSettings,omitempty"`
 	MonitoringQuery                          []components.ACLAction `json:"monitoringQuery,omitempty"`
@@ -7394,6 +7401,13 @@ func (o *UpdateProjectPermissions) GetLogDrain() []components.ACLAction {
 		return nil
 	}
 	return o.LogDrain
+}
+
+func (o *UpdateProjectPermissions) GetTraceDrain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TraceDrain
 }
 
 func (o *UpdateProjectPermissions) GetMonitoring() []components.ACLAction {

@@ -183,6 +183,7 @@ export const GetWebhooksResponseBodyFramework = {
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
+  Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   SanityV3: "sanity-v3",
   Sanity: "sanity",

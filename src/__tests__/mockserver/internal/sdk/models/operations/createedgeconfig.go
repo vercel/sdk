@@ -260,9 +260,10 @@ func (u CreateEdgeConfigPurposeUnion) MarshalJSON() ([]byte, error) {
 
 // CreateEdgeConfigResponseBody - An Edge Config
 type CreateEdgeConfigResponseBody struct {
-	CreatedAt float64 `json:"createdAt"`
-	UpdatedAt float64 `json:"updatedAt"`
-	ID        string  `json:"id"`
+	CreatedAt float64  `json:"createdAt"`
+	UpdatedAt float64  `json:"updatedAt"`
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
+	ID        string   `json:"id"`
 	// Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
 	Slug    string `json:"slug"`
 	OwnerID string `json:"ownerId"`
@@ -289,6 +290,13 @@ func (o *CreateEdgeConfigResponseBody) GetUpdatedAt() float64 {
 		return 0.0
 	}
 	return o.UpdatedAt
+}
+
+func (o *CreateEdgeConfigResponseBody) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
 }
 
 func (o *CreateEdgeConfigResponseBody) GetID() string {

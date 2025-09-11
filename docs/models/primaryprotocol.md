@@ -11,5 +11,5 @@ let value: PrimaryProtocol = "other";
 ## Values
 
 ```typescript
-"storage" | "experimentation" | "ai" | "observability" | "video" | "authentication" | "workflow" | "checks" | "logDrain" | "messaging" | "other"
+"storage" | "experimentation" | "ai" | "observability" | "video" | "authentication" | "workflow" | "checks" | "logDrain" | "traceDrain" | "messaging" | "other"
 ```

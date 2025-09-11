@@ -9,6 +9,35 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+type Ownership string
+
+const (
+	OwnershipOwned   Ownership = "owned"
+	OwnershipLinked  Ownership = "linked"
+	OwnershipSandbox Ownership = "sandbox"
+)
+
+func (e Ownership) ToPointer() *Ownership {
+	return &e
+}
+func (e *Ownership) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "owned":
+		fallthrough
+	case "linked":
+		fallthrough
+	case "sandbox":
+		*e = Ownership(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Ownership: %v", v)
+	}
+}
+
 type ImportResourceStatus string
 
 const (
@@ -337,13 +366,22 @@ func (o *ImportResourceSecret) GetEnvironmentOverrides() *ImportResourceEnvironm
 }
 
 type ImportResourceRequestBody struct {
+	Ownership    *Ownership                  `json:"ownership,omitempty"`
 	ProductID    string                      `json:"productId"`
 	Name         string                      `json:"name"`
 	Status       ImportResourceStatus        `json:"status"`
 	Metadata     map[string]any              `json:"metadata,omitempty"`
 	BillingPlan  *ImportResourceBillingPlan  `json:"billingPlan,omitempty"`
 	Notification *ImportResourceNotification `json:"notification,omitempty"`
+	Extras       map[string]any              `json:"extras,omitempty"`
 	Secrets      []ImportResourceSecret      `json:"secrets,omitempty"`
+}
+
+func (o *ImportResourceRequestBody) GetOwnership() *Ownership {
+	if o == nil {
+		return nil
+	}
+	return o.Ownership
 }
 
 func (o *ImportResourceRequestBody) GetProductID() string {
@@ -386,6 +424,13 @@ func (o *ImportResourceRequestBody) GetNotification() *ImportResourceNotificatio
 		return nil
 	}
 	return o.Notification
+}
+
+func (o *ImportResourceRequestBody) GetExtras() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Extras
 }
 
 func (o *ImportResourceRequestBody) GetSecrets() []ImportResourceSecret {

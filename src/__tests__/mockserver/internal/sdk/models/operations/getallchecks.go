@@ -328,6 +328,7 @@ type Check struct {
 	Output        *GetAllChecksOutput     `json:"output,omitempty"`
 	Path          *string                 `json:"path,omitempty"`
 	Rerequestable bool                    `json:"rerequestable"`
+	Blocking      bool                    `json:"blocking"`
 	StartedAt     *float64                `json:"startedAt,omitempty"`
 	Status        GetAllChecksStatus      `json:"status"`
 	UpdatedAt     float64                 `json:"updatedAt"`
@@ -401,6 +402,13 @@ func (o *Check) GetRerequestable() bool {
 		return false
 	}
 	return o.Rerequestable
+}
+
+func (o *Check) GetBlocking() bool {
+	if o == nil {
+		return false
+	}
+	return o.Blocking
 }
 
 func (o *Check) GetStartedAt() *float64 {

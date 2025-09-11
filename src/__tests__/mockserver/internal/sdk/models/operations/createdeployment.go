@@ -1012,6 +1012,7 @@ const (
 	CreateDeploymentFrameworkRequestVitepress      CreateDeploymentFrameworkRequest = "vitepress"
 	CreateDeploymentFrameworkRequestVuepress       CreateDeploymentFrameworkRequest = "vuepress"
 	CreateDeploymentFrameworkRequestParcel         CreateDeploymentFrameworkRequest = "parcel"
+	CreateDeploymentFrameworkRequestFastapi        CreateDeploymentFrameworkRequest = "fastapi"
 	CreateDeploymentFrameworkRequestFasthtml       CreateDeploymentFrameworkRequest = "fasthtml"
 	CreateDeploymentFrameworkRequestSanityV3       CreateDeploymentFrameworkRequest = "sanity-v3"
 	CreateDeploymentFrameworkRequestSanity         CreateDeploymentFrameworkRequest = "sanity"
@@ -1114,6 +1115,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "vuepress":
 		fallthrough
 	case "parcel":
+		fallthrough
+	case "fastapi":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -1590,6 +1593,7 @@ const (
 	CreateDeploymentFrameworkLambdasVitepress      CreateDeploymentFrameworkLambdas = "vitepress"
 	CreateDeploymentFrameworkLambdasVuepress       CreateDeploymentFrameworkLambdas = "vuepress"
 	CreateDeploymentFrameworkLambdasParcel         CreateDeploymentFrameworkLambdas = "parcel"
+	CreateDeploymentFrameworkLambdasFastapi        CreateDeploymentFrameworkLambdas = "fastapi"
 	CreateDeploymentFrameworkLambdasFasthtml       CreateDeploymentFrameworkLambdas = "fasthtml"
 	CreateDeploymentFrameworkLambdasSanityV3       CreateDeploymentFrameworkLambdas = "sanity-v3"
 	CreateDeploymentFrameworkLambdasSanity         CreateDeploymentFrameworkLambdas = "sanity"
@@ -1692,6 +1696,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "vuepress":
 		fallthrough
 	case "parcel":
+		fallthrough
+	case "fastapi":
 		fallthrough
 	case "fasthtml":
 		fallthrough

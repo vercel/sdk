@@ -12,6 +12,13 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+export const Ownership = {
+  Owned: "owned",
+  Linked: "linked",
+  Sandbox: "sandbox",
+} as const;
+export type Ownership = ClosedEnum<typeof Ownership>;
+
 export const ImportResourceStatus = {
   Ready: "ready",
   Pending: "pending",
@@ -94,12 +101,14 @@ export type ImportResourceSecrets = {
 };
 
 export type ImportResourceRequestBody = {
+  ownership?: Ownership | undefined;
   productId: string;
   name: string;
   status: ImportResourceStatus;
   metadata?: { [k: string]: any } | undefined;
   billingPlan?: BillingPlan | undefined;
   notification?: Notification | undefined;
+  extras?: { [k: string]: any } | undefined;
   secrets?: Array<ImportResourceSecrets> | undefined;
 };
 
@@ -112,6 +121,25 @@ export type ImportResourceRequest = {
 export type ImportResourceResponseBody = {
   name: string;
 };
+
+/** @internal */
+export const Ownership$inboundSchema: z.ZodNativeEnum<typeof Ownership> = z
+  .nativeEnum(Ownership);
+
+/** @internal */
+export const Ownership$outboundSchema: z.ZodNativeEnum<typeof Ownership> =
+  Ownership$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Ownership$ {
+  /** @deprecated use `Ownership$inboundSchema` instead. */
+  export const inboundSchema = Ownership$inboundSchema;
+  /** @deprecated use `Ownership$outboundSchema` instead. */
+  export const outboundSchema = Ownership$outboundSchema;
+}
 
 /** @internal */
 export const ImportResourceStatus$inboundSchema: z.ZodNativeEnum<
@@ -563,24 +591,28 @@ export const ImportResourceRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  ownership: Ownership$inboundSchema.optional(),
   productId: z.string(),
   name: z.string(),
   status: ImportResourceStatus$inboundSchema,
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => BillingPlan$inboundSchema).optional(),
   notification: z.lazy(() => Notification$inboundSchema).optional(),
+  extras: z.record(z.any()).optional(),
   secrets: z.array(z.lazy(() => ImportResourceSecrets$inboundSchema))
     .optional(),
 });
 
 /** @internal */
 export type ImportResourceRequestBody$Outbound = {
+  ownership?: string | undefined;
   productId: string;
   name: string;
   status: string;
   metadata?: { [k: string]: any } | undefined;
   billingPlan?: BillingPlan$Outbound | undefined;
   notification?: Notification$Outbound | undefined;
+  extras?: { [k: string]: any } | undefined;
   secrets?: Array<ImportResourceSecrets$Outbound> | undefined;
 };
 
@@ -590,12 +622,14 @@ export const ImportResourceRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ImportResourceRequestBody
 > = z.object({
+  ownership: Ownership$outboundSchema.optional(),
   productId: z.string(),
   name: z.string(),
   status: ImportResourceStatus$outboundSchema,
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => BillingPlan$outboundSchema).optional(),
   notification: z.lazy(() => Notification$outboundSchema).optional(),
+  extras: z.record(z.any()).optional(),
   secrets: z.array(z.lazy(() => ImportResourceSecrets$outboundSchema))
     .optional(),
 });

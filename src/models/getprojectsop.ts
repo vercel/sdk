@@ -713,6 +713,7 @@ export const GetProjectsFramework = {
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
+  Fastapi: "fastapi",
   Fasthtml: "fasthtml",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
@@ -1533,6 +1534,7 @@ export type GetProjectsPermissions = {
   jobGlobal?: Array<ACLAction> | undefined;
   drain?: Array<ACLAction> | undefined;
   logDrain?: Array<ACLAction> | undefined;
+  traceDrain?: Array<ACLAction> | undefined;
   monitoring?: Array<ACLAction> | undefined;
   monitoringSettings?: Array<ACLAction> | undefined;
   monitoringQuery?: Array<ACLAction> | undefined;
@@ -8687,6 +8689,7 @@ export const GetProjectsPermissions$inboundSchema: z.ZodType<
   jobGlobal: z.array(ACLAction$inboundSchema).optional(),
   drain: z.array(ACLAction$inboundSchema).optional(),
   logDrain: z.array(ACLAction$inboundSchema).optional(),
+  traceDrain: z.array(ACLAction$inboundSchema).optional(),
   Monitoring: z.array(ACLAction$inboundSchema).optional(),
   monitoringSettings: z.array(ACLAction$inboundSchema).optional(),
   monitoringQuery: z.array(ACLAction$inboundSchema).optional(),
@@ -8910,6 +8913,7 @@ export type GetProjectsPermissions$Outbound = {
   jobGlobal?: Array<string> | undefined;
   drain?: Array<string> | undefined;
   logDrain?: Array<string> | undefined;
+  traceDrain?: Array<string> | undefined;
   Monitoring?: Array<string> | undefined;
   monitoringSettings?: Array<string> | undefined;
   monitoringQuery?: Array<string> | undefined;
@@ -9138,6 +9142,7 @@ export const GetProjectsPermissions$outboundSchema: z.ZodType<
   jobGlobal: z.array(ACLAction$outboundSchema).optional(),
   drain: z.array(ACLAction$outboundSchema).optional(),
   logDrain: z.array(ACLAction$outboundSchema).optional(),
+  traceDrain: z.array(ACLAction$outboundSchema).optional(),
   monitoring: z.array(ACLAction$outboundSchema).optional(),
   monitoringSettings: z.array(ACLAction$outboundSchema).optional(),
   monitoringQuery: z.array(ACLAction$outboundSchema).optional(),

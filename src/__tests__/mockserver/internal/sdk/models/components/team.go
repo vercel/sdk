@@ -33,10 +33,10 @@ func (o *Connect) GetEnabled() *bool {
 
 // TeamConnection - Information for the SAML Single Sign-On configuration.
 type TeamConnection struct {
-	// Current status of the connection.
-	Status string `json:"status"`
 	// The Identity Provider "type", for example Okta.
 	Type string `json:"type"`
+	// Current status of the connection.
+	Status string `json:"status"`
 	// Current state of the connection.
 	State string `json:"state"`
 	// Timestamp (in milliseconds) of when the configuration was connected.
@@ -50,17 +50,10 @@ func (t TeamConnection) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TeamConnection) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"status", "type", "state", "connectedAt"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "status", "state", "connectedAt"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *TeamConnection) GetStatus() string {
-	if o == nil {
-		return ""
-	}
-	return o.Status
 }
 
 func (o *TeamConnection) GetType() string {
@@ -68,6 +61,13 @@ func (o *TeamConnection) GetType() string {
 		return ""
 	}
 	return o.Type
+}
+
+func (o *TeamConnection) GetStatus() string {
+	if o == nil {
+		return ""
+	}
+	return o.Status
 }
 
 func (o *TeamConnection) GetState() string {
@@ -360,6 +360,128 @@ func (o *TeamSaml) GetRoles() map[string]RolesUnion {
 		return nil
 	}
 	return o.Roles
+}
+
+type DefaultRolesTeamRole string
+
+const (
+	DefaultRolesTeamRoleOwner         DefaultRolesTeamRole = "OWNER"
+	DefaultRolesTeamRoleMember        DefaultRolesTeamRole = "MEMBER"
+	DefaultRolesTeamRoleDeveloper     DefaultRolesTeamRole = "DEVELOPER"
+	DefaultRolesTeamRoleSecurity      DefaultRolesTeamRole = "SECURITY"
+	DefaultRolesTeamRoleBilling       DefaultRolesTeamRole = "BILLING"
+	DefaultRolesTeamRoleViewer        DefaultRolesTeamRole = "VIEWER"
+	DefaultRolesTeamRoleViewerForPlus DefaultRolesTeamRole = "VIEWER_FOR_PLUS"
+	DefaultRolesTeamRoleContributor   DefaultRolesTeamRole = "CONTRIBUTOR"
+)
+
+func (e DefaultRolesTeamRole) ToPointer() *DefaultRolesTeamRole {
+	return &e
+}
+func (e *DefaultRolesTeamRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "OWNER":
+		fallthrough
+	case "MEMBER":
+		fallthrough
+	case "DEVELOPER":
+		fallthrough
+	case "SECURITY":
+		fallthrough
+	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
+		fallthrough
+	case "CONTRIBUTOR":
+		*e = DefaultRolesTeamRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DefaultRolesTeamRole: %v", v)
+	}
+}
+
+type DefaultRolesTeamPermission string
+
+const (
+	DefaultRolesTeamPermissionIntegrationManager       DefaultRolesTeamPermission = "IntegrationManager"
+	DefaultRolesTeamPermissionCreateProject            DefaultRolesTeamPermission = "CreateProject"
+	DefaultRolesTeamPermissionFullProductionDeployment DefaultRolesTeamPermission = "FullProductionDeployment"
+	DefaultRolesTeamPermissionUsageViewer              DefaultRolesTeamPermission = "UsageViewer"
+	DefaultRolesTeamPermissionEnvVariableManager       DefaultRolesTeamPermission = "EnvVariableManager"
+	DefaultRolesTeamPermissionEnvironmentManager       DefaultRolesTeamPermission = "EnvironmentManager"
+	DefaultRolesTeamPermissionV0Builder                DefaultRolesTeamPermission = "V0Builder"
+	DefaultRolesTeamPermissionV0Chatter                DefaultRolesTeamPermission = "V0Chatter"
+	DefaultRolesTeamPermissionV0Viewer                 DefaultRolesTeamPermission = "V0Viewer"
+)
+
+func (e DefaultRolesTeamPermission) ToPointer() *DefaultRolesTeamPermission {
+	return &e
+}
+func (e *DefaultRolesTeamPermission) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "IntegrationManager":
+		fallthrough
+	case "CreateProject":
+		fallthrough
+	case "FullProductionDeployment":
+		fallthrough
+	case "UsageViewer":
+		fallthrough
+	case "EnvVariableManager":
+		fallthrough
+	case "EnvironmentManager":
+		fallthrough
+	case "V0Builder":
+		fallthrough
+	case "V0Chatter":
+		fallthrough
+	case "V0Viewer":
+		*e = DefaultRolesTeamPermission(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DefaultRolesTeamPermission: %v", v)
+	}
+}
+
+// DefaultRoles - Default roles for the team.
+type DefaultRoles struct {
+	TeamRoles       []DefaultRolesTeamRole       `json:"teamRoles,omitempty"`
+	TeamPermissions []DefaultRolesTeamPermission `json:"teamPermissions,omitempty"`
+}
+
+func (d DefaultRoles) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DefaultRoles) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DefaultRoles) GetTeamRoles() []DefaultRolesTeamRole {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *DefaultRoles) GetTeamPermissions() []DefaultRolesTeamPermission {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 type TeamBuildEntitlements struct {
@@ -894,23 +1016,23 @@ func (e *TeamRole2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type TeamTeamRole string
+type TeamMembershipTeamRole string
 
 const (
-	TeamTeamRoleOwner         TeamTeamRole = "OWNER"
-	TeamTeamRoleMember        TeamTeamRole = "MEMBER"
-	TeamTeamRoleDeveloper     TeamTeamRole = "DEVELOPER"
-	TeamTeamRoleSecurity      TeamTeamRole = "SECURITY"
-	TeamTeamRoleBilling       TeamTeamRole = "BILLING"
-	TeamTeamRoleViewer        TeamTeamRole = "VIEWER"
-	TeamTeamRoleViewerForPlus TeamTeamRole = "VIEWER_FOR_PLUS"
-	TeamTeamRoleContributor   TeamTeamRole = "CONTRIBUTOR"
+	TeamMembershipTeamRoleOwner         TeamMembershipTeamRole = "OWNER"
+	TeamMembershipTeamRoleMember        TeamMembershipTeamRole = "MEMBER"
+	TeamMembershipTeamRoleDeveloper     TeamMembershipTeamRole = "DEVELOPER"
+	TeamMembershipTeamRoleSecurity      TeamMembershipTeamRole = "SECURITY"
+	TeamMembershipTeamRoleBilling       TeamMembershipTeamRole = "BILLING"
+	TeamMembershipTeamRoleViewer        TeamMembershipTeamRole = "VIEWER"
+	TeamMembershipTeamRoleViewerForPlus TeamMembershipTeamRole = "VIEWER_FOR_PLUS"
+	TeamMembershipTeamRoleContributor   TeamMembershipTeamRole = "CONTRIBUTOR"
 )
 
-func (e TeamTeamRole) ToPointer() *TeamTeamRole {
+func (e TeamMembershipTeamRole) ToPointer() *TeamMembershipTeamRole {
 	return &e
 }
-func (e *TeamTeamRole) UnmarshalJSON(data []byte) error {
+func (e *TeamMembershipTeamRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -931,31 +1053,31 @@ func (e *TeamTeamRole) UnmarshalJSON(data []byte) error {
 	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
-		*e = TeamTeamRole(v)
+		*e = TeamMembershipTeamRole(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TeamTeamRole: %v", v)
+		return fmt.Errorf("invalid value for TeamMembershipTeamRole: %v", v)
 	}
 }
 
-type TeamTeamPermission string
+type TeamMembershipTeamPermission string
 
 const (
-	TeamTeamPermissionIntegrationManager       TeamTeamPermission = "IntegrationManager"
-	TeamTeamPermissionCreateProject            TeamTeamPermission = "CreateProject"
-	TeamTeamPermissionFullProductionDeployment TeamTeamPermission = "FullProductionDeployment"
-	TeamTeamPermissionUsageViewer              TeamTeamPermission = "UsageViewer"
-	TeamTeamPermissionEnvVariableManager       TeamTeamPermission = "EnvVariableManager"
-	TeamTeamPermissionEnvironmentManager       TeamTeamPermission = "EnvironmentManager"
-	TeamTeamPermissionV0Builder                TeamTeamPermission = "V0Builder"
-	TeamTeamPermissionV0Chatter                TeamTeamPermission = "V0Chatter"
-	TeamTeamPermissionV0Viewer                 TeamTeamPermission = "V0Viewer"
+	TeamMembershipTeamPermissionIntegrationManager       TeamMembershipTeamPermission = "IntegrationManager"
+	TeamMembershipTeamPermissionCreateProject            TeamMembershipTeamPermission = "CreateProject"
+	TeamMembershipTeamPermissionFullProductionDeployment TeamMembershipTeamPermission = "FullProductionDeployment"
+	TeamMembershipTeamPermissionUsageViewer              TeamMembershipTeamPermission = "UsageViewer"
+	TeamMembershipTeamPermissionEnvVariableManager       TeamMembershipTeamPermission = "EnvVariableManager"
+	TeamMembershipTeamPermissionEnvironmentManager       TeamMembershipTeamPermission = "EnvironmentManager"
+	TeamMembershipTeamPermissionV0Builder                TeamMembershipTeamPermission = "V0Builder"
+	TeamMembershipTeamPermissionV0Chatter                TeamMembershipTeamPermission = "V0Chatter"
+	TeamMembershipTeamPermissionV0Viewer                 TeamMembershipTeamPermission = "V0Viewer"
 )
 
-func (e TeamTeamPermission) ToPointer() *TeamTeamPermission {
+func (e TeamMembershipTeamPermission) ToPointer() *TeamMembershipTeamPermission {
 	return &e
 }
-func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
+func (e *TeamMembershipTeamPermission) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -978,19 +1100,19 @@ func (e *TeamTeamPermission) UnmarshalJSON(data []byte) error {
 	case "V0Chatter":
 		fallthrough
 	case "V0Viewer":
-		*e = TeamTeamPermission(v)
+		*e = TeamMembershipTeamPermission(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TeamTeamPermission: %v", v)
+		return fmt.Errorf("invalid value for TeamMembershipTeamPermission: %v", v)
 	}
 }
 
 type TeamOrigin2 string
 
 const (
+	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Saml              TeamOrigin2 = "saml"
 	TeamOrigin2Mail              TeamOrigin2 = "mail"
-	TeamOrigin2Link              TeamOrigin2 = "link"
 	TeamOrigin2Import            TeamOrigin2 = "import"
 	TeamOrigin2Teams             TeamOrigin2 = "teams"
 	TeamOrigin2Github            TeamOrigin2 = "github"
@@ -1010,11 +1132,11 @@ func (e *TeamOrigin2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "link":
+		fallthrough
 	case "saml":
 		fallthrough
 	case "mail":
-		fallthrough
-	case "link":
 		fallthrough
 	case "import":
 		fallthrough
@@ -1205,17 +1327,17 @@ func (o *TeamJoinedFrom2) GetDsyncConnectedAt() *float64 {
 
 // TeamMembership - The membership of the authenticated User in relation to the Team.
 type TeamMembership struct {
-	UID               *string              `json:"uid,omitempty"`
-	Entitlements      []TeamEntitlement    `json:"entitlements,omitempty"`
-	Confirmed         bool                 `json:"confirmed"`
-	AccessRequestedAt *float64             `json:"accessRequestedAt,omitempty"`
-	Role              TeamRole2            `json:"role"`
-	TeamRoles         []TeamTeamRole       `json:"teamRoles,omitempty"`
-	TeamPermissions   []TeamTeamPermission `json:"teamPermissions,omitempty"`
-	TeamID            *string              `json:"teamId,omitempty"`
-	CreatedAt         float64              `json:"createdAt"`
-	Created           float64              `json:"created"`
-	JoinedFrom        *TeamJoinedFrom2     `json:"joinedFrom,omitempty"`
+	UID               *string                        `json:"uid,omitempty"`
+	Entitlements      []TeamEntitlement              `json:"entitlements,omitempty"`
+	TeamID            *string                        `json:"teamId,omitempty"`
+	Confirmed         bool                           `json:"confirmed"`
+	AccessRequestedAt *float64                       `json:"accessRequestedAt,omitempty"`
+	Role              TeamRole2                      `json:"role"`
+	TeamRoles         []TeamMembershipTeamRole       `json:"teamRoles,omitempty"`
+	TeamPermissions   []TeamMembershipTeamPermission `json:"teamPermissions,omitempty"`
+	CreatedAt         float64                        `json:"createdAt"`
+	Created           float64                        `json:"created"`
+	JoinedFrom        *TeamJoinedFrom2               `json:"joinedFrom,omitempty"`
 }
 
 func (t TeamMembership) MarshalJSON() ([]byte, error) {
@@ -1243,6 +1365,13 @@ func (o *TeamMembership) GetEntitlements() []TeamEntitlement {
 	return o.Entitlements
 }
 
+func (o *TeamMembership) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
 func (o *TeamMembership) GetConfirmed() bool {
 	if o == nil {
 		return false
@@ -1264,25 +1393,18 @@ func (o *TeamMembership) GetRole() TeamRole2 {
 	return o.Role
 }
 
-func (o *TeamMembership) GetTeamRoles() []TeamTeamRole {
+func (o *TeamMembership) GetTeamRoles() []TeamMembershipTeamRole {
 	if o == nil {
 		return nil
 	}
 	return o.TeamRoles
 }
 
-func (o *TeamMembership) GetTeamPermissions() []TeamTeamPermission {
+func (o *TeamMembership) GetTeamPermissions() []TeamMembershipTeamPermission {
 	if o == nil {
 		return nil
 	}
 	return o.TeamPermissions
-}
-
-func (o *TeamMembership) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 func (o *TeamMembership) GetCreatedAt() float64 {
@@ -1321,6 +1443,8 @@ type Team struct {
 	InviteCode *string `json:"inviteCode,omitempty"`
 	// A short description of the Team.
 	Description *string `json:"description"`
+	// Default roles for the team.
+	DefaultRoles *DefaultRoles `json:"defaultRoles,omitempty"`
 	// The prefix that is prepended to automatic aliases.
 	StagingPrefix  string              `json:"stagingPrefix"`
 	ResourceConfig *TeamResourceConfig `json:"resourceConfig,omitempty"`
@@ -1419,6 +1543,13 @@ func (o *Team) GetDescription() *string {
 		return nil
 	}
 	return o.Description
+}
+
+func (o *Team) GetDefaultRoles() *DefaultRoles {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoles
 }
 
 func (o *Team) GetStagingPrefix() string {

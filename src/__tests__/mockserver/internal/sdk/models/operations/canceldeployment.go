@@ -186,6 +186,7 @@ const (
 	CancelDeploymentFrameworkVitepress      CancelDeploymentFramework = "vitepress"
 	CancelDeploymentFrameworkVuepress       CancelDeploymentFramework = "vuepress"
 	CancelDeploymentFrameworkParcel         CancelDeploymentFramework = "parcel"
+	CancelDeploymentFrameworkFastapi        CancelDeploymentFramework = "fastapi"
 	CancelDeploymentFrameworkFasthtml       CancelDeploymentFramework = "fasthtml"
 	CancelDeploymentFrameworkSanityV3       CancelDeploymentFramework = "sanity-v3"
 	CancelDeploymentFrameworkSanity         CancelDeploymentFramework = "sanity"
@@ -288,6 +289,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "vuepress":
 		fallthrough
 	case "parcel":
+		fallthrough
+	case "fastapi":
 		fallthrough
 	case "fasthtml":
 		fallthrough

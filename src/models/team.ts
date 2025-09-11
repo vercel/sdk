@@ -21,13 +21,13 @@ export type Connect = {
  */
 export type Connection = {
   /**
-   * Current status of the connection.
-   */
-  status: string;
-  /**
    * The Identity Provider "type", for example Okta.
    */
   type: string;
+  /**
+   * Current status of the connection.
+   */
+  status: string;
   /**
    * Current state of the connection.
    */
@@ -122,6 +122,39 @@ export type Saml = {
    * When "Directory Sync" is configured, this object contains a mapping of which Directory Group (by ID) should be assigned to which Vercel Team "role".
    */
   roles?: { [k: string]: Roles1 | Roles2 } | undefined;
+};
+
+export const TeamRoles = {
+  Owner: "OWNER",
+  Member: "MEMBER",
+  Developer: "DEVELOPER",
+  Security: "SECURITY",
+  Billing: "BILLING",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
+  Contributor: "CONTRIBUTOR",
+} as const;
+export type TeamRoles = ClosedEnum<typeof TeamRoles>;
+
+export const TeamPermissions = {
+  IntegrationManager: "IntegrationManager",
+  CreateProject: "CreateProject",
+  FullProductionDeployment: "FullProductionDeployment",
+  UsageViewer: "UsageViewer",
+  EnvVariableManager: "EnvVariableManager",
+  EnvironmentManager: "EnvironmentManager",
+  V0Builder: "V0Builder",
+  V0Chatter: "V0Chatter",
+  V0Viewer: "V0Viewer",
+} as const;
+export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
+
+/**
+ * Default roles for the team.
+ */
+export type DefaultRoles = {
+  teamRoles?: Array<TeamRoles> | undefined;
+  teamPermissions?: Array<TeamPermissions> | undefined;
 };
 
 export type BuildEntitlements = {
@@ -281,7 +314,7 @@ export const Role = {
 } as const;
 export type Role = ClosedEnum<typeof Role>;
 
-export const TeamRoles = {
+export const TeamTeamRoles = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -291,9 +324,9 @@ export const TeamRoles = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type TeamRoles = ClosedEnum<typeof TeamRoles>;
+export type TeamTeamRoles = ClosedEnum<typeof TeamTeamRoles>;
 
-export const TeamPermissions = {
+export const TeamTeamPermissions = {
   IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
@@ -304,12 +337,12 @@ export const TeamPermissions = {
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
 } as const;
-export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
+export type TeamTeamPermissions = ClosedEnum<typeof TeamTeamPermissions>;
 
 export const Origin = {
+  Link: "link",
   Saml: "saml",
   Mail: "mail",
-  Link: "link",
   Import: "import",
   Teams: "teams",
   Github: "github",
@@ -343,12 +376,12 @@ export type JoinedFrom = {
 export type Membership = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements> | undefined;
+  teamId?: string | undefined;
   confirmed: boolean;
   accessRequestedAt?: number | undefined;
   role: Role;
-  teamRoles?: Array<TeamRoles> | undefined;
-  teamPermissions?: Array<TeamPermissions> | undefined;
-  teamId?: string | undefined;
+  teamRoles?: Array<TeamTeamRoles> | undefined;
+  teamPermissions?: Array<TeamTeamPermissions> | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom | undefined;
@@ -383,6 +416,10 @@ export type Team = {
    * A short description of the Team.
    */
   description: string | null;
+  /**
+   * Default roles for the team.
+   */
+  defaultRoles?: DefaultRoles | undefined;
   /**
    * The prefix that is prepended to automatic aliases.
    */
@@ -513,8 +550,8 @@ export const Connection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string(),
   type: z.string(),
+  status: z.string(),
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
@@ -522,8 +559,8 @@ export const Connection$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Connection$Outbound = {
-  status: string;
   type: string;
+  status: string;
   state: string;
   connectedAt: number;
   lastReceivedWebhookEvent?: number | undefined;
@@ -535,8 +572,8 @@ export const Connection$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Connection
 > = z.object({
-  status: z.string(),
   type: z.string(),
+  status: z.string(),
   state: z.string(),
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
@@ -813,6 +850,99 @@ export function samlFromJSON(
     jsonString,
     (x) => Saml$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Saml' from JSON`,
+  );
+}
+
+/** @internal */
+export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
+  .nativeEnum(TeamRoles);
+
+/** @internal */
+export const TeamRoles$outboundSchema: z.ZodNativeEnum<typeof TeamRoles> =
+  TeamRoles$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TeamRoles$ {
+  /** @deprecated use `TeamRoles$inboundSchema` instead. */
+  export const inboundSchema = TeamRoles$inboundSchema;
+  /** @deprecated use `TeamRoles$outboundSchema` instead. */
+  export const outboundSchema = TeamRoles$outboundSchema;
+}
+
+/** @internal */
+export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamPermissions
+> = z.nativeEnum(TeamPermissions);
+
+/** @internal */
+export const TeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof TeamPermissions
+> = TeamPermissions$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TeamPermissions$ {
+  /** @deprecated use `TeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = TeamPermissions$inboundSchema;
+  /** @deprecated use `TeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = TeamPermissions$outboundSchema;
+}
+
+/** @internal */
+export const DefaultRoles$inboundSchema: z.ZodType<
+  DefaultRoles,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  teamRoles: z.array(TeamRoles$inboundSchema).optional(),
+  teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
+});
+
+/** @internal */
+export type DefaultRoles$Outbound = {
+  teamRoles?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
+};
+
+/** @internal */
+export const DefaultRoles$outboundSchema: z.ZodType<
+  DefaultRoles$Outbound,
+  z.ZodTypeDef,
+  DefaultRoles
+> = z.object({
+  teamRoles: z.array(TeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DefaultRoles$ {
+  /** @deprecated use `DefaultRoles$inboundSchema` instead. */
+  export const inboundSchema = DefaultRoles$inboundSchema;
+  /** @deprecated use `DefaultRoles$outboundSchema` instead. */
+  export const outboundSchema = DefaultRoles$outboundSchema;
+  /** @deprecated use `DefaultRoles$Outbound` instead. */
+  export type Outbound = DefaultRoles$Outbound;
+}
+
+export function defaultRolesToJSON(defaultRoles: DefaultRoles): string {
+  return JSON.stringify(DefaultRoles$outboundSchema.parse(defaultRoles));
+}
+
+export function defaultRolesFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultRoles, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultRoles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultRoles' from JSON`,
   );
 }
 
@@ -1457,43 +1587,45 @@ export namespace Role$ {
 }
 
 /** @internal */
-export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
-  .nativeEnum(TeamRoles);
+export const TeamTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamRoles
+> = z.nativeEnum(TeamTeamRoles);
 
 /** @internal */
-export const TeamRoles$outboundSchema: z.ZodNativeEnum<typeof TeamRoles> =
-  TeamRoles$inboundSchema;
+export const TeamTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamRoles
+> = TeamTeamRoles$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamRoles$ {
-  /** @deprecated use `TeamRoles$inboundSchema` instead. */
-  export const inboundSchema = TeamRoles$inboundSchema;
-  /** @deprecated use `TeamRoles$outboundSchema` instead. */
-  export const outboundSchema = TeamRoles$outboundSchema;
+export namespace TeamTeamRoles$ {
+  /** @deprecated use `TeamTeamRoles$inboundSchema` instead. */
+  export const inboundSchema = TeamTeamRoles$inboundSchema;
+  /** @deprecated use `TeamTeamRoles$outboundSchema` instead. */
+  export const outboundSchema = TeamTeamRoles$outboundSchema;
 }
 
 /** @internal */
-export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof TeamPermissions
-> = z.nativeEnum(TeamPermissions);
+export const TeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamPermissions
+> = z.nativeEnum(TeamTeamPermissions);
 
 /** @internal */
-export const TeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof TeamPermissions
-> = TeamPermissions$inboundSchema;
+export const TeamTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamPermissions
+> = TeamTeamPermissions$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamPermissions$ {
-  /** @deprecated use `TeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = TeamPermissions$inboundSchema;
-  /** @deprecated use `TeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = TeamPermissions$outboundSchema;
+export namespace TeamTeamPermissions$ {
+  /** @deprecated use `TeamTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = TeamTeamPermissions$inboundSchema;
+  /** @deprecated use `TeamTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = TeamTeamPermissions$outboundSchema;
 }
 
 /** @internal */
@@ -1647,12 +1779,12 @@ export const Membership$inboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$inboundSchema)).optional(),
+  teamId: z.string().optional(),
   confirmed: z.boolean(),
   accessRequestedAt: z.number().optional(),
   role: Role$inboundSchema,
-  teamRoles: z.array(TeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
-  teamId: z.string().optional(),
+  teamRoles: z.array(TeamTeamRoles$inboundSchema).optional(),
+  teamPermissions: z.array(TeamTeamPermissions$inboundSchema).optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
@@ -1662,12 +1794,12 @@ export const Membership$inboundSchema: z.ZodType<
 export type Membership$Outbound = {
   uid?: string | undefined;
   entitlements?: Array<Entitlements$Outbound> | undefined;
+  teamId?: string | undefined;
   confirmed: boolean;
   accessRequestedAt?: number | undefined;
   role: string;
   teamRoles?: Array<string> | undefined;
   teamPermissions?: Array<string> | undefined;
-  teamId?: string | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom$Outbound | undefined;
@@ -1681,12 +1813,12 @@ export const Membership$outboundSchema: z.ZodType<
 > = z.object({
   uid: z.string().optional(),
   entitlements: z.array(z.lazy(() => Entitlements$outboundSchema)).optional(),
+  teamId: z.string().optional(),
   confirmed: z.boolean(),
   accessRequestedAt: z.number().optional(),
   role: Role$outboundSchema,
-  teamRoles: z.array(TeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
-  teamId: z.string().optional(),
+  teamRoles: z.array(TeamTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(TeamTeamPermissions$outboundSchema).optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$outboundSchema).optional(),
@@ -1730,6 +1862,7 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
       saml: z.lazy(() => Saml$inboundSchema).optional(),
       inviteCode: z.string().optional(),
       description: z.nullable(z.string()),
+      defaultRoles: z.lazy(() => DefaultRoles$inboundSchema).optional(),
       stagingPrefix: z.string(),
       resourceConfig: z.lazy(() => ResourceConfig$inboundSchema).optional(),
       previewDeploymentSuffix: z.nullable(z.string()).optional(),
@@ -1773,6 +1906,7 @@ export type Team$Outbound = {
   saml?: Saml$Outbound | undefined;
   inviteCode?: string | undefined;
   description: string | null;
+  defaultRoles?: DefaultRoles$Outbound | undefined;
   stagingPrefix: string;
   resourceConfig?: ResourceConfig$Outbound | undefined;
   previewDeploymentSuffix?: string | null | undefined;
@@ -1808,6 +1942,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     saml: z.lazy(() => Saml$outboundSchema).optional(),
     inviteCode: z.string().optional(),
     description: z.nullable(z.string()),
+    defaultRoles: z.lazy(() => DefaultRoles$outboundSchema).optional(),
     stagingPrefix: z.string(),
     resourceConfig: z.lazy(() => ResourceConfig$outboundSchema).optional(),
     previewDeploymentSuffix: z.nullable(z.string()).optional(),

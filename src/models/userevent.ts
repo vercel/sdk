@@ -1059,7 +1059,7 @@ export type BudgetItem = {
    */
   type: UserEventPayload104Type;
   /**
-   * Budget amount
+   * Budget amount (USD / dollars)
    */
   fixedBudget: number;
   /**
@@ -1157,7 +1157,7 @@ export type Budget = {
    */
   type: UserEventPayload103Type;
   /**
-   * Budget amount
+   * Budget amount (USD / dollars)
    */
   fixedBudget: number;
   /**

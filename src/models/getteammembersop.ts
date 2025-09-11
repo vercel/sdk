@@ -15,8 +15,10 @@ export const QueryParamRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
-  Viewer: "VIEWER",
+  Security: "SECURITY",
   Billing: "BILLING",
+  Viewer: "VIEWER",
+  ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
 /**
@@ -83,11 +85,11 @@ export const GetTeamMembersRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
-  Viewer: "VIEWER",
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
   Security: "SECURITY",
+  Billing: "BILLING",
+  Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
+  Contributor: "CONTRIBUTOR",
 } as const;
 /**
  * Role of this user in the team.
@@ -209,11 +211,11 @@ export const GetTeamMembersTeamsRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
-  Viewer: "VIEWER",
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
   Security: "SECURITY",
+  Billing: "BILLING",
+  Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
+  Contributor: "CONTRIBUTOR",
 } as const;
 export type GetTeamMembersTeamsRole = ClosedEnum<
   typeof GetTeamMembersTeamsRole
@@ -223,11 +225,11 @@ export const GetTeamMembersTeamRoles = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
-  Viewer: "VIEWER",
-  Billing: "BILLING",
-  Contributor: "CONTRIBUTOR",
   Security: "SECURITY",
+  Billing: "BILLING",
+  Viewer: "VIEWER",
   ViewerForPlus: "VIEWER_FOR_PLUS",
+  Contributor: "CONTRIBUTOR",
 } as const;
 export type GetTeamMembersTeamRoles = ClosedEnum<
   typeof GetTeamMembersTeamRoles

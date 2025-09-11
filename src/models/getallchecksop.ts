@@ -127,6 +127,7 @@ export type Checks = {
   output?: GetAllChecksOutput | undefined;
   path?: string | undefined;
   rerequestable: boolean;
+  blocking: boolean;
   startedAt?: number | undefined;
   status: GetAllChecksStatus;
   updatedAt: number;
@@ -796,6 +797,7 @@ export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
     output: z.lazy(() => GetAllChecksOutput$inboundSchema).optional(),
     path: z.string().optional(),
     rerequestable: z.boolean(),
+    blocking: z.boolean(),
     startedAt: z.number().optional(),
     status: GetAllChecksStatus$inboundSchema,
     updatedAt: z.number(),
@@ -813,6 +815,7 @@ export type Checks$Outbound = {
   output?: GetAllChecksOutput$Outbound | undefined;
   path?: string | undefined;
   rerequestable: boolean;
+  blocking: boolean;
   startedAt?: number | undefined;
   status: string;
   updatedAt: number;
@@ -834,6 +837,7 @@ export const Checks$outboundSchema: z.ZodType<
   output: z.lazy(() => GetAllChecksOutput$outboundSchema).optional(),
   path: z.string().optional(),
   rerequestable: z.boolean(),
+  blocking: z.boolean(),
   startedAt: z.number().optional(),
   status: GetAllChecksStatus$outboundSchema,
   updatedAt: z.number(),

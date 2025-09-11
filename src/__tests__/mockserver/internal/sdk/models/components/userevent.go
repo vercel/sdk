@@ -4755,7 +4755,7 @@ func (e *BudgetPricingPlan) UnmarshalJSON(data []byte) error {
 type BudgetItem struct {
 	// The budget type
 	Type BudgetType `json:"type"`
-	// Budget amount
+	// Budget amount (USD / dollars)
 	FixedBudget float64 `json:"fixedBudget"`
 	// Array of the last 3 months of spend data
 	PreviousSpend []float64 `json:"previousSpend"`
@@ -4987,7 +4987,7 @@ func (e *PricingPlan) UnmarshalJSON(data []byte) error {
 type BudgetFixed struct {
 	// The budget type
 	Type TypeFixed `json:"type"`
-	// Budget amount
+	// Budget amount (USD / dollars)
 	FixedBudget float64 `json:"fixedBudget"`
 	// Array of the last 3 months of spend data
 	PreviousSpend []float64 `json:"previousSpend"`

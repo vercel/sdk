@@ -14,12 +14,14 @@ import (
 type QueryParamRole string
 
 const (
-	QueryParamRoleOwner       QueryParamRole = "OWNER"
-	QueryParamRoleMember      QueryParamRole = "MEMBER"
-	QueryParamRoleDeveloper   QueryParamRole = "DEVELOPER"
-	QueryParamRoleViewer      QueryParamRole = "VIEWER"
-	QueryParamRoleBilling     QueryParamRole = "BILLING"
-	QueryParamRoleContributor QueryParamRole = "CONTRIBUTOR"
+	QueryParamRoleOwner         QueryParamRole = "OWNER"
+	QueryParamRoleMember        QueryParamRole = "MEMBER"
+	QueryParamRoleDeveloper     QueryParamRole = "DEVELOPER"
+	QueryParamRoleSecurity      QueryParamRole = "SECURITY"
+	QueryParamRoleBilling       QueryParamRole = "BILLING"
+	QueryParamRoleViewer        QueryParamRole = "VIEWER"
+	QueryParamRoleViewerForPlus QueryParamRole = "VIEWER_FOR_PLUS"
+	QueryParamRoleContributor   QueryParamRole = "CONTRIBUTOR"
 )
 
 func (e QueryParamRole) ToPointer() *QueryParamRole {
@@ -37,9 +39,13 @@ func (e *QueryParamRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "DEVELOPER":
 		fallthrough
-	case "VIEWER":
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "VIEWER_FOR_PLUS":
 		fallthrough
 	case "CONTRIBUTOR":
 		*e = QueryParamRole(v)
@@ -158,11 +164,11 @@ const (
 	GetTeamMembersMemberRoleOwner         GetTeamMembersMemberRole = "OWNER"
 	GetTeamMembersMemberRoleMember        GetTeamMembersMemberRole = "MEMBER"
 	GetTeamMembersMemberRoleDeveloper     GetTeamMembersMemberRole = "DEVELOPER"
-	GetTeamMembersMemberRoleViewer        GetTeamMembersMemberRole = "VIEWER"
-	GetTeamMembersMemberRoleBilling       GetTeamMembersMemberRole = "BILLING"
-	GetTeamMembersMemberRoleContributor   GetTeamMembersMemberRole = "CONTRIBUTOR"
 	GetTeamMembersMemberRoleSecurity      GetTeamMembersMemberRole = "SECURITY"
+	GetTeamMembersMemberRoleBilling       GetTeamMembersMemberRole = "BILLING"
+	GetTeamMembersMemberRoleViewer        GetTeamMembersMemberRole = "VIEWER"
 	GetTeamMembersMemberRoleViewerForPlus GetTeamMembersMemberRole = "VIEWER_FOR_PLUS"
+	GetTeamMembersMemberRoleContributor   GetTeamMembersMemberRole = "CONTRIBUTOR"
 )
 
 func (e GetTeamMembersMemberRole) ToPointer() *GetTeamMembersMemberRole {
@@ -180,15 +186,15 @@ func (e *GetTeamMembersMemberRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "DEVELOPER":
 		fallthrough
-	case "VIEWER":
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
 		fallthrough
-	case "CONTRIBUTOR":
-		fallthrough
-	case "SECURITY":
+	case "VIEWER":
 		fallthrough
 	case "VIEWER_FOR_PLUS":
+		fallthrough
+	case "CONTRIBUTOR":
 		*e = GetTeamMembersMemberRole(v)
 		return nil
 	default:
@@ -596,11 +602,11 @@ const (
 	EmailInviteCodeRoleOwner         EmailInviteCodeRole = "OWNER"
 	EmailInviteCodeRoleMember        EmailInviteCodeRole = "MEMBER"
 	EmailInviteCodeRoleDeveloper     EmailInviteCodeRole = "DEVELOPER"
-	EmailInviteCodeRoleViewer        EmailInviteCodeRole = "VIEWER"
-	EmailInviteCodeRoleBilling       EmailInviteCodeRole = "BILLING"
-	EmailInviteCodeRoleContributor   EmailInviteCodeRole = "CONTRIBUTOR"
 	EmailInviteCodeRoleSecurity      EmailInviteCodeRole = "SECURITY"
+	EmailInviteCodeRoleBilling       EmailInviteCodeRole = "BILLING"
+	EmailInviteCodeRoleViewer        EmailInviteCodeRole = "VIEWER"
 	EmailInviteCodeRoleViewerForPlus EmailInviteCodeRole = "VIEWER_FOR_PLUS"
+	EmailInviteCodeRoleContributor   EmailInviteCodeRole = "CONTRIBUTOR"
 )
 
 func (e EmailInviteCodeRole) ToPointer() *EmailInviteCodeRole {
@@ -618,15 +624,15 @@ func (e *EmailInviteCodeRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "DEVELOPER":
 		fallthrough
-	case "VIEWER":
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
 		fallthrough
-	case "CONTRIBUTOR":
-		fallthrough
-	case "SECURITY":
+	case "VIEWER":
 		fallthrough
 	case "VIEWER_FOR_PLUS":
+		fallthrough
+	case "CONTRIBUTOR":
 		*e = EmailInviteCodeRole(v)
 		return nil
 	default:
@@ -640,11 +646,11 @@ const (
 	GetTeamMembersTeamRoleOwner         GetTeamMembersTeamRole = "OWNER"
 	GetTeamMembersTeamRoleMember        GetTeamMembersTeamRole = "MEMBER"
 	GetTeamMembersTeamRoleDeveloper     GetTeamMembersTeamRole = "DEVELOPER"
-	GetTeamMembersTeamRoleViewer        GetTeamMembersTeamRole = "VIEWER"
-	GetTeamMembersTeamRoleBilling       GetTeamMembersTeamRole = "BILLING"
-	GetTeamMembersTeamRoleContributor   GetTeamMembersTeamRole = "CONTRIBUTOR"
 	GetTeamMembersTeamRoleSecurity      GetTeamMembersTeamRole = "SECURITY"
+	GetTeamMembersTeamRoleBilling       GetTeamMembersTeamRole = "BILLING"
+	GetTeamMembersTeamRoleViewer        GetTeamMembersTeamRole = "VIEWER"
 	GetTeamMembersTeamRoleViewerForPlus GetTeamMembersTeamRole = "VIEWER_FOR_PLUS"
+	GetTeamMembersTeamRoleContributor   GetTeamMembersTeamRole = "CONTRIBUTOR"
 )
 
 func (e GetTeamMembersTeamRole) ToPointer() *GetTeamMembersTeamRole {
@@ -662,15 +668,15 @@ func (e *GetTeamMembersTeamRole) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "DEVELOPER":
 		fallthrough
-	case "VIEWER":
+	case "SECURITY":
 		fallthrough
 	case "BILLING":
 		fallthrough
-	case "CONTRIBUTOR":
-		fallthrough
-	case "SECURITY":
+	case "VIEWER":
 		fallthrough
 	case "VIEWER_FOR_PLUS":
+		fallthrough
+	case "CONTRIBUTOR":
 		*e = GetTeamMembersTeamRole(v)
 		return nil
 	default:

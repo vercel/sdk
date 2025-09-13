@@ -311,6 +311,8 @@ func (o *DefaultDeploymentProtection) GetSsoProtection() *PatchTeamSsoProtection
 type Expiration string
 
 const (
+	ExpirationThreey    Expiration = "3y"
+	ExpirationTwoy      Expiration = "2y"
 	ExpirationOney      Expiration = "1y"
 	ExpirationSixm      Expiration = "6m"
 	ExpirationThreem    Expiration = "3m"
@@ -331,6 +333,10 @@ func (e *Expiration) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "3y":
+		fallthrough
+	case "2y":
+		fallthrough
 	case "1y":
 		fallthrough
 	case "6m":
@@ -359,6 +365,8 @@ func (e *Expiration) UnmarshalJSON(data []byte) error {
 type ExpirationProduction string
 
 const (
+	ExpirationProductionThreey    ExpirationProduction = "3y"
+	ExpirationProductionTwoy      ExpirationProduction = "2y"
 	ExpirationProductionOney      ExpirationProduction = "1y"
 	ExpirationProductionSixm      ExpirationProduction = "6m"
 	ExpirationProductionThreem    ExpirationProduction = "3m"
@@ -379,6 +387,10 @@ func (e *ExpirationProduction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "3y":
+		fallthrough
+	case "2y":
+		fallthrough
 	case "1y":
 		fallthrough
 	case "6m":

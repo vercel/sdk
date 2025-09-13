@@ -122,6 +122,8 @@ export type PatchTeamDefaultDeploymentProtection = {
  * The time period to keep non-production deployments for
  */
 export const Expiration = {
+  Threey: "3y",
+  Twoy: "2y",
   Oney: "1y",
   Sixm: "6m",
   Threem: "3m",
@@ -141,6 +143,8 @@ export type Expiration = ClosedEnum<typeof Expiration>;
  * The time period to keep production deployments for
  */
 export const ExpirationProduction = {
+  Threey: "3y",
+  Twoy: "2y",
   Oney: "1y",
   Sixm: "6m",
   Threem: "3m",

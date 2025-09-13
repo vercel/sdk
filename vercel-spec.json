@@ -6800,12 +6800,6 @@
                           },
                           "type": "array"
                         },
-                        "traceDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "Monitoring": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -13655,11 +13649,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
+                            "error",
+                            "timeout",
                             "skipped",
                             "pending",
-                            "ready",
-                            "error",
-                            "timeout"
+                            "ready"
                           ]
                         },
                         "startedAt": {
@@ -13838,18 +13832,18 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
                           },
+                          "readyStateAt": {
+                            "type": "number"
+                          },
                           "entrypoint": {
                             "nullable": true,
                             "type": "string"
-                          },
-                          "readyStateAt": {
-                            "type": "number"
                           },
                           "output": {
                             "items": {
@@ -14908,15 +14902,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -15408,8 +15402,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "append",
                                         "set",
+                                        "append",
                                         "delete"
                                       ]
                                     },
@@ -15539,12 +15533,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "error",
                                   "filesystem",
+                                  "error",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -15859,8 +15853,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15912,8 +15906,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15966,8 +15960,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -29252,34 +29246,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "default": {
@@ -29962,34 +29956,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "default": {
@@ -30147,34 +30141,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@510943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@510943"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@510943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@510943"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@510943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@510943"
                                               ]
                                             },
                                             "default": {
@@ -30485,12 +30479,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@510349": {
+                                                  "__@BRAND@510943": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@510349"
+                                                  "__@BRAND@510943"
                                                 ]
                                               },
                                               {
@@ -30498,12 +30492,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@510349": {
+                                                      "__@BRAND@510943": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@510349"
+                                                      "__@BRAND@510943"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30572,34 +30566,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "default": {
@@ -30757,34 +30751,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@510943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@510943"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@510943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@510943"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@510943": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@510943"
                                               ]
                                             },
                                             "default": {
@@ -30873,12 +30867,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@510349": {
+                                                  "__@BRAND@510943": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@510349"
+                                                  "__@BRAND@510943"
                                                 ]
                                               },
                                               {
@@ -30886,12 +30880,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@510349": {
+                                                      "__@BRAND@510943": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@510349"
+                                                      "__@BRAND@510943"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31077,12 +31071,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@510349": {
+                                              "__@BRAND@510943": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@510349"
+                                              "__@BRAND@510943"
                                             ]
                                           },
                                           "type": "array"
@@ -31091,12 +31085,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@510349": {
+                                              "__@BRAND@510943": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@510349"
+                                              "__@BRAND@510943"
                                             ]
                                           },
                                           "type": "array"
@@ -31115,12 +31109,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@510943": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@510943"
                                           ]
                                         },
                                         "disabled": {
@@ -36341,12 +36335,6 @@
                                 },
                                 "type": "array"
                               },
-                              "traceDrain": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
                               "Monitoring": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -41095,12 +41083,6 @@
                           },
                           "type": "array"
                         },
-                        "traceDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "Monitoring": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -44328,16 +44310,10 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
+                            "createdAt": {
                               "type": "number"
                             },
                             "updatedAt": {
-                              "type": "number"
-                            },
-                            "createdAt": {
                               "type": "number"
                             },
                             "org": {
@@ -44346,6 +44322,12 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -44772,9 +44754,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -44796,6 +44775,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -44893,9 +44875,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -44917,6 +44896,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -45692,12 +45674,6 @@
                           "type": "array"
                         },
                         "logDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "traceDrain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -50709,12 +50685,6 @@
                           "type": "array"
                         },
                         "logDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "traceDrain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -68575,6 +68545,14 @@
                             "uninstalled"
                           ]
                         },
+                        "ownership": {
+                          "type": "string",
+                          "enum": [
+                            "owned",
+                            "linked",
+                            "sandbox"
+                          ]
+                        },
                         "metadata": {
                           "additionalProperties": {
                             "oneOf": [
@@ -68669,34 +68647,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "description": {
@@ -69379,34 +69357,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "description": {
@@ -69555,34 +69533,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7838": {
+                                                  "__@BRAND@7890": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7838"
+                                                  "__@BRAND@7890"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7838": {
+                                                  "__@BRAND@7890": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7838"
+                                                  "__@BRAND@7890"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7838": {
+                                                  "__@BRAND@7890": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7838"
+                                                  "__@BRAND@7890"
                                                 ]
                                               },
                                               "default": {
@@ -69899,12 +69877,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@7838": {
+                                                    "__@BRAND@7890": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@7838"
+                                                    "__@BRAND@7890"
                                                   ]
                                                 },
                                                 {
@@ -69912,12 +69890,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@7838": {
+                                                        "__@BRAND@7890": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@7838"
+                                                        "__@BRAND@7890"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -69989,34 +69967,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "description": {
@@ -70148,12 +70126,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7890": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7890"
                                             ]
                                           },
                                           "disabled": {
@@ -70255,8 +70233,8 @@
                                   "redis",
                                   "postgres",
                                   "blob",
-                                  "checks",
                                   "experimentation",
+                                  "checks",
                                   "storage",
                                   "ai",
                                   "observability",
@@ -70313,8 +70291,7 @@
                                   "read-write:integration-deployment-action",
                                   "read-write:log-drain",
                                   "read-write:project-env-vars",
-                                  "read-write:project-protection-bypass",
-                                  "read-write:trace-drain"
+                                  "read-write:project-protection-bypass"
                                 ]
                               },
                               "type": "array"
@@ -70401,12 +70378,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@7838": {
+                                "__@BRAND@7890": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@7838"
+                                "__@BRAND@7890"
                               ]
                             },
                             "disabled": {
@@ -72743,6 +72720,8 @@
                         "example": "1y",
                         "type": "string",
                         "enum": [
+                          "3y",
+                          "2y",
                           "1y",
                           "6m",
                           "3m",
@@ -72759,6 +72738,8 @@
                         "example": "1y",
                         "type": "string",
                         "enum": [
+                          "3y",
+                          "2y",
                           "1y",
                           "6m",
                           "3m",
@@ -84820,10 +84801,100 @@
               },
               {
                 "properties": {
-                  "webhookUrl": {
-                    "type": "string"
+                  "budget": {
+                    "properties": {
+                      "budgetItem": {
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "fixed"
+                            ],
+                            "description": "The budget type"
+                          },
+                          "fixedBudget": {
+                            "type": "number",
+                            "description": "Budget amount (USD / dollars)"
+                          },
+                          "previousSpend": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "type": "array",
+                            "description": "Array of the last 3 months of spend data"
+                          },
+                          "notifiedAt": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "type": "array",
+                            "description": "Array of 50, 75, 100 to keep track of notifications sent out"
+                          },
+                          "webhookId": {
+                            "type": "string",
+                            "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
+                          },
+                          "webhookNotified": {
+                            "type": "boolean",
+                            "description": "Keep track if the webhook has been called for the month"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Date time when budget is created"
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Date time when budget is updated last"
+                          },
+                          "isActive": {
+                            "type": "boolean",
+                            "description": "Is the budget currently active for a customer"
+                          },
+                          "pauseProjects": {
+                            "type": "boolean",
+                            "description": "Should all projects be paused if budget is exceeded"
+                          },
+                          "pricingPlan": {
+                            "type": "string",
+                            "enum": [
+                              "plus",
+                              "legacy",
+                              "unbundled"
+                            ],
+                            "description": "The acive pricing plan the team is billed with"
+                          },
+                          "teamId": {
+                            "type": "string",
+                            "description": "Partition key"
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "Sort key that needs to be unique per teamId"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "fixedBudget",
+                          "previousSpend",
+                          "notifiedAt",
+                          "createdAt",
+                          "isActive",
+                          "teamId",
+                          "id"
+                        ],
+                        "type": "object",
+                        "description": "Represents a budget for tracking and notifying teams on their spending."
+                      }
+                    },
+                    "required": [
+                      "budgetItem"
+                    ],
+                    "type": "object"
                   }
                 },
+                "required": [
+                  "budget"
+                ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -84922,98 +84993,102 @@
                 "properties": {
                   "budget": {
                     "properties": {
-                      "budgetItem": {
-                        "properties": {
-                          "type": {
-                            "type": "string",
-                            "enum": [
-                              "fixed"
-                            ],
-                            "description": "The budget type"
-                          },
-                          "fixedBudget": {
-                            "type": "number",
-                            "description": "Budget amount (USD / dollars)"
-                          },
-                          "previousSpend": {
-                            "items": {
-                              "type": "number"
-                            },
-                            "type": "array",
-                            "description": "Array of the last 3 months of spend data"
-                          },
-                          "notifiedAt": {
-                            "items": {
-                              "type": "number"
-                            },
-                            "type": "array",
-                            "description": "Array of 50, 75, 100 to keep track of notifications sent out"
-                          },
-                          "webhookId": {
-                            "type": "string",
-                            "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
-                          },
-                          "webhookNotified": {
-                            "type": "boolean",
-                            "description": "Keep track if the webhook has been called for the month"
-                          },
-                          "createdAt": {
-                            "type": "number",
-                            "description": "Date time when budget is created"
-                          },
-                          "updatedAt": {
-                            "type": "number",
-                            "description": "Date time when budget is updated last"
-                          },
-                          "isActive": {
-                            "type": "boolean",
-                            "description": "Is the budget currently active for a customer"
-                          },
-                          "pauseProjects": {
-                            "type": "boolean",
-                            "description": "Should all projects be paused if budget is exceeded"
-                          },
-                          "pricingPlan": {
-                            "type": "string",
-                            "enum": [
-                              "plus",
-                              "legacy",
-                              "unbundled"
-                            ],
-                            "description": "The acive pricing plan the team is billed with"
-                          },
-                          "teamId": {
-                            "type": "string",
-                            "description": "Partition key"
-                          },
-                          "id": {
-                            "type": "string",
-                            "description": "Sort key that needs to be unique per teamId"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "fixedBudget",
-                          "previousSpend",
-                          "notifiedAt",
-                          "createdAt",
-                          "isActive",
-                          "teamId",
-                          "id"
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "fixed"
                         ],
-                        "type": "object",
-                        "description": "Represents a budget for tracking and notifying teams on their spending."
+                        "description": "The budget type"
+                      },
+                      "fixedBudget": {
+                        "type": "number",
+                        "description": "Budget amount (USD / dollars)"
+                      },
+                      "previousSpend": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of the last 3 months of spend data"
+                      },
+                      "notifiedAt": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of 50, 75, 100 to keep track of notifications sent out"
+                      },
+                      "webhookId": {
+                        "type": "string",
+                        "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
+                      },
+                      "webhookNotified": {
+                        "type": "boolean",
+                        "description": "Keep track if the webhook has been called for the month"
+                      },
+                      "createdAt": {
+                        "type": "number",
+                        "description": "Date time when budget is created"
+                      },
+                      "updatedAt": {
+                        "type": "number",
+                        "description": "Date time when budget is updated last"
+                      },
+                      "isActive": {
+                        "type": "boolean",
+                        "description": "Is the budget currently active for a customer"
+                      },
+                      "pauseProjects": {
+                        "type": "boolean",
+                        "description": "Should all projects be paused if budget is exceeded"
+                      },
+                      "pricingPlan": {
+                        "type": "string",
+                        "enum": [
+                          "plus",
+                          "legacy",
+                          "unbundled"
+                        ],
+                        "description": "The acive pricing plan the team is billed with"
+                      },
+                      "teamId": {
+                        "type": "string",
+                        "description": "Partition key"
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "Sort key that needs to be unique per teamId"
                       }
                     },
                     "required": [
-                      "budgetItem"
+                      "type",
+                      "fixedBudget",
+                      "previousSpend",
+                      "notifiedAt",
+                      "createdAt",
+                      "isActive",
+                      "teamId",
+                      "id"
                     ],
-                    "type": "object"
+                    "type": "object",
+                    "description": "Represents a budget for tracking and notifying teams on their spending."
+                  },
+                  "webhookUrl": {
+                    "type": "string"
                   }
                 },
                 "required": [
                   "budget"
                 ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "webhookUrl": {
+                    "type": "string"
+                  }
+                },
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -86828,15 +86903,15 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "type": {
-                    "type": "string",
-                    "description": "The Identity Provider \"type\", for example Okta.",
-                    "example": "OktaSAML"
-                  },
                   "status": {
                     "type": "string",
                     "description": "Current status of the connection.",
                     "example": "linked"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The Identity Provider \"type\", for example Okta.",
+                    "example": "OktaSAML"
                   },
                   "state": {
                     "type": "string",
@@ -86855,8 +86930,8 @@
                   }
                 },
                 "required": [
-                  "type",
                   "status",
+                  "type",
                   "state",
                   "connectedAt"
                 ],
@@ -87230,9 +87305,6 @@
                 },
                 "type": "array"
               },
-              "teamId": {
-                "type": "string"
-              },
               "confirmed": {
                 "type": "boolean"
               },
@@ -87285,6 +87357,9 @@
                 },
                 "type": "array"
               },
+              "teamId": {
+                "type": "string"
+              },
               "createdAt": {
                 "type": "number"
               },
@@ -87296,9 +87371,9 @@
                   "origin": {
                     "type": "string",
                     "enum": [
-                      "link",
                       "saml",
                       "mail",
+                      "link",
                       "import",
                       "teams",
                       "github",

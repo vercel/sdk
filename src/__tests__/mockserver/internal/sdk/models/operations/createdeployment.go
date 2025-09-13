@@ -1885,11 +1885,11 @@ func (o *CreateDeploymentProjectSettingsLambdas) GetWebAnalytics() *CreateDeploy
 type CreateDeploymentIntegrationsStatus string
 
 const (
+	CreateDeploymentIntegrationsStatusError   CreateDeploymentIntegrationsStatus = "error"
+	CreateDeploymentIntegrationsStatusTimeout CreateDeploymentIntegrationsStatus = "timeout"
 	CreateDeploymentIntegrationsStatusSkipped CreateDeploymentIntegrationsStatus = "skipped"
 	CreateDeploymentIntegrationsStatusPending CreateDeploymentIntegrationsStatus = "pending"
 	CreateDeploymentIntegrationsStatusReady   CreateDeploymentIntegrationsStatus = "ready"
-	CreateDeploymentIntegrationsStatusError   CreateDeploymentIntegrationsStatus = "error"
-	CreateDeploymentIntegrationsStatusTimeout CreateDeploymentIntegrationsStatus = "timeout"
 )
 
 func (e CreateDeploymentIntegrationsStatus) ToPointer() *CreateDeploymentIntegrationsStatus {
@@ -1901,15 +1901,15 @@ func (e *CreateDeploymentIntegrationsStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "error":
+		fallthrough
+	case "timeout":
+		fallthrough
 	case "skipped":
 		fallthrough
 	case "pending":
 		fallthrough
 	case "ready":
-		fallthrough
-	case "error":
-		fallthrough
-	case "timeout":
 		*e = CreateDeploymentIntegrationsStatus(v)
 		return nil
 	default:
@@ -2221,8 +2221,8 @@ func (o *CreateDeploymentCreator) GetAvatar() *string {
 type CreateDeploymentLambdaReadyState string
 
 const (
-	CreateDeploymentLambdaReadyStateBuilding     CreateDeploymentLambdaReadyState = "BUILDING"
 	CreateDeploymentLambdaReadyStateError        CreateDeploymentLambdaReadyState = "ERROR"
+	CreateDeploymentLambdaReadyStateBuilding     CreateDeploymentLambdaReadyState = "BUILDING"
 	CreateDeploymentLambdaReadyStateInitializing CreateDeploymentLambdaReadyState = "INITIALIZING"
 	CreateDeploymentLambdaReadyStateReady        CreateDeploymentLambdaReadyState = "READY"
 )
@@ -2236,9 +2236,9 @@ func (e *CreateDeploymentLambdaReadyState) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "BUILDING":
-		fallthrough
 	case "ERROR":
+		fallthrough
+	case "BUILDING":
 		fallthrough
 	case "INITIALIZING":
 		fallthrough
@@ -2274,8 +2274,8 @@ type CreateDeploymentLambda struct {
 	ID           string                            `json:"id"`
 	CreatedAt    *float64                          `json:"createdAt,omitempty"`
 	ReadyState   *CreateDeploymentLambdaReadyState `json:"readyState,omitempty"`
-	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                          `json:"readyStateAt,omitempty"`
+	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	Output       []CreateDeploymentOutput          `json:"output"`
 }
 
@@ -2300,18 +2300,18 @@ func (o *CreateDeploymentLambda) GetReadyState() *CreateDeploymentLambdaReadySta
 	return o.ReadyState
 }
 
-func (o *CreateDeploymentLambda) GetEntrypoint() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Entrypoint
-}
-
 func (o *CreateDeploymentLambda) GetReadyStateAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyStateAt
+}
+
+func (o *CreateDeploymentLambda) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *CreateDeploymentLambda) GetOutput() []CreateDeploymentOutput {
@@ -5143,8 +5143,8 @@ func (e *CreateDeploymentPlan) UnmarshalJSON(data []byte) error {
 type CreateDeploymentFunctionType string
 
 const (
-	CreateDeploymentFunctionTypeFluid    CreateDeploymentFunctionType = "fluid"
 	CreateDeploymentFunctionTypeStandard CreateDeploymentFunctionType = "standard"
+	CreateDeploymentFunctionTypeFluid    CreateDeploymentFunctionType = "fluid"
 )
 
 func (e CreateDeploymentFunctionType) ToPointer() *CreateDeploymentFunctionType {
@@ -5156,9 +5156,9 @@ func (e *CreateDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "fluid":
-		fallthrough
 	case "standard":
+		fallthrough
+	case "fluid":
 		*e = CreateDeploymentFunctionType(v)
 		return nil
 	default:
@@ -5169,8 +5169,8 @@ func (e *CreateDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 type CreateDeploymentFunctionMemoryType string
 
 const (
-	CreateDeploymentFunctionMemoryTypeStandard       CreateDeploymentFunctionMemoryType = "standard"
 	CreateDeploymentFunctionMemoryTypeStandardLegacy CreateDeploymentFunctionMemoryType = "standard_legacy"
+	CreateDeploymentFunctionMemoryTypeStandard       CreateDeploymentFunctionMemoryType = "standard"
 	CreateDeploymentFunctionMemoryTypePerformance    CreateDeploymentFunctionMemoryType = "performance"
 )
 
@@ -5183,9 +5183,9 @@ func (e *CreateDeploymentFunctionMemoryType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "standard_legacy":
+		fallthrough
+	case "standard":
 		fallthrough
 	case "performance":
 		*e = CreateDeploymentFunctionMemoryType(v)
@@ -5471,12 +5471,12 @@ func (o *CreateDeploymentRoute3) GetMiddleware() float64 {
 type CreateDeploymentHandle string
 
 const (
-	CreateDeploymentHandleError      CreateDeploymentHandle = "error"
 	CreateDeploymentHandleFilesystem CreateDeploymentHandle = "filesystem"
+	CreateDeploymentHandleError      CreateDeploymentHandle = "error"
 	CreateDeploymentHandleHit        CreateDeploymentHandle = "hit"
 	CreateDeploymentHandleMiss       CreateDeploymentHandle = "miss"
-	CreateDeploymentHandleRewrite    CreateDeploymentHandle = "rewrite"
 	CreateDeploymentHandleResource   CreateDeploymentHandle = "resource"
+	CreateDeploymentHandleRewrite    CreateDeploymentHandle = "rewrite"
 )
 
 func (e CreateDeploymentHandle) ToPointer() *CreateDeploymentHandle {
@@ -5488,17 +5488,17 @@ func (e *CreateDeploymentHandle) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "error":
-		fallthrough
 	case "filesystem":
+		fallthrough
+	case "error":
 		fallthrough
 	case "hit":
 		fallthrough
 	case "miss":
 		fallthrough
-	case "rewrite":
-		fallthrough
 	case "resource":
+		fallthrough
+	case "rewrite":
 		*e = CreateDeploymentHandle(v)
 		return nil
 	default:
@@ -6910,8 +6910,8 @@ func (e *CreateDeploymentTransformType) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOp string
 
 const (
-	CreateDeploymentOpAppend CreateDeploymentOp = "append"
 	CreateDeploymentOpSet    CreateDeploymentOp = "set"
+	CreateDeploymentOpAppend CreateDeploymentOp = "append"
 	CreateDeploymentOpDelete CreateDeploymentOp = "delete"
 )
 
@@ -6924,9 +6924,9 @@ func (e *CreateDeploymentOp) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "append":
-		fallthrough
 	case "set":
+		fallthrough
+	case "append":
 		fallthrough
 	case "delete":
 		*e = CreateDeploymentOp(v)
@@ -8122,8 +8122,8 @@ func (e *CreateDeploymentGitRepoTypeBitbucket) UnmarshalJSON(data []byte) error 
 type CreateDeploymentOwnerType3 string
 
 const (
-	CreateDeploymentOwnerType3Team CreateDeploymentOwnerType3 = "team"
 	CreateDeploymentOwnerType3User CreateDeploymentOwnerType3 = "user"
+	CreateDeploymentOwnerType3Team CreateDeploymentOwnerType3 = "team"
 )
 
 func (e CreateDeploymentOwnerType3) ToPointer() *CreateDeploymentOwnerType3 {
@@ -8135,9 +8135,9 @@ func (e *CreateDeploymentOwnerType3) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType3(v)
 		return nil
 	default:
@@ -8265,8 +8265,8 @@ func (e *CreateDeploymentGitRepoTypeGithub) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOwnerType2 string
 
 const (
-	CreateDeploymentOwnerType2Team CreateDeploymentOwnerType2 = "team"
 	CreateDeploymentOwnerType2User CreateDeploymentOwnerType2 = "user"
+	CreateDeploymentOwnerType2Team CreateDeploymentOwnerType2 = "team"
 )
 
 func (e CreateDeploymentOwnerType2) ToPointer() *CreateDeploymentOwnerType2 {
@@ -8278,9 +8278,9 @@ func (e *CreateDeploymentOwnerType2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType2(v)
 		return nil
 	default:
@@ -8408,8 +8408,8 @@ func (e *CreateDeploymentGitRepoTypeGitlab) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOwnerType1 string
 
 const (
-	CreateDeploymentOwnerType1Team CreateDeploymentOwnerType1 = "team"
 	CreateDeploymentOwnerType1User CreateDeploymentOwnerType1 = "user"
+	CreateDeploymentOwnerType1Team CreateDeploymentOwnerType1 = "team"
 )
 
 func (e CreateDeploymentOwnerType1) ToPointer() *CreateDeploymentOwnerType1 {
@@ -8421,9 +8421,9 @@ func (e *CreateDeploymentOwnerType1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType1(v)
 		return nil
 	default:

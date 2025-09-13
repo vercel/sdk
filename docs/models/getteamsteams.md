@@ -12,8 +12,8 @@ const value: models.Team = {
   emailDomain: "example.com",
   saml: {
     connection: {
-      type: "OktaSAML",
       status: "linked",
+      type: "OktaSAML",
       state: "active",
       connectedAt: 1611796915677,
       lastReceivedWebhookEvent: 1611796915677,

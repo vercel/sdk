@@ -57,8 +57,8 @@ func testPatchTeamPatchTeam0(w http.ResponseWriter, req *http.Request) {
 		EmailDomain: types.String("example.com"),
 		Saml: &components.TeamSaml{
 			Connection: &components.TeamConnection{
-				Type:                     "OktaSAML",
 				Status:                   "linked",
+				Type:                     "OktaSAML",
 				State:                    "active",
 				ConnectedAt:              1611796915677,
 				LastReceivedWebhookEvent: types.Float64(1611796915677),

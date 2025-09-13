@@ -71,7 +71,7 @@ func testCreateIntegrationStoreDirectCreateIntegrationStoreDirect0(w http.Respon
 			ExternalResourceID: "<id>",
 			Product: operations.CreateIntegrationStoreDirectProduct{
 				Value: operations.CreateIntegrationStoreDirectValue{
-					AtBRANDAt7838: operations.ValueAtBRANDAt7838{},
+					AtBRANDAt7890: operations.ValueAtBRANDAt7890{},
 				},
 			},
 			Secrets: []operations.CreateIntegrationStoreDirectSecret{},

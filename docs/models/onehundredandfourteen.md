@@ -8,17 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndFourteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFourteen = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Jane.Schulist",
-  },
+  previousRole: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `previousRole`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

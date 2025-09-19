@@ -8,6 +8,7 @@ import (
 	"mockserver/internal/handler/assert"
 	"mockserver/internal/logging"
 	"mockserver/internal/sdk/models/operations"
+	"mockserver/internal/sdk/types"
 	"mockserver/internal/sdk/utils"
 	"mockserver/internal/tracking"
 	"net/http"
@@ -45,12 +46,14 @@ func testGetDomainTransferGetDomainTransfer0(w http.ResponseWriter, req *http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetDomainTransferResponseBody = &operations.GetDomainTransferResponseBody{
-		Transferable:   false,
-		TransferPolicy: nil,
-		Reason:         "<value>",
-		Status:         operations.GetDomainTransferStatusPendingAdmin,
-	}
+	var respBody *operations.GetDomainTransferResponseBodyUnion = types.Pointer(operations.CreateGetDomainTransferResponseBodyUnionGetDomainTransferResponseBody(
+		operations.GetDomainTransferResponseBody{
+			Transferable:   false,
+			TransferPolicy: nil,
+			Reason:         "<value>",
+			Status:         operations.GetDomainTransferStatusPendingAdmin,
+		},
+	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
 	if err != nil {

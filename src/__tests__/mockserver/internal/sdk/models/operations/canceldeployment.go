@@ -6784,13 +6784,13 @@ func (o *CancelDeploymentApplications) GetDeploymentHost() *string {
 	return o.DeploymentHost
 }
 
-// CancelDeploymentMfeConfigUploadState - The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+// CancelDeploymentMfeConfigUploadState - The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
 type CancelDeploymentMfeConfigUploadState string
 
 const (
-	CancelDeploymentMfeConfigUploadStateError    CancelDeploymentMfeConfigUploadState = "error"
-	CancelDeploymentMfeConfigUploadStateSuccess  CancelDeploymentMfeConfigUploadState = "success"
-	CancelDeploymentMfeConfigUploadStateNoConfig CancelDeploymentMfeConfigUploadState = "no_config"
+	CancelDeploymentMfeConfigUploadStateSuccess        CancelDeploymentMfeConfigUploadState = "success"
+	CancelDeploymentMfeConfigUploadStateWaitingOnBuild CancelDeploymentMfeConfigUploadState = "waiting_on_build"
+	CancelDeploymentMfeConfigUploadStateNoConfig       CancelDeploymentMfeConfigUploadState = "no_config"
 )
 
 func (e CancelDeploymentMfeConfigUploadState) ToPointer() *CancelDeploymentMfeConfigUploadState {
@@ -6802,9 +6802,9 @@ func (e *CancelDeploymentMfeConfigUploadState) UnmarshalJSON(data []byte) error 
 		return err
 	}
 	switch v {
-	case "error":
-		fallthrough
 	case "success":
+		fallthrough
+	case "waiting_on_build":
 		fallthrough
 	case "no_config":
 		*e = CancelDeploymentMfeConfigUploadState(v)
@@ -6818,7 +6818,7 @@ type CancelDeploymentMicrofrontends2 struct {
 	IsDefaultApp bool `json:"isDefaultApp"`
 	// A map of the other applications that are part of this group. Only defined on the default application. The field is set after deployments have been created, so can be undefined, but should be there for a successful deployment. Note: this field will be removed when MFE alias routing is fully rolled out.
 	Applications map[string]CancelDeploymentApplications `json:"applications,omitempty"`
-	// The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet.
+	// The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create.
 	MfeConfigUploadState *CancelDeploymentMfeConfigUploadState `json:"mfeConfigUploadState,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
 	DefaultAppProjectName string `json:"defaultAppProjectName"`

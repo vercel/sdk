@@ -26,10 +26,6 @@ export type UploadFileRequest = {
    */
   xNowSize?: number | undefined;
   /**
-   * Shared secret token set by v0 deployments. When present and valid, the API applies an extended rate limit.
-   */
-  xInternalV0Token?: string | undefined;
-  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -74,7 +70,6 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
   "x-vercel-digest": z.string().optional(),
   "x-now-digest": z.string().optional(),
   "x-now-size": z.number().optional(),
-  "x-internal-v0-token": z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
   RequestBody: z.union([
@@ -89,7 +84,6 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
     "x-vercel-digest": "xVercelDigest",
     "x-now-digest": "xNowDigest",
     "x-now-size": "xNowSize",
-    "x-internal-v0-token": "xInternalV0Token",
     "RequestBody": "requestBody",
   });
 });
@@ -100,7 +94,6 @@ export type UploadFileRequest$Outbound = {
   "x-vercel-digest"?: string | undefined;
   "x-now-digest"?: string | undefined;
   "x-now-size"?: number | undefined;
-  "x-internal-v0-token"?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody?:
@@ -121,7 +114,6 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   xVercelDigest: z.string().optional(),
   xNowDigest: z.string().optional(),
   xNowSize: z.number().optional(),
-  xInternalV0Token: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
   requestBody: z.union([
@@ -136,7 +128,6 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
     xVercelDigest: "x-vercel-digest",
     xNowDigest: "x-now-digest",
     xNowSize: "x-now-size",
-    xInternalV0Token: "x-internal-v0-token",
     requestBody: "RequestBody",
   });
 });

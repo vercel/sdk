@@ -9,18 +9,18 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type Ownership string
+type ImportResourceOwnership string
 
 const (
-	OwnershipOwned   Ownership = "owned"
-	OwnershipLinked  Ownership = "linked"
-	OwnershipSandbox Ownership = "sandbox"
+	ImportResourceOwnershipOwned   ImportResourceOwnership = "owned"
+	ImportResourceOwnershipLinked  ImportResourceOwnership = "linked"
+	ImportResourceOwnershipSandbox ImportResourceOwnership = "sandbox"
 )
 
-func (e Ownership) ToPointer() *Ownership {
+func (e ImportResourceOwnership) ToPointer() *ImportResourceOwnership {
 	return &e
 }
-func (e *Ownership) UnmarshalJSON(data []byte) error {
+func (e *ImportResourceOwnership) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,10 +31,10 @@ func (e *Ownership) UnmarshalJSON(data []byte) error {
 	case "linked":
 		fallthrough
 	case "sandbox":
-		*e = Ownership(v)
+		*e = ImportResourceOwnership(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Ownership: %v", v)
+		return fmt.Errorf("invalid value for ImportResourceOwnership: %v", v)
 	}
 }
 
@@ -366,7 +366,7 @@ func (o *ImportResourceSecret) GetEnvironmentOverrides() *ImportResourceEnvironm
 }
 
 type ImportResourceRequestBody struct {
-	Ownership    *Ownership                  `json:"ownership,omitempty"`
+	Ownership    *ImportResourceOwnership    `json:"ownership,omitempty"`
 	ProductID    string                      `json:"productId"`
 	Name         string                      `json:"name"`
 	Status       ImportResourceStatus        `json:"status"`
@@ -377,7 +377,7 @@ type ImportResourceRequestBody struct {
 	Secrets      []ImportResourceSecret      `json:"secrets,omitempty"`
 }
 
-func (o *ImportResourceRequestBody) GetOwnership() *Ownership {
+func (o *ImportResourceRequestBody) GetOwnership() *ImportResourceOwnership {
 	if o == nil {
 		return nil
 	}

@@ -8,12 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndSixteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixteen = {
-  enforced: true,
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Gracie_Ledner",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `entitlement`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `user`                                                                 | [models.UserEventPayload116User](../models/usereventpayload116user.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousCanceledAt`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |

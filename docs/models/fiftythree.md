@@ -11,6 +11,8 @@ let value: FiftyThree = {
   sha: "<value>",
   gitUserPlatform: "<value>",
   projectName: "<value>",
+  gitCommitterName: "<value>",
+  source: "<value>",
 };
 ```
 
@@ -21,3 +23,5 @@ let value: FiftyThree = {
 | `sha`              | *string*           | :heavy_check_mark: | N/A                |
 | `gitUserPlatform`  | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitCommitterName` | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

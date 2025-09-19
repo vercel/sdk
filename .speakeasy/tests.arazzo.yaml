@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@7838": {}
+                      "__@BRAND@7820": {}
                     }
                   },
                   "secrets": []

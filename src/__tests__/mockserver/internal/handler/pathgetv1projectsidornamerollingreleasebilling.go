@@ -46,12 +46,11 @@ func testGetRollingReleaseBillingStatusGetRollingReleaseBillingStatus0(w http.Re
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetRollingReleaseBillingStatusResponseBody = types.Pointer(operations.CreateGetRollingReleaseBillingStatusResponseBodyNoAvailableSlots(
-		operations.NoAvailableSlots{
-			AvailableSlots:  9255.97,
-			Reason:          operations.ReasonNoAvailableSlotsNoAvailableSlots,
-			Message:         "<value>",
-			EnabledProjects: []string{},
+	var respBody *operations.GetRollingReleaseBillingStatusResponseBody = types.Pointer(operations.CreateGetRollingReleaseBillingStatusResponseBodyUnlimitedSlots(
+		operations.UnlimitedSlots{
+			AvailableSlots: operations.AvailableSlotsEnumUnlimited,
+			Reason:         operations.ReasonUnlimitedSlotsUnlimitedSlots,
+			Message:        "<value>",
 		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

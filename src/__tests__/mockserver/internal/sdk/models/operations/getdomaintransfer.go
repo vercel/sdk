@@ -4,8 +4,10 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type GetDomainTransferRequest struct {
@@ -41,11 +43,11 @@ func (o *GetDomainTransferRequest) GetDomain() string {
 type TransferPolicy string
 
 const (
-	TransferPolicyChargeAndRenew   TransferPolicy = "charge-and-renew"
-	TransferPolicyNoChargeNoChange TransferPolicy = "no-charge-no-change"
-	TransferPolicyNoChange         TransferPolicy = "no-change"
-	TransferPolicyNewTerm          TransferPolicy = "new-term"
-	TransferPolicyNotSupported     TransferPolicy = "not-supported"
+	TransferPolicyChargeAndRenewValue TransferPolicy = "charge-and-renew"
+	TransferPolicyNoChargeNoChange    TransferPolicy = "no-charge-no-change"
+	TransferPolicyNoChange            TransferPolicy = "no-change"
+	TransferPolicyNewTerm             TransferPolicy = "new-term"
+	TransferPolicyNotSupported        TransferPolicy = "not-supported"
 )
 
 func (e TransferPolicy) ToPointer() *TransferPolicy {
@@ -77,12 +79,12 @@ func (e *TransferPolicy) UnmarshalJSON(data []byte) error {
 type GetDomainTransferStatus string
 
 const (
+	GetDomainTransferStatusCompleted       GetDomainTransferStatus = "completed"
+	GetDomainTransferStatusUndef           GetDomainTransferStatus = "undef"
 	GetDomainTransferStatusPendingOwner    GetDomainTransferStatus = "pending_owner"
 	GetDomainTransferStatusPendingAdmin    GetDomainTransferStatus = "pending_admin"
 	GetDomainTransferStatusPendingRegistry GetDomainTransferStatus = "pending_registry"
-	GetDomainTransferStatusCompleted       GetDomainTransferStatus = "completed"
 	GetDomainTransferStatusCancelled       GetDomainTransferStatus = "cancelled"
-	GetDomainTransferStatusUndef           GetDomainTransferStatus = "undef"
 	GetDomainTransferStatusUnknown         GetDomainTransferStatus = "unknown"
 )
 
@@ -95,17 +97,17 @@ func (e *GetDomainTransferStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "completed":
+		fallthrough
+	case "undef":
+		fallthrough
 	case "pending_owner":
 		fallthrough
 	case "pending_admin":
 		fallthrough
 	case "pending_registry":
 		fallthrough
-	case "completed":
-		fallthrough
 	case "cancelled":
-		fallthrough
-	case "undef":
 		fallthrough
 	case "unknown":
 		*e = GetDomainTransferStatus(v)
@@ -124,6 +126,17 @@ type GetDomainTransferResponseBody struct {
 	Reason string `json:"reason"`
 	// The current state of an ongoing transfer. `pending_owner`: Awaiting approval by domain's admin contact (every transfer begins with this status). If approval is not given within five days, the transfer is cancelled. `pending_admin`: Waiting for approval by Vercel Registrar admin. `pending_registry`: Awaiting registry approval (the transfer completes after 7 days unless it is declined by the current registrar). `completed`: The transfer completed successfully. `cancelled`: The transfer was cancelled. `undef`: No transfer exists for this domain. `unknown`: This TLD is not supported by Vercel's Registrar.
 	Status GetDomainTransferStatus `json:"status"`
+}
+
+func (g GetDomainTransferResponseBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDomainTransferResponseBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"transferable", "transferPolicy", "reason", "status"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDomainTransferResponseBody) GetTransferable() bool {
@@ -154,9 +167,141 @@ func (o *GetDomainTransferResponseBody) GetStatus() GetDomainTransferStatus {
 	return o.Status
 }
 
+type TransferPolicyChargeAndRenew string
+
+const (
+	TransferPolicyChargeAndRenewChargeAndRenew TransferPolicyChargeAndRenew = "charge-and-renew"
+)
+
+func (e TransferPolicyChargeAndRenew) ToPointer() *TransferPolicyChargeAndRenew {
+	return &e
+}
+func (e *TransferPolicyChargeAndRenew) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "charge-and-renew":
+		*e = TransferPolicyChargeAndRenew(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TransferPolicyChargeAndRenew: %v", v)
+	}
+}
+
+type ChargeAndRenew struct {
+	Reason         string                       `json:"reason"`
+	Status         string                       `json:"status"`
+	Transferable   bool                         `json:"transferable"`
+	TransferPolicy TransferPolicyChargeAndRenew `json:"transferPolicy"`
+}
+
+func (c ChargeAndRenew) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChargeAndRenew) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"reason", "status", "transferable", "transferPolicy"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ChargeAndRenew) GetReason() string {
+	if o == nil {
+		return ""
+	}
+	return o.Reason
+}
+
+func (o *ChargeAndRenew) GetStatus() string {
+	if o == nil {
+		return ""
+	}
+	return o.Status
+}
+
+func (o *ChargeAndRenew) GetTransferable() bool {
+	if o == nil {
+		return false
+	}
+	return o.Transferable
+}
+
+func (o *ChargeAndRenew) GetTransferPolicy() TransferPolicyChargeAndRenew {
+	if o == nil {
+		return TransferPolicyChargeAndRenew("")
+	}
+	return o.TransferPolicy
+}
+
+type GetDomainTransferResponseBodyUnionType string
+
+const (
+	GetDomainTransferResponseBodyUnionTypeChargeAndRenew                GetDomainTransferResponseBodyUnionType = "ChargeAndRenew"
+	GetDomainTransferResponseBodyUnionTypeGetDomainTransferResponseBody GetDomainTransferResponseBodyUnionType = "getDomainTransfer_ResponseBody"
+)
+
+type GetDomainTransferResponseBodyUnion struct {
+	ChargeAndRenew                *ChargeAndRenew                `queryParam:"inline"`
+	GetDomainTransferResponseBody *GetDomainTransferResponseBody `queryParam:"inline"`
+
+	Type GetDomainTransferResponseBodyUnionType
+}
+
+func CreateGetDomainTransferResponseBodyUnionChargeAndRenew(chargeAndRenew ChargeAndRenew) GetDomainTransferResponseBodyUnion {
+	typ := GetDomainTransferResponseBodyUnionTypeChargeAndRenew
+
+	return GetDomainTransferResponseBodyUnion{
+		ChargeAndRenew: &chargeAndRenew,
+		Type:           typ,
+	}
+}
+
+func CreateGetDomainTransferResponseBodyUnionGetDomainTransferResponseBody(getDomainTransferResponseBody GetDomainTransferResponseBody) GetDomainTransferResponseBodyUnion {
+	typ := GetDomainTransferResponseBodyUnionTypeGetDomainTransferResponseBody
+
+	return GetDomainTransferResponseBodyUnion{
+		GetDomainTransferResponseBody: &getDomainTransferResponseBody,
+		Type:                          typ,
+	}
+}
+
+func (u *GetDomainTransferResponseBodyUnion) UnmarshalJSON(data []byte) error {
+
+	var chargeAndRenew ChargeAndRenew = ChargeAndRenew{}
+	if err := utils.UnmarshalJSON(data, &chargeAndRenew, "", true, nil); err == nil {
+		u.ChargeAndRenew = &chargeAndRenew
+		u.Type = GetDomainTransferResponseBodyUnionTypeChargeAndRenew
+		return nil
+	}
+
+	var getDomainTransferResponseBody GetDomainTransferResponseBody = GetDomainTransferResponseBody{}
+	if err := utils.UnmarshalJSON(data, &getDomainTransferResponseBody, "", true, nil); err == nil {
+		u.GetDomainTransferResponseBody = &getDomainTransferResponseBody
+		u.Type = GetDomainTransferResponseBodyUnionTypeGetDomainTransferResponseBody
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainTransferResponseBodyUnion", string(data))
+}
+
+func (u GetDomainTransferResponseBodyUnion) MarshalJSON() ([]byte, error) {
+	if u.ChargeAndRenew != nil {
+		return utils.MarshalJSON(u.ChargeAndRenew, "", true)
+	}
+
+	if u.GetDomainTransferResponseBody != nil {
+		return utils.MarshalJSON(u.GetDomainTransferResponseBody, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDomainTransferResponseBodyUnion: all fields are null")
+}
+
 type GetDomainTransferResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	Object   *GetDomainTransferResponseBody
+	OneOf    *GetDomainTransferResponseBodyUnion
 }
 
 func (o *GetDomainTransferResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -166,9 +311,9 @@ func (o *GetDomainTransferResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetDomainTransferResponse) GetObject() *GetDomainTransferResponseBody {
+func (o *GetDomainTransferResponse) GetOneOf() *GetDomainTransferResponseBodyUnion {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.OneOf
 }

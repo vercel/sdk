@@ -6800,12 +6800,6 @@
                           },
                           "type": "array"
                         },
-                        "traceDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "Monitoring": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -12072,11 +12066,11 @@
                                 "mfeConfigUploadState": {
                                   "type": "string",
                                   "enum": [
-                                    "error",
                                     "success",
+                                    "waiting_on_build",
                                     "no_config"
                                   ],
-                                  "description": "The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet."
+                                  "description": "The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create."
                                 },
                                 "defaultAppProjectName": {
                                   "type": "string",
@@ -13655,11 +13649,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
+                            "error",
+                            "timeout",
                             "skipped",
                             "pending",
-                            "ready",
-                            "error",
-                            "timeout"
+                            "ready"
                           ]
                         },
                         "startedAt": {
@@ -13838,18 +13832,18 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
                           },
+                          "readyStateAt": {
+                            "type": "number"
+                          },
                           "entrypoint": {
                             "nullable": true,
                             "type": "string"
-                          },
-                          "readyStateAt": {
-                            "type": "number"
                           },
                           "output": {
                             "items": {
@@ -14908,15 +14902,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -15408,8 +15402,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "append",
                                         "set",
+                                        "append",
                                         "delete"
                                       ]
                                     },
@@ -15539,12 +15533,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "error",
                                   "filesystem",
+                                  "error",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -15715,11 +15709,11 @@
                             "mfeConfigUploadState": {
                               "type": "string",
                               "enum": [
-                                "error",
                                 "success",
+                                "waiting_on_build",
                                 "no_config"
                               ],
-                              "description": "The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet."
+                              "description": "The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create."
                             },
                             "defaultAppProjectName": {
                               "type": "string",
@@ -15859,8 +15853,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15912,8 +15906,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15966,8 +15960,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -19040,11 +19034,11 @@
                             "mfeConfigUploadState": {
                               "type": "string",
                               "enum": [
-                                "error",
                                 "success",
+                                "waiting_on_build",
                                 "no_config"
                               ],
-                              "description": "The result of the microfrontends config upload during deployment creation. Only set for default app deployments. - `success` - The config was uploaded successfully. - `error` - The config upload failed. - `no_config` - No config was found to upload. - `undefined` - The config upload has not been attempted yet."
+                              "description": "The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create."
                             },
                             "defaultAppProjectName": {
                               "type": "string",
@@ -21064,48 +21058,78 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "transferable": {
-                      "type": "boolean",
-                      "description": "Whether or not the domain is transferable"
-                    },
-                    "transferPolicy": {
-                      "nullable": true,
-                      "type": "string",
-                      "enum": [
-                        "charge-and-renew",
-                        "no-charge-no-change",
-                        "no-change",
-                        "new-term",
-                        "not-supported"
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "transferable": {
+                          "type": "boolean"
+                        },
+                        "transferPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "charge-and-renew"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "reason",
+                        "status",
+                        "transferable",
+                        "transferPolicy"
                       ],
-                      "description": "The domain's transfer policy (depends on TLD requirements). `charge-and-renew`: transfer will charge for renewal and will renew the existing domain's registration. `no-charge-no-change`: transfer will have no change to registration period and does not require charge. `no-change`: transfer charge is required, but no change in registration period. `new-term`: transfer charge is required and a new registry term is set based on the transfer date. `not-supported`: transfers are not supported for this domain or TLD. `null`: This TLD is not supported by Vercel's Registrar."
+                      "type": "object"
                     },
-                    "reason": {
-                      "type": "string",
-                      "description": "Description associated with transferable state."
-                    },
-                    "status": {
-                      "type": "string",
-                      "enum": [
-                        "pending_owner",
-                        "pending_admin",
-                        "pending_registry",
-                        "completed",
-                        "cancelled",
-                        "undef",
-                        "unknown"
+                    {
+                      "properties": {
+                        "transferable": {
+                          "type": "boolean",
+                          "description": "Whether or not the domain is transferable"
+                        },
+                        "transferPolicy": {
+                          "nullable": true,
+                          "type": "string",
+                          "enum": [
+                            "charge-and-renew",
+                            "no-charge-no-change",
+                            "no-change",
+                            "new-term",
+                            "not-supported"
+                          ],
+                          "description": "The domain's transfer policy (depends on TLD requirements). `charge-and-renew`: transfer will charge for renewal and will renew the existing domain's registration. `no-charge-no-change`: transfer will have no change to registration period and does not require charge. `no-change`: transfer charge is required, but no change in registration period. `new-term`: transfer charge is required and a new registry term is set based on the transfer date. `not-supported`: transfers are not supported for this domain or TLD. `null`: This TLD is not supported by Vercel's Registrar."
+                        },
+                        "reason": {
+                          "type": "string",
+                          "description": "Description associated with transferable state."
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "completed",
+                            "undef",
+                            "pending_owner",
+                            "pending_admin",
+                            "pending_registry",
+                            "cancelled",
+                            "unknown"
+                          ],
+                          "description": "The current state of an ongoing transfer. `pending_owner`: Awaiting approval by domain's admin contact (every transfer begins with this status). If approval is not given within five days, the transfer is cancelled. `pending_admin`: Waiting for approval by Vercel Registrar admin. `pending_registry`: Awaiting registry approval (the transfer completes after 7 days unless it is declined by the current registrar). `completed`: The transfer completed successfully. `cancelled`: The transfer was cancelled. `undef`: No transfer exists for this domain. `unknown`: This TLD is not supported by Vercel's Registrar."
+                        }
+                      },
+                      "required": [
+                        "transferable",
+                        "transferPolicy",
+                        "reason",
+                        "status"
                       ],
-                      "description": "The current state of an ongoing transfer. `pending_owner`: Awaiting approval by domain's admin contact (every transfer begins with this status). If approval is not given within five days, the transfer is cancelled. `pending_admin`: Waiting for approval by Vercel Registrar admin. `pending_registry`: Awaiting registry approval (the transfer completes after 7 days unless it is declined by the current registrar). `completed`: The transfer completed successfully. `cancelled`: The transfer was cancelled. `undef`: No transfer exists for this domain. `unknown`: This TLD is not supported by Vercel's Registrar."
+                      "type": "object"
                     }
-                  },
-                  "required": [
-                    "transferable",
-                    "transferPolicy",
-                    "reason",
-                    "status"
-                  ],
-                  "type": "object"
+                  ]
                 }
               }
             }
@@ -21132,6 +21156,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -27617,6 +27644,9 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": ""
           }
         },
         "parameters": [
@@ -29252,34 +29282,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "default": {
@@ -29962,34 +29992,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "default": {
@@ -30147,34 +30177,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@513164": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@513164"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@513164": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@513164"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@513164": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@513164"
                                               ]
                                             },
                                             "default": {
@@ -30485,12 +30515,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@510349": {
+                                                  "__@BRAND@513164": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@510349"
+                                                  "__@BRAND@513164"
                                                 ]
                                               },
                                               {
@@ -30498,12 +30528,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@510349": {
+                                                      "__@BRAND@513164": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@510349"
+                                                      "__@BRAND@513164"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30572,34 +30602,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "default": {
@@ -30757,34 +30787,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@513164": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@513164"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@513164": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@513164"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@510349": {
+                                                "__@BRAND@513164": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@510349"
+                                                "__@BRAND@513164"
                                               ]
                                             },
                                             "default": {
@@ -30873,12 +30903,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@510349": {
+                                                  "__@BRAND@513164": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@510349"
+                                                  "__@BRAND@513164"
                                                 ]
                                               },
                                               {
@@ -30886,12 +30916,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@510349": {
+                                                      "__@BRAND@513164": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@510349"
+                                                      "__@BRAND@513164"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31077,12 +31107,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@510349": {
+                                              "__@BRAND@513164": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@510349"
+                                              "__@BRAND@513164"
                                             ]
                                           },
                                           "type": "array"
@@ -31091,12 +31121,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@510349": {
+                                              "__@BRAND@513164": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@510349"
+                                              "__@BRAND@513164"
                                             ]
                                           },
                                           "type": "array"
@@ -31115,12 +31145,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@510349": {
+                                            "__@BRAND@513164": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@510349"
+                                            "__@BRAND@513164"
                                           ]
                                         },
                                         "disabled": {
@@ -36341,12 +36371,6 @@
                                 },
                                 "type": "array"
                               },
-                              "traceDrain": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
                               "Monitoring": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -38318,10 +38342,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -39324,17 +39348,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
-                              "type": "number"
-                            },
                             "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
+                            },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -39342,6 +39366,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -39374,9 +39401,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -39768,9 +39792,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -39792,6 +39813,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -39889,9 +39913,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -39913,6 +39934,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -39959,8 +39983,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -40297,408 +40321,6 @@
                     },
                     "permissions": {
                       "properties": {
-                        "aliasProject": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "aliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "buildMachine": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "productionAliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "connectConfigurationLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "dataCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deployment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentBuildLogs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckReRunFromProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentProductionGit": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPrivate": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPromote": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentRollback": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "edgeCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "environments": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logsPreset": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "passwordProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "optionsAllowlist": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "job": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "observabilityData": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandBuild": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandConcurrency": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "project": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFromV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAccessGroup": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsSampling": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheckRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentHook": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainMove": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainCheckConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVars": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsProduction": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsUnownedByIntegration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFlags": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectId": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectIntegrationConfiguration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMember": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMonitoring": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectPermissions": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransfer": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransferOut": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCase": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCaseComment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentExpiration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectRollingRelease": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTier": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectOIDCToken": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "seawallConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "skewProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "analytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "trustedIps": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "v0Chat": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "webAnalytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sharedEnvVarConnection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sonar": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
                         "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -41090,12 +40712,6 @@
                           "type": "array"
                         },
                         "logDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "traceDrain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -41580,6 +41196,408 @@
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
+                        },
+                        "aliasProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "productionAliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectConfigurationLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "dataCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deployment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckReRunFromProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentProductionGit": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPrivate": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPromote": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentRollback": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "edgeCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "environments": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logsPreset": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "passwordProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "optionsAllowlist": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "job": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "project": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFromV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAccessGroup": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsSampling": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheckRun": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentHook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainCheckConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVars": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsProduction": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsUnownedByIntegration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectId": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectIntegrationConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMember": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMonitoring": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectPermissions": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransfer": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransferOut": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCase": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCaseComment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentExpiration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectRollingRelease": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTier": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "seawallConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "skewProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "analytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "webAnalytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sharedEnvVarConnection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sonar": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
                         }
                       },
                       "type": "object"
@@ -41701,11 +41719,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -41745,11 +41763,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -45692,12 +45710,6 @@
                           "type": "array"
                         },
                         "logDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "traceDrain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -50709,12 +50721,6 @@
                           "type": "array"
                         },
                         "logDrain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "traceDrain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -68575,6 +68581,14 @@
                             "uninstalled"
                           ]
                         },
+                        "ownership": {
+                          "type": "string",
+                          "enum": [
+                            "owned",
+                            "linked",
+                            "sandbox"
+                          ]
+                        },
                         "metadata": {
                           "additionalProperties": {
                             "oneOf": [
@@ -68669,34 +68683,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "description": {
@@ -69379,34 +69393,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "description": {
@@ -69555,34 +69569,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7838": {
+                                                  "__@BRAND@7820": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7838"
+                                                  "__@BRAND@7820"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7838": {
+                                                  "__@BRAND@7820": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7838"
+                                                  "__@BRAND@7820"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7838": {
+                                                  "__@BRAND@7820": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7838"
+                                                  "__@BRAND@7820"
                                                 ]
                                               },
                                               "default": {
@@ -69899,12 +69913,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@7838": {
+                                                    "__@BRAND@7820": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@7838"
+                                                    "__@BRAND@7820"
                                                   ]
                                                 },
                                                 {
@@ -69912,12 +69926,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@7838": {
+                                                        "__@BRAND@7820": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@7838"
+                                                        "__@BRAND@7820"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -69989,34 +70003,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "description": {
@@ -70148,12 +70162,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7838": {
+                                              "__@BRAND@7820": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7838"
+                                              "__@BRAND@7820"
                                             ]
                                           },
                                           "disabled": {
@@ -70255,8 +70269,8 @@
                                   "redis",
                                   "postgres",
                                   "blob",
-                                  "checks",
                                   "experimentation",
+                                  "checks",
                                   "storage",
                                   "ai",
                                   "observability",
@@ -70313,8 +70327,7 @@
                                   "read-write:integration-deployment-action",
                                   "read-write:log-drain",
                                   "read-write:project-env-vars",
-                                  "read-write:project-protection-bypass",
-                                  "read-write:trace-drain"
+                                  "read-write:project-protection-bypass"
                                 ]
                               },
                               "type": "array"
@@ -70401,12 +70414,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@7838": {
+                                "__@BRAND@7820": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@7838"
+                                "__@BRAND@7820"
                               ]
                             },
                             "disabled": {
@@ -72743,6 +72756,8 @@
                         "example": "1y",
                         "type": "string",
                         "enum": [
+                          "3y",
+                          "2y",
                           "1y",
                           "6m",
                           "3m",
@@ -72759,6 +72774,8 @@
                         "example": "1y",
                         "type": "string",
                         "enum": [
+                          "3y",
+                          "2y",
                           "1y",
                           "6m",
                           "3m",
@@ -73395,15 +73412,6 @@
               "description": "The file size as an alternative to `Content-Length`"
             },
             "name": "x-now-size"
-          },
-          {
-            "in": "header",
-            "description": "Shared secret token set by v0 deployments. When present and valid, the API applies an extended rate limit.",
-            "schema": {
-              "type": "string",
-              "description": "Shared secret token set by v0 deployments. When present and valid, the API applies an extended rate limit."
-            },
-            "name": "x-internal-v0-token"
           },
           {
             "description": "The Team identifier to perform the request on behalf of.",
@@ -80403,12 +80411,20 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "gitCommitterName": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string"
                   }
                 },
                 "required": [
                   "sha",
                   "gitUserPlatform",
-                  "projectName"
+                  "projectName",
+                  "gitCommitterName",
+                  "source"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -84820,10 +84836,100 @@
               },
               {
                 "properties": {
-                  "webhookUrl": {
-                    "type": "string"
+                  "budget": {
+                    "properties": {
+                      "budgetItem": {
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "fixed"
+                            ],
+                            "description": "The budget type"
+                          },
+                          "fixedBudget": {
+                            "type": "number",
+                            "description": "Budget amount (USD / dollars)"
+                          },
+                          "previousSpend": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "type": "array",
+                            "description": "Array of the last 3 months of spend data"
+                          },
+                          "notifiedAt": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "type": "array",
+                            "description": "Array of 50, 75, 100 to keep track of notifications sent out"
+                          },
+                          "webhookId": {
+                            "type": "string",
+                            "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
+                          },
+                          "webhookNotified": {
+                            "type": "boolean",
+                            "description": "Keep track if the webhook has been called for the month"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Date time when budget is created"
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Date time when budget is updated last"
+                          },
+                          "isActive": {
+                            "type": "boolean",
+                            "description": "Is the budget currently active for a customer"
+                          },
+                          "pauseProjects": {
+                            "type": "boolean",
+                            "description": "Should all projects be paused if budget is exceeded"
+                          },
+                          "pricingPlan": {
+                            "type": "string",
+                            "enum": [
+                              "plus",
+                              "legacy",
+                              "unbundled"
+                            ],
+                            "description": "The acive pricing plan the team is billed with"
+                          },
+                          "teamId": {
+                            "type": "string",
+                            "description": "Partition key"
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "Sort key that needs to be unique per teamId"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "fixedBudget",
+                          "previousSpend",
+                          "notifiedAt",
+                          "createdAt",
+                          "isActive",
+                          "teamId",
+                          "id"
+                        ],
+                        "type": "object",
+                        "description": "Represents a budget for tracking and notifying teams on their spending."
+                      }
+                    },
+                    "required": [
+                      "budgetItem"
+                    ],
+                    "type": "object"
                   }
                 },
+                "required": [
+                  "budget"
+                ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -84922,98 +85028,102 @@
                 "properties": {
                   "budget": {
                     "properties": {
-                      "budgetItem": {
-                        "properties": {
-                          "type": {
-                            "type": "string",
-                            "enum": [
-                              "fixed"
-                            ],
-                            "description": "The budget type"
-                          },
-                          "fixedBudget": {
-                            "type": "number",
-                            "description": "Budget amount (USD / dollars)"
-                          },
-                          "previousSpend": {
-                            "items": {
-                              "type": "number"
-                            },
-                            "type": "array",
-                            "description": "Array of the last 3 months of spend data"
-                          },
-                          "notifiedAt": {
-                            "items": {
-                              "type": "number"
-                            },
-                            "type": "array",
-                            "description": "Array of 50, 75, 100 to keep track of notifications sent out"
-                          },
-                          "webhookId": {
-                            "type": "string",
-                            "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
-                          },
-                          "webhookNotified": {
-                            "type": "boolean",
-                            "description": "Keep track if the webhook has been called for the month"
-                          },
-                          "createdAt": {
-                            "type": "number",
-                            "description": "Date time when budget is created"
-                          },
-                          "updatedAt": {
-                            "type": "number",
-                            "description": "Date time when budget is updated last"
-                          },
-                          "isActive": {
-                            "type": "boolean",
-                            "description": "Is the budget currently active for a customer"
-                          },
-                          "pauseProjects": {
-                            "type": "boolean",
-                            "description": "Should all projects be paused if budget is exceeded"
-                          },
-                          "pricingPlan": {
-                            "type": "string",
-                            "enum": [
-                              "plus",
-                              "legacy",
-                              "unbundled"
-                            ],
-                            "description": "The acive pricing plan the team is billed with"
-                          },
-                          "teamId": {
-                            "type": "string",
-                            "description": "Partition key"
-                          },
-                          "id": {
-                            "type": "string",
-                            "description": "Sort key that needs to be unique per teamId"
-                          }
-                        },
-                        "required": [
-                          "type",
-                          "fixedBudget",
-                          "previousSpend",
-                          "notifiedAt",
-                          "createdAt",
-                          "isActive",
-                          "teamId",
-                          "id"
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "fixed"
                         ],
-                        "type": "object",
-                        "description": "Represents a budget for tracking and notifying teams on their spending."
+                        "description": "The budget type"
+                      },
+                      "fixedBudget": {
+                        "type": "number",
+                        "description": "Budget amount (USD / dollars)"
+                      },
+                      "previousSpend": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of the last 3 months of spend data"
+                      },
+                      "notifiedAt": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array",
+                        "description": "Array of 50, 75, 100 to keep track of notifications sent out"
+                      },
+                      "webhookId": {
+                        "type": "string",
+                        "description": "Webhook id that corresponds to a webhook in Cosmos webhook collection"
+                      },
+                      "webhookNotified": {
+                        "type": "boolean",
+                        "description": "Keep track if the webhook has been called for the month"
+                      },
+                      "createdAt": {
+                        "type": "number",
+                        "description": "Date time when budget is created"
+                      },
+                      "updatedAt": {
+                        "type": "number",
+                        "description": "Date time when budget is updated last"
+                      },
+                      "isActive": {
+                        "type": "boolean",
+                        "description": "Is the budget currently active for a customer"
+                      },
+                      "pauseProjects": {
+                        "type": "boolean",
+                        "description": "Should all projects be paused if budget is exceeded"
+                      },
+                      "pricingPlan": {
+                        "type": "string",
+                        "enum": [
+                          "plus",
+                          "legacy",
+                          "unbundled"
+                        ],
+                        "description": "The acive pricing plan the team is billed with"
+                      },
+                      "teamId": {
+                        "type": "string",
+                        "description": "Partition key"
+                      },
+                      "id": {
+                        "type": "string",
+                        "description": "Sort key that needs to be unique per teamId"
                       }
                     },
                     "required": [
-                      "budgetItem"
+                      "type",
+                      "fixedBudget",
+                      "previousSpend",
+                      "notifiedAt",
+                      "createdAt",
+                      "isActive",
+                      "teamId",
+                      "id"
                     ],
-                    "type": "object"
+                    "type": "object",
+                    "description": "Represents a budget for tracking and notifying teams on their spending."
+                  },
+                  "webhookUrl": {
+                    "type": "string"
                   }
                 },
                 "required": [
                   "budget"
                 ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "webhookUrl": {
+                    "type": "string"
+                  }
+                },
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },

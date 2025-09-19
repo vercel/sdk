@@ -5550,7 +5550,6 @@ type GetProjectsPermissions struct {
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
 	Drain                                    []components.ACLAction `json:"drain,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
-	TraceDrain                               []components.ACLAction `json:"traceDrain,omitempty"`
 	Monitoring                               []components.ACLAction `json:"Monitoring,omitempty"`
 	MonitoringSettings                       []components.ACLAction `json:"monitoringSettings,omitempty"`
 	MonitoringQuery                          []components.ACLAction `json:"monitoringQuery,omitempty"`
@@ -6562,13 +6561,6 @@ func (o *GetProjectsPermissions) GetLogDrain() []components.ACLAction {
 		return nil
 	}
 	return o.LogDrain
-}
-
-func (o *GetProjectsPermissions) GetTraceDrain() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.TraceDrain
 }
 
 func (o *GetProjectsPermissions) GetMonitoring() []components.ACLAction {

@@ -7,7 +7,7 @@ import { CreateIntegrationStoreDirectUiOptions3 } from "@vercel/sdk/models/creat
 
 let value: CreateIntegrationStoreDirectUiOptions3 = {
   value: {
-    atBRANDAt7838: {},
+    atBRANDAt7820: {},
   },
 };
 ```

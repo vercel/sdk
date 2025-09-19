@@ -23,7 +23,7 @@ export type GetDomainTransferRequest = {
 /**
  * The domain's transfer policy (depends on TLD requirements). `charge-and-renew`: transfer will charge for renewal and will renew the existing domain's registration. `no-charge-no-change`: transfer will have no change to registration period and does not require charge. `no-change`: transfer charge is required, but no change in registration period. `new-term`: transfer charge is required and a new registry term is set based on the transfer date. `not-supported`: transfers are not supported for this domain or TLD. `null`: This TLD is not supported by Vercel's Registrar.
  */
-export const TransferPolicy = {
+export const ResponseBodyTransferPolicy = {
   ChargeAndRenew: "charge-and-renew",
   NoChargeNoChange: "no-charge-no-change",
   NoChange: "no-change",
@@ -33,28 +33,30 @@ export const TransferPolicy = {
 /**
  * The domain's transfer policy (depends on TLD requirements). `charge-and-renew`: transfer will charge for renewal and will renew the existing domain's registration. `no-charge-no-change`: transfer will have no change to registration period and does not require charge. `no-change`: transfer charge is required, but no change in registration period. `new-term`: transfer charge is required and a new registry term is set based on the transfer date. `not-supported`: transfers are not supported for this domain or TLD. `null`: This TLD is not supported by Vercel's Registrar.
  */
-export type TransferPolicy = ClosedEnum<typeof TransferPolicy>;
+export type ResponseBodyTransferPolicy = ClosedEnum<
+  typeof ResponseBodyTransferPolicy
+>;
 
 /**
  * The current state of an ongoing transfer. `pending_owner`: Awaiting approval by domain's admin contact (every transfer begins with this status). If approval is not given within five days, the transfer is cancelled. `pending_admin`: Waiting for approval by Vercel Registrar admin. `pending_registry`: Awaiting registry approval (the transfer completes after 7 days unless it is declined by the current registrar). `completed`: The transfer completed successfully. `cancelled`: The transfer was cancelled. `undef`: No transfer exists for this domain. `unknown`: This TLD is not supported by Vercel's Registrar.
  */
-export const GetDomainTransferStatus = {
+export const GetDomainTransferResponseBodyStatus = {
+  Completed: "completed",
+  Undef: "undef",
   PendingOwner: "pending_owner",
   PendingAdmin: "pending_admin",
   PendingRegistry: "pending_registry",
-  Completed: "completed",
   Cancelled: "cancelled",
-  Undef: "undef",
   Unknown: "unknown",
 } as const;
 /**
  * The current state of an ongoing transfer. `pending_owner`: Awaiting approval by domain's admin contact (every transfer begins with this status). If approval is not given within five days, the transfer is cancelled. `pending_admin`: Waiting for approval by Vercel Registrar admin. `pending_registry`: Awaiting registry approval (the transfer completes after 7 days unless it is declined by the current registrar). `completed`: The transfer completed successfully. `cancelled`: The transfer was cancelled. `undef`: No transfer exists for this domain. `unknown`: This TLD is not supported by Vercel's Registrar.
  */
-export type GetDomainTransferStatus = ClosedEnum<
-  typeof GetDomainTransferStatus
+export type GetDomainTransferResponseBodyStatus = ClosedEnum<
+  typeof GetDomainTransferResponseBodyStatus
 >;
 
-export type GetDomainTransferResponseBody = {
+export type GetDomainTransferResponseBody2 = {
   /**
    * Whether or not the domain is transferable
    */
@@ -62,7 +64,7 @@ export type GetDomainTransferResponseBody = {
   /**
    * The domain's transfer policy (depends on TLD requirements). `charge-and-renew`: transfer will charge for renewal and will renew the existing domain's registration. `no-charge-no-change`: transfer will have no change to registration period and does not require charge. `no-change`: transfer charge is required, but no change in registration period. `new-term`: transfer charge is required and a new registry term is set based on the transfer date. `not-supported`: transfers are not supported for this domain or TLD. `null`: This TLD is not supported by Vercel's Registrar.
    */
-  transferPolicy: TransferPolicy | null;
+  transferPolicy: ResponseBodyTransferPolicy | null;
   /**
    * Description associated with transferable state.
    */
@@ -70,8 +72,24 @@ export type GetDomainTransferResponseBody = {
   /**
    * The current state of an ongoing transfer. `pending_owner`: Awaiting approval by domain's admin contact (every transfer begins with this status). If approval is not given within five days, the transfer is cancelled. `pending_admin`: Waiting for approval by Vercel Registrar admin. `pending_registry`: Awaiting registry approval (the transfer completes after 7 days unless it is declined by the current registrar). `completed`: The transfer completed successfully. `cancelled`: The transfer was cancelled. `undef`: No transfer exists for this domain. `unknown`: This TLD is not supported by Vercel's Registrar.
    */
-  status: GetDomainTransferStatus;
+  status: GetDomainTransferResponseBodyStatus;
 };
+
+export const TransferPolicy = {
+  ChargeAndRenew: "charge-and-renew",
+} as const;
+export type TransferPolicy = ClosedEnum<typeof TransferPolicy>;
+
+export type GetDomainTransferResponseBody1 = {
+  reason: string;
+  status: string;
+  transferable: boolean;
+  transferPolicy: TransferPolicy;
+};
+
+export type GetDomainTransferResponseBody =
+  | GetDomainTransferResponseBody1
+  | GetDomainTransferResponseBody2;
 
 /** @internal */
 export const GetDomainTransferRequest$inboundSchema: z.ZodType<
@@ -134,6 +152,115 @@ export function getDomainTransferRequestFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyTransferPolicy$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTransferPolicy
+> = z.nativeEnum(ResponseBodyTransferPolicy);
+
+/** @internal */
+export const ResponseBodyTransferPolicy$outboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTransferPolicy
+> = ResponseBodyTransferPolicy$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ResponseBodyTransferPolicy$ {
+  /** @deprecated use `ResponseBodyTransferPolicy$inboundSchema` instead. */
+  export const inboundSchema = ResponseBodyTransferPolicy$inboundSchema;
+  /** @deprecated use `ResponseBodyTransferPolicy$outboundSchema` instead. */
+  export const outboundSchema = ResponseBodyTransferPolicy$outboundSchema;
+}
+
+/** @internal */
+export const GetDomainTransferResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetDomainTransferResponseBodyStatus
+> = z.nativeEnum(GetDomainTransferResponseBodyStatus);
+
+/** @internal */
+export const GetDomainTransferResponseBodyStatus$outboundSchema:
+  z.ZodNativeEnum<typeof GetDomainTransferResponseBodyStatus> =
+    GetDomainTransferResponseBodyStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDomainTransferResponseBodyStatus$ {
+  /** @deprecated use `GetDomainTransferResponseBodyStatus$inboundSchema` instead. */
+  export const inboundSchema =
+    GetDomainTransferResponseBodyStatus$inboundSchema;
+  /** @deprecated use `GetDomainTransferResponseBodyStatus$outboundSchema` instead. */
+  export const outboundSchema =
+    GetDomainTransferResponseBodyStatus$outboundSchema;
+}
+
+/** @internal */
+export const GetDomainTransferResponseBody2$inboundSchema: z.ZodType<
+  GetDomainTransferResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  transferable: z.boolean(),
+  transferPolicy: z.nullable(ResponseBodyTransferPolicy$inboundSchema),
+  reason: z.string(),
+  status: GetDomainTransferResponseBodyStatus$inboundSchema,
+});
+
+/** @internal */
+export type GetDomainTransferResponseBody2$Outbound = {
+  transferable: boolean;
+  transferPolicy: string | null;
+  reason: string;
+  status: string;
+};
+
+/** @internal */
+export const GetDomainTransferResponseBody2$outboundSchema: z.ZodType<
+  GetDomainTransferResponseBody2$Outbound,
+  z.ZodTypeDef,
+  GetDomainTransferResponseBody2
+> = z.object({
+  transferable: z.boolean(),
+  transferPolicy: z.nullable(ResponseBodyTransferPolicy$outboundSchema),
+  reason: z.string(),
+  status: GetDomainTransferResponseBodyStatus$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDomainTransferResponseBody2$ {
+  /** @deprecated use `GetDomainTransferResponseBody2$inboundSchema` instead. */
+  export const inboundSchema = GetDomainTransferResponseBody2$inboundSchema;
+  /** @deprecated use `GetDomainTransferResponseBody2$outboundSchema` instead. */
+  export const outboundSchema = GetDomainTransferResponseBody2$outboundSchema;
+  /** @deprecated use `GetDomainTransferResponseBody2$Outbound` instead. */
+  export type Outbound = GetDomainTransferResponseBody2$Outbound;
+}
+
+export function getDomainTransferResponseBody2ToJSON(
+  getDomainTransferResponseBody2: GetDomainTransferResponseBody2,
+): string {
+  return JSON.stringify(
+    GetDomainTransferResponseBody2$outboundSchema.parse(
+      getDomainTransferResponseBody2,
+    ),
+  );
+}
+
+export function getDomainTransferResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDomainTransferResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDomainTransferResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDomainTransferResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
 export const TransferPolicy$inboundSchema: z.ZodNativeEnum<
   typeof TransferPolicy
 > = z.nativeEnum(TransferPolicy);
@@ -155,24 +282,68 @@ export namespace TransferPolicy$ {
 }
 
 /** @internal */
-export const GetDomainTransferStatus$inboundSchema: z.ZodNativeEnum<
-  typeof GetDomainTransferStatus
-> = z.nativeEnum(GetDomainTransferStatus);
+export const GetDomainTransferResponseBody1$inboundSchema: z.ZodType<
+  GetDomainTransferResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  reason: z.string(),
+  status: z.string(),
+  transferable: z.boolean(),
+  transferPolicy: TransferPolicy$inboundSchema,
+});
 
 /** @internal */
-export const GetDomainTransferStatus$outboundSchema: z.ZodNativeEnum<
-  typeof GetDomainTransferStatus
-> = GetDomainTransferStatus$inboundSchema;
+export type GetDomainTransferResponseBody1$Outbound = {
+  reason: string;
+  status: string;
+  transferable: boolean;
+  transferPolicy: string;
+};
+
+/** @internal */
+export const GetDomainTransferResponseBody1$outboundSchema: z.ZodType<
+  GetDomainTransferResponseBody1$Outbound,
+  z.ZodTypeDef,
+  GetDomainTransferResponseBody1
+> = z.object({
+  reason: z.string(),
+  status: z.string(),
+  transferable: z.boolean(),
+  transferPolicy: TransferPolicy$outboundSchema,
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetDomainTransferStatus$ {
-  /** @deprecated use `GetDomainTransferStatus$inboundSchema` instead. */
-  export const inboundSchema = GetDomainTransferStatus$inboundSchema;
-  /** @deprecated use `GetDomainTransferStatus$outboundSchema` instead. */
-  export const outboundSchema = GetDomainTransferStatus$outboundSchema;
+export namespace GetDomainTransferResponseBody1$ {
+  /** @deprecated use `GetDomainTransferResponseBody1$inboundSchema` instead. */
+  export const inboundSchema = GetDomainTransferResponseBody1$inboundSchema;
+  /** @deprecated use `GetDomainTransferResponseBody1$outboundSchema` instead. */
+  export const outboundSchema = GetDomainTransferResponseBody1$outboundSchema;
+  /** @deprecated use `GetDomainTransferResponseBody1$Outbound` instead. */
+  export type Outbound = GetDomainTransferResponseBody1$Outbound;
+}
+
+export function getDomainTransferResponseBody1ToJSON(
+  getDomainTransferResponseBody1: GetDomainTransferResponseBody1,
+): string {
+  return JSON.stringify(
+    GetDomainTransferResponseBody1$outboundSchema.parse(
+      getDomainTransferResponseBody1,
+    ),
+  );
+}
+
+export function getDomainTransferResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetDomainTransferResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDomainTransferResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDomainTransferResponseBody1' from JSON`,
+  );
 }
 
 /** @internal */
@@ -180,32 +351,25 @@ export const GetDomainTransferResponseBody$inboundSchema: z.ZodType<
   GetDomainTransferResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  transferable: z.boolean(),
-  transferPolicy: z.nullable(TransferPolicy$inboundSchema),
-  reason: z.string(),
-  status: GetDomainTransferStatus$inboundSchema,
-});
+> = z.union([
+  z.lazy(() => GetDomainTransferResponseBody1$inboundSchema),
+  z.lazy(() => GetDomainTransferResponseBody2$inboundSchema),
+]);
 
 /** @internal */
-export type GetDomainTransferResponseBody$Outbound = {
-  transferable: boolean;
-  transferPolicy: string | null;
-  reason: string;
-  status: string;
-};
+export type GetDomainTransferResponseBody$Outbound =
+  | GetDomainTransferResponseBody1$Outbound
+  | GetDomainTransferResponseBody2$Outbound;
 
 /** @internal */
 export const GetDomainTransferResponseBody$outboundSchema: z.ZodType<
   GetDomainTransferResponseBody$Outbound,
   z.ZodTypeDef,
   GetDomainTransferResponseBody
-> = z.object({
-  transferable: z.boolean(),
-  transferPolicy: z.nullable(TransferPolicy$outboundSchema),
-  reason: z.string(),
-  status: GetDomainTransferStatus$outboundSchema,
-});
+> = z.union([
+  z.lazy(() => GetDomainTransferResponseBody1$outboundSchema),
+  z.lazy(() => GetDomainTransferResponseBody2$outboundSchema),
+]);
 
 /**
  * @internal

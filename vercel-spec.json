@@ -5020,6 +5020,7 @@
                         "nitro",
                         "hono",
                         "express",
+                        "h3",
                         "xmcp"
                       ]
                     },
@@ -9781,6 +9782,7 @@
                                 "nitro",
                                 "hono",
                                 "express",
+                                "h3",
                                 "xmcp"
                               ]
                             },
@@ -13578,6 +13580,7 @@
                             "nitro",
                             "hono",
                             "express",
+                            "h3",
                             "xmcp"
                           ]
                         },
@@ -13649,11 +13652,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
-                            "timeout",
                             "skipped",
                             "pending",
-                            "ready"
+                            "ready",
+                            "error",
+                            "timeout"
                           ]
                         },
                         "startedAt": {
@@ -13832,18 +13835,18 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "ERROR",
                               "BUILDING",
+                              "ERROR",
                               "INITIALIZING",
                               "READY"
                             ]
                           },
-                          "readyStateAt": {
-                            "type": "number"
-                          },
                           "entrypoint": {
                             "nullable": true,
                             "type": "string"
+                          },
+                          "readyStateAt": {
+                            "type": "number"
                           },
                           "output": {
                             "items": {
@@ -14902,15 +14905,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -15402,8 +15405,8 @@
                                     "op": {
                                       "type": "string",
                                       "enum": [
-                                        "set",
                                         "append",
+                                        "set",
                                         "delete"
                                       ]
                                     },
@@ -15533,12 +15536,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "filesystem",
                                   "error",
+                                  "filesystem",
                                   "hit",
                                   "miss",
-                                  "resource",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -15853,8 +15856,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15906,8 +15909,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15960,8 +15963,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -16518,6 +16521,7 @@
                           "nitro",
                           "hono",
                           "express",
+                          "h3",
                           "xmcp"
                         ],
                         "nullable": true
@@ -16749,6 +16753,7 @@
                             "nitro",
                             "hono",
                             "express",
+                            "h3",
                             "xmcp"
                           ]
                         },
@@ -20818,6 +20823,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "additionalProperties": false,
                 "properties": {
                   "name": {
                     "type": "string",
@@ -29282,34 +29288,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "default": {
@@ -29992,34 +29998,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "default": {
@@ -30177,34 +30183,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@513164": {
+                                                "__@BRAND@513179": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@513164"
+                                                "__@BRAND@513179"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@513164": {
+                                                "__@BRAND@513179": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@513164"
+                                                "__@BRAND@513179"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@513164": {
+                                                "__@BRAND@513179": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@513164"
+                                                "__@BRAND@513179"
                                               ]
                                             },
                                             "default": {
@@ -30515,12 +30521,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@513164": {
+                                                  "__@BRAND@513179": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@513164"
+                                                  "__@BRAND@513179"
                                                 ]
                                               },
                                               {
@@ -30528,12 +30534,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@513164": {
+                                                      "__@BRAND@513179": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@513164"
+                                                      "__@BRAND@513179"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30602,34 +30608,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "default": {
@@ -30787,34 +30793,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@513164": {
+                                                "__@BRAND@513179": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@513164"
+                                                "__@BRAND@513179"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@513164": {
+                                                "__@BRAND@513179": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@513164"
+                                                "__@BRAND@513179"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@513164": {
+                                                "__@BRAND@513179": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@513164"
+                                                "__@BRAND@513179"
                                               ]
                                             },
                                             "default": {
@@ -30903,12 +30909,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@513164": {
+                                                  "__@BRAND@513179": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@513164"
+                                                  "__@BRAND@513179"
                                                 ]
                                               },
                                               {
@@ -30916,12 +30922,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@513164": {
+                                                      "__@BRAND@513179": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@513164"
+                                                      "__@BRAND@513179"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31107,12 +31113,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@513164": {
+                                              "__@BRAND@513179": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@513164"
+                                              "__@BRAND@513179"
                                             ]
                                           },
                                           "type": "array"
@@ -31121,12 +31127,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@513164": {
+                                              "__@BRAND@513179": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@513164"
+                                              "__@BRAND@513179"
                                             ]
                                           },
                                           "type": "array"
@@ -31145,12 +31151,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@513164": {
+                                            "__@BRAND@513179": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@513164"
+                                            "__@BRAND@513179"
                                           ]
                                         },
                                         "disabled": {
@@ -34189,6 +34195,7 @@
                               "nitro",
                               "hono",
                               "express",
+                              "h3",
                               "xmcp"
                             ]
                           },
@@ -38342,10 +38349,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -38937,6 +38944,7 @@
                         "nitro",
                         "hono",
                         "express",
+                        "h3",
                         "xmcp"
                       ]
                     },
@@ -39348,17 +39356,17 @@
                                 "github-limited"
                               ]
                             },
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
+                              "type": "number"
+                            },
                             "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
-                            },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -39366,9 +39374,6 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
-                            },
-                            "repoId": {
-                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -39401,6 +39406,9 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -39792,6 +39800,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -39813,9 +39824,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -39913,6 +39921,9 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -39934,9 +39945,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -39983,8 +39991,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -40321,6 +40329,408 @@
                     },
                     "permissions": {
                       "properties": {
+                        "aliasProject": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "aliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "buildMachine": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "productionAliasProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "connectConfigurationLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "dataCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deployment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckReRunFromProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentProductionGit": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPrivate": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPromote": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentRollback": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "edgeCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "environments": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logsPreset": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "passwordProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "optionsAllowlist": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "job": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "project": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFromV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAccessGroup": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsSampling": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheckRun": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentHook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainCheckConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVars": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsProduction": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsUnownedByIntegration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectId": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectIntegrationConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMember": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMonitoring": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectPermissions": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransfer": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransferOut": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCase": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCaseComment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentExpiration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectRollingRelease": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTier": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "seawallConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "skewProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "analytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "webAnalytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sharedEnvVarConnection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sonar": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -41196,408 +41606,6 @@
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
-                        },
-                        "aliasProject": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "aliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "buildMachine": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "productionAliasProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "connectConfigurationLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "dataCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deployment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentBuildLogs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckReRunFromProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentProductionGit": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPrivate": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPromote": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentRollback": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "edgeCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "environments": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logsPreset": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "passwordProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "optionsAllowlist": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "job": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "observabilityData": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandBuild": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandConcurrency": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "project": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFromV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAccessGroup": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsSampling": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheckRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentHook": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainMove": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainCheckConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVars": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsProduction": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsUnownedByIntegration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFlags": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectId": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectIntegrationConfiguration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMember": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMonitoring": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectPermissions": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransfer": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransferOut": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCase": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCaseComment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentExpiration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectRollingRelease": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTier": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectOIDCToken": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "seawallConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "skewProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "analytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "trustedIps": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "v0Chat": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "webAnalytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sharedEnvVarConnection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sonar": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
                         }
                       },
                       "type": "object"
@@ -41719,11 +41727,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -41763,11 +41771,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -42796,6 +42804,7 @@
                       "nitro",
                       "hono",
                       "express",
+                      "h3",
                       "xmcp"
                     ]
                   },
@@ -43935,6 +43944,7 @@
                         "nitro",
                         "hono",
                         "express",
+                        "h3",
                         "xmcp"
                       ]
                     },
@@ -48544,6 +48554,7 @@
                         "nitro",
                         "hono",
                         "express",
+                        "h3",
                         "xmcp"
                       ]
                     },
@@ -52342,6 +52353,7 @@
                       "nitro",
                       "hono",
                       "express",
+                      "h3",
                       "xmcp"
                     ],
                     "type": "string",
@@ -68484,6 +68496,7 @@
                                   "nitro",
                                   "hono",
                                   "express",
+                                  "h3",
                                   "xmcp"
                                 ]
                               },
@@ -68683,34 +68696,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "description": {
@@ -69393,34 +69406,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "description": {
@@ -69569,34 +69582,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7820": {
+                                                  "__@BRAND@7823": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7820"
+                                                  "__@BRAND@7823"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7820": {
+                                                  "__@BRAND@7823": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7820"
+                                                  "__@BRAND@7823"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7820": {
+                                                  "__@BRAND@7823": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7820"
+                                                  "__@BRAND@7823"
                                                 ]
                                               },
                                               "default": {
@@ -69913,12 +69926,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@7820": {
+                                                    "__@BRAND@7823": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@7820"
+                                                    "__@BRAND@7823"
                                                   ]
                                                 },
                                                 {
@@ -69926,12 +69939,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@7820": {
+                                                        "__@BRAND@7823": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@7820"
+                                                        "__@BRAND@7823"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -70003,34 +70016,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "description": {
@@ -70162,12 +70175,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7820": {
+                                              "__@BRAND@7823": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7820"
+                                              "__@BRAND@7823"
                                             ]
                                           },
                                           "disabled": {
@@ -70414,12 +70427,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@7820": {
+                                "__@BRAND@7823": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@7820"
+                                "__@BRAND@7823"
                               ]
                             },
                             "disabled": {
@@ -74511,6 +74524,7 @@
                                     "nitro",
                                     "hono",
                                     "express",
+                                    "h3",
                                     "xmcp"
                                   ]
                                 },
@@ -78116,6 +78130,7 @@
                                   "nitro",
                                   "hono",
                                   "express",
+                                  "h3",
                                   "xmcp"
                                 ]
                               },

@@ -2548,6 +2548,7 @@ const (
 	GetProjectsFrameworkNitro          GetProjectsFramework = "nitro"
 	GetProjectsFrameworkHono           GetProjectsFramework = "hono"
 	GetProjectsFrameworkExpress        GetProjectsFramework = "express"
+	GetProjectsFrameworkH3             GetProjectsFramework = "h3"
 	GetProjectsFrameworkXmcp           GetProjectsFramework = "xmcp"
 )
 
@@ -2659,6 +2660,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = GetProjectsFramework(v)

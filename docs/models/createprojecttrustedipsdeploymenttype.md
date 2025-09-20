@@ -5,11 +5,11 @@
 ```typescript
 import { CreateProjectTrustedIpsDeploymentType } from "@vercel/sdk/models/createprojectop.js";
 
-let value: CreateProjectTrustedIpsDeploymentType = "production";
+let value: CreateProjectTrustedIpsDeploymentType = "all_except_custom_domains";
 ```
 
 ## Values
 
 ```typescript
-"all" | "preview" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains" | "production"
+"preview" | "production" | "all" | "prod_deployment_urls_and_all_previews" | "all_except_custom_domains"
 ```

@@ -107,7 +107,9 @@ test("Access Groups Update Access Group", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    entitlements: [],
+    entitlements: [
+      "v0",
+    ],
     name: "my-access-group",
     createdAt: "1588720733602",
     teamId: "team_123a6c5209bc3778245d011443644c8d27dc2c50",

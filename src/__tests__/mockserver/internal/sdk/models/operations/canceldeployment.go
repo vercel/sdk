@@ -194,6 +194,7 @@ const (
 	CancelDeploymentFrameworkNitro          CancelDeploymentFramework = "nitro"
 	CancelDeploymentFrameworkHono           CancelDeploymentFramework = "hono"
 	CancelDeploymentFrameworkExpress        CancelDeploymentFramework = "express"
+	CancelDeploymentFrameworkH3             CancelDeploymentFramework = "h3"
 	CancelDeploymentFrameworkXmcp           CancelDeploymentFramework = "xmcp"
 )
 
@@ -305,6 +306,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = CancelDeploymentFramework(v)

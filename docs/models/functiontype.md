@@ -5,11 +5,11 @@
 ```typescript
 import { FunctionType } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: FunctionType = "standard";
+let value: FunctionType = "fluid";
 ```
 
 ## Values
 
 ```typescript
-"standard" | "fluid"
+"fluid" | "standard"
 ```

@@ -15,7 +15,7 @@ const value: models.Routes1 = {
 
 ```typescript
 const value: models.Routes2 = {
-  handle: "rewrite",
+  handle: "resource",
 };
 ```
 

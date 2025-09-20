@@ -2380,6 +2380,7 @@ const (
 	UpdateProjectDataCacheFrameworkNitro          UpdateProjectDataCacheFramework = "nitro"
 	UpdateProjectDataCacheFrameworkHono           UpdateProjectDataCacheFramework = "hono"
 	UpdateProjectDataCacheFrameworkExpress        UpdateProjectDataCacheFramework = "express"
+	UpdateProjectDataCacheFrameworkH3             UpdateProjectDataCacheFramework = "h3"
 	UpdateProjectDataCacheFrameworkXmcp           UpdateProjectDataCacheFramework = "xmcp"
 )
 
@@ -2491,6 +2492,8 @@ func (e *UpdateProjectDataCacheFramework) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = UpdateProjectDataCacheFramework(v)

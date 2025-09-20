@@ -1003,7 +1003,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Vercel({ httpClient });
+const sdk = new Vercel({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 

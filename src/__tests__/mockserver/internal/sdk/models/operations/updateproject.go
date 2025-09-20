@@ -64,6 +64,7 @@ const (
 	UpdateProjectFrameworkRequestNitro          UpdateProjectFrameworkRequest = "nitro"
 	UpdateProjectFrameworkRequestHono           UpdateProjectFrameworkRequest = "hono"
 	UpdateProjectFrameworkRequestExpress        UpdateProjectFrameworkRequest = "express"
+	UpdateProjectFrameworkRequestH3             UpdateProjectFrameworkRequest = "h3"
 	UpdateProjectFrameworkRequestXmcp           UpdateProjectFrameworkRequest = "xmcp"
 )
 
@@ -175,6 +176,8 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = UpdateProjectFrameworkRequest(v)
@@ -3387,6 +3390,7 @@ const (
 	UpdateProjectFrameworkResponseBodyNitro          UpdateProjectFrameworkResponseBody = "nitro"
 	UpdateProjectFrameworkResponseBodyHono           UpdateProjectFrameworkResponseBody = "hono"
 	UpdateProjectFrameworkResponseBodyExpress        UpdateProjectFrameworkResponseBody = "express"
+	UpdateProjectFrameworkResponseBodyH3             UpdateProjectFrameworkResponseBody = "h3"
 	UpdateProjectFrameworkResponseBodyXmcp           UpdateProjectFrameworkResponseBody = "xmcp"
 )
 
@@ -3498,6 +3502,8 @@ func (e *UpdateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = UpdateProjectFrameworkResponseBody(v)

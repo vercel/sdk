@@ -68,6 +68,7 @@ export const UpdateProjectFramework = {
   Nitro: "nitro",
   Hono: "hono",
   Express: "express",
+  H3: "h3",
   Xmcp: "xmcp",
 } as const;
 /**
@@ -1036,6 +1037,7 @@ export const UpdateProjectProjectsFramework = {
   Nitro: "nitro",
   Hono: "hono",
   Express: "express",
+  H3: "h3",
   Xmcp: "xmcp",
 } as const;
 export type UpdateProjectProjectsFramework = ClosedEnum<

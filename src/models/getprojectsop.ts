@@ -721,6 +721,7 @@ export const GetProjectsFramework = {
   Nitro: "nitro",
   Hono: "hono",
   Express: "express",
+  H3: "h3",
   Xmcp: "xmcp",
 } as const;
 export type GetProjectsFramework = ClosedEnum<typeof GetProjectsFramework>;

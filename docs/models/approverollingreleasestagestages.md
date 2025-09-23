@@ -13,6 +13,7 @@ let value: ApproveRollingReleaseStageStages = {
   targetPercentage: 25,
   requireApproval: true,
   duration: null,
+  linearShift: false,
 };
 ```
 
@@ -25,3 +26,4 @@ let value: ApproveRollingReleaseStageStages = {
 | `targetPercentage`                                                                       | *number*                                                                                 | :heavy_check_mark:                                                                       | The percentage of traffic to serve to the canary deployment (0-100)                      | 25                                                                                       |
 | `requireApproval`                                                                        | *boolean*                                                                                | :heavy_check_mark:                                                                       | Whether or not this stage requires manual approval to proceed                            |                                                                                          |
 | `duration`                                                                               | *number*                                                                                 | :heavy_check_mark:                                                                       | Duration in seconds for automatic advancement, null for manual stages or the final stage | <nil>                                                                                    |
+| `linearShift`                                                                            | *boolean*                                                                                | :heavy_minus_sign:                                                                       | Whether to linearly shift traffic over the duration of this stage                        | false                                                                                    |

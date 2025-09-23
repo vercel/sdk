@@ -47,6 +47,8 @@ type UpdateRollingReleaseConfigStage struct {
 	RequireApproval *bool `json:"requireApproval,omitempty"`
 	// Duration in minutes for automatic advancement to the next stage
 	Duration *float64 `json:"duration,omitempty"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (u UpdateRollingReleaseConfigStage) MarshalJSON() ([]byte, error) {
@@ -79,6 +81,13 @@ func (o *UpdateRollingReleaseConfigStage) GetDuration() *float64 {
 		return nil
 	}
 	return o.Duration
+}
+
+func (o *UpdateRollingReleaseConfigStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
 }
 
 type UpdateRollingReleaseConfigRollingRelease struct {

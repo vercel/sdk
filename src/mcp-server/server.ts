@@ -95,10 +95,10 @@ import { tool$environmentGetCustomEnvironment } from "./tools/environmentGetCust
 import { tool$environmentGetV9ProjectsIdOrNameCustomEnvironments } from "./tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
 import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemoveCustomEnvironment.js";
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
-import { tool$getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans } from "./tools/getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans.js";
 import { tool$integrationsConnectIntegrationResourceToProject } from "./tools/integrationsConnectIntegrationResourceToProject.js";
 import { tool$integrationsCreateIntegrationStoreDirect } from "./tools/integrationsCreateIntegrationStoreDirect.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
+import { tool$integrationsGetBillingPlans } from "./tools/integrationsGetBillingPlans.js";
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurationProducts } from "./tools/integrationsGetConfigurationProducts.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
@@ -199,7 +199,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.11.2",
+    version: "1.11.4",
   });
 
   const client = new VercelCore({
@@ -229,9 +229,6 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
-  tool(
-    tool$getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans,
-  );
   tool(tool$accessGroupsReadAccessGroup);
   tool(tool$accessGroupsUpdateAccessGroup);
   tool(tool$accessGroupsDeleteAccessGroup);
@@ -288,6 +285,7 @@ export function createMCPServer(deps: {
   tool(tool$deploymentsGetDeploymentFileContents);
   tool(tool$deploymentsGetDeployments);
   tool(tool$deploymentsDeleteDeployment);
+  tool(tool$integrationsGetBillingPlans);
   tool(tool$integrationsConnectIntegrationResourceToProject);
   tool(tool$integrationsGetConfigurations);
   tool(tool$integrationsGetConfiguration);

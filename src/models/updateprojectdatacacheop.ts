@@ -651,6 +651,7 @@ export const UpdateProjectDataCacheFramework = {
   Nitro: "nitro",
   Hono: "hono",
   Express: "express",
+  H3: "h3",
   Xmcp: "xmcp",
 } as const;
 export type UpdateProjectDataCacheFramework = ClosedEnum<
@@ -1111,6 +1112,10 @@ export type Stages = {
    * Duration in minutes for automatic advancement to the next stage
    */
   duration?: number | undefined;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 /**
@@ -7366,6 +7371,7 @@ export const Stages$inboundSchema: z.ZodType<Stages, z.ZodTypeDef, unknown> = z
     targetPercentage: z.number(),
     requireApproval: z.boolean().optional(),
     duration: z.number().optional(),
+    linearShift: z.boolean().optional(),
   });
 
 /** @internal */
@@ -7373,6 +7379,7 @@ export type Stages$Outbound = {
   targetPercentage: number;
   requireApproval?: boolean | undefined;
   duration?: number | undefined;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -7384,6 +7391,7 @@ export const Stages$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /**

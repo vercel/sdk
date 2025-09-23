@@ -38,6 +38,10 @@ export type GetRollingReleaseConfigStages = {
    * Duration in minutes for automatic advancement to the next stage
    */
   duration?: number | undefined;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 /**
@@ -136,6 +140,7 @@ export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /** @internal */
@@ -143,6 +148,7 @@ export type GetRollingReleaseConfigStages$Outbound = {
   targetPercentage: number;
   requireApproval?: boolean | undefined;
   duration?: number | undefined;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -154,6 +160,7 @@ export const GetRollingReleaseConfigStages$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /**

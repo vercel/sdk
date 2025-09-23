@@ -21,15 +21,20 @@ func pathGetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugP
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "get_/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans[0]":
-			dir.HandlerFunc("get_/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans", testGetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansGetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlans0)(w, req)
+		case "getBillingPlans[0]":
+			dir.HandlerFunc("getBillingPlans", testGetBillingPlansGetBillingPlans0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testGetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansGetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlans0(w http.ResponseWriter, req *http.Request) {
+func testGetBillingPlansGetBillingPlans0(w http.ResponseWriter, req *http.Request) {
+	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
+		log.Printf("assertion error: %s\n", err)
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
 	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -40,14 +45,14 @@ func testGetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugP
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansResponseBody = &operations.GetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansResponseBody{
-		Plans: []operations.GetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansPlan{
-			operations.GetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansPlan{
-				Type:                  operations.GetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansTypePrepayment,
+	var respBody *operations.GetBillingPlansResponseBody = &operations.GetBillingPlansResponseBody{
+		Plans: []operations.GetBillingPlansPlan{
+			operations.GetBillingPlansPlan{
+				Type:                  operations.GetBillingPlansTypePrepayment,
 				ID:                    "<id>",
 				Name:                  "<value>",
-				Scope:                 operations.GetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlansScopeResource,
-				Description:           "cope unless hierarchy versus ouch more regarding tabulate",
+				Scope:                 operations.GetBillingPlansScopeInstallation,
+				Description:           "outside fatally ultimate limply upon especially hm jellyfish expostulate",
 				PaymentMethodRequired: false,
 			},
 		},

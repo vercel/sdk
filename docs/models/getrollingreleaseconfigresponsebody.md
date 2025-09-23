@@ -13,6 +13,7 @@ let value: GetRollingReleaseConfigResponseBody = {
         targetPercentage: 25,
         requireApproval: false,
         duration: 600,
+        linearShift: false,
       },
     ],
     canaryResponseHeader: false,

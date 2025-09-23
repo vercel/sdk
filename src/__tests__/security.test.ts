@@ -318,17 +318,7 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "ill-fated-halt.com",
-        ip: "165.140.153.117",
-        createdAt: "1730327928522",
-        updatedAt: "1735622982324",
-        updatedAtHour: "<value>",
-      },
-    ],
+    result: [],
   });
 });
 

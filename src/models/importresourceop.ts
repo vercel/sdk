@@ -40,7 +40,7 @@ export type Details = {
   value?: string | undefined;
 };
 
-export type HeightlightedDetails = {
+export type HighlightedDetails = {
   label: string;
   value?: string | undefined;
 };
@@ -53,7 +53,7 @@ export type BillingPlan = {
   paymentMethodRequired?: boolean | undefined;
   cost?: string | undefined;
   details?: Array<Details> | undefined;
-  heightlightedDetails?: Array<HeightlightedDetails> | undefined;
+  highlightedDetails?: Array<HighlightedDetails> | undefined;
   effectiveDate?: string | undefined;
   additionalProperties?: { [k: string]: any };
 };
@@ -234,8 +234,8 @@ export function detailsFromJSON(
 }
 
 /** @internal */
-export const HeightlightedDetails$inboundSchema: z.ZodType<
-  HeightlightedDetails,
+export const HighlightedDetails$inboundSchema: z.ZodType<
+  HighlightedDetails,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -244,16 +244,16 @@ export const HeightlightedDetails$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type HeightlightedDetails$Outbound = {
+export type HighlightedDetails$Outbound = {
   label: string;
   value?: string | undefined;
 };
 
 /** @internal */
-export const HeightlightedDetails$outboundSchema: z.ZodType<
-  HeightlightedDetails$Outbound,
+export const HighlightedDetails$outboundSchema: z.ZodType<
+  HighlightedDetails$Outbound,
   z.ZodTypeDef,
-  HeightlightedDetails
+  HighlightedDetails
 > = z.object({
   label: z.string(),
   value: z.string().optional(),
@@ -263,30 +263,30 @@ export const HeightlightedDetails$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HeightlightedDetails$ {
-  /** @deprecated use `HeightlightedDetails$inboundSchema` instead. */
-  export const inboundSchema = HeightlightedDetails$inboundSchema;
-  /** @deprecated use `HeightlightedDetails$outboundSchema` instead. */
-  export const outboundSchema = HeightlightedDetails$outboundSchema;
-  /** @deprecated use `HeightlightedDetails$Outbound` instead. */
-  export type Outbound = HeightlightedDetails$Outbound;
+export namespace HighlightedDetails$ {
+  /** @deprecated use `HighlightedDetails$inboundSchema` instead. */
+  export const inboundSchema = HighlightedDetails$inboundSchema;
+  /** @deprecated use `HighlightedDetails$outboundSchema` instead. */
+  export const outboundSchema = HighlightedDetails$outboundSchema;
+  /** @deprecated use `HighlightedDetails$Outbound` instead. */
+  export type Outbound = HighlightedDetails$Outbound;
 }
 
-export function heightlightedDetailsToJSON(
-  heightlightedDetails: HeightlightedDetails,
+export function highlightedDetailsToJSON(
+  highlightedDetails: HighlightedDetails,
 ): string {
   return JSON.stringify(
-    HeightlightedDetails$outboundSchema.parse(heightlightedDetails),
+    HighlightedDetails$outboundSchema.parse(highlightedDetails),
   );
 }
 
-export function heightlightedDetailsFromJSON(
+export function highlightedDetailsFromJSON(
   jsonString: string,
-): SafeParseResult<HeightlightedDetails, SDKValidationError> {
+): SafeParseResult<HighlightedDetails, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => HeightlightedDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HeightlightedDetails' from JSON`,
+    (x) => HighlightedDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HighlightedDetails' from JSON`,
   );
 }
 
@@ -304,9 +304,8 @@ export const BillingPlan$inboundSchema: z.ZodType<
     paymentMethodRequired: z.boolean().optional(),
     cost: z.string().optional(),
     details: z.array(z.lazy(() => Details$inboundSchema)).optional(),
-    heightlightedDetails: z.array(
-      z.lazy(() => HeightlightedDetails$inboundSchema),
-    ).optional(),
+    highlightedDetails: z.array(z.lazy(() => HighlightedDetails$inboundSchema))
+      .optional(),
     effectiveDate: z.string().optional(),
   }).catchall(z.any()),
   "additionalProperties",
@@ -322,7 +321,7 @@ export type BillingPlan$Outbound = {
   paymentMethodRequired?: boolean | undefined;
   cost?: string | undefined;
   details?: Array<Details$Outbound> | undefined;
-  heightlightedDetails?: Array<HeightlightedDetails$Outbound> | undefined;
+  highlightedDetails?: Array<HighlightedDetails$Outbound> | undefined;
   effectiveDate?: string | undefined;
   [additionalProperties: string]: unknown;
 };
@@ -340,9 +339,8 @@ export const BillingPlan$outboundSchema: z.ZodType<
   paymentMethodRequired: z.boolean().optional(),
   cost: z.string().optional(),
   details: z.array(z.lazy(() => Details$outboundSchema)).optional(),
-  heightlightedDetails: z.array(
-    z.lazy(() => HeightlightedDetails$outboundSchema),
-  ).optional(),
+  highlightedDetails: z.array(z.lazy(() => HighlightedDetails$outboundSchema))
+    .optional(),
   effectiveDate: z.string().optional(),
   additionalProperties: z.record(z.any()),
 }).transform((v) => {

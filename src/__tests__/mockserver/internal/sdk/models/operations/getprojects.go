@@ -2548,6 +2548,7 @@ const (
 	GetProjectsFrameworkNitro          GetProjectsFramework = "nitro"
 	GetProjectsFrameworkHono           GetProjectsFramework = "hono"
 	GetProjectsFrameworkExpress        GetProjectsFramework = "express"
+	GetProjectsFrameworkH3             GetProjectsFramework = "h3"
 	GetProjectsFrameworkXmcp           GetProjectsFramework = "xmcp"
 )
 
@@ -2659,6 +2660,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = GetProjectsFramework(v)
@@ -4447,6 +4450,8 @@ type GetProjectsStage struct {
 	RequireApproval *bool `json:"requireApproval,omitempty"`
 	// Duration in minutes for automatic advancement to the next stage
 	Duration *float64 `json:"duration,omitempty"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (o *GetProjectsStage) GetTargetPercentage() float64 {
@@ -4468,6 +4473,13 @@ func (o *GetProjectsStage) GetDuration() *float64 {
 		return nil
 	}
 	return o.Duration
+}
+
+func (o *GetProjectsStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
 }
 
 // GetProjectsRollingRelease - Project-level rolling release configuration that defines how deployments should be gradually rolled out

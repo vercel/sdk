@@ -124,10 +124,41 @@ test("Integrations Create Integration Store Direct", async () => {
       externalResourceId: "<id>",
       product: {
         value: {
-          atBRANDAt7820: {},
+          atBRANDAt7823: {},
         },
       },
       secrets: [],
     },
+  });
+});
+
+test("Integrations Get Billing Plans", async () => {
+  const testHttpClient = createTestHTTPClient("getBillingPlans");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.integrations.getBillingPlans({
+    integrationIdOrSlug: "<value>",
+    productIdOrSlug: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    plans: [
+      {
+        type: "prepayment",
+        id: "<id>",
+        name: "<value>",
+        scope: "installation",
+        description:
+          "outside fatally ultimate limply upon especially hm jellyfish expostulate",
+        paymentMethodRequired: false,
+      },
+    ],
   });
 });

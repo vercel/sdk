@@ -90,7 +90,7 @@ const value: models.CreateIntegrationStoreDirectProperties7 = {
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties8 = {
   value: {
-    atBRANDAt7820: {},
+    atBRANDAt7823: {},
   },
 };
 ```

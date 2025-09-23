@@ -44,6 +44,8 @@ type GetRollingReleaseConfigStage struct {
 	RequireApproval *bool `json:"requireApproval,omitempty"`
 	// Duration in minutes for automatic advancement to the next stage
 	Duration *float64 `json:"duration,omitempty"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (o *GetRollingReleaseConfigStage) GetTargetPercentage() float64 {
@@ -65,6 +67,13 @@ func (o *GetRollingReleaseConfigStage) GetDuration() *float64 {
 		return nil
 	}
 	return o.Duration
+}
+
+func (o *GetRollingReleaseConfigStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
 }
 
 // GetRollingReleaseConfigRollingRelease - Project-level rolling release configuration that defines how deployments should be gradually rolled out

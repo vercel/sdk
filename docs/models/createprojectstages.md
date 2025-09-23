@@ -11,6 +11,7 @@ let value: CreateProjectStages = {
   targetPercentage: 25,
   requireApproval: false,
   duration: 600,
+  linearShift: false,
 };
 ```
 
@@ -21,3 +22,4 @@ let value: CreateProjectStages = {
 | `targetPercentage`                                                  | *number*                                                            | :heavy_check_mark:                                                  | The percentage of traffic to serve to the canary deployment (0-100) | 25                                                                  |
 | `requireApproval`                                                   | *boolean*                                                           | :heavy_minus_sign:                                                  | Whether or not this stage requires manual approval to proceed       | false                                                               |
 | `duration`                                                          | *number*                                                            | :heavy_minus_sign:                                                  | Duration in minutes for automatic advancement to the next stage     | 600                                                                 |
+| `linearShift`                                                       | *boolean*                                                           | :heavy_minus_sign:                                                  | Whether to linearly shift traffic over the duration of this stage   | false                                                               |

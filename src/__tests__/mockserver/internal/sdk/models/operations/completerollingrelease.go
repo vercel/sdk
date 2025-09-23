@@ -479,6 +479,8 @@ type CompleteRollingReleaseStage struct {
 	RequireApproval bool `json:"requireApproval"`
 	// Duration in seconds for automatic advancement, null for manual stages or the final stage
 	Duration *float64 `json:"duration"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (o *CompleteRollingReleaseStage) GetIndex() float64 {
@@ -516,6 +518,13 @@ func (o *CompleteRollingReleaseStage) GetDuration() *float64 {
 	return o.Duration
 }
 
+func (o *CompleteRollingReleaseStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
+}
+
 // CompleteRollingReleaseActiveStage - The currently active stage, null if the rollout is aborted
 type CompleteRollingReleaseActiveStage struct {
 	// The zero-based index of the stage
@@ -528,6 +537,8 @@ type CompleteRollingReleaseActiveStage struct {
 	RequireApproval bool `json:"requireApproval"`
 	// Duration in seconds for automatic advancement, null for manual stages or the final stage
 	Duration *float64 `json:"duration"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (o *CompleteRollingReleaseActiveStage) GetIndex() float64 {
@@ -565,6 +576,13 @@ func (o *CompleteRollingReleaseActiveStage) GetDuration() *float64 {
 	return o.Duration
 }
 
+func (o *CompleteRollingReleaseActiveStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
+}
+
 // CompleteRollingReleaseNextStage - The next stage to be activated, null if not in ACTIVE state
 type CompleteRollingReleaseNextStage struct {
 	// The zero-based index of the stage
@@ -577,6 +595,8 @@ type CompleteRollingReleaseNextStage struct {
 	RequireApproval bool `json:"requireApproval"`
 	// Duration in seconds for automatic advancement, null for manual stages or the final stage
 	Duration *float64 `json:"duration"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (o *CompleteRollingReleaseNextStage) GetIndex() float64 {
@@ -612,6 +632,13 @@ func (o *CompleteRollingReleaseNextStage) GetDuration() *float64 {
 		return nil
 	}
 	return o.Duration
+}
+
+func (o *CompleteRollingReleaseNextStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
 }
 
 // CompleteRollingReleaseRollingRelease - Rolling release information including configuration and document details, or null if no rolling release exists

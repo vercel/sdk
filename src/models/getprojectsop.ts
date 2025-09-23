@@ -721,6 +721,7 @@ export const GetProjectsFramework = {
   Nitro: "nitro",
   Hono: "hono",
   Express: "express",
+  H3: "h3",
   Xmcp: "xmcp",
 } as const;
 export type GetProjectsFramework = ClosedEnum<typeof GetProjectsFramework>;
@@ -1177,6 +1178,10 @@ export type GetProjectsStages = {
    * Duration in minutes for automatic advancement to the next stage
    */
   duration?: number | undefined;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 /**
@@ -7500,6 +7505,7 @@ export const GetProjectsStages$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /** @internal */
@@ -7507,6 +7513,7 @@ export type GetProjectsStages$Outbound = {
   targetPercentage: number;
   requireApproval?: boolean | undefined;
   duration?: number | undefined;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -7518,6 +7525,7 @@ export const GetProjectsStages$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /**

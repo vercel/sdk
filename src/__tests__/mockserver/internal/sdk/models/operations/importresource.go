@@ -121,19 +121,19 @@ func (o *ImportResourceDetail) GetValue() *string {
 	return o.Value
 }
 
-type HeightlightedDetail struct {
+type ImportResourceHighlightedDetail struct {
 	Label string  `json:"label"`
 	Value *string `json:"value,omitempty"`
 }
 
-func (o *HeightlightedDetail) GetLabel() string {
+func (o *ImportResourceHighlightedDetail) GetLabel() string {
 	if o == nil {
 		return ""
 	}
 	return o.Label
 }
 
-func (o *HeightlightedDetail) GetValue() *string {
+func (o *ImportResourceHighlightedDetail) GetValue() *string {
 	if o == nil {
 		return nil
 	}
@@ -141,16 +141,16 @@ func (o *HeightlightedDetail) GetValue() *string {
 }
 
 type ImportResourceBillingPlan struct {
-	ID                    string                 `json:"id"`
-	Type                  ImportResourceType     `json:"type"`
-	Name                  string                 `json:"name"`
-	Description           *string                `json:"description,omitempty"`
-	PaymentMethodRequired *bool                  `json:"paymentMethodRequired,omitempty"`
-	Cost                  *string                `json:"cost,omitempty"`
-	Details               []ImportResourceDetail `json:"details,omitempty"`
-	HeightlightedDetails  []HeightlightedDetail  `json:"heightlightedDetails,omitempty"`
-	EffectiveDate         *string                `json:"effectiveDate,omitempty"`
-	AdditionalProperties  map[string]any         `additionalProperties:"true" json:"-"`
+	ID                    string                            `json:"id"`
+	Type                  ImportResourceType                `json:"type"`
+	Name                  string                            `json:"name"`
+	Description           *string                           `json:"description,omitempty"`
+	PaymentMethodRequired *bool                             `json:"paymentMethodRequired,omitempty"`
+	Cost                  *string                           `json:"cost,omitempty"`
+	Details               []ImportResourceDetail            `json:"details,omitempty"`
+	HighlightedDetails    []ImportResourceHighlightedDetail `json:"highlightedDetails,omitempty"`
+	EffectiveDate         *string                           `json:"effectiveDate,omitempty"`
+	AdditionalProperties  map[string]any                    `additionalProperties:"true" json:"-"`
 }
 
 func (i ImportResourceBillingPlan) MarshalJSON() ([]byte, error) {
@@ -213,11 +213,11 @@ func (o *ImportResourceBillingPlan) GetDetails() []ImportResourceDetail {
 	return o.Details
 }
 
-func (o *ImportResourceBillingPlan) GetHeightlightedDetails() []HeightlightedDetail {
+func (o *ImportResourceBillingPlan) GetHighlightedDetails() []ImportResourceHighlightedDetail {
 	if o == nil {
 		return nil
 	}
-	return o.HeightlightedDetails
+	return o.HighlightedDetails
 }
 
 func (o *ImportResourceBillingPlan) GetEffectiveDate() *string {

@@ -406,6 +406,7 @@ const (
 	GetWebhooksFrameworkNitro          GetWebhooksFramework = "nitro"
 	GetWebhooksFrameworkHono           GetWebhooksFramework = "hono"
 	GetWebhooksFrameworkExpress        GetWebhooksFramework = "express"
+	GetWebhooksFrameworkH3             GetWebhooksFramework = "h3"
 	GetWebhooksFrameworkXmcp           GetWebhooksFramework = "xmcp"
 )
 
@@ -517,6 +518,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = GetWebhooksFramework(v)

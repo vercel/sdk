@@ -125,6 +125,7 @@ export const CreateProjectFramework = {
   Nitro: "nitro",
   Hono: "hono",
   Express: "express",
+  H3: "h3",
   Xmcp: "xmcp",
 } as const;
 /**
@@ -946,6 +947,7 @@ export const CreateProjectProjectsFramework = {
   Nitro: "nitro",
   Hono: "hono",
   Express: "express",
+  H3: "h3",
   Xmcp: "xmcp",
 } as const;
 export type CreateProjectProjectsFramework = ClosedEnum<
@@ -1411,6 +1413,10 @@ export type CreateProjectStages = {
    * Duration in minutes for automatic advancement to the next stage
    */
   duration?: number | undefined;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 /**
@@ -8357,6 +8363,7 @@ export const CreateProjectStages$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8364,6 +8371,7 @@ export type CreateProjectStages$Outbound = {
   targetPercentage: number;
   requireApproval?: boolean | undefined;
   duration?: number | undefined;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -8375,6 +8383,7 @@ export const CreateProjectStages$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /**

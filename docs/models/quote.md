@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Quote } from "@vercel/sdk/models/getv1integrationsintegrationintegrationidorslugproductsproductidorslugplansop.js";
+import { Quote } from "@vercel/sdk/models/getbillingplansop.js";
 
 let value: Quote = {
   line: "<value>",

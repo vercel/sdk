@@ -6,6 +6,7 @@ import { deploymentsUpdateIntegrationDeploymentAction } from "../funcs/deploymen
 import { integrationsConnectIntegrationResourceToProject } from "../funcs/integrationsConnectIntegrationResourceToProject.js";
 import { integrationsCreateIntegrationStoreDirect } from "../funcs/integrationsCreateIntegrationStoreDirect.js";
 import { integrationsDeleteConfiguration } from "../funcs/integrationsDeleteConfiguration.js";
+import { integrationsGetBillingPlans } from "../funcs/integrationsGetBillingPlans.js";
 import { integrationsGetConfiguration } from "../funcs/integrationsGetConfiguration.js";
 import { integrationsGetConfigurationProducts } from "../funcs/integrationsGetConfigurationProducts.js";
 import { integrationsGetConfigurations } from "../funcs/integrationsGetConfigurations.js";
@@ -16,6 +17,10 @@ import {
   CreateIntegrationStoreDirectResponseBody,
 } from "../models/createintegrationstoredirectop.js";
 import { DeleteConfigurationRequest } from "../models/deleteconfigurationop.js";
+import {
+  GetBillingPlansRequest,
+  GetBillingPlansResponseBody,
+} from "../models/getbillingplansop.js";
 import {
   GetConfigurationRequest,
   GetConfigurationResponseBody,
@@ -43,6 +48,23 @@ export class Integrations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(deploymentsUpdateIntegrationDeploymentAction(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List integration billing plans
+   *
+   * @remarks
+   * Get a list of billing plans for an integration and product.
+   */
+  async getBillingPlans(
+    request: GetBillingPlansRequest,
+    options?: RequestOptions,
+  ): Promise<GetBillingPlansResponseBody> {
+    return unwrapAsync(integrationsGetBillingPlans(
       this,
       request,
       options,

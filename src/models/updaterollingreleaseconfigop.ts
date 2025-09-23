@@ -38,6 +38,10 @@ export type ResponseBodyStages = {
    * Duration in minutes for automatic advancement to the next stage
    */
   duration?: number | undefined;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 export type ResponseBodyRollingRelease = {
@@ -128,6 +132,7 @@ export const ResponseBodyStages$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /** @internal */
@@ -135,6 +140,7 @@ export type ResponseBodyStages$Outbound = {
   targetPercentage: number;
   requireApproval?: boolean | undefined;
   duration?: number | undefined;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -146,6 +152,7 @@ export const ResponseBodyStages$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean().optional(),
   duration: z.number().optional(),
+  linearShift: z.boolean().optional(),
 });
 
 /**

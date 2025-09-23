@@ -198,13 +198,11 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel
-    .getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans(
-      {
-        integrationIdOrSlug: "<value>",
-        productIdOrSlug: "<value>",
-      },
-    );
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   console.log(result);
 }
@@ -405,6 +403,7 @@ run();
 ### [integrations](docs/sdks/integrations/README.md)
 
 * [updateIntegrationDeploymentAction](docs/sdks/integrations/README.md#updateintegrationdeploymentaction) - Update deployment integration action
+* [getBillingPlans](docs/sdks/integrations/README.md#getbillingplans) - List integration billing plans
 * [connectIntegrationResourceToProject](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 * [getConfigurations](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
 * [getConfiguration](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
@@ -521,9 +520,6 @@ run();
 * [getAuthUser](docs/sdks/user/README.md#getauthuser) - Get the User
 * [requestDelete](docs/sdks/user/README.md#requestdelete) - Delete User Account
 
-### [Vercel SDK](docs/sdks/vercel/README.md)
-
-* [getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans](docs/sdks/vercel/README.md#getv1integrationsintegrationintegrationidorslugproductsproductidorslugplans)
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
@@ -633,10 +629,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentGetV9ProjectsIdOrNameCustomEnvironments`](docs/sdks/environment/README.md#getv9projectsidornamecustomenvironments) - Retrieve custom environments
 - [`environmentRemoveCustomEnvironment`](docs/sdks/environment/README.md#removecustomenvironment) - Remove a custom environment
 - [`environmentUpdateCustomEnvironment`](docs/sdks/environment/README.md#updatecustomenvironment) - Update a custom environment
-- [`getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans`](docs/sdks/vercel/README.md#getv1integrationsintegrationintegrationidorslugproductsproductidorslugplans)
 - [`integrationsConnectIntegrationResourceToProject`](docs/sdks/integrations/README.md#connectintegrationresourcetoproject) - Connect integration resource to project
 - [`integrationsCreateIntegrationStoreDirect`](docs/sdks/integrations/README.md#createintegrationstoredirect) - Create integration store (free and paid plans)
 - [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete an integration configuration
+- [`integrationsGetBillingPlans`](docs/sdks/integrations/README.md#getbillingplans) - List integration billing plans
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 - [`integrationsGetConfigurationProducts`](docs/sdks/integrations/README.md#getconfigurationproducts) - List products for integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
@@ -783,28 +779,27 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { Vercel } from "@vercel/sdk";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
-  const result = await vercel
-    .getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans(
-      {
-        integrationIdOrSlug: "<value>",
-        productIdOrSlug: "<value>",
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  }, {
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
       },
-      {
-        retries: {
-          strategy: "backoff",
-          backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-          },
-          retryConnectionErrors: false,
-        },
-      },
-    );
+      retryConnectionErrors: false,
+    },
+  });
 
   console.log(result);
 }
@@ -828,16 +823,15 @@ const vercel = new Vercel({
     },
     retryConnectionErrors: false,
   },
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel
-    .getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans(
-      {
-        integrationIdOrSlug: "<value>",
-        productIdOrSlug: "<value>",
-      },
-    );
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   console.log(result);
 }
@@ -867,17 +861,17 @@ import { Vercel } from "@vercel/sdk";
 import { VercelBadRequestError } from "@vercel/sdk/models/vercelbadrequesterror.js";
 import { VercelError } from "@vercel/sdk/models/vercelerror.js.js";
 
-const vercel = new Vercel();
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
 
 async function run() {
   try {
-    const result = await vercel
-      .getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans(
-        {
-          integrationIdOrSlug: "<value>",
-          productIdOrSlug: "<value>",
-        },
-      );
+    const result = await vercel.accessGroups.readAccessGroup({
+      idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+      slug: "my-team-url-slug",
+    });
 
     console.log(result);
   } catch (error) {
@@ -939,16 +933,15 @@ import { Vercel } from "@vercel/sdk";
 
 const vercel = new Vercel({
   serverURL: "https://api.vercel.com",
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await vercel
-    .getV1IntegrationsIntegrationIntegrationIdOrSlugProductsProductIdOrSlugPlans(
-      {
-        integrationIdOrSlug: "<value>",
-        productIdOrSlug: "<value>",
-      },
-    );
+  const result = await vercel.accessGroups.readAccessGroup({
+    idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
 
   console.log(result);
 }

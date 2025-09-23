@@ -6383,11 +6383,48 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@7820": {}
+                      "__@BRAND@7823": {}
                     }
                   },
                   "secrets": []
                 }
+              }
+            type: simple
+    x-speakeasy-test-group: integrations
+    x-speakeasy-test-rebuild: true
+  - workflowId: getBillingPlans
+    steps:
+      - stepId: test
+        operationId: getBillingPlans
+        parameters:
+          - name: integrationIdOrSlug
+            in: path
+            value: <value>
+          - name: productIdOrSlug
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "plans": [
+                  {
+                    "type": "prepayment",
+                    "id": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "scope": "installation",
+                    "description": "outside fatally ultimate limply upon especially hm jellyfish expostulate",
+                    "paymentMethodRequired": false
+                  }
+                ]
               }
             type: simple
     x-speakeasy-test-group: integrations

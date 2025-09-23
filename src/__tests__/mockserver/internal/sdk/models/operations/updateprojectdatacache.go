@@ -2380,6 +2380,7 @@ const (
 	UpdateProjectDataCacheFrameworkNitro          UpdateProjectDataCacheFramework = "nitro"
 	UpdateProjectDataCacheFrameworkHono           UpdateProjectDataCacheFramework = "hono"
 	UpdateProjectDataCacheFrameworkExpress        UpdateProjectDataCacheFramework = "express"
+	UpdateProjectDataCacheFrameworkH3             UpdateProjectDataCacheFramework = "h3"
 	UpdateProjectDataCacheFrameworkXmcp           UpdateProjectDataCacheFramework = "xmcp"
 )
 
@@ -2491,6 +2492,8 @@ func (e *UpdateProjectDataCacheFramework) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = UpdateProjectDataCacheFramework(v)
@@ -4279,6 +4282,8 @@ type UpdateProjectDataCacheStage struct {
 	RequireApproval *bool `json:"requireApproval,omitempty"`
 	// Duration in minutes for automatic advancement to the next stage
 	Duration *float64 `json:"duration,omitempty"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheStage) GetTargetPercentage() float64 {
@@ -4300,6 +4305,13 @@ func (o *UpdateProjectDataCacheStage) GetDuration() *float64 {
 		return nil
 	}
 	return o.Duration
+}
+
+func (o *UpdateProjectDataCacheStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
 }
 
 // UpdateProjectDataCacheRollingRelease - Project-level rolling release configuration that defines how deployments should be gradually rolled out

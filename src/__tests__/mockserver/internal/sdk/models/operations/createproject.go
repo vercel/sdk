@@ -270,6 +270,7 @@ const (
 	CreateProjectFrameworkRequestNitro          CreateProjectFrameworkRequest = "nitro"
 	CreateProjectFrameworkRequestHono           CreateProjectFrameworkRequest = "hono"
 	CreateProjectFrameworkRequestExpress        CreateProjectFrameworkRequest = "express"
+	CreateProjectFrameworkRequestH3             CreateProjectFrameworkRequest = "h3"
 	CreateProjectFrameworkRequestXmcp           CreateProjectFrameworkRequest = "xmcp"
 )
 
@@ -381,6 +382,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = CreateProjectFrameworkRequest(v)
@@ -3218,6 +3221,7 @@ const (
 	CreateProjectFrameworkResponseBodyNitro          CreateProjectFrameworkResponseBody = "nitro"
 	CreateProjectFrameworkResponseBodyHono           CreateProjectFrameworkResponseBody = "hono"
 	CreateProjectFrameworkResponseBodyExpress        CreateProjectFrameworkResponseBody = "express"
+	CreateProjectFrameworkResponseBodyH3             CreateProjectFrameworkResponseBody = "h3"
 	CreateProjectFrameworkResponseBodyXmcp           CreateProjectFrameworkResponseBody = "xmcp"
 )
 
@@ -3329,6 +3333,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "hono":
 		fallthrough
 	case "express":
+		fallthrough
+	case "h3":
 		fallthrough
 	case "xmcp":
 		*e = CreateProjectFrameworkResponseBody(v)
@@ -5117,6 +5123,8 @@ type CreateProjectStage struct {
 	RequireApproval *bool `json:"requireApproval,omitempty"`
 	// Duration in minutes for automatic advancement to the next stage
 	Duration *float64 `json:"duration,omitempty"`
+	// Whether to linearly shift traffic over the duration of this stage
+	LinearShift *bool `json:"linearShift,omitempty"`
 }
 
 func (o *CreateProjectStage) GetTargetPercentage() float64 {
@@ -5138,6 +5146,13 @@ func (o *CreateProjectStage) GetDuration() *float64 {
 		return nil
 	}
 	return o.Duration
+}
+
+func (o *CreateProjectStage) GetLinearShift() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LinearShift
 }
 
 // CreateProjectRollingRelease - Project-level rolling release configuration that defines how deployments should be gradually rolled out

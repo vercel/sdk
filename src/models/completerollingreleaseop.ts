@@ -181,6 +181,10 @@ export type CompleteRollingReleaseStages = {
    * Duration in seconds for automatic advancement, null for manual stages or the final stage
    */
   duration: number | null;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 /**
@@ -207,6 +211,10 @@ export type CompleteRollingReleaseActiveStage = {
    * Duration in seconds for automatic advancement, null for manual stages or the final stage
    */
   duration: number | null;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 /**
@@ -233,6 +241,10 @@ export type CompleteRollingReleaseNextStage = {
    * Duration in seconds for automatic advancement, null for manual stages or the final stage
    */
   duration: number | null;
+  /**
+   * Whether to linearly shift traffic over the duration of this stage
+   */
+  linearShift?: boolean | undefined;
 };
 
 /**
@@ -780,6 +792,7 @@ export const CompleteRollingReleaseStages$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean(),
   duration: z.nullable(z.number()),
+  linearShift: z.boolean().optional(),
 });
 
 /** @internal */
@@ -789,6 +802,7 @@ export type CompleteRollingReleaseStages$Outbound = {
   targetPercentage: number;
   requireApproval: boolean;
   duration: number | null;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -802,6 +816,7 @@ export const CompleteRollingReleaseStages$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean(),
   duration: z.nullable(z.number()),
+  linearShift: z.boolean().optional(),
 });
 
 /**
@@ -848,6 +863,7 @@ export const CompleteRollingReleaseActiveStage$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean(),
   duration: z.nullable(z.number()),
+  linearShift: z.boolean().optional(),
 });
 
 /** @internal */
@@ -857,6 +873,7 @@ export type CompleteRollingReleaseActiveStage$Outbound = {
   targetPercentage: number;
   requireApproval: boolean;
   duration: number | null;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -870,6 +887,7 @@ export const CompleteRollingReleaseActiveStage$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean(),
   duration: z.nullable(z.number()),
+  linearShift: z.boolean().optional(),
 });
 
 /**
@@ -917,6 +935,7 @@ export const CompleteRollingReleaseNextStage$inboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean(),
   duration: z.nullable(z.number()),
+  linearShift: z.boolean().optional(),
 });
 
 /** @internal */
@@ -926,6 +945,7 @@ export type CompleteRollingReleaseNextStage$Outbound = {
   targetPercentage: number;
   requireApproval: boolean;
   duration: number | null;
+  linearShift?: boolean | undefined;
 };
 
 /** @internal */
@@ -939,6 +959,7 @@ export const CompleteRollingReleaseNextStage$outboundSchema: z.ZodType<
   targetPercentage: z.number(),
   requireApproval: z.boolean(),
   duration: z.nullable(z.number()),
+  linearShift: z.boolean().optional(),
 });
 
 /**

@@ -7,7 +7,7 @@ import { Product } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: Product = {
   value: {
-    atBRANDAt7823: {},
+    atBRANDAt8466: {},
   },
 };
 ```
@@ -20,6 +20,7 @@ let value: Product = {
 | `name`                                                                                                       | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `slug`                                                                                                       | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `iconUrl`                                                                                                    | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `capabilities`                                                                                               | [models.CreateIntegrationStoreDirectCapabilities](../models/createintegrationstoredirectcapabilities.md)     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `shortDescription`                                                                                           | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `metadataSchema`                                                                                             | [models.CreateIntegrationStoreDirectMetadataSchema](../models/createintegrationstoredirectmetadataschema.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
 | `resourceLinks`                                                                                              | [models.ResourceLinks](../models/resourcelinks.md)[]                                                         | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

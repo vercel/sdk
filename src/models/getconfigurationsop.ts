@@ -52,6 +52,7 @@ export const TagIds = {
   TagMessaging: "tag_messaging",
   TagMonitoring: "tag_monitoring",
   TagObservability: "tag_observability",
+  TagPayments: "tag_payments",
   TagPerformance: "tag_performance",
   TagProductivity: "tag_productivity",
   TagSearching: "tag_searching",

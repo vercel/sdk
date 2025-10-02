@@ -205,12 +205,12 @@ test("Deployments Create Deployment", async () => {
     name: "<value>",
     createdAt: 179.28,
     type: "LAMBDAS",
-    version: 8477.72,
     meta: {
       "key": "<value>",
     },
     readyState: "BUILDING",
     regions: [],
+    version: 8477.72,
     url: "https://unwritten-viability.org",
     projectId: "<id>",
     ownerId: "<id>",

@@ -65,7 +65,7 @@ export type GetEdgeConfigPurpose =
 export type GetEdgeConfigResponseBody = {
   createdAt: number;
   updatedAt: number;
-  deletedAt?: number | undefined;
+  deletedAt?: number | null | undefined;
   id: string;
   /**
    * Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).
@@ -476,7 +476,7 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   updatedAt: z.number(),
-  deletedAt: z.number().optional(),
+  deletedAt: z.nullable(z.number()).optional(),
   id: z.string(),
   slug: z.string(),
   ownerId: z.string(),
@@ -496,7 +496,7 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
 export type GetEdgeConfigResponseBody$Outbound = {
   createdAt: number;
   updatedAt: number;
-  deletedAt?: number | undefined;
+  deletedAt?: number | null | undefined;
   id: string;
   slug: string;
   ownerId: string;
@@ -520,7 +520,7 @@ export const GetEdgeConfigResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   createdAt: z.number(),
   updatedAt: z.number(),
-  deletedAt: z.number().optional(),
+  deletedAt: z.nullable(z.number()).optional(),
   id: z.string(),
   slug: z.string(),
   ownerId: z.string(),

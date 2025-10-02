@@ -64,35 +64,8 @@ func (e *ElasticConcurrencyEnabled) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// SortByElasticConcurrency - Sort results by elastic concurrency status. desc = enabled projects first, asc = disabled projects first
-type SortByElasticConcurrency string
-
-const (
-	SortByElasticConcurrencyDesc SortByElasticConcurrency = "desc"
-	SortByElasticConcurrencyAsc  SortByElasticConcurrency = "asc"
-)
-
-func (e SortByElasticConcurrency) ToPointer() *SortByElasticConcurrency {
-	return &e
-}
-func (e *SortByElasticConcurrency) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "desc":
-		fallthrough
-	case "asc":
-		*e = SortByElasticConcurrency(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SortByElasticConcurrency: %v", v)
-	}
-}
-
 type GetProjectsRequest struct {
-	// Query only projects updated after the given timestamp
+	// Query only projects updated after the given timestamp or continuation token.
 	From *string `queryParam:"style=form,explode=true,name=from"`
 	// Specifies whether PRs from Git forks should require a team member's authorization before it can be deployed
 	GitForkProtection *GitForkProtection `queryParam:"style=form,explode=true,name=gitForkProtection"`
@@ -115,8 +88,6 @@ type GetProjectsRequest struct {
 	Deprecated        *bool   `queryParam:"style=form,explode=true,name=deprecated"`
 	// Filter results by projects with elastic concurrency enabled
 	ElasticConcurrencyEnabled *ElasticConcurrencyEnabled `queryParam:"style=form,explode=true,name=elasticConcurrencyEnabled"`
-	// Sort results by elastic concurrency status. desc = enabled projects first, asc = disabled projects first
-	SortByElasticConcurrency *SortByElasticConcurrency `queryParam:"style=form,explode=true,name=sortByElasticConcurrency"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -205,13 +176,6 @@ func (o *GetProjectsRequest) GetElasticConcurrencyEnabled() *ElasticConcurrencyE
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
-}
-
-func (o *GetProjectsRequest) GetSortByElasticConcurrency() *SortByElasticConcurrency {
-	if o == nil {
-		return nil
-	}
-	return o.SortByElasticConcurrency
 }
 
 func (o *GetProjectsRequest) GetTeamID() *string {
@@ -3634,8 +3598,8 @@ type GetProjectsLinkGithubLimited struct {
 	Type      GetProjectsTypeGithubLimited `json:"type"`
 	Repo      *string                      `json:"repo,omitempty"`
 	RepoID    *float64                     `json:"repoId,omitempty"`
-	UpdatedAt *float64                     `json:"updatedAt,omitempty"`
 	CreatedAt *float64                     `json:"createdAt,omitempty"`
+	UpdatedAt *float64                     `json:"updatedAt,omitempty"`
 	Org       string                       `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                 `json:"repoOwnerId,omitempty"`
@@ -3677,18 +3641,18 @@ func (o *GetProjectsLinkGithubLimited) GetRepoID() *float64 {
 	return o.RepoID
 }
 
-func (o *GetProjectsLinkGithubLimited) GetUpdatedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
-}
-
 func (o *GetProjectsLinkGithubLimited) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
+}
+
+func (o *GetProjectsLinkGithubLimited) GetUpdatedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
 }
 
 func (o *GetProjectsLinkGithubLimited) GetOrg() string {
@@ -5429,73 +5393,6 @@ func (o *GetProjectsTargets) GetWithCache() *bool {
 }
 
 type GetProjectsPermissions struct {
-	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
-	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
-	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
-	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
-	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
-	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
-	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
-	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
-	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
-	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
-	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
-	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
-	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
-	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
-	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
-	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
-	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
-	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
-	Environments                             []components.ACLAction `json:"environments,omitempty"`
-	Logs                                     []components.ACLAction `json:"logs,omitempty"`
-	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
-	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
-	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
-	Job                                      []components.ACLAction `json:"job,omitempty"`
-	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
-	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
-	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
-	Project                                  []components.ACLAction `json:"project,omitempty"`
-	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
-	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
-	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
-	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
-	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
-	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
-	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
-	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
-	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
-	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
-	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
-	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
-	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
-	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
-	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
-	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
-	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
-	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
-	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
-	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
-	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
-	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
-	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
-	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
-	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
-	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
-	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
-	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
-	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
-	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
-	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
-	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
-	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
-	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
-	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
-	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
-	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
-	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
-	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
 	Oauth2Connection                         []components.ACLAction `json:"oauth2Connection,omitempty"`
 	User                                     []components.ACLAction `json:"user,omitempty"`
 	UserConnection                           []components.ACLAction `json:"userConnection,omitempty"`
@@ -5642,475 +5539,74 @@ type GetProjectsPermissions struct {
 	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	APIKey                                   []components.ACLAction `json:"apiKey,omitempty"`
 	APIKeyOwnedBySelf                        []components.ACLAction `json:"apiKeyOwnedBySelf,omitempty"`
-}
-
-func (o *GetProjectsPermissions) GetAliasProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProject
-}
-
-func (o *GetProjectsPermissions) GetAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.AliasProtectionBypass
-}
-
-func (o *GetProjectsPermissions) GetBuildMachine() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.BuildMachine
-}
-
-func (o *GetProjectsPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProductionAliasProtectionBypass
-}
-
-func (o *GetProjectsPermissions) GetConnectConfigurationLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ConnectConfigurationLink
-}
-
-func (o *GetProjectsPermissions) GetDataCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DataCacheNamespace
-}
-
-func (o *GetProjectsPermissions) GetDeployment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Deployment
-}
-
-func (o *GetProjectsPermissions) GetDeploymentBuildLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentBuildLogs
-}
-
-func (o *GetProjectsPermissions) GetDeploymentCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheck
-}
-
-func (o *GetProjectsPermissions) GetDeploymentCheckPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckPreview
-}
-
-func (o *GetProjectsPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentCheckReRunFromProductionBranch
-}
-
-func (o *GetProjectsPermissions) GetDeploymentProductionGit() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentProductionGit
-}
-
-func (o *GetProjectsPermissions) GetDeploymentV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentV0
-}
-
-func (o *GetProjectsPermissions) GetDeploymentPreview() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPreview
-}
-
-func (o *GetProjectsPermissions) GetDeploymentPrivate() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPrivate
-}
-
-func (o *GetProjectsPermissions) GetDeploymentPromote() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentPromote
-}
-
-func (o *GetProjectsPermissions) GetDeploymentRollback() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.DeploymentRollback
-}
-
-func (o *GetProjectsPermissions) GetEdgeCacheNamespace() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.EdgeCacheNamespace
-}
-
-func (o *GetProjectsPermissions) GetEnvironments() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Environments
-}
-
-func (o *GetProjectsPermissions) GetLogs() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Logs
-}
-
-func (o *GetProjectsPermissions) GetLogsPreset() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.LogsPreset
-}
-
-func (o *GetProjectsPermissions) GetPasswordProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.PasswordProtection
-}
-
-func (o *GetProjectsPermissions) GetOptionsAllowlist() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OptionsAllowlist
-}
-
-func (o *GetProjectsPermissions) GetJob() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Job
-}
-
-func (o *GetProjectsPermissions) GetObservabilityData() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ObservabilityData
-}
-
-func (o *GetProjectsPermissions) GetOnDemandBuild() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandBuild
-}
-
-func (o *GetProjectsPermissions) GetOnDemandConcurrency() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.OnDemandConcurrency
-}
-
-func (o *GetProjectsPermissions) GetProject() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Project
-}
-
-func (o *GetProjectsPermissions) GetProjectFromV0() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFromV0
-}
-
-func (o *GetProjectsPermissions) GetProjectAccessGroup() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAccessGroup
-}
-
-func (o *GetProjectsPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsSampling
-}
-
-func (o *GetProjectsPermissions) GetProjectCheck() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheck
-}
-
-func (o *GetProjectsPermissions) GetProjectCheckRun() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectCheckRun
-}
-
-func (o *GetProjectsPermissions) GetProjectDeploymentHook() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentHook
-}
-
-func (o *GetProjectsPermissions) GetProjectDomain() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomain
-}
-
-func (o *GetProjectsPermissions) GetProjectDomainMove() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainMove
-}
-
-func (o *GetProjectsPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDomainCheckConfig
-}
-
-func (o *GetProjectsPermissions) GetProjectEnvVars() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVars
-}
-
-func (o *GetProjectsPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsProduction
-}
-
-func (o *GetProjectsPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectEnvVarsUnownedByIntegration
-}
-
-func (o *GetProjectsPermissions) GetProjectFlags() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectFlags
-}
-
-func (o *GetProjectsPermissions) GetProjectID() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectID
-}
-
-func (o *GetProjectsPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectIntegrationConfiguration
-}
-
-func (o *GetProjectsPermissions) GetProjectLink() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectLink
-}
-
-func (o *GetProjectsPermissions) GetProjectMember() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMember
-}
-
-func (o *GetProjectsPermissions) GetProjectMonitoring() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectMonitoring
-}
-
-func (o *GetProjectsPermissions) GetProjectPermissions() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectPermissions
-}
-
-func (o *GetProjectsPermissions) GetProjectProductionBranch() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProductionBranch
-}
-
-func (o *GetProjectsPermissions) GetProjectTransfer() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransfer
-}
-
-func (o *GetProjectsPermissions) GetProjectTransferOut() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTransferOut
-}
-
-func (o *GetProjectsPermissions) GetProjectProtectionBypass() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectProtectionBypass
-}
-
-func (o *GetProjectsPermissions) GetProjectUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectUsage
-}
-
-func (o *GetProjectsPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectAnalyticsUsage
-}
-
-func (o *GetProjectsPermissions) GetProjectSupportCase() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCase
-}
-
-func (o *GetProjectsPermissions) GetProjectSupportCaseComment() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectSupportCaseComment
-}
-
-func (o *GetProjectsPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectDeploymentExpiration
-}
-
-func (o *GetProjectsPermissions) GetProjectRollingRelease() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectRollingRelease
-}
-
-func (o *GetProjectsPermissions) GetProjectTier() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectTier
-}
-
-func (o *GetProjectsPermissions) GetProjectOIDCToken() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.ProjectOIDCToken
-}
-
-func (o *GetProjectsPermissions) GetSeawallConfig() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SeawallConfig
-}
-
-func (o *GetProjectsPermissions) GetSkewProtection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SkewProtection
-}
-
-func (o *GetProjectsPermissions) GetAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Analytics
-}
-
-func (o *GetProjectsPermissions) GetTrustedIps() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.TrustedIps
-}
-
-func (o *GetProjectsPermissions) GetV0Chat() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.V0Chat
-}
-
-func (o *GetProjectsPermissions) GetWebAnalytics() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.WebAnalytics
-}
-
-func (o *GetProjectsPermissions) GetSharedEnvVarConnection() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.SharedEnvVarConnection
-}
-
-func (o *GetProjectsPermissions) GetSonar() []components.ACLAction {
-	if o == nil {
-		return nil
-	}
-	return o.Sonar
+	APIKeyAiGateway                          []components.ACLAction `json:"apiKeyAiGateway,omitempty"`
+	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
+	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
+	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
+	ProductionAliasProtectionBypass          []components.ACLAction `json:"productionAliasProtectionBypass,omitempty"`
+	ConnectConfigurationLink                 []components.ACLAction `json:"connectConfigurationLink,omitempty"`
+	DataCacheNamespace                       []components.ACLAction `json:"dataCacheNamespace,omitempty"`
+	Deployment                               []components.ACLAction `json:"deployment,omitempty"`
+	DeploymentBuildLogs                      []components.ACLAction `json:"deploymentBuildLogs,omitempty"`
+	DeploymentCheck                          []components.ACLAction `json:"deploymentCheck,omitempty"`
+	DeploymentCheckPreview                   []components.ACLAction `json:"deploymentCheckPreview,omitempty"`
+	DeploymentCheckReRunFromProductionBranch []components.ACLAction `json:"deploymentCheckReRunFromProductionBranch,omitempty"`
+	DeploymentProductionGit                  []components.ACLAction `json:"deploymentProductionGit,omitempty"`
+	DeploymentV0                             []components.ACLAction `json:"deploymentV0,omitempty"`
+	DeploymentPreview                        []components.ACLAction `json:"deploymentPreview,omitempty"`
+	DeploymentPrivate                        []components.ACLAction `json:"deploymentPrivate,omitempty"`
+	DeploymentPromote                        []components.ACLAction `json:"deploymentPromote,omitempty"`
+	DeploymentRollback                       []components.ACLAction `json:"deploymentRollback,omitempty"`
+	EdgeCacheNamespace                       []components.ACLAction `json:"edgeCacheNamespace,omitempty"`
+	Environments                             []components.ACLAction `json:"environments,omitempty"`
+	Logs                                     []components.ACLAction `json:"logs,omitempty"`
+	LogsPreset                               []components.ACLAction `json:"logsPreset,omitempty"`
+	PasswordProtection                       []components.ACLAction `json:"passwordProtection,omitempty"`
+	OptionsAllowlist                         []components.ACLAction `json:"optionsAllowlist,omitempty"`
+	Job                                      []components.ACLAction `json:"job,omitempty"`
+	ObservabilityData                        []components.ACLAction `json:"observabilityData,omitempty"`
+	OnDemandBuild                            []components.ACLAction `json:"onDemandBuild,omitempty"`
+	OnDemandConcurrency                      []components.ACLAction `json:"onDemandConcurrency,omitempty"`
+	Project                                  []components.ACLAction `json:"project,omitempty"`
+	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
+	ProjectAccessGroup                       []components.ACLAction `json:"projectAccessGroup,omitempty"`
+	ProjectAnalyticsSampling                 []components.ACLAction `json:"projectAnalyticsSampling,omitempty"`
+	ProjectCheck                             []components.ACLAction `json:"projectCheck,omitempty"`
+	ProjectCheckRun                          []components.ACLAction `json:"projectCheckRun,omitempty"`
+	ProjectDeploymentHook                    []components.ACLAction `json:"projectDeploymentHook,omitempty"`
+	ProjectDomain                            []components.ACLAction `json:"projectDomain,omitempty"`
+	ProjectDomainMove                        []components.ACLAction `json:"projectDomainMove,omitempty"`
+	ProjectDomainCheckConfig                 []components.ACLAction `json:"projectDomainCheckConfig,omitempty"`
+	ProjectEnvVars                           []components.ACLAction `json:"projectEnvVars,omitempty"`
+	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
+	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
+	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
+	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
+	ProjectLink                              []components.ACLAction `json:"projectLink,omitempty"`
+	ProjectMember                            []components.ACLAction `json:"projectMember,omitempty"`
+	ProjectMonitoring                        []components.ACLAction `json:"projectMonitoring,omitempty"`
+	ProjectPermissions                       []components.ACLAction `json:"projectPermissions,omitempty"`
+	ProjectProductionBranch                  []components.ACLAction `json:"projectProductionBranch,omitempty"`
+	ProjectTransfer                          []components.ACLAction `json:"projectTransfer,omitempty"`
+	ProjectTransferOut                       []components.ACLAction `json:"projectTransferOut,omitempty"`
+	ProjectProtectionBypass                  []components.ACLAction `json:"projectProtectionBypass,omitempty"`
+	ProjectUsage                             []components.ACLAction `json:"projectUsage,omitempty"`
+	ProjectAnalyticsUsage                    []components.ACLAction `json:"projectAnalyticsUsage,omitempty"`
+	ProjectSupportCase                       []components.ACLAction `json:"projectSupportCase,omitempty"`
+	ProjectSupportCaseComment                []components.ACLAction `json:"projectSupportCaseComment,omitempty"`
+	ProjectDeploymentExpiration              []components.ACLAction `json:"projectDeploymentExpiration,omitempty"`
+	ProjectRollingRelease                    []components.ACLAction `json:"projectRollingRelease,omitempty"`
+	ProjectTier                              []components.ACLAction `json:"projectTier,omitempty"`
+	ProjectOIDCToken                         []components.ACLAction `json:"projectOIDCToken,omitempty"`
+	SeawallConfig                            []components.ACLAction `json:"seawallConfig,omitempty"`
+	SkewProtection                           []components.ACLAction `json:"skewProtection,omitempty"`
+	Analytics                                []components.ACLAction `json:"analytics,omitempty"`
+	TrustedIps                               []components.ACLAction `json:"trustedIps,omitempty"`
+	V0Chat                                   []components.ACLAction `json:"v0Chat,omitempty"`
+	WebAnalytics                             []components.ACLAction `json:"webAnalytics,omitempty"`
+	SharedEnvVarConnection                   []components.ACLAction `json:"sharedEnvVarConnection,omitempty"`
+	Sonar                                    []components.ACLAction `json:"sonar,omitempty"`
 }
 
 func (o *GetProjectsPermissions) GetOauth2Connection() []components.ACLAction {
@@ -7133,6 +6629,482 @@ func (o *GetProjectsPermissions) GetAPIKeyOwnedBySelf() []components.ACLAction {
 		return nil
 	}
 	return o.APIKeyOwnedBySelf
+}
+
+func (o *GetProjectsPermissions) GetAPIKeyAiGateway() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyAiGateway
+}
+
+func (o *GetProjectsPermissions) GetAliasProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProject
+}
+
+func (o *GetProjectsPermissions) GetAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.AliasProtectionBypass
+}
+
+func (o *GetProjectsPermissions) GetBuildMachine() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachine
+}
+
+func (o *GetProjectsPermissions) GetProductionAliasProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProductionAliasProtectionBypass
+}
+
+func (o *GetProjectsPermissions) GetConnectConfigurationLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectConfigurationLink
+}
+
+func (o *GetProjectsPermissions) GetDataCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DataCacheNamespace
+}
+
+func (o *GetProjectsPermissions) GetDeployment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Deployment
+}
+
+func (o *GetProjectsPermissions) GetDeploymentBuildLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentBuildLogs
+}
+
+func (o *GetProjectsPermissions) GetDeploymentCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheck
+}
+
+func (o *GetProjectsPermissions) GetDeploymentCheckPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckPreview
+}
+
+func (o *GetProjectsPermissions) GetDeploymentCheckReRunFromProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentCheckReRunFromProductionBranch
+}
+
+func (o *GetProjectsPermissions) GetDeploymentProductionGit() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentProductionGit
+}
+
+func (o *GetProjectsPermissions) GetDeploymentV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentV0
+}
+
+func (o *GetProjectsPermissions) GetDeploymentPreview() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPreview
+}
+
+func (o *GetProjectsPermissions) GetDeploymentPrivate() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPrivate
+}
+
+func (o *GetProjectsPermissions) GetDeploymentPromote() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentPromote
+}
+
+func (o *GetProjectsPermissions) GetDeploymentRollback() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentRollback
+}
+
+func (o *GetProjectsPermissions) GetEdgeCacheNamespace() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.EdgeCacheNamespace
+}
+
+func (o *GetProjectsPermissions) GetEnvironments() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Environments
+}
+
+func (o *GetProjectsPermissions) GetLogs() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Logs
+}
+
+func (o *GetProjectsPermissions) GetLogsPreset() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.LogsPreset
+}
+
+func (o *GetProjectsPermissions) GetPasswordProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.PasswordProtection
+}
+
+func (o *GetProjectsPermissions) GetOptionsAllowlist() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OptionsAllowlist
+}
+
+func (o *GetProjectsPermissions) GetJob() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Job
+}
+
+func (o *GetProjectsPermissions) GetObservabilityData() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ObservabilityData
+}
+
+func (o *GetProjectsPermissions) GetOnDemandBuild() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandBuild
+}
+
+func (o *GetProjectsPermissions) GetOnDemandConcurrency() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OnDemandConcurrency
+}
+
+func (o *GetProjectsPermissions) GetProject() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *GetProjectsPermissions) GetProjectFromV0() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFromV0
+}
+
+func (o *GetProjectsPermissions) GetProjectAccessGroup() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAccessGroup
+}
+
+func (o *GetProjectsPermissions) GetProjectAnalyticsSampling() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsSampling
+}
+
+func (o *GetProjectsPermissions) GetProjectCheck() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheck
+}
+
+func (o *GetProjectsPermissions) GetProjectCheckRun() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectCheckRun
+}
+
+func (o *GetProjectsPermissions) GetProjectDeploymentHook() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentHook
+}
+
+func (o *GetProjectsPermissions) GetProjectDomain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomain
+}
+
+func (o *GetProjectsPermissions) GetProjectDomainMove() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainMove
+}
+
+func (o *GetProjectsPermissions) GetProjectDomainCheckConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDomainCheckConfig
+}
+
+func (o *GetProjectsPermissions) GetProjectEnvVars() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVars
+}
+
+func (o *GetProjectsPermissions) GetProjectEnvVarsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsProduction
+}
+
+func (o *GetProjectsPermissions) GetProjectEnvVarsUnownedByIntegration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectEnvVarsUnownedByIntegration
+}
+
+func (o *GetProjectsPermissions) GetProjectFlags() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlags
+}
+
+func (o *GetProjectsPermissions) GetProjectID() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectID
+}
+
+func (o *GetProjectsPermissions) GetProjectIntegrationConfiguration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIntegrationConfiguration
+}
+
+func (o *GetProjectsPermissions) GetProjectLink() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectLink
+}
+
+func (o *GetProjectsPermissions) GetProjectMember() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMember
+}
+
+func (o *GetProjectsPermissions) GetProjectMonitoring() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectMonitoring
+}
+
+func (o *GetProjectsPermissions) GetProjectPermissions() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectPermissions
+}
+
+func (o *GetProjectsPermissions) GetProjectProductionBranch() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProductionBranch
+}
+
+func (o *GetProjectsPermissions) GetProjectTransfer() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransfer
+}
+
+func (o *GetProjectsPermissions) GetProjectTransferOut() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTransferOut
+}
+
+func (o *GetProjectsPermissions) GetProjectProtectionBypass() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectProtectionBypass
+}
+
+func (o *GetProjectsPermissions) GetProjectUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectUsage
+}
+
+func (o *GetProjectsPermissions) GetProjectAnalyticsUsage() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectAnalyticsUsage
+}
+
+func (o *GetProjectsPermissions) GetProjectSupportCase() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCase
+}
+
+func (o *GetProjectsPermissions) GetProjectSupportCaseComment() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectSupportCaseComment
+}
+
+func (o *GetProjectsPermissions) GetProjectDeploymentExpiration() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectDeploymentExpiration
+}
+
+func (o *GetProjectsPermissions) GetProjectRollingRelease() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectRollingRelease
+}
+
+func (o *GetProjectsPermissions) GetProjectTier() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectTier
+}
+
+func (o *GetProjectsPermissions) GetProjectOIDCToken() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectOIDCToken
+}
+
+func (o *GetProjectsPermissions) GetSeawallConfig() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SeawallConfig
+}
+
+func (o *GetProjectsPermissions) GetSkewProtection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SkewProtection
+}
+
+func (o *GetProjectsPermissions) GetAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Analytics
+}
+
+func (o *GetProjectsPermissions) GetTrustedIps() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.TrustedIps
+}
+
+func (o *GetProjectsPermissions) GetV0Chat() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.V0Chat
+}
+
+func (o *GetProjectsPermissions) GetWebAnalytics() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.WebAnalytics
+}
+
+func (o *GetProjectsPermissions) GetSharedEnvVarConnection() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.SharedEnvVarConnection
+}
+
+func (o *GetProjectsPermissions) GetSonar() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Sonar
 }
 
 type GetProjectsLastRollbackTarget struct {
@@ -10716,11 +10688,106 @@ func (o *GetProjectsProject) GetInternalRoutes() []GetProjectsInternalRouteUnion
 	return o.InternalRoutes
 }
 
+// GetProjectsPagination - This object contains information related to the pagination of the current request using continuation tokens. Since CosmosDB doesn't support going to previous pages, only count and next are provided.
+type GetProjectsPagination struct {
+	// Amount of items in the current page.
+	Count float64 `json:"count"`
+	// Continuation token that must be used to request the next page. Base32 encoded for safe URL transmission.
+	Next *string `json:"next"`
+}
+
+func (g GetProjectsPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"count", "next"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsPagination) GetCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Count
+}
+
+func (o *GetProjectsPagination) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+type PaginationType string
+
+const (
+	PaginationTypeGetProjectsPagination PaginationType = "getProjects_pagination"
+	PaginationTypePagination            PaginationType = "Pagination"
+)
+
+type Pagination struct {
+	GetProjectsPagination *GetProjectsPagination `queryParam:"inline"`
+	Pagination            *components.Pagination `queryParam:"inline"`
+
+	Type PaginationType
+}
+
+func CreatePaginationGetProjectsPagination(getProjectsPagination GetProjectsPagination) Pagination {
+	typ := PaginationTypeGetProjectsPagination
+
+	return Pagination{
+		GetProjectsPagination: &getProjectsPagination,
+		Type:                  typ,
+	}
+}
+
+func CreatePaginationPagination(pagination components.Pagination) Pagination {
+	typ := PaginationTypePagination
+
+	return Pagination{
+		Pagination: &pagination,
+		Type:       typ,
+	}
+}
+
+func (u *Pagination) UnmarshalJSON(data []byte) error {
+
+	var pagination components.Pagination = components.Pagination{}
+	if err := utils.UnmarshalJSON(data, &pagination, "", true, nil); err == nil {
+		u.Pagination = &pagination
+		u.Type = PaginationTypePagination
+		return nil
+	}
+
+	var getProjectsPagination GetProjectsPagination = GetProjectsPagination{}
+	if err := utils.UnmarshalJSON(data, &getProjectsPagination, "", true, nil); err == nil {
+		u.GetProjectsPagination = &getProjectsPagination
+		u.Type = PaginationTypeGetProjectsPagination
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Pagination", string(data))
+}
+
+func (u Pagination) MarshalJSON() ([]byte, error) {
+	if u.GetProjectsPagination != nil {
+		return utils.MarshalJSON(u.GetProjectsPagination, "", true)
+	}
+
+	if u.Pagination != nil {
+		return utils.MarshalJSON(u.Pagination, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Pagination: all fields are null")
+}
+
 // GetProjectsResponseBody - The paginated list of projects
 type GetProjectsResponseBody struct {
-	Projects []GetProjectsProject `json:"projects"`
-	// This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
-	Pagination components.Pagination `json:"pagination"`
+	Projects   []GetProjectsProject `json:"projects"`
+	Pagination Pagination           `json:"pagination"`
 }
 
 func (o *GetProjectsResponseBody) GetProjects() []GetProjectsProject {
@@ -10730,9 +10797,9 @@ func (o *GetProjectsResponseBody) GetProjects() []GetProjectsProject {
 	return o.Projects
 }
 
-func (o *GetProjectsResponseBody) GetPagination() components.Pagination {
+func (o *GetProjectsResponseBody) GetPagination() Pagination {
 	if o == nil {
-		return components.Pagination{}
+		return Pagination{}
 	}
 	return o.Pagination
 }

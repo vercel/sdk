@@ -5407,6 +5407,7 @@ type UpdateProjectDataCachePermissions struct {
 	VercelRunExec                            []components.ACLAction `json:"vercelRunExec,omitempty"`
 	APIKey                                   []components.ACLAction `json:"apiKey,omitempty"`
 	APIKeyOwnedBySelf                        []components.ACLAction `json:"apiKeyOwnedBySelf,omitempty"`
+	APIKeyAiGateway                          []components.ACLAction `json:"apiKeyAiGateway,omitempty"`
 	AliasProject                             []components.ACLAction `json:"aliasProject,omitempty"`
 	AliasProtectionBypass                    []components.ACLAction `json:"aliasProtectionBypass,omitempty"`
 	BuildMachine                             []components.ACLAction `json:"buildMachine,omitempty"`
@@ -6496,6 +6497,13 @@ func (o *UpdateProjectDataCachePermissions) GetAPIKeyOwnedBySelf() []components.
 		return nil
 	}
 	return o.APIKeyOwnedBySelf
+}
+
+func (o *UpdateProjectDataCachePermissions) GetAPIKeyAiGateway() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyAiGateway
 }
 
 func (o *UpdateProjectDataCachePermissions) GetAliasProject() []components.ACLAction {

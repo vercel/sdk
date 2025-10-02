@@ -52,20 +52,20 @@ const value: models.CancelDeploymentGitSource5 = {
 };
 ```
 
-### `models.GitSource6`
+### `models.CancelDeploymentGitSource6`
 
 ```typescript
-const value: models.GitSource6 = {
+const value: models.CancelDeploymentGitSource6 = {
   type: "github-limited",
   org: "<value>",
   repo: "<value>",
 };
 ```
 
-### `models.GitSource7`
+### `models.CancelDeploymentGitSource7`
 
 ```typescript
-const value: models.GitSource7 = {
+const value: models.CancelDeploymentGitSource7 = {
   type: "gitlab",
   projectId: "<id>",
 };

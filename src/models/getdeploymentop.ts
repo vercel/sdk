@@ -2055,6 +2055,10 @@ export type GetDeploymentMicrofrontends2 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type GetDeploymentMicrofrontends1 = {
@@ -2075,6 +2079,10 @@ export type GetDeploymentMicrofrontends1 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type ResponseBodyMicrofrontends =
@@ -12848,6 +12856,7 @@ export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -12861,6 +12870,7 @@ export type GetDeploymentMicrofrontends2$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -12879,6 +12889,7 @@ export const GetDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**
@@ -12925,6 +12936,7 @@ export const GetDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -12934,6 +12946,7 @@ export type GetDeploymentMicrofrontends1$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -12947,6 +12960,7 @@ export const GetDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**

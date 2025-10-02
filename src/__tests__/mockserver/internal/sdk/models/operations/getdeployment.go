@@ -10521,6 +10521,8 @@ type GetDeploymentMicrofrontends2 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (g GetDeploymentMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -10583,6 +10585,13 @@ func (o *GetDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool {
 	return o.MicrofrontendsAlias2Enabled
 }
 
+func (o *GetDeploymentMicrofrontends2) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
+}
+
 type GetDeploymentMicrofrontends1 struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -10593,6 +10602,8 @@ type GetDeploymentMicrofrontends1 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (g GetDeploymentMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -10639,6 +10650,13 @@ func (o *GetDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool {
 		return nil
 	}
 	return o.MicrofrontendsAlias2Enabled
+}
+
+func (o *GetDeploymentMicrofrontends1) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
 }
 
 type GetDeploymentMicrofrontendsUnionType string

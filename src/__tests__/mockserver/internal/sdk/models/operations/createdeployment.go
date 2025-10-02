@@ -627,6 +627,215 @@ func (o *GitSourceGitlabRequest) GetType() TypeGitlabRequest {
 	return o.Type
 }
 
+type TypeGithubLimitedRequest2 string
+
+const (
+	TypeGithubLimitedRequest2GithubLimited TypeGithubLimitedRequest2 = "github-limited"
+)
+
+func (e TypeGithubLimitedRequest2) ToPointer() *TypeGithubLimitedRequest2 {
+	return &e
+}
+func (e *TypeGithubLimitedRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = TypeGithubLimitedRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TypeGithubLimitedRequest2: %v", v)
+	}
+}
+
+type GitSourceGithubLimitedRequest2 struct {
+	Org  string                    `json:"org"`
+	Ref  string                    `json:"ref"`
+	Repo string                    `json:"repo"`
+	Sha  *string                   `json:"sha,omitempty"`
+	Type TypeGithubLimitedRequest2 `json:"type"`
+}
+
+func (g GitSourceGithubLimitedRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GitSourceGithubLimitedRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"org", "ref", "repo", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GitSourceGithubLimitedRequest2) GetOrg() string {
+	if o == nil {
+		return ""
+	}
+	return o.Org
+}
+
+func (o *GitSourceGithubLimitedRequest2) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GitSourceGithubLimitedRequest2) GetRepo() string {
+	if o == nil {
+		return ""
+	}
+	return o.Repo
+}
+
+func (o *GitSourceGithubLimitedRequest2) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GitSourceGithubLimitedRequest2) GetType() TypeGithubLimitedRequest2 {
+	if o == nil {
+		return TypeGithubLimitedRequest2("")
+	}
+	return o.Type
+}
+
+type RepoIDRequest2Type string
+
+const (
+	RepoIDRequest2TypeNumber RepoIDRequest2Type = "number"
+	RepoIDRequest2TypeStr    RepoIDRequest2Type = "str"
+)
+
+type RepoIDRequest2 struct {
+	Number *float64 `queryParam:"inline"`
+	Str    *string  `queryParam:"inline"`
+
+	Type RepoIDRequest2Type
+}
+
+func CreateRepoIDRequest2Number(number float64) RepoIDRequest2 {
+	typ := RepoIDRequest2TypeNumber
+
+	return RepoIDRequest2{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateRepoIDRequest2Str(str string) RepoIDRequest2 {
+	typ := RepoIDRequest2TypeStr
+
+	return RepoIDRequest2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *RepoIDRequest2) UnmarshalJSON(data []byte) error {
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = RepoIDRequest2TypeNumber
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = RepoIDRequest2TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RepoIDRequest2", string(data))
+}
+
+func (u RepoIDRequest2) MarshalJSON() ([]byte, error) {
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type RepoIDRequest2: all fields are null")
+}
+
+type TypeGithubLimitedRequest1 string
+
+const (
+	TypeGithubLimitedRequest1GithubLimited TypeGithubLimitedRequest1 = "github-limited"
+)
+
+func (e TypeGithubLimitedRequest1) ToPointer() *TypeGithubLimitedRequest1 {
+	return &e
+}
+func (e *TypeGithubLimitedRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "github-limited":
+		*e = TypeGithubLimitedRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TypeGithubLimitedRequest1: %v", v)
+	}
+}
+
+type GitSourceGithubLimitedRequest1 struct {
+	Ref    string                    `json:"ref"`
+	RepoID RepoIDRequest2            `json:"repoId"`
+	Sha    *string                   `json:"sha,omitempty"`
+	Type   TypeGithubLimitedRequest1 `json:"type"`
+}
+
+func (g GitSourceGithubLimitedRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GitSourceGithubLimitedRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"ref", "repoId", "type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GitSourceGithubLimitedRequest1) GetRef() string {
+	if o == nil {
+		return ""
+	}
+	return o.Ref
+}
+
+func (o *GitSourceGithubLimitedRequest1) GetRepoID() RepoIDRequest2 {
+	if o == nil {
+		return RepoIDRequest2{}
+	}
+	return o.RepoID
+}
+
+func (o *GitSourceGithubLimitedRequest1) GetSha() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sha
+}
+
+func (o *GitSourceGithubLimitedRequest1) GetType() TypeGithubLimitedRequest1 {
+	if o == nil {
+		return TypeGithubLimitedRequest1("")
+	}
+	return o.Type
+}
+
 type TypeGithubRequest2 string
 
 const (
@@ -704,58 +913,58 @@ func (o *GitSourceGithubRequest2) GetType() TypeGithubRequest2 {
 	return o.Type
 }
 
-type RepoIDRequestType string
+type RepoIDRequest1Type string
 
 const (
-	RepoIDRequestTypeNumber RepoIDRequestType = "number"
-	RepoIDRequestTypeStr    RepoIDRequestType = "str"
+	RepoIDRequest1TypeNumber RepoIDRequest1Type = "number"
+	RepoIDRequest1TypeStr    RepoIDRequest1Type = "str"
 )
 
-type RepoIDRequest struct {
+type RepoIDRequest1 struct {
 	Number *float64 `queryParam:"inline"`
 	Str    *string  `queryParam:"inline"`
 
-	Type RepoIDRequestType
+	Type RepoIDRequest1Type
 }
 
-func CreateRepoIDRequestNumber(number float64) RepoIDRequest {
-	typ := RepoIDRequestTypeNumber
+func CreateRepoIDRequest1Number(number float64) RepoIDRequest1 {
+	typ := RepoIDRequest1TypeNumber
 
-	return RepoIDRequest{
+	return RepoIDRequest1{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func CreateRepoIDRequestStr(str string) RepoIDRequest {
-	typ := RepoIDRequestTypeStr
+func CreateRepoIDRequest1Str(str string) RepoIDRequest1 {
+	typ := RepoIDRequest1TypeStr
 
-	return RepoIDRequest{
+	return RepoIDRequest1{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func (u *RepoIDRequest) UnmarshalJSON(data []byte) error {
+func (u *RepoIDRequest1) UnmarshalJSON(data []byte) error {
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
-		u.Type = RepoIDRequestTypeNumber
+		u.Type = RepoIDRequest1TypeNumber
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = RepoIDRequestTypeStr
+		u.Type = RepoIDRequest1TypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RepoIDRequest", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RepoIDRequest1", string(data))
 }
 
-func (u RepoIDRequest) MarshalJSON() ([]byte, error) {
+func (u RepoIDRequest1) MarshalJSON() ([]byte, error) {
 	if u.Number != nil {
 		return utils.MarshalJSON(u.Number, "", true)
 	}
@@ -764,7 +973,7 @@ func (u RepoIDRequest) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RepoIDRequest: all fields are null")
+	return nil, errors.New("could not marshal union type RepoIDRequest1: all fields are null")
 }
 
 type TypeGithubRequest1 string
@@ -792,7 +1001,7 @@ func (e *TypeGithubRequest1) UnmarshalJSON(data []byte) error {
 
 type GitSourceGithubRequest1 struct {
 	Ref    string             `json:"ref"`
-	RepoID RepoIDRequest      `json:"repoId"`
+	RepoID RepoIDRequest1     `json:"repoId"`
 	Sha    *string            `json:"sha,omitempty"`
 	Type   TypeGithubRequest1 `json:"type"`
 }
@@ -815,9 +1024,9 @@ func (o *GitSourceGithubRequest1) GetRef() string {
 	return o.Ref
 }
 
-func (o *GitSourceGithubRequest1) GetRepoID() RepoIDRequest {
+func (o *GitSourceGithubRequest1) GetRepoID() RepoIDRequest1 {
 	if o == nil {
-		return RepoIDRequest{}
+		return RepoIDRequest1{}
 	}
 	return o.RepoID
 }
@@ -839,20 +1048,24 @@ func (o *GitSourceGithubRequest1) GetType() TypeGithubRequest1 {
 type GitSourceRequestUnionType string
 
 const (
-	GitSourceRequestUnionTypeGitSourceGithubRequest1    GitSourceRequestUnionType = "gitSource_Github_request_1"
-	GitSourceRequestUnionTypeGitSourceGithubRequest2    GitSourceRequestUnionType = "gitSource_Github_request_2"
-	GitSourceRequestUnionTypeGitSourceGitlabRequest     GitSourceRequestUnionType = "gitSource_Gitlab_request"
-	GitSourceRequestUnionTypeGitSourceBitbucketRequest1 GitSourceRequestUnionType = "gitSource_Bitbucket_request_1"
-	GitSourceRequestUnionTypeGitSourceBitbucketRequest2 GitSourceRequestUnionType = "gitSource_Bitbucket_request_2"
+	GitSourceRequestUnionTypeGitSourceGithubRequest1        GitSourceRequestUnionType = "gitSource_Github_request_1"
+	GitSourceRequestUnionTypeGitSourceGithubRequest2        GitSourceRequestUnionType = "gitSource_Github_request_2"
+	GitSourceRequestUnionTypeGitSourceGithubLimitedRequest1 GitSourceRequestUnionType = "gitSource_GithubLimited_request_1"
+	GitSourceRequestUnionTypeGitSourceGithubLimitedRequest2 GitSourceRequestUnionType = "gitSource_GithubLimited_request_2"
+	GitSourceRequestUnionTypeGitSourceGitlabRequest         GitSourceRequestUnionType = "gitSource_Gitlab_request"
+	GitSourceRequestUnionTypeGitSourceBitbucketRequest1     GitSourceRequestUnionType = "gitSource_Bitbucket_request_1"
+	GitSourceRequestUnionTypeGitSourceBitbucketRequest2     GitSourceRequestUnionType = "gitSource_Bitbucket_request_2"
 )
 
 // GitSourceRequestUnion - Defines the Git Repository source to be deployed. This property can not be used in combination with `files`.
 type GitSourceRequestUnion struct {
-	GitSourceGithubRequest1    *GitSourceGithubRequest1    `queryParam:"inline"`
-	GitSourceGithubRequest2    *GitSourceGithubRequest2    `queryParam:"inline"`
-	GitSourceGitlabRequest     *GitSourceGitlabRequest     `queryParam:"inline"`
-	GitSourceBitbucketRequest1 *GitSourceBitbucketRequest1 `queryParam:"inline"`
-	GitSourceBitbucketRequest2 *GitSourceBitbucketRequest2 `queryParam:"inline"`
+	GitSourceGithubRequest1        *GitSourceGithubRequest1        `queryParam:"inline"`
+	GitSourceGithubRequest2        *GitSourceGithubRequest2        `queryParam:"inline"`
+	GitSourceGithubLimitedRequest1 *GitSourceGithubLimitedRequest1 `queryParam:"inline"`
+	GitSourceGithubLimitedRequest2 *GitSourceGithubLimitedRequest2 `queryParam:"inline"`
+	GitSourceGitlabRequest         *GitSourceGitlabRequest         `queryParam:"inline"`
+	GitSourceBitbucketRequest1     *GitSourceBitbucketRequest1     `queryParam:"inline"`
+	GitSourceBitbucketRequest2     *GitSourceBitbucketRequest2     `queryParam:"inline"`
 
 	Type GitSourceRequestUnionType
 }
@@ -872,6 +1085,24 @@ func CreateGitSourceRequestUnionGitSourceGithubRequest2(gitSourceGithubRequest2 
 	return GitSourceRequestUnion{
 		GitSourceGithubRequest2: &gitSourceGithubRequest2,
 		Type:                    typ,
+	}
+}
+
+func CreateGitSourceRequestUnionGitSourceGithubLimitedRequest1(gitSourceGithubLimitedRequest1 GitSourceGithubLimitedRequest1) GitSourceRequestUnion {
+	typ := GitSourceRequestUnionTypeGitSourceGithubLimitedRequest1
+
+	return GitSourceRequestUnion{
+		GitSourceGithubLimitedRequest1: &gitSourceGithubLimitedRequest1,
+		Type:                           typ,
+	}
+}
+
+func CreateGitSourceRequestUnionGitSourceGithubLimitedRequest2(gitSourceGithubLimitedRequest2 GitSourceGithubLimitedRequest2) GitSourceRequestUnion {
+	typ := GitSourceRequestUnionTypeGitSourceGithubLimitedRequest2
+
+	return GitSourceRequestUnion{
+		GitSourceGithubLimitedRequest2: &gitSourceGithubLimitedRequest2,
+		Type:                           typ,
 	}
 }
 
@@ -911,6 +1142,13 @@ func (u *GitSourceRequestUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var gitSourceGithubLimitedRequest2 GitSourceGithubLimitedRequest2 = GitSourceGithubLimitedRequest2{}
+	if err := utils.UnmarshalJSON(data, &gitSourceGithubLimitedRequest2, "", true, nil); err == nil {
+		u.GitSourceGithubLimitedRequest2 = &gitSourceGithubLimitedRequest2
+		u.Type = GitSourceRequestUnionTypeGitSourceGithubLimitedRequest2
+		return nil
+	}
+
 	var gitSourceBitbucketRequest2 GitSourceBitbucketRequest2 = GitSourceBitbucketRequest2{}
 	if err := utils.UnmarshalJSON(data, &gitSourceBitbucketRequest2, "", true, nil); err == nil {
 		u.GitSourceBitbucketRequest2 = &gitSourceBitbucketRequest2
@@ -922,6 +1160,13 @@ func (u *GitSourceRequestUnion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &gitSourceGithubRequest1, "", true, nil); err == nil {
 		u.GitSourceGithubRequest1 = &gitSourceGithubRequest1
 		u.Type = GitSourceRequestUnionTypeGitSourceGithubRequest1
+		return nil
+	}
+
+	var gitSourceGithubLimitedRequest1 GitSourceGithubLimitedRequest1 = GitSourceGithubLimitedRequest1{}
+	if err := utils.UnmarshalJSON(data, &gitSourceGithubLimitedRequest1, "", true, nil); err == nil {
+		u.GitSourceGithubLimitedRequest1 = &gitSourceGithubLimitedRequest1
+		u.Type = GitSourceRequestUnionTypeGitSourceGithubLimitedRequest1
 		return nil
 	}
 
@@ -949,6 +1194,14 @@ func (u GitSourceRequestUnion) MarshalJSON() ([]byte, error) {
 
 	if u.GitSourceGithubRequest2 != nil {
 		return utils.MarshalJSON(u.GitSourceGithubRequest2, "", true)
+	}
+
+	if u.GitSourceGithubLimitedRequest1 != nil {
+		return utils.MarshalJSON(u.GitSourceGithubLimitedRequest1, "", true)
+	}
+
+	if u.GitSourceGithubLimitedRequest2 != nil {
+		return utils.MarshalJSON(u.GitSourceGithubLimitedRequest2, "", true)
 	}
 
 	if u.GitSourceGitlabRequest != nil {
@@ -1891,11 +2144,11 @@ func (o *CreateDeploymentProjectSettingsLambdas) GetWebAnalytics() *CreateDeploy
 type CreateDeploymentIntegrationsStatus string
 
 const (
+	CreateDeploymentIntegrationsStatusError   CreateDeploymentIntegrationsStatus = "error"
+	CreateDeploymentIntegrationsStatusTimeout CreateDeploymentIntegrationsStatus = "timeout"
 	CreateDeploymentIntegrationsStatusSkipped CreateDeploymentIntegrationsStatus = "skipped"
 	CreateDeploymentIntegrationsStatusPending CreateDeploymentIntegrationsStatus = "pending"
 	CreateDeploymentIntegrationsStatusReady   CreateDeploymentIntegrationsStatus = "ready"
-	CreateDeploymentIntegrationsStatusError   CreateDeploymentIntegrationsStatus = "error"
-	CreateDeploymentIntegrationsStatusTimeout CreateDeploymentIntegrationsStatus = "timeout"
 )
 
 func (e CreateDeploymentIntegrationsStatus) ToPointer() *CreateDeploymentIntegrationsStatus {
@@ -1907,15 +2160,15 @@ func (e *CreateDeploymentIntegrationsStatus) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "error":
+		fallthrough
+	case "timeout":
+		fallthrough
 	case "skipped":
 		fallthrough
 	case "pending":
 		fallthrough
 	case "ready":
-		fallthrough
-	case "error":
-		fallthrough
-	case "timeout":
 		*e = CreateDeploymentIntegrationsStatus(v)
 		return nil
 	default:
@@ -2227,8 +2480,8 @@ func (o *CreateDeploymentCreator) GetAvatar() *string {
 type CreateDeploymentLambdaReadyState string
 
 const (
-	CreateDeploymentLambdaReadyStateBuilding     CreateDeploymentLambdaReadyState = "BUILDING"
 	CreateDeploymentLambdaReadyStateError        CreateDeploymentLambdaReadyState = "ERROR"
+	CreateDeploymentLambdaReadyStateBuilding     CreateDeploymentLambdaReadyState = "BUILDING"
 	CreateDeploymentLambdaReadyStateInitializing CreateDeploymentLambdaReadyState = "INITIALIZING"
 	CreateDeploymentLambdaReadyStateReady        CreateDeploymentLambdaReadyState = "READY"
 )
@@ -2242,9 +2495,9 @@ func (e *CreateDeploymentLambdaReadyState) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "BUILDING":
-		fallthrough
 	case "ERROR":
+		fallthrough
+	case "BUILDING":
 		fallthrough
 	case "INITIALIZING":
 		fallthrough
@@ -2280,8 +2533,8 @@ type CreateDeploymentLambda struct {
 	ID           string                            `json:"id"`
 	CreatedAt    *float64                          `json:"createdAt,omitempty"`
 	ReadyState   *CreateDeploymentLambdaReadyState `json:"readyState,omitempty"`
-	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	ReadyStateAt *float64                          `json:"readyStateAt,omitempty"`
+	Entrypoint   *string                           `json:"entrypoint,omitempty"`
 	Output       []CreateDeploymentOutput          `json:"output"`
 }
 
@@ -2306,18 +2559,18 @@ func (o *CreateDeploymentLambda) GetReadyState() *CreateDeploymentLambdaReadySta
 	return o.ReadyState
 }
 
-func (o *CreateDeploymentLambda) GetEntrypoint() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Entrypoint
-}
-
 func (o *CreateDeploymentLambda) GetReadyStateAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ReadyStateAt
+}
+
+func (o *CreateDeploymentLambda) GetEntrypoint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Entrypoint
 }
 
 func (o *CreateDeploymentLambda) GetOutput() []CreateDeploymentOutput {
@@ -3034,85 +3287,85 @@ func (o *CreateDeploymentGitSourceLambdasGitlab2) GetProjectID() float64 {
 	return o.ProjectID
 }
 
-type CreateDeploymentTypeGithubLimited3 string
+type CreateDeploymentTypeLambdasGithubLimited3 string
 
 const (
-	CreateDeploymentTypeGithubLimited3GithubLimited CreateDeploymentTypeGithubLimited3 = "github-limited"
+	CreateDeploymentTypeLambdasGithubLimited3GithubLimited CreateDeploymentTypeLambdasGithubLimited3 = "github-limited"
 )
 
-func (e CreateDeploymentTypeGithubLimited3) ToPointer() *CreateDeploymentTypeGithubLimited3 {
+func (e CreateDeploymentTypeLambdasGithubLimited3) ToPointer() *CreateDeploymentTypeLambdasGithubLimited3 {
 	return &e
 }
-func (e *CreateDeploymentTypeGithubLimited3) UnmarshalJSON(data []byte) error {
+func (e *CreateDeploymentTypeLambdasGithubLimited3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "github-limited":
-		*e = CreateDeploymentTypeGithubLimited3(v)
+		*e = CreateDeploymentTypeLambdasGithubLimited3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDeploymentTypeGithubLimited3: %v", v)
+		return fmt.Errorf("invalid value for CreateDeploymentTypeLambdasGithubLimited3: %v", v)
 	}
 }
 
-type CreateDeploymentGitSourceGithubLimited3 struct {
-	Type   CreateDeploymentTypeGithubLimited3 `json:"type"`
-	Ref    string                             `json:"ref"`
-	Sha    string                             `json:"sha"`
-	RepoID float64                            `json:"repoId"`
-	Org    *string                            `json:"org,omitempty"`
-	Repo   *string                            `json:"repo,omitempty"`
+type CreateDeploymentGitSourceLambdasGithubLimited3 struct {
+	Type   CreateDeploymentTypeLambdasGithubLimited3 `json:"type"`
+	Ref    string                                    `json:"ref"`
+	Sha    string                                    `json:"sha"`
+	RepoID float64                                   `json:"repoId"`
+	Org    *string                                   `json:"org,omitempty"`
+	Repo   *string                                   `json:"repo,omitempty"`
 }
 
-func (c CreateDeploymentGitSourceGithubLimited3) MarshalJSON() ([]byte, error) {
+func (c CreateDeploymentGitSourceLambdasGithubLimited3) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateDeploymentGitSourceGithubLimited3) UnmarshalJSON(data []byte) error {
+func (c *CreateDeploymentGitSourceLambdasGithubLimited3) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "ref", "sha", "repoId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited3) GetType() CreateDeploymentTypeGithubLimited3 {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited3) GetType() CreateDeploymentTypeLambdasGithubLimited3 {
 	if o == nil {
-		return CreateDeploymentTypeGithubLimited3("")
+		return CreateDeploymentTypeLambdasGithubLimited3("")
 	}
 	return o.Type
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited3) GetRef() string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited3) GetRef() string {
 	if o == nil {
 		return ""
 	}
 	return o.Ref
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited3) GetSha() string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited3) GetSha() string {
 	if o == nil {
 		return ""
 	}
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited3) GetRepoID() float64 {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited3) GetRepoID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RepoID
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited3) GetOrg() *string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited3) GetOrg() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Org
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited3) GetRepo() *string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited3) GetRepo() *string {
 	if o == nil {
 		return nil
 	}
@@ -3677,111 +3930,111 @@ func (o *CreateDeploymentGitSourceLambdasGitlab1) GetPrID() *float64 {
 	return o.PrID
 }
 
-type CreateDeploymentTypeGithubLimited2 string
+type CreateDeploymentTypeLambdasGithubLimited2 string
 
 const (
-	CreateDeploymentTypeGithubLimited2GithubLimited CreateDeploymentTypeGithubLimited2 = "github-limited"
+	CreateDeploymentTypeLambdasGithubLimited2GithubLimited CreateDeploymentTypeLambdasGithubLimited2 = "github-limited"
 )
 
-func (e CreateDeploymentTypeGithubLimited2) ToPointer() *CreateDeploymentTypeGithubLimited2 {
+func (e CreateDeploymentTypeLambdasGithubLimited2) ToPointer() *CreateDeploymentTypeLambdasGithubLimited2 {
 	return &e
 }
-func (e *CreateDeploymentTypeGithubLimited2) UnmarshalJSON(data []byte) error {
+func (e *CreateDeploymentTypeLambdasGithubLimited2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "github-limited":
-		*e = CreateDeploymentTypeGithubLimited2(v)
+		*e = CreateDeploymentTypeLambdasGithubLimited2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDeploymentTypeGithubLimited2: %v", v)
+		return fmt.Errorf("invalid value for CreateDeploymentTypeLambdasGithubLimited2: %v", v)
 	}
 }
 
-type CreateDeploymentGitSourceGithubLimited2 struct {
-	Type CreateDeploymentTypeGithubLimited2 `json:"type"`
-	Org  string                             `json:"org"`
-	Repo string                             `json:"repo"`
-	Ref  *string                            `json:"ref,omitempty"`
-	Sha  *string                            `json:"sha,omitempty"`
-	PrID *float64                           `json:"prId,omitempty"`
+type CreateDeploymentGitSourceLambdasGithubLimited2 struct {
+	Type CreateDeploymentTypeLambdasGithubLimited2 `json:"type"`
+	Org  string                                    `json:"org"`
+	Repo string                                    `json:"repo"`
+	Ref  *string                                   `json:"ref,omitempty"`
+	Sha  *string                                   `json:"sha,omitempty"`
+	PrID *float64                                  `json:"prId,omitempty"`
 }
 
-func (c CreateDeploymentGitSourceGithubLimited2) MarshalJSON() ([]byte, error) {
+func (c CreateDeploymentGitSourceLambdasGithubLimited2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateDeploymentGitSourceGithubLimited2) UnmarshalJSON(data []byte) error {
+func (c *CreateDeploymentGitSourceLambdasGithubLimited2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "org", "repo"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited2) GetType() CreateDeploymentTypeGithubLimited2 {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited2) GetType() CreateDeploymentTypeLambdasGithubLimited2 {
 	if o == nil {
-		return CreateDeploymentTypeGithubLimited2("")
+		return CreateDeploymentTypeLambdasGithubLimited2("")
 	}
 	return o.Type
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited2) GetOrg() string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited2) GetOrg() string {
 	if o == nil {
 		return ""
 	}
 	return o.Org
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited2) GetRepo() string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited2) GetRepo() string {
 	if o == nil {
 		return ""
 	}
 	return o.Repo
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited2) GetRef() *string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited2) GetRef() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Ref
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited2) GetSha() *string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited2) GetSha() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited2) GetPrID() *float64 {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited2) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.PrID
 }
 
-type CreateDeploymentTypeGithubLimited1 string
+type CreateDeploymentTypeLambdasGithubLimited1 string
 
 const (
-	CreateDeploymentTypeGithubLimited1GithubLimited CreateDeploymentTypeGithubLimited1 = "github-limited"
+	CreateDeploymentTypeLambdasGithubLimited1GithubLimited CreateDeploymentTypeLambdasGithubLimited1 = "github-limited"
 )
 
-func (e CreateDeploymentTypeGithubLimited1) ToPointer() *CreateDeploymentTypeGithubLimited1 {
+func (e CreateDeploymentTypeLambdasGithubLimited1) ToPointer() *CreateDeploymentTypeLambdasGithubLimited1 {
 	return &e
 }
-func (e *CreateDeploymentTypeGithubLimited1) UnmarshalJSON(data []byte) error {
+func (e *CreateDeploymentTypeLambdasGithubLimited1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "github-limited":
-		*e = CreateDeploymentTypeGithubLimited1(v)
+		*e = CreateDeploymentTypeLambdasGithubLimited1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateDeploymentTypeGithubLimited1: %v", v)
+		return fmt.Errorf("invalid value for CreateDeploymentTypeLambdasGithubLimited1: %v", v)
 	}
 }
 
@@ -3848,54 +4101,54 @@ func (u CreateDeploymentRepoIDLambdas3) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateDeploymentRepoIDLambdas3: all fields are null")
 }
 
-type CreateDeploymentGitSourceGithubLimited1 struct {
-	Type   CreateDeploymentTypeGithubLimited1 `json:"type"`
-	RepoID CreateDeploymentRepoIDLambdas3     `json:"repoId"`
-	Ref    *string                            `json:"ref,omitempty"`
-	Sha    *string                            `json:"sha,omitempty"`
-	PrID   *float64                           `json:"prId,omitempty"`
+type CreateDeploymentGitSourceLambdasGithubLimited1 struct {
+	Type   CreateDeploymentTypeLambdasGithubLimited1 `json:"type"`
+	RepoID CreateDeploymentRepoIDLambdas3            `json:"repoId"`
+	Ref    *string                                   `json:"ref,omitempty"`
+	Sha    *string                                   `json:"sha,omitempty"`
+	PrID   *float64                                  `json:"prId,omitempty"`
 }
 
-func (c CreateDeploymentGitSourceGithubLimited1) MarshalJSON() ([]byte, error) {
+func (c CreateDeploymentGitSourceLambdasGithubLimited1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateDeploymentGitSourceGithubLimited1) UnmarshalJSON(data []byte) error {
+func (c *CreateDeploymentGitSourceLambdasGithubLimited1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "repoId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited1) GetType() CreateDeploymentTypeGithubLimited1 {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited1) GetType() CreateDeploymentTypeLambdasGithubLimited1 {
 	if o == nil {
-		return CreateDeploymentTypeGithubLimited1("")
+		return CreateDeploymentTypeLambdasGithubLimited1("")
 	}
 	return o.Type
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited1) GetRepoID() CreateDeploymentRepoIDLambdas3 {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited1) GetRepoID() CreateDeploymentRepoIDLambdas3 {
 	if o == nil {
 		return CreateDeploymentRepoIDLambdas3{}
 	}
 	return o.RepoID
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited1) GetRef() *string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited1) GetRef() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Ref
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited1) GetSha() *string {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited1) GetSha() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Sha
 }
 
-func (o *CreateDeploymentGitSourceGithubLimited1) GetPrID() *float64 {
+func (o *CreateDeploymentGitSourceLambdasGithubLimited1) GetPrID() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -4371,39 +4624,39 @@ func (o *CreateDeploymentGitSourceLambdasGithub1) GetPrID() *float64 {
 type CreateDeploymentGitSourceLambdasUnionType string
 
 const (
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub1    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_1"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub2    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_2"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost1 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_1"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost2 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_2"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited1    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubLimited_1"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited2    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubLimited_2"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGitlab1    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Gitlab_1"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket1 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_1"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket2 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_2"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceCustom            CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Custom"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub3    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_3"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost3 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_3"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited3    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubLimited_3"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGitlab2    CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Gitlab_2"
-	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket3 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_3"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub1        CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_1"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub2        CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_2"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost1     CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_1"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost2     CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_2"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited1 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_GithubLimited_1"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited2 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_GithubLimited_2"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGitlab1        CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Gitlab_1"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket1     CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_1"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket2     CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_2"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceCustom                CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Custom"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithub3        CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Github_3"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubCustomHost3     CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_GithubCustomHost_3"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited3 CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_GithubLimited_3"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGitlab2        CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Gitlab_2"
+	CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasBitbucket3     CreateDeploymentGitSourceLambdasUnionType = "createDeployment_gitSource_Lambdas_Bitbucket_3"
 )
 
 type CreateDeploymentGitSourceLambdasUnion struct {
-	CreateDeploymentGitSourceLambdasGithub1    *CreateDeploymentGitSourceLambdasGithub1    `queryParam:"inline"`
-	CreateDeploymentGitSourceLambdasGithub2    *CreateDeploymentGitSourceLambdasGithub2    `queryParam:"inline"`
-	CreateDeploymentGitSourceGithubCustomHost1 *CreateDeploymentGitSourceGithubCustomHost1 `queryParam:"inline"`
-	CreateDeploymentGitSourceGithubCustomHost2 *CreateDeploymentGitSourceGithubCustomHost2 `queryParam:"inline"`
-	CreateDeploymentGitSourceGithubLimited1    *CreateDeploymentGitSourceGithubLimited1    `queryParam:"inline"`
-	CreateDeploymentGitSourceGithubLimited2    *CreateDeploymentGitSourceGithubLimited2    `queryParam:"inline"`
-	CreateDeploymentGitSourceLambdasGitlab1    *CreateDeploymentGitSourceLambdasGitlab1    `queryParam:"inline"`
-	CreateDeploymentGitSourceLambdasBitbucket1 *CreateDeploymentGitSourceLambdasBitbucket1 `queryParam:"inline"`
-	CreateDeploymentGitSourceLambdasBitbucket2 *CreateDeploymentGitSourceLambdasBitbucket2 `queryParam:"inline"`
-	CreateDeploymentGitSourceCustom            *CreateDeploymentGitSourceCustom            `queryParam:"inline"`
-	CreateDeploymentGitSourceLambdasGithub3    *CreateDeploymentGitSourceLambdasGithub3    `queryParam:"inline"`
-	CreateDeploymentGitSourceGithubCustomHost3 *CreateDeploymentGitSourceGithubCustomHost3 `queryParam:"inline"`
-	CreateDeploymentGitSourceGithubLimited3    *CreateDeploymentGitSourceGithubLimited3    `queryParam:"inline"`
-	CreateDeploymentGitSourceLambdasGitlab2    *CreateDeploymentGitSourceLambdasGitlab2    `queryParam:"inline"`
-	CreateDeploymentGitSourceLambdasBitbucket3 *CreateDeploymentGitSourceLambdasBitbucket3 `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGithub1        *CreateDeploymentGitSourceLambdasGithub1        `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGithub2        *CreateDeploymentGitSourceLambdasGithub2        `queryParam:"inline"`
+	CreateDeploymentGitSourceGithubCustomHost1     *CreateDeploymentGitSourceGithubCustomHost1     `queryParam:"inline"`
+	CreateDeploymentGitSourceGithubCustomHost2     *CreateDeploymentGitSourceGithubCustomHost2     `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGithubLimited1 *CreateDeploymentGitSourceLambdasGithubLimited1 `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGithubLimited2 *CreateDeploymentGitSourceLambdasGithubLimited2 `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGitlab1        *CreateDeploymentGitSourceLambdasGitlab1        `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasBitbucket1     *CreateDeploymentGitSourceLambdasBitbucket1     `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasBitbucket2     *CreateDeploymentGitSourceLambdasBitbucket2     `queryParam:"inline"`
+	CreateDeploymentGitSourceCustom                *CreateDeploymentGitSourceCustom                `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGithub3        *CreateDeploymentGitSourceLambdasGithub3        `queryParam:"inline"`
+	CreateDeploymentGitSourceGithubCustomHost3     *CreateDeploymentGitSourceGithubCustomHost3     `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGithubLimited3 *CreateDeploymentGitSourceLambdasGithubLimited3 `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasGitlab2        *CreateDeploymentGitSourceLambdasGitlab2        `queryParam:"inline"`
+	CreateDeploymentGitSourceLambdasBitbucket3     *CreateDeploymentGitSourceLambdasBitbucket3     `queryParam:"inline"`
 
 	Type CreateDeploymentGitSourceLambdasUnionType
 }
@@ -4444,21 +4697,21 @@ func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubC
 	}
 }
 
-func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubLimited1(createDeploymentGitSourceGithubLimited1 CreateDeploymentGitSourceGithubLimited1) CreateDeploymentGitSourceLambdasUnion {
-	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited1
+func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceLambdasGithubLimited1(createDeploymentGitSourceLambdasGithubLimited1 CreateDeploymentGitSourceLambdasGithubLimited1) CreateDeploymentGitSourceLambdasUnion {
+	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited1
 
 	return CreateDeploymentGitSourceLambdasUnion{
-		CreateDeploymentGitSourceGithubLimited1: &createDeploymentGitSourceGithubLimited1,
-		Type:                                    typ,
+		CreateDeploymentGitSourceLambdasGithubLimited1: &createDeploymentGitSourceLambdasGithubLimited1,
+		Type: typ,
 	}
 }
 
-func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubLimited2(createDeploymentGitSourceGithubLimited2 CreateDeploymentGitSourceGithubLimited2) CreateDeploymentGitSourceLambdasUnion {
-	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited2
+func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceLambdasGithubLimited2(createDeploymentGitSourceLambdasGithubLimited2 CreateDeploymentGitSourceLambdasGithubLimited2) CreateDeploymentGitSourceLambdasUnion {
+	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited2
 
 	return CreateDeploymentGitSourceLambdasUnion{
-		CreateDeploymentGitSourceGithubLimited2: &createDeploymentGitSourceGithubLimited2,
-		Type:                                    typ,
+		CreateDeploymentGitSourceLambdasGithubLimited2: &createDeploymentGitSourceLambdasGithubLimited2,
+		Type: typ,
 	}
 }
 
@@ -4516,12 +4769,12 @@ func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubC
 	}
 }
 
-func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceGithubLimited3(createDeploymentGitSourceGithubLimited3 CreateDeploymentGitSourceGithubLimited3) CreateDeploymentGitSourceLambdasUnion {
-	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited3
+func CreateCreateDeploymentGitSourceLambdasUnionCreateDeploymentGitSourceLambdasGithubLimited3(createDeploymentGitSourceLambdasGithubLimited3 CreateDeploymentGitSourceLambdasGithubLimited3) CreateDeploymentGitSourceLambdasUnion {
+	typ := CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited3
 
 	return CreateDeploymentGitSourceLambdasUnion{
-		CreateDeploymentGitSourceGithubLimited3: &createDeploymentGitSourceGithubLimited3,
-		Type:                                    typ,
+		CreateDeploymentGitSourceLambdasGithubLimited3: &createDeploymentGitSourceLambdasGithubLimited3,
+		Type: typ,
 	}
 }
 
@@ -4580,10 +4833,10 @@ func (u *CreateDeploymentGitSourceLambdasUnion) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var createDeploymentGitSourceGithubLimited3 CreateDeploymentGitSourceGithubLimited3 = CreateDeploymentGitSourceGithubLimited3{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubLimited3, "", true, nil); err == nil {
-		u.CreateDeploymentGitSourceGithubLimited3 = &createDeploymentGitSourceGithubLimited3
-		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited3
+	var createDeploymentGitSourceLambdasGithubLimited3 CreateDeploymentGitSourceLambdasGithubLimited3 = CreateDeploymentGitSourceLambdasGithubLimited3{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithubLimited3, "", true, nil); err == nil {
+		u.CreateDeploymentGitSourceLambdasGithubLimited3 = &createDeploymentGitSourceLambdasGithubLimited3
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited3
 		return nil
 	}
 
@@ -4608,10 +4861,10 @@ func (u *CreateDeploymentGitSourceLambdasUnion) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var createDeploymentGitSourceGithubLimited2 CreateDeploymentGitSourceGithubLimited2 = CreateDeploymentGitSourceGithubLimited2{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubLimited2, "", true, nil); err == nil {
-		u.CreateDeploymentGitSourceGithubLimited2 = &createDeploymentGitSourceGithubLimited2
-		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited2
+	var createDeploymentGitSourceLambdasGithubLimited2 CreateDeploymentGitSourceLambdasGithubLimited2 = CreateDeploymentGitSourceLambdasGithubLimited2{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithubLimited2, "", true, nil); err == nil {
+		u.CreateDeploymentGitSourceLambdasGithubLimited2 = &createDeploymentGitSourceLambdasGithubLimited2
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited2
 		return nil
 	}
 
@@ -4629,10 +4882,10 @@ func (u *CreateDeploymentGitSourceLambdasUnion) UnmarshalJSON(data []byte) error
 		return nil
 	}
 
-	var createDeploymentGitSourceGithubLimited1 CreateDeploymentGitSourceGithubLimited1 = CreateDeploymentGitSourceGithubLimited1{}
-	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceGithubLimited1, "", true, nil); err == nil {
-		u.CreateDeploymentGitSourceGithubLimited1 = &createDeploymentGitSourceGithubLimited1
-		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceGithubLimited1
+	var createDeploymentGitSourceLambdasGithubLimited1 CreateDeploymentGitSourceLambdasGithubLimited1 = CreateDeploymentGitSourceLambdasGithubLimited1{}
+	if err := utils.UnmarshalJSON(data, &createDeploymentGitSourceLambdasGithubLimited1, "", true, nil); err == nil {
+		u.CreateDeploymentGitSourceLambdasGithubLimited1 = &createDeploymentGitSourceLambdasGithubLimited1
+		u.Type = CreateDeploymentGitSourceLambdasUnionTypeCreateDeploymentGitSourceLambdasGithubLimited1
 		return nil
 	}
 
@@ -4670,12 +4923,12 @@ func (u CreateDeploymentGitSourceLambdasUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubCustomHost2, "", true)
 	}
 
-	if u.CreateDeploymentGitSourceGithubLimited1 != nil {
-		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubLimited1, "", true)
+	if u.CreateDeploymentGitSourceLambdasGithubLimited1 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSourceLambdasGithubLimited1, "", true)
 	}
 
-	if u.CreateDeploymentGitSourceGithubLimited2 != nil {
-		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubLimited2, "", true)
+	if u.CreateDeploymentGitSourceLambdasGithubLimited2 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSourceLambdasGithubLimited2, "", true)
 	}
 
 	if u.CreateDeploymentGitSourceLambdasGitlab1 != nil {
@@ -4702,8 +4955,8 @@ func (u CreateDeploymentGitSourceLambdasUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubCustomHost3, "", true)
 	}
 
-	if u.CreateDeploymentGitSourceGithubLimited3 != nil {
-		return utils.MarshalJSON(u.CreateDeploymentGitSourceGithubLimited3, "", true)
+	if u.CreateDeploymentGitSourceLambdasGithubLimited3 != nil {
+		return utils.MarshalJSON(u.CreateDeploymentGitSourceLambdasGithubLimited3, "", true)
 	}
 
 	if u.CreateDeploymentGitSourceLambdasGitlab2 != nil {
@@ -5149,8 +5402,8 @@ func (e *CreateDeploymentPlan) UnmarshalJSON(data []byte) error {
 type CreateDeploymentFunctionType string
 
 const (
-	CreateDeploymentFunctionTypeFluid    CreateDeploymentFunctionType = "fluid"
 	CreateDeploymentFunctionTypeStandard CreateDeploymentFunctionType = "standard"
+	CreateDeploymentFunctionTypeFluid    CreateDeploymentFunctionType = "fluid"
 )
 
 func (e CreateDeploymentFunctionType) ToPointer() *CreateDeploymentFunctionType {
@@ -5162,9 +5415,9 @@ func (e *CreateDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "fluid":
-		fallthrough
 	case "standard":
+		fallthrough
+	case "fluid":
 		*e = CreateDeploymentFunctionType(v)
 		return nil
 	default:
@@ -5175,8 +5428,8 @@ func (e *CreateDeploymentFunctionType) UnmarshalJSON(data []byte) error {
 type CreateDeploymentFunctionMemoryType string
 
 const (
-	CreateDeploymentFunctionMemoryTypeStandard       CreateDeploymentFunctionMemoryType = "standard"
 	CreateDeploymentFunctionMemoryTypeStandardLegacy CreateDeploymentFunctionMemoryType = "standard_legacy"
+	CreateDeploymentFunctionMemoryTypeStandard       CreateDeploymentFunctionMemoryType = "standard"
 	CreateDeploymentFunctionMemoryTypePerformance    CreateDeploymentFunctionMemoryType = "performance"
 )
 
@@ -5189,9 +5442,9 @@ func (e *CreateDeploymentFunctionMemoryType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "standard":
-		fallthrough
 	case "standard_legacy":
+		fallthrough
+	case "standard":
 		fallthrough
 	case "performance":
 		*e = CreateDeploymentFunctionMemoryType(v)
@@ -5477,12 +5730,12 @@ func (o *CreateDeploymentRoute3) GetMiddleware() float64 {
 type CreateDeploymentHandle string
 
 const (
-	CreateDeploymentHandleError      CreateDeploymentHandle = "error"
 	CreateDeploymentHandleFilesystem CreateDeploymentHandle = "filesystem"
+	CreateDeploymentHandleError      CreateDeploymentHandle = "error"
 	CreateDeploymentHandleHit        CreateDeploymentHandle = "hit"
 	CreateDeploymentHandleMiss       CreateDeploymentHandle = "miss"
-	CreateDeploymentHandleRewrite    CreateDeploymentHandle = "rewrite"
 	CreateDeploymentHandleResource   CreateDeploymentHandle = "resource"
+	CreateDeploymentHandleRewrite    CreateDeploymentHandle = "rewrite"
 )
 
 func (e CreateDeploymentHandle) ToPointer() *CreateDeploymentHandle {
@@ -5494,17 +5747,17 @@ func (e *CreateDeploymentHandle) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "error":
-		fallthrough
 	case "filesystem":
+		fallthrough
+	case "error":
 		fallthrough
 	case "hit":
 		fallthrough
 	case "miss":
 		fallthrough
-	case "rewrite":
-		fallthrough
 	case "resource":
+		fallthrough
+	case "rewrite":
 		*e = CreateDeploymentHandle(v)
 		return nil
 	default:
@@ -7750,6 +8003,8 @@ type CreateDeploymentMicrofrontends2 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (c CreateDeploymentMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -7812,6 +8067,13 @@ func (o *CreateDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool
 	return o.MicrofrontendsAlias2Enabled
 }
 
+func (o *CreateDeploymentMicrofrontends2) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
+}
+
 type CreateDeploymentMicrofrontends1 struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -7822,6 +8084,8 @@ type CreateDeploymentMicrofrontends1 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (c CreateDeploymentMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -7868,6 +8132,13 @@ func (o *CreateDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool
 		return nil
 	}
 	return o.MicrofrontendsAlias2Enabled
+}
+
+func (o *CreateDeploymentMicrofrontends1) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
 }
 
 type CreateDeploymentMicrofrontendsUnionType string
@@ -8128,8 +8399,8 @@ func (e *CreateDeploymentGitRepoTypeBitbucket) UnmarshalJSON(data []byte) error 
 type CreateDeploymentOwnerType3 string
 
 const (
-	CreateDeploymentOwnerType3Team CreateDeploymentOwnerType3 = "team"
 	CreateDeploymentOwnerType3User CreateDeploymentOwnerType3 = "user"
+	CreateDeploymentOwnerType3Team CreateDeploymentOwnerType3 = "team"
 )
 
 func (e CreateDeploymentOwnerType3) ToPointer() *CreateDeploymentOwnerType3 {
@@ -8141,9 +8412,9 @@ func (e *CreateDeploymentOwnerType3) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType3(v)
 		return nil
 	default:
@@ -8271,8 +8542,8 @@ func (e *CreateDeploymentGitRepoTypeGithub) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOwnerType2 string
 
 const (
-	CreateDeploymentOwnerType2Team CreateDeploymentOwnerType2 = "team"
 	CreateDeploymentOwnerType2User CreateDeploymentOwnerType2 = "user"
+	CreateDeploymentOwnerType2Team CreateDeploymentOwnerType2 = "team"
 )
 
 func (e CreateDeploymentOwnerType2) ToPointer() *CreateDeploymentOwnerType2 {
@@ -8284,9 +8555,9 @@ func (e *CreateDeploymentOwnerType2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType2(v)
 		return nil
 	default:
@@ -8414,8 +8685,8 @@ func (e *CreateDeploymentGitRepoTypeGitlab) UnmarshalJSON(data []byte) error {
 type CreateDeploymentOwnerType1 string
 
 const (
-	CreateDeploymentOwnerType1Team CreateDeploymentOwnerType1 = "team"
 	CreateDeploymentOwnerType1User CreateDeploymentOwnerType1 = "user"
+	CreateDeploymentOwnerType1Team CreateDeploymentOwnerType1 = "team"
 )
 
 func (e CreateDeploymentOwnerType1) ToPointer() *CreateDeploymentOwnerType1 {
@@ -8427,9 +8698,9 @@ func (e *CreateDeploymentOwnerType1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "team":
-		fallthrough
 	case "user":
+		fallthrough
+	case "team":
 		*e = CreateDeploymentOwnerType1(v)
 		return nil
 	default:
@@ -8647,8 +8918,6 @@ type CreateDeploymentResponseBody struct {
 	Name                     string                                  `json:"name"`
 	CreatedAt                float64                                 `json:"createdAt"`
 	Type                     CreateDeploymentTypeLambdas             `json:"type"`
-	DeletedAt                *float64                                `json:"deletedAt,omitempty"`
-	Version                  float64                                 `json:"version"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                                  `json:"autoAssignCustomDomains,omitempty"`
 	GitSource               *CreateDeploymentGitSourceLambdasUnion `json:"gitSource,omitempty"`
@@ -8660,9 +8929,11 @@ type CreateDeploymentResponseBody struct {
 	Source       *CreateDeploymentSource             `json:"source,omitempty"`
 	Target       *CreateDeploymentTargetEnum         `json:"target,omitempty"`
 	ErrorMessage *string                             `json:"errorMessage,omitempty"`
+	DeletedAt    *float64                            `json:"deletedAt,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
 	PassiveRegions   []string                          `json:"passiveRegions,omitempty"`
 	Regions          []string                          `json:"regions"`
+	Version          float64                           `json:"version"`
 	AliasError       *CreateDeploymentAliasError       `json:"aliasError,omitempty"`
 	AliasFinal       *string                           `json:"aliasFinal,omitempty"`
 	AliasWarning     *CreateDeploymentAliasWarning     `json:"aliasWarning,omitempty"`
@@ -8684,8 +8955,8 @@ type CreateDeploymentResponseBody struct {
 	UndeletedAt            *float64                       `json:"undeletedAt,omitempty"`
 	URL                    string                         `json:"url"`
 	ProjectID              string                         `json:"projectId"`
-	OwnerID                string                         `json:"ownerId"`
 	MonorepoManager        *string                        `json:"monorepoManager,omitempty"`
+	OwnerID                string                         `json:"ownerId"`
 	Plan                   CreateDeploymentPlan           `json:"plan"`
 	// Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
 	Config                 *CreateDeploymentConfig              `json:"config,omitempty"`
@@ -8955,20 +9226,6 @@ func (o *CreateDeploymentResponseBody) GetType() CreateDeploymentTypeLambdas {
 	return o.Type
 }
 
-func (o *CreateDeploymentResponseBody) GetDeletedAt() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DeletedAt
-}
-
-func (o *CreateDeploymentResponseBody) GetVersion() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Version
-}
-
 func (o *CreateDeploymentResponseBody) GetAutoAssignCustomDomains() *bool {
 	if o == nil {
 		return nil
@@ -9032,6 +9289,13 @@ func (o *CreateDeploymentResponseBody) GetErrorMessage() *string {
 	return o.ErrorMessage
 }
 
+func (o *CreateDeploymentResponseBody) GetDeletedAt() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
 func (o *CreateDeploymentResponseBody) GetPassiveRegions() []string {
 	if o == nil {
 		return nil
@@ -9044,6 +9308,13 @@ func (o *CreateDeploymentResponseBody) GetRegions() []string {
 		return []string{}
 	}
 	return o.Regions
+}
+
+func (o *CreateDeploymentResponseBody) GetVersion() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Version
 }
 
 func (o *CreateDeploymentResponseBody) GetAliasError() *CreateDeploymentAliasError {
@@ -9179,18 +9450,18 @@ func (o *CreateDeploymentResponseBody) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *CreateDeploymentResponseBody) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
-}
-
 func (o *CreateDeploymentResponseBody) GetMonorepoManager() *string {
 	if o == nil {
 		return nil
 	}
 	return o.MonorepoManager
+}
+
+func (o *CreateDeploymentResponseBody) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
 }
 
 func (o *CreateDeploymentResponseBody) GetPlan() CreateDeploymentPlan {

@@ -1877,6 +1877,7 @@ export type UpdateProjectPermissions = {
   vercelRunExec?: Array<ACLAction> | undefined;
   apiKey?: Array<ACLAction> | undefined;
   apiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  apiKeyAiGateway?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   buildMachine?: Array<ACLAction> | undefined;
@@ -9972,6 +9973,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   vercelRunExec: z.array(ACLAction$inboundSchema).optional(),
   apiKey: z.array(ACLAction$inboundSchema).optional(),
   apiKeyOwnedBySelf: z.array(ACLAction$inboundSchema).optional(),
+  apiKeyAiGateway: z.array(ACLAction$inboundSchema).optional(),
   aliasProject: z.array(ACLAction$inboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
   buildMachine: z.array(ACLAction$inboundSchema).optional(),
@@ -10197,6 +10199,7 @@ export type UpdateProjectPermissions$Outbound = {
   vercelRunExec?: Array<string> | undefined;
   apiKey?: Array<string> | undefined;
   apiKeyOwnedBySelf?: Array<string> | undefined;
+  apiKeyAiGateway?: Array<string> | undefined;
   aliasProject?: Array<string> | undefined;
   aliasProtectionBypass?: Array<string> | undefined;
   buildMachine?: Array<string> | undefined;
@@ -10423,6 +10426,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   vercelRunExec: z.array(ACLAction$outboundSchema).optional(),
   apiKey: z.array(ACLAction$outboundSchema).optional(),
   apiKeyOwnedBySelf: z.array(ACLAction$outboundSchema).optional(),
+  apiKeyAiGateway: z.array(ACLAction$outboundSchema).optional(),
   aliasProject: z.array(ACLAction$outboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   buildMachine: z.array(ACLAction$outboundSchema).optional(),

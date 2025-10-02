@@ -605,7 +605,7 @@ export type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
 
 export type CancelDeploymentGitSourceProjectId = string | number;
 
-export type GitSource7 = {
+export type CancelDeploymentGitSource7 = {
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type;
   projectId: string | number;
@@ -623,7 +623,7 @@ export type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType
   >;
 
-export type GitSource6 = {
+export type CancelDeploymentGitSource6 = {
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType;
   org: string;
@@ -732,11 +732,11 @@ export type CancelDeploymentGitSource =
   | GitSource14
   | CancelDeploymentGitSource2
   | CancelDeploymentGitSource3
-  | GitSource6
+  | CancelDeploymentGitSource6
   | GitSource9
   | CancelDeploymentGitSource1
   | CancelDeploymentGitSource5
-  | GitSource7
+  | CancelDeploymentGitSource7
   | GitSource8;
 
 /**
@@ -1336,6 +1336,10 @@ export type CancelDeploymentMicrofrontends2 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends1 = {
@@ -1356,6 +1360,10 @@ export type CancelDeploymentMicrofrontends1 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends =
@@ -1494,11 +1502,11 @@ export type CancelDeploymentResponseBody = {
     | GitSource14
     | CancelDeploymentGitSource2
     | CancelDeploymentGitSource3
-    | GitSource6
+    | CancelDeploymentGitSource6
     | GitSource9
     | CancelDeploymentGitSource1
     | CancelDeploymentGitSource5
-    | GitSource7
+    | CancelDeploymentGitSource7
     | GitSource8
     | undefined;
   name: string;
@@ -4220,8 +4228,8 @@ export function cancelDeploymentGitSourceProjectIdFromJSON(
 }
 
 /** @internal */
-export const GitSource7$inboundSchema: z.ZodType<
-  GitSource7,
+export const CancelDeploymentGitSource7$inboundSchema: z.ZodType<
+  CancelDeploymentGitSource7,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4234,7 +4242,7 @@ export const GitSource7$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GitSource7$Outbound = {
+export type CancelDeploymentGitSource7$Outbound = {
   type: string;
   projectId: string | number;
   ref?: string | null | undefined;
@@ -4243,10 +4251,10 @@ export type GitSource7$Outbound = {
 };
 
 /** @internal */
-export const GitSource7$outboundSchema: z.ZodType<
-  GitSource7$Outbound,
+export const CancelDeploymentGitSource7$outboundSchema: z.ZodType<
+  CancelDeploymentGitSource7$Outbound,
   z.ZodTypeDef,
-  GitSource7
+  CancelDeploymentGitSource7
 > = z.object({
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type$outboundSchema,
@@ -4260,26 +4268,30 @@ export const GitSource7$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitSource7$ {
-  /** @deprecated use `GitSource7$inboundSchema` instead. */
-  export const inboundSchema = GitSource7$inboundSchema;
-  /** @deprecated use `GitSource7$outboundSchema` instead. */
-  export const outboundSchema = GitSource7$outboundSchema;
-  /** @deprecated use `GitSource7$Outbound` instead. */
-  export type Outbound = GitSource7$Outbound;
+export namespace CancelDeploymentGitSource7$ {
+  /** @deprecated use `CancelDeploymentGitSource7$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentGitSource7$inboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource7$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentGitSource7$outboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource7$Outbound` instead. */
+  export type Outbound = CancelDeploymentGitSource7$Outbound;
 }
 
-export function gitSource7ToJSON(gitSource7: GitSource7): string {
-  return JSON.stringify(GitSource7$outboundSchema.parse(gitSource7));
+export function cancelDeploymentGitSource7ToJSON(
+  cancelDeploymentGitSource7: CancelDeploymentGitSource7,
+): string {
+  return JSON.stringify(
+    CancelDeploymentGitSource7$outboundSchema.parse(cancelDeploymentGitSource7),
+  );
 }
 
-export function gitSource7FromJSON(
+export function cancelDeploymentGitSource7FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource7, SDKValidationError> {
+): SafeParseResult<CancelDeploymentGitSource7, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource7$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource7' from JSON`,
+    (x) => CancelDeploymentGitSource7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentGitSource7' from JSON`,
   );
 }
 
@@ -4312,8 +4324,8 @@ export namespace CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONR
 }
 
 /** @internal */
-export const GitSource6$inboundSchema: z.ZodType<
-  GitSource6,
+export const CancelDeploymentGitSource6$inboundSchema: z.ZodType<
+  CancelDeploymentGitSource6,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4327,7 +4339,7 @@ export const GitSource6$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GitSource6$Outbound = {
+export type CancelDeploymentGitSource6$Outbound = {
   type: string;
   org: string;
   repo: string;
@@ -4337,10 +4349,10 @@ export type GitSource6$Outbound = {
 };
 
 /** @internal */
-export const GitSource6$outboundSchema: z.ZodType<
-  GitSource6$Outbound,
+export const CancelDeploymentGitSource6$outboundSchema: z.ZodType<
+  CancelDeploymentGitSource6$Outbound,
   z.ZodTypeDef,
-  GitSource6
+  CancelDeploymentGitSource6
 > = z.object({
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$outboundSchema,
@@ -4355,26 +4367,30 @@ export const GitSource6$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitSource6$ {
-  /** @deprecated use `GitSource6$inboundSchema` instead. */
-  export const inboundSchema = GitSource6$inboundSchema;
-  /** @deprecated use `GitSource6$outboundSchema` instead. */
-  export const outboundSchema = GitSource6$outboundSchema;
-  /** @deprecated use `GitSource6$Outbound` instead. */
-  export type Outbound = GitSource6$Outbound;
+export namespace CancelDeploymentGitSource6$ {
+  /** @deprecated use `CancelDeploymentGitSource6$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentGitSource6$inboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource6$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentGitSource6$outboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource6$Outbound` instead. */
+  export type Outbound = CancelDeploymentGitSource6$Outbound;
 }
 
-export function gitSource6ToJSON(gitSource6: GitSource6): string {
-  return JSON.stringify(GitSource6$outboundSchema.parse(gitSource6));
+export function cancelDeploymentGitSource6ToJSON(
+  cancelDeploymentGitSource6: CancelDeploymentGitSource6,
+): string {
+  return JSON.stringify(
+    CancelDeploymentGitSource6$outboundSchema.parse(cancelDeploymentGitSource6),
+  );
 }
 
-export function gitSource6FromJSON(
+export function cancelDeploymentGitSource6FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource6, SDKValidationError> {
+): SafeParseResult<CancelDeploymentGitSource6, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource6' from JSON`,
+    (x) => CancelDeploymentGitSource6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentGitSource6' from JSON`,
   );
 }
 
@@ -5029,11 +5045,11 @@ export const CancelDeploymentGitSource$inboundSchema: z.ZodType<
   z.lazy(() => GitSource14$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
-  z.lazy(() => GitSource6$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
   z.lazy(() => GitSource9$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
-  z.lazy(() => GitSource7$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
   z.lazy(() => GitSource8$inboundSchema),
 ]);
 
@@ -5048,11 +5064,11 @@ export type CancelDeploymentGitSource$Outbound =
   | GitSource14$Outbound
   | CancelDeploymentGitSource2$Outbound
   | CancelDeploymentGitSource3$Outbound
-  | GitSource6$Outbound
+  | CancelDeploymentGitSource6$Outbound
   | GitSource9$Outbound
   | CancelDeploymentGitSource1$Outbound
   | CancelDeploymentGitSource5$Outbound
-  | GitSource7$Outbound
+  | CancelDeploymentGitSource7$Outbound
   | GitSource8$Outbound;
 
 /** @internal */
@@ -5070,11 +5086,11 @@ export const CancelDeploymentGitSource$outboundSchema: z.ZodType<
   z.lazy(() => GitSource14$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
-  z.lazy(() => GitSource6$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
   z.lazy(() => GitSource9$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
-  z.lazy(() => GitSource7$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource7$outboundSchema),
   z.lazy(() => GitSource8$outboundSchema),
 ]);
 
@@ -8597,6 +8613,7 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8610,6 +8627,7 @@ export type CancelDeploymentMicrofrontends2$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -8628,6 +8646,7 @@ export const CancelDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**
@@ -8674,6 +8693,7 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8683,6 +8703,7 @@ export type CancelDeploymentMicrofrontends1$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -8696,6 +8717,7 @@ export const CancelDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**
@@ -9126,11 +9148,11 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GitSource14$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
-    z.lazy(() => GitSource6$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
     z.lazy(() => GitSource9$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
-    z.lazy(() => GitSource7$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
     z.lazy(() => GitSource8$inboundSchema),
   ]).optional(),
   name: z.string(),
@@ -9255,11 +9277,11 @@ export type CancelDeploymentResponseBody$Outbound = {
     | GitSource14$Outbound
     | CancelDeploymentGitSource2$Outbound
     | CancelDeploymentGitSource3$Outbound
-    | GitSource6$Outbound
+    | CancelDeploymentGitSource6$Outbound
     | GitSource9$Outbound
     | CancelDeploymentGitSource1$Outbound
     | CancelDeploymentGitSource5$Outbound
-    | GitSource7$Outbound
+    | CancelDeploymentGitSource7$Outbound
     | GitSource8$Outbound
     | undefined;
   name: string;
@@ -9392,11 +9414,11 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => GitSource14$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
-    z.lazy(() => GitSource6$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
     z.lazy(() => GitSource9$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
-    z.lazy(() => GitSource7$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource7$outboundSchema),
     z.lazy(() => GitSource8$outboundSchema),
   ]).optional(),
   name: z.string(),

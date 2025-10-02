@@ -139,7 +139,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -302,7 +302,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -444,7 +444,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -589,7 +589,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -823,7 +823,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1029,7 +1029,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1232,7 +1232,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1369,7 +1369,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1513,7 +1513,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1641,7 +1641,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1755,7 +1755,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1845,7 +1845,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2007,7 +2007,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2095,7 +2095,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2249,7 +2249,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2357,7 +2357,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2493,7 +2493,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2793,7 +2793,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3131,7 +3131,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3418,7 +3418,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3714,7 +3714,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4021,7 +4021,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7286,6 +7286,12 @@
                           },
                           "type": "array"
                         },
+                        "apiKeyAiGateway": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -8668,7 +8674,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9317,7 +9323,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9514,7 +9520,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -12030,6 +12036,10 @@
                                 "microfrontendsAlias2Enabled": {
                                   "type": "boolean",
                                   "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
+                                },
+                                "microfrontendsAliasRoutingVercelSiteProdTestHost": {
+                                  "type": "boolean",
+                                  "description": "Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)"
                                 }
                               },
                               "required": [
@@ -12106,6 +12116,10 @@
                                 "microfrontendsAlias2Enabled": {
                                   "type": "boolean",
                                   "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
+                                },
+                                "microfrontendsAliasRoutingVercelSiteProdTestHost": {
+                                  "type": "boolean",
+                                  "description": "Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)"
                                 }
                               },
                               "required": [
@@ -13657,11 +13671,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
+                            "error",
+                            "timeout",
                             "skipped",
                             "pending",
-                            "ready",
-                            "error",
-                            "timeout"
+                            "ready"
                           ]
                         },
                         "startedAt": {
@@ -13840,18 +13854,18 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "BUILDING",
                               "ERROR",
+                              "BUILDING",
                               "INITIALIZING",
                               "READY"
                             ]
                           },
+                          "readyStateAt": {
+                            "type": "number"
+                          },
                           "entrypoint": {
                             "nullable": true,
                             "type": "string"
-                          },
-                          "readyStateAt": {
-                            "type": "number"
                           },
                           "output": {
                             "items": {
@@ -14123,16 +14137,6 @@
                       "type": "string",
                       "enum": [
                         "LAMBDAS"
-                      ]
-                    },
-                    "deletedAt": {
-                      "nullable": true,
-                      "type": "number"
-                    },
-                    "version": {
-                      "type": "number",
-                      "enum": [
-                        2
                       ]
                     },
                     "autoAssignCustomDomains": {
@@ -14723,6 +14727,10 @@
                       "nullable": true,
                       "type": "string"
                     },
+                    "deletedAt": {
+                      "nullable": true,
+                      "type": "number"
+                    },
                     "passiveRegions": {
                       "items": {
                         "type": "string"
@@ -14735,6 +14743,12 @@
                         "type": "string"
                       },
                       "type": "array"
+                    },
+                    "version": {
+                      "type": "number",
+                      "enum": [
+                        2
+                      ]
                     },
                     "aliasError": {
                       "nullable": true,
@@ -14887,11 +14901,11 @@
                     "projectId": {
                       "type": "string"
                     },
-                    "ownerId": {
-                      "type": "string"
-                    },
                     "monorepoManager": {
                       "nullable": true,
+                      "type": "string"
+                    },
+                    "ownerId": {
                       "type": "string"
                     },
                     "plan": {
@@ -14910,15 +14924,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "fluid",
-                            "standard"
+                            "standard",
+                            "fluid"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard",
                             "standard_legacy",
+                            "standard",
                             "performance"
                           ]
                         },
@@ -15541,12 +15555,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "error",
                                   "filesystem",
+                                  "error",
                                   "hit",
                                   "miss",
-                                  "rewrite",
-                                  "resource"
+                                  "resource",
+                                  "rewrite"
                                 ]
                               },
                               "src": {
@@ -15674,6 +15688,10 @@
                             "microfrontendsAlias2Enabled": {
                               "type": "boolean",
                               "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
+                            },
+                            "microfrontendsAliasRoutingVercelSiteProdTestHost": {
+                              "type": "boolean",
+                              "description": "Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)"
                             }
                           },
                           "required": [
@@ -15750,6 +15768,10 @@
                             "microfrontendsAlias2Enabled": {
                               "type": "boolean",
                               "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
+                            },
+                            "microfrontendsAliasRoutingVercelSiteProdTestHost": {
+                              "type": "boolean",
+                              "description": "Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)"
                             }
                           },
                           "required": [
@@ -15861,8 +15883,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15914,8 +15936,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -15968,8 +15990,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "team",
-                                "user"
+                                "user",
+                                "team"
                               ]
                             }
                           },
@@ -16008,10 +16030,10 @@
                     "name",
                     "createdAt",
                     "type",
-                    "version",
                     "meta",
                     "readyState",
                     "regions",
+                    "version",
                     "url",
                     "projectId",
                     "ownerId",
@@ -16036,7 +16058,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16308,6 +16330,74 @@
                           "type": {
                             "enum": [
                               "github"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "ref",
+                          "org",
+                          "repo"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "ref": {
+                            "type": "string",
+                            "example": "main"
+                          },
+                          "repoId": {
+                            "oneOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "example": 123456789
+                          },
+                          "sha": {
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
+                          },
+                          "type": {
+                            "enum": [
+                              "github-limited"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "ref",
+                          "repoId"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "org": {
+                            "type": "string",
+                            "example": "vercel"
+                          },
+                          "ref": {
+                            "type": "string",
+                            "example": "main"
+                          },
+                          "repo": {
+                            "type": "string",
+                            "example": "next.js"
+                          },
+                          "sha": {
+                            "type": "string",
+                            "example": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"
+                          },
+                          "type": {
+                            "enum": [
+                              "github-limited"
                             ],
                             "type": "string"
                           }
@@ -19001,6 +19091,10 @@
                             "microfrontendsAlias2Enabled": {
                               "type": "boolean",
                               "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
+                            },
+                            "microfrontendsAliasRoutingVercelSiteProdTestHost": {
+                              "type": "boolean",
+                              "description": "Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)"
                             }
                           },
                           "required": [
@@ -19077,6 +19171,10 @@
                             "microfrontendsAlias2Enabled": {
                               "type": "boolean",
                               "description": "Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not."
+                            },
+                            "microfrontendsAliasRoutingVercelSiteProdTestHost": {
+                              "type": "boolean",
+                              "description": "Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)"
                             }
                           },
                           "required": [
@@ -19213,7 +19311,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19384,7 +19482,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19577,7 +19675,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19686,7 +19784,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19954,7 +20052,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -20106,7 +20204,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -20764,7 +20862,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -20987,7 +21085,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21156,7 +21254,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21317,7 +21415,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21591,7 +21689,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21855,7 +21953,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22124,7 +22222,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22359,7 +22457,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22517,7 +22615,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22687,7 +22785,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22747,6 +22845,7 @@
                       "type": "number"
                     },
                     "deletedAt": {
+                      "nullable": true,
                       "type": "number"
                     },
                     "id": {
@@ -22864,7 +22963,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22953,6 +23052,7 @@
                       "type": "number"
                     },
                     "deletedAt": {
+                      "nullable": true,
                       "type": "number"
                     },
                     "id": {
@@ -23070,7 +23170,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23148,6 +23248,7 @@
                       "type": "number"
                     },
                     "deletedAt": {
+                      "nullable": true,
                       "type": "number"
                     },
                     "id": {
@@ -23265,7 +23366,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23367,7 +23468,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23458,7 +23559,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23553,7 +23654,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23753,7 +23854,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23841,7 +23942,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -23948,7 +24049,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24039,7 +24140,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24136,7 +24237,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24215,7 +24316,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24328,7 +24429,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24436,7 +24537,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24760,7 +24861,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -24912,7 +25013,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25039,7 +25140,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25312,7 +25413,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25409,7 +25510,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25552,7 +25653,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25639,7 +25740,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25710,7 +25811,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -25973,7 +26074,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -26161,7 +26262,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -26234,7 +26335,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -26318,7 +26419,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -26578,7 +26679,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -26940,7 +27041,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -27365,7 +27466,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -27436,7 +27537,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -27547,7 +27648,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -27660,7 +27761,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -27802,7 +27903,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -28099,6 +28200,7 @@
                                     "tag_messaging",
                                     "tag_monitoring",
                                     "tag_observability",
+                                    "tag_payments",
                                     "tag_performance",
                                     "tag_productivity",
                                     "tag_searching",
@@ -28272,7 +28374,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -28862,7 +28964,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -28944,7 +29046,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -29319,34 +29421,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "default": {
@@ -30029,34 +30131,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "default": {
@@ -30214,34 +30316,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@512899": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@512899"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@512899": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@512899"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@512899": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@512899"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "default": {
@@ -30552,12 +30654,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@512899": {
+                                                  "__@BRAND@541612": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@512899"
+                                                  "__@BRAND@541612"
                                                 ]
                                               },
                                               {
@@ -30565,12 +30667,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@512899": {
+                                                      "__@BRAND@541612": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@512899"
+                                                      "__@BRAND@541612"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30639,34 +30741,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "default": {
@@ -30824,34 +30926,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@512899": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@512899"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@512899": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@512899"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@512899": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@512899"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "default": {
@@ -30940,12 +31042,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@512899": {
+                                                  "__@BRAND@541612": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@512899"
+                                                  "__@BRAND@541612"
                                                 ]
                                               },
                                               {
@@ -30953,12 +31055,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@512899": {
+                                                      "__@BRAND@541612": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@512899"
+                                                      "__@BRAND@541612"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31144,12 +31246,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@512899": {
+                                              "__@BRAND@541612": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@512899"
+                                              "__@BRAND@541612"
                                             ]
                                           },
                                           "type": "array"
@@ -31158,12 +31260,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@512899": {
+                                              "__@BRAND@541612": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@512899"
+                                              "__@BRAND@541612"
                                             ]
                                           },
                                           "type": "array"
@@ -31182,12 +31284,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@512899": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@512899"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "disabled": {
@@ -31327,7 +31429,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -31647,6 +31749,52 @@
                         "type": "number",
                         "description": "The sampling rate of log drain",
                         "example": 0.5
+                      },
+                      "source": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "self-served"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "kind"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "integration"
+                                ]
+                              },
+                              "resourceId": {
+                                "type": "string"
+                              },
+                              "externalResourceId": {
+                                "type": "string"
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              },
+                              "integrationConfigurationId": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "integrationId",
+                              "integrationConfigurationId"
+                            ],
+                            "type": "object"
+                          }
+                        ]
                       }
                     },
                     "required": [
@@ -31654,7 +31802,8 @@
                       "id",
                       "name",
                       "ownerId",
-                      "url"
+                      "url",
+                      "source"
                     ],
                     "type": "object"
                   },
@@ -31674,7 +31823,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -31854,6 +32003,52 @@
                       "type": "number",
                       "description": "The sampling rate of log drain",
                       "example": 0.5
+                    },
+                    "source": {
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "kind": {
+                              "type": "string",
+                              "enum": [
+                                "self-served"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "kind"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "kind": {
+                              "type": "string",
+                              "enum": [
+                                "integration"
+                              ]
+                            },
+                            "resourceId": {
+                              "type": "string"
+                            },
+                            "externalResourceId": {
+                              "type": "string"
+                            },
+                            "integrationId": {
+                              "type": "string"
+                            },
+                            "integrationConfigurationId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "integrationId",
+                            "integrationConfigurationId"
+                          ],
+                          "type": "object"
+                        }
+                      ]
                     }
                   },
                   "required": [
@@ -31861,7 +32056,8 @@
                     "id",
                     "name",
                     "ownerId",
-                    "url"
+                    "url",
+                    "source"
                   ],
                   "type": "object"
                 }
@@ -31879,7 +32075,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32032,7 +32228,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32178,7 +32374,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32256,7 +32452,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32393,7 +32589,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32518,7 +32714,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32626,7 +32822,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32722,7 +32918,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -32953,7 +33149,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -33087,7 +33283,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -33240,7 +33436,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -34644,10 +34840,10 @@
                                   "repoId": {
                                     "type": "number"
                                   },
-                                  "updatedAt": {
+                                  "createdAt": {
                                     "type": "number"
                                   },
-                                  "createdAt": {
+                                  "updatedAt": {
                                     "type": "number"
                                   },
                                   "org": {
@@ -35616,408 +35812,6 @@
                           },
                           "permissions": {
                             "properties": {
-                              "aliasProject": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "aliasProtectionBypass": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "buildMachine": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "productionAliasProtectionBypass": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "connectConfigurationLink": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "dataCacheNamespace": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deployment": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentBuildLogs": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentCheck": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentCheckPreview": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentCheckReRunFromProductionBranch": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentProductionGit": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentV0": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentPreview": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentPrivate": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentPromote": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "deploymentRollback": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "edgeCacheNamespace": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "environments": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "logs": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "logsPreset": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "passwordProtection": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "optionsAllowlist": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "job": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "observabilityData": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "onDemandBuild": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "onDemandConcurrency": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "project": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectFromV0": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectAccessGroup": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectAnalyticsSampling": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectCheck": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectCheckRun": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectDeploymentHook": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectDomain": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectDomainMove": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectDomainCheckConfig": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectEnvVars": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectEnvVarsProduction": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectEnvVarsUnownedByIntegration": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectFlags": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectId": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectIntegrationConfiguration": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectLink": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectMember": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectMonitoring": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectPermissions": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectProductionBranch": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectTransfer": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectTransferOut": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectProtectionBypass": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectUsage": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectAnalyticsUsage": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectSupportCase": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectSupportCaseComment": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectDeploymentExpiration": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectRollingRelease": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectTier": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "projectOIDCToken": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "seawallConfig": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "skewProtection": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "analytics": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "trustedIps": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "v0Chat": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "webAnalytics": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "sharedEnvVarConnection": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
-                              "sonar": {
-                                "items": {
-                                  "$ref": "#/components/schemas/ACLAction"
-                                },
-                                "type": "array"
-                              },
                               "oauth2Connection": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -36889,6 +36683,414 @@
                                 "type": "array"
                               },
                               "apiKeyOwnedBySelf": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "apiKeyAiGateway": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "aliasProject": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "aliasProtectionBypass": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "buildMachine": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "productionAliasProtectionBypass": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "connectConfigurationLink": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "dataCacheNamespace": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deployment": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentBuildLogs": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentCheck": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentCheckPreview": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentCheckReRunFromProductionBranch": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentProductionGit": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentV0": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentPreview": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentPrivate": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentPromote": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "deploymentRollback": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "edgeCacheNamespace": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "environments": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "logs": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "logsPreset": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "passwordProtection": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "optionsAllowlist": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "job": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "observabilityData": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "onDemandBuild": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "onDemandConcurrency": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "project": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectFromV0": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectAccessGroup": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectAnalyticsSampling": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectCheck": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectCheckRun": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectDeploymentHook": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectDomain": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectDomainMove": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectDomainCheckConfig": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectEnvVars": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectEnvVarsProduction": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectEnvVarsUnownedByIntegration": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectFlags": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectId": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectIntegrationConfiguration": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectLink": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectMember": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectMonitoring": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectPermissions": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectProductionBranch": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectTransfer": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectTransferOut": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectProtectionBypass": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectUsage": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectAnalyticsUsage": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectSupportCase": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectSupportCaseComment": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectDeploymentExpiration": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectRollingRelease": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectTier": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "projectOIDCToken": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "seawallConfig": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "skewProtection": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "analytics": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "trustedIps": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "v0Chat": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "webAnalytics": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "sharedEnvVarConnection": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array"
+                              },
+                              "sonar": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -37863,7 +38065,32 @@
                       "type": "array"
                     },
                     "pagination": {
-                      "$ref": "#/components/schemas/Pagination"
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "count": {
+                              "type": "number",
+                              "description": "Amount of items in the current page.",
+                              "example": 20
+                            },
+                            "next": {
+                              "nullable": true,
+                              "type": "string",
+                              "description": "Continuation token that must be used to request the next page. Base32 encoded for safe URL transmission.",
+                              "example": "JBSWY3DPEHPK3PXP"
+                            }
+                          },
+                          "required": [
+                            "count",
+                            "next"
+                          ],
+                          "type": "object",
+                          "description": "This object contains information related to the pagination of the current request using continuation tokens. Since CosmosDB doesn't support going to previous pages, only count and next are provided."
+                        },
+                        {
+                          "$ref": "#/components/schemas/Pagination"
+                        }
+                      ]
                     }
                   },
                   "required": [
@@ -37887,7 +38114,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -37903,10 +38130,10 @@
         "parameters": [
           {
             "name": "from",
-            "description": "Query only projects updated after the given timestamp",
+            "description": "Query only projects updated after the given timestamp or continuation token.",
             "in": "query",
             "schema": {
-              "description": "Query only projects updated after the given timestamp",
+              "description": "Query only projects updated after the given timestamp or continuation token.",
               "type": "string"
             }
           },
@@ -38017,20 +38244,6 @@
                 "0"
               ],
               "example": "1"
-            }
-          },
-          {
-            "name": "sortByElasticConcurrency",
-            "description": "Sort results by elastic concurrency status. desc = enabled projects first, asc = disabled projects first",
-            "in": "query",
-            "schema": {
-              "description": "Sort results by elastic concurrency status. desc = enabled projects first, asc = disabled projects first",
-              "type": "string",
-              "enum": [
-                "desc",
-                "asc"
-              ],
-              "example": "desc"
             }
           },
           {
@@ -41246,6 +41459,12 @@
                           },
                           "type": "array"
                         },
+                        "apiKeyAiGateway": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -42628,7 +42847,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -45375,31 +45594,403 @@
                     },
                     "permissions": {
                       "properties": {
-                        "oauth2Connection": {
+                        "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "user": {
+                        "aliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "userConnection": {
+                        "buildMachine": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "userSudo": {
+                        "productionAliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "webAuthn": {
+                        "connectConfigurationLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "dataCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deployment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentBuildLogs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentCheckReRunFromProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentProductionGit": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPreview": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPrivate": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentPromote": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "deploymentRollback": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "edgeCacheNamespace": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "environments": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logs": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "logsPreset": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "passwordProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "optionsAllowlist": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "job": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "observabilityData": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandBuild": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "onDemandConcurrency": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "project": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFromV0": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAccessGroup": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsSampling": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheck": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectCheckRun": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentHook": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainMove": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDomainCheckConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVars": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsProduction": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectEnvVarsUnownedByIntegration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectId": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectIntegrationConfiguration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectLink": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMember": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectMonitoring": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectPermissions": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProductionBranch": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransfer": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTransferOut": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectProtectionBypass": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectAnalyticsUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCase": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectSupportCaseComment": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectDeploymentExpiration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectRollingRelease": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectTier": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "projectOIDCToken": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "seawallConfig": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "skewProtection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "analytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "trustedIps": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "v0Chat": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "webAnalytics": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sharedEnvVarConnection": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
+                        "sonar": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -46251,403 +46842,37 @@
                           },
                           "type": "array"
                         },
-                        "aliasProject": {
+                        "apiKeyAiGateway": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "aliasProtectionBypass": {
+                        "oauth2Connection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "buildMachine": {
+                        "user": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "productionAliasProtectionBypass": {
+                        "userConnection": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "connectConfigurationLink": {
+                        "userSudo": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
                           "type": "array"
                         },
-                        "dataCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deployment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentBuildLogs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentCheckReRunFromProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentProductionGit": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPreview": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPrivate": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentPromote": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "deploymentRollback": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "edgeCacheNamespace": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "environments": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logs": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "logsPreset": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "passwordProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "optionsAllowlist": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "job": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "observabilityData": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandBuild": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "onDemandConcurrency": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "project": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFromV0": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAccessGroup": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsSampling": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheck": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectCheckRun": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentHook": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomain": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainMove": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDomainCheckConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVars": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsProduction": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectEnvVarsUnownedByIntegration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectFlags": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectId": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectIntegrationConfiguration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectLink": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMember": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectMonitoring": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectPermissions": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProductionBranch": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransfer": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTransferOut": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectProtectionBypass": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectAnalyticsUsage": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCase": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectSupportCaseComment": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectDeploymentExpiration": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectRollingRelease": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectTier": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "projectOIDCToken": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "seawallConfig": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "skewProtection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "analytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "trustedIps": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "v0Chat": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "webAnalytics": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sharedEnvVarConnection": {
-                          "items": {
-                            "$ref": "#/components/schemas/ACLAction"
-                          },
-                          "type": "array"
-                        },
-                        "sonar": {
+                        "webAuthn": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -47633,7 +47858,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -50866,6 +51091,12 @@
                           },
                           "type": "array"
                         },
+                        "apiKeyAiGateway": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array"
+                        },
                         "aliasProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -52248,7 +52479,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -52797,7 +53028,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -53035,7 +53266,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -53343,7 +53574,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -53587,7 +53818,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -53839,7 +54070,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -54132,7 +54363,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -54446,7 +54677,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -54741,7 +54972,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -54907,7 +55138,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -55037,7 +55268,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -55233,7 +55464,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -55446,7 +55677,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -55612,7 +55843,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -55722,10 +55953,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -56140,10 +56371,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -56570,10 +56801,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -56977,7 +57208,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -58038,7 +58269,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -58350,10 +58581,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -58749,10 +58980,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -59152,10 +59383,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -59544,7 +59775,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -60872,7 +61103,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61390,7 +61621,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61684,7 +61915,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61833,7 +62064,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61929,7 +62160,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -62076,7 +62307,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -62577,7 +62808,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -63093,7 +63324,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -63620,7 +63851,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -63738,7 +63969,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -63899,7 +64130,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -64113,7 +64344,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -64244,7 +64475,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -64371,7 +64602,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -64496,7 +64727,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -64575,7 +64806,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -64670,7 +64901,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -65397,7 +65628,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -66025,7 +66256,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -67625,7 +67856,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -67825,7 +68056,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -67998,7 +68229,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -68270,7 +68501,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -68414,7 +68645,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -68708,6 +68939,23 @@
                             "sandbox"
                           ]
                         },
+                        "capabilities": {
+                          "properties": {
+                            "mcp": {
+                              "type": "boolean"
+                            },
+                            "sso": {
+                              "type": "boolean"
+                            },
+                            "billable": {
+                              "type": "boolean"
+                            },
+                            "secretsSync": {
+                              "type": "boolean"
+                            }
+                          },
+                          "type": "object"
+                        },
                         "metadata": {
                           "additionalProperties": {
                             "oneOf": [
@@ -68765,6 +69013,29 @@
                             "iconUrl": {
                               "type": "string"
                             },
+                            "capabilities": {
+                              "properties": {
+                                "mcp": {
+                                  "type": "boolean"
+                                },
+                                "sso": {
+                                  "type": "boolean"
+                                },
+                                "billable": {
+                                  "type": "boolean"
+                                },
+                                "secretsSync": {
+                                  "type": "boolean"
+                                },
+                                "sandbox": {
+                                  "type": "boolean"
+                                },
+                                "linking": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "type": "object"
+                            },
                             "shortDescription": {
                               "type": "string"
                             },
@@ -68802,34 +69073,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "description": {
@@ -69512,34 +69783,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "description": {
@@ -69688,34 +69959,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7823": {
+                                                  "__@BRAND@8466": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7823"
+                                                  "__@BRAND@8466"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7823": {
+                                                  "__@BRAND@8466": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7823"
+                                                  "__@BRAND@8466"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@7823": {
+                                                  "__@BRAND@8466": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@7823"
+                                                  "__@BRAND@8466"
                                                 ]
                                               },
                                               "default": {
@@ -70032,12 +70303,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@7823": {
+                                                    "__@BRAND@8466": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@7823"
+                                                    "__@BRAND@8466"
                                                   ]
                                                 },
                                                 {
@@ -70045,12 +70316,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@7823": {
+                                                        "__@BRAND@8466": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@7823"
+                                                        "__@BRAND@8466"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -70122,34 +70393,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "description": {
@@ -70281,12 +70552,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@7823": {
+                                              "__@BRAND@8466": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@7823"
+                                              "__@BRAND@8466"
                                             ]
                                           },
                                           "disabled": {
@@ -70416,6 +70687,7 @@
                                   "tag_messaging",
                                   "tag_monitoring",
                                   "tag_observability",
+                                  "tag_payments",
                                   "tag_performance",
                                   "tag_productivity",
                                   "tag_searching",
@@ -70445,6 +70717,7 @@
                                   "read-write:global-project-env-vars",
                                   "read-write:integration-deployment-action",
                                   "read-write:log-drain",
+                                  "read-write:drains",
                                   "read-write:project-env-vars",
                                   "read-write:project-protection-bypass"
                                 ]
@@ -70533,12 +70806,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@7823": {
+                                "__@BRAND@8466": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@7823"
+                                "__@BRAND@8466"
                               ]
                             },
                             "disabled": {
@@ -70805,7 +71078,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -71336,7 +71609,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -71572,7 +71845,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -72303,7 +72576,7 @@
             }
           },
           "401": {
-            "description": "Team members can only be updated by an owner, or by the authenticated user if they are only disconnecting their SAML connection to the Team.",
+            "description": "The request is not authorized.\nTeam members can only be updated by an owner, or by the authenticated user if they are only disconnecting their SAML connection to the Team.",
             "content": {
               "application/json": {
                 "schema": {
@@ -72468,7 +72741,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -72565,7 +72838,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -72643,7 +72916,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -73239,7 +73512,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -73372,7 +73645,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -73478,7 +73751,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -73613,7 +73886,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -73679,7 +73952,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -73864,7 +74137,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -73953,7 +74226,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -74325,7 +74598,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -75076,7 +75349,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -75356,7 +75629,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -75425,7 +75698,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -75663,7 +75936,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -75781,7 +76054,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -76268,7 +76541,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -76780,7 +77053,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -76927,7 +77200,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -77023,7 +77296,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -77269,7 +77542,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -77357,7 +77630,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -77474,7 +77747,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -77606,7 +77879,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -77715,7 +77988,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -77795,7 +78068,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -78441,7 +78714,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -78676,7 +78949,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "The request is not authorized.",
             "content": {
               "application/json": {
                 "schema": {
@@ -84651,6 +84924,25 @@
                 "properties": {
                   "projectId": {
                     "type": "string"
+                  },
+                  "reasonCode": {
+                    "type": "string",
+                    "enum": [
+                      "BUDGET_REACHED",
+                      "PUBLIC_API"
+                    ]
+                  }
+                },
+                "required": [
+                  "projectId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -84677,10 +84969,97 @@
               },
               {
                 "properties": {
+                  "next": {
+                    "properties": {
+                      "project": {
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "staticIps": {
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean"
+                              },
+                              "regions": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "required": [
+                              "enabled"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "staticIps"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "project"
+                    ],
+                    "type": "object"
+                  },
+                  "previous": {
+                    "properties": {
+                      "project": {
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "staticIps": {
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean"
+                              },
+                              "regions": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "required": [
+                              "enabled"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "staticIps"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "project"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "next",
+                  "previous"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "projectId": {
                     "type": "string"
                   },
                   "projectName": {
+                    "type": "string"
+                  },
+                  "targetDeploymentId": {
                     "type": "string"
                   }
                 },
@@ -84697,6 +85076,9 @@
                     "type": "string"
                   },
                   "projectName": {
+                    "type": "string"
+                  },
+                  "targetDeploymentId": {
                     "type": "string"
                   },
                   "newTargetPercentage": {
@@ -86317,6 +86699,9 @@
                   "fallbackEnvironment": {
                     "type": "string"
                   },
+                  "enableMfeAliases": {
+                    "type": "boolean"
+                  },
                   "prev": {
                     "properties": {
                       "name": {
@@ -86327,6 +86712,9 @@
                       },
                       "fallbackEnvironment": {
                         "type": "string"
+                      },
+                      "enableMfeAliases": {
+                        "type": "boolean"
                       }
                     },
                     "required": [
@@ -87059,15 +87447,15 @@
             "properties": {
               "connection": {
                 "properties": {
-                  "type": {
-                    "type": "string",
-                    "description": "The Identity Provider \"type\", for example Okta.",
-                    "example": "OktaSAML"
-                  },
                   "status": {
                     "type": "string",
                     "description": "Current status of the connection.",
                     "example": "linked"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "The Identity Provider \"type\", for example Okta.",
+                    "example": "OktaSAML"
                   },
                   "state": {
                     "type": "string",
@@ -87086,8 +87474,8 @@
                   }
                 },
                 "required": [
-                  "type",
                   "status",
+                  "type",
                   "state",
                   "connectedAt"
                 ],
@@ -87461,9 +87849,6 @@
                 },
                 "type": "array"
               },
-              "teamId": {
-                "type": "string"
-              },
               "confirmed": {
                 "type": "boolean"
               },
@@ -87516,6 +87901,9 @@
                 },
                 "type": "array"
               },
+              "teamId": {
+                "type": "string"
+              },
               "createdAt": {
                 "type": "number"
               },
@@ -87527,9 +87915,9 @@
                   "origin": {
                     "type": "string",
                     "enum": [
-                      "link",
                       "saml",
                       "mail",
+                      "link",
                       "import",
                       "teams",
                       "github",

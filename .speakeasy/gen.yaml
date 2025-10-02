@@ -25,10 +25,6 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  compileCommand:
-    - bash
-    - -c
-    - ./scripts/build.sh
   version: 1.11.5
   acceptHeaderEnum: true
   additionalDependencies:

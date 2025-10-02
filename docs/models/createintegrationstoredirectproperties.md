@@ -89,6 +89,15 @@ const value: models.CreateIntegrationStoreDirectProperties7 = {
 
 ```typescript
 const value: models.CreateIntegrationStoreDirectProperties8 = {
+  type: "string",
+  uiControl: "domain",
+};
+```
+
+### `models.CreateIntegrationStoreDirectProperties9`
+
+```typescript
+const value: models.CreateIntegrationStoreDirectProperties9 = {
   value: {
     atBRANDAt8466: {},
   },

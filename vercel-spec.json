@@ -22674,6 +22674,250 @@
         ]
       }
     },
+    "/v1/edge-cache/invalidate-by-tags": {
+      "post": {
+        "description": "Marks a cache tag as stale, causing cache entries associated with that tag to be revalidated in the background on the next request.",
+        "operationId": "invalidateByTags",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Invalidate the edge cache by one or more tags",
+        "tags": [
+          "edge-cache"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectIdOrName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "type": "object",
+                "required": [
+                  "tags"
+                ],
+                "properties": {
+                  "tags": {
+                    "oneOf": [
+                      {
+                        "items": {
+                          "maxLength": 256,
+                          "type": "string"
+                        },
+                        "maxItems": 16,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      {
+                        "maxLength": 8196,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "target": {
+                    "enum": [
+                      "production",
+                      "preview"
+                    ],
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-cache/dangerously-delete-by-tags": {
+      "post": {
+        "description": "Marks a cache tag as deleted, causing cache entries associated with that tag to be revalidated in the foreground on the next request. Use this method with caution because one tag can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. A good use case for deleting the cache is when the origin has also been deleted, for example it returns a 404 or 410 status code.",
+        "operationId": "dangerouslyDeleteByTags",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Dangerously delete the edge cache by one or more tags",
+        "tags": [
+          "edge-cache"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectIdOrName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "type": "object",
+                "required": [
+                  "tags"
+                ],
+                "properties": {
+                  "revalidationDeadlineSeconds": {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "tags": {
+                    "oneOf": [
+                      {
+                        "items": {
+                          "maxLength": 256,
+                          "type": "string"
+                        },
+                        "maxItems": 16,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      {
+                        "maxLength": 8196,
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "target": {
+                    "enum": [
+                      "production",
+                      "preview"
+                    ],
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/edge-config": {
       "get": {
         "description": "Returns all Edge Configs.",
@@ -26440,6 +26684,12 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
           }
         },
         "parameters": [
@@ -27783,6 +28033,9 @@
               }
             }
           },
+          "409": {
+            "description": ""
+          },
           "422": {
             "description": ""
           }
@@ -27924,6 +28177,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           },
           "422": {
             "description": ""
@@ -29421,34 +29677,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "default": {
@@ -30131,34 +30387,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "default": {
@@ -30316,34 +30572,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541604": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541604"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541604": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541604"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541604": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541604"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "default": {
@@ -30654,12 +30910,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@541604": {
+                                                  "__@BRAND@541612": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@541604"
+                                                  "__@BRAND@541612"
                                                 ]
                                               },
                                               {
@@ -30667,12 +30923,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@541604": {
+                                                      "__@BRAND@541612": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@541604"
+                                                      "__@BRAND@541612"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30741,34 +30997,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "default": {
@@ -30926,34 +31182,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541604": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541604"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541604": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541604"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541604": {
+                                                "__@BRAND@541612": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541604"
+                                                "__@BRAND@541612"
                                               ]
                                             },
                                             "default": {
@@ -31042,12 +31298,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@541604": {
+                                                  "__@BRAND@541612": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@541604"
+                                                  "__@BRAND@541612"
                                                 ]
                                               },
                                               {
@@ -31055,12 +31311,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@541604": {
+                                                      "__@BRAND@541612": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@541604"
+                                                      "__@BRAND@541612"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31246,12 +31502,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@541604": {
+                                              "__@BRAND@541612": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@541604"
+                                              "__@BRAND@541612"
                                             ]
                                           },
                                           "type": "array"
@@ -31260,12 +31516,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@541604": {
+                                              "__@BRAND@541612": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@541604"
+                                              "__@BRAND@541612"
                                             ]
                                           },
                                           "type": "array"
@@ -31281,15 +31537,191 @@
                                     },
                                     {
                                       "properties": {
-                                        "value": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "string"
+                                          ]
+                                        },
+                                        "ui:control": {
+                                          "type": "string",
+                                          "enum": [
+                                            "domain"
+                                          ]
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541604": {
+                                            "__@BRAND@541612": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541604"
+                                            "__@BRAND@541612"
+                                          ]
+                                        },
+                                        "maxLength": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@541612": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@541612"
+                                          ]
+                                        },
+                                        "pattern": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@541612": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@541612"
+                                          ]
+                                        },
+                                        "default": {
+                                          "type": "string"
+                                        },
+                                        "enum": {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "ui:label": {
+                                          "type": "string"
+                                        },
+                                        "ui:read-only": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:hidden": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:disabled": {
+                                          "oneOf": [
+                                            {
+                                              "type": "boolean"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "enum": [
+                                                "update",
+                                                "create"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "ui:description": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "properties": {
+                                                "expr": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "expr"
+                                              ],
+                                              "type": "object"
+                                            }
+                                          ]
+                                        },
+                                        "ui:formatted-value": {
+                                          "properties": {
+                                            "expr": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "expr"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "ui:placeholder": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "type",
+                                        "ui:control"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    {
+                                      "properties": {
+                                        "value": {
+                                          "type": "object",
+                                          "properties": {
+                                            "__@BRAND@541612": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "__@BRAND@541612"
                                           ]
                                         },
                                         "disabled": {
@@ -70543,6 +70975,182 @@
                                           "type",
                                           "ui:control",
                                           "ui:options"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      {
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "string"
+                                            ]
+                                          },
+                                          "ui:control": {
+                                            "type": "string",
+                                            "enum": [
+                                              "domain"
+                                            ]
+                                          },
+                                          "enum": {
+                                            "items": {
+                                              "type": "string"
+                                            },
+                                            "type": "array"
+                                          },
+                                          "maxLength": {
+                                            "type": "object",
+                                            "properties": {
+                                              "__@BRAND@8466": {
+                                                "type": "object"
+                                              }
+                                            },
+                                            "required": [
+                                              "__@BRAND@8466"
+                                            ]
+                                          },
+                                          "minLength": {
+                                            "type": "object",
+                                            "properties": {
+                                              "__@BRAND@8466": {
+                                                "type": "object"
+                                              }
+                                            },
+                                            "required": [
+                                              "__@BRAND@8466"
+                                            ]
+                                          },
+                                          "pattern": {
+                                            "type": "object",
+                                            "properties": {
+                                              "__@BRAND@8466": {
+                                                "type": "object"
+                                              }
+                                            },
+                                            "required": [
+                                              "__@BRAND@8466"
+                                            ]
+                                          },
+                                          "description": {
+                                            "type": "string"
+                                          },
+                                          "default": {
+                                            "type": "string"
+                                          },
+                                          "ui:label": {
+                                            "type": "string"
+                                          },
+                                          "ui:read-only": {
+                                            "oneOf": [
+                                              {
+                                                "type": "boolean"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "expr": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "expr"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "update",
+                                                  "create"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "ui:hidden": {
+                                            "oneOf": [
+                                              {
+                                                "type": "boolean"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "expr": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "expr"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "update",
+                                                  "create"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "ui:disabled": {
+                                            "oneOf": [
+                                              {
+                                                "type": "boolean"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "expr": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "expr"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              {
+                                                "type": "string",
+                                                "enum": [
+                                                  "update",
+                                                  "create"
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "ui:description": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "expr": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "expr"
+                                                ],
+                                                "type": "object"
+                                              }
+                                            ]
+                                          },
+                                          "ui:formatted-value": {
+                                            "properties": {
+                                              "expr": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "expr"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "ui:placeholder": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "type",
+                                          "ui:control"
                                         ],
                                         "type": "object"
                                       },

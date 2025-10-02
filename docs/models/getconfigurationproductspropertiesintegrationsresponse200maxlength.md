@@ -1,0 +1,18 @@
+# GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength
+
+## Example Usage
+
+```typescript
+import { GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength } from "@vercel/sdk/models/getconfigurationproductsop.js";
+
+let value: GetConfigurationProductsPropertiesIntegrationsResponse200MaxLength =
+  {
+    atBRANDAt541612: {},
+  };
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                                                        | Type                                                                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `atBRANDAt541612`                                                                                                                                                                                                                                                            | [models.GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchema6AtBRANDAt541612](../models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6atbrandat541612.md) | :heavy_check_mark:                                                                                                                                                                                                                                                           | N/A                                                                                                                                                                                                                                                                          |

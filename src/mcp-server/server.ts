@@ -73,6 +73,8 @@ import { tool$domainsGetDomainConfig } from "./tools/domainsGetDomainConfig.js";
 import { tool$domainsGetDomains } from "./tools/domainsGetDomains.js";
 import { tool$domainsGetDomainTransfer } from "./tools/domainsGetDomainTransfer.js";
 import { tool$domainsPatchDomain } from "./tools/domainsPatchDomain.js";
+import { tool$edgeCacheDangerouslyDeleteByTags } from "./tools/edgeCacheDangerouslyDeleteByTags.js";
+import { tool$edgeCacheInvalidateByTags } from "./tools/edgeCacheInvalidateByTags.js";
 import { tool$edgeConfigCreateEdgeConfig } from "./tools/edgeConfigCreateEdgeConfig.js";
 import { tool$edgeConfigCreateEdgeConfigToken } from "./tools/edgeConfigCreateEdgeConfigToken.js";
 import { tool$edgeConfigDeleteEdgeConfig } from "./tools/edgeConfigDeleteEdgeConfig.js";
@@ -199,7 +201,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.11.5",
+    version: "1.12.0",
   });
 
   const client = new VercelCore({
@@ -306,6 +308,8 @@ export function createMCPServer(deps: {
   tool(tool$dnsCreateRecord);
   tool(tool$dnsUpdateRecord);
   tool(tool$dnsRemoveRecord);
+  tool(tool$edgeCacheInvalidateByTags);
+  tool(tool$edgeCacheDangerouslyDeleteByTags);
   tool(tool$edgeConfigGetEdgeConfigs);
   tool(tool$edgeConfigCreateEdgeConfig);
   tool(tool$edgeConfigGetEdgeConfig);

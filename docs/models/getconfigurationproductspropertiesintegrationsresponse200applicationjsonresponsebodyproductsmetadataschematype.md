@@ -9,11 +9,11 @@ import {
 
 let value:
   GetConfigurationProductsPropertiesIntegrationsResponse200ApplicationJSONResponseBodyProductsMetadataSchemaType =
-    "number";
+    "string";
 ```
 
 ## Values
 
 ```typescript
-"number"
+"string"
 ```

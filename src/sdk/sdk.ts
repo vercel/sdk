@@ -12,6 +12,7 @@ import { Checks } from "./checks.js";
 import { Deployments } from "./deployments.js";
 import { Dns } from "./dns.js";
 import { Domains } from "./domains.js";
+import { EdgeCache } from "./edgecache.js";
 import { EdgeConfig } from "./edgeconfig.js";
 import { Environment } from "./environment.js";
 import { Integrations } from "./integrations.js";
@@ -65,6 +66,11 @@ export class Vercel extends ClientSDK {
   private _dns?: Dns;
   get dns(): Dns {
     return (this._dns ??= new Dns(this._options));
+  }
+
+  private _edgeCache?: EdgeCache;
+  get edgeCache(): EdgeCache {
+    return (this._edgeCache ??= new EdgeCache(this._options));
   }
 
   private _edgeConfig?: EdgeConfig;

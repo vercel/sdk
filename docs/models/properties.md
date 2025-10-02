@@ -102,8 +102,17 @@ const value: models.Properties8 = {
 
 ```typescript
 const value: models.Properties9 = {
+  type: "string",
+  uiControl: "domain",
+};
+```
+
+### `models.Properties10`
+
+```typescript
+const value: models.Properties10 = {
   value: {
-    atBRANDAt541604: {},
+    atBRANDAt541612: {},
   },
 };
 ```

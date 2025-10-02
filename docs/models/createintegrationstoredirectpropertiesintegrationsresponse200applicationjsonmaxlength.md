@@ -1,0 +1,21 @@
+# CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength
+
+## Example Usage
+
+```typescript
+import {
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength,
+} from "@vercel/sdk/models/createintegrationstoredirectop.js";
+
+let value:
+  CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONMaxLength =
+    {
+      atBRANDAt8466: {},
+    };
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                                                                                                | Type                                                                                                                                                                                                                                                                                                                 | Required                                                                                                                                                                                                                                                                                                             | Description                                                                                                                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `atBRANDAt8466`                                                                                                                                                                                                                                                                                                      | [models.CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyStoreProductMetadataSchema6ItemsMaxLengthAtBRANDAt8466](../models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8466.md) | :heavy_check_mark:                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                  |

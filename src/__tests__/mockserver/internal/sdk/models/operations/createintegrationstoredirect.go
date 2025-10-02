@@ -1305,6 +1305,800 @@ func (o *CreateIntegrationStoreDirectProperties) GetHidden() *CreateIntegrationS
 	return o.Hidden
 }
 
+type CreateIntegrationStoreDirectTypeString5 string
+
+const (
+	CreateIntegrationStoreDirectTypeString5String CreateIntegrationStoreDirectTypeString5 = "string"
+)
+
+func (e CreateIntegrationStoreDirectTypeString5) ToPointer() *CreateIntegrationStoreDirectTypeString5 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectTypeString5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "string":
+		*e = CreateIntegrationStoreDirectTypeString5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectTypeString5: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIControlDomain string
+
+const (
+	CreateIntegrationStoreDirectUIControlDomainDomain CreateIntegrationStoreDirectUIControlDomain = "domain"
+)
+
+func (e CreateIntegrationStoreDirectUIControlDomain) ToPointer() *CreateIntegrationStoreDirectUIControlDomain {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIControlDomain) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "domain":
+		*e = CreateIntegrationStoreDirectUIControlDomain(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIControlDomain: %v", v)
+	}
+}
+
+type MaxLengthAtBRANDAt84664 struct {
+}
+
+func (m MaxLengthAtBRANDAt84664) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MaxLengthAtBRANDAt84664) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type CreateIntegrationStoreDirectMaxLength4 struct {
+	AtBRANDAt8466 MaxLengthAtBRANDAt84664 `json:"__@BRAND@8466"`
+}
+
+func (c CreateIntegrationStoreDirectMaxLength4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectMaxLength4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@8466"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectMaxLength4) GetAtBRANDAt8466() MaxLengthAtBRANDAt84664 {
+	if o == nil {
+		return MaxLengthAtBRANDAt84664{}
+	}
+	return o.AtBRANDAt8466
+}
+
+type MinLengthAtBRANDAt84664 struct {
+}
+
+func (m MinLengthAtBRANDAt84664) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MinLengthAtBRANDAt84664) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type CreateIntegrationStoreDirectMinLength4 struct {
+	AtBRANDAt8466 MinLengthAtBRANDAt84664 `json:"__@BRAND@8466"`
+}
+
+func (c CreateIntegrationStoreDirectMinLength4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectMinLength4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@8466"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectMinLength4) GetAtBRANDAt8466() MinLengthAtBRANDAt84664 {
+	if o == nil {
+		return MinLengthAtBRANDAt84664{}
+	}
+	return o.AtBRANDAt8466
+}
+
+type PatternAtBRANDAt84664 struct {
+}
+
+func (p PatternAtBRANDAt84664) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatternAtBRANDAt84664) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+type CreateIntegrationStoreDirectPattern4 struct {
+	AtBRANDAt8466 PatternAtBRANDAt84664 `json:"__@BRAND@8466"`
+}
+
+func (c CreateIntegrationStoreDirectPattern4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectPattern4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"__@BRAND@8466"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectPattern4) GetAtBRANDAt8466() PatternAtBRANDAt84664 {
+	if o == nil {
+		return PatternAtBRANDAt84664{}
+	}
+	return o.AtBRANDAt8466
+}
+
+type CreateIntegrationStoreDirectUIReadOnlyEnum8 string
+
+const (
+	CreateIntegrationStoreDirectUIReadOnlyEnum8Update CreateIntegrationStoreDirectUIReadOnlyEnum8 = "update"
+	CreateIntegrationStoreDirectUIReadOnlyEnum8Create CreateIntegrationStoreDirectUIReadOnlyEnum8 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIReadOnlyEnum8) ToPointer() *CreateIntegrationStoreDirectUIReadOnlyEnum8 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIReadOnlyEnum8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectUIReadOnlyEnum8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIReadOnlyEnum8: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIReadOnly8 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIReadOnly8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIReadOnly8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIReadOnly8) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIReadOnlyUnion8Type string
+
+const (
+	CreateIntegrationStoreDirectUIReadOnlyUnion8TypeBoolean                                     CreateIntegrationStoreDirectUIReadOnlyUnion8Type = "boolean"
+	CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnly8     CreateIntegrationStoreDirectUIReadOnlyUnion8Type = "createIntegrationStoreDirect_ui:read-only_8"
+	CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnlyEnum8 CreateIntegrationStoreDirectUIReadOnlyUnion8Type = "createIntegrationStoreDirect_ui:read-only_enum_8"
+)
+
+type CreateIntegrationStoreDirectUIReadOnlyUnion8 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIReadOnly8     *CreateIntegrationStoreDirectUIReadOnly8     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIReadOnlyEnum8 *CreateIntegrationStoreDirectUIReadOnlyEnum8 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIReadOnlyUnion8Type
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIReadOnlyUnion8 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion8TypeBoolean
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion8{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion8CreateIntegrationStoreDirectUIReadOnly8(createIntegrationStoreDirectUIReadOnly8 CreateIntegrationStoreDirectUIReadOnly8) CreateIntegrationStoreDirectUIReadOnlyUnion8 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnly8
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion8{
+		CreateIntegrationStoreDirectUIReadOnly8: &createIntegrationStoreDirectUIReadOnly8,
+		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIReadOnlyUnion8CreateIntegrationStoreDirectUIReadOnlyEnum8(createIntegrationStoreDirectUIReadOnlyEnum8 CreateIntegrationStoreDirectUIReadOnlyEnum8) CreateIntegrationStoreDirectUIReadOnlyUnion8 {
+	typ := CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnlyEnum8
+
+	return CreateIntegrationStoreDirectUIReadOnlyUnion8{
+		CreateIntegrationStoreDirectUIReadOnlyEnum8: &createIntegrationStoreDirectUIReadOnlyEnum8,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIReadOnlyUnion8) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIReadOnly8 CreateIntegrationStoreDirectUIReadOnly8 = CreateIntegrationStoreDirectUIReadOnly8{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIReadOnly8, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIReadOnly8 = &createIntegrationStoreDirectUIReadOnly8
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnly8
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion8TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIReadOnlyEnum8 CreateIntegrationStoreDirectUIReadOnlyEnum8 = CreateIntegrationStoreDirectUIReadOnlyEnum8("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIReadOnlyEnum8, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIReadOnlyEnum8 = &createIntegrationStoreDirectUIReadOnlyEnum8
+		u.Type = CreateIntegrationStoreDirectUIReadOnlyUnion8TypeCreateIntegrationStoreDirectUIReadOnlyEnum8
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIReadOnlyUnion8", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIReadOnlyUnion8) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIReadOnly8 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnly8, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIReadOnlyEnum8 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIReadOnlyEnum8, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIReadOnlyUnion8: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIHiddenEnum8 string
+
+const (
+	CreateIntegrationStoreDirectUIHiddenEnum8Update CreateIntegrationStoreDirectUIHiddenEnum8 = "update"
+	CreateIntegrationStoreDirectUIHiddenEnum8Create CreateIntegrationStoreDirectUIHiddenEnum8 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIHiddenEnum8) ToPointer() *CreateIntegrationStoreDirectUIHiddenEnum8 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIHiddenEnum8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectUIHiddenEnum8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIHiddenEnum8: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIHidden8 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIHidden8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIHidden8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIHidden8) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIHiddenUnion8Type string
+
+const (
+	CreateIntegrationStoreDirectUIHiddenUnion8TypeBoolean                                   CreateIntegrationStoreDirectUIHiddenUnion8Type = "boolean"
+	CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHidden8     CreateIntegrationStoreDirectUIHiddenUnion8Type = "createIntegrationStoreDirect_ui:hidden_8"
+	CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHiddenEnum8 CreateIntegrationStoreDirectUIHiddenUnion8Type = "createIntegrationStoreDirect_ui:hidden_enum_8"
+)
+
+type CreateIntegrationStoreDirectUIHiddenUnion8 struct {
+	Boolean                                   *bool                                      `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIHidden8     *CreateIntegrationStoreDirectUIHidden8     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIHiddenEnum8 *CreateIntegrationStoreDirectUIHiddenEnum8 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIHiddenUnion8Type
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIHiddenUnion8 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion8TypeBoolean
+
+	return CreateIntegrationStoreDirectUIHiddenUnion8{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion8CreateIntegrationStoreDirectUIHidden8(createIntegrationStoreDirectUIHidden8 CreateIntegrationStoreDirectUIHidden8) CreateIntegrationStoreDirectUIHiddenUnion8 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHidden8
+
+	return CreateIntegrationStoreDirectUIHiddenUnion8{
+		CreateIntegrationStoreDirectUIHidden8: &createIntegrationStoreDirectUIHidden8,
+		Type:                                  typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIHiddenUnion8CreateIntegrationStoreDirectUIHiddenEnum8(createIntegrationStoreDirectUIHiddenEnum8 CreateIntegrationStoreDirectUIHiddenEnum8) CreateIntegrationStoreDirectUIHiddenUnion8 {
+	typ := CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHiddenEnum8
+
+	return CreateIntegrationStoreDirectUIHiddenUnion8{
+		CreateIntegrationStoreDirectUIHiddenEnum8: &createIntegrationStoreDirectUIHiddenEnum8,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIHiddenUnion8) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIHidden8 CreateIntegrationStoreDirectUIHidden8 = CreateIntegrationStoreDirectUIHidden8{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIHidden8, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIHidden8 = &createIntegrationStoreDirectUIHidden8
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHidden8
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion8TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIHiddenEnum8 CreateIntegrationStoreDirectUIHiddenEnum8 = CreateIntegrationStoreDirectUIHiddenEnum8("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIHiddenEnum8, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIHiddenEnum8 = &createIntegrationStoreDirectUIHiddenEnum8
+		u.Type = CreateIntegrationStoreDirectUIHiddenUnion8TypeCreateIntegrationStoreDirectUIHiddenEnum8
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIHiddenUnion8", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIHiddenUnion8) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIHidden8 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHidden8, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIHiddenEnum8 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIHiddenEnum8, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIHiddenUnion8: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIDisabledEnum8 string
+
+const (
+	CreateIntegrationStoreDirectUIDisabledEnum8Update CreateIntegrationStoreDirectUIDisabledEnum8 = "update"
+	CreateIntegrationStoreDirectUIDisabledEnum8Create CreateIntegrationStoreDirectUIDisabledEnum8 = "create"
+)
+
+func (e CreateIntegrationStoreDirectUIDisabledEnum8) ToPointer() *CreateIntegrationStoreDirectUIDisabledEnum8 {
+	return &e
+}
+func (e *CreateIntegrationStoreDirectUIDisabledEnum8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "update":
+		fallthrough
+	case "create":
+		*e = CreateIntegrationStoreDirectUIDisabledEnum8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationStoreDirectUIDisabledEnum8: %v", v)
+	}
+}
+
+type CreateIntegrationStoreDirectUIDisabled8 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIDisabled8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIDisabled8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIDisabled8) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIDisabledUnion8Type string
+
+const (
+	CreateIntegrationStoreDirectUIDisabledUnion8TypeBoolean                                     CreateIntegrationStoreDirectUIDisabledUnion8Type = "boolean"
+	CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabled8     CreateIntegrationStoreDirectUIDisabledUnion8Type = "createIntegrationStoreDirect_ui:disabled_8"
+	CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabledEnum8 CreateIntegrationStoreDirectUIDisabledUnion8Type = "createIntegrationStoreDirect_ui:disabled_enum_8"
+)
+
+type CreateIntegrationStoreDirectUIDisabledUnion8 struct {
+	Boolean                                     *bool                                        `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDisabled8     *CreateIntegrationStoreDirectUIDisabled8     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDisabledEnum8 *CreateIntegrationStoreDirectUIDisabledEnum8 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIDisabledUnion8Type
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion8Boolean(boolean bool) CreateIntegrationStoreDirectUIDisabledUnion8 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion8TypeBoolean
+
+	return CreateIntegrationStoreDirectUIDisabledUnion8{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion8CreateIntegrationStoreDirectUIDisabled8(createIntegrationStoreDirectUIDisabled8 CreateIntegrationStoreDirectUIDisabled8) CreateIntegrationStoreDirectUIDisabledUnion8 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabled8
+
+	return CreateIntegrationStoreDirectUIDisabledUnion8{
+		CreateIntegrationStoreDirectUIDisabled8: &createIntegrationStoreDirectUIDisabled8,
+		Type:                                    typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDisabledUnion8CreateIntegrationStoreDirectUIDisabledEnum8(createIntegrationStoreDirectUIDisabledEnum8 CreateIntegrationStoreDirectUIDisabledEnum8) CreateIntegrationStoreDirectUIDisabledUnion8 {
+	typ := CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabledEnum8
+
+	return CreateIntegrationStoreDirectUIDisabledUnion8{
+		CreateIntegrationStoreDirectUIDisabledEnum8: &createIntegrationStoreDirectUIDisabledEnum8,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIDisabledUnion8) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIDisabled8 CreateIntegrationStoreDirectUIDisabled8 = CreateIntegrationStoreDirectUIDisabled8{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDisabled8, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDisabled8 = &createIntegrationStoreDirectUIDisabled8
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabled8
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion8TypeBoolean
+		return nil
+	}
+
+	var createIntegrationStoreDirectUIDisabledEnum8 CreateIntegrationStoreDirectUIDisabledEnum8 = CreateIntegrationStoreDirectUIDisabledEnum8("")
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDisabledEnum8, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDisabledEnum8 = &createIntegrationStoreDirectUIDisabledEnum8
+		u.Type = CreateIntegrationStoreDirectUIDisabledUnion8TypeCreateIntegrationStoreDirectUIDisabledEnum8
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIDisabledUnion8", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIDisabledUnion8) MarshalJSON() ([]byte, error) {
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDisabled8 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabled8, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDisabledEnum8 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDisabledEnum8, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIDisabledUnion8: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIDescription8 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIDescription8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIDescription8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIDescription8) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectUIDescriptionUnion8Type string
+
+const (
+	CreateIntegrationStoreDirectUIDescriptionUnion8TypeStr                                        CreateIntegrationStoreDirectUIDescriptionUnion8Type = "str"
+	CreateIntegrationStoreDirectUIDescriptionUnion8TypeCreateIntegrationStoreDirectUIDescription8 CreateIntegrationStoreDirectUIDescriptionUnion8Type = "createIntegrationStoreDirect_ui:description_8"
+)
+
+type CreateIntegrationStoreDirectUIDescriptionUnion8 struct {
+	Str                                        *string                                     `queryParam:"inline"`
+	CreateIntegrationStoreDirectUIDescription8 *CreateIntegrationStoreDirectUIDescription8 `queryParam:"inline"`
+
+	Type CreateIntegrationStoreDirectUIDescriptionUnion8Type
+}
+
+func CreateCreateIntegrationStoreDirectUIDescriptionUnion8Str(str string) CreateIntegrationStoreDirectUIDescriptionUnion8 {
+	typ := CreateIntegrationStoreDirectUIDescriptionUnion8TypeStr
+
+	return CreateIntegrationStoreDirectUIDescriptionUnion8{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationStoreDirectUIDescriptionUnion8CreateIntegrationStoreDirectUIDescription8(createIntegrationStoreDirectUIDescription8 CreateIntegrationStoreDirectUIDescription8) CreateIntegrationStoreDirectUIDescriptionUnion8 {
+	typ := CreateIntegrationStoreDirectUIDescriptionUnion8TypeCreateIntegrationStoreDirectUIDescription8
+
+	return CreateIntegrationStoreDirectUIDescriptionUnion8{
+		CreateIntegrationStoreDirectUIDescription8: &createIntegrationStoreDirectUIDescription8,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationStoreDirectUIDescriptionUnion8) UnmarshalJSON(data []byte) error {
+
+	var createIntegrationStoreDirectUIDescription8 CreateIntegrationStoreDirectUIDescription8 = CreateIntegrationStoreDirectUIDescription8{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectUIDescription8, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectUIDescription8 = &createIntegrationStoreDirectUIDescription8
+		u.Type = CreateIntegrationStoreDirectUIDescriptionUnion8TypeCreateIntegrationStoreDirectUIDescription8
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateIntegrationStoreDirectUIDescriptionUnion8TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateIntegrationStoreDirectUIDescriptionUnion8", string(data))
+}
+
+func (u CreateIntegrationStoreDirectUIDescriptionUnion8) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectUIDescription8 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectUIDescription8, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateIntegrationStoreDirectUIDescriptionUnion8: all fields are null")
+}
+
+type CreateIntegrationStoreDirectUIFormattedValue8 struct {
+	Expr string `json:"expr"`
+}
+
+func (c CreateIntegrationStoreDirectUIFormattedValue8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectUIFormattedValue8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"expr"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectUIFormattedValue8) GetExpr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Expr
+}
+
+type CreateIntegrationStoreDirectPropertiesDomain struct {
+	Type             CreateIntegrationStoreDirectTypeString5          `json:"type"`
+	UIControl        CreateIntegrationStoreDirectUIControlDomain      `json:"ui:control"`
+	Enum             []string                                         `json:"enum,omitempty"`
+	MaxLength        *CreateIntegrationStoreDirectMaxLength4          `json:"maxLength,omitempty"`
+	MinLength        *CreateIntegrationStoreDirectMinLength4          `json:"minLength,omitempty"`
+	Pattern          *CreateIntegrationStoreDirectPattern4            `json:"pattern,omitempty"`
+	Description      *string                                          `json:"description,omitempty"`
+	Default          *string                                          `json:"default,omitempty"`
+	UILabel          *string                                          `json:"ui:label,omitempty"`
+	UIReadOnly       *CreateIntegrationStoreDirectUIReadOnlyUnion8    `json:"ui:read-only,omitempty"`
+	UIHidden         *CreateIntegrationStoreDirectUIHiddenUnion8      `json:"ui:hidden,omitempty"`
+	UIDisabled       *CreateIntegrationStoreDirectUIDisabledUnion8    `json:"ui:disabled,omitempty"`
+	UIDescription    *CreateIntegrationStoreDirectUIDescriptionUnion8 `json:"ui:description,omitempty"`
+	UIFormattedValue *CreateIntegrationStoreDirectUIFormattedValue8   `json:"ui:formatted-value,omitempty"`
+	UIPlaceholder    *string                                          `json:"ui:placeholder,omitempty"`
+}
+
+func (c CreateIntegrationStoreDirectPropertiesDomain) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationStoreDirectPropertiesDomain) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "ui:control"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetType() CreateIntegrationStoreDirectTypeString5 {
+	if o == nil {
+		return CreateIntegrationStoreDirectTypeString5("")
+	}
+	return o.Type
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIControl() CreateIntegrationStoreDirectUIControlDomain {
+	if o == nil {
+		return CreateIntegrationStoreDirectUIControlDomain("")
+	}
+	return o.UIControl
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetEnum() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Enum
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetMaxLength() *CreateIntegrationStoreDirectMaxLength4 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxLength
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetMinLength() *CreateIntegrationStoreDirectMinLength4 {
+	if o == nil {
+		return nil
+	}
+	return o.MinLength
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetPattern() *CreateIntegrationStoreDirectPattern4 {
+	if o == nil {
+		return nil
+	}
+	return o.Pattern
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetDefault() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUILabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UILabel
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIReadOnly() *CreateIntegrationStoreDirectUIReadOnlyUnion8 {
+	if o == nil {
+		return nil
+	}
+	return o.UIReadOnly
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIHidden() *CreateIntegrationStoreDirectUIHiddenUnion8 {
+	if o == nil {
+		return nil
+	}
+	return o.UIHidden
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIDisabled() *CreateIntegrationStoreDirectUIDisabledUnion8 {
+	if o == nil {
+		return nil
+	}
+	return o.UIDisabled
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIDescription() *CreateIntegrationStoreDirectUIDescriptionUnion8 {
+	if o == nil {
+		return nil
+	}
+	return o.UIDescription
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIFormattedValue() *CreateIntegrationStoreDirectUIFormattedValue8 {
+	if o == nil {
+		return nil
+	}
+	return o.UIFormattedValue
+}
+
+func (o *CreateIntegrationStoreDirectPropertiesDomain) GetUIPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UIPlaceholder
+}
+
 type CreateIntegrationStoreDirectTypeString4 string
 
 const (
@@ -8108,6 +8902,7 @@ const (
 	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesSelect       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Select"
 	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesMultiSelect  CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_MultiSelect"
 	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesVercelRegion CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_VercelRegion"
+	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesDomain       CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties_Domain"
 	CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectProperties             CreateIntegrationStoreDirectPropertiesUnionType = "createIntegrationStoreDirect_properties"
 )
 
@@ -8119,6 +8914,7 @@ type CreateIntegrationStoreDirectPropertiesUnion struct {
 	CreateIntegrationStoreDirectPropertiesSelect       *CreateIntegrationStoreDirectPropertiesSelect       `queryParam:"inline"`
 	CreateIntegrationStoreDirectPropertiesMultiSelect  *CreateIntegrationStoreDirectPropertiesMultiSelect  `queryParam:"inline"`
 	CreateIntegrationStoreDirectPropertiesVercelRegion *CreateIntegrationStoreDirectPropertiesVercelRegion `queryParam:"inline"`
+	CreateIntegrationStoreDirectPropertiesDomain       *CreateIntegrationStoreDirectPropertiesDomain       `queryParam:"inline"`
 	CreateIntegrationStoreDirectProperties             *CreateIntegrationStoreDirectProperties             `queryParam:"inline"`
 
 	Type CreateIntegrationStoreDirectPropertiesUnionType
@@ -8187,6 +8983,15 @@ func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDire
 	}
 }
 
+func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDirectPropertiesDomain(createIntegrationStoreDirectPropertiesDomain CreateIntegrationStoreDirectPropertiesDomain) CreateIntegrationStoreDirectPropertiesUnion {
+	typ := CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesDomain
+
+	return CreateIntegrationStoreDirectPropertiesUnion{
+		CreateIntegrationStoreDirectPropertiesDomain: &createIntegrationStoreDirectPropertiesDomain,
+		Type: typ,
+	}
+}
+
 func CreateCreateIntegrationStoreDirectPropertiesUnionCreateIntegrationStoreDirectProperties(createIntegrationStoreDirectProperties CreateIntegrationStoreDirectProperties) CreateIntegrationStoreDirectPropertiesUnion {
 	typ := CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectProperties
 
@@ -8247,6 +9052,13 @@ func (u *CreateIntegrationStoreDirectPropertiesUnion) UnmarshalJSON(data []byte)
 		return nil
 	}
 
+	var createIntegrationStoreDirectPropertiesDomain CreateIntegrationStoreDirectPropertiesDomain = CreateIntegrationStoreDirectPropertiesDomain{}
+	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectPropertiesDomain, "", true, nil); err == nil {
+		u.CreateIntegrationStoreDirectPropertiesDomain = &createIntegrationStoreDirectPropertiesDomain
+		u.Type = CreateIntegrationStoreDirectPropertiesUnionTypeCreateIntegrationStoreDirectPropertiesDomain
+		return nil
+	}
+
 	var createIntegrationStoreDirectProperties CreateIntegrationStoreDirectProperties = CreateIntegrationStoreDirectProperties{}
 	if err := utils.UnmarshalJSON(data, &createIntegrationStoreDirectProperties, "", true, nil); err == nil {
 		u.CreateIntegrationStoreDirectProperties = &createIntegrationStoreDirectProperties
@@ -8284,6 +9096,10 @@ func (u CreateIntegrationStoreDirectPropertiesUnion) MarshalJSON() ([]byte, erro
 
 	if u.CreateIntegrationStoreDirectPropertiesVercelRegion != nil {
 		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesVercelRegion, "", true)
+	}
+
+	if u.CreateIntegrationStoreDirectPropertiesDomain != nil {
+		return utils.MarshalJSON(u.CreateIntegrationStoreDirectPropertiesDomain, "", true)
 	}
 
 	if u.CreateIntegrationStoreDirectProperties != nil {

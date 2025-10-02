@@ -13,11 +13,12 @@ permissions:
   workflow_dispatch: {}
 jobs:
   publish:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
     with:
+      mode: publish
       enable_sdk_changelog: true
       environment: |
-        NODE_OPTIONS="--max-old-space-size=5120"      
+        NODE_OPTIONS="--max-old-space-size=5120"
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN_ELEVATED }}

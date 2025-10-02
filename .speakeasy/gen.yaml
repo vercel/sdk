@@ -25,6 +25,10 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
+  compileCommand:
+    - bash
+    - -c
+    - ./scripts/build.sh
   version: 1.11.5
   acceptHeaderEnum: true
   additionalDependencies:
@@ -59,7 +63,7 @@ typescript:
   modelPropertyCasing: camel
   moduleFormat: esm
   outputModelSuffix: output
-  packageName: '@vercel/sdk'
+  packageName: "@vercel/sdk"
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

@@ -27,6 +27,8 @@ jobs:
       speakeasy_version: latest
       enable_sdk_changelog: true
       target: vercel
+      environment: |
+        NODE_OPTIONS="--max-old-space-size=5120"
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN_ELEVATED }}

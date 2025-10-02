@@ -118,7 +118,6 @@ async function $do(
     "repoUrl": payload.repoUrl,
     "search": payload.search,
     "slug": payload.slug,
-    "sortByElasticConcurrency": payload.sortByElasticConcurrency,
     "teamId": payload.teamId,
   });
 

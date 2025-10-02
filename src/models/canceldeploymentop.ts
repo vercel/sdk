@@ -605,7 +605,7 @@ export type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
 
 export type CancelDeploymentGitSourceProjectId = string | number;
 
-export type GitSource7 = {
+export type CancelDeploymentGitSource7 = {
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type;
   projectId: string | number;
@@ -623,7 +623,7 @@ export type CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONRespon
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType
   >;
 
-export type GitSource6 = {
+export type CancelDeploymentGitSource6 = {
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType;
   org: string;
@@ -732,11 +732,11 @@ export type CancelDeploymentGitSource =
   | GitSource14
   | CancelDeploymentGitSource2
   | CancelDeploymentGitSource3
-  | GitSource6
+  | CancelDeploymentGitSource6
   | GitSource9
   | CancelDeploymentGitSource1
   | CancelDeploymentGitSource5
-  | GitSource7
+  | CancelDeploymentGitSource7
   | GitSource8;
 
 /**
@@ -952,13 +952,13 @@ export type CancelDeploymentValueDeployments2 = {
 };
 
 export type CancelDeploymentHasDeploymentsValue =
-  | CancelDeploymentValueDeployments2
-  | string;
+  | string
+  | CancelDeploymentValueDeployments2;
 
 export type CancelDeploymentHas2 = {
   type: CancelDeploymentHasDeploymentsType;
   key: string;
-  value?: CancelDeploymentValueDeployments2 | string | undefined;
+  value?: string | CancelDeploymentValueDeployments2 | undefined;
 };
 
 export const CancelDeploymentHasType = {
@@ -984,11 +984,11 @@ export type CancelDeploymentValue2 = {
   lte?: number | undefined;
 };
 
-export type CancelDeploymentHasValue = CancelDeploymentValue2 | string;
+export type CancelDeploymentHasValue = string | CancelDeploymentValue2;
 
 export type CancelDeploymentHas1 = {
   type: CancelDeploymentHasType;
-  value: CancelDeploymentValue2 | string;
+  value: string | CancelDeploymentValue2;
 };
 
 export type CancelDeploymentRoutesHas =
@@ -1021,13 +1021,13 @@ export type CancelDeploymentValueDeploymentsResponse2002 = {
 };
 
 export type CancelDeploymentMissingDeploymentsValue =
-  | CancelDeploymentValueDeploymentsResponse2002
-  | string;
+  | string
+  | CancelDeploymentValueDeploymentsResponse2002;
 
 export type CancelDeploymentMissing2 = {
   type: CancelDeploymentMissingDeploymentsType;
   key: string;
-  value?: CancelDeploymentValueDeploymentsResponse2002 | string | undefined;
+  value?: string | CancelDeploymentValueDeploymentsResponse2002 | undefined;
 };
 
 export const CancelDeploymentMissingType = {
@@ -1054,12 +1054,12 @@ export type CancelDeploymentValueDeploymentsResponse2 = {
 };
 
 export type CancelDeploymentMissingValue =
-  | CancelDeploymentValueDeploymentsResponse2
-  | string;
+  | string
+  | CancelDeploymentValueDeploymentsResponse2;
 
 export type CancelDeploymentMissing1 = {
   type: CancelDeploymentMissingType;
-  value: CancelDeploymentValueDeploymentsResponse2 | string;
+  value: string | CancelDeploymentValueDeploymentsResponse2;
 };
 
 export type RoutesMissing = CancelDeploymentMissing1 | CancelDeploymentMissing2;
@@ -1107,10 +1107,10 @@ export type CancelDeploymentKey2 = {
   lte?: number | undefined;
 };
 
-export type CancelDeploymentRoutesKey = CancelDeploymentKey2 | string;
+export type CancelDeploymentRoutesKey = string | CancelDeploymentKey2;
 
 export type CancelDeploymentRoutesTarget = {
-  key: CancelDeploymentKey2 | string;
+  key: string | CancelDeploymentKey2;
 };
 
 export type RoutesArgs = string | Array<string>;
@@ -1336,6 +1336,10 @@ export type CancelDeploymentMicrofrontends2 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends1 = {
@@ -1356,6 +1360,10 @@ export type CancelDeploymentMicrofrontends1 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends =
@@ -1494,11 +1502,11 @@ export type CancelDeploymentResponseBody = {
     | GitSource14
     | CancelDeploymentGitSource2
     | CancelDeploymentGitSource3
-    | GitSource6
+    | CancelDeploymentGitSource6
     | GitSource9
     | CancelDeploymentGitSource1
     | CancelDeploymentGitSource5
-    | GitSource7
+    | CancelDeploymentGitSource7
     | GitSource8
     | undefined;
   name: string;
@@ -4220,8 +4228,8 @@ export function cancelDeploymentGitSourceProjectIdFromJSON(
 }
 
 /** @internal */
-export const GitSource7$inboundSchema: z.ZodType<
-  GitSource7,
+export const CancelDeploymentGitSource7$inboundSchema: z.ZodType<
+  CancelDeploymentGitSource7,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4234,7 +4242,7 @@ export const GitSource7$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GitSource7$Outbound = {
+export type CancelDeploymentGitSource7$Outbound = {
   type: string;
   projectId: string | number;
   ref?: string | null | undefined;
@@ -4243,10 +4251,10 @@ export type GitSource7$Outbound = {
 };
 
 /** @internal */
-export const GitSource7$outboundSchema: z.ZodType<
-  GitSource7$Outbound,
+export const CancelDeploymentGitSource7$outboundSchema: z.ZodType<
+  CancelDeploymentGitSource7$Outbound,
   z.ZodTypeDef,
-  GitSource7
+  CancelDeploymentGitSource7
 > = z.object({
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type$outboundSchema,
@@ -4260,26 +4268,30 @@ export const GitSource7$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitSource7$ {
-  /** @deprecated use `GitSource7$inboundSchema` instead. */
-  export const inboundSchema = GitSource7$inboundSchema;
-  /** @deprecated use `GitSource7$outboundSchema` instead. */
-  export const outboundSchema = GitSource7$outboundSchema;
-  /** @deprecated use `GitSource7$Outbound` instead. */
-  export type Outbound = GitSource7$Outbound;
+export namespace CancelDeploymentGitSource7$ {
+  /** @deprecated use `CancelDeploymentGitSource7$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentGitSource7$inboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource7$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentGitSource7$outboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource7$Outbound` instead. */
+  export type Outbound = CancelDeploymentGitSource7$Outbound;
 }
 
-export function gitSource7ToJSON(gitSource7: GitSource7): string {
-  return JSON.stringify(GitSource7$outboundSchema.parse(gitSource7));
+export function cancelDeploymentGitSource7ToJSON(
+  cancelDeploymentGitSource7: CancelDeploymentGitSource7,
+): string {
+  return JSON.stringify(
+    CancelDeploymentGitSource7$outboundSchema.parse(cancelDeploymentGitSource7),
+  );
 }
 
-export function gitSource7FromJSON(
+export function cancelDeploymentGitSource7FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource7, SDKValidationError> {
+): SafeParseResult<CancelDeploymentGitSource7, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource7$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource7' from JSON`,
+    (x) => CancelDeploymentGitSource7$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentGitSource7' from JSON`,
   );
 }
 
@@ -4312,8 +4324,8 @@ export namespace CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONR
 }
 
 /** @internal */
-export const GitSource6$inboundSchema: z.ZodType<
-  GitSource6,
+export const CancelDeploymentGitSource6$inboundSchema: z.ZodType<
+  CancelDeploymentGitSource6,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4327,7 +4339,7 @@ export const GitSource6$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GitSource6$Outbound = {
+export type CancelDeploymentGitSource6$Outbound = {
   type: string;
   org: string;
   repo: string;
@@ -4337,10 +4349,10 @@ export type GitSource6$Outbound = {
 };
 
 /** @internal */
-export const GitSource6$outboundSchema: z.ZodType<
-  GitSource6$Outbound,
+export const CancelDeploymentGitSource6$outboundSchema: z.ZodType<
+  CancelDeploymentGitSource6$Outbound,
   z.ZodTypeDef,
-  GitSource6
+  CancelDeploymentGitSource6
 > = z.object({
   type:
     CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$outboundSchema,
@@ -4355,26 +4367,30 @@ export const GitSource6$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GitSource6$ {
-  /** @deprecated use `GitSource6$inboundSchema` instead. */
-  export const inboundSchema = GitSource6$inboundSchema;
-  /** @deprecated use `GitSource6$outboundSchema` instead. */
-  export const outboundSchema = GitSource6$outboundSchema;
-  /** @deprecated use `GitSource6$Outbound` instead. */
-  export type Outbound = GitSource6$Outbound;
+export namespace CancelDeploymentGitSource6$ {
+  /** @deprecated use `CancelDeploymentGitSource6$inboundSchema` instead. */
+  export const inboundSchema = CancelDeploymentGitSource6$inboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource6$outboundSchema` instead. */
+  export const outboundSchema = CancelDeploymentGitSource6$outboundSchema;
+  /** @deprecated use `CancelDeploymentGitSource6$Outbound` instead. */
+  export type Outbound = CancelDeploymentGitSource6$Outbound;
 }
 
-export function gitSource6ToJSON(gitSource6: GitSource6): string {
-  return JSON.stringify(GitSource6$outboundSchema.parse(gitSource6));
+export function cancelDeploymentGitSource6ToJSON(
+  cancelDeploymentGitSource6: CancelDeploymentGitSource6,
+): string {
+  return JSON.stringify(
+    CancelDeploymentGitSource6$outboundSchema.parse(cancelDeploymentGitSource6),
+  );
 }
 
-export function gitSource6FromJSON(
+export function cancelDeploymentGitSource6FromJSON(
   jsonString: string,
-): SafeParseResult<GitSource6, SDKValidationError> {
+): SafeParseResult<CancelDeploymentGitSource6, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitSource6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitSource6' from JSON`,
+    (x) => CancelDeploymentGitSource6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentGitSource6' from JSON`,
   );
 }
 
@@ -5029,11 +5045,11 @@ export const CancelDeploymentGitSource$inboundSchema: z.ZodType<
   z.lazy(() => GitSource14$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
-  z.lazy(() => GitSource6$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
   z.lazy(() => GitSource9$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
   z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
-  z.lazy(() => GitSource7$inboundSchema),
+  z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
   z.lazy(() => GitSource8$inboundSchema),
 ]);
 
@@ -5048,11 +5064,11 @@ export type CancelDeploymentGitSource$Outbound =
   | GitSource14$Outbound
   | CancelDeploymentGitSource2$Outbound
   | CancelDeploymentGitSource3$Outbound
-  | GitSource6$Outbound
+  | CancelDeploymentGitSource6$Outbound
   | GitSource9$Outbound
   | CancelDeploymentGitSource1$Outbound
   | CancelDeploymentGitSource5$Outbound
-  | GitSource7$Outbound
+  | CancelDeploymentGitSource7$Outbound
   | GitSource8$Outbound;
 
 /** @internal */
@@ -5070,11 +5086,11 @@ export const CancelDeploymentGitSource$outboundSchema: z.ZodType<
   z.lazy(() => GitSource14$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
-  z.lazy(() => GitSource6$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
   z.lazy(() => GitSource9$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
   z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
-  z.lazy(() => GitSource7$outboundSchema),
+  z.lazy(() => CancelDeploymentGitSource7$outboundSchema),
   z.lazy(() => GitSource8$outboundSchema),
 ]);
 
@@ -5969,14 +5985,14 @@ export const CancelDeploymentHasDeploymentsValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
   z.string(),
+  z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentHasDeploymentsValue$Outbound =
-  | CancelDeploymentValueDeployments2$Outbound
-  | string;
+  | string
+  | CancelDeploymentValueDeployments2$Outbound;
 
 /** @internal */
 export const CancelDeploymentHasDeploymentsValue$outboundSchema: z.ZodType<
@@ -5984,8 +6000,8 @@ export const CancelDeploymentHasDeploymentsValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentHasDeploymentsValue
 > = z.union([
-  z.lazy(() => CancelDeploymentValueDeployments2$outboundSchema),
   z.string(),
+  z.lazy(() => CancelDeploymentValueDeployments2$outboundSchema),
 ]);
 
 /**
@@ -6033,8 +6049,8 @@ export const CancelDeploymentHas2$inboundSchema: z.ZodType<
   type: CancelDeploymentHasDeploymentsType$inboundSchema,
   key: z.string(),
   value: z.union([
-    z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValueDeployments2$inboundSchema),
   ]).optional(),
 });
 
@@ -6042,7 +6058,7 @@ export const CancelDeploymentHas2$inboundSchema: z.ZodType<
 export type CancelDeploymentHas2$Outbound = {
   type: string;
   key: string;
-  value?: CancelDeploymentValueDeployments2$Outbound | string | undefined;
+  value?: string | CancelDeploymentValueDeployments2$Outbound | undefined;
 };
 
 /** @internal */
@@ -6054,8 +6070,8 @@ export const CancelDeploymentHas2$outboundSchema: z.ZodType<
   type: CancelDeploymentHasDeploymentsType$outboundSchema,
   key: z.string(),
   value: z.union([
-    z.lazy(() => CancelDeploymentValueDeployments2$outboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValueDeployments2$outboundSchema),
   ]).optional(),
 });
 
@@ -6248,19 +6264,19 @@ export const CancelDeploymentHasValue$inboundSchema: z.ZodType<
   CancelDeploymentHasValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => CancelDeploymentValue2$inboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => CancelDeploymentValue2$inboundSchema)]);
 
 /** @internal */
 export type CancelDeploymentHasValue$Outbound =
-  | CancelDeploymentValue2$Outbound
-  | string;
+  | string
+  | CancelDeploymentValue2$Outbound;
 
 /** @internal */
 export const CancelDeploymentHasValue$outboundSchema: z.ZodType<
   CancelDeploymentHasValue$Outbound,
   z.ZodTypeDef,
   CancelDeploymentHasValue
-> = z.union([z.lazy(() => CancelDeploymentValue2$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => CancelDeploymentValue2$outboundSchema)]);
 
 /**
  * @internal
@@ -6301,15 +6317,15 @@ export const CancelDeploymentHas1$inboundSchema: z.ZodType<
 > = z.object({
   type: CancelDeploymentHasType$inboundSchema,
   value: z.union([
-    z.lazy(() => CancelDeploymentValue2$inboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValue2$inboundSchema),
   ]),
 });
 
 /** @internal */
 export type CancelDeploymentHas1$Outbound = {
   type: string;
-  value: CancelDeploymentValue2$Outbound | string;
+  value: string | CancelDeploymentValue2$Outbound;
 };
 
 /** @internal */
@@ -6320,8 +6336,8 @@ export const CancelDeploymentHas1$outboundSchema: z.ZodType<
 > = z.object({
   type: CancelDeploymentHasType$outboundSchema,
   value: z.union([
-    z.lazy(() => CancelDeploymentValue2$outboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValue2$outboundSchema),
   ]),
 });
 
@@ -6602,14 +6618,14 @@ export const CancelDeploymentMissingDeploymentsValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$inboundSchema),
   z.string(),
+  z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentMissingDeploymentsValue$Outbound =
-  | CancelDeploymentValueDeploymentsResponse2002$Outbound
-  | string;
+  | string
+  | CancelDeploymentValueDeploymentsResponse2002$Outbound;
 
 /** @internal */
 export const CancelDeploymentMissingDeploymentsValue$outboundSchema: z.ZodType<
@@ -6617,8 +6633,8 @@ export const CancelDeploymentMissingDeploymentsValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentMissingDeploymentsValue
 > = z.union([
-  z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$outboundSchema),
   z.string(),
+  z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$outboundSchema),
 ]);
 
 /**
@@ -6672,8 +6688,8 @@ export const CancelDeploymentMissing2$inboundSchema: z.ZodType<
   type: CancelDeploymentMissingDeploymentsType$inboundSchema,
   key: z.string(),
   value: z.union([
-    z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$inboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$inboundSchema),
   ]).optional(),
 });
 
@@ -6682,8 +6698,8 @@ export type CancelDeploymentMissing2$Outbound = {
   type: string;
   key: string;
   value?:
-    | CancelDeploymentValueDeploymentsResponse2002$Outbound
     | string
+    | CancelDeploymentValueDeploymentsResponse2002$Outbound
     | undefined;
 };
 
@@ -6696,8 +6712,8 @@ export const CancelDeploymentMissing2$outboundSchema: z.ZodType<
   type: CancelDeploymentMissingDeploymentsType$outboundSchema,
   key: z.string(),
   value: z.union([
-    z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$outboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValueDeploymentsResponse2002$outboundSchema),
   ]).optional(),
 });
 
@@ -6915,14 +6931,14 @@ export const CancelDeploymentMissingValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => CancelDeploymentValueDeploymentsResponse2$inboundSchema),
   z.string(),
+  z.lazy(() => CancelDeploymentValueDeploymentsResponse2$inboundSchema),
 ]);
 
 /** @internal */
 export type CancelDeploymentMissingValue$Outbound =
-  | CancelDeploymentValueDeploymentsResponse2$Outbound
-  | string;
+  | string
+  | CancelDeploymentValueDeploymentsResponse2$Outbound;
 
 /** @internal */
 export const CancelDeploymentMissingValue$outboundSchema: z.ZodType<
@@ -6930,8 +6946,8 @@ export const CancelDeploymentMissingValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentMissingValue
 > = z.union([
-  z.lazy(() => CancelDeploymentValueDeploymentsResponse2$outboundSchema),
   z.string(),
+  z.lazy(() => CancelDeploymentValueDeploymentsResponse2$outboundSchema),
 ]);
 
 /**
@@ -6975,15 +6991,15 @@ export const CancelDeploymentMissing1$inboundSchema: z.ZodType<
 > = z.object({
   type: CancelDeploymentMissingType$inboundSchema,
   value: z.union([
-    z.lazy(() => CancelDeploymentValueDeploymentsResponse2$inboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValueDeploymentsResponse2$inboundSchema),
   ]),
 });
 
 /** @internal */
 export type CancelDeploymentMissing1$Outbound = {
   type: string;
-  value: CancelDeploymentValueDeploymentsResponse2$Outbound | string;
+  value: string | CancelDeploymentValueDeploymentsResponse2$Outbound;
 };
 
 /** @internal */
@@ -6994,8 +7010,8 @@ export const CancelDeploymentMissing1$outboundSchema: z.ZodType<
 > = z.object({
   type: CancelDeploymentMissingType$outboundSchema,
   value: z.union([
-    z.lazy(() => CancelDeploymentValueDeploymentsResponse2$outboundSchema),
     z.string(),
+    z.lazy(() => CancelDeploymentValueDeploymentsResponse2$outboundSchema),
   ]),
 });
 
@@ -7333,19 +7349,19 @@ export const CancelDeploymentRoutesKey$inboundSchema: z.ZodType<
   CancelDeploymentRoutesKey,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => CancelDeploymentKey2$inboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => CancelDeploymentKey2$inboundSchema)]);
 
 /** @internal */
 export type CancelDeploymentRoutesKey$Outbound =
-  | CancelDeploymentKey2$Outbound
-  | string;
+  | string
+  | CancelDeploymentKey2$Outbound;
 
 /** @internal */
 export const CancelDeploymentRoutesKey$outboundSchema: z.ZodType<
   CancelDeploymentRoutesKey$Outbound,
   z.ZodTypeDef,
   CancelDeploymentRoutesKey
-> = z.union([z.lazy(() => CancelDeploymentKey2$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => CancelDeploymentKey2$outboundSchema)]);
 
 /**
  * @internal
@@ -7384,12 +7400,12 @@ export const CancelDeploymentRoutesTarget$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: z.union([z.lazy(() => CancelDeploymentKey2$inboundSchema), z.string()]),
+  key: z.union([z.string(), z.lazy(() => CancelDeploymentKey2$inboundSchema)]),
 });
 
 /** @internal */
 export type CancelDeploymentRoutesTarget$Outbound = {
-  key: CancelDeploymentKey2$Outbound | string;
+  key: string | CancelDeploymentKey2$Outbound;
 };
 
 /** @internal */
@@ -7398,7 +7414,7 @@ export const CancelDeploymentRoutesTarget$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelDeploymentRoutesTarget
 > = z.object({
-  key: z.union([z.lazy(() => CancelDeploymentKey2$outboundSchema), z.string()]),
+  key: z.union([z.string(), z.lazy(() => CancelDeploymentKey2$outboundSchema)]),
 });
 
 /**
@@ -8597,6 +8613,7 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8610,6 +8627,7 @@ export type CancelDeploymentMicrofrontends2$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -8628,6 +8646,7 @@ export const CancelDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**
@@ -8674,6 +8693,7 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8683,6 +8703,7 @@ export type CancelDeploymentMicrofrontends1$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -8696,6 +8717,7 @@ export const CancelDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**
@@ -9126,11 +9148,11 @@ export const CancelDeploymentResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GitSource14$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
-    z.lazy(() => GitSource6$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
     z.lazy(() => GitSource9$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
     z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
-    z.lazy(() => GitSource7$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
     z.lazy(() => GitSource8$inboundSchema),
   ]).optional(),
   name: z.string(),
@@ -9255,11 +9277,11 @@ export type CancelDeploymentResponseBody$Outbound = {
     | GitSource14$Outbound
     | CancelDeploymentGitSource2$Outbound
     | CancelDeploymentGitSource3$Outbound
-    | GitSource6$Outbound
+    | CancelDeploymentGitSource6$Outbound
     | GitSource9$Outbound
     | CancelDeploymentGitSource1$Outbound
     | CancelDeploymentGitSource5$Outbound
-    | GitSource7$Outbound
+    | CancelDeploymentGitSource7$Outbound
     | GitSource8$Outbound
     | undefined;
   name: string;
@@ -9392,11 +9414,11 @@ export const CancelDeploymentResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => GitSource14$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource2$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource3$outboundSchema),
-    z.lazy(() => GitSource6$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource6$outboundSchema),
     z.lazy(() => GitSource9$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource1$outboundSchema),
     z.lazy(() => CancelDeploymentGitSource5$outboundSchema),
-    z.lazy(() => GitSource7$outboundSchema),
+    z.lazy(() => CancelDeploymentGitSource7$outboundSchema),
     z.lazy(() => GitSource8$outboundSchema),
   ]).optional(),
   name: z.string(),

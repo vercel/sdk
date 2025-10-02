@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 49322e5e03b461157bbf0efc8f21d625
+  docChecksum: 74c1b61837f91c7ee6579ce134876258
   docVersion: 0.0.1
-  speakeasyVersion: 1.621.0
-  generationVersion: 2.707.0
-  releaseVersion: 1.11.4
-  configChecksum: 6daea3cebffead8227beaa3a551cfa0d
+  speakeasyVersion: 1.633.2
+  generationVersion: 2.720.5
+  releaseVersion: 1.11.5
+  configChecksum: 6c0ee5e8fc010180db9022b417820b32
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -16,7 +16,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.12
-    core: 3.21.22
+    core: 3.21.26
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -35,8 +35,8 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    tests: 0.17.2
-    unions: 2.85.11
+    tests: 0.17.3
+    unions: 2.85.12
     uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
@@ -136,8 +136,8 @@ generatedFiles:
   - docs/models/assignaliasrequest.md
   - docs/models/assignaliasrequestbody.md
   - docs/models/assignaliasresponsebody.md
-  - docs/models/atbrandat512899.md
-  - docs/models/atbrandat7823.md
+  - docs/models/atbrandat541604.md
+  - docs/models/atbrandat8466.md
   - docs/models/attribution.md
   - docs/models/authentication.md
   - docs/models/authmethod.md
@@ -250,6 +250,8 @@ generatedFiles:
   - docs/models/canceldeploymentgitsource3.md
   - docs/models/canceldeploymentgitsource4.md
   - docs/models/canceldeploymentgitsource5.md
+  - docs/models/canceldeploymentgitsource6.md
+  - docs/models/canceldeploymentgitsource7.md
   - docs/models/canceldeploymentgitsourcedeploymentsrepoid.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
   - docs/models/canceldeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody11type.md
@@ -329,6 +331,7 @@ generatedFiles:
   - docs/models/canceldeploymentvaluedeploymentsresponseeq.md
   - docs/models/canceldeploymentvalueeq.md
   - docs/models/canceldeploymentwebanalytics.md
+  - docs/models/capabilities.md
   - docs/models/category.md
   - docs/models/changes.md
   - docs/models/checkdomainpricerequest.md
@@ -463,6 +466,8 @@ generatedFiles:
   - docs/models/createdeploymentgitsource8.md
   - docs/models/createdeploymentgitsource9.md
   - docs/models/createdeploymentgitsourcedeploymentsrepoid.md
+  - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbody1type.md
+  - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbody7type.md
   - docs/models/createdeploymentgitsourcedeploymentsrequestrequestbodytype.md
   - docs/models/createdeploymentgitsourcedeploymentsrequesttype.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody10type.md
@@ -479,6 +484,7 @@ generatedFiles:
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebodytype.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200applicationjsontype.md
   - docs/models/createdeploymentgitsourcedeploymentsresponse200type.md
+  - docs/models/createdeploymentgitsourcedeploymentsresponserepoid.md
   - docs/models/createdeploymentgitsourcedeploymentsresponsetype.md
   - docs/models/createdeploymentgitsourcedeploymentstype.md
   - docs/models/createdeploymentgitsourcerepoid.md
@@ -540,6 +546,7 @@ generatedFiles:
   - docs/models/createeventrequestbody.md
   - docs/models/createintegrationstoredirectactions.md
   - docs/models/createintegrationstoredirectbillingplan.md
+  - docs/models/createintegrationstoredirectcapabilities.md
   - docs/models/createintegrationstoredirectdeployments.md
   - docs/models/createintegrationstoredirectdetails.md
   - docs/models/createintegrationstoredirectdisabled2.md
@@ -583,24 +590,24 @@ generatedFiles:
   - docs/models/createintegrationstoredirectproperties6.md
   - docs/models/createintegrationstoredirectproperties7.md
   - docs/models/createintegrationstoredirectproperties8.md
-  - docs/models/createintegrationstoredirectpropertiesatbrandat7823.md
+  - docs/models/createintegrationstoredirectpropertiesatbrandat8466.md
   - docs/models/createintegrationstoredirectpropertiesdisabled.md
   - docs/models/createintegrationstoredirectpropertieshidden.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat7823.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat8466.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsdisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationshidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsitems.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsmaxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsminlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationspattern.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat7823.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat7823.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat7823.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat7823.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat7823.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat7823.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat7823.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat7823.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat8466.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat8466.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat8466.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat8466.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat8466.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat8466.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8466.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat8466.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschematype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproducttype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoretype.md
@@ -624,7 +631,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat7823.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat8466.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200maxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200minlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200pattern.md
@@ -635,7 +642,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat7823.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat8466.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsedisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsehidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsemaxlength.md
@@ -718,7 +725,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectuioptions1.md
   - docs/models/createintegrationstoredirectuioptions2.md
   - docs/models/createintegrationstoredirectuioptions3.md
-  - docs/models/createintegrationstoredirectuioptionsatbrandat7823.md
+  - docs/models/createintegrationstoredirectuioptionsatbrandat8466.md
   - docs/models/createintegrationstoredirectuioptionsdisabled.md
   - docs/models/createintegrationstoredirectuioptionshidden.md
   - docs/models/createintegrationstoredirectuioptionsintegrationsdisabled.md
@@ -745,6 +752,11 @@ generatedFiles:
   - docs/models/createlogdrainrequest.md
   - docs/models/createlogdrainrequestbody.md
   - docs/models/createlogdrainresponsebody.md
+  - docs/models/createlogdrainsource.md
+  - docs/models/createlogdrainsource1.md
+  - docs/models/createlogdrainsource2.md
+  - docs/models/createlogdrainsourcekind.md
+  - docs/models/createlogdrainsourcelogdrainskind.md
   - docs/models/createlogdrainsources.md
   - docs/models/createortransferdomaincreator.md
   - docs/models/createortransferdomaindomain.md
@@ -1533,30 +1545,30 @@ generatedFiles:
   - docs/models/getconfigurationproductsintegrationsresponse200status.md
   - docs/models/getconfigurationproductsintegrationsresponsestatus.md
   - docs/models/getconfigurationproductsintegrationsstatus.md
-  - docs/models/getconfigurationproductspropertiesatbrandat512899.md
+  - docs/models/getconfigurationproductspropertiesatbrandat541604.md
   - docs/models/getconfigurationproductspropertiesdisabled.md
   - docs/models/getconfigurationproductspropertieshidden.md
-  - docs/models/getconfigurationproductspropertiesintegrationsatbrandat512899.md
+  - docs/models/getconfigurationproductspropertiesintegrationsatbrandat541604.md
   - docs/models/getconfigurationproductspropertiesintegrationsdisabled.md
   - docs/models/getconfigurationproductspropertiesintegrationshidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsitems.md
   - docs/models/getconfigurationproductspropertiesintegrationsmaxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsminlength.md
   - docs/models/getconfigurationproductspropertiesintegrationspattern.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonatbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsatbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6atbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsatbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsminlengthatbrandat512899.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonatbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsatbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6atbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsatbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsminlengthatbrandat541604.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8atbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsatbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsminlengthatbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemspatternatbrandat512899.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8atbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsatbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsminlengthatbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemspatternatbrandat541604.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9atbrandat512899.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschemaatbrandat512899.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9atbrandat541604.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschemaatbrandat541604.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschematype.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductstype.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodytype.md
@@ -1573,7 +1585,7 @@ generatedFiles:
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuiformattedvalue.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuihidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuireadonly.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200atbrandat512899.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200atbrandat541604.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200type.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uicontrol.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uidescription.md
@@ -1581,7 +1593,7 @@ generatedFiles:
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uiformattedvalue.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uihidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uireadonly.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponseatbrandat512899.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponseatbrandat541604.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponsemaxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponseminlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponsepattern.md
@@ -1655,13 +1667,13 @@ generatedFiles:
   - docs/models/getconfigurationproductsuioptions1.md
   - docs/models/getconfigurationproductsuioptions2.md
   - docs/models/getconfigurationproductsuioptions3.md
-  - docs/models/getconfigurationproductsuioptionsatbrandat512899.md
+  - docs/models/getconfigurationproductsuioptionsatbrandat541604.md
   - docs/models/getconfigurationproductsuioptionsdisabled.md
   - docs/models/getconfigurationproductsuioptionshidden.md
-  - docs/models/getconfigurationproductsuioptionsintegrationsatbrandat512899.md
+  - docs/models/getconfigurationproductsuioptionsintegrationsatbrandat541604.md
   - docs/models/getconfigurationproductsuioptionsintegrationsdisabled.md
   - docs/models/getconfigurationproductsuioptionsintegrationshidden.md
-  - docs/models/getconfigurationproductsuioptionsintegrationsresponseatbrandat512899.md
+  - docs/models/getconfigurationproductsuioptionsintegrationsresponseatbrandat541604.md
   - docs/models/getconfigurationproductsuioptionsintegrationsresponsedisabled.md
   - docs/models/getconfigurationproductsuioptionsintegrationsresponsehidden.md
   - docs/models/getconfigurationproductsuioptionsvalue.md
@@ -1701,6 +1713,7 @@ generatedFiles:
   - docs/models/getconfigurationsresponsebodyintegrationstype.md
   - docs/models/getconfigurationsresponsebodysource.md
   - docs/models/getconfigurationsresponsebodytype.md
+  - docs/models/getconfigurationtransferrequestkind.md
   - docs/models/getcustomenvironmentbranchmatcher.md
   - docs/models/getcustomenvironmentdomains.md
   - docs/models/getcustomenvironmentenvironmenttype.md
@@ -2005,6 +2018,7 @@ generatedFiles:
   - docs/models/getintegrationlogdrainsenvironments.md
   - docs/models/getintegrationlogdrainsrequest.md
   - docs/models/getintegrationlogdrainsresponsebody.md
+  - docs/models/getintegrationlogdrainssource.md
   - docs/models/getintegrationlogdrainssources.md
   - docs/models/getintegrationresourcelevel.md
   - docs/models/getintegrationresourcemetadata.md
@@ -2293,6 +2307,7 @@ generatedFiles:
   - docs/models/getprojectsoidctokenconfig.md
   - docs/models/getprojectsoptionsallowlist.md
   - docs/models/getprojectsowasp.md
+  - docs/models/getprojectspagination.md
   - docs/models/getprojectspasswordprotection.md
   - docs/models/getprojectspaths.md
   - docs/models/getprojectspermissions.md
@@ -2743,7 +2758,9 @@ generatedFiles:
   - docs/models/onehundredandsix.md
   - docs/models/onehundredandsixteen.md
   - docs/models/onehundredandsixty.md
+  - docs/models/onehundredandsixtyfour.md
   - docs/models/onehundredandsixtyone.md
+  - docs/models/onehundredandsixtythree.md
   - docs/models/onehundredandsixtytwo.md
   - docs/models/onehundredandten.md
   - docs/models/onehundredandthirteen.md
@@ -2793,6 +2810,7 @@ generatedFiles:
   - docs/models/ownership.md
   - docs/models/ownertype.md
   - docs/models/pagination.md
+  - docs/models/pagination1.md
   - docs/models/paidfeatures.md
   - docs/models/partnercalls.md
   - docs/models/passwordprotection.md
@@ -2876,6 +2894,7 @@ generatedFiles:
   - docs/models/payloadname.md
   - docs/models/payloadnames.md
   - docs/models/payloadnewteam.md
+  - docs/models/payloadnext.md
   - docs/models/payloadoldteam.md
   - docs/models/payloadorigin.md
   - docs/models/payloadoveragereason.md
@@ -2884,6 +2903,7 @@ generatedFiles:
   - docs/models/payloadpeering.md
   - docs/models/payloadpreferredscopesandgitnamespaces.md
   - docs/models/payloadprev.md
+  - docs/models/payloadprevious.md
   - docs/models/payloadpreviousrole.md
   - docs/models/payloadpreviousrule.md
   - docs/models/payloadpricingplan.md
@@ -2900,6 +2920,7 @@ generatedFiles:
   - docs/models/payloadsoftblock.md
   - docs/models/payloadsourceimages.md
   - docs/models/payloadssoprotection.md
+  - docs/models/payloadstaticips.md
   - docs/models/payloadtarget.md
   - docs/models/payloadteam.md
   - docs/models/payloadteampermissions.md
@@ -2953,8 +2974,8 @@ generatedFiles:
   - docs/models/properties7.md
   - docs/models/properties8.md
   - docs/models/properties9.md
-  - docs/models/propertiesatbrandat512899.md
-  - docs/models/propertiesatbrandat7823.md
+  - docs/models/propertiesatbrandat541604.md
+  - docs/models/propertiesatbrandat8466.md
   - docs/models/propertiesdisabled.md
   - docs/models/propertieshidden.md
   - docs/models/propertiesitems.md
@@ -3075,6 +3096,7 @@ generatedFiles:
   - docs/models/readystate.md
   - docs/models/readysubstate.md
   - docs/models/reason.md
+  - docs/models/reasoncode.md
   - docs/models/reasons.md
   - docs/models/recentsviewpreference.md
   - docs/models/recommendedcname.md
@@ -3455,9 +3477,11 @@ generatedFiles:
   - docs/models/sixtytwo.md
   - docs/models/skipautodetectionconfirmation.md
   - docs/models/softblock.md
-  - docs/models/sortbyelasticconcurrency.md
   - docs/models/source.md
+  - docs/models/source1.md
+  - docs/models/source2.md
   - docs/models/sourceimages.md
+  - docs/models/sourcekind.md
   - docs/models/sources.md
   - docs/models/speedinsights.md
   - docs/models/sqli.md
@@ -3467,6 +3491,7 @@ generatedFiles:
   - docs/models/ssoprotection2.md
   - docs/models/stages.md
   - docs/models/state.md
+  - docs/models/staticips.md
   - docs/models/status.md
   - docs/models/statuscode.md
   - docs/models/statusrequest.md
@@ -3581,8 +3606,8 @@ generatedFiles:
   - docs/models/uioptions1.md
   - docs/models/uioptions2.md
   - docs/models/uioptions3.md
-  - docs/models/uioptionsatbrandat512899.md
-  - docs/models/uioptionsatbrandat7823.md
+  - docs/models/uioptionsatbrandat541604.md
+  - docs/models/uioptionsatbrandat8466.md
   - docs/models/uioptionsdisabled.md
   - docs/models/uioptionshidden.md
   - docs/models/uioptionsvalue.md
@@ -4112,26 +4137,26 @@ generatedFiles:
   - docs/models/usereventenvid2.md
   - docs/models/usereventmicrofrontends1.md
   - docs/models/usereventmicrofrontends2.md
-  - docs/models/usereventpayload102type.md
-  - docs/models/usereventpayload103type.md
   - docs/models/usereventpayload104type.md
-  - docs/models/usereventpayload116user.md
-  - docs/models/usereventpayload136project.md
-  - docs/models/usereventpayload137project.md
+  - docs/models/usereventpayload105type.md
+  - docs/models/usereventpayload106type.md
+  - docs/models/usereventpayload118user.md
   - docs/models/usereventpayload138project.md
-  - docs/models/usereventpayload138role.md
   - docs/models/usereventpayload139project.md
-  - docs/models/usereventpayload139role.md
-  - docs/models/usereventpayload145action.md
-  - docs/models/usereventpayload148project.md
-  - docs/models/usereventpayload149prevproject.md
-  - docs/models/usereventpayload149project.md
-  - docs/models/usereventpayload159configuration.md
-  - docs/models/usereventpayload159team.md
-  - docs/models/usereventpayload160configuration.md
-  - docs/models/usereventpayload160team.md
+  - docs/models/usereventpayload140project.md
+  - docs/models/usereventpayload140role.md
+  - docs/models/usereventpayload141project.md
+  - docs/models/usereventpayload141role.md
+  - docs/models/usereventpayload147action.md
+  - docs/models/usereventpayload150project.md
+  - docs/models/usereventpayload151prevproject.md
+  - docs/models/usereventpayload151project.md
   - docs/models/usereventpayload161configuration.md
   - docs/models/usereventpayload161team.md
+  - docs/models/usereventpayload162configuration.md
+  - docs/models/usereventpayload162team.md
+  - docs/models/usereventpayload163configuration.md
+  - docs/models/usereventpayload163team.md
   - docs/models/usereventpayload29team.md
   - docs/models/usereventpayload31project.md
   - docs/models/usereventpayload32configuration.md
@@ -4158,8 +4183,10 @@ generatedFiles:
   - docs/models/usereventpayload85action.md
   - docs/models/usereventpayload87project.md
   - docs/models/usereventpayload87team.md
-  - docs/models/usereventpayload96team.md
-  - docs/models/usereventpayload97team.md
+  - docs/models/usereventpayload91previousproject.md
+  - docs/models/usereventpayload91project.md
+  - docs/models/usereventpayload98team.md
+  - docs/models/usereventpayload99team.md
   - docs/models/usereventpayloadaccessgroup.md
   - docs/models/usereventpayloadaction.md
   - docs/models/usereventpayloadblockreason.md
@@ -6398,7 +6425,7 @@ examples:
         application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitAuthorEmail": "kyliau@example.com", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true, "ci": true, "ciType": "github-actions", "ciGitProviderUsername": "rauchg", "ciGitRepoVisibility": "private"}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
-          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "version": 8477.72, "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "plan": "enterprise", "routes": [], "createdIn": "<value>"}
+          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "version": 8477.72, "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "plan": "enterprise", "routes": [], "createdIn": "<value>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6484,6 +6511,7 @@ examples:
           state: "BUILDING,READY"
           teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
           slug: "my-team-url-slug"
+          projectIds: ["prj_123", "prj_456"]
       responses:
         "200":
           application/json: {"pagination": {"count": 20, "next": 1540095775951, "prev": 1540095775951}, "deployments": []}
@@ -6803,7 +6831,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}, {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}]
+          application/json: [{"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5, "source": {"kind": "self-served"}}, {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5, "source": {"kind": "integration", "integrationId": "<id>", "integrationConfigurationId": "<id>"}}]
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -6818,7 +6846,7 @@ examples:
         application/json: {"name": "My first log drain", "secret": "a1Xsfd325fXcs", "deliveryFormat": "json", "url": "https://example.com/log-drain"}
       responses:
         "200":
-          application/json: {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"Authorization": "Bearer 123"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5}
+          application/json: {"clientId": "oac_xRhY4LAB7yLhUADD69EvV7ct", "configurationId": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F", "createdAt": 1558531915505, "id": "ld_nBuA7zCID8g4QZ8g", "deliveryFormat": "json", "name": "My first log drain", "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf", "projectId": "AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb", "projectIds": ["AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb"], "url": "https://example.com/log-drain", "sources": ["build", "edge"], "createdFrom": "integration", "headers": {"Authorization": "Bearer 123"}, "environments": ["production"], "branch": "feature/*", "samplingRate": 0.5, "source": {"kind": "self-served"}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -8459,7 +8487,7 @@ examples:
         application/json: {"name": "my-dev-database", "integrationConfigurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "integrationProductIdOrSlug": "iap_postgres_db", "metadata": {"environment": "development", "project": "my-app", "tags": ["database", "postgres"]}, "externalId": "dev-db-001", "protocolSettings": {"experimentation": {"edgeConfigSyncingEnabled": true}}, "source": "api", "billingPlanId": "bp_abc123def456", "paymentMethodId": "pm_1AbcDefGhiJklMno", "prepaymentAmountCents": 5000}
       responses:
         "200":
-          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@7823": {}}}, "secrets": []}}
+          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@8466": {}}}, "secrets": []}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -8658,4 +8686,3 @@ generatedTests:
   get_/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans: "2025-09-03T16:44:43Z"
   createIntegrationStoreDirect: "2025-09-03T16:44:43Z"
   getBillingPlans: "2025-09-23T00:08:35Z"
-releaseNotes: "## Typescript SDK Changes Detected:\n* `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:\n* `vercel.marketplace.importResource()`: \n  *  `request.requestBody.billingPlan` **Changed** **Breaking** :warning:\n* `vercel.integrations.createIntegrationStoreDirect()`:  `response.store.product` **Changed** **Breaking** :warning:\n* `vercel.projects.getProjects()`:  `response.projects.[].rollingRelease.stages.[].linearShift` **Added**\n* `vercel.projects.createProject()`:  `response.rollingrelease.stages.[].linearShift` **Added**\n* `vercel.projects.updateProject()`:  `response.rollingrelease.stages.[].linearShift` **Added**\n* `vercel.integrations.getBillingPlans()`: **Added**\n* `vercel.projects.updateProjectDataCache()`:  `response.rollingrelease.stages.[].linearShift` **Added**\n* `vercel.get/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans()`: **Deleted** **Breaking** :warning:\n* `vercel.rollingRelease.getRollingReleaseConfig()`:  `response.rollingrelease.stages.[].linearShift` **Added**\n* `vercel.rollingRelease.updateRollingReleaseConfig()`:  `response.[2].rollingRelease.stages.[].linearShift` **Added**\n* `vercel.rollingRelease.getRollingRelease()`:  `response.rollingrelease` **Changed**\n* `vercel.rollingRelease.approveRollingReleaseStage()`:  `response.rollingrelease` **Changed**\n* `vercel.rollingRelease.completeRollingRelease()`:  `response.rollingrelease` **Changed**\n"

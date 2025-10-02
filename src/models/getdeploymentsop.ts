@@ -33,6 +33,10 @@ export type GetDeploymentsRequest = {
    */
   projectId?: string | undefined;
   /**
+   * Filter deployments from the given project IDs. Cannot be used when projectId is specified.
+   */
+  projectIds?: Array<string> | undefined;
+  /**
    * Filter deployments based on the environment.
    */
   target?: string | undefined;
@@ -582,6 +586,7 @@ export const GetDeploymentsRequest$inboundSchema: z.ZodType<
   from: z.number().optional(),
   limit: z.number().optional(),
   projectId: z.string().optional(),
+  projectIds: z.array(z.string()).optional(),
   target: z.string().optional(),
   to: z.number().optional(),
   users: z.string().optional(),
@@ -601,6 +606,7 @@ export type GetDeploymentsRequest$Outbound = {
   from?: number | undefined;
   limit?: number | undefined;
   projectId?: string | undefined;
+  projectIds?: Array<string> | undefined;
   target?: string | undefined;
   to?: number | undefined;
   users?: string | undefined;
@@ -624,6 +630,7 @@ export const GetDeploymentsRequest$outboundSchema: z.ZodType<
   from: z.number().optional(),
   limit: z.number().optional(),
   projectId: z.string().optional(),
+  projectIds: z.array(z.string()).optional(),
   target: z.string().optional(),
   to: z.number().optional(),
   users: z.string().optional(),

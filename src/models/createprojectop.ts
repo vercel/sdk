@@ -468,10 +468,10 @@ export type CreateProjectProjectsTarget =
 
 export const CreateProjectProjectsResponseType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type CreateProjectProjectsResponseType = ClosedEnum<
   typeof CreateProjectProjectsResponseType
@@ -1232,18 +1232,18 @@ export type CreateProjectLinkProjectsDeployHooks = {
 
 export type CreateProjectLink2 = {
   type: CreateProjectLinkProjectsType;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
   repo?: string | undefined;
-  sourceless?: boolean | undefined;
+  repoId?: number | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
   org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
    */
   repoOwnerId?: number | undefined;
-  repoId?: number | undefined;
   deployHooks: Array<CreateProjectLinkProjectsDeployHooks>;
   gitCredentialId: string;
+  sourceless?: boolean | undefined;
   productionBranch: string;
 };
 
@@ -1363,6 +1363,7 @@ export type CreateProjectBuildMachineType = ClosedEnum<
 >;
 
 export type CreateProjectProjectsResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1370,7 +1371,6 @@ export type CreateProjectProjectsResourceConfig = {
     | CreateProjectFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: CreateProjectBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -1455,6 +1455,7 @@ export type CreateProjectProjectsBuildMachineType = ClosedEnum<
 >;
 
 export type CreateProjectDefaultResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1462,14 +1463,13 @@ export type CreateProjectDefaultResourceConfig = {
     | CreateProjectProjectsFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: CreateProjectProjectsBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
 
 export const CreateProjectProjectsDeploymentType = {
-  All: "all",
   Preview: "preview",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
@@ -1788,6 +1788,7 @@ export type CreateProjectPermissions = {
   vercelRunExec?: Array<ACLAction> | undefined;
   apiKey?: Array<ACLAction> | undefined;
   apiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  apiKeyAiGateway?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   buildMachine?: Array<ACLAction> | undefined;
@@ -1924,11 +1925,11 @@ export type CreateProjectProtectionBypass =
   | CreateProjectProtectionBypass2;
 
 export const CreateProjectTrustedIpsProjectsDeploymentType = {
-  All: "all",
   Preview: "preview",
+  Production: "production",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
-  Production: "production",
 } as const;
 export type CreateProjectTrustedIpsProjectsDeploymentType = ClosedEnum<
   typeof CreateProjectTrustedIpsProjectsDeploymentType
@@ -1939,11 +1940,11 @@ export type CreateProjectTrustedIps2 = {
 };
 
 export const CreateProjectTrustedIpsDeploymentType = {
-  All: "all",
   Preview: "preview",
+  Production: "production",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
-  Production: "production",
 } as const;
 export type CreateProjectTrustedIpsDeploymentType = ClosedEnum<
   typeof CreateProjectTrustedIpsDeploymentType
@@ -7467,32 +7468,32 @@ export const CreateProjectLink2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: CreateProjectLinkProjectsType$inboundSchema,
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
   repo: z.string().optional(),
-  sourceless: z.boolean().optional(),
+  repoId: z.number().optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
   org: z.string(),
   repoOwnerId: z.number().optional(),
-  repoId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => CreateProjectLinkProjectsDeployHooks$inboundSchema),
   ),
   gitCredentialId: z.string(),
+  sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
 
 /** @internal */
 export type CreateProjectLink2$Outbound = {
   type: string;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
   repo?: string | undefined;
-  sourceless?: boolean | undefined;
+  repoId?: number | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
   org: string;
   repoOwnerId?: number | undefined;
-  repoId?: number | undefined;
   deployHooks: Array<CreateProjectLinkProjectsDeployHooks$Outbound>;
   gitCredentialId: string;
+  sourceless?: boolean | undefined;
   productionBranch: string;
 };
 
@@ -7503,17 +7504,17 @@ export const CreateProjectLink2$outboundSchema: z.ZodType<
   CreateProjectLink2
 > = z.object({
   type: CreateProjectLinkProjectsType$outboundSchema,
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
   repo: z.string().optional(),
-  sourceless: z.boolean().optional(),
+  repoId: z.number().optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
   org: z.string(),
   repoOwnerId: z.number().optional(),
-  repoId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => CreateProjectLinkProjectsDeployHooks$outboundSchema),
   ),
   gitCredentialId: z.string(),
+  sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
 
@@ -8213,25 +8214,25 @@ export const CreateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     CreateProjectFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: CreateProjectBuildMachineType$inboundSchema.optional(),
   isNSNBDisabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type CreateProjectProjectsResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -8242,13 +8243,13 @@ export const CreateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectProjectsResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     CreateProjectFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: CreateProjectBuildMachineType$outboundSchema.optional(),
   isNSNBDisabled: z.boolean().optional(),
 });
@@ -8534,13 +8535,13 @@ export const CreateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     CreateProjectProjectsFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: CreateProjectProjectsBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -8548,12 +8549,12 @@ export const CreateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateProjectDefaultResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -8564,13 +8565,13 @@ export const CreateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateProjectDefaultResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     CreateProjectProjectsFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: CreateProjectProjectsBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -9596,6 +9597,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   vercelRunExec: z.array(ACLAction$inboundSchema).optional(),
   apiKey: z.array(ACLAction$inboundSchema).optional(),
   apiKeyOwnedBySelf: z.array(ACLAction$inboundSchema).optional(),
+  apiKeyAiGateway: z.array(ACLAction$inboundSchema).optional(),
   aliasProject: z.array(ACLAction$inboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
   buildMachine: z.array(ACLAction$inboundSchema).optional(),
@@ -9821,6 +9823,7 @@ export type CreateProjectPermissions$Outbound = {
   vercelRunExec?: Array<string> | undefined;
   apiKey?: Array<string> | undefined;
   apiKeyOwnedBySelf?: Array<string> | undefined;
+  apiKeyAiGateway?: Array<string> | undefined;
   aliasProject?: Array<string> | undefined;
   aliasProtectionBypass?: Array<string> | undefined;
   buildMachine?: Array<string> | undefined;
@@ -10047,6 +10050,7 @@ export const CreateProjectPermissions$outboundSchema: z.ZodType<
   vercelRunExec: z.array(ACLAction$outboundSchema).optional(),
   apiKey: z.array(ACLAction$outboundSchema).optional(),
   apiKeyOwnedBySelf: z.array(ACLAction$outboundSchema).optional(),
+  apiKeyAiGateway: z.array(ACLAction$outboundSchema).optional(),
   aliasProject: z.array(ACLAction$outboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   buildMachine: z.array(ACLAction$outboundSchema).optional(),

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { Kind } from "@vercel/sdk/models/getconfigurationop.js";
+import { Kind } from "@vercel/sdk/models/getintegrationlogdrainsop.js";
 
-let value: Kind = "transfer-to-marketplace";
+let value: Kind = "self-served";
 ```
 
 ## Values
 
 ```typescript
-"transfer-to-marketplace"
+"self-served"
 ```

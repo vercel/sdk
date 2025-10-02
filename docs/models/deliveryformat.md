@@ -13,5 +13,5 @@ let value: DeliveryFormat = "json";
 ## Values
 
 ```typescript
-"json" | "ndjson" | "syslog"
+"json" | "ndjson"
 ```

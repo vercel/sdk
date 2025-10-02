@@ -70,10 +70,7 @@ bun add @vercel/sdk
 ### Yarn
 
 ```bash
-yarn add @vercel/sdk zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add @vercel/sdk
 ```
 
 > [!NOTE]
@@ -232,6 +229,10 @@ async function run() {
     from: 1612948664566,
     limit: 10,
     projectId: "QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY",
+    projectIds: [
+      "prj_123",
+      "prj_456",
+    ],
     target: "production",
     to: 1612948664566,
     users: "kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY",
@@ -996,7 +997,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Vercel({ httpClient });
+const sdk = new Vercel({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 

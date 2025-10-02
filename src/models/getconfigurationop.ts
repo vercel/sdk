@@ -75,10 +75,12 @@ export type TransferRequest2 = {
   authorizationId?: string | undefined;
 };
 
-export const Kind = {
+export const GetConfigurationTransferRequestKind = {
   TransferToMarketplace: "transfer-to-marketplace",
 } as const;
-export type Kind = ClosedEnum<typeof Kind>;
+export type GetConfigurationTransferRequestKind = ClosedEnum<
+  typeof GetConfigurationTransferRequestKind
+>;
 
 export const TransferRequestType = {
   Subscription: "subscription",
@@ -108,7 +110,7 @@ export type Requester = {
 };
 
 export type TransferRequest1 = {
-  kind: Kind;
+  kind: GetConfigurationTransferRequestKind;
   metadata?: { [k: string]: any } | undefined;
   billingPlan?: TransferRequestBillingPlan | undefined;
   requestId: string;
@@ -712,23 +714,26 @@ export function transferRequest2FromJSON(
 }
 
 /** @internal */
-export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
-  Kind,
-);
+export const GetConfigurationTransferRequestKind$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationTransferRequestKind
+> = z.nativeEnum(GetConfigurationTransferRequestKind);
 
 /** @internal */
-export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
-  Kind$inboundSchema;
+export const GetConfigurationTransferRequestKind$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationTransferRequestKind> =
+    GetConfigurationTransferRequestKind$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Kind$ {
-  /** @deprecated use `Kind$inboundSchema` instead. */
-  export const inboundSchema = Kind$inboundSchema;
-  /** @deprecated use `Kind$outboundSchema` instead. */
-  export const outboundSchema = Kind$outboundSchema;
+export namespace GetConfigurationTransferRequestKind$ {
+  /** @deprecated use `GetConfigurationTransferRequestKind$inboundSchema` instead. */
+  export const inboundSchema =
+    GetConfigurationTransferRequestKind$inboundSchema;
+  /** @deprecated use `GetConfigurationTransferRequestKind$outboundSchema` instead. */
+  export const outboundSchema =
+    GetConfigurationTransferRequestKind$outboundSchema;
 }
 
 /** @internal */
@@ -904,7 +909,7 @@ export const TransferRequest1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: Kind$inboundSchema,
+  kind: GetConfigurationTransferRequestKind$inboundSchema,
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => TransferRequestBillingPlan$inboundSchema)
     .optional(),
@@ -943,7 +948,7 @@ export const TransferRequest1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TransferRequest1
 > = z.object({
-  kind: Kind$outboundSchema,
+  kind: GetConfigurationTransferRequestKind$outboundSchema,
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => TransferRequestBillingPlan$outboundSchema)
     .optional(),

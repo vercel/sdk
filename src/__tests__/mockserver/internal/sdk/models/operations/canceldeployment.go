@@ -4280,17 +4280,17 @@ func CreateCancelDeploymentHasValueUnion2CancelDeploymentHasValue2(cancelDeploym
 
 func (u *CancelDeploymentHasValueUnion2) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentHasValue2 CancelDeploymentHasValue2 = CancelDeploymentHasValue2{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentHasValue2, "", true, nil); err == nil {
-		u.CancelDeploymentHasValue2 = &cancelDeploymentHasValue2
-		u.Type = CancelDeploymentHasValueUnion2TypeCancelDeploymentHasValue2
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = CancelDeploymentHasValueUnion2TypeStr
+		return nil
+	}
+
+	var cancelDeploymentHasValue2 CancelDeploymentHasValue2 = CancelDeploymentHasValue2{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentHasValue2, "", true, nil); err == nil {
+		u.CancelDeploymentHasValue2 = &cancelDeploymentHasValue2
+		u.Type = CancelDeploymentHasValueUnion2TypeCancelDeploymentHasValue2
 		return nil
 	}
 
@@ -4569,17 +4569,17 @@ func CreateCancelDeploymentHasValueUnion1CancelDeploymentHasValue1(cancelDeploym
 
 func (u *CancelDeploymentHasValueUnion1) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentHasValue1 CancelDeploymentHasValue1 = CancelDeploymentHasValue1{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentHasValue1, "", true, nil); err == nil {
-		u.CancelDeploymentHasValue1 = &cancelDeploymentHasValue1
-		u.Type = CancelDeploymentHasValueUnion1TypeCancelDeploymentHasValue1
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = CancelDeploymentHasValueUnion1TypeStr
+		return nil
+	}
+
+	var cancelDeploymentHasValue1 CancelDeploymentHasValue1 = CancelDeploymentHasValue1{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentHasValue1, "", true, nil); err == nil {
+		u.CancelDeploymentHasValue1 = &cancelDeploymentHasValue1
+		u.Type = CancelDeploymentHasValueUnion1TypeCancelDeploymentHasValue1
 		return nil
 	}
 
@@ -4919,17 +4919,17 @@ func CreateCancelDeploymentMissingValueUnion2CancelDeploymentMissingValue2(cance
 
 func (u *CancelDeploymentMissingValueUnion2) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentMissingValue2 CancelDeploymentMissingValue2 = CancelDeploymentMissingValue2{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentMissingValue2, "", true, nil); err == nil {
-		u.CancelDeploymentMissingValue2 = &cancelDeploymentMissingValue2
-		u.Type = CancelDeploymentMissingValueUnion2TypeCancelDeploymentMissingValue2
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = CancelDeploymentMissingValueUnion2TypeStr
+		return nil
+	}
+
+	var cancelDeploymentMissingValue2 CancelDeploymentMissingValue2 = CancelDeploymentMissingValue2{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentMissingValue2, "", true, nil); err == nil {
+		u.CancelDeploymentMissingValue2 = &cancelDeploymentMissingValue2
+		u.Type = CancelDeploymentMissingValueUnion2TypeCancelDeploymentMissingValue2
 		return nil
 	}
 
@@ -5208,17 +5208,17 @@ func CreateCancelDeploymentMissingValueUnion1CancelDeploymentMissingValue1(cance
 
 func (u *CancelDeploymentMissingValueUnion1) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentMissingValue1 CancelDeploymentMissingValue1 = CancelDeploymentMissingValue1{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentMissingValue1, "", true, nil); err == nil {
-		u.CancelDeploymentMissingValue1 = &cancelDeploymentMissingValue1
-		u.Type = CancelDeploymentMissingValueUnion1TypeCancelDeploymentMissingValue1
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = CancelDeploymentMissingValueUnion1TypeStr
+		return nil
+	}
+
+	var cancelDeploymentMissingValue1 CancelDeploymentMissingValue1 = CancelDeploymentMissingValue1{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentMissingValue1, "", true, nil); err == nil {
+		u.CancelDeploymentMissingValue1 = &cancelDeploymentMissingValue1
+		u.Type = CancelDeploymentMissingValueUnion1TypeCancelDeploymentMissingValue1
 		return nil
 	}
 
@@ -5627,17 +5627,17 @@ func CreateCancelDeploymentKeyUnionCancelDeploymentKey(cancelDeploymentKey Cance
 
 func (u *CancelDeploymentKeyUnion) UnmarshalJSON(data []byte) error {
 
-	var cancelDeploymentKey CancelDeploymentKey = CancelDeploymentKey{}
-	if err := utils.UnmarshalJSON(data, &cancelDeploymentKey, "", true, nil); err == nil {
-		u.CancelDeploymentKey = &cancelDeploymentKey
-		u.Type = CancelDeploymentKeyUnionTypeCancelDeploymentKey
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = CancelDeploymentKeyUnionTypeStr
+		return nil
+	}
+
+	var cancelDeploymentKey CancelDeploymentKey = CancelDeploymentKey{}
+	if err := utils.UnmarshalJSON(data, &cancelDeploymentKey, "", true, nil); err == nil {
+		u.CancelDeploymentKey = &cancelDeploymentKey
+		u.Type = CancelDeploymentKeyUnionTypeCancelDeploymentKey
 		return nil
 	}
 
@@ -6831,6 +6831,8 @@ type CancelDeploymentMicrofrontends2 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (c CancelDeploymentMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -6893,6 +6895,13 @@ func (o *CancelDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool
 	return o.MicrofrontendsAlias2Enabled
 }
 
+func (o *CancelDeploymentMicrofrontends2) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
+}
+
 type CancelDeploymentMicrofrontends1 struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -6903,6 +6912,8 @@ type CancelDeploymentMicrofrontends1 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (c CancelDeploymentMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -6949,6 +6960,13 @@ func (o *CancelDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool
 		return nil
 	}
 	return o.MicrofrontendsAlias2Enabled
+}
+
+func (o *CancelDeploymentMicrofrontends1) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
 }
 
 type CancelDeploymentMicrofrontendsUnionType string

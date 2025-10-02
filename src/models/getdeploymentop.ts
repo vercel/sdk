@@ -1670,12 +1670,12 @@ export type GetDeploymentValue2 = {
   lte?: number | undefined;
 };
 
-export type GetDeploymentHasDeploymentsValue = GetDeploymentValue2 | string;
+export type GetDeploymentHasDeploymentsValue = string | GetDeploymentValue2;
 
 export type GetDeploymentHas2 = {
   type: GetDeploymentHasDeploymentsType;
   key: string;
-  value?: GetDeploymentValue2 | string | undefined;
+  value?: string | GetDeploymentValue2 | undefined;
 };
 
 export const GetDeploymentHasType = {
@@ -1700,12 +1700,12 @@ export type GetDeploymentValueDeploymentsResponse2002 = {
 };
 
 export type GetDeploymentHasValue =
-  | GetDeploymentValueDeploymentsResponse2002
-  | string;
+  | string
+  | GetDeploymentValueDeploymentsResponse2002;
 
 export type GetDeploymentHas1 = {
   type: GetDeploymentHasType;
-  value: GetDeploymentValueDeploymentsResponse2002 | string;
+  value: string | GetDeploymentValueDeploymentsResponse2002;
 };
 
 export type GetDeploymentRoutesHas = GetDeploymentHas1 | GetDeploymentHas2;
@@ -1736,13 +1736,13 @@ export type GetDeploymentValueDeploymentsResponse2 = {
 };
 
 export type GetDeploymentMissingValue =
-  | GetDeploymentValueDeploymentsResponse2
-  | string;
+  | string
+  | GetDeploymentValueDeploymentsResponse2;
 
 export type GetDeploymentMissing2 = {
   type: GetDeploymentMissingType;
   key: string;
-  value?: GetDeploymentValueDeploymentsResponse2 | string | undefined;
+  value?: string | GetDeploymentValueDeploymentsResponse2 | undefined;
 };
 
 export const GetDeploymentMissingDeploymentsType = {
@@ -1769,12 +1769,12 @@ export type GetDeploymentValueDeployments2 = {
 };
 
 export type GetDeploymentMissingDeploymentsValue =
-  | GetDeploymentValueDeployments2
-  | string;
+  | string
+  | GetDeploymentValueDeployments2;
 
 export type GetDeploymentMissing1 = {
   type: GetDeploymentMissingDeploymentsType;
-  value: GetDeploymentValueDeployments2 | string;
+  value: string | GetDeploymentValueDeployments2;
 };
 
 export type GetDeploymentRoutesMissing =
@@ -1824,10 +1824,10 @@ export type GetDeploymentKey2 = {
   lte?: number | undefined;
 };
 
-export type GetDeploymentRoutesKey = GetDeploymentKey2 | string;
+export type GetDeploymentRoutesKey = string | GetDeploymentKey2;
 
 export type GetDeploymentRoutesTarget = {
-  key: GetDeploymentKey2 | string;
+  key: string | GetDeploymentKey2;
 };
 
 export type GetDeploymentRoutesArgs = string | Array<string>;
@@ -2055,6 +2055,10 @@ export type GetDeploymentMicrofrontends2 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type GetDeploymentMicrofrontends1 = {
@@ -2075,6 +2079,10 @@ export type GetDeploymentMicrofrontends1 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
+  /**
+   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+   */
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type ResponseBodyMicrofrontends =
@@ -10226,19 +10234,19 @@ export const GetDeploymentHasDeploymentsValue$inboundSchema: z.ZodType<
   GetDeploymentHasDeploymentsValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => GetDeploymentValue2$inboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => GetDeploymentValue2$inboundSchema)]);
 
 /** @internal */
 export type GetDeploymentHasDeploymentsValue$Outbound =
-  | GetDeploymentValue2$Outbound
-  | string;
+  | string
+  | GetDeploymentValue2$Outbound;
 
 /** @internal */
 export const GetDeploymentHasDeploymentsValue$outboundSchema: z.ZodType<
   GetDeploymentHasDeploymentsValue$Outbound,
   z.ZodTypeDef,
   GetDeploymentHasDeploymentsValue
-> = z.union([z.lazy(() => GetDeploymentValue2$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => GetDeploymentValue2$outboundSchema)]);
 
 /**
  * @internal
@@ -10281,7 +10289,7 @@ export const GetDeploymentHas2$inboundSchema: z.ZodType<
 > = z.object({
   type: GetDeploymentHasDeploymentsType$inboundSchema,
   key: z.string(),
-  value: z.union([z.lazy(() => GetDeploymentValue2$inboundSchema), z.string()])
+  value: z.union([z.string(), z.lazy(() => GetDeploymentValue2$inboundSchema)])
     .optional(),
 });
 
@@ -10289,7 +10297,7 @@ export const GetDeploymentHas2$inboundSchema: z.ZodType<
 export type GetDeploymentHas2$Outbound = {
   type: string;
   key: string;
-  value?: GetDeploymentValue2$Outbound | string | undefined;
+  value?: string | GetDeploymentValue2$Outbound | undefined;
 };
 
 /** @internal */
@@ -10300,7 +10308,7 @@ export const GetDeploymentHas2$outboundSchema: z.ZodType<
 > = z.object({
   type: GetDeploymentHasDeploymentsType$outboundSchema,
   key: z.string(),
-  value: z.union([z.lazy(() => GetDeploymentValue2$outboundSchema), z.string()])
+  value: z.union([z.string(), z.lazy(() => GetDeploymentValue2$outboundSchema)])
     .optional(),
 });
 
@@ -10517,14 +10525,14 @@ export const GetDeploymentHasValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentValueDeploymentsResponse2002$inboundSchema),
   z.string(),
+  z.lazy(() => GetDeploymentValueDeploymentsResponse2002$inboundSchema),
 ]);
 
 /** @internal */
 export type GetDeploymentHasValue$Outbound =
-  | GetDeploymentValueDeploymentsResponse2002$Outbound
-  | string;
+  | string
+  | GetDeploymentValueDeploymentsResponse2002$Outbound;
 
 /** @internal */
 export const GetDeploymentHasValue$outboundSchema: z.ZodType<
@@ -10532,8 +10540,8 @@ export const GetDeploymentHasValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentHasValue
 > = z.union([
-  z.lazy(() => GetDeploymentValueDeploymentsResponse2002$outboundSchema),
   z.string(),
+  z.lazy(() => GetDeploymentValueDeploymentsResponse2002$outboundSchema),
 ]);
 
 /**
@@ -10575,15 +10583,15 @@ export const GetDeploymentHas1$inboundSchema: z.ZodType<
 > = z.object({
   type: GetDeploymentHasType$inboundSchema,
   value: z.union([
-    z.lazy(() => GetDeploymentValueDeploymentsResponse2002$inboundSchema),
     z.string(),
+    z.lazy(() => GetDeploymentValueDeploymentsResponse2002$inboundSchema),
   ]),
 });
 
 /** @internal */
 export type GetDeploymentHas1$Outbound = {
   type: string;
-  value: GetDeploymentValueDeploymentsResponse2002$Outbound | string;
+  value: string | GetDeploymentValueDeploymentsResponse2002$Outbound;
 };
 
 /** @internal */
@@ -10594,8 +10602,8 @@ export const GetDeploymentHas1$outboundSchema: z.ZodType<
 > = z.object({
   type: GetDeploymentHasType$outboundSchema,
   value: z.union([
-    z.lazy(() => GetDeploymentValueDeploymentsResponse2002$outboundSchema),
     z.string(),
+    z.lazy(() => GetDeploymentValueDeploymentsResponse2002$outboundSchema),
   ]),
 });
 
@@ -10853,14 +10861,14 @@ export const GetDeploymentMissingValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentValueDeploymentsResponse2$inboundSchema),
   z.string(),
+  z.lazy(() => GetDeploymentValueDeploymentsResponse2$inboundSchema),
 ]);
 
 /** @internal */
 export type GetDeploymentMissingValue$Outbound =
-  | GetDeploymentValueDeploymentsResponse2$Outbound
-  | string;
+  | string
+  | GetDeploymentValueDeploymentsResponse2$Outbound;
 
 /** @internal */
 export const GetDeploymentMissingValue$outboundSchema: z.ZodType<
@@ -10868,8 +10876,8 @@ export const GetDeploymentMissingValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentMissingValue
 > = z.union([
-  z.lazy(() => GetDeploymentValueDeploymentsResponse2$outboundSchema),
   z.string(),
+  z.lazy(() => GetDeploymentValueDeploymentsResponse2$outboundSchema),
 ]);
 
 /**
@@ -10912,8 +10920,8 @@ export const GetDeploymentMissing2$inboundSchema: z.ZodType<
   type: GetDeploymentMissingType$inboundSchema,
   key: z.string(),
   value: z.union([
-    z.lazy(() => GetDeploymentValueDeploymentsResponse2$inboundSchema),
     z.string(),
+    z.lazy(() => GetDeploymentValueDeploymentsResponse2$inboundSchema),
   ]).optional(),
 });
 
@@ -10921,7 +10929,7 @@ export const GetDeploymentMissing2$inboundSchema: z.ZodType<
 export type GetDeploymentMissing2$Outbound = {
   type: string;
   key: string;
-  value?: GetDeploymentValueDeploymentsResponse2$Outbound | string | undefined;
+  value?: string | GetDeploymentValueDeploymentsResponse2$Outbound | undefined;
 };
 
 /** @internal */
@@ -10933,8 +10941,8 @@ export const GetDeploymentMissing2$outboundSchema: z.ZodType<
   type: GetDeploymentMissingType$outboundSchema,
   key: z.string(),
   value: z.union([
-    z.lazy(() => GetDeploymentValueDeploymentsResponse2$outboundSchema),
     z.string(),
+    z.lazy(() => GetDeploymentValueDeploymentsResponse2$outboundSchema),
   ]).optional(),
 });
 
@@ -11132,14 +11140,14 @@ export const GetDeploymentMissingDeploymentsValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetDeploymentValueDeployments2$inboundSchema),
   z.string(),
+  z.lazy(() => GetDeploymentValueDeployments2$inboundSchema),
 ]);
 
 /** @internal */
 export type GetDeploymentMissingDeploymentsValue$Outbound =
-  | GetDeploymentValueDeployments2$Outbound
-  | string;
+  | string
+  | GetDeploymentValueDeployments2$Outbound;
 
 /** @internal */
 export const GetDeploymentMissingDeploymentsValue$outboundSchema: z.ZodType<
@@ -11147,8 +11155,8 @@ export const GetDeploymentMissingDeploymentsValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentMissingDeploymentsValue
 > = z.union([
-  z.lazy(() => GetDeploymentValueDeployments2$outboundSchema),
   z.string(),
+  z.lazy(() => GetDeploymentValueDeployments2$outboundSchema),
 ]);
 
 /**
@@ -11195,15 +11203,15 @@ export const GetDeploymentMissing1$inboundSchema: z.ZodType<
 > = z.object({
   type: GetDeploymentMissingDeploymentsType$inboundSchema,
   value: z.union([
-    z.lazy(() => GetDeploymentValueDeployments2$inboundSchema),
     z.string(),
+    z.lazy(() => GetDeploymentValueDeployments2$inboundSchema),
   ]),
 });
 
 /** @internal */
 export type GetDeploymentMissing1$Outbound = {
   type: string;
-  value: GetDeploymentValueDeployments2$Outbound | string;
+  value: string | GetDeploymentValueDeployments2$Outbound;
 };
 
 /** @internal */
@@ -11214,8 +11222,8 @@ export const GetDeploymentMissing1$outboundSchema: z.ZodType<
 > = z.object({
   type: GetDeploymentMissingDeploymentsType$outboundSchema,
   value: z.union([
-    z.lazy(() => GetDeploymentValueDeployments2$outboundSchema),
     z.string(),
+    z.lazy(() => GetDeploymentValueDeployments2$outboundSchema),
   ]),
 });
 
@@ -11559,19 +11567,19 @@ export const GetDeploymentRoutesKey$inboundSchema: z.ZodType<
   GetDeploymentRoutesKey,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => GetDeploymentKey2$inboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => GetDeploymentKey2$inboundSchema)]);
 
 /** @internal */
 export type GetDeploymentRoutesKey$Outbound =
-  | GetDeploymentKey2$Outbound
-  | string;
+  | string
+  | GetDeploymentKey2$Outbound;
 
 /** @internal */
 export const GetDeploymentRoutesKey$outboundSchema: z.ZodType<
   GetDeploymentRoutesKey$Outbound,
   z.ZodTypeDef,
   GetDeploymentRoutesKey
-> = z.union([z.lazy(() => GetDeploymentKey2$outboundSchema), z.string()]);
+> = z.union([z.string(), z.lazy(() => GetDeploymentKey2$outboundSchema)]);
 
 /**
  * @internal
@@ -11610,12 +11618,12 @@ export const GetDeploymentRoutesTarget$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  key: z.union([z.lazy(() => GetDeploymentKey2$inboundSchema), z.string()]),
+  key: z.union([z.string(), z.lazy(() => GetDeploymentKey2$inboundSchema)]),
 });
 
 /** @internal */
 export type GetDeploymentRoutesTarget$Outbound = {
-  key: GetDeploymentKey2$Outbound | string;
+  key: string | GetDeploymentKey2$Outbound;
 };
 
 /** @internal */
@@ -11624,7 +11632,7 @@ export const GetDeploymentRoutesTarget$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentRoutesTarget
 > = z.object({
-  key: z.union([z.lazy(() => GetDeploymentKey2$outboundSchema), z.string()]),
+  key: z.union([z.string(), z.lazy(() => GetDeploymentKey2$outboundSchema)]),
 });
 
 /**
@@ -12848,6 +12856,7 @@ export const GetDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -12861,6 +12870,7 @@ export type GetDeploymentMicrofrontends2$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -12879,6 +12889,7 @@ export const GetDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**
@@ -12925,6 +12936,7 @@ export const GetDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -12934,6 +12946,7 @@ export type GetDeploymentMicrofrontends1$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
+  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -12947,6 +12960,7 @@ export const GetDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
+  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**

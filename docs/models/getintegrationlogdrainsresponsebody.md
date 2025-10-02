@@ -31,6 +31,11 @@ let value: GetIntegrationLogDrainsResponseBody = {
   ],
   branch: "feature/*",
   samplingRate: 0.5,
+  source: {
+    kind: "integration",
+    integrationId: "<id>",
+    integrationConfigurationId: "<id>",
+  },
 };
 ```
 
@@ -54,3 +59,4 @@ let value: GetIntegrationLogDrainsResponseBody = {
 | `environments`                                                                                     | [models.GetIntegrationLogDrainsEnvironments](../models/getintegrationlogdrainsenvironments.md)[]   | :heavy_minus_sign:                                                                                 | The environment of log drain                                                                       | [<br/>"production"<br/>]                                                                           |
 | `branch`                                                                                           | *string*                                                                                           | :heavy_minus_sign:                                                                                 | The branch regexp of log drain                                                                     | feature/*                                                                                          |
 | `samplingRate`                                                                                     | *number*                                                                                           | :heavy_minus_sign:                                                                                 | The sampling rate of log drain                                                                     | 0.5                                                                                                |
+| `source`                                                                                           | *models.GetIntegrationLogDrainsSource*                                                             | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |

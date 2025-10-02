@@ -6,14 +6,17 @@
 import { Next } from "@vercel/sdk/models/userevent.js";
 
 let value: Next = {
-  enabled: true,
-  totpVerified: false,
+  project: {
+    id: "<id>",
+    staticIps: {
+      enabled: true,
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `project`                                                                  | [models.UserEventPayload91Project](../models/usereventpayload91project.md) | :heavy_check_mark:                                                         | N/A                                                                        |

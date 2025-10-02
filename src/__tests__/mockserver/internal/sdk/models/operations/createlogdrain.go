@@ -4,8 +4,10 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 // DeliveryFormatRequest - The delivery log format
@@ -14,7 +16,6 @@ type DeliveryFormatRequest string
 const (
 	DeliveryFormatRequestJSON   DeliveryFormatRequest = "json"
 	DeliveryFormatRequestNdjson DeliveryFormatRequest = "ndjson"
-	DeliveryFormatRequestSyslog DeliveryFormatRequest = "syslog"
 )
 
 func (e DeliveryFormatRequest) ToPointer() *DeliveryFormatRequest {
@@ -29,8 +30,6 @@ func (e *DeliveryFormatRequest) UnmarshalJSON(data []byte) error {
 	case "json":
 		fallthrough
 	case "ndjson":
-		fallthrough
-	case "syslog":
 		*e = DeliveryFormatRequest(v)
 		return nil
 	default:
@@ -110,7 +109,7 @@ type CreateLogDrainRequestBody struct {
 	Secret *string `json:"secret,omitempty"`
 	// The delivery log format
 	DeliveryFormat *DeliveryFormatRequest `json:"deliveryFormat,omitempty"`
-	// The url where you will receive logs. The protocol must be `https://` or `http://` when type is `json` and `ndjson`, and `syslog+tls:` or `syslog:` when the type is `syslog`.
+	// The url where you will receive logs. The protocol must be `https://` or `http://` when type is `json` and `ndjson`.
 	URL     string                        `json:"url"`
 	Sources []CreateLogDrainSourceRequest `json:"sources,omitempty"`
 	// Headers to be sent together with the request
@@ -236,22 +235,22 @@ func (e *CreateLogDrainDeliveryFormatResponse) UnmarshalJSON(data []byte) error 
 	}
 }
 
-// CreateLogDrainSourceResponseBody - The sources from which logs are currently being delivered to this log drain.
-type CreateLogDrainSourceResponseBody string
+// CreateLogDrainSourceResponseBodyEnum - The sources from which logs are currently being delivered to this log drain.
+type CreateLogDrainSourceResponseBodyEnum string
 
 const (
-	CreateLogDrainSourceResponseBodyBuild    CreateLogDrainSourceResponseBody = "build"
-	CreateLogDrainSourceResponseBodyEdge     CreateLogDrainSourceResponseBody = "edge"
-	CreateLogDrainSourceResponseBodyLambda   CreateLogDrainSourceResponseBody = "lambda"
-	CreateLogDrainSourceResponseBodyStatic   CreateLogDrainSourceResponseBody = "static"
-	CreateLogDrainSourceResponseBodyExternal CreateLogDrainSourceResponseBody = "external"
-	CreateLogDrainSourceResponseBodyFirewall CreateLogDrainSourceResponseBody = "firewall"
+	CreateLogDrainSourceResponseBodyEnumBuild    CreateLogDrainSourceResponseBodyEnum = "build"
+	CreateLogDrainSourceResponseBodyEnumEdge     CreateLogDrainSourceResponseBodyEnum = "edge"
+	CreateLogDrainSourceResponseBodyEnumLambda   CreateLogDrainSourceResponseBodyEnum = "lambda"
+	CreateLogDrainSourceResponseBodyEnumStatic   CreateLogDrainSourceResponseBodyEnum = "static"
+	CreateLogDrainSourceResponseBodyEnumExternal CreateLogDrainSourceResponseBodyEnum = "external"
+	CreateLogDrainSourceResponseBodyEnumFirewall CreateLogDrainSourceResponseBodyEnum = "firewall"
 )
 
-func (e CreateLogDrainSourceResponseBody) ToPointer() *CreateLogDrainSourceResponseBody {
+func (e CreateLogDrainSourceResponseBodyEnum) ToPointer() *CreateLogDrainSourceResponseBodyEnum {
 	return &e
 }
-func (e *CreateLogDrainSourceResponseBody) UnmarshalJSON(data []byte) error {
+func (e *CreateLogDrainSourceResponseBodyEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -268,10 +267,10 @@ func (e *CreateLogDrainSourceResponseBody) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "firewall":
-		*e = CreateLogDrainSourceResponseBody(v)
+		*e = CreateLogDrainSourceResponseBodyEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateLogDrainSourceResponseBody: %v", v)
+		return fmt.Errorf("invalid value for CreateLogDrainSourceResponseBodyEnum: %v", v)
 	}
 }
 
@@ -329,6 +328,191 @@ func (e *CreateLogDrainEnvironmentResponse) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateLogDrainKindIntegration string
+
+const (
+	CreateLogDrainKindIntegrationIntegration CreateLogDrainKindIntegration = "integration"
+)
+
+func (e CreateLogDrainKindIntegration) ToPointer() *CreateLogDrainKindIntegration {
+	return &e
+}
+func (e *CreateLogDrainKindIntegration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration":
+		*e = CreateLogDrainKindIntegration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateLogDrainKindIntegration: %v", v)
+	}
+}
+
+type CreateLogDrainSourceIntegration struct {
+	Kind                       CreateLogDrainKindIntegration `json:"kind"`
+	ResourceID                 *string                       `json:"resourceId,omitempty"`
+	ExternalResourceID         *string                       `json:"externalResourceId,omitempty"`
+	IntegrationID              string                        `json:"integrationId"`
+	IntegrationConfigurationID string                        `json:"integrationConfigurationId"`
+}
+
+func (c CreateLogDrainSourceIntegration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateLogDrainSourceIntegration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind", "integrationId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateLogDrainSourceIntegration) GetKind() CreateLogDrainKindIntegration {
+	if o == nil {
+		return CreateLogDrainKindIntegration("")
+	}
+	return o.Kind
+}
+
+func (o *CreateLogDrainSourceIntegration) GetResourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceID
+}
+
+func (o *CreateLogDrainSourceIntegration) GetExternalResourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalResourceID
+}
+
+func (o *CreateLogDrainSourceIntegration) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *CreateLogDrainSourceIntegration) GetIntegrationConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationConfigurationID
+}
+
+type CreateLogDrainKindSelfServed string
+
+const (
+	CreateLogDrainKindSelfServedSelfServed CreateLogDrainKindSelfServed = "self-served"
+)
+
+func (e CreateLogDrainKindSelfServed) ToPointer() *CreateLogDrainKindSelfServed {
+	return &e
+}
+func (e *CreateLogDrainKindSelfServed) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "self-served":
+		*e = CreateLogDrainKindSelfServed(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateLogDrainKindSelfServed: %v", v)
+	}
+}
+
+type CreateLogDrainSourceSelfServed struct {
+	Kind CreateLogDrainKindSelfServed `json:"kind"`
+}
+
+func (c CreateLogDrainSourceSelfServed) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateLogDrainSourceSelfServed) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateLogDrainSourceSelfServed) GetKind() CreateLogDrainKindSelfServed {
+	if o == nil {
+		return CreateLogDrainKindSelfServed("")
+	}
+	return o.Kind
+}
+
+type CreateLogDrainSourceUnionType string
+
+const (
+	CreateLogDrainSourceUnionTypeCreateLogDrainSourceSelfServed  CreateLogDrainSourceUnionType = "createLogDrain_source_SelfServed"
+	CreateLogDrainSourceUnionTypeCreateLogDrainSourceIntegration CreateLogDrainSourceUnionType = "createLogDrain_source_Integration"
+)
+
+type CreateLogDrainSourceUnion struct {
+	CreateLogDrainSourceSelfServed  *CreateLogDrainSourceSelfServed  `queryParam:"inline"`
+	CreateLogDrainSourceIntegration *CreateLogDrainSourceIntegration `queryParam:"inline"`
+
+	Type CreateLogDrainSourceUnionType
+}
+
+func CreateCreateLogDrainSourceUnionCreateLogDrainSourceSelfServed(createLogDrainSourceSelfServed CreateLogDrainSourceSelfServed) CreateLogDrainSourceUnion {
+	typ := CreateLogDrainSourceUnionTypeCreateLogDrainSourceSelfServed
+
+	return CreateLogDrainSourceUnion{
+		CreateLogDrainSourceSelfServed: &createLogDrainSourceSelfServed,
+		Type:                           typ,
+	}
+}
+
+func CreateCreateLogDrainSourceUnionCreateLogDrainSourceIntegration(createLogDrainSourceIntegration CreateLogDrainSourceIntegration) CreateLogDrainSourceUnion {
+	typ := CreateLogDrainSourceUnionTypeCreateLogDrainSourceIntegration
+
+	return CreateLogDrainSourceUnion{
+		CreateLogDrainSourceIntegration: &createLogDrainSourceIntegration,
+		Type:                            typ,
+	}
+}
+
+func (u *CreateLogDrainSourceUnion) UnmarshalJSON(data []byte) error {
+
+	var createLogDrainSourceIntegration CreateLogDrainSourceIntegration = CreateLogDrainSourceIntegration{}
+	if err := utils.UnmarshalJSON(data, &createLogDrainSourceIntegration, "", true, nil); err == nil {
+		u.CreateLogDrainSourceIntegration = &createLogDrainSourceIntegration
+		u.Type = CreateLogDrainSourceUnionTypeCreateLogDrainSourceIntegration
+		return nil
+	}
+
+	var createLogDrainSourceSelfServed CreateLogDrainSourceSelfServed = CreateLogDrainSourceSelfServed{}
+	if err := utils.UnmarshalJSON(data, &createLogDrainSourceSelfServed, "", true, nil); err == nil {
+		u.CreateLogDrainSourceSelfServed = &createLogDrainSourceSelfServed
+		u.Type = CreateLogDrainSourceUnionTypeCreateLogDrainSourceSelfServed
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateLogDrainSourceUnion", string(data))
+}
+
+func (u CreateLogDrainSourceUnion) MarshalJSON() ([]byte, error) {
+	if u.CreateLogDrainSourceSelfServed != nil {
+		return utils.MarshalJSON(u.CreateLogDrainSourceSelfServed, "", true)
+	}
+
+	if u.CreateLogDrainSourceIntegration != nil {
+		return utils.MarshalJSON(u.CreateLogDrainSourceIntegration, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateLogDrainSourceUnion: all fields are null")
+}
+
 // CreateLogDrainResponseBody - The log drain was successfully created
 type CreateLogDrainResponseBody struct {
 	// The oauth2 client application id that created this log drain
@@ -351,7 +535,7 @@ type CreateLogDrainResponseBody struct {
 	// The URL to call when logs are generated
 	URL string `json:"url"`
 	// The sources from which logs are currently being delivered to this log drain.
-	Sources []CreateLogDrainSourceResponseBody `json:"sources,omitempty"`
+	Sources []CreateLogDrainSourceResponseBodyEnum `json:"sources,omitempty"`
 	// Whether the log drain was created by an integration or by a user
 	CreatedFrom *CreateLogDrainCreatedFrom `json:"createdFrom,omitempty"`
 	// The headers to send with the request
@@ -361,7 +545,8 @@ type CreateLogDrainResponseBody struct {
 	// The branch regexp of log drain
 	Branch *string `json:"branch,omitempty"`
 	// The sampling rate of log drain
-	SamplingRate *float64 `json:"samplingRate,omitempty"`
+	SamplingRate *float64                  `json:"samplingRate,omitempty"`
+	Source       CreateLogDrainSourceUnion `json:"source"`
 }
 
 func (o *CreateLogDrainResponseBody) GetClientID() *string {
@@ -434,7 +619,7 @@ func (o *CreateLogDrainResponseBody) GetURL() string {
 	return o.URL
 }
 
-func (o *CreateLogDrainResponseBody) GetSources() []CreateLogDrainSourceResponseBody {
+func (o *CreateLogDrainResponseBody) GetSources() []CreateLogDrainSourceResponseBodyEnum {
 	if o == nil {
 		return nil
 	}
@@ -474,6 +659,13 @@ func (o *CreateLogDrainResponseBody) GetSamplingRate() *float64 {
 		return nil
 	}
 	return o.SamplingRate
+}
+
+func (o *CreateLogDrainResponseBody) GetSource() CreateLogDrainSourceUnion {
+	if o == nil {
+		return CreateLogDrainSourceUnion{}
+	}
+	return o.Source
 }
 
 type CreateLogDrainResponse struct {

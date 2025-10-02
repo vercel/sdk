@@ -9,7 +9,7 @@ import { CreateProjectEnvResponseBody } from "@vercel/sdk/models/createprojecten
 
 let value: CreateProjectEnvResponseBody = {
   created: {
-    type: "plain",
+    type: "sensitive",
     value: "<value>",
     key: "<key>",
   },

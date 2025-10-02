@@ -7,12 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndTwentySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndTwentySeven = {};
+let value: OneHundredAndTwentySeven = {
+  username: "Avery.Kovacek",
+};
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

@@ -768,6 +768,10 @@ async function run() {
     from: 1612948664566,
     limit: 10,
     projectId: "QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY",
+    projectIds: [
+      "prj_123",
+      "prj_456",
+    ],
     target: "production",
     to: 1612948664566,
     users: "kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY",
@@ -804,6 +808,10 @@ async function run() {
     from: 1612948664566,
     limit: 10,
     projectId: "QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY",
+    projectIds: [
+      "prj_123",
+      "prj_456",
+    ],
     target: "production",
     to: 1612948664566,
     users: "kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY",

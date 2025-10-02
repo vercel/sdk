@@ -60,9 +60,9 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 				"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
 			},
 			URL: "https://example.com/log-drain",
-			Sources: []operations.GetIntegrationLogDrainsSource{
-				operations.GetIntegrationLogDrainsSourceBuild,
-				operations.GetIntegrationLogDrainsSourceEdge,
+			Sources: []operations.GetIntegrationLogDrainsSourceEnum{
+				operations.GetIntegrationLogDrainsSourceEnumBuild,
+				operations.GetIntegrationLogDrainsSourceEnumEdge,
 			},
 			CreatedFrom: operations.GetIntegrationLogDrainsCreatedFromIntegration.ToPointer(),
 			Headers: map[string]string{
@@ -75,6 +75,13 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			},
 			Branch:       types.String("feature/*"),
 			SamplingRate: types.Float64(0.5),
+			Source: operations.CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceIntegration(
+				operations.GetIntegrationLogDrainsSourceIntegration{
+					Kind:                       operations.GetIntegrationLogDrainsKindIntegrationIntegration,
+					IntegrationID:              "<id>",
+					IntegrationConfigurationID: "<id>",
+				},
+			),
 		},
 		operations.GetIntegrationLogDrainsResponseBody{
 			ClientID:        types.String("oac_xRhY4LAB7yLhUADD69EvV7ct"),
@@ -89,9 +96,9 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 				"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
 			},
 			URL: "https://example.com/log-drain",
-			Sources: []operations.GetIntegrationLogDrainsSource{
-				operations.GetIntegrationLogDrainsSourceBuild,
-				operations.GetIntegrationLogDrainsSourceEdge,
+			Sources: []operations.GetIntegrationLogDrainsSourceEnum{
+				operations.GetIntegrationLogDrainsSourceEnumBuild,
+				operations.GetIntegrationLogDrainsSourceEnumEdge,
 			},
 			CreatedFrom: operations.GetIntegrationLogDrainsCreatedFromIntegration.ToPointer(),
 			Headers: map[string]string{
@@ -104,6 +111,13 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			},
 			Branch:       types.String("feature/*"),
 			SamplingRate: types.Float64(0.5),
+			Source: operations.CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceIntegration(
+				operations.GetIntegrationLogDrainsSourceIntegration{
+					Kind:                       operations.GetIntegrationLogDrainsKindIntegrationIntegration,
+					IntegrationID:              "<id>",
+					IntegrationConfigurationID: "<id>",
+				},
+			),
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

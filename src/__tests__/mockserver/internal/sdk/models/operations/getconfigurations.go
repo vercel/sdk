@@ -125,6 +125,7 @@ const (
 	TagIDTagMessaging       TagID = "tag_messaging"
 	TagIDTagMonitoring      TagID = "tag_monitoring"
 	TagIDTagObservability   TagID = "tag_observability"
+	TagIDTagPayments        TagID = "tag_payments"
 	TagIDTagPerformance     TagID = "tag_performance"
 	TagIDTagProductivity    TagID = "tag_productivity"
 	TagIDTagSearching       TagID = "tag_searching"
@@ -170,6 +171,8 @@ func (e *TagID) UnmarshalJSON(data []byte) error {
 	case "tag_monitoring":
 		fallthrough
 	case "tag_observability":
+		fallthrough
+	case "tag_payments":
 		fallthrough
 	case "tag_performance":
 		fallthrough

@@ -76,12 +76,12 @@ func testCreateDeploymentCreateDeployment0(w http.ResponseWriter, req *http.Requ
 		Name:      "<value>",
 		CreatedAt: 179.28,
 		Type:      operations.CreateDeploymentTypeLambdasLambdas,
-		Version:   8477.72,
 		Meta: map[string]string{
 			"key": "<value>",
 		},
 		ReadyState: operations.CreateDeploymentReadyStateBuilding,
 		Regions:    []string{},
+		Version:    8477.72,
 		URL:        "https://unwritten-viability.org",
 		ProjectID:  "<id>",
 		OwnerID:    "<id>",

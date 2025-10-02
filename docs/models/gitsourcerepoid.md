@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### `string`
-
-```typescript
-const value: string = "<value>";
-```
-
 ### `number`
 
 ```typescript
-const value: number = 1284.03;
+const value: number = 123456789;
+```
+
+### `string`
+
+```typescript
+const value: string = "123456789";
 ```
 

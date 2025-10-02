@@ -236,11 +236,13 @@ func testGetProjectsGetProjects0(w http.ResponseWriter, req *http.Request) {
 				},
 			},
 		},
-		Pagination: components.Pagination{
-			Count: 20,
-			Next:  types.Float64(1540095775951),
-			Prev:  types.Float64(1540095775951),
-		},
+		Pagination: operations.CreatePaginationPagination(
+			components.Pagination{
+				Count: 20,
+				Next:  types.Float64(1540095775951),
+				Prev:  types.Float64(1540095775951),
+			},
+		),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

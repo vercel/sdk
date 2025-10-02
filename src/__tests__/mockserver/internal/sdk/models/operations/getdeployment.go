@@ -7970,17 +7970,17 @@ func CreateGetDeploymentHasValueUnion2GetDeploymentHasValue2(getDeploymentHasVal
 
 func (u *GetDeploymentHasValueUnion2) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentHasValue2 GetDeploymentHasValue2 = GetDeploymentHasValue2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue2, "", true, nil); err == nil {
-		u.GetDeploymentHasValue2 = &getDeploymentHasValue2
-		u.Type = GetDeploymentHasValueUnion2TypeGetDeploymentHasValue2
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentHasValueUnion2TypeStr
+		return nil
+	}
+
+	var getDeploymentHasValue2 GetDeploymentHasValue2 = GetDeploymentHasValue2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue2, "", true, nil); err == nil {
+		u.GetDeploymentHasValue2 = &getDeploymentHasValue2
+		u.Type = GetDeploymentHasValueUnion2TypeGetDeploymentHasValue2
 		return nil
 	}
 
@@ -8259,17 +8259,17 @@ func CreateGetDeploymentHasValueUnion1GetDeploymentHasValue1(getDeploymentHasVal
 
 func (u *GetDeploymentHasValueUnion1) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentHasValue1 GetDeploymentHasValue1 = GetDeploymentHasValue1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue1, "", true, nil); err == nil {
-		u.GetDeploymentHasValue1 = &getDeploymentHasValue1
-		u.Type = GetDeploymentHasValueUnion1TypeGetDeploymentHasValue1
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentHasValueUnion1TypeStr
+		return nil
+	}
+
+	var getDeploymentHasValue1 GetDeploymentHasValue1 = GetDeploymentHasValue1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentHasValue1, "", true, nil); err == nil {
+		u.GetDeploymentHasValue1 = &getDeploymentHasValue1
+		u.Type = GetDeploymentHasValueUnion1TypeGetDeploymentHasValue1
 		return nil
 	}
 
@@ -8609,17 +8609,17 @@ func CreateGetDeploymentMissingValueUnion2GetDeploymentMissingValue2(getDeployme
 
 func (u *GetDeploymentMissingValueUnion2) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentMissingValue2 GetDeploymentMissingValue2 = GetDeploymentMissingValue2{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue2, "", true, nil); err == nil {
-		u.GetDeploymentMissingValue2 = &getDeploymentMissingValue2
-		u.Type = GetDeploymentMissingValueUnion2TypeGetDeploymentMissingValue2
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentMissingValueUnion2TypeStr
+		return nil
+	}
+
+	var getDeploymentMissingValue2 GetDeploymentMissingValue2 = GetDeploymentMissingValue2{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue2, "", true, nil); err == nil {
+		u.GetDeploymentMissingValue2 = &getDeploymentMissingValue2
+		u.Type = GetDeploymentMissingValueUnion2TypeGetDeploymentMissingValue2
 		return nil
 	}
 
@@ -8898,17 +8898,17 @@ func CreateGetDeploymentMissingValueUnion1GetDeploymentMissingValue1(getDeployme
 
 func (u *GetDeploymentMissingValueUnion1) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentMissingValue1 GetDeploymentMissingValue1 = GetDeploymentMissingValue1{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue1, "", true, nil); err == nil {
-		u.GetDeploymentMissingValue1 = &getDeploymentMissingValue1
-		u.Type = GetDeploymentMissingValueUnion1TypeGetDeploymentMissingValue1
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentMissingValueUnion1TypeStr
+		return nil
+	}
+
+	var getDeploymentMissingValue1 GetDeploymentMissingValue1 = GetDeploymentMissingValue1{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentMissingValue1, "", true, nil); err == nil {
+		u.GetDeploymentMissingValue1 = &getDeploymentMissingValue1
+		u.Type = GetDeploymentMissingValueUnion1TypeGetDeploymentMissingValue1
 		return nil
 	}
 
@@ -9317,17 +9317,17 @@ func CreateGetDeploymentKeyUnionGetDeploymentKey(getDeploymentKey GetDeploymentK
 
 func (u *GetDeploymentKeyUnion) UnmarshalJSON(data []byte) error {
 
-	var getDeploymentKey GetDeploymentKey = GetDeploymentKey{}
-	if err := utils.UnmarshalJSON(data, &getDeploymentKey, "", true, nil); err == nil {
-		u.GetDeploymentKey = &getDeploymentKey
-		u.Type = GetDeploymentKeyUnionTypeGetDeploymentKey
-		return nil
-	}
-
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = GetDeploymentKeyUnionTypeStr
+		return nil
+	}
+
+	var getDeploymentKey GetDeploymentKey = GetDeploymentKey{}
+	if err := utils.UnmarshalJSON(data, &getDeploymentKey, "", true, nil); err == nil {
+		u.GetDeploymentKey = &getDeploymentKey
+		u.Type = GetDeploymentKeyUnionTypeGetDeploymentKey
 		return nil
 	}
 
@@ -10521,6 +10521,8 @@ type GetDeploymentMicrofrontends2 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (g GetDeploymentMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -10583,6 +10585,13 @@ func (o *GetDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool {
 	return o.MicrofrontendsAlias2Enabled
 }
 
+func (o *GetDeploymentMicrofrontends2) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
+}
+
 type GetDeploymentMicrofrontends1 struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -10593,6 +10602,8 @@ type GetDeploymentMicrofrontends1 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
+	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
+	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (g GetDeploymentMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -10639,6 +10650,13 @@ func (o *GetDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool {
 		return nil
 	}
 	return o.MicrofrontendsAlias2Enabled
+}
+
+func (o *GetDeploymentMicrofrontends1) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
 }
 
 type GetDeploymentMicrofrontendsUnionType string

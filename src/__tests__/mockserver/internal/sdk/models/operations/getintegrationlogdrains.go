@@ -4,8 +4,10 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
+	"mockserver/internal/sdk/utils"
 )
 
 type GetIntegrationLogDrainsRequest struct {
@@ -62,22 +64,22 @@ func (e *GetIntegrationLogDrainsDeliveryFormat) UnmarshalJSON(data []byte) error
 	}
 }
 
-// GetIntegrationLogDrainsSource - The sources from which logs are currently being delivered to this log drain.
-type GetIntegrationLogDrainsSource string
+// GetIntegrationLogDrainsSourceEnum - The sources from which logs are currently being delivered to this log drain.
+type GetIntegrationLogDrainsSourceEnum string
 
 const (
-	GetIntegrationLogDrainsSourceBuild    GetIntegrationLogDrainsSource = "build"
-	GetIntegrationLogDrainsSourceEdge     GetIntegrationLogDrainsSource = "edge"
-	GetIntegrationLogDrainsSourceLambda   GetIntegrationLogDrainsSource = "lambda"
-	GetIntegrationLogDrainsSourceStatic   GetIntegrationLogDrainsSource = "static"
-	GetIntegrationLogDrainsSourceExternal GetIntegrationLogDrainsSource = "external"
-	GetIntegrationLogDrainsSourceFirewall GetIntegrationLogDrainsSource = "firewall"
+	GetIntegrationLogDrainsSourceEnumBuild    GetIntegrationLogDrainsSourceEnum = "build"
+	GetIntegrationLogDrainsSourceEnumEdge     GetIntegrationLogDrainsSourceEnum = "edge"
+	GetIntegrationLogDrainsSourceEnumLambda   GetIntegrationLogDrainsSourceEnum = "lambda"
+	GetIntegrationLogDrainsSourceEnumStatic   GetIntegrationLogDrainsSourceEnum = "static"
+	GetIntegrationLogDrainsSourceEnumExternal GetIntegrationLogDrainsSourceEnum = "external"
+	GetIntegrationLogDrainsSourceEnumFirewall GetIntegrationLogDrainsSourceEnum = "firewall"
 )
 
-func (e GetIntegrationLogDrainsSource) ToPointer() *GetIntegrationLogDrainsSource {
+func (e GetIntegrationLogDrainsSourceEnum) ToPointer() *GetIntegrationLogDrainsSourceEnum {
 	return &e
 }
-func (e *GetIntegrationLogDrainsSource) UnmarshalJSON(data []byte) error {
+func (e *GetIntegrationLogDrainsSourceEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -94,10 +96,10 @@ func (e *GetIntegrationLogDrainsSource) UnmarshalJSON(data []byte) error {
 	case "external":
 		fallthrough
 	case "firewall":
-		*e = GetIntegrationLogDrainsSource(v)
+		*e = GetIntegrationLogDrainsSourceEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetIntegrationLogDrainsSource: %v", v)
+		return fmt.Errorf("invalid value for GetIntegrationLogDrainsSourceEnum: %v", v)
 	}
 }
 
@@ -155,6 +157,191 @@ func (e *GetIntegrationLogDrainsEnvironment) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetIntegrationLogDrainsKindIntegration string
+
+const (
+	GetIntegrationLogDrainsKindIntegrationIntegration GetIntegrationLogDrainsKindIntegration = "integration"
+)
+
+func (e GetIntegrationLogDrainsKindIntegration) ToPointer() *GetIntegrationLogDrainsKindIntegration {
+	return &e
+}
+func (e *GetIntegrationLogDrainsKindIntegration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "integration":
+		*e = GetIntegrationLogDrainsKindIntegration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetIntegrationLogDrainsKindIntegration: %v", v)
+	}
+}
+
+type GetIntegrationLogDrainsSourceIntegration struct {
+	Kind                       GetIntegrationLogDrainsKindIntegration `json:"kind"`
+	ResourceID                 *string                                `json:"resourceId,omitempty"`
+	ExternalResourceID         *string                                `json:"externalResourceId,omitempty"`
+	IntegrationID              string                                 `json:"integrationId"`
+	IntegrationConfigurationID string                                 `json:"integrationConfigurationId"`
+}
+
+func (g GetIntegrationLogDrainsSourceIntegration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIntegrationLogDrainsSourceIntegration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind", "integrationId", "integrationConfigurationId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetIntegrationLogDrainsSourceIntegration) GetKind() GetIntegrationLogDrainsKindIntegration {
+	if o == nil {
+		return GetIntegrationLogDrainsKindIntegration("")
+	}
+	return o.Kind
+}
+
+func (o *GetIntegrationLogDrainsSourceIntegration) GetResourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ResourceID
+}
+
+func (o *GetIntegrationLogDrainsSourceIntegration) GetExternalResourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalResourceID
+}
+
+func (o *GetIntegrationLogDrainsSourceIntegration) GetIntegrationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationID
+}
+
+func (o *GetIntegrationLogDrainsSourceIntegration) GetIntegrationConfigurationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntegrationConfigurationID
+}
+
+type GetIntegrationLogDrainsKindSelfServed string
+
+const (
+	GetIntegrationLogDrainsKindSelfServedSelfServed GetIntegrationLogDrainsKindSelfServed = "self-served"
+)
+
+func (e GetIntegrationLogDrainsKindSelfServed) ToPointer() *GetIntegrationLogDrainsKindSelfServed {
+	return &e
+}
+func (e *GetIntegrationLogDrainsKindSelfServed) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "self-served":
+		*e = GetIntegrationLogDrainsKindSelfServed(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetIntegrationLogDrainsKindSelfServed: %v", v)
+	}
+}
+
+type GetIntegrationLogDrainsSourceSelfServed struct {
+	Kind GetIntegrationLogDrainsKindSelfServed `json:"kind"`
+}
+
+func (g GetIntegrationLogDrainsSourceSelfServed) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIntegrationLogDrainsSourceSelfServed) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetIntegrationLogDrainsSourceSelfServed) GetKind() GetIntegrationLogDrainsKindSelfServed {
+	if o == nil {
+		return GetIntegrationLogDrainsKindSelfServed("")
+	}
+	return o.Kind
+}
+
+type GetIntegrationLogDrainsSourceUnionType string
+
+const (
+	GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceSelfServed  GetIntegrationLogDrainsSourceUnionType = "getIntegrationLogDrains_source_SelfServed"
+	GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceIntegration GetIntegrationLogDrainsSourceUnionType = "getIntegrationLogDrains_source_Integration"
+)
+
+type GetIntegrationLogDrainsSourceUnion struct {
+	GetIntegrationLogDrainsSourceSelfServed  *GetIntegrationLogDrainsSourceSelfServed  `queryParam:"inline"`
+	GetIntegrationLogDrainsSourceIntegration *GetIntegrationLogDrainsSourceIntegration `queryParam:"inline"`
+
+	Type GetIntegrationLogDrainsSourceUnionType
+}
+
+func CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceSelfServed(getIntegrationLogDrainsSourceSelfServed GetIntegrationLogDrainsSourceSelfServed) GetIntegrationLogDrainsSourceUnion {
+	typ := GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceSelfServed
+
+	return GetIntegrationLogDrainsSourceUnion{
+		GetIntegrationLogDrainsSourceSelfServed: &getIntegrationLogDrainsSourceSelfServed,
+		Type:                                    typ,
+	}
+}
+
+func CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceIntegration(getIntegrationLogDrainsSourceIntegration GetIntegrationLogDrainsSourceIntegration) GetIntegrationLogDrainsSourceUnion {
+	typ := GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceIntegration
+
+	return GetIntegrationLogDrainsSourceUnion{
+		GetIntegrationLogDrainsSourceIntegration: &getIntegrationLogDrainsSourceIntegration,
+		Type:                                     typ,
+	}
+}
+
+func (u *GetIntegrationLogDrainsSourceUnion) UnmarshalJSON(data []byte) error {
+
+	var getIntegrationLogDrainsSourceIntegration GetIntegrationLogDrainsSourceIntegration = GetIntegrationLogDrainsSourceIntegration{}
+	if err := utils.UnmarshalJSON(data, &getIntegrationLogDrainsSourceIntegration, "", true, nil); err == nil {
+		u.GetIntegrationLogDrainsSourceIntegration = &getIntegrationLogDrainsSourceIntegration
+		u.Type = GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceIntegration
+		return nil
+	}
+
+	var getIntegrationLogDrainsSourceSelfServed GetIntegrationLogDrainsSourceSelfServed = GetIntegrationLogDrainsSourceSelfServed{}
+	if err := utils.UnmarshalJSON(data, &getIntegrationLogDrainsSourceSelfServed, "", true, nil); err == nil {
+		u.GetIntegrationLogDrainsSourceSelfServed = &getIntegrationLogDrainsSourceSelfServed
+		u.Type = GetIntegrationLogDrainsSourceUnionTypeGetIntegrationLogDrainsSourceSelfServed
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetIntegrationLogDrainsSourceUnion", string(data))
+}
+
+func (u GetIntegrationLogDrainsSourceUnion) MarshalJSON() ([]byte, error) {
+	if u.GetIntegrationLogDrainsSourceSelfServed != nil {
+		return utils.MarshalJSON(u.GetIntegrationLogDrainsSourceSelfServed, "", true)
+	}
+
+	if u.GetIntegrationLogDrainsSourceIntegration != nil {
+		return utils.MarshalJSON(u.GetIntegrationLogDrainsSourceIntegration, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetIntegrationLogDrainsSourceUnion: all fields are null")
+}
+
 type GetIntegrationLogDrainsResponseBody struct {
 	// The oauth2 client application id that created this log drain
 	ClientID *string `json:"clientId,omitempty"`
@@ -176,7 +363,7 @@ type GetIntegrationLogDrainsResponseBody struct {
 	// The URL to call when logs are generated
 	URL string `json:"url"`
 	// The sources from which logs are currently being delivered to this log drain.
-	Sources []GetIntegrationLogDrainsSource `json:"sources,omitempty"`
+	Sources []GetIntegrationLogDrainsSourceEnum `json:"sources,omitempty"`
 	// Whether the log drain was created by an integration or by a user
 	CreatedFrom *GetIntegrationLogDrainsCreatedFrom `json:"createdFrom,omitempty"`
 	// The headers to send with the request
@@ -186,7 +373,8 @@ type GetIntegrationLogDrainsResponseBody struct {
 	// The branch regexp of log drain
 	Branch *string `json:"branch,omitempty"`
 	// The sampling rate of log drain
-	SamplingRate *float64 `json:"samplingRate,omitempty"`
+	SamplingRate *float64                           `json:"samplingRate,omitempty"`
+	Source       GetIntegrationLogDrainsSourceUnion `json:"source"`
 }
 
 func (o *GetIntegrationLogDrainsResponseBody) GetClientID() *string {
@@ -259,7 +447,7 @@ func (o *GetIntegrationLogDrainsResponseBody) GetURL() string {
 	return o.URL
 }
 
-func (o *GetIntegrationLogDrainsResponseBody) GetSources() []GetIntegrationLogDrainsSource {
+func (o *GetIntegrationLogDrainsResponseBody) GetSources() []GetIntegrationLogDrainsSourceEnum {
 	if o == nil {
 		return nil
 	}
@@ -299,6 +487,13 @@ func (o *GetIntegrationLogDrainsResponseBody) GetSamplingRate() *float64 {
 		return nil
 	}
 	return o.SamplingRate
+}
+
+func (o *GetIntegrationLogDrainsResponseBody) GetSource() GetIntegrationLogDrainsSourceUnion {
+	if o == nil {
+		return GetIntegrationLogDrainsSourceUnion{}
+	}
+	return o.Source
 }
 
 type GetIntegrationLogDrainsResponse struct {

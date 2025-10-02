@@ -116,6 +116,7 @@ async function $do(
     "from": payload.from,
     "limit": payload.limit,
     "projectId": payload.projectId,
+    "projectIds": payload.projectIds,
     "rollbackCandidate": payload.rollbackCandidate,
     "sha": payload.sha,
     "since": payload.since,

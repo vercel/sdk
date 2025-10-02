@@ -64,9 +64,9 @@ func testCreateLogDrainCreateLogDrain0(w http.ResponseWriter, req *http.Request)
 			"AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb",
 		},
 		URL: "https://example.com/log-drain",
-		Sources: []operations.CreateLogDrainSourceResponseBody{
-			operations.CreateLogDrainSourceResponseBodyBuild,
-			operations.CreateLogDrainSourceResponseBodyEdge,
+		Sources: []operations.CreateLogDrainSourceResponseBodyEnum{
+			operations.CreateLogDrainSourceResponseBodyEnumBuild,
+			operations.CreateLogDrainSourceResponseBodyEnumEdge,
 		},
 		CreatedFrom: operations.CreateLogDrainCreatedFromIntegration.ToPointer(),
 		Headers: map[string]string{
@@ -77,6 +77,13 @@ func testCreateLogDrainCreateLogDrain0(w http.ResponseWriter, req *http.Request)
 		},
 		Branch:       types.String("feature/*"),
 		SamplingRate: types.Float64(0.5),
+		Source: operations.CreateCreateLogDrainSourceUnionCreateLogDrainSourceIntegration(
+			operations.CreateLogDrainSourceIntegration{
+				Kind:                       operations.CreateLogDrainKindIntegrationIntegration,
+				IntegrationID:              "<id>",
+				IntegrationConfigurationID: "<id>",
+			},
+		),
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

@@ -55,6 +55,11 @@ test("Logdrains Get Integration Log Drains", async () => {
       ],
       branch: "feature/*",
       samplingRate: 0.5,
+      source: {
+        kind: "integration",
+        integrationId: "<id>",
+        integrationConfigurationId: "<id>",
+      },
     },
     {
       clientId: "oac_xRhY4LAB7yLhUADD69EvV7ct",
@@ -84,6 +89,11 @@ test("Logdrains Get Integration Log Drains", async () => {
       ],
       branch: "feature/*",
       samplingRate: 0.5,
+      source: {
+        kind: "integration",
+        integrationId: "<id>",
+        integrationConfigurationId: "<id>",
+      },
     },
   ]);
 });
@@ -134,6 +144,9 @@ test("Logdrains Create Log Drain", async () => {
     ],
     branch: "feature/*",
     samplingRate: 0.5,
+    source: {
+      kind: "self-served",
+    },
   });
 });
 

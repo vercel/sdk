@@ -19,6 +19,8 @@ type GetDeploymentsRequest struct {
 	Limit *float64 `queryParam:"style=form,explode=true,name=limit"`
 	// Filter deployments from the given ID or name.
 	ProjectID *string `queryParam:"style=form,explode=true,name=projectId"`
+	// Filter deployments from the given project IDs. Cannot be used when projectId is specified.
+	ProjectIds []string `queryParam:"style=form,explode=true,name=projectIds"`
 	// Filter deployments based on the environment.
 	Target *string `queryParam:"style=form,explode=true,name=target"`
 	// Gets the deployment created before this Date timestamp. (default: current time)
@@ -69,6 +71,13 @@ func (o *GetDeploymentsRequest) GetProjectID() *string {
 		return nil
 	}
 	return o.ProjectID
+}
+
+func (o *GetDeploymentsRequest) GetProjectIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectIds
 }
 
 func (o *GetDeploymentsRequest) GetTarget() *string {

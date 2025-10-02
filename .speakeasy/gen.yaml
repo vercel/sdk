@@ -25,6 +25,10 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
+  compileCommand:
+    - bash
+    - -c
+    - ./scripts/build.sh
   version: 1.11.5
   acceptHeaderEnum: true
   additionalDependencies:
@@ -35,10 +39,6 @@ typescript:
   author: Speakeasy
   baseErrorName: VercelError
   clientServerStatusCodesAsErrors: true
-  compileCommand:
-    - bash
-    - -c
-    - ./scripts/build.sh
   constFieldsAlwaysOptional: true
   defaultErrorName: SDKError
   enableCustomCodeRegions: false

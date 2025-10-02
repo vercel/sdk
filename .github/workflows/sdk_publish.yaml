@@ -20,6 +20,8 @@ jobs:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN_ELEVATED }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      environment: |
+        NODE_OPTIONS="--max-old-space-size=5120"
   trigger-mintlify:
     name: Trigger Mintlify Update
     runs-on: ubuntu-latest

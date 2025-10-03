@@ -12,7 +12,7 @@ const args = {
 
 export const tool$edgeCacheInvalidateByTags: ToolDefinition<typeof args> = {
   name: "edge-cache-invalidate-by-tags",
-  description: `Invalidate the edge cache by one or more tags
+  description: `Invalidate by tag
 
 Marks a cache tag as stale, causing cache entries associated with that tag to be revalidated in the background on the next request.`,
   args,

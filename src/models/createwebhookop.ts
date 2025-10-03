@@ -86,6 +86,7 @@ export const Events = {
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
+  ObservabilityAnomalyBotId: "observability.anomaly-botId",
   TestWebhook: "test-webhook",
 } as const;
 export type Events = ClosedEnum<typeof Events>;
@@ -188,6 +189,7 @@ export const CreateWebhookEvents = {
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
+  ObservabilityAnomalyBotId: "observability.anomaly-botId",
   TestWebhook: "test-webhook",
 } as const;
 /**

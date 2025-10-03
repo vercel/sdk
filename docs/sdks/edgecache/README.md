@@ -5,8 +5,8 @@
 
 ### Available Operations
 
-* [invalidateByTags](#invalidatebytags) - Invalidate the edge cache by one or more tags
-* [dangerouslyDeleteByTags](#dangerouslydeletebytags) - Dangerously delete the edge cache by one or more tags
+* [invalidateByTags](#invalidatebytags) - Invalidate by tag
+* [dangerouslyDeleteByTags](#dangerouslydeletebytags) - Dangerously delete by tag
 
 ## invalidateByTags
 

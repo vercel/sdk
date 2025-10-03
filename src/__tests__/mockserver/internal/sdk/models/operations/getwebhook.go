@@ -112,6 +112,7 @@ const (
 	GetWebhookEventMarketplaceInvoiceRefunded                         GetWebhookEvent = "marketplace.invoice.refunded"
 	GetWebhookEventObservabilityAnomaly                               GetWebhookEvent = "observability.anomaly"
 	GetWebhookEventObservabilityAnomalyError                          GetWebhookEvent = "observability.anomaly-error"
+	GetWebhookEventObservabilityAnomalyBotId                          GetWebhookEvent = "observability.anomaly-botId"
 	GetWebhookEventTestWebhook                                        GetWebhookEvent = "test-webhook"
 )
 
@@ -265,6 +266,8 @@ func (e *GetWebhookEvent) UnmarshalJSON(data []byte) error {
 	case "observability.anomaly":
 		fallthrough
 	case "observability.anomaly-error":
+		fallthrough
+	case "observability.anomaly-botId":
 		fallthrough
 	case "test-webhook":
 		*e = GetWebhookEvent(v)

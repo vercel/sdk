@@ -124,7 +124,7 @@ test("Integrations Create Integration Store Direct", async () => {
       externalResourceId: "<id>",
       product: {
         value: {
-          atBRANDAt8466: {},
+          atBRANDAt8486: {},
         },
       },
       secrets: [],
@@ -152,11 +152,11 @@ test("Integrations Get Billing Plans", async () => {
     plans: [
       {
         type: "prepayment",
+        description:
+          "outside fatally ultimate limply upon especially hm jellyfish expostulate",
         id: "<id>",
         name: "<value>",
         scope: "installation",
-        description:
-          "outside fatally ultimate limply upon especially hm jellyfish expostulate",
         paymentMethodRequired: false,
       },
     ],

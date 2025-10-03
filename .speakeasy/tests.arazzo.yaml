@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8466": {}
+                      "__@BRAND@8486": {}
                     }
                   },
                   "secrets": []
@@ -6418,14 +6418,43 @@ workflows:
                 "plans": [
                   {
                     "type": "prepayment",
+                    "description": "outside fatally ultimate limply upon especially hm jellyfish expostulate",
                     "id": "\u003cid\u003e",
                     "name": "\u003cvalue\u003e",
                     "scope": "installation",
-                    "description": "outside fatally ultimate limply upon especially hm jellyfish expostulate",
                     "paymentMethodRequired": false
                   }
                 ]
               }
             type: simple
     x-speakeasy-test-group: integrations
+    x-speakeasy-test-rebuild: true
+  - workflowId: batchRemoveProjectEnv
+    steps:
+      - stepId: test
+        operationId: batchRemoveProjectEnv
+        parameters:
+          - name: idOrName
+            in: path
+            value: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "deleted": 2417.01,
+                "ids": [
+                  "\u003cvalue 1\u003e",
+                  "\u003cvalue 2\u003e"
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: projects
     x-speakeasy-test-rebuild: true

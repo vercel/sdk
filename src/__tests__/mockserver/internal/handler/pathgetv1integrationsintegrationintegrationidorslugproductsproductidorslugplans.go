@@ -49,10 +49,10 @@ func testGetBillingPlansGetBillingPlans0(w http.ResponseWriter, req *http.Reques
 		Plans: []operations.GetBillingPlansPlan{
 			operations.GetBillingPlansPlan{
 				Type:                  operations.GetBillingPlansTypePrepayment,
+				Description:           "outside fatally ultimate limply upon especially hm jellyfish expostulate",
 				ID:                    "<id>",
 				Name:                  "<value>",
 				Scope:                 operations.GetBillingPlansScopeInstallation,
-				Description:           "outside fatally ultimate limply upon especially hm jellyfish expostulate",
 				PaymentMethodRequired: false,
 			},
 		},

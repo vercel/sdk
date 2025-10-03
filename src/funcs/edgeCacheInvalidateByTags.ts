@@ -41,7 +41,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Invalidate the edge cache by one or more tags
+ * Invalidate by tag
  *
  * @remarks
  * Marks a cache tag as stale, causing cache entries associated with that tag to be revalidated in the background on the next request.

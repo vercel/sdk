@@ -7,11 +7,11 @@ import { Plans } from "@vercel/sdk/models/getbillingplansop.js";
 
 let value: Plans = {
   type: "subscription",
+  description: "amend ultimate riser aboard import",
   id: "<id>",
   name: "<value>",
-  scope: "installation",
-  description: "delightfully buzzing opposite carefully",
-  paymentMethodRequired: true,
+  scope: "resource",
+  paymentMethodRequired: false,
 };
 ```
 
@@ -20,10 +20,10 @@ let value: Plans = {
 | Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `type`                                                                                       | [models.GetBillingPlansType](../models/getbillingplanstype.md)                               | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `description`                                                                                | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `id`                                                                                         | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `name`                                                                                       | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `scope`                                                                                      | [models.GetBillingPlansScope](../models/getbillingplansscope.md)                             | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `description`                                                                                | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `paymentMethodRequired`                                                                      | *boolean*                                                                                    | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `preauthorizationAmount`                                                                     | *number*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `initialCharge`                                                                              | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |

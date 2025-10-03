@@ -46,8 +46,8 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody *operations.GetConfigurationResponseBody = types.Pointer(operations.CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration2(
-		operations.GetConfigurationIntegrationConfiguration2{
+	var respBody *operations.GetConfigurationResponseBody = types.Pointer(operations.CreateGetConfigurationResponseBodyGetConfigurationIntegrationConfiguration1(
+		operations.GetConfigurationIntegrationConfiguration1{
 			ProjectSelection: operations.ProjectSelectionAll,
 			Notification: operations.GetConfigurationNotification{
 				Level: operations.GetConfigurationLevelWarn,
@@ -68,15 +68,13 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 			Projects: []string{
 				"prj_xQxbutw1HpL6HLYPAzt5h75m8NjO",
 			},
-			CompletedAt:   types.Float64(1558531915505),
 			CreatedAt:     1558531915505,
+			CompletedAt:   types.Float64(1558531915505),
 			ID:            "icfg_3bwCLgxL8qt5kjRLcv2Dit7F",
 			IntegrationID: "oac_xzpVzcUOgcB1nrVlirtKhbWV",
 			OwnerID:       "kr1PsOIzqEL5Xg6M4VZcZosf",
-			Source:        operations.GetConfigurationSource2Marketplace.ToPointer(),
 			Slug:          "slack",
 			TeamID:        types.String("team_nLlpyC6RE1qxydlFKbrxDlud"),
-			Type:          operations.GetConfigurationTypeIntegrationConfiguration2IntegrationConfiguration,
 			UpdatedAt:     1558531915505,
 			UserID:        "kr1PsOIzqEL5Xg6M4VZcZosf",
 			Scopes: []string{
@@ -84,8 +82,10 @@ func testGetConfigurationGetConfiguration0(w http.ResponseWriter, req *http.Requ
 				"read-write:log-drain",
 			},
 			DisabledAt:        types.Float64(1558531915505),
-			DeletedAt:         types.Float64(1558531915505),
+			Source:            operations.GetConfigurationSource1Marketplace.ToPointer(),
 			DeleteRequestedAt: types.Float64(1558531915505),
+			Type:              operations.GetConfigurationTypeIntegrationConfiguration1IntegrationConfiguration,
+			DeletedAt:         types.Float64(1558531915505),
 		},
 	))
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -4,6 +4,7 @@
 
 import { projectsAcceptProjectTransferRequest } from "../funcs/projectsAcceptProjectTransferRequest.js";
 import { projectsAddProjectDomain } from "../funcs/projectsAddProjectDomain.js";
+import { projectsBatchRemoveProjectEnv } from "../funcs/projectsBatchRemoveProjectEnv.js";
 import { projectsCreateProject } from "../funcs/projectsCreateProject.js";
 import { projectsCreateProjectEnv } from "../funcs/projectsCreateProjectEnv.js";
 import { projectsCreateProjectTransferRequest } from "../funcs/projectsCreateProjectTransferRequest.js";
@@ -35,6 +36,10 @@ import {
   AddProjectDomainRequest,
   AddProjectDomainResponseBody,
 } from "../models/addprojectdomainop.js";
+import {
+  BatchRemoveProjectEnvRequest,
+  BatchRemoveProjectEnvResponseBody,
+} from "../models/batchremoveprojectenvop.js";
 import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
@@ -397,6 +402,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<EditProjectEnvResponseBody> {
     return unwrapAsync(projectsEditProjectEnv(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Batch remove environment variables
+   *
+   * @remarks
+   * Delete multiple environment variables for a given project in a single batch operation.
+   */
+  async batchRemoveProjectEnv(
+    request: BatchRemoveProjectEnvRequest,
+    options?: RequestOptions,
+  ): Promise<BatchRemoveProjectEnvResponseBody> {
+    return unwrapAsync(projectsBatchRemoveProjectEnv(
       this,
       request,
       options,

@@ -100,6 +100,7 @@ export const GetWebhookEvents = {
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
+  ObservabilityAnomalyBotId: "observability.anomaly-botId",
   TestWebhook: "test-webhook",
 } as const;
 /**

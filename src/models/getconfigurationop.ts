@@ -24,6 +24,131 @@ export type GetConfigurationRequest = {
 };
 
 /**
+ * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+ */
+export const GetConfigurationResponseBodyIntegrationsSource = {
+  Marketplace: "marketplace",
+  DeployButton: "deploy-button",
+  External: "external",
+  V0: "v0",
+  ResourceClaims: "resource-claims",
+} as const;
+/**
+ * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+ */
+export type GetConfigurationResponseBodyIntegrationsSource = ClosedEnum<
+  typeof GetConfigurationResponseBodyIntegrationsSource
+>;
+
+export const GetConfigurationResponseBodyIntegrationsType = {
+  IntegrationConfiguration: "integration-configuration",
+} as const;
+export type GetConfigurationResponseBodyIntegrationsType = ClosedEnum<
+  typeof GetConfigurationResponseBodyIntegrationsType
+>;
+
+export const GetConfigurationResponseBodyIntegrationsDisabledReason = {
+  DisabledByOwner: "disabled-by-owner",
+  FeatureNotAvailable: "feature-not-available",
+  DisabledByAdmin: "disabled-by-admin",
+  OriginalOwnerLeftTheTeam: "original-owner-left-the-team",
+  AccountPlanDowngrade: "account-plan-downgrade",
+  OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
+} as const;
+export type GetConfigurationResponseBodyIntegrationsDisabledReason = ClosedEnum<
+  typeof GetConfigurationResponseBodyIntegrationsDisabledReason
+>;
+
+/**
+ * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+ */
+export const GetConfigurationResponseBodyIntegrationsInstallationType = {
+  Marketplace: "marketplace",
+  External: "external",
+} as const;
+/**
+ * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+ */
+export type GetConfigurationResponseBodyIntegrationsInstallationType =
+  ClosedEnum<typeof GetConfigurationResponseBodyIntegrationsInstallationType>;
+
+/**
+ * The configuration with the provided id
+ */
+export type GetConfigurationResponseBody2 = {
+  /**
+   * A timestamp that tells you when the configuration was installed successfully
+   */
+  completedAt?: number | undefined;
+  /**
+   * A timestamp that tells you when the configuration was created
+   */
+  createdAt: number;
+  /**
+   * The unique identifier of the configuration
+   */
+  id: string;
+  /**
+   * The unique identifier of the app the configuration was created for
+   */
+  integrationId: string;
+  /**
+   * The user or team ID that owns the configuration
+   */
+  ownerId: string;
+  /**
+   * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
+   */
+  projects?: Array<string> | undefined;
+  /**
+   * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+   */
+  source?: GetConfigurationResponseBodyIntegrationsSource | undefined;
+  /**
+   * The slug of the integration the configuration is created for.
+   */
+  slug: string;
+  /**
+   * When the configuration was created for a team, this will show the ID of the team.
+   */
+  teamId?: string | null | undefined;
+  type: GetConfigurationResponseBodyIntegrationsType;
+  /**
+   * A timestamp that tells you when the configuration was updated.
+   */
+  updatedAt: number;
+  /**
+   * The ID of the user that created the configuration.
+   */
+  userId: string;
+  /**
+   * The resources that are allowed to be accessed by the configuration.
+   */
+  scopes: Array<string>;
+  /**
+   * A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
+   */
+  disabledAt?: number | undefined;
+  /**
+   * A timestamp that tells you when the configuration was deleted.
+   */
+  deletedAt?: number | null | undefined;
+  /**
+   * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
+   */
+  deleteRequestedAt?: number | null | undefined;
+  disabledReason?:
+    | GetConfigurationResponseBodyIntegrationsDisabledReason
+    | undefined;
+  /**
+   * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
+   */
+  installationType?:
+    | GetConfigurationResponseBodyIntegrationsInstallationType
+    | undefined;
+};
+
+/**
  * A string representing the permission for projects. Possible values are `all` or `selected`.
  */
 export const ProjectSelection = {
@@ -127,31 +252,7 @@ export type TransferRequest1 = {
 
 export type TransferRequest = TransferRequest1 | TransferRequest2;
 
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export const GetConfigurationResponseBodyIntegrationsSource = {
-  Marketplace: "marketplace",
-  DeployButton: "deploy-button",
-  External: "external",
-  V0: "v0",
-  ResourceClaims: "resource-claims",
-} as const;
-/**
- * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
- */
-export type GetConfigurationResponseBodyIntegrationsSource = ClosedEnum<
-  typeof GetConfigurationResponseBodyIntegrationsSource
->;
-
-export const GetConfigurationResponseBodyIntegrationsType = {
-  IntegrationConfiguration: "integration-configuration",
-} as const;
-export type GetConfigurationResponseBodyIntegrationsType = ClosedEnum<
-  typeof GetConfigurationResponseBodyIntegrationsType
->;
-
-export const GetConfigurationResponseBodyIntegrationsDisabledReason = {
+export const GetConfigurationResponseBodyDisabledReason = {
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
   DisabledByAdmin: "disabled-by-admin",
@@ -159,102 +260,9 @@ export const GetConfigurationResponseBodyIntegrationsDisabledReason = {
   AccountPlanDowngrade: "account-plan-downgrade",
   OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
 } as const;
-export type GetConfigurationResponseBodyIntegrationsDisabledReason = ClosedEnum<
-  typeof GetConfigurationResponseBodyIntegrationsDisabledReason
+export type GetConfigurationResponseBodyDisabledReason = ClosedEnum<
+  typeof GetConfigurationResponseBodyDisabledReason
 >;
-
-/**
- * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
- */
-export const GetConfigurationResponseBodyIntegrationsInstallationType = {
-  Marketplace: "marketplace",
-  External: "external",
-} as const;
-/**
- * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
- */
-export type GetConfigurationResponseBodyIntegrationsInstallationType =
-  ClosedEnum<typeof GetConfigurationResponseBodyIntegrationsInstallationType>;
-
-export type GetConfigurationResponseBody2 = {
-  /**
-   * A string representing the permission for projects. Possible values are `all` or `selected`.
-   */
-  projectSelection: ProjectSelection;
-  notification: ResponseBodyNotification;
-  transferRequest: TransferRequest1 | TransferRequest2;
-  /**
-   * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
-   */
-  projects?: Array<string> | undefined;
-  /**
-   * A timestamp that tells you when the configuration was installed successfully
-   */
-  completedAt?: number | undefined;
-  /**
-   * A timestamp that tells you when the configuration was created
-   */
-  createdAt: number;
-  /**
-   * The unique identifier of the configuration
-   */
-  id: string;
-  /**
-   * The unique identifier of the app the configuration was created for
-   */
-  integrationId: string;
-  /**
-   * The user or team ID that owns the configuration
-   */
-  ownerId: string;
-  /**
-   * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-   */
-  source?: GetConfigurationResponseBodyIntegrationsSource | undefined;
-  /**
-   * The slug of the integration the configuration is created for.
-   */
-  slug: string;
-  /**
-   * When the configuration was created for a team, this will show the ID of the team.
-   */
-  teamId?: string | null | undefined;
-  type: GetConfigurationResponseBodyIntegrationsType;
-  /**
-   * A timestamp that tells you when the configuration was updated.
-   */
-  updatedAt: number;
-  /**
-   * The ID of the user that created the configuration.
-   */
-  userId: string;
-  /**
-   * The resources that are allowed to be accessed by the configuration.
-   */
-  scopes: Array<string>;
-  /**
-   * A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
-   */
-  disabledAt?: number | undefined;
-  /**
-   * A timestamp that tells you when the configuration was deleted.
-   */
-  deletedAt?: number | null | undefined;
-  /**
-   * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-   */
-  deleteRequestedAt?: number | null | undefined;
-  disabledReason?:
-    | GetConfigurationResponseBodyIntegrationsDisabledReason
-    | undefined;
-  /**
-   * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
-   */
-  installationType?:
-    | GetConfigurationResponseBodyIntegrationsInstallationType
-    | undefined;
-  canConfigureOpenTelemetry?: boolean | undefined;
-};
 
 /**
  * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
@@ -273,25 +281,6 @@ export type GetConfigurationResponseBodySource = ClosedEnum<
   typeof GetConfigurationResponseBodySource
 >;
 
-export const GetConfigurationResponseBodyType = {
-  IntegrationConfiguration: "integration-configuration",
-} as const;
-export type GetConfigurationResponseBodyType = ClosedEnum<
-  typeof GetConfigurationResponseBodyType
->;
-
-export const GetConfigurationResponseBodyDisabledReason = {
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
-  DisabledByAdmin: "disabled-by-admin",
-  OriginalOwnerLeftTheTeam: "original-owner-left-the-team",
-  AccountPlanDowngrade: "account-plan-downgrade",
-  OriginalOwnerRoleDowngraded: "original-owner-role-downgraded",
-} as const;
-export type GetConfigurationResponseBodyDisabledReason = ClosedEnum<
-  typeof GetConfigurationResponseBodyDisabledReason
->;
-
 /**
  * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
  */
@@ -306,18 +295,32 @@ export type GetConfigurationResponseBodyInstallationType = ClosedEnum<
   typeof GetConfigurationResponseBodyInstallationType
 >;
 
-/**
- * The configuration with the provided id
- */
+export const GetConfigurationResponseBodyType = {
+  IntegrationConfiguration: "integration-configuration",
+} as const;
+export type GetConfigurationResponseBodyType = ClosedEnum<
+  typeof GetConfigurationResponseBodyType
+>;
+
 export type GetConfigurationResponseBody1 = {
   /**
-   * A timestamp that tells you when the configuration was installed successfully
+   * A string representing the permission for projects. Possible values are `all` or `selected`.
    */
-  completedAt?: number | undefined;
+  projectSelection: ProjectSelection;
+  notification: ResponseBodyNotification;
+  transferRequest: TransferRequest1 | TransferRequest2;
+  /**
+   * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
+   */
+  projects?: Array<string> | undefined;
   /**
    * A timestamp that tells you when the configuration was created
    */
   createdAt: number;
+  /**
+   * A timestamp that tells you when the configuration was installed successfully
+   */
+  completedAt?: number | undefined;
   /**
    * The unique identifier of the configuration
    */
@@ -331,14 +334,6 @@ export type GetConfigurationResponseBody1 = {
    */
   ownerId: string;
   /**
-   * When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.
-   */
-  projects?: Array<string> | undefined;
-  /**
-   * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
-   */
-  source?: GetConfigurationResponseBodySource | undefined;
-  /**
    * The slug of the integration the configuration is created for.
    */
   slug: string;
@@ -346,7 +341,6 @@ export type GetConfigurationResponseBody1 = {
    * When the configuration was created for a team, this will show the ID of the team.
    */
   teamId?: string | null | undefined;
-  type: GetConfigurationResponseBodyType;
   /**
    * A timestamp that tells you when the configuration was updated.
    */
@@ -363,27 +357,33 @@ export type GetConfigurationResponseBody1 = {
    * A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.
    */
   disabledAt?: number | undefined;
-  /**
-   * A timestamp that tells you when the configuration was deleted.
-   */
-  deletedAt?: number | null | undefined;
-  /**
-   * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
-   */
-  deleteRequestedAt?: number | null | undefined;
   disabledReason?: GetConfigurationResponseBodyDisabledReason | undefined;
+  /**
+   * Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.
+   */
+  source?: GetConfigurationResponseBodySource | undefined;
+  canConfigureOpenTelemetry?: boolean | undefined;
   /**
    * Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'
    */
   installationType?: GetConfigurationResponseBodyInstallationType | undefined;
+  /**
+   * A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.
+   */
+  deleteRequestedAt?: number | null | undefined;
+  type: GetConfigurationResponseBodyType;
+  /**
+   * A timestamp that tells you when the configuration was deleted.
+   */
+  deletedAt?: number | null | undefined;
 };
 
 /**
  * The configuration with the provided id
  */
 export type GetConfigurationResponseBody =
-  | GetConfigurationResponseBody2
-  | GetConfigurationResponseBody1;
+  | GetConfigurationResponseBody1
+  | GetConfigurationResponseBody2;
 
 /** @internal */
 export const GetConfigurationRequest$inboundSchema: z.ZodType<
@@ -442,6 +442,219 @@ export function getConfigurationRequestFromJSON(
     jsonString,
     (x) => GetConfigurationRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetConfigurationRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsSource$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> = z
+    .nativeEnum(GetConfigurationResponseBodyIntegrationsSource);
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsSource$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> =
+    GetConfigurationResponseBodyIntegrationsSource$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurationResponseBodyIntegrationsSource$ {
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsSource$inboundSchema` instead. */
+  export const inboundSchema =
+    GetConfigurationResponseBodyIntegrationsSource$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsSource$outboundSchema` instead. */
+  export const outboundSchema =
+    GetConfigurationResponseBodyIntegrationsSource$outboundSchema;
+}
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsType$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> = z
+    .nativeEnum(GetConfigurationResponseBodyIntegrationsType);
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsType$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> =
+    GetConfigurationResponseBodyIntegrationsType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurationResponseBodyIntegrationsType$ {
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetConfigurationResponseBodyIntegrationsType$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetConfigurationResponseBodyIntegrationsType$outboundSchema;
+}
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationResponseBodyIntegrationsDisabledReason
+  > = z.nativeEnum(GetConfigurationResponseBodyIntegrationsDisabledReason);
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationResponseBodyIntegrationsDisabledReason
+  > = GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurationResponseBodyIntegrationsDisabledReason$ {
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema` instead. */
+  export const inboundSchema =
+    GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema` instead. */
+  export const outboundSchema =
+    GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema;
+}
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationResponseBodyIntegrationsInstallationType
+  > = z.nativeEnum(GetConfigurationResponseBodyIntegrationsInstallationType);
+
+/** @internal */
+export const GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetConfigurationResponseBodyIntegrationsInstallationType
+  > = GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurationResponseBodyIntegrationsInstallationType$ {
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema;
+}
+
+/** @internal */
+export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
+  GetConfigurationResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  completedAt: z.number().optional(),
+  createdAt: z.number(),
+  id: z.string(),
+  integrationId: z.string(),
+  ownerId: z.string(),
+  projects: z.array(z.string()).optional(),
+  source: GetConfigurationResponseBodyIntegrationsSource$inboundSchema
+    .optional(),
+  slug: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  type: GetConfigurationResponseBodyIntegrationsType$inboundSchema,
+  updatedAt: z.number(),
+  userId: z.string(),
+  scopes: z.array(z.string()),
+  disabledAt: z.number().optional(),
+  deletedAt: z.nullable(z.number()).optional(),
+  deleteRequestedAt: z.nullable(z.number()).optional(),
+  disabledReason:
+    GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema
+      .optional(),
+  installationType:
+    GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema
+      .optional(),
+});
+
+/** @internal */
+export type GetConfigurationResponseBody2$Outbound = {
+  completedAt?: number | undefined;
+  createdAt: number;
+  id: string;
+  integrationId: string;
+  ownerId: string;
+  projects?: Array<string> | undefined;
+  source?: string | undefined;
+  slug: string;
+  teamId?: string | null | undefined;
+  type: string;
+  updatedAt: number;
+  userId: string;
+  scopes: Array<string>;
+  disabledAt?: number | undefined;
+  deletedAt?: number | null | undefined;
+  deleteRequestedAt?: number | null | undefined;
+  disabledReason?: string | undefined;
+  installationType?: string | undefined;
+};
+
+/** @internal */
+export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
+  GetConfigurationResponseBody2$Outbound,
+  z.ZodTypeDef,
+  GetConfigurationResponseBody2
+> = z.object({
+  completedAt: z.number().optional(),
+  createdAt: z.number(),
+  id: z.string(),
+  integrationId: z.string(),
+  ownerId: z.string(),
+  projects: z.array(z.string()).optional(),
+  source: GetConfigurationResponseBodyIntegrationsSource$outboundSchema
+    .optional(),
+  slug: z.string(),
+  teamId: z.nullable(z.string()).optional(),
+  type: GetConfigurationResponseBodyIntegrationsType$outboundSchema,
+  updatedAt: z.number(),
+  userId: z.string(),
+  scopes: z.array(z.string()),
+  disabledAt: z.number().optional(),
+  deletedAt: z.nullable(z.number()).optional(),
+  deleteRequestedAt: z.nullable(z.number()).optional(),
+  disabledReason:
+    GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema
+      .optional(),
+  installationType:
+    GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema
+      .optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurationResponseBody2$ {
+  /** @deprecated use `GetConfigurationResponseBody2$inboundSchema` instead. */
+  export const inboundSchema = GetConfigurationResponseBody2$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBody2$outboundSchema` instead. */
+  export const outboundSchema = GetConfigurationResponseBody2$outboundSchema;
+  /** @deprecated use `GetConfigurationResponseBody2$Outbound` instead. */
+  export type Outbound = GetConfigurationResponseBody2$Outbound;
+}
+
+export function getConfigurationResponseBody2ToJSON(
+  getConfigurationResponseBody2: GetConfigurationResponseBody2,
+): string {
+  return JSON.stringify(
+    GetConfigurationResponseBody2$outboundSchema.parse(
+      getConfigurationResponseBody2,
+    ),
+  );
+}
+
+export function getConfigurationResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetConfigurationResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetConfigurationResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetConfigurationResponseBody2' from JSON`,
   );
 }
 
@@ -1050,234 +1263,26 @@ export function transferRequestFromJSON(
 }
 
 /** @internal */
-export const GetConfigurationResponseBodyIntegrationsSource$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> = z
-    .nativeEnum(GetConfigurationResponseBodyIntegrationsSource);
+export const GetConfigurationResponseBodyDisabledReason$inboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyDisabledReason> = z
+    .nativeEnum(GetConfigurationResponseBodyDisabledReason);
 
 /** @internal */
-export const GetConfigurationResponseBodyIntegrationsSource$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> =
-    GetConfigurationResponseBodyIntegrationsSource$inboundSchema;
+export const GetConfigurationResponseBodyDisabledReason$outboundSchema:
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyDisabledReason> =
+    GetConfigurationResponseBodyDisabledReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetConfigurationResponseBodyIntegrationsSource$ {
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsSource$inboundSchema` instead. */
+export namespace GetConfigurationResponseBodyDisabledReason$ {
+  /** @deprecated use `GetConfigurationResponseBodyDisabledReason$inboundSchema` instead. */
   export const inboundSchema =
-    GetConfigurationResponseBodyIntegrationsSource$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsSource$outboundSchema` instead. */
+    GetConfigurationResponseBodyDisabledReason$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBodyDisabledReason$outboundSchema` instead. */
   export const outboundSchema =
-    GetConfigurationResponseBodyIntegrationsSource$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> = z
-    .nativeEnum(GetConfigurationResponseBodyIntegrationsType);
-
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsType$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> =
-    GetConfigurationResponseBodyIntegrationsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyIntegrationsType$ {
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyIntegrationsType$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyIntegrationsType$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetConfigurationResponseBodyIntegrationsDisabledReason
-  > = z.nativeEnum(GetConfigurationResponseBodyIntegrationsDisabledReason);
-
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetConfigurationResponseBodyIntegrationsDisabledReason
-  > = GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyIntegrationsDisabledReason$ {
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetConfigurationResponseBodyIntegrationsInstallationType
-  > = z.nativeEnum(GetConfigurationResponseBodyIntegrationsInstallationType);
-
-/** @internal */
-export const GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetConfigurationResponseBodyIntegrationsInstallationType
-  > = GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyIntegrationsInstallationType$ {
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
-  GetConfigurationResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectSelection: ProjectSelection$inboundSchema,
-  notification: z.lazy(() => ResponseBodyNotification$inboundSchema),
-  transferRequest: z.union([
-    z.lazy(() => TransferRequest1$inboundSchema),
-    z.lazy(() => TransferRequest2$inboundSchema),
-  ]),
-  projects: z.array(z.string()).optional(),
-  completedAt: z.number().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  integrationId: z.string(),
-  ownerId: z.string(),
-  source: GetConfigurationResponseBodyIntegrationsSource$inboundSchema
-    .optional(),
-  slug: z.string(),
-  teamId: z.nullable(z.string()).optional(),
-  type: GetConfigurationResponseBodyIntegrationsType$inboundSchema,
-  updatedAt: z.number(),
-  userId: z.string(),
-  scopes: z.array(z.string()),
-  disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason:
-    GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema
-      .optional(),
-  installationType:
-    GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema
-      .optional(),
-  canConfigureOpenTelemetry: z.boolean().optional(),
-});
-
-/** @internal */
-export type GetConfigurationResponseBody2$Outbound = {
-  projectSelection: string;
-  notification: ResponseBodyNotification$Outbound;
-  transferRequest: TransferRequest1$Outbound | TransferRequest2$Outbound;
-  projects?: Array<string> | undefined;
-  completedAt?: number | undefined;
-  createdAt: number;
-  id: string;
-  integrationId: string;
-  ownerId: string;
-  source?: string | undefined;
-  slug: string;
-  teamId?: string | null | undefined;
-  type: string;
-  updatedAt: number;
-  userId: string;
-  scopes: Array<string>;
-  disabledAt?: number | undefined;
-  deletedAt?: number | null | undefined;
-  deleteRequestedAt?: number | null | undefined;
-  disabledReason?: string | undefined;
-  installationType?: string | undefined;
-  canConfigureOpenTelemetry?: boolean | undefined;
-};
-
-/** @internal */
-export const GetConfigurationResponseBody2$outboundSchema: z.ZodType<
-  GetConfigurationResponseBody2$Outbound,
-  z.ZodTypeDef,
-  GetConfigurationResponseBody2
-> = z.object({
-  projectSelection: ProjectSelection$outboundSchema,
-  notification: z.lazy(() => ResponseBodyNotification$outboundSchema),
-  transferRequest: z.union([
-    z.lazy(() => TransferRequest1$outboundSchema),
-    z.lazy(() => TransferRequest2$outboundSchema),
-  ]),
-  projects: z.array(z.string()).optional(),
-  completedAt: z.number().optional(),
-  createdAt: z.number(),
-  id: z.string(),
-  integrationId: z.string(),
-  ownerId: z.string(),
-  source: GetConfigurationResponseBodyIntegrationsSource$outboundSchema
-    .optional(),
-  slug: z.string(),
-  teamId: z.nullable(z.string()).optional(),
-  type: GetConfigurationResponseBodyIntegrationsType$outboundSchema,
-  updatedAt: z.number(),
-  userId: z.string(),
-  scopes: z.array(z.string()),
-  disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
-  disabledReason:
-    GetConfigurationResponseBodyIntegrationsDisabledReason$outboundSchema
-      .optional(),
-  installationType:
-    GetConfigurationResponseBodyIntegrationsInstallationType$outboundSchema
-      .optional(),
-  canConfigureOpenTelemetry: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBody2$ {
-  /** @deprecated use `GetConfigurationResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationResponseBody2$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationResponseBody2$outboundSchema;
-  /** @deprecated use `GetConfigurationResponseBody2$Outbound` instead. */
-  export type Outbound = GetConfigurationResponseBody2$Outbound;
-}
-
-export function getConfigurationResponseBody2ToJSON(
-  getConfigurationResponseBody2: GetConfigurationResponseBody2,
-): string {
-  return JSON.stringify(
-    GetConfigurationResponseBody2$outboundSchema.parse(
-      getConfigurationResponseBody2,
-    ),
-  );
-}
-
-export function getConfigurationResponseBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetConfigurationResponseBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetConfigurationResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConfigurationResponseBody2' from JSON`,
-  );
+    GetConfigurationResponseBodyDisabledReason$outboundSchema;
 }
 
 /** @internal */
@@ -1300,50 +1305,6 @@ export namespace GetConfigurationResponseBodySource$ {
   /** @deprecated use `GetConfigurationResponseBodySource$outboundSchema` instead. */
   export const outboundSchema =
     GetConfigurationResponseBodySource$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationResponseBodyType
-> = z.nativeEnum(GetConfigurationResponseBodyType);
-
-/** @internal */
-export const GetConfigurationResponseBodyType$outboundSchema: z.ZodNativeEnum<
-  typeof GetConfigurationResponseBodyType
-> = GetConfigurationResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyType$ {
-  /** @deprecated use `GetConfigurationResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema = GetConfigurationResponseBodyType$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema = GetConfigurationResponseBodyType$outboundSchema;
-}
-
-/** @internal */
-export const GetConfigurationResponseBodyDisabledReason$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyDisabledReason> = z
-    .nativeEnum(GetConfigurationResponseBodyDisabledReason);
-
-/** @internal */
-export const GetConfigurationResponseBodyDisabledReason$outboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyDisabledReason> =
-    GetConfigurationResponseBodyDisabledReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConfigurationResponseBodyDisabledReason$ {
-  /** @deprecated use `GetConfigurationResponseBodyDisabledReason$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConfigurationResponseBodyDisabledReason$inboundSchema;
-  /** @deprecated use `GetConfigurationResponseBodyDisabledReason$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConfigurationResponseBodyDisabledReason$outboundSchema;
 }
 
 /** @internal */
@@ -1370,53 +1331,85 @@ export namespace GetConfigurationResponseBodyInstallationType$ {
 }
 
 /** @internal */
+export const GetConfigurationResponseBodyType$inboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationResponseBodyType
+> = z.nativeEnum(GetConfigurationResponseBodyType);
+
+/** @internal */
+export const GetConfigurationResponseBodyType$outboundSchema: z.ZodNativeEnum<
+  typeof GetConfigurationResponseBodyType
+> = GetConfigurationResponseBodyType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetConfigurationResponseBodyType$ {
+  /** @deprecated use `GetConfigurationResponseBodyType$inboundSchema` instead. */
+  export const inboundSchema = GetConfigurationResponseBodyType$inboundSchema;
+  /** @deprecated use `GetConfigurationResponseBodyType$outboundSchema` instead. */
+  export const outboundSchema = GetConfigurationResponseBodyType$outboundSchema;
+}
+
+/** @internal */
 export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   GetConfigurationResponseBody1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  completedAt: z.number().optional(),
+  projectSelection: ProjectSelection$inboundSchema,
+  notification: z.lazy(() => ResponseBodyNotification$inboundSchema),
+  transferRequest: z.union([
+    z.lazy(() => TransferRequest1$inboundSchema),
+    z.lazy(() => TransferRequest2$inboundSchema),
+  ]),
+  projects: z.array(z.string()).optional(),
   createdAt: z.number(),
+  completedAt: z.number().optional(),
   id: z.string(),
   integrationId: z.string(),
   ownerId: z.string(),
-  projects: z.array(z.string()).optional(),
-  source: GetConfigurationResponseBodySource$inboundSchema.optional(),
   slug: z.string(),
   teamId: z.nullable(z.string()).optional(),
-  type: GetConfigurationResponseBodyType$inboundSchema,
   updatedAt: z.number(),
   userId: z.string(),
   scopes: z.array(z.string()),
   disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
   disabledReason: GetConfigurationResponseBodyDisabledReason$inboundSchema
     .optional(),
+  source: GetConfigurationResponseBodySource$inboundSchema.optional(),
+  canConfigureOpenTelemetry: z.boolean().optional(),
   installationType: GetConfigurationResponseBodyInstallationType$inboundSchema
     .optional(),
+  deleteRequestedAt: z.nullable(z.number()).optional(),
+  type: GetConfigurationResponseBodyType$inboundSchema,
+  deletedAt: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type GetConfigurationResponseBody1$Outbound = {
-  completedAt?: number | undefined;
+  projectSelection: string;
+  notification: ResponseBodyNotification$Outbound;
+  transferRequest: TransferRequest1$Outbound | TransferRequest2$Outbound;
+  projects?: Array<string> | undefined;
   createdAt: number;
+  completedAt?: number | undefined;
   id: string;
   integrationId: string;
   ownerId: string;
-  projects?: Array<string> | undefined;
-  source?: string | undefined;
   slug: string;
   teamId?: string | null | undefined;
-  type: string;
   updatedAt: number;
   userId: string;
   scopes: Array<string>;
   disabledAt?: number | undefined;
-  deletedAt?: number | null | undefined;
-  deleteRequestedAt?: number | null | undefined;
   disabledReason?: string | undefined;
+  source?: string | undefined;
+  canConfigureOpenTelemetry?: boolean | undefined;
   installationType?: string | undefined;
+  deleteRequestedAt?: number | null | undefined;
+  type: string;
+  deletedAt?: number | null | undefined;
 };
 
 /** @internal */
@@ -1425,26 +1418,33 @@ export const GetConfigurationResponseBody1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationResponseBody1
 > = z.object({
-  completedAt: z.number().optional(),
+  projectSelection: ProjectSelection$outboundSchema,
+  notification: z.lazy(() => ResponseBodyNotification$outboundSchema),
+  transferRequest: z.union([
+    z.lazy(() => TransferRequest1$outboundSchema),
+    z.lazy(() => TransferRequest2$outboundSchema),
+  ]),
+  projects: z.array(z.string()).optional(),
   createdAt: z.number(),
+  completedAt: z.number().optional(),
   id: z.string(),
   integrationId: z.string(),
   ownerId: z.string(),
-  projects: z.array(z.string()).optional(),
-  source: GetConfigurationResponseBodySource$outboundSchema.optional(),
   slug: z.string(),
   teamId: z.nullable(z.string()).optional(),
-  type: GetConfigurationResponseBodyType$outboundSchema,
   updatedAt: z.number(),
   userId: z.string(),
   scopes: z.array(z.string()),
   disabledAt: z.number().optional(),
-  deletedAt: z.nullable(z.number()).optional(),
-  deleteRequestedAt: z.nullable(z.number()).optional(),
   disabledReason: GetConfigurationResponseBodyDisabledReason$outboundSchema
     .optional(),
+  source: GetConfigurationResponseBodySource$outboundSchema.optional(),
+  canConfigureOpenTelemetry: z.boolean().optional(),
   installationType: GetConfigurationResponseBodyInstallationType$outboundSchema
     .optional(),
+  deleteRequestedAt: z.nullable(z.number()).optional(),
+  type: GetConfigurationResponseBodyType$outboundSchema,
+  deletedAt: z.nullable(z.number()).optional(),
 });
 
 /**
@@ -1486,14 +1486,14 @@ export const GetConfigurationResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
   z.lazy(() => GetConfigurationResponseBody1$inboundSchema),
+  z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
 ]);
 
 /** @internal */
 export type GetConfigurationResponseBody$Outbound =
-  | GetConfigurationResponseBody2$Outbound
-  | GetConfigurationResponseBody1$Outbound;
+  | GetConfigurationResponseBody1$Outbound
+  | GetConfigurationResponseBody2$Outbound;
 
 /** @internal */
 export const GetConfigurationResponseBody$outboundSchema: z.ZodType<
@@ -1501,8 +1501,8 @@ export const GetConfigurationResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetConfigurationResponseBody
 > = z.union([
-  z.lazy(() => GetConfigurationResponseBody2$outboundSchema),
   z.lazy(() => GetConfigurationResponseBody1$outboundSchema),
+  z.lazy(() => GetConfigurationResponseBody2$outboundSchema),
 ]);
 
 /**

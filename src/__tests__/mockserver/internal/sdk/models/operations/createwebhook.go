@@ -82,6 +82,7 @@ const (
 	CreateWebhookEventRequestMarketplaceInvoiceRefunded                         CreateWebhookEventRequest = "marketplace.invoice.refunded"
 	CreateWebhookEventRequestObservabilityAnomaly                               CreateWebhookEventRequest = "observability.anomaly"
 	CreateWebhookEventRequestObservabilityAnomalyError                          CreateWebhookEventRequest = "observability.anomaly-error"
+	CreateWebhookEventRequestObservabilityAnomalyBotId                          CreateWebhookEventRequest = "observability.anomaly-botId"
 	CreateWebhookEventRequestTestWebhook                                        CreateWebhookEventRequest = "test-webhook"
 )
 
@@ -236,6 +237,8 @@ func (e *CreateWebhookEventRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "observability.anomaly-error":
 		fallthrough
+	case "observability.anomaly-botId":
+		fallthrough
 	case "test-webhook":
 		*e = CreateWebhookEventRequest(v)
 		return nil
@@ -375,6 +378,7 @@ const (
 	CreateWebhookEventResponseMarketplaceInvoiceRefunded                         CreateWebhookEventResponse = "marketplace.invoice.refunded"
 	CreateWebhookEventResponseObservabilityAnomaly                               CreateWebhookEventResponse = "observability.anomaly"
 	CreateWebhookEventResponseObservabilityAnomalyError                          CreateWebhookEventResponse = "observability.anomaly-error"
+	CreateWebhookEventResponseObservabilityAnomalyBotId                          CreateWebhookEventResponse = "observability.anomaly-botId"
 	CreateWebhookEventResponseTestWebhook                                        CreateWebhookEventResponse = "test-webhook"
 )
 
@@ -528,6 +532,8 @@ func (e *CreateWebhookEventResponse) UnmarshalJSON(data []byte) error {
 	case "observability.anomaly":
 		fallthrough
 	case "observability.anomaly-error":
+		fallthrough
+	case "observability.anomaly-botId":
 		fallthrough
 	case "test-webhook":
 		*e = CreateWebhookEventResponse(v)

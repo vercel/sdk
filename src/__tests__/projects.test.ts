@@ -943,3 +943,27 @@ test("Projects Unpause Project", async () => {
     slug: "my-team-url-slug",
   });
 });
+
+test("Projects Batch Remove Project Env", async () => {
+  const testHttpClient = createTestHTTPClient("batchRemoveProjectEnv");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.batchRemoveProjectEnv({
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    deleted: 2417.01,
+    ids: [
+      "<value 1>",
+      "<value 2>",
+    ],
+  });
+});

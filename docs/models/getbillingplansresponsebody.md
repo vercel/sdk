@@ -9,11 +9,11 @@ let value: GetBillingPlansResponseBody = {
   plans: [
     {
       type: "subscription",
+      description: "amend ultimate riser aboard import",
       id: "<id>",
       name: "<value>",
-      scope: "installation",
-      description: "delightfully buzzing opposite carefully",
-      paymentMethodRequired: true,
+      scope: "resource",
+      paymentMethodRequired: false,
     },
   ],
 };

@@ -22683,7 +22683,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Invalidate the edge cache by one or more tags",
+        "summary": "Invalidate by tag",
         "tags": [
           "edge-cache"
         ],
@@ -22803,7 +22803,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Dangerously delete the edge cache by one or more tags",
+        "summary": "Dangerously delete by tag",
         "tags": [
           "edge-cache"
         ],
@@ -23634,6 +23634,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           }
         },
         "parameters": [
@@ -23733,6 +23736,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           }
         },
         "parameters": [
@@ -24210,6 +24216,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           }
         },
         "parameters": [
@@ -24317,6 +24326,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           }
         },
         "parameters": [
@@ -24584,6 +24596,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           }
         },
         "parameters": [
@@ -24805,6 +24820,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           }
         },
         "parameters": [
@@ -25529,6 +25547,9 @@
                               "subscription"
                             ]
                           },
+                          "description": {
+                            "type": "string"
+                          },
                           "id": {
                             "type": "string"
                           },
@@ -25541,9 +25562,6 @@
                               "installation",
                               "resource"
                             ]
-                          },
-                          "description": {
-                            "type": "string"
                           },
                           "paymentMethodRequired": {
                             "type": "boolean"
@@ -25627,10 +25645,10 @@
                         },
                         "required": [
                           "type",
+                          "description",
                           "id",
                           "name",
                           "scope",
-                          "description",
                           "paymentMethodRequired"
                         ],
                         "type": "object"
@@ -28722,144 +28740,6 @@
                   "oneOf": [
                     {
                       "properties": {
-                        "completedAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was installed successfully",
-                          "example": 1558531915505
-                        },
-                        "createdAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was created",
-                          "example": 1558531915505
-                        },
-                        "id": {
-                          "type": "string",
-                          "description": "The unique identifier of the configuration",
-                          "example": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F"
-                        },
-                        "integrationId": {
-                          "type": "string",
-                          "description": "The unique identifier of the app the configuration was created for",
-                          "example": "oac_xzpVzcUOgcB1nrVlirtKhbWV"
-                        },
-                        "ownerId": {
-                          "type": "string",
-                          "description": "The user or team ID that owns the configuration",
-                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
-                        },
-                        "projects": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array",
-                          "description": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.",
-                          "example": [
-                            "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"
-                          ]
-                        },
-                        "source": {
-                          "type": "string",
-                          "enum": [
-                            "marketplace",
-                            "deploy-button",
-                            "external",
-                            "v0",
-                            "resource-claims"
-                          ],
-                          "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
-                          "example": "marketplace"
-                        },
-                        "slug": {
-                          "type": "string",
-                          "description": "The slug of the integration the configuration is created for.",
-                          "example": "slack"
-                        },
-                        "teamId": {
-                          "nullable": true,
-                          "type": "string",
-                          "description": "When the configuration was created for a team, this will show the ID of the team.",
-                          "example": "team_nLlpyC6RE1qxydlFKbrxDlud"
-                        },
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "integration-configuration"
-                          ]
-                        },
-                        "updatedAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was updated.",
-                          "example": 1558531915505
-                        },
-                        "userId": {
-                          "type": "string",
-                          "description": "The ID of the user that created the configuration.",
-                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
-                        },
-                        "scopes": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array",
-                          "description": "The resources that are allowed to be accessed by the configuration.",
-                          "example": [
-                            "read:project",
-                            "read-write:log-drain"
-                          ]
-                        },
-                        "disabledAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.",
-                          "example": 1558531915505
-                        },
-                        "deletedAt": {
-                          "nullable": true,
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was deleted.",
-                          "example": 1558531915505
-                        },
-                        "deleteRequestedAt": {
-                          "nullable": true,
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
-                          "example": 1558531915505
-                        },
-                        "disabledReason": {
-                          "type": "string",
-                          "enum": [
-                            "disabled-by-owner",
-                            "feature-not-available",
-                            "disabled-by-admin",
-                            "original-owner-left-the-team",
-                            "account-plan-downgrade",
-                            "original-owner-role-downgraded"
-                          ]
-                        },
-                        "installationType": {
-                          "type": "string",
-                          "enum": [
-                            "marketplace",
-                            "external"
-                          ],
-                          "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
-                        }
-                      },
-                      "required": [
-                        "createdAt",
-                        "id",
-                        "integrationId",
-                        "ownerId",
-                        "slug",
-                        "type",
-                        "updatedAt",
-                        "userId",
-                        "scopes"
-                      ],
-                      "type": "object",
-                      "description": "The configuration with the provided id"
-                    },
-                    {
-                      "properties": {
                         "projectSelection": {
                           "type": "string",
                           "enum": [
@@ -29073,6 +28953,139 @@
                             "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"
                           ]
                         },
+                        "createdAt": {
+                          "type": "number",
+                          "description": "A timestamp that tells you when the configuration was created",
+                          "example": 1558531915505
+                        },
+                        "completedAt": {
+                          "type": "number",
+                          "description": "A timestamp that tells you when the configuration was installed successfully",
+                          "example": 1558531915505
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "The unique identifier of the configuration",
+                          "example": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F"
+                        },
+                        "integrationId": {
+                          "type": "string",
+                          "description": "The unique identifier of the app the configuration was created for",
+                          "example": "oac_xzpVzcUOgcB1nrVlirtKhbWV"
+                        },
+                        "ownerId": {
+                          "type": "string",
+                          "description": "The user or team ID that owns the configuration",
+                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
+                        },
+                        "slug": {
+                          "type": "string",
+                          "description": "The slug of the integration the configuration is created for.",
+                          "example": "slack"
+                        },
+                        "teamId": {
+                          "nullable": true,
+                          "type": "string",
+                          "description": "When the configuration was created for a team, this will show the ID of the team.",
+                          "example": "team_nLlpyC6RE1qxydlFKbrxDlud"
+                        },
+                        "updatedAt": {
+                          "type": "number",
+                          "description": "A timestamp that tells you when the configuration was updated.",
+                          "example": 1558531915505
+                        },
+                        "userId": {
+                          "type": "string",
+                          "description": "The ID of the user that created the configuration.",
+                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
+                        },
+                        "scopes": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "description": "The resources that are allowed to be accessed by the configuration.",
+                          "example": [
+                            "read:project",
+                            "read-write:log-drain"
+                          ]
+                        },
+                        "disabledAt": {
+                          "type": "number",
+                          "description": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.",
+                          "example": 1558531915505
+                        },
+                        "disabledReason": {
+                          "type": "string",
+                          "enum": [
+                            "disabled-by-owner",
+                            "feature-not-available",
+                            "disabled-by-admin",
+                            "original-owner-left-the-team",
+                            "account-plan-downgrade",
+                            "original-owner-role-downgraded"
+                          ]
+                        },
+                        "source": {
+                          "type": "string",
+                          "enum": [
+                            "marketplace",
+                            "deploy-button",
+                            "external",
+                            "v0",
+                            "resource-claims"
+                          ],
+                          "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
+                          "example": "marketplace"
+                        },
+                        "canConfigureOpenTelemetry": {
+                          "type": "boolean"
+                        },
+                        "installationType": {
+                          "type": "string",
+                          "enum": [
+                            "marketplace",
+                            "external"
+                          ],
+                          "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+                        },
+                        "deleteRequestedAt": {
+                          "nullable": true,
+                          "type": "number",
+                          "description": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
+                          "example": 1558531915505
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "integration-configuration"
+                          ]
+                        },
+                        "deletedAt": {
+                          "nullable": true,
+                          "type": "number",
+                          "description": "A timestamp that tells you when the configuration was deleted.",
+                          "example": 1558531915505
+                        }
+                      },
+                      "required": [
+                        "projectSelection",
+                        "notification",
+                        "transferRequest",
+                        "createdAt",
+                        "id",
+                        "integrationId",
+                        "ownerId",
+                        "slug",
+                        "updatedAt",
+                        "userId",
+                        "scopes",
+                        "type"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
                         "completedAt": {
                           "type": "number",
                           "description": "A timestamp that tells you when the configuration was installed successfully",
@@ -29097,6 +29110,16 @@
                           "type": "string",
                           "description": "The user or team ID that owns the configuration",
                           "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
+                        },
+                        "projects": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array",
+                          "description": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.",
+                          "example": [
+                            "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"
+                          ]
                         },
                         "source": {
                           "type": "string",
@@ -29183,15 +29206,9 @@
                             "external"
                           ],
                           "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
-                        },
-                        "canConfigureOpenTelemetry": {
-                          "type": "boolean"
                         }
                       },
                       "required": [
-                        "projectSelection",
-                        "notification",
-                        "transferRequest",
                         "createdAt",
                         "id",
                         "integrationId",
@@ -29202,7 +29219,8 @@
                         "userId",
                         "scopes"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The configuration with the provided id"
                     }
                   ]
                 }
@@ -29323,6 +29341,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           }
         },
         "parameters": [
@@ -29677,34 +29698,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "default": {
@@ -30387,34 +30408,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "default": {
@@ -30572,34 +30593,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541612": {
+                                                "__@BRAND@543472": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541612"
+                                                "__@BRAND@543472"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541612": {
+                                                "__@BRAND@543472": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541612"
+                                                "__@BRAND@543472"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541612": {
+                                                "__@BRAND@543472": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541612"
+                                                "__@BRAND@543472"
                                               ]
                                             },
                                             "default": {
@@ -30910,12 +30931,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@541612": {
+                                                  "__@BRAND@543472": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@541612"
+                                                  "__@BRAND@543472"
                                                 ]
                                               },
                                               {
@@ -30923,12 +30944,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@541612": {
+                                                      "__@BRAND@543472": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@541612"
+                                                      "__@BRAND@543472"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -30997,34 +31018,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "default": {
@@ -31182,34 +31203,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541612": {
+                                                "__@BRAND@543472": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541612"
+                                                "__@BRAND@543472"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541612": {
+                                                "__@BRAND@543472": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541612"
+                                                "__@BRAND@543472"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@541612": {
+                                                "__@BRAND@543472": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@541612"
+                                                "__@BRAND@543472"
                                               ]
                                             },
                                             "default": {
@@ -31298,12 +31319,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@541612": {
+                                                  "__@BRAND@543472": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@541612"
+                                                  "__@BRAND@543472"
                                                 ]
                                               },
                                               {
@@ -31311,12 +31332,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@541612": {
+                                                      "__@BRAND@543472": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@541612"
+                                                      "__@BRAND@543472"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31502,12 +31523,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@541612": {
+                                              "__@BRAND@543472": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@541612"
+                                              "__@BRAND@543472"
                                             ]
                                           },
                                           "type": "array"
@@ -31516,12 +31537,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@541612": {
+                                              "__@BRAND@543472": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@541612"
+                                              "__@BRAND@543472"
                                             ]
                                           },
                                           "type": "array"
@@ -31555,34 +31576,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "default": {
@@ -31716,12 +31737,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@541612": {
+                                            "__@BRAND@543472": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@541612"
+                                            "__@BRAND@543472"
                                           ]
                                         },
                                         "disabled": {
@@ -62206,6 +62227,139 @@
         "x-speakeasy-test": false
       }
     },
+    "/v1/projects/{idOrName}/env": {
+      "delete": {
+        "description": "Delete multiple environment variables for a given project in a single batch operation.",
+        "operationId": "batchRemoveProjectEnv",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Batch remove environment variables",
+        "tags": [
+          "projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "deleted": {
+                      "type": "number"
+                    },
+                    "ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "deleted",
+                    "ids"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string",
+              "example": "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "ids"
+                ],
+                "properties": {
+                  "ids": {
+                    "description": "Array of environment variable IDs to delete",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "maxItems": 1000
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/projects/{idOrName}/rolling-release/billing": {
       "get": {
         "description": "Get the Rolling Releases billing status for a project. The team level billing status is used to determine if the project can be configured for rolling releases.",
@@ -69504,34 +69658,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "description": {
@@ -70214,34 +70368,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "description": {
@@ -70390,34 +70544,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8466": {
+                                                  "__@BRAND@8486": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8466"
+                                                  "__@BRAND@8486"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8466": {
+                                                  "__@BRAND@8486": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8466"
+                                                  "__@BRAND@8486"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8466": {
+                                                  "__@BRAND@8486": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8466"
+                                                  "__@BRAND@8486"
                                                 ]
                                               },
                                               "default": {
@@ -70734,12 +70888,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@8466": {
+                                                    "__@BRAND@8486": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@8466"
+                                                    "__@BRAND@8486"
                                                   ]
                                                 },
                                                 {
@@ -70747,12 +70901,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@8466": {
+                                                        "__@BRAND@8486": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@8466"
+                                                        "__@BRAND@8486"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -70824,34 +70978,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "description": {
@@ -71001,34 +71155,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "description": {
@@ -71159,12 +71313,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8466": {
+                                              "__@BRAND@8486": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8466"
+                                              "__@BRAND@8486"
                                             ]
                                           },
                                           "disabled": {
@@ -71413,12 +71567,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@8466": {
+                                "__@BRAND@8486": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@8466"
+                                "__@BRAND@8486"
                               ]
                             },
                             "disabled": {
@@ -71709,6 +71863,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": ""
           },
           "429": {
             "description": "",
@@ -75062,6 +75219,7 @@
                           "marketplace.invoice.refunded",
                           "observability.anomaly",
                           "observability.anomaly-error",
+                          "observability.anomaly-botId",
                           "test-webhook"
                         ],
                         "description": "The webhooks events",
@@ -75331,6 +75489,7 @@
                         "marketplace.invoice.refunded",
                         "observability.anomaly",
                         "observability.anomaly-error",
+                        "observability.anomaly-botId",
                         "test-webhook"
                       ],
                       "x-speakeasy-enums": {
@@ -75601,6 +75760,7 @@
                                 "marketplace.invoice.refunded",
                                 "observability.anomaly",
                                 "observability.anomaly-error",
+                                "observability.anomaly-botId",
                                 "test-webhook"
                               ],
                               "description": "The webhooks events",
@@ -75810,6 +75970,7 @@
                                 "marketplace.invoice.refunded",
                                 "observability.anomaly",
                                 "observability.anomaly-error",
+                                "observability.anomaly-botId",
                                 "test-webhook"
                               ],
                               "description": "The webhooks events",
@@ -76094,6 +76255,7 @@
                           "marketplace.invoice.refunded",
                           "observability.anomaly",
                           "observability.anomaly-error",
+                          "observability.anomaly-botId",
                           "test-webhook"
                         ],
                         "description": "The webhooks events",

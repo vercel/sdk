@@ -9,7 +9,6 @@ import { OneHundredAndFiftyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftyEight = {
   appName: "<value>",
-  appId: "<id>",
 };
 ```
 
@@ -18,4 +17,3 @@ let value: OneHundredAndFiftyEight = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `appName`          | *string*           | :heavy_check_mark: | N/A                |
-| `appId`            | *string*           | :heavy_check_mark: | N/A                |

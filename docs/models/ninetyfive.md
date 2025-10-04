@@ -8,14 +8,16 @@ The payload of the event, if requested.
 import { NinetyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyFive = {
-  instances: 7567.04,
-  url: "https://valuable-curl.info",
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `instances`        | *number*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

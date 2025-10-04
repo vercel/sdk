@@ -135,6 +135,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/installations/{integrationConfigurationId}/events", pathPostV1InstallationsIntegrationConfigurationIDEvents(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items", pathPostV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItems(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/integrations/sso/token", pathPostV1IntegrationsSsoToken(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/v1/projects/{idOrName}/client-cert", pathPostV1ProjectsIDOrNameClientCert(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/projects/{idOrName}/domains/{domain}/move", pathPostV1ProjectsIDOrNameDomainsDomainMove(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/projects/{idOrName}/members", pathPostV1ProjectsIDOrNameMembers(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/v1/projects/{idOrName}/rolling-release/approve-stage", pathPostV1ProjectsIDOrNameRollingReleaseApproveStage(dir, rt)),

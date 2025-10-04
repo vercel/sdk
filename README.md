@@ -476,6 +476,7 @@ run();
 * [removeProjectEnv](docs/sdks/projects/README.md#removeprojectenv) - Remove an environment variable
 * [editProjectEnv](docs/sdks/projects/README.md#editprojectenv) - Edit an environment variable
 * [batchRemoveProjectEnv](docs/sdks/projects/README.md#batchremoveprojectenv) - Batch remove environment variables
+* [uploadProjectClientCert](docs/sdks/projects/README.md#uploadprojectclientcert) - Upload client certificate for egress mTLS
 * [createProjectTransferRequest](docs/sdks/projects/README.md#createprojecttransferrequest) - Create project transfer request
 * [acceptProjectTransferRequest](docs/sdks/projects/README.md#acceptprojecttransferrequest) - Accept project transfer request
 * [updateProjectProtectionBypass](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
@@ -697,6 +698,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`projectsUpdateProjectDataCache`](docs/sdks/projects/README.md#updateprojectdatacache) - Update the data cache feature
 - [`projectsUpdateProjectDomain`](docs/sdks/projects/README.md#updateprojectdomain) - Update a project domain
 - [`projectsUpdateProjectProtectionBypass`](docs/sdks/projects/README.md#updateprojectprotectionbypass) - Update Protection Bypass for Automation
+- [`projectsUploadProjectClientCert`](docs/sdks/projects/README.md#uploadprojectclientcert) - Upload client certificate for egress mTLS
 - [`projectsVerifyProjectDomain`](docs/sdks/projects/README.md#verifyprojectdomain) - Verify project domain
 - [`rollingReleaseApproveRollingReleaseStage`](docs/sdks/rollingrelease/README.md#approverollingreleasestage) - Update the active rolling release to the next stage for a project
 - [`rollingReleaseCompleteRollingRelease`](docs/sdks/rollingrelease/README.md#completerollingrelease) - Complete the rolling release for the project
@@ -923,8 +925,8 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 112 of 180 methods.*
-* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): . Status code `429`. Applicable to 5 of 180 methods.*
+* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 112 of 181 methods.*
+* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): . Status code `429`. Applicable to 5 of 181 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

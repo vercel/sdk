@@ -8,16 +8,17 @@ The payload of the event, if requested.
 import { OneHundredAndSixteen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndSixteen = {
-  previousRole: "<value>",
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `directoryType`                                | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
-| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `previousRole`                                 | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `role`             | *string*           | :heavy_minus_sign: | N/A                |
+| `uid`              | *string*           | :heavy_check_mark: | N/A                |
+| `origin`           | *string*           | :heavy_minus_sign: | N/A                |
+| `teamRoles`        | *string*[]         | :heavy_minus_sign: | N/A                |
+| `teamPermissions`  | *string*[]         | :heavy_minus_sign: | N/A                |
+| `entitlements`     | *string*[]         | :heavy_minus_sign: | N/A                |

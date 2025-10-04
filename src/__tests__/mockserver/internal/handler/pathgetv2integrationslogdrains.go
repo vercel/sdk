@@ -111,11 +111,9 @@ func testGetIntegrationLogDrainsGetIntegrationLogDrains0(w http.ResponseWriter, 
 			},
 			Branch:       types.String("feature/*"),
 			SamplingRate: types.Float64(0.5),
-			Source: operations.CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceIntegration(
-				operations.GetIntegrationLogDrainsSourceIntegration{
-					Kind:                       operations.GetIntegrationLogDrainsKindIntegrationIntegration,
-					IntegrationID:              "<id>",
-					IntegrationConfigurationID: "<id>",
+			Source: operations.CreateGetIntegrationLogDrainsSourceUnionGetIntegrationLogDrainsSourceSelfServed(
+				operations.GetIntegrationLogDrainsSourceSelfServed{
+					Kind: operations.GetIntegrationLogDrainsKindSelfServedSelfServed,
 				},
 			),
 		},

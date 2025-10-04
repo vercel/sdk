@@ -8,20 +8,37 @@ The payload of the event, if requested.
 import { SixtyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyFive = {
-  configurations: [
-    {
-      integrationId: "<id>",
-      configurationId: "<id>",
-      integrationSlug: "<value>",
+  userId: "<id>",
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  newOwner: {
+    billing: {
+      plan: "enterprise",
     },
-  ],
-  ownerId: "<id>",
+    blocked: 4779.03,
+    createdAt: 3295.26,
+    deploymentSecret: "<value>",
+    email: "Leola.Koss@hotmail.com",
+    id: "<id>",
+    platformVersion: null,
+    stagingPrefix: "<value>",
+    sysToken: "<value>",
+    type: "user",
+    username: "Lenora11",
+    updatedAt: 4219.41,
+    version: "northstar",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
+| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |

@@ -6,7 +6,7 @@
 import { UpdateProjectEnv } from "@vercel/sdk/models/updateprojectop.js";
 
 let value: UpdateProjectEnv = {
-  type: "encrypted",
+  type: "secret",
   value: "<value>",
   key: "<key>",
 };

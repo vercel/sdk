@@ -23,6 +23,7 @@
 * [removeProjectEnv](#removeprojectenv) - Remove an environment variable
 * [editProjectEnv](#editprojectenv) - Edit an environment variable
 * [batchRemoveProjectEnv](#batchremoveprojectenv) - Batch remove environment variables
+* [uploadProjectClientCert](#uploadprojectclientcert) - Upload client certificate for egress mTLS
 * [createProjectTransferRequest](#createprojecttransferrequest) - Create project transfer request
 * [acceptProjectTransferRequest](#acceptprojecttransferrequest) - Accept project transfer request
 * [updateProjectProtectionBypass](#updateprojectprotectionbypass) - Update Protection Bypass for Automation
@@ -1596,6 +1597,97 @@ run();
 | models.VercelBadRequestError | 400                          | application/json             |
 | models.VercelForbiddenError  | 401                          | application/json             |
 | models.VercelNotFoundError   | 404                          | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+
+## uploadProjectClientCert
+
+Upload or update a client certificate for mTLS authentication to external origins. The certificate is uploaded to S3 in plaintext, while the private key is encrypted. A hash reference is stored in the project document. The certificate will be available in the deployment runtime for establishing mTLS connections.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="uploadProjectClientCert" method="post" path="/v1/projects/{idOrName}/client-cert" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.projects.uploadProjectClientCert({
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      cert: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+      key: "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----",
+      ca: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+      origin: "https://api.example.com",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { projectsUploadProjectClientCert } from "@vercel/sdk/funcs/projectsUploadProjectClientCert.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await projectsUploadProjectClientCert(vercel, {
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      cert: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+      key: "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----",
+      ca: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+      origin: "https://api.example.com",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("projectsUploadProjectClientCert failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UploadProjectClientCertRequest](../../models/uploadprojectclientcertrequest.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.UploadProjectClientCertResponseBody](../../models/uploadprojectclientcertresponsebody.md)\>**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.VercelBadRequestError | 400                          | application/json             |
+| models.VercelForbiddenError  | 401                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## createProjectTransferRequest

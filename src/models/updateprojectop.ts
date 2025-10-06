@@ -561,10 +561,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
+  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
-  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1322,18 +1322,18 @@ export type UpdateProjectLinkProjectsDeployHooks = {
 
 export type UpdateProjectLink2 = {
   type: UpdateProjectLinkProjectsType;
-  repo?: string | undefined;
-  repoId?: number | undefined;
-  createdAt?: number | undefined;
   updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  repo?: string | undefined;
+  sourceless?: boolean | undefined;
   org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
    */
   repoOwnerId?: number | undefined;
+  repoId?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsDeployHooks>;
   gitCredentialId: string;
-  sourceless?: boolean | undefined;
   productionBranch: string;
 };
 
@@ -1453,7 +1453,6 @@ export type UpdateProjectProjectsBuildMachineType = ClosedEnum<
 >;
 
 export type UpdateProjectProjectsResourceConfig = {
-  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1461,6 +1460,7 @@ export type UpdateProjectProjectsResourceConfig = {
     | UpdateProjectProjectsFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -1545,7 +1545,6 @@ export type UpdateProjectProjectsResponseBuildMachineType = ClosedEnum<
 >;
 
 export type UpdateProjectDefaultResourceConfig = {
-  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1553,13 +1552,14 @@ export type UpdateProjectDefaultResourceConfig = {
     | UpdateProjectProjectsResponseFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsResponseBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
 
 export const UpdateProjectProjectsResponseDeploymentType = {
-  Preview: "preview",
   All: "all",
+  Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
@@ -2011,11 +2011,11 @@ export type UpdateProjectProtectionBypass =
   | UpdateProjectProtectionBypass2;
 
 export const UpdateProjectTrustedIpsProjectsDeploymentType = {
-  Preview: "preview",
-  Production: "production",
   All: "all",
+  Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
+  Production: "production",
 } as const;
 export type UpdateProjectTrustedIpsProjectsDeploymentType = ClosedEnum<
   typeof UpdateProjectTrustedIpsProjectsDeploymentType
@@ -2026,11 +2026,11 @@ export type UpdateProjectTrustedIps2 = {
 };
 
 export const UpdateProjectTrustedIpsDeploymentType = {
-  Preview: "preview",
-  Production: "production",
   All: "all",
+  Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
+  Production: "production",
 } as const;
 export type UpdateProjectTrustedIpsDeploymentType = ClosedEnum<
   typeof UpdateProjectTrustedIpsDeploymentType
@@ -7831,32 +7831,32 @@ export const UpdateProjectLink2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UpdateProjectLinkProjectsType$inboundSchema,
-  repo: z.string().optional(),
-  repoId: z.number().optional(),
-  createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  repo: z.string().optional(),
+  sourceless: z.boolean().optional(),
   org: z.string(),
   repoOwnerId: z.number().optional(),
+  repoId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsDeployHooks$inboundSchema),
   ),
   gitCredentialId: z.string(),
-  sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
 
 /** @internal */
 export type UpdateProjectLink2$Outbound = {
   type: string;
-  repo?: string | undefined;
-  repoId?: number | undefined;
-  createdAt?: number | undefined;
   updatedAt?: number | undefined;
+  createdAt?: number | undefined;
+  repo?: string | undefined;
+  sourceless?: boolean | undefined;
   org: string;
   repoOwnerId?: number | undefined;
+  repoId?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsDeployHooks$Outbound>;
   gitCredentialId: string;
-  sourceless?: boolean | undefined;
   productionBranch: string;
 };
 
@@ -7867,17 +7867,17 @@ export const UpdateProjectLink2$outboundSchema: z.ZodType<
   UpdateProjectLink2
 > = z.object({
   type: UpdateProjectLinkProjectsType$outboundSchema,
-  repo: z.string().optional(),
-  repoId: z.number().optional(),
-  createdAt: z.number().optional(),
   updatedAt: z.number().optional(),
+  createdAt: z.number().optional(),
+  repo: z.string().optional(),
+  sourceless: z.boolean().optional(),
   org: z.string(),
   repoOwnerId: z.number().optional(),
+  repoId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsDeployHooks$outboundSchema),
   ),
   gitCredentialId: z.string(),
-  sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
 
@@ -8591,13 +8591,13 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     UpdateProjectProjectsFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -8605,12 +8605,12 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UpdateProjectProjectsResourceConfig$Outbound = {
-  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -8621,13 +8621,13 @@ export const UpdateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectProjectsResourceConfig
 > = z.object({
-  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     UpdateProjectProjectsFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -8915,7 +8915,6 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
@@ -8923,6 +8922,7 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectProjectsResponseFunctionDefaultMemoryType$inboundSchema
       .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -8930,12 +8930,12 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UpdateProjectDefaultResourceConfig$Outbound = {
-  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
+  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -8946,7 +8946,6 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectDefaultResourceConfig
 > = z.object({
-  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
@@ -8954,6 +8953,7 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectProjectsResponseFunctionDefaultMemoryType$outboundSchema
       .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
+  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),

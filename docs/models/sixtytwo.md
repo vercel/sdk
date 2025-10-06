@@ -9,16 +9,19 @@ import { SixtyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: SixtyTwo = {
   projectId: "<id>",
-  attackModeEnabled: false,
+  rulesetName: "<value>",
+  ruleGroups: {
+    "key": {
+      active: false,
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
-| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
-| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
-| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `rulesetName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `ruleGroups`                                                 | Record<string, [models.RuleGroups](../models/rulegroups.md)> | :heavy_check_mark:                                           | N/A                                                          |

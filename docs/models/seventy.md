@@ -8,28 +8,26 @@ The payload of the event, if requested.
 import { Seventy } from "@vercel/sdk/models/userevent.js";
 
 let value: Seventy = {
-  viaGithub: false,
-  viaGitlab: true,
-  viaBitbucket: false,
-  viaGoogle: true,
-  viaSamlSso: true,
-  viaPasskey: false,
+  integrationId: "<id>",
+  configurationId: "<id>",
+  integrationSlug: "<value>",
+  integrationName: "<value>",
+  ownerId: "<id>",
+  confirmedScopes: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `userAgent`                                    | [models.UserAgent](../models/useragent.md)     | :heavy_minus_sign:                             | N/A                                            |
-| `geolocation`                                  | [models.Geolocation](../models/geolocation.md) | :heavy_minus_sign:                             | N/A                                            |
-| `viaGithub`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaGitlab`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaBitbucket`                                 | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaGoogle`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaSamlSso`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `viaPasskey`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `env`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `os`                                           | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `username`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |
+| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |

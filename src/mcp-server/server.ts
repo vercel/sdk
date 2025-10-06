@@ -155,6 +155,7 @@ import { tool$projectsUpdateProject } from "./tools/projectsUpdateProject.js";
 import { tool$projectsUpdateProjectDataCache } from "./tools/projectsUpdateProjectDataCache.js";
 import { tool$projectsUpdateProjectDomain } from "./tools/projectsUpdateProjectDomain.js";
 import { tool$projectsUpdateProjectProtectionBypass } from "./tools/projectsUpdateProjectProtectionBypass.js";
+import { tool$projectsUploadProjectClientCert } from "./tools/projectsUploadProjectClientCert.js";
 import { tool$projectsVerifyProjectDomain } from "./tools/projectsVerifyProjectDomain.js";
 import { tool$rollingReleaseApproveRollingReleaseStage } from "./tools/rollingReleaseApproveRollingReleaseStage.js";
 import { tool$rollingReleaseCompleteRollingRelease } from "./tools/rollingReleaseCompleteRollingRelease.js";
@@ -202,7 +203,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.12.1",
+    version: "1.12.2",
   });
 
   const client = new VercelCore({
@@ -272,6 +273,7 @@ export function createMCPServer(deps: {
   tool(tool$projectsRemoveProjectEnv);
   tool(tool$projectsEditProjectEnv);
   tool(tool$projectsBatchRemoveProjectEnv);
+  tool(tool$projectsUploadProjectClientCert);
   tool(tool$projectsCreateProjectTransferRequest);
   tool(tool$projectsAcceptProjectTransferRequest);
   tool(tool$projectsUpdateProjectProtectionBypass);

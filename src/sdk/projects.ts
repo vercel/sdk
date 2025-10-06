@@ -26,6 +26,7 @@ import { projectsUpdateProject } from "../funcs/projectsUpdateProject.js";
 import { projectsUpdateProjectDataCache } from "../funcs/projectsUpdateProjectDataCache.js";
 import { projectsUpdateProjectDomain } from "../funcs/projectsUpdateProjectDomain.js";
 import { projectsUpdateProjectProtectionBypass } from "../funcs/projectsUpdateProjectProtectionBypass.js";
+import { projectsUploadProjectClientCert } from "../funcs/projectsUploadProjectClientCert.js";
 import { projectsVerifyProjectDomain } from "../funcs/projectsVerifyProjectDomain.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -112,6 +113,10 @@ import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
+import {
+  UploadProjectClientCertRequest,
+  UploadProjectClientCertResponseBody,
+} from "../models/uploadprojectclientcertop.js";
 import {
   VerifyProjectDomainRequest,
   VerifyProjectDomainResponseBody,
@@ -419,6 +424,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<BatchRemoveProjectEnvResponseBody> {
     return unwrapAsync(projectsBatchRemoveProjectEnv(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Upload client certificate for egress mTLS
+   *
+   * @remarks
+   * Upload or update a client certificate for mTLS authentication to external origins. The certificate is uploaded to S3 in plaintext, while the private key is encrypted. A hash reference is stored in the project document. The certificate will be available in the deployment runtime for establishing mTLS connections.
+   */
+  async uploadProjectClientCert(
+    request: UploadProjectClientCertRequest,
+    options?: RequestOptions,
+  ): Promise<UploadProjectClientCertResponseBody> {
+    return unwrapAsync(projectsUploadProjectClientCert(
       this,
       request,
       options,

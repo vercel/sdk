@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8486": {}
+                      "__@BRAND@8487": {}
                     }
                   },
                   "secrets": []
@@ -6454,6 +6454,39 @@ workflows:
                   "\u003cvalue 1\u003e",
                   "\u003cvalue 2\u003e"
                 ]
+              }
+            type: simple
+    x-speakeasy-test-group: projects
+    x-speakeasy-test-rebuild: true
+  - workflowId: uploadProjectClientCert
+    steps:
+      - stepId: test
+        operationId: uploadProjectClientCert
+        parameters:
+          - name: idOrName
+            in: path
+            value: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            ca: '-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----'
+            cert: '-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----'
+            key: '-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----'
+            origin: https://api.example.com
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "origin": "\u003cvalue\u003e",
+                "certId": "\u003cid\u003e"
               }
             type: simple
     x-speakeasy-test-group: projects

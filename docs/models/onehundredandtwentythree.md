@@ -7,21 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndTwentyThree } from "@vercel/sdk/models/userevent.js";
 
-let value: OneHundredAndTwentyThree = {
-  previous: {
-    enabled: false,
-    totpVerified: false,
-  },
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
-};
+let value: OneHundredAndTwentyThree = {};
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |

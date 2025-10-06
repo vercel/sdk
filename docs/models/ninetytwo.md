@@ -8,15 +8,28 @@ The payload of the event, if requested.
 import { NinetyTwo } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyTwo = {
-  projectId: "<id>",
-  projectName: "<value>",
+  next: {
+    project: {
+      id: "<id>",
+      staticIps: {
+        enabled: false,
+      },
+    },
+  },
+  previous: {
+    project: {
+      id: "<id>",
+      staticIps: {
+        enabled: true,
+      },
+    },
+  },
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `next`                                   | [models.Next](../models/next.md)         | :heavy_check_mark:                       | N/A                                      |
+| `previous`                               | [models.Previous](../models/previous.md) | :heavy_check_mark:                       | N/A                                      |

@@ -1632,10 +1632,10 @@ type UpdateProjectEnvType string
 
 const (
 	UpdateProjectEnvTypeSystem    UpdateProjectEnvType = "system"
+	UpdateProjectEnvTypeSecret    UpdateProjectEnvType = "secret"
 	UpdateProjectEnvTypeEncrypted UpdateProjectEnvType = "encrypted"
 	UpdateProjectEnvTypePlain     UpdateProjectEnvType = "plain"
 	UpdateProjectEnvTypeSensitive UpdateProjectEnvType = "sensitive"
-	UpdateProjectEnvTypeSecret    UpdateProjectEnvType = "secret"
 )
 
 func (e UpdateProjectEnvType) ToPointer() *UpdateProjectEnvType {
@@ -1649,13 +1649,13 @@ func (e *UpdateProjectEnvType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
+	case "secret":
+		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
-		fallthrough
-	case "secret":
 		*e = UpdateProjectEnvType(v)
 		return nil
 	default:
@@ -4473,17 +4473,17 @@ func (o *UpdateProjectDeployHook2) GetURL() string {
 }
 
 type UpdateProjectLinkGithubLimited struct {
-	Type      UpdateProjectTypeGithubLimited `json:"type"`
-	Repo      *string                        `json:"repo,omitempty"`
-	RepoID    *float64                       `json:"repoId,omitempty"`
-	CreatedAt *float64                       `json:"createdAt,omitempty"`
-	UpdatedAt *float64                       `json:"updatedAt,omitempty"`
-	Org       string                         `json:"org"`
+	Type       UpdateProjectTypeGithubLimited `json:"type"`
+	UpdatedAt  *float64                       `json:"updatedAt,omitempty"`
+	CreatedAt  *float64                       `json:"createdAt,omitempty"`
+	Repo       *string                        `json:"repo,omitempty"`
+	Sourceless *bool                          `json:"sourceless,omitempty"`
+	Org        string                         `json:"org"`
 	// A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
 	RepoOwnerID      *float64                   `json:"repoOwnerId,omitempty"`
+	RepoID           *float64                   `json:"repoId,omitempty"`
 	DeployHooks      []UpdateProjectDeployHook2 `json:"deployHooks"`
 	GitCredentialID  string                     `json:"gitCredentialId"`
-	Sourceless       *bool                      `json:"sourceless,omitempty"`
 	ProductionBranch string                     `json:"productionBranch"`
 }
 
@@ -4505,18 +4505,11 @@ func (o *UpdateProjectLinkGithubLimited) GetType() UpdateProjectTypeGithubLimite
 	return o.Type
 }
 
-func (o *UpdateProjectLinkGithubLimited) GetRepo() *string {
+func (o *UpdateProjectLinkGithubLimited) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
-	return o.Repo
-}
-
-func (o *UpdateProjectLinkGithubLimited) GetRepoID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.RepoID
+	return o.UpdatedAt
 }
 
 func (o *UpdateProjectLinkGithubLimited) GetCreatedAt() *float64 {
@@ -4526,11 +4519,18 @@ func (o *UpdateProjectLinkGithubLimited) GetCreatedAt() *float64 {
 	return o.CreatedAt
 }
 
-func (o *UpdateProjectLinkGithubLimited) GetUpdatedAt() *float64 {
+func (o *UpdateProjectLinkGithubLimited) GetRepo() *string {
 	if o == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return o.Repo
+}
+
+func (o *UpdateProjectLinkGithubLimited) GetSourceless() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sourceless
 }
 
 func (o *UpdateProjectLinkGithubLimited) GetOrg() string {
@@ -4547,6 +4547,13 @@ func (o *UpdateProjectLinkGithubLimited) GetRepoOwnerID() *float64 {
 	return o.RepoOwnerID
 }
 
+func (o *UpdateProjectLinkGithubLimited) GetRepoID() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.RepoID
+}
+
 func (o *UpdateProjectLinkGithubLimited) GetDeployHooks() []UpdateProjectDeployHook2 {
 	if o == nil {
 		return []UpdateProjectDeployHook2{}
@@ -4559,13 +4566,6 @@ func (o *UpdateProjectLinkGithubLimited) GetGitCredentialID() string {
 		return ""
 	}
 	return o.GitCredentialID
-}
-
-func (o *UpdateProjectLinkGithubLimited) GetSourceless() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.Sourceless
 }
 
 func (o *UpdateProjectLinkGithubLimited) GetProductionBranch() string {
@@ -5178,21 +5178,14 @@ func (e *UpdateProjectResourceConfigBuildMachineTypeResponse) UnmarshalJSON(data
 }
 
 type UpdateProjectResourceConfigResponse struct {
-	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                         `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                      `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                      `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *UpdateProjectResourceConfigFunctionDefaultMemoryTypeResponse `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                         `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                                         `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *UpdateProjectResourceConfigBuildMachineTypeResponse          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                         `json:"isNSNBDisabled,omitempty"`
-}
-
-func (o *UpdateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
 }
 
 func (o *UpdateProjectResourceConfigResponse) GetFluid() *bool {
@@ -5228,6 +5221,13 @@ func (o *UpdateProjectResourceConfigResponse) GetFunctionZeroConfigFailover() *b
 		return nil
 	}
 	return o.FunctionZeroConfigFailover
+}
+
+func (o *UpdateProjectResourceConfigResponse) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
 }
 
 func (o *UpdateProjectResourceConfigResponse) GetBuildMachineType() *UpdateProjectResourceConfigBuildMachineTypeResponse {
@@ -5411,21 +5411,14 @@ func (e *UpdateProjectDefaultResourceConfigBuildMachineType) UnmarshalJSON(data 
 }
 
 type UpdateProjectDefaultResourceConfig struct {
-	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	Fluid                      *bool                                                        `json:"fluid,omitempty"`
 	FunctionDefaultRegions     []string                                                     `json:"functionDefaultRegions"`
 	FunctionDefaultTimeout     *float64                                                     `json:"functionDefaultTimeout,omitempty"`
 	FunctionDefaultMemoryType  *UpdateProjectDefaultResourceConfigFunctionDefaultMemoryType `json:"functionDefaultMemoryType,omitempty"`
 	FunctionZeroConfigFailover *bool                                                        `json:"functionZeroConfigFailover,omitempty"`
+	ElasticConcurrencyEnabled  *bool                                                        `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildMachineType           *UpdateProjectDefaultResourceConfigBuildMachineType          `json:"buildMachineType,omitempty"`
 	IsNSNBDisabled             *bool                                                        `json:"isNSNBDisabled,omitempty"`
-}
-
-func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ElasticConcurrencyEnabled
 }
 
 func (o *UpdateProjectDefaultResourceConfig) GetFluid() *bool {
@@ -5463,6 +5456,13 @@ func (o *UpdateProjectDefaultResourceConfig) GetFunctionZeroConfigFailover() *bo
 	return o.FunctionZeroConfigFailover
 }
 
+func (o *UpdateProjectDefaultResourceConfig) GetElasticConcurrencyEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ElasticConcurrencyEnabled
+}
+
 func (o *UpdateProjectDefaultResourceConfig) GetBuildMachineType() *UpdateProjectDefaultResourceConfigBuildMachineType {
 	if o == nil {
 		return nil
@@ -5480,8 +5480,8 @@ func (o *UpdateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {
 type UpdateProjectSsoProtectionDeploymentTypeResponse string
 
 const (
-	UpdateProjectSsoProtectionDeploymentTypeResponsePreview                          UpdateProjectSsoProtectionDeploymentTypeResponse = "preview"
 	UpdateProjectSsoProtectionDeploymentTypeResponseAll                              UpdateProjectSsoProtectionDeploymentTypeResponse = "all"
+	UpdateProjectSsoProtectionDeploymentTypeResponsePreview                          UpdateProjectSsoProtectionDeploymentTypeResponse = "preview"
 	UpdateProjectSsoProtectionDeploymentTypeResponseProdDeploymentUrlsAndAllPreviews UpdateProjectSsoProtectionDeploymentTypeResponse = "prod_deployment_urls_and_all_previews"
 	UpdateProjectSsoProtectionDeploymentTypeResponseAllExceptCustomDomains           UpdateProjectSsoProtectionDeploymentTypeResponse = "all_except_custom_domains"
 )
@@ -5495,9 +5495,9 @@ func (e *UpdateProjectSsoProtectionDeploymentTypeResponse) UnmarshalJSON(data []
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
@@ -8305,11 +8305,11 @@ func (u UpdateProjectProtectionBypassUnion) MarshalJSON() ([]byte, error) {
 type UpdateProjectTrustedIpsDeploymentTypeResponse2 string
 
 const (
-	UpdateProjectTrustedIpsDeploymentTypeResponse2Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse2 = "preview"
-	UpdateProjectTrustedIpsDeploymentTypeResponse2Production                       UpdateProjectTrustedIpsDeploymentTypeResponse2 = "production"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2All                              UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse2 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse2 = "prod_deployment_urls_and_all_previews"
 	UpdateProjectTrustedIpsDeploymentTypeResponse2AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse2 = "all_except_custom_domains"
+	UpdateProjectTrustedIpsDeploymentTypeResponse2Production                       UpdateProjectTrustedIpsDeploymentTypeResponse2 = "production"
 )
 
 func (e UpdateProjectTrustedIpsDeploymentTypeResponse2) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse2 {
@@ -8321,15 +8321,15 @@ func (e *UpdateProjectTrustedIpsDeploymentTypeResponse2) UnmarshalJSON(data []by
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
-	case "production":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
+		fallthrough
+	case "production":
 		*e = UpdateProjectTrustedIpsDeploymentTypeResponse2(v)
 		return nil
 	default:
@@ -8362,11 +8362,11 @@ func (o *UpdateProjectTrustedIpsResponse2) GetDeploymentType() UpdateProjectTrus
 type UpdateProjectTrustedIpsDeploymentTypeResponse1 string
 
 const (
-	UpdateProjectTrustedIpsDeploymentTypeResponse1Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse1 = "preview"
-	UpdateProjectTrustedIpsDeploymentTypeResponse1Production                       UpdateProjectTrustedIpsDeploymentTypeResponse1 = "production"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1All                              UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1Preview                          UpdateProjectTrustedIpsDeploymentTypeResponse1 = "preview"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1ProdDeploymentUrlsAndAllPreviews UpdateProjectTrustedIpsDeploymentTypeResponse1 = "prod_deployment_urls_and_all_previews"
 	UpdateProjectTrustedIpsDeploymentTypeResponse1AllExceptCustomDomains           UpdateProjectTrustedIpsDeploymentTypeResponse1 = "all_except_custom_domains"
+	UpdateProjectTrustedIpsDeploymentTypeResponse1Production                       UpdateProjectTrustedIpsDeploymentTypeResponse1 = "production"
 )
 
 func (e UpdateProjectTrustedIpsDeploymentTypeResponse1) ToPointer() *UpdateProjectTrustedIpsDeploymentTypeResponse1 {
@@ -8378,15 +8378,15 @@ func (e *UpdateProjectTrustedIpsDeploymentTypeResponse1) UnmarshalJSON(data []by
 		return err
 	}
 	switch v {
-	case "preview":
-		fallthrough
-	case "production":
-		fallthrough
 	case "all":
+		fallthrough
+	case "preview":
 		fallthrough
 	case "prod_deployment_urls_and_all_previews":
 		fallthrough
 	case "all_except_custom_domains":
+		fallthrough
+	case "production":
 		*e = UpdateProjectTrustedIpsDeploymentTypeResponse1(v)
 		return nil
 	default:

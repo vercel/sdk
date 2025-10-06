@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { OneHundredAndFiftyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFiftyFive = {
-  appName: "<value>",
-  scopes: [],
+  oldName: "<value>",
+  newName: "<value>",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: OneHundredAndFiftyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `appName`          | *string*           | :heavy_check_mark: | N/A                |
-| `scopes`           | *string*[]         | :heavy_check_mark: | N/A                |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |

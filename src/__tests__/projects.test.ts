@@ -967,3 +967,30 @@ test("Projects Batch Remove Project Env", async () => {
     ],
   });
 });
+
+test("Projects Upload Project Client Cert", async () => {
+  const testHttpClient = createTestHTTPClient("uploadProjectClientCert");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.projects.uploadProjectClientCert({
+    idOrName: "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      cert: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+      key: "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----",
+      ca: "-----BEGIN CERTIFICATE-----\\n...\\n-----END CERTIFICATE-----",
+      origin: "https://api.example.com",
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    origin: "<value>",
+    certId: "<id>",
+  });
+});

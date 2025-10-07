@@ -188,7 +188,11 @@ func (o *BuyDomainsRequest) GetContactInformation() BuyDomainsContactInformation
 type BuyDomainsMethod string
 
 const (
-	BuyDomainsMethodGet BuyDomainsMethod = "GET"
+	BuyDomainsMethodGet    BuyDomainsMethod = "GET"
+	BuyDomainsMethodPost   BuyDomainsMethod = "POST"
+	BuyDomainsMethodPut    BuyDomainsMethod = "PUT"
+	BuyDomainsMethodDelete BuyDomainsMethod = "DELETE"
+	BuyDomainsMethodPatch  BuyDomainsMethod = "PATCH"
 )
 
 func (e BuyDomainsMethod) ToPointer() *BuyDomainsMethod {
@@ -201,6 +205,14 @@ func (e *BuyDomainsMethod) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "GET":
+		fallthrough
+	case "POST":
+		fallthrough
+	case "PUT":
+		fallthrough
+	case "DELETE":
+		fallthrough
+	case "PATCH":
 		*e = BuyDomainsMethod(v)
 		return nil
 	default:

@@ -1,11 +1,11 @@
-# PropertiesAtBRANDAt8492
+# AtBRANDAt8494
 
 ## Example Usage
 
 ```typescript
-import { PropertiesAtBRANDAt8492 } from "@vercel/sdk/models/createintegrationstoredirectop.js";
+import { AtBRANDAt8494 } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
-let value: PropertiesAtBRANDAt8492 = {};
+let value: AtBRANDAt8494 = {};
 ```
 
 ## Fields

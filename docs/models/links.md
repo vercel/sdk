@@ -7,7 +7,7 @@ import { Links } from "@vercel/sdk/models/buysingledomainop.js";
 
 let value: Links = {
   href: "<value>",
-  method: "GET",
+  method: "PATCH",
 };
 ```
 

@@ -185,7 +185,11 @@ func (o *TransferInDomainRequest) GetRequestBody() TransferInDomainRequestBody {
 type TransferInDomainMethod string
 
 const (
-	TransferInDomainMethodGet TransferInDomainMethod = "GET"
+	TransferInDomainMethodGet    TransferInDomainMethod = "GET"
+	TransferInDomainMethodPost   TransferInDomainMethod = "POST"
+	TransferInDomainMethodPut    TransferInDomainMethod = "PUT"
+	TransferInDomainMethodDelete TransferInDomainMethod = "DELETE"
+	TransferInDomainMethodPatch  TransferInDomainMethod = "PATCH"
 )
 
 func (e TransferInDomainMethod) ToPointer() *TransferInDomainMethod {
@@ -198,6 +202,14 @@ func (e *TransferInDomainMethod) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "GET":
+		fallthrough
+	case "POST":
+		fallthrough
+	case "PUT":
+		fallthrough
+	case "DELETE":
+		fallthrough
+	case "PATCH":
 		*e = TransferInDomainMethod(v)
 		return nil
 	default:

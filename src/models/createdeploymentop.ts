@@ -315,6 +315,7 @@ export const Framework = {
   Hono: "hono",
   Express: "express",
   H3: "h3",
+  Nestjs: "nestjs",
   Xmcp: "xmcp",
 } as const;
 /**
@@ -532,6 +533,7 @@ export const CreateDeploymentFramework = {
   Hono: "hono",
   Express: "express",
   H3: "h3",
+  Nestjs: "nestjs",
   Xmcp: "xmcp",
 } as const;
 export type CreateDeploymentFramework = ClosedEnum<

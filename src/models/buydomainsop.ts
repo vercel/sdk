@@ -106,6 +106,10 @@ export type BuyDomainsDomainsRegistrarResponseBody =
 
 export const BuyDomainsMethod = {
   Get: "GET",
+  Post: "POST",
+  Put: "PUT",
+  Delete: "DELETE",
+  Patch: "PATCH",
 } as const;
 export type BuyDomainsMethod = ClosedEnum<typeof BuyDomainsMethod>;
 

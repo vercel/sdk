@@ -7,7 +7,7 @@ import { TransferInDomainLinks } from "@vercel/sdk/models/transferindomainop.js"
 
 let value: TransferInDomainLinks = {
   href: "<value>",
-  method: "GET",
+  method: "PUT",
 };
 ```
 

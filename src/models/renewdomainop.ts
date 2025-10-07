@@ -102,6 +102,10 @@ export type RenewDomainDomainsRegistrarResponseBody =
 
 export const RenewDomainMethod = {
   Get: "GET",
+  Post: "POST",
+  Put: "PUT",
+  Delete: "DELETE",
+  Patch: "PATCH",
 } as const;
 export type RenewDomainMethod = ClosedEnum<typeof RenewDomainMethod>;
 

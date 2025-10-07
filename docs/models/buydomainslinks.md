@@ -7,7 +7,7 @@ import { BuyDomainsLinks } from "@vercel/sdk/models/buydomainsop.js";
 
 let value: BuyDomainsLinks = {
   href: "<value>",
-  method: "GET",
+  method: "POST",
 };
 ```
 

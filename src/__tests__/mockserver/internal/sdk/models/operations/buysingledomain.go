@@ -188,7 +188,11 @@ func (o *BuySingleDomainRequest) GetRequestBody() BuySingleDomainRequestBody {
 type BuySingleDomainMethod string
 
 const (
-	BuySingleDomainMethodGet BuySingleDomainMethod = "GET"
+	BuySingleDomainMethodGet    BuySingleDomainMethod = "GET"
+	BuySingleDomainMethodPost   BuySingleDomainMethod = "POST"
+	BuySingleDomainMethodPut    BuySingleDomainMethod = "PUT"
+	BuySingleDomainMethodDelete BuySingleDomainMethod = "DELETE"
+	BuySingleDomainMethodPatch  BuySingleDomainMethod = "PATCH"
 )
 
 func (e BuySingleDomainMethod) ToPointer() *BuySingleDomainMethod {
@@ -201,6 +205,14 @@ func (e *BuySingleDomainMethod) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "GET":
+		fallthrough
+	case "POST":
+		fallthrough
+	case "PUT":
+		fallthrough
+	case "DELETE":
+		fallthrough
+	case "PATCH":
 		*e = BuySingleDomainMethod(v)
 		return nil
 	default:

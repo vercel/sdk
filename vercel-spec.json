@@ -5021,6 +5021,7 @@
                         "hono",
                         "express",
                         "h3",
+                        "nestjs",
                         "xmcp"
                       ]
                     },
@@ -9794,6 +9795,7 @@
                                 "hono",
                                 "express",
                                 "h3",
+                                "nestjs",
                                 "xmcp"
                               ]
                             },
@@ -13600,6 +13602,7 @@
                             "hono",
                             "express",
                             "h3",
+                            "nestjs",
                             "xmcp"
                           ]
                         },
@@ -16617,6 +16620,7 @@
                           "hono",
                           "express",
                           "h3",
+                          "nestjs",
                           "xmcp"
                         ],
                         "nullable": true
@@ -16849,6 +16853,7 @@
                             "hono",
                             "express",
                             "h3",
+                            "nestjs",
                             "xmcp"
                           ]
                         },
@@ -21900,8 +21905,6 @@
                     },
                     "_links": {
                       "type": "object",
-                      "required": [],
-                      "properties": {},
                       "additionalProperties": {
                         "type": "object",
                         "required": [
@@ -21915,7 +21918,11 @@
                           "method": {
                             "type": "string",
                             "enum": [
-                              "GET"
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "DELETE",
+                              "PATCH"
                             ]
                           }
                         },
@@ -21936,6 +21943,15 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
                     },
                     {
                       "$ref": "#/components/schemas/BadRequest"
@@ -22115,8 +22131,6 @@
                     },
                     "_links": {
                       "type": "object",
-                      "required": [],
-                      "properties": {},
                       "additionalProperties": {
                         "type": "object",
                         "required": [
@@ -22130,7 +22144,11 @@
                           "method": {
                             "type": "string",
                             "enum": [
-                              "GET"
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "DELETE",
+                              "PATCH"
                             ]
                           }
                         },
@@ -22151,6 +22169,18 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DuplicateDomains"
                     },
                     {
                       "$ref": "#/components/schemas/BadRequest"
@@ -22356,8 +22386,6 @@
                     },
                     "_links": {
                       "type": "object",
-                      "required": [],
-                      "properties": {},
                       "additionalProperties": {
                         "type": "object",
                         "required": [
@@ -22371,7 +22399,11 @@
                           "method": {
                             "type": "string",
                             "enum": [
-                              "GET"
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "DELETE",
+                              "PATCH"
                             ]
                           }
                         },
@@ -22392,6 +22424,15 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
                     },
                     {
                       "$ref": "#/components/schemas/BadRequest"
@@ -22708,8 +22749,6 @@
                     },
                     "_links": {
                       "type": "object",
-                      "required": [],
-                      "properties": {},
                       "additionalProperties": {
                         "type": "object",
                         "required": [
@@ -22723,7 +22762,11 @@
                           "method": {
                             "type": "string",
                             "enum": [
-                              "GET"
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "DELETE",
+                              "PATCH"
                             ]
                           }
                         },
@@ -22744,6 +22787,15 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
                     },
                     {
                       "$ref": "#/components/schemas/BadRequest"
@@ -23180,7 +23232,6 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [],
                   "properties": {}
                 }
               }
@@ -41516,10 +41567,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -42112,6 +42163,7 @@
                         "hono",
                         "express",
                         "h3",
+                        "nestjs",
                         "xmcp"
                       ]
                     },
@@ -42523,17 +42575,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
+                            "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "updatedAt": {
-                              "type": "number"
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -42541,6 +42593,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -42573,9 +42628,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -42967,9 +43019,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -42991,6 +43040,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -43093,9 +43145,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -43117,6 +43166,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -43163,8 +43215,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -44905,11 +44957,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -44949,11 +45001,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -45983,6 +46035,7 @@
                       "hono",
                       "express",
                       "h3",
+                      "nestjs",
                       "xmcp"
                     ]
                   },
@@ -46527,10 +46580,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -47123,6 +47176,7 @@
                         "hono",
                         "express",
                         "h3",
+                        "nestjs",
                         "xmcp"
                       ]
                     },
@@ -47534,17 +47588,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
+                            "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "updatedAt": {
-                              "type": "number"
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -47552,6 +47606,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -47584,9 +47641,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -47978,9 +48032,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -48002,6 +48053,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -48104,9 +48158,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -48128,6 +48179,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -48174,8 +48228,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -49916,11 +49970,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -49960,11 +50014,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -51148,10 +51202,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -51744,6 +51798,7 @@
                         "hono",
                         "express",
                         "h3",
+                        "nestjs",
                         "xmcp"
                       ]
                     },
@@ -52155,17 +52210,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
+                            "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "updatedAt": {
-                              "type": "number"
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -52173,6 +52228,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -52205,9 +52263,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -52599,9 +52654,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -52623,6 +52675,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -52725,9 +52780,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -52749,6 +52801,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -52795,8 +52850,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -54537,11 +54592,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -54581,11 +54636,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -55554,6 +55609,7 @@
                       "hono",
                       "express",
                       "h3",
+                      "nestjs",
                       "xmcp"
                     ],
                     "type": "string",
@@ -58871,10 +58927,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -59289,10 +59345,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -59719,10 +59775,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -60283,10 +60339,10 @@
                               "type": "string",
                               "enum": [
                                 "system",
+                                "secret",
                                 "encrypted",
                                 "plain",
-                                "sensitive",
-                                "secret"
+                                "sensitive"
                               ]
                             },
                             "sunsetSecretId": {
@@ -60690,10 +60746,10 @@
                                 "type": "string",
                                 "enum": [
                                   "system",
+                                  "secret",
                                   "encrypted",
                                   "plain",
-                                  "sensitive",
-                                  "secret"
+                                  "sensitive"
                                 ]
                               },
                               "sunsetSecretId": {
@@ -61499,10 +61555,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -61898,10 +61954,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -62301,10 +62357,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -62801,10 +62857,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -63216,10 +63272,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -63626,10 +63682,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -64144,10 +64200,10 @@
                           "type": "string",
                           "enum": [
                             "system",
+                            "secret",
                             "encrypted",
                             "plain",
-                            "sensitive",
-                            "secret"
+                            "sensitive"
                           ]
                         },
                         "sunsetSecretId": {
@@ -72027,6 +72083,7 @@
                                   "hono",
                                   "express",
                                   "h3",
+                                  "nestjs",
                                   "xmcp"
                                 ]
                               },
@@ -72266,34 +72323,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "description": {
@@ -72976,34 +73033,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "description": {
@@ -73152,34 +73209,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8492": {
+                                                  "__@BRAND@8494": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8492"
+                                                  "__@BRAND@8494"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8492": {
+                                                  "__@BRAND@8494": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8492"
+                                                  "__@BRAND@8494"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8492": {
+                                                  "__@BRAND@8494": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8492"
+                                                  "__@BRAND@8494"
                                                 ]
                                               },
                                               "default": {
@@ -73496,12 +73553,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@8492": {
+                                                    "__@BRAND@8494": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@8492"
+                                                    "__@BRAND@8494"
                                                   ]
                                                 },
                                                 {
@@ -73509,12 +73566,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@8492": {
+                                                        "__@BRAND@8494": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@8492"
+                                                        "__@BRAND@8494"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -73586,34 +73643,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "description": {
@@ -73763,34 +73820,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "description": {
@@ -73921,12 +73978,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8492": {
+                                              "__@BRAND@8494": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8492"
+                                              "__@BRAND@8494"
                                             ]
                                           },
                                           "disabled": {
@@ -74175,12 +74232,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@8492": {
+                                "__@BRAND@8494": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@8492"
+                                "__@BRAND@8494"
                               ]
                             },
                             "disabled": {
@@ -78278,6 +78335,7 @@
                                     "hono",
                                     "express",
                                     "h3",
+                                    "nestjs",
                                     "xmcp"
                                   ]
                                 },
@@ -81887,6 +81945,7 @@
                                   "hono",
                                   "express",
                                   "h3",
+                                  "nestjs",
                                   "xmcp"
                                 ]
                               },
@@ -82882,6 +82941,138 @@
         "minLength": 1,
         "pattern": "^[A-Z]{2}$"
       },
+      "TldNotSupported": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              400
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "tld_not_supported"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "TldNotSupported"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "DomainNotAvailable": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              400
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "domain_not_available"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "DomainNotAvailable"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpectedPriceMismatch": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              400
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "expected_price_mismatch"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "ExpectedPriceMismatch"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "DuplicateDomains": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              400
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "duplicate_domains"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "DuplicateDomains"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
       "Nameserver": {
         "type": "string"
       },
@@ -82937,7 +83128,6 @@
                     },
                     "fields": {
                       "type": "object",
-                      "required": [],
                       "properties": {}
                     }
                   },
@@ -82946,7 +83136,6 @@
               },
               "fields": {
                 "type": "object",
-                "required": [],
                 "properties": {}
               }
             },
@@ -83003,7 +83192,6 @@
                     },
                     "fields": {
                       "type": "object",
-                      "required": [],
                       "properties": {}
                     }
                   },
@@ -83012,7 +83200,6 @@
               },
               "fields": {
                 "type": "object",
-                "required": [],
                 "properties": {}
               }
             },

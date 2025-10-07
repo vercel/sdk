@@ -5,11 +5,11 @@
 ```typescript
 import { Method } from "@vercel/sdk/models/buysingledomainop.js";
 
-let value: Method = "GET";
+let value: Method = "POST";
 ```
 
 ## Values
 
 ```typescript
-"GET"
+"GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 ```

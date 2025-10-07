@@ -104,6 +104,10 @@ export type TransferInDomainDomainsRegistrarResponseBody =
 
 export const TransferInDomainMethod = {
   Get: "GET",
+  Post: "POST",
+  Put: "PUT",
+  Delete: "DELETE",
+  Patch: "PATCH",
 } as const;
 export type TransferInDomainMethod = ClosedEnum<typeof TransferInDomainMethod>;
 

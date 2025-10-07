@@ -6,7 +6,7 @@
 import { Created2 } from "@vercel/sdk/models/createprojectenvop.js";
 
 let value: Created2 = {
-  type: "plain",
+  type: "encrypted",
   value: "<value>",
   key: "<key>",
 };

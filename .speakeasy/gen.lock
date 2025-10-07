@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: c757d862db9ec5714457b6fa418fd09d
+  docChecksum: 83d7dcd856df3751d4e75d3419e51edd
   docVersion: 0.0.1
-  speakeasyVersion: 1.635.3
-  generationVersion: 2.722.5
-  releaseVersion: 1.13.2
-  configChecksum: a92da708d8e6a50f1bd7fc883a73a266
+  speakeasyVersion: 1.636.0
+  generationVersion: 2.723.2
+  releaseVersion: 1.13.3
+  configChecksum: 0daba19165ba7d08105d626e9a6bcf24
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -139,7 +139,7 @@ generatedFiles:
   - docs/models/assignaliasrequestbody.md
   - docs/models/assignaliasresponsebody.md
   - docs/models/atbrandat544277.md
-  - docs/models/atbrandat8492.md
+  - docs/models/atbrandat8494.md
   - docs/models/attribution.md
   - docs/models/authentication.md
   - docs/models/authmethod.md
@@ -609,31 +609,31 @@ generatedFiles:
   - docs/models/createintegrationstoredirectproperties7.md
   - docs/models/createintegrationstoredirectproperties8.md
   - docs/models/createintegrationstoredirectproperties9.md
-  - docs/models/createintegrationstoredirectpropertiesatbrandat8492.md
+  - docs/models/createintegrationstoredirectpropertiesatbrandat8494.md
   - docs/models/createintegrationstoredirectpropertiesdisabled.md
   - docs/models/createintegrationstoredirectpropertieshidden.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat8492.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat8494.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsdisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationshidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsitems.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsmaxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsminlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationspattern.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat8492.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat8494.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonmaxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonminlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonpattern.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema1atbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8492.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema1atbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8494.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6type.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema8atbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema9atbrandat8492.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat8492.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema8atbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema9atbrandat8494.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat8494.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschematype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproducttype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductuicontrol.md
@@ -663,7 +663,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat8492.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat8494.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200maxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200minlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200pattern.md
@@ -674,7 +674,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat8492.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat8494.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsedisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsehidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsemaxlength.md
@@ -763,7 +763,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectuioptions1.md
   - docs/models/createintegrationstoredirectuioptions2.md
   - docs/models/createintegrationstoredirectuioptions3.md
-  - docs/models/createintegrationstoredirectuioptionsatbrandat8492.md
+  - docs/models/createintegrationstoredirectuioptionsatbrandat8494.md
   - docs/models/createintegrationstoredirectuioptionsdisabled.md
   - docs/models/createintegrationstoredirectuioptionshidden.md
   - docs/models/createintegrationstoredirectuioptionsintegrationsdisabled.md
@@ -3104,7 +3104,7 @@ generatedFiles:
   - docs/models/properties8.md
   - docs/models/properties9.md
   - docs/models/propertiesatbrandat544277.md
-  - docs/models/propertiesatbrandat8492.md
+  - docs/models/propertiesatbrandat8494.md
   - docs/models/propertiesdisabled.md
   - docs/models/propertieshidden.md
   - docs/models/propertiesitems.md
@@ -3753,7 +3753,7 @@ generatedFiles:
   - docs/models/uioptions2.md
   - docs/models/uioptions3.md
   - docs/models/uioptionsatbrandat544277.md
-  - docs/models/uioptionsatbrandat8492.md
+  - docs/models/uioptionsatbrandat8494.md
   - docs/models/uioptionsdisabled.md
   - docs/models/uioptionshidden.md
   - docs/models/uioptionsvalue.md
@@ -8767,7 +8767,7 @@ examples:
         application/json: {"name": "my-dev-database", "integrationConfigurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "integrationProductIdOrSlug": "iap_postgres_db", "metadata": {"environment": "development", "project": "my-app", "tags": ["database", "postgres"]}, "externalId": "dev-db-001", "protocolSettings": {"experimentation": {"edgeConfigSyncingEnabled": true}}, "source": "api", "billingPlanId": "bp_abc123def456", "paymentMethodId": "pm_1AbcDefGhiJklMno", "prepaymentAmountCents": 5000}
       responses:
         "200":
-          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@8492": {}}}, "secrets": []}}
+          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@8494": {}}}, "secrets": []}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -9318,3 +9318,6 @@ generatedTests:
   renewDomain: "2025-10-07T01:47:08Z"
   getContactInfoSchema: "2025-10-07T01:47:08Z"
   getOrder: "2025-10-07T01:47:08Z"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `vercel.integrations.createIntegrationStoreDirect()`:  `response.store.product` **Changed** **Breaking** :warning:

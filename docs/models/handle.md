@@ -5,11 +5,11 @@
 ```typescript
 import { Handle } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: Handle = "rewrite";
+let value: Handle = "resource";
 ```
 
 ## Values
 
 ```typescript
-"filesystem" | "error" | "hit" | "miss" | "resource" | "rewrite"
+"error" | "filesystem" | "hit" | "miss" | "rewrite" | "resource"
 ```

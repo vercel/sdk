@@ -45,7 +45,7 @@ let value: CreateDeploymentResponseBody = {
   plan: "hobby",
   routes: [
     {
-      handle: "resource",
+      handle: "rewrite",
     },
   ],
   createdIn: "<value>",

@@ -1434,11 +1434,6 @@ actions:
       example: "pnpm install"
   - target: $.paths['/v1/projects/{idOrName}/custom-environments/{environmentSlugOrId}'].delete.requestBody.content["application/json"].schema.required
     remove: true
-    update:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/VercelRateLimitError" # Reference to the Rate Limit error schema
   # Define custom error schemas under the components section
   - target: $["components"]["schemas"]
     update:

@@ -34,6 +34,10 @@ import {
   VercelForbiddenError,
   VercelForbiddenError$inboundSchema,
 } from "../models/vercelforbiddenerror.js";
+import {
+  VercelNotFoundError,
+  VercelNotFoundError$inboundSchema,
+} from "../models/vercelnotfounderror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -52,6 +56,7 @@ export function domainsCheckDomainPrice(
     CheckDomainPriceResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
+    | VercelNotFoundError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -79,6 +84,7 @@ async function $do(
       CheckDomainPriceResponseBody,
       | VercelBadRequestError
       | VercelForbiddenError
+      | VercelNotFoundError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -152,7 +158,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "403", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "403", "404", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -169,6 +175,7 @@ async function $do(
     CheckDomainPriceResponseBody,
     | VercelBadRequestError
     | VercelForbiddenError
+    | VercelNotFoundError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -181,6 +188,7 @@ async function $do(
     M.json(200, CheckDomainPriceResponseBody$inboundSchema),
     M.jsonErr(400, VercelBadRequestError$inboundSchema),
     M.jsonErr(401, VercelForbiddenError$inboundSchema),
+    M.jsonErr(404, VercelNotFoundError$inboundSchema),
     M.fail([403, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req, { extraFields: responseFields });

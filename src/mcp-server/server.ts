@@ -73,6 +73,21 @@ import { tool$domainsGetDomainConfig } from "./tools/domainsGetDomainConfig.js";
 import { tool$domainsGetDomains } from "./tools/domainsGetDomains.js";
 import { tool$domainsGetDomainTransfer } from "./tools/domainsGetDomainTransfer.js";
 import { tool$domainsPatchDomain } from "./tools/domainsPatchDomain.js";
+import { tool$domainsRegistrarBuyDomains } from "./tools/domainsRegistrarBuyDomains.js";
+import { tool$domainsRegistrarBuySingleDomain } from "./tools/domainsRegistrarBuySingleDomain.js";
+import { tool$domainsRegistrarGetBulkAvailability } from "./tools/domainsRegistrarGetBulkAvailability.js";
+import { tool$domainsRegistrarGetContactInfoSchema } from "./tools/domainsRegistrarGetContactInfoSchema.js";
+import { tool$domainsRegistrarGetDomainAuthCode } from "./tools/domainsRegistrarGetDomainAuthCode.js";
+import { tool$domainsRegistrarGetDomainAvailability } from "./tools/domainsRegistrarGetDomainAvailability.js";
+import { tool$domainsRegistrarGetDomainPrice } from "./tools/domainsRegistrarGetDomainPrice.js";
+import { tool$domainsRegistrarGetDomainTransferIn } from "./tools/domainsRegistrarGetDomainTransferIn.js";
+import { tool$domainsRegistrarGetOrder } from "./tools/domainsRegistrarGetOrder.js";
+import { tool$domainsRegistrarGetSupportedTlds } from "./tools/domainsRegistrarGetSupportedTlds.js";
+import { tool$domainsRegistrarGetTldPrice } from "./tools/domainsRegistrarGetTldPrice.js";
+import { tool$domainsRegistrarRenewDomain } from "./tools/domainsRegistrarRenewDomain.js";
+import { tool$domainsRegistrarTransferInDomain } from "./tools/domainsRegistrarTransferInDomain.js";
+import { tool$domainsRegistrarUpdateDomainAutoRenew } from "./tools/domainsRegistrarUpdateDomainAutoRenew.js";
+import { tool$domainsRegistrarUpdateDomainNameservers } from "./tools/domainsRegistrarUpdateDomainNameservers.js";
 import { tool$edgeCacheDangerouslyDeleteByTags } from "./tools/edgeCacheDangerouslyDeleteByTags.js";
 import { tool$edgeCacheInvalidateByTags } from "./tools/edgeCacheInvalidateByTags.js";
 import { tool$edgeConfigCreateEdgeConfig } from "./tools/edgeConfigCreateEdgeConfig.js";
@@ -203,7 +218,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.12.2",
+    version: "1.13.0",
   });
 
   const client = new VercelCore({
@@ -312,6 +327,21 @@ export function createMCPServer(deps: {
   tool(tool$dnsCreateRecord);
   tool(tool$dnsUpdateRecord);
   tool(tool$dnsRemoveRecord);
+  tool(tool$domainsRegistrarGetSupportedTlds);
+  tool(tool$domainsRegistrarGetTldPrice);
+  tool(tool$domainsRegistrarGetDomainAvailability);
+  tool(tool$domainsRegistrarGetDomainPrice);
+  tool(tool$domainsRegistrarGetBulkAvailability);
+  tool(tool$domainsRegistrarGetDomainAuthCode);
+  tool(tool$domainsRegistrarBuySingleDomain);
+  tool(tool$domainsRegistrarBuyDomains);
+  tool(tool$domainsRegistrarTransferInDomain);
+  tool(tool$domainsRegistrarGetDomainTransferIn);
+  tool(tool$domainsRegistrarRenewDomain);
+  tool(tool$domainsRegistrarUpdateDomainAutoRenew);
+  tool(tool$domainsRegistrarUpdateDomainNameservers);
+  tool(tool$domainsRegistrarGetContactInfoSchema);
+  tool(tool$domainsRegistrarGetOrder);
   tool(tool$edgeCacheInvalidateByTags);
   tool(tool$edgeCacheDangerouslyDeleteByTags);
   tool(tool$edgeConfigGetEdgeConfigs);

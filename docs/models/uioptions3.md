@@ -7,7 +7,7 @@ import { UiOptions3 } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: UiOptions3 = {
   value: {
-    atBRANDAt543559: {},
+    atBRANDAt543583: {},
   },
 };
 ```

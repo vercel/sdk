@@ -373,6 +373,24 @@ run();
 * [patchDomain](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
 * [deleteDomain](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 
+### [domainsRegistrar](docs/sdks/domainsregistrar/README.md)
+
+* [getSupportedTlds](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get a list of TLDs supported by Vercel
+* [getTldPrice](docs/sdks/domainsregistrar/README.md#gettldprice) - Get price data for a specific TLD
+* [getDomainAvailability](docs/sdks/domainsregistrar/README.md#getdomainavailability) - Get availability for a specific domain
+* [getDomainPrice](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a specific domain
+* [getBulkAvailability](docs/sdks/domainsregistrar/README.md#getbulkavailability) - Get availability for multiple domains
+* [getDomainAuthCode](docs/sdks/domainsregistrar/README.md#getdomainauthcode) - Get the auth code for a domain
+* [buySingleDomain](docs/sdks/domainsregistrar/README.md#buysingledomain) - Buy a domain
+* [buyDomains](docs/sdks/domainsregistrar/README.md#buydomains) - Buy multiple domains at once
+* [transferInDomain](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer a domain in from another registrar
+* [getDomainTransferIn](docs/sdks/domainsregistrar/README.md#getdomaintransferin) - Get the transfer status for a domain
+* [renewDomain](docs/sdks/domainsregistrar/README.md#renewdomain) - Renew a domain
+* [updateDomainAutoRenew](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update the auto-renew setting for a domain
+* [updateDomainNameservers](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update the nameservers for a domain
+* [getContactInfoSchema](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get the schema for the tld-specific contact information for a domain
+* [getOrder](docs/sdks/domainsregistrar/README.md#getorder) - Get information about a domain order by its ID
+
 ### [edgeCache](docs/sdks/edgecache/README.md)
 
 * [invalidateByTags](docs/sdks/edgecache/README.md#invalidatebytags) - Invalidate by tag
@@ -615,6 +633,21 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsGetDomains`](docs/sdks/domains/README.md#getdomains) - List all the domains
 - [`domainsGetDomainTransfer`](docs/sdks/domains/README.md#getdomaintransfer) - Get domain transfer info.
 - [`domainsPatchDomain`](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
+- [`domainsRegistrarBuyDomains`](docs/sdks/domainsregistrar/README.md#buydomains) - Buy multiple domains at once
+- [`domainsRegistrarBuySingleDomain`](docs/sdks/domainsregistrar/README.md#buysingledomain) - Buy a domain
+- [`domainsRegistrarGetBulkAvailability`](docs/sdks/domainsregistrar/README.md#getbulkavailability) - Get availability for multiple domains
+- [`domainsRegistrarGetContactInfoSchema`](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get the schema for the tld-specific contact information for a domain
+- [`domainsRegistrarGetDomainAuthCode`](docs/sdks/domainsregistrar/README.md#getdomainauthcode) - Get the auth code for a domain
+- [`domainsRegistrarGetDomainAvailability`](docs/sdks/domainsregistrar/README.md#getdomainavailability) - Get availability for a specific domain
+- [`domainsRegistrarGetDomainPrice`](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a specific domain
+- [`domainsRegistrarGetDomainTransferIn`](docs/sdks/domainsregistrar/README.md#getdomaintransferin) - Get the transfer status for a domain
+- [`domainsRegistrarGetOrder`](docs/sdks/domainsregistrar/README.md#getorder) - Get information about a domain order by its ID
+- [`domainsRegistrarGetSupportedTlds`](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get a list of TLDs supported by Vercel
+- [`domainsRegistrarGetTldPrice`](docs/sdks/domainsregistrar/README.md#gettldprice) - Get price data for a specific TLD
+- [`domainsRegistrarRenewDomain`](docs/sdks/domainsregistrar/README.md#renewdomain) - Renew a domain
+- [`domainsRegistrarTransferInDomain`](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer a domain in from another registrar
+- [`domainsRegistrarUpdateDomainAutoRenew`](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update the auto-renew setting for a domain
+- [`domainsRegistrarUpdateDomainNameservers`](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update the nameservers for a domain
 - [`edgeCacheDangerouslyDeleteByTags`](docs/sdks/edgecache/README.md#dangerouslydeletebytags) - Dangerously delete by tag
 - [`edgeCacheInvalidateByTags`](docs/sdks/edgecache/README.md#invalidatebytags) - Invalidate by tag
 - [`edgeConfigCreateEdgeConfig`](docs/sdks/edgeconfig/README.md#createedgeconfig) - Create an Edge Config
@@ -912,7 +945,7 @@ run();
   * [`VercelBadRequestError`](./src/models/vercelbadrequesterror.ts): Status code `400`. *
   * [`VercelForbiddenError`](./src/models/vercelforbiddenerror.ts): Status code `401`. *
 
-<details><summary>Less common errors (8)</summary>
+<details><summary>Less common errors (12)</summary>
 
 <br />
 
@@ -925,8 +958,12 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 112 of 181 methods.*
-* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): . Status code `429`. Applicable to 5 of 181 methods.*
+* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 121 of 196 methods.*
+* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): Status code `429`. Applicable to 20 of 196 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `500`. Applicable to 15 of 196 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): Unauthorized. Status code `500`. Applicable to 15 of 196 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): Unauthorized. Status code `500`. Applicable to 15 of 196 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): Forbidden. Status code `403`. Applicable to 9 of 196 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

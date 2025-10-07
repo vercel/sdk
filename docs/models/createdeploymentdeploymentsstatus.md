@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDeploymentDeploymentsStatus } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: CreateDeploymentDeploymentsStatus = "timeout";
+let value: CreateDeploymentDeploymentsStatus = "ready";
 ```
 
 ## Values
 
 ```typescript
-"skipped" | "pending" | "ready" | "error" | "timeout"
+"error" | "timeout" | "skipped" | "pending" | "ready"
 ```

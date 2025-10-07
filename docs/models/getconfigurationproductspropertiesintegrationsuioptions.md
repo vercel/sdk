@@ -16,7 +16,7 @@ const value: models.GetConfigurationProductsUiOptions1 = {
 
 ```typescript
 const value: models.GetConfigurationProductsUiOptions2 = {
-  atBRANDAt543583: {},
+  atBRANDAt544277: {},
 };
 ```
 
@@ -25,7 +25,7 @@ const value: models.GetConfigurationProductsUiOptions2 = {
 ```typescript
 const value: models.GetConfigurationProductsUiOptions3 = {
   value: {
-    atBRANDAt543583: {},
+    atBRANDAt544277: {},
   },
 };
 ```

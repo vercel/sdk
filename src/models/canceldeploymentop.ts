@@ -94,6 +94,7 @@ export const CancelDeploymentFramework = {
   Hono: "hono",
   Express: "express",
   H3: "h3",
+  Nestjs: "nestjs",
   Xmcp: "xmcp",
 } as const;
 export type CancelDeploymentFramework = ClosedEnum<

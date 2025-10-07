@@ -5,11 +5,11 @@
 ```typescript
 import { TransferInDomainMethod } from "@vercel/sdk/models/transferindomainop.js";
 
-let value: TransferInDomainMethod = "GET";
+let value: TransferInDomainMethod = "PATCH";
 ```
 
 ## Values
 
 ```typescript
-"GET"
+"GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 ```

@@ -51,7 +51,9 @@ func testUpdateAccessGroupUpdateAccessGroup0(w http.ResponseWriter, req *http.Re
 		return
 	}
 	var respBody *operations.UpdateAccessGroupResponseBody = &operations.UpdateAccessGroupResponseBody{
-		Entitlements:  []operations.UpdateAccessGroupEntitlement{},
+		Entitlements: []operations.UpdateAccessGroupEntitlement{
+			operations.UpdateAccessGroupEntitlementV0,
+		},
 		Name:          "my-access-group",
 		CreatedAt:     "1588720733602",
 		TeamID:        "team_123a6c5209bc3778245d011443644c8d27dc2c50",

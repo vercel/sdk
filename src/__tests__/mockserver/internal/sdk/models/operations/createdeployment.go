@@ -1274,6 +1274,7 @@ const (
 	CreateDeploymentFrameworkRequestHono           CreateDeploymentFrameworkRequest = "hono"
 	CreateDeploymentFrameworkRequestExpress        CreateDeploymentFrameworkRequest = "express"
 	CreateDeploymentFrameworkRequestH3             CreateDeploymentFrameworkRequest = "h3"
+	CreateDeploymentFrameworkRequestNestjs         CreateDeploymentFrameworkRequest = "nestjs"
 	CreateDeploymentFrameworkRequestXmcp           CreateDeploymentFrameworkRequest = "xmcp"
 )
 
@@ -1387,6 +1388,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "express":
 		fallthrough
 	case "h3":
+		fallthrough
+	case "nestjs":
 		fallthrough
 	case "xmcp":
 		*e = CreateDeploymentFrameworkRequest(v)
@@ -1858,6 +1861,7 @@ const (
 	CreateDeploymentFrameworkLambdasHono           CreateDeploymentFrameworkLambdas = "hono"
 	CreateDeploymentFrameworkLambdasExpress        CreateDeploymentFrameworkLambdas = "express"
 	CreateDeploymentFrameworkLambdasH3             CreateDeploymentFrameworkLambdas = "h3"
+	CreateDeploymentFrameworkLambdasNestjs         CreateDeploymentFrameworkLambdas = "nestjs"
 	CreateDeploymentFrameworkLambdasXmcp           CreateDeploymentFrameworkLambdas = "xmcp"
 )
 
@@ -1971,6 +1975,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "express":
 		fallthrough
 	case "h3":
+		fallthrough
+	case "nestjs":
 		fallthrough
 	case "xmcp":
 		*e = CreateDeploymentFrameworkLambdas(v)

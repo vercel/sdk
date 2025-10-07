@@ -7,7 +7,7 @@ import { RenewDomainLinks } from "@vercel/sdk/models/renewdomainop.js";
 
 let value: RenewDomainLinks = {
   href: "<value>",
-  method: "GET",
+  method: "PUT",
 };
 ```
 

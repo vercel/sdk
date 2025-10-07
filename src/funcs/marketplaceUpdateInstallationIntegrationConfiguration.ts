@@ -145,7 +145,7 @@ async function $do(
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
       "patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
-    oAuth2Scopes: [],
+    oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 

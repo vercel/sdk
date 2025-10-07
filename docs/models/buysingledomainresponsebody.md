@@ -12,7 +12,7 @@ let value: BuySingleDomainResponseBody = {
   links: {
     "key": {
       href: "<value>",
-      method: "GET",
+      method: "PATCH",
     },
   },
 };

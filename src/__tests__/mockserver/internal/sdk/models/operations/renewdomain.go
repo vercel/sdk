@@ -169,7 +169,11 @@ func (o *RenewDomainRequest) GetRequestBody() RenewDomainRequestBody {
 type RenewDomainMethod string
 
 const (
-	RenewDomainMethodGet RenewDomainMethod = "GET"
+	RenewDomainMethodGet    RenewDomainMethod = "GET"
+	RenewDomainMethodPost   RenewDomainMethod = "POST"
+	RenewDomainMethodPut    RenewDomainMethod = "PUT"
+	RenewDomainMethodDelete RenewDomainMethod = "DELETE"
+	RenewDomainMethodPatch  RenewDomainMethod = "PATCH"
 )
 
 func (e RenewDomainMethod) ToPointer() *RenewDomainMethod {
@@ -182,6 +186,14 @@ func (e *RenewDomainMethod) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "GET":
+		fallthrough
+	case "POST":
+		fallthrough
+	case "PUT":
+		fallthrough
+	case "DELETE":
+		fallthrough
+	case "PATCH":
 		*e = RenewDomainMethod(v)
 		return nil
 	default:

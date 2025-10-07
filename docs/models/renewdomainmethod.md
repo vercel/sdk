@@ -5,11 +5,11 @@
 ```typescript
 import { RenewDomainMethod } from "@vercel/sdk/models/renewdomainop.js";
 
-let value: RenewDomainMethod = "GET";
+let value: RenewDomainMethod = "PATCH";
 ```
 
 ## Values
 
 ```typescript
-"GET"
+"GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 ```

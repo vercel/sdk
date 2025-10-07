@@ -11,5 +11,5 @@ let value: CancelDeploymentFunctionMemoryType = "performance";
 ## Values
 
 ```typescript
-"standard" | "standard_legacy" | "performance"
+"standard_legacy" | "standard" | "performance"
 ```

@@ -3,8 +3,6 @@
 
 ## Overview
 
-API Endpoints for working with and managing registered domains on Vercel
-
 ### Available Operations
 
 * [getSupportedTlds](#getsupportedtlds) - Get a list of TLDs supported by Vercel

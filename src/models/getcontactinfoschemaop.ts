@@ -6,36 +6,29 @@ import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  BadRequest,
+  BadRequest$inboundSchema,
+  BadRequest$Outbound,
+  BadRequest$outboundSchema,
+} from "./badrequest.js";
 import {
-  NotAuthorizedForScope,
-  NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
-} from "./notauthorizedforscope.js";
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+  HttpApiDecodeError$Outbound,
+  HttpApiDecodeError$outboundSchema,
+} from "./httpapidecodeerror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
 
 export type GetContactInfoSchemaRequest = {
   domain: string;
 };
 
 /**
- * Unauthorized
+ * There was something wrong with the request
  */
 export type GetContactInfoSchemaDomainsRegistrarResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
+  | HttpApiDecodeError
+  | BadRequest;
 
 /**
  * Success
@@ -104,17 +97,12 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema:
     GetContactInfoSchemaDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Unauthorized$inboundSchema,
-    NotAuthorizedForScope$inboundSchema,
-    InternalServerError$inboundSchema,
-  ]);
+  > = z.union([HttpApiDecodeError$inboundSchema, BadRequest$inboundSchema]);
 
 /** @internal */
 export type GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | HttpApiDecodeError$Outbound
+  | BadRequest$Outbound;
 
 /** @internal */
 export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
@@ -122,11 +110,7 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
     GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     GetContactInfoSchemaDomainsRegistrarResponseBody
-  > = z.union([
-    Unauthorized$outboundSchema,
-    NotAuthorizedForScope$outboundSchema,
-    InternalServerError$outboundSchema,
-  ]);
+  > = z.union([HttpApiDecodeError$outboundSchema, BadRequest$outboundSchema]);
 
 /**
  * @internal

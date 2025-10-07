@@ -10,106 +10,237 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type TransferInDomainInternalServerErrorType string
+type TransferInDomainForbiddenType string
 
 const (
-	TransferInDomainInternalServerErrorTypeUnauthorizedError          TransferInDomainInternalServerErrorType = "Unauthorized_error"
-	TransferInDomainInternalServerErrorTypeNotAuthorizedForScopeError TransferInDomainInternalServerErrorType = "NotAuthorizedForScope_error"
-	TransferInDomainInternalServerErrorTypeInternalServerErrorError   TransferInDomainInternalServerErrorType = "InternalServerError_error"
+	TransferInDomainForbiddenTypeNotAuthorizedForScopeError TransferInDomainForbiddenType = "NotAuthorizedForScope_error"
+	TransferInDomainForbiddenTypeForbiddenError             TransferInDomainForbiddenType = "Forbidden_error"
 )
 
-// TransferInDomainInternalServerError - Unauthorized
-type TransferInDomainInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// TransferInDomainForbidden - NotAuthorizedForScope
+type TransferInDomainForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type TransferInDomainInternalServerErrorType
+	Type TransferInDomainForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &TransferInDomainInternalServerError{}
+var _ error = &TransferInDomainForbidden{}
 
-func CreateTransferInDomainInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) TransferInDomainInternalServerError {
-	typ := TransferInDomainInternalServerErrorTypeUnauthorizedError
+func CreateTransferInDomainForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) TransferInDomainForbidden {
+	typ := TransferInDomainForbiddenTypeNotAuthorizedForScopeError
 
-	return TransferInDomainInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateTransferInDomainInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) TransferInDomainInternalServerError {
-	typ := TransferInDomainInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return TransferInDomainInternalServerError{
+	return TransferInDomainForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateTransferInDomainInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) TransferInDomainInternalServerError {
-	typ := TransferInDomainInternalServerErrorTypeInternalServerErrorError
+func CreateTransferInDomainForbiddenForbiddenError(forbiddenError ForbiddenError) TransferInDomainForbidden {
+	typ := TransferInDomainForbiddenTypeForbiddenError
 
-	return TransferInDomainInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return TransferInDomainForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *TransferInDomainInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = TransferInDomainInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *TransferInDomainForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = TransferInDomainInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = TransferInDomainForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = TransferInDomainInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = TransferInDomainForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TransferInDomainInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TransferInDomainForbidden", string(data))
 }
 
-func (u TransferInDomainInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u TransferInDomainForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type TransferInDomainInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type TransferInDomainForbidden: all fields are null")
 }
 
-func (u TransferInDomainInternalServerError) Error() string {
+func (u TransferInDomainForbidden) Error() string {
 	switch u.Type {
-	case TransferInDomainInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case TransferInDomainInternalServerErrorTypeNotAuthorizedForScopeError:
+	case TransferInDomainForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case TransferInDomainInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case TransferInDomainForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
+		return string(data)
+	default:
+		return "unknown error"
+	}
+}
+
+type TransferInDomainBadRequestType string
+
+const (
+	TransferInDomainBadRequestTypeHTTPAPIDecodeError         TransferInDomainBadRequestType = "HttpApiDecodeError"
+	TransferInDomainBadRequestTypeTldNotSupportedError       TransferInDomainBadRequestType = "TldNotSupported_error"
+	TransferInDomainBadRequestTypeDomainNotAvailableError    TransferInDomainBadRequestType = "DomainNotAvailable_error"
+	TransferInDomainBadRequestTypeExpectedPriceMismatchError TransferInDomainBadRequestType = "ExpectedPriceMismatch_error"
+	TransferInDomainBadRequestTypeBadRequestError            TransferInDomainBadRequestType = "BadRequest_error"
+)
+
+// TransferInDomainBadRequest - There was something wrong with the request
+type TransferInDomainBadRequest struct {
+	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
+	TldNotSupportedError       *TldNotSupportedError       `queryParam:"inline"`
+	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
+	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
+	BadRequestError            *BadRequestError            `queryParam:"inline"`
+
+	Type TransferInDomainBadRequestType
+
+	HTTPMeta components.HTTPMetadata `json:"-"`
+}
+
+var _ error = &TransferInDomainBadRequest{}
+
+func CreateTransferInDomainBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeHTTPAPIDecodeError
+
+	return TransferInDomainBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeTldNotSupportedError
+
+	return TransferInDomainBadRequest{
+		TldNotSupportedError: &tldNotSupportedError,
+		Type:                 typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeDomainNotAvailableError
+
+	return TransferInDomainBadRequest{
+		DomainNotAvailableError: &domainNotAvailableError,
+		Type:                    typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestExpectedPriceMismatchError(expectedPriceMismatchError ExpectedPriceMismatchError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeExpectedPriceMismatchError
+
+	return TransferInDomainBadRequest{
+		ExpectedPriceMismatchError: &expectedPriceMismatchError,
+		Type:                       typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestBadRequestError(badRequestError BadRequestError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeBadRequestError
+
+	return TransferInDomainBadRequest{
+		BadRequestError: &badRequestError,
+		Type:            typ,
+	}
+}
+
+func (u *TransferInDomainBadRequest) UnmarshalJSON(data []byte) error {
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = TransferInDomainBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
+	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
+	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
+		u.TldNotSupportedError = &tldNotSupportedError
+		u.Type = TransferInDomainBadRequestTypeTldNotSupportedError
+		return nil
+	}
+
+	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
+	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
+		u.DomainNotAvailableError = &domainNotAvailableError
+		u.Type = TransferInDomainBadRequestTypeDomainNotAvailableError
+		return nil
+	}
+
+	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
+	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
+		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
+		u.Type = TransferInDomainBadRequestTypeExpectedPriceMismatchError
+		return nil
+	}
+
+	var badRequestError BadRequestError = BadRequestError{}
+	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
+		u.BadRequestError = &badRequestError
+		u.Type = TransferInDomainBadRequestTypeBadRequestError
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TransferInDomainBadRequest", string(data))
+}
+
+func (u TransferInDomainBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
+	}
+
+	if u.TldNotSupportedError != nil {
+		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
+	}
+
+	if u.DomainNotAvailableError != nil {
+		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
+	}
+
+	if u.ExpectedPriceMismatchError != nil {
+		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
+	}
+
+	if u.BadRequestError != nil {
+		return utils.MarshalJSON(u.BadRequestError, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TransferInDomainBadRequest: all fields are null")
+}
+
+func (u TransferInDomainBadRequest) Error() string {
+	switch u.Type {
+	case TransferInDomainBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
+		return string(data)
+	case TransferInDomainBadRequestTypeTldNotSupportedError:
+		data, _ := json.Marshal(u.TldNotSupportedError)
+		return string(data)
+	case TransferInDomainBadRequestTypeDomainNotAvailableError:
+		data, _ := json.Marshal(u.DomainNotAvailableError)
+		return string(data)
+	case TransferInDomainBadRequestTypeExpectedPriceMismatchError:
+		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
+		return string(data)
+	case TransferInDomainBadRequestTypeBadRequestError:
+		data, _ := json.Marshal(u.BadRequestError)
 		return string(data)
 	default:
 		return "unknown error"

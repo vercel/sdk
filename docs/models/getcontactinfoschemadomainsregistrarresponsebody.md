@@ -1,40 +1,28 @@
 # GetContactInfoSchemaDomainsRegistrarResponseBody
 
-Unauthorized
+There was something wrong with the request
 
 
 ## Supported Types
 
-### `models.Unauthorized`
+### `models.HttpApiDecodeError`
 
 ```typescript
-const value: models.Unauthorized = {
-  status: 7620.76,
-  code: "unauthorized",
+const value: models.HttpApiDecodeError = {
+  issues: [],
   message: "<value>",
-  tag: "Unauthorized",
+  tag: "HttpApiDecodeError",
 };
 ```
 
-### `models.NotAuthorizedForScope`
+### `models.BadRequest`
 
 ```typescript
-const value: models.NotAuthorizedForScope = {
-  status: 4853.56,
-  code: "not_authorized_for_scope",
+const value: models.BadRequest = {
+  status: 7599.21,
+  code: "bad_request",
   message: "<value>",
-  tag: "NotAuthorizedForScope",
-};
-```
-
-### `models.InternalServerError`
-
-```typescript
-const value: models.InternalServerError = {
-  status: 5945.42,
-  code: "internal_server_error",
-  message: "<value>",
-  tag: "InternalServerError",
+  tag: "BadRequest",
 };
 ```
 

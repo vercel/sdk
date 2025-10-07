@@ -1,40 +1,72 @@
 # RenewDomainDomainsRegistrarResponseBody
 
-Unauthorized
+There was something wrong with the request
 
 
 ## Supported Types
 
-### `models.Unauthorized`
+### `models.HttpApiDecodeError`
 
 ```typescript
-const value: models.Unauthorized = {
-  status: 7620.76,
-  code: "unauthorized",
+const value: models.HttpApiDecodeError = {
+  issues: [],
   message: "<value>",
-  tag: "Unauthorized",
+  tag: "HttpApiDecodeError",
 };
 ```
 
-### `models.NotAuthorizedForScope`
+### `models.TldNotSupported`
 
 ```typescript
-const value: models.NotAuthorizedForScope = {
-  status: 4853.56,
-  code: "not_authorized_for_scope",
+const value: models.TldNotSupported = {
+  status: 72.58,
+  code: "tld_not_supported",
   message: "<value>",
-  tag: "NotAuthorizedForScope",
+  tag: "TldNotSupported",
 };
 ```
 
-### `models.InternalServerError`
+### `models.DomainNotAvailable`
 
 ```typescript
-const value: models.InternalServerError = {
-  status: 5945.42,
-  code: "internal_server_error",
+const value: models.DomainNotAvailable = {
+  status: 4878.62,
+  code: "domain_not_available",
   message: "<value>",
-  tag: "InternalServerError",
+  tag: "DomainNotAvailable",
+};
+```
+
+### `models.ExpectedPriceMismatch`
+
+```typescript
+const value: models.ExpectedPriceMismatch = {
+  status: 593.25,
+  code: "expected_price_mismatch",
+  message: "<value>",
+  tag: "ExpectedPriceMismatch",
+};
+```
+
+### `models.DomainNotRegistered`
+
+```typescript
+const value: models.DomainNotRegistered = {
+  status: 4746.15,
+  code: "domain_not_registered",
+  message: "<value>",
+  tag: "DomainNotRegistered",
+};
+```
+
+### `models.BadRequest`
+
+```typescript
+const value: models.BadRequest = {
+  status: 7599.21,
+  code: "bad_request",
+  message: "<value>",
+  tag: "BadRequest",
 };
 ```
 

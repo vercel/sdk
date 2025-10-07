@@ -11,13 +11,15 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  GetDomainAvailabilityDomainsRegistrarResponseBody,
-  GetDomainAvailabilityDomainsRegistrarResponseBody$inboundSchema,
   GetDomainAvailabilityRequest,
   GetDomainAvailabilityRequest$outboundSchema,
   GetDomainAvailabilityResponseBody,
   GetDomainAvailabilityResponseBody$inboundSchema,
 } from "../models/getdomainavailabilityop.js";
+import {
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+} from "../models/httpapidecodeerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -25,25 +27,26 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  InternalServerError,
+  InternalServerError$inboundSchema,
+} from "../models/internalservererror.js";
+import {
+  NotAuthorizedForScope,
+  NotAuthorizedForScope$inboundSchema,
+} from "../models/notauthorizedforscope.js";
+import { NotFound, NotFound$inboundSchema } from "../models/notfound.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
+  TooManyRequests,
+  TooManyRequests$inboundSchema,
+} from "../models/toomanyrequests.js";
+import {
+  Unauthorized,
+  Unauthorized$inboundSchema,
+} from "../models/unauthorized.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelForbiddenError,
-  VercelForbiddenError$inboundSchema,
-} from "../models/vercelforbiddenerror.js";
-import {
-  VercelNotFoundError,
-  VercelNotFoundError$inboundSchema,
-} from "../models/vercelnotfounderror.js";
-import {
-  VercelRateLimitError,
-  VercelRateLimitError$inboundSchema,
-} from "../models/vercelratelimiterror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -60,11 +63,12 @@ export function domainsRegistrarGetDomainAvailability(
 ): APIPromise<
   Result<
     GetDomainAvailabilityResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | VercelNotFoundError
-    | VercelRateLimitError
-    | GetDomainAvailabilityDomainsRegistrarResponseBody
+    | HttpApiDecodeError
+    | Unauthorized
+    | NotAuthorizedForScope
+    | NotFound
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -90,11 +94,12 @@ async function $do(
   [
     Result<
       GetDomainAvailabilityResponseBody,
-      | VercelBadRequestError
-      | VercelForbiddenError
-      | VercelNotFoundError
-      | VercelRateLimitError
-      | GetDomainAvailabilityDomainsRegistrarResponseBody
+      | HttpApiDecodeError
+      | Unauthorized
+      | NotAuthorizedForScope
+      | NotFound
+      | TooManyRequests
+      | InternalServerError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -169,7 +174,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "404", "429", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "403", "404", "429", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -184,11 +189,12 @@ async function $do(
 
   const [result] = await M.match<
     GetDomainAvailabilityResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | VercelNotFoundError
-    | VercelRateLimitError
-    | GetDomainAvailabilityDomainsRegistrarResponseBody
+    | HttpApiDecodeError
+    | Unauthorized
+    | NotAuthorizedForScope
+    | NotFound
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -199,14 +205,12 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GetDomainAvailabilityResponseBody$inboundSchema),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.jsonErr(404, VercelNotFoundError$inboundSchema),
-    M.jsonErr(429, VercelRateLimitError$inboundSchema),
-    M.jsonErr(
-      500,
-      GetDomainAvailabilityDomainsRegistrarResponseBody$inboundSchema,
-    ),
+    M.jsonErr(400, HttpApiDecodeError$inboundSchema),
+    M.jsonErr(401, Unauthorized$inboundSchema),
+    M.jsonErr(403, NotAuthorizedForScope$inboundSchema),
+    M.jsonErr(404, NotFound$inboundSchema),
+    M.jsonErr(429, TooManyRequests$inboundSchema),
+    M.jsonErr(500, InternalServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

@@ -10,106 +10,106 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type GetDomainPriceInternalServerErrorType string
+type GetDomainPriceBadRequestType string
 
 const (
-	GetDomainPriceInternalServerErrorTypeUnauthorizedError          GetDomainPriceInternalServerErrorType = "Unauthorized_error"
-	GetDomainPriceInternalServerErrorTypeNotAuthorizedForScopeError GetDomainPriceInternalServerErrorType = "NotAuthorizedForScope_error"
-	GetDomainPriceInternalServerErrorTypeInternalServerErrorError   GetDomainPriceInternalServerErrorType = "InternalServerError_error"
+	GetDomainPriceBadRequestTypeHTTPAPIDecodeError   GetDomainPriceBadRequestType = "HttpApiDecodeError"
+	GetDomainPriceBadRequestTypeTldNotSupportedError GetDomainPriceBadRequestType = "TldNotSupported_error"
+	GetDomainPriceBadRequestTypeBadRequestError      GetDomainPriceBadRequestType = "BadRequest_error"
 )
 
-// GetDomainPriceInternalServerError - Unauthorized
-type GetDomainPriceInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
-	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+// GetDomainPriceBadRequest - There was something wrong with the request
+type GetDomainPriceBadRequest struct {
+	HTTPAPIDecodeError   *HTTPAPIDecodeError   `queryParam:"inline"`
+	TldNotSupportedError *TldNotSupportedError `queryParam:"inline"`
+	BadRequestError      *BadRequestError      `queryParam:"inline"`
 
-	Type GetDomainPriceInternalServerErrorType
+	Type GetDomainPriceBadRequestType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &GetDomainPriceInternalServerError{}
+var _ error = &GetDomainPriceBadRequest{}
 
-func CreateGetDomainPriceInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) GetDomainPriceInternalServerError {
-	typ := GetDomainPriceInternalServerErrorTypeUnauthorizedError
+func CreateGetDomainPriceBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetDomainPriceBadRequest {
+	typ := GetDomainPriceBadRequestTypeHTTPAPIDecodeError
 
-	return GetDomainPriceInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
+	return GetDomainPriceBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
 }
 
-func CreateGetDomainPriceInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetDomainPriceInternalServerError {
-	typ := GetDomainPriceInternalServerErrorTypeNotAuthorizedForScopeError
+func CreateGetDomainPriceBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) GetDomainPriceBadRequest {
+	typ := GetDomainPriceBadRequestTypeTldNotSupportedError
 
-	return GetDomainPriceInternalServerError{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
-		Type:                       typ,
+	return GetDomainPriceBadRequest{
+		TldNotSupportedError: &tldNotSupportedError,
+		Type:                 typ,
 	}
 }
 
-func CreateGetDomainPriceInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) GetDomainPriceInternalServerError {
-	typ := GetDomainPriceInternalServerErrorTypeInternalServerErrorError
+func CreateGetDomainPriceBadRequestBadRequestError(badRequestError BadRequestError) GetDomainPriceBadRequest {
+	typ := GetDomainPriceBadRequestTypeBadRequestError
 
-	return GetDomainPriceInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return GetDomainPriceBadRequest{
+		BadRequestError: &badRequestError,
+		Type:            typ,
 	}
 }
 
-func (u *GetDomainPriceInternalServerError) UnmarshalJSON(data []byte) error {
+func (u *GetDomainPriceBadRequest) UnmarshalJSON(data []byte) error {
 
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = GetDomainPriceInternalServerErrorTypeUnauthorizedError
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = GetDomainPriceBadRequestTypeHTTPAPIDecodeError
 		return nil
 	}
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = GetDomainPriceInternalServerErrorTypeNotAuthorizedForScopeError
+	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
+	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
+		u.TldNotSupportedError = &tldNotSupportedError
+		u.Type = GetDomainPriceBadRequestTypeTldNotSupportedError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = GetDomainPriceInternalServerErrorTypeInternalServerErrorError
+	var badRequestError BadRequestError = BadRequestError{}
+	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
+		u.BadRequestError = &badRequestError
+		u.Type = GetDomainPriceBadRequestTypeBadRequestError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainPriceInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainPriceBadRequest", string(data))
 }
 
-func (u GetDomainPriceInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
+func (u GetDomainPriceBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
-	if u.NotAuthorizedForScopeError != nil {
-		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
+	if u.TldNotSupportedError != nil {
+		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.BadRequestError != nil {
+		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetDomainPriceInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type GetDomainPriceBadRequest: all fields are null")
 }
 
-func (u GetDomainPriceInternalServerError) Error() string {
+func (u GetDomainPriceBadRequest) Error() string {
 	switch u.Type {
-	case GetDomainPriceInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
+	case GetDomainPriceBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
-	case GetDomainPriceInternalServerErrorTypeNotAuthorizedForScopeError:
-		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
+	case GetDomainPriceBadRequestTypeTldNotSupportedError:
+		data, _ := json.Marshal(u.TldNotSupportedError)
 		return string(data)
-	case GetDomainPriceInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case GetDomainPriceBadRequestTypeBadRequestError:
+		data, _ := json.Marshal(u.BadRequestError)
 		return string(data)
 	default:
 		return "unknown error"

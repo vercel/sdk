@@ -7,11 +7,35 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  DomainAlreadyRenewing,
+  DomainAlreadyRenewing$inboundSchema,
+  DomainAlreadyRenewing$Outbound,
+  DomainAlreadyRenewing$outboundSchema,
+} from "./domainalreadyrenewing.js";
+import {
+  DomainNotRegistered,
+  DomainNotRegistered$inboundSchema,
+  DomainNotRegistered$Outbound,
+  DomainNotRegistered$outboundSchema,
+} from "./domainnotregistered.js";
+import {
+  DomainNotRenewable,
+  DomainNotRenewable$inboundSchema,
+  DomainNotRenewable$Outbound,
+  DomainNotRenewable$outboundSchema,
+} from "./domainnotrenewable.js";
+import {
+  Forbidden,
+  Forbidden$inboundSchema,
+  Forbidden$Outbound,
+  Forbidden$outboundSchema,
+} from "./forbidden.js";
+import {
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+  HttpApiDecodeError$Outbound,
+  HttpApiDecodeError$outboundSchema,
+} from "./httpapidecodeerror.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
@@ -19,12 +43,6 @@ import {
   NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
 
 export type UpdateDomainAutoRenewRequestBody = {
   autoRenew: boolean;
@@ -36,12 +54,20 @@ export type UpdateDomainAutoRenewRequest = {
 };
 
 /**
- * Unauthorized
+ * NotAuthorizedForScope
+ */
+export type UpdateDomainAutoRenewDomainsRegistrarResponseBody =
+  | NotAuthorizedForScope
+  | Forbidden;
+
+/**
+ * There was something wrong with the request
  */
 export type UpdateDomainAutoRenewResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
+  | HttpApiDecodeError
+  | DomainNotRegistered
+  | DomainNotRenewable
+  | DomainAlreadyRenewing;
 
 /** @internal */
 export const UpdateDomainAutoRenewRequestBody$inboundSchema: z.ZodType<
@@ -167,21 +193,87 @@ export function updateDomainAutoRenewRequestFromJSON(
 }
 
 /** @internal */
+export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema:
+  z.ZodType<
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+
+/** @internal */
+export type UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound =
+  | NotAuthorizedForScope$Outbound
+  | Forbidden$Outbound;
+
+/** @internal */
+export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema:
+  z.ZodType<
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound,
+    z.ZodTypeDef,
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody
+  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDomainAutoRenewDomainsRegistrarResponseBody$ {
+  /** @deprecated use `UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema;
+  /** @deprecated use `UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema;
+  /** @deprecated use `UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound` instead. */
+  export type Outbound =
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound;
+}
+
+export function updateDomainAutoRenewDomainsRegistrarResponseBodyToJSON(
+  updateDomainAutoRenewDomainsRegistrarResponseBody:
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema.parse(
+      updateDomainAutoRenewDomainsRegistrarResponseBody,
+    ),
+  );
+}
+
+export function updateDomainAutoRenewDomainsRegistrarResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateDomainAutoRenewDomainsRegistrarResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateDomainAutoRenewDomainsRegistrarResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateDomainAutoRenewResponseBody$inboundSchema: z.ZodType<
   UpdateDomainAutoRenewResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  Unauthorized$inboundSchema,
-  NotAuthorizedForScope$inboundSchema,
-  InternalServerError$inboundSchema,
+  HttpApiDecodeError$inboundSchema,
+  DomainNotRegistered$inboundSchema,
+  DomainNotRenewable$inboundSchema,
+  DomainAlreadyRenewing$inboundSchema,
 ]);
 
 /** @internal */
 export type UpdateDomainAutoRenewResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | HttpApiDecodeError$Outbound
+  | DomainNotRegistered$Outbound
+  | DomainNotRenewable$Outbound
+  | DomainAlreadyRenewing$Outbound;
 
 /** @internal */
 export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
@@ -189,9 +281,10 @@ export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDomainAutoRenewResponseBody
 > = z.union([
-  Unauthorized$outboundSchema,
-  NotAuthorizedForScope$outboundSchema,
-  InternalServerError$outboundSchema,
+  HttpApiDecodeError$outboundSchema,
+  DomainNotRegistered$outboundSchema,
+  DomainNotRenewable$outboundSchema,
+  DomainAlreadyRenewing$outboundSchema,
 ]);
 
 /**

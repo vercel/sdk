@@ -10,9 +10,9 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-  GetSupportedTldsResponseBody,
-  GetSupportedTldsResponseBody$inboundSchema,
-} from "../models/getsupportedtldsop.js";
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+} from "../models/httpapidecodeerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -20,21 +20,25 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  InternalServerError,
+  InternalServerError$inboundSchema,
+} from "../models/internalservererror.js";
+import {
+  NotAuthorizedForScope,
+  NotAuthorizedForScope$inboundSchema,
+} from "../models/notauthorizedforscope.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
+  TooManyRequests,
+  TooManyRequests$inboundSchema,
+} from "../models/toomanyrequests.js";
+import {
+  Unauthorized,
+  Unauthorized$inboundSchema,
+} from "../models/unauthorized.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelForbiddenError,
-  VercelForbiddenError$inboundSchema,
-} from "../models/vercelforbiddenerror.js";
-import {
-  VercelRateLimitError,
-  VercelRateLimitError$inboundSchema,
-} from "../models/vercelratelimiterror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -50,10 +54,11 @@ export function domainsRegistrarGetSupportedTlds(
 ): APIPromise<
   Result<
     Array<string>,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | VercelRateLimitError
-    | GetSupportedTldsResponseBody
+    | HttpApiDecodeError
+    | Unauthorized
+    | NotAuthorizedForScope
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -77,10 +82,11 @@ async function $do(
   [
     Result<
       Array<string>,
-      | VercelBadRequestError
-      | VercelForbiddenError
-      | VercelRateLimitError
-      | GetSupportedTldsResponseBody
+      | HttpApiDecodeError
+      | Unauthorized
+      | NotAuthorizedForScope
+      | TooManyRequests
+      | InternalServerError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -134,7 +140,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "429", "4XX", "500", "5XX"],
+    errorCodes: ["400", "401", "403", "429", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -149,10 +155,11 @@ async function $do(
 
   const [result] = await M.match<
     Array<string>,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | VercelRateLimitError
-    | GetSupportedTldsResponseBody
+    | HttpApiDecodeError
+    | Unauthorized
+    | NotAuthorizedForScope
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -163,10 +170,11 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, z.array(z.string())),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.jsonErr(429, VercelRateLimitError$inboundSchema),
-    M.jsonErr(500, GetSupportedTldsResponseBody$inboundSchema),
+    M.jsonErr(400, HttpApiDecodeError$inboundSchema),
+    M.jsonErr(401, Unauthorized$inboundSchema),
+    M.jsonErr(403, NotAuthorizedForScope$inboundSchema),
+    M.jsonErr(429, TooManyRequests$inboundSchema),
+    M.jsonErr(500, InternalServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

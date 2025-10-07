@@ -1,40 +1,28 @@
 # UpdateDomainNameserversResponseBody
 
-Unauthorized
+There was something wrong with the request
 
 
 ## Supported Types
 
-### `models.Unauthorized`
+### `models.HttpApiDecodeError`
 
 ```typescript
-const value: models.Unauthorized = {
-  status: 7620.76,
-  code: "unauthorized",
+const value: models.HttpApiDecodeError = {
+  issues: [],
   message: "<value>",
-  tag: "Unauthorized",
+  tag: "HttpApiDecodeError",
 };
 ```
 
-### `models.NotAuthorizedForScope`
+### `models.DomainNotRegistered`
 
 ```typescript
-const value: models.NotAuthorizedForScope = {
-  status: 4853.56,
-  code: "not_authorized_for_scope",
+const value: models.DomainNotRegistered = {
+  status: 4746.15,
+  code: "domain_not_registered",
   message: "<value>",
-  tag: "NotAuthorizedForScope",
-};
-```
-
-### `models.InternalServerError`
-
-```typescript
-const value: models.InternalServerError = {
-  status: 5945.42,
-  code: "internal_server_error",
-  message: "<value>",
-  tag: "InternalServerError",
+  tag: "DomainNotRegistered",
 };
 ```
 

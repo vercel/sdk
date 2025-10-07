@@ -11,7 +11,10 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { Forbidden, Forbidden$inboundSchema } from "../models/forbidden.js";
+import {
+  DomainNotFound,
+  DomainNotFound$inboundSchema,
+} from "../models/domainnotfound.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -19,31 +22,29 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  InternalServerError,
+  InternalServerError$inboundSchema,
+} from "../models/internalservererror.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
+  TooManyRequests,
+  TooManyRequests$inboundSchema,
+} from "../models/toomanyrequests.js";
+import {
+  Unauthorized,
+  Unauthorized$inboundSchema,
+} from "../models/unauthorized.js";
+import {
+  UpdateDomainNameserversDomainsRegistrarResponseBody,
+  UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema,
   UpdateDomainNameserversRequest,
   UpdateDomainNameserversRequest$outboundSchema,
   UpdateDomainNameserversResponseBody,
   UpdateDomainNameserversResponseBody$inboundSchema,
 } from "../models/updatedomainnameserversop.js";
-import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelForbiddenError,
-  VercelForbiddenError$inboundSchema,
-} from "../models/vercelforbiddenerror.js";
-import {
-  VercelNotFoundError,
-  VercelNotFoundError$inboundSchema,
-} from "../models/vercelnotfounderror.js";
-import {
-  VercelRateLimitError,
-  VercelRateLimitError$inboundSchema,
-} from "../models/vercelratelimiterror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -60,12 +61,12 @@ export function domainsRegistrarUpdateDomainNameservers(
 ): APIPromise<
   Result<
     void,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | Forbidden
-    | VercelNotFoundError
-    | VercelRateLimitError
     | UpdateDomainNameserversResponseBody
+    | Unauthorized
+    | UpdateDomainNameserversDomainsRegistrarResponseBody
+    | DomainNotFound
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -91,12 +92,12 @@ async function $do(
   [
     Result<
       void,
-      | VercelBadRequestError
-      | VercelForbiddenError
-      | Forbidden
-      | VercelNotFoundError
-      | VercelRateLimitError
       | UpdateDomainNameserversResponseBody
+      | Unauthorized
+      | UpdateDomainNameserversDomainsRegistrarResponseBody
+      | DomainNotFound
+      | TooManyRequests
+      | InternalServerError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -187,12 +188,12 @@ async function $do(
 
   const [result] = await M.match<
     void,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | Forbidden
-    | VercelNotFoundError
-    | VercelRateLimitError
     | UpdateDomainNameserversResponseBody
+    | Unauthorized
+    | UpdateDomainNameserversDomainsRegistrarResponseBody
+    | DomainNotFound
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -203,12 +204,15 @@ async function $do(
     | SDKValidationError
   >(
     M.nil(204, z.void()),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.jsonErr(403, Forbidden$inboundSchema),
-    M.jsonErr(404, VercelNotFoundError$inboundSchema),
-    M.jsonErr(429, VercelRateLimitError$inboundSchema),
-    M.jsonErr(500, UpdateDomainNameserversResponseBody$inboundSchema),
+    M.jsonErr(400, UpdateDomainNameserversResponseBody$inboundSchema),
+    M.jsonErr(401, Unauthorized$inboundSchema),
+    M.jsonErr(
+      403,
+      UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema,
+    ),
+    M.jsonErr(404, DomainNotFound$inboundSchema),
+    M.jsonErr(429, TooManyRequests$inboundSchema),
+    M.jsonErr(500, InternalServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

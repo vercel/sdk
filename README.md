@@ -902,7 +902,7 @@ run();
 ### Example
 ```typescript
 import { Vercel } from "@vercel/sdk";
-import { VercelBadRequestError } from "@vercel/sdk/models/vercelbadrequesterror.js";
+import { HttpApiDecodeError } from "@vercel/sdk/models/httpapidecodeerror.js";
 import { VercelError } from "@vercel/sdk/models/vercelerror.js.js";
 
 const vercel = new Vercel({
@@ -911,11 +911,7 @@ const vercel = new Vercel({
 
 async function run() {
   try {
-    const result = await vercel.accessGroups.readAccessGroup({
-      idOrName: "ag_1a2b3c4d5e6f7g8h9i0j",
-      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-      slug: "my-team-url-slug",
-    });
+    const result = await vercel.domainsRegistrar.getSupportedTlds();
 
     console.log(result);
   } catch (error) {
@@ -927,8 +923,10 @@ async function run() {
       console.log(error.headers);
 
       // Depending on the method different errors may be thrown
-      if (error instanceof VercelBadRequestError) {
-        console.log(error.data$.error); // models.ErrorT
+      if (error instanceof HttpApiDecodeError) {
+        console.log(error.data$.issues); // Issue[]
+        console.log(error.data$.message); // string
+        console.log(error.data$.tag); // models.HttpApiDecodeErrorTag
       }
     }
   }
@@ -939,12 +937,10 @@ run();
 ```
 
 ### Error Classes
-**Primary errors:**
+**Primary error:**
 * [`VercelError`](./src/models/vercelerror.ts): The base class for HTTP error responses.
-  * [`VercelBadRequestError`](./src/models/vercelbadrequesterror.ts): Status code `400`. *
-  * [`VercelForbiddenError`](./src/models/vercelforbiddenerror.ts): Status code `401`. *
 
-<details><summary>Less common errors (12)</summary>
+<details><summary>Less common errors (26)</summary>
 
 <br />
 
@@ -957,12 +953,26 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`VercelNotFoundError`](./src/models/vercelnotfounderror.ts): Status code `404`. Applicable to 121 of 196 methods.*
-* [`VercelRateLimitError`](./src/models/vercelratelimiterror.ts): Status code `429`. Applicable to 20 of 196 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `500`. Applicable to 15 of 196 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): Unauthorized. Status code `500`. Applicable to 15 of 196 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): Unauthorized. Status code `500`. Applicable to 15 of 196 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): Forbidden. Status code `403`. Applicable to 9 of 196 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 15 of 196 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 15 of 196 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 15 of 196 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 15 of 196 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 15 of 196 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 196 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): There was something wrong with the request. Status code `400`. Applicable to 6 of 196 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): DomainNotFound. Status code `404`. Applicable to 4 of 196 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 196 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): There was something wrong with the request. Status code `400`. Applicable to 2 of 196 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): There was something wrong with the request. Status code `400`. Applicable to 2 of 196 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): There was something wrong with the request. Status code `400`. Applicable to 2 of 196 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

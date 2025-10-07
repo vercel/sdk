@@ -10,106 +10,81 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type GetDomainTransferInInternalServerErrorType string
+type GetDomainTransferInForbiddenType string
 
 const (
-	GetDomainTransferInInternalServerErrorTypeUnauthorizedError          GetDomainTransferInInternalServerErrorType = "Unauthorized_error"
-	GetDomainTransferInInternalServerErrorTypeNotAuthorizedForScopeError GetDomainTransferInInternalServerErrorType = "NotAuthorizedForScope_error"
-	GetDomainTransferInInternalServerErrorTypeInternalServerErrorError   GetDomainTransferInInternalServerErrorType = "InternalServerError_error"
+	GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError GetDomainTransferInForbiddenType = "NotAuthorizedForScope_error"
+	GetDomainTransferInForbiddenTypeForbiddenError             GetDomainTransferInForbiddenType = "Forbidden_error"
 )
 
-// GetDomainTransferInInternalServerError - Unauthorized
-type GetDomainTransferInInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// GetDomainTransferInForbidden - NotAuthorizedForScope
+type GetDomainTransferInForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type GetDomainTransferInInternalServerErrorType
+	Type GetDomainTransferInForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &GetDomainTransferInInternalServerError{}
+var _ error = &GetDomainTransferInForbidden{}
 
-func CreateGetDomainTransferInInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) GetDomainTransferInInternalServerError {
-	typ := GetDomainTransferInInternalServerErrorTypeUnauthorizedError
+func CreateGetDomainTransferInForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetDomainTransferInForbidden {
+	typ := GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError
 
-	return GetDomainTransferInInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateGetDomainTransferInInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetDomainTransferInInternalServerError {
-	typ := GetDomainTransferInInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return GetDomainTransferInInternalServerError{
+	return GetDomainTransferInForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateGetDomainTransferInInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) GetDomainTransferInInternalServerError {
-	typ := GetDomainTransferInInternalServerErrorTypeInternalServerErrorError
+func CreateGetDomainTransferInForbiddenForbiddenError(forbiddenError ForbiddenError) GetDomainTransferInForbidden {
+	typ := GetDomainTransferInForbiddenTypeForbiddenError
 
-	return GetDomainTransferInInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return GetDomainTransferInForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *GetDomainTransferInInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = GetDomainTransferInInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *GetDomainTransferInForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = GetDomainTransferInInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = GetDomainTransferInInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = GetDomainTransferInForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainTransferInInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainTransferInForbidden", string(data))
 }
 
-func (u GetDomainTransferInInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u GetDomainTransferInForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetDomainTransferInInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type GetDomainTransferInForbidden: all fields are null")
 }
 
-func (u GetDomainTransferInInternalServerError) Error() string {
+func (u GetDomainTransferInForbidden) Error() string {
 	switch u.Type {
-	case GetDomainTransferInInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case GetDomainTransferInInternalServerErrorTypeNotAuthorizedForScopeError:
+	case GetDomainTransferInForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case GetDomainTransferInInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case GetDomainTransferInForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:
 		return "unknown error"

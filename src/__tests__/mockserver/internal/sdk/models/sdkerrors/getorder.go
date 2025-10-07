@@ -10,106 +10,81 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type GetOrderInternalServerErrorType string
+type GetOrderForbiddenType string
 
 const (
-	GetOrderInternalServerErrorTypeUnauthorizedError          GetOrderInternalServerErrorType = "Unauthorized_error"
-	GetOrderInternalServerErrorTypeNotAuthorizedForScopeError GetOrderInternalServerErrorType = "NotAuthorizedForScope_error"
-	GetOrderInternalServerErrorTypeInternalServerErrorError   GetOrderInternalServerErrorType = "InternalServerError_error"
+	GetOrderForbiddenTypeNotAuthorizedForScopeError GetOrderForbiddenType = "NotAuthorizedForScope_error"
+	GetOrderForbiddenTypeForbiddenError             GetOrderForbiddenType = "Forbidden_error"
 )
 
-// GetOrderInternalServerError - Unauthorized
-type GetOrderInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// GetOrderForbidden - NotAuthorizedForScope
+type GetOrderForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type GetOrderInternalServerErrorType
+	Type GetOrderForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &GetOrderInternalServerError{}
+var _ error = &GetOrderForbidden{}
 
-func CreateGetOrderInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) GetOrderInternalServerError {
-	typ := GetOrderInternalServerErrorTypeUnauthorizedError
+func CreateGetOrderForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetOrderForbidden {
+	typ := GetOrderForbiddenTypeNotAuthorizedForScopeError
 
-	return GetOrderInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateGetOrderInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetOrderInternalServerError {
-	typ := GetOrderInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return GetOrderInternalServerError{
+	return GetOrderForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateGetOrderInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) GetOrderInternalServerError {
-	typ := GetOrderInternalServerErrorTypeInternalServerErrorError
+func CreateGetOrderForbiddenForbiddenError(forbiddenError ForbiddenError) GetOrderForbidden {
+	typ := GetOrderForbiddenTypeForbiddenError
 
-	return GetOrderInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return GetOrderForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *GetOrderInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = GetOrderInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *GetOrderForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = GetOrderInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = GetOrderForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = GetOrderInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = GetOrderForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetOrderInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetOrderForbidden", string(data))
 }
 
-func (u GetOrderInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u GetOrderForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetOrderInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type GetOrderForbidden: all fields are null")
 }
 
-func (u GetOrderInternalServerError) Error() string {
+func (u GetOrderForbidden) Error() string {
 	switch u.Type {
-	case GetOrderInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case GetOrderInternalServerErrorTypeNotAuthorizedForScopeError:
+	case GetOrderForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case GetOrderInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case GetOrderForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
 		return string(data)
 	default:
 		return "unknown error"

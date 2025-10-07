@@ -10,106 +10,212 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type UpdateDomainAutoRenewInternalServerErrorType string
+type UpdateDomainAutoRenewForbiddenType string
 
 const (
-	UpdateDomainAutoRenewInternalServerErrorTypeUnauthorizedError          UpdateDomainAutoRenewInternalServerErrorType = "Unauthorized_error"
-	UpdateDomainAutoRenewInternalServerErrorTypeNotAuthorizedForScopeError UpdateDomainAutoRenewInternalServerErrorType = "NotAuthorizedForScope_error"
-	UpdateDomainAutoRenewInternalServerErrorTypeInternalServerErrorError   UpdateDomainAutoRenewInternalServerErrorType = "InternalServerError_error"
+	UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError UpdateDomainAutoRenewForbiddenType = "NotAuthorizedForScope_error"
+	UpdateDomainAutoRenewForbiddenTypeForbiddenError             UpdateDomainAutoRenewForbiddenType = "Forbidden_error"
 )
 
-// UpdateDomainAutoRenewInternalServerError - Unauthorized
-type UpdateDomainAutoRenewInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// UpdateDomainAutoRenewForbidden - NotAuthorizedForScope
+type UpdateDomainAutoRenewForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type UpdateDomainAutoRenewInternalServerErrorType
+	Type UpdateDomainAutoRenewForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &UpdateDomainAutoRenewInternalServerError{}
+var _ error = &UpdateDomainAutoRenewForbidden{}
 
-func CreateUpdateDomainAutoRenewInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) UpdateDomainAutoRenewInternalServerError {
-	typ := UpdateDomainAutoRenewInternalServerErrorTypeUnauthorizedError
+func CreateUpdateDomainAutoRenewForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) UpdateDomainAutoRenewForbidden {
+	typ := UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError
 
-	return UpdateDomainAutoRenewInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateUpdateDomainAutoRenewInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) UpdateDomainAutoRenewInternalServerError {
-	typ := UpdateDomainAutoRenewInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return UpdateDomainAutoRenewInternalServerError{
+	return UpdateDomainAutoRenewForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateUpdateDomainAutoRenewInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) UpdateDomainAutoRenewInternalServerError {
-	typ := UpdateDomainAutoRenewInternalServerErrorTypeInternalServerErrorError
+func CreateUpdateDomainAutoRenewForbiddenForbiddenError(forbiddenError ForbiddenError) UpdateDomainAutoRenewForbidden {
+	typ := UpdateDomainAutoRenewForbiddenTypeForbiddenError
 
-	return UpdateDomainAutoRenewInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return UpdateDomainAutoRenewForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *UpdateDomainAutoRenewInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = UpdateDomainAutoRenewInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *UpdateDomainAutoRenewForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = UpdateDomainAutoRenewInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = UpdateDomainAutoRenewInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = UpdateDomainAutoRenewForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDomainAutoRenewInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDomainAutoRenewForbidden", string(data))
 }
 
-func (u UpdateDomainAutoRenewInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u UpdateDomainAutoRenewForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateDomainAutoRenewInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateDomainAutoRenewForbidden: all fields are null")
 }
 
-func (u UpdateDomainAutoRenewInternalServerError) Error() string {
+func (u UpdateDomainAutoRenewForbidden) Error() string {
 	switch u.Type {
-	case UpdateDomainAutoRenewInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case UpdateDomainAutoRenewInternalServerErrorTypeNotAuthorizedForScopeError:
+	case UpdateDomainAutoRenewForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case UpdateDomainAutoRenewInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case UpdateDomainAutoRenewForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
+		return string(data)
+	default:
+		return "unknown error"
+	}
+}
+
+type UpdateDomainAutoRenewBadRequestType string
+
+const (
+	UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError         UpdateDomainAutoRenewBadRequestType = "HttpApiDecodeError"
+	UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError   UpdateDomainAutoRenewBadRequestType = "DomainNotRegistered_error"
+	UpdateDomainAutoRenewBadRequestTypeDomainNotRenewableError    UpdateDomainAutoRenewBadRequestType = "DomainNotRenewable_error"
+	UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError UpdateDomainAutoRenewBadRequestType = "DomainAlreadyRenewing_error"
+)
+
+// UpdateDomainAutoRenewBadRequest - There was something wrong with the request
+type UpdateDomainAutoRenewBadRequest struct {
+	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
+	DomainNotRegisteredError   *DomainNotRegisteredError   `queryParam:"inline"`
+	DomainNotRenewableError    *DomainNotRenewableError    `queryParam:"inline"`
+	DomainAlreadyRenewingError *DomainAlreadyRenewingError `queryParam:"inline"`
+
+	Type UpdateDomainAutoRenewBadRequestType
+
+	HTTPMeta components.HTTPMetadata `json:"-"`
+}
+
+var _ error = &UpdateDomainAutoRenewBadRequest{}
+
+func CreateUpdateDomainAutoRenewBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) UpdateDomainAutoRenewBadRequest {
+	typ := UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError
+
+	return UpdateDomainAutoRenewBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
+	}
+}
+
+func CreateUpdateDomainAutoRenewBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) UpdateDomainAutoRenewBadRequest {
+	typ := UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError
+
+	return UpdateDomainAutoRenewBadRequest{
+		DomainNotRegisteredError: &domainNotRegisteredError,
+		Type:                     typ,
+	}
+}
+
+func CreateUpdateDomainAutoRenewBadRequestDomainNotRenewableError(domainNotRenewableError DomainNotRenewableError) UpdateDomainAutoRenewBadRequest {
+	typ := UpdateDomainAutoRenewBadRequestTypeDomainNotRenewableError
+
+	return UpdateDomainAutoRenewBadRequest{
+		DomainNotRenewableError: &domainNotRenewableError,
+		Type:                    typ,
+	}
+}
+
+func CreateUpdateDomainAutoRenewBadRequestDomainAlreadyRenewingError(domainAlreadyRenewingError DomainAlreadyRenewingError) UpdateDomainAutoRenewBadRequest {
+	typ := UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError
+
+	return UpdateDomainAutoRenewBadRequest{
+		DomainAlreadyRenewingError: &domainAlreadyRenewingError,
+		Type:                       typ,
+	}
+}
+
+func (u *UpdateDomainAutoRenewBadRequest) UnmarshalJSON(data []byte) error {
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
+	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
+	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
+		u.DomainNotRegisteredError = &domainNotRegisteredError
+		u.Type = UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError
+		return nil
+	}
+
+	var domainNotRenewableError DomainNotRenewableError = DomainNotRenewableError{}
+	if err := utils.UnmarshalJSON(data, &domainNotRenewableError, "", true, nil); err == nil {
+		u.DomainNotRenewableError = &domainNotRenewableError
+		u.Type = UpdateDomainAutoRenewBadRequestTypeDomainNotRenewableError
+		return nil
+	}
+
+	var domainAlreadyRenewingError DomainAlreadyRenewingError = DomainAlreadyRenewingError{}
+	if err := utils.UnmarshalJSON(data, &domainAlreadyRenewingError, "", true, nil); err == nil {
+		u.DomainAlreadyRenewingError = &domainAlreadyRenewingError
+		u.Type = UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDomainAutoRenewBadRequest", string(data))
+}
+
+func (u UpdateDomainAutoRenewBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
+	}
+
+	if u.DomainNotRegisteredError != nil {
+		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	}
+
+	if u.DomainNotRenewableError != nil {
+		return utils.MarshalJSON(u.DomainNotRenewableError, "", true)
+	}
+
+	if u.DomainAlreadyRenewingError != nil {
+		return utils.MarshalJSON(u.DomainAlreadyRenewingError, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateDomainAutoRenewBadRequest: all fields are null")
+}
+
+func (u UpdateDomainAutoRenewBadRequest) Error() string {
+	switch u.Type {
+	case UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
+		return string(data)
+	case UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError:
+		data, _ := json.Marshal(u.DomainNotRegisteredError)
+		return string(data)
+	case UpdateDomainAutoRenewBadRequestTypeDomainNotRenewableError:
+		data, _ := json.Marshal(u.DomainNotRenewableError)
+		return string(data)
+	case UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError:
+		data, _ := json.Marshal(u.DomainAlreadyRenewingError)
 		return string(data)
 	default:
 		return "unknown error"

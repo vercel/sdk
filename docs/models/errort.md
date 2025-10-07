@@ -1,19 +1,43 @@
 # ErrorT
 
-## Example Usage
+
+## Supported Types
+
+### `models.Error1`
 
 ```typescript
-import { ErrorT } from "@vercel/sdk/models/vercelbadrequesterror.js";
-
-let value: ErrorT = {
-  code: "<value>",
-  message: "<value>",
+const value: models.Error1 = {
+  code: "payment-failed",
 };
 ```
 
-## Fields
+### `models.Error2`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `code`             | *string*           | :heavy_check_mark: | N/A                |
-| `message`          | *string*           | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.Error2 = {
+  code: "tld-outage",
+  details: {
+    tlds: [],
+  },
+};
+```
+
+### `models.Error3`
+
+```typescript
+const value: models.Error3 = {
+  code: "price-mismatch",
+  details: {
+    expectedPrice: 6162.82,
+  },
+};
+```
+
+### `models.Error4`
+
+```typescript
+const value: models.Error4 = {
+  code: "unexpected-error",
+};
+```
+

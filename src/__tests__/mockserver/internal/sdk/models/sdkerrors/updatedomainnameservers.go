@@ -10,106 +10,162 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type UpdateDomainNameserversInternalServerErrorType string
+type UpdateDomainNameserversForbiddenType string
 
 const (
-	UpdateDomainNameserversInternalServerErrorTypeUnauthorizedError          UpdateDomainNameserversInternalServerErrorType = "Unauthorized_error"
-	UpdateDomainNameserversInternalServerErrorTypeNotAuthorizedForScopeError UpdateDomainNameserversInternalServerErrorType = "NotAuthorizedForScope_error"
-	UpdateDomainNameserversInternalServerErrorTypeInternalServerErrorError   UpdateDomainNameserversInternalServerErrorType = "InternalServerError_error"
+	UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError UpdateDomainNameserversForbiddenType = "NotAuthorizedForScope_error"
+	UpdateDomainNameserversForbiddenTypeForbiddenError             UpdateDomainNameserversForbiddenType = "Forbidden_error"
 )
 
-// UpdateDomainNameserversInternalServerError - Unauthorized
-type UpdateDomainNameserversInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// UpdateDomainNameserversForbidden - NotAuthorizedForScope
+type UpdateDomainNameserversForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type UpdateDomainNameserversInternalServerErrorType
+	Type UpdateDomainNameserversForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &UpdateDomainNameserversInternalServerError{}
+var _ error = &UpdateDomainNameserversForbidden{}
 
-func CreateUpdateDomainNameserversInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) UpdateDomainNameserversInternalServerError {
-	typ := UpdateDomainNameserversInternalServerErrorTypeUnauthorizedError
+func CreateUpdateDomainNameserversForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) UpdateDomainNameserversForbidden {
+	typ := UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError
 
-	return UpdateDomainNameserversInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateUpdateDomainNameserversInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) UpdateDomainNameserversInternalServerError {
-	typ := UpdateDomainNameserversInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return UpdateDomainNameserversInternalServerError{
+	return UpdateDomainNameserversForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateUpdateDomainNameserversInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) UpdateDomainNameserversInternalServerError {
-	typ := UpdateDomainNameserversInternalServerErrorTypeInternalServerErrorError
+func CreateUpdateDomainNameserversForbiddenForbiddenError(forbiddenError ForbiddenError) UpdateDomainNameserversForbidden {
+	typ := UpdateDomainNameserversForbiddenTypeForbiddenError
 
-	return UpdateDomainNameserversInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return UpdateDomainNameserversForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *UpdateDomainNameserversInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = UpdateDomainNameserversInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *UpdateDomainNameserversForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = UpdateDomainNameserversInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = UpdateDomainNameserversInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = UpdateDomainNameserversForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDomainNameserversInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDomainNameserversForbidden", string(data))
 }
 
-func (u UpdateDomainNameserversInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u UpdateDomainNameserversForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type UpdateDomainNameserversInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateDomainNameserversForbidden: all fields are null")
 }
 
-func (u UpdateDomainNameserversInternalServerError) Error() string {
+func (u UpdateDomainNameserversForbidden) Error() string {
 	switch u.Type {
-	case UpdateDomainNameserversInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case UpdateDomainNameserversInternalServerErrorTypeNotAuthorizedForScopeError:
+	case UpdateDomainNameserversForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case UpdateDomainNameserversInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case UpdateDomainNameserversForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
+		return string(data)
+	default:
+		return "unknown error"
+	}
+}
+
+type UpdateDomainNameserversBadRequestType string
+
+const (
+	UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError       UpdateDomainNameserversBadRequestType = "HttpApiDecodeError"
+	UpdateDomainNameserversBadRequestTypeDomainNotRegisteredError UpdateDomainNameserversBadRequestType = "DomainNotRegistered_error"
+)
+
+// UpdateDomainNameserversBadRequest - There was something wrong with the request
+type UpdateDomainNameserversBadRequest struct {
+	HTTPAPIDecodeError       *HTTPAPIDecodeError       `queryParam:"inline"`
+	DomainNotRegisteredError *DomainNotRegisteredError `queryParam:"inline"`
+
+	Type UpdateDomainNameserversBadRequestType
+
+	HTTPMeta components.HTTPMetadata `json:"-"`
+}
+
+var _ error = &UpdateDomainNameserversBadRequest{}
+
+func CreateUpdateDomainNameserversBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) UpdateDomainNameserversBadRequest {
+	typ := UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError
+
+	return UpdateDomainNameserversBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
+	}
+}
+
+func CreateUpdateDomainNameserversBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) UpdateDomainNameserversBadRequest {
+	typ := UpdateDomainNameserversBadRequestTypeDomainNotRegisteredError
+
+	return UpdateDomainNameserversBadRequest{
+		DomainNotRegisteredError: &domainNotRegisteredError,
+		Type:                     typ,
+	}
+}
+
+func (u *UpdateDomainNameserversBadRequest) UnmarshalJSON(data []byte) error {
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
+	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
+	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
+		u.DomainNotRegisteredError = &domainNotRegisteredError
+		u.Type = UpdateDomainNameserversBadRequestTypeDomainNotRegisteredError
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDomainNameserversBadRequest", string(data))
+}
+
+func (u UpdateDomainNameserversBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
+	}
+
+	if u.DomainNotRegisteredError != nil {
+		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateDomainNameserversBadRequest: all fields are null")
+}
+
+func (u UpdateDomainNameserversBadRequest) Error() string {
+	switch u.Type {
+	case UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
+		return string(data)
+	case UpdateDomainNameserversBadRequestTypeDomainNotRegisteredError:
+		data, _ := json.Marshal(u.DomainNotRegisteredError)
 		return string(data)
 	default:
 		return "unknown error"

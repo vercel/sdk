@@ -6,7 +6,7 @@
 import { GetConfigurationProductsUiOptions2 } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: GetConfigurationProductsUiOptions2 = {
-  atBRANDAt544277: {},
+  atBRANDAt544285: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: GetConfigurationProductsUiOptions2 = {
 
 | Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `atBRANDAt544277`                                                                                                        | [models.GetConfigurationProductsUiOptionsAtBRANDAt544277](../models/getconfigurationproductsuioptionsatbrandat544277.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `atBRANDAt544285`                                                                                                        | [models.GetConfigurationProductsUiOptionsAtBRANDAt544285](../models/getconfigurationproductsuioptionsatbrandat544285.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

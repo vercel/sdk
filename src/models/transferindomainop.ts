@@ -8,11 +8,35 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  BadRequest,
+  BadRequest$inboundSchema,
+  BadRequest$Outbound,
+  BadRequest$outboundSchema,
+} from "./badrequest.js";
+import {
+  DomainNotAvailable,
+  DomainNotAvailable$inboundSchema,
+  DomainNotAvailable$Outbound,
+  DomainNotAvailable$outboundSchema,
+} from "./domainnotavailable.js";
+import {
+  ExpectedPriceMismatch,
+  ExpectedPriceMismatch$inboundSchema,
+  ExpectedPriceMismatch$Outbound,
+  ExpectedPriceMismatch$outboundSchema,
+} from "./expectedpricemismatch.js";
+import {
+  Forbidden,
+  Forbidden$inboundSchema,
+  Forbidden$Outbound,
+  Forbidden$outboundSchema,
+} from "./forbidden.js";
+import {
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+  HttpApiDecodeError$Outbound,
+  HttpApiDecodeError$outboundSchema,
+} from "./httpapidecodeerror.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
@@ -21,11 +45,11 @@ import {
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
+  TldNotSupported,
+  TldNotSupported$inboundSchema,
+  TldNotSupported$Outbound,
+  TldNotSupported$outboundSchema,
+} from "./tldnotsupported.js";
 
 export type TransferInDomainContactInformation = {
   /**
@@ -95,12 +119,21 @@ export type TransferInDomainRequest = {
 };
 
 /**
- * Unauthorized
+ * NotAuthorizedForScope
+ */
+export type TransferInDomainDomainsRegistrarResponseResponseBody =
+  | NotAuthorizedForScope
+  | Forbidden;
+
+/**
+ * There was something wrong with the request
  */
 export type TransferInDomainDomainsRegistrarResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
+  | HttpApiDecodeError
+  | TldNotSupported
+  | DomainNotAvailable
+  | ExpectedPriceMismatch
+  | BadRequest;
 
 export const TransferInDomainMethod = {
   Get: "GET",
@@ -353,22 +386,90 @@ export function transferInDomainRequestFromJSON(
 }
 
 /** @internal */
+export const TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema:
+  z.ZodType<
+    TransferInDomainDomainsRegistrarResponseResponseBody,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+
+/** @internal */
+export type TransferInDomainDomainsRegistrarResponseResponseBody$Outbound =
+  | NotAuthorizedForScope$Outbound
+  | Forbidden$Outbound;
+
+/** @internal */
+export const TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema:
+  z.ZodType<
+    TransferInDomainDomainsRegistrarResponseResponseBody$Outbound,
+    z.ZodTypeDef,
+    TransferInDomainDomainsRegistrarResponseResponseBody
+  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferInDomainDomainsRegistrarResponseResponseBody$ {
+  /** @deprecated use `TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema;
+  /** @deprecated use `TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema;
+  /** @deprecated use `TransferInDomainDomainsRegistrarResponseResponseBody$Outbound` instead. */
+  export type Outbound =
+    TransferInDomainDomainsRegistrarResponseResponseBody$Outbound;
+}
+
+export function transferInDomainDomainsRegistrarResponseResponseBodyToJSON(
+  transferInDomainDomainsRegistrarResponseResponseBody:
+    TransferInDomainDomainsRegistrarResponseResponseBody,
+): string {
+  return JSON.stringify(
+    TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema.parse(
+      transferInDomainDomainsRegistrarResponseResponseBody,
+    ),
+  );
+}
+
+export function transferInDomainDomainsRegistrarResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferInDomainDomainsRegistrarResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TransferInDomainDomainsRegistrarResponseResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
   z.ZodType<
     TransferInDomainDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
   > = z.union([
-    Unauthorized$inboundSchema,
-    NotAuthorizedForScope$inboundSchema,
-    InternalServerError$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
+    TldNotSupported$inboundSchema,
+    DomainNotAvailable$inboundSchema,
+    ExpectedPriceMismatch$inboundSchema,
+    BadRequest$inboundSchema,
   ]);
 
 /** @internal */
 export type TransferInDomainDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | HttpApiDecodeError$Outbound
+  | TldNotSupported$Outbound
+  | DomainNotAvailable$Outbound
+  | ExpectedPriceMismatch$Outbound
+  | BadRequest$Outbound;
 
 /** @internal */
 export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
@@ -377,9 +478,11 @@ export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
     z.ZodTypeDef,
     TransferInDomainDomainsRegistrarResponseBody
   > = z.union([
-    Unauthorized$outboundSchema,
-    NotAuthorizedForScope$outboundSchema,
-    InternalServerError$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
+    TldNotSupported$outboundSchema,
+    DomainNotAvailable$outboundSchema,
+    ExpectedPriceMismatch$outboundSchema,
+    BadRequest$outboundSchema,
   ]);
 
 /**

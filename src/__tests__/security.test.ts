@@ -318,7 +318,17 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [],
+    result: [
+      {
+        ownerId: "<id>",
+        id: "<id>",
+        domain: "ideal-scratch.name",
+        ip: "e110:cbdf:bab2:e3eb:95ba:c0dd:def7:9f1e",
+        createdAt: "1725302835186",
+        updatedAt: "1735621376843",
+        updatedAtHour: "<value>",
+      },
+    ],
   });
 });
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: b8ffb1b0bb1c840af7ad7f47699a3c36
+  docChecksum: c757d862db9ec5714457b6fa418fd09d
   docVersion: 0.0.1
   speakeasyVersion: 1.635.3
   generationVersion: 2.722.5
-  releaseVersion: 1.13.1
-  configChecksum: c0bceaa1d5dc4d45b074a7825a87dd41
+  releaseVersion: 1.13.2
+  configChecksum: a92da708d8e6a50f1bd7fc883a73a266
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -9318,7 +9318,3 @@ generatedTests:
   renewDomain: "2025-10-07T01:47:08Z"
   getContactInfoSchema: "2025-10-07T01:47:08Z"
   getOrder: "2025-10-07T01:47:08Z"
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:
-  * `vercel.integrations.createIntegrationStoreDirect()`:  `response.store.product` **Changed** **Breaking** :warning:

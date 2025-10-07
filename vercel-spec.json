@@ -13671,11 +13671,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
-                            "timeout",
                             "skipped",
                             "pending",
-                            "ready"
+                            "ready",
+                            "error",
+                            "timeout"
                           ]
                         },
                         "startedAt": {
@@ -13854,18 +13854,18 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "ERROR",
                               "BUILDING",
+                              "ERROR",
                               "INITIALIZING",
                               "READY"
                             ]
                           },
-                          "readyStateAt": {
-                            "type": "number"
-                          },
                           "entrypoint": {
                             "nullable": true,
                             "type": "string"
+                          },
+                          "readyStateAt": {
+                            "type": "number"
                           },
                           "output": {
                             "items": {
@@ -14924,15 +14924,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -15555,12 +15555,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "filesystem",
                                   "error",
+                                  "filesystem",
                                   "hit",
                                   "miss",
-                                  "resource",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -15883,8 +15883,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15936,8 +15936,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -15990,8 +15990,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -16924,11 +16924,11 @@
                         "status": {
                           "type": "string",
                           "enum": [
-                            "error",
-                            "timeout",
                             "skipped",
                             "pending",
-                            "ready"
+                            "ready",
+                            "error",
+                            "timeout"
                           ]
                         },
                         "startedAt": {
@@ -17107,18 +17107,18 @@
                           "readyState": {
                             "type": "string",
                             "enum": [
-                              "ERROR",
                               "BUILDING",
+                              "ERROR",
                               "INITIALIZING",
                               "READY"
                             ]
                           },
-                          "readyStateAt": {
-                            "type": "number"
-                          },
                           "entrypoint": {
                             "nullable": true,
                             "type": "string"
+                          },
+                          "readyStateAt": {
+                            "type": "number"
                           },
                           "output": {
                             "items": {
@@ -17173,10 +17173,10 @@
                         "name": {
                           "type": "string"
                         },
-                        "slug": {
+                        "avatar": {
                           "type": "string"
                         },
-                        "avatar": {
+                        "slug": {
                           "type": "string"
                         }
                       },
@@ -18793,12 +18793,12 @@
                               "handle": {
                                 "type": "string",
                                 "enum": [
-                                  "filesystem",
                                   "error",
+                                  "filesystem",
                                   "hit",
                                   "miss",
-                                  "resource",
-                                  "rewrite"
+                                  "rewrite",
+                                  "resource"
                                 ]
                               },
                               "src": {
@@ -18877,8 +18877,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -18930,8 +18930,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -18984,8 +18984,8 @@
                             "ownerType": {
                               "type": "string",
                               "enum": [
-                                "user",
-                                "team"
+                                "team",
+                                "user"
                               ]
                             }
                           },
@@ -19194,15 +19194,15 @@
                         "functionType": {
                           "type": "string",
                           "enum": [
-                            "standard",
-                            "fluid"
+                            "fluid",
+                            "standard"
                           ]
                         },
                         "functionMemoryType": {
                           "type": "string",
                           "enum": [
-                            "standard_legacy",
                             "standard",
+                            "standard_legacy",
                             "performance"
                           ]
                         },
@@ -93251,10 +93251,5 @@
       }
     }
   },
-  "security": [],
-  "contact": {
-    "email": "support@vercel.com",
-    "name": "Vercel Support",
-    "url": "https://vercel.com/support"
-  }
+  "security": []
 }

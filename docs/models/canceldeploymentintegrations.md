@@ -6,7 +6,7 @@
 import { CancelDeploymentIntegrations } from "@vercel/sdk/models/canceldeploymentop.js";
 
 let value: CancelDeploymentIntegrations = {
-  status: "skipped",
+  status: "ready",
   startedAt: 8045.81,
 };
 ```

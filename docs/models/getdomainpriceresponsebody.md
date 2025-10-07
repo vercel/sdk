@@ -1,0 +1,25 @@
+# GetDomainPriceResponseBody
+
+Success
+
+## Example Usage
+
+```typescript
+import { GetDomainPriceResponseBody } from "@vercel/sdk/models/getdomainpriceop.js";
+
+let value: GetDomainPriceResponseBody = {
+  years: 6336.28,
+  purchasePrice: 724.81,
+  renewalPrice: 546.91,
+  transferPrice: 3565.55,
+};
+```
+
+## Fields
+
+| Field                                       | Type                                        | Required                                    | Description                                 |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `years`                                     | *number*                                    | :heavy_check_mark:                          | N/A                                         |
+| `purchasePrice`                             | *number*                                    | :heavy_check_mark:                          | Represents a monetary amount in USD dollars |
+| `renewalPrice`                              | *number*                                    | :heavy_check_mark:                          | Represents a monetary amount in USD dollars |
+| `transferPrice`                             | *number*                                    | :heavy_check_mark:                          | Represents a monetary amount in USD dollars |

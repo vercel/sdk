@@ -19687,6 +19687,16 @@
           "403": {
             "description": "You do not have permission to access this resource."
           },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
           "500": {
             "description": ""
           }
@@ -21146,6 +21156,2462 @@
             }
           }
         ]
+      }
+    },
+    "/v1/registrar/tlds/supported": {
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getSupportedTlds",
+        "parameters": [],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get supported TLDs",
+        "summary": "Get a list of TLDs supported by Vercel"
+      }
+    },
+    "/v1/registrar/tlds/{tld}/price": {
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getTldPrice",
+        "parameters": [
+          {
+            "name": "tld",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "years",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/NumberFromString"
+            },
+            "required": false
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "years",
+                    "purchasePrice",
+                    "renewalPrice",
+                    "transferPrice"
+                  ],
+                  "properties": {
+                    "years": {
+                      "type": "number"
+                    },
+                    "purchasePrice": {
+                      "$ref": "#/components/schemas/Dollars",
+                      "nullable": true
+                    },
+                    "renewalPrice": {
+                      "$ref": "#/components/schemas/Dollars",
+                      "nullable": true
+                    },
+                    "transferPrice": {
+                      "$ref": "#/components/schemas/Dollars",
+                      "nullable": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get TLD price data",
+        "summary": "Get price data for a specific TLD"
+      }
+    },
+    "/v1/registrar/domains/{domain}/availability": {
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getDomainAvailability",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "available"
+                  ],
+                  "properties": {
+                    "available": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get availability for a specific domain",
+        "summary": "Get availability for a specific domain"
+      }
+    },
+    "/v1/registrar/domains/{domain}/price": {
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getDomainPrice",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          },
+          {
+            "name": "years",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/NumberFromString"
+            },
+            "required": false
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "years",
+                    "purchasePrice",
+                    "renewalPrice",
+                    "transferPrice"
+                  ],
+                  "properties": {
+                    "years": {
+                      "type": "number"
+                    },
+                    "purchasePrice": {
+                      "$ref": "#/components/schemas/Dollars",
+                      "nullable": true
+                    },
+                    "renewalPrice": {
+                      "$ref": "#/components/schemas/Dollars",
+                      "nullable": true
+                    },
+                    "transferPrice": {
+                      "$ref": "#/components/schemas/Dollars",
+                      "nullable": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get price data for a specific domain",
+        "summary": "Get price data for a specific domain"
+      }
+    },
+    "/v1/registrar/domains/availability": {
+      "post": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getBulkAvailability",
+        "parameters": [],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "results"
+                  ],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "domain",
+                          "available"
+                        ],
+                        "properties": {
+                          "domain": {
+                            "$ref": "#/components/schemas/DomainName"
+                          },
+                          "available": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get availability for multiple domains",
+        "summary": "Get availability for multiple domains",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "domains"
+                ],
+                "properties": {
+                  "domains": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/components/schemas/DomainName"
+                    },
+                    "description": "an array of at most 50 item(s)",
+                    "title": "maxItems(50)",
+                    "maxItems": 50
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/registrar/domains/{domain}/auth-code": {
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getDomainAuthCode",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "authCode"
+                  ],
+                  "properties": {
+                    "authCode": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the auth code for a domain",
+        "summary": "Get the auth code for a domain"
+      }
+    },
+    "/v1/registrar/domains/{domain}/buy": {
+      "post": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "buySingleDomain",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "orderId",
+                    "_links"
+                  ],
+                  "properties": {
+                    "orderId": {
+                      "type": "string"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "href",
+                          "method"
+                        ],
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string",
+                            "enum": [
+                              "GET"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Buy a domain",
+        "summary": "Buy a domain",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "autoRenew",
+                  "years",
+                  "expectedPrice",
+                  "contactInformation"
+                ],
+                "properties": {
+                  "autoRenew": {
+                    "type": "boolean"
+                  },
+                  "years": {
+                    "type": "number"
+                  },
+                  "expectedPrice": {
+                    "$ref": "#/components/schemas/Dollars"
+                  },
+                  "contactInformation": {
+                    "type": "object",
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "email",
+                      "phone",
+                      "address1",
+                      "city",
+                      "state",
+                      "zip",
+                      "country"
+                    ],
+                    "properties": {
+                      "firstName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "lastName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "email": {
+                        "$ref": "#/components/schemas/EmailAddress"
+                      },
+                      "phone": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      },
+                      "address1": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "address2": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "city": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "state": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "zip": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "country": {
+                        "$ref": "#/components/schemas/CountryCode"
+                      },
+                      "companyName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "fax": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      },
+                      "additional": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/registrar/domains/buy": {
+      "post": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "buyDomains",
+        "parameters": [],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "orderId",
+                    "_links"
+                  ],
+                  "properties": {
+                    "orderId": {
+                      "type": "string"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "href",
+                          "method"
+                        ],
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string",
+                            "enum": [
+                              "GET"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Buy multiple domains",
+        "summary": "Buy multiple domains at once",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "domains",
+                  "contactInformation"
+                ],
+                "properties": {
+                  "domains": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "domainName",
+                        "autoRenew",
+                        "years",
+                        "expectedPrice"
+                      ],
+                      "properties": {
+                        "domainName": {
+                          "$ref": "#/components/schemas/DomainName"
+                        },
+                        "autoRenew": {
+                          "type": "boolean"
+                        },
+                        "years": {
+                          "type": "number"
+                        },
+                        "expectedPrice": {
+                          "$ref": "#/components/schemas/Dollars"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "contactInformation": {
+                    "type": "object",
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "email",
+                      "phone",
+                      "address1",
+                      "city",
+                      "state",
+                      "zip",
+                      "country"
+                    ],
+                    "properties": {
+                      "firstName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "lastName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "email": {
+                        "$ref": "#/components/schemas/EmailAddress"
+                      },
+                      "phone": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      },
+                      "address1": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "address2": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "city": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "state": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "zip": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "country": {
+                        "$ref": "#/components/schemas/CountryCode"
+                      },
+                      "companyName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "fax": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      },
+                      "additional": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/registrar/domains/{domain}/transfer": {
+      "post": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "transferInDomain",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "orderId",
+                    "_links"
+                  ],
+                  "properties": {
+                    "orderId": {
+                      "type": "string"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "href",
+                          "method"
+                        ],
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string",
+                            "enum": [
+                              "GET"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Transfer-in a domain",
+        "summary": "Transfer a domain in from another registrar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "authCode",
+                  "autoRenew",
+                  "years",
+                  "expectedPrice",
+                  "contactInformation"
+                ],
+                "properties": {
+                  "authCode": {
+                    "type": "string"
+                  },
+                  "autoRenew": {
+                    "type": "boolean"
+                  },
+                  "years": {
+                    "type": "number"
+                  },
+                  "expectedPrice": {
+                    "$ref": "#/components/schemas/Dollars"
+                  },
+                  "contactInformation": {
+                    "type": "object",
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "email",
+                      "phone",
+                      "address1",
+                      "city",
+                      "state",
+                      "zip",
+                      "country"
+                    ],
+                    "properties": {
+                      "firstName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "lastName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "email": {
+                        "$ref": "#/components/schemas/EmailAddress"
+                      },
+                      "phone": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      },
+                      "address1": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "address2": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "city": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "state": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "zip": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "country": {
+                        "$ref": "#/components/schemas/CountryCode"
+                      },
+                      "companyName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "fax": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      },
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getDomainTransferIn",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "canceled",
+                        "canceled_pending_refund",
+                        "completed",
+                        "created",
+                        "failed",
+                        "pending",
+                        "pending_insert",
+                        "pending_new_auth_code",
+                        "pending_transfer",
+                        "pending_unlock",
+                        "rejected",
+                        "submitting_transfer"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a domain's transfer status",
+        "summary": "Get the transfer status for a domain"
+      }
+    },
+    "/v1/registrar/domains/{domain}/renew": {
+      "post": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "renewDomain",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "orderId",
+                    "_links"
+                  ],
+                  "properties": {
+                    "orderId": {
+                      "type": "string"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "href",
+                          "method"
+                        ],
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string",
+                            "enum": [
+                              "GET"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Renew a domain",
+        "summary": "Renew a domain",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "years",
+                  "expectedPrice"
+                ],
+                "properties": {
+                  "years": {
+                    "type": "number"
+                  },
+                  "expectedPrice": {
+                    "$ref": "#/components/schemas/Dollars"
+                  },
+                  "contactInformation": {
+                    "type": "object",
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "email",
+                      "phone",
+                      "address1",
+                      "city",
+                      "state",
+                      "zip",
+                      "country"
+                    ],
+                    "properties": {
+                      "firstName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "lastName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "email": {
+                        "$ref": "#/components/schemas/EmailAddress"
+                      },
+                      "phone": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      },
+                      "address1": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "address2": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "city": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "state": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "zip": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "country": {
+                        "$ref": "#/components/schemas/CountryCode"
+                      },
+                      "companyName": {
+                        "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                      },
+                      "fax": {
+                        "$ref": "#/components/schemas/E164PhoneNumber"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/registrar/domains/{domain}/auto-renew": {
+      "patch": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "updateDomainAutoRenew",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Update auto-renew for a domain",
+        "summary": "Update the auto-renew setting for a domain",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "autoRenew"
+                ],
+                "properties": {
+                  "autoRenew": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/registrar/domains/{domain}/nameservers": {
+      "patch": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "updateDomainNameservers",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Update nameservers for a domain",
+        "summary": "Update the nameservers for a domain",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "nameservers"
+                ],
+                "properties": {
+                  "nameservers": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Nameserver"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/registrar/domains/{domain}/contact-info/schema": {
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getContactInfoSchema",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/DomainName"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [],
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/BadRequest"
+                    }
+                  ],
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get contact info schema",
+        "summary": "Get the schema for the tld-specific contact information for a domain"
+      }
+    },
+    "/v1/registrar/orders/{orderId}": {
+      "get": {
+        "tags": [
+          "domains-registrar"
+        ],
+        "operationId": "getOrder",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "orderId",
+                    "domains",
+                    "status"
+                  ],
+                  "properties": {
+                    "orderId": {
+                      "type": "string"
+                    },
+                    "domains": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "purchaseType",
+                              "autoRenew",
+                              "domainName",
+                              "status",
+                              "price",
+                              "years"
+                            ],
+                            "properties": {
+                              "purchaseType": {
+                                "type": "string",
+                                "enum": [
+                                  "purchase"
+                                ]
+                              },
+                              "autoRenew": {
+                                "type": "boolean"
+                              },
+                              "domainName": {
+                                "$ref": "#/components/schemas/DomainName"
+                              },
+                              "status": {
+                                "type": "string",
+                                "enum": [
+                                  "pending",
+                                  "completed",
+                                  "failed",
+                                  "refunded",
+                                  "refund-failed"
+                                ]
+                              },
+                              "price": {
+                                "$ref": "#/components/schemas/Dollars"
+                              },
+                              "years": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "purchaseType",
+                              "domainName",
+                              "status",
+                              "price",
+                              "years"
+                            ],
+                            "properties": {
+                              "purchaseType": {
+                                "type": "string",
+                                "enum": [
+                                  "renewal"
+                                ]
+                              },
+                              "domainName": {
+                                "$ref": "#/components/schemas/DomainName"
+                              },
+                              "status": {
+                                "type": "string",
+                                "enum": [
+                                  "pending",
+                                  "completed",
+                                  "failed",
+                                  "refunded",
+                                  "refund-failed"
+                                ]
+                              },
+                              "price": {
+                                "$ref": "#/components/schemas/Dollars"
+                              },
+                              "years": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "purchaseType",
+                              "autoRenew",
+                              "domainName",
+                              "status",
+                              "price",
+                              "years"
+                            ],
+                            "properties": {
+                              "purchaseType": {
+                                "type": "string",
+                                "enum": [
+                                  "transfer"
+                                ]
+                              },
+                              "autoRenew": {
+                                "type": "boolean"
+                              },
+                              "domainName": {
+                                "$ref": "#/components/schemas/DomainName"
+                              },
+                              "status": {
+                                "type": "string",
+                                "enum": [
+                                  "pending",
+                                  "completed",
+                                  "failed",
+                                  "refunded",
+                                  "refund-failed"
+                                ]
+                              },
+                              "price": {
+                                "$ref": "#/components/schemas/Dollars"
+                              },
+                              "years": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "draft",
+                        "purchasing",
+                        "completed",
+                        "failed"
+                      ]
+                    },
+                    "error": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "code"
+                          ],
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "payment-failed"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "code",
+                            "details"
+                          ],
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "tld-outage"
+                              ]
+                            },
+                            "details": {
+                              "type": "object",
+                              "required": [
+                                "tlds"
+                              ],
+                              "properties": {
+                                "tlds": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "required": [
+                                      "tldName",
+                                      "endsAt"
+                                    ],
+                                    "properties": {
+                                      "tldName": {
+                                        "type": "string"
+                                      },
+                                      "endsAt": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "code",
+                            "details"
+                          ],
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "price-mismatch"
+                              ]
+                            },
+                            "details": {
+                              "type": "object",
+                              "required": [
+                                "expectedPrice"
+                              ],
+                              "properties": {
+                                "expectedPrice": {
+                                  "type": "number"
+                                },
+                                "actualPrice": {
+                                  "type": "number"
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "code"
+                          ],
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "enum": [
+                                "unexpected-error"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelBadRequestError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelForbiddenError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelNotFoundError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "TooManyRequests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VercelRateLimitError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Unauthorized"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NotAuthorizedForScope"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a domain order",
+        "summary": "Get information about a domain order by its ID"
       }
     },
     "/v1/domains/{domain}/registry": {
@@ -29698,34 +32164,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "default": {
@@ -30408,34 +32874,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "default": {
@@ -30593,34 +33059,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@543559": {
+                                                "__@BRAND@543583": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@543559"
+                                                "__@BRAND@543583"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@543559": {
+                                                "__@BRAND@543583": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@543559"
+                                                "__@BRAND@543583"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@543559": {
+                                                "__@BRAND@543583": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@543559"
+                                                "__@BRAND@543583"
                                               ]
                                             },
                                             "default": {
@@ -30931,12 +33397,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@543559": {
+                                                  "__@BRAND@543583": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@543559"
+                                                  "__@BRAND@543583"
                                                 ]
                                               },
                                               {
@@ -30944,12 +33410,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@543559": {
+                                                      "__@BRAND@543583": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@543559"
+                                                      "__@BRAND@543583"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31018,34 +33484,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "default": {
@@ -31203,34 +33669,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@543559": {
+                                                "__@BRAND@543583": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@543559"
+                                                "__@BRAND@543583"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@543559": {
+                                                "__@BRAND@543583": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@543559"
+                                                "__@BRAND@543583"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@543559": {
+                                                "__@BRAND@543583": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@543559"
+                                                "__@BRAND@543583"
                                               ]
                                             },
                                             "default": {
@@ -31319,12 +33785,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@543559": {
+                                                  "__@BRAND@543583": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@543559"
+                                                  "__@BRAND@543583"
                                                 ]
                                               },
                                               {
@@ -31332,12 +33798,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@543559": {
+                                                      "__@BRAND@543583": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@543559"
+                                                      "__@BRAND@543583"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -31523,12 +33989,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@543559": {
+                                              "__@BRAND@543583": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@543559"
+                                              "__@BRAND@543583"
                                             ]
                                           },
                                           "type": "array"
@@ -31537,12 +34003,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@543559": {
+                                              "__@BRAND@543583": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@543559"
+                                              "__@BRAND@543583"
                                             ]
                                           },
                                           "type": "array"
@@ -31576,34 +34042,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "default": {
@@ -31737,12 +34203,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@543559": {
+                                            "__@BRAND@543583": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@543559"
+                                            "__@BRAND@543583"
                                           ]
                                         },
                                         "disabled": {
@@ -39050,10 +41516,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -40057,17 +42523,17 @@
                                 "github-limited"
                               ]
                             },
-                            "updatedAt": {
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
+                            "updatedAt": {
+                              "type": "number"
                             },
                             "org": {
                               "type": "string"
@@ -40075,9 +42541,6 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
-                            },
-                            "repoId": {
-                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -40110,6 +42573,9 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -40501,6 +42967,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -40522,9 +42991,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -40627,6 +43093,9 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -40648,9 +43117,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -40697,8 +43163,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -42439,11 +44905,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -42483,11 +44949,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -48682,10 +51148,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -49689,17 +52155,17 @@
                                 "github-limited"
                               ]
                             },
-                            "updatedAt": {
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
+                            "updatedAt": {
+                              "type": "number"
                             },
                             "org": {
                               "type": "string"
@@ -49707,9 +52173,6 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
-                            },
-                            "repoId": {
-                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -49742,6 +52205,9 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -50133,6 +52599,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -50154,9 +52623,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -50259,6 +52725,9 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -50280,9 +52749,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -50329,8 +52795,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -52071,11 +54537,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -52115,11 +54581,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -69800,34 +72266,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "description": {
@@ -70510,34 +72976,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "description": {
@@ -70686,34 +73152,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8487": {
+                                                  "__@BRAND@8489": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8487"
+                                                  "__@BRAND@8489"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8487": {
+                                                  "__@BRAND@8489": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8487"
+                                                  "__@BRAND@8489"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8487": {
+                                                  "__@BRAND@8489": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8487"
+                                                  "__@BRAND@8489"
                                                 ]
                                               },
                                               "default": {
@@ -71030,12 +73496,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@8487": {
+                                                    "__@BRAND@8489": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@8487"
+                                                    "__@BRAND@8489"
                                                   ]
                                                 },
                                                 {
@@ -71043,12 +73509,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@8487": {
+                                                        "__@BRAND@8489": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@8487"
+                                                        "__@BRAND@8489"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -71120,34 +73586,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "description": {
@@ -71297,34 +73763,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "description": {
@@ -71455,12 +73921,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8487": {
+                                              "__@BRAND@8489": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8487"
+                                              "__@BRAND@8489"
                                             ]
                                           },
                                           "disabled": {
@@ -71709,12 +74175,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@8487": {
+                                "__@BRAND@8489": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@8487"
+                                "__@BRAND@8489"
                               ]
                             },
                             "disabled": {
@@ -80013,6 +82479,622 @@
         ],
         "type": "object",
         "description": "This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data."
+      },
+      "HttpApiDecodeError": {
+        "type": "object",
+        "required": [
+          "issues",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "issues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "HttpApiDecodeError"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "description": "The request did not match the expected schema"
+      },
+      "Issue": {
+        "type": "object",
+        "required": [
+          "_tag",
+          "path",
+          "message"
+        ],
+        "properties": {
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "Pointer",
+              "Unexpected",
+              "Missing",
+              "Composite",
+              "Refinement",
+              "Transformation",
+              "Type",
+              "Forbidden"
+            ],
+            "description": "The tag identifying the type of parse issue"
+          },
+          "path": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PropertyKey"
+            },
+            "description": "The path to the property where the issue occurred"
+          },
+          "message": {
+            "type": "string",
+            "description": "A descriptive message explaining the issue"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an error encountered while parsing a value to match the schema"
+      },
+      "PropertyKey": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "object",
+            "required": [
+              "_tag",
+              "key"
+            ],
+            "properties": {
+              "_tag": {
+                "type": "string",
+                "enum": [
+                  "symbol"
+                ]
+              },
+              "key": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "description": "an object to be decoded into a globally shared symbol"
+          }
+        ]
+      },
+      "TooManyRequests": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "retryAfter",
+          "limit",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              429
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "too_many_requests"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "retryAfter": {
+            "type": "object",
+            "required": [
+              "value",
+              "str"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "str": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "limit": {
+            "type": "object",
+            "required": [
+              "total",
+              "remaining",
+              "reset"
+            ],
+            "properties": {
+              "total": {
+                "type": "number"
+              },
+              "remaining": {
+                "type": "number"
+              },
+              "reset": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "TooManyRequests"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "Unauthorized": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              401
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "unauthorized"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "Unauthorized"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotAuthorizedForScope": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              403
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "not_authorized_for_scope"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "NotAuthorizedForScope"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "InternalServerError": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              500
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "internal_server_error"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "InternalServerError"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "NumberFromString": {
+        "type": "string",
+        "description": "a string to be decoded into a number"
+      },
+      "Dollars": {
+        "type": "number",
+        "description": "Represents a monetary amount in USD dollars",
+        "minimum": 0.01
+      },
+      "NotFound": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              404
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "not_found"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "NotFound"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "DomainName": {
+        "type": "string"
+      },
+      "BadRequest": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              400
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "bad_request"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "BadRequest"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "Forbidden": {
+        "type": "object",
+        "required": [
+          "status",
+          "code",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "enum": [
+              403
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "forbidden"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "Forbidden"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "NonEmptyTrimmedString": {
+        "type": "string",
+        "description": "a non empty string",
+        "title": "nonEmptyString",
+        "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
+        "minLength": 1
+      },
+      "EmailAddress": {
+        "type": "string",
+        "description": "a non empty string",
+        "title": "nonEmptyString",
+        "minLength": 1
+      },
+      "E164PhoneNumber": {
+        "type": "string",
+        "description": "A valid E.164 phone number",
+        "title": "nonEmptyString",
+        "minLength": 1,
+        "pattern": "^(?=(?:\\D*\\d){7,15}$)\\+[1-9]\\d{0,2}\\.?\\d+$"
+      },
+      "CountryCode": {
+        "type": "string",
+        "description": "A valid ISO 3166-1 alpha-2 country code",
+        "title": "nonEmptyString",
+        "minLength": 1,
+        "pattern": "^[A-Z]{2}$"
+      },
+      "Nameserver": {
+        "type": "string"
+      },
+      "RegistrantField": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "description",
+              "required",
+              "type"
+            ],
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              },
+              "validation": {
+                "type": "string",
+                "enum": [
+                  "valid_email",
+                  "valid_countries"
+                ]
+              },
+              "required_when": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "string"
+                ]
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "value",
+                    "label"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "fields": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {}
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "fields": {
+                "type": "object",
+                "required": [],
+                "properties": {}
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "description",
+              "required",
+              "type",
+              "options"
+            ],
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              },
+              "validation": {
+                "type": "string",
+                "enum": [
+                  "valid_email",
+                  "valid_countries"
+                ]
+              },
+              "required_when": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "enum"
+                ]
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "value",
+                    "label"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "fields": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {}
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "fields": {
+                "type": "object",
+                "required": [],
+                "properties": {}
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "description",
+              "required",
+              "type"
+            ],
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              },
+              "validation": {
+                "type": "string",
+                "enum": [
+                  "valid_email",
+                  "valid_countries"
+                ]
+              },
+              "required_when": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "acknowledgement"
+                ]
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "description",
+              "required",
+              "type"
+            ],
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "string"
+              },
+              "validation": {
+                "type": "string",
+                "enum": [
+                  "valid_email",
+                  "valid_countries"
+                ]
+              },
+              "required_when": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "notice"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        ],
+        "description": "Schema definition for registrant fields."
       },
       "EdgeConfigItemValue": {
         "nullable": true,
@@ -90168,5 +93250,17 @@
         }
       }
     }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "domains-registrar",
+      "description": "API Endpoints for working with and managing registered domains on Vercel"
+    }
+  ],
+  "contact": {
+    "email": "support@vercel.com",
+    "name": "Vercel Support",
+    "url": "https://vercel.com/support"
   }
 }

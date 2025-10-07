@@ -72,7 +72,7 @@ export const GetDomainsServiceType = {
  */
 export type GetDomainsServiceType = ClosedEnum<typeof GetDomainsServiceType>;
 
-export type Domains = {
+export type GetDomainsDomains = {
   /**
    * If the domain has the ownership verified.
    */
@@ -145,7 +145,7 @@ export type Domains = {
  * Successful response retrieving a list of domains.
  */
 export type GetDomainsResponseBody = {
-  domains: Array<Domains>;
+  domains: Array<GetDomainsDomains>;
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
@@ -327,30 +327,33 @@ export namespace GetDomainsServiceType$ {
 }
 
 /** @internal */
-export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> =
-  z.object({
-    verified: z.boolean(),
-    nameservers: z.array(z.string()),
-    intendedNameservers: z.array(z.string()),
-    customNameservers: z.array(z.string()).optional(),
-    creator: z.lazy(() => GetDomainsCreator$inboundSchema),
-    registrar: GetDomainsRegistrar$inboundSchema.optional(),
-    teamId: z.nullable(z.string()),
-    createdAt: z.number(),
-    boughtAt: z.nullable(z.number()),
-    expiresAt: z.nullable(z.number()),
-    id: z.string(),
-    name: z.string(),
-    orderedAt: z.number().optional(),
-    renew: z.boolean().optional(),
-    serviceType: GetDomainsServiceType$inboundSchema,
-    transferredAt: z.nullable(z.number()).optional(),
-    transferStartedAt: z.number().optional(),
-    userId: z.string(),
-  });
+export const GetDomainsDomains$inboundSchema: z.ZodType<
+  GetDomainsDomains,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  verified: z.boolean(),
+  nameservers: z.array(z.string()),
+  intendedNameservers: z.array(z.string()),
+  customNameservers: z.array(z.string()).optional(),
+  creator: z.lazy(() => GetDomainsCreator$inboundSchema),
+  registrar: GetDomainsRegistrar$inboundSchema.optional(),
+  teamId: z.nullable(z.string()),
+  createdAt: z.number(),
+  boughtAt: z.nullable(z.number()),
+  expiresAt: z.nullable(z.number()),
+  id: z.string(),
+  name: z.string(),
+  orderedAt: z.number().optional(),
+  renew: z.boolean().optional(),
+  serviceType: GetDomainsServiceType$inboundSchema,
+  transferredAt: z.nullable(z.number()).optional(),
+  transferStartedAt: z.number().optional(),
+  userId: z.string(),
+});
 
 /** @internal */
-export type Domains$Outbound = {
+export type GetDomainsDomains$Outbound = {
   verified: boolean;
   nameservers: Array<string>;
   intendedNameservers: Array<string>;
@@ -372,10 +375,10 @@ export type Domains$Outbound = {
 };
 
 /** @internal */
-export const Domains$outboundSchema: z.ZodType<
-  Domains$Outbound,
+export const GetDomainsDomains$outboundSchema: z.ZodType<
+  GetDomainsDomains$Outbound,
   z.ZodTypeDef,
-  Domains
+  GetDomainsDomains
 > = z.object({
   verified: z.boolean(),
   nameservers: z.array(z.string()),
@@ -401,26 +404,30 @@ export const Domains$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Domains$ {
-  /** @deprecated use `Domains$inboundSchema` instead. */
-  export const inboundSchema = Domains$inboundSchema;
-  /** @deprecated use `Domains$outboundSchema` instead. */
-  export const outboundSchema = Domains$outboundSchema;
-  /** @deprecated use `Domains$Outbound` instead. */
-  export type Outbound = Domains$Outbound;
+export namespace GetDomainsDomains$ {
+  /** @deprecated use `GetDomainsDomains$inboundSchema` instead. */
+  export const inboundSchema = GetDomainsDomains$inboundSchema;
+  /** @deprecated use `GetDomainsDomains$outboundSchema` instead. */
+  export const outboundSchema = GetDomainsDomains$outboundSchema;
+  /** @deprecated use `GetDomainsDomains$Outbound` instead. */
+  export type Outbound = GetDomainsDomains$Outbound;
 }
 
-export function domainsToJSON(domains: Domains): string {
-  return JSON.stringify(Domains$outboundSchema.parse(domains));
+export function getDomainsDomainsToJSON(
+  getDomainsDomains: GetDomainsDomains,
+): string {
+  return JSON.stringify(
+    GetDomainsDomains$outboundSchema.parse(getDomainsDomains),
+  );
 }
 
-export function domainsFromJSON(
+export function getDomainsDomainsFromJSON(
   jsonString: string,
-): SafeParseResult<Domains, SDKValidationError> {
+): SafeParseResult<GetDomainsDomains, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Domains$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Domains' from JSON`,
+    (x) => GetDomainsDomains$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDomainsDomains' from JSON`,
   );
 }
 
@@ -430,13 +437,13 @@ export const GetDomainsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domains: z.array(z.lazy(() => Domains$inboundSchema)),
+  domains: z.array(z.lazy(() => GetDomainsDomains$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
 
 /** @internal */
 export type GetDomainsResponseBody$Outbound = {
-  domains: Array<Domains$Outbound>;
+  domains: Array<GetDomainsDomains$Outbound>;
   pagination: Pagination$Outbound;
 };
 
@@ -446,7 +453,7 @@ export const GetDomainsResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDomainsResponseBody
 > = z.object({
-  domains: z.array(z.lazy(() => Domains$outboundSchema)),
+  domains: z.array(z.lazy(() => GetDomainsDomains$outboundSchema)),
   pagination: Pagination$outboundSchema,
 });
 

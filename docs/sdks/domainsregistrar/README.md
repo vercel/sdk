@@ -87,11 +87,10 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -166,12 +165,11 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -246,12 +244,11 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.NotFound              | 404                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -326,11 +323,12 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.BadRequest            | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -409,11 +407,10 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -488,13 +485,13 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.DomainNotRegistered   | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.DomainNotFound        | 404                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -599,16 +596,21 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.Forbidden             | 403                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
-| models.InternalServerError   | 500                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type                           | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| models.HttpApiDecodeError            | 400                                  | application/json                     |
+| models.TldNotSupported               | 400                                  | application/json                     |
+| models.DomainNotAvailable            | 400                                  | application/json                     |
+| models.ExpectedPriceMismatch         | 400                                  | application/json                     |
+| models.AdditionalContactInfoRequired | 400                                  | application/json                     |
+| models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
+| models.OrderTooExpensive             | 400                                  | application/json                     |
+| models.Unauthorized                  | 401                                  | application/json                     |
+| models.NotAuthorizedForScope         | 403                                  | application/json                     |
+| models.Forbidden                     | 403                                  | application/json                     |
+| models.TooManyRequests               | 429                                  | application/json                     |
+| models.InternalServerError           | 500                                  | application/json                     |
+| models.SDKError                      | 4XX, 5XX                             | \*/\*                                |
 
 ## buyDomains
 
@@ -701,16 +703,23 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.Forbidden             | 403                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
-| models.InternalServerError   | 500                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type                           | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| models.HttpApiDecodeError            | 400                                  | application/json                     |
+| models.TldNotSupported               | 400                                  | application/json                     |
+| models.DomainNotAvailable            | 400                                  | application/json                     |
+| models.ExpectedPriceMismatch         | 400                                  | application/json                     |
+| models.DuplicateDomains              | 400                                  | application/json                     |
+| models.AdditionalContactInfoRequired | 400                                  | application/json                     |
+| models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
+| models.TooManyDomains                | 400                                  | application/json                     |
+| models.OrderTooExpensive             | 400                                  | application/json                     |
+| models.Unauthorized                  | 401                                  | application/json                     |
+| models.NotAuthorizedForScope         | 403                                  | application/json                     |
+| models.Forbidden                     | 403                                  | application/json                     |
+| models.TooManyRequests               | 429                                  | application/json                     |
+| models.InternalServerError           | 500                                  | application/json                     |
+| models.SDKError                      | 4XX, 5XX                             | \*/\*                                |
 
 ## transferInDomain
 
@@ -817,12 +826,15 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.DomainNotAvailable    | 400                          | application/json             |
+| models.ExpectedPriceMismatch | 400                          | application/json             |
+| models.BadRequest            | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -897,13 +909,12 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.NotFound              | 404                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -986,13 +997,17 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.DomainNotAvailable    | 400                          | application/json             |
+| models.ExpectedPriceMismatch | 400                          | application/json             |
+| models.DomainNotRegistered   | 400                          | application/json             |
+| models.BadRequest            | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.DomainNotFound        | 404                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -1073,13 +1088,15 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.DomainNotRegistered   | 400                          | application/json             |
+| models.DomainNotRenewable    | 400                          | application/json             |
+| models.DomainAlreadyRenewing | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.DomainNotFound        | 404                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -1164,13 +1181,13 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.DomainNotRegistered   | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.DomainNotFound        | 404                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -1245,11 +1262,11 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.BadRequest            | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
@@ -1324,12 +1341,11 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
+| models.Unauthorized          | 401                          | application/json             |
+| models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.VercelRateLimitError  | 429                          | application/json             |
-| models.Unauthorized          | 500                          | application/json             |
-| models.NotAuthorizedForScope | 500                          | application/json             |
+| models.NotFound              | 404                          | application/json             |
+| models.TooManyRequests       | 429                          | application/json             |
 | models.InternalServerError   | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |

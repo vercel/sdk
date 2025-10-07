@@ -15,7 +15,7 @@ export const tool$projectsUploadProjectClientCert: ToolDefinition<typeof args> =
     name: "projects-upload-project-client-cert",
     description: `Upload client certificate for egress mTLS
 
-Upload or update a client certificate for mTLS authentication to external origins. The certificate is uploaded to S3 in plaintext, while the private key is encrypted. A hash reference is stored in the project document. The certificate will be available in the deployment runtime for establishing mTLS connections.`,
+Upload a client certificate for mTLS authentication to external origins.`,
     args,
     tool: async (client, args, ctx) => {
       const [result, apiCall] = await projectsUploadProjectClientCert(

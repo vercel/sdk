@@ -24,15 +24,7 @@ import {
 } from "../models/httpclienterrors.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
-import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelNotFoundError,
-  VercelNotFoundError$inboundSchema,
-} from "../models/vercelnotfounderror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -49,8 +41,6 @@ export function marketplaceExchangeSsoToken(
 ): APIPromise<
   Result<
     ExchangeSsoTokenResponseBody,
-    | VercelBadRequestError
-    | VercelNotFoundError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -76,8 +66,6 @@ async function $do(
   [
     Result<
       ExchangeSsoTokenResponseBody,
-      | VercelBadRequestError
-      | VercelNotFoundError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -148,14 +136,8 @@ async function $do(
   }
   const response = doResult.value;
 
-  const responseFields = {
-    HttpMeta: { Response: response, Request: req },
-  };
-
   const [result] = await M.match<
     ExchangeSsoTokenResponseBody,
-    | VercelBadRequestError
-    | VercelNotFoundError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -166,11 +148,9 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, ExchangeSsoTokenResponseBody$inboundSchema),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(404, VercelNotFoundError$inboundSchema),
-    M.fail([403, "4XX"]),
+    M.fail([400, 403, 404, "4XX"]),
     M.fail([500, "5XX"]),
-  )(response, req, { extraFields: responseFields });
+  )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

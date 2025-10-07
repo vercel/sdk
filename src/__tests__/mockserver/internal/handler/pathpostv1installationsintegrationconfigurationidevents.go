@@ -38,7 +38,7 @@ func testCreateEventCreateEvent0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
+	if err := assert.AcceptHeader(req, []string{"*/*"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

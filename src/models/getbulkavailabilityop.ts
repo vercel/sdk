@@ -5,25 +5,7 @@
 import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
-import {
-  NotAuthorizedForScope,
-  NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
-} from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
 
 export type GetBulkAvailabilityRequestBody = {
   /**
@@ -31,14 +13,6 @@ export type GetBulkAvailabilityRequestBody = {
    */
   domains: Array<string>;
 };
-
-/**
- * Unauthorized
- */
-export type GetBulkAvailabilityDomainsRegistrarResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
 
 export type Results = {
   domain: string;
@@ -105,79 +79,6 @@ export function getBulkAvailabilityRequestBodyFromJSON(
     jsonString,
     (x) => GetBulkAvailabilityRequestBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetBulkAvailabilityRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetBulkAvailabilityDomainsRegistrarResponseBody$inboundSchema:
-  z.ZodType<
-    GetBulkAvailabilityDomainsRegistrarResponseBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    Unauthorized$inboundSchema,
-    NotAuthorizedForScope$inboundSchema,
-    InternalServerError$inboundSchema,
-  ]);
-
-/** @internal */
-export type GetBulkAvailabilityDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
-
-/** @internal */
-export const GetBulkAvailabilityDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    GetBulkAvailabilityDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetBulkAvailabilityDomainsRegistrarResponseBody
-  > = z.union([
-    Unauthorized$outboundSchema,
-    NotAuthorizedForScope$outboundSchema,
-    InternalServerError$outboundSchema,
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBulkAvailabilityDomainsRegistrarResponseBody$ {
-  /** @deprecated use `GetBulkAvailabilityDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetBulkAvailabilityDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `GetBulkAvailabilityDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetBulkAvailabilityDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `GetBulkAvailabilityDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound =
-    GetBulkAvailabilityDomainsRegistrarResponseBody$Outbound;
-}
-
-export function getBulkAvailabilityDomainsRegistrarResponseBodyToJSON(
-  getBulkAvailabilityDomainsRegistrarResponseBody:
-    GetBulkAvailabilityDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    GetBulkAvailabilityDomainsRegistrarResponseBody$outboundSchema.parse(
-      getBulkAvailabilityDomainsRegistrarResponseBody,
-    ),
-  );
-}
-
-export function getBulkAvailabilityDomainsRegistrarResponseBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetBulkAvailabilityDomainsRegistrarResponseBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetBulkAvailabilityDomainsRegistrarResponseBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetBulkAvailabilityDomainsRegistrarResponseBody' from JSON`,
   );
 }
 

@@ -1,40 +1,50 @@
 # UpdateDomainAutoRenewResponseBody
 
-Unauthorized
+There was something wrong with the request
 
 
 ## Supported Types
 
-### `models.Unauthorized`
+### `models.HttpApiDecodeError`
 
 ```typescript
-const value: models.Unauthorized = {
-  status: 7620.76,
-  code: "unauthorized",
+const value: models.HttpApiDecodeError = {
+  issues: [],
   message: "<value>",
-  tag: "Unauthorized",
+  tag: "HttpApiDecodeError",
 };
 ```
 
-### `models.NotAuthorizedForScope`
+### `models.DomainNotRegistered`
 
 ```typescript
-const value: models.NotAuthorizedForScope = {
-  status: 4853.56,
-  code: "not_authorized_for_scope",
+const value: models.DomainNotRegistered = {
+  status: 4746.15,
+  code: "domain_not_registered",
   message: "<value>",
-  tag: "NotAuthorizedForScope",
+  tag: "DomainNotRegistered",
 };
 ```
 
-### `models.InternalServerError`
+### `models.DomainNotRenewable`
 
 ```typescript
-const value: models.InternalServerError = {
-  status: 5945.42,
-  code: "internal_server_error",
+const value: models.DomainNotRenewable = {
+  status: 7181.71,
+  code: "domain_not_renewable",
   message: "<value>",
-  tag: "InternalServerError",
+  tag: "DomainNotRenewable",
+};
+```
+
+### `models.DomainAlreadyRenewing`
+
+```typescript
+const value: models.DomainAlreadyRenewing = {
+  status: 2381.62,
+  code: "domain_already_renewing",
+  message: "<value>",
+  tag: "DomainAlreadyRenewing",
 };
 ```
 

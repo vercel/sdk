@@ -25,15 +25,7 @@ import {
   StatusResponseBody,
   StatusResponseBody$inboundSchema,
 } from "../models/statusop.js";
-import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelForbiddenError,
-  VercelForbiddenError$inboundSchema,
-} from "../models/vercelforbiddenerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -50,8 +42,6 @@ export function artifactsStatus(
 ): APIPromise<
   Result<
     StatusResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -77,8 +67,6 @@ async function $do(
   [
     Result<
       StatusResponseBody,
-      | VercelBadRequestError
-      | VercelForbiddenError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -159,14 +147,8 @@ async function $do(
   }
   const response = doResult.value;
 
-  const responseFields = {
-    HttpMeta: { Response: response, Request: req },
-  };
-
   const [result] = await M.match<
     StatusResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -177,11 +159,9 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, StatusResponseBody$inboundSchema),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([402, 403, "4XX"]),
+    M.fail([400, 401, 402, 403, "4XX"]),
     M.fail("5XX"),
-  )(response, req, { extraFields: responseFields });
+  )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

@@ -183,10 +183,10 @@ type RemoveProjectEnvType3 string
 
 const (
 	RemoveProjectEnvType3System    RemoveProjectEnvType3 = "system"
-	RemoveProjectEnvType3Secret    RemoveProjectEnvType3 = "secret"
 	RemoveProjectEnvType3Encrypted RemoveProjectEnvType3 = "encrypted"
 	RemoveProjectEnvType3Plain     RemoveProjectEnvType3 = "plain"
 	RemoveProjectEnvType3Sensitive RemoveProjectEnvType3 = "sensitive"
+	RemoveProjectEnvType3Secret    RemoveProjectEnvType3 = "secret"
 )
 
 func (e RemoveProjectEnvType3) ToPointer() *RemoveProjectEnvType3 {
@@ -200,13 +200,13 @@ func (e *RemoveProjectEnvType3) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = RemoveProjectEnvType3(v)
 		return nil
 	default:
@@ -1738,10 +1738,10 @@ type RemoveProjectEnvType2 string
 
 const (
 	RemoveProjectEnvType2System    RemoveProjectEnvType2 = "system"
-	RemoveProjectEnvType2Secret    RemoveProjectEnvType2 = "secret"
 	RemoveProjectEnvType2Encrypted RemoveProjectEnvType2 = "encrypted"
 	RemoveProjectEnvType2Plain     RemoveProjectEnvType2 = "plain"
 	RemoveProjectEnvType2Sensitive RemoveProjectEnvType2 = "sensitive"
+	RemoveProjectEnvType2Secret    RemoveProjectEnvType2 = "secret"
 )
 
 func (e RemoveProjectEnvType2) ToPointer() *RemoveProjectEnvType2 {
@@ -1755,13 +1755,13 @@ func (e *RemoveProjectEnvType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = RemoveProjectEnvType2(v)
 		return nil
 	default:
@@ -3301,10 +3301,10 @@ type RemoveProjectEnvType1 string
 
 const (
 	RemoveProjectEnvType1System    RemoveProjectEnvType1 = "system"
-	RemoveProjectEnvType1Secret    RemoveProjectEnvType1 = "secret"
 	RemoveProjectEnvType1Encrypted RemoveProjectEnvType1 = "encrypted"
 	RemoveProjectEnvType1Plain     RemoveProjectEnvType1 = "plain"
 	RemoveProjectEnvType1Sensitive RemoveProjectEnvType1 = "sensitive"
+	RemoveProjectEnvType1Secret    RemoveProjectEnvType1 = "secret"
 )
 
 func (e RemoveProjectEnvType1) ToPointer() *RemoveProjectEnvType1 {
@@ -3318,13 +3318,13 @@ func (e *RemoveProjectEnvType1) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = RemoveProjectEnvType1(v)
 		return nil
 	default:

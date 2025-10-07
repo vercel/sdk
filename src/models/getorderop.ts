@@ -7,11 +7,11 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  Forbidden,
+  Forbidden$inboundSchema,
+  Forbidden$Outbound,
+  Forbidden$outboundSchema,
+} from "./forbidden.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
@@ -19,24 +19,17 @@ import {
   NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
 
 export type GetOrderRequest = {
   orderId: string;
 };
 
 /**
- * Unauthorized
+ * NotAuthorizedForScope
  */
 export type GetOrderDomainsRegistrarResponseBody =
-  | Unauthorized
   | NotAuthorizedForScope
-  | InternalServerError;
+  | Forbidden;
 
 export const GetOrderDomainsPurchaseType = {
   Transfer: "transfer",
@@ -187,7 +180,7 @@ export type Error1 = {
   code: ErrorCode;
 };
 
-export type GetOrderError = Error2 | Error3 | Error1 | Error4;
+export type ErrorT = Error2 | Error3 | Error1 | Error4;
 
 /**
  * Success
@@ -256,28 +249,19 @@ export const GetOrderDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   GetOrderDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  Unauthorized$inboundSchema,
-  NotAuthorizedForScope$inboundSchema,
-  InternalServerError$inboundSchema,
-]);
+> = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
 
 /** @internal */
 export type GetOrderDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
   | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | Forbidden$Outbound;
 
 /** @internal */
 export const GetOrderDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   GetOrderDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
   GetOrderDomainsRegistrarResponseBody
-> = z.union([
-  Unauthorized$outboundSchema,
-  NotAuthorizedForScope$outboundSchema,
-  InternalServerError$outboundSchema,
-]);
+> = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**
  * @internal
@@ -1150,29 +1134,26 @@ export function error1FromJSON(
 }
 
 /** @internal */
-export const GetOrderError$inboundSchema: z.ZodType<
-  GetOrderError,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => Error2$inboundSchema),
-  z.lazy(() => Error3$inboundSchema),
-  z.lazy(() => Error1$inboundSchema),
-  z.lazy(() => Error4$inboundSchema),
-]);
+export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
+  .union([
+    z.lazy(() => Error2$inboundSchema),
+    z.lazy(() => Error3$inboundSchema),
+    z.lazy(() => Error1$inboundSchema),
+    z.lazy(() => Error4$inboundSchema),
+  ]);
 
 /** @internal */
-export type GetOrderError$Outbound =
+export type ErrorT$Outbound =
   | Error2$Outbound
   | Error3$Outbound
   | Error1$Outbound
   | Error4$Outbound;
 
 /** @internal */
-export const GetOrderError$outboundSchema: z.ZodType<
-  GetOrderError$Outbound,
+export const ErrorT$outboundSchema: z.ZodType<
+  ErrorT$Outbound,
   z.ZodTypeDef,
-  GetOrderError
+  ErrorT
 > = z.union([
   z.lazy(() => Error2$outboundSchema),
   z.lazy(() => Error3$outboundSchema),
@@ -1184,26 +1165,26 @@ export const GetOrderError$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetOrderError$ {
-  /** @deprecated use `GetOrderError$inboundSchema` instead. */
-  export const inboundSchema = GetOrderError$inboundSchema;
-  /** @deprecated use `GetOrderError$outboundSchema` instead. */
-  export const outboundSchema = GetOrderError$outboundSchema;
-  /** @deprecated use `GetOrderError$Outbound` instead. */
-  export type Outbound = GetOrderError$Outbound;
+export namespace ErrorT$ {
+  /** @deprecated use `ErrorT$inboundSchema` instead. */
+  export const inboundSchema = ErrorT$inboundSchema;
+  /** @deprecated use `ErrorT$outboundSchema` instead. */
+  export const outboundSchema = ErrorT$outboundSchema;
+  /** @deprecated use `ErrorT$Outbound` instead. */
+  export type Outbound = ErrorT$Outbound;
 }
 
-export function getOrderErrorToJSON(getOrderError: GetOrderError): string {
-  return JSON.stringify(GetOrderError$outboundSchema.parse(getOrderError));
+export function errorToJSON(errorT: ErrorT): string {
+  return JSON.stringify(ErrorT$outboundSchema.parse(errorT));
 }
 
-export function getOrderErrorFromJSON(
+export function errorFromJSON(
   jsonString: string,
-): SafeParseResult<GetOrderError, SDKValidationError> {
+): SafeParseResult<ErrorT, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetOrderError$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetOrderError' from JSON`,
+    (x) => ErrorT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ErrorT' from JSON`,
   );
 }
 

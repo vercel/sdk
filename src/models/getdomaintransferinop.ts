@@ -7,11 +7,11 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  Forbidden,
+  Forbidden$inboundSchema,
+  Forbidden$Outbound,
+  Forbidden$outboundSchema,
+} from "./forbidden.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
@@ -19,24 +19,17 @@ import {
   NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
 
 export type GetDomainTransferInRequest = {
   domain: string;
 };
 
 /**
- * Unauthorized
+ * NotAuthorizedForScope
  */
 export type GetDomainTransferInDomainsRegistrarResponseBody =
-  | Unauthorized
   | NotAuthorizedForScope
-  | InternalServerError;
+  | Forbidden;
 
 export const GetDomainTransferInStatus = {
   Canceled: "canceled",
@@ -123,17 +116,12 @@ export const GetDomainTransferInDomainsRegistrarResponseBody$inboundSchema:
     GetDomainTransferInDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Unauthorized$inboundSchema,
-    NotAuthorizedForScope$inboundSchema,
-    InternalServerError$inboundSchema,
-  ]);
+  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
 
 /** @internal */
 export type GetDomainTransferInDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
   | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | Forbidden$Outbound;
 
 /** @internal */
 export const GetDomainTransferInDomainsRegistrarResponseBody$outboundSchema:
@@ -141,11 +129,7 @@ export const GetDomainTransferInDomainsRegistrarResponseBody$outboundSchema:
     GetDomainTransferInDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     GetDomainTransferInDomainsRegistrarResponseBody
-  > = z.union([
-    Unauthorized$outboundSchema,
-    NotAuthorizedForScope$outboundSchema,
-    InternalServerError$outboundSchema,
-  ]);
+  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**
  * @internal

@@ -8,24 +8,60 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  AdditionalContactInfoRequired,
+  AdditionalContactInfoRequired$inboundSchema,
+  AdditionalContactInfoRequired$Outbound,
+  AdditionalContactInfoRequired$outboundSchema,
+} from "./additionalcontactinforequired.js";
+import {
+  DomainNotAvailable,
+  DomainNotAvailable$inboundSchema,
+  DomainNotAvailable$Outbound,
+  DomainNotAvailable$outboundSchema,
+} from "./domainnotavailable.js";
+import {
+  ExpectedPriceMismatch,
+  ExpectedPriceMismatch$inboundSchema,
+  ExpectedPriceMismatch$Outbound,
+  ExpectedPriceMismatch$outboundSchema,
+} from "./expectedpricemismatch.js";
+import {
+  Forbidden,
+  Forbidden$inboundSchema,
+  Forbidden$Outbound,
+  Forbidden$outboundSchema,
+} from "./forbidden.js";
+import {
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+  HttpApiDecodeError$Outbound,
+  HttpApiDecodeError$outboundSchema,
+} from "./httpapidecodeerror.js";
+import {
+  InvalidAdditionalContactInfo,
+  InvalidAdditionalContactInfo$inboundSchema,
+  InvalidAdditionalContactInfo$Outbound,
+  InvalidAdditionalContactInfo$outboundSchema,
+} from "./invalidadditionalcontactinfo.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
   NotAuthorizedForScope$Outbound,
   NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
+import {
+  OrderTooExpensive,
+  OrderTooExpensive$inboundSchema,
+  OrderTooExpensive$Outbound,
+  OrderTooExpensive$outboundSchema,
+} from "./ordertooexpensive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
+  TldNotSupported,
+  TldNotSupported$inboundSchema,
+  TldNotSupported$Outbound,
+  TldNotSupported$outboundSchema,
+} from "./tldnotsupported.js";
 
 export type Additional = {};
 
@@ -97,12 +133,23 @@ export type BuySingleDomainRequest = {
 };
 
 /**
- * Unauthorized
+ * NotAuthorizedForScope
+ */
+export type BuySingleDomainDomainsRegistrarResponseResponseBody =
+  | NotAuthorizedForScope
+  | Forbidden;
+
+/**
+ * There was something wrong with the request
  */
 export type BuySingleDomainDomainsRegistrarResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
+  | HttpApiDecodeError
+  | TldNotSupported
+  | DomainNotAvailable
+  | ExpectedPriceMismatch
+  | AdditionalContactInfoRequired
+  | InvalidAdditionalContactInfo
+  | OrderTooExpensive;
 
 export const Method = {
   Get: "GET",
@@ -389,22 +436,94 @@ export function buySingleDomainRequestFromJSON(
 }
 
 /** @internal */
+export const BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema:
+  z.ZodType<
+    BuySingleDomainDomainsRegistrarResponseResponseBody,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+
+/** @internal */
+export type BuySingleDomainDomainsRegistrarResponseResponseBody$Outbound =
+  | NotAuthorizedForScope$Outbound
+  | Forbidden$Outbound;
+
+/** @internal */
+export const BuySingleDomainDomainsRegistrarResponseResponseBody$outboundSchema:
+  z.ZodType<
+    BuySingleDomainDomainsRegistrarResponseResponseBody$Outbound,
+    z.ZodTypeDef,
+    BuySingleDomainDomainsRegistrarResponseResponseBody
+  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuySingleDomainDomainsRegistrarResponseResponseBody$ {
+  /** @deprecated use `BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema;
+  /** @deprecated use `BuySingleDomainDomainsRegistrarResponseResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    BuySingleDomainDomainsRegistrarResponseResponseBody$outboundSchema;
+  /** @deprecated use `BuySingleDomainDomainsRegistrarResponseResponseBody$Outbound` instead. */
+  export type Outbound =
+    BuySingleDomainDomainsRegistrarResponseResponseBody$Outbound;
+}
+
+export function buySingleDomainDomainsRegistrarResponseResponseBodyToJSON(
+  buySingleDomainDomainsRegistrarResponseResponseBody:
+    BuySingleDomainDomainsRegistrarResponseResponseBody,
+): string {
+  return JSON.stringify(
+    BuySingleDomainDomainsRegistrarResponseResponseBody$outboundSchema.parse(
+      buySingleDomainDomainsRegistrarResponseResponseBody,
+    ),
+  );
+}
+
+export function buySingleDomainDomainsRegistrarResponseResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuySingleDomainDomainsRegistrarResponseResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BuySingleDomainDomainsRegistrarResponseResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuySingleDomainDomainsRegistrarResponseBody$inboundSchema:
   z.ZodType<
     BuySingleDomainDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
   > = z.union([
-    Unauthorized$inboundSchema,
-    NotAuthorizedForScope$inboundSchema,
-    InternalServerError$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
+    TldNotSupported$inboundSchema,
+    DomainNotAvailable$inboundSchema,
+    ExpectedPriceMismatch$inboundSchema,
+    AdditionalContactInfoRequired$inboundSchema,
+    InvalidAdditionalContactInfo$inboundSchema,
+    OrderTooExpensive$inboundSchema,
   ]);
 
 /** @internal */
 export type BuySingleDomainDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | HttpApiDecodeError$Outbound
+  | TldNotSupported$Outbound
+  | DomainNotAvailable$Outbound
+  | ExpectedPriceMismatch$Outbound
+  | AdditionalContactInfoRequired$Outbound
+  | InvalidAdditionalContactInfo$Outbound
+  | OrderTooExpensive$Outbound;
 
 /** @internal */
 export const BuySingleDomainDomainsRegistrarResponseBody$outboundSchema:
@@ -413,9 +532,13 @@ export const BuySingleDomainDomainsRegistrarResponseBody$outboundSchema:
     z.ZodTypeDef,
     BuySingleDomainDomainsRegistrarResponseBody
   > = z.union([
-    Unauthorized$outboundSchema,
-    NotAuthorizedForScope$outboundSchema,
-    InternalServerError$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
+    TldNotSupported$outboundSchema,
+    DomainNotAvailable$outboundSchema,
+    ExpectedPriceMismatch$outboundSchema,
+    AdditionalContactInfoRequired$outboundSchema,
+    InvalidAdditionalContactInfo$outboundSchema,
+    OrderTooExpensive$outboundSchema,
   ]);
 
 /**

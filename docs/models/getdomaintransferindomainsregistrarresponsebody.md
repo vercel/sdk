@@ -1,20 +1,9 @@
 # GetDomainTransferInDomainsRegistrarResponseBody
 
-Unauthorized
+NotAuthorizedForScope
 
 
 ## Supported Types
-
-### `models.Unauthorized`
-
-```typescript
-const value: models.Unauthorized = {
-  status: 7620.76,
-  code: "unauthorized",
-  message: "<value>",
-  tag: "Unauthorized",
-};
-```
 
 ### `models.NotAuthorizedForScope`
 
@@ -27,14 +16,14 @@ const value: models.NotAuthorizedForScope = {
 };
 ```
 
-### `models.InternalServerError`
+### `models.Forbidden`
 
 ```typescript
-const value: models.InternalServerError = {
-  status: 5945.42,
-  code: "internal_server_error",
+const value: models.Forbidden = {
+  status: 7108.3,
+  code: "forbidden",
   message: "<value>",
-  tag: "InternalServerError",
+  tag: "Forbidden",
 };
 ```
 

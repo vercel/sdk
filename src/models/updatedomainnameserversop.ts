@@ -7,11 +7,23 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  DomainNotRegistered,
+  DomainNotRegistered$inboundSchema,
+  DomainNotRegistered$Outbound,
+  DomainNotRegistered$outboundSchema,
+} from "./domainnotregistered.js";
+import {
+  Forbidden,
+  Forbidden$inboundSchema,
+  Forbidden$Outbound,
+  Forbidden$outboundSchema,
+} from "./forbidden.js";
+import {
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+  HttpApiDecodeError$Outbound,
+  HttpApiDecodeError$outboundSchema,
+} from "./httpapidecodeerror.js";
 import {
   NotAuthorizedForScope,
   NotAuthorizedForScope$inboundSchema,
@@ -19,12 +31,6 @@ import {
   NotAuthorizedForScope$outboundSchema,
 } from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
 
 export type UpdateDomainNameserversRequestBody = {
   nameservers: Array<string>;
@@ -36,12 +42,18 @@ export type UpdateDomainNameserversRequest = {
 };
 
 /**
- * Unauthorized
+ * NotAuthorizedForScope
+ */
+export type UpdateDomainNameserversDomainsRegistrarResponseBody =
+  | NotAuthorizedForScope
+  | Forbidden;
+
+/**
+ * There was something wrong with the request
  */
 export type UpdateDomainNameserversResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
+  | HttpApiDecodeError
+  | DomainNotRegistered;
 
 /** @internal */
 export const UpdateDomainNameserversRequestBody$inboundSchema: z.ZodType<
@@ -169,21 +181,83 @@ export function updateDomainNameserversRequestFromJSON(
 }
 
 /** @internal */
+export const UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema:
+  z.ZodType<
+    UpdateDomainNameserversDomainsRegistrarResponseBody,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
+
+/** @internal */
+export type UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound =
+  | NotAuthorizedForScope$Outbound
+  | Forbidden$Outbound;
+
+/** @internal */
+export const UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema:
+  z.ZodType<
+    UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound,
+    z.ZodTypeDef,
+    UpdateDomainNameserversDomainsRegistrarResponseBody
+  > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDomainNameserversDomainsRegistrarResponseBody$ {
+  /** @deprecated use `UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema;
+  /** @deprecated use `UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema;
+  /** @deprecated use `UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound` instead. */
+  export type Outbound =
+    UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound;
+}
+
+export function updateDomainNameserversDomainsRegistrarResponseBodyToJSON(
+  updateDomainNameserversDomainsRegistrarResponseBody:
+    UpdateDomainNameserversDomainsRegistrarResponseBody,
+): string {
+  return JSON.stringify(
+    UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema.parse(
+      updateDomainNameserversDomainsRegistrarResponseBody,
+    ),
+  );
+}
+
+export function updateDomainNameserversDomainsRegistrarResponseBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateDomainNameserversDomainsRegistrarResponseBody,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateDomainNameserversDomainsRegistrarResponseBody' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateDomainNameserversResponseBody$inboundSchema: z.ZodType<
   UpdateDomainNameserversResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  Unauthorized$inboundSchema,
-  NotAuthorizedForScope$inboundSchema,
-  InternalServerError$inboundSchema,
+  HttpApiDecodeError$inboundSchema,
+  DomainNotRegistered$inboundSchema,
 ]);
 
 /** @internal */
 export type UpdateDomainNameserversResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | HttpApiDecodeError$Outbound
+  | DomainNotRegistered$Outbound;
 
 /** @internal */
 export const UpdateDomainNameserversResponseBody$outboundSchema: z.ZodType<
@@ -191,9 +265,8 @@ export const UpdateDomainNameserversResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDomainNameserversResponseBody
 > = z.union([
-  Unauthorized$outboundSchema,
-  NotAuthorizedForScope$outboundSchema,
-  InternalServerError$outboundSchema,
+  HttpApiDecodeError$outboundSchema,
+  DomainNotRegistered$outboundSchema,
 ]);
 
 /**

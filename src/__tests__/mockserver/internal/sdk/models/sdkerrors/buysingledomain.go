@@ -10,106 +10,287 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type BuySingleDomainInternalServerErrorType string
+type BuySingleDomainForbiddenType string
 
 const (
-	BuySingleDomainInternalServerErrorTypeUnauthorizedError          BuySingleDomainInternalServerErrorType = "Unauthorized_error"
-	BuySingleDomainInternalServerErrorTypeNotAuthorizedForScopeError BuySingleDomainInternalServerErrorType = "NotAuthorizedForScope_error"
-	BuySingleDomainInternalServerErrorTypeInternalServerErrorError   BuySingleDomainInternalServerErrorType = "InternalServerError_error"
+	BuySingleDomainForbiddenTypeNotAuthorizedForScopeError BuySingleDomainForbiddenType = "NotAuthorizedForScope_error"
+	BuySingleDomainForbiddenTypeForbiddenError             BuySingleDomainForbiddenType = "Forbidden_error"
 )
 
-// BuySingleDomainInternalServerError - Unauthorized
-type BuySingleDomainInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// BuySingleDomainForbidden - NotAuthorizedForScope
+type BuySingleDomainForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type BuySingleDomainInternalServerErrorType
+	Type BuySingleDomainForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &BuySingleDomainInternalServerError{}
+var _ error = &BuySingleDomainForbidden{}
 
-func CreateBuySingleDomainInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) BuySingleDomainInternalServerError {
-	typ := BuySingleDomainInternalServerErrorTypeUnauthorizedError
+func CreateBuySingleDomainForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) BuySingleDomainForbidden {
+	typ := BuySingleDomainForbiddenTypeNotAuthorizedForScopeError
 
-	return BuySingleDomainInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateBuySingleDomainInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) BuySingleDomainInternalServerError {
-	typ := BuySingleDomainInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return BuySingleDomainInternalServerError{
+	return BuySingleDomainForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateBuySingleDomainInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) BuySingleDomainInternalServerError {
-	typ := BuySingleDomainInternalServerErrorTypeInternalServerErrorError
+func CreateBuySingleDomainForbiddenForbiddenError(forbiddenError ForbiddenError) BuySingleDomainForbidden {
+	typ := BuySingleDomainForbiddenTypeForbiddenError
 
-	return BuySingleDomainInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return BuySingleDomainForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *BuySingleDomainInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = BuySingleDomainInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *BuySingleDomainForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = BuySingleDomainInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = BuySingleDomainForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = BuySingleDomainInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = BuySingleDomainForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BuySingleDomainInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BuySingleDomainForbidden", string(data))
 }
 
-func (u BuySingleDomainInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u BuySingleDomainForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type BuySingleDomainInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type BuySingleDomainForbidden: all fields are null")
 }
 
-func (u BuySingleDomainInternalServerError) Error() string {
+func (u BuySingleDomainForbidden) Error() string {
 	switch u.Type {
-	case BuySingleDomainInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case BuySingleDomainInternalServerErrorTypeNotAuthorizedForScopeError:
+	case BuySingleDomainForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case BuySingleDomainInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case BuySingleDomainForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
+		return string(data)
+	default:
+		return "unknown error"
+	}
+}
+
+type BuySingleDomainBadRequestType string
+
+const (
+	BuySingleDomainBadRequestTypeHTTPAPIDecodeError                 BuySingleDomainBadRequestType = "HttpApiDecodeError"
+	BuySingleDomainBadRequestTypeTldNotSupportedError               BuySingleDomainBadRequestType = "TldNotSupported_error"
+	BuySingleDomainBadRequestTypeDomainNotAvailableError            BuySingleDomainBadRequestType = "DomainNotAvailable_error"
+	BuySingleDomainBadRequestTypeExpectedPriceMismatchError         BuySingleDomainBadRequestType = "ExpectedPriceMismatch_error"
+	BuySingleDomainBadRequestTypeAdditionalContactInfoRequiredError BuySingleDomainBadRequestType = "AdditionalContactInfoRequired_error"
+	BuySingleDomainBadRequestTypeInvalidAdditionalContactInfoError  BuySingleDomainBadRequestType = "InvalidAdditionalContactInfo_error"
+	BuySingleDomainBadRequestTypeOrderTooExpensiveError             BuySingleDomainBadRequestType = "OrderTooExpensive_error"
+)
+
+// BuySingleDomainBadRequest - There was something wrong with the request
+type BuySingleDomainBadRequest struct {
+	HTTPAPIDecodeError                 *HTTPAPIDecodeError                 `queryParam:"inline"`
+	TldNotSupportedError               *TldNotSupportedError               `queryParam:"inline"`
+	DomainNotAvailableError            *DomainNotAvailableError            `queryParam:"inline"`
+	ExpectedPriceMismatchError         *ExpectedPriceMismatchError         `queryParam:"inline"`
+	AdditionalContactInfoRequiredError *AdditionalContactInfoRequiredError `queryParam:"inline"`
+	InvalidAdditionalContactInfoError  *InvalidAdditionalContactInfoError  `queryParam:"inline"`
+	OrderTooExpensiveError             *OrderTooExpensiveError             `queryParam:"inline"`
+
+	Type BuySingleDomainBadRequestType
+
+	HTTPMeta components.HTTPMetadata `json:"-"`
+}
+
+var _ error = &BuySingleDomainBadRequest{}
+
+func CreateBuySingleDomainBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) BuySingleDomainBadRequest {
+	typ := BuySingleDomainBadRequestTypeHTTPAPIDecodeError
+
+	return BuySingleDomainBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
+	}
+}
+
+func CreateBuySingleDomainBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) BuySingleDomainBadRequest {
+	typ := BuySingleDomainBadRequestTypeTldNotSupportedError
+
+	return BuySingleDomainBadRequest{
+		TldNotSupportedError: &tldNotSupportedError,
+		Type:                 typ,
+	}
+}
+
+func CreateBuySingleDomainBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) BuySingleDomainBadRequest {
+	typ := BuySingleDomainBadRequestTypeDomainNotAvailableError
+
+	return BuySingleDomainBadRequest{
+		DomainNotAvailableError: &domainNotAvailableError,
+		Type:                    typ,
+	}
+}
+
+func CreateBuySingleDomainBadRequestExpectedPriceMismatchError(expectedPriceMismatchError ExpectedPriceMismatchError) BuySingleDomainBadRequest {
+	typ := BuySingleDomainBadRequestTypeExpectedPriceMismatchError
+
+	return BuySingleDomainBadRequest{
+		ExpectedPriceMismatchError: &expectedPriceMismatchError,
+		Type:                       typ,
+	}
+}
+
+func CreateBuySingleDomainBadRequestAdditionalContactInfoRequiredError(additionalContactInfoRequiredError AdditionalContactInfoRequiredError) BuySingleDomainBadRequest {
+	typ := BuySingleDomainBadRequestTypeAdditionalContactInfoRequiredError
+
+	return BuySingleDomainBadRequest{
+		AdditionalContactInfoRequiredError: &additionalContactInfoRequiredError,
+		Type:                               typ,
+	}
+}
+
+func CreateBuySingleDomainBadRequestInvalidAdditionalContactInfoError(invalidAdditionalContactInfoError InvalidAdditionalContactInfoError) BuySingleDomainBadRequest {
+	typ := BuySingleDomainBadRequestTypeInvalidAdditionalContactInfoError
+
+	return BuySingleDomainBadRequest{
+		InvalidAdditionalContactInfoError: &invalidAdditionalContactInfoError,
+		Type:                              typ,
+	}
+}
+
+func CreateBuySingleDomainBadRequestOrderTooExpensiveError(orderTooExpensiveError OrderTooExpensiveError) BuySingleDomainBadRequest {
+	typ := BuySingleDomainBadRequestTypeOrderTooExpensiveError
+
+	return BuySingleDomainBadRequest{
+		OrderTooExpensiveError: &orderTooExpensiveError,
+		Type:                   typ,
+	}
+}
+
+func (u *BuySingleDomainBadRequest) UnmarshalJSON(data []byte) error {
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = BuySingleDomainBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
+	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
+	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
+		u.TldNotSupportedError = &tldNotSupportedError
+		u.Type = BuySingleDomainBadRequestTypeTldNotSupportedError
+		return nil
+	}
+
+	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
+	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
+		u.DomainNotAvailableError = &domainNotAvailableError
+		u.Type = BuySingleDomainBadRequestTypeDomainNotAvailableError
+		return nil
+	}
+
+	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
+	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
+		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
+		u.Type = BuySingleDomainBadRequestTypeExpectedPriceMismatchError
+		return nil
+	}
+
+	var additionalContactInfoRequiredError AdditionalContactInfoRequiredError = AdditionalContactInfoRequiredError{}
+	if err := utils.UnmarshalJSON(data, &additionalContactInfoRequiredError, "", true, nil); err == nil {
+		u.AdditionalContactInfoRequiredError = &additionalContactInfoRequiredError
+		u.Type = BuySingleDomainBadRequestTypeAdditionalContactInfoRequiredError
+		return nil
+	}
+
+	var invalidAdditionalContactInfoError InvalidAdditionalContactInfoError = InvalidAdditionalContactInfoError{}
+	if err := utils.UnmarshalJSON(data, &invalidAdditionalContactInfoError, "", true, nil); err == nil {
+		u.InvalidAdditionalContactInfoError = &invalidAdditionalContactInfoError
+		u.Type = BuySingleDomainBadRequestTypeInvalidAdditionalContactInfoError
+		return nil
+	}
+
+	var orderTooExpensiveError OrderTooExpensiveError = OrderTooExpensiveError{}
+	if err := utils.UnmarshalJSON(data, &orderTooExpensiveError, "", true, nil); err == nil {
+		u.OrderTooExpensiveError = &orderTooExpensiveError
+		u.Type = BuySingleDomainBadRequestTypeOrderTooExpensiveError
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for BuySingleDomainBadRequest", string(data))
+}
+
+func (u BuySingleDomainBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
+	}
+
+	if u.TldNotSupportedError != nil {
+		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
+	}
+
+	if u.DomainNotAvailableError != nil {
+		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
+	}
+
+	if u.ExpectedPriceMismatchError != nil {
+		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
+	}
+
+	if u.AdditionalContactInfoRequiredError != nil {
+		return utils.MarshalJSON(u.AdditionalContactInfoRequiredError, "", true)
+	}
+
+	if u.InvalidAdditionalContactInfoError != nil {
+		return utils.MarshalJSON(u.InvalidAdditionalContactInfoError, "", true)
+	}
+
+	if u.OrderTooExpensiveError != nil {
+		return utils.MarshalJSON(u.OrderTooExpensiveError, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type BuySingleDomainBadRequest: all fields are null")
+}
+
+func (u BuySingleDomainBadRequest) Error() string {
+	switch u.Type {
+	case BuySingleDomainBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
+		return string(data)
+	case BuySingleDomainBadRequestTypeTldNotSupportedError:
+		data, _ := json.Marshal(u.TldNotSupportedError)
+		return string(data)
+	case BuySingleDomainBadRequestTypeDomainNotAvailableError:
+		data, _ := json.Marshal(u.DomainNotAvailableError)
+		return string(data)
+	case BuySingleDomainBadRequestTypeExpectedPriceMismatchError:
+		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
+		return string(data)
+	case BuySingleDomainBadRequestTypeAdditionalContactInfoRequiredError:
+		data, _ := json.Marshal(u.AdditionalContactInfoRequiredError)
+		return string(data)
+	case BuySingleDomainBadRequestTypeInvalidAdditionalContactInfoError:
+		data, _ := json.Marshal(u.InvalidAdditionalContactInfoError)
+		return string(data)
+	case BuySingleDomainBadRequestTypeOrderTooExpensiveError:
+		data, _ := json.Marshal(u.OrderTooExpensiveError)
 		return string(data)
 	default:
 		return "unknown error"

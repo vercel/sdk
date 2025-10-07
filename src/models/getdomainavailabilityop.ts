@@ -5,37 +5,11 @@
 import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
-import {
-  NotAuthorizedForScope,
-  NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
-} from "./notauthorizedforscope.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
 
 export type GetDomainAvailabilityRequest = {
   domain: string;
 };
-
-/**
- * Unauthorized
- */
-export type GetDomainAvailabilityDomainsRegistrarResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
 
 /**
  * Success
@@ -97,79 +71,6 @@ export function getDomainAvailabilityRequestFromJSON(
     jsonString,
     (x) => GetDomainAvailabilityRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDomainAvailabilityRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDomainAvailabilityDomainsRegistrarResponseBody$inboundSchema:
-  z.ZodType<
-    GetDomainAvailabilityDomainsRegistrarResponseBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    Unauthorized$inboundSchema,
-    NotAuthorizedForScope$inboundSchema,
-    InternalServerError$inboundSchema,
-  ]);
-
-/** @internal */
-export type GetDomainAvailabilityDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
-
-/** @internal */
-export const GetDomainAvailabilityDomainsRegistrarResponseBody$outboundSchema:
-  z.ZodType<
-    GetDomainAvailabilityDomainsRegistrarResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetDomainAvailabilityDomainsRegistrarResponseBody
-  > = z.union([
-    Unauthorized$outboundSchema,
-    NotAuthorizedForScope$outboundSchema,
-    InternalServerError$outboundSchema,
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainAvailabilityDomainsRegistrarResponseBody$ {
-  /** @deprecated use `GetDomainAvailabilityDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDomainAvailabilityDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainAvailabilityDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDomainAvailabilityDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainAvailabilityDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound =
-    GetDomainAvailabilityDomainsRegistrarResponseBody$Outbound;
-}
-
-export function getDomainAvailabilityDomainsRegistrarResponseBodyToJSON(
-  getDomainAvailabilityDomainsRegistrarResponseBody:
-    GetDomainAvailabilityDomainsRegistrarResponseBody,
-): string {
-  return JSON.stringify(
-    GetDomainAvailabilityDomainsRegistrarResponseBody$outboundSchema.parse(
-      getDomainAvailabilityDomainsRegistrarResponseBody,
-    ),
-  );
-}
-
-export function getDomainAvailabilityDomainsRegistrarResponseBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetDomainAvailabilityDomainsRegistrarResponseBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDomainAvailabilityDomainsRegistrarResponseBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDomainAvailabilityDomainsRegistrarResponseBody' from JSON`,
   );
 }
 

@@ -25,19 +25,7 @@ import {
   UpdateCheckResponseBody,
   UpdateCheckResponseBody$inboundSchema,
 } from "../models/updatecheckop.js";
-import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelForbiddenError,
-  VercelForbiddenError$inboundSchema,
-} from "../models/vercelforbiddenerror.js";
-import {
-  VercelNotFoundError,
-  VercelNotFoundError$inboundSchema,
-} from "../models/vercelnotfounderror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -54,9 +42,6 @@ export function checksUpdateCheck(
 ): APIPromise<
   Result<
     UpdateCheckResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | VercelNotFoundError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -82,9 +67,6 @@ async function $do(
   [
     Result<
       UpdateCheckResponseBody,
-      | VercelBadRequestError
-      | VercelForbiddenError
-      | VercelNotFoundError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -179,15 +161,8 @@ async function $do(
   }
   const response = doResult.value;
 
-  const responseFields = {
-    HttpMeta: { Response: response, Request: req },
-  };
-
   const [result] = await M.match<
     UpdateCheckResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | VercelNotFoundError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -198,12 +173,9 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, UpdateCheckResponseBody$inboundSchema),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.jsonErr(404, VercelNotFoundError$inboundSchema),
-    M.fail([403, 413, "4XX"]),
+    M.fail([400, 401, 403, 404, 413, "4XX"]),
     M.fail("5XX"),
-  )(response, req, { extraFields: responseFields });
+  )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

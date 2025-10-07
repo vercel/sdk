@@ -107,11 +107,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## updateIntegrationDeploymentAction
 
@@ -188,11 +186,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getDeployment
 
@@ -269,11 +265,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## createDeployment
 
@@ -422,12 +416,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## cancelDeployment
 
@@ -502,12 +493,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## uploadFile
 
@@ -580,11 +568,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## listDeploymentFiles
 
@@ -659,12 +645,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getDeploymentFileContents
 
@@ -741,12 +724,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getDeployments
 
@@ -847,12 +827,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## deleteDeployment
 
@@ -929,9 +906,6 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |

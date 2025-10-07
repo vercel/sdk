@@ -10,106 +10,162 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type GetDomainAuthCodeInternalServerErrorType string
+type GetDomainAuthCodeForbiddenType string
 
 const (
-	GetDomainAuthCodeInternalServerErrorTypeUnauthorizedError          GetDomainAuthCodeInternalServerErrorType = "Unauthorized_error"
-	GetDomainAuthCodeInternalServerErrorTypeNotAuthorizedForScopeError GetDomainAuthCodeInternalServerErrorType = "NotAuthorizedForScope_error"
-	GetDomainAuthCodeInternalServerErrorTypeInternalServerErrorError   GetDomainAuthCodeInternalServerErrorType = "InternalServerError_error"
+	GetDomainAuthCodeForbiddenTypeNotAuthorizedForScopeError GetDomainAuthCodeForbiddenType = "NotAuthorizedForScope_error"
+	GetDomainAuthCodeForbiddenTypeForbiddenError             GetDomainAuthCodeForbiddenType = "Forbidden_error"
 )
 
-// GetDomainAuthCodeInternalServerError - Unauthorized
-type GetDomainAuthCodeInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// GetDomainAuthCodeForbidden - NotAuthorizedForScope
+type GetDomainAuthCodeForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type GetDomainAuthCodeInternalServerErrorType
+	Type GetDomainAuthCodeForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &GetDomainAuthCodeInternalServerError{}
+var _ error = &GetDomainAuthCodeForbidden{}
 
-func CreateGetDomainAuthCodeInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) GetDomainAuthCodeInternalServerError {
-	typ := GetDomainAuthCodeInternalServerErrorTypeUnauthorizedError
+func CreateGetDomainAuthCodeForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetDomainAuthCodeForbidden {
+	typ := GetDomainAuthCodeForbiddenTypeNotAuthorizedForScopeError
 
-	return GetDomainAuthCodeInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateGetDomainAuthCodeInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetDomainAuthCodeInternalServerError {
-	typ := GetDomainAuthCodeInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return GetDomainAuthCodeInternalServerError{
+	return GetDomainAuthCodeForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateGetDomainAuthCodeInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) GetDomainAuthCodeInternalServerError {
-	typ := GetDomainAuthCodeInternalServerErrorTypeInternalServerErrorError
+func CreateGetDomainAuthCodeForbiddenForbiddenError(forbiddenError ForbiddenError) GetDomainAuthCodeForbidden {
+	typ := GetDomainAuthCodeForbiddenTypeForbiddenError
 
-	return GetDomainAuthCodeInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return GetDomainAuthCodeForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *GetDomainAuthCodeInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = GetDomainAuthCodeInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *GetDomainAuthCodeForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = GetDomainAuthCodeInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = GetDomainAuthCodeForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = GetDomainAuthCodeInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = GetDomainAuthCodeForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainAuthCodeInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainAuthCodeForbidden", string(data))
 }
 
-func (u GetDomainAuthCodeInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u GetDomainAuthCodeForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type GetDomainAuthCodeInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type GetDomainAuthCodeForbidden: all fields are null")
 }
 
-func (u GetDomainAuthCodeInternalServerError) Error() string {
+func (u GetDomainAuthCodeForbidden) Error() string {
 	switch u.Type {
-	case GetDomainAuthCodeInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case GetDomainAuthCodeInternalServerErrorTypeNotAuthorizedForScopeError:
+	case GetDomainAuthCodeForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case GetDomainAuthCodeInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case GetDomainAuthCodeForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
+		return string(data)
+	default:
+		return "unknown error"
+	}
+}
+
+type GetDomainAuthCodeBadRequestType string
+
+const (
+	GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError       GetDomainAuthCodeBadRequestType = "HttpApiDecodeError"
+	GetDomainAuthCodeBadRequestTypeDomainNotRegisteredError GetDomainAuthCodeBadRequestType = "DomainNotRegistered_error"
+)
+
+// GetDomainAuthCodeBadRequest - There was something wrong with the request
+type GetDomainAuthCodeBadRequest struct {
+	HTTPAPIDecodeError       *HTTPAPIDecodeError       `queryParam:"inline"`
+	DomainNotRegisteredError *DomainNotRegisteredError `queryParam:"inline"`
+
+	Type GetDomainAuthCodeBadRequestType
+
+	HTTPMeta components.HTTPMetadata `json:"-"`
+}
+
+var _ error = &GetDomainAuthCodeBadRequest{}
+
+func CreateGetDomainAuthCodeBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetDomainAuthCodeBadRequest {
+	typ := GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError
+
+	return GetDomainAuthCodeBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
+	}
+}
+
+func CreateGetDomainAuthCodeBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) GetDomainAuthCodeBadRequest {
+	typ := GetDomainAuthCodeBadRequestTypeDomainNotRegisteredError
+
+	return GetDomainAuthCodeBadRequest{
+		DomainNotRegisteredError: &domainNotRegisteredError,
+		Type:                     typ,
+	}
+}
+
+func (u *GetDomainAuthCodeBadRequest) UnmarshalJSON(data []byte) error {
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
+	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
+	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
+		u.DomainNotRegisteredError = &domainNotRegisteredError
+		u.Type = GetDomainAuthCodeBadRequestTypeDomainNotRegisteredError
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainAuthCodeBadRequest", string(data))
+}
+
+func (u GetDomainAuthCodeBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
+	}
+
+	if u.DomainNotRegisteredError != nil {
+		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetDomainAuthCodeBadRequest: all fields are null")
+}
+
+func (u GetDomainAuthCodeBadRequest) Error() string {
+	switch u.Type {
+	case GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
+		return string(data)
+	case GetDomainAuthCodeBadRequestTypeDomainNotRegisteredError:
+		data, _ := json.Marshal(u.DomainNotRegisteredError)
 		return string(data)
 	default:
 		return "unknown error"

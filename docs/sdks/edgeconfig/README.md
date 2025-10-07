@@ -94,11 +94,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## createEdgeConfig
 
@@ -177,11 +175,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfig
 
@@ -256,12 +252,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## updateEdgeConfig
 
@@ -342,12 +335,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## deleteEdgeConfig
 
@@ -422,12 +412,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfigItems
 
@@ -502,12 +489,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## patchEdgeConfigItems
 
@@ -582,12 +566,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfigSchema
 
@@ -662,12 +643,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## patchEdgeConfigSchema
 
@@ -748,12 +726,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## deleteEdgeConfigSchema
 
@@ -828,12 +803,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfigItem
 
@@ -910,12 +882,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfigTokens
 
@@ -990,12 +959,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## deleteEdgeConfigTokens
 
@@ -1084,12 +1050,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfigToken
 
@@ -1166,12 +1129,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## createEdgeConfigToken
 
@@ -1252,12 +1212,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfigBackup
 
@@ -1334,12 +1291,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getEdgeConfigBackups
 
@@ -1414,9 +1368,6 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.VercelNotFoundError   | 404                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |

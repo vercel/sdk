@@ -10,106 +10,262 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type RenewDomainInternalServerErrorType string
+type RenewDomainForbiddenType string
 
 const (
-	RenewDomainInternalServerErrorTypeUnauthorizedError          RenewDomainInternalServerErrorType = "Unauthorized_error"
-	RenewDomainInternalServerErrorTypeNotAuthorizedForScopeError RenewDomainInternalServerErrorType = "NotAuthorizedForScope_error"
-	RenewDomainInternalServerErrorTypeInternalServerErrorError   RenewDomainInternalServerErrorType = "InternalServerError_error"
+	RenewDomainForbiddenTypeNotAuthorizedForScopeError RenewDomainForbiddenType = "NotAuthorizedForScope_error"
+	RenewDomainForbiddenTypeForbiddenError             RenewDomainForbiddenType = "Forbidden_error"
 )
 
-// RenewDomainInternalServerError - Unauthorized
-type RenewDomainInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
+// RenewDomainForbidden - NotAuthorizedForScope
+type RenewDomainForbidden struct {
 	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+	ForbiddenError             *ForbiddenError             `queryParam:"inline"`
 
-	Type RenewDomainInternalServerErrorType
+	Type RenewDomainForbiddenType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &RenewDomainInternalServerError{}
+var _ error = &RenewDomainForbidden{}
 
-func CreateRenewDomainInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) RenewDomainInternalServerError {
-	typ := RenewDomainInternalServerErrorTypeUnauthorizedError
+func CreateRenewDomainForbiddenNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) RenewDomainForbidden {
+	typ := RenewDomainForbiddenTypeNotAuthorizedForScopeError
 
-	return RenewDomainInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
-	}
-}
-
-func CreateRenewDomainInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) RenewDomainInternalServerError {
-	typ := RenewDomainInternalServerErrorTypeNotAuthorizedForScopeError
-
-	return RenewDomainInternalServerError{
+	return RenewDomainForbidden{
 		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
 		Type:                       typ,
 	}
 }
 
-func CreateRenewDomainInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) RenewDomainInternalServerError {
-	typ := RenewDomainInternalServerErrorTypeInternalServerErrorError
+func CreateRenewDomainForbiddenForbiddenError(forbiddenError ForbiddenError) RenewDomainForbidden {
+	typ := RenewDomainForbiddenTypeForbiddenError
 
-	return RenewDomainInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
+	return RenewDomainForbidden{
+		ForbiddenError: &forbiddenError,
+		Type:           typ,
 	}
 }
 
-func (u *RenewDomainInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = RenewDomainInternalServerErrorTypeUnauthorizedError
-		return nil
-	}
+func (u *RenewDomainForbidden) UnmarshalJSON(data []byte) error {
 
 	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
 	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
 		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = RenewDomainInternalServerErrorTypeNotAuthorizedForScopeError
+		u.Type = RenewDomainForbiddenTypeNotAuthorizedForScopeError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = RenewDomainInternalServerErrorTypeInternalServerErrorError
+	var forbiddenError ForbiddenError = ForbiddenError{}
+	if err := utils.UnmarshalJSON(data, &forbiddenError, "", true, nil); err == nil {
+		u.ForbiddenError = &forbiddenError
+		u.Type = RenewDomainForbiddenTypeForbiddenError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RenewDomainInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RenewDomainForbidden", string(data))
 }
 
-func (u RenewDomainInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
-	}
-
+func (u RenewDomainForbidden) MarshalJSON() ([]byte, error) {
 	if u.NotAuthorizedForScopeError != nil {
 		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
+	if u.ForbiddenError != nil {
+		return utils.MarshalJSON(u.ForbiddenError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RenewDomainInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type RenewDomainForbidden: all fields are null")
 }
 
-func (u RenewDomainInternalServerError) Error() string {
+func (u RenewDomainForbidden) Error() string {
 	switch u.Type {
-	case RenewDomainInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
-		return string(data)
-	case RenewDomainInternalServerErrorTypeNotAuthorizedForScopeError:
+	case RenewDomainForbiddenTypeNotAuthorizedForScopeError:
 		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
 		return string(data)
-	case RenewDomainInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case RenewDomainForbiddenTypeForbiddenError:
+		data, _ := json.Marshal(u.ForbiddenError)
+		return string(data)
+	default:
+		return "unknown error"
+	}
+}
+
+type RenewDomainBadRequestType string
+
+const (
+	RenewDomainBadRequestTypeHTTPAPIDecodeError         RenewDomainBadRequestType = "HttpApiDecodeError"
+	RenewDomainBadRequestTypeTldNotSupportedError       RenewDomainBadRequestType = "TldNotSupported_error"
+	RenewDomainBadRequestTypeDomainNotAvailableError    RenewDomainBadRequestType = "DomainNotAvailable_error"
+	RenewDomainBadRequestTypeExpectedPriceMismatchError RenewDomainBadRequestType = "ExpectedPriceMismatch_error"
+	RenewDomainBadRequestTypeDomainNotRegisteredError   RenewDomainBadRequestType = "DomainNotRegistered_error"
+	RenewDomainBadRequestTypeBadRequestError            RenewDomainBadRequestType = "BadRequest_error"
+)
+
+// RenewDomainBadRequest - There was something wrong with the request
+type RenewDomainBadRequest struct {
+	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
+	TldNotSupportedError       *TldNotSupportedError       `queryParam:"inline"`
+	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
+	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
+	DomainNotRegisteredError   *DomainNotRegisteredError   `queryParam:"inline"`
+	BadRequestError            *BadRequestError            `queryParam:"inline"`
+
+	Type RenewDomainBadRequestType
+
+	HTTPMeta components.HTTPMetadata `json:"-"`
+}
+
+var _ error = &RenewDomainBadRequest{}
+
+func CreateRenewDomainBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeHTTPAPIDecodeError
+
+	return RenewDomainBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
+	}
+}
+
+func CreateRenewDomainBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeTldNotSupportedError
+
+	return RenewDomainBadRequest{
+		TldNotSupportedError: &tldNotSupportedError,
+		Type:                 typ,
+	}
+}
+
+func CreateRenewDomainBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeDomainNotAvailableError
+
+	return RenewDomainBadRequest{
+		DomainNotAvailableError: &domainNotAvailableError,
+		Type:                    typ,
+	}
+}
+
+func CreateRenewDomainBadRequestExpectedPriceMismatchError(expectedPriceMismatchError ExpectedPriceMismatchError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeExpectedPriceMismatchError
+
+	return RenewDomainBadRequest{
+		ExpectedPriceMismatchError: &expectedPriceMismatchError,
+		Type:                       typ,
+	}
+}
+
+func CreateRenewDomainBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeDomainNotRegisteredError
+
+	return RenewDomainBadRequest{
+		DomainNotRegisteredError: &domainNotRegisteredError,
+		Type:                     typ,
+	}
+}
+
+func CreateRenewDomainBadRequestBadRequestError(badRequestError BadRequestError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeBadRequestError
+
+	return RenewDomainBadRequest{
+		BadRequestError: &badRequestError,
+		Type:            typ,
+	}
+}
+
+func (u *RenewDomainBadRequest) UnmarshalJSON(data []byte) error {
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = RenewDomainBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
+	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
+	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
+		u.TldNotSupportedError = &tldNotSupportedError
+		u.Type = RenewDomainBadRequestTypeTldNotSupportedError
+		return nil
+	}
+
+	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
+	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
+		u.DomainNotAvailableError = &domainNotAvailableError
+		u.Type = RenewDomainBadRequestTypeDomainNotAvailableError
+		return nil
+	}
+
+	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
+	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
+		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
+		u.Type = RenewDomainBadRequestTypeExpectedPriceMismatchError
+		return nil
+	}
+
+	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
+	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
+		u.DomainNotRegisteredError = &domainNotRegisteredError
+		u.Type = RenewDomainBadRequestTypeDomainNotRegisteredError
+		return nil
+	}
+
+	var badRequestError BadRequestError = BadRequestError{}
+	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
+		u.BadRequestError = &badRequestError
+		u.Type = RenewDomainBadRequestTypeBadRequestError
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RenewDomainBadRequest", string(data))
+}
+
+func (u RenewDomainBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
+	}
+
+	if u.TldNotSupportedError != nil {
+		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
+	}
+
+	if u.DomainNotAvailableError != nil {
+		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
+	}
+
+	if u.ExpectedPriceMismatchError != nil {
+		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
+	}
+
+	if u.DomainNotRegisteredError != nil {
+		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	}
+
+	if u.BadRequestError != nil {
+		return utils.MarshalJSON(u.BadRequestError, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type RenewDomainBadRequest: all fields are null")
+}
+
+func (u RenewDomainBadRequest) Error() string {
+	switch u.Type {
+	case RenewDomainBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
+		return string(data)
+	case RenewDomainBadRequestTypeTldNotSupportedError:
+		data, _ := json.Marshal(u.TldNotSupportedError)
+		return string(data)
+	case RenewDomainBadRequestTypeDomainNotAvailableError:
+		data, _ := json.Marshal(u.DomainNotAvailableError)
+		return string(data)
+	case RenewDomainBadRequestTypeExpectedPriceMismatchError:
+		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
+		return string(data)
+	case RenewDomainBadRequestTypeDomainNotRegisteredError:
+		data, _ := json.Marshal(u.DomainNotRegisteredError)
+		return string(data)
+	case RenewDomainBadRequestTypeBadRequestError:
+		data, _ := json.Marshal(u.BadRequestError)
 		return string(data)
 	default:
 		return "unknown error"

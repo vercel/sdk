@@ -434,7 +434,7 @@ export class Projects extends ClientSDK {
    * Upload client certificate for egress mTLS
    *
    * @remarks
-   * Upload or update a client certificate for mTLS authentication to external origins. The certificate is uploaded to S3 in plaintext, while the private key is encrypted. A hash reference is stored in the project document. The certificate will be available in the deployment runtime for establishing mTLS connections.
+   * Upload a client certificate for mTLS authentication to external origins.
    */
   async uploadProjectClientCert(
     request: UploadProjectClientCertRequest,

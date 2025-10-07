@@ -97,11 +97,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getWebhooks
 
@@ -174,11 +172,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getWebhook
 
@@ -253,11 +249,9 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## deleteWebhook
 
@@ -332,8 +326,6 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.VercelBadRequestError | 400                          | application/json             |
-| models.VercelForbiddenError  | 401                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |

@@ -21,4 +21,4 @@ let value: GetOrderResponseBody = {
 | `orderId`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
 | `domains`                                            | *models.GetOrderDomains*[]                           | :heavy_check_mark:                                   | N/A                                                  |
 | `status`                                             | [models.GetOrderStatus](../models/getorderstatus.md) | :heavy_check_mark:                                   | N/A                                                  |
-| `error`                                              | *models.GetOrderError*                               | :heavy_minus_sign:                                   | N/A                                                  |
+| `error`                                              | *models.ErrorT*                                      | :heavy_minus_sign:                                   | N/A                                                  |

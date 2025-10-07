@@ -10,106 +10,81 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type GetContactInfoSchemaInternalServerErrorType string
+type GetContactInfoSchemaBadRequestType string
 
 const (
-	GetContactInfoSchemaInternalServerErrorTypeUnauthorizedError          GetContactInfoSchemaInternalServerErrorType = "Unauthorized_error"
-	GetContactInfoSchemaInternalServerErrorTypeNotAuthorizedForScopeError GetContactInfoSchemaInternalServerErrorType = "NotAuthorizedForScope_error"
-	GetContactInfoSchemaInternalServerErrorTypeInternalServerErrorError   GetContactInfoSchemaInternalServerErrorType = "InternalServerError_error"
+	GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError GetContactInfoSchemaBadRequestType = "HttpApiDecodeError"
+	GetContactInfoSchemaBadRequestTypeBadRequestError    GetContactInfoSchemaBadRequestType = "BadRequest_error"
 )
 
-// GetContactInfoSchemaInternalServerError - Unauthorized
-type GetContactInfoSchemaInternalServerError struct {
-	UnauthorizedError          *UnauthorizedError          `queryParam:"inline"`
-	NotAuthorizedForScopeError *NotAuthorizedForScopeError `queryParam:"inline"`
-	InternalServerErrorError   *InternalServerErrorError   `queryParam:"inline"`
+// GetContactInfoSchemaBadRequest - There was something wrong with the request
+type GetContactInfoSchemaBadRequest struct {
+	HTTPAPIDecodeError *HTTPAPIDecodeError `queryParam:"inline"`
+	BadRequestError    *BadRequestError    `queryParam:"inline"`
 
-	Type GetContactInfoSchemaInternalServerErrorType
+	Type GetContactInfoSchemaBadRequestType
 
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
-var _ error = &GetContactInfoSchemaInternalServerError{}
+var _ error = &GetContactInfoSchemaBadRequest{}
 
-func CreateGetContactInfoSchemaInternalServerErrorUnauthorizedError(unauthorizedError UnauthorizedError) GetContactInfoSchemaInternalServerError {
-	typ := GetContactInfoSchemaInternalServerErrorTypeUnauthorizedError
+func CreateGetContactInfoSchemaBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetContactInfoSchemaBadRequest {
+	typ := GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError
 
-	return GetContactInfoSchemaInternalServerError{
-		UnauthorizedError: &unauthorizedError,
-		Type:              typ,
+	return GetContactInfoSchemaBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
 }
 
-func CreateGetContactInfoSchemaInternalServerErrorNotAuthorizedForScopeError(notAuthorizedForScopeError NotAuthorizedForScopeError) GetContactInfoSchemaInternalServerError {
-	typ := GetContactInfoSchemaInternalServerErrorTypeNotAuthorizedForScopeError
+func CreateGetContactInfoSchemaBadRequestBadRequestError(badRequestError BadRequestError) GetContactInfoSchemaBadRequest {
+	typ := GetContactInfoSchemaBadRequestTypeBadRequestError
 
-	return GetContactInfoSchemaInternalServerError{
-		NotAuthorizedForScopeError: &notAuthorizedForScopeError,
-		Type:                       typ,
+	return GetContactInfoSchemaBadRequest{
+		BadRequestError: &badRequestError,
+		Type:            typ,
 	}
 }
 
-func CreateGetContactInfoSchemaInternalServerErrorInternalServerErrorError(internalServerErrorError InternalServerErrorError) GetContactInfoSchemaInternalServerError {
-	typ := GetContactInfoSchemaInternalServerErrorTypeInternalServerErrorError
+func (u *GetContactInfoSchemaBadRequest) UnmarshalJSON(data []byte) error {
 
-	return GetContactInfoSchemaInternalServerError{
-		InternalServerErrorError: &internalServerErrorError,
-		Type:                     typ,
-	}
-}
-
-func (u *GetContactInfoSchemaInternalServerError) UnmarshalJSON(data []byte) error {
-
-	var unauthorizedError UnauthorizedError = UnauthorizedError{}
-	if err := utils.UnmarshalJSON(data, &unauthorizedError, "", true, nil); err == nil {
-		u.UnauthorizedError = &unauthorizedError
-		u.Type = GetContactInfoSchemaInternalServerErrorTypeUnauthorizedError
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError
 		return nil
 	}
 
-	var notAuthorizedForScopeError NotAuthorizedForScopeError = NotAuthorizedForScopeError{}
-	if err := utils.UnmarshalJSON(data, &notAuthorizedForScopeError, "", true, nil); err == nil {
-		u.NotAuthorizedForScopeError = &notAuthorizedForScopeError
-		u.Type = GetContactInfoSchemaInternalServerErrorTypeNotAuthorizedForScopeError
+	var badRequestError BadRequestError = BadRequestError{}
+	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
+		u.BadRequestError = &badRequestError
+		u.Type = GetContactInfoSchemaBadRequestTypeBadRequestError
 		return nil
 	}
 
-	var internalServerErrorError InternalServerErrorError = InternalServerErrorError{}
-	if err := utils.UnmarshalJSON(data, &internalServerErrorError, "", true, nil); err == nil {
-		u.InternalServerErrorError = &internalServerErrorError
-		u.Type = GetContactInfoSchemaInternalServerErrorTypeInternalServerErrorError
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetContactInfoSchemaInternalServerError", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetContactInfoSchemaBadRequest", string(data))
 }
 
-func (u GetContactInfoSchemaInternalServerError) MarshalJSON() ([]byte, error) {
-	if u.UnauthorizedError != nil {
-		return utils.MarshalJSON(u.UnauthorizedError, "", true)
+func (u GetContactInfoSchemaBadRequest) MarshalJSON() ([]byte, error) {
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
-	if u.NotAuthorizedForScopeError != nil {
-		return utils.MarshalJSON(u.NotAuthorizedForScopeError, "", true)
+	if u.BadRequestError != nil {
+		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
-	if u.InternalServerErrorError != nil {
-		return utils.MarshalJSON(u.InternalServerErrorError, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type GetContactInfoSchemaInternalServerError: all fields are null")
+	return nil, errors.New("could not marshal union type GetContactInfoSchemaBadRequest: all fields are null")
 }
 
-func (u GetContactInfoSchemaInternalServerError) Error() string {
+func (u GetContactInfoSchemaBadRequest) Error() string {
 	switch u.Type {
-	case GetContactInfoSchemaInternalServerErrorTypeUnauthorizedError:
-		data, _ := json.Marshal(u.UnauthorizedError)
+	case GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
-	case GetContactInfoSchemaInternalServerErrorTypeNotAuthorizedForScopeError:
-		data, _ := json.Marshal(u.NotAuthorizedForScopeError)
-		return string(data)
-	case GetContactInfoSchemaInternalServerErrorTypeInternalServerErrorError:
-		data, _ := json.Marshal(u.InternalServerErrorError)
+	case GetContactInfoSchemaBadRequestTypeBadRequestError:
+		data, _ := json.Marshal(u.BadRequestError)
 		return string(data)
 	default:
 		return "unknown error"

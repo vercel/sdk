@@ -13,12 +13,13 @@ import { pathToFunc } from "../lib/url.js";
 import {
   BuyDomainsDomainsRegistrarResponseBody,
   BuyDomainsDomainsRegistrarResponseBody$inboundSchema,
+  BuyDomainsDomainsRegistrarResponseResponseBody,
+  BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema,
   BuyDomainsRequestBody,
   BuyDomainsRequestBody$outboundSchema,
   BuyDomainsResponseBody,
   BuyDomainsResponseBody$inboundSchema,
 } from "../models/buydomainsop.js";
-import { Forbidden, Forbidden$inboundSchema } from "../models/forbidden.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -26,21 +27,21 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  InternalServerError,
+  InternalServerError$inboundSchema,
+} from "../models/internalservererror.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
+  TooManyRequests,
+  TooManyRequests$inboundSchema,
+} from "../models/toomanyrequests.js";
+import {
+  Unauthorized,
+  Unauthorized$inboundSchema,
+} from "../models/unauthorized.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelForbiddenError,
-  VercelForbiddenError$inboundSchema,
-} from "../models/vercelforbiddenerror.js";
-import {
-  VercelRateLimitError,
-  VercelRateLimitError$inboundSchema,
-} from "../models/vercelratelimiterror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -57,11 +58,11 @@ export function domainsRegistrarBuyDomains(
 ): APIPromise<
   Result<
     BuyDomainsResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | Forbidden
-    | VercelRateLimitError
     | BuyDomainsDomainsRegistrarResponseBody
+    | Unauthorized
+    | BuyDomainsDomainsRegistrarResponseResponseBody
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -87,11 +88,11 @@ async function $do(
   [
     Result<
       BuyDomainsResponseBody,
-      | VercelBadRequestError
-      | VercelForbiddenError
-      | Forbidden
-      | VercelRateLimitError
       | BuyDomainsDomainsRegistrarResponseBody
+      | Unauthorized
+      | BuyDomainsDomainsRegistrarResponseResponseBody
+      | TooManyRequests
+      | InternalServerError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -173,11 +174,11 @@ async function $do(
 
   const [result] = await M.match<
     BuyDomainsResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
-    | Forbidden
-    | VercelRateLimitError
     | BuyDomainsDomainsRegistrarResponseBody
+    | Unauthorized
+    | BuyDomainsDomainsRegistrarResponseResponseBody
+    | TooManyRequests
+    | InternalServerError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -188,11 +189,14 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, BuyDomainsResponseBody$inboundSchema),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.jsonErr(403, Forbidden$inboundSchema),
-    M.jsonErr(429, VercelRateLimitError$inboundSchema),
-    M.jsonErr(500, BuyDomainsDomainsRegistrarResponseBody$inboundSchema),
+    M.jsonErr(400, BuyDomainsDomainsRegistrarResponseBody$inboundSchema),
+    M.jsonErr(401, Unauthorized$inboundSchema),
+    M.jsonErr(
+      403,
+      BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema,
+    ),
+    M.jsonErr(429, TooManyRequests$inboundSchema),
+    M.jsonErr(500, InternalServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

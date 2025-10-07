@@ -318,17 +318,7 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "jealous-tapioca.org",
-        ip: "202.135.145.236",
-        createdAt: "1706393793060",
-        updatedAt: "1735610727884",
-        updatedAtHour: "<value>",
-      },
-    ],
+    result: [],
   });
 });
 

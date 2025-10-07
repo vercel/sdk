@@ -6,24 +6,24 @@ import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
-  InternalServerError,
-  InternalServerError$inboundSchema,
-  InternalServerError$Outbound,
-  InternalServerError$outboundSchema,
-} from "./internalservererror.js";
+  BadRequest,
+  BadRequest$inboundSchema,
+  BadRequest$Outbound,
+  BadRequest$outboundSchema,
+} from "./badrequest.js";
 import {
-  NotAuthorizedForScope,
-  NotAuthorizedForScope$inboundSchema,
-  NotAuthorizedForScope$Outbound,
-  NotAuthorizedForScope$outboundSchema,
-} from "./notauthorizedforscope.js";
+  HttpApiDecodeError,
+  HttpApiDecodeError$inboundSchema,
+  HttpApiDecodeError$Outbound,
+  HttpApiDecodeError$outboundSchema,
+} from "./httpapidecodeerror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  Unauthorized,
-  Unauthorized$inboundSchema,
-  Unauthorized$Outbound,
-  Unauthorized$outboundSchema,
-} from "./unauthorized.js";
+  TldNotSupported,
+  TldNotSupported$inboundSchema,
+  TldNotSupported$Outbound,
+  TldNotSupported$outboundSchema,
+} from "./tldnotsupported.js";
 
 export type GetDomainPriceRequest = {
   domain: string;
@@ -31,12 +31,12 @@ export type GetDomainPriceRequest = {
 };
 
 /**
- * Unauthorized
+ * There was something wrong with the request
  */
 export type GetDomainPriceDomainsRegistrarResponseBody =
-  | Unauthorized
-  | NotAuthorizedForScope
-  | InternalServerError;
+  | HttpApiDecodeError
+  | TldNotSupported
+  | BadRequest;
 
 /**
  * Success
@@ -118,16 +118,16 @@ export function getDomainPriceRequestFromJSON(
 export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
   z.ZodType<GetDomainPriceDomainsRegistrarResponseBody, z.ZodTypeDef, unknown> =
     z.union([
-      Unauthorized$inboundSchema,
-      NotAuthorizedForScope$inboundSchema,
-      InternalServerError$inboundSchema,
+      HttpApiDecodeError$inboundSchema,
+      TldNotSupported$inboundSchema,
+      BadRequest$inboundSchema,
     ]);
 
 /** @internal */
 export type GetDomainPriceDomainsRegistrarResponseBody$Outbound =
-  | Unauthorized$Outbound
-  | NotAuthorizedForScope$Outbound
-  | InternalServerError$Outbound;
+  | HttpApiDecodeError$Outbound
+  | TldNotSupported$Outbound
+  | BadRequest$Outbound;
 
 /** @internal */
 export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
@@ -136,9 +136,9 @@ export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
     z.ZodTypeDef,
     GetDomainPriceDomainsRegistrarResponseBody
   > = z.union([
-    Unauthorized$outboundSchema,
-    NotAuthorizedForScope$outboundSchema,
-    InternalServerError$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
+    TldNotSupported$outboundSchema,
+    BadRequest$outboundSchema,
   ]);
 
 /**

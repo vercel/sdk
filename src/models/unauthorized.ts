@@ -12,22 +12,22 @@ export const Code = {
 } as const;
 export type Code = ClosedEnum<typeof Code>;
 
-export const Tag = {
+export const UnauthorizedTag = {
   Unauthorized: "Unauthorized",
 } as const;
-export type Tag = ClosedEnum<typeof Tag>;
+export type UnauthorizedTag = ClosedEnum<typeof UnauthorizedTag>;
 
 export type UnauthorizedData = {
   status: number;
   code: Code;
   message: string;
-  tag: Tag;
+  tag: UnauthorizedTag;
 };
 
 export class Unauthorized extends VercelError {
   status: number;
   code: Code;
-  tag: Tag;
+  tag: UnauthorizedTag;
 
   /** The original data that was passed to this error instance. */
   data$: UnauthorizedData;
@@ -68,21 +68,24 @@ export namespace Code$ {
 }
 
 /** @internal */
-export const Tag$inboundSchema: z.ZodNativeEnum<typeof Tag> = z.nativeEnum(Tag);
+export const UnauthorizedTag$inboundSchema: z.ZodNativeEnum<
+  typeof UnauthorizedTag
+> = z.nativeEnum(UnauthorizedTag);
 
 /** @internal */
-export const Tag$outboundSchema: z.ZodNativeEnum<typeof Tag> =
-  Tag$inboundSchema;
+export const UnauthorizedTag$outboundSchema: z.ZodNativeEnum<
+  typeof UnauthorizedTag
+> = UnauthorizedTag$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Tag$ {
-  /** @deprecated use `Tag$inboundSchema` instead. */
-  export const inboundSchema = Tag$inboundSchema;
-  /** @deprecated use `Tag$outboundSchema` instead. */
-  export const outboundSchema = Tag$outboundSchema;
+export namespace UnauthorizedTag$ {
+  /** @deprecated use `UnauthorizedTag$inboundSchema` instead. */
+  export const inboundSchema = UnauthorizedTag$inboundSchema;
+  /** @deprecated use `UnauthorizedTag$outboundSchema` instead. */
+  export const outboundSchema = UnauthorizedTag$outboundSchema;
 }
 
 /** @internal */
@@ -94,7 +97,7 @@ export const Unauthorized$inboundSchema: z.ZodType<
   status: z.number(),
   code: Code$inboundSchema,
   message: z.string(),
-  _tag: Tag$inboundSchema,
+  _tag: UnauthorizedTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -131,7 +134,7 @@ export const Unauthorized$outboundSchema: z.ZodType<
       status: z.number(),
       code: Code$outboundSchema,
       message: z.string(),
-      tag: Tag$outboundSchema,
+      tag: UnauthorizedTag$outboundSchema,
     }).transform((v) => {
       return remap$(v, {
         tag: "_tag",

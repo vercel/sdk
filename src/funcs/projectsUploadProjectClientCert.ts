@@ -25,15 +25,7 @@ import {
   UploadProjectClientCertResponseBody,
   UploadProjectClientCertResponseBody$inboundSchema,
 } from "../models/uploadprojectclientcertop.js";
-import {
-  VercelBadRequestError,
-  VercelBadRequestError$inboundSchema,
-} from "../models/vercelbadrequesterror.js";
 import { VercelError } from "../models/vercelerror.js";
-import {
-  VercelForbiddenError,
-  VercelForbiddenError$inboundSchema,
-} from "../models/vercelforbiddenerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -41,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Upload client certificate for egress mTLS
  *
  * @remarks
- * Upload or update a client certificate for mTLS authentication to external origins. The certificate is uploaded to S3 in plaintext, while the private key is encrypted. A hash reference is stored in the project document. The certificate will be available in the deployment runtime for establishing mTLS connections.
+ * Upload a client certificate for mTLS authentication to external origins.
  */
 export function projectsUploadProjectClientCert(
   client: VercelCore,
@@ -50,8 +42,6 @@ export function projectsUploadProjectClientCert(
 ): APIPromise<
   Result<
     UploadProjectClientCertResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -77,8 +67,6 @@ async function $do(
   [
     Result<
       UploadProjectClientCertResponseBody,
-      | VercelBadRequestError
-      | VercelForbiddenError
       | VercelError
       | ResponseValidationError
       | ConnectionError
@@ -167,14 +155,8 @@ async function $do(
   }
   const response = doResult.value;
 
-  const responseFields = {
-    HttpMeta: { Response: response, Request: req },
-  };
-
   const [result] = await M.match<
     UploadProjectClientCertResponseBody,
-    | VercelBadRequestError
-    | VercelForbiddenError
     | VercelError
     | ResponseValidationError
     | ConnectionError
@@ -185,11 +167,9 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, UploadProjectClientCertResponseBody$inboundSchema),
-    M.jsonErr(400, VercelBadRequestError$inboundSchema),
-    M.jsonErr(401, VercelForbiddenError$inboundSchema),
-    M.fail([402, 403, 409, "4XX"]),
+    M.fail([400, 401, 402, 403, 409, "4XX"]),
     M.fail([500, "5XX"]),
-  )(response, req, { extraFields: responseFields });
+  )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

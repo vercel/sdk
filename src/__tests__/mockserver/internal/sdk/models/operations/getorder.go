@@ -82,11 +82,12 @@ func (e *DomainStatus3) UnmarshalJSON(data []byte) error {
 type DomainTransfer struct {
 	PurchaseType PurchaseTypeTransfer `json:"purchaseType"`
 	AutoRenew    bool                 `json:"autoRenew"`
-	DomainName   string               `json:"domainName"`
-	Status       DomainStatus3        `json:"status"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+	// The number of years the domain is being transferred for.
+	Years      float64       `json:"years"`
+	DomainName string        `json:"domainName"`
+	Status     DomainStatus3 `json:"status"`
+	// The price for the domain.
 	Price float64 `json:"price"`
-	Years float64 `json:"years"`
 }
 
 func (d DomainTransfer) MarshalJSON() ([]byte, error) {
@@ -94,7 +95,7 @@ func (d DomainTransfer) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DomainTransfer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"purchaseType", "autoRenew", "domainName", "status", "price", "years"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"purchaseType", "autoRenew", "years", "domainName", "status", "price"}); err != nil {
 		return err
 	}
 	return nil
@@ -112,6 +113,13 @@ func (o *DomainTransfer) GetAutoRenew() bool {
 		return false
 	}
 	return o.AutoRenew
+}
+
+func (o *DomainTransfer) GetYears() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Years
 }
 
 func (o *DomainTransfer) GetDomainName() string {
@@ -133,13 +141,6 @@ func (o *DomainTransfer) GetPrice() float64 {
 		return 0.0
 	}
 	return o.Price
-}
-
-func (o *DomainTransfer) GetYears() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Years
 }
 
 type PurchaseTypeRenewal string
@@ -202,11 +203,12 @@ func (e *DomainStatus2) UnmarshalJSON(data []byte) error {
 
 type DomainRenewal struct {
 	PurchaseType PurchaseTypeRenewal `json:"purchaseType"`
-	DomainName   string              `json:"domainName"`
-	Status       DomainStatus2       `json:"status"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+	// The number of years the domain is being renewed for.
+	Years      float64       `json:"years"`
+	DomainName string        `json:"domainName"`
+	Status     DomainStatus2 `json:"status"`
+	// The price for the domain.
 	Price float64 `json:"price"`
-	Years float64 `json:"years"`
 }
 
 func (d DomainRenewal) MarshalJSON() ([]byte, error) {
@@ -214,7 +216,7 @@ func (d DomainRenewal) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DomainRenewal) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"purchaseType", "domainName", "status", "price", "years"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"purchaseType", "years", "domainName", "status", "price"}); err != nil {
 		return err
 	}
 	return nil
@@ -225,6 +227,13 @@ func (o *DomainRenewal) GetPurchaseType() PurchaseTypeRenewal {
 		return PurchaseTypeRenewal("")
 	}
 	return o.PurchaseType
+}
+
+func (o *DomainRenewal) GetYears() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Years
 }
 
 func (o *DomainRenewal) GetDomainName() string {
@@ -246,13 +255,6 @@ func (o *DomainRenewal) GetPrice() float64 {
 		return 0.0
 	}
 	return o.Price
-}
-
-func (o *DomainRenewal) GetYears() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Years
 }
 
 type PurchaseTypePurchase string
@@ -316,11 +318,12 @@ func (e *DomainStatus1) UnmarshalJSON(data []byte) error {
 type DomainPurchase struct {
 	PurchaseType PurchaseTypePurchase `json:"purchaseType"`
 	AutoRenew    bool                 `json:"autoRenew"`
-	DomainName   string               `json:"domainName"`
-	Status       DomainStatus1        `json:"status"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+	// The number of years the domain is being purchased for.
+	Years      float64       `json:"years"`
+	DomainName string        `json:"domainName"`
+	Status     DomainStatus1 `json:"status"`
+	// The price for the domain.
 	Price float64 `json:"price"`
-	Years float64 `json:"years"`
 }
 
 func (d DomainPurchase) MarshalJSON() ([]byte, error) {
@@ -328,7 +331,7 @@ func (d DomainPurchase) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DomainPurchase) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"purchaseType", "autoRenew", "domainName", "status", "price", "years"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"purchaseType", "autoRenew", "years", "domainName", "status", "price"}); err != nil {
 		return err
 	}
 	return nil
@@ -346,6 +349,13 @@ func (o *DomainPurchase) GetAutoRenew() bool {
 		return false
 	}
 	return o.AutoRenew
+}
+
+func (o *DomainPurchase) GetYears() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Years
 }
 
 func (o *DomainPurchase) GetDomainName() string {
@@ -367,13 +377,6 @@ func (o *DomainPurchase) GetPrice() float64 {
 		return 0.0
 	}
 	return o.Price
-}
-
-func (o *DomainPurchase) GetYears() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Years
 }
 
 type GetOrderDomainUnionType string

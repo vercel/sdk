@@ -64,6 +64,33 @@ func (e *ElasticConcurrencyEnabled) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// StaticIpsEnabled - Filter results by projects with Static IPs enabled
+type StaticIpsEnabled string
+
+const (
+	StaticIpsEnabledZero StaticIpsEnabled = "0"
+	StaticIpsEnabledOne  StaticIpsEnabled = "1"
+)
+
+func (e StaticIpsEnabled) ToPointer() *StaticIpsEnabled {
+	return &e
+}
+func (e *StaticIpsEnabled) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "0":
+		fallthrough
+	case "1":
+		*e = StaticIpsEnabled(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for StaticIpsEnabled: %v", v)
+	}
+}
+
 type GetProjectsRequest struct {
 	// Query only projects updated after the given timestamp or continuation token.
 	From *string `queryParam:"style=form,explode=true,name=from"`
@@ -88,6 +115,8 @@ type GetProjectsRequest struct {
 	Deprecated        *bool   `queryParam:"style=form,explode=true,name=deprecated"`
 	// Filter results by projects with elastic concurrency enabled
 	ElasticConcurrencyEnabled *ElasticConcurrencyEnabled `queryParam:"style=form,explode=true,name=elasticConcurrencyEnabled"`
+	// Filter results by projects with Static IPs enabled
+	StaticIpsEnabled *StaticIpsEnabled `queryParam:"style=form,explode=true,name=staticIpsEnabled"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -176,6 +205,13 @@ func (o *GetProjectsRequest) GetElasticConcurrencyEnabled() *ElasticConcurrencyE
 		return nil
 	}
 	return o.ElasticConcurrencyEnabled
+}
+
+func (o *GetProjectsRequest) GetStaticIpsEnabled() *StaticIpsEnabled {
+	if o == nil {
+		return nil
+	}
+	return o.StaticIpsEnabled
 }
 
 func (o *GetProjectsRequest) GetTeamID() *string {

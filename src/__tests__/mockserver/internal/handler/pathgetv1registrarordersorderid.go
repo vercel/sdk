@@ -51,10 +51,10 @@ func testGetOrderGetOrder0(w http.ResponseWriter, req *http.Request) {
 			operations.CreateGetOrderDomainUnionDomainRenewal(
 				operations.DomainRenewal{
 					PurchaseType: operations.PurchaseTypeRenewalRenewal,
+					Years:        3271.32,
 					DomainName:   "annual-atrium.biz",
 					Status:       operations.DomainStatus2Refunded,
 					Price:        5522.99,
-					Years:        3271.32,
 				},
 			),
 		},

@@ -8,11 +8,11 @@ import { CreateIntegrationStoreDirectStore } from "@vercel/sdk/models/createinte
 let value: CreateIntegrationStoreDirectStore = {
   projectsMetadata: [],
   usageQuotaExceeded: true,
-  status: "limits-exceeded-suspended",
+  status: "limits-exceeded-suspended-store-count",
   externalResourceId: "<id>",
   product: {
     value: {
-      atBRANDAt8494: {},
+      atBRANDAt8495: {},
     },
   },
   secrets: [

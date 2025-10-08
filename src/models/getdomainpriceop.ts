@@ -44,17 +44,17 @@ export type GetDomainPriceDomainsRegistrarResponseBody =
 export type GetDomainPriceResponseBody = {
   years: number;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The price for purchasing this domain for the given number of years. If null, the domain is not available for purchase for the given number of years.
    */
-  purchasePrice: number;
+  purchasePrice: number | null;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The price for renewing this domain for the given number of years. If null, the domain cannot be renewed for the given number of years.
    */
-  renewalPrice: number;
+  renewalPrice: number | null;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The price for transferring this domain in for the given number of years. If null, the domain cannot be transferred in for the given number of years.
    */
-  transferPrice: number;
+  transferPrice: number | null;
 };
 
 /** @internal */
@@ -190,17 +190,17 @@ export const GetDomainPriceResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   years: z.number(),
-  purchasePrice: z.number(),
-  renewalPrice: z.number(),
-  transferPrice: z.number(),
+  purchasePrice: z.nullable(z.number()),
+  renewalPrice: z.nullable(z.number()),
+  transferPrice: z.nullable(z.number()),
 });
 
 /** @internal */
 export type GetDomainPriceResponseBody$Outbound = {
   years: number;
-  purchasePrice: number;
-  renewalPrice: number;
-  transferPrice: number;
+  purchasePrice: number | null;
+  renewalPrice: number | null;
+  transferPrice: number | null;
 };
 
 /** @internal */
@@ -210,9 +210,9 @@ export const GetDomainPriceResponseBody$outboundSchema: z.ZodType<
   GetDomainPriceResponseBody
 > = z.object({
   years: z.number(),
-  purchasePrice: z.number(),
-  renewalPrice: z.number(),
-  transferPrice: z.number(),
+  purchasePrice: z.nullable(z.number()),
+  renewalPrice: z.nullable(z.number()),
+  transferPrice: z.nullable(z.number()),
 });
 
 /**

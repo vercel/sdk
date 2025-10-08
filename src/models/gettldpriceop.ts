@@ -42,15 +42,15 @@ export type GetTldPriceResponseBody = {
   /**
    * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
-  purchasePrice: number;
+  purchasePrice: number | null;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The base TLD price for renewing a domain for the given number of years. If null, the TLD does not support renewing domains for the given number of years.
    */
-  renewalPrice: number;
+  renewalPrice: number | null;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The base TLD price for transferring a domain in for the given number of years. If null, the TLD does not support transferring domains in for the given number of years.
    */
-  transferPrice: number;
+  transferPrice: number | null;
 };
 
 /** @internal */
@@ -181,17 +181,17 @@ export const GetTldPriceResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   years: z.number(),
-  purchasePrice: z.number(),
-  renewalPrice: z.number(),
-  transferPrice: z.number(),
+  purchasePrice: z.nullable(z.number()),
+  renewalPrice: z.nullable(z.number()),
+  transferPrice: z.nullable(z.number()),
 });
 
 /** @internal */
 export type GetTldPriceResponseBody$Outbound = {
   years: number;
-  purchasePrice: number;
-  renewalPrice: number;
-  transferPrice: number;
+  purchasePrice: number | null;
+  renewalPrice: number | null;
+  transferPrice: number | null;
 };
 
 /** @internal */
@@ -201,9 +201,9 @@ export const GetTldPriceResponseBody$outboundSchema: z.ZodType<
   GetTldPriceResponseBody
 > = z.object({
   years: z.number(),
-  purchasePrice: z.number(),
-  renewalPrice: z.number(),
-  transferPrice: z.number(),
+  purchasePrice: z.nullable(z.number()),
+  renewalPrice: z.nullable(z.number()),
+  transferPrice: z.nullable(z.number()),
 });
 
 /**

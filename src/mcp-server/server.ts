@@ -49,6 +49,7 @@ import { tool$checksGetAllChecks } from "./tools/checksGetAllChecks.js";
 import { tool$checksGetCheck } from "./tools/checksGetCheck.js";
 import { tool$checksRerequestCheck } from "./tools/checksRerequestCheck.js";
 import { tool$checksUpdateCheck } from "./tools/checksUpdateCheck.js";
+import { tool$connectUpdateSharedConnectLinks } from "./tools/connectUpdateSharedConnectLinks.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
 import { tool$deploymentsDeleteDeployment } from "./tools/deploymentsDeleteDeployment.js";
@@ -218,7 +219,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.13.5",
+    version: "1.13.6",
   });
 
   const client = new VercelCore({
@@ -395,6 +396,7 @@ export function createMCPServer(deps: {
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);
+  tool(tool$connectUpdateSharedConnectLinks);
   tool(tool$environmentCreateCustomEnvironment);
   tool(tool$environmentGetV9ProjectsIdOrNameCustomEnvironments);
   tool(tool$environmentGetCustomEnvironment);

@@ -302,10 +302,10 @@ test("Domains Registrar Get Order", async () => {
     domains: [
       {
         purchaseType: "renewal",
+        years: 3271.32,
         domainName: "annual-atrium.biz",
         status: "refunded",
         price: 5522.99,
-        years: 3271.32,
       },
     ],
     status: "purchasing",

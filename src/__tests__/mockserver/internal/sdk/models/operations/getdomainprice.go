@@ -28,12 +28,12 @@ func (o *GetDomainPriceRequest) GetYears() *string {
 // GetDomainPriceResponseBody - Success
 type GetDomainPriceResponseBody struct {
 	Years float64 `json:"years"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-	PurchasePrice float64 `json:"purchasePrice"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-	RenewalPrice float64 `json:"renewalPrice"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-	TransferPrice float64 `json:"transferPrice"`
+	// The price for purchasing this domain for the given number of years. If null, the domain is not available for purchase for the given number of years.
+	PurchasePrice *float64 `json:"purchasePrice"`
+	// The price for renewing this domain for the given number of years. If null, the domain cannot be renewed for the given number of years.
+	RenewalPrice *float64 `json:"renewalPrice"`
+	// The price for transferring this domain in for the given number of years. If null, the domain cannot be transferred in for the given number of years.
+	TransferPrice *float64 `json:"transferPrice"`
 }
 
 func (o *GetDomainPriceResponseBody) GetYears() float64 {
@@ -43,23 +43,23 @@ func (o *GetDomainPriceResponseBody) GetYears() float64 {
 	return o.Years
 }
 
-func (o *GetDomainPriceResponseBody) GetPurchasePrice() float64 {
+func (o *GetDomainPriceResponseBody) GetPurchasePrice() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.PurchasePrice
 }
 
-func (o *GetDomainPriceResponseBody) GetRenewalPrice() float64 {
+func (o *GetDomainPriceResponseBody) GetRenewalPrice() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.RenewalPrice
 }
 
-func (o *GetDomainPriceResponseBody) GetTransferPrice() float64 {
+func (o *GetDomainPriceResponseBody) GetTransferPrice() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.TransferPrice
 }

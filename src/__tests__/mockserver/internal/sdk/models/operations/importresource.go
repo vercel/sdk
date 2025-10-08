@@ -43,6 +43,7 @@ type ImportResourceStatus string
 const (
 	ImportResourceStatusReady       ImportResourceStatus = "ready"
 	ImportResourceStatusPending     ImportResourceStatus = "pending"
+	ImportResourceStatusOnboarding  ImportResourceStatus = "onboarding"
 	ImportResourceStatusSuspended   ImportResourceStatus = "suspended"
 	ImportResourceStatusResumed     ImportResourceStatus = "resumed"
 	ImportResourceStatusUninstalled ImportResourceStatus = "uninstalled"
@@ -61,6 +62,8 @@ func (e *ImportResourceStatus) UnmarshalJSON(data []byte) error {
 	case "ready":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "onboarding":
 		fallthrough
 	case "suspended":
 		fallthrough

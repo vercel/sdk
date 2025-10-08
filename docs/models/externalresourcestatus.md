@@ -5,11 +5,11 @@
 ```typescript
 import { ExternalResourceStatus } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
-let value: ExternalResourceStatus = "pending";
+let value: ExternalResourceStatus = "ready";
 ```
 
 ## Values
 
 ```typescript
-"error" | "suspended" | "uninstalled" | "ready" | "pending" | "resumed"
+"error" | "suspended" | "onboarding" | "uninstalled" | "ready" | "pending" | "resumed"
 ```

@@ -56,7 +56,9 @@ test("Logdrains Get Integration Log Drains", async () => {
       branch: "feature/*",
       samplingRate: 0.5,
       source: {
-        kind: "self-served",
+        kind: "integration",
+        integrationId: "<id>",
+        integrationConfigurationId: "<id>",
       },
     },
     {

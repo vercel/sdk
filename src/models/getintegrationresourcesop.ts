@@ -18,6 +18,7 @@ export type GetIntegrationResourcesRequest = {
 export const GetIntegrationResourcesStatus = {
   Ready: "ready",
   Pending: "pending",
+  Onboarding: "onboarding",
   Suspended: "suspended",
   Resumed: "resumed",
   Uninstalled: "uninstalled",

@@ -29,26 +29,3 @@ func (e *AdditionalContactInfoRequiredCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for AdditionalContactInfoRequiredCode: %v", v)
 	}
 }
-
-type AdditionalContactInfoRequiredTag string
-
-const (
-	AdditionalContactInfoRequiredTagAdditionalContactInfoRequired AdditionalContactInfoRequiredTag = "AdditionalContactInfoRequired"
-)
-
-func (e AdditionalContactInfoRequiredTag) ToPointer() *AdditionalContactInfoRequiredTag {
-	return &e
-}
-func (e *AdditionalContactInfoRequiredTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "AdditionalContactInfoRequired":
-		*e = AdditionalContactInfoRequiredTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AdditionalContactInfoRequiredTag: %v", v)
-	}
-}

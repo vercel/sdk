@@ -12,9 +12,9 @@ const args = {
 
 export const tool$domainsCheckDomainPrice: ToolDefinition<typeof args> = {
   name: "domains-check-domain-price",
-  description: `Check the price for a domain
+  description: `Check the price for a domain (deprecated)
 
-Check the price to purchase a domain and how long a single purchase period is.`,
+This endpoint is deprecated and replaced with the endpoint [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain). Check the price to purchase a domain and how long a single purchase period is.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsCheckDomainPrice(

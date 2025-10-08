@@ -16,7 +16,7 @@ export const tool$domainsRegistrarGetBulkAvailability: ToolDefinition<
   name: "domains-registrar-get-bulk-availability",
   description: `Get availability for multiple domains
 
-Get availability for multiple domains`,
+Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetBulkAvailability(

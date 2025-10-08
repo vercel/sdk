@@ -12,8 +12,7 @@ import { HttpApiDecodeError } from "@vercel/sdk/models/httpapidecodeerror.js";
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `issues`                                                           | [models.Issue](../models/issue.md)[]                               | :heavy_check_mark:                                                 | N/A                                                                |
-| `message`                                                          | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `tag`                                                              | [models.HttpApiDecodeErrorTag](../models/httpapidecodeerrortag.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `issues`                             | [models.Issue](../models/issue.md)[] | :heavy_check_mark:                   | N/A                                  |
+| `message`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |

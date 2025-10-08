@@ -7,9 +7,9 @@ import { formatResult, ToolDefinition } from "../tools.js";
 
 export const tool$domainsRegistrarGetSupportedTlds: ToolDefinition = {
   name: "domains-registrar-get-supported-tlds",
-  description: `Get a list of TLDs supported by Vercel
+  description: `Get supported TLDs
 
-Get supported TLDs`,
+Get a list of TLDs supported by Vercel`,
   tool: async (client, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetSupportedTlds(
       client,

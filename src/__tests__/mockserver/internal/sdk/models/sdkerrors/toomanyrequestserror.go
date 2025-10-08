@@ -13,7 +13,6 @@ type TooManyRequestsError struct {
 	Message    string                         `json:"message"`
 	RetryAfter components.RetryAfter          `json:"retryAfter"`
 	Limit      components.Limit               `json:"limit"`
-	Tag        components.TooManyRequestsTag  `json:"_tag"`
 	HTTPMeta   components.HTTPMetadata        `json:"-"`
 }
 

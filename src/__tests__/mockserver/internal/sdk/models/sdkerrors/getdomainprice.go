@@ -13,16 +13,16 @@ import (
 type GetDomainPriceBadRequestType string
 
 const (
-	GetDomainPriceBadRequestTypeHTTPAPIDecodeError   GetDomainPriceBadRequestType = "HttpApiDecodeError"
-	GetDomainPriceBadRequestTypeTldNotSupportedError GetDomainPriceBadRequestType = "TldNotSupported_error"
 	GetDomainPriceBadRequestTypeBadRequestError      GetDomainPriceBadRequestType = "BadRequest_error"
+	GetDomainPriceBadRequestTypeTldNotSupportedError GetDomainPriceBadRequestType = "TldNotSupported_error"
+	GetDomainPriceBadRequestTypeHTTPAPIDecodeError   GetDomainPriceBadRequestType = "HttpApiDecodeError"
 )
 
 // GetDomainPriceBadRequest - There was something wrong with the request
 type GetDomainPriceBadRequest struct {
-	HTTPAPIDecodeError   *HTTPAPIDecodeError   `queryParam:"inline"`
-	TldNotSupportedError *TldNotSupportedError `queryParam:"inline"`
 	BadRequestError      *BadRequestError      `queryParam:"inline"`
+	TldNotSupportedError *TldNotSupportedError `queryParam:"inline"`
+	HTTPAPIDecodeError   *HTTPAPIDecodeError   `queryParam:"inline"`
 
 	Type GetDomainPriceBadRequestType
 
@@ -31,12 +31,12 @@ type GetDomainPriceBadRequest struct {
 
 var _ error = &GetDomainPriceBadRequest{}
 
-func CreateGetDomainPriceBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetDomainPriceBadRequest {
-	typ := GetDomainPriceBadRequestTypeHTTPAPIDecodeError
+func CreateGetDomainPriceBadRequestBadRequestError(badRequestError BadRequestError) GetDomainPriceBadRequest {
+	typ := GetDomainPriceBadRequestTypeBadRequestError
 
 	return GetDomainPriceBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
+		BadRequestError: &badRequestError,
+		Type:            typ,
 	}
 }
 
@@ -49,21 +49,21 @@ func CreateGetDomainPriceBadRequestTldNotSupportedError(tldNotSupportedError Tld
 	}
 }
 
-func CreateGetDomainPriceBadRequestBadRequestError(badRequestError BadRequestError) GetDomainPriceBadRequest {
-	typ := GetDomainPriceBadRequestTypeBadRequestError
+func CreateGetDomainPriceBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetDomainPriceBadRequest {
+	typ := GetDomainPriceBadRequestTypeHTTPAPIDecodeError
 
 	return GetDomainPriceBadRequest{
-		BadRequestError: &badRequestError,
-		Type:            typ,
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
 }
 
 func (u *GetDomainPriceBadRequest) UnmarshalJSON(data []byte) error {
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = GetDomainPriceBadRequestTypeHTTPAPIDecodeError
+	var badRequestError BadRequestError = BadRequestError{}
+	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
+		u.BadRequestError = &badRequestError
+		u.Type = GetDomainPriceBadRequestTypeBadRequestError
 		return nil
 	}
 
@@ -74,10 +74,10 @@ func (u *GetDomainPriceBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var badRequestError BadRequestError = BadRequestError{}
-	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
-		u.BadRequestError = &badRequestError
-		u.Type = GetDomainPriceBadRequestTypeBadRequestError
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = GetDomainPriceBadRequestTypeHTTPAPIDecodeError
 		return nil
 	}
 
@@ -85,16 +85,16 @@ func (u *GetDomainPriceBadRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetDomainPriceBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
+	if u.BadRequestError != nil {
+		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
 	if u.TldNotSupportedError != nil {
 		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
 	}
 
-	if u.BadRequestError != nil {
-		return utils.MarshalJSON(u.BadRequestError, "", true)
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetDomainPriceBadRequest: all fields are null")
@@ -102,14 +102,14 @@ func (u GetDomainPriceBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u GetDomainPriceBadRequest) Error() string {
 	switch u.Type {
-	case GetDomainPriceBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
+	case GetDomainPriceBadRequestTypeBadRequestError:
+		data, _ := json.Marshal(u.BadRequestError)
 		return string(data)
 	case GetDomainPriceBadRequestTypeTldNotSupportedError:
 		data, _ := json.Marshal(u.TldNotSupportedError)
 		return string(data)
-	case GetDomainPriceBadRequestTypeBadRequestError:
-		data, _ := json.Marshal(u.BadRequestError)
+	case GetDomainPriceBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

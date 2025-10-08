@@ -1,5 +1,7 @@
 # DomainNotRenewable
 
+The domain is not renewable.
+
 ## Example Usage
 
 ```typescript
@@ -15,4 +17,3 @@ import { DomainNotRenewable } from "@vercel/sdk/models/domainnotrenewable.js";
 | `status`                                                             | *number*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
 | `code`                                                               | [models.DomainNotRenewableCode](../models/domainnotrenewablecode.md) | :heavy_check_mark:                                                   | N/A                                                                  |
 | `message`                                                            | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `tag`                                                                | [models.DomainNotRenewableTag](../models/domainnotrenewabletag.md)   | :heavy_check_mark:                                                   | N/A                                                                  |

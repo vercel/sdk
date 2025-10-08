@@ -51,10 +51,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get availability for a specific domain
+ * Get availability for a domain
  *
  * @remarks
- * Get availability for a specific domain
+ * Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
  */
 export function domainsRegistrarGetDomainAvailability(
   client: VercelCore,

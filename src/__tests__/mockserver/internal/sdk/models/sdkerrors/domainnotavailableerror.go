@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// DomainNotAvailableError - The domain is not available.
 type DomainNotAvailableError struct {
 	Status   float64                           `json:"status"`
 	Code     components.DomainNotAvailableCode `json:"code"`
 	Message  string                            `json:"message"`
-	Tag      components.DomainNotAvailableTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata           `json:"-"`
 }
 

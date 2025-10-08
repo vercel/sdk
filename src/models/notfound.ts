@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,15 @@ export const NotFoundCode = {
 } as const;
 export type NotFoundCode = ClosedEnum<typeof NotFoundCode>;
 
-export const NotFoundTag = {
-  NotFound: "NotFound",
-} as const;
-export type NotFoundTag = ClosedEnum<typeof NotFoundTag>;
-
 export type NotFoundData = {
   status: number;
   code: NotFoundCode;
   message: string;
-  tag: NotFoundTag;
 };
 
 export class NotFound extends VercelError {
   status: number;
   code: NotFoundCode;
-  tag: NotFoundTag;
 
   /** The original data that was passed to this error instance. */
   data$: NotFoundData;
@@ -41,7 +33,6 @@ export class NotFound extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "NotFound";
   }
@@ -67,25 +58,6 @@ export namespace NotFoundCode$ {
 }
 
 /** @internal */
-export const NotFoundTag$inboundSchema: z.ZodNativeEnum<typeof NotFoundTag> = z
-  .nativeEnum(NotFoundTag);
-
-/** @internal */
-export const NotFoundTag$outboundSchema: z.ZodNativeEnum<typeof NotFoundTag> =
-  NotFoundTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFoundTag$ {
-  /** @deprecated use `NotFoundTag$inboundSchema` instead. */
-  export const inboundSchema = NotFoundTag$inboundSchema;
-  /** @deprecated use `NotFoundTag$outboundSchema` instead. */
-  export const outboundSchema = NotFoundTag$outboundSchema;
-}
-
-/** @internal */
 export const NotFound$inboundSchema: z.ZodType<
   NotFound,
   z.ZodTypeDef,
@@ -94,17 +66,12 @@ export const NotFound$inboundSchema: z.ZodType<
   status: z.number(),
   code: NotFoundCode$inboundSchema,
   message: z.string(),
-  _tag: NotFoundTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new NotFound(remapped, {
+    return new NotFound(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -116,7 +83,6 @@ export type NotFound$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -126,18 +92,11 @@ export const NotFound$outboundSchema: z.ZodType<
   NotFound
 > = z.instanceof(NotFound)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: NotFoundCode$outboundSchema,
-      message: z.string(),
-      tag: NotFoundTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: NotFoundCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

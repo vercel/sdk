@@ -49,10 +49,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get information about a domain order by its ID
+ * Get a domain order
  *
  * @remarks
- * Get a domain order
+ * Get information about a domain order by its ID
  */
 export function domainsRegistrarGetOrder(
   client: VercelCore,

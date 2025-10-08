@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,21 @@ export const DomainNotRenewableCode = {
 } as const;
 export type DomainNotRenewableCode = ClosedEnum<typeof DomainNotRenewableCode>;
 
-export const DomainNotRenewableTag = {
-  DomainNotRenewable: "DomainNotRenewable",
-} as const;
-export type DomainNotRenewableTag = ClosedEnum<typeof DomainNotRenewableTag>;
-
+/**
+ * The domain is not renewable.
+ */
 export type DomainNotRenewableData = {
   status: number;
   code: DomainNotRenewableCode;
   message: string;
-  tag: DomainNotRenewableTag;
 };
 
+/**
+ * The domain is not renewable.
+ */
 export class DomainNotRenewable extends VercelError {
   status: number;
   code: DomainNotRenewableCode;
-  tag: DomainNotRenewableTag;
 
   /** The original data that was passed to this error instance. */
   data$: DomainNotRenewableData;
@@ -41,7 +39,6 @@ export class DomainNotRenewable extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "DomainNotRenewable";
   }
@@ -69,27 +66,6 @@ export namespace DomainNotRenewableCode$ {
 }
 
 /** @internal */
-export const DomainNotRenewableTag$inboundSchema: z.ZodNativeEnum<
-  typeof DomainNotRenewableTag
-> = z.nativeEnum(DomainNotRenewableTag);
-
-/** @internal */
-export const DomainNotRenewableTag$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotRenewableTag
-> = DomainNotRenewableTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotRenewableTag$ {
-  /** @deprecated use `DomainNotRenewableTag$inboundSchema` instead. */
-  export const inboundSchema = DomainNotRenewableTag$inboundSchema;
-  /** @deprecated use `DomainNotRenewableTag$outboundSchema` instead. */
-  export const outboundSchema = DomainNotRenewableTag$outboundSchema;
-}
-
-/** @internal */
 export const DomainNotRenewable$inboundSchema: z.ZodType<
   DomainNotRenewable,
   z.ZodTypeDef,
@@ -98,17 +74,12 @@ export const DomainNotRenewable$inboundSchema: z.ZodType<
   status: z.number(),
   code: DomainNotRenewableCode$inboundSchema,
   message: z.string(),
-  _tag: DomainNotRenewableTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new DomainNotRenewable(remapped, {
+    return new DomainNotRenewable(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +91,6 @@ export type DomainNotRenewable$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +100,11 @@ export const DomainNotRenewable$outboundSchema: z.ZodType<
   DomainNotRenewable
 > = z.instanceof(DomainNotRenewable)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: DomainNotRenewableCode$outboundSchema,
-      message: z.string(),
-      tag: DomainNotRenewableTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: DomainNotRenewableCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

@@ -44,9 +44,13 @@ func (o *PatchDomainRequestBody2) GetDestination() *string {
 // PatchDomainRequestBody1 - update
 type PatchDomainRequestBody1 struct {
 	Op *string `json:"op,omitempty"`
-	// Specifies whether domain should be renewed.
+	// This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/auto-renew instead.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Renew *bool `json:"renew,omitempty"`
-	// The custom nameservers for this project.
+	// This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	CustomNameservers []string `json:"customNameservers,omitempty"`
 	// Specifies whether this is a DNS zone that intends to use Vercel's nameservers.
 	Zone *bool `json:"zone,omitempty"`

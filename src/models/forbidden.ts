@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,15 @@ export const ForbiddenCode = {
 } as const;
 export type ForbiddenCode = ClosedEnum<typeof ForbiddenCode>;
 
-export const ForbiddenTag = {
-  Forbidden: "Forbidden",
-} as const;
-export type ForbiddenTag = ClosedEnum<typeof ForbiddenTag>;
-
 export type ForbiddenData = {
   status: number;
   code: ForbiddenCode;
   message: string;
-  tag: ForbiddenTag;
 };
 
 export class Forbidden extends VercelError {
   status: number;
   code: ForbiddenCode;
-  tag: ForbiddenTag;
 
   /** The original data that was passed to this error instance. */
   data$: ForbiddenData;
@@ -41,7 +33,6 @@ export class Forbidden extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "Forbidden";
   }
@@ -69,25 +60,6 @@ export namespace ForbiddenCode$ {
 }
 
 /** @internal */
-export const ForbiddenTag$inboundSchema: z.ZodNativeEnum<typeof ForbiddenTag> =
-  z.nativeEnum(ForbiddenTag);
-
-/** @internal */
-export const ForbiddenTag$outboundSchema: z.ZodNativeEnum<typeof ForbiddenTag> =
-  ForbiddenTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ForbiddenTag$ {
-  /** @deprecated use `ForbiddenTag$inboundSchema` instead. */
-  export const inboundSchema = ForbiddenTag$inboundSchema;
-  /** @deprecated use `ForbiddenTag$outboundSchema` instead. */
-  export const outboundSchema = ForbiddenTag$outboundSchema;
-}
-
-/** @internal */
 export const Forbidden$inboundSchema: z.ZodType<
   Forbidden,
   z.ZodTypeDef,
@@ -96,17 +68,12 @@ export const Forbidden$inboundSchema: z.ZodType<
   status: z.number(),
   code: ForbiddenCode$inboundSchema,
   message: z.string(),
-  _tag: ForbiddenTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new Forbidden(remapped, {
+    return new Forbidden(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -118,7 +85,6 @@ export type Forbidden$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -128,18 +94,11 @@ export const Forbidden$outboundSchema: z.ZodType<
   Forbidden
 > = z.instanceof(Forbidden)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: ForbiddenCode$outboundSchema,
-      message: z.string(),
-      tag: ForbiddenTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: ForbiddenCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

@@ -5,25 +5,25 @@
 
 ### Available Operations
 
-* [getSupportedTlds](#getsupportedtlds) - Get a list of TLDs supported by Vercel
-* [getTldPrice](#gettldprice) - Get price data for a specific TLD
-* [getDomainAvailability](#getdomainavailability) - Get availability for a specific domain
-* [getDomainPrice](#getdomainprice) - Get price data for a specific domain
+* [getSupportedTlds](#getsupportedtlds) - Get supported TLDs
+* [getTldPrice](#gettldprice) - Get TLD price data
+* [getDomainAvailability](#getdomainavailability) - Get availability for a domain
+* [getDomainPrice](#getdomainprice) - Get price data for a domain
 * [getBulkAvailability](#getbulkavailability) - Get availability for multiple domains
 * [getDomainAuthCode](#getdomainauthcode) - Get the auth code for a domain
 * [buySingleDomain](#buysingledomain) - Buy a domain
-* [buyDomains](#buydomains) - Buy multiple domains at once
-* [transferInDomain](#transferindomain) - Transfer a domain in from another registrar
-* [getDomainTransferIn](#getdomaintransferin) - Get the transfer status for a domain
+* [buyDomains](#buydomains) - Buy multiple domains
+* [transferInDomain](#transferindomain) - Transfer-in a domain
+* [getDomainTransferIn](#getdomaintransferin) - Get a domain's transfer status
 * [renewDomain](#renewdomain) - Renew a domain
-* [updateDomainAutoRenew](#updatedomainautorenew) - Update the auto-renew setting for a domain
-* [updateDomainNameservers](#updatedomainnameservers) - Update the nameservers for a domain
-* [getContactInfoSchema](#getcontactinfoschema) - Get the schema for the tld-specific contact information for a domain
-* [getOrder](#getorder) - Get information about a domain order by its ID
+* [updateDomainAutoRenew](#updatedomainautorenew) - Update auto-renew for a domain
+* [updateDomainNameservers](#updatedomainnameservers) - Update nameservers for a domain
+* [getContactInfoSchema](#getcontactinfoschema) - Get contact info schema
+* [getOrder](#getorder) - Get a domain order
 
 ## getSupportedTlds
 
-Get supported TLDs
+Get a list of TLDs supported by Vercel
 
 ### Example Usage
 
@@ -96,7 +96,7 @@ run();
 
 ## getTldPrice
 
-Get TLD price data
+Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.
 
 ### Example Usage
 
@@ -165,8 +165,8 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.TldNotSupported       | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
@@ -175,7 +175,7 @@ run();
 
 ## getDomainAvailability
 
-Get availability for a specific domain
+Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
 
 ### Example Usage
 
@@ -323,9 +323,9 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
-| models.TldNotSupported       | 400                          | application/json             |
 | models.BadRequest            | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
@@ -334,7 +334,7 @@ run();
 
 ## getBulkAvailability
 
-Get availability for multiple domains
+Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
 
 ### Example Usage
 
@@ -416,7 +416,7 @@ run();
 
 ## getDomainAuthCode
 
-Get the auth code for a domain
+Get the auth code for a domain. This is required to transfer a domain from Vercel to another registrar.
 
 ### Example Usage
 
@@ -485,8 +485,8 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.DomainNotRegistered   | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
@@ -598,13 +598,13 @@ run();
 
 | Error Type                           | Status Code                          | Content Type                         |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| models.HttpApiDecodeError            | 400                                  | application/json                     |
-| models.TldNotSupported               | 400                                  | application/json                     |
-| models.DomainNotAvailable            | 400                                  | application/json                     |
-| models.ExpectedPriceMismatch         | 400                                  | application/json                     |
-| models.AdditionalContactInfoRequired | 400                                  | application/json                     |
-| models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
 | models.OrderTooExpensive             | 400                                  | application/json                     |
+| models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
+| models.AdditionalContactInfoRequired | 400                                  | application/json                     |
+| models.ExpectedPriceMismatch         | 400                                  | application/json                     |
+| models.DomainNotAvailable            | 400                                  | application/json                     |
+| models.TldNotSupported               | 400                                  | application/json                     |
+| models.HttpApiDecodeError            | 400                                  | application/json                     |
 | models.Unauthorized                  | 401                                  | application/json                     |
 | models.NotAuthorizedForScope         | 403                                  | application/json                     |
 | models.Forbidden                     | 403                                  | application/json                     |
@@ -614,7 +614,7 @@ run();
 
 ## buyDomains
 
-Buy multiple domains
+Buy multiple domains at once
 
 ### Example Usage
 
@@ -705,15 +705,15 @@ run();
 
 | Error Type                           | Status Code                          | Content Type                         |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| models.HttpApiDecodeError            | 400                                  | application/json                     |
-| models.TldNotSupported               | 400                                  | application/json                     |
-| models.DomainNotAvailable            | 400                                  | application/json                     |
-| models.ExpectedPriceMismatch         | 400                                  | application/json                     |
-| models.DuplicateDomains              | 400                                  | application/json                     |
-| models.AdditionalContactInfoRequired | 400                                  | application/json                     |
-| models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
-| models.TooManyDomains                | 400                                  | application/json                     |
 | models.OrderTooExpensive             | 400                                  | application/json                     |
+| models.TooManyDomains                | 400                                  | application/json                     |
+| models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
+| models.AdditionalContactInfoRequired | 400                                  | application/json                     |
+| models.DuplicateDomains              | 400                                  | application/json                     |
+| models.ExpectedPriceMismatch         | 400                                  | application/json                     |
+| models.DomainNotAvailable            | 400                                  | application/json                     |
+| models.TldNotSupported               | 400                                  | application/json                     |
+| models.HttpApiDecodeError            | 400                                  | application/json                     |
 | models.Unauthorized                  | 401                                  | application/json                     |
 | models.NotAuthorizedForScope         | 403                                  | application/json                     |
 | models.Forbidden                     | 403                                  | application/json                     |
@@ -723,7 +723,7 @@ run();
 
 ## transferInDomain
 
-Transfer-in a domain
+Transfer a domain in from another registrar
 
 ### Example Usage
 
@@ -826,11 +826,11 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
-| models.TldNotSupported       | 400                          | application/json             |
-| models.DomainNotAvailable    | 400                          | application/json             |
-| models.ExpectedPriceMismatch | 400                          | application/json             |
 | models.BadRequest            | 400                          | application/json             |
+| models.ExpectedPriceMismatch | 400                          | application/json             |
+| models.DomainNotAvailable    | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
@@ -840,7 +840,7 @@ run();
 
 ## getDomainTransferIn
 
-Get a domain's transfer status
+Get the transfer status for a domain
 
 ### Example Usage
 
@@ -997,12 +997,12 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
-| models.TldNotSupported       | 400                          | application/json             |
-| models.DomainNotAvailable    | 400                          | application/json             |
-| models.ExpectedPriceMismatch | 400                          | application/json             |
-| models.DomainNotRegistered   | 400                          | application/json             |
 | models.BadRequest            | 400                          | application/json             |
+| models.DomainNotRegistered   | 400                          | application/json             |
+| models.ExpectedPriceMismatch | 400                          | application/json             |
+| models.DomainNotAvailable    | 400                          | application/json             |
+| models.TldNotSupported       | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
@@ -1013,7 +1013,7 @@ run();
 
 ## updateDomainAutoRenew
 
-Update auto-renew for a domain
+Update the auto-renew setting for a domain
 
 ### Example Usage
 
@@ -1088,10 +1088,10 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
-| models.DomainNotRegistered   | 400                          | application/json             |
-| models.DomainNotRenewable    | 400                          | application/json             |
 | models.DomainAlreadyRenewing | 400                          | application/json             |
+| models.DomainNotRenewable    | 400                          | application/json             |
+| models.DomainNotRegistered   | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
@@ -1102,7 +1102,7 @@ run();
 
 ## updateDomainNameservers
 
-Update nameservers for a domain
+Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.
 
 ### Example Usage
 
@@ -1181,8 +1181,8 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.DomainNotRegistered   | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.Forbidden             | 403                          | application/json             |
@@ -1193,7 +1193,7 @@ run();
 
 ## getContactInfoSchema
 
-Get contact info schema
+Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
 
 ### Example Usage
 
@@ -1262,8 +1262,8 @@ run();
 
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.BadRequest            | 400                          | application/json             |
+| models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
 | models.NotAuthorizedForScope | 403                          | application/json             |
 | models.TooManyRequests       | 429                          | application/json             |
@@ -1272,7 +1272,7 @@ run();
 
 ## getOrder
 
-Get a domain order
+Get information about a domain order by its ID
 
 ### Example Usage
 

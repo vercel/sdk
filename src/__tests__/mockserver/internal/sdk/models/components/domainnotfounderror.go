@@ -29,26 +29,3 @@ func (e *DomainNotFoundCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for DomainNotFoundCode: %v", v)
 	}
 }
-
-type DomainNotFoundTag string
-
-const (
-	DomainNotFoundTagDomainNotFound DomainNotFoundTag = "DomainNotFound"
-)
-
-func (e DomainNotFoundTag) ToPointer() *DomainNotFoundTag {
-	return &e
-}
-func (e *DomainNotFoundTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "DomainNotFound":
-		*e = DomainNotFoundTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DomainNotFoundTag: %v", v)
-	}
-}

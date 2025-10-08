@@ -14,10 +14,9 @@ export const tool$domainsRegistrarGetContactInfoSchema: ToolDefinition<
   typeof args
 > = {
   name: "domains-registrar-get-contact-info-schema",
-  description:
-    `Get the schema for the tld-specific contact information for a domain
+  description: `Get contact info schema
 
-Get contact info schema`,
+Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetContactInfoSchema(

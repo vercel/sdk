@@ -5,13 +5,13 @@ There was something wrong with the request
 
 ## Supported Types
 
-### `models.HttpApiDecodeError`
+### `models.BadRequest`
 
 ```typescript
-const value: models.HttpApiDecodeError = {
-  issues: [],
+const value: models.BadRequest = {
+  status: 7599.21,
+  code: "bad_request",
   message: "<value>",
-  tag: "HttpApiDecodeError",
 };
 ```
 
@@ -22,18 +22,15 @@ const value: models.TldNotSupported = {
   status: 72.58,
   code: "tld_not_supported",
   message: "<value>",
-  tag: "TldNotSupported",
 };
 ```
 
-### `models.BadRequest`
+### `models.HttpApiDecodeError`
 
 ```typescript
-const value: models.BadRequest = {
-  status: 7599.21,
-  code: "bad_request",
+const value: models.HttpApiDecodeError = {
+  issues: [],
   message: "<value>",
-  tag: "BadRequest",
 };
 ```
 

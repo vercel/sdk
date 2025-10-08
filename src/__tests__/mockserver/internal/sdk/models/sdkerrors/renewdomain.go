@@ -94,22 +94,22 @@ func (u RenewDomainForbidden) Error() string {
 type RenewDomainBadRequestType string
 
 const (
-	RenewDomainBadRequestTypeHTTPAPIDecodeError         RenewDomainBadRequestType = "HttpApiDecodeError"
-	RenewDomainBadRequestTypeTldNotSupportedError       RenewDomainBadRequestType = "TldNotSupported_error"
-	RenewDomainBadRequestTypeDomainNotAvailableError    RenewDomainBadRequestType = "DomainNotAvailable_error"
-	RenewDomainBadRequestTypeExpectedPriceMismatchError RenewDomainBadRequestType = "ExpectedPriceMismatch_error"
-	RenewDomainBadRequestTypeDomainNotRegisteredError   RenewDomainBadRequestType = "DomainNotRegistered_error"
 	RenewDomainBadRequestTypeBadRequestError            RenewDomainBadRequestType = "BadRequest_error"
+	RenewDomainBadRequestTypeDomainNotRegisteredError   RenewDomainBadRequestType = "DomainNotRegistered_error"
+	RenewDomainBadRequestTypeExpectedPriceMismatchError RenewDomainBadRequestType = "ExpectedPriceMismatch_error"
+	RenewDomainBadRequestTypeDomainNotAvailableError    RenewDomainBadRequestType = "DomainNotAvailable_error"
+	RenewDomainBadRequestTypeTldNotSupportedError       RenewDomainBadRequestType = "TldNotSupported_error"
+	RenewDomainBadRequestTypeHTTPAPIDecodeError         RenewDomainBadRequestType = "HttpApiDecodeError"
 )
 
 // RenewDomainBadRequest - There was something wrong with the request
 type RenewDomainBadRequest struct {
-	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
-	TldNotSupportedError       *TldNotSupportedError       `queryParam:"inline"`
-	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
-	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
-	DomainNotRegisteredError   *DomainNotRegisteredError   `queryParam:"inline"`
 	BadRequestError            *BadRequestError            `queryParam:"inline"`
+	DomainNotRegisteredError   *DomainNotRegisteredError   `queryParam:"inline"`
+	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
+	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
+	TldNotSupportedError       *TldNotSupportedError       `queryParam:"inline"`
+	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
 
 	Type RenewDomainBadRequestType
 
@@ -118,39 +118,12 @@ type RenewDomainBadRequest struct {
 
 var _ error = &RenewDomainBadRequest{}
 
-func CreateRenewDomainBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) RenewDomainBadRequest {
-	typ := RenewDomainBadRequestTypeHTTPAPIDecodeError
+func CreateRenewDomainBadRequestBadRequestError(badRequestError BadRequestError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeBadRequestError
 
 	return RenewDomainBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
-
-func CreateRenewDomainBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) RenewDomainBadRequest {
-	typ := RenewDomainBadRequestTypeTldNotSupportedError
-
-	return RenewDomainBadRequest{
-		TldNotSupportedError: &tldNotSupportedError,
-		Type:                 typ,
-	}
-}
-
-func CreateRenewDomainBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) RenewDomainBadRequest {
-	typ := RenewDomainBadRequestTypeDomainNotAvailableError
-
-	return RenewDomainBadRequest{
-		DomainNotAvailableError: &domainNotAvailableError,
-		Type:                    typ,
-	}
-}
-
-func CreateRenewDomainBadRequestExpectedPriceMismatchError(expectedPriceMismatchError ExpectedPriceMismatchError) RenewDomainBadRequest {
-	typ := RenewDomainBadRequestTypeExpectedPriceMismatchError
-
-	return RenewDomainBadRequest{
-		ExpectedPriceMismatchError: &expectedPriceMismatchError,
-		Type:                       typ,
+		BadRequestError: &badRequestError,
+		Type:            typ,
 	}
 }
 
@@ -163,42 +136,48 @@ func CreateRenewDomainBadRequestDomainNotRegisteredError(domainNotRegisteredErro
 	}
 }
 
-func CreateRenewDomainBadRequestBadRequestError(badRequestError BadRequestError) RenewDomainBadRequest {
-	typ := RenewDomainBadRequestTypeBadRequestError
+func CreateRenewDomainBadRequestExpectedPriceMismatchError(expectedPriceMismatchError ExpectedPriceMismatchError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeExpectedPriceMismatchError
 
 	return RenewDomainBadRequest{
-		BadRequestError: &badRequestError,
-		Type:            typ,
+		ExpectedPriceMismatchError: &expectedPriceMismatchError,
+		Type:                       typ,
+	}
+}
+
+func CreateRenewDomainBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeDomainNotAvailableError
+
+	return RenewDomainBadRequest{
+		DomainNotAvailableError: &domainNotAvailableError,
+		Type:                    typ,
+	}
+}
+
+func CreateRenewDomainBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeTldNotSupportedError
+
+	return RenewDomainBadRequest{
+		TldNotSupportedError: &tldNotSupportedError,
+		Type:                 typ,
+	}
+}
+
+func CreateRenewDomainBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeHTTPAPIDecodeError
+
+	return RenewDomainBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
 }
 
 func (u *RenewDomainBadRequest) UnmarshalJSON(data []byte) error {
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = RenewDomainBadRequestTypeHTTPAPIDecodeError
-		return nil
-	}
-
-	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
-	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
-		u.TldNotSupportedError = &tldNotSupportedError
-		u.Type = RenewDomainBadRequestTypeTldNotSupportedError
-		return nil
-	}
-
-	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
-	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
-		u.DomainNotAvailableError = &domainNotAvailableError
-		u.Type = RenewDomainBadRequestTypeDomainNotAvailableError
-		return nil
-	}
-
-	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
-	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
-		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
-		u.Type = RenewDomainBadRequestTypeExpectedPriceMismatchError
+	var badRequestError BadRequestError = BadRequestError{}
+	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
+		u.BadRequestError = &badRequestError
+		u.Type = RenewDomainBadRequestTypeBadRequestError
 		return nil
 	}
 
@@ -209,10 +188,31 @@ func (u *RenewDomainBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var badRequestError BadRequestError = BadRequestError{}
-	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
-		u.BadRequestError = &badRequestError
-		u.Type = RenewDomainBadRequestTypeBadRequestError
+	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
+	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
+		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
+		u.Type = RenewDomainBadRequestTypeExpectedPriceMismatchError
+		return nil
+	}
+
+	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
+	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
+		u.DomainNotAvailableError = &domainNotAvailableError
+		u.Type = RenewDomainBadRequestTypeDomainNotAvailableError
+		return nil
+	}
+
+	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
+	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
+		u.TldNotSupportedError = &tldNotSupportedError
+		u.Type = RenewDomainBadRequestTypeTldNotSupportedError
+		return nil
+	}
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = RenewDomainBadRequestTypeHTTPAPIDecodeError
 		return nil
 	}
 
@@ -220,28 +220,28 @@ func (u *RenewDomainBadRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u RenewDomainBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
-	if u.TldNotSupportedError != nil {
-		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
-	}
-
-	if u.DomainNotAvailableError != nil {
-		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
-	}
-
-	if u.ExpectedPriceMismatchError != nil {
-		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
+	if u.BadRequestError != nil {
+		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
 	if u.DomainNotRegisteredError != nil {
 		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
 	}
 
-	if u.BadRequestError != nil {
-		return utils.MarshalJSON(u.BadRequestError, "", true)
+	if u.ExpectedPriceMismatchError != nil {
+		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
+	}
+
+	if u.DomainNotAvailableError != nil {
+		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
+	}
+
+	if u.TldNotSupportedError != nil {
+		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type RenewDomainBadRequest: all fields are null")
@@ -249,23 +249,23 @@ func (u RenewDomainBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u RenewDomainBadRequest) Error() string {
 	switch u.Type {
-	case RenewDomainBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
-	case RenewDomainBadRequestTypeTldNotSupportedError:
-		data, _ := json.Marshal(u.TldNotSupportedError)
-		return string(data)
-	case RenewDomainBadRequestTypeDomainNotAvailableError:
-		data, _ := json.Marshal(u.DomainNotAvailableError)
-		return string(data)
-	case RenewDomainBadRequestTypeExpectedPriceMismatchError:
-		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
+	case RenewDomainBadRequestTypeBadRequestError:
+		data, _ := json.Marshal(u.BadRequestError)
 		return string(data)
 	case RenewDomainBadRequestTypeDomainNotRegisteredError:
 		data, _ := json.Marshal(u.DomainNotRegisteredError)
 		return string(data)
-	case RenewDomainBadRequestTypeBadRequestError:
-		data, _ := json.Marshal(u.BadRequestError)
+	case RenewDomainBadRequestTypeExpectedPriceMismatchError:
+		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
+		return string(data)
+	case RenewDomainBadRequestTypeDomainNotAvailableError:
+		data, _ := json.Marshal(u.DomainNotAvailableError)
+		return string(data)
+	case RenewDomainBadRequestTypeTldNotSupportedError:
+		data, _ := json.Marshal(u.TldNotSupportedError)
+		return string(data)
+	case RenewDomainBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

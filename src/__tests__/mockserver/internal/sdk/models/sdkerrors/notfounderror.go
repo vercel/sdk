@@ -11,7 +11,6 @@ type NotFoundError struct {
 	Status   float64                 `json:"status"`
 	Code     components.NotFoundCode `json:"code"`
 	Message  string                  `json:"message"`
-	Tag      components.NotFoundTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 

@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// AdditionalContactInfoRequiredError - Additional contact information is required for the TLD.
 type AdditionalContactInfoRequiredError struct {
 	Status   float64                                      `json:"status"`
 	Code     components.AdditionalContactInfoRequiredCode `json:"code"`
 	Message  string                                       `json:"message"`
-	Tag      components.AdditionalContactInfoRequiredTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata                      `json:"-"`
 }
 

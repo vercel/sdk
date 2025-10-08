@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -14,22 +13,21 @@ export type DomainNotRegisteredCode = ClosedEnum<
   typeof DomainNotRegisteredCode
 >;
 
-export const DomainNotRegisteredTag = {
-  DomainNotRegistered: "DomainNotRegistered",
-} as const;
-export type DomainNotRegisteredTag = ClosedEnum<typeof DomainNotRegisteredTag>;
-
+/**
+ * The domain is not registered with Vercel.
+ */
 export type DomainNotRegisteredData = {
   status: number;
   code: DomainNotRegisteredCode;
   message: string;
-  tag: DomainNotRegisteredTag;
 };
 
+/**
+ * The domain is not registered with Vercel.
+ */
 export class DomainNotRegistered extends VercelError {
   status: number;
   code: DomainNotRegisteredCode;
-  tag: DomainNotRegisteredTag;
 
   /** The original data that was passed to this error instance. */
   data$: DomainNotRegisteredData;
@@ -43,7 +41,6 @@ export class DomainNotRegistered extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "DomainNotRegistered";
   }
@@ -71,27 +68,6 @@ export namespace DomainNotRegisteredCode$ {
 }
 
 /** @internal */
-export const DomainNotRegisteredTag$inboundSchema: z.ZodNativeEnum<
-  typeof DomainNotRegisteredTag
-> = z.nativeEnum(DomainNotRegisteredTag);
-
-/** @internal */
-export const DomainNotRegisteredTag$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotRegisteredTag
-> = DomainNotRegisteredTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotRegisteredTag$ {
-  /** @deprecated use `DomainNotRegisteredTag$inboundSchema` instead. */
-  export const inboundSchema = DomainNotRegisteredTag$inboundSchema;
-  /** @deprecated use `DomainNotRegisteredTag$outboundSchema` instead. */
-  export const outboundSchema = DomainNotRegisteredTag$outboundSchema;
-}
-
-/** @internal */
 export const DomainNotRegistered$inboundSchema: z.ZodType<
   DomainNotRegistered,
   z.ZodTypeDef,
@@ -100,17 +76,12 @@ export const DomainNotRegistered$inboundSchema: z.ZodType<
   status: z.number(),
   code: DomainNotRegisteredCode$inboundSchema,
   message: z.string(),
-  _tag: DomainNotRegisteredTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new DomainNotRegistered(remapped, {
+    return new DomainNotRegistered(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -122,7 +93,6 @@ export type DomainNotRegistered$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -132,18 +102,11 @@ export const DomainNotRegistered$outboundSchema: z.ZodType<
   DomainNotRegistered
 > = z.instanceof(DomainNotRegistered)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: DomainNotRegisteredCode$outboundSchema,
-      message: z.string(),
-      tag: DomainNotRegisteredTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: DomainNotRegisteredCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

@@ -12,9 +12,9 @@ const args = {
 
 export const tool$domainsBuyDomain: ToolDefinition<typeof args> = {
   name: "domains-buy-domain",
-  description: `Purchase a domain
+  description: `Purchase a domain (deprecated)
 
-Allows to purchase the specified domain.`,
+This endpoint is deprecated and replaced with the endpoint [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain). Purchases the specified domain.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsBuyDomain(

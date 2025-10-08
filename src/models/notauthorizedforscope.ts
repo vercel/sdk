@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -14,24 +13,15 @@ export type NotAuthorizedForScopeCode = ClosedEnum<
   typeof NotAuthorizedForScopeCode
 >;
 
-export const NotAuthorizedForScopeTag = {
-  NotAuthorizedForScope: "NotAuthorizedForScope",
-} as const;
-export type NotAuthorizedForScopeTag = ClosedEnum<
-  typeof NotAuthorizedForScopeTag
->;
-
 export type NotAuthorizedForScopeData = {
   status: number;
   code: NotAuthorizedForScopeCode;
   message: string;
-  tag: NotAuthorizedForScopeTag;
 };
 
 export class NotAuthorizedForScope extends VercelError {
   status: number;
   code: NotAuthorizedForScopeCode;
-  tag: NotAuthorizedForScopeTag;
 
   /** The original data that was passed to this error instance. */
   data$: NotAuthorizedForScopeData;
@@ -45,7 +35,6 @@ export class NotAuthorizedForScope extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "NotAuthorizedForScope";
   }
@@ -73,27 +62,6 @@ export namespace NotAuthorizedForScopeCode$ {
 }
 
 /** @internal */
-export const NotAuthorizedForScopeTag$inboundSchema: z.ZodNativeEnum<
-  typeof NotAuthorizedForScopeTag
-> = z.nativeEnum(NotAuthorizedForScopeTag);
-
-/** @internal */
-export const NotAuthorizedForScopeTag$outboundSchema: z.ZodNativeEnum<
-  typeof NotAuthorizedForScopeTag
-> = NotAuthorizedForScopeTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotAuthorizedForScopeTag$ {
-  /** @deprecated use `NotAuthorizedForScopeTag$inboundSchema` instead. */
-  export const inboundSchema = NotAuthorizedForScopeTag$inboundSchema;
-  /** @deprecated use `NotAuthorizedForScopeTag$outboundSchema` instead. */
-  export const outboundSchema = NotAuthorizedForScopeTag$outboundSchema;
-}
-
-/** @internal */
 export const NotAuthorizedForScope$inboundSchema: z.ZodType<
   NotAuthorizedForScope,
   z.ZodTypeDef,
@@ -102,17 +70,12 @@ export const NotAuthorizedForScope$inboundSchema: z.ZodType<
   status: z.number(),
   code: NotAuthorizedForScopeCode$inboundSchema,
   message: z.string(),
-  _tag: NotAuthorizedForScopeTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new NotAuthorizedForScope(remapped, {
+    return new NotAuthorizedForScope(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -124,7 +87,6 @@ export type NotAuthorizedForScope$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -134,18 +96,11 @@ export const NotAuthorizedForScope$outboundSchema: z.ZodType<
   NotAuthorizedForScope
 > = z.instanceof(NotAuthorizedForScope)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: NotAuthorizedForScopeCode$outboundSchema,
-      message: z.string(),
-      tag: NotAuthorizedForScopeTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: NotAuthorizedForScopeCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

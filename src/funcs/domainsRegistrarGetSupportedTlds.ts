@@ -43,10 +43,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get a list of TLDs supported by Vercel
+ * Get supported TLDs
  *
  * @remarks
- * Get supported TLDs
+ * Get a list of TLDs supported by Vercel
  */
 export function domainsRegistrarGetSupportedTlds(
   client: VercelCore,

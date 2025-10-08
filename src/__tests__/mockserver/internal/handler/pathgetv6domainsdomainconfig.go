@@ -46,21 +46,20 @@ func testGetDomainConfigGetDomainConfig0(w http.ResponseWriter, req *http.Reques
 		return
 	}
 	var respBody *operations.GetDomainConfigResponseBody = &operations.GetDomainConfigResponseBody{
-		ConfiguredBy:       nil,
+		ConfiguredBy:       operations.ConfiguredByDns01.ToPointer(),
 		AcceptedChallenges: []operations.AcceptedChallenge{},
 		RecommendedIPv4: []operations.RecommendedIPv4{
 			operations.RecommendedIPv4{
-				Rank: 7781.57,
+				Rank: 5288.95,
 				Value: []string{
 					"<value 1>",
 					"<value 2>",
-					"<value 3>",
 				},
 			},
 		},
 		RecommendedCNAME: []operations.RecommendedCNAME{
 			operations.RecommendedCNAME{
-				Rank:  7991.59,
+				Rank:  710.36,
 				Value: "<value>",
 			},
 		},

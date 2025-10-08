@@ -8,7 +8,7 @@ import (
 
 type GetSupportedTldsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	// Success
+	// A list of the TLDs supported by Vercel.
 	Strings []string
 }
 

@@ -13,7 +13,7 @@ const args = {
 export const tool$domainsRegistrarGetDomainPrice: ToolDefinition<typeof args> =
   {
     name: "domains-registrar-get-domain-price",
-    description: `Get price data for a specific domain
+    description: `Get price data for a domain
 
 Get price data for a specific domain`,
     args,

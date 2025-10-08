@@ -29,26 +29,3 @@ func (e *DomainAlreadyRenewingCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for DomainAlreadyRenewingCode: %v", v)
 	}
 }
-
-type DomainAlreadyRenewingTag string
-
-const (
-	DomainAlreadyRenewingTagDomainAlreadyRenewing DomainAlreadyRenewingTag = "DomainAlreadyRenewing"
-)
-
-func (e DomainAlreadyRenewingTag) ToPointer() *DomainAlreadyRenewingTag {
-	return &e
-}
-func (e *DomainAlreadyRenewingTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "DomainAlreadyRenewing":
-		*e = DomainAlreadyRenewingTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DomainAlreadyRenewingTag: %v", v)
-	}
-}

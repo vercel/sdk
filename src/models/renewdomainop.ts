@@ -109,9 +109,12 @@ export type RenewDomainContactInformation = {
 };
 
 export type RenewDomainRequestBody = {
+  /**
+   * The number of years to renew the domain for.
+   */
   years: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   expectedPrice: number;
   contactInformation?: RenewDomainContactInformation | undefined;
@@ -133,12 +136,12 @@ export type RenewDomainDomainsRegistrarResponseResponseBody =
  * There was something wrong with the request
  */
 export type RenewDomainDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
-  | TldNotSupported
-  | DomainNotAvailable
-  | ExpectedPriceMismatch
+  | BadRequest
   | DomainNotRegistered
-  | BadRequest;
+  | ExpectedPriceMismatch
+  | DomainNotAvailable
+  | TldNotSupported
+  | HttpApiDecodeError;
 
 export const RenewDomainMethod = {
   Get: "GET",
@@ -448,22 +451,22 @@ export const RenewDomainDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  HttpApiDecodeError$inboundSchema,
-  TldNotSupported$inboundSchema,
-  DomainNotAvailable$inboundSchema,
-  ExpectedPriceMismatch$inboundSchema,
-  DomainNotRegistered$inboundSchema,
   BadRequest$inboundSchema,
+  DomainNotRegistered$inboundSchema,
+  ExpectedPriceMismatch$inboundSchema,
+  DomainNotAvailable$inboundSchema,
+  TldNotSupported$inboundSchema,
+  HttpApiDecodeError$inboundSchema,
 ]);
 
 /** @internal */
 export type RenewDomainDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | TldNotSupported$Outbound
-  | DomainNotAvailable$Outbound
-  | ExpectedPriceMismatch$Outbound
+  | BadRequest$Outbound
   | DomainNotRegistered$Outbound
-  | BadRequest$Outbound;
+  | ExpectedPriceMismatch$Outbound
+  | DomainNotAvailable$Outbound
+  | TldNotSupported$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const RenewDomainDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
@@ -471,12 +474,12 @@ export const RenewDomainDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RenewDomainDomainsRegistrarResponseBody
 > = z.union([
-  HttpApiDecodeError$outboundSchema,
-  TldNotSupported$outboundSchema,
-  DomainNotAvailable$outboundSchema,
-  ExpectedPriceMismatch$outboundSchema,
-  DomainNotRegistered$outboundSchema,
   BadRequest$outboundSchema,
+  DomainNotRegistered$outboundSchema,
+  ExpectedPriceMismatch$outboundSchema,
+  DomainNotAvailable$outboundSchema,
+  TldNotSupported$outboundSchema,
+  HttpApiDecodeError$outboundSchema,
 ]);
 
 /**

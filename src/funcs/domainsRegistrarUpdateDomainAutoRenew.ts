@@ -49,10 +49,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update the auto-renew setting for a domain
+ * Update auto-renew for a domain
  *
  * @remarks
- * Update auto-renew for a domain
+ * Update the auto-renew setting for a domain
  */
 export function domainsRegistrarUpdateDomainAutoRenew(
   client: VercelCore,

@@ -14,9 +14,9 @@ export const tool$domainsRegistrarUpdateDomainNameservers: ToolDefinition<
   typeof args
 > = {
   name: "domains-registrar-update-domain-nameservers",
-  description: `Update the nameservers for a domain
+  description: `Update nameservers for a domain
 
-Update nameservers for a domain`,
+Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarUpdateDomainNameservers(

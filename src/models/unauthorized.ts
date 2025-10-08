@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,15 @@ export const Code = {
 } as const;
 export type Code = ClosedEnum<typeof Code>;
 
-export const UnauthorizedTag = {
-  Unauthorized: "Unauthorized",
-} as const;
-export type UnauthorizedTag = ClosedEnum<typeof UnauthorizedTag>;
-
 export type UnauthorizedData = {
   status: number;
   code: Code;
   message: string;
-  tag: UnauthorizedTag;
 };
 
 export class Unauthorized extends VercelError {
   status: number;
   code: Code;
-  tag: UnauthorizedTag;
 
   /** The original data that was passed to this error instance. */
   data$: UnauthorizedData;
@@ -41,7 +33,6 @@ export class Unauthorized extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "Unauthorized";
   }
@@ -68,27 +59,6 @@ export namespace Code$ {
 }
 
 /** @internal */
-export const UnauthorizedTag$inboundSchema: z.ZodNativeEnum<
-  typeof UnauthorizedTag
-> = z.nativeEnum(UnauthorizedTag);
-
-/** @internal */
-export const UnauthorizedTag$outboundSchema: z.ZodNativeEnum<
-  typeof UnauthorizedTag
-> = UnauthorizedTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnauthorizedTag$ {
-  /** @deprecated use `UnauthorizedTag$inboundSchema` instead. */
-  export const inboundSchema = UnauthorizedTag$inboundSchema;
-  /** @deprecated use `UnauthorizedTag$outboundSchema` instead. */
-  export const outboundSchema = UnauthorizedTag$outboundSchema;
-}
-
-/** @internal */
 export const Unauthorized$inboundSchema: z.ZodType<
   Unauthorized,
   z.ZodTypeDef,
@@ -97,17 +67,12 @@ export const Unauthorized$inboundSchema: z.ZodType<
   status: z.number(),
   code: Code$inboundSchema,
   message: z.string(),
-  _tag: UnauthorizedTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new Unauthorized(remapped, {
+    return new Unauthorized(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -119,7 +84,6 @@ export type Unauthorized$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -129,18 +93,11 @@ export const Unauthorized$outboundSchema: z.ZodType<
   Unauthorized
 > = z.instanceof(Unauthorized)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: Code$outboundSchema,
-      message: z.string(),
-      tag: UnauthorizedTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: Code$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

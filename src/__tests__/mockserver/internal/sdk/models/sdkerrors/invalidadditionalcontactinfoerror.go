@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// InvalidAdditionalContactInfoError - Additional contact information provided for the TLD is invalid.
 type InvalidAdditionalContactInfoError struct {
 	Status   float64                                     `json:"status"`
 	Code     components.InvalidAdditionalContactInfoCode `json:"code"`
 	Message  string                                      `json:"message"`
-	Tag      components.InvalidAdditionalContactInfoTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata                     `json:"-"`
 }
 

@@ -29,26 +29,3 @@ func (e *DomainNotRenewableCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for DomainNotRenewableCode: %v", v)
 	}
 }
-
-type DomainNotRenewableTag string
-
-const (
-	DomainNotRenewableTagDomainNotRenewable DomainNotRenewableTag = "DomainNotRenewable"
-)
-
-func (e DomainNotRenewableTag) ToPointer() *DomainNotRenewableTag {
-	return &e
-}
-func (e *DomainNotRenewableTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "DomainNotRenewable":
-		*e = DomainNotRenewableTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DomainNotRenewableTag: %v", v)
-	}
-}

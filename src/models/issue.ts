@@ -3,9 +3,7 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
   PropertyKey,
@@ -16,31 +14,9 @@ import {
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * The tag identifying the type of parse issue
- */
-export const Tag = {
-  Pointer: "Pointer",
-  Unexpected: "Unexpected",
-  Missing: "Missing",
-  Composite: "Composite",
-  Refinement: "Refinement",
-  Transformation: "Transformation",
-  Type: "Type",
-  Forbidden: "Forbidden",
-} as const;
-/**
- * The tag identifying the type of parse issue
- */
-export type Tag = ClosedEnum<typeof Tag>;
-
-/**
  * Represents an error encountered while parsing a value to match the schema
  */
 export type Issue = {
-  /**
-   * The tag identifying the type of parse issue
-   */
-  tag: Tag;
   /**
    * The path to the property where the issue occurred
    */
@@ -52,38 +28,14 @@ export type Issue = {
 };
 
 /** @internal */
-export const Tag$inboundSchema: z.ZodNativeEnum<typeof Tag> = z.nativeEnum(Tag);
-
-/** @internal */
-export const Tag$outboundSchema: z.ZodNativeEnum<typeof Tag> =
-  Tag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Tag$ {
-  /** @deprecated use `Tag$inboundSchema` instead. */
-  export const inboundSchema = Tag$inboundSchema;
-  /** @deprecated use `Tag$outboundSchema` instead. */
-  export const outboundSchema = Tag$outboundSchema;
-}
-
-/** @internal */
 export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> = z
   .object({
-    _tag: Tag$inboundSchema,
     path: z.array(PropertyKey$inboundSchema),
     message: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "_tag": "tag",
-    });
   });
 
 /** @internal */
 export type Issue$Outbound = {
-  _tag: string;
   path: Array<PropertyKey$Outbound>;
   message: string;
 };
@@ -94,13 +46,8 @@ export const Issue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Issue
 > = z.object({
-  tag: Tag$outboundSchema,
   path: z.array(PropertyKey$outboundSchema),
   message: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    tag: "_tag",
-  });
 });
 
 /**

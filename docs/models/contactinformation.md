@@ -1,5 +1,7 @@
 # ContactInformation
 
+The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
+
 ## Example Usage
 
 ```typescript

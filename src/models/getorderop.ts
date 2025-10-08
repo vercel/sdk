@@ -55,7 +55,7 @@ export type Domains3 = {
   domainName: string;
   status: GetOrderDomainsDomainsRegistrarStatus;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   price: number;
   years: number;
@@ -80,7 +80,7 @@ export type Domains2 = {
   domainName: string;
   status: GetOrderDomainsStatus;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   price: number;
   years: number;
@@ -108,7 +108,7 @@ export type Domains1 = {
   domainName: string;
   status: DomainsStatus;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   price: number;
   years: number;

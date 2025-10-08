@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Update or move apex domain
  *
  * @remarks
- * Update or move apex domain.
+ * Update or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For this, please use the endpoints [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) and [Update nameservers for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain).
  */
 export function domainsPatchDomain(
   client: VercelCore,

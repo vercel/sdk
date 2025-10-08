@@ -14,9 +14,9 @@ export const tool$domainsRegistrarGetDomainAvailability: ToolDefinition<
   typeof args
 > = {
   name: "domains-registrar-get-domain-availability",
-  description: `Get availability for a specific domain
+  description: `Get availability for a domain
 
-Get availability for a specific domain`,
+Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetDomainAvailability(

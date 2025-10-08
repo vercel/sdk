@@ -16,7 +16,7 @@ export const tool$domainsRegistrarGetDomainAuthCode: ToolDefinition<
   name: "domains-registrar-get-domain-auth-code",
   description: `Get the auth code for a domain
 
-Get the auth code for a domain`,
+Get the auth code for a domain. This is required to transfer a domain from Vercel to another registrar.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetDomainAuthCode(

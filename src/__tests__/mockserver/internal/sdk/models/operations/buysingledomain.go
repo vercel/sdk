@@ -11,6 +11,7 @@ import (
 type BuySingleDomainAdditional struct {
 }
 
+// BuySingleDomainContactInformation - The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
 type BuySingleDomainContactInformation struct {
 	// a non empty string
 	FirstName string `json:"firstName"`
@@ -131,10 +132,13 @@ func (o *BuySingleDomainContactInformation) GetAdditional() *BuySingleDomainAddi
 }
 
 type BuySingleDomainRequestBody struct {
-	AutoRenew bool    `json:"autoRenew"`
-	Years     float64 `json:"years"`
-	// Represents a monetary amount in USD dollars
-	ExpectedPrice      float64                           `json:"expectedPrice"`
+	// Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
+	AutoRenew bool `json:"autoRenew"`
+	// The number of years to purchase the domain for.
+	Years float64 `json:"years"`
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+	ExpectedPrice float64 `json:"expectedPrice"`
+	// The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
 	ContactInformation BuySingleDomainContactInformation `json:"contactInformation"`
 }
 

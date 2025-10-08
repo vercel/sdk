@@ -30,10 +30,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get domain transfer info.
+ * Get domain transfer info (deprecated)
  *
  * @remarks
- * Fetch domain transfer availability or transfer status if a transfer is in progress.
+ * This endpoint is deprecated and replaced with the endpoint [Get a domain's transfer status](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-a-domain-s-transfer-status). Fetch domain transfer availability or transfer status if a transfer is in progress.
  */
 export function domainsGetDomainTransfer(
   client: VercelCore,

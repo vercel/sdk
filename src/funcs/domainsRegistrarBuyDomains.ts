@@ -46,10 +46,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Buy multiple domains at once
+ * Buy multiple domains
  *
  * @remarks
- * Buy multiple domains
+ * Buy multiple domains at once
  */
 export function domainsRegistrarBuyDomains(
   client: VercelCore,

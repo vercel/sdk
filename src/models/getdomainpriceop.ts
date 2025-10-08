@@ -34,9 +34,9 @@ export type GetDomainPriceRequest = {
  * There was something wrong with the request
  */
 export type GetDomainPriceDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
+  | BadRequest
   | TldNotSupported
-  | BadRequest;
+  | HttpApiDecodeError;
 
 /**
  * Success
@@ -44,15 +44,15 @@ export type GetDomainPriceDomainsRegistrarResponseBody =
 export type GetDomainPriceResponseBody = {
   years: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   purchasePrice: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   renewalPrice: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   transferPrice: number;
 };
@@ -118,16 +118,16 @@ export function getDomainPriceRequestFromJSON(
 export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
   z.ZodType<GetDomainPriceDomainsRegistrarResponseBody, z.ZodTypeDef, unknown> =
     z.union([
-      HttpApiDecodeError$inboundSchema,
-      TldNotSupported$inboundSchema,
       BadRequest$inboundSchema,
+      TldNotSupported$inboundSchema,
+      HttpApiDecodeError$inboundSchema,
     ]);
 
 /** @internal */
 export type GetDomainPriceDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
+  | BadRequest$Outbound
   | TldNotSupported$Outbound
-  | BadRequest$Outbound;
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
@@ -136,9 +136,9 @@ export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
     z.ZodTypeDef,
     GetDomainPriceDomainsRegistrarResponseBody
   > = z.union([
-    HttpApiDecodeError$outboundSchema,
-    TldNotSupported$outboundSchema,
     BadRequest$outboundSchema,
+    TldNotSupported$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
   ]);
 
 /**

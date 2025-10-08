@@ -120,10 +120,12 @@ func (o *TransferInDomainContactInformation) GetFax() *string {
 }
 
 type TransferInDomainRequestBody struct {
-	AuthCode  string  `json:"authCode"`
-	AutoRenew bool    `json:"autoRenew"`
-	Years     float64 `json:"years"`
-	// Represents a monetary amount in USD dollars
+	AuthCode string `json:"authCode"`
+	// Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
+	AutoRenew bool `json:"autoRenew"`
+	// The number of years to renew the domain for once it is transferred in. This must be a valid number of transfer years for the TLD.
+	Years float64 `json:"years"`
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	ExpectedPrice      float64                            `json:"expectedPrice"`
 	ContactInformation TransferInDomainContactInformation `json:"contactInformation"`
 }

@@ -52,8 +52,8 @@ export type UpdateDomainNameserversDomainsRegistrarResponseBody =
  * There was something wrong with the request
  */
 export type UpdateDomainNameserversResponseBody =
-  | HttpApiDecodeError
-  | DomainNotRegistered;
+  | DomainNotRegistered
+  | HttpApiDecodeError;
 
 /** @internal */
 export const UpdateDomainNameserversRequestBody$inboundSchema: z.ZodType<
@@ -250,14 +250,14 @@ export const UpdateDomainNameserversResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  HttpApiDecodeError$inboundSchema,
   DomainNotRegistered$inboundSchema,
+  HttpApiDecodeError$inboundSchema,
 ]);
 
 /** @internal */
 export type UpdateDomainNameserversResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | DomainNotRegistered$Outbound;
+  | DomainNotRegistered$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const UpdateDomainNameserversResponseBody$outboundSchema: z.ZodType<
@@ -265,8 +265,8 @@ export const UpdateDomainNameserversResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDomainNameserversResponseBody
 > = z.union([
-  HttpApiDecodeError$outboundSchema,
   DomainNotRegistered$outboundSchema,
+  HttpApiDecodeError$outboundSchema,
 ]);
 
 /**

@@ -29,26 +29,3 @@ func (e *InternalServerErrorCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for InternalServerErrorCode: %v", v)
 	}
 }
-
-type InternalServerErrorTag string
-
-const (
-	InternalServerErrorTagInternalServerError InternalServerErrorTag = "InternalServerError"
-)
-
-func (e InternalServerErrorTag) ToPointer() *InternalServerErrorTag {
-	return &e
-}
-func (e *InternalServerErrorTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "InternalServerError":
-		*e = InternalServerErrorTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for InternalServerErrorTag: %v", v)
-	}
-}

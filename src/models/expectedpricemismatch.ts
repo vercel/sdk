@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -14,24 +13,21 @@ export type ExpectedPriceMismatchCode = ClosedEnum<
   typeof ExpectedPriceMismatchCode
 >;
 
-export const ExpectedPriceMismatchTag = {
-  ExpectedPriceMismatch: "ExpectedPriceMismatch",
-} as const;
-export type ExpectedPriceMismatchTag = ClosedEnum<
-  typeof ExpectedPriceMismatchTag
->;
-
+/**
+ * The expected price passed does not match the actual price.
+ */
 export type ExpectedPriceMismatchData = {
   status: number;
   code: ExpectedPriceMismatchCode;
   message: string;
-  tag: ExpectedPriceMismatchTag;
 };
 
+/**
+ * The expected price passed does not match the actual price.
+ */
 export class ExpectedPriceMismatch extends VercelError {
   status: number;
   code: ExpectedPriceMismatchCode;
-  tag: ExpectedPriceMismatchTag;
 
   /** The original data that was passed to this error instance. */
   data$: ExpectedPriceMismatchData;
@@ -45,7 +41,6 @@ export class ExpectedPriceMismatch extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "ExpectedPriceMismatch";
   }
@@ -73,27 +68,6 @@ export namespace ExpectedPriceMismatchCode$ {
 }
 
 /** @internal */
-export const ExpectedPriceMismatchTag$inboundSchema: z.ZodNativeEnum<
-  typeof ExpectedPriceMismatchTag
-> = z.nativeEnum(ExpectedPriceMismatchTag);
-
-/** @internal */
-export const ExpectedPriceMismatchTag$outboundSchema: z.ZodNativeEnum<
-  typeof ExpectedPriceMismatchTag
-> = ExpectedPriceMismatchTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExpectedPriceMismatchTag$ {
-  /** @deprecated use `ExpectedPriceMismatchTag$inboundSchema` instead. */
-  export const inboundSchema = ExpectedPriceMismatchTag$inboundSchema;
-  /** @deprecated use `ExpectedPriceMismatchTag$outboundSchema` instead. */
-  export const outboundSchema = ExpectedPriceMismatchTag$outboundSchema;
-}
-
-/** @internal */
 export const ExpectedPriceMismatch$inboundSchema: z.ZodType<
   ExpectedPriceMismatch,
   z.ZodTypeDef,
@@ -102,17 +76,12 @@ export const ExpectedPriceMismatch$inboundSchema: z.ZodType<
   status: z.number(),
   code: ExpectedPriceMismatchCode$inboundSchema,
   message: z.string(),
-  _tag: ExpectedPriceMismatchTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new ExpectedPriceMismatch(remapped, {
+    return new ExpectedPriceMismatch(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -124,7 +93,6 @@ export type ExpectedPriceMismatch$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -134,18 +102,11 @@ export const ExpectedPriceMismatch$outboundSchema: z.ZodType<
   ExpectedPriceMismatch
 > = z.instanceof(ExpectedPriceMismatch)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: ExpectedPriceMismatchCode$outboundSchema,
-      message: z.string(),
-      tag: ExpectedPriceMismatchTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: ExpectedPriceMismatchCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

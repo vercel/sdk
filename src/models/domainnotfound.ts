@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,21 @@ export const DomainNotFoundCode = {
 } as const;
 export type DomainNotFoundCode = ClosedEnum<typeof DomainNotFoundCode>;
 
-export const DomainNotFoundTag = {
-  DomainNotFound: "DomainNotFound",
-} as const;
-export type DomainNotFoundTag = ClosedEnum<typeof DomainNotFoundTag>;
-
+/**
+ * The domain was not found in our system.
+ */
 export type DomainNotFoundData = {
   status: number;
   code: DomainNotFoundCode;
   message: string;
-  tag: DomainNotFoundTag;
 };
 
+/**
+ * The domain was not found in our system.
+ */
 export class DomainNotFound extends VercelError {
   status: number;
   code: DomainNotFoundCode;
-  tag: DomainNotFoundTag;
 
   /** The original data that was passed to this error instance. */
   data$: DomainNotFoundData;
@@ -41,7 +39,6 @@ export class DomainNotFound extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "DomainNotFound";
   }
@@ -69,27 +66,6 @@ export namespace DomainNotFoundCode$ {
 }
 
 /** @internal */
-export const DomainNotFoundTag$inboundSchema: z.ZodNativeEnum<
-  typeof DomainNotFoundTag
-> = z.nativeEnum(DomainNotFoundTag);
-
-/** @internal */
-export const DomainNotFoundTag$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotFoundTag
-> = DomainNotFoundTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotFoundTag$ {
-  /** @deprecated use `DomainNotFoundTag$inboundSchema` instead. */
-  export const inboundSchema = DomainNotFoundTag$inboundSchema;
-  /** @deprecated use `DomainNotFoundTag$outboundSchema` instead. */
-  export const outboundSchema = DomainNotFoundTag$outboundSchema;
-}
-
-/** @internal */
 export const DomainNotFound$inboundSchema: z.ZodType<
   DomainNotFound,
   z.ZodTypeDef,
@@ -98,17 +74,12 @@ export const DomainNotFound$inboundSchema: z.ZodType<
   status: z.number(),
   code: DomainNotFoundCode$inboundSchema,
   message: z.string(),
-  _tag: DomainNotFoundTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new DomainNotFound(remapped, {
+    return new DomainNotFound(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +91,6 @@ export type DomainNotFound$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +100,11 @@ export const DomainNotFound$outboundSchema: z.ZodType<
   DomainNotFound
 > = z.instanceof(DomainNotFound)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: DomainNotFoundCode$outboundSchema,
-      message: z.string(),
-      tag: DomainNotFoundTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: DomainNotFoundCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

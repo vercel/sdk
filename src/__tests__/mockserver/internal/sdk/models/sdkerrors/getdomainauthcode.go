@@ -94,14 +94,14 @@ func (u GetDomainAuthCodeForbidden) Error() string {
 type GetDomainAuthCodeBadRequestType string
 
 const (
-	GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError       GetDomainAuthCodeBadRequestType = "HttpApiDecodeError"
 	GetDomainAuthCodeBadRequestTypeDomainNotRegisteredError GetDomainAuthCodeBadRequestType = "DomainNotRegistered_error"
+	GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError       GetDomainAuthCodeBadRequestType = "HttpApiDecodeError"
 )
 
 // GetDomainAuthCodeBadRequest - There was something wrong with the request
 type GetDomainAuthCodeBadRequest struct {
-	HTTPAPIDecodeError       *HTTPAPIDecodeError       `queryParam:"inline"`
 	DomainNotRegisteredError *DomainNotRegisteredError `queryParam:"inline"`
+	HTTPAPIDecodeError       *HTTPAPIDecodeError       `queryParam:"inline"`
 
 	Type GetDomainAuthCodeBadRequestType
 
@@ -109,15 +109,6 @@ type GetDomainAuthCodeBadRequest struct {
 }
 
 var _ error = &GetDomainAuthCodeBadRequest{}
-
-func CreateGetDomainAuthCodeBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetDomainAuthCodeBadRequest {
-	typ := GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError
-
-	return GetDomainAuthCodeBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
 
 func CreateGetDomainAuthCodeBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) GetDomainAuthCodeBadRequest {
 	typ := GetDomainAuthCodeBadRequestTypeDomainNotRegisteredError
@@ -128,14 +119,16 @@ func CreateGetDomainAuthCodeBadRequestDomainNotRegisteredError(domainNotRegister
 	}
 }
 
-func (u *GetDomainAuthCodeBadRequest) UnmarshalJSON(data []byte) error {
+func CreateGetDomainAuthCodeBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetDomainAuthCodeBadRequest {
+	typ := GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError
-		return nil
+	return GetDomainAuthCodeBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
+}
+
+func (u *GetDomainAuthCodeBadRequest) UnmarshalJSON(data []byte) error {
 
 	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
 	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
@@ -144,16 +137,23 @@ func (u *GetDomainAuthCodeBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetDomainAuthCodeBadRequest", string(data))
 }
 
 func (u GetDomainAuthCodeBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
 	if u.DomainNotRegisteredError != nil {
 		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetDomainAuthCodeBadRequest: all fields are null")
@@ -161,11 +161,11 @@ func (u GetDomainAuthCodeBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u GetDomainAuthCodeBadRequest) Error() string {
 	switch u.Type {
-	case GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
 	case GetDomainAuthCodeBadRequestTypeDomainNotRegisteredError:
 		data, _ := json.Marshal(u.DomainNotRegisteredError)
+		return string(data)
+	case GetDomainAuthCodeBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -26,18 +25,12 @@ export type Limit = {
   reset: number;
 };
 
-export const TooManyRequestsTag = {
-  TooManyRequests: "TooManyRequests",
-} as const;
-export type TooManyRequestsTag = ClosedEnum<typeof TooManyRequestsTag>;
-
 export type TooManyRequestsData = {
   status: number;
   code: TooManyRequestsCode;
   message: string;
   retryAfter: RetryAfter;
   limit: Limit;
-  tag: TooManyRequestsTag;
 };
 
 export class TooManyRequests extends VercelError {
@@ -45,7 +38,6 @@ export class TooManyRequests extends VercelError {
   code: TooManyRequestsCode;
   retryAfter: RetryAfter;
   limit: Limit;
-  tag: TooManyRequestsTag;
 
   /** The original data that was passed to this error instance. */
   data$: TooManyRequestsData;
@@ -61,7 +53,6 @@ export class TooManyRequests extends VercelError {
     this.code = err.code;
     this.retryAfter = err.retryAfter;
     this.limit = err.limit;
-    this.tag = err.tag;
 
     this.name = "TooManyRequests";
   }
@@ -195,27 +186,6 @@ export function limitFromJSON(
 }
 
 /** @internal */
-export const TooManyRequestsTag$inboundSchema: z.ZodNativeEnum<
-  typeof TooManyRequestsTag
-> = z.nativeEnum(TooManyRequestsTag);
-
-/** @internal */
-export const TooManyRequestsTag$outboundSchema: z.ZodNativeEnum<
-  typeof TooManyRequestsTag
-> = TooManyRequestsTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TooManyRequestsTag$ {
-  /** @deprecated use `TooManyRequestsTag$inboundSchema` instead. */
-  export const inboundSchema = TooManyRequestsTag$inboundSchema;
-  /** @deprecated use `TooManyRequestsTag$outboundSchema` instead. */
-  export const outboundSchema = TooManyRequestsTag$outboundSchema;
-}
-
-/** @internal */
 export const TooManyRequests$inboundSchema: z.ZodType<
   TooManyRequests,
   z.ZodTypeDef,
@@ -226,17 +196,12 @@ export const TooManyRequests$inboundSchema: z.ZodType<
   message: z.string(),
   retryAfter: z.lazy(() => RetryAfter$inboundSchema),
   limit: z.lazy(() => Limit$inboundSchema),
-  _tag: TooManyRequestsTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new TooManyRequests(remapped, {
+    return new TooManyRequests(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -250,7 +215,6 @@ export type TooManyRequests$Outbound = {
   message: string;
   retryAfter: RetryAfter$Outbound;
   limit: Limit$Outbound;
-  _tag: string;
 };
 
 /** @internal */
@@ -260,20 +224,13 @@ export const TooManyRequests$outboundSchema: z.ZodType<
   TooManyRequests
 > = z.instanceof(TooManyRequests)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: TooManyRequestsCode$outboundSchema,
-      message: z.string(),
-      retryAfter: z.lazy(() => RetryAfter$outboundSchema),
-      limit: z.lazy(() => Limit$outboundSchema),
-      tag: TooManyRequestsTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: TooManyRequestsCode$outboundSchema,
+    message: z.string(),
+    retryAfter: z.lazy(() => RetryAfter$outboundSchema),
+    limit: z.lazy(() => Limit$outboundSchema),
+  }));
 
 /**
  * @internal

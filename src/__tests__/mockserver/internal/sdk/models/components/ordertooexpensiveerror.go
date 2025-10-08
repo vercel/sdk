@@ -29,26 +29,3 @@ func (e *OrderTooExpensiveCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for OrderTooExpensiveCode: %v", v)
 	}
 }
-
-type OrderTooExpensiveTag string
-
-const (
-	OrderTooExpensiveTagOrderTooExpensive OrderTooExpensiveTag = "OrderTooExpensive"
-)
-
-func (e OrderTooExpensiveTag) ToPointer() *OrderTooExpensiveTag {
-	return &e
-}
-func (e *OrderTooExpensiveTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "OrderTooExpensive":
-		*e = OrderTooExpensiveTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for OrderTooExpensiveTag: %v", v)
-	}
-}

@@ -94,18 +94,18 @@ func (u UpdateDomainAutoRenewForbidden) Error() string {
 type UpdateDomainAutoRenewBadRequestType string
 
 const (
-	UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError         UpdateDomainAutoRenewBadRequestType = "HttpApiDecodeError"
-	UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError   UpdateDomainAutoRenewBadRequestType = "DomainNotRegistered_error"
-	UpdateDomainAutoRenewBadRequestTypeDomainNotRenewableError    UpdateDomainAutoRenewBadRequestType = "DomainNotRenewable_error"
 	UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError UpdateDomainAutoRenewBadRequestType = "DomainAlreadyRenewing_error"
+	UpdateDomainAutoRenewBadRequestTypeDomainNotRenewableError    UpdateDomainAutoRenewBadRequestType = "DomainNotRenewable_error"
+	UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError   UpdateDomainAutoRenewBadRequestType = "DomainNotRegistered_error"
+	UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError         UpdateDomainAutoRenewBadRequestType = "HttpApiDecodeError"
 )
 
 // UpdateDomainAutoRenewBadRequest - There was something wrong with the request
 type UpdateDomainAutoRenewBadRequest struct {
-	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
-	DomainNotRegisteredError   *DomainNotRegisteredError   `queryParam:"inline"`
-	DomainNotRenewableError    *DomainNotRenewableError    `queryParam:"inline"`
 	DomainAlreadyRenewingError *DomainAlreadyRenewingError `queryParam:"inline"`
+	DomainNotRenewableError    *DomainNotRenewableError    `queryParam:"inline"`
+	DomainNotRegisteredError   *DomainNotRegisteredError   `queryParam:"inline"`
+	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
 
 	Type UpdateDomainAutoRenewBadRequestType
 
@@ -114,21 +114,12 @@ type UpdateDomainAutoRenewBadRequest struct {
 
 var _ error = &UpdateDomainAutoRenewBadRequest{}
 
-func CreateUpdateDomainAutoRenewBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) UpdateDomainAutoRenewBadRequest {
-	typ := UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError
+func CreateUpdateDomainAutoRenewBadRequestDomainAlreadyRenewingError(domainAlreadyRenewingError DomainAlreadyRenewingError) UpdateDomainAutoRenewBadRequest {
+	typ := UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError
 
 	return UpdateDomainAutoRenewBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
-
-func CreateUpdateDomainAutoRenewBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) UpdateDomainAutoRenewBadRequest {
-	typ := UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError
-
-	return UpdateDomainAutoRenewBadRequest{
-		DomainNotRegisteredError: &domainNotRegisteredError,
-		Type:                     typ,
+		DomainAlreadyRenewingError: &domainAlreadyRenewingError,
+		Type:                       typ,
 	}
 }
 
@@ -141,28 +132,30 @@ func CreateUpdateDomainAutoRenewBadRequestDomainNotRenewableError(domainNotRenew
 	}
 }
 
-func CreateUpdateDomainAutoRenewBadRequestDomainAlreadyRenewingError(domainAlreadyRenewingError DomainAlreadyRenewingError) UpdateDomainAutoRenewBadRequest {
-	typ := UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError
+func CreateUpdateDomainAutoRenewBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) UpdateDomainAutoRenewBadRequest {
+	typ := UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError
 
 	return UpdateDomainAutoRenewBadRequest{
-		DomainAlreadyRenewingError: &domainAlreadyRenewingError,
-		Type:                       typ,
+		DomainNotRegisteredError: &domainNotRegisteredError,
+		Type:                     typ,
+	}
+}
+
+func CreateUpdateDomainAutoRenewBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) UpdateDomainAutoRenewBadRequest {
+	typ := UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError
+
+	return UpdateDomainAutoRenewBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
 }
 
 func (u *UpdateDomainAutoRenewBadRequest) UnmarshalJSON(data []byte) error {
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError
-		return nil
-	}
-
-	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
-	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
-		u.DomainNotRegisteredError = &domainNotRegisteredError
-		u.Type = UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError
+	var domainAlreadyRenewingError DomainAlreadyRenewingError = DomainAlreadyRenewingError{}
+	if err := utils.UnmarshalJSON(data, &domainAlreadyRenewingError, "", true, nil); err == nil {
+		u.DomainAlreadyRenewingError = &domainAlreadyRenewingError
+		u.Type = UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError
 		return nil
 	}
 
@@ -173,10 +166,17 @@ func (u *UpdateDomainAutoRenewBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var domainAlreadyRenewingError DomainAlreadyRenewingError = DomainAlreadyRenewingError{}
-	if err := utils.UnmarshalJSON(data, &domainAlreadyRenewingError, "", true, nil); err == nil {
-		u.DomainAlreadyRenewingError = &domainAlreadyRenewingError
-		u.Type = UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError
+	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
+	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
+		u.DomainNotRegisteredError = &domainNotRegisteredError
+		u.Type = UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError
+		return nil
+	}
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError
 		return nil
 	}
 
@@ -184,20 +184,20 @@ func (u *UpdateDomainAutoRenewBadRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u UpdateDomainAutoRenewBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
-	if u.DomainNotRegisteredError != nil {
-		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	if u.DomainAlreadyRenewingError != nil {
+		return utils.MarshalJSON(u.DomainAlreadyRenewingError, "", true)
 	}
 
 	if u.DomainNotRenewableError != nil {
 		return utils.MarshalJSON(u.DomainNotRenewableError, "", true)
 	}
 
-	if u.DomainAlreadyRenewingError != nil {
-		return utils.MarshalJSON(u.DomainAlreadyRenewingError, "", true)
+	if u.DomainNotRegisteredError != nil {
+		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateDomainAutoRenewBadRequest: all fields are null")
@@ -205,17 +205,17 @@ func (u UpdateDomainAutoRenewBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u UpdateDomainAutoRenewBadRequest) Error() string {
 	switch u.Type {
-	case UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
-	case UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError:
-		data, _ := json.Marshal(u.DomainNotRegisteredError)
+	case UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError:
+		data, _ := json.Marshal(u.DomainAlreadyRenewingError)
 		return string(data)
 	case UpdateDomainAutoRenewBadRequestTypeDomainNotRenewableError:
 		data, _ := json.Marshal(u.DomainNotRenewableError)
 		return string(data)
-	case UpdateDomainAutoRenewBadRequestTypeDomainAlreadyRenewingError:
-		data, _ := json.Marshal(u.DomainAlreadyRenewingError)
+	case UpdateDomainAutoRenewBadRequestTypeDomainNotRegisteredError:
+		data, _ := json.Marshal(u.DomainNotRegisteredError)
+		return string(data)
+	case UpdateDomainAutoRenewBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

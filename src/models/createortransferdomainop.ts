@@ -11,6 +11,8 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * transfer-in
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type CreateOrTransferDomainRequestBody3 = {
   /**
@@ -18,7 +20,7 @@ export type CreateOrTransferDomainRequestBody3 = {
    */
   name: string;
   /**
-   * The domain operation to perform. It can be either `add` or `transfer-in`.
+   * The domain operation to perform. It can be either `add` or `move-in`.
    */
   method: string;
   /**
@@ -40,7 +42,7 @@ export type CreateOrTransferDomainRequestBody2 = {
    */
   name: string;
   /**
-   * The domain operation to perform. It can be either `add` or `transfer-in`.
+   * The domain operation to perform. It can be either `add` or `move-in`.
    */
   method: string;
   /**
@@ -63,7 +65,7 @@ export type CreateOrTransferDomainRequestBody1 = {
   cdnEnabled?: boolean | undefined;
   zone?: boolean | undefined;
   /**
-   * The domain operation to perform. It can be either `add` or `transfer-in`.
+   * The domain operation to perform. It can be either `add` or `move-in`.
    */
   method?: string | undefined;
 };

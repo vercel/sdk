@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,21 @@ export const TooManyDomainsCode = {
 } as const;
 export type TooManyDomainsCode = ClosedEnum<typeof TooManyDomainsCode>;
 
-export const TooManyDomainsTag = {
-  TooManyDomains: "TooManyDomains",
-} as const;
-export type TooManyDomainsTag = ClosedEnum<typeof TooManyDomainsTag>;
-
+/**
+ * The number of domains in the order is too high.
+ */
 export type TooManyDomainsData = {
   status: number;
   code: TooManyDomainsCode;
   message: string;
-  tag: TooManyDomainsTag;
 };
 
+/**
+ * The number of domains in the order is too high.
+ */
 export class TooManyDomains extends VercelError {
   status: number;
   code: TooManyDomainsCode;
-  tag: TooManyDomainsTag;
 
   /** The original data that was passed to this error instance. */
   data$: TooManyDomainsData;
@@ -41,7 +39,6 @@ export class TooManyDomains extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "TooManyDomains";
   }
@@ -69,27 +66,6 @@ export namespace TooManyDomainsCode$ {
 }
 
 /** @internal */
-export const TooManyDomainsTag$inboundSchema: z.ZodNativeEnum<
-  typeof TooManyDomainsTag
-> = z.nativeEnum(TooManyDomainsTag);
-
-/** @internal */
-export const TooManyDomainsTag$outboundSchema: z.ZodNativeEnum<
-  typeof TooManyDomainsTag
-> = TooManyDomainsTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TooManyDomainsTag$ {
-  /** @deprecated use `TooManyDomainsTag$inboundSchema` instead. */
-  export const inboundSchema = TooManyDomainsTag$inboundSchema;
-  /** @deprecated use `TooManyDomainsTag$outboundSchema` instead. */
-  export const outboundSchema = TooManyDomainsTag$outboundSchema;
-}
-
-/** @internal */
 export const TooManyDomains$inboundSchema: z.ZodType<
   TooManyDomains,
   z.ZodTypeDef,
@@ -98,17 +74,12 @@ export const TooManyDomains$inboundSchema: z.ZodType<
   status: z.number(),
   code: TooManyDomainsCode$inboundSchema,
   message: z.string(),
-  _tag: TooManyDomainsTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new TooManyDomains(remapped, {
+    return new TooManyDomains(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +91,6 @@ export type TooManyDomains$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +100,11 @@ export const TooManyDomains$outboundSchema: z.ZodType<
   TooManyDomains
 > = z.instanceof(TooManyDomains)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: TooManyDomainsCode$outboundSchema,
-      message: z.string(),
-      tag: TooManyDomainsTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: TooManyDomainsCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

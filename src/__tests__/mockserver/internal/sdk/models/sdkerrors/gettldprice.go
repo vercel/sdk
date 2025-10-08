@@ -13,14 +13,14 @@ import (
 type GetTldPriceBadRequestType string
 
 const (
-	GetTldPriceBadRequestTypeHTTPAPIDecodeError   GetTldPriceBadRequestType = "HttpApiDecodeError"
 	GetTldPriceBadRequestTypeTldNotSupportedError GetTldPriceBadRequestType = "TldNotSupported_error"
+	GetTldPriceBadRequestTypeHTTPAPIDecodeError   GetTldPriceBadRequestType = "HttpApiDecodeError"
 )
 
 // GetTldPriceBadRequest - There was something wrong with the request
 type GetTldPriceBadRequest struct {
-	HTTPAPIDecodeError   *HTTPAPIDecodeError   `queryParam:"inline"`
 	TldNotSupportedError *TldNotSupportedError `queryParam:"inline"`
+	HTTPAPIDecodeError   *HTTPAPIDecodeError   `queryParam:"inline"`
 
 	Type GetTldPriceBadRequestType
 
@@ -28,15 +28,6 @@ type GetTldPriceBadRequest struct {
 }
 
 var _ error = &GetTldPriceBadRequest{}
-
-func CreateGetTldPriceBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetTldPriceBadRequest {
-	typ := GetTldPriceBadRequestTypeHTTPAPIDecodeError
-
-	return GetTldPriceBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
 
 func CreateGetTldPriceBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) GetTldPriceBadRequest {
 	typ := GetTldPriceBadRequestTypeTldNotSupportedError
@@ -47,14 +38,16 @@ func CreateGetTldPriceBadRequestTldNotSupportedError(tldNotSupportedError TldNot
 	}
 }
 
-func (u *GetTldPriceBadRequest) UnmarshalJSON(data []byte) error {
+func CreateGetTldPriceBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetTldPriceBadRequest {
+	typ := GetTldPriceBadRequestTypeHTTPAPIDecodeError
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = GetTldPriceBadRequestTypeHTTPAPIDecodeError
-		return nil
+	return GetTldPriceBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
+}
+
+func (u *GetTldPriceBadRequest) UnmarshalJSON(data []byte) error {
 
 	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
 	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
@@ -63,16 +56,23 @@ func (u *GetTldPriceBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = GetTldPriceBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetTldPriceBadRequest", string(data))
 }
 
 func (u GetTldPriceBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
 	if u.TldNotSupportedError != nil {
 		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetTldPriceBadRequest: all fields are null")
@@ -80,11 +80,11 @@ func (u GetTldPriceBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u GetTldPriceBadRequest) Error() string {
 	switch u.Type {
-	case GetTldPriceBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
 	case GetTldPriceBadRequestTypeTldNotSupportedError:
 		data, _ := json.Marshal(u.TldNotSupportedError)
+		return string(data)
+	case GetTldPriceBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

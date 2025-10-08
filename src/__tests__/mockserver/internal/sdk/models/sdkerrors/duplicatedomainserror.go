@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// DuplicateDomainsError - Duplicate domains were provided.
 type DuplicateDomainsError struct {
 	Status   float64                         `json:"status"`
 	Code     components.DuplicateDomainsCode `json:"code"`
 	Message  string                          `json:"message"`
-	Tag      components.DuplicateDomainsTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata         `json:"-"`
 }
 

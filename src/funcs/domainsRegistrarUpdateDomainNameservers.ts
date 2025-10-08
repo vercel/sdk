@@ -49,10 +49,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update the nameservers for a domain
+ * Update nameservers for a domain
  *
  * @remarks
- * Update nameservers for a domain
+ * Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.
  */
 export function domainsRegistrarUpdateDomainNameservers(
   client: VercelCore,

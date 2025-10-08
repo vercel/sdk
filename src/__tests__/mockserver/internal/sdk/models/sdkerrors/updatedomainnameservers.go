@@ -94,14 +94,14 @@ func (u UpdateDomainNameserversForbidden) Error() string {
 type UpdateDomainNameserversBadRequestType string
 
 const (
-	UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError       UpdateDomainNameserversBadRequestType = "HttpApiDecodeError"
 	UpdateDomainNameserversBadRequestTypeDomainNotRegisteredError UpdateDomainNameserversBadRequestType = "DomainNotRegistered_error"
+	UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError       UpdateDomainNameserversBadRequestType = "HttpApiDecodeError"
 )
 
 // UpdateDomainNameserversBadRequest - There was something wrong with the request
 type UpdateDomainNameserversBadRequest struct {
-	HTTPAPIDecodeError       *HTTPAPIDecodeError       `queryParam:"inline"`
 	DomainNotRegisteredError *DomainNotRegisteredError `queryParam:"inline"`
+	HTTPAPIDecodeError       *HTTPAPIDecodeError       `queryParam:"inline"`
 
 	Type UpdateDomainNameserversBadRequestType
 
@@ -109,15 +109,6 @@ type UpdateDomainNameserversBadRequest struct {
 }
 
 var _ error = &UpdateDomainNameserversBadRequest{}
-
-func CreateUpdateDomainNameserversBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) UpdateDomainNameserversBadRequest {
-	typ := UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError
-
-	return UpdateDomainNameserversBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
 
 func CreateUpdateDomainNameserversBadRequestDomainNotRegisteredError(domainNotRegisteredError DomainNotRegisteredError) UpdateDomainNameserversBadRequest {
 	typ := UpdateDomainNameserversBadRequestTypeDomainNotRegisteredError
@@ -128,14 +119,16 @@ func CreateUpdateDomainNameserversBadRequestDomainNotRegisteredError(domainNotRe
 	}
 }
 
-func (u *UpdateDomainNameserversBadRequest) UnmarshalJSON(data []byte) error {
+func CreateUpdateDomainNameserversBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) UpdateDomainNameserversBadRequest {
+	typ := UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError
-		return nil
+	return UpdateDomainNameserversBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
+}
+
+func (u *UpdateDomainNameserversBadRequest) UnmarshalJSON(data []byte) error {
 
 	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
 	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
@@ -144,16 +137,23 @@ func (u *UpdateDomainNameserversBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDomainNameserversBadRequest", string(data))
 }
 
 func (u UpdateDomainNameserversBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
 	if u.DomainNotRegisteredError != nil {
 		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateDomainNameserversBadRequest: all fields are null")
@@ -161,11 +161,11 @@ func (u UpdateDomainNameserversBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u UpdateDomainNameserversBadRequest) Error() string {
 	switch u.Type {
-	case UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
 	case UpdateDomainNameserversBadRequestTypeDomainNotRegisteredError:
 		data, _ := json.Marshal(u.DomainNotRegisteredError)
+		return string(data)
+	case UpdateDomainNameserversBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

@@ -1,5 +1,7 @@
 # DuplicateDomains
 
+Duplicate domains were provided.
+
 ## Example Usage
 
 ```typescript
@@ -15,4 +17,3 @@ import { DuplicateDomains } from "@vercel/sdk/models/duplicatedomains.js";
 | `status`                                                         | *number*                                                         | :heavy_check_mark:                                               | N/A                                                              |
 | `code`                                                           | [models.DuplicateDomainsCode](../models/duplicatedomainscode.md) | :heavy_check_mark:                                               | N/A                                                              |
 | `message`                                                        | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `tag`                                                            | [models.DuplicateDomainsTag](../models/duplicatedomainstag.md)   | :heavy_check_mark:                                               | N/A                                                              |

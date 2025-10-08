@@ -11,7 +11,6 @@ type BadRequestError struct {
 	Status   float64                   `json:"status"`
 	Code     components.BadRequestCode `json:"code"`
 	Message  string                    `json:"message"`
-	Tag      components.BadRequestTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata   `json:"-"`
 }
 

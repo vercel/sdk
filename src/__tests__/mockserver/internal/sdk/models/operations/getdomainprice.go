@@ -28,11 +28,11 @@ func (o *GetDomainPriceRequest) GetYears() *string {
 // GetDomainPriceResponseBody - Success
 type GetDomainPriceResponseBody struct {
 	Years float64 `json:"years"`
-	// Represents a monetary amount in USD dollars
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	PurchasePrice float64 `json:"purchasePrice"`
-	// Represents a monetary amount in USD dollars
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	RenewalPrice float64 `json:"renewalPrice"`
-	// Represents a monetary amount in USD dollars
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	TransferPrice float64 `json:"transferPrice"`
 }
 

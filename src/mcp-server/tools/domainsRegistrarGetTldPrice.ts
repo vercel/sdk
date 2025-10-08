@@ -12,9 +12,9 @@ const args = {
 
 export const tool$domainsRegistrarGetTldPrice: ToolDefinition<typeof args> = {
   name: "domains-registrar-get-tld-price",
-  description: `Get price data for a specific TLD
+  description: `Get TLD price data
 
-Get TLD price data`,
+Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetTldPrice(

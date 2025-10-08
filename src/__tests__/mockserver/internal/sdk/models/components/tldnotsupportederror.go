@@ -29,26 +29,3 @@ func (e *TldNotSupportedCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for TldNotSupportedCode: %v", v)
 	}
 }
-
-type TldNotSupportedTag string
-
-const (
-	TldNotSupportedTagTldNotSupported TldNotSupportedTag = "TldNotSupported"
-)
-
-func (e TldNotSupportedTag) ToPointer() *TldNotSupportedTag {
-	return &e
-}
-func (e *TldNotSupportedTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "TldNotSupported":
-		*e = TldNotSupportedTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TldNotSupportedTag: %v", v)
-	}
-}

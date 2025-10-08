@@ -69,10 +69,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class DomainsRegistrar extends ClientSDK {
   /**
-   * Get a list of TLDs supported by Vercel
+   * Get supported TLDs
    *
    * @remarks
-   * Get supported TLDs
+   * Get a list of TLDs supported by Vercel
    */
   async getSupportedTlds(
     options?: RequestOptions,
@@ -84,10 +84,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Get price data for a specific TLD
+   * Get TLD price data
    *
    * @remarks
-   * Get TLD price data
+   * Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.
    */
   async getTldPrice(
     request: GetTldPriceRequest,
@@ -101,10 +101,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Get availability for a specific domain
+   * Get availability for a domain
    *
    * @remarks
-   * Get availability for a specific domain
+   * Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
    */
   async getDomainAvailability(
     request: GetDomainAvailabilityRequest,
@@ -118,7 +118,7 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Get price data for a specific domain
+   * Get price data for a domain
    *
    * @remarks
    * Get price data for a specific domain
@@ -138,7 +138,7 @@ export class DomainsRegistrar extends ClientSDK {
    * Get availability for multiple domains
    *
    * @remarks
-   * Get availability for multiple domains
+   * Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
    */
   async getBulkAvailability(
     request: GetBulkAvailabilityRequestBody,
@@ -155,7 +155,7 @@ export class DomainsRegistrar extends ClientSDK {
    * Get the auth code for a domain
    *
    * @remarks
-   * Get the auth code for a domain
+   * Get the auth code for a domain. This is required to transfer a domain from Vercel to another registrar.
    */
   async getDomainAuthCode(
     request: GetDomainAuthCodeRequest,
@@ -186,10 +186,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Buy multiple domains at once
+   * Buy multiple domains
    *
    * @remarks
-   * Buy multiple domains
+   * Buy multiple domains at once
    */
   async buyDomains(
     request: BuyDomainsRequestBody,
@@ -203,10 +203,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Transfer a domain in from another registrar
+   * Transfer-in a domain
    *
    * @remarks
-   * Transfer-in a domain
+   * Transfer a domain in from another registrar
    */
   async transferInDomain(
     request: TransferInDomainRequest,
@@ -220,10 +220,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Get the transfer status for a domain
+   * Get a domain's transfer status
    *
    * @remarks
-   * Get a domain's transfer status
+   * Get the transfer status for a domain
    */
   async getDomainTransferIn(
     request: GetDomainTransferInRequest,
@@ -254,10 +254,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Update the auto-renew setting for a domain
+   * Update auto-renew for a domain
    *
    * @remarks
-   * Update auto-renew for a domain
+   * Update the auto-renew setting for a domain
    */
   async updateDomainAutoRenew(
     request: UpdateDomainAutoRenewRequest,
@@ -271,10 +271,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Update the nameservers for a domain
+   * Update nameservers for a domain
    *
    * @remarks
-   * Update nameservers for a domain
+   * Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.
    */
   async updateDomainNameservers(
     request: UpdateDomainNameserversRequest,
@@ -288,10 +288,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Get the schema for the tld-specific contact information for a domain
+   * Get contact info schema
    *
    * @remarks
-   * Get contact info schema
+   * Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
    */
   async getContactInfoSchema(
     request: GetContactInfoSchemaRequest,
@@ -305,10 +305,10 @@ export class DomainsRegistrar extends ClientSDK {
   }
 
   /**
-   * Get information about a domain order by its ID
+   * Get a domain order
    *
    * @remarks
-   * Get a domain order
+   * Get information about a domain order by its ID
    */
   async getOrder(
     request: GetOrderRequest,

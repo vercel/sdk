@@ -22,6 +22,7 @@ export type Ownership = ClosedEnum<typeof Ownership>;
 export const ImportResourceStatus = {
   Ready: "ready",
   Pending: "pending",
+  Onboarding: "onboarding",
   Suspended: "suspended",
   Resumed: "resumed",
   Uninstalled: "uninstalled",

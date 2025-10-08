@@ -52,13 +52,16 @@ export type GetOrderDomainsDomainsRegistrarStatus = ClosedEnum<
 export type Domains3 = {
   purchaseType: GetOrderDomainsPurchaseType;
   autoRenew: boolean;
+  /**
+   * The number of years the domain is being transferred for.
+   */
+  years: number;
   domainName: string;
   status: GetOrderDomainsDomainsRegistrarStatus;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The price for the domain.
    */
   price: number;
-  years: number;
 };
 
 export const DomainsPurchaseType = {
@@ -77,13 +80,16 @@ export type GetOrderDomainsStatus = ClosedEnum<typeof GetOrderDomainsStatus>;
 
 export type Domains2 = {
   purchaseType: DomainsPurchaseType;
+  /**
+   * The number of years the domain is being renewed for.
+   */
+  years: number;
   domainName: string;
   status: GetOrderDomainsStatus;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The price for the domain.
    */
   price: number;
-  years: number;
 };
 
 export const GetOrderDomainsDomainsRegistrarPurchaseType = {
@@ -105,13 +111,16 @@ export type DomainsStatus = ClosedEnum<typeof DomainsStatus>;
 export type Domains1 = {
   purchaseType: GetOrderDomainsDomainsRegistrarPurchaseType;
   autoRenew: boolean;
+  /**
+   * The number of years the domain is being purchased for.
+   */
+  years: number;
   domainName: string;
   status: DomainsStatus;
   /**
-   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+   * The price for the domain.
    */
   price: number;
-  years: number;
 };
 
 export type GetOrderDomains = Domains1 | Domains3 | Domains2;
@@ -352,20 +361,20 @@ export const Domains3$inboundSchema: z.ZodType<
 > = z.object({
   purchaseType: GetOrderDomainsPurchaseType$inboundSchema,
   autoRenew: z.boolean(),
+  years: z.number(),
   domainName: z.string(),
   status: GetOrderDomainsDomainsRegistrarStatus$inboundSchema,
   price: z.number(),
-  years: z.number(),
 });
 
 /** @internal */
 export type Domains3$Outbound = {
   purchaseType: string;
   autoRenew: boolean;
+  years: number;
   domainName: string;
   status: string;
   price: number;
-  years: number;
 };
 
 /** @internal */
@@ -376,10 +385,10 @@ export const Domains3$outboundSchema: z.ZodType<
 > = z.object({
   purchaseType: GetOrderDomainsPurchaseType$outboundSchema,
   autoRenew: z.boolean(),
+  years: z.number(),
   domainName: z.string(),
   status: GetOrderDomainsDomainsRegistrarStatus$outboundSchema,
   price: z.number(),
-  years: z.number(),
 });
 
 /**
@@ -458,19 +467,19 @@ export const Domains2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   purchaseType: DomainsPurchaseType$inboundSchema,
+  years: z.number(),
   domainName: z.string(),
   status: GetOrderDomainsStatus$inboundSchema,
   price: z.number(),
-  years: z.number(),
 });
 
 /** @internal */
 export type Domains2$Outbound = {
   purchaseType: string;
+  years: number;
   domainName: string;
   status: string;
   price: number;
-  years: number;
 };
 
 /** @internal */
@@ -480,10 +489,10 @@ export const Domains2$outboundSchema: z.ZodType<
   Domains2
 > = z.object({
   purchaseType: DomainsPurchaseType$outboundSchema,
+  years: z.number(),
   domainName: z.string(),
   status: GetOrderDomainsStatus$outboundSchema,
   price: z.number(),
-  years: z.number(),
 });
 
 /**
@@ -565,20 +574,20 @@ export const Domains1$inboundSchema: z.ZodType<
 > = z.object({
   purchaseType: GetOrderDomainsDomainsRegistrarPurchaseType$inboundSchema,
   autoRenew: z.boolean(),
+  years: z.number(),
   domainName: z.string(),
   status: DomainsStatus$inboundSchema,
   price: z.number(),
-  years: z.number(),
 });
 
 /** @internal */
 export type Domains1$Outbound = {
   purchaseType: string;
   autoRenew: boolean;
+  years: number;
   domainName: string;
   status: string;
   price: number;
-  years: number;
 };
 
 /** @internal */
@@ -589,10 +598,10 @@ export const Domains1$outboundSchema: z.ZodType<
 > = z.object({
   purchaseType: GetOrderDomainsDomainsRegistrarPurchaseType$outboundSchema,
   autoRenew: z.boolean(),
+  years: z.number(),
   domainName: z.string(),
   status: DomainsStatus$outboundSchema,
   price: z.number(),
-  years: z.number(),
 });
 
 /**

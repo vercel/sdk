@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8494": {}
+                      "__@BRAND@8495": {}
                     }
                   },
                   "secrets": []
@@ -6796,14 +6796,51 @@ workflows:
                 "domains": [
                   {
                     "purchaseType": "renewal",
+                    "years": 3271.32,
                     "domainName": "annual-atrium.biz",
                     "status": "refunded",
-                    "price": 5522.99,
-                    "years": 3271.32
+                    "price": 5522.99
                   }
                 ],
                 "status": "purchasing"
               }
             type: simple
     x-speakeasy-test-group: domains-registrar
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateSharedConnectLinks
+    steps:
+      - stepId: test
+        operationId: updateSharedConnectLinks
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            regions:
+              - iad1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "envId": "\u003cid\u003e",
+                  "connectConfigurationId": "\u003cid\u003e",
+                  "passive": false,
+                  "buildsEnabled": false,
+                  "createdAt": 4065.64,
+                  "updatedAt": 8093.89
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: connect
     x-speakeasy-test-rebuild: true

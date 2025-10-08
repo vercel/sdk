@@ -20691,15 +20691,21 @@
                       "description": "The number of years the returned price is for."
                     },
                     "purchasePrice": {
-                      "$ref": "#/components/schemas/Dollars",
+                      "type": "number",
+                      "description": "The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.",
+                      "minimum": 0.01,
                       "nullable": true
                     },
                     "renewalPrice": {
-                      "$ref": "#/components/schemas/Dollars",
+                      "type": "number",
+                      "description": "The base TLD price for renewing a domain for the given number of years. If null, the TLD does not support renewing domains for the given number of years.",
+                      "minimum": 0.01,
                       "nullable": true
                     },
                     "transferPrice": {
-                      "$ref": "#/components/schemas/Dollars",
+                      "type": "number",
+                      "description": "The base TLD price for transferring a domain in for the given number of years. If null, the TLD does not support transferring domains in for the given number of years.",
+                      "minimum": 0.01,
                       "nullable": true
                     }
                   },
@@ -20923,15 +20929,21 @@
                       "type": "number"
                     },
                     "purchasePrice": {
-                      "$ref": "#/components/schemas/Dollars",
+                      "type": "number",
+                      "description": "The price for purchasing this domain for the given number of years. If null, the domain is not available for purchase for the given number of years.",
+                      "minimum": 0.01,
                       "nullable": true
                     },
                     "renewalPrice": {
-                      "$ref": "#/components/schemas/Dollars",
+                      "type": "number",
+                      "description": "The price for renewing this domain for the given number of years. If null, the domain cannot be renewed for the given number of years.",
+                      "minimum": 0.01,
                       "nullable": true
                     },
                     "transferPrice": {
-                      "$ref": "#/components/schemas/Dollars",
+                      "type": "number",
+                      "description": "The price for transferring this domain in for the given number of years. If null, the domain cannot be transferred in for the given number of years.",
+                      "minimum": 0.01,
                       "nullable": true
                     }
                   },
@@ -21425,7 +21437,9 @@
                     "description": "The number of years to purchase the domain for."
                   },
                   "expectedPrice": {
-                    "$ref": "#/components/schemas/Dollars"
+                    "type": "number",
+                    "description": "The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.",
+                    "minimum": 0.01
                   },
                   "contactInformation": {
                     "type": "object",
@@ -21675,7 +21689,9 @@
                           "description": "The number of years to purchase the domain for."
                         },
                         "expectedPrice": {
-                          "$ref": "#/components/schemas/Dollars"
+                          "type": "number",
+                          "description": "The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.",
+                          "minimum": 0.01
                         }
                       },
                       "additionalProperties": false
@@ -21917,7 +21933,9 @@
                     "description": "The number of years to renew the domain for once it is transferred in. This must be a valid number of transfer years for the TLD."
                   },
                   "expectedPrice": {
-                    "$ref": "#/components/schemas/Dollars"
+                    "type": "number",
+                    "description": "The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.",
+                    "minimum": 0.01
                   },
                   "contactInformation": {
                     "type": "object",
@@ -22278,7 +22296,9 @@
                     "description": "The number of years to renew the domain for."
                   },
                   "expectedPrice": {
-                    "$ref": "#/components/schemas/Dollars"
+                    "type": "number",
+                    "description": "The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.",
+                    "minimum": 0.01
                   },
                   "contactInformation": {
                     "type": "object",
@@ -22738,10 +22758,10 @@
                             "required": [
                               "purchaseType",
                               "autoRenew",
+                              "years",
                               "domainName",
                               "status",
-                              "price",
-                              "years"
+                              "price"
                             ],
                             "properties": {
                               "purchaseType": {
@@ -22753,6 +22773,10 @@
                               "autoRenew": {
                                 "type": "boolean"
                               },
+                              "years": {
+                                "type": "number",
+                                "description": "The number of years the domain is being purchased for."
+                              },
                               "domainName": {
                                 "$ref": "#/components/schemas/DomainName"
                               },
@@ -22767,10 +22791,9 @@
                                 ]
                               },
                               "price": {
-                                "$ref": "#/components/schemas/Dollars"
-                              },
-                              "years": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "The price for the domain.",
+                                "minimum": 0.01
                               }
                             },
                             "additionalProperties": false
@@ -22779,10 +22802,10 @@
                             "type": "object",
                             "required": [
                               "purchaseType",
+                              "years",
                               "domainName",
                               "status",
-                              "price",
-                              "years"
+                              "price"
                             ],
                             "properties": {
                               "purchaseType": {
@@ -22790,6 +22813,10 @@
                                 "enum": [
                                   "renewal"
                                 ]
+                              },
+                              "years": {
+                                "type": "number",
+                                "description": "The number of years the domain is being renewed for."
                               },
                               "domainName": {
                                 "$ref": "#/components/schemas/DomainName"
@@ -22805,10 +22832,9 @@
                                 ]
                               },
                               "price": {
-                                "$ref": "#/components/schemas/Dollars"
-                              },
-                              "years": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "The price for the domain.",
+                                "minimum": 0.01
                               }
                             },
                             "additionalProperties": false
@@ -22818,10 +22844,10 @@
                             "required": [
                               "purchaseType",
                               "autoRenew",
+                              "years",
                               "domainName",
                               "status",
-                              "price",
-                              "years"
+                              "price"
                             ],
                             "properties": {
                               "purchaseType": {
@@ -22833,6 +22859,10 @@
                               "autoRenew": {
                                 "type": "boolean"
                               },
+                              "years": {
+                                "type": "number",
+                                "description": "The number of years the domain is being transferred for."
+                              },
                               "domainName": {
                                 "$ref": "#/components/schemas/DomainName"
                               },
@@ -22847,10 +22877,9 @@
                                 ]
                               },
                               "price": {
-                                "$ref": "#/components/schemas/Dollars"
-                              },
-                              "years": {
-                                "type": "number"
+                                "type": "number",
+                                "description": "The price for the domain.",
+                                "minimum": 0.01
                               }
                             },
                             "additionalProperties": false
@@ -27491,6 +27520,7 @@
                             "enum": [
                               "ready",
                               "pending",
+                              "onboarding",
                               "suspended",
                               "resumed",
                               "uninstalled",
@@ -27666,6 +27696,7 @@
                       "enum": [
                         "ready",
                         "pending",
+                        "onboarding",
                         "suspended",
                         "resumed",
                         "uninstalled",
@@ -27953,6 +27984,7 @@
                     "enum": [
                       "ready",
                       "pending",
+                      "onboarding",
                       "suspended",
                       "resumed",
                       "uninstalled",
@@ -30690,34 +30722,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "default": {
@@ -31400,34 +31432,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "default": {
@@ -31585,34 +31617,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@544285": {
+                                                "__@BRAND@544364": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@544285"
+                                                "__@BRAND@544364"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@544285": {
+                                                "__@BRAND@544364": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@544285"
+                                                "__@BRAND@544364"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@544285": {
+                                                "__@BRAND@544364": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@544285"
+                                                "__@BRAND@544364"
                                               ]
                                             },
                                             "default": {
@@ -31923,12 +31955,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@544285": {
+                                                  "__@BRAND@544364": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@544285"
+                                                  "__@BRAND@544364"
                                                 ]
                                               },
                                               {
@@ -31936,12 +31968,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@544285": {
+                                                      "__@BRAND@544364": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@544285"
+                                                      "__@BRAND@544364"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -32010,34 +32042,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "default": {
@@ -32195,34 +32227,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@544285": {
+                                                "__@BRAND@544364": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@544285"
+                                                "__@BRAND@544364"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@544285": {
+                                                "__@BRAND@544364": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@544285"
+                                                "__@BRAND@544364"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@544285": {
+                                                "__@BRAND@544364": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@544285"
+                                                "__@BRAND@544364"
                                               ]
                                             },
                                             "default": {
@@ -32311,12 +32343,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@544285": {
+                                                  "__@BRAND@544364": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@544285"
+                                                  "__@BRAND@544364"
                                                 ]
                                               },
                                               {
@@ -32324,12 +32356,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@544285": {
+                                                      "__@BRAND@544364": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@544285"
+                                                      "__@BRAND@544364"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -32515,12 +32547,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@544285": {
+                                              "__@BRAND@544364": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@544285"
+                                              "__@BRAND@544364"
                                             ]
                                           },
                                           "type": "array"
@@ -32529,12 +32561,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@544285": {
+                                              "__@BRAND@544364": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@544285"
+                                              "__@BRAND@544364"
                                             ]
                                           },
                                           "type": "array"
@@ -32568,34 +32600,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "default": {
@@ -32729,12 +32761,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@544285": {
+                                            "__@BRAND@544364": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@544285"
+                                            "__@BRAND@544364"
                                           ]
                                         },
                                         "disabled": {
@@ -39433,6 +39465,20 @@
             }
           },
           {
+            "name": "staticIpsEnabled",
+            "description": "Filter results by projects with Static IPs enabled",
+            "in": "query",
+            "schema": {
+              "description": "Filter results by projects with Static IPs enabled",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "example": "1",
+              "type": "string"
+            }
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -39784,10 +39830,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -40792,17 +40838,17 @@
                                 "github-limited"
                               ]
                             },
-                            "updatedAt": {
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
+                            "updatedAt": {
+                              "type": "number"
                             },
                             "org": {
                               "type": "string"
@@ -40810,9 +40856,6 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
-                            },
-                            "repoId": {
-                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -40845,6 +40888,9 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -41236,6 +41282,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -41257,9 +41306,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -41362,6 +41408,9 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -41383,9 +41432,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -41432,8 +41478,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -43174,11 +43220,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -43218,11 +43264,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -49377,10 +49423,10 @@
                             "type": "string",
                             "enum": [
                               "system",
-                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive"
+                              "sensitive",
+                              "secret"
                             ]
                           },
                           "sunsetSecretId": {
@@ -50385,17 +50431,17 @@
                                 "github-limited"
                               ]
                             },
-                            "updatedAt": {
+                            "repo": {
+                              "type": "string"
+                            },
+                            "repoId": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
+                            "updatedAt": {
+                              "type": "number"
                             },
                             "org": {
                               "type": "string"
@@ -50403,9 +50449,6 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
-                            },
-                            "repoId": {
-                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -50438,6 +50481,9 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -50829,6 +50875,9 @@
                     },
                     "resourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -50850,9 +50899,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -50955,6 +51001,9 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
+                        "elasticConcurrencyEnabled": {
+                          "type": "boolean"
+                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -50976,9 +51025,6 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
-                          "type": "boolean"
-                        },
-                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -51025,8 +51071,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "all",
                             "preview",
+                            "all",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -52767,11 +52813,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             },
                             "addresses": {
@@ -52811,11 +52857,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "all",
                                 "preview",
+                                "production",
+                                "all",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains",
-                                "production"
+                                "all_except_custom_domains"
                               ]
                             }
                           },
@@ -53923,6 +53969,20 @@
                     "description": "Opt-in to skip deployments when there are no changes to the root directory and its dependencies",
                     "type": "boolean"
                   },
+                  "staticIps": {
+                    "additionalProperties": false,
+                    "description": "Manage Static IPs for this project",
+                    "properties": {
+                      "enabled": {
+                        "description": "Opt-in to Static IPs for this project",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ],
+                    "type": "object"
+                  },
                   "oidcTokenConfig": {
                     "description": "OpenID Connect JSON Web Token generation configuration.",
                     "type": "object",
@@ -54189,6 +54249,170 @@
             }
           }
         ]
+      }
+    },
+    "/v1/projects/{idOrName}/shared-connect-links": {
+      "patch": {
+        "description": "Allows updating project connections to shared Secure Compute networks.",
+        "operationId": "updateSharedConnectLinks",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update project connections to shared Secure Compute networks",
+        "tags": [
+          "connect"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "envId": {
+                        "oneOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "preview",
+                              "production"
+                            ]
+                          }
+                        ]
+                      },
+                      "connectConfigurationId": {
+                        "type": "string"
+                      },
+                      "dc": {
+                        "type": "string"
+                      },
+                      "passive": {
+                        "type": "boolean"
+                      },
+                      "buildsEnabled": {
+                        "type": "boolean"
+                      },
+                      "aws": {
+                        "properties": {
+                          "subnetIds": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "securityGroupId": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "subnetIds",
+                          "securityGroupId"
+                        ],
+                        "type": "object"
+                      },
+                      "createdAt": {
+                        "type": "number"
+                      },
+                      "updatedAt": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "envId",
+                      "connectConfigurationId",
+                      "passive",
+                      "buildsEnabled",
+                      "createdAt",
+                      "updatedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": ""
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "regions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 4,
+                      "description": "The region of shared Secure Compute network to connect to.",
+                      "example": "iad1"
+                    },
+                    "minItems": 0,
+                    "maxItems": 3,
+                    "uniqueItems": true
+                  }
+                },
+                "required": [
+                  "regions"
+                ]
+              }
+            }
+          }
+        }
       }
     },
     "/v9/projects/{idOrName}/custom-environments": {
@@ -69565,6 +69789,7 @@
                             "limits-exceeded-suspended",
                             "limits-exceeded-suspended-store-count",
                             "initializing",
+                            "onboarding",
                             "uninstalled"
                           ]
                         },
@@ -69630,6 +69855,7 @@
                           "enum": [
                             "error",
                             "suspended",
+                            "onboarding",
                             "uninstalled",
                             "ready",
                             "pending",
@@ -69710,34 +69936,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "description": {
@@ -70420,34 +70646,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "description": {
@@ -70596,34 +70822,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8494": {
+                                                  "__@BRAND@8495": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8494"
+                                                  "__@BRAND@8495"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8494": {
+                                                  "__@BRAND@8495": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8494"
+                                                  "__@BRAND@8495"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8494": {
+                                                  "__@BRAND@8495": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8494"
+                                                  "__@BRAND@8495"
                                                 ]
                                               },
                                               "default": {
@@ -70940,12 +71166,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@8494": {
+                                                    "__@BRAND@8495": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@8494"
+                                                    "__@BRAND@8495"
                                                   ]
                                                 },
                                                 {
@@ -70953,12 +71179,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@8494": {
+                                                        "__@BRAND@8495": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@8494"
+                                                        "__@BRAND@8495"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -71030,34 +71256,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "description": {
@@ -71207,34 +71433,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "description": {
@@ -71365,12 +71591,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8494": {
+                                              "__@BRAND@8495": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8494"
+                                              "__@BRAND@8495"
                                             ]
                                           },
                                           "disabled": {
@@ -71619,12 +71845,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@8494": {
+                                "__@BRAND@8495": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@8494"
+                                "__@BRAND@8495"
                               ]
                             },
                             "disabled": {
@@ -79422,11 +79648,6 @@
       "NumberFromString": {
         "type": "string",
         "description": "a string to be decoded into a number"
-      },
-      "Dollars": {
-        "type": "number",
-        "description": "The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.",
-        "minimum": 0.01
       },
       "TldNotSupported": {
         "type": "object",

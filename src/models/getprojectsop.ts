@@ -46,6 +46,18 @@ export type ElasticConcurrencyEnabled = ClosedEnum<
   typeof ElasticConcurrencyEnabled
 >;
 
+/**
+ * Filter results by projects with Static IPs enabled
+ */
+export const StaticIpsEnabled = {
+  Zero: "0",
+  One: "1",
+} as const;
+/**
+ * Filter results by projects with Static IPs enabled
+ */
+export type StaticIpsEnabled = ClosedEnum<typeof StaticIpsEnabled>;
+
 export type GetProjectsRequest = {
   /**
    * Query only projects updated after the given timestamp or continuation token.
@@ -92,6 +104,10 @@ export type GetProjectsRequest = {
    * Filter results by projects with elastic concurrency enabled
    */
   elasticConcurrencyEnabled?: ElasticConcurrencyEnabled | undefined;
+  /**
+   * Filter results by projects with Static IPs enabled
+   */
+  staticIpsEnabled?: StaticIpsEnabled | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -2353,6 +2369,27 @@ export namespace ElasticConcurrencyEnabled$ {
 }
 
 /** @internal */
+export const StaticIpsEnabled$inboundSchema: z.ZodNativeEnum<
+  typeof StaticIpsEnabled
+> = z.nativeEnum(StaticIpsEnabled);
+
+/** @internal */
+export const StaticIpsEnabled$outboundSchema: z.ZodNativeEnum<
+  typeof StaticIpsEnabled
+> = StaticIpsEnabled$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StaticIpsEnabled$ {
+  /** @deprecated use `StaticIpsEnabled$inboundSchema` instead. */
+  export const inboundSchema = StaticIpsEnabled$inboundSchema;
+  /** @deprecated use `StaticIpsEnabled$outboundSchema` instead. */
+  export const outboundSchema = StaticIpsEnabled$outboundSchema;
+}
+
+/** @internal */
 export const GetProjectsRequest$inboundSchema: z.ZodType<
   GetProjectsRequest,
   z.ZodTypeDef,
@@ -2370,6 +2407,7 @@ export const GetProjectsRequest$inboundSchema: z.ZodType<
   edgeConfigTokenId: z.string().optional(),
   deprecated: z.boolean().optional(),
   elasticConcurrencyEnabled: ElasticConcurrencyEnabled$inboundSchema.optional(),
+  staticIpsEnabled: StaticIpsEnabled$inboundSchema.optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -2388,6 +2426,7 @@ export type GetProjectsRequest$Outbound = {
   edgeConfigTokenId?: string | undefined;
   deprecated?: boolean | undefined;
   elasticConcurrencyEnabled?: string | undefined;
+  staticIpsEnabled?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -2411,6 +2450,7 @@ export const GetProjectsRequest$outboundSchema: z.ZodType<
   deprecated: z.boolean().optional(),
   elasticConcurrencyEnabled: ElasticConcurrencyEnabled$outboundSchema
     .optional(),
+  staticIpsEnabled: StaticIpsEnabled$outboundSchema.optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

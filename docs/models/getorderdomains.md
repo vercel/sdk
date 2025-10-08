@@ -9,10 +9,10 @@
 const value: models.Domains1 = {
   purchaseType: "purchase",
   autoRenew: true,
-  domainName: "slight-spork.com",
-  status: "refunded",
-  price: 2038.65,
-  years: 3599.64,
+  years: 7534.4,
+  domainName: "taut-cauliflower.net",
+  status: "completed",
+  price: 3599.64,
 };
 ```
 
@@ -21,10 +21,10 @@ const value: models.Domains1 = {
 ```typescript
 const value: models.Domains2 = {
   purchaseType: "renewal",
-  domainName: "spiffy-glider.name",
-  status: "refunded",
-  price: 1365.02,
-  years: 8001.66,
+  years: 7846.54,
+  domainName: "hungry-mountain.net",
+  status: "pending",
+  price: 8001.66,
 };
 ```
 
@@ -34,10 +34,10 @@ const value: models.Domains2 = {
 const value: models.Domains3 = {
   purchaseType: "transfer",
   autoRenew: false,
-  domainName: "unlawful-gloom.biz",
+  years: 8949.87,
+  domainName: "hurtful-essence.name",
   status: "failed",
-  price: 4449.43,
-  years: 6459.45,
+  price: 6459.45,
 };
 ```
 

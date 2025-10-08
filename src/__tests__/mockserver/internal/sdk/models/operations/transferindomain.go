@@ -125,7 +125,7 @@ type TransferInDomainRequestBody struct {
 	AutoRenew bool `json:"autoRenew"`
 	// The number of years to renew the domain for once it is transferred in. This must be a valid number of transfer years for the TLD.
 	Years float64 `json:"years"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
+	// The expected price for the domain. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to retrieve the price data for a domain.
 	ExpectedPrice      float64                            `json:"expectedPrice"`
 	ContactInformation TransferInDomainContactInformation `json:"contactInformation"`
 }

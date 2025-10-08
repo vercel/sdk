@@ -37,6 +37,7 @@ type GetIntegrationResourceStatus string
 const (
 	GetIntegrationResourceStatusReady       GetIntegrationResourceStatus = "ready"
 	GetIntegrationResourceStatusPending     GetIntegrationResourceStatus = "pending"
+	GetIntegrationResourceStatusOnboarding  GetIntegrationResourceStatus = "onboarding"
 	GetIntegrationResourceStatusSuspended   GetIntegrationResourceStatus = "suspended"
 	GetIntegrationResourceStatusResumed     GetIntegrationResourceStatus = "resumed"
 	GetIntegrationResourceStatusUninstalled GetIntegrationResourceStatus = "uninstalled"
@@ -55,6 +56,8 @@ func (e *GetIntegrationResourceStatus) UnmarshalJSON(data []byte) error {
 	case "ready":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "onboarding":
 		fallthrough
 	case "suspended":
 		fallthrough

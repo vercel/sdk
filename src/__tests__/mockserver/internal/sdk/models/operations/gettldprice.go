@@ -30,11 +30,11 @@ type GetTldPriceResponseBody struct {
 	// The number of years the returned price is for.
 	Years float64 `json:"years"`
 	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-	PurchasePrice float64 `json:"purchasePrice"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-	RenewalPrice float64 `json:"renewalPrice"`
-	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
-	TransferPrice float64 `json:"transferPrice"`
+	PurchasePrice *float64 `json:"purchasePrice"`
+	// The base TLD price for renewing a domain for the given number of years. If null, the TLD does not support renewing domains for the given number of years.
+	RenewalPrice *float64 `json:"renewalPrice"`
+	// The base TLD price for transferring a domain in for the given number of years. If null, the TLD does not support transferring domains in for the given number of years.
+	TransferPrice *float64 `json:"transferPrice"`
 }
 
 func (o *GetTldPriceResponseBody) GetYears() float64 {
@@ -44,23 +44,23 @@ func (o *GetTldPriceResponseBody) GetYears() float64 {
 	return o.Years
 }
 
-func (o *GetTldPriceResponseBody) GetPurchasePrice() float64 {
+func (o *GetTldPriceResponseBody) GetPurchasePrice() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.PurchasePrice
 }
 
-func (o *GetTldPriceResponseBody) GetRenewalPrice() float64 {
+func (o *GetTldPriceResponseBody) GetRenewalPrice() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.RenewalPrice
 }
 
-func (o *GetTldPriceResponseBody) GetTransferPrice() float64 {
+func (o *GetTldPriceResponseBody) GetTransferPrice() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.TransferPrice
 }

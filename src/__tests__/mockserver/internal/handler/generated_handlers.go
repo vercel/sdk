@@ -120,6 +120,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}", pathPatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/projects/{idOrName}/protection-bypass", pathPatchV1ProjectsIDOrNameProtectionBypass(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/projects/{idOrName}/rolling-release/config", pathPatchV1ProjectsIDOrNameRollingReleaseConfig(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/projects/{idOrName}/shared-connect-links", pathPatchV1ProjectsIDOrNameSharedConnectLinks(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/security/firewall/config", pathPatchV1SecurityFirewallConfig(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/teams/{teamId}/members/{uid}", pathPatchV1TeamsTeamIDMembersUID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v12/deployments/{id}/cancel", pathPatchV12DeploymentsIDCancel(dir, rt)),

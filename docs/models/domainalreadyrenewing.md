@@ -1,5 +1,7 @@
 # DomainAlreadyRenewing
 
+The domain is already renewing.
+
 ## Example Usage
 
 ```typescript
@@ -15,4 +17,3 @@ import { DomainAlreadyRenewing } from "@vercel/sdk/models/domainalreadyrenewing.
 | `status`                                                                   | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
 | `code`                                                                     | [models.DomainAlreadyRenewingCode](../models/domainalreadyrenewingcode.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `message`                                                                  | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `tag`                                                                      | [models.DomainAlreadyRenewingTag](../models/domainalreadyrenewingtag.md)   | :heavy_check_mark:                                                         | N/A                                                                        |

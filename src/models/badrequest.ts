@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,15 @@ export const BadRequestCode = {
 } as const;
 export type BadRequestCode = ClosedEnum<typeof BadRequestCode>;
 
-export const BadRequestTag = {
-  BadRequest: "BadRequest",
-} as const;
-export type BadRequestTag = ClosedEnum<typeof BadRequestTag>;
-
 export type BadRequestData = {
   status: number;
   code: BadRequestCode;
   message: string;
-  tag: BadRequestTag;
 };
 
 export class BadRequest extends VercelError {
   status: number;
   code: BadRequestCode;
-  tag: BadRequestTag;
 
   /** The original data that was passed to this error instance. */
   data$: BadRequestData;
@@ -41,7 +33,6 @@ export class BadRequest extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "BadRequest";
   }
@@ -69,27 +60,6 @@ export namespace BadRequestCode$ {
 }
 
 /** @internal */
-export const BadRequestTag$inboundSchema: z.ZodNativeEnum<
-  typeof BadRequestTag
-> = z.nativeEnum(BadRequestTag);
-
-/** @internal */
-export const BadRequestTag$outboundSchema: z.ZodNativeEnum<
-  typeof BadRequestTag
-> = BadRequestTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BadRequestTag$ {
-  /** @deprecated use `BadRequestTag$inboundSchema` instead. */
-  export const inboundSchema = BadRequestTag$inboundSchema;
-  /** @deprecated use `BadRequestTag$outboundSchema` instead. */
-  export const outboundSchema = BadRequestTag$outboundSchema;
-}
-
-/** @internal */
 export const BadRequest$inboundSchema: z.ZodType<
   BadRequest,
   z.ZodTypeDef,
@@ -98,17 +68,12 @@ export const BadRequest$inboundSchema: z.ZodType<
   status: z.number(),
   code: BadRequestCode$inboundSchema,
   message: z.string(),
-  _tag: BadRequestTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new BadRequest(remapped, {
+    return new BadRequest(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +85,6 @@ export type BadRequest$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +94,11 @@ export const BadRequest$outboundSchema: z.ZodType<
   BadRequest
 > = z.instanceof(BadRequest)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: BadRequestCode$outboundSchema,
-      message: z.string(),
-      tag: BadRequestTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: BadRequestCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

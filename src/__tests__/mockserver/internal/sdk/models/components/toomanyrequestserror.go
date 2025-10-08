@@ -75,26 +75,3 @@ func (o *Limit) GetReset() float64 {
 	}
 	return o.Reset
 }
-
-type TooManyRequestsTag string
-
-const (
-	TooManyRequestsTagTooManyRequests TooManyRequestsTag = "TooManyRequests"
-)
-
-func (e TooManyRequestsTag) ToPointer() *TooManyRequestsTag {
-	return &e
-}
-func (e *TooManyRequestsTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "TooManyRequests":
-		*e = TooManyRequestsTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TooManyRequestsTag: %v", v)
-	}
-}

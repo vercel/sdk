@@ -48,10 +48,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get price data for a specific TLD
+ * Get TLD price data
  *
  * @remarks
- * Get TLD price data
+ * Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.
  */
 export function domainsRegistrarGetTldPrice(
   client: VercelCore,

@@ -12,9 +12,9 @@ const args = {
 
 export const tool$domainsCreateOrTransferDomain: ToolDefinition<typeof args> = {
   name: "domains-create-or-transfer-domain",
-  description: `Register or transfer-in a new Domain
+  description: `Add an existing domain to the Vercel platform
 
-This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.`,
+This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please use the endpoint [Transfer-in a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsCreateOrTransferDomain(

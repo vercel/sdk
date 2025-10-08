@@ -3,8 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
-import { ClosedEnum } from "../types/enums.js";
 import {
   Issue,
   Issue$inboundSchema,
@@ -13,18 +11,12 @@ import {
 } from "./issue.js";
 import { VercelError } from "./vercelerror.js";
 
-export const HttpApiDecodeErrorTag = {
-  HttpApiDecodeError: "HttpApiDecodeError",
-} as const;
-export type HttpApiDecodeErrorTag = ClosedEnum<typeof HttpApiDecodeErrorTag>;
-
 /**
  * The request did not match the expected schema
  */
 export type HttpApiDecodeErrorData = {
   issues: Array<Issue>;
   message: string;
-  tag: HttpApiDecodeErrorTag;
 };
 
 /**
@@ -32,7 +24,6 @@ export type HttpApiDecodeErrorData = {
  */
 export class HttpApiDecodeError extends VercelError {
   issues: Array<Issue>;
-  tag: HttpApiDecodeErrorTag;
 
   /** The original data that was passed to this error instance. */
   data$: HttpApiDecodeErrorData;
@@ -45,31 +36,9 @@ export class HttpApiDecodeError extends VercelError {
     super(message, httpMeta);
     this.data$ = err;
     this.issues = err.issues;
-    this.tag = err.tag;
 
     this.name = "HttpApiDecodeError";
   }
-}
-
-/** @internal */
-export const HttpApiDecodeErrorTag$inboundSchema: z.ZodNativeEnum<
-  typeof HttpApiDecodeErrorTag
-> = z.nativeEnum(HttpApiDecodeErrorTag);
-
-/** @internal */
-export const HttpApiDecodeErrorTag$outboundSchema: z.ZodNativeEnum<
-  typeof HttpApiDecodeErrorTag
-> = HttpApiDecodeErrorTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HttpApiDecodeErrorTag$ {
-  /** @deprecated use `HttpApiDecodeErrorTag$inboundSchema` instead. */
-  export const inboundSchema = HttpApiDecodeErrorTag$inboundSchema;
-  /** @deprecated use `HttpApiDecodeErrorTag$outboundSchema` instead. */
-  export const outboundSchema = HttpApiDecodeErrorTag$outboundSchema;
 }
 
 /** @internal */
@@ -80,17 +49,12 @@ export const HttpApiDecodeError$inboundSchema: z.ZodType<
 > = z.object({
   issues: z.array(Issue$inboundSchema),
   message: z.string(),
-  _tag: HttpApiDecodeErrorTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new HttpApiDecodeError(remapped, {
+    return new HttpApiDecodeError(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -101,7 +65,6 @@ export const HttpApiDecodeError$inboundSchema: z.ZodType<
 export type HttpApiDecodeError$Outbound = {
   issues: Array<Issue$Outbound>;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -111,17 +74,10 @@ export const HttpApiDecodeError$outboundSchema: z.ZodType<
   HttpApiDecodeError
 > = z.instanceof(HttpApiDecodeError)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      issues: z.array(Issue$outboundSchema),
-      message: z.string(),
-      tag: HttpApiDecodeErrorTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    issues: z.array(Issue$outboundSchema),
+    message: z.string(),
+  }));
 
 /**
  * @internal

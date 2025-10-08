@@ -30,10 +30,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Check the price for a domain
+ * Check the price for a domain (deprecated)
  *
  * @remarks
- * Check the price to purchase a domain and how long a single purchase period is.
+ * This endpoint is deprecated and replaced with the endpoint [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain). Check the price to purchase a domain and how long a single purchase period is.
  */
 export function domainsCheckDomainPrice(
   client: VercelCore,

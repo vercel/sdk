@@ -94,28 +94,28 @@ func (u BuyDomainsForbidden) Error() string {
 type BuyDomainsBadRequestType string
 
 const (
-	BuyDomainsBadRequestTypeHTTPAPIDecodeError                 BuyDomainsBadRequestType = "HttpApiDecodeError"
-	BuyDomainsBadRequestTypeTldNotSupportedError               BuyDomainsBadRequestType = "TldNotSupported_error"
-	BuyDomainsBadRequestTypeDomainNotAvailableError            BuyDomainsBadRequestType = "DomainNotAvailable_error"
-	BuyDomainsBadRequestTypeExpectedPriceMismatchError         BuyDomainsBadRequestType = "ExpectedPriceMismatch_error"
-	BuyDomainsBadRequestTypeDuplicateDomainsError              BuyDomainsBadRequestType = "DuplicateDomains_error"
-	BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError BuyDomainsBadRequestType = "AdditionalContactInfoRequired_error"
-	BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError  BuyDomainsBadRequestType = "InvalidAdditionalContactInfo_error"
-	BuyDomainsBadRequestTypeTooManyDomainsError                BuyDomainsBadRequestType = "TooManyDomains_error"
 	BuyDomainsBadRequestTypeOrderTooExpensiveError             BuyDomainsBadRequestType = "OrderTooExpensive_error"
+	BuyDomainsBadRequestTypeTooManyDomainsError                BuyDomainsBadRequestType = "TooManyDomains_error"
+	BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError  BuyDomainsBadRequestType = "InvalidAdditionalContactInfo_error"
+	BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError BuyDomainsBadRequestType = "AdditionalContactInfoRequired_error"
+	BuyDomainsBadRequestTypeDuplicateDomainsError              BuyDomainsBadRequestType = "DuplicateDomains_error"
+	BuyDomainsBadRequestTypeExpectedPriceMismatchError         BuyDomainsBadRequestType = "ExpectedPriceMismatch_error"
+	BuyDomainsBadRequestTypeDomainNotAvailableError            BuyDomainsBadRequestType = "DomainNotAvailable_error"
+	BuyDomainsBadRequestTypeTldNotSupportedError               BuyDomainsBadRequestType = "TldNotSupported_error"
+	BuyDomainsBadRequestTypeHTTPAPIDecodeError                 BuyDomainsBadRequestType = "HttpApiDecodeError"
 )
 
 // BuyDomainsBadRequest - There was something wrong with the request
 type BuyDomainsBadRequest struct {
-	HTTPAPIDecodeError                 *HTTPAPIDecodeError                 `queryParam:"inline"`
-	TldNotSupportedError               *TldNotSupportedError               `queryParam:"inline"`
-	DomainNotAvailableError            *DomainNotAvailableError            `queryParam:"inline"`
-	ExpectedPriceMismatchError         *ExpectedPriceMismatchError         `queryParam:"inline"`
-	DuplicateDomainsError              *DuplicateDomainsError              `queryParam:"inline"`
-	AdditionalContactInfoRequiredError *AdditionalContactInfoRequiredError `queryParam:"inline"`
-	InvalidAdditionalContactInfoError  *InvalidAdditionalContactInfoError  `queryParam:"inline"`
-	TooManyDomainsError                *TooManyDomainsError                `queryParam:"inline"`
 	OrderTooExpensiveError             *OrderTooExpensiveError             `queryParam:"inline"`
+	TooManyDomainsError                *TooManyDomainsError                `queryParam:"inline"`
+	InvalidAdditionalContactInfoError  *InvalidAdditionalContactInfoError  `queryParam:"inline"`
+	AdditionalContactInfoRequiredError *AdditionalContactInfoRequiredError `queryParam:"inline"`
+	DuplicateDomainsError              *DuplicateDomainsError              `queryParam:"inline"`
+	ExpectedPriceMismatchError         *ExpectedPriceMismatchError         `queryParam:"inline"`
+	DomainNotAvailableError            *DomainNotAvailableError            `queryParam:"inline"`
+	TldNotSupportedError               *TldNotSupportedError               `queryParam:"inline"`
+	HTTPAPIDecodeError                 *HTTPAPIDecodeError                 `queryParam:"inline"`
 
 	Type BuyDomainsBadRequestType
 
@@ -124,66 +124,12 @@ type BuyDomainsBadRequest struct {
 
 var _ error = &BuyDomainsBadRequest{}
 
-func CreateBuyDomainsBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeHTTPAPIDecodeError
+func CreateBuyDomainsBadRequestOrderTooExpensiveError(orderTooExpensiveError OrderTooExpensiveError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeOrderTooExpensiveError
 
 	return BuyDomainsBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
-
-func CreateBuyDomainsBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeTldNotSupportedError
-
-	return BuyDomainsBadRequest{
-		TldNotSupportedError: &tldNotSupportedError,
-		Type:                 typ,
-	}
-}
-
-func CreateBuyDomainsBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeDomainNotAvailableError
-
-	return BuyDomainsBadRequest{
-		DomainNotAvailableError: &domainNotAvailableError,
-		Type:                    typ,
-	}
-}
-
-func CreateBuyDomainsBadRequestExpectedPriceMismatchError(expectedPriceMismatchError ExpectedPriceMismatchError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeExpectedPriceMismatchError
-
-	return BuyDomainsBadRequest{
-		ExpectedPriceMismatchError: &expectedPriceMismatchError,
-		Type:                       typ,
-	}
-}
-
-func CreateBuyDomainsBadRequestDuplicateDomainsError(duplicateDomainsError DuplicateDomainsError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeDuplicateDomainsError
-
-	return BuyDomainsBadRequest{
-		DuplicateDomainsError: &duplicateDomainsError,
-		Type:                  typ,
-	}
-}
-
-func CreateBuyDomainsBadRequestAdditionalContactInfoRequiredError(additionalContactInfoRequiredError AdditionalContactInfoRequiredError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError
-
-	return BuyDomainsBadRequest{
-		AdditionalContactInfoRequiredError: &additionalContactInfoRequiredError,
-		Type:                               typ,
-	}
-}
-
-func CreateBuyDomainsBadRequestInvalidAdditionalContactInfoError(invalidAdditionalContactInfoError InvalidAdditionalContactInfoError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError
-
-	return BuyDomainsBadRequest{
-		InvalidAdditionalContactInfoError: &invalidAdditionalContactInfoError,
-		Type:                              typ,
+		OrderTooExpensiveError: &orderTooExpensiveError,
+		Type:                   typ,
 	}
 }
 
@@ -196,63 +142,75 @@ func CreateBuyDomainsBadRequestTooManyDomainsError(tooManyDomainsError TooManyDo
 	}
 }
 
-func CreateBuyDomainsBadRequestOrderTooExpensiveError(orderTooExpensiveError OrderTooExpensiveError) BuyDomainsBadRequest {
-	typ := BuyDomainsBadRequestTypeOrderTooExpensiveError
+func CreateBuyDomainsBadRequestInvalidAdditionalContactInfoError(invalidAdditionalContactInfoError InvalidAdditionalContactInfoError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError
 
 	return BuyDomainsBadRequest{
-		OrderTooExpensiveError: &orderTooExpensiveError,
-		Type:                   typ,
+		InvalidAdditionalContactInfoError: &invalidAdditionalContactInfoError,
+		Type:                              typ,
+	}
+}
+
+func CreateBuyDomainsBadRequestAdditionalContactInfoRequiredError(additionalContactInfoRequiredError AdditionalContactInfoRequiredError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError
+
+	return BuyDomainsBadRequest{
+		AdditionalContactInfoRequiredError: &additionalContactInfoRequiredError,
+		Type:                               typ,
+	}
+}
+
+func CreateBuyDomainsBadRequestDuplicateDomainsError(duplicateDomainsError DuplicateDomainsError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeDuplicateDomainsError
+
+	return BuyDomainsBadRequest{
+		DuplicateDomainsError: &duplicateDomainsError,
+		Type:                  typ,
+	}
+}
+
+func CreateBuyDomainsBadRequestExpectedPriceMismatchError(expectedPriceMismatchError ExpectedPriceMismatchError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeExpectedPriceMismatchError
+
+	return BuyDomainsBadRequest{
+		ExpectedPriceMismatchError: &expectedPriceMismatchError,
+		Type:                       typ,
+	}
+}
+
+func CreateBuyDomainsBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeDomainNotAvailableError
+
+	return BuyDomainsBadRequest{
+		DomainNotAvailableError: &domainNotAvailableError,
+		Type:                    typ,
+	}
+}
+
+func CreateBuyDomainsBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeTldNotSupportedError
+
+	return BuyDomainsBadRequest{
+		TldNotSupportedError: &tldNotSupportedError,
+		Type:                 typ,
+	}
+}
+
+func CreateBuyDomainsBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeHTTPAPIDecodeError
+
+	return BuyDomainsBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
 }
 
 func (u *BuyDomainsBadRequest) UnmarshalJSON(data []byte) error {
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = BuyDomainsBadRequestTypeHTTPAPIDecodeError
-		return nil
-	}
-
-	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
-	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
-		u.TldNotSupportedError = &tldNotSupportedError
-		u.Type = BuyDomainsBadRequestTypeTldNotSupportedError
-		return nil
-	}
-
-	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
-	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
-		u.DomainNotAvailableError = &domainNotAvailableError
-		u.Type = BuyDomainsBadRequestTypeDomainNotAvailableError
-		return nil
-	}
-
-	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
-	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
-		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
-		u.Type = BuyDomainsBadRequestTypeExpectedPriceMismatchError
-		return nil
-	}
-
-	var duplicateDomainsError DuplicateDomainsError = DuplicateDomainsError{}
-	if err := utils.UnmarshalJSON(data, &duplicateDomainsError, "", true, nil); err == nil {
-		u.DuplicateDomainsError = &duplicateDomainsError
-		u.Type = BuyDomainsBadRequestTypeDuplicateDomainsError
-		return nil
-	}
-
-	var additionalContactInfoRequiredError AdditionalContactInfoRequiredError = AdditionalContactInfoRequiredError{}
-	if err := utils.UnmarshalJSON(data, &additionalContactInfoRequiredError, "", true, nil); err == nil {
-		u.AdditionalContactInfoRequiredError = &additionalContactInfoRequiredError
-		u.Type = BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError
-		return nil
-	}
-
-	var invalidAdditionalContactInfoError InvalidAdditionalContactInfoError = InvalidAdditionalContactInfoError{}
-	if err := utils.UnmarshalJSON(data, &invalidAdditionalContactInfoError, "", true, nil); err == nil {
-		u.InvalidAdditionalContactInfoError = &invalidAdditionalContactInfoError
-		u.Type = BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError
+	var orderTooExpensiveError OrderTooExpensiveError = OrderTooExpensiveError{}
+	if err := utils.UnmarshalJSON(data, &orderTooExpensiveError, "", true, nil); err == nil {
+		u.OrderTooExpensiveError = &orderTooExpensiveError
+		u.Type = BuyDomainsBadRequestTypeOrderTooExpensiveError
 		return nil
 	}
 
@@ -263,10 +221,52 @@ func (u *BuyDomainsBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var orderTooExpensiveError OrderTooExpensiveError = OrderTooExpensiveError{}
-	if err := utils.UnmarshalJSON(data, &orderTooExpensiveError, "", true, nil); err == nil {
-		u.OrderTooExpensiveError = &orderTooExpensiveError
-		u.Type = BuyDomainsBadRequestTypeOrderTooExpensiveError
+	var invalidAdditionalContactInfoError InvalidAdditionalContactInfoError = InvalidAdditionalContactInfoError{}
+	if err := utils.UnmarshalJSON(data, &invalidAdditionalContactInfoError, "", true, nil); err == nil {
+		u.InvalidAdditionalContactInfoError = &invalidAdditionalContactInfoError
+		u.Type = BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError
+		return nil
+	}
+
+	var additionalContactInfoRequiredError AdditionalContactInfoRequiredError = AdditionalContactInfoRequiredError{}
+	if err := utils.UnmarshalJSON(data, &additionalContactInfoRequiredError, "", true, nil); err == nil {
+		u.AdditionalContactInfoRequiredError = &additionalContactInfoRequiredError
+		u.Type = BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError
+		return nil
+	}
+
+	var duplicateDomainsError DuplicateDomainsError = DuplicateDomainsError{}
+	if err := utils.UnmarshalJSON(data, &duplicateDomainsError, "", true, nil); err == nil {
+		u.DuplicateDomainsError = &duplicateDomainsError
+		u.Type = BuyDomainsBadRequestTypeDuplicateDomainsError
+		return nil
+	}
+
+	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
+	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
+		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
+		u.Type = BuyDomainsBadRequestTypeExpectedPriceMismatchError
+		return nil
+	}
+
+	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
+	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
+		u.DomainNotAvailableError = &domainNotAvailableError
+		u.Type = BuyDomainsBadRequestTypeDomainNotAvailableError
+		return nil
+	}
+
+	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
+	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
+		u.TldNotSupportedError = &tldNotSupportedError
+		u.Type = BuyDomainsBadRequestTypeTldNotSupportedError
+		return nil
+	}
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = BuyDomainsBadRequestTypeHTTPAPIDecodeError
 		return nil
 	}
 
@@ -274,40 +274,40 @@ func (u *BuyDomainsBadRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u BuyDomainsBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
-	if u.TldNotSupportedError != nil {
-		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
-	}
-
-	if u.DomainNotAvailableError != nil {
-		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
-	}
-
-	if u.ExpectedPriceMismatchError != nil {
-		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
-	}
-
-	if u.DuplicateDomainsError != nil {
-		return utils.MarshalJSON(u.DuplicateDomainsError, "", true)
-	}
-
-	if u.AdditionalContactInfoRequiredError != nil {
-		return utils.MarshalJSON(u.AdditionalContactInfoRequiredError, "", true)
-	}
-
-	if u.InvalidAdditionalContactInfoError != nil {
-		return utils.MarshalJSON(u.InvalidAdditionalContactInfoError, "", true)
+	if u.OrderTooExpensiveError != nil {
+		return utils.MarshalJSON(u.OrderTooExpensiveError, "", true)
 	}
 
 	if u.TooManyDomainsError != nil {
 		return utils.MarshalJSON(u.TooManyDomainsError, "", true)
 	}
 
-	if u.OrderTooExpensiveError != nil {
-		return utils.MarshalJSON(u.OrderTooExpensiveError, "", true)
+	if u.InvalidAdditionalContactInfoError != nil {
+		return utils.MarshalJSON(u.InvalidAdditionalContactInfoError, "", true)
+	}
+
+	if u.AdditionalContactInfoRequiredError != nil {
+		return utils.MarshalJSON(u.AdditionalContactInfoRequiredError, "", true)
+	}
+
+	if u.DuplicateDomainsError != nil {
+		return utils.MarshalJSON(u.DuplicateDomainsError, "", true)
+	}
+
+	if u.ExpectedPriceMismatchError != nil {
+		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
+	}
+
+	if u.DomainNotAvailableError != nil {
+		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
+	}
+
+	if u.TldNotSupportedError != nil {
+		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type BuyDomainsBadRequest: all fields are null")
@@ -315,32 +315,32 @@ func (u BuyDomainsBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u BuyDomainsBadRequest) Error() string {
 	switch u.Type {
-	case BuyDomainsBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
-	case BuyDomainsBadRequestTypeTldNotSupportedError:
-		data, _ := json.Marshal(u.TldNotSupportedError)
-		return string(data)
-	case BuyDomainsBadRequestTypeDomainNotAvailableError:
-		data, _ := json.Marshal(u.DomainNotAvailableError)
-		return string(data)
-	case BuyDomainsBadRequestTypeExpectedPriceMismatchError:
-		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
-		return string(data)
-	case BuyDomainsBadRequestTypeDuplicateDomainsError:
-		data, _ := json.Marshal(u.DuplicateDomainsError)
-		return string(data)
-	case BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError:
-		data, _ := json.Marshal(u.AdditionalContactInfoRequiredError)
-		return string(data)
-	case BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError:
-		data, _ := json.Marshal(u.InvalidAdditionalContactInfoError)
+	case BuyDomainsBadRequestTypeOrderTooExpensiveError:
+		data, _ := json.Marshal(u.OrderTooExpensiveError)
 		return string(data)
 	case BuyDomainsBadRequestTypeTooManyDomainsError:
 		data, _ := json.Marshal(u.TooManyDomainsError)
 		return string(data)
-	case BuyDomainsBadRequestTypeOrderTooExpensiveError:
-		data, _ := json.Marshal(u.OrderTooExpensiveError)
+	case BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError:
+		data, _ := json.Marshal(u.InvalidAdditionalContactInfoError)
+		return string(data)
+	case BuyDomainsBadRequestTypeAdditionalContactInfoRequiredError:
+		data, _ := json.Marshal(u.AdditionalContactInfoRequiredError)
+		return string(data)
+	case BuyDomainsBadRequestTypeDuplicateDomainsError:
+		data, _ := json.Marshal(u.DuplicateDomainsError)
+		return string(data)
+	case BuyDomainsBadRequestTypeExpectedPriceMismatchError:
+		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
+		return string(data)
+	case BuyDomainsBadRequestTypeDomainNotAvailableError:
+		data, _ := json.Marshal(u.DomainNotAvailableError)
+		return string(data)
+	case BuyDomainsBadRequestTypeTldNotSupportedError:
+		data, _ := json.Marshal(u.TldNotSupportedError)
+		return string(data)
+	case BuyDomainsBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

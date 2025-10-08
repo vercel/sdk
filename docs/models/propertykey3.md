@@ -15,7 +15,7 @@ let value: PropertyKey3 = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `tag`                                                | [models.PropertyKeyTag](../models/propertykeytag.md) | :heavy_check_mark:                                   | N/A                                                  |
-| `key`                                                | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `tag`                          | [models.Tag](../models/tag.md) | :heavy_check_mark:             | N/A                            |
+| `key`                          | *string*                       | :heavy_check_mark:             | N/A                            |

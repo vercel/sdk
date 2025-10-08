@@ -9,10 +9,12 @@ import (
 )
 
 type BuyDomainsDomain struct {
-	DomainName string  `json:"domainName"`
-	AutoRenew  bool    `json:"autoRenew"`
-	Years      float64 `json:"years"`
-	// Represents a monetary amount in USD dollars
+	DomainName string `json:"domainName"`
+	// Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
+	AutoRenew bool `json:"autoRenew"`
+	// The number of years to purchase the domain for.
+	Years float64 `json:"years"`
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	ExpectedPrice float64 `json:"expectedPrice"`
 }
 
@@ -47,6 +49,7 @@ func (o *BuyDomainsDomain) GetExpectedPrice() float64 {
 type BuyDomainsAdditional struct {
 }
 
+// BuyDomainsContactInformation - The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
 type BuyDomainsContactInformation struct {
 	// a non empty string
 	FirstName string `json:"firstName"`
@@ -167,7 +170,8 @@ func (o *BuyDomainsContactInformation) GetAdditional() *BuyDomainsAdditional {
 }
 
 type BuyDomainsRequest struct {
-	Domains            []BuyDomainsDomain           `json:"domains"`
+	Domains []BuyDomainsDomain `json:"domains"`
+	// The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
 	ContactInformation BuyDomainsContactInformation `json:"contactInformation"`
 }
 

@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -14,22 +13,15 @@ export type InternalServerErrorCode = ClosedEnum<
   typeof InternalServerErrorCode
 >;
 
-export const InternalServerErrorTag = {
-  InternalServerError: "InternalServerError",
-} as const;
-export type InternalServerErrorTag = ClosedEnum<typeof InternalServerErrorTag>;
-
 export type InternalServerErrorData = {
   status: number;
   code: InternalServerErrorCode;
   message: string;
-  tag: InternalServerErrorTag;
 };
 
 export class InternalServerError extends VercelError {
   status: number;
   code: InternalServerErrorCode;
-  tag: InternalServerErrorTag;
 
   /** The original data that was passed to this error instance. */
   data$: InternalServerErrorData;
@@ -43,7 +35,6 @@ export class InternalServerError extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "InternalServerError";
   }
@@ -71,27 +62,6 @@ export namespace InternalServerErrorCode$ {
 }
 
 /** @internal */
-export const InternalServerErrorTag$inboundSchema: z.ZodNativeEnum<
-  typeof InternalServerErrorTag
-> = z.nativeEnum(InternalServerErrorTag);
-
-/** @internal */
-export const InternalServerErrorTag$outboundSchema: z.ZodNativeEnum<
-  typeof InternalServerErrorTag
-> = InternalServerErrorTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InternalServerErrorTag$ {
-  /** @deprecated use `InternalServerErrorTag$inboundSchema` instead. */
-  export const inboundSchema = InternalServerErrorTag$inboundSchema;
-  /** @deprecated use `InternalServerErrorTag$outboundSchema` instead. */
-  export const outboundSchema = InternalServerErrorTag$outboundSchema;
-}
-
-/** @internal */
 export const InternalServerError$inboundSchema: z.ZodType<
   InternalServerError,
   z.ZodTypeDef,
@@ -100,17 +70,12 @@ export const InternalServerError$inboundSchema: z.ZodType<
   status: z.number(),
   code: InternalServerErrorCode$inboundSchema,
   message: z.string(),
-  _tag: InternalServerErrorTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new InternalServerError(remapped, {
+    return new InternalServerError(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -122,7 +87,6 @@ export type InternalServerError$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -132,18 +96,11 @@ export const InternalServerError$outboundSchema: z.ZodType<
   InternalServerError
 > = z.instanceof(InternalServerError)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: InternalServerErrorCode$outboundSchema,
-      message: z.string(),
-      tag: InternalServerErrorTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: InternalServerErrorCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// DomainNotRegisteredError - The domain is not registered with Vercel.
 type DomainNotRegisteredError struct {
 	Status   float64                            `json:"status"`
 	Code     components.DomainNotRegisteredCode `json:"code"`
 	Message  string                             `json:"message"`
-	Tag      components.DomainNotRegisteredTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata            `json:"-"`
 }
 

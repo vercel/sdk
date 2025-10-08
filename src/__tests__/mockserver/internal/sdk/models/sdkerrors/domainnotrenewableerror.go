@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// DomainNotRenewableError - The domain is not renewable.
 type DomainNotRenewableError struct {
 	Status   float64                           `json:"status"`
 	Code     components.DomainNotRenewableCode `json:"code"`
 	Message  string                            `json:"message"`
-	Tag      components.DomainNotRenewableTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata           `json:"-"`
 }
 

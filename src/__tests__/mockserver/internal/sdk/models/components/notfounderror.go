@@ -29,26 +29,3 @@ func (e *NotFoundCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for NotFoundCode: %v", v)
 	}
 }
-
-type NotFoundTag string
-
-const (
-	NotFoundTagNotFound NotFoundTag = "NotFound"
-)
-
-func (e NotFoundTag) ToPointer() *NotFoundTag {
-	return &e
-}
-func (e *NotFoundTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "NotFound":
-		*e = NotFoundTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NotFoundTag: %v", v)
-	}
-}

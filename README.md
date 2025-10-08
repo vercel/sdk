@@ -362,34 +362,34 @@ run();
 
 ### [domains](docs/sdks/domains/README.md)
 
-* [buyDomain](docs/sdks/domains/README.md#buydomain) - Purchase a domain
-* [checkDomainPrice](docs/sdks/domains/README.md#checkdomainprice) - Check the price for a domain
-* [checkDomainStatus](docs/sdks/domains/README.md#checkdomainstatus) - Check a Domain Availability
-* [getDomainTransfer](docs/sdks/domains/README.md#getdomaintransfer) - Get domain transfer info.
+* [buyDomain](docs/sdks/domains/README.md#buydomain) - Purchase a domain (deprecated)
+* [checkDomainPrice](docs/sdks/domains/README.md#checkdomainprice) - Check the price for a domain (deprecated)
+* [checkDomainStatus](docs/sdks/domains/README.md#checkdomainstatus) - Check a Domain Availability (deprecated)
+* [getDomainTransfer](docs/sdks/domains/README.md#getdomaintransfer) - Get domain transfer info (deprecated)
 * [getDomainConfig](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
 * [getDomain](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 * [getDomains](docs/sdks/domains/README.md#getdomains) - List all the domains
-* [createOrTransferDomain](docs/sdks/domains/README.md#createortransferdomain) - Register or transfer-in a new Domain
+* [createOrTransferDomain](docs/sdks/domains/README.md#createortransferdomain) - Add an existing domain to the Vercel platform
 * [patchDomain](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
 * [deleteDomain](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 
 ### [domainsRegistrar](docs/sdks/domainsregistrar/README.md)
 
-* [getSupportedTlds](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get a list of TLDs supported by Vercel
-* [getTldPrice](docs/sdks/domainsregistrar/README.md#gettldprice) - Get price data for a specific TLD
-* [getDomainAvailability](docs/sdks/domainsregistrar/README.md#getdomainavailability) - Get availability for a specific domain
-* [getDomainPrice](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a specific domain
+* [getSupportedTlds](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get supported TLDs
+* [getTldPrice](docs/sdks/domainsregistrar/README.md#gettldprice) - Get TLD price data
+* [getDomainAvailability](docs/sdks/domainsregistrar/README.md#getdomainavailability) - Get availability for a domain
+* [getDomainPrice](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a domain
 * [getBulkAvailability](docs/sdks/domainsregistrar/README.md#getbulkavailability) - Get availability for multiple domains
 * [getDomainAuthCode](docs/sdks/domainsregistrar/README.md#getdomainauthcode) - Get the auth code for a domain
 * [buySingleDomain](docs/sdks/domainsregistrar/README.md#buysingledomain) - Buy a domain
-* [buyDomains](docs/sdks/domainsregistrar/README.md#buydomains) - Buy multiple domains at once
-* [transferInDomain](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer a domain in from another registrar
-* [getDomainTransferIn](docs/sdks/domainsregistrar/README.md#getdomaintransferin) - Get the transfer status for a domain
+* [buyDomains](docs/sdks/domainsregistrar/README.md#buydomains) - Buy multiple domains
+* [transferInDomain](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer-in a domain
+* [getDomainTransferIn](docs/sdks/domainsregistrar/README.md#getdomaintransferin) - Get a domain's transfer status
 * [renewDomain](docs/sdks/domainsregistrar/README.md#renewdomain) - Renew a domain
-* [updateDomainAutoRenew](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update the auto-renew setting for a domain
-* [updateDomainNameservers](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update the nameservers for a domain
-* [getContactInfoSchema](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get the schema for the tld-specific contact information for a domain
-* [getOrder](docs/sdks/domainsregistrar/README.md#getorder) - Get information about a domain order by its ID
+* [updateDomainAutoRenew](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update auto-renew for a domain
+* [updateDomainNameservers](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update nameservers for a domain
+* [getContactInfoSchema](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get contact info schema
+* [getOrder](docs/sdks/domainsregistrar/README.md#getorder) - Get a domain order
 
 ### [edgeCache](docs/sdks/edgecache/README.md)
 
@@ -622,31 +622,31 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dnsGetRecords`](docs/sdks/dns/README.md#getrecords) - List existing DNS records
 - [`dnsRemoveRecord`](docs/sdks/dns/README.md#removerecord) - Delete a DNS record
 - [`dnsUpdateRecord`](docs/sdks/dns/README.md#updaterecord) - Update an existing DNS record
-- [`domainsBuyDomain`](docs/sdks/domains/README.md#buydomain) - Purchase a domain
-- [`domainsCheckDomainPrice`](docs/sdks/domains/README.md#checkdomainprice) - Check the price for a domain
-- [`domainsCheckDomainStatus`](docs/sdks/domains/README.md#checkdomainstatus) - Check a Domain Availability
-- [`domainsCreateOrTransferDomain`](docs/sdks/domains/README.md#createortransferdomain) - Register or transfer-in a new Domain
+- [`domainsBuyDomain`](docs/sdks/domains/README.md#buydomain) - Purchase a domain (deprecated)
+- [`domainsCheckDomainPrice`](docs/sdks/domains/README.md#checkdomainprice) - Check the price for a domain (deprecated)
+- [`domainsCheckDomainStatus`](docs/sdks/domains/README.md#checkdomainstatus) - Check a Domain Availability (deprecated)
+- [`domainsCreateOrTransferDomain`](docs/sdks/domains/README.md#createortransferdomain) - Add an existing domain to the Vercel platform
 - [`domainsDeleteDomain`](docs/sdks/domains/README.md#deletedomain) - Remove a domain by name
 - [`domainsGetDomain`](docs/sdks/domains/README.md#getdomain) - Get Information for a Single Domain
 - [`domainsGetDomainConfig`](docs/sdks/domains/README.md#getdomainconfig) - Get a Domain's configuration
 - [`domainsGetDomains`](docs/sdks/domains/README.md#getdomains) - List all the domains
-- [`domainsGetDomainTransfer`](docs/sdks/domains/README.md#getdomaintransfer) - Get domain transfer info.
+- [`domainsGetDomainTransfer`](docs/sdks/domains/README.md#getdomaintransfer) - Get domain transfer info (deprecated)
 - [`domainsPatchDomain`](docs/sdks/domains/README.md#patchdomain) - Update or move apex domain
-- [`domainsRegistrarBuyDomains`](docs/sdks/domainsregistrar/README.md#buydomains) - Buy multiple domains at once
+- [`domainsRegistrarBuyDomains`](docs/sdks/domainsregistrar/README.md#buydomains) - Buy multiple domains
 - [`domainsRegistrarBuySingleDomain`](docs/sdks/domainsregistrar/README.md#buysingledomain) - Buy a domain
 - [`domainsRegistrarGetBulkAvailability`](docs/sdks/domainsregistrar/README.md#getbulkavailability) - Get availability for multiple domains
-- [`domainsRegistrarGetContactInfoSchema`](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get the schema for the tld-specific contact information for a domain
+- [`domainsRegistrarGetContactInfoSchema`](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get contact info schema
 - [`domainsRegistrarGetDomainAuthCode`](docs/sdks/domainsregistrar/README.md#getdomainauthcode) - Get the auth code for a domain
-- [`domainsRegistrarGetDomainAvailability`](docs/sdks/domainsregistrar/README.md#getdomainavailability) - Get availability for a specific domain
-- [`domainsRegistrarGetDomainPrice`](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a specific domain
-- [`domainsRegistrarGetDomainTransferIn`](docs/sdks/domainsregistrar/README.md#getdomaintransferin) - Get the transfer status for a domain
-- [`domainsRegistrarGetOrder`](docs/sdks/domainsregistrar/README.md#getorder) - Get information about a domain order by its ID
-- [`domainsRegistrarGetSupportedTlds`](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get a list of TLDs supported by Vercel
-- [`domainsRegistrarGetTldPrice`](docs/sdks/domainsregistrar/README.md#gettldprice) - Get price data for a specific TLD
+- [`domainsRegistrarGetDomainAvailability`](docs/sdks/domainsregistrar/README.md#getdomainavailability) - Get availability for a domain
+- [`domainsRegistrarGetDomainPrice`](docs/sdks/domainsregistrar/README.md#getdomainprice) - Get price data for a domain
+- [`domainsRegistrarGetDomainTransferIn`](docs/sdks/domainsregistrar/README.md#getdomaintransferin) - Get a domain's transfer status
+- [`domainsRegistrarGetOrder`](docs/sdks/domainsregistrar/README.md#getorder) - Get a domain order
+- [`domainsRegistrarGetSupportedTlds`](docs/sdks/domainsregistrar/README.md#getsupportedtlds) - Get supported TLDs
+- [`domainsRegistrarGetTldPrice`](docs/sdks/domainsregistrar/README.md#gettldprice) - Get TLD price data
 - [`domainsRegistrarRenewDomain`](docs/sdks/domainsregistrar/README.md#renewdomain) - Renew a domain
-- [`domainsRegistrarTransferInDomain`](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer a domain in from another registrar
-- [`domainsRegistrarUpdateDomainAutoRenew`](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update the auto-renew setting for a domain
-- [`domainsRegistrarUpdateDomainNameservers`](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update the nameservers for a domain
+- [`domainsRegistrarTransferInDomain`](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer-in a domain
+- [`domainsRegistrarUpdateDomainAutoRenew`](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update auto-renew for a domain
+- [`domainsRegistrarUpdateDomainNameservers`](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update nameservers for a domain
 - [`edgeCacheDangerouslyDeleteByTags`](docs/sdks/edgecache/README.md#dangerouslydeletebytags) - Dangerously delete by tag
 - [`edgeCacheInvalidateByTags`](docs/sdks/edgecache/README.md#invalidatebytags) - Invalidate by tag
 - [`edgeConfigCreateEdgeConfig`](docs/sdks/edgeconfig/README.md#createedgeconfig) - Create an Edge Config
@@ -926,7 +926,6 @@ async function run() {
       if (error instanceof HttpApiDecodeError) {
         console.log(error.data$.issues); // Issue[]
         console.log(error.data$.message); // string
-        console.log(error.data$.tag); // models.HttpApiDecodeErrorTag
       }
     }
   }
@@ -959,20 +958,20 @@ run();
 * [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 15 of 196 methods.*
 * [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 15 of 196 methods.*
 * [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 196 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): There was something wrong with the request. Status code `400`. Applicable to 6 of 196 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 6 of 196 methods.*
 * [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 196 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): DomainNotFound. Status code `404`. Applicable to 4 of 196 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 196 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 196 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 196 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 196 methods.*
 * [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 196 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): There was something wrong with the request. Status code `400`. Applicable to 2 of 196 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): There was something wrong with the request. Status code `400`. Applicable to 2 of 196 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): There was something wrong with the request. Status code `400`. Applicable to 2 of 196 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): There was something wrong with the request. Status code `400`. Applicable to 1 of 196 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 196 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 196 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 196 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 196 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 196 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 196 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 196 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

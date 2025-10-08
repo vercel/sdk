@@ -14,9 +14,9 @@ export const tool$domainsRegistrarUpdateDomainAutoRenew: ToolDefinition<
   typeof args
 > = {
   name: "domains-registrar-update-domain-auto-renew",
-  description: `Update the auto-renew setting for a domain
+  description: `Update auto-renew for a domain
 
-Update auto-renew for a domain`,
+Update the auto-renew setting for a domain`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarUpdateDomainAutoRenew(

@@ -25,11 +25,15 @@ export type PatchDomainRequestBody2 = {
 export type PatchDomainRequestBody1 = {
   op?: string | undefined;
   /**
-   * Specifies whether domain should be renewed.
+   * This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/auto-renew instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   renew?: boolean | undefined;
   /**
-   * The custom nameservers for this project.
+   * This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   customNameservers?: Array<string> | undefined;
   /**

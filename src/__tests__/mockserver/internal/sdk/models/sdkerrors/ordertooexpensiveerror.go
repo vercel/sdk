@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// OrderTooExpensiveError - The total price of the order is too high.
 type OrderTooExpensiveError struct {
 	Status   float64                          `json:"status"`
 	Code     components.OrderTooExpensiveCode `json:"code"`
 	Message  string                           `json:"message"`
-	Tag      components.OrderTooExpensiveTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata          `json:"-"`
 }
 

@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -14,24 +13,21 @@ export type DomainAlreadyRenewingCode = ClosedEnum<
   typeof DomainAlreadyRenewingCode
 >;
 
-export const DomainAlreadyRenewingTag = {
-  DomainAlreadyRenewing: "DomainAlreadyRenewing",
-} as const;
-export type DomainAlreadyRenewingTag = ClosedEnum<
-  typeof DomainAlreadyRenewingTag
->;
-
+/**
+ * The domain is already renewing.
+ */
 export type DomainAlreadyRenewingData = {
   status: number;
   code: DomainAlreadyRenewingCode;
   message: string;
-  tag: DomainAlreadyRenewingTag;
 };
 
+/**
+ * The domain is already renewing.
+ */
 export class DomainAlreadyRenewing extends VercelError {
   status: number;
   code: DomainAlreadyRenewingCode;
-  tag: DomainAlreadyRenewingTag;
 
   /** The original data that was passed to this error instance. */
   data$: DomainAlreadyRenewingData;
@@ -45,7 +41,6 @@ export class DomainAlreadyRenewing extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "DomainAlreadyRenewing";
   }
@@ -73,27 +68,6 @@ export namespace DomainAlreadyRenewingCode$ {
 }
 
 /** @internal */
-export const DomainAlreadyRenewingTag$inboundSchema: z.ZodNativeEnum<
-  typeof DomainAlreadyRenewingTag
-> = z.nativeEnum(DomainAlreadyRenewingTag);
-
-/** @internal */
-export const DomainAlreadyRenewingTag$outboundSchema: z.ZodNativeEnum<
-  typeof DomainAlreadyRenewingTag
-> = DomainAlreadyRenewingTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainAlreadyRenewingTag$ {
-  /** @deprecated use `DomainAlreadyRenewingTag$inboundSchema` instead. */
-  export const inboundSchema = DomainAlreadyRenewingTag$inboundSchema;
-  /** @deprecated use `DomainAlreadyRenewingTag$outboundSchema` instead. */
-  export const outboundSchema = DomainAlreadyRenewingTag$outboundSchema;
-}
-
-/** @internal */
 export const DomainAlreadyRenewing$inboundSchema: z.ZodType<
   DomainAlreadyRenewing,
   z.ZodTypeDef,
@@ -102,17 +76,12 @@ export const DomainAlreadyRenewing$inboundSchema: z.ZodType<
   status: z.number(),
   code: DomainAlreadyRenewingCode$inboundSchema,
   message: z.string(),
-  _tag: DomainAlreadyRenewingTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new DomainAlreadyRenewing(remapped, {
+    return new DomainAlreadyRenewing(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -124,7 +93,6 @@ export type DomainAlreadyRenewing$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -134,18 +102,11 @@ export const DomainAlreadyRenewing$outboundSchema: z.ZodType<
   DomainAlreadyRenewing
 > = z.instanceof(DomainAlreadyRenewing)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: DomainAlreadyRenewingCode$outboundSchema,
-      message: z.string(),
-      tag: DomainAlreadyRenewingTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: DomainAlreadyRenewingCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

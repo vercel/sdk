@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// TldNotSupportedError - The TLD is not currently supported.
 type TldNotSupportedError struct {
 	Status   float64                        `json:"status"`
 	Code     components.TldNotSupportedCode `json:"code"`
 	Message  string                         `json:"message"`
-	Tag      components.TldNotSupportedTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata        `json:"-"`
 }
 

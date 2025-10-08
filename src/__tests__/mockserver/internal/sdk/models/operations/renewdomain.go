@@ -120,8 +120,9 @@ func (o *RenewDomainContactInformation) GetFax() *string {
 }
 
 type RenewDomainRequestBody struct {
+	// The number of years to renew the domain for.
 	Years float64 `json:"years"`
-	// Represents a monetary amount in USD dollars
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	ExpectedPrice      float64                        `json:"expectedPrice"`
 	ContactInformation *RenewDomainContactInformation `json:"contactInformation,omitempty"`
 }

@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,21 @@ export const DuplicateDomainsCode = {
 } as const;
 export type DuplicateDomainsCode = ClosedEnum<typeof DuplicateDomainsCode>;
 
-export const DuplicateDomainsTag = {
-  DuplicateDomains: "DuplicateDomains",
-} as const;
-export type DuplicateDomainsTag = ClosedEnum<typeof DuplicateDomainsTag>;
-
+/**
+ * Duplicate domains were provided.
+ */
 export type DuplicateDomainsData = {
   status: number;
   code: DuplicateDomainsCode;
   message: string;
-  tag: DuplicateDomainsTag;
 };
 
+/**
+ * Duplicate domains were provided.
+ */
 export class DuplicateDomains extends VercelError {
   status: number;
   code: DuplicateDomainsCode;
-  tag: DuplicateDomainsTag;
 
   /** The original data that was passed to this error instance. */
   data$: DuplicateDomainsData;
@@ -41,7 +39,6 @@ export class DuplicateDomains extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "DuplicateDomains";
   }
@@ -69,27 +66,6 @@ export namespace DuplicateDomainsCode$ {
 }
 
 /** @internal */
-export const DuplicateDomainsTag$inboundSchema: z.ZodNativeEnum<
-  typeof DuplicateDomainsTag
-> = z.nativeEnum(DuplicateDomainsTag);
-
-/** @internal */
-export const DuplicateDomainsTag$outboundSchema: z.ZodNativeEnum<
-  typeof DuplicateDomainsTag
-> = DuplicateDomainsTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DuplicateDomainsTag$ {
-  /** @deprecated use `DuplicateDomainsTag$inboundSchema` instead. */
-  export const inboundSchema = DuplicateDomainsTag$inboundSchema;
-  /** @deprecated use `DuplicateDomainsTag$outboundSchema` instead. */
-  export const outboundSchema = DuplicateDomainsTag$outboundSchema;
-}
-
-/** @internal */
 export const DuplicateDomains$inboundSchema: z.ZodType<
   DuplicateDomains,
   z.ZodTypeDef,
@@ -98,17 +74,12 @@ export const DuplicateDomains$inboundSchema: z.ZodType<
   status: z.number(),
   code: DuplicateDomainsCode$inboundSchema,
   message: z.string(),
-  _tag: DuplicateDomainsTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new DuplicateDomains(remapped, {
+    return new DuplicateDomains(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +91,6 @@ export type DuplicateDomains$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +100,11 @@ export const DuplicateDomains$outboundSchema: z.ZodType<
   DuplicateDomains
 > = z.instanceof(DuplicateDomains)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: DuplicateDomainsCode$outboundSchema,
-      message: z.string(),
-      tag: DuplicateDomainsTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: DuplicateDomainsCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

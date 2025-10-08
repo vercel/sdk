@@ -9,33 +9,33 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-type PropertyKeyTag string
+type Tag string
 
 const (
-	PropertyKeyTagSymbol PropertyKeyTag = "symbol"
+	TagSymbol Tag = "symbol"
 )
 
-func (e PropertyKeyTag) ToPointer() *PropertyKeyTag {
+func (e Tag) ToPointer() *Tag {
 	return &e
 }
-func (e *PropertyKeyTag) UnmarshalJSON(data []byte) error {
+func (e *Tag) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "symbol":
-		*e = PropertyKeyTag(v)
+		*e = Tag(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PropertyKeyTag: %v", v)
+		return fmt.Errorf("invalid value for Tag: %v", v)
 	}
 }
 
 // PropertyKeySymbol - an object to be decoded into a globally shared symbol
 type PropertyKeySymbol struct {
-	Tag PropertyKeyTag `json:"_tag"`
-	Key string         `json:"key"`
+	Tag Tag    `json:"_tag"`
+	Key string `json:"key"`
 }
 
 func (p PropertyKeySymbol) MarshalJSON() ([]byte, error) {
@@ -49,9 +49,9 @@ func (p *PropertyKeySymbol) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PropertyKeySymbol) GetTag() PropertyKeyTag {
+func (o *PropertyKeySymbol) GetTag() Tag {
 	if o == nil {
-		return PropertyKeyTag("")
+		return Tag("")
 	}
 	return o.Tag
 }

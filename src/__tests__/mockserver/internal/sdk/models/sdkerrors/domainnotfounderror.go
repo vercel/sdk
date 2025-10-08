@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// DomainNotFoundError - The domain was not found in our system.
 type DomainNotFoundError struct {
 	Status   float64                       `json:"status"`
 	Code     components.DomainNotFoundCode `json:"code"`
 	Message  string                        `json:"message"`
-	Tag      components.DomainNotFoundTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata       `json:"-"`
 }
 

@@ -46,10 +46,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Transfer a domain in from another registrar
+ * Transfer-in a domain
  *
  * @remarks
- * Transfer-in a domain
+ * Transfer a domain in from another registrar
  */
 export function domainsRegistrarTransferInDomain(
   client: VercelCore,

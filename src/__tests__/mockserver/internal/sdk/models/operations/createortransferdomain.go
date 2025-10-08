@@ -11,10 +11,12 @@ import (
 )
 
 // CreateOrTransferDomainRequestBody3 - transfer-in
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type CreateOrTransferDomainRequestBody3 struct {
 	// The domain name you want to add.
 	Name string `json:"name"`
-	// The domain operation to perform. It can be either `add` or `transfer-in`.
+	// The domain operation to perform. It can be either `add` or `move-in`.
 	Method string `json:"method"`
 	// The authorization code assigned to the domain.
 	AuthCode *string `json:"authCode,omitempty"`
@@ -65,7 +67,7 @@ func (o *CreateOrTransferDomainRequestBody3) GetExpectedPrice() *float64 {
 type CreateOrTransferDomainRequestBody2 struct {
 	// The domain name you want to add.
 	Name string `json:"name"`
-	// The domain operation to perform. It can be either `add` or `transfer-in`.
+	// The domain operation to perform. It can be either `add` or `move-in`.
 	Method string `json:"method"`
 	// The move-in token from Move Requested email.
 	Token *string `json:"token,omitempty"`
@@ -110,7 +112,7 @@ type CreateOrTransferDomainRequestBody1 struct {
 	// Whether the domain has the Vercel Edge Network enabled or not.
 	CdnEnabled *bool `json:"cdnEnabled,omitempty"`
 	Zone       *bool `json:"zone,omitempty"`
-	// The domain operation to perform. It can be either `add` or `transfer-in`.
+	// The domain operation to perform. It can be either `add` or `move-in`.
 	Method *string `json:"method,omitempty"`
 }
 

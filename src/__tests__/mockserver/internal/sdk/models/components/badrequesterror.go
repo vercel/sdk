@@ -29,26 +29,3 @@ func (e *BadRequestCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for BadRequestCode: %v", v)
 	}
 }
-
-type BadRequestTag string
-
-const (
-	BadRequestTagBadRequest BadRequestTag = "BadRequest"
-)
-
-func (e BadRequestTag) ToPointer() *BadRequestTag {
-	return &e
-}
-func (e *BadRequestTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "BadRequest":
-		*e = BadRequestTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BadRequestTag: %v", v)
-	}
-}

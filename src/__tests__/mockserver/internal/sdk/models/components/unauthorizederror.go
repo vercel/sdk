@@ -29,26 +29,3 @@ func (e *UnauthorizedCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for UnauthorizedCode: %v", v)
 	}
 }
-
-type UnauthorizedTag string
-
-const (
-	UnauthorizedTagUnauthorized UnauthorizedTag = "Unauthorized"
-)
-
-func (e UnauthorizedTag) ToPointer() *UnauthorizedTag {
-	return &e
-}
-func (e *UnauthorizedTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "Unauthorized":
-		*e = UnauthorizedTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UnauthorizedTag: %v", v)
-	}
-}

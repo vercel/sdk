@@ -14,9 +14,9 @@ export const tool$domainsRegistrarTransferInDomain: ToolDefinition<
   typeof args
 > = {
   name: "domains-registrar-transfer-in-domain",
-  description: `Transfer a domain in from another registrar
+  description: `Transfer-in a domain
 
-Transfer-in a domain`,
+Transfer a domain in from another registrar`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarTransferInDomain(

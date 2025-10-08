@@ -94,20 +94,20 @@ func (u TransferInDomainForbidden) Error() string {
 type TransferInDomainBadRequestType string
 
 const (
-	TransferInDomainBadRequestTypeHTTPAPIDecodeError         TransferInDomainBadRequestType = "HttpApiDecodeError"
-	TransferInDomainBadRequestTypeTldNotSupportedError       TransferInDomainBadRequestType = "TldNotSupported_error"
-	TransferInDomainBadRequestTypeDomainNotAvailableError    TransferInDomainBadRequestType = "DomainNotAvailable_error"
-	TransferInDomainBadRequestTypeExpectedPriceMismatchError TransferInDomainBadRequestType = "ExpectedPriceMismatch_error"
 	TransferInDomainBadRequestTypeBadRequestError            TransferInDomainBadRequestType = "BadRequest_error"
+	TransferInDomainBadRequestTypeExpectedPriceMismatchError TransferInDomainBadRequestType = "ExpectedPriceMismatch_error"
+	TransferInDomainBadRequestTypeDomainNotAvailableError    TransferInDomainBadRequestType = "DomainNotAvailable_error"
+	TransferInDomainBadRequestTypeTldNotSupportedError       TransferInDomainBadRequestType = "TldNotSupported_error"
+	TransferInDomainBadRequestTypeHTTPAPIDecodeError         TransferInDomainBadRequestType = "HttpApiDecodeError"
 )
 
 // TransferInDomainBadRequest - There was something wrong with the request
 type TransferInDomainBadRequest struct {
-	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
-	TldNotSupportedError       *TldNotSupportedError       `queryParam:"inline"`
-	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
-	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
 	BadRequestError            *BadRequestError            `queryParam:"inline"`
+	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
+	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
+	TldNotSupportedError       *TldNotSupportedError       `queryParam:"inline"`
+	HTTPAPIDecodeError         *HTTPAPIDecodeError         `queryParam:"inline"`
 
 	Type TransferInDomainBadRequestType
 
@@ -116,30 +116,12 @@ type TransferInDomainBadRequest struct {
 
 var _ error = &TransferInDomainBadRequest{}
 
-func CreateTransferInDomainBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) TransferInDomainBadRequest {
-	typ := TransferInDomainBadRequestTypeHTTPAPIDecodeError
+func CreateTransferInDomainBadRequestBadRequestError(badRequestError BadRequestError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeBadRequestError
 
 	return TransferInDomainBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
-
-func CreateTransferInDomainBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) TransferInDomainBadRequest {
-	typ := TransferInDomainBadRequestTypeTldNotSupportedError
-
-	return TransferInDomainBadRequest{
-		TldNotSupportedError: &tldNotSupportedError,
-		Type:                 typ,
-	}
-}
-
-func CreateTransferInDomainBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) TransferInDomainBadRequest {
-	typ := TransferInDomainBadRequestTypeDomainNotAvailableError
-
-	return TransferInDomainBadRequest{
-		DomainNotAvailableError: &domainNotAvailableError,
-		Type:                    typ,
+		BadRequestError: &badRequestError,
+		Type:            typ,
 	}
 }
 
@@ -152,35 +134,39 @@ func CreateTransferInDomainBadRequestExpectedPriceMismatchError(expectedPriceMis
 	}
 }
 
-func CreateTransferInDomainBadRequestBadRequestError(badRequestError BadRequestError) TransferInDomainBadRequest {
-	typ := TransferInDomainBadRequestTypeBadRequestError
+func CreateTransferInDomainBadRequestDomainNotAvailableError(domainNotAvailableError DomainNotAvailableError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeDomainNotAvailableError
 
 	return TransferInDomainBadRequest{
-		BadRequestError: &badRequestError,
-		Type:            typ,
+		DomainNotAvailableError: &domainNotAvailableError,
+		Type:                    typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestTldNotSupportedError(tldNotSupportedError TldNotSupportedError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeTldNotSupportedError
+
+	return TransferInDomainBadRequest{
+		TldNotSupportedError: &tldNotSupportedError,
+		Type:                 typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeHTTPAPIDecodeError
+
+	return TransferInDomainBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
 }
 
 func (u *TransferInDomainBadRequest) UnmarshalJSON(data []byte) error {
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = TransferInDomainBadRequestTypeHTTPAPIDecodeError
-		return nil
-	}
-
-	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
-	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
-		u.TldNotSupportedError = &tldNotSupportedError
-		u.Type = TransferInDomainBadRequestTypeTldNotSupportedError
-		return nil
-	}
-
-	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
-	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
-		u.DomainNotAvailableError = &domainNotAvailableError
-		u.Type = TransferInDomainBadRequestTypeDomainNotAvailableError
+	var badRequestError BadRequestError = BadRequestError{}
+	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
+		u.BadRequestError = &badRequestError
+		u.Type = TransferInDomainBadRequestTypeBadRequestError
 		return nil
 	}
 
@@ -191,10 +177,24 @@ func (u *TransferInDomainBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var badRequestError BadRequestError = BadRequestError{}
-	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
-		u.BadRequestError = &badRequestError
-		u.Type = TransferInDomainBadRequestTypeBadRequestError
+	var domainNotAvailableError DomainNotAvailableError = DomainNotAvailableError{}
+	if err := utils.UnmarshalJSON(data, &domainNotAvailableError, "", true, nil); err == nil {
+		u.DomainNotAvailableError = &domainNotAvailableError
+		u.Type = TransferInDomainBadRequestTypeDomainNotAvailableError
+		return nil
+	}
+
+	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
+	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
+		u.TldNotSupportedError = &tldNotSupportedError
+		u.Type = TransferInDomainBadRequestTypeTldNotSupportedError
+		return nil
+	}
+
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = TransferInDomainBadRequestTypeHTTPAPIDecodeError
 		return nil
 	}
 
@@ -202,24 +202,24 @@ func (u *TransferInDomainBadRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u TransferInDomainBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
-	if u.TldNotSupportedError != nil {
-		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
-	}
-
-	if u.DomainNotAvailableError != nil {
-		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
+	if u.BadRequestError != nil {
+		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
 	if u.ExpectedPriceMismatchError != nil {
 		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
 	}
 
-	if u.BadRequestError != nil {
-		return utils.MarshalJSON(u.BadRequestError, "", true)
+	if u.DomainNotAvailableError != nil {
+		return utils.MarshalJSON(u.DomainNotAvailableError, "", true)
+	}
+
+	if u.TldNotSupportedError != nil {
+		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type TransferInDomainBadRequest: all fields are null")
@@ -227,20 +227,20 @@ func (u TransferInDomainBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u TransferInDomainBadRequest) Error() string {
 	switch u.Type {
-	case TransferInDomainBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
-	case TransferInDomainBadRequestTypeTldNotSupportedError:
-		data, _ := json.Marshal(u.TldNotSupportedError)
-		return string(data)
-	case TransferInDomainBadRequestTypeDomainNotAvailableError:
-		data, _ := json.Marshal(u.DomainNotAvailableError)
+	case TransferInDomainBadRequestTypeBadRequestError:
+		data, _ := json.Marshal(u.BadRequestError)
 		return string(data)
 	case TransferInDomainBadRequestTypeExpectedPriceMismatchError:
 		data, _ := json.Marshal(u.ExpectedPriceMismatchError)
 		return string(data)
-	case TransferInDomainBadRequestTypeBadRequestError:
-		data, _ := json.Marshal(u.BadRequestError)
+	case TransferInDomainBadRequestTypeDomainNotAvailableError:
+		data, _ := json.Marshal(u.DomainNotAvailableError)
+		return string(data)
+	case TransferInDomainBadRequestTypeTldNotSupportedError:
+		data, _ := json.Marshal(u.TldNotSupportedError)
+		return string(data)
+	case TransferInDomainBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

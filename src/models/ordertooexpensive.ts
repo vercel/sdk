@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,21 @@ export const OrderTooExpensiveCode = {
 } as const;
 export type OrderTooExpensiveCode = ClosedEnum<typeof OrderTooExpensiveCode>;
 
-export const OrderTooExpensiveTag = {
-  OrderTooExpensive: "OrderTooExpensive",
-} as const;
-export type OrderTooExpensiveTag = ClosedEnum<typeof OrderTooExpensiveTag>;
-
+/**
+ * The total price of the order is too high.
+ */
 export type OrderTooExpensiveData = {
   status: number;
   code: OrderTooExpensiveCode;
   message: string;
-  tag: OrderTooExpensiveTag;
 };
 
+/**
+ * The total price of the order is too high.
+ */
 export class OrderTooExpensive extends VercelError {
   status: number;
   code: OrderTooExpensiveCode;
-  tag: OrderTooExpensiveTag;
 
   /** The original data that was passed to this error instance. */
   data$: OrderTooExpensiveData;
@@ -41,7 +39,6 @@ export class OrderTooExpensive extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "OrderTooExpensive";
   }
@@ -69,27 +66,6 @@ export namespace OrderTooExpensiveCode$ {
 }
 
 /** @internal */
-export const OrderTooExpensiveTag$inboundSchema: z.ZodNativeEnum<
-  typeof OrderTooExpensiveTag
-> = z.nativeEnum(OrderTooExpensiveTag);
-
-/** @internal */
-export const OrderTooExpensiveTag$outboundSchema: z.ZodNativeEnum<
-  typeof OrderTooExpensiveTag
-> = OrderTooExpensiveTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrderTooExpensiveTag$ {
-  /** @deprecated use `OrderTooExpensiveTag$inboundSchema` instead. */
-  export const inboundSchema = OrderTooExpensiveTag$inboundSchema;
-  /** @deprecated use `OrderTooExpensiveTag$outboundSchema` instead. */
-  export const outboundSchema = OrderTooExpensiveTag$outboundSchema;
-}
-
-/** @internal */
 export const OrderTooExpensive$inboundSchema: z.ZodType<
   OrderTooExpensive,
   z.ZodTypeDef,
@@ -98,17 +74,12 @@ export const OrderTooExpensive$inboundSchema: z.ZodType<
   status: z.number(),
   code: OrderTooExpensiveCode$inboundSchema,
   message: z.string(),
-  _tag: OrderTooExpensiveTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new OrderTooExpensive(remapped, {
+    return new OrderTooExpensive(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +91,6 @@ export type OrderTooExpensive$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +100,11 @@ export const OrderTooExpensive$outboundSchema: z.ZodType<
   OrderTooExpensive
 > = z.instanceof(OrderTooExpensive)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: OrderTooExpensiveCode$outboundSchema,
-      message: z.string(),
-      tag: OrderTooExpensiveTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: OrderTooExpensiveCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

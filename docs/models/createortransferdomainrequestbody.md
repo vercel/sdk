@@ -9,7 +9,7 @@
 const value: models.CreateOrTransferDomainRequestBody1 = {
   name: "example.com",
   cdnEnabled: true,
-  method: "transfer-in",
+  method: "add",
 };
 ```
 
@@ -18,7 +18,7 @@ const value: models.CreateOrTransferDomainRequestBody1 = {
 ```typescript
 const value: models.CreateOrTransferDomainRequestBody2 = {
   name: "example.com",
-  method: "transfer-in",
+  method: "add",
   token: "fdhfr820ad#@FAdlj$$",
 };
 ```
@@ -28,7 +28,7 @@ const value: models.CreateOrTransferDomainRequestBody2 = {
 ```typescript
 const value: models.CreateOrTransferDomainRequestBody3 = {
   name: "example.com",
-  method: "transfer-in",
+  method: "add",
   authCode: "fdhfr820ad#@FAdlj$$",
   expectedPrice: 8,
 };

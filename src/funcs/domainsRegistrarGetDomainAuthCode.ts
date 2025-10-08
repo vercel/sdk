@@ -53,7 +53,7 @@ import { Result } from "../types/fp.js";
  * Get the auth code for a domain
  *
  * @remarks
- * Get the auth code for a domain
+ * Get the auth code for a domain. This is required to transfer a domain from Vercel to another registrar.
  */
 export function domainsRegistrarGetDomainAuthCode(
   client: VercelCore,

@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// ExpectedPriceMismatchError - The expected price passed does not match the actual price.
 type ExpectedPriceMismatchError struct {
 	Status   float64                              `json:"status"`
 	Code     components.ExpectedPriceMismatchCode `json:"code"`
 	Message  string                               `json:"message"`
-	Tag      components.ExpectedPriceMismatchTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata              `json:"-"`
 }
 

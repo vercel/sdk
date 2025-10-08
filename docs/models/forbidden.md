@@ -15,4 +15,3 @@ import { Forbidden } from "@vercel/sdk/models/forbidden.js";
 | `status`                                           | *number*                                           | :heavy_check_mark:                                 | N/A                                                |
 | `code`                                             | [models.ForbiddenCode](../models/forbiddencode.md) | :heavy_check_mark:                                 | N/A                                                |
 | `message`                                          | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `tag`                                              | [models.ForbiddenTag](../models/forbiddentag.md)   | :heavy_check_mark:                                 | N/A                                                |

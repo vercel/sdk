@@ -27,8 +27,8 @@ export type GetContactInfoSchemaRequest = {
  * There was something wrong with the request
  */
 export type GetContactInfoSchemaDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
-  | BadRequest;
+  | BadRequest
+  | HttpApiDecodeError;
 
 /**
  * Success
@@ -97,12 +97,12 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema:
     GetContactInfoSchemaDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([HttpApiDecodeError$inboundSchema, BadRequest$inboundSchema]);
+  > = z.union([BadRequest$inboundSchema, HttpApiDecodeError$inboundSchema]);
 
 /** @internal */
 export type GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | BadRequest$Outbound;
+  | BadRequest$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
@@ -110,7 +110,7 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
     GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
     GetContactInfoSchemaDomainsRegistrarResponseBody
-  > = z.union([HttpApiDecodeError$outboundSchema, BadRequest$outboundSchema]);
+  > = z.union([BadRequest$outboundSchema, HttpApiDecodeError$outboundSchema]);
 
 /**
  * @internal

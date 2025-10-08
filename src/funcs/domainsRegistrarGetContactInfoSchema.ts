@@ -48,10 +48,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get the schema for the tld-specific contact information for a domain
+ * Get contact info schema
  *
  * @remarks
- * Get contact info schema
+ * Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
  */
 export function domainsRegistrarGetContactInfoSchema(
   client: VercelCore,

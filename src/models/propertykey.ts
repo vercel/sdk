@@ -9,40 +9,37 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export const PropertyKeyTag = {
+export const Tag = {
   Symbol: "symbol",
 } as const;
-export type PropertyKeyTag = ClosedEnum<typeof PropertyKeyTag>;
+export type Tag = ClosedEnum<typeof Tag>;
 
 /**
  * an object to be decoded into a globally shared symbol
  */
 export type PropertyKey3 = {
-  tag: PropertyKeyTag;
+  tag: Tag;
   key: string;
 };
 
 export type PropertyKey = PropertyKey3 | string | number;
 
 /** @internal */
-export const PropertyKeyTag$inboundSchema: z.ZodNativeEnum<
-  typeof PropertyKeyTag
-> = z.nativeEnum(PropertyKeyTag);
+export const Tag$inboundSchema: z.ZodNativeEnum<typeof Tag> = z.nativeEnum(Tag);
 
 /** @internal */
-export const PropertyKeyTag$outboundSchema: z.ZodNativeEnum<
-  typeof PropertyKeyTag
-> = PropertyKeyTag$inboundSchema;
+export const Tag$outboundSchema: z.ZodNativeEnum<typeof Tag> =
+  Tag$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PropertyKeyTag$ {
-  /** @deprecated use `PropertyKeyTag$inboundSchema` instead. */
-  export const inboundSchema = PropertyKeyTag$inboundSchema;
-  /** @deprecated use `PropertyKeyTag$outboundSchema` instead. */
-  export const outboundSchema = PropertyKeyTag$outboundSchema;
+export namespace Tag$ {
+  /** @deprecated use `Tag$inboundSchema` instead. */
+  export const inboundSchema = Tag$inboundSchema;
+  /** @deprecated use `Tag$outboundSchema` instead. */
+  export const outboundSchema = Tag$outboundSchema;
 }
 
 /** @internal */
@@ -51,7 +48,7 @@ export const PropertyKey3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  _tag: PropertyKeyTag$inboundSchema,
+  _tag: Tag$inboundSchema,
   key: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -71,7 +68,7 @@ export const PropertyKey3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PropertyKey3
 > = z.object({
-  tag: PropertyKeyTag$outboundSchema,
+  tag: Tag$outboundSchema,
   key: z.string(),
 }).transform((v) => {
   return remap$(v, {

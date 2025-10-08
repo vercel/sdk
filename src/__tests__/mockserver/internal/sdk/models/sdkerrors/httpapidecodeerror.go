@@ -9,10 +9,9 @@ import (
 
 // HTTPAPIDecodeError - The request did not match the expected schema
 type HTTPAPIDecodeError struct {
-	Issues   []components.Issue               `json:"issues"`
-	Message  string                           `json:"message"`
-	Tag      components.HTTPAPIDecodeErrorTag `json:"_tag"`
-	HTTPMeta components.HTTPMetadata          `json:"-"`
+	Issues   []components.Issue      `json:"issues"`
+	Message  string                  `json:"message"`
+	HTTPMeta components.HTTPMetadata `json:"-"`
 }
 
 var _ error = &HTTPAPIDecodeError{}

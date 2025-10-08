@@ -12,9 +12,9 @@ const args = {
 
 export const tool$domainsRegistrarGetOrder: ToolDefinition<typeof args> = {
   name: "domains-registrar-get-order",
-  description: `Get information about a domain order by its ID
+  description: `Get a domain order
 
-Get a domain order`,
+Get information about a domain order by its ID`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetOrder(

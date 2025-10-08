@@ -12,9 +12,9 @@ const args = {
 
 export const tool$domainsRegistrarBuyDomains: ToolDefinition<typeof args> = {
   name: "domains-registrar-buy-domains",
-  description: `Buy multiple domains at once
+  description: `Buy multiple domains
 
-Buy multiple domains`,
+Buy multiple domains at once`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarBuyDomains(

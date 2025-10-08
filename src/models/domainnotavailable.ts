@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,21 @@ export const DomainNotAvailableCode = {
 } as const;
 export type DomainNotAvailableCode = ClosedEnum<typeof DomainNotAvailableCode>;
 
-export const DomainNotAvailableTag = {
-  DomainNotAvailable: "DomainNotAvailable",
-} as const;
-export type DomainNotAvailableTag = ClosedEnum<typeof DomainNotAvailableTag>;
-
+/**
+ * The domain is not available.
+ */
 export type DomainNotAvailableData = {
   status: number;
   code: DomainNotAvailableCode;
   message: string;
-  tag: DomainNotAvailableTag;
 };
 
+/**
+ * The domain is not available.
+ */
 export class DomainNotAvailable extends VercelError {
   status: number;
   code: DomainNotAvailableCode;
-  tag: DomainNotAvailableTag;
 
   /** The original data that was passed to this error instance. */
   data$: DomainNotAvailableData;
@@ -41,7 +39,6 @@ export class DomainNotAvailable extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "DomainNotAvailable";
   }
@@ -69,27 +66,6 @@ export namespace DomainNotAvailableCode$ {
 }
 
 /** @internal */
-export const DomainNotAvailableTag$inboundSchema: z.ZodNativeEnum<
-  typeof DomainNotAvailableTag
-> = z.nativeEnum(DomainNotAvailableTag);
-
-/** @internal */
-export const DomainNotAvailableTag$outboundSchema: z.ZodNativeEnum<
-  typeof DomainNotAvailableTag
-> = DomainNotAvailableTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotAvailableTag$ {
-  /** @deprecated use `DomainNotAvailableTag$inboundSchema` instead. */
-  export const inboundSchema = DomainNotAvailableTag$inboundSchema;
-  /** @deprecated use `DomainNotAvailableTag$outboundSchema` instead. */
-  export const outboundSchema = DomainNotAvailableTag$outboundSchema;
-}
-
-/** @internal */
 export const DomainNotAvailable$inboundSchema: z.ZodType<
   DomainNotAvailable,
   z.ZodTypeDef,
@@ -98,17 +74,12 @@ export const DomainNotAvailable$inboundSchema: z.ZodType<
   status: z.number(),
   code: DomainNotAvailableCode$inboundSchema,
   message: z.string(),
-  _tag: DomainNotAvailableTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new DomainNotAvailable(remapped, {
+    return new DomainNotAvailable(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +91,6 @@ export type DomainNotAvailable$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +100,11 @@ export const DomainNotAvailable$outboundSchema: z.ZodType<
   DomainNotAvailable
 > = z.instanceof(DomainNotAvailable)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: DomainNotAvailableCode$outboundSchema,
-      message: z.string(),
-      tag: DomainNotAvailableTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: DomainNotAvailableCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

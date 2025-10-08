@@ -11,7 +11,6 @@ type UnauthorizedError struct {
 	Status   float64                     `json:"status"`
 	Code     components.UnauthorizedCode `json:"code"`
 	Message  string                      `json:"message"`
-	Tag      components.UnauthorizedTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata     `json:"-"`
 }
 

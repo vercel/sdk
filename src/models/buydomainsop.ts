@@ -77,16 +77,25 @@ import {
 
 export type Domains = {
   domainName: string;
+  /**
+   * Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
+   */
   autoRenew: boolean;
+  /**
+   * The number of years to purchase the domain for.
+   */
   years: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   expectedPrice: number;
 };
 
 export type BuyDomainsAdditional = {};
 
+/**
+ * The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
+ */
 export type BuyDomainsContactInformation = {
   /**
    * a non empty string
@@ -141,6 +150,9 @@ export type BuyDomainsContactInformation = {
 
 export type BuyDomainsRequestBody = {
   domains: Array<Domains>;
+  /**
+   * The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
+   */
   contactInformation: BuyDomainsContactInformation;
 };
 
@@ -155,15 +167,15 @@ export type BuyDomainsDomainsRegistrarResponseResponseBody =
  * There was something wrong with the request
  */
 export type BuyDomainsDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
-  | TldNotSupported
-  | DomainNotAvailable
-  | ExpectedPriceMismatch
-  | DuplicateDomains
-  | AdditionalContactInfoRequired
-  | InvalidAdditionalContactInfo
+  | OrderTooExpensive
   | TooManyDomains
-  | OrderTooExpensive;
+  | InvalidAdditionalContactInfo
+  | AdditionalContactInfoRequired
+  | DuplicateDomains
+  | ExpectedPriceMismatch
+  | DomainNotAvailable
+  | TldNotSupported
+  | HttpApiDecodeError;
 
 export const BuyDomainsMethod = {
   Get: "GET",
@@ -510,28 +522,28 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  HttpApiDecodeError$inboundSchema,
-  TldNotSupported$inboundSchema,
-  DomainNotAvailable$inboundSchema,
-  ExpectedPriceMismatch$inboundSchema,
-  DuplicateDomains$inboundSchema,
-  AdditionalContactInfoRequired$inboundSchema,
-  InvalidAdditionalContactInfo$inboundSchema,
-  TooManyDomains$inboundSchema,
   OrderTooExpensive$inboundSchema,
+  TooManyDomains$inboundSchema,
+  InvalidAdditionalContactInfo$inboundSchema,
+  AdditionalContactInfoRequired$inboundSchema,
+  DuplicateDomains$inboundSchema,
+  ExpectedPriceMismatch$inboundSchema,
+  DomainNotAvailable$inboundSchema,
+  TldNotSupported$inboundSchema,
+  HttpApiDecodeError$inboundSchema,
 ]);
 
 /** @internal */
 export type BuyDomainsDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | TldNotSupported$Outbound
-  | DomainNotAvailable$Outbound
-  | ExpectedPriceMismatch$Outbound
-  | DuplicateDomains$Outbound
-  | AdditionalContactInfoRequired$Outbound
-  | InvalidAdditionalContactInfo$Outbound
+  | OrderTooExpensive$Outbound
   | TooManyDomains$Outbound
-  | OrderTooExpensive$Outbound;
+  | InvalidAdditionalContactInfo$Outbound
+  | AdditionalContactInfoRequired$Outbound
+  | DuplicateDomains$Outbound
+  | ExpectedPriceMismatch$Outbound
+  | DomainNotAvailable$Outbound
+  | TldNotSupported$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const BuyDomainsDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
@@ -539,15 +551,15 @@ export const BuyDomainsDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BuyDomainsDomainsRegistrarResponseBody
 > = z.union([
-  HttpApiDecodeError$outboundSchema,
-  TldNotSupported$outboundSchema,
-  DomainNotAvailable$outboundSchema,
-  ExpectedPriceMismatch$outboundSchema,
-  DuplicateDomains$outboundSchema,
-  AdditionalContactInfoRequired$outboundSchema,
-  InvalidAdditionalContactInfo$outboundSchema,
-  TooManyDomains$outboundSchema,
   OrderTooExpensive$outboundSchema,
+  TooManyDomains$outboundSchema,
+  InvalidAdditionalContactInfo$outboundSchema,
+  AdditionalContactInfoRequired$outboundSchema,
+  DuplicateDomains$outboundSchema,
+  ExpectedPriceMismatch$outboundSchema,
+  DomainNotAvailable$outboundSchema,
+  TldNotSupported$outboundSchema,
+  HttpApiDecodeError$outboundSchema,
 ]);
 
 /**

@@ -11,7 +11,6 @@ type InternalServerError struct {
 	Status   float64                            `json:"status"`
 	Code     components.InternalServerErrorCode `json:"code"`
 	Message  string                             `json:"message"`
-	Tag      components.InternalServerErrorTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata            `json:"-"`
 }
 

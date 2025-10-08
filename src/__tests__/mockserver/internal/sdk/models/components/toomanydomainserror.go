@@ -29,26 +29,3 @@ func (e *TooManyDomainsCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for TooManyDomainsCode: %v", v)
 	}
 }
-
-type TooManyDomainsTag string
-
-const (
-	TooManyDomainsTagTooManyDomains TooManyDomainsTag = "TooManyDomains"
-)
-
-func (e TooManyDomainsTag) ToPointer() *TooManyDomainsTag {
-	return &e
-}
-func (e *TooManyDomainsTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "TooManyDomains":
-		*e = TooManyDomainsTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TooManyDomainsTag: %v", v)
-	}
-}

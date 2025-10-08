@@ -53,7 +53,7 @@ import { Result } from "../types/fp.js";
  * Get availability for multiple domains
  *
  * @remarks
- * Get availability for multiple domains
+ * Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
  */
 export function domainsRegistrarGetBulkAvailability(
   client: VercelCore,

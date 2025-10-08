@@ -65,6 +65,9 @@ import {
 
 export type Additional = {};
 
+/**
+ * The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
+ */
 export type ContactInformation = {
   /**
    * a non empty string
@@ -118,12 +121,21 @@ export type ContactInformation = {
 };
 
 export type BuySingleDomainRequestBody = {
+  /**
+   * Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
+   */
   autoRenew: boolean;
+  /**
+   * The number of years to purchase the domain for.
+   */
   years: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   expectedPrice: number;
+  /**
+   * The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
+   */
   contactInformation: ContactInformation;
 };
 
@@ -143,13 +155,13 @@ export type BuySingleDomainDomainsRegistrarResponseResponseBody =
  * There was something wrong with the request
  */
 export type BuySingleDomainDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
-  | TldNotSupported
-  | DomainNotAvailable
-  | ExpectedPriceMismatch
-  | AdditionalContactInfoRequired
+  | OrderTooExpensive
   | InvalidAdditionalContactInfo
-  | OrderTooExpensive;
+  | AdditionalContactInfoRequired
+  | ExpectedPriceMismatch
+  | DomainNotAvailable
+  | TldNotSupported
+  | HttpApiDecodeError;
 
 export const Method = {
   Get: "GET",
@@ -506,24 +518,24 @@ export const BuySingleDomainDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    HttpApiDecodeError$inboundSchema,
-    TldNotSupported$inboundSchema,
-    DomainNotAvailable$inboundSchema,
-    ExpectedPriceMismatch$inboundSchema,
-    AdditionalContactInfoRequired$inboundSchema,
-    InvalidAdditionalContactInfo$inboundSchema,
     OrderTooExpensive$inboundSchema,
+    InvalidAdditionalContactInfo$inboundSchema,
+    AdditionalContactInfoRequired$inboundSchema,
+    ExpectedPriceMismatch$inboundSchema,
+    DomainNotAvailable$inboundSchema,
+    TldNotSupported$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
   ]);
 
 /** @internal */
 export type BuySingleDomainDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | TldNotSupported$Outbound
-  | DomainNotAvailable$Outbound
-  | ExpectedPriceMismatch$Outbound
-  | AdditionalContactInfoRequired$Outbound
+  | OrderTooExpensive$Outbound
   | InvalidAdditionalContactInfo$Outbound
-  | OrderTooExpensive$Outbound;
+  | AdditionalContactInfoRequired$Outbound
+  | ExpectedPriceMismatch$Outbound
+  | DomainNotAvailable$Outbound
+  | TldNotSupported$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const BuySingleDomainDomainsRegistrarResponseBody$outboundSchema:
@@ -532,13 +544,13 @@ export const BuySingleDomainDomainsRegistrarResponseBody$outboundSchema:
     z.ZodTypeDef,
     BuySingleDomainDomainsRegistrarResponseBody
   > = z.union([
-    HttpApiDecodeError$outboundSchema,
-    TldNotSupported$outboundSchema,
-    DomainNotAvailable$outboundSchema,
-    ExpectedPriceMismatch$outboundSchema,
-    AdditionalContactInfoRequired$outboundSchema,
-    InvalidAdditionalContactInfo$outboundSchema,
     OrderTooExpensive$outboundSchema,
+    InvalidAdditionalContactInfo$outboundSchema,
+    AdditionalContactInfoRequired$outboundSchema,
+    ExpectedPriceMismatch$outboundSchema,
+    DomainNotAvailable$outboundSchema,
+    TldNotSupported$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
   ]);
 
 /**

@@ -49,10 +49,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get the transfer status for a domain
+ * Get a domain's transfer status
  *
  * @remarks
- * Get a domain's transfer status
+ * Get the transfer status for a domain
  */
 export function domainsRegistrarGetDomainTransferIn(
   client: VercelCore,

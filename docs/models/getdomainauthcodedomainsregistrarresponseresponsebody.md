@@ -12,7 +12,6 @@ const value: models.NotAuthorizedForScope = {
   status: 4853.56,
   code: "not_authorized_for_scope",
   message: "<value>",
-  tag: "NotAuthorizedForScope",
 };
 ```
 
@@ -23,7 +22,6 @@ const value: models.Forbidden = {
   status: 7108.3,
   code: "forbidden",
   message: "<value>",
-  tag: "Forbidden",
 };
 ```
 

@@ -1,5 +1,7 @@
 # InvalidAdditionalContactInfo
 
+Additional contact information provided for the TLD is invalid.
+
 ## Example Usage
 
 ```typescript
@@ -15,4 +17,3 @@ import { InvalidAdditionalContactInfo } from "@vercel/sdk/models/invalidaddition
 | `status`                                                                                 | *number*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `code`                                                                                   | [models.InvalidAdditionalContactInfoCode](../models/invalidadditionalcontactinfocode.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `message`                                                                                | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `tag`                                                                                    | [models.InvalidAdditionalContactInfoTag](../models/invalidadditionalcontactinfotag.md)   | :heavy_check_mark:                                                                       | N/A                                                                                      |

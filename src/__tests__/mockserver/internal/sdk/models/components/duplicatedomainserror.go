@@ -29,26 +29,3 @@ func (e *DuplicateDomainsCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for DuplicateDomainsCode: %v", v)
 	}
 }
-
-type DuplicateDomainsTag string
-
-const (
-	DuplicateDomainsTagDuplicateDomains DuplicateDomainsTag = "DuplicateDomains"
-)
-
-func (e DuplicateDomainsTag) ToPointer() *DuplicateDomainsTag {
-	return &e
-}
-func (e *DuplicateDomainsTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "DuplicateDomains":
-		*e = DuplicateDomainsTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DuplicateDomainsTag: %v", v)
-	}
-}

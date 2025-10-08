@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -14,24 +13,21 @@ export type AdditionalContactInfoRequiredCode = ClosedEnum<
   typeof AdditionalContactInfoRequiredCode
 >;
 
-export const AdditionalContactInfoRequiredTag = {
-  AdditionalContactInfoRequired: "AdditionalContactInfoRequired",
-} as const;
-export type AdditionalContactInfoRequiredTag = ClosedEnum<
-  typeof AdditionalContactInfoRequiredTag
->;
-
+/**
+ * Additional contact information is required for the TLD.
+ */
 export type AdditionalContactInfoRequiredData = {
   status: number;
   code: AdditionalContactInfoRequiredCode;
   message: string;
-  tag: AdditionalContactInfoRequiredTag;
 };
 
+/**
+ * Additional contact information is required for the TLD.
+ */
 export class AdditionalContactInfoRequired extends VercelError {
   status: number;
   code: AdditionalContactInfoRequiredCode;
-  tag: AdditionalContactInfoRequiredTag;
 
   /** The original data that was passed to this error instance. */
   data$: AdditionalContactInfoRequiredData;
@@ -45,7 +41,6 @@ export class AdditionalContactInfoRequired extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "AdditionalContactInfoRequired";
   }
@@ -74,27 +69,6 @@ export namespace AdditionalContactInfoRequiredCode$ {
 }
 
 /** @internal */
-export const AdditionalContactInfoRequiredTag$inboundSchema: z.ZodNativeEnum<
-  typeof AdditionalContactInfoRequiredTag
-> = z.nativeEnum(AdditionalContactInfoRequiredTag);
-
-/** @internal */
-export const AdditionalContactInfoRequiredTag$outboundSchema: z.ZodNativeEnum<
-  typeof AdditionalContactInfoRequiredTag
-> = AdditionalContactInfoRequiredTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AdditionalContactInfoRequiredTag$ {
-  /** @deprecated use `AdditionalContactInfoRequiredTag$inboundSchema` instead. */
-  export const inboundSchema = AdditionalContactInfoRequiredTag$inboundSchema;
-  /** @deprecated use `AdditionalContactInfoRequiredTag$outboundSchema` instead. */
-  export const outboundSchema = AdditionalContactInfoRequiredTag$outboundSchema;
-}
-
-/** @internal */
 export const AdditionalContactInfoRequired$inboundSchema: z.ZodType<
   AdditionalContactInfoRequired,
   z.ZodTypeDef,
@@ -103,17 +77,12 @@ export const AdditionalContactInfoRequired$inboundSchema: z.ZodType<
   status: z.number(),
   code: AdditionalContactInfoRequiredCode$inboundSchema,
   message: z.string(),
-  _tag: AdditionalContactInfoRequiredTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new AdditionalContactInfoRequired(remapped, {
+    return new AdditionalContactInfoRequired(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -125,7 +94,6 @@ export type AdditionalContactInfoRequired$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -135,18 +103,11 @@ export const AdditionalContactInfoRequired$outboundSchema: z.ZodType<
   AdditionalContactInfoRequired
 > = z.instanceof(AdditionalContactInfoRequired)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: AdditionalContactInfoRequiredCode$outboundSchema,
-      message: z.string(),
-      tag: AdditionalContactInfoRequiredTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: AdditionalContactInfoRequiredCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

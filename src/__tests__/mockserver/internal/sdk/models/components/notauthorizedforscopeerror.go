@@ -29,26 +29,3 @@ func (e *NotAuthorizedForScopeCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for NotAuthorizedForScopeCode: %v", v)
 	}
 }
-
-type NotAuthorizedForScopeTag string
-
-const (
-	NotAuthorizedForScopeTagNotAuthorizedForScope NotAuthorizedForScopeTag = "NotAuthorizedForScope"
-)
-
-func (e NotAuthorizedForScopeTag) ToPointer() *NotAuthorizedForScopeTag {
-	return &e
-}
-func (e *NotAuthorizedForScopeTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "NotAuthorizedForScope":
-		*e = NotAuthorizedForScopeTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NotAuthorizedForScopeTag: %v", v)
-	}
-}

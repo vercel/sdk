@@ -64,10 +64,10 @@ export type UpdateDomainAutoRenewDomainsRegistrarResponseBody =
  * There was something wrong with the request
  */
 export type UpdateDomainAutoRenewResponseBody =
-  | HttpApiDecodeError
-  | DomainNotRegistered
+  | DomainAlreadyRenewing
   | DomainNotRenewable
-  | DomainAlreadyRenewing;
+  | DomainNotRegistered
+  | HttpApiDecodeError;
 
 /** @internal */
 export const UpdateDomainAutoRenewRequestBody$inboundSchema: z.ZodType<
@@ -262,18 +262,18 @@ export const UpdateDomainAutoRenewResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  HttpApiDecodeError$inboundSchema,
-  DomainNotRegistered$inboundSchema,
-  DomainNotRenewable$inboundSchema,
   DomainAlreadyRenewing$inboundSchema,
+  DomainNotRenewable$inboundSchema,
+  DomainNotRegistered$inboundSchema,
+  HttpApiDecodeError$inboundSchema,
 ]);
 
 /** @internal */
 export type UpdateDomainAutoRenewResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | DomainNotRegistered$Outbound
+  | DomainAlreadyRenewing$Outbound
   | DomainNotRenewable$Outbound
-  | DomainAlreadyRenewing$Outbound;
+  | DomainNotRegistered$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
@@ -281,10 +281,10 @@ export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDomainAutoRenewResponseBody
 > = z.union([
-  HttpApiDecodeError$outboundSchema,
-  DomainNotRegistered$outboundSchema,
-  DomainNotRenewable$outboundSchema,
   DomainAlreadyRenewing$outboundSchema,
+  DomainNotRenewable$outboundSchema,
+  DomainNotRegistered$outboundSchema,
+  HttpApiDecodeError$outboundSchema,
 ]);
 
 /**

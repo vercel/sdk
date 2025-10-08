@@ -12,9 +12,9 @@ const args = {
 
 export const tool$domainsCheckDomainStatus: ToolDefinition<typeof args> = {
   name: "domains-check-domain-status",
-  description: `Check a Domain Availability
+  description: `Check a Domain Availability (deprecated)
 
-Check if a domain name is available for purchase.`,
+This endpoint is deprecated and replaced with the endpoint [Get availability for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-availability-for-a-domain). Check if a domain name is available for purchase.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsCheckDomainStatus(

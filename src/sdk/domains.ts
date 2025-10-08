@@ -54,10 +54,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Domains extends ClientSDK {
   /**
-   * Purchase a domain
+   * Purchase a domain (deprecated)
    *
    * @remarks
-   * Allows to purchase the specified domain.
+   * This endpoint is deprecated and replaced with the endpoint [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain). Purchases the specified domain.
    */
   async buyDomain(
     request: BuyDomainRequest,
@@ -71,10 +71,10 @@ export class Domains extends ClientSDK {
   }
 
   /**
-   * Check the price for a domain
+   * Check the price for a domain (deprecated)
    *
    * @remarks
-   * Check the price to purchase a domain and how long a single purchase period is.
+   * This endpoint is deprecated and replaced with the endpoint [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain). Check the price to purchase a domain and how long a single purchase period is.
    */
   async checkDomainPrice(
     request: CheckDomainPriceRequest,
@@ -88,10 +88,10 @@ export class Domains extends ClientSDK {
   }
 
   /**
-   * Check a Domain Availability
+   * Check a Domain Availability (deprecated)
    *
    * @remarks
-   * Check if a domain name is available for purchase.
+   * This endpoint is deprecated and replaced with the endpoint [Get availability for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-availability-for-a-domain). Check if a domain name is available for purchase.
    */
   async checkDomainStatus(
     request: CheckDomainStatusRequest,
@@ -105,10 +105,10 @@ export class Domains extends ClientSDK {
   }
 
   /**
-   * Get domain transfer info.
+   * Get domain transfer info (deprecated)
    *
    * @remarks
-   * Fetch domain transfer availability or transfer status if a transfer is in progress.
+   * This endpoint is deprecated and replaced with the endpoint [Get a domain's transfer status](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-a-domain-s-transfer-status). Fetch domain transfer availability or transfer status if a transfer is in progress.
    */
   async getDomainTransfer(
     request: GetDomainTransferRequest,
@@ -173,10 +173,10 @@ export class Domains extends ClientSDK {
   }
 
   /**
-   * Register or transfer-in a new Domain
+   * Add an existing domain to the Vercel platform
    *
    * @remarks
-   * This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.
+   * This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please use the endpoint [Transfer-in a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).
    */
   async createOrTransferDomain(
     request: CreateOrTransferDomainRequest,
@@ -193,7 +193,7 @@ export class Domains extends ClientSDK {
    * Update or move apex domain
    *
    * @remarks
-   * Update or move apex domain.
+   * Update or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For this, please use the endpoints [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) and [Update nameservers for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain).
    */
   async patchDomain(
     request: PatchDomainRequest,

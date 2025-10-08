@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// TooManyDomainsError - The number of domains in the order is too high.
 type TooManyDomainsError struct {
 	Status   float64                       `json:"status"`
 	Code     components.TooManyDomainsCode `json:"code"`
 	Message  string                        `json:"message"`
-	Tag      components.TooManyDomainsTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata       `json:"-"`
 }
 

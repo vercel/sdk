@@ -30,10 +30,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Check a Domain Availability
+ * Check a Domain Availability (deprecated)
  *
  * @remarks
- * Check if a domain name is available for purchase.
+ * This endpoint is deprecated and replaced with the endpoint [Get availability for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-availability-for-a-domain). Check if a domain name is available for purchase.
  */
 export function domainsCheckDomainStatus(
   client: VercelCore,

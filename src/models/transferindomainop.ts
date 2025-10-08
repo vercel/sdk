@@ -104,10 +104,16 @@ export type TransferInDomainContactInformation = {
 
 export type TransferInDomainRequestBody = {
   authCode: string;
+  /**
+   * Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint.
+   */
   autoRenew: boolean;
+  /**
+   * The number of years to renew the domain for once it is transferred in. This must be a valid number of transfer years for the TLD.
+   */
   years: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   expectedPrice: number;
   contactInformation: TransferInDomainContactInformation;
@@ -129,11 +135,11 @@ export type TransferInDomainDomainsRegistrarResponseResponseBody =
  * There was something wrong with the request
  */
 export type TransferInDomainDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
-  | TldNotSupported
-  | DomainNotAvailable
+  | BadRequest
   | ExpectedPriceMismatch
-  | BadRequest;
+  | DomainNotAvailable
+  | TldNotSupported
+  | HttpApiDecodeError;
 
 export const TransferInDomainMethod = {
   Get: "GET",
@@ -456,20 +462,20 @@ export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    HttpApiDecodeError$inboundSchema,
-    TldNotSupported$inboundSchema,
-    DomainNotAvailable$inboundSchema,
-    ExpectedPriceMismatch$inboundSchema,
     BadRequest$inboundSchema,
+    ExpectedPriceMismatch$inboundSchema,
+    DomainNotAvailable$inboundSchema,
+    TldNotSupported$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
   ]);
 
 /** @internal */
 export type TransferInDomainDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | TldNotSupported$Outbound
-  | DomainNotAvailable$Outbound
+  | BadRequest$Outbound
   | ExpectedPriceMismatch$Outbound
-  | BadRequest$Outbound;
+  | DomainNotAvailable$Outbound
+  | TldNotSupported$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
@@ -478,11 +484,11 @@ export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
     z.ZodTypeDef,
     TransferInDomainDomainsRegistrarResponseBody
   > = z.union([
-    HttpApiDecodeError$outboundSchema,
-    TldNotSupported$outboundSchema,
-    DomainNotAvailable$outboundSchema,
-    ExpectedPriceMismatch$outboundSchema,
     BadRequest$outboundSchema,
+    ExpectedPriceMismatch$outboundSchema,
+    DomainNotAvailable$outboundSchema,
+    TldNotSupported$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
   ]);
 
 /**

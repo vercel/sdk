@@ -11,7 +11,6 @@ type NotAuthorizedForScopeError struct {
 	Status   float64                              `json:"status"`
 	Code     components.NotAuthorizedForScopeCode `json:"code"`
 	Message  string                               `json:"message"`
-	Tag      components.NotAuthorizedForScopeTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata              `json:"-"`
 }
 

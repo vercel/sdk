@@ -29,26 +29,3 @@ func (e *DomainNotRegisteredCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for DomainNotRegisteredCode: %v", v)
 	}
 }
-
-type DomainNotRegisteredTag string
-
-const (
-	DomainNotRegisteredTagDomainNotRegistered DomainNotRegisteredTag = "DomainNotRegistered"
-)
-
-func (e DomainNotRegisteredTag) ToPointer() *DomainNotRegisteredTag {
-	return &e
-}
-func (e *DomainNotRegisteredTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "DomainNotRegistered":
-		*e = DomainNotRegisteredTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DomainNotRegisteredTag: %v", v)
-	}
-}

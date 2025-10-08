@@ -48,7 +48,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get price data for a specific domain
+ * Get price data for a domain
  *
  * @remarks
  * Get price data for a specific domain

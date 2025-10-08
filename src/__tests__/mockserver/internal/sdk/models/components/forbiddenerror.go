@@ -29,26 +29,3 @@ func (e *ForbiddenCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for ForbiddenCode: %v", v)
 	}
 }
-
-type ForbiddenTag string
-
-const (
-	ForbiddenTagForbidden ForbiddenTag = "Forbidden"
-)
-
-func (e ForbiddenTag) ToPointer() *ForbiddenTag {
-	return &e
-}
-func (e *ForbiddenTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "Forbidden":
-		*e = ForbiddenTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ForbiddenTag: %v", v)
-	}
-}

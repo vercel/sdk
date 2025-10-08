@@ -30,10 +30,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Purchase a domain
+ * Purchase a domain (deprecated)
  *
  * @remarks
- * Allows to purchase the specified domain.
+ * This endpoint is deprecated and replaced with the endpoint [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain). Purchases the specified domain.
  */
 export function domainsBuyDomain(
   client: VercelCore,

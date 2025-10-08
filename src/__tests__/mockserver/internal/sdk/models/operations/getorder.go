@@ -84,7 +84,7 @@ type DomainTransfer struct {
 	AutoRenew    bool                 `json:"autoRenew"`
 	DomainName   string               `json:"domainName"`
 	Status       DomainStatus3        `json:"status"`
-	// Represents a monetary amount in USD dollars
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	Price float64 `json:"price"`
 	Years float64 `json:"years"`
 }
@@ -204,7 +204,7 @@ type DomainRenewal struct {
 	PurchaseType PurchaseTypeRenewal `json:"purchaseType"`
 	DomainName   string              `json:"domainName"`
 	Status       DomainStatus2       `json:"status"`
-	// Represents a monetary amount in USD dollars
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	Price float64 `json:"price"`
 	Years float64 `json:"years"`
 }
@@ -318,7 +318,7 @@ type DomainPurchase struct {
 	AutoRenew    bool                 `json:"autoRenew"`
 	DomainName   string               `json:"domainName"`
 	Status       DomainStatus1        `json:"status"`
-	// Represents a monetary amount in USD dollars
+	// The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
 	Price float64 `json:"price"`
 	Years float64 `json:"years"`
 }

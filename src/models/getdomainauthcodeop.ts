@@ -46,8 +46,8 @@ export type GetDomainAuthCodeDomainsRegistrarResponseResponseBody =
  * There was something wrong with the request
  */
 export type GetDomainAuthCodeDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
-  | DomainNotRegistered;
+  | DomainNotRegistered
+  | HttpApiDecodeError;
 
 /**
  * Success
@@ -181,14 +181,14 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([
-    HttpApiDecodeError$inboundSchema,
     DomainNotRegistered$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
   ]);
 
 /** @internal */
 export type GetDomainAuthCodeDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | DomainNotRegistered$Outbound;
+  | DomainNotRegistered$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema:
@@ -197,8 +197,8 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$outboundSchema:
     z.ZodTypeDef,
     GetDomainAuthCodeDomainsRegistrarResponseBody
   > = z.union([
-    HttpApiDecodeError$outboundSchema,
     DomainNotRegistered$outboundSchema,
+    HttpApiDecodeError$outboundSchema,
   ]);
 
 /**

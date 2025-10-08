@@ -7,11 +7,11 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+// DomainAlreadyRenewingError - The domain is already renewing.
 type DomainAlreadyRenewingError struct {
 	Status   float64                              `json:"status"`
 	Code     components.DomainAlreadyRenewingCode `json:"code"`
 	Message  string                               `json:"message"`
-	Tag      components.DomainAlreadyRenewingTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata              `json:"-"`
 }
 

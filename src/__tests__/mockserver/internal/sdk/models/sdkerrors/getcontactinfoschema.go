@@ -13,14 +13,14 @@ import (
 type GetContactInfoSchemaBadRequestType string
 
 const (
-	GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError GetContactInfoSchemaBadRequestType = "HttpApiDecodeError"
 	GetContactInfoSchemaBadRequestTypeBadRequestError    GetContactInfoSchemaBadRequestType = "BadRequest_error"
+	GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError GetContactInfoSchemaBadRequestType = "HttpApiDecodeError"
 )
 
 // GetContactInfoSchemaBadRequest - There was something wrong with the request
 type GetContactInfoSchemaBadRequest struct {
-	HTTPAPIDecodeError *HTTPAPIDecodeError `queryParam:"inline"`
 	BadRequestError    *BadRequestError    `queryParam:"inline"`
+	HTTPAPIDecodeError *HTTPAPIDecodeError `queryParam:"inline"`
 
 	Type GetContactInfoSchemaBadRequestType
 
@@ -28,15 +28,6 @@ type GetContactInfoSchemaBadRequest struct {
 }
 
 var _ error = &GetContactInfoSchemaBadRequest{}
-
-func CreateGetContactInfoSchemaBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetContactInfoSchemaBadRequest {
-	typ := GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError
-
-	return GetContactInfoSchemaBadRequest{
-		HTTPAPIDecodeError: &httpAPIDecodeError,
-		Type:               typ,
-	}
-}
 
 func CreateGetContactInfoSchemaBadRequestBadRequestError(badRequestError BadRequestError) GetContactInfoSchemaBadRequest {
 	typ := GetContactInfoSchemaBadRequestTypeBadRequestError
@@ -47,14 +38,16 @@ func CreateGetContactInfoSchemaBadRequestBadRequestError(badRequestError BadRequ
 	}
 }
 
-func (u *GetContactInfoSchemaBadRequest) UnmarshalJSON(data []byte) error {
+func CreateGetContactInfoSchemaBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDecodeError) GetContactInfoSchemaBadRequest {
+	typ := GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError
 
-	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
-	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
-		u.HTTPAPIDecodeError = &httpAPIDecodeError
-		u.Type = GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError
-		return nil
+	return GetContactInfoSchemaBadRequest{
+		HTTPAPIDecodeError: &httpAPIDecodeError,
+		Type:               typ,
 	}
+}
+
+func (u *GetContactInfoSchemaBadRequest) UnmarshalJSON(data []byte) error {
 
 	var badRequestError BadRequestError = BadRequestError{}
 	if err := utils.UnmarshalJSON(data, &badRequestError, "", true, nil); err == nil {
@@ -63,16 +56,23 @@ func (u *GetContactInfoSchemaBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var httpAPIDecodeError HTTPAPIDecodeError = HTTPAPIDecodeError{}
+	if err := utils.UnmarshalJSON(data, &httpAPIDecodeError, "", true, nil); err == nil {
+		u.HTTPAPIDecodeError = &httpAPIDecodeError
+		u.Type = GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetContactInfoSchemaBadRequest", string(data))
 }
 
 func (u GetContactInfoSchemaBadRequest) MarshalJSON() ([]byte, error) {
-	if u.HTTPAPIDecodeError != nil {
-		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
-	}
-
 	if u.BadRequestError != nil {
 		return utils.MarshalJSON(u.BadRequestError, "", true)
+	}
+
+	if u.HTTPAPIDecodeError != nil {
+		return utils.MarshalJSON(u.HTTPAPIDecodeError, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetContactInfoSchemaBadRequest: all fields are null")
@@ -80,11 +80,11 @@ func (u GetContactInfoSchemaBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u GetContactInfoSchemaBadRequest) Error() string {
 	switch u.Type {
-	case GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError:
-		data, _ := json.Marshal(u.HTTPAPIDecodeError)
-		return string(data)
 	case GetContactInfoSchemaBadRequestTypeBadRequestError:
 		data, _ := json.Marshal(u.BadRequestError)
+		return string(data)
+	case GetContactInfoSchemaBadRequestTypeHTTPAPIDecodeError:
+		data, _ := json.Marshal(u.HTTPAPIDecodeError)
 		return string(data)
 	default:
 		return "unknown error"

@@ -11,7 +11,6 @@ type ForbiddenError struct {
 	Status   float64                  `json:"status"`
 	Code     components.ForbiddenCode `json:"code"`
 	Message  string                   `json:"message"`
-	Tag      components.ForbiddenTag  `json:"_tag"`
 	HTTPMeta components.HTTPMetadata  `json:"-"`
 }
 

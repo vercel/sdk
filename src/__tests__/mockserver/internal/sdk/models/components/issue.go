@@ -3,60 +3,11 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"mockserver/internal/sdk/utils"
 )
 
-// IssueTag - The tag identifying the type of parse issue
-type IssueTag string
-
-const (
-	IssueTagPointer        IssueTag = "Pointer"
-	IssueTagUnexpected     IssueTag = "Unexpected"
-	IssueTagMissing        IssueTag = "Missing"
-	IssueTagComposite      IssueTag = "Composite"
-	IssueTagRefinement     IssueTag = "Refinement"
-	IssueTagTransformation IssueTag = "Transformation"
-	IssueTagType           IssueTag = "Type"
-	IssueTagForbidden      IssueTag = "Forbidden"
-)
-
-func (e IssueTag) ToPointer() *IssueTag {
-	return &e
-}
-func (e *IssueTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "Pointer":
-		fallthrough
-	case "Unexpected":
-		fallthrough
-	case "Missing":
-		fallthrough
-	case "Composite":
-		fallthrough
-	case "Refinement":
-		fallthrough
-	case "Transformation":
-		fallthrough
-	case "Type":
-		fallthrough
-	case "Forbidden":
-		*e = IssueTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for IssueTag: %v", v)
-	}
-}
-
 // Issue - Represents an error encountered while parsing a value to match the schema
 type Issue struct {
-	// The tag identifying the type of parse issue
-	Tag IssueTag `json:"_tag"`
 	// The path to the property where the issue occurred
 	Path []PropertyKey `json:"path"`
 	// A descriptive message explaining the issue
@@ -68,17 +19,10 @@ func (i Issue) MarshalJSON() ([]byte, error) {
 }
 
 func (i *Issue) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"_tag", "path", "message"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"path", "message"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *Issue) GetTag() IssueTag {
-	if o == nil {
-		return IssueTag("")
-	}
-	return o.Tag
 }
 
 func (o *Issue) GetPath() []PropertyKey {

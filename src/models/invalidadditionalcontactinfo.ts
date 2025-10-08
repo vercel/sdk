@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -14,24 +13,21 @@ export type InvalidAdditionalContactInfoCode = ClosedEnum<
   typeof InvalidAdditionalContactInfoCode
 >;
 
-export const InvalidAdditionalContactInfoTag = {
-  InvalidAdditionalContactInfo: "InvalidAdditionalContactInfo",
-} as const;
-export type InvalidAdditionalContactInfoTag = ClosedEnum<
-  typeof InvalidAdditionalContactInfoTag
->;
-
+/**
+ * Additional contact information provided for the TLD is invalid.
+ */
 export type InvalidAdditionalContactInfoData = {
   status: number;
   code: InvalidAdditionalContactInfoCode;
   message: string;
-  tag: InvalidAdditionalContactInfoTag;
 };
 
+/**
+ * Additional contact information provided for the TLD is invalid.
+ */
 export class InvalidAdditionalContactInfo extends VercelError {
   status: number;
   code: InvalidAdditionalContactInfoCode;
-  tag: InvalidAdditionalContactInfoTag;
 
   /** The original data that was passed to this error instance. */
   data$: InvalidAdditionalContactInfoData;
@@ -45,7 +41,6 @@ export class InvalidAdditionalContactInfo extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "InvalidAdditionalContactInfo";
   }
@@ -73,27 +68,6 @@ export namespace InvalidAdditionalContactInfoCode$ {
 }
 
 /** @internal */
-export const InvalidAdditionalContactInfoTag$inboundSchema: z.ZodNativeEnum<
-  typeof InvalidAdditionalContactInfoTag
-> = z.nativeEnum(InvalidAdditionalContactInfoTag);
-
-/** @internal */
-export const InvalidAdditionalContactInfoTag$outboundSchema: z.ZodNativeEnum<
-  typeof InvalidAdditionalContactInfoTag
-> = InvalidAdditionalContactInfoTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvalidAdditionalContactInfoTag$ {
-  /** @deprecated use `InvalidAdditionalContactInfoTag$inboundSchema` instead. */
-  export const inboundSchema = InvalidAdditionalContactInfoTag$inboundSchema;
-  /** @deprecated use `InvalidAdditionalContactInfoTag$outboundSchema` instead. */
-  export const outboundSchema = InvalidAdditionalContactInfoTag$outboundSchema;
-}
-
-/** @internal */
 export const InvalidAdditionalContactInfo$inboundSchema: z.ZodType<
   InvalidAdditionalContactInfo,
   z.ZodTypeDef,
@@ -102,17 +76,12 @@ export const InvalidAdditionalContactInfo$inboundSchema: z.ZodType<
   status: z.number(),
   code: InvalidAdditionalContactInfoCode$inboundSchema,
   message: z.string(),
-  _tag: InvalidAdditionalContactInfoTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new InvalidAdditionalContactInfo(remapped, {
+    return new InvalidAdditionalContactInfo(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -124,7 +93,6 @@ export type InvalidAdditionalContactInfo$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -134,18 +102,11 @@ export const InvalidAdditionalContactInfo$outboundSchema: z.ZodType<
   InvalidAdditionalContactInfo
 > = z.instanceof(InvalidAdditionalContactInfo)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: InvalidAdditionalContactInfoCode$outboundSchema,
-      message: z.string(),
-      tag: InvalidAdditionalContactInfoTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: InvalidAdditionalContactInfoCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

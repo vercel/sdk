@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { VercelError } from "./vercelerror.js";
 
@@ -12,22 +11,21 @@ export const TldNotSupportedCode = {
 } as const;
 export type TldNotSupportedCode = ClosedEnum<typeof TldNotSupportedCode>;
 
-export const TldNotSupportedTag = {
-  TldNotSupported: "TldNotSupported",
-} as const;
-export type TldNotSupportedTag = ClosedEnum<typeof TldNotSupportedTag>;
-
+/**
+ * The TLD is not currently supported.
+ */
 export type TldNotSupportedData = {
   status: number;
   code: TldNotSupportedCode;
   message: string;
-  tag: TldNotSupportedTag;
 };
 
+/**
+ * The TLD is not currently supported.
+ */
 export class TldNotSupported extends VercelError {
   status: number;
   code: TldNotSupportedCode;
-  tag: TldNotSupportedTag;
 
   /** The original data that was passed to this error instance. */
   data$: TldNotSupportedData;
@@ -41,7 +39,6 @@ export class TldNotSupported extends VercelError {
     this.data$ = err;
     this.status = err.status;
     this.code = err.code;
-    this.tag = err.tag;
 
     this.name = "TldNotSupported";
   }
@@ -69,27 +66,6 @@ export namespace TldNotSupportedCode$ {
 }
 
 /** @internal */
-export const TldNotSupportedTag$inboundSchema: z.ZodNativeEnum<
-  typeof TldNotSupportedTag
-> = z.nativeEnum(TldNotSupportedTag);
-
-/** @internal */
-export const TldNotSupportedTag$outboundSchema: z.ZodNativeEnum<
-  typeof TldNotSupportedTag
-> = TldNotSupportedTag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TldNotSupportedTag$ {
-  /** @deprecated use `TldNotSupportedTag$inboundSchema` instead. */
-  export const inboundSchema = TldNotSupportedTag$inboundSchema;
-  /** @deprecated use `TldNotSupportedTag$outboundSchema` instead. */
-  export const outboundSchema = TldNotSupportedTag$outboundSchema;
-}
-
-/** @internal */
 export const TldNotSupported$inboundSchema: z.ZodType<
   TldNotSupported,
   z.ZodTypeDef,
@@ -98,17 +74,12 @@ export const TldNotSupported$inboundSchema: z.ZodType<
   status: z.number(),
   code: TldNotSupportedCode$inboundSchema,
   message: z.string(),
-  _tag: TldNotSupportedTag$inboundSchema,
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    const remapped = remap$(v, {
-      "_tag": "tag",
-    });
-
-    return new TldNotSupported(remapped, {
+    return new TldNotSupported(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -120,7 +91,6 @@ export type TldNotSupported$Outbound = {
   status: number;
   code: string;
   message: string;
-  _tag: string;
 };
 
 /** @internal */
@@ -130,18 +100,11 @@ export const TldNotSupported$outboundSchema: z.ZodType<
   TldNotSupported
 > = z.instanceof(TldNotSupported)
   .transform(v => v.data$)
-  .pipe(
-    z.object({
-      status: z.number(),
-      code: TldNotSupportedCode$outboundSchema,
-      message: z.string(),
-      tag: TldNotSupportedTag$outboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        tag: "_tag",
-      });
-    }),
-  );
+  .pipe(z.object({
+    status: z.number(),
+    code: TldNotSupportedCode$outboundSchema,
+    message: z.string(),
+  }));
 
 /**
  * @internal

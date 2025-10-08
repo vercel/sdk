@@ -18912,14 +18912,14 @@
     },
     "/v5/domains/buy": {
       "post": {
-        "description": "Allows to purchase the specified domain.",
+        "description": "This endpoint is deprecated and replaced with the endpoint [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain). Purchases the specified domain.",
         "operationId": "buyDomain",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Purchase a domain",
+        "summary": "Purchase a domain (deprecated)",
         "tags": [
           "domains"
         ],
@@ -19147,14 +19147,14 @@
     },
     "/v4/domains/price": {
       "get": {
-        "description": "Check the price to purchase a domain and how long a single purchase period is.",
+        "description": "This endpoint is deprecated and replaced with the endpoint [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain). Check the price to purchase a domain and how long a single purchase period is.",
         "operationId": "checkDomainPrice",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Check the price for a domain",
+        "summary": "Check the price for a domain (deprecated)",
         "tags": [
           "domains"
         ],
@@ -19254,14 +19254,14 @@
     },
     "/v4/domains/status": {
       "get": {
-        "description": "Check if a domain name is available for purchase.",
+        "description": "This endpoint is deprecated and replaced with the endpoint [Get availability for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-availability-for-a-domain). Check if a domain name is available for purchase.",
         "operationId": "checkDomainStatus",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Check a Domain Availability",
+        "summary": "Check a Domain Availability (deprecated)",
         "tags": [
           "domains"
         ],
@@ -20575,14 +20575,15 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "A list of the TLDs supported by Vercel.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
                     "type": "string"
-                  }
+                  },
+                  "description": "A list of the TLDs supported by Vercel."
                 }
               }
             }
@@ -20638,8 +20639,8 @@
             }
           }
         },
-        "description": "Get supported TLDs",
-        "summary": "Get a list of TLDs supported by Vercel"
+        "description": "Get a list of TLDs supported by Vercel",
+        "summary": "Get supported TLDs"
       }
     },
     "/v1/registrar/tlds/{tld}/price": {
@@ -20686,7 +20687,8 @@
                   ],
                   "properties": {
                     "years": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "The number of years the returned price is for."
                     },
                     "purchasePrice": {
                       "$ref": "#/components/schemas/Dollars",
@@ -20713,10 +20715,10 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                      "$ref": "#/components/schemas/TldNotSupported"
                     },
                     {
-                      "$ref": "#/components/schemas/TldNotSupported"
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -20764,8 +20766,8 @@
             }
           }
         },
-        "description": "Get TLD price data",
-        "summary": "Get price data for a specific TLD"
+        "description": "Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.",
+        "summary": "Get TLD price data"
       }
     },
     "/v1/registrar/domains/{domain}/availability": {
@@ -20870,8 +20872,8 @@
             }
           }
         },
-        "description": "Get availability for a specific domain",
-        "summary": "Get availability for a specific domain"
+        "description": "Get availability for a specific domain. If the domain is available, it can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.",
+        "summary": "Get availability for a domain"
       }
     },
     "/v1/registrar/domains/{domain}/price": {
@@ -20945,13 +20947,13 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                      "$ref": "#/components/schemas/BadRequest"
                     },
                     {
                       "$ref": "#/components/schemas/TldNotSupported"
                     },
                     {
-                      "$ref": "#/components/schemas/BadRequest"
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -21000,7 +21002,7 @@
           }
         },
         "description": "Get price data for a specific domain",
-        "summary": "Get price data for a specific domain"
+        "summary": "Get price data for a domain"
       }
     },
     "/v1/registrar/domains/availability": {
@@ -21102,7 +21104,7 @@
             }
           }
         },
-        "description": "Get availability for multiple domains",
+        "description": "Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.",
         "summary": "Get availability for multiple domains",
         "requestBody": {
           "content": {
@@ -21180,10 +21182,10 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                      "$ref": "#/components/schemas/DomainNotRegistered"
                     },
                     {
-                      "$ref": "#/components/schemas/DomainNotRegistered"
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -21218,7 +21220,7 @@
             }
           },
           "404": {
-            "description": "DomainNotFound",
+            "description": "The domain was not found in our system.",
             "content": {
               "application/json": {
                 "schema": {
@@ -21248,7 +21250,7 @@
             }
           }
         },
-        "description": "Get the auth code for a domain",
+        "description": "Get the auth code for a domain. This is required to transfer a domain from Vercel to another registrar.",
         "summary": "Get the auth code for a domain"
       }
     },
@@ -21327,25 +21329,25 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TldNotSupported"
-                    },
-                    {
-                      "$ref": "#/components/schemas/DomainNotAvailable"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
-                    },
-                    {
-                      "$ref": "#/components/schemas/AdditionalContactInfoRequired"
+                      "$ref": "#/components/schemas/OrderTooExpensive"
                     },
                     {
                       "$ref": "#/components/schemas/InvalidAdditionalContactInfo"
                     },
                     {
-                      "$ref": "#/components/schemas/OrderTooExpensive"
+                      "$ref": "#/components/schemas/AdditionalContactInfoRequired"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -21415,10 +21417,12 @@
                 ],
                 "properties": {
                   "autoRenew": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint."
                   },
                   "years": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The number of years to purchase the domain for."
                   },
                   "expectedPrice": {
                     "$ref": "#/components/schemas/Dollars"
@@ -21478,7 +21482,8 @@
                         "properties": {}
                       }
                     },
-                    "additionalProperties": false
+                    "additionalProperties": false,
+                    "description": "The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields."
                   }
                 },
                 "additionalProperties": false
@@ -21555,31 +21560,31 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TldNotSupported"
-                    },
-                    {
-                      "$ref": "#/components/schemas/DomainNotAvailable"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
-                    },
-                    {
-                      "$ref": "#/components/schemas/DuplicateDomains"
-                    },
-                    {
-                      "$ref": "#/components/schemas/AdditionalContactInfoRequired"
-                    },
-                    {
-                      "$ref": "#/components/schemas/InvalidAdditionalContactInfo"
+                      "$ref": "#/components/schemas/OrderTooExpensive"
                     },
                     {
                       "$ref": "#/components/schemas/TooManyDomains"
                     },
                     {
-                      "$ref": "#/components/schemas/OrderTooExpensive"
+                      "$ref": "#/components/schemas/InvalidAdditionalContactInfo"
+                    },
+                    {
+                      "$ref": "#/components/schemas/AdditionalContactInfoRequired"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DuplicateDomains"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -21634,8 +21639,8 @@
             }
           }
         },
-        "description": "Buy multiple domains",
-        "summary": "Buy multiple domains at once",
+        "description": "Buy multiple domains at once",
+        "summary": "Buy multiple domains",
         "requestBody": {
           "content": {
             "application/json": {
@@ -21662,10 +21667,12 @@
                           "$ref": "#/components/schemas/DomainName"
                         },
                         "autoRenew": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint."
                         },
                         "years": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "The number of years to purchase the domain for."
                         },
                         "expectedPrice": {
                           "$ref": "#/components/schemas/Dollars"
@@ -21729,7 +21736,8 @@
                         "properties": {}
                       }
                     },
-                    "additionalProperties": false
+                    "additionalProperties": false,
+                    "description": "The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields."
                   }
                 },
                 "additionalProperties": false
@@ -21815,19 +21823,19 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TldNotSupported"
-                    },
-                    {
-                      "$ref": "#/components/schemas/DomainNotAvailable"
+                      "$ref": "#/components/schemas/BadRequest"
                     },
                     {
                       "$ref": "#/components/schemas/ExpectedPriceMismatch"
                     },
                     {
-                      "$ref": "#/components/schemas/BadRequest"
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -21882,8 +21890,8 @@
             }
           }
         },
-        "description": "Transfer-in a domain",
-        "summary": "Transfer a domain in from another registrar",
+        "description": "Transfer a domain in from another registrar",
+        "summary": "Transfer-in a domain",
         "requestBody": {
           "content": {
             "application/json": {
@@ -21901,10 +21909,12 @@
                     "type": "string"
                   },
                   "autoRenew": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the domain should be auto-renewed before it expires. This can be configured later through the Vercel Dashboard or the [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) endpoint."
                   },
                   "years": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The number of years to renew the domain for once it is transferred in. This must be a valid number of transfer years for the TLD."
                   },
                   "expectedPrice": {
                     "$ref": "#/components/schemas/Dollars"
@@ -22092,8 +22102,8 @@
             }
           }
         },
-        "description": "Get a domain's transfer status",
-        "summary": "Get the transfer status for a domain"
+        "description": "Get the transfer status for a domain",
+        "summary": "Get a domain's transfer status"
       }
     },
     "/v1/registrar/domains/{domain}/renew": {
@@ -22171,22 +22181,22 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TldNotSupported"
-                    },
-                    {
-                      "$ref": "#/components/schemas/DomainNotAvailable"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
+                      "$ref": "#/components/schemas/BadRequest"
                     },
                     {
                       "$ref": "#/components/schemas/DomainNotRegistered"
                     },
                     {
-                      "$ref": "#/components/schemas/BadRequest"
+                      "$ref": "#/components/schemas/ExpectedPriceMismatch"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DomainNotAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/TldNotSupported"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -22221,7 +22231,7 @@
             }
           },
           "404": {
-            "description": "DomainNotFound",
+            "description": "The domain was not found in our system.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22264,7 +22274,8 @@
                 ],
                 "properties": {
                   "years": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The number of years to renew the domain for."
                   },
                   "expectedPrice": {
                     "$ref": "#/components/schemas/Dollars"
@@ -22363,16 +22374,16 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
-                    },
-                    {
-                      "$ref": "#/components/schemas/DomainNotRegistered"
+                      "$ref": "#/components/schemas/DomainAlreadyRenewing"
                     },
                     {
                       "$ref": "#/components/schemas/DomainNotRenewable"
                     },
                     {
-                      "$ref": "#/components/schemas/DomainAlreadyRenewing"
+                      "$ref": "#/components/schemas/DomainNotRegistered"
+                    },
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -22407,7 +22418,7 @@
             }
           },
           "404": {
-            "description": "DomainNotFound",
+            "description": "The domain was not found in our system.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22437,8 +22448,8 @@
             }
           }
         },
-        "description": "Update auto-renew for a domain",
-        "summary": "Update the auto-renew setting for a domain",
+        "description": "Update the auto-renew setting for a domain",
+        "summary": "Update auto-renew for a domain",
         "requestBody": {
           "content": {
             "application/json": {
@@ -22492,10 +22503,10 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                      "$ref": "#/components/schemas/DomainNotRegistered"
                     },
                     {
-                      "$ref": "#/components/schemas/DomainNotRegistered"
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -22530,7 +22541,7 @@
             }
           },
           "404": {
-            "description": "DomainNotFound",
+            "description": "The domain was not found in our system.",
             "content": {
               "application/json": {
                 "schema": {
@@ -22560,8 +22571,8 @@
             }
           }
         },
-        "description": "Update nameservers for a domain",
-        "summary": "Update the nameservers for a domain",
+        "description": "Update the nameservers for a domain. Pass an empty array to use Vercel's default nameservers.",
+        "summary": "Update nameservers for a domain",
         "requestBody": {
           "content": {
             "application/json": {
@@ -22626,10 +22637,10 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                      "$ref": "#/components/schemas/BadRequest"
                     },
                     {
-                      "$ref": "#/components/schemas/BadRequest"
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
                     }
                   ]
                 }
@@ -22677,8 +22688,8 @@
             }
           }
         },
-        "description": "Get contact info schema",
-        "summary": "Get the schema for the tld-specific contact information for a domain"
+        "description": "Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.",
+        "summary": "Get contact info schema"
       }
     },
     "/v1/registrar/orders/{orderId}": {
@@ -23039,20 +23050,20 @@
             }
           }
         },
-        "description": "Get a domain order",
-        "summary": "Get information about a domain order by its ID"
+        "description": "Get information about a domain order by its ID",
+        "summary": "Get a domain order"
       }
     },
     "/v1/domains/{domain}/registry": {
       "get": {
-        "description": "Fetch domain transfer availability or transfer status if a transfer is in progress.",
+        "description": "This endpoint is deprecated and replaced with the endpoint [Get a domain's transfer status](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-a-domain-s-transfer-status). Fetch domain transfer availability or transfer status if a transfer is in progress.",
         "operationId": "getDomainTransfer",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Get domain transfer info.",
+        "summary": "Get domain transfer info (deprecated)",
         "tags": [
           "domains"
         ],
@@ -23855,14 +23866,14 @@
     },
     "/v7/domains": {
       "post": {
-        "description": "This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Can also be used for initiating a domain transfer request from an external Registrar to Vercel.",
+        "description": "This endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please use the endpoint [Transfer-in a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain).",
         "operationId": "createOrTransferDomain",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Register or transfer-in a new Domain",
+        "summary": "Add an existing domain to the Vercel platform",
         "tags": [
           "domains"
         ],
@@ -24091,9 +24102,9 @@
               "schema": {
                 "properties": {
                   "method": {
-                    "description": "The domain operation to perform. It can be either `add` or `transfer-in`.",
+                    "description": "The domain operation to perform. It can be either `add` or `move-in`.",
                     "type": "string",
-                    "example": "transfer-in"
+                    "example": "add"
                   }
                 },
                 "oneOf": [
@@ -24152,6 +24163,7 @@
                     }
                   },
                   {
+                    "deprecated": true,
                     "additionalProperties": false,
                     "type": "object",
                     "description": "transfer-in",
@@ -24191,7 +24203,7 @@
     },
     "/v3/domains/{domain}": {
       "patch": {
-        "description": "Update or move apex domain.",
+        "description": "Update or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For this, please use the endpoints [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) and [Update nameservers for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain).",
         "operationId": "patchDomain",
         "security": [
           {
@@ -24319,18 +24331,20 @@
                         "type": "string"
                       },
                       "renew": {
-                        "description": "Specifies whether domain should be renewed.",
-                        "type": "boolean"
+                        "description": "This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/auto-renew instead.",
+                        "type": "boolean",
+                        "deprecated": true
                       },
                       "customNameservers": {
-                        "description": "The custom nameservers for this project.",
+                        "description": "This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead.",
                         "items": {
                           "type": "string"
                         },
                         "maxItems": 4,
                         "minItems": 0,
                         "type": "array",
-                        "uniqueItems": true
+                        "uniqueItems": true,
+                        "deprecated": true
                       },
                       "zone": {
                         "description": "Specifies whether this is a DNS zone that intends to use Vercel's nameservers.",
@@ -39770,10 +39784,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -40778,17 +40792,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
+                            "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "updatedAt": {
-                              "type": "number"
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -40796,6 +40810,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -40828,9 +40845,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -41222,9 +41236,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -41246,6 +41257,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -41348,9 +41362,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -41372,6 +41383,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -41418,8 +41432,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -43160,11 +43174,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -43204,11 +43218,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -49363,10 +49377,10 @@
                             "type": "string",
                             "enum": [
                               "system",
+                              "secret",
                               "encrypted",
                               "plain",
-                              "sensitive",
-                              "secret"
+                              "sensitive"
                             ]
                           },
                           "sunsetSecretId": {
@@ -50371,17 +50385,17 @@
                                 "github-limited"
                               ]
                             },
-                            "repo": {
-                              "type": "string"
-                            },
-                            "repoId": {
+                            "updatedAt": {
                               "type": "number"
                             },
                             "createdAt": {
                               "type": "number"
                             },
-                            "updatedAt": {
-                              "type": "number"
+                            "repo": {
+                              "type": "string"
+                            },
+                            "sourceless": {
+                              "type": "boolean"
                             },
                             "org": {
                               "type": "string"
@@ -50389,6 +50403,9 @@
                             "repoOwnerId": {
                               "type": "number",
                               "description": "A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes."
+                            },
+                            "repoId": {
+                              "type": "number"
                             },
                             "deployHooks": {
                               "items": {
@@ -50421,9 +50438,6 @@
                             },
                             "gitCredentialId": {
                               "type": "string"
-                            },
-                            "sourceless": {
-                              "type": "boolean"
                             },
                             "productionBranch": {
                               "type": "string"
@@ -50815,9 +50829,6 @@
                     },
                     "resourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -50839,6 +50850,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -50941,9 +50955,6 @@
                     },
                     "defaultResourceConfig": {
                       "properties": {
-                        "elasticConcurrencyEnabled": {
-                          "type": "boolean"
-                        },
                         "fluid": {
                           "type": "boolean"
                         },
@@ -50965,6 +50976,9 @@
                           ]
                         },
                         "functionZeroConfigFailover": {
+                          "type": "boolean"
+                        },
+                        "elasticConcurrencyEnabled": {
                           "type": "boolean"
                         },
                         "buildMachineType": {
@@ -51011,8 +51025,8 @@
                         "deploymentType": {
                           "type": "string",
                           "enum": [
-                            "preview",
                             "all",
+                            "preview",
                             "prod_deployment_urls_and_all_previews",
                             "all_except_custom_domains"
                           ]
@@ -52753,11 +52767,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             },
                             "addresses": {
@@ -52797,11 +52811,11 @@
                             "deploymentType": {
                               "type": "string",
                               "enum": [
-                                "preview",
-                                "production",
                                 "all",
+                                "preview",
                                 "prod_deployment_urls_and_all_previews",
-                                "all_except_custom_domains"
+                                "all_except_custom_domains",
+                                "production"
                               ]
                             }
                           },
@@ -62747,6 +62761,9 @@
           },
           "403": {
             "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
           },
           "409": {
             "description": "The project is being transferred and uploading certificates is not possible"
@@ -79192,8 +79209,7 @@
         "type": "object",
         "required": [
           "issues",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "issues": {
@@ -79204,12 +79220,6 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "HttpApiDecodeError"
-            ]
           }
         },
         "additionalProperties": false,
@@ -79218,25 +79228,10 @@
       "Issue": {
         "type": "object",
         "required": [
-          "_tag",
           "path",
           "message"
         ],
         "properties": {
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "Pointer",
-              "Unexpected",
-              "Missing",
-              "Composite",
-              "Refinement",
-              "Transformation",
-              "Type",
-              "Forbidden"
-            ],
-            "description": "The tag identifying the type of parse issue"
-          },
           "path": {
             "type": "array",
             "items": {
@@ -79289,8 +79284,7 @@
           "code",
           "message",
           "retryAfter",
-          "limit",
-          "_tag"
+          "limit"
         ],
         "properties": {
           "status": {
@@ -79343,12 +79337,6 @@
               }
             },
             "additionalProperties": false
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "TooManyRequests"
-            ]
           }
         },
         "additionalProperties": false
@@ -79358,8 +79346,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79376,12 +79363,6 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "Unauthorized"
-            ]
           }
         },
         "additionalProperties": false
@@ -79391,8 +79372,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79409,12 +79389,6 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "NotAuthorizedForScope"
-            ]
           }
         },
         "additionalProperties": false
@@ -79424,8 +79398,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79442,12 +79415,6 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "InternalServerError"
-            ]
           }
         },
         "additionalProperties": false
@@ -79458,7 +79425,7 @@
       },
       "Dollars": {
         "type": "number",
-        "description": "Represents a monetary amount in USD dollars",
+        "description": "The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.",
         "minimum": 0.01
       },
       "TldNotSupported": {
@@ -79466,8 +79433,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79484,15 +79450,10 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "TldNotSupported"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The TLD is not currently supported."
       },
       "DomainName": {
         "type": "string"
@@ -79502,8 +79463,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79520,12 +79480,6 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "NotFound"
-            ]
           }
         },
         "additionalProperties": false
@@ -79535,8 +79489,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79553,12 +79506,6 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "BadRequest"
-            ]
           }
         },
         "additionalProperties": false
@@ -79568,8 +79515,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79586,23 +79532,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "DomainNotRegistered"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The domain is not registered with Vercel."
       },
       "Forbidden": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79619,12 +79559,6 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "Forbidden"
-            ]
           }
         },
         "additionalProperties": false
@@ -79634,8 +79568,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79652,15 +79585,10 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "DomainNotFound"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The domain was not found in our system."
       },
       "NonEmptyTrimmedString": {
         "type": "string",
@@ -79694,8 +79622,7 @@
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79712,23 +79639,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "DomainNotAvailable"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The domain is not available."
       },
       "ExpectedPriceMismatch": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79745,23 +79666,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "ExpectedPriceMismatch"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The expected price passed does not match the actual price."
       },
       "AdditionalContactInfoRequired": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79778,23 +79693,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "AdditionalContactInfoRequired"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Additional contact information is required for the TLD."
       },
       "InvalidAdditionalContactInfo": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79811,23 +79720,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "InvalidAdditionalContactInfo"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Additional contact information provided for the TLD is invalid."
       },
       "OrderTooExpensive": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79844,23 +79747,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "OrderTooExpensive"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The total price of the order is too high."
       },
       "DuplicateDomains": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79877,23 +79774,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "DuplicateDomains"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Duplicate domains were provided."
       },
       "TooManyDomains": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79910,23 +79801,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "TooManyDomains"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The number of domains in the order is too high."
       },
       "DomainNotRenewable": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79943,23 +79828,17 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "DomainNotRenewable"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The domain is not renewable."
       },
       "DomainAlreadyRenewing": {
         "type": "object",
         "required": [
           "status",
           "code",
-          "message",
-          "_tag"
+          "message"
         ],
         "properties": {
           "status": {
@@ -79976,15 +79855,10 @@
           },
           "message": {
             "type": "string"
-          },
-          "_tag": {
-            "type": "string",
-            "enum": [
-              "DomainAlreadyRenewing"
-            ]
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "The domain is already renewing."
       },
       "Nameserver": {
         "type": "string"

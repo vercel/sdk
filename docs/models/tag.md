@@ -1,17 +1,15 @@
 # Tag
 
-The tag identifying the type of parse issue
-
 ## Example Usage
 
 ```typescript
-import { Tag } from "@vercel/sdk/models/issue.js";
+import { Tag } from "@vercel/sdk/models/propertykey.js";
 
-let value: Tag = "Unexpected";
+let value: Tag = "symbol";
 ```
 
 ## Values
 
 ```typescript
-"Pointer" | "Unexpected" | "Missing" | "Composite" | "Refinement" | "Transformation" | "Type" | "Forbidden"
+"symbol"
 ```

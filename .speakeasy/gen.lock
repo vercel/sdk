@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 46af4af8bb38e3ada77e666d33cc73af
+  docChecksum: b674e26e5d0046089d014f35abd8c2b9
   docVersion: 0.0.1
   speakeasyVersion: 1.636.0
   generationVersion: 2.723.2
-  releaseVersion: 1.13.4
-  configChecksum: 1ae7edf550a1f40474c913eccdc1761a
+  releaseVersion: 1.13.5
+  configChecksum: 76e974d996867314a240d71e4ea312f0
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -82,7 +82,6 @@ generatedFiles:
   - docs/models/additional.md
   - docs/models/additionalcontactinforequired.md
   - docs/models/additionalcontactinforequiredcode.md
-  - docs/models/additionalcontactinforequiredtag.md
   - docs/models/addprojectdomainredirectstatuscode.md
   - docs/models/addprojectdomainrequest.md
   - docs/models/addprojectdomainrequestbody.md
@@ -162,7 +161,6 @@ generatedFiles:
   - docs/models/backups.md
   - docs/models/badrequest.md
   - docs/models/badrequestcode.md
-  - docs/models/badrequesttag.md
   - docs/models/balances.md
   - docs/models/bandwidth.md
   - docs/models/batchremoveprojectenvrequest.md
@@ -1219,19 +1217,14 @@ generatedFiles:
   - docs/models/domain.md
   - docs/models/domainalreadyrenewing.md
   - docs/models/domainalreadyrenewingcode.md
-  - docs/models/domainalreadyrenewingtag.md
   - docs/models/domainnotavailable.md
   - docs/models/domainnotavailablecode.md
-  - docs/models/domainnotavailabletag.md
   - docs/models/domainnotfound.md
   - docs/models/domainnotfoundcode.md
-  - docs/models/domainnotfoundtag.md
   - docs/models/domainnotregistered.md
   - docs/models/domainnotregisteredcode.md
-  - docs/models/domainnotregisteredtag.md
   - docs/models/domainnotrenewable.md
   - docs/models/domainnotrenewablecode.md
-  - docs/models/domainnotrenewabletag.md
   - docs/models/domains.md
   - docs/models/domains1.md
   - docs/models/domains2.md
@@ -1241,7 +1234,6 @@ generatedFiles:
   - docs/models/downloadartifactrequest.md
   - docs/models/duplicatedomains.md
   - docs/models/duplicatedomainscode.md
-  - docs/models/duplicatedomainstag.md
   - docs/models/edgeconfigitem.md
   - docs/models/edgeconfigitemvalue.md
   - docs/models/edgeconfigread.md
@@ -1342,7 +1334,6 @@ generatedFiles:
   - docs/models/exchangessotokenresponsebody.md
   - docs/models/expectedpricemismatch.md
   - docs/models/expectedpricemismatchcode.md
-  - docs/models/expectedpricemismatchtag.md
   - docs/models/experimentaltriggers.md
   - docs/models/experimentation.md
   - docs/models/expiration.md
@@ -1496,7 +1487,6 @@ generatedFiles:
   - docs/models/fluidduration.md
   - docs/models/forbidden.md
   - docs/models/forbiddencode.md
-  - docs/models/forbiddentag.md
   - docs/models/forcenew.md
   - docs/models/format.md
   - docs/models/formats.md
@@ -2651,7 +2641,6 @@ generatedFiles:
   - docs/models/highlighteddetails.md
   - docs/models/history.md
   - docs/models/httpapidecodeerror.md
-  - docs/models/httpapidecodeerrortag.md
   - docs/models/https.md
   - docs/models/id.md
   - docs/models/imageoptimizationcacheread.md
@@ -2681,10 +2670,8 @@ generatedFiles:
   - docs/models/internalroutesmitigate.md
   - docs/models/internalservererror.md
   - docs/models/internalservererrorcode.md
-  - docs/models/internalservererrortag.md
   - docs/models/invalidadditionalcontactinfo.md
   - docs/models/invalidadditionalcontactinfocode.md
-  - docs/models/invalidadditionalcontactinfotag.md
   - docs/models/invalidatebytagsrequest.md
   - docs/models/invalidatebytagsrequestbody.md
   - docs/models/invalidatebytagstarget.md
@@ -2854,10 +2841,8 @@ generatedFiles:
   - docs/models/northstarmigration.md
   - docs/models/notauthorizedforscope.md
   - docs/models/notauthorizedforscopecode.md
-  - docs/models/notauthorizedforscopetag.md
   - docs/models/notfound.md
   - docs/models/notfoundcode.md
-  - docs/models/notfoundtag.md
   - docs/models/notification.md
   - docs/models/observability.md
   - docs/models/observabilityevent.md
@@ -2962,7 +2947,6 @@ generatedFiles:
   - docs/models/order.md
   - docs/models/ordertooexpensive.md
   - docs/models/ordertooexpensivecode.md
-  - docs/models/ordertooexpensivetag.md
   - docs/models/origin.md
   - docs/models/os.md
   - docs/models/other.md
@@ -3161,7 +3145,6 @@ generatedFiles:
   - docs/models/propertiesvalue.md
   - docs/models/propertykey.md
   - docs/models/propertykey3.md
-  - docs/models/propertykeytag.md
   - docs/models/protectionbypass.md
   - docs/models/protectionbypass1.md
   - docs/models/protectionbypass2.md
@@ -3739,14 +3722,11 @@ generatedFiles:
   - docs/models/tier.md
   - docs/models/tldnotsupported.md
   - docs/models/tldnotsupportedcode.md
-  - docs/models/tldnotsupportedtag.md
   - docs/models/tlds.md
   - docs/models/toomanydomains.md
   - docs/models/toomanydomainscode.md
-  - docs/models/toomanydomainstag.md
   - docs/models/toomanyrequests.md
   - docs/models/toomanyrequestscode.md
-  - docs/models/toomanyrequeststag.md
   - docs/models/totp.md
   - docs/models/tracedrain.md
   - docs/models/transfer.md
@@ -3814,7 +3794,6 @@ generatedFiles:
   - docs/models/uireadonly2.md
   - docs/models/uireadonly3.md
   - docs/models/unauthorized.md
-  - docs/models/unauthorizedtag.md
   - docs/models/unpauseprojectrequest.md
   - docs/models/updateaccessgroupentitlements.md
   - docs/models/updateaccessgroupprojectaccessgroupsrole.md
@@ -4716,7 +4695,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/filetree.go
   - src/__tests__/mockserver/internal/sdk/models/components/flagjsonvalue.go
   - src/__tests__/mockserver/internal/sdk/models/components/forbiddenerror.go
-  - src/__tests__/mockserver/internal/sdk/models/components/httpapidecodeerror.go
   - src/__tests__/mockserver/internal/sdk/models/components/httpmetadata.go
   - src/__tests__/mockserver/internal/sdk/models/components/internalservererror.go
   - src/__tests__/mockserver/internal/sdk/models/components/invalidadditionalcontactinfoerror.go
@@ -8945,15 +8923,15 @@ examples:
         "200":
           application/json: ["<value 1>", "<value 2>"]
         "400":
-          application/json: {"issues": [{"_tag": "Composite", "path": [], "message": "<value>"}], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"issues": [{"path": [], "message": "<value>"}], "message": "<value>"}
         "401":
-          application/json: {"status": 6675.53, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 6675.53, "code": "unauthorized", "message": "<value>"}
         "429":
-          application/json: {"status": 6765.66, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 7578.9, "str": "<value>"}, "limit": {"total": 5176.98, "remaining": 7944.88, "reset": 8465.79}, "_tag": "TooManyRequests"}
+          application/json: {"status": 6765.66, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 7578.9, "str": "<value>"}, "limit": {"total": 5176.98, "remaining": 7944.88, "reset": 8465.79}}
         "500":
-          application/json: {"status": 3690.98, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 3690.98, "code": "internal_server_error", "message": "<value>"}
         "403":
-          application/json: {"status": 3146.48, "code": "not_authorized_for_scope", "message": "<value>", "_tag": "NotAuthorizedForScope"}
+          application/json: {"status": 3146.48, "code": "not_authorized_for_scope", "message": "<value>"}
   getTldPrice:
     speakeasy-default-get-tld-price:
       parameters:
@@ -8963,17 +8941,17 @@ examples:
         "200":
           application/json: {"years": 8935.16, "purchasePrice": 6287.26, "renewalPrice": 7886.17, "transferPrice": 1743.63}
         "400":
-          application/json: {"status": 6287.26, "code": "tld_not_supported", "message": "<value>", "_tag": "TldNotSupported"}
+          application/json: {"issues": [{"path": ["/private"], "message": "<value>"}], "message": "<value>"}
         "401":
-          application/json: {"status": 7886.17, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 7886.17, "code": "unauthorized", "message": "<value>"}
         "404":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "429":
-          application/json: {"status": 4537.84, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 2851.7, "str": "<value>"}, "limit": {"total": 7204.57, "remaining": 7142.83, "reset": 1823.23}, "_tag": "TooManyRequests"}
+          application/json: {"status": 4537.84, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 2851.7, "str": "<value>"}, "limit": {"total": 7204.57, "remaining": 7142.83, "reset": 1823.23}}
         "500":
-          application/json: {"status": 2851.7, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 2851.7, "code": "internal_server_error", "message": "<value>"}
         "403":
-          application/json: {"status": 1743.63, "code": "not_authorized_for_scope", "message": "<value>", "_tag": "NotAuthorizedForScope"}
+          application/json: {"status": 1743.63, "code": "not_authorized_for_scope", "message": "<value>"}
   getDomainAvailability:
     speakeasy-default-get-domain-availability:
       parameters:
@@ -8983,17 +8961,17 @@ examples:
         "200":
           application/json: {"available": false}
         "400":
-          application/json: {"issues": [], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"issues": [], "message": "<value>"}
         "401":
-          application/json: {"status": 800.14, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 800.14, "code": "unauthorized", "message": "<value>"}
         "404":
-          application/json: {"status": 8449.82, "code": "not_found", "message": "<value>", "_tag": "NotFound"}
+          application/json: {"status": 8449.82, "code": "not_found", "message": "<value>"}
         "429":
-          application/json: {"status": 7767.2, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 4554.54, "str": "<value>"}, "limit": {"total": 3681.84, "remaining": 932.08, "reset": 1612.06}, "_tag": "TooManyRequests"}
+          application/json: {"status": 7767.2, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 4554.54, "str": "<value>"}, "limit": {"total": 3681.84, "remaining": 932.08, "reset": 1612.06}}
         "500":
-          application/json: {"status": 4554.54, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 4554.54, "code": "internal_server_error", "message": "<value>"}
         "403":
-          application/json: {"status": 4460.77, "code": "not_authorized_for_scope", "message": "<value>", "_tag": "NotAuthorizedForScope"}
+          application/json: {"status": 4460.77, "code": "not_authorized_for_scope", "message": "<value>"}
   getDomainPrice:
     speakeasy-default-get-domain-price:
       parameters:
@@ -9003,15 +8981,15 @@ examples:
         "200":
           application/json: {"years": 40.44, "purchasePrice": 7574.42, "renewalPrice": 1523.71, "transferPrice": 2786.9}
         "400":
-          application/json: {"issues": [], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"status": 2792.07, "code": "bad_request", "message": "<value>"}
         "401":
-          application/json: {"status": 9265.95, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 9265.95, "code": "unauthorized", "message": "<value>"}
         "429":
-          application/json: {"status": 7574.42, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 1523.71, "str": "<value>"}, "limit": {"total": 2786.9, "remaining": 3417.52, "reset": 8256.04}, "_tag": "TooManyRequests"}
+          application/json: {"status": 7574.42, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 1523.71, "str": "<value>"}, "limit": {"total": 2786.9, "remaining": 3417.52, "reset": 8256.04}}
         "500":
-          application/json: {"status": 8256.04, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 8256.04, "code": "internal_server_error", "message": "<value>"}
         "403":
-          application/json: {"status": 40.44, "code": "not_authorized_for_scope", "message": "<value>", "_tag": "NotAuthorizedForScope"}
+          application/json: {"status": 40.44, "code": "not_authorized_for_scope", "message": "<value>"}
   getBulkAvailability:
     speakeasy-default-get-bulk-availability:
       requestBody:
@@ -9020,15 +8998,15 @@ examples:
         "200":
           application/json: {"results": []}
         "400":
-          application/json: {"issues": [], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"issues": [], "message": "<value>"}
         "401":
-          application/json: {"status": 3753.34, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 3753.34, "code": "unauthorized", "message": "<value>"}
         "429":
-          application/json: {"status": 8722.69, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 3889.88, "str": "<value>"}, "limit": {"total": 8646.09, "remaining": 7697.76, "reset": 312.02}, "_tag": "TooManyRequests"}
+          application/json: {"status": 8722.69, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 3889.88, "str": "<value>"}, "limit": {"total": 8646.09, "remaining": 7697.76, "reset": 312.02}}
         "500":
-          application/json: {"status": 8722.69, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 8722.69, "code": "internal_server_error", "message": "<value>"}
         "403":
-          application/json: {"status": 9981.65, "code": "not_authorized_for_scope", "message": "<value>", "_tag": "NotAuthorizedForScope"}
+          application/json: {"status": 9981.65, "code": "not_authorized_for_scope", "message": "<value>"}
   getDomainAuthCode:
     speakeasy-default-get-domain-auth-code:
       parameters:
@@ -9038,17 +9016,17 @@ examples:
         "200":
           application/json: {"authCode": "<value>"}
         "400":
-          application/json: {"status": 1628.07, "code": "domain_not_registered", "message": "<value>", "_tag": "DomainNotRegistered"}
+          application/json: {"issues": [], "message": "<value>"}
         "401":
-          application/json: {"status": 8853.12, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 8853.12, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 5189.44, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 5189.44, "code": "forbidden", "message": "<value>"}
         "404":
-          application/json: {"status": 5189.44, "code": "domain_not_found", "message": "<value>", "_tag": "DomainNotFound"}
+          application/json: {"status": 5189.44, "code": "domain_not_found", "message": "<value>"}
         "429":
-          application/json: {"status": 2686.57, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 2122.94, "str": "<value>"}, "limit": {"total": 1103.62, "remaining": 7226.65, "reset": 215.47}, "_tag": "TooManyRequests"}
+          application/json: {"status": 2686.57, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 2122.94, "str": "<value>"}, "limit": {"total": 1103.62, "remaining": 7226.65, "reset": 215.47}}
         "500":
-          application/json: {"status": 2122.94, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 2122.94, "code": "internal_server_error", "message": "<value>"}
   buySingleDomain:
     speakeasy-default-buy-single-domain:
       parameters:
@@ -9060,15 +9038,15 @@ examples:
         "200":
           application/json: {"orderId": "<id>", "_links": {"key": {"href": "<value>", "method": "GET"}}}
         "400":
-          application/json: {"status": 7602.67, "code": "additional_contact_info_required", "message": "<value>", "_tag": "AdditionalContactInfoRequired"}
+          application/json: {"status": 7602.67, "code": "domain_not_available", "message": "<value>"}
         "401":
-          application/json: {"status": 7390.34, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 7390.34, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 5822.78, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 5822.78, "code": "forbidden", "message": "<value>"}
         "429":
-          application/json: {"status": 6168.48, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 9486.46, "str": "<value>"}, "limit": {"total": 5318.02, "remaining": 2716.47, "reset": 6255.38}, "_tag": "TooManyRequests"}
+          application/json: {"status": 6168.48, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 9486.46, "str": "<value>"}, "limit": {"total": 5318.02, "remaining": 2716.47, "reset": 6255.38}}
         "500":
-          application/json: {"status": 2011.55, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 2011.55, "code": "internal_server_error", "message": "<value>"}
   buyDomains:
     speakeasy-default-buy-domains:
       requestBody:
@@ -9077,15 +9055,15 @@ examples:
         "200":
           application/json: {"orderId": "<id>", "_links": {}}
         "400":
-          application/json: {"status": 6104.6, "code": "domain_not_available", "message": "<value>", "_tag": "DomainNotAvailable"}
+          application/json: {"status": 6104.6, "code": "invalid_additional_contact_info", "message": "<value>"}
         "401":
-          application/json: {"status": 3687.93, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 3687.93, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 3212.75, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 3212.75, "code": "forbidden", "message": "<value>"}
         "429":
-          application/json: {"status": 4188.07, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 9799.88, "str": "<value>"}, "limit": {"total": 657.79, "remaining": 4449.33, "reset": 2392.9}, "_tag": "TooManyRequests"}
+          application/json: {"status": 4188.07, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 9799.88, "str": "<value>"}, "limit": {"total": 657.79, "remaining": 4449.33, "reset": 2392.9}}
         "500":
-          application/json: {"status": 6638.06, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 6638.06, "code": "internal_server_error", "message": "<value>"}
   transferInDomain:
     speakeasy-default-transfer-in-domain:
       parameters:
@@ -9097,15 +9075,15 @@ examples:
         "200":
           application/json: {"orderId": "<id>", "_links": {}}
         "400":
-          application/json: {"status": 298.08, "code": "domain_not_available", "message": "<value>", "_tag": "DomainNotAvailable"}
+          application/json: {"status": 298.08, "code": "domain_not_available", "message": "<value>"}
         "401":
-          application/json: {"status": 5092.5, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 5092.5, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 8974.49, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 8974.49, "code": "not_authorized_for_scope", "message": "<value>"}
         "429":
-          application/json: {"status": 3719.08, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 7663.5, "str": "<value>"}, "limit": {"total": 3081.11, "remaining": 3538.11, "reset": 5688.27}, "_tag": "TooManyRequests"}
+          application/json: {"status": 3719.08, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 7663.5, "str": "<value>"}, "limit": {"total": 3081.11, "remaining": 3538.11, "reset": 5688.27}}
         "500":
-          application/json: {"status": 5592.6, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 5592.6, "code": "internal_server_error", "message": "<value>"}
   getDomainTransferIn:
     speakeasy-default-get-domain-transfer-in:
       parameters:
@@ -9115,17 +9093,17 @@ examples:
         "200":
           application/json: {"status": "pending_transfer"}
         "400":
-          application/json: {"issues": [{"_tag": "Pointer", "path": [], "message": "<value>"}], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"issues": [{"path": [], "message": "<value>"}], "message": "<value>"}
         "401":
-          application/json: {"status": 6815.36, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 6815.36, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 3451.42, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 3451.42, "code": "forbidden", "message": "<value>"}
         "404":
-          application/json: {"status": 3451.42, "code": "not_found", "message": "<value>", "_tag": "NotFound"}
+          application/json: {"status": 3451.42, "code": "not_found", "message": "<value>"}
         "429":
-          application/json: {"status": 1024.64, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 2505.39, "str": "<value>"}, "limit": {"total": 5432.79, "remaining": 6335, "reset": 2989.94}, "_tag": "TooManyRequests"}
+          application/json: {"status": 1024.64, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 2505.39, "str": "<value>"}, "limit": {"total": 5432.79, "remaining": 6335, "reset": 2989.94}}
         "500":
-          application/json: {"status": 2505.39, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 2505.39, "code": "internal_server_error", "message": "<value>"}
   renewDomain:
     speakeasy-default-renew-domain:
       parameters:
@@ -9137,17 +9115,17 @@ examples:
         "200":
           application/json: {"orderId": "<id>", "_links": {}}
         "400":
-          application/json: {"status": 7096.16, "code": "tld_not_supported", "message": "<value>", "_tag": "TldNotSupported"}
+          application/json: {"status": 7096.16, "code": "domain_not_registered", "message": "<value>"}
         "401":
-          application/json: {"status": 7083.42, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 7083.42, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 3911.56, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 3911.56, "code": "forbidden", "message": "<value>"}
         "404":
-          application/json: {"status": 2207.35, "code": "domain_not_found", "message": "<value>", "_tag": "DomainNotFound"}
+          application/json: {"status": 2207.35, "code": "domain_not_found", "message": "<value>"}
         "429":
-          application/json: {"status": 3164.79, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 112.61, "str": "<value>"}, "limit": {"total": 3911.56, "remaining": 2060.78, "reset": 766.11}, "_tag": "TooManyRequests"}
+          application/json: {"status": 3164.79, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 112.61, "str": "<value>"}, "limit": {"total": 3911.56, "remaining": 2060.78, "reset": 766.11}}
         "500":
-          application/json: {"status": 766.11, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 766.11, "code": "internal_server_error", "message": "<value>"}
   updateDomainAutoRenew:
     speakeasy-default-update-domain-auto-renew:
       parameters:
@@ -9157,17 +9135,17 @@ examples:
         application/json: {"autoRenew": true}
       responses:
         "400":
-          application/json: {"issues": [{"_tag": "Missing", "path": [9253.84], "message": "<value>"}], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"status": 9843.82, "code": "domain_already_renewing", "message": "<value>"}
         "401":
-          application/json: {"status": 3198.13, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 3198.13, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 3534.21, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 3534.21, "code": "not_authorized_for_scope", "message": "<value>"}
         "404":
-          application/json: {"status": 5961.13, "code": "domain_not_found", "message": "<value>", "_tag": "DomainNotFound"}
+          application/json: {"status": 5961.13, "code": "domain_not_found", "message": "<value>"}
         "429":
-          application/json: {"status": 5027.91, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 395.23, "str": "<value>"}, "limit": {"total": 2052.04, "remaining": 5390.43, "reset": 8374.54}, "_tag": "TooManyRequests"}
+          application/json: {"status": 5027.91, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 395.23, "str": "<value>"}, "limit": {"total": 2052.04, "remaining": 5390.43, "reset": 8374.54}}
         "500":
-          application/json: {"status": 3198.13, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 3198.13, "code": "internal_server_error", "message": "<value>"}
   updateDomainNameservers:
     speakeasy-default-update-domain-nameservers:
       parameters:
@@ -9177,17 +9155,17 @@ examples:
         application/json: {"nameservers": ["<value 1>"]}
       responses:
         "400":
-          application/json: {"issues": [{"_tag": "Missing", "path": [], "message": "<value>"}], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"status": 8910.66, "code": "domain_not_registered", "message": "<value>"}
         "401":
-          application/json: {"status": 655.4, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 655.4, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 655.4, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 655.4, "code": "not_authorized_for_scope", "message": "<value>"}
         "404":
-          application/json: {"status": 2948.13, "code": "domain_not_found", "message": "<value>", "_tag": "DomainNotFound"}
+          application/json: {"status": 2948.13, "code": "domain_not_found", "message": "<value>"}
         "429":
-          application/json: {"status": 7420.51, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 4425.23, "str": "<value>"}, "limit": {"total": 711.47, "remaining": 1809.2, "reset": 4923.73}, "_tag": "TooManyRequests"}
+          application/json: {"status": 7420.51, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 4425.23, "str": "<value>"}, "limit": {"total": 711.47, "remaining": 1809.2, "reset": 4923.73}}
         "500":
-          application/json: {"status": 7420.51, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 7420.51, "code": "internal_server_error", "message": "<value>"}
   getContactInfoSchema:
     speakeasy-default-get-contact-info-schema:
       parameters:
@@ -9197,15 +9175,15 @@ examples:
         "200":
           application/json: {}
         "400":
-          application/json: {"status": 4810.87, "code": "bad_request", "message": "<value>", "_tag": "BadRequest"}
+          application/json: {"issues": [], "message": "<value>"}
         "401":
-          application/json: {"status": 6115.88, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 6115.88, "code": "unauthorized", "message": "<value>"}
         "429":
-          application/json: {"status": 6860.15, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 9733.99, "str": "<value>"}, "limit": {"total": 4948.05, "remaining": 5425.53, "reset": 6410.59}, "_tag": "TooManyRequests"}
+          application/json: {"status": 6860.15, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 9733.99, "str": "<value>"}, "limit": {"total": 4948.05, "remaining": 5425.53, "reset": 6410.59}}
         "500":
-          application/json: {"status": 6860.15, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 6860.15, "code": "internal_server_error", "message": "<value>"}
         "403":
-          application/json: {"status": 3905.78, "code": "not_authorized_for_scope", "message": "<value>", "_tag": "NotAuthorizedForScope"}
+          application/json: {"status": 3905.78, "code": "not_authorized_for_scope", "message": "<value>"}
   getOrder:
     speakeasy-default-get-order:
       parameters:
@@ -9215,17 +9193,17 @@ examples:
         "200":
           application/json: {"orderId": "<id>", "domains": [{"purchaseType": "renewal", "domainName": "annual-atrium.biz", "status": "refunded", "price": 5522.99, "years": 3271.32}], "status": "purchasing"}
         "400":
-          application/json: {"issues": [{"_tag": "Composite", "path": [], "message": "<value>"}], "message": "<value>", "_tag": "HttpApiDecodeError"}
+          application/json: {"issues": [{"path": [], "message": "<value>"}], "message": "<value>"}
         "401":
-          application/json: {"status": 516.78, "code": "unauthorized", "message": "<value>", "_tag": "Unauthorized"}
+          application/json: {"status": 516.78, "code": "unauthorized", "message": "<value>"}
         "403":
-          application/json: {"status": 1071.66, "code": "forbidden", "message": "<value>", "_tag": "Forbidden"}
+          application/json: {"status": 1071.66, "code": "forbidden", "message": "<value>"}
         "404":
-          application/json: {"status": 3183.59, "code": "not_found", "message": "<value>", "_tag": "NotFound"}
+          application/json: {"status": 3183.59, "code": "not_found", "message": "<value>"}
         "429":
-          application/json: {"status": 6010.15, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 5522.99, "str": "<value>"}, "limit": {"total": 3271.32, "remaining": 3990.06, "reset": 1071.66}, "_tag": "TooManyRequests"}
+          application/json: {"status": 6010.15, "code": "too_many_requests", "message": "<value>", "retryAfter": {"value": 5522.99, "str": "<value>"}, "limit": {"total": 3271.32, "remaining": 3990.06, "reset": 1071.66}}
         "500":
-          application/json: {"status": 948.19, "code": "internal_server_error", "message": "<value>", "_tag": "InternalServerError"}
+          application/json: {"status": 948.19, "code": "internal_server_error", "message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -9413,4 +9391,21 @@ generatedTests:
   renewDomain: "2025-10-07T01:47:08Z"
   getContactInfoSchema: "2025-10-07T01:47:08Z"
   getOrder: "2025-10-07T01:47:08Z"
-releaseNotes: "## Typescript SDK Changes Detected:\n* `vercel.accessGroups.readAccessGroup()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.updateAccessGroup()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.deleteAccessGroup()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.listAccessGroupMembers()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.listAccessGroups()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.createAccessGroup()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.listAccessGroupProjects()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.createAccessGroupProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.readAccessGroupProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.deleteAccessGroupProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.accessGroups.updateAccessGroupProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.artifacts.recordEvents()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.artifacts.status()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.artifacts.downloadArtifact()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.artifacts.uploadArtifact()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.artifacts.artifactExists()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.artifacts.artifactQuery()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.checks.getAllChecks()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.checks.createCheck()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.checks.getCheck()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.checks.updateCheck()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.checks.rerequestCheck()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.updateProjectDataCache()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.getProjects()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.createProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.deleteProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.updateProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.getProjectDomains()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.getProjectDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.removeProjectDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.updateProjectDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.addProjectDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.moveProjectDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.verifyProjectDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.filterProjectEnvs()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.createProjectEnv()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.getProjectEnv()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.removeProjectEnv()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.editProjectEnv()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.batchRemoveProjectEnv()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.uploadProjectClientCert()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.createProjectTransferRequest()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.acceptProjectTransferRequest()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.updateProjectProtectionBypass()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.requestPromote()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.listPromoteAliases()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.pauseProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projects.unpauseProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.getDeploymentEvents()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.updateIntegrationDeploymentAction()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.getDeployment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.createDeployment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.cancelDeployment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.uploadFile()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.listDeploymentFiles()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.getDeploymentFileContents()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.getDeployments()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.deployments.deleteDeployment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.updateIntegrationDeploymentAction()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.getBillingPlans()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.connectIntegrationResourceToProject()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.getConfigurations()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.getConfiguration()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.deleteConfiguration()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.getConfigurationProducts()`: \n  *  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:\n  *  `error` **Changed** **Breaking** :warning:\n* `vercel.integrations.createIntegrationStoreDirect()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.buyDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.checkDomainPrice()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.checkDomainStatus()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.getDomainTransfer()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.getDomainConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.getDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.getDomains()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.createOrTransferDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.patchDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domains.deleteDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.dns.getRecords()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.dns.createRecord()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.dns.updateRecord()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.dns.removeRecord()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getSupportedTlds()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getTldPrice()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getDomainAvailability()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getDomainPrice()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getBulkAvailability()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getDomainAuthCode()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.buySingleDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.buyDomains()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getDomainTransferIn()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.transferInDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.renewDomain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.updateDomainAutoRenew()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.updateDomainNameservers()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getContactInfoSchema()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getOrder()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeCache.invalidateByTags()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeCache.dangerouslyDeleteByTags()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigs()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.createEdgeConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.updateEdgeConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.deleteEdgeConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigItems()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.patchEdgeConfigItems()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigSchema()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.patchEdgeConfigSchema()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.deleteEdgeConfigSchema()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigItem()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigTokens()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.deleteEdgeConfigTokens()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigToken()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.createEdgeConfigToken()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigBackup()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.edgeConfig.getEdgeConfigBackups()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.user.listUserEvents()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.user.getAuthUser()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.user.requestDelete()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.getAccountInfo()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.getMember()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.createEvent()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.getIntegrationResources()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.getIntegrationResource()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.importResource()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.deleteIntegrationResource()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.submitBillingData()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.submitInvoice()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.getInvoice()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.updateInvoice()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.submitPrepaymentBalances()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.updateResourceSecrets()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.updateResourceSecretsById()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.exchangeSsoToken()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.createInstallationIntegrationConfiguration()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.deleteInstallationIntegrationConfiguration()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.updateInstallationIntegrationConfiguration()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.updateInstallationIntegrationEdgeConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.marketplace.createInstallationIntegrationEdgeConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.authentication.exchangeSsoToken()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.authentication.listAuthTokens()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.authentication.createAuthToken()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.authentication.getAuthToken()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.authentication.deleteAuthToken()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.logDrains.getIntegrationLogDrains()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.logDrains.createLogDrain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.logDrains.deleteIntegrationLogDrain()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.logs.getRuntimeLogs()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projectMembers.getProjectMembers()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projectMembers.addProjectMember()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.projectMembers.removeProjectMember()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.environment.get/v9/projects/{idOrName}/customEnvironments()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.environment.createCustomEnvironment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.environment.getCustomEnvironment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.environment.removeCustomEnvironment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.environment.updateCustomEnvironment()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.rollingRelease.getRollingReleaseBillingStatus()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.rollingRelease.getRollingReleaseConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.rollingRelease.deleteRollingReleaseConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.rollingRelease.updateRollingReleaseConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.rollingRelease.getRollingRelease()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.rollingRelease.approveRollingReleaseStage()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.rollingRelease.completeRollingRelease()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.updateAttackChallengeMode()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.putFirewallConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.updateFirewallConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.getFirewallConfig()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.getActiveAttackStatus()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.getBypassIp()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.addBypassIp()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.security.removeBypassIp()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.getTeamMembers()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.inviteUserToTeam()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.requestAccessToTeam()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.getTeamAccessRequest()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.joinTeam()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.removeTeamMember()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.updateTeamMember()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.getTeam()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.patchTeam()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.getTeams()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.createTeam()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.deleteTeam()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.teams.deleteTeamInviteCode()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.webhooks.getWebhooks()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.webhooks.createWebhook()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.webhooks.getWebhook()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.webhooks.deleteWebhook()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.aliases.listDeploymentAliases()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.aliases.assignAlias()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.aliases.listAliases()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.aliases.getAlias()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.aliases.deleteAlias()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.aliases.patchUrlProtectionBypass()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.certs.getCertById()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.certs.removeCert()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.certs.uploadCert()`:  `error` **Changed** **Breaking** :warning:\n* `vercel.certs.issueCert()`:  `error` **Changed** **Breaking** :warning:\n"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `vercel.domainsRegistrar.buyDomains()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getDomainTransferIn()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getTldPrice()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getDomainAvailability()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getDomainPrice()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getBulkAvailability()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getSupportedTlds()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getDomainAuthCode()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getOrder()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.buySingleDomain()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.transferInDomain()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.renewDomain()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.updateDomainAutoRenew()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.updateDomainNameservers()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.domainsRegistrar.getContactInfoSchema()`:  `error` **Changed** **Breaking** :warning:
+  * `vercel.projects.uploadProjectClientCert()`:  `error.status[404]` **Added**

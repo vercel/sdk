@@ -29,26 +29,3 @@ func (e *ExpectedPriceMismatchCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for ExpectedPriceMismatchCode: %v", v)
 	}
 }
-
-type ExpectedPriceMismatchTag string
-
-const (
-	ExpectedPriceMismatchTagExpectedPriceMismatch ExpectedPriceMismatchTag = "ExpectedPriceMismatch"
-)
-
-func (e ExpectedPriceMismatchTag) ToPointer() *ExpectedPriceMismatchTag {
-	return &e
-}
-func (e *ExpectedPriceMismatchTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "ExpectedPriceMismatch":
-		*e = ExpectedPriceMismatchTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ExpectedPriceMismatchTag: %v", v)
-	}
-}

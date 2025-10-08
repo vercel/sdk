@@ -29,26 +29,3 @@ func (e *InvalidAdditionalContactInfoCode) UnmarshalJSON(data []byte) error {
 		return fmt.Errorf("invalid value for InvalidAdditionalContactInfoCode: %v", v)
 	}
 }
-
-type InvalidAdditionalContactInfoTag string
-
-const (
-	InvalidAdditionalContactInfoTagInvalidAdditionalContactInfo InvalidAdditionalContactInfoTag = "InvalidAdditionalContactInfo"
-)
-
-func (e InvalidAdditionalContactInfoTag) ToPointer() *InvalidAdditionalContactInfoTag {
-	return &e
-}
-func (e *InvalidAdditionalContactInfoTag) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "InvalidAdditionalContactInfo":
-		*e = InvalidAdditionalContactInfoTag(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for InvalidAdditionalContactInfoTag: %v", v)
-	}
-}

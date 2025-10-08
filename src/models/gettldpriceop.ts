@@ -28,24 +28,27 @@ export type GetTldPriceRequest = {
  * There was something wrong with the request
  */
 export type GetTldPriceDomainsRegistrarResponseBody =
-  | HttpApiDecodeError
-  | TldNotSupported;
+  | TldNotSupported
+  | HttpApiDecodeError;
 
 /**
  * Success
  */
 export type GetTldPriceResponseBody = {
+  /**
+   * The number of years the returned price is for.
+   */
   years: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   purchasePrice: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   renewalPrice: number;
   /**
-   * Represents a monetary amount in USD dollars
+   * The base TLD price for purchasing a domain for the given number of years. If null, the TLD does not support purchasing domains for the given number of years.
    */
   transferPrice: number;
 };
@@ -112,12 +115,12 @@ export const GetTldPriceDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   GetTldPriceDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([HttpApiDecodeError$inboundSchema, TldNotSupported$inboundSchema]);
+> = z.union([TldNotSupported$inboundSchema, HttpApiDecodeError$inboundSchema]);
 
 /** @internal */
 export type GetTldPriceDomainsRegistrarResponseBody$Outbound =
-  | HttpApiDecodeError$Outbound
-  | TldNotSupported$Outbound;
+  | TldNotSupported$Outbound
+  | HttpApiDecodeError$Outbound;
 
 /** @internal */
 export const GetTldPriceDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
@@ -125,8 +128,8 @@ export const GetTldPriceDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetTldPriceDomainsRegistrarResponseBody
 > = z.union([
-  HttpApiDecodeError$outboundSchema,
   TldNotSupported$outboundSchema,
+  HttpApiDecodeError$outboundSchema,
 ]);
 
 /**

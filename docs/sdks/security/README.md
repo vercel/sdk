@@ -346,7 +346,7 @@ run();
 
 ## getActiveAttackStatus
 
-Retrieve active attack data within the last 24h window
+Retrieve active attack data within the last N days (default: 1 day)
 
 ### Example Usage
 

@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Read active attack data
  *
  * @remarks
- * Retrieve active attack data within the last 24h window
+ * Retrieve active attack data within the last N days (default: 1 day)
  */
 export function securityGetActiveAttackStatus(
   client: VercelCore,
@@ -94,6 +94,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "projectId": payload.projectId,
+    "since": payload.since,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });

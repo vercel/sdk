@@ -14,7 +14,7 @@ export const tool$securityGetActiveAttackStatus: ToolDefinition<typeof args> = {
   name: "security-get-active-attack-status",
   description: `Read active attack data
 
-Retrieve active attack data within the last 24h window`,
+Retrieve active attack data within the last N days (default: 1 day)`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await securityGetActiveAttackStatus(

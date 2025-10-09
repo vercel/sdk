@@ -10,6 +10,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetActiveAttackStatusRequest = {
   projectId: string;
+  since?: number | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -39,8 +40,8 @@ export type AffectedHostMap = {
 };
 
 export type Anomalies = {
-  ownerId: string;
   projectId: string;
+  ownerId: string;
   startTime: number;
   endTime: number | null;
   atMinute: number;
@@ -65,6 +66,7 @@ export const GetActiveAttackStatusRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectId: z.string(),
+  since: z.number().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -72,6 +74,7 @@ export const GetActiveAttackStatusRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type GetActiveAttackStatusRequest$Outbound = {
   projectId: string;
+  since?: number | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -83,6 +86,7 @@ export const GetActiveAttackStatusRequest$outboundSchema: z.ZodType<
   GetActiveAttackStatusRequest
 > = z.object({
   projectId: z.string(),
+  since: z.number().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -311,8 +315,8 @@ export const Anomalies$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ownerId: z.string(),
   projectId: z.string(),
+  ownerId: z.string(),
   startTime: z.number(),
   endTime: z.nullable(z.number()),
   atMinute: z.number(),
@@ -322,8 +326,8 @@ export const Anomalies$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Anomalies$Outbound = {
-  ownerId: string;
   projectId: string;
+  ownerId: string;
   startTime: number;
   endTime: number | null;
   atMinute: number;
@@ -337,8 +341,8 @@ export const Anomalies$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Anomalies
 > = z.object({
-  ownerId: z.string(),
   projectId: z.string(),
+  ownerId: z.string(),
   startTime: z.number(),
   endTime: z.nullable(z.number()),
   atMinute: z.number(),

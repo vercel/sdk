@@ -10,7 +10,8 @@ import (
 )
 
 type GetActiveAttackStatusRequest struct {
-	ProjectID string `queryParam:"style=form,explode=true,name=projectId"`
+	ProjectID string   `queryParam:"style=form,explode=true,name=projectId"`
+	Since     *float64 `queryParam:"style=form,explode=true,name=since"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -22,6 +23,13 @@ func (o *GetActiveAttackStatusRequest) GetProjectID() string {
 		return ""
 	}
 	return o.ProjectID
+}
+
+func (o *GetActiveAttackStatusRequest) GetSince() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Since
 }
 
 func (o *GetActiveAttackStatusRequest) GetTeamID() *string {
@@ -153,8 +161,8 @@ func (o *AffectedHostMap) GetDdosAlerts() map[string]DdosAlerts {
 }
 
 type Anomaly struct {
-	OwnerID         string                     `json:"ownerId"`
 	ProjectID       string                     `json:"projectId"`
+	OwnerID         string                     `json:"ownerId"`
 	StartTime       float64                    `json:"startTime"`
 	EndTime         *float64                   `json:"endTime"`
 	AtMinute        float64                    `json:"atMinute"`
@@ -167,17 +175,10 @@ func (a Anomaly) MarshalJSON() ([]byte, error) {
 }
 
 func (a *Anomaly) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"ownerId", "projectId", "startTime", "endTime", "atMinute", "affectedHostMap"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"projectId", "ownerId", "startTime", "endTime", "atMinute", "affectedHostMap"}); err != nil {
 		return err
 	}
 	return nil
-}
-
-func (o *Anomaly) GetOwnerID() string {
-	if o == nil {
-		return ""
-	}
-	return o.OwnerID
 }
 
 func (o *Anomaly) GetProjectID() string {
@@ -185,6 +186,13 @@ func (o *Anomaly) GetProjectID() string {
 		return ""
 	}
 	return o.ProjectID
+}
+
+func (o *Anomaly) GetOwnerID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OwnerID
 }
 
 func (o *Anomaly) GetStartTime() float64 {

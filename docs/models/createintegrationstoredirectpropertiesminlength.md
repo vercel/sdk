@@ -6,7 +6,7 @@
 import { CreateIntegrationStoreDirectPropertiesMinLength } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: CreateIntegrationStoreDirectPropertiesMinLength = {
-  atBRANDAt8495: {},
+  atBRANDAt8557: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: CreateIntegrationStoreDirectPropertiesMinLength = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `atBRANDAt8495`                                                        | [models.PropertiesAtBRANDAt8495](../models/propertiesatbrandat8495.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `atBRANDAt8557`                                                        | [models.PropertiesAtBRANDAt8557](../models/propertiesatbrandat8557.md) | :heavy_check_mark:                                                     | N/A                                                                    |

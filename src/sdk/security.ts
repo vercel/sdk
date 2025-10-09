@@ -118,7 +118,7 @@ export class Security extends ClientSDK {
    * Read active attack data
    *
    * @remarks
-   * Retrieve active attack data within the last 24h window
+   * Retrieve active attack data within the last N days (default: 1 day)
    */
   async getActiveAttackStatus(
     request: GetActiveAttackStatusRequest,

@@ -8,8 +8,8 @@ import { GetActiveAttackStatusResponseBody2 } from "@vercel/sdk/models/getactive
 let value: GetActiveAttackStatusResponseBody2 = {
   anomalies: [
     {
-      ownerId: "<id>",
       projectId: "<id>",
+      ownerId: "<id>",
       startTime: 1785.24,
       endTime: 937.85,
       atMinute: 3117.97,

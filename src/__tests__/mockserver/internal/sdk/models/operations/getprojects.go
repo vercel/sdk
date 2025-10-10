@@ -2541,6 +2541,7 @@ const (
 	GetProjectsFrameworkVuepress       GetProjectsFramework = "vuepress"
 	GetProjectsFrameworkParcel         GetProjectsFramework = "parcel"
 	GetProjectsFrameworkFastapi        GetProjectsFramework = "fastapi"
+	GetProjectsFrameworkFlask          GetProjectsFramework = "flask"
 	GetProjectsFrameworkFasthtml       GetProjectsFramework = "fasthtml"
 	GetProjectsFrameworkSanityV3       GetProjectsFramework = "sanity-v3"
 	GetProjectsFrameworkSanity         GetProjectsFramework = "sanity"
@@ -2647,6 +2648,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "parcel":
 		fallthrough
 	case "fastapi":
+		fallthrough
+	case "flask":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -5518,6 +5521,7 @@ type GetProjectsPermissions struct {
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
+	Agent                                    []components.ACLAction `json:"agent,omitempty"`
 	Alerts                                   []components.ACLAction `json:"alerts,omitempty"`
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	ObservabilityFunnel                      []components.ACLAction `json:"observabilityFunnel,omitempty"`
@@ -6248,6 +6252,13 @@ func (o *GetProjectsPermissions) GetObservabilityConfiguration() []components.AC
 		return nil
 	}
 	return o.ObservabilityConfiguration
+}
+
+func (o *GetProjectsPermissions) GetAgent() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Agent
 }
 
 func (o *GetProjectsPermissions) GetAlerts() []components.ACLAction {

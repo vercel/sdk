@@ -5,11 +5,11 @@
 ```typescript
 import { ReasonCode } from "@vercel/sdk/models/userevent.js";
 
-let value: ReasonCode = "PUBLIC_API";
+let value: ReasonCode = "BACKOFFICE";
 ```
 
 ## Values
 
 ```typescript
-"BUDGET_REACHED" | "PUBLIC_API"
+"BUDGET_REACHED" | "PUBLIC_API" | "BACKOFFICE"
 ```

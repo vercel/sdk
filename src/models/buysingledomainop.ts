@@ -141,6 +141,7 @@ export type BuySingleDomainRequestBody = {
 
 export type BuySingleDomainRequest = {
   domain: string;
+  teamId?: string | undefined;
   requestBody: BuySingleDomainRequestBody;
 };
 
@@ -389,6 +390,7 @@ export const BuySingleDomainRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   RequestBody: z.lazy(() => BuySingleDomainRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -399,6 +401,7 @@ export const BuySingleDomainRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type BuySingleDomainRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
   RequestBody: BuySingleDomainRequestBody$Outbound;
 };
 
@@ -409,6 +412,7 @@ export const BuySingleDomainRequest$outboundSchema: z.ZodType<
   BuySingleDomainRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   requestBody: z.lazy(() => BuySingleDomainRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {

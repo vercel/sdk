@@ -702,6 +702,7 @@ const (
 	GetDeploymentsFrameworkVuepress       GetDeploymentsFramework = "vuepress"
 	GetDeploymentsFrameworkParcel         GetDeploymentsFramework = "parcel"
 	GetDeploymentsFrameworkFastapi        GetDeploymentsFramework = "fastapi"
+	GetDeploymentsFrameworkFlask          GetDeploymentsFramework = "flask"
 	GetDeploymentsFrameworkFasthtml       GetDeploymentsFramework = "fasthtml"
 	GetDeploymentsFrameworkSanityV3       GetDeploymentsFramework = "sanity-v3"
 	GetDeploymentsFrameworkSanity         GetDeploymentsFramework = "sanity"
@@ -808,6 +809,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "parcel":
 		fallthrough
 	case "fastapi":
+		fallthrough
+	case "flask":
 		fallthrough
 	case "fasthtml":
 		fallthrough

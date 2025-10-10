@@ -22,6 +22,7 @@ import {
 export type GetTldPriceRequest = {
   tld: string;
   years?: string | undefined;
+  teamId?: string | undefined;
 };
 
 /**
@@ -61,12 +62,14 @@ export const GetTldPriceRequest$inboundSchema: z.ZodType<
 > = z.object({
   tld: z.string(),
   years: z.string().optional(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type GetTldPriceRequest$Outbound = {
   tld: string;
   years?: string | undefined;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -77,6 +80,7 @@ export const GetTldPriceRequest$outboundSchema: z.ZodType<
 > = z.object({
   tld: z.string(),
   years: z.string().optional(),
+  teamId: z.string().optional(),
 });
 
 /**

@@ -9,7 +9,8 @@ import (
 )
 
 type GetDomainTransferInRequest struct {
-	Domain string `pathParam:"style=simple,explode=false,name=domain"`
+	Domain string  `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 }
 
 func (o *GetDomainTransferInRequest) GetDomain() string {
@@ -17,6 +18,13 @@ func (o *GetDomainTransferInRequest) GetDomain() string {
 		return ""
 	}
 	return o.Domain
+}
+
+func (o *GetDomainTransferInRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 type GetDomainTransferInStatus string

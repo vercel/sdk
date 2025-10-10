@@ -3,11 +3,11 @@
  */
 
 import { domainsRegistrarBuyDomains } from "../../funcs/domainsRegistrarBuyDomains.js";
-import { BuyDomainsRequestBody$inboundSchema } from "../../models/buydomainsop.js";
+import { BuyDomainsRequest$inboundSchema } from "../../models/buydomainsop.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: BuyDomainsRequestBody$inboundSchema,
+  request: BuyDomainsRequest$inboundSchema,
 };
 
 export const tool$domainsRegistrarBuyDomains: ToolDefinition<typeof args> = {

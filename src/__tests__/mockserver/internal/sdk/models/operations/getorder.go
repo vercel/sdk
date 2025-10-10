@@ -11,7 +11,8 @@ import (
 )
 
 type GetOrderRequest struct {
-	OrderID string `pathParam:"style=simple,explode=false,name=orderId"`
+	OrderID string  `pathParam:"style=simple,explode=false,name=orderId"`
+	TeamID  *string `queryParam:"style=form,explode=true,name=teamId"`
 }
 
 func (o *GetOrderRequest) GetOrderID() string {
@@ -19,6 +20,13 @@ func (o *GetOrderRequest) GetOrderID() string {
 		return ""
 	}
 	return o.OrderID
+}
+
+func (o *GetOrderRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 type PurchaseTypeTransfer string

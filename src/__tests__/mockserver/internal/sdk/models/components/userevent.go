@@ -6283,9 +6283,36 @@ func (o *Payload91) GetProjectID() string {
 	return o.ProjectID
 }
 
+type ReasonCode2 string
+
+const (
+	ReasonCode2PublicAPI  ReasonCode2 = "PUBLIC_API"
+	ReasonCode2Backoffice ReasonCode2 = "BACKOFFICE"
+)
+
+func (e ReasonCode2) ToPointer() *ReasonCode2 {
+	return &e
+}
+func (e *ReasonCode2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PUBLIC_API":
+		fallthrough
+	case "BACKOFFICE":
+		*e = ReasonCode2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ReasonCode2: %v", v)
+	}
+}
+
 // Payload90 - The payload of the event, if requested.
 type Payload90 struct {
-	ProjectID string `json:"projectId"`
+	ProjectID  string       `json:"projectId"`
+	ReasonCode *ReasonCode2 `json:"reasonCode,omitempty"`
 }
 
 func (p Payload90) MarshalJSON() ([]byte, error) {
@@ -6306,17 +6333,25 @@ func (o *Payload90) GetProjectID() string {
 	return o.ProjectID
 }
 
-type ReasonCode string
+func (o *Payload90) GetReasonCode() *ReasonCode2 {
+	if o == nil {
+		return nil
+	}
+	return o.ReasonCode
+}
+
+type ReasonCode1 string
 
 const (
-	ReasonCodeBudgetReached ReasonCode = "BUDGET_REACHED"
-	ReasonCodePublicAPI     ReasonCode = "PUBLIC_API"
+	ReasonCode1BudgetReached ReasonCode1 = "BUDGET_REACHED"
+	ReasonCode1PublicAPI     ReasonCode1 = "PUBLIC_API"
+	ReasonCode1Backoffice    ReasonCode1 = "BACKOFFICE"
 )
 
-func (e ReasonCode) ToPointer() *ReasonCode {
+func (e ReasonCode1) ToPointer() *ReasonCode1 {
 	return &e
 }
-func (e *ReasonCode) UnmarshalJSON(data []byte) error {
+func (e *ReasonCode1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -6325,17 +6360,19 @@ func (e *ReasonCode) UnmarshalJSON(data []byte) error {
 	case "BUDGET_REACHED":
 		fallthrough
 	case "PUBLIC_API":
-		*e = ReasonCode(v)
+		fallthrough
+	case "BACKOFFICE":
+		*e = ReasonCode1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ReasonCode: %v", v)
+		return fmt.Errorf("invalid value for ReasonCode1: %v", v)
 	}
 }
 
 // Payload89 - The payload of the event, if requested.
 type Payload89 struct {
-	ProjectID  string      `json:"projectId"`
-	ReasonCode *ReasonCode `json:"reasonCode,omitempty"`
+	ProjectID  string       `json:"projectId"`
+	ReasonCode *ReasonCode1 `json:"reasonCode,omitempty"`
 }
 
 func (p Payload89) MarshalJSON() ([]byte, error) {
@@ -6356,7 +6393,7 @@ func (o *Payload89) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *Payload89) GetReasonCode() *ReasonCode {
+func (o *Payload89) GetReasonCode() *ReasonCode1 {
 	if o == nil {
 		return nil
 	}

@@ -22,6 +22,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetOrderRequest = {
   orderId: string;
+  teamId?: string | undefined;
 };
 
 /**
@@ -208,11 +209,13 @@ export const GetOrderRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   orderId: z.string(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type GetOrderRequest$Outbound = {
   orderId: string;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -222,6 +225,7 @@ export const GetOrderRequest$outboundSchema: z.ZodType<
   GetOrderRequest
 > = z.object({
   orderId: z.string(),
+  teamId: z.string().optional(),
 });
 
 /**

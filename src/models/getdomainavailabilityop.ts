@@ -9,6 +9,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDomainAvailabilityRequest = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /**
@@ -25,11 +26,13 @@ export const GetDomainAvailabilityRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type GetDomainAvailabilityRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -39,6 +42,7 @@ export const GetDomainAvailabilityRequest$outboundSchema: z.ZodType<
   GetDomainAvailabilityRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /**

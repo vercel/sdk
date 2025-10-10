@@ -7,6 +7,7 @@ import { TransferInDomainRequest } from "@vercel/sdk/models/transferindomainop.j
 
 let value: TransferInDomainRequest = {
   domain: "rewarding-scorn.com",
+  teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   requestBody: {
     authCode: "<value>",
     autoRenew: false,
@@ -29,7 +30,8 @@ let value: TransferInDomainRequest = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `domain`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `requestBody`                                                                  | [models.TransferInDomainRequestBody](../models/transferindomainrequestbody.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `domain`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
+| `teamId`                                                                       | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            | team_1a2b3c4d5e6f7g8h9i0j1k2l                                                  |
+| `requestBody`                                                                  | [models.TransferInDomainRequestBody](../models/transferindomainrequestbody.md) | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |

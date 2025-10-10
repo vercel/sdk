@@ -19,6 +19,7 @@ func (o *UpdateDomainAutoRenewRequestBody) GetAutoRenew() bool {
 
 type UpdateDomainAutoRenewRequest struct {
 	Domain      string                           `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID      *string                          `queryParam:"style=form,explode=true,name=teamId"`
 	RequestBody UpdateDomainAutoRenewRequestBody `request:"mediaType=application/json"`
 }
 
@@ -27,6 +28,13 @@ func (o *UpdateDomainAutoRenewRequest) GetDomain() string {
 		return ""
 	}
 	return o.Domain
+}
+
+func (o *UpdateDomainAutoRenewRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *UpdateDomainAutoRenewRequest) GetRequestBody() UpdateDomainAutoRenewRequestBody {

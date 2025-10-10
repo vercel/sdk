@@ -402,6 +402,7 @@ const (
 	GetWebhooksFrameworkVuepress       GetWebhooksFramework = "vuepress"
 	GetWebhooksFrameworkParcel         GetWebhooksFramework = "parcel"
 	GetWebhooksFrameworkFastapi        GetWebhooksFramework = "fastapi"
+	GetWebhooksFrameworkFlask          GetWebhooksFramework = "flask"
 	GetWebhooksFrameworkFasthtml       GetWebhooksFramework = "fasthtml"
 	GetWebhooksFrameworkSanityV3       GetWebhooksFramework = "sanity-v3"
 	GetWebhooksFrameworkSanity         GetWebhooksFramework = "sanity"
@@ -508,6 +509,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "parcel":
 		fallthrough
 	case "fastapi":
+		fallthrough
+	case "flask":
 		fallthrough
 	case "fasthtml":
 		fallthrough

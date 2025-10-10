@@ -172,6 +172,7 @@ func (o *BuySingleDomainRequestBody) GetContactInformation() BuySingleDomainCont
 
 type BuySingleDomainRequest struct {
 	Domain      string                     `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID      *string                    `queryParam:"style=form,explode=true,name=teamId"`
 	RequestBody BuySingleDomainRequestBody `request:"mediaType=application/json"`
 }
 
@@ -180,6 +181,13 @@ func (o *BuySingleDomainRequest) GetDomain() string {
 		return ""
 	}
 	return o.Domain
+}
+
+func (o *BuySingleDomainRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 func (o *BuySingleDomainRequest) GetRequestBody() BuySingleDomainRequestBody {

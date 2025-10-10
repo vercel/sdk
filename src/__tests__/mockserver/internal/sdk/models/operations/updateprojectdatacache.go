@@ -2373,6 +2373,7 @@ const (
 	UpdateProjectDataCacheFrameworkVuepress       UpdateProjectDataCacheFramework = "vuepress"
 	UpdateProjectDataCacheFrameworkParcel         UpdateProjectDataCacheFramework = "parcel"
 	UpdateProjectDataCacheFrameworkFastapi        UpdateProjectDataCacheFramework = "fastapi"
+	UpdateProjectDataCacheFrameworkFlask          UpdateProjectDataCacheFramework = "flask"
 	UpdateProjectDataCacheFrameworkFasthtml       UpdateProjectDataCacheFramework = "fasthtml"
 	UpdateProjectDataCacheFrameworkSanityV3       UpdateProjectDataCacheFramework = "sanity-v3"
 	UpdateProjectDataCacheFrameworkSanity         UpdateProjectDataCacheFramework = "sanity"
@@ -2479,6 +2480,8 @@ func (e *UpdateProjectDataCacheFramework) UnmarshalJSON(data []byte) error {
 	case "parcel":
 		fallthrough
 	case "fastapi":
+		fallthrough
+	case "flask":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -5350,6 +5353,7 @@ type UpdateProjectDataCachePermissions struct {
 	NotificationCustomerBudget               []components.ACLAction `json:"notificationCustomerBudget,omitempty"`
 	NotificationStatementOfReasons           []components.ACLAction `json:"notificationStatementOfReasons,omitempty"`
 	ObservabilityConfiguration               []components.ACLAction `json:"observabilityConfiguration,omitempty"`
+	Agent                                    []components.ACLAction `json:"agent,omitempty"`
 	Alerts                                   []components.ACLAction `json:"alerts,omitempty"`
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	ObservabilityFunnel                      []components.ACLAction `json:"observabilityFunnel,omitempty"`
@@ -6080,6 +6084,13 @@ func (o *UpdateProjectDataCachePermissions) GetObservabilityConfiguration() []co
 		return nil
 	}
 	return o.ObservabilityConfiguration
+}
+
+func (o *UpdateProjectDataCachePermissions) GetAgent() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.Agent
 }
 
 func (o *UpdateProjectDataCachePermissions) GetAlerts() []components.ACLAction {

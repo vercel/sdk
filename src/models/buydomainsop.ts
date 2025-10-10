@@ -156,6 +156,11 @@ export type BuyDomainsRequestBody = {
   contactInformation: BuyDomainsContactInformation;
 };
 
+export type BuyDomainsRequest = {
+  teamId?: string | undefined;
+  requestBody: BuyDomainsRequestBody;
+};
+
 /**
  * NotAuthorizedForScope
  */
@@ -449,6 +454,71 @@ export function buyDomainsRequestBodyFromJSON(
     jsonString,
     (x) => BuyDomainsRequestBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'BuyDomainsRequestBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyDomainsRequest$inboundSchema: z.ZodType<
+  BuyDomainsRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  teamId: z.string().optional(),
+  RequestBody: z.lazy(() => BuyDomainsRequestBody$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "RequestBody": "requestBody",
+  });
+});
+
+/** @internal */
+export type BuyDomainsRequest$Outbound = {
+  teamId?: string | undefined;
+  RequestBody: BuyDomainsRequestBody$Outbound;
+};
+
+/** @internal */
+export const BuyDomainsRequest$outboundSchema: z.ZodType<
+  BuyDomainsRequest$Outbound,
+  z.ZodTypeDef,
+  BuyDomainsRequest
+> = z.object({
+  teamId: z.string().optional(),
+  requestBody: z.lazy(() => BuyDomainsRequestBody$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuyDomainsRequest$ {
+  /** @deprecated use `BuyDomainsRequest$inboundSchema` instead. */
+  export const inboundSchema = BuyDomainsRequest$inboundSchema;
+  /** @deprecated use `BuyDomainsRequest$outboundSchema` instead. */
+  export const outboundSchema = BuyDomainsRequest$outboundSchema;
+  /** @deprecated use `BuyDomainsRequest$Outbound` instead. */
+  export type Outbound = BuyDomainsRequest$Outbound;
+}
+
+export function buyDomainsRequestToJSON(
+  buyDomainsRequest: BuyDomainsRequest,
+): string {
+  return JSON.stringify(
+    BuyDomainsRequest$outboundSchema.parse(buyDomainsRequest),
+  );
+}
+
+export function buyDomainsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BuyDomainsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuyDomainsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyDomainsRequest' from JSON`,
   );
 }
 

@@ -15,7 +15,9 @@ test("Domains Registrar Get Supported Tlds", async () => {
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const result = await vercel.domainsRegistrar.getSupportedTlds();
+  const result = await vercel.domainsRegistrar.getSupportedTlds({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
   expect(result).toBeDefined();
   expect(result).toEqual([
     "<value 1>",
@@ -34,6 +36,7 @@ test("Domains Registrar Get Tld Price", async () => {
 
   const result = await vercel.domainsRegistrar.getTldPrice({
     tld: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
@@ -55,6 +58,7 @@ test("Domains Registrar Get Domain Availability", async () => {
 
   const result = await vercel.domainsRegistrar.getDomainAvailability({
     domain: "hungry-birdbath.info",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
@@ -73,6 +77,7 @@ test("Domains Registrar Get Domain Price", async () => {
 
   const result = await vercel.domainsRegistrar.getDomainPrice({
     domain: "excited-dwell.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
@@ -93,9 +98,12 @@ test("Domains Registrar Get Bulk Availability", async () => {
   });
 
   const result = await vercel.domainsRegistrar.getBulkAvailability({
-    domains: [
-      "<value 1>",
-    ],
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [
+        "<value 1>",
+      ],
+    },
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
@@ -114,6 +122,7 @@ test("Domains Registrar Get Domain Auth Code", async () => {
 
   const result = await vercel.domainsRegistrar.getDomainAuthCode({
     domain: "ruddy-coil.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
@@ -132,6 +141,7 @@ test("Domains Registrar Buy Single Domain", async () => {
 
   const result = await vercel.domainsRegistrar.buySingleDomain({
     domain: "metallic-simple.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       autoRenew: false,
       years: 7602.67,
@@ -171,17 +181,20 @@ test("Domains Registrar Buy Domains", async () => {
   });
 
   const result = await vercel.domainsRegistrar.buyDomains({
-    domains: [],
-    contactInformation: {
-      firstName: "Leonie",
-      lastName: "Johnston",
-      email: "Anna_Fisher13@hotmail.com",
-      phone: "(688) 699-0656",
-      address1: "<value>",
-      city: "Rennerland",
-      state: "New Jersey",
-      zip: "70054",
-      country: "Peru",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [],
+      contactInformation: {
+        firstName: "Leonie",
+        lastName: "Johnston",
+        email: "Anna_Fisher13@hotmail.com",
+        phone: "(688) 699-0656",
+        address1: "<value>",
+        city: "Rennerland",
+        state: "New Jersey",
+        zip: "70054",
+        country: "Peru",
+      },
     },
   });
   expect(result).toBeDefined();
@@ -202,6 +215,7 @@ test("Domains Registrar Transfer In Domain", async () => {
 
   const result = await vercel.domainsRegistrar.transferInDomain({
     domain: "silky-fund.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       authCode: "<value>",
       autoRenew: true,
@@ -238,6 +252,7 @@ test("Domains Registrar Get Domain Transfer In", async () => {
 
   const result = await vercel.domainsRegistrar.getDomainTransferIn({
     domain: "unsung-antelope.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
@@ -256,6 +271,7 @@ test("Domains Registrar Renew Domain", async () => {
 
   const result = await vercel.domainsRegistrar.renewDomain({
     domain: "scaly-daughter.biz",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       years: 1981.72,
       expectedPrice: 7096.16,
@@ -279,6 +295,7 @@ test("Domains Registrar Get Contact Info Schema", async () => {
 
   const result = await vercel.domainsRegistrar.getContactInfoSchema({
     domain: "tricky-issue.name",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({});
@@ -295,6 +312,7 @@ test("Domains Registrar Get Order", async () => {
 
   const result = await vercel.domainsRegistrar.getOrder({
     orderId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   expect(result).toBeDefined();
   expect(result).toEqual({

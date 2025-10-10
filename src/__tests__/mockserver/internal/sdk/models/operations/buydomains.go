@@ -169,24 +169,43 @@ func (o *BuyDomainsContactInformation) GetAdditional() *BuyDomainsAdditional {
 	return o.Additional
 }
 
-type BuyDomainsRequest struct {
+type BuyDomainsRequestBody struct {
 	Domains []BuyDomainsDomain `json:"domains"`
 	// The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields.
 	ContactInformation BuyDomainsContactInformation `json:"contactInformation"`
 }
 
-func (o *BuyDomainsRequest) GetDomains() []BuyDomainsDomain {
+func (o *BuyDomainsRequestBody) GetDomains() []BuyDomainsDomain {
 	if o == nil {
 		return []BuyDomainsDomain{}
 	}
 	return o.Domains
 }
 
-func (o *BuyDomainsRequest) GetContactInformation() BuyDomainsContactInformation {
+func (o *BuyDomainsRequestBody) GetContactInformation() BuyDomainsContactInformation {
 	if o == nil {
 		return BuyDomainsContactInformation{}
 	}
 	return o.ContactInformation
+}
+
+type BuyDomainsRequest struct {
+	TeamID      *string               `queryParam:"style=form,explode=true,name=teamId"`
+	RequestBody BuyDomainsRequestBody `request:"mediaType=application/json"`
+}
+
+func (o *BuyDomainsRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *BuyDomainsRequest) GetRequestBody() BuyDomainsRequestBody {
+	if o == nil {
+		return BuyDomainsRequestBody{}
+	}
+	return o.RequestBody
 }
 
 type BuyDomainsMethod string

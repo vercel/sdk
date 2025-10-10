@@ -38,6 +38,7 @@ export type UpdateDomainNameserversRequestBody = {
 
 export type UpdateDomainNameserversRequest = {
   domain: string;
+  teamId?: string | undefined;
   requestBody: UpdateDomainNameserversRequestBody;
 };
 
@@ -120,6 +121,7 @@ export const UpdateDomainNameserversRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   RequestBody: z.lazy(() => UpdateDomainNameserversRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -130,6 +132,7 @@ export const UpdateDomainNameserversRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateDomainNameserversRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
   RequestBody: UpdateDomainNameserversRequestBody$Outbound;
 };
 
@@ -140,6 +143,7 @@ export const UpdateDomainNameserversRequest$outboundSchema: z.ZodType<
   UpdateDomainNameserversRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   requestBody: z.lazy(() => UpdateDomainNameserversRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {

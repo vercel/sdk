@@ -19,7 +19,7 @@ import { domainsRegistrarUpdateDomainAutoRenew } from "../funcs/domainsRegistrar
 import { domainsRegistrarUpdateDomainNameservers } from "../funcs/domainsRegistrarUpdateDomainNameservers.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
-  BuyDomainsRequestBody,
+  BuyDomainsRequest,
   BuyDomainsResponseBody,
 } from "../models/buydomainsop.js";
 import {
@@ -27,7 +27,7 @@ import {
   BuySingleDomainResponseBody,
 } from "../models/buysingledomainop.js";
 import {
-  GetBulkAvailabilityRequestBody,
+  GetBulkAvailabilityRequest,
   GetBulkAvailabilityResponseBody,
 } from "../models/getbulkavailabilityop.js";
 import {
@@ -51,6 +51,7 @@ import {
   GetDomainTransferInResponseBody,
 } from "../models/getdomaintransferinop.js";
 import { GetOrderRequest, GetOrderResponseBody } from "../models/getorderop.js";
+import { GetSupportedTldsRequest } from "../models/getsupportedtldsop.js";
 import {
   GetTldPriceRequest,
   GetTldPriceResponseBody,
@@ -75,10 +76,12 @@ export class DomainsRegistrar extends ClientSDK {
    * Get a list of TLDs supported by Vercel
    */
   async getSupportedTlds(
+    request: GetSupportedTldsRequest,
     options?: RequestOptions,
   ): Promise<Array<string>> {
     return unwrapAsync(domainsRegistrarGetSupportedTlds(
       this,
+      request,
       options,
     ));
   }
@@ -141,7 +144,7 @@ export class DomainsRegistrar extends ClientSDK {
    * Get availability for multiple domains. If the domains are available, they can be purchased using the [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain) endpoint or the [Buy multiple domains](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-multiple-domains) endpoint.
    */
   async getBulkAvailability(
-    request: GetBulkAvailabilityRequestBody,
+    request: GetBulkAvailabilityRequest,
     options?: RequestOptions,
   ): Promise<GetBulkAvailabilityResponseBody> {
     return unwrapAsync(domainsRegistrarGetBulkAvailability(
@@ -192,7 +195,7 @@ export class DomainsRegistrar extends ClientSDK {
    * Buy multiple domains at once
    */
   async buyDomains(
-    request: BuyDomainsRequestBody,
+    request: BuyDomainsRequest,
     options?: RequestOptions,
   ): Promise<BuyDomainsResponseBody> {
     return unwrapAsync(domainsRegistrarBuyDomains(

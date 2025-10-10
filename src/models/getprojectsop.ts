@@ -712,6 +712,7 @@ export const GetProjectsFramework = {
   Vuepress: "vuepress",
   Parcel: "parcel",
   Fastapi: "fastapi",
+  Flask: "flask",
   Fasthtml: "fasthtml",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
@@ -1491,6 +1492,7 @@ export type GetProjectsPermissions = {
   notificationCustomerBudget?: Array<ACLAction> | undefined;
   notificationStatementOfReasons?: Array<ACLAction> | undefined;
   observabilityConfiguration?: Array<ACLAction> | undefined;
+  agent?: Array<ACLAction> | undefined;
   alerts?: Array<ACLAction> | undefined;
   observabilityNotebook?: Array<ACLAction> | undefined;
   observabilityFunnel?: Array<ACLAction> | undefined;
@@ -8660,6 +8662,7 @@ export const GetProjectsPermissions$inboundSchema: z.ZodType<
   notificationCustomerBudget: z.array(ACLAction$inboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$inboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$inboundSchema).optional(),
+  agent: z.array(ACLAction$inboundSchema).optional(),
   alerts: z.array(ACLAction$inboundSchema).optional(),
   observabilityNotebook: z.array(ACLAction$inboundSchema).optional(),
   observabilityFunnel: z.array(ACLAction$inboundSchema).optional(),
@@ -8886,6 +8889,7 @@ export type GetProjectsPermissions$Outbound = {
   notificationCustomerBudget?: Array<string> | undefined;
   notificationStatementOfReasons?: Array<string> | undefined;
   observabilityConfiguration?: Array<string> | undefined;
+  agent?: Array<string> | undefined;
   alerts?: Array<string> | undefined;
   observabilityNotebook?: Array<string> | undefined;
   observabilityFunnel?: Array<string> | undefined;
@@ -9113,6 +9117,7 @@ export const GetProjectsPermissions$outboundSchema: z.ZodType<
   notificationCustomerBudget: z.array(ACLAction$outboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$outboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$outboundSchema).optional(),
+  agent: z.array(ACLAction$outboundSchema).optional(),
   alerts: z.array(ACLAction$outboundSchema).optional(),
   observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   observabilityFunnel: z.array(ACLAction$outboundSchema).optional(),

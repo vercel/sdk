@@ -36,7 +36,9 @@ const vercel = new Vercel({
 });
 
 async function run() {
-  const result = await vercel.domainsRegistrar.getSupportedTlds();
+  const result = await vercel.domainsRegistrar.getSupportedTlds({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
 
   console.log(result);
 }
@@ -59,7 +61,9 @@ const vercel = new VercelCore({
 });
 
 async function run() {
-  const res = await domainsRegistrarGetSupportedTlds(vercel);
+  const res = await domainsRegistrarGetSupportedTlds(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -75,6 +79,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetSupportedTldsRequest](../../models/getsupportedtldsrequest.md)                                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -111,6 +116,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.getTldPrice({
     tld: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   console.log(result);
@@ -136,6 +142,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarGetTldPrice(vercel, {
     tld: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -190,6 +197,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.getDomainAvailability({
     domain: "hungry-birdbath.info",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   console.log(result);
@@ -215,6 +223,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarGetDomainAvailability(vercel, {
     domain: "hungry-birdbath.info",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -269,6 +278,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.getDomainPrice({
     domain: "excited-dwell.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   console.log(result);
@@ -294,6 +304,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarGetDomainPrice(vercel, {
     domain: "excited-dwell.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -348,9 +359,12 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.domainsRegistrar.getBulkAvailability({
-    domains: [
-      "<value 1>",
-    ],
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [
+        "<value 1>",
+      ],
+    },
   });
 
   console.log(result);
@@ -375,9 +389,12 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await domainsRegistrarGetBulkAvailability(vercel, {
-    domains: [
-      "<value 1>",
-    ],
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [
+        "<value 1>",
+      ],
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -394,7 +411,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetBulkAvailabilityRequestBody](../../models/getbulkavailabilityrequestbody.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.GetBulkAvailabilityRequest](../../models/getbulkavailabilityrequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -431,6 +448,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.getDomainAuthCode({
     domain: "ruddy-coil.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   console.log(result);
@@ -456,6 +474,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarGetDomainAuthCode(vercel, {
     domain: "ruddy-coil.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -512,6 +531,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.buySingleDomain({
     domain: "metallic-simple.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       autoRenew: false,
       years: 7602.67,
@@ -553,6 +573,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarBuySingleDomain(vercel, {
     domain: "metallic-simple.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       autoRenew: false,
       years: 7602.67,
@@ -628,17 +649,20 @@ const vercel = new Vercel({
 
 async function run() {
   const result = await vercel.domainsRegistrar.buyDomains({
-    domains: [],
-    contactInformation: {
-      firstName: "Leonie",
-      lastName: "Johnston",
-      email: "Anna_Fisher13@hotmail.com",
-      phone: "(688) 699-0656",
-      address1: "<value>",
-      city: "Rennerland",
-      state: "New Jersey",
-      zip: "70054",
-      country: "Peru",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [],
+      contactInformation: {
+        firstName: "Leonie",
+        lastName: "Johnston",
+        email: "Anna_Fisher13@hotmail.com",
+        phone: "(688) 699-0656",
+        address1: "<value>",
+        city: "Rennerland",
+        state: "New Jersey",
+        zip: "70054",
+        country: "Peru",
+      },
     },
   });
 
@@ -664,17 +688,20 @@ const vercel = new VercelCore({
 
 async function run() {
   const res = await domainsRegistrarBuyDomains(vercel, {
-    domains: [],
-    contactInformation: {
-      firstName: "Leonie",
-      lastName: "Johnston",
-      email: "Anna_Fisher13@hotmail.com",
-      phone: "(688) 699-0656",
-      address1: "<value>",
-      city: "Rennerland",
-      state: "New Jersey",
-      zip: "70054",
-      country: "Peru",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    requestBody: {
+      domains: [],
+      contactInformation: {
+        firstName: "Leonie",
+        lastName: "Johnston",
+        email: "Anna_Fisher13@hotmail.com",
+        phone: "(688) 699-0656",
+        address1: "<value>",
+        city: "Rennerland",
+        state: "New Jersey",
+        zip: "70054",
+        country: "Peru",
+      },
     },
   });
   if (res.ok) {
@@ -692,7 +719,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.BuyDomainsRequestBody](../../models/buydomainsrequestbody.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.BuyDomainsRequest](../../models/buydomainsrequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -738,6 +765,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.transferInDomain({
     domain: "silky-fund.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       authCode: "<value>",
       autoRenew: true,
@@ -780,6 +808,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarTransferInDomain(vercel, {
     domain: "silky-fund.org",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       authCode: "<value>",
       autoRenew: true,
@@ -855,6 +884,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.getDomainTransferIn({
     domain: "unsung-antelope.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   console.log(result);
@@ -880,6 +910,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarGetDomainTransferIn(vercel, {
     domain: "unsung-antelope.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -935,6 +966,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.renewDomain({
     domain: "scaly-daughter.biz",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       years: 1981.72,
       expectedPrice: 7096.16,
@@ -964,6 +996,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarRenewDomain(vercel, {
     domain: "scaly-daughter.biz",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       years: 1981.72,
       expectedPrice: 7096.16,
@@ -1028,6 +1061,7 @@ const vercel = new Vercel({
 async function run() {
   await vercel.domainsRegistrar.updateDomainAutoRenew({
     domain: "worthwhile-dwell.net",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       autoRenew: true,
     },
@@ -1056,6 +1090,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarUpdateDomainAutoRenew(vercel, {
     domain: "worthwhile-dwell.net",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       autoRenew: true,
     },
@@ -1117,6 +1152,7 @@ const vercel = new Vercel({
 async function run() {
   await vercel.domainsRegistrar.updateDomainNameservers({
     domain: "unique-formula.biz",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       nameservers: [
         "<value 1>",
@@ -1147,6 +1183,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarUpdateDomainNameservers(vercel, {
     domain: "unique-formula.biz",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
     requestBody: {
       nameservers: [
         "<value 1>",
@@ -1208,6 +1245,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.getContactInfoSchema({
     domain: "tricky-issue.name",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   console.log(result);
@@ -1233,6 +1271,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarGetContactInfoSchema(vercel, {
     domain: "tricky-issue.name",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1287,6 +1326,7 @@ const vercel = new Vercel({
 async function run() {
   const result = await vercel.domainsRegistrar.getOrder({
     orderId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
 
   console.log(result);
@@ -1312,6 +1352,7 @@ const vercel = new VercelCore({
 async function run() {
   const res = await domainsRegistrarGetOrder(vercel, {
     orderId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   });
   if (res.ok) {
     const { value: result } = res;

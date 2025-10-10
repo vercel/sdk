@@ -86,6 +86,7 @@ export const CancelDeploymentFramework = {
   Vuepress: "vuepress",
   Parcel: "parcel",
   Fastapi: "fastapi",
+  Flask: "flask",
   Fasthtml: "fasthtml",
   SanityV3: "sanity-v3",
   Sanity: "sanity",
@@ -1337,10 +1338,6 @@ export type CancelDeploymentMicrofrontends2 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
-  /**
-   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
-   */
-  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends1 = {
@@ -1361,10 +1358,6 @@ export type CancelDeploymentMicrofrontends1 = {
    * Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
    */
   microfrontendsAlias2Enabled?: boolean | undefined;
-  /**
-   * Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
-   */
-  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 export type CancelDeploymentMicrofrontends =
@@ -8614,7 +8607,6 @@ export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
-  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8628,7 +8620,6 @@ export type CancelDeploymentMicrofrontends2$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
-  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -8647,7 +8638,6 @@ export const CancelDeploymentMicrofrontends2$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
-  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**
@@ -8694,7 +8684,6 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
-  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8704,7 +8693,6 @@ export type CancelDeploymentMicrofrontends1$Outbound = {
   defaultRoute?: string | undefined;
   groupIds: Array<string>;
   microfrontendsAlias2Enabled?: boolean | undefined;
-  microfrontendsAliasRoutingVercelSiteProdTestHost?: boolean | undefined;
 };
 
 /** @internal */
@@ -8718,7 +8706,6 @@ export const CancelDeploymentMicrofrontends1$outboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   groupIds: z.array(z.string()),
   microfrontendsAlias2Enabled: z.boolean().optional(),
-  microfrontendsAliasRoutingVercelSiteProdTestHost: z.boolean().optional(),
 });
 
 /**

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -12,6 +13,11 @@ export type GetBulkAvailabilityRequestBody = {
    * an array of at most 50 item(s)
    */
   domains: Array<string>;
+};
+
+export type GetBulkAvailabilityRequest = {
+  teamId?: string | undefined;
+  requestBody: GetBulkAvailabilityRequestBody;
 };
 
 export type Results = {
@@ -79,6 +85,71 @@ export function getBulkAvailabilityRequestBodyFromJSON(
     jsonString,
     (x) => GetBulkAvailabilityRequestBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetBulkAvailabilityRequestBody' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetBulkAvailabilityRequest$inboundSchema: z.ZodType<
+  GetBulkAvailabilityRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  teamId: z.string().optional(),
+  RequestBody: z.lazy(() => GetBulkAvailabilityRequestBody$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "RequestBody": "requestBody",
+  });
+});
+
+/** @internal */
+export type GetBulkAvailabilityRequest$Outbound = {
+  teamId?: string | undefined;
+  RequestBody: GetBulkAvailabilityRequestBody$Outbound;
+};
+
+/** @internal */
+export const GetBulkAvailabilityRequest$outboundSchema: z.ZodType<
+  GetBulkAvailabilityRequest$Outbound,
+  z.ZodTypeDef,
+  GetBulkAvailabilityRequest
+> = z.object({
+  teamId: z.string().optional(),
+  requestBody: z.lazy(() => GetBulkAvailabilityRequestBody$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetBulkAvailabilityRequest$ {
+  /** @deprecated use `GetBulkAvailabilityRequest$inboundSchema` instead. */
+  export const inboundSchema = GetBulkAvailabilityRequest$inboundSchema;
+  /** @deprecated use `GetBulkAvailabilityRequest$outboundSchema` instead. */
+  export const outboundSchema = GetBulkAvailabilityRequest$outboundSchema;
+  /** @deprecated use `GetBulkAvailabilityRequest$Outbound` instead. */
+  export type Outbound = GetBulkAvailabilityRequest$Outbound;
+}
+
+export function getBulkAvailabilityRequestToJSON(
+  getBulkAvailabilityRequest: GetBulkAvailabilityRequest,
+): string {
+  return JSON.stringify(
+    GetBulkAvailabilityRequest$outboundSchema.parse(getBulkAvailabilityRequest),
+  );
+}
+
+export function getBulkAvailabilityRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetBulkAvailabilityRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetBulkAvailabilityRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetBulkAvailabilityRequest' from JSON`,
   );
 }
 

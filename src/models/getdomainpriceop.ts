@@ -28,6 +28,7 @@ import {
 export type GetDomainPriceRequest = {
   domain: string;
   years?: string | undefined;
+  teamId?: string | undefined;
 };
 
 /**
@@ -65,12 +66,14 @@ export const GetDomainPriceRequest$inboundSchema: z.ZodType<
 > = z.object({
   domain: z.string(),
   years: z.string().optional(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type GetDomainPriceRequest$Outbound = {
   domain: string;
   years?: string | undefined;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -81,6 +84,7 @@ export const GetDomainPriceRequest$outboundSchema: z.ZodType<
 > = z.object({
   domain: z.string(),
   years: z.string().optional(),
+  teamId: z.string().optional(),
 });
 
 /**

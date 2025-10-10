@@ -128,6 +128,7 @@ async function $do(
   const path = pathToFunc("/v1/registrar/tlds/{tld}/price")(pathParams);
 
   const query = encodeFormQuery({
+    "teamId": payload.teamId,
     "years": payload.years,
   });
 

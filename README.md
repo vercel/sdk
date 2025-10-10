@@ -916,7 +916,9 @@ const vercel = new Vercel({
 
 async function run() {
   try {
-    const result = await vercel.domainsRegistrar.getSupportedTlds();
+    const result = await vercel.domainsRegistrar.getSupportedTlds({
+      teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    });
 
     console.log(result);
   } catch (error) {

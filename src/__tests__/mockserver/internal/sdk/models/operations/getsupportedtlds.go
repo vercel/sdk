@@ -6,6 +6,17 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
+type GetSupportedTldsRequest struct {
+	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
+}
+
+func (o *GetSupportedTldsRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
 type GetSupportedTldsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// A list of the TLDs supported by Vercel.

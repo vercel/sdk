@@ -22,6 +22,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDomainTransferInRequest = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /**
@@ -63,11 +64,13 @@ export const GetDomainTransferInRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type GetDomainTransferInRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -77,6 +80,7 @@ export const GetDomainTransferInRequest$outboundSchema: z.ZodType<
   GetDomainTransferInRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /**

@@ -7,7 +7,8 @@ import (
 )
 
 type GetDomainAvailabilityRequest struct {
-	Domain string `pathParam:"style=simple,explode=false,name=domain"`
+	Domain string  `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 }
 
 func (o *GetDomainAvailabilityRequest) GetDomain() string {
@@ -15,6 +16,13 @@ func (o *GetDomainAvailabilityRequest) GetDomain() string {
 		return ""
 	}
 	return o.Domain
+}
+
+func (o *GetDomainAvailabilityRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 // GetDomainAvailabilityResponseBody - Success

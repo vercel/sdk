@@ -3,16 +3,25 @@
  */
 
 import { domainsRegistrarGetSupportedTlds } from "../../funcs/domainsRegistrarGetSupportedTlds.js";
+import { GetSupportedTldsRequest$inboundSchema } from "../../models/getsupportedtldsop.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
-export const tool$domainsRegistrarGetSupportedTlds: ToolDefinition = {
+const args = {
+  request: GetSupportedTldsRequest$inboundSchema,
+};
+
+export const tool$domainsRegistrarGetSupportedTlds: ToolDefinition<
+  typeof args
+> = {
   name: "domains-registrar-get-supported-tlds",
   description: `Get supported TLDs
 
 Get a list of TLDs supported by Vercel`,
-  tool: async (client, ctx) => {
+  args,
+  tool: async (client, args, ctx) => {
     const [result, apiCall] = await domainsRegistrarGetSupportedTlds(
       client,
+      args.request,
       { fetchOptions: { signal: ctx.signal } },
     ).$inspect();
 

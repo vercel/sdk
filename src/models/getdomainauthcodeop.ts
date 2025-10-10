@@ -33,6 +33,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetDomainAuthCodeRequest = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /**
@@ -63,11 +64,13 @@ export const GetDomainAuthCodeRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type GetDomainAuthCodeRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -77,6 +80,7 @@ export const GetDomainAuthCodeRequest$outboundSchema: z.ZodType<
   GetDomainAuthCodeRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /**

@@ -7,8 +7,9 @@ import (
 )
 
 type GetTldPriceRequest struct {
-	Tld   string  `pathParam:"style=simple,explode=false,name=tld"`
-	Years *string `queryParam:"style=form,explode=true,name=years"`
+	Tld    string  `pathParam:"style=simple,explode=false,name=tld"`
+	Years  *string `queryParam:"style=form,explode=true,name=years"`
+	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 }
 
 func (o *GetTldPriceRequest) GetTld() string {
@@ -23,6 +24,13 @@ func (o *GetTldPriceRequest) GetYears() *string {
 		return nil
 	}
 	return o.Years
+}
+
+func (o *GetTldPriceRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 // GetTldPriceResponseBody - Success

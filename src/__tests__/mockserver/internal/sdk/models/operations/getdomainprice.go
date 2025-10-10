@@ -9,6 +9,7 @@ import (
 type GetDomainPriceRequest struct {
 	Domain string  `pathParam:"style=simple,explode=false,name=domain"`
 	Years  *string `queryParam:"style=form,explode=true,name=years"`
+	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 }
 
 func (o *GetDomainPriceRequest) GetDomain() string {
@@ -23,6 +24,13 @@ func (o *GetDomainPriceRequest) GetYears() *string {
 		return nil
 	}
 	return o.Years
+}
+
+func (o *GetDomainPriceRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 // GetDomainPriceResponseBody - Success

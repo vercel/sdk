@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8557": {}
+                      "__@BRAND@8575": {}
                     }
                   },
                   "secrets": []
@@ -6505,6 +6505,10 @@ workflows:
                 "\u003cvalue 2\u003e"
               ]
             type: simple
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
   - workflowId: getTldPrice
@@ -6515,6 +6519,9 @@ workflows:
           - name: tld
             in: path
             value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -6537,6 +6544,9 @@ workflows:
           - name: domain
             in: path
             value: hungry-birdbath.info
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -6556,6 +6566,9 @@ workflows:
           - name: domain
             in: path
             value: excited-dwell.org
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -6588,6 +6601,10 @@ workflows:
                 "results": []
               }
             type: simple
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
   - workflowId: getDomainAuthCode
@@ -6598,6 +6615,9 @@ workflows:
           - name: domain
             in: path
             value: ruddy-coil.org
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -6617,6 +6637,9 @@ workflows:
           - name: domain
             in: path
             value: metallic-simple.com
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         requestBody:
           contentType: application/json
           payload:
@@ -6678,6 +6701,10 @@ workflows:
                 "_links": {}
               }
             type: simple
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
   - workflowId: transferInDomain
@@ -6688,6 +6715,9 @@ workflows:
           - name: domain
             in: path
             value: silky-fund.org
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         requestBody:
           contentType: application/json
           payload:
@@ -6725,6 +6755,9 @@ workflows:
           - name: domain
             in: path
             value: unsung-antelope.com
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -6744,6 +6777,9 @@ workflows:
           - name: domain
             in: path
             value: scaly-daughter.biz
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         requestBody:
           contentType: application/json
           payload:
@@ -6769,6 +6805,9 @@ workflows:
           - name: domain
             in: path
             value: tricky-issue.name
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -6786,6 +6825,9 @@ workflows:
           - name: orderId
             in: path
             value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json

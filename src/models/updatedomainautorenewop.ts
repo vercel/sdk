@@ -50,6 +50,7 @@ export type UpdateDomainAutoRenewRequestBody = {
 
 export type UpdateDomainAutoRenewRequest = {
   domain: string;
+  teamId?: string | undefined;
   requestBody: UpdateDomainAutoRenewRequestBody;
 };
 
@@ -132,6 +133,7 @@ export const UpdateDomainAutoRenewRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   RequestBody: z.lazy(() => UpdateDomainAutoRenewRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -142,6 +144,7 @@ export const UpdateDomainAutoRenewRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateDomainAutoRenewRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
   RequestBody: UpdateDomainAutoRenewRequestBody$Outbound;
 };
 
@@ -152,6 +155,7 @@ export const UpdateDomainAutoRenewRequest$outboundSchema: z.ZodType<
   UpdateDomainAutoRenewRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   requestBody: z.lazy(() => UpdateDomainAutoRenewRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {

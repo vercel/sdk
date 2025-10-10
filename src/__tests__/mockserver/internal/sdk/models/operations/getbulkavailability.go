@@ -6,16 +6,35 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type GetBulkAvailabilityRequest struct {
+type GetBulkAvailabilityRequestBody struct {
 	// an array of at most 50 item(s)
 	Domains []string `json:"domains"`
 }
 
-func (o *GetBulkAvailabilityRequest) GetDomains() []string {
+func (o *GetBulkAvailabilityRequestBody) GetDomains() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.Domains
+}
+
+type GetBulkAvailabilityRequest struct {
+	TeamID      *string                        `queryParam:"style=form,explode=true,name=teamId"`
+	RequestBody GetBulkAvailabilityRequestBody `request:"mediaType=application/json"`
+}
+
+func (o *GetBulkAvailabilityRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetBulkAvailabilityRequest) GetRequestBody() GetBulkAvailabilityRequestBody {
+	if o == nil {
+		return GetBulkAvailabilityRequestBody{}
+	}
+	return o.RequestBody
 }
 
 type GetBulkAvailabilityResult struct {

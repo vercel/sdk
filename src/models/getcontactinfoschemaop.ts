@@ -21,6 +21,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetContactInfoSchemaRequest = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /**
@@ -42,11 +43,13 @@ export const GetContactInfoSchemaRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type GetContactInfoSchemaRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -56,6 +59,7 @@ export const GetContactInfoSchemaRequest$outboundSchema: z.ZodType<
   GetContactInfoSchemaRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
 });
 
 /**

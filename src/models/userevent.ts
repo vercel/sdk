@@ -1501,16 +1501,24 @@ export type NinetyOne = {
   projectId: string;
 };
 
+export const PayloadReasonCode = {
+  PublicApi: "PUBLIC_API",
+  Backoffice: "BACKOFFICE",
+} as const;
+export type PayloadReasonCode = ClosedEnum<typeof PayloadReasonCode>;
+
 /**
  * The payload of the event, if requested.
  */
 export type Ninety = {
   projectId: string;
+  reasonCode?: PayloadReasonCode | undefined;
 };
 
 export const ReasonCode = {
   BudgetReached: "BUDGET_REACHED",
   PublicApi: "PUBLIC_API",
+  Backoffice: "BACKOFFICE",
 } as const;
 export type ReasonCode = ClosedEnum<typeof ReasonCode>;
 
@@ -13572,14 +13580,37 @@ export function ninetyOneFromJSON(
 }
 
 /** @internal */
+export const PayloadReasonCode$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadReasonCode
+> = z.nativeEnum(PayloadReasonCode);
+
+/** @internal */
+export const PayloadReasonCode$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadReasonCode
+> = PayloadReasonCode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadReasonCode$ {
+  /** @deprecated use `PayloadReasonCode$inboundSchema` instead. */
+  export const inboundSchema = PayloadReasonCode$inboundSchema;
+  /** @deprecated use `PayloadReasonCode$outboundSchema` instead. */
+  export const outboundSchema = PayloadReasonCode$outboundSchema;
+}
+
+/** @internal */
 export const Ninety$inboundSchema: z.ZodType<Ninety, z.ZodTypeDef, unknown> = z
   .object({
     projectId: z.string(),
+    reasonCode: PayloadReasonCode$inboundSchema.optional(),
   });
 
 /** @internal */
 export type Ninety$Outbound = {
   projectId: string;
+  reasonCode?: string | undefined;
 };
 
 /** @internal */
@@ -13589,6 +13620,7 @@ export const Ninety$outboundSchema: z.ZodType<
   Ninety
 > = z.object({
   projectId: z.string(),
+  reasonCode: PayloadReasonCode$outboundSchema.optional(),
 });
 
 /**

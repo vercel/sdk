@@ -185,6 +185,7 @@ export const GetWebhooksResponseBodyFramework = {
   Vuepress: "vuepress",
   Parcel: "parcel",
   Fastapi: "fastapi",
+  Flask: "flask",
   Fasthtml: "fasthtml",
   SanityV3: "sanity-v3",
   Sanity: "sanity",

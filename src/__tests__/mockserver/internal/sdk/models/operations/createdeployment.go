@@ -1266,6 +1266,7 @@ const (
 	CreateDeploymentFrameworkRequestVuepress       CreateDeploymentFrameworkRequest = "vuepress"
 	CreateDeploymentFrameworkRequestParcel         CreateDeploymentFrameworkRequest = "parcel"
 	CreateDeploymentFrameworkRequestFastapi        CreateDeploymentFrameworkRequest = "fastapi"
+	CreateDeploymentFrameworkRequestFlask          CreateDeploymentFrameworkRequest = "flask"
 	CreateDeploymentFrameworkRequestFasthtml       CreateDeploymentFrameworkRequest = "fasthtml"
 	CreateDeploymentFrameworkRequestSanityV3       CreateDeploymentFrameworkRequest = "sanity-v3"
 	CreateDeploymentFrameworkRequestSanity         CreateDeploymentFrameworkRequest = "sanity"
@@ -1372,6 +1373,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "parcel":
 		fallthrough
 	case "fastapi":
+		fallthrough
+	case "flask":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -1853,6 +1856,7 @@ const (
 	CreateDeploymentFrameworkLambdasVuepress       CreateDeploymentFrameworkLambdas = "vuepress"
 	CreateDeploymentFrameworkLambdasParcel         CreateDeploymentFrameworkLambdas = "parcel"
 	CreateDeploymentFrameworkLambdasFastapi        CreateDeploymentFrameworkLambdas = "fastapi"
+	CreateDeploymentFrameworkLambdasFlask          CreateDeploymentFrameworkLambdas = "flask"
 	CreateDeploymentFrameworkLambdasFasthtml       CreateDeploymentFrameworkLambdas = "fasthtml"
 	CreateDeploymentFrameworkLambdasSanityV3       CreateDeploymentFrameworkLambdas = "sanity-v3"
 	CreateDeploymentFrameworkLambdasSanity         CreateDeploymentFrameworkLambdas = "sanity"
@@ -1959,6 +1963,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "parcel":
 		fallthrough
 	case "fastapi":
+		fallthrough
+	case "flask":
 		fallthrough
 	case "fasthtml":
 		fallthrough
@@ -8009,8 +8015,6 @@ type CreateDeploymentMicrofrontends2 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
-	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
-	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (c CreateDeploymentMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -8073,13 +8077,6 @@ func (o *CreateDeploymentMicrofrontends2) GetMicrofrontendsAlias2Enabled() *bool
 	return o.MicrofrontendsAlias2Enabled
 }
 
-func (o *CreateDeploymentMicrofrontends2) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
-}
-
 type CreateDeploymentMicrofrontends1 struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// The project name of the default app of this deployment's microfrontends group.
@@ -8090,8 +8087,6 @@ type CreateDeploymentMicrofrontends1 struct {
 	GroupIds []string `json:"groupIds"`
 	// Whether the MicrofrontendsAlias2 team flag should be considered enabled for this deployment or not.
 	MicrofrontendsAlias2Enabled *bool `json:"microfrontendsAlias2Enabled,omitempty"`
-	// Temporary flag to safely test MFE alias routing in vercel-site production for specific production hosts (not vercel.com)
-	MicrofrontendsAliasRoutingVercelSiteProdTestHost *bool `json:"microfrontendsAliasRoutingVercelSiteProdTestHost,omitempty"`
 }
 
 func (c CreateDeploymentMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -8138,13 +8133,6 @@ func (o *CreateDeploymentMicrofrontends1) GetMicrofrontendsAlias2Enabled() *bool
 		return nil
 	}
 	return o.MicrofrontendsAlias2Enabled
-}
-
-func (o *CreateDeploymentMicrofrontends1) GetMicrofrontendsAliasRoutingVercelSiteProdTestHost() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.MicrofrontendsAliasRoutingVercelSiteProdTestHost
 }
 
 type CreateDeploymentMicrofrontendsUnionType string

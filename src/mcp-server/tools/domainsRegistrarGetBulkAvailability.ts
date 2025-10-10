@@ -3,11 +3,11 @@
  */
 
 import { domainsRegistrarGetBulkAvailability } from "../../funcs/domainsRegistrarGetBulkAvailability.js";
-import { GetBulkAvailabilityRequestBody$inboundSchema } from "../../models/getbulkavailabilityop.js";
+import { GetBulkAvailabilityRequest$inboundSchema } from "../../models/getbulkavailabilityop.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: GetBulkAvailabilityRequestBody$inboundSchema,
+  request: GetBulkAvailabilityRequest$inboundSchema,
 };
 
 export const tool$domainsRegistrarGetBulkAvailability: ToolDefinition<

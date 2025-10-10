@@ -122,6 +122,7 @@ export type RenewDomainRequestBody = {
 
 export type RenewDomainRequest = {
   domain: string;
+  teamId?: string | undefined;
   requestBody: RenewDomainRequestBody;
 };
 
@@ -323,6 +324,7 @@ export const RenewDomainRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   RequestBody: z.lazy(() => RenewDomainRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -333,6 +335,7 @@ export const RenewDomainRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type RenewDomainRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
   RequestBody: RenewDomainRequestBody$Outbound;
 };
 
@@ -343,6 +346,7 @@ export const RenewDomainRequest$outboundSchema: z.ZodType<
   RenewDomainRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   requestBody: z.lazy(() => RenewDomainRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {

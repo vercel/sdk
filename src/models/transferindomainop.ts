@@ -121,6 +121,7 @@ export type TransferInDomainRequestBody = {
 
 export type TransferInDomainRequest = {
   domain: string;
+  teamId?: string | undefined;
   requestBody: TransferInDomainRequestBody;
 };
 
@@ -333,6 +334,7 @@ export const TransferInDomainRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   RequestBody: z.lazy(() => TransferInDomainRequestBody$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
@@ -343,6 +345,7 @@ export const TransferInDomainRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type TransferInDomainRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
   RequestBody: TransferInDomainRequestBody$Outbound;
 };
 
@@ -353,6 +356,7 @@ export const TransferInDomainRequest$outboundSchema: z.ZodType<
   TransferInDomainRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
   requestBody: z.lazy(() => TransferInDomainRequestBody$outboundSchema),
 }).transform((v) => {
   return remap$(v, {

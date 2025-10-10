@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: c679926dba890bc56b5821f6b2e96071
+  docChecksum: fe7631537bbb15970e0f14f79023686d
   docVersion: 0.0.1
-  speakeasyVersion: 1.636.2
-  generationVersion: 2.723.8
-  releaseVersion: 1.13.7
-  configChecksum: ea4d9806f04f33c5fe9081bb24572f9d
+  speakeasyVersion: 1.636.3
+  generationVersion: 2.723.11
+  releaseVersion: 1.13.8
+  configChecksum: d2dc042be70a6a00b6c5ccc0fcc3b42b
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -140,8 +140,8 @@ generatedFiles:
   - docs/models/assignaliasrequest.md
   - docs/models/assignaliasrequestbody.md
   - docs/models/assignaliasresponsebody.md
-  - docs/models/atbrandat550088.md
-  - docs/models/atbrandat8557.md
+  - docs/models/atbrandat550534.md
+  - docs/models/atbrandat8575.md
   - docs/models/attribution.md
   - docs/models/authentication.md
   - docs/models/authmethod.md
@@ -213,6 +213,7 @@ generatedFiles:
   - docs/models/buydomainsdomainsregistrarresponseresponsebody.md
   - docs/models/buydomainslinks.md
   - docs/models/buydomainsmethod.md
+  - docs/models/buydomainsrequest.md
   - docs/models/buydomainsrequestbody.md
   - docs/models/buydomainsresponsebody.md
   - docs/models/buysingledomaindomainsregistrarresponsebody.md
@@ -615,31 +616,31 @@ generatedFiles:
   - docs/models/createintegrationstoredirectproperties7.md
   - docs/models/createintegrationstoredirectproperties8.md
   - docs/models/createintegrationstoredirectproperties9.md
-  - docs/models/createintegrationstoredirectpropertiesatbrandat8557.md
+  - docs/models/createintegrationstoredirectpropertiesatbrandat8575.md
   - docs/models/createintegrationstoredirectpropertiesdisabled.md
   - docs/models/createintegrationstoredirectpropertieshidden.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat8557.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat8575.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsdisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationshidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsitems.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsmaxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsminlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationspattern.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat8557.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat8575.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonmaxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonminlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonpattern.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema1atbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8557.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema1atbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8575.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6type.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema8atbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema9atbrandat8557.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat8557.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema8atbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema9atbrandat8575.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat8575.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschematype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproducttype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductuicontrol.md
@@ -669,7 +670,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat8557.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat8575.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200maxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200minlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200pattern.md
@@ -680,7 +681,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat8557.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat8575.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsedisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsehidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsemaxlength.md
@@ -769,7 +770,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectuioptions1.md
   - docs/models/createintegrationstoredirectuioptions2.md
   - docs/models/createintegrationstoredirectuioptions3.md
-  - docs/models/createintegrationstoredirectuioptionsatbrandat8557.md
+  - docs/models/createintegrationstoredirectuioptionsatbrandat8575.md
   - docs/models/createintegrationstoredirectuioptionsdisabled.md
   - docs/models/createintegrationstoredirectuioptionshidden.md
   - docs/models/createintegrationstoredirectuioptionsintegrationsdisabled.md
@@ -1556,6 +1557,7 @@ generatedFiles:
   - docs/models/getbillingplansresponsebody.md
   - docs/models/getbillingplansscope.md
   - docs/models/getbillingplanstype.md
+  - docs/models/getbulkavailabilityrequest.md
   - docs/models/getbulkavailabilityrequestbody.md
   - docs/models/getbulkavailabilityresponsebody.md
   - docs/models/getbypassipaction.md
@@ -1624,34 +1626,34 @@ generatedFiles:
   - docs/models/getconfigurationproductsintegrationsresponse200status.md
   - docs/models/getconfigurationproductsintegrationsresponsestatus.md
   - docs/models/getconfigurationproductsintegrationsstatus.md
-  - docs/models/getconfigurationproductspropertiesatbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesatbrandat550534.md
   - docs/models/getconfigurationproductspropertiesdisabled.md
   - docs/models/getconfigurationproductspropertieshidden.md
-  - docs/models/getconfigurationproductspropertiesintegrationsatbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesintegrationsatbrandat550534.md
   - docs/models/getconfigurationproductspropertiesintegrationsdisabled.md
   - docs/models/getconfigurationproductspropertiesintegrationshidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsitems.md
   - docs/models/getconfigurationproductspropertiesintegrationsmaxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsminlength.md
   - docs/models/getconfigurationproductspropertiesintegrationspattern.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema10atbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema10atbrandat550534.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema4type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6atbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsminlengthatbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6atbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsminlengthatbrandat550534.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8atbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsminlengthatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemspatternatbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8atbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsminlengthatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemspatternatbrandat550534.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9atbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9maxlengthatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9patternatbrandat550088.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschemaatbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9atbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9maxlengthatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9patternatbrandat550534.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschemaatbrandat550534.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschematype.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductstype.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsuicontrol.md
@@ -1674,7 +1676,7 @@ generatedFiles:
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuiformattedvalue.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuihidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuireadonly.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200atbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200atbrandat550534.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200maxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200minlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200pattern.md
@@ -1685,7 +1687,7 @@ generatedFiles:
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uiformattedvalue.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uihidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uireadonly.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponseatbrandat550088.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponseatbrandat550534.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponsemaxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponseminlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponsepattern.md
@@ -1764,13 +1766,13 @@ generatedFiles:
   - docs/models/getconfigurationproductsuioptions1.md
   - docs/models/getconfigurationproductsuioptions2.md
   - docs/models/getconfigurationproductsuioptions3.md
-  - docs/models/getconfigurationproductsuioptionsatbrandat550088.md
+  - docs/models/getconfigurationproductsuioptionsatbrandat550534.md
   - docs/models/getconfigurationproductsuioptionsdisabled.md
   - docs/models/getconfigurationproductsuioptionshidden.md
-  - docs/models/getconfigurationproductsuioptionsintegrationsatbrandat550088.md
+  - docs/models/getconfigurationproductsuioptionsintegrationsatbrandat550534.md
   - docs/models/getconfigurationproductsuioptionsintegrationsdisabled.md
   - docs/models/getconfigurationproductsuioptionsintegrationshidden.md
-  - docs/models/getconfigurationproductsuioptionsintegrationsresponseatbrandat550088.md
+  - docs/models/getconfigurationproductsuioptionsintegrationsresponseatbrandat550534.md
   - docs/models/getconfigurationproductsuioptionsintegrationsresponsedisabled.md
   - docs/models/getconfigurationproductsuioptionsintegrationsresponsehidden.md
   - docs/models/getconfigurationproductsuioptionsvalue.md
@@ -2540,6 +2542,7 @@ generatedFiles:
   - docs/models/getruntimelogsrequest.md
   - docs/models/getruntimelogsresponsebody.md
   - docs/models/getruntimelogssource.md
+  - docs/models/getsupportedtldsrequest.md
   - docs/models/getteamaccessrequestbitbucket.md
   - docs/models/getteamaccessrequestgithub.md
   - docs/models/getteamaccessrequestgitlab.md
@@ -2589,6 +2592,7 @@ generatedFiles:
   - docs/models/getwebhooksresponsebody2.md
   - docs/models/getwebhooksresponsebodyevents.md
   - docs/models/getwebhooksresponsebodyframework.md
+  - docs/models/git.md
   - docs/models/gitcomments.md
   - docs/models/gitforkprotection.md
   - docs/models/github.md
@@ -3062,6 +3066,7 @@ generatedFiles:
   - docs/models/payloadprojectmembership.md
   - docs/models/payloadpurchasetype.md
   - docs/models/payloadreason.md
+  - docs/models/payloadreasoncode.md
   - docs/models/payloadreasons.md
   - docs/models/payloadrecentsviewpreference.md
   - docs/models/payloadremotecaching.md
@@ -3108,6 +3113,7 @@ generatedFiles:
   - docs/models/project.md
   - docs/models/projectanalytics.md
   - docs/models/projectconnectionscopes.md
+  - docs/models/projectfilter.md
   - docs/models/projectid.md
   - docs/models/projectmembership.md
   - docs/models/projects.md
@@ -3126,8 +3132,8 @@ generatedFiles:
   - docs/models/properties7.md
   - docs/models/properties8.md
   - docs/models/properties9.md
-  - docs/models/propertiesatbrandat550088.md
-  - docs/models/propertiesatbrandat8557.md
+  - docs/models/propertiesatbrandat550534.md
+  - docs/models/propertiesatbrandat8575.md
   - docs/models/propertiesdisabled.md
   - docs/models/propertieshidden.md
   - docs/models/propertiesitems.md
@@ -3156,6 +3162,9 @@ generatedFiles:
   - docs/models/protocol.md
   - docs/models/protocols.md
   - docs/models/protocolsettings.md
+  - docs/models/providers.md
+  - docs/models/providers1.md
+  - docs/models/providers2.md
   - docs/models/proxy.md
   - docs/models/purchasetype.md
   - docs/models/purpose.md
@@ -3786,8 +3795,8 @@ generatedFiles:
   - docs/models/uioptions1.md
   - docs/models/uioptions2.md
   - docs/models/uioptions3.md
-  - docs/models/uioptionsatbrandat550088.md
-  - docs/models/uioptionsatbrandat8557.md
+  - docs/models/uioptionsatbrandat550534.md
+  - docs/models/uioptionsatbrandat8575.md
   - docs/models/uioptionsdisabled.md
   - docs/models/uioptionshidden.md
   - docs/models/uioptionsvalue.md
@@ -5531,6 +5540,7 @@ generatedFiles:
   - src/models/getrollingreleaseconfigop.ts
   - src/models/getrollingreleaseop.ts
   - src/models/getruntimelogsop.ts
+  - src/models/getsupportedtldsop.ts
   - src/models/getteamaccessrequestop.ts
   - src/models/getteammembersop.ts
   - src/models/getteamop.ts
@@ -8235,7 +8245,7 @@ examples:
           slug: "my-team-url-slug"
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": false, "role": "SECURITY", "createdAt": 1519.81, "created": 619.38}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -8253,7 +8263,7 @@ examples:
         application/json: {"description": "Our mission is to make cloud computing accessible to everyone", "emailDomain": "example.com", "name": "My Team", "previewDeploymentSuffix": "example.dev", "regenerateInviteCode": true, "saml": {"enforced": true}, "slug": "my-team", "enablePreviewFeedback": "on", "enableProductionFeedback": "on", "sensitiveEnvironmentVariablePolicy": "on", "remoteCaching": {"enabled": true}, "hideIpAddresses": false, "hideIpAddressesInLogDrains": false, "defaultExpirationSettings": {"expiration": "1y", "expirationProduction": "1y", "expirationCanceled": "1y", "expirationErrored": "1y"}}
       responses:
         "200":
-          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"status": "linked", "type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
+          application/json: {"creatorId": "R6efeCJQ2HKXywuasPDc0fOWB", "updatedAt": 1611796915677, "emailDomain": "example.com", "saml": {"connection": {"type": "OktaSAML", "status": "linked", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "directory": {"type": "OktaSAML", "state": "active", "connectedAt": 1611796915677, "lastReceivedWebhookEvent": 1611796915677}, "enforced": true}, "inviteCode": "hasihf9e89", "description": "Our mission is to make cloud computing accessible to everyone.", "stagingPrefix": "<value>", "previewDeploymentSuffix": "example.dev", "platform": true, "id": "team_nllPyCtREAqxxdyFKbbMDlxd", "slug": "my-team", "name": "My Team", "avatar": "6eb07268bcfadd309905ffb1579354084c24655c", "membership": {"confirmed": true, "role": "CONTRIBUTOR", "createdAt": 6209.44, "created": 5994.92}, "createdAt": 1630748523395}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -8845,7 +8855,7 @@ examples:
         application/json: {"name": "my-dev-database", "integrationConfigurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "integrationProductIdOrSlug": "iap_postgres_db", "metadata": {"environment": "development", "project": "my-app", "tags": ["database", "postgres"]}, "externalId": "dev-db-001", "protocolSettings": {"experimentation": {"edgeConfigSyncingEnabled": true}}, "source": "api", "billingPlanId": "bp_abc123def456", "paymentMethodId": "pm_1AbcDefGhiJklMno", "prepaymentAmountCents": 5000}
       responses:
         "200":
-          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@8557": {}}}, "secrets": []}}
+          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@8575": {}}}, "secrets": []}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -8936,6 +8946,9 @@ examples:
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
   getSupportedTlds:
     speakeasy-default-get-supported-tlds:
+      parameters:
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: ["<value 1>", "<value 2>"]
@@ -8954,6 +8967,8 @@ examples:
       parameters:
         path:
           tld: "<value>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: {"years": 8935.16, "purchasePrice": 6287.26, "renewalPrice": 7886.17, "transferPrice": 1743.63}
@@ -8974,6 +8989,8 @@ examples:
       parameters:
         path:
           domain: "hungry-birdbath.info"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: {"available": false}
@@ -8994,6 +9011,8 @@ examples:
       parameters:
         path:
           domain: "excited-dwell.org"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: {"years": 40.44, "purchasePrice": 7574.42, "renewalPrice": 1523.71, "transferPrice": 2786.9}
@@ -9009,6 +9028,9 @@ examples:
           application/json: {"status": 40.44, "code": "not_authorized_for_scope", "message": "<value>"}
   getBulkAvailability:
     speakeasy-default-get-bulk-availability:
+      parameters:
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
         application/json: {"domains": ["<value 1>"]}
       responses:
@@ -9029,6 +9051,8 @@ examples:
       parameters:
         path:
           domain: "ruddy-coil.org"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: {"authCode": "<value>"}
@@ -9049,6 +9073,8 @@ examples:
       parameters:
         path:
           domain: "metallic-simple.com"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
         application/json: {"autoRenew": false, "years": 7602.67, "expectedPrice": 7390.34, "contactInformation": {"firstName": "Lexie", "lastName": "Lemke", "email": "Lionel21@gmail.com", "phone": "550.220.6330 x258", "address1": "<value>", "city": "Spencerport", "state": "West Virginia", "zip": "46432", "country": "Sweden"}}
       responses:
@@ -9066,6 +9092,9 @@ examples:
           application/json: {"status": 2011.55, "code": "internal_server_error", "message": "<value>"}
   buyDomains:
     speakeasy-default-buy-domains:
+      parameters:
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
         application/json: {"domains": [], "contactInformation": {"firstName": "Leonie", "lastName": "Johnston", "email": "Anna_Fisher13@hotmail.com", "phone": "(688) 699-0656", "address1": "<value>", "city": "Rennerland", "state": "New Jersey", "zip": "70054", "country": "Peru"}}
       responses:
@@ -9086,6 +9115,8 @@ examples:
       parameters:
         path:
           domain: "silky-fund.org"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
         application/json: {"authCode": "<value>", "autoRenew": true, "years": 298.08, "expectedPrice": 5092.5, "contactInformation": {"firstName": "Gabrielle", "lastName": "Hackett", "email": "Keshawn99@yahoo.com", "phone": "(758) 385-1802 x13762", "address1": "<value>", "city": "Pattiestead", "state": "Idaho", "zip": "64653-9022", "country": "Bolivia"}}
       responses:
@@ -9106,6 +9137,8 @@ examples:
       parameters:
         path:
           domain: "unsung-antelope.com"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: {"status": "pending_transfer"}
@@ -9126,6 +9159,8 @@ examples:
       parameters:
         path:
           domain: "scaly-daughter.biz"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
         application/json: {"years": 1981.72, "expectedPrice": 7096.16}
       responses:
@@ -9148,6 +9183,8 @@ examples:
       parameters:
         path:
           domain: "worthwhile-dwell.net"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
         application/json: {"autoRenew": true}
       responses:
@@ -9168,6 +9205,8 @@ examples:
       parameters:
         path:
           domain: "unique-formula.biz"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       requestBody:
         application/json: {"nameservers": ["<value 1>"]}
       responses:
@@ -9188,6 +9227,8 @@ examples:
       parameters:
         path:
           domain: "tricky-issue.name"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: {}
@@ -9206,6 +9247,8 @@ examples:
       parameters:
         path:
           orderId: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
       responses:
         "200":
           application/json: {"orderId": "<id>", "domains": [{"purchaseType": "renewal", "years": 3271.32, "domainName": "annual-atrium.biz", "status": "refunded", "price": 5522.99}], "status": "purchasing"}
@@ -9422,4 +9465,4 @@ generatedTests:
   getContactInfoSchema: "2025-10-07T01:47:08Z"
   getOrder: "2025-10-07T01:47:08Z"
   updateSharedConnectLinks: "2025-10-08T17:35:08Z"
-releaseNotes: "## Typescript SDK Changes Detected:\n* `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:\n* `vercel.integrations.createIntegrationStoreDirect()`:  `response.store.product` **Changed** **Breaking** :warning:\n* `vercel.security.getActiveAttackStatus()`: \n  *  `request.since` **Added**\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `vercel.integrations.createIntegrationStoreDirect()`:  `response.store` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.buyDomains()`:  `request` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getBulkAvailability()`:  `request` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getSupportedTlds()`:  `request` **Added** **Breaking** :warning:\n* `vercel.projects.pauseProject()`:  `error.status[402]` **Removed** **Breaking** :warning:\n* `vercel.deployments.getDeployment()`:  `response.[1].microfrontends` **Changed** **Breaking** :warning:\n* `vercel.deployments.createDeployment()`:  `response.microfrontends` **Changed** **Breaking** :warning:\n* `vercel.deployments.cancelDeployment()`:  `response.microfrontends` **Changed** **Breaking** :warning:\n* `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getDomainAvailability()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.getDomainTransferIn()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.getTldPrice()`: \n  *  `request.teamId` **Added**\n* `vercel.projects.updateProjectDataCache()`:  `response.permissions.agent` **Added**\n* `vercel.domainsRegistrar.getDomainPrice()`: \n  *  `request.teamId` **Added**\n* `vercel.projects.createProject()`:  `response.permissions.agent` **Added**\n* `vercel.domainsRegistrar.getDomainAuthCode()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.buySingleDomain()`: \n  *  `request.teamId` **Added**\n* `vercel.projects.getProjects()`:  `response.projects.[].permissions.agent` **Added**\n* `vercel.projects.updateProject()`:  `response.permissions.agent` **Added**\n* `vercel.domainsRegistrar.transferInDomain()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.renewDomain()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.updateDomainAutoRenew()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.updateDomainNameservers()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.getContactInfoSchema()`: \n  *  `request.teamId` **Added**\n* `vercel.domainsRegistrar.getOrder()`: \n  *  `request.teamId` **Added**\n* `vercel.user.listUserEvents()`:  `response.events.[].payload.[90].reasonCode` **Added**\n"

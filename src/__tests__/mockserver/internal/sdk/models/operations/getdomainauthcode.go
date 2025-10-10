@@ -7,7 +7,8 @@ import (
 )
 
 type GetDomainAuthCodeRequest struct {
-	Domain string `pathParam:"style=simple,explode=false,name=domain"`
+	Domain string  `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 }
 
 func (o *GetDomainAuthCodeRequest) GetDomain() string {
@@ -15,6 +16,13 @@ func (o *GetDomainAuthCodeRequest) GetDomain() string {
 		return ""
 	}
 	return o.Domain
+}
+
+func (o *GetDomainAuthCodeRequest) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
 }
 
 // GetDomainAuthCodeResponseBody - Success

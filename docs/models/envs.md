@@ -6,7 +6,7 @@
 import { Envs } from "@vercel/sdk/models/filterprojectenvsop.js";
 
 let value: Envs = {
-  type: "encrypted",
+  type: "plain",
   value: "<value>",
   key: "<key>",
 };

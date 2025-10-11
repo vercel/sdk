@@ -577,10 +577,10 @@ export type UpdateProjectTarget = Array<string> | UpdateProjectTarget2;
 
 export const UpdateProjectType = {
   System: "system",
-  Secret: "secret",
   Encrypted: "encrypted",
   Plain: "plain",
   Sensitive: "sensitive",
+  Secret: "secret",
 } as const;
 export type UpdateProjectType = ClosedEnum<typeof UpdateProjectType>;
 
@@ -1340,18 +1340,18 @@ export type UpdateProjectLinkProjectsDeployHooks = {
 
 export type UpdateProjectLink2 = {
   type: UpdateProjectLinkProjectsType;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
   repo?: string | undefined;
-  sourceless?: boolean | undefined;
+  repoId?: number | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
   org: string;
   /**
    * A new field, should be included in all new project links, is being added just in time when a deployment is created. This is needed for Protected Git scopes.
    */
   repoOwnerId?: number | undefined;
-  repoId?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsDeployHooks>;
   gitCredentialId: string;
+  sourceless?: boolean | undefined;
   productionBranch: string;
 };
 
@@ -1471,6 +1471,7 @@ export type UpdateProjectProjectsBuildMachineType = ClosedEnum<
 >;
 
 export type UpdateProjectProjectsResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1478,7 +1479,6 @@ export type UpdateProjectProjectsResourceConfig = {
     | UpdateProjectProjectsFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -1563,6 +1563,7 @@ export type UpdateProjectProjectsResponseBuildMachineType = ClosedEnum<
 >;
 
 export type UpdateProjectDefaultResourceConfig = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
@@ -1570,14 +1571,13 @@ export type UpdateProjectDefaultResourceConfig = {
     | UpdateProjectProjectsResponseFunctionDefaultMemoryType
     | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: UpdateProjectProjectsResponseBuildMachineType | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
 
 export const UpdateProjectProjectsResponseDeploymentType = {
-  All: "all",
   Preview: "preview",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
 } as const;
@@ -1755,9 +1755,17 @@ export type UpdateProjectPermissions = {
   userSudo?: Array<ACLAction> | undefined;
   webAuthn?: Array<ACLAction> | undefined;
   accessGroup?: Array<ACLAction> | undefined;
+  agent?: Array<ACLAction> | undefined;
+  alerts?: Array<ACLAction> | undefined;
   aliasGlobal?: Array<ACLAction> | undefined;
   analyticsSampling?: Array<ACLAction> | undefined;
   analyticsUsage?: Array<ACLAction> | undefined;
+  apiKey?: Array<ACLAction> | undefined;
+  apiKeyAiGateway?: Array<ACLAction> | undefined;
+  apiKeyOwnedBySelf?: Array<ACLAction> | undefined;
+  oauth2Application?: Array<ACLAction> | undefined;
+  vercelAppInstallation?: Array<ACLAction> | undefined;
+  vercelAppInstallationRequest?: Array<ACLAction> | undefined;
   auditLog?: Array<ACLAction> | undefined;
   billingAddress?: Array<ACLAction> | undefined;
   billingInformation?: Array<ACLAction> | undefined;
@@ -1769,6 +1777,7 @@ export type UpdateProjectPermissions = {
   billingRefund?: Array<ACLAction> | undefined;
   billingTaxId?: Array<ACLAction> | undefined;
   blob?: Array<ACLAction> | undefined;
+  blobStoreTokenSet?: Array<ACLAction> | undefined;
   budget?: Array<ACLAction> | undefined;
   cacheArtifact?: Array<ACLAction> | undefined;
   cacheArtifactUsageEvent?: Array<ACLAction> | undefined;
@@ -1776,6 +1785,7 @@ export type UpdateProjectPermissions = {
   concurrentBuilds?: Array<ACLAction> | undefined;
   connect?: Array<ACLAction> | undefined;
   connectConfiguration?: Array<ACLAction> | undefined;
+  dataCacheBillingSettings?: Array<ACLAction> | undefined;
   defaultDeploymentProtection?: Array<ACLAction> | undefined;
   domain?: Array<ACLAction> | undefined;
   domainAcceptDelegation?: Array<ACLAction> | undefined;
@@ -1786,40 +1796,46 @@ export type UpdateProjectPermissions = {
   domainPurchase?: Array<ACLAction> | undefined;
   domainRecord?: Array<ACLAction> | undefined;
   domainTransferIn?: Array<ACLAction> | undefined;
+  drain?: Array<ACLAction> | undefined;
+  edgeConfig?: Array<ACLAction> | undefined;
+  edgeConfigItem?: Array<ACLAction> | undefined;
+  edgeConfigSchema?: Array<ACLAction> | undefined;
+  edgeConfigToken?: Array<ACLAction> | undefined;
+  endpointVerification?: Array<ACLAction> | undefined;
   event?: Array<ACLAction> | undefined;
-  ownEvent?: Array<ACLAction> | undefined;
-  sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
   fileUpload?: Array<ACLAction> | undefined;
   flagsExplorerSubscription?: Array<ACLAction> | undefined;
   gitRepository?: Array<ACLAction> | undefined;
-  ipBlocking?: Array<ACLAction> | undefined;
   imageOptimizationNewPrice?: Array<ACLAction> | undefined;
   integration?: Array<ACLAction> | undefined;
   integrationAccount?: Array<ACLAction> | undefined;
   integrationConfiguration?: Array<ACLAction> | undefined;
-  integrationConfigurationTransfer?: Array<ACLAction> | undefined;
   integrationConfigurationProjects?: Array<ACLAction> | undefined;
-  integrationVercelConfigurationOverride?: Array<ACLAction> | undefined;
   integrationConfigurationRole?: Array<ACLAction> | undefined;
-  integrationSSOSession?: Array<ACLAction> | undefined;
-  integrationResource?: Array<ACLAction> | undefined;
-  integrationEvent?: Array<ACLAction> | undefined;
-  integrationResourceSecrets?: Array<ACLAction> | undefined;
+  integrationConfigurationTransfer?: Array<ACLAction> | undefined;
   integrationDeploymentAction?: Array<ACLAction> | undefined;
-  marketplaceInstallationMember?: Array<ACLAction> | undefined;
+  integrationEvent?: Array<ACLAction> | undefined;
+  integrationResource?: Array<ACLAction> | undefined;
+  integrationResourceReplCommand?: Array<ACLAction> | undefined;
+  integrationResourceSecrets?: Array<ACLAction> | undefined;
+  integrationSSOSession?: Array<ACLAction> | undefined;
+  integrationStoreTokenSet?: Array<ACLAction> | undefined;
+  integrationVercelConfigurationOverride?: Array<ACLAction> | undefined;
+  ipBlocking?: Array<ACLAction> | undefined;
+  jobGlobal?: Array<ACLAction> | undefined;
+  logDrain?: Array<ACLAction> | undefined;
   marketplaceBillingData?: Array<ACLAction> | undefined;
+  marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
+  marketplaceExperimentationItem?: Array<ACLAction> | undefined;
+  marketplaceInstallationMember?: Array<ACLAction> | undefined;
   marketplaceInvoice?: Array<ACLAction> | undefined;
   marketplaceSettings?: Array<ACLAction> | undefined;
-  marketplaceExperimentationItem?: Array<ACLAction> | undefined;
-  marketplaceExperimentationEdgeConfigData?: Array<ACLAction> | undefined;
-  jobGlobal?: Array<ACLAction> | undefined;
-  drain?: Array<ACLAction> | undefined;
-  logDrain?: Array<ACLAction> | undefined;
   monitoring?: Array<ACLAction> | undefined;
-  monitoringSettings?: Array<ACLAction> | undefined;
-  monitoringQuery?: Array<ACLAction> | undefined;
-  monitoringChart?: Array<ACLAction> | undefined;
   monitoringAlert?: Array<ACLAction> | undefined;
+  monitoringChart?: Array<ACLAction> | undefined;
+  monitoringQuery?: Array<ACLAction> | undefined;
+  monitoringSettings?: Array<ACLAction> | undefined;
+  notificationCustomerBudget?: Array<ACLAction> | undefined;
   notificationDeploymentFailed?: Array<ACLAction> | undefined;
   notificationDomainConfiguration?: Array<ACLAction> | undefined;
   notificationDomainExpire?: Array<ACLAction> | undefined;
@@ -1830,43 +1846,37 @@ export type UpdateProjectPermissions = {
   notificationDomainUnverified?: Array<ACLAction> | undefined;
   notificationMonitoringAlert?: Array<ACLAction> | undefined;
   notificationPaymentFailed?: Array<ACLAction> | undefined;
-  notificationUsageAlert?: Array<ACLAction> | undefined;
   notificationPreferences?: Array<ACLAction> | undefined;
-  notificationCustomerBudget?: Array<ACLAction> | undefined;
   notificationStatementOfReasons?: Array<ACLAction> | undefined;
+  notificationUsageAlert?: Array<ACLAction> | undefined;
   observabilityConfiguration?: Array<ACLAction> | undefined;
-  agent?: Array<ACLAction> | undefined;
-  alerts?: Array<ACLAction> | undefined;
-  observabilityNotebook?: Array<ACLAction> | undefined;
   observabilityFunnel?: Array<ACLAction> | undefined;
+  observabilityNotebook?: Array<ACLAction> | undefined;
   openTelemetryEndpoint?: Array<ACLAction> | undefined;
-  vercelAppInstallation?: Array<ACLAction> | undefined;
-  vercelAppInstallationRequest?: Array<ACLAction> | undefined;
+  ownEvent?: Array<ACLAction> | undefined;
+  passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
   paymentMethod?: Array<ACLAction> | undefined;
   permissions?: Array<ACLAction> | undefined;
   postgres?: Array<ACLAction> | undefined;
+  postgresStoreTokenSet?: Array<ACLAction> | undefined;
   previewDeploymentSuffix?: Array<ACLAction> | undefined;
+  projectTransferIn?: Array<ACLAction> | undefined;
   proTrialOnboarding?: Array<ACLAction> | undefined;
+  rateLimit?: Array<ACLAction> | undefined;
+  redis?: Array<ACLAction> | undefined;
+  redisStoreTokenSet?: Array<ACLAction> | undefined;
+  remoteCaching?: Array<ACLAction> | undefined;
+  repository?: Array<ACLAction> | undefined;
+  samlConfig?: Array<ACLAction> | undefined;
+  secret?: Array<ACLAction> | undefined;
+  sensitiveEnvironmentVariablePolicy?: Array<ACLAction> | undefined;
   sharedEnvVars?: Array<ACLAction> | undefined;
   sharedEnvVarsProduction?: Array<ACLAction> | undefined;
   space?: Array<ACLAction> | undefined;
   spaceRun?: Array<ACLAction> | undefined;
-  passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
-  rateLimit?: Array<ACLAction> | undefined;
-  redis?: Array<ACLAction> | undefined;
-  repository?: Array<ACLAction> | undefined;
-  remoteCaching?: Array<ACLAction> | undefined;
-  samlConfig?: Array<ACLAction> | undefined;
-  secret?: Array<ACLAction> | undefined;
-  redisStoreTokenSet?: Array<ACLAction> | undefined;
-  blobStoreTokenSet?: Array<ACLAction> | undefined;
-  postgresStoreTokenSet?: Array<ACLAction> | undefined;
-  integrationStoreTokenSet?: Array<ACLAction> | undefined;
-  integrationResourceReplCommand?: Array<ACLAction> | undefined;
   storeTransfer?: Array<ACLAction> | undefined;
   supportCase?: Array<ACLAction> | undefined;
   supportCaseComment?: Array<ACLAction> | undefined;
-  dataCacheBillingSettings?: Array<ACLAction> | undefined;
   team?: Array<ACLAction> | undefined;
   teamAccessRequest?: Array<ACLAction> | undefined;
   teamFellowMembership?: Array<ACLAction> | undefined;
@@ -1881,26 +1891,15 @@ export type UpdateProjectPermissions = {
   token?: Array<ACLAction> | undefined;
   usage?: Array<ACLAction> | undefined;
   usageCycle?: Array<ACLAction> | undefined;
-  vpcPeeringConnection?: Array<ACLAction> | undefined;
-  webAnalyticsPlan?: Array<ACLAction> | undefined;
-  edgeConfig?: Array<ACLAction> | undefined;
-  edgeConfigItem?: Array<ACLAction> | undefined;
-  edgeConfigSchema?: Array<ACLAction> | undefined;
-  edgeConfigToken?: Array<ACLAction> | undefined;
-  webhook?: Array<ACLAction> | undefined;
-  webhookEvent?: Array<ACLAction> | undefined;
-  endpointVerification?: Array<ACLAction> | undefined;
-  projectTransferIn?: Array<ACLAction> | undefined;
-  oauth2Application?: Array<ACLAction> | undefined;
   vercelRun?: Array<ACLAction> | undefined;
   vercelRunExec?: Array<ACLAction> | undefined;
-  apiKey?: Array<ACLAction> | undefined;
-  apiKeyOwnedBySelf?: Array<ACLAction> | undefined;
-  apiKeyAiGateway?: Array<ACLAction> | undefined;
+  vpcPeeringConnection?: Array<ACLAction> | undefined;
+  webAnalyticsPlan?: Array<ACLAction> | undefined;
+  webhook?: Array<ACLAction> | undefined;
+  webhookEvent?: Array<ACLAction> | undefined;
   aliasProject?: Array<ACLAction> | undefined;
   aliasProtectionBypass?: Array<ACLAction> | undefined;
   buildMachine?: Array<ACLAction> | undefined;
-  productionAliasProtectionBypass?: Array<ACLAction> | undefined;
   connectConfigurationLink?: Array<ACLAction> | undefined;
   dataCacheNamespace?: Array<ACLAction> | undefined;
   deployment?: Array<ACLAction> | undefined;
@@ -1916,54 +1915,54 @@ export type UpdateProjectPermissions = {
   deploymentRollback?: Array<ACLAction> | undefined;
   edgeCacheNamespace?: Array<ACLAction> | undefined;
   environments?: Array<ACLAction> | undefined;
+  job?: Array<ACLAction> | undefined;
   logs?: Array<ACLAction> | undefined;
   logsPreset?: Array<ACLAction> | undefined;
-  passwordProtection?: Array<ACLAction> | undefined;
-  optionsAllowlist?: Array<ACLAction> | undefined;
-  job?: Array<ACLAction> | undefined;
   observabilityData?: Array<ACLAction> | undefined;
   onDemandBuild?: Array<ACLAction> | undefined;
   onDemandConcurrency?: Array<ACLAction> | undefined;
+  optionsAllowlist?: Array<ACLAction> | undefined;
+  passwordProtection?: Array<ACLAction> | undefined;
+  productionAliasProtectionBypass?: Array<ACLAction> | undefined;
   project?: Array<ACLAction> | undefined;
-  projectFromV0?: Array<ACLAction> | undefined;
   projectAccessGroup?: Array<ACLAction> | undefined;
   projectAnalyticsSampling?: Array<ACLAction> | undefined;
+  projectAnalyticsUsage?: Array<ACLAction> | undefined;
   projectCheck?: Array<ACLAction> | undefined;
   projectCheckRun?: Array<ACLAction> | undefined;
+  projectDeploymentExpiration?: Array<ACLAction> | undefined;
   projectDeploymentHook?: Array<ACLAction> | undefined;
   projectDomain?: Array<ACLAction> | undefined;
-  projectDomainMove?: Array<ACLAction> | undefined;
   projectDomainCheckConfig?: Array<ACLAction> | undefined;
+  projectDomainMove?: Array<ACLAction> | undefined;
   projectEnvVars?: Array<ACLAction> | undefined;
   projectEnvVarsProduction?: Array<ACLAction> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
   projectFlags?: Array<ACLAction> | undefined;
+  projectFromV0?: Array<ACLAction> | undefined;
   projectId?: Array<ACLAction> | undefined;
   projectIntegrationConfiguration?: Array<ACLAction> | undefined;
   projectLink?: Array<ACLAction> | undefined;
   projectMember?: Array<ACLAction> | undefined;
   projectMonitoring?: Array<ACLAction> | undefined;
+  projectOIDCToken?: Array<ACLAction> | undefined;
   projectPermissions?: Array<ACLAction> | undefined;
   projectProductionBranch?: Array<ACLAction> | undefined;
-  projectTransfer?: Array<ACLAction> | undefined;
-  projectTransferOut?: Array<ACLAction> | undefined;
   projectProtectionBypass?: Array<ACLAction> | undefined;
-  projectUsage?: Array<ACLAction> | undefined;
-  projectAnalyticsUsage?: Array<ACLAction> | undefined;
+  projectRollingRelease?: Array<ACLAction> | undefined;
   projectSupportCase?: Array<ACLAction> | undefined;
   projectSupportCaseComment?: Array<ACLAction> | undefined;
-  projectDeploymentExpiration?: Array<ACLAction> | undefined;
-  projectRollingRelease?: Array<ACLAction> | undefined;
   projectTier?: Array<ACLAction> | undefined;
-  projectOIDCToken?: Array<ACLAction> | undefined;
+  projectTransfer?: Array<ACLAction> | undefined;
+  projectTransferOut?: Array<ACLAction> | undefined;
+  projectUsage?: Array<ACLAction> | undefined;
   seawallConfig?: Array<ACLAction> | undefined;
+  sharedEnvVarConnection?: Array<ACLAction> | undefined;
   skewProtection?: Array<ACLAction> | undefined;
   analytics?: Array<ACLAction> | undefined;
   trustedIps?: Array<ACLAction> | undefined;
   v0Chat?: Array<ACLAction> | undefined;
   webAnalytics?: Array<ACLAction> | undefined;
-  sharedEnvVarConnection?: Array<ACLAction> | undefined;
-  sonar?: Array<ACLAction> | undefined;
 };
 
 export type UpdateProjectLastRollbackTarget = {};
@@ -2030,11 +2029,11 @@ export type UpdateProjectProtectionBypass =
   | UpdateProjectProtectionBypass2;
 
 export const UpdateProjectTrustedIpsProjectsDeploymentType = {
-  All: "all",
   Preview: "preview",
+  Production: "production",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
-  Production: "production",
 } as const;
 export type UpdateProjectTrustedIpsProjectsDeploymentType = ClosedEnum<
   typeof UpdateProjectTrustedIpsProjectsDeploymentType
@@ -2045,11 +2044,11 @@ export type UpdateProjectTrustedIps2 = {
 };
 
 export const UpdateProjectTrustedIpsDeploymentType = {
-  All: "all",
   Preview: "preview",
+  Production: "production",
+  All: "all",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
   AllExceptCustomDomains: "all_except_custom_domains",
-  Production: "production",
 } as const;
 export type UpdateProjectTrustedIpsDeploymentType = ClosedEnum<
   typeof UpdateProjectTrustedIpsDeploymentType
@@ -7907,32 +7906,32 @@ export const UpdateProjectLink2$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: UpdateProjectLinkProjectsType$inboundSchema,
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
   repo: z.string().optional(),
-  sourceless: z.boolean().optional(),
+  repoId: z.number().optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
   org: z.string(),
   repoOwnerId: z.number().optional(),
-  repoId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsDeployHooks$inboundSchema),
   ),
   gitCredentialId: z.string(),
+  sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
 
 /** @internal */
 export type UpdateProjectLink2$Outbound = {
   type: string;
-  updatedAt?: number | undefined;
-  createdAt?: number | undefined;
   repo?: string | undefined;
-  sourceless?: boolean | undefined;
+  repoId?: number | undefined;
+  createdAt?: number | undefined;
+  updatedAt?: number | undefined;
   org: string;
   repoOwnerId?: number | undefined;
-  repoId?: number | undefined;
   deployHooks: Array<UpdateProjectLinkProjectsDeployHooks$Outbound>;
   gitCredentialId: string;
+  sourceless?: boolean | undefined;
   productionBranch: string;
 };
 
@@ -7943,17 +7942,17 @@ export const UpdateProjectLink2$outboundSchema: z.ZodType<
   UpdateProjectLink2
 > = z.object({
   type: UpdateProjectLinkProjectsType$outboundSchema,
-  updatedAt: z.number().optional(),
-  createdAt: z.number().optional(),
   repo: z.string().optional(),
-  sourceless: z.boolean().optional(),
+  repoId: z.number().optional(),
+  createdAt: z.number().optional(),
+  updatedAt: z.number().optional(),
   org: z.string(),
   repoOwnerId: z.number().optional(),
-  repoId: z.number().optional(),
   deployHooks: z.array(
     z.lazy(() => UpdateProjectLinkProjectsDeployHooks$outboundSchema),
   ),
   gitCredentialId: z.string(),
+  sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
 
@@ -8667,13 +8666,13 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     UpdateProjectProjectsFunctionDefaultMemoryType$inboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -8681,12 +8680,12 @@ export const UpdateProjectProjectsResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UpdateProjectProjectsResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -8697,13 +8696,13 @@ export const UpdateProjectProjectsResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectProjectsResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
   functionDefaultMemoryType:
     UpdateProjectProjectsFunctionDefaultMemoryType$outboundSchema.optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -8991,6 +8990,7 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
@@ -8998,7 +8998,6 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
     UpdateProjectProjectsResponseFunctionDefaultMemoryType$inboundSchema
       .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$inboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -9006,12 +9005,12 @@ export const UpdateProjectDefaultResourceConfig$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UpdateProjectDefaultResourceConfig$Outbound = {
+  elasticConcurrencyEnabled?: boolean | undefined;
   fluid?: boolean | undefined;
   functionDefaultRegions: Array<string>;
   functionDefaultTimeout?: number | undefined;
   functionDefaultMemoryType?: string | undefined;
   functionZeroConfigFailover?: boolean | undefined;
-  elasticConcurrencyEnabled?: boolean | undefined;
   buildMachineType?: string | undefined;
   isNSNBDisabled?: boolean | undefined;
 };
@@ -9022,6 +9021,7 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectDefaultResourceConfig
 > = z.object({
+  elasticConcurrencyEnabled: z.boolean().optional(),
   fluid: z.boolean().optional(),
   functionDefaultRegions: z.array(z.string()),
   functionDefaultTimeout: z.number().optional(),
@@ -9029,7 +9029,6 @@ export const UpdateProjectDefaultResourceConfig$outboundSchema: z.ZodType<
     UpdateProjectProjectsResponseFunctionDefaultMemoryType$outboundSchema
       .optional(),
   functionZeroConfigFailover: z.boolean().optional(),
-  elasticConcurrencyEnabled: z.boolean().optional(),
   buildMachineType: UpdateProjectProjectsResponseBuildMachineType$outboundSchema
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
@@ -9906,9 +9905,17 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   userSudo: z.array(ACLAction$inboundSchema).optional(),
   webAuthn: z.array(ACLAction$inboundSchema).optional(),
   accessGroup: z.array(ACLAction$inboundSchema).optional(),
+  agent: z.array(ACLAction$inboundSchema).optional(),
+  alerts: z.array(ACLAction$inboundSchema).optional(),
   aliasGlobal: z.array(ACLAction$inboundSchema).optional(),
   analyticsSampling: z.array(ACLAction$inboundSchema).optional(),
   analyticsUsage: z.array(ACLAction$inboundSchema).optional(),
+  apiKey: z.array(ACLAction$inboundSchema).optional(),
+  apiKeyAiGateway: z.array(ACLAction$inboundSchema).optional(),
+  apiKeyOwnedBySelf: z.array(ACLAction$inboundSchema).optional(),
+  oauth2Application: z.array(ACLAction$inboundSchema).optional(),
+  vercelAppInstallation: z.array(ACLAction$inboundSchema).optional(),
+  vercelAppInstallationRequest: z.array(ACLAction$inboundSchema).optional(),
   auditLog: z.array(ACLAction$inboundSchema).optional(),
   billingAddress: z.array(ACLAction$inboundSchema).optional(),
   billingInformation: z.array(ACLAction$inboundSchema).optional(),
@@ -9920,6 +9927,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   billingRefund: z.array(ACLAction$inboundSchema).optional(),
   billingTaxId: z.array(ACLAction$inboundSchema).optional(),
   blob: z.array(ACLAction$inboundSchema).optional(),
+  blobStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
   budget: z.array(ACLAction$inboundSchema).optional(),
   cacheArtifact: z.array(ACLAction$inboundSchema).optional(),
   cacheArtifactUsageEvent: z.array(ACLAction$inboundSchema).optional(),
@@ -9927,6 +9935,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   concurrentBuilds: z.array(ACLAction$inboundSchema).optional(),
   connect: z.array(ACLAction$inboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$inboundSchema).optional(),
+  dataCacheBillingSettings: z.array(ACLAction$inboundSchema).optional(),
   defaultDeploymentProtection: z.array(ACLAction$inboundSchema).optional(),
   domain: z.array(ACLAction$inboundSchema).optional(),
   domainAcceptDelegation: z.array(ACLAction$inboundSchema).optional(),
@@ -9937,43 +9946,48 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   domainPurchase: z.array(ACLAction$inboundSchema).optional(),
   domainRecord: z.array(ACLAction$inboundSchema).optional(),
   domainTransferIn: z.array(ACLAction$inboundSchema).optional(),
+  drain: z.array(ACLAction$inboundSchema).optional(),
+  edgeConfig: z.array(ACLAction$inboundSchema).optional(),
+  edgeConfigItem: z.array(ACLAction$inboundSchema).optional(),
+  edgeConfigSchema: z.array(ACLAction$inboundSchema).optional(),
+  edgeConfigToken: z.array(ACLAction$inboundSchema).optional(),
+  endpointVerification: z.array(ACLAction$inboundSchema).optional(),
   event: z.array(ACLAction$inboundSchema).optional(),
-  ownEvent: z.array(ACLAction$inboundSchema).optional(),
-  sensitiveEnvironmentVariablePolicy: z.array(ACLAction$inboundSchema)
-    .optional(),
   fileUpload: z.array(ACLAction$inboundSchema).optional(),
   flagsExplorerSubscription: z.array(ACLAction$inboundSchema).optional(),
   gitRepository: z.array(ACLAction$inboundSchema).optional(),
-  ipBlocking: z.array(ACLAction$inboundSchema).optional(),
   imageOptimizationNewPrice: z.array(ACLAction$inboundSchema).optional(),
   integration: z.array(ACLAction$inboundSchema).optional(),
   integrationAccount: z.array(ACLAction$inboundSchema).optional(),
   integrationConfiguration: z.array(ACLAction$inboundSchema).optional(),
-  integrationConfigurationTransfer: z.array(ACLAction$inboundSchema).optional(),
   integrationConfigurationProjects: z.array(ACLAction$inboundSchema).optional(),
+  integrationConfigurationRole: z.array(ACLAction$inboundSchema).optional(),
+  integrationConfigurationTransfer: z.array(ACLAction$inboundSchema).optional(),
+  integrationDeploymentAction: z.array(ACLAction$inboundSchema).optional(),
+  integrationEvent: z.array(ACLAction$inboundSchema).optional(),
+  integrationResource: z.array(ACLAction$inboundSchema).optional(),
+  integrationResourceReplCommand: z.array(ACLAction$inboundSchema).optional(),
+  integrationResourceSecrets: z.array(ACLAction$inboundSchema).optional(),
+  integrationSSOSession: z.array(ACLAction$inboundSchema).optional(),
+  integrationStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
   integrationVercelConfigurationOverride: z.array(ACLAction$inboundSchema)
     .optional(),
-  integrationConfigurationRole: z.array(ACLAction$inboundSchema).optional(),
-  integrationSSOSession: z.array(ACLAction$inboundSchema).optional(),
-  integrationResource: z.array(ACLAction$inboundSchema).optional(),
-  integrationEvent: z.array(ACLAction$inboundSchema).optional(),
-  integrationResourceSecrets: z.array(ACLAction$inboundSchema).optional(),
-  integrationDeploymentAction: z.array(ACLAction$inboundSchema).optional(),
-  marketplaceInstallationMember: z.array(ACLAction$inboundSchema).optional(),
+  ipBlocking: z.array(ACLAction$inboundSchema).optional(),
+  jobGlobal: z.array(ACLAction$inboundSchema).optional(),
+  logDrain: z.array(ACLAction$inboundSchema).optional(),
   marketplaceBillingData: z.array(ACLAction$inboundSchema).optional(),
-  marketplaceInvoice: z.array(ACLAction$inboundSchema).optional(),
-  marketplaceSettings: z.array(ACLAction$inboundSchema).optional(),
-  marketplaceExperimentationItem: z.array(ACLAction$inboundSchema).optional(),
   marketplaceExperimentationEdgeConfigData: z.array(ACLAction$inboundSchema)
     .optional(),
-  jobGlobal: z.array(ACLAction$inboundSchema).optional(),
-  drain: z.array(ACLAction$inboundSchema).optional(),
-  logDrain: z.array(ACLAction$inboundSchema).optional(),
+  marketplaceExperimentationItem: z.array(ACLAction$inboundSchema).optional(),
+  marketplaceInstallationMember: z.array(ACLAction$inboundSchema).optional(),
+  marketplaceInvoice: z.array(ACLAction$inboundSchema).optional(),
+  marketplaceSettings: z.array(ACLAction$inboundSchema).optional(),
   Monitoring: z.array(ACLAction$inboundSchema).optional(),
-  monitoringSettings: z.array(ACLAction$inboundSchema).optional(),
-  monitoringQuery: z.array(ACLAction$inboundSchema).optional(),
-  monitoringChart: z.array(ACLAction$inboundSchema).optional(),
   monitoringAlert: z.array(ACLAction$inboundSchema).optional(),
+  monitoringChart: z.array(ACLAction$inboundSchema).optional(),
+  monitoringQuery: z.array(ACLAction$inboundSchema).optional(),
+  monitoringSettings: z.array(ACLAction$inboundSchema).optional(),
+  notificationCustomerBudget: z.array(ACLAction$inboundSchema).optional(),
   notificationDeploymentFailed: z.array(ACLAction$inboundSchema).optional(),
   notificationDomainConfiguration: z.array(ACLAction$inboundSchema).optional(),
   notificationDomainExpire: z.array(ACLAction$inboundSchema).optional(),
@@ -9984,43 +9998,38 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   notificationDomainUnverified: z.array(ACLAction$inboundSchema).optional(),
   NotificationMonitoringAlert: z.array(ACLAction$inboundSchema).optional(),
   notificationPaymentFailed: z.array(ACLAction$inboundSchema).optional(),
-  notificationUsageAlert: z.array(ACLAction$inboundSchema).optional(),
   notificationPreferences: z.array(ACLAction$inboundSchema).optional(),
-  notificationCustomerBudget: z.array(ACLAction$inboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$inboundSchema).optional(),
+  notificationUsageAlert: z.array(ACLAction$inboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$inboundSchema).optional(),
-  agent: z.array(ACLAction$inboundSchema).optional(),
-  alerts: z.array(ACLAction$inboundSchema).optional(),
-  observabilityNotebook: z.array(ACLAction$inboundSchema).optional(),
   observabilityFunnel: z.array(ACLAction$inboundSchema).optional(),
+  observabilityNotebook: z.array(ACLAction$inboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$inboundSchema).optional(),
-  vercelAppInstallation: z.array(ACLAction$inboundSchema).optional(),
-  vercelAppInstallationRequest: z.array(ACLAction$inboundSchema).optional(),
+  ownEvent: z.array(ACLAction$inboundSchema).optional(),
+  passwordProtectionInvoiceItem: z.array(ACLAction$inboundSchema).optional(),
   paymentMethod: z.array(ACLAction$inboundSchema).optional(),
   permissions: z.array(ACLAction$inboundSchema).optional(),
   postgres: z.array(ACLAction$inboundSchema).optional(),
+  postgresStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
   previewDeploymentSuffix: z.array(ACLAction$inboundSchema).optional(),
+  projectTransferIn: z.array(ACLAction$inboundSchema).optional(),
   proTrialOnboarding: z.array(ACLAction$inboundSchema).optional(),
+  rateLimit: z.array(ACLAction$inboundSchema).optional(),
+  redis: z.array(ACLAction$inboundSchema).optional(),
+  redisStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
+  remoteCaching: z.array(ACLAction$inboundSchema).optional(),
+  repository: z.array(ACLAction$inboundSchema).optional(),
+  samlConfig: z.array(ACLAction$inboundSchema).optional(),
+  secret: z.array(ACLAction$inboundSchema).optional(),
+  sensitiveEnvironmentVariablePolicy: z.array(ACLAction$inboundSchema)
+    .optional(),
   sharedEnvVars: z.array(ACLAction$inboundSchema).optional(),
   sharedEnvVarsProduction: z.array(ACLAction$inboundSchema).optional(),
   space: z.array(ACLAction$inboundSchema).optional(),
   spaceRun: z.array(ACLAction$inboundSchema).optional(),
-  passwordProtectionInvoiceItem: z.array(ACLAction$inboundSchema).optional(),
-  rateLimit: z.array(ACLAction$inboundSchema).optional(),
-  redis: z.array(ACLAction$inboundSchema).optional(),
-  repository: z.array(ACLAction$inboundSchema).optional(),
-  remoteCaching: z.array(ACLAction$inboundSchema).optional(),
-  samlConfig: z.array(ACLAction$inboundSchema).optional(),
-  secret: z.array(ACLAction$inboundSchema).optional(),
-  redisStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
-  blobStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
-  postgresStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
-  integrationStoreTokenSet: z.array(ACLAction$inboundSchema).optional(),
-  integrationResourceReplCommand: z.array(ACLAction$inboundSchema).optional(),
   storeTransfer: z.array(ACLAction$inboundSchema).optional(),
   supportCase: z.array(ACLAction$inboundSchema).optional(),
   supportCaseComment: z.array(ACLAction$inboundSchema).optional(),
-  dataCacheBillingSettings: z.array(ACLAction$inboundSchema).optional(),
   team: z.array(ACLAction$inboundSchema).optional(),
   teamAccessRequest: z.array(ACLAction$inboundSchema).optional(),
   teamFellowMembership: z.array(ACLAction$inboundSchema).optional(),
@@ -10035,26 +10044,15 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   token: z.array(ACLAction$inboundSchema).optional(),
   usage: z.array(ACLAction$inboundSchema).optional(),
   usageCycle: z.array(ACLAction$inboundSchema).optional(),
-  vpcPeeringConnection: z.array(ACLAction$inboundSchema).optional(),
-  webAnalyticsPlan: z.array(ACLAction$inboundSchema).optional(),
-  edgeConfig: z.array(ACLAction$inboundSchema).optional(),
-  edgeConfigItem: z.array(ACLAction$inboundSchema).optional(),
-  edgeConfigSchema: z.array(ACLAction$inboundSchema).optional(),
-  edgeConfigToken: z.array(ACLAction$inboundSchema).optional(),
-  webhook: z.array(ACLAction$inboundSchema).optional(),
-  "webhook-event": z.array(ACLAction$inboundSchema).optional(),
-  endpointVerification: z.array(ACLAction$inboundSchema).optional(),
-  projectTransferIn: z.array(ACLAction$inboundSchema).optional(),
-  oauth2Application: z.array(ACLAction$inboundSchema).optional(),
   vercelRun: z.array(ACLAction$inboundSchema).optional(),
   vercelRunExec: z.array(ACLAction$inboundSchema).optional(),
-  apiKey: z.array(ACLAction$inboundSchema).optional(),
-  apiKeyOwnedBySelf: z.array(ACLAction$inboundSchema).optional(),
-  apiKeyAiGateway: z.array(ACLAction$inboundSchema).optional(),
+  vpcPeeringConnection: z.array(ACLAction$inboundSchema).optional(),
+  webAnalyticsPlan: z.array(ACLAction$inboundSchema).optional(),
+  webhook: z.array(ACLAction$inboundSchema).optional(),
+  "webhook-event": z.array(ACLAction$inboundSchema).optional(),
   aliasProject: z.array(ACLAction$inboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
   buildMachine: z.array(ACLAction$inboundSchema).optional(),
-  productionAliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
   connectConfigurationLink: z.array(ACLAction$inboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$inboundSchema).optional(),
   deployment: z.array(ACLAction$inboundSchema).optional(),
@@ -10071,55 +10069,55 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   deploymentRollback: z.array(ACLAction$inboundSchema).optional(),
   edgeCacheNamespace: z.array(ACLAction$inboundSchema).optional(),
   environments: z.array(ACLAction$inboundSchema).optional(),
+  job: z.array(ACLAction$inboundSchema).optional(),
   logs: z.array(ACLAction$inboundSchema).optional(),
   logsPreset: z.array(ACLAction$inboundSchema).optional(),
-  passwordProtection: z.array(ACLAction$inboundSchema).optional(),
-  optionsAllowlist: z.array(ACLAction$inboundSchema).optional(),
-  job: z.array(ACLAction$inboundSchema).optional(),
   observabilityData: z.array(ACLAction$inboundSchema).optional(),
   onDemandBuild: z.array(ACLAction$inboundSchema).optional(),
   onDemandConcurrency: z.array(ACLAction$inboundSchema).optional(),
+  optionsAllowlist: z.array(ACLAction$inboundSchema).optional(),
+  passwordProtection: z.array(ACLAction$inboundSchema).optional(),
+  productionAliasProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
   project: z.array(ACLAction$inboundSchema).optional(),
-  projectFromV0: z.array(ACLAction$inboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$inboundSchema).optional(),
   projectAnalyticsSampling: z.array(ACLAction$inboundSchema).optional(),
+  projectAnalyticsUsage: z.array(ACLAction$inboundSchema).optional(),
   projectCheck: z.array(ACLAction$inboundSchema).optional(),
   projectCheckRun: z.array(ACLAction$inboundSchema).optional(),
+  projectDeploymentExpiration: z.array(ACLAction$inboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$inboundSchema).optional(),
   projectDomain: z.array(ACLAction$inboundSchema).optional(),
-  projectDomainMove: z.array(ACLAction$inboundSchema).optional(),
   projectDomainCheckConfig: z.array(ACLAction$inboundSchema).optional(),
+  projectDomainMove: z.array(ACLAction$inboundSchema).optional(),
   projectEnvVars: z.array(ACLAction$inboundSchema).optional(),
   projectEnvVarsProduction: z.array(ACLAction$inboundSchema).optional(),
   projectEnvVarsUnownedByIntegration: z.array(ACLAction$inboundSchema)
     .optional(),
   projectFlags: z.array(ACLAction$inboundSchema).optional(),
+  projectFromV0: z.array(ACLAction$inboundSchema).optional(),
   projectId: z.array(ACLAction$inboundSchema).optional(),
   projectIntegrationConfiguration: z.array(ACLAction$inboundSchema).optional(),
   projectLink: z.array(ACLAction$inboundSchema).optional(),
   projectMember: z.array(ACLAction$inboundSchema).optional(),
   projectMonitoring: z.array(ACLAction$inboundSchema).optional(),
+  projectOIDCToken: z.array(ACLAction$inboundSchema).optional(),
   projectPermissions: z.array(ACLAction$inboundSchema).optional(),
   projectProductionBranch: z.array(ACLAction$inboundSchema).optional(),
-  projectTransfer: z.array(ACLAction$inboundSchema).optional(),
-  projectTransferOut: z.array(ACLAction$inboundSchema).optional(),
   projectProtectionBypass: z.array(ACLAction$inboundSchema).optional(),
-  projectUsage: z.array(ACLAction$inboundSchema).optional(),
-  projectAnalyticsUsage: z.array(ACLAction$inboundSchema).optional(),
+  projectRollingRelease: z.array(ACLAction$inboundSchema).optional(),
   projectSupportCase: z.array(ACLAction$inboundSchema).optional(),
   projectSupportCaseComment: z.array(ACLAction$inboundSchema).optional(),
-  projectDeploymentExpiration: z.array(ACLAction$inboundSchema).optional(),
-  projectRollingRelease: z.array(ACLAction$inboundSchema).optional(),
   projectTier: z.array(ACLAction$inboundSchema).optional(),
-  projectOIDCToken: z.array(ACLAction$inboundSchema).optional(),
+  projectTransfer: z.array(ACLAction$inboundSchema).optional(),
+  projectTransferOut: z.array(ACLAction$inboundSchema).optional(),
+  projectUsage: z.array(ACLAction$inboundSchema).optional(),
   seawallConfig: z.array(ACLAction$inboundSchema).optional(),
+  sharedEnvVarConnection: z.array(ACLAction$inboundSchema).optional(),
   skewProtection: z.array(ACLAction$inboundSchema).optional(),
   analytics: z.array(ACLAction$inboundSchema).optional(),
   trustedIps: z.array(ACLAction$inboundSchema).optional(),
   v0Chat: z.array(ACLAction$inboundSchema).optional(),
   webAnalytics: z.array(ACLAction$inboundSchema).optional(),
-  sharedEnvVarConnection: z.array(ACLAction$inboundSchema).optional(),
-  sonar: z.array(ACLAction$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "Monitoring": "monitoring",
@@ -10136,9 +10134,17 @@ export type UpdateProjectPermissions$Outbound = {
   userSudo?: Array<string> | undefined;
   webAuthn?: Array<string> | undefined;
   accessGroup?: Array<string> | undefined;
+  agent?: Array<string> | undefined;
+  alerts?: Array<string> | undefined;
   aliasGlobal?: Array<string> | undefined;
   analyticsSampling?: Array<string> | undefined;
   analyticsUsage?: Array<string> | undefined;
+  apiKey?: Array<string> | undefined;
+  apiKeyAiGateway?: Array<string> | undefined;
+  apiKeyOwnedBySelf?: Array<string> | undefined;
+  oauth2Application?: Array<string> | undefined;
+  vercelAppInstallation?: Array<string> | undefined;
+  vercelAppInstallationRequest?: Array<string> | undefined;
   auditLog?: Array<string> | undefined;
   billingAddress?: Array<string> | undefined;
   billingInformation?: Array<string> | undefined;
@@ -10150,6 +10156,7 @@ export type UpdateProjectPermissions$Outbound = {
   billingRefund?: Array<string> | undefined;
   billingTaxId?: Array<string> | undefined;
   blob?: Array<string> | undefined;
+  blobStoreTokenSet?: Array<string> | undefined;
   budget?: Array<string> | undefined;
   cacheArtifact?: Array<string> | undefined;
   cacheArtifactUsageEvent?: Array<string> | undefined;
@@ -10157,6 +10164,7 @@ export type UpdateProjectPermissions$Outbound = {
   concurrentBuilds?: Array<string> | undefined;
   connect?: Array<string> | undefined;
   connectConfiguration?: Array<string> | undefined;
+  dataCacheBillingSettings?: Array<string> | undefined;
   defaultDeploymentProtection?: Array<string> | undefined;
   domain?: Array<string> | undefined;
   domainAcceptDelegation?: Array<string> | undefined;
@@ -10167,40 +10175,46 @@ export type UpdateProjectPermissions$Outbound = {
   domainPurchase?: Array<string> | undefined;
   domainRecord?: Array<string> | undefined;
   domainTransferIn?: Array<string> | undefined;
+  drain?: Array<string> | undefined;
+  edgeConfig?: Array<string> | undefined;
+  edgeConfigItem?: Array<string> | undefined;
+  edgeConfigSchema?: Array<string> | undefined;
+  edgeConfigToken?: Array<string> | undefined;
+  endpointVerification?: Array<string> | undefined;
   event?: Array<string> | undefined;
-  ownEvent?: Array<string> | undefined;
-  sensitiveEnvironmentVariablePolicy?: Array<string> | undefined;
   fileUpload?: Array<string> | undefined;
   flagsExplorerSubscription?: Array<string> | undefined;
   gitRepository?: Array<string> | undefined;
-  ipBlocking?: Array<string> | undefined;
   imageOptimizationNewPrice?: Array<string> | undefined;
   integration?: Array<string> | undefined;
   integrationAccount?: Array<string> | undefined;
   integrationConfiguration?: Array<string> | undefined;
-  integrationConfigurationTransfer?: Array<string> | undefined;
   integrationConfigurationProjects?: Array<string> | undefined;
-  integrationVercelConfigurationOverride?: Array<string> | undefined;
   integrationConfigurationRole?: Array<string> | undefined;
-  integrationSSOSession?: Array<string> | undefined;
-  integrationResource?: Array<string> | undefined;
-  integrationEvent?: Array<string> | undefined;
-  integrationResourceSecrets?: Array<string> | undefined;
+  integrationConfigurationTransfer?: Array<string> | undefined;
   integrationDeploymentAction?: Array<string> | undefined;
-  marketplaceInstallationMember?: Array<string> | undefined;
+  integrationEvent?: Array<string> | undefined;
+  integrationResource?: Array<string> | undefined;
+  integrationResourceReplCommand?: Array<string> | undefined;
+  integrationResourceSecrets?: Array<string> | undefined;
+  integrationSSOSession?: Array<string> | undefined;
+  integrationStoreTokenSet?: Array<string> | undefined;
+  integrationVercelConfigurationOverride?: Array<string> | undefined;
+  ipBlocking?: Array<string> | undefined;
+  jobGlobal?: Array<string> | undefined;
+  logDrain?: Array<string> | undefined;
   marketplaceBillingData?: Array<string> | undefined;
+  marketplaceExperimentationEdgeConfigData?: Array<string> | undefined;
+  marketplaceExperimentationItem?: Array<string> | undefined;
+  marketplaceInstallationMember?: Array<string> | undefined;
   marketplaceInvoice?: Array<string> | undefined;
   marketplaceSettings?: Array<string> | undefined;
-  marketplaceExperimentationItem?: Array<string> | undefined;
-  marketplaceExperimentationEdgeConfigData?: Array<string> | undefined;
-  jobGlobal?: Array<string> | undefined;
-  drain?: Array<string> | undefined;
-  logDrain?: Array<string> | undefined;
   Monitoring?: Array<string> | undefined;
-  monitoringSettings?: Array<string> | undefined;
-  monitoringQuery?: Array<string> | undefined;
-  monitoringChart?: Array<string> | undefined;
   monitoringAlert?: Array<string> | undefined;
+  monitoringChart?: Array<string> | undefined;
+  monitoringQuery?: Array<string> | undefined;
+  monitoringSettings?: Array<string> | undefined;
+  notificationCustomerBudget?: Array<string> | undefined;
   notificationDeploymentFailed?: Array<string> | undefined;
   notificationDomainConfiguration?: Array<string> | undefined;
   notificationDomainExpire?: Array<string> | undefined;
@@ -10211,43 +10225,37 @@ export type UpdateProjectPermissions$Outbound = {
   notificationDomainUnverified?: Array<string> | undefined;
   NotificationMonitoringAlert?: Array<string> | undefined;
   notificationPaymentFailed?: Array<string> | undefined;
-  notificationUsageAlert?: Array<string> | undefined;
   notificationPreferences?: Array<string> | undefined;
-  notificationCustomerBudget?: Array<string> | undefined;
   notificationStatementOfReasons?: Array<string> | undefined;
+  notificationUsageAlert?: Array<string> | undefined;
   observabilityConfiguration?: Array<string> | undefined;
-  agent?: Array<string> | undefined;
-  alerts?: Array<string> | undefined;
-  observabilityNotebook?: Array<string> | undefined;
   observabilityFunnel?: Array<string> | undefined;
+  observabilityNotebook?: Array<string> | undefined;
   openTelemetryEndpoint?: Array<string> | undefined;
-  vercelAppInstallation?: Array<string> | undefined;
-  vercelAppInstallationRequest?: Array<string> | undefined;
+  ownEvent?: Array<string> | undefined;
+  passwordProtectionInvoiceItem?: Array<string> | undefined;
   paymentMethod?: Array<string> | undefined;
   permissions?: Array<string> | undefined;
   postgres?: Array<string> | undefined;
+  postgresStoreTokenSet?: Array<string> | undefined;
   previewDeploymentSuffix?: Array<string> | undefined;
+  projectTransferIn?: Array<string> | undefined;
   proTrialOnboarding?: Array<string> | undefined;
+  rateLimit?: Array<string> | undefined;
+  redis?: Array<string> | undefined;
+  redisStoreTokenSet?: Array<string> | undefined;
+  remoteCaching?: Array<string> | undefined;
+  repository?: Array<string> | undefined;
+  samlConfig?: Array<string> | undefined;
+  secret?: Array<string> | undefined;
+  sensitiveEnvironmentVariablePolicy?: Array<string> | undefined;
   sharedEnvVars?: Array<string> | undefined;
   sharedEnvVarsProduction?: Array<string> | undefined;
   space?: Array<string> | undefined;
   spaceRun?: Array<string> | undefined;
-  passwordProtectionInvoiceItem?: Array<string> | undefined;
-  rateLimit?: Array<string> | undefined;
-  redis?: Array<string> | undefined;
-  repository?: Array<string> | undefined;
-  remoteCaching?: Array<string> | undefined;
-  samlConfig?: Array<string> | undefined;
-  secret?: Array<string> | undefined;
-  redisStoreTokenSet?: Array<string> | undefined;
-  blobStoreTokenSet?: Array<string> | undefined;
-  postgresStoreTokenSet?: Array<string> | undefined;
-  integrationStoreTokenSet?: Array<string> | undefined;
-  integrationResourceReplCommand?: Array<string> | undefined;
   storeTransfer?: Array<string> | undefined;
   supportCase?: Array<string> | undefined;
   supportCaseComment?: Array<string> | undefined;
-  dataCacheBillingSettings?: Array<string> | undefined;
   team?: Array<string> | undefined;
   teamAccessRequest?: Array<string> | undefined;
   teamFellowMembership?: Array<string> | undefined;
@@ -10262,26 +10270,15 @@ export type UpdateProjectPermissions$Outbound = {
   token?: Array<string> | undefined;
   usage?: Array<string> | undefined;
   usageCycle?: Array<string> | undefined;
-  vpcPeeringConnection?: Array<string> | undefined;
-  webAnalyticsPlan?: Array<string> | undefined;
-  edgeConfig?: Array<string> | undefined;
-  edgeConfigItem?: Array<string> | undefined;
-  edgeConfigSchema?: Array<string> | undefined;
-  edgeConfigToken?: Array<string> | undefined;
-  webhook?: Array<string> | undefined;
-  "webhook-event"?: Array<string> | undefined;
-  endpointVerification?: Array<string> | undefined;
-  projectTransferIn?: Array<string> | undefined;
-  oauth2Application?: Array<string> | undefined;
   vercelRun?: Array<string> | undefined;
   vercelRunExec?: Array<string> | undefined;
-  apiKey?: Array<string> | undefined;
-  apiKeyOwnedBySelf?: Array<string> | undefined;
-  apiKeyAiGateway?: Array<string> | undefined;
+  vpcPeeringConnection?: Array<string> | undefined;
+  webAnalyticsPlan?: Array<string> | undefined;
+  webhook?: Array<string> | undefined;
+  "webhook-event"?: Array<string> | undefined;
   aliasProject?: Array<string> | undefined;
   aliasProtectionBypass?: Array<string> | undefined;
   buildMachine?: Array<string> | undefined;
-  productionAliasProtectionBypass?: Array<string> | undefined;
   connectConfigurationLink?: Array<string> | undefined;
   dataCacheNamespace?: Array<string> | undefined;
   deployment?: Array<string> | undefined;
@@ -10297,54 +10294,54 @@ export type UpdateProjectPermissions$Outbound = {
   deploymentRollback?: Array<string> | undefined;
   edgeCacheNamespace?: Array<string> | undefined;
   environments?: Array<string> | undefined;
+  job?: Array<string> | undefined;
   logs?: Array<string> | undefined;
   logsPreset?: Array<string> | undefined;
-  passwordProtection?: Array<string> | undefined;
-  optionsAllowlist?: Array<string> | undefined;
-  job?: Array<string> | undefined;
   observabilityData?: Array<string> | undefined;
   onDemandBuild?: Array<string> | undefined;
   onDemandConcurrency?: Array<string> | undefined;
+  optionsAllowlist?: Array<string> | undefined;
+  passwordProtection?: Array<string> | undefined;
+  productionAliasProtectionBypass?: Array<string> | undefined;
   project?: Array<string> | undefined;
-  projectFromV0?: Array<string> | undefined;
   projectAccessGroup?: Array<string> | undefined;
   projectAnalyticsSampling?: Array<string> | undefined;
+  projectAnalyticsUsage?: Array<string> | undefined;
   projectCheck?: Array<string> | undefined;
   projectCheckRun?: Array<string> | undefined;
+  projectDeploymentExpiration?: Array<string> | undefined;
   projectDeploymentHook?: Array<string> | undefined;
   projectDomain?: Array<string> | undefined;
-  projectDomainMove?: Array<string> | undefined;
   projectDomainCheckConfig?: Array<string> | undefined;
+  projectDomainMove?: Array<string> | undefined;
   projectEnvVars?: Array<string> | undefined;
   projectEnvVarsProduction?: Array<string> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<string> | undefined;
   projectFlags?: Array<string> | undefined;
+  projectFromV0?: Array<string> | undefined;
   projectId?: Array<string> | undefined;
   projectIntegrationConfiguration?: Array<string> | undefined;
   projectLink?: Array<string> | undefined;
   projectMember?: Array<string> | undefined;
   projectMonitoring?: Array<string> | undefined;
+  projectOIDCToken?: Array<string> | undefined;
   projectPermissions?: Array<string> | undefined;
   projectProductionBranch?: Array<string> | undefined;
-  projectTransfer?: Array<string> | undefined;
-  projectTransferOut?: Array<string> | undefined;
   projectProtectionBypass?: Array<string> | undefined;
-  projectUsage?: Array<string> | undefined;
-  projectAnalyticsUsage?: Array<string> | undefined;
+  projectRollingRelease?: Array<string> | undefined;
   projectSupportCase?: Array<string> | undefined;
   projectSupportCaseComment?: Array<string> | undefined;
-  projectDeploymentExpiration?: Array<string> | undefined;
-  projectRollingRelease?: Array<string> | undefined;
   projectTier?: Array<string> | undefined;
-  projectOIDCToken?: Array<string> | undefined;
+  projectTransfer?: Array<string> | undefined;
+  projectTransferOut?: Array<string> | undefined;
+  projectUsage?: Array<string> | undefined;
   seawallConfig?: Array<string> | undefined;
+  sharedEnvVarConnection?: Array<string> | undefined;
   skewProtection?: Array<string> | undefined;
   analytics?: Array<string> | undefined;
   trustedIps?: Array<string> | undefined;
   v0Chat?: Array<string> | undefined;
   webAnalytics?: Array<string> | undefined;
-  sharedEnvVarConnection?: Array<string> | undefined;
-  sonar?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -10359,9 +10356,17 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   userSudo: z.array(ACLAction$outboundSchema).optional(),
   webAuthn: z.array(ACLAction$outboundSchema).optional(),
   accessGroup: z.array(ACLAction$outboundSchema).optional(),
+  agent: z.array(ACLAction$outboundSchema).optional(),
+  alerts: z.array(ACLAction$outboundSchema).optional(),
   aliasGlobal: z.array(ACLAction$outboundSchema).optional(),
   analyticsSampling: z.array(ACLAction$outboundSchema).optional(),
   analyticsUsage: z.array(ACLAction$outboundSchema).optional(),
+  apiKey: z.array(ACLAction$outboundSchema).optional(),
+  apiKeyAiGateway: z.array(ACLAction$outboundSchema).optional(),
+  apiKeyOwnedBySelf: z.array(ACLAction$outboundSchema).optional(),
+  oauth2Application: z.array(ACLAction$outboundSchema).optional(),
+  vercelAppInstallation: z.array(ACLAction$outboundSchema).optional(),
+  vercelAppInstallationRequest: z.array(ACLAction$outboundSchema).optional(),
   auditLog: z.array(ACLAction$outboundSchema).optional(),
   billingAddress: z.array(ACLAction$outboundSchema).optional(),
   billingInformation: z.array(ACLAction$outboundSchema).optional(),
@@ -10373,6 +10378,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   billingRefund: z.array(ACLAction$outboundSchema).optional(),
   billingTaxId: z.array(ACLAction$outboundSchema).optional(),
   blob: z.array(ACLAction$outboundSchema).optional(),
+  blobStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
   budget: z.array(ACLAction$outboundSchema).optional(),
   cacheArtifact: z.array(ACLAction$outboundSchema).optional(),
   cacheArtifactUsageEvent: z.array(ACLAction$outboundSchema).optional(),
@@ -10380,6 +10386,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   concurrentBuilds: z.array(ACLAction$outboundSchema).optional(),
   connect: z.array(ACLAction$outboundSchema).optional(),
   connectConfiguration: z.array(ACLAction$outboundSchema).optional(),
+  dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),
   defaultDeploymentProtection: z.array(ACLAction$outboundSchema).optional(),
   domain: z.array(ACLAction$outboundSchema).optional(),
   domainAcceptDelegation: z.array(ACLAction$outboundSchema).optional(),
@@ -10390,45 +10397,50 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   domainPurchase: z.array(ACLAction$outboundSchema).optional(),
   domainRecord: z.array(ACLAction$outboundSchema).optional(),
   domainTransferIn: z.array(ACLAction$outboundSchema).optional(),
+  drain: z.array(ACLAction$outboundSchema).optional(),
+  edgeConfig: z.array(ACLAction$outboundSchema).optional(),
+  edgeConfigItem: z.array(ACLAction$outboundSchema).optional(),
+  edgeConfigSchema: z.array(ACLAction$outboundSchema).optional(),
+  edgeConfigToken: z.array(ACLAction$outboundSchema).optional(),
+  endpointVerification: z.array(ACLAction$outboundSchema).optional(),
   event: z.array(ACLAction$outboundSchema).optional(),
-  ownEvent: z.array(ACLAction$outboundSchema).optional(),
-  sensitiveEnvironmentVariablePolicy: z.array(ACLAction$outboundSchema)
-    .optional(),
   fileUpload: z.array(ACLAction$outboundSchema).optional(),
   flagsExplorerSubscription: z.array(ACLAction$outboundSchema).optional(),
   gitRepository: z.array(ACLAction$outboundSchema).optional(),
-  ipBlocking: z.array(ACLAction$outboundSchema).optional(),
   imageOptimizationNewPrice: z.array(ACLAction$outboundSchema).optional(),
   integration: z.array(ACLAction$outboundSchema).optional(),
   integrationAccount: z.array(ACLAction$outboundSchema).optional(),
   integrationConfiguration: z.array(ACLAction$outboundSchema).optional(),
-  integrationConfigurationTransfer: z.array(ACLAction$outboundSchema)
-    .optional(),
   integrationConfigurationProjects: z.array(ACLAction$outboundSchema)
     .optional(),
+  integrationConfigurationRole: z.array(ACLAction$outboundSchema).optional(),
+  integrationConfigurationTransfer: z.array(ACLAction$outboundSchema)
+    .optional(),
+  integrationDeploymentAction: z.array(ACLAction$outboundSchema).optional(),
+  integrationEvent: z.array(ACLAction$outboundSchema).optional(),
+  integrationResource: z.array(ACLAction$outboundSchema).optional(),
+  integrationResourceReplCommand: z.array(ACLAction$outboundSchema).optional(),
+  integrationResourceSecrets: z.array(ACLAction$outboundSchema).optional(),
+  integrationSSOSession: z.array(ACLAction$outboundSchema).optional(),
+  integrationStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
   integrationVercelConfigurationOverride: z.array(ACLAction$outboundSchema)
     .optional(),
-  integrationConfigurationRole: z.array(ACLAction$outboundSchema).optional(),
-  integrationSSOSession: z.array(ACLAction$outboundSchema).optional(),
-  integrationResource: z.array(ACLAction$outboundSchema).optional(),
-  integrationEvent: z.array(ACLAction$outboundSchema).optional(),
-  integrationResourceSecrets: z.array(ACLAction$outboundSchema).optional(),
-  integrationDeploymentAction: z.array(ACLAction$outboundSchema).optional(),
-  marketplaceInstallationMember: z.array(ACLAction$outboundSchema).optional(),
+  ipBlocking: z.array(ACLAction$outboundSchema).optional(),
+  jobGlobal: z.array(ACLAction$outboundSchema).optional(),
+  logDrain: z.array(ACLAction$outboundSchema).optional(),
   marketplaceBillingData: z.array(ACLAction$outboundSchema).optional(),
-  marketplaceInvoice: z.array(ACLAction$outboundSchema).optional(),
-  marketplaceSettings: z.array(ACLAction$outboundSchema).optional(),
-  marketplaceExperimentationItem: z.array(ACLAction$outboundSchema).optional(),
   marketplaceExperimentationEdgeConfigData: z.array(ACLAction$outboundSchema)
     .optional(),
-  jobGlobal: z.array(ACLAction$outboundSchema).optional(),
-  drain: z.array(ACLAction$outboundSchema).optional(),
-  logDrain: z.array(ACLAction$outboundSchema).optional(),
+  marketplaceExperimentationItem: z.array(ACLAction$outboundSchema).optional(),
+  marketplaceInstallationMember: z.array(ACLAction$outboundSchema).optional(),
+  marketplaceInvoice: z.array(ACLAction$outboundSchema).optional(),
+  marketplaceSettings: z.array(ACLAction$outboundSchema).optional(),
   monitoring: z.array(ACLAction$outboundSchema).optional(),
-  monitoringSettings: z.array(ACLAction$outboundSchema).optional(),
-  monitoringQuery: z.array(ACLAction$outboundSchema).optional(),
-  monitoringChart: z.array(ACLAction$outboundSchema).optional(),
   monitoringAlert: z.array(ACLAction$outboundSchema).optional(),
+  monitoringChart: z.array(ACLAction$outboundSchema).optional(),
+  monitoringQuery: z.array(ACLAction$outboundSchema).optional(),
+  monitoringSettings: z.array(ACLAction$outboundSchema).optional(),
+  notificationCustomerBudget: z.array(ACLAction$outboundSchema).optional(),
   notificationDeploymentFailed: z.array(ACLAction$outboundSchema).optional(),
   notificationDomainConfiguration: z.array(ACLAction$outboundSchema).optional(),
   notificationDomainExpire: z.array(ACLAction$outboundSchema).optional(),
@@ -10439,43 +10451,38 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   notificationDomainUnverified: z.array(ACLAction$outboundSchema).optional(),
   notificationMonitoringAlert: z.array(ACLAction$outboundSchema).optional(),
   notificationPaymentFailed: z.array(ACLAction$outboundSchema).optional(),
-  notificationUsageAlert: z.array(ACLAction$outboundSchema).optional(),
   notificationPreferences: z.array(ACLAction$outboundSchema).optional(),
-  notificationCustomerBudget: z.array(ACLAction$outboundSchema).optional(),
   notificationStatementOfReasons: z.array(ACLAction$outboundSchema).optional(),
+  notificationUsageAlert: z.array(ACLAction$outboundSchema).optional(),
   observabilityConfiguration: z.array(ACLAction$outboundSchema).optional(),
-  agent: z.array(ACLAction$outboundSchema).optional(),
-  alerts: z.array(ACLAction$outboundSchema).optional(),
-  observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   observabilityFunnel: z.array(ACLAction$outboundSchema).optional(),
+  observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$outboundSchema).optional(),
-  vercelAppInstallation: z.array(ACLAction$outboundSchema).optional(),
-  vercelAppInstallationRequest: z.array(ACLAction$outboundSchema).optional(),
+  ownEvent: z.array(ACLAction$outboundSchema).optional(),
+  passwordProtectionInvoiceItem: z.array(ACLAction$outboundSchema).optional(),
   paymentMethod: z.array(ACLAction$outboundSchema).optional(),
   permissions: z.array(ACLAction$outboundSchema).optional(),
   postgres: z.array(ACLAction$outboundSchema).optional(),
+  postgresStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
   previewDeploymentSuffix: z.array(ACLAction$outboundSchema).optional(),
+  projectTransferIn: z.array(ACLAction$outboundSchema).optional(),
   proTrialOnboarding: z.array(ACLAction$outboundSchema).optional(),
+  rateLimit: z.array(ACLAction$outboundSchema).optional(),
+  redis: z.array(ACLAction$outboundSchema).optional(),
+  redisStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
+  remoteCaching: z.array(ACLAction$outboundSchema).optional(),
+  repository: z.array(ACLAction$outboundSchema).optional(),
+  samlConfig: z.array(ACLAction$outboundSchema).optional(),
+  secret: z.array(ACLAction$outboundSchema).optional(),
+  sensitiveEnvironmentVariablePolicy: z.array(ACLAction$outboundSchema)
+    .optional(),
   sharedEnvVars: z.array(ACLAction$outboundSchema).optional(),
   sharedEnvVarsProduction: z.array(ACLAction$outboundSchema).optional(),
   space: z.array(ACLAction$outboundSchema).optional(),
   spaceRun: z.array(ACLAction$outboundSchema).optional(),
-  passwordProtectionInvoiceItem: z.array(ACLAction$outboundSchema).optional(),
-  rateLimit: z.array(ACLAction$outboundSchema).optional(),
-  redis: z.array(ACLAction$outboundSchema).optional(),
-  repository: z.array(ACLAction$outboundSchema).optional(),
-  remoteCaching: z.array(ACLAction$outboundSchema).optional(),
-  samlConfig: z.array(ACLAction$outboundSchema).optional(),
-  secret: z.array(ACLAction$outboundSchema).optional(),
-  redisStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
-  blobStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
-  postgresStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
-  integrationStoreTokenSet: z.array(ACLAction$outboundSchema).optional(),
-  integrationResourceReplCommand: z.array(ACLAction$outboundSchema).optional(),
   storeTransfer: z.array(ACLAction$outboundSchema).optional(),
   supportCase: z.array(ACLAction$outboundSchema).optional(),
   supportCaseComment: z.array(ACLAction$outboundSchema).optional(),
-  dataCacheBillingSettings: z.array(ACLAction$outboundSchema).optional(),
   team: z.array(ACLAction$outboundSchema).optional(),
   teamAccessRequest: z.array(ACLAction$outboundSchema).optional(),
   teamFellowMembership: z.array(ACLAction$outboundSchema).optional(),
@@ -10490,26 +10497,15 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   token: z.array(ACLAction$outboundSchema).optional(),
   usage: z.array(ACLAction$outboundSchema).optional(),
   usageCycle: z.array(ACLAction$outboundSchema).optional(),
-  vpcPeeringConnection: z.array(ACLAction$outboundSchema).optional(),
-  webAnalyticsPlan: z.array(ACLAction$outboundSchema).optional(),
-  edgeConfig: z.array(ACLAction$outboundSchema).optional(),
-  edgeConfigItem: z.array(ACLAction$outboundSchema).optional(),
-  edgeConfigSchema: z.array(ACLAction$outboundSchema).optional(),
-  edgeConfigToken: z.array(ACLAction$outboundSchema).optional(),
-  webhook: z.array(ACLAction$outboundSchema).optional(),
-  webhookEvent: z.array(ACLAction$outboundSchema).optional(),
-  endpointVerification: z.array(ACLAction$outboundSchema).optional(),
-  projectTransferIn: z.array(ACLAction$outboundSchema).optional(),
-  oauth2Application: z.array(ACLAction$outboundSchema).optional(),
   vercelRun: z.array(ACLAction$outboundSchema).optional(),
   vercelRunExec: z.array(ACLAction$outboundSchema).optional(),
-  apiKey: z.array(ACLAction$outboundSchema).optional(),
-  apiKeyOwnedBySelf: z.array(ACLAction$outboundSchema).optional(),
-  apiKeyAiGateway: z.array(ACLAction$outboundSchema).optional(),
+  vpcPeeringConnection: z.array(ACLAction$outboundSchema).optional(),
+  webAnalyticsPlan: z.array(ACLAction$outboundSchema).optional(),
+  webhook: z.array(ACLAction$outboundSchema).optional(),
+  webhookEvent: z.array(ACLAction$outboundSchema).optional(),
   aliasProject: z.array(ACLAction$outboundSchema).optional(),
   aliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   buildMachine: z.array(ACLAction$outboundSchema).optional(),
-  productionAliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   connectConfigurationLink: z.array(ACLAction$outboundSchema).optional(),
   dataCacheNamespace: z.array(ACLAction$outboundSchema).optional(),
   deployment: z.array(ACLAction$outboundSchema).optional(),
@@ -10526,55 +10522,55 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   deploymentRollback: z.array(ACLAction$outboundSchema).optional(),
   edgeCacheNamespace: z.array(ACLAction$outboundSchema).optional(),
   environments: z.array(ACLAction$outboundSchema).optional(),
+  job: z.array(ACLAction$outboundSchema).optional(),
   logs: z.array(ACLAction$outboundSchema).optional(),
   logsPreset: z.array(ACLAction$outboundSchema).optional(),
-  passwordProtection: z.array(ACLAction$outboundSchema).optional(),
-  optionsAllowlist: z.array(ACLAction$outboundSchema).optional(),
-  job: z.array(ACLAction$outboundSchema).optional(),
   observabilityData: z.array(ACLAction$outboundSchema).optional(),
   onDemandBuild: z.array(ACLAction$outboundSchema).optional(),
   onDemandConcurrency: z.array(ACLAction$outboundSchema).optional(),
+  optionsAllowlist: z.array(ACLAction$outboundSchema).optional(),
+  passwordProtection: z.array(ACLAction$outboundSchema).optional(),
+  productionAliasProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
   project: z.array(ACLAction$outboundSchema).optional(),
-  projectFromV0: z.array(ACLAction$outboundSchema).optional(),
   projectAccessGroup: z.array(ACLAction$outboundSchema).optional(),
   projectAnalyticsSampling: z.array(ACLAction$outboundSchema).optional(),
+  projectAnalyticsUsage: z.array(ACLAction$outboundSchema).optional(),
   projectCheck: z.array(ACLAction$outboundSchema).optional(),
   projectCheckRun: z.array(ACLAction$outboundSchema).optional(),
+  projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
   projectDeploymentHook: z.array(ACLAction$outboundSchema).optional(),
   projectDomain: z.array(ACLAction$outboundSchema).optional(),
-  projectDomainMove: z.array(ACLAction$outboundSchema).optional(),
   projectDomainCheckConfig: z.array(ACLAction$outboundSchema).optional(),
+  projectDomainMove: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVars: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVarsProduction: z.array(ACLAction$outboundSchema).optional(),
   projectEnvVarsUnownedByIntegration: z.array(ACLAction$outboundSchema)
     .optional(),
   projectFlags: z.array(ACLAction$outboundSchema).optional(),
+  projectFromV0: z.array(ACLAction$outboundSchema).optional(),
   projectId: z.array(ACLAction$outboundSchema).optional(),
   projectIntegrationConfiguration: z.array(ACLAction$outboundSchema).optional(),
   projectLink: z.array(ACLAction$outboundSchema).optional(),
   projectMember: z.array(ACLAction$outboundSchema).optional(),
   projectMonitoring: z.array(ACLAction$outboundSchema).optional(),
+  projectOIDCToken: z.array(ACLAction$outboundSchema).optional(),
   projectPermissions: z.array(ACLAction$outboundSchema).optional(),
   projectProductionBranch: z.array(ACLAction$outboundSchema).optional(),
-  projectTransfer: z.array(ACLAction$outboundSchema).optional(),
-  projectTransferOut: z.array(ACLAction$outboundSchema).optional(),
   projectProtectionBypass: z.array(ACLAction$outboundSchema).optional(),
-  projectUsage: z.array(ACLAction$outboundSchema).optional(),
-  projectAnalyticsUsage: z.array(ACLAction$outboundSchema).optional(),
+  projectRollingRelease: z.array(ACLAction$outboundSchema).optional(),
   projectSupportCase: z.array(ACLAction$outboundSchema).optional(),
   projectSupportCaseComment: z.array(ACLAction$outboundSchema).optional(),
-  projectDeploymentExpiration: z.array(ACLAction$outboundSchema).optional(),
-  projectRollingRelease: z.array(ACLAction$outboundSchema).optional(),
   projectTier: z.array(ACLAction$outboundSchema).optional(),
-  projectOIDCToken: z.array(ACLAction$outboundSchema).optional(),
+  projectTransfer: z.array(ACLAction$outboundSchema).optional(),
+  projectTransferOut: z.array(ACLAction$outboundSchema).optional(),
+  projectUsage: z.array(ACLAction$outboundSchema).optional(),
   seawallConfig: z.array(ACLAction$outboundSchema).optional(),
+  sharedEnvVarConnection: z.array(ACLAction$outboundSchema).optional(),
   skewProtection: z.array(ACLAction$outboundSchema).optional(),
   analytics: z.array(ACLAction$outboundSchema).optional(),
   trustedIps: z.array(ACLAction$outboundSchema).optional(),
   v0Chat: z.array(ACLAction$outboundSchema).optional(),
   webAnalytics: z.array(ACLAction$outboundSchema).optional(),
-  sharedEnvVarConnection: z.array(ACLAction$outboundSchema).optional(),
-  sonar: z.array(ACLAction$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     monitoring: "Monitoring",

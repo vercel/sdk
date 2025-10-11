@@ -36,38 +36,38 @@ export const ImportResourceType = {
 } as const;
 export type ImportResourceType = ClosedEnum<typeof ImportResourceType>;
 
-export type Details = {
+export type ImportResourceDetails = {
   label: string;
   value?: string | undefined;
 };
 
-export type HighlightedDetails = {
+export type ImportResourceHighlightedDetails = {
   label: string;
   value?: string | undefined;
 };
 
-export type BillingPlan = {
+export type ImportResourceBillingPlan = {
   id: string;
   type: ImportResourceType;
   name: string;
   description?: string | undefined;
   paymentMethodRequired?: boolean | undefined;
   cost?: string | undefined;
-  details?: Array<Details> | undefined;
-  highlightedDetails?: Array<HighlightedDetails> | undefined;
+  details?: Array<ImportResourceDetails> | undefined;
+  highlightedDetails?: Array<ImportResourceHighlightedDetails> | undefined;
   effectiveDate?: string | undefined;
   additionalProperties?: { [k: string]: any };
 };
 
-export const Level = {
+export const ImportResourceLevel = {
   Info: "info",
   Warn: "warn",
   Error: "error",
 } as const;
-export type Level = ClosedEnum<typeof Level>;
+export type ImportResourceLevel = ClosedEnum<typeof ImportResourceLevel>;
 
-export type Notification = {
-  level: Level;
+export type ImportResourceNotification = {
+  level: ImportResourceLevel;
   title: string;
   message?: string | undefined;
   href?: string | undefined;
@@ -107,8 +107,8 @@ export type ImportResourceRequestBody = {
   name: string;
   status: ImportResourceStatus;
   metadata?: { [k: string]: any } | undefined;
-  billingPlan?: BillingPlan | undefined;
-  notification?: Notification | undefined;
+  billingPlan?: ImportResourceBillingPlan | undefined;
+  notification?: ImportResourceNotification | undefined;
   extras?: { [k: string]: any } | undefined;
   secrets?: Array<ImportResourceSecrets> | undefined;
 };
@@ -185,58 +185,8 @@ export namespace ImportResourceType$ {
 }
 
 /** @internal */
-export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
-  z.object({
-    label: z.string(),
-    value: z.string().optional(),
-  });
-
-/** @internal */
-export type Details$Outbound = {
-  label: string;
-  value?: string | undefined;
-};
-
-/** @internal */
-export const Details$outboundSchema: z.ZodType<
-  Details$Outbound,
-  z.ZodTypeDef,
-  Details
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Details$ {
-  /** @deprecated use `Details$inboundSchema` instead. */
-  export const inboundSchema = Details$inboundSchema;
-  /** @deprecated use `Details$outboundSchema` instead. */
-  export const outboundSchema = Details$outboundSchema;
-  /** @deprecated use `Details$Outbound` instead. */
-  export type Outbound = Details$Outbound;
-}
-
-export function detailsToJSON(details: Details): string {
-  return JSON.stringify(Details$outboundSchema.parse(details));
-}
-
-export function detailsFromJSON(
-  jsonString: string,
-): SafeParseResult<Details, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Details$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Details' from JSON`,
-  );
-}
-
-/** @internal */
-export const HighlightedDetails$inboundSchema: z.ZodType<
-  HighlightedDetails,
+export const ImportResourceDetails$inboundSchema: z.ZodType<
+  ImportResourceDetails,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -245,16 +195,16 @@ export const HighlightedDetails$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type HighlightedDetails$Outbound = {
+export type ImportResourceDetails$Outbound = {
   label: string;
   value?: string | undefined;
 };
 
 /** @internal */
-export const HighlightedDetails$outboundSchema: z.ZodType<
-  HighlightedDetails$Outbound,
+export const ImportResourceDetails$outboundSchema: z.ZodType<
+  ImportResourceDetails$Outbound,
   z.ZodTypeDef,
-  HighlightedDetails
+  ImportResourceDetails
 > = z.object({
   label: z.string(),
   value: z.string().optional(),
@@ -264,36 +214,95 @@ export const HighlightedDetails$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HighlightedDetails$ {
-  /** @deprecated use `HighlightedDetails$inboundSchema` instead. */
-  export const inboundSchema = HighlightedDetails$inboundSchema;
-  /** @deprecated use `HighlightedDetails$outboundSchema` instead. */
-  export const outboundSchema = HighlightedDetails$outboundSchema;
-  /** @deprecated use `HighlightedDetails$Outbound` instead. */
-  export type Outbound = HighlightedDetails$Outbound;
+export namespace ImportResourceDetails$ {
+  /** @deprecated use `ImportResourceDetails$inboundSchema` instead. */
+  export const inboundSchema = ImportResourceDetails$inboundSchema;
+  /** @deprecated use `ImportResourceDetails$outboundSchema` instead. */
+  export const outboundSchema = ImportResourceDetails$outboundSchema;
+  /** @deprecated use `ImportResourceDetails$Outbound` instead. */
+  export type Outbound = ImportResourceDetails$Outbound;
 }
 
-export function highlightedDetailsToJSON(
-  highlightedDetails: HighlightedDetails,
+export function importResourceDetailsToJSON(
+  importResourceDetails: ImportResourceDetails,
 ): string {
   return JSON.stringify(
-    HighlightedDetails$outboundSchema.parse(highlightedDetails),
+    ImportResourceDetails$outboundSchema.parse(importResourceDetails),
   );
 }
 
-export function highlightedDetailsFromJSON(
+export function importResourceDetailsFromJSON(
   jsonString: string,
-): SafeParseResult<HighlightedDetails, SDKValidationError> {
+): SafeParseResult<ImportResourceDetails, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => HighlightedDetails$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'HighlightedDetails' from JSON`,
+    (x) => ImportResourceDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportResourceDetails' from JSON`,
   );
 }
 
 /** @internal */
-export const BillingPlan$inboundSchema: z.ZodType<
-  BillingPlan,
+export const ImportResourceHighlightedDetails$inboundSchema: z.ZodType<
+  ImportResourceHighlightedDetails,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type ImportResourceHighlightedDetails$Outbound = {
+  label: string;
+  value?: string | undefined;
+};
+
+/** @internal */
+export const ImportResourceHighlightedDetails$outboundSchema: z.ZodType<
+  ImportResourceHighlightedDetails$Outbound,
+  z.ZodTypeDef,
+  ImportResourceHighlightedDetails
+> = z.object({
+  label: z.string(),
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ImportResourceHighlightedDetails$ {
+  /** @deprecated use `ImportResourceHighlightedDetails$inboundSchema` instead. */
+  export const inboundSchema = ImportResourceHighlightedDetails$inboundSchema;
+  /** @deprecated use `ImportResourceHighlightedDetails$outboundSchema` instead. */
+  export const outboundSchema = ImportResourceHighlightedDetails$outboundSchema;
+  /** @deprecated use `ImportResourceHighlightedDetails$Outbound` instead. */
+  export type Outbound = ImportResourceHighlightedDetails$Outbound;
+}
+
+export function importResourceHighlightedDetailsToJSON(
+  importResourceHighlightedDetails: ImportResourceHighlightedDetails,
+): string {
+  return JSON.stringify(
+    ImportResourceHighlightedDetails$outboundSchema.parse(
+      importResourceHighlightedDetails,
+    ),
+  );
+}
+
+export function importResourceHighlightedDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ImportResourceHighlightedDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImportResourceHighlightedDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportResourceHighlightedDetails' from JSON`,
+  );
+}
+
+/** @internal */
+export const ImportResourceBillingPlan$inboundSchema: z.ZodType<
+  ImportResourceBillingPlan,
   z.ZodTypeDef,
   unknown
 > = collectExtraKeys$(
@@ -304,9 +313,11 @@ export const BillingPlan$inboundSchema: z.ZodType<
     description: z.string().optional(),
     paymentMethodRequired: z.boolean().optional(),
     cost: z.string().optional(),
-    details: z.array(z.lazy(() => Details$inboundSchema)).optional(),
-    highlightedDetails: z.array(z.lazy(() => HighlightedDetails$inboundSchema))
+    details: z.array(z.lazy(() => ImportResourceDetails$inboundSchema))
       .optional(),
+    highlightedDetails: z.array(
+      z.lazy(() => ImportResourceHighlightedDetails$inboundSchema),
+    ).optional(),
     effectiveDate: z.string().optional(),
   }).catchall(z.any()),
   "additionalProperties",
@@ -314,24 +325,26 @@ export const BillingPlan$inboundSchema: z.ZodType<
 );
 
 /** @internal */
-export type BillingPlan$Outbound = {
+export type ImportResourceBillingPlan$Outbound = {
   id: string;
   type: string;
   name: string;
   description?: string | undefined;
   paymentMethodRequired?: boolean | undefined;
   cost?: string | undefined;
-  details?: Array<Details$Outbound> | undefined;
-  highlightedDetails?: Array<HighlightedDetails$Outbound> | undefined;
+  details?: Array<ImportResourceDetails$Outbound> | undefined;
+  highlightedDetails?:
+    | Array<ImportResourceHighlightedDetails$Outbound>
+    | undefined;
   effectiveDate?: string | undefined;
   [additionalProperties: string]: unknown;
 };
 
 /** @internal */
-export const BillingPlan$outboundSchema: z.ZodType<
-  BillingPlan$Outbound,
+export const ImportResourceBillingPlan$outboundSchema: z.ZodType<
+  ImportResourceBillingPlan$Outbound,
   z.ZodTypeDef,
-  BillingPlan
+  ImportResourceBillingPlan
 > = z.object({
   id: z.string(),
   type: ImportResourceType$outboundSchema,
@@ -339,9 +352,11 @@ export const BillingPlan$outboundSchema: z.ZodType<
   description: z.string().optional(),
   paymentMethodRequired: z.boolean().optional(),
   cost: z.string().optional(),
-  details: z.array(z.lazy(() => Details$outboundSchema)).optional(),
-  highlightedDetails: z.array(z.lazy(() => HighlightedDetails$outboundSchema))
+  details: z.array(z.lazy(() => ImportResourceDetails$outboundSchema))
     .optional(),
+  highlightedDetails: z.array(
+    z.lazy(() => ImportResourceHighlightedDetails$outboundSchema),
+  ).optional(),
   effectiveDate: z.string().optional(),
   additionalProperties: z.record(z.any()),
 }).transform((v) => {
@@ -357,63 +372,68 @@ export const BillingPlan$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace BillingPlan$ {
-  /** @deprecated use `BillingPlan$inboundSchema` instead. */
-  export const inboundSchema = BillingPlan$inboundSchema;
-  /** @deprecated use `BillingPlan$outboundSchema` instead. */
-  export const outboundSchema = BillingPlan$outboundSchema;
-  /** @deprecated use `BillingPlan$Outbound` instead. */
-  export type Outbound = BillingPlan$Outbound;
+export namespace ImportResourceBillingPlan$ {
+  /** @deprecated use `ImportResourceBillingPlan$inboundSchema` instead. */
+  export const inboundSchema = ImportResourceBillingPlan$inboundSchema;
+  /** @deprecated use `ImportResourceBillingPlan$outboundSchema` instead. */
+  export const outboundSchema = ImportResourceBillingPlan$outboundSchema;
+  /** @deprecated use `ImportResourceBillingPlan$Outbound` instead. */
+  export type Outbound = ImportResourceBillingPlan$Outbound;
 }
 
-export function billingPlanToJSON(billingPlan: BillingPlan): string {
-  return JSON.stringify(BillingPlan$outboundSchema.parse(billingPlan));
+export function importResourceBillingPlanToJSON(
+  importResourceBillingPlan: ImportResourceBillingPlan,
+): string {
+  return JSON.stringify(
+    ImportResourceBillingPlan$outboundSchema.parse(importResourceBillingPlan),
+  );
 }
 
-export function billingPlanFromJSON(
+export function importResourceBillingPlanFromJSON(
   jsonString: string,
-): SafeParseResult<BillingPlan, SDKValidationError> {
+): SafeParseResult<ImportResourceBillingPlan, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => BillingPlan$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BillingPlan' from JSON`,
+    (x) => ImportResourceBillingPlan$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportResourceBillingPlan' from JSON`,
   );
 }
 
 /** @internal */
-export const Level$inboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
-  Level,
-);
+export const ImportResourceLevel$inboundSchema: z.ZodNativeEnum<
+  typeof ImportResourceLevel
+> = z.nativeEnum(ImportResourceLevel);
 
 /** @internal */
-export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> =
-  Level$inboundSchema;
+export const ImportResourceLevel$outboundSchema: z.ZodNativeEnum<
+  typeof ImportResourceLevel
+> = ImportResourceLevel$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Level$ {
-  /** @deprecated use `Level$inboundSchema` instead. */
-  export const inboundSchema = Level$inboundSchema;
-  /** @deprecated use `Level$outboundSchema` instead. */
-  export const outboundSchema = Level$outboundSchema;
+export namespace ImportResourceLevel$ {
+  /** @deprecated use `ImportResourceLevel$inboundSchema` instead. */
+  export const inboundSchema = ImportResourceLevel$inboundSchema;
+  /** @deprecated use `ImportResourceLevel$outboundSchema` instead. */
+  export const outboundSchema = ImportResourceLevel$outboundSchema;
 }
 
 /** @internal */
-export const Notification$inboundSchema: z.ZodType<
-  Notification,
+export const ImportResourceNotification$inboundSchema: z.ZodType<
+  ImportResourceNotification,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  level: Level$inboundSchema,
+  level: ImportResourceLevel$inboundSchema,
   title: z.string(),
   message: z.string().optional(),
   href: z.string().optional(),
 });
 
 /** @internal */
-export type Notification$Outbound = {
+export type ImportResourceNotification$Outbound = {
   level: string;
   title: string;
   message?: string | undefined;
@@ -421,12 +441,12 @@ export type Notification$Outbound = {
 };
 
 /** @internal */
-export const Notification$outboundSchema: z.ZodType<
-  Notification$Outbound,
+export const ImportResourceNotification$outboundSchema: z.ZodType<
+  ImportResourceNotification$Outbound,
   z.ZodTypeDef,
-  Notification
+  ImportResourceNotification
 > = z.object({
-  level: Level$outboundSchema,
+  level: ImportResourceLevel$outboundSchema,
   title: z.string(),
   message: z.string().optional(),
   href: z.string().optional(),
@@ -436,26 +456,30 @@ export const Notification$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Notification$ {
-  /** @deprecated use `Notification$inboundSchema` instead. */
-  export const inboundSchema = Notification$inboundSchema;
-  /** @deprecated use `Notification$outboundSchema` instead. */
-  export const outboundSchema = Notification$outboundSchema;
-  /** @deprecated use `Notification$Outbound` instead. */
-  export type Outbound = Notification$Outbound;
+export namespace ImportResourceNotification$ {
+  /** @deprecated use `ImportResourceNotification$inboundSchema` instead. */
+  export const inboundSchema = ImportResourceNotification$inboundSchema;
+  /** @deprecated use `ImportResourceNotification$outboundSchema` instead. */
+  export const outboundSchema = ImportResourceNotification$outboundSchema;
+  /** @deprecated use `ImportResourceNotification$Outbound` instead. */
+  export type Outbound = ImportResourceNotification$Outbound;
 }
 
-export function notificationToJSON(notification: Notification): string {
-  return JSON.stringify(Notification$outboundSchema.parse(notification));
+export function importResourceNotificationToJSON(
+  importResourceNotification: ImportResourceNotification,
+): string {
+  return JSON.stringify(
+    ImportResourceNotification$outboundSchema.parse(importResourceNotification),
+  );
 }
 
-export function notificationFromJSON(
+export function importResourceNotificationFromJSON(
   jsonString: string,
-): SafeParseResult<Notification, SDKValidationError> {
+): SafeParseResult<ImportResourceNotification, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Notification$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Notification' from JSON`,
+    (x) => ImportResourceNotification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImportResourceNotification' from JSON`,
   );
 }
 
@@ -595,8 +619,9 @@ export const ImportResourceRequestBody$inboundSchema: z.ZodType<
   name: z.string(),
   status: ImportResourceStatus$inboundSchema,
   metadata: z.record(z.any()).optional(),
-  billingPlan: z.lazy(() => BillingPlan$inboundSchema).optional(),
-  notification: z.lazy(() => Notification$inboundSchema).optional(),
+  billingPlan: z.lazy(() => ImportResourceBillingPlan$inboundSchema).optional(),
+  notification: z.lazy(() => ImportResourceNotification$inboundSchema)
+    .optional(),
   extras: z.record(z.any()).optional(),
   secrets: z.array(z.lazy(() => ImportResourceSecrets$inboundSchema))
     .optional(),
@@ -609,8 +634,8 @@ export type ImportResourceRequestBody$Outbound = {
   name: string;
   status: string;
   metadata?: { [k: string]: any } | undefined;
-  billingPlan?: BillingPlan$Outbound | undefined;
-  notification?: Notification$Outbound | undefined;
+  billingPlan?: ImportResourceBillingPlan$Outbound | undefined;
+  notification?: ImportResourceNotification$Outbound | undefined;
   extras?: { [k: string]: any } | undefined;
   secrets?: Array<ImportResourceSecrets$Outbound> | undefined;
 };
@@ -626,8 +651,10 @@ export const ImportResourceRequestBody$outboundSchema: z.ZodType<
   name: z.string(),
   status: ImportResourceStatus$outboundSchema,
   metadata: z.record(z.any()).optional(),
-  billingPlan: z.lazy(() => BillingPlan$outboundSchema).optional(),
-  notification: z.lazy(() => Notification$outboundSchema).optional(),
+  billingPlan: z.lazy(() => ImportResourceBillingPlan$outboundSchema)
+    .optional(),
+  notification: z.lazy(() => ImportResourceNotification$outboundSchema)
+    .optional(),
   extras: z.record(z.any()).optional(),
   secrets: z.array(z.lazy(() => ImportResourceSecrets$outboundSchema))
     .optional(),

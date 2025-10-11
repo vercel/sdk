@@ -117,6 +117,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/deployments/{deploymentId}/integrations/{integrationConfigurationId}/resources/{resourceId}/actions/{action}", pathPatchV1DeploymentsDeploymentIDIntegrationsIntegrationConfigurationIDResourcesResourceIDActionsAction(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/domains/records/{recordId}", pathPatchV1DomainsRecordsRecordID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/edge-config/{edgeConfigId}/items", pathPatchV1EdgeConfigEdgeConfigIDItems(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}", pathPatchV1InstallationsIntegrationConfigurationIDResourcesResourceID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}", pathPatchV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationItemsItemID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/projects/{idOrName}/protection-bypass", pathPatchV1ProjectsIDOrNameProtectionBypass(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/v1/projects/{idOrName}/rolling-release/config", pathPatchV1ProjectsIDOrNameRollingReleaseConfig(dir, rt)),

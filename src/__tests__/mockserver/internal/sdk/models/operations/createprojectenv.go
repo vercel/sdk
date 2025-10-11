@@ -910,10 +910,10 @@ type CreatedType2 string
 
 const (
 	CreatedType2System    CreatedType2 = "system"
-	CreatedType2Secret    CreatedType2 = "secret"
 	CreatedType2Encrypted CreatedType2 = "encrypted"
 	CreatedType2Plain     CreatedType2 = "plain"
 	CreatedType2Sensitive CreatedType2 = "sensitive"
+	CreatedType2Secret    CreatedType2 = "secret"
 )
 
 func (e CreatedType2) ToPointer() *CreatedType2 {
@@ -927,13 +927,13 @@ func (e *CreatedType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = CreatedType2(v)
 		return nil
 	default:
@@ -2473,10 +2473,10 @@ type CreatedType1 string
 
 const (
 	CreatedType1System    CreatedType1 = "system"
-	CreatedType1Secret    CreatedType1 = "secret"
 	CreatedType1Encrypted CreatedType1 = "encrypted"
 	CreatedType1Plain     CreatedType1 = "plain"
 	CreatedType1Sensitive CreatedType1 = "sensitive"
+	CreatedType1Secret    CreatedType1 = "secret"
 )
 
 func (e CreatedType1) ToPointer() *CreatedType1 {
@@ -2490,13 +2490,13 @@ func (e *CreatedType1) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "system":
 		fallthrough
-	case "secret":
-		fallthrough
 	case "encrypted":
 		fallthrough
 	case "plain":
 		fallthrough
 	case "sensitive":
+		fallthrough
+	case "secret":
 		*e = CreatedType1(v)
 		return nil
 	default:

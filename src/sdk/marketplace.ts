@@ -17,9 +17,11 @@ import { marketplaceImportResource } from "../funcs/marketplaceImportResource.js
 import { marketplaceSubmitBillingData } from "../funcs/marketplaceSubmitBillingData.js";
 import { marketplaceSubmitInvoice } from "../funcs/marketplaceSubmitInvoice.js";
 import { marketplaceSubmitPrepaymentBalances } from "../funcs/marketplaceSubmitPrepaymentBalances.js";
+import { marketplaceUpdateInstallation } from "../funcs/marketplaceUpdateInstallation.js";
 import { marketplaceUpdateInstallationIntegrationConfiguration } from "../funcs/marketplaceUpdateInstallationIntegrationConfiguration.js";
 import { marketplaceUpdateInstallationIntegrationEdgeConfig } from "../funcs/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
 import { marketplaceUpdateInvoice } from "../funcs/marketplaceUpdateInvoice.js";
+import { marketplaceUpdateResource } from "../funcs/marketplaceUpdateResource.js";
 import { marketplaceUpdateResourceSecrets } from "../funcs/marketplaceUpdateResourceSecrets.js";
 import { marketplaceUpdateResourceSecretsById } from "../funcs/marketplaceUpdateResourceSecretsById.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -76,12 +78,34 @@ import {
   SubmitInvoiceResponseBody,
 } from "../models/submitinvoiceop.js";
 import { SubmitPrepaymentBalancesRequest } from "../models/submitprepaymentbalancesop.js";
+import { UpdateInstallationRequest } from "../models/updateinstallationop.js";
 import { UpdateInvoiceRequest } from "../models/updateinvoiceop.js";
+import {
+  UpdateResourceRequest,
+  UpdateResourceResponseBody,
+} from "../models/updateresourceop.js";
 import { UpdateResourceSecretsByIdRequest } from "../models/updateresourcesecretsbyidop.js";
 import { UpdateResourceSecretsRequest } from "../models/updateresourcesecretsop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Marketplace extends ClientSDK {
+  /**
+   * Update Installation
+   *
+   * @remarks
+   * This endpoint updates an integration installation.
+   */
+  async updateInstallation(
+    request: UpdateInstallationRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(marketplaceUpdateInstallation(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Get Account Information
    *
@@ -195,6 +219,23 @@ export class Marketplace extends ClientSDK {
     options?: RequestOptions,
   ): Promise<ImportResourceResponseBody> {
     return unwrapAsync(marketplaceImportResource(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Resource
+   *
+   * @remarks
+   * This endpoint updates an existing resource in the installation. All parameters are optional, allowing partial updates.
+   */
+  async updateResource(
+    request: UpdateResourceRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateResourceResponseBody> {
+    return unwrapAsync(marketplaceUpdateResource(
       this,
       request,
       options,

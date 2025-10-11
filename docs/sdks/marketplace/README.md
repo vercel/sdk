@@ -5,6 +5,7 @@
 
 ### Available Operations
 
+* [updateInstallation](#updateinstallation) - Update Installation
 * [getAccountInfo](#getaccountinfo) - Get Account Information
 * [getMember](#getmember) - Get Member Information
 * [createEvent](#createevent) - Create Event
@@ -12,6 +13,7 @@
 * [getIntegrationResource](#getintegrationresource) - Get Integration Resource
 * [deleteIntegrationResource](#deleteintegrationresource) - Delete Integration Resource
 * [importResource](#importresource) - Import Resource
+* [updateResource](#updateresource) - Update Resource
 * [submitBillingData](#submitbillingdata) - Submit Billing Data
 * [submitInvoice](#submitinvoice) - Submit Invoice
 * [getInvoice](#getinvoice) - Get Invoice
@@ -25,6 +27,79 @@
 * [deleteInstallationIntegrationConfiguration](#deleteinstallationintegrationconfiguration) - Delete an existing experimentation item
 * [createInstallationIntegrationEdgeConfig](#createinstallationintegrationedgeconfig) - Get the data of a user-provided Edge Config
 * [updateInstallationIntegrationEdgeConfig](#updateinstallationintegrationedgeconfig) - Push data into a user-provided Edge Config
+
+## updateInstallation
+
+This endpoint updates an integration installation.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="update-installation" method="patch" path="/v1/installations/{integrationConfigurationId}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  await vercel.marketplace.updateInstallation({
+    integrationConfigurationId: "<id>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { marketplaceUpdateInstallation } from "@vercel/sdk/funcs/marketplaceUpdateInstallation.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await marketplaceUpdateInstallation(vercel, {
+    integrationConfigurationId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("marketplaceUpdateInstallation failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateInstallationRequest](../../models/updateinstallationrequest.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getAccountInfo
 
@@ -548,6 +623,81 @@ run();
 ### Response
 
 **Promise\<[models.ImportResourceResponseBody](../../models/importresourceresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateResource
+
+This endpoint updates an existing resource in the installation. All parameters are optional, allowing partial updates.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="update-resource" method="patch" path="/v1/installations/{integrationConfigurationId}/resources/{resourceId}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.marketplace.updateResource({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { marketplaceUpdateResource } from "@vercel/sdk/funcs/marketplaceUpdateResource.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await marketplaceUpdateResource(vercel, {
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marketplaceUpdateResource failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateResourceRequest](../../models/updateresourcerequest.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.UpdateResourceResponseBody](../../models/updateresourceresponsebody.md)\>**
 
 ### Errors
 

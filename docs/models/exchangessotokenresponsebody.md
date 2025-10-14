@@ -19,3 +19,4 @@ let value: ExchangeSsoTokenResponseBody = {
 | `idToken`          | *string*           | :heavy_check_mark: | N/A                |
 | `accessToken`      | *string*           | :heavy_check_mark: | N/A                |
 | `tokenType`        | *string*           | :heavy_check_mark: | N/A                |
+| `expiresIn`        | *number*           | :heavy_minus_sign: | N/A                |

@@ -11,5 +11,5 @@ let value: GrantType = "authorization_code";
 ## Values
 
 ```typescript
-"authorization_code" | "refresh_token" | "urn:ietf:params:oauth:grant-type:device_code" | "client_credentials"
+"authorization_code" | "urn:ietf:params:oauth:grant-type:device_code"
 ```

@@ -6,7 +6,7 @@
 import { MinLength } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: MinLength = {
-  atBRANDAt550534: {},
+  atBRANDAt613422: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: MinLength = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `atBRANDAt550534`                                      | [models.AtBRANDAt550534](../models/atbrandat550534.md) | :heavy_check_mark:                                     | N/A                                                    |
+| `atBRANDAt613422`                                      | [models.AtBRANDAt613422](../models/atbrandat613422.md) | :heavy_check_mark:                                     | N/A                                                    |

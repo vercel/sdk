@@ -13,7 +13,7 @@ let value: Links = {
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `href`                               | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `method`                             | [models.Method](../models/method.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `href`                                                             | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `method`                                                           | [models.BuySingleDomainMethod](../models/buysingledomainmethod.md) | :heavy_check_mark:                                                 | N/A                                                                |

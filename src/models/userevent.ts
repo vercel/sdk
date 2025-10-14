@@ -137,10 +137,8 @@ export type Via = Via1 | Via2;
 
 export const GrantType = {
   AuthorizationCode: "authorization_code",
-  RefreshToken: "refresh_token",
   UrnIetfParamsOauthGrantTypeDeviceCode:
     "urn:ietf:params:oauth:grant-type:device_code",
-  ClientCredentials: "client_credentials",
 } as const;
 export type GrantType = ClosedEnum<typeof GrantType>;
 
@@ -160,11 +158,41 @@ export const AuthMethod = {
 } as const;
 export type AuthMethod = ClosedEnum<typeof AuthMethod>;
 
+export const Method = {
+  ClientSecretBasic: "client_secret_basic",
+  ClientSecretPost: "client_secret_post",
+  ClientSecretJwt: "client_secret_jwt",
+  PrivateKeyJwt: "private_key_jwt",
+  OidcToken: "oidc_token",
+  None: "none",
+} as const;
+export type Method = ClosedEnum<typeof Method>;
+
+export type ClientAuthenticationUsed = {
+  method: Method;
+  secretId?: string | undefined;
+};
+
+/**
+ * optional since entries prior to 2025-10-13 do not contain app information
+ */
+export type App = {
+  clientId: string;
+  /**
+   * the app's name at the time the event was published (it could have changed since then)
+   */
+  name: string;
+  clientAuthenticationUsed: ClientAuthenticationUsed;
+};
+
 /**
  * The payload of the event, if requested.
  */
 export type OneHundredAndSixtyFive = {
   grantType: GrantType;
+  /**
+   * the app's name at the time the event was published (it could have changed since then)
+   */
   appName: string;
   /**
    * access_token TTL
@@ -176,6 +204,22 @@ export type OneHundredAndSixtyFive = {
   rtTTL?: number | undefined;
   scope: string;
   authMethod: AuthMethod;
+  /**
+   * optional since entries prior to 2025-10-13 do not contain app information
+   */
+  app?: App | undefined;
+  /**
+   * optional since entries prior to 2025-10-13 do not contain this field
+   */
+  includesRefreshToken?: boolean | undefined;
+  /**
+   * optional since entries prior to 2025-10-13 do not contain this field
+   */
+  publicId?: string | undefined;
+  /**
+   * optional since entries prior to 2025-10-13 do not contain this field
+   */
+  sessionId?: string | undefined;
 };
 
 export type UserEventPayload164Team = {
@@ -5440,6 +5484,136 @@ export namespace AuthMethod$ {
 }
 
 /** @internal */
+export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z
+  .nativeEnum(Method);
+
+/** @internal */
+export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> =
+  Method$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Method$ {
+  /** @deprecated use `Method$inboundSchema` instead. */
+  export const inboundSchema = Method$inboundSchema;
+  /** @deprecated use `Method$outboundSchema` instead. */
+  export const outboundSchema = Method$outboundSchema;
+}
+
+/** @internal */
+export const ClientAuthenticationUsed$inboundSchema: z.ZodType<
+  ClientAuthenticationUsed,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  method: Method$inboundSchema,
+  secretId: z.string().optional(),
+});
+
+/** @internal */
+export type ClientAuthenticationUsed$Outbound = {
+  method: string;
+  secretId?: string | undefined;
+};
+
+/** @internal */
+export const ClientAuthenticationUsed$outboundSchema: z.ZodType<
+  ClientAuthenticationUsed$Outbound,
+  z.ZodTypeDef,
+  ClientAuthenticationUsed
+> = z.object({
+  method: Method$outboundSchema,
+  secretId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ClientAuthenticationUsed$ {
+  /** @deprecated use `ClientAuthenticationUsed$inboundSchema` instead. */
+  export const inboundSchema = ClientAuthenticationUsed$inboundSchema;
+  /** @deprecated use `ClientAuthenticationUsed$outboundSchema` instead. */
+  export const outboundSchema = ClientAuthenticationUsed$outboundSchema;
+  /** @deprecated use `ClientAuthenticationUsed$Outbound` instead. */
+  export type Outbound = ClientAuthenticationUsed$Outbound;
+}
+
+export function clientAuthenticationUsedToJSON(
+  clientAuthenticationUsed: ClientAuthenticationUsed,
+): string {
+  return JSON.stringify(
+    ClientAuthenticationUsed$outboundSchema.parse(clientAuthenticationUsed),
+  );
+}
+
+export function clientAuthenticationUsedFromJSON(
+  jsonString: string,
+): SafeParseResult<ClientAuthenticationUsed, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ClientAuthenticationUsed$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ClientAuthenticationUsed' from JSON`,
+  );
+}
+
+/** @internal */
+export const App$inboundSchema: z.ZodType<App, z.ZodTypeDef, unknown> = z
+  .object({
+    clientId: z.string(),
+    name: z.string(),
+    clientAuthenticationUsed: z.lazy(() =>
+      ClientAuthenticationUsed$inboundSchema
+    ),
+  });
+
+/** @internal */
+export type App$Outbound = {
+  clientId: string;
+  name: string;
+  clientAuthenticationUsed: ClientAuthenticationUsed$Outbound;
+};
+
+/** @internal */
+export const App$outboundSchema: z.ZodType<App$Outbound, z.ZodTypeDef, App> = z
+  .object({
+    clientId: z.string(),
+    name: z.string(),
+    clientAuthenticationUsed: z.lazy(() =>
+      ClientAuthenticationUsed$outboundSchema
+    ),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace App$ {
+  /** @deprecated use `App$inboundSchema` instead. */
+  export const inboundSchema = App$inboundSchema;
+  /** @deprecated use `App$outboundSchema` instead. */
+  export const outboundSchema = App$outboundSchema;
+  /** @deprecated use `App$Outbound` instead. */
+  export type Outbound = App$Outbound;
+}
+
+export function appToJSON(app: App): string {
+  return JSON.stringify(App$outboundSchema.parse(app));
+}
+
+export function appFromJSON(
+  jsonString: string,
+): SafeParseResult<App, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => App$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'App' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndSixtyFive$inboundSchema: z.ZodType<
   OneHundredAndSixtyFive,
   z.ZodTypeDef,
@@ -5451,6 +5625,10 @@ export const OneHundredAndSixtyFive$inboundSchema: z.ZodType<
   rtTTL: z.number().optional(),
   scope: z.string(),
   authMethod: AuthMethod$inboundSchema,
+  app: z.lazy(() => App$inboundSchema).optional(),
+  includesRefreshToken: z.boolean().optional(),
+  publicId: z.string().optional(),
+  sessionId: z.string().optional(),
 });
 
 /** @internal */
@@ -5461,6 +5639,10 @@ export type OneHundredAndSixtyFive$Outbound = {
   rtTTL?: number | undefined;
   scope: string;
   authMethod: string;
+  app?: App$Outbound | undefined;
+  includesRefreshToken?: boolean | undefined;
+  publicId?: string | undefined;
+  sessionId?: string | undefined;
 };
 
 /** @internal */
@@ -5475,6 +5657,10 @@ export const OneHundredAndSixtyFive$outboundSchema: z.ZodType<
   rtTTL: z.number().optional(),
   scope: z.string(),
   authMethod: AuthMethod$outboundSchema,
+  app: z.lazy(() => App$outboundSchema).optional(),
+  includesRefreshToken: z.boolean().optional(),
+  publicId: z.string().optional(),
+  sessionId: z.string().optional(),
 });
 
 /**

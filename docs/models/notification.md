@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Notification } from "@vercel/sdk/models/importresourceop.js";
+import { Notification } from "@vercel/sdk/models/updateinstallationop.js";
 
 let value: Notification = {
   level: "warn",

@@ -53,6 +53,7 @@ export type ExchangeSsoTokenResponseBody = {
   idToken: string;
   accessToken: string | null;
   tokenType: string | null;
+  expiresIn?: number | undefined;
 };
 
 /** @internal */
@@ -170,11 +171,13 @@ export const ExchangeSsoTokenResponseBody$inboundSchema: z.ZodType<
   id_token: z.string(),
   access_token: z.nullable(z.string()),
   token_type: z.nullable(z.string()),
+  expires_in: z.number().optional(),
 }).transform((v) => {
   return remap$(v, {
     "id_token": "idToken",
     "access_token": "accessToken",
     "token_type": "tokenType",
+    "expires_in": "expiresIn",
   });
 });
 
@@ -183,6 +186,7 @@ export type ExchangeSsoTokenResponseBody$Outbound = {
   id_token: string;
   access_token: string | null;
   token_type: string | null;
+  expires_in?: number | undefined;
 };
 
 /** @internal */
@@ -194,11 +198,13 @@ export const ExchangeSsoTokenResponseBody$outboundSchema: z.ZodType<
   idToken: z.string(),
   accessToken: z.nullable(z.string()),
   tokenType: z.nullable(z.string()),
+  expiresIn: z.number().optional(),
 }).transform((v) => {
   return remap$(v, {
     idToken: "id_token",
     accessToken: "access_token",
     tokenType: "token_type",
+    expiresIn: "expires_in",
   });
 });
 

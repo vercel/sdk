@@ -90,9 +90,10 @@ func (o *ExchangeSsoTokenRequest) GetGrantType() *GrantType {
 }
 
 type ExchangeSsoTokenResponseBody struct {
-	IDToken     string  `json:"id_token"`
-	AccessToken *string `json:"access_token"`
-	TokenType   *string `json:"token_type"`
+	IDToken     string   `json:"id_token"`
+	AccessToken *string  `json:"access_token"`
+	TokenType   *string  `json:"token_type"`
+	ExpiresIn   *float64 `json:"expires_in,omitempty"`
 }
 
 func (o *ExchangeSsoTokenResponseBody) GetIDToken() string {
@@ -114,6 +115,13 @@ func (o *ExchangeSsoTokenResponseBody) GetTokenType() *string {
 		return nil
 	}
 	return o.TokenType
+}
+
+func (o *ExchangeSsoTokenResponseBody) GetExpiresIn() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.ExpiresIn
 }
 
 type ExchangeSsoTokenResponse struct {

@@ -459,3 +459,22 @@ test("Marketplace Get Integration Resource", async () => {
     productId: "<id>",
   });
 });
+
+test("Marketplace Update Resource", async () => {
+  const testHttpClient = createTestHTTPClient("update-resource");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.marketplace.updateResource({
+    integrationConfigurationId: "<id>",
+    resourceId: "<id>",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    name: "<value>",
+  });
+});

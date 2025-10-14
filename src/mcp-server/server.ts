@@ -139,9 +139,11 @@ import { tool$marketplaceImportResource } from "./tools/marketplaceImportResourc
 import { tool$marketplaceSubmitBillingData } from "./tools/marketplaceSubmitBillingData.js";
 import { tool$marketplaceSubmitInvoice } from "./tools/marketplaceSubmitInvoice.js";
 import { tool$marketplaceSubmitPrepaymentBalances } from "./tools/marketplaceSubmitPrepaymentBalances.js";
+import { tool$marketplaceUpdateInstallation } from "./tools/marketplaceUpdateInstallation.js";
 import { tool$marketplaceUpdateInstallationIntegrationConfiguration } from "./tools/marketplaceUpdateInstallationIntegrationConfiguration.js";
 import { tool$marketplaceUpdateInstallationIntegrationEdgeConfig } from "./tools/marketplaceUpdateInstallationIntegrationEdgeConfig.js";
 import { tool$marketplaceUpdateInvoice } from "./tools/marketplaceUpdateInvoice.js";
+import { tool$marketplaceUpdateResource } from "./tools/marketplaceUpdateResource.js";
 import { tool$marketplaceUpdateResourceSecrets } from "./tools/marketplaceUpdateResourceSecrets.js";
 import { tool$marketplaceUpdateResourceSecretsById } from "./tools/marketplaceUpdateResourceSecretsById.js";
 import { tool$projectMembersAddProjectMember } from "./tools/projectMembersAddProjectMember.js";
@@ -219,7 +221,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.13.8",
+    version: "1.13.9",
   });
 
   const client = new VercelCore({
@@ -365,6 +367,7 @@ export function createMCPServer(deps: {
   tool(tool$userListUserEvents);
   tool(tool$userGetAuthUser);
   tool(tool$userRequestDelete);
+  tool(tool$marketplaceUpdateInstallation);
   tool(tool$marketplaceGetAccountInfo);
   tool(tool$marketplaceGetMember);
   tool(tool$marketplaceCreateEvent);
@@ -372,6 +375,7 @@ export function createMCPServer(deps: {
   tool(tool$marketplaceGetIntegrationResource);
   tool(tool$marketplaceDeleteIntegrationResource);
   tool(tool$marketplaceImportResource);
+  tool(tool$marketplaceUpdateResource);
   tool(tool$marketplaceSubmitBillingData);
   tool(tool$marketplaceSubmitInvoice);
   tool(tool$marketplaceGetInvoice);

@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8575": {}
+                      "__@BRAND@8584": {}
                     }
                   },
                   "secrets": []
@@ -6885,4 +6885,26 @@ workflows:
               ]
             type: simple
     x-speakeasy-test-group: connect
+    x-speakeasy-test-rebuild: true
+  - workflowId: update-resource
+    steps:
+      - stepId: test
+        operationId: update-resource
+        parameters:
+          - name: integrationConfigurationId
+            in: path
+            value: <id>
+          - name: resourceId
+            in: path
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "name": "\u003cvalue\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: marketplace
     x-speakeasy-test-rebuild: true

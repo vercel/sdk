@@ -595,9 +595,7 @@ type GrantType string
 
 const (
 	GrantTypeAuthorizationCode                     GrantType = "authorization_code"
-	GrantTypeRefreshToken                          GrantType = "refresh_token"
 	GrantTypeUrnIetfParamsOauthGrantTypeDeviceCode GrantType = "urn:ietf:params:oauth:grant-type:device_code"
-	GrantTypeClientCredentials                     GrantType = "client_credentials"
 )
 
 func (e GrantType) ToPointer() *GrantType {
@@ -611,11 +609,7 @@ func (e *GrantType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "authorization_code":
 		fallthrough
-	case "refresh_token":
-		fallthrough
 	case "urn:ietf:params:oauth:grant-type:device_code":
-		fallthrough
-	case "client_credentials":
 		*e = GrantType(v)
 		return nil
 	default:
@@ -679,16 +673,133 @@ func (e *AuthMethod) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type Method string
+
+const (
+	MethodClientSecretBasic Method = "client_secret_basic"
+	MethodClientSecretPost  Method = "client_secret_post"
+	MethodClientSecretJwt   Method = "client_secret_jwt"
+	MethodPrivateKeyJwt     Method = "private_key_jwt"
+	MethodOidcToken         Method = "oidc_token"
+	MethodNone              Method = "none"
+)
+
+func (e Method) ToPointer() *Method {
+	return &e
+}
+func (e *Method) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "client_secret_basic":
+		fallthrough
+	case "client_secret_post":
+		fallthrough
+	case "client_secret_jwt":
+		fallthrough
+	case "private_key_jwt":
+		fallthrough
+	case "oidc_token":
+		fallthrough
+	case "none":
+		*e = Method(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Method: %v", v)
+	}
+}
+
+type ClientAuthenticationUsed struct {
+	Method   Method  `json:"method"`
+	SecretID *string `json:"secretId,omitempty"`
+}
+
+func (c ClientAuthenticationUsed) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ClientAuthenticationUsed) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"method"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ClientAuthenticationUsed) GetMethod() Method {
+	if o == nil {
+		return Method("")
+	}
+	return o.Method
+}
+
+func (o *ClientAuthenticationUsed) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+// App - optional since entries prior to 2025-10-13 do not contain app information
+type App struct {
+	ClientID string `json:"clientId"`
+	// the app's name at the time the event was published (it could have changed since then)
+	Name                     string                   `json:"name"`
+	ClientAuthenticationUsed ClientAuthenticationUsed `json:"clientAuthenticationUsed"`
+}
+
+func (a App) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *App) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"clientId", "name", "clientAuthenticationUsed"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *App) GetClientID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ClientID
+}
+
+func (o *App) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *App) GetClientAuthenticationUsed() ClientAuthenticationUsed {
+	if o == nil {
+		return ClientAuthenticationUsed{}
+	}
+	return o.ClientAuthenticationUsed
+}
+
 // Payload165 - The payload of the event, if requested.
 type Payload165 struct {
 	GrantType GrantType `json:"grantType"`
-	AppName   string    `json:"appName"`
+	// the app's name at the time the event was published (it could have changed since then)
+	AppName string `json:"appName"`
 	// access_token TTL
 	AtTTL float64 `json:"atTTL"`
 	// refresh_token TTL
 	RtTTL      *float64   `json:"rtTTL,omitempty"`
 	Scope      string     `json:"scope"`
 	AuthMethod AuthMethod `json:"authMethod"`
+	// optional since entries prior to 2025-10-13 do not contain app information
+	App *App `json:"app,omitempty"`
+	// optional since entries prior to 2025-10-13 do not contain this field
+	IncludesRefreshToken *bool `json:"includesRefreshToken,omitempty"`
+	// optional since entries prior to 2025-10-13 do not contain this field
+	PublicID *string `json:"publicId,omitempty"`
+	// optional since entries prior to 2025-10-13 do not contain this field
+	SessionID *string `json:"sessionId,omitempty"`
 }
 
 func (p Payload165) MarshalJSON() ([]byte, error) {
@@ -742,6 +853,34 @@ func (o *Payload165) GetAuthMethod() AuthMethod {
 		return AuthMethod("")
 	}
 	return o.AuthMethod
+}
+
+func (o *Payload165) GetApp() *App {
+	if o == nil {
+		return nil
+	}
+	return o.App
+}
+
+func (o *Payload165) GetIncludesRefreshToken() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IncludesRefreshToken
+}
+
+func (o *Payload165) GetPublicID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PublicID
+}
+
+func (o *Payload165) GetSessionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SessionID
 }
 
 type UserEventTeam10 struct {

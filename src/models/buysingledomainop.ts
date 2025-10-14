@@ -164,18 +164,18 @@ export type BuySingleDomainDomainsRegistrarResponseBody =
   | TldNotSupported
   | HttpApiDecodeError;
 
-export const Method = {
+export const BuySingleDomainMethod = {
   Get: "GET",
   Post: "POST",
   Put: "PUT",
   Delete: "DELETE",
   Patch: "PATCH",
 } as const;
-export type Method = ClosedEnum<typeof Method>;
+export type BuySingleDomainMethod = ClosedEnum<typeof BuySingleDomainMethod>;
 
 export type Links = {
   href: string;
-  method: Method;
+  method: BuySingleDomainMethod;
 };
 
 /**
@@ -600,29 +600,31 @@ export function buySingleDomainDomainsRegistrarResponseBodyFromJSON(
 }
 
 /** @internal */
-export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z
-  .nativeEnum(Method);
+export const BuySingleDomainMethod$inboundSchema: z.ZodNativeEnum<
+  typeof BuySingleDomainMethod
+> = z.nativeEnum(BuySingleDomainMethod);
 
 /** @internal */
-export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> =
-  Method$inboundSchema;
+export const BuySingleDomainMethod$outboundSchema: z.ZodNativeEnum<
+  typeof BuySingleDomainMethod
+> = BuySingleDomainMethod$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Method$ {
-  /** @deprecated use `Method$inboundSchema` instead. */
-  export const inboundSchema = Method$inboundSchema;
-  /** @deprecated use `Method$outboundSchema` instead. */
-  export const outboundSchema = Method$outboundSchema;
+export namespace BuySingleDomainMethod$ {
+  /** @deprecated use `BuySingleDomainMethod$inboundSchema` instead. */
+  export const inboundSchema = BuySingleDomainMethod$inboundSchema;
+  /** @deprecated use `BuySingleDomainMethod$outboundSchema` instead. */
+  export const outboundSchema = BuySingleDomainMethod$outboundSchema;
 }
 
 /** @internal */
 export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
   .object({
     href: z.string(),
-    method: Method$inboundSchema,
+    method: BuySingleDomainMethod$inboundSchema,
   });
 
 /** @internal */
@@ -638,7 +640,7 @@ export const Links$outboundSchema: z.ZodType<
   Links
 > = z.object({
   href: z.string(),
-  method: Method$outboundSchema,
+  method: BuySingleDomainMethod$outboundSchema,
 });
 
 /**

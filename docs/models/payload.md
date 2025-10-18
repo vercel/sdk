@@ -771,7 +771,8 @@ const value: models.SeventyOne = {
   viaGitlab: true,
   viaBitbucket: false,
   viaGoogle: true,
-  viaSamlSso: true,
+  viaApple: true,
+  viaSamlSso: false,
   viaPasskey: false,
 };
 ```

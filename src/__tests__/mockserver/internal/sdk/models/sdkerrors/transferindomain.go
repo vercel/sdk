@@ -95,6 +95,8 @@ type TransferInDomainBadRequestType string
 
 const (
 	TransferInDomainBadRequestTypeBadRequestError            TransferInDomainBadRequestType = "BadRequest_error"
+	TransferInDomainBadRequestTypeDomainTooShortError        TransferInDomainBadRequestType = "DomainTooShort_error"
+	TransferInDomainBadRequestTypeDNSSECEnabledError         TransferInDomainBadRequestType = "DNSSECEnabled_error"
 	TransferInDomainBadRequestTypeExpectedPriceMismatchError TransferInDomainBadRequestType = "ExpectedPriceMismatch_error"
 	TransferInDomainBadRequestTypeDomainNotAvailableError    TransferInDomainBadRequestType = "DomainNotAvailable_error"
 	TransferInDomainBadRequestTypeTldNotSupportedError       TransferInDomainBadRequestType = "TldNotSupported_error"
@@ -104,6 +106,8 @@ const (
 // TransferInDomainBadRequest - There was something wrong with the request
 type TransferInDomainBadRequest struct {
 	BadRequestError            *BadRequestError            `queryParam:"inline"`
+	DomainTooShortError        *DomainTooShortError        `queryParam:"inline"`
+	DNSSECEnabledError         *DNSSECEnabledError         `queryParam:"inline"`
 	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
 	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
 	TldNotSupportedError       *TldNotSupportedError       `queryParam:"inline"`
@@ -122,6 +126,24 @@ func CreateTransferInDomainBadRequestBadRequestError(badRequestError BadRequestE
 	return TransferInDomainBadRequest{
 		BadRequestError: &badRequestError,
 		Type:            typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestDomainTooShortError(domainTooShortError DomainTooShortError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeDomainTooShortError
+
+	return TransferInDomainBadRequest{
+		DomainTooShortError: &domainTooShortError,
+		Type:                typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestDNSSECEnabledError(dnssecEnabledError DNSSECEnabledError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeDNSSECEnabledError
+
+	return TransferInDomainBadRequest{
+		DNSSECEnabledError: &dnssecEnabledError,
+		Type:               typ,
 	}
 }
 
@@ -170,6 +192,20 @@ func (u *TransferInDomainBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var domainTooShortError DomainTooShortError = DomainTooShortError{}
+	if err := utils.UnmarshalJSON(data, &domainTooShortError, "", true, nil); err == nil {
+		u.DomainTooShortError = &domainTooShortError
+		u.Type = TransferInDomainBadRequestTypeDomainTooShortError
+		return nil
+	}
+
+	var dnssecEnabledError DNSSECEnabledError = DNSSECEnabledError{}
+	if err := utils.UnmarshalJSON(data, &dnssecEnabledError, "", true, nil); err == nil {
+		u.DNSSECEnabledError = &dnssecEnabledError
+		u.Type = TransferInDomainBadRequestTypeDNSSECEnabledError
+		return nil
+	}
+
 	var expectedPriceMismatchError ExpectedPriceMismatchError = ExpectedPriceMismatchError{}
 	if err := utils.UnmarshalJSON(data, &expectedPriceMismatchError, "", true, nil); err == nil {
 		u.ExpectedPriceMismatchError = &expectedPriceMismatchError
@@ -206,6 +242,14 @@ func (u TransferInDomainBadRequest) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
+	if u.DomainTooShortError != nil {
+		return utils.MarshalJSON(u.DomainTooShortError, "", true)
+	}
+
+	if u.DNSSECEnabledError != nil {
+		return utils.MarshalJSON(u.DNSSECEnabledError, "", true)
+	}
+
 	if u.ExpectedPriceMismatchError != nil {
 		return utils.MarshalJSON(u.ExpectedPriceMismatchError, "", true)
 	}
@@ -229,6 +273,12 @@ func (u TransferInDomainBadRequest) Error() string {
 	switch u.Type {
 	case TransferInDomainBadRequestTypeBadRequestError:
 		data, _ := json.Marshal(u.BadRequestError)
+		return string(data)
+	case TransferInDomainBadRequestTypeDomainTooShortError:
+		data, _ := json.Marshal(u.DomainTooShortError)
+		return string(data)
+	case TransferInDomainBadRequestTypeDNSSECEnabledError:
+		data, _ := json.Marshal(u.DNSSECEnabledError)
 		return string(data)
 	case TransferInDomainBadRequestTypeExpectedPriceMismatchError:
 		data, _ := json.Marshal(u.ExpectedPriceMismatchError)

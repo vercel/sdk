@@ -1,0 +1,21 @@
+# MicrofrontendsRequest
+
+## Example Usage
+
+```typescript
+import { MicrofrontendsRequest } from "@vercel/sdk/models/userevent.js";
+
+let value: MicrofrontendsRequest = {
+  updatedAt: 1025.59,
+  blockReason: "admin_override",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                  | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatedAt`                                                                                                                                                            | *number*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `blockedFrom`                                                                                                                                                          | *number*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `blockedUntil`                                                                                                                                                         | *number*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `blockReason`                                                                                                                                                          | [models.UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason](../models/usereventpayload65newownerfeatureblocksmicrofrontendsrequestblockreason.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |

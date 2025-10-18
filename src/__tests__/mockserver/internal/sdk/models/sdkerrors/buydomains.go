@@ -94,6 +94,7 @@ func (u BuyDomainsForbidden) Error() string {
 type BuyDomainsBadRequestType string
 
 const (
+	BuyDomainsBadRequestTypeDomainTooShortError                BuyDomainsBadRequestType = "DomainTooShort_error"
 	BuyDomainsBadRequestTypeOrderTooExpensiveError             BuyDomainsBadRequestType = "OrderTooExpensive_error"
 	BuyDomainsBadRequestTypeTooManyDomainsError                BuyDomainsBadRequestType = "TooManyDomains_error"
 	BuyDomainsBadRequestTypeInvalidAdditionalContactInfoError  BuyDomainsBadRequestType = "InvalidAdditionalContactInfo_error"
@@ -107,6 +108,7 @@ const (
 
 // BuyDomainsBadRequest - There was something wrong with the request
 type BuyDomainsBadRequest struct {
+	DomainTooShortError                *DomainTooShortError                `queryParam:"inline"`
 	OrderTooExpensiveError             *OrderTooExpensiveError             `queryParam:"inline"`
 	TooManyDomainsError                *TooManyDomainsError                `queryParam:"inline"`
 	InvalidAdditionalContactInfoError  *InvalidAdditionalContactInfoError  `queryParam:"inline"`
@@ -123,6 +125,15 @@ type BuyDomainsBadRequest struct {
 }
 
 var _ error = &BuyDomainsBadRequest{}
+
+func CreateBuyDomainsBadRequestDomainTooShortError(domainTooShortError DomainTooShortError) BuyDomainsBadRequest {
+	typ := BuyDomainsBadRequestTypeDomainTooShortError
+
+	return BuyDomainsBadRequest{
+		DomainTooShortError: &domainTooShortError,
+		Type:                typ,
+	}
+}
 
 func CreateBuyDomainsBadRequestOrderTooExpensiveError(orderTooExpensiveError OrderTooExpensiveError) BuyDomainsBadRequest {
 	typ := BuyDomainsBadRequestTypeOrderTooExpensiveError
@@ -207,6 +218,13 @@ func CreateBuyDomainsBadRequestHTTPAPIDecodeError(httpAPIDecodeError HTTPAPIDeco
 
 func (u *BuyDomainsBadRequest) UnmarshalJSON(data []byte) error {
 
+	var domainTooShortError DomainTooShortError = DomainTooShortError{}
+	if err := utils.UnmarshalJSON(data, &domainTooShortError, "", true, nil); err == nil {
+		u.DomainTooShortError = &domainTooShortError
+		u.Type = BuyDomainsBadRequestTypeDomainTooShortError
+		return nil
+	}
+
 	var orderTooExpensiveError OrderTooExpensiveError = OrderTooExpensiveError{}
 	if err := utils.UnmarshalJSON(data, &orderTooExpensiveError, "", true, nil); err == nil {
 		u.OrderTooExpensiveError = &orderTooExpensiveError
@@ -274,6 +292,10 @@ func (u *BuyDomainsBadRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u BuyDomainsBadRequest) MarshalJSON() ([]byte, error) {
+	if u.DomainTooShortError != nil {
+		return utils.MarshalJSON(u.DomainTooShortError, "", true)
+	}
+
 	if u.OrderTooExpensiveError != nil {
 		return utils.MarshalJSON(u.OrderTooExpensiveError, "", true)
 	}
@@ -315,6 +337,9 @@ func (u BuyDomainsBadRequest) MarshalJSON() ([]byte, error) {
 
 func (u BuyDomainsBadRequest) Error() string {
 	switch u.Type {
+	case BuyDomainsBadRequestTypeDomainTooShortError:
+		data, _ := json.Marshal(u.DomainTooShortError)
+		return string(data)
 	case BuyDomainsBadRequestTypeOrderTooExpensiveError:
 		data, _ := json.Marshal(u.OrderTooExpensiveError)
 		return string(data)

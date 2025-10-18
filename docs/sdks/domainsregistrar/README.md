@@ -335,6 +335,7 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.BadRequest            | 400                          | application/json             |
+| models.DomainTooShort        | 400                          | application/json             |
 | models.TldNotSupported       | 400                          | application/json             |
 | models.HttpApiDecodeError    | 400                          | application/json             |
 | models.Unauthorized          | 401                          | application/json             |
@@ -619,6 +620,7 @@ run();
 
 | Error Type                           | Status Code                          | Content Type                         |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| models.DomainTooShort                | 400                                  | application/json                     |
 | models.OrderTooExpensive             | 400                                  | application/json                     |
 | models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
 | models.AdditionalContactInfoRequired | 400                                  | application/json                     |
@@ -732,6 +734,7 @@ run();
 
 | Error Type                           | Status Code                          | Content Type                         |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| models.DomainTooShort                | 400                                  | application/json                     |
 | models.OrderTooExpensive             | 400                                  | application/json                     |
 | models.TooManyDomains                | 400                                  | application/json                     |
 | models.InvalidAdditionalContactInfo  | 400                                  | application/json                     |
@@ -856,6 +859,8 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.BadRequest            | 400                          | application/json             |
+| models.DomainTooShort        | 400                          | application/json             |
+| models.DNSSECEnabled         | 400                          | application/json             |
 | models.ExpectedPriceMismatch | 400                          | application/json             |
 | models.DomainNotAvailable    | 400                          | application/json             |
 | models.TldNotSupported       | 400                          | application/json             |
@@ -1031,6 +1036,7 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.BadRequest            | 400                          | application/json             |
+| models.DomainTooShort        | 400                          | application/json             |
 | models.DomainNotRegistered   | 400                          | application/json             |
 | models.ExpectedPriceMismatch | 400                          | application/json             |
 | models.DomainNotAvailable    | 400                          | application/json             |

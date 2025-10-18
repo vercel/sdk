@@ -117,6 +117,8 @@ type GetProjectsRequest struct {
 	ElasticConcurrencyEnabled *ElasticConcurrencyEnabled `queryParam:"style=form,explode=true,name=elasticConcurrencyEnabled"`
 	// Filter results by projects with Static IPs enabled
 	StaticIpsEnabled *StaticIpsEnabled `queryParam:"style=form,explode=true,name=staticIpsEnabled"`
+	// Filter results by build machine types. Accepts comma-separated values. Use \"default\" for projects without a build machine type set.
+	BuildMachineTypes *string `queryParam:"style=form,explode=true,name=buildMachineTypes"`
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
@@ -212,6 +214,13 @@ func (o *GetProjectsRequest) GetStaticIpsEnabled() *StaticIpsEnabled {
 		return nil
 	}
 	return o.StaticIpsEnabled
+}
+
+func (o *GetProjectsRequest) GetBuildMachineTypes() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BuildMachineTypes
 }
 
 func (o *GetProjectsRequest) GetTeamID() *string {

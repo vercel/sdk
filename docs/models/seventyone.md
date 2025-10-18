@@ -12,7 +12,8 @@ let value: SeventyOne = {
   viaGitlab: true,
   viaBitbucket: false,
   viaGoogle: true,
-  viaSamlSso: true,
+  viaApple: true,
+  viaSamlSso: false,
   viaPasskey: false,
 };
 ```
@@ -27,6 +28,7 @@ let value: SeventyOne = {
 | `viaGitlab`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaBitbucket`                                 | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaGoogle`                                    | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `viaApple`                                     | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaSamlSso`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `viaPasskey`                                   | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
 | `ssoType`                                      | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

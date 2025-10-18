@@ -21,7 +21,7 @@ export type PaidFeatures = {
 export type AcceptedPolicies = {
   eula: Date;
   privacy: Date;
-  additionalProperties?: { [k: string]: Date };
+  additionalProperties?: { [k: string]: Date } | undefined;
 };
 
 export type AcceptProjectTransferRequestRequestBody = {
@@ -174,7 +174,8 @@ export const AcceptedPolicies$outboundSchema: z.ZodType<
 > = z.object({
   eula: z.date().transform(v => v.toISOString()),
   privacy: z.date().transform(v => v.toISOString()),
-  additionalProperties: z.record(z.date().transform(v => v.toISOString())),
+  additionalProperties: z.record(z.date().transform(v => v.toISOString()))
+    .optional(),
 }).transform((v) => {
   return {
     ...v.additionalProperties,

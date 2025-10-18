@@ -318,17 +318,7 @@ test("Security Get Bypass Ip", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    result: [
-      {
-        ownerId: "<id>",
-        id: "<id>",
-        domain: "gaseous-outrun.info",
-        ip: "08ab:cbef:4d7a:37b6:4ccf:ac63:bce7:b4b8",
-        createdAt: "1704258722650",
-        updatedAt: "1735616839328",
-        updatedAtHour: "<value>",
-      },
-    ],
+    result: [],
   });
 });
 
@@ -366,5 +356,24 @@ test("Security Remove Bypass Ip", async () => {
   expect(result).toBeDefined();
   expect(result).toEqual({
     ok: false,
+  });
+});
+
+test("Security Get /V1 /Security/firewall/events", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "get_/v1/security/firewall/events",
+  );
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+  });
+
+  const result = await vercel.security.getV1SecurityFirewallEvents({
+    projectId: "<id>",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    actions: [],
   });
 });

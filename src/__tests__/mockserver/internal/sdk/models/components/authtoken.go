@@ -46,6 +46,7 @@ const (
 	AuthTokenOrigin2Sms       AuthTokenOrigin2 = "sms"
 	AuthTokenOrigin2Invite    AuthTokenOrigin2 = "invite"
 	AuthTokenOrigin2Google    AuthTokenOrigin2 = "google"
+	AuthTokenOrigin2Apple     AuthTokenOrigin2 = "apple"
 	AuthTokenOrigin2App       AuthTokenOrigin2 = "app"
 )
 
@@ -79,6 +80,8 @@ func (e *AuthTokenOrigin2) UnmarshalJSON(data []byte) error {
 	case "invite":
 		fallthrough
 	case "google":
+		fallthrough
+	case "apple":
 		fallthrough
 	case "app":
 		*e = AuthTokenOrigin2(v)
@@ -241,6 +244,7 @@ const (
 	AuthTokenOrigin1Sms       AuthTokenOrigin1 = "sms"
 	AuthTokenOrigin1Invite    AuthTokenOrigin1 = "invite"
 	AuthTokenOrigin1Google    AuthTokenOrigin1 = "google"
+	AuthTokenOrigin1Apple     AuthTokenOrigin1 = "apple"
 	AuthTokenOrigin1App       AuthTokenOrigin1 = "app"
 )
 
@@ -274,6 +278,8 @@ func (e *AuthTokenOrigin1) UnmarshalJSON(data []byte) error {
 	case "invite":
 		fallthrough
 	case "google":
+		fallthrough
+	case "apple":
 		fallthrough
 	case "app":
 		*e = AuthTokenOrigin1(v)

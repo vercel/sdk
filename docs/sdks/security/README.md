@@ -13,6 +13,7 @@
 * [getBypassIp](#getbypassip) - Read System Bypass
 * [addBypassIp](#addbypassip) - Create System Bypass Rule
 * [removeBypassIp](#removebypassip) - Remove System Bypass Rule
+* [getV1SecurityFirewallEvents](#getv1securityfirewallevents) - Read Firewall Actions by Project
 
 ## updateAttackChallengeMode
 
@@ -647,6 +648,75 @@ run();
 ### Response
 
 **Promise\<[models.RemoveBypassIpResponseBody](../../models/removebypassipresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getV1SecurityFirewallEvents
+
+Retrieve firewall actions for a project
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="get_/v1/security/firewall/events" method="get" path="/v1/security/firewall/events" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel();
+
+async function run() {
+  const result = await vercel.security.getV1SecurityFirewallEvents({
+    projectId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { securityGetV1SecurityFirewallEvents } from "@vercel/sdk/funcs/securityGetV1SecurityFirewallEvents.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore();
+
+async function run() {
+  const res = await securityGetV1SecurityFirewallEvents(vercel, {
+    projectId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("securityGetV1SecurityFirewallEvents failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetV1SecurityFirewallEventsRequest](../../models/getv1securityfirewalleventsrequest.md)                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetV1SecurityFirewallEventsResponseBody](../../models/getv1securityfirewalleventsresponsebody.md)\>**
 
 ### Errors
 

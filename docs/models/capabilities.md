@@ -16,3 +16,4 @@ let value: Capabilities = {};
 | `sso`              | *boolean*          | :heavy_minus_sign: | N/A                |
 | `billable`         | *boolean*          | :heavy_minus_sign: | N/A                |
 | `secretsSync`      | *boolean*          | :heavy_minus_sign: | N/A                |
+| `projects`         | *boolean*          | :heavy_minus_sign: | N/A                |

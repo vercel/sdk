@@ -14,11 +14,23 @@ import {
   BadRequest$outboundSchema,
 } from "./badrequest.js";
 import {
+  DNSSECEnabled,
+  DNSSECEnabled$inboundSchema,
+  DNSSECEnabled$Outbound,
+  DNSSECEnabled$outboundSchema,
+} from "./dnssecenabled.js";
+import {
   DomainNotAvailable,
   DomainNotAvailable$inboundSchema,
   DomainNotAvailable$Outbound,
   DomainNotAvailable$outboundSchema,
 } from "./domainnotavailable.js";
+import {
+  DomainTooShort,
+  DomainTooShort$inboundSchema,
+  DomainTooShort$Outbound,
+  DomainTooShort$outboundSchema,
+} from "./domaintooshort.js";
 import {
   ExpectedPriceMismatch,
   ExpectedPriceMismatch$inboundSchema,
@@ -137,6 +149,8 @@ export type TransferInDomainDomainsRegistrarResponseResponseBody =
  */
 export type TransferInDomainDomainsRegistrarResponseBody =
   | BadRequest
+  | DomainTooShort
+  | DNSSECEnabled
   | ExpectedPriceMismatch
   | DomainNotAvailable
   | TldNotSupported
@@ -467,6 +481,8 @@ export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
     unknown
   > = z.union([
     BadRequest$inboundSchema,
+    DomainTooShort$inboundSchema,
+    DNSSECEnabled$inboundSchema,
     ExpectedPriceMismatch$inboundSchema,
     DomainNotAvailable$inboundSchema,
     TldNotSupported$inboundSchema,
@@ -476,6 +492,8 @@ export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
 /** @internal */
 export type TransferInDomainDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
+  | DomainTooShort$Outbound
+  | DNSSECEnabled$Outbound
   | ExpectedPriceMismatch$Outbound
   | DomainNotAvailable$Outbound
   | TldNotSupported$Outbound
@@ -489,6 +507,8 @@ export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
     TransferInDomainDomainsRegistrarResponseBody
   > = z.union([
     BadRequest$outboundSchema,
+    DomainTooShort$outboundSchema,
+    DNSSECEnabled$outboundSchema,
     ExpectedPriceMismatch$outboundSchema,
     DomainNotAvailable$outboundSchema,
     TldNotSupported$outboundSchema,

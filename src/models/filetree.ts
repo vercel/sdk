@@ -52,10 +52,6 @@ export type FileTree = {
    * The file "mode" indicating file type and permissions.
    */
   mode: number;
-  /**
-   * Not currently used. See `file-list-to-tree.ts`.
-   */
-  symlink?: string | undefined;
 };
 
 /** @internal */
@@ -90,7 +86,6 @@ export const FileTree$inboundSchema: z.ZodType<
   children: z.array(z.lazy(() => FileTree$inboundSchema)).optional(),
   contentType: z.string().optional(),
   mode: z.number(),
-  symlink: z.string().optional(),
 });
 
 /** @internal */
@@ -101,7 +96,6 @@ export type FileTree$Outbound = {
   children?: Array<FileTree$Outbound> | undefined;
   contentType?: string | undefined;
   mode: number;
-  symlink?: string | undefined;
 };
 
 /** @internal */
@@ -116,7 +110,6 @@ export const FileTree$outboundSchema: z.ZodType<
   children: z.array(z.lazy(() => FileTree$outboundSchema)).optional(),
   contentType: z.string().optional(),
   mode: z.number(),
-  symlink: z.string().optional(),
 });
 
 /**

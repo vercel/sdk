@@ -12,5 +12,5 @@ let value: CreateIntegrationStoreDirectIntegrationsResponseType =
 ## Values
 
 ```typescript
-"connect_to_project" | "configure_project_connections"
+"connect_to_project" | "configure_project_connections" | "add_drain"
 ```

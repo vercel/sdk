@@ -14,6 +14,7 @@ type GetDomainPriceBadRequestType string
 
 const (
 	GetDomainPriceBadRequestTypeBadRequestError      GetDomainPriceBadRequestType = "BadRequest_error"
+	GetDomainPriceBadRequestTypeDomainTooShortError  GetDomainPriceBadRequestType = "DomainTooShort_error"
 	GetDomainPriceBadRequestTypeTldNotSupportedError GetDomainPriceBadRequestType = "TldNotSupported_error"
 	GetDomainPriceBadRequestTypeHTTPAPIDecodeError   GetDomainPriceBadRequestType = "HttpApiDecodeError"
 )
@@ -21,6 +22,7 @@ const (
 // GetDomainPriceBadRequest - There was something wrong with the request
 type GetDomainPriceBadRequest struct {
 	BadRequestError      *BadRequestError      `queryParam:"inline"`
+	DomainTooShortError  *DomainTooShortError  `queryParam:"inline"`
 	TldNotSupportedError *TldNotSupportedError `queryParam:"inline"`
 	HTTPAPIDecodeError   *HTTPAPIDecodeError   `queryParam:"inline"`
 
@@ -37,6 +39,15 @@ func CreateGetDomainPriceBadRequestBadRequestError(badRequestError BadRequestErr
 	return GetDomainPriceBadRequest{
 		BadRequestError: &badRequestError,
 		Type:            typ,
+	}
+}
+
+func CreateGetDomainPriceBadRequestDomainTooShortError(domainTooShortError DomainTooShortError) GetDomainPriceBadRequest {
+	typ := GetDomainPriceBadRequestTypeDomainTooShortError
+
+	return GetDomainPriceBadRequest{
+		DomainTooShortError: &domainTooShortError,
+		Type:                typ,
 	}
 }
 
@@ -67,6 +78,13 @@ func (u *GetDomainPriceBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var domainTooShortError DomainTooShortError = DomainTooShortError{}
+	if err := utils.UnmarshalJSON(data, &domainTooShortError, "", true, nil); err == nil {
+		u.DomainTooShortError = &domainTooShortError
+		u.Type = GetDomainPriceBadRequestTypeDomainTooShortError
+		return nil
+	}
+
 	var tldNotSupportedError TldNotSupportedError = TldNotSupportedError{}
 	if err := utils.UnmarshalJSON(data, &tldNotSupportedError, "", true, nil); err == nil {
 		u.TldNotSupportedError = &tldNotSupportedError
@@ -89,6 +107,10 @@ func (u GetDomainPriceBadRequest) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
+	if u.DomainTooShortError != nil {
+		return utils.MarshalJSON(u.DomainTooShortError, "", true)
+	}
+
 	if u.TldNotSupportedError != nil {
 		return utils.MarshalJSON(u.TldNotSupportedError, "", true)
 	}
@@ -104,6 +126,9 @@ func (u GetDomainPriceBadRequest) Error() string {
 	switch u.Type {
 	case GetDomainPriceBadRequestTypeBadRequestError:
 		data, _ := json.Marshal(u.BadRequestError)
+		return string(data)
+	case GetDomainPriceBadRequestTypeDomainTooShortError:
+		data, _ := json.Marshal(u.DomainTooShortError)
 		return string(data)
 	case GetDomainPriceBadRequestTypeTldNotSupportedError:
 		data, _ := json.Marshal(u.TldNotSupportedError)

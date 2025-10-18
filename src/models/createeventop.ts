@@ -19,7 +19,7 @@ export type Event2 = {
   /**
    * Partner-provided product slug or id
    */
-  productId: string;
+  productId?: string | undefined;
   /**
    * Partner provided resource ID
    */
@@ -75,14 +75,14 @@ export namespace CreateEventEventType$ {
 export const Event2$inboundSchema: z.ZodType<Event2, z.ZodTypeDef, unknown> = z
   .object({
     type: CreateEventEventType$inboundSchema,
-    productId: z.string(),
+    productId: z.string().optional(),
     resourceId: z.string(),
   });
 
 /** @internal */
 export type Event2$Outbound = {
   type: string;
-  productId: string;
+  productId?: string | undefined;
   resourceId: string;
 };
 
@@ -93,7 +93,7 @@ export const Event2$outboundSchema: z.ZodType<
   Event2
 > = z.object({
   type: CreateEventEventType$outboundSchema,
-  productId: z.string(),
+  productId: z.string().optional(),
   resourceId: z.string(),
 });
 

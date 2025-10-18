@@ -79,6 +79,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/registrar/tlds/{tld}/price", pathGetV1RegistrarTldsTldPrice(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/security/firewall/bypass", pathGetV1SecurityFirewallBypass(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/security/firewall/config/{configVersion}", pathGetV1SecurityFirewallConfigConfigVersion(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/v1/security/firewall/events", pathGetV1SecurityFirewallEvents(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/teams/{teamId}/request/{userId}", pathGetV1TeamsTeamIDRequestUserID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/webhooks", pathGetV1Webhooks(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/webhooks/{id}", pathGetV1WebhooksID(dir, rt)),

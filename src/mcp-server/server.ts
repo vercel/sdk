@@ -186,6 +186,7 @@ import { tool$securityAddBypassIp } from "./tools/securityAddBypassIp.js";
 import { tool$securityGetActiveAttackStatus } from "./tools/securityGetActiveAttackStatus.js";
 import { tool$securityGetBypassIp } from "./tools/securityGetBypassIp.js";
 import { tool$securityGetFirewallConfig } from "./tools/securityGetFirewallConfig.js";
+import { tool$securityGetV1SecurityFirewallEvents } from "./tools/securityGetV1SecurityFirewallEvents.js";
 import { tool$securityPutFirewallConfig } from "./tools/securityPutFirewallConfig.js";
 import { tool$securityRemoveBypassIp } from "./tools/securityRemoveBypassIp.js";
 import { tool$securityUpdateAttackChallengeMode } from "./tools/securityUpdateAttackChallengeMode.js";
@@ -221,7 +222,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.13.9",
+    version: "1.14.0",
   });
 
   const client = new VercelCore({
@@ -421,6 +422,7 @@ export function createMCPServer(deps: {
   tool(tool$securityGetBypassIp);
   tool(tool$securityAddBypassIp);
   tool(tool$securityRemoveBypassIp);
+  tool(tool$securityGetV1SecurityFirewallEvents);
   tool(tool$teamsGetTeamMembers);
   tool(tool$teamsInviteUserToTeam);
   tool(tool$teamsRequestAccessToTeam);

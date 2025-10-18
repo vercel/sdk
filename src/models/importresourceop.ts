@@ -56,7 +56,7 @@ export type ImportResourceBillingPlan = {
   details?: Array<ImportResourceDetails> | undefined;
   highlightedDetails?: Array<ImportResourceHighlightedDetails> | undefined;
   effectiveDate?: string | undefined;
-  additionalProperties?: { [k: string]: any };
+  additionalProperties?: { [k: string]: any } | undefined;
 };
 
 export const ImportResourceLevel = {
@@ -358,7 +358,7 @@ export const ImportResourceBillingPlan$outboundSchema: z.ZodType<
     z.lazy(() => ImportResourceHighlightedDetails$outboundSchema),
   ).optional(),
   effectiveDate: z.string().optional(),
-  additionalProperties: z.record(z.any()),
+  additionalProperties: z.record(z.any()).optional(),
 }).transform((v) => {
   return {
     ...v.additionalProperties,

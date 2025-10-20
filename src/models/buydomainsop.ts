@@ -20,6 +20,12 @@ import {
   DomainNotAvailable$outboundSchema,
 } from "./domainnotavailable.js";
 import {
+  DomainTooShort,
+  DomainTooShort$inboundSchema,
+  DomainTooShort$Outbound,
+  DomainTooShort$outboundSchema,
+} from "./domaintooshort.js";
+import {
   DuplicateDomains,
   DuplicateDomains$inboundSchema,
   DuplicateDomains$Outbound,
@@ -172,6 +178,7 @@ export type BuyDomainsDomainsRegistrarResponseResponseBody =
  * There was something wrong with the request
  */
 export type BuyDomainsDomainsRegistrarResponseBody =
+  | DomainTooShort
   | OrderTooExpensive
   | TooManyDomains
   | InvalidAdditionalContactInfo
@@ -592,6 +599,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  DomainTooShort$inboundSchema,
   OrderTooExpensive$inboundSchema,
   TooManyDomains$inboundSchema,
   InvalidAdditionalContactInfo$inboundSchema,
@@ -605,6 +613,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
 
 /** @internal */
 export type BuyDomainsDomainsRegistrarResponseBody$Outbound =
+  | DomainTooShort$Outbound
   | OrderTooExpensive$Outbound
   | TooManyDomains$Outbound
   | InvalidAdditionalContactInfo$Outbound
@@ -621,6 +630,7 @@ export const BuyDomainsDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BuyDomainsDomainsRegistrarResponseBody
 > = z.union([
+  DomainTooShort$outboundSchema,
   OrderTooExpensive$outboundSchema,
   TooManyDomains$outboundSchema,
   InvalidAdditionalContactInfo$outboundSchema,

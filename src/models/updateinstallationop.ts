@@ -38,7 +38,7 @@ export type BillingPlan = {
   details?: Array<Details> | undefined;
   highlightedDetails?: Array<HighlightedDetails> | undefined;
   effectiveDate?: string | undefined;
-  additionalProperties?: { [k: string]: any };
+  additionalProperties?: { [k: string]: any } | undefined;
 };
 
 export const Level = {
@@ -245,7 +245,7 @@ export const BillingPlan$outboundSchema: z.ZodType<
   highlightedDetails: z.array(z.lazy(() => HighlightedDetails$outboundSchema))
     .optional(),
   effectiveDate: z.string().optional(),
-  additionalProperties: z.record(z.any()),
+  additionalProperties: z.record(z.any()).optional(),
 }).transform((v) => {
   return {
     ...v.additionalProperties,

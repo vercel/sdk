@@ -15,6 +15,26 @@ const value: models.BadRequest = {
 };
 ```
 
+### `models.DomainTooShort`
+
+```typescript
+const value: models.DomainTooShort = {
+  status: 687.47,
+  code: "domain_too_short",
+  message: "<value>",
+};
+```
+
+### `models.DNSSECEnabled`
+
+```typescript
+const value: models.DNSSECEnabled = {
+  status: 4782.92,
+  code: "dnssec_enabled",
+  message: "<value>",
+};
+```
+
 ### `models.ExpectedPriceMismatch`
 
 ```typescript

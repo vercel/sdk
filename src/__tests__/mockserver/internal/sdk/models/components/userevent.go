@@ -632,6 +632,7 @@ const (
 	AuthMethodSms       AuthMethod = "sms"
 	AuthMethodInvite    AuthMethod = "invite"
 	AuthMethodGoogle    AuthMethod = "google"
+	AuthMethodApple     AuthMethod = "apple"
 )
 
 func (e AuthMethod) ToPointer() *AuthMethod {
@@ -666,6 +667,8 @@ func (e *AuthMethod) UnmarshalJSON(data []byte) error {
 	case "invite":
 		fallthrough
 	case "google":
+		fallthrough
+	case "apple":
 		*e = AuthMethod(v)
 		return nil
 	default:
@@ -4758,8 +4761,8 @@ type PayloadType2 string
 
 const (
 	PayloadType2Redis       PayloadType2 = "redis"
-	PayloadType2Postgres    PayloadType2 = "postgres"
 	PayloadType2EdgeConfig  PayloadType2 = "edge-config"
+	PayloadType2Postgres    PayloadType2 = "postgres"
 	PayloadType2Blob        PayloadType2 = "blob"
 	PayloadType2Integration PayloadType2 = "integration"
 )
@@ -4775,9 +4778,9 @@ func (e *PayloadType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "redis":
 		fallthrough
-	case "postgres":
-		fallthrough
 	case "edge-config":
+		fallthrough
+	case "postgres":
 		fallthrough
 	case "blob":
 		fallthrough
@@ -9263,6 +9266,7 @@ type Payload71 struct {
 	ViaGitlab    bool         `json:"viaGitlab"`
 	ViaBitbucket bool         `json:"viaBitbucket"`
 	ViaGoogle    bool         `json:"viaGoogle"`
+	ViaApple     bool         `json:"viaApple"`
 	ViaSamlSso   bool         `json:"viaSamlSso"`
 	ViaPasskey   bool         `json:"viaPasskey"`
 	SsoType      *string      `json:"ssoType,omitempty"`
@@ -9276,7 +9280,7 @@ func (p Payload71) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Payload71) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"viaGithub", "viaGitlab", "viaBitbucket", "viaGoogle", "viaSamlSso", "viaPasskey"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"viaGithub", "viaGitlab", "viaBitbucket", "viaGoogle", "viaApple", "viaSamlSso", "viaPasskey"}); err != nil {
 		return err
 	}
 	return nil
@@ -9322,6 +9326,13 @@ func (o *Payload71) GetViaGoogle() bool {
 		return false
 	}
 	return o.ViaGoogle
+}
+
+func (o *Payload71) GetViaApple() bool {
+	if o == nil {
+		return false
+	}
+	return o.ViaApple
 }
 
 func (o *Payload71) GetViaSamlSso() bool {
@@ -10077,6 +10088,7 @@ const (
 	CredentialTypeGitlab             CredentialType = "gitlab"
 	CredentialTypeBitbucket          CredentialType = "bitbucket"
 	CredentialTypeGoogle             CredentialType = "google"
+	CredentialTypeApple              CredentialType = "apple"
 	CredentialTypeGithubOauth        CredentialType = "github-oauth"
 	CredentialTypeGithubOauthLimited CredentialType = "github-oauth-limited"
 )
@@ -10095,6 +10107,8 @@ func (e *CredentialType) UnmarshalJSON(data []byte) error {
 	case "bitbucket":
 		fallthrough
 	case "google":
+		fallthrough
+	case "apple":
 		fallthrough
 	case "github-oauth":
 		fallthrough
@@ -11917,11 +11931,11 @@ type TeamUser struct {
 	CreatedAt         float64                   `json:"createdAt"`
 	TeamID            string                    `json:"teamId"`
 	Role              TeamRole1                 `json:"role"`
+	TeamRoles         []UserEventTeamRole       `json:"teamRoles,omitempty"`
+	TeamPermissions   []UserEventTeamPermission `json:"teamPermissions,omitempty"`
 	Confirmed         bool                      `json:"confirmed"`
 	ConfirmedAt       float64                   `json:"confirmedAt"`
 	AccessRequestedAt *float64                  `json:"accessRequestedAt,omitempty"`
-	TeamRoles         []UserEventTeamRole       `json:"teamRoles,omitempty"`
-	TeamPermissions   []UserEventTeamPermission `json:"teamPermissions,omitempty"`
 	JoinedFrom        *TeamJoinedFrom1          `json:"joinedFrom,omitempty"`
 }
 
@@ -11964,6 +11978,20 @@ func (o *TeamUser) GetRole() TeamRole1 {
 	return o.Role
 }
 
+func (o *TeamUser) GetTeamRoles() []UserEventTeamRole {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *TeamUser) GetTeamPermissions() []UserEventTeamPermission {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
+}
+
 func (o *TeamUser) GetConfirmed() bool {
 	if o == nil {
 		return false
@@ -11983,20 +12011,6 @@ func (o *TeamUser) GetAccessRequestedAt() *float64 {
 		return nil
 	}
 	return o.AccessRequestedAt
-}
-
-func (o *TeamUser) GetTeamRoles() []UserEventTeamRole {
-	if o == nil {
-		return nil
-	}
-	return o.TeamRoles
-}
-
-func (o *TeamUser) GetTeamPermissions() []UserEventTeamPermission {
-	if o == nil {
-		return nil
-	}
-	return o.TeamPermissions
 }
 
 func (o *TeamUser) GetJoinedFrom() *TeamJoinedFrom1 {
@@ -15136,6 +15150,78 @@ func (o *Redis) GetOverageReason() RedisOverageReason {
 	return o.OverageReason
 }
 
+type MicrofrontendsRequestBlockReason string
+
+const (
+	MicrofrontendsRequestBlockReasonAdminOverride  MicrofrontendsRequestBlockReason = "admin_override"
+	MicrofrontendsRequestBlockReasonLimitsExceeded MicrofrontendsRequestBlockReason = "limits_exceeded"
+)
+
+func (e MicrofrontendsRequestBlockReason) ToPointer() *MicrofrontendsRequestBlockReason {
+	return &e
+}
+func (e *MicrofrontendsRequestBlockReason) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "admin_override":
+		fallthrough
+	case "limits_exceeded":
+		*e = MicrofrontendsRequestBlockReason(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for MicrofrontendsRequestBlockReason: %v", v)
+	}
+}
+
+type MicrofrontendsRequest struct {
+	UpdatedAt    float64                          `json:"updatedAt"`
+	BlockedFrom  *float64                         `json:"blockedFrom,omitempty"`
+	BlockedUntil *float64                         `json:"blockedUntil,omitempty"`
+	BlockReason  MicrofrontendsRequestBlockReason `json:"blockReason"`
+}
+
+func (m MicrofrontendsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MicrofrontendsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "blockReason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *MicrofrontendsRequest) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *MicrofrontendsRequest) GetBlockedFrom() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedFrom
+}
+
+func (o *MicrofrontendsRequest) GetBlockedUntil() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedUntil
+}
+
+func (o *MicrofrontendsRequest) GetBlockReason() MicrofrontendsRequestBlockReason {
+	if o == nil {
+		return MicrofrontendsRequestBlockReason("")
+	}
+	return o.BlockReason
+}
+
 // UserEventFeatureBlocks - Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
 type UserEventFeatureBlocks struct {
 	WebAnalytics *UserEventWebAnalytics `json:"webAnalytics,omitempty"`
@@ -15148,6 +15234,7 @@ type UserEventFeatureBlocks struct {
 	Blob                            *Blob                                         `json:"blob,omitempty"`
 	Postgres                        *Postgres                                     `json:"postgres,omitempty"`
 	Redis                           *Redis                                        `json:"redis,omitempty"`
+	MicrofrontendsRequest           *MicrofrontendsRequest                        `json:"microfrontendsRequest,omitempty"`
 }
 
 func (u UserEventFeatureBlocks) MarshalJSON() ([]byte, error) {
@@ -15222,6 +15309,13 @@ func (o *UserEventFeatureBlocks) GetRedis() *Redis {
 		return nil
 	}
 	return o.Redis
+}
+
+func (o *UserEventFeatureBlocks) GetMicrofrontendsRequest() *MicrofrontendsRequest {
+	if o == nil {
+		return nil
+	}
+	return o.MicrofrontendsRequest
 }
 
 type Version string
@@ -22641,6 +22735,13 @@ func CreatePayloadUnionPayload165(payload165 Payload165) PayloadUnion {
 
 func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 
+	var payload71 Payload71 = Payload71{}
+	if err := utils.UnmarshalJSON(data, &payload71, "", true, nil); err == nil {
+		u.Payload71 = &payload71
+		u.Type = PayloadUnionTypePayload71
+		return nil
+	}
+
 	var payload67 Payload67 = Payload67{}
 	if err := utils.UnmarshalJSON(data, &payload67, "", true, nil); err == nil {
 		u.Payload67 = &payload67
@@ -22652,13 +22753,6 @@ func (u *PayloadUnion) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &payload70, "", true, nil); err == nil {
 		u.Payload70 = &payload70
 		u.Type = PayloadUnionTypePayload70
-		return nil
-	}
-
-	var payload71 Payload71 = Payload71{}
-	if err := utils.UnmarshalJSON(data, &payload71, "", true, nil); err == nil {
-		u.Payload71 = &payload71
-		u.Type = PayloadUnionTypePayload71
 		return nil
 	}
 

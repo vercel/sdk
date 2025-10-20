@@ -12,6 +12,12 @@ import {
   BadRequest$outboundSchema,
 } from "./badrequest.js";
 import {
+  DomainTooShort,
+  DomainTooShort$inboundSchema,
+  DomainTooShort$Outbound,
+  DomainTooShort$outboundSchema,
+} from "./domaintooshort.js";
+import {
   HttpApiDecodeError,
   HttpApiDecodeError$inboundSchema,
   HttpApiDecodeError$Outbound,
@@ -36,6 +42,7 @@ export type GetDomainPriceRequest = {
  */
 export type GetDomainPriceDomainsRegistrarResponseBody =
   | BadRequest
+  | DomainTooShort
   | TldNotSupported
   | HttpApiDecodeError;
 
@@ -123,6 +130,7 @@ export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
   z.ZodType<GetDomainPriceDomainsRegistrarResponseBody, z.ZodTypeDef, unknown> =
     z.union([
       BadRequest$inboundSchema,
+      DomainTooShort$inboundSchema,
       TldNotSupported$inboundSchema,
       HttpApiDecodeError$inboundSchema,
     ]);
@@ -130,6 +138,7 @@ export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
 /** @internal */
 export type GetDomainPriceDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
+  | DomainTooShort$Outbound
   | TldNotSupported$Outbound
   | HttpApiDecodeError$Outbound;
 
@@ -141,6 +150,7 @@ export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
     GetDomainPriceDomainsRegistrarResponseBody
   > = z.union([
     BadRequest$outboundSchema,
+    DomainTooShort$outboundSchema,
     TldNotSupported$outboundSchema,
     HttpApiDecodeError$outboundSchema,
   ]);

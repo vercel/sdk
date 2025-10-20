@@ -111,11 +111,15 @@ func (o *GetConfigurationsRequest) GetSlug() *string {
 type TagID string
 
 const (
+	TagIDTagAgents          TagID = "tag_agents"
 	TagIDTagAi              TagID = "tag_ai"
 	TagIDTagAnalytics       TagID = "tag_analytics"
 	TagIDTagAuthentication  TagID = "tag_authentication"
 	TagIDTagCms             TagID = "tag_cms"
 	TagIDTagCodeRepository  TagID = "tag_code_repository"
+	TagIDTagCodeReview      TagID = "tag_code_review"
+	TagIDTagCodeSecurity    TagID = "tag_code_security"
+	TagIDTagCodeTesting     TagID = "tag_code_testing"
 	TagIDTagCommerce        TagID = "tag_commerce"
 	TagIDTagDatabases       TagID = "tag_databases"
 	TagIDTagDevTools        TagID = "tag_dev_tools"
@@ -130,8 +134,10 @@ const (
 	TagIDTagProductivity    TagID = "tag_productivity"
 	TagIDTagSearching       TagID = "tag_searching"
 	TagIDTagSecurity        TagID = "tag_security"
+	TagIDTagSupportAgent    TagID = "tag_support_agent"
 	TagIDTagTesting         TagID = "tag_testing"
 	TagIDTagVideo           TagID = "tag_video"
+	TagIDTagWebAutomation   TagID = "tag_web_automation"
 	TagIDTagWorkflow        TagID = "tag_workflow"
 )
 
@@ -144,6 +150,8 @@ func (e *TagID) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "tag_agents":
+		fallthrough
 	case "tag_ai":
 		fallthrough
 	case "tag_analytics":
@@ -153,6 +161,12 @@ func (e *TagID) UnmarshalJSON(data []byte) error {
 	case "tag_cms":
 		fallthrough
 	case "tag_code_repository":
+		fallthrough
+	case "tag_code_review":
+		fallthrough
+	case "tag_code_security":
+		fallthrough
+	case "tag_code_testing":
 		fallthrough
 	case "tag_commerce":
 		fallthrough
@@ -182,9 +196,13 @@ func (e *TagID) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "tag_security":
 		fallthrough
+	case "tag_support_agent":
+		fallthrough
 	case "tag_testing":
 		fallthrough
 	case "tag_video":
+		fallthrough
+	case "tag_web_automation":
 		fallthrough
 	case "tag_workflow":
 		*e = TagID(v)

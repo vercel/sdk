@@ -11,5 +11,5 @@ let value: AuthMethod = "passkey";
 ## Values
 
 ```typescript
-"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google"
+"email" | "saml" | "app" | "github" | "gitlab" | "bitbucket" | "manual" | "passkey" | "otp" | "sms" | "invite" | "google" | "apple"
 ```

@@ -15,6 +15,16 @@ const value: models.BadRequest = {
 };
 ```
 
+### `models.DomainTooShort`
+
+```typescript
+const value: models.DomainTooShort = {
+  status: 687.47,
+  code: "domain_too_short",
+  message: "<value>",
+};
+```
+
 ### `models.TldNotSupported`
 
 ```typescript

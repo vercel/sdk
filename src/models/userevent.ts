@@ -155,6 +155,7 @@ export const AuthMethod = {
   Sms: "sms",
   Invite: "invite",
   Google: "google",
+  Apple: "apple",
 } as const;
 export type AuthMethod = ClosedEnum<typeof AuthMethod>;
 
@@ -1051,8 +1052,8 @@ export type OneHundredAndTen = {
 
 export const UserEventPayloadType = {
   Redis: "redis",
-  Postgres: "postgres",
   EdgeConfig: "edge-config",
+  Postgres: "postgres",
   Blob: "blob",
   Integration: "integration",
 } as const;
@@ -2080,6 +2081,7 @@ export type SeventyOne = {
   viaGitlab: boolean;
   viaBitbucket: boolean;
   viaGoogle: boolean;
+  viaApple: boolean;
   viaSamlSso: boolean;
   viaPasskey: boolean;
   ssoType?: string | undefined;
@@ -2247,6 +2249,7 @@ export const CredentialsType = {
   Gitlab: "gitlab",
   Bitbucket: "bitbucket",
   Google: "google",
+  Apple: "apple",
   GithubOauth: "github-oauth",
   GithubOauthLimited: "github-oauth-limited",
 } as const;
@@ -2563,11 +2566,11 @@ export type Teams = {
   createdAt: number;
   teamId: string;
   role: UserEventPayload65Role;
+  teamRoles?: Array<PayloadTeamRoles> | undefined;
+  teamPermissions?: Array<PayloadTeamPermissions> | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
-  teamRoles?: Array<PayloadTeamRoles> | undefined;
-  teamPermissions?: Array<PayloadTeamPermissions> | undefined;
   joinedFrom?: UserEventPayloadJoinedFrom | undefined;
 };
 
@@ -3196,6 +3199,24 @@ export type Redis = {
   overageReason: UserEventPayloadOverageReason;
 };
 
+export const UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason =
+  {
+    AdminOverride: "admin_override",
+    LimitsExceeded: "limits_exceeded",
+  } as const;
+export type UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason =
+  ClosedEnum<
+    typeof UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
+  >;
+
+export type MicrofrontendsRequest = {
+  updatedAt: number;
+  blockedFrom?: number | undefined;
+  blockedUntil?: number | undefined;
+  blockReason:
+    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason;
+};
+
 /**
  * Information about which features are blocked for a user. Blocks can be either soft (the user can still access the feature, but with a warning, e.g. prompting an upgrade) or hard (the user cannot access the feature at all).
  */
@@ -3214,6 +3235,7 @@ export type PayloadFeatureBlocks = {
   blob?: BlobT | undefined;
   postgres?: Postgres | undefined;
   redis?: Redis | undefined;
+  microfrontendsRequest?: MicrofrontendsRequest | undefined;
 };
 
 export const Version = {
@@ -4547,9 +4569,9 @@ export type Payload2 = {
 export type Payload1 = {};
 
 export type Payload =
+  | SeventyOne
   | SixtySeven
   | Seventy
-  | SeventyOne
   | FortyOne
   | FortyTwo
   | FiftyFour
@@ -4755,9 +4777,9 @@ export type UserEvent = {
    */
   viaIds?: Array<string> | undefined;
   payload?:
+    | SeventyOne
     | SixtySeven
     | Seventy
-    | SeventyOne
     | FortyOne
     | FortyTwo
     | FiftyFour
@@ -17215,6 +17237,7 @@ export const SeventyOne$inboundSchema: z.ZodType<
   viaGitlab: z.boolean(),
   viaBitbucket: z.boolean(),
   viaGoogle: z.boolean(),
+  viaApple: z.boolean(),
   viaSamlSso: z.boolean(),
   viaPasskey: z.boolean(),
   ssoType: z.string().optional(),
@@ -17231,6 +17254,7 @@ export type SeventyOne$Outbound = {
   viaGitlab: boolean;
   viaBitbucket: boolean;
   viaGoogle: boolean;
+  viaApple: boolean;
   viaSamlSso: boolean;
   viaPasskey: boolean;
   ssoType?: string | undefined;
@@ -17251,6 +17275,7 @@ export const SeventyOne$outboundSchema: z.ZodType<
   viaGitlab: z.boolean(),
   viaBitbucket: z.boolean(),
   viaGoogle: z.boolean(),
+  viaApple: z.boolean(),
   viaSamlSso: z.boolean(),
   viaPasskey: z.boolean(),
   ssoType: z.string().optional(),
@@ -19893,11 +19918,11 @@ export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
     createdAt: z.number(),
     teamId: z.string(),
     role: UserEventPayload65Role$inboundSchema,
+    teamRoles: z.array(PayloadTeamRoles$inboundSchema).optional(),
+    teamPermissions: z.array(PayloadTeamPermissions$inboundSchema).optional(),
     confirmed: z.boolean(),
     confirmedAt: z.number(),
     accessRequestedAt: z.number().optional(),
-    teamRoles: z.array(PayloadTeamRoles$inboundSchema).optional(),
-    teamPermissions: z.array(PayloadTeamPermissions$inboundSchema).optional(),
     joinedFrom: z.lazy(() => UserEventPayloadJoinedFrom$inboundSchema)
       .optional(),
   });
@@ -19908,11 +19933,11 @@ export type Teams$Outbound = {
   createdAt: number;
   teamId: string;
   role: string;
+  teamRoles?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
   joinedFrom?: UserEventPayloadJoinedFrom$Outbound | undefined;
 };
 
@@ -19926,11 +19951,11 @@ export const Teams$outboundSchema: z.ZodType<
   createdAt: z.number(),
   teamId: z.string(),
   role: UserEventPayload65Role$outboundSchema,
+  teamRoles: z.array(PayloadTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(PayloadTeamPermissions$outboundSchema).optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
-  teamRoles: z.array(PayloadTeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(PayloadTeamPermissions$outboundSchema).optional(),
   joinedFrom: z.lazy(() => UserEventPayloadJoinedFrom$outboundSchema)
     .optional(),
 });
@@ -23560,6 +23585,99 @@ export function redisFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
+  > = z.nativeEnum(
+    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason,
+  );
+
+/** @internal */
+export const UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
+  > =
+    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$ {
+  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema` instead. */
+  export const inboundSchema =
+    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema` instead. */
+  export const outboundSchema =
+    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema;
+}
+
+/** @internal */
+export const MicrofrontendsRequest$inboundSchema: z.ZodType<
+  MicrofrontendsRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  updatedAt: z.number(),
+  blockedFrom: z.number().optional(),
+  blockedUntil: z.number().optional(),
+  blockReason:
+    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema,
+});
+
+/** @internal */
+export type MicrofrontendsRequest$Outbound = {
+  updatedAt: number;
+  blockedFrom?: number | undefined;
+  blockedUntil?: number | undefined;
+  blockReason: string;
+};
+
+/** @internal */
+export const MicrofrontendsRequest$outboundSchema: z.ZodType<
+  MicrofrontendsRequest$Outbound,
+  z.ZodTypeDef,
+  MicrofrontendsRequest
+> = z.object({
+  updatedAt: z.number(),
+  blockedFrom: z.number().optional(),
+  blockedUntil: z.number().optional(),
+  blockReason:
+    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema,
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MicrofrontendsRequest$ {
+  /** @deprecated use `MicrofrontendsRequest$inboundSchema` instead. */
+  export const inboundSchema = MicrofrontendsRequest$inboundSchema;
+  /** @deprecated use `MicrofrontendsRequest$outboundSchema` instead. */
+  export const outboundSchema = MicrofrontendsRequest$outboundSchema;
+  /** @deprecated use `MicrofrontendsRequest$Outbound` instead. */
+  export type Outbound = MicrofrontendsRequest$Outbound;
+}
+
+export function microfrontendsRequestToJSON(
+  microfrontendsRequest: MicrofrontendsRequest,
+): string {
+  return JSON.stringify(
+    MicrofrontendsRequest$outboundSchema.parse(microfrontendsRequest),
+  );
+}
+
+export function microfrontendsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MicrofrontendsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MicrofrontendsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MicrofrontendsRequest' from JSON`,
+  );
+}
+
+/** @internal */
 export const PayloadFeatureBlocks$inboundSchema: z.ZodType<
   PayloadFeatureBlocks,
   z.ZodTypeDef,
@@ -23576,6 +23694,8 @@ export const PayloadFeatureBlocks$inboundSchema: z.ZodType<
   blob: z.lazy(() => BlobT$inboundSchema).optional(),
   postgres: z.lazy(() => Postgres$inboundSchema).optional(),
   redis: z.lazy(() => Redis$inboundSchema).optional(),
+  microfrontendsRequest: z.lazy(() => MicrofrontendsRequest$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -23591,6 +23711,7 @@ export type PayloadFeatureBlocks$Outbound = {
   blob?: BlobT$Outbound | undefined;
   postgres?: Postgres$Outbound | undefined;
   redis?: Redis$Outbound | undefined;
+  microfrontendsRequest?: MicrofrontendsRequest$Outbound | undefined;
 };
 
 /** @internal */
@@ -23610,6 +23731,8 @@ export const PayloadFeatureBlocks$outboundSchema: z.ZodType<
   blob: z.lazy(() => BlobT$outboundSchema).optional(),
   postgres: z.lazy(() => Postgres$outboundSchema).optional(),
   redis: z.lazy(() => Redis$outboundSchema).optional(),
+  microfrontendsRequest: z.lazy(() => MicrofrontendsRequest$outboundSchema)
+    .optional(),
 });
 
 /**
@@ -30366,9 +30489,9 @@ export function payload1FromJSON(
 /** @internal */
 export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
   z.union([
+    z.lazy(() => SeventyOne$inboundSchema),
     z.lazy(() => SixtySeven$inboundSchema),
     z.lazy(() => Seventy$inboundSchema),
-    z.lazy(() => SeventyOne$inboundSchema),
     z.lazy(() => FortyOne$inboundSchema),
     z.lazy(() => FortyTwo$inboundSchema),
     z.lazy(() => FiftyFour$inboundSchema),
@@ -30535,9 +30658,9 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type Payload$Outbound =
+  | SeventyOne$Outbound
   | SixtySeven$Outbound
   | Seventy$Outbound
-  | SeventyOne$Outbound
   | FortyOne$Outbound
   | FortyTwo$Outbound
   | FiftyFour$Outbound
@@ -30707,9 +30830,9 @@ export const Payload$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Payload
 > = z.union([
+  z.lazy(() => SeventyOne$outboundSchema),
   z.lazy(() => SixtySeven$outboundSchema),
   z.lazy(() => Seventy$outboundSchema),
-  z.lazy(() => SeventyOne$outboundSchema),
   z.lazy(() => FortyOne$outboundSchema),
   z.lazy(() => FortyTwo$outboundSchema),
   z.lazy(() => FiftyFour$outboundSchema),
@@ -30926,9 +31049,9 @@ export const UserEvent$inboundSchema: z.ZodType<
   principalId: z.string(),
   viaIds: z.array(z.string()).optional(),
   payload: z.union([
+    z.lazy(() => SeventyOne$inboundSchema),
     z.lazy(() => SixtySeven$inboundSchema),
     z.lazy(() => Seventy$inboundSchema),
-    z.lazy(() => SeventyOne$inboundSchema),
     z.lazy(() => FortyOne$inboundSchema),
     z.lazy(() => FortyTwo$inboundSchema),
     z.lazy(() => FiftyFour$inboundSchema),
@@ -31107,9 +31230,9 @@ export type UserEvent$Outbound = {
   principalId: string;
   viaIds?: Array<string> | undefined;
   payload?:
+    | SeventyOne$Outbound
     | SixtySeven$Outbound
     | Seventy$Outbound
-    | SeventyOne$Outbound
     | FortyOne$Outbound
     | FortyTwo$Outbound
     | FiftyFour$Outbound
@@ -31300,9 +31423,9 @@ export const UserEvent$outboundSchema: z.ZodType<
   principalId: z.string(),
   viaIds: z.array(z.string()).optional(),
   payload: z.union([
+    z.lazy(() => SeventyOne$outboundSchema),
     z.lazy(() => SixtySeven$outboundSchema),
     z.lazy(() => Seventy$outboundSchema),
-    z.lazy(() => SeventyOne$outboundSchema),
     z.lazy(() => FortyOne$outboundSchema),
     z.lazy(() => FortyTwo$outboundSchema),
     z.lazy(() => FiftyFour$outboundSchema),

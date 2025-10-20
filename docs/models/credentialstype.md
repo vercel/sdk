@@ -11,5 +11,5 @@ let value: CredentialsType = "github-oauth-limited";
 ## Values
 
 ```typescript
-"gitlab" | "bitbucket" | "google" | "github-oauth" | "github-oauth-limited"
+"gitlab" | "bitbucket" | "google" | "apple" | "github-oauth" | "github-oauth-limited"
 ```

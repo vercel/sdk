@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8584": {}
+                      "__@BRAND@8646": {}
                     }
                   },
                   "secrets": []
@@ -6907,4 +6907,23 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: marketplace
+    x-speakeasy-test-rebuild: true
+  - workflowId: get_/v1/security/firewall/events
+    steps:
+      - stepId: test
+        operationId: get_/v1/security/firewall/events
+        parameters:
+          - name: projectId
+            in: query
+            value: <id>
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "actions": []
+              }
+            type: simple
+    x-speakeasy-test-group: security
     x-speakeasy-test-rebuild: true

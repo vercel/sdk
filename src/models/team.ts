@@ -494,7 +494,7 @@ export type Team = {
    * UNIX timestamp (in milliseconds) when the Team was created.
    */
   createdAt: number;
-  additionalProperties?: { [k: string]: any };
+  additionalProperties?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -1972,7 +1972,7 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     avatar: z.nullable(z.string()),
     membership: z.lazy(() => Membership$outboundSchema),
     createdAt: z.number(),
-    additionalProperties: z.record(z.any()),
+    additionalProperties: z.record(z.any()).optional(),
   }).transform((v) => {
     return {
       ...v.additionalProperties,

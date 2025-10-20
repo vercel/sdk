@@ -109,6 +109,10 @@ export type GetProjectsRequest = {
    */
   staticIpsEnabled?: StaticIpsEnabled | undefined;
   /**
+   * Filter results by build machine types. Accepts comma-separated values. Use \"default\" for projects without a build machine type set.
+   */
+  buildMachineTypes?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -2409,6 +2413,7 @@ export const GetProjectsRequest$inboundSchema: z.ZodType<
   deprecated: z.boolean().optional(),
   elasticConcurrencyEnabled: ElasticConcurrencyEnabled$inboundSchema.optional(),
   staticIpsEnabled: StaticIpsEnabled$inboundSchema.optional(),
+  buildMachineTypes: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -2428,6 +2433,7 @@ export type GetProjectsRequest$Outbound = {
   deprecated?: boolean | undefined;
   elasticConcurrencyEnabled?: string | undefined;
   staticIpsEnabled?: string | undefined;
+  buildMachineTypes?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -2452,6 +2458,7 @@ export const GetProjectsRequest$outboundSchema: z.ZodType<
   elasticConcurrencyEnabled: ElasticConcurrencyEnabled$outboundSchema
     .optional(),
   staticIpsEnabled: StaticIpsEnabled$outboundSchema.optional(),
+  buildMachineTypes: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

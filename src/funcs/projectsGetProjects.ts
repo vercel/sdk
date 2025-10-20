@@ -93,6 +93,7 @@ async function $do(
   const path = pathToFunc("/v10/projects")();
 
   const query = encodeFormQuery({
+    "buildMachineTypes": payload.buildMachineTypes,
     "deprecated": payload.deprecated,
     "edgeConfigId": payload.edgeConfigId,
     "edgeConfigTokenId": payload.edgeConfigTokenId,

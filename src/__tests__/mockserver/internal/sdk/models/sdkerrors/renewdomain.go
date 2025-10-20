@@ -95,6 +95,7 @@ type RenewDomainBadRequestType string
 
 const (
 	RenewDomainBadRequestTypeBadRequestError            RenewDomainBadRequestType = "BadRequest_error"
+	RenewDomainBadRequestTypeDomainTooShortError        RenewDomainBadRequestType = "DomainTooShort_error"
 	RenewDomainBadRequestTypeDomainNotRegisteredError   RenewDomainBadRequestType = "DomainNotRegistered_error"
 	RenewDomainBadRequestTypeExpectedPriceMismatchError RenewDomainBadRequestType = "ExpectedPriceMismatch_error"
 	RenewDomainBadRequestTypeDomainNotAvailableError    RenewDomainBadRequestType = "DomainNotAvailable_error"
@@ -105,6 +106,7 @@ const (
 // RenewDomainBadRequest - There was something wrong with the request
 type RenewDomainBadRequest struct {
 	BadRequestError            *BadRequestError            `queryParam:"inline"`
+	DomainTooShortError        *DomainTooShortError        `queryParam:"inline"`
 	DomainNotRegisteredError   *DomainNotRegisteredError   `queryParam:"inline"`
 	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
 	DomainNotAvailableError    *DomainNotAvailableError    `queryParam:"inline"`
@@ -124,6 +126,15 @@ func CreateRenewDomainBadRequestBadRequestError(badRequestError BadRequestError)
 	return RenewDomainBadRequest{
 		BadRequestError: &badRequestError,
 		Type:            typ,
+	}
+}
+
+func CreateRenewDomainBadRequestDomainTooShortError(domainTooShortError DomainTooShortError) RenewDomainBadRequest {
+	typ := RenewDomainBadRequestTypeDomainTooShortError
+
+	return RenewDomainBadRequest{
+		DomainTooShortError: &domainTooShortError,
+		Type:                typ,
 	}
 }
 
@@ -181,6 +192,13 @@ func (u *RenewDomainBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var domainTooShortError DomainTooShortError = DomainTooShortError{}
+	if err := utils.UnmarshalJSON(data, &domainTooShortError, "", true, nil); err == nil {
+		u.DomainTooShortError = &domainTooShortError
+		u.Type = RenewDomainBadRequestTypeDomainTooShortError
+		return nil
+	}
+
 	var domainNotRegisteredError DomainNotRegisteredError = DomainNotRegisteredError{}
 	if err := utils.UnmarshalJSON(data, &domainNotRegisteredError, "", true, nil); err == nil {
 		u.DomainNotRegisteredError = &domainNotRegisteredError
@@ -224,6 +242,10 @@ func (u RenewDomainBadRequest) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
+	if u.DomainTooShortError != nil {
+		return utils.MarshalJSON(u.DomainTooShortError, "", true)
+	}
+
 	if u.DomainNotRegisteredError != nil {
 		return utils.MarshalJSON(u.DomainNotRegisteredError, "", true)
 	}
@@ -251,6 +273,9 @@ func (u RenewDomainBadRequest) Error() string {
 	switch u.Type {
 	case RenewDomainBadRequestTypeBadRequestError:
 		data, _ := json.Marshal(u.BadRequestError)
+		return string(data)
+	case RenewDomainBadRequestTypeDomainTooShortError:
+		data, _ := json.Marshal(u.DomainTooShortError)
 		return string(data)
 	case RenewDomainBadRequestTypeDomainNotRegisteredError:
 		data, _ := json.Marshal(u.DomainNotRegisteredError)

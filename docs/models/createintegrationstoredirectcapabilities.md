@@ -18,3 +18,4 @@ let value: CreateIntegrationStoreDirectCapabilities = {};
 | `secretsSync`      | *boolean*          | :heavy_minus_sign: | N/A                |
 | `sandbox`          | *boolean*          | :heavy_minus_sign: | N/A                |
 | `linking`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| `projects`         | *boolean*          | :heavy_minus_sign: | N/A                |

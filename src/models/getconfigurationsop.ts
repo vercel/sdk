@@ -38,11 +38,15 @@ export type GetConfigurationsRequest = {
 };
 
 export const TagIds = {
+  TagAgents: "tag_agents",
   TagAi: "tag_ai",
   TagAnalytics: "tag_analytics",
   TagAuthentication: "tag_authentication",
   TagCms: "tag_cms",
   TagCodeRepository: "tag_code_repository",
+  TagCodeReview: "tag_code_review",
+  TagCodeSecurity: "tag_code_security",
+  TagCodeTesting: "tag_code_testing",
   TagCommerce: "tag_commerce",
   TagDatabases: "tag_databases",
   TagDevTools: "tag_dev_tools",
@@ -57,8 +61,10 @@ export const TagIds = {
   TagProductivity: "tag_productivity",
   TagSearching: "tag_searching",
   TagSecurity: "tag_security",
+  TagSupportAgent: "tag_support_agent",
   TagTesting: "tag_testing",
   TagVideo: "tag_video",
+  TagWebAutomation: "tag_web_automation",
   TagWorkflow: "tag_workflow",
 } as const;
 export type TagIds = ClosedEnum<typeof TagIds>;

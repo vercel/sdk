@@ -36,7 +36,7 @@ func (e *TypeResourceUpdated) UnmarshalJSON(data []byte) error {
 type EventResourceUpdated struct {
 	Type TypeResourceUpdated `json:"type"`
 	// Partner-provided product slug or id
-	ProductID string `json:"productId"`
+	ProductID *string `json:"productId,omitempty"`
 	// Partner provided resource ID
 	ResourceID string `json:"resourceId"`
 }
@@ -46,7 +46,7 @@ func (e EventResourceUpdated) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EventResourceUpdated) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "productId", "resourceId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "resourceId"}); err != nil {
 		return err
 	}
 	return nil
@@ -59,9 +59,9 @@ func (o *EventResourceUpdated) GetType() TypeResourceUpdated {
 	return o.Type
 }
 
-func (o *EventResourceUpdated) GetProductID() string {
+func (o *EventResourceUpdated) GetProductID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.ProductID
 }

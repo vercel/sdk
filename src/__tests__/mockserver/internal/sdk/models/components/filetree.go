@@ -60,8 +60,6 @@ type FileTree struct {
 	ContentType *string `json:"contentType,omitempty"`
 	// The file "mode" indicating file type and permissions.
 	Mode float64 `json:"mode"`
-	// Not currently used. See `file-list-to-tree.ts`.
-	Symlink *string `json:"symlink,omitempty"`
 }
 
 func (o *FileTree) GetName() string {
@@ -104,11 +102,4 @@ func (o *FileTree) GetMode() float64 {
 		return 0.0
 	}
 	return o.Mode
-}
-
-func (o *FileTree) GetSymlink() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Symlink
 }

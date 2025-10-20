@@ -16,7 +16,6 @@ const value: models.Event1 = {
 ```typescript
 const value: models.Event2 = {
   type: "resource.updated",
-  productId: "<id>",
   resourceId: "<id>",
 };
 ```

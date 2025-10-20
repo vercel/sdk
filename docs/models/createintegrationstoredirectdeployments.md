@@ -10,7 +10,9 @@ let value: CreateIntegrationStoreDirectDeployments = {
   actions: [
     {
       slug: "<value>",
-      environments: [],
+      environments: [
+        "production",
+      ],
     },
   ],
 };
@@ -18,7 +20,7 @@ let value: CreateIntegrationStoreDirectDeployments = {
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `required`                               | *boolean*                                | :heavy_check_mark:                       | N/A                                      |
-| `actions`                                | [models.Actions](../models/actions.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `required`                                                                                       | *boolean*                                                                                        | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `actions`                                                                                        | [models.CreateIntegrationStoreDirectActions](../models/createintegrationstoredirectactions.md)[] | :heavy_check_mark:                                                                               | N/A                                                                                              |

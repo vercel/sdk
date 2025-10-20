@@ -48,7 +48,7 @@ func testGetRollingReleaseBillingStatusGetRollingReleaseBillingStatus0(w http.Re
 	}
 	var respBody *operations.GetRollingReleaseBillingStatusResponseBody = types.Pointer(operations.CreateGetRollingReleaseBillingStatusResponseBodyNoAvailableSlots(
 		operations.NoAvailableSlots{
-			AvailableSlots: 7151.9,
+			AvailableSlots: 4236.55,
 			Reason:         operations.ReasonNoAvailableSlotsNoAvailableSlots,
 			Message:        "<value>",
 			EnabledProjects: []string{

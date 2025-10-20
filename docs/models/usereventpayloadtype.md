@@ -11,5 +11,5 @@ let value: UserEventPayloadType = "redis";
 ## Values
 
 ```typescript
-"redis" | "postgres" | "edge-config" | "blob" | "integration"
+"redis" | "edge-config" | "postgres" | "blob" | "integration"
 ```

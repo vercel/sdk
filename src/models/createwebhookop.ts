@@ -86,6 +86,8 @@ export const Events = {
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
+  ObservabilityUsageAnomaly: "observability.usage-anomaly",
+  ObservabilityErrorAnomaly: "observability.error-anomaly",
   ObservabilityAnomalyBotId: "observability.anomaly-botId",
   TestWebhook: "test-webhook",
 } as const;
@@ -189,6 +191,8 @@ export const CreateWebhookEvents = {
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
+  ObservabilityUsageAnomaly: "observability.usage-anomaly",
+  ObservabilityErrorAnomaly: "observability.error-anomaly",
   ObservabilityAnomalyBotId: "observability.anomaly-botId",
   TestWebhook: "test-webhook",
 } as const;

@@ -26,6 +26,12 @@ import {
   DomainNotRegistered$outboundSchema,
 } from "./domainnotregistered.js";
 import {
+  DomainTooShort,
+  DomainTooShort$inboundSchema,
+  DomainTooShort$Outbound,
+  DomainTooShort$outboundSchema,
+} from "./domaintooshort.js";
+import {
   ExpectedPriceMismatch,
   ExpectedPriceMismatch$inboundSchema,
   ExpectedPriceMismatch$Outbound,
@@ -138,6 +144,7 @@ export type RenewDomainDomainsRegistrarResponseResponseBody =
  */
 export type RenewDomainDomainsRegistrarResponseBody =
   | BadRequest
+  | DomainTooShort
   | DomainNotRegistered
   | ExpectedPriceMismatch
   | DomainNotAvailable
@@ -456,6 +463,7 @@ export const RenewDomainDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   BadRequest$inboundSchema,
+  DomainTooShort$inboundSchema,
   DomainNotRegistered$inboundSchema,
   ExpectedPriceMismatch$inboundSchema,
   DomainNotAvailable$inboundSchema,
@@ -466,6 +474,7 @@ export const RenewDomainDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
 /** @internal */
 export type RenewDomainDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
+  | DomainTooShort$Outbound
   | DomainNotRegistered$Outbound
   | ExpectedPriceMismatch$Outbound
   | DomainNotAvailable$Outbound
@@ -479,6 +488,7 @@ export const RenewDomainDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   RenewDomainDomainsRegistrarResponseBody
 > = z.union([
   BadRequest$outboundSchema,
+  DomainTooShort$outboundSchema,
   DomainNotRegistered$outboundSchema,
   ExpectedPriceMismatch$outboundSchema,
   DomainNotAvailable$outboundSchema,

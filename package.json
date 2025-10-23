@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "author": "Speakeasy",
   "type": "module",
   "bin": {
@@ -60,6 +60,6 @@
     "vitest": "^3.0.2"
   },
   "dependencies": {
-    "zod": "^3.20.0"
+    "zod": "^3.25.0 || ^4.0.0"
   }
 }

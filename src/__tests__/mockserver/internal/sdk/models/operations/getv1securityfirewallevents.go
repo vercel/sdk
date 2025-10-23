@@ -10,6 +10,7 @@ type GetV1SecurityFirewallEventsRequest struct {
 	ProjectID      string   `queryParam:"style=form,explode=true,name=projectId"`
 	StartTimestamp *float64 `queryParam:"style=form,explode=true,name=startTimestamp"`
 	EndTimestamp   *float64 `queryParam:"style=form,explode=true,name=endTimestamp"`
+	Hosts          *string  `queryParam:"style=form,explode=true,name=hosts"`
 }
 
 func (o *GetV1SecurityFirewallEventsRequest) GetProjectID() string {
@@ -31,6 +32,13 @@ func (o *GetV1SecurityFirewallEventsRequest) GetEndTimestamp() *float64 {
 		return nil
 	}
 	return o.EndTimestamp
+}
+
+func (o *GetV1SecurityFirewallEventsRequest) GetHosts() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hosts
 }
 
 type GetV1SecurityFirewallEventsAction struct {

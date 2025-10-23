@@ -5333,12 +5333,14 @@ type UpdateProjectDataCachePermissions struct {
 	IntegrationConfigurationTransfer         []components.ACLAction `json:"integrationConfigurationTransfer,omitempty"`
 	IntegrationDeploymentAction              []components.ACLAction `json:"integrationDeploymentAction,omitempty"`
 	IntegrationEvent                         []components.ACLAction `json:"integrationEvent,omitempty"`
+	IntegrationLog                           []components.ACLAction `json:"integrationLog,omitempty"`
 	IntegrationResource                      []components.ACLAction `json:"integrationResource,omitempty"`
 	IntegrationResourceReplCommand           []components.ACLAction `json:"integrationResourceReplCommand,omitempty"`
 	IntegrationResourceSecrets               []components.ACLAction `json:"integrationResourceSecrets,omitempty"`
 	IntegrationSSOSession                    []components.ACLAction `json:"integrationSSOSession,omitempty"`
 	IntegrationStoreTokenSet                 []components.ACLAction `json:"integrationStoreTokenSet,omitempty"`
 	IntegrationVercelConfigurationOverride   []components.ACLAction `json:"integrationVercelConfigurationOverride,omitempty"`
+	IntegrationPullRequest                   []components.ACLAction `json:"integrationPullRequest,omitempty"`
 	IPBlocking                               []components.ACLAction `json:"ipBlocking,omitempty"`
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
@@ -5945,6 +5947,13 @@ func (o *UpdateProjectDataCachePermissions) GetIntegrationEvent() []components.A
 	return o.IntegrationEvent
 }
 
+func (o *UpdateProjectDataCachePermissions) GetIntegrationLog() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationLog
+}
+
 func (o *UpdateProjectDataCachePermissions) GetIntegrationResource() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -5985,6 +5994,13 @@ func (o *UpdateProjectDataCachePermissions) GetIntegrationVercelConfigurationOve
 		return nil
 	}
 	return o.IntegrationVercelConfigurationOverride
+}
+
+func (o *UpdateProjectDataCachePermissions) GetIntegrationPullRequest() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationPullRequest
 }
 
 func (o *UpdateProjectDataCachePermissions) GetIPBlocking() []components.ACLAction {
@@ -9485,12 +9501,91 @@ func (u UpdateProjectDataCacheBlockHistoryUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateProjectDataCacheBlockHistoryUnion: all fields are null")
 }
 
+type UpdateProjectDataCacheInterstitialHistoryAction string
+
+const (
+	UpdateProjectDataCacheInterstitialHistoryActionAddInterstitial    UpdateProjectDataCacheInterstitialHistoryAction = "add-interstitial"
+	UpdateProjectDataCacheInterstitialHistoryActionRemoveInterstitial UpdateProjectDataCacheInterstitialHistoryAction = "remove-interstitial"
+)
+
+func (e UpdateProjectDataCacheInterstitialHistoryAction) ToPointer() *UpdateProjectDataCacheInterstitialHistoryAction {
+	return &e
+}
+func (e *UpdateProjectDataCacheInterstitialHistoryAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "add-interstitial":
+		fallthrough
+	case "remove-interstitial":
+		*e = UpdateProjectDataCacheInterstitialHistoryAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateProjectDataCacheInterstitialHistoryAction: %v", v)
+	}
+}
+
+type UpdateProjectDataCacheInterstitialHistory struct {
+	Action    UpdateProjectDataCacheInterstitialHistoryAction `json:"action"`
+	CreatedAt float64                                         `json:"createdAt"`
+	CaseID    *string                                         `json:"caseId,omitempty"`
+	Reason    *string                                         `json:"reason,omitempty"`
+	Actor     *string                                         `json:"actor,omitempty"`
+	Comment   *string                                         `json:"comment,omitempty"`
+}
+
+func (o *UpdateProjectDataCacheInterstitialHistory) GetAction() UpdateProjectDataCacheInterstitialHistoryAction {
+	if o == nil {
+		return UpdateProjectDataCacheInterstitialHistoryAction("")
+	}
+	return o.Action
+}
+
+func (o *UpdateProjectDataCacheInterstitialHistory) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *UpdateProjectDataCacheInterstitialHistory) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *UpdateProjectDataCacheInterstitialHistory) GetReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reason
+}
+
+func (o *UpdateProjectDataCacheInterstitialHistory) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *UpdateProjectDataCacheInterstitialHistory) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
 type UpdateProjectDataCacheAbuse struct {
-	Scanner      *string                                   `json:"scanner,omitempty"`
-	History      []UpdateProjectDataCacheHistory           `json:"history"`
-	UpdatedAt    float64                                   `json:"updatedAt"`
-	Block        *UpdateProjectDataCacheBlock              `json:"block,omitempty"`
-	BlockHistory []UpdateProjectDataCacheBlockHistoryUnion `json:"blockHistory,omitempty"`
+	Scanner             *string                                     `json:"scanner,omitempty"`
+	History             []UpdateProjectDataCacheHistory             `json:"history"`
+	UpdatedAt           float64                                     `json:"updatedAt"`
+	Block               *UpdateProjectDataCacheBlock                `json:"block,omitempty"`
+	BlockHistory        []UpdateProjectDataCacheBlockHistoryUnion   `json:"blockHistory,omitempty"`
+	Interstitial        *bool                                       `json:"interstitial,omitempty"`
+	InterstitialHistory []UpdateProjectDataCacheInterstitialHistory `json:"interstitialHistory,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheAbuse) GetScanner() *string {
@@ -9526,6 +9621,20 @@ func (o *UpdateProjectDataCacheAbuse) GetBlockHistory() []UpdateProjectDataCache
 		return nil
 	}
 	return o.BlockHistory
+}
+
+func (o *UpdateProjectDataCacheAbuse) GetInterstitial() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Interstitial
+}
+
+func (o *UpdateProjectDataCacheAbuse) GetInterstitialHistory() []UpdateProjectDataCacheInterstitialHistory {
+	if o == nil {
+		return nil
+	}
+	return o.InterstitialHistory
 }
 
 type UpdateProjectDataCacheInternalRouteTypeHost string

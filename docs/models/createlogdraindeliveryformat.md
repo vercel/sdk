@@ -13,5 +13,5 @@ let value: CreateLogDrainDeliveryFormat = "json";
 ## Values
 
 ```typescript
-"json" | "ndjson" | "syslog" | "protobuf"
+"json" | "ndjson"
 ```

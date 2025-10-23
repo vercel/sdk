@@ -990,6 +990,7 @@ test("Projects Upload Project Client Cert", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
+    updated: false,
     origin: "<value>",
     certId: "<id>",
   });

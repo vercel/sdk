@@ -51,8 +51,9 @@ func testUploadProjectClientCertUploadProjectClientCert0(w http.ResponseWriter, 
 		return
 	}
 	var respBody *operations.UploadProjectClientCertResponseBody = &operations.UploadProjectClientCertResponseBody{
-		Origin: "<value>",
-		CertID: "<id>",
+		Updated: false,
+		Origin:  "<value>",
+		CertID:  "<id>",
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

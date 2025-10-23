@@ -89,6 +89,12 @@ import { tool$domainsRegistrarRenewDomain } from "./tools/domainsRegistrarRenewD
 import { tool$domainsRegistrarTransferInDomain } from "./tools/domainsRegistrarTransferInDomain.js";
 import { tool$domainsRegistrarUpdateDomainAutoRenew } from "./tools/domainsRegistrarUpdateDomainAutoRenew.js";
 import { tool$domainsRegistrarUpdateDomainNameservers } from "./tools/domainsRegistrarUpdateDomainNameservers.js";
+import { tool$drainsCreateDrain } from "./tools/drainsCreateDrain.js";
+import { tool$drainsDeleteDrain } from "./tools/drainsDeleteDrain.js";
+import { tool$drainsGetDrain } from "./tools/drainsGetDrain.js";
+import { tool$drainsGetDrains } from "./tools/drainsGetDrains.js";
+import { tool$drainsTestDrain } from "./tools/drainsTestDrain.js";
+import { tool$drainsUpdateDrain } from "./tools/drainsUpdateDrain.js";
 import { tool$edgeCacheDangerouslyDeleteByTags } from "./tools/edgeCacheDangerouslyDeleteByTags.js";
 import { tool$edgeCacheInvalidateByTags } from "./tools/edgeCacheInvalidateByTags.js";
 import { tool$edgeConfigCreateEdgeConfig } from "./tools/edgeConfigCreateEdgeConfig.js";
@@ -120,8 +126,12 @@ import { tool$integrationsGetBillingPlans } from "./tools/integrationsGetBilling
 import { tool$integrationsGetConfiguration } from "./tools/integrationsGetConfiguration.js";
 import { tool$integrationsGetConfigurationProducts } from "./tools/integrationsGetConfigurationProducts.js";
 import { tool$integrationsGetConfigurations } from "./tools/integrationsGetConfigurations.js";
+import { tool$logDrainsCreateConfigurableLogDrain } from "./tools/logDrainsCreateConfigurableLogDrain.js";
 import { tool$logDrainsCreateLogDrain } from "./tools/logDrainsCreateLogDrain.js";
+import { tool$logDrainsDeleteConfigurableLogDrain } from "./tools/logDrainsDeleteConfigurableLogDrain.js";
 import { tool$logDrainsDeleteIntegrationLogDrain } from "./tools/logDrainsDeleteIntegrationLogDrain.js";
+import { tool$logDrainsGetAllLogDrains } from "./tools/logDrainsGetAllLogDrains.js";
+import { tool$logDrainsGetConfigurableLogDrain } from "./tools/logDrainsGetConfigurableLogDrain.js";
 import { tool$logDrainsGetIntegrationLogDrains } from "./tools/logDrainsGetIntegrationLogDrains.js";
 import { tool$logsGetRuntimeLogs } from "./tools/logsGetRuntimeLogs.js";
 import { tool$marketplaceCreateEvent } from "./tools/marketplaceCreateEvent.js";
@@ -222,7 +232,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.14.0",
+    version: "1.15.0",
   });
 
   const client = new VercelCore({
@@ -346,6 +356,19 @@ export function createMCPServer(deps: {
   tool(tool$domainsRegistrarUpdateDomainNameservers);
   tool(tool$domainsRegistrarGetContactInfoSchema);
   tool(tool$domainsRegistrarGetOrder);
+  tool(tool$logDrainsGetConfigurableLogDrain);
+  tool(tool$logDrainsDeleteConfigurableLogDrain);
+  tool(tool$logDrainsGetAllLogDrains);
+  tool(tool$logDrainsCreateConfigurableLogDrain);
+  tool(tool$logDrainsGetIntegrationLogDrains);
+  tool(tool$logDrainsCreateLogDrain);
+  tool(tool$logDrainsDeleteIntegrationLogDrain);
+  tool(tool$drainsCreateDrain);
+  tool(tool$drainsGetDrains);
+  tool(tool$drainsDeleteDrain);
+  tool(tool$drainsGetDrain);
+  tool(tool$drainsUpdateDrain);
+  tool(tool$drainsTestDrain);
   tool(tool$edgeCacheInvalidateByTags);
   tool(tool$edgeCacheDangerouslyDeleteByTags);
   tool(tool$edgeConfigGetEdgeConfigs);
@@ -394,9 +417,6 @@ export function createMCPServer(deps: {
   tool(tool$authenticationCreateAuthToken);
   tool(tool$authenticationGetAuthToken);
   tool(tool$authenticationDeleteAuthToken);
-  tool(tool$logDrainsGetIntegrationLogDrains);
-  tool(tool$logDrainsCreateLogDrain);
-  tool(tool$logDrainsDeleteIntegrationLogDrain);
   tool(tool$logsGetRuntimeLogs);
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyProjectsMetadata } from "@vercel/sdk/models/getwebhooksop.js";
+import { ResponseBodyProjectsMetadata } from "@vercel/sdk/models/getalllogdrainsop.js";
 
 let value: ResponseBodyProjectsMetadata = {
   id: "<id>",
@@ -13,9 +13,9 @@ let value: ResponseBodyProjectsMetadata = {
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `id`                                                                                     | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `name`                                                                                   | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `framework`                                                                              | [models.GetWebhooksResponseBodyFramework](../models/getwebhooksresponsebodyframework.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |
-| `latestDeployment`                                                                       | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `id`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `name`                                                                                           | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `framework`                                                                                      | [models.GetAllLogDrainsResponseBodyFramework](../models/getalllogdrainsresponsebodyframework.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `latestDeployment`                                                                               | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |

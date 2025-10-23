@@ -12,7 +12,7 @@ type UploadProjectClientCertRequestBody struct {
 	// The private key in PEM format
 	Key string `json:"key"`
 	// The certificate authority in PEM format
-	Ca *string `json:"ca,omitempty"`
+	Ca string `json:"ca"`
 	// The origin this certificate should be used for. If not specified, the certificate will be project-wide.
 	Origin *string `json:"origin,omitempty"`
 	// Skip validation of the certificate
@@ -33,9 +33,9 @@ func (o *UploadProjectClientCertRequestBody) GetKey() string {
 	return o.Key
 }
 
-func (o *UploadProjectClientCertRequestBody) GetCa() *string {
+func (o *UploadProjectClientCertRequestBody) GetCa() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Ca
 }
@@ -94,8 +94,16 @@ func (o *UploadProjectClientCertRequest) GetRequestBody() *UploadProjectClientCe
 
 // UploadProjectClientCertResponseBody - Client certificate uploaded successfully
 type UploadProjectClientCertResponseBody struct {
-	Origin string `json:"origin"`
-	CertID string `json:"certId"`
+	Updated bool   `json:"updated"`
+	Origin  string `json:"origin"`
+	CertID  string `json:"certId"`
+}
+
+func (o *UploadProjectClientCertResponseBody) GetUpdated() bool {
+	if o == nil {
+		return false
+	}
+	return o.Updated
 }
 
 func (o *UploadProjectClientCertResponseBody) GetOrigin() string {

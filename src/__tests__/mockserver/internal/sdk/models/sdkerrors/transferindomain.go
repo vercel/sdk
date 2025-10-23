@@ -95,6 +95,7 @@ type TransferInDomainBadRequestType string
 
 const (
 	TransferInDomainBadRequestTypeBadRequestError            TransferInDomainBadRequestType = "BadRequest_error"
+	TransferInDomainBadRequestTypeDomainAlreadyOwnedError    TransferInDomainBadRequestType = "DomainAlreadyOwned_error"
 	TransferInDomainBadRequestTypeDomainTooShortError        TransferInDomainBadRequestType = "DomainTooShort_error"
 	TransferInDomainBadRequestTypeDNSSECEnabledError         TransferInDomainBadRequestType = "DNSSECEnabled_error"
 	TransferInDomainBadRequestTypeExpectedPriceMismatchError TransferInDomainBadRequestType = "ExpectedPriceMismatch_error"
@@ -106,6 +107,7 @@ const (
 // TransferInDomainBadRequest - There was something wrong with the request
 type TransferInDomainBadRequest struct {
 	BadRequestError            *BadRequestError            `queryParam:"inline"`
+	DomainAlreadyOwnedError    *DomainAlreadyOwnedError    `queryParam:"inline"`
 	DomainTooShortError        *DomainTooShortError        `queryParam:"inline"`
 	DNSSECEnabledError         *DNSSECEnabledError         `queryParam:"inline"`
 	ExpectedPriceMismatchError *ExpectedPriceMismatchError `queryParam:"inline"`
@@ -126,6 +128,15 @@ func CreateTransferInDomainBadRequestBadRequestError(badRequestError BadRequestE
 	return TransferInDomainBadRequest{
 		BadRequestError: &badRequestError,
 		Type:            typ,
+	}
+}
+
+func CreateTransferInDomainBadRequestDomainAlreadyOwnedError(domainAlreadyOwnedError DomainAlreadyOwnedError) TransferInDomainBadRequest {
+	typ := TransferInDomainBadRequestTypeDomainAlreadyOwnedError
+
+	return TransferInDomainBadRequest{
+		DomainAlreadyOwnedError: &domainAlreadyOwnedError,
+		Type:                    typ,
 	}
 }
 
@@ -192,6 +203,13 @@ func (u *TransferInDomainBadRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var domainAlreadyOwnedError DomainAlreadyOwnedError = DomainAlreadyOwnedError{}
+	if err := utils.UnmarshalJSON(data, &domainAlreadyOwnedError, "", true, nil); err == nil {
+		u.DomainAlreadyOwnedError = &domainAlreadyOwnedError
+		u.Type = TransferInDomainBadRequestTypeDomainAlreadyOwnedError
+		return nil
+	}
+
 	var domainTooShortError DomainTooShortError = DomainTooShortError{}
 	if err := utils.UnmarshalJSON(data, &domainTooShortError, "", true, nil); err == nil {
 		u.DomainTooShortError = &domainTooShortError
@@ -242,6 +260,10 @@ func (u TransferInDomainBadRequest) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.BadRequestError, "", true)
 	}
 
+	if u.DomainAlreadyOwnedError != nil {
+		return utils.MarshalJSON(u.DomainAlreadyOwnedError, "", true)
+	}
+
 	if u.DomainTooShortError != nil {
 		return utils.MarshalJSON(u.DomainTooShortError, "", true)
 	}
@@ -273,6 +295,9 @@ func (u TransferInDomainBadRequest) Error() string {
 	switch u.Type {
 	case TransferInDomainBadRequestTypeBadRequestError:
 		data, _ := json.Marshal(u.BadRequestError)
+		return string(data)
+	case TransferInDomainBadRequestTypeDomainAlreadyOwnedError:
+		data, _ := json.Marshal(u.DomainAlreadyOwnedError)
 		return string(data)
 	case TransferInDomainBadRequestTypeDomainTooShortError:
 		data, _ := json.Marshal(u.DomainTooShortError)

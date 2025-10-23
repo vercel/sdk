@@ -10,18 +10,18 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// DeliveryFormatRequest - The delivery log format
-type DeliveryFormatRequest string
+// CreateLogDrainDeliveryFormatRequest - The delivery log format
+type CreateLogDrainDeliveryFormatRequest string
 
 const (
-	DeliveryFormatRequestJSON   DeliveryFormatRequest = "json"
-	DeliveryFormatRequestNdjson DeliveryFormatRequest = "ndjson"
+	CreateLogDrainDeliveryFormatRequestJSON   CreateLogDrainDeliveryFormatRequest = "json"
+	CreateLogDrainDeliveryFormatRequestNdjson CreateLogDrainDeliveryFormatRequest = "ndjson"
 )
 
-func (e DeliveryFormatRequest) ToPointer() *DeliveryFormatRequest {
+func (e CreateLogDrainDeliveryFormatRequest) ToPointer() *CreateLogDrainDeliveryFormatRequest {
 	return &e
 }
-func (e *DeliveryFormatRequest) UnmarshalJSON(data []byte) error {
+func (e *CreateLogDrainDeliveryFormatRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,10 +30,10 @@ func (e *DeliveryFormatRequest) UnmarshalJSON(data []byte) error {
 	case "json":
 		fallthrough
 	case "ndjson":
-		*e = DeliveryFormatRequest(v)
+		*e = CreateLogDrainDeliveryFormatRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DeliveryFormatRequest: %v", v)
+		return fmt.Errorf("invalid value for CreateLogDrainDeliveryFormatRequest: %v", v)
 	}
 }
 
@@ -75,17 +75,17 @@ func (e *CreateLogDrainSourceRequest) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type EnvironmentRequest string
+type CreateLogDrainEnvironmentRequest string
 
 const (
-	EnvironmentRequestPreview    EnvironmentRequest = "preview"
-	EnvironmentRequestProduction EnvironmentRequest = "production"
+	CreateLogDrainEnvironmentRequestPreview    CreateLogDrainEnvironmentRequest = "preview"
+	CreateLogDrainEnvironmentRequestProduction CreateLogDrainEnvironmentRequest = "production"
 )
 
-func (e EnvironmentRequest) ToPointer() *EnvironmentRequest {
+func (e CreateLogDrainEnvironmentRequest) ToPointer() *CreateLogDrainEnvironmentRequest {
 	return &e
 }
-func (e *EnvironmentRequest) UnmarshalJSON(data []byte) error {
+func (e *CreateLogDrainEnvironmentRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -94,10 +94,10 @@ func (e *EnvironmentRequest) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "production":
-		*e = EnvironmentRequest(v)
+		*e = CreateLogDrainEnvironmentRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvironmentRequest: %v", v)
+		return fmt.Errorf("invalid value for CreateLogDrainEnvironmentRequest: %v", v)
 	}
 }
 
@@ -108,13 +108,13 @@ type CreateLogDrainRequestBody struct {
 	// A secret to sign log drain notification headers so a consumer can verify their authenticity
 	Secret *string `json:"secret,omitempty"`
 	// The delivery log format
-	DeliveryFormat *DeliveryFormatRequest `json:"deliveryFormat,omitempty"`
+	DeliveryFormat *CreateLogDrainDeliveryFormatRequest `json:"deliveryFormat,omitempty"`
 	// The url where you will receive logs. The protocol must be `https://` or `http://` when type is `json` and `ndjson`.
 	URL     string                        `json:"url"`
 	Sources []CreateLogDrainSourceRequest `json:"sources,omitempty"`
 	// Headers to be sent together with the request
-	Headers      map[string]string    `json:"headers,omitempty"`
-	Environments []EnvironmentRequest `json:"environments,omitempty"`
+	Headers      map[string]string                  `json:"headers,omitempty"`
+	Environments []CreateLogDrainEnvironmentRequest `json:"environments,omitempty"`
 }
 
 func (o *CreateLogDrainRequestBody) GetName() string {
@@ -138,7 +138,7 @@ func (o *CreateLogDrainRequestBody) GetSecret() *string {
 	return o.Secret
 }
 
-func (o *CreateLogDrainRequestBody) GetDeliveryFormat() *DeliveryFormatRequest {
+func (o *CreateLogDrainRequestBody) GetDeliveryFormat() *CreateLogDrainDeliveryFormatRequest {
 	if o == nil {
 		return nil
 	}
@@ -166,7 +166,7 @@ func (o *CreateLogDrainRequestBody) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *CreateLogDrainRequestBody) GetEnvironments() []EnvironmentRequest {
+func (o *CreateLogDrainRequestBody) GetEnvironments() []CreateLogDrainEnvironmentRequest {
 	if o == nil {
 		return nil
 	}

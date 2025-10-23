@@ -14,6 +14,7 @@ import { Deployments } from "./deployments.js";
 import { Dns } from "./dns.js";
 import { Domains } from "./domains.js";
 import { DomainsRegistrar } from "./domainsregistrar.js";
+import { Drains } from "./drains.js";
 import { EdgeCache } from "./edgecache.js";
 import { EdgeConfig } from "./edgeconfig.js";
 import { Environment } from "./environment.js";
@@ -75,6 +76,16 @@ export class Vercel extends ClientSDK {
     return (this._domainsRegistrar ??= new DomainsRegistrar(this._options));
   }
 
+  private _logDrains?: LogDrains;
+  get logDrains(): LogDrains {
+    return (this._logDrains ??= new LogDrains(this._options));
+  }
+
+  private _drains?: Drains;
+  get drains(): Drains {
+    return (this._drains ??= new Drains(this._options));
+  }
+
   private _edgeCache?: EdgeCache;
   get edgeCache(): EdgeCache {
     return (this._edgeCache ??= new EdgeCache(this._options));
@@ -98,11 +109,6 @@ export class Vercel extends ClientSDK {
   private _authentication?: Authentication;
   get authentication(): Authentication {
     return (this._authentication ??= new Authentication(this._options));
-  }
-
-  private _logDrains?: LogDrains;
-  get logDrains(): LogDrains {
-    return (this._logDrains ??= new LogDrains(this._options));
   }
 
   private _logs?: Logs;

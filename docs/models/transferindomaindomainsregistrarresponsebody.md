@@ -15,6 +15,16 @@ const value: models.BadRequest = {
 };
 ```
 
+### `models.DomainAlreadyOwned`
+
+```typescript
+const value: models.DomainAlreadyOwned = {
+  status: 4619.13,
+  code: "domain_already_owned",
+  message: "<value>",
+};
+```
+
 ### `models.DomainTooShort`
 
 ```typescript

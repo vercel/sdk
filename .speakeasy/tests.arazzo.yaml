@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8646": {}
+                      "__@BRAND@8558": {}
                     }
                   },
                   "secrets": []
@@ -6485,6 +6485,7 @@ workflows:
           - context: $response.body
             condition: |
               {
+                "updated": false,
                 "origin": "\u003cvalue\u003e",
                 "certId": "\u003cid\u003e"
               }
@@ -6926,4 +6927,231 @@ workflows:
               }
             type: simple
     x-speakeasy-test-group: security
+    x-speakeasy-test-rebuild: true
+  - workflowId: getConfigurableLogDrain
+    steps:
+      - stepId: test
+        operationId: getConfigurableLogDrain
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: logDrains
+    x-speakeasy-test-rebuild: true
+  - workflowId: getAllLogDrains
+    steps:
+      - stepId: test
+        operationId: getAllLogDrains
+        parameters:
+          - name: includeMetadata
+            in: query
+            value: false
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "drains": [
+                  {
+                    "id": "\u003cid\u003e",
+                    "ownerId": "\u003cid\u003e",
+                    "name": "\u003cvalue\u003e",
+                    "createdAt": 7495.57,
+                    "updatedAt": 4759.82,
+                    "source": {
+                      "kind": "self-served"
+                    }
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: logDrains
+    x-speakeasy-test-rebuild: true
+  - workflowId: createConfigurableLogDrain
+    steps:
+      - stepId: test
+        operationId: createConfigurableLogDrain
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            deliveryFormat: json
+            sources: []
+            url: https://wavy-meander.net
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: logDrains
+    x-speakeasy-test-rebuild: true
+  - workflowId: createDrain
+    steps:
+      - stepId: test
+        operationId: createDrain
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "ownerId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "createdAt": 3665.73,
+                "updatedAt": 3681.88,
+                "source": {
+                  "kind": "self-served"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: drains
+    x-speakeasy-test-rebuild: true
+  - workflowId: getDrains
+    steps:
+      - stepId: test
+        operationId: getDrains
+        parameters:
+          - name: includeMetadata
+            in: query
+            value: false
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "drains": []
+              }
+            type: simple
+    x-speakeasy-test-group: drains
+    x-speakeasy-test-rebuild: true
+  - workflowId: getDrain
+    steps:
+      - stepId: test
+        operationId: getDrain
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "ownerId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "createdAt": 1182.63,
+                "updatedAt": 7579.11,
+                "source": {
+                  "kind": "integration",
+                  "integrationId": "\u003cid\u003e",
+                  "integrationConfigurationId": "\u003cid\u003e"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: drains
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateDrain
+    steps:
+      - stepId: test
+        operationId: updateDrain
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e",
+                "ownerId": "\u003cid\u003e",
+                "name": "\u003cvalue\u003e",
+                "createdAt": 7781.81,
+                "updatedAt": 8087.89,
+                "source": {
+                  "kind": "integration",
+                  "integrationId": "\u003cid\u003e",
+                  "integrationConfigurationId": "\u003cid\u003e"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: drains
+    x-speakeasy-test-rebuild: true
+  - workflowId: testDrain
+    steps:
+      - stepId: test
+        operationId: testDrain
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {}
+            type: simple
+    x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true

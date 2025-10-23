@@ -1,0 +1,27 @@
+# UpdateDrainDeliveryDrainsResponse1
+
+## Example Usage
+
+```typescript
+import { UpdateDrainDeliveryDrainsResponse1 } from "@vercel/sdk/models/updatedrainop.js";
+
+let value: UpdateDrainDeliveryDrainsResponse1 = {
+  type: "http",
+  endpoint: "<value>",
+  encoding: "json",
+  headers: {
+    "key": "<value>",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                          | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                                         | [models.UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType](../models/updatedraindeliverydrainsresponse200applicationjsonresponsebodytype.md) | :heavy_check_mark:                                                                                                                                             | N/A                                                                                                                                                            |
+| `endpoint`                                                                                                                                                     | *string*                                                                                                                                                       | :heavy_check_mark:                                                                                                                                             | N/A                                                                                                                                                            |
+| `encoding`                                                                                                                                                     | [models.UpdateDrainDeliveryDrainsResponse200ApplicationJSONEncoding](../models/updatedraindeliverydrainsresponse200applicationjsonencoding.md)                 | :heavy_check_mark:                                                                                                                                             | N/A                                                                                                                                                            |
+| `compression`                                                                                                                                                  | [models.UpdateDrainDeliveryDrainsCompression](../models/updatedraindeliverydrainscompression.md)                                                               | :heavy_minus_sign:                                                                                                                                             | N/A                                                                                                                                                            |
+| `headers`                                                                                                                                                      | Record<string, *string*>                                                                                                                                       | :heavy_check_mark:                                                                                                                                             | N/A                                                                                                                                                            |
+| `secret`                                                                                                                                                       | *string*                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                             | N/A                                                                                                                                                            |

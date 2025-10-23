@@ -1,0 +1,46 @@
+# GetDrainResponseBody1
+
+## Example Usage
+
+```typescript
+import { GetDrainResponseBody1 } from "@vercel/sdk/models/getdrainop.js";
+
+let value: GetDrainResponseBody1 = {
+  id: "<id>",
+  ownerId: "<id>",
+  name: "<value>",
+  createdAt: 5261.65,
+  updatedAt: 5879.78,
+  source: {
+    kind: "integration",
+    integrationId: "<id>",
+    integrationConfigurationId: "<id>",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `id`                                                                                         | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `ownerId`                                                                                    | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `name`                                                                                       | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `createdAt`                                                                                  | *number*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `createdFrom`                                                                                | [models.GetDrainResponseBodyCreatedFrom](../models/getdrainresponsebodycreatedfrom.md)       | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `updatedAt`                                                                                  | *number*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `projectIds`                                                                                 | *string*[]                                                                                   | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `schemas`                                                                                    | [models.GetDrainResponseBodySchemas](../models/getdrainresponsebodyschemas.md)               | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `delivery`                                                                                   | *models.GetDrainResponseBodyDelivery*                                                        | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `sampling`                                                                                   | [models.GetDrainResponseBodySampling](../models/getdrainresponsebodysampling.md)[]           | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `teamId`                                                                                     | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `status`                                                                                     | [models.GetDrainResponseBodyStatus](../models/getdrainresponsebodystatus.md)                 | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `disabledAt`                                                                                 | *number*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `disabledReason`                                                                             | [models.GetDrainResponseBodyDisabledReason](../models/getdrainresponsebodydisabledreason.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `disabledBy`                                                                                 | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `firstErrorTimestamp`                                                                        | *number*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `configurationId`                                                                            | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `clientId`                                                                                   | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `source`                                                                                     | *models.GetDrainResponseBodySource*                                                          | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `filter`                                                                                     | *string*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `filterV2`                                                                                   | *models.GetDrainResponseBodyFilterV2*                                                        | :heavy_minus_sign:                                                                           | N/A                                                                                          |

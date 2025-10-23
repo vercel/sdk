@@ -859,6 +859,7 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.BadRequest            | 400                          | application/json             |
+| models.DomainAlreadyOwned    | 400                          | application/json             |
 | models.DomainTooShort        | 400                          | application/json             |
 | models.DNSSECEnabled         | 400                          | application/json             |
 | models.ExpectedPriceMismatch | 400                          | application/json             |

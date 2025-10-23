@@ -1,17 +1,27 @@
 # Source1
 
-## Example Usage
+
+## Supported Types
+
+### `models.One1`
 
 ```typescript
-import { Source1 } from "@vercel/sdk/models/getintegrationlogdrainsop.js";
-
-let value: Source1 = {
-  kind: "self-served",
+const value: models.One1 = {
+  externalResourceId: "<id>",
 };
 ```
 
-## Fields
+### `models.One2`
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `kind`                           | [models.Kind](../models/kind.md) | :heavy_check_mark:               | N/A                              |
+```typescript
+const value: models.One2 = {
+  resourceId: "<id>",
+};
+```
+
+### `models.One3`
+
+```typescript
+const value: models.One3 = {};
+```
+

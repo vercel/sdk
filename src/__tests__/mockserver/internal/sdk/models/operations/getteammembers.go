@@ -731,18 +731,18 @@ func (e *GetTeamMembersTeamPermission) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Projects string
+type GetTeamMembersProjects string
 
 const (
-	ProjectsAdmin            Projects = "ADMIN"
-	ProjectsProjectDeveloper Projects = "PROJECT_DEVELOPER"
-	ProjectsProjectViewer    Projects = "PROJECT_VIEWER"
+	GetTeamMembersProjectsAdmin            GetTeamMembersProjects = "ADMIN"
+	GetTeamMembersProjectsProjectDeveloper GetTeamMembersProjects = "PROJECT_DEVELOPER"
+	GetTeamMembersProjectsProjectViewer    GetTeamMembersProjects = "PROJECT_VIEWER"
 )
 
-func (e Projects) ToPointer() *Projects {
+func (e GetTeamMembersProjects) ToPointer() *GetTeamMembersProjects {
 	return &e
 }
-func (e *Projects) UnmarshalJSON(data []byte) error {
+func (e *GetTeamMembersProjects) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -753,25 +753,25 @@ func (e *Projects) UnmarshalJSON(data []byte) error {
 	case "PROJECT_DEVELOPER":
 		fallthrough
 	case "PROJECT_VIEWER":
-		*e = Projects(v)
+		*e = GetTeamMembersProjects(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Projects: %v", v)
+		return fmt.Errorf("invalid value for GetTeamMembersProjects: %v", v)
 	}
 }
 
 type EmailInviteCode struct {
-	AccessGroups    []string                       `json:"accessGroups,omitempty"`
-	ID              string                         `json:"id"`
-	Email           *string                        `json:"email,omitempty"`
-	Role            *EmailInviteCodeRole           `json:"role,omitempty"`
-	TeamRoles       []GetTeamMembersTeamRole       `json:"teamRoles,omitempty"`
-	TeamPermissions []GetTeamMembersTeamPermission `json:"teamPermissions,omitempty"`
-	IsDSyncUser     bool                           `json:"isDSyncUser"`
-	CreatedAt       *float64                       `json:"createdAt,omitempty"`
-	Expired         *bool                          `json:"expired,omitempty"`
-	Projects        map[string]Projects            `json:"projects,omitempty"`
-	Entitlements    []string                       `json:"entitlements,omitempty"`
+	AccessGroups    []string                          `json:"accessGroups,omitempty"`
+	ID              string                            `json:"id"`
+	Email           *string                           `json:"email,omitempty"`
+	Role            *EmailInviteCodeRole              `json:"role,omitempty"`
+	TeamRoles       []GetTeamMembersTeamRole          `json:"teamRoles,omitempty"`
+	TeamPermissions []GetTeamMembersTeamPermission    `json:"teamPermissions,omitempty"`
+	IsDSyncUser     bool                              `json:"isDSyncUser"`
+	CreatedAt       *float64                          `json:"createdAt,omitempty"`
+	Expired         *bool                             `json:"expired,omitempty"`
+	Projects        map[string]GetTeamMembersProjects `json:"projects,omitempty"`
+	Entitlements    []string                          `json:"entitlements,omitempty"`
 }
 
 func (o *EmailInviteCode) GetAccessGroups() []string {
@@ -837,7 +837,7 @@ func (o *EmailInviteCode) GetExpired() *bool {
 	return o.Expired
 }
 
-func (o *EmailInviteCode) GetProjects() map[string]Projects {
+func (o *EmailInviteCode) GetProjects() map[string]GetTeamMembersProjects {
 	if o == nil {
 		return nil
 	}

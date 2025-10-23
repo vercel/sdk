@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectProjectsAction } from "@vercel/sdk/models/updateprojectop.js";
 
-let value: UpdateProjectProjectsAction = "deny";
+let value: UpdateProjectProjectsAction = "remove-interstitial";
 ```
 
 ## Values
 
 ```typescript
-"log" | "challenge" | "deny"
+"add-interstitial" | "remove-interstitial"
 ```

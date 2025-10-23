@@ -130,19 +130,9 @@ test("Domains Get Domain Config", async () => {
   });
   expect(result).toBeDefined();
   expect(result).toEqual({
-    configuredBy: "CNAME",
-    acceptedChallenges: [
-      "dns-01",
-    ],
-    recommendedIPv4: [
-      {
-        rank: 4769.73,
-        value: [
-          "<value 1>",
-          "<value 2>",
-        ],
-      },
-    ],
+    configuredBy: "dns-01",
+    acceptedChallenges: [],
+    recommendedIPv4: [],
     recommendedCNAME: [],
     misconfigured: false,
   });

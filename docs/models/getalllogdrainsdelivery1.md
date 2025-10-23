@@ -1,0 +1,25 @@
+# GetAllLogDrainsDelivery1
+
+## Example Usage
+
+```typescript
+import { GetAllLogDrainsDelivery1 } from "@vercel/sdk/models/getalllogdrainsop.js";
+
+let value: GetAllLogDrainsDelivery1 = {
+  type: "http",
+  endpoint: "<value>",
+  encoding: "json",
+  headers: {},
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                               | [models.GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONType](../models/getalllogdrainsdeliverylogdrainsresponse200applicationjsontype.md) | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
+| `endpoint`                                                                                                                                           | *string*                                                                                                                                             | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
+| `encoding`                                                                                                                                           | [models.GetAllLogDrainsDeliveryLogDrainsEncoding](../models/getalllogdrainsdeliverylogdrainsencoding.md)                                             | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
+| `compression`                                                                                                                                        | [models.GetAllLogDrainsDeliveryLogDrainsCompression](../models/getalllogdrainsdeliverylogdrainscompression.md)                                       | :heavy_minus_sign:                                                                                                                                   | N/A                                                                                                                                                  |
+| `headers`                                                                                                                                            | Record<string, *string*>                                                                                                                             | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |
+| `secret`                                                                                                                                             | *string*                                                                                                                                             | :heavy_minus_sign:                                                                                                                                   | N/A                                                                                                                                                  |

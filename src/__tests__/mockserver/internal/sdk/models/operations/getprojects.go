@@ -5510,12 +5510,14 @@ type GetProjectsPermissions struct {
 	IntegrationConfigurationTransfer         []components.ACLAction `json:"integrationConfigurationTransfer,omitempty"`
 	IntegrationDeploymentAction              []components.ACLAction `json:"integrationDeploymentAction,omitempty"`
 	IntegrationEvent                         []components.ACLAction `json:"integrationEvent,omitempty"`
+	IntegrationLog                           []components.ACLAction `json:"integrationLog,omitempty"`
 	IntegrationResource                      []components.ACLAction `json:"integrationResource,omitempty"`
 	IntegrationResourceReplCommand           []components.ACLAction `json:"integrationResourceReplCommand,omitempty"`
 	IntegrationResourceSecrets               []components.ACLAction `json:"integrationResourceSecrets,omitempty"`
 	IntegrationSSOSession                    []components.ACLAction `json:"integrationSSOSession,omitempty"`
 	IntegrationStoreTokenSet                 []components.ACLAction `json:"integrationStoreTokenSet,omitempty"`
 	IntegrationVercelConfigurationOverride   []components.ACLAction `json:"integrationVercelConfigurationOverride,omitempty"`
+	IntegrationPullRequest                   []components.ACLAction `json:"integrationPullRequest,omitempty"`
 	IPBlocking                               []components.ACLAction `json:"ipBlocking,omitempty"`
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
@@ -6122,6 +6124,13 @@ func (o *GetProjectsPermissions) GetIntegrationEvent() []components.ACLAction {
 	return o.IntegrationEvent
 }
 
+func (o *GetProjectsPermissions) GetIntegrationLog() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationLog
+}
+
 func (o *GetProjectsPermissions) GetIntegrationResource() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -6162,6 +6171,13 @@ func (o *GetProjectsPermissions) GetIntegrationVercelConfigurationOverride() []c
 		return nil
 	}
 	return o.IntegrationVercelConfigurationOverride
+}
+
+func (o *GetProjectsPermissions) GetIntegrationPullRequest() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationPullRequest
 }
 
 func (o *GetProjectsPermissions) GetIPBlocking() []components.ACLAction {
@@ -9662,12 +9678,91 @@ func (u GetProjectsBlockHistoryUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetProjectsBlockHistoryUnion: all fields are null")
 }
 
+type GetProjectsInterstitialHistoryAction string
+
+const (
+	GetProjectsInterstitialHistoryActionAddInterstitial    GetProjectsInterstitialHistoryAction = "add-interstitial"
+	GetProjectsInterstitialHistoryActionRemoveInterstitial GetProjectsInterstitialHistoryAction = "remove-interstitial"
+)
+
+func (e GetProjectsInterstitialHistoryAction) ToPointer() *GetProjectsInterstitialHistoryAction {
+	return &e
+}
+func (e *GetProjectsInterstitialHistoryAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "add-interstitial":
+		fallthrough
+	case "remove-interstitial":
+		*e = GetProjectsInterstitialHistoryAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetProjectsInterstitialHistoryAction: %v", v)
+	}
+}
+
+type GetProjectsInterstitialHistory struct {
+	Action    GetProjectsInterstitialHistoryAction `json:"action"`
+	CreatedAt float64                              `json:"createdAt"`
+	CaseID    *string                              `json:"caseId,omitempty"`
+	Reason    *string                              `json:"reason,omitempty"`
+	Actor     *string                              `json:"actor,omitempty"`
+	Comment   *string                              `json:"comment,omitempty"`
+}
+
+func (o *GetProjectsInterstitialHistory) GetAction() GetProjectsInterstitialHistoryAction {
+	if o == nil {
+		return GetProjectsInterstitialHistoryAction("")
+	}
+	return o.Action
+}
+
+func (o *GetProjectsInterstitialHistory) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *GetProjectsInterstitialHistory) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *GetProjectsInterstitialHistory) GetReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reason
+}
+
+func (o *GetProjectsInterstitialHistory) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *GetProjectsInterstitialHistory) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
 type GetProjectsAbuse struct {
-	Scanner      *string                        `json:"scanner,omitempty"`
-	History      []GetProjectsHistory           `json:"history"`
-	UpdatedAt    float64                        `json:"updatedAt"`
-	Block        *GetProjectsBlock              `json:"block,omitempty"`
-	BlockHistory []GetProjectsBlockHistoryUnion `json:"blockHistory,omitempty"`
+	Scanner             *string                          `json:"scanner,omitempty"`
+	History             []GetProjectsHistory             `json:"history"`
+	UpdatedAt           float64                          `json:"updatedAt"`
+	Block               *GetProjectsBlock                `json:"block,omitempty"`
+	BlockHistory        []GetProjectsBlockHistoryUnion   `json:"blockHistory,omitempty"`
+	Interstitial        *bool                            `json:"interstitial,omitempty"`
+	InterstitialHistory []GetProjectsInterstitialHistory `json:"interstitialHistory,omitempty"`
 }
 
 func (o *GetProjectsAbuse) GetScanner() *string {
@@ -9703,6 +9798,20 @@ func (o *GetProjectsAbuse) GetBlockHistory() []GetProjectsBlockHistoryUnion {
 		return nil
 	}
 	return o.BlockHistory
+}
+
+func (o *GetProjectsAbuse) GetInterstitial() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Interstitial
+}
+
+func (o *GetProjectsAbuse) GetInterstitialHistory() []GetProjectsInterstitialHistory {
+	if o == nil {
+		return nil
+	}
+	return o.InterstitialHistory
 }
 
 type GetProjectsInternalRouteTypeHost string

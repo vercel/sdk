@@ -3,18 +3,18 @@
 
 ## Supported Types
 
-### `models.Source1`
+### `models.GetIntegrationLogDrainsSource1`
 
 ```typescript
-const value: models.Source1 = {
+const value: models.GetIntegrationLogDrainsSource1 = {
   kind: "self-served",
 };
 ```
 
-### `models.Source2`
+### `models.GetIntegrationLogDrainsSource2`
 
 ```typescript
-const value: models.Source2 = {
+const value: models.GetIntegrationLogDrainsSource2 = {
   kind: "integration",
   integrationId: "<id>",
   integrationConfigurationId: "<id>",

@@ -9,7 +9,7 @@ import { OneHundredAndFortyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndFortyFour = {
   projectName: "<value>",
-  urls: [],
+  srcImages: [],
 };
 ```
 
@@ -18,4 +18,4 @@ let value: OneHundredAndFortyFour = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `urls`             | *string*[]         | :heavy_check_mark: | N/A                |
+| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |

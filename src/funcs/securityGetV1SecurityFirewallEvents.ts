@@ -93,6 +93,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "endTimestamp": payload.endTimestamp,
+    "hosts": payload.hosts,
     "projectId": payload.projectId,
     "startTimestamp": payload.startTimestamp,
   });

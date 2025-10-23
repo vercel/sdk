@@ -3,34 +3,33 @@
 
 ## Supported Types
 
-### `models.One1`
+### `models.PatchEdgeConfigItems11`
 
 ```typescript
-const value: models.One1 = {
+const value: models.PatchEdgeConfigItems11 = {
+  operation: "delete",
+  key: "<key>",
+  value: "<value>",
+};
+```
+
+### `models.PatchEdgeConfigItems12`
+
+```typescript
+const value: models.PatchEdgeConfigItems12 = {
   operation: "create",
   key: "<key>",
   value: "<value>",
 };
 ```
 
-### `models.One2`
+### `models.PatchEdgeConfigItems13`
 
 ```typescript
-const value: models.One2 = {
-  operation: "delete",
+const value: models.PatchEdgeConfigItems13 = {
+  operation: "upsert",
   key: "<key>",
-  value: null,
-};
-```
-
-### `models.One3`
-
-```typescript
-const value: models.One3 = {
-  operation: "update",
-  key: "<key>",
-  description:
-    "yum which suddenly correctly yippee soap down illustrious gosh rarely",
+  description: "helpfully potentially astonishing",
 };
 ```
 

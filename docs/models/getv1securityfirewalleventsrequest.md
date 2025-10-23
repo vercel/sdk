@@ -17,3 +17,4 @@ let value: GetV1SecurityFirewallEventsRequest = {
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `startTimestamp`   | *number*           | :heavy_minus_sign: | N/A                |
 | `endTimestamp`     | *number*           | :heavy_minus_sign: | N/A                |
+| `hosts`            | *string*           | :heavy_minus_sign: | N/A                |

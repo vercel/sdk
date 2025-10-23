@@ -1523,7 +1523,7 @@ const value: models.OneHundredAndFortyThree = {
 ```typescript
 const value: models.OneHundredAndFortyFour = {
   projectName: "<value>",
-  urls: [],
+  srcImages: [],
 };
 ```
 

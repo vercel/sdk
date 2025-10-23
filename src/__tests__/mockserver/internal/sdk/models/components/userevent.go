@@ -2640,7 +2640,7 @@ func (o *Payload145) GetEdgeConfigDigest() string {
 // Payload144 - The payload of the event, if requested.
 type Payload144 struct {
 	ProjectName string   `json:"projectName"`
-	Urls        []string `json:"urls"`
+	SrcImages   []string `json:"srcImages"`
 }
 
 func (p Payload144) MarshalJSON() ([]byte, error) {
@@ -2648,7 +2648,7 @@ func (p Payload144) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Payload144) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "urls"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"projectName", "srcImages"}); err != nil {
 		return err
 	}
 	return nil
@@ -2661,11 +2661,11 @@ func (o *Payload144) GetProjectName() string {
 	return o.ProjectName
 }
 
-func (o *Payload144) GetUrls() []string {
+func (o *Payload144) GetSrcImages() []string {
 	if o == nil {
 		return []string{}
 	}
-	return o.Urls
+	return o.SrcImages
 }
 
 // Payload143 - The payload of the event, if requested.
@@ -4761,8 +4761,8 @@ type PayloadType2 string
 
 const (
 	PayloadType2Redis       PayloadType2 = "redis"
-	PayloadType2EdgeConfig  PayloadType2 = "edge-config"
 	PayloadType2Postgres    PayloadType2 = "postgres"
+	PayloadType2EdgeConfig  PayloadType2 = "edge-config"
 	PayloadType2Blob        PayloadType2 = "blob"
 	PayloadType2Integration PayloadType2 = "integration"
 )
@@ -4778,9 +4778,9 @@ func (e *PayloadType2) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "redis":
 		fallthrough
-	case "edge-config":
-		fallthrough
 	case "postgres":
+		fallthrough
+	case "edge-config":
 		fallthrough
 	case "blob":
 		fallthrough
@@ -11931,11 +11931,11 @@ type TeamUser struct {
 	CreatedAt         float64                   `json:"createdAt"`
 	TeamID            string                    `json:"teamId"`
 	Role              TeamRole1                 `json:"role"`
-	TeamRoles         []UserEventTeamRole       `json:"teamRoles,omitempty"`
-	TeamPermissions   []UserEventTeamPermission `json:"teamPermissions,omitempty"`
 	Confirmed         bool                      `json:"confirmed"`
 	ConfirmedAt       float64                   `json:"confirmedAt"`
 	AccessRequestedAt *float64                  `json:"accessRequestedAt,omitempty"`
+	TeamRoles         []UserEventTeamRole       `json:"teamRoles,omitempty"`
+	TeamPermissions   []UserEventTeamPermission `json:"teamPermissions,omitempty"`
 	JoinedFrom        *TeamJoinedFrom1          `json:"joinedFrom,omitempty"`
 }
 
@@ -11978,20 +11978,6 @@ func (o *TeamUser) GetRole() TeamRole1 {
 	return o.Role
 }
 
-func (o *TeamUser) GetTeamRoles() []UserEventTeamRole {
-	if o == nil {
-		return nil
-	}
-	return o.TeamRoles
-}
-
-func (o *TeamUser) GetTeamPermissions() []UserEventTeamPermission {
-	if o == nil {
-		return nil
-	}
-	return o.TeamPermissions
-}
-
 func (o *TeamUser) GetConfirmed() bool {
 	if o == nil {
 		return false
@@ -12011,6 +11997,20 @@ func (o *TeamUser) GetAccessRequestedAt() *float64 {
 		return nil
 	}
 	return o.AccessRequestedAt
+}
+
+func (o *TeamUser) GetTeamRoles() []UserEventTeamRole {
+	if o == nil {
+		return nil
+	}
+	return o.TeamRoles
+}
+
+func (o *TeamUser) GetTeamPermissions() []UserEventTeamPermission {
+	if o == nil {
+		return nil
+	}
+	return o.TeamPermissions
 }
 
 func (o *TeamUser) GetJoinedFrom() *TeamJoinedFrom1 {
@@ -19466,6 +19466,7 @@ type Payload26 struct {
 	ProjectID   *string  `json:"projectId,omitempty"`
 	ProjectName *string  `json:"projectName,omitempty"`
 	Target      []string `json:"target,omitempty"`
+	Updated     *bool    `json:"updated,omitempty"`
 }
 
 func (p Payload26) MarshalJSON() ([]byte, error) {
@@ -19498,6 +19499,13 @@ func (o *Payload26) GetTarget() []string {
 		return nil
 	}
 	return o.Target
+}
+
+func (o *Payload26) GetUpdated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Updated
 }
 
 // Payload25 - The payload of the event, if requested.

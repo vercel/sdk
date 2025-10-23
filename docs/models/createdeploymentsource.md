@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDeploymentSource } from "@vercel/sdk/models/createdeploymentop.js";
 
-let value: CreateDeploymentSource = "clone/repo";
+let value: CreateDeploymentSource = "import";
 ```
 
 ## Values
 
 ```typescript
-"cli" | "git" | "import" | "import/repo" | "clone/repo" | "api-trigger-git-deploy" | "redeploy" | "v0-web"
+"api-trigger-git-deploy" | "cli" | "clone/repo" | "git" | "import" | "import/repo" | "redeploy" | "v0-web"
 ```

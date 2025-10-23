@@ -202,21 +202,21 @@ test("Deployments Create Deployment", async () => {
     public: false,
     status: "CANCELED",
     id: "<id>",
-    name: "<value>",
     createdAt: 179.28,
+    readyState: "BUILDING",
+    name: "<value>",
     type: "LAMBDAS",
     meta: {
       "key": "<value>",
     },
-    readyState: "BUILDING",
     regions: [],
-    version: 8477.72,
     url: "https://unwritten-viability.org",
+    version: 8477.72,
     projectId: "<id>",
-    ownerId: "<id>",
     plan: "enterprise",
-    routes: [],
     createdIn: "<value>",
+    ownerId: "<id>",
+    routes: [],
   });
 });
 

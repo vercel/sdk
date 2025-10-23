@@ -15,5 +15,6 @@ let value: Capabilities = {};
 | `mcp`              | *boolean*          | :heavy_minus_sign: | N/A                |
 | `sso`              | *boolean*          | :heavy_minus_sign: | N/A                |
 | `billable`         | *boolean*          | :heavy_minus_sign: | N/A                |
+| `transferable`     | *boolean*          | :heavy_minus_sign: | N/A                |
 | `secretsSync`      | *boolean*          | :heavy_minus_sign: | N/A                |
 | `projects`         | *boolean*          | :heavy_minus_sign: | N/A                |

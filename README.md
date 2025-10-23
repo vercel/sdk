@@ -395,6 +395,15 @@ run();
 * [getContactInfoSchema](docs/sdks/domainsregistrar/README.md#getcontactinfoschema) - Get contact info schema
 * [getOrder](docs/sdks/domainsregistrar/README.md#getorder) - Get a domain order
 
+### [drains](docs/sdks/drains/README.md)
+
+* [createDrain](docs/sdks/drains/README.md#createdrain) - Create a new Drain
+* [getDrains](docs/sdks/drains/README.md#getdrains) - Retrieve a list of all Drains
+* [deleteDrain](docs/sdks/drains/README.md#deletedrain) - Delete a drain
+* [getDrain](docs/sdks/drains/README.md#getdrain) - Find a Drain by id
+* [updateDrain](docs/sdks/drains/README.md#updatedrain) - Update an existing Drain
+* [testDrain](docs/sdks/drains/README.md#testdrain) - Validate Drain delivery configuration
+
 ### [edgeCache](docs/sdks/edgecache/README.md)
 
 * [invalidateByTags](docs/sdks/edgecache/README.md#invalidatebytags) - Invalidate by tag
@@ -441,6 +450,10 @@ run();
 
 ### [logDrains](docs/sdks/logdrains/README.md)
 
+* [getConfigurableLogDrain](docs/sdks/logdrains/README.md#getconfigurablelogdrain) - Retrieves a Configurable Log Drain
+* [deleteConfigurableLogDrain](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
+* [getAllLogDrains](docs/sdks/logdrains/README.md#getalllogdrains) - Retrieves a list of all the Log Drains
+* [createConfigurableLogDrain](docs/sdks/logdrains/README.md#createconfigurablelogdrain) - Creates a Configurable Log Drain
 * [getIntegrationLogDrains](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
 * [createLogDrain](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
 * [deleteIntegrationLogDrain](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
@@ -655,6 +668,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`domainsRegistrarTransferInDomain`](docs/sdks/domainsregistrar/README.md#transferindomain) - Transfer-in a domain
 - [`domainsRegistrarUpdateDomainAutoRenew`](docs/sdks/domainsregistrar/README.md#updatedomainautorenew) - Update auto-renew for a domain
 - [`domainsRegistrarUpdateDomainNameservers`](docs/sdks/domainsregistrar/README.md#updatedomainnameservers) - Update nameservers for a domain
+- [`drainsCreateDrain`](docs/sdks/drains/README.md#createdrain) - Create a new Drain
+- [`drainsDeleteDrain`](docs/sdks/drains/README.md#deletedrain) - Delete a drain
+- [`drainsGetDrain`](docs/sdks/drains/README.md#getdrain) - Find a Drain by id
+- [`drainsGetDrains`](docs/sdks/drains/README.md#getdrains) - Retrieve a list of all Drains
+- [`drainsTestDrain`](docs/sdks/drains/README.md#testdrain) - Validate Drain delivery configuration
+- [`drainsUpdateDrain`](docs/sdks/drains/README.md#updatedrain) - Update an existing Drain
 - [`edgeCacheDangerouslyDeleteByTags`](docs/sdks/edgecache/README.md#dangerouslydeletebytags) - Dangerously delete by tag
 - [`edgeCacheInvalidateByTags`](docs/sdks/edgecache/README.md#invalidatebytags) - Invalidate by tag
 - [`edgeConfigCreateEdgeConfig`](docs/sdks/edgeconfig/README.md#createedgeconfig) - Create an Edge Config
@@ -686,8 +705,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Retrieve an integration configuration
 - [`integrationsGetConfigurationProducts`](docs/sdks/integrations/README.md#getconfigurationproducts) - List products for integration configuration
 - [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get configurations for the authenticated user or team
+- [`logDrainsCreateConfigurableLogDrain`](docs/sdks/logdrains/README.md#createconfigurablelogdrain) - Creates a Configurable Log Drain
 - [`logDrainsCreateLogDrain`](docs/sdks/logdrains/README.md#createlogdrain) - Creates a new Integration Log Drain
+- [`logDrainsDeleteConfigurableLogDrain`](docs/sdks/logdrains/README.md#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
 - [`logDrainsDeleteIntegrationLogDrain`](docs/sdks/logdrains/README.md#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
+- [`logDrainsGetAllLogDrains`](docs/sdks/logdrains/README.md#getalllogdrains) - Retrieves a list of all the Log Drains
+- [`logDrainsGetConfigurableLogDrain`](docs/sdks/logdrains/README.md#getconfigurablelogdrain) - Retrieves a Configurable Log Drain
 - [`logDrainsGetIntegrationLogDrains`](docs/sdks/logdrains/README.md#getintegrationlogdrains) - Retrieves a list of Integration log drains
 - [`logsGetRuntimeLogs`](docs/sdks/logs/README.md#getruntimelogs) - Get logs for a deployment
 - [`marketplaceCreateEvent`](docs/sdks/marketplace/README.md#createevent) - Create Event
@@ -952,7 +975,7 @@ run();
 **Primary error:**
 * [`VercelError`](./src/models/vercelerror.ts): The base class for HTTP error responses.
 
-<details><summary>Less common errors (28)</summary>
+<details><summary>Less common errors (29)</summary>
 
 <br />
 
@@ -965,28 +988,29 @@ run();
 
 
 **Inherit from [`VercelError`](./src/models/vercelerror.ts)**:
-* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 15 of 200 methods.*
-* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 15 of 200 methods.*
-* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 15 of 200 methods.*
-* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 15 of 200 methods.*
-* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 15 of 200 methods.*
-* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 200 methods.*
-* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 6 of 200 methods.*
-* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 200 methods.*
-* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 200 methods.*
-* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 200 methods.*
-* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 200 methods.*
-* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 200 methods.*
-* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 200 methods.*
-* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 200 methods.*
-* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 200 methods.*
-* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 200 methods.*
-* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 200 methods.*
-* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 200 methods.*
-* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 200 methods.*
-* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 200 methods.*
-* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 200 methods.*
-* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 200 methods.*
+* [`HttpApiDecodeError`](./src/models/httpapidecodeerror.ts): The request did not match the expected schema. Status code `400`. Applicable to 15 of 210 methods.*
+* [`Unauthorized`](./src/models/unauthorized.ts): Unauthorized. Status code `401`. Applicable to 15 of 210 methods.*
+* [`NotAuthorizedForScope`](./src/models/notauthorizedforscope.ts): NotAuthorizedForScope. Status code `403`. Applicable to 15 of 210 methods.*
+* [`TooManyRequests`](./src/models/toomanyrequests.ts): TooManyRequests. Status code `429`. Applicable to 15 of 210 methods.*
+* [`InternalServerError`](./src/models/internalservererror.ts): InternalServerError. Status code `500`. Applicable to 15 of 210 methods.*
+* [`Forbidden`](./src/models/forbidden.ts): NotAuthorizedForScope. Status code `403`. Applicable to 9 of 210 methods.*
+* [`TldNotSupported`](./src/models/tldnotsupported.ts): The TLD is not currently supported. Status code `400`. Applicable to 6 of 210 methods.*
+* [`DomainTooShort`](./src/models/domaintooshort.ts): The domain name (excluding the TLD) is too short. Status code `400`. Applicable to 5 of 210 methods.*
+* [`BadRequest`](./src/models/badrequest.ts): There was something wrong with the request. Status code `400`. Applicable to 4 of 210 methods.*
+* [`DomainNotRegistered`](./src/models/domainnotregistered.ts): The domain is not registered with Vercel. Status code `400`. Applicable to 4 of 210 methods.*
+* [`ExpectedPriceMismatch`](./src/models/expectedpricemismatch.ts): The expected price passed does not match the actual price. Status code `400`. Applicable to 4 of 210 methods.*
+* [`DomainNotAvailable`](./src/models/domainnotavailable.ts): The domain is not available. Status code `400`. Applicable to 4 of 210 methods.*
+* [`DomainNotFound`](./src/models/domainnotfound.ts): The domain was not found in our system. Status code `404`. Applicable to 4 of 210 methods.*
+* [`NotFound`](./src/models/notfound.ts): NotFound. Status code `404`. Applicable to 3 of 210 methods.*
+* [`OrderTooExpensive`](./src/models/ordertooexpensive.ts): The total price of the order is too high. Status code `400`. Applicable to 2 of 210 methods.*
+* [`InvalidAdditionalContactInfo`](./src/models/invalidadditionalcontactinfo.ts): Additional contact information provided for the TLD is invalid. Status code `400`. Applicable to 2 of 210 methods.*
+* [`AdditionalContactInfoRequired`](./src/models/additionalcontactinforequired.ts): Additional contact information is required for the TLD. Status code `400`. Applicable to 2 of 210 methods.*
+* [`TooManyDomains`](./src/models/toomanydomains.ts): The number of domains in the order is too high. Status code `400`. Applicable to 1 of 210 methods.*
+* [`DuplicateDomains`](./src/models/duplicatedomains.ts): Duplicate domains were provided. Status code `400`. Applicable to 1 of 210 methods.*
+* [`DomainAlreadyOwned`](./src/models/domainalreadyowned.ts): The domain is already owned by another team or user. Status code `400`. Applicable to 1 of 210 methods.*
+* [`DNSSECEnabled`](./src/models/dnssecenabled.ts): The operation cannot be completed because DNSSEC is enabled for the domain. Status code `400`. Applicable to 1 of 210 methods.*
+* [`DomainAlreadyRenewing`](./src/models/domainalreadyrenewing.ts): The domain is already renewing. Status code `400`. Applicable to 1 of 210 methods.*
+* [`DomainNotRenewable`](./src/models/domainnotrenewable.ts): The domain is not renewable. Status code `400`. Applicable to 1 of 210 methods.*
 * [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

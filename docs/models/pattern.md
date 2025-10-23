@@ -6,7 +6,7 @@
 import { Pattern } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: Pattern = {
-  atBRANDAt628700: {},
+  atBRANDAt626754: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: Pattern = {
 
 | Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `atBRANDAt628700`                                                                                                          | [models.GetConfigurationProductsPropertiesAtBRANDAt628700](../models/getconfigurationproductspropertiesatbrandat628700.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `atBRANDAt626754`                                                                                                          | [models.GetConfigurationProductsPropertiesAtBRANDAt626754](../models/getconfigurationproductspropertiesatbrandat626754.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |

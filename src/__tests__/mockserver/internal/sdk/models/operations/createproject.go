@@ -6180,12 +6180,14 @@ type CreateProjectPermissions struct {
 	IntegrationConfigurationTransfer         []components.ACLAction `json:"integrationConfigurationTransfer,omitempty"`
 	IntegrationDeploymentAction              []components.ACLAction `json:"integrationDeploymentAction,omitempty"`
 	IntegrationEvent                         []components.ACLAction `json:"integrationEvent,omitempty"`
+	IntegrationLog                           []components.ACLAction `json:"integrationLog,omitempty"`
 	IntegrationResource                      []components.ACLAction `json:"integrationResource,omitempty"`
 	IntegrationResourceReplCommand           []components.ACLAction `json:"integrationResourceReplCommand,omitempty"`
 	IntegrationResourceSecrets               []components.ACLAction `json:"integrationResourceSecrets,omitempty"`
 	IntegrationSSOSession                    []components.ACLAction `json:"integrationSSOSession,omitempty"`
 	IntegrationStoreTokenSet                 []components.ACLAction `json:"integrationStoreTokenSet,omitempty"`
 	IntegrationVercelConfigurationOverride   []components.ACLAction `json:"integrationVercelConfigurationOverride,omitempty"`
+	IntegrationPullRequest                   []components.ACLAction `json:"integrationPullRequest,omitempty"`
 	IPBlocking                               []components.ACLAction `json:"ipBlocking,omitempty"`
 	JobGlobal                                []components.ACLAction `json:"jobGlobal,omitempty"`
 	LogDrain                                 []components.ACLAction `json:"logDrain,omitempty"`
@@ -6792,6 +6794,13 @@ func (o *CreateProjectPermissions) GetIntegrationEvent() []components.ACLAction 
 	return o.IntegrationEvent
 }
 
+func (o *CreateProjectPermissions) GetIntegrationLog() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationLog
+}
+
 func (o *CreateProjectPermissions) GetIntegrationResource() []components.ACLAction {
 	if o == nil {
 		return nil
@@ -6832,6 +6841,13 @@ func (o *CreateProjectPermissions) GetIntegrationVercelConfigurationOverride() [
 		return nil
 	}
 	return o.IntegrationVercelConfigurationOverride
+}
+
+func (o *CreateProjectPermissions) GetIntegrationPullRequest() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationPullRequest
 }
 
 func (o *CreateProjectPermissions) GetIPBlocking() []components.ACLAction {
@@ -10332,12 +10348,91 @@ func (u CreateProjectBlockHistoryUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateProjectBlockHistoryUnion: all fields are null")
 }
 
+type CreateProjectInterstitialHistoryAction string
+
+const (
+	CreateProjectInterstitialHistoryActionAddInterstitial    CreateProjectInterstitialHistoryAction = "add-interstitial"
+	CreateProjectInterstitialHistoryActionRemoveInterstitial CreateProjectInterstitialHistoryAction = "remove-interstitial"
+)
+
+func (e CreateProjectInterstitialHistoryAction) ToPointer() *CreateProjectInterstitialHistoryAction {
+	return &e
+}
+func (e *CreateProjectInterstitialHistoryAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "add-interstitial":
+		fallthrough
+	case "remove-interstitial":
+		*e = CreateProjectInterstitialHistoryAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectInterstitialHistoryAction: %v", v)
+	}
+}
+
+type CreateProjectInterstitialHistory struct {
+	Action    CreateProjectInterstitialHistoryAction `json:"action"`
+	CreatedAt float64                                `json:"createdAt"`
+	CaseID    *string                                `json:"caseId,omitempty"`
+	Reason    *string                                `json:"reason,omitempty"`
+	Actor     *string                                `json:"actor,omitempty"`
+	Comment   *string                                `json:"comment,omitempty"`
+}
+
+func (o *CreateProjectInterstitialHistory) GetAction() CreateProjectInterstitialHistoryAction {
+	if o == nil {
+		return CreateProjectInterstitialHistoryAction("")
+	}
+	return o.Action
+}
+
+func (o *CreateProjectInterstitialHistory) GetCreatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateProjectInterstitialHistory) GetCaseID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CaseID
+}
+
+func (o *CreateProjectInterstitialHistory) GetReason() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reason
+}
+
+func (o *CreateProjectInterstitialHistory) GetActor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Actor
+}
+
+func (o *CreateProjectInterstitialHistory) GetComment() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Comment
+}
+
 type CreateProjectAbuse struct {
-	Scanner      *string                          `json:"scanner,omitempty"`
-	History      []CreateProjectHistory           `json:"history"`
-	UpdatedAt    float64                          `json:"updatedAt"`
-	Block        *CreateProjectBlock              `json:"block,omitempty"`
-	BlockHistory []CreateProjectBlockHistoryUnion `json:"blockHistory,omitempty"`
+	Scanner             *string                            `json:"scanner,omitempty"`
+	History             []CreateProjectHistory             `json:"history"`
+	UpdatedAt           float64                            `json:"updatedAt"`
+	Block               *CreateProjectBlock                `json:"block,omitempty"`
+	BlockHistory        []CreateProjectBlockHistoryUnion   `json:"blockHistory,omitempty"`
+	Interstitial        *bool                              `json:"interstitial,omitempty"`
+	InterstitialHistory []CreateProjectInterstitialHistory `json:"interstitialHistory,omitempty"`
 }
 
 func (o *CreateProjectAbuse) GetScanner() *string {
@@ -10373,6 +10468,20 @@ func (o *CreateProjectAbuse) GetBlockHistory() []CreateProjectBlockHistoryUnion 
 		return nil
 	}
 	return o.BlockHistory
+}
+
+func (o *CreateProjectAbuse) GetInterstitial() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Interstitial
+}
+
+func (o *CreateProjectAbuse) GetInterstitialHistory() []CreateProjectInterstitialHistory {
+	if o == nil {
+		return nil
+	}
+	return o.InterstitialHistory
 }
 
 type CreateProjectInternalRouteTypeHost string

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: d78bbab280d278365562f1c0947b0102
+  docChecksum: 2009a3a4cc23aa2401f17ba1f096876c
   docVersion: 0.0.1
-  speakeasyVersion: 1.637.0
-  generationVersion: 2.727.4
-  releaseVersion: 1.14.0
-  configChecksum: 1b19d14acbdb8b1e6c6dbdb34d50754d
+  speakeasyVersion: 1.638.1
+  generationVersion: 2.729.2
+  releaseVersion: 1.15.0
+  configChecksum: 9cffd5d0f63c483d3df08f2b9b9a6e57
   repoURL: https://github.com/vercel/sdk.git
   installationURL: https://github.com/vercel/sdk
   published: true
@@ -16,7 +16,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.22.0
+    core: 3.23.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -141,8 +141,8 @@ generatedFiles:
   - docs/models/assignaliasrequest.md
   - docs/models/assignaliasrequestbody.md
   - docs/models/assignaliasresponsebody.md
-  - docs/models/atbrandat628700.md
-  - docs/models/atbrandat8646.md
+  - docs/models/atbrandat626754.md
+  - docs/models/atbrandat8558.md
   - docs/models/attribution.md
   - docs/models/authentication.md
   - docs/models/authmethod.md
@@ -387,6 +387,7 @@ generatedFiles:
   - docs/models/completerollingreleasestages.md
   - docs/models/completerollingreleasestate.md
   - docs/models/completerollingreleasetarget.md
+  - docs/models/compression.md
   - docs/models/computedprojectrole.md
   - docs/models/conclusion.md
   - docs/models/conditiongroup.md
@@ -455,6 +456,9 @@ generatedFiles:
   - docs/models/createcheckstatus.md
   - docs/models/createchecktbt.md
   - docs/models/createcheckvirtualexperiencescore.md
+  - docs/models/createconfigurablelogdrainrequest.md
+  - docs/models/createconfigurablelogdrainrequestbody.md
+  - docs/models/createconfigurablelogdrainresponsebody.md
   - docs/models/createcustomenvironmentbranchmatcher.md
   - docs/models/createcustomenvironmentdomains.md
   - docs/models/createcustomenvironmentenvironmentresponsetype.md
@@ -539,6 +543,7 @@ generatedFiles:
   - docs/models/createdeploymentrequestbody.md
   - docs/models/createdeploymentresponsebody.md
   - docs/models/createdeploymentroutesop.md
+  - docs/models/createdeploymentroutestransforms.md
   - docs/models/createdeployments.md
   - docs/models/createdeploymentsource.md
   - docs/models/createdeploymentspeedinsights.md
@@ -556,6 +561,87 @@ generatedFiles:
   - docs/models/createdeploymentwebanalytics.md
   - docs/models/createdfrom.md
   - docs/models/createdinternalcontenthint.md
+  - docs/models/createdraindelivery1.md
+  - docs/models/createdraindelivery2.md
+  - docs/models/createdraindelivery3.md
+  - docs/models/createdraindelivery4.md
+  - docs/models/createdraindelivery5.md
+  - docs/models/createdraindeliverycompression.md
+  - docs/models/createdraindeliverydrains1.md
+  - docs/models/createdraindeliverydrains2.md
+  - docs/models/createdraindeliverydrains3.md
+  - docs/models/createdraindeliverydrainscompression.md
+  - docs/models/createdraindeliverydrainsencoding.md
+  - docs/models/createdraindeliverydrainsendpoint.md
+  - docs/models/createdraindeliverydrainsresponse200applicationjsonencoding.md
+  - docs/models/createdraindeliverydrainsresponse200applicationjsonresponsebody24type.md
+  - docs/models/createdraindeliverydrainsresponse200applicationjsonresponsebody25type.md
+  - docs/models/createdraindeliverydrainsresponse200applicationjsonresponsebody2type.md
+  - docs/models/createdraindeliverydrainsresponse200applicationjsonresponsebodytype.md
+  - docs/models/createdraindeliverydrainsresponse200applicationjsontype.md
+  - docs/models/createdraindeliverydrainsresponse200encoding.md
+  - docs/models/createdraindeliverydrainsresponse200type.md
+  - docs/models/createdraindeliverydrainsresponseencoding.md
+  - docs/models/createdraindeliverydrainsresponsetype.md
+  - docs/models/createdraindeliverydrainstype.md
+  - docs/models/createdraindeliveryencoding.md
+  - docs/models/createdraindeliveryendpoint.md
+  - docs/models/createdraindeliverytarget.md
+  - docs/models/createdraindeliverytype.md
+  - docs/models/createdrainfilter1.md
+  - docs/models/createdrainfilter2.md
+  - docs/models/createdrainfilterdeployment.md
+  - docs/models/createdrainfilterdrains1.md
+  - docs/models/createdrainfilterdrains2.md
+  - docs/models/createdrainfilterdrainsdeployment.md
+  - docs/models/createdrainfilterdrainslog.md
+  - docs/models/createdrainfilterdrainsproject.md
+  - docs/models/createdrainfilterdrainsresponse2.md
+  - docs/models/createdrainfilterdrainsresponsedeployment.md
+  - docs/models/createdrainfilterdrainsresponseproject.md
+  - docs/models/createdrainfilterdrainsresponsetype.md
+  - docs/models/createdrainfilterdrainstype.md
+  - docs/models/createdrainfilterlog.md
+  - docs/models/createdrainfilterproject.md
+  - docs/models/createdrainfiltertype.md
+  - docs/models/createdrainfilterv21.md
+  - docs/models/createdrainfilterv22.md
+  - docs/models/createdrainfilterv2drainsresponseversion.md
+  - docs/models/createdrainfilterv2drainsversion.md
+  - docs/models/createdrainfilterv2filter.md
+  - docs/models/createdrainfilterv2version.md
+  - docs/models/createdrainprojects.md
+  - docs/models/createdrainrequest.md
+  - docs/models/createdrainrequestbody.md
+  - docs/models/createdrainresponsebody.md
+  - docs/models/createdrainresponsebody1.md
+  - docs/models/createdrainresponsebody2.md
+  - docs/models/createdrainresponsebodyanalytics.md
+  - docs/models/createdrainresponsebodycreatedfrom.md
+  - docs/models/createdrainresponsebodydelivery.md
+  - docs/models/createdrainresponsebodydrainssource.md
+  - docs/models/createdrainresponsebodydrainsspeedinsights.md
+  - docs/models/createdrainresponsebodydrainsstatus.md
+  - docs/models/createdrainresponsebodydrainstype.md
+  - docs/models/createdrainresponsebodyenv.md
+  - docs/models/createdrainresponsebodyframework.md
+  - docs/models/createdrainresponsebodylog.md
+  - docs/models/createdrainresponsebodyprojectsmetadata.md
+  - docs/models/createdrainresponsebodysampling.md
+  - docs/models/createdrainresponsebodyschemas.md
+  - docs/models/createdrainresponsebodysource.md
+  - docs/models/createdrainresponsebodyspeedinsights.md
+  - docs/models/createdrainresponsebodystatus.md
+  - docs/models/createdrainresponsebodytype.md
+  - docs/models/createdrainsource.md
+  - docs/models/createdrainsource1.md
+  - docs/models/createdrainsource2.md
+  - docs/models/createdrainsourcedrains1.md
+  - docs/models/createdrainsourcedrains2.md
+  - docs/models/createdrainsourcedrainskind.md
+  - docs/models/createdrainsourcedrainsresponse200kind.md
+  - docs/models/createdrainsourcedrainsresponsekind.md
+  - docs/models/createdrainsourcekind.md
   - docs/models/createdtarget.md
   - docs/models/createdtype.md
   - docs/models/createedgeconfigpurpose.md
@@ -610,6 +696,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectmetadataschema.md
   - docs/models/createintegrationstoredirectnotification.md
   - docs/models/createintegrationstoredirectownership.md
+  - docs/models/createintegrationstoredirectprojectsmetadata.md
   - docs/models/createintegrationstoredirectproperties.md
   - docs/models/createintegrationstoredirectproperties1.md
   - docs/models/createintegrationstoredirectproperties2.md
@@ -620,31 +707,31 @@ generatedFiles:
   - docs/models/createintegrationstoredirectproperties7.md
   - docs/models/createintegrationstoredirectproperties8.md
   - docs/models/createintegrationstoredirectproperties9.md
-  - docs/models/createintegrationstoredirectpropertiesatbrandat8646.md
+  - docs/models/createintegrationstoredirectpropertiesatbrandat8558.md
   - docs/models/createintegrationstoredirectpropertiesdisabled.md
   - docs/models/createintegrationstoredirectpropertieshidden.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat8646.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsatbrandat8558.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsdisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationshidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsitems.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsmaxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsminlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationspattern.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat8646.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonatbrandat8558.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonmaxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonminlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonpattern.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema1atbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8646.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreatbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductatbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema1atbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6atbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsatbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6itemsmaxlengthatbrandat8558.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema6type.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema8atbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema9atbrandat8646.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat8646.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema8atbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschema9atbrandat8558.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschemaatbrandat8558.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductmetadataschematype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproducttype.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonresponsebodystoreproductuicontrol.md
@@ -674,7 +761,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200applicationjsonuireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat8646.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200atbrandat8558.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200maxlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200minlength.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200pattern.md
@@ -685,7 +772,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uiformattedvalue.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uihidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponse200uireadonly.md
-  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat8646.md
+  - docs/models/createintegrationstoredirectpropertiesintegrationsresponseatbrandat8558.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsedisabled.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsehidden.md
   - docs/models/createintegrationstoredirectpropertiesintegrationsresponsemaxlength.md
@@ -774,7 +861,7 @@ generatedFiles:
   - docs/models/createintegrationstoredirectuioptions1.md
   - docs/models/createintegrationstoredirectuioptions2.md
   - docs/models/createintegrationstoredirectuioptions3.md
-  - docs/models/createintegrationstoredirectuioptionsatbrandat8646.md
+  - docs/models/createintegrationstoredirectuioptionsatbrandat8558.md
   - docs/models/createintegrationstoredirectuioptionsdisabled.md
   - docs/models/createintegrationstoredirectuioptionshidden.md
   - docs/models/createintegrationstoredirectuioptionsintegrationsdisabled.md
@@ -800,6 +887,9 @@ generatedFiles:
   - docs/models/createlogdraincreatedfrom.md
   - docs/models/createlogdraindeliveryformat.md
   - docs/models/createlogdrainenvironments.md
+  - docs/models/createlogdrainlogdrainsdeliveryformat.md
+  - docs/models/createlogdrainlogdrainsenvironments.md
+  - docs/models/createlogdrainlogdrainssources.md
   - docs/models/createlogdrainrequest.md
   - docs/models/createlogdrainrequestbody.md
   - docs/models/createlogdrainresponsebody.md
@@ -1005,6 +1095,7 @@ generatedFiles:
   - docs/models/createprojectinternalroutes1.md
   - docs/models/createprojectinternalroutes2.md
   - docs/models/createprojectinternalroutesaction.md
+  - docs/models/createprojectinterstitialhistory.md
   - docs/models/createprojectipbuckets.md
   - docs/models/createprojectissuermode.md
   - docs/models/createprojectjobstatus.md
@@ -1058,6 +1149,7 @@ generatedFiles:
   - docs/models/createprojectprojectsreadysubstate.md
   - docs/models/createprojectprojectsresourceconfig.md
   - docs/models/createprojectprojectsresponse200action.md
+  - docs/models/createprojectprojectsresponse200applicationjsonaction.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodyenvtype.md
   - docs/models/createprojectprojectsresponse200applicationjsonresponsebodylastaliasrequesttype.md
@@ -1175,12 +1267,14 @@ generatedFiles:
   - docs/models/deletealiasstatus.md
   - docs/models/deleteauthtokenrequest.md
   - docs/models/deleteauthtokenresponsebody.md
+  - docs/models/deleteconfigurablelogdrainrequest.md
   - docs/models/deleteconfigurationrequest.md
   - docs/models/deletedeploymentrequest.md
   - docs/models/deletedeploymentresponsebody.md
   - docs/models/deletedeploymentstate.md
   - docs/models/deletedomainrequest.md
   - docs/models/deletedomainresponsebody.md
+  - docs/models/deletedrainrequest.md
   - docs/models/deleteduser.md
   - docs/models/deleteedgeconfigrequest.md
   - docs/models/deleteedgeconfigschemarequest.md
@@ -1199,7 +1293,18 @@ generatedFiles:
   - docs/models/deleteteamresponsebody.md
   - docs/models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidrequest.md
   - docs/models/deletewebhookrequest.md
+  - docs/models/delivery.md
+  - docs/models/delivery1.md
+  - docs/models/delivery2.md
+  - docs/models/delivery3.md
+  - docs/models/delivery4.md
+  - docs/models/delivery5.md
+  - docs/models/deliverycompression.md
+  - docs/models/deliveryencoding.md
+  - docs/models/deliveryendpoint.md
   - docs/models/deliveryformat.md
+  - docs/models/deliverytarget.md
+  - docs/models/deliverytype.md
   - docs/models/deployhook.md
   - docs/models/deployhooks.md
   - docs/models/deployment.md
@@ -1222,6 +1327,8 @@ generatedFiles:
   - docs/models/dnssecenabled.md
   - docs/models/dnssecenabledcode.md
   - docs/models/domain.md
+  - docs/models/domainalreadyowned.md
+  - docs/models/domainalreadyownedcode.md
   - docs/models/domainalreadyrenewing.md
   - docs/models/domainalreadyrenewingcode.md
   - docs/models/domainnotavailable.md
@@ -1241,6 +1348,25 @@ generatedFiles:
   - docs/models/domaintooshort.md
   - docs/models/domaintooshortcode.md
   - docs/models/downloadartifactrequest.md
+  - docs/models/drains.md
+  - docs/models/drains1.md
+  - docs/models/drains2.md
+  - docs/models/drainsanalytics.md
+  - docs/models/drainscreatedfrom.md
+  - docs/models/drainsdelivery.md
+  - docs/models/drainsdisabledreason.md
+  - docs/models/drainsenv.md
+  - docs/models/drainsfilterv2.md
+  - docs/models/drainsframework.md
+  - docs/models/drainslog.md
+  - docs/models/drainsprojectsmetadata.md
+  - docs/models/drainssampling.md
+  - docs/models/drainsschemas.md
+  - docs/models/drainssource.md
+  - docs/models/drainsspeedinsights.md
+  - docs/models/drainsstatus.md
+  - docs/models/drainstrace.md
+  - docs/models/drainstype.md
   - docs/models/duplicatedomains.md
   - docs/models/duplicatedomainscode.md
   - docs/models/edgeconfigitem.md
@@ -1315,6 +1441,8 @@ generatedFiles:
   - docs/models/enablepreviewfeedback.md
   - docs/models/enableproductionfeedback.md
   - docs/models/encoding.md
+  - docs/models/endpoint.md
+  - docs/models/endpoint1.md
   - docs/models/entities.md
   - docs/models/entitlements.md
   - docs/models/env.md
@@ -1371,6 +1499,13 @@ generatedFiles:
   - docs/models/fiftytwo.md
   - docs/models/files.md
   - docs/models/filetree.md
+  - docs/models/filter.md
+  - docs/models/filter1.md
+  - docs/models/filter2.md
+  - docs/models/filterdeployment.md
+  - docs/models/filterfilter.md
+  - docs/models/filterlog.md
+  - docs/models/filterproject.md
   - docs/models/filterprojectenvscontenthint1.md
   - docs/models/filterprojectenvscontenthint10.md
   - docs/models/filterprojectenvscontenthint11.md
@@ -1485,6 +1620,12 @@ generatedFiles:
   - docs/models/filterprojectenvstargetprojects2.md
   - docs/models/filterprojectenvstargetprojectsresponse1.md
   - docs/models/filterprojectenvstargetprojectsresponse2.md
+  - docs/models/filtertype.md
+  - docs/models/filterv2.md
+  - docs/models/filterv21.md
+  - docs/models/filterv22.md
+  - docs/models/filterv2filter.md
+  - docs/models/filterv2version.md
   - docs/models/five.md
   - docs/models/flagjsonvalue.md
   - docs/models/flags.md
@@ -1555,6 +1696,105 @@ generatedFiles:
   - docs/models/getallchecksstatus.md
   - docs/models/getallcheckstbt.md
   - docs/models/getallchecksvirtualexperiencescore.md
+  - docs/models/getalllogdrainsdelivery1.md
+  - docs/models/getalllogdrainsdelivery2.md
+  - docs/models/getalllogdrainsdelivery3.md
+  - docs/models/getalllogdrainsdelivery4.md
+  - docs/models/getalllogdrainsdelivery5.md
+  - docs/models/getalllogdrainsdeliverycompression.md
+  - docs/models/getalllogdrainsdeliveryencoding.md
+  - docs/models/getalllogdrainsdeliveryendpoint.md
+  - docs/models/getalllogdrainsdeliverylogdrains1.md
+  - docs/models/getalllogdrainsdeliverylogdrains2.md
+  - docs/models/getalllogdrainsdeliverylogdrains3.md
+  - docs/models/getalllogdrainsdeliverylogdrains4.md
+  - docs/models/getalllogdrainsdeliverylogdrains5.md
+  - docs/models/getalllogdrainsdeliverylogdrainscompression.md
+  - docs/models/getalllogdrainsdeliverylogdrainsencoding.md
+  - docs/models/getalllogdrainsdeliverylogdrainsendpoint.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200applicationjsonresponsebody1drains1type.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200applicationjsonresponsebody1drains2type.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200applicationjsonresponsebody1drainstype.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200applicationjsonresponsebody1type.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200applicationjsonresponsebodytype.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200applicationjsontype.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200encoding.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponse200type.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponseencoding.md
+  - docs/models/getalllogdrainsdeliverylogdrainsresponsetype.md
+  - docs/models/getalllogdrainsdeliverylogdrainstarget.md
+  - docs/models/getalllogdrainsdeliverylogdrainstype.md
+  - docs/models/getalllogdrainsdeliverytarget.md
+  - docs/models/getalllogdrainsdeliverytype.md
+  - docs/models/getalllogdrainsdrains1.md
+  - docs/models/getalllogdrainsdrains2.md
+  - docs/models/getalllogdrainsdrainsanalytics.md
+  - docs/models/getalllogdrainsdrainscreatedfrom.md
+  - docs/models/getalllogdrainsdrainsdelivery.md
+  - docs/models/getalllogdrainsdrainsdisabledreason.md
+  - docs/models/getalllogdrainsdrainsenv.md
+  - docs/models/getalllogdrainsdrainsfilterv2.md
+  - docs/models/getalllogdrainsdrainsframework.md
+  - docs/models/getalllogdrainsdrainslog.md
+  - docs/models/getalllogdrainsdrainslogdrainsanalytics.md
+  - docs/models/getalllogdrainsdrainslogdrainscreatedfrom.md
+  - docs/models/getalllogdrainsdrainslogdrainsdelivery.md
+  - docs/models/getalllogdrainsdrainslogdrainsdisabledreason.md
+  - docs/models/getalllogdrainsdrainslogdrainsenv.md
+  - docs/models/getalllogdrainsdrainslogdrainsfilterv2.md
+  - docs/models/getalllogdrainsdrainslogdrainslog.md
+  - docs/models/getalllogdrainsdrainslogdrainssampling.md
+  - docs/models/getalllogdrainsdrainslogdrainsschemas.md
+  - docs/models/getalllogdrainsdrainslogdrainssource.md
+  - docs/models/getalllogdrainsdrainslogdrainsspeedinsights.md
+  - docs/models/getalllogdrainsdrainslogdrainsstatus.md
+  - docs/models/getalllogdrainsdrainslogdrainstrace.md
+  - docs/models/getalllogdrainsdrainslogdrainstype.md
+  - docs/models/getalllogdrainsdrainsprojectsmetadata.md
+  - docs/models/getalllogdrainsdrainssampling.md
+  - docs/models/getalllogdrainsdrainsschemas.md
+  - docs/models/getalllogdrainsdrainssource.md
+  - docs/models/getalllogdrainsdrainsspeedinsights.md
+  - docs/models/getalllogdrainsdrainsstatus.md
+  - docs/models/getalllogdrainsdrainstrace.md
+  - docs/models/getalllogdrainsdrainstype.md
+  - docs/models/getalllogdrainsfilter1.md
+  - docs/models/getalllogdrainsfilter2.md
+  - docs/models/getalllogdrainsfilterdeployment.md
+  - docs/models/getalllogdrainsfilterlog.md
+  - docs/models/getalllogdrainsfilterlogdrains1.md
+  - docs/models/getalllogdrainsfilterlogdrains2.md
+  - docs/models/getalllogdrainsfilterlogdrainsdeployment.md
+  - docs/models/getalllogdrainsfilterlogdrainslog.md
+  - docs/models/getalllogdrainsfilterlogdrainsproject.md
+  - docs/models/getalllogdrainsfilterlogdrainsresponse200type.md
+  - docs/models/getalllogdrainsfilterlogdrainsresponsetype.md
+  - docs/models/getalllogdrainsfilterlogdrainstype.md
+  - docs/models/getalllogdrainsfilterproject.md
+  - docs/models/getalllogdrainsfiltertype.md
+  - docs/models/getalllogdrainsfilterv21.md
+  - docs/models/getalllogdrainsfilterv22.md
+  - docs/models/getalllogdrainsfilterv2filter.md
+  - docs/models/getalllogdrainsfilterv2logdrains1.md
+  - docs/models/getalllogdrainsfilterv2logdrains2.md
+  - docs/models/getalllogdrainsfilterv2logdrainsfilter.md
+  - docs/models/getalllogdrainsfilterv2logdrainsresponse200version.md
+  - docs/models/getalllogdrainsfilterv2logdrainsresponseversion.md
+  - docs/models/getalllogdrainsfilterv2logdrainsversion.md
+  - docs/models/getalllogdrainsfilterv2version.md
+  - docs/models/getalllogdrainsrequest.md
+  - docs/models/getalllogdrainsresponsebody.md
+  - docs/models/getalllogdrainsresponsebody1.md
+  - docs/models/getalllogdrainsresponsebody2.md
+  - docs/models/getalllogdrainsresponsebodyframework.md
+  - docs/models/getalllogdrainssource1.md
+  - docs/models/getalllogdrainssource2.md
+  - docs/models/getalllogdrainssourcekind.md
+  - docs/models/getalllogdrainssourcelogdrains1.md
+  - docs/models/getalllogdrainssourcelogdrains2.md
+  - docs/models/getalllogdrainssourcelogdrainskind.md
+  - docs/models/getalllogdrainssourcelogdrainsresponse200kind.md
+  - docs/models/getalllogdrainssourcelogdrainsresponsekind.md
   - docs/models/getauthtokenrequest.md
   - docs/models/getauthtokenresponsebody.md
   - docs/models/getauthuserresponsebody.md
@@ -1591,6 +1831,9 @@ generatedFiles:
   - docs/models/getcheckstatus.md
   - docs/models/getchecktbt.md
   - docs/models/getcheckvirtualexperiencescore.md
+  - docs/models/getconfigurablelogdrainframework.md
+  - docs/models/getconfigurablelogdrainrequest.md
+  - docs/models/getconfigurablelogdrainresponsebody.md
   - docs/models/getconfigurationproductschecks.md
   - docs/models/getconfigurationproductsconfiguration.md
   - docs/models/getconfigurationproductsdisabled2.md
@@ -1634,34 +1877,34 @@ generatedFiles:
   - docs/models/getconfigurationproductsintegrationsresponse200status.md
   - docs/models/getconfigurationproductsintegrationsresponsestatus.md
   - docs/models/getconfigurationproductsintegrationsstatus.md
-  - docs/models/getconfigurationproductspropertiesatbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesatbrandat626754.md
   - docs/models/getconfigurationproductspropertiesdisabled.md
   - docs/models/getconfigurationproductspropertieshidden.md
-  - docs/models/getconfigurationproductspropertiesintegrationsatbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesintegrationsatbrandat626754.md
   - docs/models/getconfigurationproductspropertiesintegrationsdisabled.md
   - docs/models/getconfigurationproductspropertiesintegrationshidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsitems.md
   - docs/models/getconfigurationproductspropertiesintegrationsmaxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsminlength.md
   - docs/models/getconfigurationproductspropertiesintegrationspattern.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema10atbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema10atbrandat626754.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema4type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6atbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsminlengthatbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6atbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6itemsminlengthatbrandat626754.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema6type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8atbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsminlengthatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemspatternatbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8atbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemsminlengthatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8itemspatternatbrandat626754.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema8type.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9atbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9maxlengthatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9patternatbrandat628700.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschemaatbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9atbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9maxlengthatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschema9patternatbrandat626754.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschemaatbrandat626754.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsmetadataschematype.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductstype.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonresponsebodyproductsuicontrol.md
@@ -1684,7 +1927,7 @@ generatedFiles:
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuiformattedvalue.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuihidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200applicationjsonuireadonly.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponse200atbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponse200atbrandat626754.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200maxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200minlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200pattern.md
@@ -1695,7 +1938,7 @@ generatedFiles:
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uiformattedvalue.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uihidden.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponse200uireadonly.md
-  - docs/models/getconfigurationproductspropertiesintegrationsresponseatbrandat628700.md
+  - docs/models/getconfigurationproductspropertiesintegrationsresponseatbrandat626754.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponsemaxlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponseminlength.md
   - docs/models/getconfigurationproductspropertiesintegrationsresponsepattern.md
@@ -1774,13 +2017,13 @@ generatedFiles:
   - docs/models/getconfigurationproductsuioptions1.md
   - docs/models/getconfigurationproductsuioptions2.md
   - docs/models/getconfigurationproductsuioptions3.md
-  - docs/models/getconfigurationproductsuioptionsatbrandat628700.md
+  - docs/models/getconfigurationproductsuioptionsatbrandat626754.md
   - docs/models/getconfigurationproductsuioptionsdisabled.md
   - docs/models/getconfigurationproductsuioptionshidden.md
-  - docs/models/getconfigurationproductsuioptionsintegrationsatbrandat628700.md
+  - docs/models/getconfigurationproductsuioptionsintegrationsatbrandat626754.md
   - docs/models/getconfigurationproductsuioptionsintegrationsdisabled.md
   - docs/models/getconfigurationproductsuioptionsintegrationshidden.md
-  - docs/models/getconfigurationproductsuioptionsintegrationsresponseatbrandat628700.md
+  - docs/models/getconfigurationproductsuioptionsintegrationsresponseatbrandat626754.md
   - docs/models/getconfigurationproductsuioptionsintegrationsresponsedisabled.md
   - docs/models/getconfigurationproductsuioptionsintegrationsresponsehidden.md
   - docs/models/getconfigurationproductsuioptionsvalue.md
@@ -1817,7 +2060,9 @@ generatedFiles:
   - docs/models/getconfigurationsresponsebody.md
   - docs/models/getconfigurationsresponsebody1.md
   - docs/models/getconfigurationsresponsebody2.md
+  - docs/models/getconfigurationsresponsebodydisabledreason.md
   - docs/models/getconfigurationsresponsebodyinstallationtype.md
+  - docs/models/getconfigurationsresponsebodyintegrationsdisabledreason.md
   - docs/models/getconfigurationsresponsebodyintegrationssource.md
   - docs/models/getconfigurationsresponsebodyintegrationstype.md
   - docs/models/getconfigurationsresponsebodysource.md
@@ -2068,6 +2313,180 @@ generatedFiles:
   - docs/models/getdomaintransferresponsebody1.md
   - docs/models/getdomaintransferresponsebody2.md
   - docs/models/getdomaintransferresponsebodystatus.md
+  - docs/models/getdraindelivery1.md
+  - docs/models/getdraindelivery2.md
+  - docs/models/getdraindelivery3.md
+  - docs/models/getdraindelivery4.md
+  - docs/models/getdraindelivery5.md
+  - docs/models/getdraindeliverycompression.md
+  - docs/models/getdraindeliverydrains1.md
+  - docs/models/getdraindeliverydrains2.md
+  - docs/models/getdraindeliverydrains3.md
+  - docs/models/getdraindeliverydrains4.md
+  - docs/models/getdraindeliverydrains5.md
+  - docs/models/getdraindeliverydrainscompression.md
+  - docs/models/getdraindeliverydrainsencoding.md
+  - docs/models/getdraindeliverydrainsendpoint.md
+  - docs/models/getdraindeliverydrainsresponse200applicationjsonresponsebody23type.md
+  - docs/models/getdraindeliverydrainsresponse200applicationjsonresponsebody24type.md
+  - docs/models/getdraindeliverydrainsresponse200applicationjsonresponsebody25type.md
+  - docs/models/getdraindeliverydrainsresponse200applicationjsonresponsebody2type.md
+  - docs/models/getdraindeliverydrainsresponse200applicationjsonresponsebodytype.md
+  - docs/models/getdraindeliverydrainsresponse200applicationjsontype.md
+  - docs/models/getdraindeliverydrainsresponse200encoding.md
+  - docs/models/getdraindeliverydrainsresponse200type.md
+  - docs/models/getdraindeliverydrainsresponseencoding.md
+  - docs/models/getdraindeliverydrainsresponsetype.md
+  - docs/models/getdraindeliverydrainstarget.md
+  - docs/models/getdraindeliverydrainstype.md
+  - docs/models/getdraindeliveryencoding.md
+  - docs/models/getdraindeliveryendpoint.md
+  - docs/models/getdraindeliverytarget.md
+  - docs/models/getdraindeliverytype.md
+  - docs/models/getdrainfilter1.md
+  - docs/models/getdrainfilter2.md
+  - docs/models/getdrainfilterdeployment.md
+  - docs/models/getdrainfilterdrains1.md
+  - docs/models/getdrainfilterdrains2.md
+  - docs/models/getdrainfilterdrainsdeployment.md
+  - docs/models/getdrainfilterdrainslog.md
+  - docs/models/getdrainfilterdrainsproject.md
+  - docs/models/getdrainfilterdrainsresponse200type.md
+  - docs/models/getdrainfilterdrainsresponsetype.md
+  - docs/models/getdrainfilterdrainstype.md
+  - docs/models/getdrainfilterlog.md
+  - docs/models/getdrainfilterproject.md
+  - docs/models/getdrainfiltertype.md
+  - docs/models/getdrainfilterv21.md
+  - docs/models/getdrainfilterv22.md
+  - docs/models/getdrainfilterv2drains1.md
+  - docs/models/getdrainfilterv2drains2.md
+  - docs/models/getdrainfilterv2drainsfilter.md
+  - docs/models/getdrainfilterv2drainsresponse200version.md
+  - docs/models/getdrainfilterv2drainsresponseversion.md
+  - docs/models/getdrainfilterv2drainsversion.md
+  - docs/models/getdrainfilterv2filter.md
+  - docs/models/getdrainfilterv2version.md
+  - docs/models/getdrainrequest.md
+  - docs/models/getdrainresponsebody.md
+  - docs/models/getdrainresponsebody1.md
+  - docs/models/getdrainresponsebody2.md
+  - docs/models/getdrainresponsebodyanalytics.md
+  - docs/models/getdrainresponsebodycreatedfrom.md
+  - docs/models/getdrainresponsebodydelivery.md
+  - docs/models/getdrainresponsebodydisabledreason.md
+  - docs/models/getdrainresponsebodydrainsanalytics.md
+  - docs/models/getdrainresponsebodydrainscreatedfrom.md
+  - docs/models/getdrainresponsebodydrainsdelivery.md
+  - docs/models/getdrainresponsebodydrainsdisabledreason.md
+  - docs/models/getdrainresponsebodydrainsenv.md
+  - docs/models/getdrainresponsebodydrainsfilterv2.md
+  - docs/models/getdrainresponsebodydrainslog.md
+  - docs/models/getdrainresponsebodydrainssampling.md
+  - docs/models/getdrainresponsebodydrainsschemas.md
+  - docs/models/getdrainresponsebodydrainssource.md
+  - docs/models/getdrainresponsebodydrainsspeedinsights.md
+  - docs/models/getdrainresponsebodydrainsstatus.md
+  - docs/models/getdrainresponsebodydrainstrace.md
+  - docs/models/getdrainresponsebodydrainstype.md
+  - docs/models/getdrainresponsebodyenv.md
+  - docs/models/getdrainresponsebodyfilterv2.md
+  - docs/models/getdrainresponsebodyframework.md
+  - docs/models/getdrainresponsebodylog.md
+  - docs/models/getdrainresponsebodyprojectsmetadata.md
+  - docs/models/getdrainresponsebodysampling.md
+  - docs/models/getdrainresponsebodyschemas.md
+  - docs/models/getdrainresponsebodysource.md
+  - docs/models/getdrainresponsebodyspeedinsights.md
+  - docs/models/getdrainresponsebodystatus.md
+  - docs/models/getdrainresponsebodytrace.md
+  - docs/models/getdrainresponsebodytype.md
+  - docs/models/getdrainsdelivery1.md
+  - docs/models/getdrainsdelivery2.md
+  - docs/models/getdrainsdelivery3.md
+  - docs/models/getdrainsdelivery4.md
+  - docs/models/getdrainsdelivery5.md
+  - docs/models/getdrainsdeliverycompression.md
+  - docs/models/getdrainsdeliverydrains1.md
+  - docs/models/getdrainsdeliverydrains2.md
+  - docs/models/getdrainsdeliverydrains3.md
+  - docs/models/getdrainsdeliverydrains4.md
+  - docs/models/getdrainsdeliverydrains5.md
+  - docs/models/getdrainsdeliverydrainscompression.md
+  - docs/models/getdrainsdeliverydrainsencoding.md
+  - docs/models/getdrainsdeliverydrainsendpoint.md
+  - docs/models/getdrainsdeliverydrainsresponse200applicationjsonresponsebodydrains24type.md
+  - docs/models/getdrainsdeliverydrainsresponse200applicationjsonresponsebodydrains25type.md
+  - docs/models/getdrainsdeliverydrainsresponse200applicationjsonresponsebodydrains2type.md
+  - docs/models/getdrainsdeliverydrainsresponse200applicationjsonresponsebodydrainstype.md
+  - docs/models/getdrainsdeliverydrainsresponse200applicationjsonresponsebodytype.md
+  - docs/models/getdrainsdeliverydrainsresponse200applicationjsontype.md
+  - docs/models/getdrainsdeliverydrainsresponse200encoding.md
+  - docs/models/getdrainsdeliverydrainsresponse200type.md
+  - docs/models/getdrainsdeliverydrainsresponseencoding.md
+  - docs/models/getdrainsdeliverydrainsresponsetype.md
+  - docs/models/getdrainsdeliverydrainstarget.md
+  - docs/models/getdrainsdeliverydrainstype.md
+  - docs/models/getdrainsdeliveryencoding.md
+  - docs/models/getdrainsdeliveryendpoint.md
+  - docs/models/getdrainsdeliverytarget.md
+  - docs/models/getdrainsdeliverytype.md
+  - docs/models/getdrainsdrainsanalytics.md
+  - docs/models/getdrainsdrainscreatedfrom.md
+  - docs/models/getdrainsdrainsdelivery.md
+  - docs/models/getdrainsdrainsdisabledreason.md
+  - docs/models/getdrainsdrainsenv.md
+  - docs/models/getdrainsdrainsfilterv2.md
+  - docs/models/getdrainsdrainslog.md
+  - docs/models/getdrainsdrainssampling.md
+  - docs/models/getdrainsdrainsschemas.md
+  - docs/models/getdrainsdrainssource.md
+  - docs/models/getdrainsdrainsspeedinsights.md
+  - docs/models/getdrainsdrainsstatus.md
+  - docs/models/getdrainsdrainstrace.md
+  - docs/models/getdrainsdrainstype.md
+  - docs/models/getdrainsfilter1.md
+  - docs/models/getdrainsfilter2.md
+  - docs/models/getdrainsfilterdeployment.md
+  - docs/models/getdrainsfilterdrains1.md
+  - docs/models/getdrainsfilterdrains2.md
+  - docs/models/getdrainsfilterdrainsdeployment.md
+  - docs/models/getdrainsfilterdrainslog.md
+  - docs/models/getdrainsfilterdrainsproject.md
+  - docs/models/getdrainsfilterdrainsresponse200type.md
+  - docs/models/getdrainsfilterdrainsresponsetype.md
+  - docs/models/getdrainsfilterdrainstype.md
+  - docs/models/getdrainsfilterlog.md
+  - docs/models/getdrainsfilterproject.md
+  - docs/models/getdrainsfiltertype.md
+  - docs/models/getdrainsfilterv21.md
+  - docs/models/getdrainsfilterv22.md
+  - docs/models/getdrainsfilterv2drains1.md
+  - docs/models/getdrainsfilterv2drains2.md
+  - docs/models/getdrainsfilterv2drainsfilter.md
+  - docs/models/getdrainsfilterv2drainsresponse200version.md
+  - docs/models/getdrainsfilterv2drainsresponseversion.md
+  - docs/models/getdrainsfilterv2drainsversion.md
+  - docs/models/getdrainsfilterv2filter.md
+  - docs/models/getdrainsfilterv2version.md
+  - docs/models/getdrainsource1.md
+  - docs/models/getdrainsource2.md
+  - docs/models/getdrainsourcedrains1.md
+  - docs/models/getdrainsourcedrains2.md
+  - docs/models/getdrainsourcedrainskind.md
+  - docs/models/getdrainsourcedrainsresponse200kind.md
+  - docs/models/getdrainsourcedrainsresponsekind.md
+  - docs/models/getdrainsourcekind.md
+  - docs/models/getdrainsrequest.md
+  - docs/models/getdrainsresponsebody.md
+  - docs/models/getdrainssource1.md
+  - docs/models/getdrainssource2.md
+  - docs/models/getdrainssourcedrains1.md
+  - docs/models/getdrainssourcedrains2.md
+  - docs/models/getdrainssourcedrainskind.md
+  - docs/models/getdrainssourcedrainsresponse200kind.md
+  - docs/models/getdrainssourcedrainsresponsekind.md
+  - docs/models/getdrainssourcekind.md
   - docs/models/getedgeconfigbackuprequest.md
   - docs/models/getedgeconfigbackupresponsebody.md
   - docs/models/getedgeconfigbackupresponsebody1.md
@@ -2145,6 +2564,8 @@ generatedFiles:
   - docs/models/getintegrationlogdrainsrequest.md
   - docs/models/getintegrationlogdrainsresponsebody.md
   - docs/models/getintegrationlogdrainssource.md
+  - docs/models/getintegrationlogdrainssource1.md
+  - docs/models/getintegrationlogdrainssource2.md
   - docs/models/getintegrationlogdrainssources.md
   - docs/models/getintegrationresourcelevel.md
   - docs/models/getintegrationresourcemetadata.md
@@ -2415,6 +2836,7 @@ generatedFiles:
   - docs/models/getprojectsinternalroutesaction.md
   - docs/models/getprojectsinternalrouteshas.md
   - docs/models/getprojectsinternalroutesmitigate.md
+  - docs/models/getprojectsinterstitialhistory.md
   - docs/models/getprojectsipbuckets.md
   - docs/models/getprojectsissuermode.md
   - docs/models/getprojectsjobstatus.md
@@ -2467,6 +2889,7 @@ generatedFiles:
   - docs/models/getprojectsprojectsreadystate.md
   - docs/models/getprojectsprojectsreadysubstate.md
   - docs/models/getprojectsprojectsresponse200action.md
+  - docs/models/getprojectsprojectsresponse200applicationjsonaction.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectscustomenvironmentstype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectslatestdeploymentstype.md
   - docs/models/getprojectsprojectsresponse200applicationjsonresponsebodyprojectstype.md
@@ -2602,6 +3025,7 @@ generatedFiles:
   - docs/models/getwebhooksresponsebody2.md
   - docs/models/getwebhooksresponsebodyevents.md
   - docs/models/getwebhooksresponsebodyframework.md
+  - docs/models/getwebhooksresponsebodyprojectsmetadata.md
   - docs/models/git.md
   - docs/models/gitcomments.md
   - docs/models/gitforkprotection.md
@@ -2689,6 +3113,7 @@ generatedFiles:
   - docs/models/internalroutesmitigate.md
   - docs/models/internalservererror.md
   - docs/models/internalservererrorcode.md
+  - docs/models/interstitialhistory.md
   - docs/models/invalidadditionalcontactinfo.md
   - docs/models/invalidadditionalcontactinfocode.md
   - docs/models/invalidatebytagsrequest.md
@@ -2798,6 +3223,7 @@ generatedFiles:
   - docs/models/listusereventsresponsebody.md
   - docs/models/locale.md
   - docs/models/localpatterns.md
+  - docs/models/log.md
   - docs/models/logdrain.md
   - docs/models/logdrainsvolume.md
   - docs/models/ma.md
@@ -2996,6 +3422,9 @@ generatedFiles:
   - docs/models/patchdomainresponsebody1.md
   - docs/models/patchdomainresponsebody2.md
   - docs/models/patchdomainresponsebody3.md
+  - docs/models/patchedgeconfigitems11.md
+  - docs/models/patchedgeconfigitems12.md
+  - docs/models/patchedgeconfigitems13.md
   - docs/models/patchedgeconfigitems1description.md
   - docs/models/patchedgeconfigitems1operation.md
   - docs/models/patchedgeconfigitemsrequest.md
@@ -3148,8 +3577,8 @@ generatedFiles:
   - docs/models/properties7.md
   - docs/models/properties8.md
   - docs/models/properties9.md
-  - docs/models/propertiesatbrandat628700.md
-  - docs/models/propertiesatbrandat8646.md
+  - docs/models/propertiesatbrandat626754.md
+  - docs/models/propertiesatbrandat8558.md
   - docs/models/propertiesdisabled.md
   - docs/models/propertieshidden.md
   - docs/models/propertiesitems.md
@@ -3502,6 +3931,7 @@ generatedFiles:
   - docs/models/responsebodyaliaserror.md
   - docs/models/responsebodyaliases.md
   - docs/models/responsebodyaliaswarning.md
+  - docs/models/responsebodyanalytics.md
   - docs/models/responsebodyarchitecture.md
   - docs/models/responsebodybackup.md
   - docs/models/responsebodybuild.md
@@ -3512,16 +3942,21 @@ generatedFiles:
   - docs/models/responsebodyconfig.md
   - docs/models/responsebodycontentdispositiontype.md
   - docs/models/responsebodycontenthint.md
+  - docs/models/responsebodycreatedfrom.md
   - docs/models/responsebodycreator.md
   - docs/models/responsebodycrons.md
   - docs/models/responsebodycustomenvironment.md
+  - docs/models/responsebodydelivery.md
   - docs/models/responsebodydeploymentalias.md
   - docs/models/responsebodydisabledreason.md
   - docs/models/responsebodydomains.md
+  - docs/models/responsebodydrains.md
+  - docs/models/responsebodyenv.md
   - docs/models/responsebodyenvs.md
   - docs/models/responsebodyerror.md
   - docs/models/responsebodyevents.md
   - docs/models/responsebodyexperimentaltriggers.md
+  - docs/models/responsebodyfilterv2.md
   - docs/models/responsebodyflags.md
   - docs/models/responsebodyformats.md
   - docs/models/responsebodyframework.md
@@ -3540,6 +3975,7 @@ generatedFiles:
   - docs/models/responsebodylambdas.md
   - docs/models/responsebodylevel.md
   - docs/models/responsebodylocalpatterns.md
+  - docs/models/responsebodylog.md
   - docs/models/responsebodymembers.md
   - docs/models/responsebodymetadata.md
   - docs/models/responsebodymicrofrontends.md
@@ -3565,6 +4001,8 @@ generatedFiles:
   - docs/models/responsebodyrole.md
   - docs/models/responsebodyrollingrelease.md
   - docs/models/responsebodyroutes.md
+  - docs/models/responsebodysampling.md
+  - docs/models/responsebodyschemas.md
   - docs/models/responsebodysource.md
   - docs/models/responsebodyspeedinsights.md
   - docs/models/responsebodystages.md
@@ -3573,6 +4011,7 @@ generatedFiles:
   - docs/models/responsebodytarget.md
   - docs/models/responsebodyteam.md
   - docs/models/responsebodyteamrole.md
+  - docs/models/responsebodytrace.md
   - docs/models/responsebodytransferpolicy.md
   - docs/models/responsebodytype.md
   - docs/models/responsebodyuser.md
@@ -3618,8 +4057,10 @@ generatedFiles:
   - docs/models/runtimecacheread.md
   - docs/models/runtimecachewrite.md
   - docs/models/saml.md
+  - docs/models/sampling.md
   - docs/models/scalingrules.md
   - docs/models/schema.md
+  - docs/models/schemas.md
   - docs/models/scope.md
   - docs/models/scope1.md
   - docs/models/scope2.md
@@ -3733,6 +4174,21 @@ generatedFiles:
   - docs/models/teamteamroles.md
   - docs/models/ten.md
   - docs/models/test.md
+  - docs/models/testdraindelivery.md
+  - docs/models/testdraindelivery1.md
+  - docs/models/testdraindelivery2.md
+  - docs/models/testdraindelivery3.md
+  - docs/models/testdraindeliverycompression.md
+  - docs/models/testdraindeliverydrainsencoding.md
+  - docs/models/testdraindeliveryencoding.md
+  - docs/models/testdraindeliveryendpoint.md
+  - docs/models/testdrainendpoint1.md
+  - docs/models/testdrainrequest.md
+  - docs/models/testdrainrequestbody.md
+  - docs/models/testdrainresponsebody.md
+  - docs/models/testdrainresponsebody1.md
+  - docs/models/testdrainresponsebody2.md
+  - docs/models/testdrainschemas.md
   - docs/models/thirteen.md
   - docs/models/thirty.md
   - docs/models/thirtyeight.md
@@ -3754,6 +4210,7 @@ generatedFiles:
   - docs/models/toomanyrequests.md
   - docs/models/toomanyrequestscode.md
   - docs/models/totp.md
+  - docs/models/trace.md
   - docs/models/tracedrain.md
   - docs/models/transfer.md
   - docs/models/transferindomaincontactinformation.md
@@ -3811,8 +4268,8 @@ generatedFiles:
   - docs/models/uioptions1.md
   - docs/models/uioptions2.md
   - docs/models/uioptions3.md
-  - docs/models/uioptionsatbrandat628700.md
-  - docs/models/uioptionsatbrandat8646.md
+  - docs/models/uioptionsatbrandat626754.md
+  - docs/models/uioptionsatbrandat8558.md
   - docs/models/uioptionsdisabled.md
   - docs/models/uioptionshidden.md
   - docs/models/uioptionsvalue.md
@@ -3875,6 +4332,127 @@ generatedFiles:
   - docs/models/updatedomainnameserversrequest.md
   - docs/models/updatedomainnameserversrequestbody.md
   - docs/models/updatedomainnameserversresponsebody.md
+  - docs/models/updatedrain11.md
+  - docs/models/updatedrain12.md
+  - docs/models/updatedrain13.md
+  - docs/models/updatedraindelivery.md
+  - docs/models/updatedraindelivery1.md
+  - docs/models/updatedraindelivery2.md
+  - docs/models/updatedraindelivery3.md
+  - docs/models/updatedraindelivery4.md
+  - docs/models/updatedraindelivery5.md
+  - docs/models/updatedraindeliverycompression.md
+  - docs/models/updatedraindeliverydrains1.md
+  - docs/models/updatedraindeliverydrains2.md
+  - docs/models/updatedraindeliverydrains3.md
+  - docs/models/updatedraindeliverydrains4.md
+  - docs/models/updatedraindeliverydrains5.md
+  - docs/models/updatedraindeliverydrainscompression.md
+  - docs/models/updatedraindeliverydrainsencoding.md
+  - docs/models/updatedraindeliverydrainsendpoint.md
+  - docs/models/updatedraindeliverydrainsresponse1.md
+  - docs/models/updatedraindeliverydrainsresponse2.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsonencoding.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsonresponsebody23type.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsonresponsebody24type.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsonresponsebody25type.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsonresponsebody2type.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsonresponsebodyencoding.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsonresponsebodytype.md
+  - docs/models/updatedraindeliverydrainsresponse200applicationjsontype.md
+  - docs/models/updatedraindeliverydrainsresponse200encoding.md
+  - docs/models/updatedraindeliverydrainsresponse200type.md
+  - docs/models/updatedraindeliverydrainsresponse3.md
+  - docs/models/updatedraindeliverydrainsresponseencoding.md
+  - docs/models/updatedraindeliverydrainsresponsetype.md
+  - docs/models/updatedraindeliverydrainstarget.md
+  - docs/models/updatedraindeliverydrainstype.md
+  - docs/models/updatedraindeliveryencoding.md
+  - docs/models/updatedraindeliveryendpoint.md
+  - docs/models/updatedraindeliverytarget.md
+  - docs/models/updatedraindeliverytype.md
+  - docs/models/updatedrainendpoint1.md
+  - docs/models/updatedrainenv.md
+  - docs/models/updatedrainfilter.md
+  - docs/models/updatedrainfilter1.md
+  - docs/models/updatedrainfilter2.md
+  - docs/models/updatedrainfilterdeployment.md
+  - docs/models/updatedrainfilterdrains1.md
+  - docs/models/updatedrainfilterdrains2.md
+  - docs/models/updatedrainfilterdrainsdeployment.md
+  - docs/models/updatedrainfilterdrainslog.md
+  - docs/models/updatedrainfilterdrainsproject.md
+  - docs/models/updatedrainfilterdrainsresponse1.md
+  - docs/models/updatedrainfilterdrainsresponse2.md
+  - docs/models/updatedrainfilterdrainsresponse2002.md
+  - docs/models/updatedrainfilterdrainsresponse200type.md
+  - docs/models/updatedrainfilterdrainsresponsetype.md
+  - docs/models/updatedrainfilterdrainstype.md
+  - docs/models/updatedrainfilterfilter.md
+  - docs/models/updatedrainfilterlog.md
+  - docs/models/updatedrainfilterproject.md
+  - docs/models/updatedrainfiltertype.md
+  - docs/models/updatedrainfilterv21.md
+  - docs/models/updatedrainfilterv22.md
+  - docs/models/updatedrainfilterv2drains1.md
+  - docs/models/updatedrainfilterv2drains2.md
+  - docs/models/updatedrainfilterv2drainsfilter.md
+  - docs/models/updatedrainfilterv2drainsresponse200version.md
+  - docs/models/updatedrainfilterv2drainsresponseversion.md
+  - docs/models/updatedrainfilterv2drainsversion.md
+  - docs/models/updatedrainfilterv2filter.md
+  - docs/models/updatedrainfilterv2version.md
+  - docs/models/updatedrainprojects.md
+  - docs/models/updatedrainrequest.md
+  - docs/models/updatedrainrequestbody.md
+  - docs/models/updatedrainresponsebody.md
+  - docs/models/updatedrainresponsebody1.md
+  - docs/models/updatedrainresponsebody2.md
+  - docs/models/updatedrainresponsebodyanalytics.md
+  - docs/models/updatedrainresponsebodycreatedfrom.md
+  - docs/models/updatedrainresponsebodydelivery.md
+  - docs/models/updatedrainresponsebodydisabledreason.md
+  - docs/models/updatedrainresponsebodydrainsanalytics.md
+  - docs/models/updatedrainresponsebodydrainscreatedfrom.md
+  - docs/models/updatedrainresponsebodydrainsdelivery.md
+  - docs/models/updatedrainresponsebodydrainsdisabledreason.md
+  - docs/models/updatedrainresponsebodydrainsenv.md
+  - docs/models/updatedrainresponsebodydrainsfilterv2.md
+  - docs/models/updatedrainresponsebodydrainslog.md
+  - docs/models/updatedrainresponsebodydrainssampling.md
+  - docs/models/updatedrainresponsebodydrainsschemas.md
+  - docs/models/updatedrainresponsebodydrainssource.md
+  - docs/models/updatedrainresponsebodydrainsspeedinsights.md
+  - docs/models/updatedrainresponsebodydrainsstatus.md
+  - docs/models/updatedrainresponsebodydrainstrace.md
+  - docs/models/updatedrainresponsebodydrainstype.md
+  - docs/models/updatedrainresponsebodyenv.md
+  - docs/models/updatedrainresponsebodyfilterv2.md
+  - docs/models/updatedrainresponsebodyframework.md
+  - docs/models/updatedrainresponsebodylog.md
+  - docs/models/updatedrainresponsebodyprojectsmetadata.md
+  - docs/models/updatedrainresponsebodysampling.md
+  - docs/models/updatedrainresponsebodyschemas.md
+  - docs/models/updatedrainresponsebodysource.md
+  - docs/models/updatedrainresponsebodyspeedinsights.md
+  - docs/models/updatedrainresponsebodystatus.md
+  - docs/models/updatedrainresponsebodytrace.md
+  - docs/models/updatedrainresponsebodytype.md
+  - docs/models/updatedrainsampling.md
+  - docs/models/updatedrainschemas.md
+  - docs/models/updatedrainsource.md
+  - docs/models/updatedrainsource1.md
+  - docs/models/updatedrainsource2.md
+  - docs/models/updatedrainsourcedrains1.md
+  - docs/models/updatedrainsourcedrains2.md
+  - docs/models/updatedrainsourcedrainskind.md
+  - docs/models/updatedrainsourcedrainsresponse1.md
+  - docs/models/updatedrainsourcedrainsresponse2.md
+  - docs/models/updatedrainsourcedrainsresponse200kind.md
+  - docs/models/updatedrainsourcedrainsresponsekind.md
+  - docs/models/updatedrainsourcekind.md
+  - docs/models/updatedrainstatus.md
+  - docs/models/updatedraintransforms.md
   - docs/models/updateduser.md
   - docs/models/updateedgeconfigpurpose.md
   - docs/models/updateedgeconfigpurpose1.md
@@ -4050,6 +4628,7 @@ generatedFiles:
   - docs/models/updateprojectdatacachedatacache.md
   - docs/models/updateprojectdatacachedeploymenttype.md
   - docs/models/updateprojectdatacachedomains.md
+  - docs/models/updateprojectdatacacheenv.md
   - docs/models/updateprojectdatacacheenvid.md
   - docs/models/updateprojectdatacacheenvid2.md
   - docs/models/updateprojectdatacacheframework.md
@@ -4107,6 +4686,7 @@ generatedFiles:
   - docs/models/updateprojectdatacacheprojectsreadystate.md
   - docs/models/updateprojectdatacacheprojectsreadysubstate.md
   - docs/models/updateprojectdatacacheprojectsresponse200action.md
+  - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonaction.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodyenvtype.md
   - docs/models/updateprojectdatacacheprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
@@ -4188,6 +4768,7 @@ generatedFiles:
   - docs/models/updateprojectinternalroutesaction.md
   - docs/models/updateprojectinternalrouteshas.md
   - docs/models/updateprojectinternalroutesmitigate.md
+  - docs/models/updateprojectinterstitialhistory.md
   - docs/models/updateprojectipbuckets.md
   - docs/models/updateprojectissuermode.md
   - docs/models/updateprojectjobstatus.md
@@ -4248,6 +4829,7 @@ generatedFiles:
   - docs/models/updateprojectprojectsrequestdeploymenttype.md
   - docs/models/updateprojectprojectsresourceconfig.md
   - docs/models/updateprojectprojectsresponse200action.md
+  - docs/models/updateprojectprojectsresponse200applicationjsonaction.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodycustomenvironmentstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodylatestdeploymentstype.md
   - docs/models/updateprojectprojectsresponse200applicationjsonresponsebodytargetstype.md
@@ -4492,6 +5074,7 @@ generatedFiles:
   - docs/sdks/dns/README.md
   - docs/sdks/domains/README.md
   - docs/sdks/domainsregistrar/README.md
+  - docs/sdks/drains/README.md
   - docs/sdks/edgecache/README.md
   - docs/sdks/edgeconfig/README.md
   - docs/sdks/environment/README.md
@@ -4525,6 +5108,7 @@ generatedFiles:
   - src/__tests__/dns.test.ts
   - src/__tests__/domains.test.ts
   - src/__tests__/domainsregistrar.test.ts
+  - src/__tests__/drains.test.ts
   - src/__tests__/edgeconfig.test.ts
   - src/__tests__/environment.test.ts
   - src/__tests__/files.ts
@@ -4555,6 +5139,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathdeletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1integrationslogdrainsid.go
+  - src/__tests__/mockserver/internal/handler/pathdeletev1logdrainsid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornameenv.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornamemembersuid.go
   - src/__tests__/mockserver/internal/handler/pathdeletev1projectsidornamerollingreleaseconfig.go
@@ -4583,6 +5168,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1deploymentsdeploymentidchecks.go
   - src/__tests__/mockserver/internal/handler/pathgetv1deploymentsdeploymentidcheckscheckid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1domainsdomainregistry.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1drains.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1drainsid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfig.go
   - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1edgeconfigedgeconfigidbackups.go
@@ -4599,6 +5186,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsconfigurationidproducts.go
   - src/__tests__/mockserver/internal/handler/pathgetv1integrationsintegrationintegrationidorslugproductsproductidorslugplans.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1logdrains.go
+  - src/__tests__/mockserver/internal/handler/pathgetv1logdrainsid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornameenvid.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingrelease.go
   - src/__tests__/mockserver/internal/handler/pathgetv1projectsidornamerollingreleasebilling.go
@@ -4652,6 +5241,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpatchv1deploymentsdeploymentidcheckscheckid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1deploymentsdeploymentidintegrationsintegrationconfigurationidresourcesresourceidactionsaction.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1domainsrecordsrecordid.go
+  - src/__tests__/mockserver/internal/handler/pathpatchv1drainsid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1edgeconfigedgeconfigiditems.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1installationsintegrationconfigurationidresourcesresourceid.go
   - src/__tests__/mockserver/internal/handler/pathpatchv1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemid.go
@@ -4675,6 +5265,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1accessgroupsidorname.go
   - src/__tests__/mockserver/internal/handler/pathpostv1deploymentsdeploymentidchecks.go
   - src/__tests__/mockserver/internal/handler/pathpostv1deploymentsdeploymentidcheckscheckidrerequest.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1drains.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1drainstest.go
   - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfig.go
   - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidschema.go
   - src/__tests__/mockserver/internal/handler/pathpostv1edgeconfigedgeconfigidtoken.go
@@ -4685,6 +5277,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidevents.go
   - src/__tests__/mockserver/internal/handler/pathpostv1installationsintegrationconfigurationidresourcesresourceidexperimentationitems.go
   - src/__tests__/mockserver/internal/handler/pathpostv1integrationsssotoken.go
+  - src/__tests__/mockserver/internal/handler/pathpostv1logdrains.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornameclientcert.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamedomainsdomainmove.go
   - src/__tests__/mockserver/internal/handler/pathpostv1projectsidornamemembers.go
@@ -4738,6 +5331,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/authuserlimited.go
   - src/__tests__/mockserver/internal/sdk/models/components/badrequesterror.go
   - src/__tests__/mockserver/internal/sdk/models/components/dnssecenablederror.go
+  - src/__tests__/mockserver/internal/sdk/models/components/domainalreadyownederror.go
   - src/__tests__/mockserver/internal/sdk/models/components/domainalreadyrenewingerror.go
   - src/__tests__/mockserver/internal/sdk/models/components/domainnotavailableerror.go
   - src/__tests__/mockserver/internal/sdk/models/components/domainnotfounderror.go
@@ -4790,8 +5384,10 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/createaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createauthtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createconfigurablelogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createcustomenvironment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createdeployment.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/createdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createedgeconfigtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/createevent.go
@@ -4809,9 +5405,11 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteaccessgroupproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletealias.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteauthtoken.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deleteconfigurablelogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteconfiguration.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletedeployment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deletedomain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/deletedrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigschema.go
   - src/__tests__/mockserver/internal/sdk/models/operations/deleteedgeconfigtokens.go
@@ -4831,6 +5429,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getactiveattackstatus.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getalias.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getallchecks.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getalllogdrains.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getauthtoken.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getauthuser.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getbillingplans.go
@@ -4838,6 +5437,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getbypassip.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getcertbyid.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getcheck.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurablelogdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfiguration.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurationproducts.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getconfigurations.go
@@ -4855,6 +5455,8 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/getdomains.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getdomaintransfer.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getdomaintransferin.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdrain.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/getdrains.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigbackup.go
   - src/__tests__/mockserver/internal/sdk/models/operations/getedgeconfigbackups.go
@@ -4937,6 +5539,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/submitbillingdata.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitinvoice.go
   - src/__tests__/mockserver/internal/sdk/models/operations/submitprepaymentbalances.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/testdrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/transferindomain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/unpauseproject.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateaccessgroup.go
@@ -4946,6 +5549,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/operations/updatecustomenvironment.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updatedomainautorenew.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updatedomainnameservers.go
+  - src/__tests__/mockserver/internal/sdk/models/operations/updatedrain.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateedgeconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updatefirewallconfig.go
   - src/__tests__/mockserver/internal/sdk/models/operations/updateinstallation.go
@@ -4972,6 +5576,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/sdkerrors/buydomains.go
   - src/__tests__/mockserver/internal/sdk/models/sdkerrors/buysingledomain.go
   - src/__tests__/mockserver/internal/sdk/models/sdkerrors/dnssecenablederror.go
+  - src/__tests__/mockserver/internal/sdk/models/sdkerrors/domainalreadyownederror.go
   - src/__tests__/mockserver/internal/sdk/models/sdkerrors/domainalreadyrenewingerror.go
   - src/__tests__/mockserver/internal/sdk/models/sdkerrors/domainnotavailableerror.go
   - src/__tests__/mockserver/internal/sdk/models/sdkerrors/domainnotfounderror.go
@@ -5106,6 +5711,12 @@ generatedFiles:
   - src/funcs/domainsRegistrarTransferInDomain.ts
   - src/funcs/domainsRegistrarUpdateDomainAutoRenew.ts
   - src/funcs/domainsRegistrarUpdateDomainNameservers.ts
+  - src/funcs/drainsCreateDrain.ts
+  - src/funcs/drainsDeleteDrain.ts
+  - src/funcs/drainsGetDrain.ts
+  - src/funcs/drainsGetDrains.ts
+  - src/funcs/drainsTestDrain.ts
+  - src/funcs/drainsUpdateDrain.ts
   - src/funcs/edgeCacheDangerouslyDeleteByTags.ts
   - src/funcs/edgeCacheInvalidateByTags.ts
   - src/funcs/edgeConfigCreateEdgeConfig.ts
@@ -5137,8 +5748,12 @@ generatedFiles:
   - src/funcs/integrationsGetConfiguration.ts
   - src/funcs/integrationsGetConfigurationProducts.ts
   - src/funcs/integrationsGetConfigurations.ts
+  - src/funcs/logDrainsCreateConfigurableLogDrain.ts
   - src/funcs/logDrainsCreateLogDrain.ts
+  - src/funcs/logDrainsDeleteConfigurableLogDrain.ts
   - src/funcs/logDrainsDeleteIntegrationLogDrain.ts
+  - src/funcs/logDrainsGetAllLogDrains.ts
+  - src/funcs/logDrainsGetConfigurableLogDrain.ts
   - src/funcs/logDrainsGetIntegrationLogDrains.ts
   - src/funcs/logsGetRuntimeLogs.ts
   - src/funcs/marketplaceCreateEvent.ts
@@ -5335,6 +5950,12 @@ generatedFiles:
   - src/mcp-server/tools/domainsRegistrarTransferInDomain.ts
   - src/mcp-server/tools/domainsRegistrarUpdateDomainAutoRenew.ts
   - src/mcp-server/tools/domainsRegistrarUpdateDomainNameservers.ts
+  - src/mcp-server/tools/drainsCreateDrain.ts
+  - src/mcp-server/tools/drainsDeleteDrain.ts
+  - src/mcp-server/tools/drainsGetDrain.ts
+  - src/mcp-server/tools/drainsGetDrains.ts
+  - src/mcp-server/tools/drainsTestDrain.ts
+  - src/mcp-server/tools/drainsUpdateDrain.ts
   - src/mcp-server/tools/edgeCacheDangerouslyDeleteByTags.ts
   - src/mcp-server/tools/edgeCacheInvalidateByTags.ts
   - src/mcp-server/tools/edgeConfigCreateEdgeConfig.ts
@@ -5366,8 +5987,12 @@ generatedFiles:
   - src/mcp-server/tools/integrationsGetConfiguration.ts
   - src/mcp-server/tools/integrationsGetConfigurationProducts.ts
   - src/mcp-server/tools/integrationsGetConfigurations.ts
+  - src/mcp-server/tools/logDrainsCreateConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsCreateLogDrain.ts
+  - src/mcp-server/tools/logDrainsDeleteConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsDeleteIntegrationLogDrain.ts
+  - src/mcp-server/tools/logDrainsGetAllLogDrains.ts
+  - src/mcp-server/tools/logDrainsGetConfigurableLogDrain.ts
   - src/mcp-server/tools/logDrainsGetIntegrationLogDrains.ts
   - src/mcp-server/tools/logsGetRuntimeLogs.ts
   - src/mcp-server/tools/marketplaceCreateEvent.ts
@@ -5484,8 +6109,10 @@ generatedFiles:
   - src/models/createaccessgroupprojectop.ts
   - src/models/createauthtokenop.ts
   - src/models/createcheckop.ts
+  - src/models/createconfigurablelogdrainop.ts
   - src/models/createcustomenvironmentop.ts
   - src/models/createdeploymentop.ts
+  - src/models/createdrainop.ts
   - src/models/createedgeconfigop.ts
   - src/models/createedgeconfigtokenop.ts
   - src/models/createeventop.ts
@@ -5503,9 +6130,11 @@ generatedFiles:
   - src/models/deleteaccessgroupprojectop.ts
   - src/models/deletealiasop.ts
   - src/models/deleteauthtokenop.ts
+  - src/models/deleteconfigurablelogdrainop.ts
   - src/models/deleteconfigurationop.ts
   - src/models/deletedeploymentop.ts
   - src/models/deletedomainop.ts
+  - src/models/deletedrainop.ts
   - src/models/deleteedgeconfigop.ts
   - src/models/deleteedgeconfigschemaop.ts
   - src/models/deleteedgeconfigtokensop.ts
@@ -5518,6 +6147,7 @@ generatedFiles:
   - src/models/deletev1installationsintegrationconfigurationidresourcesresourceidexperimentationitemsitemidop.ts
   - src/models/deletewebhookop.ts
   - src/models/dnssecenabled.ts
+  - src/models/domainalreadyowned.ts
   - src/models/domainalreadyrenewing.ts
   - src/models/domainnotavailable.ts
   - src/models/domainnotfound.ts
@@ -5540,6 +6170,7 @@ generatedFiles:
   - src/models/getactiveattackstatusop.ts
   - src/models/getaliasop.ts
   - src/models/getallchecksop.ts
+  - src/models/getalllogdrainsop.ts
   - src/models/getauthtokenop.ts
   - src/models/getauthuserop.ts
   - src/models/getbillingplansop.ts
@@ -5547,6 +6178,7 @@ generatedFiles:
   - src/models/getbypassipop.ts
   - src/models/getcertbyidop.ts
   - src/models/getcheckop.ts
+  - src/models/getconfigurablelogdrainop.ts
   - src/models/getconfigurationop.ts
   - src/models/getconfigurationproductsop.ts
   - src/models/getconfigurationsop.ts
@@ -5564,6 +6196,8 @@ generatedFiles:
   - src/models/getdomainsop.ts
   - src/models/getdomaintransferinop.ts
   - src/models/getdomaintransferop.ts
+  - src/models/getdrainop.ts
+  - src/models/getdrainsop.ts
   - src/models/getedgeconfigbackupop.ts
   - src/models/getedgeconfigbackupsop.ts
   - src/models/getedgeconfigitemop.ts
@@ -5662,6 +6296,7 @@ generatedFiles:
   - src/models/submitprepaymentbalancesop.ts
   - src/models/team.ts
   - src/models/teamlimited.ts
+  - src/models/testdrainop.ts
   - src/models/tldnotsupported.ts
   - src/models/toomanydomains.ts
   - src/models/toomanyrequests.ts
@@ -5675,6 +6310,7 @@ generatedFiles:
   - src/models/updatecustomenvironmentop.ts
   - src/models/updatedomainautorenewop.ts
   - src/models/updatedomainnameserversop.ts
+  - src/models/updatedrainop.ts
   - src/models/updateedgeconfigop.ts
   - src/models/updatefirewallconfigop.ts
   - src/models/updateinstallationop.ts
@@ -5709,6 +6345,7 @@ generatedFiles:
   - src/sdk/dns.ts
   - src/sdk/domains.ts
   - src/sdk/domainsregistrar.ts
+  - src/sdk/drains.ts
   - src/sdk/edgecache.ts
   - src/sdk/edgeconfig.ts
   - src/sdk/environment.ts
@@ -6845,7 +7482,7 @@ examples:
         application/json: {"deploymentId": "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6", "files": [{"file": "folder/file.js"}], "gitMetadata": {"remoteUrl": "https://github.com/vercel/next.js", "commitAuthorName": "kyliau", "commitAuthorEmail": "kyliau@example.com", "commitMessage": "add method to measure Interaction to Next Paint (INP) (#36490)", "commitRef": "main", "commitSha": "dc36199b2234c6586ebe05ec94078a895c707e29", "dirty": true, "ci": true, "ciType": "github-actions", "ciGitProviderUsername": "rauchg", "ciGitRepoVisibility": "private"}, "gitSource": {"org": "vercel", "ref": "main", "repo": "next.js", "sha": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0", "type": "github"}, "meta": {"foo": "bar"}, "name": "my-instant-deployment", "project": "my-deployment-project", "projectSettings": {"buildCommand": "next build", "installCommand": "pnpm install"}, "target": "production"}
       responses:
         "200":
-          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "name": "<value>", "createdAt": 179.28, "type": "LAMBDAS", "meta": {"key": "<value>"}, "readyState": "BUILDING", "regions": [], "version": 8477.72, "url": "https://unwritten-viability.org", "projectId": "<id>", "ownerId": "<id>", "plan": "enterprise", "routes": [], "createdIn": "<value>"}
+          application/json: {"build": {"env": ["<value 1>", "<value 2>", "<value 3>"]}, "env": [], "inspectorUrl": null, "isInConcurrentBuildsQueue": false, "isInSystemBuildsQueue": false, "projectSettings": {}, "aliasAssigned": false, "bootedAt": 3619.08, "buildingAt": 1664.36, "buildSkipped": false, "creator": {"uid": "<id>"}, "public": false, "status": "CANCELED", "id": "<id>", "createdAt": 179.28, "readyState": "BUILDING", "name": "<value>", "type": "LAMBDAS", "meta": {"key": "<value>"}, "regions": [], "url": "https://unwritten-viability.org", "version": 8477.72, "projectId": "<id>", "plan": "enterprise", "createdIn": "<value>", "ownerId": "<id>", "routes": []}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -8909,7 +9546,7 @@ examples:
         application/json: {"name": "my-dev-database", "integrationConfigurationId": "icfg_cuwj0AdCdH3BwWT4LPijCC7t", "integrationProductIdOrSlug": "iap_postgres_db", "metadata": {"environment": "development", "project": "my-app", "tags": ["database", "postgres"]}, "externalId": "dev-db-001", "protocolSettings": {"experimentation": {"edgeConfigSyncingEnabled": true}}, "source": "api", "billingPlanId": "bp_abc123def456", "paymentMethodId": "pm_1AbcDefGhiJklMno", "prepaymentAmountCents": 5000}
       responses:
         "200":
-          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@8646": {}}}, "secrets": []}}
+          application/json: {"store": {"projectsMetadata": [{"id": "<id>", "projectId": "<id>", "name": "<value>", "environments": [], "envVarPrefix": "<value>", "environmentVariables": ["<value 1>", "<value 2>"]}], "usageQuotaExceeded": true, "status": "available", "externalResourceId": "<id>", "product": {"value": {"__@BRAND@8558": {}}}, "secrets": []}}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -8993,7 +9630,7 @@ examples:
         application/json: {"cert": "-----BEGIN CERTIFICATE-----\\\\n...\\\\n-----END CERTIFICATE-----", "key": "-----BEGIN PRIVATE KEY-----\\\\n...\\\\n-----END PRIVATE KEY-----", "ca": "-----BEGIN CERTIFICATE-----\\\\n...\\\\n-----END CERTIFICATE-----", "origin": "https://api.example.com"}
       responses:
         "200":
-          application/json: {"origin": "<value>", "certId": "<id>"}
+          application/json: {"updated": false, "origin": "<value>", "certId": "<id>"}
         "400":
           application/json: {"error": {"code": "<value>", "message": "<value>"}}
         "401":
@@ -9353,6 +9990,96 @@ examples:
       responses:
         "200":
           application/json: {"actions": []}
+  getConfigurableLogDrain:
+    speakeasy-default-get-configurable-log-drain:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
+  getAllLogDrains:
+    speakeasy-default-get-all-log-drains:
+      parameters:
+        query:
+          includeMetadata: false
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"drains": [{"id": "<id>", "ownerId": "<id>", "name": "<value>", "createdAt": 7495.57, "updatedAt": 4759.82, "source": {"kind": "self-served"}}]}
+  createConfigurableLogDrain:
+    speakeasy-default-create-configurable-log-drain:
+      parameters:
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      requestBody:
+        application/json: {"deliveryFormat": "json", "url": "https://wavy-meander.net", "sources": []}
+      responses:
+        "200":
+          application/json: {}
+  createDrain:
+    speakeasy-default-create-drain:
+      parameters:
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "ownerId": "<id>", "name": "<value>", "createdAt": 3665.73, "updatedAt": 3681.88, "source": {"kind": "self-served"}}
+  getDrains:
+    speakeasy-default-get-drains:
+      parameters:
+        query:
+          includeMetadata: false
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"drains": []}
+  deleteDrain:
+    speakeasy-default-delete-drain:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+  getDrain:
+    speakeasy-default-get-drain:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "ownerId": "<id>", "name": "<value>", "createdAt": 1182.63, "updatedAt": 7579.11, "source": {"kind": "integration", "integrationId": "<id>", "integrationConfigurationId": "<id>"}}
+  updateDrain:
+    speakeasy-default-update-drain:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "ownerId": "<id>", "name": "<value>", "createdAt": 7781.81, "updatedAt": 8087.89, "source": {"kind": "integration", "integrationId": "<id>", "integrationConfigurationId": "<id>"}}
+  testDrain:
+    speakeasy-default-test-drain:
+      parameters:
+        query:
+          teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+          slug: "my-team-url-slug"
+      responses:
+        "200":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests:
   readAccessGroup: "2025-04-29T14:51:46-05:00"
@@ -9543,4 +10270,12 @@ generatedTests:
   updateSharedConnectLinks: "2025-10-08T17:35:08Z"
   update-resource: "2025-10-14T00:08:28Z"
   get_/v1/security/firewall/events: "2025-10-20T00:09:01Z"
-releaseNotes: "## Typescript SDK Changes Detected:\n* `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:\n* `vercel.integrations.createIntegrationStoreDirect()`:  `response.store` **Changed** **Breaking** :warning:\n* `vercel.deployments.listDeploymentFiles()`:  `response.[].symlink` **Removed** **Breaking** :warning:\n* `vercel.integrations.deleteConfiguration()`:  `error.status[409]` **Removed** **Breaking** :warning:\n* `vercel.domainsRegistrar.getDomainPrice()`:  `error.[domaintooshort]` **Added**\n* `vercel.projects.getProjects()`: \n  *  `request.buildMachineTypes` **Added**\n* `vercel.security.get/v1/security/firewall/events()`: **Added**\n* `vercel.domainsRegistrar.buySingleDomain()`:  `error.[domaintooshort]` **Added**\n* `vercel.domainsRegistrar.buyDomains()`:  `error.[domaintooshort]` **Added**\n* `vercel.domainsRegistrar.transferInDomain()`:  `error` **Changed**\n* `vercel.domainsRegistrar.renewDomain()`:  `error.[domaintooshort]` **Added**\n* `vercel.user.listUserEvents()`:  `response.events.[].payload` **Changed**\n* `vercel.marketplace.createEvent()`: \n  *  `request.requestBody.event.[2].productId` **Changed**\n"
+  getConfigurableLogDrain: "2025-10-23T16:11:19Z"
+  getAllLogDrains: "2025-10-23T16:11:19Z"
+  createConfigurableLogDrain: "2025-10-23T16:11:19Z"
+  createDrain: "2025-10-23T16:11:19Z"
+  getDrains: "2025-10-23T16:11:19Z"
+  getDrain: "2025-10-23T16:11:19Z"
+  updateDrain: "2025-10-23T16:11:19Z"
+  testDrain: "2025-10-23T16:11:19Z"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `vercel.projects.uploadProjectClientCert()`: \n  *  `request.requestBody.ca` **Changed** **Breaking** :warning:\n  *  `response.updated` **Added**\n* `vercel.user.listUserEvents()`:  `response.events.[].payload` **Changed** **Breaking** :warning:\n* `vercel.integrations.createIntegrationStoreDirect()`:  `response.store` **Changed** **Breaking** :warning:\n* `vercel.integrations.getConfigurationProducts()`:  `response.products.[].metadataSchema.properties.{}` **Changed** **Breaking** :warning:\n* `vercel.drains.getDrains()`: **Added**\n* `vercel.projects.getProjects()`:  `response.projects.[]` **Changed**\n* `vercel.drains.deleteDrain()`: **Added**\n* `vercel.drains.getDrain()`: **Added**\n* `vercel.drains.updateDrain()`: **Added**\n* `vercel.drains.testDrain()`: **Added**\n* `vercel.projects.updateProjectDataCache()`:  `response` **Changed**\n* `vercel.logDrains.getConfigurableLogDrain()`: **Added**\n* `vercel.projects.createProject()`:  `response` **Changed**\n* `vercel.projects.updateProject()`:  `response` **Changed**\n* `vercel.drains.createDrain()`: **Added**\n* `vercel.logDrains.createConfigurableLogDrain()`: **Added**\n* `vercel.logDrains.getAllLogDrains()`: **Added**\n* `vercel.domainsRegistrar.transferInDomain()`:  `error.[domainalreadyowned]` **Added**\n* `vercel.logDrains.deleteConfigurableLogDrain()`: **Added**\n* `vercel.security.get/v1/security/firewall/events()`: \n  *  `request.hosts` **Added**\n"

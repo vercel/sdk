@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyDisabledReason } from "@vercel/sdk/models/getconfigurationsop.js";
+import { ResponseBodyDisabledReason } from "@vercel/sdk/models/createdrainop.js";
 
-let value: ResponseBodyDisabledReason = "disabled-by-admin";
+let value: ResponseBodyDisabledReason = "feature-not-available";
 ```
 
 ## Values
 
 ```typescript
-"disabled-by-owner" | "feature-not-available" | "disabled-by-admin" | "original-owner-left-the-team" | "account-plan-downgrade" | "original-owner-role-downgraded"
+"disabled-by-owner" | "feature-not-available" | "account-plan-downgrade" | "disabled-by-admin"
 ```

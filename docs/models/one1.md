@@ -3,20 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { One1 } from "@vercel/sdk/models/patchedgeconfigitemsop.js";
+import { One1 } from "@vercel/sdk/models/createdrainop.js";
 
 let value: One1 = {
-  operation: "create",
-  key: "<key>",
-  value: "<value>",
+  externalResourceId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `operation`                                | [models.Operation](../models/operation.md) | :heavy_check_mark:                         | N/A                                        |
-| `key`                                      | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `value`                                    | *any*                                      | :heavy_check_mark:                         | N/A                                        |
-| `description`                              | *models.Description*                       | :heavy_minus_sign:                         | N/A                                        |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `kind`               | *string*             | :heavy_minus_sign:   | N/A                  |
+| `externalResourceId` | *string*             | :heavy_check_mark:   | N/A                  |

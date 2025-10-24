@@ -814,18 +814,18 @@ func (o *CreateProjectEnvRequest) GetRequestBody() CreateProjectEnvRequestBody {
 	return o.RequestBody
 }
 
-type CreatedTargetEnum3 string
+type CreateProjectEnvCreatedTargetEnum3 string
 
 const (
-	CreatedTargetEnum3Production  CreatedTargetEnum3 = "production"
-	CreatedTargetEnum3Preview     CreatedTargetEnum3 = "preview"
-	CreatedTargetEnum3Development CreatedTargetEnum3 = "development"
+	CreateProjectEnvCreatedTargetEnum3Production  CreateProjectEnvCreatedTargetEnum3 = "production"
+	CreateProjectEnvCreatedTargetEnum3Preview     CreateProjectEnvCreatedTargetEnum3 = "preview"
+	CreateProjectEnvCreatedTargetEnum3Development CreateProjectEnvCreatedTargetEnum3 = "development"
 )
 
-func (e CreatedTargetEnum3) ToPointer() *CreatedTargetEnum3 {
+func (e CreateProjectEnvCreatedTargetEnum3) ToPointer() *CreateProjectEnvCreatedTargetEnum3 {
 	return &e
 }
-func (e *CreatedTargetEnum3) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvCreatedTargetEnum3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -836,23 +836,23 @@ func (e *CreatedTargetEnum3) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = CreatedTargetEnum3(v)
+		*e = CreateProjectEnvCreatedTargetEnum3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreatedTargetEnum3: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvCreatedTargetEnum3: %v", v)
 	}
 }
 
 type CreatedTargetUnion2Type string
 
 const (
-	CreatedTargetUnion2TypeArrayOfStr         CreatedTargetUnion2Type = "arrayOfStr"
-	CreatedTargetUnion2TypeCreatedTargetEnum3 CreatedTargetUnion2Type = "created_target_enum_3"
+	CreatedTargetUnion2TypeArrayOfStr                         CreatedTargetUnion2Type = "arrayOfStr"
+	CreatedTargetUnion2TypeCreateProjectEnvCreatedTargetEnum3 CreatedTargetUnion2Type = "createProjectEnv_created_target_enum_3"
 )
 
 type CreatedTargetUnion2 struct {
-	ArrayOfStr         []string            `queryParam:"inline"`
-	CreatedTargetEnum3 *CreatedTargetEnum3 `queryParam:"inline"`
+	ArrayOfStr                         []string                            `queryParam:"inline"`
+	CreateProjectEnvCreatedTargetEnum3 *CreateProjectEnvCreatedTargetEnum3 `queryParam:"inline"`
 
 	Type CreatedTargetUnion2Type
 }
@@ -866,12 +866,12 @@ func CreateCreatedTargetUnion2ArrayOfStr(arrayOfStr []string) CreatedTargetUnion
 	}
 }
 
-func CreateCreatedTargetUnion2CreatedTargetEnum3(createdTargetEnum3 CreatedTargetEnum3) CreatedTargetUnion2 {
-	typ := CreatedTargetUnion2TypeCreatedTargetEnum3
+func CreateCreatedTargetUnion2CreateProjectEnvCreatedTargetEnum3(createProjectEnvCreatedTargetEnum3 CreateProjectEnvCreatedTargetEnum3) CreatedTargetUnion2 {
+	typ := CreatedTargetUnion2TypeCreateProjectEnvCreatedTargetEnum3
 
 	return CreatedTargetUnion2{
-		CreatedTargetEnum3: &createdTargetEnum3,
-		Type:               typ,
+		CreateProjectEnvCreatedTargetEnum3: &createProjectEnvCreatedTargetEnum3,
+		Type:                               typ,
 	}
 }
 
@@ -884,10 +884,10 @@ func (u *CreatedTargetUnion2) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var createdTargetEnum3 CreatedTargetEnum3 = CreatedTargetEnum3("")
-	if err := utils.UnmarshalJSON(data, &createdTargetEnum3, "", true, nil); err == nil {
-		u.CreatedTargetEnum3 = &createdTargetEnum3
-		u.Type = CreatedTargetUnion2TypeCreatedTargetEnum3
+	var createProjectEnvCreatedTargetEnum3 CreateProjectEnvCreatedTargetEnum3 = CreateProjectEnvCreatedTargetEnum3("")
+	if err := utils.UnmarshalJSON(data, &createProjectEnvCreatedTargetEnum3, "", true, nil); err == nil {
+		u.CreateProjectEnvCreatedTargetEnum3 = &createProjectEnvCreatedTargetEnum3
+		u.Type = CreatedTargetUnion2TypeCreateProjectEnvCreatedTargetEnum3
 		return nil
 	}
 
@@ -899,27 +899,27 @@ func (u CreatedTargetUnion2) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ArrayOfStr, "", true)
 	}
 
-	if u.CreatedTargetEnum3 != nil {
-		return utils.MarshalJSON(u.CreatedTargetEnum3, "", true)
+	if u.CreateProjectEnvCreatedTargetEnum3 != nil {
+		return utils.MarshalJSON(u.CreateProjectEnvCreatedTargetEnum3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreatedTargetUnion2: all fields are null")
 }
 
-type CreatedType2 string
+type CreateProjectEnvCreatedType2 string
 
 const (
-	CreatedType2System    CreatedType2 = "system"
-	CreatedType2Encrypted CreatedType2 = "encrypted"
-	CreatedType2Plain     CreatedType2 = "plain"
-	CreatedType2Sensitive CreatedType2 = "sensitive"
-	CreatedType2Secret    CreatedType2 = "secret"
+	CreateProjectEnvCreatedType2System    CreateProjectEnvCreatedType2 = "system"
+	CreateProjectEnvCreatedType2Encrypted CreateProjectEnvCreatedType2 = "encrypted"
+	CreateProjectEnvCreatedType2Plain     CreateProjectEnvCreatedType2 = "plain"
+	CreateProjectEnvCreatedType2Sensitive CreateProjectEnvCreatedType2 = "sensitive"
+	CreateProjectEnvCreatedType2Secret    CreateProjectEnvCreatedType2 = "secret"
 )
 
-func (e CreatedType2) ToPointer() *CreatedType2 {
+func (e CreateProjectEnvCreatedType2) ToPointer() *CreateProjectEnvCreatedType2 {
 	return &e
 }
-func (e *CreatedType2) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvCreatedType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -934,10 +934,10 @@ func (e *CreatedType2) UnmarshalJSON(data []byte) error {
 	case "sensitive":
 		fallthrough
 	case "secret":
-		*e = CreatedType2(v)
+		*e = CreateProjectEnvCreatedType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreatedType2: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvCreatedType2: %v", v)
 	}
 }
 
@@ -2164,9 +2164,9 @@ func (o *CreateProjectEnvInternalContentHint2) GetEncryptedValue() string {
 	return o.EncryptedValue
 }
 
-type Created2 struct {
-	Target *CreatedTargetUnion2 `json:"target,omitempty"`
-	Type   CreatedType2         `json:"type"`
+type CreateProjectEnvCreated2 struct {
+	Target *CreatedTargetUnion2         `json:"target,omitempty"`
+	Type   CreateProjectEnvCreatedType2 `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
@@ -2190,176 +2190,176 @@ type Created2 struct {
 	System               *bool                                 `json:"system,omitempty"`
 }
 
-func (c Created2) MarshalJSON() ([]byte, error) {
+func (c CreateProjectEnvCreated2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *Created2) UnmarshalJSON(data []byte) error {
+func (c *CreateProjectEnvCreated2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "value", "key"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Created2) GetTarget() *CreatedTargetUnion2 {
+func (o *CreateProjectEnvCreated2) GetTarget() *CreatedTargetUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *Created2) GetType() CreatedType2 {
+func (o *CreateProjectEnvCreated2) GetType() CreateProjectEnvCreatedType2 {
 	if o == nil {
-		return CreatedType2("")
+		return CreateProjectEnvCreatedType2("")
 	}
 	return o.Type
 }
 
-func (o *Created2) GetSunsetSecretID() *string {
+func (o *CreateProjectEnvCreated2) GetSunsetSecretID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SunsetSecretID
 }
 
-func (o *Created2) GetDecrypted() *bool {
+func (o *CreateProjectEnvCreated2) GetDecrypted() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Decrypted
 }
 
-func (o *Created2) GetValue() string {
+func (o *CreateProjectEnvCreated2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *Created2) GetVsmValue() *string {
+func (o *CreateProjectEnvCreated2) GetVsmValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.VsmValue
 }
 
-func (o *Created2) GetID() *string {
+func (o *CreateProjectEnvCreated2) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Created2) GetKey() string {
+func (o *CreateProjectEnvCreated2) GetKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.Key
 }
 
-func (o *Created2) GetConfigurationID() *string {
+func (o *CreateProjectEnvCreated2) GetConfigurationID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ConfigurationID
 }
 
-func (o *Created2) GetCreatedAt() *float64 {
+func (o *CreateProjectEnvCreated2) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *Created2) GetUpdatedAt() *float64 {
+func (o *CreateProjectEnvCreated2) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *Created2) GetCreatedBy() *string {
+func (o *CreateProjectEnvCreated2) GetCreatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
 }
 
-func (o *Created2) GetUpdatedBy() *string {
+func (o *CreateProjectEnvCreated2) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedBy
 }
 
-func (o *Created2) GetGitBranch() *string {
+func (o *CreateProjectEnvCreated2) GetGitBranch() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *Created2) GetEdgeConfigID() *string {
+func (o *CreateProjectEnvCreated2) GetEdgeConfigID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigID
 }
 
-func (o *Created2) GetEdgeConfigTokenID() *string {
+func (o *CreateProjectEnvCreated2) GetEdgeConfigTokenID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigTokenID
 }
 
-func (o *Created2) GetContentHint() *CreateProjectEnvContentHintUnion2 {
+func (o *CreateProjectEnvCreated2) GetContentHint() *CreateProjectEnvContentHintUnion2 {
 	if o == nil {
 		return nil
 	}
 	return o.ContentHint
 }
 
-func (o *Created2) GetInternalContentHint() *CreateProjectEnvInternalContentHint2 {
+func (o *CreateProjectEnvCreated2) GetInternalContentHint() *CreateProjectEnvInternalContentHint2 {
 	if o == nil {
 		return nil
 	}
 	return o.InternalContentHint
 }
 
-func (o *Created2) GetComment() *string {
+func (o *CreateProjectEnvCreated2) GetComment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Comment
 }
 
-func (o *Created2) GetCustomEnvironmentIds() []string {
+func (o *CreateProjectEnvCreated2) GetCustomEnvironmentIds() []string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentIds
 }
 
-func (o *Created2) GetSystem() *bool {
+func (o *CreateProjectEnvCreated2) GetSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.System
 }
 
-type CreatedTargetEnum2 string
+type CreateProjectEnvCreatedTargetEnum2 string
 
 const (
-	CreatedTargetEnum2Production  CreatedTargetEnum2 = "production"
-	CreatedTargetEnum2Preview     CreatedTargetEnum2 = "preview"
-	CreatedTargetEnum2Development CreatedTargetEnum2 = "development"
+	CreateProjectEnvCreatedTargetEnum2Production  CreateProjectEnvCreatedTargetEnum2 = "production"
+	CreateProjectEnvCreatedTargetEnum2Preview     CreateProjectEnvCreatedTargetEnum2 = "preview"
+	CreateProjectEnvCreatedTargetEnum2Development CreateProjectEnvCreatedTargetEnum2 = "development"
 )
 
-func (e CreatedTargetEnum2) ToPointer() *CreatedTargetEnum2 {
+func (e CreateProjectEnvCreatedTargetEnum2) ToPointer() *CreateProjectEnvCreatedTargetEnum2 {
 	return &e
 }
-func (e *CreatedTargetEnum2) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvCreatedTargetEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2370,25 +2370,25 @@ func (e *CreatedTargetEnum2) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = CreatedTargetEnum2(v)
+		*e = CreateProjectEnvCreatedTargetEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreatedTargetEnum2: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvCreatedTargetEnum2: %v", v)
 	}
 }
 
-type CreatedTargetEnum1 string
+type CreateProjectEnvCreatedTargetEnum1 string
 
 const (
-	CreatedTargetEnum1Production  CreatedTargetEnum1 = "production"
-	CreatedTargetEnum1Preview     CreatedTargetEnum1 = "preview"
-	CreatedTargetEnum1Development CreatedTargetEnum1 = "development"
+	CreateProjectEnvCreatedTargetEnum1Production  CreateProjectEnvCreatedTargetEnum1 = "production"
+	CreateProjectEnvCreatedTargetEnum1Preview     CreateProjectEnvCreatedTargetEnum1 = "preview"
+	CreateProjectEnvCreatedTargetEnum1Development CreateProjectEnvCreatedTargetEnum1 = "development"
 )
 
-func (e CreatedTargetEnum1) ToPointer() *CreatedTargetEnum1 {
+func (e CreateProjectEnvCreatedTargetEnum1) ToPointer() *CreateProjectEnvCreatedTargetEnum1 {
 	return &e
 }
-func (e *CreatedTargetEnum1) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvCreatedTargetEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2399,58 +2399,58 @@ func (e *CreatedTargetEnum1) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = CreatedTargetEnum1(v)
+		*e = CreateProjectEnvCreatedTargetEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreatedTargetEnum1: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvCreatedTargetEnum1: %v", v)
 	}
 }
 
 type CreatedTargetUnion1Type string
 
 const (
-	CreatedTargetUnion1TypeArrayOfCreatedTargetEnum1 CreatedTargetUnion1Type = "arrayOfCreatedTargetEnum1"
-	CreatedTargetUnion1TypeCreatedTargetEnum2        CreatedTargetUnion1Type = "created_target_enum_2"
+	CreatedTargetUnion1TypeArrayOfCreateProjectEnvCreatedTargetEnum1 CreatedTargetUnion1Type = "arrayOfCreateProjectEnvCreatedTargetEnum1"
+	CreatedTargetUnion1TypeCreateProjectEnvCreatedTargetEnum2        CreatedTargetUnion1Type = "createProjectEnv_created_target_enum_2"
 )
 
 type CreatedTargetUnion1 struct {
-	ArrayOfCreatedTargetEnum1 []CreatedTargetEnum1 `queryParam:"inline"`
-	CreatedTargetEnum2        *CreatedTargetEnum2  `queryParam:"inline"`
+	ArrayOfCreateProjectEnvCreatedTargetEnum1 []CreateProjectEnvCreatedTargetEnum1 `queryParam:"inline"`
+	CreateProjectEnvCreatedTargetEnum2        *CreateProjectEnvCreatedTargetEnum2  `queryParam:"inline"`
 
 	Type CreatedTargetUnion1Type
 }
 
-func CreateCreatedTargetUnion1ArrayOfCreatedTargetEnum1(arrayOfCreatedTargetEnum1 []CreatedTargetEnum1) CreatedTargetUnion1 {
-	typ := CreatedTargetUnion1TypeArrayOfCreatedTargetEnum1
+func CreateCreatedTargetUnion1ArrayOfCreateProjectEnvCreatedTargetEnum1(arrayOfCreateProjectEnvCreatedTargetEnum1 []CreateProjectEnvCreatedTargetEnum1) CreatedTargetUnion1 {
+	typ := CreatedTargetUnion1TypeArrayOfCreateProjectEnvCreatedTargetEnum1
 
 	return CreatedTargetUnion1{
-		ArrayOfCreatedTargetEnum1: arrayOfCreatedTargetEnum1,
-		Type:                      typ,
+		ArrayOfCreateProjectEnvCreatedTargetEnum1: arrayOfCreateProjectEnvCreatedTargetEnum1,
+		Type: typ,
 	}
 }
 
-func CreateCreatedTargetUnion1CreatedTargetEnum2(createdTargetEnum2 CreatedTargetEnum2) CreatedTargetUnion1 {
-	typ := CreatedTargetUnion1TypeCreatedTargetEnum2
+func CreateCreatedTargetUnion1CreateProjectEnvCreatedTargetEnum2(createProjectEnvCreatedTargetEnum2 CreateProjectEnvCreatedTargetEnum2) CreatedTargetUnion1 {
+	typ := CreatedTargetUnion1TypeCreateProjectEnvCreatedTargetEnum2
 
 	return CreatedTargetUnion1{
-		CreatedTargetEnum2: &createdTargetEnum2,
-		Type:               typ,
+		CreateProjectEnvCreatedTargetEnum2: &createProjectEnvCreatedTargetEnum2,
+		Type:                               typ,
 	}
 }
 
 func (u *CreatedTargetUnion1) UnmarshalJSON(data []byte) error {
 
-	var arrayOfCreatedTargetEnum1 []CreatedTargetEnum1 = []CreatedTargetEnum1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfCreatedTargetEnum1, "", true, nil); err == nil {
-		u.ArrayOfCreatedTargetEnum1 = arrayOfCreatedTargetEnum1
-		u.Type = CreatedTargetUnion1TypeArrayOfCreatedTargetEnum1
+	var arrayOfCreateProjectEnvCreatedTargetEnum1 []CreateProjectEnvCreatedTargetEnum1 = []CreateProjectEnvCreatedTargetEnum1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfCreateProjectEnvCreatedTargetEnum1, "", true, nil); err == nil {
+		u.ArrayOfCreateProjectEnvCreatedTargetEnum1 = arrayOfCreateProjectEnvCreatedTargetEnum1
+		u.Type = CreatedTargetUnion1TypeArrayOfCreateProjectEnvCreatedTargetEnum1
 		return nil
 	}
 
-	var createdTargetEnum2 CreatedTargetEnum2 = CreatedTargetEnum2("")
-	if err := utils.UnmarshalJSON(data, &createdTargetEnum2, "", true, nil); err == nil {
-		u.CreatedTargetEnum2 = &createdTargetEnum2
-		u.Type = CreatedTargetUnion1TypeCreatedTargetEnum2
+	var createProjectEnvCreatedTargetEnum2 CreateProjectEnvCreatedTargetEnum2 = CreateProjectEnvCreatedTargetEnum2("")
+	if err := utils.UnmarshalJSON(data, &createProjectEnvCreatedTargetEnum2, "", true, nil); err == nil {
+		u.CreateProjectEnvCreatedTargetEnum2 = &createProjectEnvCreatedTargetEnum2
+		u.Type = CreatedTargetUnion1TypeCreateProjectEnvCreatedTargetEnum2
 		return nil
 	}
 
@@ -2458,31 +2458,31 @@ func (u *CreatedTargetUnion1) UnmarshalJSON(data []byte) error {
 }
 
 func (u CreatedTargetUnion1) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfCreatedTargetEnum1 != nil {
-		return utils.MarshalJSON(u.ArrayOfCreatedTargetEnum1, "", true)
+	if u.ArrayOfCreateProjectEnvCreatedTargetEnum1 != nil {
+		return utils.MarshalJSON(u.ArrayOfCreateProjectEnvCreatedTargetEnum1, "", true)
 	}
 
-	if u.CreatedTargetEnum2 != nil {
-		return utils.MarshalJSON(u.CreatedTargetEnum2, "", true)
+	if u.CreateProjectEnvCreatedTargetEnum2 != nil {
+		return utils.MarshalJSON(u.CreateProjectEnvCreatedTargetEnum2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreatedTargetUnion1: all fields are null")
 }
 
-type CreatedType1 string
+type CreateProjectEnvCreatedType1 string
 
 const (
-	CreatedType1System    CreatedType1 = "system"
-	CreatedType1Encrypted CreatedType1 = "encrypted"
-	CreatedType1Plain     CreatedType1 = "plain"
-	CreatedType1Sensitive CreatedType1 = "sensitive"
-	CreatedType1Secret    CreatedType1 = "secret"
+	CreateProjectEnvCreatedType1System    CreateProjectEnvCreatedType1 = "system"
+	CreateProjectEnvCreatedType1Encrypted CreateProjectEnvCreatedType1 = "encrypted"
+	CreateProjectEnvCreatedType1Plain     CreateProjectEnvCreatedType1 = "plain"
+	CreateProjectEnvCreatedType1Sensitive CreateProjectEnvCreatedType1 = "sensitive"
+	CreateProjectEnvCreatedType1Secret    CreateProjectEnvCreatedType1 = "secret"
 )
 
-func (e CreatedType1) ToPointer() *CreatedType1 {
+func (e CreateProjectEnvCreatedType1) ToPointer() *CreateProjectEnvCreatedType1 {
 	return &e
 }
-func (e *CreatedType1) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvCreatedType1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2497,10 +2497,10 @@ func (e *CreatedType1) UnmarshalJSON(data []byte) error {
 	case "sensitive":
 		fallthrough
 	case "secret":
-		*e = CreatedType1(v)
+		*e = CreateProjectEnvCreatedType1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreatedType1: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvCreatedType1: %v", v)
 	}
 }
 
@@ -3727,9 +3727,9 @@ func (o *CreateProjectEnvInternalContentHint1) GetEncryptedValue() string {
 	return o.EncryptedValue
 }
 
-type Created1 struct {
-	Target *CreatedTargetUnion1 `json:"target,omitempty"`
-	Type   CreatedType1         `json:"type"`
+type CreateProjectEnvCreated1 struct {
+	Target *CreatedTargetUnion1         `json:"target,omitempty"`
+	Type   CreateProjectEnvCreatedType1 `json:"type"`
 	// This is used to identiy variables that have been migrated from type secret to sensitive.
 	SunsetSecretID    *string                            `json:"sunsetSecretId,omitempty"`
 	Decrypted         *bool                              `json:"decrypted,omitempty"`
@@ -3753,239 +3753,239 @@ type Created1 struct {
 	System               *bool                                 `json:"system,omitempty"`
 }
 
-func (c Created1) MarshalJSON() ([]byte, error) {
+func (c CreateProjectEnvCreated1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *Created1) UnmarshalJSON(data []byte) error {
+func (c *CreateProjectEnvCreated1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"type", "value", "key"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Created1) GetTarget() *CreatedTargetUnion1 {
+func (o *CreateProjectEnvCreated1) GetTarget() *CreatedTargetUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.Target
 }
 
-func (o *Created1) GetType() CreatedType1 {
+func (o *CreateProjectEnvCreated1) GetType() CreateProjectEnvCreatedType1 {
 	if o == nil {
-		return CreatedType1("")
+		return CreateProjectEnvCreatedType1("")
 	}
 	return o.Type
 }
 
-func (o *Created1) GetSunsetSecretID() *string {
+func (o *CreateProjectEnvCreated1) GetSunsetSecretID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SunsetSecretID
 }
 
-func (o *Created1) GetDecrypted() *bool {
+func (o *CreateProjectEnvCreated1) GetDecrypted() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Decrypted
 }
 
-func (o *Created1) GetValue() string {
+func (o *CreateProjectEnvCreated1) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-func (o *Created1) GetVsmValue() *string {
+func (o *CreateProjectEnvCreated1) GetVsmValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.VsmValue
 }
 
-func (o *Created1) GetID() *string {
+func (o *CreateProjectEnvCreated1) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Created1) GetKey() string {
+func (o *CreateProjectEnvCreated1) GetKey() string {
 	if o == nil {
 		return ""
 	}
 	return o.Key
 }
 
-func (o *Created1) GetConfigurationID() *string {
+func (o *CreateProjectEnvCreated1) GetConfigurationID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ConfigurationID
 }
 
-func (o *Created1) GetCreatedAt() *float64 {
+func (o *CreateProjectEnvCreated1) GetCreatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *Created1) GetUpdatedAt() *float64 {
+func (o *CreateProjectEnvCreated1) GetUpdatedAt() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedAt
 }
 
-func (o *Created1) GetCreatedBy() *string {
+func (o *CreateProjectEnvCreated1) GetCreatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedBy
 }
 
-func (o *Created1) GetUpdatedBy() *string {
+func (o *CreateProjectEnvCreated1) GetUpdatedBy() *string {
 	if o == nil {
 		return nil
 	}
 	return o.UpdatedBy
 }
 
-func (o *Created1) GetGitBranch() *string {
+func (o *CreateProjectEnvCreated1) GetGitBranch() *string {
 	if o == nil {
 		return nil
 	}
 	return o.GitBranch
 }
 
-func (o *Created1) GetEdgeConfigID() *string {
+func (o *CreateProjectEnvCreated1) GetEdgeConfigID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigID
 }
 
-func (o *Created1) GetEdgeConfigTokenID() *string {
+func (o *CreateProjectEnvCreated1) GetEdgeConfigTokenID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.EdgeConfigTokenID
 }
 
-func (o *Created1) GetContentHint() *CreateProjectEnvContentHintUnion1 {
+func (o *CreateProjectEnvCreated1) GetContentHint() *CreateProjectEnvContentHintUnion1 {
 	if o == nil {
 		return nil
 	}
 	return o.ContentHint
 }
 
-func (o *Created1) GetInternalContentHint() *CreateProjectEnvInternalContentHint1 {
+func (o *CreateProjectEnvCreated1) GetInternalContentHint() *CreateProjectEnvInternalContentHint1 {
 	if o == nil {
 		return nil
 	}
 	return o.InternalContentHint
 }
 
-func (o *Created1) GetComment() *string {
+func (o *CreateProjectEnvCreated1) GetComment() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Comment
 }
 
-func (o *Created1) GetCustomEnvironmentIds() []string {
+func (o *CreateProjectEnvCreated1) GetCustomEnvironmentIds() []string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomEnvironmentIds
 }
 
-func (o *Created1) GetSystem() *bool {
+func (o *CreateProjectEnvCreated1) GetSystem() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.System
 }
 
-type CreatedUnionType string
+type CreatedType string
 
 const (
-	CreatedUnionTypeCreated1        CreatedUnionType = "created_1"
-	CreatedUnionTypeArrayOfCreated2 CreatedUnionType = "arrayOfCreated2"
+	CreatedTypeCreateProjectEnvCreated1        CreatedType = "createProjectEnv_created_1"
+	CreatedTypeArrayOfCreateProjectEnvCreated2 CreatedType = "arrayOfCreateProjectEnvCreated2"
 )
 
-type CreatedUnion struct {
-	Created1        *Created1  `queryParam:"inline"`
-	ArrayOfCreated2 []Created2 `queryParam:"inline"`
+type Created struct {
+	CreateProjectEnvCreated1        *CreateProjectEnvCreated1  `queryParam:"inline"`
+	ArrayOfCreateProjectEnvCreated2 []CreateProjectEnvCreated2 `queryParam:"inline"`
 
-	Type CreatedUnionType
+	Type CreatedType
 }
 
-func CreateCreatedUnionCreated1(created1 Created1) CreatedUnion {
-	typ := CreatedUnionTypeCreated1
+func CreateCreatedCreateProjectEnvCreated1(createProjectEnvCreated1 CreateProjectEnvCreated1) Created {
+	typ := CreatedTypeCreateProjectEnvCreated1
 
-	return CreatedUnion{
-		Created1: &created1,
-		Type:     typ,
+	return Created{
+		CreateProjectEnvCreated1: &createProjectEnvCreated1,
+		Type:                     typ,
 	}
 }
 
-func CreateCreatedUnionArrayOfCreated2(arrayOfCreated2 []Created2) CreatedUnion {
-	typ := CreatedUnionTypeArrayOfCreated2
+func CreateCreatedArrayOfCreateProjectEnvCreated2(arrayOfCreateProjectEnvCreated2 []CreateProjectEnvCreated2) Created {
+	typ := CreatedTypeArrayOfCreateProjectEnvCreated2
 
-	return CreatedUnion{
-		ArrayOfCreated2: arrayOfCreated2,
-		Type:            typ,
+	return Created{
+		ArrayOfCreateProjectEnvCreated2: arrayOfCreateProjectEnvCreated2,
+		Type:                            typ,
 	}
 }
 
-func (u *CreatedUnion) UnmarshalJSON(data []byte) error {
+func (u *Created) UnmarshalJSON(data []byte) error {
 
-	var created1 Created1 = Created1{}
-	if err := utils.UnmarshalJSON(data, &created1, "", true, nil); err == nil {
-		u.Created1 = &created1
-		u.Type = CreatedUnionTypeCreated1
+	var createProjectEnvCreated1 CreateProjectEnvCreated1 = CreateProjectEnvCreated1{}
+	if err := utils.UnmarshalJSON(data, &createProjectEnvCreated1, "", true, nil); err == nil {
+		u.CreateProjectEnvCreated1 = &createProjectEnvCreated1
+		u.Type = CreatedTypeCreateProjectEnvCreated1
 		return nil
 	}
 
-	var arrayOfCreated2 []Created2 = []Created2{}
-	if err := utils.UnmarshalJSON(data, &arrayOfCreated2, "", true, nil); err == nil {
-		u.ArrayOfCreated2 = arrayOfCreated2
-		u.Type = CreatedUnionTypeArrayOfCreated2
+	var arrayOfCreateProjectEnvCreated2 []CreateProjectEnvCreated2 = []CreateProjectEnvCreated2{}
+	if err := utils.UnmarshalJSON(data, &arrayOfCreateProjectEnvCreated2, "", true, nil); err == nil {
+		u.ArrayOfCreateProjectEnvCreated2 = arrayOfCreateProjectEnvCreated2
+		u.Type = CreatedTypeArrayOfCreateProjectEnvCreated2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreatedUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Created", string(data))
 }
 
-func (u CreatedUnion) MarshalJSON() ([]byte, error) {
-	if u.Created1 != nil {
-		return utils.MarshalJSON(u.Created1, "", true)
+func (u Created) MarshalJSON() ([]byte, error) {
+	if u.CreateProjectEnvCreated1 != nil {
+		return utils.MarshalJSON(u.CreateProjectEnvCreated1, "", true)
 	}
 
-	if u.ArrayOfCreated2 != nil {
-		return utils.MarshalJSON(u.ArrayOfCreated2, "", true)
+	if u.ArrayOfCreateProjectEnvCreated2 != nil {
+		return utils.MarshalJSON(u.ArrayOfCreateProjectEnvCreated2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type CreatedUnion: all fields are null")
+	return nil, errors.New("could not marshal union type Created: all fields are null")
 }
 
-type ValueEnum string
+type CreateProjectEnvValueEnum string
 
 const (
-	ValueEnumProduction  ValueEnum = "production"
-	ValueEnumPreview     ValueEnum = "preview"
-	ValueEnumDevelopment ValueEnum = "development"
+	CreateProjectEnvValueEnumProduction  CreateProjectEnvValueEnum = "production"
+	CreateProjectEnvValueEnumPreview     CreateProjectEnvValueEnum = "preview"
+	CreateProjectEnvValueEnumDevelopment CreateProjectEnvValueEnum = "development"
 )
 
-func (e ValueEnum) ToPointer() *ValueEnum {
+func (e CreateProjectEnvValueEnum) ToPointer() *CreateProjectEnvValueEnum {
 	return &e
 }
-func (e *ValueEnum) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvValueEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -3996,23 +3996,23 @@ func (e *ValueEnum) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = ValueEnum(v)
+		*e = CreateProjectEnvValueEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ValueEnum: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvValueEnum: %v", v)
 	}
 }
 
 type CreateProjectEnvValueUnionType string
 
 const (
-	CreateProjectEnvValueUnionTypeStr              CreateProjectEnvValueUnionType = "str"
-	CreateProjectEnvValueUnionTypeArrayOfValueEnum CreateProjectEnvValueUnionType = "arrayOfValueEnum"
+	CreateProjectEnvValueUnionTypeStr                              CreateProjectEnvValueUnionType = "str"
+	CreateProjectEnvValueUnionTypeArrayOfCreateProjectEnvValueEnum CreateProjectEnvValueUnionType = "arrayOfCreateProjectEnvValueEnum"
 )
 
 type CreateProjectEnvValueUnion struct {
-	Str              *string     `queryParam:"inline"`
-	ArrayOfValueEnum []ValueEnum `queryParam:"inline"`
+	Str                              *string                     `queryParam:"inline"`
+	ArrayOfCreateProjectEnvValueEnum []CreateProjectEnvValueEnum `queryParam:"inline"`
 
 	Type CreateProjectEnvValueUnionType
 }
@@ -4026,12 +4026,12 @@ func CreateCreateProjectEnvValueUnionStr(str string) CreateProjectEnvValueUnion 
 	}
 }
 
-func CreateCreateProjectEnvValueUnionArrayOfValueEnum(arrayOfValueEnum []ValueEnum) CreateProjectEnvValueUnion {
-	typ := CreateProjectEnvValueUnionTypeArrayOfValueEnum
+func CreateCreateProjectEnvValueUnionArrayOfCreateProjectEnvValueEnum(arrayOfCreateProjectEnvValueEnum []CreateProjectEnvValueEnum) CreateProjectEnvValueUnion {
+	typ := CreateProjectEnvValueUnionTypeArrayOfCreateProjectEnvValueEnum
 
 	return CreateProjectEnvValueUnion{
-		ArrayOfValueEnum: arrayOfValueEnum,
-		Type:             typ,
+		ArrayOfCreateProjectEnvValueEnum: arrayOfCreateProjectEnvValueEnum,
+		Type:                             typ,
 	}
 }
 
@@ -4044,10 +4044,10 @@ func (u *CreateProjectEnvValueUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var arrayOfValueEnum []ValueEnum = []ValueEnum{}
-	if err := utils.UnmarshalJSON(data, &arrayOfValueEnum, "", true, nil); err == nil {
-		u.ArrayOfValueEnum = arrayOfValueEnum
-		u.Type = CreateProjectEnvValueUnionTypeArrayOfValueEnum
+	var arrayOfCreateProjectEnvValueEnum []CreateProjectEnvValueEnum = []CreateProjectEnvValueEnum{}
+	if err := utils.UnmarshalJSON(data, &arrayOfCreateProjectEnvValueEnum, "", true, nil); err == nil {
+		u.ArrayOfCreateProjectEnvValueEnum = arrayOfCreateProjectEnvValueEnum
+		u.Type = CreateProjectEnvValueUnionTypeArrayOfCreateProjectEnvValueEnum
 		return nil
 	}
 
@@ -4059,25 +4059,25 @@ func (u CreateProjectEnvValueUnion) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfValueEnum != nil {
-		return utils.MarshalJSON(u.ArrayOfValueEnum, "", true)
+	if u.ArrayOfCreateProjectEnvValueEnum != nil {
+		return utils.MarshalJSON(u.ArrayOfCreateProjectEnvValueEnum, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateProjectEnvValueUnion: all fields are null")
 }
 
-type TargetErrorEnum2 string
+type CreateProjectEnvTargetErrorEnum2 string
 
 const (
-	TargetErrorEnum2Production  TargetErrorEnum2 = "production"
-	TargetErrorEnum2Preview     TargetErrorEnum2 = "preview"
-	TargetErrorEnum2Development TargetErrorEnum2 = "development"
+	CreateProjectEnvTargetErrorEnum2Production  CreateProjectEnvTargetErrorEnum2 = "production"
+	CreateProjectEnvTargetErrorEnum2Preview     CreateProjectEnvTargetErrorEnum2 = "preview"
+	CreateProjectEnvTargetErrorEnum2Development CreateProjectEnvTargetErrorEnum2 = "development"
 )
 
-func (e TargetErrorEnum2) ToPointer() *TargetErrorEnum2 {
+func (e CreateProjectEnvTargetErrorEnum2) ToPointer() *CreateProjectEnvTargetErrorEnum2 {
 	return &e
 }
-func (e *TargetErrorEnum2) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvTargetErrorEnum2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4088,25 +4088,25 @@ func (e *TargetErrorEnum2) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = TargetErrorEnum2(v)
+		*e = CreateProjectEnvTargetErrorEnum2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TargetErrorEnum2: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvTargetErrorEnum2: %v", v)
 	}
 }
 
-type TargetErrorEnum1 string
+type CreateProjectEnvTargetErrorEnum1 string
 
 const (
-	TargetErrorEnum1Production  TargetErrorEnum1 = "production"
-	TargetErrorEnum1Preview     TargetErrorEnum1 = "preview"
-	TargetErrorEnum1Development TargetErrorEnum1 = "development"
+	CreateProjectEnvTargetErrorEnum1Production  CreateProjectEnvTargetErrorEnum1 = "production"
+	CreateProjectEnvTargetErrorEnum1Preview     CreateProjectEnvTargetErrorEnum1 = "preview"
+	CreateProjectEnvTargetErrorEnum1Development CreateProjectEnvTargetErrorEnum1 = "development"
 )
 
-func (e TargetErrorEnum1) ToPointer() *TargetErrorEnum1 {
+func (e CreateProjectEnvTargetErrorEnum1) ToPointer() *CreateProjectEnvTargetErrorEnum1 {
 	return &e
 }
-func (e *TargetErrorEnum1) UnmarshalJSON(data []byte) error {
+func (e *CreateProjectEnvTargetErrorEnum1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -4117,88 +4117,88 @@ func (e *TargetErrorEnum1) UnmarshalJSON(data []byte) error {
 	case "preview":
 		fallthrough
 	case "development":
-		*e = TargetErrorEnum1(v)
+		*e = CreateProjectEnvTargetErrorEnum1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TargetErrorEnum1: %v", v)
+		return fmt.Errorf("invalid value for CreateProjectEnvTargetErrorEnum1: %v", v)
 	}
 }
 
-type ErrorTargetUnionType string
+type CreateProjectEnvErrorTargetUnionType string
 
 const (
-	ErrorTargetUnionTypeArrayOfTargetErrorEnum1 ErrorTargetUnionType = "arrayOfTargetErrorEnum1"
-	ErrorTargetUnionTypeTargetErrorEnum2        ErrorTargetUnionType = "target_error_enum_2"
+	CreateProjectEnvErrorTargetUnionTypeArrayOfCreateProjectEnvTargetErrorEnum1 CreateProjectEnvErrorTargetUnionType = "arrayOfCreateProjectEnvTargetErrorEnum1"
+	CreateProjectEnvErrorTargetUnionTypeCreateProjectEnvTargetErrorEnum2        CreateProjectEnvErrorTargetUnionType = "createProjectEnv_target_error_enum_2"
 )
 
-type ErrorTargetUnion struct {
-	ArrayOfTargetErrorEnum1 []TargetErrorEnum1 `queryParam:"inline"`
-	TargetErrorEnum2        *TargetErrorEnum2  `queryParam:"inline"`
+type CreateProjectEnvErrorTargetUnion struct {
+	ArrayOfCreateProjectEnvTargetErrorEnum1 []CreateProjectEnvTargetErrorEnum1 `queryParam:"inline"`
+	CreateProjectEnvTargetErrorEnum2        *CreateProjectEnvTargetErrorEnum2  `queryParam:"inline"`
 
-	Type ErrorTargetUnionType
+	Type CreateProjectEnvErrorTargetUnionType
 }
 
-func CreateErrorTargetUnionArrayOfTargetErrorEnum1(arrayOfTargetErrorEnum1 []TargetErrorEnum1) ErrorTargetUnion {
-	typ := ErrorTargetUnionTypeArrayOfTargetErrorEnum1
+func CreateCreateProjectEnvErrorTargetUnionArrayOfCreateProjectEnvTargetErrorEnum1(arrayOfCreateProjectEnvTargetErrorEnum1 []CreateProjectEnvTargetErrorEnum1) CreateProjectEnvErrorTargetUnion {
+	typ := CreateProjectEnvErrorTargetUnionTypeArrayOfCreateProjectEnvTargetErrorEnum1
 
-	return ErrorTargetUnion{
-		ArrayOfTargetErrorEnum1: arrayOfTargetErrorEnum1,
-		Type:                    typ,
+	return CreateProjectEnvErrorTargetUnion{
+		ArrayOfCreateProjectEnvTargetErrorEnum1: arrayOfCreateProjectEnvTargetErrorEnum1,
+		Type:                                    typ,
 	}
 }
 
-func CreateErrorTargetUnionTargetErrorEnum2(targetErrorEnum2 TargetErrorEnum2) ErrorTargetUnion {
-	typ := ErrorTargetUnionTypeTargetErrorEnum2
+func CreateCreateProjectEnvErrorTargetUnionCreateProjectEnvTargetErrorEnum2(createProjectEnvTargetErrorEnum2 CreateProjectEnvTargetErrorEnum2) CreateProjectEnvErrorTargetUnion {
+	typ := CreateProjectEnvErrorTargetUnionTypeCreateProjectEnvTargetErrorEnum2
 
-	return ErrorTargetUnion{
-		TargetErrorEnum2: &targetErrorEnum2,
-		Type:             typ,
+	return CreateProjectEnvErrorTargetUnion{
+		CreateProjectEnvTargetErrorEnum2: &createProjectEnvTargetErrorEnum2,
+		Type:                             typ,
 	}
 }
 
-func (u *ErrorTargetUnion) UnmarshalJSON(data []byte) error {
+func (u *CreateProjectEnvErrorTargetUnion) UnmarshalJSON(data []byte) error {
 
-	var arrayOfTargetErrorEnum1 []TargetErrorEnum1 = []TargetErrorEnum1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfTargetErrorEnum1, "", true, nil); err == nil {
-		u.ArrayOfTargetErrorEnum1 = arrayOfTargetErrorEnum1
-		u.Type = ErrorTargetUnionTypeArrayOfTargetErrorEnum1
+	var arrayOfCreateProjectEnvTargetErrorEnum1 []CreateProjectEnvTargetErrorEnum1 = []CreateProjectEnvTargetErrorEnum1{}
+	if err := utils.UnmarshalJSON(data, &arrayOfCreateProjectEnvTargetErrorEnum1, "", true, nil); err == nil {
+		u.ArrayOfCreateProjectEnvTargetErrorEnum1 = arrayOfCreateProjectEnvTargetErrorEnum1
+		u.Type = CreateProjectEnvErrorTargetUnionTypeArrayOfCreateProjectEnvTargetErrorEnum1
 		return nil
 	}
 
-	var targetErrorEnum2 TargetErrorEnum2 = TargetErrorEnum2("")
-	if err := utils.UnmarshalJSON(data, &targetErrorEnum2, "", true, nil); err == nil {
-		u.TargetErrorEnum2 = &targetErrorEnum2
-		u.Type = ErrorTargetUnionTypeTargetErrorEnum2
+	var createProjectEnvTargetErrorEnum2 CreateProjectEnvTargetErrorEnum2 = CreateProjectEnvTargetErrorEnum2("")
+	if err := utils.UnmarshalJSON(data, &createProjectEnvTargetErrorEnum2, "", true, nil); err == nil {
+		u.CreateProjectEnvTargetErrorEnum2 = &createProjectEnvTargetErrorEnum2
+		u.Type = CreateProjectEnvErrorTargetUnionTypeCreateProjectEnvTargetErrorEnum2
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ErrorTargetUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectEnvErrorTargetUnion", string(data))
 }
 
-func (u ErrorTargetUnion) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfTargetErrorEnum1 != nil {
-		return utils.MarshalJSON(u.ArrayOfTargetErrorEnum1, "", true)
+func (u CreateProjectEnvErrorTargetUnion) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfCreateProjectEnvTargetErrorEnum1 != nil {
+		return utils.MarshalJSON(u.ArrayOfCreateProjectEnvTargetErrorEnum1, "", true)
 	}
 
-	if u.TargetErrorEnum2 != nil {
-		return utils.MarshalJSON(u.TargetErrorEnum2, "", true)
+	if u.CreateProjectEnvTargetErrorEnum2 != nil {
+		return utils.MarshalJSON(u.CreateProjectEnvTargetErrorEnum2, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type ErrorTargetUnion: all fields are null")
+	return nil, errors.New("could not marshal union type CreateProjectEnvErrorTargetUnion: all fields are null")
 }
 
 type CreateProjectEnvError struct {
-	Code      string                      `json:"code"`
-	Message   string                      `json:"message"`
-	Key       *string                     `json:"key,omitempty"`
-	EnvVarID  *string                     `json:"envVarId,omitempty"`
-	EnvVarKey *string                     `json:"envVarKey,omitempty"`
-	Action    *string                     `json:"action,omitempty"`
-	Link      *string                     `json:"link,omitempty"`
-	Value     *CreateProjectEnvValueUnion `json:"value,omitempty"`
-	GitBranch *string                     `json:"gitBranch,omitempty"`
-	Target    *ErrorTargetUnion           `json:"target,omitempty"`
-	Project   *string                     `json:"project,omitempty"`
+	Code      string                            `json:"code"`
+	Message   string                            `json:"message"`
+	Key       *string                           `json:"key,omitempty"`
+	EnvVarID  *string                           `json:"envVarId,omitempty"`
+	EnvVarKey *string                           `json:"envVarKey,omitempty"`
+	Action    *string                           `json:"action,omitempty"`
+	Link      *string                           `json:"link,omitempty"`
+	Value     *CreateProjectEnvValueUnion       `json:"value,omitempty"`
+	GitBranch *string                           `json:"gitBranch,omitempty"`
+	Target    *CreateProjectEnvErrorTargetUnion `json:"target,omitempty"`
+	Project   *string                           `json:"project,omitempty"`
 }
 
 func (o *CreateProjectEnvError) GetCode() string {
@@ -4264,7 +4264,7 @@ func (o *CreateProjectEnvError) GetGitBranch() *string {
 	return o.GitBranch
 }
 
-func (o *CreateProjectEnvError) GetTarget() *ErrorTargetUnion {
+func (o *CreateProjectEnvError) GetTarget() *CreateProjectEnvErrorTargetUnion {
 	if o == nil {
 		return nil
 	}
@@ -4278,11 +4278,11 @@ func (o *CreateProjectEnvError) GetProject() *string {
 	return o.Project
 }
 
-type Failed struct {
+type CreateProjectEnvFailed struct {
 	Error CreateProjectEnvError `json:"error"`
 }
 
-func (o *Failed) GetError() CreateProjectEnvError {
+func (o *CreateProjectEnvFailed) GetError() CreateProjectEnvError {
 	if o == nil {
 		return CreateProjectEnvError{}
 	}
@@ -4291,20 +4291,20 @@ func (o *Failed) GetError() CreateProjectEnvError {
 
 // CreateProjectEnvResponseBody - The environment variable was created successfully
 type CreateProjectEnvResponseBody struct {
-	Created CreatedUnion `json:"created"`
-	Failed  []Failed     `json:"failed"`
+	Created Created                  `json:"created"`
+	Failed  []CreateProjectEnvFailed `json:"failed"`
 }
 
-func (o *CreateProjectEnvResponseBody) GetCreated() CreatedUnion {
+func (o *CreateProjectEnvResponseBody) GetCreated() Created {
 	if o == nil {
-		return CreatedUnion{}
+		return Created{}
 	}
 	return o.Created
 }
 
-func (o *CreateProjectEnvResponseBody) GetFailed() []Failed {
+func (o *CreateProjectEnvResponseBody) GetFailed() []CreateProjectEnvFailed {
 	if o == nil {
-		return []Failed{}
+		return []CreateProjectEnvFailed{}
 	}
 	return o.Failed
 }

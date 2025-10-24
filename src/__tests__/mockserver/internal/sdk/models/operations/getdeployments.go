@@ -712,6 +712,7 @@ const (
 	GetDeploymentsFrameworkExpress        GetDeploymentsFramework = "express"
 	GetDeploymentsFrameworkH3             GetDeploymentsFramework = "h3"
 	GetDeploymentsFrameworkNestjs         GetDeploymentsFramework = "nestjs"
+	GetDeploymentsFrameworkFastify        GetDeploymentsFramework = "fastify"
 	GetDeploymentsFrameworkXmcp           GetDeploymentsFramework = "xmcp"
 )
 
@@ -829,6 +830,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = GetDeploymentsFramework(v)

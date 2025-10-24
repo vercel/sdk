@@ -6,7 +6,7 @@
 import { UiOptions2 } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: UiOptions2 = {
-  atBRANDAt626754: {},
+  atBRANDAt648348: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: UiOptions2 = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `atBRANDAt626754`                                                        | [models.UiOptionsAtBRANDAt626754](../models/uioptionsatbrandat626754.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `atBRANDAt648348`                                                        | [models.UiOptionsAtBRANDAt648348](../models/uioptionsatbrandat648348.md) | :heavy_check_mark:                                                       | N/A                                                                      |

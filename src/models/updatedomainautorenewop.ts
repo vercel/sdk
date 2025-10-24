@@ -214,7 +214,7 @@ export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema:
   z.ZodType<
     UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
-    UpdateDomainAutoRenewDomainsRegistrarResponseBody
+    unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**
@@ -283,7 +283,7 @@ export type UpdateDomainAutoRenewResponseBody$Outbound =
 export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
   UpdateDomainAutoRenewResponseBody$Outbound,
   z.ZodTypeDef,
-  UpdateDomainAutoRenewResponseBody
+  unknown
 > = z.union([
   DomainAlreadyRenewing$outboundSchema,
   DomainNotRenewable$outboundSchema,

@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8558": {}
+                      "__@BRAND@8684": {}
                     }
                   },
                   "secrets": []
@@ -7154,4 +7154,260 @@ workflows:
               {}
             type: simple
     x-speakeasy-test-group: drains
+    x-speakeasy-test-rebuild: true
+  - workflowId: createSharedEnvVariable
+    steps:
+      - stepId: test
+        operationId: createSharedEnvVariable
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            evs: []
+            target:
+              - production
+              - preview
+            type: encrypted
+        successCriteria:
+          - condition: $statusCode == 201
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created": [],
+                "failed": []
+              }
+            type: simple
+    x-speakeasy-test-group: environment
+    x-speakeasy-test-rebuild: true
+  - workflowId: listSharedEnvVariable
+    steps:
+      - stepId: test
+        operationId: listSharedEnvVariable
+        parameters:
+          - name: projectId
+            in: query
+            value: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
+          - name: ids
+            in: query
+            value: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
+          - name: exclude_ids
+            in: query
+            value: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
+          - name: exclude-ids
+            in: query
+            value: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
+          - name: exclude_projectId
+            in: query
+            value: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
+          - name: exclude-projectId
+            in: query
+            value: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "data": [],
+                "pagination": {
+                  "count": 20,
+                  "next": 1540095775951,
+                  "prev": 1540095775951
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: environment
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateSharedEnvVariable
+    steps:
+      - stepId: test
+        operationId: updateSharedEnvVariable
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            updates: {}
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "updated": [],
+                "failed": [
+                  {
+                    "error": {
+                      "code": "\u003cvalue\u003e",
+                      "message": "\u003cvalue\u003e"
+                    }
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: environment
+    x-speakeasy-test-rebuild: true
+  - workflowId: deleteSharedEnvVariable
+    steps:
+      - stepId: test
+        operationId: deleteSharedEnvVariable
+        parameters:
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            ids:
+              - env_abc123
+              - env_abc124
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "deleted": [
+                  "\u003cvalue 1\u003e",
+                  "\u003cvalue 2\u003e"
+                ],
+                "failed": [
+                  {
+                    "error": {
+                      "code": "\u003cvalue\u003e",
+                      "message": "\u003cvalue\u003e"
+                    }
+                  }
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: environment
+    x-speakeasy-test-rebuild: true
+  - workflowId: getSharedEnvVar
+    steps:
+      - stepId: test
+        operationId: getSharedEnvVar
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "created": "2021-02-10T13:11:49.180Z",
+                "key": "my-api-key",
+                "ownerId": "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+                "id": "env_XCG7t7AIHuO2SBA8667zNUiM",
+                "createdBy": "2qDDuGFTWXBLDNnqZfWPDp1A",
+                "deletedBy": "2qDDuGFTWXBLDNnqZfWPDp1A",
+                "updatedBy": "2qDDuGFTWXBLDNnqZfWPDp1A",
+                "createdAt": 1609492210000,
+                "deletedAt": 1609492210000,
+                "updatedAt": 1609492210000,
+                "projectId": [
+                  "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+                  "prj_2WjyKQmM8ZnGcJsPWMrasEFg"
+                ],
+                "type": "encrypted",
+                "target": [
+                  "production"
+                ]
+              }
+            type: simple
+    x-speakeasy-test-group: environment
+    x-speakeasy-test-rebuild: true
+  - workflowId: unlinkSharedEnvVariable
+    steps:
+      - stepId: test
+        operationId: unlinkSharedEnvVariable
+        parameters:
+          - name: id
+            in: path
+            value: <id>
+          - name: projectId
+            in: path
+            value: <id>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "id": "\u003cid\u003e"
+              }
+            type: simple
+    x-speakeasy-test-group: environment
+    x-speakeasy-test-rebuild: true
+  - workflowId: updateStaticIps
+    steps:
+      - stepId: test
+        operationId: updateStaticIps
+        parameters:
+          - name: idOrName
+            in: path
+            value: <value>
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        requestBody:
+          contentType: application/json
+          payload:
+            regions:
+              - iad1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              [
+                {
+                  "envId": "\u003cid\u003e",
+                  "connectConfigurationId": "\u003cid\u003e",
+                  "passive": true,
+                  "buildsEnabled": false,
+                  "createdAt": 5943.97,
+                  "updatedAt": 7734.38
+                }
+              ]
+            type: simple
+    x-speakeasy-test-group: connect
     x-speakeasy-test-rebuild: true

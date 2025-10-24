@@ -93,6 +93,7 @@ const (
 	GetConfigurableLogDrainFrameworkExpress        GetConfigurableLogDrainFramework = "express"
 	GetConfigurableLogDrainFrameworkH3             GetConfigurableLogDrainFramework = "h3"
 	GetConfigurableLogDrainFrameworkNestjs         GetConfigurableLogDrainFramework = "nestjs"
+	GetConfigurableLogDrainFrameworkFastify        GetConfigurableLogDrainFramework = "fastify"
 	GetConfigurableLogDrainFrameworkXmcp           GetConfigurableLogDrainFramework = "xmcp"
 )
 
@@ -210,6 +211,8 @@ func (e *GetConfigurableLogDrainFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = GetConfigurableLogDrainFramework(v)

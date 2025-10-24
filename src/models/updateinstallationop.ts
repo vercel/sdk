@@ -48,16 +48,24 @@ export const Level = {
 } as const;
 export type Level = ClosedEnum<typeof Level>;
 
-export type Notification = {
+export type Notification1 = {
   level: Level;
   title: string;
   message?: string | undefined;
   href?: string | undefined;
 };
 
+/**
+ * A notification to display to your customer. Send `null` to clear the current notification.
+ */
+export type Notification = Notification1 | string;
+
 export type UpdateInstallationRequestBody = {
   billingPlan?: BillingPlan | undefined;
-  notification?: Notification | undefined;
+  /**
+   * A notification to display to your customer. Send `null` to clear the current notification.
+   */
+  notification?: Notification1 | string | undefined;
 };
 
 export type UpdateInstallationRequest = {
@@ -303,8 +311,8 @@ export namespace Level$ {
 }
 
 /** @internal */
-export const Notification$inboundSchema: z.ZodType<
-  Notification,
+export const Notification1$inboundSchema: z.ZodType<
+  Notification1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -315,7 +323,7 @@ export const Notification$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Notification$Outbound = {
+export type Notification1$Outbound = {
   level: string;
   title: string;
   message?: string | undefined;
@@ -323,16 +331,60 @@ export type Notification$Outbound = {
 };
 
 /** @internal */
-export const Notification$outboundSchema: z.ZodType<
-  Notification$Outbound,
+export const Notification1$outboundSchema: z.ZodType<
+  Notification1$Outbound,
   z.ZodTypeDef,
-  Notification
+  Notification1
 > = z.object({
   level: Level$outboundSchema,
   title: z.string(),
   message: z.string().optional(),
   href: z.string().optional(),
 });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Notification1$ {
+  /** @deprecated use `Notification1$inboundSchema` instead. */
+  export const inboundSchema = Notification1$inboundSchema;
+  /** @deprecated use `Notification1$outboundSchema` instead. */
+  export const outboundSchema = Notification1$outboundSchema;
+  /** @deprecated use `Notification1$Outbound` instead. */
+  export type Outbound = Notification1$Outbound;
+}
+
+export function notification1ToJSON(notification1: Notification1): string {
+  return JSON.stringify(Notification1$outboundSchema.parse(notification1));
+}
+
+export function notification1FromJSON(
+  jsonString: string,
+): SafeParseResult<Notification1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Notification1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Notification1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Notification$inboundSchema: z.ZodType<
+  Notification,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => Notification1$inboundSchema), z.string()]);
+
+/** @internal */
+export type Notification$Outbound = Notification1$Outbound | string;
+
+/** @internal */
+export const Notification$outboundSchema: z.ZodType<
+  Notification$Outbound,
+  z.ZodTypeDef,
+  Notification
+> = z.union([z.lazy(() => Notification1$outboundSchema), z.string()]);
 
 /**
  * @internal
@@ -368,13 +420,14 @@ export const UpdateInstallationRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   billingPlan: z.lazy(() => BillingPlan$inboundSchema).optional(),
-  notification: z.lazy(() => Notification$inboundSchema).optional(),
+  notification: z.union([z.lazy(() => Notification1$inboundSchema), z.string()])
+    .optional(),
 });
 
 /** @internal */
 export type UpdateInstallationRequestBody$Outbound = {
   billingPlan?: BillingPlan$Outbound | undefined;
-  notification?: Notification$Outbound | undefined;
+  notification?: Notification1$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -384,7 +437,10 @@ export const UpdateInstallationRequestBody$outboundSchema: z.ZodType<
   UpdateInstallationRequestBody
 > = z.object({
   billingPlan: z.lazy(() => BillingPlan$outboundSchema).optional(),
-  notification: z.lazy(() => Notification$outboundSchema).optional(),
+  notification: z.union([
+    z.lazy(() => Notification1$outboundSchema),
+    z.string(),
+  ]).optional(),
 });
 
 /**

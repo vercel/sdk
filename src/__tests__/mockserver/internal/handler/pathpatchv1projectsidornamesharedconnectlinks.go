@@ -21,15 +21,15 @@ func pathPatchV1ProjectsIDOrNameSharedConnectLinks(dir *logging.HTTPFileDirector
 		count := rt.GetRequestCount(test, instanceID)
 
 		switch fmt.Sprintf("%s[%d]", test, count) {
-		case "updateSharedConnectLinks[0]":
-			dir.HandlerFunc("updateSharedConnectLinks", testUpdateSharedConnectLinksUpdateSharedConnectLinks0)(w, req)
+		case "updateStaticIps[0]":
+			dir.HandlerFunc("updateStaticIps", testUpdateStaticIpsUpdateStaticIps0)(w, req)
 		default:
 			http.Error(w, fmt.Sprintf("Unknown test: %s[%d]", test, count), http.StatusBadRequest)
 		}
 	}
 }
 
-func testUpdateSharedConnectLinksUpdateSharedConnectLinks0(w http.ResponseWriter, req *http.Request) {
+func testUpdateStaticIpsUpdateStaticIps0(w http.ResponseWriter, req *http.Request) {
 	if err := assert.SecurityAuthorizationHeader(req, true, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
@@ -50,16 +50,16 @@ func testUpdateSharedConnectLinksUpdateSharedConnectLinks0(w http.ResponseWriter
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	var respBody []operations.UpdateSharedConnectLinksResponseBody = []operations.UpdateSharedConnectLinksResponseBody{
-		operations.UpdateSharedConnectLinksResponseBody{
-			EnvID: operations.CreateUpdateSharedConnectLinksEnvIDUnionStr(
+	var respBody []operations.UpdateStaticIpsResponseBody = []operations.UpdateStaticIpsResponseBody{
+		operations.UpdateStaticIpsResponseBody{
+			EnvID: operations.CreateUpdateStaticIpsEnvIDUnionStr(
 				"<id>",
 			),
 			ConnectConfigurationID: "<id>",
-			Passive:                false,
+			Passive:                true,
 			BuildsEnabled:          false,
-			CreatedAt:              4065.64,
-			UpdatedAt:              8093.89,
+			CreatedAt:              5943.97,
+			UpdatedAt:              7734.38,
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

@@ -202,7 +202,7 @@ export const UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema:
   z.ZodType<
     UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
-    UpdateDomainNameserversDomainsRegistrarResponseBody
+    unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**
@@ -267,7 +267,7 @@ export type UpdateDomainNameserversResponseBody$Outbound =
 export const UpdateDomainNameserversResponseBody$outboundSchema: z.ZodType<
   UpdateDomainNameserversResponseBody$Outbound,
   z.ZodTypeDef,
-  UpdateDomainNameserversResponseBody
+  unknown
 > = z.union([
   DomainNotRegistered$outboundSchema,
   HttpApiDecodeError$outboundSchema,

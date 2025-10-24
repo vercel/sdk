@@ -113,7 +113,7 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
   z.ZodType<
     GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
-    GetContactInfoSchemaDomainsRegistrarResponseBody
+    unknown
   > = z.union([BadRequest$outboundSchema, HttpApiDecodeError$outboundSchema]);
 
 /**

@@ -49,7 +49,7 @@ import { tool$checksGetAllChecks } from "./tools/checksGetAllChecks.js";
 import { tool$checksGetCheck } from "./tools/checksGetCheck.js";
 import { tool$checksRerequestCheck } from "./tools/checksRerequestCheck.js";
 import { tool$checksUpdateCheck } from "./tools/checksUpdateCheck.js";
-import { tool$connectUpdateSharedConnectLinks } from "./tools/connectUpdateSharedConnectLinks.js";
+import { tool$connectUpdateStaticIps } from "./tools/connectUpdateStaticIps.js";
 import { tool$deploymentsCancelDeployment } from "./tools/deploymentsCancelDeployment.js";
 import { tool$deploymentsCreateDeployment } from "./tools/deploymentsCreateDeployment.js";
 import { tool$deploymentsDeleteDeployment } from "./tools/deploymentsDeleteDeployment.js";
@@ -115,10 +115,16 @@ import { tool$edgeConfigPatchEdgeConfigItems } from "./tools/edgeConfigPatchEdge
 import { tool$edgeConfigPatchEdgeConfigSchema } from "./tools/edgeConfigPatchEdgeConfigSchema.js";
 import { tool$edgeConfigUpdateEdgeConfig } from "./tools/edgeConfigUpdateEdgeConfig.js";
 import { tool$environmentCreateCustomEnvironment } from "./tools/environmentCreateCustomEnvironment.js";
+import { tool$environmentCreateSharedEnvVariable } from "./tools/environmentCreateSharedEnvVariable.js";
+import { tool$environmentDeleteSharedEnvVariable } from "./tools/environmentDeleteSharedEnvVariable.js";
 import { tool$environmentGetCustomEnvironment } from "./tools/environmentGetCustomEnvironment.js";
+import { tool$environmentGetSharedEnvVar } from "./tools/environmentGetSharedEnvVar.js";
 import { tool$environmentGetV9ProjectsIdOrNameCustomEnvironments } from "./tools/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
+import { tool$environmentListSharedEnvVariable } from "./tools/environmentListSharedEnvVariable.js";
 import { tool$environmentRemoveCustomEnvironment } from "./tools/environmentRemoveCustomEnvironment.js";
+import { tool$environmentUnlinkSharedEnvVariable } from "./tools/environmentUnlinkSharedEnvVariable.js";
 import { tool$environmentUpdateCustomEnvironment } from "./tools/environmentUpdateCustomEnvironment.js";
+import { tool$environmentUpdateSharedEnvVariable } from "./tools/environmentUpdateSharedEnvVariable.js";
 import { tool$integrationsConnectIntegrationResourceToProject } from "./tools/integrationsConnectIntegrationResourceToProject.js";
 import { tool$integrationsCreateIntegrationStoreDirect } from "./tools/integrationsCreateIntegrationStoreDirect.js";
 import { tool$integrationsDeleteConfiguration } from "./tools/integrationsDeleteConfiguration.js";
@@ -232,7 +238,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.15.0",
+    version: "1.16.0",
   });
 
   const client = new VercelCore({
@@ -388,6 +394,17 @@ export function createMCPServer(deps: {
   tool(tool$edgeConfigCreateEdgeConfigToken);
   tool(tool$edgeConfigGetEdgeConfigBackup);
   tool(tool$edgeConfigGetEdgeConfigBackups);
+  tool(tool$environmentCreateSharedEnvVariable);
+  tool(tool$environmentListSharedEnvVariable);
+  tool(tool$environmentUpdateSharedEnvVariable);
+  tool(tool$environmentDeleteSharedEnvVariable);
+  tool(tool$environmentGetSharedEnvVar);
+  tool(tool$environmentUnlinkSharedEnvVariable);
+  tool(tool$environmentCreateCustomEnvironment);
+  tool(tool$environmentGetV9ProjectsIdOrNameCustomEnvironments);
+  tool(tool$environmentGetCustomEnvironment);
+  tool(tool$environmentUpdateCustomEnvironment);
+  tool(tool$environmentRemoveCustomEnvironment);
   tool(tool$userListUserEvents);
   tool(tool$userGetAuthUser);
   tool(tool$userRequestDelete);
@@ -421,12 +438,7 @@ export function createMCPServer(deps: {
   tool(tool$projectMembersGetProjectMembers);
   tool(tool$projectMembersAddProjectMember);
   tool(tool$projectMembersRemoveProjectMember);
-  tool(tool$connectUpdateSharedConnectLinks);
-  tool(tool$environmentCreateCustomEnvironment);
-  tool(tool$environmentGetV9ProjectsIdOrNameCustomEnvironments);
-  tool(tool$environmentGetCustomEnvironment);
-  tool(tool$environmentUpdateCustomEnvironment);
-  tool(tool$environmentRemoveCustomEnvironment);
+  tool(tool$connectUpdateStaticIps);
   tool(tool$rollingReleaseGetRollingReleaseBillingStatus);
   tool(tool$rollingReleaseGetRollingReleaseConfig);
   tool(tool$rollingReleaseDeleteRollingReleaseConfig);

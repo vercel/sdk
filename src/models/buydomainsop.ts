@@ -547,7 +547,7 @@ export const BuyDomainsDomainsRegistrarResponseResponseBody$outboundSchema:
   z.ZodType<
     BuyDomainsDomainsRegistrarResponseResponseBody$Outbound,
     z.ZodTypeDef,
-    BuyDomainsDomainsRegistrarResponseResponseBody
+    unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**
@@ -628,7 +628,7 @@ export type BuyDomainsDomainsRegistrarResponseBody$Outbound =
 export const BuyDomainsDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   BuyDomainsDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
-  BuyDomainsDomainsRegistrarResponseBody
+  unknown
 > = z.union([
   DomainTooShort$outboundSchema,
   OrderTooExpensive$outboundSchema,

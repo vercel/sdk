@@ -2683,6 +2683,7 @@ const (
 	CreateDrainFrameworkExpress        CreateDrainFramework = "express"
 	CreateDrainFrameworkH3             CreateDrainFramework = "h3"
 	CreateDrainFrameworkNestjs         CreateDrainFramework = "nestjs"
+	CreateDrainFrameworkFastify        CreateDrainFramework = "fastify"
 	CreateDrainFrameworkXmcp           CreateDrainFramework = "xmcp"
 )
 
@@ -2800,6 +2801,8 @@ func (e *CreateDrainFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = CreateDrainFramework(v)

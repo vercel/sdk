@@ -19,7 +19,7 @@ let value: CreateProjectEnvResponseBody = {
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `created`                              | *models.Created*                       | :heavy_check_mark:                     | N/A                                    |
-| `failed`                               | [models.Failed](../models/failed.md)[] | :heavy_check_mark:                     | N/A                                    |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `created`                                                              | *models.CreateProjectEnvCreated*                                       | :heavy_check_mark:                                                     | N/A                                                                    |
+| `failed`                                                               | [models.CreateProjectEnvFailed](../models/createprojectenvfailed.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |

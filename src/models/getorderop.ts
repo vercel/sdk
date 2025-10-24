@@ -273,7 +273,7 @@ export type GetOrderDomainsRegistrarResponseBody$Outbound =
 export const GetOrderDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   GetOrderDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
-  GetOrderDomainsRegistrarResponseBody
+  unknown
 > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**

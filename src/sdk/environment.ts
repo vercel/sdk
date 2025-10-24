@@ -3,34 +3,166 @@
  */
 
 import { environmentCreateCustomEnvironment } from "../funcs/environmentCreateCustomEnvironment.js";
+import { environmentCreateSharedEnvVariable } from "../funcs/environmentCreateSharedEnvVariable.js";
+import { environmentDeleteSharedEnvVariable } from "../funcs/environmentDeleteSharedEnvVariable.js";
 import { environmentGetCustomEnvironment } from "../funcs/environmentGetCustomEnvironment.js";
+import { environmentGetSharedEnvVar } from "../funcs/environmentGetSharedEnvVar.js";
 import { environmentGetV9ProjectsIdOrNameCustomEnvironments } from "../funcs/environmentGetV9ProjectsIdOrNameCustomEnvironments.js";
+import { environmentListSharedEnvVariable } from "../funcs/environmentListSharedEnvVariable.js";
 import { environmentRemoveCustomEnvironment } from "../funcs/environmentRemoveCustomEnvironment.js";
+import { environmentUnlinkSharedEnvVariable } from "../funcs/environmentUnlinkSharedEnvVariable.js";
 import { environmentUpdateCustomEnvironment } from "../funcs/environmentUpdateCustomEnvironment.js";
+import { environmentUpdateSharedEnvVariable } from "../funcs/environmentUpdateSharedEnvVariable.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   CreateCustomEnvironmentRequest,
   CreateCustomEnvironmentResponseBody,
 } from "../models/createcustomenvironmentop.js";
 import {
+  CreateSharedEnvVariableRequest,
+  CreateSharedEnvVariableResponseBody,
+} from "../models/createsharedenvvariableop.js";
+import {
+  DeleteSharedEnvVariableRequest,
+  DeleteSharedEnvVariableResponseBody,
+} from "../models/deletesharedenvvariableop.js";
+import {
   GetCustomEnvironmentRequest,
   GetCustomEnvironmentResponseBody,
 } from "../models/getcustomenvironmentop.js";
+import {
+  GetSharedEnvVarRequest,
+  GetSharedEnvVarResponseBody,
+} from "../models/getsharedenvvarop.js";
 import {
   GetV9ProjectsIdOrNameCustomEnvironmentsRequest,
   GetV9ProjectsIdOrNameCustomEnvironmentsResponseBody,
 } from "../models/getv9projectsidornamecustomenvironmentsop.js";
 import {
+  ListSharedEnvVariableRequest,
+  ListSharedEnvVariableResponseBody,
+} from "../models/listsharedenvvariableop.js";
+import {
   RemoveCustomEnvironmentRequest,
   RemoveCustomEnvironmentResponseBody,
 } from "../models/removecustomenvironmentop.js";
 import {
+  UnlinkSharedEnvVariableRequest,
+  UnlinkSharedEnvVariableResponseBody,
+} from "../models/unlinksharedenvvariableop.js";
+import {
   UpdateCustomEnvironmentRequest,
   UpdateCustomEnvironmentResponseBody,
 } from "../models/updatecustomenvironmentop.js";
+import {
+  UpdateSharedEnvVariableRequest,
+  UpdateSharedEnvVariableResponseBody,
+} from "../models/updatesharedenvvariableop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Environment extends ClientSDK {
+  /**
+   * Create one or more shared environment variables
+   *
+   * @remarks
+   * Creates shared environment variable(s) for a team.
+   */
+  async createSharedEnvVariable(
+    request: CreateSharedEnvVariableRequest,
+    options?: RequestOptions,
+  ): Promise<CreateSharedEnvVariableResponseBody> {
+    return unwrapAsync(environmentCreateSharedEnvVariable(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Lists all Shared Environment Variables for a team
+   *
+   * @remarks
+   * Lists all Shared Environment Variables for a team, taking into account optional filters.
+   */
+  async listSharedEnvVariable(
+    request: ListSharedEnvVariableRequest,
+    options?: RequestOptions,
+  ): Promise<ListSharedEnvVariableResponseBody> {
+    return unwrapAsync(environmentListSharedEnvVariable(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Updates one or more shared environment variables
+   *
+   * @remarks
+   * Updates a given Shared Environment Variable for a Team.
+   */
+  async updateSharedEnvVariable(
+    request: UpdateSharedEnvVariableRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateSharedEnvVariableResponseBody> {
+    return unwrapAsync(environmentUpdateSharedEnvVariable(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete one or more Env Var
+   *
+   * @remarks
+   * Deletes one or many Shared Environment Variables for a given team.
+   */
+  async deleteSharedEnvVariable(
+    request: DeleteSharedEnvVariableRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteSharedEnvVariableResponseBody> {
+    return unwrapAsync(environmentDeleteSharedEnvVariable(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Retrieve the decrypted value of a Shared Environment Variable by id.
+   *
+   * @remarks
+   * Retrieve the decrypted value of a Shared Environment Variable by id.
+   */
+  async getSharedEnvVar(
+    request: GetSharedEnvVarRequest,
+    options?: RequestOptions,
+  ): Promise<GetSharedEnvVarResponseBody> {
+    return unwrapAsync(environmentGetSharedEnvVar(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Disconnects a shared environment variable for a given project
+   *
+   * @remarks
+   * Disconnects a shared environment variable for a given project
+   */
+  async unlinkSharedEnvVariable(
+    request: UnlinkSharedEnvVariableRequest,
+    options?: RequestOptions,
+  ): Promise<UnlinkSharedEnvVariableResponseBody> {
+    return unwrapAsync(environmentUnlinkSharedEnvVariable(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Create a custom environment for the current project.
    *

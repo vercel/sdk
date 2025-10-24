@@ -147,7 +147,7 @@ export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
   z.ZodType<
     GetDomainPriceDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
-    GetDomainPriceDomainsRegistrarResponseBody
+    unknown
   > = z.union([
     BadRequest$outboundSchema,
     DomainTooShort$outboundSchema,

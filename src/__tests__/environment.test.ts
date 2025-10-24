@@ -130,3 +130,187 @@ test("Environment Remove Custom Environment", async () => {
     updatedAt: 1676.55,
   });
 });
+
+test("Environment Create Shared Env Variable", async () => {
+  const testHttpClient = createTestHTTPClient("createSharedEnvVariable");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.environment.createSharedEnvVariable({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      evs: [],
+      type: "encrypted",
+      target: [
+        "production",
+        "preview",
+      ],
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    created: [],
+    failed: [],
+  });
+});
+
+test("Environment List Shared Env Variable", async () => {
+  const testHttpClient = createTestHTTPClient("listSharedEnvVariable");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.environment.listSharedEnvVariable({
+    projectId: "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+    ids: "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV",
+    excludeIdsQueryParameter:
+      "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV",
+    excludeIdsQueryParameter1:
+      "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV",
+    excludeProjectIdQueryParameter: "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+    excludeProjectIdQueryParameter1: "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    data: [],
+    pagination: {
+      count: 20,
+      next: 1540095775951,
+      prev: 1540095775951,
+    },
+  });
+});
+
+test("Environment Update Shared Env Variable", async () => {
+  const testHttpClient = createTestHTTPClient("updateSharedEnvVariable");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.environment.updateSharedEnvVariable({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      updates: {},
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    updated: [],
+    failed: [
+      {
+        error: {
+          code: "<value>",
+          message: "<value>",
+        },
+      },
+    ],
+  });
+});
+
+test("Environment Delete Shared Env Variable", async () => {
+  const testHttpClient = createTestHTTPClient("deleteSharedEnvVariable");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.environment.deleteSharedEnvVariable({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      ids: [
+        "env_abc123",
+        "env_abc124",
+      ],
+    },
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    deleted: [
+      "<value 1>",
+      "<value 2>",
+    ],
+    failed: [
+      {
+        error: {
+          code: "<value>",
+          message: "<value>",
+        },
+      },
+    ],
+  });
+});
+
+test("Environment Get Shared Env Var", async () => {
+  const testHttpClient = createTestHTTPClient("getSharedEnvVar");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.environment.getSharedEnvVar({
+    id: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    created: new Date("2021-02-10T13:11:49.180Z"),
+    key: "my-api-key",
+    ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+    id: "env_XCG7t7AIHuO2SBA8667zNUiM",
+    createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+    createdAt: 1609492210000,
+    deletedAt: 1609492210000,
+    updatedAt: 1609492210000,
+    projectId: [
+      "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+      "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
+    ],
+    type: "encrypted",
+    target: [
+      "production",
+    ],
+  });
+});
+
+test("Environment Unlink Shared Env Variable", async () => {
+  const testHttpClient = createTestHTTPClient("unlinkSharedEnvVariable");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.environment.unlinkSharedEnvVariable({
+    id: "<id>",
+    projectId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    id: "<id>",
+  });
+});

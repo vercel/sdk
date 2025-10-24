@@ -273,6 +273,7 @@ const (
 	CreateProjectFrameworkRequestExpress        CreateProjectFrameworkRequest = "express"
 	CreateProjectFrameworkRequestH3             CreateProjectFrameworkRequest = "h3"
 	CreateProjectFrameworkRequestNestjs         CreateProjectFrameworkRequest = "nestjs"
+	CreateProjectFrameworkRequestFastify        CreateProjectFrameworkRequest = "fastify"
 	CreateProjectFrameworkRequestXmcp           CreateProjectFrameworkRequest = "xmcp"
 )
 
@@ -390,6 +391,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = CreateProjectFrameworkRequest(v)
@@ -3230,6 +3233,7 @@ const (
 	CreateProjectFrameworkResponseBodyExpress        CreateProjectFrameworkResponseBody = "express"
 	CreateProjectFrameworkResponseBodyH3             CreateProjectFrameworkResponseBody = "h3"
 	CreateProjectFrameworkResponseBodyNestjs         CreateProjectFrameworkResponseBody = "nestjs"
+	CreateProjectFrameworkResponseBodyFastify        CreateProjectFrameworkResponseBody = "fastify"
 	CreateProjectFrameworkResponseBodyXmcp           CreateProjectFrameworkResponseBody = "xmcp"
 )
 
@@ -3347,6 +3351,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = CreateProjectFrameworkResponseBody(v)

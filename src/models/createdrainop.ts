@@ -513,6 +513,7 @@ export const CreateDrainResponseBodyFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
 export type CreateDrainResponseBodyFramework = ClosedEnum<

@@ -6,7 +6,7 @@
 import { MaxLength } from "@vercel/sdk/models/getconfigurationproductsop.js";
 
 let value: MaxLength = {
-  atBRANDAt626754: {},
+  atBRANDAt648348: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: MaxLength = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `atBRANDAt626754`                                                          | [models.PropertiesAtBRANDAt626754](../models/propertiesatbrandat626754.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `atBRANDAt648348`                                                          | [models.PropertiesAtBRANDAt648348](../models/propertiesatbrandat648348.md) | :heavy_check_mark:                                                         | N/A                                                                        |

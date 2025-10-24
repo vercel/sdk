@@ -1584,6 +1584,7 @@ const (
 	GetDrainsFrameworkExpress        GetDrainsFramework = "express"
 	GetDrainsFrameworkH3             GetDrainsFramework = "h3"
 	GetDrainsFrameworkNestjs         GetDrainsFramework = "nestjs"
+	GetDrainsFrameworkFastify        GetDrainsFramework = "fastify"
 	GetDrainsFrameworkXmcp           GetDrainsFramework = "xmcp"
 )
 
@@ -1701,6 +1702,8 @@ func (e *GetDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = GetDrainsFramework(v)

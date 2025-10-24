@@ -77,6 +77,7 @@ export const GetAllLogDrainsResponseBodyFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
 export type GetAllLogDrainsResponseBodyFramework = ClosedEnum<
@@ -438,6 +439,7 @@ export const GetAllLogDrainsDrainsFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
 export type GetAllLogDrainsDrainsFramework = ClosedEnum<

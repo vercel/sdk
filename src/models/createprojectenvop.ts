@@ -921,16 +921,16 @@ export type Created1 = {
   system?: boolean | undefined;
 };
 
-export type Created = Created1 | Array<Created2>;
+export type CreateProjectEnvCreated = Created1 | Array<Created2>;
 
-export const Value2 = {
+export const CreateProjectEnvValue2 = {
   Production: "production",
   Preview: "preview",
   Development: "development",
 } as const;
-export type Value2 = ClosedEnum<typeof Value2>;
+export type CreateProjectEnvValue2 = ClosedEnum<typeof CreateProjectEnvValue2>;
 
-export type CreateProjectEnvValue = string | Array<Value2>;
+export type CreateProjectEnvValue = string | Array<CreateProjectEnvValue2>;
 
 export const CreateProjectEnvTargetProjectsResponse2 = {
   Production: "production",
@@ -962,7 +962,7 @@ export type CreateProjectEnvError = {
   envVarKey?: string | undefined;
   action?: string | undefined;
   link?: string | undefined;
-  value?: string | Array<Value2> | undefined;
+  value?: string | Array<CreateProjectEnvValue2> | undefined;
   gitBranch?: string | undefined;
   target?:
     | Array<CreateProjectEnvTargetProjects1>
@@ -971,7 +971,7 @@ export type CreateProjectEnvError = {
   project?: string | undefined;
 };
 
-export type Failed = {
+export type CreateProjectEnvFailed = {
   error: CreateProjectEnvError;
 };
 
@@ -980,7 +980,7 @@ export type Failed = {
  */
 export type CreateProjectEnvResponseBody = {
   created: Created1 | Array<Created2>;
-  failed: Array<Failed>;
+  failed: Array<CreateProjectEnvFailed>;
 };
 
 /** @internal */
@@ -5327,20 +5327,25 @@ export function created1FromJSON(
 }
 
 /** @internal */
-export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
-  z.union([
-    z.lazy(() => Created1$inboundSchema),
-    z.array(z.lazy(() => Created2$inboundSchema)),
-  ]);
-
-/** @internal */
-export type Created$Outbound = Created1$Outbound | Array<Created2$Outbound>;
-
-/** @internal */
-export const Created$outboundSchema: z.ZodType<
-  Created$Outbound,
+export const CreateProjectEnvCreated$inboundSchema: z.ZodType<
+  CreateProjectEnvCreated,
   z.ZodTypeDef,
-  Created
+  unknown
+> = z.union([
+  z.lazy(() => Created1$inboundSchema),
+  z.array(z.lazy(() => Created2$inboundSchema)),
+]);
+
+/** @internal */
+export type CreateProjectEnvCreated$Outbound =
+  | Created1$Outbound
+  | Array<Created2$Outbound>;
+
+/** @internal */
+export const CreateProjectEnvCreated$outboundSchema: z.ZodType<
+  CreateProjectEnvCreated$Outbound,
+  z.ZodTypeDef,
+  CreateProjectEnvCreated
 > = z.union([
   z.lazy(() => Created1$outboundSchema),
   z.array(z.lazy(() => Created2$outboundSchema)),
@@ -5350,46 +5355,52 @@ export const Created$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Created$ {
-  /** @deprecated use `Created$inboundSchema` instead. */
-  export const inboundSchema = Created$inboundSchema;
-  /** @deprecated use `Created$outboundSchema` instead. */
-  export const outboundSchema = Created$outboundSchema;
-  /** @deprecated use `Created$Outbound` instead. */
-  export type Outbound = Created$Outbound;
+export namespace CreateProjectEnvCreated$ {
+  /** @deprecated use `CreateProjectEnvCreated$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectEnvCreated$inboundSchema;
+  /** @deprecated use `CreateProjectEnvCreated$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectEnvCreated$outboundSchema;
+  /** @deprecated use `CreateProjectEnvCreated$Outbound` instead. */
+  export type Outbound = CreateProjectEnvCreated$Outbound;
 }
 
-export function createdToJSON(created: Created): string {
-  return JSON.stringify(Created$outboundSchema.parse(created));
+export function createProjectEnvCreatedToJSON(
+  createProjectEnvCreated: CreateProjectEnvCreated,
+): string {
+  return JSON.stringify(
+    CreateProjectEnvCreated$outboundSchema.parse(createProjectEnvCreated),
+  );
 }
 
-export function createdFromJSON(
+export function createProjectEnvCreatedFromJSON(
   jsonString: string,
-): SafeParseResult<Created, SDKValidationError> {
+): SafeParseResult<CreateProjectEnvCreated, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Created$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Created' from JSON`,
+    (x) => CreateProjectEnvCreated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvCreated' from JSON`,
   );
 }
 
 /** @internal */
-export const Value2$inboundSchema: z.ZodNativeEnum<typeof Value2> = z
-  .nativeEnum(Value2);
+export const CreateProjectEnvValue2$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvValue2
+> = z.nativeEnum(CreateProjectEnvValue2);
 
 /** @internal */
-export const Value2$outboundSchema: z.ZodNativeEnum<typeof Value2> =
-  Value2$inboundSchema;
+export const CreateProjectEnvValue2$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectEnvValue2
+> = CreateProjectEnvValue2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Value2$ {
-  /** @deprecated use `Value2$inboundSchema` instead. */
-  export const inboundSchema = Value2$inboundSchema;
-  /** @deprecated use `Value2$outboundSchema` instead. */
-  export const outboundSchema = Value2$outboundSchema;
+export namespace CreateProjectEnvValue2$ {
+  /** @deprecated use `CreateProjectEnvValue2$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectEnvValue2$inboundSchema;
+  /** @deprecated use `CreateProjectEnvValue2$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectEnvValue2$outboundSchema;
 }
 
 /** @internal */
@@ -5397,7 +5408,7 @@ export const CreateProjectEnvValue$inboundSchema: z.ZodType<
   CreateProjectEnvValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.array(Value2$inboundSchema)]);
+> = z.union([z.string(), z.array(CreateProjectEnvValue2$inboundSchema)]);
 
 /** @internal */
 export type CreateProjectEnvValue$Outbound = string | Array<string>;
@@ -5407,7 +5418,7 @@ export const CreateProjectEnvValue$outboundSchema: z.ZodType<
   CreateProjectEnvValue$Outbound,
   z.ZodTypeDef,
   CreateProjectEnvValue
-> = z.union([z.string(), z.array(Value2$outboundSchema)]);
+> = z.union([z.string(), z.array(CreateProjectEnvValue2$outboundSchema)]);
 
 /**
  * @internal
@@ -5551,7 +5562,8 @@ export const CreateProjectEnvError$inboundSchema: z.ZodType<
   envVarKey: z.string().optional(),
   action: z.string().optional(),
   link: z.string().optional(),
-  value: z.union([z.string(), z.array(Value2$inboundSchema)]).optional(),
+  value: z.union([z.string(), z.array(CreateProjectEnvValue2$inboundSchema)])
+    .optional(),
   gitBranch: z.string().optional(),
   target: z.union([
     z.array(CreateProjectEnvTargetProjects1$inboundSchema),
@@ -5588,7 +5600,8 @@ export const CreateProjectEnvError$outboundSchema: z.ZodType<
   envVarKey: z.string().optional(),
   action: z.string().optional(),
   link: z.string().optional(),
-  value: z.union([z.string(), z.array(Value2$outboundSchema)]).optional(),
+  value: z.union([z.string(), z.array(CreateProjectEnvValue2$outboundSchema)])
+    .optional(),
   gitBranch: z.string().optional(),
   target: z.union([
     z.array(CreateProjectEnvTargetProjects1$outboundSchema),
@@ -5629,21 +5642,24 @@ export function createProjectEnvErrorFromJSON(
 }
 
 /** @internal */
-export const Failed$inboundSchema: z.ZodType<Failed, z.ZodTypeDef, unknown> = z
-  .object({
-    error: z.lazy(() => CreateProjectEnvError$inboundSchema),
-  });
+export const CreateProjectEnvFailed$inboundSchema: z.ZodType<
+  CreateProjectEnvFailed,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  error: z.lazy(() => CreateProjectEnvError$inboundSchema),
+});
 
 /** @internal */
-export type Failed$Outbound = {
+export type CreateProjectEnvFailed$Outbound = {
   error: CreateProjectEnvError$Outbound;
 };
 
 /** @internal */
-export const Failed$outboundSchema: z.ZodType<
-  Failed$Outbound,
+export const CreateProjectEnvFailed$outboundSchema: z.ZodType<
+  CreateProjectEnvFailed$Outbound,
   z.ZodTypeDef,
-  Failed
+  CreateProjectEnvFailed
 > = z.object({
   error: z.lazy(() => CreateProjectEnvError$outboundSchema),
 });
@@ -5652,26 +5668,30 @@ export const Failed$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Failed$ {
-  /** @deprecated use `Failed$inboundSchema` instead. */
-  export const inboundSchema = Failed$inboundSchema;
-  /** @deprecated use `Failed$outboundSchema` instead. */
-  export const outboundSchema = Failed$outboundSchema;
-  /** @deprecated use `Failed$Outbound` instead. */
-  export type Outbound = Failed$Outbound;
+export namespace CreateProjectEnvFailed$ {
+  /** @deprecated use `CreateProjectEnvFailed$inboundSchema` instead. */
+  export const inboundSchema = CreateProjectEnvFailed$inboundSchema;
+  /** @deprecated use `CreateProjectEnvFailed$outboundSchema` instead. */
+  export const outboundSchema = CreateProjectEnvFailed$outboundSchema;
+  /** @deprecated use `CreateProjectEnvFailed$Outbound` instead. */
+  export type Outbound = CreateProjectEnvFailed$Outbound;
 }
 
-export function failedToJSON(failed: Failed): string {
-  return JSON.stringify(Failed$outboundSchema.parse(failed));
+export function createProjectEnvFailedToJSON(
+  createProjectEnvFailed: CreateProjectEnvFailed,
+): string {
+  return JSON.stringify(
+    CreateProjectEnvFailed$outboundSchema.parse(createProjectEnvFailed),
+  );
 }
 
-export function failedFromJSON(
+export function createProjectEnvFailedFromJSON(
   jsonString: string,
-): SafeParseResult<Failed, SDKValidationError> {
+): SafeParseResult<CreateProjectEnvFailed, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Failed$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Failed' from JSON`,
+    (x) => CreateProjectEnvFailed$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectEnvFailed' from JSON`,
   );
 }
 
@@ -5685,13 +5705,13 @@ export const CreateProjectEnvResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => Created1$inboundSchema),
     z.array(z.lazy(() => Created2$inboundSchema)),
   ]),
-  failed: z.array(z.lazy(() => Failed$inboundSchema)),
+  failed: z.array(z.lazy(() => CreateProjectEnvFailed$inboundSchema)),
 });
 
 /** @internal */
 export type CreateProjectEnvResponseBody$Outbound = {
   created: Created1$Outbound | Array<Created2$Outbound>;
-  failed: Array<Failed$Outbound>;
+  failed: Array<CreateProjectEnvFailed$Outbound>;
 };
 
 /** @internal */
@@ -5704,7 +5724,7 @@ export const CreateProjectEnvResponseBody$outboundSchema: z.ZodType<
     z.lazy(() => Created1$outboundSchema),
     z.array(z.lazy(() => Created2$outboundSchema)),
   ]),
-  failed: z.array(z.lazy(() => Failed$outboundSchema)),
+  failed: z.array(z.lazy(() => CreateProjectEnvFailed$outboundSchema)),
 });
 
 /**

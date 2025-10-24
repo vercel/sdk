@@ -357,6 +357,7 @@ export const DrainsFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
 export type DrainsFramework = ClosedEnum<typeof DrainsFramework>;

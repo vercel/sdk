@@ -1,27 +1,51 @@
 # Created
 
-
-## Supported Types
-
-### `models.Created1`
+## Example Usage
 
 ```typescript
-const value: models.Created1 = {
-  type: "secret",
-  value: "<value>",
-  key: "<key>",
+import { Created } from "@vercel/sdk/models/createsharedenvvariableop.js";
+
+let value: Created = {
+  created: new Date("2021-02-10T13:11:49.180Z"),
+  key: "my-api-key",
+  ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
+  id: "env_XCG7t7AIHuO2SBA8667zNUiM",
+  createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+  deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+  updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
+  createdAt: 1609492210000,
+  deletedAt: 1609492210000,
+  updatedAt: 1609492210000,
+  projectId: [
+    "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+    "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
+  ],
+  type: "encrypted",
+  target: [
+    "production",
+  ],
 };
 ```
 
-### `models.Created2[]`
+## Fields
 
-```typescript
-const value: models.Created2[] = [
-  {
-    type: "sensitive",
-    value: "<value>",
-    key: "<key>",
-  },
-];
-```
-
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `created`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The date when the Shared Env Var was created.                                                 | 2021-02-10T13:11:49.180Z                                                                      |
+| `key`                                                                                         | *string*                                                                                      | :heavy_minus_sign:                                                                            | The name of the Shared Env Var.                                                               | my-api-key                                                                                    |
+| `ownerId`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique identifier of the owner (team) the Shared Env Var was created for.                 | team_LLHUOMOoDlqOp8wPE4kFo9pE                                                                 |
+| `id`                                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique identifier of the Shared Env Var.                                                  | env_XCG7t7AIHuO2SBA8667zNUiM                                                                  |
+| `createdBy`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique identifier of the user who created the Shared Env Var.                             | 2qDDuGFTWXBLDNnqZfWPDp1A                                                                      |
+| `deletedBy`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique identifier of the user who deleted the Shared Env Var.                             | 2qDDuGFTWXBLDNnqZfWPDp1A                                                                      |
+| `updatedBy`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | The unique identifier of the user who last updated the Shared Env Var.                        | 2qDDuGFTWXBLDNnqZfWPDp1A                                                                      |
+| `createdAt`                                                                                   | *number*                                                                                      | :heavy_minus_sign:                                                                            | Timestamp for when the Shared Env Var was created.                                            | 1609492210000                                                                                 |
+| `deletedAt`                                                                                   | *number*                                                                                      | :heavy_minus_sign:                                                                            | Timestamp for when the Shared Env Var was (soft) deleted.                                     | 1609492210000                                                                                 |
+| `updatedAt`                                                                                   | *number*                                                                                      | :heavy_minus_sign:                                                                            | Timestamp for when the Shared Env Var was last updated.                                       | 1609492210000                                                                                 |
+| `value`                                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | The value of the Shared Env Var.                                                              |                                                                                               |
+| `projectId`                                                                                   | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | The unique identifiers of the projects which the Shared Env Var is linked to.                 | [<br/>"prj_2WjyKQmM8ZnGcJsPWMrHRHrE",<br/>"prj_2WjyKQmM8ZnGcJsPWMrasEFg"<br/>]                |
+| `type`                                                                                        | [models.CreateSharedEnvVariableType](../models/createsharedenvvariabletype.md)                | :heavy_minus_sign:                                                                            | The type of this cosmos doc instance, if blank, assume secret.                                | encrypted                                                                                     |
+| `target`                                                                                      | [models.CreateSharedEnvVariableTarget](../models/createsharedenvvariabletarget.md)[]          | :heavy_minus_sign:                                                                            | environments this env variable targets                                                        | production                                                                                    |
+| `applyToAllCustomEnvironments`                                                                | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | whether or not this env varible applies to custom environments                                |                                                                                               |
+| `decrypted`                                                                                   | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | whether or not this env variable is decrypted                                                 |                                                                                               |
+| `comment`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | A user provided comment that describes what this Shared Env Var is for.                       |                                                                                               |
+| `lastEditedByDisplayName`                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The last editor full name or username.                                                        |                                                                                               |

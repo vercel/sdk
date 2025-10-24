@@ -26,6 +26,7 @@ import { ProjectMembers } from "./projectmembers.js";
 import { Projects } from "./projects.js";
 import { RollingRelease } from "./rollingrelease.js";
 import { Security } from "./security.js";
+import { StaticIps } from "./staticips.js";
 import { Teams } from "./teams.js";
 import { User } from "./user.js";
 import { Webhooks } from "./webhooks.js";
@@ -96,6 +97,11 @@ export class Vercel extends ClientSDK {
     return (this._edgeConfig ??= new EdgeConfig(this._options));
   }
 
+  private _environment?: Environment;
+  get environment(): Environment {
+    return (this._environment ??= new Environment(this._options));
+  }
+
   private _user?: User;
   get user(): User {
     return (this._user ??= new User(this._options));
@@ -126,9 +132,9 @@ export class Vercel extends ClientSDK {
     return (this._connect ??= new Connect(this._options));
   }
 
-  private _environment?: Environment;
-  get environment(): Environment {
-    return (this._environment ??= new Environment(this._options));
+  private _staticIps?: StaticIps;
+  get staticIps(): StaticIps {
+    return (this._staticIps ??= new StaticIps(this._options));
   }
 
   private _rollingRelease?: RollingRelease;

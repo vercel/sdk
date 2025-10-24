@@ -1,21 +1,22 @@
 # Notification
 
-## Example Usage
+A notification to display to your customer. Send `null` to clear the current notification.
+
+
+## Supported Types
+
+### `models.Notification1`
 
 ```typescript
-import { Notification } from "@vercel/sdk/models/updateinstallationop.js";
-
-let value: Notification = {
-  level: "warn",
+const value: models.Notification1 = {
+  level: "info",
   title: "<value>",
 };
 ```
 
-## Fields
+### `string`
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `level`                            | [models.Level](../models/level.md) | :heavy_check_mark:                 | N/A                                |
-| `title`                            | *string*                           | :heavy_check_mark:                 | N/A                                |
-| `message`                          | *string*                           | :heavy_minus_sign:                 | N/A                                |
-| `href`                             | *string*                           | :heavy_minus_sign:                 | N/A                                |
+```typescript
+const value: string = "<value>";
+```
+

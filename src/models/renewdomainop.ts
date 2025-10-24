@@ -410,7 +410,7 @@ export const RenewDomainDomainsRegistrarResponseResponseBody$outboundSchema:
   z.ZodType<
     RenewDomainDomainsRegistrarResponseResponseBody$Outbound,
     z.ZodTypeDef,
-    RenewDomainDomainsRegistrarResponseResponseBody
+    unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**
@@ -485,7 +485,7 @@ export type RenewDomainDomainsRegistrarResponseBody$Outbound =
 export const RenewDomainDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   RenewDomainDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
-  RenewDomainDomainsRegistrarResponseBody
+  unknown
 > = z.union([
   BadRequest$outboundSchema,
   DomainTooShort$outboundSchema,

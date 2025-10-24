@@ -4,6 +4,7 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"mockserver/internal/sdk/models/components"
 	"mockserver/internal/sdk/utils"
@@ -203,6 +204,17 @@ type UpdateInstallationNotification struct {
 	Href    *string                 `json:"href,omitempty"`
 }
 
+func (u UpdateInstallationNotification) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateInstallationNotification) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"level", "title"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UpdateInstallationNotification) GetLevel() UpdateInstallationLevel {
 	if o == nil {
 		return UpdateInstallationLevel("")
@@ -231,9 +243,74 @@ func (o *UpdateInstallationNotification) GetHref() *string {
 	return o.Href
 }
 
+type NotificationType string
+
+const (
+	NotificationTypeUpdateInstallationNotification NotificationType = "update_installation_notification"
+	NotificationTypeStr                            NotificationType = "str"
+)
+
+// Notification - A notification to display to your customer. Send `null` to clear the current notification.
+type Notification struct {
+	UpdateInstallationNotification *UpdateInstallationNotification `queryParam:"inline"`
+	Str                            *string                         `queryParam:"inline"`
+
+	Type NotificationType
+}
+
+func CreateNotificationUpdateInstallationNotification(updateInstallationNotification UpdateInstallationNotification) Notification {
+	typ := NotificationTypeUpdateInstallationNotification
+
+	return Notification{
+		UpdateInstallationNotification: &updateInstallationNotification,
+		Type:                           typ,
+	}
+}
+
+func CreateNotificationStr(str string) Notification {
+	typ := NotificationTypeStr
+
+	return Notification{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *Notification) UnmarshalJSON(data []byte) error {
+
+	var updateInstallationNotification UpdateInstallationNotification = UpdateInstallationNotification{}
+	if err := utils.UnmarshalJSON(data, &updateInstallationNotification, "", true, nil); err == nil {
+		u.UpdateInstallationNotification = &updateInstallationNotification
+		u.Type = NotificationTypeUpdateInstallationNotification
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = NotificationTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Notification", string(data))
+}
+
+func (u Notification) MarshalJSON() ([]byte, error) {
+	if u.UpdateInstallationNotification != nil {
+		return utils.MarshalJSON(u.UpdateInstallationNotification, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Notification: all fields are null")
+}
+
 type UpdateInstallationRequestBody struct {
-	BillingPlan  *UpdateInstallationBillingPlan  `json:"billingPlan,omitempty"`
-	Notification *UpdateInstallationNotification `json:"notification,omitempty"`
+	BillingPlan *UpdateInstallationBillingPlan `json:"billingPlan,omitempty"`
+	// A notification to display to your customer. Send `null` to clear the current notification.
+	Notification *Notification `json:"notification,omitempty"`
 }
 
 func (o *UpdateInstallationRequestBody) GetBillingPlan() *UpdateInstallationBillingPlan {
@@ -243,7 +320,7 @@ func (o *UpdateInstallationRequestBody) GetBillingPlan() *UpdateInstallationBill
 	return o.BillingPlan
 }
 
-func (o *UpdateInstallationRequestBody) GetNotification() *UpdateInstallationNotification {
+func (o *UpdateInstallationRequestBody) GetNotification() *Notification {
 	if o == nil {
 		return nil
 	}

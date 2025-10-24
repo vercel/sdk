@@ -130,7 +130,7 @@ export type GetTldPriceDomainsRegistrarResponseBody$Outbound =
 export const GetTldPriceDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   GetTldPriceDomainsRegistrarResponseBody$Outbound,
   z.ZodTypeDef,
-  GetTldPriceDomainsRegistrarResponseBody
+  unknown
 > = z.union([
   TldNotSupported$outboundSchema,
   HttpApiDecodeError$outboundSchema,

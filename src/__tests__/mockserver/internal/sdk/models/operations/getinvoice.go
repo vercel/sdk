@@ -31,6 +31,7 @@ func (o *GetInvoiceRequest) GetInvoiceID() string {
 type GetInvoiceState string
 
 const (
+	GetInvoiceStateDraft           GetInvoiceState = "draft"
 	GetInvoiceStatePending         GetInvoiceState = "pending"
 	GetInvoiceStateScheduled       GetInvoiceState = "scheduled"
 	GetInvoiceStateInvoiced        GetInvoiceState = "invoiced"
@@ -49,6 +50,8 @@ func (e *GetInvoiceState) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "draft":
+		fallthrough
 	case "pending":
 		fallthrough
 	case "scheduled":

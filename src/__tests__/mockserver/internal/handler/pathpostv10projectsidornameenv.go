@@ -51,10 +51,10 @@ func testCreateProjectEnvCreateProjectEnv0(w http.ResponseWriter, req *http.Requ
 		return
 	}
 	var respBody *operations.CreateProjectEnvResponseBody = &operations.CreateProjectEnvResponseBody{
-		Created: operations.CreateCreatedUnionArrayOfCreated2(
-			[]operations.Created2{},
+		Created: operations.CreateCreatedArrayOfCreateProjectEnvCreated2(
+			[]operations.CreateProjectEnvCreated2{},
 		),
-		Failed: []operations.Failed{},
+		Failed: []operations.CreateProjectEnvFailed{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 

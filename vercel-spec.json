@@ -4666,6 +4666,7 @@
                         "express",
                         "h3",
                         "nestjs",
+                        "fastify",
                         "xmcp"
                       ]
                     },
@@ -9441,6 +9442,7 @@
                                 "express",
                                 "h3",
                                 "nestjs",
+                                "fastify",
                                 "xmcp"
                               ]
                             },
@@ -13223,6 +13225,7 @@
                             "express",
                             "h3",
                             "nestjs",
+                            "fastify",
                             "xmcp"
                           ]
                         },
@@ -16217,6 +16220,7 @@
                           "express",
                           "h3",
                           "nestjs",
+                          "fastify",
                           "xmcp"
                         ],
                         "nullable": true
@@ -16451,6 +16455,7 @@
                             "express",
                             "h3",
                             "nestjs",
+                            "fastify",
                             "xmcp"
                           ]
                         },
@@ -24763,6 +24768,7 @@
                               "express",
                               "h3",
                               "nestjs",
+                              "fastify",
                               "xmcp"
                             ]
                           },
@@ -25849,6 +25855,7 @@
                                             "express",
                                             "h3",
                                             "nestjs",
+                                            "fastify",
                                             "xmcp"
                                           ]
                                         },
@@ -25956,6 +25963,7 @@
                                     "express",
                                     "h3",
                                     "nestjs",
+                                    "fastify",
                                     "xmcp"
                                   ]
                                 },
@@ -27139,6 +27147,7 @@
                                   "express",
                                   "h3",
                                   "nestjs",
+                                  "fastify",
                                   "xmcp"
                                 ]
                               },
@@ -28513,6 +28522,7 @@
                                         "express",
                                         "h3",
                                         "nestjs",
+                                        "fastify",
                                         "xmcp"
                                       ]
                                     },
@@ -29608,6 +29618,7 @@
                                   "express",
                                   "h3",
                                   "nestjs",
+                                  "fastify",
                                   "xmcp"
                                 ]
                               },
@@ -30628,6 +30639,7 @@
                                   "express",
                                   "h3",
                                   "nestjs",
+                                  "fastify",
                                   "xmcp"
                                 ]
                               },
@@ -33584,6 +33596,1461 @@
         ]
       }
     },
+    "/v1/env": {
+      "post": {
+        "description": "Creates shared environment variable(s) for a team.",
+        "operationId": "createSharedEnvVariable",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create one or more shared environment variables",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "created": {
+                      "items": {
+                        "properties": {
+                          "created": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The date when the Shared Env Var was created.",
+                            "example": "2021-02-10T13:11:49.180Z"
+                          },
+                          "key": {
+                            "type": "string",
+                            "description": "The name of the Shared Env Var.",
+                            "example": "my-api-key"
+                          },
+                          "ownerId": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the owner (team) the Shared Env Var was created for.",
+                            "example": "team_LLHUOMOoDlqOp8wPE4kFo9pE"
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "The unique identifier of the Shared Env Var.",
+                            "example": "env_XCG7t7AIHuO2SBA8667zNUiM"
+                          },
+                          "createdBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who created the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "deletedBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who deleted the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "updatedBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who last updated the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was created.",
+                            "example": 1609492210000
+                          },
+                          "deletedAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was (soft) deleted.",
+                            "example": 1609492210000
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was last updated.",
+                            "example": 1609492210000
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The value of the Shared Env Var."
+                          },
+                          "projectId": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "The unique identifiers of the projects which the Shared Env Var is linked to.",
+                            "example": [
+                              "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+                              "prj_2WjyKQmM8ZnGcJsPWMrasEFg"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "encrypted",
+                              "sensitive",
+                              "system",
+                              "plain"
+                            ],
+                            "description": "The type of this cosmos doc instance, if blank, assume secret.",
+                            "example": "encrypted"
+                          },
+                          "target": {
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "production",
+                                "preview",
+                                "development"
+                              ],
+                              "description": "environments this env variable targets",
+                              "example": "production"
+                            },
+                            "type": "array",
+                            "description": "environments this env variable targets",
+                            "example": "production"
+                          },
+                          "applyToAllCustomEnvironments": {
+                            "type": "boolean",
+                            "description": "whether or not this env varible applies to custom environments"
+                          },
+                          "decrypted": {
+                            "type": "boolean",
+                            "description": "whether or not this env variable is decrypted"
+                          },
+                          "comment": {
+                            "type": "string",
+                            "description": "A user provided comment that describes what this Shared Env Var is for."
+                          },
+                          "lastEditedByDisplayName": {
+                            "type": "string",
+                            "description": "The last editor full name or username."
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "failed": {
+                      "items": {
+                        "properties": {
+                          "error": {
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
+                              "key": {
+                                "type": "string"
+                              },
+                              "envVarId": {
+                                "type": "string"
+                              },
+                              "envVarKey": {
+                                "type": "string"
+                              },
+                              "action": {
+                                "type": "string"
+                              },
+                              "link": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                      "enum": [
+                                        "production",
+                                        "preview",
+                                        "development",
+                                        "preview",
+                                        "development"
+                                      ]
+                                    },
+                                    "type": "array"
+                                  }
+                                ]
+                              },
+                              "gitBranch": {
+                                "type": "string"
+                              },
+                              "target": {
+                                "oneOf": [
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                      "enum": [
+                                        "production",
+                                        "preview",
+                                        "development",
+                                        "preview",
+                                        "development"
+                                      ]
+                                    },
+                                    "type": "array"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "production",
+                                      "preview",
+                                      "development",
+                                      "preview",
+                                      "development"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "project": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "message"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "error"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "created",
+                    "failed"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "evs"
+                ],
+                "anyOf": [
+                  {
+                    "required": [
+                      "target"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "applyToAllCustomEnvironments"
+                    ]
+                  }
+                ],
+                "properties": {
+                  "evs": {
+                    "type": "array",
+                    "maximum": 50,
+                    "minimum": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "key",
+                        "value"
+                      ],
+                      "properties": {
+                        "key": {
+                          "description": "The name of the Shared Environment Variable",
+                          "type": "string",
+                          "example": "API_URL"
+                        },
+                        "value": {
+                          "description": "The value of the Shared Environment Variable",
+                          "type": "string",
+                          "example": "https://api.vercel.com"
+                        },
+                        "comment": {
+                          "type": "string",
+                          "description": "A comment to add context on what this Shared Environment Variable is for",
+                          "example": "database connection string for production",
+                          "maxLength": 500
+                        }
+                      }
+                    }
+                  },
+                  "type": {
+                    "description": "The type of environment variable",
+                    "type": "string",
+                    "enum": [
+                      "encrypted",
+                      "sensitive"
+                    ],
+                    "example": "encrypted"
+                  },
+                  "target": {
+                    "description": "The target environment of the Shared Environment Variable",
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "production",
+                        "preview",
+                        "development"
+                      ]
+                    },
+                    "example": [
+                      "production",
+                      "preview"
+                    ]
+                  },
+                  "projectId": {
+                    "description": "Associate a Shared Environment Variable to projects.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+                      "prj_2WjyKQmM8ZnGcJsPWMrHRCRV"
+                    ],
+                    "deprecated": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Lists all Shared Environment Variables for a team, taking into account optional filters.",
+        "operationId": "listSharedEnvVariable",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Lists all Shared Environment Variables for a team",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "created": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The date when the Shared Env Var was created.",
+                            "example": "2021-02-10T13:11:49.180Z"
+                          },
+                          "key": {
+                            "type": "string",
+                            "description": "The name of the Shared Env Var.",
+                            "example": "my-api-key"
+                          },
+                          "ownerId": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the owner (team) the Shared Env Var was created for.",
+                            "example": "team_LLHUOMOoDlqOp8wPE4kFo9pE"
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "The unique identifier of the Shared Env Var.",
+                            "example": "env_XCG7t7AIHuO2SBA8667zNUiM"
+                          },
+                          "createdBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who created the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "deletedBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who deleted the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "updatedBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who last updated the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was created.",
+                            "example": 1609492210000
+                          },
+                          "deletedAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was (soft) deleted.",
+                            "example": 1609492210000
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was last updated.",
+                            "example": 1609492210000
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The value of the Shared Env Var."
+                          },
+                          "projectId": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "The unique identifiers of the projects which the Shared Env Var is linked to.",
+                            "example": [
+                              "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+                              "prj_2WjyKQmM8ZnGcJsPWMrasEFg"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "encrypted",
+                              "sensitive",
+                              "system",
+                              "plain"
+                            ],
+                            "description": "The type of this cosmos doc instance, if blank, assume secret.",
+                            "example": "encrypted"
+                          },
+                          "target": {
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "production",
+                                "preview",
+                                "development"
+                              ],
+                              "description": "environments this env variable targets",
+                              "example": "production"
+                            },
+                            "type": "array",
+                            "description": "environments this env variable targets",
+                            "example": "production"
+                          },
+                          "applyToAllCustomEnvironments": {
+                            "type": "boolean",
+                            "description": "whether or not this env varible applies to custom environments"
+                          },
+                          "decrypted": {
+                            "type": "boolean",
+                            "description": "whether or not this env variable is decrypted"
+                          },
+                          "comment": {
+                            "type": "string",
+                            "description": "A user provided comment that describes what this Shared Env Var is for."
+                          },
+                          "lastEditedByDisplayName": {
+                            "type": "string",
+                            "description": "The last editor full name or username."
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "pagination"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "description": "Filter SharedEnvVariables that belong to a project",
+            "in": "query",
+            "schema": {
+              "description": "Filter SharedEnvVariables that belong to a project",
+              "type": "string",
+              "example": "prj_2WjyKQmM8ZnGcJsPWMrHRHrE"
+            }
+          },
+          {
+            "name": "ids",
+            "description": "Filter SharedEnvVariables based on comma separated ids",
+            "in": "query",
+            "schema": {
+              "description": "Filter SharedEnvVariables based on comma separated ids",
+              "type": "string",
+              "example": "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV"
+            }
+          },
+          {
+            "name": "exclude_ids",
+            "description": "Filter SharedEnvVariables based on comma separated ids",
+            "in": "query",
+            "schema": {
+              "description": "Filter SharedEnvVariables based on comma separated ids",
+              "type": "string",
+              "example": "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV"
+            }
+          },
+          {
+            "name": "exclude-ids",
+            "description": "Filter SharedEnvVariables based on comma separated ids",
+            "in": "query",
+            "schema": {
+              "description": "Filter SharedEnvVariables based on comma separated ids",
+              "type": "string",
+              "example": "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV"
+            }
+          },
+          {
+            "name": "exclude_projectId",
+            "description": "Filter SharedEnvVariables that belong to a project",
+            "in": "query",
+            "schema": {
+              "description": "Filter SharedEnvVariables that belong to a project",
+              "type": "string",
+              "example": "prj_2WjyKQmM8ZnGcJsPWMrHRHrE"
+            }
+          },
+          {
+            "name": "exclude-projectId",
+            "description": "Filter SharedEnvVariables that belong to a project",
+            "in": "query",
+            "schema": {
+              "description": "Filter SharedEnvVariables that belong to a project",
+              "type": "string",
+              "example": "prj_2WjyKQmM8ZnGcJsPWMrHRHrE"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "description": "Updates a given Shared Environment Variable for a Team.",
+        "operationId": "updateSharedEnvVariable",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Updates one or more shared environment variables",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "updated": {
+                      "items": {
+                        "properties": {
+                          "created": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "The date when the Shared Env Var was created.",
+                            "example": "2021-02-10T13:11:49.180Z"
+                          },
+                          "key": {
+                            "type": "string",
+                            "description": "The name of the Shared Env Var.",
+                            "example": "my-api-key"
+                          },
+                          "ownerId": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the owner (team) the Shared Env Var was created for.",
+                            "example": "team_LLHUOMOoDlqOp8wPE4kFo9pE"
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "The unique identifier of the Shared Env Var.",
+                            "example": "env_XCG7t7AIHuO2SBA8667zNUiM"
+                          },
+                          "createdBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who created the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "deletedBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who deleted the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "updatedBy": {
+                            "nullable": true,
+                            "type": "string",
+                            "description": "The unique identifier of the user who last updated the Shared Env Var.",
+                            "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                          },
+                          "createdAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was created.",
+                            "example": 1609492210000
+                          },
+                          "deletedAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was (soft) deleted.",
+                            "example": 1609492210000
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "Timestamp for when the Shared Env Var was last updated.",
+                            "example": 1609492210000
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The value of the Shared Env Var."
+                          },
+                          "projectId": {
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array",
+                            "description": "The unique identifiers of the projects which the Shared Env Var is linked to.",
+                            "example": [
+                              "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+                              "prj_2WjyKQmM8ZnGcJsPWMrasEFg"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "encrypted",
+                              "sensitive",
+                              "system",
+                              "plain"
+                            ],
+                            "description": "The type of this cosmos doc instance, if blank, assume secret.",
+                            "example": "encrypted"
+                          },
+                          "target": {
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "production",
+                                "preview",
+                                "development"
+                              ],
+                              "description": "environments this env variable targets",
+                              "example": "production"
+                            },
+                            "type": "array",
+                            "description": "environments this env variable targets",
+                            "example": "production"
+                          },
+                          "applyToAllCustomEnvironments": {
+                            "type": "boolean",
+                            "description": "whether or not this env varible applies to custom environments"
+                          },
+                          "decrypted": {
+                            "type": "boolean",
+                            "description": "whether or not this env variable is decrypted"
+                          },
+                          "comment": {
+                            "type": "string",
+                            "description": "A user provided comment that describes what this Shared Env Var is for."
+                          },
+                          "lastEditedByDisplayName": {
+                            "type": "string",
+                            "description": "The last editor full name or username."
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "failed": {
+                      "items": {
+                        "properties": {
+                          "error": {
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
+                              "key": {
+                                "type": "string"
+                              },
+                              "envVarId": {
+                                "type": "string"
+                              },
+                              "envVarKey": {
+                                "type": "string"
+                              },
+                              "action": {
+                                "type": "string"
+                              },
+                              "link": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                      "enum": [
+                                        "production",
+                                        "preview",
+                                        "development",
+                                        "preview",
+                                        "development"
+                                      ]
+                                    },
+                                    "type": "array"
+                                  }
+                                ]
+                              },
+                              "gitBranch": {
+                                "type": "string"
+                              },
+                              "target": {
+                                "oneOf": [
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                      "enum": [
+                                        "production",
+                                        "preview",
+                                        "development",
+                                        "preview",
+                                        "development"
+                                      ]
+                                    },
+                                    "type": "array"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "production",
+                                      "preview",
+                                      "development",
+                                      "preview",
+                                      "development"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "project": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "message"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "error"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "updated",
+                    "failed"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "type": "object",
+                "required": [
+                  "updates"
+                ],
+                "properties": {
+                  "updates": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "key": {
+                          "description": "The name of the Shared Environment Variable",
+                          "type": "string",
+                          "example": "API_URL"
+                        },
+                        "value": {
+                          "description": "The value of the Shared Environment Variable",
+                          "type": "string",
+                          "example": "https://api.vercel.com"
+                        },
+                        "target": {
+                          "description": "The target environment of the Shared Environment Variable",
+                          "type": "array",
+                          "items": {
+                            "enum": [
+                              "production",
+                              "preview",
+                              "development"
+                            ]
+                          },
+                          "example": [
+                            "production",
+                            "preview"
+                          ]
+                        },
+                        "projectId": {
+                          "description": "Associate a Shared Environment Variable to projects.",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "example": [
+                            "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+                            "prj_2WjyKQmM8ZnGcJsPWMrHRCRV"
+                          ]
+                        },
+                        "projectIdUpdates": {
+                          "description": "Incrementally update project associations without specifying the full list",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "link": {
+                              "description": "Project IDs to add to this environment variable",
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "example": [
+                                "prj_2WjyKQmM8ZnGcJsPWMrHRHrE"
+                              ]
+                            },
+                            "unlink": {
+                              "description": "Project IDs to remove from this environment variable",
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "example": [
+                                "prj_2WjyKQmM8ZnGcJsPWMrHRCRV"
+                              ]
+                            }
+                          }
+                        },
+                        "type": {
+                          "description": "The new type of the Shared Environment Variable",
+                          "type": "string",
+                          "enum": [
+                            "encrypted",
+                            "sensitive"
+                          ],
+                          "example": "encrypted"
+                        },
+                        "comment": {
+                          "type": "string",
+                          "description": "A comment to add context on what this Shared Environment Variable is for",
+                          "example": "database connection string for production",
+                          "maxLength": 500
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes one or many Shared Environment Variables for a given team.",
+        "operationId": "deleteSharedEnvVariable",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete one or more Env Var",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "deleted": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "failed": {
+                      "items": {
+                        "properties": {
+                          "error": {
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              },
+                              "key": {
+                                "type": "string"
+                              },
+                              "envVarId": {
+                                "type": "string"
+                              },
+                              "envVarKey": {
+                                "type": "string"
+                              },
+                              "action": {
+                                "type": "string"
+                              },
+                              "link": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                      "enum": [
+                                        "production",
+                                        "preview",
+                                        "development",
+                                        "preview",
+                                        "development"
+                                      ]
+                                    },
+                                    "type": "array"
+                                  }
+                                ]
+                              },
+                              "gitBranch": {
+                                "type": "string"
+                              },
+                              "target": {
+                                "oneOf": [
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                      "enum": [
+                                        "production",
+                                        "preview",
+                                        "development",
+                                        "preview",
+                                        "development"
+                                      ]
+                                    },
+                                    "type": "array"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "enum": [
+                                      "production",
+                                      "preview",
+                                      "development",
+                                      "preview",
+                                      "development"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "project": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "message"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "error"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "deleted",
+                    "failed"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account was soft-blocked for an unhandled reason.\nThe account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "ids"
+                ],
+                "properties": {
+                  "ids": {
+                    "description": "IDs of the Shared Environment Variables to delete",
+                    "minimum": 1,
+                    "maximum": 50,
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "env_abc123",
+                      "env_abc124"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/env/{id}": {
+      "get": {
+        "description": "Retrieve the decrypted value of a Shared Environment Variable by id.",
+        "operationId": "getSharedEnvVar",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Retrieve the decrypted value of a Shared Environment Variable by id.",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "created": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The date when the Shared Env Var was created.",
+                      "example": "2021-02-10T13:11:49.180Z"
+                    },
+                    "key": {
+                      "type": "string",
+                      "description": "The name of the Shared Env Var.",
+                      "example": "my-api-key"
+                    },
+                    "ownerId": {
+                      "nullable": true,
+                      "type": "string",
+                      "description": "The unique identifier of the owner (team) the Shared Env Var was created for.",
+                      "example": "team_LLHUOMOoDlqOp8wPE4kFo9pE"
+                    },
+                    "id": {
+                      "type": "string",
+                      "description": "The unique identifier of the Shared Env Var.",
+                      "example": "env_XCG7t7AIHuO2SBA8667zNUiM"
+                    },
+                    "createdBy": {
+                      "nullable": true,
+                      "type": "string",
+                      "description": "The unique identifier of the user who created the Shared Env Var.",
+                      "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                    },
+                    "deletedBy": {
+                      "nullable": true,
+                      "type": "string",
+                      "description": "The unique identifier of the user who deleted the Shared Env Var.",
+                      "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                    },
+                    "updatedBy": {
+                      "nullable": true,
+                      "type": "string",
+                      "description": "The unique identifier of the user who last updated the Shared Env Var.",
+                      "example": "2qDDuGFTWXBLDNnqZfWPDp1A"
+                    },
+                    "createdAt": {
+                      "type": "number",
+                      "description": "Timestamp for when the Shared Env Var was created.",
+                      "example": 1609492210000
+                    },
+                    "deletedAt": {
+                      "type": "number",
+                      "description": "Timestamp for when the Shared Env Var was (soft) deleted.",
+                      "example": 1609492210000
+                    },
+                    "updatedAt": {
+                      "type": "number",
+                      "description": "Timestamp for when the Shared Env Var was last updated.",
+                      "example": 1609492210000
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value of the Shared Env Var."
+                    },
+                    "projectId": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array",
+                      "description": "The unique identifiers of the projects which the Shared Env Var is linked to.",
+                      "example": [
+                        "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
+                        "prj_2WjyKQmM8ZnGcJsPWMrasEFg"
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "encrypted",
+                        "sensitive",
+                        "system",
+                        "plain"
+                      ],
+                      "description": "The type of this cosmos doc instance, if blank, assume secret.",
+                      "example": "encrypted"
+                    },
+                    "target": {
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "production",
+                          "preview",
+                          "development"
+                        ],
+                        "description": "environments this env variable targets",
+                        "example": "production"
+                      },
+                      "type": "array",
+                      "description": "environments this env variable targets",
+                      "example": "production"
+                    },
+                    "applyToAllCustomEnvironments": {
+                      "type": "boolean",
+                      "description": "whether or not this env varible applies to custom environments"
+                    },
+                    "decrypted": {
+                      "type": "boolean",
+                      "description": "whether or not this env variable is decrypted"
+                    },
+                    "comment": {
+                      "type": "string",
+                      "description": "A user provided comment that describes what this Shared Env Var is for."
+                    },
+                    "lastEditedByDisplayName": {
+                      "type": "string",
+                      "description": "The last editor full name or username."
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique ID for the Shared Environment Variable to get the decrypted value.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique ID for the Shared Environment Variable to get the decrypted value.",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/env/{id}/unlink/{projectId}": {
+      "patch": {
+        "description": "Disconnects a shared environment variable for a given project",
+        "operationId": "unlinkSharedEnvVariable",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Disconnects a shared environment variable for a given project",
+        "tags": [
+          "environment"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique ID for the Shared Environment Variable to unlink from the project.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique ID for the Shared Environment Variable to unlink from the project.",
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/v3/events": {
       "get": {
         "description": "Retrieves a list of \"events\" generated by the User on Vercel. Events are generated when the User performs a particular action, such as logging in, creating a deployment, and joining a Team (just to name a few). When the `teamId` parameter is supplied, then the events that are returned will be in relation to the Team that was specified.",
@@ -34143,31 +35610,39 @@
                     "additionalProperties": true
                   },
                   "notification": {
-                    "type": "object",
-                    "required": [
-                      "level",
-                      "title"
-                    ],
-                    "properties": {
-                      "level": {
-                        "type": "string",
-                        "enum": [
-                          "info",
-                          "warn",
-                          "error"
-                        ]
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "level",
+                          "title"
+                        ],
+                        "properties": {
+                          "level": {
+                            "type": "string",
+                            "enum": [
+                              "info",
+                              "warn",
+                              "error"
+                            ]
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "href": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
                       },
-                      "title": {
+                      {
                         "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "href": {
-                        "type": "string",
-                        "format": "uri"
                       }
-                    }
+                    ],
+                    "description": "A notification to display to your customer. Send `null` to clear the current notification."
                   }
                 },
                 "additionalProperties": false
@@ -35939,6 +37414,7 @@
                     "state": {
                       "type": "string",
                       "enum": [
+                        "draft",
                         "pending",
                         "scheduled",
                         "invoiced",
@@ -37931,34 +39407,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "default": {
@@ -38641,34 +40117,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "default": {
@@ -38826,34 +40302,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@626754": {
+                                                "__@BRAND@648348": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@626754"
+                                                "__@BRAND@648348"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@626754": {
+                                                "__@BRAND@648348": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@626754"
+                                                "__@BRAND@648348"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@626754": {
+                                                "__@BRAND@648348": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@626754"
+                                                "__@BRAND@648348"
                                               ]
                                             },
                                             "default": {
@@ -39164,12 +40640,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@626754": {
+                                                  "__@BRAND@648348": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@626754"
+                                                  "__@BRAND@648348"
                                                 ]
                                               },
                                               {
@@ -39177,12 +40653,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@626754": {
+                                                      "__@BRAND@648348": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@626754"
+                                                      "__@BRAND@648348"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -39251,34 +40727,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "default": {
@@ -39436,34 +40912,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@626754": {
+                                                "__@BRAND@648348": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@626754"
+                                                "__@BRAND@648348"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@626754": {
+                                                "__@BRAND@648348": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@626754"
+                                                "__@BRAND@648348"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@626754": {
+                                                "__@BRAND@648348": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@626754"
+                                                "__@BRAND@648348"
                                               ]
                                             },
                                             "default": {
@@ -39552,12 +41028,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@626754": {
+                                                  "__@BRAND@648348": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@626754"
+                                                  "__@BRAND@648348"
                                                 ]
                                               },
                                               {
@@ -39565,12 +41041,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@626754": {
+                                                      "__@BRAND@648348": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@626754"
+                                                      "__@BRAND@648348"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -39756,12 +41232,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@626754": {
+                                              "__@BRAND@648348": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@626754"
+                                              "__@BRAND@648348"
                                             ]
                                           },
                                           "type": "array"
@@ -39770,12 +41246,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@626754": {
+                                              "__@BRAND@648348": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@626754"
+                                              "__@BRAND@648348"
                                             ]
                                           },
                                           "type": "array"
@@ -39809,34 +41285,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "default": {
@@ -39970,12 +41446,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@626754": {
+                                            "__@BRAND@648348": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@626754"
+                                            "__@BRAND@648348"
                                           ]
                                         },
                                         "disabled": {
@@ -42868,6 +44344,7 @@
                               "express",
                               "h3",
                               "nestjs",
+                              "fastify",
                               "xmcp"
                             ]
                           },
@@ -47700,6 +49177,7 @@
                         "express",
                         "h3",
                         "nestjs",
+                        "fastify",
                         "xmcp"
                       ]
                     },
@@ -51594,6 +53072,7 @@
                       "express",
                       "h3",
                       "nestjs",
+                      "fastify",
                       "xmcp"
                     ]
                   },
@@ -52736,6 +54215,7 @@
                         "express",
                         "h3",
                         "nestjs",
+                        "fastify",
                         "xmcp"
                       ]
                     },
@@ -57394,6 +58874,7 @@
                         "express",
                         "h3",
                         "nestjs",
+                        "fastify",
                         "xmcp"
                       ]
                     },
@@ -61234,6 +62715,7 @@
                       "express",
                       "h3",
                       "nestjs",
+                      "fastify",
                       "xmcp"
                     ],
                     "type": "string",
@@ -61677,16 +63159,17 @@
     },
     "/v1/projects/{idOrName}/shared-connect-links": {
       "patch": {
-        "description": "Allows updating project connections to shared Secure Compute networks.",
-        "operationId": "updateSharedConnectLinks",
+        "description": "Allows configuring Static IPs for a project",
+        "operationId": "updateStaticIps",
         "security": [
           {
             "bearerToken": []
           }
         ],
-        "summary": "Update project connections to shared Secure Compute networks",
+        "summary": "Configures Static IPs for a project",
         "tags": [
-          "connect"
+          "connect",
+          "static-ips"
         ],
         "responses": {
           "200": {
@@ -61704,8 +63187,8 @@
                           {
                             "type": "string",
                             "enum": [
-                              "preview",
-                              "production"
+                              "production",
+                              "preview"
                             ]
                           }
                         ]
@@ -61816,23 +63299,36 @@
             "application/json": {
               "schema": {
                 "type": "object",
+                "anyOf": [
+                  {
+                    "required": [
+                      "builds"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "regions"
+                    ]
+                  }
+                ],
                 "properties": {
+                  "builds": {
+                    "type": "boolean",
+                    "description": "Whether to use Static IPs for builds."
+                  },
                   "regions": {
                     "type": "array",
                     "items": {
                       "type": "string",
                       "maxLength": 4,
-                      "description": "The region of shared Secure Compute network to connect to.",
+                      "description": "The region in which to enable Static IPs.",
                       "example": "iad1"
                     },
                     "minItems": 0,
                     "maxItems": 3,
                     "uniqueItems": true
                   }
-                },
-                "required": [
-                  "regions"
-                ]
+                }
               }
             }
           }
@@ -77245,6 +78741,7 @@
                                   "express",
                                   "h3",
                                   "nestjs",
+                                  "fastify",
                                   "xmcp"
                                 ]
                               },
@@ -77544,34 +79041,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "description": {
@@ -78254,34 +79751,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "description": {
@@ -78430,34 +79927,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8558": {
+                                                  "__@BRAND@8684": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8558"
+                                                  "__@BRAND@8684"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8558": {
+                                                  "__@BRAND@8684": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8558"
+                                                  "__@BRAND@8684"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8558": {
+                                                  "__@BRAND@8684": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8558"
+                                                  "__@BRAND@8684"
                                                 ]
                                               },
                                               "default": {
@@ -78774,12 +80271,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@8558": {
+                                                    "__@BRAND@8684": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@8558"
+                                                    "__@BRAND@8684"
                                                   ]
                                                 },
                                                 {
@@ -78787,12 +80284,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@8558": {
+                                                        "__@BRAND@8684": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@8558"
+                                                        "__@BRAND@8684"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -78864,34 +80361,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "description": {
@@ -79041,34 +80538,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "description": {
@@ -79199,12 +80696,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8558": {
+                                              "__@BRAND@8684": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8558"
+                                              "__@BRAND@8684"
                                             ]
                                           },
                                           "disabled": {
@@ -79460,12 +80957,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@8558": {
+                                "__@BRAND@8684": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@8558"
+                                "__@BRAND@8684"
                               ]
                             },
                             "disabled": {
@@ -79740,6 +81237,9 @@
             "description": ""
           },
           "429": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           }
         },
@@ -83177,6 +84677,7 @@
                                     "express",
                                     "h3",
                                     "nestjs",
+                                    "fastify",
                                     "xmcp"
                                   ]
                                 },
@@ -86507,6 +88008,7 @@
                                   "express",
                                   "h3",
                                   "nestjs",
+                                  "fastify",
                                   "xmcp"
                                 ]
                               },

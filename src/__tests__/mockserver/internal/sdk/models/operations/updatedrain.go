@@ -2725,6 +2725,7 @@ const (
 	UpdateDrainFrameworkExpress        UpdateDrainFramework = "express"
 	UpdateDrainFrameworkH3             UpdateDrainFramework = "h3"
 	UpdateDrainFrameworkNestjs         UpdateDrainFramework = "nestjs"
+	UpdateDrainFrameworkFastify        UpdateDrainFramework = "fastify"
 	UpdateDrainFrameworkXmcp           UpdateDrainFramework = "xmcp"
 )
 
@@ -2842,6 +2843,8 @@ func (e *UpdateDrainFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = UpdateDrainFramework(v)

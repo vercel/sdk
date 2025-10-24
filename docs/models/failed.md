@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Failed } from "@vercel/sdk/models/createprojectenvop.js";
+import { Failed } from "@vercel/sdk/models/createsharedenvvariableop.js";
 
 let value: Failed = {
   error: {
@@ -15,6 +15,6 @@ let value: Failed = {
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `error`                                                            | [models.CreateProjectEnvError](../models/createprojectenverror.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `error`                                                                          | [models.CreateSharedEnvVariableError](../models/createsharedenvvariableerror.md) | :heavy_check_mark:                                                               | N/A                                                                              |

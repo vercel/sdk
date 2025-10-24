@@ -122,6 +122,7 @@ const (
 	GetAllLogDrainsFrameworkExpress        GetAllLogDrainsFramework = "express"
 	GetAllLogDrainsFrameworkH3             GetAllLogDrainsFramework = "h3"
 	GetAllLogDrainsFrameworkNestjs         GetAllLogDrainsFramework = "nestjs"
+	GetAllLogDrainsFrameworkFastify        GetAllLogDrainsFramework = "fastify"
 	GetAllLogDrainsFrameworkXmcp           GetAllLogDrainsFramework = "xmcp"
 )
 
@@ -239,6 +240,8 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = GetAllLogDrainsFramework(v)
@@ -1866,6 +1869,7 @@ const (
 	GetAllLogDrainsDrainsFrameworkExpress        GetAllLogDrainsDrainsFramework = "express"
 	GetAllLogDrainsDrainsFrameworkH3             GetAllLogDrainsDrainsFramework = "h3"
 	GetAllLogDrainsDrainsFrameworkNestjs         GetAllLogDrainsDrainsFramework = "nestjs"
+	GetAllLogDrainsDrainsFrameworkFastify        GetAllLogDrainsDrainsFramework = "fastify"
 	GetAllLogDrainsDrainsFrameworkXmcp           GetAllLogDrainsDrainsFramework = "xmcp"
 )
 
@@ -1983,6 +1987,8 @@ func (e *GetAllLogDrainsDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = GetAllLogDrainsDrainsFramework(v)

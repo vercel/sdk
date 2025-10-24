@@ -128,6 +128,7 @@ export const CreateProjectFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
 /**
@@ -952,6 +953,7 @@ export const CreateProjectProjectsFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
 export type CreateProjectProjectsFramework = ClosedEnum<

@@ -2560,6 +2560,7 @@ const (
 	GetProjectsFrameworkExpress        GetProjectsFramework = "express"
 	GetProjectsFrameworkH3             GetProjectsFramework = "h3"
 	GetProjectsFrameworkNestjs         GetProjectsFramework = "nestjs"
+	GetProjectsFrameworkFastify        GetProjectsFramework = "fastify"
 	GetProjectsFrameworkXmcp           GetProjectsFramework = "xmcp"
 )
 
@@ -2677,6 +2678,8 @@ func (e *GetProjectsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "fastify":
 		fallthrough
 	case "xmcp":
 		*e = GetProjectsFramework(v)

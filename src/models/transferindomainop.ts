@@ -434,7 +434,7 @@ export const TransferInDomainDomainsRegistrarResponseResponseBody$outboundSchema
   z.ZodType<
     TransferInDomainDomainsRegistrarResponseResponseBody$Outbound,
     z.ZodTypeDef,
-    TransferInDomainDomainsRegistrarResponseResponseBody
+    unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
 /**
@@ -513,7 +513,7 @@ export const TransferInDomainDomainsRegistrarResponseBody$outboundSchema:
   z.ZodType<
     TransferInDomainDomainsRegistrarResponseBody$Outbound,
     z.ZodTypeDef,
-    TransferInDomainDomainsRegistrarResponseBody
+    unknown
   > = z.union([
     BadRequest$outboundSchema,
     DomainAlreadyOwned$outboundSchema,

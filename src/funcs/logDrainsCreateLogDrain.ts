@@ -30,7 +30,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Creates a new Integration Log Drain
+ * Creates a new Integration Log Drain (deprecated)
  *
  * @remarks
  * Creates an Integration log drain. This endpoint must be called with an OAuth2 client (integration), since log drains are tied to integrations. If it is called with a different token type it will produce a 400 error.

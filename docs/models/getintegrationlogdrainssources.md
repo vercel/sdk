@@ -7,11 +7,11 @@ The sources from which logs are currently being delivered to this log drain.
 ```typescript
 import { GetIntegrationLogDrainsSources } from "@vercel/sdk/models/getintegrationlogdrainsop.js";
 
-let value: GetIntegrationLogDrainsSources = "build";
+let value: GetIntegrationLogDrainsSources = "edge";
 ```
 
 ## Values
 
 ```typescript
-"build" | "edge" | "lambda" | "static" | "external" | "firewall"
+"build" | "edge" | "lambda" | "static" | "external" | "firewall" | "redirect"
 ```

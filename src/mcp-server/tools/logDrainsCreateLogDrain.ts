@@ -12,7 +12,7 @@ const args = {
 
 export const tool$logDrainsCreateLogDrain: ToolDefinition<typeof args> = {
   name: "log-drains-create-log-drain",
-  description: `Creates a new Integration Log Drain
+  description: `Creates a new Integration Log Drain (deprecated)
 
 Creates an Integration log drain. This endpoint must be called with an OAuth2 client (integration), since log drains are tied to integrations. If it is called with a different token type it will produce a 400 error.`,
   args,

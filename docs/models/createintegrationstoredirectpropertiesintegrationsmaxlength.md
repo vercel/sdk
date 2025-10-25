@@ -6,7 +6,7 @@
 import { CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength } from "@vercel/sdk/models/createintegrationstoredirectop.js";
 
 let value: CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength = {
-  atBRANDAt8684: {},
+  atBRANDAt8675: {},
 };
 ```
 
@@ -14,4 +14,4 @@ let value: CreateIntegrationStoreDirectPropertiesIntegrationsMaxLength = {
 
 | Field                                                                                                                                                  | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `atBRANDAt8684`                                                                                                                                        | [models.CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8684](../models/createintegrationstoredirectpropertiesintegrationsatbrandat8684.md) | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |
+| `atBRANDAt8675`                                                                                                                                        | [models.CreateIntegrationStoreDirectPropertiesIntegrationsAtBRANDAt8675](../models/createintegrationstoredirectpropertiesintegrationsatbrandat8675.md) | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |

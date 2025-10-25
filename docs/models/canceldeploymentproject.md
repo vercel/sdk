@@ -1,5 +1,7 @@
 # CancelDeploymentProject
 
+The public project information associated with the deployment.
+
 ## Example Usage
 
 ```typescript

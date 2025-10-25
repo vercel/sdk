@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [getConfigurableLogDrain](#getconfigurablelogdrain) - Retrieves a Configurable Log Drain
-* [deleteConfigurableLogDrain](#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain
-* [getAllLogDrains](#getalllogdrains) - Retrieves a list of all the Log Drains
-* [createConfigurableLogDrain](#createconfigurablelogdrain) - Creates a Configurable Log Drain
-* [getIntegrationLogDrains](#getintegrationlogdrains) - Retrieves a list of Integration log drains
-* [createLogDrain](#createlogdrain) - Creates a new Integration Log Drain
-* [deleteIntegrationLogDrain](#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id`
+* [getConfigurableLogDrain](#getconfigurablelogdrain) - Retrieves a Configurable Log Drain (deprecated)
+* [deleteConfigurableLogDrain](#deleteconfigurablelogdrain) - Deletes a Configurable Log Drain (deprecated)
+* [getAllLogDrains](#getalllogdrains) - Retrieves a list of all the Log Drains (deprecated)
+* [createConfigurableLogDrain](#createconfigurablelogdrain) - Creates a Configurable Log Drain (deprecated)
+* [getIntegrationLogDrains](#getintegrationlogdrains) - Retrieves a list of Integration log drains (deprecated)
+* [createLogDrain](#createlogdrain) - Creates a new Integration Log Drain (deprecated)
+* [deleteIntegrationLogDrain](#deleteintegrationlogdrain) - Deletes the Integration log drain with the provided `id` (deprecated)
 
 ## getConfigurableLogDrain
 

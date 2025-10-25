@@ -30,7 +30,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieves a list of all the Log Drains
+ * Retrieves a list of all the Log Drains (deprecated)
  *
  * @remarks
  * Retrieves a list of all the Log Drains owned by the account. This endpoint must be called with an account AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated account can be accessed.

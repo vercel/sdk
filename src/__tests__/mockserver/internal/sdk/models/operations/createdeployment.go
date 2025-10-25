@@ -2468,10 +2468,14 @@ func (o *CreateDeploymentImages) GetContentDispositionType() *CreateDeploymentCo
 	return o.ContentDispositionType
 }
 
+// CreateDeploymentCreator - Information about the deployment creator
 type CreateDeploymentCreator struct {
-	UID      string  `json:"uid"`
+	// The ID of the user that created the deployment
+	UID string `json:"uid"`
+	// The username of the user that created the deployment
 	Username *string `json:"username,omitempty"`
-	Avatar   *string `json:"avatar,omitempty"`
+	// The avatar of the user that created the deployment
+	Avatar *string `json:"avatar,omitempty"`
 }
 
 func (o *CreateDeploymentCreator) GetUID() string {
@@ -2636,6 +2640,7 @@ func (e *CreateDeploymentStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateDeploymentTeam - The team that owns the deployment if any
 type CreateDeploymentTeam struct {
 	ID     string  `json:"id"`
 	Name   string  `json:"name"`
@@ -2671,6 +2676,7 @@ func (o *CreateDeploymentTeam) GetAvatar() *string {
 	return o.Avatar
 }
 
+// CreateDeploymentCustomEnvironment2 - If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
 type CreateDeploymentCustomEnvironment2 struct {
 	ID string `json:"id"`
 }
@@ -2938,7 +2944,7 @@ func (o *CreateDeploymentDomain) GetVerification() []CreateDeploymentVerificatio
 	return o.Verification
 }
 
-// CreateDeploymentCustomEnvironment1 - Internal representation of a custom environment with all required properties
+// CreateDeploymentCustomEnvironment1 - If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
 type CreateDeploymentCustomEnvironment1 struct {
 	// Unique identifier for the custom environment (format: env_*)
 	ID string `json:"id"`
@@ -3155,6 +3161,7 @@ func (o *CreateDeploymentAliasWarning) GetAction() *string {
 	return o.Action
 }
 
+// CreateDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 type CreateDeploymentReadyState string
 
 const (
@@ -3216,6 +3223,7 @@ func (e *CreateDeploymentTypeLambdas) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateDeploymentAliasError - An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
 type CreateDeploymentAliasError struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
@@ -5186,6 +5194,7 @@ func (e *CreateDeploymentNodeVersionLambdas) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateDeploymentProject - The public project information associated with the deployment.
 type CreateDeploymentProject struct {
 	ID        string  `json:"id"`
 	Name      string  `json:"name"`
@@ -5243,6 +5252,7 @@ func (e *CreateDeploymentReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateDeploymentSource - Where was the deployment created from
 type CreateDeploymentSource string
 
 const (
@@ -5287,6 +5297,7 @@ func (e *CreateDeploymentSource) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateDeploymentTargetEnum - If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 type CreateDeploymentTargetEnum string
 
 const (
@@ -8894,41 +8905,54 @@ type CreateDeploymentResponseBody struct {
 	ReadyStateReason          *string                                `json:"readyStateReason,omitempty"`
 	Integrations              *CreateDeploymentIntegrations          `json:"integrations,omitempty"`
 	Images                    *CreateDeploymentImages                `json:"images,omitempty"`
-	Alias                     []string                               `json:"alias,omitempty"`
-	AliasAssigned             bool                                   `json:"aliasAssigned"`
-	BootedAt                  float64                                `json:"bootedAt"`
-	BuildingAt                float64                                `json:"buildingAt"`
+	// A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
+	Alias []string `json:"alias,omitempty"`
+	// A boolean that will be true when the aliases from the alias property were assigned successfully
+	AliasAssigned bool    `json:"aliasAssigned"`
+	BootedAt      float64 `json:"bootedAt"`
+	BuildingAt    float64 `json:"buildingAt"`
 	// Since April 2025 it necessary for On-Demand Concurrency Minutes calculation
-	BuildContainerFinishedAt *float64                                `json:"buildContainerFinishedAt,omitempty"`
-	BuildSkipped             bool                                    `json:"buildSkipped"`
-	Creator                  CreateDeploymentCreator                 `json:"creator"`
-	InitReadyAt              *float64                                `json:"initReadyAt,omitempty"`
-	IsFirstBranchDeployment  *bool                                   `json:"isFirstBranchDeployment,omitempty"`
-	Lambdas                  []CreateDeploymentLambda                `json:"lambdas,omitempty"`
-	Public                   bool                                    `json:"public"`
-	Ready                    *float64                                `json:"ready,omitempty"`
-	Status                   CreateDeploymentStatus                  `json:"status"`
-	Team                     *CreateDeploymentTeam                   `json:"team,omitempty"`
-	UserAliases              []string                                `json:"userAliases,omitempty"`
-	PreviewCommentsEnabled   *bool                                   `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs             *bool                                   `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment        *CreateDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
-	OomReport                *CreateDeploymentOomReport              `json:"oomReport,omitempty"`
-	AliasWarning             *CreateDeploymentAliasWarning           `json:"aliasWarning,omitempty"`
-	ID                       string                                  `json:"id"`
-	CreatedAt                float64                                 `json:"createdAt"`
-	ReadyState               CreateDeploymentReadyState              `json:"readyState"`
-	Name                     string                                  `json:"name"`
-	Type                     CreateDeploymentTypeLambdas             `json:"type"`
-	AliasError               *CreateDeploymentAliasError             `json:"aliasError,omitempty"`
-	AliasFinal               *string                                 `json:"aliasFinal,omitempty"`
+	BuildContainerFinishedAt *float64 `json:"buildContainerFinishedAt,omitempty"`
+	BuildSkipped             bool     `json:"buildSkipped"`
+	// Information about the deployment creator
+	Creator                 CreateDeploymentCreator  `json:"creator"`
+	InitReadyAt             *float64                 `json:"initReadyAt,omitempty"`
+	IsFirstBranchDeployment *bool                    `json:"isFirstBranchDeployment,omitempty"`
+	Lambdas                 []CreateDeploymentLambda `json:"lambdas,omitempty"`
+	// A boolean representing if the deployment is public or not. By default this is `false`
+	Public bool                   `json:"public"`
+	Ready  *float64               `json:"ready,omitempty"`
+	Status CreateDeploymentStatus `json:"status"`
+	// The team that owns the deployment if any
+	Team *CreateDeploymentTeam `json:"team,omitempty"`
+	// An array of domains that were provided by the user when creating the Deployment.
+	UserAliases []string `json:"userAliases,omitempty"`
+	// Whether or not preview comments are enabled for the deployment
+	PreviewCommentsEnabled *bool                                   `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs           *bool                                   `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment      *CreateDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
+	OomReport              *CreateDeploymentOomReport              `json:"oomReport,omitempty"`
+	AliasWarning           *CreateDeploymentAliasWarning           `json:"aliasWarning,omitempty"`
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
+	// A number containing the date when the deployment was created in milliseconds
+	CreatedAt float64 `json:"createdAt"`
+	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+	ReadyState CreateDeploymentReadyState `json:"readyState"`
+	// The name of the project associated with the deployment at the time that the deployment was created
+	Name string                      `json:"name"`
+	Type CreateDeploymentTypeLambdas `json:"type"`
+	// An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+	AliasError *CreateDeploymentAliasError `json:"aliasError,omitempty"`
+	AliasFinal *string                     `json:"aliasFinal,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                             `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                          `json:"automaticAliases,omitempty"`
 	BuildErrorAt            *float64                          `json:"buildErrorAt,omitempty"`
 	ChecksState             *CreateDeploymentChecksState      `json:"checksState,omitempty"`
 	ChecksConclusion        *CreateDeploymentChecksConclusion `json:"checksConclusion,omitempty"`
-	DeletedAt               *float64                          `json:"deletedAt,omitempty"`
+	// A number containing the date when the deployment was deleted at milliseconds
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// Computed field that is only available for deployments with a microfrontend configuration.
 	DefaultRoute *string  `json:"defaultRoute,omitempty"`
 	CanceledAt   *float64 `json:"canceledAt,omitempty"`
@@ -8943,15 +8967,23 @@ type CreateDeploymentResponseBody struct {
 	OriginCacheRegion *string                                `json:"originCacheRegion,omitempty"`
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *CreateDeploymentNodeVersionLambdas `json:"nodeVersion,omitempty"`
-	Project     *CreateDeploymentProject            `json:"project,omitempty"`
+	// The public project information associated with the deployment.
+	Project *CreateDeploymentProject `json:"project,omitempty"`
 	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
-	ReadySubstate          *CreateDeploymentReadySubstate       `json:"readySubstate,omitempty"`
-	Regions                []string                             `json:"regions"`
-	SoftDeletedByRetention *bool                                `json:"softDeletedByRetention,omitempty"`
-	Source                 *CreateDeploymentSource              `json:"source,omitempty"`
-	Target                 *CreateDeploymentTargetEnum          `json:"target,omitempty"`
-	UndeletedAt            *float64                             `json:"undeletedAt,omitempty"`
-	URL                    string                               `json:"url"`
+	ReadySubstate *CreateDeploymentReadySubstate `json:"readySubstate,omitempty"`
+	// The regions the deployment exists in
+	Regions []string `json:"regions"`
+	// flag to indicate if the deployment was deleted by retention policy
+	SoftDeletedByRetention *bool `json:"softDeletedByRetention,omitempty"`
+	// Where was the deployment created from
+	Source *CreateDeploymentSource `json:"source,omitempty"`
+	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+	Target *CreateDeploymentTargetEnum `json:"target,omitempty"`
+	// A number containing the date when the deployment was undeleted at milliseconds
+	UndeletedAt *float64 `json:"undeletedAt,omitempty"`
+	// A string with the unique URL of the deployment
+	URL string `json:"url"`
+	// The platform version that was used to create the deployment.
 	Version                float64                              `json:"version"`
 	OidcTokenClaims        *CreateDeploymentOidcTokenClaims     `json:"oidcTokenClaims,omitempty"`
 	ProjectID              string                               `json:"projectId"`

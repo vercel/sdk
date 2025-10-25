@@ -1775,6 +1775,10 @@ export type GetProjectsGitProviderOptions = {
    * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
+   * Whether the project requires commits to be signed before deployments will be created.
+   */
+  requireVerifiedCommits?: boolean | undefined;
 };
 
 export type GetProjectsWebAnalytics = {
@@ -10103,12 +10107,14 @@ export const GetProjectsGitProviderOptions$inboundSchema: z.ZodType<
 > = z.object({
   createDeployments: GetProjectsCreateDeployments$inboundSchema,
   disableRepositoryDispatchEvents: z.boolean().optional(),
+  requireVerifiedCommits: z.boolean().optional(),
 });
 
 /** @internal */
 export type GetProjectsGitProviderOptions$Outbound = {
   createDeployments: string;
   disableRepositoryDispatchEvents?: boolean | undefined;
+  requireVerifiedCommits?: boolean | undefined;
 };
 
 /** @internal */
@@ -10119,6 +10125,7 @@ export const GetProjectsGitProviderOptions$outboundSchema: z.ZodType<
 > = z.object({
   createDeployments: GetProjectsCreateDeployments$outboundSchema,
   disableRepositoryDispatchEvents: z.boolean().optional(),
+  requireVerifiedCommits: z.boolean().optional(),
 });
 
 /**

@@ -1,11 +1,13 @@
 # CancelDeploymentSource
 
+Where was the deployment created from
+
 ## Example Usage
 
 ```typescript
 import { CancelDeploymentSource } from "@vercel/sdk/models/canceldeploymentop.js";
 
-let value: CancelDeploymentSource = "v0-web";
+let value: CancelDeploymentSource = "cli";
 ```
 
 ## Values

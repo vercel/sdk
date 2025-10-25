@@ -662,9 +662,21 @@ export type Images = {
   contentDispositionType?: ContentDispositionType | undefined;
 };
 
+/**
+ * Information about the deployment creator
+ */
 export type Creator = {
+  /**
+   * The ID of the user that created the deployment
+   */
   uid: string;
+  /**
+   * The username of the user that created the deployment
+   */
   username?: string | undefined;
+  /**
+   * The avatar of the user that created the deployment
+   */
   avatar?: string | undefined;
 };
 
@@ -705,6 +717,9 @@ export const CreateDeploymentStatus = {
 } as const;
 export type CreateDeploymentStatus = ClosedEnum<typeof CreateDeploymentStatus>;
 
+/**
+ * The team that owns the deployment if any
+ */
 export type CreateDeploymentTeam = {
   id: string;
   name: string;
@@ -712,6 +727,9 @@ export type CreateDeploymentTeam = {
   avatar?: string | undefined;
 };
 
+/**
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
+ */
 export type CustomEnvironment2 = {
   id: string;
 };
@@ -792,7 +810,7 @@ export type CustomEnvironmentDomains = {
 };
 
 /**
- * Internal representation of a custom environment with all required properties
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
  */
 export type CustomEnvironment1 = {
   /**
@@ -847,6 +865,9 @@ export type AliasWarning = {
   action?: string | undefined;
 };
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const ReadyState = {
   Queued: "QUEUED",
   Building: "BUILDING",
@@ -855,6 +876,9 @@ export const ReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type ReadyState = ClosedEnum<typeof ReadyState>;
 
 export const CreateDeploymentType = {
@@ -862,6 +886,9 @@ export const CreateDeploymentType = {
 } as const;
 export type CreateDeploymentType = ClosedEnum<typeof CreateDeploymentType>;
 
+/**
+ * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+ */
 export type AliasError = {
   code: string;
   message: string;
@@ -1206,6 +1233,9 @@ export type CreateDeploymentNodeVersion = ClosedEnum<
   typeof CreateDeploymentNodeVersion
 >;
 
+/**
+ * The public project information associated with the deployment.
+ */
 export type CreateDeploymentProject = {
   id: string;
   name: string;
@@ -1225,6 +1255,9 @@ export const ReadySubstate = {
  */
 export type ReadySubstate = ClosedEnum<typeof ReadySubstate>;
 
+/**
+ * Where was the deployment created from
+ */
 export const CreateDeploymentSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -1235,12 +1268,21 @@ export const CreateDeploymentSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type CreateDeploymentSource = ClosedEnum<typeof CreateDeploymentSource>;
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const CreateDeploymentTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type CreateDeploymentTarget = ClosedEnum<typeof CreateDeploymentTarget>;
 
 export type OidcTokenClaims = {
@@ -1830,7 +1872,13 @@ export type CreateDeploymentResponseBody = {
   readyStateReason?: string | undefined;
   integrations?: Integrations | undefined;
   images?: Images | undefined;
+  /**
+   * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
+   */
   alias?: Array<string> | undefined;
+  /**
+   * A boolean that will be true when the aliases from the alias property were assigned successfully
+   */
   aliasAssigned: boolean;
   bootedAt: number;
   buildingAt: number;
@@ -1839,25 +1887,55 @@ export type CreateDeploymentResponseBody = {
    */
   buildContainerFinishedAt?: number | undefined;
   buildSkipped: boolean;
+  /**
+   * Information about the deployment creator
+   */
   creator: Creator;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
   lambdas?: Array<Lambdas> | undefined;
+  /**
+   * A boolean representing if the deployment is public or not. By default this is `false`
+   */
   public: boolean;
   ready?: number | undefined;
   status: CreateDeploymentStatus;
+  /**
+   * The team that owns the deployment if any
+   */
   team?: CreateDeploymentTeam | undefined;
+  /**
+   * An array of domains that were provided by the user when creating the Deployment.
+   */
   userAliases?: Array<string> | undefined;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?: CustomEnvironment1 | CustomEnvironment2 | undefined;
   oomReport?: OomReport | undefined;
   aliasWarning?: AliasWarning | null | undefined;
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: ReadyState;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
   type: CreateDeploymentType;
+  /**
+   * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+   */
   aliasError?: AliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   /**
@@ -1868,6 +1946,9 @@ export type CreateDeploymentResponseBody = {
   buildErrorAt?: number | undefined;
   checksState?: ChecksState | undefined;
   checksConclusion?: ChecksConclusion | undefined;
+  /**
+   * A number containing the date when the deployment was deleted at milliseconds
+   */
   deletedAt?: number | null | undefined;
   /**
    * Computed field that is only available for deployments with a microfrontend configuration.
@@ -1905,17 +1986,41 @@ export type CreateDeploymentResponseBody = {
    * If set it overrides the `projectSettings.nodeVersion` for this deployment.
    */
   nodeVersion?: CreateDeploymentNodeVersion | undefined;
+  /**
+   * The public project information associated with the deployment.
+   */
   project?: CreateDeploymentProject | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: ReadySubstate | undefined;
+  /**
+   * The regions the deployment exists in
+   */
   regions: Array<string>;
+  /**
+   * flag to indicate if the deployment was deleted by retention policy
+   */
   softDeletedByRetention?: boolean | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: CreateDeploymentSource | undefined;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: CreateDeploymentTarget | null | undefined;
+  /**
+   * A number containing the date when the deployment was undeleted at milliseconds
+   */
   undeletedAt?: number | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * The platform version that was used to create the deployment.
+   */
   version: number;
   oidcTokenClaims?: OidcTokenClaims | undefined;
   projectId: string;

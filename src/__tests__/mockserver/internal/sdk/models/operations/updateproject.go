@@ -8660,6 +8660,8 @@ type UpdateProjectGitProviderOptions struct {
 	CreateDeployments UpdateProjectCreateDeployments `json:"createDeployments"`
 	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
+	// Whether the project requires commits to be signed before deployments will be created.
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 }
 
 func (o *UpdateProjectGitProviderOptions) GetCreateDeployments() UpdateProjectCreateDeployments {
@@ -8674,6 +8676,13 @@ func (o *UpdateProjectGitProviderOptions) GetDisableRepositoryDispatchEvents() *
 		return nil
 	}
 	return o.DisableRepositoryDispatchEvents
+}
+
+func (o *UpdateProjectGitProviderOptions) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
 }
 
 type UpdateProjectWebAnalytics struct {

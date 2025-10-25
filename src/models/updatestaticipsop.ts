@@ -49,8 +49,8 @@ export type UpdateStaticIpsRequest = {
 };
 
 export const UpdateStaticIpsEnvId2 = {
-  Production: "production",
   Preview: "preview",
+  Production: "production",
 } as const;
 export type UpdateStaticIpsEnvId2 = ClosedEnum<typeof UpdateStaticIpsEnvId2>;
 

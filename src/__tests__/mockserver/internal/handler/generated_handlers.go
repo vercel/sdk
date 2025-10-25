@@ -71,6 +71,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans", pathGetV1IntegrationsIntegrationIntegrationIDOrSlugProductsProductIDOrSlugPlans(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/log-drains", pathGetV1LogDrains(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/log-drains/{id}", pathGetV1LogDrainsID(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/client-cert", pathGetV1ProjectsIDOrNameClientCert(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/env/{id}", pathGetV1ProjectsIDOrNameEnvID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/rolling-release", pathGetV1ProjectsIDOrNameRollingRelease(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/v1/projects/{idOrName}/rolling-release/billing", pathGetV1ProjectsIDOrNameRollingReleaseBilling(dir, rt)),

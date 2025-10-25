@@ -6383,7 +6383,7 @@ workflows:
                   "externalResourceId": "\u003cid\u003e",
                   "product": {
                     "value": {
-                      "__@BRAND@8684": {}
+                      "__@BRAND@8675": {}
                     }
                   },
                   "secrets": []
@@ -7410,4 +7410,29 @@ workflows:
               ]
             type: simple
     x-speakeasy-test-group: connect
+    x-speakeasy-test-rebuild: true
+  - workflowId: getProjectClientCerts
+    steps:
+      - stepId: test
+        operationId: getProjectClientCerts
+        parameters:
+          - name: idOrName
+            in: path
+            value: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
+          - name: teamId
+            in: query
+            value: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          - name: slug
+            in: query
+            value: my-team-url-slug
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "clientCerts": []
+              }
+            type: simple
+    x-speakeasy-test-group: projects
     x-speakeasy-test-rebuild: true

@@ -47,14 +47,23 @@ export type CompleteRollingReleaseState = ClosedEnum<
   typeof CompleteRollingReleaseState
 >;
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const CompleteRollingReleaseTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type CompleteRollingReleaseTarget = ClosedEnum<
   typeof CompleteRollingReleaseTarget
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const CompleteRollingReleaseSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -65,10 +74,16 @@ export const CompleteRollingReleaseSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type CompleteRollingReleaseSource = ClosedEnum<
   typeof CompleteRollingReleaseSource
 >;
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const CompleteRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
@@ -77,6 +92,9 @@ export const CompleteRollingReleaseReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type CompleteRollingReleaseReadyState = ClosedEnum<
   typeof CompleteRollingReleaseReadyState
 >;
@@ -85,24 +103,54 @@ export type CompleteRollingReleaseReadyState = ClosedEnum<
  * The current deployment receiving production traffic
  */
 export type CompleteRollingReleaseCurrentDeployment = {
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: CompleteRollingReleaseTarget | null | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: CompleteRollingReleaseSource | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: CompleteRollingReleaseReadyState;
   readyStateAt?: number | undefined;
 };
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const CompleteRollingReleaseRollingReleaseTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type CompleteRollingReleaseRollingReleaseTarget = ClosedEnum<
   typeof CompleteRollingReleaseRollingReleaseTarget
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const CompleteRollingReleaseRollingReleaseSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -113,10 +161,16 @@ export const CompleteRollingReleaseRollingReleaseSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type CompleteRollingReleaseRollingReleaseSource = ClosedEnum<
   typeof CompleteRollingReleaseRollingReleaseSource
 >;
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const CompleteRollingReleaseRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
@@ -125,6 +179,9 @@ export const CompleteRollingReleaseRollingReleaseReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type CompleteRollingReleaseRollingReleaseReadyState = ClosedEnum<
   typeof CompleteRollingReleaseRollingReleaseReadyState
 >;
@@ -133,12 +190,33 @@ export type CompleteRollingReleaseRollingReleaseReadyState = ClosedEnum<
  * The canary deployment being rolled out
  */
 export type CompleteRollingReleaseCanaryDeployment = {
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: CompleteRollingReleaseRollingReleaseTarget | null | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: CompleteRollingReleaseRollingReleaseSource | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: CompleteRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
 };

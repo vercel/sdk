@@ -53,14 +53,23 @@ export const GetRollingReleaseState = {
  */
 export type GetRollingReleaseState = ClosedEnum<typeof GetRollingReleaseState>;
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const GetRollingReleaseTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type GetRollingReleaseTarget = ClosedEnum<
   typeof GetRollingReleaseTarget
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const GetRollingReleaseSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -71,10 +80,16 @@ export const GetRollingReleaseSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type GetRollingReleaseSource = ClosedEnum<
   typeof GetRollingReleaseSource
 >;
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const GetRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
@@ -83,6 +98,9 @@ export const GetRollingReleaseReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type GetRollingReleaseReadyState = ClosedEnum<
   typeof GetRollingReleaseReadyState
 >;
@@ -91,24 +109,54 @@ export type GetRollingReleaseReadyState = ClosedEnum<
  * The current deployment receiving production traffic
  */
 export type CurrentDeployment = {
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: GetRollingReleaseTarget | null | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: GetRollingReleaseSource | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: GetRollingReleaseReadyState;
   readyStateAt?: number | undefined;
 };
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const GetRollingReleaseRollingReleaseTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type GetRollingReleaseRollingReleaseTarget = ClosedEnum<
   typeof GetRollingReleaseRollingReleaseTarget
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const GetRollingReleaseRollingReleaseSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -119,10 +167,16 @@ export const GetRollingReleaseRollingReleaseSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type GetRollingReleaseRollingReleaseSource = ClosedEnum<
   typeof GetRollingReleaseRollingReleaseSource
 >;
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const GetRollingReleaseRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
@@ -131,6 +185,9 @@ export const GetRollingReleaseRollingReleaseReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type GetRollingReleaseRollingReleaseReadyState = ClosedEnum<
   typeof GetRollingReleaseRollingReleaseReadyState
 >;
@@ -139,12 +196,33 @@ export type GetRollingReleaseRollingReleaseReadyState = ClosedEnum<
  * The canary deployment being rolled out
  */
 export type CanaryDeployment = {
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: GetRollingReleaseRollingReleaseTarget | null | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: GetRollingReleaseRollingReleaseSource | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: GetRollingReleaseRollingReleaseReadyState;
   readyStateAt?: number | undefined;
 };

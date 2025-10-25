@@ -1,11 +1,13 @@
 # ApproveRollingReleaseStageSource
 
+Where was the deployment created from
+
 ## Example Usage
 
 ```typescript
 import { ApproveRollingReleaseStageSource } from "@vercel/sdk/models/approverollingreleasestageop.js";
 
-let value: ApproveRollingReleaseStageSource = "api-trigger-git-deploy";
+let value: ApproveRollingReleaseStageSource = "cli";
 ```
 
 ## Values

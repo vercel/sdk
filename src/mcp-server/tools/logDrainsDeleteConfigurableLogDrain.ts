@@ -14,7 +14,7 @@ export const tool$logDrainsDeleteConfigurableLogDrain: ToolDefinition<
   typeof args
 > = {
   name: "log-drains-delete-configurable-log-drain",
-  description: `Deletes a Configurable Log Drain
+  description: `Deletes a Configurable Log Drain (deprecated)
 
 Deletes a Configurable Log Drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed). Only log drains owned by the authenticated team can be deleted.`,
   args,

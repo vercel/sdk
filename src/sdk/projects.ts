@@ -11,6 +11,7 @@ import { projectsCreateProjectTransferRequest } from "../funcs/projectsCreatePro
 import { projectsDeleteProject } from "../funcs/projectsDeleteProject.js";
 import { projectsEditProjectEnv } from "../funcs/projectsEditProjectEnv.js";
 import { projectsFilterProjectEnvs } from "../funcs/projectsFilterProjectEnvs.js";
+import { projectsGetProjectClientCerts } from "../funcs/projectsGetProjectClientCerts.js";
 import { projectsGetProjectDomain } from "../funcs/projectsGetProjectDomain.js";
 import { projectsGetProjectDomains } from "../funcs/projectsGetProjectDomains.js";
 import { projectsGetProjectEnv } from "../funcs/projectsGetProjectEnv.js";
@@ -62,6 +63,10 @@ import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,
 } from "../models/filterprojectenvsop.js";
+import {
+  GetProjectClientCertsRequest,
+  GetProjectClientCertsResponseBody,
+} from "../models/getprojectclientcertsop.js";
 import {
   GetProjectDomainRequest,
   GetProjectDomainResponseBody,
@@ -441,6 +446,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<UploadProjectClientCertResponseBody> {
     return unwrapAsync(projectsUploadProjectClientCert(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get client certificates for a project
+   *
+   * @remarks
+   * Retrieve client certificates configured for a project's mTLS egress authentication.
+   */
+  async getProjectClientCerts(
+    request: GetProjectClientCertsRequest,
+    options?: RequestOptions,
+  ): Promise<GetProjectClientCertsResponseBody> {
+    return unwrapAsync(projectsGetProjectClientCerts(
       this,
       request,
       options,

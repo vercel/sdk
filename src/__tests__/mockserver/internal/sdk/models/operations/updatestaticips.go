@@ -176,8 +176,8 @@ func (o *UpdateStaticIpsRequest) GetRequestBody() *UpdateStaticIpsRequestBody {
 type UpdateStaticIpsEnvIDEnum string
 
 const (
-	UpdateStaticIpsEnvIDEnumProduction UpdateStaticIpsEnvIDEnum = "production"
 	UpdateStaticIpsEnvIDEnumPreview    UpdateStaticIpsEnvIDEnum = "preview"
+	UpdateStaticIpsEnvIDEnumProduction UpdateStaticIpsEnvIDEnum = "production"
 )
 
 func (e UpdateStaticIpsEnvIDEnum) ToPointer() *UpdateStaticIpsEnvIDEnum {
@@ -189,9 +189,9 @@ func (e *UpdateStaticIpsEnvIDEnum) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "production":
-		fallthrough
 	case "preview":
+		fallthrough
+	case "production":
 		*e = UpdateStaticIpsEnvIDEnum(v)
 		return nil
 	default:

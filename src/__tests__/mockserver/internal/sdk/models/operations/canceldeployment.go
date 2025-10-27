@@ -796,10 +796,14 @@ func (o *CancelDeploymentImages) GetContentDispositionType() *CancelDeploymentCo
 	return o.ContentDispositionType
 }
 
+// CancelDeploymentCreator - Information about the deployment creator
 type CancelDeploymentCreator struct {
-	UID      string  `json:"uid"`
+	// The ID of the user that created the deployment
+	UID string `json:"uid"`
+	// The username of the user that created the deployment
 	Username *string `json:"username,omitempty"`
-	Avatar   *string `json:"avatar,omitempty"`
+	// The avatar of the user that created the deployment
+	Avatar *string `json:"avatar,omitempty"`
 }
 
 func (o *CancelDeploymentCreator) GetUID() string {
@@ -964,6 +968,7 @@ func (e *CancelDeploymentStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentTeam - The team that owns the deployment if any
 type CancelDeploymentTeam struct {
 	ID     string  `json:"id"`
 	Name   string  `json:"name"`
@@ -999,6 +1004,7 @@ func (o *CancelDeploymentTeam) GetSlug() string {
 	return o.Slug
 }
 
+// CancelDeploymentCustomEnvironment2 - If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
 type CancelDeploymentCustomEnvironment2 struct {
 	ID string `json:"id"`
 }
@@ -1266,7 +1272,7 @@ func (o *CancelDeploymentDomain) GetVerification() []CancelDeploymentVerificatio
 	return o.Verification
 }
 
-// CancelDeploymentCustomEnvironment1 - Internal representation of a custom environment with all required properties
+// CancelDeploymentCustomEnvironment1 - If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
 type CancelDeploymentCustomEnvironment1 struct {
 	// Unique identifier for the custom environment (format: env_*)
 	ID string `json:"id"`
@@ -1448,6 +1454,7 @@ func (e *CancelDeploymentOomReport) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentAliasError - An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
 type CancelDeploymentAliasError struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
@@ -3453,6 +3460,7 @@ func (e *CancelDeploymentNodeVersion) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentProject - The public project information associated with the deployment.
 type CancelDeploymentProject struct {
 	ID        string  `json:"id"`
 	Name      string  `json:"name"`
@@ -3480,6 +3488,7 @@ func (o *CancelDeploymentProject) GetFramework() *string {
 	return o.Framework
 }
 
+// CancelDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 type CancelDeploymentReadyState string
 
 const (
@@ -3548,6 +3557,7 @@ func (e *CancelDeploymentReadySubstate) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentSource - Where was the deployment created from
 type CancelDeploymentSource string
 
 const (
@@ -3592,6 +3602,7 @@ func (e *CancelDeploymentSource) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CancelDeploymentTargetEnum - If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 type CancelDeploymentTargetEnum string
 
 const (
@@ -7222,38 +7233,49 @@ type CancelDeploymentResponseBody struct {
 	ReadyStateReason          *string                          `json:"readyStateReason,omitempty"`
 	Integrations              *CancelDeploymentIntegrations    `json:"integrations,omitempty"`
 	Images                    *CancelDeploymentImages          `json:"images,omitempty"`
-	Alias                     []string                         `json:"alias,omitempty"`
-	AliasAssigned             bool                             `json:"aliasAssigned"`
-	BootedAt                  float64                          `json:"bootedAt"`
-	BuildingAt                float64                          `json:"buildingAt"`
+	// A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
+	Alias []string `json:"alias,omitempty"`
+	// A boolean that will be true when the aliases from the alias property were assigned successfully
+	AliasAssigned bool    `json:"aliasAssigned"`
+	BootedAt      float64 `json:"bootedAt"`
+	BuildingAt    float64 `json:"buildingAt"`
 	// Since April 2025 it necessary for On-Demand Concurrency Minutes calculation
-	BuildContainerFinishedAt *float64                                `json:"buildContainerFinishedAt,omitempty"`
-	BuildSkipped             bool                                    `json:"buildSkipped"`
-	Creator                  CancelDeploymentCreator                 `json:"creator"`
-	InitReadyAt              *float64                                `json:"initReadyAt,omitempty"`
-	IsFirstBranchDeployment  *bool                                   `json:"isFirstBranchDeployment,omitempty"`
-	Lambdas                  []CancelDeploymentLambda                `json:"lambdas,omitempty"`
-	Public                   bool                                    `json:"public"`
-	Ready                    *float64                                `json:"ready,omitempty"`
-	Status                   CancelDeploymentStatus                  `json:"status"`
-	Team                     *CancelDeploymentTeam                   `json:"team,omitempty"`
-	UserAliases              []string                                `json:"userAliases,omitempty"`
-	PreviewCommentsEnabled   *bool                                   `json:"previewCommentsEnabled,omitempty"`
-	TtyBuildLogs             *bool                                   `json:"ttyBuildLogs,omitempty"`
-	CustomEnvironment        *CancelDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
-	OomReport                *CancelDeploymentOomReport              `json:"oomReport,omitempty"`
-	ID                       string                                  `json:"id"`
-	AliasError               *CancelDeploymentAliasError             `json:"aliasError,omitempty"`
-	AliasFinal               *string                                 `json:"aliasFinal,omitempty"`
-	AliasWarning             *CancelDeploymentAliasWarning           `json:"aliasWarning,omitempty"`
+	BuildContainerFinishedAt *float64 `json:"buildContainerFinishedAt,omitempty"`
+	BuildSkipped             bool     `json:"buildSkipped"`
+	// Information about the deployment creator
+	Creator                 CancelDeploymentCreator  `json:"creator"`
+	InitReadyAt             *float64                 `json:"initReadyAt,omitempty"`
+	IsFirstBranchDeployment *bool                    `json:"isFirstBranchDeployment,omitempty"`
+	Lambdas                 []CancelDeploymentLambda `json:"lambdas,omitempty"`
+	// A boolean representing if the deployment is public or not. By default this is `false`
+	Public bool                   `json:"public"`
+	Ready  *float64               `json:"ready,omitempty"`
+	Status CancelDeploymentStatus `json:"status"`
+	// The team that owns the deployment if any
+	Team *CancelDeploymentTeam `json:"team,omitempty"`
+	// An array of domains that were provided by the user when creating the Deployment.
+	UserAliases []string `json:"userAliases,omitempty"`
+	// Whether or not preview comments are enabled for the deployment
+	PreviewCommentsEnabled *bool                                   `json:"previewCommentsEnabled,omitempty"`
+	TtyBuildLogs           *bool                                   `json:"ttyBuildLogs,omitempty"`
+	CustomEnvironment      *CancelDeploymentCustomEnvironmentUnion `json:"customEnvironment,omitempty"`
+	OomReport              *CancelDeploymentOomReport              `json:"oomReport,omitempty"`
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
+	// An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+	AliasError   *CancelDeploymentAliasError   `json:"aliasError,omitempty"`
+	AliasFinal   *string                       `json:"aliasFinal,omitempty"`
+	AliasWarning *CancelDeploymentAliasWarning `json:"aliasWarning,omitempty"`
 	// applies to custom domains only, defaults to `true`
 	AutoAssignCustomDomains *bool                             `json:"autoAssignCustomDomains,omitempty"`
 	AutomaticAliases        []string                          `json:"automaticAliases,omitempty"`
 	BuildErrorAt            *float64                          `json:"buildErrorAt,omitempty"`
 	ChecksState             *CancelDeploymentChecksState      `json:"checksState,omitempty"`
 	ChecksConclusion        *CancelDeploymentChecksConclusion `json:"checksConclusion,omitempty"`
-	CreatedAt               float64                           `json:"createdAt"`
-	DeletedAt               *float64                          `json:"deletedAt,omitempty"`
+	// A number containing the date when the deployment was created in milliseconds
+	CreatedAt float64 `json:"createdAt"`
+	// A number containing the date when the deployment was deleted at milliseconds
+	DeletedAt *float64 `json:"deletedAt,omitempty"`
 	// Computed field that is only available for deployments with a microfrontend configuration.
 	DefaultRoute *string  `json:"defaultRoute,omitempty"`
 	CanceledAt   *float64 `json:"canceledAt,omitempty"`
@@ -7262,24 +7284,34 @@ type CancelDeploymentResponseBody struct {
 	ErrorMessage *string  `json:"errorMessage,omitempty"`
 	ErrorStep    *string  `json:"errorStep,omitempty"`
 	// Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service
-	PassiveRegions    []string                        `json:"passiveRegions,omitempty"`
-	GitSource         *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
-	Name              string                          `json:"name"`
-	Meta              map[string]string               `json:"meta"`
-	OriginCacheRegion *string                         `json:"originCacheRegion,omitempty"`
+	PassiveRegions []string                        `json:"passiveRegions,omitempty"`
+	GitSource      *CancelDeploymentGitSourceUnion `json:"gitSource,omitempty"`
+	// The name of the project associated with the deployment at the time that the deployment was created
+	Name              string            `json:"name"`
+	Meta              map[string]string `json:"meta"`
+	OriginCacheRegion *string           `json:"originCacheRegion,omitempty"`
 	// If set it overrides the `projectSettings.nodeVersion` for this deployment.
 	NodeVersion *CancelDeploymentNodeVersion `json:"nodeVersion,omitempty"`
-	Project     *CancelDeploymentProject     `json:"project,omitempty"`
-	ReadyState  CancelDeploymentReadyState   `json:"readyState"`
+	// The public project information associated with the deployment.
+	Project *CancelDeploymentProject `json:"project,omitempty"`
+	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+	ReadyState CancelDeploymentReadyState `json:"readyState"`
 	// Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
-	ReadySubstate          *CancelDeploymentReadySubstate       `json:"readySubstate,omitempty"`
-	Regions                []string                             `json:"regions"`
-	SoftDeletedByRetention *bool                                `json:"softDeletedByRetention,omitempty"`
-	Source                 *CancelDeploymentSource              `json:"source,omitempty"`
-	Target                 *CancelDeploymentTargetEnum          `json:"target,omitempty"`
-	Type                   CancelDeploymentType                 `json:"type"`
-	UndeletedAt            *float64                             `json:"undeletedAt,omitempty"`
-	URL                    string                               `json:"url"`
+	ReadySubstate *CancelDeploymentReadySubstate `json:"readySubstate,omitempty"`
+	// The regions the deployment exists in
+	Regions []string `json:"regions"`
+	// flag to indicate if the deployment was deleted by retention policy
+	SoftDeletedByRetention *bool `json:"softDeletedByRetention,omitempty"`
+	// Where was the deployment created from
+	Source *CancelDeploymentSource `json:"source,omitempty"`
+	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+	Target *CancelDeploymentTargetEnum `json:"target,omitempty"`
+	Type   CancelDeploymentType        `json:"type"`
+	// A number containing the date when the deployment was undeleted at milliseconds
+	UndeletedAt *float64 `json:"undeletedAt,omitempty"`
+	// A string with the unique URL of the deployment
+	URL string `json:"url"`
+	// The platform version that was used to create the deployment.
 	Version                float64                              `json:"version"`
 	OidcTokenClaims        *CancelDeploymentOidcTokenClaims     `json:"oidcTokenClaims,omitempty"`
 	ConnectBuildsEnabled   *bool                                `json:"connectBuildsEnabled,omitempty"`

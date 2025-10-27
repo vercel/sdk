@@ -227,9 +227,21 @@ export type CancelDeploymentImages = {
   contentDispositionType?: CancelDeploymentContentDispositionType | undefined;
 };
 
+/**
+ * Information about the deployment creator
+ */
 export type CancelDeploymentCreator = {
+  /**
+   * The ID of the user that created the deployment
+   */
   uid: string;
+  /**
+   * The username of the user that created the deployment
+   */
   username?: string | undefined;
+  /**
+   * The avatar of the user that created the deployment
+   */
   avatar?: string | undefined;
 };
 
@@ -270,6 +282,9 @@ export const CancelDeploymentStatus = {
 } as const;
 export type CancelDeploymentStatus = ClosedEnum<typeof CancelDeploymentStatus>;
 
+/**
+ * The team that owns the deployment if any
+ */
 export type CancelDeploymentTeam = {
   id: string;
   name: string;
@@ -277,6 +292,9 @@ export type CancelDeploymentTeam = {
   slug: string;
 };
 
+/**
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
+ */
 export type CancelDeploymentCustomEnvironment2 = {
   id: string;
 };
@@ -361,7 +379,7 @@ export type CancelDeploymentCustomEnvironmentDomains = {
 };
 
 /**
- * Internal representation of a custom environment with all required properties
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
  */
 export type CancelDeploymentCustomEnvironment1 = {
   /**
@@ -413,6 +431,9 @@ export type CancelDeploymentOomReport = ClosedEnum<
   typeof CancelDeploymentOomReport
 >;
 
+/**
+ * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+ */
 export type CancelDeploymentAliasError = {
   code: string;
   message: string;
@@ -762,12 +783,18 @@ export type CancelDeploymentNodeVersion = ClosedEnum<
   typeof CancelDeploymentNodeVersion
 >;
 
+/**
+ * The public project information associated with the deployment.
+ */
 export type CancelDeploymentProject = {
   id: string;
   name: string;
   framework?: string | null | undefined;
 };
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const CancelDeploymentReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
@@ -776,6 +803,9 @@ export const CancelDeploymentReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type CancelDeploymentReadyState = ClosedEnum<
   typeof CancelDeploymentReadyState
 >;
@@ -795,6 +825,9 @@ export type CancelDeploymentReadySubstate = ClosedEnum<
   typeof CancelDeploymentReadySubstate
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const CancelDeploymentSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -805,12 +838,21 @@ export const CancelDeploymentSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type CancelDeploymentSource = ClosedEnum<typeof CancelDeploymentSource>;
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const CancelDeploymentTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type CancelDeploymentTarget = ClosedEnum<typeof CancelDeploymentTarget>;
 
 export const CancelDeploymentType = {
@@ -1435,7 +1477,13 @@ export type CancelDeploymentResponseBody = {
   readyStateReason?: string | undefined;
   integrations?: CancelDeploymentIntegrations | undefined;
   images?: CancelDeploymentImages | undefined;
+  /**
+   * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
+   */
   alias?: Array<string> | undefined;
+  /**
+   * A boolean that will be true when the aliases from the alias property were assigned successfully
+   */
   aliasAssigned: boolean;
   bootedAt: number;
   buildingAt: number;
@@ -1444,15 +1492,30 @@ export type CancelDeploymentResponseBody = {
    */
   buildContainerFinishedAt?: number | undefined;
   buildSkipped: boolean;
+  /**
+   * Information about the deployment creator
+   */
   creator: CancelDeploymentCreator;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
   lambdas?: Array<CancelDeploymentLambdas> | undefined;
+  /**
+   * A boolean representing if the deployment is public or not. By default this is `false`
+   */
   public: boolean;
   ready?: number | undefined;
   status: CancelDeploymentStatus;
+  /**
+   * The team that owns the deployment if any
+   */
   team?: CancelDeploymentTeam | undefined;
+  /**
+   * An array of domains that were provided by the user when creating the Deployment.
+   */
   userAliases?: Array<string> | undefined;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
@@ -1460,7 +1523,13 @@ export type CancelDeploymentResponseBody = {
     | CancelDeploymentCustomEnvironment2
     | undefined;
   oomReport?: CancelDeploymentOomReport | undefined;
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+   */
   aliasError?: CancelDeploymentAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   aliasWarning?: CancelDeploymentAliasWarning | null | undefined;
@@ -1472,7 +1541,13 @@ export type CancelDeploymentResponseBody = {
   buildErrorAt?: number | undefined;
   checksState?: CancelDeploymentChecksState | undefined;
   checksConclusion?: CancelDeploymentChecksConclusion | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * A number containing the date when the deployment was deleted at milliseconds
+   */
   deletedAt?: number | null | undefined;
   /**
    * Computed field that is only available for deployments with a microfrontend configuration.
@@ -1504,6 +1579,9 @@ export type CancelDeploymentResponseBody = {
     | CancelDeploymentGitSource7
     | GitSource8
     | undefined;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
   meta: { [k: string]: string };
   originCacheRegion?: string | undefined;
@@ -1511,19 +1589,46 @@ export type CancelDeploymentResponseBody = {
    * If set it overrides the `projectSettings.nodeVersion` for this deployment.
    */
   nodeVersion?: CancelDeploymentNodeVersion | undefined;
+  /**
+   * The public project information associated with the deployment.
+   */
   project?: CancelDeploymentProject | undefined;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: CancelDeploymentReadyState;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: CancelDeploymentReadySubstate | undefined;
+  /**
+   * The regions the deployment exists in
+   */
   regions: Array<string>;
+  /**
+   * flag to indicate if the deployment was deleted by retention policy
+   */
   softDeletedByRetention?: boolean | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: CancelDeploymentSource | undefined;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: CancelDeploymentTarget | null | undefined;
   type: CancelDeploymentType;
+  /**
+   * A number containing the date when the deployment was undeleted at milliseconds
+   */
   undeletedAt?: number | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * The platform version that was used to create the deployment.
+   */
   version: number;
   oidcTokenClaims?: CancelDeploymentOidcTokenClaims | undefined;
   connectBuildsEnabled?: boolean | undefined;

@@ -1,5 +1,7 @@
 # ResponseBodyTeam
 
+The team that owns the deployment if any
+
 ## Example Usage
 
 ```typescript

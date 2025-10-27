@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateStaticIpsEnvId2 } from "@vercel/sdk/models/updatestaticipsop.js";
 
-let value: UpdateStaticIpsEnvId2 = "production";
+let value: UpdateStaticIpsEnvId2 = "preview";
 ```
 
 ## Values
 
 ```typescript
-"production" | "preview"
+"preview" | "production"
 ```

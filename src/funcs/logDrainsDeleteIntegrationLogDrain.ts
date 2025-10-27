@@ -29,7 +29,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Deletes the Integration log drain with the provided `id`
+ * Deletes the Integration log drain with the provided `id` (deprecated)
  *
  * @remarks
  * Deletes the Integration log drain with the provided `id`. When using an OAuth2 Token, the log drain can be deleted only if the integration owns it.

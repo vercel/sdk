@@ -5396,6 +5396,9 @@
                       "oneOf": [
                         {
                           "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
+                            },
                             "updatedAt": {
                               "type": "number",
                               "description": "Timestamp when the microfrontends settings were last updated."
@@ -5420,17 +5423,59 @@
                               "type": "boolean",
                               "description": "Whether microfrontends are enabled for this project."
                             },
-                            "isDefaultApp": {
-                              "type": "boolean",
-                              "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                            }
+                          },
+                          "required": [
+                            "isDefaultApp",
+                            "updatedAt",
+                            "groupIds",
+                            "enabled"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
                               "description": "Whether observability data should be routed to this microfrontend project or a root project."
+                            },
+                            "doNotRouteWithMicrofrontendsRouting": {
+                              "type": "boolean",
+                              "description": "Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend."
+                            },
+                            "updatedAt": {
+                              "type": "number",
+                              "description": "Timestamp when the microfrontends settings were last updated."
+                            },
+                            "groupIds": {
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "maxItems": 2,
+                              "minItems": 2,
+                              "type": "array",
+                              "description": "The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "Whether microfrontends are enabled for this project."
+                            },
+                            "defaultRoute": {
+                              "type": "string",
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
                             }
                           },
                           "required": [
@@ -7561,6 +7606,10 @@
                         "disableRepositoryDispatchEvents": {
                           "type": "boolean",
                           "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
+                        },
+                        "requireVerifiedCommits": {
+                          "type": "boolean",
+                          "description": "Whether the project requires commits to be signed before deployments will be created."
                         }
                       },
                       "required": [
@@ -9648,10 +9697,14 @@
                           "items": {
                             "type": "string"
                           },
-                          "type": "array"
+                          "type": "array",
+                          "description": "A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation",
+                          "example": []
                         },
                         "aliasAssigned": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "A boolean that will be true when the aliases from the alias property were assigned successfully",
+                          "example": true
                         },
                         "bootedAt": {
                           "type": "number"
@@ -9669,19 +9722,25 @@
                         "creator": {
                           "properties": {
                             "uid": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The ID of the user that created the deployment",
+                              "example": "96SnxkFiMyVKsK3pnoHfx3Hz"
                             },
                             "username": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The username of the user that created the deployment",
+                              "example": "john-doe"
                             },
                             "avatar": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The avatar of the user that created the deployment"
                             }
                           },
                           "required": [
                             "uid"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "Information about the deployment creator"
                         },
                         "initReadyAt": {
                           "type": "number"
@@ -9743,7 +9802,9 @@
                           "type": "array"
                         },
                         "public": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "A boolean representing if the deployment is public or not. By default this is `false`",
+                          "example": false
                         },
                         "ready": {
                           "type": "number"
@@ -9779,16 +9840,24 @@
                             "name",
                             "slug"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "The team that owns the deployment if any"
                         },
                         "userAliases": {
                           "items": {
                             "type": "string"
                           },
-                          "type": "array"
+                          "type": "array",
+                          "description": "An array of domains that were provided by the user when creating the Deployment.",
+                          "example": [
+                            "sub1.example.com",
+                            "sub2.example.com"
+                          ]
                         },
                         "previewCommentsEnabled": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "Whether or not preview comments are enabled for the deployment",
+                          "example": false
                         },
                         "ttyBuildLogs": {
                           "type": "boolean"
@@ -9950,7 +10019,7 @@
                                 "updatedAt"
                               ],
                               "type": "object",
-                              "description": "Internal representation of a custom environment with all required properties"
+                              "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                             },
                             {
                               "properties": {
@@ -9961,7 +10030,8 @@
                               "required": [
                                 "id"
                               ],
-                              "type": "object"
+                              "type": "object",
+                              "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                             }
                           ]
                         },
@@ -9994,10 +10064,14 @@
                           "type": "object"
                         },
                         "id": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "A string holding the unique ID of the deployment",
+                          "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                         },
                         "createdAt": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was created in milliseconds",
+                          "example": 1540257589405
                         },
                         "readyState": {
                           "type": "string",
@@ -10008,10 +10082,14 @@
                             "INITIALIZING",
                             "READY",
                             "CANCELED"
-                          ]
+                          ],
+                          "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                          "example": "READY"
                         },
                         "name": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                          "example": "my-project"
                         },
                         "type": {
                           "type": "string",
@@ -10033,7 +10111,9 @@
                             "code",
                             "message"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`",
+                          "example": null
                         },
                         "aliasFinal": {
                           "nullable": true,
@@ -10071,7 +10151,9 @@
                         },
                         "deletedAt": {
                           "nullable": true,
-                          "type": "number"
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was deleted at milliseconds",
+                          "example": 1540257589405
                         },
                         "defaultRoute": {
                           "type": "string",
@@ -10649,7 +10731,8 @@
                             "id",
                             "name"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "The public project information associated with the deployment."
                         },
                         "readySubstate": {
                           "type": "string",
@@ -10664,10 +10747,16 @@
                           "items": {
                             "type": "string"
                           },
-                          "type": "array"
+                          "type": "array",
+                          "description": "The regions the deployment exists in",
+                          "example": [
+                            "sfo1"
+                          ]
                         },
                         "softDeletedByRetention": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "flag to indicate if the deployment was deleted by retention policy",
+                          "example": "true"
                         },
                         "source": {
                           "type": "string",
@@ -10680,7 +10769,9 @@
                             "import/repo",
                             "redeploy",
                             "v0-web"
-                          ]
+                          ],
+                          "description": "Where was the deployment created from",
+                          "example": "cli"
                         },
                         "target": {
                           "nullable": true,
@@ -10688,19 +10779,27 @@
                           "enum": [
                             "staging",
                             "production"
-                          ]
+                          ],
+                          "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                          "example": null
                         },
                         "undeletedAt": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was undeleted at milliseconds",
+                          "example": 1540257589405
                         },
                         "url": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "A string with the unique URL of the deployment",
+                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                         },
                         "version": {
                           "type": "number",
                           "enum": [
                             2
-                          ]
+                          ],
+                          "description": "The platform version that was used to create the deployment.",
+                          "example": 2
                         },
                         "oidcTokenClaims": {
                           "properties": {
@@ -11889,10 +11988,14 @@
                           "items": {
                             "type": "string"
                           },
-                          "type": "array"
+                          "type": "array",
+                          "description": "A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation",
+                          "example": []
                         },
                         "aliasAssigned": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "A boolean that will be true when the aliases from the alias property were assigned successfully",
+                          "example": true
                         },
                         "bootedAt": {
                           "type": "number"
@@ -11910,19 +12013,25 @@
                         "creator": {
                           "properties": {
                             "uid": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The ID of the user that created the deployment",
+                              "example": "96SnxkFiMyVKsK3pnoHfx3Hz"
                             },
                             "username": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The username of the user that created the deployment",
+                              "example": "john-doe"
                             },
                             "avatar": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The avatar of the user that created the deployment"
                             }
                           },
                           "required": [
                             "uid"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "Information about the deployment creator"
                         },
                         "initReadyAt": {
                           "type": "number"
@@ -11984,7 +12093,9 @@
                           "type": "array"
                         },
                         "public": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "A boolean representing if the deployment is public or not. By default this is `false`",
+                          "example": false
                         },
                         "ready": {
                           "type": "number"
@@ -12020,16 +12131,24 @@
                             "name",
                             "slug"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "The team that owns the deployment if any"
                         },
                         "userAliases": {
                           "items": {
                             "type": "string"
                           },
-                          "type": "array"
+                          "type": "array",
+                          "description": "An array of domains that were provided by the user when creating the Deployment.",
+                          "example": [
+                            "sub1.example.com",
+                            "sub2.example.com"
+                          ]
                         },
                         "previewCommentsEnabled": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "Whether or not preview comments are enabled for the deployment",
+                          "example": false
                         },
                         "ttyBuildLogs": {
                           "type": "boolean"
@@ -12191,7 +12310,7 @@
                                 "updatedAt"
                               ],
                               "type": "object",
-                              "description": "Internal representation of a custom environment with all required properties"
+                              "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                             },
                             {
                               "properties": {
@@ -12202,7 +12321,8 @@
                               "required": [
                                 "id"
                               ],
-                              "type": "object"
+                              "type": "object",
+                              "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                             }
                           ]
                         },
@@ -12235,10 +12355,14 @@
                           "type": "object"
                         },
                         "id": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "A string holding the unique ID of the deployment",
+                          "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                         },
                         "createdAt": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was created in milliseconds",
+                          "example": 1540257589405
                         },
                         "readyState": {
                           "type": "string",
@@ -12249,10 +12373,14 @@
                             "INITIALIZING",
                             "READY",
                             "CANCELED"
-                          ]
+                          ],
+                          "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                          "example": "READY"
                         },
                         "name": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                          "example": "my-project"
                         },
                         "type": {
                           "type": "string",
@@ -12274,7 +12402,9 @@
                             "code",
                             "message"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`",
+                          "example": null
                         },
                         "aliasFinal": {
                           "nullable": true,
@@ -12312,7 +12442,9 @@
                         },
                         "deletedAt": {
                           "nullable": true,
-                          "type": "number"
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was deleted at milliseconds",
+                          "example": 1540257589405
                         },
                         "defaultRoute": {
                           "type": "string",
@@ -12890,7 +13022,8 @@
                             "id",
                             "name"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "The public project information associated with the deployment."
                         },
                         "readySubstate": {
                           "type": "string",
@@ -12905,10 +13038,16 @@
                           "items": {
                             "type": "string"
                           },
-                          "type": "array"
+                          "type": "array",
+                          "description": "The regions the deployment exists in",
+                          "example": [
+                            "sfo1"
+                          ]
                         },
                         "softDeletedByRetention": {
-                          "type": "boolean"
+                          "type": "boolean",
+                          "description": "flag to indicate if the deployment was deleted by retention policy",
+                          "example": "true"
                         },
                         "source": {
                           "type": "string",
@@ -12921,7 +13060,9 @@
                             "import/repo",
                             "redeploy",
                             "v0-web"
-                          ]
+                          ],
+                          "description": "Where was the deployment created from",
+                          "example": "cli"
                         },
                         "target": {
                           "nullable": true,
@@ -12929,19 +13070,27 @@
                           "enum": [
                             "staging",
                             "production"
-                          ]
+                          ],
+                          "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                          "example": null
                         },
                         "undeletedAt": {
-                          "type": "number"
+                          "type": "number",
+                          "description": "A number containing the date when the deployment was undeleted at milliseconds",
+                          "example": 1540257589405
                         },
                         "url": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "A string with the unique URL of the deployment",
+                          "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                         },
                         "version": {
                           "type": "number",
                           "enum": [
                             2
-                          ]
+                          ],
+                          "description": "The platform version that was used to create the deployment.",
+                          "example": 2
                         },
                         "oidcTokenClaims": {
                           "properties": {
@@ -13431,10 +13580,14 @@
                       "items": {
                         "type": "string"
                       },
-                      "type": "array"
+                      "type": "array",
+                      "description": "A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation",
+                      "example": []
                     },
                     "aliasAssigned": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "A boolean that will be true when the aliases from the alias property were assigned successfully",
+                      "example": true
                     },
                     "bootedAt": {
                       "type": "number"
@@ -13452,19 +13605,25 @@
                     "creator": {
                       "properties": {
                         "uid": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The ID of the user that created the deployment",
+                          "example": "96SnxkFiMyVKsK3pnoHfx3Hz"
                         },
                         "username": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The username of the user that created the deployment",
+                          "example": "john-doe"
                         },
                         "avatar": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The avatar of the user that created the deployment"
                         }
                       },
                       "required": [
                         "uid"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "Information about the deployment creator"
                     },
                     "initReadyAt": {
                       "type": "number"
@@ -13526,7 +13685,9 @@
                       "type": "array"
                     },
                     "public": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "A boolean representing if the deployment is public or not. By default this is `false`",
+                      "example": false
                     },
                     "ready": {
                       "type": "number"
@@ -13562,16 +13723,24 @@
                         "name",
                         "slug"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The team that owns the deployment if any"
                     },
                     "userAliases": {
                       "items": {
                         "type": "string"
                       },
-                      "type": "array"
+                      "type": "array",
+                      "description": "An array of domains that were provided by the user when creating the Deployment.",
+                      "example": [
+                        "sub1.example.com",
+                        "sub2.example.com"
+                      ]
                     },
                     "previewCommentsEnabled": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "Whether or not preview comments are enabled for the deployment",
+                      "example": false
                     },
                     "ttyBuildLogs": {
                       "type": "boolean"
@@ -13733,7 +13902,7 @@
                             "updatedAt"
                           ],
                           "type": "object",
-                          "description": "Internal representation of a custom environment with all required properties"
+                          "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                         },
                         {
                           "properties": {
@@ -13744,7 +13913,8 @@
                           "required": [
                             "id"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                         }
                       ]
                     },
@@ -13777,10 +13947,14 @@
                       "type": "object"
                     },
                     "id": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "A string holding the unique ID of the deployment",
+                      "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                     },
                     "createdAt": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "A number containing the date when the deployment was created in milliseconds",
+                      "example": 1540257589405
                     },
                     "readyState": {
                       "type": "string",
@@ -13791,10 +13965,14 @@
                         "INITIALIZING",
                         "READY",
                         "CANCELED"
-                      ]
+                      ],
+                      "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                      "example": "READY"
                     },
                     "name": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                      "example": "my-project"
                     },
                     "type": {
                       "type": "string",
@@ -13816,7 +13994,9 @@
                         "code",
                         "message"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`",
+                      "example": null
                     },
                     "aliasFinal": {
                       "nullable": true,
@@ -13854,7 +14034,9 @@
                     },
                     "deletedAt": {
                       "nullable": true,
-                      "type": "number"
+                      "type": "number",
+                      "description": "A number containing the date when the deployment was deleted at milliseconds",
+                      "example": 1540257589405
                     },
                     "defaultRoute": {
                       "type": "string",
@@ -14432,7 +14614,8 @@
                         "id",
                         "name"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The public project information associated with the deployment."
                     },
                     "readySubstate": {
                       "type": "string",
@@ -14447,10 +14630,16 @@
                       "items": {
                         "type": "string"
                       },
-                      "type": "array"
+                      "type": "array",
+                      "description": "The regions the deployment exists in",
+                      "example": [
+                        "sfo1"
+                      ]
                     },
                     "softDeletedByRetention": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "flag to indicate if the deployment was deleted by retention policy",
+                      "example": "true"
                     },
                     "source": {
                       "type": "string",
@@ -14463,7 +14652,9 @@
                         "import/repo",
                         "redeploy",
                         "v0-web"
-                      ]
+                      ],
+                      "description": "Where was the deployment created from",
+                      "example": "cli"
                     },
                     "target": {
                       "nullable": true,
@@ -14471,19 +14662,27 @@
                       "enum": [
                         "staging",
                         "production"
-                      ]
+                      ],
+                      "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                      "example": null
                     },
                     "undeletedAt": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "A number containing the date when the deployment was undeleted at milliseconds",
+                      "example": 1540257589405
                     },
                     "url": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "A string with the unique URL of the deployment",
+                      "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                     },
                     "version": {
                       "type": "number",
                       "enum": [
                         2
-                      ]
+                      ],
+                      "description": "The platform version that was used to create the deployment.",
+                      "example": 2
                     },
                     "oidcTokenClaims": {
                       "properties": {
@@ -16661,10 +16860,14 @@
                       "items": {
                         "type": "string"
                       },
-                      "type": "array"
+                      "type": "array",
+                      "description": "A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation",
+                      "example": []
                     },
                     "aliasAssigned": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "A boolean that will be true when the aliases from the alias property were assigned successfully",
+                      "example": true
                     },
                     "bootedAt": {
                       "type": "number"
@@ -16682,19 +16885,25 @@
                     "creator": {
                       "properties": {
                         "uid": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The ID of the user that created the deployment",
+                          "example": "96SnxkFiMyVKsK3pnoHfx3Hz"
                         },
                         "username": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The username of the user that created the deployment",
+                          "example": "john-doe"
                         },
                         "avatar": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "The avatar of the user that created the deployment"
                         }
                       },
                       "required": [
                         "uid"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "Information about the deployment creator"
                     },
                     "initReadyAt": {
                       "type": "number"
@@ -16756,7 +16965,9 @@
                       "type": "array"
                     },
                     "public": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "A boolean representing if the deployment is public or not. By default this is `false`",
+                      "example": false
                     },
                     "ready": {
                       "type": "number"
@@ -16792,16 +17003,24 @@
                         "name",
                         "slug"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The team that owns the deployment if any"
                     },
                     "userAliases": {
                       "items": {
                         "type": "string"
                       },
-                      "type": "array"
+                      "type": "array",
+                      "description": "An array of domains that were provided by the user when creating the Deployment.",
+                      "example": [
+                        "sub1.example.com",
+                        "sub2.example.com"
+                      ]
                     },
                     "previewCommentsEnabled": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "Whether or not preview comments are enabled for the deployment",
+                      "example": false
                     },
                     "ttyBuildLogs": {
                       "type": "boolean"
@@ -16963,7 +17182,7 @@
                             "updatedAt"
                           ],
                           "type": "object",
-                          "description": "Internal representation of a custom environment with all required properties"
+                          "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                         },
                         {
                           "properties": {
@@ -16974,7 +17193,8 @@
                           "required": [
                             "id"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "If the deployment was created using a Custom Environment, then this property contains information regarding the environment used."
                         }
                       ]
                     },
@@ -16985,7 +17205,9 @@
                       ]
                     },
                     "id": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "A string holding the unique ID of the deployment",
+                      "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                     },
                     "aliasError": {
                       "nullable": true,
@@ -17001,7 +17223,9 @@
                         "code",
                         "message"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`",
+                      "example": null
                     },
                     "aliasFinal": {
                       "nullable": true,
@@ -17060,11 +17284,15 @@
                       ]
                     },
                     "createdAt": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "A number containing the date when the deployment was created in milliseconds",
+                      "example": 1540257589405
                     },
                     "deletedAt": {
                       "nullable": true,
-                      "type": "number"
+                      "type": "number",
+                      "description": "A number containing the date when the deployment was deleted at milliseconds",
+                      "example": 1540257589405
                     },
                     "defaultRoute": {
                       "type": "string",
@@ -17603,7 +17831,9 @@
                       ]
                     },
                     "name": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                      "example": "my-project"
                     },
                     "meta": {
                       "additionalProperties": {
@@ -17645,7 +17875,8 @@
                         "id",
                         "name"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The public project information associated with the deployment."
                     },
                     "readyState": {
                       "type": "string",
@@ -17656,7 +17887,9 @@
                         "QUEUED",
                         "READY",
                         "CANCELED"
-                      ]
+                      ],
+                      "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                      "example": "READY"
                     },
                     "readySubstate": {
                       "type": "string",
@@ -17671,10 +17904,16 @@
                       "items": {
                         "type": "string"
                       },
-                      "type": "array"
+                      "type": "array",
+                      "description": "The regions the deployment exists in",
+                      "example": [
+                        "sfo1"
+                      ]
                     },
                     "softDeletedByRetention": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "flag to indicate if the deployment was deleted by retention policy",
+                      "example": "true"
                     },
                     "source": {
                       "type": "string",
@@ -17687,7 +17926,9 @@
                         "import/repo",
                         "redeploy",
                         "v0-web"
-                      ]
+                      ],
+                      "description": "Where was the deployment created from",
+                      "example": "cli"
                     },
                     "target": {
                       "nullable": true,
@@ -17695,7 +17936,9 @@
                       "enum": [
                         "staging",
                         "production"
-                      ]
+                      ],
+                      "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                      "example": null
                     },
                     "type": {
                       "type": "string",
@@ -17704,16 +17947,22 @@
                       ]
                     },
                     "undeletedAt": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "A number containing the date when the deployment was undeleted at milliseconds",
+                      "example": 1540257589405
                     },
                     "url": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "A string with the unique URL of the deployment",
+                      "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                     },
                     "version": {
                       "type": "number",
                       "enum": [
                         2
-                      ]
+                      ],
+                      "description": "The platform version that was used to create the deployment.",
+                      "example": 2
                     },
                     "oidcTokenClaims": {
                       "properties": {
@@ -24689,7 +24938,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Retrieves a Configurable Log Drain",
+        "summary": "Retrieves a Configurable Log Drain (deprecated)",
         "tags": [
           "logDrains"
         ],
@@ -24848,7 +25097,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Deletes a Configurable Log Drain",
+        "summary": "Deletes a Configurable Log Drain (deprecated)",
         "tags": [
           "logDrains"
         ],
@@ -24908,7 +25157,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Retrieves a list of all the Log Drains",
+        "summary": "Retrieves a list of all the Log Drains (deprecated)",
         "tags": [
           "logDrains"
         ],
@@ -26061,7 +26310,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Creates a Configurable Log Drain",
+        "summary": "Creates a Configurable Log Drain (deprecated)",
         "tags": [
           "logDrains"
         ],
@@ -39407,34 +39656,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "default": {
@@ -40117,34 +40366,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "default": {
@@ -40302,34 +40551,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@648348": {
+                                                "__@BRAND@647815": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@648348"
+                                                "__@BRAND@647815"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@648348": {
+                                                "__@BRAND@647815": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@648348"
+                                                "__@BRAND@647815"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@648348": {
+                                                "__@BRAND@647815": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@648348"
+                                                "__@BRAND@647815"
                                               ]
                                             },
                                             "default": {
@@ -40640,12 +40889,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@648348": {
+                                                  "__@BRAND@647815": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@648348"
+                                                  "__@BRAND@647815"
                                                 ]
                                               },
                                               {
@@ -40653,12 +40902,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@648348": {
+                                                      "__@BRAND@647815": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@648348"
+                                                      "__@BRAND@647815"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -40727,34 +40976,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "default": {
@@ -40912,34 +41161,34 @@
                                             "minLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@648348": {
+                                                "__@BRAND@647815": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@648348"
+                                                "__@BRAND@647815"
                                               ]
                                             },
                                             "maxLength": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@648348": {
+                                                "__@BRAND@647815": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@648348"
+                                                "__@BRAND@647815"
                                               ]
                                             },
                                             "pattern": {
                                               "type": "object",
                                               "properties": {
-                                                "__@BRAND@648348": {
+                                                "__@BRAND@647815": {
                                                   "type": "object"
                                                 }
                                               },
                                               "required": [
-                                                "__@BRAND@648348"
+                                                "__@BRAND@647815"
                                               ]
                                             },
                                             "default": {
@@ -41028,12 +41277,12 @@
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@648348": {
+                                                  "__@BRAND@647815": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@648348"
+                                                  "__@BRAND@647815"
                                                 ]
                                               },
                                               {
@@ -41041,12 +41290,12 @@
                                                   "value": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "__@BRAND@648348": {
+                                                      "__@BRAND@647815": {
                                                         "type": "object"
                                                       }
                                                     },
                                                     "required": [
-                                                      "__@BRAND@648348"
+                                                      "__@BRAND@647815"
                                                     ]
                                                   },
                                                   "disabled": {
@@ -41232,12 +41481,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@648348": {
+                                              "__@BRAND@647815": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@648348"
+                                              "__@BRAND@647815"
                                             ]
                                           },
                                           "type": "array"
@@ -41246,12 +41495,12 @@
                                           "items": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@648348": {
+                                              "__@BRAND@647815": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@648348"
+                                              "__@BRAND@647815"
                                             ]
                                           },
                                           "type": "array"
@@ -41285,34 +41534,34 @@
                                         "minLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "maxLength": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "pattern": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "default": {
@@ -41446,12 +41695,12 @@
                                         "value": {
                                           "type": "object",
                                           "properties": {
-                                            "__@BRAND@648348": {
+                                            "__@BRAND@647815": {
                                               "type": "object"
                                             }
                                           },
                                           "required": [
-                                            "__@BRAND@648348"
+                                            "__@BRAND@647815"
                                           ]
                                         },
                                         "disabled": {
@@ -41740,7 +41989,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Retrieves a list of Integration log drains",
+        "summary": "Retrieves a list of Integration log drains (deprecated)",
         "tags": [
           "logDrains"
         ],
@@ -41820,7 +42069,8 @@
                             "lambda",
                             "static",
                             "external",
-                            "firewall"
+                            "firewall",
+                            "redirect"
                           ],
                           "description": "The sources from which logs are currently being delivered to this log drain.",
                           "example": [
@@ -41981,7 +42231,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Creates a new Integration Log Drain",
+        "summary": "Creates a new Integration Log Drain (deprecated)",
         "tags": [
           "logDrains"
         ],
@@ -42060,7 +42310,8 @@
                           "lambda",
                           "static",
                           "external",
-                          "firewall"
+                          "firewall",
+                          "redirect"
                         ],
                         "description": "The sources from which logs are currently being delivered to this log drain.",
                         "example": [
@@ -42310,7 +42561,7 @@
             "bearerToken": []
           }
         ],
-        "summary": "Deletes the Integration log drain with the provided `id`",
+        "summary": "Deletes the Integration log drain with the provided `id` (deprecated)",
         "tags": [
           "logDrains"
         ],
@@ -45074,6 +45325,9 @@
                             "oneOf": [
                               {
                                 "properties": {
+                                  "isDefaultApp": {
+                                    "type": "boolean"
+                                  },
                                   "updatedAt": {
                                     "type": "number",
                                     "description": "Timestamp when the microfrontends settings were last updated."
@@ -45098,17 +45352,59 @@
                                     "type": "boolean",
                                     "description": "Whether microfrontends are enabled for this project."
                                   },
-                                  "isDefaultApp": {
-                                    "type": "boolean",
-                                    "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                                  },
                                   "defaultRoute": {
                                     "type": "string",
                                     "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                                  }
+                                },
+                                "required": [
+                                  "isDefaultApp",
+                                  "updatedAt",
+                                  "groupIds",
+                                  "enabled"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "isDefaultApp": {
+                                    "type": "boolean"
                                   },
                                   "routeObservabilityToThisProject": {
                                     "type": "boolean",
                                     "description": "Whether observability data should be routed to this microfrontend project or a root project."
+                                  },
+                                  "doNotRouteWithMicrofrontendsRouting": {
+                                    "type": "boolean",
+                                    "description": "Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend."
+                                  },
+                                  "updatedAt": {
+                                    "type": "number",
+                                    "description": "Timestamp when the microfrontends settings were last updated."
+                                  },
+                                  "groupIds": {
+                                    "items": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "maxItems": 2,
+                                    "minItems": 2,
+                                    "type": "array",
+                                    "description": "The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                                  },
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "description": "Whether microfrontends are enabled for this project."
+                                  },
+                                  "defaultRoute": {
+                                    "type": "string",
+                                    "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
                                   }
                                 },
                                 "required": [
@@ -47239,6 +47535,10 @@
                               "disableRepositoryDispatchEvents": {
                                 "type": "boolean",
                                 "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
+                              },
+                              "requireVerifiedCommits": {
+                                "type": "boolean",
+                                "description": "Whether the project requires commits to be signed before deployments will be created."
                               }
                             },
                             "required": [
@@ -49907,6 +50207,9 @@
                       "oneOf": [
                         {
                           "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
+                            },
                             "updatedAt": {
                               "type": "number",
                               "description": "Timestamp when the microfrontends settings were last updated."
@@ -49931,17 +50234,59 @@
                               "type": "boolean",
                               "description": "Whether microfrontends are enabled for this project."
                             },
-                            "isDefaultApp": {
-                              "type": "boolean",
-                              "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                            }
+                          },
+                          "required": [
+                            "isDefaultApp",
+                            "updatedAt",
+                            "groupIds",
+                            "enabled"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
                               "description": "Whether observability data should be routed to this microfrontend project or a root project."
+                            },
+                            "doNotRouteWithMicrofrontendsRouting": {
+                              "type": "boolean",
+                              "description": "Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend."
+                            },
+                            "updatedAt": {
+                              "type": "number",
+                              "description": "Timestamp when the microfrontends settings were last updated."
+                            },
+                            "groupIds": {
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "maxItems": 2,
+                              "minItems": 2,
+                              "type": "array",
+                              "description": "The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "Whether microfrontends are enabled for this project."
+                            },
+                            "defaultRoute": {
+                              "type": "string",
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
                             }
                           },
                           "required": [
@@ -52072,6 +52417,10 @@
                         "disableRepositoryDispatchEvents": {
                           "type": "boolean",
                           "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
+                        },
+                        "requireVerifiedCommits": {
+                          "type": "boolean",
+                          "description": "Whether the project requires commits to be signed before deployments will be created."
                         }
                       },
                       "required": [
@@ -54945,6 +55294,9 @@
                       "oneOf": [
                         {
                           "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
+                            },
                             "updatedAt": {
                               "type": "number",
                               "description": "Timestamp when the microfrontends settings were last updated."
@@ -54969,17 +55321,59 @@
                               "type": "boolean",
                               "description": "Whether microfrontends are enabled for this project."
                             },
-                            "isDefaultApp": {
-                              "type": "boolean",
-                              "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                            }
+                          },
+                          "required": [
+                            "isDefaultApp",
+                            "updatedAt",
+                            "groupIds",
+                            "enabled"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
                               "description": "Whether observability data should be routed to this microfrontend project or a root project."
+                            },
+                            "doNotRouteWithMicrofrontendsRouting": {
+                              "type": "boolean",
+                              "description": "Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend."
+                            },
+                            "updatedAt": {
+                              "type": "number",
+                              "description": "Timestamp when the microfrontends settings were last updated."
+                            },
+                            "groupIds": {
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "maxItems": 2,
+                              "minItems": 2,
+                              "type": "array",
+                              "description": "The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "Whether microfrontends are enabled for this project."
+                            },
+                            "defaultRoute": {
+                              "type": "string",
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
                             }
                           },
                           "required": [
@@ -57110,6 +57504,10 @@
                         "disableRepositoryDispatchEvents": {
                           "type": "boolean",
                           "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
+                        },
+                        "requireVerifiedCommits": {
+                          "type": "boolean",
+                          "description": "Whether the project requires commits to be signed before deployments will be created."
                         }
                       },
                       "required": [
@@ -59604,6 +60002,9 @@
                       "oneOf": [
                         {
                           "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
+                            },
                             "updatedAt": {
                               "type": "number",
                               "description": "Timestamp when the microfrontends settings were last updated."
@@ -59628,17 +60029,59 @@
                               "type": "boolean",
                               "description": "Whether microfrontends are enabled for this project."
                             },
-                            "isDefaultApp": {
-                              "type": "boolean",
-                              "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                            },
                             "defaultRoute": {
                               "type": "string",
                               "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                            }
+                          },
+                          "required": [
+                            "isDefaultApp",
+                            "updatedAt",
+                            "groupIds",
+                            "enabled"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "isDefaultApp": {
+                              "type": "boolean"
                             },
                             "routeObservabilityToThisProject": {
                               "type": "boolean",
                               "description": "Whether observability data should be routed to this microfrontend project or a root project."
+                            },
+                            "doNotRouteWithMicrofrontendsRouting": {
+                              "type": "boolean",
+                              "description": "Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend."
+                            },
+                            "updatedAt": {
+                              "type": "number",
+                              "description": "Timestamp when the microfrontends settings were last updated."
+                            },
+                            "groupIds": {
+                              "items": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "maxItems": 2,
+                              "minItems": 2,
+                              "type": "array",
+                              "description": "The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "Whether microfrontends are enabled for this project."
+                            },
+                            "defaultRoute": {
+                              "type": "string",
+                              "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
                             }
                           },
                           "required": [
@@ -61769,6 +62212,10 @@
                         "disableRepositoryDispatchEvents": {
                           "type": "boolean",
                           "description": "Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events"
+                        },
+                        "requireVerifiedCommits": {
+                          "type": "boolean",
+                          "description": "Whether the project requires commits to be signed before deployments will be created."
                         }
                       },
                       "required": [
@@ -63187,8 +63634,8 @@
                           {
                             "type": "string",
                             "enum": [
-                              "production",
-                              "preview"
+                              "preview",
+                              "production"
                             ]
                           }
                         ]
@@ -71992,6 +72439,97 @@
             }
           }
         }
+      },
+      "get": {
+        "description": "Retrieve client certificates configured for a project's mTLS egress authentication.",
+        "operationId": "getProjectClientCerts",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get client certificates for a project",
+        "tags": [
+          "projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "Client certificates retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "clientCerts": {
+                      "items": {
+                        "properties": {
+                          "origin": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "origin",
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "clientCerts"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The unique project identifier or the project name",
+              "type": "string",
+              "example": "prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
       }
     },
     "/v1/projects/{idOrName}/rolling-release/billing": {
@@ -72534,13 +73072,19 @@
                           "nullable": true,
                           "properties": {
                             "id": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string holding the unique ID of the deployment",
+                              "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                             },
                             "name": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                              "example": "my-project"
                             },
                             "url": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string with the unique URL of the deployment",
+                              "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                             },
                             "target": {
                               "nullable": true,
@@ -72548,7 +73092,9 @@
                               "enum": [
                                 "staging",
                                 "production"
-                              ]
+                              ],
+                              "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                              "example": null
                             },
                             "source": {
                               "type": "string",
@@ -72561,10 +73107,14 @@
                                 "import/repo",
                                 "redeploy",
                                 "v0-web"
-                              ]
+                              ],
+                              "description": "Where was the deployment created from",
+                              "example": "cli"
                             },
                             "createdAt": {
-                              "type": "number"
+                              "type": "number",
+                              "description": "A number containing the date when the deployment was created in milliseconds",
+                              "example": 1540257589405
                             },
                             "readyState": {
                               "type": "string",
@@ -72575,7 +73125,9 @@
                                 "QUEUED",
                                 "READY",
                                 "CANCELED"
-                              ]
+                              ],
+                              "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                              "example": "READY"
                             },
                             "readyStateAt": {
                               "type": "number"
@@ -72605,13 +73157,19 @@
                           "nullable": true,
                           "properties": {
                             "id": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string holding the unique ID of the deployment",
+                              "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                             },
                             "name": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                              "example": "my-project"
                             },
                             "url": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string with the unique URL of the deployment",
+                              "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                             },
                             "target": {
                               "nullable": true,
@@ -72619,7 +73177,9 @@
                               "enum": [
                                 "staging",
                                 "production"
-                              ]
+                              ],
+                              "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                              "example": null
                             },
                             "source": {
                               "type": "string",
@@ -72632,10 +73192,14 @@
                                 "import/repo",
                                 "redeploy",
                                 "v0-web"
-                              ]
+                              ],
+                              "description": "Where was the deployment created from",
+                              "example": "cli"
                             },
                             "createdAt": {
-                              "type": "number"
+                              "type": "number",
+                              "description": "A number containing the date when the deployment was created in milliseconds",
+                              "example": 1540257589405
                             },
                             "readyState": {
                               "type": "string",
@@ -72646,7 +73210,9 @@
                                 "QUEUED",
                                 "READY",
                                 "CANCELED"
-                              ]
+                              ],
+                              "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                              "example": "READY"
                             },
                             "readyStateAt": {
                               "type": "number"
@@ -73029,13 +73595,19 @@
                           "nullable": true,
                           "properties": {
                             "id": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string holding the unique ID of the deployment",
+                              "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                             },
                             "name": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                              "example": "my-project"
                             },
                             "url": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string with the unique URL of the deployment",
+                              "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                             },
                             "target": {
                               "nullable": true,
@@ -73043,7 +73615,9 @@
                               "enum": [
                                 "staging",
                                 "production"
-                              ]
+                              ],
+                              "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                              "example": null
                             },
                             "source": {
                               "type": "string",
@@ -73056,10 +73630,14 @@
                                 "import/repo",
                                 "redeploy",
                                 "v0-web"
-                              ]
+                              ],
+                              "description": "Where was the deployment created from",
+                              "example": "cli"
                             },
                             "createdAt": {
-                              "type": "number"
+                              "type": "number",
+                              "description": "A number containing the date when the deployment was created in milliseconds",
+                              "example": 1540257589405
                             },
                             "readyState": {
                               "type": "string",
@@ -73070,7 +73648,9 @@
                                 "QUEUED",
                                 "READY",
                                 "CANCELED"
-                              ]
+                              ],
+                              "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                              "example": "READY"
                             },
                             "readyStateAt": {
                               "type": "number"
@@ -73100,13 +73680,19 @@
                           "nullable": true,
                           "properties": {
                             "id": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string holding the unique ID of the deployment",
+                              "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                             },
                             "name": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                              "example": "my-project"
                             },
                             "url": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string with the unique URL of the deployment",
+                              "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                             },
                             "target": {
                               "nullable": true,
@@ -73114,7 +73700,9 @@
                               "enum": [
                                 "staging",
                                 "production"
-                              ]
+                              ],
+                              "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                              "example": null
                             },
                             "source": {
                               "type": "string",
@@ -73127,10 +73715,14 @@
                                 "import/repo",
                                 "redeploy",
                                 "v0-web"
-                              ]
+                              ],
+                              "description": "Where was the deployment created from",
+                              "example": "cli"
                             },
                             "createdAt": {
-                              "type": "number"
+                              "type": "number",
+                              "description": "A number containing the date when the deployment was created in milliseconds",
+                              "example": 1540257589405
                             },
                             "readyState": {
                               "type": "string",
@@ -73141,7 +73733,9 @@
                                 "QUEUED",
                                 "READY",
                                 "CANCELED"
-                              ]
+                              ],
+                              "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                              "example": "READY"
                             },
                             "readyStateAt": {
                               "type": "number"
@@ -73535,13 +74129,19 @@
                           "nullable": true,
                           "properties": {
                             "id": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string holding the unique ID of the deployment",
+                              "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                             },
                             "name": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                              "example": "my-project"
                             },
                             "url": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string with the unique URL of the deployment",
+                              "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                             },
                             "target": {
                               "nullable": true,
@@ -73549,7 +74149,9 @@
                               "enum": [
                                 "staging",
                                 "production"
-                              ]
+                              ],
+                              "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                              "example": null
                             },
                             "source": {
                               "type": "string",
@@ -73562,10 +74164,14 @@
                                 "import/repo",
                                 "redeploy",
                                 "v0-web"
-                              ]
+                              ],
+                              "description": "Where was the deployment created from",
+                              "example": "cli"
                             },
                             "createdAt": {
-                              "type": "number"
+                              "type": "number",
+                              "description": "A number containing the date when the deployment was created in milliseconds",
+                              "example": 1540257589405
                             },
                             "readyState": {
                               "type": "string",
@@ -73576,7 +74182,9 @@
                                 "QUEUED",
                                 "READY",
                                 "CANCELED"
-                              ]
+                              ],
+                              "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                              "example": "READY"
                             },
                             "readyStateAt": {
                               "type": "number"
@@ -73606,13 +74214,19 @@
                           "nullable": true,
                           "properties": {
                             "id": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string holding the unique ID of the deployment",
+                              "example": "dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ"
                             },
                             "name": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "The name of the project associated with the deployment at the time that the deployment was created",
+                              "example": "my-project"
                             },
                             "url": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "A string with the unique URL of the deployment",
+                              "example": "my-instant-deployment-3ij3cxz9qr.now.sh"
                             },
                             "target": {
                               "nullable": true,
@@ -73620,7 +74234,9 @@
                               "enum": [
                                 "staging",
                                 "production"
-                              ]
+                              ],
+                              "description": "If defined, either `staging` if a staging alias in the format `\u003cproject\u003e.\u003cteam\u003e.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the \"preview\" deployment.",
+                              "example": null
                             },
                             "source": {
                               "type": "string",
@@ -73633,10 +74249,14 @@
                                 "import/repo",
                                 "redeploy",
                                 "v0-web"
-                              ]
+                              ],
+                              "description": "Where was the deployment created from",
+                              "example": "cli"
                             },
                             "createdAt": {
-                              "type": "number"
+                              "type": "number",
+                              "description": "A number containing the date when the deployment was created in milliseconds",
+                              "example": 1540257589405
                             },
                             "readyState": {
                               "type": "string",
@@ -73647,7 +74267,9 @@
                                 "QUEUED",
                                 "READY",
                                 "CANCELED"
-                              ]
+                              ],
+                              "description": "The state of the deployment depending on the process of deploying, or if it is ready or in an error state",
+                              "example": "READY"
                             },
                             "readyStateAt": {
                               "type": "number"
@@ -79041,34 +79663,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "description": {
@@ -79751,34 +80373,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "description": {
@@ -79927,34 +80549,34 @@
                                               "minLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8684": {
+                                                  "__@BRAND@8675": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8684"
+                                                  "__@BRAND@8675"
                                                 ]
                                               },
                                               "maxLength": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8684": {
+                                                  "__@BRAND@8675": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8684"
+                                                  "__@BRAND@8675"
                                                 ]
                                               },
                                               "pattern": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "__@BRAND@8684": {
+                                                  "__@BRAND@8675": {
                                                     "type": "object"
                                                   }
                                                 },
                                                 "required": [
-                                                  "__@BRAND@8684"
+                                                  "__@BRAND@8675"
                                                 ]
                                               },
                                               "default": {
@@ -80271,12 +80893,12 @@
                                                 {
                                                   "type": "object",
                                                   "properties": {
-                                                    "__@BRAND@8684": {
+                                                    "__@BRAND@8675": {
                                                       "type": "object"
                                                     }
                                                   },
                                                   "required": [
-                                                    "__@BRAND@8684"
+                                                    "__@BRAND@8675"
                                                   ]
                                                 },
                                                 {
@@ -80284,12 +80906,12 @@
                                                     "value": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "__@BRAND@8684": {
+                                                        "__@BRAND@8675": {
                                                           "type": "object"
                                                         }
                                                       },
                                                       "required": [
-                                                        "__@BRAND@8684"
+                                                        "__@BRAND@8675"
                                                       ]
                                                     },
                                                     "disabled": {
@@ -80361,34 +80983,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "description": {
@@ -80538,34 +81160,34 @@
                                           "maxLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "minLength": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "pattern": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "description": {
@@ -80696,12 +81318,12 @@
                                           "value": {
                                             "type": "object",
                                             "properties": {
-                                              "__@BRAND@8684": {
+                                              "__@BRAND@8675": {
                                                 "type": "object"
                                               }
                                             },
                                             "required": [
-                                              "__@BRAND@8684"
+                                              "__@BRAND@8675"
                                             ]
                                           },
                                           "disabled": {
@@ -80957,12 +81579,12 @@
                             "value": {
                               "type": "object",
                               "properties": {
-                                "__@BRAND@8684": {
+                                "__@BRAND@8675": {
                                   "type": "object"
                                 }
                               },
                               "required": [
-                                "__@BRAND@8684"
+                                "__@BRAND@8675"
                               ]
                             },
                             "disabled": {
@@ -81832,7 +82454,7 @@
     },
     "/v1/teams/{teamId}/members": {
       "post": {
-        "description": "Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user can be specified with an email or an ID. If both email and ID are provided, ID will take priority.",
+        "description": "Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.",
         "operationId": "inviteUserToTeam",
         "security": [
           {
@@ -89337,7 +89959,26 @@
                 ]
               },
               "required_when": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "value_in"
+                    ],
+                    "properties": {
+                      "value_in": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
               },
               "type": {
                 "type": "string",
@@ -89417,7 +90058,26 @@
                 ]
               },
               "required_when": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "value_in"
+                    ],
+                    "properties": {
+                      "value_in": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
               },
               "type": {
                 "type": "string",
@@ -89496,7 +90156,26 @@
                 ]
               },
               "required_when": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "value_in"
+                    ],
+                    "properties": {
+                      "value_in": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
               },
               "type": {
                 "type": "string",
@@ -89551,7 +90230,26 @@
                 ]
               },
               "required_when": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "value_in"
+                    ],
+                    "properties": {
+                      "value_in": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
               },
               "type": {
                 "type": "string",
@@ -92452,6 +93150,18 @@
                             "properties": {
                               "enhancedBuilds": {
                                 "type": "boolean"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "buildQueue": {
+                            "properties": {
+                              "configuration": {
+                                "type": "string",
+                                "enum": [
+                                  "SKIP_NAMESPACE_QUEUE",
+                                  "WAIT_FOR_NAMESPACE_QUEUE"
+                                ]
                               }
                             },
                             "type": "object"
@@ -97329,6 +98039,9 @@
                         "oneOf": [
                           {
                             "properties": {
+                              "isDefaultApp": {
+                                "type": "boolean"
+                              },
                               "updatedAt": {
                                 "type": "number",
                                 "description": "Timestamp when the microfrontends settings were last updated."
@@ -97353,17 +98066,59 @@
                                 "type": "boolean",
                                 "description": "Whether microfrontends are enabled for this project."
                               },
-                              "isDefaultApp": {
-                                "type": "boolean",
-                                "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                              },
                               "defaultRoute": {
                                 "type": "string",
                                 "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                              }
+                            },
+                            "required": [
+                              "isDefaultApp",
+                              "updatedAt",
+                              "groupIds",
+                              "enabled"
+                            ],
+                            "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "isDefaultApp": {
+                                "type": "boolean"
                               },
                               "routeObservabilityToThisProject": {
                                 "type": "boolean",
                                 "description": "Whether observability data should be routed to this microfrontend project or a root project."
+                              },
+                              "doNotRouteWithMicrofrontendsRouting": {
+                                "type": "boolean",
+                                "description": "Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend."
+                              },
+                              "updatedAt": {
+                                "type": "number",
+                                "description": "Timestamp when the microfrontends settings were last updated."
+                              },
+                              "groupIds": {
+                                "items": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "maxItems": 2,
+                                "minItems": 2,
+                                "type": "array",
+                                "description": "The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                              },
+                              "enabled": {
+                                "type": "boolean",
+                                "description": "Whether microfrontends are enabled for this project."
+                              },
+                              "defaultRoute": {
+                                "type": "string",
+                                "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
                               }
                             },
                             "required": [
@@ -97414,6 +98169,9 @@
                             "oneOf": [
                               {
                                 "properties": {
+                                  "isDefaultApp": {
+                                    "type": "boolean"
+                                  },
                                   "updatedAt": {
                                     "type": "number",
                                     "description": "Timestamp when the microfrontends settings were last updated."
@@ -97438,17 +98196,59 @@
                                     "type": "boolean",
                                     "description": "Whether microfrontends are enabled for this project."
                                   },
-                                  "isDefaultApp": {
-                                    "type": "boolean",
-                                    "description": "Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends."
-                                  },
                                   "defaultRoute": {
                                     "type": "string",
                                     "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
+                                  }
+                                },
+                                "required": [
+                                  "isDefaultApp",
+                                  "updatedAt",
+                                  "groupIds",
+                                  "enabled"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "isDefaultApp": {
+                                    "type": "boolean"
                                   },
                                   "routeObservabilityToThisProject": {
                                     "type": "boolean",
                                     "description": "Whether observability data should be routed to this microfrontend project or a root project."
+                                  },
+                                  "doNotRouteWithMicrofrontendsRouting": {
+                                    "type": "boolean",
+                                    "description": "Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend."
+                                  },
+                                  "updatedAt": {
+                                    "type": "number",
+                                    "description": "Timestamp when the microfrontends settings were last updated."
+                                  },
+                                  "groupIds": {
+                                    "items": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "maxItems": 2,
+                                    "minItems": 2,
+                                    "type": "array",
+                                    "description": "The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together."
+                                  },
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "description": "Whether microfrontends are enabled for this project."
+                                  },
+                                  "defaultRoute": {
+                                    "type": "string",
+                                    "description": "A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`"
                                   }
                                 },
                                 "required": [
@@ -99142,6 +99942,20 @@
                 "properties": {
                   "enhancedBuilds": {
                     "type": "boolean",
+                    "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+                  }
+                },
+                "type": "object",
+                "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
+              },
+              "buildQueue": {
+                "properties": {
+                  "configuration": {
+                    "type": "string",
+                    "enum": [
+                      "SKIP_NAMESPACE_QUEUE",
+                      "WAIT_FOR_NAMESPACE_QUEUE"
+                    ],
                     "description": "An object containing infomation related to the amount of platform resources may be allocated to the User account."
                   }
                 },

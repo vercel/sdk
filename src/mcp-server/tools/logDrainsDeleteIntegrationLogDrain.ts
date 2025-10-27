@@ -14,7 +14,8 @@ export const tool$logDrainsDeleteIntegrationLogDrain: ToolDefinition<
   typeof args
 > = {
   name: "log-drains-delete-integration-log-drain",
-  description: `Deletes the Integration log drain with the provided \`id\`
+  description:
+    `Deletes the Integration log drain with the provided \`id\` (deprecated)
 
 Deletes the Integration log drain with the provided \`id\`. When using an OAuth2 Token, the log drain can be deleted only if the integration owns it.`,
   args,

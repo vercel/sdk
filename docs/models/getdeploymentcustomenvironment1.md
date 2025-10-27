@@ -1,6 +1,6 @@
 # GetDeploymentCustomEnvironment1
 
-Internal representation of a custom environment with all required properties
+If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
 
 ## Example Usage
 

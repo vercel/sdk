@@ -12,7 +12,7 @@ let value: CreateIntegrationStoreDirectStore = {
   externalResourceId: "<id>",
   product: {
     value: {
-      atBRANDAt8684: {},
+      atBRANDAt8675: {},
     },
   },
   secrets: [

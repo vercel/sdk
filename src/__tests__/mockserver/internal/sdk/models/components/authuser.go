@@ -262,6 +262,57 @@ func (o *AuthUserBuildEntitlements) GetEnhancedBuilds() *bool {
 	return o.EnhancedBuilds
 }
 
+// AuthUserConfiguration - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserConfiguration string
+
+const (
+	AuthUserConfigurationSkipNamespaceQueue    AuthUserConfiguration = "SKIP_NAMESPACE_QUEUE"
+	AuthUserConfigurationWaitForNamespaceQueue AuthUserConfiguration = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e AuthUserConfiguration) ToPointer() *AuthUserConfiguration {
+	return &e
+}
+func (e *AuthUserConfiguration) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = AuthUserConfiguration(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AuthUserConfiguration: %v", v)
+	}
+}
+
+// AuthUserBuildQueue - An object containing infomation related to the amount of platform resources may be allocated to the User account.
+type AuthUserBuildQueue struct {
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	Configuration *AuthUserConfiguration `json:"configuration,omitempty"`
+}
+
+func (a AuthUserBuildQueue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthUserBuildQueue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AuthUserBuildQueue) GetConfiguration() *AuthUserConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 // AuthUserPurchaseType - An object containing infomation related to the amount of platform resources may be allocated to the User account.
 type AuthUserPurchaseType string
 
@@ -402,6 +453,8 @@ type AuthUserResourceConfig struct {
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	BuildEntitlements *AuthUserBuildEntitlements `json:"buildEntitlements,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
+	BuildQueue *AuthUserBuildQueue `json:"buildQueue,omitempty"`
+	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	AwsAccountType *string `json:"awsAccountType,omitempty"`
 	// An object containing infomation related to the amount of platform resources may be allocated to the User account.
 	AwsAccountIds []string `json:"awsAccountIds,omitempty"`
@@ -484,6 +537,13 @@ func (o *AuthUserResourceConfig) GetBuildEntitlements() *AuthUserBuildEntitlemen
 		return nil
 	}
 	return o.BuildEntitlements
+}
+
+func (o *AuthUserResourceConfig) GetBuildQueue() *AuthUserBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 func (o *AuthUserResourceConfig) GetAwsAccountType() *string {

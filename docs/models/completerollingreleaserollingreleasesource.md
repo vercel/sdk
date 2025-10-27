@@ -1,11 +1,13 @@
 # CompleteRollingReleaseRollingReleaseSource
 
+Where was the deployment created from
+
 ## Example Usage
 
 ```typescript
 import { CompleteRollingReleaseRollingReleaseSource } from "@vercel/sdk/models/completerollingreleaseop.js";
 
-let value: CompleteRollingReleaseRollingReleaseSource = "redeploy";
+let value: CompleteRollingReleaseRollingReleaseSource = "cli";
 ```
 
 ## Values

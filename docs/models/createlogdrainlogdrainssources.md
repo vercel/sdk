@@ -7,11 +7,11 @@ The sources from which logs are currently being delivered to this log drain.
 ```typescript
 import { CreateLogDrainLogDrainsSources } from "@vercel/sdk/models/createlogdrainop.js";
 
-let value: CreateLogDrainLogDrainsSources = "build";
+let value: CreateLogDrainLogDrainsSources = "edge";
 ```
 
 ## Values
 
 ```typescript
-"build" | "edge" | "lambda" | "static" | "external" | "firewall"
+"build" | "edge" | "lambda" | "static" | "external" | "firewall" | "redirect"
 ```

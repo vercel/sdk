@@ -97,6 +97,7 @@ func (e *ApproveRollingReleaseStageState) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// ApproveRollingReleaseStageCurrentDeploymentTarget - If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 type ApproveRollingReleaseStageCurrentDeploymentTarget string
 
 const (
@@ -123,6 +124,7 @@ func (e *ApproveRollingReleaseStageCurrentDeploymentTarget) UnmarshalJSON(data [
 	}
 }
 
+// ApproveRollingReleaseStageCurrentDeploymentSource - Where was the deployment created from
 type ApproveRollingReleaseStageCurrentDeploymentSource string
 
 const (
@@ -167,6 +169,7 @@ func (e *ApproveRollingReleaseStageCurrentDeploymentSource) UnmarshalJSON(data [
 	}
 }
 
+// ApproveRollingReleaseStageCurrentDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 type ApproveRollingReleaseStageCurrentDeploymentReadyState string
 
 const (
@@ -207,12 +210,19 @@ func (e *ApproveRollingReleaseStageCurrentDeploymentReadyState) UnmarshalJSON(da
 
 // ApproveRollingReleaseStageCurrentDeployment - The current deployment receiving production traffic
 type ApproveRollingReleaseStageCurrentDeployment struct {
-	ID           string                                                `json:"id"`
-	Name         string                                                `json:"name"`
-	URL          string                                                `json:"url"`
-	Target       *ApproveRollingReleaseStageCurrentDeploymentTarget    `json:"target,omitempty"`
-	Source       *ApproveRollingReleaseStageCurrentDeploymentSource    `json:"source,omitempty"`
-	CreatedAt    float64                                               `json:"createdAt"`
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
+	// The name of the project associated with the deployment at the time that the deployment was created
+	Name string `json:"name"`
+	// A string with the unique URL of the deployment
+	URL string `json:"url"`
+	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+	Target *ApproveRollingReleaseStageCurrentDeploymentTarget `json:"target,omitempty"`
+	// Where was the deployment created from
+	Source *ApproveRollingReleaseStageCurrentDeploymentSource `json:"source,omitempty"`
+	// A number containing the date when the deployment was created in milliseconds
+	CreatedAt float64 `json:"createdAt"`
+	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   ApproveRollingReleaseStageCurrentDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                              `json:"readyStateAt,omitempty"`
 }
@@ -273,6 +283,7 @@ func (o *ApproveRollingReleaseStageCurrentDeployment) GetReadyStateAt() *float64
 	return o.ReadyStateAt
 }
 
+// ApproveRollingReleaseStageCanaryDeploymentTarget - If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
 type ApproveRollingReleaseStageCanaryDeploymentTarget string
 
 const (
@@ -299,6 +310,7 @@ func (e *ApproveRollingReleaseStageCanaryDeploymentTarget) UnmarshalJSON(data []
 	}
 }
 
+// ApproveRollingReleaseStageCanaryDeploymentSource - Where was the deployment created from
 type ApproveRollingReleaseStageCanaryDeploymentSource string
 
 const (
@@ -343,6 +355,7 @@ func (e *ApproveRollingReleaseStageCanaryDeploymentSource) UnmarshalJSON(data []
 	}
 }
 
+// ApproveRollingReleaseStageCanaryDeploymentReadyState - The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 type ApproveRollingReleaseStageCanaryDeploymentReadyState string
 
 const (
@@ -383,12 +396,19 @@ func (e *ApproveRollingReleaseStageCanaryDeploymentReadyState) UnmarshalJSON(dat
 
 // ApproveRollingReleaseStageCanaryDeployment - The canary deployment being rolled out
 type ApproveRollingReleaseStageCanaryDeployment struct {
-	ID           string                                               `json:"id"`
-	Name         string                                               `json:"name"`
-	URL          string                                               `json:"url"`
-	Target       *ApproveRollingReleaseStageCanaryDeploymentTarget    `json:"target,omitempty"`
-	Source       *ApproveRollingReleaseStageCanaryDeploymentSource    `json:"source,omitempty"`
-	CreatedAt    float64                                              `json:"createdAt"`
+	// A string holding the unique ID of the deployment
+	ID string `json:"id"`
+	// The name of the project associated with the deployment at the time that the deployment was created
+	Name string `json:"name"`
+	// A string with the unique URL of the deployment
+	URL string `json:"url"`
+	// If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+	Target *ApproveRollingReleaseStageCanaryDeploymentTarget `json:"target,omitempty"`
+	// Where was the deployment created from
+	Source *ApproveRollingReleaseStageCanaryDeploymentSource `json:"source,omitempty"`
+	// A number containing the date when the deployment was created in milliseconds
+	CreatedAt float64 `json:"createdAt"`
+	// The state of the deployment depending on the process of deploying, or if it is ready or in an error state
 	ReadyState   ApproveRollingReleaseStageCanaryDeploymentReadyState `json:"readyState"`
 	ReadyStateAt *float64                                             `json:"readyStateAt,omitempty"`
 }

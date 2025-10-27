@@ -245,6 +245,7 @@ const (
 	CreateLogDrainSourceResponseBodyEnumStatic   CreateLogDrainSourceResponseBodyEnum = "static"
 	CreateLogDrainSourceResponseBodyEnumExternal CreateLogDrainSourceResponseBodyEnum = "external"
 	CreateLogDrainSourceResponseBodyEnumFirewall CreateLogDrainSourceResponseBodyEnum = "firewall"
+	CreateLogDrainSourceResponseBodyEnumRedirect CreateLogDrainSourceResponseBodyEnum = "redirect"
 )
 
 func (e CreateLogDrainSourceResponseBodyEnum) ToPointer() *CreateLogDrainSourceResponseBodyEnum {
@@ -267,6 +268,8 @@ func (e *CreateLogDrainSourceResponseBodyEnum) UnmarshalJSON(data []byte) error 
 	case "external":
 		fallthrough
 	case "firewall":
+		fallthrough
+	case "redirect":
 		*e = CreateLogDrainSourceResponseBodyEnum(v)
 		return nil
 	default:

@@ -14,7 +14,7 @@ export const tool$logDrainsGetIntegrationLogDrains: ToolDefinition<
   typeof args
 > = {
   name: "log-drains-get-integration-log-drains",
-  description: `Retrieves a list of Integration log drains
+  description: `Retrieves a list of Integration log drains (deprecated)
 
 Retrieves a list of all Integration log drains that are defined for the authenticated user or team. When using an OAuth2 token, the list is limited to log drains created by the authenticated integration.`,
   args,

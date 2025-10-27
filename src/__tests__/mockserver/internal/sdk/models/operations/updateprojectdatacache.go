@@ -3883,10 +3883,58 @@ func (u UpdateProjectDataCacheLinkUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type UpdateProjectDataCacheLinkUnion: all fields are null")
 }
 
-type UpdateProjectDataCacheMicrofrontends2 struct {
+type UpdateProjectDataCacheMicrofrontends3 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	GroupIds  []any   `json:"groupIds"`
 	Enabled   bool    `json:"enabled"`
+}
+
+func (u UpdateProjectDataCacheMicrofrontends3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateProjectDataCacheMicrofrontends3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateProjectDataCacheMicrofrontends3) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *UpdateProjectDataCacheMicrofrontends3) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *UpdateProjectDataCacheMicrofrontends3) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type UpdateProjectDataCacheMicrofrontends2 struct {
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+	DoNotRouteWithMicrofrontendsRouting *bool `json:"doNotRouteWithMicrofrontendsRouting,omitempty"`
+	// Timestamp when the microfrontends settings were last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+	GroupIds []string `json:"groupIds"`
+	// Whether microfrontends are enabled for this project.
+	Enabled bool `json:"enabled"`
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+	DefaultRoute *string `json:"defaultRoute,omitempty"`
 }
 
 func (u UpdateProjectDataCacheMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -3900,6 +3948,27 @@ func (u *UpdateProjectDataCacheMicrofrontends2) UnmarshalJSON(data []byte) error
 	return nil
 }
 
+func (o *UpdateProjectDataCacheMicrofrontends2) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
+}
+
+func (o *UpdateProjectDataCacheMicrofrontends2) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+func (o *UpdateProjectDataCacheMicrofrontends2) GetDoNotRouteWithMicrofrontendsRouting() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DoNotRouteWithMicrofrontendsRouting
+}
+
 func (o *UpdateProjectDataCacheMicrofrontends2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -3907,9 +3976,9 @@ func (o *UpdateProjectDataCacheMicrofrontends2) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
-func (o *UpdateProjectDataCacheMicrofrontends2) GetGroupIds() []any {
+func (o *UpdateProjectDataCacheMicrofrontends2) GetGroupIds() []string {
 	if o == nil {
-		return []any{}
+		return []string{}
 	}
 	return o.GroupIds
 }
@@ -3921,19 +3990,23 @@ func (o *UpdateProjectDataCacheMicrofrontends2) GetEnabled() bool {
 	return o.Enabled
 }
 
+func (o *UpdateProjectDataCacheMicrofrontends2) GetDefaultRoute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoute
+}
+
 type UpdateProjectDataCacheMicrofrontends1 struct {
+	IsDefaultApp bool `json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
 	Enabled bool `json:"enabled"`
-	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
-	// Whether observability data should be routed to this microfrontend project or a root project.
-	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 }
 
 func (u UpdateProjectDataCacheMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -3941,10 +4014,17 @@ func (u UpdateProjectDataCacheMicrofrontends1) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateProjectDataCacheMicrofrontends1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"isDefaultApp", "updatedAt", "groupIds", "enabled"}); err != nil {
 		return err
 	}
 	return nil
+}
+
+func (o *UpdateProjectDataCacheMicrofrontends1) GetIsDefaultApp() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsDefaultApp
 }
 
 func (o *UpdateProjectDataCacheMicrofrontends1) GetUpdatedAt() float64 {
@@ -3968,13 +4048,6 @@ func (o *UpdateProjectDataCacheMicrofrontends1) GetEnabled() bool {
 	return o.Enabled
 }
 
-func (o *UpdateProjectDataCacheMicrofrontends1) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
-}
-
 func (o *UpdateProjectDataCacheMicrofrontends1) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
@@ -3982,23 +4055,18 @@ func (o *UpdateProjectDataCacheMicrofrontends1) GetDefaultRoute() *string {
 	return o.DefaultRoute
 }
 
-func (o *UpdateProjectDataCacheMicrofrontends1) GetRouteObservabilityToThisProject() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.RouteObservabilityToThisProject
-}
-
 type UpdateProjectDataCacheMicrofrontendsUnionType string
 
 const (
 	UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends1 UpdateProjectDataCacheMicrofrontendsUnionType = "updateProjectDataCache_microfrontends_1"
 	UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends2 UpdateProjectDataCacheMicrofrontendsUnionType = "updateProjectDataCache_microfrontends_2"
+	UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends3 UpdateProjectDataCacheMicrofrontendsUnionType = "updateProjectDataCache_microfrontends_3"
 )
 
 type UpdateProjectDataCacheMicrofrontendsUnion struct {
 	UpdateProjectDataCacheMicrofrontends1 *UpdateProjectDataCacheMicrofrontends1 `queryParam:"inline"`
 	UpdateProjectDataCacheMicrofrontends2 *UpdateProjectDataCacheMicrofrontends2 `queryParam:"inline"`
+	UpdateProjectDataCacheMicrofrontends3 *UpdateProjectDataCacheMicrofrontends3 `queryParam:"inline"`
 
 	Type UpdateProjectDataCacheMicrofrontendsUnionType
 }
@@ -4021,6 +4089,15 @@ func CreateUpdateProjectDataCacheMicrofrontendsUnionUpdateProjectDataCacheMicrof
 	}
 }
 
+func CreateUpdateProjectDataCacheMicrofrontendsUnionUpdateProjectDataCacheMicrofrontends3(updateProjectDataCacheMicrofrontends3 UpdateProjectDataCacheMicrofrontends3) UpdateProjectDataCacheMicrofrontendsUnion {
+	typ := UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends3
+
+	return UpdateProjectDataCacheMicrofrontendsUnion{
+		UpdateProjectDataCacheMicrofrontends3: &updateProjectDataCacheMicrofrontends3,
+		Type:                                  typ,
+	}
+}
+
 func (u *UpdateProjectDataCacheMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
 	var updateProjectDataCacheMicrofrontends1 UpdateProjectDataCacheMicrofrontends1 = UpdateProjectDataCacheMicrofrontends1{}
@@ -4037,6 +4114,13 @@ func (u *UpdateProjectDataCacheMicrofrontendsUnion) UnmarshalJSON(data []byte) e
 		return nil
 	}
 
+	var updateProjectDataCacheMicrofrontends3 UpdateProjectDataCacheMicrofrontends3 = UpdateProjectDataCacheMicrofrontends3{}
+	if err := utils.UnmarshalJSON(data, &updateProjectDataCacheMicrofrontends3, "", true, nil); err == nil {
+		u.UpdateProjectDataCacheMicrofrontends3 = &updateProjectDataCacheMicrofrontends3
+		u.Type = UpdateProjectDataCacheMicrofrontendsUnionTypeUpdateProjectDataCacheMicrofrontends3
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateProjectDataCacheMicrofrontendsUnion", string(data))
 }
 
@@ -4047,6 +4131,10 @@ func (u UpdateProjectDataCacheMicrofrontendsUnion) MarshalJSON() ([]byte, error)
 
 	if u.UpdateProjectDataCacheMicrofrontends2 != nil {
 		return utils.MarshalJSON(u.UpdateProjectDataCacheMicrofrontends2, "", true)
+	}
+
+	if u.UpdateProjectDataCacheMicrofrontends3 != nil {
+		return utils.MarshalJSON(u.UpdateProjectDataCacheMicrofrontends3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateProjectDataCacheMicrofrontendsUnion: all fields are null")
@@ -7619,6 +7707,8 @@ type UpdateProjectDataCacheGitProviderOptions struct {
 	CreateDeployments UpdateProjectDataCacheCreateDeployments `json:"createDeployments"`
 	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
+	// Whether the project requires commits to be signed before deployments will be created.
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 }
 
 func (o *UpdateProjectDataCacheGitProviderOptions) GetCreateDeployments() UpdateProjectDataCacheCreateDeployments {
@@ -7633,6 +7723,13 @@ func (o *UpdateProjectDataCacheGitProviderOptions) GetDisableRepositoryDispatchE
 		return nil
 	}
 	return o.DisableRepositoryDispatchEvents
+}
+
+func (o *UpdateProjectDataCacheGitProviderOptions) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
 }
 
 type UpdateProjectDataCacheWebAnalytics struct {

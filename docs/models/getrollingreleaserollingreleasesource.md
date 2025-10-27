@@ -1,11 +1,13 @@
 # GetRollingReleaseRollingReleaseSource
 
+Where was the deployment created from
+
 ## Example Usage
 
 ```typescript
 import { GetRollingReleaseRollingReleaseSource } from "@vercel/sdk/models/getrollingreleaseop.js";
 
-let value: GetRollingReleaseRollingReleaseSource = "api-trigger-git-deploy";
+let value: GetRollingReleaseRollingReleaseSource = "cli";
 ```
 
 ## Values

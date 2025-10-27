@@ -14,7 +14,7 @@ export const tool$teamsInviteUserToTeam: ToolDefinition<typeof args> = {
   name: "teams-invite-user-to-team",
   description: `Invite a user
 
-Invite a user to join the team specified in the URL. The authenticated user needs to be an \`OWNER\` in order to successfully invoke this endpoint. The user can be specified with an email or an ID. If both email and ID are provided, ID will take priority.`,
+Invite a user to join the team specified in the URL. The authenticated user needs to be an \`OWNER\` in order to successfully invoke this endpoint. The user to be invited must be specified by email.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await teamsInviteUserToTeam(

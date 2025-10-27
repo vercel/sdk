@@ -393,13 +393,22 @@ export type OneHundredAndFiftyThree = {
   prevProjectWebAnalytics?: PrevProjectWebAnalytics | null | undefined;
 };
 
-export type Microfrontends2 = {
+export type Microfrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
 };
 
-export type Microfrontends1 = {
+export type Microfrontends2 = {
+  isDefaultApp?: boolean | undefined;
+  /**
+   * Whether observability data should be routed to this microfrontend project or a root project.
+   */
+  routeObservabilityToThisProject?: boolean | undefined;
+  /**
+   * Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+   */
+  doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -413,34 +422,62 @@ export type Microfrontends1 = {
    */
   enabled: boolean;
   /**
-   * Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
+   * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
-  isDefaultApp?: boolean | undefined;
+  defaultRoute?: string | undefined;
+};
+
+export type Microfrontends1 = {
+  isDefaultApp: boolean;
+  /**
+   * Timestamp when the microfrontends settings were last updated.
+   */
+  updatedAt: number;
+  /**
+   * The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+   */
+  groupIds: Array<string>;
+  /**
+   * Whether microfrontends are enabled for this project.
+   */
+  enabled: boolean;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
   defaultRoute?: string | undefined;
-  /**
-   * Whether observability data should be routed to this microfrontend project or a root project.
-   */
-  routeObservabilityToThisProject?: boolean | undefined;
 };
 
-export type Microfrontends = Microfrontends1 | Microfrontends2;
+export type Microfrontends =
+  | Microfrontends1
+  | Microfrontends2
+  | Microfrontends3;
 
 export type UserEventPayload152Project = {
   id: string;
   name: string;
-  microfrontends?: Microfrontends1 | Microfrontends2 | undefined;
+  microfrontends?:
+    | Microfrontends1
+    | Microfrontends2
+    | Microfrontends3
+    | undefined;
 };
 
-export type UserEventMicrofrontends2 = {
+export type UserEventMicrofrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
 };
 
-export type UserEventMicrofrontends1 = {
+export type UserEventMicrofrontends2 = {
+  isDefaultApp?: boolean | undefined;
+  /**
+   * Whether observability data should be routed to this microfrontend project or a root project.
+   */
+  routeObservabilityToThisProject?: boolean | undefined;
+  /**
+   * Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+   */
+  doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -454,27 +491,41 @@ export type UserEventMicrofrontends1 = {
    */
   enabled: boolean;
   /**
-   * Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
+   * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
-  isDefaultApp?: boolean | undefined;
+  defaultRoute?: string | undefined;
+};
+
+export type UserEventMicrofrontends1 = {
+  isDefaultApp: boolean;
+  /**
+   * Timestamp when the microfrontends settings were last updated.
+   */
+  updatedAt: number;
+  /**
+   * The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+   */
+  groupIds: Array<string>;
+  /**
+   * Whether microfrontends are enabled for this project.
+   */
+  enabled: boolean;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
   defaultRoute?: string | undefined;
-  /**
-   * Whether observability data should be routed to this microfrontend project or a root project.
-   */
-  routeObservabilityToThisProject?: boolean | undefined;
 };
 
 export type PayloadMicrofrontends =
   | UserEventMicrofrontends1
-  | UserEventMicrofrontends2;
+  | UserEventMicrofrontends2
+  | UserEventMicrofrontends3;
 
 export type UserEventPayload152PrevProject = {
   microfrontends?:
     | UserEventMicrofrontends1
     | UserEventMicrofrontends2
+    | UserEventMicrofrontends3
     | undefined;
 };
 
@@ -2316,6 +2367,18 @@ export type PayloadBuildEntitlements = {
   enhancedBuilds?: boolean | undefined;
 };
 
+export const UserEventPayload65Configuration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+export type UserEventPayload65Configuration = ClosedEnum<
+  typeof UserEventPayload65Configuration
+>;
+
+export type PayloadBuildQueue = {
+  configuration?: UserEventPayload65Configuration | undefined;
+};
+
 export const PayloadPurchaseType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
@@ -2341,6 +2404,7 @@ export type PayloadResourceConfig = {
   concurrentBuilds?: number | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   buildEntitlements?: PayloadBuildEntitlements | undefined;
+  buildQueue?: PayloadBuildQueue | undefined;
   awsAccountType?: string | undefined;
   awsAccountIds?: Array<string> | undefined;
   cfZoneName?: string | undefined;
@@ -7089,8 +7153,8 @@ export function oneHundredAndFiftyThreeFromJSON(
 }
 
 /** @internal */
-export const Microfrontends2$inboundSchema: z.ZodType<
-  Microfrontends2,
+export const Microfrontends3$inboundSchema: z.ZodType<
+  Microfrontends3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7100,10 +7164,76 @@ export const Microfrontends2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Microfrontends2$Outbound = {
+export type Microfrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
+};
+
+/** @internal */
+export const Microfrontends3$outboundSchema: z.ZodType<
+  Microfrontends3$Outbound,
+  z.ZodTypeDef,
+  Microfrontends3
+> = z.object({
+  updatedAt: z.number(),
+  groupIds: z.array(z.any()),
+  enabled: z.boolean(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Microfrontends3$ {
+  /** @deprecated use `Microfrontends3$inboundSchema` instead. */
+  export const inboundSchema = Microfrontends3$inboundSchema;
+  /** @deprecated use `Microfrontends3$outboundSchema` instead. */
+  export const outboundSchema = Microfrontends3$outboundSchema;
+  /** @deprecated use `Microfrontends3$Outbound` instead. */
+  export type Outbound = Microfrontends3$Outbound;
+}
+
+export function microfrontends3ToJSON(
+  microfrontends3: Microfrontends3,
+): string {
+  return JSON.stringify(Microfrontends3$outboundSchema.parse(microfrontends3));
+}
+
+export function microfrontends3FromJSON(
+  jsonString: string,
+): SafeParseResult<Microfrontends3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Microfrontends3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Microfrontends3' from JSON`,
+  );
+}
+
+/** @internal */
+export const Microfrontends2$inboundSchema: z.ZodType<
+  Microfrontends2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  isDefaultApp: z.boolean().optional(),
+  routeObservabilityToThisProject: z.boolean().optional(),
+  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
+  updatedAt: z.number(),
+  groupIds: z.array(z.string()),
+  enabled: z.boolean(),
+  defaultRoute: z.string().optional(),
+});
+
+/** @internal */
+export type Microfrontends2$Outbound = {
+  isDefaultApp?: boolean | undefined;
+  routeObservabilityToThisProject?: boolean | undefined;
+  doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
+  updatedAt: number;
+  groupIds: Array<string>;
+  enabled: boolean;
+  defaultRoute?: string | undefined;
 };
 
 /** @internal */
@@ -7112,9 +7242,13 @@ export const Microfrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Microfrontends2
 > = z.object({
+  isDefaultApp: z.boolean().optional(),
+  routeObservabilityToThisProject: z.boolean().optional(),
+  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
   updatedAt: z.number(),
-  groupIds: z.array(z.any()),
+  groupIds: z.array(z.string()),
   enabled: z.boolean(),
+  defaultRoute: z.string().optional(),
 });
 
 /**
@@ -7152,22 +7286,20 @@ export const Microfrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isDefaultApp: z.boolean(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
-  isDefaultApp: z.boolean().optional(),
   defaultRoute: z.string().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
 });
 
 /** @internal */
 export type Microfrontends1$Outbound = {
+  isDefaultApp: boolean;
   updatedAt: number;
   groupIds: Array<string>;
   enabled: boolean;
-  isDefaultApp?: boolean | undefined;
   defaultRoute?: string | undefined;
-  routeObservabilityToThisProject?: boolean | undefined;
 };
 
 /** @internal */
@@ -7176,12 +7308,11 @@ export const Microfrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Microfrontends1
 > = z.object({
+  isDefaultApp: z.boolean(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
-  isDefaultApp: z.boolean().optional(),
   defaultRoute: z.string().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
 });
 
 /**
@@ -7221,12 +7352,14 @@ export const Microfrontends$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Microfrontends1$inboundSchema),
   z.lazy(() => Microfrontends2$inboundSchema),
+  z.lazy(() => Microfrontends3$inboundSchema),
 ]);
 
 /** @internal */
 export type Microfrontends$Outbound =
   | Microfrontends1$Outbound
-  | Microfrontends2$Outbound;
+  | Microfrontends2$Outbound
+  | Microfrontends3$Outbound;
 
 /** @internal */
 export const Microfrontends$outboundSchema: z.ZodType<
@@ -7236,6 +7369,7 @@ export const Microfrontends$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Microfrontends1$outboundSchema),
   z.lazy(() => Microfrontends2$outboundSchema),
+  z.lazy(() => Microfrontends3$outboundSchema),
 ]);
 
 /**
@@ -7276,6 +7410,7 @@ export const UserEventPayload152Project$inboundSchema: z.ZodType<
   microfrontends: z.union([
     z.lazy(() => Microfrontends1$inboundSchema),
     z.lazy(() => Microfrontends2$inboundSchema),
+    z.lazy(() => Microfrontends3$inboundSchema),
   ]).optional(),
 });
 
@@ -7286,6 +7421,7 @@ export type UserEventPayload152Project$Outbound = {
   microfrontends?:
     | Microfrontends1$Outbound
     | Microfrontends2$Outbound
+    | Microfrontends3$Outbound
     | undefined;
 };
 
@@ -7300,6 +7436,7 @@ export const UserEventPayload152Project$outboundSchema: z.ZodType<
   microfrontends: z.union([
     z.lazy(() => Microfrontends1$outboundSchema),
     z.lazy(() => Microfrontends2$outboundSchema),
+    z.lazy(() => Microfrontends3$outboundSchema),
   ]).optional(),
 });
 
@@ -7335,8 +7472,8 @@ export function userEventPayload152ProjectFromJSON(
 }
 
 /** @internal */
-export const UserEventMicrofrontends2$inboundSchema: z.ZodType<
-  UserEventMicrofrontends2,
+export const UserEventMicrofrontends3$inboundSchema: z.ZodType<
+  UserEventMicrofrontends3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7346,10 +7483,78 @@ export const UserEventMicrofrontends2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventMicrofrontends2$Outbound = {
+export type UserEventMicrofrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
+};
+
+/** @internal */
+export const UserEventMicrofrontends3$outboundSchema: z.ZodType<
+  UserEventMicrofrontends3$Outbound,
+  z.ZodTypeDef,
+  UserEventMicrofrontends3
+> = z.object({
+  updatedAt: z.number(),
+  groupIds: z.array(z.any()),
+  enabled: z.boolean(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventMicrofrontends3$ {
+  /** @deprecated use `UserEventMicrofrontends3$inboundSchema` instead. */
+  export const inboundSchema = UserEventMicrofrontends3$inboundSchema;
+  /** @deprecated use `UserEventMicrofrontends3$outboundSchema` instead. */
+  export const outboundSchema = UserEventMicrofrontends3$outboundSchema;
+  /** @deprecated use `UserEventMicrofrontends3$Outbound` instead. */
+  export type Outbound = UserEventMicrofrontends3$Outbound;
+}
+
+export function userEventMicrofrontends3ToJSON(
+  userEventMicrofrontends3: UserEventMicrofrontends3,
+): string {
+  return JSON.stringify(
+    UserEventMicrofrontends3$outboundSchema.parse(userEventMicrofrontends3),
+  );
+}
+
+export function userEventMicrofrontends3FromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventMicrofrontends3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventMicrofrontends3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventMicrofrontends3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventMicrofrontends2$inboundSchema: z.ZodType<
+  UserEventMicrofrontends2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  isDefaultApp: z.boolean().optional(),
+  routeObservabilityToThisProject: z.boolean().optional(),
+  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
+  updatedAt: z.number(),
+  groupIds: z.array(z.string()),
+  enabled: z.boolean(),
+  defaultRoute: z.string().optional(),
+});
+
+/** @internal */
+export type UserEventMicrofrontends2$Outbound = {
+  isDefaultApp?: boolean | undefined;
+  routeObservabilityToThisProject?: boolean | undefined;
+  doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
+  updatedAt: number;
+  groupIds: Array<string>;
+  enabled: boolean;
+  defaultRoute?: string | undefined;
 };
 
 /** @internal */
@@ -7358,9 +7563,13 @@ export const UserEventMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UserEventMicrofrontends2
 > = z.object({
+  isDefaultApp: z.boolean().optional(),
+  routeObservabilityToThisProject: z.boolean().optional(),
+  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
   updatedAt: z.number(),
-  groupIds: z.array(z.any()),
+  groupIds: z.array(z.string()),
   enabled: z.boolean(),
+  defaultRoute: z.string().optional(),
 });
 
 /**
@@ -7400,22 +7609,20 @@ export const UserEventMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isDefaultApp: z.boolean(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
-  isDefaultApp: z.boolean().optional(),
   defaultRoute: z.string().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
 });
 
 /** @internal */
 export type UserEventMicrofrontends1$Outbound = {
+  isDefaultApp: boolean;
   updatedAt: number;
   groupIds: Array<string>;
   enabled: boolean;
-  isDefaultApp?: boolean | undefined;
   defaultRoute?: string | undefined;
-  routeObservabilityToThisProject?: boolean | undefined;
 };
 
 /** @internal */
@@ -7424,12 +7631,11 @@ export const UserEventMicrofrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UserEventMicrofrontends1
 > = z.object({
+  isDefaultApp: z.boolean(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
-  isDefaultApp: z.boolean().optional(),
   defaultRoute: z.string().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
 });
 
 /**
@@ -7471,12 +7677,14 @@ export const PayloadMicrofrontends$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UserEventMicrofrontends1$inboundSchema),
   z.lazy(() => UserEventMicrofrontends2$inboundSchema),
+  z.lazy(() => UserEventMicrofrontends3$inboundSchema),
 ]);
 
 /** @internal */
 export type PayloadMicrofrontends$Outbound =
   | UserEventMicrofrontends1$Outbound
-  | UserEventMicrofrontends2$Outbound;
+  | UserEventMicrofrontends2$Outbound
+  | UserEventMicrofrontends3$Outbound;
 
 /** @internal */
 export const PayloadMicrofrontends$outboundSchema: z.ZodType<
@@ -7486,6 +7694,7 @@ export const PayloadMicrofrontends$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UserEventMicrofrontends1$outboundSchema),
   z.lazy(() => UserEventMicrofrontends2$outboundSchema),
+  z.lazy(() => UserEventMicrofrontends3$outboundSchema),
 ]);
 
 /**
@@ -7528,6 +7737,7 @@ export const UserEventPayload152PrevProject$inboundSchema: z.ZodType<
   microfrontends: z.union([
     z.lazy(() => UserEventMicrofrontends1$inboundSchema),
     z.lazy(() => UserEventMicrofrontends2$inboundSchema),
+    z.lazy(() => UserEventMicrofrontends3$inboundSchema),
   ]).optional(),
 });
 
@@ -7536,6 +7746,7 @@ export type UserEventPayload152PrevProject$Outbound = {
   microfrontends?:
     | UserEventMicrofrontends1$Outbound
     | UserEventMicrofrontends2$Outbound
+    | UserEventMicrofrontends3$Outbound
     | undefined;
 };
 
@@ -7548,6 +7759,7 @@ export const UserEventPayload152PrevProject$outboundSchema: z.ZodType<
   microfrontends: z.union([
     z.lazy(() => UserEventMicrofrontends1$outboundSchema),
     z.lazy(() => UserEventMicrofrontends2$outboundSchema),
+    z.lazy(() => UserEventMicrofrontends3$outboundSchema),
   ]).optional(),
 });
 
@@ -18797,6 +19009,81 @@ export function payloadBuildEntitlementsFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload65Configuration$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload65Configuration
+> = z.nativeEnum(UserEventPayload65Configuration);
+
+/** @internal */
+export const UserEventPayload65Configuration$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload65Configuration
+> = UserEventPayload65Configuration$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload65Configuration$ {
+  /** @deprecated use `UserEventPayload65Configuration$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload65Configuration$inboundSchema;
+  /** @deprecated use `UserEventPayload65Configuration$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload65Configuration$outboundSchema;
+}
+
+/** @internal */
+export const PayloadBuildQueue$inboundSchema: z.ZodType<
+  PayloadBuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: UserEventPayload65Configuration$inboundSchema.optional(),
+});
+
+/** @internal */
+export type PayloadBuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const PayloadBuildQueue$outboundSchema: z.ZodType<
+  PayloadBuildQueue$Outbound,
+  z.ZodTypeDef,
+  PayloadBuildQueue
+> = z.object({
+  configuration: UserEventPayload65Configuration$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadBuildQueue$ {
+  /** @deprecated use `PayloadBuildQueue$inboundSchema` instead. */
+  export const inboundSchema = PayloadBuildQueue$inboundSchema;
+  /** @deprecated use `PayloadBuildQueue$outboundSchema` instead. */
+  export const outboundSchema = PayloadBuildQueue$outboundSchema;
+  /** @deprecated use `PayloadBuildQueue$Outbound` instead. */
+  export type Outbound = PayloadBuildQueue$Outbound;
+}
+
+export function payloadBuildQueueToJSON(
+  payloadBuildQueue: PayloadBuildQueue,
+): string {
+  return JSON.stringify(
+    PayloadBuildQueue$outboundSchema.parse(payloadBuildQueue),
+  );
+}
+
+export function payloadBuildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadBuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadBuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadBuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const PayloadPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof PayloadPurchaseType
 > = z.nativeEnum(PayloadPurchaseType);
@@ -18952,6 +19239,7 @@ export const PayloadResourceConfig$inboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildEntitlements: z.lazy(() => PayloadBuildEntitlements$inboundSchema)
     .optional(),
+  buildQueue: z.lazy(() => PayloadBuildQueue$inboundSchema).optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),
@@ -18982,6 +19270,7 @@ export type PayloadResourceConfig$Outbound = {
   concurrentBuilds?: number | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   buildEntitlements?: PayloadBuildEntitlements$Outbound | undefined;
+  buildQueue?: PayloadBuildQueue$Outbound | undefined;
   awsAccountType?: string | undefined;
   awsAccountIds?: Array<string> | undefined;
   cfZoneName?: string | undefined;
@@ -19017,6 +19306,7 @@ export const PayloadResourceConfig$outboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildEntitlements: z.lazy(() => PayloadBuildEntitlements$outboundSchema)
     .optional(),
+  buildQueue: z.lazy(() => PayloadBuildQueue$outboundSchema).optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),

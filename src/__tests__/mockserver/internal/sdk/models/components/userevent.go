@@ -916,30 +916,30 @@ func (o *UserEventTeam10) GetName() string {
 	return o.Name
 }
 
-type Configuration8 struct {
+type UserEventConfiguration8 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
-func (c Configuration8) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration8) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration8) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+func (u *UserEventConfiguration8) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration8) GetID() string {
+func (o *UserEventConfiguration8) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Configuration8) GetName() *string {
+func (o *UserEventConfiguration8) GetName() *string {
 	if o == nil {
 		return nil
 	}
@@ -978,10 +978,10 @@ func (o *Peering3) GetName() *string {
 
 // Payload164 - The payload of the event, if requested.
 type Payload164 struct {
-	Team          UserEventTeam10 `json:"team"`
-	Configuration Configuration8  `json:"configuration"`
-	Peering       Peering3        `json:"peering"`
-	NewName       *string         `json:"newName,omitempty"`
+	Team          UserEventTeam10         `json:"team"`
+	Configuration UserEventConfiguration8 `json:"configuration"`
+	Peering       Peering3                `json:"peering"`
+	NewName       *string                 `json:"newName,omitempty"`
 }
 
 func (p Payload164) MarshalJSON() ([]byte, error) {
@@ -1002,9 +1002,9 @@ func (o *Payload164) GetTeam() UserEventTeam10 {
 	return o.Team
 }
 
-func (o *Payload164) GetConfiguration() Configuration8 {
+func (o *Payload164) GetConfiguration() UserEventConfiguration8 {
 	if o == nil {
-		return Configuration8{}
+		return UserEventConfiguration8{}
 	}
 	return o.Configuration
 }
@@ -1053,30 +1053,30 @@ func (o *UserEventTeam9) GetName() string {
 	return o.Name
 }
 
-type Configuration7 struct {
+type UserEventConfiguration7 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
-func (c Configuration7) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration7) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration7) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+func (u *UserEventConfiguration7) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration7) GetID() string {
+func (o *UserEventConfiguration7) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Configuration7) GetName() *string {
+func (o *UserEventConfiguration7) GetName() *string {
 	if o == nil {
 		return nil
 	}
@@ -1115,9 +1115,9 @@ func (o *Peering2) GetName() *string {
 
 // Payload163 - The payload of the event, if requested.
 type Payload163 struct {
-	Team          UserEventTeam9 `json:"team"`
-	Configuration Configuration7 `json:"configuration"`
-	Peering       Peering2       `json:"peering"`
+	Team          UserEventTeam9          `json:"team"`
+	Configuration UserEventConfiguration7 `json:"configuration"`
+	Peering       Peering2                `json:"peering"`
 }
 
 func (p Payload163) MarshalJSON() ([]byte, error) {
@@ -1138,9 +1138,9 @@ func (o *Payload163) GetTeam() UserEventTeam9 {
 	return o.Team
 }
 
-func (o *Payload163) GetConfiguration() Configuration7 {
+func (o *Payload163) GetConfiguration() UserEventConfiguration7 {
 	if o == nil {
-		return Configuration7{}
+		return UserEventConfiguration7{}
 	}
 	return o.Configuration
 }
@@ -1182,30 +1182,30 @@ func (o *UserEventTeam8) GetName() string {
 	return o.Name
 }
 
-type Configuration6 struct {
+type UserEventConfiguration6 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
-func (c Configuration6) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration6) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration6) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+func (u *UserEventConfiguration6) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration6) GetID() string {
+func (o *UserEventConfiguration6) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Configuration6) GetName() *string {
+func (o *UserEventConfiguration6) GetName() *string {
 	if o == nil {
 		return nil
 	}
@@ -1260,9 +1260,9 @@ func (o *Peering1) GetVpcID() string {
 
 // Payload162 - The payload of the event, if requested.
 type Payload162 struct {
-	Team          UserEventTeam8 `json:"team"`
-	Configuration Configuration6 `json:"configuration"`
-	Peering       Peering1       `json:"peering"`
+	Team          UserEventTeam8          `json:"team"`
+	Configuration UserEventConfiguration6 `json:"configuration"`
+	Peering       Peering1                `json:"peering"`
 }
 
 func (p Payload162) MarshalJSON() ([]byte, error) {
@@ -1283,9 +1283,9 @@ func (o *Payload162) GetTeam() UserEventTeam8 {
 	return o.Team
 }
 
-func (o *Payload162) GetConfiguration() Configuration6 {
+func (o *Payload162) GetConfiguration() UserEventConfiguration6 {
 	if o == nil {
-		return Configuration6{}
+		return UserEventConfiguration6{}
 	}
 	return o.Configuration
 }
@@ -1718,10 +1718,58 @@ func (o *Payload153) GetPrevProjectWebAnalytics() *PrevProjectWebAnalytics {
 	return o.PrevProjectWebAnalytics
 }
 
-type Microfrontends2 struct {
+type Microfrontends3 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	GroupIds  []any   `json:"groupIds"`
 	Enabled   bool    `json:"enabled"`
+}
+
+func (m Microfrontends3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *Microfrontends3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Microfrontends3) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *Microfrontends3) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *Microfrontends3) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type Microfrontends2 struct {
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+	DoNotRouteWithMicrofrontendsRouting *bool `json:"doNotRouteWithMicrofrontendsRouting,omitempty"`
+	// Timestamp when the microfrontends settings were last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+	GroupIds []string `json:"groupIds"`
+	// Whether microfrontends are enabled for this project.
+	Enabled bool `json:"enabled"`
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+	DefaultRoute *string `json:"defaultRoute,omitempty"`
 }
 
 func (m Microfrontends2) MarshalJSON() ([]byte, error) {
@@ -1735,6 +1783,27 @@ func (m *Microfrontends2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (o *Microfrontends2) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
+}
+
+func (o *Microfrontends2) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+func (o *Microfrontends2) GetDoNotRouteWithMicrofrontendsRouting() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DoNotRouteWithMicrofrontendsRouting
+}
+
 func (o *Microfrontends2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -1742,9 +1811,9 @@ func (o *Microfrontends2) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
-func (o *Microfrontends2) GetGroupIds() []any {
+func (o *Microfrontends2) GetGroupIds() []string {
 	if o == nil {
-		return []any{}
+		return []string{}
 	}
 	return o.GroupIds
 }
@@ -1756,19 +1825,23 @@ func (o *Microfrontends2) GetEnabled() bool {
 	return o.Enabled
 }
 
+func (o *Microfrontends2) GetDefaultRoute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoute
+}
+
 type Microfrontends1 struct {
+	IsDefaultApp bool `json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
 	Enabled bool `json:"enabled"`
-	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
-	// Whether observability data should be routed to this microfrontend project or a root project.
-	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 }
 
 func (m Microfrontends1) MarshalJSON() ([]byte, error) {
@@ -1776,10 +1849,17 @@ func (m Microfrontends1) MarshalJSON() ([]byte, error) {
 }
 
 func (m *Microfrontends1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"isDefaultApp", "updatedAt", "groupIds", "enabled"}); err != nil {
 		return err
 	}
 	return nil
+}
+
+func (o *Microfrontends1) GetIsDefaultApp() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsDefaultApp
 }
 
 func (o *Microfrontends1) GetUpdatedAt() float64 {
@@ -1803,13 +1883,6 @@ func (o *Microfrontends1) GetEnabled() bool {
 	return o.Enabled
 }
 
-func (o *Microfrontends1) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
-}
-
 func (o *Microfrontends1) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
@@ -1817,23 +1890,18 @@ func (o *Microfrontends1) GetDefaultRoute() *string {
 	return o.DefaultRoute
 }
 
-func (o *Microfrontends1) GetRouteObservabilityToThisProject() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.RouteObservabilityToThisProject
-}
-
 type MicrofrontendsUnionType string
 
 const (
 	MicrofrontendsUnionTypeMicrofrontends1 MicrofrontendsUnionType = "microfrontends_1"
 	MicrofrontendsUnionTypeMicrofrontends2 MicrofrontendsUnionType = "microfrontends_2"
+	MicrofrontendsUnionTypeMicrofrontends3 MicrofrontendsUnionType = "microfrontends_3"
 )
 
 type MicrofrontendsUnion struct {
 	Microfrontends1 *Microfrontends1 `queryParam:"inline"`
 	Microfrontends2 *Microfrontends2 `queryParam:"inline"`
+	Microfrontends3 *Microfrontends3 `queryParam:"inline"`
 
 	Type MicrofrontendsUnionType
 }
@@ -1856,6 +1924,15 @@ func CreateMicrofrontendsUnionMicrofrontends2(microfrontends2 Microfrontends2) M
 	}
 }
 
+func CreateMicrofrontendsUnionMicrofrontends3(microfrontends3 Microfrontends3) MicrofrontendsUnion {
+	typ := MicrofrontendsUnionTypeMicrofrontends3
+
+	return MicrofrontendsUnion{
+		Microfrontends3: &microfrontends3,
+		Type:            typ,
+	}
+}
+
 func (u *MicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
 	var microfrontends1 Microfrontends1 = Microfrontends1{}
@@ -1872,6 +1949,13 @@ func (u *MicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var microfrontends3 Microfrontends3 = Microfrontends3{}
+	if err := utils.UnmarshalJSON(data, &microfrontends3, "", true, nil); err == nil {
+		u.Microfrontends3 = &microfrontends3
+		u.Type = MicrofrontendsUnionTypeMicrofrontends3
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for MicrofrontendsUnion", string(data))
 }
 
@@ -1882,6 +1966,10 @@ func (u MicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 
 	if u.Microfrontends2 != nil {
 		return utils.MarshalJSON(u.Microfrontends2, "", true)
+	}
+
+	if u.Microfrontends3 != nil {
+		return utils.MarshalJSON(u.Microfrontends3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type MicrofrontendsUnion: all fields are null")
@@ -1925,10 +2013,58 @@ func (o *Project12) GetMicrofrontends() *MicrofrontendsUnion {
 	return o.Microfrontends
 }
 
-type MicrofrontendsPrev2 struct {
+type MicrofrontendsPrev3 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	GroupIds  []any   `json:"groupIds"`
 	Enabled   bool    `json:"enabled"`
+}
+
+func (m MicrofrontendsPrev3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *MicrofrontendsPrev3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *MicrofrontendsPrev3) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *MicrofrontendsPrev3) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *MicrofrontendsPrev3) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type MicrofrontendsPrev2 struct {
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+	DoNotRouteWithMicrofrontendsRouting *bool `json:"doNotRouteWithMicrofrontendsRouting,omitempty"`
+	// Timestamp when the microfrontends settings were last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+	GroupIds []string `json:"groupIds"`
+	// Whether microfrontends are enabled for this project.
+	Enabled bool `json:"enabled"`
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+	DefaultRoute *string `json:"defaultRoute,omitempty"`
 }
 
 func (m MicrofrontendsPrev2) MarshalJSON() ([]byte, error) {
@@ -1942,6 +2078,27 @@ func (m *MicrofrontendsPrev2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (o *MicrofrontendsPrev2) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
+}
+
+func (o *MicrofrontendsPrev2) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+func (o *MicrofrontendsPrev2) GetDoNotRouteWithMicrofrontendsRouting() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DoNotRouteWithMicrofrontendsRouting
+}
+
 func (o *MicrofrontendsPrev2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -1949,9 +2106,9 @@ func (o *MicrofrontendsPrev2) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
-func (o *MicrofrontendsPrev2) GetGroupIds() []any {
+func (o *MicrofrontendsPrev2) GetGroupIds() []string {
 	if o == nil {
-		return []any{}
+		return []string{}
 	}
 	return o.GroupIds
 }
@@ -1963,19 +2120,23 @@ func (o *MicrofrontendsPrev2) GetEnabled() bool {
 	return o.Enabled
 }
 
+func (o *MicrofrontendsPrev2) GetDefaultRoute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoute
+}
+
 type MicrofrontendsPrev1 struct {
+	IsDefaultApp bool `json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
 	Enabled bool `json:"enabled"`
-	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
-	// Whether observability data should be routed to this microfrontend project or a root project.
-	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 }
 
 func (m MicrofrontendsPrev1) MarshalJSON() ([]byte, error) {
@@ -1983,10 +2144,17 @@ func (m MicrofrontendsPrev1) MarshalJSON() ([]byte, error) {
 }
 
 func (m *MicrofrontendsPrev1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"isDefaultApp", "updatedAt", "groupIds", "enabled"}); err != nil {
 		return err
 	}
 	return nil
+}
+
+func (o *MicrofrontendsPrev1) GetIsDefaultApp() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsDefaultApp
 }
 
 func (o *MicrofrontendsPrev1) GetUpdatedAt() float64 {
@@ -2010,13 +2178,6 @@ func (o *MicrofrontendsPrev1) GetEnabled() bool {
 	return o.Enabled
 }
 
-func (o *MicrofrontendsPrev1) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
-}
-
 func (o *MicrofrontendsPrev1) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
@@ -2024,23 +2185,18 @@ func (o *MicrofrontendsPrev1) GetDefaultRoute() *string {
 	return o.DefaultRoute
 }
 
-func (o *MicrofrontendsPrev1) GetRouteObservabilityToThisProject() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.RouteObservabilityToThisProject
-}
-
 type PrevMicrofrontendsUnionType string
 
 const (
 	PrevMicrofrontendsUnionTypeMicrofrontendsPrev1 PrevMicrofrontendsUnionType = "microfrontends_prev_1"
 	PrevMicrofrontendsUnionTypeMicrofrontendsPrev2 PrevMicrofrontendsUnionType = "microfrontends_prev_2"
+	PrevMicrofrontendsUnionTypeMicrofrontendsPrev3 PrevMicrofrontendsUnionType = "microfrontends_prev_3"
 )
 
 type PrevMicrofrontendsUnion struct {
 	MicrofrontendsPrev1 *MicrofrontendsPrev1 `queryParam:"inline"`
 	MicrofrontendsPrev2 *MicrofrontendsPrev2 `queryParam:"inline"`
+	MicrofrontendsPrev3 *MicrofrontendsPrev3 `queryParam:"inline"`
 
 	Type PrevMicrofrontendsUnionType
 }
@@ -2063,6 +2219,15 @@ func CreatePrevMicrofrontendsUnionMicrofrontendsPrev2(microfrontendsPrev2 Microf
 	}
 }
 
+func CreatePrevMicrofrontendsUnionMicrofrontendsPrev3(microfrontendsPrev3 MicrofrontendsPrev3) PrevMicrofrontendsUnion {
+	typ := PrevMicrofrontendsUnionTypeMicrofrontendsPrev3
+
+	return PrevMicrofrontendsUnion{
+		MicrofrontendsPrev3: &microfrontendsPrev3,
+		Type:                typ,
+	}
+}
+
 func (u *PrevMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
 	var microfrontendsPrev1 MicrofrontendsPrev1 = MicrofrontendsPrev1{}
@@ -2079,6 +2244,13 @@ func (u *PrevMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var microfrontendsPrev3 MicrofrontendsPrev3 = MicrofrontendsPrev3{}
+	if err := utils.UnmarshalJSON(data, &microfrontendsPrev3, "", true, nil); err == nil {
+		u.MicrofrontendsPrev3 = &microfrontendsPrev3
+		u.Type = PrevMicrofrontendsUnionTypeMicrofrontendsPrev3
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PrevMicrofrontendsUnion", string(data))
 }
 
@@ -2089,6 +2261,10 @@ func (u PrevMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 
 	if u.MicrofrontendsPrev2 != nil {
 		return utils.MarshalJSON(u.MicrofrontendsPrev2, "", true)
+	}
+
+	if u.MicrofrontendsPrev3 != nil {
+		return utils.MarshalJSON(u.MicrofrontendsPrev3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PrevMicrofrontendsUnion: all fields are null")
@@ -9637,46 +9813,46 @@ func (o *Payload67) GetBillingPlanName() *string {
 	return o.BillingPlanName
 }
 
-type Configuration5 struct {
+type UserEventConfiguration5 struct {
 	IntegrationID   string  `json:"integrationId"`
 	ConfigurationID string  `json:"configurationId"`
 	IntegrationSlug string  `json:"integrationSlug"`
 	IntegrationName *string `json:"integrationName,omitempty"`
 }
 
-func (c Configuration5) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration5) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration5) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"integrationId", "configurationId", "integrationSlug"}); err != nil {
+func (u *UserEventConfiguration5) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"integrationId", "configurationId", "integrationSlug"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration5) GetIntegrationID() string {
+func (o *UserEventConfiguration5) GetIntegrationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationID
 }
 
-func (o *Configuration5) GetConfigurationID() string {
+func (o *UserEventConfiguration5) GetConfigurationID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ConfigurationID
 }
 
-func (o *Configuration5) GetIntegrationSlug() string {
+func (o *UserEventConfiguration5) GetIntegrationSlug() string {
 	if o == nil {
 		return ""
 	}
 	return o.IntegrationSlug
 }
 
-func (o *Configuration5) GetIntegrationName() *string {
+func (o *UserEventConfiguration5) GetIntegrationName() *string {
 	if o == nil {
 		return nil
 	}
@@ -9685,8 +9861,8 @@ func (o *Configuration5) GetIntegrationName() *string {
 
 // Payload66 - The payload of the event, if requested.
 type Payload66 struct {
-	Configurations []Configuration5 `json:"configurations"`
-	OwnerID        string           `json:"ownerId"`
+	Configurations []UserEventConfiguration5 `json:"configurations"`
+	OwnerID        string                    `json:"ownerId"`
 }
 
 func (p Payload66) MarshalJSON() ([]byte, error) {
@@ -9700,9 +9876,9 @@ func (p *Payload66) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Payload66) GetConfigurations() []Configuration5 {
+func (o *Payload66) GetConfigurations() []UserEventConfiguration5 {
 	if o == nil {
-		return []Configuration5{}
+		return []UserEventConfiguration5{}
 	}
 	return o.Configurations
 }
@@ -10687,6 +10863,54 @@ func (o *UserEventBuildEntitlements) GetEnhancedBuilds() *bool {
 	return o.EnhancedBuilds
 }
 
+type ConfigurationUser string
+
+const (
+	ConfigurationUserSkipNamespaceQueue    ConfigurationUser = "SKIP_NAMESPACE_QUEUE"
+	ConfigurationUserWaitForNamespaceQueue ConfigurationUser = "WAIT_FOR_NAMESPACE_QUEUE"
+)
+
+func (e ConfigurationUser) ToPointer() *ConfigurationUser {
+	return &e
+}
+func (e *ConfigurationUser) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SKIP_NAMESPACE_QUEUE":
+		fallthrough
+	case "WAIT_FOR_NAMESPACE_QUEUE":
+		*e = ConfigurationUser(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ConfigurationUser: %v", v)
+	}
+}
+
+type UserEventBuildQueue struct {
+	Configuration *ConfigurationUser `json:"configuration,omitempty"`
+}
+
+func (u UserEventBuildQueue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserEventBuildQueue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UserEventBuildQueue) GetConfiguration() *ConfigurationUser {
+	if o == nil {
+		return nil
+	}
+	return o.Configuration
+}
+
 type UserEventPurchaseType string
 
 const (
@@ -10810,6 +11034,7 @@ type UserEventResourceConfig struct {
 	ConcurrentBuilds                *float64                    `json:"concurrentBuilds,omitempty"`
 	ElasticConcurrencyEnabled       *bool                       `json:"elasticConcurrencyEnabled,omitempty"`
 	BuildEntitlements               *UserEventBuildEntitlements `json:"buildEntitlements,omitempty"`
+	BuildQueue                      *UserEventBuildQueue        `json:"buildQueue,omitempty"`
 	AwsAccountType                  *string                     `json:"awsAccountType,omitempty"`
 	AwsAccountIds                   []string                    `json:"awsAccountIds,omitempty"`
 	CfZoneName                      *string                     `json:"cfZoneName,omitempty"`
@@ -10871,6 +11096,13 @@ func (o *UserEventResourceConfig) GetBuildEntitlements() *UserEventBuildEntitlem
 		return nil
 	}
 	return o.BuildEntitlements
+}
+
+func (o *UserEventResourceConfig) GetBuildQueue() *UserEventBuildQueue {
+	if o == nil {
+		return nil
+	}
+	return o.BuildQueue
 }
 
 func (o *UserEventResourceConfig) GetAwsAccountType() *string {
@@ -18896,30 +19128,30 @@ func (o *UserEventTeam4) GetName() string {
 	return o.Name
 }
 
-type Configuration4 struct {
+type UserEventConfiguration4 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
-func (c Configuration4) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration4) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+func (u *UserEventConfiguration4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration4) GetID() string {
+func (o *UserEventConfiguration4) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Configuration4) GetName() *string {
+func (o *UserEventConfiguration4) GetName() *string {
 	if o == nil {
 		return nil
 	}
@@ -18928,9 +19160,9 @@ func (o *Configuration4) GetName() *string {
 
 // Payload33 - The payload of the event, if requested.
 type Payload33 struct {
-	Team          UserEventTeam4 `json:"team"`
-	Configuration Configuration4 `json:"configuration"`
-	NewName       string         `json:"newName"`
+	Team          UserEventTeam4          `json:"team"`
+	Configuration UserEventConfiguration4 `json:"configuration"`
+	NewName       string                  `json:"newName"`
 }
 
 func (p Payload33) MarshalJSON() ([]byte, error) {
@@ -18951,9 +19183,9 @@ func (o *Payload33) GetTeam() UserEventTeam4 {
 	return o.Team
 }
 
-func (o *Payload33) GetConfiguration() Configuration4 {
+func (o *Payload33) GetConfiguration() UserEventConfiguration4 {
 	if o == nil {
-		return Configuration4{}
+		return UserEventConfiguration4{}
 	}
 	return o.Configuration
 }
@@ -18995,30 +19227,30 @@ func (o *UserEventTeam3) GetName() string {
 	return o.Name
 }
 
-type Configuration3 struct {
+type UserEventConfiguration3 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
-func (c Configuration3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+func (u *UserEventConfiguration3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration3) GetID() string {
+func (o *UserEventConfiguration3) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Configuration3) GetName() *string {
+func (o *UserEventConfiguration3) GetName() *string {
 	if o == nil {
 		return nil
 	}
@@ -19057,9 +19289,9 @@ func (o *Project4) GetName() *string {
 
 // Payload32 - The payload of the event, if requested.
 type Payload32 struct {
-	Team          UserEventTeam3 `json:"team"`
-	Configuration Configuration3 `json:"configuration"`
-	Project       Project4       `json:"project"`
+	Team          UserEventTeam3          `json:"team"`
+	Configuration UserEventConfiguration3 `json:"configuration"`
+	Project       Project4                `json:"project"`
 }
 
 func (p Payload32) MarshalJSON() ([]byte, error) {
@@ -19080,9 +19312,9 @@ func (o *Payload32) GetTeam() UserEventTeam3 {
 	return o.Team
 }
 
-func (o *Payload32) GetConfiguration() Configuration3 {
+func (o *Payload32) GetConfiguration() UserEventConfiguration3 {
 	if o == nil {
-		return Configuration3{}
+		return UserEventConfiguration3{}
 	}
 	return o.Configuration
 }
@@ -19124,30 +19356,30 @@ func (o *UserEventTeam2) GetName() string {
 	return o.Name
 }
 
-type Configuration2 struct {
+type UserEventConfiguration2 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
-func (c Configuration2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+func (u *UserEventConfiguration2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration2) GetID() string {
+func (o *UserEventConfiguration2) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Configuration2) GetName() *string {
+func (o *UserEventConfiguration2) GetName() *string {
 	if o == nil {
 		return nil
 	}
@@ -19186,11 +19418,11 @@ func (o *Project3) GetName() *string {
 
 // Payload31 - The payload of the event, if requested.
 type Payload31 struct {
-	Team          UserEventTeam2 `json:"team"`
-	Configuration Configuration2 `json:"configuration"`
-	Project       Project3       `json:"project"`
-	BuildsEnabled *bool          `json:"buildsEnabled,omitempty"`
-	Passive       *bool          `json:"passive,omitempty"`
+	Team          UserEventTeam2          `json:"team"`
+	Configuration UserEventConfiguration2 `json:"configuration"`
+	Project       Project3                `json:"project"`
+	BuildsEnabled *bool                   `json:"buildsEnabled,omitempty"`
+	Passive       *bool                   `json:"passive,omitempty"`
 }
 
 func (p Payload31) MarshalJSON() ([]byte, error) {
@@ -19211,9 +19443,9 @@ func (o *Payload31) GetTeam() UserEventTeam2 {
 	return o.Team
 }
 
-func (o *Payload31) GetConfiguration() Configuration2 {
+func (o *Payload31) GetConfiguration() UserEventConfiguration2 {
 	if o == nil {
-		return Configuration2{}
+		return UserEventConfiguration2{}
 	}
 	return o.Configuration
 }
@@ -19269,30 +19501,30 @@ func (o *UserEventTeam1) GetName() string {
 	return o.Name
 }
 
-type Configuration1 struct {
+type UserEventConfiguration1 struct {
 	ID   string  `json:"id"`
 	Name *string `json:"name,omitempty"`
 }
 
-func (c Configuration1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (u UserEventConfiguration1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
 }
 
-func (c *Configuration1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
+func (u *UserEventConfiguration1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Configuration1) GetID() string {
+func (o *UserEventConfiguration1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Configuration1) GetName() *string {
+func (o *UserEventConfiguration1) GetName() *string {
 	if o == nil {
 		return nil
 	}
@@ -19331,10 +19563,10 @@ func (o *Project2) GetName() *string {
 
 // Payload30 - The payload of the event, if requested.
 type Payload30 struct {
-	Team          UserEventTeam1 `json:"team"`
-	Configuration Configuration1 `json:"configuration"`
-	Project       Project2       `json:"project"`
-	BuildsEnabled *bool          `json:"buildsEnabled,omitempty"`
+	Team          UserEventTeam1          `json:"team"`
+	Configuration UserEventConfiguration1 `json:"configuration"`
+	Project       Project2                `json:"project"`
+	BuildsEnabled *bool                   `json:"buildsEnabled,omitempty"`
 }
 
 func (p Payload30) MarshalJSON() ([]byte, error) {
@@ -19355,9 +19587,9 @@ func (o *Payload30) GetTeam() UserEventTeam1 {
 	return o.Team
 }
 
-func (o *Payload30) GetConfiguration() Configuration1 {
+func (o *Payload30) GetConfiguration() UserEventConfiguration1 {
 	if o == nil {
-		return Configuration1{}
+		return UserEventConfiguration1{}
 	}
 	return o.Configuration
 }

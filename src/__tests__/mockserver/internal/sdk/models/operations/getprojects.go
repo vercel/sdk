@@ -4060,10 +4060,58 @@ func (u GetProjectsLinkUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type GetProjectsLinkUnion: all fields are null")
 }
 
-type GetProjectsMicrofrontends2 struct {
+type GetProjectsMicrofrontends3 struct {
 	UpdatedAt float64 `json:"updatedAt"`
 	GroupIds  []any   `json:"groupIds"`
 	Enabled   bool    `json:"enabled"`
+}
+
+func (g GetProjectsMicrofrontends3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetProjectsMicrofrontends3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetProjectsMicrofrontends3) GetUpdatedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetProjectsMicrofrontends3) GetGroupIds() []any {
+	if o == nil {
+		return []any{}
+	}
+	return o.GroupIds
+}
+
+func (o *GetProjectsMicrofrontends3) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+type GetProjectsMicrofrontends2 struct {
+	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
+	// Whether observability data should be routed to this microfrontend project or a root project.
+	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
+	// Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+	DoNotRouteWithMicrofrontendsRouting *bool `json:"doNotRouteWithMicrofrontendsRouting,omitempty"`
+	// Timestamp when the microfrontends settings were last updated.
+	UpdatedAt float64 `json:"updatedAt"`
+	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+	GroupIds []string `json:"groupIds"`
+	// Whether microfrontends are enabled for this project.
+	Enabled bool `json:"enabled"`
+	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
+	DefaultRoute *string `json:"defaultRoute,omitempty"`
 }
 
 func (g GetProjectsMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -4077,6 +4125,27 @@ func (g *GetProjectsMicrofrontends2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+func (o *GetProjectsMicrofrontends2) GetIsDefaultApp() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsDefaultApp
+}
+
+func (o *GetProjectsMicrofrontends2) GetRouteObservabilityToThisProject() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RouteObservabilityToThisProject
+}
+
+func (o *GetProjectsMicrofrontends2) GetDoNotRouteWithMicrofrontendsRouting() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DoNotRouteWithMicrofrontendsRouting
+}
+
 func (o *GetProjectsMicrofrontends2) GetUpdatedAt() float64 {
 	if o == nil {
 		return 0.0
@@ -4084,9 +4153,9 @@ func (o *GetProjectsMicrofrontends2) GetUpdatedAt() float64 {
 	return o.UpdatedAt
 }
 
-func (o *GetProjectsMicrofrontends2) GetGroupIds() []any {
+func (o *GetProjectsMicrofrontends2) GetGroupIds() []string {
 	if o == nil {
-		return []any{}
+		return []string{}
 	}
 	return o.GroupIds
 }
@@ -4098,19 +4167,23 @@ func (o *GetProjectsMicrofrontends2) GetEnabled() bool {
 	return o.Enabled
 }
 
+func (o *GetProjectsMicrofrontends2) GetDefaultRoute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DefaultRoute
+}
+
 type GetProjectsMicrofrontends1 struct {
+	IsDefaultApp bool `json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
 	UpdatedAt float64 `json:"updatedAt"`
 	// The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
 	GroupIds []string `json:"groupIds"`
 	// Whether microfrontends are enabled for this project.
 	Enabled bool `json:"enabled"`
-	// Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
-	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
-	// Whether observability data should be routed to this microfrontend project or a root project.
-	RouteObservabilityToThisProject *bool `json:"routeObservabilityToThisProject,omitempty"`
 }
 
 func (g GetProjectsMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -4118,10 +4191,17 @@ func (g GetProjectsMicrofrontends1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetProjectsMicrofrontends1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"updatedAt", "groupIds", "enabled"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"isDefaultApp", "updatedAt", "groupIds", "enabled"}); err != nil {
 		return err
 	}
 	return nil
+}
+
+func (o *GetProjectsMicrofrontends1) GetIsDefaultApp() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsDefaultApp
 }
 
 func (o *GetProjectsMicrofrontends1) GetUpdatedAt() float64 {
@@ -4145,13 +4225,6 @@ func (o *GetProjectsMicrofrontends1) GetEnabled() bool {
 	return o.Enabled
 }
 
-func (o *GetProjectsMicrofrontends1) GetIsDefaultApp() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.IsDefaultApp
-}
-
 func (o *GetProjectsMicrofrontends1) GetDefaultRoute() *string {
 	if o == nil {
 		return nil
@@ -4159,23 +4232,18 @@ func (o *GetProjectsMicrofrontends1) GetDefaultRoute() *string {
 	return o.DefaultRoute
 }
 
-func (o *GetProjectsMicrofrontends1) GetRouteObservabilityToThisProject() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.RouteObservabilityToThisProject
-}
-
 type GetProjectsMicrofrontendsUnionType string
 
 const (
 	GetProjectsMicrofrontendsUnionTypeGetProjectsMicrofrontends1 GetProjectsMicrofrontendsUnionType = "getProjects_microfrontends_1"
 	GetProjectsMicrofrontendsUnionTypeGetProjectsMicrofrontends2 GetProjectsMicrofrontendsUnionType = "getProjects_microfrontends_2"
+	GetProjectsMicrofrontendsUnionTypeGetProjectsMicrofrontends3 GetProjectsMicrofrontendsUnionType = "getProjects_microfrontends_3"
 )
 
 type GetProjectsMicrofrontendsUnion struct {
 	GetProjectsMicrofrontends1 *GetProjectsMicrofrontends1 `queryParam:"inline"`
 	GetProjectsMicrofrontends2 *GetProjectsMicrofrontends2 `queryParam:"inline"`
+	GetProjectsMicrofrontends3 *GetProjectsMicrofrontends3 `queryParam:"inline"`
 
 	Type GetProjectsMicrofrontendsUnionType
 }
@@ -4198,6 +4266,15 @@ func CreateGetProjectsMicrofrontendsUnionGetProjectsMicrofrontends2(getProjectsM
 	}
 }
 
+func CreateGetProjectsMicrofrontendsUnionGetProjectsMicrofrontends3(getProjectsMicrofrontends3 GetProjectsMicrofrontends3) GetProjectsMicrofrontendsUnion {
+	typ := GetProjectsMicrofrontendsUnionTypeGetProjectsMicrofrontends3
+
+	return GetProjectsMicrofrontendsUnion{
+		GetProjectsMicrofrontends3: &getProjectsMicrofrontends3,
+		Type:                       typ,
+	}
+}
+
 func (u *GetProjectsMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 
 	var getProjectsMicrofrontends1 GetProjectsMicrofrontends1 = GetProjectsMicrofrontends1{}
@@ -4214,6 +4291,13 @@ func (u *GetProjectsMicrofrontendsUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var getProjectsMicrofrontends3 GetProjectsMicrofrontends3 = GetProjectsMicrofrontends3{}
+	if err := utils.UnmarshalJSON(data, &getProjectsMicrofrontends3, "", true, nil); err == nil {
+		u.GetProjectsMicrofrontends3 = &getProjectsMicrofrontends3
+		u.Type = GetProjectsMicrofrontendsUnionTypeGetProjectsMicrofrontends3
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetProjectsMicrofrontendsUnion", string(data))
 }
 
@@ -4224,6 +4308,10 @@ func (u GetProjectsMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 
 	if u.GetProjectsMicrofrontends2 != nil {
 		return utils.MarshalJSON(u.GetProjectsMicrofrontends2, "", true)
+	}
+
+	if u.GetProjectsMicrofrontends3 != nil {
+		return utils.MarshalJSON(u.GetProjectsMicrofrontends3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type GetProjectsMicrofrontendsUnion: all fields are null")
@@ -7796,6 +7884,8 @@ type GetProjectsGitProviderOptions struct {
 	CreateDeployments GetProjectsCreateDeployments `json:"createDeployments"`
 	// Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
 	DisableRepositoryDispatchEvents *bool `json:"disableRepositoryDispatchEvents,omitempty"`
+	// Whether the project requires commits to be signed before deployments will be created.
+	RequireVerifiedCommits *bool `json:"requireVerifiedCommits,omitempty"`
 }
 
 func (o *GetProjectsGitProviderOptions) GetCreateDeployments() GetProjectsCreateDeployments {
@@ -7810,6 +7900,13 @@ func (o *GetProjectsGitProviderOptions) GetDisableRepositoryDispatchEvents() *bo
 		return nil
 	}
 	return o.DisableRepositoryDispatchEvents
+}
+
+func (o *GetProjectsGitProviderOptions) GetRequireVerifiedCommits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequireVerifiedCommits
 }
 
 type GetProjectsWebAnalytics struct {

@@ -31,7 +31,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Retrieves a list of Integration log drains
+ * Retrieves a list of Integration log drains (deprecated)
  *
  * @remarks
  * Retrieves a list of all Integration log drains that are defined for the authenticated user or team. When using an OAuth2 token, the list is limited to log drains created by the authenticated integration.

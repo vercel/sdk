@@ -34,9 +34,21 @@ export type GetDeploymentRequest = {
   slug?: string | undefined;
 };
 
+/**
+ * Information about the deployment creator
+ */
 export type GetDeploymentResponseBodyCreator = {
+  /**
+   * The ID of the user that created the deployment
+   */
   uid: string;
+  /**
+   * The username of the user that created the deployment
+   */
   username?: string | undefined;
+  /**
+   * The avatar of the user that created the deployment
+   */
   avatar?: string | undefined;
 };
 
@@ -79,6 +91,9 @@ export type GetDeploymentResponseBodyStatus = ClosedEnum<
   typeof GetDeploymentResponseBodyStatus
 >;
 
+/**
+ * The team that owns the deployment if any
+ */
 export type ResponseBodyTeam = {
   id: string;
   name: string;
@@ -86,6 +101,9 @@ export type ResponseBodyTeam = {
   avatar?: string | undefined;
 };
 
+/**
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
+ */
 export type GetDeploymentCustomEnvironment2 = {
   id: string;
 };
@@ -168,7 +186,7 @@ export type GetDeploymentCustomEnvironmentDomains = {
 };
 
 /**
- * Internal representation of a custom environment with all required properties
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
  */
 export type GetDeploymentCustomEnvironment1 = {
   /**
@@ -225,6 +243,9 @@ export type ResponseBodyAliasWarning = {
   action?: string | undefined;
 };
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const GetDeploymentResponseBodyReadyState = {
   Queued: "QUEUED",
   Building: "BUILDING",
@@ -233,6 +254,9 @@ export const GetDeploymentResponseBodyReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type GetDeploymentResponseBodyReadyState = ClosedEnum<
   typeof GetDeploymentResponseBodyReadyState
 >;
@@ -244,6 +268,9 @@ export type GetDeploymentResponseBodyDeploymentsType = ClosedEnum<
   typeof GetDeploymentResponseBodyDeploymentsType
 >;
 
+/**
+ * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+ */
 export type GetDeploymentResponseBodyAliasError = {
   code: string;
   message: string;
@@ -599,6 +626,9 @@ export type GetDeploymentResponseBodyNodeVersion = ClosedEnum<
   typeof GetDeploymentResponseBodyNodeVersion
 >;
 
+/**
+ * The public project information associated with the deployment.
+ */
 export type GetDeploymentResponseBodyProject = {
   id: string;
   name: string;
@@ -620,6 +650,9 @@ export type GetDeploymentResponseBodyReadySubstate = ClosedEnum<
   typeof GetDeploymentResponseBodyReadySubstate
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const GetDeploymentResponseBodySource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -630,14 +663,23 @@ export const GetDeploymentResponseBodySource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type GetDeploymentResponseBodySource = ClosedEnum<
   typeof GetDeploymentResponseBodySource
 >;
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const GetDeploymentResponseBodyTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type GetDeploymentResponseBodyTarget = ClosedEnum<
   typeof GetDeploymentResponseBodyTarget
 >;
@@ -658,7 +700,13 @@ export type GetDeploymentResponseBodyOidcTokenClaims = {
  * The deployment including only public information
  */
 export type GetDeploymentResponseBody2 = {
+  /**
+   * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
+   */
   alias?: Array<string> | undefined;
+  /**
+   * A boolean that will be true when the aliases from the alias property were assigned successfully
+   */
   aliasAssigned: boolean;
   bootedAt: number;
   buildingAt: number;
@@ -667,15 +715,30 @@ export type GetDeploymentResponseBody2 = {
    */
   buildContainerFinishedAt?: number | undefined;
   buildSkipped: boolean;
+  /**
+   * Information about the deployment creator
+   */
   creator: GetDeploymentResponseBodyCreator;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
   lambdas?: Array<ResponseBodyLambdas> | undefined;
+  /**
+   * A boolean representing if the deployment is public or not. By default this is `false`
+   */
   public: boolean;
   ready?: number | undefined;
   status: GetDeploymentResponseBodyStatus;
+  /**
+   * The team that owns the deployment if any
+   */
   team?: ResponseBodyTeam | undefined;
+  /**
+   * An array of domains that were provided by the user when creating the Deployment.
+   */
   userAliases?: Array<string> | undefined;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
@@ -684,11 +747,26 @@ export type GetDeploymentResponseBody2 = {
     | undefined;
   oomReport?: ResponseBodyOomReport | undefined;
   aliasWarning?: ResponseBodyAliasWarning | null | undefined;
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: GetDeploymentResponseBodyReadyState;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
   type: GetDeploymentResponseBodyDeploymentsType;
+  /**
+   * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+   */
   aliasError?: GetDeploymentResponseBodyAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   /**
@@ -699,6 +777,9 @@ export type GetDeploymentResponseBody2 = {
   buildErrorAt?: number | undefined;
   checksState?: GetDeploymentResponseBodyChecksState | undefined;
   checksConclusion?: GetDeploymentResponseBodyChecksConclusion | undefined;
+  /**
+   * A number containing the date when the deployment was deleted at milliseconds
+   */
   deletedAt?: number | null | undefined;
   /**
    * Computed field that is only available for deployments with a microfrontend configuration.
@@ -736,17 +817,41 @@ export type GetDeploymentResponseBody2 = {
    * If set it overrides the `projectSettings.nodeVersion` for this deployment.
    */
   nodeVersion?: GetDeploymentResponseBodyNodeVersion | undefined;
+  /**
+   * The public project information associated with the deployment.
+   */
   project?: GetDeploymentResponseBodyProject | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: GetDeploymentResponseBodyReadySubstate | undefined;
+  /**
+   * The regions the deployment exists in
+   */
   regions: Array<string>;
+  /**
+   * flag to indicate if the deployment was deleted by retention policy
+   */
   softDeletedByRetention?: boolean | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: GetDeploymentResponseBodySource | undefined;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: GetDeploymentResponseBodyTarget | null | undefined;
+  /**
+   * A number containing the date when the deployment was undeleted at milliseconds
+   */
   undeletedAt?: number | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * The platform version that was used to create the deployment.
+   */
   version: number;
   oidcTokenClaims?: GetDeploymentResponseBodyOidcTokenClaims | undefined;
 };
@@ -942,9 +1047,21 @@ export type ResponseBodyImages = {
   contentDispositionType?: ResponseBodyContentDispositionType | undefined;
 };
 
+/**
+ * Information about the deployment creator
+ */
 export type ResponseBodyCreator = {
+  /**
+   * The ID of the user that created the deployment
+   */
   uid: string;
+  /**
+   * The username of the user that created the deployment
+   */
   username?: string | undefined;
+  /**
+   * The avatar of the user that created the deployment
+   */
   avatar?: string | undefined;
 };
 
@@ -987,6 +1104,9 @@ export const ResponseBodyStatus = {
 } as const;
 export type ResponseBodyStatus = ClosedEnum<typeof ResponseBodyStatus>;
 
+/**
+ * The team that owns the deployment if any
+ */
 export type GetDeploymentResponseBodyTeam = {
   id: string;
   name: string;
@@ -994,6 +1114,9 @@ export type GetDeploymentResponseBodyTeam = {
   avatar?: string | undefined;
 };
 
+/**
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
+ */
 export type GetDeploymentCustomEnvironmentDeployments2 = {
   id: string;
 };
@@ -1077,7 +1200,7 @@ export type GetDeploymentCustomEnvironmentDeploymentsDomains = {
 };
 
 /**
- * Internal representation of a custom environment with all required properties
+ * If the deployment was created using a Custom Environment, then this property contains information regarding the environment used.
  */
 export type GetDeploymentCustomEnvironmentDeployments1 = {
   /**
@@ -1138,6 +1261,9 @@ export type GetDeploymentResponseBodyAliasWarning = {
   action?: string | undefined;
 };
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const ResponseBodyReadyState = {
   Queued: "QUEUED",
   Building: "BUILDING",
@@ -1146,6 +1272,9 @@ export const ResponseBodyReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type ResponseBodyReadyState = ClosedEnum<typeof ResponseBodyReadyState>;
 
 export const GetDeploymentResponseBodyType = {
@@ -1155,6 +1284,9 @@ export type GetDeploymentResponseBodyType = ClosedEnum<
   typeof GetDeploymentResponseBodyType
 >;
 
+/**
+ * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+ */
 export type ResponseBodyAliasError = {
   code: string;
   message: string;
@@ -1498,6 +1630,9 @@ export type ResponseBodyNodeVersion = ClosedEnum<
   typeof ResponseBodyNodeVersion
 >;
 
+/**
+ * The public project information associated with the deployment.
+ */
 export type ResponseBodyProject = {
   id: string;
   name: string;
@@ -1519,6 +1654,9 @@ export type ResponseBodyReadySubstate = ClosedEnum<
   typeof ResponseBodyReadySubstate
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const ResponseBodySource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -1529,12 +1667,21 @@ export const ResponseBodySource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type ResponseBodySource = ClosedEnum<typeof ResponseBodySource>;
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const ResponseBodyTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type ResponseBodyTarget = ClosedEnum<typeof ResponseBodyTarget>;
 
 export type ResponseBodyOidcTokenClaims = {
@@ -2154,7 +2301,13 @@ export type GetDeploymentResponseBody1 = {
   readyStateReason?: string | undefined;
   integrations?: ResponseBodyIntegrations | undefined;
   images?: ResponseBodyImages | undefined;
+  /**
+   * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
+   */
   alias?: Array<string> | undefined;
+  /**
+   * A boolean that will be true when the aliases from the alias property were assigned successfully
+   */
   aliasAssigned: boolean;
   bootedAt: number;
   buildingAt: number;
@@ -2163,15 +2316,30 @@ export type GetDeploymentResponseBody1 = {
    */
   buildContainerFinishedAt?: number | undefined;
   buildSkipped: boolean;
+  /**
+   * Information about the deployment creator
+   */
   creator: ResponseBodyCreator;
   initReadyAt?: number | undefined;
   isFirstBranchDeployment?: boolean | undefined;
   lambdas?: Array<GetDeploymentResponseBodyLambdas> | undefined;
+  /**
+   * A boolean representing if the deployment is public or not. By default this is `false`
+   */
   public: boolean;
   ready?: number | undefined;
   status: ResponseBodyStatus;
+  /**
+   * The team that owns the deployment if any
+   */
   team?: GetDeploymentResponseBodyTeam | undefined;
+  /**
+   * An array of domains that were provided by the user when creating the Deployment.
+   */
   userAliases?: Array<string> | undefined;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
   previewCommentsEnabled?: boolean | undefined;
   ttyBuildLogs?: boolean | undefined;
   customEnvironment?:
@@ -2180,11 +2348,26 @@ export type GetDeploymentResponseBody1 = {
     | undefined;
   oomReport?: GetDeploymentResponseBodyOomReport | undefined;
   aliasWarning?: GetDeploymentResponseBodyAliasWarning | null | undefined;
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: ResponseBodyReadyState;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
   type: GetDeploymentResponseBodyType;
+  /**
+   * An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+   */
   aliasError?: ResponseBodyAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   /**
@@ -2195,6 +2378,9 @@ export type GetDeploymentResponseBody1 = {
   buildErrorAt?: number | undefined;
   checksState?: ResponseBodyChecksState | undefined;
   checksConclusion?: ResponseBodyChecksConclusion | undefined;
+  /**
+   * A number containing the date when the deployment was deleted at milliseconds
+   */
   deletedAt?: number | null | undefined;
   /**
    * Computed field that is only available for deployments with a microfrontend configuration.
@@ -2232,17 +2418,41 @@ export type GetDeploymentResponseBody1 = {
    * If set it overrides the `projectSettings.nodeVersion` for this deployment.
    */
   nodeVersion?: ResponseBodyNodeVersion | undefined;
+  /**
+   * The public project information associated with the deployment.
+   */
   project?: ResponseBodyProject | undefined;
   /**
    * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
    */
   readySubstate?: ResponseBodyReadySubstate | undefined;
+  /**
+   * The regions the deployment exists in
+   */
   regions: Array<string>;
+  /**
+   * flag to indicate if the deployment was deleted by retention policy
+   */
   softDeletedByRetention?: boolean | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: ResponseBodySource | undefined;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: ResponseBodyTarget | null | undefined;
+  /**
+   * A number containing the date when the deployment was undeleted at milliseconds
+   */
   undeletedAt?: number | undefined;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * The platform version that was used to create the deployment.
+   */
   version: number;
   oidcTokenClaims?: ResponseBodyOidcTokenClaims | undefined;
   projectId: string;

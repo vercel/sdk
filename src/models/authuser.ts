@@ -91,6 +91,28 @@ export type AuthUserBuildEntitlements = {
 /**
  * An object containing infomation related to the amount of platform resources may be allocated to the User account.
  */
+export const AuthUserConfiguration = {
+  SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
+  WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
+} as const;
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type AuthUserConfiguration = ClosedEnum<typeof AuthUserConfiguration>;
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
+export type BuildQueue = {
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  configuration?: AuthUserConfiguration | undefined;
+};
+
+/**
+ * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+ */
 export const PurchaseType = {
   Enhanced: "enhanced",
   Turbo: "turbo",
@@ -164,6 +186,10 @@ export type AuthUserResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   buildEntitlements?: AuthUserBuildEntitlements | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  buildQueue?: BuildQueue | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -628,6 +654,77 @@ export function authUserBuildEntitlementsFromJSON(
 }
 
 /** @internal */
+export const AuthUserConfiguration$inboundSchema: z.ZodNativeEnum<
+  typeof AuthUserConfiguration
+> = z.nativeEnum(AuthUserConfiguration);
+
+/** @internal */
+export const AuthUserConfiguration$outboundSchema: z.ZodNativeEnum<
+  typeof AuthUserConfiguration
+> = AuthUserConfiguration$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AuthUserConfiguration$ {
+  /** @deprecated use `AuthUserConfiguration$inboundSchema` instead. */
+  export const inboundSchema = AuthUserConfiguration$inboundSchema;
+  /** @deprecated use `AuthUserConfiguration$outboundSchema` instead. */
+  export const outboundSchema = AuthUserConfiguration$outboundSchema;
+}
+
+/** @internal */
+export const BuildQueue$inboundSchema: z.ZodType<
+  BuildQueue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  configuration: AuthUserConfiguration$inboundSchema.optional(),
+});
+
+/** @internal */
+export type BuildQueue$Outbound = {
+  configuration?: string | undefined;
+};
+
+/** @internal */
+export const BuildQueue$outboundSchema: z.ZodType<
+  BuildQueue$Outbound,
+  z.ZodTypeDef,
+  BuildQueue
+> = z.object({
+  configuration: AuthUserConfiguration$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BuildQueue$ {
+  /** @deprecated use `BuildQueue$inboundSchema` instead. */
+  export const inboundSchema = BuildQueue$inboundSchema;
+  /** @deprecated use `BuildQueue$outboundSchema` instead. */
+  export const outboundSchema = BuildQueue$outboundSchema;
+  /** @deprecated use `BuildQueue$Outbound` instead. */
+  export type Outbound = BuildQueue$Outbound;
+}
+
+export function buildQueueToJSON(buildQueue: BuildQueue): string {
+  return JSON.stringify(BuildQueue$outboundSchema.parse(buildQueue));
+}
+
+export function buildQueueFromJSON(
+  jsonString: string,
+): SafeParseResult<BuildQueue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuildQueue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuildQueue' from JSON`,
+  );
+}
+
+/** @internal */
 export const PurchaseType$inboundSchema: z.ZodNativeEnum<typeof PurchaseType> =
   z.nativeEnum(PurchaseType);
 
@@ -779,6 +876,7 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildEntitlements: z.lazy(() => AuthUserBuildEntitlements$inboundSchema)
     .optional(),
+  buildQueue: z.lazy(() => BuildQueue$inboundSchema).optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),
@@ -809,6 +907,7 @@ export type AuthUserResourceConfig$Outbound = {
   concurrentBuilds?: number | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   buildEntitlements?: AuthUserBuildEntitlements$Outbound | undefined;
+  buildQueue?: BuildQueue$Outbound | undefined;
   awsAccountType?: string | undefined;
   awsAccountIds?: Array<string> | undefined;
   cfZoneName?: string | undefined;
@@ -844,6 +943,7 @@ export const AuthUserResourceConfig$outboundSchema: z.ZodType<
   elasticConcurrencyEnabled: z.boolean().optional(),
   buildEntitlements: z.lazy(() => AuthUserBuildEntitlements$outboundSchema)
     .optional(),
+  buildQueue: z.lazy(() => BuildQueue$outboundSchema).optional(),
   awsAccountType: z.string().optional(),
   awsAccountIds: z.array(z.string()).optional(),
   cfZoneName: z.string().optional(),

@@ -81,7 +81,7 @@ export class Teams extends ClientSDK {
    * Invite a user
    *
    * @remarks
-   * Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user can be specified with an email or an ID. If both email and ID are provided, ID will take priority.
+   * Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.
    */
   async inviteUserToTeam(
     request: InviteUserToTeamRequest,

@@ -1058,13 +1058,22 @@ export type GetProjectsLink =
   | GetProjectsLink1
   | GetProjectsLink2;
 
-export type GetProjectsMicrofrontends2 = {
+export type GetProjectsMicrofrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
 };
 
-export type GetProjectsMicrofrontends1 = {
+export type GetProjectsMicrofrontends2 = {
+  isDefaultApp?: boolean | undefined;
+  /**
+   * Whether observability data should be routed to this microfrontend project or a root project.
+   */
+  routeObservabilityToThisProject?: boolean | undefined;
+  /**
+   * Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
+   */
+  doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
   /**
    * Timestamp when the microfrontends settings were last updated.
    */
@@ -1078,22 +1087,35 @@ export type GetProjectsMicrofrontends1 = {
    */
   enabled: boolean;
   /**
-   * Whether this project is the default application for the microfrontends group. The default application is the one that is used as the top level shell for the microfrontends group and hosts the other microfrontends.
+   * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
-  isDefaultApp?: boolean | undefined;
+  defaultRoute?: string | undefined;
+};
+
+export type GetProjectsMicrofrontends1 = {
+  isDefaultApp: boolean;
+  /**
+   * Timestamp when the microfrontends settings were last updated.
+   */
+  updatedAt: number;
+  /**
+   * The group IDs of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together.
+   */
+  groupIds: Array<string>;
+  /**
+   * Whether microfrontends are enabled for this project.
+   */
+  enabled: boolean;
   /**
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
   defaultRoute?: string | undefined;
-  /**
-   * Whether observability data should be routed to this microfrontend project or a root project.
-   */
-  routeObservabilityToThisProject?: boolean | undefined;
 };
 
 export type GetProjectsMicrofrontends =
   | GetProjectsMicrofrontends1
-  | GetProjectsMicrofrontends2;
+  | GetProjectsMicrofrontends2
+  | GetProjectsMicrofrontends3;
 
 export const GetProjectsNodeVersion = {
   TwentyTwoDotX: "22.x",
@@ -1775,6 +1797,10 @@ export type GetProjectsGitProviderOptions = {
    * Whether the Vercel bot should not automatically create GitHub repository-dispatch events on deployment events. https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
    */
   disableRepositoryDispatchEvents?: boolean | undefined;
+  /**
+   * Whether the project requires commits to be signed before deployments will be created.
+   */
+  requireVerifiedCommits?: boolean | undefined;
 };
 
 export type GetProjectsWebAnalytics = {
@@ -2266,6 +2292,7 @@ export type GetProjectsProjects = {
   microfrontends?:
     | GetProjectsMicrofrontends1
     | GetProjectsMicrofrontends2
+    | GetProjectsMicrofrontends3
     | undefined;
   name: string;
   nodeVersion: GetProjectsNodeVersion;
@@ -6987,8 +7014,8 @@ export function getProjectsLinkFromJSON(
 }
 
 /** @internal */
-export const GetProjectsMicrofrontends2$inboundSchema: z.ZodType<
-  GetProjectsMicrofrontends2,
+export const GetProjectsMicrofrontends3$inboundSchema: z.ZodType<
+  GetProjectsMicrofrontends3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -6998,10 +7025,78 @@ export const GetProjectsMicrofrontends2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetProjectsMicrofrontends2$Outbound = {
+export type GetProjectsMicrofrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
+};
+
+/** @internal */
+export const GetProjectsMicrofrontends3$outboundSchema: z.ZodType<
+  GetProjectsMicrofrontends3$Outbound,
+  z.ZodTypeDef,
+  GetProjectsMicrofrontends3
+> = z.object({
+  updatedAt: z.number(),
+  groupIds: z.array(z.any()),
+  enabled: z.boolean(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetProjectsMicrofrontends3$ {
+  /** @deprecated use `GetProjectsMicrofrontends3$inboundSchema` instead. */
+  export const inboundSchema = GetProjectsMicrofrontends3$inboundSchema;
+  /** @deprecated use `GetProjectsMicrofrontends3$outboundSchema` instead. */
+  export const outboundSchema = GetProjectsMicrofrontends3$outboundSchema;
+  /** @deprecated use `GetProjectsMicrofrontends3$Outbound` instead. */
+  export type Outbound = GetProjectsMicrofrontends3$Outbound;
+}
+
+export function getProjectsMicrofrontends3ToJSON(
+  getProjectsMicrofrontends3: GetProjectsMicrofrontends3,
+): string {
+  return JSON.stringify(
+    GetProjectsMicrofrontends3$outboundSchema.parse(getProjectsMicrofrontends3),
+  );
+}
+
+export function getProjectsMicrofrontends3FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsMicrofrontends3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsMicrofrontends3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsMicrofrontends3' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsMicrofrontends2$inboundSchema: z.ZodType<
+  GetProjectsMicrofrontends2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  isDefaultApp: z.boolean().optional(),
+  routeObservabilityToThisProject: z.boolean().optional(),
+  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
+  updatedAt: z.number(),
+  groupIds: z.array(z.string()),
+  enabled: z.boolean(),
+  defaultRoute: z.string().optional(),
+});
+
+/** @internal */
+export type GetProjectsMicrofrontends2$Outbound = {
+  isDefaultApp?: boolean | undefined;
+  routeObservabilityToThisProject?: boolean | undefined;
+  doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
+  updatedAt: number;
+  groupIds: Array<string>;
+  enabled: boolean;
+  defaultRoute?: string | undefined;
 };
 
 /** @internal */
@@ -7010,9 +7105,13 @@ export const GetProjectsMicrofrontends2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsMicrofrontends2
 > = z.object({
+  isDefaultApp: z.boolean().optional(),
+  routeObservabilityToThisProject: z.boolean().optional(),
+  doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
   updatedAt: z.number(),
-  groupIds: z.array(z.any()),
+  groupIds: z.array(z.string()),
   enabled: z.boolean(),
+  defaultRoute: z.string().optional(),
 });
 
 /**
@@ -7052,22 +7151,20 @@ export const GetProjectsMicrofrontends1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  isDefaultApp: z.boolean(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
-  isDefaultApp: z.boolean().optional(),
   defaultRoute: z.string().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
 });
 
 /** @internal */
 export type GetProjectsMicrofrontends1$Outbound = {
+  isDefaultApp: boolean;
   updatedAt: number;
   groupIds: Array<string>;
   enabled: boolean;
-  isDefaultApp?: boolean | undefined;
   defaultRoute?: string | undefined;
-  routeObservabilityToThisProject?: boolean | undefined;
 };
 
 /** @internal */
@@ -7076,12 +7173,11 @@ export const GetProjectsMicrofrontends1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetProjectsMicrofrontends1
 > = z.object({
+  isDefaultApp: z.boolean(),
   updatedAt: z.number(),
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
-  isDefaultApp: z.boolean().optional(),
   defaultRoute: z.string().optional(),
-  routeObservabilityToThisProject: z.boolean().optional(),
 });
 
 /**
@@ -7123,12 +7219,14 @@ export const GetProjectsMicrofrontends$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => GetProjectsMicrofrontends1$inboundSchema),
   z.lazy(() => GetProjectsMicrofrontends2$inboundSchema),
+  z.lazy(() => GetProjectsMicrofrontends3$inboundSchema),
 ]);
 
 /** @internal */
 export type GetProjectsMicrofrontends$Outbound =
   | GetProjectsMicrofrontends1$Outbound
-  | GetProjectsMicrofrontends2$Outbound;
+  | GetProjectsMicrofrontends2$Outbound
+  | GetProjectsMicrofrontends3$Outbound;
 
 /** @internal */
 export const GetProjectsMicrofrontends$outboundSchema: z.ZodType<
@@ -7138,6 +7236,7 @@ export const GetProjectsMicrofrontends$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => GetProjectsMicrofrontends1$outboundSchema),
   z.lazy(() => GetProjectsMicrofrontends2$outboundSchema),
+  z.lazy(() => GetProjectsMicrofrontends3$outboundSchema),
 ]);
 
 /**
@@ -10103,12 +10202,14 @@ export const GetProjectsGitProviderOptions$inboundSchema: z.ZodType<
 > = z.object({
   createDeployments: GetProjectsCreateDeployments$inboundSchema,
   disableRepositoryDispatchEvents: z.boolean().optional(),
+  requireVerifiedCommits: z.boolean().optional(),
 });
 
 /** @internal */
 export type GetProjectsGitProviderOptions$Outbound = {
   createDeployments: string;
   disableRepositoryDispatchEvents?: boolean | undefined;
+  requireVerifiedCommits?: boolean | undefined;
 };
 
 /** @internal */
@@ -10119,6 +10220,7 @@ export const GetProjectsGitProviderOptions$outboundSchema: z.ZodType<
 > = z.object({
   createDeployments: GetProjectsCreateDeployments$outboundSchema,
   disableRepositoryDispatchEvents: z.boolean().optional(),
+  requireVerifiedCommits: z.boolean().optional(),
 });
 
 /**
@@ -13534,6 +13636,7 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
   microfrontends: z.union([
     z.lazy(() => GetProjectsMicrofrontends1$inboundSchema),
     z.lazy(() => GetProjectsMicrofrontends2$inboundSchema),
+    z.lazy(() => GetProjectsMicrofrontends3$inboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: GetProjectsNodeVersion$inboundSchema,
@@ -13665,6 +13768,7 @@ export type GetProjectsProjects$Outbound = {
   microfrontends?:
     | GetProjectsMicrofrontends1$Outbound
     | GetProjectsMicrofrontends2$Outbound
+    | GetProjectsMicrofrontends3$Outbound
     | undefined;
   name: string;
   nodeVersion: string;
@@ -13786,6 +13890,7 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
   microfrontends: z.union([
     z.lazy(() => GetProjectsMicrofrontends1$outboundSchema),
     z.lazy(() => GetProjectsMicrofrontends2$outboundSchema),
+    z.lazy(() => GetProjectsMicrofrontends3$outboundSchema),
   ]).optional(),
   name: z.string(),
   nodeVersion: GetProjectsNodeVersion$outboundSchema,

@@ -174,6 +174,7 @@ import { tool$projectsCreateProjectTransferRequest } from "./tools/projectsCreat
 import { tool$projectsDeleteProject } from "./tools/projectsDeleteProject.js";
 import { tool$projectsEditProjectEnv } from "./tools/projectsEditProjectEnv.js";
 import { tool$projectsFilterProjectEnvs } from "./tools/projectsFilterProjectEnvs.js";
+import { tool$projectsGetProjectClientCerts } from "./tools/projectsGetProjectClientCerts.js";
 import { tool$projectsGetProjectDomain } from "./tools/projectsGetProjectDomain.js";
 import { tool$projectsGetProjectDomains } from "./tools/projectsGetProjectDomains.js";
 import { tool$projectsGetProjectEnv } from "./tools/projectsGetProjectEnv.js";
@@ -238,7 +239,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Vercel",
-    version: "1.16.0",
+    version: "1.16.1",
   });
 
   const client = new VercelCore({
@@ -309,6 +310,7 @@ export function createMCPServer(deps: {
   tool(tool$projectsEditProjectEnv);
   tool(tool$projectsBatchRemoveProjectEnv);
   tool(tool$projectsUploadProjectClientCert);
+  tool(tool$projectsGetProjectClientCerts);
   tool(tool$projectsCreateProjectTransferRequest);
   tool(tool$projectsAcceptProjectTransferRequest);
   tool(tool$projectsUpdateProjectProtectionBypass);

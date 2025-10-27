@@ -1,5 +1,7 @@
 # ResponseBodyAliasError
 
+An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null`
+
 ## Example Usage
 
 ```typescript

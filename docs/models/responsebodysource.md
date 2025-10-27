@@ -1,11 +1,13 @@
 # ResponseBodySource
 
+Where was the deployment created from
+
 ## Example Usage
 
 ```typescript
 import { ResponseBodySource } from "@vercel/sdk/models/getdeploymentop.js";
 
-let value: ResponseBodySource = "git";
+let value: ResponseBodySource = "cli";
 ```
 
 ## Values

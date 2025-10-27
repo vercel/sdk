@@ -51,14 +51,23 @@ export type ApproveRollingReleaseStageState = ClosedEnum<
   typeof ApproveRollingReleaseStageState
 >;
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const ApproveRollingReleaseStageTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type ApproveRollingReleaseStageTarget = ClosedEnum<
   typeof ApproveRollingReleaseStageTarget
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const ApproveRollingReleaseStageSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -69,10 +78,16 @@ export const ApproveRollingReleaseStageSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type ApproveRollingReleaseStageSource = ClosedEnum<
   typeof ApproveRollingReleaseStageSource
 >;
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const ApproveRollingReleaseStageReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
@@ -81,6 +96,9 @@ export const ApproveRollingReleaseStageReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type ApproveRollingReleaseStageReadyState = ClosedEnum<
   typeof ApproveRollingReleaseStageReadyState
 >;
@@ -89,24 +107,54 @@ export type ApproveRollingReleaseStageReadyState = ClosedEnum<
  * The current deployment receiving production traffic
  */
 export type ApproveRollingReleaseStageCurrentDeployment = {
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: ApproveRollingReleaseStageTarget | null | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: ApproveRollingReleaseStageSource | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: ApproveRollingReleaseStageReadyState;
   readyStateAt?: number | undefined;
 };
 
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export const ApproveRollingReleaseStageRollingReleaseTarget = {
   Staging: "staging",
   Production: "production",
 } as const;
+/**
+ * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+ */
 export type ApproveRollingReleaseStageRollingReleaseTarget = ClosedEnum<
   typeof ApproveRollingReleaseStageRollingReleaseTarget
 >;
 
+/**
+ * Where was the deployment created from
+ */
 export const ApproveRollingReleaseStageRollingReleaseSource = {
   ApiTriggerGitDeploy: "api-trigger-git-deploy",
   Cli: "cli",
@@ -117,10 +165,16 @@ export const ApproveRollingReleaseStageRollingReleaseSource = {
   Redeploy: "redeploy",
   V0Web: "v0-web",
 } as const;
+/**
+ * Where was the deployment created from
+ */
 export type ApproveRollingReleaseStageRollingReleaseSource = ClosedEnum<
   typeof ApproveRollingReleaseStageRollingReleaseSource
 >;
 
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export const ApproveRollingReleaseStageRollingReleaseReadyState = {
   Building: "BUILDING",
   Error: "ERROR",
@@ -129,6 +183,9 @@ export const ApproveRollingReleaseStageRollingReleaseReadyState = {
   Ready: "READY",
   Canceled: "CANCELED",
 } as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
 export type ApproveRollingReleaseStageRollingReleaseReadyState = ClosedEnum<
   typeof ApproveRollingReleaseStageRollingReleaseReadyState
 >;
@@ -137,12 +194,33 @@ export type ApproveRollingReleaseStageRollingReleaseReadyState = ClosedEnum<
  * The canary deployment being rolled out
  */
 export type ApproveRollingReleaseStageCanaryDeployment = {
+  /**
+   * A string holding the unique ID of the deployment
+   */
   id: string;
+  /**
+   * The name of the project associated with the deployment at the time that the deployment was created
+   */
   name: string;
+  /**
+   * A string with the unique URL of the deployment
+   */
   url: string;
+  /**
+   * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
+   */
   target?: ApproveRollingReleaseStageRollingReleaseTarget | null | undefined;
+  /**
+   * Where was the deployment created from
+   */
   source?: ApproveRollingReleaseStageRollingReleaseSource | undefined;
+  /**
+   * A number containing the date when the deployment was created in milliseconds
+   */
   createdAt: number;
+  /**
+   * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+   */
   readyState: ApproveRollingReleaseStageRollingReleaseReadyState;
   readyStateAt?: number | undefined;
 };

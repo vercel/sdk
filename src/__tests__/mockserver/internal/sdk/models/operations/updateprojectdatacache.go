@@ -4143,6 +4143,7 @@ func (u UpdateProjectDataCacheMicrofrontendsUnion) MarshalJSON() ([]byte, error)
 type UpdateProjectDataCacheNodeVersion string
 
 const (
+	UpdateProjectDataCacheNodeVersionTwentyFourDotX UpdateProjectDataCacheNodeVersion = "24.x"
 	UpdateProjectDataCacheNodeVersionTwentyTwoDotX  UpdateProjectDataCacheNodeVersion = "22.x"
 	UpdateProjectDataCacheNodeVersionTwentyDotX     UpdateProjectDataCacheNodeVersion = "20.x"
 	UpdateProjectDataCacheNodeVersionEighteenDotX   UpdateProjectDataCacheNodeVersion = "18.x"
@@ -4162,6 +4163,8 @@ func (e *UpdateProjectDataCacheNodeVersion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

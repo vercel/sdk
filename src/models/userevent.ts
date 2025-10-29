@@ -189,7 +189,7 @@ export type App = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSixtyFive = {
+export type OneHundredAndSixtySix = {
   grantType: GrantType;
   /**
    * the app's name at the time the event was published (it could have changed since then)
@@ -223,12 +223,12 @@ export type OneHundredAndSixtyFive = {
   sessionId?: string | undefined;
 };
 
-export type UserEventPayload164Team = {
+export type UserEventPayload165Team = {
   id: string;
   name: string;
 };
 
-export type UserEventPayload164Configuration = {
+export type UserEventPayload165Configuration = {
   id: string;
   name?: string | undefined;
 };
@@ -241,19 +241,19 @@ export type UserEventPayloadPeering = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSixtyFour = {
-  team: UserEventPayload164Team;
-  configuration: UserEventPayload164Configuration;
+export type OneHundredAndSixtyFive = {
+  team: UserEventPayload165Team;
+  configuration: UserEventPayload165Configuration;
   peering: UserEventPayloadPeering;
   newName?: string | undefined;
 };
 
-export type UserEventPayload163Team = {
+export type UserEventPayload164Team = {
   id: string;
   name: string;
 };
 
-export type UserEventPayload163Configuration = {
+export type UserEventPayload164Configuration = {
   id: string;
   name?: string | undefined;
 };
@@ -266,18 +266,18 @@ export type PayloadPeering = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSixtyThree = {
-  team: UserEventPayload163Team;
-  configuration: UserEventPayload163Configuration;
+export type OneHundredAndSixtyFour = {
+  team: UserEventPayload164Team;
+  configuration: UserEventPayload164Configuration;
   peering: PayloadPeering;
 };
 
-export type UserEventPayload162Team = {
+export type UserEventPayload163Team = {
   id: string;
   name: string;
 };
 
-export type UserEventPayload162Configuration = {
+export type UserEventPayload163Configuration = {
   id: string;
   name?: string | undefined;
 };
@@ -292,16 +292,16 @@ export type Peering = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSixtyTwo = {
-  team: UserEventPayload162Team;
-  configuration: UserEventPayload162Configuration;
+export type OneHundredAndSixtyThree = {
+  team: UserEventPayload163Team;
+  configuration: UserEventPayload163Configuration;
   peering: Peering;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSixtyOne = {
+export type OneHundredAndSixtyTwo = {
   appName: string;
   appId?: string | undefined;
   installationId?: string | undefined;
@@ -310,7 +310,7 @@ export type OneHundredAndSixtyOne = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSixty = {
+export type OneHundredAndSixtyOne = {
   appName: string;
   appId?: string | undefined;
 };
@@ -318,7 +318,7 @@ export type OneHundredAndSixty = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftyNine = {
+export type OneHundredAndSixty = {
   appName: string;
   appId: string;
 };
@@ -326,14 +326,14 @@ export type OneHundredAndFiftyNine = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftyEight = {
+export type OneHundredAndFiftyNine = {
   appName: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftySeven = {
+export type OneHundredAndFiftyEight = {
   appName: string;
   nextScopes: Array<string>;
 };
@@ -341,7 +341,7 @@ export type OneHundredAndFiftySeven = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftySix = {
+export type OneHundredAndFiftySeven = {
   appName: string;
   scopes: Array<string>;
 };
@@ -349,7 +349,7 @@ export type OneHundredAndFiftySix = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftyFive = {
+export type OneHundredAndFiftySix = {
   oldName: string;
   newName: string;
 };
@@ -363,7 +363,7 @@ export type Tier = ClosedEnum<typeof Tier>;
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftyFour = {
+export type OneHundredAndFiftyFive = {
   tier: Tier;
 };
 
@@ -386,7 +386,7 @@ export type PrevProjectWebAnalytics = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftyThree = {
+export type OneHundredAndFiftyFour = {
   projectId: string;
   projectName: string;
   projectWebAnalytics?: ProjectWebAnalytics | undefined;
@@ -452,7 +452,7 @@ export type Microfrontends =
   | Microfrontends2
   | Microfrontends3;
 
-export type UserEventPayload152Project = {
+export type UserEventPayload153Project = {
   id: string;
   name: string;
   microfrontends?:
@@ -521,7 +521,7 @@ export type PayloadMicrofrontends =
   | UserEventMicrofrontends2
   | UserEventMicrofrontends3;
 
-export type UserEventPayload152PrevProject = {
+export type UserEventPayload153PrevProject = {
   microfrontends?:
     | UserEventMicrofrontends1
     | UserEventMicrofrontends2
@@ -530,7 +530,7 @@ export type UserEventPayload152PrevProject = {
 };
 
 export type PayloadPrev = {
-  project: UserEventPayload152PrevProject;
+  project: UserEventPayload153PrevProject;
 };
 
 export type PayloadGroup = {
@@ -542,13 +542,13 @@ export type PayloadGroup = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftyTwo = {
-  project: UserEventPayload152Project;
+export type OneHundredAndFiftyThree = {
+  project: UserEventPayload153Project;
   prev: PayloadPrev;
   group: PayloadGroup;
 };
 
-export type UserEventPayload151Project = {
+export type UserEventPayload152Project = {
   id: string;
   name: string;
 };
@@ -562,8 +562,8 @@ export type Group = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFiftyOne = {
-  project: UserEventPayload151Project;
+export type OneHundredAndFiftyTwo = {
+  project: UserEventPayload152Project;
   group: Group;
 };
 
@@ -577,7 +577,7 @@ export type Prev = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFifty = {
+export type OneHundredAndFiftyOne = {
   id: string;
   slug?: string | undefined;
   name?: string | undefined;
@@ -589,31 +589,31 @@ export type OneHundredAndFifty = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortyNine = {
+export type OneHundredAndFifty = {
   id: string;
   slug: string;
   name: string;
 };
 
-export const UserEventPayload148Action = {
+export const UserEventPayload149Action = {
   Enable: "enable",
   Disable: "disable",
 } as const;
-export type UserEventPayload148Action = ClosedEnum<
-  typeof UserEventPayload148Action
+export type UserEventPayload149Action = ClosedEnum<
+  typeof UserEventPayload149Action
 >;
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortyEight = {
-  action: UserEventPayload148Action;
+export type OneHundredAndFortyNine = {
+  action: UserEventPayload149Action;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortySeven = {
+export type OneHundredAndFortyEight = {
   edgeConfigId: string;
   edgeConfigSlug: string;
   /**
@@ -625,7 +625,7 @@ export type OneHundredAndFortySeven = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortySix = {
+export type OneHundredAndFortySeven = {
   edgeConfigId: string;
   edgeConfigSlug: string;
   edgeConfigTokenId: string;
@@ -635,7 +635,7 @@ export type OneHundredAndFortySix = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortyFive = {
+export type OneHundredAndFortySix = {
   edgeConfigId: string;
   edgeConfigSlug: string;
   edgeConfigDigest: string;
@@ -644,7 +644,7 @@ export type OneHundredAndFortyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortyFour = {
+export type OneHundredAndFortyFive = {
   projectName: string;
   srcImages: Array<string>;
 };
@@ -652,10 +652,39 @@ export type OneHundredAndFortyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortyThree = {
+export type OneHundredAndFortyFour = {
   projectName: string;
   tags: Array<string>;
   target?: string | undefined;
+};
+
+export const UserEventPayload143Role = {
+  Admin: "ADMIN",
+  ProjectDeveloper: "PROJECT_DEVELOPER",
+  ProjectViewer: "PROJECT_VIEWER",
+} as const;
+export type UserEventPayload143Role = ClosedEnum<
+  typeof UserEventPayload143Role
+>;
+
+export type UserEventPayload143Project = {
+  name: string;
+  role: UserEventPayload143Role;
+  invitedUserName: string;
+  id?: string | undefined;
+  invitedUserId?: string | undefined;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type OneHundredAndFortyThree = {
+  project: UserEventPayload143Project;
+};
+
+export type UserEventPayload142Project = {
+  id: string;
+  name: string;
 };
 
 export const UserEventPayload142Role = {
@@ -667,35 +696,6 @@ export type UserEventPayload142Role = ClosedEnum<
   typeof UserEventPayload142Role
 >;
 
-export type UserEventPayload142Project = {
-  name: string;
-  role: UserEventPayload142Role;
-  invitedUserName: string;
-  id?: string | undefined;
-  invitedUserId?: string | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type OneHundredAndFortyTwo = {
-  project: UserEventPayload142Project;
-};
-
-export type UserEventPayload141Project = {
-  id: string;
-  name: string;
-};
-
-export const UserEventPayload141Role = {
-  Admin: "ADMIN",
-  ProjectDeveloper: "PROJECT_DEVELOPER",
-  ProjectViewer: "PROJECT_VIEWER",
-} as const;
-export type UserEventPayload141Role = ClosedEnum<
-  typeof UserEventPayload141Role
->;
-
 export const PayloadPreviousRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
@@ -704,7 +704,7 @@ export const PayloadPreviousRole = {
 export type PayloadPreviousRole = ClosedEnum<typeof PayloadPreviousRole>;
 
 export type PayloadProjectMembership = {
-  role?: UserEventPayload141Role | undefined;
+  role?: UserEventPayload142Role | undefined;
   uid?: string | undefined;
   createdAt?: number | undefined;
   username?: string | undefined;
@@ -714,12 +714,12 @@ export type PayloadProjectMembership = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFortyOne = {
-  project: UserEventPayload141Project;
+export type OneHundredAndFortyTwo = {
+  project: UserEventPayload142Project;
   projectMembership: PayloadProjectMembership;
 };
 
-export type UserEventPayload140Project = {
+export type UserEventPayload141Project = {
   name: string;
   id?: string | undefined;
 };
@@ -741,12 +741,12 @@ export type RemovedMembership = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndForty = {
-  project: UserEventPayload140Project;
+export type OneHundredAndFortyOne = {
+  project: UserEventPayload141Project;
   removedMembership: RemovedMembership;
 };
 
-export type UserEventPayload139Project = {
+export type UserEventPayload140Project = {
   name: string;
   id?: string | undefined;
 };
@@ -768,15 +768,15 @@ export type ProjectMembership = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtyNine = {
-  project: UserEventPayload139Project;
+export type OneHundredAndForty = {
+  project: UserEventPayload140Project;
   projectMembership: ProjectMembership | null;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtyEight = {
+export type OneHundredAndThirtyNine = {
   previousProjectName: string;
   newProjectName: string;
   originAccountName: string;
@@ -786,7 +786,7 @@ export type OneHundredAndThirtyEight = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtySeven = {
+export type OneHundredAndThirtyEight = {
   previousProjectName: string;
   newProjectName: string;
   destinationAccountName: string;
@@ -796,7 +796,7 @@ export type OneHundredAndThirtySeven = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtySix = {
+export type OneHundredAndThirtySeven = {
   projectName: string;
   destinationAccountName: string | null;
   transferId?: string | undefined;
@@ -805,7 +805,7 @@ export type OneHundredAndThirtySix = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtyFive = {
+export type OneHundredAndThirtySix = {
   projectId: string;
   projectName: string;
   originAccountName: string;
@@ -817,7 +817,7 @@ export type OneHundredAndThirtyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtyFour = {
+export type OneHundredAndThirtyFive = {
   requestedTeamName: string;
   requestedUserName?: string | undefined;
   gitUsername?: string | undefined;
@@ -829,7 +829,7 @@ export type OneHundredAndThirtyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtyThree = {
+export type OneHundredAndThirtyFour = {
   teamName: string;
   username?: string | undefined;
   gitUsername?: string | null | undefined;
@@ -841,7 +841,7 @@ export type OneHundredAndThirtyThree = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtyTwo = {
+export type OneHundredAndThirtyThree = {
   teamName: string;
   username?: string | undefined;
   gitUsername?: string | undefined;
@@ -855,7 +855,7 @@ export type OneHundredAndThirtyTwo = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirtyOne = {
+export type OneHundredAndThirtyTwo = {
   price?: number | undefined;
   currency?: string | undefined;
 };
@@ -863,7 +863,7 @@ export type OneHundredAndThirtyOne = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirty = {
+export type OneHundredAndThirtyOne = {
   previewDeploymentSuffix?: string | null | undefined;
   previousPreviewDeploymentSuffix?: string | null | undefined;
 };
@@ -871,7 +871,7 @@ export type OneHundredAndThirty = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentyNine = {
+export type OneHundredAndThirty = {
   price?: number | undefined;
   currency?: string | undefined;
   enabled?: boolean | undefined;
@@ -880,14 +880,14 @@ export type OneHundredAndTwentyNine = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentyEight = {
+export type OneHundredAndTwentyNine = {
   username: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentySeven = {
+export type OneHundredAndTwentyEight = {
   email: string;
   prevEmail: string;
 };
@@ -895,14 +895,14 @@ export type OneHundredAndTwentySeven = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentySix = {
+export type OneHundredAndTwentySeven = {
   mfaEnabled: boolean;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentyFive = {
+export type OneHundredAndTwentySix = {
   enabled: boolean;
   totpVerified: boolean;
 };
@@ -920,7 +920,7 @@ export type PayloadNext = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentyFour = {
+export type OneHundredAndTwentyFive = {
   previous: PayloadPrevious;
   next: PayloadNext;
 };
@@ -935,7 +935,7 @@ export type PayloadRemoteCaching = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentyThree = {
+export type OneHundredAndTwentyFour = {
   /**
    * Represents configuration for remote caching
    */
@@ -945,25 +945,25 @@ export type OneHundredAndTwentyThree = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentyTwo = {
+export type OneHundredAndTwentyThree = {
   slug?: string | undefined;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwentyOne = {
+export type OneHundredAndTwentyTwo = {
   name?: string | undefined;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwenty = {
+export type OneHundredAndTwentyOne = {
   enforced: boolean;
 };
 
-export type UserEventPayload119User = {
+export type UserEventPayload120User = {
   id: string;
   username: string;
 };
@@ -971,9 +971,9 @@ export type UserEventPayload119User = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndNineteen = {
+export type OneHundredAndTwenty = {
   entitlement: string;
-  user: UserEventPayload119User;
+  user: UserEventPayload120User;
   previousCanceledAt?: string | undefined;
 };
 
@@ -985,7 +985,7 @@ export type UserEventPayloadUser = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndEighteen = {
+export type OneHundredAndNineteen = {
   entitlement: string;
   user: UserEventPayloadUser;
 };
@@ -998,7 +998,7 @@ export type UpdatedUser = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSeventeen = {
+export type OneHundredAndEighteen = {
   directoryType?: string | undefined;
   updatedUser?: UpdatedUser | undefined;
   role?: string | undefined;
@@ -1009,7 +1009,7 @@ export type OneHundredAndSeventeen = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSixteen = {
+export type OneHundredAndSeventeen = {
   role?: string | undefined;
   uid: string;
   origin?: string | undefined;
@@ -1026,7 +1026,7 @@ export type DeletedUser = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFifteen = {
+export type OneHundredAndSixteen = {
   deletedUser?: DeletedUser | undefined;
   deletedUid?: string | undefined;
   githubUsername?: string | null | undefined;
@@ -1043,7 +1043,7 @@ export type InvitedUser = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFourteen = {
+export type OneHundredAndFifteen = {
   directoryType?: string | undefined;
   ssoType?: string | undefined;
   invitedUser?: InvitedUser | undefined;
@@ -1061,7 +1061,7 @@ export type Reasons = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThirteen = {
+export type OneHundredAndFourteen = {
   slug: string;
   teamId: string;
   by: string;
@@ -1071,7 +1071,7 @@ export type OneHundredAndThirteen = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwelve = {
+export type OneHundredAndThirteen = {
   slug: string;
 };
 
@@ -1083,7 +1083,7 @@ export type Store = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndEleven = {
+export type OneHundredAndTwelve = {
   store: Store;
   ownerId?: string | undefined;
 };
@@ -1097,14 +1097,14 @@ export type StoreType = ClosedEnum<typeof StoreType>;
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTen = {
+export type OneHundredAndEleven = {
   storeType: StoreType;
 };
 
 export const UserEventPayloadType = {
   Redis: "redis",
-  Postgres: "postgres",
   EdgeConfig: "edge-config",
+  Postgres: "postgres",
   Blob: "blob",
   Integration: "integration",
 } as const;
@@ -1113,7 +1113,7 @@ export type UserEventPayloadType = ClosedEnum<typeof UserEventPayloadType>;
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndNine = {
+export type OneHundredAndTen = {
   id: string;
   name?: string | undefined;
   computeUnitsMax?: number | undefined;
@@ -1125,21 +1125,21 @@ export type OneHundredAndNine = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndEight = {
+export type OneHundredAndNine = {
   webhookUrl?: string | undefined;
 };
 
 /**
  * The budget type
  */
-export const UserEventPayload107Type = {
+export const UserEventPayload108Type = {
   Fixed: "fixed",
 } as const;
 /**
  * The budget type
  */
-export type UserEventPayload107Type = ClosedEnum<
-  typeof UserEventPayload107Type
+export type UserEventPayload108Type = ClosedEnum<
+  typeof UserEventPayload108Type
 >;
 
 /**
@@ -1162,7 +1162,7 @@ export type UserEventPayloadBudget = {
   /**
    * The budget type
    */
-  type: UserEventPayload107Type;
+  type: UserEventPayload108Type;
   /**
    * Budget amount (USD / dollars)
    */
@@ -1216,7 +1216,7 @@ export type UserEventPayloadBudget = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSeven = {
+export type OneHundredAndEight = {
   /**
    * Represents a budget for tracking and notifying teams on their spending.
    */
@@ -1227,14 +1227,14 @@ export type OneHundredAndSeven = {
 /**
  * The budget type
  */
-export const UserEventPayload106Type = {
+export const UserEventPayload107Type = {
   Fixed: "fixed",
 } as const;
 /**
  * The budget type
  */
-export type UserEventPayload106Type = ClosedEnum<
-  typeof UserEventPayload106Type
+export type UserEventPayload107Type = ClosedEnum<
+  typeof UserEventPayload107Type
 >;
 
 /**
@@ -1257,7 +1257,7 @@ export type PayloadBudget = {
   /**
    * The budget type
    */
-  type: UserEventPayload106Type;
+  type: UserEventPayload107Type;
   /**
    * Budget amount (USD / dollars)
    */
@@ -1311,7 +1311,7 @@ export type PayloadBudget = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndSix = {
+export type OneHundredAndSeven = {
   /**
    * Represents a budget for tracking and notifying teams on their spending.
    */
@@ -1321,14 +1321,14 @@ export type OneHundredAndSix = {
 /**
  * The budget type
  */
-export const UserEventPayload105Type = {
+export const UserEventPayload106Type = {
   Fixed: "fixed",
 } as const;
 /**
  * The budget type
  */
-export type UserEventPayload105Type = ClosedEnum<
-  typeof UserEventPayload105Type
+export type UserEventPayload106Type = ClosedEnum<
+  typeof UserEventPayload106Type
 >;
 
 /**
@@ -1353,7 +1353,7 @@ export type BudgetItem = {
   /**
    * The budget type
    */
-  type: UserEventPayload105Type;
+  type: UserEventPayload106Type;
   /**
    * Budget amount (USD / dollars)
    */
@@ -1414,7 +1414,7 @@ export type Budget = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFive = {
+export type OneHundredAndSix = {
   budget: Budget;
 };
 
@@ -1426,7 +1426,7 @@ export type ScalingRules = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndFour = {
+export type OneHundredAndFive = {
   scalingRules: { [k: string]: ScalingRules };
   min: number;
   max: number;
@@ -1436,14 +1436,14 @@ export type OneHundredAndFour = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndThree = {
+export type OneHundredAndFour = {
   bio: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndTwo = {
+export type OneHundredAndThree = {
   oldName: string;
   newName: string;
   uid?: string | undefined;
@@ -1458,12 +1458,12 @@ export type Name = Name2 | string;
 /**
  * The payload of the event, if requested.
  */
-export type OneHundredAndOne = {
+export type OneHundredAndTwo = {
   uid: string;
   name: Name2 | string;
 };
 
-export type UserEventPayload100Team = {
+export type UserEventPayload101Team = {
   id: string;
   name?: string | undefined;
 };
@@ -1475,12 +1475,12 @@ export type PayloadPreviousRule = {
 /**
  * The payload of the event, if requested.
  */
-export type OneHundred = {
-  team: UserEventPayload100Team;
+export type OneHundredAndOne = {
+  team: UserEventPayload101Team;
   previousRule: PayloadPreviousRule;
 };
 
-export type UserEventPayload99Team = {
+export type UserEventPayload100Team = {
   id: string;
   name?: string | undefined;
 };
@@ -1496,8 +1496,8 @@ export type NextRule = {
 /**
  * The payload of the event, if requested.
  */
-export type NinetyNine = {
-  team: UserEventPayload99Team;
+export type OneHundred = {
+  team: UserEventPayload100Team;
   previousRule?: PreviousRule | undefined;
   nextRule?: NextRule | undefined;
 };
@@ -1505,14 +1505,14 @@ export type NinetyNine = {
 /**
  * The payload of the event, if requested.
  */
-export type NinetyEight = {
+export type NinetyNine = {
   email: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type NinetySeven = {
+export type NinetyEight = {
   email: string;
   verified: boolean;
 };
@@ -1520,7 +1520,7 @@ export type NinetySeven = {
 /**
  * The payload of the event, if requested.
  */
-export type NinetySix = {
+export type NinetySeven = {
   instances: number;
   url: string;
 };
@@ -1528,7 +1528,7 @@ export type NinetySix = {
 /**
  * The payload of the event, if requested.
  */
-export type NinetyFive = {
+export type NinetySix = {
   gitProvider: string;
   gitProviderGroupDescriptor: string;
   gitScope: string;
@@ -1537,7 +1537,7 @@ export type NinetyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type NinetyFour = {
+export type NinetyFive = {
   projectId: string;
   projectName: string;
   targetDeploymentId?: string | undefined;
@@ -1547,7 +1547,7 @@ export type NinetyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type NinetyThree = {
+export type NinetyFour = {
   projectId: string;
   projectName: string;
   targetDeploymentId?: string | undefined;
@@ -1558,13 +1558,13 @@ export type StaticIps = {
   regions?: Array<string> | undefined;
 };
 
-export type UserEventPayload92Project = {
+export type UserEventPayload93Project = {
   id: string;
   staticIps: StaticIps;
 };
 
 export type Next = {
-  project: UserEventPayload92Project;
+  project: UserEventPayload93Project;
 };
 
 export type PayloadStaticIps = {
@@ -1572,19 +1572,19 @@ export type PayloadStaticIps = {
   regions?: Array<string> | undefined;
 };
 
-export type UserEventPayload92PreviousProject = {
+export type UserEventPayload93PreviousProject = {
   id: string;
   staticIps: PayloadStaticIps;
 };
 
 export type Previous = {
-  project: UserEventPayload92PreviousProject;
+  project: UserEventPayload93PreviousProject;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type NinetyTwo = {
+export type NinetyThree = {
   next: Next;
   previous: Previous;
 };
@@ -1592,7 +1592,7 @@ export type NinetyTwo = {
 /**
  * The payload of the event, if requested.
  */
-export type NinetyOne = {
+export type NinetyTwo = {
   source: string;
   projectId: string;
 };
@@ -1606,7 +1606,7 @@ export type PayloadReasonCode = ClosedEnum<typeof PayloadReasonCode>;
 /**
  * The payload of the event, if requested.
  */
-export type Ninety = {
+export type NinetyOne = {
   projectId: string;
   reasonCode?: PayloadReasonCode | undefined;
 };
@@ -1621,12 +1621,12 @@ export type ReasonCode = ClosedEnum<typeof ReasonCode>;
 /**
  * The payload of the event, if requested.
  */
-export type EightyNine = {
+export type Ninety = {
   projectId: string;
   reasonCode?: ReasonCode | undefined;
 };
 
-export type UserEventPayload88Team = {
+export type UserEventPayload89Team = {
   id: string;
   name: string;
 };
@@ -1679,7 +1679,7 @@ export type NewConnectConfigurations = {
   updatedAt: number;
 };
 
-export type UserEventPayload88Project = {
+export type UserEventPayload89Project = {
   id: string;
   name?: string | undefined;
   oldConnectConfigurations: Array<OldConnectConfigurations> | null;
@@ -1689,34 +1689,34 @@ export type UserEventPayload88Project = {
 /**
  * The payload of the event, if requested.
  */
-export type EightyEight = {
-  team: UserEventPayload88Team;
-  project: UserEventPayload88Project;
+export type EightyNine = {
+  team: UserEventPayload89Team;
+  project: UserEventPayload89Project;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type EightySeven = {
+export type EightyEight = {
   name: string;
   ownerId: string;
 };
 
-export const UserEventPayload86Action = {
+export const UserEventPayload87Action = {
   Enabled: "enabled",
   Disabled: "disabled",
   Regenerated: "regenerated",
 } as const;
-export type UserEventPayload86Action = ClosedEnum<
-  typeof UserEventPayload86Action
+export type UserEventPayload87Action = ClosedEnum<
+  typeof UserEventPayload87Action
 >;
 
 /**
  * The payload of the event, if requested.
  */
-export type EightySix = {
+export type EightySeven = {
   projectName: string;
-  action: UserEventPayload86Action;
+  action: UserEventPayload87Action;
 };
 
 export type Paths = {
@@ -1738,7 +1738,7 @@ export type OldOptionsAllowlist = {
 /**
  * The payload of the event, if requested.
  */
-export type EightyFive = {
+export type EightySix = {
   projectName: string;
   optionsAllowlist?: OptionsAllowlist | null | undefined;
   oldOptionsAllowlist?: OldOptionsAllowlist | null | undefined;
@@ -1765,7 +1765,7 @@ export type OldTrustedIps = ClosedEnum<typeof OldTrustedIps>;
 /**
  * The payload of the event, if requested.
  */
-export type EightyFour = {
+export type EightyFive = {
   projectName: string;
   trustedIps?: TrustedIps | null | undefined;
   oldTrustedIps?: OldTrustedIps | null | undefined;
@@ -1828,7 +1828,7 @@ export type OldPasswordProtection =
 /**
  * The payload of the event, if requested.
  */
-export type EightyThree = {
+export type EightyFour = {
   projectName: string;
   passwordProtection: PasswordProtection1 | PasswordProtection2 | null;
   oldPasswordProtection: OldPasswordProtection1 | OldPasswordProtection2 | null;
@@ -1883,7 +1883,7 @@ export type OldSsoProtection = OldSsoProtection1 | OldSsoProtection2;
 /**
  * The payload of the event, if requested.
  */
-export type EightyTwo = {
+export type EightyThree = {
   projectName: string;
   ssoProtection: SsoProtection1 | SsoProtection2 | null;
   oldSsoProtection: OldSsoProtection1 | OldSsoProtection2 | null;
@@ -1892,7 +1892,7 @@ export type EightyTwo = {
 /**
  * The payload of the event, if requested.
  */
-export type EightyOne = {
+export type EightyTwo = {
   projectName?: string | undefined;
   projectId: string;
 };
@@ -1900,7 +1900,7 @@ export type EightyOne = {
 /**
  * The payload of the event, if requested.
  */
-export type Eighty = {
+export type EightyOne = {
   projectName?: string | undefined;
   projectId: string;
   projectAnalytics?: { [k: string]: any } | undefined;
@@ -1930,7 +1930,7 @@ export type PrevProjectAnalytics = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyNine = {
+export type Eighty = {
   projectName?: string | undefined;
   projectId: string;
   projectAnalytics: ProjectAnalytics | null;
@@ -1940,12 +1940,12 @@ export type SeventyNine = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyEight = {
+export type SeventyNine = {
   projectName: string;
   branch: string;
 };
 
-export const UserEventPayload77Role = {
+export const UserEventPayload78Role = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -1955,7 +1955,7 @@ export const UserEventPayload77Role = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type UserEventPayload77Role = ClosedEnum<typeof UserEventPayload77Role>;
+export type UserEventPayload78Role = ClosedEnum<typeof UserEventPayload78Role>;
 
 export const PayloadOrigin = {
   Teams: "teams",
@@ -1989,7 +1989,7 @@ export type PayloadJoinedFrom = {
 };
 
 export type RemovedUsers = {
-  role: UserEventPayload77Role;
+  role: UserEventPayload78Role;
   confirmed: boolean;
   confirmedAt?: number | undefined;
   joinedFrom?: PayloadJoinedFrom | undefined;
@@ -1998,7 +1998,7 @@ export type RemovedUsers = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventySeven = {
+export type SeventyEight = {
   plan: string;
   removedUsers?: { [k: string]: RemovedUsers } | undefined;
   priorPlan?: string | undefined;
@@ -2011,14 +2011,14 @@ export type SeventySeven = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventySix = {
+export type SeventySeven = {
   projectName: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type SeventyFive = {
+export type SeventySix = {
   projectId: string;
   toDeploymentId: string;
   projectName: string;
@@ -2027,7 +2027,7 @@ export type SeventyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyFour = {
+export type SeventyFive = {
   drainUrl: string | null;
   integrationName?: string | undefined;
 };
@@ -2035,7 +2035,7 @@ export type SeventyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyThree = {
+export type SeventyFour = {
   logDrainUrl: string;
   integrationName?: string | undefined;
 };
@@ -2043,7 +2043,7 @@ export type SeventyThree = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyTwo = {
+export type SeventyThree = {
   logDrainUrl: string | null;
   integrationName?: string | undefined;
 };
@@ -2125,7 +2125,7 @@ export type Geolocation = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyOne = {
+export type SeventyTwo = {
   userAgent?: UserAgent | undefined;
   geolocation?: Geolocation | null | undefined;
   viaGithub: boolean;
@@ -2144,7 +2144,7 @@ export type SeventyOne = {
 /**
  * The payload of the event, if requested.
  */
-export type Seventy = {
+export type SeventyOne = {
   integrationId: string;
   configurationId: string;
   integrationSlug: string;
@@ -2157,7 +2157,7 @@ export type Seventy = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyNine = {
+export type Seventy = {
   projectId: string;
   fromDeploymentId: string;
   toDeploymentId: string;
@@ -2168,7 +2168,7 @@ export type SixtyNine = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyEight = {
+export type SixtyNine = {
   integrationId: string;
   configurationId: string;
   integrationSlug: string;
@@ -2180,7 +2180,7 @@ export type SixtyEight = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtySeven = {
+export type SixtyEight = {
   integrationId: string;
   configurationId: string;
   integrationSlug: string;
@@ -2200,25 +2200,25 @@ export type Configurations = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtySix = {
+export type SixtySeven = {
   configurations: Array<Configurations>;
   ownerId: string;
 };
 
-export const UserEventPayload65Action = {
+export const UserEventPayload66Action = {
   HardBlocked: "hard-blocked",
   SoftBlocked: "soft-blocked",
   Unblocked: "unblocked",
 } as const;
-export type UserEventPayload65Action = ClosedEnum<
-  typeof UserEventPayload65Action
+export type UserEventPayload66Action = ClosedEnum<
+  typeof UserEventPayload66Action
 >;
 
 /**
  * Since June 2023
  */
 export type BlockHistory = {
-  action: UserEventPayload65Action;
+  action: UserEventPayload66Action;
   createdAt: number;
   caseId?: string | undefined;
   reason: string;
@@ -2367,16 +2367,16 @@ export type PayloadBuildEntitlements = {
   enhancedBuilds?: boolean | undefined;
 };
 
-export const UserEventPayload65Configuration = {
+export const UserEventPayload66Configuration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
 } as const;
-export type UserEventPayload65Configuration = ClosedEnum<
-  typeof UserEventPayload65Configuration
+export type UserEventPayload66Configuration = ClosedEnum<
+  typeof UserEventPayload66Configuration
 >;
 
 export type PayloadBuildQueue = {
-  configuration?: UserEventPayload65Configuration | undefined;
+  configuration?: UserEventPayload66Configuration | undefined;
 };
 
 export const PayloadPurchaseType = {
@@ -2486,13 +2486,13 @@ export type SiftScores = {
   reasons: Array<PayloadReasons>;
 };
 
-export const UserEventPayload65Name = {
+export const UserEventPayload66Name = {
   String: "string",
 } as const;
-export type UserEventPayload65Name = ClosedEnum<typeof UserEventPayload65Name>;
+export type UserEventPayload66Name = ClosedEnum<typeof UserEventPayload66Name>;
 
 export type SiftRoute = {
-  name: UserEventPayload65Name;
+  name: UserEventPayload66Name;
 };
 
 export const PayloadReason = {
@@ -2557,7 +2557,7 @@ export type PayloadSoftBlock = {
   blockedDueToOverageType?: PayloadBlockedDueToOverageType | undefined;
 };
 
-export const UserEventPayload65Role = {
+export const UserEventPayload66Role = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -2567,7 +2567,7 @@ export const UserEventPayload65Role = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type UserEventPayload65Role = ClosedEnum<typeof UserEventPayload65Role>;
+export type UserEventPayload66Role = ClosedEnum<typeof UserEventPayload66Role>;
 
 export const PayloadTeamRoles = {
   Owner: "OWNER",
@@ -2629,19 +2629,19 @@ export type Teams = {
   created: number;
   createdAt: number;
   teamId: string;
-  role: UserEventPayload65Role;
+  role: UserEventPayload66Role;
+  teamRoles?: Array<PayloadTeamRoles> | undefined;
+  teamPermissions?: Array<PayloadTeamPermissions> | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
-  teamRoles?: Array<PayloadTeamRoles> | undefined;
-  teamPermissions?: Array<PayloadTeamPermissions> | undefined;
   joinedFrom?: UserEventPayloadJoinedFrom | undefined;
 };
 
-export const UserEventPayload65Type = {
+export const UserEventPayload66Type = {
   User: "user",
 } as const;
-export type UserEventPayload65Type = ClosedEnum<typeof UserEventPayload65Type>;
+export type UserEventPayload66Type = ClosedEnum<typeof UserEventPayload66Type>;
 
 /**
  * Contains the timestamps when a user was notified about their usage
@@ -3038,57 +3038,57 @@ export type ObservabilityPlus = {
   blockType: PayloadBlockType;
 };
 
-export const UserEventPayload65BlockReason = {
+export const UserEventPayload66BlockReason = {
   AdminOverride: "admin_override",
   LimitsExceeded: "limits_exceeded",
 } as const;
-export type UserEventPayload65BlockReason = ClosedEnum<
-  typeof UserEventPayload65BlockReason
+export type UserEventPayload66BlockReason = ClosedEnum<
+  typeof UserEventPayload66BlockReason
 >;
 
 export type UserEventPayloadDataCache = {
   updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason: UserEventPayload65BlockReason;
+  blockReason: UserEventPayload66BlockReason;
 };
 
-export const UserEventPayload65NewOwnerBlockReason = {
+export const UserEventPayload66NewOwnerBlockReason = {
   AdminOverride: "admin_override",
   LimitsExceeded: "limits_exceeded",
 } as const;
-export type UserEventPayload65NewOwnerBlockReason = ClosedEnum<
-  typeof UserEventPayload65NewOwnerBlockReason
+export type UserEventPayload66NewOwnerBlockReason = ClosedEnum<
+  typeof UserEventPayload66NewOwnerBlockReason
 >;
 
 export type PayloadImageOptimizationTransformation = {
   updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason: UserEventPayload65NewOwnerBlockReason;
+  blockReason: UserEventPayload66NewOwnerBlockReason;
 };
 
-export const UserEventPayload65NewOwnerFeatureBlocksBlockReason = {
+export const UserEventPayload66NewOwnerFeatureBlocksBlockReason = {
   AdminOverride: "admin_override",
   LimitsExceeded: "limits_exceeded",
 } as const;
-export type UserEventPayload65NewOwnerFeatureBlocksBlockReason = ClosedEnum<
-  typeof UserEventPayload65NewOwnerFeatureBlocksBlockReason
+export type UserEventPayload66NewOwnerFeatureBlocksBlockReason = ClosedEnum<
+  typeof UserEventPayload66NewOwnerFeatureBlocksBlockReason
 >;
 
 export type PayloadSourceImages = {
   updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason: UserEventPayload65NewOwnerFeatureBlocksBlockReason;
+  blockReason: UserEventPayload66NewOwnerFeatureBlocksBlockReason;
 };
 
-export const UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason = {
+export const UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason = {
   AdminOverride: "admin_override",
   LimitsExceeded: "limits_exceeded",
 } as const;
-export type UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason = ClosedEnum<
-  typeof UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason
+export type UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason = ClosedEnum<
+  typeof UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason
 >;
 
 export const OverageReason = {
@@ -3139,16 +3139,16 @@ export type BlobT = {
   updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason: UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason;
+  blockReason: UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason;
   overageReason: OverageReason;
 };
 
-export const UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason = {
+export const UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason = {
   AdminOverride: "admin_override",
   LimitsExceeded: "limits_exceeded",
 } as const;
-export type UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason =
-  ClosedEnum<typeof UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason>;
+export type UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason =
+  ClosedEnum<typeof UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason>;
 
 export const PayloadOverageReason = {
   AnalyticsUsage: "analyticsUsage",
@@ -3198,16 +3198,16 @@ export type Postgres = {
   updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason: UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason;
+  blockReason: UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason;
   overageReason: PayloadOverageReason;
 };
 
-export const UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason = {
+export const UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason = {
   AdminOverride: "admin_override",
   LimitsExceeded: "limits_exceeded",
 } as const;
-export type UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason =
-  ClosedEnum<typeof UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason>;
+export type UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason =
+  ClosedEnum<typeof UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason>;
 
 export const UserEventPayloadOverageReason = {
   AnalyticsUsage: "analyticsUsage",
@@ -3259,18 +3259,18 @@ export type Redis = {
   updatedAt: number;
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
-  blockReason: UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason;
+  blockReason: UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason;
   overageReason: UserEventPayloadOverageReason;
 };
 
-export const UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason =
+export const UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason =
   {
     AdminOverride: "admin_override",
     LimitsExceeded: "limits_exceeded",
   } as const;
-export type UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason =
+export type UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason =
   ClosedEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
+    typeof UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
   >;
 
 export type MicrofrontendsRequest = {
@@ -3278,7 +3278,7 @@ export type MicrofrontendsRequest = {
   blockedFrom?: number | undefined;
   blockedUntil?: number | undefined;
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason;
+    UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason;
 };
 
 /**
@@ -3441,7 +3441,7 @@ export type NewOwner = {
    * Deprecated on 2022-04-12 in favor of trialTeamIds and using utils/api-teams/user-has-trial-available.ts.
    */
   trialTeamId?: string | undefined;
-  type: UserEventPayload65Type;
+  type: UserEventPayload66Type;
   /**
    * Contains the timestamps when a user was notified about their usage
    */
@@ -3480,7 +3480,7 @@ export type NewOwner = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyFive = {
+export type SixtySix = {
   userId: string;
   integrationId: string;
   configurationId: string;
@@ -3492,7 +3492,7 @@ export type SixtyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyFour = {
+export type SixtyFive = {
   integrationId: string;
   integrationSlug: string;
   integrationName: string;
@@ -3501,7 +3501,7 @@ export type SixtyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyThree = {
+export type SixtyFour = {
   projectId: string;
   prevAttackModeEnabled?: boolean | undefined;
   prevAttackModeActiveUntil?: number | null | undefined;
@@ -3509,24 +3509,24 @@ export type SixtyThree = {
   attackModeActiveUntil?: number | null | undefined;
 };
 
-export const UserEventPayload62Action = {
+export const UserEventPayload63Action = {
   Log: "log",
   Challenge: "challenge",
   Deny: "deny",
 } as const;
-export type UserEventPayload62Action = ClosedEnum<
-  typeof UserEventPayload62Action
+export type UserEventPayload63Action = ClosedEnum<
+  typeof UserEventPayload63Action
 >;
 
 export type RuleGroups = {
   active: boolean;
-  action?: UserEventPayload62Action | undefined;
+  action?: UserEventPayload63Action | undefined;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type SixtyTwo = {
+export type SixtyThree = {
   projectId: string;
   rulesetName: string;
   ruleGroups: { [k: string]: RuleGroups };
@@ -3542,7 +3542,7 @@ export type UserEventPayloadAction = ClosedEnum<typeof UserEventPayloadAction>;
 /**
  * The payload of the event, if requested.
  */
-export type SixtyOne = {
+export type SixtyTwo = {
   projectId: string;
   rulesetName: string;
   active: boolean;
@@ -3552,7 +3552,7 @@ export type SixtyOne = {
 /**
  * The payload of the event, if requested.
  */
-export type Sixty = {
+export type SixtyOne = {
   projectId: string;
   scope: string;
   source: string;
@@ -3563,7 +3563,7 @@ export type ConfigChanges = {};
 /**
  * The payload of the event, if requested.
  */
-export type FiftyNine = {
+export type Sixty = {
   projectId: string;
   restore: boolean;
   configVersion: number;
@@ -3574,7 +3574,7 @@ export type FiftyNine = {
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
  */
-export const UserEventPayload58OldEnvVarType = {
+export const UserEventPayload59OldEnvVarType = {
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
@@ -3583,8 +3583,8 @@ export const UserEventPayload58OldEnvVarType = {
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
  */
-export type UserEventPayload58OldEnvVarType = ClosedEnum<
-  typeof UserEventPayload58OldEnvVarType
+export type UserEventPayload59OldEnvVarType = ClosedEnum<
+  typeof UserEventPayload59OldEnvVarType
 >;
 
 /**
@@ -3652,7 +3652,7 @@ export type OldEnvVar = {
   /**
    * The type of this cosmos doc instance, if blank, assume secret.
    */
-  type?: UserEventPayload58OldEnvVarType | undefined;
+  type?: UserEventPayload59OldEnvVarType | undefined;
   /**
    * environments this env variable targets
    */
@@ -3678,7 +3678,7 @@ export type OldEnvVar = {
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
  */
-export const UserEventPayload58Type = {
+export const UserEventPayload59Type = {
   System: "system",
   Encrypted: "encrypted",
   Plain: "plain",
@@ -3687,12 +3687,12 @@ export const UserEventPayload58Type = {
 /**
  * The type of this cosmos doc instance, if blank, assume secret.
  */
-export type UserEventPayload58Type = ClosedEnum<typeof UserEventPayload58Type>;
+export type UserEventPayload59Type = ClosedEnum<typeof UserEventPayload59Type>;
 
 /**
  * environments this env variable targets
  */
-export const UserEventPayload58Target = {
+export const UserEventPayload59Target = {
   Production: "production",
   Preview: "preview",
   Development: "development",
@@ -3700,8 +3700,8 @@ export const UserEventPayload58Target = {
 /**
  * environments this env variable targets
  */
-export type UserEventPayload58Target = ClosedEnum<
-  typeof UserEventPayload58Target
+export type UserEventPayload59Target = ClosedEnum<
+  typeof UserEventPayload59Target
 >;
 
 export type NewEnvVar = {
@@ -3756,11 +3756,11 @@ export type NewEnvVar = {
   /**
    * The type of this cosmos doc instance, if blank, assume secret.
    */
-  type?: UserEventPayload58Type | undefined;
+  type?: UserEventPayload59Type | undefined;
   /**
    * environments this env variable targets
    */
-  target?: Array<UserEventPayload58Target> | undefined;
+  target?: Array<UserEventPayload59Target> | undefined;
   /**
    * whether or not this env varible applies to custom environments
    */
@@ -3819,7 +3819,7 @@ export type UpdateDiff = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyEight = {
+export type FiftyNine = {
   oldEnvVar?: OldEnvVar | undefined;
   newEnvVar?: NewEnvVar | undefined;
   updateDiff?: UpdateDiff | undefined;
@@ -3855,7 +3855,7 @@ export type PayloadTarget = ClosedEnum<typeof PayloadTarget>;
 /**
  * The payload of the event, if requested.
  */
-export type FiftySeven = {
+export type FiftyEight = {
   /**
    * The date when the Shared Env Var was created.
    */
@@ -3936,7 +3936,7 @@ export type Target = string | Array<string>;
 /**
  * The payload of the event, if requested.
  */
-export type FiftySix = {
+export type FiftySeven = {
   key?: string | undefined;
   projectId?: string | undefined;
   projectName?: string | undefined;
@@ -3951,7 +3951,7 @@ export type FiftySix = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyFive = {
+export type FiftySix = {
   email: string;
   name: string;
 };
@@ -3959,7 +3959,7 @@ export type FiftyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyFour = {
+export type FiftyFive = {
   sha: string;
   gitUserPlatform: string;
   projectName: string;
@@ -3970,7 +3970,7 @@ export type FiftyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyThree = {
+export type FiftyFour = {
   name: string;
   price?: number | undefined;
   currency?: string | undefined;
@@ -3979,7 +3979,7 @@ export type FiftyThree = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyTwo = {
+export type FiftyThree = {
   renew?: boolean | undefined;
   domain: string;
 };
@@ -3987,7 +3987,7 @@ export type FiftyTwo = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyOne = {
+export type FiftyTwo = {
   name: string;
   destinationId: string;
   destinationName: string;
@@ -3996,7 +3996,7 @@ export type FiftyOne = {
 /**
  * The payload of the event, if requested.
  */
-export type Fifty = {
+export type FiftyOne = {
   name: string;
   destinationId: string | null;
   destinationName: string | null;
@@ -4005,7 +4005,7 @@ export type Fifty = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyNine = {
+export type Fifty = {
   name: string;
   fromId: string | null;
   fromName: string | null;
@@ -4014,32 +4014,32 @@ export type FortyNine = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyEight = {
+export type FortyNine = {
   domainId: string;
   name: string;
 };
 
-export type UserEventPayload47OldTeam = {
+export type UserEventPayload48OldTeam = {
   name: string;
 };
 
-export type UserEventPayload47NewTeam = {
+export type UserEventPayload48NewTeam = {
   name: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type FortyEight = {
+  name: string;
+  oldTeam?: UserEventPayload48OldTeam | undefined;
+  newTeam?: UserEventPayload48NewTeam | undefined;
 };
 
 /**
  * The payload of the event, if requested.
  */
 export type FortySeven = {
-  name: string;
-  oldTeam?: UserEventPayload47OldTeam | undefined;
-  newTeam?: UserEventPayload47NewTeam | undefined;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type FortySix = {
   name: string;
   userId: string;
   teamId: string;
@@ -4049,7 +4049,7 @@ export type FortySix = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyFive = {
+export type FortySix = {
   name: string;
   cdnEnabled: boolean;
 };
@@ -4057,7 +4057,7 @@ export type FortyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyFour = {
+export type FortyFive = {
   name: string;
   price: number;
   currency?: string | undefined;
@@ -4066,14 +4066,14 @@ export type FortyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyThree = {
+export type FortyFour = {
   name: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type FortyTwo = {
+export type FortyThree = {
   id: string;
   value: string;
   name: string;
@@ -4084,7 +4084,7 @@ export type FortyTwo = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyOne = {
+export type FortyTwo = {
   id: string;
   value: string;
   name: string;
@@ -4103,7 +4103,7 @@ export type UserEventPayloadDeployment = {
 /**
  * The payload of the event, if requested.
  */
-export type Forty = {
+export type FortyOne = {
   deployment: UserEventPayloadDeployment;
   deploymentId: string;
   url: string;
@@ -4120,7 +4120,7 @@ export type UserEventPayloadNewTeam = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyNine = {
+export type Forty = {
   url: string;
   oldTeam?: UserEventPayloadOldTeam | undefined;
   newTeam?: UserEventPayloadNewTeam | undefined;
@@ -4136,7 +4136,7 @@ export type PayloadDeployment = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyEight = {
+export type ThirtyNine = {
   name?: string | undefined;
   alias?: Array<string> | undefined;
   target?: string | null | undefined;
@@ -4151,7 +4151,7 @@ export type ThirtyEight = {
   type?: string | undefined;
 };
 
-export type UserEventPayload37Project = {
+export type UserEventPayload38Project = {
   name: string;
 };
 
@@ -4170,15 +4170,15 @@ export type Job = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtySeven = {
-  project: UserEventPayload37Project;
+export type ThirtyEight = {
+  project: UserEventPayload38Project;
   job: Job;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type ThirtySix = {
+export type ThirtySeven = {
   bitbucketEmail: string;
   bitbucketLogin: string;
   bitbucketName?: string | undefined;
@@ -4187,7 +4187,7 @@ export type ThirtySix = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyFive = {
+export type ThirtySix = {
   gitlabLogin: string;
   gitlabEmail: string;
   gitlabName?: string | undefined;
@@ -4196,16 +4196,16 @@ export type ThirtyFive = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyFour = {
+export type ThirtyFive = {
   githubLogin: string;
 };
 
-export type UserEventPayload33Team = {
+export type UserEventPayload34Team = {
   id: string;
   name: string;
 };
 
-export type UserEventPayload33Configuration = {
+export type UserEventPayload34Configuration = {
   id: string;
   name?: string | undefined;
 };
@@ -4213,9 +4213,9 @@ export type UserEventPayload33Configuration = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyThree = {
-  team: UserEventPayload33Team;
-  configuration: UserEventPayload33Configuration;
+export type ThirtyFour = {
+  team: UserEventPayload34Team;
+  configuration: UserEventPayload34Configuration;
   newName: string;
 };
 
@@ -4229,7 +4229,7 @@ export type UserEventPayloadConfiguration = {
   name?: string | undefined;
 };
 
-export type UserEventPayload32Project = {
+export type UserEventPayload33Project = {
   id: string;
   name?: string | undefined;
 };
@@ -4237,10 +4237,10 @@ export type UserEventPayload32Project = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyTwo = {
+export type ThirtyThree = {
   team: UserEventPayloadTeam;
   configuration: UserEventPayloadConfiguration;
-  project: UserEventPayload32Project;
+  project: UserEventPayload33Project;
 };
 
 export type PayloadTeam = {
@@ -4261,7 +4261,7 @@ export type UserEventPayloadProject = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyOne = {
+export type ThirtyTwo = {
   team: PayloadTeam;
   configuration: PayloadConfiguration;
   project: UserEventPayloadProject;
@@ -4269,7 +4269,7 @@ export type ThirtyOne = {
   passive?: boolean | undefined;
 };
 
-export type UserEventPayload30Team = {
+export type UserEventPayload31Team = {
   id: string;
   name: string;
 };
@@ -4287,8 +4287,8 @@ export type PayloadProject = {
 /**
  * The payload of the event, if requested.
  */
-export type Thirty = {
-  team: UserEventPayload30Team;
+export type ThirtyOne = {
+  team: UserEventPayload31Team;
   configuration: Configuration;
   project: PayloadProject;
   buildsEnabled?: boolean | undefined;
@@ -4297,14 +4297,14 @@ export type Thirty = {
 /**
  * The payload of the event, if requested.
  */
-export type TwentyNine = {
+export type Thirty = {
   suffix: string;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type TwentyEight = {
+export type TwentyNine = {
   status: string;
   suffix: string;
 };
@@ -4312,9 +4312,19 @@ export type TwentyEight = {
 /**
  * The payload of the event, if requested.
  */
-export type TwentySeven = {
+export type TwentyEight = {
   reason?: string | undefined;
   suffix: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwentySeven = {
+  projectId?: string | undefined;
+  projectName?: string | undefined;
+  certId?: string | undefined;
+  origin?: string | undefined;
 };
 
 /**
@@ -4634,147 +4644,147 @@ export type Payload2 = {
 export type Payload1 = {};
 
 export type Payload =
-  | SeventyOne
-  | SixtySeven
-  | Seventy
-  | FortyOne
-  | FortyTwo
-  | FiftyFour
-  | FiftyNine
-  | SixtyFive
+  | SeventyTwo
   | SixtyEight
-  | OneHundredAndThirtyFive
-  | OneHundredAndSixtyFive
-  | Payload2
-  | FortySix
+  | SeventyOne
+  | FortyTwo
+  | FortyThree
+  | FiftyFive
+  | Sixty
+  | SixtySix
   | SixtyNine
-  | OneHundredAndFour
-  | OneHundredAndFortySix
+  | OneHundredAndThirtySix
+  | OneHundredAndSixtySix
+  | Payload2
+  | FortySeven
+  | Seventy
+  | OneHundredAndFive
+  | OneHundredAndFortySeven
   | Twelve
   | Sixteen
-  | Thirty
   | ThirtyOne
   | ThirtyTwo
   | ThirtyThree
-  | Forty
-  | FortyNine
+  | ThirtyFour
+  | FortyOne
   | Fifty
   | FiftyOne
-  | Sixty
+  | FiftyTwo
   | SixtyOne
   | SixtyTwo
-  | SixtyFour
-  | SeventyFive
-  | SeventyNine
-  | EightyTwo
+  | SixtyThree
+  | SixtyFive
+  | SeventySix
+  | Eighty
   | EightyThree
-  | NinetyFive
-  | OneHundredAndThirteen
-  | OneHundredAndThirtySeven
+  | EightyFour
+  | NinetySix
+  | OneHundredAndFourteen
   | OneHundredAndThirtyEight
-  | OneHundredAndFortyFive
-  | OneHundredAndFortySeven
-  | OneHundredAndFortyNine
-  | OneHundredAndFiftyTwo
-  | OneHundredAndSixtyTwo
+  | OneHundredAndThirtyNine
+  | OneHundredAndFortySix
+  | OneHundredAndFortyEight
+  | OneHundredAndFifty
+  | OneHundredAndFiftyThree
   | OneHundredAndSixtyThree
   | OneHundredAndSixtyFour
+  | OneHundredAndSixtyFive
   | Four
   | Five
   | Six
   | Seventeen
   | Eighteen
   | TwentyThree
-  | TwentyEight
-  | ThirtyFive
+  | TwentyNine
   | ThirtySix
   | ThirtySeven
-  | FortyFour
+  | ThirtyEight
   | FortyFive
-  | FortyEight
-  | FiftyFive
-  | SixtyThree
-  | SixtySix
-  | SeventyEight
-  | EightySix
+  | FortySix
+  | FortyNine
+  | FiftySix
+  | SixtyFour
+  | SixtySeven
+  | SeventyNine
   | EightySeven
   | EightyEight
-  | NinetyOne
+  | EightyNine
   | NinetyTwo
   | NinetyThree
   | NinetyFour
-  | NinetySix
+  | NinetyFive
   | NinetySeven
-  | OneHundred
+  | NinetyEight
   | OneHundredAndOne
   | OneHundredAndTwo
-  | OneHundredAndNine
-  | OneHundredAndEighteen
+  | OneHundredAndThree
+  | OneHundredAndTen
   | OneHundredAndNineteen
-  | OneHundredAndTwentyFour
+  | OneHundredAndTwenty
   | OneHundredAndTwentyFive
-  | OneHundredAndTwentySeven
-  | OneHundredAndThirtySix
-  | OneHundredAndThirtyNine
+  | OneHundredAndTwentySix
+  | OneHundredAndTwentyEight
+  | OneHundredAndThirtySeven
   | OneHundredAndForty
   | OneHundredAndFortyOne
-  | OneHundredAndFortyThree
+  | OneHundredAndFortyTwo
   | OneHundredAndFortyFour
-  | OneHundredAndFifty
+  | OneHundredAndFortyFive
   | OneHundredAndFiftyOne
-  | OneHundredAndFiftyThree
-  | OneHundredAndFiftyFive
+  | OneHundredAndFiftyTwo
+  | OneHundredAndFiftyFour
   | OneHundredAndFiftySix
   | OneHundredAndFiftySeven
-  | OneHundredAndFiftyNine
+  | OneHundredAndFiftyEight
+  | OneHundredAndSixty
   | Three
   | Fifteen
   | Twenty
   | TwentyTwo
   | TwentyFour
-  | TwentySeven
-  | TwentyNine
-  | ThirtyFour
-  | ThirtyEight
+  | TwentyEight
+  | Thirty
+  | ThirtyFive
   | ThirtyNine
-  | FortyThree
-  | FortySeven
-  | FiftyTwo
+  | Forty
+  | FortyFour
+  | FortyEight
   | FiftyThree
-  | SeventyTwo
+  | FiftyFour
   | SeventyThree
   | SeventyFour
-  | SeventySix
+  | SeventyFive
   | SeventySeven
-  | Eighty
+  | SeventyEight
   | EightyOne
-  | EightyFour
+  | EightyTwo
   | EightyFive
-  | EightyNine
+  | EightySix
   | Ninety
-  | NinetyEight
+  | NinetyOne
   | NinetyNine
-  | OneHundredAndThree
-  | OneHundredAndFive
+  | OneHundred
+  | OneHundredAndFour
   | OneHundredAndSix
   | OneHundredAndSeven
-  | OneHundredAndTen
+  | OneHundredAndEight
   | OneHundredAndEleven
   | OneHundredAndTwelve
-  | OneHundredAndSixteen
+  | OneHundredAndThirteen
   | OneHundredAndSeventeen
-  | OneHundredAndTwenty
-  | OneHundredAndTwentySix
-  | OneHundredAndTwentyEight
-  | OneHundredAndThirtyTwo
+  | OneHundredAndEighteen
+  | OneHundredAndTwentyOne
+  | OneHundredAndTwentySeven
+  | OneHundredAndTwentyNine
   | OneHundredAndThirtyThree
   | OneHundredAndThirtyFour
-  | OneHundredAndFortyTwo
-  | OneHundredAndFortyEight
-  | OneHundredAndFiftyFour
-  | OneHundredAndFiftyEight
-  | OneHundredAndSixty
+  | OneHundredAndThirtyFive
+  | OneHundredAndFortyThree
+  | OneHundredAndFortyNine
+  | OneHundredAndFiftyFive
+  | OneHundredAndFiftyNine
   | OneHundredAndSixtyOne
+  | OneHundredAndSixtyTwo
   | Payload1
   | Seven
   | Eight
@@ -4787,18 +4797,19 @@ export type Payload =
   | TwentyOne
   | TwentyFive
   | TwentySix
-  | FiftySix
+  | TwentySeven
   | FiftySeven
   | FiftyEight
-  | OneHundredAndEight
-  | OneHundredAndFourteen
+  | FiftyNine
+  | OneHundredAndNine
   | OneHundredAndFifteen
-  | OneHundredAndTwentyOne
+  | OneHundredAndSixteen
   | OneHundredAndTwentyTwo
   | OneHundredAndTwentyThree
-  | OneHundredAndTwentyNine
+  | OneHundredAndTwentyFour
   | OneHundredAndThirty
-  | OneHundredAndThirtyOne;
+  | OneHundredAndThirtyOne
+  | OneHundredAndThirtyTwo;
 
 /**
  * Array of events generated by the User.
@@ -4842,147 +4853,147 @@ export type UserEvent = {
    */
   viaIds?: Array<string> | undefined;
   payload?:
-    | SeventyOne
-    | SixtySeven
-    | Seventy
-    | FortyOne
-    | FortyTwo
-    | FiftyFour
-    | FiftyNine
-    | SixtyFive
+    | SeventyTwo
     | SixtyEight
-    | OneHundredAndThirtyFive
-    | OneHundredAndSixtyFive
-    | Payload2
-    | FortySix
+    | SeventyOne
+    | FortyTwo
+    | FortyThree
+    | FiftyFive
+    | Sixty
+    | SixtySix
     | SixtyNine
-    | OneHundredAndFour
-    | OneHundredAndFortySix
+    | OneHundredAndThirtySix
+    | OneHundredAndSixtySix
+    | Payload2
+    | FortySeven
+    | Seventy
+    | OneHundredAndFive
+    | OneHundredAndFortySeven
     | Twelve
     | Sixteen
-    | Thirty
     | ThirtyOne
     | ThirtyTwo
     | ThirtyThree
-    | Forty
-    | FortyNine
+    | ThirtyFour
+    | FortyOne
     | Fifty
     | FiftyOne
-    | Sixty
+    | FiftyTwo
     | SixtyOne
     | SixtyTwo
-    | SixtyFour
-    | SeventyFive
-    | SeventyNine
-    | EightyTwo
+    | SixtyThree
+    | SixtyFive
+    | SeventySix
+    | Eighty
     | EightyThree
-    | NinetyFive
-    | OneHundredAndThirteen
-    | OneHundredAndThirtySeven
+    | EightyFour
+    | NinetySix
+    | OneHundredAndFourteen
     | OneHundredAndThirtyEight
-    | OneHundredAndFortyFive
-    | OneHundredAndFortySeven
-    | OneHundredAndFortyNine
-    | OneHundredAndFiftyTwo
-    | OneHundredAndSixtyTwo
+    | OneHundredAndThirtyNine
+    | OneHundredAndFortySix
+    | OneHundredAndFortyEight
+    | OneHundredAndFifty
+    | OneHundredAndFiftyThree
     | OneHundredAndSixtyThree
     | OneHundredAndSixtyFour
+    | OneHundredAndSixtyFive
     | Four
     | Five
     | Six
     | Seventeen
     | Eighteen
     | TwentyThree
-    | TwentyEight
-    | ThirtyFive
+    | TwentyNine
     | ThirtySix
     | ThirtySeven
-    | FortyFour
+    | ThirtyEight
     | FortyFive
-    | FortyEight
-    | FiftyFive
-    | SixtyThree
-    | SixtySix
-    | SeventyEight
-    | EightySix
+    | FortySix
+    | FortyNine
+    | FiftySix
+    | SixtyFour
+    | SixtySeven
+    | SeventyNine
     | EightySeven
     | EightyEight
-    | NinetyOne
+    | EightyNine
     | NinetyTwo
     | NinetyThree
     | NinetyFour
-    | NinetySix
+    | NinetyFive
     | NinetySeven
-    | OneHundred
+    | NinetyEight
     | OneHundredAndOne
     | OneHundredAndTwo
-    | OneHundredAndNine
-    | OneHundredAndEighteen
+    | OneHundredAndThree
+    | OneHundredAndTen
     | OneHundredAndNineteen
-    | OneHundredAndTwentyFour
+    | OneHundredAndTwenty
     | OneHundredAndTwentyFive
-    | OneHundredAndTwentySeven
-    | OneHundredAndThirtySix
-    | OneHundredAndThirtyNine
+    | OneHundredAndTwentySix
+    | OneHundredAndTwentyEight
+    | OneHundredAndThirtySeven
     | OneHundredAndForty
     | OneHundredAndFortyOne
-    | OneHundredAndFortyThree
+    | OneHundredAndFortyTwo
     | OneHundredAndFortyFour
-    | OneHundredAndFifty
+    | OneHundredAndFortyFive
     | OneHundredAndFiftyOne
-    | OneHundredAndFiftyThree
-    | OneHundredAndFiftyFive
+    | OneHundredAndFiftyTwo
+    | OneHundredAndFiftyFour
     | OneHundredAndFiftySix
     | OneHundredAndFiftySeven
-    | OneHundredAndFiftyNine
+    | OneHundredAndFiftyEight
+    | OneHundredAndSixty
     | Three
     | Fifteen
     | Twenty
     | TwentyTwo
     | TwentyFour
-    | TwentySeven
-    | TwentyNine
-    | ThirtyFour
-    | ThirtyEight
+    | TwentyEight
+    | Thirty
+    | ThirtyFive
     | ThirtyNine
-    | FortyThree
-    | FortySeven
-    | FiftyTwo
+    | Forty
+    | FortyFour
+    | FortyEight
     | FiftyThree
-    | SeventyTwo
+    | FiftyFour
     | SeventyThree
     | SeventyFour
-    | SeventySix
+    | SeventyFive
     | SeventySeven
-    | Eighty
+    | SeventyEight
     | EightyOne
-    | EightyFour
+    | EightyTwo
     | EightyFive
-    | EightyNine
+    | EightySix
     | Ninety
-    | NinetyEight
+    | NinetyOne
     | NinetyNine
-    | OneHundredAndThree
-    | OneHundredAndFive
+    | OneHundred
+    | OneHundredAndFour
     | OneHundredAndSix
     | OneHundredAndSeven
-    | OneHundredAndTen
+    | OneHundredAndEight
     | OneHundredAndEleven
     | OneHundredAndTwelve
-    | OneHundredAndSixteen
+    | OneHundredAndThirteen
     | OneHundredAndSeventeen
-    | OneHundredAndTwenty
-    | OneHundredAndTwentySix
-    | OneHundredAndTwentyEight
-    | OneHundredAndThirtyTwo
+    | OneHundredAndEighteen
+    | OneHundredAndTwentyOne
+    | OneHundredAndTwentySeven
+    | OneHundredAndTwentyNine
     | OneHundredAndThirtyThree
     | OneHundredAndThirtyFour
-    | OneHundredAndFortyTwo
-    | OneHundredAndFortyEight
-    | OneHundredAndFiftyFour
-    | OneHundredAndFiftyEight
-    | OneHundredAndSixty
+    | OneHundredAndThirtyFive
+    | OneHundredAndFortyThree
+    | OneHundredAndFortyNine
+    | OneHundredAndFiftyFive
+    | OneHundredAndFiftyNine
     | OneHundredAndSixtyOne
+    | OneHundredAndSixtyTwo
     | Payload1
     | Seven
     | Eight
@@ -4995,18 +5006,19 @@ export type UserEvent = {
     | TwentyOne
     | TwentyFive
     | TwentySix
-    | FiftySix
+    | TwentySeven
     | FiftySeven
     | FiftyEight
-    | OneHundredAndEight
-    | OneHundredAndFourteen
+    | FiftyNine
+    | OneHundredAndNine
     | OneHundredAndFifteen
-    | OneHundredAndTwentyOne
+    | OneHundredAndSixteen
     | OneHundredAndTwentyTwo
     | OneHundredAndTwentyThree
-    | OneHundredAndTwentyNine
+    | OneHundredAndTwentyFour
     | OneHundredAndThirty
     | OneHundredAndThirtyOne
+    | OneHundredAndThirtyTwo
     | undefined;
 };
 
@@ -5701,8 +5713,8 @@ export function appFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndSixtyFive$inboundSchema: z.ZodType<
-  OneHundredAndSixtyFive,
+export const OneHundredAndSixtySix$inboundSchema: z.ZodType<
+  OneHundredAndSixtySix,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -5719,7 +5731,7 @@ export const OneHundredAndSixtyFive$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndSixtyFive$Outbound = {
+export type OneHundredAndSixtySix$Outbound = {
   grantType: string;
   appName: string;
   atTTL: number;
@@ -5733,10 +5745,10 @@ export type OneHundredAndSixtyFive$Outbound = {
 };
 
 /** @internal */
-export const OneHundredAndSixtyFive$outboundSchema: z.ZodType<
-  OneHundredAndSixtyFive$Outbound,
+export const OneHundredAndSixtySix$outboundSchema: z.ZodType<
+  OneHundredAndSixtySix$Outbound,
   z.ZodTypeDef,
-  OneHundredAndSixtyFive
+  OneHundredAndSixtySix
 > = z.object({
   grantType: GrantType$outboundSchema,
   appName: z.string(),
@@ -5748,6 +5760,242 @@ export const OneHundredAndSixtyFive$outboundSchema: z.ZodType<
   includesRefreshToken: z.boolean().optional(),
   publicId: z.string().optional(),
   sessionId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndSixtySix$ {
+  /** @deprecated use `OneHundredAndSixtySix$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndSixtySix$inboundSchema;
+  /** @deprecated use `OneHundredAndSixtySix$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndSixtySix$outboundSchema;
+  /** @deprecated use `OneHundredAndSixtySix$Outbound` instead. */
+  export type Outbound = OneHundredAndSixtySix$Outbound;
+}
+
+export function oneHundredAndSixtySixToJSON(
+  oneHundredAndSixtySix: OneHundredAndSixtySix,
+): string {
+  return JSON.stringify(
+    OneHundredAndSixtySix$outboundSchema.parse(oneHundredAndSixtySix),
+  );
+}
+
+export function oneHundredAndSixtySixFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndSixtySix, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndSixtySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndSixtySix' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload165Team$inboundSchema: z.ZodType<
+  UserEventPayload165Team,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+});
+
+/** @internal */
+export type UserEventPayload165Team$Outbound = {
+  id: string;
+  name: string;
+};
+
+/** @internal */
+export const UserEventPayload165Team$outboundSchema: z.ZodType<
+  UserEventPayload165Team$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload165Team
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload165Team$ {
+  /** @deprecated use `UserEventPayload165Team$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload165Team$inboundSchema;
+  /** @deprecated use `UserEventPayload165Team$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload165Team$outboundSchema;
+  /** @deprecated use `UserEventPayload165Team$Outbound` instead. */
+  export type Outbound = UserEventPayload165Team$Outbound;
+}
+
+export function userEventPayload165TeamToJSON(
+  userEventPayload165Team: UserEventPayload165Team,
+): string {
+  return JSON.stringify(
+    UserEventPayload165Team$outboundSchema.parse(userEventPayload165Team),
+  );
+}
+
+export function userEventPayload165TeamFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload165Team, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload165Team$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload165Team' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload165Configuration$inboundSchema: z.ZodType<
+  UserEventPayload165Configuration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/** @internal */
+export type UserEventPayload165Configuration$Outbound = {
+  id: string;
+  name?: string | undefined;
+};
+
+/** @internal */
+export const UserEventPayload165Configuration$outboundSchema: z.ZodType<
+  UserEventPayload165Configuration$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload165Configuration
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload165Configuration$ {
+  /** @deprecated use `UserEventPayload165Configuration$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload165Configuration$inboundSchema;
+  /** @deprecated use `UserEventPayload165Configuration$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload165Configuration$outboundSchema;
+  /** @deprecated use `UserEventPayload165Configuration$Outbound` instead. */
+  export type Outbound = UserEventPayload165Configuration$Outbound;
+}
+
+export function userEventPayload165ConfigurationToJSON(
+  userEventPayload165Configuration: UserEventPayload165Configuration,
+): string {
+  return JSON.stringify(
+    UserEventPayload165Configuration$outboundSchema.parse(
+      userEventPayload165Configuration,
+    ),
+  );
+}
+
+export function userEventPayload165ConfigurationFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload165Configuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload165Configuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload165Configuration' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayloadPeering$inboundSchema: z.ZodType<
+  UserEventPayloadPeering,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/** @internal */
+export type UserEventPayloadPeering$Outbound = {
+  id: string;
+  name?: string | undefined;
+};
+
+/** @internal */
+export const UserEventPayloadPeering$outboundSchema: z.ZodType<
+  UserEventPayloadPeering$Outbound,
+  z.ZodTypeDef,
+  UserEventPayloadPeering
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayloadPeering$ {
+  /** @deprecated use `UserEventPayloadPeering$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayloadPeering$inboundSchema;
+  /** @deprecated use `UserEventPayloadPeering$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayloadPeering$outboundSchema;
+  /** @deprecated use `UserEventPayloadPeering$Outbound` instead. */
+  export type Outbound = UserEventPayloadPeering$Outbound;
+}
+
+export function userEventPayloadPeeringToJSON(
+  userEventPayloadPeering: UserEventPayloadPeering,
+): string {
+  return JSON.stringify(
+    UserEventPayloadPeering$outboundSchema.parse(userEventPayloadPeering),
+  );
+}
+
+export function userEventPayloadPeeringFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayloadPeering, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayloadPeering$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadPeering' from JSON`,
+  );
+}
+
+/** @internal */
+export const OneHundredAndSixtyFive$inboundSchema: z.ZodType<
+  OneHundredAndSixtyFive,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  team: z.lazy(() => UserEventPayload165Team$inboundSchema),
+  configuration: z.lazy(() => UserEventPayload165Configuration$inboundSchema),
+  peering: z.lazy(() => UserEventPayloadPeering$inboundSchema),
+  newName: z.string().optional(),
+});
+
+/** @internal */
+export type OneHundredAndSixtyFive$Outbound = {
+  team: UserEventPayload165Team$Outbound;
+  configuration: UserEventPayload165Configuration$Outbound;
+  peering: UserEventPayloadPeering$Outbound;
+  newName?: string | undefined;
+};
+
+/** @internal */
+export const OneHundredAndSixtyFive$outboundSchema: z.ZodType<
+  OneHundredAndSixtyFive$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndSixtyFive
+> = z.object({
+  team: z.lazy(() => UserEventPayload165Team$outboundSchema),
+  configuration: z.lazy(() => UserEventPayload165Configuration$outboundSchema),
+  peering: z.lazy(() => UserEventPayloadPeering$outboundSchema),
+  newName: z.string().optional(),
 });
 
 /**
@@ -5898,8 +6146,8 @@ export function userEventPayload164ConfigurationFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadPeering$inboundSchema: z.ZodType<
-  UserEventPayloadPeering,
+export const PayloadPeering$inboundSchema: z.ZodType<
+  PayloadPeering,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -5908,16 +6156,16 @@ export const UserEventPayloadPeering$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayloadPeering$Outbound = {
+export type PayloadPeering$Outbound = {
   id: string;
   name?: string | undefined;
 };
 
 /** @internal */
-export const UserEventPayloadPeering$outboundSchema: z.ZodType<
-  UserEventPayloadPeering$Outbound,
+export const PayloadPeering$outboundSchema: z.ZodType<
+  PayloadPeering$Outbound,
   z.ZodTypeDef,
-  UserEventPayloadPeering
+  PayloadPeering
 > = z.object({
   id: z.string(),
   name: z.string().optional(),
@@ -5927,30 +6175,26 @@ export const UserEventPayloadPeering$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayloadPeering$ {
-  /** @deprecated use `UserEventPayloadPeering$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayloadPeering$inboundSchema;
-  /** @deprecated use `UserEventPayloadPeering$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayloadPeering$outboundSchema;
-  /** @deprecated use `UserEventPayloadPeering$Outbound` instead. */
-  export type Outbound = UserEventPayloadPeering$Outbound;
+export namespace PayloadPeering$ {
+  /** @deprecated use `PayloadPeering$inboundSchema` instead. */
+  export const inboundSchema = PayloadPeering$inboundSchema;
+  /** @deprecated use `PayloadPeering$outboundSchema` instead. */
+  export const outboundSchema = PayloadPeering$outboundSchema;
+  /** @deprecated use `PayloadPeering$Outbound` instead. */
+  export type Outbound = PayloadPeering$Outbound;
 }
 
-export function userEventPayloadPeeringToJSON(
-  userEventPayloadPeering: UserEventPayloadPeering,
-): string {
-  return JSON.stringify(
-    UserEventPayloadPeering$outboundSchema.parse(userEventPayloadPeering),
-  );
+export function payloadPeeringToJSON(payloadPeering: PayloadPeering): string {
+  return JSON.stringify(PayloadPeering$outboundSchema.parse(payloadPeering));
 }
 
-export function userEventPayloadPeeringFromJSON(
+export function payloadPeeringFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayloadPeering, SDKValidationError> {
+): SafeParseResult<PayloadPeering, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayloadPeering$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayloadPeering' from JSON`,
+    (x) => PayloadPeering$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadPeering' from JSON`,
   );
 }
 
@@ -5962,16 +6206,14 @@ export const OneHundredAndSixtyFour$inboundSchema: z.ZodType<
 > = z.object({
   team: z.lazy(() => UserEventPayload164Team$inboundSchema),
   configuration: z.lazy(() => UserEventPayload164Configuration$inboundSchema),
-  peering: z.lazy(() => UserEventPayloadPeering$inboundSchema),
-  newName: z.string().optional(),
+  peering: z.lazy(() => PayloadPeering$inboundSchema),
 });
 
 /** @internal */
 export type OneHundredAndSixtyFour$Outbound = {
   team: UserEventPayload164Team$Outbound;
   configuration: UserEventPayload164Configuration$Outbound;
-  peering: UserEventPayloadPeering$Outbound;
-  newName?: string | undefined;
+  peering: PayloadPeering$Outbound;
 };
 
 /** @internal */
@@ -5982,8 +6224,7 @@ export const OneHundredAndSixtyFour$outboundSchema: z.ZodType<
 > = z.object({
   team: z.lazy(() => UserEventPayload164Team$outboundSchema),
   configuration: z.lazy(() => UserEventPayload164Configuration$outboundSchema),
-  peering: z.lazy(() => UserEventPayloadPeering$outboundSchema),
-  newName: z.string().optional(),
+  peering: z.lazy(() => PayloadPeering$outboundSchema),
 });
 
 /**
@@ -6134,235 +6375,6 @@ export function userEventPayload163ConfigurationFromJSON(
 }
 
 /** @internal */
-export const PayloadPeering$inboundSchema: z.ZodType<
-  PayloadPeering,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/** @internal */
-export type PayloadPeering$Outbound = {
-  id: string;
-  name?: string | undefined;
-};
-
-/** @internal */
-export const PayloadPeering$outboundSchema: z.ZodType<
-  PayloadPeering$Outbound,
-  z.ZodTypeDef,
-  PayloadPeering
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayloadPeering$ {
-  /** @deprecated use `PayloadPeering$inboundSchema` instead. */
-  export const inboundSchema = PayloadPeering$inboundSchema;
-  /** @deprecated use `PayloadPeering$outboundSchema` instead. */
-  export const outboundSchema = PayloadPeering$outboundSchema;
-  /** @deprecated use `PayloadPeering$Outbound` instead. */
-  export type Outbound = PayloadPeering$Outbound;
-}
-
-export function payloadPeeringToJSON(payloadPeering: PayloadPeering): string {
-  return JSON.stringify(PayloadPeering$outboundSchema.parse(payloadPeering));
-}
-
-export function payloadPeeringFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadPeering, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadPeering$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadPeering' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndSixtyThree$inboundSchema: z.ZodType<
-  OneHundredAndSixtyThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  team: z.lazy(() => UserEventPayload163Team$inboundSchema),
-  configuration: z.lazy(() => UserEventPayload163Configuration$inboundSchema),
-  peering: z.lazy(() => PayloadPeering$inboundSchema),
-});
-
-/** @internal */
-export type OneHundredAndSixtyThree$Outbound = {
-  team: UserEventPayload163Team$Outbound;
-  configuration: UserEventPayload163Configuration$Outbound;
-  peering: PayloadPeering$Outbound;
-};
-
-/** @internal */
-export const OneHundredAndSixtyThree$outboundSchema: z.ZodType<
-  OneHundredAndSixtyThree$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixtyThree
-> = z.object({
-  team: z.lazy(() => UserEventPayload163Team$outboundSchema),
-  configuration: z.lazy(() => UserEventPayload163Configuration$outboundSchema),
-  peering: z.lazy(() => PayloadPeering$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndSixtyThree$ {
-  /** @deprecated use `OneHundredAndSixtyThree$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndSixtyThree$inboundSchema;
-  /** @deprecated use `OneHundredAndSixtyThree$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndSixtyThree$outboundSchema;
-  /** @deprecated use `OneHundredAndSixtyThree$Outbound` instead. */
-  export type Outbound = OneHundredAndSixtyThree$Outbound;
-}
-
-export function oneHundredAndSixtyThreeToJSON(
-  oneHundredAndSixtyThree: OneHundredAndSixtyThree,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixtyThree$outboundSchema.parse(oneHundredAndSixtyThree),
-  );
-}
-
-export function oneHundredAndSixtyThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndSixtyThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndSixtyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndSixtyThree' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload162Team$inboundSchema: z.ZodType<
-  UserEventPayload162Team,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-/** @internal */
-export type UserEventPayload162Team$Outbound = {
-  id: string;
-  name: string;
-};
-
-/** @internal */
-export const UserEventPayload162Team$outboundSchema: z.ZodType<
-  UserEventPayload162Team$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload162Team
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload162Team$ {
-  /** @deprecated use `UserEventPayload162Team$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload162Team$inboundSchema;
-  /** @deprecated use `UserEventPayload162Team$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload162Team$outboundSchema;
-  /** @deprecated use `UserEventPayload162Team$Outbound` instead. */
-  export type Outbound = UserEventPayload162Team$Outbound;
-}
-
-export function userEventPayload162TeamToJSON(
-  userEventPayload162Team: UserEventPayload162Team,
-): string {
-  return JSON.stringify(
-    UserEventPayload162Team$outboundSchema.parse(userEventPayload162Team),
-  );
-}
-
-export function userEventPayload162TeamFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload162Team, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload162Team$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload162Team' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload162Configuration$inboundSchema: z.ZodType<
-  UserEventPayload162Configuration,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/** @internal */
-export type UserEventPayload162Configuration$Outbound = {
-  id: string;
-  name?: string | undefined;
-};
-
-/** @internal */
-export const UserEventPayload162Configuration$outboundSchema: z.ZodType<
-  UserEventPayload162Configuration$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload162Configuration
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload162Configuration$ {
-  /** @deprecated use `UserEventPayload162Configuration$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload162Configuration$inboundSchema;
-  /** @deprecated use `UserEventPayload162Configuration$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload162Configuration$outboundSchema;
-  /** @deprecated use `UserEventPayload162Configuration$Outbound` instead. */
-  export type Outbound = UserEventPayload162Configuration$Outbound;
-}
-
-export function userEventPayload162ConfigurationToJSON(
-  userEventPayload162Configuration: UserEventPayload162Configuration,
-): string {
-  return JSON.stringify(
-    UserEventPayload162Configuration$outboundSchema.parse(
-      userEventPayload162Configuration,
-    ),
-  );
-}
-
-export function userEventPayload162ConfigurationFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload162Configuration, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload162Configuration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload162Configuration' from JSON`,
-  );
-}
-
-/** @internal */
 export const Peering$inboundSchema: z.ZodType<Peering, z.ZodTypeDef, unknown> =
   z.object({
     id: z.string(),
@@ -6419,21 +6431,81 @@ export function peeringFromJSON(
 }
 
 /** @internal */
+export const OneHundredAndSixtyThree$inboundSchema: z.ZodType<
+  OneHundredAndSixtyThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  team: z.lazy(() => UserEventPayload163Team$inboundSchema),
+  configuration: z.lazy(() => UserEventPayload163Configuration$inboundSchema),
+  peering: z.lazy(() => Peering$inboundSchema),
+});
+
+/** @internal */
+export type OneHundredAndSixtyThree$Outbound = {
+  team: UserEventPayload163Team$Outbound;
+  configuration: UserEventPayload163Configuration$Outbound;
+  peering: Peering$Outbound;
+};
+
+/** @internal */
+export const OneHundredAndSixtyThree$outboundSchema: z.ZodType<
+  OneHundredAndSixtyThree$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndSixtyThree
+> = z.object({
+  team: z.lazy(() => UserEventPayload163Team$outboundSchema),
+  configuration: z.lazy(() => UserEventPayload163Configuration$outboundSchema),
+  peering: z.lazy(() => Peering$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndSixtyThree$ {
+  /** @deprecated use `OneHundredAndSixtyThree$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndSixtyThree$inboundSchema;
+  /** @deprecated use `OneHundredAndSixtyThree$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndSixtyThree$outboundSchema;
+  /** @deprecated use `OneHundredAndSixtyThree$Outbound` instead. */
+  export type Outbound = OneHundredAndSixtyThree$Outbound;
+}
+
+export function oneHundredAndSixtyThreeToJSON(
+  oneHundredAndSixtyThree: OneHundredAndSixtyThree,
+): string {
+  return JSON.stringify(
+    OneHundredAndSixtyThree$outboundSchema.parse(oneHundredAndSixtyThree),
+  );
+}
+
+export function oneHundredAndSixtyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndSixtyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndSixtyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndSixtyThree' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndSixtyTwo$inboundSchema: z.ZodType<
   OneHundredAndSixtyTwo,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  team: z.lazy(() => UserEventPayload162Team$inboundSchema),
-  configuration: z.lazy(() => UserEventPayload162Configuration$inboundSchema),
-  peering: z.lazy(() => Peering$inboundSchema),
+  appName: z.string(),
+  appId: z.string().optional(),
+  installationId: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndSixtyTwo$Outbound = {
-  team: UserEventPayload162Team$Outbound;
-  configuration: UserEventPayload162Configuration$Outbound;
-  peering: Peering$Outbound;
+  appName: string;
+  appId?: string | undefined;
+  installationId?: string | undefined;
 };
 
 /** @internal */
@@ -6442,9 +6514,9 @@ export const OneHundredAndSixtyTwo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndSixtyTwo
 > = z.object({
-  team: z.lazy(() => UserEventPayload162Team$outboundSchema),
-  configuration: z.lazy(() => UserEventPayload162Configuration$outboundSchema),
-  peering: z.lazy(() => Peering$outboundSchema),
+  appName: z.string(),
+  appId: z.string().optional(),
+  installationId: z.string().optional(),
 });
 
 /**
@@ -6486,14 +6558,12 @@ export const OneHundredAndSixtyOne$inboundSchema: z.ZodType<
 > = z.object({
   appName: z.string(),
   appId: z.string().optional(),
-  installationId: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndSixtyOne$Outbound = {
   appName: string;
   appId?: string | undefined;
-  installationId?: string | undefined;
 };
 
 /** @internal */
@@ -6504,7 +6574,6 @@ export const OneHundredAndSixtyOne$outboundSchema: z.ZodType<
 > = z.object({
   appName: z.string(),
   appId: z.string().optional(),
-  installationId: z.string().optional(),
 });
 
 /**
@@ -6545,13 +6614,13 @@ export const OneHundredAndSixty$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   appName: z.string(),
-  appId: z.string().optional(),
+  appId: z.string(),
 });
 
 /** @internal */
 export type OneHundredAndSixty$Outbound = {
   appName: string;
-  appId?: string | undefined;
+  appId: string;
 };
 
 /** @internal */
@@ -6561,7 +6630,7 @@ export const OneHundredAndSixty$outboundSchema: z.ZodType<
   OneHundredAndSixty
 > = z.object({
   appName: z.string(),
-  appId: z.string().optional(),
+  appId: z.string(),
 });
 
 /**
@@ -6602,13 +6671,11 @@ export const OneHundredAndFiftyNine$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   appName: z.string(),
-  appId: z.string(),
 });
 
 /** @internal */
 export type OneHundredAndFiftyNine$Outbound = {
   appName: string;
-  appId: string;
 };
 
 /** @internal */
@@ -6618,7 +6685,6 @@ export const OneHundredAndFiftyNine$outboundSchema: z.ZodType<
   OneHundredAndFiftyNine
 > = z.object({
   appName: z.string(),
-  appId: z.string(),
 });
 
 /**
@@ -6659,11 +6725,13 @@ export const OneHundredAndFiftyEight$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   appName: z.string(),
+  nextScopes: z.array(z.string()),
 });
 
 /** @internal */
 export type OneHundredAndFiftyEight$Outbound = {
   appName: string;
+  nextScopes: Array<string>;
 };
 
 /** @internal */
@@ -6673,6 +6741,7 @@ export const OneHundredAndFiftyEight$outboundSchema: z.ZodType<
   OneHundredAndFiftyEight
 > = z.object({
   appName: z.string(),
+  nextScopes: z.array(z.string()),
 });
 
 /**
@@ -6713,13 +6782,13 @@ export const OneHundredAndFiftySeven$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   appName: z.string(),
-  nextScopes: z.array(z.string()),
+  scopes: z.array(z.string()),
 });
 
 /** @internal */
 export type OneHundredAndFiftySeven$Outbound = {
   appName: string;
-  nextScopes: Array<string>;
+  scopes: Array<string>;
 };
 
 /** @internal */
@@ -6729,7 +6798,7 @@ export const OneHundredAndFiftySeven$outboundSchema: z.ZodType<
   OneHundredAndFiftySeven
 > = z.object({
   appName: z.string(),
-  nextScopes: z.array(z.string()),
+  scopes: z.array(z.string()),
 });
 
 /**
@@ -6769,14 +6838,14 @@ export const OneHundredAndFiftySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  appName: z.string(),
-  scopes: z.array(z.string()),
+  oldName: z.string(),
+  newName: z.string(),
 });
 
 /** @internal */
 export type OneHundredAndFiftySix$Outbound = {
-  appName: string;
-  scopes: Array<string>;
+  oldName: string;
+  newName: string;
 };
 
 /** @internal */
@@ -6785,8 +6854,8 @@ export const OneHundredAndFiftySix$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndFiftySix
 > = z.object({
-  appName: z.string(),
-  scopes: z.array(z.string()),
+  oldName: z.string(),
+  newName: z.string(),
 });
 
 /**
@@ -6821,19 +6890,37 @@ export function oneHundredAndFiftySixFromJSON(
 }
 
 /** @internal */
+export const Tier$inboundSchema: z.ZodNativeEnum<typeof Tier> = z.nativeEnum(
+  Tier,
+);
+
+/** @internal */
+export const Tier$outboundSchema: z.ZodNativeEnum<typeof Tier> =
+  Tier$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Tier$ {
+  /** @deprecated use `Tier$inboundSchema` instead. */
+  export const inboundSchema = Tier$inboundSchema;
+  /** @deprecated use `Tier$outboundSchema` instead. */
+  export const outboundSchema = Tier$outboundSchema;
+}
+
+/** @internal */
 export const OneHundredAndFiftyFive$inboundSchema: z.ZodType<
   OneHundredAndFiftyFive,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  oldName: z.string(),
-  newName: z.string(),
+  tier: Tier$inboundSchema,
 });
 
 /** @internal */
 export type OneHundredAndFiftyFive$Outbound = {
-  oldName: string;
-  newName: string;
+  tier: string;
 };
 
 /** @internal */
@@ -6842,8 +6929,7 @@ export const OneHundredAndFiftyFive$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndFiftyFive
 > = z.object({
-  oldName: z.string(),
-  newName: z.string(),
+  tier: Tier$outboundSchema,
 });
 
 /**
@@ -6874,80 +6960,6 @@ export function oneHundredAndFiftyFiveFromJSON(
     jsonString,
     (x) => OneHundredAndFiftyFive$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndFiftyFive' from JSON`,
-  );
-}
-
-/** @internal */
-export const Tier$inboundSchema: z.ZodNativeEnum<typeof Tier> = z.nativeEnum(
-  Tier,
-);
-
-/** @internal */
-export const Tier$outboundSchema: z.ZodNativeEnum<typeof Tier> =
-  Tier$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Tier$ {
-  /** @deprecated use `Tier$inboundSchema` instead. */
-  export const inboundSchema = Tier$inboundSchema;
-  /** @deprecated use `Tier$outboundSchema` instead. */
-  export const outboundSchema = Tier$outboundSchema;
-}
-
-/** @internal */
-export const OneHundredAndFiftyFour$inboundSchema: z.ZodType<
-  OneHundredAndFiftyFour,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tier: Tier$inboundSchema,
-});
-
-/** @internal */
-export type OneHundredAndFiftyFour$Outbound = {
-  tier: string;
-};
-
-/** @internal */
-export const OneHundredAndFiftyFour$outboundSchema: z.ZodType<
-  OneHundredAndFiftyFour$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndFiftyFour
-> = z.object({
-  tier: Tier$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndFiftyFour$ {
-  /** @deprecated use `OneHundredAndFiftyFour$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndFiftyFour$inboundSchema;
-  /** @deprecated use `OneHundredAndFiftyFour$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndFiftyFour$outboundSchema;
-  /** @deprecated use `OneHundredAndFiftyFour$Outbound` instead. */
-  export type Outbound = OneHundredAndFiftyFour$Outbound;
-}
-
-export function oneHundredAndFiftyFourToJSON(
-  oneHundredAndFiftyFour: OneHundredAndFiftyFour,
-): string {
-  return JSON.stringify(
-    OneHundredAndFiftyFour$outboundSchema.parse(oneHundredAndFiftyFour),
-  );
-}
-
-export function oneHundredAndFiftyFourFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndFiftyFour, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndFiftyFour$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFiftyFour' from JSON`,
   );
 }
 
@@ -7084,8 +7096,8 @@ export function prevProjectWebAnalyticsFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFiftyThree$inboundSchema: z.ZodType<
-  OneHundredAndFiftyThree,
+export const OneHundredAndFiftyFour$inboundSchema: z.ZodType<
+  OneHundredAndFiftyFour,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7099,7 +7111,7 @@ export const OneHundredAndFiftyThree$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndFiftyThree$Outbound = {
+export type OneHundredAndFiftyFour$Outbound = {
   projectId: string;
   projectName: string;
   projectWebAnalytics?: ProjectWebAnalytics$Outbound | undefined;
@@ -7107,10 +7119,10 @@ export type OneHundredAndFiftyThree$Outbound = {
 };
 
 /** @internal */
-export const OneHundredAndFiftyThree$outboundSchema: z.ZodType<
-  OneHundredAndFiftyThree$Outbound,
+export const OneHundredAndFiftyFour$outboundSchema: z.ZodType<
+  OneHundredAndFiftyFour$Outbound,
   z.ZodTypeDef,
-  OneHundredAndFiftyThree
+  OneHundredAndFiftyFour
 > = z.object({
   projectId: z.string(),
   projectName: z.string(),
@@ -7125,30 +7137,30 @@ export const OneHundredAndFiftyThree$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndFiftyThree$ {
-  /** @deprecated use `OneHundredAndFiftyThree$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndFiftyThree$inboundSchema;
-  /** @deprecated use `OneHundredAndFiftyThree$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndFiftyThree$outboundSchema;
-  /** @deprecated use `OneHundredAndFiftyThree$Outbound` instead. */
-  export type Outbound = OneHundredAndFiftyThree$Outbound;
+export namespace OneHundredAndFiftyFour$ {
+  /** @deprecated use `OneHundredAndFiftyFour$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndFiftyFour$inboundSchema;
+  /** @deprecated use `OneHundredAndFiftyFour$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndFiftyFour$outboundSchema;
+  /** @deprecated use `OneHundredAndFiftyFour$Outbound` instead. */
+  export type Outbound = OneHundredAndFiftyFour$Outbound;
 }
 
-export function oneHundredAndFiftyThreeToJSON(
-  oneHundredAndFiftyThree: OneHundredAndFiftyThree,
+export function oneHundredAndFiftyFourToJSON(
+  oneHundredAndFiftyFour: OneHundredAndFiftyFour,
 ): string {
   return JSON.stringify(
-    OneHundredAndFiftyThree$outboundSchema.parse(oneHundredAndFiftyThree),
+    OneHundredAndFiftyFour$outboundSchema.parse(oneHundredAndFiftyFour),
   );
 }
 
-export function oneHundredAndFiftyThreeFromJSON(
+export function oneHundredAndFiftyFourFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndFiftyThree, SDKValidationError> {
+): SafeParseResult<OneHundredAndFiftyFour, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndFiftyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFiftyThree' from JSON`,
+    (x) => OneHundredAndFiftyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFiftyFour' from JSON`,
   );
 }
 
@@ -7400,8 +7412,8 @@ export function microfrontendsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload152Project$inboundSchema: z.ZodType<
-  UserEventPayload152Project,
+export const UserEventPayload153Project$inboundSchema: z.ZodType<
+  UserEventPayload153Project,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7415,7 +7427,7 @@ export const UserEventPayload152Project$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload152Project$Outbound = {
+export type UserEventPayload153Project$Outbound = {
   id: string;
   name: string;
   microfrontends?:
@@ -7426,10 +7438,10 @@ export type UserEventPayload152Project$Outbound = {
 };
 
 /** @internal */
-export const UserEventPayload152Project$outboundSchema: z.ZodType<
-  UserEventPayload152Project$Outbound,
+export const UserEventPayload153Project$outboundSchema: z.ZodType<
+  UserEventPayload153Project$Outbound,
   z.ZodTypeDef,
-  UserEventPayload152Project
+  UserEventPayload153Project
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -7444,30 +7456,30 @@ export const UserEventPayload152Project$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload152Project$ {
-  /** @deprecated use `UserEventPayload152Project$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload152Project$inboundSchema;
-  /** @deprecated use `UserEventPayload152Project$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload152Project$outboundSchema;
-  /** @deprecated use `UserEventPayload152Project$Outbound` instead. */
-  export type Outbound = UserEventPayload152Project$Outbound;
+export namespace UserEventPayload153Project$ {
+  /** @deprecated use `UserEventPayload153Project$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload153Project$inboundSchema;
+  /** @deprecated use `UserEventPayload153Project$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload153Project$outboundSchema;
+  /** @deprecated use `UserEventPayload153Project$Outbound` instead. */
+  export type Outbound = UserEventPayload153Project$Outbound;
 }
 
-export function userEventPayload152ProjectToJSON(
-  userEventPayload152Project: UserEventPayload152Project,
+export function userEventPayload153ProjectToJSON(
+  userEventPayload153Project: UserEventPayload153Project,
 ): string {
   return JSON.stringify(
-    UserEventPayload152Project$outboundSchema.parse(userEventPayload152Project),
+    UserEventPayload153Project$outboundSchema.parse(userEventPayload153Project),
   );
 }
 
-export function userEventPayload152ProjectFromJSON(
+export function userEventPayload153ProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload152Project, SDKValidationError> {
+): SafeParseResult<UserEventPayload153Project, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload152Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload152Project' from JSON`,
+    (x) => UserEventPayload153Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload153Project' from JSON`,
   );
 }
 
@@ -7729,8 +7741,8 @@ export function payloadMicrofrontendsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload152PrevProject$inboundSchema: z.ZodType<
-  UserEventPayload152PrevProject,
+export const UserEventPayload153PrevProject$inboundSchema: z.ZodType<
+  UserEventPayload153PrevProject,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7742,7 +7754,7 @@ export const UserEventPayload152PrevProject$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload152PrevProject$Outbound = {
+export type UserEventPayload153PrevProject$Outbound = {
   microfrontends?:
     | UserEventMicrofrontends1$Outbound
     | UserEventMicrofrontends2$Outbound
@@ -7751,10 +7763,10 @@ export type UserEventPayload152PrevProject$Outbound = {
 };
 
 /** @internal */
-export const UserEventPayload152PrevProject$outboundSchema: z.ZodType<
-  UserEventPayload152PrevProject$Outbound,
+export const UserEventPayload153PrevProject$outboundSchema: z.ZodType<
+  UserEventPayload153PrevProject$Outbound,
   z.ZodTypeDef,
-  UserEventPayload152PrevProject
+  UserEventPayload153PrevProject
 > = z.object({
   microfrontends: z.union([
     z.lazy(() => UserEventMicrofrontends1$outboundSchema),
@@ -7767,32 +7779,32 @@ export const UserEventPayload152PrevProject$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload152PrevProject$ {
-  /** @deprecated use `UserEventPayload152PrevProject$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload152PrevProject$inboundSchema;
-  /** @deprecated use `UserEventPayload152PrevProject$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload152PrevProject$outboundSchema;
-  /** @deprecated use `UserEventPayload152PrevProject$Outbound` instead. */
-  export type Outbound = UserEventPayload152PrevProject$Outbound;
+export namespace UserEventPayload153PrevProject$ {
+  /** @deprecated use `UserEventPayload153PrevProject$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload153PrevProject$inboundSchema;
+  /** @deprecated use `UserEventPayload153PrevProject$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload153PrevProject$outboundSchema;
+  /** @deprecated use `UserEventPayload153PrevProject$Outbound` instead. */
+  export type Outbound = UserEventPayload153PrevProject$Outbound;
 }
 
-export function userEventPayload152PrevProjectToJSON(
-  userEventPayload152PrevProject: UserEventPayload152PrevProject,
+export function userEventPayload153PrevProjectToJSON(
+  userEventPayload153PrevProject: UserEventPayload153PrevProject,
 ): string {
   return JSON.stringify(
-    UserEventPayload152PrevProject$outboundSchema.parse(
-      userEventPayload152PrevProject,
+    UserEventPayload153PrevProject$outboundSchema.parse(
+      userEventPayload153PrevProject,
     ),
   );
 }
 
-export function userEventPayload152PrevProjectFromJSON(
+export function userEventPayload153PrevProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload152PrevProject, SDKValidationError> {
+): SafeParseResult<UserEventPayload153PrevProject, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload152PrevProject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload152PrevProject' from JSON`,
+    (x) => UserEventPayload153PrevProject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload153PrevProject' from JSON`,
   );
 }
 
@@ -7802,12 +7814,12 @@ export const PayloadPrev$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  project: z.lazy(() => UserEventPayload152PrevProject$inboundSchema),
+  project: z.lazy(() => UserEventPayload153PrevProject$inboundSchema),
 });
 
 /** @internal */
 export type PayloadPrev$Outbound = {
-  project: UserEventPayload152PrevProject$Outbound;
+  project: UserEventPayload153PrevProject$Outbound;
 };
 
 /** @internal */
@@ -7816,7 +7828,7 @@ export const PayloadPrev$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayloadPrev
 > = z.object({
-  project: z.lazy(() => UserEventPayload152PrevProject$outboundSchema),
+  project: z.lazy(() => UserEventPayload153PrevProject$outboundSchema),
 });
 
 /**
@@ -7903,30 +7915,30 @@ export function payloadGroupFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFiftyTwo$inboundSchema: z.ZodType<
-  OneHundredAndFiftyTwo,
+export const OneHundredAndFiftyThree$inboundSchema: z.ZodType<
+  OneHundredAndFiftyThree,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  project: z.lazy(() => UserEventPayload152Project$inboundSchema),
+  project: z.lazy(() => UserEventPayload153Project$inboundSchema),
   prev: z.lazy(() => PayloadPrev$inboundSchema),
   group: z.lazy(() => PayloadGroup$inboundSchema),
 });
 
 /** @internal */
-export type OneHundredAndFiftyTwo$Outbound = {
-  project: UserEventPayload152Project$Outbound;
+export type OneHundredAndFiftyThree$Outbound = {
+  project: UserEventPayload153Project$Outbound;
   prev: PayloadPrev$Outbound;
   group: PayloadGroup$Outbound;
 };
 
 /** @internal */
-export const OneHundredAndFiftyTwo$outboundSchema: z.ZodType<
-  OneHundredAndFiftyTwo$Outbound,
+export const OneHundredAndFiftyThree$outboundSchema: z.ZodType<
+  OneHundredAndFiftyThree$Outbound,
   z.ZodTypeDef,
-  OneHundredAndFiftyTwo
+  OneHundredAndFiftyThree
 > = z.object({
-  project: z.lazy(() => UserEventPayload152Project$outboundSchema),
+  project: z.lazy(() => UserEventPayload153Project$outboundSchema),
   prev: z.lazy(() => PayloadPrev$outboundSchema),
   group: z.lazy(() => PayloadGroup$outboundSchema),
 });
@@ -7935,36 +7947,36 @@ export const OneHundredAndFiftyTwo$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndFiftyTwo$ {
-  /** @deprecated use `OneHundredAndFiftyTwo$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndFiftyTwo$inboundSchema;
-  /** @deprecated use `OneHundredAndFiftyTwo$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndFiftyTwo$outboundSchema;
-  /** @deprecated use `OneHundredAndFiftyTwo$Outbound` instead. */
-  export type Outbound = OneHundredAndFiftyTwo$Outbound;
+export namespace OneHundredAndFiftyThree$ {
+  /** @deprecated use `OneHundredAndFiftyThree$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndFiftyThree$inboundSchema;
+  /** @deprecated use `OneHundredAndFiftyThree$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndFiftyThree$outboundSchema;
+  /** @deprecated use `OneHundredAndFiftyThree$Outbound` instead. */
+  export type Outbound = OneHundredAndFiftyThree$Outbound;
 }
 
-export function oneHundredAndFiftyTwoToJSON(
-  oneHundredAndFiftyTwo: OneHundredAndFiftyTwo,
+export function oneHundredAndFiftyThreeToJSON(
+  oneHundredAndFiftyThree: OneHundredAndFiftyThree,
 ): string {
   return JSON.stringify(
-    OneHundredAndFiftyTwo$outboundSchema.parse(oneHundredAndFiftyTwo),
+    OneHundredAndFiftyThree$outboundSchema.parse(oneHundredAndFiftyThree),
   );
 }
 
-export function oneHundredAndFiftyTwoFromJSON(
+export function oneHundredAndFiftyThreeFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndFiftyTwo, SDKValidationError> {
+): SafeParseResult<OneHundredAndFiftyThree, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndFiftyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFiftyTwo' from JSON`,
+    (x) => OneHundredAndFiftyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFiftyThree' from JSON`,
   );
 }
 
 /** @internal */
-export const UserEventPayload151Project$inboundSchema: z.ZodType<
-  UserEventPayload151Project,
+export const UserEventPayload152Project$inboundSchema: z.ZodType<
+  UserEventPayload152Project,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7973,16 +7985,16 @@ export const UserEventPayload151Project$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload151Project$Outbound = {
+export type UserEventPayload152Project$Outbound = {
   id: string;
   name: string;
 };
 
 /** @internal */
-export const UserEventPayload151Project$outboundSchema: z.ZodType<
-  UserEventPayload151Project$Outbound,
+export const UserEventPayload152Project$outboundSchema: z.ZodType<
+  UserEventPayload152Project$Outbound,
   z.ZodTypeDef,
-  UserEventPayload151Project
+  UserEventPayload152Project
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -7992,30 +8004,30 @@ export const UserEventPayload151Project$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload151Project$ {
-  /** @deprecated use `UserEventPayload151Project$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload151Project$inboundSchema;
-  /** @deprecated use `UserEventPayload151Project$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload151Project$outboundSchema;
-  /** @deprecated use `UserEventPayload151Project$Outbound` instead. */
-  export type Outbound = UserEventPayload151Project$Outbound;
+export namespace UserEventPayload152Project$ {
+  /** @deprecated use `UserEventPayload152Project$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload152Project$inboundSchema;
+  /** @deprecated use `UserEventPayload152Project$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload152Project$outboundSchema;
+  /** @deprecated use `UserEventPayload152Project$Outbound` instead. */
+  export type Outbound = UserEventPayload152Project$Outbound;
 }
 
-export function userEventPayload151ProjectToJSON(
-  userEventPayload151Project: UserEventPayload151Project,
+export function userEventPayload152ProjectToJSON(
+  userEventPayload152Project: UserEventPayload152Project,
 ): string {
   return JSON.stringify(
-    UserEventPayload151Project$outboundSchema.parse(userEventPayload151Project),
+    UserEventPayload152Project$outboundSchema.parse(userEventPayload152Project),
   );
 }
 
-export function userEventPayload151ProjectFromJSON(
+export function userEventPayload152ProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload151Project, SDKValidationError> {
+): SafeParseResult<UserEventPayload152Project, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload151Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload151Project' from JSON`,
+    (x) => UserEventPayload152Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload152Project' from JSON`,
   );
 }
 
@@ -8073,28 +8085,28 @@ export function groupFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFiftyOne$inboundSchema: z.ZodType<
-  OneHundredAndFiftyOne,
+export const OneHundredAndFiftyTwo$inboundSchema: z.ZodType<
+  OneHundredAndFiftyTwo,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  project: z.lazy(() => UserEventPayload151Project$inboundSchema),
+  project: z.lazy(() => UserEventPayload152Project$inboundSchema),
   group: z.lazy(() => Group$inboundSchema),
 });
 
 /** @internal */
-export type OneHundredAndFiftyOne$Outbound = {
-  project: UserEventPayload151Project$Outbound;
+export type OneHundredAndFiftyTwo$Outbound = {
+  project: UserEventPayload152Project$Outbound;
   group: Group$Outbound;
 };
 
 /** @internal */
-export const OneHundredAndFiftyOne$outboundSchema: z.ZodType<
-  OneHundredAndFiftyOne$Outbound,
+export const OneHundredAndFiftyTwo$outboundSchema: z.ZodType<
+  OneHundredAndFiftyTwo$Outbound,
   z.ZodTypeDef,
-  OneHundredAndFiftyOne
+  OneHundredAndFiftyTwo
 > = z.object({
-  project: z.lazy(() => UserEventPayload151Project$outboundSchema),
+  project: z.lazy(() => UserEventPayload152Project$outboundSchema),
   group: z.lazy(() => Group$outboundSchema),
 });
 
@@ -8102,30 +8114,30 @@ export const OneHundredAndFiftyOne$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndFiftyOne$ {
-  /** @deprecated use `OneHundredAndFiftyOne$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndFiftyOne$inboundSchema;
-  /** @deprecated use `OneHundredAndFiftyOne$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndFiftyOne$outboundSchema;
-  /** @deprecated use `OneHundredAndFiftyOne$Outbound` instead. */
-  export type Outbound = OneHundredAndFiftyOne$Outbound;
+export namespace OneHundredAndFiftyTwo$ {
+  /** @deprecated use `OneHundredAndFiftyTwo$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndFiftyTwo$inboundSchema;
+  /** @deprecated use `OneHundredAndFiftyTwo$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndFiftyTwo$outboundSchema;
+  /** @deprecated use `OneHundredAndFiftyTwo$Outbound` instead. */
+  export type Outbound = OneHundredAndFiftyTwo$Outbound;
 }
 
-export function oneHundredAndFiftyOneToJSON(
-  oneHundredAndFiftyOne: OneHundredAndFiftyOne,
+export function oneHundredAndFiftyTwoToJSON(
+  oneHundredAndFiftyTwo: OneHundredAndFiftyTwo,
 ): string {
   return JSON.stringify(
-    OneHundredAndFiftyOne$outboundSchema.parse(oneHundredAndFiftyOne),
+    OneHundredAndFiftyTwo$outboundSchema.parse(oneHundredAndFiftyTwo),
   );
 }
 
-export function oneHundredAndFiftyOneFromJSON(
+export function oneHundredAndFiftyTwoFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndFiftyOne, SDKValidationError> {
+): SafeParseResult<OneHundredAndFiftyTwo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndFiftyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFiftyOne' from JSON`,
+    (x) => OneHundredAndFiftyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFiftyTwo' from JSON`,
   );
 }
 
@@ -8183,8 +8195,8 @@ export function prevFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFifty$inboundSchema: z.ZodType<
-  OneHundredAndFifty,
+export const OneHundredAndFiftyOne$inboundSchema: z.ZodType<
+  OneHundredAndFiftyOne,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -8197,7 +8209,7 @@ export const OneHundredAndFifty$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndFifty$Outbound = {
+export type OneHundredAndFiftyOne$Outbound = {
   id: string;
   slug?: string | undefined;
   name?: string | undefined;
@@ -8207,10 +8219,10 @@ export type OneHundredAndFifty$Outbound = {
 };
 
 /** @internal */
-export const OneHundredAndFifty$outboundSchema: z.ZodType<
-  OneHundredAndFifty$Outbound,
+export const OneHundredAndFiftyOne$outboundSchema: z.ZodType<
+  OneHundredAndFiftyOne$Outbound,
   z.ZodTypeDef,
-  OneHundredAndFifty
+  OneHundredAndFiftyOne
 > = z.object({
   id: z.string(),
   slug: z.string().optional(),
@@ -8218,6 +8230,66 @@ export const OneHundredAndFifty$outboundSchema: z.ZodType<
   fallbackEnvironment: z.string().optional(),
   enableMfeAliases: z.boolean().optional(),
   prev: z.lazy(() => Prev$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndFiftyOne$ {
+  /** @deprecated use `OneHundredAndFiftyOne$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndFiftyOne$inboundSchema;
+  /** @deprecated use `OneHundredAndFiftyOne$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndFiftyOne$outboundSchema;
+  /** @deprecated use `OneHundredAndFiftyOne$Outbound` instead. */
+  export type Outbound = OneHundredAndFiftyOne$Outbound;
+}
+
+export function oneHundredAndFiftyOneToJSON(
+  oneHundredAndFiftyOne: OneHundredAndFiftyOne,
+): string {
+  return JSON.stringify(
+    OneHundredAndFiftyOne$outboundSchema.parse(oneHundredAndFiftyOne),
+  );
+}
+
+export function oneHundredAndFiftyOneFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndFiftyOne, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndFiftyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFiftyOne' from JSON`,
+  );
+}
+
+/** @internal */
+export const OneHundredAndFifty$inboundSchema: z.ZodType<
+  OneHundredAndFifty,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  name: z.string(),
+});
+
+/** @internal */
+export type OneHundredAndFifty$Outbound = {
+  id: string;
+  slug: string;
+  name: string;
+};
+
+/** @internal */
+export const OneHundredAndFifty$outboundSchema: z.ZodType<
+  OneHundredAndFifty$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndFifty
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  name: z.string(),
 });
 
 /**
@@ -8252,21 +8324,38 @@ export function oneHundredAndFiftyFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload149Action$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload149Action
+> = z.nativeEnum(UserEventPayload149Action);
+
+/** @internal */
+export const UserEventPayload149Action$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload149Action
+> = UserEventPayload149Action$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload149Action$ {
+  /** @deprecated use `UserEventPayload149Action$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload149Action$inboundSchema;
+  /** @deprecated use `UserEventPayload149Action$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload149Action$outboundSchema;
+}
+
+/** @internal */
 export const OneHundredAndFortyNine$inboundSchema: z.ZodType<
   OneHundredAndFortyNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
+  action: UserEventPayload149Action$inboundSchema,
 });
 
 /** @internal */
 export type OneHundredAndFortyNine$Outbound = {
-  id: string;
-  slug: string;
-  name: string;
+  action: string;
 };
 
 /** @internal */
@@ -8275,9 +8364,7 @@ export const OneHundredAndFortyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndFortyNine
 > = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
+  action: UserEventPayload149Action$outboundSchema,
 });
 
 /**
@@ -8312,38 +8399,21 @@ export function oneHundredAndFortyNineFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload148Action$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload148Action
-> = z.nativeEnum(UserEventPayload148Action);
-
-/** @internal */
-export const UserEventPayload148Action$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload148Action
-> = UserEventPayload148Action$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload148Action$ {
-  /** @deprecated use `UserEventPayload148Action$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload148Action$inboundSchema;
-  /** @deprecated use `UserEventPayload148Action$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload148Action$outboundSchema;
-}
-
-/** @internal */
 export const OneHundredAndFortyEight$inboundSchema: z.ZodType<
   OneHundredAndFortyEight,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UserEventPayload148Action$inboundSchema,
+  edgeConfigId: z.string(),
+  edgeConfigSlug: z.string(),
+  edgeConfigTokenIds: z.array(z.string()),
 });
 
 /** @internal */
 export type OneHundredAndFortyEight$Outbound = {
-  action: string;
+  edgeConfigId: string;
+  edgeConfigSlug: string;
+  edgeConfigTokenIds: Array<string>;
 };
 
 /** @internal */
@@ -8352,7 +8422,9 @@ export const OneHundredAndFortyEight$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndFortyEight
 > = z.object({
-  action: UserEventPayload148Action$outboundSchema,
+  edgeConfigId: z.string(),
+  edgeConfigSlug: z.string(),
+  edgeConfigTokenIds: z.array(z.string()),
 });
 
 /**
@@ -8394,14 +8466,16 @@ export const OneHundredAndFortySeven$inboundSchema: z.ZodType<
 > = z.object({
   edgeConfigId: z.string(),
   edgeConfigSlug: z.string(),
-  edgeConfigTokenIds: z.array(z.string()),
+  edgeConfigTokenId: z.string(),
+  label: z.string(),
 });
 
 /** @internal */
 export type OneHundredAndFortySeven$Outbound = {
   edgeConfigId: string;
   edgeConfigSlug: string;
-  edgeConfigTokenIds: Array<string>;
+  edgeConfigTokenId: string;
+  label: string;
 };
 
 /** @internal */
@@ -8412,7 +8486,8 @@ export const OneHundredAndFortySeven$outboundSchema: z.ZodType<
 > = z.object({
   edgeConfigId: z.string(),
   edgeConfigSlug: z.string(),
-  edgeConfigTokenIds: z.array(z.string()),
+  edgeConfigTokenId: z.string(),
+  label: z.string(),
 });
 
 /**
@@ -8454,16 +8529,14 @@ export const OneHundredAndFortySix$inboundSchema: z.ZodType<
 > = z.object({
   edgeConfigId: z.string(),
   edgeConfigSlug: z.string(),
-  edgeConfigTokenId: z.string(),
-  label: z.string(),
+  edgeConfigDigest: z.string(),
 });
 
 /** @internal */
 export type OneHundredAndFortySix$Outbound = {
   edgeConfigId: string;
   edgeConfigSlug: string;
-  edgeConfigTokenId: string;
-  label: string;
+  edgeConfigDigest: string;
 };
 
 /** @internal */
@@ -8474,8 +8547,7 @@ export const OneHundredAndFortySix$outboundSchema: z.ZodType<
 > = z.object({
   edgeConfigId: z.string(),
   edgeConfigSlug: z.string(),
-  edgeConfigTokenId: z.string(),
-  label: z.string(),
+  edgeConfigDigest: z.string(),
 });
 
 /**
@@ -8515,16 +8587,14 @@ export const OneHundredAndFortyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigSlug: z.string(),
-  edgeConfigDigest: z.string(),
+  projectName: z.string(),
+  srcImages: z.array(z.string()),
 });
 
 /** @internal */
 export type OneHundredAndFortyFive$Outbound = {
-  edgeConfigId: string;
-  edgeConfigSlug: string;
-  edgeConfigDigest: string;
+  projectName: string;
+  srcImages: Array<string>;
 };
 
 /** @internal */
@@ -8533,9 +8603,8 @@ export const OneHundredAndFortyFive$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndFortyFive
 > = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigSlug: z.string(),
-  edgeConfigDigest: z.string(),
+  projectName: z.string(),
+  srcImages: z.array(z.string()),
 });
 
 /**
@@ -8576,13 +8645,15 @@ export const OneHundredAndFortyFour$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectName: z.string(),
-  srcImages: z.array(z.string()),
+  tags: z.array(z.string()),
+  target: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndFortyFour$Outbound = {
   projectName: string;
-  srcImages: Array<string>;
+  tags: Array<string>;
+  target?: string | undefined;
 };
 
 /** @internal */
@@ -8592,7 +8663,8 @@ export const OneHundredAndFortyFour$outboundSchema: z.ZodType<
   OneHundredAndFortyFour
 > = z.object({
   projectName: z.string(),
-  srcImages: z.array(z.string()),
+  tags: z.array(z.string()),
+  target: z.string().optional(),
 });
 
 /**
@@ -8627,21 +8699,104 @@ export function oneHundredAndFortyFourFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload143Role$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload143Role
+> = z.nativeEnum(UserEventPayload143Role);
+
+/** @internal */
+export const UserEventPayload143Role$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload143Role
+> = UserEventPayload143Role$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload143Role$ {
+  /** @deprecated use `UserEventPayload143Role$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload143Role$inboundSchema;
+  /** @deprecated use `UserEventPayload143Role$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload143Role$outboundSchema;
+}
+
+/** @internal */
+export const UserEventPayload143Project$inboundSchema: z.ZodType<
+  UserEventPayload143Project,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  role: UserEventPayload143Role$inboundSchema,
+  invitedUserName: z.string(),
+  id: z.string().optional(),
+  invitedUserId: z.string().optional(),
+});
+
+/** @internal */
+export type UserEventPayload143Project$Outbound = {
+  name: string;
+  role: string;
+  invitedUserName: string;
+  id?: string | undefined;
+  invitedUserId?: string | undefined;
+};
+
+/** @internal */
+export const UserEventPayload143Project$outboundSchema: z.ZodType<
+  UserEventPayload143Project$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload143Project
+> = z.object({
+  name: z.string(),
+  role: UserEventPayload143Role$outboundSchema,
+  invitedUserName: z.string(),
+  id: z.string().optional(),
+  invitedUserId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload143Project$ {
+  /** @deprecated use `UserEventPayload143Project$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload143Project$inboundSchema;
+  /** @deprecated use `UserEventPayload143Project$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload143Project$outboundSchema;
+  /** @deprecated use `UserEventPayload143Project$Outbound` instead. */
+  export type Outbound = UserEventPayload143Project$Outbound;
+}
+
+export function userEventPayload143ProjectToJSON(
+  userEventPayload143Project: UserEventPayload143Project,
+): string {
+  return JSON.stringify(
+    UserEventPayload143Project$outboundSchema.parse(userEventPayload143Project),
+  );
+}
+
+export function userEventPayload143ProjectFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload143Project, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload143Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload143Project' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndFortyThree$inboundSchema: z.ZodType<
   OneHundredAndFortyThree,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string(),
-  tags: z.array(z.string()),
-  target: z.string().optional(),
+  project: z.lazy(() => UserEventPayload143Project$inboundSchema),
 });
 
 /** @internal */
 export type OneHundredAndFortyThree$Outbound = {
-  projectName: string;
-  tags: Array<string>;
-  target?: string | undefined;
+  project: UserEventPayload143Project$Outbound;
 };
 
 /** @internal */
@@ -8650,9 +8805,7 @@ export const OneHundredAndFortyThree$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndFortyThree
 > = z.object({
-  projectName: z.string(),
-  tags: z.array(z.string()),
-  target: z.string().optional(),
+  project: z.lazy(() => UserEventPayload143Project$outboundSchema),
 });
 
 /**
@@ -8687,46 +8840,19 @@ export function oneHundredAndFortyThreeFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload142Role$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload142Role
-> = z.nativeEnum(UserEventPayload142Role);
-
-/** @internal */
-export const UserEventPayload142Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload142Role
-> = UserEventPayload142Role$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload142Role$ {
-  /** @deprecated use `UserEventPayload142Role$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload142Role$inboundSchema;
-  /** @deprecated use `UserEventPayload142Role$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload142Role$outboundSchema;
-}
-
-/** @internal */
 export const UserEventPayload142Project$inboundSchema: z.ZodType<
   UserEventPayload142Project,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  id: z.string(),
   name: z.string(),
-  role: UserEventPayload142Role$inboundSchema,
-  invitedUserName: z.string(),
-  id: z.string().optional(),
-  invitedUserId: z.string().optional(),
 });
 
 /** @internal */
 export type UserEventPayload142Project$Outbound = {
+  id: string;
   name: string;
-  role: string;
-  invitedUserName: string;
-  id?: string | undefined;
-  invitedUserId?: string | undefined;
 };
 
 /** @internal */
@@ -8735,11 +8861,8 @@ export const UserEventPayload142Project$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UserEventPayload142Project
 > = z.object({
+  id: z.string(),
   name: z.string(),
-  role: UserEventPayload142Role$outboundSchema,
-  invitedUserName: z.string(),
-  id: z.string().optional(),
-  invitedUserId: z.string().optional(),
 });
 
 /**
@@ -8774,17 +8897,127 @@ export function userEventPayload142ProjectFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload142Role$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload142Role
+> = z.nativeEnum(UserEventPayload142Role);
+
+/** @internal */
+export const UserEventPayload142Role$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload142Role
+> = UserEventPayload142Role$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload142Role$ {
+  /** @deprecated use `UserEventPayload142Role$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload142Role$inboundSchema;
+  /** @deprecated use `UserEventPayload142Role$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload142Role$outboundSchema;
+}
+
+/** @internal */
+export const PayloadPreviousRole$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadPreviousRole
+> = z.nativeEnum(PayloadPreviousRole);
+
+/** @internal */
+export const PayloadPreviousRole$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadPreviousRole
+> = PayloadPreviousRole$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadPreviousRole$ {
+  /** @deprecated use `PayloadPreviousRole$inboundSchema` instead. */
+  export const inboundSchema = PayloadPreviousRole$inboundSchema;
+  /** @deprecated use `PayloadPreviousRole$outboundSchema` instead. */
+  export const outboundSchema = PayloadPreviousRole$outboundSchema;
+}
+
+/** @internal */
+export const PayloadProjectMembership$inboundSchema: z.ZodType<
+  PayloadProjectMembership,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  role: UserEventPayload142Role$inboundSchema.optional(),
+  uid: z.string().optional(),
+  createdAt: z.number().optional(),
+  username: z.string().optional(),
+  previousRole: PayloadPreviousRole$inboundSchema.optional(),
+});
+
+/** @internal */
+export type PayloadProjectMembership$Outbound = {
+  role?: string | undefined;
+  uid?: string | undefined;
+  createdAt?: number | undefined;
+  username?: string | undefined;
+  previousRole?: string | undefined;
+};
+
+/** @internal */
+export const PayloadProjectMembership$outboundSchema: z.ZodType<
+  PayloadProjectMembership$Outbound,
+  z.ZodTypeDef,
+  PayloadProjectMembership
+> = z.object({
+  role: UserEventPayload142Role$outboundSchema.optional(),
+  uid: z.string().optional(),
+  createdAt: z.number().optional(),
+  username: z.string().optional(),
+  previousRole: PayloadPreviousRole$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadProjectMembership$ {
+  /** @deprecated use `PayloadProjectMembership$inboundSchema` instead. */
+  export const inboundSchema = PayloadProjectMembership$inboundSchema;
+  /** @deprecated use `PayloadProjectMembership$outboundSchema` instead. */
+  export const outboundSchema = PayloadProjectMembership$outboundSchema;
+  /** @deprecated use `PayloadProjectMembership$Outbound` instead. */
+  export type Outbound = PayloadProjectMembership$Outbound;
+}
+
+export function payloadProjectMembershipToJSON(
+  payloadProjectMembership: PayloadProjectMembership,
+): string {
+  return JSON.stringify(
+    PayloadProjectMembership$outboundSchema.parse(payloadProjectMembership),
+  );
+}
+
+export function payloadProjectMembershipFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadProjectMembership, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadProjectMembership$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadProjectMembership' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndFortyTwo$inboundSchema: z.ZodType<
   OneHundredAndFortyTwo,
   z.ZodTypeDef,
   unknown
 > = z.object({
   project: z.lazy(() => UserEventPayload142Project$inboundSchema),
+  projectMembership: z.lazy(() => PayloadProjectMembership$inboundSchema),
 });
 
 /** @internal */
 export type OneHundredAndFortyTwo$Outbound = {
   project: UserEventPayload142Project$Outbound;
+  projectMembership: PayloadProjectMembership$Outbound;
 };
 
 /** @internal */
@@ -8794,6 +9027,7 @@ export const OneHundredAndFortyTwo$outboundSchema: z.ZodType<
   OneHundredAndFortyTwo
 > = z.object({
   project: z.lazy(() => UserEventPayload142Project$outboundSchema),
+  projectMembership: z.lazy(() => PayloadProjectMembership$outboundSchema),
 });
 
 /**
@@ -8833,14 +9067,14 @@ export const UserEventPayload141Project$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
   name: z.string(),
+  id: z.string().optional(),
 });
 
 /** @internal */
 export type UserEventPayload141Project$Outbound = {
-  id: string;
   name: string;
+  id?: string | undefined;
 };
 
 /** @internal */
@@ -8849,8 +9083,8 @@ export const UserEventPayload141Project$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UserEventPayload141Project
 > = z.object({
-  id: z.string(),
   name: z.string(),
+  id: z.string().optional(),
 });
 
 /**
@@ -8885,110 +9119,86 @@ export function userEventPayload141ProjectFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload141Role$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload141Role
-> = z.nativeEnum(UserEventPayload141Role);
+export const UserEventPayloadRole$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadRole
+> = z.nativeEnum(UserEventPayloadRole);
 
 /** @internal */
-export const UserEventPayload141Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload141Role
-> = UserEventPayload141Role$inboundSchema;
+export const UserEventPayloadRole$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadRole
+> = UserEventPayloadRole$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload141Role$ {
-  /** @deprecated use `UserEventPayload141Role$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload141Role$inboundSchema;
-  /** @deprecated use `UserEventPayload141Role$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload141Role$outboundSchema;
+export namespace UserEventPayloadRole$ {
+  /** @deprecated use `UserEventPayloadRole$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayloadRole$inboundSchema;
+  /** @deprecated use `UserEventPayloadRole$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayloadRole$outboundSchema;
 }
 
 /** @internal */
-export const PayloadPreviousRole$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadPreviousRole
-> = z.nativeEnum(PayloadPreviousRole);
-
-/** @internal */
-export const PayloadPreviousRole$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadPreviousRole
-> = PayloadPreviousRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayloadPreviousRole$ {
-  /** @deprecated use `PayloadPreviousRole$inboundSchema` instead. */
-  export const inboundSchema = PayloadPreviousRole$inboundSchema;
-  /** @deprecated use `PayloadPreviousRole$outboundSchema` instead. */
-  export const outboundSchema = PayloadPreviousRole$outboundSchema;
-}
-
-/** @internal */
-export const PayloadProjectMembership$inboundSchema: z.ZodType<
-  PayloadProjectMembership,
+export const RemovedMembership$inboundSchema: z.ZodType<
+  RemovedMembership,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: UserEventPayload141Role$inboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
+  role: UserEventPayloadRole$inboundSchema,
+  uid: z.string(),
+  createdAt: z.number(),
   username: z.string().optional(),
-  previousRole: PayloadPreviousRole$inboundSchema.optional(),
 });
 
 /** @internal */
-export type PayloadProjectMembership$Outbound = {
-  role?: string | undefined;
-  uid?: string | undefined;
-  createdAt?: number | undefined;
+export type RemovedMembership$Outbound = {
+  role: string;
+  uid: string;
+  createdAt: number;
   username?: string | undefined;
-  previousRole?: string | undefined;
 };
 
 /** @internal */
-export const PayloadProjectMembership$outboundSchema: z.ZodType<
-  PayloadProjectMembership$Outbound,
+export const RemovedMembership$outboundSchema: z.ZodType<
+  RemovedMembership$Outbound,
   z.ZodTypeDef,
-  PayloadProjectMembership
+  RemovedMembership
 > = z.object({
-  role: UserEventPayload141Role$outboundSchema.optional(),
-  uid: z.string().optional(),
-  createdAt: z.number().optional(),
+  role: UserEventPayloadRole$outboundSchema,
+  uid: z.string(),
+  createdAt: z.number(),
   username: z.string().optional(),
-  previousRole: PayloadPreviousRole$outboundSchema.optional(),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PayloadProjectMembership$ {
-  /** @deprecated use `PayloadProjectMembership$inboundSchema` instead. */
-  export const inboundSchema = PayloadProjectMembership$inboundSchema;
-  /** @deprecated use `PayloadProjectMembership$outboundSchema` instead. */
-  export const outboundSchema = PayloadProjectMembership$outboundSchema;
-  /** @deprecated use `PayloadProjectMembership$Outbound` instead. */
-  export type Outbound = PayloadProjectMembership$Outbound;
+export namespace RemovedMembership$ {
+  /** @deprecated use `RemovedMembership$inboundSchema` instead. */
+  export const inboundSchema = RemovedMembership$inboundSchema;
+  /** @deprecated use `RemovedMembership$outboundSchema` instead. */
+  export const outboundSchema = RemovedMembership$outboundSchema;
+  /** @deprecated use `RemovedMembership$Outbound` instead. */
+  export type Outbound = RemovedMembership$Outbound;
 }
 
-export function payloadProjectMembershipToJSON(
-  payloadProjectMembership: PayloadProjectMembership,
+export function removedMembershipToJSON(
+  removedMembership: RemovedMembership,
 ): string {
   return JSON.stringify(
-    PayloadProjectMembership$outboundSchema.parse(payloadProjectMembership),
+    RemovedMembership$outboundSchema.parse(removedMembership),
   );
 }
 
-export function payloadProjectMembershipFromJSON(
+export function removedMembershipFromJSON(
   jsonString: string,
-): SafeParseResult<PayloadProjectMembership, SDKValidationError> {
+): SafeParseResult<RemovedMembership, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PayloadProjectMembership$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadProjectMembership' from JSON`,
+    (x) => RemovedMembership$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemovedMembership' from JSON`,
   );
 }
 
@@ -8999,13 +9209,13 @@ export const OneHundredAndFortyOne$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   project: z.lazy(() => UserEventPayload141Project$inboundSchema),
-  projectMembership: z.lazy(() => PayloadProjectMembership$inboundSchema),
+  removedMembership: z.lazy(() => RemovedMembership$inboundSchema),
 });
 
 /** @internal */
 export type OneHundredAndFortyOne$Outbound = {
   project: UserEventPayload141Project$Outbound;
-  projectMembership: PayloadProjectMembership$Outbound;
+  removedMembership: RemovedMembership$Outbound;
 };
 
 /** @internal */
@@ -9015,7 +9225,7 @@ export const OneHundredAndFortyOne$outboundSchema: z.ZodType<
   OneHundredAndFortyOne
 > = z.object({
   project: z.lazy(() => UserEventPayload141Project$outboundSchema),
-  projectMembership: z.lazy(() => PayloadProjectMembership$outboundSchema),
+  removedMembership: z.lazy(() => RemovedMembership$outboundSchema),
 });
 
 /**
@@ -9107,204 +9317,6 @@ export function userEventPayload140ProjectFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadRole$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadRole
-> = z.nativeEnum(UserEventPayloadRole);
-
-/** @internal */
-export const UserEventPayloadRole$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadRole
-> = UserEventPayloadRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayloadRole$ {
-  /** @deprecated use `UserEventPayloadRole$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayloadRole$inboundSchema;
-  /** @deprecated use `UserEventPayloadRole$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayloadRole$outboundSchema;
-}
-
-/** @internal */
-export const RemovedMembership$inboundSchema: z.ZodType<
-  RemovedMembership,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  role: UserEventPayloadRole$inboundSchema,
-  uid: z.string(),
-  createdAt: z.number(),
-  username: z.string().optional(),
-});
-
-/** @internal */
-export type RemovedMembership$Outbound = {
-  role: string;
-  uid: string;
-  createdAt: number;
-  username?: string | undefined;
-};
-
-/** @internal */
-export const RemovedMembership$outboundSchema: z.ZodType<
-  RemovedMembership$Outbound,
-  z.ZodTypeDef,
-  RemovedMembership
-> = z.object({
-  role: UserEventPayloadRole$outboundSchema,
-  uid: z.string(),
-  createdAt: z.number(),
-  username: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemovedMembership$ {
-  /** @deprecated use `RemovedMembership$inboundSchema` instead. */
-  export const inboundSchema = RemovedMembership$inboundSchema;
-  /** @deprecated use `RemovedMembership$outboundSchema` instead. */
-  export const outboundSchema = RemovedMembership$outboundSchema;
-  /** @deprecated use `RemovedMembership$Outbound` instead. */
-  export type Outbound = RemovedMembership$Outbound;
-}
-
-export function removedMembershipToJSON(
-  removedMembership: RemovedMembership,
-): string {
-  return JSON.stringify(
-    RemovedMembership$outboundSchema.parse(removedMembership),
-  );
-}
-
-export function removedMembershipFromJSON(
-  jsonString: string,
-): SafeParseResult<RemovedMembership, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RemovedMembership$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RemovedMembership' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndForty$inboundSchema: z.ZodType<
-  OneHundredAndForty,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  project: z.lazy(() => UserEventPayload140Project$inboundSchema),
-  removedMembership: z.lazy(() => RemovedMembership$inboundSchema),
-});
-
-/** @internal */
-export type OneHundredAndForty$Outbound = {
-  project: UserEventPayload140Project$Outbound;
-  removedMembership: RemovedMembership$Outbound;
-};
-
-/** @internal */
-export const OneHundredAndForty$outboundSchema: z.ZodType<
-  OneHundredAndForty$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndForty
-> = z.object({
-  project: z.lazy(() => UserEventPayload140Project$outboundSchema),
-  removedMembership: z.lazy(() => RemovedMembership$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndForty$ {
-  /** @deprecated use `OneHundredAndForty$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndForty$inboundSchema;
-  /** @deprecated use `OneHundredAndForty$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndForty$outboundSchema;
-  /** @deprecated use `OneHundredAndForty$Outbound` instead. */
-  export type Outbound = OneHundredAndForty$Outbound;
-}
-
-export function oneHundredAndFortyToJSON(
-  oneHundredAndForty: OneHundredAndForty,
-): string {
-  return JSON.stringify(
-    OneHundredAndForty$outboundSchema.parse(oneHundredAndForty),
-  );
-}
-
-export function oneHundredAndFortyFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndForty, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndForty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndForty' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload139Project$inboundSchema: z.ZodType<
-  UserEventPayload139Project,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  id: z.string().optional(),
-});
-
-/** @internal */
-export type UserEventPayload139Project$Outbound = {
-  name: string;
-  id?: string | undefined;
-};
-
-/** @internal */
-export const UserEventPayload139Project$outboundSchema: z.ZodType<
-  UserEventPayload139Project$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload139Project
-> = z.object({
-  name: z.string(),
-  id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload139Project$ {
-  /** @deprecated use `UserEventPayload139Project$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload139Project$inboundSchema;
-  /** @deprecated use `UserEventPayload139Project$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload139Project$outboundSchema;
-  /** @deprecated use `UserEventPayload139Project$Outbound` instead. */
-  export type Outbound = UserEventPayload139Project$Outbound;
-}
-
-export function userEventPayload139ProjectToJSON(
-  userEventPayload139Project: UserEventPayload139Project,
-): string {
-  return JSON.stringify(
-    UserEventPayload139Project$outboundSchema.parse(userEventPayload139Project),
-  );
-}
-
-export function userEventPayload139ProjectFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload139Project, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload139Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload139Project' from JSON`,
-  );
-}
-
-/** @internal */
 export const PayloadRole$inboundSchema: z.ZodNativeEnum<typeof PayloadRole> = z
   .nativeEnum(PayloadRole);
 
@@ -9387,19 +9399,80 @@ export function projectMembershipFromJSON(
 }
 
 /** @internal */
+export const OneHundredAndForty$inboundSchema: z.ZodType<
+  OneHundredAndForty,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  project: z.lazy(() => UserEventPayload140Project$inboundSchema),
+  projectMembership: z.nullable(z.lazy(() => ProjectMembership$inboundSchema)),
+});
+
+/** @internal */
+export type OneHundredAndForty$Outbound = {
+  project: UserEventPayload140Project$Outbound;
+  projectMembership: ProjectMembership$Outbound | null;
+};
+
+/** @internal */
+export const OneHundredAndForty$outboundSchema: z.ZodType<
+  OneHundredAndForty$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndForty
+> = z.object({
+  project: z.lazy(() => UserEventPayload140Project$outboundSchema),
+  projectMembership: z.nullable(z.lazy(() => ProjectMembership$outboundSchema)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndForty$ {
+  /** @deprecated use `OneHundredAndForty$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndForty$inboundSchema;
+  /** @deprecated use `OneHundredAndForty$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndForty$outboundSchema;
+  /** @deprecated use `OneHundredAndForty$Outbound` instead. */
+  export type Outbound = OneHundredAndForty$Outbound;
+}
+
+export function oneHundredAndFortyToJSON(
+  oneHundredAndForty: OneHundredAndForty,
+): string {
+  return JSON.stringify(
+    OneHundredAndForty$outboundSchema.parse(oneHundredAndForty),
+  );
+}
+
+export function oneHundredAndFortyFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndForty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndForty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndForty' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndThirtyNine$inboundSchema: z.ZodType<
   OneHundredAndThirtyNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  project: z.lazy(() => UserEventPayload139Project$inboundSchema),
-  projectMembership: z.nullable(z.lazy(() => ProjectMembership$inboundSchema)),
+  previousProjectName: z.string(),
+  newProjectName: z.string(),
+  originAccountName: z.string(),
+  transferId: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtyNine$Outbound = {
-  project: UserEventPayload139Project$Outbound;
-  projectMembership: ProjectMembership$Outbound | null;
+  previousProjectName: string;
+  newProjectName: string;
+  originAccountName: string;
+  transferId?: string | undefined;
 };
 
 /** @internal */
@@ -9408,8 +9481,10 @@ export const OneHundredAndThirtyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirtyNine
 > = z.object({
-  project: z.lazy(() => UserEventPayload139Project$outboundSchema),
-  projectMembership: z.nullable(z.lazy(() => ProjectMembership$outboundSchema)),
+  previousProjectName: z.string(),
+  newProjectName: z.string(),
+  originAccountName: z.string(),
+  transferId: z.string().optional(),
 });
 
 /**
@@ -9451,7 +9526,7 @@ export const OneHundredAndThirtyEight$inboundSchema: z.ZodType<
 > = z.object({
   previousProjectName: z.string(),
   newProjectName: z.string(),
-  originAccountName: z.string(),
+  destinationAccountName: z.string(),
   transferId: z.string().optional(),
 });
 
@@ -9459,7 +9534,7 @@ export const OneHundredAndThirtyEight$inboundSchema: z.ZodType<
 export type OneHundredAndThirtyEight$Outbound = {
   previousProjectName: string;
   newProjectName: string;
-  originAccountName: string;
+  destinationAccountName: string;
   transferId?: string | undefined;
 };
 
@@ -9471,7 +9546,7 @@ export const OneHundredAndThirtyEight$outboundSchema: z.ZodType<
 > = z.object({
   previousProjectName: z.string(),
   newProjectName: z.string(),
-  originAccountName: z.string(),
+  destinationAccountName: z.string(),
   transferId: z.string().optional(),
 });
 
@@ -9512,17 +9587,15 @@ export const OneHundredAndThirtySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  previousProjectName: z.string(),
-  newProjectName: z.string(),
-  destinationAccountName: z.string(),
+  projectName: z.string(),
+  destinationAccountName: z.nullable(z.string()),
   transferId: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtySeven$Outbound = {
-  previousProjectName: string;
-  newProjectName: string;
-  destinationAccountName: string;
+  projectName: string;
+  destinationAccountName: string | null;
   transferId?: string | undefined;
 };
 
@@ -9532,9 +9605,8 @@ export const OneHundredAndThirtySeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirtySeven
 > = z.object({
-  previousProjectName: z.string(),
-  newProjectName: z.string(),
-  destinationAccountName: z.string(),
+  projectName: z.string(),
+  destinationAccountName: z.nullable(z.string()),
   transferId: z.string().optional(),
 });
 
@@ -9575,15 +9647,21 @@ export const OneHundredAndThirtySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  projectId: z.string(),
   projectName: z.string(),
-  destinationAccountName: z.nullable(z.string()),
+  originAccountName: z.string(),
+  destinationAccountName: z.string(),
+  destinationAccountId: z.string(),
   transferId: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtySix$Outbound = {
+  projectId: string;
   projectName: string;
-  destinationAccountName: string | null;
+  originAccountName: string;
+  destinationAccountName: string;
+  destinationAccountId: string;
   transferId?: string | undefined;
 };
 
@@ -9593,8 +9671,11 @@ export const OneHundredAndThirtySix$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirtySix
 > = z.object({
+  projectId: z.string(),
   projectName: z.string(),
-  destinationAccountName: z.nullable(z.string()),
+  originAccountName: z.string(),
+  destinationAccountName: z.string(),
+  destinationAccountId: z.string(),
   transferId: z.string().optional(),
 });
 
@@ -9635,22 +9716,22 @@ export const OneHundredAndThirtyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  originAccountName: z.string(),
-  destinationAccountName: z.string(),
-  destinationAccountId: z.string(),
-  transferId: z.string().optional(),
+  requestedTeamName: z.string(),
+  requestedUserName: z.string().optional(),
+  gitUsername: z.string().optional(),
+  githubUsername: z.string().optional(),
+  gitlabUsername: z.string().optional(),
+  bitbucketUsername: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtyFive$Outbound = {
-  projectId: string;
-  projectName: string;
-  originAccountName: string;
-  destinationAccountName: string;
-  destinationAccountId: string;
-  transferId?: string | undefined;
+  requestedTeamName: string;
+  requestedUserName?: string | undefined;
+  gitUsername?: string | undefined;
+  githubUsername?: string | undefined;
+  gitlabUsername?: string | undefined;
+  bitbucketUsername?: string | undefined;
 };
 
 /** @internal */
@@ -9659,12 +9740,12 @@ export const OneHundredAndThirtyFive$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirtyFive
 > = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  originAccountName: z.string(),
-  destinationAccountName: z.string(),
-  destinationAccountId: z.string(),
-  transferId: z.string().optional(),
+  requestedTeamName: z.string(),
+  requestedUserName: z.string().optional(),
+  gitUsername: z.string().optional(),
+  githubUsername: z.string().optional(),
+  gitlabUsername: z.string().optional(),
+  bitbucketUsername: z.string().optional(),
 });
 
 /**
@@ -9704,22 +9785,22 @@ export const OneHundredAndThirtyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  requestedTeamName: z.string(),
-  requestedUserName: z.string().optional(),
-  gitUsername: z.string().optional(),
-  githubUsername: z.string().optional(),
-  gitlabUsername: z.string().optional(),
-  bitbucketUsername: z.string().optional(),
+  teamName: z.string(),
+  username: z.string().optional(),
+  gitUsername: z.nullable(z.string()).optional(),
+  githubUsername: z.nullable(z.string()).optional(),
+  gitlabUsername: z.nullable(z.string()).optional(),
+  bitbucketUsername: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtyFour$Outbound = {
-  requestedTeamName: string;
-  requestedUserName?: string | undefined;
-  gitUsername?: string | undefined;
-  githubUsername?: string | undefined;
-  gitlabUsername?: string | undefined;
-  bitbucketUsername?: string | undefined;
+  teamName: string;
+  username?: string | undefined;
+  gitUsername?: string | null | undefined;
+  githubUsername?: string | null | undefined;
+  gitlabUsername?: string | null | undefined;
+  bitbucketUsername?: string | null | undefined;
 };
 
 /** @internal */
@@ -9728,12 +9809,12 @@ export const OneHundredAndThirtyFour$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirtyFour
 > = z.object({
-  requestedTeamName: z.string(),
-  requestedUserName: z.string().optional(),
-  gitUsername: z.string().optional(),
-  githubUsername: z.string().optional(),
-  gitlabUsername: z.string().optional(),
-  bitbucketUsername: z.string().optional(),
+  teamName: z.string(),
+  username: z.string().optional(),
+  gitUsername: z.nullable(z.string()).optional(),
+  githubUsername: z.nullable(z.string()).optional(),
+  gitlabUsername: z.nullable(z.string()).optional(),
+  bitbucketUsername: z.nullable(z.string()).optional(),
 });
 
 /**
@@ -9775,20 +9856,24 @@ export const OneHundredAndThirtyThree$inboundSchema: z.ZodType<
 > = z.object({
   teamName: z.string(),
   username: z.string().optional(),
-  gitUsername: z.nullable(z.string()).optional(),
+  gitUsername: z.string().optional(),
   githubUsername: z.nullable(z.string()).optional(),
   gitlabUsername: z.nullable(z.string()).optional(),
   bitbucketUsername: z.nullable(z.string()).optional(),
+  updatedUid: z.string().optional(),
+  teamId: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtyThree$Outbound = {
   teamName: string;
   username?: string | undefined;
-  gitUsername?: string | null | undefined;
+  gitUsername?: string | undefined;
   githubUsername?: string | null | undefined;
   gitlabUsername?: string | null | undefined;
   bitbucketUsername?: string | null | undefined;
+  updatedUid?: string | undefined;
+  teamId?: string | undefined;
 };
 
 /** @internal */
@@ -9799,10 +9884,12 @@ export const OneHundredAndThirtyThree$outboundSchema: z.ZodType<
 > = z.object({
   teamName: z.string(),
   username: z.string().optional(),
-  gitUsername: z.nullable(z.string()).optional(),
+  gitUsername: z.string().optional(),
   githubUsername: z.nullable(z.string()).optional(),
   gitlabUsername: z.nullable(z.string()).optional(),
   bitbucketUsername: z.nullable(z.string()).optional(),
+  updatedUid: z.string().optional(),
+  teamId: z.string().optional(),
 });
 
 /**
@@ -9842,26 +9929,14 @@ export const OneHundredAndThirtyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamName: z.string(),
-  username: z.string().optional(),
-  gitUsername: z.string().optional(),
-  githubUsername: z.nullable(z.string()).optional(),
-  gitlabUsername: z.nullable(z.string()).optional(),
-  bitbucketUsername: z.nullable(z.string()).optional(),
-  updatedUid: z.string().optional(),
-  teamId: z.string().optional(),
+  price: z.number().optional(),
+  currency: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtyTwo$Outbound = {
-  teamName: string;
-  username?: string | undefined;
-  gitUsername?: string | undefined;
-  githubUsername?: string | null | undefined;
-  gitlabUsername?: string | null | undefined;
-  bitbucketUsername?: string | null | undefined;
-  updatedUid?: string | undefined;
-  teamId?: string | undefined;
+  price?: number | undefined;
+  currency?: string | undefined;
 };
 
 /** @internal */
@@ -9870,14 +9945,8 @@ export const OneHundredAndThirtyTwo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirtyTwo
 > = z.object({
-  teamName: z.string(),
-  username: z.string().optional(),
-  gitUsername: z.string().optional(),
-  githubUsername: z.nullable(z.string()).optional(),
-  gitlabUsername: z.nullable(z.string()).optional(),
-  bitbucketUsername: z.nullable(z.string()).optional(),
-  updatedUid: z.string().optional(),
-  teamId: z.string().optional(),
+  price: z.number().optional(),
+  currency: z.string().optional(),
 });
 
 /**
@@ -9917,14 +9986,14 @@ export const OneHundredAndThirtyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
+  previewDeploymentSuffix: z.nullable(z.string()).optional(),
+  previousPreviewDeploymentSuffix: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirtyOne$Outbound = {
-  price?: number | undefined;
-  currency?: string | undefined;
+  previewDeploymentSuffix?: string | null | undefined;
+  previousPreviewDeploymentSuffix?: string | null | undefined;
 };
 
 /** @internal */
@@ -9933,8 +10002,8 @@ export const OneHundredAndThirtyOne$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirtyOne
 > = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
+  previewDeploymentSuffix: z.nullable(z.string()).optional(),
+  previousPreviewDeploymentSuffix: z.nullable(z.string()).optional(),
 });
 
 /**
@@ -9974,14 +10043,16 @@ export const OneHundredAndThirty$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  previewDeploymentSuffix: z.nullable(z.string()).optional(),
-  previousPreviewDeploymentSuffix: z.nullable(z.string()).optional(),
+  price: z.number().optional(),
+  currency: z.string().optional(),
+  enabled: z.boolean().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThirty$Outbound = {
-  previewDeploymentSuffix?: string | null | undefined;
-  previousPreviewDeploymentSuffix?: string | null | undefined;
+  price?: number | undefined;
+  currency?: string | undefined;
+  enabled?: boolean | undefined;
 };
 
 /** @internal */
@@ -9990,8 +10061,9 @@ export const OneHundredAndThirty$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThirty
 > = z.object({
-  previewDeploymentSuffix: z.nullable(z.string()).optional(),
-  previousPreviewDeploymentSuffix: z.nullable(z.string()).optional(),
+  price: z.number().optional(),
+  currency: z.string().optional(),
+  enabled: z.boolean().optional(),
 });
 
 /**
@@ -10031,16 +10103,12 @@ export const OneHundredAndTwentyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
-  enabled: z.boolean().optional(),
+  username: z.string(),
 });
 
 /** @internal */
 export type OneHundredAndTwentyNine$Outbound = {
-  price?: number | undefined;
-  currency?: string | undefined;
-  enabled?: boolean | undefined;
+  username: string;
 };
 
 /** @internal */
@@ -10049,9 +10117,7 @@ export const OneHundredAndTwentyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentyNine
 > = z.object({
-  price: z.number().optional(),
-  currency: z.string().optional(),
-  enabled: z.boolean().optional(),
+  username: z.string(),
 });
 
 /**
@@ -10091,12 +10157,14 @@ export const OneHundredAndTwentyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  username: z.string(),
+  email: z.string(),
+  prevEmail: z.string(),
 });
 
 /** @internal */
 export type OneHundredAndTwentyEight$Outbound = {
-  username: string;
+  email: string;
+  prevEmail: string;
 };
 
 /** @internal */
@@ -10105,7 +10173,8 @@ export const OneHundredAndTwentyEight$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentyEight
 > = z.object({
-  username: z.string(),
+  email: z.string(),
+  prevEmail: z.string(),
 });
 
 /**
@@ -10145,14 +10214,12 @@ export const OneHundredAndTwentySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
-  prevEmail: z.string(),
+  mfaEnabled: z.boolean(),
 });
 
 /** @internal */
 export type OneHundredAndTwentySeven$Outbound = {
-  email: string;
-  prevEmail: string;
+  mfaEnabled: boolean;
 };
 
 /** @internal */
@@ -10161,8 +10228,7 @@ export const OneHundredAndTwentySeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentySeven
 > = z.object({
-  email: z.string(),
-  prevEmail: z.string(),
+  mfaEnabled: z.boolean(),
 });
 
 /**
@@ -10202,12 +10268,14 @@ export const OneHundredAndTwentySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  mfaEnabled: z.boolean(),
+  enabled: z.boolean(),
+  totpVerified: z.boolean(),
 });
 
 /** @internal */
 export type OneHundredAndTwentySix$Outbound = {
-  mfaEnabled: boolean;
+  enabled: boolean;
+  totpVerified: boolean;
 };
 
 /** @internal */
@@ -10216,7 +10284,8 @@ export const OneHundredAndTwentySix$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentySix
 > = z.object({
-  mfaEnabled: z.boolean(),
+  enabled: z.boolean(),
+  totpVerified: z.boolean(),
 });
 
 /**
@@ -10247,63 +10316,6 @@ export function oneHundredAndTwentySixFromJSON(
     jsonString,
     (x) => OneHundredAndTwentySix$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndTwentySix' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndTwentyFive$inboundSchema: z.ZodType<
-  OneHundredAndTwentyFive,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  enabled: z.boolean(),
-  totpVerified: z.boolean(),
-});
-
-/** @internal */
-export type OneHundredAndTwentyFive$Outbound = {
-  enabled: boolean;
-  totpVerified: boolean;
-};
-
-/** @internal */
-export const OneHundredAndTwentyFive$outboundSchema: z.ZodType<
-  OneHundredAndTwentyFive$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndTwentyFive
-> = z.object({
-  enabled: z.boolean(),
-  totpVerified: z.boolean(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndTwentyFive$ {
-  /** @deprecated use `OneHundredAndTwentyFive$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndTwentyFive$inboundSchema;
-  /** @deprecated use `OneHundredAndTwentyFive$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndTwentyFive$outboundSchema;
-  /** @deprecated use `OneHundredAndTwentyFive$Outbound` instead. */
-  export type Outbound = OneHundredAndTwentyFive$Outbound;
-}
-
-export function oneHundredAndTwentyFiveToJSON(
-  oneHundredAndTwentyFive: OneHundredAndTwentyFive,
-): string {
-  return JSON.stringify(
-    OneHundredAndTwentyFive$outboundSchema.parse(oneHundredAndTwentyFive),
-  );
-}
-
-export function oneHundredAndTwentyFiveFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndTwentyFive, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndTwentyFive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndTwentyFive' from JSON`,
   );
 }
 
@@ -10416,8 +10428,8 @@ export function payloadNextFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndTwentyFour$inboundSchema: z.ZodType<
-  OneHundredAndTwentyFour,
+export const OneHundredAndTwentyFive$inboundSchema: z.ZodType<
+  OneHundredAndTwentyFive,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -10426,16 +10438,16 @@ export const OneHundredAndTwentyFour$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndTwentyFour$Outbound = {
+export type OneHundredAndTwentyFive$Outbound = {
   previous: PayloadPrevious$Outbound;
   next: PayloadNext$Outbound;
 };
 
 /** @internal */
-export const OneHundredAndTwentyFour$outboundSchema: z.ZodType<
-  OneHundredAndTwentyFour$Outbound,
+export const OneHundredAndTwentyFive$outboundSchema: z.ZodType<
+  OneHundredAndTwentyFive$Outbound,
   z.ZodTypeDef,
-  OneHundredAndTwentyFour
+  OneHundredAndTwentyFive
 > = z.object({
   previous: z.lazy(() => PayloadPrevious$outboundSchema),
   next: z.lazy(() => PayloadNext$outboundSchema),
@@ -10445,30 +10457,30 @@ export const OneHundredAndTwentyFour$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndTwentyFour$ {
-  /** @deprecated use `OneHundredAndTwentyFour$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndTwentyFour$inboundSchema;
-  /** @deprecated use `OneHundredAndTwentyFour$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndTwentyFour$outboundSchema;
-  /** @deprecated use `OneHundredAndTwentyFour$Outbound` instead. */
-  export type Outbound = OneHundredAndTwentyFour$Outbound;
+export namespace OneHundredAndTwentyFive$ {
+  /** @deprecated use `OneHundredAndTwentyFive$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndTwentyFive$inboundSchema;
+  /** @deprecated use `OneHundredAndTwentyFive$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndTwentyFive$outboundSchema;
+  /** @deprecated use `OneHundredAndTwentyFive$Outbound` instead. */
+  export type Outbound = OneHundredAndTwentyFive$Outbound;
 }
 
-export function oneHundredAndTwentyFourToJSON(
-  oneHundredAndTwentyFour: OneHundredAndTwentyFour,
+export function oneHundredAndTwentyFiveToJSON(
+  oneHundredAndTwentyFive: OneHundredAndTwentyFive,
 ): string {
   return JSON.stringify(
-    OneHundredAndTwentyFour$outboundSchema.parse(oneHundredAndTwentyFour),
+    OneHundredAndTwentyFive$outboundSchema.parse(oneHundredAndTwentyFive),
   );
 }
 
-export function oneHundredAndTwentyFourFromJSON(
+export function oneHundredAndTwentyFiveFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndTwentyFour, SDKValidationError> {
+): SafeParseResult<OneHundredAndTwentyFive, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndTwentyFour$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndTwentyFour' from JSON`,
+    (x) => OneHundredAndTwentyFive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndTwentyFive' from JSON`,
   );
 }
 
@@ -10527,8 +10539,8 @@ export function payloadRemoteCachingFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndTwentyThree$inboundSchema: z.ZodType<
-  OneHundredAndTwentyThree,
+export const OneHundredAndTwentyFour$inboundSchema: z.ZodType<
+  OneHundredAndTwentyFour,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -10536,8 +10548,62 @@ export const OneHundredAndTwentyThree$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndTwentyThree$Outbound = {
+export type OneHundredAndTwentyFour$Outbound = {
   remoteCaching?: PayloadRemoteCaching$Outbound | undefined;
+};
+
+/** @internal */
+export const OneHundredAndTwentyFour$outboundSchema: z.ZodType<
+  OneHundredAndTwentyFour$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndTwentyFour
+> = z.object({
+  remoteCaching: z.lazy(() => PayloadRemoteCaching$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndTwentyFour$ {
+  /** @deprecated use `OneHundredAndTwentyFour$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndTwentyFour$inboundSchema;
+  /** @deprecated use `OneHundredAndTwentyFour$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndTwentyFour$outboundSchema;
+  /** @deprecated use `OneHundredAndTwentyFour$Outbound` instead. */
+  export type Outbound = OneHundredAndTwentyFour$Outbound;
+}
+
+export function oneHundredAndTwentyFourToJSON(
+  oneHundredAndTwentyFour: OneHundredAndTwentyFour,
+): string {
+  return JSON.stringify(
+    OneHundredAndTwentyFour$outboundSchema.parse(oneHundredAndTwentyFour),
+  );
+}
+
+export function oneHundredAndTwentyFourFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndTwentyFour, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndTwentyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndTwentyFour' from JSON`,
+  );
+}
+
+/** @internal */
+export const OneHundredAndTwentyThree$inboundSchema: z.ZodType<
+  OneHundredAndTwentyThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slug: z.string().optional(),
+});
+
+/** @internal */
+export type OneHundredAndTwentyThree$Outbound = {
+  slug?: string | undefined;
 };
 
 /** @internal */
@@ -10546,7 +10612,7 @@ export const OneHundredAndTwentyThree$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentyThree
 > = z.object({
-  remoteCaching: z.lazy(() => PayloadRemoteCaching$outboundSchema).optional(),
+  slug: z.string().optional(),
 });
 
 /**
@@ -10586,12 +10652,12 @@ export const OneHundredAndTwentyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  slug: z.string().optional(),
+  name: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndTwentyTwo$Outbound = {
-  slug?: string | undefined;
+  name?: string | undefined;
 };
 
 /** @internal */
@@ -10600,7 +10666,7 @@ export const OneHundredAndTwentyTwo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentyTwo
 > = z.object({
-  slug: z.string().optional(),
+  name: z.string().optional(),
 });
 
 /**
@@ -10640,12 +10706,12 @@ export const OneHundredAndTwentyOne$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string().optional(),
+  enforced: z.boolean(),
 });
 
 /** @internal */
 export type OneHundredAndTwentyOne$Outbound = {
-  name?: string | undefined;
+  enforced: boolean;
 };
 
 /** @internal */
@@ -10654,7 +10720,7 @@ export const OneHundredAndTwentyOne$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwentyOne
 > = z.object({
-  name: z.string().optional(),
+  enforced: z.boolean(),
 });
 
 /**
@@ -10689,17 +10755,78 @@ export function oneHundredAndTwentyOneFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload120User$inboundSchema: z.ZodType<
+  UserEventPayload120User,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  username: z.string(),
+});
+
+/** @internal */
+export type UserEventPayload120User$Outbound = {
+  id: string;
+  username: string;
+};
+
+/** @internal */
+export const UserEventPayload120User$outboundSchema: z.ZodType<
+  UserEventPayload120User$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload120User
+> = z.object({
+  id: z.string(),
+  username: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload120User$ {
+  /** @deprecated use `UserEventPayload120User$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload120User$inboundSchema;
+  /** @deprecated use `UserEventPayload120User$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload120User$outboundSchema;
+  /** @deprecated use `UserEventPayload120User$Outbound` instead. */
+  export type Outbound = UserEventPayload120User$Outbound;
+}
+
+export function userEventPayload120UserToJSON(
+  userEventPayload120User: UserEventPayload120User,
+): string {
+  return JSON.stringify(
+    UserEventPayload120User$outboundSchema.parse(userEventPayload120User),
+  );
+}
+
+export function userEventPayload120UserFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload120User, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload120User$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload120User' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndTwenty$inboundSchema: z.ZodType<
   OneHundredAndTwenty,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  enforced: z.boolean(),
+  entitlement: z.string(),
+  user: z.lazy(() => UserEventPayload120User$inboundSchema),
+  previousCanceledAt: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndTwenty$Outbound = {
-  enforced: boolean;
+  entitlement: string;
+  user: UserEventPayload120User$Outbound;
+  previousCanceledAt?: string | undefined;
 };
 
 /** @internal */
@@ -10708,7 +10835,9 @@ export const OneHundredAndTwenty$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTwenty
 > = z.object({
-  enforced: z.boolean(),
+  entitlement: z.string(),
+  user: z.lazy(() => UserEventPayload120User$outboundSchema),
+  previousCanceledAt: z.string().optional(),
 });
 
 /**
@@ -10739,123 +10868,6 @@ export function oneHundredAndTwentyFromJSON(
     jsonString,
     (x) => OneHundredAndTwenty$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndTwenty' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload119User$inboundSchema: z.ZodType<
-  UserEventPayload119User,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  username: z.string(),
-});
-
-/** @internal */
-export type UserEventPayload119User$Outbound = {
-  id: string;
-  username: string;
-};
-
-/** @internal */
-export const UserEventPayload119User$outboundSchema: z.ZodType<
-  UserEventPayload119User$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload119User
-> = z.object({
-  id: z.string(),
-  username: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload119User$ {
-  /** @deprecated use `UserEventPayload119User$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload119User$inboundSchema;
-  /** @deprecated use `UserEventPayload119User$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload119User$outboundSchema;
-  /** @deprecated use `UserEventPayload119User$Outbound` instead. */
-  export type Outbound = UserEventPayload119User$Outbound;
-}
-
-export function userEventPayload119UserToJSON(
-  userEventPayload119User: UserEventPayload119User,
-): string {
-  return JSON.stringify(
-    UserEventPayload119User$outboundSchema.parse(userEventPayload119User),
-  );
-}
-
-export function userEventPayload119UserFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload119User, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload119User$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload119User' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndNineteen$inboundSchema: z.ZodType<
-  OneHundredAndNineteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  entitlement: z.string(),
-  user: z.lazy(() => UserEventPayload119User$inboundSchema),
-  previousCanceledAt: z.string().optional(),
-});
-
-/** @internal */
-export type OneHundredAndNineteen$Outbound = {
-  entitlement: string;
-  user: UserEventPayload119User$Outbound;
-  previousCanceledAt?: string | undefined;
-};
-
-/** @internal */
-export const OneHundredAndNineteen$outboundSchema: z.ZodType<
-  OneHundredAndNineteen$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndNineteen
-> = z.object({
-  entitlement: z.string(),
-  user: z.lazy(() => UserEventPayload119User$outboundSchema),
-  previousCanceledAt: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndNineteen$ {
-  /** @deprecated use `OneHundredAndNineteen$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndNineteen$inboundSchema;
-  /** @deprecated use `OneHundredAndNineteen$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndNineteen$outboundSchema;
-  /** @deprecated use `OneHundredAndNineteen$Outbound` instead. */
-  export type Outbound = OneHundredAndNineteen$Outbound;
-}
-
-export function oneHundredAndNineteenToJSON(
-  oneHundredAndNineteen: OneHundredAndNineteen,
-): string {
-  return JSON.stringify(
-    OneHundredAndNineteen$outboundSchema.parse(oneHundredAndNineteen),
-  );
-}
-
-export function oneHundredAndNineteenFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndNineteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndNineteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndNineteen' from JSON`,
   );
 }
 
@@ -10917,8 +10929,8 @@ export function userEventPayloadUserFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndEighteen$inboundSchema: z.ZodType<
-  OneHundredAndEighteen,
+export const OneHundredAndNineteen$inboundSchema: z.ZodType<
+  OneHundredAndNineteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -10927,16 +10939,16 @@ export const OneHundredAndEighteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndEighteen$Outbound = {
+export type OneHundredAndNineteen$Outbound = {
   entitlement: string;
   user: UserEventPayloadUser$Outbound;
 };
 
 /** @internal */
-export const OneHundredAndEighteen$outboundSchema: z.ZodType<
-  OneHundredAndEighteen$Outbound,
+export const OneHundredAndNineteen$outboundSchema: z.ZodType<
+  OneHundredAndNineteen$Outbound,
   z.ZodTypeDef,
-  OneHundredAndEighteen
+  OneHundredAndNineteen
 > = z.object({
   entitlement: z.string(),
   user: z.lazy(() => UserEventPayloadUser$outboundSchema),
@@ -10946,30 +10958,30 @@ export const OneHundredAndEighteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndEighteen$ {
-  /** @deprecated use `OneHundredAndEighteen$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndEighteen$inboundSchema;
-  /** @deprecated use `OneHundredAndEighteen$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndEighteen$outboundSchema;
-  /** @deprecated use `OneHundredAndEighteen$Outbound` instead. */
-  export type Outbound = OneHundredAndEighteen$Outbound;
+export namespace OneHundredAndNineteen$ {
+  /** @deprecated use `OneHundredAndNineteen$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndNineteen$inboundSchema;
+  /** @deprecated use `OneHundredAndNineteen$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndNineteen$outboundSchema;
+  /** @deprecated use `OneHundredAndNineteen$Outbound` instead. */
+  export type Outbound = OneHundredAndNineteen$Outbound;
 }
 
-export function oneHundredAndEighteenToJSON(
-  oneHundredAndEighteen: OneHundredAndEighteen,
+export function oneHundredAndNineteenToJSON(
+  oneHundredAndNineteen: OneHundredAndNineteen,
 ): string {
   return JSON.stringify(
-    OneHundredAndEighteen$outboundSchema.parse(oneHundredAndEighteen),
+    OneHundredAndNineteen$outboundSchema.parse(oneHundredAndNineteen),
   );
 }
 
-export function oneHundredAndEighteenFromJSON(
+export function oneHundredAndNineteenFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndEighteen, SDKValidationError> {
+): SafeParseResult<OneHundredAndNineteen, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndEighteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndEighteen' from JSON`,
+    (x) => OneHundredAndNineteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndNineteen' from JSON`,
   );
 }
 
@@ -11027,8 +11039,8 @@ export function updatedUserFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndSeventeen$inboundSchema: z.ZodType<
-  OneHundredAndSeventeen,
+export const OneHundredAndEighteen$inboundSchema: z.ZodType<
+  OneHundredAndEighteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -11040,7 +11052,7 @@ export const OneHundredAndSeventeen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndSeventeen$Outbound = {
+export type OneHundredAndEighteen$Outbound = {
   directoryType?: string | undefined;
   updatedUser?: UpdatedUser$Outbound | undefined;
   role?: string | undefined;
@@ -11049,16 +11061,85 @@ export type OneHundredAndSeventeen$Outbound = {
 };
 
 /** @internal */
-export const OneHundredAndSeventeen$outboundSchema: z.ZodType<
-  OneHundredAndSeventeen$Outbound,
+export const OneHundredAndEighteen$outboundSchema: z.ZodType<
+  OneHundredAndEighteen$Outbound,
   z.ZodTypeDef,
-  OneHundredAndSeventeen
+  OneHundredAndEighteen
 > = z.object({
   directoryType: z.string().optional(),
   updatedUser: z.lazy(() => UpdatedUser$outboundSchema).optional(),
   role: z.string().optional(),
   previousRole: z.string(),
   updatedUid: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndEighteen$ {
+  /** @deprecated use `OneHundredAndEighteen$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndEighteen$inboundSchema;
+  /** @deprecated use `OneHundredAndEighteen$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndEighteen$outboundSchema;
+  /** @deprecated use `OneHundredAndEighteen$Outbound` instead. */
+  export type Outbound = OneHundredAndEighteen$Outbound;
+}
+
+export function oneHundredAndEighteenToJSON(
+  oneHundredAndEighteen: OneHundredAndEighteen,
+): string {
+  return JSON.stringify(
+    OneHundredAndEighteen$outboundSchema.parse(oneHundredAndEighteen),
+  );
+}
+
+export function oneHundredAndEighteenFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndEighteen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndEighteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndEighteen' from JSON`,
+  );
+}
+
+/** @internal */
+export const OneHundredAndSeventeen$inboundSchema: z.ZodType<
+  OneHundredAndSeventeen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  role: z.string().optional(),
+  uid: z.string(),
+  origin: z.string().optional(),
+  teamRoles: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
+  entitlements: z.array(z.string()).optional(),
+});
+
+/** @internal */
+export type OneHundredAndSeventeen$Outbound = {
+  role?: string | undefined;
+  uid: string;
+  origin?: string | undefined;
+  teamRoles?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
+  entitlements?: Array<string> | undefined;
+};
+
+/** @internal */
+export const OneHundredAndSeventeen$outboundSchema: z.ZodType<
+  OneHundredAndSeventeen$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndSeventeen
+> = z.object({
+  role: z.string().optional(),
+  uid: z.string(),
+  origin: z.string().optional(),
+  teamRoles: z.array(z.string()).optional(),
+  teamPermissions: z.array(z.string()).optional(),
+  entitlements: z.array(z.string()).optional(),
 });
 
 /**
@@ -11089,75 +11170,6 @@ export function oneHundredAndSeventeenFromJSON(
     jsonString,
     (x) => OneHundredAndSeventeen$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndSeventeen' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndSixteen$inboundSchema: z.ZodType<
-  OneHundredAndSixteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  role: z.string().optional(),
-  uid: z.string(),
-  origin: z.string().optional(),
-  teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-  entitlements: z.array(z.string()).optional(),
-});
-
-/** @internal */
-export type OneHundredAndSixteen$Outbound = {
-  role?: string | undefined;
-  uid: string;
-  origin?: string | undefined;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-  entitlements?: Array<string> | undefined;
-};
-
-/** @internal */
-export const OneHundredAndSixteen$outboundSchema: z.ZodType<
-  OneHundredAndSixteen$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSixteen
-> = z.object({
-  role: z.string().optional(),
-  uid: z.string(),
-  origin: z.string().optional(),
-  teamRoles: z.array(z.string()).optional(),
-  teamPermissions: z.array(z.string()).optional(),
-  entitlements: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndSixteen$ {
-  /** @deprecated use `OneHundredAndSixteen$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndSixteen$inboundSchema;
-  /** @deprecated use `OneHundredAndSixteen$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndSixteen$outboundSchema;
-  /** @deprecated use `OneHundredAndSixteen$Outbound` instead. */
-  export type Outbound = OneHundredAndSixteen$Outbound;
-}
-
-export function oneHundredAndSixteenToJSON(
-  oneHundredAndSixteen: OneHundredAndSixteen,
-): string {
-  return JSON.stringify(
-    OneHundredAndSixteen$outboundSchema.parse(oneHundredAndSixteen),
-  );
-}
-
-export function oneHundredAndSixteenFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndSixteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndSixteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndSixteen' from JSON`,
   );
 }
 
@@ -11215,8 +11227,8 @@ export function deletedUserFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFifteen$inboundSchema: z.ZodType<
-  OneHundredAndFifteen,
+export const OneHundredAndSixteen$inboundSchema: z.ZodType<
+  OneHundredAndSixteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -11229,7 +11241,7 @@ export const OneHundredAndFifteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndFifteen$Outbound = {
+export type OneHundredAndSixteen$Outbound = {
   deletedUser?: DeletedUser$Outbound | undefined;
   deletedUid?: string | undefined;
   githubUsername?: string | null | undefined;
@@ -11239,10 +11251,10 @@ export type OneHundredAndFifteen$Outbound = {
 };
 
 /** @internal */
-export const OneHundredAndFifteen$outboundSchema: z.ZodType<
-  OneHundredAndFifteen$Outbound,
+export const OneHundredAndSixteen$outboundSchema: z.ZodType<
+  OneHundredAndSixteen$Outbound,
   z.ZodTypeDef,
-  OneHundredAndFifteen
+  OneHundredAndSixteen
 > = z.object({
   deletedUser: z.lazy(() => DeletedUser$outboundSchema).optional(),
   deletedUid: z.string().optional(),
@@ -11256,30 +11268,30 @@ export const OneHundredAndFifteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndFifteen$ {
-  /** @deprecated use `OneHundredAndFifteen$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndFifteen$inboundSchema;
-  /** @deprecated use `OneHundredAndFifteen$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndFifteen$outboundSchema;
-  /** @deprecated use `OneHundredAndFifteen$Outbound` instead. */
-  export type Outbound = OneHundredAndFifteen$Outbound;
+export namespace OneHundredAndSixteen$ {
+  /** @deprecated use `OneHundredAndSixteen$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndSixteen$inboundSchema;
+  /** @deprecated use `OneHundredAndSixteen$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndSixteen$outboundSchema;
+  /** @deprecated use `OneHundredAndSixteen$Outbound` instead. */
+  export type Outbound = OneHundredAndSixteen$Outbound;
 }
 
-export function oneHundredAndFifteenToJSON(
-  oneHundredAndFifteen: OneHundredAndFifteen,
+export function oneHundredAndSixteenToJSON(
+  oneHundredAndSixteen: OneHundredAndSixteen,
 ): string {
   return JSON.stringify(
-    OneHundredAndFifteen$outboundSchema.parse(oneHundredAndFifteen),
+    OneHundredAndSixteen$outboundSchema.parse(oneHundredAndSixteen),
   );
 }
 
-export function oneHundredAndFifteenFromJSON(
+export function oneHundredAndSixteenFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndFifteen, SDKValidationError> {
+): SafeParseResult<OneHundredAndSixteen, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndFifteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFifteen' from JSON`,
+    (x) => OneHundredAndSixteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndSixteen' from JSON`,
   );
 }
 
@@ -11337,8 +11349,8 @@ export function invitedUserFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFourteen$inboundSchema: z.ZodType<
-  OneHundredAndFourteen,
+export const OneHundredAndFifteen$inboundSchema: z.ZodType<
+  OneHundredAndFifteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -11352,7 +11364,7 @@ export const OneHundredAndFourteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndFourteen$Outbound = {
+export type OneHundredAndFifteen$Outbound = {
   directoryType?: string | undefined;
   ssoType?: string | undefined;
   invitedUser?: InvitedUser$Outbound | undefined;
@@ -11363,10 +11375,10 @@ export type OneHundredAndFourteen$Outbound = {
 };
 
 /** @internal */
-export const OneHundredAndFourteen$outboundSchema: z.ZodType<
-  OneHundredAndFourteen$Outbound,
+export const OneHundredAndFifteen$outboundSchema: z.ZodType<
+  OneHundredAndFifteen$Outbound,
   z.ZodTypeDef,
-  OneHundredAndFourteen
+  OneHundredAndFifteen
 > = z.object({
   directoryType: z.string().optional(),
   ssoType: z.string().optional(),
@@ -11381,30 +11393,30 @@ export const OneHundredAndFourteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndFourteen$ {
-  /** @deprecated use `OneHundredAndFourteen$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndFourteen$inboundSchema;
-  /** @deprecated use `OneHundredAndFourteen$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndFourteen$outboundSchema;
-  /** @deprecated use `OneHundredAndFourteen$Outbound` instead. */
-  export type Outbound = OneHundredAndFourteen$Outbound;
+export namespace OneHundredAndFifteen$ {
+  /** @deprecated use `OneHundredAndFifteen$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndFifteen$inboundSchema;
+  /** @deprecated use `OneHundredAndFifteen$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndFifteen$outboundSchema;
+  /** @deprecated use `OneHundredAndFifteen$Outbound` instead. */
+  export type Outbound = OneHundredAndFifteen$Outbound;
 }
 
-export function oneHundredAndFourteenToJSON(
-  oneHundredAndFourteen: OneHundredAndFourteen,
+export function oneHundredAndFifteenToJSON(
+  oneHundredAndFifteen: OneHundredAndFifteen,
 ): string {
   return JSON.stringify(
-    OneHundredAndFourteen$outboundSchema.parse(oneHundredAndFourteen),
+    OneHundredAndFifteen$outboundSchema.parse(oneHundredAndFifteen),
   );
 }
 
-export function oneHundredAndFourteenFromJSON(
+export function oneHundredAndFifteenFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndFourteen, SDKValidationError> {
+): SafeParseResult<OneHundredAndFifteen, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndFourteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFourteen' from JSON`,
+    (x) => OneHundredAndFifteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFifteen' from JSON`,
   );
 }
 
@@ -11459,8 +11471,8 @@ export function reasonsFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndThirteen$inboundSchema: z.ZodType<
-  OneHundredAndThirteen,
+export const OneHundredAndFourteen$inboundSchema: z.ZodType<
+  OneHundredAndFourteen,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -11471,11 +11483,68 @@ export const OneHundredAndThirteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndThirteen$Outbound = {
+export type OneHundredAndFourteen$Outbound = {
   slug: string;
   teamId: string;
   by: string;
   reasons?: Array<Reasons$Outbound> | undefined;
+};
+
+/** @internal */
+export const OneHundredAndFourteen$outboundSchema: z.ZodType<
+  OneHundredAndFourteen$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndFourteen
+> = z.object({
+  slug: z.string(),
+  teamId: z.string(),
+  by: z.string(),
+  reasons: z.array(z.lazy(() => Reasons$outboundSchema)).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndFourteen$ {
+  /** @deprecated use `OneHundredAndFourteen$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndFourteen$inboundSchema;
+  /** @deprecated use `OneHundredAndFourteen$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndFourteen$outboundSchema;
+  /** @deprecated use `OneHundredAndFourteen$Outbound` instead. */
+  export type Outbound = OneHundredAndFourteen$Outbound;
+}
+
+export function oneHundredAndFourteenToJSON(
+  oneHundredAndFourteen: OneHundredAndFourteen,
+): string {
+  return JSON.stringify(
+    OneHundredAndFourteen$outboundSchema.parse(oneHundredAndFourteen),
+  );
+}
+
+export function oneHundredAndFourteenFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndFourteen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndFourteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFourteen' from JSON`,
+  );
+}
+
+/** @internal */
+export const OneHundredAndThirteen$inboundSchema: z.ZodType<
+  OneHundredAndThirteen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  slug: z.string(),
+});
+
+/** @internal */
+export type OneHundredAndThirteen$Outbound = {
+  slug: string;
 };
 
 /** @internal */
@@ -11485,9 +11554,6 @@ export const OneHundredAndThirteen$outboundSchema: z.ZodType<
   OneHundredAndThirteen
 > = z.object({
   slug: z.string(),
-  teamId: z.string(),
-  by: z.string(),
-  reasons: z.array(z.lazy(() => Reasons$outboundSchema)).optional(),
 });
 
 /**
@@ -11518,60 +11584,6 @@ export function oneHundredAndThirteenFromJSON(
     jsonString,
     (x) => OneHundredAndThirteen$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndThirteen' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndTwelve$inboundSchema: z.ZodType<
-  OneHundredAndTwelve,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  slug: z.string(),
-});
-
-/** @internal */
-export type OneHundredAndTwelve$Outbound = {
-  slug: string;
-};
-
-/** @internal */
-export const OneHundredAndTwelve$outboundSchema: z.ZodType<
-  OneHundredAndTwelve$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndTwelve
-> = z.object({
-  slug: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndTwelve$ {
-  /** @deprecated use `OneHundredAndTwelve$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndTwelve$inboundSchema;
-  /** @deprecated use `OneHundredAndTwelve$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndTwelve$outboundSchema;
-  /** @deprecated use `OneHundredAndTwelve$Outbound` instead. */
-  export type Outbound = OneHundredAndTwelve$Outbound;
-}
-
-export function oneHundredAndTwelveToJSON(
-  oneHundredAndTwelve: OneHundredAndTwelve,
-): string {
-  return JSON.stringify(
-    OneHundredAndTwelve$outboundSchema.parse(oneHundredAndTwelve),
-  );
-}
-
-export function oneHundredAndTwelveFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndTwelve, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndTwelve$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndTwelve' from JSON`,
   );
 }
 
@@ -11626,8 +11638,8 @@ export function storeFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndEleven$inboundSchema: z.ZodType<
-  OneHundredAndEleven,
+export const OneHundredAndTwelve$inboundSchema: z.ZodType<
+  OneHundredAndTwelve,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -11636,9 +11648,83 @@ export const OneHundredAndEleven$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndEleven$Outbound = {
+export type OneHundredAndTwelve$Outbound = {
   store: Store$Outbound;
   ownerId?: string | undefined;
+};
+
+/** @internal */
+export const OneHundredAndTwelve$outboundSchema: z.ZodType<
+  OneHundredAndTwelve$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndTwelve
+> = z.object({
+  store: z.lazy(() => Store$outboundSchema),
+  ownerId: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndTwelve$ {
+  /** @deprecated use `OneHundredAndTwelve$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndTwelve$inboundSchema;
+  /** @deprecated use `OneHundredAndTwelve$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndTwelve$outboundSchema;
+  /** @deprecated use `OneHundredAndTwelve$Outbound` instead. */
+  export type Outbound = OneHundredAndTwelve$Outbound;
+}
+
+export function oneHundredAndTwelveToJSON(
+  oneHundredAndTwelve: OneHundredAndTwelve,
+): string {
+  return JSON.stringify(
+    OneHundredAndTwelve$outboundSchema.parse(oneHundredAndTwelve),
+  );
+}
+
+export function oneHundredAndTwelveFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndTwelve, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndTwelve$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndTwelve' from JSON`,
+  );
+}
+
+/** @internal */
+export const StoreType$inboundSchema: z.ZodNativeEnum<typeof StoreType> = z
+  .nativeEnum(StoreType);
+
+/** @internal */
+export const StoreType$outboundSchema: z.ZodNativeEnum<typeof StoreType> =
+  StoreType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StoreType$ {
+  /** @deprecated use `StoreType$inboundSchema` instead. */
+  export const inboundSchema = StoreType$inboundSchema;
+  /** @deprecated use `StoreType$outboundSchema` instead. */
+  export const outboundSchema = StoreType$outboundSchema;
+}
+
+/** @internal */
+export const OneHundredAndEleven$inboundSchema: z.ZodType<
+  OneHundredAndEleven,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  storeType: StoreType$inboundSchema,
+});
+
+/** @internal */
+export type OneHundredAndEleven$Outbound = {
+  storeType: string;
 };
 
 /** @internal */
@@ -11647,8 +11733,7 @@ export const OneHundredAndEleven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndEleven
 > = z.object({
-  store: z.lazy(() => Store$outboundSchema),
-  ownerId: z.string().optional(),
+  storeType: StoreType$outboundSchema,
 });
 
 /**
@@ -11683,22 +11768,24 @@ export function oneHundredAndElevenFromJSON(
 }
 
 /** @internal */
-export const StoreType$inboundSchema: z.ZodNativeEnum<typeof StoreType> = z
-  .nativeEnum(StoreType);
+export const UserEventPayloadType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadType
+> = z.nativeEnum(UserEventPayloadType);
 
 /** @internal */
-export const StoreType$outboundSchema: z.ZodNativeEnum<typeof StoreType> =
-  StoreType$inboundSchema;
+export const UserEventPayloadType$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadType
+> = UserEventPayloadType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace StoreType$ {
-  /** @deprecated use `StoreType$inboundSchema` instead. */
-  export const inboundSchema = StoreType$inboundSchema;
-  /** @deprecated use `StoreType$outboundSchema` instead. */
-  export const outboundSchema = StoreType$outboundSchema;
+export namespace UserEventPayloadType$ {
+  /** @deprecated use `UserEventPayloadType$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayloadType$inboundSchema;
+  /** @deprecated use `UserEventPayloadType$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayloadType$outboundSchema;
 }
 
 /** @internal */
@@ -11707,12 +11794,22 @@ export const OneHundredAndTen$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  storeType: StoreType$inboundSchema,
+  id: z.string(),
+  name: z.string().optional(),
+  computeUnitsMax: z.number().optional(),
+  computeUnitsMin: z.number().optional(),
+  suspendTimeoutSeconds: z.number().optional(),
+  type: UserEventPayloadType$inboundSchema,
 });
 
 /** @internal */
 export type OneHundredAndTen$Outbound = {
-  storeType: string;
+  id: string;
+  name?: string | undefined;
+  computeUnitsMax?: number | undefined;
+  computeUnitsMin?: number | undefined;
+  suspendTimeoutSeconds?: number | undefined;
+  type: string;
 };
 
 /** @internal */
@@ -11721,7 +11818,12 @@ export const OneHundredAndTen$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndTen
 > = z.object({
-  storeType: StoreType$outboundSchema,
+  id: z.string(),
+  name: z.string().optional(),
+  computeUnitsMax: z.number().optional(),
+  computeUnitsMin: z.number().optional(),
+  suspendTimeoutSeconds: z.number().optional(),
+  type: UserEventPayloadType$outboundSchema,
 });
 
 /**
@@ -11756,48 +11858,17 @@ export function oneHundredAndTenFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadType
-> = z.nativeEnum(UserEventPayloadType);
-
-/** @internal */
-export const UserEventPayloadType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadType
-> = UserEventPayloadType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayloadType$ {
-  /** @deprecated use `UserEventPayloadType$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayloadType$inboundSchema;
-  /** @deprecated use `UserEventPayloadType$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayloadType$outboundSchema;
-}
-
-/** @internal */
 export const OneHundredAndNine$inboundSchema: z.ZodType<
   OneHundredAndNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-  computeUnitsMax: z.number().optional(),
-  computeUnitsMin: z.number().optional(),
-  suspendTimeoutSeconds: z.number().optional(),
-  type: UserEventPayloadType$inboundSchema,
+  webhookUrl: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndNine$Outbound = {
-  id: string;
-  name?: string | undefined;
-  computeUnitsMax?: number | undefined;
-  computeUnitsMin?: number | undefined;
-  suspendTimeoutSeconds?: number | undefined;
-  type: string;
+  webhookUrl?: string | undefined;
 };
 
 /** @internal */
@@ -11806,12 +11877,7 @@ export const OneHundredAndNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndNine
 > = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-  computeUnitsMax: z.number().optional(),
-  computeUnitsMin: z.number().optional(),
-  suspendTimeoutSeconds: z.number().optional(),
-  type: UserEventPayloadType$outboundSchema,
+  webhookUrl: z.string().optional(),
 });
 
 /**
@@ -11846,16 +11912,150 @@ export function oneHundredAndNineFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload108Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload108Type
+> = z.nativeEnum(UserEventPayload108Type);
+
+/** @internal */
+export const UserEventPayload108Type$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload108Type
+> = UserEventPayload108Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload108Type$ {
+  /** @deprecated use `UserEventPayload108Type$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload108Type$inboundSchema;
+  /** @deprecated use `UserEventPayload108Type$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload108Type$outboundSchema;
+}
+
+/** @internal */
+export const PayloadPricingPlan$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadPricingPlan
+> = z.nativeEnum(PayloadPricingPlan);
+
+/** @internal */
+export const PayloadPricingPlan$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadPricingPlan
+> = PayloadPricingPlan$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadPricingPlan$ {
+  /** @deprecated use `PayloadPricingPlan$inboundSchema` instead. */
+  export const inboundSchema = PayloadPricingPlan$inboundSchema;
+  /** @deprecated use `PayloadPricingPlan$outboundSchema` instead. */
+  export const outboundSchema = PayloadPricingPlan$outboundSchema;
+}
+
+/** @internal */
+export const UserEventPayloadBudget$inboundSchema: z.ZodType<
+  UserEventPayloadBudget,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPayload108Type$inboundSchema,
+  fixedBudget: z.number(),
+  previousSpend: z.array(z.number()),
+  notifiedAt: z.array(z.number()),
+  webhookId: z.string().optional(),
+  webhookNotified: z.boolean().optional(),
+  createdAt: z.number(),
+  updatedAt: z.number().optional(),
+  isActive: z.boolean(),
+  pauseProjects: z.boolean().optional(),
+  pricingPlan: PayloadPricingPlan$inboundSchema.optional(),
+  teamId: z.string(),
+  id: z.string(),
+});
+
+/** @internal */
+export type UserEventPayloadBudget$Outbound = {
+  type: string;
+  fixedBudget: number;
+  previousSpend: Array<number>;
+  notifiedAt: Array<number>;
+  webhookId?: string | undefined;
+  webhookNotified?: boolean | undefined;
+  createdAt: number;
+  updatedAt?: number | undefined;
+  isActive: boolean;
+  pauseProjects?: boolean | undefined;
+  pricingPlan?: string | undefined;
+  teamId: string;
+  id: string;
+};
+
+/** @internal */
+export const UserEventPayloadBudget$outboundSchema: z.ZodType<
+  UserEventPayloadBudget$Outbound,
+  z.ZodTypeDef,
+  UserEventPayloadBudget
+> = z.object({
+  type: UserEventPayload108Type$outboundSchema,
+  fixedBudget: z.number(),
+  previousSpend: z.array(z.number()),
+  notifiedAt: z.array(z.number()),
+  webhookId: z.string().optional(),
+  webhookNotified: z.boolean().optional(),
+  createdAt: z.number(),
+  updatedAt: z.number().optional(),
+  isActive: z.boolean(),
+  pauseProjects: z.boolean().optional(),
+  pricingPlan: PayloadPricingPlan$outboundSchema.optional(),
+  teamId: z.string(),
+  id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayloadBudget$ {
+  /** @deprecated use `UserEventPayloadBudget$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayloadBudget$inboundSchema;
+  /** @deprecated use `UserEventPayloadBudget$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayloadBudget$outboundSchema;
+  /** @deprecated use `UserEventPayloadBudget$Outbound` instead. */
+  export type Outbound = UserEventPayloadBudget$Outbound;
+}
+
+export function userEventPayloadBudgetToJSON(
+  userEventPayloadBudget: UserEventPayloadBudget,
+): string {
+  return JSON.stringify(
+    UserEventPayloadBudget$outboundSchema.parse(userEventPayloadBudget),
+  );
+}
+
+export function userEventPayloadBudgetFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayloadBudget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayloadBudget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadBudget' from JSON`,
+  );
+}
+
+/** @internal */
 export const OneHundredAndEight$inboundSchema: z.ZodType<
   OneHundredAndEight,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  budget: z.lazy(() => UserEventPayloadBudget$inboundSchema),
   webhookUrl: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndEight$Outbound = {
+  budget: UserEventPayloadBudget$Outbound;
   webhookUrl?: string | undefined;
 };
 
@@ -11865,6 +12065,7 @@ export const OneHundredAndEight$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndEight
 > = z.object({
+  budget: z.lazy(() => UserEventPayloadBudget$outboundSchema),
   webhookUrl: z.string().optional(),
 });
 
@@ -11921,29 +12122,27 @@ export namespace UserEventPayload107Type$ {
 }
 
 /** @internal */
-export const PayloadPricingPlan$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadPricingPlan
-> = z.nativeEnum(PayloadPricingPlan);
+export const PricingPlan$inboundSchema: z.ZodNativeEnum<typeof PricingPlan> = z
+  .nativeEnum(PricingPlan);
 
 /** @internal */
-export const PayloadPricingPlan$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadPricingPlan
-> = PayloadPricingPlan$inboundSchema;
+export const PricingPlan$outboundSchema: z.ZodNativeEnum<typeof PricingPlan> =
+  PricingPlan$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PayloadPricingPlan$ {
-  /** @deprecated use `PayloadPricingPlan$inboundSchema` instead. */
-  export const inboundSchema = PayloadPricingPlan$inboundSchema;
-  /** @deprecated use `PayloadPricingPlan$outboundSchema` instead. */
-  export const outboundSchema = PayloadPricingPlan$outboundSchema;
+export namespace PricingPlan$ {
+  /** @deprecated use `PricingPlan$inboundSchema` instead. */
+  export const inboundSchema = PricingPlan$inboundSchema;
+  /** @deprecated use `PricingPlan$outboundSchema` instead. */
+  export const outboundSchema = PricingPlan$outboundSchema;
 }
 
 /** @internal */
-export const UserEventPayloadBudget$inboundSchema: z.ZodType<
-  UserEventPayloadBudget,
+export const PayloadBudget$inboundSchema: z.ZodType<
+  PayloadBudget,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -11957,13 +12156,13 @@ export const UserEventPayloadBudget$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   isActive: z.boolean(),
   pauseProjects: z.boolean().optional(),
-  pricingPlan: PayloadPricingPlan$inboundSchema.optional(),
+  pricingPlan: PricingPlan$inboundSchema.optional(),
   teamId: z.string(),
   id: z.string(),
 });
 
 /** @internal */
-export type UserEventPayloadBudget$Outbound = {
+export type PayloadBudget$Outbound = {
   type: string;
   fixedBudget: number;
   previousSpend: Array<number>;
@@ -11980,10 +12179,10 @@ export type UserEventPayloadBudget$Outbound = {
 };
 
 /** @internal */
-export const UserEventPayloadBudget$outboundSchema: z.ZodType<
-  UserEventPayloadBudget$Outbound,
+export const PayloadBudget$outboundSchema: z.ZodType<
+  PayloadBudget$Outbound,
   z.ZodTypeDef,
-  UserEventPayloadBudget
+  PayloadBudget
 > = z.object({
   type: UserEventPayload107Type$outboundSchema,
   fixedBudget: z.number(),
@@ -11995,7 +12194,7 @@ export const UserEventPayloadBudget$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   isActive: z.boolean(),
   pauseProjects: z.boolean().optional(),
-  pricingPlan: PayloadPricingPlan$outboundSchema.optional(),
+  pricingPlan: PricingPlan$outboundSchema.optional(),
   teamId: z.string(),
   id: z.string(),
 });
@@ -12004,30 +12203,26 @@ export const UserEventPayloadBudget$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayloadBudget$ {
-  /** @deprecated use `UserEventPayloadBudget$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayloadBudget$inboundSchema;
-  /** @deprecated use `UserEventPayloadBudget$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayloadBudget$outboundSchema;
-  /** @deprecated use `UserEventPayloadBudget$Outbound` instead. */
-  export type Outbound = UserEventPayloadBudget$Outbound;
+export namespace PayloadBudget$ {
+  /** @deprecated use `PayloadBudget$inboundSchema` instead. */
+  export const inboundSchema = PayloadBudget$inboundSchema;
+  /** @deprecated use `PayloadBudget$outboundSchema` instead. */
+  export const outboundSchema = PayloadBudget$outboundSchema;
+  /** @deprecated use `PayloadBudget$Outbound` instead. */
+  export type Outbound = PayloadBudget$Outbound;
 }
 
-export function userEventPayloadBudgetToJSON(
-  userEventPayloadBudget: UserEventPayloadBudget,
-): string {
-  return JSON.stringify(
-    UserEventPayloadBudget$outboundSchema.parse(userEventPayloadBudget),
-  );
+export function payloadBudgetToJSON(payloadBudget: PayloadBudget): string {
+  return JSON.stringify(PayloadBudget$outboundSchema.parse(payloadBudget));
 }
 
-export function userEventPayloadBudgetFromJSON(
+export function payloadBudgetFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayloadBudget, SDKValidationError> {
+): SafeParseResult<PayloadBudget, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayloadBudget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayloadBudget' from JSON`,
+    (x) => PayloadBudget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadBudget' from JSON`,
   );
 }
 
@@ -12037,14 +12232,12 @@ export const OneHundredAndSeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  budget: z.lazy(() => UserEventPayloadBudget$inboundSchema),
-  webhookUrl: z.string().optional(),
+  budget: z.lazy(() => PayloadBudget$inboundSchema),
 });
 
 /** @internal */
 export type OneHundredAndSeven$Outbound = {
-  budget: UserEventPayloadBudget$Outbound;
-  webhookUrl?: string | undefined;
+  budget: PayloadBudget$Outbound;
 };
 
 /** @internal */
@@ -12053,8 +12246,7 @@ export const OneHundredAndSeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndSeven
 > = z.object({
-  budget: z.lazy(() => UserEventPayloadBudget$outboundSchema),
-  webhookUrl: z.string().optional(),
+  budget: z.lazy(() => PayloadBudget$outboundSchema),
 });
 
 /**
@@ -12110,186 +12302,6 @@ export namespace UserEventPayload106Type$ {
 }
 
 /** @internal */
-export const PricingPlan$inboundSchema: z.ZodNativeEnum<typeof PricingPlan> = z
-  .nativeEnum(PricingPlan);
-
-/** @internal */
-export const PricingPlan$outboundSchema: z.ZodNativeEnum<typeof PricingPlan> =
-  PricingPlan$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PricingPlan$ {
-  /** @deprecated use `PricingPlan$inboundSchema` instead. */
-  export const inboundSchema = PricingPlan$inboundSchema;
-  /** @deprecated use `PricingPlan$outboundSchema` instead. */
-  export const outboundSchema = PricingPlan$outboundSchema;
-}
-
-/** @internal */
-export const PayloadBudget$inboundSchema: z.ZodType<
-  PayloadBudget,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UserEventPayload106Type$inboundSchema,
-  fixedBudget: z.number(),
-  previousSpend: z.array(z.number()),
-  notifiedAt: z.array(z.number()),
-  webhookId: z.string().optional(),
-  webhookNotified: z.boolean().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number().optional(),
-  isActive: z.boolean(),
-  pauseProjects: z.boolean().optional(),
-  pricingPlan: PricingPlan$inboundSchema.optional(),
-  teamId: z.string(),
-  id: z.string(),
-});
-
-/** @internal */
-export type PayloadBudget$Outbound = {
-  type: string;
-  fixedBudget: number;
-  previousSpend: Array<number>;
-  notifiedAt: Array<number>;
-  webhookId?: string | undefined;
-  webhookNotified?: boolean | undefined;
-  createdAt: number;
-  updatedAt?: number | undefined;
-  isActive: boolean;
-  pauseProjects?: boolean | undefined;
-  pricingPlan?: string | undefined;
-  teamId: string;
-  id: string;
-};
-
-/** @internal */
-export const PayloadBudget$outboundSchema: z.ZodType<
-  PayloadBudget$Outbound,
-  z.ZodTypeDef,
-  PayloadBudget
-> = z.object({
-  type: UserEventPayload106Type$outboundSchema,
-  fixedBudget: z.number(),
-  previousSpend: z.array(z.number()),
-  notifiedAt: z.array(z.number()),
-  webhookId: z.string().optional(),
-  webhookNotified: z.boolean().optional(),
-  createdAt: z.number(),
-  updatedAt: z.number().optional(),
-  isActive: z.boolean(),
-  pauseProjects: z.boolean().optional(),
-  pricingPlan: PricingPlan$outboundSchema.optional(),
-  teamId: z.string(),
-  id: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayloadBudget$ {
-  /** @deprecated use `PayloadBudget$inboundSchema` instead. */
-  export const inboundSchema = PayloadBudget$inboundSchema;
-  /** @deprecated use `PayloadBudget$outboundSchema` instead. */
-  export const outboundSchema = PayloadBudget$outboundSchema;
-  /** @deprecated use `PayloadBudget$Outbound` instead. */
-  export type Outbound = PayloadBudget$Outbound;
-}
-
-export function payloadBudgetToJSON(payloadBudget: PayloadBudget): string {
-  return JSON.stringify(PayloadBudget$outboundSchema.parse(payloadBudget));
-}
-
-export function payloadBudgetFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadBudget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadBudget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadBudget' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndSix$inboundSchema: z.ZodType<
-  OneHundredAndSix,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  budget: z.lazy(() => PayloadBudget$inboundSchema),
-});
-
-/** @internal */
-export type OneHundredAndSix$Outbound = {
-  budget: PayloadBudget$Outbound;
-};
-
-/** @internal */
-export const OneHundredAndSix$outboundSchema: z.ZodType<
-  OneHundredAndSix$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndSix
-> = z.object({
-  budget: z.lazy(() => PayloadBudget$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndSix$ {
-  /** @deprecated use `OneHundredAndSix$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndSix$inboundSchema;
-  /** @deprecated use `OneHundredAndSix$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndSix$outboundSchema;
-  /** @deprecated use `OneHundredAndSix$Outbound` instead. */
-  export type Outbound = OneHundredAndSix$Outbound;
-}
-
-export function oneHundredAndSixToJSON(
-  oneHundredAndSix: OneHundredAndSix,
-): string {
-  return JSON.stringify(
-    OneHundredAndSix$outboundSchema.parse(oneHundredAndSix),
-  );
-}
-
-export function oneHundredAndSixFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndSix, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndSix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndSix' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload105Type$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload105Type
-> = z.nativeEnum(UserEventPayload105Type);
-
-/** @internal */
-export const UserEventPayload105Type$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload105Type
-> = UserEventPayload105Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload105Type$ {
-  /** @deprecated use `UserEventPayload105Type$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload105Type$inboundSchema;
-  /** @deprecated use `UserEventPayload105Type$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload105Type$outboundSchema;
-}
-
-/** @internal */
 export const UserEventPayloadPricingPlan$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadPricingPlan
 > = z.nativeEnum(UserEventPayloadPricingPlan);
@@ -12316,7 +12328,7 @@ export const BudgetItem$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: UserEventPayload105Type$inboundSchema,
+  type: UserEventPayload106Type$inboundSchema,
   fixedBudget: z.number(),
   previousSpend: z.array(z.number()),
   notifiedAt: z.array(z.number()),
@@ -12354,7 +12366,7 @@ export const BudgetItem$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BudgetItem
 > = z.object({
-  type: UserEventPayload105Type$outboundSchema,
+  type: UserEventPayload106Type$outboundSchema,
   fixedBudget: z.number(),
   previousSpend: z.array(z.number()),
   notifiedAt: z.array(z.number()),
@@ -12444,8 +12456,8 @@ export function budgetFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFive$inboundSchema: z.ZodType<
-  OneHundredAndFive,
+export const OneHundredAndSix$inboundSchema: z.ZodType<
+  OneHundredAndSix,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -12453,15 +12465,15 @@ export const OneHundredAndFive$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndFive$Outbound = {
+export type OneHundredAndSix$Outbound = {
   budget: Budget$Outbound;
 };
 
 /** @internal */
-export const OneHundredAndFive$outboundSchema: z.ZodType<
-  OneHundredAndFive$Outbound,
+export const OneHundredAndSix$outboundSchema: z.ZodType<
+  OneHundredAndSix$Outbound,
   z.ZodTypeDef,
-  OneHundredAndFive
+  OneHundredAndSix
 > = z.object({
   budget: z.lazy(() => Budget$outboundSchema),
 });
@@ -12470,30 +12482,30 @@ export const OneHundredAndFive$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OneHundredAndFive$ {
-  /** @deprecated use `OneHundredAndFive$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndFive$inboundSchema;
-  /** @deprecated use `OneHundredAndFive$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndFive$outboundSchema;
-  /** @deprecated use `OneHundredAndFive$Outbound` instead. */
-  export type Outbound = OneHundredAndFive$Outbound;
+export namespace OneHundredAndSix$ {
+  /** @deprecated use `OneHundredAndSix$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndSix$inboundSchema;
+  /** @deprecated use `OneHundredAndSix$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndSix$outboundSchema;
+  /** @deprecated use `OneHundredAndSix$Outbound` instead. */
+  export type Outbound = OneHundredAndSix$Outbound;
 }
 
-export function oneHundredAndFiveToJSON(
-  oneHundredAndFive: OneHundredAndFive,
+export function oneHundredAndSixToJSON(
+  oneHundredAndSix: OneHundredAndSix,
 ): string {
   return JSON.stringify(
-    OneHundredAndFive$outboundSchema.parse(oneHundredAndFive),
+    OneHundredAndSix$outboundSchema.parse(oneHundredAndSix),
   );
 }
 
-export function oneHundredAndFiveFromJSON(
+export function oneHundredAndSixFromJSON(
   jsonString: string,
-): SafeParseResult<OneHundredAndFive, SDKValidationError> {
+): SafeParseResult<OneHundredAndSix, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OneHundredAndFive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndFive' from JSON`,
+    (x) => OneHundredAndSix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndSix' from JSON`,
   );
 }
 
@@ -12551,8 +12563,8 @@ export function scalingRulesFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndFour$inboundSchema: z.ZodType<
-  OneHundredAndFour,
+export const OneHundredAndFive$inboundSchema: z.ZodType<
+  OneHundredAndFive,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -12563,11 +12575,68 @@ export const OneHundredAndFour$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndFour$Outbound = {
+export type OneHundredAndFive$Outbound = {
   scalingRules: { [k: string]: ScalingRules$Outbound };
   min: number;
   max: number;
   url: string;
+};
+
+/** @internal */
+export const OneHundredAndFive$outboundSchema: z.ZodType<
+  OneHundredAndFive$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndFive
+> = z.object({
+  scalingRules: z.record(z.lazy(() => ScalingRules$outboundSchema)),
+  min: z.number(),
+  max: z.number(),
+  url: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndFive$ {
+  /** @deprecated use `OneHundredAndFive$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndFive$inboundSchema;
+  /** @deprecated use `OneHundredAndFive$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndFive$outboundSchema;
+  /** @deprecated use `OneHundredAndFive$Outbound` instead. */
+  export type Outbound = OneHundredAndFive$Outbound;
+}
+
+export function oneHundredAndFiveToJSON(
+  oneHundredAndFive: OneHundredAndFive,
+): string {
+  return JSON.stringify(
+    OneHundredAndFive$outboundSchema.parse(oneHundredAndFive),
+  );
+}
+
+export function oneHundredAndFiveFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndFive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndFive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndFive' from JSON`,
+  );
+}
+
+/** @internal */
+export const OneHundredAndFour$inboundSchema: z.ZodType<
+  OneHundredAndFour,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bio: z.string(),
+});
+
+/** @internal */
+export type OneHundredAndFour$Outbound = {
+  bio: string;
 };
 
 /** @internal */
@@ -12576,10 +12645,7 @@ export const OneHundredAndFour$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndFour
 > = z.object({
-  scalingRules: z.record(z.lazy(() => ScalingRules$outboundSchema)),
-  min: z.number(),
-  max: z.number(),
-  url: z.string(),
+  bio: z.string(),
 });
 
 /**
@@ -12619,12 +12685,16 @@ export const OneHundredAndThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bio: z.string(),
+  oldName: z.string(),
+  newName: z.string(),
+  uid: z.string().optional(),
 });
 
 /** @internal */
 export type OneHundredAndThree$Outbound = {
-  bio: string;
+  oldName: string;
+  newName: string;
+  uid?: string | undefined;
 };
 
 /** @internal */
@@ -12633,7 +12703,9 @@ export const OneHundredAndThree$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndThree
 > = z.object({
-  bio: z.string(),
+  oldName: z.string(),
+  newName: z.string(),
+  uid: z.string().optional(),
 });
 
 /**
@@ -12664,66 +12736,6 @@ export function oneHundredAndThreeFromJSON(
     jsonString,
     (x) => OneHundredAndThree$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OneHundredAndThree' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundredAndTwo$inboundSchema: z.ZodType<
-  OneHundredAndTwo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  oldName: z.string(),
-  newName: z.string(),
-  uid: z.string().optional(),
-});
-
-/** @internal */
-export type OneHundredAndTwo$Outbound = {
-  oldName: string;
-  newName: string;
-  uid?: string | undefined;
-};
-
-/** @internal */
-export const OneHundredAndTwo$outboundSchema: z.ZodType<
-  OneHundredAndTwo$Outbound,
-  z.ZodTypeDef,
-  OneHundredAndTwo
-> = z.object({
-  oldName: z.string(),
-  newName: z.string(),
-  uid: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundredAndTwo$ {
-  /** @deprecated use `OneHundredAndTwo$inboundSchema` instead. */
-  export const inboundSchema = OneHundredAndTwo$inboundSchema;
-  /** @deprecated use `OneHundredAndTwo$outboundSchema` instead. */
-  export const outboundSchema = OneHundredAndTwo$outboundSchema;
-  /** @deprecated use `OneHundredAndTwo$Outbound` instead. */
-  export type Outbound = OneHundredAndTwo$Outbound;
-}
-
-export function oneHundredAndTwoToJSON(
-  oneHundredAndTwo: OneHundredAndTwo,
-): string {
-  return JSON.stringify(
-    OneHundredAndTwo$outboundSchema.parse(oneHundredAndTwo),
-  );
-}
-
-export function oneHundredAndTwoFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundredAndTwo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundredAndTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundredAndTwo' from JSON`,
   );
 }
 
@@ -12813,8 +12825,8 @@ export function nameFromJSON(
 }
 
 /** @internal */
-export const OneHundredAndOne$inboundSchema: z.ZodType<
-  OneHundredAndOne,
+export const OneHundredAndTwo$inboundSchema: z.ZodType<
+  OneHundredAndTwo,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -12823,9 +12835,177 @@ export const OneHundredAndOne$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OneHundredAndOne$Outbound = {
+export type OneHundredAndTwo$Outbound = {
   uid: string;
   name: Name2$Outbound | string;
+};
+
+/** @internal */
+export const OneHundredAndTwo$outboundSchema: z.ZodType<
+  OneHundredAndTwo$Outbound,
+  z.ZodTypeDef,
+  OneHundredAndTwo
+> = z.object({
+  uid: z.string(),
+  name: z.union([z.lazy(() => Name2$outboundSchema), z.string()]),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundredAndTwo$ {
+  /** @deprecated use `OneHundredAndTwo$inboundSchema` instead. */
+  export const inboundSchema = OneHundredAndTwo$inboundSchema;
+  /** @deprecated use `OneHundredAndTwo$outboundSchema` instead. */
+  export const outboundSchema = OneHundredAndTwo$outboundSchema;
+  /** @deprecated use `OneHundredAndTwo$Outbound` instead. */
+  export type Outbound = OneHundredAndTwo$Outbound;
+}
+
+export function oneHundredAndTwoToJSON(
+  oneHundredAndTwo: OneHundredAndTwo,
+): string {
+  return JSON.stringify(
+    OneHundredAndTwo$outboundSchema.parse(oneHundredAndTwo),
+  );
+}
+
+export function oneHundredAndTwoFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundredAndTwo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundredAndTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundredAndTwo' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload101Team$inboundSchema: z.ZodType<
+  UserEventPayload101Team,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/** @internal */
+export type UserEventPayload101Team$Outbound = {
+  id: string;
+  name?: string | undefined;
+};
+
+/** @internal */
+export const UserEventPayload101Team$outboundSchema: z.ZodType<
+  UserEventPayload101Team$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload101Team
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload101Team$ {
+  /** @deprecated use `UserEventPayload101Team$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload101Team$inboundSchema;
+  /** @deprecated use `UserEventPayload101Team$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload101Team$outboundSchema;
+  /** @deprecated use `UserEventPayload101Team$Outbound` instead. */
+  export type Outbound = UserEventPayload101Team$Outbound;
+}
+
+export function userEventPayload101TeamToJSON(
+  userEventPayload101Team: UserEventPayload101Team,
+): string {
+  return JSON.stringify(
+    UserEventPayload101Team$outboundSchema.parse(userEventPayload101Team),
+  );
+}
+
+export function userEventPayload101TeamFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload101Team, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload101Team$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload101Team' from JSON`,
+  );
+}
+
+/** @internal */
+export const PayloadPreviousRule$inboundSchema: z.ZodType<
+  PayloadPreviousRule,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: z.string(),
+});
+
+/** @internal */
+export type PayloadPreviousRule$Outbound = {
+  email: string;
+};
+
+/** @internal */
+export const PayloadPreviousRule$outboundSchema: z.ZodType<
+  PayloadPreviousRule$Outbound,
+  z.ZodTypeDef,
+  PayloadPreviousRule
+> = z.object({
+  email: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadPreviousRule$ {
+  /** @deprecated use `PayloadPreviousRule$inboundSchema` instead. */
+  export const inboundSchema = PayloadPreviousRule$inboundSchema;
+  /** @deprecated use `PayloadPreviousRule$outboundSchema` instead. */
+  export const outboundSchema = PayloadPreviousRule$outboundSchema;
+  /** @deprecated use `PayloadPreviousRule$Outbound` instead. */
+  export type Outbound = PayloadPreviousRule$Outbound;
+}
+
+export function payloadPreviousRuleToJSON(
+  payloadPreviousRule: PayloadPreviousRule,
+): string {
+  return JSON.stringify(
+    PayloadPreviousRule$outboundSchema.parse(payloadPreviousRule),
+  );
+}
+
+export function payloadPreviousRuleFromJSON(
+  jsonString: string,
+): SafeParseResult<PayloadPreviousRule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayloadPreviousRule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayloadPreviousRule' from JSON`,
+  );
+}
+
+/** @internal */
+export const OneHundredAndOne$inboundSchema: z.ZodType<
+  OneHundredAndOne,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  team: z.lazy(() => UserEventPayload101Team$inboundSchema),
+  previousRule: z.lazy(() => PayloadPreviousRule$inboundSchema),
+});
+
+/** @internal */
+export type OneHundredAndOne$Outbound = {
+  team: UserEventPayload101Team$Outbound;
+  previousRule: PayloadPreviousRule$Outbound;
 };
 
 /** @internal */
@@ -12834,8 +13014,8 @@ export const OneHundredAndOne$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OneHundredAndOne
 > = z.object({
-  uid: z.string(),
-  name: z.union([z.lazy(() => Name2$outboundSchema), z.string()]),
+  team: z.lazy(() => UserEventPayload101Team$outboundSchema),
+  previousRule: z.lazy(() => PayloadPreviousRule$outboundSchema),
 });
 
 /**
@@ -12923,170 +13103,6 @@ export function userEventPayload100TeamFromJSON(
     jsonString,
     (x) => UserEventPayload100Team$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'UserEventPayload100Team' from JSON`,
-  );
-}
-
-/** @internal */
-export const PayloadPreviousRule$inboundSchema: z.ZodType<
-  PayloadPreviousRule,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.string(),
-});
-
-/** @internal */
-export type PayloadPreviousRule$Outbound = {
-  email: string;
-};
-
-/** @internal */
-export const PayloadPreviousRule$outboundSchema: z.ZodType<
-  PayloadPreviousRule$Outbound,
-  z.ZodTypeDef,
-  PayloadPreviousRule
-> = z.object({
-  email: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PayloadPreviousRule$ {
-  /** @deprecated use `PayloadPreviousRule$inboundSchema` instead. */
-  export const inboundSchema = PayloadPreviousRule$inboundSchema;
-  /** @deprecated use `PayloadPreviousRule$outboundSchema` instead. */
-  export const outboundSchema = PayloadPreviousRule$outboundSchema;
-  /** @deprecated use `PayloadPreviousRule$Outbound` instead. */
-  export type Outbound = PayloadPreviousRule$Outbound;
-}
-
-export function payloadPreviousRuleToJSON(
-  payloadPreviousRule: PayloadPreviousRule,
-): string {
-  return JSON.stringify(
-    PayloadPreviousRule$outboundSchema.parse(payloadPreviousRule),
-  );
-}
-
-export function payloadPreviousRuleFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadPreviousRule, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadPreviousRule$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadPreviousRule' from JSON`,
-  );
-}
-
-/** @internal */
-export const OneHundred$inboundSchema: z.ZodType<
-  OneHundred,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  team: z.lazy(() => UserEventPayload100Team$inboundSchema),
-  previousRule: z.lazy(() => PayloadPreviousRule$inboundSchema),
-});
-
-/** @internal */
-export type OneHundred$Outbound = {
-  team: UserEventPayload100Team$Outbound;
-  previousRule: PayloadPreviousRule$Outbound;
-};
-
-/** @internal */
-export const OneHundred$outboundSchema: z.ZodType<
-  OneHundred$Outbound,
-  z.ZodTypeDef,
-  OneHundred
-> = z.object({
-  team: z.lazy(() => UserEventPayload100Team$outboundSchema),
-  previousRule: z.lazy(() => PayloadPreviousRule$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OneHundred$ {
-  /** @deprecated use `OneHundred$inboundSchema` instead. */
-  export const inboundSchema = OneHundred$inboundSchema;
-  /** @deprecated use `OneHundred$outboundSchema` instead. */
-  export const outboundSchema = OneHundred$outboundSchema;
-  /** @deprecated use `OneHundred$Outbound` instead. */
-  export type Outbound = OneHundred$Outbound;
-}
-
-export function oneHundredToJSON(oneHundred: OneHundred): string {
-  return JSON.stringify(OneHundred$outboundSchema.parse(oneHundred));
-}
-
-export function oneHundredFromJSON(
-  jsonString: string,
-): SafeParseResult<OneHundred, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => OneHundred$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OneHundred' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload99Team$inboundSchema: z.ZodType<
-  UserEventPayload99Team,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/** @internal */
-export type UserEventPayload99Team$Outbound = {
-  id: string;
-  name?: string | undefined;
-};
-
-/** @internal */
-export const UserEventPayload99Team$outboundSchema: z.ZodType<
-  UserEventPayload99Team$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload99Team
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload99Team$ {
-  /** @deprecated use `UserEventPayload99Team$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload99Team$inboundSchema;
-  /** @deprecated use `UserEventPayload99Team$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload99Team$outboundSchema;
-  /** @deprecated use `UserEventPayload99Team$Outbound` instead. */
-  export type Outbound = UserEventPayload99Team$Outbound;
-}
-
-export function userEventPayload99TeamToJSON(
-  userEventPayload99Team: UserEventPayload99Team,
-): string {
-  return JSON.stringify(
-    UserEventPayload99Team$outboundSchema.parse(userEventPayload99Team),
-  );
-}
-
-export function userEventPayload99TeamFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload99Team, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload99Team$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload99Team' from JSON`,
   );
 }
 
@@ -13191,21 +13207,73 @@ export function nextRuleFromJSON(
 }
 
 /** @internal */
-export const NinetyNine$inboundSchema: z.ZodType<
-  NinetyNine,
+export const OneHundred$inboundSchema: z.ZodType<
+  OneHundred,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  team: z.lazy(() => UserEventPayload99Team$inboundSchema),
+  team: z.lazy(() => UserEventPayload100Team$inboundSchema),
   previousRule: z.lazy(() => PreviousRule$inboundSchema).optional(),
   nextRule: z.lazy(() => NextRule$inboundSchema).optional(),
 });
 
 /** @internal */
-export type NinetyNine$Outbound = {
-  team: UserEventPayload99Team$Outbound;
+export type OneHundred$Outbound = {
+  team: UserEventPayload100Team$Outbound;
   previousRule?: PreviousRule$Outbound | undefined;
   nextRule?: NextRule$Outbound | undefined;
+};
+
+/** @internal */
+export const OneHundred$outboundSchema: z.ZodType<
+  OneHundred$Outbound,
+  z.ZodTypeDef,
+  OneHundred
+> = z.object({
+  team: z.lazy(() => UserEventPayload100Team$outboundSchema),
+  previousRule: z.lazy(() => PreviousRule$outboundSchema).optional(),
+  nextRule: z.lazy(() => NextRule$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OneHundred$ {
+  /** @deprecated use `OneHundred$inboundSchema` instead. */
+  export const inboundSchema = OneHundred$inboundSchema;
+  /** @deprecated use `OneHundred$outboundSchema` instead. */
+  export const outboundSchema = OneHundred$outboundSchema;
+  /** @deprecated use `OneHundred$Outbound` instead. */
+  export type Outbound = OneHundred$Outbound;
+}
+
+export function oneHundredToJSON(oneHundred: OneHundred): string {
+  return JSON.stringify(OneHundred$outboundSchema.parse(oneHundred));
+}
+
+export function oneHundredFromJSON(
+  jsonString: string,
+): SafeParseResult<OneHundred, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OneHundred$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OneHundred' from JSON`,
+  );
+}
+
+/** @internal */
+export const NinetyNine$inboundSchema: z.ZodType<
+  NinetyNine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: z.string(),
+});
+
+/** @internal */
+export type NinetyNine$Outbound = {
+  email: string;
 };
 
 /** @internal */
@@ -13214,9 +13282,7 @@ export const NinetyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NinetyNine
 > = z.object({
-  team: z.lazy(() => UserEventPayload99Team$outboundSchema),
-  previousRule: z.lazy(() => PreviousRule$outboundSchema).optional(),
-  nextRule: z.lazy(() => NextRule$outboundSchema).optional(),
+  email: z.string(),
 });
 
 /**
@@ -13253,11 +13319,13 @@ export const NinetyEight$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   email: z.string(),
+  verified: z.boolean(),
 });
 
 /** @internal */
 export type NinetyEight$Outbound = {
   email: string;
+  verified: boolean;
 };
 
 /** @internal */
@@ -13267,6 +13335,7 @@ export const NinetyEight$outboundSchema: z.ZodType<
   NinetyEight
 > = z.object({
   email: z.string(),
+  verified: z.boolean(),
 });
 
 /**
@@ -13302,14 +13371,14 @@ export const NinetySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
-  verified: z.boolean(),
+  instances: z.number(),
+  url: z.string(),
 });
 
 /** @internal */
 export type NinetySeven$Outbound = {
-  email: string;
-  verified: boolean;
+  instances: number;
+  url: string;
 };
 
 /** @internal */
@@ -13318,8 +13387,8 @@ export const NinetySeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NinetySeven
 > = z.object({
-  email: z.string(),
-  verified: z.boolean(),
+  instances: z.number(),
+  url: z.string(),
 });
 
 /**
@@ -13355,14 +13424,16 @@ export const NinetySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  instances: z.number(),
-  url: z.string(),
+  gitProvider: z.string(),
+  gitProviderGroupDescriptor: z.string(),
+  gitScope: z.string(),
 });
 
 /** @internal */
 export type NinetySix$Outbound = {
-  instances: number;
-  url: string;
+  gitProvider: string;
+  gitProviderGroupDescriptor: string;
+  gitScope: string;
 };
 
 /** @internal */
@@ -13371,8 +13442,9 @@ export const NinetySix$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NinetySix
 > = z.object({
-  instances: z.number(),
-  url: z.string(),
+  gitProvider: z.string(),
+  gitProviderGroupDescriptor: z.string(),
+  gitScope: z.string(),
 });
 
 /**
@@ -13408,16 +13480,18 @@ export const NinetyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gitProvider: z.string(),
-  gitProviderGroupDescriptor: z.string(),
-  gitScope: z.string(),
+  projectId: z.string(),
+  projectName: z.string(),
+  targetDeploymentId: z.string().optional(),
+  newTargetPercentage: z.number().optional(),
 });
 
 /** @internal */
 export type NinetyFive$Outbound = {
-  gitProvider: string;
-  gitProviderGroupDescriptor: string;
-  gitScope: string;
+  projectId: string;
+  projectName: string;
+  targetDeploymentId?: string | undefined;
+  newTargetPercentage?: number | undefined;
 };
 
 /** @internal */
@@ -13426,9 +13500,10 @@ export const NinetyFive$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NinetyFive
 > = z.object({
-  gitProvider: z.string(),
-  gitProviderGroupDescriptor: z.string(),
-  gitScope: z.string(),
+  projectId: z.string(),
+  projectName: z.string(),
+  targetDeploymentId: z.string().optional(),
+  newTargetPercentage: z.number().optional(),
 });
 
 /**
@@ -13467,7 +13542,6 @@ export const NinetyFour$inboundSchema: z.ZodType<
   projectId: z.string(),
   projectName: z.string(),
   targetDeploymentId: z.string().optional(),
-  newTargetPercentage: z.number().optional(),
 });
 
 /** @internal */
@@ -13475,7 +13549,6 @@ export type NinetyFour$Outbound = {
   projectId: string;
   projectName: string;
   targetDeploymentId?: string | undefined;
-  newTargetPercentage?: number | undefined;
 };
 
 /** @internal */
@@ -13487,7 +13560,6 @@ export const NinetyFour$outboundSchema: z.ZodType<
   projectId: z.string(),
   projectName: z.string(),
   targetDeploymentId: z.string().optional(),
-  newTargetPercentage: z.number().optional(),
 });
 
 /**
@@ -13514,62 +13586,6 @@ export function ninetyFourFromJSON(
     jsonString,
     (x) => NinetyFour$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'NinetyFour' from JSON`,
-  );
-}
-
-/** @internal */
-export const NinetyThree$inboundSchema: z.ZodType<
-  NinetyThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  targetDeploymentId: z.string().optional(),
-});
-
-/** @internal */
-export type NinetyThree$Outbound = {
-  projectId: string;
-  projectName: string;
-  targetDeploymentId?: string | undefined;
-};
-
-/** @internal */
-export const NinetyThree$outboundSchema: z.ZodType<
-  NinetyThree$Outbound,
-  z.ZodTypeDef,
-  NinetyThree
-> = z.object({
-  projectId: z.string(),
-  projectName: z.string(),
-  targetDeploymentId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NinetyThree$ {
-  /** @deprecated use `NinetyThree$inboundSchema` instead. */
-  export const inboundSchema = NinetyThree$inboundSchema;
-  /** @deprecated use `NinetyThree$outboundSchema` instead. */
-  export const outboundSchema = NinetyThree$outboundSchema;
-  /** @deprecated use `NinetyThree$Outbound` instead. */
-  export type Outbound = NinetyThree$Outbound;
-}
-
-export function ninetyThreeToJSON(ninetyThree: NinetyThree): string {
-  return JSON.stringify(NinetyThree$outboundSchema.parse(ninetyThree));
-}
-
-export function ninetyThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<NinetyThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => NinetyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'NinetyThree' from JSON`,
   );
 }
 
@@ -13627,8 +13643,8 @@ export function staticIpsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload92Project$inboundSchema: z.ZodType<
-  UserEventPayload92Project,
+export const UserEventPayload93Project$inboundSchema: z.ZodType<
+  UserEventPayload93Project,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -13637,16 +13653,16 @@ export const UserEventPayload92Project$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload92Project$Outbound = {
+export type UserEventPayload93Project$Outbound = {
   id: string;
   staticIps: StaticIps$Outbound;
 };
 
 /** @internal */
-export const UserEventPayload92Project$outboundSchema: z.ZodType<
-  UserEventPayload92Project$Outbound,
+export const UserEventPayload93Project$outboundSchema: z.ZodType<
+  UserEventPayload93Project$Outbound,
   z.ZodTypeDef,
-  UserEventPayload92Project
+  UserEventPayload93Project
 > = z.object({
   id: z.string(),
   staticIps: z.lazy(() => StaticIps$outboundSchema),
@@ -13656,48 +13672,48 @@ export const UserEventPayload92Project$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload92Project$ {
-  /** @deprecated use `UserEventPayload92Project$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload92Project$inboundSchema;
-  /** @deprecated use `UserEventPayload92Project$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload92Project$outboundSchema;
-  /** @deprecated use `UserEventPayload92Project$Outbound` instead. */
-  export type Outbound = UserEventPayload92Project$Outbound;
+export namespace UserEventPayload93Project$ {
+  /** @deprecated use `UserEventPayload93Project$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload93Project$inboundSchema;
+  /** @deprecated use `UserEventPayload93Project$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload93Project$outboundSchema;
+  /** @deprecated use `UserEventPayload93Project$Outbound` instead. */
+  export type Outbound = UserEventPayload93Project$Outbound;
 }
 
-export function userEventPayload92ProjectToJSON(
-  userEventPayload92Project: UserEventPayload92Project,
+export function userEventPayload93ProjectToJSON(
+  userEventPayload93Project: UserEventPayload93Project,
 ): string {
   return JSON.stringify(
-    UserEventPayload92Project$outboundSchema.parse(userEventPayload92Project),
+    UserEventPayload93Project$outboundSchema.parse(userEventPayload93Project),
   );
 }
 
-export function userEventPayload92ProjectFromJSON(
+export function userEventPayload93ProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload92Project, SDKValidationError> {
+): SafeParseResult<UserEventPayload93Project, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload92Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload92Project' from JSON`,
+    (x) => UserEventPayload93Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload93Project' from JSON`,
   );
 }
 
 /** @internal */
 export const Next$inboundSchema: z.ZodType<Next, z.ZodTypeDef, unknown> = z
   .object({
-    project: z.lazy(() => UserEventPayload92Project$inboundSchema),
+    project: z.lazy(() => UserEventPayload93Project$inboundSchema),
   });
 
 /** @internal */
 export type Next$Outbound = {
-  project: UserEventPayload92Project$Outbound;
+  project: UserEventPayload93Project$Outbound;
 };
 
 /** @internal */
 export const Next$outboundSchema: z.ZodType<Next$Outbound, z.ZodTypeDef, Next> =
   z.object({
-    project: z.lazy(() => UserEventPayload92Project$outboundSchema),
+    project: z.lazy(() => UserEventPayload93Project$outboundSchema),
   });
 
 /**
@@ -13785,8 +13801,8 @@ export function payloadStaticIpsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload92PreviousProject$inboundSchema: z.ZodType<
-  UserEventPayload92PreviousProject,
+export const UserEventPayload93PreviousProject$inboundSchema: z.ZodType<
+  UserEventPayload93PreviousProject,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -13795,16 +13811,16 @@ export const UserEventPayload92PreviousProject$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload92PreviousProject$Outbound = {
+export type UserEventPayload93PreviousProject$Outbound = {
   id: string;
   staticIps: PayloadStaticIps$Outbound;
 };
 
 /** @internal */
-export const UserEventPayload92PreviousProject$outboundSchema: z.ZodType<
-  UserEventPayload92PreviousProject$Outbound,
+export const UserEventPayload93PreviousProject$outboundSchema: z.ZodType<
+  UserEventPayload93PreviousProject$Outbound,
   z.ZodTypeDef,
-  UserEventPayload92PreviousProject
+  UserEventPayload93PreviousProject
 > = z.object({
   id: z.string(),
   staticIps: z.lazy(() => PayloadStaticIps$outboundSchema),
@@ -13814,33 +13830,33 @@ export const UserEventPayload92PreviousProject$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload92PreviousProject$ {
-  /** @deprecated use `UserEventPayload92PreviousProject$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload92PreviousProject$inboundSchema;
-  /** @deprecated use `UserEventPayload92PreviousProject$outboundSchema` instead. */
+export namespace UserEventPayload93PreviousProject$ {
+  /** @deprecated use `UserEventPayload93PreviousProject$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload93PreviousProject$inboundSchema;
+  /** @deprecated use `UserEventPayload93PreviousProject$outboundSchema` instead. */
   export const outboundSchema =
-    UserEventPayload92PreviousProject$outboundSchema;
-  /** @deprecated use `UserEventPayload92PreviousProject$Outbound` instead. */
-  export type Outbound = UserEventPayload92PreviousProject$Outbound;
+    UserEventPayload93PreviousProject$outboundSchema;
+  /** @deprecated use `UserEventPayload93PreviousProject$Outbound` instead. */
+  export type Outbound = UserEventPayload93PreviousProject$Outbound;
 }
 
-export function userEventPayload92PreviousProjectToJSON(
-  userEventPayload92PreviousProject: UserEventPayload92PreviousProject,
+export function userEventPayload93PreviousProjectToJSON(
+  userEventPayload93PreviousProject: UserEventPayload93PreviousProject,
 ): string {
   return JSON.stringify(
-    UserEventPayload92PreviousProject$outboundSchema.parse(
-      userEventPayload92PreviousProject,
+    UserEventPayload93PreviousProject$outboundSchema.parse(
+      userEventPayload93PreviousProject,
     ),
   );
 }
 
-export function userEventPayload92PreviousProjectFromJSON(
+export function userEventPayload93PreviousProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload92PreviousProject, SDKValidationError> {
+): SafeParseResult<UserEventPayload93PreviousProject, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload92PreviousProject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload92PreviousProject' from JSON`,
+    (x) => UserEventPayload93PreviousProject$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload93PreviousProject' from JSON`,
   );
 }
 
@@ -13850,12 +13866,12 @@ export const Previous$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  project: z.lazy(() => UserEventPayload92PreviousProject$inboundSchema),
+  project: z.lazy(() => UserEventPayload93PreviousProject$inboundSchema),
 });
 
 /** @internal */
 export type Previous$Outbound = {
-  project: UserEventPayload92PreviousProject$Outbound;
+  project: UserEventPayload93PreviousProject$Outbound;
 };
 
 /** @internal */
@@ -13864,7 +13880,7 @@ export const Previous$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Previous
 > = z.object({
-  project: z.lazy(() => UserEventPayload92PreviousProject$outboundSchema),
+  project: z.lazy(() => UserEventPayload93PreviousProject$outboundSchema),
 });
 
 /**
@@ -13895,8 +13911,8 @@ export function previousFromJSON(
 }
 
 /** @internal */
-export const NinetyTwo$inboundSchema: z.ZodType<
-  NinetyTwo,
+export const NinetyThree$inboundSchema: z.ZodType<
+  NinetyThree,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -13905,9 +13921,62 @@ export const NinetyTwo$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type NinetyTwo$Outbound = {
+export type NinetyThree$Outbound = {
   next: Next$Outbound;
   previous: Previous$Outbound;
+};
+
+/** @internal */
+export const NinetyThree$outboundSchema: z.ZodType<
+  NinetyThree$Outbound,
+  z.ZodTypeDef,
+  NinetyThree
+> = z.object({
+  next: z.lazy(() => Next$outboundSchema),
+  previous: z.lazy(() => Previous$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace NinetyThree$ {
+  /** @deprecated use `NinetyThree$inboundSchema` instead. */
+  export const inboundSchema = NinetyThree$inboundSchema;
+  /** @deprecated use `NinetyThree$outboundSchema` instead. */
+  export const outboundSchema = NinetyThree$outboundSchema;
+  /** @deprecated use `NinetyThree$Outbound` instead. */
+  export type Outbound = NinetyThree$Outbound;
+}
+
+export function ninetyThreeToJSON(ninetyThree: NinetyThree): string {
+  return JSON.stringify(NinetyThree$outboundSchema.parse(ninetyThree));
+}
+
+export function ninetyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<NinetyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NinetyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NinetyThree' from JSON`,
+  );
+}
+
+/** @internal */
+export const NinetyTwo$inboundSchema: z.ZodType<
+  NinetyTwo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source: z.string(),
+  projectId: z.string(),
+});
+
+/** @internal */
+export type NinetyTwo$Outbound = {
+  source: string;
+  projectId: string;
 };
 
 /** @internal */
@@ -13916,8 +13985,8 @@ export const NinetyTwo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NinetyTwo
 > = z.object({
-  next: z.lazy(() => Next$outboundSchema),
-  previous: z.lazy(() => Previous$outboundSchema),
+  source: z.string(),
+  projectId: z.string(),
 });
 
 /**
@@ -13948,19 +14017,40 @@ export function ninetyTwoFromJSON(
 }
 
 /** @internal */
+export const PayloadReasonCode$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadReasonCode
+> = z.nativeEnum(PayloadReasonCode);
+
+/** @internal */
+export const PayloadReasonCode$outboundSchema: z.ZodNativeEnum<
+  typeof PayloadReasonCode
+> = PayloadReasonCode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PayloadReasonCode$ {
+  /** @deprecated use `PayloadReasonCode$inboundSchema` instead. */
+  export const inboundSchema = PayloadReasonCode$inboundSchema;
+  /** @deprecated use `PayloadReasonCode$outboundSchema` instead. */
+  export const outboundSchema = PayloadReasonCode$outboundSchema;
+}
+
+/** @internal */
 export const NinetyOne$inboundSchema: z.ZodType<
   NinetyOne,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  source: z.string(),
   projectId: z.string(),
+  reasonCode: PayloadReasonCode$inboundSchema.optional(),
 });
 
 /** @internal */
 export type NinetyOne$Outbound = {
-  source: string;
   projectId: string;
+  reasonCode?: string | undefined;
 };
 
 /** @internal */
@@ -13969,8 +14059,8 @@ export const NinetyOne$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NinetyOne
 > = z.object({
-  source: z.string(),
   projectId: z.string(),
+  reasonCode: PayloadReasonCode$outboundSchema.optional(),
 });
 
 /**
@@ -14001,31 +14091,29 @@ export function ninetyOneFromJSON(
 }
 
 /** @internal */
-export const PayloadReasonCode$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadReasonCode
-> = z.nativeEnum(PayloadReasonCode);
+export const ReasonCode$inboundSchema: z.ZodNativeEnum<typeof ReasonCode> = z
+  .nativeEnum(ReasonCode);
 
 /** @internal */
-export const PayloadReasonCode$outboundSchema: z.ZodNativeEnum<
-  typeof PayloadReasonCode
-> = PayloadReasonCode$inboundSchema;
+export const ReasonCode$outboundSchema: z.ZodNativeEnum<typeof ReasonCode> =
+  ReasonCode$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PayloadReasonCode$ {
-  /** @deprecated use `PayloadReasonCode$inboundSchema` instead. */
-  export const inboundSchema = PayloadReasonCode$inboundSchema;
-  /** @deprecated use `PayloadReasonCode$outboundSchema` instead. */
-  export const outboundSchema = PayloadReasonCode$outboundSchema;
+export namespace ReasonCode$ {
+  /** @deprecated use `ReasonCode$inboundSchema` instead. */
+  export const inboundSchema = ReasonCode$inboundSchema;
+  /** @deprecated use `ReasonCode$outboundSchema` instead. */
+  export const outboundSchema = ReasonCode$outboundSchema;
 }
 
 /** @internal */
 export const Ninety$inboundSchema: z.ZodType<Ninety, z.ZodTypeDef, unknown> = z
   .object({
     projectId: z.string(),
-    reasonCode: PayloadReasonCode$inboundSchema.optional(),
+    reasonCode: ReasonCode$inboundSchema.optional(),
   });
 
 /** @internal */
@@ -14041,7 +14129,7 @@ export const Ninety$outboundSchema: z.ZodType<
   Ninety
 > = z.object({
   projectId: z.string(),
-  reasonCode: PayloadReasonCode$outboundSchema.optional(),
+  reasonCode: ReasonCode$outboundSchema.optional(),
 });
 
 /**
@@ -14072,80 +14160,8 @@ export function ninetyFromJSON(
 }
 
 /** @internal */
-export const ReasonCode$inboundSchema: z.ZodNativeEnum<typeof ReasonCode> = z
-  .nativeEnum(ReasonCode);
-
-/** @internal */
-export const ReasonCode$outboundSchema: z.ZodNativeEnum<typeof ReasonCode> =
-  ReasonCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReasonCode$ {
-  /** @deprecated use `ReasonCode$inboundSchema` instead. */
-  export const inboundSchema = ReasonCode$inboundSchema;
-  /** @deprecated use `ReasonCode$outboundSchema` instead. */
-  export const outboundSchema = ReasonCode$outboundSchema;
-}
-
-/** @internal */
-export const EightyNine$inboundSchema: z.ZodType<
-  EightyNine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: z.string(),
-  reasonCode: ReasonCode$inboundSchema.optional(),
-});
-
-/** @internal */
-export type EightyNine$Outbound = {
-  projectId: string;
-  reasonCode?: string | undefined;
-};
-
-/** @internal */
-export const EightyNine$outboundSchema: z.ZodType<
-  EightyNine$Outbound,
-  z.ZodTypeDef,
-  EightyNine
-> = z.object({
-  projectId: z.string(),
-  reasonCode: ReasonCode$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EightyNine$ {
-  /** @deprecated use `EightyNine$inboundSchema` instead. */
-  export const inboundSchema = EightyNine$inboundSchema;
-  /** @deprecated use `EightyNine$outboundSchema` instead. */
-  export const outboundSchema = EightyNine$outboundSchema;
-  /** @deprecated use `EightyNine$Outbound` instead. */
-  export type Outbound = EightyNine$Outbound;
-}
-
-export function eightyNineToJSON(eightyNine: EightyNine): string {
-  return JSON.stringify(EightyNine$outboundSchema.parse(eightyNine));
-}
-
-export function eightyNineFromJSON(
-  jsonString: string,
-): SafeParseResult<EightyNine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EightyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EightyNine' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload88Team$inboundSchema: z.ZodType<
-  UserEventPayload88Team,
+export const UserEventPayload89Team$inboundSchema: z.ZodType<
+  UserEventPayload89Team,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -14154,16 +14170,16 @@ export const UserEventPayload88Team$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload88Team$Outbound = {
+export type UserEventPayload89Team$Outbound = {
   id: string;
   name: string;
 };
 
 /** @internal */
-export const UserEventPayload88Team$outboundSchema: z.ZodType<
-  UserEventPayload88Team$Outbound,
+export const UserEventPayload89Team$outboundSchema: z.ZodType<
+  UserEventPayload89Team$Outbound,
   z.ZodTypeDef,
-  UserEventPayload88Team
+  UserEventPayload89Team
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -14173,30 +14189,30 @@ export const UserEventPayload88Team$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload88Team$ {
-  /** @deprecated use `UserEventPayload88Team$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload88Team$inboundSchema;
-  /** @deprecated use `UserEventPayload88Team$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload88Team$outboundSchema;
-  /** @deprecated use `UserEventPayload88Team$Outbound` instead. */
-  export type Outbound = UserEventPayload88Team$Outbound;
+export namespace UserEventPayload89Team$ {
+  /** @deprecated use `UserEventPayload89Team$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload89Team$inboundSchema;
+  /** @deprecated use `UserEventPayload89Team$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload89Team$outboundSchema;
+  /** @deprecated use `UserEventPayload89Team$Outbound` instead. */
+  export type Outbound = UserEventPayload89Team$Outbound;
 }
 
-export function userEventPayload88TeamToJSON(
-  userEventPayload88Team: UserEventPayload88Team,
+export function userEventPayload89TeamToJSON(
+  userEventPayload89Team: UserEventPayload89Team,
 ): string {
   return JSON.stringify(
-    UserEventPayload88Team$outboundSchema.parse(userEventPayload88Team),
+    UserEventPayload89Team$outboundSchema.parse(userEventPayload89Team),
   );
 }
 
-export function userEventPayload88TeamFromJSON(
+export function userEventPayload89TeamFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload88Team, SDKValidationError> {
+): SafeParseResult<UserEventPayload89Team, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload88Team$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload88Team' from JSON`,
+    (x) => UserEventPayload89Team$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload89Team' from JSON`,
   );
 }
 
@@ -14576,8 +14592,8 @@ export function newConnectConfigurationsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload88Project$inboundSchema: z.ZodType<
-  UserEventPayload88Project,
+export const UserEventPayload89Project$inboundSchema: z.ZodType<
+  UserEventPayload89Project,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -14592,7 +14608,7 @@ export const UserEventPayload88Project$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload88Project$Outbound = {
+export type UserEventPayload89Project$Outbound = {
   id: string;
   name?: string | undefined;
   oldConnectConfigurations: Array<OldConnectConfigurations$Outbound> | null;
@@ -14600,10 +14616,10 @@ export type UserEventPayload88Project$Outbound = {
 };
 
 /** @internal */
-export const UserEventPayload88Project$outboundSchema: z.ZodType<
-  UserEventPayload88Project$Outbound,
+export const UserEventPayload89Project$outboundSchema: z.ZodType<
+  UserEventPayload89Project$Outbound,
   z.ZodTypeDef,
-  UserEventPayload88Project
+  UserEventPayload89Project
 > = z.object({
   id: z.string(),
   name: z.string().optional(),
@@ -14619,30 +14635,83 @@ export const UserEventPayload88Project$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload88Project$ {
-  /** @deprecated use `UserEventPayload88Project$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload88Project$inboundSchema;
-  /** @deprecated use `UserEventPayload88Project$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload88Project$outboundSchema;
-  /** @deprecated use `UserEventPayload88Project$Outbound` instead. */
-  export type Outbound = UserEventPayload88Project$Outbound;
+export namespace UserEventPayload89Project$ {
+  /** @deprecated use `UserEventPayload89Project$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload89Project$inboundSchema;
+  /** @deprecated use `UserEventPayload89Project$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload89Project$outboundSchema;
+  /** @deprecated use `UserEventPayload89Project$Outbound` instead. */
+  export type Outbound = UserEventPayload89Project$Outbound;
 }
 
-export function userEventPayload88ProjectToJSON(
-  userEventPayload88Project: UserEventPayload88Project,
+export function userEventPayload89ProjectToJSON(
+  userEventPayload89Project: UserEventPayload89Project,
 ): string {
   return JSON.stringify(
-    UserEventPayload88Project$outboundSchema.parse(userEventPayload88Project),
+    UserEventPayload89Project$outboundSchema.parse(userEventPayload89Project),
   );
 }
 
-export function userEventPayload88ProjectFromJSON(
+export function userEventPayload89ProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload88Project, SDKValidationError> {
+): SafeParseResult<UserEventPayload89Project, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload88Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload88Project' from JSON`,
+    (x) => UserEventPayload89Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload89Project' from JSON`,
+  );
+}
+
+/** @internal */
+export const EightyNine$inboundSchema: z.ZodType<
+  EightyNine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  team: z.lazy(() => UserEventPayload89Team$inboundSchema),
+  project: z.lazy(() => UserEventPayload89Project$inboundSchema),
+});
+
+/** @internal */
+export type EightyNine$Outbound = {
+  team: UserEventPayload89Team$Outbound;
+  project: UserEventPayload89Project$Outbound;
+};
+
+/** @internal */
+export const EightyNine$outboundSchema: z.ZodType<
+  EightyNine$Outbound,
+  z.ZodTypeDef,
+  EightyNine
+> = z.object({
+  team: z.lazy(() => UserEventPayload89Team$outboundSchema),
+  project: z.lazy(() => UserEventPayload89Project$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EightyNine$ {
+  /** @deprecated use `EightyNine$inboundSchema` instead. */
+  export const inboundSchema = EightyNine$inboundSchema;
+  /** @deprecated use `EightyNine$outboundSchema` instead. */
+  export const outboundSchema = EightyNine$outboundSchema;
+  /** @deprecated use `EightyNine$Outbound` instead. */
+  export type Outbound = EightyNine$Outbound;
+}
+
+export function eightyNineToJSON(eightyNine: EightyNine): string {
+  return JSON.stringify(EightyNine$outboundSchema.parse(eightyNine));
+}
+
+export function eightyNineFromJSON(
+  jsonString: string,
+): SafeParseResult<EightyNine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EightyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EightyNine' from JSON`,
   );
 }
 
@@ -14652,14 +14721,14 @@ export const EightyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  team: z.lazy(() => UserEventPayload88Team$inboundSchema),
-  project: z.lazy(() => UserEventPayload88Project$inboundSchema),
+  name: z.string(),
+  ownerId: z.string(),
 });
 
 /** @internal */
 export type EightyEight$Outbound = {
-  team: UserEventPayload88Team$Outbound;
-  project: UserEventPayload88Project$Outbound;
+  name: string;
+  ownerId: string;
 };
 
 /** @internal */
@@ -14668,8 +14737,8 @@ export const EightyEight$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EightyEight
 > = z.object({
-  team: z.lazy(() => UserEventPayload88Team$outboundSchema),
-  project: z.lazy(() => UserEventPayload88Project$outboundSchema),
+  name: z.string(),
+  ownerId: z.string(),
 });
 
 /**
@@ -14700,19 +14769,40 @@ export function eightyEightFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload87Action$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload87Action
+> = z.nativeEnum(UserEventPayload87Action);
+
+/** @internal */
+export const UserEventPayload87Action$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload87Action
+> = UserEventPayload87Action$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload87Action$ {
+  /** @deprecated use `UserEventPayload87Action$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload87Action$inboundSchema;
+  /** @deprecated use `UserEventPayload87Action$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload87Action$outboundSchema;
+}
+
+/** @internal */
 export const EightySeven$inboundSchema: z.ZodType<
   EightySeven,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  ownerId: z.string(),
+  projectName: z.string(),
+  action: UserEventPayload87Action$inboundSchema,
 });
 
 /** @internal */
 export type EightySeven$Outbound = {
-  name: string;
-  ownerId: string;
+  projectName: string;
+  action: string;
 };
 
 /** @internal */
@@ -14721,8 +14811,8 @@ export const EightySeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EightySeven
 > = z.object({
-  name: z.string(),
-  ownerId: z.string(),
+  projectName: z.string(),
+  action: UserEventPayload87Action$outboundSchema,
 });
 
 /**
@@ -14749,80 +14839,6 @@ export function eightySevenFromJSON(
     jsonString,
     (x) => EightySeven$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'EightySeven' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload86Action$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload86Action
-> = z.nativeEnum(UserEventPayload86Action);
-
-/** @internal */
-export const UserEventPayload86Action$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload86Action
-> = UserEventPayload86Action$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload86Action$ {
-  /** @deprecated use `UserEventPayload86Action$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload86Action$inboundSchema;
-  /** @deprecated use `UserEventPayload86Action$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload86Action$outboundSchema;
-}
-
-/** @internal */
-export const EightySix$inboundSchema: z.ZodType<
-  EightySix,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectName: z.string(),
-  action: UserEventPayload86Action$inboundSchema,
-});
-
-/** @internal */
-export type EightySix$Outbound = {
-  projectName: string;
-  action: string;
-};
-
-/** @internal */
-export const EightySix$outboundSchema: z.ZodType<
-  EightySix$Outbound,
-  z.ZodTypeDef,
-  EightySix
-> = z.object({
-  projectName: z.string(),
-  action: UserEventPayload86Action$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EightySix$ {
-  /** @deprecated use `EightySix$inboundSchema` instead. */
-  export const inboundSchema = EightySix$inboundSchema;
-  /** @deprecated use `EightySix$outboundSchema` instead. */
-  export const outboundSchema = EightySix$outboundSchema;
-  /** @deprecated use `EightySix$Outbound` instead. */
-  export type Outbound = EightySix$Outbound;
-}
-
-export function eightySixToJSON(eightySix: EightySix): string {
-  return JSON.stringify(EightySix$outboundSchema.parse(eightySix));
-}
-
-export function eightySixFromJSON(
-  jsonString: string,
-): SafeParseResult<EightySix, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EightySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EightySix' from JSON`,
   );
 }
 
@@ -15032,8 +15048,8 @@ export function oldOptionsAllowlistFromJSON(
 }
 
 /** @internal */
-export const EightyFive$inboundSchema: z.ZodType<
-  EightyFive,
+export const EightySix$inboundSchema: z.ZodType<
+  EightySix,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -15046,17 +15062,17 @@ export const EightyFive$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EightyFive$Outbound = {
+export type EightySix$Outbound = {
   projectName: string;
   optionsAllowlist?: OptionsAllowlist$Outbound | null | undefined;
   oldOptionsAllowlist?: OldOptionsAllowlist$Outbound | null | undefined;
 };
 
 /** @internal */
-export const EightyFive$outboundSchema: z.ZodType<
-  EightyFive$Outbound,
+export const EightySix$outboundSchema: z.ZodType<
+  EightySix$Outbound,
   z.ZodTypeDef,
-  EightyFive
+  EightySix
 > = z.object({
   projectName: z.string(),
   optionsAllowlist: z.nullable(z.lazy(() => OptionsAllowlist$outboundSchema))
@@ -15070,26 +15086,26 @@ export const EightyFive$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EightyFive$ {
-  /** @deprecated use `EightyFive$inboundSchema` instead. */
-  export const inboundSchema = EightyFive$inboundSchema;
-  /** @deprecated use `EightyFive$outboundSchema` instead. */
-  export const outboundSchema = EightyFive$outboundSchema;
-  /** @deprecated use `EightyFive$Outbound` instead. */
-  export type Outbound = EightyFive$Outbound;
+export namespace EightySix$ {
+  /** @deprecated use `EightySix$inboundSchema` instead. */
+  export const inboundSchema = EightySix$inboundSchema;
+  /** @deprecated use `EightySix$outboundSchema` instead. */
+  export const outboundSchema = EightySix$outboundSchema;
+  /** @deprecated use `EightySix$Outbound` instead. */
+  export type Outbound = EightySix$Outbound;
 }
 
-export function eightyFiveToJSON(eightyFive: EightyFive): string {
-  return JSON.stringify(EightyFive$outboundSchema.parse(eightyFive));
+export function eightySixToJSON(eightySix: EightySix): string {
+  return JSON.stringify(EightySix$outboundSchema.parse(eightySix));
 }
 
-export function eightyFiveFromJSON(
+export function eightySixFromJSON(
   jsonString: string,
-): SafeParseResult<EightyFive, SDKValidationError> {
+): SafeParseResult<EightySix, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EightyFive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EightyFive' from JSON`,
+    (x) => EightySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EightySix' from JSON`,
   );
 }
 
@@ -15134,8 +15150,8 @@ export namespace OldTrustedIps$ {
 }
 
 /** @internal */
-export const EightyFour$inboundSchema: z.ZodType<
-  EightyFour,
+export const EightyFive$inboundSchema: z.ZodType<
+  EightyFive,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -15147,7 +15163,7 @@ export const EightyFour$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EightyFour$Outbound = {
+export type EightyFive$Outbound = {
   projectName: string;
   trustedIps?: string | null | undefined;
   oldTrustedIps?: string | null | undefined;
@@ -15156,10 +15172,10 @@ export type EightyFour$Outbound = {
 };
 
 /** @internal */
-export const EightyFour$outboundSchema: z.ZodType<
-  EightyFour$Outbound,
+export const EightyFive$outboundSchema: z.ZodType<
+  EightyFive$Outbound,
   z.ZodTypeDef,
-  EightyFour
+  EightyFive
 > = z.object({
   projectName: z.string(),
   trustedIps: z.nullable(TrustedIps$outboundSchema).optional(),
@@ -15172,26 +15188,26 @@ export const EightyFour$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EightyFour$ {
-  /** @deprecated use `EightyFour$inboundSchema` instead. */
-  export const inboundSchema = EightyFour$inboundSchema;
-  /** @deprecated use `EightyFour$outboundSchema` instead. */
-  export const outboundSchema = EightyFour$outboundSchema;
-  /** @deprecated use `EightyFour$Outbound` instead. */
-  export type Outbound = EightyFour$Outbound;
+export namespace EightyFive$ {
+  /** @deprecated use `EightyFive$inboundSchema` instead. */
+  export const inboundSchema = EightyFive$inboundSchema;
+  /** @deprecated use `EightyFive$outboundSchema` instead. */
+  export const outboundSchema = EightyFive$outboundSchema;
+  /** @deprecated use `EightyFive$Outbound` instead. */
+  export type Outbound = EightyFive$Outbound;
 }
 
-export function eightyFourToJSON(eightyFour: EightyFour): string {
-  return JSON.stringify(EightyFour$outboundSchema.parse(eightyFour));
+export function eightyFiveToJSON(eightyFive: EightyFive): string {
+  return JSON.stringify(EightyFive$outboundSchema.parse(eightyFive));
 }
 
-export function eightyFourFromJSON(
+export function eightyFiveFromJSON(
   jsonString: string,
-): SafeParseResult<EightyFour, SDKValidationError> {
+): SafeParseResult<EightyFive, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EightyFour$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EightyFour' from JSON`,
+    (x) => EightyFive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EightyFive' from JSON`,
   );
 }
 
@@ -15502,8 +15518,8 @@ export function oldPasswordProtectionFromJSON(
 }
 
 /** @internal */
-export const EightyThree$inboundSchema: z.ZodType<
-  EightyThree,
+export const EightyFour$inboundSchema: z.ZodType<
+  EightyFour,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -15523,17 +15539,17 @@ export const EightyThree$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EightyThree$Outbound = {
+export type EightyFour$Outbound = {
   projectName: string;
   passwordProtection: PasswordProtection1$Outbound | string | null;
   oldPasswordProtection: OldPasswordProtection1$Outbound | string | null;
 };
 
 /** @internal */
-export const EightyThree$outboundSchema: z.ZodType<
-  EightyThree$Outbound,
+export const EightyFour$outboundSchema: z.ZodType<
+  EightyFour$Outbound,
   z.ZodTypeDef,
-  EightyThree
+  EightyFour
 > = z.object({
   projectName: z.string(),
   passwordProtection: z.nullable(
@@ -15554,26 +15570,26 @@ export const EightyThree$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EightyThree$ {
-  /** @deprecated use `EightyThree$inboundSchema` instead. */
-  export const inboundSchema = EightyThree$inboundSchema;
-  /** @deprecated use `EightyThree$outboundSchema` instead. */
-  export const outboundSchema = EightyThree$outboundSchema;
-  /** @deprecated use `EightyThree$Outbound` instead. */
-  export type Outbound = EightyThree$Outbound;
+export namespace EightyFour$ {
+  /** @deprecated use `EightyFour$inboundSchema` instead. */
+  export const inboundSchema = EightyFour$inboundSchema;
+  /** @deprecated use `EightyFour$outboundSchema` instead. */
+  export const outboundSchema = EightyFour$outboundSchema;
+  /** @deprecated use `EightyFour$Outbound` instead. */
+  export type Outbound = EightyFour$Outbound;
 }
 
-export function eightyThreeToJSON(eightyThree: EightyThree): string {
-  return JSON.stringify(EightyThree$outboundSchema.parse(eightyThree));
+export function eightyFourToJSON(eightyFour: EightyFour): string {
+  return JSON.stringify(EightyFour$outboundSchema.parse(eightyFour));
 }
 
-export function eightyThreeFromJSON(
+export function eightyFourFromJSON(
   jsonString: string,
-): SafeParseResult<EightyThree, SDKValidationError> {
+): SafeParseResult<EightyFour, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EightyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EightyThree' from JSON`,
+    (x) => EightyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EightyFour' from JSON`,
   );
 }
 
@@ -15874,8 +15890,8 @@ export function oldSsoProtectionFromJSON(
 }
 
 /** @internal */
-export const EightyTwo$inboundSchema: z.ZodType<
-  EightyTwo,
+export const EightyThree$inboundSchema: z.ZodType<
+  EightyThree,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -15895,17 +15911,17 @@ export const EightyTwo$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EightyTwo$Outbound = {
+export type EightyThree$Outbound = {
   projectName: string;
   ssoProtection: SsoProtection1$Outbound | string | null;
   oldSsoProtection: OldSsoProtection1$Outbound | string | null;
 };
 
 /** @internal */
-export const EightyTwo$outboundSchema: z.ZodType<
-  EightyTwo$Outbound,
+export const EightyThree$outboundSchema: z.ZodType<
+  EightyThree$Outbound,
   z.ZodTypeDef,
-  EightyTwo
+  EightyThree
 > = z.object({
   projectName: z.string(),
   ssoProtection: z.nullable(
@@ -15920,6 +15936,59 @@ export const EightyTwo$outboundSchema: z.ZodType<
       OldSsoProtection2$outboundSchema,
     ]),
   ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EightyThree$ {
+  /** @deprecated use `EightyThree$inboundSchema` instead. */
+  export const inboundSchema = EightyThree$inboundSchema;
+  /** @deprecated use `EightyThree$outboundSchema` instead. */
+  export const outboundSchema = EightyThree$outboundSchema;
+  /** @deprecated use `EightyThree$Outbound` instead. */
+  export type Outbound = EightyThree$Outbound;
+}
+
+export function eightyThreeToJSON(eightyThree: EightyThree): string {
+  return JSON.stringify(EightyThree$outboundSchema.parse(eightyThree));
+}
+
+export function eightyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<EightyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EightyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EightyThree' from JSON`,
+  );
+}
+
+/** @internal */
+export const EightyTwo$inboundSchema: z.ZodType<
+  EightyTwo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectName: z.string().optional(),
+  projectId: z.string(),
+});
+
+/** @internal */
+export type EightyTwo$Outbound = {
+  projectName?: string | undefined;
+  projectId: string;
+};
+
+/** @internal */
+export const EightyTwo$outboundSchema: z.ZodType<
+  EightyTwo$Outbound,
+  z.ZodTypeDef,
+  EightyTwo
+> = z.object({
+  projectName: z.string().optional(),
+  projectId: z.string(),
 });
 
 /**
@@ -15957,12 +16026,16 @@ export const EightyOne$inboundSchema: z.ZodType<
 > = z.object({
   projectName: z.string().optional(),
   projectId: z.string(),
+  projectAnalytics: z.record(z.any()).optional(),
+  prevProjectAnalytics: z.nullable(z.record(z.any())).optional(),
 });
 
 /** @internal */
 export type EightyOne$Outbound = {
   projectName?: string | undefined;
   projectId: string;
+  projectAnalytics?: { [k: string]: any } | undefined;
+  prevProjectAnalytics?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -15973,6 +16046,8 @@ export const EightyOne$outboundSchema: z.ZodType<
 > = z.object({
   projectName: z.string().optional(),
   projectId: z.string(),
+  projectAnalytics: z.record(z.any()).optional(),
+  prevProjectAnalytics: z.nullable(z.record(z.any())).optional(),
 });
 
 /**
@@ -15999,62 +16074,6 @@ export function eightyOneFromJSON(
     jsonString,
     (x) => EightyOne$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'EightyOne' from JSON`,
-  );
-}
-
-/** @internal */
-export const Eighty$inboundSchema: z.ZodType<Eighty, z.ZodTypeDef, unknown> = z
-  .object({
-    projectName: z.string().optional(),
-    projectId: z.string(),
-    projectAnalytics: z.record(z.any()).optional(),
-    prevProjectAnalytics: z.nullable(z.record(z.any())).optional(),
-  });
-
-/** @internal */
-export type Eighty$Outbound = {
-  projectName?: string | undefined;
-  projectId: string;
-  projectAnalytics?: { [k: string]: any } | undefined;
-  prevProjectAnalytics?: { [k: string]: any } | null | undefined;
-};
-
-/** @internal */
-export const Eighty$outboundSchema: z.ZodType<
-  Eighty$Outbound,
-  z.ZodTypeDef,
-  Eighty
-> = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  projectAnalytics: z.record(z.any()).optional(),
-  prevProjectAnalytics: z.nullable(z.record(z.any())).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Eighty$ {
-  /** @deprecated use `Eighty$inboundSchema` instead. */
-  export const inboundSchema = Eighty$inboundSchema;
-  /** @deprecated use `Eighty$outboundSchema` instead. */
-  export const outboundSchema = Eighty$outboundSchema;
-  /** @deprecated use `Eighty$Outbound` instead. */
-  export type Outbound = Eighty$Outbound;
-}
-
-export function eightyToJSON(eighty: Eighty): string {
-  return JSON.stringify(Eighty$outboundSchema.parse(eighty));
-}
-
-export function eightyFromJSON(
-  jsonString: string,
-): SafeParseResult<Eighty, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Eighty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eighty' from JSON`,
   );
 }
 
@@ -16203,25 +16222,79 @@ export function prevProjectAnalyticsFromJSON(
 }
 
 /** @internal */
+export const Eighty$inboundSchema: z.ZodType<Eighty, z.ZodTypeDef, unknown> = z
+  .object({
+    projectName: z.string().optional(),
+    projectId: z.string(),
+    projectAnalytics: z.nullable(z.lazy(() => ProjectAnalytics$inboundSchema)),
+    prevProjectAnalytics: z.nullable(
+      z.lazy(() => PrevProjectAnalytics$inboundSchema),
+    ),
+  });
+
+/** @internal */
+export type Eighty$Outbound = {
+  projectName?: string | undefined;
+  projectId: string;
+  projectAnalytics: ProjectAnalytics$Outbound | null;
+  prevProjectAnalytics: PrevProjectAnalytics$Outbound | null;
+};
+
+/** @internal */
+export const Eighty$outboundSchema: z.ZodType<
+  Eighty$Outbound,
+  z.ZodTypeDef,
+  Eighty
+> = z.object({
+  projectName: z.string().optional(),
+  projectId: z.string(),
+  projectAnalytics: z.nullable(z.lazy(() => ProjectAnalytics$outboundSchema)),
+  prevProjectAnalytics: z.nullable(
+    z.lazy(() => PrevProjectAnalytics$outboundSchema),
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Eighty$ {
+  /** @deprecated use `Eighty$inboundSchema` instead. */
+  export const inboundSchema = Eighty$inboundSchema;
+  /** @deprecated use `Eighty$outboundSchema` instead. */
+  export const outboundSchema = Eighty$outboundSchema;
+  /** @deprecated use `Eighty$Outbound` instead. */
+  export type Outbound = Eighty$Outbound;
+}
+
+export function eightyToJSON(eighty: Eighty): string {
+  return JSON.stringify(Eighty$outboundSchema.parse(eighty));
+}
+
+export function eightyFromJSON(
+  jsonString: string,
+): SafeParseResult<Eighty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Eighty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Eighty' from JSON`,
+  );
+}
+
+/** @internal */
 export const SeventyNine$inboundSchema: z.ZodType<
   SeventyNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  projectAnalytics: z.nullable(z.lazy(() => ProjectAnalytics$inboundSchema)),
-  prevProjectAnalytics: z.nullable(
-    z.lazy(() => PrevProjectAnalytics$inboundSchema),
-  ),
+  projectName: z.string(),
+  branch: z.string(),
 });
 
 /** @internal */
 export type SeventyNine$Outbound = {
-  projectName?: string | undefined;
-  projectId: string;
-  projectAnalytics: ProjectAnalytics$Outbound | null;
-  prevProjectAnalytics: PrevProjectAnalytics$Outbound | null;
+  projectName: string;
+  branch: string;
 };
 
 /** @internal */
@@ -16230,12 +16303,8 @@ export const SeventyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SeventyNine
 > = z.object({
-  projectName: z.string().optional(),
-  projectId: z.string(),
-  projectAnalytics: z.nullable(z.lazy(() => ProjectAnalytics$outboundSchema)),
-  prevProjectAnalytics: z.nullable(
-    z.lazy(() => PrevProjectAnalytics$outboundSchema),
-  ),
+  projectName: z.string(),
+  branch: z.string(),
 });
 
 /**
@@ -16266,77 +16335,24 @@ export function seventyNineFromJSON(
 }
 
 /** @internal */
-export const SeventyEight$inboundSchema: z.ZodType<
-  SeventyEight,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectName: z.string(),
-  branch: z.string(),
-});
+export const UserEventPayload78Role$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload78Role
+> = z.nativeEnum(UserEventPayload78Role);
 
 /** @internal */
-export type SeventyEight$Outbound = {
-  projectName: string;
-  branch: string;
-};
-
-/** @internal */
-export const SeventyEight$outboundSchema: z.ZodType<
-  SeventyEight$Outbound,
-  z.ZodTypeDef,
-  SeventyEight
-> = z.object({
-  projectName: z.string(),
-  branch: z.string(),
-});
+export const UserEventPayload78Role$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload78Role
+> = UserEventPayload78Role$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SeventyEight$ {
-  /** @deprecated use `SeventyEight$inboundSchema` instead. */
-  export const inboundSchema = SeventyEight$inboundSchema;
-  /** @deprecated use `SeventyEight$outboundSchema` instead. */
-  export const outboundSchema = SeventyEight$outboundSchema;
-  /** @deprecated use `SeventyEight$Outbound` instead. */
-  export type Outbound = SeventyEight$Outbound;
-}
-
-export function seventyEightToJSON(seventyEight: SeventyEight): string {
-  return JSON.stringify(SeventyEight$outboundSchema.parse(seventyEight));
-}
-
-export function seventyEightFromJSON(
-  jsonString: string,
-): SafeParseResult<SeventyEight, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SeventyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SeventyEight' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload77Role$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload77Role
-> = z.nativeEnum(UserEventPayload77Role);
-
-/** @internal */
-export const UserEventPayload77Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload77Role
-> = UserEventPayload77Role$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload77Role$ {
-  /** @deprecated use `UserEventPayload77Role$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload77Role$inboundSchema;
-  /** @deprecated use `UserEventPayload77Role$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload77Role$outboundSchema;
+export namespace UserEventPayload78Role$ {
+  /** @deprecated use `UserEventPayload78Role$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload78Role$inboundSchema;
+  /** @deprecated use `UserEventPayload78Role$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload78Role$outboundSchema;
 }
 
 /** @internal */
@@ -16498,7 +16514,7 @@ export const RemovedUsers$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: UserEventPayload77Role$inboundSchema,
+  role: UserEventPayload78Role$inboundSchema,
   confirmed: z.boolean(),
   confirmedAt: z.number().optional(),
   joinedFrom: z.lazy(() => PayloadJoinedFrom$inboundSchema).optional(),
@@ -16518,7 +16534,7 @@ export const RemovedUsers$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemovedUsers
 > = z.object({
-  role: UserEventPayload77Role$outboundSchema,
+  role: UserEventPayload78Role$outboundSchema,
   confirmed: z.boolean(),
   confirmedAt: z.number().optional(),
   joinedFrom: z.lazy(() => PayloadJoinedFrom$outboundSchema).optional(),
@@ -16552,8 +16568,8 @@ export function removedUsersFromJSON(
 }
 
 /** @internal */
-export const SeventySeven$inboundSchema: z.ZodType<
-  SeventySeven,
+export const SeventyEight$inboundSchema: z.ZodType<
+  SeventyEight,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -16567,7 +16583,7 @@ export const SeventySeven$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SeventySeven$Outbound = {
+export type SeventyEight$Outbound = {
   plan: string;
   removedUsers?: { [k: string]: RemovedUsers$Outbound } | undefined;
   priorPlan?: string | undefined;
@@ -16578,10 +16594,10 @@ export type SeventySeven$Outbound = {
 };
 
 /** @internal */
-export const SeventySeven$outboundSchema: z.ZodType<
-  SeventySeven$Outbound,
+export const SeventyEight$outboundSchema: z.ZodType<
+  SeventyEight$Outbound,
   z.ZodTypeDef,
-  SeventySeven
+  SeventyEight
 > = z.object({
   plan: z.string(),
   removedUsers: z.record(z.lazy(() => RemovedUsers$outboundSchema)).optional(),
@@ -16590,6 +16606,56 @@ export const SeventySeven$outboundSchema: z.ZodType<
   userAgent: z.string().optional(),
   isReactivate: z.boolean().optional(),
   isTrialUpgrade: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SeventyEight$ {
+  /** @deprecated use `SeventyEight$inboundSchema` instead. */
+  export const inboundSchema = SeventyEight$inboundSchema;
+  /** @deprecated use `SeventyEight$outboundSchema` instead. */
+  export const outboundSchema = SeventyEight$outboundSchema;
+  /** @deprecated use `SeventyEight$Outbound` instead. */
+  export type Outbound = SeventyEight$Outbound;
+}
+
+export function seventyEightToJSON(seventyEight: SeventyEight): string {
+  return JSON.stringify(SeventyEight$outboundSchema.parse(seventyEight));
+}
+
+export function seventyEightFromJSON(
+  jsonString: string,
+): SafeParseResult<SeventyEight, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SeventyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeventyEight' from JSON`,
+  );
+}
+
+/** @internal */
+export const SeventySeven$inboundSchema: z.ZodType<
+  SeventySeven,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectName: z.string(),
+});
+
+/** @internal */
+export type SeventySeven$Outbound = {
+  projectName: string;
+};
+
+/** @internal */
+export const SeventySeven$outboundSchema: z.ZodType<
+  SeventySeven$Outbound,
+  z.ZodTypeDef,
+  SeventySeven
+> = z.object({
+  projectName: z.string(),
 });
 
 /**
@@ -16625,11 +16691,15 @@ export const SeventySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  projectId: z.string(),
+  toDeploymentId: z.string(),
   projectName: z.string(),
 });
 
 /** @internal */
 export type SeventySix$Outbound = {
+  projectId: string;
+  toDeploymentId: string;
   projectName: string;
 };
 
@@ -16639,6 +16709,8 @@ export const SeventySix$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SeventySix
 > = z.object({
+  projectId: z.string(),
+  toDeploymentId: z.string(),
   projectName: z.string(),
 });
 
@@ -16675,16 +16747,14 @@ export const SeventyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  toDeploymentId: z.string(),
-  projectName: z.string(),
+  drainUrl: z.nullable(z.string()),
+  integrationName: z.string().optional(),
 });
 
 /** @internal */
 export type SeventyFive$Outbound = {
-  projectId: string;
-  toDeploymentId: string;
-  projectName: string;
+  drainUrl: string | null;
+  integrationName?: string | undefined;
 };
 
 /** @internal */
@@ -16693,9 +16763,8 @@ export const SeventyFive$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SeventyFive
 > = z.object({
-  projectId: z.string(),
-  toDeploymentId: z.string(),
-  projectName: z.string(),
+  drainUrl: z.nullable(z.string()),
+  integrationName: z.string().optional(),
 });
 
 /**
@@ -16731,13 +16800,13 @@ export const SeventyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  drainUrl: z.nullable(z.string()),
+  logDrainUrl: z.string(),
   integrationName: z.string().optional(),
 });
 
 /** @internal */
 export type SeventyFour$Outbound = {
-  drainUrl: string | null;
+  logDrainUrl: string;
   integrationName?: string | undefined;
 };
 
@@ -16747,7 +16816,7 @@ export const SeventyFour$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SeventyFour
 > = z.object({
-  drainUrl: z.nullable(z.string()),
+  logDrainUrl: z.string(),
   integrationName: z.string().optional(),
 });
 
@@ -16784,13 +16853,13 @@ export const SeventyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  logDrainUrl: z.string(),
+  logDrainUrl: z.nullable(z.string()),
   integrationName: z.string().optional(),
 });
 
 /** @internal */
 export type SeventyThree$Outbound = {
-  logDrainUrl: string;
+  logDrainUrl: string | null;
   integrationName?: string | undefined;
 };
 
@@ -16800,7 +16869,7 @@ export const SeventyThree$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SeventyThree
 > = z.object({
-  logDrainUrl: z.string(),
+  logDrainUrl: z.nullable(z.string()),
   integrationName: z.string().optional(),
 });
 
@@ -16828,59 +16897,6 @@ export function seventyThreeFromJSON(
     jsonString,
     (x) => SeventyThree$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SeventyThree' from JSON`,
-  );
-}
-
-/** @internal */
-export const SeventyTwo$inboundSchema: z.ZodType<
-  SeventyTwo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  logDrainUrl: z.nullable(z.string()),
-  integrationName: z.string().optional(),
-});
-
-/** @internal */
-export type SeventyTwo$Outbound = {
-  logDrainUrl: string | null;
-  integrationName?: string | undefined;
-};
-
-/** @internal */
-export const SeventyTwo$outboundSchema: z.ZodType<
-  SeventyTwo$Outbound,
-  z.ZodTypeDef,
-  SeventyTwo
-> = z.object({
-  logDrainUrl: z.nullable(z.string()),
-  integrationName: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SeventyTwo$ {
-  /** @deprecated use `SeventyTwo$inboundSchema` instead. */
-  export const inboundSchema = SeventyTwo$inboundSchema;
-  /** @deprecated use `SeventyTwo$outboundSchema` instead. */
-  export const outboundSchema = SeventyTwo$outboundSchema;
-  /** @deprecated use `SeventyTwo$Outbound` instead. */
-  export type Outbound = SeventyTwo$Outbound;
-}
-
-export function seventyTwoToJSON(seventyTwo: SeventyTwo): string {
-  return JSON.stringify(SeventyTwo$outboundSchema.parse(seventyTwo));
-}
-
-export function seventyTwoFromJSON(
-  jsonString: string,
-): SafeParseResult<SeventyTwo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SeventyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SeventyTwo' from JSON`,
   );
 }
 
@@ -17439,8 +17455,8 @@ export function geolocationFromJSON(
 }
 
 /** @internal */
-export const SeventyOne$inboundSchema: z.ZodType<
-  SeventyOne,
+export const SeventyTwo$inboundSchema: z.ZodType<
+  SeventyTwo,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -17460,7 +17476,7 @@ export const SeventyOne$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SeventyOne$Outbound = {
+export type SeventyTwo$Outbound = {
   userAgent?: UserAgent$Outbound | undefined;
   geolocation?: Geolocation$Outbound | null | undefined;
   viaGithub: boolean;
@@ -17477,10 +17493,10 @@ export type SeventyOne$Outbound = {
 };
 
 /** @internal */
-export const SeventyOne$outboundSchema: z.ZodType<
-  SeventyOne$Outbound,
+export const SeventyTwo$outboundSchema: z.ZodType<
+  SeventyTwo$Outbound,
   z.ZodTypeDef,
-  SeventyOne
+  SeventyTwo
 > = z.object({
   userAgent: z.lazy(() => UserAgent$outboundSchema).optional(),
   geolocation: z.nullable(z.lazy(() => Geolocation$outboundSchema)).optional(),
@@ -17495,6 +17511,74 @@ export const SeventyOne$outboundSchema: z.ZodType<
   env: z.string().optional(),
   os: z.string().optional(),
   username: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SeventyTwo$ {
+  /** @deprecated use `SeventyTwo$inboundSchema` instead. */
+  export const inboundSchema = SeventyTwo$inboundSchema;
+  /** @deprecated use `SeventyTwo$outboundSchema` instead. */
+  export const outboundSchema = SeventyTwo$outboundSchema;
+  /** @deprecated use `SeventyTwo$Outbound` instead. */
+  export type Outbound = SeventyTwo$Outbound;
+}
+
+export function seventyTwoToJSON(seventyTwo: SeventyTwo): string {
+  return JSON.stringify(SeventyTwo$outboundSchema.parse(seventyTwo));
+}
+
+export function seventyTwoFromJSON(
+  jsonString: string,
+): SafeParseResult<SeventyTwo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SeventyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeventyTwo' from JSON`,
+  );
+}
+
+/** @internal */
+export const SeventyOne$inboundSchema: z.ZodType<
+  SeventyOne,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  integrationId: z.string(),
+  configurationId: z.string(),
+  integrationSlug: z.string(),
+  integrationName: z.string(),
+  ownerId: z.string(),
+  projectIds: z.array(z.string()).optional(),
+  confirmedScopes: z.array(z.string()),
+});
+
+/** @internal */
+export type SeventyOne$Outbound = {
+  integrationId: string;
+  configurationId: string;
+  integrationSlug: string;
+  integrationName: string;
+  ownerId: string;
+  projectIds?: Array<string> | undefined;
+  confirmedScopes: Array<string>;
+};
+
+/** @internal */
+export const SeventyOne$outboundSchema: z.ZodType<
+  SeventyOne$Outbound,
+  z.ZodTypeDef,
+  SeventyOne
+> = z.object({
+  integrationId: z.string(),
+  configurationId: z.string(),
+  integrationSlug: z.string(),
+  integrationName: z.string(),
+  ownerId: z.string(),
+  projectIds: z.array(z.string()).optional(),
+  confirmedScopes: z.array(z.string()),
 });
 
 /**
@@ -17527,24 +17611,20 @@ export function seventyOneFromJSON(
 /** @internal */
 export const Seventy$inboundSchema: z.ZodType<Seventy, z.ZodTypeDef, unknown> =
   z.object({
-    integrationId: z.string(),
-    configurationId: z.string(),
-    integrationSlug: z.string(),
-    integrationName: z.string(),
-    ownerId: z.string(),
-    projectIds: z.array(z.string()).optional(),
-    confirmedScopes: z.array(z.string()),
+    projectId: z.string(),
+    fromDeploymentId: z.string(),
+    toDeploymentId: z.string(),
+    projectName: z.string(),
+    reason: z.string().optional(),
   });
 
 /** @internal */
 export type Seventy$Outbound = {
-  integrationId: string;
-  configurationId: string;
-  integrationSlug: string;
-  integrationName: string;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  confirmedScopes: Array<string>;
+  projectId: string;
+  fromDeploymentId: string;
+  toDeploymentId: string;
+  projectName: string;
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -17553,13 +17633,11 @@ export const Seventy$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Seventy
 > = z.object({
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
-  ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
-  confirmedScopes: z.array(z.string()),
+  projectId: z.string(),
+  fromDeploymentId: z.string(),
+  toDeploymentId: z.string(),
+  projectName: z.string(),
+  reason: z.string().optional(),
 });
 
 /**
@@ -17595,20 +17673,22 @@ export const SixtyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  projectId: z.string(),
-  fromDeploymentId: z.string(),
-  toDeploymentId: z.string(),
-  projectName: z.string(),
-  reason: z.string().optional(),
+  integrationId: z.string(),
+  configurationId: z.string(),
+  integrationSlug: z.string(),
+  integrationName: z.string(),
+  ownerId: z.string(),
+  projectIds: z.array(z.string()).optional(),
 });
 
 /** @internal */
 export type SixtyNine$Outbound = {
-  projectId: string;
-  fromDeploymentId: string;
-  toDeploymentId: string;
-  projectName: string;
-  reason?: string | undefined;
+  integrationId: string;
+  configurationId: string;
+  integrationSlug: string;
+  integrationName: string;
+  ownerId: string;
+  projectIds?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -17617,11 +17697,12 @@ export const SixtyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SixtyNine
 > = z.object({
-  projectId: z.string(),
-  fromDeploymentId: z.string(),
-  toDeploymentId: z.string(),
-  projectName: z.string(),
-  reason: z.string().optional(),
+  integrationId: z.string(),
+  configurationId: z.string(),
+  integrationSlug: z.string(),
+  integrationName: z.string(),
+  ownerId: z.string(),
+  projectIds: z.array(z.string()).optional(),
 });
 
 /**
@@ -17662,7 +17743,8 @@ export const SixtyEight$inboundSchema: z.ZodType<
   integrationSlug: z.string(),
   integrationName: z.string(),
   ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
+  billingPlanId: z.string(),
+  billingPlanName: z.string().optional(),
 });
 
 /** @internal */
@@ -17672,7 +17754,8 @@ export type SixtyEight$Outbound = {
   integrationSlug: string;
   integrationName: string;
   ownerId: string;
-  projectIds?: Array<string> | undefined;
+  billingPlanId: string;
+  billingPlanName?: string | undefined;
 };
 
 /** @internal */
@@ -17686,7 +17769,8 @@ export const SixtyEight$outboundSchema: z.ZodType<
   integrationSlug: z.string(),
   integrationName: z.string(),
   ownerId: z.string(),
-  projectIds: z.array(z.string()).optional(),
+  billingPlanId: z.string(),
+  billingPlanName: z.string().optional(),
 });
 
 /**
@@ -17713,74 +17797,6 @@ export function sixtyEightFromJSON(
     jsonString,
     (x) => SixtyEight$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SixtyEight' from JSON`,
-  );
-}
-
-/** @internal */
-export const SixtySeven$inboundSchema: z.ZodType<
-  SixtySeven,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
-  ownerId: z.string(),
-  billingPlanId: z.string(),
-  billingPlanName: z.string().optional(),
-});
-
-/** @internal */
-export type SixtySeven$Outbound = {
-  integrationId: string;
-  configurationId: string;
-  integrationSlug: string;
-  integrationName: string;
-  ownerId: string;
-  billingPlanId: string;
-  billingPlanName?: string | undefined;
-};
-
-/** @internal */
-export const SixtySeven$outboundSchema: z.ZodType<
-  SixtySeven$Outbound,
-  z.ZodTypeDef,
-  SixtySeven
-> = z.object({
-  integrationId: z.string(),
-  configurationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
-  ownerId: z.string(),
-  billingPlanId: z.string(),
-  billingPlanName: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SixtySeven$ {
-  /** @deprecated use `SixtySeven$inboundSchema` instead. */
-  export const inboundSchema = SixtySeven$inboundSchema;
-  /** @deprecated use `SixtySeven$outboundSchema` instead. */
-  export const outboundSchema = SixtySeven$outboundSchema;
-  /** @deprecated use `SixtySeven$Outbound` instead. */
-  export type Outbound = SixtySeven$Outbound;
-}
-
-export function sixtySevenToJSON(sixtySeven: SixtySeven): string {
-  return JSON.stringify(SixtySeven$outboundSchema.parse(sixtySeven));
-}
-
-export function sixtySevenFromJSON(
-  jsonString: string,
-): SafeParseResult<SixtySeven, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SixtySeven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtySeven' from JSON`,
   );
 }
 
@@ -17844,8 +17860,8 @@ export function configurationsFromJSON(
 }
 
 /** @internal */
-export const SixtySix$inboundSchema: z.ZodType<
-  SixtySix,
+export const SixtySeven$inboundSchema: z.ZodType<
+  SixtySeven,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -17854,16 +17870,16 @@ export const SixtySix$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SixtySix$Outbound = {
+export type SixtySeven$Outbound = {
   configurations: Array<Configurations$Outbound>;
   ownerId: string;
 };
 
 /** @internal */
-export const SixtySix$outboundSchema: z.ZodType<
-  SixtySix$Outbound,
+export const SixtySeven$outboundSchema: z.ZodType<
+  SixtySeven$Outbound,
   z.ZodTypeDef,
-  SixtySix
+  SixtySeven
 > = z.object({
   configurations: z.array(z.lazy(() => Configurations$outboundSchema)),
   ownerId: z.string(),
@@ -17873,48 +17889,48 @@ export const SixtySix$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SixtySix$ {
-  /** @deprecated use `SixtySix$inboundSchema` instead. */
-  export const inboundSchema = SixtySix$inboundSchema;
-  /** @deprecated use `SixtySix$outboundSchema` instead. */
-  export const outboundSchema = SixtySix$outboundSchema;
-  /** @deprecated use `SixtySix$Outbound` instead. */
-  export type Outbound = SixtySix$Outbound;
+export namespace SixtySeven$ {
+  /** @deprecated use `SixtySeven$inboundSchema` instead. */
+  export const inboundSchema = SixtySeven$inboundSchema;
+  /** @deprecated use `SixtySeven$outboundSchema` instead. */
+  export const outboundSchema = SixtySeven$outboundSchema;
+  /** @deprecated use `SixtySeven$Outbound` instead. */
+  export type Outbound = SixtySeven$Outbound;
 }
 
-export function sixtySixToJSON(sixtySix: SixtySix): string {
-  return JSON.stringify(SixtySix$outboundSchema.parse(sixtySix));
+export function sixtySevenToJSON(sixtySeven: SixtySeven): string {
+  return JSON.stringify(SixtySeven$outboundSchema.parse(sixtySeven));
 }
 
-export function sixtySixFromJSON(
+export function sixtySevenFromJSON(
   jsonString: string,
-): SafeParseResult<SixtySix, SDKValidationError> {
+): SafeParseResult<SixtySeven, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SixtySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtySix' from JSON`,
+    (x) => SixtySeven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtySeven' from JSON`,
   );
 }
 
 /** @internal */
-export const UserEventPayload65Action$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Action
-> = z.nativeEnum(UserEventPayload65Action);
+export const UserEventPayload66Action$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Action
+> = z.nativeEnum(UserEventPayload66Action);
 
 /** @internal */
-export const UserEventPayload65Action$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Action
-> = UserEventPayload65Action$inboundSchema;
+export const UserEventPayload66Action$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Action
+> = UserEventPayload66Action$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65Action$ {
-  /** @deprecated use `UserEventPayload65Action$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload65Action$inboundSchema;
-  /** @deprecated use `UserEventPayload65Action$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload65Action$outboundSchema;
+export namespace UserEventPayload66Action$ {
+  /** @deprecated use `UserEventPayload66Action$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload66Action$inboundSchema;
+  /** @deprecated use `UserEventPayload66Action$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload66Action$outboundSchema;
 }
 
 /** @internal */
@@ -17923,7 +17939,7 @@ export const BlockHistory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UserEventPayload65Action$inboundSchema,
+  action: UserEventPayload66Action$inboundSchema,
   createdAt: z.number(),
   caseId: z.string().optional(),
   reason: z.string(),
@@ -17949,7 +17965,7 @@ export const BlockHistory$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BlockHistory
 > = z.object({
-  action: UserEventPayload65Action$outboundSchema,
+  action: UserEventPayload66Action$outboundSchema,
   createdAt: z.number(),
   caseId: z.string().optional(),
   reason: z.string(),
@@ -19009,24 +19025,24 @@ export function payloadBuildEntitlementsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65Configuration$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Configuration
-> = z.nativeEnum(UserEventPayload65Configuration);
+export const UserEventPayload66Configuration$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Configuration
+> = z.nativeEnum(UserEventPayload66Configuration);
 
 /** @internal */
-export const UserEventPayload65Configuration$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Configuration
-> = UserEventPayload65Configuration$inboundSchema;
+export const UserEventPayload66Configuration$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Configuration
+> = UserEventPayload66Configuration$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65Configuration$ {
-  /** @deprecated use `UserEventPayload65Configuration$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload65Configuration$inboundSchema;
-  /** @deprecated use `UserEventPayload65Configuration$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload65Configuration$outboundSchema;
+export namespace UserEventPayload66Configuration$ {
+  /** @deprecated use `UserEventPayload66Configuration$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload66Configuration$inboundSchema;
+  /** @deprecated use `UserEventPayload66Configuration$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload66Configuration$outboundSchema;
 }
 
 /** @internal */
@@ -19035,7 +19051,7 @@ export const PayloadBuildQueue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuration: UserEventPayload65Configuration$inboundSchema.optional(),
+  configuration: UserEventPayload66Configuration$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -19049,7 +19065,7 @@ export const PayloadBuildQueue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PayloadBuildQueue
 > = z.object({
-  configuration: UserEventPayload65Configuration$outboundSchema.optional(),
+  configuration: UserEventPayload66Configuration$outboundSchema.optional(),
 });
 
 /**
@@ -19812,24 +19828,24 @@ export function siftScoresFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65Name$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Name
-> = z.nativeEnum(UserEventPayload65Name);
+export const UserEventPayload66Name$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Name
+> = z.nativeEnum(UserEventPayload66Name);
 
 /** @internal */
-export const UserEventPayload65Name$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Name
-> = UserEventPayload65Name$inboundSchema;
+export const UserEventPayload66Name$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Name
+> = UserEventPayload66Name$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65Name$ {
-  /** @deprecated use `UserEventPayload65Name$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload65Name$inboundSchema;
-  /** @deprecated use `UserEventPayload65Name$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload65Name$outboundSchema;
+export namespace UserEventPayload66Name$ {
+  /** @deprecated use `UserEventPayload66Name$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload66Name$inboundSchema;
+  /** @deprecated use `UserEventPayload66Name$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload66Name$outboundSchema;
 }
 
 /** @internal */
@@ -19838,7 +19854,7 @@ export const SiftRoute$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: UserEventPayload65Name$inboundSchema,
+  name: UserEventPayload66Name$inboundSchema,
 });
 
 /** @internal */
@@ -19852,7 +19868,7 @@ export const SiftRoute$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SiftRoute
 > = z.object({
-  name: UserEventPayload65Name$outboundSchema,
+  name: UserEventPayload66Name$outboundSchema,
 });
 
 /**
@@ -19987,24 +20003,24 @@ export function payloadSoftBlockFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65Role$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Role
-> = z.nativeEnum(UserEventPayload65Role);
+export const UserEventPayload66Role$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Role
+> = z.nativeEnum(UserEventPayload66Role);
 
 /** @internal */
-export const UserEventPayload65Role$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Role
-> = UserEventPayload65Role$inboundSchema;
+export const UserEventPayload66Role$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Role
+> = UserEventPayload66Role$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65Role$ {
-  /** @deprecated use `UserEventPayload65Role$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload65Role$inboundSchema;
-  /** @deprecated use `UserEventPayload65Role$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload65Role$outboundSchema;
+export namespace UserEventPayload66Role$ {
+  /** @deprecated use `UserEventPayload66Role$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload66Role$inboundSchema;
+  /** @deprecated use `UserEventPayload66Role$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload66Role$outboundSchema;
 }
 
 /** @internal */
@@ -20208,12 +20224,12 @@ export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
     created: z.number(),
     createdAt: z.number(),
     teamId: z.string(),
-    role: UserEventPayload65Role$inboundSchema,
+    role: UserEventPayload66Role$inboundSchema,
+    teamRoles: z.array(PayloadTeamRoles$inboundSchema).optional(),
+    teamPermissions: z.array(PayloadTeamPermissions$inboundSchema).optional(),
     confirmed: z.boolean(),
     confirmedAt: z.number(),
     accessRequestedAt: z.number().optional(),
-    teamRoles: z.array(PayloadTeamRoles$inboundSchema).optional(),
-    teamPermissions: z.array(PayloadTeamPermissions$inboundSchema).optional(),
     joinedFrom: z.lazy(() => UserEventPayloadJoinedFrom$inboundSchema)
       .optional(),
   });
@@ -20224,11 +20240,11 @@ export type Teams$Outbound = {
   createdAt: number;
   teamId: string;
   role: string;
+  teamRoles?: Array<string> | undefined;
+  teamPermissions?: Array<string> | undefined;
   confirmed: boolean;
   confirmedAt: number;
   accessRequestedAt?: number | undefined;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
   joinedFrom?: UserEventPayloadJoinedFrom$Outbound | undefined;
 };
 
@@ -20241,12 +20257,12 @@ export const Teams$outboundSchema: z.ZodType<
   created: z.number(),
   createdAt: z.number(),
   teamId: z.string(),
-  role: UserEventPayload65Role$outboundSchema,
+  role: UserEventPayload66Role$outboundSchema,
+  teamRoles: z.array(PayloadTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(PayloadTeamPermissions$outboundSchema).optional(),
   confirmed: z.boolean(),
   confirmedAt: z.number(),
   accessRequestedAt: z.number().optional(),
-  teamRoles: z.array(PayloadTeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(PayloadTeamPermissions$outboundSchema).optional(),
   joinedFrom: z.lazy(() => UserEventPayloadJoinedFrom$outboundSchema)
     .optional(),
 });
@@ -20279,24 +20295,24 @@ export function teamsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65Type$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Type
-> = z.nativeEnum(UserEventPayload65Type);
+export const UserEventPayload66Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Type
+> = z.nativeEnum(UserEventPayload66Type);
 
 /** @internal */
-export const UserEventPayload65Type$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65Type
-> = UserEventPayload65Type$inboundSchema;
+export const UserEventPayload66Type$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Type
+> = UserEventPayload66Type$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65Type$ {
-  /** @deprecated use `UserEventPayload65Type$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload65Type$inboundSchema;
-  /** @deprecated use `UserEventPayload65Type$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload65Type$outboundSchema;
+export namespace UserEventPayload66Type$ {
+  /** @deprecated use `UserEventPayload66Type$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload66Type$inboundSchema;
+  /** @deprecated use `UserEventPayload66Type$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload66Type$outboundSchema;
 }
 
 /** @internal */
@@ -23288,24 +23304,24 @@ export function observabilityPlusFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65BlockReason$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65BlockReason
-> = z.nativeEnum(UserEventPayload65BlockReason);
+export const UserEventPayload66BlockReason$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66BlockReason
+> = z.nativeEnum(UserEventPayload66BlockReason);
 
 /** @internal */
-export const UserEventPayload65BlockReason$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload65BlockReason
-> = UserEventPayload65BlockReason$inboundSchema;
+export const UserEventPayload66BlockReason$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66BlockReason
+> = UserEventPayload66BlockReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65BlockReason$ {
-  /** @deprecated use `UserEventPayload65BlockReason$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload65BlockReason$inboundSchema;
-  /** @deprecated use `UserEventPayload65BlockReason$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload65BlockReason$outboundSchema;
+export namespace UserEventPayload66BlockReason$ {
+  /** @deprecated use `UserEventPayload66BlockReason$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload66BlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload66BlockReason$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload66BlockReason$outboundSchema;
 }
 
 /** @internal */
@@ -23317,7 +23333,7 @@ export const UserEventPayloadDataCache$inboundSchema: z.ZodType<
   updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: UserEventPayload65BlockReason$inboundSchema,
+  blockReason: UserEventPayload66BlockReason$inboundSchema,
 });
 
 /** @internal */
@@ -23337,7 +23353,7 @@ export const UserEventPayloadDataCache$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: UserEventPayload65BlockReason$outboundSchema,
+  blockReason: UserEventPayload66BlockReason$outboundSchema,
 });
 
 /**
@@ -23372,27 +23388,27 @@ export function userEventPayloadDataCacheFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65NewOwnerBlockReason$inboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload65NewOwnerBlockReason> = z.nativeEnum(
-    UserEventPayload65NewOwnerBlockReason,
+export const UserEventPayload66NewOwnerBlockReason$inboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload66NewOwnerBlockReason> = z.nativeEnum(
+    UserEventPayload66NewOwnerBlockReason,
   );
 
 /** @internal */
-export const UserEventPayload65NewOwnerBlockReason$outboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload65NewOwnerBlockReason> =
-    UserEventPayload65NewOwnerBlockReason$inboundSchema;
+export const UserEventPayload66NewOwnerBlockReason$outboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload66NewOwnerBlockReason> =
+    UserEventPayload66NewOwnerBlockReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65NewOwnerBlockReason$ {
-  /** @deprecated use `UserEventPayload65NewOwnerBlockReason$inboundSchema` instead. */
+export namespace UserEventPayload66NewOwnerBlockReason$ {
+  /** @deprecated use `UserEventPayload66NewOwnerBlockReason$inboundSchema` instead. */
   export const inboundSchema =
-    UserEventPayload65NewOwnerBlockReason$inboundSchema;
-  /** @deprecated use `UserEventPayload65NewOwnerBlockReason$outboundSchema` instead. */
+    UserEventPayload66NewOwnerBlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload66NewOwnerBlockReason$outboundSchema` instead. */
   export const outboundSchema =
-    UserEventPayload65NewOwnerBlockReason$outboundSchema;
+    UserEventPayload66NewOwnerBlockReason$outboundSchema;
 }
 
 /** @internal */
@@ -23404,7 +23420,7 @@ export const PayloadImageOptimizationTransformation$inboundSchema: z.ZodType<
   updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: UserEventPayload65NewOwnerBlockReason$inboundSchema,
+  blockReason: UserEventPayload66NewOwnerBlockReason$inboundSchema,
 });
 
 /** @internal */
@@ -23424,7 +23440,7 @@ export const PayloadImageOptimizationTransformation$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: UserEventPayload65NewOwnerBlockReason$outboundSchema,
+  blockReason: UserEventPayload66NewOwnerBlockReason$outboundSchema,
 });
 
 /**
@@ -23465,26 +23481,26 @@ export function payloadImageOptimizationTransformationFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksBlockReason$inboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload65NewOwnerFeatureBlocksBlockReason> = z
-    .nativeEnum(UserEventPayload65NewOwnerFeatureBlocksBlockReason);
+export const UserEventPayload66NewOwnerFeatureBlocksBlockReason$inboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload66NewOwnerFeatureBlocksBlockReason> = z
+    .nativeEnum(UserEventPayload66NewOwnerFeatureBlocksBlockReason);
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksBlockReason$outboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload65NewOwnerFeatureBlocksBlockReason> =
-    UserEventPayload65NewOwnerFeatureBlocksBlockReason$inboundSchema;
+export const UserEventPayload66NewOwnerFeatureBlocksBlockReason$outboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload66NewOwnerFeatureBlocksBlockReason> =
+    UserEventPayload66NewOwnerFeatureBlocksBlockReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65NewOwnerFeatureBlocksBlockReason$ {
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksBlockReason$inboundSchema` instead. */
+export namespace UserEventPayload66NewOwnerFeatureBlocksBlockReason$ {
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksBlockReason$inboundSchema` instead. */
   export const inboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksBlockReason$inboundSchema;
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksBlockReason$outboundSchema` instead. */
+    UserEventPayload66NewOwnerFeatureBlocksBlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksBlockReason$outboundSchema` instead. */
   export const outboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksBlockReason$outboundSchema;
+    UserEventPayload66NewOwnerFeatureBlocksBlockReason$outboundSchema;
 }
 
 /** @internal */
@@ -23496,7 +23512,7 @@ export const PayloadSourceImages$inboundSchema: z.ZodType<
   updatedAt: z.number(),
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
-  blockReason: UserEventPayload65NewOwnerFeatureBlocksBlockReason$inboundSchema,
+  blockReason: UserEventPayload66NewOwnerFeatureBlocksBlockReason$inboundSchema,
 });
 
 /** @internal */
@@ -23517,7 +23533,7 @@ export const PayloadSourceImages$outboundSchema: z.ZodType<
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksBlockReason$outboundSchema,
+    UserEventPayload66NewOwnerFeatureBlocksBlockReason$outboundSchema,
 });
 
 /**
@@ -23552,28 +23568,28 @@ export function payloadSourceImagesFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$inboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$inboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason
-  > = z.nativeEnum(UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason);
+    typeof UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason
+  > = z.nativeEnum(UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason);
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$outboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$outboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason
-  > = UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$inboundSchema;
+    typeof UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason
+  > = UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$ {
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$inboundSchema` instead. */
+export namespace UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$ {
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$inboundSchema` instead. */
   export const inboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$inboundSchema;
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$outboundSchema` instead. */
+    UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$outboundSchema` instead. */
   export const outboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$outboundSchema;
+    UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$outboundSchema;
 }
 
 /** @internal */
@@ -23604,7 +23620,7 @@ export const BlobT$inboundSchema: z.ZodType<BlobT, z.ZodTypeDef, unknown> = z
     blockedFrom: z.number().optional(),
     blockedUntil: z.number().optional(),
     blockReason:
-      UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$inboundSchema,
+      UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$inboundSchema,
     overageReason: OverageReason$inboundSchema,
   });
 
@@ -23627,7 +23643,7 @@ export const BlobT$outboundSchema: z.ZodType<
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksBlobBlockReason$outboundSchema,
+    UserEventPayload66NewOwnerFeatureBlocksBlobBlockReason$outboundSchema,
   overageReason: OverageReason$outboundSchema,
 });
 
@@ -23659,28 +23675,28 @@ export function blobFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason
-  > = z.nativeEnum(UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason);
+    typeof UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason
+  > = z.nativeEnum(UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason);
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason
-  > = UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema;
+    typeof UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason
+  > = UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$ {
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema` instead. */
+export namespace UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$ {
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema` instead. */
   export const inboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema;
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema` instead. */
+    UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema` instead. */
   export const outboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema;
+    UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema;
 }
 
 /** @internal */
@@ -23714,7 +23730,7 @@ export const Postgres$inboundSchema: z.ZodType<
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema,
+    UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$inboundSchema,
   overageReason: PayloadOverageReason$inboundSchema,
 });
 
@@ -23737,7 +23753,7 @@ export const Postgres$outboundSchema: z.ZodType<
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema,
+    UserEventPayload66NewOwnerFeatureBlocksPostgresBlockReason$outboundSchema,
   overageReason: PayloadOverageReason$outboundSchema,
 });
 
@@ -23769,28 +23785,28 @@ export function postgresFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$inboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$inboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason
-  > = z.nativeEnum(UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason);
+    typeof UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason
+  > = z.nativeEnum(UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason);
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$outboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$outboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason
-  > = UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$inboundSchema;
+    typeof UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason
+  > = UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$ {
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$inboundSchema` instead. */
+export namespace UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$ {
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$inboundSchema` instead. */
   export const inboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$inboundSchema;
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$outboundSchema` instead. */
+    UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$outboundSchema` instead. */
   export const outboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$outboundSchema;
+    UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$outboundSchema;
 }
 
 /** @internal */
@@ -23821,7 +23837,7 @@ export const Redis$inboundSchema: z.ZodType<Redis, z.ZodTypeDef, unknown> = z
     blockedFrom: z.number().optional(),
     blockedUntil: z.number().optional(),
     blockReason:
-      UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$inboundSchema,
+      UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$inboundSchema,
     overageReason: UserEventPayloadOverageReason$inboundSchema,
   });
 
@@ -23844,7 +23860,7 @@ export const Redis$outboundSchema: z.ZodType<
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksRedisBlockReason$outboundSchema,
+    UserEventPayload66NewOwnerFeatureBlocksRedisBlockReason$outboundSchema,
   overageReason: UserEventPayloadOverageReason$outboundSchema,
 });
 
@@ -23876,31 +23892,31 @@ export function redisFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
+    typeof UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
   > = z.nativeEnum(
-    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason,
+    UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason,
   );
 
 /** @internal */
-export const UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema:
+export const UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema:
   z.ZodNativeEnum<
-    typeof UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
+    typeof UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason
   > =
-    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema;
+    UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$ {
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema` instead. */
+export namespace UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$ {
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema` instead. */
   export const inboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema;
-  /** @deprecated use `UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema` instead. */
+    UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema;
+  /** @deprecated use `UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema` instead. */
   export const outboundSchema =
-    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema;
+    UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema;
 }
 
 /** @internal */
@@ -23913,7 +23929,7 @@ export const MicrofrontendsRequest$inboundSchema: z.ZodType<
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema,
+    UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$inboundSchema,
 });
 
 /** @internal */
@@ -23934,7 +23950,7 @@ export const MicrofrontendsRequest$outboundSchema: z.ZodType<
   blockedFrom: z.number().optional(),
   blockedUntil: z.number().optional(),
   blockReason:
-    UserEventPayload65NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema,
+    UserEventPayload66NewOwnerFeatureBlocksMicrofrontendsRequestBlockReason$outboundSchema,
 });
 
 /**
@@ -24342,7 +24358,7 @@ export const NewOwner$inboundSchema: z.ZodType<
   trialTeamIds: z.array(z.string()).optional(),
   maxTrials: z.number().optional(),
   trialTeamId: z.string().optional(),
-  type: UserEventPayload65Type$inboundSchema,
+  type: UserEventPayload66Type$inboundSchema,
   usageAlerts: z.nullable(z.lazy(() => UsageAlerts$inboundSchema)).optional(),
   overageUsageAlerts: z.lazy(() => OverageUsageAlerts$inboundSchema).optional(),
   overageMetadata: z.lazy(() => OverageMetadata$inboundSchema).optional(),
@@ -24526,7 +24542,7 @@ export const NewOwner$outboundSchema: z.ZodType<
   trialTeamIds: z.array(z.string()).optional(),
   maxTrials: z.number().optional(),
   trialTeamId: z.string().optional(),
-  type: UserEventPayload65Type$outboundSchema,
+  type: UserEventPayload66Type$outboundSchema,
   usageAlerts: z.nullable(z.lazy(() => UsageAlerts$outboundSchema)).optional(),
   overageUsageAlerts: z.lazy(() => OverageUsageAlerts$outboundSchema)
     .optional(),
@@ -24571,8 +24587,8 @@ export function newOwnerFromJSON(
 }
 
 /** @internal */
-export const SixtyFive$inboundSchema: z.ZodType<
-  SixtyFive,
+export const SixtySix$inboundSchema: z.ZodType<
+  SixtySix,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -24585,7 +24601,7 @@ export const SixtyFive$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SixtyFive$Outbound = {
+export type SixtySix$Outbound = {
   userId: string;
   integrationId: string;
   configurationId: string;
@@ -24595,10 +24611,10 @@ export type SixtyFive$Outbound = {
 };
 
 /** @internal */
-export const SixtyFive$outboundSchema: z.ZodType<
-  SixtyFive$Outbound,
+export const SixtySix$outboundSchema: z.ZodType<
+  SixtySix$Outbound,
   z.ZodTypeDef,
-  SixtyFive
+  SixtySix
 > = z.object({
   userId: z.string(),
   integrationId: z.string(),
@@ -24606,6 +24622,62 @@ export const SixtyFive$outboundSchema: z.ZodType<
   integrationSlug: z.string(),
   integrationName: z.string().optional(),
   newOwner: z.nullable(z.lazy(() => NewOwner$outboundSchema)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SixtySix$ {
+  /** @deprecated use `SixtySix$inboundSchema` instead. */
+  export const inboundSchema = SixtySix$inboundSchema;
+  /** @deprecated use `SixtySix$outboundSchema` instead. */
+  export const outboundSchema = SixtySix$outboundSchema;
+  /** @deprecated use `SixtySix$Outbound` instead. */
+  export type Outbound = SixtySix$Outbound;
+}
+
+export function sixtySixToJSON(sixtySix: SixtySix): string {
+  return JSON.stringify(SixtySix$outboundSchema.parse(sixtySix));
+}
+
+export function sixtySixFromJSON(
+  jsonString: string,
+): SafeParseResult<SixtySix, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SixtySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtySix' from JSON`,
+  );
+}
+
+/** @internal */
+export const SixtyFive$inboundSchema: z.ZodType<
+  SixtyFive,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  integrationId: z.string(),
+  integrationSlug: z.string(),
+  integrationName: z.string(),
+});
+
+/** @internal */
+export type SixtyFive$Outbound = {
+  integrationId: string;
+  integrationSlug: string;
+  integrationName: string;
+};
+
+/** @internal */
+export const SixtyFive$outboundSchema: z.ZodType<
+  SixtyFive$Outbound,
+  z.ZodTypeDef,
+  SixtyFive
+> = z.object({
+  integrationId: z.string(),
+  integrationSlug: z.string(),
+  integrationName: z.string(),
 });
 
 /**
@@ -24641,16 +24713,20 @@ export const SixtyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  integrationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
+  projectId: z.string(),
+  prevAttackModeEnabled: z.boolean().optional(),
+  prevAttackModeActiveUntil: z.nullable(z.number()).optional(),
+  attackModeEnabled: z.boolean(),
+  attackModeActiveUntil: z.nullable(z.number()).optional(),
 });
 
 /** @internal */
 export type SixtyFour$Outbound = {
-  integrationId: string;
-  integrationSlug: string;
-  integrationName: string;
+  projectId: string;
+  prevAttackModeEnabled?: boolean | undefined;
+  prevAttackModeActiveUntil?: number | null | undefined;
+  attackModeEnabled: boolean;
+  attackModeActiveUntil?: number | null | undefined;
 };
 
 /** @internal */
@@ -24659,9 +24735,11 @@ export const SixtyFour$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SixtyFour
 > = z.object({
-  integrationId: z.string(),
-  integrationSlug: z.string(),
-  integrationName: z.string(),
+  projectId: z.string(),
+  prevAttackModeEnabled: z.boolean().optional(),
+  prevAttackModeActiveUntil: z.nullable(z.number()).optional(),
+  attackModeEnabled: z.boolean(),
+  attackModeActiveUntil: z.nullable(z.number()).optional(),
 });
 
 /**
@@ -24692,86 +24770,24 @@ export function sixtyFourFromJSON(
 }
 
 /** @internal */
-export const SixtyThree$inboundSchema: z.ZodType<
-  SixtyThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: z.string(),
-  prevAttackModeEnabled: z.boolean().optional(),
-  prevAttackModeActiveUntil: z.nullable(z.number()).optional(),
-  attackModeEnabled: z.boolean(),
-  attackModeActiveUntil: z.nullable(z.number()).optional(),
-});
+export const UserEventPayload63Action$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload63Action
+> = z.nativeEnum(UserEventPayload63Action);
 
 /** @internal */
-export type SixtyThree$Outbound = {
-  projectId: string;
-  prevAttackModeEnabled?: boolean | undefined;
-  prevAttackModeActiveUntil?: number | null | undefined;
-  attackModeEnabled: boolean;
-  attackModeActiveUntil?: number | null | undefined;
-};
-
-/** @internal */
-export const SixtyThree$outboundSchema: z.ZodType<
-  SixtyThree$Outbound,
-  z.ZodTypeDef,
-  SixtyThree
-> = z.object({
-  projectId: z.string(),
-  prevAttackModeEnabled: z.boolean().optional(),
-  prevAttackModeActiveUntil: z.nullable(z.number()).optional(),
-  attackModeEnabled: z.boolean(),
-  attackModeActiveUntil: z.nullable(z.number()).optional(),
-});
+export const UserEventPayload63Action$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload63Action
+> = UserEventPayload63Action$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SixtyThree$ {
-  /** @deprecated use `SixtyThree$inboundSchema` instead. */
-  export const inboundSchema = SixtyThree$inboundSchema;
-  /** @deprecated use `SixtyThree$outboundSchema` instead. */
-  export const outboundSchema = SixtyThree$outboundSchema;
-  /** @deprecated use `SixtyThree$Outbound` instead. */
-  export type Outbound = SixtyThree$Outbound;
-}
-
-export function sixtyThreeToJSON(sixtyThree: SixtyThree): string {
-  return JSON.stringify(SixtyThree$outboundSchema.parse(sixtyThree));
-}
-
-export function sixtyThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<SixtyThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SixtyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtyThree' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload62Action$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload62Action
-> = z.nativeEnum(UserEventPayload62Action);
-
-/** @internal */
-export const UserEventPayload62Action$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload62Action
-> = UserEventPayload62Action$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload62Action$ {
-  /** @deprecated use `UserEventPayload62Action$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload62Action$inboundSchema;
-  /** @deprecated use `UserEventPayload62Action$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload62Action$outboundSchema;
+export namespace UserEventPayload63Action$ {
+  /** @deprecated use `UserEventPayload63Action$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload63Action$inboundSchema;
+  /** @deprecated use `UserEventPayload63Action$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload63Action$outboundSchema;
 }
 
 /** @internal */
@@ -24781,7 +24797,7 @@ export const RuleGroups$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action: UserEventPayload62Action$inboundSchema.optional(),
+  action: UserEventPayload63Action$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -24797,7 +24813,7 @@ export const RuleGroups$outboundSchema: z.ZodType<
   RuleGroups
 > = z.object({
   active: z.boolean(),
-  action: UserEventPayload62Action$outboundSchema.optional(),
+  action: UserEventPayload63Action$outboundSchema.optional(),
 });
 
 /**
@@ -24828,8 +24844,8 @@ export function ruleGroupsFromJSON(
 }
 
 /** @internal */
-export const SixtyTwo$inboundSchema: z.ZodType<
-  SixtyTwo,
+export const SixtyThree$inboundSchema: z.ZodType<
+  SixtyThree,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -24839,10 +24855,89 @@ export const SixtyTwo$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SixtyTwo$Outbound = {
+export type SixtyThree$Outbound = {
   projectId: string;
   rulesetName: string;
   ruleGroups: { [k: string]: RuleGroups$Outbound };
+};
+
+/** @internal */
+export const SixtyThree$outboundSchema: z.ZodType<
+  SixtyThree$Outbound,
+  z.ZodTypeDef,
+  SixtyThree
+> = z.object({
+  projectId: z.string(),
+  rulesetName: z.string(),
+  ruleGroups: z.record(z.lazy(() => RuleGroups$outboundSchema)),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SixtyThree$ {
+  /** @deprecated use `SixtyThree$inboundSchema` instead. */
+  export const inboundSchema = SixtyThree$inboundSchema;
+  /** @deprecated use `SixtyThree$outboundSchema` instead. */
+  export const outboundSchema = SixtyThree$outboundSchema;
+  /** @deprecated use `SixtyThree$Outbound` instead. */
+  export type Outbound = SixtyThree$Outbound;
+}
+
+export function sixtyThreeToJSON(sixtyThree: SixtyThree): string {
+  return JSON.stringify(SixtyThree$outboundSchema.parse(sixtyThree));
+}
+
+export function sixtyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<SixtyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SixtyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtyThree' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayloadAction$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadAction
+> = z.nativeEnum(UserEventPayloadAction);
+
+/** @internal */
+export const UserEventPayloadAction$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadAction
+> = UserEventPayloadAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayloadAction$ {
+  /** @deprecated use `UserEventPayloadAction$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayloadAction$inboundSchema;
+  /** @deprecated use `UserEventPayloadAction$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayloadAction$outboundSchema;
+}
+
+/** @internal */
+export const SixtyTwo$inboundSchema: z.ZodType<
+  SixtyTwo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: z.string(),
+  rulesetName: z.string(),
+  active: z.boolean(),
+  action: UserEventPayloadAction$inboundSchema.optional(),
+});
+
+/** @internal */
+export type SixtyTwo$Outbound = {
+  projectId: string;
+  rulesetName: string;
+  active: boolean;
+  action?: string | undefined;
 };
 
 /** @internal */
@@ -24853,7 +24948,8 @@ export const SixtyTwo$outboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string(),
   rulesetName: z.string(),
-  ruleGroups: z.record(z.lazy(() => RuleGroups$outboundSchema)),
+  active: z.boolean(),
+  action: UserEventPayloadAction$outboundSchema.optional(),
 });
 
 /**
@@ -24884,44 +24980,21 @@ export function sixtyTwoFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadAction$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadAction
-> = z.nativeEnum(UserEventPayloadAction);
-
-/** @internal */
-export const UserEventPayloadAction$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadAction
-> = UserEventPayloadAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayloadAction$ {
-  /** @deprecated use `UserEventPayloadAction$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayloadAction$inboundSchema;
-  /** @deprecated use `UserEventPayloadAction$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayloadAction$outboundSchema;
-}
-
-/** @internal */
 export const SixtyOne$inboundSchema: z.ZodType<
   SixtyOne,
   z.ZodTypeDef,
   unknown
 > = z.object({
   projectId: z.string(),
-  rulesetName: z.string(),
-  active: z.boolean(),
-  action: UserEventPayloadAction$inboundSchema.optional(),
+  scope: z.string(),
+  source: z.string(),
 });
 
 /** @internal */
 export type SixtyOne$Outbound = {
   projectId: string;
-  rulesetName: string;
-  active: boolean;
-  action?: string | undefined;
+  scope: string;
+  source: string;
 };
 
 /** @internal */
@@ -24931,9 +25004,8 @@ export const SixtyOne$outboundSchema: z.ZodType<
   SixtyOne
 > = z.object({
   projectId: z.string(),
-  rulesetName: z.string(),
-  active: z.boolean(),
-  action: UserEventPayloadAction$outboundSchema.optional(),
+  scope: z.string(),
+  source: z.string(),
 });
 
 /**
@@ -24960,59 +25032,6 @@ export function sixtyOneFromJSON(
     jsonString,
     (x) => SixtyOne$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SixtyOne' from JSON`,
-  );
-}
-
-/** @internal */
-export const Sixty$inboundSchema: z.ZodType<Sixty, z.ZodTypeDef, unknown> = z
-  .object({
-    projectId: z.string(),
-    scope: z.string(),
-    source: z.string(),
-  });
-
-/** @internal */
-export type Sixty$Outbound = {
-  projectId: string;
-  scope: string;
-  source: string;
-};
-
-/** @internal */
-export const Sixty$outboundSchema: z.ZodType<
-  Sixty$Outbound,
-  z.ZodTypeDef,
-  Sixty
-> = z.object({
-  projectId: z.string(),
-  scope: z.string(),
-  source: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Sixty$ {
-  /** @deprecated use `Sixty$inboundSchema` instead. */
-  export const inboundSchema = Sixty$inboundSchema;
-  /** @deprecated use `Sixty$outboundSchema` instead. */
-  export const outboundSchema = Sixty$outboundSchema;
-  /** @deprecated use `Sixty$Outbound` instead. */
-  export type Outbound = Sixty$Outbound;
-}
-
-export function sixtyToJSON(sixty: Sixty): string {
-  return JSON.stringify(Sixty$outboundSchema.parse(sixty));
-}
-
-export function sixtyFromJSON(
-  jsonString: string,
-): SafeParseResult<Sixty, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Sixty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sixty' from JSON`,
   );
 }
 
@@ -25061,20 +25080,17 @@ export function configChangesFromJSON(
 }
 
 /** @internal */
-export const FiftyNine$inboundSchema: z.ZodType<
-  FiftyNine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: z.string(),
-  restore: z.boolean(),
-  configVersion: z.number(),
-  configChangeCount: z.number(),
-  configChanges: z.array(z.lazy(() => ConfigChanges$inboundSchema)),
-});
+export const Sixty$inboundSchema: z.ZodType<Sixty, z.ZodTypeDef, unknown> = z
+  .object({
+    projectId: z.string(),
+    restore: z.boolean(),
+    configVersion: z.number(),
+    configChangeCount: z.number(),
+    configChanges: z.array(z.lazy(() => ConfigChanges$inboundSchema)),
+  });
 
 /** @internal */
-export type FiftyNine$Outbound = {
+export type Sixty$Outbound = {
   projectId: string;
   restore: boolean;
   configVersion: number;
@@ -25083,10 +25099,10 @@ export type FiftyNine$Outbound = {
 };
 
 /** @internal */
-export const FiftyNine$outboundSchema: z.ZodType<
-  FiftyNine$Outbound,
+export const Sixty$outboundSchema: z.ZodType<
+  Sixty$Outbound,
   z.ZodTypeDef,
-  FiftyNine
+  Sixty
 > = z.object({
   projectId: z.string(),
   restore: z.boolean(),
@@ -25099,48 +25115,48 @@ export const FiftyNine$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FiftyNine$ {
-  /** @deprecated use `FiftyNine$inboundSchema` instead. */
-  export const inboundSchema = FiftyNine$inboundSchema;
-  /** @deprecated use `FiftyNine$outboundSchema` instead. */
-  export const outboundSchema = FiftyNine$outboundSchema;
-  /** @deprecated use `FiftyNine$Outbound` instead. */
-  export type Outbound = FiftyNine$Outbound;
+export namespace Sixty$ {
+  /** @deprecated use `Sixty$inboundSchema` instead. */
+  export const inboundSchema = Sixty$inboundSchema;
+  /** @deprecated use `Sixty$outboundSchema` instead. */
+  export const outboundSchema = Sixty$outboundSchema;
+  /** @deprecated use `Sixty$Outbound` instead. */
+  export type Outbound = Sixty$Outbound;
 }
 
-export function fiftyNineToJSON(fiftyNine: FiftyNine): string {
-  return JSON.stringify(FiftyNine$outboundSchema.parse(fiftyNine));
+export function sixtyToJSON(sixty: Sixty): string {
+  return JSON.stringify(Sixty$outboundSchema.parse(sixty));
 }
 
-export function fiftyNineFromJSON(
+export function sixtyFromJSON(
   jsonString: string,
-): SafeParseResult<FiftyNine, SDKValidationError> {
+): SafeParseResult<Sixty, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FiftyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FiftyNine' from JSON`,
+    (x) => Sixty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sixty' from JSON`,
   );
 }
 
 /** @internal */
-export const UserEventPayload58OldEnvVarType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload58OldEnvVarType
-> = z.nativeEnum(UserEventPayload58OldEnvVarType);
+export const UserEventPayload59OldEnvVarType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload59OldEnvVarType
+> = z.nativeEnum(UserEventPayload59OldEnvVarType);
 
 /** @internal */
-export const UserEventPayload58OldEnvVarType$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload58OldEnvVarType
-> = UserEventPayload58OldEnvVarType$inboundSchema;
+export const UserEventPayload59OldEnvVarType$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload59OldEnvVarType
+> = UserEventPayload59OldEnvVarType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload58OldEnvVarType$ {
-  /** @deprecated use `UserEventPayload58OldEnvVarType$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload58OldEnvVarType$inboundSchema;
-  /** @deprecated use `UserEventPayload58OldEnvVarType$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload58OldEnvVarType$outboundSchema;
+export namespace UserEventPayload59OldEnvVarType$ {
+  /** @deprecated use `UserEventPayload59OldEnvVarType$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload59OldEnvVarType$inboundSchema;
+  /** @deprecated use `UserEventPayload59OldEnvVarType$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload59OldEnvVarType$outboundSchema;
 }
 
 /** @internal */
@@ -25183,7 +25199,7 @@ export const OldEnvVar$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   value: z.string().optional(),
   projectId: z.array(z.string()).optional(),
-  type: UserEventPayload58OldEnvVarType$inboundSchema.optional(),
+  type: UserEventPayload59OldEnvVarType$inboundSchema.optional(),
   target: z.array(UserEventPayloadTarget$inboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
   decrypted: z.boolean().optional(),
@@ -25231,7 +25247,7 @@ export const OldEnvVar$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   value: z.string().optional(),
   projectId: z.array(z.string()).optional(),
-  type: UserEventPayload58OldEnvVarType$outboundSchema.optional(),
+  type: UserEventPayload59OldEnvVarType$outboundSchema.optional(),
   target: z.array(UserEventPayloadTarget$outboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
   decrypted: z.boolean().optional(),
@@ -25267,45 +25283,45 @@ export function oldEnvVarFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload58Type$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload58Type
-> = z.nativeEnum(UserEventPayload58Type);
+export const UserEventPayload59Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload59Type
+> = z.nativeEnum(UserEventPayload59Type);
 
 /** @internal */
-export const UserEventPayload58Type$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload58Type
-> = UserEventPayload58Type$inboundSchema;
+export const UserEventPayload59Type$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload59Type
+> = UserEventPayload59Type$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload58Type$ {
-  /** @deprecated use `UserEventPayload58Type$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload58Type$inboundSchema;
-  /** @deprecated use `UserEventPayload58Type$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload58Type$outboundSchema;
+export namespace UserEventPayload59Type$ {
+  /** @deprecated use `UserEventPayload59Type$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload59Type$inboundSchema;
+  /** @deprecated use `UserEventPayload59Type$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload59Type$outboundSchema;
 }
 
 /** @internal */
-export const UserEventPayload58Target$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload58Target
-> = z.nativeEnum(UserEventPayload58Target);
+export const UserEventPayload59Target$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload59Target
+> = z.nativeEnum(UserEventPayload59Target);
 
 /** @internal */
-export const UserEventPayload58Target$outboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload58Target
-> = UserEventPayload58Target$inboundSchema;
+export const UserEventPayload59Target$outboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload59Target
+> = UserEventPayload59Target$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload58Target$ {
-  /** @deprecated use `UserEventPayload58Target$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload58Target$inboundSchema;
-  /** @deprecated use `UserEventPayload58Target$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload58Target$outboundSchema;
+export namespace UserEventPayload59Target$ {
+  /** @deprecated use `UserEventPayload59Target$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload59Target$inboundSchema;
+  /** @deprecated use `UserEventPayload59Target$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload59Target$outboundSchema;
 }
 
 /** @internal */
@@ -25327,8 +25343,8 @@ export const NewEnvVar$inboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   value: z.string().optional(),
   projectId: z.array(z.string()).optional(),
-  type: UserEventPayload58Type$inboundSchema.optional(),
-  target: z.array(UserEventPayload58Target$inboundSchema).optional(),
+  type: UserEventPayload59Type$inboundSchema.optional(),
+  target: z.array(UserEventPayload59Target$inboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
   decrypted: z.boolean().optional(),
   comment: z.string().optional(),
@@ -25375,8 +25391,8 @@ export const NewEnvVar$outboundSchema: z.ZodType<
   updatedAt: z.number().optional(),
   value: z.string().optional(),
   projectId: z.array(z.string()).optional(),
-  type: UserEventPayload58Type$outboundSchema.optional(),
-  target: z.array(UserEventPayload58Target$outboundSchema).optional(),
+  type: UserEventPayload59Type$outboundSchema.optional(),
+  target: z.array(UserEventPayload59Target$outboundSchema).optional(),
   applyToAllCustomEnvironments: z.boolean().optional(),
   decrypted: z.boolean().optional(),
   comment: z.string().optional(),
@@ -25632,8 +25648,8 @@ export function updateDiffFromJSON(
 }
 
 /** @internal */
-export const FiftyEight$inboundSchema: z.ZodType<
-  FiftyEight,
+export const FiftyNine$inboundSchema: z.ZodType<
+  FiftyNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -25643,17 +25659,17 @@ export const FiftyEight$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type FiftyEight$Outbound = {
+export type FiftyNine$Outbound = {
   oldEnvVar?: OldEnvVar$Outbound | undefined;
   newEnvVar?: NewEnvVar$Outbound | undefined;
   updateDiff?: UpdateDiff$Outbound | undefined;
 };
 
 /** @internal */
-export const FiftyEight$outboundSchema: z.ZodType<
-  FiftyEight$Outbound,
+export const FiftyNine$outboundSchema: z.ZodType<
+  FiftyNine$Outbound,
   z.ZodTypeDef,
-  FiftyEight
+  FiftyNine
 > = z.object({
   oldEnvVar: z.lazy(() => OldEnvVar$outboundSchema).optional(),
   newEnvVar: z.lazy(() => NewEnvVar$outboundSchema).optional(),
@@ -25664,26 +25680,26 @@ export const FiftyEight$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FiftyEight$ {
-  /** @deprecated use `FiftyEight$inboundSchema` instead. */
-  export const inboundSchema = FiftyEight$inboundSchema;
-  /** @deprecated use `FiftyEight$outboundSchema` instead. */
-  export const outboundSchema = FiftyEight$outboundSchema;
-  /** @deprecated use `FiftyEight$Outbound` instead. */
-  export type Outbound = FiftyEight$Outbound;
+export namespace FiftyNine$ {
+  /** @deprecated use `FiftyNine$inboundSchema` instead. */
+  export const inboundSchema = FiftyNine$inboundSchema;
+  /** @deprecated use `FiftyNine$outboundSchema` instead. */
+  export const outboundSchema = FiftyNine$outboundSchema;
+  /** @deprecated use `FiftyNine$Outbound` instead. */
+  export type Outbound = FiftyNine$Outbound;
 }
 
-export function fiftyEightToJSON(fiftyEight: FiftyEight): string {
-  return JSON.stringify(FiftyEight$outboundSchema.parse(fiftyEight));
+export function fiftyNineToJSON(fiftyNine: FiftyNine): string {
+  return JSON.stringify(FiftyNine$outboundSchema.parse(fiftyNine));
 }
 
-export function fiftyEightFromJSON(
+export function fiftyNineFromJSON(
   jsonString: string,
-): SafeParseResult<FiftyEight, SDKValidationError> {
+): SafeParseResult<FiftyNine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FiftyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FiftyEight' from JSON`,
+    (x) => FiftyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftyNine' from JSON`,
   );
 }
 
@@ -25728,8 +25744,8 @@ export namespace PayloadTarget$ {
 }
 
 /** @internal */
-export const FiftySeven$inboundSchema: z.ZodType<
-  FiftySeven,
+export const FiftyEight$inboundSchema: z.ZodType<
+  FiftyEight,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -25756,7 +25772,7 @@ export const FiftySeven$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type FiftySeven$Outbound = {
+export type FiftyEight$Outbound = {
   created?: string | undefined;
   key?: string | undefined;
   ownerId?: string | null | undefined;
@@ -25779,10 +25795,10 @@ export type FiftySeven$Outbound = {
 };
 
 /** @internal */
-export const FiftySeven$outboundSchema: z.ZodType<
-  FiftySeven$Outbound,
+export const FiftyEight$outboundSchema: z.ZodType<
+  FiftyEight$Outbound,
   z.ZodTypeDef,
-  FiftySeven
+  FiftyEight
 > = z.object({
   created: z.date().transform(v => v.toISOString()).optional(),
   key: z.string().optional(),
@@ -25809,26 +25825,26 @@ export const FiftySeven$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FiftySeven$ {
-  /** @deprecated use `FiftySeven$inboundSchema` instead. */
-  export const inboundSchema = FiftySeven$inboundSchema;
-  /** @deprecated use `FiftySeven$outboundSchema` instead. */
-  export const outboundSchema = FiftySeven$outboundSchema;
-  /** @deprecated use `FiftySeven$Outbound` instead. */
-  export type Outbound = FiftySeven$Outbound;
+export namespace FiftyEight$ {
+  /** @deprecated use `FiftyEight$inboundSchema` instead. */
+  export const inboundSchema = FiftyEight$inboundSchema;
+  /** @deprecated use `FiftyEight$outboundSchema` instead. */
+  export const outboundSchema = FiftyEight$outboundSchema;
+  /** @deprecated use `FiftyEight$Outbound` instead. */
+  export type Outbound = FiftyEight$Outbound;
 }
 
-export function fiftySevenToJSON(fiftySeven: FiftySeven): string {
-  return JSON.stringify(FiftySeven$outboundSchema.parse(fiftySeven));
+export function fiftyEightToJSON(fiftyEight: FiftyEight): string {
+  return JSON.stringify(FiftyEight$outboundSchema.parse(fiftyEight));
 }
 
-export function fiftySevenFromJSON(
+export function fiftyEightFromJSON(
   jsonString: string,
-): SafeParseResult<FiftySeven, SDKValidationError> {
+): SafeParseResult<FiftyEight, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FiftySeven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FiftySeven' from JSON`,
+    (x) => FiftyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftyEight' from JSON`,
   );
 }
 
@@ -25874,8 +25890,8 @@ export function targetFromJSON(
 }
 
 /** @internal */
-export const FiftySix$inboundSchema: z.ZodType<
-  FiftySix,
+export const FiftySeven$inboundSchema: z.ZodType<
+  FiftySeven,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -25891,7 +25907,7 @@ export const FiftySix$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type FiftySix$Outbound = {
+export type FiftySeven$Outbound = {
   key?: string | undefined;
   projectId?: string | undefined;
   projectName?: string | undefined;
@@ -25904,10 +25920,10 @@ export type FiftySix$Outbound = {
 };
 
 /** @internal */
-export const FiftySix$outboundSchema: z.ZodType<
-  FiftySix$Outbound,
+export const FiftySeven$outboundSchema: z.ZodType<
+  FiftySeven$Outbound,
   z.ZodTypeDef,
-  FiftySix
+  FiftySeven
 > = z.object({
   key: z.string().optional(),
   projectId: z.string().optional(),
@@ -25918,6 +25934,59 @@ export const FiftySix$outboundSchema: z.ZodType<
   edgeConfigId: z.nullable(z.string()).optional(),
   edgeConfigTokenId: z.nullable(z.string()).optional(),
   source: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FiftySeven$ {
+  /** @deprecated use `FiftySeven$inboundSchema` instead. */
+  export const inboundSchema = FiftySeven$inboundSchema;
+  /** @deprecated use `FiftySeven$outboundSchema` instead. */
+  export const outboundSchema = FiftySeven$outboundSchema;
+  /** @deprecated use `FiftySeven$Outbound` instead. */
+  export type Outbound = FiftySeven$Outbound;
+}
+
+export function fiftySevenToJSON(fiftySeven: FiftySeven): string {
+  return JSON.stringify(FiftySeven$outboundSchema.parse(fiftySeven));
+}
+
+export function fiftySevenFromJSON(
+  jsonString: string,
+): SafeParseResult<FiftySeven, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FiftySeven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftySeven' from JSON`,
+  );
+}
+
+/** @internal */
+export const FiftySix$inboundSchema: z.ZodType<
+  FiftySix,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: z.string(),
+  name: z.string(),
+});
+
+/** @internal */
+export type FiftySix$Outbound = {
+  email: string;
+  name: string;
+};
+
+/** @internal */
+export const FiftySix$outboundSchema: z.ZodType<
+  FiftySix$Outbound,
+  z.ZodTypeDef,
+  FiftySix
+> = z.object({
+  email: z.string(),
+  name: z.string(),
 });
 
 /**
@@ -25953,14 +26022,20 @@ export const FiftyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  email: z.string(),
-  name: z.string(),
+  sha: z.string(),
+  gitUserPlatform: z.string(),
+  projectName: z.string(),
+  gitCommitterName: z.string(),
+  source: z.string(),
 });
 
 /** @internal */
 export type FiftyFive$Outbound = {
-  email: string;
-  name: string;
+  sha: string;
+  gitUserPlatform: string;
+  projectName: string;
+  gitCommitterName: string;
+  source: string;
 };
 
 /** @internal */
@@ -25969,8 +26044,11 @@ export const FiftyFive$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FiftyFive
 > = z.object({
-  email: z.string(),
-  name: z.string(),
+  sha: z.string(),
+  gitUserPlatform: z.string(),
+  projectName: z.string(),
+  gitCommitterName: z.string(),
+  source: z.string(),
 });
 
 /**
@@ -26006,20 +26084,16 @@ export const FiftyFour$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sha: z.string(),
-  gitUserPlatform: z.string(),
-  projectName: z.string(),
-  gitCommitterName: z.string(),
-  source: z.string(),
+  name: z.string(),
+  price: z.number().optional(),
+  currency: z.string().optional(),
 });
 
 /** @internal */
 export type FiftyFour$Outbound = {
-  sha: string;
-  gitUserPlatform: string;
-  projectName: string;
-  gitCommitterName: string;
-  source: string;
+  name: string;
+  price?: number | undefined;
+  currency?: string | undefined;
 };
 
 /** @internal */
@@ -26028,11 +26102,9 @@ export const FiftyFour$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FiftyFour
 > = z.object({
-  sha: z.string(),
-  gitUserPlatform: z.string(),
-  projectName: z.string(),
-  gitCommitterName: z.string(),
-  source: z.string(),
+  name: z.string(),
+  price: z.number().optional(),
+  currency: z.string().optional(),
 });
 
 /**
@@ -26068,16 +26140,14 @@ export const FiftyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  name: z.string(),
-  price: z.number().optional(),
-  currency: z.string().optional(),
+  renew: z.boolean().optional(),
+  domain: z.string(),
 });
 
 /** @internal */
 export type FiftyThree$Outbound = {
-  name: string;
-  price?: number | undefined;
-  currency?: string | undefined;
+  renew?: boolean | undefined;
+  domain: string;
 };
 
 /** @internal */
@@ -26086,9 +26156,8 @@ export const FiftyThree$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FiftyThree
 > = z.object({
-  name: z.string(),
-  price: z.number().optional(),
-  currency: z.string().optional(),
+  renew: z.boolean().optional(),
+  domain: z.string(),
 });
 
 /**
@@ -26124,14 +26193,16 @@ export const FiftyTwo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  renew: z.boolean().optional(),
-  domain: z.string(),
+  name: z.string(),
+  destinationId: z.string(),
+  destinationName: z.string(),
 });
 
 /** @internal */
 export type FiftyTwo$Outbound = {
-  renew?: boolean | undefined;
-  domain: string;
+  name: string;
+  destinationId: string;
+  destinationName: string;
 };
 
 /** @internal */
@@ -26140,8 +26211,9 @@ export const FiftyTwo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FiftyTwo
 > = z.object({
-  renew: z.boolean().optional(),
-  domain: z.string(),
+  name: z.string(),
+  destinationId: z.string(),
+  destinationName: z.string(),
 });
 
 /**
@@ -26178,15 +26250,15 @@ export const FiftyOne$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  destinationId: z.string(),
-  destinationName: z.string(),
+  destinationId: z.nullable(z.string()),
+  destinationName: z.nullable(z.string()),
 });
 
 /** @internal */
 export type FiftyOne$Outbound = {
   name: string;
-  destinationId: string;
-  destinationName: string;
+  destinationId: string | null;
+  destinationName: string | null;
 };
 
 /** @internal */
@@ -26196,8 +26268,8 @@ export const FiftyOne$outboundSchema: z.ZodType<
   FiftyOne
 > = z.object({
   name: z.string(),
-  destinationId: z.string(),
-  destinationName: z.string(),
+  destinationId: z.nullable(z.string()),
+  destinationName: z.nullable(z.string()),
 });
 
 /**
@@ -26231,15 +26303,15 @@ export function fiftyOneFromJSON(
 export const Fifty$inboundSchema: z.ZodType<Fifty, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
-    destinationId: z.nullable(z.string()),
-    destinationName: z.nullable(z.string()),
+    fromId: z.nullable(z.string()),
+    fromName: z.nullable(z.string()),
   });
 
 /** @internal */
 export type Fifty$Outbound = {
   name: string;
-  destinationId: string | null;
-  destinationName: string | null;
+  fromId: string | null;
+  fromName: string | null;
 };
 
 /** @internal */
@@ -26249,8 +26321,8 @@ export const Fifty$outboundSchema: z.ZodType<
   Fifty
 > = z.object({
   name: z.string(),
-  destinationId: z.nullable(z.string()),
-  destinationName: z.nullable(z.string()),
+  fromId: z.nullable(z.string()),
+  fromName: z.nullable(z.string()),
 });
 
 /**
@@ -26286,16 +26358,14 @@ export const FortyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  domainId: z.string(),
   name: z.string(),
-  fromId: z.nullable(z.string()),
-  fromName: z.nullable(z.string()),
 });
 
 /** @internal */
 export type FortyNine$Outbound = {
+  domainId: string;
   name: string;
-  fromId: string | null;
-  fromName: string | null;
 };
 
 /** @internal */
@@ -26304,9 +26374,8 @@ export const FortyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FortyNine
 > = z.object({
+  domainId: z.string(),
   name: z.string(),
-  fromId: z.nullable(z.string()),
-  fromName: z.nullable(z.string()),
 });
 
 /**
@@ -26337,19 +26406,129 @@ export function fortyNineFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload48OldTeam$inboundSchema: z.ZodType<
+  UserEventPayload48OldTeam,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+});
+
+/** @internal */
+export type UserEventPayload48OldTeam$Outbound = {
+  name: string;
+};
+
+/** @internal */
+export const UserEventPayload48OldTeam$outboundSchema: z.ZodType<
+  UserEventPayload48OldTeam$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload48OldTeam
+> = z.object({
+  name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload48OldTeam$ {
+  /** @deprecated use `UserEventPayload48OldTeam$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload48OldTeam$inboundSchema;
+  /** @deprecated use `UserEventPayload48OldTeam$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload48OldTeam$outboundSchema;
+  /** @deprecated use `UserEventPayload48OldTeam$Outbound` instead. */
+  export type Outbound = UserEventPayload48OldTeam$Outbound;
+}
+
+export function userEventPayload48OldTeamToJSON(
+  userEventPayload48OldTeam: UserEventPayload48OldTeam,
+): string {
+  return JSON.stringify(
+    UserEventPayload48OldTeam$outboundSchema.parse(userEventPayload48OldTeam),
+  );
+}
+
+export function userEventPayload48OldTeamFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload48OldTeam, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload48OldTeam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload48OldTeam' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload48NewTeam$inboundSchema: z.ZodType<
+  UserEventPayload48NewTeam,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+});
+
+/** @internal */
+export type UserEventPayload48NewTeam$Outbound = {
+  name: string;
+};
+
+/** @internal */
+export const UserEventPayload48NewTeam$outboundSchema: z.ZodType<
+  UserEventPayload48NewTeam$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload48NewTeam
+> = z.object({
+  name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload48NewTeam$ {
+  /** @deprecated use `UserEventPayload48NewTeam$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload48NewTeam$inboundSchema;
+  /** @deprecated use `UserEventPayload48NewTeam$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload48NewTeam$outboundSchema;
+  /** @deprecated use `UserEventPayload48NewTeam$Outbound` instead. */
+  export type Outbound = UserEventPayload48NewTeam$Outbound;
+}
+
+export function userEventPayload48NewTeamToJSON(
+  userEventPayload48NewTeam: UserEventPayload48NewTeam,
+): string {
+  return JSON.stringify(
+    UserEventPayload48NewTeam$outboundSchema.parse(userEventPayload48NewTeam),
+  );
+}
+
+export function userEventPayload48NewTeamFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload48NewTeam, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload48NewTeam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload48NewTeam' from JSON`,
+  );
+}
+
+/** @internal */
 export const FortyEight$inboundSchema: z.ZodType<
   FortyEight,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  domainId: z.string(),
   name: z.string(),
+  oldTeam: z.lazy(() => UserEventPayload48OldTeam$inboundSchema).optional(),
+  newTeam: z.lazy(() => UserEventPayload48NewTeam$inboundSchema).optional(),
 });
 
 /** @internal */
 export type FortyEight$Outbound = {
-  domainId: string;
   name: string;
+  oldTeam?: UserEventPayload48OldTeam$Outbound | undefined;
+  newTeam?: UserEventPayload48NewTeam$Outbound | undefined;
 };
 
 /** @internal */
@@ -26358,8 +26537,9 @@ export const FortyEight$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FortyEight
 > = z.object({
-  domainId: z.string(),
   name: z.string(),
+  oldTeam: z.lazy(() => UserEventPayload48OldTeam$outboundSchema).optional(),
+  newTeam: z.lazy(() => UserEventPayload48NewTeam$outboundSchema).optional(),
 });
 
 /**
@@ -26390,129 +26570,23 @@ export function fortyEightFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload47OldTeam$inboundSchema: z.ZodType<
-  UserEventPayload47OldTeam,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-});
-
-/** @internal */
-export type UserEventPayload47OldTeam$Outbound = {
-  name: string;
-};
-
-/** @internal */
-export const UserEventPayload47OldTeam$outboundSchema: z.ZodType<
-  UserEventPayload47OldTeam$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload47OldTeam
-> = z.object({
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload47OldTeam$ {
-  /** @deprecated use `UserEventPayload47OldTeam$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload47OldTeam$inboundSchema;
-  /** @deprecated use `UserEventPayload47OldTeam$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload47OldTeam$outboundSchema;
-  /** @deprecated use `UserEventPayload47OldTeam$Outbound` instead. */
-  export type Outbound = UserEventPayload47OldTeam$Outbound;
-}
-
-export function userEventPayload47OldTeamToJSON(
-  userEventPayload47OldTeam: UserEventPayload47OldTeam,
-): string {
-  return JSON.stringify(
-    UserEventPayload47OldTeam$outboundSchema.parse(userEventPayload47OldTeam),
-  );
-}
-
-export function userEventPayload47OldTeamFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload47OldTeam, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload47OldTeam$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload47OldTeam' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload47NewTeam$inboundSchema: z.ZodType<
-  UserEventPayload47NewTeam,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-});
-
-/** @internal */
-export type UserEventPayload47NewTeam$Outbound = {
-  name: string;
-};
-
-/** @internal */
-export const UserEventPayload47NewTeam$outboundSchema: z.ZodType<
-  UserEventPayload47NewTeam$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload47NewTeam
-> = z.object({
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload47NewTeam$ {
-  /** @deprecated use `UserEventPayload47NewTeam$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload47NewTeam$inboundSchema;
-  /** @deprecated use `UserEventPayload47NewTeam$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload47NewTeam$outboundSchema;
-  /** @deprecated use `UserEventPayload47NewTeam$Outbound` instead. */
-  export type Outbound = UserEventPayload47NewTeam$Outbound;
-}
-
-export function userEventPayload47NewTeamToJSON(
-  userEventPayload47NewTeam: UserEventPayload47NewTeam,
-): string {
-  return JSON.stringify(
-    UserEventPayload47NewTeam$outboundSchema.parse(userEventPayload47NewTeam),
-  );
-}
-
-export function userEventPayload47NewTeamFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload47NewTeam, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload47NewTeam$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload47NewTeam' from JSON`,
-  );
-}
-
-/** @internal */
 export const FortySeven$inboundSchema: z.ZodType<
   FortySeven,
   z.ZodTypeDef,
   unknown
 > = z.object({
   name: z.string(),
-  oldTeam: z.lazy(() => UserEventPayload47OldTeam$inboundSchema).optional(),
-  newTeam: z.lazy(() => UserEventPayload47NewTeam$inboundSchema).optional(),
+  userId: z.string(),
+  teamId: z.string(),
+  ownerName: z.string(),
 });
 
 /** @internal */
 export type FortySeven$Outbound = {
   name: string;
-  oldTeam?: UserEventPayload47OldTeam$Outbound | undefined;
-  newTeam?: UserEventPayload47NewTeam$Outbound | undefined;
+  userId: string;
+  teamId: string;
+  ownerName: string;
 };
 
 /** @internal */
@@ -26522,8 +26596,9 @@ export const FortySeven$outboundSchema: z.ZodType<
   FortySeven
 > = z.object({
   name: z.string(),
-  oldTeam: z.lazy(() => UserEventPayload47OldTeam$outboundSchema).optional(),
-  newTeam: z.lazy(() => UserEventPayload47NewTeam$outboundSchema).optional(),
+  userId: z.string(),
+  teamId: z.string(),
+  ownerName: z.string(),
 });
 
 /**
@@ -26560,17 +26635,13 @@ export const FortySix$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  userId: z.string(),
-  teamId: z.string(),
-  ownerName: z.string(),
+  cdnEnabled: z.boolean(),
 });
 
 /** @internal */
 export type FortySix$Outbound = {
   name: string;
-  userId: string;
-  teamId: string;
-  ownerName: string;
+  cdnEnabled: boolean;
 };
 
 /** @internal */
@@ -26580,9 +26651,7 @@ export const FortySix$outboundSchema: z.ZodType<
   FortySix
 > = z.object({
   name: z.string(),
-  userId: z.string(),
-  teamId: z.string(),
-  ownerName: z.string(),
+  cdnEnabled: z.boolean(),
 });
 
 /**
@@ -26619,13 +26688,15 @@ export const FortyFive$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  cdnEnabled: z.boolean(),
+  price: z.number(),
+  currency: z.string().optional(),
 });
 
 /** @internal */
 export type FortyFive$Outbound = {
   name: string;
-  cdnEnabled: boolean;
+  price: number;
+  currency?: string | undefined;
 };
 
 /** @internal */
@@ -26635,7 +26706,8 @@ export const FortyFive$outboundSchema: z.ZodType<
   FortyFive
 > = z.object({
   name: z.string(),
-  cdnEnabled: z.boolean(),
+  price: z.number(),
+  currency: z.string().optional(),
 });
 
 /**
@@ -26672,15 +26744,11 @@ export const FortyFour$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
-  price: z.number(),
-  currency: z.string().optional(),
 });
 
 /** @internal */
 export type FortyFour$Outbound = {
   name: string;
-  price: number;
-  currency?: string | undefined;
 };
 
 /** @internal */
@@ -26690,8 +26758,6 @@ export const FortyFour$outboundSchema: z.ZodType<
   FortyFour
 > = z.object({
   name: z.string(),
-  price: z.number(),
-  currency: z.string().optional(),
 });
 
 /**
@@ -26727,12 +26793,20 @@ export const FortyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  id: z.string(),
+  value: z.string(),
   name: z.string(),
+  domain: z.string(),
+  type: z.string(),
 });
 
 /** @internal */
 export type FortyThree$Outbound = {
+  id: string;
+  value: string;
   name: string;
+  domain: string;
+  type: string;
 };
 
 /** @internal */
@@ -26741,7 +26815,11 @@ export const FortyThree$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FortyThree
 > = z.object({
+  id: z.string(),
+  value: z.string(),
   name: z.string(),
+  domain: z.string(),
+  type: z.string(),
 });
 
 /**
@@ -26782,6 +26860,7 @@ export const FortyTwo$inboundSchema: z.ZodType<
   name: z.string(),
   domain: z.string(),
   type: z.string(),
+  mxPriority: z.number().optional(),
 });
 
 /** @internal */
@@ -26791,6 +26870,7 @@ export type FortyTwo$Outbound = {
   name: string;
   domain: string;
   type: string;
+  mxPriority?: number | undefined;
 };
 
 /** @internal */
@@ -26804,6 +26884,7 @@ export const FortyTwo$outboundSchema: z.ZodType<
   name: z.string(),
   domain: z.string(),
   type: z.string(),
+  mxPriority: z.number().optional(),
 });
 
 /**
@@ -26830,71 +26911,6 @@ export function fortyTwoFromJSON(
     jsonString,
     (x) => FortyTwo$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'FortyTwo' from JSON`,
-  );
-}
-
-/** @internal */
-export const FortyOne$inboundSchema: z.ZodType<
-  FortyOne,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  value: z.string(),
-  name: z.string(),
-  domain: z.string(),
-  type: z.string(),
-  mxPriority: z.number().optional(),
-});
-
-/** @internal */
-export type FortyOne$Outbound = {
-  id: string;
-  value: string;
-  name: string;
-  domain: string;
-  type: string;
-  mxPriority?: number | undefined;
-};
-
-/** @internal */
-export const FortyOne$outboundSchema: z.ZodType<
-  FortyOne$Outbound,
-  z.ZodTypeDef,
-  FortyOne
-> = z.object({
-  id: z.string(),
-  value: z.string(),
-  name: z.string(),
-  domain: z.string(),
-  type: z.string(),
-  mxPriority: z.number().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FortyOne$ {
-  /** @deprecated use `FortyOne$inboundSchema` instead. */
-  export const inboundSchema = FortyOne$inboundSchema;
-  /** @deprecated use `FortyOne$outboundSchema` instead. */
-  export const outboundSchema = FortyOne$outboundSchema;
-  /** @deprecated use `FortyOne$Outbound` instead. */
-  export type Outbound = FortyOne$Outbound;
-}
-
-export function fortyOneToJSON(fortyOne: FortyOne): string {
-  return JSON.stringify(FortyOne$outboundSchema.parse(fortyOne));
-}
-
-export function fortyOneFromJSON(
-  jsonString: string,
-): SafeParseResult<FortyOne, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FortyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FortyOne' from JSON`,
   );
 }
 
@@ -26962,25 +26978,28 @@ export function userEventPayloadDeploymentFromJSON(
 }
 
 /** @internal */
-export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> = z
-  .object({
-    deployment: z.lazy(() => UserEventPayloadDeployment$inboundSchema),
-    deploymentId: z.string(),
-    url: z.string(),
-  });
+export const FortyOne$inboundSchema: z.ZodType<
+  FortyOne,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deployment: z.lazy(() => UserEventPayloadDeployment$inboundSchema),
+  deploymentId: z.string(),
+  url: z.string(),
+});
 
 /** @internal */
-export type Forty$Outbound = {
+export type FortyOne$Outbound = {
   deployment: UserEventPayloadDeployment$Outbound;
   deploymentId: string;
   url: string;
 };
 
 /** @internal */
-export const Forty$outboundSchema: z.ZodType<
-  Forty$Outbound,
+export const FortyOne$outboundSchema: z.ZodType<
+  FortyOne$Outbound,
   z.ZodTypeDef,
-  Forty
+  FortyOne
 > = z.object({
   deployment: z.lazy(() => UserEventPayloadDeployment$outboundSchema),
   deploymentId: z.string(),
@@ -26991,26 +27010,26 @@ export const Forty$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Forty$ {
-  /** @deprecated use `Forty$inboundSchema` instead. */
-  export const inboundSchema = Forty$inboundSchema;
-  /** @deprecated use `Forty$outboundSchema` instead. */
-  export const outboundSchema = Forty$outboundSchema;
-  /** @deprecated use `Forty$Outbound` instead. */
-  export type Outbound = Forty$Outbound;
+export namespace FortyOne$ {
+  /** @deprecated use `FortyOne$inboundSchema` instead. */
+  export const inboundSchema = FortyOne$inboundSchema;
+  /** @deprecated use `FortyOne$outboundSchema` instead. */
+  export const outboundSchema = FortyOne$outboundSchema;
+  /** @deprecated use `FortyOne$Outbound` instead. */
+  export type Outbound = FortyOne$Outbound;
 }
 
-export function fortyToJSON(forty: Forty): string {
-  return JSON.stringify(Forty$outboundSchema.parse(forty));
+export function fortyOneToJSON(fortyOne: FortyOne): string {
+  return JSON.stringify(FortyOne$outboundSchema.parse(fortyOne));
 }
 
-export function fortyFromJSON(
+export function fortyOneFromJSON(
   jsonString: string,
-): SafeParseResult<Forty, SDKValidationError> {
+): SafeParseResult<FortyOne, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Forty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Forty' from JSON`,
+    (x) => FortyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FortyOne' from JSON`,
   );
 }
 
@@ -27123,28 +27142,25 @@ export function userEventPayloadNewTeamFromJSON(
 }
 
 /** @internal */
-export const ThirtyNine$inboundSchema: z.ZodType<
-  ThirtyNine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  url: z.string(),
-  oldTeam: z.lazy(() => UserEventPayloadOldTeam$inboundSchema).optional(),
-  newTeam: z.lazy(() => UserEventPayloadNewTeam$inboundSchema).optional(),
-});
+export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> = z
+  .object({
+    url: z.string(),
+    oldTeam: z.lazy(() => UserEventPayloadOldTeam$inboundSchema).optional(),
+    newTeam: z.lazy(() => UserEventPayloadNewTeam$inboundSchema).optional(),
+  });
 
 /** @internal */
-export type ThirtyNine$Outbound = {
+export type Forty$Outbound = {
   url: string;
   oldTeam?: UserEventPayloadOldTeam$Outbound | undefined;
   newTeam?: UserEventPayloadNewTeam$Outbound | undefined;
 };
 
 /** @internal */
-export const ThirtyNine$outboundSchema: z.ZodType<
-  ThirtyNine$Outbound,
+export const Forty$outboundSchema: z.ZodType<
+  Forty$Outbound,
   z.ZodTypeDef,
-  ThirtyNine
+  Forty
 > = z.object({
   url: z.string(),
   oldTeam: z.lazy(() => UserEventPayloadOldTeam$outboundSchema).optional(),
@@ -27155,26 +27171,26 @@ export const ThirtyNine$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ThirtyNine$ {
-  /** @deprecated use `ThirtyNine$inboundSchema` instead. */
-  export const inboundSchema = ThirtyNine$inboundSchema;
-  /** @deprecated use `ThirtyNine$outboundSchema` instead. */
-  export const outboundSchema = ThirtyNine$outboundSchema;
-  /** @deprecated use `ThirtyNine$Outbound` instead. */
-  export type Outbound = ThirtyNine$Outbound;
+export namespace Forty$ {
+  /** @deprecated use `Forty$inboundSchema` instead. */
+  export const inboundSchema = Forty$inboundSchema;
+  /** @deprecated use `Forty$outboundSchema` instead. */
+  export const outboundSchema = Forty$outboundSchema;
+  /** @deprecated use `Forty$Outbound` instead. */
+  export type Outbound = Forty$Outbound;
 }
 
-export function thirtyNineToJSON(thirtyNine: ThirtyNine): string {
-  return JSON.stringify(ThirtyNine$outboundSchema.parse(thirtyNine));
+export function fortyToJSON(forty: Forty): string {
+  return JSON.stringify(Forty$outboundSchema.parse(forty));
 }
 
-export function thirtyNineFromJSON(
+export function fortyFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyNine, SDKValidationError> {
+): SafeParseResult<Forty, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyNine' from JSON`,
+    (x) => Forty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Forty' from JSON`,
   );
 }
 
@@ -27242,8 +27258,8 @@ export function payloadDeploymentFromJSON(
 }
 
 /** @internal */
-export const ThirtyEight$inboundSchema: z.ZodType<
-  ThirtyEight,
+export const ThirtyNine$inboundSchema: z.ZodType<
+  ThirtyNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -27263,7 +27279,7 @@ export const ThirtyEight$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ThirtyEight$Outbound = {
+export type ThirtyNine$Outbound = {
   name?: string | undefined;
   alias?: Array<string> | undefined;
   target?: string | null | undefined;
@@ -27279,10 +27295,10 @@ export type ThirtyEight$Outbound = {
 };
 
 /** @internal */
-export const ThirtyEight$outboundSchema: z.ZodType<
-  ThirtyEight$Outbound,
+export const ThirtyNine$outboundSchema: z.ZodType<
+  ThirtyNine$Outbound,
   z.ZodTypeDef,
-  ThirtyEight
+  ThirtyNine
 > = z.object({
   name: z.string().optional(),
   alias: z.array(z.string()).optional(),
@@ -27303,32 +27319,32 @@ export const ThirtyEight$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ThirtyEight$ {
-  /** @deprecated use `ThirtyEight$inboundSchema` instead. */
-  export const inboundSchema = ThirtyEight$inboundSchema;
-  /** @deprecated use `ThirtyEight$outboundSchema` instead. */
-  export const outboundSchema = ThirtyEight$outboundSchema;
-  /** @deprecated use `ThirtyEight$Outbound` instead. */
-  export type Outbound = ThirtyEight$Outbound;
+export namespace ThirtyNine$ {
+  /** @deprecated use `ThirtyNine$inboundSchema` instead. */
+  export const inboundSchema = ThirtyNine$inboundSchema;
+  /** @deprecated use `ThirtyNine$outboundSchema` instead. */
+  export const outboundSchema = ThirtyNine$outboundSchema;
+  /** @deprecated use `ThirtyNine$Outbound` instead. */
+  export type Outbound = ThirtyNine$Outbound;
 }
 
-export function thirtyEightToJSON(thirtyEight: ThirtyEight): string {
-  return JSON.stringify(ThirtyEight$outboundSchema.parse(thirtyEight));
+export function thirtyNineToJSON(thirtyNine: ThirtyNine): string {
+  return JSON.stringify(ThirtyNine$outboundSchema.parse(thirtyNine));
 }
 
-export function thirtyEightFromJSON(
+export function thirtyNineFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyEight, SDKValidationError> {
+): SafeParseResult<ThirtyNine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyEight' from JSON`,
+    (x) => ThirtyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyNine' from JSON`,
   );
 }
 
 /** @internal */
-export const UserEventPayload37Project$inboundSchema: z.ZodType<
-  UserEventPayload37Project,
+export const UserEventPayload38Project$inboundSchema: z.ZodType<
+  UserEventPayload38Project,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -27336,15 +27352,15 @@ export const UserEventPayload37Project$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload37Project$Outbound = {
+export type UserEventPayload38Project$Outbound = {
   name: string;
 };
 
 /** @internal */
-export const UserEventPayload37Project$outboundSchema: z.ZodType<
-  UserEventPayload37Project$Outbound,
+export const UserEventPayload38Project$outboundSchema: z.ZodType<
+  UserEventPayload38Project$Outbound,
   z.ZodTypeDef,
-  UserEventPayload37Project
+  UserEventPayload38Project
 > = z.object({
   name: z.string(),
 });
@@ -27353,30 +27369,30 @@ export const UserEventPayload37Project$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload37Project$ {
-  /** @deprecated use `UserEventPayload37Project$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload37Project$inboundSchema;
-  /** @deprecated use `UserEventPayload37Project$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload37Project$outboundSchema;
-  /** @deprecated use `UserEventPayload37Project$Outbound` instead. */
-  export type Outbound = UserEventPayload37Project$Outbound;
+export namespace UserEventPayload38Project$ {
+  /** @deprecated use `UserEventPayload38Project$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload38Project$inboundSchema;
+  /** @deprecated use `UserEventPayload38Project$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload38Project$outboundSchema;
+  /** @deprecated use `UserEventPayload38Project$Outbound` instead. */
+  export type Outbound = UserEventPayload38Project$Outbound;
 }
 
-export function userEventPayload37ProjectToJSON(
-  userEventPayload37Project: UserEventPayload37Project,
+export function userEventPayload38ProjectToJSON(
+  userEventPayload38Project: UserEventPayload38Project,
 ): string {
   return JSON.stringify(
-    UserEventPayload37Project$outboundSchema.parse(userEventPayload37Project),
+    UserEventPayload38Project$outboundSchema.parse(userEventPayload38Project),
   );
 }
 
-export function userEventPayload37ProjectFromJSON(
+export function userEventPayload38ProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload37Project, SDKValidationError> {
+): SafeParseResult<UserEventPayload38Project, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload37Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload37Project' from JSON`,
+    (x) => UserEventPayload38Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload38Project' from JSON`,
   );
 }
 
@@ -27487,19 +27503,74 @@ export function jobFromJSON(
 }
 
 /** @internal */
+export const ThirtyEight$inboundSchema: z.ZodType<
+  ThirtyEight,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  project: z.lazy(() => UserEventPayload38Project$inboundSchema),
+  job: z.lazy(() => Job$inboundSchema),
+});
+
+/** @internal */
+export type ThirtyEight$Outbound = {
+  project: UserEventPayload38Project$Outbound;
+  job: Job$Outbound;
+};
+
+/** @internal */
+export const ThirtyEight$outboundSchema: z.ZodType<
+  ThirtyEight$Outbound,
+  z.ZodTypeDef,
+  ThirtyEight
+> = z.object({
+  project: z.lazy(() => UserEventPayload38Project$outboundSchema),
+  job: z.lazy(() => Job$outboundSchema),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ThirtyEight$ {
+  /** @deprecated use `ThirtyEight$inboundSchema` instead. */
+  export const inboundSchema = ThirtyEight$inboundSchema;
+  /** @deprecated use `ThirtyEight$outboundSchema` instead. */
+  export const outboundSchema = ThirtyEight$outboundSchema;
+  /** @deprecated use `ThirtyEight$Outbound` instead. */
+  export type Outbound = ThirtyEight$Outbound;
+}
+
+export function thirtyEightToJSON(thirtyEight: ThirtyEight): string {
+  return JSON.stringify(ThirtyEight$outboundSchema.parse(thirtyEight));
+}
+
+export function thirtyEightFromJSON(
+  jsonString: string,
+): SafeParseResult<ThirtyEight, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThirtyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyEight' from JSON`,
+  );
+}
+
+/** @internal */
 export const ThirtySeven$inboundSchema: z.ZodType<
   ThirtySeven,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  project: z.lazy(() => UserEventPayload37Project$inboundSchema),
-  job: z.lazy(() => Job$inboundSchema),
+  bitbucketEmail: z.string(),
+  bitbucketLogin: z.string(),
+  bitbucketName: z.string().optional(),
 });
 
 /** @internal */
 export type ThirtySeven$Outbound = {
-  project: UserEventPayload37Project$Outbound;
-  job: Job$Outbound;
+  bitbucketEmail: string;
+  bitbucketLogin: string;
+  bitbucketName?: string | undefined;
 };
 
 /** @internal */
@@ -27508,8 +27579,9 @@ export const ThirtySeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ThirtySeven
 > = z.object({
-  project: z.lazy(() => UserEventPayload37Project$outboundSchema),
-  job: z.lazy(() => Job$outboundSchema),
+  bitbucketEmail: z.string(),
+  bitbucketLogin: z.string(),
+  bitbucketName: z.string().optional(),
 });
 
 /**
@@ -27545,16 +27617,16 @@ export const ThirtySix$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bitbucketEmail: z.string(),
-  bitbucketLogin: z.string(),
-  bitbucketName: z.string().optional(),
+  gitlabLogin: z.string(),
+  gitlabEmail: z.string(),
+  gitlabName: z.string().optional(),
 });
 
 /** @internal */
 export type ThirtySix$Outbound = {
-  bitbucketEmail: string;
-  bitbucketLogin: string;
-  bitbucketName?: string | undefined;
+  gitlabLogin: string;
+  gitlabEmail: string;
+  gitlabName?: string | undefined;
 };
 
 /** @internal */
@@ -27563,9 +27635,9 @@ export const ThirtySix$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ThirtySix
 > = z.object({
-  bitbucketEmail: z.string(),
-  bitbucketLogin: z.string(),
-  bitbucketName: z.string().optional(),
+  gitlabLogin: z.string(),
+  gitlabEmail: z.string(),
+  gitlabName: z.string().optional(),
 });
 
 /**
@@ -27601,16 +27673,12 @@ export const ThirtyFive$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gitlabLogin: z.string(),
-  gitlabEmail: z.string(),
-  gitlabName: z.string().optional(),
+  githubLogin: z.string(),
 });
 
 /** @internal */
 export type ThirtyFive$Outbound = {
-  gitlabLogin: string;
-  gitlabEmail: string;
-  gitlabName?: string | undefined;
+  githubLogin: string;
 };
 
 /** @internal */
@@ -27619,9 +27687,7 @@ export const ThirtyFive$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ThirtyFive
 > = z.object({
-  gitlabLogin: z.string(),
-  gitlabEmail: z.string(),
-  gitlabName: z.string().optional(),
+  githubLogin: z.string(),
 });
 
 /**
@@ -27652,17 +27718,137 @@ export function thirtyFiveFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload34Team$inboundSchema: z.ZodType<
+  UserEventPayload34Team,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+});
+
+/** @internal */
+export type UserEventPayload34Team$Outbound = {
+  id: string;
+  name: string;
+};
+
+/** @internal */
+export const UserEventPayload34Team$outboundSchema: z.ZodType<
+  UserEventPayload34Team$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload34Team
+> = z.object({
+  id: z.string(),
+  name: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload34Team$ {
+  /** @deprecated use `UserEventPayload34Team$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload34Team$inboundSchema;
+  /** @deprecated use `UserEventPayload34Team$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload34Team$outboundSchema;
+  /** @deprecated use `UserEventPayload34Team$Outbound` instead. */
+  export type Outbound = UserEventPayload34Team$Outbound;
+}
+
+export function userEventPayload34TeamToJSON(
+  userEventPayload34Team: UserEventPayload34Team,
+): string {
+  return JSON.stringify(
+    UserEventPayload34Team$outboundSchema.parse(userEventPayload34Team),
+  );
+}
+
+export function userEventPayload34TeamFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload34Team, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload34Team$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload34Team' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload34Configuration$inboundSchema: z.ZodType<
+  UserEventPayload34Configuration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/** @internal */
+export type UserEventPayload34Configuration$Outbound = {
+  id: string;
+  name?: string | undefined;
+};
+
+/** @internal */
+export const UserEventPayload34Configuration$outboundSchema: z.ZodType<
+  UserEventPayload34Configuration$Outbound,
+  z.ZodTypeDef,
+  UserEventPayload34Configuration
+> = z.object({
+  id: z.string(),
+  name: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UserEventPayload34Configuration$ {
+  /** @deprecated use `UserEventPayload34Configuration$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload34Configuration$inboundSchema;
+  /** @deprecated use `UserEventPayload34Configuration$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload34Configuration$outboundSchema;
+  /** @deprecated use `UserEventPayload34Configuration$Outbound` instead. */
+  export type Outbound = UserEventPayload34Configuration$Outbound;
+}
+
+export function userEventPayload34ConfigurationToJSON(
+  userEventPayload34Configuration: UserEventPayload34Configuration,
+): string {
+  return JSON.stringify(
+    UserEventPayload34Configuration$outboundSchema.parse(
+      userEventPayload34Configuration,
+    ),
+  );
+}
+
+export function userEventPayload34ConfigurationFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload34Configuration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload34Configuration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload34Configuration' from JSON`,
+  );
+}
+
+/** @internal */
 export const ThirtyFour$inboundSchema: z.ZodType<
   ThirtyFour,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  githubLogin: z.string(),
+  team: z.lazy(() => UserEventPayload34Team$inboundSchema),
+  configuration: z.lazy(() => UserEventPayload34Configuration$inboundSchema),
+  newName: z.string(),
 });
 
 /** @internal */
 export type ThirtyFour$Outbound = {
-  githubLogin: string;
+  team: UserEventPayload34Team$Outbound;
+  configuration: UserEventPayload34Configuration$Outbound;
+  newName: string;
 };
 
 /** @internal */
@@ -27671,7 +27857,9 @@ export const ThirtyFour$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ThirtyFour
 > = z.object({
-  githubLogin: z.string(),
+  team: z.lazy(() => UserEventPayload34Team$outboundSchema),
+  configuration: z.lazy(() => UserEventPayload34Configuration$outboundSchema),
+  newName: z.string(),
 });
 
 /**
@@ -27698,178 +27886,6 @@ export function thirtyFourFromJSON(
     jsonString,
     (x) => ThirtyFour$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ThirtyFour' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload33Team$inboundSchema: z.ZodType<
-  UserEventPayload33Team,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-/** @internal */
-export type UserEventPayload33Team$Outbound = {
-  id: string;
-  name: string;
-};
-
-/** @internal */
-export const UserEventPayload33Team$outboundSchema: z.ZodType<
-  UserEventPayload33Team$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload33Team
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload33Team$ {
-  /** @deprecated use `UserEventPayload33Team$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload33Team$inboundSchema;
-  /** @deprecated use `UserEventPayload33Team$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload33Team$outboundSchema;
-  /** @deprecated use `UserEventPayload33Team$Outbound` instead. */
-  export type Outbound = UserEventPayload33Team$Outbound;
-}
-
-export function userEventPayload33TeamToJSON(
-  userEventPayload33Team: UserEventPayload33Team,
-): string {
-  return JSON.stringify(
-    UserEventPayload33Team$outboundSchema.parse(userEventPayload33Team),
-  );
-}
-
-export function userEventPayload33TeamFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload33Team, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload33Team$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload33Team' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload33Configuration$inboundSchema: z.ZodType<
-  UserEventPayload33Configuration,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/** @internal */
-export type UserEventPayload33Configuration$Outbound = {
-  id: string;
-  name?: string | undefined;
-};
-
-/** @internal */
-export const UserEventPayload33Configuration$outboundSchema: z.ZodType<
-  UserEventPayload33Configuration$Outbound,
-  z.ZodTypeDef,
-  UserEventPayload33Configuration
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserEventPayload33Configuration$ {
-  /** @deprecated use `UserEventPayload33Configuration$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload33Configuration$inboundSchema;
-  /** @deprecated use `UserEventPayload33Configuration$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload33Configuration$outboundSchema;
-  /** @deprecated use `UserEventPayload33Configuration$Outbound` instead. */
-  export type Outbound = UserEventPayload33Configuration$Outbound;
-}
-
-export function userEventPayload33ConfigurationToJSON(
-  userEventPayload33Configuration: UserEventPayload33Configuration,
-): string {
-  return JSON.stringify(
-    UserEventPayload33Configuration$outboundSchema.parse(
-      userEventPayload33Configuration,
-    ),
-  );
-}
-
-export function userEventPayload33ConfigurationFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload33Configuration, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload33Configuration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload33Configuration' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThirtyThree$inboundSchema: z.ZodType<
-  ThirtyThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  team: z.lazy(() => UserEventPayload33Team$inboundSchema),
-  configuration: z.lazy(() => UserEventPayload33Configuration$inboundSchema),
-  newName: z.string(),
-});
-
-/** @internal */
-export type ThirtyThree$Outbound = {
-  team: UserEventPayload33Team$Outbound;
-  configuration: UserEventPayload33Configuration$Outbound;
-  newName: string;
-};
-
-/** @internal */
-export const ThirtyThree$outboundSchema: z.ZodType<
-  ThirtyThree$Outbound,
-  z.ZodTypeDef,
-  ThirtyThree
-> = z.object({
-  team: z.lazy(() => UserEventPayload33Team$outboundSchema),
-  configuration: z.lazy(() => UserEventPayload33Configuration$outboundSchema),
-  newName: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ThirtyThree$ {
-  /** @deprecated use `ThirtyThree$inboundSchema` instead. */
-  export const inboundSchema = ThirtyThree$inboundSchema;
-  /** @deprecated use `ThirtyThree$outboundSchema` instead. */
-  export const outboundSchema = ThirtyThree$outboundSchema;
-  /** @deprecated use `ThirtyThree$Outbound` instead. */
-  export type Outbound = ThirtyThree$Outbound;
-}
-
-export function thirtyThreeToJSON(thirtyThree: ThirtyThree): string {
-  return JSON.stringify(ThirtyThree$outboundSchema.parse(thirtyThree));
-}
-
-export function thirtyThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtyThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyThree' from JSON`,
   );
 }
 
@@ -27990,8 +28006,8 @@ export function userEventPayloadConfigurationFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload32Project$inboundSchema: z.ZodType<
-  UserEventPayload32Project,
+export const UserEventPayload33Project$inboundSchema: z.ZodType<
+  UserEventPayload33Project,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -28000,16 +28016,16 @@ export const UserEventPayload32Project$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload32Project$Outbound = {
+export type UserEventPayload33Project$Outbound = {
   id: string;
   name?: string | undefined;
 };
 
 /** @internal */
-export const UserEventPayload32Project$outboundSchema: z.ZodType<
-  UserEventPayload32Project$Outbound,
+export const UserEventPayload33Project$outboundSchema: z.ZodType<
+  UserEventPayload33Project$Outbound,
   z.ZodTypeDef,
-  UserEventPayload32Project
+  UserEventPayload33Project
 > = z.object({
   id: z.string(),
   name: z.string().optional(),
@@ -28019,86 +28035,86 @@ export const UserEventPayload32Project$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload32Project$ {
-  /** @deprecated use `UserEventPayload32Project$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload32Project$inboundSchema;
-  /** @deprecated use `UserEventPayload32Project$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload32Project$outboundSchema;
-  /** @deprecated use `UserEventPayload32Project$Outbound` instead. */
-  export type Outbound = UserEventPayload32Project$Outbound;
+export namespace UserEventPayload33Project$ {
+  /** @deprecated use `UserEventPayload33Project$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload33Project$inboundSchema;
+  /** @deprecated use `UserEventPayload33Project$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload33Project$outboundSchema;
+  /** @deprecated use `UserEventPayload33Project$Outbound` instead. */
+  export type Outbound = UserEventPayload33Project$Outbound;
 }
 
-export function userEventPayload32ProjectToJSON(
-  userEventPayload32Project: UserEventPayload32Project,
+export function userEventPayload33ProjectToJSON(
+  userEventPayload33Project: UserEventPayload33Project,
 ): string {
   return JSON.stringify(
-    UserEventPayload32Project$outboundSchema.parse(userEventPayload32Project),
+    UserEventPayload33Project$outboundSchema.parse(userEventPayload33Project),
   );
 }
 
-export function userEventPayload32ProjectFromJSON(
+export function userEventPayload33ProjectFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload32Project, SDKValidationError> {
+): SafeParseResult<UserEventPayload33Project, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload32Project$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload32Project' from JSON`,
+    (x) => UserEventPayload33Project$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload33Project' from JSON`,
   );
 }
 
 /** @internal */
-export const ThirtyTwo$inboundSchema: z.ZodType<
-  ThirtyTwo,
+export const ThirtyThree$inboundSchema: z.ZodType<
+  ThirtyThree,
   z.ZodTypeDef,
   unknown
 > = z.object({
   team: z.lazy(() => UserEventPayloadTeam$inboundSchema),
   configuration: z.lazy(() => UserEventPayloadConfiguration$inboundSchema),
-  project: z.lazy(() => UserEventPayload32Project$inboundSchema),
+  project: z.lazy(() => UserEventPayload33Project$inboundSchema),
 });
 
 /** @internal */
-export type ThirtyTwo$Outbound = {
+export type ThirtyThree$Outbound = {
   team: UserEventPayloadTeam$Outbound;
   configuration: UserEventPayloadConfiguration$Outbound;
-  project: UserEventPayload32Project$Outbound;
+  project: UserEventPayload33Project$Outbound;
 };
 
 /** @internal */
-export const ThirtyTwo$outboundSchema: z.ZodType<
-  ThirtyTwo$Outbound,
+export const ThirtyThree$outboundSchema: z.ZodType<
+  ThirtyThree$Outbound,
   z.ZodTypeDef,
-  ThirtyTwo
+  ThirtyThree
 > = z.object({
   team: z.lazy(() => UserEventPayloadTeam$outboundSchema),
   configuration: z.lazy(() => UserEventPayloadConfiguration$outboundSchema),
-  project: z.lazy(() => UserEventPayload32Project$outboundSchema),
+  project: z.lazy(() => UserEventPayload33Project$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ThirtyTwo$ {
-  /** @deprecated use `ThirtyTwo$inboundSchema` instead. */
-  export const inboundSchema = ThirtyTwo$inboundSchema;
-  /** @deprecated use `ThirtyTwo$outboundSchema` instead. */
-  export const outboundSchema = ThirtyTwo$outboundSchema;
-  /** @deprecated use `ThirtyTwo$Outbound` instead. */
-  export type Outbound = ThirtyTwo$Outbound;
+export namespace ThirtyThree$ {
+  /** @deprecated use `ThirtyThree$inboundSchema` instead. */
+  export const inboundSchema = ThirtyThree$inboundSchema;
+  /** @deprecated use `ThirtyThree$outboundSchema` instead. */
+  export const outboundSchema = ThirtyThree$outboundSchema;
+  /** @deprecated use `ThirtyThree$Outbound` instead. */
+  export type Outbound = ThirtyThree$Outbound;
 }
 
-export function thirtyTwoToJSON(thirtyTwo: ThirtyTwo): string {
-  return JSON.stringify(ThirtyTwo$outboundSchema.parse(thirtyTwo));
+export function thirtyThreeToJSON(thirtyThree: ThirtyThree): string {
+  return JSON.stringify(ThirtyThree$outboundSchema.parse(thirtyThree));
 }
 
-export function thirtyTwoFromJSON(
+export function thirtyThreeFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyTwo, SDKValidationError> {
+): SafeParseResult<ThirtyThree, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyTwo' from JSON`,
+    (x) => ThirtyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyThree' from JSON`,
   );
 }
 
@@ -28270,8 +28286,8 @@ export function userEventPayloadProjectFromJSON(
 }
 
 /** @internal */
-export const ThirtyOne$inboundSchema: z.ZodType<
-  ThirtyOne,
+export const ThirtyTwo$inboundSchema: z.ZodType<
+  ThirtyTwo,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -28283,7 +28299,7 @@ export const ThirtyOne$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ThirtyOne$Outbound = {
+export type ThirtyTwo$Outbound = {
   team: PayloadTeam$Outbound;
   configuration: PayloadConfiguration$Outbound;
   project: UserEventPayloadProject$Outbound;
@@ -28292,10 +28308,10 @@ export type ThirtyOne$Outbound = {
 };
 
 /** @internal */
-export const ThirtyOne$outboundSchema: z.ZodType<
-  ThirtyOne$Outbound,
+export const ThirtyTwo$outboundSchema: z.ZodType<
+  ThirtyTwo$Outbound,
   z.ZodTypeDef,
-  ThirtyOne
+  ThirtyTwo
 > = z.object({
   team: z.lazy(() => PayloadTeam$outboundSchema),
   configuration: z.lazy(() => PayloadConfiguration$outboundSchema),
@@ -28308,32 +28324,32 @@ export const ThirtyOne$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ThirtyOne$ {
-  /** @deprecated use `ThirtyOne$inboundSchema` instead. */
-  export const inboundSchema = ThirtyOne$inboundSchema;
-  /** @deprecated use `ThirtyOne$outboundSchema` instead. */
-  export const outboundSchema = ThirtyOne$outboundSchema;
-  /** @deprecated use `ThirtyOne$Outbound` instead. */
-  export type Outbound = ThirtyOne$Outbound;
+export namespace ThirtyTwo$ {
+  /** @deprecated use `ThirtyTwo$inboundSchema` instead. */
+  export const inboundSchema = ThirtyTwo$inboundSchema;
+  /** @deprecated use `ThirtyTwo$outboundSchema` instead. */
+  export const outboundSchema = ThirtyTwo$outboundSchema;
+  /** @deprecated use `ThirtyTwo$Outbound` instead. */
+  export type Outbound = ThirtyTwo$Outbound;
 }
 
-export function thirtyOneToJSON(thirtyOne: ThirtyOne): string {
-  return JSON.stringify(ThirtyOne$outboundSchema.parse(thirtyOne));
+export function thirtyTwoToJSON(thirtyTwo: ThirtyTwo): string {
+  return JSON.stringify(ThirtyTwo$outboundSchema.parse(thirtyTwo));
 }
 
-export function thirtyOneFromJSON(
+export function thirtyTwoFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyOne, SDKValidationError> {
+): SafeParseResult<ThirtyTwo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyOne' from JSON`,
+    (x) => ThirtyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyTwo' from JSON`,
   );
 }
 
 /** @internal */
-export const UserEventPayload30Team$inboundSchema: z.ZodType<
-  UserEventPayload30Team,
+export const UserEventPayload31Team$inboundSchema: z.ZodType<
+  UserEventPayload31Team,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -28342,16 +28358,16 @@ export const UserEventPayload30Team$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type UserEventPayload30Team$Outbound = {
+export type UserEventPayload31Team$Outbound = {
   id: string;
   name: string;
 };
 
 /** @internal */
-export const UserEventPayload30Team$outboundSchema: z.ZodType<
-  UserEventPayload30Team$Outbound,
+export const UserEventPayload31Team$outboundSchema: z.ZodType<
+  UserEventPayload31Team$Outbound,
   z.ZodTypeDef,
-  UserEventPayload30Team
+  UserEventPayload31Team
 > = z.object({
   id: z.string(),
   name: z.string(),
@@ -28361,30 +28377,30 @@ export const UserEventPayload30Team$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UserEventPayload30Team$ {
-  /** @deprecated use `UserEventPayload30Team$inboundSchema` instead. */
-  export const inboundSchema = UserEventPayload30Team$inboundSchema;
-  /** @deprecated use `UserEventPayload30Team$outboundSchema` instead. */
-  export const outboundSchema = UserEventPayload30Team$outboundSchema;
-  /** @deprecated use `UserEventPayload30Team$Outbound` instead. */
-  export type Outbound = UserEventPayload30Team$Outbound;
+export namespace UserEventPayload31Team$ {
+  /** @deprecated use `UserEventPayload31Team$inboundSchema` instead. */
+  export const inboundSchema = UserEventPayload31Team$inboundSchema;
+  /** @deprecated use `UserEventPayload31Team$outboundSchema` instead. */
+  export const outboundSchema = UserEventPayload31Team$outboundSchema;
+  /** @deprecated use `UserEventPayload31Team$Outbound` instead. */
+  export type Outbound = UserEventPayload31Team$Outbound;
 }
 
-export function userEventPayload30TeamToJSON(
-  userEventPayload30Team: UserEventPayload30Team,
+export function userEventPayload31TeamToJSON(
+  userEventPayload31Team: UserEventPayload31Team,
 ): string {
   return JSON.stringify(
-    UserEventPayload30Team$outboundSchema.parse(userEventPayload30Team),
+    UserEventPayload31Team$outboundSchema.parse(userEventPayload31Team),
   );
 }
 
-export function userEventPayload30TeamFromJSON(
+export function userEventPayload31TeamFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload30Team, SDKValidationError> {
+): SafeParseResult<UserEventPayload31Team, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload30Team$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload30Team' from JSON`,
+    (x) => UserEventPayload31Team$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload31Team' from JSON`,
   );
 }
 
@@ -28495,20 +28511,73 @@ export function payloadProjectFromJSON(
 }
 
 /** @internal */
+export const ThirtyOne$inboundSchema: z.ZodType<
+  ThirtyOne,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  team: z.lazy(() => UserEventPayload31Team$inboundSchema),
+  configuration: z.lazy(() => Configuration$inboundSchema),
+  project: z.lazy(() => PayloadProject$inboundSchema),
+  buildsEnabled: z.boolean().optional(),
+});
+
+/** @internal */
+export type ThirtyOne$Outbound = {
+  team: UserEventPayload31Team$Outbound;
+  configuration: Configuration$Outbound;
+  project: PayloadProject$Outbound;
+  buildsEnabled?: boolean | undefined;
+};
+
+/** @internal */
+export const ThirtyOne$outboundSchema: z.ZodType<
+  ThirtyOne$Outbound,
+  z.ZodTypeDef,
+  ThirtyOne
+> = z.object({
+  team: z.lazy(() => UserEventPayload31Team$outboundSchema),
+  configuration: z.lazy(() => Configuration$outboundSchema),
+  project: z.lazy(() => PayloadProject$outboundSchema),
+  buildsEnabled: z.boolean().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ThirtyOne$ {
+  /** @deprecated use `ThirtyOne$inboundSchema` instead. */
+  export const inboundSchema = ThirtyOne$inboundSchema;
+  /** @deprecated use `ThirtyOne$outboundSchema` instead. */
+  export const outboundSchema = ThirtyOne$outboundSchema;
+  /** @deprecated use `ThirtyOne$Outbound` instead. */
+  export type Outbound = ThirtyOne$Outbound;
+}
+
+export function thirtyOneToJSON(thirtyOne: ThirtyOne): string {
+  return JSON.stringify(ThirtyOne$outboundSchema.parse(thirtyOne));
+}
+
+export function thirtyOneFromJSON(
+  jsonString: string,
+): SafeParseResult<ThirtyOne, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThirtyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyOne' from JSON`,
+  );
+}
+
+/** @internal */
 export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> = z
   .object({
-    team: z.lazy(() => UserEventPayload30Team$inboundSchema),
-    configuration: z.lazy(() => Configuration$inboundSchema),
-    project: z.lazy(() => PayloadProject$inboundSchema),
-    buildsEnabled: z.boolean().optional(),
+    suffix: z.string(),
   });
 
 /** @internal */
 export type Thirty$Outbound = {
-  team: UserEventPayload30Team$Outbound;
-  configuration: Configuration$Outbound;
-  project: PayloadProject$Outbound;
-  buildsEnabled?: boolean | undefined;
+  suffix: string;
 };
 
 /** @internal */
@@ -28517,10 +28586,7 @@ export const Thirty$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Thirty
 > = z.object({
-  team: z.lazy(() => UserEventPayload30Team$outboundSchema),
-  configuration: z.lazy(() => Configuration$outboundSchema),
-  project: z.lazy(() => PayloadProject$outboundSchema),
-  buildsEnabled: z.boolean().optional(),
+  suffix: z.string(),
 });
 
 /**
@@ -28556,11 +28622,13 @@ export const TwentyNine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  status: z.string(),
   suffix: z.string(),
 });
 
 /** @internal */
 export type TwentyNine$Outbound = {
+  status: string;
   suffix: string;
 };
 
@@ -28570,6 +28638,7 @@ export const TwentyNine$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TwentyNine
 > = z.object({
+  status: z.string(),
   suffix: z.string(),
 });
 
@@ -28606,13 +28675,13 @@ export const TwentyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  status: z.string(),
+  reason: z.string().optional(),
   suffix: z.string(),
 });
 
 /** @internal */
 export type TwentyEight$Outbound = {
-  status: string;
+  reason?: string | undefined;
   suffix: string;
 };
 
@@ -28622,7 +28691,7 @@ export const TwentyEight$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TwentyEight
 > = z.object({
-  status: z.string(),
+  reason: z.string().optional(),
   suffix: z.string(),
 });
 
@@ -28659,14 +28728,18 @@ export const TwentySeven$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  reason: z.string().optional(),
-  suffix: z.string(),
+  projectId: z.string().optional(),
+  projectName: z.string().optional(),
+  certId: z.string().optional(),
+  origin: z.string().optional(),
 });
 
 /** @internal */
 export type TwentySeven$Outbound = {
-  reason?: string | undefined;
-  suffix: string;
+  projectId?: string | undefined;
+  projectName?: string | undefined;
+  certId?: string | undefined;
+  origin?: string | undefined;
 };
 
 /** @internal */
@@ -28675,8 +28748,10 @@ export const TwentySeven$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   TwentySeven
 > = z.object({
-  reason: z.string().optional(),
-  suffix: z.string(),
+  projectId: z.string().optional(),
+  projectName: z.string().optional(),
+  certId: z.string().optional(),
+  origin: z.string().optional(),
 });
 
 /**
@@ -30783,147 +30858,147 @@ export function payload1FromJSON(
 /** @internal */
 export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
   z.union([
-    z.lazy(() => SeventyOne$inboundSchema),
-    z.lazy(() => SixtySeven$inboundSchema),
-    z.lazy(() => Seventy$inboundSchema),
-    z.lazy(() => FortyOne$inboundSchema),
-    z.lazy(() => FortyTwo$inboundSchema),
-    z.lazy(() => FiftyFour$inboundSchema),
-    z.lazy(() => FiftyNine$inboundSchema),
-    z.lazy(() => SixtyFive$inboundSchema),
+    z.lazy(() => SeventyTwo$inboundSchema),
     z.lazy(() => SixtyEight$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyFive$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
-    z.lazy(() => Payload2$inboundSchema),
-    z.lazy(() => FortySix$inboundSchema),
+    z.lazy(() => SeventyOne$inboundSchema),
+    z.lazy(() => FortyTwo$inboundSchema),
+    z.lazy(() => FortyThree$inboundSchema),
+    z.lazy(() => FiftyFive$inboundSchema),
+    z.lazy(() => Sixty$inboundSchema),
+    z.lazy(() => SixtySix$inboundSchema),
     z.lazy(() => SixtyNine$inboundSchema),
-    z.lazy(() => OneHundredAndFour$inboundSchema),
-    z.lazy(() => OneHundredAndFortySix$inboundSchema),
+    z.lazy(() => OneHundredAndThirtySix$inboundSchema),
+    z.lazy(() => OneHundredAndSixtySix$inboundSchema),
+    z.lazy(() => Payload2$inboundSchema),
+    z.lazy(() => FortySeven$inboundSchema),
+    z.lazy(() => Seventy$inboundSchema),
+    z.lazy(() => OneHundredAndFive$inboundSchema),
+    z.lazy(() => OneHundredAndFortySeven$inboundSchema),
     z.lazy(() => Twelve$inboundSchema),
     z.lazy(() => Sixteen$inboundSchema),
-    z.lazy(() => Thirty$inboundSchema),
     z.lazy(() => ThirtyOne$inboundSchema),
     z.lazy(() => ThirtyTwo$inboundSchema),
     z.lazy(() => ThirtyThree$inboundSchema),
-    z.lazy(() => Forty$inboundSchema),
-    z.lazy(() => FortyNine$inboundSchema),
+    z.lazy(() => ThirtyFour$inboundSchema),
+    z.lazy(() => FortyOne$inboundSchema),
     z.lazy(() => Fifty$inboundSchema),
     z.lazy(() => FiftyOne$inboundSchema),
-    z.lazy(() => Sixty$inboundSchema),
+    z.lazy(() => FiftyTwo$inboundSchema),
     z.lazy(() => SixtyOne$inboundSchema),
     z.lazy(() => SixtyTwo$inboundSchema),
-    z.lazy(() => SixtyFour$inboundSchema),
-    z.lazy(() => SeventyFive$inboundSchema),
-    z.lazy(() => SeventyNine$inboundSchema),
-    z.lazy(() => EightyTwo$inboundSchema),
+    z.lazy(() => SixtyThree$inboundSchema),
+    z.lazy(() => SixtyFive$inboundSchema),
+    z.lazy(() => SeventySix$inboundSchema),
+    z.lazy(() => Eighty$inboundSchema),
     z.lazy(() => EightyThree$inboundSchema),
-    z.lazy(() => NinetyFive$inboundSchema),
-    z.lazy(() => OneHundredAndThirteen$inboundSchema),
-    z.lazy(() => OneHundredAndThirtySeven$inboundSchema),
+    z.lazy(() => EightyFour$inboundSchema),
+    z.lazy(() => NinetySix$inboundSchema),
+    z.lazy(() => OneHundredAndFourteen$inboundSchema),
     z.lazy(() => OneHundredAndThirtyEight$inboundSchema),
-    z.lazy(() => OneHundredAndFortyFive$inboundSchema),
-    z.lazy(() => OneHundredAndFortySeven$inboundSchema),
-    z.lazy(() => OneHundredAndFortyNine$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyTwo$inboundSchema),
+    z.lazy(() => OneHundredAndThirtyNine$inboundSchema),
+    z.lazy(() => OneHundredAndFortySix$inboundSchema),
+    z.lazy(() => OneHundredAndFortyEight$inboundSchema),
+    z.lazy(() => OneHundredAndFifty$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyThree$inboundSchema),
     z.lazy(() => OneHundredAndSixtyThree$inboundSchema),
     z.lazy(() => OneHundredAndSixtyFour$inboundSchema),
+    z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
     z.lazy(() => Four$inboundSchema),
     z.lazy(() => Five$inboundSchema),
     z.lazy(() => Six$inboundSchema),
     z.lazy(() => Seventeen$inboundSchema),
     z.lazy(() => Eighteen$inboundSchema),
     z.lazy(() => TwentyThree$inboundSchema),
-    z.lazy(() => TwentyEight$inboundSchema),
-    z.lazy(() => ThirtyFive$inboundSchema),
+    z.lazy(() => TwentyNine$inboundSchema),
     z.lazy(() => ThirtySix$inboundSchema),
     z.lazy(() => ThirtySeven$inboundSchema),
-    z.lazy(() => FortyFour$inboundSchema),
+    z.lazy(() => ThirtyEight$inboundSchema),
     z.lazy(() => FortyFive$inboundSchema),
-    z.lazy(() => FortyEight$inboundSchema),
-    z.lazy(() => FiftyFive$inboundSchema),
-    z.lazy(() => SixtyThree$inboundSchema),
-    z.lazy(() => SixtySix$inboundSchema),
-    z.lazy(() => SeventyEight$inboundSchema),
-    z.lazy(() => EightySix$inboundSchema),
+    z.lazy(() => FortySix$inboundSchema),
+    z.lazy(() => FortyNine$inboundSchema),
+    z.lazy(() => FiftySix$inboundSchema),
+    z.lazy(() => SixtyFour$inboundSchema),
+    z.lazy(() => SixtySeven$inboundSchema),
+    z.lazy(() => SeventyNine$inboundSchema),
     z.lazy(() => EightySeven$inboundSchema),
     z.lazy(() => EightyEight$inboundSchema),
-    z.lazy(() => NinetyOne$inboundSchema),
+    z.lazy(() => EightyNine$inboundSchema),
     z.lazy(() => NinetyTwo$inboundSchema),
     z.lazy(() => NinetyThree$inboundSchema),
     z.lazy(() => NinetyFour$inboundSchema),
-    z.lazy(() => NinetySix$inboundSchema),
+    z.lazy(() => NinetyFive$inboundSchema),
     z.lazy(() => NinetySeven$inboundSchema),
-    z.lazy(() => OneHundred$inboundSchema),
+    z.lazy(() => NinetyEight$inboundSchema),
     z.lazy(() => OneHundredAndOne$inboundSchema),
     z.lazy(() => OneHundredAndTwo$inboundSchema),
-    z.lazy(() => OneHundredAndNine$inboundSchema),
-    z.lazy(() => OneHundredAndEighteen$inboundSchema),
+    z.lazy(() => OneHundredAndThree$inboundSchema),
+    z.lazy(() => OneHundredAndTen$inboundSchema),
     z.lazy(() => OneHundredAndNineteen$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyFour$inboundSchema),
+    z.lazy(() => OneHundredAndTwenty$inboundSchema),
     z.lazy(() => OneHundredAndTwentyFive$inboundSchema),
-    z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
-    z.lazy(() => OneHundredAndThirtySix$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyNine$inboundSchema),
+    z.lazy(() => OneHundredAndTwentySix$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyEight$inboundSchema),
+    z.lazy(() => OneHundredAndThirtySeven$inboundSchema),
     z.lazy(() => OneHundredAndForty$inboundSchema),
     z.lazy(() => OneHundredAndFortyOne$inboundSchema),
-    z.lazy(() => OneHundredAndFortyThree$inboundSchema),
+    z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
     z.lazy(() => OneHundredAndFortyFour$inboundSchema),
-    z.lazy(() => OneHundredAndFifty$inboundSchema),
+    z.lazy(() => OneHundredAndFortyFive$inboundSchema),
     z.lazy(() => OneHundredAndFiftyOne$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyThree$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyFive$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyTwo$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
     z.lazy(() => OneHundredAndFiftySix$inboundSchema),
     z.lazy(() => OneHundredAndFiftySeven$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyNine$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
+    z.lazy(() => OneHundredAndSixty$inboundSchema),
     z.lazy(() => Three$inboundSchema),
     z.lazy(() => Fifteen$inboundSchema),
     z.lazy(() => Twenty$inboundSchema),
     z.lazy(() => TwentyTwo$inboundSchema),
     z.lazy(() => TwentyFour$inboundSchema),
-    z.lazy(() => TwentySeven$inboundSchema),
-    z.lazy(() => TwentyNine$inboundSchema),
-    z.lazy(() => ThirtyFour$inboundSchema),
-    z.lazy(() => ThirtyEight$inboundSchema),
+    z.lazy(() => TwentyEight$inboundSchema),
+    z.lazy(() => Thirty$inboundSchema),
+    z.lazy(() => ThirtyFive$inboundSchema),
     z.lazy(() => ThirtyNine$inboundSchema),
-    z.lazy(() => FortyThree$inboundSchema),
-    z.lazy(() => FortySeven$inboundSchema),
-    z.lazy(() => FiftyTwo$inboundSchema),
+    z.lazy(() => Forty$inboundSchema),
+    z.lazy(() => FortyFour$inboundSchema),
+    z.lazy(() => FortyEight$inboundSchema),
     z.lazy(() => FiftyThree$inboundSchema),
-    z.lazy(() => SeventyTwo$inboundSchema),
+    z.lazy(() => FiftyFour$inboundSchema),
     z.lazy(() => SeventyThree$inboundSchema),
     z.lazy(() => SeventyFour$inboundSchema),
-    z.lazy(() => SeventySix$inboundSchema),
+    z.lazy(() => SeventyFive$inboundSchema),
     z.lazy(() => SeventySeven$inboundSchema),
-    z.lazy(() => Eighty$inboundSchema),
+    z.lazy(() => SeventyEight$inboundSchema),
     z.lazy(() => EightyOne$inboundSchema),
-    z.lazy(() => EightyFour$inboundSchema),
+    z.lazy(() => EightyTwo$inboundSchema),
     z.lazy(() => EightyFive$inboundSchema),
-    z.lazy(() => EightyNine$inboundSchema),
+    z.lazy(() => EightySix$inboundSchema),
     z.lazy(() => Ninety$inboundSchema),
-    z.lazy(() => NinetyEight$inboundSchema),
+    z.lazy(() => NinetyOne$inboundSchema),
     z.lazy(() => NinetyNine$inboundSchema),
-    z.lazy(() => OneHundredAndThree$inboundSchema),
-    z.lazy(() => OneHundredAndFive$inboundSchema),
+    z.lazy(() => OneHundred$inboundSchema),
+    z.lazy(() => OneHundredAndFour$inboundSchema),
     z.lazy(() => OneHundredAndSix$inboundSchema),
     z.lazy(() => OneHundredAndSeven$inboundSchema),
-    z.lazy(() => OneHundredAndTen$inboundSchema),
+    z.lazy(() => OneHundredAndEight$inboundSchema),
     z.lazy(() => OneHundredAndEleven$inboundSchema),
     z.lazy(() => OneHundredAndTwelve$inboundSchema),
-    z.lazy(() => OneHundredAndSixteen$inboundSchema),
+    z.lazy(() => OneHundredAndThirteen$inboundSchema),
     z.lazy(() => OneHundredAndSeventeen$inboundSchema),
-    z.lazy(() => OneHundredAndTwenty$inboundSchema),
-    z.lazy(() => OneHundredAndTwentySix$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyEight$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyTwo$inboundSchema),
+    z.lazy(() => OneHundredAndEighteen$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
+    z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyNine$inboundSchema),
     z.lazy(() => OneHundredAndThirtyThree$inboundSchema),
     z.lazy(() => OneHundredAndThirtyFour$inboundSchema),
-    z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndFortyEight$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
-    z.lazy(() => OneHundredAndSixty$inboundSchema),
+    z.lazy(() => OneHundredAndThirtyFive$inboundSchema),
+    z.lazy(() => OneHundredAndFortyThree$inboundSchema),
+    z.lazy(() => OneHundredAndFortyNine$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyFive$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyNine$inboundSchema),
     z.lazy(() => OneHundredAndSixtyOne$inboundSchema),
+    z.lazy(() => OneHundredAndSixtyTwo$inboundSchema),
     z.lazy(() => Payload1$inboundSchema),
     z.lazy(() => Seven$inboundSchema),
     z.lazy(() => Eight$inboundSchema),
@@ -30936,163 +31011,164 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => TwentyOne$inboundSchema),
     z.lazy(() => TwentyFive$inboundSchema),
     z.lazy(() => TwentySix$inboundSchema),
-    z.lazy(() => FiftySix$inboundSchema),
+    z.lazy(() => TwentySeven$inboundSchema),
     z.lazy(() => FiftySeven$inboundSchema),
     z.lazy(() => FiftyEight$inboundSchema),
-    z.lazy(() => OneHundredAndEight$inboundSchema),
-    z.lazy(() => OneHundredAndFourteen$inboundSchema),
+    z.lazy(() => FiftyNine$inboundSchema),
+    z.lazy(() => OneHundredAndNine$inboundSchema),
     z.lazy(() => OneHundredAndFifteen$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
+    z.lazy(() => OneHundredAndSixteen$inboundSchema),
     z.lazy(() => OneHundredAndTwentyTwo$inboundSchema),
     z.lazy(() => OneHundredAndTwentyThree$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyNine$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyFour$inboundSchema),
     z.lazy(() => OneHundredAndThirty$inboundSchema),
     z.lazy(() => OneHundredAndThirtyOne$inboundSchema),
+    z.lazy(() => OneHundredAndThirtyTwo$inboundSchema),
   ]);
 
 /** @internal */
 export type Payload$Outbound =
-  | SeventyOne$Outbound
-  | SixtySeven$Outbound
-  | Seventy$Outbound
-  | FortyOne$Outbound
-  | FortyTwo$Outbound
-  | FiftyFour$Outbound
-  | FiftyNine$Outbound
-  | SixtyFive$Outbound
+  | SeventyTwo$Outbound
   | SixtyEight$Outbound
-  | OneHundredAndThirtyFive$Outbound
-  | OneHundredAndSixtyFive$Outbound
-  | Payload2$Outbound
-  | FortySix$Outbound
+  | SeventyOne$Outbound
+  | FortyTwo$Outbound
+  | FortyThree$Outbound
+  | FiftyFive$Outbound
+  | Sixty$Outbound
+  | SixtySix$Outbound
   | SixtyNine$Outbound
-  | OneHundredAndFour$Outbound
-  | OneHundredAndFortySix$Outbound
+  | OneHundredAndThirtySix$Outbound
+  | OneHundredAndSixtySix$Outbound
+  | Payload2$Outbound
+  | FortySeven$Outbound
+  | Seventy$Outbound
+  | OneHundredAndFive$Outbound
+  | OneHundredAndFortySeven$Outbound
   | Twelve$Outbound
   | Sixteen$Outbound
-  | Thirty$Outbound
   | ThirtyOne$Outbound
   | ThirtyTwo$Outbound
   | ThirtyThree$Outbound
-  | Forty$Outbound
-  | FortyNine$Outbound
+  | ThirtyFour$Outbound
+  | FortyOne$Outbound
   | Fifty$Outbound
   | FiftyOne$Outbound
-  | Sixty$Outbound
+  | FiftyTwo$Outbound
   | SixtyOne$Outbound
   | SixtyTwo$Outbound
-  | SixtyFour$Outbound
-  | SeventyFive$Outbound
-  | SeventyNine$Outbound
-  | EightyTwo$Outbound
+  | SixtyThree$Outbound
+  | SixtyFive$Outbound
+  | SeventySix$Outbound
+  | Eighty$Outbound
   | EightyThree$Outbound
-  | NinetyFive$Outbound
-  | OneHundredAndThirteen$Outbound
-  | OneHundredAndThirtySeven$Outbound
+  | EightyFour$Outbound
+  | NinetySix$Outbound
+  | OneHundredAndFourteen$Outbound
   | OneHundredAndThirtyEight$Outbound
-  | OneHundredAndFortyFive$Outbound
-  | OneHundredAndFortySeven$Outbound
-  | OneHundredAndFortyNine$Outbound
-  | OneHundredAndFiftyTwo$Outbound
-  | OneHundredAndSixtyTwo$Outbound
+  | OneHundredAndThirtyNine$Outbound
+  | OneHundredAndFortySix$Outbound
+  | OneHundredAndFortyEight$Outbound
+  | OneHundredAndFifty$Outbound
+  | OneHundredAndFiftyThree$Outbound
   | OneHundredAndSixtyThree$Outbound
   | OneHundredAndSixtyFour$Outbound
+  | OneHundredAndSixtyFive$Outbound
   | Four$Outbound
   | Five$Outbound
   | Six$Outbound
   | Seventeen$Outbound
   | Eighteen$Outbound
   | TwentyThree$Outbound
-  | TwentyEight$Outbound
-  | ThirtyFive$Outbound
+  | TwentyNine$Outbound
   | ThirtySix$Outbound
   | ThirtySeven$Outbound
-  | FortyFour$Outbound
+  | ThirtyEight$Outbound
   | FortyFive$Outbound
-  | FortyEight$Outbound
-  | FiftyFive$Outbound
-  | SixtyThree$Outbound
-  | SixtySix$Outbound
-  | SeventyEight$Outbound
-  | EightySix$Outbound
+  | FortySix$Outbound
+  | FortyNine$Outbound
+  | FiftySix$Outbound
+  | SixtyFour$Outbound
+  | SixtySeven$Outbound
+  | SeventyNine$Outbound
   | EightySeven$Outbound
   | EightyEight$Outbound
-  | NinetyOne$Outbound
+  | EightyNine$Outbound
   | NinetyTwo$Outbound
   | NinetyThree$Outbound
   | NinetyFour$Outbound
-  | NinetySix$Outbound
+  | NinetyFive$Outbound
   | NinetySeven$Outbound
-  | OneHundred$Outbound
+  | NinetyEight$Outbound
   | OneHundredAndOne$Outbound
   | OneHundredAndTwo$Outbound
-  | OneHundredAndNine$Outbound
-  | OneHundredAndEighteen$Outbound
+  | OneHundredAndThree$Outbound
+  | OneHundredAndTen$Outbound
   | OneHundredAndNineteen$Outbound
-  | OneHundredAndTwentyFour$Outbound
+  | OneHundredAndTwenty$Outbound
   | OneHundredAndTwentyFive$Outbound
-  | OneHundredAndTwentySeven$Outbound
-  | OneHundredAndThirtySix$Outbound
-  | OneHundredAndThirtyNine$Outbound
+  | OneHundredAndTwentySix$Outbound
+  | OneHundredAndTwentyEight$Outbound
+  | OneHundredAndThirtySeven$Outbound
   | OneHundredAndForty$Outbound
   | OneHundredAndFortyOne$Outbound
-  | OneHundredAndFortyThree$Outbound
+  | OneHundredAndFortyTwo$Outbound
   | OneHundredAndFortyFour$Outbound
-  | OneHundredAndFifty$Outbound
+  | OneHundredAndFortyFive$Outbound
   | OneHundredAndFiftyOne$Outbound
-  | OneHundredAndFiftyThree$Outbound
-  | OneHundredAndFiftyFive$Outbound
+  | OneHundredAndFiftyTwo$Outbound
+  | OneHundredAndFiftyFour$Outbound
   | OneHundredAndFiftySix$Outbound
   | OneHundredAndFiftySeven$Outbound
-  | OneHundredAndFiftyNine$Outbound
+  | OneHundredAndFiftyEight$Outbound
+  | OneHundredAndSixty$Outbound
   | Three$Outbound
   | Fifteen$Outbound
   | Twenty$Outbound
   | TwentyTwo$Outbound
   | TwentyFour$Outbound
-  | TwentySeven$Outbound
-  | TwentyNine$Outbound
-  | ThirtyFour$Outbound
-  | ThirtyEight$Outbound
+  | TwentyEight$Outbound
+  | Thirty$Outbound
+  | ThirtyFive$Outbound
   | ThirtyNine$Outbound
-  | FortyThree$Outbound
-  | FortySeven$Outbound
-  | FiftyTwo$Outbound
+  | Forty$Outbound
+  | FortyFour$Outbound
+  | FortyEight$Outbound
   | FiftyThree$Outbound
-  | SeventyTwo$Outbound
+  | FiftyFour$Outbound
   | SeventyThree$Outbound
   | SeventyFour$Outbound
-  | SeventySix$Outbound
+  | SeventyFive$Outbound
   | SeventySeven$Outbound
-  | Eighty$Outbound
+  | SeventyEight$Outbound
   | EightyOne$Outbound
-  | EightyFour$Outbound
+  | EightyTwo$Outbound
   | EightyFive$Outbound
-  | EightyNine$Outbound
+  | EightySix$Outbound
   | Ninety$Outbound
-  | NinetyEight$Outbound
+  | NinetyOne$Outbound
   | NinetyNine$Outbound
-  | OneHundredAndThree$Outbound
-  | OneHundredAndFive$Outbound
+  | OneHundred$Outbound
+  | OneHundredAndFour$Outbound
   | OneHundredAndSix$Outbound
   | OneHundredAndSeven$Outbound
-  | OneHundredAndTen$Outbound
+  | OneHundredAndEight$Outbound
   | OneHundredAndEleven$Outbound
   | OneHundredAndTwelve$Outbound
-  | OneHundredAndSixteen$Outbound
+  | OneHundredAndThirteen$Outbound
   | OneHundredAndSeventeen$Outbound
-  | OneHundredAndTwenty$Outbound
-  | OneHundredAndTwentySix$Outbound
-  | OneHundredAndTwentyEight$Outbound
-  | OneHundredAndThirtyTwo$Outbound
+  | OneHundredAndEighteen$Outbound
+  | OneHundredAndTwentyOne$Outbound
+  | OneHundredAndTwentySeven$Outbound
+  | OneHundredAndTwentyNine$Outbound
   | OneHundredAndThirtyThree$Outbound
   | OneHundredAndThirtyFour$Outbound
-  | OneHundredAndFortyTwo$Outbound
-  | OneHundredAndFortyEight$Outbound
-  | OneHundredAndFiftyFour$Outbound
-  | OneHundredAndFiftyEight$Outbound
-  | OneHundredAndSixty$Outbound
+  | OneHundredAndThirtyFive$Outbound
+  | OneHundredAndFortyThree$Outbound
+  | OneHundredAndFortyNine$Outbound
+  | OneHundredAndFiftyFive$Outbound
+  | OneHundredAndFiftyNine$Outbound
   | OneHundredAndSixtyOne$Outbound
+  | OneHundredAndSixtyTwo$Outbound
   | Payload1$Outbound
   | Seven$Outbound
   | Eight$Outbound
@@ -31105,18 +31181,19 @@ export type Payload$Outbound =
   | TwentyOne$Outbound
   | TwentyFive$Outbound
   | TwentySix$Outbound
-  | FiftySix$Outbound
+  | TwentySeven$Outbound
   | FiftySeven$Outbound
   | FiftyEight$Outbound
-  | OneHundredAndEight$Outbound
-  | OneHundredAndFourteen$Outbound
+  | FiftyNine$Outbound
+  | OneHundredAndNine$Outbound
   | OneHundredAndFifteen$Outbound
-  | OneHundredAndTwentyOne$Outbound
+  | OneHundredAndSixteen$Outbound
   | OneHundredAndTwentyTwo$Outbound
   | OneHundredAndTwentyThree$Outbound
-  | OneHundredAndTwentyNine$Outbound
+  | OneHundredAndTwentyFour$Outbound
   | OneHundredAndThirty$Outbound
-  | OneHundredAndThirtyOne$Outbound;
+  | OneHundredAndThirtyOne$Outbound
+  | OneHundredAndThirtyTwo$Outbound;
 
 /** @internal */
 export const Payload$outboundSchema: z.ZodType<
@@ -31124,147 +31201,147 @@ export const Payload$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Payload
 > = z.union([
-  z.lazy(() => SeventyOne$outboundSchema),
-  z.lazy(() => SixtySeven$outboundSchema),
-  z.lazy(() => Seventy$outboundSchema),
-  z.lazy(() => FortyOne$outboundSchema),
-  z.lazy(() => FortyTwo$outboundSchema),
-  z.lazy(() => FiftyFour$outboundSchema),
-  z.lazy(() => FiftyNine$outboundSchema),
-  z.lazy(() => SixtyFive$outboundSchema),
+  z.lazy(() => SeventyTwo$outboundSchema),
   z.lazy(() => SixtyEight$outboundSchema),
-  z.lazy(() => OneHundredAndThirtyFive$outboundSchema),
-  z.lazy(() => OneHundredAndSixtyFive$outboundSchema),
-  z.lazy(() => Payload2$outboundSchema),
-  z.lazy(() => FortySix$outboundSchema),
+  z.lazy(() => SeventyOne$outboundSchema),
+  z.lazy(() => FortyTwo$outboundSchema),
+  z.lazy(() => FortyThree$outboundSchema),
+  z.lazy(() => FiftyFive$outboundSchema),
+  z.lazy(() => Sixty$outboundSchema),
+  z.lazy(() => SixtySix$outboundSchema),
   z.lazy(() => SixtyNine$outboundSchema),
-  z.lazy(() => OneHundredAndFour$outboundSchema),
-  z.lazy(() => OneHundredAndFortySix$outboundSchema),
+  z.lazy(() => OneHundredAndThirtySix$outboundSchema),
+  z.lazy(() => OneHundredAndSixtySix$outboundSchema),
+  z.lazy(() => Payload2$outboundSchema),
+  z.lazy(() => FortySeven$outboundSchema),
+  z.lazy(() => Seventy$outboundSchema),
+  z.lazy(() => OneHundredAndFive$outboundSchema),
+  z.lazy(() => OneHundredAndFortySeven$outboundSchema),
   z.lazy(() => Twelve$outboundSchema),
   z.lazy(() => Sixteen$outboundSchema),
-  z.lazy(() => Thirty$outboundSchema),
   z.lazy(() => ThirtyOne$outboundSchema),
   z.lazy(() => ThirtyTwo$outboundSchema),
   z.lazy(() => ThirtyThree$outboundSchema),
-  z.lazy(() => Forty$outboundSchema),
-  z.lazy(() => FortyNine$outboundSchema),
+  z.lazy(() => ThirtyFour$outboundSchema),
+  z.lazy(() => FortyOne$outboundSchema),
   z.lazy(() => Fifty$outboundSchema),
   z.lazy(() => FiftyOne$outboundSchema),
-  z.lazy(() => Sixty$outboundSchema),
+  z.lazy(() => FiftyTwo$outboundSchema),
   z.lazy(() => SixtyOne$outboundSchema),
   z.lazy(() => SixtyTwo$outboundSchema),
-  z.lazy(() => SixtyFour$outboundSchema),
-  z.lazy(() => SeventyFive$outboundSchema),
-  z.lazy(() => SeventyNine$outboundSchema),
-  z.lazy(() => EightyTwo$outboundSchema),
+  z.lazy(() => SixtyThree$outboundSchema),
+  z.lazy(() => SixtyFive$outboundSchema),
+  z.lazy(() => SeventySix$outboundSchema),
+  z.lazy(() => Eighty$outboundSchema),
   z.lazy(() => EightyThree$outboundSchema),
-  z.lazy(() => NinetyFive$outboundSchema),
-  z.lazy(() => OneHundredAndThirteen$outboundSchema),
-  z.lazy(() => OneHundredAndThirtySeven$outboundSchema),
+  z.lazy(() => EightyFour$outboundSchema),
+  z.lazy(() => NinetySix$outboundSchema),
+  z.lazy(() => OneHundredAndFourteen$outboundSchema),
   z.lazy(() => OneHundredAndThirtyEight$outboundSchema),
-  z.lazy(() => OneHundredAndFortyFive$outboundSchema),
-  z.lazy(() => OneHundredAndFortySeven$outboundSchema),
-  z.lazy(() => OneHundredAndFortyNine$outboundSchema),
-  z.lazy(() => OneHundredAndFiftyTwo$outboundSchema),
-  z.lazy(() => OneHundredAndSixtyTwo$outboundSchema),
+  z.lazy(() => OneHundredAndThirtyNine$outboundSchema),
+  z.lazy(() => OneHundredAndFortySix$outboundSchema),
+  z.lazy(() => OneHundredAndFortyEight$outboundSchema),
+  z.lazy(() => OneHundredAndFifty$outboundSchema),
+  z.lazy(() => OneHundredAndFiftyThree$outboundSchema),
   z.lazy(() => OneHundredAndSixtyThree$outboundSchema),
   z.lazy(() => OneHundredAndSixtyFour$outboundSchema),
+  z.lazy(() => OneHundredAndSixtyFive$outboundSchema),
   z.lazy(() => Four$outboundSchema),
   z.lazy(() => Five$outboundSchema),
   z.lazy(() => Six$outboundSchema),
   z.lazy(() => Seventeen$outboundSchema),
   z.lazy(() => Eighteen$outboundSchema),
   z.lazy(() => TwentyThree$outboundSchema),
-  z.lazy(() => TwentyEight$outboundSchema),
-  z.lazy(() => ThirtyFive$outboundSchema),
+  z.lazy(() => TwentyNine$outboundSchema),
   z.lazy(() => ThirtySix$outboundSchema),
   z.lazy(() => ThirtySeven$outboundSchema),
-  z.lazy(() => FortyFour$outboundSchema),
+  z.lazy(() => ThirtyEight$outboundSchema),
   z.lazy(() => FortyFive$outboundSchema),
-  z.lazy(() => FortyEight$outboundSchema),
-  z.lazy(() => FiftyFive$outboundSchema),
-  z.lazy(() => SixtyThree$outboundSchema),
-  z.lazy(() => SixtySix$outboundSchema),
-  z.lazy(() => SeventyEight$outboundSchema),
-  z.lazy(() => EightySix$outboundSchema),
+  z.lazy(() => FortySix$outboundSchema),
+  z.lazy(() => FortyNine$outboundSchema),
+  z.lazy(() => FiftySix$outboundSchema),
+  z.lazy(() => SixtyFour$outboundSchema),
+  z.lazy(() => SixtySeven$outboundSchema),
+  z.lazy(() => SeventyNine$outboundSchema),
   z.lazy(() => EightySeven$outboundSchema),
   z.lazy(() => EightyEight$outboundSchema),
-  z.lazy(() => NinetyOne$outboundSchema),
+  z.lazy(() => EightyNine$outboundSchema),
   z.lazy(() => NinetyTwo$outboundSchema),
   z.lazy(() => NinetyThree$outboundSchema),
   z.lazy(() => NinetyFour$outboundSchema),
-  z.lazy(() => NinetySix$outboundSchema),
+  z.lazy(() => NinetyFive$outboundSchema),
   z.lazy(() => NinetySeven$outboundSchema),
-  z.lazy(() => OneHundred$outboundSchema),
+  z.lazy(() => NinetyEight$outboundSchema),
   z.lazy(() => OneHundredAndOne$outboundSchema),
   z.lazy(() => OneHundredAndTwo$outboundSchema),
-  z.lazy(() => OneHundredAndNine$outboundSchema),
-  z.lazy(() => OneHundredAndEighteen$outboundSchema),
+  z.lazy(() => OneHundredAndThree$outboundSchema),
+  z.lazy(() => OneHundredAndTen$outboundSchema),
   z.lazy(() => OneHundredAndNineteen$outboundSchema),
-  z.lazy(() => OneHundredAndTwentyFour$outboundSchema),
+  z.lazy(() => OneHundredAndTwenty$outboundSchema),
   z.lazy(() => OneHundredAndTwentyFive$outboundSchema),
-  z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
-  z.lazy(() => OneHundredAndThirtySix$outboundSchema),
-  z.lazy(() => OneHundredAndThirtyNine$outboundSchema),
+  z.lazy(() => OneHundredAndTwentySix$outboundSchema),
+  z.lazy(() => OneHundredAndTwentyEight$outboundSchema),
+  z.lazy(() => OneHundredAndThirtySeven$outboundSchema),
   z.lazy(() => OneHundredAndForty$outboundSchema),
   z.lazy(() => OneHundredAndFortyOne$outboundSchema),
-  z.lazy(() => OneHundredAndFortyThree$outboundSchema),
+  z.lazy(() => OneHundredAndFortyTwo$outboundSchema),
   z.lazy(() => OneHundredAndFortyFour$outboundSchema),
-  z.lazy(() => OneHundredAndFifty$outboundSchema),
+  z.lazy(() => OneHundredAndFortyFive$outboundSchema),
   z.lazy(() => OneHundredAndFiftyOne$outboundSchema),
-  z.lazy(() => OneHundredAndFiftyThree$outboundSchema),
-  z.lazy(() => OneHundredAndFiftyFive$outboundSchema),
+  z.lazy(() => OneHundredAndFiftyTwo$outboundSchema),
+  z.lazy(() => OneHundredAndFiftyFour$outboundSchema),
   z.lazy(() => OneHundredAndFiftySix$outboundSchema),
   z.lazy(() => OneHundredAndFiftySeven$outboundSchema),
-  z.lazy(() => OneHundredAndFiftyNine$outboundSchema),
+  z.lazy(() => OneHundredAndFiftyEight$outboundSchema),
+  z.lazy(() => OneHundredAndSixty$outboundSchema),
   z.lazy(() => Three$outboundSchema),
   z.lazy(() => Fifteen$outboundSchema),
   z.lazy(() => Twenty$outboundSchema),
   z.lazy(() => TwentyTwo$outboundSchema),
   z.lazy(() => TwentyFour$outboundSchema),
-  z.lazy(() => TwentySeven$outboundSchema),
-  z.lazy(() => TwentyNine$outboundSchema),
-  z.lazy(() => ThirtyFour$outboundSchema),
-  z.lazy(() => ThirtyEight$outboundSchema),
+  z.lazy(() => TwentyEight$outboundSchema),
+  z.lazy(() => Thirty$outboundSchema),
+  z.lazy(() => ThirtyFive$outboundSchema),
   z.lazy(() => ThirtyNine$outboundSchema),
-  z.lazy(() => FortyThree$outboundSchema),
-  z.lazy(() => FortySeven$outboundSchema),
-  z.lazy(() => FiftyTwo$outboundSchema),
+  z.lazy(() => Forty$outboundSchema),
+  z.lazy(() => FortyFour$outboundSchema),
+  z.lazy(() => FortyEight$outboundSchema),
   z.lazy(() => FiftyThree$outboundSchema),
-  z.lazy(() => SeventyTwo$outboundSchema),
+  z.lazy(() => FiftyFour$outboundSchema),
   z.lazy(() => SeventyThree$outboundSchema),
   z.lazy(() => SeventyFour$outboundSchema),
-  z.lazy(() => SeventySix$outboundSchema),
+  z.lazy(() => SeventyFive$outboundSchema),
   z.lazy(() => SeventySeven$outboundSchema),
-  z.lazy(() => Eighty$outboundSchema),
+  z.lazy(() => SeventyEight$outboundSchema),
   z.lazy(() => EightyOne$outboundSchema),
-  z.lazy(() => EightyFour$outboundSchema),
+  z.lazy(() => EightyTwo$outboundSchema),
   z.lazy(() => EightyFive$outboundSchema),
-  z.lazy(() => EightyNine$outboundSchema),
+  z.lazy(() => EightySix$outboundSchema),
   z.lazy(() => Ninety$outboundSchema),
-  z.lazy(() => NinetyEight$outboundSchema),
+  z.lazy(() => NinetyOne$outboundSchema),
   z.lazy(() => NinetyNine$outboundSchema),
-  z.lazy(() => OneHundredAndThree$outboundSchema),
-  z.lazy(() => OneHundredAndFive$outboundSchema),
+  z.lazy(() => OneHundred$outboundSchema),
+  z.lazy(() => OneHundredAndFour$outboundSchema),
   z.lazy(() => OneHundredAndSix$outboundSchema),
   z.lazy(() => OneHundredAndSeven$outboundSchema),
-  z.lazy(() => OneHundredAndTen$outboundSchema),
+  z.lazy(() => OneHundredAndEight$outboundSchema),
   z.lazy(() => OneHundredAndEleven$outboundSchema),
   z.lazy(() => OneHundredAndTwelve$outboundSchema),
-  z.lazy(() => OneHundredAndSixteen$outboundSchema),
+  z.lazy(() => OneHundredAndThirteen$outboundSchema),
   z.lazy(() => OneHundredAndSeventeen$outboundSchema),
-  z.lazy(() => OneHundredAndTwenty$outboundSchema),
-  z.lazy(() => OneHundredAndTwentySix$outboundSchema),
-  z.lazy(() => OneHundredAndTwentyEight$outboundSchema),
-  z.lazy(() => OneHundredAndThirtyTwo$outboundSchema),
+  z.lazy(() => OneHundredAndEighteen$outboundSchema),
+  z.lazy(() => OneHundredAndTwentyOne$outboundSchema),
+  z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
+  z.lazy(() => OneHundredAndTwentyNine$outboundSchema),
   z.lazy(() => OneHundredAndThirtyThree$outboundSchema),
   z.lazy(() => OneHundredAndThirtyFour$outboundSchema),
-  z.lazy(() => OneHundredAndFortyTwo$outboundSchema),
-  z.lazy(() => OneHundredAndFortyEight$outboundSchema),
-  z.lazy(() => OneHundredAndFiftyFour$outboundSchema),
-  z.lazy(() => OneHundredAndFiftyEight$outboundSchema),
-  z.lazy(() => OneHundredAndSixty$outboundSchema),
+  z.lazy(() => OneHundredAndThirtyFive$outboundSchema),
+  z.lazy(() => OneHundredAndFortyThree$outboundSchema),
+  z.lazy(() => OneHundredAndFortyNine$outboundSchema),
+  z.lazy(() => OneHundredAndFiftyFive$outboundSchema),
+  z.lazy(() => OneHundredAndFiftyNine$outboundSchema),
   z.lazy(() => OneHundredAndSixtyOne$outboundSchema),
+  z.lazy(() => OneHundredAndSixtyTwo$outboundSchema),
   z.lazy(() => Payload1$outboundSchema),
   z.lazy(() => Seven$outboundSchema),
   z.lazy(() => Eight$outboundSchema),
@@ -31277,18 +31354,19 @@ export const Payload$outboundSchema: z.ZodType<
   z.lazy(() => TwentyOne$outboundSchema),
   z.lazy(() => TwentyFive$outboundSchema),
   z.lazy(() => TwentySix$outboundSchema),
-  z.lazy(() => FiftySix$outboundSchema),
+  z.lazy(() => TwentySeven$outboundSchema),
   z.lazy(() => FiftySeven$outboundSchema),
   z.lazy(() => FiftyEight$outboundSchema),
-  z.lazy(() => OneHundredAndEight$outboundSchema),
-  z.lazy(() => OneHundredAndFourteen$outboundSchema),
+  z.lazy(() => FiftyNine$outboundSchema),
+  z.lazy(() => OneHundredAndNine$outboundSchema),
   z.lazy(() => OneHundredAndFifteen$outboundSchema),
-  z.lazy(() => OneHundredAndTwentyOne$outboundSchema),
+  z.lazy(() => OneHundredAndSixteen$outboundSchema),
   z.lazy(() => OneHundredAndTwentyTwo$outboundSchema),
   z.lazy(() => OneHundredAndTwentyThree$outboundSchema),
-  z.lazy(() => OneHundredAndTwentyNine$outboundSchema),
+  z.lazy(() => OneHundredAndTwentyFour$outboundSchema),
   z.lazy(() => OneHundredAndThirty$outboundSchema),
   z.lazy(() => OneHundredAndThirtyOne$outboundSchema),
+  z.lazy(() => OneHundredAndThirtyTwo$outboundSchema),
 ]);
 
 /**
@@ -31343,147 +31421,147 @@ export const UserEvent$inboundSchema: z.ZodType<
   principalId: z.string(),
   viaIds: z.array(z.string()).optional(),
   payload: z.union([
-    z.lazy(() => SeventyOne$inboundSchema),
-    z.lazy(() => SixtySeven$inboundSchema),
-    z.lazy(() => Seventy$inboundSchema),
-    z.lazy(() => FortyOne$inboundSchema),
-    z.lazy(() => FortyTwo$inboundSchema),
-    z.lazy(() => FiftyFour$inboundSchema),
-    z.lazy(() => FiftyNine$inboundSchema),
-    z.lazy(() => SixtyFive$inboundSchema),
+    z.lazy(() => SeventyTwo$inboundSchema),
     z.lazy(() => SixtyEight$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyFive$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
-    z.lazy(() => Payload2$inboundSchema),
-    z.lazy(() => FortySix$inboundSchema),
+    z.lazy(() => SeventyOne$inboundSchema),
+    z.lazy(() => FortyTwo$inboundSchema),
+    z.lazy(() => FortyThree$inboundSchema),
+    z.lazy(() => FiftyFive$inboundSchema),
+    z.lazy(() => Sixty$inboundSchema),
+    z.lazy(() => SixtySix$inboundSchema),
     z.lazy(() => SixtyNine$inboundSchema),
-    z.lazy(() => OneHundredAndFour$inboundSchema),
-    z.lazy(() => OneHundredAndFortySix$inboundSchema),
+    z.lazy(() => OneHundredAndThirtySix$inboundSchema),
+    z.lazy(() => OneHundredAndSixtySix$inboundSchema),
+    z.lazy(() => Payload2$inboundSchema),
+    z.lazy(() => FortySeven$inboundSchema),
+    z.lazy(() => Seventy$inboundSchema),
+    z.lazy(() => OneHundredAndFive$inboundSchema),
+    z.lazy(() => OneHundredAndFortySeven$inboundSchema),
     z.lazy(() => Twelve$inboundSchema),
     z.lazy(() => Sixteen$inboundSchema),
-    z.lazy(() => Thirty$inboundSchema),
     z.lazy(() => ThirtyOne$inboundSchema),
     z.lazy(() => ThirtyTwo$inboundSchema),
     z.lazy(() => ThirtyThree$inboundSchema),
-    z.lazy(() => Forty$inboundSchema),
-    z.lazy(() => FortyNine$inboundSchema),
+    z.lazy(() => ThirtyFour$inboundSchema),
+    z.lazy(() => FortyOne$inboundSchema),
     z.lazy(() => Fifty$inboundSchema),
     z.lazy(() => FiftyOne$inboundSchema),
-    z.lazy(() => Sixty$inboundSchema),
+    z.lazy(() => FiftyTwo$inboundSchema),
     z.lazy(() => SixtyOne$inboundSchema),
     z.lazy(() => SixtyTwo$inboundSchema),
-    z.lazy(() => SixtyFour$inboundSchema),
-    z.lazy(() => SeventyFive$inboundSchema),
-    z.lazy(() => SeventyNine$inboundSchema),
-    z.lazy(() => EightyTwo$inboundSchema),
+    z.lazy(() => SixtyThree$inboundSchema),
+    z.lazy(() => SixtyFive$inboundSchema),
+    z.lazy(() => SeventySix$inboundSchema),
+    z.lazy(() => Eighty$inboundSchema),
     z.lazy(() => EightyThree$inboundSchema),
-    z.lazy(() => NinetyFive$inboundSchema),
-    z.lazy(() => OneHundredAndThirteen$inboundSchema),
-    z.lazy(() => OneHundredAndThirtySeven$inboundSchema),
+    z.lazy(() => EightyFour$inboundSchema),
+    z.lazy(() => NinetySix$inboundSchema),
+    z.lazy(() => OneHundredAndFourteen$inboundSchema),
     z.lazy(() => OneHundredAndThirtyEight$inboundSchema),
-    z.lazy(() => OneHundredAndFortyFive$inboundSchema),
-    z.lazy(() => OneHundredAndFortySeven$inboundSchema),
-    z.lazy(() => OneHundredAndFortyNine$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndSixtyTwo$inboundSchema),
+    z.lazy(() => OneHundredAndThirtyNine$inboundSchema),
+    z.lazy(() => OneHundredAndFortySix$inboundSchema),
+    z.lazy(() => OneHundredAndFortyEight$inboundSchema),
+    z.lazy(() => OneHundredAndFifty$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyThree$inboundSchema),
     z.lazy(() => OneHundredAndSixtyThree$inboundSchema),
     z.lazy(() => OneHundredAndSixtyFour$inboundSchema),
+    z.lazy(() => OneHundredAndSixtyFive$inboundSchema),
     z.lazy(() => Four$inboundSchema),
     z.lazy(() => Five$inboundSchema),
     z.lazy(() => Six$inboundSchema),
     z.lazy(() => Seventeen$inboundSchema),
     z.lazy(() => Eighteen$inboundSchema),
     z.lazy(() => TwentyThree$inboundSchema),
-    z.lazy(() => TwentyEight$inboundSchema),
-    z.lazy(() => ThirtyFive$inboundSchema),
+    z.lazy(() => TwentyNine$inboundSchema),
     z.lazy(() => ThirtySix$inboundSchema),
     z.lazy(() => ThirtySeven$inboundSchema),
-    z.lazy(() => FortyFour$inboundSchema),
+    z.lazy(() => ThirtyEight$inboundSchema),
     z.lazy(() => FortyFive$inboundSchema),
-    z.lazy(() => FortyEight$inboundSchema),
-    z.lazy(() => FiftyFive$inboundSchema),
-    z.lazy(() => SixtyThree$inboundSchema),
-    z.lazy(() => SixtySix$inboundSchema),
-    z.lazy(() => SeventyEight$inboundSchema),
-    z.lazy(() => EightySix$inboundSchema),
+    z.lazy(() => FortySix$inboundSchema),
+    z.lazy(() => FortyNine$inboundSchema),
+    z.lazy(() => FiftySix$inboundSchema),
+    z.lazy(() => SixtyFour$inboundSchema),
+    z.lazy(() => SixtySeven$inboundSchema),
+    z.lazy(() => SeventyNine$inboundSchema),
     z.lazy(() => EightySeven$inboundSchema),
     z.lazy(() => EightyEight$inboundSchema),
-    z.lazy(() => NinetyOne$inboundSchema),
+    z.lazy(() => EightyNine$inboundSchema),
     z.lazy(() => NinetyTwo$inboundSchema),
     z.lazy(() => NinetyThree$inboundSchema),
     z.lazy(() => NinetyFour$inboundSchema),
-    z.lazy(() => NinetySix$inboundSchema),
+    z.lazy(() => NinetyFive$inboundSchema),
     z.lazy(() => NinetySeven$inboundSchema),
-    z.lazy(() => OneHundred$inboundSchema),
+    z.lazy(() => NinetyEight$inboundSchema),
     z.lazy(() => OneHundredAndOne$inboundSchema),
     z.lazy(() => OneHundredAndTwo$inboundSchema),
-    z.lazy(() => OneHundredAndNine$inboundSchema),
-    z.lazy(() => OneHundredAndEighteen$inboundSchema),
+    z.lazy(() => OneHundredAndThree$inboundSchema),
+    z.lazy(() => OneHundredAndTen$inboundSchema),
     z.lazy(() => OneHundredAndNineteen$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyFour$inboundSchema),
+    z.lazy(() => OneHundredAndTwenty$inboundSchema),
     z.lazy(() => OneHundredAndTwentyFive$inboundSchema),
-    z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
-    z.lazy(() => OneHundredAndThirtySix$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyNine$inboundSchema),
+    z.lazy(() => OneHundredAndTwentySix$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyEight$inboundSchema),
+    z.lazy(() => OneHundredAndThirtySeven$inboundSchema),
     z.lazy(() => OneHundredAndForty$inboundSchema),
     z.lazy(() => OneHundredAndFortyOne$inboundSchema),
-    z.lazy(() => OneHundredAndFortyThree$inboundSchema),
+    z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
     z.lazy(() => OneHundredAndFortyFour$inboundSchema),
-    z.lazy(() => OneHundredAndFifty$inboundSchema),
+    z.lazy(() => OneHundredAndFortyFive$inboundSchema),
     z.lazy(() => OneHundredAndFiftyOne$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyThree$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyFive$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyTwo$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
     z.lazy(() => OneHundredAndFiftySix$inboundSchema),
     z.lazy(() => OneHundredAndFiftySeven$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyNine$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
+    z.lazy(() => OneHundredAndSixty$inboundSchema),
     z.lazy(() => Three$inboundSchema),
     z.lazy(() => Fifteen$inboundSchema),
     z.lazy(() => Twenty$inboundSchema),
     z.lazy(() => TwentyTwo$inboundSchema),
     z.lazy(() => TwentyFour$inboundSchema),
-    z.lazy(() => TwentySeven$inboundSchema),
-    z.lazy(() => TwentyNine$inboundSchema),
-    z.lazy(() => ThirtyFour$inboundSchema),
-    z.lazy(() => ThirtyEight$inboundSchema),
+    z.lazy(() => TwentyEight$inboundSchema),
+    z.lazy(() => Thirty$inboundSchema),
+    z.lazy(() => ThirtyFive$inboundSchema),
     z.lazy(() => ThirtyNine$inboundSchema),
-    z.lazy(() => FortyThree$inboundSchema),
-    z.lazy(() => FortySeven$inboundSchema),
-    z.lazy(() => FiftyTwo$inboundSchema),
+    z.lazy(() => Forty$inboundSchema),
+    z.lazy(() => FortyFour$inboundSchema),
+    z.lazy(() => FortyEight$inboundSchema),
     z.lazy(() => FiftyThree$inboundSchema),
-    z.lazy(() => SeventyTwo$inboundSchema),
+    z.lazy(() => FiftyFour$inboundSchema),
     z.lazy(() => SeventyThree$inboundSchema),
     z.lazy(() => SeventyFour$inboundSchema),
-    z.lazy(() => SeventySix$inboundSchema),
+    z.lazy(() => SeventyFive$inboundSchema),
     z.lazy(() => SeventySeven$inboundSchema),
-    z.lazy(() => Eighty$inboundSchema),
+    z.lazy(() => SeventyEight$inboundSchema),
     z.lazy(() => EightyOne$inboundSchema),
-    z.lazy(() => EightyFour$inboundSchema),
+    z.lazy(() => EightyTwo$inboundSchema),
     z.lazy(() => EightyFive$inboundSchema),
-    z.lazy(() => EightyNine$inboundSchema),
+    z.lazy(() => EightySix$inboundSchema),
     z.lazy(() => Ninety$inboundSchema),
-    z.lazy(() => NinetyEight$inboundSchema),
+    z.lazy(() => NinetyOne$inboundSchema),
     z.lazy(() => NinetyNine$inboundSchema),
-    z.lazy(() => OneHundredAndThree$inboundSchema),
-    z.lazy(() => OneHundredAndFive$inboundSchema),
+    z.lazy(() => OneHundred$inboundSchema),
+    z.lazy(() => OneHundredAndFour$inboundSchema),
     z.lazy(() => OneHundredAndSix$inboundSchema),
     z.lazy(() => OneHundredAndSeven$inboundSchema),
-    z.lazy(() => OneHundredAndTen$inboundSchema),
+    z.lazy(() => OneHundredAndEight$inboundSchema),
     z.lazy(() => OneHundredAndEleven$inboundSchema),
     z.lazy(() => OneHundredAndTwelve$inboundSchema),
-    z.lazy(() => OneHundredAndSixteen$inboundSchema),
+    z.lazy(() => OneHundredAndThirteen$inboundSchema),
     z.lazy(() => OneHundredAndSeventeen$inboundSchema),
-    z.lazy(() => OneHundredAndTwenty$inboundSchema),
-    z.lazy(() => OneHundredAndTwentySix$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyEight$inboundSchema),
-    z.lazy(() => OneHundredAndThirtyTwo$inboundSchema),
+    z.lazy(() => OneHundredAndEighteen$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
+    z.lazy(() => OneHundredAndTwentySeven$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyNine$inboundSchema),
     z.lazy(() => OneHundredAndThirtyThree$inboundSchema),
     z.lazy(() => OneHundredAndThirtyFour$inboundSchema),
-    z.lazy(() => OneHundredAndFortyTwo$inboundSchema),
-    z.lazy(() => OneHundredAndFortyEight$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyFour$inboundSchema),
-    z.lazy(() => OneHundredAndFiftyEight$inboundSchema),
-    z.lazy(() => OneHundredAndSixty$inboundSchema),
+    z.lazy(() => OneHundredAndThirtyFive$inboundSchema),
+    z.lazy(() => OneHundredAndFortyThree$inboundSchema),
+    z.lazy(() => OneHundredAndFortyNine$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyFive$inboundSchema),
+    z.lazy(() => OneHundredAndFiftyNine$inboundSchema),
     z.lazy(() => OneHundredAndSixtyOne$inboundSchema),
+    z.lazy(() => OneHundredAndSixtyTwo$inboundSchema),
     z.lazy(() => Payload1$inboundSchema),
     z.lazy(() => Seven$inboundSchema),
     z.lazy(() => Eight$inboundSchema),
@@ -31496,18 +31574,19 @@ export const UserEvent$inboundSchema: z.ZodType<
     z.lazy(() => TwentyOne$inboundSchema),
     z.lazy(() => TwentyFive$inboundSchema),
     z.lazy(() => TwentySix$inboundSchema),
-    z.lazy(() => FiftySix$inboundSchema),
+    z.lazy(() => TwentySeven$inboundSchema),
     z.lazy(() => FiftySeven$inboundSchema),
     z.lazy(() => FiftyEight$inboundSchema),
-    z.lazy(() => OneHundredAndEight$inboundSchema),
-    z.lazy(() => OneHundredAndFourteen$inboundSchema),
+    z.lazy(() => FiftyNine$inboundSchema),
+    z.lazy(() => OneHundredAndNine$inboundSchema),
     z.lazy(() => OneHundredAndFifteen$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyOne$inboundSchema),
+    z.lazy(() => OneHundredAndSixteen$inboundSchema),
     z.lazy(() => OneHundredAndTwentyTwo$inboundSchema),
     z.lazy(() => OneHundredAndTwentyThree$inboundSchema),
-    z.lazy(() => OneHundredAndTwentyNine$inboundSchema),
+    z.lazy(() => OneHundredAndTwentyFour$inboundSchema),
     z.lazy(() => OneHundredAndThirty$inboundSchema),
     z.lazy(() => OneHundredAndThirtyOne$inboundSchema),
+    z.lazy(() => OneHundredAndThirtyTwo$inboundSchema),
   ]).optional(),
 });
 
@@ -31524,147 +31603,147 @@ export type UserEvent$Outbound = {
   principalId: string;
   viaIds?: Array<string> | undefined;
   payload?:
-    | SeventyOne$Outbound
-    | SixtySeven$Outbound
-    | Seventy$Outbound
-    | FortyOne$Outbound
-    | FortyTwo$Outbound
-    | FiftyFour$Outbound
-    | FiftyNine$Outbound
-    | SixtyFive$Outbound
+    | SeventyTwo$Outbound
     | SixtyEight$Outbound
-    | OneHundredAndThirtyFive$Outbound
-    | OneHundredAndSixtyFive$Outbound
-    | Payload2$Outbound
-    | FortySix$Outbound
+    | SeventyOne$Outbound
+    | FortyTwo$Outbound
+    | FortyThree$Outbound
+    | FiftyFive$Outbound
+    | Sixty$Outbound
+    | SixtySix$Outbound
     | SixtyNine$Outbound
-    | OneHundredAndFour$Outbound
-    | OneHundredAndFortySix$Outbound
+    | OneHundredAndThirtySix$Outbound
+    | OneHundredAndSixtySix$Outbound
+    | Payload2$Outbound
+    | FortySeven$Outbound
+    | Seventy$Outbound
+    | OneHundredAndFive$Outbound
+    | OneHundredAndFortySeven$Outbound
     | Twelve$Outbound
     | Sixteen$Outbound
-    | Thirty$Outbound
     | ThirtyOne$Outbound
     | ThirtyTwo$Outbound
     | ThirtyThree$Outbound
-    | Forty$Outbound
-    | FortyNine$Outbound
+    | ThirtyFour$Outbound
+    | FortyOne$Outbound
     | Fifty$Outbound
     | FiftyOne$Outbound
-    | Sixty$Outbound
+    | FiftyTwo$Outbound
     | SixtyOne$Outbound
     | SixtyTwo$Outbound
-    | SixtyFour$Outbound
-    | SeventyFive$Outbound
-    | SeventyNine$Outbound
-    | EightyTwo$Outbound
+    | SixtyThree$Outbound
+    | SixtyFive$Outbound
+    | SeventySix$Outbound
+    | Eighty$Outbound
     | EightyThree$Outbound
-    | NinetyFive$Outbound
-    | OneHundredAndThirteen$Outbound
-    | OneHundredAndThirtySeven$Outbound
+    | EightyFour$Outbound
+    | NinetySix$Outbound
+    | OneHundredAndFourteen$Outbound
     | OneHundredAndThirtyEight$Outbound
-    | OneHundredAndFortyFive$Outbound
-    | OneHundredAndFortySeven$Outbound
-    | OneHundredAndFortyNine$Outbound
-    | OneHundredAndFiftyTwo$Outbound
-    | OneHundredAndSixtyTwo$Outbound
+    | OneHundredAndThirtyNine$Outbound
+    | OneHundredAndFortySix$Outbound
+    | OneHundredAndFortyEight$Outbound
+    | OneHundredAndFifty$Outbound
+    | OneHundredAndFiftyThree$Outbound
     | OneHundredAndSixtyThree$Outbound
     | OneHundredAndSixtyFour$Outbound
+    | OneHundredAndSixtyFive$Outbound
     | Four$Outbound
     | Five$Outbound
     | Six$Outbound
     | Seventeen$Outbound
     | Eighteen$Outbound
     | TwentyThree$Outbound
-    | TwentyEight$Outbound
-    | ThirtyFive$Outbound
+    | TwentyNine$Outbound
     | ThirtySix$Outbound
     | ThirtySeven$Outbound
-    | FortyFour$Outbound
+    | ThirtyEight$Outbound
     | FortyFive$Outbound
-    | FortyEight$Outbound
-    | FiftyFive$Outbound
-    | SixtyThree$Outbound
-    | SixtySix$Outbound
-    | SeventyEight$Outbound
-    | EightySix$Outbound
+    | FortySix$Outbound
+    | FortyNine$Outbound
+    | FiftySix$Outbound
+    | SixtyFour$Outbound
+    | SixtySeven$Outbound
+    | SeventyNine$Outbound
     | EightySeven$Outbound
     | EightyEight$Outbound
-    | NinetyOne$Outbound
+    | EightyNine$Outbound
     | NinetyTwo$Outbound
     | NinetyThree$Outbound
     | NinetyFour$Outbound
-    | NinetySix$Outbound
+    | NinetyFive$Outbound
     | NinetySeven$Outbound
-    | OneHundred$Outbound
+    | NinetyEight$Outbound
     | OneHundredAndOne$Outbound
     | OneHundredAndTwo$Outbound
-    | OneHundredAndNine$Outbound
-    | OneHundredAndEighteen$Outbound
+    | OneHundredAndThree$Outbound
+    | OneHundredAndTen$Outbound
     | OneHundredAndNineteen$Outbound
-    | OneHundredAndTwentyFour$Outbound
+    | OneHundredAndTwenty$Outbound
     | OneHundredAndTwentyFive$Outbound
-    | OneHundredAndTwentySeven$Outbound
-    | OneHundredAndThirtySix$Outbound
-    | OneHundredAndThirtyNine$Outbound
+    | OneHundredAndTwentySix$Outbound
+    | OneHundredAndTwentyEight$Outbound
+    | OneHundredAndThirtySeven$Outbound
     | OneHundredAndForty$Outbound
     | OneHundredAndFortyOne$Outbound
-    | OneHundredAndFortyThree$Outbound
+    | OneHundredAndFortyTwo$Outbound
     | OneHundredAndFortyFour$Outbound
-    | OneHundredAndFifty$Outbound
+    | OneHundredAndFortyFive$Outbound
     | OneHundredAndFiftyOne$Outbound
-    | OneHundredAndFiftyThree$Outbound
-    | OneHundredAndFiftyFive$Outbound
+    | OneHundredAndFiftyTwo$Outbound
+    | OneHundredAndFiftyFour$Outbound
     | OneHundredAndFiftySix$Outbound
     | OneHundredAndFiftySeven$Outbound
-    | OneHundredAndFiftyNine$Outbound
+    | OneHundredAndFiftyEight$Outbound
+    | OneHundredAndSixty$Outbound
     | Three$Outbound
     | Fifteen$Outbound
     | Twenty$Outbound
     | TwentyTwo$Outbound
     | TwentyFour$Outbound
-    | TwentySeven$Outbound
-    | TwentyNine$Outbound
-    | ThirtyFour$Outbound
-    | ThirtyEight$Outbound
+    | TwentyEight$Outbound
+    | Thirty$Outbound
+    | ThirtyFive$Outbound
     | ThirtyNine$Outbound
-    | FortyThree$Outbound
-    | FortySeven$Outbound
-    | FiftyTwo$Outbound
+    | Forty$Outbound
+    | FortyFour$Outbound
+    | FortyEight$Outbound
     | FiftyThree$Outbound
-    | SeventyTwo$Outbound
+    | FiftyFour$Outbound
     | SeventyThree$Outbound
     | SeventyFour$Outbound
-    | SeventySix$Outbound
+    | SeventyFive$Outbound
     | SeventySeven$Outbound
-    | Eighty$Outbound
+    | SeventyEight$Outbound
     | EightyOne$Outbound
-    | EightyFour$Outbound
+    | EightyTwo$Outbound
     | EightyFive$Outbound
-    | EightyNine$Outbound
+    | EightySix$Outbound
     | Ninety$Outbound
-    | NinetyEight$Outbound
+    | NinetyOne$Outbound
     | NinetyNine$Outbound
-    | OneHundredAndThree$Outbound
-    | OneHundredAndFive$Outbound
+    | OneHundred$Outbound
+    | OneHundredAndFour$Outbound
     | OneHundredAndSix$Outbound
     | OneHundredAndSeven$Outbound
-    | OneHundredAndTen$Outbound
+    | OneHundredAndEight$Outbound
     | OneHundredAndEleven$Outbound
     | OneHundredAndTwelve$Outbound
-    | OneHundredAndSixteen$Outbound
+    | OneHundredAndThirteen$Outbound
     | OneHundredAndSeventeen$Outbound
-    | OneHundredAndTwenty$Outbound
-    | OneHundredAndTwentySix$Outbound
-    | OneHundredAndTwentyEight$Outbound
-    | OneHundredAndThirtyTwo$Outbound
+    | OneHundredAndEighteen$Outbound
+    | OneHundredAndTwentyOne$Outbound
+    | OneHundredAndTwentySeven$Outbound
+    | OneHundredAndTwentyNine$Outbound
     | OneHundredAndThirtyThree$Outbound
     | OneHundredAndThirtyFour$Outbound
-    | OneHundredAndFortyTwo$Outbound
-    | OneHundredAndFortyEight$Outbound
-    | OneHundredAndFiftyFour$Outbound
-    | OneHundredAndFiftyEight$Outbound
-    | OneHundredAndSixty$Outbound
+    | OneHundredAndThirtyFive$Outbound
+    | OneHundredAndFortyThree$Outbound
+    | OneHundredAndFortyNine$Outbound
+    | OneHundredAndFiftyFive$Outbound
+    | OneHundredAndFiftyNine$Outbound
     | OneHundredAndSixtyOne$Outbound
+    | OneHundredAndSixtyTwo$Outbound
     | Payload1$Outbound
     | Seven$Outbound
     | Eight$Outbound
@@ -31677,18 +31756,19 @@ export type UserEvent$Outbound = {
     | TwentyOne$Outbound
     | TwentyFive$Outbound
     | TwentySix$Outbound
-    | FiftySix$Outbound
+    | TwentySeven$Outbound
     | FiftySeven$Outbound
     | FiftyEight$Outbound
-    | OneHundredAndEight$Outbound
-    | OneHundredAndFourteen$Outbound
+    | FiftyNine$Outbound
+    | OneHundredAndNine$Outbound
     | OneHundredAndFifteen$Outbound
-    | OneHundredAndTwentyOne$Outbound
+    | OneHundredAndSixteen$Outbound
     | OneHundredAndTwentyTwo$Outbound
     | OneHundredAndTwentyThree$Outbound
-    | OneHundredAndTwentyNine$Outbound
+    | OneHundredAndTwentyFour$Outbound
     | OneHundredAndThirty$Outbound
     | OneHundredAndThirtyOne$Outbound
+    | OneHundredAndThirtyTwo$Outbound
     | undefined;
 };
 
@@ -31717,147 +31797,147 @@ export const UserEvent$outboundSchema: z.ZodType<
   principalId: z.string(),
   viaIds: z.array(z.string()).optional(),
   payload: z.union([
-    z.lazy(() => SeventyOne$outboundSchema),
-    z.lazy(() => SixtySeven$outboundSchema),
-    z.lazy(() => Seventy$outboundSchema),
-    z.lazy(() => FortyOne$outboundSchema),
-    z.lazy(() => FortyTwo$outboundSchema),
-    z.lazy(() => FiftyFour$outboundSchema),
-    z.lazy(() => FiftyNine$outboundSchema),
-    z.lazy(() => SixtyFive$outboundSchema),
+    z.lazy(() => SeventyTwo$outboundSchema),
     z.lazy(() => SixtyEight$outboundSchema),
-    z.lazy(() => OneHundredAndThirtyFive$outboundSchema),
-    z.lazy(() => OneHundredAndSixtyFive$outboundSchema),
-    z.lazy(() => Payload2$outboundSchema),
-    z.lazy(() => FortySix$outboundSchema),
+    z.lazy(() => SeventyOne$outboundSchema),
+    z.lazy(() => FortyTwo$outboundSchema),
+    z.lazy(() => FortyThree$outboundSchema),
+    z.lazy(() => FiftyFive$outboundSchema),
+    z.lazy(() => Sixty$outboundSchema),
+    z.lazy(() => SixtySix$outboundSchema),
     z.lazy(() => SixtyNine$outboundSchema),
-    z.lazy(() => OneHundredAndFour$outboundSchema),
-    z.lazy(() => OneHundredAndFortySix$outboundSchema),
+    z.lazy(() => OneHundredAndThirtySix$outboundSchema),
+    z.lazy(() => OneHundredAndSixtySix$outboundSchema),
+    z.lazy(() => Payload2$outboundSchema),
+    z.lazy(() => FortySeven$outboundSchema),
+    z.lazy(() => Seventy$outboundSchema),
+    z.lazy(() => OneHundredAndFive$outboundSchema),
+    z.lazy(() => OneHundredAndFortySeven$outboundSchema),
     z.lazy(() => Twelve$outboundSchema),
     z.lazy(() => Sixteen$outboundSchema),
-    z.lazy(() => Thirty$outboundSchema),
     z.lazy(() => ThirtyOne$outboundSchema),
     z.lazy(() => ThirtyTwo$outboundSchema),
     z.lazy(() => ThirtyThree$outboundSchema),
-    z.lazy(() => Forty$outboundSchema),
-    z.lazy(() => FortyNine$outboundSchema),
+    z.lazy(() => ThirtyFour$outboundSchema),
+    z.lazy(() => FortyOne$outboundSchema),
     z.lazy(() => Fifty$outboundSchema),
     z.lazy(() => FiftyOne$outboundSchema),
-    z.lazy(() => Sixty$outboundSchema),
+    z.lazy(() => FiftyTwo$outboundSchema),
     z.lazy(() => SixtyOne$outboundSchema),
     z.lazy(() => SixtyTwo$outboundSchema),
-    z.lazy(() => SixtyFour$outboundSchema),
-    z.lazy(() => SeventyFive$outboundSchema),
-    z.lazy(() => SeventyNine$outboundSchema),
-    z.lazy(() => EightyTwo$outboundSchema),
+    z.lazy(() => SixtyThree$outboundSchema),
+    z.lazy(() => SixtyFive$outboundSchema),
+    z.lazy(() => SeventySix$outboundSchema),
+    z.lazy(() => Eighty$outboundSchema),
     z.lazy(() => EightyThree$outboundSchema),
-    z.lazy(() => NinetyFive$outboundSchema),
-    z.lazy(() => OneHundredAndThirteen$outboundSchema),
-    z.lazy(() => OneHundredAndThirtySeven$outboundSchema),
+    z.lazy(() => EightyFour$outboundSchema),
+    z.lazy(() => NinetySix$outboundSchema),
+    z.lazy(() => OneHundredAndFourteen$outboundSchema),
     z.lazy(() => OneHundredAndThirtyEight$outboundSchema),
-    z.lazy(() => OneHundredAndFortyFive$outboundSchema),
-    z.lazy(() => OneHundredAndFortySeven$outboundSchema),
-    z.lazy(() => OneHundredAndFortyNine$outboundSchema),
-    z.lazy(() => OneHundredAndFiftyTwo$outboundSchema),
-    z.lazy(() => OneHundredAndSixtyTwo$outboundSchema),
+    z.lazy(() => OneHundredAndThirtyNine$outboundSchema),
+    z.lazy(() => OneHundredAndFortySix$outboundSchema),
+    z.lazy(() => OneHundredAndFortyEight$outboundSchema),
+    z.lazy(() => OneHundredAndFifty$outboundSchema),
+    z.lazy(() => OneHundredAndFiftyThree$outboundSchema),
     z.lazy(() => OneHundredAndSixtyThree$outboundSchema),
     z.lazy(() => OneHundredAndSixtyFour$outboundSchema),
+    z.lazy(() => OneHundredAndSixtyFive$outboundSchema),
     z.lazy(() => Four$outboundSchema),
     z.lazy(() => Five$outboundSchema),
     z.lazy(() => Six$outboundSchema),
     z.lazy(() => Seventeen$outboundSchema),
     z.lazy(() => Eighteen$outboundSchema),
     z.lazy(() => TwentyThree$outboundSchema),
-    z.lazy(() => TwentyEight$outboundSchema),
-    z.lazy(() => ThirtyFive$outboundSchema),
+    z.lazy(() => TwentyNine$outboundSchema),
     z.lazy(() => ThirtySix$outboundSchema),
     z.lazy(() => ThirtySeven$outboundSchema),
-    z.lazy(() => FortyFour$outboundSchema),
+    z.lazy(() => ThirtyEight$outboundSchema),
     z.lazy(() => FortyFive$outboundSchema),
-    z.lazy(() => FortyEight$outboundSchema),
-    z.lazy(() => FiftyFive$outboundSchema),
-    z.lazy(() => SixtyThree$outboundSchema),
-    z.lazy(() => SixtySix$outboundSchema),
-    z.lazy(() => SeventyEight$outboundSchema),
-    z.lazy(() => EightySix$outboundSchema),
+    z.lazy(() => FortySix$outboundSchema),
+    z.lazy(() => FortyNine$outboundSchema),
+    z.lazy(() => FiftySix$outboundSchema),
+    z.lazy(() => SixtyFour$outboundSchema),
+    z.lazy(() => SixtySeven$outboundSchema),
+    z.lazy(() => SeventyNine$outboundSchema),
     z.lazy(() => EightySeven$outboundSchema),
     z.lazy(() => EightyEight$outboundSchema),
-    z.lazy(() => NinetyOne$outboundSchema),
+    z.lazy(() => EightyNine$outboundSchema),
     z.lazy(() => NinetyTwo$outboundSchema),
     z.lazy(() => NinetyThree$outboundSchema),
     z.lazy(() => NinetyFour$outboundSchema),
-    z.lazy(() => NinetySix$outboundSchema),
+    z.lazy(() => NinetyFive$outboundSchema),
     z.lazy(() => NinetySeven$outboundSchema),
-    z.lazy(() => OneHundred$outboundSchema),
+    z.lazy(() => NinetyEight$outboundSchema),
     z.lazy(() => OneHundredAndOne$outboundSchema),
     z.lazy(() => OneHundredAndTwo$outboundSchema),
-    z.lazy(() => OneHundredAndNine$outboundSchema),
-    z.lazy(() => OneHundredAndEighteen$outboundSchema),
+    z.lazy(() => OneHundredAndThree$outboundSchema),
+    z.lazy(() => OneHundredAndTen$outboundSchema),
     z.lazy(() => OneHundredAndNineteen$outboundSchema),
-    z.lazy(() => OneHundredAndTwentyFour$outboundSchema),
+    z.lazy(() => OneHundredAndTwenty$outboundSchema),
     z.lazy(() => OneHundredAndTwentyFive$outboundSchema),
-    z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
-    z.lazy(() => OneHundredAndThirtySix$outboundSchema),
-    z.lazy(() => OneHundredAndThirtyNine$outboundSchema),
+    z.lazy(() => OneHundredAndTwentySix$outboundSchema),
+    z.lazy(() => OneHundredAndTwentyEight$outboundSchema),
+    z.lazy(() => OneHundredAndThirtySeven$outboundSchema),
     z.lazy(() => OneHundredAndForty$outboundSchema),
     z.lazy(() => OneHundredAndFortyOne$outboundSchema),
-    z.lazy(() => OneHundredAndFortyThree$outboundSchema),
+    z.lazy(() => OneHundredAndFortyTwo$outboundSchema),
     z.lazy(() => OneHundredAndFortyFour$outboundSchema),
-    z.lazy(() => OneHundredAndFifty$outboundSchema),
+    z.lazy(() => OneHundredAndFortyFive$outboundSchema),
     z.lazy(() => OneHundredAndFiftyOne$outboundSchema),
-    z.lazy(() => OneHundredAndFiftyThree$outboundSchema),
-    z.lazy(() => OneHundredAndFiftyFive$outboundSchema),
+    z.lazy(() => OneHundredAndFiftyTwo$outboundSchema),
+    z.lazy(() => OneHundredAndFiftyFour$outboundSchema),
     z.lazy(() => OneHundredAndFiftySix$outboundSchema),
     z.lazy(() => OneHundredAndFiftySeven$outboundSchema),
-    z.lazy(() => OneHundredAndFiftyNine$outboundSchema),
+    z.lazy(() => OneHundredAndFiftyEight$outboundSchema),
+    z.lazy(() => OneHundredAndSixty$outboundSchema),
     z.lazy(() => Three$outboundSchema),
     z.lazy(() => Fifteen$outboundSchema),
     z.lazy(() => Twenty$outboundSchema),
     z.lazy(() => TwentyTwo$outboundSchema),
     z.lazy(() => TwentyFour$outboundSchema),
-    z.lazy(() => TwentySeven$outboundSchema),
-    z.lazy(() => TwentyNine$outboundSchema),
-    z.lazy(() => ThirtyFour$outboundSchema),
-    z.lazy(() => ThirtyEight$outboundSchema),
+    z.lazy(() => TwentyEight$outboundSchema),
+    z.lazy(() => Thirty$outboundSchema),
+    z.lazy(() => ThirtyFive$outboundSchema),
     z.lazy(() => ThirtyNine$outboundSchema),
-    z.lazy(() => FortyThree$outboundSchema),
-    z.lazy(() => FortySeven$outboundSchema),
-    z.lazy(() => FiftyTwo$outboundSchema),
+    z.lazy(() => Forty$outboundSchema),
+    z.lazy(() => FortyFour$outboundSchema),
+    z.lazy(() => FortyEight$outboundSchema),
     z.lazy(() => FiftyThree$outboundSchema),
-    z.lazy(() => SeventyTwo$outboundSchema),
+    z.lazy(() => FiftyFour$outboundSchema),
     z.lazy(() => SeventyThree$outboundSchema),
     z.lazy(() => SeventyFour$outboundSchema),
-    z.lazy(() => SeventySix$outboundSchema),
+    z.lazy(() => SeventyFive$outboundSchema),
     z.lazy(() => SeventySeven$outboundSchema),
-    z.lazy(() => Eighty$outboundSchema),
+    z.lazy(() => SeventyEight$outboundSchema),
     z.lazy(() => EightyOne$outboundSchema),
-    z.lazy(() => EightyFour$outboundSchema),
+    z.lazy(() => EightyTwo$outboundSchema),
     z.lazy(() => EightyFive$outboundSchema),
-    z.lazy(() => EightyNine$outboundSchema),
+    z.lazy(() => EightySix$outboundSchema),
     z.lazy(() => Ninety$outboundSchema),
-    z.lazy(() => NinetyEight$outboundSchema),
+    z.lazy(() => NinetyOne$outboundSchema),
     z.lazy(() => NinetyNine$outboundSchema),
-    z.lazy(() => OneHundredAndThree$outboundSchema),
-    z.lazy(() => OneHundredAndFive$outboundSchema),
+    z.lazy(() => OneHundred$outboundSchema),
+    z.lazy(() => OneHundredAndFour$outboundSchema),
     z.lazy(() => OneHundredAndSix$outboundSchema),
     z.lazy(() => OneHundredAndSeven$outboundSchema),
-    z.lazy(() => OneHundredAndTen$outboundSchema),
+    z.lazy(() => OneHundredAndEight$outboundSchema),
     z.lazy(() => OneHundredAndEleven$outboundSchema),
     z.lazy(() => OneHundredAndTwelve$outboundSchema),
-    z.lazy(() => OneHundredAndSixteen$outboundSchema),
+    z.lazy(() => OneHundredAndThirteen$outboundSchema),
     z.lazy(() => OneHundredAndSeventeen$outboundSchema),
-    z.lazy(() => OneHundredAndTwenty$outboundSchema),
-    z.lazy(() => OneHundredAndTwentySix$outboundSchema),
-    z.lazy(() => OneHundredAndTwentyEight$outboundSchema),
-    z.lazy(() => OneHundredAndThirtyTwo$outboundSchema),
+    z.lazy(() => OneHundredAndEighteen$outboundSchema),
+    z.lazy(() => OneHundredAndTwentyOne$outboundSchema),
+    z.lazy(() => OneHundredAndTwentySeven$outboundSchema),
+    z.lazy(() => OneHundredAndTwentyNine$outboundSchema),
     z.lazy(() => OneHundredAndThirtyThree$outboundSchema),
     z.lazy(() => OneHundredAndThirtyFour$outboundSchema),
-    z.lazy(() => OneHundredAndFortyTwo$outboundSchema),
-    z.lazy(() => OneHundredAndFortyEight$outboundSchema),
-    z.lazy(() => OneHundredAndFiftyFour$outboundSchema),
-    z.lazy(() => OneHundredAndFiftyEight$outboundSchema),
-    z.lazy(() => OneHundredAndSixty$outboundSchema),
+    z.lazy(() => OneHundredAndThirtyFive$outboundSchema),
+    z.lazy(() => OneHundredAndFortyThree$outboundSchema),
+    z.lazy(() => OneHundredAndFortyNine$outboundSchema),
+    z.lazy(() => OneHundredAndFiftyFive$outboundSchema),
+    z.lazy(() => OneHundredAndFiftyNine$outboundSchema),
     z.lazy(() => OneHundredAndSixtyOne$outboundSchema),
+    z.lazy(() => OneHundredAndSixtyTwo$outboundSchema),
     z.lazy(() => Payload1$outboundSchema),
     z.lazy(() => Seven$outboundSchema),
     z.lazy(() => Eight$outboundSchema),
@@ -31870,18 +31950,19 @@ export const UserEvent$outboundSchema: z.ZodType<
     z.lazy(() => TwentyOne$outboundSchema),
     z.lazy(() => TwentyFive$outboundSchema),
     z.lazy(() => TwentySix$outboundSchema),
-    z.lazy(() => FiftySix$outboundSchema),
+    z.lazy(() => TwentySeven$outboundSchema),
     z.lazy(() => FiftySeven$outboundSchema),
     z.lazy(() => FiftyEight$outboundSchema),
-    z.lazy(() => OneHundredAndEight$outboundSchema),
-    z.lazy(() => OneHundredAndFourteen$outboundSchema),
+    z.lazy(() => FiftyNine$outboundSchema),
+    z.lazy(() => OneHundredAndNine$outboundSchema),
     z.lazy(() => OneHundredAndFifteen$outboundSchema),
-    z.lazy(() => OneHundredAndTwentyOne$outboundSchema),
+    z.lazy(() => OneHundredAndSixteen$outboundSchema),
     z.lazy(() => OneHundredAndTwentyTwo$outboundSchema),
     z.lazy(() => OneHundredAndTwentyThree$outboundSchema),
-    z.lazy(() => OneHundredAndTwentyNine$outboundSchema),
+    z.lazy(() => OneHundredAndTwentyFour$outboundSchema),
     z.lazy(() => OneHundredAndThirty$outboundSchema),
     z.lazy(() => OneHundredAndThirtyOne$outboundSchema),
+    z.lazy(() => OneHundredAndThirtyTwo$outboundSchema),
   ]).optional(),
 });
 

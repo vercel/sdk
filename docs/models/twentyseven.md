@@ -7,14 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { TwentySeven } from "@vercel/sdk/models/userevent.js";
 
-let value: TwentySeven = {
-  suffix: "<value>",
-};
+let value: TwentySeven = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `suffix`           | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `certId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `origin`           | *string*           | :heavy_minus_sign: | N/A                |

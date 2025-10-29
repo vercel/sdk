@@ -199,13 +199,14 @@ func (e *UpdateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 type UpdateProjectNodeVersionRequest string
 
 const (
-	UpdateProjectNodeVersionRequestTwentyTwoDotX UpdateProjectNodeVersionRequest = "22.x"
-	UpdateProjectNodeVersionRequestTwentyDotX    UpdateProjectNodeVersionRequest = "20.x"
-	UpdateProjectNodeVersionRequestEighteenDotX  UpdateProjectNodeVersionRequest = "18.x"
-	UpdateProjectNodeVersionRequestSixteenDotX   UpdateProjectNodeVersionRequest = "16.x"
-	UpdateProjectNodeVersionRequestFourteenDotX  UpdateProjectNodeVersionRequest = "14.x"
-	UpdateProjectNodeVersionRequestTwelveDotX    UpdateProjectNodeVersionRequest = "12.x"
-	UpdateProjectNodeVersionRequestTenDotX       UpdateProjectNodeVersionRequest = "10.x"
+	UpdateProjectNodeVersionRequestTwentyFourDotX UpdateProjectNodeVersionRequest = "24.x"
+	UpdateProjectNodeVersionRequestTwentyTwoDotX  UpdateProjectNodeVersionRequest = "22.x"
+	UpdateProjectNodeVersionRequestTwentyDotX     UpdateProjectNodeVersionRequest = "20.x"
+	UpdateProjectNodeVersionRequestEighteenDotX   UpdateProjectNodeVersionRequest = "18.x"
+	UpdateProjectNodeVersionRequestSixteenDotX    UpdateProjectNodeVersionRequest = "16.x"
+	UpdateProjectNodeVersionRequestFourteenDotX   UpdateProjectNodeVersionRequest = "14.x"
+	UpdateProjectNodeVersionRequestTwelveDotX     UpdateProjectNodeVersionRequest = "12.x"
+	UpdateProjectNodeVersionRequestTenDotX        UpdateProjectNodeVersionRequest = "10.x"
 )
 
 func (e UpdateProjectNodeVersionRequest) ToPointer() *UpdateProjectNodeVersionRequest {
@@ -217,6 +218,8 @@ func (e *UpdateProjectNodeVersionRequest) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -5184,6 +5187,7 @@ func (u UpdateProjectMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 type UpdateProjectNodeVersionResponseBody string
 
 const (
+	UpdateProjectNodeVersionResponseBodyTwentyFourDotX UpdateProjectNodeVersionResponseBody = "24.x"
 	UpdateProjectNodeVersionResponseBodyTwentyTwoDotX  UpdateProjectNodeVersionResponseBody = "22.x"
 	UpdateProjectNodeVersionResponseBodyTwentyDotX     UpdateProjectNodeVersionResponseBody = "20.x"
 	UpdateProjectNodeVersionResponseBodyEighteenDotX   UpdateProjectNodeVersionResponseBody = "18.x"
@@ -5203,6 +5207,8 @@ func (e *UpdateProjectNodeVersionResponseBody) UnmarshalJSON(data []byte) error 
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

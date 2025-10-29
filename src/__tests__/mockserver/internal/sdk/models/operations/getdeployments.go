@@ -844,6 +844,7 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 type GetDeploymentsNodeVersion string
 
 const (
+	GetDeploymentsNodeVersionTwentyFourDotX GetDeploymentsNodeVersion = "24.x"
 	GetDeploymentsNodeVersionTwentyTwoDotX  GetDeploymentsNodeVersion = "22.x"
 	GetDeploymentsNodeVersionTwentyDotX     GetDeploymentsNodeVersion = "20.x"
 	GetDeploymentsNodeVersionEighteenDotX   GetDeploymentsNodeVersion = "18.x"
@@ -863,6 +864,8 @@ func (e *GetDeploymentsNodeVersion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

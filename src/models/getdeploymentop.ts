@@ -610,6 +610,7 @@ export type ResponseBodyGitSource =
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const GetDeploymentResponseBodyNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -1614,6 +1615,7 @@ export type GetDeploymentResponseBodyGitSource =
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const ResponseBodyNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",

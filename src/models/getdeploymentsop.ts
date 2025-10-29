@@ -344,6 +344,7 @@ export type GetDeploymentsFramework = ClosedEnum<
 >;
 
 export const GetDeploymentsNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",

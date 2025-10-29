@@ -1409,6 +1409,7 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 type CreateDeploymentNodeVersionRequest string
 
 const (
+	CreateDeploymentNodeVersionRequestTwentyFourDotX CreateDeploymentNodeVersionRequest = "24.x"
 	CreateDeploymentNodeVersionRequestTwentyTwoDotX  CreateDeploymentNodeVersionRequest = "22.x"
 	CreateDeploymentNodeVersionRequestTwentyDotX     CreateDeploymentNodeVersionRequest = "20.x"
 	CreateDeploymentNodeVersionRequestEighteenDotX   CreateDeploymentNodeVersionRequest = "18.x"
@@ -1428,6 +1429,8 @@ func (e *CreateDeploymentNodeVersionRequest) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -5153,6 +5156,7 @@ func (u CreateDeploymentGitSourceLambdasUnion) MarshalJSON() ([]byte, error) {
 type CreateDeploymentNodeVersionLambdas string
 
 const (
+	CreateDeploymentNodeVersionLambdasTwentyFourDotX CreateDeploymentNodeVersionLambdas = "24.x"
 	CreateDeploymentNodeVersionLambdasTwentyTwoDotX  CreateDeploymentNodeVersionLambdas = "22.x"
 	CreateDeploymentNodeVersionLambdasTwentyDotX     CreateDeploymentNodeVersionLambdas = "20.x"
 	CreateDeploymentNodeVersionLambdasEighteenDotX   CreateDeploymentNodeVersionLambdas = "18.x"
@@ -5172,6 +5176,8 @@ func (e *CreateDeploymentNodeVersionLambdas) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

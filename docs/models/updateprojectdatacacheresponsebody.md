@@ -38,7 +38,7 @@ let value: UpdateProjectDataCacheResponseBody = {
     },
   ],
   name: "<value>",
-  nodeVersion: "22.x",
+  nodeVersion: "24.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",

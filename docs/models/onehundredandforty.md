@@ -11,10 +11,10 @@ let value: OneHundredAndForty = {
   project: {
     name: "<value>",
   },
-  removedMembership: {
-    role: "PROJECT_VIEWER",
+  projectMembership: {
+    role: "PROJECT_DEVELOPER",
     uid: "<id>",
-    createdAt: 5006.63,
+    createdAt: 6908.82,
   },
 };
 ```
@@ -24,4 +24,4 @@ let value: OneHundredAndForty = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload140Project](../models/usereventpayload140project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

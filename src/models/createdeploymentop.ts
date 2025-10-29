@@ -329,6 +329,7 @@ export type Framework = ClosedEnum<typeof Framework>;
  * Override the Node.js version that should be used for this deployment
  */
 export const NodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -1217,6 +1218,7 @@ export type CreateDeploymentGitSource =
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const CreateDeploymentNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",

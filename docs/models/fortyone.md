@@ -8,21 +8,23 @@ The payload of the event, if requested.
 import { FortyOne } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyOne = {
-  id: "<id>",
-  value: "<value>",
-  name: "<value>",
-  domain: "salty-tomatillo.biz",
-  type: "<value>",
+  deployment: {
+    id: "<id>",
+    name: "<value>",
+    url: "https://upbeat-design.biz",
+    meta: {
+      "key": "<value>",
+    },
+  },
+  deploymentId: "<id>",
+  url: "https://greedy-publicity.com",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `deployment`                                                                 | [models.UserEventPayloadDeployment](../models/usereventpayloaddeployment.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `deploymentId`                                                               | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `url`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

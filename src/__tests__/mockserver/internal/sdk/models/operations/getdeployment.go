@@ -2800,6 +2800,7 @@ func (u GetDeploymentGitSourceUnion2) MarshalJSON() ([]byte, error) {
 type GetDeploymentNodeVersion2 string
 
 const (
+	GetDeploymentNodeVersion2TwentyFourDotX GetDeploymentNodeVersion2 = "24.x"
 	GetDeploymentNodeVersion2TwentyTwoDotX  GetDeploymentNodeVersion2 = "22.x"
 	GetDeploymentNodeVersion2TwentyDotX     GetDeploymentNodeVersion2 = "20.x"
 	GetDeploymentNodeVersion2EighteenDotX   GetDeploymentNodeVersion2 = "18.x"
@@ -2819,6 +2820,8 @@ func (e *GetDeploymentNodeVersion2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -7148,6 +7151,7 @@ func (u GetDeploymentGitSourceUnion1) MarshalJSON() ([]byte, error) {
 type GetDeploymentNodeVersion1 string
 
 const (
+	GetDeploymentNodeVersion1TwentyFourDotX GetDeploymentNodeVersion1 = "24.x"
 	GetDeploymentNodeVersion1TwentyTwoDotX  GetDeploymentNodeVersion1 = "22.x"
 	GetDeploymentNodeVersion1TwentyDotX     GetDeploymentNodeVersion1 = "20.x"
 	GetDeploymentNodeVersion1EighteenDotX   GetDeploymentNodeVersion1 = "18.x"
@@ -7167,6 +7171,8 @@ func (e *GetDeploymentNodeVersion1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

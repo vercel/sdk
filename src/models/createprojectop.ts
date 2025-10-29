@@ -1350,6 +1350,7 @@ export type CreateProjectMicrofrontends =
   | CreateProjectMicrofrontends3;
 
 export const CreateProjectNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",

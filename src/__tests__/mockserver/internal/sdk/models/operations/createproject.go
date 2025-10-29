@@ -4993,6 +4993,7 @@ func (u CreateProjectMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectNodeVersion string
 
 const (
+	CreateProjectNodeVersionTwentyFourDotX CreateProjectNodeVersion = "24.x"
 	CreateProjectNodeVersionTwentyTwoDotX  CreateProjectNodeVersion = "22.x"
 	CreateProjectNodeVersionTwentyDotX     CreateProjectNodeVersion = "20.x"
 	CreateProjectNodeVersionEighteenDotX   CreateProjectNodeVersion = "18.x"
@@ -5012,6 +5013,8 @@ func (e *CreateProjectNodeVersion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

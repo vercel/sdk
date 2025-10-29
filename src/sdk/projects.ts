@@ -9,6 +9,7 @@ import { projectsCreateProject } from "../funcs/projectsCreateProject.js";
 import { projectsCreateProjectEnv } from "../funcs/projectsCreateProjectEnv.js";
 import { projectsCreateProjectTransferRequest } from "../funcs/projectsCreateProjectTransferRequest.js";
 import { projectsDeleteProject } from "../funcs/projectsDeleteProject.js";
+import { projectsDeleteProjectClientCert } from "../funcs/projectsDeleteProjectClientCert.js";
 import { projectsEditProjectEnv } from "../funcs/projectsEditProjectEnv.js";
 import { projectsFilterProjectEnvs } from "../funcs/projectsFilterProjectEnvs.js";
 import { projectsGetProjectClientCerts } from "../funcs/projectsGetProjectClientCerts.js";
@@ -54,6 +55,10 @@ import {
   CreateProjectTransferRequestRequest,
   CreateProjectTransferRequestResponseBody,
 } from "../models/createprojecttransferrequestop.js";
+import {
+  DeleteProjectClientCertRequest,
+  DeleteProjectClientCertResponseBody,
+} from "../models/deleteprojectclientcertop.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
   EditProjectEnvRequest,
@@ -463,6 +468,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetProjectClientCertsResponseBody> {
     return unwrapAsync(projectsGetProjectClientCerts(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete client certificate for egress mTLS
+   *
+   * @remarks
+   * Delete a client certificate for mTLS authentication to external origins.
+   */
+  async deleteProjectClientCert(
+    request: DeleteProjectClientCertRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteProjectClientCertResponseBody> {
+    return unwrapAsync(projectsDeleteProjectClientCert(
       this,
       request,
       options,

@@ -80,6 +80,7 @@ export const UpdateProjectFramework = {
 export type UpdateProjectFramework = ClosedEnum<typeof UpdateProjectFramework>;
 
 export const UpdateProjectNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -1454,6 +1455,7 @@ export type UpdateProjectMicrofrontends =
   | UpdateProjectMicrofrontends3;
 
 export const UpdateProjectProjectsNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",

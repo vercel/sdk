@@ -767,6 +767,7 @@ export type CancelDeploymentGitSource =
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const CancelDeploymentNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",

@@ -3419,6 +3419,7 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 type CancelDeploymentNodeVersion string
 
 const (
+	CancelDeploymentNodeVersionTwentyFourDotX CancelDeploymentNodeVersion = "24.x"
 	CancelDeploymentNodeVersionTwentyTwoDotX  CancelDeploymentNodeVersion = "22.x"
 	CancelDeploymentNodeVersionTwentyDotX     CancelDeploymentNodeVersion = "20.x"
 	CancelDeploymentNodeVersionEighteenDotX   CancelDeploymentNodeVersion = "18.x"
@@ -3438,6 +3439,8 @@ func (e *CancelDeploymentNodeVersion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

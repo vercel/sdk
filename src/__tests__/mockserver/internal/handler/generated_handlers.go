@@ -22,6 +22,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/integrations/configuration/{id}", pathDeleteV1IntegrationsConfigurationID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/integrations/log-drains/{id}", pathDeleteV1IntegrationsLogDrainsID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/log-drains/{id}", pathDeleteV1LogDrainsID(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/projects/{idOrName}/client-cert/{certId}", pathDeleteV1ProjectsIDOrNameClientCertCertID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/projects/{idOrName}/env", pathDeleteV1ProjectsIDOrNameEnv(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/projects/{idOrName}/members/{uid}", pathDeleteV1ProjectsIDOrNameMembersUID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodDelete, "/v1/projects/{idOrName}/rolling-release/config", pathDeleteV1ProjectsIDOrNameRollingReleaseConfig(dir, rt)),

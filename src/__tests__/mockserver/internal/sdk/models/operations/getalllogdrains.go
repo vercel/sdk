@@ -108,6 +108,7 @@ const (
 	GetAllLogDrainsFrameworkZola           GetAllLogDrainsFramework = "zola"
 	GetAllLogDrainsFrameworkHydrogen       GetAllLogDrainsFramework = "hydrogen"
 	GetAllLogDrainsFrameworkVite           GetAllLogDrainsFramework = "vite"
+	GetAllLogDrainsFrameworkTanstackStart  GetAllLogDrainsFramework = "tanstack-start"
 	GetAllLogDrainsFrameworkVitepress      GetAllLogDrainsFramework = "vitepress"
 	GetAllLogDrainsFrameworkVuepress       GetAllLogDrainsFramework = "vuepress"
 	GetAllLogDrainsFrameworkParcel         GetAllLogDrainsFramework = "parcel"
@@ -122,6 +123,7 @@ const (
 	GetAllLogDrainsFrameworkExpress        GetAllLogDrainsFramework = "express"
 	GetAllLogDrainsFrameworkH3             GetAllLogDrainsFramework = "h3"
 	GetAllLogDrainsFrameworkNestjs         GetAllLogDrainsFramework = "nestjs"
+	GetAllLogDrainsFrameworkElysia         GetAllLogDrainsFramework = "elysia"
 	GetAllLogDrainsFrameworkFastify        GetAllLogDrainsFramework = "fastify"
 	GetAllLogDrainsFrameworkXmcp           GetAllLogDrainsFramework = "xmcp"
 )
@@ -213,6 +215,8 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -240,6 +244,8 @@ func (e *GetAllLogDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -1522,8 +1528,50 @@ func (o *GetAllLogDrainsProject2) GetIds() []string {
 	return o.Ids
 }
 
+type GetAllLogDrainsFilterV2Source2 string
+
+const (
+	GetAllLogDrainsFilterV2Source2Build    GetAllLogDrainsFilterV2Source2 = "build"
+	GetAllLogDrainsFilterV2Source2Edge     GetAllLogDrainsFilterV2Source2 = "edge"
+	GetAllLogDrainsFilterV2Source2Lambda   GetAllLogDrainsFilterV2Source2 = "lambda"
+	GetAllLogDrainsFilterV2Source2Static   GetAllLogDrainsFilterV2Source2 = "static"
+	GetAllLogDrainsFilterV2Source2External GetAllLogDrainsFilterV2Source2 = "external"
+	GetAllLogDrainsFilterV2Source2Firewall GetAllLogDrainsFilterV2Source2 = "firewall"
+	GetAllLogDrainsFilterV2Source2Redirect GetAllLogDrainsFilterV2Source2 = "redirect"
+)
+
+func (e GetAllLogDrainsFilterV2Source2) ToPointer() *GetAllLogDrainsFilterV2Source2 {
+	return &e
+}
+func (e *GetAllLogDrainsFilterV2Source2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "build":
+		fallthrough
+	case "edge":
+		fallthrough
+	case "lambda":
+		fallthrough
+	case "static":
+		fallthrough
+	case "external":
+		fallthrough
+	case "firewall":
+		fallthrough
+	case "redirect":
+		*e = GetAllLogDrainsFilterV2Source2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsFilterV2Source2: %v", v)
+	}
+}
+
 type GetAllLogDrainsFilterV2Log2 struct {
-	Sources []string `json:"sources,omitempty"`
+	Sources                            []GetAllLogDrainsFilterV2Source2 `json:"sources,omitempty"`
+	LegacyExcludeCachedStaticAssetLogs *bool                            `json:"legacy_excludeCachedStaticAssetLogs,omitempty"`
 }
 
 func (g GetAllLogDrainsFilterV2Log2) MarshalJSON() ([]byte, error) {
@@ -1537,15 +1585,48 @@ func (g *GetAllLogDrainsFilterV2Log2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetAllLogDrainsFilterV2Log2) GetSources() []string {
+func (o *GetAllLogDrainsFilterV2Log2) GetSources() []GetAllLogDrainsFilterV2Source2 {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
 }
 
+func (o *GetAllLogDrainsFilterV2Log2) GetLegacyExcludeCachedStaticAssetLogs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyExcludeCachedStaticAssetLogs
+}
+
+type GetAllLogDrainsEnvironment2 string
+
+const (
+	GetAllLogDrainsEnvironment2Production GetAllLogDrainsEnvironment2 = "production"
+	GetAllLogDrainsEnvironment2Preview    GetAllLogDrainsEnvironment2 = "preview"
+)
+
+func (e GetAllLogDrainsEnvironment2) ToPointer() *GetAllLogDrainsEnvironment2 {
+	return &e
+}
+func (e *GetAllLogDrainsEnvironment2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = GetAllLogDrainsEnvironment2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsEnvironment2: %v", v)
+	}
+}
+
 type GetAllLogDrainsDeployment2 struct {
-	Environments []string `json:"environments,omitempty"`
+	Environments []GetAllLogDrainsEnvironment2 `json:"environments,omitempty"`
 }
 
 func (g GetAllLogDrainsDeployment2) MarshalJSON() ([]byte, error) {
@@ -1559,7 +1640,7 @@ func (g *GetAllLogDrainsDeployment2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetAllLogDrainsDeployment2) GetEnvironments() []string {
+func (o *GetAllLogDrainsDeployment2) GetEnvironments() []GetAllLogDrainsEnvironment2 {
 	if o == nil {
 		return nil
 	}
@@ -1855,6 +1936,7 @@ const (
 	GetAllLogDrainsDrainsFrameworkZola           GetAllLogDrainsDrainsFramework = "zola"
 	GetAllLogDrainsDrainsFrameworkHydrogen       GetAllLogDrainsDrainsFramework = "hydrogen"
 	GetAllLogDrainsDrainsFrameworkVite           GetAllLogDrainsDrainsFramework = "vite"
+	GetAllLogDrainsDrainsFrameworkTanstackStart  GetAllLogDrainsDrainsFramework = "tanstack-start"
 	GetAllLogDrainsDrainsFrameworkVitepress      GetAllLogDrainsDrainsFramework = "vitepress"
 	GetAllLogDrainsDrainsFrameworkVuepress       GetAllLogDrainsDrainsFramework = "vuepress"
 	GetAllLogDrainsDrainsFrameworkParcel         GetAllLogDrainsDrainsFramework = "parcel"
@@ -1869,6 +1951,7 @@ const (
 	GetAllLogDrainsDrainsFrameworkExpress        GetAllLogDrainsDrainsFramework = "express"
 	GetAllLogDrainsDrainsFrameworkH3             GetAllLogDrainsDrainsFramework = "h3"
 	GetAllLogDrainsDrainsFrameworkNestjs         GetAllLogDrainsDrainsFramework = "nestjs"
+	GetAllLogDrainsDrainsFrameworkElysia         GetAllLogDrainsDrainsFramework = "elysia"
 	GetAllLogDrainsDrainsFrameworkFastify        GetAllLogDrainsDrainsFramework = "fastify"
 	GetAllLogDrainsDrainsFrameworkXmcp           GetAllLogDrainsDrainsFramework = "xmcp"
 )
@@ -1960,6 +2043,8 @@ func (e *GetAllLogDrainsDrainsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -1987,6 +2072,8 @@ func (e *GetAllLogDrainsDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -3437,8 +3524,50 @@ func (o *GetAllLogDrainsProject1) GetIds() []string {
 	return o.Ids
 }
 
+type GetAllLogDrainsFilterV2Source1 string
+
+const (
+	GetAllLogDrainsFilterV2Source1Build    GetAllLogDrainsFilterV2Source1 = "build"
+	GetAllLogDrainsFilterV2Source1Edge     GetAllLogDrainsFilterV2Source1 = "edge"
+	GetAllLogDrainsFilterV2Source1Lambda   GetAllLogDrainsFilterV2Source1 = "lambda"
+	GetAllLogDrainsFilterV2Source1Static   GetAllLogDrainsFilterV2Source1 = "static"
+	GetAllLogDrainsFilterV2Source1External GetAllLogDrainsFilterV2Source1 = "external"
+	GetAllLogDrainsFilterV2Source1Firewall GetAllLogDrainsFilterV2Source1 = "firewall"
+	GetAllLogDrainsFilterV2Source1Redirect GetAllLogDrainsFilterV2Source1 = "redirect"
+)
+
+func (e GetAllLogDrainsFilterV2Source1) ToPointer() *GetAllLogDrainsFilterV2Source1 {
+	return &e
+}
+func (e *GetAllLogDrainsFilterV2Source1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "build":
+		fallthrough
+	case "edge":
+		fallthrough
+	case "lambda":
+		fallthrough
+	case "static":
+		fallthrough
+	case "external":
+		fallthrough
+	case "firewall":
+		fallthrough
+	case "redirect":
+		*e = GetAllLogDrainsFilterV2Source1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsFilterV2Source1: %v", v)
+	}
+}
+
 type GetAllLogDrainsFilterV2Log1 struct {
-	Sources []string `json:"sources,omitempty"`
+	Sources                            []GetAllLogDrainsFilterV2Source1 `json:"sources,omitempty"`
+	LegacyExcludeCachedStaticAssetLogs *bool                            `json:"legacy_excludeCachedStaticAssetLogs,omitempty"`
 }
 
 func (g GetAllLogDrainsFilterV2Log1) MarshalJSON() ([]byte, error) {
@@ -3452,15 +3581,48 @@ func (g *GetAllLogDrainsFilterV2Log1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetAllLogDrainsFilterV2Log1) GetSources() []string {
+func (o *GetAllLogDrainsFilterV2Log1) GetSources() []GetAllLogDrainsFilterV2Source1 {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
 }
 
+func (o *GetAllLogDrainsFilterV2Log1) GetLegacyExcludeCachedStaticAssetLogs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyExcludeCachedStaticAssetLogs
+}
+
+type GetAllLogDrainsEnvironment1 string
+
+const (
+	GetAllLogDrainsEnvironment1Production GetAllLogDrainsEnvironment1 = "production"
+	GetAllLogDrainsEnvironment1Preview    GetAllLogDrainsEnvironment1 = "preview"
+)
+
+func (e GetAllLogDrainsEnvironment1) ToPointer() *GetAllLogDrainsEnvironment1 {
+	return &e
+}
+func (e *GetAllLogDrainsEnvironment1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = GetAllLogDrainsEnvironment1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsEnvironment1: %v", v)
+	}
+}
+
 type GetAllLogDrainsDeployment1 struct {
-	Environments []string `json:"environments,omitempty"`
+	Environments []GetAllLogDrainsEnvironment1 `json:"environments,omitempty"`
 }
 
 func (g GetAllLogDrainsDeployment1) MarshalJSON() ([]byte, error) {
@@ -3474,7 +3636,7 @@ func (g *GetAllLogDrainsDeployment1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetAllLogDrainsDeployment1) GetEnvironments() []string {
+func (o *GetAllLogDrainsDeployment1) GetEnvironments() []GetAllLogDrainsEnvironment1 {
 	if o == nil {
 		return nil
 	}

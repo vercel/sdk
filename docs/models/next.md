@@ -9,7 +9,7 @@ let value: Next = {
   project: {
     id: "<id>",
     staticIps: {
-      enabled: false,
+      enabled: true,
     },
   },
 };
@@ -19,4 +19,4 @@ let value: Next = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `project`                                                                  | [models.UserEventPayload92Project](../models/usereventpayload92project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `project`                                                                  | [models.UserEventPayload93Project](../models/usereventpayload93project.md) | :heavy_check_mark:                                                         | N/A                                                                        |

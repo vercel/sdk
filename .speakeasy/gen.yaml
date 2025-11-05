@@ -27,13 +27,14 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.16.1
+  version: 1.17.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
+  additionalScripts: {}
   author: Speakeasy
   baseErrorName: VercelError
   clientServerStatusCodesAsErrors: true

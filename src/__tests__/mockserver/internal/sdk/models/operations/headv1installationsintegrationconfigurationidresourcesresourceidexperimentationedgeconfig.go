@@ -3,6 +3,8 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"mockserver/internal/sdk/models/components"
 )
 
@@ -25,11 +27,38 @@ func (o *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperim
 	return o.ResourceID
 }
 
+type HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose string
+
+const (
+	HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurposeFlags           HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose = "flags"
+	HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurposeExperimentation HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose = "experimentation"
+)
+
+func (e HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose) ToPointer() *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose {
+	return &e
+}
+func (e *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "flags":
+		fallthrough
+	case "experimentation":
+		*e = HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose: %v", v)
+	}
+}
+
 // HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody - The Edge Config data
 type HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody struct {
-	Items     map[string]*components.EdgeConfigItemValue `json:"items"`
-	UpdatedAt float64                                    `json:"updatedAt"`
-	Digest    string                                     `json:"digest"`
+	Items     map[string]*components.EdgeConfigItemValue                                                        `json:"items"`
+	UpdatedAt float64                                                                                           `json:"updatedAt"`
+	Digest    string                                                                                            `json:"digest"`
+	Purpose   *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose `json:"purpose,omitempty"`
 }
 
 func (o *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody) GetItems() map[string]*components.EdgeConfigItemValue {
@@ -51,6 +80,13 @@ func (o *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperim
 		return ""
 	}
 	return o.Digest
+}
+
+func (o *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponseBody) GetPurpose() *HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigPurpose {
+	if o == nil {
+		return nil
+	}
+	return o.Purpose
 }
 
 type HeadV1InstallationsIntegrationConfigurationIDResourcesResourceIDExperimentationEdgeConfigResponse struct {

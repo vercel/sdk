@@ -8,25 +8,14 @@ The payload of the event, if requested.
 import { SeventyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: SeventyNine = {
-  projectId: "<id>",
-  projectAnalytics: {
-    id: "<id>",
-    disabledAt: 3187.48,
-    enabledAt: 1293.92,
-  },
-  prevProjectAnalytics: {
-    id: "<id>",
-    disabledAt: 3079.6,
-    enabledAt: 1147.99,
-  },
+  projectName: "<value>",
+  branch: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `branch`           | *string*           | :heavy_check_mark: | N/A                |

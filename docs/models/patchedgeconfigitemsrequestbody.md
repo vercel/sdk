@@ -18,6 +18,6 @@ let value: PatchEdgeConfigItemsRequestBody = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `items`            | *models.Items*[]   | :heavy_check_mark: | N/A                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `items`                              | *models.PatchEdgeConfigItemsItems*[] | :heavy_check_mark:                   | N/A                                  |

@@ -24,12 +24,33 @@ export type FilterProject = {
   ids?: Array<string> | undefined;
 };
 
+export const UpdateDrainFilterSources = {
+  Build: "build",
+  Edge: "edge",
+  Lambda: "lambda",
+  Static: "static",
+  External: "external",
+  Firewall: "firewall",
+  Redirect: "redirect",
+} as const;
+export type UpdateDrainFilterSources = ClosedEnum<
+  typeof UpdateDrainFilterSources
+>;
+
 export type FilterLog = {
-  sources?: Array<string> | undefined;
+  sources?: Array<UpdateDrainFilterSources> | undefined;
 };
 
+export const UpdateDrainFilterEnvironments = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type UpdateDrainFilterEnvironments = ClosedEnum<
+  typeof UpdateDrainFilterEnvironments
+>;
+
 export type FilterDeployment = {
-  environments?: Array<string> | undefined;
+  environments?: Array<UpdateDrainFilterEnvironments> | undefined;
 };
 
 export type UpdateDrainFilter1 = {
@@ -458,12 +479,34 @@ export type UpdateDrainFilterDrainsProject = {
   ids?: Array<string> | undefined;
 };
 
+export const UpdateDrainFilterDrainsResponseSources = {
+  Build: "build",
+  Edge: "edge",
+  Lambda: "lambda",
+  Static: "static",
+  External: "external",
+  Firewall: "firewall",
+  Redirect: "redirect",
+} as const;
+export type UpdateDrainFilterDrainsResponseSources = ClosedEnum<
+  typeof UpdateDrainFilterDrainsResponseSources
+>;
+
 export type UpdateDrainFilterDrainsLog = {
-  sources?: Array<string> | undefined;
+  sources?: Array<UpdateDrainFilterDrainsResponseSources> | undefined;
+  legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
+export const UpdateDrainFilterDrainsResponseEnvironments = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type UpdateDrainFilterDrainsResponseEnvironments = ClosedEnum<
+  typeof UpdateDrainFilterDrainsResponseEnvironments
+>;
+
 export type UpdateDrainFilterDrainsDeployment = {
-  environments?: Array<string> | undefined;
+  environments?: Array<UpdateDrainFilterDrainsResponseEnvironments> | undefined;
 };
 
 export type UpdateDrainFilterDrainsResponse1 = {
@@ -539,6 +582,7 @@ export const UpdateDrainResponseBodyFramework = {
   Zola: "zola",
   Hydrogen: "hydrogen",
   Vite: "vite",
+  TanstackStart: "tanstack-start",
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
@@ -553,6 +597,7 @@ export const UpdateDrainResponseBodyFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
@@ -834,12 +879,34 @@ export type UpdateDrainFilterProject = {
   ids?: Array<string> | undefined;
 };
 
+export const UpdateDrainFilterDrainsSources = {
+  Build: "build",
+  Edge: "edge",
+  Lambda: "lambda",
+  Static: "static",
+  External: "external",
+  Firewall: "firewall",
+  Redirect: "redirect",
+} as const;
+export type UpdateDrainFilterDrainsSources = ClosedEnum<
+  typeof UpdateDrainFilterDrainsSources
+>;
+
 export type UpdateDrainFilterLog = {
-  sources?: Array<string> | undefined;
+  sources?: Array<UpdateDrainFilterDrainsSources> | undefined;
+  legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
+export const UpdateDrainFilterDrainsEnvironments = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type UpdateDrainFilterDrainsEnvironments = ClosedEnum<
+  typeof UpdateDrainFilterDrainsEnvironments
+>;
+
 export type UpdateDrainFilterDeployment = {
-  environments?: Array<string> | undefined;
+  environments?: Array<UpdateDrainFilterDrainsEnvironments> | undefined;
 };
 
 export type UpdateDrainFilterDrains1 = {
@@ -1036,12 +1103,33 @@ export function filterProjectFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainFilterSources$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainFilterSources
+> = z.nativeEnum(UpdateDrainFilterSources);
+
+/** @internal */
+export const UpdateDrainFilterSources$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainFilterSources
+> = UpdateDrainFilterSources$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDrainFilterSources$ {
+  /** @deprecated use `UpdateDrainFilterSources$inboundSchema` instead. */
+  export const inboundSchema = UpdateDrainFilterSources$inboundSchema;
+  /** @deprecated use `UpdateDrainFilterSources$outboundSchema` instead. */
+  export const outboundSchema = UpdateDrainFilterSources$outboundSchema;
+}
+
+/** @internal */
 export const FilterLog$inboundSchema: z.ZodType<
   FilterLog,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(UpdateDrainFilterSources$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -1055,7 +1143,7 @@ export const FilterLog$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterLog
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(UpdateDrainFilterSources$outboundSchema).optional(),
 });
 
 /**
@@ -1086,12 +1174,33 @@ export function filterLogFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainFilterEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainFilterEnvironments
+> = z.nativeEnum(UpdateDrainFilterEnvironments);
+
+/** @internal */
+export const UpdateDrainFilterEnvironments$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainFilterEnvironments
+> = UpdateDrainFilterEnvironments$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDrainFilterEnvironments$ {
+  /** @deprecated use `UpdateDrainFilterEnvironments$inboundSchema` instead. */
+  export const inboundSchema = UpdateDrainFilterEnvironments$inboundSchema;
+  /** @deprecated use `UpdateDrainFilterEnvironments$outboundSchema` instead. */
+  export const outboundSchema = UpdateDrainFilterEnvironments$outboundSchema;
+}
+
+/** @internal */
 export const FilterDeployment$inboundSchema: z.ZodType<
   FilterDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(UpdateDrainFilterEnvironments$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -1105,7 +1214,8 @@ export const FilterDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FilterDeployment
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(UpdateDrainFilterEnvironments$outboundSchema)
+    .optional(),
 });
 
 /**
@@ -4135,17 +4245,48 @@ export function updateDrainFilterDrainsProjectFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainFilterDrainsResponseSources$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainFilterDrainsResponseSources> = z.nativeEnum(
+    UpdateDrainFilterDrainsResponseSources,
+  );
+
+/** @internal */
+export const UpdateDrainFilterDrainsResponseSources$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainFilterDrainsResponseSources> =
+    UpdateDrainFilterDrainsResponseSources$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDrainFilterDrainsResponseSources$ {
+  /** @deprecated use `UpdateDrainFilterDrainsResponseSources$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateDrainFilterDrainsResponseSources$inboundSchema;
+  /** @deprecated use `UpdateDrainFilterDrainsResponseSources$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateDrainFilterDrainsResponseSources$outboundSchema;
+}
+
+/** @internal */
 export const UpdateDrainFilterDrainsLog$inboundSchema: z.ZodType<
   UpdateDrainFilterDrainsLog,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(UpdateDrainFilterDrainsResponseSources$inboundSchema)
+    .optional(),
+  legacy_excludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
+  });
 });
 
 /** @internal */
 export type UpdateDrainFilterDrainsLog$Outbound = {
   sources?: Array<string> | undefined;
+  legacy_excludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
 /** @internal */
@@ -4154,7 +4295,13 @@ export const UpdateDrainFilterDrainsLog$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDrainFilterDrainsLog
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(UpdateDrainFilterDrainsResponseSources$outboundSchema)
+    .optional(),
+  legacyExcludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    legacyExcludeCachedStaticAssetLogs: "legacy_excludeCachedStaticAssetLogs",
+  });
 });
 
 /**
@@ -4189,12 +4336,37 @@ export function updateDrainFilterDrainsLogFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainFilterDrainsResponseEnvironments$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainFilterDrainsResponseEnvironments> = z
+    .nativeEnum(UpdateDrainFilterDrainsResponseEnvironments);
+
+/** @internal */
+export const UpdateDrainFilterDrainsResponseEnvironments$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainFilterDrainsResponseEnvironments> =
+    UpdateDrainFilterDrainsResponseEnvironments$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDrainFilterDrainsResponseEnvironments$ {
+  /** @deprecated use `UpdateDrainFilterDrainsResponseEnvironments$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateDrainFilterDrainsResponseEnvironments$inboundSchema;
+  /** @deprecated use `UpdateDrainFilterDrainsResponseEnvironments$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateDrainFilterDrainsResponseEnvironments$outboundSchema;
+}
+
+/** @internal */
 export const UpdateDrainFilterDrainsDeployment$inboundSchema: z.ZodType<
   UpdateDrainFilterDrainsDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(
+    UpdateDrainFilterDrainsResponseEnvironments$inboundSchema,
+  ).optional(),
 });
 
 /** @internal */
@@ -4208,7 +4380,9 @@ export const UpdateDrainFilterDrainsDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDrainFilterDrainsDeployment
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(
+    UpdateDrainFilterDrainsResponseEnvironments$outboundSchema,
+  ).optional(),
 });
 
 /**
@@ -6337,17 +6511,44 @@ export function updateDrainFilterProjectFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainFilterDrainsSources$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainFilterDrainsSources
+> = z.nativeEnum(UpdateDrainFilterDrainsSources);
+
+/** @internal */
+export const UpdateDrainFilterDrainsSources$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainFilterDrainsSources
+> = UpdateDrainFilterDrainsSources$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDrainFilterDrainsSources$ {
+  /** @deprecated use `UpdateDrainFilterDrainsSources$inboundSchema` instead. */
+  export const inboundSchema = UpdateDrainFilterDrainsSources$inboundSchema;
+  /** @deprecated use `UpdateDrainFilterDrainsSources$outboundSchema` instead. */
+  export const outboundSchema = UpdateDrainFilterDrainsSources$outboundSchema;
+}
+
+/** @internal */
 export const UpdateDrainFilterLog$inboundSchema: z.ZodType<
   UpdateDrainFilterLog,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(UpdateDrainFilterDrainsSources$inboundSchema).optional(),
+  legacy_excludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
+  });
 });
 
 /** @internal */
 export type UpdateDrainFilterLog$Outbound = {
   sources?: Array<string> | undefined;
+  legacy_excludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
 /** @internal */
@@ -6356,7 +6557,12 @@ export const UpdateDrainFilterLog$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDrainFilterLog
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(UpdateDrainFilterDrainsSources$outboundSchema).optional(),
+  legacyExcludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    legacyExcludeCachedStaticAssetLogs: "legacy_excludeCachedStaticAssetLogs",
+  });
 });
 
 /**
@@ -6391,12 +6597,36 @@ export function updateDrainFilterLogFromJSON(
 }
 
 /** @internal */
+export const UpdateDrainFilterDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateDrainFilterDrainsEnvironments
+> = z.nativeEnum(UpdateDrainFilterDrainsEnvironments);
+
+/** @internal */
+export const UpdateDrainFilterDrainsEnvironments$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateDrainFilterDrainsEnvironments> =
+    UpdateDrainFilterDrainsEnvironments$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateDrainFilterDrainsEnvironments$ {
+  /** @deprecated use `UpdateDrainFilterDrainsEnvironments$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateDrainFilterDrainsEnvironments$inboundSchema;
+  /** @deprecated use `UpdateDrainFilterDrainsEnvironments$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateDrainFilterDrainsEnvironments$outboundSchema;
+}
+
+/** @internal */
 export const UpdateDrainFilterDeployment$inboundSchema: z.ZodType<
   UpdateDrainFilterDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(UpdateDrainFilterDrainsEnvironments$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -6410,7 +6640,8 @@ export const UpdateDrainFilterDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateDrainFilterDeployment
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(UpdateDrainFilterDrainsEnvironments$outboundSchema)
+    .optional(),
 });
 
 /**

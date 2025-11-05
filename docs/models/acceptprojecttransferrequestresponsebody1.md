@@ -10,6 +10,9 @@ let value: AcceptProjectTransferRequestResponseBody1 = {
   resourceTransferErrors: [
     {},
   ],
+  transferredStoreIds: [
+    "<value 1>",
+  ],
 };
 ```
 
@@ -19,3 +22,4 @@ let value: AcceptProjectTransferRequestResponseBody1 = {
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `partnerCalls`                                                         | [models.PartnerCalls](../models/partnercalls.md)[]                     | :heavy_check_mark:                                                     | N/A                                                                    |
 | `resourceTransferErrors`                                               | [models.ResourceTransferErrors](../models/resourcetransfererrors.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
+| `transferredStoreIds`                                                  | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |

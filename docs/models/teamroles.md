@@ -1,11 +1,13 @@
 # TeamRoles
 
+The team roles of the user
+
 ## Example Usage
 
 ```typescript
-import { TeamRoles } from "@vercel/sdk/models/team.js";
+import { TeamRoles } from "@vercel/sdk/models/invitedteammember.js";
 
-let value: TeamRoles = "VIEWER_FOR_PLUS";
+let value: TeamRoles = "MEMBER";
 ```
 
 ## Values

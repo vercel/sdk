@@ -1,15 +1,17 @@
 # Items
 
-
-## Supported Types
-
-### `models.Items1`
+## Example Usage
 
 ```typescript
-const value: models.Items1 = {
-  operation: "upsert",
-  key: "<key>",
-  value: "<value>",
+import { Items } from "@vercel/sdk/models/userevent.js";
+
+let value: Items = {
+  type: {},
 };
 ```
 
+## Fields
+
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `type`                                                                                                             | [models.UserEventPayload157AcceptedPermissionSetsType](../models/usereventpayload157acceptedpermissionsetstype.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

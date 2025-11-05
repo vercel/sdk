@@ -1,11 +1,13 @@
 # TeamPermissions
 
+The team permissions of the user
+
 ## Example Usage
 
 ```typescript
-import { TeamPermissions } from "@vercel/sdk/models/team.js";
+import { TeamPermissions } from "@vercel/sdk/models/invitedteammember.js";
 
-let value: TeamPermissions = "FullProductionDeployment";
+let value: TeamPermissions = "CreateProject";
 ```
 
 ## Values

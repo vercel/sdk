@@ -35,7 +35,7 @@ export type ListAccessGroupMembersRequest = {
   slug?: string | undefined;
 };
 
-export const TeamRole = {
+export const ListAccessGroupMembersTeamRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -45,7 +45,9 @@ export const TeamRole = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type TeamRole = ClosedEnum<typeof TeamRole>;
+export type ListAccessGroupMembersTeamRole = ClosedEnum<
+  typeof ListAccessGroupMembersTeamRole
+>;
 
 export type Members = {
   avatar?: string | undefined;
@@ -54,7 +56,7 @@ export type Members = {
   username: string;
   name?: string | undefined;
   createdAt?: string | undefined;
-  teamRole: TeamRole;
+  teamRole: ListAccessGroupMembersTeamRole;
 };
 
 export type ListAccessGroupMembersPagination = {
@@ -139,22 +141,24 @@ export function listAccessGroupMembersRequestFromJSON(
 }
 
 /** @internal */
-export const TeamRole$inboundSchema: z.ZodNativeEnum<typeof TeamRole> = z
-  .nativeEnum(TeamRole);
+export const ListAccessGroupMembersTeamRole$inboundSchema: z.ZodNativeEnum<
+  typeof ListAccessGroupMembersTeamRole
+> = z.nativeEnum(ListAccessGroupMembersTeamRole);
 
 /** @internal */
-export const TeamRole$outboundSchema: z.ZodNativeEnum<typeof TeamRole> =
-  TeamRole$inboundSchema;
+export const ListAccessGroupMembersTeamRole$outboundSchema: z.ZodNativeEnum<
+  typeof ListAccessGroupMembersTeamRole
+> = ListAccessGroupMembersTeamRole$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamRole$ {
-  /** @deprecated use `TeamRole$inboundSchema` instead. */
-  export const inboundSchema = TeamRole$inboundSchema;
-  /** @deprecated use `TeamRole$outboundSchema` instead. */
-  export const outboundSchema = TeamRole$outboundSchema;
+export namespace ListAccessGroupMembersTeamRole$ {
+  /** @deprecated use `ListAccessGroupMembersTeamRole$inboundSchema` instead. */
+  export const inboundSchema = ListAccessGroupMembersTeamRole$inboundSchema;
+  /** @deprecated use `ListAccessGroupMembersTeamRole$outboundSchema` instead. */
+  export const outboundSchema = ListAccessGroupMembersTeamRole$outboundSchema;
 }
 
 /** @internal */
@@ -166,7 +170,7 @@ export const Members$inboundSchema: z.ZodType<Members, z.ZodTypeDef, unknown> =
     username: z.string(),
     name: z.string().optional(),
     createdAt: z.string().optional(),
-    teamRole: TeamRole$inboundSchema,
+    teamRole: ListAccessGroupMembersTeamRole$inboundSchema,
   });
 
 /** @internal */
@@ -192,7 +196,7 @@ export const Members$outboundSchema: z.ZodType<
   username: z.string(),
   name: z.string().optional(),
   createdAt: z.string().optional(),
-  teamRole: TeamRole$outboundSchema,
+  teamRole: ListAccessGroupMembersTeamRole$outboundSchema,
 });
 
 /**

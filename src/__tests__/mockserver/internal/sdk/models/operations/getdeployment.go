@@ -2800,6 +2800,7 @@ func (u GetDeploymentGitSourceUnion2) MarshalJSON() ([]byte, error) {
 type GetDeploymentNodeVersion2 string
 
 const (
+	GetDeploymentNodeVersion2TwentyFourDotX GetDeploymentNodeVersion2 = "24.x"
 	GetDeploymentNodeVersion2TwentyTwoDotX  GetDeploymentNodeVersion2 = "22.x"
 	GetDeploymentNodeVersion2TwentyDotX     GetDeploymentNodeVersion2 = "20.x"
 	GetDeploymentNodeVersion2EighteenDotX   GetDeploymentNodeVersion2 = "18.x"
@@ -2819,6 +2820,8 @@ func (e *GetDeploymentNodeVersion2) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -2992,6 +2995,7 @@ type GetDeploymentOidcTokenClaims2 struct {
 	Project     string `json:"project"`
 	ProjectID   string `json:"project_id"`
 	Environment string `json:"environment"`
+	Plan        string `json:"plan"`
 }
 
 func (g GetDeploymentOidcTokenClaims2) MarshalJSON() ([]byte, error) {
@@ -2999,7 +3003,7 @@ func (g GetDeploymentOidcTokenClaims2) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetDeploymentOidcTokenClaims2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment", "plan"}); err != nil {
 		return err
 	}
 	return nil
@@ -3066,6 +3070,13 @@ func (o *GetDeploymentOidcTokenClaims2) GetEnvironment() string {
 		return ""
 	}
 	return o.Environment
+}
+
+func (o *GetDeploymentOidcTokenClaims2) GetPlan() string {
+	if o == nil {
+		return ""
+	}
+	return o.Plan
 }
 
 // Lambdas2 - The deployment including only public information
@@ -3707,6 +3718,7 @@ const (
 	GetDeploymentFrameworkZola           GetDeploymentFramework = "zola"
 	GetDeploymentFrameworkHydrogen       GetDeploymentFramework = "hydrogen"
 	GetDeploymentFrameworkVite           GetDeploymentFramework = "vite"
+	GetDeploymentFrameworkTanstackStart  GetDeploymentFramework = "tanstack-start"
 	GetDeploymentFrameworkVitepress      GetDeploymentFramework = "vitepress"
 	GetDeploymentFrameworkVuepress       GetDeploymentFramework = "vuepress"
 	GetDeploymentFrameworkParcel         GetDeploymentFramework = "parcel"
@@ -3721,6 +3733,7 @@ const (
 	GetDeploymentFrameworkExpress        GetDeploymentFramework = "express"
 	GetDeploymentFrameworkH3             GetDeploymentFramework = "h3"
 	GetDeploymentFrameworkNestjs         GetDeploymentFramework = "nestjs"
+	GetDeploymentFrameworkElysia         GetDeploymentFramework = "elysia"
 	GetDeploymentFrameworkFastify        GetDeploymentFramework = "fastify"
 	GetDeploymentFrameworkXmcp           GetDeploymentFramework = "xmcp"
 )
@@ -3812,6 +3825,8 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -3839,6 +3854,8 @@ func (e *GetDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -7148,6 +7165,7 @@ func (u GetDeploymentGitSourceUnion1) MarshalJSON() ([]byte, error) {
 type GetDeploymentNodeVersion1 string
 
 const (
+	GetDeploymentNodeVersion1TwentyFourDotX GetDeploymentNodeVersion1 = "24.x"
 	GetDeploymentNodeVersion1TwentyTwoDotX  GetDeploymentNodeVersion1 = "22.x"
 	GetDeploymentNodeVersion1TwentyDotX     GetDeploymentNodeVersion1 = "20.x"
 	GetDeploymentNodeVersion1EighteenDotX   GetDeploymentNodeVersion1 = "18.x"
@@ -7167,6 +7185,8 @@ func (e *GetDeploymentNodeVersion1) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -7340,6 +7360,7 @@ type GetDeploymentOidcTokenClaims1 struct {
 	Project     string `json:"project"`
 	ProjectID   string `json:"project_id"`
 	Environment string `json:"environment"`
+	Plan        string `json:"plan"`
 }
 
 func (g GetDeploymentOidcTokenClaims1) MarshalJSON() ([]byte, error) {
@@ -7347,7 +7368,7 @@ func (g GetDeploymentOidcTokenClaims1) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetDeploymentOidcTokenClaims1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"iss", "sub", "scope", "aud", "owner", "owner_id", "project", "project_id", "environment", "plan"}); err != nil {
 		return err
 	}
 	return nil
@@ -7414,6 +7435,13 @@ func (o *GetDeploymentOidcTokenClaims1) GetEnvironment() string {
 		return ""
 	}
 	return o.Environment
+}
+
+func (o *GetDeploymentOidcTokenClaims1) GetPlan() string {
+	if o == nil {
+		return ""
+	}
+	return o.Plan
 }
 
 type GetDeploymentPlan string

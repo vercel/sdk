@@ -87,6 +87,349 @@ func (e *DomainStatus3) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DomainError3 struct {
+	Code    string `json:"code"`
+	Details any    `json:"details,omitempty"`
+}
+
+func (d DomainError3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainError3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainError3) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
+}
+
+func (o *DomainError3) GetDetails() any {
+	if o == nil {
+		return nil
+	}
+	return o.Details
+}
+
+type CodeClaimsNoticeRequired3 string
+
+const (
+	CodeClaimsNoticeRequired3ClaimsNoticeRequired CodeClaimsNoticeRequired3 = "claims-notice-required"
+)
+
+func (e CodeClaimsNoticeRequired3) ToPointer() *CodeClaimsNoticeRequired3 {
+	return &e
+}
+func (e *CodeClaimsNoticeRequired3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "claims-notice-required":
+		*e = CodeClaimsNoticeRequired3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeClaimsNoticeRequired3: %v", v)
+	}
+}
+
+type ErrorClaimsNoticeRequired3 struct {
+	Code CodeClaimsNoticeRequired3 `json:"code"`
+}
+
+func (e ErrorClaimsNoticeRequired3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorClaimsNoticeRequired3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorClaimsNoticeRequired3) GetCode() CodeClaimsNoticeRequired3 {
+	if o == nil {
+		return CodeClaimsNoticeRequired3("")
+	}
+	return o.Code
+}
+
+type CodeClientTransferProhibited3 string
+
+const (
+	CodeClientTransferProhibited3ClientTransferProhibited CodeClientTransferProhibited3 = "client-transfer-prohibited"
+)
+
+func (e CodeClientTransferProhibited3) ToPointer() *CodeClientTransferProhibited3 {
+	return &e
+}
+func (e *CodeClientTransferProhibited3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "client-transfer-prohibited":
+		*e = CodeClientTransferProhibited3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeClientTransferProhibited3: %v", v)
+	}
+}
+
+type ErrorClientTransferProhibited3 struct {
+	Code CodeClientTransferProhibited3 `json:"code"`
+}
+
+func (e ErrorClientTransferProhibited3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorClientTransferProhibited3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorClientTransferProhibited3) GetCode() CodeClientTransferProhibited3 {
+	if o == nil {
+		return CodeClientTransferProhibited3("")
+	}
+	return o.Code
+}
+
+type CodeUnsupportedLanguageCode3 string
+
+const (
+	CodeUnsupportedLanguageCode3UnsupportedLanguageCode CodeUnsupportedLanguageCode3 = "unsupported-language-code"
+)
+
+func (e CodeUnsupportedLanguageCode3) ToPointer() *CodeUnsupportedLanguageCode3 {
+	return &e
+}
+func (e *CodeUnsupportedLanguageCode3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unsupported-language-code":
+		*e = CodeUnsupportedLanguageCode3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeUnsupportedLanguageCode3: %v", v)
+	}
+}
+
+type DomainDetails3 struct {
+	DetectedLanguageCode string `json:"detectedLanguageCode"`
+}
+
+func (d DomainDetails3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails3) GetDetectedLanguageCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.DetectedLanguageCode
+}
+
+type ErrorUnsupportedLanguageCode3 struct {
+	Code    CodeUnsupportedLanguageCode3 `json:"code"`
+	Details DomainDetails3               `json:"details"`
+}
+
+func (e ErrorUnsupportedLanguageCode3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorUnsupportedLanguageCode3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorUnsupportedLanguageCode3) GetCode() CodeUnsupportedLanguageCode3 {
+	if o == nil {
+		return CodeUnsupportedLanguageCode3("")
+	}
+	return o.Code
+}
+
+func (o *ErrorUnsupportedLanguageCode3) GetDetails() DomainDetails3 {
+	if o == nil {
+		return DomainDetails3{}
+	}
+	return o.Details
+}
+
+type DomainErrorUnion5Type string
+
+const (
+	DomainErrorUnion5TypeErrorUnsupportedLanguageCode3  DomainErrorUnion5Type = "error_UnsupportedLanguageCode_3"
+	DomainErrorUnion5TypeErrorClientTransferProhibited3 DomainErrorUnion5Type = "error_ClientTransferProhibited_3"
+	DomainErrorUnion5TypeErrorClaimsNoticeRequired3     DomainErrorUnion5Type = "error_ClaimsNoticeRequired_3"
+)
+
+type DomainErrorUnion5 struct {
+	ErrorUnsupportedLanguageCode3  *ErrorUnsupportedLanguageCode3  `queryParam:"inline"`
+	ErrorClientTransferProhibited3 *ErrorClientTransferProhibited3 `queryParam:"inline"`
+	ErrorClaimsNoticeRequired3     *ErrorClaimsNoticeRequired3     `queryParam:"inline"`
+
+	Type DomainErrorUnion5Type
+}
+
+func CreateDomainErrorUnion5ErrorUnsupportedLanguageCode3(errorUnsupportedLanguageCode3 ErrorUnsupportedLanguageCode3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeErrorUnsupportedLanguageCode3
+
+	return DomainErrorUnion5{
+		ErrorUnsupportedLanguageCode3: &errorUnsupportedLanguageCode3,
+		Type:                          typ,
+	}
+}
+
+func CreateDomainErrorUnion5ErrorClientTransferProhibited3(errorClientTransferProhibited3 ErrorClientTransferProhibited3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeErrorClientTransferProhibited3
+
+	return DomainErrorUnion5{
+		ErrorClientTransferProhibited3: &errorClientTransferProhibited3,
+		Type:                           typ,
+	}
+}
+
+func CreateDomainErrorUnion5ErrorClaimsNoticeRequired3(errorClaimsNoticeRequired3 ErrorClaimsNoticeRequired3) DomainErrorUnion5 {
+	typ := DomainErrorUnion5TypeErrorClaimsNoticeRequired3
+
+	return DomainErrorUnion5{
+		ErrorClaimsNoticeRequired3: &errorClaimsNoticeRequired3,
+		Type:                       typ,
+	}
+}
+
+func (u *DomainErrorUnion5) UnmarshalJSON(data []byte) error {
+
+	var errorUnsupportedLanguageCode3 ErrorUnsupportedLanguageCode3 = ErrorUnsupportedLanguageCode3{}
+	if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode3, "", true, nil); err == nil {
+		u.ErrorUnsupportedLanguageCode3 = &errorUnsupportedLanguageCode3
+		u.Type = DomainErrorUnion5TypeErrorUnsupportedLanguageCode3
+		return nil
+	}
+
+	var errorClientTransferProhibited3 ErrorClientTransferProhibited3 = ErrorClientTransferProhibited3{}
+	if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited3, "", true, nil); err == nil {
+		u.ErrorClientTransferProhibited3 = &errorClientTransferProhibited3
+		u.Type = DomainErrorUnion5TypeErrorClientTransferProhibited3
+		return nil
+	}
+
+	var errorClaimsNoticeRequired3 ErrorClaimsNoticeRequired3 = ErrorClaimsNoticeRequired3{}
+	if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired3, "", true, nil); err == nil {
+		u.ErrorClaimsNoticeRequired3 = &errorClaimsNoticeRequired3
+		u.Type = DomainErrorUnion5TypeErrorClaimsNoticeRequired3
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion5", string(data))
+}
+
+func (u DomainErrorUnion5) MarshalJSON() ([]byte, error) {
+	if u.ErrorUnsupportedLanguageCode3 != nil {
+		return utils.MarshalJSON(u.ErrorUnsupportedLanguageCode3, "", true)
+	}
+
+	if u.ErrorClientTransferProhibited3 != nil {
+		return utils.MarshalJSON(u.ErrorClientTransferProhibited3, "", true)
+	}
+
+	if u.ErrorClaimsNoticeRequired3 != nil {
+		return utils.MarshalJSON(u.ErrorClaimsNoticeRequired3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DomainErrorUnion5: all fields are null")
+}
+
+type DomainErrorUnion6Type string
+
+const (
+	DomainErrorUnion6TypeDomainErrorUnion5 DomainErrorUnion6Type = "domain_error_union_5"
+	DomainErrorUnion6TypeDomainError3      DomainErrorUnion6Type = "domain_error_3"
+)
+
+type DomainErrorUnion6 struct {
+	DomainErrorUnion5 *DomainErrorUnion5 `queryParam:"inline"`
+	DomainError3      *DomainError3      `queryParam:"inline"`
+
+	Type DomainErrorUnion6Type
+}
+
+func CreateDomainErrorUnion6DomainErrorUnion5(domainErrorUnion5 DomainErrorUnion5) DomainErrorUnion6 {
+	typ := DomainErrorUnion6TypeDomainErrorUnion5
+
+	return DomainErrorUnion6{
+		DomainErrorUnion5: &domainErrorUnion5,
+		Type:              typ,
+	}
+}
+
+func CreateDomainErrorUnion6DomainError3(domainError3 DomainError3) DomainErrorUnion6 {
+	typ := DomainErrorUnion6TypeDomainError3
+
+	return DomainErrorUnion6{
+		DomainError3: &domainError3,
+		Type:         typ,
+	}
+}
+
+func (u *DomainErrorUnion6) UnmarshalJSON(data []byte) error {
+
+	var domainError3 DomainError3 = DomainError3{}
+	if err := utils.UnmarshalJSON(data, &domainError3, "", true, nil); err == nil {
+		u.DomainError3 = &domainError3
+		u.Type = DomainErrorUnion6TypeDomainError3
+		return nil
+	}
+
+	var domainErrorUnion5 DomainErrorUnion5 = DomainErrorUnion5{}
+	if err := utils.UnmarshalJSON(data, &domainErrorUnion5, "", true, nil); err == nil {
+		u.DomainErrorUnion5 = &domainErrorUnion5
+		u.Type = DomainErrorUnion6TypeDomainErrorUnion5
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion6", string(data))
+}
+
+func (u DomainErrorUnion6) MarshalJSON() ([]byte, error) {
+	if u.DomainErrorUnion5 != nil {
+		return utils.MarshalJSON(u.DomainErrorUnion5, "", true)
+	}
+
+	if u.DomainError3 != nil {
+		return utils.MarshalJSON(u.DomainError3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DomainErrorUnion6: all fields are null")
+}
+
 type DomainTransfer struct {
 	PurchaseType PurchaseTypeTransfer `json:"purchaseType"`
 	AutoRenew    bool                 `json:"autoRenew"`
@@ -95,7 +438,8 @@ type DomainTransfer struct {
 	DomainName string        `json:"domainName"`
 	Status     DomainStatus3 `json:"status"`
 	// The price for the domain.
-	Price float64 `json:"price"`
+	Price float64            `json:"price"`
+	Error *DomainErrorUnion6 `json:"error,omitempty"`
 }
 
 func (d DomainTransfer) MarshalJSON() ([]byte, error) {
@@ -149,6 +493,13 @@ func (o *DomainTransfer) GetPrice() float64 {
 		return 0.0
 	}
 	return o.Price
+}
+
+func (o *DomainTransfer) GetError() *DomainErrorUnion6 {
+	if o == nil {
+		return nil
+	}
+	return o.Error
 }
 
 type PurchaseTypeRenewal string
@@ -209,6 +560,349 @@ func (e *DomainStatus2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DomainError2 struct {
+	Code    string `json:"code"`
+	Details any    `json:"details,omitempty"`
+}
+
+func (d DomainError2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainError2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainError2) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
+}
+
+func (o *DomainError2) GetDetails() any {
+	if o == nil {
+		return nil
+	}
+	return o.Details
+}
+
+type CodeClaimsNoticeRequired2 string
+
+const (
+	CodeClaimsNoticeRequired2ClaimsNoticeRequired CodeClaimsNoticeRequired2 = "claims-notice-required"
+)
+
+func (e CodeClaimsNoticeRequired2) ToPointer() *CodeClaimsNoticeRequired2 {
+	return &e
+}
+func (e *CodeClaimsNoticeRequired2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "claims-notice-required":
+		*e = CodeClaimsNoticeRequired2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeClaimsNoticeRequired2: %v", v)
+	}
+}
+
+type ErrorClaimsNoticeRequired2 struct {
+	Code CodeClaimsNoticeRequired2 `json:"code"`
+}
+
+func (e ErrorClaimsNoticeRequired2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorClaimsNoticeRequired2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorClaimsNoticeRequired2) GetCode() CodeClaimsNoticeRequired2 {
+	if o == nil {
+		return CodeClaimsNoticeRequired2("")
+	}
+	return o.Code
+}
+
+type CodeClientTransferProhibited2 string
+
+const (
+	CodeClientTransferProhibited2ClientTransferProhibited CodeClientTransferProhibited2 = "client-transfer-prohibited"
+)
+
+func (e CodeClientTransferProhibited2) ToPointer() *CodeClientTransferProhibited2 {
+	return &e
+}
+func (e *CodeClientTransferProhibited2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "client-transfer-prohibited":
+		*e = CodeClientTransferProhibited2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeClientTransferProhibited2: %v", v)
+	}
+}
+
+type ErrorClientTransferProhibited2 struct {
+	Code CodeClientTransferProhibited2 `json:"code"`
+}
+
+func (e ErrorClientTransferProhibited2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorClientTransferProhibited2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorClientTransferProhibited2) GetCode() CodeClientTransferProhibited2 {
+	if o == nil {
+		return CodeClientTransferProhibited2("")
+	}
+	return o.Code
+}
+
+type CodeUnsupportedLanguageCode2 string
+
+const (
+	CodeUnsupportedLanguageCode2UnsupportedLanguageCode CodeUnsupportedLanguageCode2 = "unsupported-language-code"
+)
+
+func (e CodeUnsupportedLanguageCode2) ToPointer() *CodeUnsupportedLanguageCode2 {
+	return &e
+}
+func (e *CodeUnsupportedLanguageCode2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unsupported-language-code":
+		*e = CodeUnsupportedLanguageCode2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeUnsupportedLanguageCode2: %v", v)
+	}
+}
+
+type DomainDetails2 struct {
+	DetectedLanguageCode string `json:"detectedLanguageCode"`
+}
+
+func (d DomainDetails2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails2) GetDetectedLanguageCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.DetectedLanguageCode
+}
+
+type ErrorUnsupportedLanguageCode2 struct {
+	Code    CodeUnsupportedLanguageCode2 `json:"code"`
+	Details DomainDetails2               `json:"details"`
+}
+
+func (e ErrorUnsupportedLanguageCode2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorUnsupportedLanguageCode2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorUnsupportedLanguageCode2) GetCode() CodeUnsupportedLanguageCode2 {
+	if o == nil {
+		return CodeUnsupportedLanguageCode2("")
+	}
+	return o.Code
+}
+
+func (o *ErrorUnsupportedLanguageCode2) GetDetails() DomainDetails2 {
+	if o == nil {
+		return DomainDetails2{}
+	}
+	return o.Details
+}
+
+type DomainErrorUnion3Type string
+
+const (
+	DomainErrorUnion3TypeErrorUnsupportedLanguageCode2  DomainErrorUnion3Type = "error_UnsupportedLanguageCode_2"
+	DomainErrorUnion3TypeErrorClientTransferProhibited2 DomainErrorUnion3Type = "error_ClientTransferProhibited_2"
+	DomainErrorUnion3TypeErrorClaimsNoticeRequired2     DomainErrorUnion3Type = "error_ClaimsNoticeRequired_2"
+)
+
+type DomainErrorUnion3 struct {
+	ErrorUnsupportedLanguageCode2  *ErrorUnsupportedLanguageCode2  `queryParam:"inline"`
+	ErrorClientTransferProhibited2 *ErrorClientTransferProhibited2 `queryParam:"inline"`
+	ErrorClaimsNoticeRequired2     *ErrorClaimsNoticeRequired2     `queryParam:"inline"`
+
+	Type DomainErrorUnion3Type
+}
+
+func CreateDomainErrorUnion3ErrorUnsupportedLanguageCode2(errorUnsupportedLanguageCode2 ErrorUnsupportedLanguageCode2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeErrorUnsupportedLanguageCode2
+
+	return DomainErrorUnion3{
+		ErrorUnsupportedLanguageCode2: &errorUnsupportedLanguageCode2,
+		Type:                          typ,
+	}
+}
+
+func CreateDomainErrorUnion3ErrorClientTransferProhibited2(errorClientTransferProhibited2 ErrorClientTransferProhibited2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeErrorClientTransferProhibited2
+
+	return DomainErrorUnion3{
+		ErrorClientTransferProhibited2: &errorClientTransferProhibited2,
+		Type:                           typ,
+	}
+}
+
+func CreateDomainErrorUnion3ErrorClaimsNoticeRequired2(errorClaimsNoticeRequired2 ErrorClaimsNoticeRequired2) DomainErrorUnion3 {
+	typ := DomainErrorUnion3TypeErrorClaimsNoticeRequired2
+
+	return DomainErrorUnion3{
+		ErrorClaimsNoticeRequired2: &errorClaimsNoticeRequired2,
+		Type:                       typ,
+	}
+}
+
+func (u *DomainErrorUnion3) UnmarshalJSON(data []byte) error {
+
+	var errorUnsupportedLanguageCode2 ErrorUnsupportedLanguageCode2 = ErrorUnsupportedLanguageCode2{}
+	if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode2, "", true, nil); err == nil {
+		u.ErrorUnsupportedLanguageCode2 = &errorUnsupportedLanguageCode2
+		u.Type = DomainErrorUnion3TypeErrorUnsupportedLanguageCode2
+		return nil
+	}
+
+	var errorClientTransferProhibited2 ErrorClientTransferProhibited2 = ErrorClientTransferProhibited2{}
+	if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited2, "", true, nil); err == nil {
+		u.ErrorClientTransferProhibited2 = &errorClientTransferProhibited2
+		u.Type = DomainErrorUnion3TypeErrorClientTransferProhibited2
+		return nil
+	}
+
+	var errorClaimsNoticeRequired2 ErrorClaimsNoticeRequired2 = ErrorClaimsNoticeRequired2{}
+	if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired2, "", true, nil); err == nil {
+		u.ErrorClaimsNoticeRequired2 = &errorClaimsNoticeRequired2
+		u.Type = DomainErrorUnion3TypeErrorClaimsNoticeRequired2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion3", string(data))
+}
+
+func (u DomainErrorUnion3) MarshalJSON() ([]byte, error) {
+	if u.ErrorUnsupportedLanguageCode2 != nil {
+		return utils.MarshalJSON(u.ErrorUnsupportedLanguageCode2, "", true)
+	}
+
+	if u.ErrorClientTransferProhibited2 != nil {
+		return utils.MarshalJSON(u.ErrorClientTransferProhibited2, "", true)
+	}
+
+	if u.ErrorClaimsNoticeRequired2 != nil {
+		return utils.MarshalJSON(u.ErrorClaimsNoticeRequired2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DomainErrorUnion3: all fields are null")
+}
+
+type DomainErrorUnion4Type string
+
+const (
+	DomainErrorUnion4TypeDomainErrorUnion3 DomainErrorUnion4Type = "domain_error_union_3"
+	DomainErrorUnion4TypeDomainError2      DomainErrorUnion4Type = "domain_error_2"
+)
+
+type DomainErrorUnion4 struct {
+	DomainErrorUnion3 *DomainErrorUnion3 `queryParam:"inline"`
+	DomainError2      *DomainError2      `queryParam:"inline"`
+
+	Type DomainErrorUnion4Type
+}
+
+func CreateDomainErrorUnion4DomainErrorUnion3(domainErrorUnion3 DomainErrorUnion3) DomainErrorUnion4 {
+	typ := DomainErrorUnion4TypeDomainErrorUnion3
+
+	return DomainErrorUnion4{
+		DomainErrorUnion3: &domainErrorUnion3,
+		Type:              typ,
+	}
+}
+
+func CreateDomainErrorUnion4DomainError2(domainError2 DomainError2) DomainErrorUnion4 {
+	typ := DomainErrorUnion4TypeDomainError2
+
+	return DomainErrorUnion4{
+		DomainError2: &domainError2,
+		Type:         typ,
+	}
+}
+
+func (u *DomainErrorUnion4) UnmarshalJSON(data []byte) error {
+
+	var domainError2 DomainError2 = DomainError2{}
+	if err := utils.UnmarshalJSON(data, &domainError2, "", true, nil); err == nil {
+		u.DomainError2 = &domainError2
+		u.Type = DomainErrorUnion4TypeDomainError2
+		return nil
+	}
+
+	var domainErrorUnion3 DomainErrorUnion3 = DomainErrorUnion3{}
+	if err := utils.UnmarshalJSON(data, &domainErrorUnion3, "", true, nil); err == nil {
+		u.DomainErrorUnion3 = &domainErrorUnion3
+		u.Type = DomainErrorUnion4TypeDomainErrorUnion3
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion4", string(data))
+}
+
+func (u DomainErrorUnion4) MarshalJSON() ([]byte, error) {
+	if u.DomainErrorUnion3 != nil {
+		return utils.MarshalJSON(u.DomainErrorUnion3, "", true)
+	}
+
+	if u.DomainError2 != nil {
+		return utils.MarshalJSON(u.DomainError2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DomainErrorUnion4: all fields are null")
+}
+
 type DomainRenewal struct {
 	PurchaseType PurchaseTypeRenewal `json:"purchaseType"`
 	// The number of years the domain is being renewed for.
@@ -216,7 +910,8 @@ type DomainRenewal struct {
 	DomainName string        `json:"domainName"`
 	Status     DomainStatus2 `json:"status"`
 	// The price for the domain.
-	Price float64 `json:"price"`
+	Price float64            `json:"price"`
+	Error *DomainErrorUnion4 `json:"error,omitempty"`
 }
 
 func (d DomainRenewal) MarshalJSON() ([]byte, error) {
@@ -263,6 +958,13 @@ func (o *DomainRenewal) GetPrice() float64 {
 		return 0.0
 	}
 	return o.Price
+}
+
+func (o *DomainRenewal) GetError() *DomainErrorUnion4 {
+	if o == nil {
+		return nil
+	}
+	return o.Error
 }
 
 type PurchaseTypePurchase string
@@ -323,6 +1025,349 @@ func (e *DomainStatus1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DomainError1 struct {
+	Code    string `json:"code"`
+	Details any    `json:"details,omitempty"`
+}
+
+func (d DomainError1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainError1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainError1) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
+}
+
+func (o *DomainError1) GetDetails() any {
+	if o == nil {
+		return nil
+	}
+	return o.Details
+}
+
+type CodeClaimsNoticeRequired1 string
+
+const (
+	CodeClaimsNoticeRequired1ClaimsNoticeRequired CodeClaimsNoticeRequired1 = "claims-notice-required"
+)
+
+func (e CodeClaimsNoticeRequired1) ToPointer() *CodeClaimsNoticeRequired1 {
+	return &e
+}
+func (e *CodeClaimsNoticeRequired1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "claims-notice-required":
+		*e = CodeClaimsNoticeRequired1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeClaimsNoticeRequired1: %v", v)
+	}
+}
+
+type ErrorClaimsNoticeRequired1 struct {
+	Code CodeClaimsNoticeRequired1 `json:"code"`
+}
+
+func (e ErrorClaimsNoticeRequired1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorClaimsNoticeRequired1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorClaimsNoticeRequired1) GetCode() CodeClaimsNoticeRequired1 {
+	if o == nil {
+		return CodeClaimsNoticeRequired1("")
+	}
+	return o.Code
+}
+
+type CodeClientTransferProhibited1 string
+
+const (
+	CodeClientTransferProhibited1ClientTransferProhibited CodeClientTransferProhibited1 = "client-transfer-prohibited"
+)
+
+func (e CodeClientTransferProhibited1) ToPointer() *CodeClientTransferProhibited1 {
+	return &e
+}
+func (e *CodeClientTransferProhibited1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "client-transfer-prohibited":
+		*e = CodeClientTransferProhibited1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeClientTransferProhibited1: %v", v)
+	}
+}
+
+type ErrorClientTransferProhibited1 struct {
+	Code CodeClientTransferProhibited1 `json:"code"`
+}
+
+func (e ErrorClientTransferProhibited1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorClientTransferProhibited1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorClientTransferProhibited1) GetCode() CodeClientTransferProhibited1 {
+	if o == nil {
+		return CodeClientTransferProhibited1("")
+	}
+	return o.Code
+}
+
+type CodeUnsupportedLanguageCode1 string
+
+const (
+	CodeUnsupportedLanguageCode1UnsupportedLanguageCode CodeUnsupportedLanguageCode1 = "unsupported-language-code"
+)
+
+func (e CodeUnsupportedLanguageCode1) ToPointer() *CodeUnsupportedLanguageCode1 {
+	return &e
+}
+func (e *CodeUnsupportedLanguageCode1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "unsupported-language-code":
+		*e = CodeUnsupportedLanguageCode1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CodeUnsupportedLanguageCode1: %v", v)
+	}
+}
+
+type DomainDetails1 struct {
+	DetectedLanguageCode string `json:"detectedLanguageCode"`
+}
+
+func (d DomainDetails1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DomainDetails1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"detectedLanguageCode"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DomainDetails1) GetDetectedLanguageCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.DetectedLanguageCode
+}
+
+type ErrorUnsupportedLanguageCode1 struct {
+	Code    CodeUnsupportedLanguageCode1 `json:"code"`
+	Details DomainDetails1               `json:"details"`
+}
+
+func (e ErrorUnsupportedLanguageCode1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ErrorUnsupportedLanguageCode1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"code", "details"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ErrorUnsupportedLanguageCode1) GetCode() CodeUnsupportedLanguageCode1 {
+	if o == nil {
+		return CodeUnsupportedLanguageCode1("")
+	}
+	return o.Code
+}
+
+func (o *ErrorUnsupportedLanguageCode1) GetDetails() DomainDetails1 {
+	if o == nil {
+		return DomainDetails1{}
+	}
+	return o.Details
+}
+
+type DomainErrorUnion1Type string
+
+const (
+	DomainErrorUnion1TypeErrorUnsupportedLanguageCode1  DomainErrorUnion1Type = "error_UnsupportedLanguageCode_1"
+	DomainErrorUnion1TypeErrorClientTransferProhibited1 DomainErrorUnion1Type = "error_ClientTransferProhibited_1"
+	DomainErrorUnion1TypeErrorClaimsNoticeRequired1     DomainErrorUnion1Type = "error_ClaimsNoticeRequired_1"
+)
+
+type DomainErrorUnion1 struct {
+	ErrorUnsupportedLanguageCode1  *ErrorUnsupportedLanguageCode1  `queryParam:"inline"`
+	ErrorClientTransferProhibited1 *ErrorClientTransferProhibited1 `queryParam:"inline"`
+	ErrorClaimsNoticeRequired1     *ErrorClaimsNoticeRequired1     `queryParam:"inline"`
+
+	Type DomainErrorUnion1Type
+}
+
+func CreateDomainErrorUnion1ErrorUnsupportedLanguageCode1(errorUnsupportedLanguageCode1 ErrorUnsupportedLanguageCode1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeErrorUnsupportedLanguageCode1
+
+	return DomainErrorUnion1{
+		ErrorUnsupportedLanguageCode1: &errorUnsupportedLanguageCode1,
+		Type:                          typ,
+	}
+}
+
+func CreateDomainErrorUnion1ErrorClientTransferProhibited1(errorClientTransferProhibited1 ErrorClientTransferProhibited1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeErrorClientTransferProhibited1
+
+	return DomainErrorUnion1{
+		ErrorClientTransferProhibited1: &errorClientTransferProhibited1,
+		Type:                           typ,
+	}
+}
+
+func CreateDomainErrorUnion1ErrorClaimsNoticeRequired1(errorClaimsNoticeRequired1 ErrorClaimsNoticeRequired1) DomainErrorUnion1 {
+	typ := DomainErrorUnion1TypeErrorClaimsNoticeRequired1
+
+	return DomainErrorUnion1{
+		ErrorClaimsNoticeRequired1: &errorClaimsNoticeRequired1,
+		Type:                       typ,
+	}
+}
+
+func (u *DomainErrorUnion1) UnmarshalJSON(data []byte) error {
+
+	var errorUnsupportedLanguageCode1 ErrorUnsupportedLanguageCode1 = ErrorUnsupportedLanguageCode1{}
+	if err := utils.UnmarshalJSON(data, &errorUnsupportedLanguageCode1, "", true, nil); err == nil {
+		u.ErrorUnsupportedLanguageCode1 = &errorUnsupportedLanguageCode1
+		u.Type = DomainErrorUnion1TypeErrorUnsupportedLanguageCode1
+		return nil
+	}
+
+	var errorClientTransferProhibited1 ErrorClientTransferProhibited1 = ErrorClientTransferProhibited1{}
+	if err := utils.UnmarshalJSON(data, &errorClientTransferProhibited1, "", true, nil); err == nil {
+		u.ErrorClientTransferProhibited1 = &errorClientTransferProhibited1
+		u.Type = DomainErrorUnion1TypeErrorClientTransferProhibited1
+		return nil
+	}
+
+	var errorClaimsNoticeRequired1 ErrorClaimsNoticeRequired1 = ErrorClaimsNoticeRequired1{}
+	if err := utils.UnmarshalJSON(data, &errorClaimsNoticeRequired1, "", true, nil); err == nil {
+		u.ErrorClaimsNoticeRequired1 = &errorClaimsNoticeRequired1
+		u.Type = DomainErrorUnion1TypeErrorClaimsNoticeRequired1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion1", string(data))
+}
+
+func (u DomainErrorUnion1) MarshalJSON() ([]byte, error) {
+	if u.ErrorUnsupportedLanguageCode1 != nil {
+		return utils.MarshalJSON(u.ErrorUnsupportedLanguageCode1, "", true)
+	}
+
+	if u.ErrorClientTransferProhibited1 != nil {
+		return utils.MarshalJSON(u.ErrorClientTransferProhibited1, "", true)
+	}
+
+	if u.ErrorClaimsNoticeRequired1 != nil {
+		return utils.MarshalJSON(u.ErrorClaimsNoticeRequired1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DomainErrorUnion1: all fields are null")
+}
+
+type DomainErrorUnion2Type string
+
+const (
+	DomainErrorUnion2TypeDomainErrorUnion1 DomainErrorUnion2Type = "domain_error_union_1"
+	DomainErrorUnion2TypeDomainError1      DomainErrorUnion2Type = "domain_error_1"
+)
+
+type DomainErrorUnion2 struct {
+	DomainErrorUnion1 *DomainErrorUnion1 `queryParam:"inline"`
+	DomainError1      *DomainError1      `queryParam:"inline"`
+
+	Type DomainErrorUnion2Type
+}
+
+func CreateDomainErrorUnion2DomainErrorUnion1(domainErrorUnion1 DomainErrorUnion1) DomainErrorUnion2 {
+	typ := DomainErrorUnion2TypeDomainErrorUnion1
+
+	return DomainErrorUnion2{
+		DomainErrorUnion1: &domainErrorUnion1,
+		Type:              typ,
+	}
+}
+
+func CreateDomainErrorUnion2DomainError1(domainError1 DomainError1) DomainErrorUnion2 {
+	typ := DomainErrorUnion2TypeDomainError1
+
+	return DomainErrorUnion2{
+		DomainError1: &domainError1,
+		Type:         typ,
+	}
+}
+
+func (u *DomainErrorUnion2) UnmarshalJSON(data []byte) error {
+
+	var domainError1 DomainError1 = DomainError1{}
+	if err := utils.UnmarshalJSON(data, &domainError1, "", true, nil); err == nil {
+		u.DomainError1 = &domainError1
+		u.Type = DomainErrorUnion2TypeDomainError1
+		return nil
+	}
+
+	var domainErrorUnion1 DomainErrorUnion1 = DomainErrorUnion1{}
+	if err := utils.UnmarshalJSON(data, &domainErrorUnion1, "", true, nil); err == nil {
+		u.DomainErrorUnion1 = &domainErrorUnion1
+		u.Type = DomainErrorUnion2TypeDomainErrorUnion1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DomainErrorUnion2", string(data))
+}
+
+func (u DomainErrorUnion2) MarshalJSON() ([]byte, error) {
+	if u.DomainErrorUnion1 != nil {
+		return utils.MarshalJSON(u.DomainErrorUnion1, "", true)
+	}
+
+	if u.DomainError1 != nil {
+		return utils.MarshalJSON(u.DomainError1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DomainErrorUnion2: all fields are null")
+}
+
 type DomainPurchase struct {
 	PurchaseType PurchaseTypePurchase `json:"purchaseType"`
 	AutoRenew    bool                 `json:"autoRenew"`
@@ -331,7 +1376,8 @@ type DomainPurchase struct {
 	DomainName string        `json:"domainName"`
 	Status     DomainStatus1 `json:"status"`
 	// The price for the domain.
-	Price float64 `json:"price"`
+	Price float64            `json:"price"`
+	Error *DomainErrorUnion2 `json:"error,omitempty"`
 }
 
 func (d DomainPurchase) MarshalJSON() ([]byte, error) {
@@ -385,6 +1431,13 @@ func (o *DomainPurchase) GetPrice() float64 {
 		return 0.0
 	}
 	return o.Price
+}
+
+func (o *DomainPurchase) GetError() *DomainErrorUnion2 {
+	if o == nil {
+		return nil
+	}
+	return o.Error
 }
 
 type GetOrderDomainUnionType string
@@ -502,6 +1555,36 @@ func (e *GetOrderStatus) UnmarshalJSON(data []byte) error {
 	default:
 		return fmt.Errorf("invalid value for GetOrderStatus: %v", v)
 	}
+}
+
+type GetOrderError struct {
+	Code    string `json:"code"`
+	Details any    `json:"details,omitempty"`
+}
+
+func (g GetOrderError) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetOrderError) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"code"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetOrderError) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
+}
+
+func (o *GetOrderError) GetDetails() any {
+	if o == nil {
+		return nil
+	}
+	return o.Details
 }
 
 type CodeUnexpectedError string
@@ -782,94 +1865,94 @@ func (o *ErrorPaymentFailed) GetCode() CodePaymentFailed {
 	return o.Code
 }
 
-type ErrorType string
+type ErrorUnion1Type string
 
 const (
-	ErrorTypeErrorPaymentFailed   ErrorType = "error_PaymentFailed"
-	ErrorTypeErrorTldOutage       ErrorType = "error_TldOutage"
-	ErrorTypeErrorPriceMismatch   ErrorType = "error_PriceMismatch"
-	ErrorTypeErrorUnexpectedError ErrorType = "error_UnexpectedError"
+	ErrorUnion1TypeErrorPaymentFailed   ErrorUnion1Type = "error_PaymentFailed"
+	ErrorUnion1TypeErrorTldOutage       ErrorUnion1Type = "error_TldOutage"
+	ErrorUnion1TypeErrorPriceMismatch   ErrorUnion1Type = "error_PriceMismatch"
+	ErrorUnion1TypeErrorUnexpectedError ErrorUnion1Type = "error_UnexpectedError"
 )
 
-type Error struct {
+type ErrorUnion1 struct {
 	ErrorPaymentFailed   *ErrorPaymentFailed   `queryParam:"inline"`
 	ErrorTldOutage       *ErrorTldOutage       `queryParam:"inline"`
 	ErrorPriceMismatch   *ErrorPriceMismatch   `queryParam:"inline"`
 	ErrorUnexpectedError *ErrorUnexpectedError `queryParam:"inline"`
 
-	Type ErrorType
+	Type ErrorUnion1Type
 }
 
-func CreateErrorErrorPaymentFailed(errorPaymentFailed ErrorPaymentFailed) Error {
-	typ := ErrorTypeErrorPaymentFailed
+func CreateErrorUnion1ErrorPaymentFailed(errorPaymentFailed ErrorPaymentFailed) ErrorUnion1 {
+	typ := ErrorUnion1TypeErrorPaymentFailed
 
-	return Error{
+	return ErrorUnion1{
 		ErrorPaymentFailed: &errorPaymentFailed,
 		Type:               typ,
 	}
 }
 
-func CreateErrorErrorTldOutage(errorTldOutage ErrorTldOutage) Error {
-	typ := ErrorTypeErrorTldOutage
+func CreateErrorUnion1ErrorTldOutage(errorTldOutage ErrorTldOutage) ErrorUnion1 {
+	typ := ErrorUnion1TypeErrorTldOutage
 
-	return Error{
+	return ErrorUnion1{
 		ErrorTldOutage: &errorTldOutage,
 		Type:           typ,
 	}
 }
 
-func CreateErrorErrorPriceMismatch(errorPriceMismatch ErrorPriceMismatch) Error {
-	typ := ErrorTypeErrorPriceMismatch
+func CreateErrorUnion1ErrorPriceMismatch(errorPriceMismatch ErrorPriceMismatch) ErrorUnion1 {
+	typ := ErrorUnion1TypeErrorPriceMismatch
 
-	return Error{
+	return ErrorUnion1{
 		ErrorPriceMismatch: &errorPriceMismatch,
 		Type:               typ,
 	}
 }
 
-func CreateErrorErrorUnexpectedError(errorUnexpectedError ErrorUnexpectedError) Error {
-	typ := ErrorTypeErrorUnexpectedError
+func CreateErrorUnion1ErrorUnexpectedError(errorUnexpectedError ErrorUnexpectedError) ErrorUnion1 {
+	typ := ErrorUnion1TypeErrorUnexpectedError
 
-	return Error{
+	return ErrorUnion1{
 		ErrorUnexpectedError: &errorUnexpectedError,
 		Type:                 typ,
 	}
 }
 
-func (u *Error) UnmarshalJSON(data []byte) error {
+func (u *ErrorUnion1) UnmarshalJSON(data []byte) error {
 
 	var errorTldOutage ErrorTldOutage = ErrorTldOutage{}
 	if err := utils.UnmarshalJSON(data, &errorTldOutage, "", true, nil); err == nil {
 		u.ErrorTldOutage = &errorTldOutage
-		u.Type = ErrorTypeErrorTldOutage
+		u.Type = ErrorUnion1TypeErrorTldOutage
 		return nil
 	}
 
 	var errorPriceMismatch ErrorPriceMismatch = ErrorPriceMismatch{}
 	if err := utils.UnmarshalJSON(data, &errorPriceMismatch, "", true, nil); err == nil {
 		u.ErrorPriceMismatch = &errorPriceMismatch
-		u.Type = ErrorTypeErrorPriceMismatch
+		u.Type = ErrorUnion1TypeErrorPriceMismatch
 		return nil
 	}
 
 	var errorPaymentFailed ErrorPaymentFailed = ErrorPaymentFailed{}
 	if err := utils.UnmarshalJSON(data, &errorPaymentFailed, "", true, nil); err == nil {
 		u.ErrorPaymentFailed = &errorPaymentFailed
-		u.Type = ErrorTypeErrorPaymentFailed
+		u.Type = ErrorUnion1TypeErrorPaymentFailed
 		return nil
 	}
 
 	var errorUnexpectedError ErrorUnexpectedError = ErrorUnexpectedError{}
 	if err := utils.UnmarshalJSON(data, &errorUnexpectedError, "", true, nil); err == nil {
 		u.ErrorUnexpectedError = &errorUnexpectedError
-		u.Type = ErrorTypeErrorUnexpectedError
+		u.Type = ErrorUnion1TypeErrorUnexpectedError
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Error", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ErrorUnion1", string(data))
 }
 
-func (u Error) MarshalJSON() ([]byte, error) {
+func (u ErrorUnion1) MarshalJSON() ([]byte, error) {
 	if u.ErrorPaymentFailed != nil {
 		return utils.MarshalJSON(u.ErrorPaymentFailed, "", true)
 	}
@@ -886,7 +1969,70 @@ func (u Error) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ErrorUnexpectedError, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Error: all fields are null")
+	return nil, errors.New("could not marshal union type ErrorUnion1: all fields are null")
+}
+
+type ErrorUnion2Type string
+
+const (
+	ErrorUnion2TypeErrorUnion1   ErrorUnion2Type = "error_union_1"
+	ErrorUnion2TypeGetOrderError ErrorUnion2Type = "getOrder_error"
+)
+
+type ErrorUnion2 struct {
+	ErrorUnion1   *ErrorUnion1   `queryParam:"inline"`
+	GetOrderError *GetOrderError `queryParam:"inline"`
+
+	Type ErrorUnion2Type
+}
+
+func CreateErrorUnion2ErrorUnion1(errorUnion1 ErrorUnion1) ErrorUnion2 {
+	typ := ErrorUnion2TypeErrorUnion1
+
+	return ErrorUnion2{
+		ErrorUnion1: &errorUnion1,
+		Type:        typ,
+	}
+}
+
+func CreateErrorUnion2GetOrderError(getOrderError GetOrderError) ErrorUnion2 {
+	typ := ErrorUnion2TypeGetOrderError
+
+	return ErrorUnion2{
+		GetOrderError: &getOrderError,
+		Type:          typ,
+	}
+}
+
+func (u *ErrorUnion2) UnmarshalJSON(data []byte) error {
+
+	var getOrderError GetOrderError = GetOrderError{}
+	if err := utils.UnmarshalJSON(data, &getOrderError, "", true, nil); err == nil {
+		u.GetOrderError = &getOrderError
+		u.Type = ErrorUnion2TypeGetOrderError
+		return nil
+	}
+
+	var errorUnion1 ErrorUnion1 = ErrorUnion1{}
+	if err := utils.UnmarshalJSON(data, &errorUnion1, "", true, nil); err == nil {
+		u.ErrorUnion1 = &errorUnion1
+		u.Type = ErrorUnion2TypeErrorUnion1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ErrorUnion2", string(data))
+}
+
+func (u ErrorUnion2) MarshalJSON() ([]byte, error) {
+	if u.ErrorUnion1 != nil {
+		return utils.MarshalJSON(u.ErrorUnion1, "", true)
+	}
+
+	if u.GetOrderError != nil {
+		return utils.MarshalJSON(u.GetOrderError, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ErrorUnion2: all fields are null")
 }
 
 // GetOrderResponseBody - Success
@@ -894,7 +2040,7 @@ type GetOrderResponseBody struct {
 	OrderID string                `json:"orderId"`
 	Domains []GetOrderDomainUnion `json:"domains"`
 	Status  GetOrderStatus        `json:"status"`
-	Error   *Error                `json:"error,omitempty"`
+	Error   *ErrorUnion2          `json:"error,omitempty"`
 }
 
 func (o *GetOrderResponseBody) GetOrderID() string {
@@ -918,7 +2064,7 @@ func (o *GetOrderResponseBody) GetStatus() GetOrderStatus {
 	return o.Status
 }
 
-func (o *GetOrderResponseBody) GetError() *Error {
+func (o *GetOrderResponseBody) GetError() *ErrorUnion2 {
 	if o == nil {
 		return nil
 	}

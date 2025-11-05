@@ -9,10 +9,10 @@ import { EightyThree } from "@vercel/sdk/models/userevent.js";
 
 let value: EightyThree = {
   projectName: "<value>",
-  passwordProtection: {
+  ssoProtection: {
     deploymentType: "preview",
   },
-  oldPasswordProtection: {
+  oldSsoProtection: {
     deploymentType: "preview",
   },
 };
@@ -20,8 +20,8 @@ let value: EightyThree = {
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `projectName`                      | *string*                           | :heavy_check_mark:                 | N/A                                |
-| `passwordProtection`               | *models.PayloadPasswordProtection* | :heavy_check_mark:                 | N/A                                |
-| `oldPasswordProtection`            | *models.OldPasswordProtection*     | :heavy_check_mark:                 | N/A                                |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |
+| `ssoProtection`               | *models.PayloadSsoProtection* | :heavy_check_mark:            | N/A                           |
+| `oldSsoProtection`            | *models.OldSsoProtection*     | :heavy_check_mark:            | N/A                           |

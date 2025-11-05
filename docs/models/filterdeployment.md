@@ -10,6 +10,6 @@ let value: FilterDeployment = {};
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `environments`                                                                       | [models.UpdateDrainFilterEnvironments](../models/updatedrainfilterenvironments.md)[] | :heavy_minus_sign:                                                                   | N/A                                                                                  |

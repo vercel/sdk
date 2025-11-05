@@ -57,6 +57,7 @@ export const UpdateProjectFramework = {
   Zola: "zola",
   Hydrogen: "hydrogen",
   Vite: "vite",
+  TanstackStart: "tanstack-start",
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
@@ -71,6 +72,7 @@ export const UpdateProjectFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
@@ -80,6 +82,7 @@ export const UpdateProjectFramework = {
 export type UpdateProjectFramework = ClosedEnum<typeof UpdateProjectFramework>;
 
 export const UpdateProjectNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -317,6 +320,44 @@ export type ConnectConfigurations1 = {
 
 export type ConnectConfigurations = ConnectConfigurations1;
 
+/**
+ * Whether the toast was dismissed, the action was accepted, or the dismissal with this key should be removed
+ */
+export const UpdateProjectAction = {
+  Cancel: "cancel",
+  Accept: "accept",
+  Delete: "delete",
+} as const;
+/**
+ * Whether the toast was dismissed, the action was accepted, or the dismissal with this key should be removed
+ */
+export type UpdateProjectAction = ClosedEnum<typeof UpdateProjectAction>;
+
+export type PreviousValue = number | boolean | string;
+
+export type CurrentValue = number | boolean | string;
+
+export type Value5 = {
+  previousValue: number | boolean | string;
+  currentValue: number | boolean | string;
+};
+
+export type UpdateProjectDismissedToasts = {
+  /**
+   * unique identifier for the dismissed toast
+   */
+  key: string;
+  /**
+   * unix timestamp representing the time the toast was dimissed
+   */
+  dismissedAt: number;
+  /**
+   * Whether the toast was dismissed, the action was accepted, or the dismissal with this key should be removed
+   */
+  action: UpdateProjectAction;
+  value?: any | undefined;
+};
+
 export type UpdateProjectRequestBody = {
   autoExposeSystemEnvs?: boolean | undefined;
   autoAssignCustomDomains?: boolean | undefined;
@@ -442,6 +483,10 @@ export type UpdateProjectRequestBody = {
    * The list of connections from project environment to Secure Compute network
    */
   connectConfigurations?: Array<ConnectConfigurations1> | null | undefined;
+  /**
+   * An array of objects representing a Dismissed Toast in regards to a Project. Objects are either merged with existing toasts (on key match), or added to the `dimissedToasts` array.`
+   */
+  dismissedToasts?: Array<UpdateProjectDismissedToasts> | undefined;
 };
 
 export type UpdateProjectRequest = {
@@ -1043,6 +1088,7 @@ export const UpdateProjectProjectsFramework = {
   Zola: "zola",
   Hydrogen: "hydrogen",
   Vite: "vite",
+  TanstackStart: "tanstack-start",
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
@@ -1057,6 +1103,7 @@ export const UpdateProjectProjectsFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
@@ -1148,6 +1195,7 @@ export type UpdateProjectOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  plan: string;
 };
 
 export const UpdateProjectPlan = {
@@ -1398,6 +1446,7 @@ export type UpdateProjectMicrofrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type UpdateProjectMicrofrontends2 = {
@@ -1426,6 +1475,10 @@ export type UpdateProjectMicrofrontends2 = {
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
   defaultRoute?: string | undefined;
+  /**
+   * Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+   */
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type UpdateProjectMicrofrontends1 = {
@@ -1446,6 +1499,10 @@ export type UpdateProjectMicrofrontends1 = {
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
   defaultRoute?: string | undefined;
+  /**
+   * Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+   */
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type UpdateProjectMicrofrontends =
@@ -1454,6 +1511,7 @@ export type UpdateProjectMicrofrontends =
   | UpdateProjectMicrofrontends3;
 
 export const UpdateProjectProjectsNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -1599,6 +1657,12 @@ export type UpdateProjectDefaultResourceConfig = {
   isNSNBDisabled?: boolean | undefined;
 };
 
+export type UpdateProjectProjectsStaticIps = {
+  builds: boolean;
+  enabled: boolean;
+  regions: Array<string>;
+};
+
 export const UpdateProjectProjectsResponseDeploymentType = {
   Preview: "preview",
   All: "all",
@@ -1691,6 +1755,7 @@ export type UpdateProjectProjectsOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  plan: string;
 };
 
 export const UpdateProjectProjectsPlan = {
@@ -1880,6 +1945,7 @@ export type UpdateProjectPermissions = {
   observabilityNotebook?: Array<ACLAction> | undefined;
   openTelemetryEndpoint?: Array<ACLAction> | undefined;
   ownEvent?: Array<ACLAction> | undefined;
+  organizationDomain?: Array<ACLAction> | undefined;
   passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
   paymentMethod?: Array<ACLAction> | undefined;
   permissions?: Array<ACLAction> | undefined;
@@ -2151,20 +2217,6 @@ export type UpdateProjectWebAnalytics = {
   hasData?: boolean | undefined;
 };
 
-export const UpdateProjectProjectsResponse200Action = {
-  Log: "log",
-  Challenge: "challenge",
-  Deny: "deny",
-} as const;
-export type UpdateProjectProjectsResponse200Action = ClosedEnum<
-  typeof UpdateProjectProjectsResponse200Action
->;
-
-export type UpdateProjectBotFilter = {
-  active: boolean;
-  action?: UpdateProjectProjectsResponse200Action | undefined;
-};
-
 export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
   Log: "log",
   Challenge: "challenge",
@@ -2174,23 +2226,41 @@ export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
   typeof UpdateProjectProjectsResponse200ApplicationJSONAction
 >;
 
-export type UpdateProjectAiBots = {
+export type UpdateProjectBotFilter = {
   active: boolean;
   action?: UpdateProjectProjectsResponse200ApplicationJSONAction | undefined;
 };
 
-export const UpdateProjectProjectsResponseAction = {
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
+  {
+    Log: "log",
+    Challenge: "challenge",
+    Deny: "deny",
+  } as const;
+export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
+  ClosedEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  >;
+
+export type UpdateProjectAiBots = {
+  active: boolean;
+  action?:
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+    | undefined;
+};
+
+export const UpdateProjectProjectsResponse200Action = {
   Log: "log",
   Challenge: "challenge",
   Deny: "deny",
 } as const;
-export type UpdateProjectProjectsResponseAction = ClosedEnum<
-  typeof UpdateProjectProjectsResponseAction
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
 >;
 
 export type UpdateProjectOwasp = {
   active: boolean;
-  action?: UpdateProjectProjectsResponseAction | undefined;
+  action?: UpdateProjectProjectsResponse200Action | undefined;
 };
 
 export type UpdateProjectManagedRules = {
@@ -2258,13 +2328,15 @@ export type UpdateProjectHistory = {
   at: number;
 };
 
-export const UpdateProjectAction = {
+export const UpdateProjectProjectsResponseAction = {
   Blocked: "blocked",
 } as const;
-export type UpdateProjectAction = ClosedEnum<typeof UpdateProjectAction>;
+export type UpdateProjectProjectsResponseAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponseAction
+>;
 
 export type UpdateProjectBlock = {
-  action: UpdateProjectAction;
+  action: UpdateProjectProjectsResponseAction;
   reason: string;
   statusCode: number;
   createdAt: number;
@@ -2495,23 +2567,6 @@ export type UpdateProjectBlockHistory =
   | UpdateProjectBlockHistory4
   | UpdateProjectBlockHistory2;
 
-export const UpdateProjectProjectsAction = {
-  AddInterstitial: "add-interstitial",
-  RemoveInterstitial: "remove-interstitial",
-} as const;
-export type UpdateProjectProjectsAction = ClosedEnum<
-  typeof UpdateProjectProjectsAction
->;
-
-export type UpdateProjectInterstitialHistory = {
-  action: UpdateProjectProjectsAction;
-  createdAt: number;
-  caseId?: string | undefined;
-  reason?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-};
-
 export type UpdateProjectAbuse = {
   scanner?: string | undefined;
   history: Array<UpdateProjectHistory>;
@@ -2526,7 +2581,6 @@ export type UpdateProjectAbuse = {
     >
     | undefined;
   interstitial?: boolean | undefined;
-  interstitialHistory?: Array<UpdateProjectInterstitialHistory> | undefined;
 };
 
 export const UpdateProjectHasProjectsType = {
@@ -2594,6 +2648,37 @@ export type UpdateProjectInternalRoutes1 = {
 export type UpdateProjectInternalRoutes =
   | UpdateProjectInternalRoutes1
   | UpdateProjectInternalRoutes2;
+
+export const UpdateProjectProjectsAction = {
+  Cancel: "cancel",
+  Accept: "accept",
+  Delete: "delete",
+} as const;
+export type UpdateProjectProjectsAction = ClosedEnum<
+  typeof UpdateProjectProjectsAction
+>;
+
+export type UpdateProjectValuePreviousValue = string | number | boolean;
+
+export type UpdateProjectValueCurrentValue = string | number | boolean;
+
+export type UpdateProjectValue4 = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
+
+export type UpdateProjectValue =
+  | UpdateProjectValue4
+  | string
+  | number
+  | boolean;
+
+export type UpdateProjectProjectsDismissedToasts = {
+  key: string;
+  dismissedAt: number;
+  action: UpdateProjectProjectsAction;
+  value: UpdateProjectValue4 | string | number | boolean | null;
+};
 
 /**
  * The project was successfully updated
@@ -2670,6 +2755,7 @@ export type UpdateProjectResponseBody = {
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
+  staticIps?: UpdateProjectProjectsStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
   ssoProtection?: UpdateProjectProjectsSsoProtection | null | undefined;
@@ -2710,6 +2796,7 @@ export type UpdateProjectResponseBody = {
   internalRoutes?:
     | Array<UpdateProjectInternalRoutes1 | UpdateProjectInternalRoutes2>
     | undefined;
+  dismissedToasts?: Array<UpdateProjectProjectsDismissedToasts> | undefined;
 };
 
 /** @internal */
@@ -3552,6 +3639,230 @@ export function connectConfigurationsFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectAction
+> = z.nativeEnum(UpdateProjectAction);
+
+/** @internal */
+export const UpdateProjectAction$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectAction
+> = UpdateProjectAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectAction$ {
+  /** @deprecated use `UpdateProjectAction$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectAction$inboundSchema;
+  /** @deprecated use `UpdateProjectAction$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectAction$outboundSchema;
+}
+
+/** @internal */
+export const PreviousValue$inboundSchema: z.ZodType<
+  PreviousValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.boolean(), z.string()]);
+
+/** @internal */
+export type PreviousValue$Outbound = number | boolean | string;
+
+/** @internal */
+export const PreviousValue$outboundSchema: z.ZodType<
+  PreviousValue$Outbound,
+  z.ZodTypeDef,
+  PreviousValue
+> = z.union([z.number(), z.boolean(), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PreviousValue$ {
+  /** @deprecated use `PreviousValue$inboundSchema` instead. */
+  export const inboundSchema = PreviousValue$inboundSchema;
+  /** @deprecated use `PreviousValue$outboundSchema` instead. */
+  export const outboundSchema = PreviousValue$outboundSchema;
+  /** @deprecated use `PreviousValue$Outbound` instead. */
+  export type Outbound = PreviousValue$Outbound;
+}
+
+export function previousValueToJSON(previousValue: PreviousValue): string {
+  return JSON.stringify(PreviousValue$outboundSchema.parse(previousValue));
+}
+
+export function previousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<PreviousValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PreviousValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PreviousValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const CurrentValue$inboundSchema: z.ZodType<
+  CurrentValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.number(), z.boolean(), z.string()]);
+
+/** @internal */
+export type CurrentValue$Outbound = number | boolean | string;
+
+/** @internal */
+export const CurrentValue$outboundSchema: z.ZodType<
+  CurrentValue$Outbound,
+  z.ZodTypeDef,
+  CurrentValue
+> = z.union([z.number(), z.boolean(), z.string()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CurrentValue$ {
+  /** @deprecated use `CurrentValue$inboundSchema` instead. */
+  export const inboundSchema = CurrentValue$inboundSchema;
+  /** @deprecated use `CurrentValue$outboundSchema` instead. */
+  export const outboundSchema = CurrentValue$outboundSchema;
+  /** @deprecated use `CurrentValue$Outbound` instead. */
+  export type Outbound = CurrentValue$Outbound;
+}
+
+export function currentValueToJSON(currentValue: CurrentValue): string {
+  return JSON.stringify(CurrentValue$outboundSchema.parse(currentValue));
+}
+
+export function currentValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CurrentValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CurrentValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CurrentValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const Value5$inboundSchema: z.ZodType<Value5, z.ZodTypeDef, unknown> = z
+  .object({
+    previousValue: z.union([z.number(), z.boolean(), z.string()]),
+    currentValue: z.union([z.number(), z.boolean(), z.string()]),
+  });
+
+/** @internal */
+export type Value5$Outbound = {
+  previousValue: number | boolean | string;
+  currentValue: number | boolean | string;
+};
+
+/** @internal */
+export const Value5$outboundSchema: z.ZodType<
+  Value5$Outbound,
+  z.ZodTypeDef,
+  Value5
+> = z.object({
+  previousValue: z.union([z.number(), z.boolean(), z.string()]),
+  currentValue: z.union([z.number(), z.boolean(), z.string()]),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Value5$ {
+  /** @deprecated use `Value5$inboundSchema` instead. */
+  export const inboundSchema = Value5$inboundSchema;
+  /** @deprecated use `Value5$outboundSchema` instead. */
+  export const outboundSchema = Value5$outboundSchema;
+  /** @deprecated use `Value5$Outbound` instead. */
+  export type Outbound = Value5$Outbound;
+}
+
+export function value5ToJSON(value5: Value5): string {
+  return JSON.stringify(Value5$outboundSchema.parse(value5));
+}
+
+export function value5FromJSON(
+  jsonString: string,
+): SafeParseResult<Value5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Value5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Value5' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDismissedToasts$inboundSchema: z.ZodType<
+  UpdateProjectDismissedToasts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  dismissedAt: z.number(),
+  action: UpdateProjectAction$inboundSchema,
+  value: z.any().optional(),
+});
+
+/** @internal */
+export type UpdateProjectDismissedToasts$Outbound = {
+  key: string;
+  dismissedAt: number;
+  action: string;
+  value?: any | undefined;
+};
+
+/** @internal */
+export const UpdateProjectDismissedToasts$outboundSchema: z.ZodType<
+  UpdateProjectDismissedToasts$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDismissedToasts
+> = z.object({
+  key: z.string(),
+  dismissedAt: z.number(),
+  action: UpdateProjectAction$outboundSchema,
+  value: z.any().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDismissedToasts$ {
+  /** @deprecated use `UpdateProjectDismissedToasts$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDismissedToasts$inboundSchema;
+  /** @deprecated use `UpdateProjectDismissedToasts$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDismissedToasts$outboundSchema;
+  /** @deprecated use `UpdateProjectDismissedToasts$Outbound` instead. */
+  export type Outbound = UpdateProjectDismissedToasts$Outbound;
+}
+
+export function updateProjectDismissedToastsToJSON(
+  updateProjectDismissedToasts: UpdateProjectDismissedToasts,
+): string {
+  return JSON.stringify(
+    UpdateProjectDismissedToasts$outboundSchema.parse(
+      updateProjectDismissedToasts,
+    ),
+  );
+}
+
+export function updateProjectDismissedToastsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDismissedToasts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDismissedToasts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDismissedToasts' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectRequestBody$inboundSchema: z.ZodType<
   UpdateProjectRequestBody,
   z.ZodTypeDef,
@@ -3603,6 +3914,9 @@ export const UpdateProjectRequestBody$inboundSchema: z.ZodType<
   connectConfigurations: z.nullable(
     z.array(z.lazy(() => ConnectConfigurations1$inboundSchema)),
   ).optional(),
+  dismissedToasts: z.array(
+    z.lazy(() => UpdateProjectDismissedToasts$inboundSchema),
+  ).optional(),
 });
 
 /** @internal */
@@ -3648,6 +3962,7 @@ export type UpdateProjectRequestBody$Outbound = {
     | Array<ConnectConfigurations1$Outbound>
     | null
     | undefined;
+  dismissedToasts?: Array<UpdateProjectDismissedToasts$Outbound> | undefined;
 };
 
 /** @internal */
@@ -3701,6 +4016,9 @@ export const UpdateProjectRequestBody$outboundSchema: z.ZodType<
   ).optional(),
   connectConfigurations: z.nullable(
     z.array(z.lazy(() => ConnectConfigurations1$outboundSchema)),
+  ).optional(),
+  dismissedToasts: z.array(
+    z.lazy(() => UpdateProjectDismissedToasts$outboundSchema),
   ).optional(),
 });
 
@@ -6936,6 +7254,7 @@ export const UpdateProjectOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -6954,6 +7273,7 @@ export type UpdateProjectOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  plan: string;
 };
 
 /** @internal */
@@ -6971,6 +7291,7 @@ export const UpdateProjectOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -8288,6 +8609,7 @@ export const UpdateProjectMicrofrontends3$inboundSchema: z.ZodType<
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
   enabled: z.boolean(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8295,6 +8617,7 @@ export type UpdateProjectMicrofrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 /** @internal */
@@ -8306,6 +8629,7 @@ export const UpdateProjectMicrofrontends3$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
   enabled: z.boolean(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /**
@@ -8354,6 +8678,7 @@ export const UpdateProjectMicrofrontends2$inboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8365,6 +8690,7 @@ export type UpdateProjectMicrofrontends2$Outbound = {
   groupIds: Array<string>;
   enabled: boolean;
   defaultRoute?: string | undefined;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 /** @internal */
@@ -8380,6 +8706,7 @@ export const UpdateProjectMicrofrontends2$outboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /**
@@ -8426,6 +8753,7 @@ export const UpdateProjectMicrofrontends1$inboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /** @internal */
@@ -8435,6 +8763,7 @@ export type UpdateProjectMicrofrontends1$Outbound = {
   groupIds: Array<string>;
   enabled: boolean;
   defaultRoute?: string | undefined;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 /** @internal */
@@ -8448,6 +8777,7 @@ export const UpdateProjectMicrofrontends1$outboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /**
@@ -9194,6 +9524,68 @@ export function updateProjectDefaultResourceConfigFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectProjectsStaticIps$inboundSchema: z.ZodType<
+  UpdateProjectProjectsStaticIps,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  builds: z.boolean(),
+  enabled: z.boolean(),
+  regions: z.array(z.string()),
+});
+
+/** @internal */
+export type UpdateProjectProjectsStaticIps$Outbound = {
+  builds: boolean;
+  enabled: boolean;
+  regions: Array<string>;
+};
+
+/** @internal */
+export const UpdateProjectProjectsStaticIps$outboundSchema: z.ZodType<
+  UpdateProjectProjectsStaticIps$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectProjectsStaticIps
+> = z.object({
+  builds: z.boolean(),
+  enabled: z.boolean(),
+  regions: z.array(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectProjectsStaticIps$ {
+  /** @deprecated use `UpdateProjectProjectsStaticIps$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectProjectsStaticIps$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsStaticIps$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectProjectsStaticIps$outboundSchema;
+  /** @deprecated use `UpdateProjectProjectsStaticIps$Outbound` instead. */
+  export type Outbound = UpdateProjectProjectsStaticIps$Outbound;
+}
+
+export function updateProjectProjectsStaticIpsToJSON(
+  updateProjectProjectsStaticIps: UpdateProjectProjectsStaticIps,
+): string {
+  return JSON.stringify(
+    UpdateProjectProjectsStaticIps$outboundSchema.parse(
+      updateProjectProjectsStaticIps,
+    ),
+  );
+}
+
+export function updateProjectProjectsStaticIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsStaticIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectProjectsStaticIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsStaticIps' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectProjectsResponseDeploymentType$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectProjectsResponseDeploymentType> = z
     .nativeEnum(UpdateProjectProjectsResponseDeploymentType);
@@ -9672,6 +10064,7 @@ export const UpdateProjectProjectsOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -9690,6 +10083,7 @@ export type UpdateProjectProjectsOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  plan: string;
 };
 
 /** @internal */
@@ -9707,6 +10101,7 @@ export const UpdateProjectProjectsOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -10132,6 +10527,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   observabilityNotebook: z.array(ACLAction$inboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$inboundSchema).optional(),
   ownEvent: z.array(ACLAction$inboundSchema).optional(),
+  organizationDomain: z.array(ACLAction$inboundSchema).optional(),
   passwordProtectionInvoiceItem: z.array(ACLAction$inboundSchema).optional(),
   paymentMethod: z.array(ACLAction$inboundSchema).optional(),
   permissions: z.array(ACLAction$inboundSchema).optional(),
@@ -10361,6 +10757,7 @@ export type UpdateProjectPermissions$Outbound = {
   observabilityNotebook?: Array<string> | undefined;
   openTelemetryEndpoint?: Array<string> | undefined;
   ownEvent?: Array<string> | undefined;
+  organizationDomain?: Array<string> | undefined;
   passwordProtectionInvoiceItem?: Array<string> | undefined;
   paymentMethod?: Array<string> | undefined;
   permissions?: Array<string> | undefined;
@@ -10589,6 +10986,7 @@ export const UpdateProjectPermissions$outboundSchema: z.ZodType<
   observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$outboundSchema).optional(),
   ownEvent: z.array(ACLAction$outboundSchema).optional(),
+  organizationDomain: z.array(ACLAction$outboundSchema).optional(),
   passwordProtectionInvoiceItem: z.array(ACLAction$outboundSchema).optional(),
   paymentMethod: z.array(ACLAction$outboundSchema).optional(),
   permissions: z.array(ACLAction$outboundSchema).optional(),
@@ -11651,27 +12049,28 @@ export function updateProjectWebAnalyticsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
-    UpdateProjectProjectsResponse200Action,
-  );
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
 
 /** @internal */
-export const UpdateProjectProjectsResponse200Action$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> =
-    UpdateProjectProjectsResponse200Action$inboundSchema;
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectProjectsResponse200Action$ {
-  /** @deprecated use `UpdateProjectProjectsResponse200Action$inboundSchema` instead. */
+export namespace UpdateProjectProjectsResponse200ApplicationJSONAction$ {
+  /** @deprecated use `UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateProjectProjectsResponse200Action$inboundSchema;
-  /** @deprecated use `UpdateProjectProjectsResponse200Action$outboundSchema` instead. */
+    UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateProjectProjectsResponse200Action$outboundSchema;
+    UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema;
 }
 
 /** @internal */
@@ -11681,7 +12080,8 @@ export const UpdateProjectBotFilter$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponse200Action$inboundSchema.optional(),
+  action: UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema
+    .optional(),
 });
 
 /** @internal */
@@ -11697,7 +12097,8 @@ export const UpdateProjectBotFilter$outboundSchema: z.ZodType<
   UpdateProjectBotFilter
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponse200Action$outboundSchema.optional(),
+  action: UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema
+    .optional(),
 });
 
 /**
@@ -11732,28 +12133,31 @@ export function updateProjectBotFilterFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
-  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  > = z.nativeEnum(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction,
+  );
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
-  > = UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema;
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
+  > =
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectProjectsResponse200ApplicationJSONAction$ {
-  /** @deprecated use `UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema` instead. */
+export namespace UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$ {
+  /** @deprecated use `UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema;
-  /** @deprecated use `UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema` instead. */
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema;
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema;
 }
 
 /** @internal */
@@ -11763,8 +12167,9 @@ export const UpdateProjectAiBots$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema
-    .optional(),
+  action:
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema
+      .optional(),
 });
 
 /** @internal */
@@ -11780,8 +12185,9 @@ export const UpdateProjectAiBots$outboundSchema: z.ZodType<
   UpdateProjectAiBots
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponse200ApplicationJSONAction$outboundSchema
-    .optional(),
+  action:
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$outboundSchema
+      .optional(),
 });
 
 /**
@@ -11816,26 +12222,27 @@ export function updateProjectAiBotsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsResponseAction
-> = z.nativeEnum(UpdateProjectProjectsResponseAction);
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );
 
 /** @internal */
-export const UpdateProjectProjectsResponseAction$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseAction> =
-    UpdateProjectProjectsResponseAction$inboundSchema;
+export const UpdateProjectProjectsResponse200Action$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> =
+    UpdateProjectProjectsResponse200Action$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectProjectsResponseAction$ {
-  /** @deprecated use `UpdateProjectProjectsResponseAction$inboundSchema` instead. */
+export namespace UpdateProjectProjectsResponse200Action$ {
+  /** @deprecated use `UpdateProjectProjectsResponse200Action$inboundSchema` instead. */
   export const inboundSchema =
-    UpdateProjectProjectsResponseAction$inboundSchema;
-  /** @deprecated use `UpdateProjectProjectsResponseAction$outboundSchema` instead. */
+    UpdateProjectProjectsResponse200Action$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsResponse200Action$outboundSchema` instead. */
   export const outboundSchema =
-    UpdateProjectProjectsResponseAction$outboundSchema;
+    UpdateProjectProjectsResponse200Action$outboundSchema;
 }
 
 /** @internal */
@@ -11845,7 +12252,7 @@ export const UpdateProjectOwasp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponseAction$inboundSchema.optional(),
+  action: UpdateProjectProjectsResponse200Action$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -11861,7 +12268,7 @@ export const UpdateProjectOwasp$outboundSchema: z.ZodType<
   UpdateProjectOwasp
 > = z.object({
   active: z.boolean(),
-  action: UpdateProjectProjectsResponseAction$outboundSchema.optional(),
+  action: UpdateProjectProjectsResponse200Action$outboundSchema.optional(),
 });
 
 /**
@@ -12281,24 +12688,26 @@ export function updateProjectHistoryFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectAction
-> = z.nativeEnum(UpdateProjectAction);
+export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseAction
+> = z.nativeEnum(UpdateProjectProjectsResponseAction);
 
 /** @internal */
-export const UpdateProjectAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectAction
-> = UpdateProjectAction$inboundSchema;
+export const UpdateProjectProjectsResponseAction$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponseAction> =
+    UpdateProjectProjectsResponseAction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UpdateProjectAction$ {
-  /** @deprecated use `UpdateProjectAction$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectAction$inboundSchema;
-  /** @deprecated use `UpdateProjectAction$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectAction$outboundSchema;
+export namespace UpdateProjectProjectsResponseAction$ {
+  /** @deprecated use `UpdateProjectProjectsResponseAction$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProjectsResponseAction$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsResponseAction$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProjectsResponseAction$outboundSchema;
 }
 
 /** @internal */
@@ -12307,7 +12716,7 @@ export const UpdateProjectBlock$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectAction$inboundSchema,
+  action: UpdateProjectProjectsResponseAction$inboundSchema,
   reason: z.string(),
   statusCode: z.number(),
   createdAt: z.number(),
@@ -12335,7 +12744,7 @@ export const UpdateProjectBlock$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateProjectBlock
 > = z.object({
-  action: UpdateProjectAction$outboundSchema,
+  action: UpdateProjectProjectsResponseAction$outboundSchema,
   reason: z.string(),
   statusCode: z.number(),
   createdAt: z.number(),
@@ -14142,98 +14551,6 @@ export function updateProjectBlockHistoryFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsAction
-> = z.nativeEnum(UpdateProjectProjectsAction);
-
-/** @internal */
-export const UpdateProjectProjectsAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsAction
-> = UpdateProjectProjectsAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProjectsAction$ {
-  /** @deprecated use `UpdateProjectProjectsAction$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectProjectsAction$inboundSchema;
-  /** @deprecated use `UpdateProjectProjectsAction$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectProjectsAction$outboundSchema;
-}
-
-/** @internal */
-export const UpdateProjectInterstitialHistory$inboundSchema: z.ZodType<
-  UpdateProjectInterstitialHistory,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateProjectProjectsAction$inboundSchema,
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  reason: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-});
-
-/** @internal */
-export type UpdateProjectInterstitialHistory$Outbound = {
-  action: string;
-  createdAt: number;
-  caseId?: string | undefined;
-  reason?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-};
-
-/** @internal */
-export const UpdateProjectInterstitialHistory$outboundSchema: z.ZodType<
-  UpdateProjectInterstitialHistory$Outbound,
-  z.ZodTypeDef,
-  UpdateProjectInterstitialHistory
-> = z.object({
-  action: UpdateProjectProjectsAction$outboundSchema,
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  reason: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectInterstitialHistory$ {
-  /** @deprecated use `UpdateProjectInterstitialHistory$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectInterstitialHistory$inboundSchema;
-  /** @deprecated use `UpdateProjectInterstitialHistory$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectInterstitialHistory$outboundSchema;
-  /** @deprecated use `UpdateProjectInterstitialHistory$Outbound` instead. */
-  export type Outbound = UpdateProjectInterstitialHistory$Outbound;
-}
-
-export function updateProjectInterstitialHistoryToJSON(
-  updateProjectInterstitialHistory: UpdateProjectInterstitialHistory,
-): string {
-  return JSON.stringify(
-    UpdateProjectInterstitialHistory$outboundSchema.parse(
-      updateProjectInterstitialHistory,
-    ),
-  );
-}
-
-export function updateProjectInterstitialHistoryFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectInterstitialHistory, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectInterstitialHistory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectInterstitialHistory' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectAbuse$inboundSchema: z.ZodType<
   UpdateProjectAbuse,
   z.ZodTypeDef,
@@ -14252,9 +14569,6 @@ export const UpdateProjectAbuse$inboundSchema: z.ZodType<
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
-  interstitialHistory: z.array(
-    z.lazy(() => UpdateProjectInterstitialHistory$inboundSchema),
-  ).optional(),
 });
 
 /** @internal */
@@ -14272,9 +14586,6 @@ export type UpdateProjectAbuse$Outbound = {
     >
     | undefined;
   interstitial?: boolean | undefined;
-  interstitialHistory?:
-    | Array<UpdateProjectInterstitialHistory$Outbound>
-    | undefined;
 };
 
 /** @internal */
@@ -14296,9 +14607,6 @@ export const UpdateProjectAbuse$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
-  interstitialHistory: z.array(
-    z.lazy(() => UpdateProjectInterstitialHistory$outboundSchema),
-  ).optional(),
 });
 
 /**
@@ -14951,6 +15259,331 @@ export function updateProjectInternalRoutesFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectProjectsAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsAction
+> = z.nativeEnum(UpdateProjectProjectsAction);
+
+/** @internal */
+export const UpdateProjectProjectsAction$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsAction
+> = UpdateProjectProjectsAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectProjectsAction$ {
+  /** @deprecated use `UpdateProjectProjectsAction$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectProjectsAction$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsAction$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectProjectsAction$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectValuePreviousValue$inboundSchema: z.ZodType<
+  UpdateProjectValuePreviousValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type UpdateProjectValuePreviousValue$Outbound =
+  | string
+  | number
+  | boolean;
+
+/** @internal */
+export const UpdateProjectValuePreviousValue$outboundSchema: z.ZodType<
+  UpdateProjectValuePreviousValue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectValuePreviousValue
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectValuePreviousValue$ {
+  /** @deprecated use `UpdateProjectValuePreviousValue$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectValuePreviousValue$inboundSchema;
+  /** @deprecated use `UpdateProjectValuePreviousValue$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectValuePreviousValue$outboundSchema;
+  /** @deprecated use `UpdateProjectValuePreviousValue$Outbound` instead. */
+  export type Outbound = UpdateProjectValuePreviousValue$Outbound;
+}
+
+export function updateProjectValuePreviousValueToJSON(
+  updateProjectValuePreviousValue: UpdateProjectValuePreviousValue,
+): string {
+  return JSON.stringify(
+    UpdateProjectValuePreviousValue$outboundSchema.parse(
+      updateProjectValuePreviousValue,
+    ),
+  );
+}
+
+export function updateProjectValuePreviousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValuePreviousValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValuePreviousValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValuePreviousValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectValueCurrentValue$inboundSchema: z.ZodType<
+  UpdateProjectValueCurrentValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type UpdateProjectValueCurrentValue$Outbound = string | number | boolean;
+
+/** @internal */
+export const UpdateProjectValueCurrentValue$outboundSchema: z.ZodType<
+  UpdateProjectValueCurrentValue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectValueCurrentValue
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectValueCurrentValue$ {
+  /** @deprecated use `UpdateProjectValueCurrentValue$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectValueCurrentValue$inboundSchema;
+  /** @deprecated use `UpdateProjectValueCurrentValue$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectValueCurrentValue$outboundSchema;
+  /** @deprecated use `UpdateProjectValueCurrentValue$Outbound` instead. */
+  export type Outbound = UpdateProjectValueCurrentValue$Outbound;
+}
+
+export function updateProjectValueCurrentValueToJSON(
+  updateProjectValueCurrentValue: UpdateProjectValueCurrentValue,
+): string {
+  return JSON.stringify(
+    UpdateProjectValueCurrentValue$outboundSchema.parse(
+      updateProjectValueCurrentValue,
+    ),
+  );
+}
+
+export function updateProjectValueCurrentValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValueCurrentValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValueCurrentValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValueCurrentValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectValue4$inboundSchema: z.ZodType<
+  UpdateProjectValue4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  previousValue: z.union([z.string(), z.number(), z.boolean()]),
+  currentValue: z.union([z.string(), z.number(), z.boolean()]),
+});
+
+/** @internal */
+export type UpdateProjectValue4$Outbound = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
+
+/** @internal */
+export const UpdateProjectValue4$outboundSchema: z.ZodType<
+  UpdateProjectValue4$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectValue4
+> = z.object({
+  previousValue: z.union([z.string(), z.number(), z.boolean()]),
+  currentValue: z.union([z.string(), z.number(), z.boolean()]),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectValue4$ {
+  /** @deprecated use `UpdateProjectValue4$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectValue4$inboundSchema;
+  /** @deprecated use `UpdateProjectValue4$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectValue4$outboundSchema;
+  /** @deprecated use `UpdateProjectValue4$Outbound` instead. */
+  export type Outbound = UpdateProjectValue4$Outbound;
+}
+
+export function updateProjectValue4ToJSON(
+  updateProjectValue4: UpdateProjectValue4,
+): string {
+  return JSON.stringify(
+    UpdateProjectValue4$outboundSchema.parse(updateProjectValue4),
+  );
+}
+
+export function updateProjectValue4FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValue4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValue4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValue4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectValue$inboundSchema: z.ZodType<
+  UpdateProjectValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateProjectValue4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+]);
+
+/** @internal */
+export type UpdateProjectValue$Outbound =
+  | UpdateProjectValue4$Outbound
+  | string
+  | number
+  | boolean;
+
+/** @internal */
+export const UpdateProjectValue$outboundSchema: z.ZodType<
+  UpdateProjectValue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectValue
+> = z.union([
+  z.lazy(() => UpdateProjectValue4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectValue$ {
+  /** @deprecated use `UpdateProjectValue$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectValue$inboundSchema;
+  /** @deprecated use `UpdateProjectValue$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectValue$outboundSchema;
+  /** @deprecated use `UpdateProjectValue$Outbound` instead. */
+  export type Outbound = UpdateProjectValue$Outbound;
+}
+
+export function updateProjectValueToJSON(
+  updateProjectValue: UpdateProjectValue,
+): string {
+  return JSON.stringify(
+    UpdateProjectValue$outboundSchema.parse(updateProjectValue),
+  );
+}
+
+export function updateProjectValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsDismissedToasts$inboundSchema: z.ZodType<
+  UpdateProjectProjectsDismissedToasts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  dismissedAt: z.number(),
+  action: UpdateProjectProjectsAction$inboundSchema,
+  value: z.nullable(
+    z.union([
+      z.lazy(() => UpdateProjectValue4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+    ]),
+  ),
+});
+
+/** @internal */
+export type UpdateProjectProjectsDismissedToasts$Outbound = {
+  key: string;
+  dismissedAt: number;
+  action: string;
+  value: UpdateProjectValue4$Outbound | string | number | boolean | null;
+};
+
+/** @internal */
+export const UpdateProjectProjectsDismissedToasts$outboundSchema: z.ZodType<
+  UpdateProjectProjectsDismissedToasts$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectProjectsDismissedToasts
+> = z.object({
+  key: z.string(),
+  dismissedAt: z.number(),
+  action: UpdateProjectProjectsAction$outboundSchema,
+  value: z.nullable(
+    z.union([
+      z.lazy(() => UpdateProjectValue4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+    ]),
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectProjectsDismissedToasts$ {
+  /** @deprecated use `UpdateProjectProjectsDismissedToasts$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectProjectsDismissedToasts$inboundSchema;
+  /** @deprecated use `UpdateProjectProjectsDismissedToasts$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectProjectsDismissedToasts$outboundSchema;
+  /** @deprecated use `UpdateProjectProjectsDismissedToasts$Outbound` instead. */
+  export type Outbound = UpdateProjectProjectsDismissedToasts$Outbound;
+}
+
+export function updateProjectProjectsDismissedToastsToJSON(
+  updateProjectProjectsDismissedToasts: UpdateProjectProjectsDismissedToasts,
+): string {
+  return JSON.stringify(
+    UpdateProjectProjectsDismissedToasts$outboundSchema.parse(
+      updateProjectProjectsDismissedToasts,
+    ),
+  );
+}
+
+export function updateProjectProjectsDismissedToastsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsDismissedToasts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectProjectsDismissedToasts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsDismissedToasts' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   UpdateProjectResponseBody,
   z.ZodTypeDef,
@@ -15035,6 +15668,8 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
+  staticIps: z.lazy(() => UpdateProjectProjectsStaticIps$inboundSchema)
+    .optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
@@ -15092,6 +15727,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => UpdateProjectInternalRoutes1$inboundSchema),
       z.lazy(() => UpdateProjectInternalRoutes2$inboundSchema),
     ]),
+  ).optional(),
+  dismissedToasts: z.array(
+    z.lazy(() => UpdateProjectProjectsDismissedToasts$inboundSchema),
   ).optional(),
 });
 
@@ -15169,6 +15807,7 @@ export type UpdateProjectResponseBody$Outbound = {
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
+  staticIps?: UpdateProjectProjectsStaticIps$Outbound | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
   ssoProtection?:
@@ -15217,6 +15856,9 @@ export type UpdateProjectResponseBody$Outbound = {
       | UpdateProjectInternalRoutes1$Outbound
       | UpdateProjectInternalRoutes2$Outbound
     >
+    | undefined;
+  dismissedToasts?:
+    | Array<UpdateProjectProjectsDismissedToasts$Outbound>
     | undefined;
 };
 
@@ -15305,6 +15947,8 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
+  staticIps: z.lazy(() => UpdateProjectProjectsStaticIps$outboundSchema)
+    .optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
@@ -15362,6 +16006,9 @@ export const UpdateProjectResponseBody$outboundSchema: z.ZodType<
       z.lazy(() => UpdateProjectInternalRoutes1$outboundSchema),
       z.lazy(() => UpdateProjectInternalRoutes2$outboundSchema),
     ]),
+  ).optional(),
+  dismissedToasts: z.array(
+    z.lazy(() => UpdateProjectProjectsDismissedToasts$outboundSchema),
   ).optional(),
 });
 

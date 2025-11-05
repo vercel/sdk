@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsAction } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsAction = "blocked";
+let value: GetProjectsAction = "delete";
 ```
 
 ## Values
 
 ```typescript
-"blocked"
+"cancel" | "accept" | "delete"
 ```

@@ -10,6 +10,6 @@ let value: GetAllLogDrainsFilterDeployment = {};
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `environments`                                                                               | [models.GetAllLogDrainsFilterEnvironments](../models/getalllogdrainsfilterenvironments.md)[] | :heavy_minus_sign:                                                                           | N/A                                                                                          |

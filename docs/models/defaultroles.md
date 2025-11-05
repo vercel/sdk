@@ -12,7 +12,7 @@ let value: DefaultRoles = {};
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `teamRoles`                                              | [models.TeamRoles](../models/teamroles.md)[]             | :heavy_minus_sign:                                       | N/A                                                      |
-| `teamPermissions`                                        | [models.TeamPermissions](../models/teampermissions.md)[] | :heavy_minus_sign:                                       | N/A                                                      |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `teamRoles`                                                      | [models.TeamTeamRoles](../models/teamteamroles.md)[]             | :heavy_minus_sign:                                               | N/A                                                              |
+| `teamPermissions`                                                | [models.TeamTeamPermissions](../models/teamteampermissions.md)[] | :heavy_minus_sign:                                               | N/A                                                              |

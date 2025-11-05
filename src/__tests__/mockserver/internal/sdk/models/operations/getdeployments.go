@@ -698,6 +698,7 @@ const (
 	GetDeploymentsFrameworkZola           GetDeploymentsFramework = "zola"
 	GetDeploymentsFrameworkHydrogen       GetDeploymentsFramework = "hydrogen"
 	GetDeploymentsFrameworkVite           GetDeploymentsFramework = "vite"
+	GetDeploymentsFrameworkTanstackStart  GetDeploymentsFramework = "tanstack-start"
 	GetDeploymentsFrameworkVitepress      GetDeploymentsFramework = "vitepress"
 	GetDeploymentsFrameworkVuepress       GetDeploymentsFramework = "vuepress"
 	GetDeploymentsFrameworkParcel         GetDeploymentsFramework = "parcel"
@@ -712,6 +713,7 @@ const (
 	GetDeploymentsFrameworkExpress        GetDeploymentsFramework = "express"
 	GetDeploymentsFrameworkH3             GetDeploymentsFramework = "h3"
 	GetDeploymentsFrameworkNestjs         GetDeploymentsFramework = "nestjs"
+	GetDeploymentsFrameworkElysia         GetDeploymentsFramework = "elysia"
 	GetDeploymentsFrameworkFastify        GetDeploymentsFramework = "fastify"
 	GetDeploymentsFrameworkXmcp           GetDeploymentsFramework = "xmcp"
 )
@@ -803,6 +805,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -831,6 +835,8 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "nestjs":
 		fallthrough
+	case "elysia":
+		fallthrough
 	case "fastify":
 		fallthrough
 	case "xmcp":
@@ -844,6 +850,7 @@ func (e *GetDeploymentsFramework) UnmarshalJSON(data []byte) error {
 type GetDeploymentsNodeVersion string
 
 const (
+	GetDeploymentsNodeVersionTwentyFourDotX GetDeploymentsNodeVersion = "24.x"
 	GetDeploymentsNodeVersionTwentyTwoDotX  GetDeploymentsNodeVersion = "22.x"
 	GetDeploymentsNodeVersionTwentyDotX     GetDeploymentsNodeVersion = "20.x"
 	GetDeploymentsNodeVersionEighteenDotX   GetDeploymentsNodeVersion = "18.x"
@@ -863,6 +870,8 @@ func (e *GetDeploymentsNodeVersion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":

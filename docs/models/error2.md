@@ -6,16 +6,13 @@
 import { Error2 } from "@vercel/sdk/models/getorderop.js";
 
 let value: Error2 = {
-  code: "tld-outage",
-  details: {
-    tlds: [],
-  },
+  code: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `code`                                                           | [models.GetOrderErrorCode](../models/getordererrorcode.md)       | :heavy_check_mark:                                               | N/A                                                              |
-| `details`                                                        | [models.GetOrderErrorDetails](../models/getordererrordetails.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `code`             | *string*           | :heavy_check_mark: | N/A                |
+| `details`          | *any*              | :heavy_minus_sign: | N/A                |

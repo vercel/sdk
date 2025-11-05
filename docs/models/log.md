@@ -10,6 +10,6 @@ let value: Log = {};
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `sources`          | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `sources`                                            | [models.FilterSources](../models/filtersources.md)[] | :heavy_minus_sign:                                   | N/A                                                  |

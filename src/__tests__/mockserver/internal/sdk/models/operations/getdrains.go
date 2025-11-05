@@ -1237,8 +1237,50 @@ func (o *GetDrainsProject2) GetIds() []string {
 	return o.Ids
 }
 
+type GetDrainsFilterV2Source2 string
+
+const (
+	GetDrainsFilterV2Source2Build    GetDrainsFilterV2Source2 = "build"
+	GetDrainsFilterV2Source2Edge     GetDrainsFilterV2Source2 = "edge"
+	GetDrainsFilterV2Source2Lambda   GetDrainsFilterV2Source2 = "lambda"
+	GetDrainsFilterV2Source2Static   GetDrainsFilterV2Source2 = "static"
+	GetDrainsFilterV2Source2External GetDrainsFilterV2Source2 = "external"
+	GetDrainsFilterV2Source2Firewall GetDrainsFilterV2Source2 = "firewall"
+	GetDrainsFilterV2Source2Redirect GetDrainsFilterV2Source2 = "redirect"
+)
+
+func (e GetDrainsFilterV2Source2) ToPointer() *GetDrainsFilterV2Source2 {
+	return &e
+}
+func (e *GetDrainsFilterV2Source2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "build":
+		fallthrough
+	case "edge":
+		fallthrough
+	case "lambda":
+		fallthrough
+	case "static":
+		fallthrough
+	case "external":
+		fallthrough
+	case "firewall":
+		fallthrough
+	case "redirect":
+		*e = GetDrainsFilterV2Source2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDrainsFilterV2Source2: %v", v)
+	}
+}
+
 type GetDrainsFilterV2Log2 struct {
-	Sources []string `json:"sources,omitempty"`
+	Sources                            []GetDrainsFilterV2Source2 `json:"sources,omitempty"`
+	LegacyExcludeCachedStaticAssetLogs *bool                      `json:"legacy_excludeCachedStaticAssetLogs,omitempty"`
 }
 
 func (g GetDrainsFilterV2Log2) MarshalJSON() ([]byte, error) {
@@ -1252,15 +1294,48 @@ func (g *GetDrainsFilterV2Log2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetDrainsFilterV2Log2) GetSources() []string {
+func (o *GetDrainsFilterV2Log2) GetSources() []GetDrainsFilterV2Source2 {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
 }
 
+func (o *GetDrainsFilterV2Log2) GetLegacyExcludeCachedStaticAssetLogs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyExcludeCachedStaticAssetLogs
+}
+
+type GetDrainsEnvironment2 string
+
+const (
+	GetDrainsEnvironment2Production GetDrainsEnvironment2 = "production"
+	GetDrainsEnvironment2Preview    GetDrainsEnvironment2 = "preview"
+)
+
+func (e GetDrainsEnvironment2) ToPointer() *GetDrainsEnvironment2 {
+	return &e
+}
+func (e *GetDrainsEnvironment2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = GetDrainsEnvironment2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDrainsEnvironment2: %v", v)
+	}
+}
+
 type GetDrainsDeployment2 struct {
-	Environments []string `json:"environments,omitempty"`
+	Environments []GetDrainsEnvironment2 `json:"environments,omitempty"`
 }
 
 func (g GetDrainsDeployment2) MarshalJSON() ([]byte, error) {
@@ -1274,7 +1349,7 @@ func (g *GetDrainsDeployment2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetDrainsDeployment2) GetEnvironments() []string {
+func (o *GetDrainsDeployment2) GetEnvironments() []GetDrainsEnvironment2 {
 	if o == nil {
 		return nil
 	}
@@ -1570,6 +1645,7 @@ const (
 	GetDrainsFrameworkZola           GetDrainsFramework = "zola"
 	GetDrainsFrameworkHydrogen       GetDrainsFramework = "hydrogen"
 	GetDrainsFrameworkVite           GetDrainsFramework = "vite"
+	GetDrainsFrameworkTanstackStart  GetDrainsFramework = "tanstack-start"
 	GetDrainsFrameworkVitepress      GetDrainsFramework = "vitepress"
 	GetDrainsFrameworkVuepress       GetDrainsFramework = "vuepress"
 	GetDrainsFrameworkParcel         GetDrainsFramework = "parcel"
@@ -1584,6 +1660,7 @@ const (
 	GetDrainsFrameworkExpress        GetDrainsFramework = "express"
 	GetDrainsFrameworkH3             GetDrainsFramework = "h3"
 	GetDrainsFrameworkNestjs         GetDrainsFramework = "nestjs"
+	GetDrainsFrameworkElysia         GetDrainsFramework = "elysia"
 	GetDrainsFrameworkFastify        GetDrainsFramework = "fastify"
 	GetDrainsFrameworkXmcp           GetDrainsFramework = "xmcp"
 )
@@ -1675,6 +1752,8 @@ func (e *GetDrainsFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -1702,6 +1781,8 @@ func (e *GetDrainsFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -3152,8 +3233,50 @@ func (o *GetDrainsProject1) GetIds() []string {
 	return o.Ids
 }
 
+type GetDrainsFilterV2Source1 string
+
+const (
+	GetDrainsFilterV2Source1Build    GetDrainsFilterV2Source1 = "build"
+	GetDrainsFilterV2Source1Edge     GetDrainsFilterV2Source1 = "edge"
+	GetDrainsFilterV2Source1Lambda   GetDrainsFilterV2Source1 = "lambda"
+	GetDrainsFilterV2Source1Static   GetDrainsFilterV2Source1 = "static"
+	GetDrainsFilterV2Source1External GetDrainsFilterV2Source1 = "external"
+	GetDrainsFilterV2Source1Firewall GetDrainsFilterV2Source1 = "firewall"
+	GetDrainsFilterV2Source1Redirect GetDrainsFilterV2Source1 = "redirect"
+)
+
+func (e GetDrainsFilterV2Source1) ToPointer() *GetDrainsFilterV2Source1 {
+	return &e
+}
+func (e *GetDrainsFilterV2Source1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "build":
+		fallthrough
+	case "edge":
+		fallthrough
+	case "lambda":
+		fallthrough
+	case "static":
+		fallthrough
+	case "external":
+		fallthrough
+	case "firewall":
+		fallthrough
+	case "redirect":
+		*e = GetDrainsFilterV2Source1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDrainsFilterV2Source1: %v", v)
+	}
+}
+
 type GetDrainsFilterV2Log1 struct {
-	Sources []string `json:"sources,omitempty"`
+	Sources                            []GetDrainsFilterV2Source1 `json:"sources,omitempty"`
+	LegacyExcludeCachedStaticAssetLogs *bool                      `json:"legacy_excludeCachedStaticAssetLogs,omitempty"`
 }
 
 func (g GetDrainsFilterV2Log1) MarshalJSON() ([]byte, error) {
@@ -3167,15 +3290,48 @@ func (g *GetDrainsFilterV2Log1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetDrainsFilterV2Log1) GetSources() []string {
+func (o *GetDrainsFilterV2Log1) GetSources() []GetDrainsFilterV2Source1 {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
 }
 
+func (o *GetDrainsFilterV2Log1) GetLegacyExcludeCachedStaticAssetLogs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyExcludeCachedStaticAssetLogs
+}
+
+type GetDrainsEnvironment1 string
+
+const (
+	GetDrainsEnvironment1Production GetDrainsEnvironment1 = "production"
+	GetDrainsEnvironment1Preview    GetDrainsEnvironment1 = "preview"
+)
+
+func (e GetDrainsEnvironment1) ToPointer() *GetDrainsEnvironment1 {
+	return &e
+}
+func (e *GetDrainsEnvironment1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = GetDrainsEnvironment1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetDrainsEnvironment1: %v", v)
+	}
+}
+
 type GetDrainsDeployment1 struct {
-	Environments []string `json:"environments,omitempty"`
+	Environments []GetDrainsEnvironment1 `json:"environments,omitempty"`
 }
 
 func (g GetDrainsDeployment1) MarshalJSON() ([]byte, error) {
@@ -3189,7 +3345,7 @@ func (g *GetDrainsDeployment1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetDrainsDeployment1) GetEnvironments() []string {
+func (o *GetDrainsDeployment1) GetEnvironments() []GetDrainsEnvironment1 {
 	if o == nil {
 		return nil
 	}

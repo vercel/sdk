@@ -11,7 +11,7 @@ let value: App = {
   clientId: "<id>",
   name: "<value>",
   clientAuthenticationUsed: {
-    method: "oidc_token",
+    method: "private_key_jwt",
   },
 };
 ```

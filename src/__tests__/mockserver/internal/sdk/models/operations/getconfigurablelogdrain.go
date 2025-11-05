@@ -79,6 +79,7 @@ const (
 	GetConfigurableLogDrainFrameworkZola           GetConfigurableLogDrainFramework = "zola"
 	GetConfigurableLogDrainFrameworkHydrogen       GetConfigurableLogDrainFramework = "hydrogen"
 	GetConfigurableLogDrainFrameworkVite           GetConfigurableLogDrainFramework = "vite"
+	GetConfigurableLogDrainFrameworkTanstackStart  GetConfigurableLogDrainFramework = "tanstack-start"
 	GetConfigurableLogDrainFrameworkVitepress      GetConfigurableLogDrainFramework = "vitepress"
 	GetConfigurableLogDrainFrameworkVuepress       GetConfigurableLogDrainFramework = "vuepress"
 	GetConfigurableLogDrainFrameworkParcel         GetConfigurableLogDrainFramework = "parcel"
@@ -93,6 +94,7 @@ const (
 	GetConfigurableLogDrainFrameworkExpress        GetConfigurableLogDrainFramework = "express"
 	GetConfigurableLogDrainFrameworkH3             GetConfigurableLogDrainFramework = "h3"
 	GetConfigurableLogDrainFrameworkNestjs         GetConfigurableLogDrainFramework = "nestjs"
+	GetConfigurableLogDrainFrameworkElysia         GetConfigurableLogDrainFramework = "elysia"
 	GetConfigurableLogDrainFrameworkFastify        GetConfigurableLogDrainFramework = "fastify"
 	GetConfigurableLogDrainFrameworkXmcp           GetConfigurableLogDrainFramework = "xmcp"
 )
@@ -184,6 +186,8 @@ func (e *GetConfigurableLogDrainFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -211,6 +215,8 @@ func (e *GetConfigurableLogDrainFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough

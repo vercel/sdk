@@ -358,3 +358,43 @@ test("Teams Delete Team Invite Code", async () => {
     id: "<id>",
   });
 });
+
+test("Teams Invite User To Team", async () => {
+  const testHttpClient = createTestHTTPClient("inviteUserToTeam");
+
+  const vercel = new Vercel({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const result = await vercel.teams.inviteUserToTeam([
+    {
+      email: "john@example.com",
+      role: "DEVELOPER",
+      projects: [
+        {
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+          role: "ADMIN",
+        },
+        {
+          projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
+          role: "ADMIN",
+        },
+      ],
+    },
+  ]);
+  expect(result).toBeDefined();
+  expect(result).toEqual({
+    uid: "kr1PsOIzqEL5Xg6M4VZcZosf",
+    username: "john-doe",
+    email: "john@user.co",
+    role: "MEMBER",
+    teamRoles: [
+      "MEMBER",
+    ],
+    teamPermissions: [
+      "CreateProject",
+    ],
+  });
+});

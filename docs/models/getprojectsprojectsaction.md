@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsProjectsAction } from "@vercel/sdk/models/getprojectsop.js";
 
-let value: GetProjectsProjectsAction = "add-interstitial";
+let value: GetProjectsProjectsAction = "blocked";
 ```
 
 ## Values
 
 ```typescript
-"add-interstitial" | "remove-interstitial"
+"blocked"
 ```

@@ -10,6 +10,6 @@ let value: CreateDrainFilterDrainsResponseDeployment = {};
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `environments`                                                                                   | [models.CreateDrainFilterDrainsEnvironments](../models/createdrainfilterdrainsenvironments.md)[] | :heavy_minus_sign:                                                                               | N/A                                                                                              |

@@ -13,6 +13,9 @@ const value: models.AcceptProjectTransferRequestResponseBody1 = {
   resourceTransferErrors: [
     {},
   ],
+  transferredStoreIds: [
+    "<value 1>",
+  ],
 };
 ```
 

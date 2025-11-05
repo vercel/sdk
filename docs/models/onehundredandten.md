@@ -8,12 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndTen } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTen = {
-  storeType: "redis",
+  id: "<id>",
+  type: "redis",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `id`                                                             | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `name`                                                           | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `computeUnitsMax`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `computeUnitsMin`                                                | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `suspendTimeoutSeconds`                                          | *number*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |

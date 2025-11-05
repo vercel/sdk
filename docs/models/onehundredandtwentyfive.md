@@ -8,14 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyFive } from "@vercel/sdk/models/userevent.js";
 
 let value: OneHundredAndTwentyFive = {
-  enabled: true,
-  totpVerified: true,
+  previous: {
+    enabled: true,
+    totpVerified: true,
+  },
+  next: {
+    enabled: true,
+    totpVerified: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |

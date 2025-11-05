@@ -7,7 +7,7 @@ The role of the user to invite
 ```typescript
 import { InviteUserToTeamRole } from "@vercel/sdk/models/inviteusertoteamop.js";
 
-let value: InviteUserToTeamRole = "VIEWER_FOR_PLUS";
+let value: InviteUserToTeamRole = "VIEWER";
 ```
 
 ## Values

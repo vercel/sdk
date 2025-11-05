@@ -119,6 +119,7 @@ let value: CreateProjectPermissions = {};
 | `observabilityNotebook`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `openTelemetryEndpoint`                      | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `ownEvent`                                   | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
+| `organizationDomain`                         | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `passwordProtectionInvoiceItem`              | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `paymentMethod`                              | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |
 | `permissions`                                | [models.ACLAction](../models/aclaction.md)[] | :heavy_minus_sign:                           | N/A                                          |

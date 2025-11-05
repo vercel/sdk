@@ -70,7 +70,7 @@ export type GetIntegrationResourcesMetadata =
   | Array<string>
   | Array<number>;
 
-export type Resources = {
+export type GetIntegrationResourcesResources = {
   /**
    * The ID provided by the partner for the given resource
    */
@@ -112,7 +112,7 @@ export type Resources = {
 };
 
 export type GetIntegrationResourcesResponseBody = {
-  resources: Array<Resources>;
+  resources: Array<GetIntegrationResourcesResources>;
 };
 
 /** @internal */
@@ -484,8 +484,8 @@ export function getIntegrationResourcesMetadataFromJSON(
 }
 
 /** @internal */
-export const Resources$inboundSchema: z.ZodType<
-  Resources,
+export const GetIntegrationResourcesResources$inboundSchema: z.ZodType<
+  GetIntegrationResourcesResources,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -512,7 +512,7 @@ export const Resources$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Resources$Outbound = {
+export type GetIntegrationResourcesResources$Outbound = {
   partnerId: string;
   internalId: string;
   name: string;
@@ -529,10 +529,10 @@ export type Resources$Outbound = {
 };
 
 /** @internal */
-export const Resources$outboundSchema: z.ZodType<
-  Resources$Outbound,
+export const GetIntegrationResourcesResources$outboundSchema: z.ZodType<
+  GetIntegrationResourcesResources$Outbound,
   z.ZodTypeDef,
-  Resources
+  GetIntegrationResourcesResources
 > = z.object({
   partnerId: z.string(),
   internalId: z.string(),
@@ -560,26 +560,32 @@ export const Resources$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Resources$ {
-  /** @deprecated use `Resources$inboundSchema` instead. */
-  export const inboundSchema = Resources$inboundSchema;
-  /** @deprecated use `Resources$outboundSchema` instead. */
-  export const outboundSchema = Resources$outboundSchema;
-  /** @deprecated use `Resources$Outbound` instead. */
-  export type Outbound = Resources$Outbound;
+export namespace GetIntegrationResourcesResources$ {
+  /** @deprecated use `GetIntegrationResourcesResources$inboundSchema` instead. */
+  export const inboundSchema = GetIntegrationResourcesResources$inboundSchema;
+  /** @deprecated use `GetIntegrationResourcesResources$outboundSchema` instead. */
+  export const outboundSchema = GetIntegrationResourcesResources$outboundSchema;
+  /** @deprecated use `GetIntegrationResourcesResources$Outbound` instead. */
+  export type Outbound = GetIntegrationResourcesResources$Outbound;
 }
 
-export function resourcesToJSON(resources: Resources): string {
-  return JSON.stringify(Resources$outboundSchema.parse(resources));
+export function getIntegrationResourcesResourcesToJSON(
+  getIntegrationResourcesResources: GetIntegrationResourcesResources,
+): string {
+  return JSON.stringify(
+    GetIntegrationResourcesResources$outboundSchema.parse(
+      getIntegrationResourcesResources,
+    ),
+  );
 }
 
-export function resourcesFromJSON(
+export function getIntegrationResourcesResourcesFromJSON(
   jsonString: string,
-): SafeParseResult<Resources, SDKValidationError> {
+): SafeParseResult<GetIntegrationResourcesResources, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Resources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Resources' from JSON`,
+    (x) => GetIntegrationResourcesResources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationResourcesResources' from JSON`,
   );
 }
 
@@ -589,12 +595,14 @@ export const GetIntegrationResourcesResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  resources: z.array(z.lazy(() => Resources$inboundSchema)),
+  resources: z.array(
+    z.lazy(() => GetIntegrationResourcesResources$inboundSchema),
+  ),
 });
 
 /** @internal */
 export type GetIntegrationResourcesResponseBody$Outbound = {
-  resources: Array<Resources$Outbound>;
+  resources: Array<GetIntegrationResourcesResources$Outbound>;
 };
 
 /** @internal */
@@ -603,7 +611,9 @@ export const GetIntegrationResourcesResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetIntegrationResourcesResponseBody
 > = z.object({
-  resources: z.array(z.lazy(() => Resources$outboundSchema)),
+  resources: z.array(
+    z.lazy(() => GetIntegrationResourcesResources$outboundSchema),
+  ),
 });
 
 /**

@@ -266,12 +266,34 @@ export type GetDrainFilterDrainsProject = {
   ids?: Array<string> | undefined;
 };
 
+export const GetDrainFilterDrainsSources = {
+  Build: "build",
+  Edge: "edge",
+  Lambda: "lambda",
+  Static: "static",
+  External: "external",
+  Firewall: "firewall",
+  Redirect: "redirect",
+} as const;
+export type GetDrainFilterDrainsSources = ClosedEnum<
+  typeof GetDrainFilterDrainsSources
+>;
+
 export type GetDrainFilterDrainsLog = {
-  sources?: Array<string> | undefined;
+  sources?: Array<GetDrainFilterDrainsSources> | undefined;
+  legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
+export const GetDrainFilterDrainsEnvironments = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type GetDrainFilterDrainsEnvironments = ClosedEnum<
+  typeof GetDrainFilterDrainsEnvironments
+>;
+
 export type GetDrainFilterDrainsDeployment = {
-  environments?: Array<string> | undefined;
+  environments?: Array<GetDrainFilterDrainsEnvironments> | undefined;
 };
 
 export type GetDrainFilterDrains1 = {
@@ -345,6 +367,7 @@ export const GetDrainResponseBodyFramework = {
   Zola: "zola",
   Hydrogen: "hydrogen",
   Vite: "vite",
+  TanstackStart: "tanstack-start",
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
@@ -359,6 +382,7 @@ export const GetDrainResponseBodyFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
@@ -632,12 +656,32 @@ export type GetDrainFilterProject = {
   ids?: Array<string> | undefined;
 };
 
+export const GetDrainFilterSources = {
+  Build: "build",
+  Edge: "edge",
+  Lambda: "lambda",
+  Static: "static",
+  External: "external",
+  Firewall: "firewall",
+  Redirect: "redirect",
+} as const;
+export type GetDrainFilterSources = ClosedEnum<typeof GetDrainFilterSources>;
+
 export type GetDrainFilterLog = {
-  sources?: Array<string> | undefined;
+  sources?: Array<GetDrainFilterSources> | undefined;
+  legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
+export const GetDrainFilterEnvironments = {
+  Production: "production",
+  Preview: "preview",
+} as const;
+export type GetDrainFilterEnvironments = ClosedEnum<
+  typeof GetDrainFilterEnvironments
+>;
+
 export type GetDrainFilterDeployment = {
-  environments?: Array<string> | undefined;
+  environments?: Array<GetDrainFilterEnvironments> | undefined;
 };
 
 export type GetDrainFilter1 = {
@@ -2311,17 +2355,44 @@ export function getDrainFilterDrainsProjectFromJSON(
 }
 
 /** @internal */
+export const GetDrainFilterDrainsSources$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterDrainsSources
+> = z.nativeEnum(GetDrainFilterDrainsSources);
+
+/** @internal */
+export const GetDrainFilterDrainsSources$outboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterDrainsSources
+> = GetDrainFilterDrainsSources$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDrainFilterDrainsSources$ {
+  /** @deprecated use `GetDrainFilterDrainsSources$inboundSchema` instead. */
+  export const inboundSchema = GetDrainFilterDrainsSources$inboundSchema;
+  /** @deprecated use `GetDrainFilterDrainsSources$outboundSchema` instead. */
+  export const outboundSchema = GetDrainFilterDrainsSources$outboundSchema;
+}
+
+/** @internal */
 export const GetDrainFilterDrainsLog$inboundSchema: z.ZodType<
   GetDrainFilterDrainsLog,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(GetDrainFilterDrainsSources$inboundSchema).optional(),
+  legacy_excludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
+  });
 });
 
 /** @internal */
 export type GetDrainFilterDrainsLog$Outbound = {
   sources?: Array<string> | undefined;
+  legacy_excludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
 /** @internal */
@@ -2330,7 +2401,12 @@ export const GetDrainFilterDrainsLog$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDrainFilterDrainsLog
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(GetDrainFilterDrainsSources$outboundSchema).optional(),
+  legacyExcludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    legacyExcludeCachedStaticAssetLogs: "legacy_excludeCachedStaticAssetLogs",
+  });
 });
 
 /**
@@ -2365,12 +2441,34 @@ export function getDrainFilterDrainsLogFromJSON(
 }
 
 /** @internal */
+export const GetDrainFilterDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterDrainsEnvironments
+> = z.nativeEnum(GetDrainFilterDrainsEnvironments);
+
+/** @internal */
+export const GetDrainFilterDrainsEnvironments$outboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterDrainsEnvironments
+> = GetDrainFilterDrainsEnvironments$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDrainFilterDrainsEnvironments$ {
+  /** @deprecated use `GetDrainFilterDrainsEnvironments$inboundSchema` instead. */
+  export const inboundSchema = GetDrainFilterDrainsEnvironments$inboundSchema;
+  /** @deprecated use `GetDrainFilterDrainsEnvironments$outboundSchema` instead. */
+  export const outboundSchema = GetDrainFilterDrainsEnvironments$outboundSchema;
+}
+
+/** @internal */
 export const GetDrainFilterDrainsDeployment$inboundSchema: z.ZodType<
   GetDrainFilterDrainsDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(GetDrainFilterDrainsEnvironments$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -2384,7 +2482,8 @@ export const GetDrainFilterDrainsDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDrainFilterDrainsDeployment
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(GetDrainFilterDrainsEnvironments$outboundSchema)
+    .optional(),
 });
 
 /**
@@ -4467,17 +4566,44 @@ export function getDrainFilterProjectFromJSON(
 }
 
 /** @internal */
+export const GetDrainFilterSources$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterSources
+> = z.nativeEnum(GetDrainFilterSources);
+
+/** @internal */
+export const GetDrainFilterSources$outboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterSources
+> = GetDrainFilterSources$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDrainFilterSources$ {
+  /** @deprecated use `GetDrainFilterSources$inboundSchema` instead. */
+  export const inboundSchema = GetDrainFilterSources$inboundSchema;
+  /** @deprecated use `GetDrainFilterSources$outboundSchema` instead. */
+  export const outboundSchema = GetDrainFilterSources$outboundSchema;
+}
+
+/** @internal */
 export const GetDrainFilterLog$inboundSchema: z.ZodType<
   GetDrainFilterLog,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(GetDrainFilterSources$inboundSchema).optional(),
+  legacy_excludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
+  });
 });
 
 /** @internal */
 export type GetDrainFilterLog$Outbound = {
   sources?: Array<string> | undefined;
+  legacy_excludeCachedStaticAssetLogs?: boolean | undefined;
 };
 
 /** @internal */
@@ -4486,7 +4612,12 @@ export const GetDrainFilterLog$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDrainFilterLog
 > = z.object({
-  sources: z.array(z.string()).optional(),
+  sources: z.array(GetDrainFilterSources$outboundSchema).optional(),
+  legacyExcludeCachedStaticAssetLogs: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    legacyExcludeCachedStaticAssetLogs: "legacy_excludeCachedStaticAssetLogs",
+  });
 });
 
 /**
@@ -4521,12 +4652,33 @@ export function getDrainFilterLogFromJSON(
 }
 
 /** @internal */
+export const GetDrainFilterEnvironments$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterEnvironments
+> = z.nativeEnum(GetDrainFilterEnvironments);
+
+/** @internal */
+export const GetDrainFilterEnvironments$outboundSchema: z.ZodNativeEnum<
+  typeof GetDrainFilterEnvironments
+> = GetDrainFilterEnvironments$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetDrainFilterEnvironments$ {
+  /** @deprecated use `GetDrainFilterEnvironments$inboundSchema` instead. */
+  export const inboundSchema = GetDrainFilterEnvironments$inboundSchema;
+  /** @deprecated use `GetDrainFilterEnvironments$outboundSchema` instead. */
+  export const outboundSchema = GetDrainFilterEnvironments$outboundSchema;
+}
+
+/** @internal */
 export const GetDrainFilterDeployment$inboundSchema: z.ZodType<
   GetDrainFilterDeployment,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(GetDrainFilterEnvironments$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -4540,7 +4692,7 @@ export const GetDrainFilterDeployment$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDrainFilterDeployment
 > = z.object({
-  environments: z.array(z.string()).optional(),
+  environments: z.array(GetDrainFilterEnvironments$outboundSchema).optional(),
 });
 
 /**

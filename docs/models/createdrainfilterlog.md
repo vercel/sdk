@@ -10,6 +10,7 @@ let value: CreateDrainFilterLog = {};
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `sources`          | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `sources`                                                                              | [models.CreateDrainFilterDrainsSources](../models/createdrainfilterdrainssources.md)[] | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `legacyExcludeCachedStaticAssetLogs`                                                   | *boolean*                                                                              | :heavy_minus_sign:                                                                     | N/A                                                                                    |

@@ -7,7 +7,7 @@ import { UpdateTeamMemberRequestBody } from "@vercel/sdk/models/updateteammember
 
 let value: UpdateTeamMemberRequestBody = {
   confirmed: true,
-  role: "[\"MEMBER\",\"VIEWER\"]",
+  role: "VIEWER",
   projects: [
     {
       projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
@@ -22,6 +22,6 @@ let value: UpdateTeamMemberRequestBody = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `confirmed`                                                                  | *boolean*                                                                    | :heavy_minus_sign:                                                           | Accept a user who requested access to the team.                              | true                                                                         |
-| `role`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | The role in the team of the member.                                          | [<br/>"MEMBER",<br/>"VIEWER"<br/>]                                           |
+| `role`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | The role in the team of the member.                                          | VIEWER                                                                       |
 | `projects`                                                                   | [models.UpdateTeamMemberProjects](../models/updateteammemberprojects.md)[]   | :heavy_minus_sign:                                                           | N/A                                                                          |                                                                              |
 | `joinedFrom`                                                                 | [models.UpdateTeamMemberJoinedFrom](../models/updateteammemberjoinedfrom.md) | :heavy_minus_sign:                                                           | N/A                                                                          |                                                                              |

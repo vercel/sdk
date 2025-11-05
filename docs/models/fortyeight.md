@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { FortyEight } from "@vercel/sdk/models/userevent.js";
 
 let value: FortyEight = {
-  domainId: "<id>",
   name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domainId`         | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `oldTeam`                                                                  | [models.UserEventPayload48OldTeam](../models/usereventpayload48oldteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `newTeam`                                                                  | [models.UserEventPayload48NewTeam](../models/usereventpayload48newteam.md) | :heavy_minus_sign:                                                         | N/A                                                                        |

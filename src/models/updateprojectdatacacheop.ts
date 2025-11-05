@@ -640,6 +640,7 @@ export const UpdateProjectDataCacheFramework = {
   Zola: "zola",
   Hydrogen: "hydrogen",
   Vite: "vite",
+  TanstackStart: "tanstack-start",
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
@@ -654,6 +655,7 @@ export const UpdateProjectDataCacheFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
@@ -745,6 +747,7 @@ export type UpdateProjectDataCacheProjectsOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  plan: string;
 };
 
 export const UpdateProjectDataCacheProjectsPlan = {
@@ -991,6 +994,7 @@ export type UpdateProjectDataCacheMicrofrontends3 = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type UpdateProjectDataCacheMicrofrontends2 = {
@@ -1019,6 +1023,10 @@ export type UpdateProjectDataCacheMicrofrontends2 = {
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
   defaultRoute?: string | undefined;
+  /**
+   * Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+   */
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type UpdateProjectDataCacheMicrofrontends1 = {
@@ -1039,6 +1047,10 @@ export type UpdateProjectDataCacheMicrofrontends1 = {
    * A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
    */
   defaultRoute?: string | undefined;
+  /**
+   * Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+   */
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 export type UpdateProjectDataCacheMicrofrontends =
@@ -1047,6 +1059,7 @@ export type UpdateProjectDataCacheMicrofrontends =
   | UpdateProjectDataCacheMicrofrontends3;
 
 export const UpdateProjectDataCacheNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -1191,6 +1204,12 @@ export type DefaultResourceConfig = {
   isNSNBDisabled?: boolean | undefined;
 };
 
+export type UpdateProjectDataCacheStaticIps = {
+  builds: boolean;
+  enabled: boolean;
+  regions: Array<string>;
+};
+
 export const UpdateProjectDataCacheDeploymentType = {
   Preview: "preview",
   All: "all",
@@ -1284,6 +1303,7 @@ export type UpdateProjectDataCacheOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  plan: string;
 };
 
 export const UpdateProjectDataCachePlan = {
@@ -1365,7 +1385,7 @@ export type Targets = {
   withCache?: boolean | undefined;
 };
 
-export type Permissions = {
+export type UpdateProjectDataCachePermissions = {
   oauth2Connection?: Array<ACLAction> | undefined;
   user?: Array<ACLAction> | undefined;
   userConnection?: Array<ACLAction> | undefined;
@@ -1473,6 +1493,7 @@ export type Permissions = {
   observabilityNotebook?: Array<ACLAction> | undefined;
   openTelemetryEndpoint?: Array<ACLAction> | undefined;
   ownEvent?: Array<ACLAction> | undefined;
+  organizationDomain?: Array<ACLAction> | undefined;
   passwordProtectionInvoiceItem?: Array<ACLAction> | undefined;
   paymentMethod?: Array<ACLAction> | undefined;
   permissions?: Array<ACLAction> | undefined;
@@ -2076,23 +2097,6 @@ export type UpdateProjectDataCacheBlockHistory =
   | BlockHistory4
   | BlockHistory2;
 
-export const UpdateProjectDataCacheAction = {
-  AddInterstitial: "add-interstitial",
-  RemoveInterstitial: "remove-interstitial",
-} as const;
-export type UpdateProjectDataCacheAction = ClosedEnum<
-  typeof UpdateProjectDataCacheAction
->;
-
-export type InterstitialHistory = {
-  action: UpdateProjectDataCacheAction;
-  createdAt: number;
-  caseId?: string | undefined;
-  reason?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-};
-
 export type UpdateProjectDataCacheAbuse = {
   scanner?: string | undefined;
   history: Array<UpdateProjectDataCacheHistory>;
@@ -2102,7 +2106,6 @@ export type UpdateProjectDataCacheAbuse = {
     | Array<BlockHistory1 | BlockHistory3 | BlockHistory4 | BlockHistory2>
     | undefined;
   interstitial?: boolean | undefined;
-  interstitialHistory?: Array<InterstitialHistory> | undefined;
 };
 
 export const UpdateProjectDataCacheHasType = {
@@ -2164,6 +2167,36 @@ export type InternalRoutes1 = {
 };
 
 export type InternalRoutes = InternalRoutes1 | InternalRoutes2;
+
+export const UpdateProjectDataCacheAction = {
+  Cancel: "cancel",
+  Accept: "accept",
+  Delete: "delete",
+} as const;
+export type UpdateProjectDataCacheAction = ClosedEnum<
+  typeof UpdateProjectDataCacheAction
+>;
+
+export type UpdateProjectDataCacheValuePreviousValue =
+  | string
+  | number
+  | boolean;
+
+export type UpdateProjectDataCacheValueCurrentValue = string | number | boolean;
+
+export type Value4 = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
+
+export type UpdateProjectDataCacheValue = Value4 | string | number | boolean;
+
+export type UpdateProjectDataCacheDismissedToasts = {
+  key: string;
+  dismissedAt: number;
+  action: UpdateProjectDataCacheAction;
+  value: Value4 | string | number | boolean | null;
+};
 
 export type UpdateProjectDataCacheResponseBody = {
   accountId: string;
@@ -2231,6 +2264,7 @@ export type UpdateProjectDataCacheResponseBody = {
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
+  staticIps?: UpdateProjectDataCacheStaticIps | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
   ssoProtection?: UpdateProjectDataCacheSsoProtection | null | undefined;
@@ -2243,7 +2277,7 @@ export type UpdateProjectDataCacheResponseBody = {
   live?: boolean | undefined;
   enablePreviewFeedback?: boolean | null | undefined;
   enableProductionFeedback?: boolean | null | undefined;
-  permissions?: Permissions | undefined;
+  permissions?: UpdateProjectDataCachePermissions | undefined;
   lastRollbackTarget?: LastRollbackTarget | null | undefined;
   lastAliasRequest?: LastAliasRequest | null | undefined;
   protectionBypass?:
@@ -2263,6 +2297,7 @@ export type UpdateProjectDataCacheResponseBody = {
   v0?: boolean | undefined;
   abuse?: UpdateProjectDataCacheAbuse | undefined;
   internalRoutes?: Array<InternalRoutes1 | InternalRoutes2> | undefined;
+  dismissedToasts?: Array<UpdateProjectDataCacheDismissedToasts> | undefined;
 };
 
 /** @internal */
@@ -5536,6 +5571,7 @@ export const UpdateProjectDataCacheProjectsOidcTokenClaims$inboundSchema:
     project: z.string(),
     project_id: z.string(),
     environment: z.string(),
+    plan: z.string(),
   }).transform((v) => {
     return remap$(v, {
       "owner_id": "ownerId",
@@ -5554,6 +5590,7 @@ export type UpdateProjectDataCacheProjectsOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  plan: string;
 };
 
 /** @internal */
@@ -5572,6 +5609,7 @@ export const UpdateProjectDataCacheProjectsOidcTokenClaims$outboundSchema:
     project: z.string(),
     projectId: z.string(),
     environment: z.string(),
+    plan: z.string(),
   }).transform((v) => {
     return remap$(v, {
       ownerId: "owner_id",
@@ -6845,6 +6883,7 @@ export const UpdateProjectDataCacheMicrofrontends3$inboundSchema: z.ZodType<
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
   enabled: z.boolean(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6852,6 +6891,7 @@ export type UpdateProjectDataCacheMicrofrontends3$Outbound = {
   updatedAt: number;
   groupIds: Array<any>;
   enabled: boolean;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 /** @internal */
@@ -6863,6 +6903,7 @@ export const UpdateProjectDataCacheMicrofrontends3$outboundSchema: z.ZodType<
   updatedAt: z.number(),
   groupIds: z.array(z.any()),
   enabled: z.boolean(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /**
@@ -6914,6 +6955,7 @@ export const UpdateProjectDataCacheMicrofrontends2$inboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6925,6 +6967,7 @@ export type UpdateProjectDataCacheMicrofrontends2$Outbound = {
   groupIds: Array<string>;
   enabled: boolean;
   defaultRoute?: string | undefined;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 /** @internal */
@@ -6940,6 +6983,7 @@ export const UpdateProjectDataCacheMicrofrontends2$outboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /**
@@ -6989,6 +7033,7 @@ export const UpdateProjectDataCacheMicrofrontends1$inboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /** @internal */
@@ -6998,6 +7043,7 @@ export type UpdateProjectDataCacheMicrofrontends1$Outbound = {
   groupIds: Array<string>;
   enabled: boolean;
   defaultRoute?: string | undefined;
+  freeProjectForLegacyLimits?: boolean | undefined;
 };
 
 /** @internal */
@@ -7011,6 +7057,7 @@ export const UpdateProjectDataCacheMicrofrontends1$outboundSchema: z.ZodType<
   groupIds: z.array(z.string()),
   enabled: z.boolean(),
   defaultRoute: z.string().optional(),
+  freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
 /**
@@ -7746,6 +7793,68 @@ export function defaultResourceConfigFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectDataCacheStaticIps$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheStaticIps,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  builds: z.boolean(),
+  enabled: z.boolean(),
+  regions: z.array(z.string()),
+});
+
+/** @internal */
+export type UpdateProjectDataCacheStaticIps$Outbound = {
+  builds: boolean;
+  enabled: boolean;
+  regions: Array<string>;
+};
+
+/** @internal */
+export const UpdateProjectDataCacheStaticIps$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheStaticIps$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheStaticIps
+> = z.object({
+  builds: z.boolean(),
+  enabled: z.boolean(),
+  regions: z.array(z.string()),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheStaticIps$ {
+  /** @deprecated use `UpdateProjectDataCacheStaticIps$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCacheStaticIps$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheStaticIps$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDataCacheStaticIps$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheStaticIps$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheStaticIps$Outbound;
+}
+
+export function updateProjectDataCacheStaticIpsToJSON(
+  updateProjectDataCacheStaticIps: UpdateProjectDataCacheStaticIps,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheStaticIps$outboundSchema.parse(
+      updateProjectDataCacheStaticIps,
+    ),
+  );
+}
+
+export function updateProjectDataCacheStaticIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDataCacheStaticIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDataCacheStaticIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheStaticIps' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDataCacheDeploymentType$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectDataCacheDeploymentType> = z.nativeEnum(
     UpdateProjectDataCacheDeploymentType,
@@ -8231,6 +8340,7 @@ export const UpdateProjectDataCacheOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -8249,6 +8359,7 @@ export type UpdateProjectDataCacheOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  plan: string;
 };
 
 /** @internal */
@@ -8266,6 +8377,7 @@ export const UpdateProjectDataCacheOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -8572,8 +8684,8 @@ export function targetsFromJSON(
 }
 
 /** @internal */
-export const Permissions$inboundSchema: z.ZodType<
-  Permissions,
+export const UpdateProjectDataCachePermissions$inboundSchema: z.ZodType<
+  UpdateProjectDataCachePermissions,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -8686,6 +8798,7 @@ export const Permissions$inboundSchema: z.ZodType<
   observabilityNotebook: z.array(ACLAction$inboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$inboundSchema).optional(),
   ownEvent: z.array(ACLAction$inboundSchema).optional(),
+  organizationDomain: z.array(ACLAction$inboundSchema).optional(),
   passwordProtectionInvoiceItem: z.array(ACLAction$inboundSchema).optional(),
   paymentMethod: z.array(ACLAction$inboundSchema).optional(),
   permissions: z.array(ACLAction$inboundSchema).optional(),
@@ -8807,7 +8920,7 @@ export const Permissions$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Permissions$Outbound = {
+export type UpdateProjectDataCachePermissions$Outbound = {
   oauth2Connection?: Array<string> | undefined;
   user?: Array<string> | undefined;
   userConnection?: Array<string> | undefined;
@@ -8915,6 +9028,7 @@ export type Permissions$Outbound = {
   observabilityNotebook?: Array<string> | undefined;
   openTelemetryEndpoint?: Array<string> | undefined;
   ownEvent?: Array<string> | undefined;
+  organizationDomain?: Array<string> | undefined;
   passwordProtectionInvoiceItem?: Array<string> | undefined;
   paymentMethod?: Array<string> | undefined;
   permissions?: Array<string> | undefined;
@@ -9027,10 +9141,10 @@ export type Permissions$Outbound = {
 };
 
 /** @internal */
-export const Permissions$outboundSchema: z.ZodType<
-  Permissions$Outbound,
+export const UpdateProjectDataCachePermissions$outboundSchema: z.ZodType<
+  UpdateProjectDataCachePermissions$Outbound,
   z.ZodTypeDef,
-  Permissions
+  UpdateProjectDataCachePermissions
 > = z.object({
   oauth2Connection: z.array(ACLAction$outboundSchema).optional(),
   user: z.array(ACLAction$outboundSchema).optional(),
@@ -9143,6 +9257,7 @@ export const Permissions$outboundSchema: z.ZodType<
   observabilityNotebook: z.array(ACLAction$outboundSchema).optional(),
   openTelemetryEndpoint: z.array(ACLAction$outboundSchema).optional(),
   ownEvent: z.array(ACLAction$outboundSchema).optional(),
+  organizationDomain: z.array(ACLAction$outboundSchema).optional(),
   passwordProtectionInvoiceItem: z.array(ACLAction$outboundSchema).optional(),
   paymentMethod: z.array(ACLAction$outboundSchema).optional(),
   permissions: z.array(ACLAction$outboundSchema).optional(),
@@ -9267,26 +9382,33 @@ export const Permissions$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Permissions$ {
-  /** @deprecated use `Permissions$inboundSchema` instead. */
-  export const inboundSchema = Permissions$inboundSchema;
-  /** @deprecated use `Permissions$outboundSchema` instead. */
-  export const outboundSchema = Permissions$outboundSchema;
-  /** @deprecated use `Permissions$Outbound` instead. */
-  export type Outbound = Permissions$Outbound;
+export namespace UpdateProjectDataCachePermissions$ {
+  /** @deprecated use `UpdateProjectDataCachePermissions$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCachePermissions$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCachePermissions$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCachePermissions$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCachePermissions$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCachePermissions$Outbound;
 }
 
-export function permissionsToJSON(permissions: Permissions): string {
-  return JSON.stringify(Permissions$outboundSchema.parse(permissions));
+export function updateProjectDataCachePermissionsToJSON(
+  updateProjectDataCachePermissions: UpdateProjectDataCachePermissions,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCachePermissions$outboundSchema.parse(
+      updateProjectDataCachePermissions,
+    ),
+  );
 }
 
-export function permissionsFromJSON(
+export function updateProjectDataCachePermissionsFromJSON(
   jsonString: string,
-): SafeParseResult<Permissions, SDKValidationError> {
+): SafeParseResult<UpdateProjectDataCachePermissions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Permissions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Permissions' from JSON`,
+    (x) => UpdateProjectDataCachePermissions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCachePermissions' from JSON`,
   );
 }
 
@@ -12644,96 +12766,6 @@ export function updateProjectDataCacheBlockHistoryFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectDataCacheAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectDataCacheAction
-> = z.nativeEnum(UpdateProjectDataCacheAction);
-
-/** @internal */
-export const UpdateProjectDataCacheAction$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectDataCacheAction
-> = UpdateProjectDataCacheAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectDataCacheAction$ {
-  /** @deprecated use `UpdateProjectDataCacheAction$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectDataCacheAction$inboundSchema;
-  /** @deprecated use `UpdateProjectDataCacheAction$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectDataCacheAction$outboundSchema;
-}
-
-/** @internal */
-export const InterstitialHistory$inboundSchema: z.ZodType<
-  InterstitialHistory,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateProjectDataCacheAction$inboundSchema,
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  reason: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-});
-
-/** @internal */
-export type InterstitialHistory$Outbound = {
-  action: string;
-  createdAt: number;
-  caseId?: string | undefined;
-  reason?: string | undefined;
-  actor?: string | undefined;
-  comment?: string | undefined;
-};
-
-/** @internal */
-export const InterstitialHistory$outboundSchema: z.ZodType<
-  InterstitialHistory$Outbound,
-  z.ZodTypeDef,
-  InterstitialHistory
-> = z.object({
-  action: UpdateProjectDataCacheAction$outboundSchema,
-  createdAt: z.number(),
-  caseId: z.string().optional(),
-  reason: z.string().optional(),
-  actor: z.string().optional(),
-  comment: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InterstitialHistory$ {
-  /** @deprecated use `InterstitialHistory$inboundSchema` instead. */
-  export const inboundSchema = InterstitialHistory$inboundSchema;
-  /** @deprecated use `InterstitialHistory$outboundSchema` instead. */
-  export const outboundSchema = InterstitialHistory$outboundSchema;
-  /** @deprecated use `InterstitialHistory$Outbound` instead. */
-  export type Outbound = InterstitialHistory$Outbound;
-}
-
-export function interstitialHistoryToJSON(
-  interstitialHistory: InterstitialHistory,
-): string {
-  return JSON.stringify(
-    InterstitialHistory$outboundSchema.parse(interstitialHistory),
-  );
-}
-
-export function interstitialHistoryFromJSON(
-  jsonString: string,
-): SafeParseResult<InterstitialHistory, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InterstitialHistory$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InterstitialHistory' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectDataCacheAbuse$inboundSchema: z.ZodType<
   UpdateProjectDataCacheAbuse,
   z.ZodTypeDef,
@@ -12752,8 +12784,6 @@ export const UpdateProjectDataCacheAbuse$inboundSchema: z.ZodType<
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
-  interstitialHistory: z.array(z.lazy(() => InterstitialHistory$inboundSchema))
-    .optional(),
 });
 
 /** @internal */
@@ -12771,7 +12801,6 @@ export type UpdateProjectDataCacheAbuse$Outbound = {
     >
     | undefined;
   interstitial?: boolean | undefined;
-  interstitialHistory?: Array<InterstitialHistory$Outbound> | undefined;
 };
 
 /** @internal */
@@ -12793,8 +12822,6 @@ export const UpdateProjectDataCacheAbuse$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   interstitial: z.boolean().optional(),
-  interstitialHistory: z.array(z.lazy(() => InterstitialHistory$outboundSchema))
-    .optional(),
 });
 
 /**
@@ -13401,6 +13428,347 @@ export function internalRoutesFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectDataCacheAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheAction
+> = z.nativeEnum(UpdateProjectDataCacheAction);
+
+/** @internal */
+export const UpdateProjectDataCacheAction$outboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectDataCacheAction
+> = UpdateProjectDataCacheAction$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheAction$ {
+  /** @deprecated use `UpdateProjectDataCacheAction$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCacheAction$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheAction$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDataCacheAction$outboundSchema;
+}
+
+/** @internal */
+export const UpdateProjectDataCacheValuePreviousValue$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheValuePreviousValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type UpdateProjectDataCacheValuePreviousValue$Outbound =
+  | string
+  | number
+  | boolean;
+
+/** @internal */
+export const UpdateProjectDataCacheValuePreviousValue$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheValuePreviousValue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheValuePreviousValue
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheValuePreviousValue$ {
+  /** @deprecated use `UpdateProjectDataCacheValuePreviousValue$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheValuePreviousValue$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheValuePreviousValue$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheValuePreviousValue$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheValuePreviousValue$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheValuePreviousValue$Outbound;
+}
+
+export function updateProjectDataCacheValuePreviousValueToJSON(
+  updateProjectDataCacheValuePreviousValue:
+    UpdateProjectDataCacheValuePreviousValue,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheValuePreviousValue$outboundSchema.parse(
+      updateProjectDataCacheValuePreviousValue,
+    ),
+  );
+}
+
+export function updateProjectDataCacheValuePreviousValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectDataCacheValuePreviousValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectDataCacheValuePreviousValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheValuePreviousValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDataCacheValueCurrentValue$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheValueCurrentValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type UpdateProjectDataCacheValueCurrentValue$Outbound =
+  | string
+  | number
+  | boolean;
+
+/** @internal */
+export const UpdateProjectDataCacheValueCurrentValue$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheValueCurrentValue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheValueCurrentValue
+> = z.union([z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheValueCurrentValue$ {
+  /** @deprecated use `UpdateProjectDataCacheValueCurrentValue$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheValueCurrentValue$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheValueCurrentValue$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheValueCurrentValue$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheValueCurrentValue$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheValueCurrentValue$Outbound;
+}
+
+export function updateProjectDataCacheValueCurrentValueToJSON(
+  updateProjectDataCacheValueCurrentValue:
+    UpdateProjectDataCacheValueCurrentValue,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheValueCurrentValue$outboundSchema.parse(
+      updateProjectDataCacheValueCurrentValue,
+    ),
+  );
+}
+
+export function updateProjectDataCacheValueCurrentValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateProjectDataCacheValueCurrentValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectDataCacheValueCurrentValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateProjectDataCacheValueCurrentValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const Value4$inboundSchema: z.ZodType<Value4, z.ZodTypeDef, unknown> = z
+  .object({
+    previousValue: z.union([z.string(), z.number(), z.boolean()]),
+    currentValue: z.union([z.string(), z.number(), z.boolean()]),
+  });
+
+/** @internal */
+export type Value4$Outbound = {
+  previousValue: string | number | boolean;
+  currentValue: string | number | boolean;
+};
+
+/** @internal */
+export const Value4$outboundSchema: z.ZodType<
+  Value4$Outbound,
+  z.ZodTypeDef,
+  Value4
+> = z.object({
+  previousValue: z.union([z.string(), z.number(), z.boolean()]),
+  currentValue: z.union([z.string(), z.number(), z.boolean()]),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Value4$ {
+  /** @deprecated use `Value4$inboundSchema` instead. */
+  export const inboundSchema = Value4$inboundSchema;
+  /** @deprecated use `Value4$outboundSchema` instead. */
+  export const outboundSchema = Value4$outboundSchema;
+  /** @deprecated use `Value4$Outbound` instead. */
+  export type Outbound = Value4$Outbound;
+}
+
+export function value4ToJSON(value4: Value4): string {
+  return JSON.stringify(Value4$outboundSchema.parse(value4));
+}
+
+export function value4FromJSON(
+  jsonString: string,
+): SafeParseResult<Value4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Value4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Value4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDataCacheValue$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Value4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+]);
+
+/** @internal */
+export type UpdateProjectDataCacheValue$Outbound =
+  | Value4$Outbound
+  | string
+  | number
+  | boolean;
+
+/** @internal */
+export const UpdateProjectDataCacheValue$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheValue$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheValue
+> = z.union([
+  z.lazy(() => Value4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheValue$ {
+  /** @deprecated use `UpdateProjectDataCacheValue$inboundSchema` instead. */
+  export const inboundSchema = UpdateProjectDataCacheValue$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheValue$outboundSchema` instead. */
+  export const outboundSchema = UpdateProjectDataCacheValue$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheValue$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheValue$Outbound;
+}
+
+export function updateProjectDataCacheValueToJSON(
+  updateProjectDataCacheValue: UpdateProjectDataCacheValue,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheValue$outboundSchema.parse(
+      updateProjectDataCacheValue,
+    ),
+  );
+}
+
+export function updateProjectDataCacheValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDataCacheValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectDataCacheValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectDataCacheDismissedToasts$inboundSchema: z.ZodType<
+  UpdateProjectDataCacheDismissedToasts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  dismissedAt: z.number(),
+  action: UpdateProjectDataCacheAction$inboundSchema,
+  value: z.nullable(
+    z.union([
+      z.lazy(() => Value4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+    ]),
+  ),
+});
+
+/** @internal */
+export type UpdateProjectDataCacheDismissedToasts$Outbound = {
+  key: string;
+  dismissedAt: number;
+  action: string;
+  value: Value4$Outbound | string | number | boolean | null;
+};
+
+/** @internal */
+export const UpdateProjectDataCacheDismissedToasts$outboundSchema: z.ZodType<
+  UpdateProjectDataCacheDismissedToasts$Outbound,
+  z.ZodTypeDef,
+  UpdateProjectDataCacheDismissedToasts
+> = z.object({
+  key: z.string(),
+  dismissedAt: z.number(),
+  action: UpdateProjectDataCacheAction$outboundSchema,
+  value: z.nullable(
+    z.union([
+      z.lazy(() => Value4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+    ]),
+  ),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UpdateProjectDataCacheDismissedToasts$ {
+  /** @deprecated use `UpdateProjectDataCacheDismissedToasts$inboundSchema` instead. */
+  export const inboundSchema =
+    UpdateProjectDataCacheDismissedToasts$inboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheDismissedToasts$outboundSchema` instead. */
+  export const outboundSchema =
+    UpdateProjectDataCacheDismissedToasts$outboundSchema;
+  /** @deprecated use `UpdateProjectDataCacheDismissedToasts$Outbound` instead. */
+  export type Outbound = UpdateProjectDataCacheDismissedToasts$Outbound;
+}
+
+export function updateProjectDataCacheDismissedToastsToJSON(
+  updateProjectDataCacheDismissedToasts: UpdateProjectDataCacheDismissedToasts,
+): string {
+  return JSON.stringify(
+    UpdateProjectDataCacheDismissedToasts$outboundSchema.parse(
+      updateProjectDataCacheDismissedToasts,
+    ),
+  );
+}
+
+export function updateProjectDataCacheDismissedToastsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectDataCacheDismissedToasts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateProjectDataCacheDismissedToasts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectDataCacheDismissedToasts' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   UpdateProjectDataCacheResponseBody,
   z.ZodTypeDef,
@@ -13483,6 +13851,8 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
+  staticIps: z.lazy(() => UpdateProjectDataCacheStaticIps$inboundSchema)
+    .optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
@@ -13497,7 +13867,8 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
   live: z.boolean().optional(),
   enablePreviewFeedback: z.nullable(z.boolean()).optional(),
   enableProductionFeedback: z.nullable(z.boolean()).optional(),
-  permissions: z.lazy(() => Permissions$inboundSchema).optional(),
+  permissions: z.lazy(() => UpdateProjectDataCachePermissions$inboundSchema)
+    .optional(),
   lastRollbackTarget: z.nullable(z.lazy(() => LastRollbackTarget$inboundSchema))
     .optional(),
   lastAliasRequest: z.nullable(z.lazy(() => LastAliasRequest$inboundSchema))
@@ -13535,6 +13906,9 @@ export const UpdateProjectDataCacheResponseBody$inboundSchema: z.ZodType<
       z.lazy(() => InternalRoutes1$inboundSchema),
       z.lazy(() => InternalRoutes2$inboundSchema),
     ]),
+  ).optional(),
+  dismissedToasts: z.array(
+    z.lazy(() => UpdateProjectDataCacheDismissedToasts$inboundSchema),
   ).optional(),
 });
 
@@ -13605,6 +13979,7 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   skewProtectionBoundaryAt?: number | undefined;
   skewProtectionMaxAge?: number | undefined;
   skipGitConnectDuringLink?: boolean | undefined;
+  staticIps?: UpdateProjectDataCacheStaticIps$Outbound | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   enableAffectedProjectsDeployments?: boolean | undefined;
   ssoProtection?:
@@ -13620,7 +13995,7 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   live?: boolean | undefined;
   enablePreviewFeedback?: boolean | null | undefined;
   enableProductionFeedback?: boolean | null | undefined;
-  permissions?: Permissions$Outbound | undefined;
+  permissions?: UpdateProjectDataCachePermissions$Outbound | undefined;
   lastRollbackTarget?: LastRollbackTarget$Outbound | null | undefined;
   lastAliasRequest?: LastAliasRequest$Outbound | null | undefined;
   protectionBypass?: {
@@ -13641,6 +14016,9 @@ export type UpdateProjectDataCacheResponseBody$Outbound = {
   abuse?: UpdateProjectDataCacheAbuse$Outbound | undefined;
   internalRoutes?:
     | Array<InternalRoutes1$Outbound | InternalRoutes2$Outbound>
+    | undefined;
+  dismissedToasts?:
+    | Array<UpdateProjectDataCacheDismissedToasts$Outbound>
     | undefined;
 };
 
@@ -13727,6 +14105,8 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   skewProtectionBoundaryAt: z.number().optional(),
   skewProtectionMaxAge: z.number().optional(),
   skipGitConnectDuringLink: z.boolean().optional(),
+  staticIps: z.lazy(() => UpdateProjectDataCacheStaticIps$outboundSchema)
+    .optional(),
   sourceFilesOutsideRootDirectory: z.boolean().optional(),
   enableAffectedProjectsDeployments: z.boolean().optional(),
   ssoProtection: z.nullable(
@@ -13742,7 +14122,8 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
   live: z.boolean().optional(),
   enablePreviewFeedback: z.nullable(z.boolean()).optional(),
   enableProductionFeedback: z.nullable(z.boolean()).optional(),
-  permissions: z.lazy(() => Permissions$outboundSchema).optional(),
+  permissions: z.lazy(() => UpdateProjectDataCachePermissions$outboundSchema)
+    .optional(),
   lastRollbackTarget: z.nullable(
     z.lazy(() => LastRollbackTarget$outboundSchema),
   ).optional(),
@@ -13782,6 +14163,9 @@ export const UpdateProjectDataCacheResponseBody$outboundSchema: z.ZodType<
       z.lazy(() => InternalRoutes1$outboundSchema),
       z.lazy(() => InternalRoutes2$outboundSchema),
     ]),
+  ).optional(),
+  dismissedToasts: z.array(
+    z.lazy(() => UpdateProjectDataCacheDismissedToasts$outboundSchema),
   ).optional(),
 });
 

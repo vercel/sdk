@@ -15,6 +15,7 @@ let value: OidcTokenClaims = {
   project: "<value>",
   projectId: "<id>",
   environment: "<value>",
+  plan: "<value>",
 };
 ```
 
@@ -31,3 +32,4 @@ let value: OidcTokenClaims = {
 | `project`          | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `environment`      | *string*           | :heavy_check_mark: | N/A                |
+| `plan`             | *string*           | :heavy_check_mark: | N/A                |

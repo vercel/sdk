@@ -17,6 +17,9 @@ let value: OneHundredAndSixtyThree = {
   },
   peering: {
     id: "<id>",
+    accountId: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
 };
 ```
@@ -27,4 +30,4 @@ let value: OneHundredAndSixtyThree = {
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `team`                                                                                   | [models.UserEventPayload163Team](../models/usereventpayload163team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `configuration`                                                                          | [models.UserEventPayload163Configuration](../models/usereventpayload163configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

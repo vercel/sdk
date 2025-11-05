@@ -259,6 +259,7 @@ const (
 	CreateProjectFrameworkRequestZola           CreateProjectFrameworkRequest = "zola"
 	CreateProjectFrameworkRequestHydrogen       CreateProjectFrameworkRequest = "hydrogen"
 	CreateProjectFrameworkRequestVite           CreateProjectFrameworkRequest = "vite"
+	CreateProjectFrameworkRequestTanstackStart  CreateProjectFrameworkRequest = "tanstack-start"
 	CreateProjectFrameworkRequestVitepress      CreateProjectFrameworkRequest = "vitepress"
 	CreateProjectFrameworkRequestVuepress       CreateProjectFrameworkRequest = "vuepress"
 	CreateProjectFrameworkRequestParcel         CreateProjectFrameworkRequest = "parcel"
@@ -273,6 +274,7 @@ const (
 	CreateProjectFrameworkRequestExpress        CreateProjectFrameworkRequest = "express"
 	CreateProjectFrameworkRequestH3             CreateProjectFrameworkRequest = "h3"
 	CreateProjectFrameworkRequestNestjs         CreateProjectFrameworkRequest = "nestjs"
+	CreateProjectFrameworkRequestElysia         CreateProjectFrameworkRequest = "elysia"
 	CreateProjectFrameworkRequestFastify        CreateProjectFrameworkRequest = "fastify"
 	CreateProjectFrameworkRequestXmcp           CreateProjectFrameworkRequest = "xmcp"
 )
@@ -364,6 +366,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -391,6 +395,8 @@ func (e *CreateProjectFrameworkRequest) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -3219,6 +3225,7 @@ const (
 	CreateProjectFrameworkResponseBodyZola           CreateProjectFrameworkResponseBody = "zola"
 	CreateProjectFrameworkResponseBodyHydrogen       CreateProjectFrameworkResponseBody = "hydrogen"
 	CreateProjectFrameworkResponseBodyVite           CreateProjectFrameworkResponseBody = "vite"
+	CreateProjectFrameworkResponseBodyTanstackStart  CreateProjectFrameworkResponseBody = "tanstack-start"
 	CreateProjectFrameworkResponseBodyVitepress      CreateProjectFrameworkResponseBody = "vitepress"
 	CreateProjectFrameworkResponseBodyVuepress       CreateProjectFrameworkResponseBody = "vuepress"
 	CreateProjectFrameworkResponseBodyParcel         CreateProjectFrameworkResponseBody = "parcel"
@@ -3233,6 +3240,7 @@ const (
 	CreateProjectFrameworkResponseBodyExpress        CreateProjectFrameworkResponseBody = "express"
 	CreateProjectFrameworkResponseBodyH3             CreateProjectFrameworkResponseBody = "h3"
 	CreateProjectFrameworkResponseBodyNestjs         CreateProjectFrameworkResponseBody = "nestjs"
+	CreateProjectFrameworkResponseBodyElysia         CreateProjectFrameworkResponseBody = "elysia"
 	CreateProjectFrameworkResponseBodyFastify        CreateProjectFrameworkResponseBody = "fastify"
 	CreateProjectFrameworkResponseBodyXmcp           CreateProjectFrameworkResponseBody = "xmcp"
 )
@@ -3324,6 +3332,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -3351,6 +3361,8 @@ func (e *CreateProjectFrameworkResponseBody) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -4734,9 +4746,10 @@ func (u CreateProjectLinkUnion) MarshalJSON() ([]byte, error) {
 }
 
 type CreateProjectMicrofrontends3 struct {
-	UpdatedAt float64 `json:"updatedAt"`
-	GroupIds  []any   `json:"groupIds"`
-	Enabled   bool    `json:"enabled"`
+	UpdatedAt                  float64 `json:"updatedAt"`
+	GroupIds                   []any   `json:"groupIds"`
+	Enabled                    bool    `json:"enabled"`
+	FreeProjectForLegacyLimits *bool   `json:"freeProjectForLegacyLimits,omitempty"`
 }
 
 func (c CreateProjectMicrofrontends3) MarshalJSON() ([]byte, error) {
@@ -4771,6 +4784,13 @@ func (o *CreateProjectMicrofrontends3) GetEnabled() bool {
 	return o.Enabled
 }
 
+func (o *CreateProjectMicrofrontends3) GetFreeProjectForLegacyLimits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FreeProjectForLegacyLimits
+}
+
 type CreateProjectMicrofrontends2 struct {
 	IsDefaultApp *bool `json:"isDefaultApp,omitempty"`
 	// Whether observability data should be routed to this microfrontend project or a root project.
@@ -4785,6 +4805,8 @@ type CreateProjectMicrofrontends2 struct {
 	Enabled bool `json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
+	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+	FreeProjectForLegacyLimits *bool `json:"freeProjectForLegacyLimits,omitempty"`
 }
 
 func (c CreateProjectMicrofrontends2) MarshalJSON() ([]byte, error) {
@@ -4847,6 +4869,13 @@ func (o *CreateProjectMicrofrontends2) GetDefaultRoute() *string {
 	return o.DefaultRoute
 }
 
+func (o *CreateProjectMicrofrontends2) GetFreeProjectForLegacyLimits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FreeProjectForLegacyLimits
+}
+
 type CreateProjectMicrofrontends1 struct {
 	IsDefaultApp bool `json:"isDefaultApp"`
 	// Timestamp when the microfrontends settings were last updated.
@@ -4857,6 +4886,8 @@ type CreateProjectMicrofrontends1 struct {
 	Enabled bool `json:"enabled"`
 	// A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs`
 	DefaultRoute *string `json:"defaultRoute,omitempty"`
+	// Whether the project was part of the legacy limits for hobby and pro-trial before billing was added. This field is only set when the team is upgraded to a paid plan and we are backfilling the subscription status. We cap the subscription to 2 projects and set this field for the 3rd project. When this field is set, the project is not charged for and we do not call any billing APIs for this project.
+	FreeProjectForLegacyLimits *bool `json:"freeProjectForLegacyLimits,omitempty"`
 }
 
 func (c CreateProjectMicrofrontends1) MarshalJSON() ([]byte, error) {
@@ -4903,6 +4934,13 @@ func (o *CreateProjectMicrofrontends1) GetDefaultRoute() *string {
 		return nil
 	}
 	return o.DefaultRoute
+}
+
+func (o *CreateProjectMicrofrontends1) GetFreeProjectForLegacyLimits() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FreeProjectForLegacyLimits
 }
 
 type CreateProjectMicrofrontendsUnionType string
@@ -4993,6 +5031,7 @@ func (u CreateProjectMicrofrontendsUnion) MarshalJSON() ([]byte, error) {
 type CreateProjectNodeVersion string
 
 const (
+	CreateProjectNodeVersionTwentyFourDotX CreateProjectNodeVersion = "24.x"
 	CreateProjectNodeVersionTwentyTwoDotX  CreateProjectNodeVersion = "22.x"
 	CreateProjectNodeVersionTwentyDotX     CreateProjectNodeVersion = "20.x"
 	CreateProjectNodeVersionEighteenDotX   CreateProjectNodeVersion = "18.x"
@@ -5012,6 +5051,8 @@ func (e *CreateProjectNodeVersion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -5414,6 +5455,33 @@ func (o *CreateProjectDefaultResourceConfig) GetIsNSNBDisabled() *bool {
 	return o.IsNSNBDisabled
 }
 
+type CreateProjectStaticIps struct {
+	Builds  bool     `json:"builds"`
+	Enabled bool     `json:"enabled"`
+	Regions []string `json:"regions"`
+}
+
+func (o *CreateProjectStaticIps) GetBuilds() bool {
+	if o == nil {
+		return false
+	}
+	return o.Builds
+}
+
+func (o *CreateProjectStaticIps) GetEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.Enabled
+}
+
+func (o *CreateProjectStaticIps) GetRegions() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Regions
+}
+
 type CreateProjectSsoProtectionDeploymentTypeResponse string
 
 const (
@@ -5731,6 +5799,7 @@ type CreateProjectOidcTokenClaims struct {
 	Project     string `json:"project"`
 	ProjectID   string `json:"project_id"`
 	Environment string `json:"environment"`
+	Plan        string `json:"plan"`
 }
 
 func (o *CreateProjectOidcTokenClaims) GetIss() string {
@@ -5794,6 +5863,13 @@ func (o *CreateProjectOidcTokenClaims) GetEnvironment() string {
 		return ""
 	}
 	return o.Environment
+}
+
+func (o *CreateProjectOidcTokenClaims) GetPlan() string {
+	if o == nil {
+		return ""
+	}
+	return o.Plan
 }
 
 type CreateProjectPlan string
@@ -6315,6 +6391,7 @@ type CreateProjectPermissions struct {
 	ObservabilityNotebook                    []components.ACLAction `json:"observabilityNotebook,omitempty"`
 	OpenTelemetryEndpoint                    []components.ACLAction `json:"openTelemetryEndpoint,omitempty"`
 	OwnEvent                                 []components.ACLAction `json:"ownEvent,omitempty"`
+	OrganizationDomain                       []components.ACLAction `json:"organizationDomain,omitempty"`
 	PasswordProtectionInvoiceItem            []components.ACLAction `json:"passwordProtectionInvoiceItem,omitempty"`
 	PaymentMethod                            []components.ACLAction `json:"paymentMethod,omitempty"`
 	Permissions                              []components.ACLAction `json:"permissions,omitempty"`
@@ -7173,6 +7250,13 @@ func (o *CreateProjectPermissions) GetOwnEvent() []components.ACLAction {
 		return nil
 	}
 	return o.OwnEvent
+}
+
+func (o *CreateProjectPermissions) GetOrganizationDomain() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationDomain
 }
 
 func (o *CreateProjectPermissions) GetPasswordProtectionInvoiceItem() []components.ACLAction {
@@ -10451,91 +10535,13 @@ func (u CreateProjectBlockHistoryUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateProjectBlockHistoryUnion: all fields are null")
 }
 
-type CreateProjectInterstitialHistoryAction string
-
-const (
-	CreateProjectInterstitialHistoryActionAddInterstitial    CreateProjectInterstitialHistoryAction = "add-interstitial"
-	CreateProjectInterstitialHistoryActionRemoveInterstitial CreateProjectInterstitialHistoryAction = "remove-interstitial"
-)
-
-func (e CreateProjectInterstitialHistoryAction) ToPointer() *CreateProjectInterstitialHistoryAction {
-	return &e
-}
-func (e *CreateProjectInterstitialHistoryAction) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "add-interstitial":
-		fallthrough
-	case "remove-interstitial":
-		*e = CreateProjectInterstitialHistoryAction(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateProjectInterstitialHistoryAction: %v", v)
-	}
-}
-
-type CreateProjectInterstitialHistory struct {
-	Action    CreateProjectInterstitialHistoryAction `json:"action"`
-	CreatedAt float64                                `json:"createdAt"`
-	CaseID    *string                                `json:"caseId,omitempty"`
-	Reason    *string                                `json:"reason,omitempty"`
-	Actor     *string                                `json:"actor,omitempty"`
-	Comment   *string                                `json:"comment,omitempty"`
-}
-
-func (o *CreateProjectInterstitialHistory) GetAction() CreateProjectInterstitialHistoryAction {
-	if o == nil {
-		return CreateProjectInterstitialHistoryAction("")
-	}
-	return o.Action
-}
-
-func (o *CreateProjectInterstitialHistory) GetCreatedAt() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.CreatedAt
-}
-
-func (o *CreateProjectInterstitialHistory) GetCaseID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CaseID
-}
-
-func (o *CreateProjectInterstitialHistory) GetReason() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Reason
-}
-
-func (o *CreateProjectInterstitialHistory) GetActor() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Actor
-}
-
-func (o *CreateProjectInterstitialHistory) GetComment() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Comment
-}
-
 type CreateProjectAbuse struct {
-	Scanner             *string                            `json:"scanner,omitempty"`
-	History             []CreateProjectHistory             `json:"history"`
-	UpdatedAt           float64                            `json:"updatedAt"`
-	Block               *CreateProjectBlock                `json:"block,omitempty"`
-	BlockHistory        []CreateProjectBlockHistoryUnion   `json:"blockHistory,omitempty"`
-	Interstitial        *bool                              `json:"interstitial,omitempty"`
-	InterstitialHistory []CreateProjectInterstitialHistory `json:"interstitialHistory,omitempty"`
+	Scanner      *string                          `json:"scanner,omitempty"`
+	History      []CreateProjectHistory           `json:"history"`
+	UpdatedAt    float64                          `json:"updatedAt"`
+	Block        *CreateProjectBlock              `json:"block,omitempty"`
+	BlockHistory []CreateProjectBlockHistoryUnion `json:"blockHistory,omitempty"`
+	Interstitial *bool                            `json:"interstitial,omitempty"`
 }
 
 func (o *CreateProjectAbuse) GetScanner() *string {
@@ -10578,13 +10584,6 @@ func (o *CreateProjectAbuse) GetInterstitial() *bool {
 		return nil
 	}
 	return o.Interstitial
-}
-
-func (o *CreateProjectAbuse) GetInterstitialHistory() []CreateProjectInterstitialHistory {
-	if o == nil {
-		return nil
-	}
-	return o.InterstitialHistory
 }
 
 type CreateProjectInternalRouteTypeHost string
@@ -11007,6 +11006,377 @@ func (u CreateProjectInternalRouteUnion) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type CreateProjectInternalRouteUnion: all fields are null")
 }
 
+type CreateProjectDismissedToastAction string
+
+const (
+	CreateProjectDismissedToastActionCancel CreateProjectDismissedToastAction = "cancel"
+	CreateProjectDismissedToastActionAccept CreateProjectDismissedToastAction = "accept"
+	CreateProjectDismissedToastActionDelete CreateProjectDismissedToastAction = "delete"
+)
+
+func (e CreateProjectDismissedToastAction) ToPointer() *CreateProjectDismissedToastAction {
+	return &e
+}
+func (e *CreateProjectDismissedToastAction) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "cancel":
+		fallthrough
+	case "accept":
+		fallthrough
+	case "delete":
+		*e = CreateProjectDismissedToastAction(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateProjectDismissedToastAction: %v", v)
+	}
+}
+
+type CreateProjectPreviousValueType string
+
+const (
+	CreateProjectPreviousValueTypeStr     CreateProjectPreviousValueType = "str"
+	CreateProjectPreviousValueTypeNumber  CreateProjectPreviousValueType = "number"
+	CreateProjectPreviousValueTypeBoolean CreateProjectPreviousValueType = "boolean"
+)
+
+type CreateProjectPreviousValue struct {
+	Str     *string  `queryParam:"inline"`
+	Number  *float64 `queryParam:"inline"`
+	Boolean *bool    `queryParam:"inline"`
+
+	Type CreateProjectPreviousValueType
+}
+
+func CreateCreateProjectPreviousValueStr(str string) CreateProjectPreviousValue {
+	typ := CreateProjectPreviousValueTypeStr
+
+	return CreateProjectPreviousValue{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateProjectPreviousValueNumber(number float64) CreateProjectPreviousValue {
+	typ := CreateProjectPreviousValueTypeNumber
+
+	return CreateProjectPreviousValue{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateCreateProjectPreviousValueBoolean(boolean bool) CreateProjectPreviousValue {
+	typ := CreateProjectPreviousValueTypeBoolean
+
+	return CreateProjectPreviousValue{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func (u *CreateProjectPreviousValue) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateProjectPreviousValueTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CreateProjectPreviousValueTypeNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateProjectPreviousValueTypeBoolean
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectPreviousValue", string(data))
+}
+
+func (u CreateProjectPreviousValue) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectPreviousValue: all fields are null")
+}
+
+type CreateProjectCurrentValueType string
+
+const (
+	CreateProjectCurrentValueTypeStr     CreateProjectCurrentValueType = "str"
+	CreateProjectCurrentValueTypeNumber  CreateProjectCurrentValueType = "number"
+	CreateProjectCurrentValueTypeBoolean CreateProjectCurrentValueType = "boolean"
+)
+
+type CreateProjectCurrentValue struct {
+	Str     *string  `queryParam:"inline"`
+	Number  *float64 `queryParam:"inline"`
+	Boolean *bool    `queryParam:"inline"`
+
+	Type CreateProjectCurrentValueType
+}
+
+func CreateCreateProjectCurrentValueStr(str string) CreateProjectCurrentValue {
+	typ := CreateProjectCurrentValueTypeStr
+
+	return CreateProjectCurrentValue{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateProjectCurrentValueNumber(number float64) CreateProjectCurrentValue {
+	typ := CreateProjectCurrentValueTypeNumber
+
+	return CreateProjectCurrentValue{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateCreateProjectCurrentValueBoolean(boolean bool) CreateProjectCurrentValue {
+	typ := CreateProjectCurrentValueTypeBoolean
+
+	return CreateProjectCurrentValue{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func (u *CreateProjectCurrentValue) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateProjectCurrentValueTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CreateProjectCurrentValueTypeNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateProjectCurrentValueTypeBoolean
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectCurrentValue", string(data))
+}
+
+func (u CreateProjectCurrentValue) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectCurrentValue: all fields are null")
+}
+
+type CreateProjectValueDismissedToast struct {
+	PreviousValue CreateProjectPreviousValue `json:"previousValue"`
+	CurrentValue  CreateProjectCurrentValue  `json:"currentValue"`
+}
+
+func (c CreateProjectValueDismissedToast) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateProjectValueDismissedToast) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"previousValue", "currentValue"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateProjectValueDismissedToast) GetPreviousValue() CreateProjectPreviousValue {
+	if o == nil {
+		return CreateProjectPreviousValue{}
+	}
+	return o.PreviousValue
+}
+
+func (o *CreateProjectValueDismissedToast) GetCurrentValue() CreateProjectCurrentValue {
+	if o == nil {
+		return CreateProjectCurrentValue{}
+	}
+	return o.CurrentValue
+}
+
+type CreateProjectValueUnionType string
+
+const (
+	CreateProjectValueUnionTypeStr                              CreateProjectValueUnionType = "str"
+	CreateProjectValueUnionTypeNumber                           CreateProjectValueUnionType = "number"
+	CreateProjectValueUnionTypeBoolean                          CreateProjectValueUnionType = "boolean"
+	CreateProjectValueUnionTypeCreateProjectValueDismissedToast CreateProjectValueUnionType = "createProject_value_dismissedToast"
+)
+
+type CreateProjectValueUnion struct {
+	Str                              *string                           `queryParam:"inline"`
+	Number                           *float64                          `queryParam:"inline"`
+	Boolean                          *bool                             `queryParam:"inline"`
+	CreateProjectValueDismissedToast *CreateProjectValueDismissedToast `queryParam:"inline"`
+
+	Type CreateProjectValueUnionType
+}
+
+func CreateCreateProjectValueUnionStr(str string) CreateProjectValueUnion {
+	typ := CreateProjectValueUnionTypeStr
+
+	return CreateProjectValueUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateCreateProjectValueUnionNumber(number float64) CreateProjectValueUnion {
+	typ := CreateProjectValueUnionTypeNumber
+
+	return CreateProjectValueUnion{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func CreateCreateProjectValueUnionBoolean(boolean bool) CreateProjectValueUnion {
+	typ := CreateProjectValueUnionTypeBoolean
+
+	return CreateProjectValueUnion{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateCreateProjectValueUnionCreateProjectValueDismissedToast(createProjectValueDismissedToast CreateProjectValueDismissedToast) CreateProjectValueUnion {
+	typ := CreateProjectValueUnionTypeCreateProjectValueDismissedToast
+
+	return CreateProjectValueUnion{
+		CreateProjectValueDismissedToast: &createProjectValueDismissedToast,
+		Type:                             typ,
+	}
+}
+
+func (u *CreateProjectValueUnion) UnmarshalJSON(data []byte) error {
+
+	var createProjectValueDismissedToast CreateProjectValueDismissedToast = CreateProjectValueDismissedToast{}
+	if err := utils.UnmarshalJSON(data, &createProjectValueDismissedToast, "", true, nil); err == nil {
+		u.CreateProjectValueDismissedToast = &createProjectValueDismissedToast
+		u.Type = CreateProjectValueUnionTypeCreateProjectValueDismissedToast
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = CreateProjectValueUnionTypeStr
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = CreateProjectValueUnionTypeNumber
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = CreateProjectValueUnionTypeBoolean
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateProjectValueUnion", string(data))
+}
+
+func (u CreateProjectValueUnion) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.CreateProjectValueDismissedToast != nil {
+		return utils.MarshalJSON(u.CreateProjectValueDismissedToast, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreateProjectValueUnion: all fields are null")
+}
+
+type CreateProjectDismissedToast struct {
+	Key         string                            `json:"key"`
+	DismissedAt float64                           `json:"dismissedAt"`
+	Action      CreateProjectDismissedToastAction `json:"action"`
+	Value       *CreateProjectValueUnion          `json:"value"`
+}
+
+func (o *CreateProjectDismissedToast) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *CreateProjectDismissedToast) GetDismissedAt() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DismissedAt
+}
+
+func (o *CreateProjectDismissedToast) GetAction() CreateProjectDismissedToastAction {
+	if o == nil {
+		return CreateProjectDismissedToastAction("")
+	}
+	return o.Action
+}
+
+func (o *CreateProjectDismissedToast) GetValue() *CreateProjectValueUnion {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
 // CreateProjectResponseBody - The project was successfuly created
 type CreateProjectResponseBody struct {
 	AccountID                        string                              `json:"accountId"`
@@ -11058,6 +11428,7 @@ type CreateProjectResponseBody struct {
 	SkewProtectionBoundaryAt             *float64                                      `json:"skewProtectionBoundaryAt,omitempty"`
 	SkewProtectionMaxAge                 *float64                                      `json:"skewProtectionMaxAge,omitempty"`
 	SkipGitConnectDuringLink             *bool                                         `json:"skipGitConnectDuringLink,omitempty"`
+	StaticIps                            *CreateProjectStaticIps                       `json:"staticIps,omitempty"`
 	SourceFilesOutsideRootDirectory      *bool                                         `json:"sourceFilesOutsideRootDirectory,omitempty"`
 	EnableAffectedProjectsDeployments    *bool                                         `json:"enableAffectedProjectsDeployments,omitempty"`
 	SsoProtection                        *CreateProjectSsoProtectionResponse           `json:"ssoProtection,omitempty"`
@@ -11088,6 +11459,7 @@ type CreateProjectResponseBody struct {
 	V0                                   *bool                                         `json:"v0,omitempty"`
 	Abuse                                *CreateProjectAbuse                           `json:"abuse,omitempty"`
 	InternalRoutes                       []CreateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
+	DismissedToasts                      []CreateProjectDismissedToast                 `json:"dismissedToasts,omitempty"`
 }
 
 func (o *CreateProjectResponseBody) GetAccountID() string {
@@ -11412,6 +11784,13 @@ func (o *CreateProjectResponseBody) GetSkipGitConnectDuringLink() *bool {
 	return o.SkipGitConnectDuringLink
 }
 
+func (o *CreateProjectResponseBody) GetStaticIps() *CreateProjectStaticIps {
+	if o == nil {
+		return nil
+	}
+	return o.StaticIps
+}
+
 func (o *CreateProjectResponseBody) GetSourceFilesOutsideRootDirectory() *bool {
 	if o == nil {
 		return nil
@@ -11620,6 +11999,13 @@ func (o *CreateProjectResponseBody) GetInternalRoutes() []CreateProjectInternalR
 		return nil
 	}
 	return o.InternalRoutes
+}
+
+func (o *CreateProjectResponseBody) GetDismissedToasts() []CreateProjectDismissedToast {
+	if o == nil {
+		return nil
+	}
+	return o.DismissedToasts
 }
 
 type CreateProjectResponse struct {

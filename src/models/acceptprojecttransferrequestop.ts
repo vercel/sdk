@@ -78,6 +78,7 @@ export type ResourceTransferErrors = {};
 export type AcceptProjectTransferRequestResponseBody1 = {
   partnerCalls: Array<PartnerCalls>;
   resourceTransferErrors: Array<ResourceTransferErrors>;
+  transferredStoreIds: Array<string>;
 };
 
 /**
@@ -709,12 +710,14 @@ export const AcceptProjectTransferRequestResponseBody1$inboundSchema: z.ZodType<
   resourceTransferErrors: z.array(
     z.lazy(() => ResourceTransferErrors$inboundSchema),
   ),
+  transferredStoreIds: z.array(z.string()),
 });
 
 /** @internal */
 export type AcceptProjectTransferRequestResponseBody1$Outbound = {
   partnerCalls: Array<PartnerCalls$Outbound>;
   resourceTransferErrors: Array<ResourceTransferErrors$Outbound>;
+  transferredStoreIds: Array<string>;
 };
 
 /** @internal */
@@ -728,6 +731,7 @@ export const AcceptProjectTransferRequestResponseBody1$outboundSchema:
     resourceTransferErrors: z.array(
       z.lazy(() => ResourceTransferErrors$outboundSchema),
     ),
+    transferredStoreIds: z.array(z.string()),
   });
 
 /**

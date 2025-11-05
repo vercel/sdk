@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
   EdgeConfigItemValue,
@@ -28,6 +29,16 @@ export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExper
       | undefined;
   };
 
+export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose =
+  {
+    Experimentation: "experimentation",
+    Flags: "flags",
+  } as const;
+export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose =
+  ClosedEnum<
+    typeof PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+  >;
+
 /**
  * The Edge Config was updated
  */
@@ -36,6 +47,9 @@ export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExper
     items: { [k: string]: EdgeConfigItemValue | null };
     updatedAt: number;
     digest: string;
+    purpose?:
+      | PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+      | undefined;
   };
 
 /** @internal */
@@ -197,6 +211,34 @@ export function putV1InstallationsIntegrationConfigurationIdResourcesResourceIdE
 }
 
 /** @internal */
+export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+  > = z.nativeEnum(
+    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose,
+  );
+
+/** @internal */
+export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+  > =
+    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$ {
+  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema` instead. */
+  export const inboundSchema =
+    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
+  /** @deprecated use `PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema` instead. */
+  export const outboundSchema =
+    PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema;
+}
+
+/** @internal */
 export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema:
   z.ZodType<
     PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
@@ -206,6 +248,9 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     items: z.record(z.nullable(EdgeConfigItemValue$inboundSchema)),
     updatedAt: z.number(),
     digest: z.string(),
+    purpose:
+      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema
+        .optional(),
   });
 
 /** @internal */
@@ -214,6 +259,7 @@ export type PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExper
     items: { [k: string]: EdgeConfigItemValue$Outbound | null };
     updatedAt: number;
     digest: string;
+    purpose?: string | undefined;
   };
 
 /** @internal */
@@ -226,6 +272,9 @@ export const PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     items: z.record(z.nullable(EdgeConfigItemValue$outboundSchema)),
     updatedAt: z.number(),
     digest: z.string(),
+    purpose:
+      PutV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema
+        .optional(),
   });
 
 /**

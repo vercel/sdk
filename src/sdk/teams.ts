@@ -38,10 +38,8 @@ import {
 } from "../models/getteammembersop.js";
 import { GetTeamRequest } from "../models/getteamop.js";
 import { GetTeamsRequest, GetTeamsResponseBody } from "../models/getteamsop.js";
-import {
-  InviteUserToTeamRequest,
-  InviteUserToTeamResponseBody,
-} from "../models/inviteusertoteamop.js";
+import { InvitedTeamMember } from "../models/invitedteammember.js";
+import { InviteUserToTeamRequestBody } from "../models/inviteusertoteamop.js";
 import { JoinTeamRequest, JoinTeamResponseBody } from "../models/jointeamop.js";
 import { PatchTeamRequest } from "../models/patchteamop.js";
 import {
@@ -84,9 +82,9 @@ export class Teams extends ClientSDK {
    * Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.
    */
   async inviteUserToTeam(
-    request: InviteUserToTeamRequest,
+    request?: Array<InviteUserToTeamRequestBody> | undefined,
     options?: RequestOptions,
-  ): Promise<InviteUserToTeamResponseBody> {
+  ): Promise<InvitedTeamMember> {
     return unwrapAsync(teamsInviteUserToTeam(
       this,
       request,

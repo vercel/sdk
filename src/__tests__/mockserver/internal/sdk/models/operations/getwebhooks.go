@@ -404,6 +404,7 @@ const (
 	GetWebhooksFrameworkZola           GetWebhooksFramework = "zola"
 	GetWebhooksFrameworkHydrogen       GetWebhooksFramework = "hydrogen"
 	GetWebhooksFrameworkVite           GetWebhooksFramework = "vite"
+	GetWebhooksFrameworkTanstackStart  GetWebhooksFramework = "tanstack-start"
 	GetWebhooksFrameworkVitepress      GetWebhooksFramework = "vitepress"
 	GetWebhooksFrameworkVuepress       GetWebhooksFramework = "vuepress"
 	GetWebhooksFrameworkParcel         GetWebhooksFramework = "parcel"
@@ -418,6 +419,7 @@ const (
 	GetWebhooksFrameworkExpress        GetWebhooksFramework = "express"
 	GetWebhooksFrameworkH3             GetWebhooksFramework = "h3"
 	GetWebhooksFrameworkNestjs         GetWebhooksFramework = "nestjs"
+	GetWebhooksFrameworkElysia         GetWebhooksFramework = "elysia"
 	GetWebhooksFrameworkFastify        GetWebhooksFramework = "fastify"
 	GetWebhooksFrameworkXmcp           GetWebhooksFramework = "xmcp"
 )
@@ -509,6 +511,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -536,6 +540,8 @@ func (e *GetWebhooksFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough

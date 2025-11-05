@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
   EdgeConfigItemValue,
@@ -19,6 +20,16 @@ export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     resourceId: string;
   };
 
+export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose =
+  {
+    Flags: "flags",
+    Experimentation: "experimentation",
+  } as const;
+export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose =
+  ClosedEnum<
+    typeof HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+  >;
+
 /**
  * The Edge Config data
  */
@@ -27,6 +38,9 @@ export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     items: { [k: string]: EdgeConfigItemValue | null };
     updatedAt: number;
     digest: string;
+    purpose?:
+      | HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+      | undefined;
   };
 
 /** @internal */
@@ -102,6 +116,34 @@ export function headV1InstallationsIntegrationConfigurationIdResourcesResourceId
 }
 
 /** @internal */
+export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema:
+  z.ZodNativeEnum<
+    typeof HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+  > = z.nativeEnum(
+    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose,
+  );
+
+/** @internal */
+export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema:
+  z.ZodNativeEnum<
+    typeof HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
+  > =
+    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$ {
+  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema` instead. */
+  export const inboundSchema =
+    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
+  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema` instead. */
+  export const outboundSchema =
+    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema;
+}
+
+/** @internal */
 export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema:
   z.ZodType<
     HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
@@ -111,6 +153,9 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     items: z.record(z.nullable(EdgeConfigItemValue$inboundSchema)),
     updatedAt: z.number(),
     digest: z.string(),
+    purpose:
+      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema
+        .optional(),
   });
 
 /** @internal */
@@ -119,6 +164,7 @@ export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExpe
     items: { [k: string]: EdgeConfigItemValue$Outbound | null };
     updatedAt: number;
     digest: string;
+    purpose?: string | undefined;
   };
 
 /** @internal */
@@ -131,6 +177,9 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     items: z.record(z.nullable(EdgeConfigItemValue$outboundSchema)),
     updatedAt: z.number(),
     digest: z.string(),
+    purpose:
+      HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema
+        .optional(),
   });
 
 /**

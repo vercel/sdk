@@ -1262,6 +1262,7 @@ const (
 	CreateDeploymentFrameworkRequestZola           CreateDeploymentFrameworkRequest = "zola"
 	CreateDeploymentFrameworkRequestHydrogen       CreateDeploymentFrameworkRequest = "hydrogen"
 	CreateDeploymentFrameworkRequestVite           CreateDeploymentFrameworkRequest = "vite"
+	CreateDeploymentFrameworkRequestTanstackStart  CreateDeploymentFrameworkRequest = "tanstack-start"
 	CreateDeploymentFrameworkRequestVitepress      CreateDeploymentFrameworkRequest = "vitepress"
 	CreateDeploymentFrameworkRequestVuepress       CreateDeploymentFrameworkRequest = "vuepress"
 	CreateDeploymentFrameworkRequestParcel         CreateDeploymentFrameworkRequest = "parcel"
@@ -1276,6 +1277,7 @@ const (
 	CreateDeploymentFrameworkRequestExpress        CreateDeploymentFrameworkRequest = "express"
 	CreateDeploymentFrameworkRequestH3             CreateDeploymentFrameworkRequest = "h3"
 	CreateDeploymentFrameworkRequestNestjs         CreateDeploymentFrameworkRequest = "nestjs"
+	CreateDeploymentFrameworkRequestElysia         CreateDeploymentFrameworkRequest = "elysia"
 	CreateDeploymentFrameworkRequestFastify        CreateDeploymentFrameworkRequest = "fastify"
 	CreateDeploymentFrameworkRequestXmcp           CreateDeploymentFrameworkRequest = "xmcp"
 )
@@ -1367,6 +1369,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -1395,6 +1399,8 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "nestjs":
 		fallthrough
+	case "elysia":
+		fallthrough
 	case "fastify":
 		fallthrough
 	case "xmcp":
@@ -1409,6 +1415,7 @@ func (e *CreateDeploymentFrameworkRequest) UnmarshalJSON(data []byte) error {
 type CreateDeploymentNodeVersionRequest string
 
 const (
+	CreateDeploymentNodeVersionRequestTwentyFourDotX CreateDeploymentNodeVersionRequest = "24.x"
 	CreateDeploymentNodeVersionRequestTwentyTwoDotX  CreateDeploymentNodeVersionRequest = "22.x"
 	CreateDeploymentNodeVersionRequestTwentyDotX     CreateDeploymentNodeVersionRequest = "20.x"
 	CreateDeploymentNodeVersionRequestEighteenDotX   CreateDeploymentNodeVersionRequest = "18.x"
@@ -1428,6 +1435,8 @@ func (e *CreateDeploymentNodeVersionRequest) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -1855,6 +1864,7 @@ const (
 	CreateDeploymentFrameworkLambdasZola           CreateDeploymentFrameworkLambdas = "zola"
 	CreateDeploymentFrameworkLambdasHydrogen       CreateDeploymentFrameworkLambdas = "hydrogen"
 	CreateDeploymentFrameworkLambdasVite           CreateDeploymentFrameworkLambdas = "vite"
+	CreateDeploymentFrameworkLambdasTanstackStart  CreateDeploymentFrameworkLambdas = "tanstack-start"
 	CreateDeploymentFrameworkLambdasVitepress      CreateDeploymentFrameworkLambdas = "vitepress"
 	CreateDeploymentFrameworkLambdasVuepress       CreateDeploymentFrameworkLambdas = "vuepress"
 	CreateDeploymentFrameworkLambdasParcel         CreateDeploymentFrameworkLambdas = "parcel"
@@ -1869,6 +1879,7 @@ const (
 	CreateDeploymentFrameworkLambdasExpress        CreateDeploymentFrameworkLambdas = "express"
 	CreateDeploymentFrameworkLambdasH3             CreateDeploymentFrameworkLambdas = "h3"
 	CreateDeploymentFrameworkLambdasNestjs         CreateDeploymentFrameworkLambdas = "nestjs"
+	CreateDeploymentFrameworkLambdasElysia         CreateDeploymentFrameworkLambdas = "elysia"
 	CreateDeploymentFrameworkLambdasFastify        CreateDeploymentFrameworkLambdas = "fastify"
 	CreateDeploymentFrameworkLambdasXmcp           CreateDeploymentFrameworkLambdas = "xmcp"
 )
@@ -1960,6 +1971,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -1987,6 +2000,8 @@ func (e *CreateDeploymentFrameworkLambdas) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -5153,6 +5168,7 @@ func (u CreateDeploymentGitSourceLambdasUnion) MarshalJSON() ([]byte, error) {
 type CreateDeploymentNodeVersionLambdas string
 
 const (
+	CreateDeploymentNodeVersionLambdasTwentyFourDotX CreateDeploymentNodeVersionLambdas = "24.x"
 	CreateDeploymentNodeVersionLambdasTwentyTwoDotX  CreateDeploymentNodeVersionLambdas = "22.x"
 	CreateDeploymentNodeVersionLambdasTwentyDotX     CreateDeploymentNodeVersionLambdas = "20.x"
 	CreateDeploymentNodeVersionLambdasEighteenDotX   CreateDeploymentNodeVersionLambdas = "18.x"
@@ -5172,6 +5188,8 @@ func (e *CreateDeploymentNodeVersionLambdas) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -5334,6 +5352,7 @@ type CreateDeploymentOidcTokenClaims struct {
 	Project     string `json:"project"`
 	ProjectID   string `json:"project_id"`
 	Environment string `json:"environment"`
+	Plan        string `json:"plan"`
 }
 
 func (o *CreateDeploymentOidcTokenClaims) GetIss() string {
@@ -5397,6 +5416,13 @@ func (o *CreateDeploymentOidcTokenClaims) GetEnvironment() string {
 		return ""
 	}
 	return o.Environment
+}
+
+func (o *CreateDeploymentOidcTokenClaims) GetPlan() string {
+	if o == nil {
+		return ""
+	}
+	return o.Plan
 }
 
 type CreateDeploymentPlan string

@@ -67,7 +67,7 @@ export type Items1 =
   | PatchEdgeConfigItems12
   | PatchEdgeConfigItems13;
 
-export type Items =
+export type PatchEdgeConfigItemsItems =
   | PatchEdgeConfigItems11
   | PatchEdgeConfigItems12
   | PatchEdgeConfigItems13;
@@ -534,24 +534,27 @@ export function items1FromJSON(
 }
 
 /** @internal */
-export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
-    z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
-    z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
-  ]);
+export const PatchEdgeConfigItemsItems$inboundSchema: z.ZodType<
+  PatchEdgeConfigItemsItems,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PatchEdgeConfigItems11$inboundSchema),
+  z.lazy(() => PatchEdgeConfigItems12$inboundSchema),
+  z.lazy(() => PatchEdgeConfigItems13$inboundSchema),
+]);
 
 /** @internal */
-export type Items$Outbound =
+export type PatchEdgeConfigItemsItems$Outbound =
   | PatchEdgeConfigItems11$Outbound
   | PatchEdgeConfigItems12$Outbound
   | PatchEdgeConfigItems13$Outbound;
 
 /** @internal */
-export const Items$outboundSchema: z.ZodType<
-  Items$Outbound,
+export const PatchEdgeConfigItemsItems$outboundSchema: z.ZodType<
+  PatchEdgeConfigItemsItems$Outbound,
   z.ZodTypeDef,
-  Items
+  PatchEdgeConfigItemsItems
 > = z.union([
   z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
   z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
@@ -562,26 +565,30 @@ export const Items$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Items$ {
-  /** @deprecated use `Items$inboundSchema` instead. */
-  export const inboundSchema = Items$inboundSchema;
-  /** @deprecated use `Items$outboundSchema` instead. */
-  export const outboundSchema = Items$outboundSchema;
-  /** @deprecated use `Items$Outbound` instead. */
-  export type Outbound = Items$Outbound;
+export namespace PatchEdgeConfigItemsItems$ {
+  /** @deprecated use `PatchEdgeConfigItemsItems$inboundSchema` instead. */
+  export const inboundSchema = PatchEdgeConfigItemsItems$inboundSchema;
+  /** @deprecated use `PatchEdgeConfigItemsItems$outboundSchema` instead. */
+  export const outboundSchema = PatchEdgeConfigItemsItems$outboundSchema;
+  /** @deprecated use `PatchEdgeConfigItemsItems$Outbound` instead. */
+  export type Outbound = PatchEdgeConfigItemsItems$Outbound;
 }
 
-export function itemsToJSON(items: Items): string {
-  return JSON.stringify(Items$outboundSchema.parse(items));
+export function patchEdgeConfigItemsItemsToJSON(
+  patchEdgeConfigItemsItems: PatchEdgeConfigItemsItems,
+): string {
+  return JSON.stringify(
+    PatchEdgeConfigItemsItems$outboundSchema.parse(patchEdgeConfigItemsItems),
+  );
 }
 
-export function itemsFromJSON(
+export function patchEdgeConfigItemsItemsFromJSON(
   jsonString: string,
-): SafeParseResult<Items, SDKValidationError> {
+): SafeParseResult<PatchEdgeConfigItemsItems, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Items$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Items' from JSON`,
+    (x) => PatchEdgeConfigItemsItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchEdgeConfigItemsItems' from JSON`,
   );
 }
 

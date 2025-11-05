@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -63,102 +62,6 @@ export type InviteUserToTeamRequestBody = {
    */
   role?: InviteUserToTeamRole | undefined;
   projects?: Array<InviteUserToTeamProjects> | undefined;
-};
-
-export type InviteUserToTeamRequest = {
-  teamId: string;
-  requestBody: InviteUserToTeamRequestBody;
-};
-
-/**
- * The role used for the invitation
- */
-export const InviteUserToTeamTeamsResponseRole = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
-  Billing: "BILLING",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
-} as const;
-/**
- * The role used for the invitation
- */
-export type InviteUserToTeamTeamsResponseRole = ClosedEnum<
-  typeof InviteUserToTeamTeamsResponseRole
->;
-
-/**
- * The team roles of the user
- */
-export const InviteUserToTeamTeamRoles = {
-  Owner: "OWNER",
-  Member: "MEMBER",
-  Developer: "DEVELOPER",
-  Security: "SECURITY",
-  Billing: "BILLING",
-  Viewer: "VIEWER",
-  ViewerForPlus: "VIEWER_FOR_PLUS",
-  Contributor: "CONTRIBUTOR",
-} as const;
-/**
- * The team roles of the user
- */
-export type InviteUserToTeamTeamRoles = ClosedEnum<
-  typeof InviteUserToTeamTeamRoles
->;
-
-/**
- * The team permissions of the user
- */
-export const InviteUserToTeamTeamPermissions = {
-  IntegrationManager: "IntegrationManager",
-  CreateProject: "CreateProject",
-  FullProductionDeployment: "FullProductionDeployment",
-  UsageViewer: "UsageViewer",
-  EnvVariableManager: "EnvVariableManager",
-  EnvironmentManager: "EnvironmentManager",
-  V0Builder: "V0Builder",
-  V0Chatter: "V0Chatter",
-  V0Viewer: "V0Viewer",
-} as const;
-/**
- * The team permissions of the user
- */
-export type InviteUserToTeamTeamPermissions = ClosedEnum<
-  typeof InviteUserToTeamTeamPermissions
->;
-
-/**
- * The member was successfully added to the team
- */
-export type InviteUserToTeamResponseBody = {
-  /**
-   * The ID of the invited user
-   */
-  uid: string;
-  /**
-   * The username of the invited user
-   */
-  username: string;
-  /**
-   * The email of the invited user.
-   */
-  email: string;
-  /**
-   * The role used for the invitation
-   */
-  role: InviteUserToTeamTeamsResponseRole;
-  /**
-   * The team roles of the user
-   */
-  teamRoles?: Array<InviteUserToTeamTeamRoles> | undefined;
-  /**
-   * The team permissions of the user
-   */
-  teamPermissions?: Array<InviteUserToTeamTeamPermissions> | undefined;
 };
 
 /** @internal */
@@ -267,7 +170,7 @@ export const InviteUserToTeamRequestBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   email: z.string(),
-  role: InviteUserToTeamRole$inboundSchema.default("MEMBER"),
+  role: InviteUserToTeamRole$inboundSchema.default("VIEWER"),
   projects: z.array(z.lazy(() => InviteUserToTeamProjects$inboundSchema))
     .optional(),
 });
@@ -286,7 +189,7 @@ export const InviteUserToTeamRequestBody$outboundSchema: z.ZodType<
   InviteUserToTeamRequestBody
 > = z.object({
   email: z.string(),
-  role: InviteUserToTeamRole$outboundSchema.default("MEMBER"),
+  role: InviteUserToTeamRole$outboundSchema.default("VIEWER"),
   projects: z.array(z.lazy(() => InviteUserToTeamProjects$outboundSchema))
     .optional(),
 });
@@ -321,207 +224,5 @@ export function inviteUserToTeamRequestBodyFromJSON(
     jsonString,
     (x) => InviteUserToTeamRequestBody$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'InviteUserToTeamRequestBody' from JSON`,
-  );
-}
-
-/** @internal */
-export const InviteUserToTeamRequest$inboundSchema: z.ZodType<
-  InviteUserToTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  teamId: z.string(),
-  RequestBody: z.lazy(() => InviteUserToTeamRequestBody$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "RequestBody": "requestBody",
-  });
-});
-
-/** @internal */
-export type InviteUserToTeamRequest$Outbound = {
-  teamId: string;
-  RequestBody: InviteUserToTeamRequestBody$Outbound;
-};
-
-/** @internal */
-export const InviteUserToTeamRequest$outboundSchema: z.ZodType<
-  InviteUserToTeamRequest$Outbound,
-  z.ZodTypeDef,
-  InviteUserToTeamRequest
-> = z.object({
-  teamId: z.string(),
-  requestBody: z.lazy(() => InviteUserToTeamRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamRequest$ {
-  /** @deprecated use `InviteUserToTeamRequest$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamRequest$inboundSchema;
-  /** @deprecated use `InviteUserToTeamRequest$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamRequest$outboundSchema;
-  /** @deprecated use `InviteUserToTeamRequest$Outbound` instead. */
-  export type Outbound = InviteUserToTeamRequest$Outbound;
-}
-
-export function inviteUserToTeamRequestToJSON(
-  inviteUserToTeamRequest: InviteUserToTeamRequest,
-): string {
-  return JSON.stringify(
-    InviteUserToTeamRequest$outboundSchema.parse(inviteUserToTeamRequest),
-  );
-}
-
-export function inviteUserToTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InviteUserToTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InviteUserToTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InviteUserToTeamRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const InviteUserToTeamTeamsResponseRole$inboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamTeamsResponseRole
-> = z.nativeEnum(InviteUserToTeamTeamsResponseRole);
-
-/** @internal */
-export const InviteUserToTeamTeamsResponseRole$outboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamTeamsResponseRole
-> = InviteUserToTeamTeamsResponseRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamTeamsResponseRole$ {
-  /** @deprecated use `InviteUserToTeamTeamsResponseRole$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamTeamsResponseRole$inboundSchema;
-  /** @deprecated use `InviteUserToTeamTeamsResponseRole$outboundSchema` instead. */
-  export const outboundSchema =
-    InviteUserToTeamTeamsResponseRole$outboundSchema;
-}
-
-/** @internal */
-export const InviteUserToTeamTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamTeamRoles
-> = z.nativeEnum(InviteUserToTeamTeamRoles);
-
-/** @internal */
-export const InviteUserToTeamTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamTeamRoles
-> = InviteUserToTeamTeamRoles$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamTeamRoles$ {
-  /** @deprecated use `InviteUserToTeamTeamRoles$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamTeamRoles$inboundSchema;
-  /** @deprecated use `InviteUserToTeamTeamRoles$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamTeamRoles$outboundSchema;
-}
-
-/** @internal */
-export const InviteUserToTeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamTeamPermissions
-> = z.nativeEnum(InviteUserToTeamTeamPermissions);
-
-/** @internal */
-export const InviteUserToTeamTeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof InviteUserToTeamTeamPermissions
-> = InviteUserToTeamTeamPermissions$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamTeamPermissions$ {
-  /** @deprecated use `InviteUserToTeamTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamTeamPermissions$inboundSchema;
-  /** @deprecated use `InviteUserToTeamTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamTeamPermissions$outboundSchema;
-}
-
-/** @internal */
-export const InviteUserToTeamResponseBody$inboundSchema: z.ZodType<
-  InviteUserToTeamResponseBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uid: z.string(),
-  username: z.string(),
-  email: z.string(),
-  role: InviteUserToTeamTeamsResponseRole$inboundSchema,
-  teamRoles: z.array(InviteUserToTeamTeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(InviteUserToTeamTeamPermissions$inboundSchema)
-    .optional(),
-});
-
-/** @internal */
-export type InviteUserToTeamResponseBody$Outbound = {
-  uid: string;
-  username: string;
-  email: string;
-  role: string;
-  teamRoles?: Array<string> | undefined;
-  teamPermissions?: Array<string> | undefined;
-};
-
-/** @internal */
-export const InviteUserToTeamResponseBody$outboundSchema: z.ZodType<
-  InviteUserToTeamResponseBody$Outbound,
-  z.ZodTypeDef,
-  InviteUserToTeamResponseBody
-> = z.object({
-  uid: z.string(),
-  username: z.string(),
-  email: z.string(),
-  role: InviteUserToTeamTeamsResponseRole$outboundSchema,
-  teamRoles: z.array(InviteUserToTeamTeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(InviteUserToTeamTeamPermissions$outboundSchema)
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteUserToTeamResponseBody$ {
-  /** @deprecated use `InviteUserToTeamResponseBody$inboundSchema` instead. */
-  export const inboundSchema = InviteUserToTeamResponseBody$inboundSchema;
-  /** @deprecated use `InviteUserToTeamResponseBody$outboundSchema` instead. */
-  export const outboundSchema = InviteUserToTeamResponseBody$outboundSchema;
-  /** @deprecated use `InviteUserToTeamResponseBody$Outbound` instead. */
-  export type Outbound = InviteUserToTeamResponseBody$Outbound;
-}
-
-export function inviteUserToTeamResponseBodyToJSON(
-  inviteUserToTeamResponseBody: InviteUserToTeamResponseBody,
-): string {
-  return JSON.stringify(
-    InviteUserToTeamResponseBody$outboundSchema.parse(
-      inviteUserToTeamResponseBody,
-    ),
-  );
-}
-
-export function inviteUserToTeamResponseBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<InviteUserToTeamResponseBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InviteUserToTeamResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InviteUserToTeamResponseBody' from JSON`,
   );
 }

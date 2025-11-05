@@ -610,6 +610,7 @@ export type ResponseBodyGitSource =
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const GetDeploymentResponseBodyNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -694,6 +695,7 @@ export type GetDeploymentResponseBodyOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  plan: string;
 };
 
 /**
@@ -908,6 +910,7 @@ export const ResponseBodyFramework = {
   Zola: "zola",
   Hydrogen: "hydrogen",
   Vite: "vite",
+  TanstackStart: "tanstack-start",
   Vitepress: "vitepress",
   Vuepress: "vuepress",
   Parcel: "parcel",
@@ -922,6 +925,7 @@ export const ResponseBodyFramework = {
   Express: "express",
   H3: "h3",
   Nestjs: "nestjs",
+  Elysia: "elysia",
   Fastify: "fastify",
   Xmcp: "xmcp",
 } as const;
@@ -1614,6 +1618,7 @@ export type GetDeploymentResponseBodyGitSource =
  * If set it overrides the `projectSettings.nodeVersion` for this deployment.
  */
 export const ResponseBodyNodeVersion = {
+  TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",
   EighteenDotX: "18.x",
@@ -1694,6 +1699,7 @@ export type ResponseBodyOidcTokenClaims = {
   project: string;
   projectId: string;
   environment: string;
+  plan: string;
 };
 
 export const ResponseBodyPlan = {
@@ -5571,6 +5577,7 @@ export const GetDeploymentResponseBodyOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -5589,6 +5596,7 @@ export type GetDeploymentResponseBodyOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  plan: string;
 };
 
 /** @internal */
@@ -5606,6 +5614,7 @@ export const GetDeploymentResponseBodyOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",
@@ -9776,6 +9785,7 @@ export const ResponseBodyOidcTokenClaims$inboundSchema: z.ZodType<
   project: z.string(),
   project_id: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "owner_id": "ownerId",
@@ -9794,6 +9804,7 @@ export type ResponseBodyOidcTokenClaims$Outbound = {
   project: string;
   project_id: string;
   environment: string;
+  plan: string;
 };
 
 /** @internal */
@@ -9811,6 +9822,7 @@ export const ResponseBodyOidcTokenClaims$outboundSchema: z.ZodType<
   project: z.string(),
   projectId: z.string(),
   environment: z.string(),
+  plan: z.string(),
 }).transform((v) => {
   return remap$(v, {
     ownerId: "owner_id",

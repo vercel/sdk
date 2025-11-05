@@ -124,7 +124,7 @@ export type Saml = {
   roles?: { [k: string]: Roles1 | Roles2 } | undefined;
 };
 
-export const TeamRoles = {
+export const TeamTeamRoles = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -134,9 +134,9 @@ export const TeamRoles = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type TeamRoles = ClosedEnum<typeof TeamRoles>;
+export type TeamTeamRoles = ClosedEnum<typeof TeamTeamRoles>;
 
-export const TeamPermissions = {
+export const TeamTeamPermissions = {
   IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
@@ -147,14 +147,14 @@ export const TeamPermissions = {
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
 } as const;
-export type TeamPermissions = ClosedEnum<typeof TeamPermissions>;
+export type TeamTeamPermissions = ClosedEnum<typeof TeamTeamPermissions>;
 
 /**
  * Default roles for the team.
  */
 export type DefaultRoles = {
-  teamRoles?: Array<TeamRoles> | undefined;
-  teamPermissions?: Array<TeamPermissions> | undefined;
+  teamRoles?: Array<TeamTeamRoles> | undefined;
+  teamPermissions?: Array<TeamTeamPermissions> | undefined;
 };
 
 export type BuildEntitlements = {
@@ -302,7 +302,7 @@ export type Entitlements = {
   entitlement: string;
 };
 
-export const Role = {
+export const TeamRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -312,9 +312,9 @@ export const Role = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type Role = ClosedEnum<typeof Role>;
+export type TeamRole = ClosedEnum<typeof TeamRole>;
 
-export const TeamTeamRoles = {
+export const TeamMembershipTeamRoles = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -324,9 +324,11 @@ export const TeamTeamRoles = {
   ViewerForPlus: "VIEWER_FOR_PLUS",
   Contributor: "CONTRIBUTOR",
 } as const;
-export type TeamTeamRoles = ClosedEnum<typeof TeamTeamRoles>;
+export type TeamMembershipTeamRoles = ClosedEnum<
+  typeof TeamMembershipTeamRoles
+>;
 
-export const TeamTeamPermissions = {
+export const TeamMembershipTeamPermissions = {
   IntegrationManager: "IntegrationManager",
   CreateProject: "CreateProject",
   FullProductionDeployment: "FullProductionDeployment",
@@ -337,7 +339,9 @@ export const TeamTeamPermissions = {
   V0Chatter: "V0Chatter",
   V0Viewer: "V0Viewer",
 } as const;
-export type TeamTeamPermissions = ClosedEnum<typeof TeamTeamPermissions>;
+export type TeamMembershipTeamPermissions = ClosedEnum<
+  typeof TeamMembershipTeamPermissions
+>;
 
 export const Origin = {
   Link: "link",
@@ -379,9 +383,9 @@ export type Membership = {
   teamId?: string | undefined;
   confirmed: boolean;
   accessRequestedAt?: number | undefined;
-  role: Role;
-  teamRoles?: Array<TeamTeamRoles> | undefined;
-  teamPermissions?: Array<TeamTeamPermissions> | undefined;
+  role: TeamRole;
+  teamRoles?: Array<TeamMembershipTeamRoles> | undefined;
+  teamPermissions?: Array<TeamMembershipTeamPermissions> | undefined;
   createdAt: number;
   created: number;
   joinedFrom?: JoinedFrom | undefined;
@@ -854,43 +858,45 @@ export function samlFromJSON(
 }
 
 /** @internal */
-export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
-  .nativeEnum(TeamRoles);
+export const TeamTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamRoles
+> = z.nativeEnum(TeamTeamRoles);
 
 /** @internal */
-export const TeamRoles$outboundSchema: z.ZodNativeEnum<typeof TeamRoles> =
-  TeamRoles$inboundSchema;
+export const TeamTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamRoles
+> = TeamTeamRoles$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamRoles$ {
-  /** @deprecated use `TeamRoles$inboundSchema` instead. */
-  export const inboundSchema = TeamRoles$inboundSchema;
-  /** @deprecated use `TeamRoles$outboundSchema` instead. */
-  export const outboundSchema = TeamRoles$outboundSchema;
+export namespace TeamTeamRoles$ {
+  /** @deprecated use `TeamTeamRoles$inboundSchema` instead. */
+  export const inboundSchema = TeamTeamRoles$inboundSchema;
+  /** @deprecated use `TeamTeamRoles$outboundSchema` instead. */
+  export const outboundSchema = TeamTeamRoles$outboundSchema;
 }
 
 /** @internal */
-export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof TeamPermissions
-> = z.nativeEnum(TeamPermissions);
+export const TeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamPermissions
+> = z.nativeEnum(TeamTeamPermissions);
 
 /** @internal */
-export const TeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof TeamPermissions
-> = TeamPermissions$inboundSchema;
+export const TeamTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof TeamTeamPermissions
+> = TeamTeamPermissions$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamPermissions$ {
-  /** @deprecated use `TeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = TeamPermissions$inboundSchema;
-  /** @deprecated use `TeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = TeamPermissions$outboundSchema;
+export namespace TeamTeamPermissions$ {
+  /** @deprecated use `TeamTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = TeamTeamPermissions$inboundSchema;
+  /** @deprecated use `TeamTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = TeamTeamPermissions$outboundSchema;
 }
 
 /** @internal */
@@ -899,8 +905,8 @@ export const DefaultRoles$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  teamRoles: z.array(TeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$inboundSchema).optional(),
+  teamRoles: z.array(TeamTeamRoles$inboundSchema).optional(),
+  teamPermissions: z.array(TeamTeamPermissions$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -915,8 +921,8 @@ export const DefaultRoles$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DefaultRoles
 > = z.object({
-  teamRoles: z.array(TeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(TeamPermissions$outboundSchema).optional(),
+  teamRoles: z.array(TeamTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(TeamTeamPermissions$outboundSchema).optional(),
 });
 
 /**
@@ -1567,65 +1573,64 @@ export function entitlementsFromJSON(
 }
 
 /** @internal */
-export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
-  Role,
-);
+export const TeamRole$inboundSchema: z.ZodNativeEnum<typeof TeamRole> = z
+  .nativeEnum(TeamRole);
 
 /** @internal */
-export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
-  Role$inboundSchema;
+export const TeamRole$outboundSchema: z.ZodNativeEnum<typeof TeamRole> =
+  TeamRole$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Role$ {
-  /** @deprecated use `Role$inboundSchema` instead. */
-  export const inboundSchema = Role$inboundSchema;
-  /** @deprecated use `Role$outboundSchema` instead. */
-  export const outboundSchema = Role$outboundSchema;
+export namespace TeamRole$ {
+  /** @deprecated use `TeamRole$inboundSchema` instead. */
+  export const inboundSchema = TeamRole$inboundSchema;
+  /** @deprecated use `TeamRole$outboundSchema` instead. */
+  export const outboundSchema = TeamRole$outboundSchema;
 }
 
 /** @internal */
-export const TeamTeamRoles$inboundSchema: z.ZodNativeEnum<
-  typeof TeamTeamRoles
-> = z.nativeEnum(TeamTeamRoles);
+export const TeamMembershipTeamRoles$inboundSchema: z.ZodNativeEnum<
+  typeof TeamMembershipTeamRoles
+> = z.nativeEnum(TeamMembershipTeamRoles);
 
 /** @internal */
-export const TeamTeamRoles$outboundSchema: z.ZodNativeEnum<
-  typeof TeamTeamRoles
-> = TeamTeamRoles$inboundSchema;
+export const TeamMembershipTeamRoles$outboundSchema: z.ZodNativeEnum<
+  typeof TeamMembershipTeamRoles
+> = TeamMembershipTeamRoles$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamTeamRoles$ {
-  /** @deprecated use `TeamTeamRoles$inboundSchema` instead. */
-  export const inboundSchema = TeamTeamRoles$inboundSchema;
-  /** @deprecated use `TeamTeamRoles$outboundSchema` instead. */
-  export const outboundSchema = TeamTeamRoles$outboundSchema;
+export namespace TeamMembershipTeamRoles$ {
+  /** @deprecated use `TeamMembershipTeamRoles$inboundSchema` instead. */
+  export const inboundSchema = TeamMembershipTeamRoles$inboundSchema;
+  /** @deprecated use `TeamMembershipTeamRoles$outboundSchema` instead. */
+  export const outboundSchema = TeamMembershipTeamRoles$outboundSchema;
 }
 
 /** @internal */
-export const TeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof TeamTeamPermissions
-> = z.nativeEnum(TeamTeamPermissions);
+export const TeamMembershipTeamPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof TeamMembershipTeamPermissions
+> = z.nativeEnum(TeamMembershipTeamPermissions);
 
 /** @internal */
-export const TeamTeamPermissions$outboundSchema: z.ZodNativeEnum<
-  typeof TeamTeamPermissions
-> = TeamTeamPermissions$inboundSchema;
+export const TeamMembershipTeamPermissions$outboundSchema: z.ZodNativeEnum<
+  typeof TeamMembershipTeamPermissions
+> = TeamMembershipTeamPermissions$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TeamTeamPermissions$ {
-  /** @deprecated use `TeamTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = TeamTeamPermissions$inboundSchema;
-  /** @deprecated use `TeamTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = TeamTeamPermissions$outboundSchema;
+export namespace TeamMembershipTeamPermissions$ {
+  /** @deprecated use `TeamMembershipTeamPermissions$inboundSchema` instead. */
+  export const inboundSchema = TeamMembershipTeamPermissions$inboundSchema;
+  /** @deprecated use `TeamMembershipTeamPermissions$outboundSchema` instead. */
+  export const outboundSchema = TeamMembershipTeamPermissions$outboundSchema;
 }
 
 /** @internal */
@@ -1782,9 +1787,10 @@ export const Membership$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   confirmed: z.boolean(),
   accessRequestedAt: z.number().optional(),
-  role: Role$inboundSchema,
-  teamRoles: z.array(TeamTeamRoles$inboundSchema).optional(),
-  teamPermissions: z.array(TeamTeamPermissions$inboundSchema).optional(),
+  role: TeamRole$inboundSchema,
+  teamRoles: z.array(TeamMembershipTeamRoles$inboundSchema).optional(),
+  teamPermissions: z.array(TeamMembershipTeamPermissions$inboundSchema)
+    .optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
@@ -1816,9 +1822,10 @@ export const Membership$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
   confirmed: z.boolean(),
   accessRequestedAt: z.number().optional(),
-  role: Role$outboundSchema,
-  teamRoles: z.array(TeamTeamRoles$outboundSchema).optional(),
-  teamPermissions: z.array(TeamTeamPermissions$outboundSchema).optional(),
+  role: TeamRole$outboundSchema,
+  teamRoles: z.array(TeamMembershipTeamRoles$outboundSchema).optional(),
+  teamPermissions: z.array(TeamMembershipTeamPermissions$outboundSchema)
+    .optional(),
   createdAt: z.number(),
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$outboundSchema).optional(),

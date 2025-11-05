@@ -88,8 +88,49 @@ func (o *UpdateDrainProjectRequest) GetIds() []string {
 	return o.Ids
 }
 
+type UpdateDrainFilterSourceRequest string
+
+const (
+	UpdateDrainFilterSourceRequestBuild    UpdateDrainFilterSourceRequest = "build"
+	UpdateDrainFilterSourceRequestEdge     UpdateDrainFilterSourceRequest = "edge"
+	UpdateDrainFilterSourceRequestLambda   UpdateDrainFilterSourceRequest = "lambda"
+	UpdateDrainFilterSourceRequestStatic   UpdateDrainFilterSourceRequest = "static"
+	UpdateDrainFilterSourceRequestExternal UpdateDrainFilterSourceRequest = "external"
+	UpdateDrainFilterSourceRequestFirewall UpdateDrainFilterSourceRequest = "firewall"
+	UpdateDrainFilterSourceRequestRedirect UpdateDrainFilterSourceRequest = "redirect"
+)
+
+func (e UpdateDrainFilterSourceRequest) ToPointer() *UpdateDrainFilterSourceRequest {
+	return &e
+}
+func (e *UpdateDrainFilterSourceRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "build":
+		fallthrough
+	case "edge":
+		fallthrough
+	case "lambda":
+		fallthrough
+	case "static":
+		fallthrough
+	case "external":
+		fallthrough
+	case "firewall":
+		fallthrough
+	case "redirect":
+		*e = UpdateDrainFilterSourceRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainFilterSourceRequest: %v", v)
+	}
+}
+
 type UpdateDrainLogRequest struct {
-	Sources []string `json:"sources,omitempty"`
+	Sources []UpdateDrainFilterSourceRequest `json:"sources,omitempty"`
 }
 
 func (u UpdateDrainLogRequest) MarshalJSON() ([]byte, error) {
@@ -103,15 +144,41 @@ func (u *UpdateDrainLogRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDrainLogRequest) GetSources() []string {
+func (o *UpdateDrainLogRequest) GetSources() []UpdateDrainFilterSourceRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
 }
 
+type UpdateDrainEnvironmentRequest string
+
+const (
+	UpdateDrainEnvironmentRequestProduction UpdateDrainEnvironmentRequest = "production"
+	UpdateDrainEnvironmentRequestPreview    UpdateDrainEnvironmentRequest = "preview"
+)
+
+func (e UpdateDrainEnvironmentRequest) ToPointer() *UpdateDrainEnvironmentRequest {
+	return &e
+}
+func (e *UpdateDrainEnvironmentRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = UpdateDrainEnvironmentRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainEnvironmentRequest: %v", v)
+	}
+}
+
 type UpdateDrainDeploymentRequest struct {
-	Environments []string `json:"environments,omitempty"`
+	Environments []UpdateDrainEnvironmentRequest `json:"environments,omitempty"`
 }
 
 func (u UpdateDrainDeploymentRequest) MarshalJSON() ([]byte, error) {
@@ -125,7 +192,7 @@ func (u *UpdateDrainDeploymentRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDrainDeploymentRequest) GetEnvironments() []string {
+func (o *UpdateDrainDeploymentRequest) GetEnvironments() []UpdateDrainEnvironmentRequest {
 	if o == nil {
 		return nil
 	}
@@ -2378,8 +2445,50 @@ func (o *UpdateDrainFilterV2Project2) GetIds() []string {
 	return o.Ids
 }
 
+type UpdateDrainFilterV2Source2 string
+
+const (
+	UpdateDrainFilterV2Source2Build    UpdateDrainFilterV2Source2 = "build"
+	UpdateDrainFilterV2Source2Edge     UpdateDrainFilterV2Source2 = "edge"
+	UpdateDrainFilterV2Source2Lambda   UpdateDrainFilterV2Source2 = "lambda"
+	UpdateDrainFilterV2Source2Static   UpdateDrainFilterV2Source2 = "static"
+	UpdateDrainFilterV2Source2External UpdateDrainFilterV2Source2 = "external"
+	UpdateDrainFilterV2Source2Firewall UpdateDrainFilterV2Source2 = "firewall"
+	UpdateDrainFilterV2Source2Redirect UpdateDrainFilterV2Source2 = "redirect"
+)
+
+func (e UpdateDrainFilterV2Source2) ToPointer() *UpdateDrainFilterV2Source2 {
+	return &e
+}
+func (e *UpdateDrainFilterV2Source2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "build":
+		fallthrough
+	case "edge":
+		fallthrough
+	case "lambda":
+		fallthrough
+	case "static":
+		fallthrough
+	case "external":
+		fallthrough
+	case "firewall":
+		fallthrough
+	case "redirect":
+		*e = UpdateDrainFilterV2Source2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainFilterV2Source2: %v", v)
+	}
+}
+
 type UpdateDrainFilterV2Log2 struct {
-	Sources []string `json:"sources,omitempty"`
+	Sources                            []UpdateDrainFilterV2Source2 `json:"sources,omitempty"`
+	LegacyExcludeCachedStaticAssetLogs *bool                        `json:"legacy_excludeCachedStaticAssetLogs,omitempty"`
 }
 
 func (u UpdateDrainFilterV2Log2) MarshalJSON() ([]byte, error) {
@@ -2393,15 +2502,48 @@ func (u *UpdateDrainFilterV2Log2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDrainFilterV2Log2) GetSources() []string {
+func (o *UpdateDrainFilterV2Log2) GetSources() []UpdateDrainFilterV2Source2 {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
 }
 
+func (o *UpdateDrainFilterV2Log2) GetLegacyExcludeCachedStaticAssetLogs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyExcludeCachedStaticAssetLogs
+}
+
+type UpdateDrainFilterV2Environment2 string
+
+const (
+	UpdateDrainFilterV2Environment2Production UpdateDrainFilterV2Environment2 = "production"
+	UpdateDrainFilterV2Environment2Preview    UpdateDrainFilterV2Environment2 = "preview"
+)
+
+func (e UpdateDrainFilterV2Environment2) ToPointer() *UpdateDrainFilterV2Environment2 {
+	return &e
+}
+func (e *UpdateDrainFilterV2Environment2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = UpdateDrainFilterV2Environment2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainFilterV2Environment2: %v", v)
+	}
+}
+
 type UpdateDrainFilterV2Deployment2 struct {
-	Environments []string `json:"environments,omitempty"`
+	Environments []UpdateDrainFilterV2Environment2 `json:"environments,omitempty"`
 }
 
 func (u UpdateDrainFilterV2Deployment2) MarshalJSON() ([]byte, error) {
@@ -2415,7 +2557,7 @@ func (u *UpdateDrainFilterV2Deployment2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDrainFilterV2Deployment2) GetEnvironments() []string {
+func (o *UpdateDrainFilterV2Deployment2) GetEnvironments() []UpdateDrainFilterV2Environment2 {
 	if o == nil {
 		return nil
 	}
@@ -2711,6 +2853,7 @@ const (
 	UpdateDrainFrameworkZola           UpdateDrainFramework = "zola"
 	UpdateDrainFrameworkHydrogen       UpdateDrainFramework = "hydrogen"
 	UpdateDrainFrameworkVite           UpdateDrainFramework = "vite"
+	UpdateDrainFrameworkTanstackStart  UpdateDrainFramework = "tanstack-start"
 	UpdateDrainFrameworkVitepress      UpdateDrainFramework = "vitepress"
 	UpdateDrainFrameworkVuepress       UpdateDrainFramework = "vuepress"
 	UpdateDrainFrameworkParcel         UpdateDrainFramework = "parcel"
@@ -2725,6 +2868,7 @@ const (
 	UpdateDrainFrameworkExpress        UpdateDrainFramework = "express"
 	UpdateDrainFrameworkH3             UpdateDrainFramework = "h3"
 	UpdateDrainFrameworkNestjs         UpdateDrainFramework = "nestjs"
+	UpdateDrainFrameworkElysia         UpdateDrainFramework = "elysia"
 	UpdateDrainFrameworkFastify        UpdateDrainFramework = "fastify"
 	UpdateDrainFrameworkXmcp           UpdateDrainFramework = "xmcp"
 )
@@ -2816,6 +2960,8 @@ func (e *UpdateDrainFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -2843,6 +2989,8 @@ func (e *UpdateDrainFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -4293,8 +4441,50 @@ func (o *UpdateDrainFilterV2Project1) GetIds() []string {
 	return o.Ids
 }
 
+type UpdateDrainFilterV2Source1 string
+
+const (
+	UpdateDrainFilterV2Source1Build    UpdateDrainFilterV2Source1 = "build"
+	UpdateDrainFilterV2Source1Edge     UpdateDrainFilterV2Source1 = "edge"
+	UpdateDrainFilterV2Source1Lambda   UpdateDrainFilterV2Source1 = "lambda"
+	UpdateDrainFilterV2Source1Static   UpdateDrainFilterV2Source1 = "static"
+	UpdateDrainFilterV2Source1External UpdateDrainFilterV2Source1 = "external"
+	UpdateDrainFilterV2Source1Firewall UpdateDrainFilterV2Source1 = "firewall"
+	UpdateDrainFilterV2Source1Redirect UpdateDrainFilterV2Source1 = "redirect"
+)
+
+func (e UpdateDrainFilterV2Source1) ToPointer() *UpdateDrainFilterV2Source1 {
+	return &e
+}
+func (e *UpdateDrainFilterV2Source1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "build":
+		fallthrough
+	case "edge":
+		fallthrough
+	case "lambda":
+		fallthrough
+	case "static":
+		fallthrough
+	case "external":
+		fallthrough
+	case "firewall":
+		fallthrough
+	case "redirect":
+		*e = UpdateDrainFilterV2Source1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainFilterV2Source1: %v", v)
+	}
+}
+
 type UpdateDrainFilterV2Log1 struct {
-	Sources []string `json:"sources,omitempty"`
+	Sources                            []UpdateDrainFilterV2Source1 `json:"sources,omitempty"`
+	LegacyExcludeCachedStaticAssetLogs *bool                        `json:"legacy_excludeCachedStaticAssetLogs,omitempty"`
 }
 
 func (u UpdateDrainFilterV2Log1) MarshalJSON() ([]byte, error) {
@@ -4308,15 +4498,48 @@ func (u *UpdateDrainFilterV2Log1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDrainFilterV2Log1) GetSources() []string {
+func (o *UpdateDrainFilterV2Log1) GetSources() []UpdateDrainFilterV2Source1 {
 	if o == nil {
 		return nil
 	}
 	return o.Sources
 }
 
+func (o *UpdateDrainFilterV2Log1) GetLegacyExcludeCachedStaticAssetLogs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.LegacyExcludeCachedStaticAssetLogs
+}
+
+type UpdateDrainFilterV2Environment1 string
+
+const (
+	UpdateDrainFilterV2Environment1Production UpdateDrainFilterV2Environment1 = "production"
+	UpdateDrainFilterV2Environment1Preview    UpdateDrainFilterV2Environment1 = "preview"
+)
+
+func (e UpdateDrainFilterV2Environment1) ToPointer() *UpdateDrainFilterV2Environment1 {
+	return &e
+}
+func (e *UpdateDrainFilterV2Environment1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "production":
+		fallthrough
+	case "preview":
+		*e = UpdateDrainFilterV2Environment1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainFilterV2Environment1: %v", v)
+	}
+}
+
 type UpdateDrainFilterV2Deployment1 struct {
-	Environments []string `json:"environments,omitempty"`
+	Environments []UpdateDrainFilterV2Environment1 `json:"environments,omitempty"`
 }
 
 func (u UpdateDrainFilterV2Deployment1) MarshalJSON() ([]byte, error) {
@@ -4330,7 +4553,7 @@ func (u *UpdateDrainFilterV2Deployment1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDrainFilterV2Deployment1) GetEnvironments() []string {
+func (o *UpdateDrainFilterV2Deployment1) GetEnvironments() []UpdateDrainFilterV2Environment1 {
 	if o == nil {
 		return nil
 	}

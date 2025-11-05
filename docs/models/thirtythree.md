@@ -15,14 +15,16 @@ let value: ThirtyThree = {
   configuration: {
     id: "<id>",
   },
-  newName: "<value>",
+  project: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `team`                                                                                 | [models.UserEventPayload33Team](../models/usereventpayload33team.md)                   | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `configuration`                                                                        | [models.UserEventPayload33Configuration](../models/usereventpayload33configuration.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `newName`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `team`                                                                             | [models.UserEventPayloadTeam](../models/usereventpayloadteam.md)                   | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `project`                                                                          | [models.UserEventPayload33Project](../models/usereventpayload33project.md)         | :heavy_check_mark:                                                                 | N/A                                                                                |

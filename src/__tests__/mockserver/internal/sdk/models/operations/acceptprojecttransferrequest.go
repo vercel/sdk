@@ -289,6 +289,7 @@ func (r *ResourceTransferError) UnmarshalJSON(data []byte) error {
 type AcceptProjectTransferRequestResponseBody1 struct {
 	PartnerCalls           []PartnerCall           `json:"partnerCalls"`
 	ResourceTransferErrors []ResourceTransferError `json:"resourceTransferErrors"`
+	TransferredStoreIds    []string                `json:"transferredStoreIds"`
 }
 
 func (a AcceptProjectTransferRequestResponseBody1) MarshalJSON() ([]byte, error) {
@@ -296,7 +297,7 @@ func (a AcceptProjectTransferRequestResponseBody1) MarshalJSON() ([]byte, error)
 }
 
 func (a *AcceptProjectTransferRequestResponseBody1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"partnerCalls", "resourceTransferErrors"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"partnerCalls", "resourceTransferErrors", "transferredStoreIds"}); err != nil {
 		return err
 	}
 	return nil
@@ -314,6 +315,13 @@ func (o *AcceptProjectTransferRequestResponseBody1) GetResourceTransferErrors() 
 		return []ResourceTransferError{}
 	}
 	return o.ResourceTransferErrors
+}
+
+func (o *AcceptProjectTransferRequestResponseBody1) GetTransferredStoreIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.TransferredStoreIds
 }
 
 type AcceptProjectTransferRequestResponseBodyType string

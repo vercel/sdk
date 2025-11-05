@@ -183,6 +183,7 @@ const (
 	CancelDeploymentFrameworkZola           CancelDeploymentFramework = "zola"
 	CancelDeploymentFrameworkHydrogen       CancelDeploymentFramework = "hydrogen"
 	CancelDeploymentFrameworkVite           CancelDeploymentFramework = "vite"
+	CancelDeploymentFrameworkTanstackStart  CancelDeploymentFramework = "tanstack-start"
 	CancelDeploymentFrameworkVitepress      CancelDeploymentFramework = "vitepress"
 	CancelDeploymentFrameworkVuepress       CancelDeploymentFramework = "vuepress"
 	CancelDeploymentFrameworkParcel         CancelDeploymentFramework = "parcel"
@@ -197,6 +198,7 @@ const (
 	CancelDeploymentFrameworkExpress        CancelDeploymentFramework = "express"
 	CancelDeploymentFrameworkH3             CancelDeploymentFramework = "h3"
 	CancelDeploymentFrameworkNestjs         CancelDeploymentFramework = "nestjs"
+	CancelDeploymentFrameworkElysia         CancelDeploymentFramework = "elysia"
 	CancelDeploymentFrameworkFastify        CancelDeploymentFramework = "fastify"
 	CancelDeploymentFrameworkXmcp           CancelDeploymentFramework = "xmcp"
 )
@@ -288,6 +290,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "vite":
 		fallthrough
+	case "tanstack-start":
+		fallthrough
 	case "vitepress":
 		fallthrough
 	case "vuepress":
@@ -315,6 +319,8 @@ func (e *CancelDeploymentFramework) UnmarshalJSON(data []byte) error {
 	case "h3":
 		fallthrough
 	case "nestjs":
+		fallthrough
+	case "elysia":
 		fallthrough
 	case "fastify":
 		fallthrough
@@ -3419,6 +3425,7 @@ func (u CancelDeploymentGitSourceUnion) MarshalJSON() ([]byte, error) {
 type CancelDeploymentNodeVersion string
 
 const (
+	CancelDeploymentNodeVersionTwentyFourDotX CancelDeploymentNodeVersion = "24.x"
 	CancelDeploymentNodeVersionTwentyTwoDotX  CancelDeploymentNodeVersion = "22.x"
 	CancelDeploymentNodeVersionTwentyDotX     CancelDeploymentNodeVersion = "20.x"
 	CancelDeploymentNodeVersionEighteenDotX   CancelDeploymentNodeVersion = "18.x"
@@ -3438,6 +3445,8 @@ func (e *CancelDeploymentNodeVersion) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "24.x":
+		fallthrough
 	case "22.x":
 		fallthrough
 	case "20.x":
@@ -3662,6 +3671,7 @@ type CancelDeploymentOidcTokenClaims struct {
 	Project     string `json:"project"`
 	ProjectID   string `json:"project_id"`
 	Environment string `json:"environment"`
+	Plan        string `json:"plan"`
 }
 
 func (o *CancelDeploymentOidcTokenClaims) GetIss() string {
@@ -3725,6 +3735,13 @@ func (o *CancelDeploymentOidcTokenClaims) GetEnvironment() string {
 		return ""
 	}
 	return o.Environment
+}
+
+func (o *CancelDeploymentOidcTokenClaims) GetPlan() string {
+	if o == nil {
+		return ""
+	}
+	return o.Plan
 }
 
 type CancelDeploymentCron struct {

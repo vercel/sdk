@@ -1,11 +1,13 @@
 # Role
 
+The role used for the invitation
+
 ## Example Usage
 
 ```typescript
-import { Role } from "@vercel/sdk/models/team.js";
+import { Role } from "@vercel/sdk/models/invitedteammember.js";
 
-let value: Role = "DEVELOPER";
+let value: Role = "MEMBER";
 ```
 
 ## Values

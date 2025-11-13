@@ -61,7 +61,6 @@ export const GetRuntimeLogsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetRuntimeLogsRequest$Outbound = {
   projectId: string;
@@ -82,19 +81,6 @@ export const GetRuntimeLogsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRuntimeLogsRequest$ {
-  /** @deprecated use `GetRuntimeLogsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRuntimeLogsRequest$inboundSchema;
-  /** @deprecated use `GetRuntimeLogsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRuntimeLogsRequest$outboundSchema;
-  /** @deprecated use `GetRuntimeLogsRequest$Outbound` instead. */
-  export type Outbound = GetRuntimeLogsRequest$Outbound;
-}
-
 export function getRuntimeLogsRequestToJSON(
   getRuntimeLogsRequest: GetRuntimeLogsRequest,
 ): string {
@@ -102,7 +88,6 @@ export function getRuntimeLogsRequestToJSON(
     GetRuntimeLogsRequest$outboundSchema.parse(getRuntimeLogsRequest),
   );
 }
-
 export function getRuntimeLogsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRuntimeLogsRequest, SDKValidationError> {
@@ -117,43 +102,19 @@ export function getRuntimeLogsRequestFromJSON(
 export const GetRuntimeLogsLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsLevel
 > = z.nativeEnum(GetRuntimeLogsLevel);
-
 /** @internal */
 export const GetRuntimeLogsLevel$outboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsLevel
 > = GetRuntimeLogsLevel$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRuntimeLogsLevel$ {
-  /** @deprecated use `GetRuntimeLogsLevel$inboundSchema` instead. */
-  export const inboundSchema = GetRuntimeLogsLevel$inboundSchema;
-  /** @deprecated use `GetRuntimeLogsLevel$outboundSchema` instead. */
-  export const outboundSchema = GetRuntimeLogsLevel$outboundSchema;
-}
-
 /** @internal */
 export const GetRuntimeLogsSource$inboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsSource
 > = z.nativeEnum(GetRuntimeLogsSource);
-
 /** @internal */
 export const GetRuntimeLogsSource$outboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsSource
 > = GetRuntimeLogsSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRuntimeLogsSource$ {
-  /** @deprecated use `GetRuntimeLogsSource$inboundSchema` instead. */
-  export const inboundSchema = GetRuntimeLogsSource$inboundSchema;
-  /** @deprecated use `GetRuntimeLogsSource$outboundSchema` instead. */
-  export const outboundSchema = GetRuntimeLogsSource$outboundSchema;
-}
 
 /** @internal */
 export const GetRuntimeLogsResponseBody$inboundSchema: z.ZodType<
@@ -172,7 +133,6 @@ export const GetRuntimeLogsResponseBody$inboundSchema: z.ZodType<
   requestPath: z.string(),
   responseStatusCode: z.number(),
 });
-
 /** @internal */
 export type GetRuntimeLogsResponseBody$Outbound = {
   level: string;
@@ -205,19 +165,6 @@ export const GetRuntimeLogsResponseBody$outboundSchema: z.ZodType<
   responseStatusCode: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRuntimeLogsResponseBody$ {
-  /** @deprecated use `GetRuntimeLogsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetRuntimeLogsResponseBody$inboundSchema;
-  /** @deprecated use `GetRuntimeLogsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetRuntimeLogsResponseBody$outboundSchema;
-  /** @deprecated use `GetRuntimeLogsResponseBody$Outbound` instead. */
-  export type Outbound = GetRuntimeLogsResponseBody$Outbound;
-}
-
 export function getRuntimeLogsResponseBodyToJSON(
   getRuntimeLogsResponseBody: GetRuntimeLogsResponseBody,
 ): string {
@@ -225,7 +172,6 @@ export function getRuntimeLogsResponseBodyToJSON(
     GetRuntimeLogsResponseBody$outboundSchema.parse(getRuntimeLogsResponseBody),
   );
 }
-
 export function getRuntimeLogsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRuntimeLogsResponseBody, SDKValidationError> {

@@ -34,7 +34,6 @@ export const GetAuthUserUser$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]);
-
 /** @internal */
 export type GetAuthUserUser$Outbound =
   | AuthUser$Outbound
@@ -47,25 +46,11 @@ export const GetAuthUserUser$outboundSchema: z.ZodType<
   GetAuthUserUser
 > = z.union([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAuthUserUser$ {
-  /** @deprecated use `GetAuthUserUser$inboundSchema` instead. */
-  export const inboundSchema = GetAuthUserUser$inboundSchema;
-  /** @deprecated use `GetAuthUserUser$outboundSchema` instead. */
-  export const outboundSchema = GetAuthUserUser$outboundSchema;
-  /** @deprecated use `GetAuthUserUser$Outbound` instead. */
-  export type Outbound = GetAuthUserUser$Outbound;
-}
-
 export function getAuthUserUserToJSON(
   getAuthUserUser: GetAuthUserUser,
 ): string {
   return JSON.stringify(GetAuthUserUser$outboundSchema.parse(getAuthUserUser));
 }
-
 export function getAuthUserUserFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAuthUserUser, SDKValidationError> {
@@ -84,7 +69,6 @@ export const GetAuthUserResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   user: z.union([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]),
 });
-
 /** @internal */
 export type GetAuthUserResponseBody$Outbound = {
   user: AuthUser$Outbound | AuthUserLimited$Outbound;
@@ -99,19 +83,6 @@ export const GetAuthUserResponseBody$outboundSchema: z.ZodType<
   user: z.union([AuthUser$outboundSchema, AuthUserLimited$outboundSchema]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAuthUserResponseBody$ {
-  /** @deprecated use `GetAuthUserResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetAuthUserResponseBody$inboundSchema;
-  /** @deprecated use `GetAuthUserResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetAuthUserResponseBody$outboundSchema;
-  /** @deprecated use `GetAuthUserResponseBody$Outbound` instead. */
-  export type Outbound = GetAuthUserResponseBody$Outbound;
-}
-
 export function getAuthUserResponseBodyToJSON(
   getAuthUserResponseBody: GetAuthUserResponseBody,
 ): string {
@@ -119,7 +90,6 @@ export function getAuthUserResponseBodyToJSON(
     GetAuthUserResponseBody$outboundSchema.parse(getAuthUserResponseBody),
   );
 }
-
 export function getAuthUserResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAuthUserResponseBody, SDKValidationError> {

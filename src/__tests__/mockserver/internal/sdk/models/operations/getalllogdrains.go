@@ -614,67 +614,6 @@ func (o *GetAllLogDrainsDeliveryClickhouse2) GetTable() string {
 	return o.Table
 }
 
-type GetAllLogDrainsTypeSyslog2 string
-
-const (
-	GetAllLogDrainsTypeSyslog2Syslog GetAllLogDrainsTypeSyslog2 = "syslog"
-)
-
-func (e GetAllLogDrainsTypeSyslog2) ToPointer() *GetAllLogDrainsTypeSyslog2 {
-	return &e
-}
-func (e *GetAllLogDrainsTypeSyslog2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "syslog":
-		*e = GetAllLogDrainsTypeSyslog2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsTypeSyslog2: %v", v)
-	}
-}
-
-type GetAllLogDrainsDeliverySyslog2 struct {
-	Type     GetAllLogDrainsTypeSyslog2 `json:"type"`
-	Endpoint string                     `json:"endpoint"`
-	Secret   string                     `json:"secret"`
-}
-
-func (g GetAllLogDrainsDeliverySyslog2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetAllLogDrainsDeliverySyslog2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "endpoint", "secret"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetAllLogDrainsDeliverySyslog2) GetType() GetAllLogDrainsTypeSyslog2 {
-	if o == nil {
-		return GetAllLogDrainsTypeSyslog2("")
-	}
-	return o.Type
-}
-
-func (o *GetAllLogDrainsDeliverySyslog2) GetEndpoint() string {
-	if o == nil {
-		return ""
-	}
-	return o.Endpoint
-}
-
-func (o *GetAllLogDrainsDeliverySyslog2) GetSecret() string {
-	if o == nil {
-		return ""
-	}
-	return o.Secret
-}
-
 type GetAllLogDrainsTypeOtlphttp2 string
 
 const (
@@ -746,12 +685,120 @@ func (e *GetAllLogDrainsEncoding4) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetAllLogDrainsSecretKind4 string
+
+const (
+	GetAllLogDrainsSecretKind4IntegrationSecret GetAllLogDrainsSecretKind4 = "INTEGRATION_SECRET"
+)
+
+func (e GetAllLogDrainsSecretKind4) ToPointer() *GetAllLogDrainsSecretKind4 {
+	return &e
+}
+func (e *GetAllLogDrainsSecretKind4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = GetAllLogDrainsSecretKind4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsSecretKind4: %v", v)
+	}
+}
+
+type GetAllLogDrainsSecretIntegrationSecret4 struct {
+	Kind GetAllLogDrainsSecretKind4 `json:"kind"`
+}
+
+func (g GetAllLogDrainsSecretIntegrationSecret4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsSecretIntegrationSecret4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetAllLogDrainsSecretIntegrationSecret4) GetKind() GetAllLogDrainsSecretKind4 {
+	if o == nil {
+		return GetAllLogDrainsSecretKind4("")
+	}
+	return o.Kind
+}
+
+type GetAllLogDrainsSecretUnion4Type string
+
+const (
+	GetAllLogDrainsSecretUnion4TypeStr                                     GetAllLogDrainsSecretUnion4Type = "str"
+	GetAllLogDrainsSecretUnion4TypeGetAllLogDrainsSecretIntegrationSecret4 GetAllLogDrainsSecretUnion4Type = "getAllLogDrains_secret_IntegrationSecret_4"
+)
+
+type GetAllLogDrainsSecretUnion4 struct {
+	Str                                     *string                                  `queryParam:"inline"`
+	GetAllLogDrainsSecretIntegrationSecret4 *GetAllLogDrainsSecretIntegrationSecret4 `queryParam:"inline"`
+
+	Type GetAllLogDrainsSecretUnion4Type
+}
+
+func CreateGetAllLogDrainsSecretUnion4Str(str string) GetAllLogDrainsSecretUnion4 {
+	typ := GetAllLogDrainsSecretUnion4TypeStr
+
+	return GetAllLogDrainsSecretUnion4{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetAllLogDrainsSecretUnion4GetAllLogDrainsSecretIntegrationSecret4(getAllLogDrainsSecretIntegrationSecret4 GetAllLogDrainsSecretIntegrationSecret4) GetAllLogDrainsSecretUnion4 {
+	typ := GetAllLogDrainsSecretUnion4TypeGetAllLogDrainsSecretIntegrationSecret4
+
+	return GetAllLogDrainsSecretUnion4{
+		GetAllLogDrainsSecretIntegrationSecret4: &getAllLogDrainsSecretIntegrationSecret4,
+		Type:                                    typ,
+	}
+}
+
+func (u *GetAllLogDrainsSecretUnion4) UnmarshalJSON(data []byte) error {
+
+	var getAllLogDrainsSecretIntegrationSecret4 GetAllLogDrainsSecretIntegrationSecret4 = GetAllLogDrainsSecretIntegrationSecret4{}
+	if err := utils.UnmarshalJSON(data, &getAllLogDrainsSecretIntegrationSecret4, "", true, nil); err == nil {
+		u.GetAllLogDrainsSecretIntegrationSecret4 = &getAllLogDrainsSecretIntegrationSecret4
+		u.Type = GetAllLogDrainsSecretUnion4TypeGetAllLogDrainsSecretIntegrationSecret4
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetAllLogDrainsSecretUnion4TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetAllLogDrainsSecretUnion4", string(data))
+}
+
+func (u GetAllLogDrainsSecretUnion4) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.GetAllLogDrainsSecretIntegrationSecret4 != nil {
+		return utils.MarshalJSON(u.GetAllLogDrainsSecretIntegrationSecret4, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetAllLogDrainsSecretUnion4: all fields are null")
+}
+
 type GetAllLogDrainsDeliveryOtlphttp2 struct {
 	Type     GetAllLogDrainsTypeOtlphttp2 `json:"type"`
 	Endpoint GetAllLogDrainsEndpoint2     `json:"endpoint"`
 	Encoding GetAllLogDrainsEncoding4     `json:"encoding"`
 	Headers  map[string]string            `json:"headers"`
-	Secret   *string                      `json:"secret,omitempty"`
+	Secret   *GetAllLogDrainsSecretUnion4 `json:"secret,omitempty"`
 }
 
 func (g GetAllLogDrainsDeliveryOtlphttp2) MarshalJSON() ([]byte, error) {
@@ -793,7 +840,7 @@ func (o *GetAllLogDrainsDeliveryOtlphttp2) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *GetAllLogDrainsDeliveryOtlphttp2) GetSecret() *string {
+func (o *GetAllLogDrainsDeliveryOtlphttp2) GetSecret() *GetAllLogDrainsSecretUnion4 {
 	if o == nil {
 		return nil
 	}
@@ -875,13 +922,121 @@ func (e *GetAllLogDrainsCompression2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetAllLogDrainsSecretKind3 string
+
+const (
+	GetAllLogDrainsSecretKind3IntegrationSecret GetAllLogDrainsSecretKind3 = "INTEGRATION_SECRET"
+)
+
+func (e GetAllLogDrainsSecretKind3) ToPointer() *GetAllLogDrainsSecretKind3 {
+	return &e
+}
+func (e *GetAllLogDrainsSecretKind3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = GetAllLogDrainsSecretKind3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsSecretKind3: %v", v)
+	}
+}
+
+type GetAllLogDrainsSecretIntegrationSecret3 struct {
+	Kind GetAllLogDrainsSecretKind3 `json:"kind"`
+}
+
+func (g GetAllLogDrainsSecretIntegrationSecret3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsSecretIntegrationSecret3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetAllLogDrainsSecretIntegrationSecret3) GetKind() GetAllLogDrainsSecretKind3 {
+	if o == nil {
+		return GetAllLogDrainsSecretKind3("")
+	}
+	return o.Kind
+}
+
+type GetAllLogDrainsSecretUnion3Type string
+
+const (
+	GetAllLogDrainsSecretUnion3TypeStr                                     GetAllLogDrainsSecretUnion3Type = "str"
+	GetAllLogDrainsSecretUnion3TypeGetAllLogDrainsSecretIntegrationSecret3 GetAllLogDrainsSecretUnion3Type = "getAllLogDrains_secret_IntegrationSecret_3"
+)
+
+type GetAllLogDrainsSecretUnion3 struct {
+	Str                                     *string                                  `queryParam:"inline"`
+	GetAllLogDrainsSecretIntegrationSecret3 *GetAllLogDrainsSecretIntegrationSecret3 `queryParam:"inline"`
+
+	Type GetAllLogDrainsSecretUnion3Type
+}
+
+func CreateGetAllLogDrainsSecretUnion3Str(str string) GetAllLogDrainsSecretUnion3 {
+	typ := GetAllLogDrainsSecretUnion3TypeStr
+
+	return GetAllLogDrainsSecretUnion3{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetAllLogDrainsSecretUnion3GetAllLogDrainsSecretIntegrationSecret3(getAllLogDrainsSecretIntegrationSecret3 GetAllLogDrainsSecretIntegrationSecret3) GetAllLogDrainsSecretUnion3 {
+	typ := GetAllLogDrainsSecretUnion3TypeGetAllLogDrainsSecretIntegrationSecret3
+
+	return GetAllLogDrainsSecretUnion3{
+		GetAllLogDrainsSecretIntegrationSecret3: &getAllLogDrainsSecretIntegrationSecret3,
+		Type:                                    typ,
+	}
+}
+
+func (u *GetAllLogDrainsSecretUnion3) UnmarshalJSON(data []byte) error {
+
+	var getAllLogDrainsSecretIntegrationSecret3 GetAllLogDrainsSecretIntegrationSecret3 = GetAllLogDrainsSecretIntegrationSecret3{}
+	if err := utils.UnmarshalJSON(data, &getAllLogDrainsSecretIntegrationSecret3, "", true, nil); err == nil {
+		u.GetAllLogDrainsSecretIntegrationSecret3 = &getAllLogDrainsSecretIntegrationSecret3
+		u.Type = GetAllLogDrainsSecretUnion3TypeGetAllLogDrainsSecretIntegrationSecret3
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetAllLogDrainsSecretUnion3TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetAllLogDrainsSecretUnion3", string(data))
+}
+
+func (u GetAllLogDrainsSecretUnion3) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.GetAllLogDrainsSecretIntegrationSecret3 != nil {
+		return utils.MarshalJSON(u.GetAllLogDrainsSecretIntegrationSecret3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetAllLogDrainsSecretUnion3: all fields are null")
+}
+
 type GetAllLogDrainsDeliveryHTTP2 struct {
 	Type        GetAllLogDrainsTypeHTTP2     `json:"type"`
 	Endpoint    string                       `json:"endpoint"`
 	Encoding    GetAllLogDrainsEncoding3     `json:"encoding"`
 	Compression *GetAllLogDrainsCompression2 `json:"compression,omitempty"`
 	Headers     map[string]string            `json:"headers"`
-	Secret      *string                      `json:"secret,omitempty"`
+	Secret      *GetAllLogDrainsSecretUnion3 `json:"secret,omitempty"`
 }
 
 func (g GetAllLogDrainsDeliveryHTTP2) MarshalJSON() ([]byte, error) {
@@ -930,7 +1085,7 @@ func (o *GetAllLogDrainsDeliveryHTTP2) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *GetAllLogDrainsDeliveryHTTP2) GetSecret() *string {
+func (o *GetAllLogDrainsDeliveryHTTP2) GetSecret() *GetAllLogDrainsSecretUnion3 {
 	if o == nil {
 		return nil
 	}
@@ -942,7 +1097,6 @@ type GetAllLogDrainsDeliveryUnion2Type string
 const (
 	GetAllLogDrainsDeliveryUnion2TypeGetAllLogDrainsDeliveryHTTP2               GetAllLogDrainsDeliveryUnion2Type = "getAllLogDrains_delivery_HTTP_2"
 	GetAllLogDrainsDeliveryUnion2TypeGetAllLogDrainsDeliveryOtlphttp2           GetAllLogDrainsDeliveryUnion2Type = "getAllLogDrains_delivery_Otlphttp_2"
-	GetAllLogDrainsDeliveryUnion2TypeGetAllLogDrainsDeliverySyslog2             GetAllLogDrainsDeliveryUnion2Type = "getAllLogDrains_delivery_Syslog_2"
 	GetAllLogDrainsDeliveryUnion2TypeGetAllLogDrainsDeliveryClickhouse2         GetAllLogDrainsDeliveryUnion2Type = "getAllLogDrains_delivery_Clickhouse_2"
 	GetAllLogDrainsDeliveryUnion2TypeGetAllLogDrainsDeliveryVercelOtelTracesDb2 GetAllLogDrainsDeliveryUnion2Type = "getAllLogDrains_delivery_VercelOtelTracesDb_2"
 )
@@ -950,7 +1104,6 @@ const (
 type GetAllLogDrainsDeliveryUnion2 struct {
 	GetAllLogDrainsDeliveryHTTP2               *GetAllLogDrainsDeliveryHTTP2               `queryParam:"inline"`
 	GetAllLogDrainsDeliveryOtlphttp2           *GetAllLogDrainsDeliveryOtlphttp2           `queryParam:"inline"`
-	GetAllLogDrainsDeliverySyslog2             *GetAllLogDrainsDeliverySyslog2             `queryParam:"inline"`
 	GetAllLogDrainsDeliveryClickhouse2         *GetAllLogDrainsDeliveryClickhouse2         `queryParam:"inline"`
 	GetAllLogDrainsDeliveryVercelOtelTracesDb2 *GetAllLogDrainsDeliveryVercelOtelTracesDb2 `queryParam:"inline"`
 
@@ -972,15 +1125,6 @@ func CreateGetAllLogDrainsDeliveryUnion2GetAllLogDrainsDeliveryOtlphttp2(getAllL
 	return GetAllLogDrainsDeliveryUnion2{
 		GetAllLogDrainsDeliveryOtlphttp2: &getAllLogDrainsDeliveryOtlphttp2,
 		Type:                             typ,
-	}
-}
-
-func CreateGetAllLogDrainsDeliveryUnion2GetAllLogDrainsDeliverySyslog2(getAllLogDrainsDeliverySyslog2 GetAllLogDrainsDeliverySyslog2) GetAllLogDrainsDeliveryUnion2 {
-	typ := GetAllLogDrainsDeliveryUnion2TypeGetAllLogDrainsDeliverySyslog2
-
-	return GetAllLogDrainsDeliveryUnion2{
-		GetAllLogDrainsDeliverySyslog2: &getAllLogDrainsDeliverySyslog2,
-		Type:                           typ,
 	}
 }
 
@@ -1018,13 +1162,6 @@ func (u *GetAllLogDrainsDeliveryUnion2) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getAllLogDrainsDeliverySyslog2 GetAllLogDrainsDeliverySyslog2 = GetAllLogDrainsDeliverySyslog2{}
-	if err := utils.UnmarshalJSON(data, &getAllLogDrainsDeliverySyslog2, "", true, nil); err == nil {
-		u.GetAllLogDrainsDeliverySyslog2 = &getAllLogDrainsDeliverySyslog2
-		u.Type = GetAllLogDrainsDeliveryUnion2TypeGetAllLogDrainsDeliverySyslog2
-		return nil
-	}
-
 	var getAllLogDrainsDeliveryClickhouse2 GetAllLogDrainsDeliveryClickhouse2 = GetAllLogDrainsDeliveryClickhouse2{}
 	if err := utils.UnmarshalJSON(data, &getAllLogDrainsDeliveryClickhouse2, "", true, nil); err == nil {
 		u.GetAllLogDrainsDeliveryClickhouse2 = &getAllLogDrainsDeliveryClickhouse2
@@ -1049,10 +1186,6 @@ func (u GetAllLogDrainsDeliveryUnion2) MarshalJSON() ([]byte, error) {
 
 	if u.GetAllLogDrainsDeliveryOtlphttp2 != nil {
 		return utils.MarshalJSON(u.GetAllLogDrainsDeliveryOtlphttp2, "", true)
-	}
-
-	if u.GetAllLogDrainsDeliverySyslog2 != nil {
-		return utils.MarshalJSON(u.GetAllLogDrainsDeliverySyslog2, "", true)
 	}
 
 	if u.GetAllLogDrainsDeliveryClickhouse2 != nil {
@@ -2610,67 +2743,6 @@ func (o *GetAllLogDrainsDeliveryClickhouse1) GetTable() string {
 	return o.Table
 }
 
-type GetAllLogDrainsTypeSyslog1 string
-
-const (
-	GetAllLogDrainsTypeSyslog1Syslog GetAllLogDrainsTypeSyslog1 = "syslog"
-)
-
-func (e GetAllLogDrainsTypeSyslog1) ToPointer() *GetAllLogDrainsTypeSyslog1 {
-	return &e
-}
-func (e *GetAllLogDrainsTypeSyslog1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "syslog":
-		*e = GetAllLogDrainsTypeSyslog1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAllLogDrainsTypeSyslog1: %v", v)
-	}
-}
-
-type GetAllLogDrainsDeliverySyslog1 struct {
-	Type     GetAllLogDrainsTypeSyslog1 `json:"type"`
-	Endpoint string                     `json:"endpoint"`
-	Secret   string                     `json:"secret"`
-}
-
-func (g GetAllLogDrainsDeliverySyslog1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetAllLogDrainsDeliverySyslog1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "endpoint", "secret"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *GetAllLogDrainsDeliverySyslog1) GetType() GetAllLogDrainsTypeSyslog1 {
-	if o == nil {
-		return GetAllLogDrainsTypeSyslog1("")
-	}
-	return o.Type
-}
-
-func (o *GetAllLogDrainsDeliverySyslog1) GetEndpoint() string {
-	if o == nil {
-		return ""
-	}
-	return o.Endpoint
-}
-
-func (o *GetAllLogDrainsDeliverySyslog1) GetSecret() string {
-	if o == nil {
-		return ""
-	}
-	return o.Secret
-}
-
 type GetAllLogDrainsTypeOtlphttp1 string
 
 const (
@@ -2742,12 +2814,120 @@ func (e *GetAllLogDrainsEncoding2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetAllLogDrainsSecretKind2 string
+
+const (
+	GetAllLogDrainsSecretKind2IntegrationSecret GetAllLogDrainsSecretKind2 = "INTEGRATION_SECRET"
+)
+
+func (e GetAllLogDrainsSecretKind2) ToPointer() *GetAllLogDrainsSecretKind2 {
+	return &e
+}
+func (e *GetAllLogDrainsSecretKind2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = GetAllLogDrainsSecretKind2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsSecretKind2: %v", v)
+	}
+}
+
+type GetAllLogDrainsSecretIntegrationSecret2 struct {
+	Kind GetAllLogDrainsSecretKind2 `json:"kind"`
+}
+
+func (g GetAllLogDrainsSecretIntegrationSecret2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsSecretIntegrationSecret2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetAllLogDrainsSecretIntegrationSecret2) GetKind() GetAllLogDrainsSecretKind2 {
+	if o == nil {
+		return GetAllLogDrainsSecretKind2("")
+	}
+	return o.Kind
+}
+
+type GetAllLogDrainsSecretUnion2Type string
+
+const (
+	GetAllLogDrainsSecretUnion2TypeStr                                     GetAllLogDrainsSecretUnion2Type = "str"
+	GetAllLogDrainsSecretUnion2TypeGetAllLogDrainsSecretIntegrationSecret2 GetAllLogDrainsSecretUnion2Type = "getAllLogDrains_secret_IntegrationSecret_2"
+)
+
+type GetAllLogDrainsSecretUnion2 struct {
+	Str                                     *string                                  `queryParam:"inline"`
+	GetAllLogDrainsSecretIntegrationSecret2 *GetAllLogDrainsSecretIntegrationSecret2 `queryParam:"inline"`
+
+	Type GetAllLogDrainsSecretUnion2Type
+}
+
+func CreateGetAllLogDrainsSecretUnion2Str(str string) GetAllLogDrainsSecretUnion2 {
+	typ := GetAllLogDrainsSecretUnion2TypeStr
+
+	return GetAllLogDrainsSecretUnion2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetAllLogDrainsSecretUnion2GetAllLogDrainsSecretIntegrationSecret2(getAllLogDrainsSecretIntegrationSecret2 GetAllLogDrainsSecretIntegrationSecret2) GetAllLogDrainsSecretUnion2 {
+	typ := GetAllLogDrainsSecretUnion2TypeGetAllLogDrainsSecretIntegrationSecret2
+
+	return GetAllLogDrainsSecretUnion2{
+		GetAllLogDrainsSecretIntegrationSecret2: &getAllLogDrainsSecretIntegrationSecret2,
+		Type:                                    typ,
+	}
+}
+
+func (u *GetAllLogDrainsSecretUnion2) UnmarshalJSON(data []byte) error {
+
+	var getAllLogDrainsSecretIntegrationSecret2 GetAllLogDrainsSecretIntegrationSecret2 = GetAllLogDrainsSecretIntegrationSecret2{}
+	if err := utils.UnmarshalJSON(data, &getAllLogDrainsSecretIntegrationSecret2, "", true, nil); err == nil {
+		u.GetAllLogDrainsSecretIntegrationSecret2 = &getAllLogDrainsSecretIntegrationSecret2
+		u.Type = GetAllLogDrainsSecretUnion2TypeGetAllLogDrainsSecretIntegrationSecret2
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetAllLogDrainsSecretUnion2TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetAllLogDrainsSecretUnion2", string(data))
+}
+
+func (u GetAllLogDrainsSecretUnion2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.GetAllLogDrainsSecretIntegrationSecret2 != nil {
+		return utils.MarshalJSON(u.GetAllLogDrainsSecretIntegrationSecret2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetAllLogDrainsSecretUnion2: all fields are null")
+}
+
 type GetAllLogDrainsDeliveryOtlphttp1 struct {
 	Type     GetAllLogDrainsTypeOtlphttp1 `json:"type"`
 	Endpoint GetAllLogDrainsEndpoint1     `json:"endpoint"`
 	Encoding GetAllLogDrainsEncoding2     `json:"encoding"`
 	Headers  map[string]string            `json:"headers"`
-	Secret   *string                      `json:"secret,omitempty"`
+	Secret   *GetAllLogDrainsSecretUnion2 `json:"secret,omitempty"`
 }
 
 func (g GetAllLogDrainsDeliveryOtlphttp1) MarshalJSON() ([]byte, error) {
@@ -2789,7 +2969,7 @@ func (o *GetAllLogDrainsDeliveryOtlphttp1) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *GetAllLogDrainsDeliveryOtlphttp1) GetSecret() *string {
+func (o *GetAllLogDrainsDeliveryOtlphttp1) GetSecret() *GetAllLogDrainsSecretUnion2 {
 	if o == nil {
 		return nil
 	}
@@ -2871,13 +3051,121 @@ func (e *GetAllLogDrainsCompression1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type GetAllLogDrainsSecretKind1 string
+
+const (
+	GetAllLogDrainsSecretKind1IntegrationSecret GetAllLogDrainsSecretKind1 = "INTEGRATION_SECRET"
+)
+
+func (e GetAllLogDrainsSecretKind1) ToPointer() *GetAllLogDrainsSecretKind1 {
+	return &e
+}
+func (e *GetAllLogDrainsSecretKind1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = GetAllLogDrainsSecretKind1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetAllLogDrainsSecretKind1: %v", v)
+	}
+}
+
+type GetAllLogDrainsSecretIntegrationSecret1 struct {
+	Kind GetAllLogDrainsSecretKind1 `json:"kind"`
+}
+
+func (g GetAllLogDrainsSecretIntegrationSecret1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetAllLogDrainsSecretIntegrationSecret1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GetAllLogDrainsSecretIntegrationSecret1) GetKind() GetAllLogDrainsSecretKind1 {
+	if o == nil {
+		return GetAllLogDrainsSecretKind1("")
+	}
+	return o.Kind
+}
+
+type GetAllLogDrainsSecretUnion1Type string
+
+const (
+	GetAllLogDrainsSecretUnion1TypeStr                                     GetAllLogDrainsSecretUnion1Type = "str"
+	GetAllLogDrainsSecretUnion1TypeGetAllLogDrainsSecretIntegrationSecret1 GetAllLogDrainsSecretUnion1Type = "getAllLogDrains_secret_IntegrationSecret_1"
+)
+
+type GetAllLogDrainsSecretUnion1 struct {
+	Str                                     *string                                  `queryParam:"inline"`
+	GetAllLogDrainsSecretIntegrationSecret1 *GetAllLogDrainsSecretIntegrationSecret1 `queryParam:"inline"`
+
+	Type GetAllLogDrainsSecretUnion1Type
+}
+
+func CreateGetAllLogDrainsSecretUnion1Str(str string) GetAllLogDrainsSecretUnion1 {
+	typ := GetAllLogDrainsSecretUnion1TypeStr
+
+	return GetAllLogDrainsSecretUnion1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateGetAllLogDrainsSecretUnion1GetAllLogDrainsSecretIntegrationSecret1(getAllLogDrainsSecretIntegrationSecret1 GetAllLogDrainsSecretIntegrationSecret1) GetAllLogDrainsSecretUnion1 {
+	typ := GetAllLogDrainsSecretUnion1TypeGetAllLogDrainsSecretIntegrationSecret1
+
+	return GetAllLogDrainsSecretUnion1{
+		GetAllLogDrainsSecretIntegrationSecret1: &getAllLogDrainsSecretIntegrationSecret1,
+		Type:                                    typ,
+	}
+}
+
+func (u *GetAllLogDrainsSecretUnion1) UnmarshalJSON(data []byte) error {
+
+	var getAllLogDrainsSecretIntegrationSecret1 GetAllLogDrainsSecretIntegrationSecret1 = GetAllLogDrainsSecretIntegrationSecret1{}
+	if err := utils.UnmarshalJSON(data, &getAllLogDrainsSecretIntegrationSecret1, "", true, nil); err == nil {
+		u.GetAllLogDrainsSecretIntegrationSecret1 = &getAllLogDrainsSecretIntegrationSecret1
+		u.Type = GetAllLogDrainsSecretUnion1TypeGetAllLogDrainsSecretIntegrationSecret1
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = GetAllLogDrainsSecretUnion1TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for GetAllLogDrainsSecretUnion1", string(data))
+}
+
+func (u GetAllLogDrainsSecretUnion1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.GetAllLogDrainsSecretIntegrationSecret1 != nil {
+		return utils.MarshalJSON(u.GetAllLogDrainsSecretIntegrationSecret1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type GetAllLogDrainsSecretUnion1: all fields are null")
+}
+
 type GetAllLogDrainsDeliveryHTTP1 struct {
 	Type        GetAllLogDrainsTypeHTTP1     `json:"type"`
 	Endpoint    string                       `json:"endpoint"`
 	Encoding    GetAllLogDrainsEncoding1     `json:"encoding"`
 	Compression *GetAllLogDrainsCompression1 `json:"compression,omitempty"`
 	Headers     map[string]string            `json:"headers"`
-	Secret      *string                      `json:"secret,omitempty"`
+	Secret      *GetAllLogDrainsSecretUnion1 `json:"secret,omitempty"`
 }
 
 func (g GetAllLogDrainsDeliveryHTTP1) MarshalJSON() ([]byte, error) {
@@ -2926,7 +3214,7 @@ func (o *GetAllLogDrainsDeliveryHTTP1) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *GetAllLogDrainsDeliveryHTTP1) GetSecret() *string {
+func (o *GetAllLogDrainsDeliveryHTTP1) GetSecret() *GetAllLogDrainsSecretUnion1 {
 	if o == nil {
 		return nil
 	}
@@ -2938,7 +3226,6 @@ type GetAllLogDrainsDeliveryUnion1Type string
 const (
 	GetAllLogDrainsDeliveryUnion1TypeGetAllLogDrainsDeliveryHTTP1               GetAllLogDrainsDeliveryUnion1Type = "getAllLogDrains_delivery_HTTP_1"
 	GetAllLogDrainsDeliveryUnion1TypeGetAllLogDrainsDeliveryOtlphttp1           GetAllLogDrainsDeliveryUnion1Type = "getAllLogDrains_delivery_Otlphttp_1"
-	GetAllLogDrainsDeliveryUnion1TypeGetAllLogDrainsDeliverySyslog1             GetAllLogDrainsDeliveryUnion1Type = "getAllLogDrains_delivery_Syslog_1"
 	GetAllLogDrainsDeliveryUnion1TypeGetAllLogDrainsDeliveryClickhouse1         GetAllLogDrainsDeliveryUnion1Type = "getAllLogDrains_delivery_Clickhouse_1"
 	GetAllLogDrainsDeliveryUnion1TypeGetAllLogDrainsDeliveryVercelOtelTracesDb1 GetAllLogDrainsDeliveryUnion1Type = "getAllLogDrains_delivery_VercelOtelTracesDb_1"
 )
@@ -2946,7 +3233,6 @@ const (
 type GetAllLogDrainsDeliveryUnion1 struct {
 	GetAllLogDrainsDeliveryHTTP1               *GetAllLogDrainsDeliveryHTTP1               `queryParam:"inline"`
 	GetAllLogDrainsDeliveryOtlphttp1           *GetAllLogDrainsDeliveryOtlphttp1           `queryParam:"inline"`
-	GetAllLogDrainsDeliverySyslog1             *GetAllLogDrainsDeliverySyslog1             `queryParam:"inline"`
 	GetAllLogDrainsDeliveryClickhouse1         *GetAllLogDrainsDeliveryClickhouse1         `queryParam:"inline"`
 	GetAllLogDrainsDeliveryVercelOtelTracesDb1 *GetAllLogDrainsDeliveryVercelOtelTracesDb1 `queryParam:"inline"`
 
@@ -2968,15 +3254,6 @@ func CreateGetAllLogDrainsDeliveryUnion1GetAllLogDrainsDeliveryOtlphttp1(getAllL
 	return GetAllLogDrainsDeliveryUnion1{
 		GetAllLogDrainsDeliveryOtlphttp1: &getAllLogDrainsDeliveryOtlphttp1,
 		Type:                             typ,
-	}
-}
-
-func CreateGetAllLogDrainsDeliveryUnion1GetAllLogDrainsDeliverySyslog1(getAllLogDrainsDeliverySyslog1 GetAllLogDrainsDeliverySyslog1) GetAllLogDrainsDeliveryUnion1 {
-	typ := GetAllLogDrainsDeliveryUnion1TypeGetAllLogDrainsDeliverySyslog1
-
-	return GetAllLogDrainsDeliveryUnion1{
-		GetAllLogDrainsDeliverySyslog1: &getAllLogDrainsDeliverySyslog1,
-		Type:                           typ,
 	}
 }
 
@@ -3014,13 +3291,6 @@ func (u *GetAllLogDrainsDeliveryUnion1) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var getAllLogDrainsDeliverySyslog1 GetAllLogDrainsDeliverySyslog1 = GetAllLogDrainsDeliverySyslog1{}
-	if err := utils.UnmarshalJSON(data, &getAllLogDrainsDeliverySyslog1, "", true, nil); err == nil {
-		u.GetAllLogDrainsDeliverySyslog1 = &getAllLogDrainsDeliverySyslog1
-		u.Type = GetAllLogDrainsDeliveryUnion1TypeGetAllLogDrainsDeliverySyslog1
-		return nil
-	}
-
 	var getAllLogDrainsDeliveryClickhouse1 GetAllLogDrainsDeliveryClickhouse1 = GetAllLogDrainsDeliveryClickhouse1{}
 	if err := utils.UnmarshalJSON(data, &getAllLogDrainsDeliveryClickhouse1, "", true, nil); err == nil {
 		u.GetAllLogDrainsDeliveryClickhouse1 = &getAllLogDrainsDeliveryClickhouse1
@@ -3045,10 +3315,6 @@ func (u GetAllLogDrainsDeliveryUnion1) MarshalJSON() ([]byte, error) {
 
 	if u.GetAllLogDrainsDeliveryOtlphttp1 != nil {
 		return utils.MarshalJSON(u.GetAllLogDrainsDeliveryOtlphttp1, "", true)
-	}
-
-	if u.GetAllLogDrainsDeliverySyslog1 != nil {
-		return utils.MarshalJSON(u.GetAllLogDrainsDeliverySyslog1, "", true)
 	}
 
 	if u.GetAllLogDrainsDeliveryClickhouse1 != nil {

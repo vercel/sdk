@@ -144,24 +144,10 @@ export type AddProjectMemberResponseBody = {
 export const AddProjectMemberRequestBodyProjectMembersRole$inboundSchema:
   z.ZodNativeEnum<typeof AddProjectMemberRequestBodyProjectMembersRole> = z
     .nativeEnum(AddProjectMemberRequestBodyProjectMembersRole);
-
 /** @internal */
 export const AddProjectMemberRequestBodyProjectMembersRole$outboundSchema:
   z.ZodNativeEnum<typeof AddProjectMemberRequestBodyProjectMembersRole> =
     AddProjectMemberRequestBodyProjectMembersRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberRequestBodyProjectMembersRole$ {
-  /** @deprecated use `AddProjectMemberRequestBodyProjectMembersRole$inboundSchema` instead. */
-  export const inboundSchema =
-    AddProjectMemberRequestBodyProjectMembersRole$inboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBodyProjectMembersRole$outboundSchema` instead. */
-  export const outboundSchema =
-    AddProjectMemberRequestBodyProjectMembersRole$outboundSchema;
-}
 
 /** @internal */
 export const AddProjectMemberRequestBody3$inboundSchema: z.ZodType<
@@ -174,7 +160,6 @@ export const AddProjectMemberRequestBody3$inboundSchema: z.ZodType<
   email: z.string(),
   role: AddProjectMemberRequestBodyProjectMembersRole$inboundSchema,
 });
-
 /** @internal */
 export type AddProjectMemberRequestBody3$Outbound = {
   uid?: string | undefined;
@@ -195,19 +180,6 @@ export const AddProjectMemberRequestBody3$outboundSchema: z.ZodType<
   role: AddProjectMemberRequestBodyProjectMembersRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberRequestBody3$ {
-  /** @deprecated use `AddProjectMemberRequestBody3$inboundSchema` instead. */
-  export const inboundSchema = AddProjectMemberRequestBody3$inboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody3$outboundSchema` instead. */
-  export const outboundSchema = AddProjectMemberRequestBody3$outboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody3$Outbound` instead. */
-  export type Outbound = AddProjectMemberRequestBody3$Outbound;
-}
-
 export function addProjectMemberRequestBody3ToJSON(
   addProjectMemberRequestBody3: AddProjectMemberRequestBody3,
 ): string {
@@ -217,7 +189,6 @@ export function addProjectMemberRequestBody3ToJSON(
     ),
   );
 }
-
 export function addProjectMemberRequestBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<AddProjectMemberRequestBody3, SDKValidationError> {
@@ -232,22 +203,10 @@ export function addProjectMemberRequestBody3FromJSON(
 export const AddProjectMemberRequestBodyRole$inboundSchema: z.ZodNativeEnum<
   typeof AddProjectMemberRequestBodyRole
 > = z.nativeEnum(AddProjectMemberRequestBodyRole);
-
 /** @internal */
 export const AddProjectMemberRequestBodyRole$outboundSchema: z.ZodNativeEnum<
   typeof AddProjectMemberRequestBodyRole
 > = AddProjectMemberRequestBodyRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberRequestBodyRole$ {
-  /** @deprecated use `AddProjectMemberRequestBodyRole$inboundSchema` instead. */
-  export const inboundSchema = AddProjectMemberRequestBodyRole$inboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBodyRole$outboundSchema` instead. */
-  export const outboundSchema = AddProjectMemberRequestBodyRole$outboundSchema;
-}
 
 /** @internal */
 export const AddProjectMemberRequestBody2$inboundSchema: z.ZodType<
@@ -260,7 +219,6 @@ export const AddProjectMemberRequestBody2$inboundSchema: z.ZodType<
   email: z.string().optional(),
   role: AddProjectMemberRequestBodyRole$inboundSchema,
 });
-
 /** @internal */
 export type AddProjectMemberRequestBody2$Outbound = {
   uid?: string | undefined;
@@ -281,19 +239,6 @@ export const AddProjectMemberRequestBody2$outboundSchema: z.ZodType<
   role: AddProjectMemberRequestBodyRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberRequestBody2$ {
-  /** @deprecated use `AddProjectMemberRequestBody2$inboundSchema` instead. */
-  export const inboundSchema = AddProjectMemberRequestBody2$inboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody2$outboundSchema` instead. */
-  export const outboundSchema = AddProjectMemberRequestBody2$outboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody2$Outbound` instead. */
-  export type Outbound = AddProjectMemberRequestBody2$Outbound;
-}
-
 export function addProjectMemberRequestBody2ToJSON(
   addProjectMemberRequestBody2: AddProjectMemberRequestBody2,
 ): string {
@@ -303,7 +248,6 @@ export function addProjectMemberRequestBody2ToJSON(
     ),
   );
 }
-
 export function addProjectMemberRequestBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<AddProjectMemberRequestBody2, SDKValidationError> {
@@ -318,22 +262,10 @@ export function addProjectMemberRequestBody2FromJSON(
 export const RequestBodyRole$inboundSchema: z.ZodNativeEnum<
   typeof RequestBodyRole
 > = z.nativeEnum(RequestBodyRole);
-
 /** @internal */
 export const RequestBodyRole$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyRole
 > = RequestBodyRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyRole$ {
-  /** @deprecated use `RequestBodyRole$inboundSchema` instead. */
-  export const inboundSchema = RequestBodyRole$inboundSchema;
-  /** @deprecated use `RequestBodyRole$outboundSchema` instead. */
-  export const outboundSchema = RequestBodyRole$outboundSchema;
-}
 
 /** @internal */
 export const AddProjectMemberRequestBody1$inboundSchema: z.ZodType<
@@ -346,7 +278,6 @@ export const AddProjectMemberRequestBody1$inboundSchema: z.ZodType<
   email: z.string().optional(),
   role: RequestBodyRole$inboundSchema,
 });
-
 /** @internal */
 export type AddProjectMemberRequestBody1$Outbound = {
   uid: string;
@@ -367,19 +298,6 @@ export const AddProjectMemberRequestBody1$outboundSchema: z.ZodType<
   role: RequestBodyRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberRequestBody1$ {
-  /** @deprecated use `AddProjectMemberRequestBody1$inboundSchema` instead. */
-  export const inboundSchema = AddProjectMemberRequestBody1$inboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody1$outboundSchema` instead. */
-  export const outboundSchema = AddProjectMemberRequestBody1$outboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody1$Outbound` instead. */
-  export type Outbound = AddProjectMemberRequestBody1$Outbound;
-}
-
 export function addProjectMemberRequestBody1ToJSON(
   addProjectMemberRequestBody1: AddProjectMemberRequestBody1,
 ): string {
@@ -389,7 +307,6 @@ export function addProjectMemberRequestBody1ToJSON(
     ),
   );
 }
-
 export function addProjectMemberRequestBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<AddProjectMemberRequestBody1, SDKValidationError> {
@@ -410,7 +327,6 @@ export const AddProjectMemberRequestBody$inboundSchema: z.ZodType<
   z.lazy(() => AddProjectMemberRequestBody2$inboundSchema),
   z.lazy(() => AddProjectMemberRequestBody3$inboundSchema),
 ]);
-
 /** @internal */
 export type AddProjectMemberRequestBody$Outbound =
   | AddProjectMemberRequestBody1$Outbound
@@ -428,19 +344,6 @@ export const AddProjectMemberRequestBody$outboundSchema: z.ZodType<
   z.lazy(() => AddProjectMemberRequestBody3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberRequestBody$ {
-  /** @deprecated use `AddProjectMemberRequestBody$inboundSchema` instead. */
-  export const inboundSchema = AddProjectMemberRequestBody$inboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody$outboundSchema` instead. */
-  export const outboundSchema = AddProjectMemberRequestBody$outboundSchema;
-  /** @deprecated use `AddProjectMemberRequestBody$Outbound` instead. */
-  export type Outbound = AddProjectMemberRequestBody$Outbound;
-}
-
 export function addProjectMemberRequestBodyToJSON(
   addProjectMemberRequestBody: AddProjectMemberRequestBody,
 ): string {
@@ -450,7 +353,6 @@ export function addProjectMemberRequestBodyToJSON(
     ),
   );
 }
-
 export function addProjectMemberRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AddProjectMemberRequestBody, SDKValidationError> {
@@ -480,7 +382,6 @@ export const AddProjectMemberRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type AddProjectMemberRequest$Outbound = {
   idOrName: string;
@@ -512,19 +413,6 @@ export const AddProjectMemberRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberRequest$ {
-  /** @deprecated use `AddProjectMemberRequest$inboundSchema` instead. */
-  export const inboundSchema = AddProjectMemberRequest$inboundSchema;
-  /** @deprecated use `AddProjectMemberRequest$outboundSchema` instead. */
-  export const outboundSchema = AddProjectMemberRequest$outboundSchema;
-  /** @deprecated use `AddProjectMemberRequest$Outbound` instead. */
-  export type Outbound = AddProjectMemberRequest$Outbound;
-}
-
 export function addProjectMemberRequestToJSON(
   addProjectMemberRequest: AddProjectMemberRequest,
 ): string {
@@ -532,7 +420,6 @@ export function addProjectMemberRequestToJSON(
     AddProjectMemberRequest$outboundSchema.parse(addProjectMemberRequest),
   );
 }
-
 export function addProjectMemberRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AddProjectMemberRequest, SDKValidationError> {
@@ -551,7 +438,6 @@ export const AddProjectMemberResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type AddProjectMemberResponseBody$Outbound = {
   id: string;
@@ -566,19 +452,6 @@ export const AddProjectMemberResponseBody$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddProjectMemberResponseBody$ {
-  /** @deprecated use `AddProjectMemberResponseBody$inboundSchema` instead. */
-  export const inboundSchema = AddProjectMemberResponseBody$inboundSchema;
-  /** @deprecated use `AddProjectMemberResponseBody$outboundSchema` instead. */
-  export const outboundSchema = AddProjectMemberResponseBody$outboundSchema;
-  /** @deprecated use `AddProjectMemberResponseBody$Outbound` instead. */
-  export type Outbound = AddProjectMemberResponseBody$Outbound;
-}
-
 export function addProjectMemberResponseBodyToJSON(
   addProjectMemberResponseBody: AddProjectMemberResponseBody,
 ): string {
@@ -588,7 +461,6 @@ export function addProjectMemberResponseBodyToJSON(
     ),
   );
 }
-
 export function addProjectMemberResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<AddProjectMemberResponseBody, SDKValidationError> {

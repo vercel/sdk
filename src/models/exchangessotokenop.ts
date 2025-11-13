@@ -60,22 +60,10 @@ export type ExchangeSsoTokenResponseBody = {
 export const ExchangeSsoTokenGrantType$inboundSchema: z.ZodNativeEnum<
   typeof ExchangeSsoTokenGrantType
 > = z.nativeEnum(ExchangeSsoTokenGrantType);
-
 /** @internal */
 export const ExchangeSsoTokenGrantType$outboundSchema: z.ZodNativeEnum<
   typeof ExchangeSsoTokenGrantType
 > = ExchangeSsoTokenGrantType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExchangeSsoTokenGrantType$ {
-  /** @deprecated use `ExchangeSsoTokenGrantType$inboundSchema` instead. */
-  export const inboundSchema = ExchangeSsoTokenGrantType$inboundSchema;
-  /** @deprecated use `ExchangeSsoTokenGrantType$outboundSchema` instead. */
-  export const outboundSchema = ExchangeSsoTokenGrantType$outboundSchema;
-}
 
 /** @internal */
 export const ExchangeSsoTokenRequestBody$inboundSchema: z.ZodType<
@@ -97,7 +85,6 @@ export const ExchangeSsoTokenRequestBody$inboundSchema: z.ZodType<
     "grant_type": "grantType",
   });
 });
-
 /** @internal */
 export type ExchangeSsoTokenRequestBody$Outbound = {
   code: string;
@@ -129,19 +116,6 @@ export const ExchangeSsoTokenRequestBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExchangeSsoTokenRequestBody$ {
-  /** @deprecated use `ExchangeSsoTokenRequestBody$inboundSchema` instead. */
-  export const inboundSchema = ExchangeSsoTokenRequestBody$inboundSchema;
-  /** @deprecated use `ExchangeSsoTokenRequestBody$outboundSchema` instead. */
-  export const outboundSchema = ExchangeSsoTokenRequestBody$outboundSchema;
-  /** @deprecated use `ExchangeSsoTokenRequestBody$Outbound` instead. */
-  export type Outbound = ExchangeSsoTokenRequestBody$Outbound;
-}
-
 export function exchangeSsoTokenRequestBodyToJSON(
   exchangeSsoTokenRequestBody: ExchangeSsoTokenRequestBody,
 ): string {
@@ -151,7 +125,6 @@ export function exchangeSsoTokenRequestBodyToJSON(
     ),
   );
 }
-
 export function exchangeSsoTokenRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ExchangeSsoTokenRequestBody, SDKValidationError> {
@@ -180,7 +153,6 @@ export const ExchangeSsoTokenResponseBody$inboundSchema: z.ZodType<
     "expires_in": "expiresIn",
   });
 });
-
 /** @internal */
 export type ExchangeSsoTokenResponseBody$Outbound = {
   id_token: string;
@@ -208,19 +180,6 @@ export const ExchangeSsoTokenResponseBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExchangeSsoTokenResponseBody$ {
-  /** @deprecated use `ExchangeSsoTokenResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ExchangeSsoTokenResponseBody$inboundSchema;
-  /** @deprecated use `ExchangeSsoTokenResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ExchangeSsoTokenResponseBody$outboundSchema;
-  /** @deprecated use `ExchangeSsoTokenResponseBody$Outbound` instead. */
-  export type Outbound = ExchangeSsoTokenResponseBody$Outbound;
-}
-
 export function exchangeSsoTokenResponseBodyToJSON(
   exchangeSsoTokenResponseBody: ExchangeSsoTokenResponseBody,
 ): string {
@@ -230,7 +189,6 @@ export function exchangeSsoTokenResponseBodyToJSON(
     ),
   );
 }
-
 export function exchangeSsoTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ExchangeSsoTokenResponseBody, SDKValidationError> {

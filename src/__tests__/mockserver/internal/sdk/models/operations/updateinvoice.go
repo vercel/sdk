@@ -117,7 +117,7 @@ func (u UpdateInvoiceRequestBody) MarshalJSON() ([]byte, error) {
 type UpdateInvoiceRequest struct {
 	IntegrationConfigurationID string                   `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	InvoiceID                  string                   `pathParam:"style=simple,explode=false,name=invoiceId"`
-	RequestBody                UpdateInvoiceRequestBody `request:"mediaType=application/json"`
+	Body                       UpdateInvoiceRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateInvoiceRequest) GetIntegrationConfigurationID() string {
@@ -134,11 +134,11 @@ func (o *UpdateInvoiceRequest) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-func (o *UpdateInvoiceRequest) GetRequestBody() UpdateInvoiceRequestBody {
+func (o *UpdateInvoiceRequest) GetBody() UpdateInvoiceRequestBody {
 	if o == nil {
 		return UpdateInvoiceRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateInvoiceResponse struct {

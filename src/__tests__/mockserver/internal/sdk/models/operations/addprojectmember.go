@@ -341,8 +341,8 @@ type AddProjectMemberRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                     `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody AddProjectMemberRequestBody `request:"mediaType=application/json"`
+	Slug *string                     `queryParam:"style=form,explode=true,name=slug"`
+	Body AddProjectMemberRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *AddProjectMemberRequest) GetIDOrName() string {
@@ -366,11 +366,11 @@ func (o *AddProjectMemberRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *AddProjectMemberRequest) GetRequestBody() AddProjectMemberRequestBody {
+func (o *AddProjectMemberRequest) GetBody() AddProjectMemberRequestBody {
 	if o == nil {
 		return AddProjectMemberRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // AddProjectMemberResponseBody - Responds with the project ID on success.

@@ -191,7 +191,6 @@ export const GetInvoiceRequest$inboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
   invoiceId: z.string(),
 });
-
 /** @internal */
 export type GetInvoiceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -208,19 +207,6 @@ export const GetInvoiceRequest$outboundSchema: z.ZodType<
   invoiceId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceRequest$ {
-  /** @deprecated use `GetInvoiceRequest$inboundSchema` instead. */
-  export const inboundSchema = GetInvoiceRequest$inboundSchema;
-  /** @deprecated use `GetInvoiceRequest$outboundSchema` instead. */
-  export const outboundSchema = GetInvoiceRequest$outboundSchema;
-  /** @deprecated use `GetInvoiceRequest$Outbound` instead. */
-  export type Outbound = GetInvoiceRequest$Outbound;
-}
-
 export function getInvoiceRequestToJSON(
   getInvoiceRequest: GetInvoiceRequest,
 ): string {
@@ -228,7 +214,6 @@ export function getInvoiceRequestToJSON(
     GetInvoiceRequest$outboundSchema.parse(getInvoiceRequest),
   );
 }
-
 export function getInvoiceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoiceRequest, SDKValidationError> {
@@ -243,22 +228,10 @@ export function getInvoiceRequestFromJSON(
 export const GetInvoiceState$inboundSchema: z.ZodNativeEnum<
   typeof GetInvoiceState
 > = z.nativeEnum(GetInvoiceState);
-
 /** @internal */
 export const GetInvoiceState$outboundSchema: z.ZodNativeEnum<
   typeof GetInvoiceState
 > = GetInvoiceState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceState$ {
-  /** @deprecated use `GetInvoiceState$inboundSchema` instead. */
-  export const inboundSchema = GetInvoiceState$inboundSchema;
-  /** @deprecated use `GetInvoiceState$outboundSchema` instead. */
-  export const outboundSchema = GetInvoiceState$outboundSchema;
-}
 
 /** @internal */
 export const GetInvoicePeriod$inboundSchema: z.ZodType<
@@ -269,7 +242,6 @@ export const GetInvoicePeriod$inboundSchema: z.ZodType<
   start: z.string(),
   end: z.string(),
 });
-
 /** @internal */
 export type GetInvoicePeriod$Outbound = {
   start: string;
@@ -286,19 +258,6 @@ export const GetInvoicePeriod$outboundSchema: z.ZodType<
   end: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoicePeriod$ {
-  /** @deprecated use `GetInvoicePeriod$inboundSchema` instead. */
-  export const inboundSchema = GetInvoicePeriod$inboundSchema;
-  /** @deprecated use `GetInvoicePeriod$outboundSchema` instead. */
-  export const outboundSchema = GetInvoicePeriod$outboundSchema;
-  /** @deprecated use `GetInvoicePeriod$Outbound` instead. */
-  export type Outbound = GetInvoicePeriod$Outbound;
-}
-
 export function getInvoicePeriodToJSON(
   getInvoicePeriod: GetInvoicePeriod,
 ): string {
@@ -306,7 +265,6 @@ export function getInvoicePeriodToJSON(
     GetInvoicePeriod$outboundSchema.parse(getInvoicePeriod),
   );
 }
-
 export function getInvoicePeriodFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoicePeriod, SDKValidationError> {
@@ -334,7 +292,6 @@ export const GetInvoiceItems$inboundSchema: z.ZodType<
   units: z.string(),
   total: z.string(),
 });
-
 /** @internal */
 export type GetInvoiceItems$Outbound = {
   billingPlanId: string;
@@ -367,25 +324,11 @@ export const GetInvoiceItems$outboundSchema: z.ZodType<
   total: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceItems$ {
-  /** @deprecated use `GetInvoiceItems$inboundSchema` instead. */
-  export const inboundSchema = GetInvoiceItems$inboundSchema;
-  /** @deprecated use `GetInvoiceItems$outboundSchema` instead. */
-  export const outboundSchema = GetInvoiceItems$outboundSchema;
-  /** @deprecated use `GetInvoiceItems$Outbound` instead. */
-  export type Outbound = GetInvoiceItems$Outbound;
-}
-
 export function getInvoiceItemsToJSON(
   getInvoiceItems: GetInvoiceItems,
 ): string {
   return JSON.stringify(GetInvoiceItems$outboundSchema.parse(getInvoiceItems));
 }
-
 export function getInvoiceItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoiceItems, SDKValidationError> {
@@ -410,7 +353,6 @@ export const GetInvoiceDiscounts$inboundSchema: z.ZodType<
   details: z.string().optional(),
   amount: z.string(),
 });
-
 /** @internal */
 export type GetInvoiceDiscounts$Outbound = {
   billingPlanId: string;
@@ -437,19 +379,6 @@ export const GetInvoiceDiscounts$outboundSchema: z.ZodType<
   amount: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceDiscounts$ {
-  /** @deprecated use `GetInvoiceDiscounts$inboundSchema` instead. */
-  export const inboundSchema = GetInvoiceDiscounts$inboundSchema;
-  /** @deprecated use `GetInvoiceDiscounts$outboundSchema` instead. */
-  export const outboundSchema = GetInvoiceDiscounts$outboundSchema;
-  /** @deprecated use `GetInvoiceDiscounts$Outbound` instead. */
-  export type Outbound = GetInvoiceDiscounts$Outbound;
-}
-
 export function getInvoiceDiscountsToJSON(
   getInvoiceDiscounts: GetInvoiceDiscounts,
 ): string {
@@ -457,7 +386,6 @@ export function getInvoiceDiscountsToJSON(
     GetInvoiceDiscounts$outboundSchema.parse(getInvoiceDiscounts),
   );
 }
-
 export function getInvoiceDiscountsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoiceDiscounts, SDKValidationError> {
@@ -491,7 +419,6 @@ export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   created: z.string(),
   updated: z.string(),
 });
-
 /** @internal */
 export type GetInvoiceResponseBody$Outbound = {
   test?: boolean | undefined;
@@ -535,19 +462,6 @@ export const GetInvoiceResponseBody$outboundSchema: z.ZodType<
   updated: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceResponseBody$ {
-  /** @deprecated use `GetInvoiceResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetInvoiceResponseBody$inboundSchema;
-  /** @deprecated use `GetInvoiceResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetInvoiceResponseBody$outboundSchema;
-  /** @deprecated use `GetInvoiceResponseBody$Outbound` instead. */
-  export type Outbound = GetInvoiceResponseBody$Outbound;
-}
-
 export function getInvoiceResponseBodyToJSON(
   getInvoiceResponseBody: GetInvoiceResponseBody,
 ): string {
@@ -555,7 +469,6 @@ export function getInvoiceResponseBodyToJSON(
     GetInvoiceResponseBody$outboundSchema.parse(getInvoiceResponseBody),
   );
 }
-
 export function getInvoiceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetInvoiceResponseBody, SDKValidationError> {

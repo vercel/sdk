@@ -54,7 +54,6 @@ export const Balances$inboundSchema: z.ZodType<
   nameLabel: z.string().optional(),
   currencyValueInCents: z.number(),
 });
-
 /** @internal */
 export type Balances$Outbound = {
   resourceId?: string | undefined;
@@ -75,23 +74,9 @@ export const Balances$outboundSchema: z.ZodType<
   currencyValueInCents: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Balances$ {
-  /** @deprecated use `Balances$inboundSchema` instead. */
-  export const inboundSchema = Balances$inboundSchema;
-  /** @deprecated use `Balances$outboundSchema` instead. */
-  export const outboundSchema = Balances$outboundSchema;
-  /** @deprecated use `Balances$Outbound` instead. */
-  export type Outbound = Balances$Outbound;
-}
-
 export function balancesToJSON(balances: Balances): string {
   return JSON.stringify(Balances$outboundSchema.parse(balances));
 }
-
 export function balancesFromJSON(
   jsonString: string,
 ): SafeParseResult<Balances, SDKValidationError> {
@@ -111,7 +96,6 @@ export const SubmitPrepaymentBalancesRequestBody$inboundSchema: z.ZodType<
   timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   balances: z.array(z.lazy(() => Balances$inboundSchema)),
 });
-
 /** @internal */
 export type SubmitPrepaymentBalancesRequestBody$Outbound = {
   timestamp: string;
@@ -128,21 +112,6 @@ export const SubmitPrepaymentBalancesRequestBody$outboundSchema: z.ZodType<
   balances: z.array(z.lazy(() => Balances$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitPrepaymentBalancesRequestBody$ {
-  /** @deprecated use `SubmitPrepaymentBalancesRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    SubmitPrepaymentBalancesRequestBody$inboundSchema;
-  /** @deprecated use `SubmitPrepaymentBalancesRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    SubmitPrepaymentBalancesRequestBody$outboundSchema;
-  /** @deprecated use `SubmitPrepaymentBalancesRequestBody$Outbound` instead. */
-  export type Outbound = SubmitPrepaymentBalancesRequestBody$Outbound;
-}
-
 export function submitPrepaymentBalancesRequestBodyToJSON(
   submitPrepaymentBalancesRequestBody: SubmitPrepaymentBalancesRequestBody,
 ): string {
@@ -152,7 +121,6 @@ export function submitPrepaymentBalancesRequestBodyToJSON(
     ),
   );
 }
-
 export function submitPrepaymentBalancesRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitPrepaymentBalancesRequestBody, SDKValidationError> {
@@ -178,7 +146,6 @@ export const SubmitPrepaymentBalancesRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type SubmitPrepaymentBalancesRequest$Outbound = {
   integrationConfigurationId: string;
@@ -200,19 +167,6 @@ export const SubmitPrepaymentBalancesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitPrepaymentBalancesRequest$ {
-  /** @deprecated use `SubmitPrepaymentBalancesRequest$inboundSchema` instead. */
-  export const inboundSchema = SubmitPrepaymentBalancesRequest$inboundSchema;
-  /** @deprecated use `SubmitPrepaymentBalancesRequest$outboundSchema` instead. */
-  export const outboundSchema = SubmitPrepaymentBalancesRequest$outboundSchema;
-  /** @deprecated use `SubmitPrepaymentBalancesRequest$Outbound` instead. */
-  export type Outbound = SubmitPrepaymentBalancesRequest$Outbound;
-}
-
 export function submitPrepaymentBalancesRequestToJSON(
   submitPrepaymentBalancesRequest: SubmitPrepaymentBalancesRequest,
 ): string {
@@ -222,7 +176,6 @@ export function submitPrepaymentBalancesRequestToJSON(
     ),
   );
 }
-
 export function submitPrepaymentBalancesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitPrepaymentBalancesRequest, SDKValidationError> {

@@ -61,24 +61,26 @@ export type UpdateResourceBillingPlan = {
   additionalProperties?: { [k: string]: any } | undefined;
 };
 
-export const UpdateResourceLevel = {
+export const NotificationLevel = {
   Info: "info",
   Warn: "warn",
   Error: "error",
 } as const;
-export type UpdateResourceLevel = ClosedEnum<typeof UpdateResourceLevel>;
+export type NotificationLevel = ClosedEnum<typeof NotificationLevel>;
 
-export type UpdateResourceNotification = {
-  level: UpdateResourceLevel;
+export type UpdateResourceNotification1 = {
+  level: NotificationLevel;
   title: string;
   message?: string | undefined;
   href?: string | undefined;
 };
 
+export type UpdateResourceNotification = UpdateResourceNotification1 | string;
+
 /**
  * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
  */
-export type UpdateResourceEnvironmentOverrides = {
+export type UpdateResourceSecretsMarketplaceEnvironmentOverrides = {
   /**
    * Value used for development environment.
    */
@@ -93,15 +95,55 @@ export type UpdateResourceEnvironmentOverrides = {
   production?: string | undefined;
 };
 
-export type UpdateResourceSecrets = {
+export type SecretsSecrets = {
   name: string;
   value: string;
   prefix?: string | undefined;
   /**
    * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
    */
-  environmentOverrides?: UpdateResourceEnvironmentOverrides | undefined;
+  environmentOverrides?:
+    | UpdateResourceSecretsMarketplaceEnvironmentOverrides
+    | undefined;
 };
+
+export type Secrets2 = {
+  secrets: Array<SecretsSecrets>;
+  /**
+   * If true, will only overwrite the provided secrets instead of replacing all secrets.
+   */
+  partial?: boolean | undefined;
+};
+
+/**
+ * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+ */
+export type SecretsEnvironmentOverrides = {
+  /**
+   * Value used for development environment.
+   */
+  development?: string | undefined;
+  /**
+   * Value used for preview environment.
+   */
+  preview?: string | undefined;
+  /**
+   * Value used for production environment.
+   */
+  production?: string | undefined;
+};
+
+export type Secrets1 = {
+  name: string;
+  value: string;
+  prefix?: string | undefined;
+  /**
+   * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
+   */
+  environmentOverrides?: SecretsEnvironmentOverrides | undefined;
+};
+
+export type UpdateResourceSecrets = Secrets2 | Array<Secrets1>;
 
 export type UpdateResourceRequestBody = {
   ownership?: UpdateResourceOwnership | undefined;
@@ -109,9 +151,9 @@ export type UpdateResourceRequestBody = {
   status?: UpdateResourceStatus | undefined;
   metadata?: { [k: string]: any } | undefined;
   billingPlan?: UpdateResourceBillingPlan | undefined;
-  notification?: UpdateResourceNotification | undefined;
+  notification?: UpdateResourceNotification1 | string | undefined;
   extras?: { [k: string]: any } | undefined;
-  secrets?: Array<UpdateResourceSecrets> | undefined;
+  secrets?: Secrets2 | Array<Secrets1> | undefined;
 };
 
 export type UpdateResourceRequest = {
@@ -128,64 +170,28 @@ export type UpdateResourceResponseBody = {
 export const UpdateResourceOwnership$inboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceOwnership
 > = z.nativeEnum(UpdateResourceOwnership);
-
 /** @internal */
 export const UpdateResourceOwnership$outboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceOwnership
 > = UpdateResourceOwnership$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceOwnership$ {
-  /** @deprecated use `UpdateResourceOwnership$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceOwnership$inboundSchema;
-  /** @deprecated use `UpdateResourceOwnership$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceOwnership$outboundSchema;
-}
-
 /** @internal */
 export const UpdateResourceStatus$inboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceStatus
 > = z.nativeEnum(UpdateResourceStatus);
-
 /** @internal */
 export const UpdateResourceStatus$outboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceStatus
 > = UpdateResourceStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceStatus$ {
-  /** @deprecated use `UpdateResourceStatus$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceStatus$inboundSchema;
-  /** @deprecated use `UpdateResourceStatus$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceStatus$outboundSchema;
-}
-
 /** @internal */
 export const UpdateResourceType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceType
 > = z.nativeEnum(UpdateResourceType);
-
 /** @internal */
 export const UpdateResourceType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceType
 > = UpdateResourceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceType$ {
-  /** @deprecated use `UpdateResourceType$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceType$inboundSchema;
-  /** @deprecated use `UpdateResourceType$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceType$outboundSchema;
-}
 
 /** @internal */
 export const UpdateResourceDetails$inboundSchema: z.ZodType<
@@ -196,7 +202,6 @@ export const UpdateResourceDetails$inboundSchema: z.ZodType<
   label: z.string(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateResourceDetails$Outbound = {
   label: string;
@@ -213,19 +218,6 @@ export const UpdateResourceDetails$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceDetails$ {
-  /** @deprecated use `UpdateResourceDetails$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceDetails$inboundSchema;
-  /** @deprecated use `UpdateResourceDetails$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceDetails$outboundSchema;
-  /** @deprecated use `UpdateResourceDetails$Outbound` instead. */
-  export type Outbound = UpdateResourceDetails$Outbound;
-}
-
 export function updateResourceDetailsToJSON(
   updateResourceDetails: UpdateResourceDetails,
 ): string {
@@ -233,7 +225,6 @@ export function updateResourceDetailsToJSON(
     UpdateResourceDetails$outboundSchema.parse(updateResourceDetails),
   );
 }
-
 export function updateResourceDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceDetails, SDKValidationError> {
@@ -253,7 +244,6 @@ export const UpdateResourceHighlightedDetails$inboundSchema: z.ZodType<
   label: z.string(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateResourceHighlightedDetails$Outbound = {
   label: string;
@@ -270,19 +260,6 @@ export const UpdateResourceHighlightedDetails$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceHighlightedDetails$ {
-  /** @deprecated use `UpdateResourceHighlightedDetails$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceHighlightedDetails$inboundSchema;
-  /** @deprecated use `UpdateResourceHighlightedDetails$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceHighlightedDetails$outboundSchema;
-  /** @deprecated use `UpdateResourceHighlightedDetails$Outbound` instead. */
-  export type Outbound = UpdateResourceHighlightedDetails$Outbound;
-}
-
 export function updateResourceHighlightedDetailsToJSON(
   updateResourceHighlightedDetails: UpdateResourceHighlightedDetails,
 ): string {
@@ -292,7 +269,6 @@ export function updateResourceHighlightedDetailsToJSON(
     ),
   );
 }
-
 export function updateResourceHighlightedDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceHighlightedDetails, SDKValidationError> {
@@ -326,7 +302,6 @@ export const UpdateResourceBillingPlan$inboundSchema: z.ZodType<
   "additionalProperties",
   true,
 );
-
 /** @internal */
 export type UpdateResourceBillingPlan$Outbound = {
   id: string;
@@ -371,19 +346,6 @@ export const UpdateResourceBillingPlan$outboundSchema: z.ZodType<
   };
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceBillingPlan$ {
-  /** @deprecated use `UpdateResourceBillingPlan$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceBillingPlan$inboundSchema;
-  /** @deprecated use `UpdateResourceBillingPlan$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceBillingPlan$outboundSchema;
-  /** @deprecated use `UpdateResourceBillingPlan$Outbound` instead. */
-  export type Outbound = UpdateResourceBillingPlan$Outbound;
-}
-
 export function updateResourceBillingPlanToJSON(
   updateResourceBillingPlan: UpdateResourceBillingPlan,
 ): string {
@@ -391,7 +353,6 @@ export function updateResourceBillingPlanToJSON(
     UpdateResourceBillingPlan$outboundSchema.parse(updateResourceBillingPlan),
   );
 }
-
 export function updateResourceBillingPlanFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceBillingPlan, SDKValidationError> {
@@ -403,40 +364,27 @@ export function updateResourceBillingPlanFromJSON(
 }
 
 /** @internal */
-export const UpdateResourceLevel$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateResourceLevel
-> = z.nativeEnum(UpdateResourceLevel);
+export const NotificationLevel$inboundSchema: z.ZodNativeEnum<
+  typeof NotificationLevel
+> = z.nativeEnum(NotificationLevel);
+/** @internal */
+export const NotificationLevel$outboundSchema: z.ZodNativeEnum<
+  typeof NotificationLevel
+> = NotificationLevel$inboundSchema;
 
 /** @internal */
-export const UpdateResourceLevel$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateResourceLevel
-> = UpdateResourceLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceLevel$ {
-  /** @deprecated use `UpdateResourceLevel$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceLevel$inboundSchema;
-  /** @deprecated use `UpdateResourceLevel$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceLevel$outboundSchema;
-}
-
-/** @internal */
-export const UpdateResourceNotification$inboundSchema: z.ZodType<
-  UpdateResourceNotification,
+export const UpdateResourceNotification1$inboundSchema: z.ZodType<
+  UpdateResourceNotification1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  level: UpdateResourceLevel$inboundSchema,
+  level: NotificationLevel$inboundSchema,
   title: z.string(),
   message: z.string().optional(),
   href: z.string().optional(),
 });
-
 /** @internal */
-export type UpdateResourceNotification$Outbound = {
+export type UpdateResourceNotification1$Outbound = {
   level: string;
   title: string;
   message?: string | undefined;
@@ -444,29 +392,59 @@ export type UpdateResourceNotification$Outbound = {
 };
 
 /** @internal */
-export const UpdateResourceNotification$outboundSchema: z.ZodType<
-  UpdateResourceNotification$Outbound,
+export const UpdateResourceNotification1$outboundSchema: z.ZodType<
+  UpdateResourceNotification1$Outbound,
   z.ZodTypeDef,
-  UpdateResourceNotification
+  UpdateResourceNotification1
 > = z.object({
-  level: UpdateResourceLevel$outboundSchema,
+  level: NotificationLevel$outboundSchema,
   title: z.string(),
   message: z.string().optional(),
   href: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceNotification$ {
-  /** @deprecated use `UpdateResourceNotification$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceNotification$inboundSchema;
-  /** @deprecated use `UpdateResourceNotification$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceNotification$outboundSchema;
-  /** @deprecated use `UpdateResourceNotification$Outbound` instead. */
-  export type Outbound = UpdateResourceNotification$Outbound;
+export function updateResourceNotification1ToJSON(
+  updateResourceNotification1: UpdateResourceNotification1,
+): string {
+  return JSON.stringify(
+    UpdateResourceNotification1$outboundSchema.parse(
+      updateResourceNotification1,
+    ),
+  );
 }
+export function updateResourceNotification1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateResourceNotification1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateResourceNotification1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateResourceNotification1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateResourceNotification$inboundSchema: z.ZodType<
+  UpdateResourceNotification,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => UpdateResourceNotification1$inboundSchema),
+  z.string(),
+]);
+/** @internal */
+export type UpdateResourceNotification$Outbound =
+  | UpdateResourceNotification1$Outbound
+  | string;
+
+/** @internal */
+export const UpdateResourceNotification$outboundSchema: z.ZodType<
+  UpdateResourceNotification$Outbound,
+  z.ZodTypeDef,
+  UpdateResourceNotification
+> = z.union([
+  z.lazy(() => UpdateResourceNotification1$outboundSchema),
+  z.string(),
+]);
 
 export function updateResourceNotificationToJSON(
   updateResourceNotification: UpdateResourceNotification,
@@ -475,7 +453,6 @@ export function updateResourceNotificationToJSON(
     UpdateResourceNotification$outboundSchema.parse(updateResourceNotification),
   );
 }
-
 export function updateResourceNotificationFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceNotification, SDKValidationError> {
@@ -487,8 +464,152 @@ export function updateResourceNotificationFromJSON(
 }
 
 /** @internal */
-export const UpdateResourceEnvironmentOverrides$inboundSchema: z.ZodType<
-  UpdateResourceEnvironmentOverrides,
+export const UpdateResourceSecretsMarketplaceEnvironmentOverrides$inboundSchema:
+  z.ZodType<
+    UpdateResourceSecretsMarketplaceEnvironmentOverrides,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    development: z.string().optional(),
+    preview: z.string().optional(),
+    production: z.string().optional(),
+  });
+/** @internal */
+export type UpdateResourceSecretsMarketplaceEnvironmentOverrides$Outbound = {
+  development?: string | undefined;
+  preview?: string | undefined;
+  production?: string | undefined;
+};
+
+/** @internal */
+export const UpdateResourceSecretsMarketplaceEnvironmentOverrides$outboundSchema:
+  z.ZodType<
+    UpdateResourceSecretsMarketplaceEnvironmentOverrides$Outbound,
+    z.ZodTypeDef,
+    UpdateResourceSecretsMarketplaceEnvironmentOverrides
+  > = z.object({
+    development: z.string().optional(),
+    preview: z.string().optional(),
+    production: z.string().optional(),
+  });
+
+export function updateResourceSecretsMarketplaceEnvironmentOverridesToJSON(
+  updateResourceSecretsMarketplaceEnvironmentOverrides:
+    UpdateResourceSecretsMarketplaceEnvironmentOverrides,
+): string {
+  return JSON.stringify(
+    UpdateResourceSecretsMarketplaceEnvironmentOverrides$outboundSchema.parse(
+      updateResourceSecretsMarketplaceEnvironmentOverrides,
+    ),
+  );
+}
+export function updateResourceSecretsMarketplaceEnvironmentOverridesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateResourceSecretsMarketplaceEnvironmentOverrides,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateResourceSecretsMarketplaceEnvironmentOverrides$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateResourceSecretsMarketplaceEnvironmentOverrides' from JSON`,
+  );
+}
+
+/** @internal */
+export const SecretsSecrets$inboundSchema: z.ZodType<
+  SecretsSecrets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  value: z.string(),
+  prefix: z.string().optional(),
+  environmentOverrides: z.lazy(() =>
+    UpdateResourceSecretsMarketplaceEnvironmentOverrides$inboundSchema
+  ).optional(),
+});
+/** @internal */
+export type SecretsSecrets$Outbound = {
+  name: string;
+  value: string;
+  prefix?: string | undefined;
+  environmentOverrides?:
+    | UpdateResourceSecretsMarketplaceEnvironmentOverrides$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const SecretsSecrets$outboundSchema: z.ZodType<
+  SecretsSecrets$Outbound,
+  z.ZodTypeDef,
+  SecretsSecrets
+> = z.object({
+  name: z.string(),
+  value: z.string(),
+  prefix: z.string().optional(),
+  environmentOverrides: z.lazy(() =>
+    UpdateResourceSecretsMarketplaceEnvironmentOverrides$outboundSchema
+  ).optional(),
+});
+
+export function secretsSecretsToJSON(secretsSecrets: SecretsSecrets): string {
+  return JSON.stringify(SecretsSecrets$outboundSchema.parse(secretsSecrets));
+}
+export function secretsSecretsFromJSON(
+  jsonString: string,
+): SafeParseResult<SecretsSecrets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SecretsSecrets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SecretsSecrets' from JSON`,
+  );
+}
+
+/** @internal */
+export const Secrets2$inboundSchema: z.ZodType<
+  Secrets2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  secrets: z.array(z.lazy(() => SecretsSecrets$inboundSchema)),
+  partial: z.boolean().optional(),
+});
+/** @internal */
+export type Secrets2$Outbound = {
+  secrets: Array<SecretsSecrets$Outbound>;
+  partial?: boolean | undefined;
+};
+
+/** @internal */
+export const Secrets2$outboundSchema: z.ZodType<
+  Secrets2$Outbound,
+  z.ZodTypeDef,
+  Secrets2
+> = z.object({
+  secrets: z.array(z.lazy(() => SecretsSecrets$outboundSchema)),
+  partial: z.boolean().optional(),
+});
+
+export function secrets2ToJSON(secrets2: Secrets2): string {
+  return JSON.stringify(Secrets2$outboundSchema.parse(secrets2));
+}
+export function secrets2FromJSON(
+  jsonString: string,
+): SafeParseResult<Secrets2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Secrets2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Secrets2' from JSON`,
+  );
+}
+
+/** @internal */
+export const SecretsEnvironmentOverrides$inboundSchema: z.ZodType<
+  SecretsEnvironmentOverrides,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -496,57 +617,86 @@ export const UpdateResourceEnvironmentOverrides$inboundSchema: z.ZodType<
   preview: z.string().optional(),
   production: z.string().optional(),
 });
-
 /** @internal */
-export type UpdateResourceEnvironmentOverrides$Outbound = {
+export type SecretsEnvironmentOverrides$Outbound = {
   development?: string | undefined;
   preview?: string | undefined;
   production?: string | undefined;
 };
 
 /** @internal */
-export const UpdateResourceEnvironmentOverrides$outboundSchema: z.ZodType<
-  UpdateResourceEnvironmentOverrides$Outbound,
+export const SecretsEnvironmentOverrides$outboundSchema: z.ZodType<
+  SecretsEnvironmentOverrides$Outbound,
   z.ZodTypeDef,
-  UpdateResourceEnvironmentOverrides
+  SecretsEnvironmentOverrides
 > = z.object({
   development: z.string().optional(),
   preview: z.string().optional(),
   production: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceEnvironmentOverrides$ {
-  /** @deprecated use `UpdateResourceEnvironmentOverrides$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceEnvironmentOverrides$inboundSchema;
-  /** @deprecated use `UpdateResourceEnvironmentOverrides$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateResourceEnvironmentOverrides$outboundSchema;
-  /** @deprecated use `UpdateResourceEnvironmentOverrides$Outbound` instead. */
-  export type Outbound = UpdateResourceEnvironmentOverrides$Outbound;
-}
-
-export function updateResourceEnvironmentOverridesToJSON(
-  updateResourceEnvironmentOverrides: UpdateResourceEnvironmentOverrides,
+export function secretsEnvironmentOverridesToJSON(
+  secretsEnvironmentOverrides: SecretsEnvironmentOverrides,
 ): string {
   return JSON.stringify(
-    UpdateResourceEnvironmentOverrides$outboundSchema.parse(
-      updateResourceEnvironmentOverrides,
+    SecretsEnvironmentOverrides$outboundSchema.parse(
+      secretsEnvironmentOverrides,
     ),
   );
 }
-
-export function updateResourceEnvironmentOverridesFromJSON(
+export function secretsEnvironmentOverridesFromJSON(
   jsonString: string,
-): SafeParseResult<UpdateResourceEnvironmentOverrides, SDKValidationError> {
+): SafeParseResult<SecretsEnvironmentOverrides, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      UpdateResourceEnvironmentOverrides$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateResourceEnvironmentOverrides' from JSON`,
+    (x) => SecretsEnvironmentOverrides$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SecretsEnvironmentOverrides' from JSON`,
+  );
+}
+
+/** @internal */
+export const Secrets1$inboundSchema: z.ZodType<
+  Secrets1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string(),
+  value: z.string(),
+  prefix: z.string().optional(),
+  environmentOverrides: z.lazy(() => SecretsEnvironmentOverrides$inboundSchema)
+    .optional(),
+});
+/** @internal */
+export type Secrets1$Outbound = {
+  name: string;
+  value: string;
+  prefix?: string | undefined;
+  environmentOverrides?: SecretsEnvironmentOverrides$Outbound | undefined;
+};
+
+/** @internal */
+export const Secrets1$outboundSchema: z.ZodType<
+  Secrets1$Outbound,
+  z.ZodTypeDef,
+  Secrets1
+> = z.object({
+  name: z.string(),
+  value: z.string(),
+  prefix: z.string().optional(),
+  environmentOverrides: z.lazy(() => SecretsEnvironmentOverrides$outboundSchema)
+    .optional(),
+});
+
+export function secrets1ToJSON(secrets1: Secrets1): string {
+  return JSON.stringify(Secrets1$outboundSchema.parse(secrets1));
+}
+export function secrets1FromJSON(
+  jsonString: string,
+): SafeParseResult<Secrets1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Secrets1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Secrets1' from JSON`,
   );
 }
 
@@ -555,51 +705,24 @@ export const UpdateResourceSecrets$inboundSchema: z.ZodType<
   UpdateResourceSecrets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceEnvironmentOverrides$inboundSchema
-  ).optional(),
-});
-
+> = z.union([
+  z.lazy(() => Secrets2$inboundSchema),
+  z.array(z.lazy(() => Secrets1$inboundSchema)),
+]);
 /** @internal */
-export type UpdateResourceSecrets$Outbound = {
-  name: string;
-  value: string;
-  prefix?: string | undefined;
-  environmentOverrides?:
-    | UpdateResourceEnvironmentOverrides$Outbound
-    | undefined;
-};
+export type UpdateResourceSecrets$Outbound =
+  | Secrets2$Outbound
+  | Array<Secrets1$Outbound>;
 
 /** @internal */
 export const UpdateResourceSecrets$outboundSchema: z.ZodType<
   UpdateResourceSecrets$Outbound,
   z.ZodTypeDef,
   UpdateResourceSecrets
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceEnvironmentOverrides$outboundSchema
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecrets$ {
-  /** @deprecated use `UpdateResourceSecrets$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceSecrets$inboundSchema;
-  /** @deprecated use `UpdateResourceSecrets$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceSecrets$outboundSchema;
-  /** @deprecated use `UpdateResourceSecrets$Outbound` instead. */
-  export type Outbound = UpdateResourceSecrets$Outbound;
-}
+> = z.union([
+  z.lazy(() => Secrets2$outboundSchema),
+  z.array(z.lazy(() => Secrets1$outboundSchema)),
+]);
 
 export function updateResourceSecretsToJSON(
   updateResourceSecrets: UpdateResourceSecrets,
@@ -608,7 +731,6 @@ export function updateResourceSecretsToJSON(
     UpdateResourceSecrets$outboundSchema.parse(updateResourceSecrets),
   );
 }
-
 export function updateResourceSecretsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceSecrets, SDKValidationError> {
@@ -630,13 +752,16 @@ export const UpdateResourceRequestBody$inboundSchema: z.ZodType<
   status: UpdateResourceStatus$inboundSchema.optional(),
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => UpdateResourceBillingPlan$inboundSchema).optional(),
-  notification: z.lazy(() => UpdateResourceNotification$inboundSchema)
-    .optional(),
+  notification: z.union([
+    z.lazy(() => UpdateResourceNotification1$inboundSchema),
+    z.string(),
+  ]).optional(),
   extras: z.record(z.any()).optional(),
-  secrets: z.array(z.lazy(() => UpdateResourceSecrets$inboundSchema))
-    .optional(),
+  secrets: z.union([
+    z.lazy(() => Secrets2$inboundSchema),
+    z.array(z.lazy(() => Secrets1$inboundSchema)),
+  ]).optional(),
 });
-
 /** @internal */
 export type UpdateResourceRequestBody$Outbound = {
   ownership?: string | undefined;
@@ -644,9 +769,9 @@ export type UpdateResourceRequestBody$Outbound = {
   status?: string | undefined;
   metadata?: { [k: string]: any } | undefined;
   billingPlan?: UpdateResourceBillingPlan$Outbound | undefined;
-  notification?: UpdateResourceNotification$Outbound | undefined;
+  notification?: UpdateResourceNotification1$Outbound | string | undefined;
   extras?: { [k: string]: any } | undefined;
-  secrets?: Array<UpdateResourceSecrets$Outbound> | undefined;
+  secrets?: Secrets2$Outbound | Array<Secrets1$Outbound> | undefined;
 };
 
 /** @internal */
@@ -661,25 +786,16 @@ export const UpdateResourceRequestBody$outboundSchema: z.ZodType<
   metadata: z.record(z.any()).optional(),
   billingPlan: z.lazy(() => UpdateResourceBillingPlan$outboundSchema)
     .optional(),
-  notification: z.lazy(() => UpdateResourceNotification$outboundSchema)
-    .optional(),
+  notification: z.union([
+    z.lazy(() => UpdateResourceNotification1$outboundSchema),
+    z.string(),
+  ]).optional(),
   extras: z.record(z.any()).optional(),
-  secrets: z.array(z.lazy(() => UpdateResourceSecrets$outboundSchema))
-    .optional(),
+  secrets: z.union([
+    z.lazy(() => Secrets2$outboundSchema),
+    z.array(z.lazy(() => Secrets1$outboundSchema)),
+  ]).optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceRequestBody$ {
-  /** @deprecated use `UpdateResourceRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceRequestBody$inboundSchema;
-  /** @deprecated use `UpdateResourceRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceRequestBody$outboundSchema;
-  /** @deprecated use `UpdateResourceRequestBody$Outbound` instead. */
-  export type Outbound = UpdateResourceRequestBody$Outbound;
-}
 
 export function updateResourceRequestBodyToJSON(
   updateResourceRequestBody: UpdateResourceRequestBody,
@@ -688,7 +804,6 @@ export function updateResourceRequestBodyToJSON(
     UpdateResourceRequestBody$outboundSchema.parse(updateResourceRequestBody),
   );
 }
-
 export function updateResourceRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceRequestBody, SDKValidationError> {
@@ -713,7 +828,6 @@ export const UpdateResourceRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateResourceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -737,19 +851,6 @@ export const UpdateResourceRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceRequest$ {
-  /** @deprecated use `UpdateResourceRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceRequest$inboundSchema;
-  /** @deprecated use `UpdateResourceRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceRequest$outboundSchema;
-  /** @deprecated use `UpdateResourceRequest$Outbound` instead. */
-  export type Outbound = UpdateResourceRequest$Outbound;
-}
-
 export function updateResourceRequestToJSON(
   updateResourceRequest: UpdateResourceRequest,
 ): string {
@@ -757,7 +858,6 @@ export function updateResourceRequestToJSON(
     UpdateResourceRequest$outboundSchema.parse(updateResourceRequest),
   );
 }
-
 export function updateResourceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceRequest, SDKValidationError> {
@@ -776,7 +876,6 @@ export const UpdateResourceResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
 });
-
 /** @internal */
 export type UpdateResourceResponseBody$Outbound = {
   name: string;
@@ -791,19 +890,6 @@ export const UpdateResourceResponseBody$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceResponseBody$ {
-  /** @deprecated use `UpdateResourceResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceResponseBody$inboundSchema;
-  /** @deprecated use `UpdateResourceResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceResponseBody$outboundSchema;
-  /** @deprecated use `UpdateResourceResponseBody$Outbound` instead. */
-  export type Outbound = UpdateResourceResponseBody$Outbound;
-}
-
 export function updateResourceResponseBodyToJSON(
   updateResourceResponseBody: UpdateResourceResponseBody,
 ): string {
@@ -811,7 +897,6 @@ export function updateResourceResponseBodyToJSON(
     UpdateResourceResponseBody$outboundSchema.parse(updateResourceResponseBody),
   );
 }
-
 export function updateResourceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceResponseBody, SDKValidationError> {

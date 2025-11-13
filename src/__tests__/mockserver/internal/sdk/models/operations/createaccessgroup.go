@@ -92,8 +92,8 @@ type CreateAccessGroupRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                      `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateAccessGroupRequestBody `request:"mediaType=application/json"`
+	Slug *string                      `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateAccessGroupRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateAccessGroupRequest) GetTeamID() *string {
@@ -110,11 +110,11 @@ func (o *CreateAccessGroupRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateAccessGroupRequest) GetRequestBody() CreateAccessGroupRequestBody {
+func (o *CreateAccessGroupRequest) GetBody() CreateAccessGroupRequestBody {
 	if o == nil {
 		return CreateAccessGroupRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type CreateAccessGroupEntitlement string

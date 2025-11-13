@@ -38,7 +38,6 @@ export type InvalidateByTagsRequest = {
 /** @internal */
 export const Tags$inboundSchema: z.ZodType<Tags, z.ZodTypeDef, unknown> = z
   .union([z.array(z.string()), z.string()]);
-
 /** @internal */
 export type Tags$Outbound = Array<string> | string;
 
@@ -46,23 +45,9 @@ export type Tags$Outbound = Array<string> | string;
 export const Tags$outboundSchema: z.ZodType<Tags$Outbound, z.ZodTypeDef, Tags> =
   z.union([z.array(z.string()), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Tags$ {
-  /** @deprecated use `Tags$inboundSchema` instead. */
-  export const inboundSchema = Tags$inboundSchema;
-  /** @deprecated use `Tags$outboundSchema` instead. */
-  export const outboundSchema = Tags$outboundSchema;
-  /** @deprecated use `Tags$Outbound` instead. */
-  export type Outbound = Tags$Outbound;
-}
-
 export function tagsToJSON(tags: Tags): string {
   return JSON.stringify(Tags$outboundSchema.parse(tags));
 }
-
 export function tagsFromJSON(
   jsonString: string,
 ): SafeParseResult<Tags, SDKValidationError> {
@@ -77,22 +62,10 @@ export function tagsFromJSON(
 export const InvalidateByTagsTarget$inboundSchema: z.ZodNativeEnum<
   typeof InvalidateByTagsTarget
 > = z.nativeEnum(InvalidateByTagsTarget);
-
 /** @internal */
 export const InvalidateByTagsTarget$outboundSchema: z.ZodNativeEnum<
   typeof InvalidateByTagsTarget
 > = InvalidateByTagsTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvalidateByTagsTarget$ {
-  /** @deprecated use `InvalidateByTagsTarget$inboundSchema` instead. */
-  export const inboundSchema = InvalidateByTagsTarget$inboundSchema;
-  /** @deprecated use `InvalidateByTagsTarget$outboundSchema` instead. */
-  export const outboundSchema = InvalidateByTagsTarget$outboundSchema;
-}
 
 /** @internal */
 export const InvalidateByTagsRequestBody$inboundSchema: z.ZodType<
@@ -103,7 +76,6 @@ export const InvalidateByTagsRequestBody$inboundSchema: z.ZodType<
   tags: z.union([z.array(z.string()), z.string()]),
   target: InvalidateByTagsTarget$inboundSchema.optional(),
 });
-
 /** @internal */
 export type InvalidateByTagsRequestBody$Outbound = {
   tags: Array<string> | string;
@@ -120,19 +92,6 @@ export const InvalidateByTagsRequestBody$outboundSchema: z.ZodType<
   target: InvalidateByTagsTarget$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvalidateByTagsRequestBody$ {
-  /** @deprecated use `InvalidateByTagsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = InvalidateByTagsRequestBody$inboundSchema;
-  /** @deprecated use `InvalidateByTagsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = InvalidateByTagsRequestBody$outboundSchema;
-  /** @deprecated use `InvalidateByTagsRequestBody$Outbound` instead. */
-  export type Outbound = InvalidateByTagsRequestBody$Outbound;
-}
-
 export function invalidateByTagsRequestBodyToJSON(
   invalidateByTagsRequestBody: InvalidateByTagsRequestBody,
 ): string {
@@ -142,7 +101,6 @@ export function invalidateByTagsRequestBodyToJSON(
     ),
   );
 }
-
 export function invalidateByTagsRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<InvalidateByTagsRequestBody, SDKValidationError> {
@@ -169,7 +127,6 @@ export const InvalidateByTagsRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type InvalidateByTagsRequest$Outbound = {
   projectIdOrName: string;
@@ -195,19 +152,6 @@ export const InvalidateByTagsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvalidateByTagsRequest$ {
-  /** @deprecated use `InvalidateByTagsRequest$inboundSchema` instead. */
-  export const inboundSchema = InvalidateByTagsRequest$inboundSchema;
-  /** @deprecated use `InvalidateByTagsRequest$outboundSchema` instead. */
-  export const outboundSchema = InvalidateByTagsRequest$outboundSchema;
-  /** @deprecated use `InvalidateByTagsRequest$Outbound` instead. */
-  export type Outbound = InvalidateByTagsRequest$Outbound;
-}
-
 export function invalidateByTagsRequestToJSON(
   invalidateByTagsRequest: InvalidateByTagsRequest,
 ): string {
@@ -215,7 +159,6 @@ export function invalidateByTagsRequestToJSON(
     InvalidateByTagsRequest$outboundSchema.parse(invalidateByTagsRequest),
   );
 }
-
 export function invalidateByTagsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<InvalidateByTagsRequest, SDKValidationError> {

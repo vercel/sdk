@@ -64,7 +64,6 @@ export const UpdateDomainNameserversRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   nameservers: z.array(z.string()),
 });
-
 /** @internal */
 export type UpdateDomainNameserversRequestBody$Outbound = {
   nameservers: Array<string>;
@@ -79,20 +78,6 @@ export const UpdateDomainNameserversRequestBody$outboundSchema: z.ZodType<
   nameservers: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainNameserversRequestBody$ {
-  /** @deprecated use `UpdateDomainNameserversRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateDomainNameserversRequestBody$inboundSchema;
-  /** @deprecated use `UpdateDomainNameserversRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateDomainNameserversRequestBody$outboundSchema;
-  /** @deprecated use `UpdateDomainNameserversRequestBody$Outbound` instead. */
-  export type Outbound = UpdateDomainNameserversRequestBody$Outbound;
-}
-
 export function updateDomainNameserversRequestBodyToJSON(
   updateDomainNameserversRequestBody: UpdateDomainNameserversRequestBody,
 ): string {
@@ -102,7 +87,6 @@ export function updateDomainNameserversRequestBodyToJSON(
     ),
   );
 }
-
 export function updateDomainNameserversRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDomainNameserversRequestBody, SDKValidationError> {
@@ -128,7 +112,6 @@ export const UpdateDomainNameserversRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateDomainNameserversRequest$Outbound = {
   domain: string;
@@ -151,19 +134,6 @@ export const UpdateDomainNameserversRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainNameserversRequest$ {
-  /** @deprecated use `UpdateDomainNameserversRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateDomainNameserversRequest$inboundSchema;
-  /** @deprecated use `UpdateDomainNameserversRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateDomainNameserversRequest$outboundSchema;
-  /** @deprecated use `UpdateDomainNameserversRequest$Outbound` instead. */
-  export type Outbound = UpdateDomainNameserversRequest$Outbound;
-}
-
 export function updateDomainNameserversRequestToJSON(
   updateDomainNameserversRequest: UpdateDomainNameserversRequest,
 ): string {
@@ -173,7 +143,6 @@ export function updateDomainNameserversRequestToJSON(
     ),
   );
 }
-
 export function updateDomainNameserversRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDomainNameserversRequest, SDKValidationError> {
@@ -191,7 +160,6 @@ export const UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
-
 /** @internal */
 export type UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound =
   | NotAuthorizedForScope$Outbound
@@ -205,22 +173,6 @@ export const UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema:
     unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainNameserversDomainsRegistrarResponseBody$ {
-  /** @deprecated use `UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateDomainNameserversDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound =
-    UpdateDomainNameserversDomainsRegistrarResponseBody$Outbound;
-}
-
 export function updateDomainNameserversDomainsRegistrarResponseBodyToJSON(
   updateDomainNameserversDomainsRegistrarResponseBody:
     UpdateDomainNameserversDomainsRegistrarResponseBody,
@@ -231,7 +183,6 @@ export function updateDomainNameserversDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function updateDomainNameserversDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -257,7 +208,6 @@ export const UpdateDomainNameserversResponseBody$inboundSchema: z.ZodType<
   DomainNotRegistered$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
-
 /** @internal */
 export type UpdateDomainNameserversResponseBody$Outbound =
   | DomainNotRegistered$Outbound
@@ -273,21 +223,6 @@ export const UpdateDomainNameserversResponseBody$outboundSchema: z.ZodType<
   HttpApiDecodeError$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainNameserversResponseBody$ {
-  /** @deprecated use `UpdateDomainNameserversResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateDomainNameserversResponseBody$inboundSchema;
-  /** @deprecated use `UpdateDomainNameserversResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateDomainNameserversResponseBody$outboundSchema;
-  /** @deprecated use `UpdateDomainNameserversResponseBody$Outbound` instead. */
-  export type Outbound = UpdateDomainNameserversResponseBody$Outbound;
-}
-
 export function updateDomainNameserversResponseBodyToJSON(
   updateDomainNameserversResponseBody: UpdateDomainNameserversResponseBody,
 ): string {
@@ -297,7 +232,6 @@ export function updateDomainNameserversResponseBodyToJSON(
     ),
   );
 }
-
 export function updateDomainNameserversResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDomainNameserversResponseBody, SDKValidationError> {

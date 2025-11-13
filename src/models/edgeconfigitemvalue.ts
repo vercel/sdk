@@ -23,7 +23,6 @@ export const EdgeConfigItemValue$inboundSchema: z.ZodType<
   z.record(z.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
   z.array(z.nullable(z.lazy(() => EdgeConfigItemValue$inboundSchema))),
 ]);
-
 /** @internal */
 export type EdgeConfigItemValue$Outbound = string | number | boolean | {
   [k: string]: EdgeConfigItemValue$Outbound | null;
@@ -42,19 +41,6 @@ export const EdgeConfigItemValue$outboundSchema: z.ZodType<
   z.array(z.nullable(z.lazy(() => EdgeConfigItemValue$outboundSchema))),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EdgeConfigItemValue$ {
-  /** @deprecated use `EdgeConfigItemValue$inboundSchema` instead. */
-  export const inboundSchema = EdgeConfigItemValue$inboundSchema;
-  /** @deprecated use `EdgeConfigItemValue$outboundSchema` instead. */
-  export const outboundSchema = EdgeConfigItemValue$outboundSchema;
-  /** @deprecated use `EdgeConfigItemValue$Outbound` instead. */
-  export type Outbound = EdgeConfigItemValue$Outbound;
-}
-
 export function edgeConfigItemValueToJSON(
   edgeConfigItemValue: EdgeConfigItemValue,
 ): string {
@@ -62,7 +48,6 @@ export function edgeConfigItemValueToJSON(
     EdgeConfigItemValue$outboundSchema.parse(edgeConfigItemValue),
   );
 }
-
 export function edgeConfigItemValueFromJSON(
   jsonString: string,
 ): SafeParseResult<EdgeConfigItemValue, SDKValidationError> {

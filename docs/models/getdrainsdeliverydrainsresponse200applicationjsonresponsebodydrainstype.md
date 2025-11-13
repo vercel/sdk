@@ -7,11 +7,11 @@ import { GetDrainsDeliveryDrainsResponse200ApplicationJSONResponseBodyDrainsType
 
 let value:
   GetDrainsDeliveryDrainsResponse200ApplicationJSONResponseBodyDrainsType =
-    "otlphttp";
+    "clickhouse";
 ```
 
 ## Values
 
 ```typescript
-"otlphttp"
+"clickhouse"
 ```

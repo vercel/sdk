@@ -1082,6 +1082,8 @@ type UpdateProjectRequestBody struct {
 	OutputDirectory *string `json:"outputDirectory,omitempty"`
 	// Specifies whether preview deployments are disabled for this project.
 	PreviewDeploymentsDisabled *bool `json:"previewDeploymentsDisabled,omitempty"`
+	// Custom domain suffix for preview deployments. Takes precedence over team-level suffix. Must be a domain owned by the team.
+	PreviewDeploymentSuffix *string `json:"previewDeploymentSuffix,omitempty"`
 	// Specifies whether the source code and logs of the deployments for this project should be public or not
 	PublicSource *bool `json:"publicSource,omitempty"`
 	// Specifies resource override configuration for the project
@@ -1238,6 +1240,13 @@ func (o *UpdateProjectRequestBody) GetPreviewDeploymentsDisabled() *bool {
 	return o.PreviewDeploymentsDisabled
 }
 
+func (o *UpdateProjectRequestBody) GetPreviewDeploymentSuffix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewDeploymentSuffix
+}
+
 func (o *UpdateProjectRequestBody) GetPublicSource() *bool {
 	if o == nil {
 		return nil
@@ -1384,8 +1393,8 @@ type UpdateProjectRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                  `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody UpdateProjectRequestBody `request:"mediaType=application/json"`
+	Slug *string                  `queryParam:"style=form,explode=true,name=slug"`
+	Body UpdateProjectRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateProjectRequest) GetIDOrName() string {
@@ -1409,11 +1418,11 @@ func (o *UpdateProjectRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateProjectRequest) GetRequestBody() UpdateProjectRequestBody {
+func (o *UpdateProjectRequest) GetBody() UpdateProjectRequestBody {
 	if o == nil {
 		return UpdateProjectRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateProjectAnalytics struct {
@@ -6948,6 +6957,7 @@ type UpdateProjectPermissions struct {
 	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
 	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
 	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectFlagsProduction                   []components.ACLAction `json:"projectFlagsProduction,omitempty"`
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
 	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
@@ -8323,6 +8333,13 @@ func (o *UpdateProjectPermissions) GetProjectFlags() []components.ACLAction {
 		return nil
 	}
 	return o.ProjectFlags
+}
+
+func (o *UpdateProjectPermissions) GetProjectFlagsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlagsProduction
 }
 
 func (o *UpdateProjectPermissions) GetProjectFromV0() []components.ACLAction {
@@ -11930,6 +11947,7 @@ type UpdateProjectResponseBody struct {
 	V0                                   *bool                                         `json:"v0,omitempty"`
 	Abuse                                *UpdateProjectAbuse                           `json:"abuse,omitempty"`
 	InternalRoutes                       []UpdateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
+	HasDeployments                       *bool                                         `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []UpdateProjectDismissedToastResponse         `json:"dismissedToasts,omitempty"`
 }
 
@@ -12470,6 +12488,13 @@ func (o *UpdateProjectResponseBody) GetInternalRoutes() []UpdateProjectInternalR
 		return nil
 	}
 	return o.InternalRoutes
+}
+
+func (o *UpdateProjectResponseBody) GetHasDeployments() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasDeployments
 }
 
 func (o *UpdateProjectResponseBody) GetDismissedToasts() []UpdateProjectDismissedToastResponse {

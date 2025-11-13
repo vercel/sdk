@@ -69,12 +69,6 @@ export type Schemas = {
   version: string;
 };
 
-export type Delivery3 = {
-  type: string;
-  endpoint: string;
-  secret: string;
-};
-
 export type Endpoint1 = {
   traces: string;
 };
@@ -118,7 +112,7 @@ export type Delivery1 = {
   secret?: string | undefined;
 };
 
-export type Delivery = Delivery1 | Delivery2 | Delivery3;
+export type Delivery = Delivery1 | Delivery2;
 
 /**
  * Environment to apply sampling to
@@ -180,7 +174,7 @@ export type CreateDrainRequestBody = {
   projectIds?: Array<string> | undefined;
   filter?: Filter2 | string | undefined;
   schemas: { [k: string]: Schemas };
-  delivery?: Delivery1 | Delivery2 | Delivery3 | undefined;
+  delivery?: Delivery1 | Delivery2 | undefined;
   sampling?: Array<Sampling> | undefined;
   transforms?: Array<Transforms> | undefined;
   source?: One1 | One2 | One3 | Source2 | undefined;
@@ -221,13 +215,13 @@ export type CreateDrainResponseBodySchemas = {
   speedInsights?: CreateDrainResponseBodyDrainsSpeedInsights | undefined;
 };
 
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type =
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type =
   {
     Internal: "internal",
   } as const;
-export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type =
+export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type =
   ClosedEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type
   >;
 
 export const CreateDrainDeliveryTarget = {
@@ -237,49 +231,31 @@ export type CreateDrainDeliveryTarget = ClosedEnum<
   typeof CreateDrainDeliveryTarget
 >;
 
-export type CreateDrainDelivery5 = {
-  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type;
-  target: CreateDrainDeliveryTarget;
-};
-
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type =
-  {
-    Clickhouse: "clickhouse",
-  } as const;
-export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type =
-  ClosedEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type
-  >;
-
 export type CreateDrainDelivery4 = {
-  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type;
-  endpoint: string;
-  table: string;
-};
-
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type =
-  {
-    Syslog: "syslog",
-  } as const;
-export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type =
-  ClosedEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type
-  >;
-
-export type CreateDrainDeliveryDrains3 = {
   type: CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type;
-  endpoint: string;
-  secret: string;
+  target: CreateDrainDeliveryTarget;
 };
 
 export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType =
   {
-    Otlphttp: "otlphttp",
+    Clickhouse: "clickhouse",
   } as const;
 export type CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType =
   ClosedEnum<
     typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType
   >;
+
+export type CreateDrainDelivery3 = {
+  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType;
+  endpoint: string;
+  table: string;
+};
+
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONType = {
+  Otlphttp: "otlphttp",
+} as const;
+export type CreateDrainDeliveryDrainsResponse200ApplicationJSONType =
+  ClosedEnum<typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONType>;
 
 export type CreateDrainDeliveryEndpoint = {
   traces: string;
@@ -294,19 +270,35 @@ export type CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding =
     typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding
   >;
 
+export const CreateDrainSecretDrainsResponseKind = {
+  IntegrationSecret: "INTEGRATION_SECRET",
+} as const;
+export type CreateDrainSecretDrainsResponseKind = ClosedEnum<
+  typeof CreateDrainSecretDrainsResponseKind
+>;
+
+export type CreateDrainSecretDrainsResponse2 = {
+  kind: CreateDrainSecretDrainsResponseKind;
+};
+
+export type CreateDrainDeliveryDrainsSecret =
+  | CreateDrainSecretDrainsResponse2
+  | string;
+
 export type CreateDrainDeliveryDrains2 = {
-  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType;
+  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONType;
   endpoint: CreateDrainDeliveryEndpoint;
   encoding: CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: CreateDrainSecretDrainsResponse2 | string | undefined;
 };
 
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONType = {
+export const CreateDrainDeliveryDrainsResponse200Type = {
   Http: "http",
 } as const;
-export type CreateDrainDeliveryDrainsResponse200ApplicationJSONType =
-  ClosedEnum<typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONType>;
+export type CreateDrainDeliveryDrainsResponse200Type = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsResponse200Type
+>;
 
 export const CreateDrainDeliveryDrainsResponse200Encoding = {
   Json: "json",
@@ -324,21 +316,33 @@ export type CreateDrainDeliveryCompression = ClosedEnum<
   typeof CreateDrainDeliveryCompression
 >;
 
+export const CreateDrainSecretDrainsKind = {
+  IntegrationSecret: "INTEGRATION_SECRET",
+} as const;
+export type CreateDrainSecretDrainsKind = ClosedEnum<
+  typeof CreateDrainSecretDrainsKind
+>;
+
+export type CreateDrainSecretDrains2 = {
+  kind: CreateDrainSecretDrainsKind;
+};
+
+export type CreateDrainDeliverySecret = CreateDrainSecretDrains2 | string;
+
 export type CreateDrainDeliveryDrains1 = {
-  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONType;
+  type: CreateDrainDeliveryDrainsResponse200Type;
   endpoint: string;
   encoding: CreateDrainDeliveryDrainsResponse200Encoding;
   compression?: CreateDrainDeliveryCompression | undefined;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: CreateDrainSecretDrains2 | string | undefined;
 };
 
 export type CreateDrainResponseBodyDelivery =
   | CreateDrainDeliveryDrains1
   | CreateDrainDeliveryDrains2
-  | CreateDrainDeliveryDrains3
-  | CreateDrainDelivery4
-  | CreateDrainDelivery5;
+  | CreateDrainDelivery3
+  | CreateDrainDelivery4;
 
 export const CreateDrainResponseBodyDrainsType = {
   HeadSampling: "head_sampling",
@@ -580,9 +584,8 @@ export type CreateDrainResponseBody2 = {
   delivery?:
     | CreateDrainDeliveryDrains1
     | CreateDrainDeliveryDrains2
-    | CreateDrainDeliveryDrains3
+    | CreateDrainDelivery3
     | CreateDrainDelivery4
-    | CreateDrainDelivery5
     | undefined;
   sampling?: Array<CreateDrainResponseBodySampling> | undefined;
   teamId?: string | null | undefined;
@@ -625,11 +628,11 @@ export type ResponseBodySchemas = {
   speedInsights?: CreateDrainResponseBodySpeedInsights | undefined;
 };
 
-export const CreateDrainDeliveryDrainsResponse200Type = {
+export const CreateDrainDeliveryDrainsResponseType = {
   Internal: "internal",
 } as const;
-export type CreateDrainDeliveryDrainsResponse200Type = ClosedEnum<
-  typeof CreateDrainDeliveryDrainsResponse200Type
+export type CreateDrainDeliveryDrainsResponseType = ClosedEnum<
+  typeof CreateDrainDeliveryDrainsResponseType
 >;
 
 export const DeliveryTarget = {
@@ -637,35 +640,22 @@ export const DeliveryTarget = {
 } as const;
 export type DeliveryTarget = ClosedEnum<typeof DeliveryTarget>;
 
-export type Delivery5 = {
-  type: CreateDrainDeliveryDrainsResponse200Type;
+export type Delivery4 = {
+  type: CreateDrainDeliveryDrainsResponseType;
   target: DeliveryTarget;
 };
 
-export const CreateDrainDeliveryDrainsResponseType = {
-  Clickhouse: "clickhouse",
-} as const;
-export type CreateDrainDeliveryDrainsResponseType = ClosedEnum<
-  typeof CreateDrainDeliveryDrainsResponseType
->;
-
-export type Delivery4 = {
-  type: CreateDrainDeliveryDrainsResponseType;
-  endpoint: string;
-  table: string;
-};
-
 export const CreateDrainDeliveryDrainsType = {
-  Syslog: "syslog",
+  Clickhouse: "clickhouse",
 } as const;
 export type CreateDrainDeliveryDrainsType = ClosedEnum<
   typeof CreateDrainDeliveryDrainsType
 >;
 
-export type CreateDrainDelivery3 = {
+export type Delivery3 = {
   type: CreateDrainDeliveryDrainsType;
   endpoint: string;
-  secret: string;
+  table: string;
 };
 
 export const CreateDrainDeliveryType = {
@@ -687,12 +677,23 @@ export type CreateDrainDeliveryDrainsResponseEncoding = ClosedEnum<
   typeof CreateDrainDeliveryDrainsResponseEncoding
 >;
 
+export const CreateDrainSecretKind = {
+  IntegrationSecret: "INTEGRATION_SECRET",
+} as const;
+export type CreateDrainSecretKind = ClosedEnum<typeof CreateDrainSecretKind>;
+
+export type CreateDrainSecret2 = {
+  kind: CreateDrainSecretKind;
+};
+
+export type DeliverySecret = CreateDrainSecret2 | string;
+
 export type CreateDrainDelivery2 = {
   type: CreateDrainDeliveryType;
   endpoint: CreateDrainDeliveryDrainsEndpoint;
   encoding: CreateDrainDeliveryDrainsResponseEncoding;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: CreateDrainSecret2 | string | undefined;
 };
 
 export const DeliveryType = {
@@ -716,21 +717,31 @@ export type CreateDrainDeliveryDrainsCompression = ClosedEnum<
   typeof CreateDrainDeliveryDrainsCompression
 >;
 
+export const SecretKind = {
+  IntegrationSecret: "INTEGRATION_SECRET",
+} as const;
+export type SecretKind = ClosedEnum<typeof SecretKind>;
+
+export type Secret2 = {
+  kind: SecretKind;
+};
+
+export type Secret = Secret2 | string;
+
 export type CreateDrainDelivery1 = {
   type: DeliveryType;
   endpoint: string;
   encoding: CreateDrainDeliveryDrainsEncoding;
   compression?: CreateDrainDeliveryDrainsCompression | undefined;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: Secret2 | string | undefined;
 };
 
 export type ResponseBodyDelivery =
   | CreateDrainDelivery1
   | CreateDrainDelivery2
-  | CreateDrainDelivery3
-  | Delivery4
-  | Delivery5;
+  | Delivery3
+  | Delivery4;
 
 export const CreateDrainResponseBodyType = {
   HeadSampling: "head_sampling",
@@ -892,9 +903,8 @@ export type CreateDrainResponseBody1 = {
   delivery?:
     | CreateDrainDelivery1
     | CreateDrainDelivery2
-    | CreateDrainDelivery3
+    | Delivery3
     | Delivery4
-    | Delivery5
     | undefined;
   sampling?: Array<ResponseBodySampling> | undefined;
   teamId?: string | null | undefined;
@@ -918,22 +928,10 @@ export type CreateDrainResponseBody =
 export const CreateDrainProjects$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainProjects
 > = z.nativeEnum(CreateDrainProjects);
-
 /** @internal */
 export const CreateDrainProjects$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainProjects
 > = CreateDrainProjects$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainProjects$ {
-  /** @deprecated use `CreateDrainProjects$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainProjects$inboundSchema;
-  /** @deprecated use `CreateDrainProjects$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainProjects$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilter2$inboundSchema: z.ZodType<
@@ -944,7 +942,6 @@ export const CreateDrainFilter2$inboundSchema: z.ZodType<
   type: z.string(),
   text: z.string(),
 });
-
 /** @internal */
 export type CreateDrainFilter2$Outbound = {
   type: string;
@@ -961,19 +958,6 @@ export const CreateDrainFilter2$outboundSchema: z.ZodType<
   text: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilter2$ {
-  /** @deprecated use `CreateDrainFilter2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilter2$inboundSchema;
-  /** @deprecated use `CreateDrainFilter2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilter2$outboundSchema;
-  /** @deprecated use `CreateDrainFilter2$Outbound` instead. */
-  export type Outbound = CreateDrainFilter2$Outbound;
-}
-
 export function createDrainFilter2ToJSON(
   createDrainFilter2: CreateDrainFilter2,
 ): string {
@@ -981,7 +965,6 @@ export function createDrainFilter2ToJSON(
     CreateDrainFilter2$outboundSchema.parse(createDrainFilter2),
   );
 }
-
 export function createDrainFilter2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilter2, SDKValidationError> {
@@ -1000,7 +983,6 @@ export const CreateDrainFilterProject$inboundSchema: z.ZodType<
 > = z.object({
   ids: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateDrainFilterProject$Outbound = {
   ids?: Array<string> | undefined;
@@ -1015,19 +997,6 @@ export const CreateDrainFilterProject$outboundSchema: z.ZodType<
   ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterProject$ {
-  /** @deprecated use `CreateDrainFilterProject$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterProject$inboundSchema;
-  /** @deprecated use `CreateDrainFilterProject$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterProject$outboundSchema;
-  /** @deprecated use `CreateDrainFilterProject$Outbound` instead. */
-  export type Outbound = CreateDrainFilterProject$Outbound;
-}
-
 export function createDrainFilterProjectToJSON(
   createDrainFilterProject: CreateDrainFilterProject,
 ): string {
@@ -1035,7 +1004,6 @@ export function createDrainFilterProjectToJSON(
     CreateDrainFilterProject$outboundSchema.parse(createDrainFilterProject),
   );
 }
-
 export function createDrainFilterProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterProject, SDKValidationError> {
@@ -1050,29 +1018,16 @@ export function createDrainFilterProjectFromJSON(
 export const FilterSources$inboundSchema: z.ZodNativeEnum<
   typeof FilterSources
 > = z.nativeEnum(FilterSources);
-
 /** @internal */
 export const FilterSources$outboundSchema: z.ZodNativeEnum<
   typeof FilterSources
 > = FilterSources$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterSources$ {
-  /** @deprecated use `FilterSources$inboundSchema` instead. */
-  export const inboundSchema = FilterSources$inboundSchema;
-  /** @deprecated use `FilterSources$outboundSchema` instead. */
-  export const outboundSchema = FilterSources$outboundSchema;
-}
 
 /** @internal */
 export const Log$inboundSchema: z.ZodType<Log, z.ZodTypeDef, unknown> = z
   .object({
     sources: z.array(FilterSources$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Log$Outbound = {
   sources?: Array<string> | undefined;
@@ -1084,23 +1039,9 @@ export const Log$outboundSchema: z.ZodType<Log$Outbound, z.ZodTypeDef, Log> = z
     sources: z.array(FilterSources$outboundSchema).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Log$ {
-  /** @deprecated use `Log$inboundSchema` instead. */
-  export const inboundSchema = Log$inboundSchema;
-  /** @deprecated use `Log$outboundSchema` instead. */
-  export const outboundSchema = Log$outboundSchema;
-  /** @deprecated use `Log$Outbound` instead. */
-  export type Outbound = Log$Outbound;
-}
-
 export function logToJSON(log: Log): string {
   return JSON.stringify(Log$outboundSchema.parse(log));
 }
-
 export function logFromJSON(
   jsonString: string,
 ): SafeParseResult<Log, SDKValidationError> {
@@ -1115,22 +1056,10 @@ export function logFromJSON(
 export const FilterEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof FilterEnvironments
 > = z.nativeEnum(FilterEnvironments);
-
 /** @internal */
 export const FilterEnvironments$outboundSchema: z.ZodNativeEnum<
   typeof FilterEnvironments
 > = FilterEnvironments$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterEnvironments$ {
-  /** @deprecated use `FilterEnvironments$inboundSchema` instead. */
-  export const inboundSchema = FilterEnvironments$inboundSchema;
-  /** @deprecated use `FilterEnvironments$outboundSchema` instead. */
-  export const outboundSchema = FilterEnvironments$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDeployment$inboundSchema: z.ZodType<
@@ -1140,7 +1069,6 @@ export const CreateDrainFilterDeployment$inboundSchema: z.ZodType<
 > = z.object({
   environments: z.array(FilterEnvironments$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CreateDrainFilterDeployment$Outbound = {
   environments?: Array<string> | undefined;
@@ -1155,19 +1083,6 @@ export const CreateDrainFilterDeployment$outboundSchema: z.ZodType<
   environments: z.array(FilterEnvironments$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDeployment$ {
-  /** @deprecated use `CreateDrainFilterDeployment$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDeployment$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDeployment$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDeployment$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDeployment$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDeployment$Outbound;
-}
-
 export function createDrainFilterDeploymentToJSON(
   createDrainFilterDeployment: CreateDrainFilterDeployment,
 ): string {
@@ -1177,7 +1092,6 @@ export function createDrainFilterDeploymentToJSON(
     ),
   );
 }
-
 export function createDrainFilterDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDeployment, SDKValidationError> {
@@ -1197,7 +1111,6 @@ export const Filter1$inboundSchema: z.ZodType<Filter1, z.ZodTypeDef, unknown> =
     deployment: z.lazy(() => CreateDrainFilterDeployment$inboundSchema)
       .optional(),
   });
-
 /** @internal */
 export type Filter1$Outbound = {
   type: string;
@@ -1219,23 +1132,9 @@ export const Filter1$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Filter1$ {
-  /** @deprecated use `Filter1$inboundSchema` instead. */
-  export const inboundSchema = Filter1$inboundSchema;
-  /** @deprecated use `Filter1$outboundSchema` instead. */
-  export const outboundSchema = Filter1$outboundSchema;
-  /** @deprecated use `Filter1$Outbound` instead. */
-  export type Outbound = Filter1$Outbound;
-}
-
 export function filter1ToJSON(filter1: Filter1): string {
   return JSON.stringify(Filter1$outboundSchema.parse(filter1));
 }
-
 export function filter1FromJSON(
   jsonString: string,
 ): SafeParseResult<Filter1, SDKValidationError> {
@@ -1255,7 +1154,6 @@ export const FilterFilter$inboundSchema: z.ZodType<
   z.lazy(() => CreateDrainFilter2$inboundSchema),
   z.lazy(() => Filter1$inboundSchema),
 ]);
-
 /** @internal */
 export type FilterFilter$Outbound =
   | CreateDrainFilter2$Outbound
@@ -1271,23 +1169,9 @@ export const FilterFilter$outboundSchema: z.ZodType<
   z.lazy(() => Filter1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterFilter$ {
-  /** @deprecated use `FilterFilter$inboundSchema` instead. */
-  export const inboundSchema = FilterFilter$inboundSchema;
-  /** @deprecated use `FilterFilter$outboundSchema` instead. */
-  export const outboundSchema = FilterFilter$outboundSchema;
-  /** @deprecated use `FilterFilter$Outbound` instead. */
-  export type Outbound = FilterFilter$Outbound;
-}
-
 export function filterFilterToJSON(filterFilter: FilterFilter): string {
   return JSON.stringify(FilterFilter$outboundSchema.parse(filterFilter));
 }
-
 export function filterFilterFromJSON(
   jsonString: string,
 ): SafeParseResult<FilterFilter, SDKValidationError> {
@@ -1307,7 +1191,6 @@ export const Filter2$inboundSchema: z.ZodType<Filter2, z.ZodTypeDef, unknown> =
       z.lazy(() => Filter1$inboundSchema),
     ]),
   });
-
 /** @internal */
 export type Filter2$Outbound = {
   version: string;
@@ -1327,23 +1210,9 @@ export const Filter2$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Filter2$ {
-  /** @deprecated use `Filter2$inboundSchema` instead. */
-  export const inboundSchema = Filter2$inboundSchema;
-  /** @deprecated use `Filter2$outboundSchema` instead. */
-  export const outboundSchema = Filter2$outboundSchema;
-  /** @deprecated use `Filter2$Outbound` instead. */
-  export type Outbound = Filter2$Outbound;
-}
-
 export function filter2ToJSON(filter2: Filter2): string {
   return JSON.stringify(Filter2$outboundSchema.parse(filter2));
 }
-
 export function filter2FromJSON(
   jsonString: string,
 ): SafeParseResult<Filter2, SDKValidationError> {
@@ -1357,7 +1226,6 @@ export function filter2FromJSON(
 /** @internal */
 export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
   .union([z.lazy(() => Filter2$inboundSchema), z.string()]);
-
 /** @internal */
 export type Filter$Outbound = Filter2$Outbound | string;
 
@@ -1368,23 +1236,9 @@ export const Filter$outboundSchema: z.ZodType<
   Filter
 > = z.union([z.lazy(() => Filter2$outboundSchema), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Filter$ {
-  /** @deprecated use `Filter$inboundSchema` instead. */
-  export const inboundSchema = Filter$inboundSchema;
-  /** @deprecated use `Filter$outboundSchema` instead. */
-  export const outboundSchema = Filter$outboundSchema;
-  /** @deprecated use `Filter$Outbound` instead. */
-  export type Outbound = Filter$Outbound;
-}
-
 export function filterToJSON(filter: Filter): string {
   return JSON.stringify(Filter$outboundSchema.parse(filter));
 }
-
 export function filterFromJSON(
   jsonString: string,
 ): SafeParseResult<Filter, SDKValidationError> {
@@ -1400,7 +1254,6 @@ export const Schemas$inboundSchema: z.ZodType<Schemas, z.ZodTypeDef, unknown> =
   z.object({
     version: z.string(),
   });
-
 /** @internal */
 export type Schemas$Outbound = {
   version: string;
@@ -1415,23 +1268,9 @@ export const Schemas$outboundSchema: z.ZodType<
   version: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schemas$ {
-  /** @deprecated use `Schemas$inboundSchema` instead. */
-  export const inboundSchema = Schemas$inboundSchema;
-  /** @deprecated use `Schemas$outboundSchema` instead. */
-  export const outboundSchema = Schemas$outboundSchema;
-  /** @deprecated use `Schemas$Outbound` instead. */
-  export type Outbound = Schemas$Outbound;
-}
-
 export function schemasToJSON(schemas: Schemas): string {
   return JSON.stringify(Schemas$outboundSchema.parse(schemas));
 }
-
 export function schemasFromJSON(
   jsonString: string,
 ): SafeParseResult<Schemas, SDKValidationError> {
@@ -1443,62 +1282,6 @@ export function schemasFromJSON(
 }
 
 /** @internal */
-export const Delivery3$inboundSchema: z.ZodType<
-  Delivery3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: z.string(),
-  endpoint: z.string(),
-  secret: z.string(),
-});
-
-/** @internal */
-export type Delivery3$Outbound = {
-  type: string;
-  endpoint: string;
-  secret: string;
-};
-
-/** @internal */
-export const Delivery3$outboundSchema: z.ZodType<
-  Delivery3$Outbound,
-  z.ZodTypeDef,
-  Delivery3
-> = z.object({
-  type: z.string(),
-  endpoint: z.string(),
-  secret: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Delivery3$ {
-  /** @deprecated use `Delivery3$inboundSchema` instead. */
-  export const inboundSchema = Delivery3$inboundSchema;
-  /** @deprecated use `Delivery3$outboundSchema` instead. */
-  export const outboundSchema = Delivery3$outboundSchema;
-  /** @deprecated use `Delivery3$Outbound` instead. */
-  export type Outbound = Delivery3$Outbound;
-}
-
-export function delivery3ToJSON(delivery3: Delivery3): string {
-  return JSON.stringify(Delivery3$outboundSchema.parse(delivery3));
-}
-
-export function delivery3FromJSON(
-  jsonString: string,
-): SafeParseResult<Delivery3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Delivery3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Delivery3' from JSON`,
-  );
-}
-
-/** @internal */
 export const Endpoint1$inboundSchema: z.ZodType<
   Endpoint1,
   z.ZodTypeDef,
@@ -1506,7 +1289,6 @@ export const Endpoint1$inboundSchema: z.ZodType<
 > = z.object({
   traces: z.string(),
 });
-
 /** @internal */
 export type Endpoint1$Outbound = {
   traces: string;
@@ -1521,23 +1303,9 @@ export const Endpoint1$outboundSchema: z.ZodType<
   traces: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Endpoint1$ {
-  /** @deprecated use `Endpoint1$inboundSchema` instead. */
-  export const inboundSchema = Endpoint1$inboundSchema;
-  /** @deprecated use `Endpoint1$outboundSchema` instead. */
-  export const outboundSchema = Endpoint1$outboundSchema;
-  /** @deprecated use `Endpoint1$Outbound` instead. */
-  export type Outbound = Endpoint1$Outbound;
-}
-
 export function endpoint1ToJSON(endpoint1: Endpoint1): string {
   return JSON.stringify(Endpoint1$outboundSchema.parse(endpoint1));
 }
-
 export function endpoint1FromJSON(
   jsonString: string,
 ): SafeParseResult<Endpoint1, SDKValidationError> {
@@ -1554,7 +1322,6 @@ export const Endpoint$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.lazy(() => Endpoint1$inboundSchema);
-
 /** @internal */
 export type Endpoint$Outbound = Endpoint1$Outbound;
 
@@ -1565,23 +1332,9 @@ export const Endpoint$outboundSchema: z.ZodType<
   Endpoint
 > = z.lazy(() => Endpoint1$outboundSchema);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Endpoint$ {
-  /** @deprecated use `Endpoint$inboundSchema` instead. */
-  export const inboundSchema = Endpoint$inboundSchema;
-  /** @deprecated use `Endpoint$outboundSchema` instead. */
-  export const outboundSchema = Endpoint$outboundSchema;
-  /** @deprecated use `Endpoint$Outbound` instead. */
-  export type Outbound = Endpoint$Outbound;
-}
-
 export function endpointToJSON(endpoint: Endpoint): string {
   return JSON.stringify(Endpoint$outboundSchema.parse(endpoint));
 }
-
 export function endpointFromJSON(
   jsonString: string,
 ): SafeParseResult<Endpoint, SDKValidationError> {
@@ -1596,22 +1349,10 @@ export function endpointFromJSON(
 export const CreateDrainDeliveryEncoding$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryEncoding
 > = z.nativeEnum(CreateDrainDeliveryEncoding);
-
 /** @internal */
 export const CreateDrainDeliveryEncoding$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryEncoding
 > = CreateDrainDeliveryEncoding$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryEncoding$ {
-  /** @deprecated use `CreateDrainDeliveryEncoding$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryEncoding$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryEncoding$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryEncoding$outboundSchema;
-}
 
 /** @internal */
 export const Delivery2$inboundSchema: z.ZodType<
@@ -1625,7 +1366,6 @@ export const Delivery2$inboundSchema: z.ZodType<
   headers: z.record(z.string()),
   secret: z.string().optional(),
 });
-
 /** @internal */
 export type Delivery2$Outbound = {
   type: string;
@@ -1648,23 +1388,9 @@ export const Delivery2$outboundSchema: z.ZodType<
   secret: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Delivery2$ {
-  /** @deprecated use `Delivery2$inboundSchema` instead. */
-  export const inboundSchema = Delivery2$inboundSchema;
-  /** @deprecated use `Delivery2$outboundSchema` instead. */
-  export const outboundSchema = Delivery2$outboundSchema;
-  /** @deprecated use `Delivery2$Outbound` instead. */
-  export type Outbound = Delivery2$Outbound;
-}
-
 export function delivery2ToJSON(delivery2: Delivery2): string {
   return JSON.stringify(Delivery2$outboundSchema.parse(delivery2));
 }
-
 export function delivery2FromJSON(
   jsonString: string,
 ): SafeParseResult<Delivery2, SDKValidationError> {
@@ -1678,42 +1404,18 @@ export function delivery2FromJSON(
 /** @internal */
 export const Compression$inboundSchema: z.ZodNativeEnum<typeof Compression> = z
   .nativeEnum(Compression);
-
 /** @internal */
 export const Compression$outboundSchema: z.ZodNativeEnum<typeof Compression> =
   Compression$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Compression$ {
-  /** @deprecated use `Compression$inboundSchema` instead. */
-  export const inboundSchema = Compression$inboundSchema;
-  /** @deprecated use `Compression$outboundSchema` instead. */
-  export const outboundSchema = Compression$outboundSchema;
-}
 
 /** @internal */
 export const DeliveryEncoding$inboundSchema: z.ZodNativeEnum<
   typeof DeliveryEncoding
 > = z.nativeEnum(DeliveryEncoding);
-
 /** @internal */
 export const DeliveryEncoding$outboundSchema: z.ZodNativeEnum<
   typeof DeliveryEncoding
 > = DeliveryEncoding$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeliveryEncoding$ {
-  /** @deprecated use `DeliveryEncoding$inboundSchema` instead. */
-  export const inboundSchema = DeliveryEncoding$inboundSchema;
-  /** @deprecated use `DeliveryEncoding$outboundSchema` instead. */
-  export const outboundSchema = DeliveryEncoding$outboundSchema;
-}
 
 /** @internal */
 export const Delivery1$inboundSchema: z.ZodType<
@@ -1728,7 +1430,6 @@ export const Delivery1$inboundSchema: z.ZodType<
   headers: z.record(z.string()),
   secret: z.string().optional(),
 });
-
 /** @internal */
 export type Delivery1$Outbound = {
   type: string;
@@ -1753,23 +1454,9 @@ export const Delivery1$outboundSchema: z.ZodType<
   secret: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Delivery1$ {
-  /** @deprecated use `Delivery1$inboundSchema` instead. */
-  export const inboundSchema = Delivery1$inboundSchema;
-  /** @deprecated use `Delivery1$outboundSchema` instead. */
-  export const outboundSchema = Delivery1$outboundSchema;
-  /** @deprecated use `Delivery1$Outbound` instead. */
-  export type Outbound = Delivery1$Outbound;
-}
-
 export function delivery1ToJSON(delivery1: Delivery1): string {
   return JSON.stringify(Delivery1$outboundSchema.parse(delivery1));
 }
-
 export function delivery1FromJSON(
   jsonString: string,
 ): SafeParseResult<Delivery1, SDKValidationError> {
@@ -1788,14 +1475,9 @@ export const Delivery$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Delivery1$inboundSchema),
   z.lazy(() => Delivery2$inboundSchema),
-  z.lazy(() => Delivery3$inboundSchema),
 ]);
-
 /** @internal */
-export type Delivery$Outbound =
-  | Delivery1$Outbound
-  | Delivery2$Outbound
-  | Delivery3$Outbound;
+export type Delivery$Outbound = Delivery1$Outbound | Delivery2$Outbound;
 
 /** @internal */
 export const Delivery$outboundSchema: z.ZodType<
@@ -1805,26 +1487,11 @@ export const Delivery$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Delivery1$outboundSchema),
   z.lazy(() => Delivery2$outboundSchema),
-  z.lazy(() => Delivery3$outboundSchema),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Delivery$ {
-  /** @deprecated use `Delivery$inboundSchema` instead. */
-  export const inboundSchema = Delivery$inboundSchema;
-  /** @deprecated use `Delivery$outboundSchema` instead. */
-  export const outboundSchema = Delivery$outboundSchema;
-  /** @deprecated use `Delivery$Outbound` instead. */
-  export type Outbound = Delivery$Outbound;
-}
 
 export function deliveryToJSON(delivery: Delivery): string {
   return JSON.stringify(Delivery$outboundSchema.parse(delivery));
 }
-
 export function deliveryFromJSON(
   jsonString: string,
 ): SafeParseResult<Delivery, SDKValidationError> {
@@ -1837,21 +1504,9 @@ export function deliveryFromJSON(
 
 /** @internal */
 export const Env$inboundSchema: z.ZodNativeEnum<typeof Env> = z.nativeEnum(Env);
-
 /** @internal */
 export const Env$outboundSchema: z.ZodNativeEnum<typeof Env> =
   Env$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Env$ {
-  /** @deprecated use `Env$inboundSchema` instead. */
-  export const inboundSchema = Env$inboundSchema;
-  /** @deprecated use `Env$outboundSchema` instead. */
-  export const outboundSchema = Env$outboundSchema;
-}
 
 /** @internal */
 export const Sampling$inboundSchema: z.ZodType<
@@ -1864,7 +1519,6 @@ export const Sampling$inboundSchema: z.ZodType<
   env: Env$inboundSchema.optional(),
   requestPath: z.string().optional(),
 });
-
 /** @internal */
 export type Sampling$Outbound = {
   type: string;
@@ -1885,23 +1539,9 @@ export const Sampling$outboundSchema: z.ZodType<
   requestPath: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Sampling$ {
-  /** @deprecated use `Sampling$inboundSchema` instead. */
-  export const inboundSchema = Sampling$inboundSchema;
-  /** @deprecated use `Sampling$outboundSchema` instead. */
-  export const outboundSchema = Sampling$outboundSchema;
-  /** @deprecated use `Sampling$Outbound` instead. */
-  export type Outbound = Sampling$Outbound;
-}
-
 export function samplingToJSON(sampling: Sampling): string {
   return JSON.stringify(Sampling$outboundSchema.parse(sampling));
 }
-
 export function samplingFromJSON(
   jsonString: string,
 ): SafeParseResult<Sampling, SDKValidationError> {
@@ -1920,7 +1560,6 @@ export const Transforms$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type Transforms$Outbound = {
   id: string;
@@ -1935,23 +1574,9 @@ export const Transforms$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Transforms$ {
-  /** @deprecated use `Transforms$inboundSchema` instead. */
-  export const inboundSchema = Transforms$inboundSchema;
-  /** @deprecated use `Transforms$outboundSchema` instead. */
-  export const outboundSchema = Transforms$outboundSchema;
-  /** @deprecated use `Transforms$Outbound` instead. */
-  export type Outbound = Transforms$Outbound;
-}
-
 export function transformsToJSON(transforms: Transforms): string {
   return JSON.stringify(Transforms$outboundSchema.parse(transforms));
 }
-
 export function transformsFromJSON(
   jsonString: string,
 ): SafeParseResult<Transforms, SDKValidationError> {
@@ -1967,7 +1592,6 @@ export const Source2$inboundSchema: z.ZodType<Source2, z.ZodTypeDef, unknown> =
   z.object({
     kind: z.string().default("self-served"),
   });
-
 /** @internal */
 export type Source2$Outbound = {
   kind: string;
@@ -1982,23 +1606,9 @@ export const Source2$outboundSchema: z.ZodType<
   kind: z.string().default("self-served"),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Source2$ {
-  /** @deprecated use `Source2$inboundSchema` instead. */
-  export const inboundSchema = Source2$inboundSchema;
-  /** @deprecated use `Source2$outboundSchema` instead. */
-  export const outboundSchema = Source2$outboundSchema;
-  /** @deprecated use `Source2$Outbound` instead. */
-  export type Outbound = Source2$Outbound;
-}
-
 export function source2ToJSON(source2: Source2): string {
   return JSON.stringify(Source2$outboundSchema.parse(source2));
 }
-
 export function source2FromJSON(
   jsonString: string,
 ): SafeParseResult<Source2, SDKValidationError> {
@@ -2014,7 +1624,6 @@ export const One3$inboundSchema: z.ZodType<One3, z.ZodTypeDef, unknown> = z
   .object({
     kind: z.string().default("integration"),
   });
-
 /** @internal */
 export type One3$Outbound = {
   kind: string;
@@ -2026,23 +1635,9 @@ export const One3$outboundSchema: z.ZodType<One3$Outbound, z.ZodTypeDef, One3> =
     kind: z.string().default("integration"),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One3$ {
-  /** @deprecated use `One3$inboundSchema` instead. */
-  export const inboundSchema = One3$inboundSchema;
-  /** @deprecated use `One3$outboundSchema` instead. */
-  export const outboundSchema = One3$outboundSchema;
-  /** @deprecated use `One3$Outbound` instead. */
-  export type Outbound = One3$Outbound;
-}
-
 export function one3ToJSON(one3: One3): string {
   return JSON.stringify(One3$outboundSchema.parse(one3));
 }
-
 export function one3FromJSON(
   jsonString: string,
 ): SafeParseResult<One3, SDKValidationError> {
@@ -2059,7 +1654,6 @@ export const One2$inboundSchema: z.ZodType<One2, z.ZodTypeDef, unknown> = z
     kind: z.string().default("integration"),
     resourceId: z.string(),
   });
-
 /** @internal */
 export type One2$Outbound = {
   kind: string;
@@ -2073,23 +1667,9 @@ export const One2$outboundSchema: z.ZodType<One2$Outbound, z.ZodTypeDef, One2> =
     resourceId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One2$ {
-  /** @deprecated use `One2$inboundSchema` instead. */
-  export const inboundSchema = One2$inboundSchema;
-  /** @deprecated use `One2$outboundSchema` instead. */
-  export const outboundSchema = One2$outboundSchema;
-  /** @deprecated use `One2$Outbound` instead. */
-  export type Outbound = One2$Outbound;
-}
-
 export function one2ToJSON(one2: One2): string {
   return JSON.stringify(One2$outboundSchema.parse(one2));
 }
-
 export function one2FromJSON(
   jsonString: string,
 ): SafeParseResult<One2, SDKValidationError> {
@@ -2106,7 +1686,6 @@ export const One1$inboundSchema: z.ZodType<One1, z.ZodTypeDef, unknown> = z
     kind: z.string().default("integration"),
     externalResourceId: z.string(),
   });
-
 /** @internal */
 export type One1$Outbound = {
   kind: string;
@@ -2120,23 +1699,9 @@ export const One1$outboundSchema: z.ZodType<One1$Outbound, z.ZodTypeDef, One1> =
     externalResourceId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace One1$ {
-  /** @deprecated use `One1$inboundSchema` instead. */
-  export const inboundSchema = One1$inboundSchema;
-  /** @deprecated use `One1$outboundSchema` instead. */
-  export const outboundSchema = One1$outboundSchema;
-  /** @deprecated use `One1$Outbound` instead. */
-  export type Outbound = One1$Outbound;
-}
-
 export function one1ToJSON(one1: One1): string {
   return JSON.stringify(One1$outboundSchema.parse(one1));
 }
-
 export function one1FromJSON(
   jsonString: string,
 ): SafeParseResult<One1, SDKValidationError> {
@@ -2154,7 +1719,6 @@ export const Source1$inboundSchema: z.ZodType<Source1, z.ZodTypeDef, unknown> =
     z.lazy(() => One2$inboundSchema),
     z.lazy(() => One3$inboundSchema),
   ]);
-
 /** @internal */
 export type Source1$Outbound = One1$Outbound | One2$Outbound | One3$Outbound;
 
@@ -2169,23 +1733,9 @@ export const Source1$outboundSchema: z.ZodType<
   z.lazy(() => One3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Source1$ {
-  /** @deprecated use `Source1$inboundSchema` instead. */
-  export const inboundSchema = Source1$inboundSchema;
-  /** @deprecated use `Source1$outboundSchema` instead. */
-  export const outboundSchema = Source1$outboundSchema;
-  /** @deprecated use `Source1$Outbound` instead. */
-  export type Outbound = Source1$Outbound;
-}
-
 export function source1ToJSON(source1: Source1): string {
   return JSON.stringify(Source1$outboundSchema.parse(source1));
 }
-
 export function source1FromJSON(
   jsonString: string,
 ): SafeParseResult<Source1, SDKValidationError> {
@@ -2209,7 +1759,6 @@ export const CreateDrainSource$inboundSchema: z.ZodType<
   ]),
   z.lazy(() => Source2$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateDrainSource$Outbound =
   | One1$Outbound
@@ -2231,19 +1780,6 @@ export const CreateDrainSource$outboundSchema: z.ZodType<
   z.lazy(() => Source2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSource$ {
-  /** @deprecated use `CreateDrainSource$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainSource$inboundSchema;
-  /** @deprecated use `CreateDrainSource$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainSource$outboundSchema;
-  /** @deprecated use `CreateDrainSource$Outbound` instead. */
-  export type Outbound = CreateDrainSource$Outbound;
-}
-
 export function createDrainSourceToJSON(
   createDrainSource: CreateDrainSource,
 ): string {
@@ -2251,7 +1787,6 @@ export function createDrainSourceToJSON(
     CreateDrainSource$outboundSchema.parse(createDrainSource),
   );
 }
-
 export function createDrainSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainSource, SDKValidationError> {
@@ -2276,7 +1811,6 @@ export const CreateDrainRequestBody$inboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => Delivery1$inboundSchema),
     z.lazy(() => Delivery2$inboundSchema),
-    z.lazy(() => Delivery3$inboundSchema),
   ]).optional(),
   sampling: z.array(z.lazy(() => Sampling$inboundSchema)).optional(),
   transforms: z.array(z.lazy(() => Transforms$inboundSchema)).optional(),
@@ -2289,7 +1823,6 @@ export const CreateDrainRequestBody$inboundSchema: z.ZodType<
     z.lazy(() => Source2$inboundSchema),
   ]).optional(),
 });
-
 /** @internal */
 export type CreateDrainRequestBody$Outbound = {
   name: string;
@@ -2297,11 +1830,7 @@ export type CreateDrainRequestBody$Outbound = {
   projectIds?: Array<string> | undefined;
   filter?: Filter2$Outbound | string | undefined;
   schemas: { [k: string]: Schemas$Outbound };
-  delivery?:
-    | Delivery1$Outbound
-    | Delivery2$Outbound
-    | Delivery3$Outbound
-    | undefined;
+  delivery?: Delivery1$Outbound | Delivery2$Outbound | undefined;
   sampling?: Array<Sampling$Outbound> | undefined;
   transforms?: Array<Transforms$Outbound> | undefined;
   source?:
@@ -2327,7 +1856,6 @@ export const CreateDrainRequestBody$outboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => Delivery1$outboundSchema),
     z.lazy(() => Delivery2$outboundSchema),
-    z.lazy(() => Delivery3$outboundSchema),
   ]).optional(),
   sampling: z.array(z.lazy(() => Sampling$outboundSchema)).optional(),
   transforms: z.array(z.lazy(() => Transforms$outboundSchema)).optional(),
@@ -2341,19 +1869,6 @@ export const CreateDrainRequestBody$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainRequestBody$ {
-  /** @deprecated use `CreateDrainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainRequestBody$inboundSchema;
-  /** @deprecated use `CreateDrainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainRequestBody$outboundSchema;
-  /** @deprecated use `CreateDrainRequestBody$Outbound` instead. */
-  export type Outbound = CreateDrainRequestBody$Outbound;
-}
-
 export function createDrainRequestBodyToJSON(
   createDrainRequestBody: CreateDrainRequestBody,
 ): string {
@@ -2361,7 +1876,6 @@ export function createDrainRequestBodyToJSON(
     CreateDrainRequestBody$outboundSchema.parse(createDrainRequestBody),
   );
 }
-
 export function createDrainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainRequestBody, SDKValidationError> {
@@ -2386,7 +1900,6 @@ export const CreateDrainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateDrainRequest$Outbound = {
   teamId?: string | undefined;
@@ -2409,19 +1922,6 @@ export const CreateDrainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainRequest$ {
-  /** @deprecated use `CreateDrainRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainRequest$inboundSchema;
-  /** @deprecated use `CreateDrainRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainRequest$outboundSchema;
-  /** @deprecated use `CreateDrainRequest$Outbound` instead. */
-  export type Outbound = CreateDrainRequest$Outbound;
-}
-
 export function createDrainRequestToJSON(
   createDrainRequest: CreateDrainRequest,
 ): string {
@@ -2429,7 +1929,6 @@ export function createDrainRequestToJSON(
     CreateDrainRequest$outboundSchema.parse(createDrainRequest),
   );
 }
-
 export function createDrainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainRequest, SDKValidationError> {
@@ -2444,22 +1943,10 @@ export function createDrainRequestFromJSON(
 export const ResponseBodyCreatedFrom$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyCreatedFrom
 > = z.nativeEnum(ResponseBodyCreatedFrom);
-
 /** @internal */
 export const ResponseBodyCreatedFrom$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyCreatedFrom
 > = ResponseBodyCreatedFrom$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyCreatedFrom$ {
-  /** @deprecated use `ResponseBodyCreatedFrom$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyCreatedFrom$inboundSchema;
-  /** @deprecated use `ResponseBodyCreatedFrom$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyCreatedFrom$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainResponseBodyLog$inboundSchema: z.ZodType<
@@ -2467,7 +1954,6 @@ export const CreateDrainResponseBodyLog$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CreateDrainResponseBodyLog$Outbound = {};
 
@@ -2478,19 +1964,6 @@ export const CreateDrainResponseBodyLog$outboundSchema: z.ZodType<
   CreateDrainResponseBodyLog
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyLog$ {
-  /** @deprecated use `CreateDrainResponseBodyLog$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyLog$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyLog$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodyLog$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyLog$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodyLog$Outbound;
-}
-
 export function createDrainResponseBodyLogToJSON(
   createDrainResponseBodyLog: CreateDrainResponseBodyLog,
 ): string {
@@ -2498,7 +1971,6 @@ export function createDrainResponseBodyLogToJSON(
     CreateDrainResponseBodyLog$outboundSchema.parse(createDrainResponseBodyLog),
   );
 }
-
 export function createDrainResponseBodyLogFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodyLog, SDKValidationError> {
@@ -2515,7 +1987,6 @@ export const ResponseBodyTrace$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ResponseBodyTrace$Outbound = {};
 
@@ -2526,19 +1997,6 @@ export const ResponseBodyTrace$outboundSchema: z.ZodType<
   ResponseBodyTrace
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyTrace$ {
-  /** @deprecated use `ResponseBodyTrace$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyTrace$inboundSchema;
-  /** @deprecated use `ResponseBodyTrace$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyTrace$outboundSchema;
-  /** @deprecated use `ResponseBodyTrace$Outbound` instead. */
-  export type Outbound = ResponseBodyTrace$Outbound;
-}
-
 export function responseBodyTraceToJSON(
   responseBodyTrace: ResponseBodyTrace,
 ): string {
@@ -2546,7 +2004,6 @@ export function responseBodyTraceToJSON(
     ResponseBodyTrace$outboundSchema.parse(responseBodyTrace),
   );
 }
-
 export function responseBodyTraceFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyTrace, SDKValidationError> {
@@ -2563,7 +2020,6 @@ export const CreateDrainResponseBodyAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CreateDrainResponseBodyAnalytics$Outbound = {};
 
@@ -2574,19 +2030,6 @@ export const CreateDrainResponseBodyAnalytics$outboundSchema: z.ZodType<
   CreateDrainResponseBodyAnalytics
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyAnalytics$ {
-  /** @deprecated use `CreateDrainResponseBodyAnalytics$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyAnalytics$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyAnalytics$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodyAnalytics$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyAnalytics$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodyAnalytics$Outbound;
-}
-
 export function createDrainResponseBodyAnalyticsToJSON(
   createDrainResponseBodyAnalytics: CreateDrainResponseBodyAnalytics,
 ): string {
@@ -2596,7 +2039,6 @@ export function createDrainResponseBodyAnalyticsToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodyAnalyticsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodyAnalytics, SDKValidationError> {
@@ -2611,7 +2053,6 @@ export function createDrainResponseBodyAnalyticsFromJSON(
 export const CreateDrainResponseBodyDrainsSpeedInsights$inboundSchema:
   z.ZodType<CreateDrainResponseBodyDrainsSpeedInsights, z.ZodTypeDef, unknown> =
     z.object({});
-
 /** @internal */
 export type CreateDrainResponseBodyDrainsSpeedInsights$Outbound = {};
 
@@ -2623,21 +2064,6 @@ export const CreateDrainResponseBodyDrainsSpeedInsights$outboundSchema:
     CreateDrainResponseBodyDrainsSpeedInsights
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyDrainsSpeedInsights$ {
-  /** @deprecated use `CreateDrainResponseBodyDrainsSpeedInsights$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainResponseBodyDrainsSpeedInsights$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDrainsSpeedInsights$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainResponseBodyDrainsSpeedInsights$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDrainsSpeedInsights$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodyDrainsSpeedInsights$Outbound;
-}
-
 export function createDrainResponseBodyDrainsSpeedInsightsToJSON(
   createDrainResponseBodyDrainsSpeedInsights:
     CreateDrainResponseBodyDrainsSpeedInsights,
@@ -2648,7 +2074,6 @@ export function createDrainResponseBodyDrainsSpeedInsightsToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodyDrainsSpeedInsightsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2683,7 +2108,6 @@ export const CreateDrainResponseBodySchemas$inboundSchema: z.ZodType<
     "speed_insights": "speedInsights",
   });
 });
-
 /** @internal */
 export type CreateDrainResponseBodySchemas$Outbound = {
   log?: CreateDrainResponseBodyLog$Outbound | undefined;
@@ -2713,19 +2137,6 @@ export const CreateDrainResponseBodySchemas$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodySchemas$ {
-  /** @deprecated use `CreateDrainResponseBodySchemas$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodySchemas$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySchemas$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodySchemas$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySchemas$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodySchemas$Outbound;
-}
-
 export function createDrainResponseBodySchemasToJSON(
   createDrainResponseBodySchemas: CreateDrainResponseBodySchemas,
 ): string {
@@ -2735,7 +2146,6 @@ export function createDrainResponseBodySchemasToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodySchemasFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodySchemas, SDKValidationError> {
@@ -2747,140 +2157,27 @@ export function createDrainResponseBodySchemasFromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$inboundSchema:
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema:
   z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type
   > = z.nativeEnum(
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type,
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type,
   );
-
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$outboundSchema:
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$outboundSchema:
   z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type
   > =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$outboundSchema;
-}
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema;
 
 /** @internal */
 export const CreateDrainDeliveryTarget$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryTarget
 > = z.nativeEnum(CreateDrainDeliveryTarget);
-
 /** @internal */
 export const CreateDrainDeliveryTarget$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryTarget
 > = CreateDrainDeliveryTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryTarget$ {
-  /** @deprecated use `CreateDrainDeliveryTarget$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryTarget$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryTarget$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryTarget$outboundSchema;
-}
-
-/** @internal */
-export const CreateDrainDelivery5$inboundSchema: z.ZodType<
-  CreateDrainDelivery5,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$inboundSchema,
-  target: CreateDrainDeliveryTarget$inboundSchema,
-});
-
-/** @internal */
-export type CreateDrainDelivery5$Outbound = {
-  type: string;
-  target: string;
-};
-
-/** @internal */
-export const CreateDrainDelivery5$outboundSchema: z.ZodType<
-  CreateDrainDelivery5$Outbound,
-  z.ZodTypeDef,
-  CreateDrainDelivery5
-> = z.object({
-  type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody25Type$outboundSchema,
-  target: CreateDrainDeliveryTarget$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDelivery5$ {
-  /** @deprecated use `CreateDrainDelivery5$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDelivery5$inboundSchema;
-  /** @deprecated use `CreateDrainDelivery5$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDelivery5$outboundSchema;
-  /** @deprecated use `CreateDrainDelivery5$Outbound` instead. */
-  export type Outbound = CreateDrainDelivery5$Outbound;
-}
-
-export function createDrainDelivery5ToJSON(
-  createDrainDelivery5: CreateDrainDelivery5,
-): string {
-  return JSON.stringify(
-    CreateDrainDelivery5$outboundSchema.parse(createDrainDelivery5),
-  );
-}
-
-export function createDrainDelivery5FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDrainDelivery5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDrainDelivery5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDrainDelivery5' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type
-  > = z.nativeEnum(
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type,
-  );
-
-/** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type
-  > =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainDelivery4$inboundSchema: z.ZodType<
@@ -2889,16 +2186,13 @@ export const CreateDrainDelivery4$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$inboundSchema,
-  endpoint: z.string(),
-  table: z.string(),
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema,
+  target: CreateDrainDeliveryTarget$inboundSchema,
 });
-
 /** @internal */
 export type CreateDrainDelivery4$Outbound = {
   type: string;
-  endpoint: string;
-  table: string;
+  target: string;
 };
 
 /** @internal */
@@ -2908,23 +2202,9 @@ export const CreateDrainDelivery4$outboundSchema: z.ZodType<
   CreateDrainDelivery4
 > = z.object({
   type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Type$outboundSchema,
-  endpoint: z.string(),
-  table: z.string(),
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$outboundSchema,
+  target: CreateDrainDeliveryTarget$outboundSchema,
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDelivery4$ {
-  /** @deprecated use `CreateDrainDelivery4$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDelivery4$inboundSchema;
-  /** @deprecated use `CreateDrainDelivery4$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDelivery4$outboundSchema;
-  /** @deprecated use `CreateDrainDelivery4$Outbound` instead. */
-  export type Outbound = CreateDrainDelivery4$Outbound;
-}
 
 export function createDrainDelivery4ToJSON(
   createDrainDelivery4: CreateDrainDelivery4,
@@ -2933,7 +2213,6 @@ export function createDrainDelivery4ToJSON(
     CreateDrainDelivery4$outboundSchema.parse(createDrainDelivery4),
   );
 }
-
 export function createDrainDelivery4FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainDelivery4, SDKValidationError> {
@@ -2945,103 +2224,12 @@ export function createDrainDelivery4FromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type
-  > = z.nativeEnum(
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type,
-  );
-
-/** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type
-  > =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$outboundSchema;
-}
-
-/** @internal */
-export const CreateDrainDeliveryDrains3$inboundSchema: z.ZodType<
-  CreateDrainDeliveryDrains3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$inboundSchema,
-  endpoint: z.string(),
-  secret: z.string(),
-});
-
-/** @internal */
-export type CreateDrainDeliveryDrains3$Outbound = {
-  type: string;
-  endpoint: string;
-  secret: string;
-};
-
-/** @internal */
-export const CreateDrainDeliveryDrains3$outboundSchema: z.ZodType<
-  CreateDrainDeliveryDrains3$Outbound,
-  z.ZodTypeDef,
-  CreateDrainDeliveryDrains3
-> = z.object({
-  type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type$outboundSchema,
-  endpoint: z.string(),
-  secret: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrains3$ {
-  /** @deprecated use `CreateDrainDeliveryDrains3$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryDrains3$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrains3$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryDrains3$outboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrains3$Outbound` instead. */
-  export type Outbound = CreateDrainDeliveryDrains3$Outbound;
-}
-
-export function createDrainDeliveryDrains3ToJSON(
-  createDrainDeliveryDrains3: CreateDrainDeliveryDrains3,
-): string {
-  return JSON.stringify(
-    CreateDrainDeliveryDrains3$outboundSchema.parse(createDrainDeliveryDrains3),
-  );
-}
-
-export function createDrainDeliveryDrains3FromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDrainDeliveryDrains3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDrainDeliveryDrains3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDrainDeliveryDrains3' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType
   > = z.nativeEnum(
     CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType,
   );
-
 /** @internal */
 export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$outboundSchema:
   z.ZodNativeEnum<
@@ -3049,18 +2237,63 @@ export const CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType
   > =
     CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$outboundSchema;
+/** @internal */
+export const CreateDrainDelivery3$inboundSchema: z.ZodType<
+  CreateDrainDelivery3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  endpoint: z.string(),
+  table: z.string(),
+});
+/** @internal */
+export type CreateDrainDelivery3$Outbound = {
+  type: string;
+  endpoint: string;
+  table: string;
+};
+
+/** @internal */
+export const CreateDrainDelivery3$outboundSchema: z.ZodType<
+  CreateDrainDelivery3$Outbound,
+  z.ZodTypeDef,
+  CreateDrainDelivery3
+> = z.object({
+  type:
+    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+  endpoint: z.string(),
+  table: z.string(),
+});
+
+export function createDrainDelivery3ToJSON(
+  createDrainDelivery3: CreateDrainDelivery3,
+): string {
+  return JSON.stringify(
+    CreateDrainDelivery3$outboundSchema.parse(createDrainDelivery3),
+  );
 }
+export function createDrainDelivery3FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainDelivery3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainDelivery3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainDelivery3' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONType
+  > = z.nativeEnum(CreateDrainDeliveryDrainsResponse200ApplicationJSONType);
+/** @internal */
+export const CreateDrainDeliveryDrainsResponse200ApplicationJSONType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONType
+  > = CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema;
 
 /** @internal */
 export const CreateDrainDeliveryEndpoint$inboundSchema: z.ZodType<
@@ -3070,7 +2303,6 @@ export const CreateDrainDeliveryEndpoint$inboundSchema: z.ZodType<
 > = z.object({
   traces: z.string(),
 });
-
 /** @internal */
 export type CreateDrainDeliveryEndpoint$Outbound = {
   traces: string;
@@ -3085,19 +2317,6 @@ export const CreateDrainDeliveryEndpoint$outboundSchema: z.ZodType<
   traces: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryEndpoint$ {
-  /** @deprecated use `CreateDrainDeliveryEndpoint$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryEndpoint$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryEndpoint$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryEndpoint$outboundSchema;
-  /** @deprecated use `CreateDrainDeliveryEndpoint$Outbound` instead. */
-  export type Outbound = CreateDrainDeliveryEndpoint$Outbound;
-}
-
 export function createDrainDeliveryEndpointToJSON(
   createDrainDeliveryEndpoint: CreateDrainDeliveryEndpoint,
 ): string {
@@ -3107,7 +2326,6 @@ export function createDrainDeliveryEndpointToJSON(
     ),
   );
 }
-
 export function createDrainDeliveryEndpointFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainDeliveryEndpoint, SDKValidationError> {
@@ -3123,24 +2341,103 @@ export const CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inbound
   z.ZodNativeEnum<
     typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding
   > = z.nativeEnum(CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding);
-
 /** @internal */
 export const CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$outboundSchema:
   z.ZodNativeEnum<
     typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding
   > = CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$outboundSchema;
+/** @internal */
+export const CreateDrainSecretDrainsResponseKind$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainSecretDrainsResponseKind
+> = z.nativeEnum(CreateDrainSecretDrainsResponseKind);
+/** @internal */
+export const CreateDrainSecretDrainsResponseKind$outboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainSecretDrainsResponseKind> =
+    CreateDrainSecretDrainsResponseKind$inboundSchema;
+
+/** @internal */
+export const CreateDrainSecretDrainsResponse2$inboundSchema: z.ZodType<
+  CreateDrainSecretDrainsResponse2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: CreateDrainSecretDrainsResponseKind$inboundSchema,
+});
+/** @internal */
+export type CreateDrainSecretDrainsResponse2$Outbound = {
+  kind: string;
+};
+
+/** @internal */
+export const CreateDrainSecretDrainsResponse2$outboundSchema: z.ZodType<
+  CreateDrainSecretDrainsResponse2$Outbound,
+  z.ZodTypeDef,
+  CreateDrainSecretDrainsResponse2
+> = z.object({
+  kind: CreateDrainSecretDrainsResponseKind$outboundSchema,
+});
+
+export function createDrainSecretDrainsResponse2ToJSON(
+  createDrainSecretDrainsResponse2: CreateDrainSecretDrainsResponse2,
+): string {
+  return JSON.stringify(
+    CreateDrainSecretDrainsResponse2$outboundSchema.parse(
+      createDrainSecretDrainsResponse2,
+    ),
+  );
+}
+export function createDrainSecretDrainsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainSecretDrainsResponse2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainSecretDrainsResponse2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainSecretDrainsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDrainDeliveryDrainsSecret$inboundSchema: z.ZodType<
+  CreateDrainDeliveryDrainsSecret,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateDrainSecretDrainsResponse2$inboundSchema),
+  z.string(),
+]);
+/** @internal */
+export type CreateDrainDeliveryDrainsSecret$Outbound =
+  | CreateDrainSecretDrainsResponse2$Outbound
+  | string;
+
+/** @internal */
+export const CreateDrainDeliveryDrainsSecret$outboundSchema: z.ZodType<
+  CreateDrainDeliveryDrainsSecret$Outbound,
+  z.ZodTypeDef,
+  CreateDrainDeliveryDrainsSecret
+> = z.union([
+  z.lazy(() => CreateDrainSecretDrainsResponse2$outboundSchema),
+  z.string(),
+]);
+
+export function createDrainDeliveryDrainsSecretToJSON(
+  createDrainDeliveryDrainsSecret: CreateDrainDeliveryDrainsSecret,
+): string {
+  return JSON.stringify(
+    CreateDrainDeliveryDrainsSecret$outboundSchema.parse(
+      createDrainDeliveryDrainsSecret,
+    ),
+  );
+}
+export function createDrainDeliveryDrainsSecretFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainDeliveryDrainsSecret, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainDeliveryDrainsSecret$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainDeliveryDrainsSecret' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3149,22 +2446,23 @@ export const CreateDrainDeliveryDrains2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema,
   endpoint: z.lazy(() => CreateDrainDeliveryEndpoint$inboundSchema),
   encoding:
     CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema,
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([
+    z.lazy(() => CreateDrainSecretDrainsResponse2$inboundSchema),
+    z.string(),
+  ]).optional(),
 });
-
 /** @internal */
 export type CreateDrainDeliveryDrains2$Outbound = {
   type: string;
   endpoint: CreateDrainDeliveryEndpoint$Outbound;
   encoding: string;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: CreateDrainSecretDrainsResponse2$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -3173,27 +2471,16 @@ export const CreateDrainDeliveryDrains2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDrainDeliveryDrains2
 > = z.object({
-  type:
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONType$outboundSchema,
   endpoint: z.lazy(() => CreateDrainDeliveryEndpoint$outboundSchema),
   encoding:
     CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$outboundSchema,
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([
+    z.lazy(() => CreateDrainSecretDrainsResponse2$outboundSchema),
+    z.string(),
+  ]).optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrains2$ {
-  /** @deprecated use `CreateDrainDeliveryDrains2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryDrains2$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrains2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryDrains2$outboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrains2$Outbound` instead. */
-  export type Outbound = CreateDrainDeliveryDrains2$Outbound;
-}
 
 export function createDrainDeliveryDrains2ToJSON(
   createDrainDeliveryDrains2: CreateDrainDeliveryDrains2,
@@ -3202,7 +2489,6 @@ export function createDrainDeliveryDrains2ToJSON(
     CreateDrainDeliveryDrains2$outboundSchema.parse(createDrainDeliveryDrains2),
   );
 }
-
 export function createDrainDeliveryDrains2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainDeliveryDrains2, SDKValidationError> {
@@ -3214,72 +2500,116 @@ export function createDrainDeliveryDrains2FromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONType
-  > = z.nativeEnum(CreateDrainDeliveryDrainsResponse200ApplicationJSONType);
-
+export const CreateDrainDeliveryDrainsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Type> = z
+    .nativeEnum(CreateDrainDeliveryDrainsResponse200Type);
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200ApplicationJSONType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateDrainDeliveryDrainsResponse200ApplicationJSONType
-  > = CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200ApplicationJSONType$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200ApplicationJSONType$outboundSchema;
-}
+export const CreateDrainDeliveryDrainsResponse200Type$outboundSchema:
+  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Type> =
+    CreateDrainDeliveryDrainsResponse200Type$inboundSchema;
 
 /** @internal */
 export const CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Encoding> = z
     .nativeEnum(CreateDrainDeliveryDrainsResponse200Encoding);
-
 /** @internal */
 export const CreateDrainDeliveryDrainsResponse200Encoding$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Encoding> =
     CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200Encoding$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200Encoding$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200Encoding$outboundSchema;
-}
-
 /** @internal */
 export const CreateDrainDeliveryCompression$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryCompression
 > = z.nativeEnum(CreateDrainDeliveryCompression);
-
 /** @internal */
 export const CreateDrainDeliveryCompression$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryCompression
 > = CreateDrainDeliveryCompression$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryCompression$ {
-  /** @deprecated use `CreateDrainDeliveryCompression$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryCompression$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryCompression$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryCompression$outboundSchema;
+/** @internal */
+export const CreateDrainSecretDrainsKind$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainSecretDrainsKind
+> = z.nativeEnum(CreateDrainSecretDrainsKind);
+/** @internal */
+export const CreateDrainSecretDrainsKind$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainSecretDrainsKind
+> = CreateDrainSecretDrainsKind$inboundSchema;
+
+/** @internal */
+export const CreateDrainSecretDrains2$inboundSchema: z.ZodType<
+  CreateDrainSecretDrains2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: CreateDrainSecretDrainsKind$inboundSchema,
+});
+/** @internal */
+export type CreateDrainSecretDrains2$Outbound = {
+  kind: string;
+};
+
+/** @internal */
+export const CreateDrainSecretDrains2$outboundSchema: z.ZodType<
+  CreateDrainSecretDrains2$Outbound,
+  z.ZodTypeDef,
+  CreateDrainSecretDrains2
+> = z.object({
+  kind: CreateDrainSecretDrainsKind$outboundSchema,
+});
+
+export function createDrainSecretDrains2ToJSON(
+  createDrainSecretDrains2: CreateDrainSecretDrains2,
+): string {
+  return JSON.stringify(
+    CreateDrainSecretDrains2$outboundSchema.parse(createDrainSecretDrains2),
+  );
+}
+export function createDrainSecretDrains2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainSecretDrains2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainSecretDrains2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainSecretDrains2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateDrainDeliverySecret$inboundSchema: z.ZodType<
+  CreateDrainDeliverySecret,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => CreateDrainSecretDrains2$inboundSchema), z.string()]);
+/** @internal */
+export type CreateDrainDeliverySecret$Outbound =
+  | CreateDrainSecretDrains2$Outbound
+  | string;
+
+/** @internal */
+export const CreateDrainDeliverySecret$outboundSchema: z.ZodType<
+  CreateDrainDeliverySecret$Outbound,
+  z.ZodTypeDef,
+  CreateDrainDeliverySecret
+> = z.union([
+  z.lazy(() => CreateDrainSecretDrains2$outboundSchema),
+  z.string(),
+]);
+
+export function createDrainDeliverySecretToJSON(
+  createDrainDeliverySecret: CreateDrainDeliverySecret,
+): string {
+  return JSON.stringify(
+    CreateDrainDeliverySecret$outboundSchema.parse(createDrainDeliverySecret),
+  );
+}
+export function createDrainDeliverySecretFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainDeliverySecret, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainDeliverySecret$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainDeliverySecret' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3288,14 +2618,16 @@ export const CreateDrainDeliveryDrains1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONType$inboundSchema,
+  type: CreateDrainDeliveryDrainsResponse200Type$inboundSchema,
   endpoint: z.string(),
   encoding: CreateDrainDeliveryDrainsResponse200Encoding$inboundSchema,
   compression: CreateDrainDeliveryCompression$inboundSchema.optional(),
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([
+    z.lazy(() => CreateDrainSecretDrains2$inboundSchema),
+    z.string(),
+  ]).optional(),
 });
-
 /** @internal */
 export type CreateDrainDeliveryDrains1$Outbound = {
   type: string;
@@ -3303,7 +2635,7 @@ export type CreateDrainDeliveryDrains1$Outbound = {
   encoding: string;
   compression?: string | undefined;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: CreateDrainSecretDrains2$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -3312,26 +2644,16 @@ export const CreateDrainDeliveryDrains1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateDrainDeliveryDrains1
 > = z.object({
-  type: CreateDrainDeliveryDrainsResponse200ApplicationJSONType$outboundSchema,
+  type: CreateDrainDeliveryDrainsResponse200Type$outboundSchema,
   endpoint: z.string(),
   encoding: CreateDrainDeliveryDrainsResponse200Encoding$outboundSchema,
   compression: CreateDrainDeliveryCompression$outboundSchema.optional(),
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([
+    z.lazy(() => CreateDrainSecretDrains2$outboundSchema),
+    z.string(),
+  ]).optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrains1$ {
-  /** @deprecated use `CreateDrainDeliveryDrains1$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryDrains1$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrains1$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryDrains1$outboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrains1$Outbound` instead. */
-  export type Outbound = CreateDrainDeliveryDrains1$Outbound;
-}
 
 export function createDrainDeliveryDrains1ToJSON(
   createDrainDeliveryDrains1: CreateDrainDeliveryDrains1,
@@ -3340,7 +2662,6 @@ export function createDrainDeliveryDrains1ToJSON(
     CreateDrainDeliveryDrains1$outboundSchema.parse(createDrainDeliveryDrains1),
   );
 }
-
 export function createDrainDeliveryDrains1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainDeliveryDrains1, SDKValidationError> {
@@ -3359,18 +2680,15 @@ export const CreateDrainResponseBodyDelivery$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CreateDrainDeliveryDrains1$inboundSchema),
   z.lazy(() => CreateDrainDeliveryDrains2$inboundSchema),
-  z.lazy(() => CreateDrainDeliveryDrains3$inboundSchema),
+  z.lazy(() => CreateDrainDelivery3$inboundSchema),
   z.lazy(() => CreateDrainDelivery4$inboundSchema),
-  z.lazy(() => CreateDrainDelivery5$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateDrainResponseBodyDelivery$Outbound =
   | CreateDrainDeliveryDrains1$Outbound
   | CreateDrainDeliveryDrains2$Outbound
-  | CreateDrainDeliveryDrains3$Outbound
-  | CreateDrainDelivery4$Outbound
-  | CreateDrainDelivery5$Outbound;
+  | CreateDrainDelivery3$Outbound
+  | CreateDrainDelivery4$Outbound;
 
 /** @internal */
 export const CreateDrainResponseBodyDelivery$outboundSchema: z.ZodType<
@@ -3380,23 +2698,9 @@ export const CreateDrainResponseBodyDelivery$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CreateDrainDeliveryDrains1$outboundSchema),
   z.lazy(() => CreateDrainDeliveryDrains2$outboundSchema),
-  z.lazy(() => CreateDrainDeliveryDrains3$outboundSchema),
+  z.lazy(() => CreateDrainDelivery3$outboundSchema),
   z.lazy(() => CreateDrainDelivery4$outboundSchema),
-  z.lazy(() => CreateDrainDelivery5$outboundSchema),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyDelivery$ {
-  /** @deprecated use `CreateDrainResponseBodyDelivery$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyDelivery$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDelivery$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodyDelivery$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDelivery$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodyDelivery$Outbound;
-}
 
 export function createDrainResponseBodyDeliveryToJSON(
   createDrainResponseBodyDelivery: CreateDrainResponseBodyDelivery,
@@ -3407,7 +2711,6 @@ export function createDrainResponseBodyDeliveryToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodyDeliveryFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodyDelivery, SDKValidationError> {
@@ -3422,44 +2725,19 @@ export function createDrainResponseBodyDeliveryFromJSON(
 export const CreateDrainResponseBodyDrainsType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyDrainsType
 > = z.nativeEnum(CreateDrainResponseBodyDrainsType);
-
 /** @internal */
 export const CreateDrainResponseBodyDrainsType$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyDrainsType
 > = CreateDrainResponseBodyDrainsType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyDrainsType$ {
-  /** @deprecated use `CreateDrainResponseBodyDrainsType$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyDrainsType$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDrainsType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainResponseBodyDrainsType$outboundSchema;
-}
-
 /** @internal */
 export const CreateDrainResponseBodyEnv$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyEnv
 > = z.nativeEnum(CreateDrainResponseBodyEnv);
-
 /** @internal */
 export const CreateDrainResponseBodyEnv$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyEnv
 > = CreateDrainResponseBodyEnv$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyEnv$ {
-  /** @deprecated use `CreateDrainResponseBodyEnv$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyEnv$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyEnv$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodyEnv$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainResponseBodySampling$inboundSchema: z.ZodType<
@@ -3472,7 +2750,6 @@ export const CreateDrainResponseBodySampling$inboundSchema: z.ZodType<
   env: CreateDrainResponseBodyEnv$inboundSchema.optional(),
   requestPath: z.string().optional(),
 });
-
 /** @internal */
 export type CreateDrainResponseBodySampling$Outbound = {
   type: string;
@@ -3493,19 +2770,6 @@ export const CreateDrainResponseBodySampling$outboundSchema: z.ZodType<
   requestPath: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodySampling$ {
-  /** @deprecated use `CreateDrainResponseBodySampling$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodySampling$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySampling$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodySampling$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySampling$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodySampling$Outbound;
-}
-
 export function createDrainResponseBodySamplingToJSON(
   createDrainResponseBodySampling: CreateDrainResponseBodySampling,
 ): string {
@@ -3515,7 +2779,6 @@ export function createDrainResponseBodySamplingToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodySamplingFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodySampling, SDKValidationError> {
@@ -3530,66 +2793,28 @@ export function createDrainResponseBodySamplingFromJSON(
 export const CreateDrainResponseBodyDrainsStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyDrainsStatus
 > = z.nativeEnum(CreateDrainResponseBodyDrainsStatus);
-
 /** @internal */
 export const CreateDrainResponseBodyDrainsStatus$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainResponseBodyDrainsStatus> =
     CreateDrainResponseBodyDrainsStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyDrainsStatus$ {
-  /** @deprecated use `CreateDrainResponseBodyDrainsStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainResponseBodyDrainsStatus$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDrainsStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainResponseBodyDrainsStatus$outboundSchema;
-}
-
 /** @internal */
 export const ResponseBodyDisabledReason$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyDisabledReason
 > = z.nativeEnum(ResponseBodyDisabledReason);
-
 /** @internal */
 export const ResponseBodyDisabledReason$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyDisabledReason
 > = ResponseBodyDisabledReason$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyDisabledReason$ {
-  /** @deprecated use `ResponseBodyDisabledReason$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyDisabledReason$inboundSchema;
-  /** @deprecated use `ResponseBodyDisabledReason$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyDisabledReason$outboundSchema;
-}
-
 /** @internal */
 export const CreateDrainSourceDrainsKind$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainSourceDrainsKind
 > = z.nativeEnum(CreateDrainSourceDrainsKind);
-
 /** @internal */
 export const CreateDrainSourceDrainsKind$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainSourceDrainsKind
 > = CreateDrainSourceDrainsKind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSourceDrainsKind$ {
-  /** @deprecated use `CreateDrainSourceDrainsKind$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainSourceDrainsKind$inboundSchema;
-  /** @deprecated use `CreateDrainSourceDrainsKind$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainSourceDrainsKind$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainSourceDrains2$inboundSchema: z.ZodType<
@@ -3603,7 +2828,6 @@ export const CreateDrainSourceDrains2$inboundSchema: z.ZodType<
   integrationId: z.string(),
   integrationConfigurationId: z.string(),
 });
-
 /** @internal */
 export type CreateDrainSourceDrains2$Outbound = {
   kind: string;
@@ -3626,19 +2850,6 @@ export const CreateDrainSourceDrains2$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSourceDrains2$ {
-  /** @deprecated use `CreateDrainSourceDrains2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainSourceDrains2$inboundSchema;
-  /** @deprecated use `CreateDrainSourceDrains2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainSourceDrains2$outboundSchema;
-  /** @deprecated use `CreateDrainSourceDrains2$Outbound` instead. */
-  export type Outbound = CreateDrainSourceDrains2$Outbound;
-}
-
 export function createDrainSourceDrains2ToJSON(
   createDrainSourceDrains2: CreateDrainSourceDrains2,
 ): string {
@@ -3646,7 +2857,6 @@ export function createDrainSourceDrains2ToJSON(
     CreateDrainSourceDrains2$outboundSchema.parse(createDrainSourceDrains2),
   );
 }
-
 export function createDrainSourceDrains2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainSourceDrains2, SDKValidationError> {
@@ -3661,22 +2871,10 @@ export function createDrainSourceDrains2FromJSON(
 export const CreateDrainSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainSourceKind
 > = z.nativeEnum(CreateDrainSourceKind);
-
 /** @internal */
 export const CreateDrainSourceKind$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainSourceKind
 > = CreateDrainSourceKind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSourceKind$ {
-  /** @deprecated use `CreateDrainSourceKind$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainSourceKind$inboundSchema;
-  /** @deprecated use `CreateDrainSourceKind$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainSourceKind$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainSourceDrains1$inboundSchema: z.ZodType<
@@ -3686,7 +2884,6 @@ export const CreateDrainSourceDrains1$inboundSchema: z.ZodType<
 > = z.object({
   kind: CreateDrainSourceKind$inboundSchema,
 });
-
 /** @internal */
 export type CreateDrainSourceDrains1$Outbound = {
   kind: string;
@@ -3701,19 +2898,6 @@ export const CreateDrainSourceDrains1$outboundSchema: z.ZodType<
   kind: CreateDrainSourceKind$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSourceDrains1$ {
-  /** @deprecated use `CreateDrainSourceDrains1$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainSourceDrains1$inboundSchema;
-  /** @deprecated use `CreateDrainSourceDrains1$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainSourceDrains1$outboundSchema;
-  /** @deprecated use `CreateDrainSourceDrains1$Outbound` instead. */
-  export type Outbound = CreateDrainSourceDrains1$Outbound;
-}
-
 export function createDrainSourceDrains1ToJSON(
   createDrainSourceDrains1: CreateDrainSourceDrains1,
 ): string {
@@ -3721,7 +2905,6 @@ export function createDrainSourceDrains1ToJSON(
     CreateDrainSourceDrains1$outboundSchema.parse(createDrainSourceDrains1),
   );
 }
-
 export function createDrainSourceDrains1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainSourceDrains1, SDKValidationError> {
@@ -3741,7 +2924,6 @@ export const CreateDrainResponseBodyDrainsSource$inboundSchema: z.ZodType<
   z.lazy(() => CreateDrainSourceDrains2$inboundSchema),
   z.lazy(() => CreateDrainSourceDrains1$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateDrainResponseBodyDrainsSource$Outbound =
   | CreateDrainSourceDrains2$Outbound
@@ -3757,21 +2939,6 @@ export const CreateDrainResponseBodyDrainsSource$outboundSchema: z.ZodType<
   z.lazy(() => CreateDrainSourceDrains1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyDrainsSource$ {
-  /** @deprecated use `CreateDrainResponseBodyDrainsSource$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainResponseBodyDrainsSource$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDrainsSource$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainResponseBodyDrainsSource$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyDrainsSource$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodyDrainsSource$Outbound;
-}
-
 export function createDrainResponseBodyDrainsSourceToJSON(
   createDrainResponseBodyDrainsSource: CreateDrainResponseBodyDrainsSource,
 ): string {
@@ -3781,7 +2948,6 @@ export function createDrainResponseBodyDrainsSourceToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodyDrainsSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodyDrainsSource, SDKValidationError> {
@@ -3797,45 +2963,19 @@ export function createDrainResponseBodyDrainsSourceFromJSON(
 export const CreateDrainFilterV2DrainsVersion$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterV2DrainsVersion
 > = z.nativeEnum(CreateDrainFilterV2DrainsVersion);
-
 /** @internal */
 export const CreateDrainFilterV2DrainsVersion$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterV2DrainsVersion
 > = CreateDrainFilterV2DrainsVersion$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterV2DrainsVersion$ {
-  /** @deprecated use `CreateDrainFilterV2DrainsVersion$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterV2DrainsVersion$inboundSchema;
-  /** @deprecated use `CreateDrainFilterV2DrainsVersion$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterV2DrainsVersion$outboundSchema;
-}
-
 /** @internal */
 export const CreateDrainFilterDrainsResponseType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterDrainsResponseType
 > = z.nativeEnum(CreateDrainFilterDrainsResponseType);
-
 /** @internal */
 export const CreateDrainFilterDrainsResponseType$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainFilterDrainsResponseType> =
     CreateDrainFilterDrainsResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsResponseType$ {
-  /** @deprecated use `CreateDrainFilterDrainsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainFilterDrainsResponseType$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainFilterDrainsResponseType$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDrainsResponse2$inboundSchema: z.ZodType<
@@ -3846,7 +2986,6 @@ export const CreateDrainFilterDrainsResponse2$inboundSchema: z.ZodType<
   type: CreateDrainFilterDrainsResponseType$inboundSchema,
   text: z.string(),
 });
-
 /** @internal */
 export type CreateDrainFilterDrainsResponse2$Outbound = {
   type: string;
@@ -3863,19 +3002,6 @@ export const CreateDrainFilterDrainsResponse2$outboundSchema: z.ZodType<
   text: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsResponse2$ {
-  /** @deprecated use `CreateDrainFilterDrainsResponse2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrainsResponse2$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsResponse2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDrainsResponse2$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsResponse2$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrainsResponse2$Outbound;
-}
-
 export function createDrainFilterDrainsResponse2ToJSON(
   createDrainFilterDrainsResponse2: CreateDrainFilterDrainsResponse2,
 ): string {
@@ -3885,7 +3011,6 @@ export function createDrainFilterDrainsResponse2ToJSON(
     ),
   );
 }
-
 export function createDrainFilterDrainsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDrainsResponse2, SDKValidationError> {
@@ -3900,22 +3025,10 @@ export function createDrainFilterDrainsResponse2FromJSON(
 export const CreateDrainFilterDrainsType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterDrainsType
 > = z.nativeEnum(CreateDrainFilterDrainsType);
-
 /** @internal */
 export const CreateDrainFilterDrainsType$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterDrainsType
 > = CreateDrainFilterDrainsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsType$ {
-  /** @deprecated use `CreateDrainFilterDrainsType$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrainsType$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsType$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDrainsType$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDrainsResponseProject$inboundSchema: z.ZodType<
@@ -3925,7 +3038,6 @@ export const CreateDrainFilterDrainsResponseProject$inboundSchema: z.ZodType<
 > = z.object({
   ids: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateDrainFilterDrainsResponseProject$Outbound = {
   ids?: Array<string> | undefined;
@@ -3940,21 +3052,6 @@ export const CreateDrainFilterDrainsResponseProject$outboundSchema: z.ZodType<
   ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsResponseProject$ {
-  /** @deprecated use `CreateDrainFilterDrainsResponseProject$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainFilterDrainsResponseProject$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsResponseProject$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainFilterDrainsResponseProject$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsResponseProject$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrainsResponseProject$Outbound;
-}
-
 export function createDrainFilterDrainsResponseProjectToJSON(
   createDrainFilterDrainsResponseProject:
     CreateDrainFilterDrainsResponseProject,
@@ -3965,7 +3062,6 @@ export function createDrainFilterDrainsResponseProjectToJSON(
     ),
   );
 }
-
 export function createDrainFilterDrainsResponseProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDrainsResponseProject, SDKValidationError> {
@@ -3981,22 +3077,10 @@ export function createDrainFilterDrainsResponseProjectFromJSON(
 export const CreateDrainFilterDrainsSources$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterDrainsSources
 > = z.nativeEnum(CreateDrainFilterDrainsSources);
-
 /** @internal */
 export const CreateDrainFilterDrainsSources$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterDrainsSources
 > = CreateDrainFilterDrainsSources$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsSources$ {
-  /** @deprecated use `CreateDrainFilterDrainsSources$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrainsSources$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsSources$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDrainsSources$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterLog$inboundSchema: z.ZodType<
@@ -4011,7 +3095,6 @@ export const CreateDrainFilterLog$inboundSchema: z.ZodType<
     "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
   });
 });
-
 /** @internal */
 export type CreateDrainFilterLog$Outbound = {
   sources?: Array<string> | undefined;
@@ -4032,19 +3115,6 @@ export const CreateDrainFilterLog$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterLog$ {
-  /** @deprecated use `CreateDrainFilterLog$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterLog$inboundSchema;
-  /** @deprecated use `CreateDrainFilterLog$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterLog$outboundSchema;
-  /** @deprecated use `CreateDrainFilterLog$Outbound` instead. */
-  export type Outbound = CreateDrainFilterLog$Outbound;
-}
-
 export function createDrainFilterLogToJSON(
   createDrainFilterLog: CreateDrainFilterLog,
 ): string {
@@ -4052,7 +3122,6 @@ export function createDrainFilterLogToJSON(
     CreateDrainFilterLog$outboundSchema.parse(createDrainFilterLog),
   );
 }
-
 export function createDrainFilterLogFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterLog, SDKValidationError> {
@@ -4067,24 +3136,10 @@ export function createDrainFilterLogFromJSON(
 export const CreateDrainFilterDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterDrainsEnvironments
 > = z.nativeEnum(CreateDrainFilterDrainsEnvironments);
-
 /** @internal */
 export const CreateDrainFilterDrainsEnvironments$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainFilterDrainsEnvironments> =
     CreateDrainFilterDrainsEnvironments$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsEnvironments$ {
-  /** @deprecated use `CreateDrainFilterDrainsEnvironments$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainFilterDrainsEnvironments$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsEnvironments$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainFilterDrainsEnvironments$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDrainsResponseDeployment$inboundSchema: z.ZodType<
@@ -4095,7 +3150,6 @@ export const CreateDrainFilterDrainsResponseDeployment$inboundSchema: z.ZodType<
   environments: z.array(CreateDrainFilterDrainsEnvironments$inboundSchema)
     .optional(),
 });
-
 /** @internal */
 export type CreateDrainFilterDrainsResponseDeployment$Outbound = {
   environments?: Array<string> | undefined;
@@ -4112,21 +3166,6 @@ export const CreateDrainFilterDrainsResponseDeployment$outboundSchema:
       .optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsResponseDeployment$ {
-  /** @deprecated use `CreateDrainFilterDrainsResponseDeployment$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainFilterDrainsResponseDeployment$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsResponseDeployment$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainFilterDrainsResponseDeployment$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsResponseDeployment$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrainsResponseDeployment$Outbound;
-}
-
 export function createDrainFilterDrainsResponseDeploymentToJSON(
   createDrainFilterDrainsResponseDeployment:
     CreateDrainFilterDrainsResponseDeployment,
@@ -4137,7 +3176,6 @@ export function createDrainFilterDrainsResponseDeploymentToJSON(
     ),
   );
 }
-
 export function createDrainFilterDrainsResponseDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4168,7 +3206,6 @@ export const CreateDrainFilterDrains1$inboundSchema: z.ZodType<
     CreateDrainFilterDrainsResponseDeployment$inboundSchema
   ).optional(),
 });
-
 /** @internal */
 export type CreateDrainFilterDrains1$Outbound = {
   type: string;
@@ -4192,19 +3229,6 @@ export const CreateDrainFilterDrains1$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrains1$ {
-  /** @deprecated use `CreateDrainFilterDrains1$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrains1$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrains1$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDrains1$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrains1$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrains1$Outbound;
-}
-
 export function createDrainFilterDrains1ToJSON(
   createDrainFilterDrains1: CreateDrainFilterDrains1,
 ): string {
@@ -4212,7 +3236,6 @@ export function createDrainFilterDrains1ToJSON(
     CreateDrainFilterDrains1$outboundSchema.parse(createDrainFilterDrains1),
   );
 }
-
 export function createDrainFilterDrains1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDrains1, SDKValidationError> {
@@ -4232,7 +3255,6 @@ export const CreateDrainFilterV2Filter$inboundSchema: z.ZodType<
   z.lazy(() => CreateDrainFilterDrainsResponse2$inboundSchema),
   z.lazy(() => CreateDrainFilterDrains1$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateDrainFilterV2Filter$Outbound =
   | CreateDrainFilterDrainsResponse2$Outbound
@@ -4248,19 +3270,6 @@ export const CreateDrainFilterV2Filter$outboundSchema: z.ZodType<
   z.lazy(() => CreateDrainFilterDrains1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterV2Filter$ {
-  /** @deprecated use `CreateDrainFilterV2Filter$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterV2Filter$inboundSchema;
-  /** @deprecated use `CreateDrainFilterV2Filter$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterV2Filter$outboundSchema;
-  /** @deprecated use `CreateDrainFilterV2Filter$Outbound` instead. */
-  export type Outbound = CreateDrainFilterV2Filter$Outbound;
-}
-
 export function createDrainFilterV2FilterToJSON(
   createDrainFilterV2Filter: CreateDrainFilterV2Filter,
 ): string {
@@ -4268,7 +3277,6 @@ export function createDrainFilterV2FilterToJSON(
     CreateDrainFilterV2Filter$outboundSchema.parse(createDrainFilterV2Filter),
   );
 }
-
 export function createDrainFilterV2FilterFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterV2Filter, SDKValidationError> {
@@ -4291,7 +3299,6 @@ export const CreateDrainFilterV22$inboundSchema: z.ZodType<
     z.lazy(() => CreateDrainFilterDrains1$inboundSchema),
   ]),
 });
-
 /** @internal */
 export type CreateDrainFilterV22$Outbound = {
   version: string;
@@ -4313,19 +3320,6 @@ export const CreateDrainFilterV22$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterV22$ {
-  /** @deprecated use `CreateDrainFilterV22$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterV22$inboundSchema;
-  /** @deprecated use `CreateDrainFilterV22$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterV22$outboundSchema;
-  /** @deprecated use `CreateDrainFilterV22$Outbound` instead. */
-  export type Outbound = CreateDrainFilterV22$Outbound;
-}
-
 export function createDrainFilterV22ToJSON(
   createDrainFilterV22: CreateDrainFilterV22,
 ): string {
@@ -4333,7 +3327,6 @@ export function createDrainFilterV22ToJSON(
     CreateDrainFilterV22$outboundSchema.parse(createDrainFilterV22),
   );
 }
-
 export function createDrainFilterV22FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterV22, SDKValidationError> {
@@ -4348,22 +3341,10 @@ export function createDrainFilterV22FromJSON(
 export const CreateDrainFilterV2Version$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterV2Version
 > = z.nativeEnum(CreateDrainFilterV2Version);
-
 /** @internal */
 export const CreateDrainFilterV2Version$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterV2Version
 > = CreateDrainFilterV2Version$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterV2Version$ {
-  /** @deprecated use `CreateDrainFilterV2Version$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterV2Version$inboundSchema;
-  /** @deprecated use `CreateDrainFilterV2Version$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterV2Version$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterV21$inboundSchema: z.ZodType<
@@ -4373,7 +3354,6 @@ export const CreateDrainFilterV21$inboundSchema: z.ZodType<
 > = z.object({
   version: CreateDrainFilterV2Version$inboundSchema,
 });
-
 /** @internal */
 export type CreateDrainFilterV21$Outbound = {
   version: string;
@@ -4388,19 +3368,6 @@ export const CreateDrainFilterV21$outboundSchema: z.ZodType<
   version: CreateDrainFilterV2Version$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterV21$ {
-  /** @deprecated use `CreateDrainFilterV21$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterV21$inboundSchema;
-  /** @deprecated use `CreateDrainFilterV21$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterV21$outboundSchema;
-  /** @deprecated use `CreateDrainFilterV21$Outbound` instead. */
-  export type Outbound = CreateDrainFilterV21$Outbound;
-}
-
 export function createDrainFilterV21ToJSON(
   createDrainFilterV21: CreateDrainFilterV21,
 ): string {
@@ -4408,7 +3375,6 @@ export function createDrainFilterV21ToJSON(
     CreateDrainFilterV21$outboundSchema.parse(createDrainFilterV21),
   );
 }
-
 export function createDrainFilterV21FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterV21, SDKValidationError> {
@@ -4428,7 +3394,6 @@ export const ResponseBodyFilterV2$inboundSchema: z.ZodType<
   z.lazy(() => CreateDrainFilterV22$inboundSchema),
   z.lazy(() => CreateDrainFilterV21$inboundSchema),
 ]);
-
 /** @internal */
 export type ResponseBodyFilterV2$Outbound =
   | CreateDrainFilterV22$Outbound
@@ -4444,19 +3409,6 @@ export const ResponseBodyFilterV2$outboundSchema: z.ZodType<
   z.lazy(() => CreateDrainFilterV21$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyFilterV2$ {
-  /** @deprecated use `ResponseBodyFilterV2$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyFilterV2$inboundSchema;
-  /** @deprecated use `ResponseBodyFilterV2$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyFilterV2$outboundSchema;
-  /** @deprecated use `ResponseBodyFilterV2$Outbound` instead. */
-  export type Outbound = ResponseBodyFilterV2$Outbound;
-}
-
 export function responseBodyFilterV2ToJSON(
   responseBodyFilterV2: ResponseBodyFilterV2,
 ): string {
@@ -4464,7 +3416,6 @@ export function responseBodyFilterV2ToJSON(
     ResponseBodyFilterV2$outboundSchema.parse(responseBodyFilterV2),
   );
 }
-
 export function responseBodyFilterV2FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyFilterV2, SDKValidationError> {
@@ -4479,22 +3430,10 @@ export function responseBodyFilterV2FromJSON(
 export const CreateDrainResponseBodyFramework$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyFramework
 > = z.nativeEnum(CreateDrainResponseBodyFramework);
-
 /** @internal */
 export const CreateDrainResponseBodyFramework$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyFramework
 > = CreateDrainResponseBodyFramework$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyFramework$ {
-  /** @deprecated use `CreateDrainResponseBodyFramework$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyFramework$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyFramework$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodyFramework$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
@@ -4508,7 +3447,6 @@ export const CreateDrainResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
     .optional(),
   latestDeployment: z.string().optional(),
 });
-
 /** @internal */
 export type CreateDrainResponseBodyProjectsMetadata$Outbound = {
   id: string;
@@ -4530,21 +3468,6 @@ export const CreateDrainResponseBodyProjectsMetadata$outboundSchema: z.ZodType<
   latestDeployment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyProjectsMetadata$ {
-  /** @deprecated use `CreateDrainResponseBodyProjectsMetadata$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainResponseBodyProjectsMetadata$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyProjectsMetadata$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainResponseBodyProjectsMetadata$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyProjectsMetadata$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodyProjectsMetadata$Outbound;
-}
-
 export function createDrainResponseBodyProjectsMetadataToJSON(
   createDrainResponseBodyProjectsMetadata:
     CreateDrainResponseBodyProjectsMetadata,
@@ -4555,7 +3478,6 @@ export function createDrainResponseBodyProjectsMetadataToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodyProjectsMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4590,9 +3512,8 @@ export const CreateDrainResponseBody2$inboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => CreateDrainDeliveryDrains1$inboundSchema),
     z.lazy(() => CreateDrainDeliveryDrains2$inboundSchema),
-    z.lazy(() => CreateDrainDeliveryDrains3$inboundSchema),
+    z.lazy(() => CreateDrainDelivery3$inboundSchema),
     z.lazy(() => CreateDrainDelivery4$inboundSchema),
-    z.lazy(() => CreateDrainDelivery5$inboundSchema),
   ]).optional(),
   sampling: z.array(z.lazy(() => CreateDrainResponseBodySampling$inboundSchema))
     .optional(),
@@ -4620,7 +3541,6 @@ export const CreateDrainResponseBody2$inboundSchema: z.ZodType<
     z.lazy(() => CreateDrainResponseBodyProjectsMetadata$inboundSchema),
   ).optional(),
 });
-
 /** @internal */
 export type CreateDrainResponseBody2$Outbound = {
   id: string;
@@ -4634,9 +3554,8 @@ export type CreateDrainResponseBody2$Outbound = {
   delivery?:
     | CreateDrainDeliveryDrains1$Outbound
     | CreateDrainDeliveryDrains2$Outbound
-    | CreateDrainDeliveryDrains3$Outbound
+    | CreateDrainDelivery3$Outbound
     | CreateDrainDelivery4$Outbound
-    | CreateDrainDelivery5$Outbound
     | undefined;
   sampling?: Array<CreateDrainResponseBodySampling$Outbound> | undefined;
   teamId?: string | null | undefined;
@@ -4679,9 +3598,8 @@ export const CreateDrainResponseBody2$outboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => CreateDrainDeliveryDrains1$outboundSchema),
     z.lazy(() => CreateDrainDeliveryDrains2$outboundSchema),
-    z.lazy(() => CreateDrainDeliveryDrains3$outboundSchema),
+    z.lazy(() => CreateDrainDelivery3$outboundSchema),
     z.lazy(() => CreateDrainDelivery4$outboundSchema),
-    z.lazy(() => CreateDrainDelivery5$outboundSchema),
   ]).optional(),
   sampling: z.array(
     z.lazy(() => CreateDrainResponseBodySampling$outboundSchema),
@@ -4711,19 +3629,6 @@ export const CreateDrainResponseBody2$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBody2$ {
-  /** @deprecated use `CreateDrainResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBody2$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBody2$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBody2$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBody2$Outbound;
-}
-
 export function createDrainResponseBody2ToJSON(
   createDrainResponseBody2: CreateDrainResponseBody2,
 ): string {
@@ -4731,7 +3636,6 @@ export function createDrainResponseBody2ToJSON(
     CreateDrainResponseBody2$outboundSchema.parse(createDrainResponseBody2),
   );
 }
-
 export function createDrainResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBody2, SDKValidationError> {
@@ -4746,23 +3650,10 @@ export function createDrainResponseBody2FromJSON(
 export const CreateDrainResponseBodyCreatedFrom$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyCreatedFrom
 > = z.nativeEnum(CreateDrainResponseBodyCreatedFrom);
-
 /** @internal */
 export const CreateDrainResponseBodyCreatedFrom$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyCreatedFrom
 > = CreateDrainResponseBodyCreatedFrom$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyCreatedFrom$ {
-  /** @deprecated use `CreateDrainResponseBodyCreatedFrom$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyCreatedFrom$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyCreatedFrom$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainResponseBodyCreatedFrom$outboundSchema;
-}
 
 /** @internal */
 export const ResponseBodyLog$inboundSchema: z.ZodType<
@@ -4770,7 +3661,6 @@ export const ResponseBodyLog$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ResponseBodyLog$Outbound = {};
 
@@ -4781,25 +3671,11 @@ export const ResponseBodyLog$outboundSchema: z.ZodType<
   ResponseBodyLog
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyLog$ {
-  /** @deprecated use `ResponseBodyLog$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyLog$inboundSchema;
-  /** @deprecated use `ResponseBodyLog$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyLog$outboundSchema;
-  /** @deprecated use `ResponseBodyLog$Outbound` instead. */
-  export type Outbound = ResponseBodyLog$Outbound;
-}
-
 export function responseBodyLogToJSON(
   responseBodyLog: ResponseBodyLog,
 ): string {
   return JSON.stringify(ResponseBodyLog$outboundSchema.parse(responseBodyLog));
 }
-
 export function responseBodyLogFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyLog, SDKValidationError> {
@@ -4813,7 +3689,6 @@ export function responseBodyLogFromJSON(
 /** @internal */
 export const Trace$inboundSchema: z.ZodType<Trace, z.ZodTypeDef, unknown> = z
   .object({});
-
 /** @internal */
 export type Trace$Outbound = {};
 
@@ -4824,23 +3699,9 @@ export const Trace$outboundSchema: z.ZodType<
   Trace
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Trace$ {
-  /** @deprecated use `Trace$inboundSchema` instead. */
-  export const inboundSchema = Trace$inboundSchema;
-  /** @deprecated use `Trace$outboundSchema` instead. */
-  export const outboundSchema = Trace$outboundSchema;
-  /** @deprecated use `Trace$Outbound` instead. */
-  export type Outbound = Trace$Outbound;
-}
-
 export function traceToJSON(trace: Trace): string {
   return JSON.stringify(Trace$outboundSchema.parse(trace));
 }
-
 export function traceFromJSON(
   jsonString: string,
 ): SafeParseResult<Trace, SDKValidationError> {
@@ -4857,7 +3718,6 @@ export const ResponseBodyAnalytics$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ResponseBodyAnalytics$Outbound = {};
 
@@ -4868,19 +3728,6 @@ export const ResponseBodyAnalytics$outboundSchema: z.ZodType<
   ResponseBodyAnalytics
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyAnalytics$ {
-  /** @deprecated use `ResponseBodyAnalytics$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyAnalytics$inboundSchema;
-  /** @deprecated use `ResponseBodyAnalytics$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyAnalytics$outboundSchema;
-  /** @deprecated use `ResponseBodyAnalytics$Outbound` instead. */
-  export type Outbound = ResponseBodyAnalytics$Outbound;
-}
-
 export function responseBodyAnalyticsToJSON(
   responseBodyAnalytics: ResponseBodyAnalytics,
 ): string {
@@ -4888,7 +3735,6 @@ export function responseBodyAnalyticsToJSON(
     ResponseBodyAnalytics$outboundSchema.parse(responseBodyAnalytics),
   );
 }
-
 export function responseBodyAnalyticsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyAnalytics, SDKValidationError> {
@@ -4905,7 +3751,6 @@ export const CreateDrainResponseBodySpeedInsights$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CreateDrainResponseBodySpeedInsights$Outbound = {};
 
@@ -4916,21 +3761,6 @@ export const CreateDrainResponseBodySpeedInsights$outboundSchema: z.ZodType<
   CreateDrainResponseBodySpeedInsights
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodySpeedInsights$ {
-  /** @deprecated use `CreateDrainResponseBodySpeedInsights$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainResponseBodySpeedInsights$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySpeedInsights$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainResponseBodySpeedInsights$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySpeedInsights$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodySpeedInsights$Outbound;
-}
-
 export function createDrainResponseBodySpeedInsightsToJSON(
   createDrainResponseBodySpeedInsights: CreateDrainResponseBodySpeedInsights,
 ): string {
@@ -4940,7 +3770,6 @@ export function createDrainResponseBodySpeedInsightsToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodySpeedInsightsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodySpeedInsights, SDKValidationError> {
@@ -4969,7 +3798,6 @@ export const ResponseBodySchemas$inboundSchema: z.ZodType<
     "speed_insights": "speedInsights",
   });
 });
-
 /** @internal */
 export type ResponseBodySchemas$Outbound = {
   log?: ResponseBodyLog$Outbound | undefined;
@@ -4996,19 +3824,6 @@ export const ResponseBodySchemas$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodySchemas$ {
-  /** @deprecated use `ResponseBodySchemas$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodySchemas$inboundSchema;
-  /** @deprecated use `ResponseBodySchemas$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodySchemas$outboundSchema;
-  /** @deprecated use `ResponseBodySchemas$Outbound` instead. */
-  export type Outbound = ResponseBodySchemas$Outbound;
-}
-
 export function responseBodySchemasToJSON(
   responseBodySchemas: ResponseBodySchemas,
 ): string {
@@ -5016,7 +3831,6 @@ export function responseBodySchemasToJSON(
     ResponseBodySchemas$outboundSchema.parse(responseBodySchemas),
   );
 }
-
 export function responseBodySchemasFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodySchemas, SDKValidationError> {
@@ -5028,125 +3842,23 @@ export function responseBodySchemasFromJSON(
 }
 
 /** @internal */
-export const CreateDrainDeliveryDrainsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Type> = z
-    .nativeEnum(CreateDrainDeliveryDrainsResponse200Type);
-
-/** @internal */
-export const CreateDrainDeliveryDrainsResponse200Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponse200Type> =
-    CreateDrainDeliveryDrainsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponse200Type$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponse200Type$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponse200Type$outboundSchema;
-}
-
-/** @internal */
-export const DeliveryTarget$inboundSchema: z.ZodNativeEnum<
-  typeof DeliveryTarget
-> = z.nativeEnum(DeliveryTarget);
-
-/** @internal */
-export const DeliveryTarget$outboundSchema: z.ZodNativeEnum<
-  typeof DeliveryTarget
-> = DeliveryTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeliveryTarget$ {
-  /** @deprecated use `DeliveryTarget$inboundSchema` instead. */
-  export const inboundSchema = DeliveryTarget$inboundSchema;
-  /** @deprecated use `DeliveryTarget$outboundSchema` instead. */
-  export const outboundSchema = DeliveryTarget$outboundSchema;
-}
-
-/** @internal */
-export const Delivery5$inboundSchema: z.ZodType<
-  Delivery5,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: CreateDrainDeliveryDrainsResponse200Type$inboundSchema,
-  target: DeliveryTarget$inboundSchema,
-});
-
-/** @internal */
-export type Delivery5$Outbound = {
-  type: string;
-  target: string;
-};
-
-/** @internal */
-export const Delivery5$outboundSchema: z.ZodType<
-  Delivery5$Outbound,
-  z.ZodTypeDef,
-  Delivery5
-> = z.object({
-  type: CreateDrainDeliveryDrainsResponse200Type$outboundSchema,
-  target: DeliveryTarget$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Delivery5$ {
-  /** @deprecated use `Delivery5$inboundSchema` instead. */
-  export const inboundSchema = Delivery5$inboundSchema;
-  /** @deprecated use `Delivery5$outboundSchema` instead. */
-  export const outboundSchema = Delivery5$outboundSchema;
-  /** @deprecated use `Delivery5$Outbound` instead. */
-  export type Outbound = Delivery5$Outbound;
-}
-
-export function delivery5ToJSON(delivery5: Delivery5): string {
-  return JSON.stringify(Delivery5$outboundSchema.parse(delivery5));
-}
-
-export function delivery5FromJSON(
-  jsonString: string,
-): SafeParseResult<Delivery5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Delivery5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Delivery5' from JSON`,
-  );
-}
-
-/** @internal */
 export const CreateDrainDeliveryDrainsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponseType> = z.nativeEnum(
     CreateDrainDeliveryDrainsResponseType,
   );
-
 /** @internal */
 export const CreateDrainDeliveryDrainsResponseType$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponseType> =
     CreateDrainDeliveryDrainsResponseType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponseType$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponseType$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponseType$outboundSchema;
-}
+/** @internal */
+export const DeliveryTarget$inboundSchema: z.ZodNativeEnum<
+  typeof DeliveryTarget
+> = z.nativeEnum(DeliveryTarget);
+/** @internal */
+export const DeliveryTarget$outboundSchema: z.ZodNativeEnum<
+  typeof DeliveryTarget
+> = DeliveryTarget$inboundSchema;
 
 /** @internal */
 export const Delivery4$inboundSchema: z.ZodType<
@@ -5155,15 +3867,12 @@ export const Delivery4$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: CreateDrainDeliveryDrainsResponseType$inboundSchema,
-  endpoint: z.string(),
-  table: z.string(),
+  target: DeliveryTarget$inboundSchema,
 });
-
 /** @internal */
 export type Delivery4$Outbound = {
   type: string;
-  endpoint: string;
-  table: string;
+  target: string;
 };
 
 /** @internal */
@@ -5173,27 +3882,12 @@ export const Delivery4$outboundSchema: z.ZodType<
   Delivery4
 > = z.object({
   type: CreateDrainDeliveryDrainsResponseType$outboundSchema,
-  endpoint: z.string(),
-  table: z.string(),
+  target: DeliveryTarget$outboundSchema,
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Delivery4$ {
-  /** @deprecated use `Delivery4$inboundSchema` instead. */
-  export const inboundSchema = Delivery4$inboundSchema;
-  /** @deprecated use `Delivery4$outboundSchema` instead. */
-  export const outboundSchema = Delivery4$outboundSchema;
-  /** @deprecated use `Delivery4$Outbound` instead. */
-  export type Outbound = Delivery4$Outbound;
-}
 
 export function delivery4ToJSON(delivery4: Delivery4): string {
   return JSON.stringify(Delivery4$outboundSchema.parse(delivery4));
 }
-
 export function delivery4FromJSON(
   jsonString: string,
 ): SafeParseResult<Delivery4, SDKValidationError> {
@@ -5208,80 +3902,49 @@ export function delivery4FromJSON(
 export const CreateDrainDeliveryDrainsType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryDrainsType
 > = z.nativeEnum(CreateDrainDeliveryDrainsType);
-
 /** @internal */
 export const CreateDrainDeliveryDrainsType$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryDrainsType
 > = CreateDrainDeliveryDrainsType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsType$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsType$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryDrainsType$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsType$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryDrainsType$outboundSchema;
-}
-
 /** @internal */
-export const CreateDrainDelivery3$inboundSchema: z.ZodType<
-  CreateDrainDelivery3,
+export const Delivery3$inboundSchema: z.ZodType<
+  Delivery3,
   z.ZodTypeDef,
   unknown
 > = z.object({
   type: CreateDrainDeliveryDrainsType$inboundSchema,
   endpoint: z.string(),
-  secret: z.string(),
+  table: z.string(),
 });
-
 /** @internal */
-export type CreateDrainDelivery3$Outbound = {
+export type Delivery3$Outbound = {
   type: string;
   endpoint: string;
-  secret: string;
+  table: string;
 };
 
 /** @internal */
-export const CreateDrainDelivery3$outboundSchema: z.ZodType<
-  CreateDrainDelivery3$Outbound,
+export const Delivery3$outboundSchema: z.ZodType<
+  Delivery3$Outbound,
   z.ZodTypeDef,
-  CreateDrainDelivery3
+  Delivery3
 > = z.object({
   type: CreateDrainDeliveryDrainsType$outboundSchema,
   endpoint: z.string(),
-  secret: z.string(),
+  table: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDelivery3$ {
-  /** @deprecated use `CreateDrainDelivery3$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDelivery3$inboundSchema;
-  /** @deprecated use `CreateDrainDelivery3$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDelivery3$outboundSchema;
-  /** @deprecated use `CreateDrainDelivery3$Outbound` instead. */
-  export type Outbound = CreateDrainDelivery3$Outbound;
+export function delivery3ToJSON(delivery3: Delivery3): string {
+  return JSON.stringify(Delivery3$outboundSchema.parse(delivery3));
 }
-
-export function createDrainDelivery3ToJSON(
-  createDrainDelivery3: CreateDrainDelivery3,
-): string {
-  return JSON.stringify(
-    CreateDrainDelivery3$outboundSchema.parse(createDrainDelivery3),
-  );
-}
-
-export function createDrainDelivery3FromJSON(
+export function delivery3FromJSON(
   jsonString: string,
-): SafeParseResult<CreateDrainDelivery3, SDKValidationError> {
+): SafeParseResult<Delivery3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreateDrainDelivery3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDrainDelivery3' from JSON`,
+    (x) => Delivery3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delivery3' from JSON`,
   );
 }
 
@@ -5289,22 +3952,10 @@ export function createDrainDelivery3FromJSON(
 export const CreateDrainDeliveryType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryType
 > = z.nativeEnum(CreateDrainDeliveryType);
-
 /** @internal */
 export const CreateDrainDeliveryType$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryType
 > = CreateDrainDeliveryType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryType$ {
-  /** @deprecated use `CreateDrainDeliveryType$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryType$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryType$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDeliveryType$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainDeliveryDrainsEndpoint$inboundSchema: z.ZodType<
@@ -5314,7 +3965,6 @@ export const CreateDrainDeliveryDrainsEndpoint$inboundSchema: z.ZodType<
 > = z.object({
   traces: z.string(),
 });
-
 /** @internal */
 export type CreateDrainDeliveryDrainsEndpoint$Outbound = {
   traces: string;
@@ -5329,20 +3979,6 @@ export const CreateDrainDeliveryDrainsEndpoint$outboundSchema: z.ZodType<
   traces: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsEndpoint$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsEndpoint$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryDrainsEndpoint$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsEndpoint$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsEndpoint$outboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsEndpoint$Outbound` instead. */
-  export type Outbound = CreateDrainDeliveryDrainsEndpoint$Outbound;
-}
-
 export function createDrainDeliveryDrainsEndpointToJSON(
   createDrainDeliveryDrainsEndpoint: CreateDrainDeliveryDrainsEndpoint,
 ): string {
@@ -5352,7 +3988,6 @@ export function createDrainDeliveryDrainsEndpointToJSON(
     ),
   );
 }
-
 export function createDrainDeliveryDrainsEndpointFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainDeliveryDrainsEndpoint, SDKValidationError> {
@@ -5367,23 +4002,86 @@ export function createDrainDeliveryDrainsEndpointFromJSON(
 export const CreateDrainDeliveryDrainsResponseEncoding$inboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponseEncoding> = z
     .nativeEnum(CreateDrainDeliveryDrainsResponseEncoding);
-
 /** @internal */
 export const CreateDrainDeliveryDrainsResponseEncoding$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsResponseEncoding> =
     CreateDrainDeliveryDrainsResponseEncoding$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsResponseEncoding$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsResponseEncoding$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsResponseEncoding$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsResponseEncoding$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsResponseEncoding$outboundSchema;
+/** @internal */
+export const CreateDrainSecretKind$inboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainSecretKind
+> = z.nativeEnum(CreateDrainSecretKind);
+/** @internal */
+export const CreateDrainSecretKind$outboundSchema: z.ZodNativeEnum<
+  typeof CreateDrainSecretKind
+> = CreateDrainSecretKind$inboundSchema;
+
+/** @internal */
+export const CreateDrainSecret2$inboundSchema: z.ZodType<
+  CreateDrainSecret2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  kind: CreateDrainSecretKind$inboundSchema,
+});
+/** @internal */
+export type CreateDrainSecret2$Outbound = {
+  kind: string;
+};
+
+/** @internal */
+export const CreateDrainSecret2$outboundSchema: z.ZodType<
+  CreateDrainSecret2$Outbound,
+  z.ZodTypeDef,
+  CreateDrainSecret2
+> = z.object({
+  kind: CreateDrainSecretKind$outboundSchema,
+});
+
+export function createDrainSecret2ToJSON(
+  createDrainSecret2: CreateDrainSecret2,
+): string {
+  return JSON.stringify(
+    CreateDrainSecret2$outboundSchema.parse(createDrainSecret2),
+  );
+}
+export function createDrainSecret2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDrainSecret2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateDrainSecret2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDrainSecret2' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeliverySecret$inboundSchema: z.ZodType<
+  DeliverySecret,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.lazy(() => CreateDrainSecret2$inboundSchema), z.string()]);
+/** @internal */
+export type DeliverySecret$Outbound = CreateDrainSecret2$Outbound | string;
+
+/** @internal */
+export const DeliverySecret$outboundSchema: z.ZodType<
+  DeliverySecret$Outbound,
+  z.ZodTypeDef,
+  DeliverySecret
+> = z.union([z.lazy(() => CreateDrainSecret2$outboundSchema), z.string()]);
+
+export function deliverySecretToJSON(deliverySecret: DeliverySecret): string {
+  return JSON.stringify(DeliverySecret$outboundSchema.parse(deliverySecret));
+}
+export function deliverySecretFromJSON(
+  jsonString: string,
+): SafeParseResult<DeliverySecret, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeliverySecret$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeliverySecret' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5396,16 +4094,16 @@ export const CreateDrainDelivery2$inboundSchema: z.ZodType<
   endpoint: z.lazy(() => CreateDrainDeliveryDrainsEndpoint$inboundSchema),
   encoding: CreateDrainDeliveryDrainsResponseEncoding$inboundSchema,
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([z.lazy(() => CreateDrainSecret2$inboundSchema), z.string()])
+    .optional(),
 });
-
 /** @internal */
 export type CreateDrainDelivery2$Outbound = {
   type: string;
   endpoint: CreateDrainDeliveryDrainsEndpoint$Outbound;
   encoding: string;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: CreateDrainSecret2$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -5418,21 +4116,9 @@ export const CreateDrainDelivery2$outboundSchema: z.ZodType<
   endpoint: z.lazy(() => CreateDrainDeliveryDrainsEndpoint$outboundSchema),
   encoding: CreateDrainDeliveryDrainsResponseEncoding$outboundSchema,
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([z.lazy(() => CreateDrainSecret2$outboundSchema), z.string()])
+    .optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDelivery2$ {
-  /** @deprecated use `CreateDrainDelivery2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDelivery2$inboundSchema;
-  /** @deprecated use `CreateDrainDelivery2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDelivery2$outboundSchema;
-  /** @deprecated use `CreateDrainDelivery2$Outbound` instead. */
-  export type Outbound = CreateDrainDelivery2$Outbound;
-}
 
 export function createDrainDelivery2ToJSON(
   createDrainDelivery2: CreateDrainDelivery2,
@@ -5441,7 +4127,6 @@ export function createDrainDelivery2ToJSON(
     CreateDrainDelivery2$outboundSchema.parse(createDrainDelivery2),
   );
 }
-
 export function createDrainDelivery2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainDelivery2, SDKValidationError> {
@@ -5455,66 +4140,92 @@ export function createDrainDelivery2FromJSON(
 /** @internal */
 export const DeliveryType$inboundSchema: z.ZodNativeEnum<typeof DeliveryType> =
   z.nativeEnum(DeliveryType);
-
 /** @internal */
 export const DeliveryType$outboundSchema: z.ZodNativeEnum<typeof DeliveryType> =
   DeliveryType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeliveryType$ {
-  /** @deprecated use `DeliveryType$inboundSchema` instead. */
-  export const inboundSchema = DeliveryType$inboundSchema;
-  /** @deprecated use `DeliveryType$outboundSchema` instead. */
-  export const outboundSchema = DeliveryType$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainDeliveryDrainsEncoding$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryDrainsEncoding
 > = z.nativeEnum(CreateDrainDeliveryDrainsEncoding);
-
 /** @internal */
 export const CreateDrainDeliveryDrainsEncoding$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainDeliveryDrainsEncoding
 > = CreateDrainDeliveryDrainsEncoding$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsEncoding$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsEncoding$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDeliveryDrainsEncoding$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsEncoding$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsEncoding$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainDeliveryDrainsCompression$inboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsCompression> = z.nativeEnum(
     CreateDrainDeliveryDrainsCompression,
   );
-
 /** @internal */
 export const CreateDrainDeliveryDrainsCompression$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainDeliveryDrainsCompression> =
     CreateDrainDeliveryDrainsCompression$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDeliveryDrainsCompression$ {
-  /** @deprecated use `CreateDrainDeliveryDrainsCompression$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainDeliveryDrainsCompression$inboundSchema;
-  /** @deprecated use `CreateDrainDeliveryDrainsCompression$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainDeliveryDrainsCompression$outboundSchema;
+/** @internal */
+export const SecretKind$inboundSchema: z.ZodNativeEnum<typeof SecretKind> = z
+  .nativeEnum(SecretKind);
+/** @internal */
+export const SecretKind$outboundSchema: z.ZodNativeEnum<typeof SecretKind> =
+  SecretKind$inboundSchema;
+
+/** @internal */
+export const Secret2$inboundSchema: z.ZodType<Secret2, z.ZodTypeDef, unknown> =
+  z.object({
+    kind: SecretKind$inboundSchema,
+  });
+/** @internal */
+export type Secret2$Outbound = {
+  kind: string;
+};
+
+/** @internal */
+export const Secret2$outboundSchema: z.ZodType<
+  Secret2$Outbound,
+  z.ZodTypeDef,
+  Secret2
+> = z.object({
+  kind: SecretKind$outboundSchema,
+});
+
+export function secret2ToJSON(secret2: Secret2): string {
+  return JSON.stringify(Secret2$outboundSchema.parse(secret2));
+}
+export function secret2FromJSON(
+  jsonString: string,
+): SafeParseResult<Secret2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Secret2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Secret2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Secret$inboundSchema: z.ZodType<Secret, z.ZodTypeDef, unknown> = z
+  .union([z.lazy(() => Secret2$inboundSchema), z.string()]);
+/** @internal */
+export type Secret$Outbound = Secret2$Outbound | string;
+
+/** @internal */
+export const Secret$outboundSchema: z.ZodType<
+  Secret$Outbound,
+  z.ZodTypeDef,
+  Secret
+> = z.union([z.lazy(() => Secret2$outboundSchema), z.string()]);
+
+export function secretToJSON(secret: Secret): string {
+  return JSON.stringify(Secret$outboundSchema.parse(secret));
+}
+export function secretFromJSON(
+  jsonString: string,
+): SafeParseResult<Secret, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Secret$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Secret' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5528,9 +4239,8 @@ export const CreateDrainDelivery1$inboundSchema: z.ZodType<
   encoding: CreateDrainDeliveryDrainsEncoding$inboundSchema,
   compression: CreateDrainDeliveryDrainsCompression$inboundSchema.optional(),
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([z.lazy(() => Secret2$inboundSchema), z.string()]).optional(),
 });
-
 /** @internal */
 export type CreateDrainDelivery1$Outbound = {
   type: string;
@@ -5538,7 +4248,7 @@ export type CreateDrainDelivery1$Outbound = {
   encoding: string;
   compression?: string | undefined;
   headers: { [k: string]: string };
-  secret?: string | undefined;
+  secret?: Secret2$Outbound | string | undefined;
 };
 
 /** @internal */
@@ -5552,21 +4262,9 @@ export const CreateDrainDelivery1$outboundSchema: z.ZodType<
   encoding: CreateDrainDeliveryDrainsEncoding$outboundSchema,
   compression: CreateDrainDeliveryDrainsCompression$outboundSchema.optional(),
   headers: z.record(z.string()),
-  secret: z.string().optional(),
+  secret: z.union([z.lazy(() => Secret2$outboundSchema), z.string()])
+    .optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainDelivery1$ {
-  /** @deprecated use `CreateDrainDelivery1$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainDelivery1$inboundSchema;
-  /** @deprecated use `CreateDrainDelivery1$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainDelivery1$outboundSchema;
-  /** @deprecated use `CreateDrainDelivery1$Outbound` instead. */
-  export type Outbound = CreateDrainDelivery1$Outbound;
-}
 
 export function createDrainDelivery1ToJSON(
   createDrainDelivery1: CreateDrainDelivery1,
@@ -5575,7 +4273,6 @@ export function createDrainDelivery1ToJSON(
     CreateDrainDelivery1$outboundSchema.parse(createDrainDelivery1),
   );
 }
-
 export function createDrainDelivery1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainDelivery1, SDKValidationError> {
@@ -5594,18 +4291,15 @@ export const ResponseBodyDelivery$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CreateDrainDelivery1$inboundSchema),
   z.lazy(() => CreateDrainDelivery2$inboundSchema),
-  z.lazy(() => CreateDrainDelivery3$inboundSchema),
+  z.lazy(() => Delivery3$inboundSchema),
   z.lazy(() => Delivery4$inboundSchema),
-  z.lazy(() => Delivery5$inboundSchema),
 ]);
-
 /** @internal */
 export type ResponseBodyDelivery$Outbound =
   | CreateDrainDelivery1$Outbound
   | CreateDrainDelivery2$Outbound
-  | CreateDrainDelivery3$Outbound
-  | Delivery4$Outbound
-  | Delivery5$Outbound;
+  | Delivery3$Outbound
+  | Delivery4$Outbound;
 
 /** @internal */
 export const ResponseBodyDelivery$outboundSchema: z.ZodType<
@@ -5615,23 +4309,9 @@ export const ResponseBodyDelivery$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CreateDrainDelivery1$outboundSchema),
   z.lazy(() => CreateDrainDelivery2$outboundSchema),
-  z.lazy(() => CreateDrainDelivery3$outboundSchema),
+  z.lazy(() => Delivery3$outboundSchema),
   z.lazy(() => Delivery4$outboundSchema),
-  z.lazy(() => Delivery5$outboundSchema),
 ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyDelivery$ {
-  /** @deprecated use `ResponseBodyDelivery$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyDelivery$inboundSchema;
-  /** @deprecated use `ResponseBodyDelivery$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyDelivery$outboundSchema;
-  /** @deprecated use `ResponseBodyDelivery$Outbound` instead. */
-  export type Outbound = ResponseBodyDelivery$Outbound;
-}
 
 export function responseBodyDeliveryToJSON(
   responseBodyDelivery: ResponseBodyDelivery,
@@ -5640,7 +4320,6 @@ export function responseBodyDeliveryToJSON(
     ResponseBodyDelivery$outboundSchema.parse(responseBodyDelivery),
   );
 }
-
 export function responseBodyDeliveryFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyDelivery, SDKValidationError> {
@@ -5655,43 +4334,19 @@ export function responseBodyDeliveryFromJSON(
 export const CreateDrainResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyType
 > = z.nativeEnum(CreateDrainResponseBodyType);
-
 /** @internal */
 export const CreateDrainResponseBodyType$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyType
 > = CreateDrainResponseBodyType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyType$ {
-  /** @deprecated use `CreateDrainResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyType$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodyType$outboundSchema;
-}
-
 /** @internal */
 export const ResponseBodyEnv$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyEnv
 > = z.nativeEnum(ResponseBodyEnv);
-
 /** @internal */
 export const ResponseBodyEnv$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyEnv
 > = ResponseBodyEnv$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyEnv$ {
-  /** @deprecated use `ResponseBodyEnv$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyEnv$inboundSchema;
-  /** @deprecated use `ResponseBodyEnv$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyEnv$outboundSchema;
-}
 
 /** @internal */
 export const ResponseBodySampling$inboundSchema: z.ZodType<
@@ -5704,7 +4359,6 @@ export const ResponseBodySampling$inboundSchema: z.ZodType<
   env: ResponseBodyEnv$inboundSchema.optional(),
   requestPath: z.string().optional(),
 });
-
 /** @internal */
 export type ResponseBodySampling$Outbound = {
   type: string;
@@ -5725,19 +4379,6 @@ export const ResponseBodySampling$outboundSchema: z.ZodType<
   requestPath: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodySampling$ {
-  /** @deprecated use `ResponseBodySampling$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodySampling$inboundSchema;
-  /** @deprecated use `ResponseBodySampling$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodySampling$outboundSchema;
-  /** @deprecated use `ResponseBodySampling$Outbound` instead. */
-  export type Outbound = ResponseBodySampling$Outbound;
-}
-
 export function responseBodySamplingToJSON(
   responseBodySampling: ResponseBodySampling,
 ): string {
@@ -5745,7 +4386,6 @@ export function responseBodySamplingToJSON(
     ResponseBodySampling$outboundSchema.parse(responseBodySampling),
   );
 }
-
 export function responseBodySamplingFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodySampling, SDKValidationError> {
@@ -5760,67 +4400,29 @@ export function responseBodySamplingFromJSON(
 export const CreateDrainResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyStatus
 > = z.nativeEnum(CreateDrainResponseBodyStatus);
-
 /** @internal */
 export const CreateDrainResponseBodyStatus$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainResponseBodyStatus
 > = CreateDrainResponseBodyStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodyStatus$ {
-  /** @deprecated use `CreateDrainResponseBodyStatus$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodyStatus$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodyStatus$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodyStatus$outboundSchema;
-}
-
 /** @internal */
 export const DisabledReason$inboundSchema: z.ZodNativeEnum<
   typeof DisabledReason
 > = z.nativeEnum(DisabledReason);
-
 /** @internal */
 export const DisabledReason$outboundSchema: z.ZodNativeEnum<
   typeof DisabledReason
 > = DisabledReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisabledReason$ {
-  /** @deprecated use `DisabledReason$inboundSchema` instead. */
-  export const inboundSchema = DisabledReason$inboundSchema;
-  /** @deprecated use `DisabledReason$outboundSchema` instead. */
-  export const outboundSchema = DisabledReason$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainSourceDrainsResponse200Kind$inboundSchema:
   z.ZodNativeEnum<typeof CreateDrainSourceDrainsResponse200Kind> = z.nativeEnum(
     CreateDrainSourceDrainsResponse200Kind,
   );
-
 /** @internal */
 export const CreateDrainSourceDrainsResponse200Kind$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainSourceDrainsResponse200Kind> =
     CreateDrainSourceDrainsResponse200Kind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSourceDrainsResponse200Kind$ {
-  /** @deprecated use `CreateDrainSourceDrainsResponse200Kind$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainSourceDrainsResponse200Kind$inboundSchema;
-  /** @deprecated use `CreateDrainSourceDrainsResponse200Kind$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainSourceDrainsResponse200Kind$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainSource2$inboundSchema: z.ZodType<
@@ -5834,7 +4436,6 @@ export const CreateDrainSource2$inboundSchema: z.ZodType<
   integrationId: z.string(),
   integrationConfigurationId: z.string(),
 });
-
 /** @internal */
 export type CreateDrainSource2$Outbound = {
   kind: string;
@@ -5857,19 +4458,6 @@ export const CreateDrainSource2$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSource2$ {
-  /** @deprecated use `CreateDrainSource2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainSource2$inboundSchema;
-  /** @deprecated use `CreateDrainSource2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainSource2$outboundSchema;
-  /** @deprecated use `CreateDrainSource2$Outbound` instead. */
-  export type Outbound = CreateDrainSource2$Outbound;
-}
-
 export function createDrainSource2ToJSON(
   createDrainSource2: CreateDrainSource2,
 ): string {
@@ -5877,7 +4465,6 @@ export function createDrainSource2ToJSON(
     CreateDrainSource2$outboundSchema.parse(createDrainSource2),
   );
 }
-
 export function createDrainSource2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainSource2, SDKValidationError> {
@@ -5892,24 +4479,10 @@ export function createDrainSource2FromJSON(
 export const CreateDrainSourceDrainsResponseKind$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainSourceDrainsResponseKind
 > = z.nativeEnum(CreateDrainSourceDrainsResponseKind);
-
 /** @internal */
 export const CreateDrainSourceDrainsResponseKind$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainSourceDrainsResponseKind> =
     CreateDrainSourceDrainsResponseKind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSourceDrainsResponseKind$ {
-  /** @deprecated use `CreateDrainSourceDrainsResponseKind$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainSourceDrainsResponseKind$inboundSchema;
-  /** @deprecated use `CreateDrainSourceDrainsResponseKind$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainSourceDrainsResponseKind$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainSource1$inboundSchema: z.ZodType<
@@ -5919,7 +4492,6 @@ export const CreateDrainSource1$inboundSchema: z.ZodType<
 > = z.object({
   kind: CreateDrainSourceDrainsResponseKind$inboundSchema,
 });
-
 /** @internal */
 export type CreateDrainSource1$Outbound = {
   kind: string;
@@ -5934,19 +4506,6 @@ export const CreateDrainSource1$outboundSchema: z.ZodType<
   kind: CreateDrainSourceDrainsResponseKind$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainSource1$ {
-  /** @deprecated use `CreateDrainSource1$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainSource1$inboundSchema;
-  /** @deprecated use `CreateDrainSource1$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainSource1$outboundSchema;
-  /** @deprecated use `CreateDrainSource1$Outbound` instead. */
-  export type Outbound = CreateDrainSource1$Outbound;
-}
-
 export function createDrainSource1ToJSON(
   createDrainSource1: CreateDrainSource1,
 ): string {
@@ -5954,7 +4513,6 @@ export function createDrainSource1ToJSON(
     CreateDrainSource1$outboundSchema.parse(createDrainSource1),
   );
 }
-
 export function createDrainSource1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainSource1, SDKValidationError> {
@@ -5974,7 +4532,6 @@ export const CreateDrainResponseBodySource$inboundSchema: z.ZodType<
   z.lazy(() => CreateDrainSource2$inboundSchema),
   z.lazy(() => CreateDrainSource1$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateDrainResponseBodySource$Outbound =
   | CreateDrainSource2$Outbound
@@ -5990,19 +4547,6 @@ export const CreateDrainResponseBodySource$outboundSchema: z.ZodType<
   z.lazy(() => CreateDrainSource1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBodySource$ {
-  /** @deprecated use `CreateDrainResponseBodySource$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBodySource$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySource$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBodySource$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBodySource$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBodySource$Outbound;
-}
-
 export function createDrainResponseBodySourceToJSON(
   createDrainResponseBodySource: CreateDrainResponseBodySource,
 ): string {
@@ -6012,7 +4556,6 @@ export function createDrainResponseBodySourceToJSON(
     ),
   );
 }
-
 export function createDrainResponseBodySourceFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBodySource, SDKValidationError> {
@@ -6027,43 +4570,19 @@ export function createDrainResponseBodySourceFromJSON(
 export const FilterV2Version$inboundSchema: z.ZodNativeEnum<
   typeof FilterV2Version
 > = z.nativeEnum(FilterV2Version);
-
 /** @internal */
 export const FilterV2Version$outboundSchema: z.ZodNativeEnum<
   typeof FilterV2Version
 > = FilterV2Version$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterV2Version$ {
-  /** @deprecated use `FilterV2Version$inboundSchema` instead. */
-  export const inboundSchema = FilterV2Version$inboundSchema;
-  /** @deprecated use `FilterV2Version$outboundSchema` instead. */
-  export const outboundSchema = FilterV2Version$outboundSchema;
-}
-
 /** @internal */
 export const CreateDrainFilterType$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterType
 > = z.nativeEnum(CreateDrainFilterType);
-
 /** @internal */
 export const CreateDrainFilterType$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterType
 > = CreateDrainFilterType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterType$ {
-  /** @deprecated use `CreateDrainFilterType$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterType$inboundSchema;
-  /** @deprecated use `CreateDrainFilterType$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterType$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDrains2$inboundSchema: z.ZodType<
@@ -6074,7 +4593,6 @@ export const CreateDrainFilterDrains2$inboundSchema: z.ZodType<
   type: CreateDrainFilterType$inboundSchema,
   text: z.string(),
 });
-
 /** @internal */
 export type CreateDrainFilterDrains2$Outbound = {
   type: string;
@@ -6091,19 +4609,6 @@ export const CreateDrainFilterDrains2$outboundSchema: z.ZodType<
   text: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrains2$ {
-  /** @deprecated use `CreateDrainFilterDrains2$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrains2$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrains2$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDrains2$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrains2$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrains2$Outbound;
-}
-
 export function createDrainFilterDrains2ToJSON(
   createDrainFilterDrains2: CreateDrainFilterDrains2,
 ): string {
@@ -6111,7 +4616,6 @@ export function createDrainFilterDrains2ToJSON(
     CreateDrainFilterDrains2$outboundSchema.parse(createDrainFilterDrains2),
   );
 }
-
 export function createDrainFilterDrains2FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDrains2, SDKValidationError> {
@@ -6125,21 +4629,9 @@ export function createDrainFilterDrains2FromJSON(
 /** @internal */
 export const FilterType$inboundSchema: z.ZodNativeEnum<typeof FilterType> = z
   .nativeEnum(FilterType);
-
 /** @internal */
 export const FilterType$outboundSchema: z.ZodNativeEnum<typeof FilterType> =
   FilterType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterType$ {
-  /** @deprecated use `FilterType$inboundSchema` instead. */
-  export const inboundSchema = FilterType$inboundSchema;
-  /** @deprecated use `FilterType$outboundSchema` instead. */
-  export const outboundSchema = FilterType$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDrainsProject$inboundSchema: z.ZodType<
@@ -6149,7 +4641,6 @@ export const CreateDrainFilterDrainsProject$inboundSchema: z.ZodType<
 > = z.object({
   ids: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type CreateDrainFilterDrainsProject$Outbound = {
   ids?: Array<string> | undefined;
@@ -6164,19 +4655,6 @@ export const CreateDrainFilterDrainsProject$outboundSchema: z.ZodType<
   ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsProject$ {
-  /** @deprecated use `CreateDrainFilterDrainsProject$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrainsProject$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsProject$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDrainsProject$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsProject$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrainsProject$Outbound;
-}
-
 export function createDrainFilterDrainsProjectToJSON(
   createDrainFilterDrainsProject: CreateDrainFilterDrainsProject,
 ): string {
@@ -6186,7 +4664,6 @@ export function createDrainFilterDrainsProjectToJSON(
     ),
   );
 }
-
 export function createDrainFilterDrainsProjectFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDrainsProject, SDKValidationError> {
@@ -6201,22 +4678,10 @@ export function createDrainFilterDrainsProjectFromJSON(
 export const CreateDrainFilterSources$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterSources
 > = z.nativeEnum(CreateDrainFilterSources);
-
 /** @internal */
 export const CreateDrainFilterSources$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterSources
 > = CreateDrainFilterSources$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterSources$ {
-  /** @deprecated use `CreateDrainFilterSources$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterSources$inboundSchema;
-  /** @deprecated use `CreateDrainFilterSources$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterSources$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDrainsLog$inboundSchema: z.ZodType<
@@ -6231,7 +4696,6 @@ export const CreateDrainFilterDrainsLog$inboundSchema: z.ZodType<
     "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
   });
 });
-
 /** @internal */
 export type CreateDrainFilterDrainsLog$Outbound = {
   sources?: Array<string> | undefined;
@@ -6252,19 +4716,6 @@ export const CreateDrainFilterDrainsLog$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsLog$ {
-  /** @deprecated use `CreateDrainFilterDrainsLog$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrainsLog$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsLog$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterDrainsLog$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsLog$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrainsLog$Outbound;
-}
-
 export function createDrainFilterDrainsLogToJSON(
   createDrainFilterDrainsLog: CreateDrainFilterDrainsLog,
 ): string {
@@ -6272,7 +4723,6 @@ export function createDrainFilterDrainsLogToJSON(
     CreateDrainFilterDrainsLog$outboundSchema.parse(createDrainFilterDrainsLog),
   );
 }
-
 export function createDrainFilterDrainsLogFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDrainsLog, SDKValidationError> {
@@ -6287,22 +4737,10 @@ export function createDrainFilterDrainsLogFromJSON(
 export const CreateDrainFilterEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterEnvironments
 > = z.nativeEnum(CreateDrainFilterEnvironments);
-
 /** @internal */
 export const CreateDrainFilterEnvironments$outboundSchema: z.ZodNativeEnum<
   typeof CreateDrainFilterEnvironments
 > = CreateDrainFilterEnvironments$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterEnvironments$ {
-  /** @deprecated use `CreateDrainFilterEnvironments$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterEnvironments$inboundSchema;
-  /** @deprecated use `CreateDrainFilterEnvironments$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilterEnvironments$outboundSchema;
-}
 
 /** @internal */
 export const CreateDrainFilterDrainsDeployment$inboundSchema: z.ZodType<
@@ -6312,7 +4750,6 @@ export const CreateDrainFilterDrainsDeployment$inboundSchema: z.ZodType<
 > = z.object({
   environments: z.array(CreateDrainFilterEnvironments$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CreateDrainFilterDrainsDeployment$Outbound = {
   environments?: Array<string> | undefined;
@@ -6328,20 +4765,6 @@ export const CreateDrainFilterDrainsDeployment$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterDrainsDeployment$ {
-  /** @deprecated use `CreateDrainFilterDrainsDeployment$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilterDrainsDeployment$inboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsDeployment$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainFilterDrainsDeployment$outboundSchema;
-  /** @deprecated use `CreateDrainFilterDrainsDeployment$Outbound` instead. */
-  export type Outbound = CreateDrainFilterDrainsDeployment$Outbound;
-}
-
 export function createDrainFilterDrainsDeploymentToJSON(
   createDrainFilterDrainsDeployment: CreateDrainFilterDrainsDeployment,
 ): string {
@@ -6351,7 +4774,6 @@ export function createDrainFilterDrainsDeploymentToJSON(
     ),
   );
 }
-
 export function createDrainFilterDrainsDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilterDrainsDeployment, SDKValidationError> {
@@ -6375,7 +4797,6 @@ export const CreateDrainFilter1$inboundSchema: z.ZodType<
   deployment: z.lazy(() => CreateDrainFilterDrainsDeployment$inboundSchema)
     .optional(),
 });
-
 /** @internal */
 export type CreateDrainFilter1$Outbound = {
   type: string;
@@ -6398,19 +4819,6 @@ export const CreateDrainFilter1$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilter1$ {
-  /** @deprecated use `CreateDrainFilter1$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainFilter1$inboundSchema;
-  /** @deprecated use `CreateDrainFilter1$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainFilter1$outboundSchema;
-  /** @deprecated use `CreateDrainFilter1$Outbound` instead. */
-  export type Outbound = CreateDrainFilter1$Outbound;
-}
-
 export function createDrainFilter1ToJSON(
   createDrainFilter1: CreateDrainFilter1,
 ): string {
@@ -6418,7 +4826,6 @@ export function createDrainFilter1ToJSON(
     CreateDrainFilter1$outboundSchema.parse(createDrainFilter1),
   );
 }
-
 export function createDrainFilter1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainFilter1, SDKValidationError> {
@@ -6438,7 +4845,6 @@ export const FilterV2Filter$inboundSchema: z.ZodType<
   z.lazy(() => CreateDrainFilterDrains2$inboundSchema),
   z.lazy(() => CreateDrainFilter1$inboundSchema),
 ]);
-
 /** @internal */
 export type FilterV2Filter$Outbound =
   | CreateDrainFilterDrains2$Outbound
@@ -6454,23 +4860,9 @@ export const FilterV2Filter$outboundSchema: z.ZodType<
   z.lazy(() => CreateDrainFilter1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterV2Filter$ {
-  /** @deprecated use `FilterV2Filter$inboundSchema` instead. */
-  export const inboundSchema = FilterV2Filter$inboundSchema;
-  /** @deprecated use `FilterV2Filter$outboundSchema` instead. */
-  export const outboundSchema = FilterV2Filter$outboundSchema;
-  /** @deprecated use `FilterV2Filter$Outbound` instead. */
-  export type Outbound = FilterV2Filter$Outbound;
-}
-
 export function filterV2FilterToJSON(filterV2Filter: FilterV2Filter): string {
   return JSON.stringify(FilterV2Filter$outboundSchema.parse(filterV2Filter));
 }
-
 export function filterV2FilterFromJSON(
   jsonString: string,
 ): SafeParseResult<FilterV2Filter, SDKValidationError> {
@@ -6493,7 +4885,6 @@ export const FilterV22$inboundSchema: z.ZodType<
     z.lazy(() => CreateDrainFilter1$inboundSchema),
   ]),
 });
-
 /** @internal */
 export type FilterV22$Outbound = {
   version: string;
@@ -6513,23 +4904,9 @@ export const FilterV22$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterV22$ {
-  /** @deprecated use `FilterV22$inboundSchema` instead. */
-  export const inboundSchema = FilterV22$inboundSchema;
-  /** @deprecated use `FilterV22$outboundSchema` instead. */
-  export const outboundSchema = FilterV22$outboundSchema;
-  /** @deprecated use `FilterV22$Outbound` instead. */
-  export type Outbound = FilterV22$Outbound;
-}
-
 export function filterV22ToJSON(filterV22: FilterV22): string {
   return JSON.stringify(FilterV22$outboundSchema.parse(filterV22));
 }
-
 export function filterV22FromJSON(
   jsonString: string,
 ): SafeParseResult<FilterV22, SDKValidationError> {
@@ -6544,24 +4921,10 @@ export function filterV22FromJSON(
 export const CreateDrainFilterV2DrainsResponseVersion$inboundSchema:
   z.ZodNativeEnum<typeof CreateDrainFilterV2DrainsResponseVersion> = z
     .nativeEnum(CreateDrainFilterV2DrainsResponseVersion);
-
 /** @internal */
 export const CreateDrainFilterV2DrainsResponseVersion$outboundSchema:
   z.ZodNativeEnum<typeof CreateDrainFilterV2DrainsResponseVersion> =
     CreateDrainFilterV2DrainsResponseVersion$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainFilterV2DrainsResponseVersion$ {
-  /** @deprecated use `CreateDrainFilterV2DrainsResponseVersion$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateDrainFilterV2DrainsResponseVersion$inboundSchema;
-  /** @deprecated use `CreateDrainFilterV2DrainsResponseVersion$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateDrainFilterV2DrainsResponseVersion$outboundSchema;
-}
 
 /** @internal */
 export const FilterV21$inboundSchema: z.ZodType<
@@ -6571,7 +4934,6 @@ export const FilterV21$inboundSchema: z.ZodType<
 > = z.object({
   version: CreateDrainFilterV2DrainsResponseVersion$inboundSchema,
 });
-
 /** @internal */
 export type FilterV21$Outbound = {
   version: string;
@@ -6586,23 +4948,9 @@ export const FilterV21$outboundSchema: z.ZodType<
   version: CreateDrainFilterV2DrainsResponseVersion$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterV21$ {
-  /** @deprecated use `FilterV21$inboundSchema` instead. */
-  export const inboundSchema = FilterV21$inboundSchema;
-  /** @deprecated use `FilterV21$outboundSchema` instead. */
-  export const outboundSchema = FilterV21$outboundSchema;
-  /** @deprecated use `FilterV21$Outbound` instead. */
-  export type Outbound = FilterV21$Outbound;
-}
-
 export function filterV21ToJSON(filterV21: FilterV21): string {
   return JSON.stringify(FilterV21$outboundSchema.parse(filterV21));
 }
-
 export function filterV21FromJSON(
   jsonString: string,
 ): SafeParseResult<FilterV21, SDKValidationError> {
@@ -6622,7 +4970,6 @@ export const FilterV2$inboundSchema: z.ZodType<
   z.lazy(() => FilterV22$inboundSchema),
   z.lazy(() => FilterV21$inboundSchema),
 ]);
-
 /** @internal */
 export type FilterV2$Outbound = FilterV22$Outbound | FilterV21$Outbound;
 
@@ -6636,23 +4983,9 @@ export const FilterV2$outboundSchema: z.ZodType<
   z.lazy(() => FilterV21$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FilterV2$ {
-  /** @deprecated use `FilterV2$inboundSchema` instead. */
-  export const inboundSchema = FilterV2$inboundSchema;
-  /** @deprecated use `FilterV2$outboundSchema` instead. */
-  export const outboundSchema = FilterV2$outboundSchema;
-  /** @deprecated use `FilterV2$Outbound` instead. */
-  export type Outbound = FilterV2$Outbound;
-}
-
 export function filterV2ToJSON(filterV2: FilterV2): string {
   return JSON.stringify(FilterV2$outboundSchema.parse(filterV2));
 }
-
 export function filterV2FromJSON(
   jsonString: string,
 ): SafeParseResult<FilterV2, SDKValidationError> {
@@ -6680,9 +5013,8 @@ export const CreateDrainResponseBody1$inboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => CreateDrainDelivery1$inboundSchema),
     z.lazy(() => CreateDrainDelivery2$inboundSchema),
-    z.lazy(() => CreateDrainDelivery3$inboundSchema),
+    z.lazy(() => Delivery3$inboundSchema),
     z.lazy(() => Delivery4$inboundSchema),
-    z.lazy(() => Delivery5$inboundSchema),
   ]).optional(),
   sampling: z.array(z.lazy(() => ResponseBodySampling$inboundSchema))
     .optional(),
@@ -6704,7 +5036,6 @@ export const CreateDrainResponseBody1$inboundSchema: z.ZodType<
     z.lazy(() => FilterV21$inboundSchema),
   ]).optional(),
 });
-
 /** @internal */
 export type CreateDrainResponseBody1$Outbound = {
   id: string;
@@ -6718,9 +5049,8 @@ export type CreateDrainResponseBody1$Outbound = {
   delivery?:
     | CreateDrainDelivery1$Outbound
     | CreateDrainDelivery2$Outbound
-    | CreateDrainDelivery3$Outbound
+    | Delivery3$Outbound
     | Delivery4$Outbound
-    | Delivery5$Outbound
     | undefined;
   sampling?: Array<ResponseBodySampling$Outbound> | undefined;
   teamId?: string | null | undefined;
@@ -6753,9 +5083,8 @@ export const CreateDrainResponseBody1$outboundSchema: z.ZodType<
   delivery: z.union([
     z.lazy(() => CreateDrainDelivery1$outboundSchema),
     z.lazy(() => CreateDrainDelivery2$outboundSchema),
-    z.lazy(() => CreateDrainDelivery3$outboundSchema),
+    z.lazy(() => Delivery3$outboundSchema),
     z.lazy(() => Delivery4$outboundSchema),
-    z.lazy(() => Delivery5$outboundSchema),
   ]).optional(),
   sampling: z.array(z.lazy(() => ResponseBodySampling$outboundSchema))
     .optional(),
@@ -6778,19 +5107,6 @@ export const CreateDrainResponseBody1$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBody1$ {
-  /** @deprecated use `CreateDrainResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBody1$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBody1$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBody1$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBody1$Outbound;
-}
-
 export function createDrainResponseBody1ToJSON(
   createDrainResponseBody1: CreateDrainResponseBody1,
 ): string {
@@ -6798,7 +5114,6 @@ export function createDrainResponseBody1ToJSON(
     CreateDrainResponseBody1$outboundSchema.parse(createDrainResponseBody1),
   );
 }
-
 export function createDrainResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBody1, SDKValidationError> {
@@ -6818,7 +5133,6 @@ export const CreateDrainResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => CreateDrainResponseBody1$inboundSchema),
   z.lazy(() => CreateDrainResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateDrainResponseBody$Outbound =
   | CreateDrainResponseBody1$Outbound
@@ -6834,19 +5148,6 @@ export const CreateDrainResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => CreateDrainResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDrainResponseBody$ {
-  /** @deprecated use `CreateDrainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateDrainResponseBody$inboundSchema;
-  /** @deprecated use `CreateDrainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreateDrainResponseBody$outboundSchema;
-  /** @deprecated use `CreateDrainResponseBody$Outbound` instead. */
-  export type Outbound = CreateDrainResponseBody$Outbound;
-}
-
 export function createDrainResponseBodyToJSON(
   createDrainResponseBody: CreateDrainResponseBody,
 ): string {
@@ -6854,7 +5155,6 @@ export function createDrainResponseBodyToJSON(
     CreateDrainResponseBody$outboundSchema.parse(createDrainResponseBody),
   );
 }
-
 export function createDrainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateDrainResponseBody, SDKValidationError> {

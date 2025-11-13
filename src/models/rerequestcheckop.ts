@@ -44,7 +44,6 @@ export const RerequestCheckRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type RerequestCheckRequest$Outbound = {
   deploymentId: string;
@@ -67,19 +66,6 @@ export const RerequestCheckRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RerequestCheckRequest$ {
-  /** @deprecated use `RerequestCheckRequest$inboundSchema` instead. */
-  export const inboundSchema = RerequestCheckRequest$inboundSchema;
-  /** @deprecated use `RerequestCheckRequest$outboundSchema` instead. */
-  export const outboundSchema = RerequestCheckRequest$outboundSchema;
-  /** @deprecated use `RerequestCheckRequest$Outbound` instead. */
-  export type Outbound = RerequestCheckRequest$Outbound;
-}
-
 export function rerequestCheckRequestToJSON(
   rerequestCheckRequest: RerequestCheckRequest,
 ): string {
@@ -87,7 +73,6 @@ export function rerequestCheckRequestToJSON(
     RerequestCheckRequest$outboundSchema.parse(rerequestCheckRequest),
   );
 }
-
 export function rerequestCheckRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RerequestCheckRequest, SDKValidationError> {
@@ -104,7 +89,6 @@ export const RerequestCheckResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type RerequestCheckResponseBody$Outbound = {};
 
@@ -115,19 +99,6 @@ export const RerequestCheckResponseBody$outboundSchema: z.ZodType<
   RerequestCheckResponseBody
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RerequestCheckResponseBody$ {
-  /** @deprecated use `RerequestCheckResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RerequestCheckResponseBody$inboundSchema;
-  /** @deprecated use `RerequestCheckResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RerequestCheckResponseBody$outboundSchema;
-  /** @deprecated use `RerequestCheckResponseBody$Outbound` instead. */
-  export type Outbound = RerequestCheckResponseBody$Outbound;
-}
-
 export function rerequestCheckResponseBodyToJSON(
   rerequestCheckResponseBody: RerequestCheckResponseBody,
 ): string {
@@ -135,7 +106,6 @@ export function rerequestCheckResponseBodyToJSON(
     RerequestCheckResponseBody$outboundSchema.parse(rerequestCheckResponseBody),
   );
 }
-
 export function rerequestCheckResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RerequestCheckResponseBody, SDKValidationError> {

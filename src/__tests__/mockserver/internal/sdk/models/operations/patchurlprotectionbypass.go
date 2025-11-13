@@ -490,8 +490,8 @@ type PatchURLProtectionBypassRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                              `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *PatchURLProtectionBypassRequestBody `request:"mediaType=application/json"`
+	Slug *string                              `queryParam:"style=form,explode=true,name=slug"`
+	Body *PatchURLProtectionBypassRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *PatchURLProtectionBypassRequest) GetID() string {
@@ -515,11 +515,11 @@ func (o *PatchURLProtectionBypassRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *PatchURLProtectionBypassRequest) GetRequestBody() *PatchURLProtectionBypassRequestBody {
+func (o *PatchURLProtectionBypassRequest) GetBody() *PatchURLProtectionBypassRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type PatchURLProtectionBypassResponse struct {

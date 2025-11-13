@@ -506,7 +506,6 @@ export const Connect$inboundSchema: z.ZodType<Connect, z.ZodTypeDef, unknown> =
   z.object({
     enabled: z.boolean().optional(),
   });
-
 /** @internal */
 export type Connect$Outbound = {
   enabled?: boolean | undefined;
@@ -521,23 +520,9 @@ export const Connect$outboundSchema: z.ZodType<
   enabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Connect$ {
-  /** @deprecated use `Connect$inboundSchema` instead. */
-  export const inboundSchema = Connect$inboundSchema;
-  /** @deprecated use `Connect$outboundSchema` instead. */
-  export const outboundSchema = Connect$outboundSchema;
-  /** @deprecated use `Connect$Outbound` instead. */
-  export type Outbound = Connect$Outbound;
-}
-
 export function connectToJSON(connect: Connect): string {
   return JSON.stringify(Connect$outboundSchema.parse(connect));
 }
-
 export function connectFromJSON(
   jsonString: string,
 ): SafeParseResult<Connect, SDKValidationError> {
@@ -560,7 +545,6 @@ export const Connection$inboundSchema: z.ZodType<
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
 });
-
 /** @internal */
 export type Connection$Outbound = {
   type: string;
@@ -583,23 +567,9 @@ export const Connection$outboundSchema: z.ZodType<
   lastReceivedWebhookEvent: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Connection$ {
-  /** @deprecated use `Connection$inboundSchema` instead. */
-  export const inboundSchema = Connection$inboundSchema;
-  /** @deprecated use `Connection$outboundSchema` instead. */
-  export const outboundSchema = Connection$outboundSchema;
-  /** @deprecated use `Connection$Outbound` instead. */
-  export type Outbound = Connection$Outbound;
-}
-
 export function connectionToJSON(connection: Connection): string {
   return JSON.stringify(Connection$outboundSchema.parse(connection));
 }
-
 export function connectionFromJSON(
   jsonString: string,
 ): SafeParseResult<Connection, SDKValidationError> {
@@ -621,7 +591,6 @@ export const Directory$inboundSchema: z.ZodType<
   connectedAt: z.number(),
   lastReceivedWebhookEvent: z.number().optional(),
 });
-
 /** @internal */
 export type Directory$Outbound = {
   type: string;
@@ -642,23 +611,9 @@ export const Directory$outboundSchema: z.ZodType<
   lastReceivedWebhookEvent: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Directory$ {
-  /** @deprecated use `Directory$inboundSchema` instead. */
-  export const inboundSchema = Directory$inboundSchema;
-  /** @deprecated use `Directory$outboundSchema` instead. */
-  export const outboundSchema = Directory$outboundSchema;
-  /** @deprecated use `Directory$Outbound` instead. */
-  export type Outbound = Directory$Outbound;
-}
-
 export function directoryToJSON(directory: Directory): string {
   return JSON.stringify(Directory$outboundSchema.parse(directory));
 }
-
 export function directoryFromJSON(
   jsonString: string,
 ): SafeParseResult<Directory, SDKValidationError> {
@@ -673,48 +628,23 @@ export function directoryFromJSON(
 export const DefaultRedirectUri$inboundSchema: z.ZodNativeEnum<
   typeof DefaultRedirectUri
 > = z.nativeEnum(DefaultRedirectUri);
-
 /** @internal */
 export const DefaultRedirectUri$outboundSchema: z.ZodNativeEnum<
   typeof DefaultRedirectUri
 > = DefaultRedirectUri$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultRedirectUri$ {
-  /** @deprecated use `DefaultRedirectUri$inboundSchema` instead. */
-  export const inboundSchema = DefaultRedirectUri$inboundSchema;
-  /** @deprecated use `DefaultRedirectUri$outboundSchema` instead. */
-  export const outboundSchema = DefaultRedirectUri$outboundSchema;
-}
-
 /** @internal */
 export const Roles2$inboundSchema: z.ZodNativeEnum<typeof Roles2> = z
   .nativeEnum(Roles2);
-
 /** @internal */
 export const Roles2$outboundSchema: z.ZodNativeEnum<typeof Roles2> =
   Roles2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Roles2$ {
-  /** @deprecated use `Roles2$inboundSchema` instead. */
-  export const inboundSchema = Roles2$inboundSchema;
-  /** @deprecated use `Roles2$outboundSchema` instead. */
-  export const outboundSchema = Roles2$outboundSchema;
-}
 
 /** @internal */
 export const Roles1$inboundSchema: z.ZodType<Roles1, z.ZodTypeDef, unknown> = z
   .object({
     accessGroupId: z.string(),
   });
-
 /** @internal */
 export type Roles1$Outbound = {
   accessGroupId: string;
@@ -729,23 +659,9 @@ export const Roles1$outboundSchema: z.ZodType<
   accessGroupId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Roles1$ {
-  /** @deprecated use `Roles1$inboundSchema` instead. */
-  export const inboundSchema = Roles1$inboundSchema;
-  /** @deprecated use `Roles1$outboundSchema` instead. */
-  export const outboundSchema = Roles1$outboundSchema;
-  /** @deprecated use `Roles1$Outbound` instead. */
-  export type Outbound = Roles1$Outbound;
-}
-
 export function roles1ToJSON(roles1: Roles1): string {
   return JSON.stringify(Roles1$outboundSchema.parse(roles1));
 }
-
 export function roles1FromJSON(
   jsonString: string,
 ): SafeParseResult<Roles1, SDKValidationError> {
@@ -759,7 +675,6 @@ export function roles1FromJSON(
 /** @internal */
 export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> = z
   .union([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]);
-
 /** @internal */
 export type Roles$Outbound = Roles1$Outbound | string;
 
@@ -770,23 +685,9 @@ export const Roles$outboundSchema: z.ZodType<
   Roles
 > = z.union([z.lazy(() => Roles1$outboundSchema), Roles2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Roles$ {
-  /** @deprecated use `Roles$inboundSchema` instead. */
-  export const inboundSchema = Roles$inboundSchema;
-  /** @deprecated use `Roles$outboundSchema` instead. */
-  export const outboundSchema = Roles$outboundSchema;
-  /** @deprecated use `Roles$Outbound` instead. */
-  export type Outbound = Roles$Outbound;
-}
-
 export function rolesToJSON(roles: Roles): string {
   return JSON.stringify(Roles$outboundSchema.parse(roles));
 }
-
 export function rolesFromJSON(
   jsonString: string,
 ): SafeParseResult<Roles, SDKValidationError> {
@@ -808,7 +709,6 @@ export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
       z.union([z.lazy(() => Roles1$inboundSchema), Roles2$inboundSchema]),
     ).optional(),
   });
-
 /** @internal */
 export type Saml$Outbound = {
   connection?: Connection$Outbound | undefined;
@@ -830,23 +730,9 @@ export const Saml$outboundSchema: z.ZodType<Saml$Outbound, z.ZodTypeDef, Saml> =
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Saml$ {
-  /** @deprecated use `Saml$inboundSchema` instead. */
-  export const inboundSchema = Saml$inboundSchema;
-  /** @deprecated use `Saml$outboundSchema` instead. */
-  export const outboundSchema = Saml$outboundSchema;
-  /** @deprecated use `Saml$Outbound` instead. */
-  export type Outbound = Saml$Outbound;
-}
-
 export function samlToJSON(saml: Saml): string {
   return JSON.stringify(Saml$outboundSchema.parse(saml));
 }
-
 export function samlFromJSON(
   jsonString: string,
 ): SafeParseResult<Saml, SDKValidationError> {
@@ -861,43 +747,19 @@ export function samlFromJSON(
 export const TeamTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof TeamTeamRoles
 > = z.nativeEnum(TeamTeamRoles);
-
 /** @internal */
 export const TeamTeamRoles$outboundSchema: z.ZodNativeEnum<
   typeof TeamTeamRoles
 > = TeamTeamRoles$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamTeamRoles$ {
-  /** @deprecated use `TeamTeamRoles$inboundSchema` instead. */
-  export const inboundSchema = TeamTeamRoles$inboundSchema;
-  /** @deprecated use `TeamTeamRoles$outboundSchema` instead. */
-  export const outboundSchema = TeamTeamRoles$outboundSchema;
-}
-
 /** @internal */
 export const TeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamTeamPermissions
 > = z.nativeEnum(TeamTeamPermissions);
-
 /** @internal */
 export const TeamTeamPermissions$outboundSchema: z.ZodNativeEnum<
   typeof TeamTeamPermissions
 > = TeamTeamPermissions$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamTeamPermissions$ {
-  /** @deprecated use `TeamTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = TeamTeamPermissions$inboundSchema;
-  /** @deprecated use `TeamTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = TeamTeamPermissions$outboundSchema;
-}
 
 /** @internal */
 export const DefaultRoles$inboundSchema: z.ZodType<
@@ -908,7 +770,6 @@ export const DefaultRoles$inboundSchema: z.ZodType<
   teamRoles: z.array(TeamTeamRoles$inboundSchema).optional(),
   teamPermissions: z.array(TeamTeamPermissions$inboundSchema).optional(),
 });
-
 /** @internal */
 export type DefaultRoles$Outbound = {
   teamRoles?: Array<string> | undefined;
@@ -925,23 +786,9 @@ export const DefaultRoles$outboundSchema: z.ZodType<
   teamPermissions: z.array(TeamTeamPermissions$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultRoles$ {
-  /** @deprecated use `DefaultRoles$inboundSchema` instead. */
-  export const inboundSchema = DefaultRoles$inboundSchema;
-  /** @deprecated use `DefaultRoles$outboundSchema` instead. */
-  export const outboundSchema = DefaultRoles$outboundSchema;
-  /** @deprecated use `DefaultRoles$Outbound` instead. */
-  export type Outbound = DefaultRoles$Outbound;
-}
-
 export function defaultRolesToJSON(defaultRoles: DefaultRoles): string {
   return JSON.stringify(DefaultRoles$outboundSchema.parse(defaultRoles));
 }
-
 export function defaultRolesFromJSON(
   jsonString: string,
 ): SafeParseResult<DefaultRoles, SDKValidationError> {
@@ -960,7 +807,6 @@ export const BuildEntitlements$inboundSchema: z.ZodType<
 > = z.object({
   enhancedBuilds: z.boolean().optional(),
 });
-
 /** @internal */
 export type BuildEntitlements$Outbound = {
   enhancedBuilds?: boolean | undefined;
@@ -975,19 +821,6 @@ export const BuildEntitlements$outboundSchema: z.ZodType<
   enhancedBuilds: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuildEntitlements$ {
-  /** @deprecated use `BuildEntitlements$inboundSchema` instead. */
-  export const inboundSchema = BuildEntitlements$inboundSchema;
-  /** @deprecated use `BuildEntitlements$outboundSchema` instead. */
-  export const outboundSchema = BuildEntitlements$outboundSchema;
-  /** @deprecated use `BuildEntitlements$Outbound` instead. */
-  export type Outbound = BuildEntitlements$Outbound;
-}
-
 export function buildEntitlementsToJSON(
   buildEntitlements: BuildEntitlements,
 ): string {
@@ -995,7 +828,6 @@ export function buildEntitlementsToJSON(
     BuildEntitlements$outboundSchema.parse(buildEntitlements),
   );
 }
-
 export function buildEntitlementsFromJSON(
   jsonString: string,
 ): SafeParseResult<BuildEntitlements, SDKValidationError> {
@@ -1021,7 +853,6 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   postgresDatabases: z.number().optional(),
   buildEntitlements: z.lazy(() => BuildEntitlements$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ResourceConfig$Outbound = {
   concurrentBuilds?: number | undefined;
@@ -1050,23 +881,9 @@ export const ResourceConfig$outboundSchema: z.ZodType<
   buildEntitlements: z.lazy(() => BuildEntitlements$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResourceConfig$ {
-  /** @deprecated use `ResourceConfig$inboundSchema` instead. */
-  export const inboundSchema = ResourceConfig$inboundSchema;
-  /** @deprecated use `ResourceConfig$outboundSchema` instead. */
-  export const outboundSchema = ResourceConfig$outboundSchema;
-  /** @deprecated use `ResourceConfig$Outbound` instead. */
-  export type Outbound = ResourceConfig$Outbound;
-}
-
 export function resourceConfigToJSON(resourceConfig: ResourceConfig): string {
   return JSON.stringify(ResourceConfig$outboundSchema.parse(resourceConfig));
 }
-
 export function resourceConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<ResourceConfig, SDKValidationError> {
@@ -1083,7 +900,6 @@ export const DisableHardAutoBlocks$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.number(), z.boolean()]);
-
 /** @internal */
 export type DisableHardAutoBlocks$Outbound = number | boolean;
 
@@ -1094,19 +910,6 @@ export const DisableHardAutoBlocks$outboundSchema: z.ZodType<
   DisableHardAutoBlocks
 > = z.union([z.number(), z.boolean()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisableHardAutoBlocks$ {
-  /** @deprecated use `DisableHardAutoBlocks$inboundSchema` instead. */
-  export const inboundSchema = DisableHardAutoBlocks$inboundSchema;
-  /** @deprecated use `DisableHardAutoBlocks$outboundSchema` instead. */
-  export const outboundSchema = DisableHardAutoBlocks$outboundSchema;
-  /** @deprecated use `DisableHardAutoBlocks$Outbound` instead. */
-  export type Outbound = DisableHardAutoBlocks$Outbound;
-}
-
 export function disableHardAutoBlocksToJSON(
   disableHardAutoBlocks: DisableHardAutoBlocks,
 ): string {
@@ -1114,7 +917,6 @@ export function disableHardAutoBlocksToJSON(
     DisableHardAutoBlocks$outboundSchema.parse(disableHardAutoBlocks),
   );
 }
-
 export function disableHardAutoBlocksFromJSON(
   jsonString: string,
 ): SafeParseResult<DisableHardAutoBlocks, SDKValidationError> {
@@ -1133,7 +935,6 @@ export const RemoteCaching$inboundSchema: z.ZodType<
 > = z.object({
   enabled: z.boolean().optional(),
 });
-
 /** @internal */
 export type RemoteCaching$Outbound = {
   enabled?: boolean | undefined;
@@ -1148,23 +949,9 @@ export const RemoteCaching$outboundSchema: z.ZodType<
   enabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoteCaching$ {
-  /** @deprecated use `RemoteCaching$inboundSchema` instead. */
-  export const inboundSchema = RemoteCaching$inboundSchema;
-  /** @deprecated use `RemoteCaching$outboundSchema` instead. */
-  export const outboundSchema = RemoteCaching$outboundSchema;
-  /** @deprecated use `RemoteCaching$Outbound` instead. */
-  export type Outbound = RemoteCaching$Outbound;
-}
-
 export function remoteCachingToJSON(remoteCaching: RemoteCaching): string {
   return JSON.stringify(RemoteCaching$outboundSchema.parse(remoteCaching));
 }
-
 export function remoteCachingFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoteCaching, SDKValidationError> {
@@ -1183,7 +970,6 @@ export const PasswordProtection$inboundSchema: z.ZodType<
 > = z.object({
   deploymentType: z.string(),
 });
-
 /** @internal */
 export type PasswordProtection$Outbound = {
   deploymentType: string;
@@ -1198,19 +984,6 @@ export const PasswordProtection$outboundSchema: z.ZodType<
   deploymentType: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PasswordProtection$ {
-  /** @deprecated use `PasswordProtection$inboundSchema` instead. */
-  export const inboundSchema = PasswordProtection$inboundSchema;
-  /** @deprecated use `PasswordProtection$outboundSchema` instead. */
-  export const outboundSchema = PasswordProtection$outboundSchema;
-  /** @deprecated use `PasswordProtection$Outbound` instead. */
-  export type Outbound = PasswordProtection$Outbound;
-}
-
 export function passwordProtectionToJSON(
   passwordProtection: PasswordProtection,
 ): string {
@@ -1218,7 +991,6 @@ export function passwordProtectionToJSON(
     PasswordProtection$outboundSchema.parse(passwordProtection),
   );
 }
-
 export function passwordProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<PasswordProtection, SDKValidationError> {
@@ -1237,7 +1009,6 @@ export const SsoProtection$inboundSchema: z.ZodType<
 > = z.object({
   deploymentType: z.string(),
 });
-
 /** @internal */
 export type SsoProtection$Outbound = {
   deploymentType: string;
@@ -1252,23 +1023,9 @@ export const SsoProtection$outboundSchema: z.ZodType<
   deploymentType: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SsoProtection$ {
-  /** @deprecated use `SsoProtection$inboundSchema` instead. */
-  export const inboundSchema = SsoProtection$inboundSchema;
-  /** @deprecated use `SsoProtection$outboundSchema` instead. */
-  export const outboundSchema = SsoProtection$outboundSchema;
-  /** @deprecated use `SsoProtection$Outbound` instead. */
-  export type Outbound = SsoProtection$Outbound;
-}
-
 export function ssoProtectionToJSON(ssoProtection: SsoProtection): string {
   return JSON.stringify(SsoProtection$outboundSchema.parse(ssoProtection));
 }
-
 export function ssoProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<SsoProtection, SDKValidationError> {
@@ -1288,7 +1045,6 @@ export const DefaultDeploymentProtection$inboundSchema: z.ZodType<
   passwordProtection: z.lazy(() => PasswordProtection$inboundSchema).optional(),
   ssoProtection: z.lazy(() => SsoProtection$inboundSchema).optional(),
 });
-
 /** @internal */
 export type DefaultDeploymentProtection$Outbound = {
   passwordProtection?: PasswordProtection$Outbound | undefined;
@@ -1306,19 +1062,6 @@ export const DefaultDeploymentProtection$outboundSchema: z.ZodType<
   ssoProtection: z.lazy(() => SsoProtection$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultDeploymentProtection$ {
-  /** @deprecated use `DefaultDeploymentProtection$inboundSchema` instead. */
-  export const inboundSchema = DefaultDeploymentProtection$inboundSchema;
-  /** @deprecated use `DefaultDeploymentProtection$outboundSchema` instead. */
-  export const outboundSchema = DefaultDeploymentProtection$outboundSchema;
-  /** @deprecated use `DefaultDeploymentProtection$Outbound` instead. */
-  export type Outbound = DefaultDeploymentProtection$Outbound;
-}
-
 export function defaultDeploymentProtectionToJSON(
   defaultDeploymentProtection: DefaultDeploymentProtection,
 ): string {
@@ -1328,7 +1071,6 @@ export function defaultDeploymentProtectionToJSON(
     ),
   );
 }
-
 export function defaultDeploymentProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<DefaultDeploymentProtection, SDKValidationError> {
@@ -1351,7 +1093,6 @@ export const DefaultExpirationSettings$inboundSchema: z.ZodType<
   expirationDaysErrored: z.number().optional(),
   deploymentsToKeep: z.number().optional(),
 });
-
 /** @internal */
 export type DefaultExpirationSettings$Outbound = {
   expirationDays?: number | undefined;
@@ -1374,19 +1115,6 @@ export const DefaultExpirationSettings$outboundSchema: z.ZodType<
   deploymentsToKeep: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultExpirationSettings$ {
-  /** @deprecated use `DefaultExpirationSettings$inboundSchema` instead. */
-  export const inboundSchema = DefaultExpirationSettings$inboundSchema;
-  /** @deprecated use `DefaultExpirationSettings$outboundSchema` instead. */
-  export const outboundSchema = DefaultExpirationSettings$outboundSchema;
-  /** @deprecated use `DefaultExpirationSettings$Outbound` instead. */
-  export type Outbound = DefaultExpirationSettings$Outbound;
-}
-
 export function defaultExpirationSettingsToJSON(
   defaultExpirationSettings: DefaultExpirationSettings,
 ): string {
@@ -1394,7 +1122,6 @@ export function defaultExpirationSettingsToJSON(
     DefaultExpirationSettings$outboundSchema.parse(defaultExpirationSettings),
   );
 }
-
 export function defaultExpirationSettingsFromJSON(
   jsonString: string,
 ): SafeParseResult<DefaultExpirationSettings, SDKValidationError> {
@@ -1409,65 +1136,28 @@ export function defaultExpirationSettingsFromJSON(
 export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
   typeof EnablePreviewFeedback
 > = z.nativeEnum(EnablePreviewFeedback);
-
 /** @internal */
 export const EnablePreviewFeedback$outboundSchema: z.ZodNativeEnum<
   typeof EnablePreviewFeedback
 > = EnablePreviewFeedback$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnablePreviewFeedback$ {
-  /** @deprecated use `EnablePreviewFeedback$inboundSchema` instead. */
-  export const inboundSchema = EnablePreviewFeedback$inboundSchema;
-  /** @deprecated use `EnablePreviewFeedback$outboundSchema` instead. */
-  export const outboundSchema = EnablePreviewFeedback$outboundSchema;
-}
-
 /** @internal */
 export const EnableProductionFeedback$inboundSchema: z.ZodNativeEnum<
   typeof EnableProductionFeedback
 > = z.nativeEnum(EnableProductionFeedback);
-
 /** @internal */
 export const EnableProductionFeedback$outboundSchema: z.ZodNativeEnum<
   typeof EnableProductionFeedback
 > = EnableProductionFeedback$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnableProductionFeedback$ {
-  /** @deprecated use `EnableProductionFeedback$inboundSchema` instead. */
-  export const inboundSchema = EnableProductionFeedback$inboundSchema;
-  /** @deprecated use `EnableProductionFeedback$outboundSchema` instead. */
-  export const outboundSchema = EnableProductionFeedback$outboundSchema;
-}
-
 /** @internal */
 export const SensitiveEnvironmentVariablePolicy$inboundSchema: z.ZodNativeEnum<
   typeof SensitiveEnvironmentVariablePolicy
 > = z.nativeEnum(SensitiveEnvironmentVariablePolicy);
-
 /** @internal */
 export const SensitiveEnvironmentVariablePolicy$outboundSchema: z.ZodNativeEnum<
   typeof SensitiveEnvironmentVariablePolicy
 > = SensitiveEnvironmentVariablePolicy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SensitiveEnvironmentVariablePolicy$ {
-  /** @deprecated use `SensitiveEnvironmentVariablePolicy$inboundSchema` instead. */
-  export const inboundSchema = SensitiveEnvironmentVariablePolicy$inboundSchema;
-  /** @deprecated use `SensitiveEnvironmentVariablePolicy$outboundSchema` instead. */
-  export const outboundSchema =
-    SensitiveEnvironmentVariablePolicy$outboundSchema;
-}
 
 /** @internal */
 export const IpBuckets$inboundSchema: z.ZodType<
@@ -1478,7 +1168,6 @@ export const IpBuckets$inboundSchema: z.ZodType<
   bucket: z.string(),
   supportUntil: z.number().optional(),
 });
-
 /** @internal */
 export type IpBuckets$Outbound = {
   bucket: string;
@@ -1495,23 +1184,9 @@ export const IpBuckets$outboundSchema: z.ZodType<
   supportUntil: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IpBuckets$ {
-  /** @deprecated use `IpBuckets$inboundSchema` instead. */
-  export const inboundSchema = IpBuckets$inboundSchema;
-  /** @deprecated use `IpBuckets$outboundSchema` instead. */
-  export const outboundSchema = IpBuckets$outboundSchema;
-  /** @deprecated use `IpBuckets$Outbound` instead. */
-  export type Outbound = IpBuckets$Outbound;
-}
-
 export function ipBucketsToJSON(ipBuckets: IpBuckets): string {
   return JSON.stringify(IpBuckets$outboundSchema.parse(ipBuckets));
 }
-
 export function ipBucketsFromJSON(
   jsonString: string,
 ): SafeParseResult<IpBuckets, SDKValidationError> {
@@ -1530,7 +1205,6 @@ export const Entitlements$inboundSchema: z.ZodType<
 > = z.object({
   entitlement: z.string(),
 });
-
 /** @internal */
 export type Entitlements$Outbound = {
   entitlement: string;
@@ -1545,23 +1219,9 @@ export const Entitlements$outboundSchema: z.ZodType<
   entitlement: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Entitlements$ {
-  /** @deprecated use `Entitlements$inboundSchema` instead. */
-  export const inboundSchema = Entitlements$inboundSchema;
-  /** @deprecated use `Entitlements$outboundSchema` instead. */
-  export const outboundSchema = Entitlements$outboundSchema;
-  /** @deprecated use `Entitlements$Outbound` instead. */
-  export type Outbound = Entitlements$Outbound;
-}
-
 export function entitlementsToJSON(entitlements: Entitlements): string {
   return JSON.stringify(Entitlements$outboundSchema.parse(entitlements));
 }
-
 export function entitlementsFromJSON(
   jsonString: string,
 ): SafeParseResult<Entitlements, SDKValidationError> {
@@ -1575,82 +1235,34 @@ export function entitlementsFromJSON(
 /** @internal */
 export const TeamRole$inboundSchema: z.ZodNativeEnum<typeof TeamRole> = z
   .nativeEnum(TeamRole);
-
 /** @internal */
 export const TeamRole$outboundSchema: z.ZodNativeEnum<typeof TeamRole> =
   TeamRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamRole$ {
-  /** @deprecated use `TeamRole$inboundSchema` instead. */
-  export const inboundSchema = TeamRole$inboundSchema;
-  /** @deprecated use `TeamRole$outboundSchema` instead. */
-  export const outboundSchema = TeamRole$outboundSchema;
-}
 
 /** @internal */
 export const TeamMembershipTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof TeamMembershipTeamRoles
 > = z.nativeEnum(TeamMembershipTeamRoles);
-
 /** @internal */
 export const TeamMembershipTeamRoles$outboundSchema: z.ZodNativeEnum<
   typeof TeamMembershipTeamRoles
 > = TeamMembershipTeamRoles$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamMembershipTeamRoles$ {
-  /** @deprecated use `TeamMembershipTeamRoles$inboundSchema` instead. */
-  export const inboundSchema = TeamMembershipTeamRoles$inboundSchema;
-  /** @deprecated use `TeamMembershipTeamRoles$outboundSchema` instead. */
-  export const outboundSchema = TeamMembershipTeamRoles$outboundSchema;
-}
-
 /** @internal */
 export const TeamMembershipTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamMembershipTeamPermissions
 > = z.nativeEnum(TeamMembershipTeamPermissions);
-
 /** @internal */
 export const TeamMembershipTeamPermissions$outboundSchema: z.ZodNativeEnum<
   typeof TeamMembershipTeamPermissions
 > = TeamMembershipTeamPermissions$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamMembershipTeamPermissions$ {
-  /** @deprecated use `TeamMembershipTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = TeamMembershipTeamPermissions$inboundSchema;
-  /** @deprecated use `TeamMembershipTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = TeamMembershipTeamPermissions$outboundSchema;
-}
-
 /** @internal */
 export const Origin$inboundSchema: z.ZodNativeEnum<typeof Origin> = z
   .nativeEnum(Origin);
-
 /** @internal */
 export const Origin$outboundSchema: z.ZodNativeEnum<typeof Origin> =
   Origin$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Origin$ {
-  /** @deprecated use `Origin$inboundSchema` instead. */
-  export const inboundSchema = Origin$inboundSchema;
-  /** @deprecated use `Origin$outboundSchema` instead. */
-  export const outboundSchema = Origin$outboundSchema;
-}
 
 /** @internal */
 export const GitUserId$inboundSchema: z.ZodType<
@@ -1658,7 +1270,6 @@ export const GitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
-
 /** @internal */
 export type GitUserId$Outbound = string | number;
 
@@ -1669,23 +1280,9 @@ export const GitUserId$outboundSchema: z.ZodType<
   GitUserId
 > = z.union([z.string(), z.number()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GitUserId$ {
-  /** @deprecated use `GitUserId$inboundSchema` instead. */
-  export const inboundSchema = GitUserId$inboundSchema;
-  /** @deprecated use `GitUserId$outboundSchema` instead. */
-  export const outboundSchema = GitUserId$outboundSchema;
-  /** @deprecated use `GitUserId$Outbound` instead. */
-  export type Outbound = GitUserId$Outbound;
-}
-
 export function gitUserIdToJSON(gitUserId: GitUserId): string {
   return JSON.stringify(GitUserId$outboundSchema.parse(gitUserId));
 }
-
 export function gitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GitUserId, SDKValidationError> {
@@ -1714,7 +1311,6 @@ export const JoinedFrom$inboundSchema: z.ZodType<
   dsyncUserId: z.string().optional(),
   dsyncConnectedAt: z.number().optional(),
 });
-
 /** @internal */
 export type JoinedFrom$Outbound = {
   origin: string;
@@ -1749,23 +1345,9 @@ export const JoinedFrom$outboundSchema: z.ZodType<
   dsyncConnectedAt: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JoinedFrom$ {
-  /** @deprecated use `JoinedFrom$inboundSchema` instead. */
-  export const inboundSchema = JoinedFrom$inboundSchema;
-  /** @deprecated use `JoinedFrom$outboundSchema` instead. */
-  export const outboundSchema = JoinedFrom$outboundSchema;
-  /** @deprecated use `JoinedFrom$Outbound` instead. */
-  export type Outbound = JoinedFrom$Outbound;
-}
-
 export function joinedFromToJSON(joinedFrom: JoinedFrom): string {
   return JSON.stringify(JoinedFrom$outboundSchema.parse(joinedFrom));
 }
-
 export function joinedFromFromJSON(
   jsonString: string,
 ): SafeParseResult<JoinedFrom, SDKValidationError> {
@@ -1795,7 +1377,6 @@ export const Membership$inboundSchema: z.ZodType<
   created: z.number(),
   joinedFrom: z.lazy(() => JoinedFrom$inboundSchema).optional(),
 });
-
 /** @internal */
 export type Membership$Outbound = {
   uid?: string | undefined;
@@ -1831,23 +1412,9 @@ export const Membership$outboundSchema: z.ZodType<
   joinedFrom: z.lazy(() => JoinedFrom$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Membership$ {
-  /** @deprecated use `Membership$inboundSchema` instead. */
-  export const inboundSchema = Membership$inboundSchema;
-  /** @deprecated use `Membership$outboundSchema` instead. */
-  export const outboundSchema = Membership$outboundSchema;
-  /** @deprecated use `Membership$Outbound` instead. */
-  export type Outbound = Membership$Outbound;
-}
-
 export function membershipToJSON(membership: Membership): string {
   return JSON.stringify(Membership$outboundSchema.parse(membership));
 }
-
 export function membershipFromJSON(
   jsonString: string,
 ): SafeParseResult<Membership, SDKValidationError> {
@@ -1903,7 +1470,6 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
     "additionalProperties",
     true,
   );
-
 /** @internal */
 export type Team$Outbound = {
   connect?: Connect$Outbound | undefined;
@@ -1989,23 +1555,9 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     };
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Team$ {
-  /** @deprecated use `Team$inboundSchema` instead. */
-  export const inboundSchema = Team$inboundSchema;
-  /** @deprecated use `Team$outboundSchema` instead. */
-  export const outboundSchema = Team$outboundSchema;
-  /** @deprecated use `Team$Outbound` instead. */
-  export type Outbound = Team$Outbound;
-}
-
 export function teamToJSON(team: Team): string {
   return JSON.stringify(Team$outboundSchema.parse(team));
 }
-
 export function teamFromJSON(
   jsonString: string,
 ): SafeParseResult<Team, SDKValidationError> {

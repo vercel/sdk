@@ -9,6 +9,7 @@ import { NinetyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: NinetyNine = {
   email: "Johan3@yahoo.com",
+  verified: true,
 };
 ```
 
@@ -17,3 +18,4 @@ let value: NinetyNine = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `verified`         | *boolean*          | :heavy_check_mark: | N/A                |

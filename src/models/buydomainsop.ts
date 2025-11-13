@@ -219,7 +219,6 @@ export const Domains$inboundSchema: z.ZodType<Domains, z.ZodTypeDef, unknown> =
     years: z.number(),
     expectedPrice: z.number(),
   });
-
 /** @internal */
 export type Domains$Outbound = {
   domainName: string;
@@ -240,23 +239,9 @@ export const Domains$outboundSchema: z.ZodType<
   expectedPrice: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Domains$ {
-  /** @deprecated use `Domains$inboundSchema` instead. */
-  export const inboundSchema = Domains$inboundSchema;
-  /** @deprecated use `Domains$outboundSchema` instead. */
-  export const outboundSchema = Domains$outboundSchema;
-  /** @deprecated use `Domains$Outbound` instead. */
-  export type Outbound = Domains$Outbound;
-}
-
 export function domainsToJSON(domains: Domains): string {
   return JSON.stringify(Domains$outboundSchema.parse(domains));
 }
-
 export function domainsFromJSON(
   jsonString: string,
 ): SafeParseResult<Domains, SDKValidationError> {
@@ -273,7 +258,6 @@ export const BuyDomainsAdditional$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type BuyDomainsAdditional$Outbound = {};
 
@@ -284,19 +268,6 @@ export const BuyDomainsAdditional$outboundSchema: z.ZodType<
   BuyDomainsAdditional
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsAdditional$ {
-  /** @deprecated use `BuyDomainsAdditional$inboundSchema` instead. */
-  export const inboundSchema = BuyDomainsAdditional$inboundSchema;
-  /** @deprecated use `BuyDomainsAdditional$outboundSchema` instead. */
-  export const outboundSchema = BuyDomainsAdditional$outboundSchema;
-  /** @deprecated use `BuyDomainsAdditional$Outbound` instead. */
-  export type Outbound = BuyDomainsAdditional$Outbound;
-}
-
 export function buyDomainsAdditionalToJSON(
   buyDomainsAdditional: BuyDomainsAdditional,
 ): string {
@@ -304,7 +275,6 @@ export function buyDomainsAdditionalToJSON(
     BuyDomainsAdditional$outboundSchema.parse(buyDomainsAdditional),
   );
 }
-
 export function buyDomainsAdditionalFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyDomainsAdditional, SDKValidationError> {
@@ -335,7 +305,6 @@ export const BuyDomainsContactInformation$inboundSchema: z.ZodType<
   fax: z.string().optional(),
   additional: z.lazy(() => BuyDomainsAdditional$inboundSchema).optional(),
 });
-
 /** @internal */
 export type BuyDomainsContactInformation$Outbound = {
   firstName: string;
@@ -374,19 +343,6 @@ export const BuyDomainsContactInformation$outboundSchema: z.ZodType<
   additional: z.lazy(() => BuyDomainsAdditional$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsContactInformation$ {
-  /** @deprecated use `BuyDomainsContactInformation$inboundSchema` instead. */
-  export const inboundSchema = BuyDomainsContactInformation$inboundSchema;
-  /** @deprecated use `BuyDomainsContactInformation$outboundSchema` instead. */
-  export const outboundSchema = BuyDomainsContactInformation$outboundSchema;
-  /** @deprecated use `BuyDomainsContactInformation$Outbound` instead. */
-  export type Outbound = BuyDomainsContactInformation$Outbound;
-}
-
 export function buyDomainsContactInformationToJSON(
   buyDomainsContactInformation: BuyDomainsContactInformation,
 ): string {
@@ -396,7 +352,6 @@ export function buyDomainsContactInformationToJSON(
     ),
   );
 }
-
 export function buyDomainsContactInformationFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyDomainsContactInformation, SDKValidationError> {
@@ -416,7 +371,6 @@ export const BuyDomainsRequestBody$inboundSchema: z.ZodType<
   domains: z.array(z.lazy(() => Domains$inboundSchema)),
   contactInformation: z.lazy(() => BuyDomainsContactInformation$inboundSchema),
 });
-
 /** @internal */
 export type BuyDomainsRequestBody$Outbound = {
   domains: Array<Domains$Outbound>;
@@ -433,19 +387,6 @@ export const BuyDomainsRequestBody$outboundSchema: z.ZodType<
   contactInformation: z.lazy(() => BuyDomainsContactInformation$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsRequestBody$ {
-  /** @deprecated use `BuyDomainsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = BuyDomainsRequestBody$inboundSchema;
-  /** @deprecated use `BuyDomainsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = BuyDomainsRequestBody$outboundSchema;
-  /** @deprecated use `BuyDomainsRequestBody$Outbound` instead. */
-  export type Outbound = BuyDomainsRequestBody$Outbound;
-}
-
 export function buyDomainsRequestBodyToJSON(
   buyDomainsRequestBody: BuyDomainsRequestBody,
 ): string {
@@ -453,7 +394,6 @@ export function buyDomainsRequestBodyToJSON(
     BuyDomainsRequestBody$outboundSchema.parse(buyDomainsRequestBody),
   );
 }
-
 export function buyDomainsRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyDomainsRequestBody, SDKValidationError> {
@@ -477,7 +417,6 @@ export const BuyDomainsRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type BuyDomainsRequest$Outbound = {
   teamId?: string | undefined;
@@ -498,19 +437,6 @@ export const BuyDomainsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsRequest$ {
-  /** @deprecated use `BuyDomainsRequest$inboundSchema` instead. */
-  export const inboundSchema = BuyDomainsRequest$inboundSchema;
-  /** @deprecated use `BuyDomainsRequest$outboundSchema` instead. */
-  export const outboundSchema = BuyDomainsRequest$outboundSchema;
-  /** @deprecated use `BuyDomainsRequest$Outbound` instead. */
-  export type Outbound = BuyDomainsRequest$Outbound;
-}
-
 export function buyDomainsRequestToJSON(
   buyDomainsRequest: BuyDomainsRequest,
 ): string {
@@ -518,7 +444,6 @@ export function buyDomainsRequestToJSON(
     BuyDomainsRequest$outboundSchema.parse(buyDomainsRequest),
   );
 }
-
 export function buyDomainsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyDomainsRequest, SDKValidationError> {
@@ -536,7 +461,6 @@ export const BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
-
 /** @internal */
 export type BuyDomainsDomainsRegistrarResponseResponseBody$Outbound =
   | NotAuthorizedForScope$Outbound
@@ -550,22 +474,6 @@ export const BuyDomainsDomainsRegistrarResponseResponseBody$outboundSchema:
     unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsDomainsRegistrarResponseResponseBody$ {
-  /** @deprecated use `BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema;
-  /** @deprecated use `BuyDomainsDomainsRegistrarResponseResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    BuyDomainsDomainsRegistrarResponseResponseBody$outboundSchema;
-  /** @deprecated use `BuyDomainsDomainsRegistrarResponseResponseBody$Outbound` instead. */
-  export type Outbound =
-    BuyDomainsDomainsRegistrarResponseResponseBody$Outbound;
-}
-
 export function buyDomainsDomainsRegistrarResponseResponseBodyToJSON(
   buyDomainsDomainsRegistrarResponseResponseBody:
     BuyDomainsDomainsRegistrarResponseResponseBody,
@@ -576,7 +484,6 @@ export function buyDomainsDomainsRegistrarResponseResponseBodyToJSON(
     ),
   );
 }
-
 export function buyDomainsDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -610,7 +517,6 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   TldNotSupported$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
-
 /** @internal */
 export type BuyDomainsDomainsRegistrarResponseBody$Outbound =
   | DomainTooShort$Outbound
@@ -642,21 +548,6 @@ export const BuyDomainsDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   HttpApiDecodeError$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsDomainsRegistrarResponseBody$ {
-  /** @deprecated use `BuyDomainsDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    BuyDomainsDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `BuyDomainsDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    BuyDomainsDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `BuyDomainsDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound = BuyDomainsDomainsRegistrarResponseBody$Outbound;
-}
-
 export function buyDomainsDomainsRegistrarResponseBodyToJSON(
   buyDomainsDomainsRegistrarResponseBody:
     BuyDomainsDomainsRegistrarResponseBody,
@@ -667,7 +558,6 @@ export function buyDomainsDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function buyDomainsDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyDomainsDomainsRegistrarResponseBody, SDKValidationError> {
@@ -683,22 +573,10 @@ export function buyDomainsDomainsRegistrarResponseBodyFromJSON(
 export const BuyDomainsMethod$inboundSchema: z.ZodNativeEnum<
   typeof BuyDomainsMethod
 > = z.nativeEnum(BuyDomainsMethod);
-
 /** @internal */
 export const BuyDomainsMethod$outboundSchema: z.ZodNativeEnum<
   typeof BuyDomainsMethod
 > = BuyDomainsMethod$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsMethod$ {
-  /** @deprecated use `BuyDomainsMethod$inboundSchema` instead. */
-  export const inboundSchema = BuyDomainsMethod$inboundSchema;
-  /** @deprecated use `BuyDomainsMethod$outboundSchema` instead. */
-  export const outboundSchema = BuyDomainsMethod$outboundSchema;
-}
 
 /** @internal */
 export const BuyDomainsLinks$inboundSchema: z.ZodType<
@@ -709,7 +587,6 @@ export const BuyDomainsLinks$inboundSchema: z.ZodType<
   href: z.string(),
   method: BuyDomainsMethod$inboundSchema,
 });
-
 /** @internal */
 export type BuyDomainsLinks$Outbound = {
   href: string;
@@ -726,25 +603,11 @@ export const BuyDomainsLinks$outboundSchema: z.ZodType<
   method: BuyDomainsMethod$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsLinks$ {
-  /** @deprecated use `BuyDomainsLinks$inboundSchema` instead. */
-  export const inboundSchema = BuyDomainsLinks$inboundSchema;
-  /** @deprecated use `BuyDomainsLinks$outboundSchema` instead. */
-  export const outboundSchema = BuyDomainsLinks$outboundSchema;
-  /** @deprecated use `BuyDomainsLinks$Outbound` instead. */
-  export type Outbound = BuyDomainsLinks$Outbound;
-}
-
 export function buyDomainsLinksToJSON(
   buyDomainsLinks: BuyDomainsLinks,
 ): string {
   return JSON.stringify(BuyDomainsLinks$outboundSchema.parse(buyDomainsLinks));
 }
-
 export function buyDomainsLinksFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyDomainsLinks, SDKValidationError> {
@@ -768,7 +631,6 @@ export const BuyDomainsResponseBody$inboundSchema: z.ZodType<
     "_links": "links",
   });
 });
-
 /** @internal */
 export type BuyDomainsResponseBody$Outbound = {
   orderId: string;
@@ -789,19 +651,6 @@ export const BuyDomainsResponseBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BuyDomainsResponseBody$ {
-  /** @deprecated use `BuyDomainsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = BuyDomainsResponseBody$inboundSchema;
-  /** @deprecated use `BuyDomainsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = BuyDomainsResponseBody$outboundSchema;
-  /** @deprecated use `BuyDomainsResponseBody$Outbound` instead. */
-  export type Outbound = BuyDomainsResponseBody$Outbound;
-}
-
 export function buyDomainsResponseBodyToJSON(
   buyDomainsResponseBody: BuyDomainsResponseBody,
 ): string {
@@ -809,7 +658,6 @@ export function buyDomainsResponseBodyToJSON(
     BuyDomainsResponseBody$outboundSchema.parse(buyDomainsResponseBody),
   );
 }
-
 export function buyDomainsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<BuyDomainsResponseBody, SDKValidationError> {

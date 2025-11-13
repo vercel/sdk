@@ -36,7 +36,6 @@ export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
   tokens: z.array(AuthToken$inboundSchema),
   pagination: Pagination$inboundSchema,
 });
-
 /** @internal */
 export type ListAuthTokensResponseBody$Outbound = {
   tokens: Array<AuthToken$Outbound>;
@@ -53,19 +52,6 @@ export const ListAuthTokensResponseBody$outboundSchema: z.ZodType<
   pagination: Pagination$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAuthTokensResponseBody$ {
-  /** @deprecated use `ListAuthTokensResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListAuthTokensResponseBody$inboundSchema;
-  /** @deprecated use `ListAuthTokensResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ListAuthTokensResponseBody$outboundSchema;
-  /** @deprecated use `ListAuthTokensResponseBody$Outbound` instead. */
-  export type Outbound = ListAuthTokensResponseBody$Outbound;
-}
-
 export function listAuthTokensResponseBodyToJSON(
   listAuthTokensResponseBody: ListAuthTokensResponseBody,
 ): string {
@@ -73,7 +59,6 @@ export function listAuthTokensResponseBodyToJSON(
     ListAuthTokensResponseBody$outboundSchema.parse(listAuthTokensResponseBody),
   );
 }
-
 export function listAuthTokensResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAuthTokensResponseBody, SDKValidationError> {

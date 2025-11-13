@@ -126,63 +126,27 @@ export type ImportResourceResponseBody = {
 /** @internal */
 export const Ownership$inboundSchema: z.ZodNativeEnum<typeof Ownership> = z
   .nativeEnum(Ownership);
-
 /** @internal */
 export const Ownership$outboundSchema: z.ZodNativeEnum<typeof Ownership> =
   Ownership$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Ownership$ {
-  /** @deprecated use `Ownership$inboundSchema` instead. */
-  export const inboundSchema = Ownership$inboundSchema;
-  /** @deprecated use `Ownership$outboundSchema` instead. */
-  export const outboundSchema = Ownership$outboundSchema;
-}
 
 /** @internal */
 export const ImportResourceStatus$inboundSchema: z.ZodNativeEnum<
   typeof ImportResourceStatus
 > = z.nativeEnum(ImportResourceStatus);
-
 /** @internal */
 export const ImportResourceStatus$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceStatus
 > = ImportResourceStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceStatus$ {
-  /** @deprecated use `ImportResourceStatus$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceStatus$inboundSchema;
-  /** @deprecated use `ImportResourceStatus$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceStatus$outboundSchema;
-}
-
 /** @internal */
 export const ImportResourceType$inboundSchema: z.ZodNativeEnum<
   typeof ImportResourceType
 > = z.nativeEnum(ImportResourceType);
-
 /** @internal */
 export const ImportResourceType$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceType
 > = ImportResourceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceType$ {
-  /** @deprecated use `ImportResourceType$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceType$inboundSchema;
-  /** @deprecated use `ImportResourceType$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceType$outboundSchema;
-}
 
 /** @internal */
 export const ImportResourceDetails$inboundSchema: z.ZodType<
@@ -193,7 +157,6 @@ export const ImportResourceDetails$inboundSchema: z.ZodType<
   label: z.string(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type ImportResourceDetails$Outbound = {
   label: string;
@@ -210,19 +173,6 @@ export const ImportResourceDetails$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceDetails$ {
-  /** @deprecated use `ImportResourceDetails$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceDetails$inboundSchema;
-  /** @deprecated use `ImportResourceDetails$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceDetails$outboundSchema;
-  /** @deprecated use `ImportResourceDetails$Outbound` instead. */
-  export type Outbound = ImportResourceDetails$Outbound;
-}
-
 export function importResourceDetailsToJSON(
   importResourceDetails: ImportResourceDetails,
 ): string {
@@ -230,7 +180,6 @@ export function importResourceDetailsToJSON(
     ImportResourceDetails$outboundSchema.parse(importResourceDetails),
   );
 }
-
 export function importResourceDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceDetails, SDKValidationError> {
@@ -250,7 +199,6 @@ export const ImportResourceHighlightedDetails$inboundSchema: z.ZodType<
   label: z.string(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type ImportResourceHighlightedDetails$Outbound = {
   label: string;
@@ -267,19 +215,6 @@ export const ImportResourceHighlightedDetails$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceHighlightedDetails$ {
-  /** @deprecated use `ImportResourceHighlightedDetails$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceHighlightedDetails$inboundSchema;
-  /** @deprecated use `ImportResourceHighlightedDetails$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceHighlightedDetails$outboundSchema;
-  /** @deprecated use `ImportResourceHighlightedDetails$Outbound` instead. */
-  export type Outbound = ImportResourceHighlightedDetails$Outbound;
-}
-
 export function importResourceHighlightedDetailsToJSON(
   importResourceHighlightedDetails: ImportResourceHighlightedDetails,
 ): string {
@@ -289,7 +224,6 @@ export function importResourceHighlightedDetailsToJSON(
     ),
   );
 }
-
 export function importResourceHighlightedDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceHighlightedDetails, SDKValidationError> {
@@ -323,7 +257,6 @@ export const ImportResourceBillingPlan$inboundSchema: z.ZodType<
   "additionalProperties",
   true,
 );
-
 /** @internal */
 export type ImportResourceBillingPlan$Outbound = {
   id: string;
@@ -368,19 +301,6 @@ export const ImportResourceBillingPlan$outboundSchema: z.ZodType<
   };
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceBillingPlan$ {
-  /** @deprecated use `ImportResourceBillingPlan$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceBillingPlan$inboundSchema;
-  /** @deprecated use `ImportResourceBillingPlan$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceBillingPlan$outboundSchema;
-  /** @deprecated use `ImportResourceBillingPlan$Outbound` instead. */
-  export type Outbound = ImportResourceBillingPlan$Outbound;
-}
-
 export function importResourceBillingPlanToJSON(
   importResourceBillingPlan: ImportResourceBillingPlan,
 ): string {
@@ -388,7 +308,6 @@ export function importResourceBillingPlanToJSON(
     ImportResourceBillingPlan$outboundSchema.parse(importResourceBillingPlan),
   );
 }
-
 export function importResourceBillingPlanFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceBillingPlan, SDKValidationError> {
@@ -403,22 +322,10 @@ export function importResourceBillingPlanFromJSON(
 export const ImportResourceLevel$inboundSchema: z.ZodNativeEnum<
   typeof ImportResourceLevel
 > = z.nativeEnum(ImportResourceLevel);
-
 /** @internal */
 export const ImportResourceLevel$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceLevel
 > = ImportResourceLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceLevel$ {
-  /** @deprecated use `ImportResourceLevel$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceLevel$inboundSchema;
-  /** @deprecated use `ImportResourceLevel$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceLevel$outboundSchema;
-}
 
 /** @internal */
 export const ImportResourceNotification$inboundSchema: z.ZodType<
@@ -431,7 +338,6 @@ export const ImportResourceNotification$inboundSchema: z.ZodType<
   message: z.string().optional(),
   href: z.string().optional(),
 });
-
 /** @internal */
 export type ImportResourceNotification$Outbound = {
   level: string;
@@ -452,19 +358,6 @@ export const ImportResourceNotification$outboundSchema: z.ZodType<
   href: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceNotification$ {
-  /** @deprecated use `ImportResourceNotification$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceNotification$inboundSchema;
-  /** @deprecated use `ImportResourceNotification$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceNotification$outboundSchema;
-  /** @deprecated use `ImportResourceNotification$Outbound` instead. */
-  export type Outbound = ImportResourceNotification$Outbound;
-}
-
 export function importResourceNotificationToJSON(
   importResourceNotification: ImportResourceNotification,
 ): string {
@@ -472,7 +365,6 @@ export function importResourceNotificationToJSON(
     ImportResourceNotification$outboundSchema.parse(importResourceNotification),
   );
 }
-
 export function importResourceNotificationFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceNotification, SDKValidationError> {
@@ -493,7 +385,6 @@ export const EnvironmentOverrides$inboundSchema: z.ZodType<
   preview: z.string().optional(),
   production: z.string().optional(),
 });
-
 /** @internal */
 export type EnvironmentOverrides$Outbound = {
   development?: string | undefined;
@@ -512,19 +403,6 @@ export const EnvironmentOverrides$outboundSchema: z.ZodType<
   production: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EnvironmentOverrides$ {
-  /** @deprecated use `EnvironmentOverrides$inboundSchema` instead. */
-  export const inboundSchema = EnvironmentOverrides$inboundSchema;
-  /** @deprecated use `EnvironmentOverrides$outboundSchema` instead. */
-  export const outboundSchema = EnvironmentOverrides$outboundSchema;
-  /** @deprecated use `EnvironmentOverrides$Outbound` instead. */
-  export type Outbound = EnvironmentOverrides$Outbound;
-}
-
 export function environmentOverridesToJSON(
   environmentOverrides: EnvironmentOverrides,
 ): string {
@@ -532,7 +410,6 @@ export function environmentOverridesToJSON(
     EnvironmentOverrides$outboundSchema.parse(environmentOverrides),
   );
 }
-
 export function environmentOverridesFromJSON(
   jsonString: string,
 ): SafeParseResult<EnvironmentOverrides, SDKValidationError> {
@@ -555,7 +432,6 @@ export const ImportResourceSecrets$inboundSchema: z.ZodType<
   environmentOverrides: z.lazy(() => EnvironmentOverrides$inboundSchema)
     .optional(),
 });
-
 /** @internal */
 export type ImportResourceSecrets$Outbound = {
   name: string;
@@ -577,19 +453,6 @@ export const ImportResourceSecrets$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceSecrets$ {
-  /** @deprecated use `ImportResourceSecrets$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceSecrets$inboundSchema;
-  /** @deprecated use `ImportResourceSecrets$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceSecrets$outboundSchema;
-  /** @deprecated use `ImportResourceSecrets$Outbound` instead. */
-  export type Outbound = ImportResourceSecrets$Outbound;
-}
-
 export function importResourceSecretsToJSON(
   importResourceSecrets: ImportResourceSecrets,
 ): string {
@@ -597,7 +460,6 @@ export function importResourceSecretsToJSON(
     ImportResourceSecrets$outboundSchema.parse(importResourceSecrets),
   );
 }
-
 export function importResourceSecretsFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceSecrets, SDKValidationError> {
@@ -626,7 +488,6 @@ export const ImportResourceRequestBody$inboundSchema: z.ZodType<
   secrets: z.array(z.lazy(() => ImportResourceSecrets$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type ImportResourceRequestBody$Outbound = {
   ownership?: string | undefined;
@@ -660,19 +521,6 @@ export const ImportResourceRequestBody$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceRequestBody$ {
-  /** @deprecated use `ImportResourceRequestBody$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceRequestBody$inboundSchema;
-  /** @deprecated use `ImportResourceRequestBody$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceRequestBody$outboundSchema;
-  /** @deprecated use `ImportResourceRequestBody$Outbound` instead. */
-  export type Outbound = ImportResourceRequestBody$Outbound;
-}
-
 export function importResourceRequestBodyToJSON(
   importResourceRequestBody: ImportResourceRequestBody,
 ): string {
@@ -680,7 +528,6 @@ export function importResourceRequestBodyToJSON(
     ImportResourceRequestBody$outboundSchema.parse(importResourceRequestBody),
   );
 }
-
 export function importResourceRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceRequestBody, SDKValidationError> {
@@ -705,7 +552,6 @@ export const ImportResourceRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type ImportResourceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -729,19 +575,6 @@ export const ImportResourceRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceRequest$ {
-  /** @deprecated use `ImportResourceRequest$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceRequest$inboundSchema;
-  /** @deprecated use `ImportResourceRequest$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceRequest$outboundSchema;
-  /** @deprecated use `ImportResourceRequest$Outbound` instead. */
-  export type Outbound = ImportResourceRequest$Outbound;
-}
-
 export function importResourceRequestToJSON(
   importResourceRequest: ImportResourceRequest,
 ): string {
@@ -749,7 +582,6 @@ export function importResourceRequestToJSON(
     ImportResourceRequest$outboundSchema.parse(importResourceRequest),
   );
 }
-
 export function importResourceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceRequest, SDKValidationError> {
@@ -768,7 +600,6 @@ export const ImportResourceResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
 });
-
 /** @internal */
 export type ImportResourceResponseBody$Outbound = {
   name: string;
@@ -783,19 +614,6 @@ export const ImportResourceResponseBody$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportResourceResponseBody$ {
-  /** @deprecated use `ImportResourceResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ImportResourceResponseBody$inboundSchema;
-  /** @deprecated use `ImportResourceResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ImportResourceResponseBody$outboundSchema;
-  /** @deprecated use `ImportResourceResponseBody$Outbound` instead. */
-  export type Outbound = ImportResourceResponseBody$Outbound;
-}
-
 export function importResourceResponseBodyToJSON(
   importResourceResponseBody: ImportResourceResponseBody,
 ): string {
@@ -803,7 +621,6 @@ export function importResourceResponseBodyToJSON(
     ImportResourceResponseBody$outboundSchema.parse(importResourceResponseBody),
   );
 }
-
 export function importResourceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportResourceResponseBody, SDKValidationError> {

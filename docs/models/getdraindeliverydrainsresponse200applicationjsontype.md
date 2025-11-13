@@ -5,11 +5,11 @@
 ```typescript
 import { GetDrainDeliveryDrainsResponse200ApplicationJSONType } from "@vercel/sdk/models/getdrainop.js";
 
-let value: GetDrainDeliveryDrainsResponse200ApplicationJSONType = "internal";
+let value: GetDrainDeliveryDrainsResponse200ApplicationJSONType = "http";
 ```
 
 ## Values
 
 ```typescript
-"internal"
+"http"
 ```

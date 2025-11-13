@@ -7,11 +7,11 @@ import { UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type } 
 
 let value:
   UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type =
-    "otlphttp";
+    "clickhouse";
 ```
 
 ## Values
 
 ```typescript
-"otlphttp"
+"clickhouse"
 ```

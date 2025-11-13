@@ -1646,6 +1646,7 @@ export type GetProjectsPermissions = {
   projectEnvVarsProduction?: Array<ACLAction> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<ACLAction> | undefined;
   projectFlags?: Array<ACLAction> | undefined;
+  projectFlagsProduction?: Array<ACLAction> | undefined;
   projectFromV0?: Array<ACLAction> | undefined;
   projectId?: Array<ACLAction> | undefined;
   projectIntegrationConfiguration?: Array<ACLAction> | undefined;
@@ -2385,6 +2386,7 @@ export type GetProjectsProjects = {
   internalRoutes?:
     | Array<GetProjectsInternalRoutes1 | GetProjectsInternalRoutes2>
     | undefined;
+  hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<GetProjectsDismissedToasts> | undefined;
 };
 
@@ -2416,64 +2418,28 @@ export type GetProjectsResponseBody = {
 export const GitForkProtection$inboundSchema: z.ZodNativeEnum<
   typeof GitForkProtection
 > = z.nativeEnum(GitForkProtection);
-
 /** @internal */
 export const GitForkProtection$outboundSchema: z.ZodNativeEnum<
   typeof GitForkProtection
 > = GitForkProtection$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GitForkProtection$ {
-  /** @deprecated use `GitForkProtection$inboundSchema` instead. */
-  export const inboundSchema = GitForkProtection$inboundSchema;
-  /** @deprecated use `GitForkProtection$outboundSchema` instead. */
-  export const outboundSchema = GitForkProtection$outboundSchema;
-}
-
 /** @internal */
 export const ElasticConcurrencyEnabled$inboundSchema: z.ZodNativeEnum<
   typeof ElasticConcurrencyEnabled
 > = z.nativeEnum(ElasticConcurrencyEnabled);
-
 /** @internal */
 export const ElasticConcurrencyEnabled$outboundSchema: z.ZodNativeEnum<
   typeof ElasticConcurrencyEnabled
 > = ElasticConcurrencyEnabled$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ElasticConcurrencyEnabled$ {
-  /** @deprecated use `ElasticConcurrencyEnabled$inboundSchema` instead. */
-  export const inboundSchema = ElasticConcurrencyEnabled$inboundSchema;
-  /** @deprecated use `ElasticConcurrencyEnabled$outboundSchema` instead. */
-  export const outboundSchema = ElasticConcurrencyEnabled$outboundSchema;
-}
-
 /** @internal */
 export const StaticIpsEnabled$inboundSchema: z.ZodNativeEnum<
   typeof StaticIpsEnabled
 > = z.nativeEnum(StaticIpsEnabled);
-
 /** @internal */
 export const StaticIpsEnabled$outboundSchema: z.ZodNativeEnum<
   typeof StaticIpsEnabled
 > = StaticIpsEnabled$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StaticIpsEnabled$ {
-  /** @deprecated use `StaticIpsEnabled$inboundSchema` instead. */
-  export const inboundSchema = StaticIpsEnabled$inboundSchema;
-  /** @deprecated use `StaticIpsEnabled$outboundSchema` instead. */
-  export const outboundSchema = StaticIpsEnabled$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsRequest$inboundSchema: z.ZodType<
@@ -2498,7 +2464,6 @@ export const GetProjectsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectsRequest$Outbound = {
   from?: string | undefined;
@@ -2544,19 +2509,6 @@ export const GetProjectsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRequest$ {
-  /** @deprecated use `GetProjectsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRequest$inboundSchema;
-  /** @deprecated use `GetProjectsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRequest$outboundSchema;
-  /** @deprecated use `GetProjectsRequest$Outbound` instead. */
-  export type Outbound = GetProjectsRequest$Outbound;
-}
-
 export function getProjectsRequestToJSON(
   getProjectsRequest: GetProjectsRequest,
 ): string {
@@ -2564,7 +2516,6 @@ export function getProjectsRequestToJSON(
     GetProjectsRequest$outboundSchema.parse(getProjectsRequest),
   );
 }
-
 export function getProjectsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRequest, SDKValidationError> {
@@ -2589,7 +2540,6 @@ export const GetProjectsAnalytics$inboundSchema: z.ZodType<
   sampleRatePercent: z.nullable(z.number()).optional(),
   spendLimitInDollars: z.nullable(z.number()).optional(),
 });
-
 /** @internal */
 export type GetProjectsAnalytics$Outbound = {
   id: string;
@@ -2616,19 +2566,6 @@ export const GetProjectsAnalytics$outboundSchema: z.ZodType<
   spendLimitInDollars: z.nullable(z.number()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsAnalytics$ {
-  /** @deprecated use `GetProjectsAnalytics$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAnalytics$inboundSchema;
-  /** @deprecated use `GetProjectsAnalytics$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAnalytics$outboundSchema;
-  /** @deprecated use `GetProjectsAnalytics$Outbound` instead. */
-  export type Outbound = GetProjectsAnalytics$Outbound;
-}
-
 export function getProjectsAnalyticsToJSON(
   getProjectsAnalytics: GetProjectsAnalytics,
 ): string {
@@ -2636,7 +2573,6 @@ export function getProjectsAnalyticsToJSON(
     GetProjectsAnalytics$outboundSchema.parse(getProjectsAnalytics),
   );
 }
-
 export function getProjectsAnalyticsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsAnalytics, SDKValidationError> {
@@ -2660,7 +2596,6 @@ export const GetProjectsSpeedInsights$inboundSchema: z.ZodType<
   hasData: z.boolean().optional(),
   paidAt: z.number().optional(),
 });
-
 /** @internal */
 export type GetProjectsSpeedInsights$Outbound = {
   id: string;
@@ -2685,19 +2620,6 @@ export const GetProjectsSpeedInsights$outboundSchema: z.ZodType<
   paidAt: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsSpeedInsights$ {
-  /** @deprecated use `GetProjectsSpeedInsights$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsSpeedInsights$inboundSchema;
-  /** @deprecated use `GetProjectsSpeedInsights$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsSpeedInsights$outboundSchema;
-  /** @deprecated use `GetProjectsSpeedInsights$Outbound` instead. */
-  export type Outbound = GetProjectsSpeedInsights$Outbound;
-}
-
 export function getProjectsSpeedInsightsToJSON(
   getProjectsSpeedInsights: GetProjectsSpeedInsights,
 ): string {
@@ -2705,7 +2627,6 @@ export function getProjectsSpeedInsightsToJSON(
     GetProjectsSpeedInsights$outboundSchema.parse(getProjectsSpeedInsights),
   );
 }
-
 export function getProjectsSpeedInsightsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsSpeedInsights, SDKValidationError> {
@@ -2720,22 +2641,10 @@ export function getProjectsSpeedInsightsFromJSON(
 export const GetProjectsEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsEnvId2
 > = z.nativeEnum(GetProjectsEnvId2);
-
 /** @internal */
 export const GetProjectsEnvId2$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsEnvId2
 > = GetProjectsEnvId2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsEnvId2$ {
-  /** @deprecated use `GetProjectsEnvId2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsEnvId2$inboundSchema;
-  /** @deprecated use `GetProjectsEnvId2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsEnvId2$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsEnvId$inboundSchema: z.ZodType<
@@ -2743,7 +2652,6 @@ export const GetProjectsEnvId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), GetProjectsEnvId2$inboundSchema]);
-
 /** @internal */
 export type GetProjectsEnvId$Outbound = string | string;
 
@@ -2754,19 +2662,6 @@ export const GetProjectsEnvId$outboundSchema: z.ZodType<
   GetProjectsEnvId
 > = z.union([z.string(), GetProjectsEnvId2$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsEnvId$ {
-  /** @deprecated use `GetProjectsEnvId$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsEnvId$inboundSchema;
-  /** @deprecated use `GetProjectsEnvId$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsEnvId$outboundSchema;
-  /** @deprecated use `GetProjectsEnvId$Outbound` instead. */
-  export type Outbound = GetProjectsEnvId$Outbound;
-}
-
 export function getProjectsEnvIdToJSON(
   getProjectsEnvId: GetProjectsEnvId,
 ): string {
@@ -2774,7 +2669,6 @@ export function getProjectsEnvIdToJSON(
     GetProjectsEnvId$outboundSchema.parse(getProjectsEnvId),
   );
 }
-
 export function getProjectsEnvIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsEnvId, SDKValidationError> {
@@ -2794,7 +2688,6 @@ export const GetProjectsAws$inboundSchema: z.ZodType<
   subnetIds: z.array(z.string()),
   securityGroupId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsAws$Outbound = {
   subnetIds: Array<string>;
@@ -2811,23 +2704,9 @@ export const GetProjectsAws$outboundSchema: z.ZodType<
   securityGroupId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsAws$ {
-  /** @deprecated use `GetProjectsAws$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAws$inboundSchema;
-  /** @deprecated use `GetProjectsAws$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAws$outboundSchema;
-  /** @deprecated use `GetProjectsAws$Outbound` instead. */
-  export type Outbound = GetProjectsAws$Outbound;
-}
-
 export function getProjectsAwsToJSON(getProjectsAws: GetProjectsAws): string {
   return JSON.stringify(GetProjectsAws$outboundSchema.parse(getProjectsAws));
 }
-
 export function getProjectsAwsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsAws, SDKValidationError> {
@@ -2853,7 +2732,6 @@ export const GetProjectsConnectConfigurations$inboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
 });
-
 /** @internal */
 export type GetProjectsConnectConfigurations$Outbound = {
   envId: string | string;
@@ -2882,19 +2760,6 @@ export const GetProjectsConnectConfigurations$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsConnectConfigurations$ {
-  /** @deprecated use `GetProjectsConnectConfigurations$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsConnectConfigurations$inboundSchema;
-  /** @deprecated use `GetProjectsConnectConfigurations$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsConnectConfigurations$outboundSchema;
-  /** @deprecated use `GetProjectsConnectConfigurations$Outbound` instead. */
-  export type Outbound = GetProjectsConnectConfigurations$Outbound;
-}
-
 export function getProjectsConnectConfigurationsToJSON(
   getProjectsConnectConfigurations: GetProjectsConnectConfigurations,
 ): string {
@@ -2904,7 +2769,6 @@ export function getProjectsConnectConfigurationsToJSON(
     ),
   );
 }
-
 export function getProjectsConnectConfigurationsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsConnectConfigurations, SDKValidationError> {
@@ -2925,7 +2789,6 @@ export const GetProjectsDefinitions$inboundSchema: z.ZodType<
   path: z.string(),
   schedule: z.string(),
 });
-
 /** @internal */
 export type GetProjectsDefinitions$Outbound = {
   host: string;
@@ -2944,19 +2807,6 @@ export const GetProjectsDefinitions$outboundSchema: z.ZodType<
   schedule: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsDefinitions$ {
-  /** @deprecated use `GetProjectsDefinitions$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsDefinitions$inboundSchema;
-  /** @deprecated use `GetProjectsDefinitions$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsDefinitions$outboundSchema;
-  /** @deprecated use `GetProjectsDefinitions$Outbound` instead. */
-  export type Outbound = GetProjectsDefinitions$Outbound;
-}
-
 export function getProjectsDefinitionsToJSON(
   getProjectsDefinitions: GetProjectsDefinitions,
 ): string {
@@ -2964,7 +2814,6 @@ export function getProjectsDefinitionsToJSON(
     GetProjectsDefinitions$outboundSchema.parse(getProjectsDefinitions),
   );
 }
-
 export function getProjectsDefinitionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsDefinitions, SDKValidationError> {
@@ -2987,7 +2836,6 @@ export const GetProjectsCrons$inboundSchema: z.ZodType<
   deploymentId: z.nullable(z.string()),
   definitions: z.array(z.lazy(() => GetProjectsDefinitions$inboundSchema)),
 });
-
 /** @internal */
 export type GetProjectsCrons$Outbound = {
   enabledAt: number;
@@ -3010,19 +2858,6 @@ export const GetProjectsCrons$outboundSchema: z.ZodType<
   definitions: z.array(z.lazy(() => GetProjectsDefinitions$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsCrons$ {
-  /** @deprecated use `GetProjectsCrons$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsCrons$inboundSchema;
-  /** @deprecated use `GetProjectsCrons$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsCrons$outboundSchema;
-  /** @deprecated use `GetProjectsCrons$Outbound` instead. */
-  export type Outbound = GetProjectsCrons$Outbound;
-}
-
 export function getProjectsCronsToJSON(
   getProjectsCrons: GetProjectsCrons,
 ): string {
@@ -3030,7 +2865,6 @@ export function getProjectsCronsToJSON(
     GetProjectsCrons$outboundSchema.parse(getProjectsCrons),
   );
 }
-
 export function getProjectsCronsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsCrons, SDKValidationError> {
@@ -3051,7 +2885,6 @@ export const GetProjectsDataCache$inboundSchema: z.ZodType<
   storageSizeBytes: z.nullable(z.number()).optional(),
   unlimited: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsDataCache$Outbound = {
   userDisabled: boolean;
@@ -3070,19 +2903,6 @@ export const GetProjectsDataCache$outboundSchema: z.ZodType<
   unlimited: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsDataCache$ {
-  /** @deprecated use `GetProjectsDataCache$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsDataCache$inboundSchema;
-  /** @deprecated use `GetProjectsDataCache$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsDataCache$outboundSchema;
-  /** @deprecated use `GetProjectsDataCache$Outbound` instead. */
-  export type Outbound = GetProjectsDataCache$Outbound;
-}
-
 export function getProjectsDataCacheToJSON(
   getProjectsDataCache: GetProjectsDataCache,
 ): string {
@@ -3090,7 +2910,6 @@ export function getProjectsDataCacheToJSON(
     GetProjectsDataCache$outboundSchema.parse(getProjectsDataCache),
   );
 }
-
 export function getProjectsDataCacheFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsDataCache, SDKValidationError> {
@@ -3113,7 +2932,6 @@ export const GetProjectsDeploymentExpiration$inboundSchema: z.ZodType<
   expirationDaysErrored: z.number().optional(),
   deploymentsToKeep: z.number().optional(),
 });
-
 /** @internal */
 export type GetProjectsDeploymentExpiration$Outbound = {
   expirationDays?: number | undefined;
@@ -3136,19 +2954,6 @@ export const GetProjectsDeploymentExpiration$outboundSchema: z.ZodType<
   deploymentsToKeep: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsDeploymentExpiration$ {
-  /** @deprecated use `GetProjectsDeploymentExpiration$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsDeploymentExpiration$inboundSchema;
-  /** @deprecated use `GetProjectsDeploymentExpiration$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsDeploymentExpiration$outboundSchema;
-  /** @deprecated use `GetProjectsDeploymentExpiration$Outbound` instead. */
-  export type Outbound = GetProjectsDeploymentExpiration$Outbound;
-}
-
 export function getProjectsDeploymentExpirationToJSON(
   getProjectsDeploymentExpiration: GetProjectsDeploymentExpiration,
 ): string {
@@ -3158,7 +2963,6 @@ export function getProjectsDeploymentExpirationToJSON(
     ),
   );
 }
-
 export function getProjectsDeploymentExpirationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsDeploymentExpiration, SDKValidationError> {
@@ -3173,43 +2977,19 @@ export function getProjectsDeploymentExpirationFromJSON(
 export const GetProjectsTarget2$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTarget2
 > = z.nativeEnum(GetProjectsTarget2);
-
 /** @internal */
 export const GetProjectsTarget2$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTarget2
 > = GetProjectsTarget2$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTarget2$ {
-  /** @deprecated use `GetProjectsTarget2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTarget2$inboundSchema;
-  /** @deprecated use `GetProjectsTarget2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTarget2$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsTarget1$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTarget1
 > = z.nativeEnum(GetProjectsTarget1);
-
 /** @internal */
 export const GetProjectsTarget1$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTarget1
 > = GetProjectsTarget1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTarget1$ {
-  /** @deprecated use `GetProjectsTarget1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTarget1$inboundSchema;
-  /** @deprecated use `GetProjectsTarget1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTarget1$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsTarget$inboundSchema: z.ZodType<
@@ -3220,7 +3000,6 @@ export const GetProjectsTarget$inboundSchema: z.ZodType<
   z.array(GetProjectsTarget1$inboundSchema),
   GetProjectsTarget2$inboundSchema,
 ]);
-
 /** @internal */
 export type GetProjectsTarget$Outbound = Array<string> | string;
 
@@ -3234,19 +3013,6 @@ export const GetProjectsTarget$outboundSchema: z.ZodType<
   GetProjectsTarget2$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTarget$ {
-  /** @deprecated use `GetProjectsTarget$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTarget$inboundSchema;
-  /** @deprecated use `GetProjectsTarget$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTarget$outboundSchema;
-  /** @deprecated use `GetProjectsTarget$Outbound` instead. */
-  export type Outbound = GetProjectsTarget$Outbound;
-}
-
 export function getProjectsTargetToJSON(
   getProjectsTarget: GetProjectsTarget,
 ): string {
@@ -3254,7 +3020,6 @@ export function getProjectsTargetToJSON(
     GetProjectsTarget$outboundSchema.parse(getProjectsTarget),
   );
 }
-
 export function getProjectsTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsTarget, SDKValidationError> {
@@ -3269,22 +3034,10 @@ export function getProjectsTargetFromJSON(
 export const GetProjectsType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsType
 > = z.nativeEnum(GetProjectsType);
-
 /** @internal */
 export const GetProjectsType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsType
 > = GetProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsType$ {
-  /** @deprecated use `GetProjectsType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$inboundSchema:
@@ -3293,26 +3046,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint15$inboundSchema: z.ZodType<
@@ -3324,7 +3063,6 @@ export const GetProjectsContentHint15$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv15Type$inboundSchema,
   projectId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint15$Outbound = {
   type: string;
@@ -3342,19 +3080,6 @@ export const GetProjectsContentHint15$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint15$ {
-  /** @deprecated use `GetProjectsContentHint15$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint15$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint15$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint15$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint15$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint15$Outbound;
-}
-
 export function getProjectsContentHint15ToJSON(
   getProjectsContentHint15: GetProjectsContentHint15,
 ): string {
@@ -3362,7 +3087,6 @@ export function getProjectsContentHint15ToJSON(
     GetProjectsContentHint15$outboundSchema.parse(getProjectsContentHint15),
   );
 }
-
 export function getProjectsContentHint15FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint15, SDKValidationError> {
@@ -3380,26 +3104,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv14Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint14$inboundSchema: z.ZodType<
@@ -3414,7 +3124,6 @@ export const GetProjectsContentHint14$inboundSchema: z.ZodType<
   integrationProductId: z.string(),
   integrationConfigurationId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint14$Outbound = {
   type: string;
@@ -3438,19 +3147,6 @@ export const GetProjectsContentHint14$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint14$ {
-  /** @deprecated use `GetProjectsContentHint14$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint14$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint14$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint14$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint14$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint14$Outbound;
-}
-
 export function getProjectsContentHint14ToJSON(
   getProjectsContentHint14: GetProjectsContentHint14,
 ): string {
@@ -3458,7 +3154,6 @@ export function getProjectsContentHint14ToJSON(
     GetProjectsContentHint14$outboundSchema.parse(getProjectsContentHint14),
   );
 }
-
 export function getProjectsContentHint14FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint14, SDKValidationError> {
@@ -3476,26 +3171,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint13$inboundSchema: z.ZodType<
@@ -3507,7 +3188,6 @@ export const GetProjectsContentHint13$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv13Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint13$Outbound = {
   type: string;
@@ -3525,19 +3205,6 @@ export const GetProjectsContentHint13$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint13$ {
-  /** @deprecated use `GetProjectsContentHint13$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint13$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint13$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint13$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint13$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint13$Outbound;
-}
-
 export function getProjectsContentHint13ToJSON(
   getProjectsContentHint13: GetProjectsContentHint13,
 ): string {
@@ -3545,7 +3212,6 @@ export function getProjectsContentHint13ToJSON(
     GetProjectsContentHint13$outboundSchema.parse(getProjectsContentHint13),
   );
 }
-
 export function getProjectsContentHint13FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint13, SDKValidationError> {
@@ -3563,26 +3229,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint12$inboundSchema: z.ZodType<
@@ -3594,7 +3246,6 @@ export const GetProjectsContentHint12$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv12Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint12$Outbound = {
   type: string;
@@ -3612,19 +3263,6 @@ export const GetProjectsContentHint12$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint12$ {
-  /** @deprecated use `GetProjectsContentHint12$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint12$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint12$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint12$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint12$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint12$Outbound;
-}
-
 export function getProjectsContentHint12ToJSON(
   getProjectsContentHint12: GetProjectsContentHint12,
 ): string {
@@ -3632,7 +3270,6 @@ export function getProjectsContentHint12ToJSON(
     GetProjectsContentHint12$outboundSchema.parse(getProjectsContentHint12),
   );
 }
-
 export function getProjectsContentHint12FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint12, SDKValidationError> {
@@ -3650,26 +3287,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint11$inboundSchema: z.ZodType<
@@ -3681,7 +3304,6 @@ export const GetProjectsContentHint11$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv11Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint11$Outbound = {
   type: string;
@@ -3699,19 +3321,6 @@ export const GetProjectsContentHint11$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint11$ {
-  /** @deprecated use `GetProjectsContentHint11$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint11$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint11$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint11$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint11$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint11$Outbound;
-}
-
 export function getProjectsContentHint11ToJSON(
   getProjectsContentHint11: GetProjectsContentHint11,
 ): string {
@@ -3719,7 +3328,6 @@ export function getProjectsContentHint11ToJSON(
     GetProjectsContentHint11$outboundSchema.parse(getProjectsContentHint11),
   );
 }
-
 export function getProjectsContentHint11FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint11, SDKValidationError> {
@@ -3737,26 +3345,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint10$inboundSchema: z.ZodType<
@@ -3768,7 +3362,6 @@ export const GetProjectsContentHint10$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv10Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint10$Outbound = {
   type: string;
@@ -3786,19 +3379,6 @@ export const GetProjectsContentHint10$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint10$ {
-  /** @deprecated use `GetProjectsContentHint10$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint10$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint10$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint10$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint10$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint10$Outbound;
-}
-
 export function getProjectsContentHint10ToJSON(
   getProjectsContentHint10: GetProjectsContentHint10,
 ): string {
@@ -3806,7 +3386,6 @@ export function getProjectsContentHint10ToJSON(
     GetProjectsContentHint10$outboundSchema.parse(getProjectsContentHint10),
   );
 }
-
 export function getProjectsContentHint10FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint10, SDKValidationError> {
@@ -3824,26 +3403,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint9$inboundSchema: z.ZodType<
@@ -3855,7 +3420,6 @@ export const GetProjectsContentHint9$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnv9Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint9$Outbound = {
   type: string;
@@ -3873,19 +3437,6 @@ export const GetProjectsContentHint9$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint9$ {
-  /** @deprecated use `GetProjectsContentHint9$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint9$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint9$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint9$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint9$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint9$Outbound;
-}
-
 export function getProjectsContentHint9ToJSON(
   getProjectsContentHint9: GetProjectsContentHint9,
 ): string {
@@ -3893,7 +3444,6 @@ export function getProjectsContentHint9ToJSON(
     GetProjectsContentHint9$outboundSchema.parse(getProjectsContentHint9),
   );
 }
-
 export function getProjectsContentHint9FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint9, SDKValidationError> {
@@ -3911,26 +3461,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint8$inboundSchema: z.ZodType<
@@ -3942,7 +3478,6 @@ export const GetProjectsContentHint8$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsEnvType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint8$Outbound = {
   type: string;
@@ -3960,19 +3495,6 @@ export const GetProjectsContentHint8$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint8$ {
-  /** @deprecated use `GetProjectsContentHint8$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint8$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint8$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint8$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint8$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint8$Outbound;
-}
-
 export function getProjectsContentHint8ToJSON(
   getProjectsContentHint8: GetProjectsContentHint8,
 ): string {
@@ -3980,7 +3502,6 @@ export function getProjectsContentHint8ToJSON(
     GetProjectsContentHint8$outboundSchema.parse(getProjectsContentHint8),
   );
 }
-
 export function getProjectsContentHint8FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint8, SDKValidationError> {
@@ -3998,26 +3519,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint7$inboundSchema: z.ZodType<
@@ -4029,7 +3536,6 @@ export const GetProjectsContentHint7$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint7$Outbound = {
   type: string;
@@ -4047,19 +3553,6 @@ export const GetProjectsContentHint7$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint7$ {
-  /** @deprecated use `GetProjectsContentHint7$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint7$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint7$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint7$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint7$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint7$Outbound;
-}
-
 export function getProjectsContentHint7ToJSON(
   getProjectsContentHint7: GetProjectsContentHint7,
 ): string {
@@ -4067,7 +3560,6 @@ export function getProjectsContentHint7ToJSON(
     GetProjectsContentHint7$outboundSchema.parse(getProjectsContentHint7),
   );
 }
-
 export function getProjectsContentHint7FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint7, SDKValidationError> {
@@ -4085,26 +3577,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBod
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint6$inboundSchema: z.ZodType<
@@ -4116,7 +3594,6 @@ export const GetProjectsContentHint6$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint6$Outbound = {
   type: string;
@@ -4134,19 +3611,6 @@ export const GetProjectsContentHint6$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint6$ {
-  /** @deprecated use `GetProjectsContentHint6$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint6$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint6$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint6$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint6$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint6$Outbound;
-}
-
 export function getProjectsContentHint6ToJSON(
   getProjectsContentHint6: GetProjectsContentHint6,
 ): string {
@@ -4154,7 +3618,6 @@ export function getProjectsContentHint6ToJSON(
     GetProjectsContentHint6$outboundSchema.parse(getProjectsContentHint6),
   );
 }
-
 export function getProjectsContentHint6FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint6, SDKValidationError> {
@@ -4172,26 +3635,12 @@ export const GetProjectsContentHintProjectsResponse200ApplicationJSONType$inboun
   > = z.nativeEnum(
     GetProjectsContentHintProjectsResponse200ApplicationJSONType,
   );
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200ApplicationJSONType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsContentHintProjectsResponse200ApplicationJSONType
   > =
     GetProjectsContentHintProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200ApplicationJSONType$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200ApplicationJSONType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint5$inboundSchema: z.ZodType<
@@ -4203,7 +3652,6 @@ export const GetProjectsContentHint5$inboundSchema: z.ZodType<
     GetProjectsContentHintProjectsResponse200ApplicationJSONType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint5$Outbound = {
   type: string;
@@ -4221,19 +3669,6 @@ export const GetProjectsContentHint5$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint5$ {
-  /** @deprecated use `GetProjectsContentHint5$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint5$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint5$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint5$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint5$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint5$Outbound;
-}
-
 export function getProjectsContentHint5ToJSON(
   getProjectsContentHint5: GetProjectsContentHint5,
 ): string {
@@ -4241,7 +3676,6 @@ export function getProjectsContentHint5ToJSON(
     GetProjectsContentHint5$outboundSchema.parse(getProjectsContentHint5),
   );
 }
-
 export function getProjectsContentHint5FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint5, SDKValidationError> {
@@ -4256,24 +3690,10 @@ export function getProjectsContentHint5FromJSON(
 export const GetProjectsContentHintProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsContentHintProjectsResponse200Type> = z
     .nativeEnum(GetProjectsContentHintProjectsResponse200Type);
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponse200Type$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsContentHintProjectsResponse200Type> =
     GetProjectsContentHintProjectsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponse200Type$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponse200Type$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponse200Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint4$inboundSchema: z.ZodType<
@@ -4284,7 +3704,6 @@ export const GetProjectsContentHint4$inboundSchema: z.ZodType<
   type: GetProjectsContentHintProjectsResponse200Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint4$Outbound = {
   type: string;
@@ -4301,19 +3720,6 @@ export const GetProjectsContentHint4$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint4$ {
-  /** @deprecated use `GetProjectsContentHint4$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint4$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint4$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint4$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint4$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint4$Outbound;
-}
-
 export function getProjectsContentHint4ToJSON(
   getProjectsContentHint4: GetProjectsContentHint4,
 ): string {
@@ -4321,7 +3727,6 @@ export function getProjectsContentHint4ToJSON(
     GetProjectsContentHint4$outboundSchema.parse(getProjectsContentHint4),
   );
 }
-
 export function getProjectsContentHint4FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint4, SDKValidationError> {
@@ -4336,24 +3741,10 @@ export function getProjectsContentHint4FromJSON(
 export const GetProjectsContentHintProjectsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsContentHintProjectsResponseType> = z
     .nativeEnum(GetProjectsContentHintProjectsResponseType);
-
 /** @internal */
 export const GetProjectsContentHintProjectsResponseType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsContentHintProjectsResponseType> =
     GetProjectsContentHintProjectsResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsResponseType$ {
-  /** @deprecated use `GetProjectsContentHintProjectsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsContentHintProjectsResponseType$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsResponseType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint3$inboundSchema: z.ZodType<
@@ -4364,7 +3755,6 @@ export const GetProjectsContentHint3$inboundSchema: z.ZodType<
   type: GetProjectsContentHintProjectsResponseType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint3$Outbound = {
   type: string;
@@ -4381,19 +3771,6 @@ export const GetProjectsContentHint3$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint3$ {
-  /** @deprecated use `GetProjectsContentHint3$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint3$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint3$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint3$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint3$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint3$Outbound;
-}
-
 export function getProjectsContentHint3ToJSON(
   getProjectsContentHint3: GetProjectsContentHint3,
 ): string {
@@ -4401,7 +3778,6 @@ export function getProjectsContentHint3ToJSON(
     GetProjectsContentHint3$outboundSchema.parse(getProjectsContentHint3),
   );
 }
-
 export function getProjectsContentHint3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint3, SDKValidationError> {
@@ -4416,23 +3792,10 @@ export function getProjectsContentHint3FromJSON(
 export const GetProjectsContentHintProjectsType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsContentHintProjectsType
 > = z.nativeEnum(GetProjectsContentHintProjectsType);
-
 /** @internal */
 export const GetProjectsContentHintProjectsType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsContentHintProjectsType
 > = GetProjectsContentHintProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintProjectsType$ {
-  /** @deprecated use `GetProjectsContentHintProjectsType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHintProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintProjectsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsContentHintProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint2$inboundSchema: z.ZodType<
@@ -4443,7 +3806,6 @@ export const GetProjectsContentHint2$inboundSchema: z.ZodType<
   type: GetProjectsContentHintProjectsType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint2$Outbound = {
   type: string;
@@ -4460,19 +3822,6 @@ export const GetProjectsContentHint2$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint2$ {
-  /** @deprecated use `GetProjectsContentHint2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint2$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint2$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint2$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint2$Outbound;
-}
-
 export function getProjectsContentHint2ToJSON(
   getProjectsContentHint2: GetProjectsContentHint2,
 ): string {
@@ -4480,7 +3829,6 @@ export function getProjectsContentHint2ToJSON(
     GetProjectsContentHint2$outboundSchema.parse(getProjectsContentHint2),
   );
 }
-
 export function getProjectsContentHint2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint2, SDKValidationError> {
@@ -4495,22 +3843,10 @@ export function getProjectsContentHint2FromJSON(
 export const GetProjectsContentHintType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsContentHintType
 > = z.nativeEnum(GetProjectsContentHintType);
-
 /** @internal */
 export const GetProjectsContentHintType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsContentHintType
 > = GetProjectsContentHintType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHintType$ {
-  /** @deprecated use `GetProjectsContentHintType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHintType$inboundSchema;
-  /** @deprecated use `GetProjectsContentHintType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHintType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsContentHint1$inboundSchema: z.ZodType<
@@ -4521,7 +3857,6 @@ export const GetProjectsContentHint1$inboundSchema: z.ZodType<
   type: GetProjectsContentHintType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsContentHint1$Outbound = {
   type: string;
@@ -4538,19 +3873,6 @@ export const GetProjectsContentHint1$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint1$ {
-  /** @deprecated use `GetProjectsContentHint1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint1$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint1$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint1$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint1$Outbound;
-}
-
 export function getProjectsContentHint1ToJSON(
   getProjectsContentHint1: GetProjectsContentHint1,
 ): string {
@@ -4558,7 +3880,6 @@ export function getProjectsContentHint1ToJSON(
     GetProjectsContentHint1$outboundSchema.parse(getProjectsContentHint1),
   );
 }
-
 export function getProjectsContentHint1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint1, SDKValidationError> {
@@ -4591,7 +3912,6 @@ export const GetProjectsContentHint$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsContentHint13$inboundSchema),
   z.lazy(() => GetProjectsContentHint15$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsContentHint$Outbound =
   | GetProjectsContentHint14$Outbound
@@ -4633,19 +3953,6 @@ export const GetProjectsContentHint$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsContentHint15$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsContentHint$ {
-  /** @deprecated use `GetProjectsContentHint$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsContentHint$inboundSchema;
-  /** @deprecated use `GetProjectsContentHint$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsContentHint$outboundSchema;
-  /** @deprecated use `GetProjectsContentHint$Outbound` instead. */
-  export type Outbound = GetProjectsContentHint$Outbound;
-}
-
 export function getProjectsContentHintToJSON(
   getProjectsContentHint: GetProjectsContentHint,
 ): string {
@@ -4653,7 +3960,6 @@ export function getProjectsContentHintToJSON(
     GetProjectsContentHint$outboundSchema.parse(getProjectsContentHint),
   );
 }
-
 export function getProjectsContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsContentHint, SDKValidationError> {
@@ -4671,26 +3977,12 @@ export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inbou
   > = z.nativeEnum(
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyType,
   );
-
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyType
   > =
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsInternalContentHint$inboundSchema: z.ZodType<
@@ -4702,7 +3994,6 @@ export const GetProjectsInternalContentHint$inboundSchema: z.ZodType<
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
   encryptedValue: z.string(),
 });
-
 /** @internal */
 export type GetProjectsInternalContentHint$Outbound = {
   type: string;
@@ -4720,19 +4011,6 @@ export const GetProjectsInternalContentHint$outboundSchema: z.ZodType<
   encryptedValue: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsInternalContentHint$ {
-  /** @deprecated use `GetProjectsInternalContentHint$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsInternalContentHint$inboundSchema;
-  /** @deprecated use `GetProjectsInternalContentHint$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsInternalContentHint$outboundSchema;
-  /** @deprecated use `GetProjectsInternalContentHint$Outbound` instead. */
-  export type Outbound = GetProjectsInternalContentHint$Outbound;
-}
-
 export function getProjectsInternalContentHintToJSON(
   getProjectsInternalContentHint: GetProjectsInternalContentHint,
 ): string {
@@ -4742,7 +4020,6 @@ export function getProjectsInternalContentHintToJSON(
     ),
   );
 }
-
 export function getProjectsInternalContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsInternalContentHint, SDKValidationError> {
@@ -4803,7 +4080,6 @@ export const GetProjectsEnv$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type GetProjectsEnv$Outbound = {
   target?: Array<string> | string | undefined;
@@ -4899,23 +4175,9 @@ export const GetProjectsEnv$outboundSchema: z.ZodType<
   customEnvironmentIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsEnv$ {
-  /** @deprecated use `GetProjectsEnv$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsEnv$inboundSchema;
-  /** @deprecated use `GetProjectsEnv$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsEnv$outboundSchema;
-  /** @deprecated use `GetProjectsEnv$Outbound` instead. */
-  export type Outbound = GetProjectsEnv$Outbound;
-}
-
 export function getProjectsEnvToJSON(getProjectsEnv: GetProjectsEnv): string {
   return JSON.stringify(GetProjectsEnv$outboundSchema.parse(getProjectsEnv));
 }
-
 export function getProjectsEnvFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsEnv, SDKValidationError> {
@@ -4930,22 +4192,10 @@ export function getProjectsEnvFromJSON(
 export const GetProjectsProjectsType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsType
 > = z.nativeEnum(GetProjectsProjectsType);
-
 /** @internal */
 export const GetProjectsProjectsType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsType
 > = GetProjectsProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsType$ {
-  /** @deprecated use `GetProjectsProjectsType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema:
@@ -4954,26 +4204,12 @@ export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCu
   > = z.nativeEnum(
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType,
   );
-
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType
   > =
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsBranchMatcher$inboundSchema: z.ZodType<
@@ -4985,7 +4221,6 @@ export const GetProjectsBranchMatcher$inboundSchema: z.ZodType<
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema,
   pattern: z.string(),
 });
-
 /** @internal */
 export type GetProjectsBranchMatcher$Outbound = {
   type: string;
@@ -5003,19 +4238,6 @@ export const GetProjectsBranchMatcher$outboundSchema: z.ZodType<
   pattern: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBranchMatcher$ {
-  /** @deprecated use `GetProjectsBranchMatcher$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBranchMatcher$inboundSchema;
-  /** @deprecated use `GetProjectsBranchMatcher$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBranchMatcher$outboundSchema;
-  /** @deprecated use `GetProjectsBranchMatcher$Outbound` instead. */
-  export type Outbound = GetProjectsBranchMatcher$Outbound;
-}
-
 export function getProjectsBranchMatcherToJSON(
   getProjectsBranchMatcher: GetProjectsBranchMatcher,
 ): string {
@@ -5023,7 +4245,6 @@ export function getProjectsBranchMatcherToJSON(
     GetProjectsBranchMatcher$outboundSchema.parse(getProjectsBranchMatcher),
   );
 }
-
 export function getProjectsBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBranchMatcher, SDKValidationError> {
@@ -5045,7 +4266,6 @@ export const GetProjectsVerification$inboundSchema: z.ZodType<
   value: z.string(),
   reason: z.string(),
 });
-
 /** @internal */
 export type GetProjectsVerification$Outbound = {
   type: string;
@@ -5066,19 +4286,6 @@ export const GetProjectsVerification$outboundSchema: z.ZodType<
   reason: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsVerification$ {
-  /** @deprecated use `GetProjectsVerification$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsVerification$inboundSchema;
-  /** @deprecated use `GetProjectsVerification$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsVerification$outboundSchema;
-  /** @deprecated use `GetProjectsVerification$Outbound` instead. */
-  export type Outbound = GetProjectsVerification$Outbound;
-}
-
 export function getProjectsVerificationToJSON(
   getProjectsVerification: GetProjectsVerification,
 ): string {
@@ -5086,7 +4293,6 @@ export function getProjectsVerificationToJSON(
     GetProjectsVerification$outboundSchema.parse(getProjectsVerification),
   );
 }
-
 export function getProjectsVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsVerification, SDKValidationError> {
@@ -5116,7 +4322,6 @@ export const GetProjectsDomains$inboundSchema: z.ZodType<
   verification: z.array(z.lazy(() => GetProjectsVerification$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type GetProjectsDomains$Outbound = {
   name: string;
@@ -5152,19 +4357,6 @@ export const GetProjectsDomains$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsDomains$ {
-  /** @deprecated use `GetProjectsDomains$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsDomains$inboundSchema;
-  /** @deprecated use `GetProjectsDomains$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsDomains$outboundSchema;
-  /** @deprecated use `GetProjectsDomains$Outbound` instead. */
-  export type Outbound = GetProjectsDomains$Outbound;
-}
-
 export function getProjectsDomainsToJSON(
   getProjectsDomains: GetProjectsDomains,
 ): string {
@@ -5172,7 +4364,6 @@ export function getProjectsDomainsToJSON(
     GetProjectsDomains$outboundSchema.parse(getProjectsDomains),
   );
 }
-
 export function getProjectsDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsDomains, SDKValidationError> {
@@ -5200,7 +4391,6 @@ export const GetProjectsCustomEnvironments$inboundSchema: z.ZodType<
   createdAt: z.number(),
   updatedAt: z.number(),
 });
-
 /** @internal */
 export type GetProjectsCustomEnvironments$Outbound = {
   id: string;
@@ -5232,19 +4422,6 @@ export const GetProjectsCustomEnvironments$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsCustomEnvironments$ {
-  /** @deprecated use `GetProjectsCustomEnvironments$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsCustomEnvironments$inboundSchema;
-  /** @deprecated use `GetProjectsCustomEnvironments$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsCustomEnvironments$outboundSchema;
-  /** @deprecated use `GetProjectsCustomEnvironments$Outbound` instead. */
-  export type Outbound = GetProjectsCustomEnvironments$Outbound;
-}
-
 export function getProjectsCustomEnvironmentsToJSON(
   getProjectsCustomEnvironments: GetProjectsCustomEnvironments,
 ): string {
@@ -5254,7 +4431,6 @@ export function getProjectsCustomEnvironmentsToJSON(
     ),
   );
 }
-
 export function getProjectsCustomEnvironmentsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsCustomEnvironments, SDKValidationError> {
@@ -5269,22 +4445,10 @@ export function getProjectsCustomEnvironmentsFromJSON(
 export const GetProjectsFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsFramework
 > = z.nativeEnum(GetProjectsFramework);
-
 /** @internal */
 export const GetProjectsFramework$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsFramework
 > = GetProjectsFramework$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsFramework$ {
-  /** @deprecated use `GetProjectsFramework$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsFramework$inboundSchema;
-  /** @deprecated use `GetProjectsFramework$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsFramework$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsIpBuckets$inboundSchema: z.ZodType<
@@ -5295,7 +4459,6 @@ export const GetProjectsIpBuckets$inboundSchema: z.ZodType<
   bucket: z.string(),
   supportUntil: z.number().optional(),
 });
-
 /** @internal */
 export type GetProjectsIpBuckets$Outbound = {
   bucket: string;
@@ -5312,19 +4475,6 @@ export const GetProjectsIpBuckets$outboundSchema: z.ZodType<
   supportUntil: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsIpBuckets$ {
-  /** @deprecated use `GetProjectsIpBuckets$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsIpBuckets$inboundSchema;
-  /** @deprecated use `GetProjectsIpBuckets$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsIpBuckets$outboundSchema;
-  /** @deprecated use `GetProjectsIpBuckets$Outbound` instead. */
-  export type Outbound = GetProjectsIpBuckets$Outbound;
-}
-
 export function getProjectsIpBucketsToJSON(
   getProjectsIpBuckets: GetProjectsIpBuckets,
 ): string {
@@ -5332,7 +4482,6 @@ export function getProjectsIpBucketsToJSON(
     GetProjectsIpBuckets$outboundSchema.parse(getProjectsIpBuckets),
   );
 }
-
 export function getProjectsIpBucketsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsIpBuckets, SDKValidationError> {
@@ -5349,7 +4498,6 @@ export const GetProjectsAliasAssigned$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.number(), z.boolean()]);
-
 /** @internal */
 export type GetProjectsAliasAssigned$Outbound = number | boolean;
 
@@ -5360,19 +4508,6 @@ export const GetProjectsAliasAssigned$outboundSchema: z.ZodType<
   GetProjectsAliasAssigned
 > = z.union([z.number(), z.boolean()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsAliasAssigned$ {
-  /** @deprecated use `GetProjectsAliasAssigned$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAliasAssigned$inboundSchema;
-  /** @deprecated use `GetProjectsAliasAssigned$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAliasAssigned$outboundSchema;
-  /** @deprecated use `GetProjectsAliasAssigned$Outbound` instead. */
-  export type Outbound = GetProjectsAliasAssigned$Outbound;
-}
-
 export function getProjectsAliasAssignedToJSON(
   getProjectsAliasAssigned: GetProjectsAliasAssigned,
 ): string {
@@ -5380,7 +4515,6 @@ export function getProjectsAliasAssignedToJSON(
     GetProjectsAliasAssigned$outboundSchema.parse(getProjectsAliasAssigned),
   );
 }
-
 export function getProjectsAliasAssignedFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsAliasAssigned, SDKValidationError> {
@@ -5400,7 +4534,6 @@ export const GetProjectsAliasError$inboundSchema: z.ZodType<
   code: z.string(),
   message: z.string(),
 });
-
 /** @internal */
 export type GetProjectsAliasError$Outbound = {
   code: string;
@@ -5417,19 +4550,6 @@ export const GetProjectsAliasError$outboundSchema: z.ZodType<
   message: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsAliasError$ {
-  /** @deprecated use `GetProjectsAliasError$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAliasError$inboundSchema;
-  /** @deprecated use `GetProjectsAliasError$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAliasError$outboundSchema;
-  /** @deprecated use `GetProjectsAliasError$Outbound` instead. */
-  export type Outbound = GetProjectsAliasError$Outbound;
-}
-
 export function getProjectsAliasErrorToJSON(
   getProjectsAliasError: GetProjectsAliasError,
 ): string {
@@ -5437,7 +4557,6 @@ export function getProjectsAliasErrorToJSON(
     GetProjectsAliasError$outboundSchema.parse(getProjectsAliasError),
   );
 }
-
 export function getProjectsAliasErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsAliasError, SDKValidationError> {
@@ -5455,26 +4574,12 @@ export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLa
   > = z.nativeEnum(
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType,
   );
-
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType
   > =
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsProjectsBranchMatcher$inboundSchema: z.ZodType<
@@ -5486,7 +4591,6 @@ export const GetProjectsProjectsBranchMatcher$inboundSchema: z.ZodType<
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsLatestDeploymentsType$inboundSchema,
   pattern: z.string(),
 });
-
 /** @internal */
 export type GetProjectsProjectsBranchMatcher$Outbound = {
   type: string;
@@ -5504,19 +4608,6 @@ export const GetProjectsProjectsBranchMatcher$outboundSchema: z.ZodType<
   pattern: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsBranchMatcher$ {
-  /** @deprecated use `GetProjectsProjectsBranchMatcher$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsBranchMatcher$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsBranchMatcher$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsBranchMatcher$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsBranchMatcher$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsBranchMatcher$Outbound;
-}
-
 export function getProjectsProjectsBranchMatcherToJSON(
   getProjectsProjectsBranchMatcher: GetProjectsProjectsBranchMatcher,
 ): string {
@@ -5526,7 +4617,6 @@ export function getProjectsProjectsBranchMatcherToJSON(
     ),
   );
 }
-
 export function getProjectsProjectsBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProjectsBranchMatcher, SDKValidationError> {
@@ -5547,7 +4637,6 @@ export const GetProjectsBuilds$inboundSchema: z.ZodType<
   src: z.string().optional(),
   dest: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectsBuilds$Outbound = {
   use: string;
@@ -5566,19 +4655,6 @@ export const GetProjectsBuilds$outboundSchema: z.ZodType<
   dest: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBuilds$ {
-  /** @deprecated use `GetProjectsBuilds$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBuilds$inboundSchema;
-  /** @deprecated use `GetProjectsBuilds$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBuilds$outboundSchema;
-  /** @deprecated use `GetProjectsBuilds$Outbound` instead. */
-  export type Outbound = GetProjectsBuilds$Outbound;
-}
-
 export function getProjectsBuildsToJSON(
   getProjectsBuilds: GetProjectsBuilds,
 ): string {
@@ -5586,7 +4662,6 @@ export function getProjectsBuildsToJSON(
     GetProjectsBuilds$outboundSchema.parse(getProjectsBuilds),
   );
 }
-
 export function getProjectsBuildsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBuilds, SDKValidationError> {
@@ -5601,43 +4676,19 @@ export function getProjectsBuildsFromJSON(
 export const GetProjectsChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsChecksConclusion
 > = z.nativeEnum(GetProjectsChecksConclusion);
-
 /** @internal */
 export const GetProjectsChecksConclusion$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsChecksConclusion
 > = GetProjectsChecksConclusion$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsChecksConclusion$ {
-  /** @deprecated use `GetProjectsChecksConclusion$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsChecksConclusion$inboundSchema;
-  /** @deprecated use `GetProjectsChecksConclusion$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsChecksConclusion$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsChecksState$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsChecksState
 > = z.nativeEnum(GetProjectsChecksState);
-
 /** @internal */
 export const GetProjectsChecksState$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsChecksState
 > = GetProjectsChecksState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsChecksState$ {
-  /** @deprecated use `GetProjectsChecksState$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsChecksState$inboundSchema;
-  /** @deprecated use `GetProjectsChecksState$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsChecksState$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsCreator$inboundSchema: z.ZodType<
@@ -5651,7 +4702,6 @@ export const GetProjectsCreator$inboundSchema: z.ZodType<
   uid: z.string(),
   username: z.string(),
 });
-
 /** @internal */
 export type GetProjectsCreator$Outbound = {
   email: string;
@@ -5674,19 +4724,6 @@ export const GetProjectsCreator$outboundSchema: z.ZodType<
   username: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsCreator$ {
-  /** @deprecated use `GetProjectsCreator$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsCreator$inboundSchema;
-  /** @deprecated use `GetProjectsCreator$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsCreator$outboundSchema;
-  /** @deprecated use `GetProjectsCreator$Outbound` instead. */
-  export type Outbound = GetProjectsCreator$Outbound;
-}
-
 export function getProjectsCreatorToJSON(
   getProjectsCreator: GetProjectsCreator,
 ): string {
@@ -5694,7 +4731,6 @@ export function getProjectsCreatorToJSON(
     GetProjectsCreator$outboundSchema.parse(getProjectsCreator),
   );
 }
-
 export function getProjectsCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsCreator, SDKValidationError> {
@@ -5727,7 +4763,6 @@ export const GetProjectsOidcTokenClaims$inboundSchema: z.ZodType<
     "project_id": "projectId",
   });
 });
-
 /** @internal */
 export type GetProjectsOidcTokenClaims$Outbound = {
   iss: string;
@@ -5765,19 +4800,6 @@ export const GetProjectsOidcTokenClaims$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsOidcTokenClaims$ {
-  /** @deprecated use `GetProjectsOidcTokenClaims$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsOidcTokenClaims$inboundSchema;
-  /** @deprecated use `GetProjectsOidcTokenClaims$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsOidcTokenClaims$outboundSchema;
-  /** @deprecated use `GetProjectsOidcTokenClaims$Outbound` instead. */
-  export type Outbound = GetProjectsOidcTokenClaims$Outbound;
-}
-
 export function getProjectsOidcTokenClaimsToJSON(
   getProjectsOidcTokenClaims: GetProjectsOidcTokenClaims,
 ): string {
@@ -5785,7 +4807,6 @@ export function getProjectsOidcTokenClaimsToJSON(
     GetProjectsOidcTokenClaims$outboundSchema.parse(getProjectsOidcTokenClaims),
   );
 }
-
 export function getProjectsOidcTokenClaimsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsOidcTokenClaims, SDKValidationError> {
@@ -5800,85 +4821,37 @@ export function getProjectsOidcTokenClaimsFromJSON(
 export const GetProjectsPlan$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsPlan
 > = z.nativeEnum(GetProjectsPlan);
-
 /** @internal */
 export const GetProjectsPlan$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsPlan
 > = GetProjectsPlan$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsPlan$ {
-  /** @deprecated use `GetProjectsPlan$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsPlan$inboundSchema;
-  /** @deprecated use `GetProjectsPlan$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsPlan$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsReadyState
 > = z.nativeEnum(GetProjectsReadyState);
-
 /** @internal */
 export const GetProjectsReadyState$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsReadyState
 > = GetProjectsReadyState$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsReadyState$ {
-  /** @deprecated use `GetProjectsReadyState$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsReadyState$inboundSchema;
-  /** @deprecated use `GetProjectsReadyState$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsReadyState$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsReadySubstate$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsReadySubstate
 > = z.nativeEnum(GetProjectsReadySubstate);
-
 /** @internal */
 export const GetProjectsReadySubstate$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsReadySubstate
 > = GetProjectsReadySubstate$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsReadySubstate$ {
-  /** @deprecated use `GetProjectsReadySubstate$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsReadySubstate$inboundSchema;
-  /** @deprecated use `GetProjectsReadySubstate$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsReadySubstate$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsProjectsResponseType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsResponseType
 > = z.nativeEnum(GetProjectsProjectsResponseType);
-
 /** @internal */
 export const GetProjectsProjectsResponseType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsResponseType
 > = GetProjectsProjectsResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponseType$ {
-  /** @deprecated use `GetProjectsProjectsResponseType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsResponseType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponseType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsResponseType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsLatestDeployments$inboundSchema: z.ZodType<
@@ -5926,7 +4899,6 @@ export const GetProjectsLatestDeployments$inboundSchema: z.ZodType<
   userId: z.string(),
   withCache: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsLatestDeployments$Outbound = {
   id: string;
@@ -6014,19 +4986,6 @@ export const GetProjectsLatestDeployments$outboundSchema: z.ZodType<
   withCache: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLatestDeployments$ {
-  /** @deprecated use `GetProjectsLatestDeployments$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLatestDeployments$inboundSchema;
-  /** @deprecated use `GetProjectsLatestDeployments$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLatestDeployments$outboundSchema;
-  /** @deprecated use `GetProjectsLatestDeployments$Outbound` instead. */
-  export type Outbound = GetProjectsLatestDeployments$Outbound;
-}
-
 export function getProjectsLatestDeploymentsToJSON(
   getProjectsLatestDeployments: GetProjectsLatestDeployments,
 ): string {
@@ -6036,7 +4995,6 @@ export function getProjectsLatestDeploymentsToJSON(
     ),
   );
 }
-
 export function getProjectsLatestDeploymentsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLatestDeployments, SDKValidationError> {
@@ -6052,25 +5010,11 @@ export const GetProjectsLinkProjectsResponse200ApplicationJSONType$inboundSchema
   z.ZodNativeEnum<
     typeof GetProjectsLinkProjectsResponse200ApplicationJSONType
   > = z.nativeEnum(GetProjectsLinkProjectsResponse200ApplicationJSONType);
-
 /** @internal */
 export const GetProjectsLinkProjectsResponse200ApplicationJSONType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsLinkProjectsResponse200ApplicationJSONType
   > = GetProjectsLinkProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsResponse200ApplicationJSONType$ {
-  /** @deprecated use `GetProjectsLinkProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsLinkProjectsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsLinkProjectsResponse200ApplicationJSONType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema:
@@ -6085,7 +5029,6 @@ export const GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$inboun
     ref: z.string(),
     url: z.string(),
   });
-
 /** @internal */
 export type GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$Outbound =
   {
@@ -6110,22 +5053,6 @@ export const GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$outbou
     url: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$ {
-  /** @deprecated use `GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$outboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$Outbound` instead. */
-  export type Outbound =
-    GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks$Outbound;
-}
-
 export function getProjectsLinkProjectsResponse200ApplicationJSONDeployHooksToJSON(
   getProjectsLinkProjectsResponse200ApplicationJSONDeployHooks:
     GetProjectsLinkProjectsResponse200ApplicationJSONDeployHooks,
@@ -6135,7 +5062,6 @@ export function getProjectsLinkProjectsResponse200ApplicationJSONDeployHooksToJS
       .parse(getProjectsLinkProjectsResponse200ApplicationJSONDeployHooks),
   );
 }
-
 export function getProjectsLinkProjectsResponse200ApplicationJSONDeployHooksFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6174,7 +5100,6 @@ export const GetProjectsLink5$inboundSchema: z.ZodType<
   sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
-
 /** @internal */
 export type GetProjectsLink5$Outbound = {
   name: string;
@@ -6217,19 +5142,6 @@ export const GetProjectsLink5$outboundSchema: z.ZodType<
   productionBranch: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLink5$ {
-  /** @deprecated use `GetProjectsLink5$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLink5$inboundSchema;
-  /** @deprecated use `GetProjectsLink5$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLink5$outboundSchema;
-  /** @deprecated use `GetProjectsLink5$Outbound` instead. */
-  export type Outbound = GetProjectsLink5$Outbound;
-}
-
 export function getProjectsLink5ToJSON(
   getProjectsLink5: GetProjectsLink5,
 ): string {
@@ -6237,7 +5149,6 @@ export function getProjectsLink5ToJSON(
     GetProjectsLink5$outboundSchema.parse(getProjectsLink5),
   );
 }
-
 export function getProjectsLink5FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLink5, SDKValidationError> {
@@ -6253,24 +5164,10 @@ export const GetProjectsLinkProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsLinkProjectsResponse200Type> = z.nativeEnum(
     GetProjectsLinkProjectsResponse200Type,
   );
-
 /** @internal */
 export const GetProjectsLinkProjectsResponse200Type$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsLinkProjectsResponse200Type> =
     GetProjectsLinkProjectsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsResponse200Type$ {
-  /** @deprecated use `GetProjectsLinkProjectsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsLinkProjectsResponse200Type$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsLinkProjectsResponse200Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema:
@@ -6285,7 +5182,6 @@ export const GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema:
     ref: z.string(),
     url: z.string(),
   });
-
 /** @internal */
 export type GetProjectsLinkProjectsResponse200DeployHooks$Outbound = {
   createdAt?: number | undefined;
@@ -6309,21 +5205,6 @@ export const GetProjectsLinkProjectsResponse200DeployHooks$outboundSchema:
     url: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsResponse200DeployHooks$ {
-  /** @deprecated use `GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsLinkProjectsResponse200DeployHooks$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponse200DeployHooks$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsLinkProjectsResponse200DeployHooks$outboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponse200DeployHooks$Outbound` instead. */
-  export type Outbound = GetProjectsLinkProjectsResponse200DeployHooks$Outbound;
-}
-
 export function getProjectsLinkProjectsResponse200DeployHooksToJSON(
   getProjectsLinkProjectsResponse200DeployHooks:
     GetProjectsLinkProjectsResponse200DeployHooks,
@@ -6334,7 +5215,6 @@ export function getProjectsLinkProjectsResponse200DeployHooksToJSON(
     ),
   );
 }
-
 export function getProjectsLinkProjectsResponse200DeployHooksFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6373,7 +5253,6 @@ export const GetProjectsLink4$inboundSchema: z.ZodType<
   sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
-
 /** @internal */
 export type GetProjectsLink4$Outbound = {
   projectId: string;
@@ -6414,19 +5293,6 @@ export const GetProjectsLink4$outboundSchema: z.ZodType<
   productionBranch: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLink4$ {
-  /** @deprecated use `GetProjectsLink4$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLink4$inboundSchema;
-  /** @deprecated use `GetProjectsLink4$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLink4$outboundSchema;
-  /** @deprecated use `GetProjectsLink4$Outbound` instead. */
-  export type Outbound = GetProjectsLink4$Outbound;
-}
-
 export function getProjectsLink4ToJSON(
   getProjectsLink4: GetProjectsLink4,
 ): string {
@@ -6434,7 +5300,6 @@ export function getProjectsLink4ToJSON(
     GetProjectsLink4$outboundSchema.parse(getProjectsLink4),
   );
 }
-
 export function getProjectsLink4FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLink4, SDKValidationError> {
@@ -6449,24 +5314,10 @@ export function getProjectsLink4FromJSON(
 export const GetProjectsLinkProjectsResponseType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsLinkProjectsResponseType
 > = z.nativeEnum(GetProjectsLinkProjectsResponseType);
-
 /** @internal */
 export const GetProjectsLinkProjectsResponseType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsLinkProjectsResponseType> =
     GetProjectsLinkProjectsResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsResponseType$ {
-  /** @deprecated use `GetProjectsLinkProjectsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsLinkProjectsResponseType$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsLinkProjectsResponseType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsLinkProjectsResponseDeployHooks$inboundSchema:
@@ -6478,7 +5329,6 @@ export const GetProjectsLinkProjectsResponseDeployHooks$inboundSchema:
       ref: z.string(),
       url: z.string(),
     });
-
 /** @internal */
 export type GetProjectsLinkProjectsResponseDeployHooks$Outbound = {
   createdAt?: number | undefined;
@@ -6502,21 +5352,6 @@ export const GetProjectsLinkProjectsResponseDeployHooks$outboundSchema:
     url: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsResponseDeployHooks$ {
-  /** @deprecated use `GetProjectsLinkProjectsResponseDeployHooks$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsLinkProjectsResponseDeployHooks$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponseDeployHooks$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsLinkProjectsResponseDeployHooks$outboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsResponseDeployHooks$Outbound` instead. */
-  export type Outbound = GetProjectsLinkProjectsResponseDeployHooks$Outbound;
-}
-
 export function getProjectsLinkProjectsResponseDeployHooksToJSON(
   getProjectsLinkProjectsResponseDeployHooks:
     GetProjectsLinkProjectsResponseDeployHooks,
@@ -6527,7 +5362,6 @@ export function getProjectsLinkProjectsResponseDeployHooksToJSON(
     ),
   );
 }
-
 export function getProjectsLinkProjectsResponseDeployHooksFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6565,7 +5399,6 @@ export const GetProjectsLink3$inboundSchema: z.ZodType<
   sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
-
 /** @internal */
 export type GetProjectsLink3$Outbound = {
   org: string;
@@ -6604,19 +5437,6 @@ export const GetProjectsLink3$outboundSchema: z.ZodType<
   productionBranch: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLink3$ {
-  /** @deprecated use `GetProjectsLink3$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLink3$inboundSchema;
-  /** @deprecated use `GetProjectsLink3$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLink3$outboundSchema;
-  /** @deprecated use `GetProjectsLink3$Outbound` instead. */
-  export type Outbound = GetProjectsLink3$Outbound;
-}
-
 export function getProjectsLink3ToJSON(
   getProjectsLink3: GetProjectsLink3,
 ): string {
@@ -6624,7 +5444,6 @@ export function getProjectsLink3ToJSON(
     GetProjectsLink3$outboundSchema.parse(getProjectsLink3),
   );
 }
-
 export function getProjectsLink3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLink3, SDKValidationError> {
@@ -6639,22 +5458,10 @@ export function getProjectsLink3FromJSON(
 export const GetProjectsLinkProjectsType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsLinkProjectsType
 > = z.nativeEnum(GetProjectsLinkProjectsType);
-
 /** @internal */
 export const GetProjectsLinkProjectsType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsLinkProjectsType
 > = GetProjectsLinkProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsType$ {
-  /** @deprecated use `GetProjectsLinkProjectsType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLinkProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLinkProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsLinkProjectsDeployHooks$inboundSchema: z.ZodType<
@@ -6668,7 +5475,6 @@ export const GetProjectsLinkProjectsDeployHooks$inboundSchema: z.ZodType<
   ref: z.string(),
   url: z.string(),
 });
-
 /** @internal */
 export type GetProjectsLinkProjectsDeployHooks$Outbound = {
   createdAt?: number | undefined;
@@ -6691,20 +5497,6 @@ export const GetProjectsLinkProjectsDeployHooks$outboundSchema: z.ZodType<
   url: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkProjectsDeployHooks$ {
-  /** @deprecated use `GetProjectsLinkProjectsDeployHooks$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLinkProjectsDeployHooks$inboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsDeployHooks$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsLinkProjectsDeployHooks$outboundSchema;
-  /** @deprecated use `GetProjectsLinkProjectsDeployHooks$Outbound` instead. */
-  export type Outbound = GetProjectsLinkProjectsDeployHooks$Outbound;
-}
-
 export function getProjectsLinkProjectsDeployHooksToJSON(
   getProjectsLinkProjectsDeployHooks: GetProjectsLinkProjectsDeployHooks,
 ): string {
@@ -6714,7 +5506,6 @@ export function getProjectsLinkProjectsDeployHooksToJSON(
     ),
   );
 }
-
 export function getProjectsLinkProjectsDeployHooksFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLinkProjectsDeployHooks, SDKValidationError> {
@@ -6746,7 +5537,6 @@ export const GetProjectsLink2$inboundSchema: z.ZodType<
   sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
-
 /** @internal */
 export type GetProjectsLink2$Outbound = {
   type: string;
@@ -6783,19 +5573,6 @@ export const GetProjectsLink2$outboundSchema: z.ZodType<
   productionBranch: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLink2$ {
-  /** @deprecated use `GetProjectsLink2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLink2$inboundSchema;
-  /** @deprecated use `GetProjectsLink2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLink2$outboundSchema;
-  /** @deprecated use `GetProjectsLink2$Outbound` instead. */
-  export type Outbound = GetProjectsLink2$Outbound;
-}
-
 export function getProjectsLink2ToJSON(
   getProjectsLink2: GetProjectsLink2,
 ): string {
@@ -6803,7 +5580,6 @@ export function getProjectsLink2ToJSON(
     GetProjectsLink2$outboundSchema.parse(getProjectsLink2),
   );
 }
-
 export function getProjectsLink2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLink2, SDKValidationError> {
@@ -6818,22 +5594,10 @@ export function getProjectsLink2FromJSON(
 export const GetProjectsLinkType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsLinkType
 > = z.nativeEnum(GetProjectsLinkType);
-
 /** @internal */
 export const GetProjectsLinkType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsLinkType
 > = GetProjectsLinkType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkType$ {
-  /** @deprecated use `GetProjectsLinkType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLinkType$inboundSchema;
-  /** @deprecated use `GetProjectsLinkType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLinkType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsLinkDeployHooks$inboundSchema: z.ZodType<
@@ -6847,7 +5611,6 @@ export const GetProjectsLinkDeployHooks$inboundSchema: z.ZodType<
   ref: z.string(),
   url: z.string(),
 });
-
 /** @internal */
 export type GetProjectsLinkDeployHooks$Outbound = {
   createdAt?: number | undefined;
@@ -6870,19 +5633,6 @@ export const GetProjectsLinkDeployHooks$outboundSchema: z.ZodType<
   url: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLinkDeployHooks$ {
-  /** @deprecated use `GetProjectsLinkDeployHooks$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLinkDeployHooks$inboundSchema;
-  /** @deprecated use `GetProjectsLinkDeployHooks$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLinkDeployHooks$outboundSchema;
-  /** @deprecated use `GetProjectsLinkDeployHooks$Outbound` instead. */
-  export type Outbound = GetProjectsLinkDeployHooks$Outbound;
-}
-
 export function getProjectsLinkDeployHooksToJSON(
   getProjectsLinkDeployHooks: GetProjectsLinkDeployHooks,
 ): string {
@@ -6890,7 +5640,6 @@ export function getProjectsLinkDeployHooksToJSON(
     GetProjectsLinkDeployHooks$outboundSchema.parse(getProjectsLinkDeployHooks),
   );
 }
-
 export function getProjectsLinkDeployHooksFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLinkDeployHooks, SDKValidationError> {
@@ -6919,7 +5668,6 @@ export const GetProjectsLink1$inboundSchema: z.ZodType<
   sourceless: z.boolean().optional(),
   productionBranch: z.string(),
 });
-
 /** @internal */
 export type GetProjectsLink1$Outbound = {
   org: string;
@@ -6954,19 +5702,6 @@ export const GetProjectsLink1$outboundSchema: z.ZodType<
   productionBranch: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLink1$ {
-  /** @deprecated use `GetProjectsLink1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLink1$inboundSchema;
-  /** @deprecated use `GetProjectsLink1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLink1$outboundSchema;
-  /** @deprecated use `GetProjectsLink1$Outbound` instead. */
-  export type Outbound = GetProjectsLink1$Outbound;
-}
-
 export function getProjectsLink1ToJSON(
   getProjectsLink1: GetProjectsLink1,
 ): string {
@@ -6974,7 +5709,6 @@ export function getProjectsLink1ToJSON(
     GetProjectsLink1$outboundSchema.parse(getProjectsLink1),
   );
 }
-
 export function getProjectsLink1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLink1, SDKValidationError> {
@@ -6997,7 +5731,6 @@ export const GetProjectsLink$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsLink1$inboundSchema),
   z.lazy(() => GetProjectsLink2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsLink$Outbound =
   | GetProjectsLink4$Outbound
@@ -7019,25 +5752,11 @@ export const GetProjectsLink$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsLink2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLink$ {
-  /** @deprecated use `GetProjectsLink$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLink$inboundSchema;
-  /** @deprecated use `GetProjectsLink$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLink$outboundSchema;
-  /** @deprecated use `GetProjectsLink$Outbound` instead. */
-  export type Outbound = GetProjectsLink$Outbound;
-}
-
 export function getProjectsLinkToJSON(
   getProjectsLink: GetProjectsLink,
 ): string {
   return JSON.stringify(GetProjectsLink$outboundSchema.parse(getProjectsLink));
 }
-
 export function getProjectsLinkFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLink, SDKValidationError> {
@@ -7059,7 +5778,6 @@ export const GetProjectsMicrofrontends3$inboundSchema: z.ZodType<
   enabled: z.boolean(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsMicrofrontends3$Outbound = {
   updatedAt: number;
@@ -7080,19 +5798,6 @@ export const GetProjectsMicrofrontends3$outboundSchema: z.ZodType<
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsMicrofrontends3$ {
-  /** @deprecated use `GetProjectsMicrofrontends3$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsMicrofrontends3$inboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends3$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsMicrofrontends3$outboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends3$Outbound` instead. */
-  export type Outbound = GetProjectsMicrofrontends3$Outbound;
-}
-
 export function getProjectsMicrofrontends3ToJSON(
   getProjectsMicrofrontends3: GetProjectsMicrofrontends3,
 ): string {
@@ -7100,7 +5805,6 @@ export function getProjectsMicrofrontends3ToJSON(
     GetProjectsMicrofrontends3$outboundSchema.parse(getProjectsMicrofrontends3),
   );
 }
-
 export function getProjectsMicrofrontends3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsMicrofrontends3, SDKValidationError> {
@@ -7126,7 +5830,6 @@ export const GetProjectsMicrofrontends2$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsMicrofrontends2$Outbound = {
   isDefaultApp?: boolean | undefined;
@@ -7155,19 +5858,6 @@ export const GetProjectsMicrofrontends2$outboundSchema: z.ZodType<
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsMicrofrontends2$ {
-  /** @deprecated use `GetProjectsMicrofrontends2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsMicrofrontends2$inboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsMicrofrontends2$outboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends2$Outbound` instead. */
-  export type Outbound = GetProjectsMicrofrontends2$Outbound;
-}
-
 export function getProjectsMicrofrontends2ToJSON(
   getProjectsMicrofrontends2: GetProjectsMicrofrontends2,
 ): string {
@@ -7175,7 +5865,6 @@ export function getProjectsMicrofrontends2ToJSON(
     GetProjectsMicrofrontends2$outboundSchema.parse(getProjectsMicrofrontends2),
   );
 }
-
 export function getProjectsMicrofrontends2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsMicrofrontends2, SDKValidationError> {
@@ -7199,7 +5888,6 @@ export const GetProjectsMicrofrontends1$inboundSchema: z.ZodType<
   defaultRoute: z.string().optional(),
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsMicrofrontends1$Outbound = {
   isDefaultApp: boolean;
@@ -7224,19 +5912,6 @@ export const GetProjectsMicrofrontends1$outboundSchema: z.ZodType<
   freeProjectForLegacyLimits: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsMicrofrontends1$ {
-  /** @deprecated use `GetProjectsMicrofrontends1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsMicrofrontends1$inboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsMicrofrontends1$outboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends1$Outbound` instead. */
-  export type Outbound = GetProjectsMicrofrontends1$Outbound;
-}
-
 export function getProjectsMicrofrontends1ToJSON(
   getProjectsMicrofrontends1: GetProjectsMicrofrontends1,
 ): string {
@@ -7244,7 +5919,6 @@ export function getProjectsMicrofrontends1ToJSON(
     GetProjectsMicrofrontends1$outboundSchema.parse(getProjectsMicrofrontends1),
   );
 }
-
 export function getProjectsMicrofrontends1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsMicrofrontends1, SDKValidationError> {
@@ -7265,7 +5939,6 @@ export const GetProjectsMicrofrontends$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsMicrofrontends2$inboundSchema),
   z.lazy(() => GetProjectsMicrofrontends3$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsMicrofrontends$Outbound =
   | GetProjectsMicrofrontends1$Outbound
@@ -7283,19 +5956,6 @@ export const GetProjectsMicrofrontends$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsMicrofrontends3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsMicrofrontends$ {
-  /** @deprecated use `GetProjectsMicrofrontends$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsMicrofrontends$inboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsMicrofrontends$outboundSchema;
-  /** @deprecated use `GetProjectsMicrofrontends$Outbound` instead. */
-  export type Outbound = GetProjectsMicrofrontends$Outbound;
-}
-
 export function getProjectsMicrofrontendsToJSON(
   getProjectsMicrofrontends: GetProjectsMicrofrontends,
 ): string {
@@ -7303,7 +5963,6 @@ export function getProjectsMicrofrontendsToJSON(
     GetProjectsMicrofrontends$outboundSchema.parse(getProjectsMicrofrontends),
   );
 }
-
 export function getProjectsMicrofrontendsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsMicrofrontends, SDKValidationError> {
@@ -7318,22 +5977,10 @@ export function getProjectsMicrofrontendsFromJSON(
 export const GetProjectsNodeVersion$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsNodeVersion
 > = z.nativeEnum(GetProjectsNodeVersion);
-
 /** @internal */
 export const GetProjectsNodeVersion$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsNodeVersion
 > = GetProjectsNodeVersion$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsNodeVersion$ {
-  /** @deprecated use `GetProjectsNodeVersion$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsNodeVersion$inboundSchema;
-  /** @deprecated use `GetProjectsNodeVersion$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsNodeVersion$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsPaths$inboundSchema: z.ZodType<
@@ -7343,7 +5990,6 @@ export const GetProjectsPaths$inboundSchema: z.ZodType<
 > = z.object({
   value: z.string(),
 });
-
 /** @internal */
 export type GetProjectsPaths$Outbound = {
   value: string;
@@ -7358,19 +6004,6 @@ export const GetProjectsPaths$outboundSchema: z.ZodType<
   value: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsPaths$ {
-  /** @deprecated use `GetProjectsPaths$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsPaths$inboundSchema;
-  /** @deprecated use `GetProjectsPaths$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsPaths$outboundSchema;
-  /** @deprecated use `GetProjectsPaths$Outbound` instead. */
-  export type Outbound = GetProjectsPaths$Outbound;
-}
-
 export function getProjectsPathsToJSON(
   getProjectsPaths: GetProjectsPaths,
 ): string {
@@ -7378,7 +6011,6 @@ export function getProjectsPathsToJSON(
     GetProjectsPaths$outboundSchema.parse(getProjectsPaths),
   );
 }
-
 export function getProjectsPathsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsPaths, SDKValidationError> {
@@ -7397,7 +6029,6 @@ export const GetProjectsOptionsAllowlist$inboundSchema: z.ZodType<
 > = z.object({
   paths: z.array(z.lazy(() => GetProjectsPaths$inboundSchema)),
 });
-
 /** @internal */
 export type GetProjectsOptionsAllowlist$Outbound = {
   paths: Array<GetProjectsPaths$Outbound>;
@@ -7412,19 +6043,6 @@ export const GetProjectsOptionsAllowlist$outboundSchema: z.ZodType<
   paths: z.array(z.lazy(() => GetProjectsPaths$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsOptionsAllowlist$ {
-  /** @deprecated use `GetProjectsOptionsAllowlist$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsOptionsAllowlist$inboundSchema;
-  /** @deprecated use `GetProjectsOptionsAllowlist$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsOptionsAllowlist$outboundSchema;
-  /** @deprecated use `GetProjectsOptionsAllowlist$Outbound` instead. */
-  export type Outbound = GetProjectsOptionsAllowlist$Outbound;
-}
-
 export function getProjectsOptionsAllowlistToJSON(
   getProjectsOptionsAllowlist: GetProjectsOptionsAllowlist,
 ): string {
@@ -7434,7 +6052,6 @@ export function getProjectsOptionsAllowlistToJSON(
     ),
   );
 }
-
 export function getProjectsOptionsAllowlistFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsOptionsAllowlist, SDKValidationError> {
@@ -7451,7 +6068,6 @@ export const GetProjectsPasswordProtection$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type GetProjectsPasswordProtection$Outbound = {};
 
@@ -7462,19 +6078,6 @@ export const GetProjectsPasswordProtection$outboundSchema: z.ZodType<
   GetProjectsPasswordProtection
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsPasswordProtection$ {
-  /** @deprecated use `GetProjectsPasswordProtection$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsPasswordProtection$inboundSchema;
-  /** @deprecated use `GetProjectsPasswordProtection$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsPasswordProtection$outboundSchema;
-  /** @deprecated use `GetProjectsPasswordProtection$Outbound` instead. */
-  export type Outbound = GetProjectsPasswordProtection$Outbound;
-}
-
 export function getProjectsPasswordProtectionToJSON(
   getProjectsPasswordProtection: GetProjectsPasswordProtection,
 ): string {
@@ -7484,7 +6087,6 @@ export function getProjectsPasswordProtectionToJSON(
     ),
   );
 }
-
 export function getProjectsPasswordProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsPasswordProtection, SDKValidationError> {
@@ -7500,45 +6102,19 @@ export const GetProjectsFunctionDefaultMemoryType$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsFunctionDefaultMemoryType> = z.nativeEnum(
     GetProjectsFunctionDefaultMemoryType,
   );
-
 /** @internal */
 export const GetProjectsFunctionDefaultMemoryType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsFunctionDefaultMemoryType> =
     GetProjectsFunctionDefaultMemoryType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsFunctionDefaultMemoryType$ {
-  /** @deprecated use `GetProjectsFunctionDefaultMemoryType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsFunctionDefaultMemoryType$inboundSchema;
-  /** @deprecated use `GetProjectsFunctionDefaultMemoryType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsFunctionDefaultMemoryType$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsBuildMachineType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsBuildMachineType
 > = z.nativeEnum(GetProjectsBuildMachineType);
-
 /** @internal */
 export const GetProjectsBuildMachineType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsBuildMachineType
 > = GetProjectsBuildMachineType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBuildMachineType$ {
-  /** @deprecated use `GetProjectsBuildMachineType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBuildMachineType$inboundSchema;
-  /** @deprecated use `GetProjectsBuildMachineType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBuildMachineType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
@@ -7556,7 +6132,6 @@ export const GetProjectsResourceConfig$inboundSchema: z.ZodType<
   buildMachineType: GetProjectsBuildMachineType$inboundSchema.optional(),
   isNSNBDisabled: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsResourceConfig$Outbound = {
   elasticConcurrencyEnabled?: boolean | undefined;
@@ -7586,19 +6161,6 @@ export const GetProjectsResourceConfig$outboundSchema: z.ZodType<
   isNSNBDisabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsResourceConfig$ {
-  /** @deprecated use `GetProjectsResourceConfig$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsResourceConfig$inboundSchema;
-  /** @deprecated use `GetProjectsResourceConfig$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsResourceConfig$outboundSchema;
-  /** @deprecated use `GetProjectsResourceConfig$Outbound` instead. */
-  export type Outbound = GetProjectsResourceConfig$Outbound;
-}
-
 export function getProjectsResourceConfigToJSON(
   getProjectsResourceConfig: GetProjectsResourceConfig,
 ): string {
@@ -7606,7 +6168,6 @@ export function getProjectsResourceConfigToJSON(
     GetProjectsResourceConfig$outboundSchema.parse(getProjectsResourceConfig),
   );
 }
-
 export function getProjectsResourceConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsResourceConfig, SDKValidationError> {
@@ -7628,7 +6189,6 @@ export const GetProjectsRollbackDescription$inboundSchema: z.ZodType<
   description: z.string(),
   createdAt: z.number(),
 });
-
 /** @internal */
 export type GetProjectsRollbackDescription$Outbound = {
   userId: string;
@@ -7649,19 +6209,6 @@ export const GetProjectsRollbackDescription$outboundSchema: z.ZodType<
   createdAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRollbackDescription$ {
-  /** @deprecated use `GetProjectsRollbackDescription$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRollbackDescription$inboundSchema;
-  /** @deprecated use `GetProjectsRollbackDescription$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRollbackDescription$outboundSchema;
-  /** @deprecated use `GetProjectsRollbackDescription$Outbound` instead. */
-  export type Outbound = GetProjectsRollbackDescription$Outbound;
-}
-
 export function getProjectsRollbackDescriptionToJSON(
   getProjectsRollbackDescription: GetProjectsRollbackDescription,
 ): string {
@@ -7671,7 +6218,6 @@ export function getProjectsRollbackDescriptionToJSON(
     ),
   );
 }
-
 export function getProjectsRollbackDescriptionFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRollbackDescription, SDKValidationError> {
@@ -7693,7 +6239,6 @@ export const GetProjectsStages$inboundSchema: z.ZodType<
   duration: z.number().optional(),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsStages$Outbound = {
   targetPercentage: number;
@@ -7714,19 +6259,6 @@ export const GetProjectsStages$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsStages$ {
-  /** @deprecated use `GetProjectsStages$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsStages$inboundSchema;
-  /** @deprecated use `GetProjectsStages$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsStages$outboundSchema;
-  /** @deprecated use `GetProjectsStages$Outbound` instead. */
-  export type Outbound = GetProjectsStages$Outbound;
-}
-
 export function getProjectsStagesToJSON(
   getProjectsStages: GetProjectsStages,
 ): string {
@@ -7734,7 +6266,6 @@ export function getProjectsStagesToJSON(
     GetProjectsStages$outboundSchema.parse(getProjectsStages),
   );
 }
-
 export function getProjectsStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsStages, SDKValidationError> {
@@ -7756,7 +6287,6 @@ export const GetProjectsRollingRelease$inboundSchema: z.ZodType<
     .optional(),
   canaryResponseHeader: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsRollingRelease$Outbound = {
   target: string;
@@ -7776,19 +6306,6 @@ export const GetProjectsRollingRelease$outboundSchema: z.ZodType<
   canaryResponseHeader: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRollingRelease$ {
-  /** @deprecated use `GetProjectsRollingRelease$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRollingRelease$inboundSchema;
-  /** @deprecated use `GetProjectsRollingRelease$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRollingRelease$outboundSchema;
-  /** @deprecated use `GetProjectsRollingRelease$Outbound` instead. */
-  export type Outbound = GetProjectsRollingRelease$Outbound;
-}
-
 export function getProjectsRollingReleaseToJSON(
   getProjectsRollingRelease: GetProjectsRollingRelease,
 ): string {
@@ -7796,7 +6313,6 @@ export function getProjectsRollingReleaseToJSON(
     GetProjectsRollingRelease$outboundSchema.parse(getProjectsRollingRelease),
   );
 }
-
 export function getProjectsRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRollingRelease, SDKValidationError> {
@@ -7811,47 +6327,19 @@ export function getProjectsRollingReleaseFromJSON(
 export const GetProjectsProjectsFunctionDefaultMemoryType$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsFunctionDefaultMemoryType> = z
     .nativeEnum(GetProjectsProjectsFunctionDefaultMemoryType);
-
 /** @internal */
 export const GetProjectsProjectsFunctionDefaultMemoryType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsFunctionDefaultMemoryType> =
     GetProjectsProjectsFunctionDefaultMemoryType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsFunctionDefaultMemoryType$ {
-  /** @deprecated use `GetProjectsProjectsFunctionDefaultMemoryType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsFunctionDefaultMemoryType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsFunctionDefaultMemoryType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsFunctionDefaultMemoryType$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsProjectsBuildMachineType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsBuildMachineType
 > = z.nativeEnum(GetProjectsProjectsBuildMachineType);
-
 /** @internal */
 export const GetProjectsProjectsBuildMachineType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsBuildMachineType> =
     GetProjectsProjectsBuildMachineType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsBuildMachineType$ {
-  /** @deprecated use `GetProjectsProjectsBuildMachineType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsBuildMachineType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsBuildMachineType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsBuildMachineType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsDefaultResourceConfig$inboundSchema: z.ZodType<
@@ -7870,7 +6358,6 @@ export const GetProjectsDefaultResourceConfig$inboundSchema: z.ZodType<
     .optional(),
   isNSNBDisabled: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsDefaultResourceConfig$Outbound = {
   elasticConcurrencyEnabled?: boolean | undefined;
@@ -7901,19 +6388,6 @@ export const GetProjectsDefaultResourceConfig$outboundSchema: z.ZodType<
   isNSNBDisabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsDefaultResourceConfig$ {
-  /** @deprecated use `GetProjectsDefaultResourceConfig$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsDefaultResourceConfig$inboundSchema;
-  /** @deprecated use `GetProjectsDefaultResourceConfig$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsDefaultResourceConfig$outboundSchema;
-  /** @deprecated use `GetProjectsDefaultResourceConfig$Outbound` instead. */
-  export type Outbound = GetProjectsDefaultResourceConfig$Outbound;
-}
-
 export function getProjectsDefaultResourceConfigToJSON(
   getProjectsDefaultResourceConfig: GetProjectsDefaultResourceConfig,
 ): string {
@@ -7923,7 +6397,6 @@ export function getProjectsDefaultResourceConfigToJSON(
     ),
   );
 }
-
 export function getProjectsDefaultResourceConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsDefaultResourceConfig, SDKValidationError> {
@@ -7944,7 +6417,6 @@ export const GetProjectsStaticIps$inboundSchema: z.ZodType<
   enabled: z.boolean(),
   regions: z.array(z.string()),
 });
-
 /** @internal */
 export type GetProjectsStaticIps$Outbound = {
   builds: boolean;
@@ -7963,19 +6435,6 @@ export const GetProjectsStaticIps$outboundSchema: z.ZodType<
   regions: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsStaticIps$ {
-  /** @deprecated use `GetProjectsStaticIps$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsStaticIps$inboundSchema;
-  /** @deprecated use `GetProjectsStaticIps$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsStaticIps$outboundSchema;
-  /** @deprecated use `GetProjectsStaticIps$Outbound` instead. */
-  export type Outbound = GetProjectsStaticIps$Outbound;
-}
-
 export function getProjectsStaticIpsToJSON(
   getProjectsStaticIps: GetProjectsStaticIps,
 ): string {
@@ -7983,7 +6442,6 @@ export function getProjectsStaticIpsToJSON(
     GetProjectsStaticIps$outboundSchema.parse(getProjectsStaticIps),
   );
 }
-
 export function getProjectsStaticIpsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsStaticIps, SDKValidationError> {
@@ -7998,22 +6456,10 @@ export function getProjectsStaticIpsFromJSON(
 export const GetProjectsDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsDeploymentType
 > = z.nativeEnum(GetProjectsDeploymentType);
-
 /** @internal */
 export const GetProjectsDeploymentType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsDeploymentType
 > = GetProjectsDeploymentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsDeploymentType$ {
-  /** @deprecated use `GetProjectsDeploymentType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsDeploymentType$inboundSchema;
-  /** @deprecated use `GetProjectsDeploymentType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsDeploymentType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsSsoProtection$inboundSchema: z.ZodType<
@@ -8023,7 +6469,6 @@ export const GetProjectsSsoProtection$inboundSchema: z.ZodType<
 > = z.object({
   deploymentType: GetProjectsDeploymentType$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsSsoProtection$Outbound = {
   deploymentType: string;
@@ -8038,19 +6483,6 @@ export const GetProjectsSsoProtection$outboundSchema: z.ZodType<
   deploymentType: GetProjectsDeploymentType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsSsoProtection$ {
-  /** @deprecated use `GetProjectsSsoProtection$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsSsoProtection$inboundSchema;
-  /** @deprecated use `GetProjectsSsoProtection$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsSsoProtection$outboundSchema;
-  /** @deprecated use `GetProjectsSsoProtection$Outbound` instead. */
-  export type Outbound = GetProjectsSsoProtection$Outbound;
-}
-
 export function getProjectsSsoProtectionToJSON(
   getProjectsSsoProtection: GetProjectsSsoProtection,
 ): string {
@@ -8058,7 +6490,6 @@ export function getProjectsSsoProtectionToJSON(
     GetProjectsSsoProtection$outboundSchema.parse(getProjectsSsoProtection),
   );
 }
-
 export function getProjectsSsoProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsSsoProtection, SDKValidationError> {
@@ -8075,7 +6506,6 @@ export const GetProjectsProjectsAliasAssigned$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.number(), z.boolean()]);
-
 /** @internal */
 export type GetProjectsProjectsAliasAssigned$Outbound = number | boolean;
 
@@ -8086,19 +6516,6 @@ export const GetProjectsProjectsAliasAssigned$outboundSchema: z.ZodType<
   GetProjectsProjectsAliasAssigned
 > = z.union([z.number(), z.boolean()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsAliasAssigned$ {
-  /** @deprecated use `GetProjectsProjectsAliasAssigned$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsAliasAssigned$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsAliasAssigned$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsAliasAssigned$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsAliasAssigned$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsAliasAssigned$Outbound;
-}
-
 export function getProjectsProjectsAliasAssignedToJSON(
   getProjectsProjectsAliasAssigned: GetProjectsProjectsAliasAssigned,
 ): string {
@@ -8108,7 +6525,6 @@ export function getProjectsProjectsAliasAssignedToJSON(
     ),
   );
 }
-
 export function getProjectsProjectsAliasAssignedFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProjectsAliasAssigned, SDKValidationError> {
@@ -8128,7 +6544,6 @@ export const GetProjectsProjectsAliasError$inboundSchema: z.ZodType<
   code: z.string(),
   message: z.string(),
 });
-
 /** @internal */
 export type GetProjectsProjectsAliasError$Outbound = {
   code: string;
@@ -8145,19 +6560,6 @@ export const GetProjectsProjectsAliasError$outboundSchema: z.ZodType<
   message: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsAliasError$ {
-  /** @deprecated use `GetProjectsProjectsAliasError$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsAliasError$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsAliasError$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsAliasError$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsAliasError$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsAliasError$Outbound;
-}
-
 export function getProjectsProjectsAliasErrorToJSON(
   getProjectsProjectsAliasError: GetProjectsProjectsAliasError,
 ): string {
@@ -8167,7 +6569,6 @@ export function getProjectsProjectsAliasErrorToJSON(
     ),
   );
 }
-
 export function getProjectsProjectsAliasErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProjectsAliasError, SDKValidationError> {
@@ -8185,26 +6586,12 @@ export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsTy
   > = z.nativeEnum(
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType,
   );
-
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType
   > =
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsProjectsResponseBranchMatcher$inboundSchema: z.ZodType<
@@ -8216,7 +6603,6 @@ export const GetProjectsProjectsResponseBranchMatcher$inboundSchema: z.ZodType<
     GetProjectsProjectsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema,
   pattern: z.string(),
 });
-
 /** @internal */
 export type GetProjectsProjectsResponseBranchMatcher$Outbound = {
   type: string;
@@ -8234,21 +6620,6 @@ export const GetProjectsProjectsResponseBranchMatcher$outboundSchema: z.ZodType<
   pattern: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponseBranchMatcher$ {
-  /** @deprecated use `GetProjectsProjectsResponseBranchMatcher$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponseBranchMatcher$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponseBranchMatcher$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponseBranchMatcher$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponseBranchMatcher$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsResponseBranchMatcher$Outbound;
-}
-
 export function getProjectsProjectsResponseBranchMatcherToJSON(
   getProjectsProjectsResponseBranchMatcher:
     GetProjectsProjectsResponseBranchMatcher,
@@ -8259,7 +6630,6 @@ export function getProjectsProjectsResponseBranchMatcherToJSON(
     ),
   );
 }
-
 export function getProjectsProjectsResponseBranchMatcherFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -8286,7 +6656,6 @@ export const GetProjectsProjectsBuilds$inboundSchema: z.ZodType<
   src: z.string().optional(),
   dest: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectsProjectsBuilds$Outbound = {
   use: string;
@@ -8305,19 +6674,6 @@ export const GetProjectsProjectsBuilds$outboundSchema: z.ZodType<
   dest: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsBuilds$ {
-  /** @deprecated use `GetProjectsProjectsBuilds$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsBuilds$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsBuilds$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsBuilds$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsBuilds$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsBuilds$Outbound;
-}
-
 export function getProjectsProjectsBuildsToJSON(
   getProjectsProjectsBuilds: GetProjectsProjectsBuilds,
 ): string {
@@ -8325,7 +6681,6 @@ export function getProjectsProjectsBuildsToJSON(
     GetProjectsProjectsBuilds$outboundSchema.parse(getProjectsProjectsBuilds),
   );
 }
-
 export function getProjectsProjectsBuildsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProjectsBuilds, SDKValidationError> {
@@ -8340,45 +6695,19 @@ export function getProjectsProjectsBuildsFromJSON(
 export const GetProjectsProjectsChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsChecksConclusion
 > = z.nativeEnum(GetProjectsProjectsChecksConclusion);
-
 /** @internal */
 export const GetProjectsProjectsChecksConclusion$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsChecksConclusion> =
     GetProjectsProjectsChecksConclusion$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsChecksConclusion$ {
-  /** @deprecated use `GetProjectsProjectsChecksConclusion$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsChecksConclusion$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsChecksConclusion$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsChecksConclusion$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsProjectsChecksState$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsChecksState
 > = z.nativeEnum(GetProjectsProjectsChecksState);
-
 /** @internal */
 export const GetProjectsProjectsChecksState$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsChecksState
 > = GetProjectsProjectsChecksState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsChecksState$ {
-  /** @deprecated use `GetProjectsProjectsChecksState$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsChecksState$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsChecksState$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsChecksState$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsProjectsCreator$inboundSchema: z.ZodType<
@@ -8392,7 +6721,6 @@ export const GetProjectsProjectsCreator$inboundSchema: z.ZodType<
   uid: z.string(),
   username: z.string(),
 });
-
 /** @internal */
 export type GetProjectsProjectsCreator$Outbound = {
   email: string;
@@ -8415,19 +6743,6 @@ export const GetProjectsProjectsCreator$outboundSchema: z.ZodType<
   username: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsCreator$ {
-  /** @deprecated use `GetProjectsProjectsCreator$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsCreator$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsCreator$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsCreator$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsCreator$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsCreator$Outbound;
-}
-
 export function getProjectsProjectsCreatorToJSON(
   getProjectsProjectsCreator: GetProjectsProjectsCreator,
 ): string {
@@ -8435,7 +6750,6 @@ export function getProjectsProjectsCreatorToJSON(
     GetProjectsProjectsCreator$outboundSchema.parse(getProjectsProjectsCreator),
   );
 }
-
 export function getProjectsProjectsCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProjectsCreator, SDKValidationError> {
@@ -8468,7 +6782,6 @@ export const GetProjectsProjectsOidcTokenClaims$inboundSchema: z.ZodType<
     "project_id": "projectId",
   });
 });
-
 /** @internal */
 export type GetProjectsProjectsOidcTokenClaims$Outbound = {
   iss: string;
@@ -8506,20 +6819,6 @@ export const GetProjectsProjectsOidcTokenClaims$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsOidcTokenClaims$ {
-  /** @deprecated use `GetProjectsProjectsOidcTokenClaims$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsOidcTokenClaims$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsOidcTokenClaims$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsOidcTokenClaims$outboundSchema;
-  /** @deprecated use `GetProjectsProjectsOidcTokenClaims$Outbound` instead. */
-  export type Outbound = GetProjectsProjectsOidcTokenClaims$Outbound;
-}
-
 export function getProjectsProjectsOidcTokenClaimsToJSON(
   getProjectsProjectsOidcTokenClaims: GetProjectsProjectsOidcTokenClaims,
 ): string {
@@ -8529,7 +6828,6 @@ export function getProjectsProjectsOidcTokenClaimsToJSON(
     ),
   );
 }
-
 export function getProjectsProjectsOidcTokenClaimsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProjectsOidcTokenClaims, SDKValidationError> {
@@ -8545,86 +6843,37 @@ export function getProjectsProjectsOidcTokenClaimsFromJSON(
 export const GetProjectsProjectsPlan$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsPlan
 > = z.nativeEnum(GetProjectsProjectsPlan);
-
 /** @internal */
 export const GetProjectsProjectsPlan$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsPlan
 > = GetProjectsProjectsPlan$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsPlan$ {
-  /** @deprecated use `GetProjectsProjectsPlan$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsPlan$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsPlan$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsPlan$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsProjectsReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsReadyState
 > = z.nativeEnum(GetProjectsProjectsReadyState);
-
 /** @internal */
 export const GetProjectsProjectsReadyState$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsReadyState
 > = GetProjectsProjectsReadyState$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsReadyState$ {
-  /** @deprecated use `GetProjectsProjectsReadyState$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsReadyState$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsReadyState$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsReadyState$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsProjectsReadySubstate$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsReadySubstate
 > = z.nativeEnum(GetProjectsProjectsReadySubstate);
-
 /** @internal */
 export const GetProjectsProjectsReadySubstate$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsReadySubstate
 > = GetProjectsProjectsReadySubstate$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsReadySubstate$ {
-  /** @deprecated use `GetProjectsProjectsReadySubstate$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsReadySubstate$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsReadySubstate$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsReadySubstate$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsProjectsResponse200Type$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsResponse200Type
 > = z.nativeEnum(GetProjectsProjectsResponse200Type);
-
 /** @internal */
 export const GetProjectsProjectsResponse200Type$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsResponse200Type
 > = GetProjectsProjectsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200Type$ {
-  /** @deprecated use `GetProjectsProjectsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsResponse200Type$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsTargets$inboundSchema: z.ZodType<
@@ -8677,7 +6926,6 @@ export const GetProjectsTargets$inboundSchema: z.ZodType<
   userId: z.string(),
   withCache: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsTargets$Outbound = {
   id: string;
@@ -8770,19 +7018,6 @@ export const GetProjectsTargets$outboundSchema: z.ZodType<
   withCache: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTargets$ {
-  /** @deprecated use `GetProjectsTargets$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTargets$inboundSchema;
-  /** @deprecated use `GetProjectsTargets$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTargets$outboundSchema;
-  /** @deprecated use `GetProjectsTargets$Outbound` instead. */
-  export type Outbound = GetProjectsTargets$Outbound;
-}
-
 export function getProjectsTargetsToJSON(
   getProjectsTargets: GetProjectsTargets,
 ): string {
@@ -8790,7 +7025,6 @@ export function getProjectsTargetsToJSON(
     GetProjectsTargets$outboundSchema.parse(getProjectsTargets),
   );
 }
-
 export function getProjectsTargetsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsTargets, SDKValidationError> {
@@ -9005,6 +7239,7 @@ export const GetProjectsPermissions$inboundSchema: z.ZodType<
   projectEnvVarsUnownedByIntegration: z.array(ACLAction$inboundSchema)
     .optional(),
   projectFlags: z.array(ACLAction$inboundSchema).optional(),
+  projectFlagsProduction: z.array(ACLAction$inboundSchema).optional(),
   projectFromV0: z.array(ACLAction$inboundSchema).optional(),
   projectId: z.array(ACLAction$inboundSchema).optional(),
   projectIntegrationConfiguration: z.array(ACLAction$inboundSchema).optional(),
@@ -9036,7 +7271,6 @@ export const GetProjectsPermissions$inboundSchema: z.ZodType<
     "webhook-event": "webhookEvent",
   });
 });
-
 /** @internal */
 export type GetProjectsPermissions$Outbound = {
   oauth2Connection?: Array<string> | undefined;
@@ -9232,6 +7466,7 @@ export type GetProjectsPermissions$Outbound = {
   projectEnvVarsProduction?: Array<string> | undefined;
   projectEnvVarsUnownedByIntegration?: Array<string> | undefined;
   projectFlags?: Array<string> | undefined;
+  projectFlagsProduction?: Array<string> | undefined;
   projectFromV0?: Array<string> | undefined;
   projectId?: Array<string> | undefined;
   projectIntegrationConfiguration?: Array<string> | undefined;
@@ -9464,6 +7699,7 @@ export const GetProjectsPermissions$outboundSchema: z.ZodType<
   projectEnvVarsUnownedByIntegration: z.array(ACLAction$outboundSchema)
     .optional(),
   projectFlags: z.array(ACLAction$outboundSchema).optional(),
+  projectFlagsProduction: z.array(ACLAction$outboundSchema).optional(),
   projectFromV0: z.array(ACLAction$outboundSchema).optional(),
   projectId: z.array(ACLAction$outboundSchema).optional(),
   projectIntegrationConfiguration: z.array(ACLAction$outboundSchema).optional(),
@@ -9496,19 +7732,6 @@ export const GetProjectsPermissions$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsPermissions$ {
-  /** @deprecated use `GetProjectsPermissions$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsPermissions$inboundSchema;
-  /** @deprecated use `GetProjectsPermissions$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsPermissions$outboundSchema;
-  /** @deprecated use `GetProjectsPermissions$Outbound` instead. */
-  export type Outbound = GetProjectsPermissions$Outbound;
-}
-
 export function getProjectsPermissionsToJSON(
   getProjectsPermissions: GetProjectsPermissions,
 ): string {
@@ -9516,7 +7739,6 @@ export function getProjectsPermissionsToJSON(
     GetProjectsPermissions$outboundSchema.parse(getProjectsPermissions),
   );
 }
-
 export function getProjectsPermissionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsPermissions, SDKValidationError> {
@@ -9533,7 +7755,6 @@ export const GetProjectsLastRollbackTarget$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type GetProjectsLastRollbackTarget$Outbound = {};
 
@@ -9544,19 +7765,6 @@ export const GetProjectsLastRollbackTarget$outboundSchema: z.ZodType<
   GetProjectsLastRollbackTarget
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLastRollbackTarget$ {
-  /** @deprecated use `GetProjectsLastRollbackTarget$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLastRollbackTarget$inboundSchema;
-  /** @deprecated use `GetProjectsLastRollbackTarget$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLastRollbackTarget$outboundSchema;
-  /** @deprecated use `GetProjectsLastRollbackTarget$Outbound` instead. */
-  export type Outbound = GetProjectsLastRollbackTarget$Outbound;
-}
-
 export function getProjectsLastRollbackTargetToJSON(
   getProjectsLastRollbackTarget: GetProjectsLastRollbackTarget,
 ): string {
@@ -9566,7 +7774,6 @@ export function getProjectsLastRollbackTargetToJSON(
     ),
   );
 }
-
 export function getProjectsLastRollbackTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLastRollbackTarget, SDKValidationError> {
@@ -9581,45 +7788,19 @@ export function getProjectsLastRollbackTargetFromJSON(
 export const GetProjectsJobStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsJobStatus
 > = z.nativeEnum(GetProjectsJobStatus);
-
 /** @internal */
 export const GetProjectsJobStatus$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsJobStatus
 > = GetProjectsJobStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsJobStatus$ {
-  /** @deprecated use `GetProjectsJobStatus$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsJobStatus$inboundSchema;
-  /** @deprecated use `GetProjectsJobStatus$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsJobStatus$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONType> = z
     .nativeEnum(GetProjectsProjectsResponse200ApplicationJSONType);
-
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONType> =
     GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200ApplicationJSONType$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsLastAliasRequest$inboundSchema: z.ZodType<
@@ -9634,7 +7815,6 @@ export const GetProjectsLastAliasRequest$inboundSchema: z.ZodType<
   requestedAt: z.number(),
   type: GetProjectsProjectsResponse200ApplicationJSONType$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsLastAliasRequest$Outbound = {
   fromDeploymentId: string;
@@ -9659,19 +7839,6 @@ export const GetProjectsLastAliasRequest$outboundSchema: z.ZodType<
   type: GetProjectsProjectsResponse200ApplicationJSONType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsLastAliasRequest$ {
-  /** @deprecated use `GetProjectsLastAliasRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsLastAliasRequest$inboundSchema;
-  /** @deprecated use `GetProjectsLastAliasRequest$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsLastAliasRequest$outboundSchema;
-  /** @deprecated use `GetProjectsLastAliasRequest$Outbound` instead. */
-  export type Outbound = GetProjectsLastAliasRequest$Outbound;
-}
-
 export function getProjectsLastAliasRequestToJSON(
   getProjectsLastAliasRequest: GetProjectsLastAliasRequest,
 ): string {
@@ -9681,7 +7848,6 @@ export function getProjectsLastAliasRequestToJSON(
     ),
   );
 }
-
 export function getProjectsLastAliasRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsLastAliasRequest, SDKValidationError> {
@@ -9696,24 +7862,10 @@ export function getProjectsLastAliasRequestFromJSON(
 export const GetProjectsProtectionBypassProjectsScope$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProtectionBypassProjectsScope> = z
     .nativeEnum(GetProjectsProtectionBypassProjectsScope);
-
 /** @internal */
 export const GetProjectsProtectionBypassProjectsScope$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProtectionBypassProjectsScope> =
     GetProjectsProtectionBypassProjectsScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProtectionBypassProjectsScope$ {
-  /** @deprecated use `GetProjectsProtectionBypassProjectsScope$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProtectionBypassProjectsScope$inboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypassProjectsScope$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProtectionBypassProjectsScope$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsProtectionBypass2$inboundSchema: z.ZodType<
@@ -9725,7 +7877,6 @@ export const GetProjectsProtectionBypass2$inboundSchema: z.ZodType<
   createdBy: z.string(),
   scope: GetProjectsProtectionBypassProjectsScope$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsProtectionBypass2$Outbound = {
   createdAt: number;
@@ -9744,19 +7895,6 @@ export const GetProjectsProtectionBypass2$outboundSchema: z.ZodType<
   scope: GetProjectsProtectionBypassProjectsScope$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProtectionBypass2$ {
-  /** @deprecated use `GetProjectsProtectionBypass2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProtectionBypass2$inboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypass2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProtectionBypass2$outboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypass2$Outbound` instead. */
-  export type Outbound = GetProjectsProtectionBypass2$Outbound;
-}
-
 export function getProjectsProtectionBypass2ToJSON(
   getProjectsProtectionBypass2: GetProjectsProtectionBypass2,
 ): string {
@@ -9766,7 +7904,6 @@ export function getProjectsProtectionBypass2ToJSON(
     ),
   );
 }
-
 export function getProjectsProtectionBypass2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProtectionBypass2, SDKValidationError> {
@@ -9781,22 +7918,10 @@ export function getProjectsProtectionBypass2FromJSON(
 export const GetProjectsProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProtectionBypassScope
 > = z.nativeEnum(GetProjectsProtectionBypassScope);
-
 /** @internal */
 export const GetProjectsProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProtectionBypassScope
 > = GetProjectsProtectionBypassScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProtectionBypassScope$ {
-  /** @deprecated use `GetProjectsProtectionBypassScope$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProtectionBypassScope$inboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypassScope$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProtectionBypassScope$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsProtectionBypass1$inboundSchema: z.ZodType<
@@ -9810,7 +7935,6 @@ export const GetProjectsProtectionBypass1$inboundSchema: z.ZodType<
   integrationId: z.string(),
   configurationId: z.string(),
 });
-
 /** @internal */
 export type GetProjectsProtectionBypass1$Outbound = {
   createdAt: number;
@@ -9833,19 +7957,6 @@ export const GetProjectsProtectionBypass1$outboundSchema: z.ZodType<
   configurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProtectionBypass1$ {
-  /** @deprecated use `GetProjectsProtectionBypass1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProtectionBypass1$inboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypass1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProtectionBypass1$outboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypass1$Outbound` instead. */
-  export type Outbound = GetProjectsProtectionBypass1$Outbound;
-}
-
 export function getProjectsProtectionBypass1ToJSON(
   getProjectsProtectionBypass1: GetProjectsProtectionBypass1,
 ): string {
@@ -9855,7 +7966,6 @@ export function getProjectsProtectionBypass1ToJSON(
     ),
   );
 }
-
 export function getProjectsProtectionBypass1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProtectionBypass1, SDKValidationError> {
@@ -9875,7 +7985,6 @@ export const GetProjectsProtectionBypass$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsProtectionBypass1$inboundSchema),
   z.lazy(() => GetProjectsProtectionBypass2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsProtectionBypass$Outbound =
   | GetProjectsProtectionBypass1$Outbound
@@ -9891,19 +8000,6 @@ export const GetProjectsProtectionBypass$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsProtectionBypass2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProtectionBypass$ {
-  /** @deprecated use `GetProjectsProtectionBypass$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProtectionBypass$inboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypass$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProtectionBypass$outboundSchema;
-  /** @deprecated use `GetProjectsProtectionBypass$Outbound` instead. */
-  export type Outbound = GetProjectsProtectionBypass$Outbound;
-}
-
 export function getProjectsProtectionBypassToJSON(
   getProjectsProtectionBypass: GetProjectsProtectionBypass,
 ): string {
@@ -9913,7 +8009,6 @@ export function getProjectsProtectionBypassToJSON(
     ),
   );
 }
-
 export function getProjectsProtectionBypassFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProtectionBypass, SDKValidationError> {
@@ -9928,24 +8023,10 @@ export function getProjectsProtectionBypassFromJSON(
 export const GetProjectsTrustedIpsProjectsDeploymentType$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsTrustedIpsProjectsDeploymentType> = z
     .nativeEnum(GetProjectsTrustedIpsProjectsDeploymentType);
-
 /** @internal */
 export const GetProjectsTrustedIpsProjectsDeploymentType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsTrustedIpsProjectsDeploymentType> =
     GetProjectsTrustedIpsProjectsDeploymentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTrustedIpsProjectsDeploymentType$ {
-  /** @deprecated use `GetProjectsTrustedIpsProjectsDeploymentType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsTrustedIpsProjectsDeploymentType$inboundSchema;
-  /** @deprecated use `GetProjectsTrustedIpsProjectsDeploymentType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsTrustedIpsProjectsDeploymentType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsTrustedIps2$inboundSchema: z.ZodType<
@@ -9955,7 +8036,6 @@ export const GetProjectsTrustedIps2$inboundSchema: z.ZodType<
 > = z.object({
   deploymentType: GetProjectsTrustedIpsProjectsDeploymentType$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsTrustedIps2$Outbound = {
   deploymentType: string;
@@ -9970,19 +8050,6 @@ export const GetProjectsTrustedIps2$outboundSchema: z.ZodType<
   deploymentType: GetProjectsTrustedIpsProjectsDeploymentType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTrustedIps2$ {
-  /** @deprecated use `GetProjectsTrustedIps2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTrustedIps2$inboundSchema;
-  /** @deprecated use `GetProjectsTrustedIps2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTrustedIps2$outboundSchema;
-  /** @deprecated use `GetProjectsTrustedIps2$Outbound` instead. */
-  export type Outbound = GetProjectsTrustedIps2$Outbound;
-}
-
 export function getProjectsTrustedIps2ToJSON(
   getProjectsTrustedIps2: GetProjectsTrustedIps2,
 ): string {
@@ -9990,7 +8057,6 @@ export function getProjectsTrustedIps2ToJSON(
     GetProjectsTrustedIps2$outboundSchema.parse(getProjectsTrustedIps2),
   );
 }
-
 export function getProjectsTrustedIps2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsTrustedIps2, SDKValidationError> {
@@ -10005,24 +8071,10 @@ export function getProjectsTrustedIps2FromJSON(
 export const GetProjectsTrustedIpsDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTrustedIpsDeploymentType
 > = z.nativeEnum(GetProjectsTrustedIpsDeploymentType);
-
 /** @internal */
 export const GetProjectsTrustedIpsDeploymentType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsTrustedIpsDeploymentType> =
     GetProjectsTrustedIpsDeploymentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTrustedIpsDeploymentType$ {
-  /** @deprecated use `GetProjectsTrustedIpsDeploymentType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsTrustedIpsDeploymentType$inboundSchema;
-  /** @deprecated use `GetProjectsTrustedIpsDeploymentType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsTrustedIpsDeploymentType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsTrustedIpsAddresses$inboundSchema: z.ZodType<
@@ -10033,7 +8085,6 @@ export const GetProjectsTrustedIpsAddresses$inboundSchema: z.ZodType<
   value: z.string(),
   note: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectsTrustedIpsAddresses$Outbound = {
   value: string;
@@ -10050,19 +8101,6 @@ export const GetProjectsTrustedIpsAddresses$outboundSchema: z.ZodType<
   note: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTrustedIpsAddresses$ {
-  /** @deprecated use `GetProjectsTrustedIpsAddresses$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTrustedIpsAddresses$inboundSchema;
-  /** @deprecated use `GetProjectsTrustedIpsAddresses$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTrustedIpsAddresses$outboundSchema;
-  /** @deprecated use `GetProjectsTrustedIpsAddresses$Outbound` instead. */
-  export type Outbound = GetProjectsTrustedIpsAddresses$Outbound;
-}
-
 export function getProjectsTrustedIpsAddressesToJSON(
   getProjectsTrustedIpsAddresses: GetProjectsTrustedIpsAddresses,
 ): string {
@@ -10072,7 +8110,6 @@ export function getProjectsTrustedIpsAddressesToJSON(
     ),
   );
 }
-
 export function getProjectsTrustedIpsAddressesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsTrustedIpsAddresses, SDKValidationError> {
@@ -10087,24 +8124,10 @@ export function getProjectsTrustedIpsAddressesFromJSON(
 export const GetProjectsTrustedIpsProtectionMode$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTrustedIpsProtectionMode
 > = z.nativeEnum(GetProjectsTrustedIpsProtectionMode);
-
 /** @internal */
 export const GetProjectsTrustedIpsProtectionMode$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsTrustedIpsProtectionMode> =
     GetProjectsTrustedIpsProtectionMode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTrustedIpsProtectionMode$ {
-  /** @deprecated use `GetProjectsTrustedIpsProtectionMode$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsTrustedIpsProtectionMode$inboundSchema;
-  /** @deprecated use `GetProjectsTrustedIpsProtectionMode$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsTrustedIpsProtectionMode$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsTrustedIps1$inboundSchema: z.ZodType<
@@ -10118,7 +8141,6 @@ export const GetProjectsTrustedIps1$inboundSchema: z.ZodType<
   ),
   protectionMode: GetProjectsTrustedIpsProtectionMode$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsTrustedIps1$Outbound = {
   deploymentType: string;
@@ -10139,19 +8161,6 @@ export const GetProjectsTrustedIps1$outboundSchema: z.ZodType<
   protectionMode: GetProjectsTrustedIpsProtectionMode$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTrustedIps1$ {
-  /** @deprecated use `GetProjectsTrustedIps1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTrustedIps1$inboundSchema;
-  /** @deprecated use `GetProjectsTrustedIps1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTrustedIps1$outboundSchema;
-  /** @deprecated use `GetProjectsTrustedIps1$Outbound` instead. */
-  export type Outbound = GetProjectsTrustedIps1$Outbound;
-}
-
 export function getProjectsTrustedIps1ToJSON(
   getProjectsTrustedIps1: GetProjectsTrustedIps1,
 ): string {
@@ -10159,7 +8168,6 @@ export function getProjectsTrustedIps1ToJSON(
     GetProjectsTrustedIps1$outboundSchema.parse(getProjectsTrustedIps1),
   );
 }
-
 export function getProjectsTrustedIps1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsTrustedIps1, SDKValidationError> {
@@ -10179,7 +8187,6 @@ export const GetProjectsTrustedIps$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsTrustedIps1$inboundSchema),
   z.lazy(() => GetProjectsTrustedIps2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsTrustedIps$Outbound =
   | GetProjectsTrustedIps1$Outbound
@@ -10195,19 +8202,6 @@ export const GetProjectsTrustedIps$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsTrustedIps2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTrustedIps$ {
-  /** @deprecated use `GetProjectsTrustedIps$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTrustedIps$inboundSchema;
-  /** @deprecated use `GetProjectsTrustedIps$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTrustedIps$outboundSchema;
-  /** @deprecated use `GetProjectsTrustedIps$Outbound` instead. */
-  export type Outbound = GetProjectsTrustedIps$Outbound;
-}
-
 export function getProjectsTrustedIpsToJSON(
   getProjectsTrustedIps: GetProjectsTrustedIps,
 ): string {
@@ -10215,7 +8209,6 @@ export function getProjectsTrustedIpsToJSON(
     GetProjectsTrustedIps$outboundSchema.parse(getProjectsTrustedIps),
   );
 }
-
 export function getProjectsTrustedIpsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsTrustedIps, SDKValidationError> {
@@ -10235,7 +8228,6 @@ export const GetProjectsGitComments$inboundSchema: z.ZodType<
   onPullRequest: z.boolean(),
   onCommit: z.boolean(),
 });
-
 /** @internal */
 export type GetProjectsGitComments$Outbound = {
   onPullRequest: boolean;
@@ -10252,19 +8244,6 @@ export const GetProjectsGitComments$outboundSchema: z.ZodType<
   onCommit: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsGitComments$ {
-  /** @deprecated use `GetProjectsGitComments$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsGitComments$inboundSchema;
-  /** @deprecated use `GetProjectsGitComments$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsGitComments$outboundSchema;
-  /** @deprecated use `GetProjectsGitComments$Outbound` instead. */
-  export type Outbound = GetProjectsGitComments$Outbound;
-}
-
 export function getProjectsGitCommentsToJSON(
   getProjectsGitComments: GetProjectsGitComments,
 ): string {
@@ -10272,7 +8251,6 @@ export function getProjectsGitCommentsToJSON(
     GetProjectsGitComments$outboundSchema.parse(getProjectsGitComments),
   );
 }
-
 export function getProjectsGitCommentsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsGitComments, SDKValidationError> {
@@ -10287,22 +8265,10 @@ export function getProjectsGitCommentsFromJSON(
 export const GetProjectsCreateDeployments$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsCreateDeployments
 > = z.nativeEnum(GetProjectsCreateDeployments);
-
 /** @internal */
 export const GetProjectsCreateDeployments$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsCreateDeployments
 > = GetProjectsCreateDeployments$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsCreateDeployments$ {
-  /** @deprecated use `GetProjectsCreateDeployments$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsCreateDeployments$inboundSchema;
-  /** @deprecated use `GetProjectsCreateDeployments$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsCreateDeployments$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsGitProviderOptions$inboundSchema: z.ZodType<
@@ -10314,7 +8280,6 @@ export const GetProjectsGitProviderOptions$inboundSchema: z.ZodType<
   disableRepositoryDispatchEvents: z.boolean().optional(),
   requireVerifiedCommits: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsGitProviderOptions$Outbound = {
   createDeployments: string;
@@ -10333,19 +8298,6 @@ export const GetProjectsGitProviderOptions$outboundSchema: z.ZodType<
   requireVerifiedCommits: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsGitProviderOptions$ {
-  /** @deprecated use `GetProjectsGitProviderOptions$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsGitProviderOptions$inboundSchema;
-  /** @deprecated use `GetProjectsGitProviderOptions$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsGitProviderOptions$outboundSchema;
-  /** @deprecated use `GetProjectsGitProviderOptions$Outbound` instead. */
-  export type Outbound = GetProjectsGitProviderOptions$Outbound;
-}
-
 export function getProjectsGitProviderOptionsToJSON(
   getProjectsGitProviderOptions: GetProjectsGitProviderOptions,
 ): string {
@@ -10355,7 +8307,6 @@ export function getProjectsGitProviderOptionsToJSON(
     ),
   );
 }
-
 export function getProjectsGitProviderOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsGitProviderOptions, SDKValidationError> {
@@ -10378,7 +8329,6 @@ export const GetProjectsWebAnalytics$inboundSchema: z.ZodType<
   enabledAt: z.number().optional(),
   hasData: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsWebAnalytics$Outbound = {
   id: string;
@@ -10401,19 +8351,6 @@ export const GetProjectsWebAnalytics$outboundSchema: z.ZodType<
   hasData: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsWebAnalytics$ {
-  /** @deprecated use `GetProjectsWebAnalytics$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsWebAnalytics$inboundSchema;
-  /** @deprecated use `GetProjectsWebAnalytics$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsWebAnalytics$outboundSchema;
-  /** @deprecated use `GetProjectsWebAnalytics$Outbound` instead. */
-  export type Outbound = GetProjectsWebAnalytics$Outbound;
-}
-
 export function getProjectsWebAnalyticsToJSON(
   getProjectsWebAnalytics: GetProjectsWebAnalytics,
 ): string {
@@ -10421,7 +8358,6 @@ export function getProjectsWebAnalyticsToJSON(
     GetProjectsWebAnalytics$outboundSchema.parse(getProjectsWebAnalytics),
   );
 }
-
 export function getProjectsWebAnalyticsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsWebAnalytics, SDKValidationError> {
@@ -10437,24 +8373,10 @@ export const GetProjectsProjectsResponse200Action$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsResponse200Action> = z.nativeEnum(
     GetProjectsProjectsResponse200Action,
   );
-
 /** @internal */
 export const GetProjectsProjectsResponse200Action$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsResponse200Action> =
     GetProjectsProjectsResponse200Action$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200Action$ {
-  /** @deprecated use `GetProjectsProjectsResponse200Action$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponse200Action$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200Action$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200Action$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsBotFilter$inboundSchema: z.ZodType<
@@ -10465,7 +8387,6 @@ export const GetProjectsBotFilter$inboundSchema: z.ZodType<
   active: z.boolean(),
   action: GetProjectsProjectsResponse200Action$inboundSchema.optional(),
 });
-
 /** @internal */
 export type GetProjectsBotFilter$Outbound = {
   active: boolean;
@@ -10482,19 +8403,6 @@ export const GetProjectsBotFilter$outboundSchema: z.ZodType<
   action: GetProjectsProjectsResponse200Action$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBotFilter$ {
-  /** @deprecated use `GetProjectsBotFilter$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBotFilter$inboundSchema;
-  /** @deprecated use `GetProjectsBotFilter$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBotFilter$outboundSchema;
-  /** @deprecated use `GetProjectsBotFilter$Outbound` instead. */
-  export type Outbound = GetProjectsBotFilter$Outbound;
-}
-
 export function getProjectsBotFilterToJSON(
   getProjectsBotFilter: GetProjectsBotFilter,
 ): string {
@@ -10502,7 +8410,6 @@ export function getProjectsBotFilterToJSON(
     GetProjectsBotFilter$outboundSchema.parse(getProjectsBotFilter),
   );
 }
-
 export function getProjectsBotFilterFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBotFilter, SDKValidationError> {
@@ -10517,24 +8424,10 @@ export function getProjectsBotFilterFromJSON(
 export const GetProjectsProjectsResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONAction> =
     z.nativeEnum(GetProjectsProjectsResponse200ApplicationJSONAction);
-
 /** @internal */
 export const GetProjectsProjectsResponse200ApplicationJSONAction$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsProjectsResponse200ApplicationJSONAction> =
     GetProjectsProjectsResponse200ApplicationJSONAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponse200ApplicationJSONAction$ {
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONAction$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONAction$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponse200ApplicationJSONAction$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponse200ApplicationJSONAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsAiBots$inboundSchema: z.ZodType<
@@ -10546,7 +8439,6 @@ export const GetProjectsAiBots$inboundSchema: z.ZodType<
   action: GetProjectsProjectsResponse200ApplicationJSONAction$inboundSchema
     .optional(),
 });
-
 /** @internal */
 export type GetProjectsAiBots$Outbound = {
   active: boolean;
@@ -10564,19 +8456,6 @@ export const GetProjectsAiBots$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsAiBots$ {
-  /** @deprecated use `GetProjectsAiBots$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAiBots$inboundSchema;
-  /** @deprecated use `GetProjectsAiBots$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAiBots$outboundSchema;
-  /** @deprecated use `GetProjectsAiBots$Outbound` instead. */
-  export type Outbound = GetProjectsAiBots$Outbound;
-}
-
 export function getProjectsAiBotsToJSON(
   getProjectsAiBots: GetProjectsAiBots,
 ): string {
@@ -10584,7 +8463,6 @@ export function getProjectsAiBotsToJSON(
     GetProjectsAiBots$outboundSchema.parse(getProjectsAiBots),
   );
 }
-
 export function getProjectsAiBotsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsAiBots, SDKValidationError> {
@@ -10599,23 +8477,10 @@ export function getProjectsAiBotsFromJSON(
 export const GetProjectsProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsResponseAction
 > = z.nativeEnum(GetProjectsProjectsResponseAction);
-
 /** @internal */
 export const GetProjectsProjectsResponseAction$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsResponseAction
 > = GetProjectsProjectsResponseAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsResponseAction$ {
-  /** @deprecated use `GetProjectsProjectsResponseAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsResponseAction$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsResponseAction$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsProjectsResponseAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsOwasp$inboundSchema: z.ZodType<
@@ -10626,7 +8491,6 @@ export const GetProjectsOwasp$inboundSchema: z.ZodType<
   active: z.boolean(),
   action: GetProjectsProjectsResponseAction$inboundSchema.optional(),
 });
-
 /** @internal */
 export type GetProjectsOwasp$Outbound = {
   active: boolean;
@@ -10643,19 +8507,6 @@ export const GetProjectsOwasp$outboundSchema: z.ZodType<
   action: GetProjectsProjectsResponseAction$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsOwasp$ {
-  /** @deprecated use `GetProjectsOwasp$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsOwasp$inboundSchema;
-  /** @deprecated use `GetProjectsOwasp$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsOwasp$outboundSchema;
-  /** @deprecated use `GetProjectsOwasp$Outbound` instead. */
-  export type Outbound = GetProjectsOwasp$Outbound;
-}
-
 export function getProjectsOwaspToJSON(
   getProjectsOwasp: GetProjectsOwasp,
 ): string {
@@ -10663,7 +8514,6 @@ export function getProjectsOwaspToJSON(
     GetProjectsOwasp$outboundSchema.parse(getProjectsOwasp),
   );
 }
-
 export function getProjectsOwaspFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsOwasp, SDKValidationError> {
@@ -10689,7 +8539,6 @@ export const GetProjectsManagedRules$inboundSchema: z.ZodType<
     "ai_bots": "aiBots",
   });
 });
-
 /** @internal */
 export type GetProjectsManagedRules$Outbound = {
   bot_filter: GetProjectsBotFilter$Outbound;
@@ -10713,19 +8562,6 @@ export const GetProjectsManagedRules$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsManagedRules$ {
-  /** @deprecated use `GetProjectsManagedRules$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsManagedRules$inboundSchema;
-  /** @deprecated use `GetProjectsManagedRules$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsManagedRules$outboundSchema;
-  /** @deprecated use `GetProjectsManagedRules$Outbound` instead. */
-  export type Outbound = GetProjectsManagedRules$Outbound;
-}
-
 export function getProjectsManagedRulesToJSON(
   getProjectsManagedRules: GetProjectsManagedRules,
 ): string {
@@ -10733,7 +8569,6 @@ export function getProjectsManagedRulesToJSON(
     GetProjectsManagedRules$outboundSchema.parse(getProjectsManagedRules),
   );
 }
-
 export function getProjectsManagedRulesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsManagedRules, SDKValidationError> {
@@ -10764,7 +8599,6 @@ export const GetProjectsSecurity$inboundSchema: z.ZodType<
     .optional(),
   botIdEnabled: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsSecurity$Outbound = {
   attackModeEnabled?: boolean | undefined;
@@ -10802,19 +8636,6 @@ export const GetProjectsSecurity$outboundSchema: z.ZodType<
   botIdEnabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsSecurity$ {
-  /** @deprecated use `GetProjectsSecurity$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsSecurity$inboundSchema;
-  /** @deprecated use `GetProjectsSecurity$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsSecurity$outboundSchema;
-  /** @deprecated use `GetProjectsSecurity$Outbound` instead. */
-  export type Outbound = GetProjectsSecurity$Outbound;
-}
-
 export function getProjectsSecurityToJSON(
   getProjectsSecurity: GetProjectsSecurity,
 ): string {
@@ -10822,7 +8643,6 @@ export function getProjectsSecurityToJSON(
     GetProjectsSecurity$outboundSchema.parse(getProjectsSecurity),
   );
 }
-
 export function getProjectsSecurityFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsSecurity, SDKValidationError> {
@@ -10837,22 +8657,10 @@ export function getProjectsSecurityFromJSON(
 export const GetProjectsIssuerMode$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsIssuerMode
 > = z.nativeEnum(GetProjectsIssuerMode);
-
 /** @internal */
 export const GetProjectsIssuerMode$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsIssuerMode
 > = GetProjectsIssuerMode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsIssuerMode$ {
-  /** @deprecated use `GetProjectsIssuerMode$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsIssuerMode$inboundSchema;
-  /** @deprecated use `GetProjectsIssuerMode$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsIssuerMode$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsOidcTokenConfig$inboundSchema: z.ZodType<
@@ -10863,7 +8671,6 @@ export const GetProjectsOidcTokenConfig$inboundSchema: z.ZodType<
   enabled: z.boolean().optional(),
   issuerMode: GetProjectsIssuerMode$inboundSchema.optional(),
 });
-
 /** @internal */
 export type GetProjectsOidcTokenConfig$Outbound = {
   enabled?: boolean | undefined;
@@ -10880,19 +8687,6 @@ export const GetProjectsOidcTokenConfig$outboundSchema: z.ZodType<
   issuerMode: GetProjectsIssuerMode$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsOidcTokenConfig$ {
-  /** @deprecated use `GetProjectsOidcTokenConfig$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsOidcTokenConfig$inboundSchema;
-  /** @deprecated use `GetProjectsOidcTokenConfig$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsOidcTokenConfig$outboundSchema;
-  /** @deprecated use `GetProjectsOidcTokenConfig$Outbound` instead. */
-  export type Outbound = GetProjectsOidcTokenConfig$Outbound;
-}
-
 export function getProjectsOidcTokenConfigToJSON(
   getProjectsOidcTokenConfig: GetProjectsOidcTokenConfig,
 ): string {
@@ -10900,7 +8694,6 @@ export function getProjectsOidcTokenConfigToJSON(
     GetProjectsOidcTokenConfig$outboundSchema.parse(getProjectsOidcTokenConfig),
   );
 }
-
 export function getProjectsOidcTokenConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsOidcTokenConfig, SDKValidationError> {
@@ -10915,22 +8708,10 @@ export function getProjectsOidcTokenConfigFromJSON(
 export const GetProjectsTier$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTier
 > = z.nativeEnum(GetProjectsTier);
-
 /** @internal */
 export const GetProjectsTier$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsTier
 > = GetProjectsTier$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsTier$ {
-  /** @deprecated use `GetProjectsTier$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsTier$inboundSchema;
-  /** @deprecated use `GetProjectsTier$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsTier$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsFeatures$inboundSchema: z.ZodType<
@@ -10940,7 +8721,6 @@ export const GetProjectsFeatures$inboundSchema: z.ZodType<
 > = z.object({
   webAnalytics: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsFeatures$Outbound = {
   webAnalytics?: boolean | undefined;
@@ -10955,19 +8735,6 @@ export const GetProjectsFeatures$outboundSchema: z.ZodType<
   webAnalytics: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsFeatures$ {
-  /** @deprecated use `GetProjectsFeatures$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsFeatures$inboundSchema;
-  /** @deprecated use `GetProjectsFeatures$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsFeatures$outboundSchema;
-  /** @deprecated use `GetProjectsFeatures$Outbound` instead. */
-  export type Outbound = GetProjectsFeatures$Outbound;
-}
-
 export function getProjectsFeaturesToJSON(
   getProjectsFeatures: GetProjectsFeatures,
 ): string {
@@ -10975,7 +8742,6 @@ export function getProjectsFeaturesToJSON(
     GetProjectsFeatures$outboundSchema.parse(getProjectsFeatures),
   );
 }
-
 export function getProjectsFeaturesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsFeatures, SDKValidationError> {
@@ -10998,7 +8764,6 @@ export const GetProjectsHistory$inboundSchema: z.ZodType<
   byId: z.string(),
   at: z.number(),
 });
-
 /** @internal */
 export type GetProjectsHistory$Outbound = {
   scanner: string;
@@ -11021,19 +8786,6 @@ export const GetProjectsHistory$outboundSchema: z.ZodType<
   at: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHistory$ {
-  /** @deprecated use `GetProjectsHistory$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHistory$inboundSchema;
-  /** @deprecated use `GetProjectsHistory$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHistory$outboundSchema;
-  /** @deprecated use `GetProjectsHistory$Outbound` instead. */
-  export type Outbound = GetProjectsHistory$Outbound;
-}
-
 export function getProjectsHistoryToJSON(
   getProjectsHistory: GetProjectsHistory,
 ): string {
@@ -11041,7 +8793,6 @@ export function getProjectsHistoryToJSON(
     GetProjectsHistory$outboundSchema.parse(getProjectsHistory),
   );
 }
-
 export function getProjectsHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHistory, SDKValidationError> {
@@ -11056,22 +8807,10 @@ export function getProjectsHistoryFromJSON(
 export const GetProjectsProjectsAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsAction
 > = z.nativeEnum(GetProjectsProjectsAction);
-
 /** @internal */
 export const GetProjectsProjectsAction$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsProjectsAction
 > = GetProjectsProjectsAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjectsAction$ {
-  /** @deprecated use `GetProjectsProjectsAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjectsAction$inboundSchema;
-  /** @deprecated use `GetProjectsProjectsAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjectsAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsBlock$inboundSchema: z.ZodType<
@@ -11088,7 +8827,6 @@ export const GetProjectsBlock$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   isCascading: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsBlock$Outbound = {
   action: string;
@@ -11117,19 +8855,6 @@ export const GetProjectsBlock$outboundSchema: z.ZodType<
   isCascading: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlock$ {
-  /** @deprecated use `GetProjectsBlock$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlock$inboundSchema;
-  /** @deprecated use `GetProjectsBlock$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlock$outboundSchema;
-  /** @deprecated use `GetProjectsBlock$Outbound` instead. */
-  export type Outbound = GetProjectsBlock$Outbound;
-}
-
 export function getProjectsBlockToJSON(
   getProjectsBlock: GetProjectsBlock,
 ): string {
@@ -11137,7 +8862,6 @@ export function getProjectsBlockToJSON(
     GetProjectsBlock$outboundSchema.parse(getProjectsBlock),
   );
 }
-
 export function getProjectsBlockFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlock, SDKValidationError> {
@@ -11152,48 +8876,20 @@ export function getProjectsBlockFromJSON(
 export const GetProjectsBlockHistoryProjectsResponse200Action$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsBlockHistoryProjectsResponse200Action> = z
     .nativeEnum(GetProjectsBlockHistoryProjectsResponse200Action);
-
 /** @internal */
 export const GetProjectsBlockHistoryProjectsResponse200Action$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsBlockHistoryProjectsResponse200Action> =
     GetProjectsBlockHistoryProjectsResponse200Action$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistoryProjectsResponse200Action$ {
-  /** @deprecated use `GetProjectsBlockHistoryProjectsResponse200Action$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsBlockHistoryProjectsResponse200Action$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryProjectsResponse200Action$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsBlockHistoryProjectsResponse200Action$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200Type> = z.nativeEnum(
     GetProjectsHasProjectsResponse200Type,
   );
-
 /** @internal */
 export const GetProjectsHasProjectsResponse200Type$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200Type> =
     GetProjectsHasProjectsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse200Type$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsHasProjectsResponse200Type$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponse200Type$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200Value$inboundSchema: z.ZodType<
@@ -11203,7 +8899,6 @@ export const GetProjectsHasProjectsResponse200Value$inboundSchema: z.ZodType<
 > = z.object({
   eq: z.string(),
 });
-
 /** @internal */
 export type GetProjectsHasProjectsResponse200Value$Outbound = {
   eq: string;
@@ -11218,21 +8913,6 @@ export const GetProjectsHasProjectsResponse200Value$outboundSchema: z.ZodType<
   eq: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse200Value$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse200Value$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsHasProjectsResponse200Value$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200Value$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponse200Value$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200Value$Outbound` instead. */
-  export type Outbound = GetProjectsHasProjectsResponse200Value$Outbound;
-}
-
 export function getProjectsHasProjectsResponse200ValueToJSON(
   getProjectsHasProjectsResponse200Value:
     GetProjectsHasProjectsResponse200Value,
@@ -11243,7 +8923,6 @@ export function getProjectsHasProjectsResponse200ValueToJSON(
     ),
   );
 }
-
 export function getProjectsHasProjectsResponse200ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasProjectsResponse200Value, SDKValidationError> {
@@ -11264,7 +8943,6 @@ export const GetProjectsHasProjects2$inboundSchema: z.ZodType<
   type: GetProjectsHasProjectsResponse200Type$inboundSchema,
   value: z.lazy(() => GetProjectsHasProjectsResponse200Value$inboundSchema),
 });
-
 /** @internal */
 export type GetProjectsHasProjects2$Outbound = {
   type: string;
@@ -11281,19 +8959,6 @@ export const GetProjectsHasProjects2$outboundSchema: z.ZodType<
   value: z.lazy(() => GetProjectsHasProjectsResponse200Value$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjects2$ {
-  /** @deprecated use `GetProjectsHasProjects2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjects2$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjects2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasProjects2$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjects2$Outbound` instead. */
-  export type Outbound = GetProjectsHasProjects2$Outbound;
-}
-
 export function getProjectsHasProjects2ToJSON(
   getProjectsHasProjects2: GetProjectsHasProjects2,
 ): string {
@@ -11301,7 +8966,6 @@ export function getProjectsHasProjects2ToJSON(
     GetProjectsHasProjects2$outboundSchema.parse(getProjectsHasProjects2),
   );
 }
-
 export function getProjectsHasProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasProjects2, SDKValidationError> {
@@ -11316,44 +8980,19 @@ export function getProjectsHasProjects2FromJSON(
 export const GetProjectsHasProjectsResponseType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsResponseType
 > = z.nativeEnum(GetProjectsHasProjectsResponseType);
-
 /** @internal */
 export const GetProjectsHasProjectsResponseType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsResponseType
 > = GetProjectsHasProjectsResponseType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponseType$ {
-  /** @deprecated use `GetProjectsHasProjectsResponseType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjectsResponseType$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponseType$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsHasProjectsKey$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsKey
 > = z.nativeEnum(GetProjectsHasProjectsKey);
-
 /** @internal */
 export const GetProjectsHasProjectsKey$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsKey
 > = GetProjectsHasProjectsKey$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsKey$ {
-  /** @deprecated use `GetProjectsHasProjectsKey$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjectsKey$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsKey$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasProjectsKey$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasProjectsResponseValue$inboundSchema: z.ZodType<
@@ -11363,7 +9002,6 @@ export const GetProjectsHasProjectsResponseValue$inboundSchema: z.ZodType<
 > = z.object({
   eq: z.string(),
 });
-
 /** @internal */
 export type GetProjectsHasProjectsResponseValue$Outbound = {
   eq: string;
@@ -11378,21 +9016,6 @@ export const GetProjectsHasProjectsResponseValue$outboundSchema: z.ZodType<
   eq: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponseValue$ {
-  /** @deprecated use `GetProjectsHasProjectsResponseValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsHasProjectsResponseValue$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponseValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponseValue$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponseValue$Outbound` instead. */
-  export type Outbound = GetProjectsHasProjectsResponseValue$Outbound;
-}
-
 export function getProjectsHasProjectsResponseValueToJSON(
   getProjectsHasProjectsResponseValue: GetProjectsHasProjectsResponseValue,
 ): string {
@@ -11402,7 +9025,6 @@ export function getProjectsHasProjectsResponseValueToJSON(
     ),
   );
 }
-
 export function getProjectsHasProjectsResponseValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasProjectsResponseValue, SDKValidationError> {
@@ -11424,7 +9046,6 @@ export const GetProjectsHasProjects1$inboundSchema: z.ZodType<
   key: GetProjectsHasProjectsKey$inboundSchema,
   value: z.lazy(() => GetProjectsHasProjectsResponseValue$inboundSchema),
 });
-
 /** @internal */
 export type GetProjectsHasProjects1$Outbound = {
   type: string;
@@ -11443,19 +9064,6 @@ export const GetProjectsHasProjects1$outboundSchema: z.ZodType<
   value: z.lazy(() => GetProjectsHasProjectsResponseValue$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjects1$ {
-  /** @deprecated use `GetProjectsHasProjects1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjects1$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjects1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasProjects1$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjects1$Outbound` instead. */
-  export type Outbound = GetProjectsHasProjects1$Outbound;
-}
-
 export function getProjectsHasProjects1ToJSON(
   getProjectsHasProjects1: GetProjectsHasProjects1,
 ): string {
@@ -11463,7 +9071,6 @@ export function getProjectsHasProjects1ToJSON(
     GetProjectsHasProjects1$outboundSchema.parse(getProjectsHasProjects1),
   );
 }
-
 export function getProjectsHasProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasProjects1, SDKValidationError> {
@@ -11483,7 +9090,6 @@ export const GetProjectsRouteProjectsHas$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHasProjects1$inboundSchema),
   z.lazy(() => GetProjectsHasProjects2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsRouteProjectsHas$Outbound =
   | GetProjectsHasProjects1$Outbound
@@ -11499,19 +9105,6 @@ export const GetProjectsRouteProjectsHas$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHasProjects2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteProjectsHas$ {
-  /** @deprecated use `GetProjectsRouteProjectsHas$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteProjectsHas$inboundSchema;
-  /** @deprecated use `GetProjectsRouteProjectsHas$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteProjectsHas$outboundSchema;
-  /** @deprecated use `GetProjectsRouteProjectsHas$Outbound` instead. */
-  export type Outbound = GetProjectsRouteProjectsHas$Outbound;
-}
-
 export function getProjectsRouteProjectsHasToJSON(
   getProjectsRouteProjectsHas: GetProjectsRouteProjectsHas,
 ): string {
@@ -11521,7 +9114,6 @@ export function getProjectsRouteProjectsHasToJSON(
     ),
   );
 }
-
 export function getProjectsRouteProjectsHasFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRouteProjectsHas, SDKValidationError> {
@@ -11536,22 +9128,10 @@ export function getProjectsRouteProjectsHasFromJSON(
 export const GetProjectsRouteProjectsAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsRouteProjectsAction
 > = z.nativeEnum(GetProjectsRouteProjectsAction);
-
 /** @internal */
 export const GetProjectsRouteProjectsAction$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsRouteProjectsAction
 > = GetProjectsRouteProjectsAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteProjectsAction$ {
-  /** @deprecated use `GetProjectsRouteProjectsAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteProjectsAction$inboundSchema;
-  /** @deprecated use `GetProjectsRouteProjectsAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteProjectsAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsRouteProjectsMitigate$inboundSchema: z.ZodType<
@@ -11561,7 +9141,6 @@ export const GetProjectsRouteProjectsMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: GetProjectsRouteProjectsAction$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsRouteProjectsMitigate$Outbound = {
   action: string;
@@ -11576,19 +9155,6 @@ export const GetProjectsRouteProjectsMitigate$outboundSchema: z.ZodType<
   action: GetProjectsRouteProjectsAction$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteProjectsMitigate$ {
-  /** @deprecated use `GetProjectsRouteProjectsMitigate$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteProjectsMitigate$inboundSchema;
-  /** @deprecated use `GetProjectsRouteProjectsMitigate$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteProjectsMitigate$outboundSchema;
-  /** @deprecated use `GetProjectsRouteProjectsMitigate$Outbound` instead. */
-  export type Outbound = GetProjectsRouteProjectsMitigate$Outbound;
-}
-
 export function getProjectsRouteProjectsMitigateToJSON(
   getProjectsRouteProjectsMitigate: GetProjectsRouteProjectsMitigate,
 ): string {
@@ -11598,7 +9164,6 @@ export function getProjectsRouteProjectsMitigateToJSON(
     ),
   );
 }
-
 export function getProjectsRouteProjectsMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRouteProjectsMitigate, SDKValidationError> {
@@ -11624,7 +9189,6 @@ export const GetProjectsRouteProjects2$inboundSchema: z.ZodType<
   mitigate: z.lazy(() => GetProjectsRouteProjectsMitigate$inboundSchema),
   src: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectsRouteProjects2$Outbound = {
   has: Array<
@@ -11650,19 +9214,6 @@ export const GetProjectsRouteProjects2$outboundSchema: z.ZodType<
   src: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteProjects2$ {
-  /** @deprecated use `GetProjectsRouteProjects2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteProjects2$inboundSchema;
-  /** @deprecated use `GetProjectsRouteProjects2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteProjects2$outboundSchema;
-  /** @deprecated use `GetProjectsRouteProjects2$Outbound` instead. */
-  export type Outbound = GetProjectsRouteProjects2$Outbound;
-}
-
 export function getProjectsRouteProjects2ToJSON(
   getProjectsRouteProjects2: GetProjectsRouteProjects2,
 ): string {
@@ -11670,7 +9221,6 @@ export function getProjectsRouteProjects2ToJSON(
     GetProjectsRouteProjects2$outboundSchema.parse(getProjectsRouteProjects2),
   );
 }
-
 export function getProjectsRouteProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRouteProjects2, SDKValidationError> {
@@ -11690,7 +9240,6 @@ export const GetProjectsRouteProjects1$inboundSchema: z.ZodType<
   src: z.string(),
   status: z.number(),
 });
-
 /** @internal */
 export type GetProjectsRouteProjects1$Outbound = {
   src: string;
@@ -11707,19 +9256,6 @@ export const GetProjectsRouteProjects1$outboundSchema: z.ZodType<
   status: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteProjects1$ {
-  /** @deprecated use `GetProjectsRouteProjects1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteProjects1$inboundSchema;
-  /** @deprecated use `GetProjectsRouteProjects1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteProjects1$outboundSchema;
-  /** @deprecated use `GetProjectsRouteProjects1$Outbound` instead. */
-  export type Outbound = GetProjectsRouteProjects1$Outbound;
-}
-
 export function getProjectsRouteProjects1ToJSON(
   getProjectsRouteProjects1: GetProjectsRouteProjects1,
 ): string {
@@ -11727,7 +9263,6 @@ export function getProjectsRouteProjects1ToJSON(
     GetProjectsRouteProjects1$outboundSchema.parse(getProjectsRouteProjects1),
   );
 }
-
 export function getProjectsRouteProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRouteProjects1, SDKValidationError> {
@@ -11747,7 +9282,6 @@ export const GetProjectsBlockHistoryProjectsRoute$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsRouteProjects1$inboundSchema),
   z.lazy(() => GetProjectsRouteProjects2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsBlockHistoryProjectsRoute$Outbound =
   | GetProjectsRouteProjects1$Outbound
@@ -11763,21 +9297,6 @@ export const GetProjectsBlockHistoryProjectsRoute$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsRouteProjects2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistoryProjectsRoute$ {
-  /** @deprecated use `GetProjectsBlockHistoryProjectsRoute$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsBlockHistoryProjectsRoute$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryProjectsRoute$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsBlockHistoryProjectsRoute$outboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryProjectsRoute$Outbound` instead. */
-  export type Outbound = GetProjectsBlockHistoryProjectsRoute$Outbound;
-}
-
 export function getProjectsBlockHistoryProjectsRouteToJSON(
   getProjectsBlockHistoryProjectsRoute: GetProjectsBlockHistoryProjectsRoute,
 ): string {
@@ -11787,7 +9306,6 @@ export function getProjectsBlockHistoryProjectsRouteToJSON(
     ),
   );
 }
-
 export function getProjectsBlockHistoryProjectsRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlockHistoryProjectsRoute, SDKValidationError> {
@@ -11817,7 +9335,6 @@ export const GetProjectsBlockHistory4$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   isCascading: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsBlockHistory4$Outbound = {
   action: string;
@@ -11851,19 +9368,6 @@ export const GetProjectsBlockHistory4$outboundSchema: z.ZodType<
   isCascading: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistory4$ {
-  /** @deprecated use `GetProjectsBlockHistory4$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlockHistory4$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory4$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlockHistory4$outboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory4$Outbound` instead. */
-  export type Outbound = GetProjectsBlockHistory4$Outbound;
-}
-
 export function getProjectsBlockHistory4ToJSON(
   getProjectsBlockHistory4: GetProjectsBlockHistory4,
 ): string {
@@ -11871,7 +9375,6 @@ export function getProjectsBlockHistory4ToJSON(
     GetProjectsBlockHistory4$outboundSchema.parse(getProjectsBlockHistory4),
   );
 }
-
 export function getProjectsBlockHistory4FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlockHistory4, SDKValidationError> {
@@ -11886,24 +9389,10 @@ export function getProjectsBlockHistory4FromJSON(
 export const GetProjectsBlockHistoryProjectsResponseAction$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsBlockHistoryProjectsResponseAction> = z
     .nativeEnum(GetProjectsBlockHistoryProjectsResponseAction);
-
 /** @internal */
 export const GetProjectsBlockHistoryProjectsResponseAction$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsBlockHistoryProjectsResponseAction> =
     GetProjectsBlockHistoryProjectsResponseAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistoryProjectsResponseAction$ {
-  /** @deprecated use `GetProjectsBlockHistoryProjectsResponseAction$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsBlockHistoryProjectsResponseAction$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryProjectsResponseAction$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsBlockHistoryProjectsResponseAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
@@ -11912,26 +9401,12 @@ export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$in
   > = z.nativeEnum(
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType,
   );
-
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType
   > =
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema:
@@ -11942,7 +9417,6 @@ export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$i
   > = z.object({
     eq: z.string(),
   });
-
 /** @internal */
 export type GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound =
   {
@@ -11959,22 +9433,6 @@ export const GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$o
     eq: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound` instead. */
-  export type Outbound =
-    GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$Outbound;
-}
-
 export function getProjectsHasProjectsResponse200ApplicationJSONResponseBodyValueToJSON(
   getProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue:
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue,
@@ -11984,7 +9442,6 @@ export function getProjectsHasProjectsResponse200ApplicationJSONResponseBodyValu
       .parse(getProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue),
   );
 }
-
 export function getProjectsHasProjectsResponse200ApplicationJSONResponseBodyValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12012,7 +9469,6 @@ export const GetProjectsHasProjectsResponse2$inboundSchema: z.ZodType<
     GetProjectsHasProjectsResponse200ApplicationJSONResponseBodyValue$inboundSchema
   ),
 });
-
 /** @internal */
 export type GetProjectsHasProjectsResponse2$Outbound = {
   type: string;
@@ -12033,19 +9489,6 @@ export const GetProjectsHasProjectsResponse2$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse2$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjectsResponse2$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasProjectsResponse2$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse2$Outbound` instead. */
-  export type Outbound = GetProjectsHasProjectsResponse2$Outbound;
-}
-
 export function getProjectsHasProjectsResponse2ToJSON(
   getProjectsHasProjectsResponse2: GetProjectsHasProjectsResponse2,
 ): string {
@@ -12055,7 +9498,6 @@ export function getProjectsHasProjectsResponse2ToJSON(
     ),
   );
 }
-
 export function getProjectsHasProjectsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasProjectsResponse2, SDKValidationError> {
@@ -12070,46 +9512,19 @@ export function getProjectsHasProjectsResponse2FromJSON(
 export const GetProjectsHasProjectsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200ApplicationJSONType> =
     z.nativeEnum(GetProjectsHasProjectsResponse200ApplicationJSONType);
-
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONType$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsHasProjectsResponse200ApplicationJSONType> =
     GetProjectsHasProjectsResponse200ApplicationJSONType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse200ApplicationJSONType$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONType$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsHasProjectsResponseKey$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsResponseKey
 > = z.nativeEnum(GetProjectsHasProjectsResponseKey);
-
 /** @internal */
 export const GetProjectsHasProjectsResponseKey$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsResponseKey
 > = GetProjectsHasProjectsResponseKey$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponseKey$ {
-  /** @deprecated use `GetProjectsHasProjectsResponseKey$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjectsResponseKey$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponseKey$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponseKey$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasProjectsResponse200ApplicationJSONValue$inboundSchema:
@@ -12120,7 +9535,6 @@ export const GetProjectsHasProjectsResponse200ApplicationJSONValue$inboundSchema
   > = z.object({
     eq: z.string(),
   });
-
 /** @internal */
 export type GetProjectsHasProjectsResponse200ApplicationJSONValue$Outbound = {
   eq: string;
@@ -12136,22 +9550,6 @@ export const GetProjectsHasProjectsResponse200ApplicationJSONValue$outboundSchem
     eq: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse200ApplicationJSONValue$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONValue$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONValue$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONValue$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsHasProjectsResponse200ApplicationJSONValue$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse200ApplicationJSONValue$Outbound` instead. */
-  export type Outbound =
-    GetProjectsHasProjectsResponse200ApplicationJSONValue$Outbound;
-}
-
 export function getProjectsHasProjectsResponse200ApplicationJSONValueToJSON(
   getProjectsHasProjectsResponse200ApplicationJSONValue:
     GetProjectsHasProjectsResponse200ApplicationJSONValue,
@@ -12162,7 +9560,6 @@ export function getProjectsHasProjectsResponse200ApplicationJSONValueToJSON(
     ),
   );
 }
-
 export function getProjectsHasProjectsResponse200ApplicationJSONValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -12191,7 +9588,6 @@ export const GetProjectsHasProjectsResponse1$inboundSchema: z.ZodType<
     GetProjectsHasProjectsResponse200ApplicationJSONValue$inboundSchema
   ),
 });
-
 /** @internal */
 export type GetProjectsHasProjectsResponse1$Outbound = {
   type: string;
@@ -12212,19 +9608,6 @@ export const GetProjectsHasProjectsResponse1$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsResponse1$ {
-  /** @deprecated use `GetProjectsHasProjectsResponse1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjectsResponse1$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasProjectsResponse1$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsResponse1$Outbound` instead. */
-  export type Outbound = GetProjectsHasProjectsResponse1$Outbound;
-}
-
 export function getProjectsHasProjectsResponse1ToJSON(
   getProjectsHasProjectsResponse1: GetProjectsHasProjectsResponse1,
 ): string {
@@ -12234,7 +9617,6 @@ export function getProjectsHasProjectsResponse1ToJSON(
     ),
   );
 }
-
 export function getProjectsHasProjectsResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasProjectsResponse1, SDKValidationError> {
@@ -12254,7 +9636,6 @@ export const GetProjectsRouteHas$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHasProjectsResponse1$inboundSchema),
   z.lazy(() => GetProjectsHasProjectsResponse2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsRouteHas$Outbound =
   | GetProjectsHasProjectsResponse1$Outbound
@@ -12270,19 +9651,6 @@ export const GetProjectsRouteHas$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHasProjectsResponse2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteHas$ {
-  /** @deprecated use `GetProjectsRouteHas$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteHas$inboundSchema;
-  /** @deprecated use `GetProjectsRouteHas$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteHas$outboundSchema;
-  /** @deprecated use `GetProjectsRouteHas$Outbound` instead. */
-  export type Outbound = GetProjectsRouteHas$Outbound;
-}
-
 export function getProjectsRouteHasToJSON(
   getProjectsRouteHas: GetProjectsRouteHas,
 ): string {
@@ -12290,7 +9658,6 @@ export function getProjectsRouteHasToJSON(
     GetProjectsRouteHas$outboundSchema.parse(getProjectsRouteHas),
   );
 }
-
 export function getProjectsRouteHasFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRouteHas, SDKValidationError> {
@@ -12305,22 +9672,10 @@ export function getProjectsRouteHasFromJSON(
 export const GetProjectsRouteAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsRouteAction
 > = z.nativeEnum(GetProjectsRouteAction);
-
 /** @internal */
 export const GetProjectsRouteAction$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsRouteAction
 > = GetProjectsRouteAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteAction$ {
-  /** @deprecated use `GetProjectsRouteAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteAction$inboundSchema;
-  /** @deprecated use `GetProjectsRouteAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsRouteMitigate$inboundSchema: z.ZodType<
@@ -12330,7 +9685,6 @@ export const GetProjectsRouteMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: GetProjectsRouteAction$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsRouteMitigate$Outbound = {
   action: string;
@@ -12345,19 +9699,6 @@ export const GetProjectsRouteMitigate$outboundSchema: z.ZodType<
   action: GetProjectsRouteAction$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRouteMitigate$ {
-  /** @deprecated use `GetProjectsRouteMitigate$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRouteMitigate$inboundSchema;
-  /** @deprecated use `GetProjectsRouteMitigate$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRouteMitigate$outboundSchema;
-  /** @deprecated use `GetProjectsRouteMitigate$Outbound` instead. */
-  export type Outbound = GetProjectsRouteMitigate$Outbound;
-}
-
 export function getProjectsRouteMitigateToJSON(
   getProjectsRouteMitigate: GetProjectsRouteMitigate,
 ): string {
@@ -12365,7 +9706,6 @@ export function getProjectsRouteMitigateToJSON(
     GetProjectsRouteMitigate$outboundSchema.parse(getProjectsRouteMitigate),
   );
 }
-
 export function getProjectsRouteMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRouteMitigate, SDKValidationError> {
@@ -12391,7 +9731,6 @@ export const GetProjectsRoute2$inboundSchema: z.ZodType<
   mitigate: z.lazy(() => GetProjectsRouteMitigate$inboundSchema),
   src: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectsRoute2$Outbound = {
   has: Array<
@@ -12418,19 +9757,6 @@ export const GetProjectsRoute2$outboundSchema: z.ZodType<
   src: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRoute2$ {
-  /** @deprecated use `GetProjectsRoute2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRoute2$inboundSchema;
-  /** @deprecated use `GetProjectsRoute2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRoute2$outboundSchema;
-  /** @deprecated use `GetProjectsRoute2$Outbound` instead. */
-  export type Outbound = GetProjectsRoute2$Outbound;
-}
-
 export function getProjectsRoute2ToJSON(
   getProjectsRoute2: GetProjectsRoute2,
 ): string {
@@ -12438,7 +9764,6 @@ export function getProjectsRoute2ToJSON(
     GetProjectsRoute2$outboundSchema.parse(getProjectsRoute2),
   );
 }
-
 export function getProjectsRoute2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRoute2, SDKValidationError> {
@@ -12458,7 +9783,6 @@ export const GetProjectsRoute1$inboundSchema: z.ZodType<
   src: z.string(),
   status: z.number(),
 });
-
 /** @internal */
 export type GetProjectsRoute1$Outbound = {
   src: string;
@@ -12475,19 +9799,6 @@ export const GetProjectsRoute1$outboundSchema: z.ZodType<
   status: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsRoute1$ {
-  /** @deprecated use `GetProjectsRoute1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsRoute1$inboundSchema;
-  /** @deprecated use `GetProjectsRoute1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsRoute1$outboundSchema;
-  /** @deprecated use `GetProjectsRoute1$Outbound` instead. */
-  export type Outbound = GetProjectsRoute1$Outbound;
-}
-
 export function getProjectsRoute1ToJSON(
   getProjectsRoute1: GetProjectsRoute1,
 ): string {
@@ -12495,7 +9806,6 @@ export function getProjectsRoute1ToJSON(
     GetProjectsRoute1$outboundSchema.parse(getProjectsRoute1),
   );
 }
-
 export function getProjectsRoute1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsRoute1, SDKValidationError> {
@@ -12515,7 +9825,6 @@ export const GetProjectsBlockHistoryRoute$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsRoute1$inboundSchema),
   z.lazy(() => GetProjectsRoute2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsBlockHistoryRoute$Outbound =
   | GetProjectsRoute1$Outbound
@@ -12531,19 +9840,6 @@ export const GetProjectsBlockHistoryRoute$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsRoute2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistoryRoute$ {
-  /** @deprecated use `GetProjectsBlockHistoryRoute$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlockHistoryRoute$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryRoute$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlockHistoryRoute$outboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryRoute$Outbound` instead. */
-  export type Outbound = GetProjectsBlockHistoryRoute$Outbound;
-}
-
 export function getProjectsBlockHistoryRouteToJSON(
   getProjectsBlockHistoryRoute: GetProjectsBlockHistoryRoute,
 ): string {
@@ -12553,7 +9849,6 @@ export function getProjectsBlockHistoryRouteToJSON(
     ),
   );
 }
-
 export function getProjectsBlockHistoryRouteFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlockHistoryRoute, SDKValidationError> {
@@ -12582,7 +9877,6 @@ export const GetProjectsBlockHistory3$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   isCascading: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsBlockHistory3$Outbound = {
   action: string;
@@ -12614,19 +9908,6 @@ export const GetProjectsBlockHistory3$outboundSchema: z.ZodType<
   isCascading: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistory3$ {
-  /** @deprecated use `GetProjectsBlockHistory3$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlockHistory3$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory3$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlockHistory3$outboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory3$Outbound` instead. */
-  export type Outbound = GetProjectsBlockHistory3$Outbound;
-}
-
 export function getProjectsBlockHistory3ToJSON(
   getProjectsBlockHistory3: GetProjectsBlockHistory3,
 ): string {
@@ -12634,7 +9915,6 @@ export function getProjectsBlockHistory3ToJSON(
     GetProjectsBlockHistory3$outboundSchema.parse(getProjectsBlockHistory3),
   );
 }
-
 export function getProjectsBlockHistory3FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlockHistory3, SDKValidationError> {
@@ -12650,24 +9930,10 @@ export const GetProjectsBlockHistoryProjectsAction$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsBlockHistoryProjectsAction> = z.nativeEnum(
     GetProjectsBlockHistoryProjectsAction,
   );
-
 /** @internal */
 export const GetProjectsBlockHistoryProjectsAction$outboundSchema:
   z.ZodNativeEnum<typeof GetProjectsBlockHistoryProjectsAction> =
     GetProjectsBlockHistoryProjectsAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistoryProjectsAction$ {
-  /** @deprecated use `GetProjectsBlockHistoryProjectsAction$inboundSchema` instead. */
-  export const inboundSchema =
-    GetProjectsBlockHistoryProjectsAction$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryProjectsAction$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsBlockHistoryProjectsAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsBlockHistory2$inboundSchema: z.ZodType<
@@ -12682,7 +9948,6 @@ export const GetProjectsBlockHistory2$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   isCascading: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsBlockHistory2$Outbound = {
   action: string;
@@ -12707,19 +9972,6 @@ export const GetProjectsBlockHistory2$outboundSchema: z.ZodType<
   isCascading: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistory2$ {
-  /** @deprecated use `GetProjectsBlockHistory2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlockHistory2$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlockHistory2$outboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory2$Outbound` instead. */
-  export type Outbound = GetProjectsBlockHistory2$Outbound;
-}
-
 export function getProjectsBlockHistory2ToJSON(
   getProjectsBlockHistory2: GetProjectsBlockHistory2,
 ): string {
@@ -12727,7 +9979,6 @@ export function getProjectsBlockHistory2ToJSON(
     GetProjectsBlockHistory2$outboundSchema.parse(getProjectsBlockHistory2),
   );
 }
-
 export function getProjectsBlockHistory2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlockHistory2, SDKValidationError> {
@@ -12742,22 +9993,10 @@ export function getProjectsBlockHistory2FromJSON(
 export const GetProjectsBlockHistoryAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsBlockHistoryAction
 > = z.nativeEnum(GetProjectsBlockHistoryAction);
-
 /** @internal */
 export const GetProjectsBlockHistoryAction$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsBlockHistoryAction
 > = GetProjectsBlockHistoryAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistoryAction$ {
-  /** @deprecated use `GetProjectsBlockHistoryAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlockHistoryAction$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistoryAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlockHistoryAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsBlockHistory1$inboundSchema: z.ZodType<
@@ -12774,7 +10013,6 @@ export const GetProjectsBlockHistory1$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   isCascading: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsBlockHistory1$Outbound = {
   action: string;
@@ -12803,19 +10041,6 @@ export const GetProjectsBlockHistory1$outboundSchema: z.ZodType<
   isCascading: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistory1$ {
-  /** @deprecated use `GetProjectsBlockHistory1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlockHistory1$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlockHistory1$outboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory1$Outbound` instead. */
-  export type Outbound = GetProjectsBlockHistory1$Outbound;
-}
-
 export function getProjectsBlockHistory1ToJSON(
   getProjectsBlockHistory1: GetProjectsBlockHistory1,
 ): string {
@@ -12823,7 +10048,6 @@ export function getProjectsBlockHistory1ToJSON(
     GetProjectsBlockHistory1$outboundSchema.parse(getProjectsBlockHistory1),
   );
 }
-
 export function getProjectsBlockHistory1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlockHistory1, SDKValidationError> {
@@ -12845,7 +10069,6 @@ export const GetProjectsBlockHistory$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsBlockHistory4$inboundSchema),
   z.lazy(() => GetProjectsBlockHistory2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsBlockHistory$Outbound =
   | GetProjectsBlockHistory1$Outbound
@@ -12865,19 +10088,6 @@ export const GetProjectsBlockHistory$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsBlockHistory2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsBlockHistory$ {
-  /** @deprecated use `GetProjectsBlockHistory$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsBlockHistory$inboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsBlockHistory$outboundSchema;
-  /** @deprecated use `GetProjectsBlockHistory$Outbound` instead. */
-  export type Outbound = GetProjectsBlockHistory$Outbound;
-}
-
 export function getProjectsBlockHistoryToJSON(
   getProjectsBlockHistory: GetProjectsBlockHistory,
 ): string {
@@ -12885,7 +10095,6 @@ export function getProjectsBlockHistoryToJSON(
     GetProjectsBlockHistory$outboundSchema.parse(getProjectsBlockHistory),
   );
 }
-
 export function getProjectsBlockHistoryFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsBlockHistory, SDKValidationError> {
@@ -12916,7 +10125,6 @@ export const GetProjectsAbuse$inboundSchema: z.ZodType<
   ).optional(),
   interstitial: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetProjectsAbuse$Outbound = {
   scanner?: string | undefined;
@@ -12955,19 +10163,6 @@ export const GetProjectsAbuse$outboundSchema: z.ZodType<
   interstitial: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsAbuse$ {
-  /** @deprecated use `GetProjectsAbuse$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAbuse$inboundSchema;
-  /** @deprecated use `GetProjectsAbuse$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAbuse$outboundSchema;
-  /** @deprecated use `GetProjectsAbuse$Outbound` instead. */
-  export type Outbound = GetProjectsAbuse$Outbound;
-}
-
 export function getProjectsAbuseToJSON(
   getProjectsAbuse: GetProjectsAbuse,
 ): string {
@@ -12975,7 +10170,6 @@ export function getProjectsAbuseToJSON(
     GetProjectsAbuse$outboundSchema.parse(getProjectsAbuse),
   );
 }
-
 export function getProjectsAbuseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsAbuse, SDKValidationError> {
@@ -12990,22 +10184,10 @@ export function getProjectsAbuseFromJSON(
 export const GetProjectsHasProjectsType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsType
 > = z.nativeEnum(GetProjectsHasProjectsType);
-
 /** @internal */
 export const GetProjectsHasProjectsType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasProjectsType
 > = GetProjectsHasProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsType$ {
-  /** @deprecated use `GetProjectsHasProjectsType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjectsType$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasProjectsValue$inboundSchema: z.ZodType<
@@ -13015,7 +10197,6 @@ export const GetProjectsHasProjectsValue$inboundSchema: z.ZodType<
 > = z.object({
   eq: z.string(),
 });
-
 /** @internal */
 export type GetProjectsHasProjectsValue$Outbound = {
   eq: string;
@@ -13030,19 +10211,6 @@ export const GetProjectsHasProjectsValue$outboundSchema: z.ZodType<
   eq: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasProjectsValue$ {
-  /** @deprecated use `GetProjectsHasProjectsValue$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasProjectsValue$inboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsValue$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasProjectsValue$outboundSchema;
-  /** @deprecated use `GetProjectsHasProjectsValue$Outbound` instead. */
-  export type Outbound = GetProjectsHasProjectsValue$Outbound;
-}
-
 export function getProjectsHasProjectsValueToJSON(
   getProjectsHasProjectsValue: GetProjectsHasProjectsValue,
 ): string {
@@ -13052,7 +10220,6 @@ export function getProjectsHasProjectsValueToJSON(
     ),
   );
 }
-
 export function getProjectsHasProjectsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasProjectsValue, SDKValidationError> {
@@ -13072,7 +10239,6 @@ export const GetProjectsHas2$inboundSchema: z.ZodType<
   type: GetProjectsHasProjectsType$inboundSchema,
   value: z.lazy(() => GetProjectsHasProjectsValue$inboundSchema),
 });
-
 /** @internal */
 export type GetProjectsHas2$Outbound = {
   type: string;
@@ -13089,25 +10255,11 @@ export const GetProjectsHas2$outboundSchema: z.ZodType<
   value: z.lazy(() => GetProjectsHasProjectsValue$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHas2$ {
-  /** @deprecated use `GetProjectsHas2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHas2$inboundSchema;
-  /** @deprecated use `GetProjectsHas2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHas2$outboundSchema;
-  /** @deprecated use `GetProjectsHas2$Outbound` instead. */
-  export type Outbound = GetProjectsHas2$Outbound;
-}
-
 export function getProjectsHas2ToJSON(
   getProjectsHas2: GetProjectsHas2,
 ): string {
   return JSON.stringify(GetProjectsHas2$outboundSchema.parse(getProjectsHas2));
 }
-
 export function getProjectsHas2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHas2, SDKValidationError> {
@@ -13122,43 +10274,19 @@ export function getProjectsHas2FromJSON(
 export const GetProjectsHasType$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasType
 > = z.nativeEnum(GetProjectsHasType);
-
 /** @internal */
 export const GetProjectsHasType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasType
 > = GetProjectsHasType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasType$ {
-  /** @deprecated use `GetProjectsHasType$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasType$inboundSchema;
-  /** @deprecated use `GetProjectsHasType$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasType$outboundSchema;
-}
-
 /** @internal */
 export const GetProjectsHasKey$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasKey
 > = z.nativeEnum(GetProjectsHasKey);
-
 /** @internal */
 export const GetProjectsHasKey$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsHasKey
 > = GetProjectsHasKey$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasKey$ {
-  /** @deprecated use `GetProjectsHasKey$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasKey$inboundSchema;
-  /** @deprecated use `GetProjectsHasKey$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasKey$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsHasValue$inboundSchema: z.ZodType<
@@ -13168,7 +10296,6 @@ export const GetProjectsHasValue$inboundSchema: z.ZodType<
 > = z.object({
   eq: z.string(),
 });
-
 /** @internal */
 export type GetProjectsHasValue$Outbound = {
   eq: string;
@@ -13183,19 +10310,6 @@ export const GetProjectsHasValue$outboundSchema: z.ZodType<
   eq: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHasValue$ {
-  /** @deprecated use `GetProjectsHasValue$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHasValue$inboundSchema;
-  /** @deprecated use `GetProjectsHasValue$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHasValue$outboundSchema;
-  /** @deprecated use `GetProjectsHasValue$Outbound` instead. */
-  export type Outbound = GetProjectsHasValue$Outbound;
-}
-
 export function getProjectsHasValueToJSON(
   getProjectsHasValue: GetProjectsHasValue,
 ): string {
@@ -13203,7 +10317,6 @@ export function getProjectsHasValueToJSON(
     GetProjectsHasValue$outboundSchema.parse(getProjectsHasValue),
   );
 }
-
 export function getProjectsHasValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHasValue, SDKValidationError> {
@@ -13224,7 +10337,6 @@ export const GetProjectsHas1$inboundSchema: z.ZodType<
   key: GetProjectsHasKey$inboundSchema,
   value: z.lazy(() => GetProjectsHasValue$inboundSchema),
 });
-
 /** @internal */
 export type GetProjectsHas1$Outbound = {
   type: string;
@@ -13243,25 +10355,11 @@ export const GetProjectsHas1$outboundSchema: z.ZodType<
   value: z.lazy(() => GetProjectsHasValue$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsHas1$ {
-  /** @deprecated use `GetProjectsHas1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsHas1$inboundSchema;
-  /** @deprecated use `GetProjectsHas1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsHas1$outboundSchema;
-  /** @deprecated use `GetProjectsHas1$Outbound` instead. */
-  export type Outbound = GetProjectsHas1$Outbound;
-}
-
 export function getProjectsHas1ToJSON(
   getProjectsHas1: GetProjectsHas1,
 ): string {
   return JSON.stringify(GetProjectsHas1$outboundSchema.parse(getProjectsHas1));
 }
-
 export function getProjectsHas1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsHas1, SDKValidationError> {
@@ -13281,7 +10379,6 @@ export const GetProjectsInternalRoutesHas$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHas1$inboundSchema),
   z.lazy(() => GetProjectsHas2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsInternalRoutesHas$Outbound =
   | GetProjectsHas1$Outbound
@@ -13297,19 +10394,6 @@ export const GetProjectsInternalRoutesHas$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsHas2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsInternalRoutesHas$ {
-  /** @deprecated use `GetProjectsInternalRoutesHas$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsInternalRoutesHas$inboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutesHas$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsInternalRoutesHas$outboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutesHas$Outbound` instead. */
-  export type Outbound = GetProjectsInternalRoutesHas$Outbound;
-}
-
 export function getProjectsInternalRoutesHasToJSON(
   getProjectsInternalRoutesHas: GetProjectsInternalRoutesHas,
 ): string {
@@ -13319,7 +10403,6 @@ export function getProjectsInternalRoutesHasToJSON(
     ),
   );
 }
-
 export function getProjectsInternalRoutesHasFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsInternalRoutesHas, SDKValidationError> {
@@ -13334,22 +10417,10 @@ export function getProjectsInternalRoutesHasFromJSON(
 export const GetProjectsInternalRoutesAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsInternalRoutesAction
 > = z.nativeEnum(GetProjectsInternalRoutesAction);
-
 /** @internal */
 export const GetProjectsInternalRoutesAction$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsInternalRoutesAction
 > = GetProjectsInternalRoutesAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsInternalRoutesAction$ {
-  /** @deprecated use `GetProjectsInternalRoutesAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsInternalRoutesAction$inboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutesAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsInternalRoutesAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsInternalRoutesMitigate$inboundSchema: z.ZodType<
@@ -13359,7 +10430,6 @@ export const GetProjectsInternalRoutesMitigate$inboundSchema: z.ZodType<
 > = z.object({
   action: GetProjectsInternalRoutesAction$inboundSchema,
 });
-
 /** @internal */
 export type GetProjectsInternalRoutesMitigate$Outbound = {
   action: string;
@@ -13374,20 +10444,6 @@ export const GetProjectsInternalRoutesMitigate$outboundSchema: z.ZodType<
   action: GetProjectsInternalRoutesAction$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsInternalRoutesMitigate$ {
-  /** @deprecated use `GetProjectsInternalRoutesMitigate$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsInternalRoutesMitigate$inboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutesMitigate$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectsInternalRoutesMitigate$outboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutesMitigate$Outbound` instead. */
-  export type Outbound = GetProjectsInternalRoutesMitigate$Outbound;
-}
-
 export function getProjectsInternalRoutesMitigateToJSON(
   getProjectsInternalRoutesMitigate: GetProjectsInternalRoutesMitigate,
 ): string {
@@ -13397,7 +10453,6 @@ export function getProjectsInternalRoutesMitigateToJSON(
     ),
   );
 }
-
 export function getProjectsInternalRoutesMitigateFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsInternalRoutesMitigate, SDKValidationError> {
@@ -13423,7 +10478,6 @@ export const GetProjectsInternalRoutes2$inboundSchema: z.ZodType<
   mitigate: z.lazy(() => GetProjectsInternalRoutesMitigate$inboundSchema),
   src: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectsInternalRoutes2$Outbound = {
   has: Array<GetProjectsHas1$Outbound | GetProjectsHas2$Outbound>;
@@ -13447,19 +10501,6 @@ export const GetProjectsInternalRoutes2$outboundSchema: z.ZodType<
   src: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsInternalRoutes2$ {
-  /** @deprecated use `GetProjectsInternalRoutes2$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsInternalRoutes2$inboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutes2$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsInternalRoutes2$outboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutes2$Outbound` instead. */
-  export type Outbound = GetProjectsInternalRoutes2$Outbound;
-}
-
 export function getProjectsInternalRoutes2ToJSON(
   getProjectsInternalRoutes2: GetProjectsInternalRoutes2,
 ): string {
@@ -13467,7 +10508,6 @@ export function getProjectsInternalRoutes2ToJSON(
     GetProjectsInternalRoutes2$outboundSchema.parse(getProjectsInternalRoutes2),
   );
 }
-
 export function getProjectsInternalRoutes2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsInternalRoutes2, SDKValidationError> {
@@ -13487,7 +10527,6 @@ export const GetProjectsInternalRoutes1$inboundSchema: z.ZodType<
   src: z.string(),
   status: z.number(),
 });
-
 /** @internal */
 export type GetProjectsInternalRoutes1$Outbound = {
   src: string;
@@ -13504,19 +10543,6 @@ export const GetProjectsInternalRoutes1$outboundSchema: z.ZodType<
   status: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsInternalRoutes1$ {
-  /** @deprecated use `GetProjectsInternalRoutes1$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsInternalRoutes1$inboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutes1$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsInternalRoutes1$outboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutes1$Outbound` instead. */
-  export type Outbound = GetProjectsInternalRoutes1$Outbound;
-}
-
 export function getProjectsInternalRoutes1ToJSON(
   getProjectsInternalRoutes1: GetProjectsInternalRoutes1,
 ): string {
@@ -13524,7 +10550,6 @@ export function getProjectsInternalRoutes1ToJSON(
     GetProjectsInternalRoutes1$outboundSchema.parse(getProjectsInternalRoutes1),
   );
 }
-
 export function getProjectsInternalRoutes1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsInternalRoutes1, SDKValidationError> {
@@ -13544,7 +10569,6 @@ export const GetProjectsInternalRoutes$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsInternalRoutes1$inboundSchema),
   z.lazy(() => GetProjectsInternalRoutes2$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsInternalRoutes$Outbound =
   | GetProjectsInternalRoutes1$Outbound
@@ -13560,19 +10584,6 @@ export const GetProjectsInternalRoutes$outboundSchema: z.ZodType<
   z.lazy(() => GetProjectsInternalRoutes2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsInternalRoutes$ {
-  /** @deprecated use `GetProjectsInternalRoutes$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsInternalRoutes$inboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutes$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsInternalRoutes$outboundSchema;
-  /** @deprecated use `GetProjectsInternalRoutes$Outbound` instead. */
-  export type Outbound = GetProjectsInternalRoutes$Outbound;
-}
-
 export function getProjectsInternalRoutesToJSON(
   getProjectsInternalRoutes: GetProjectsInternalRoutes,
 ): string {
@@ -13580,7 +10591,6 @@ export function getProjectsInternalRoutesToJSON(
     GetProjectsInternalRoutes$outboundSchema.parse(getProjectsInternalRoutes),
   );
 }
-
 export function getProjectsInternalRoutesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsInternalRoutes, SDKValidationError> {
@@ -13595,22 +10605,10 @@ export function getProjectsInternalRoutesFromJSON(
 export const GetProjectsAction$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectsAction
 > = z.nativeEnum(GetProjectsAction);
-
 /** @internal */
 export const GetProjectsAction$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectsAction
 > = GetProjectsAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsAction$ {
-  /** @deprecated use `GetProjectsAction$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsAction$inboundSchema;
-  /** @deprecated use `GetProjectsAction$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsAction$outboundSchema;
-}
 
 /** @internal */
 export const GetProjectsValuePreviousValue$inboundSchema: z.ZodType<
@@ -13618,7 +10616,6 @@ export const GetProjectsValuePreviousValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number(), z.boolean()]);
-
 /** @internal */
 export type GetProjectsValuePreviousValue$Outbound = string | number | boolean;
 
@@ -13629,19 +10626,6 @@ export const GetProjectsValuePreviousValue$outboundSchema: z.ZodType<
   GetProjectsValuePreviousValue
 > = z.union([z.string(), z.number(), z.boolean()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsValuePreviousValue$ {
-  /** @deprecated use `GetProjectsValuePreviousValue$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsValuePreviousValue$inboundSchema;
-  /** @deprecated use `GetProjectsValuePreviousValue$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsValuePreviousValue$outboundSchema;
-  /** @deprecated use `GetProjectsValuePreviousValue$Outbound` instead. */
-  export type Outbound = GetProjectsValuePreviousValue$Outbound;
-}
-
 export function getProjectsValuePreviousValueToJSON(
   getProjectsValuePreviousValue: GetProjectsValuePreviousValue,
 ): string {
@@ -13651,7 +10635,6 @@ export function getProjectsValuePreviousValueToJSON(
     ),
   );
 }
-
 export function getProjectsValuePreviousValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsValuePreviousValue, SDKValidationError> {
@@ -13668,7 +10651,6 @@ export const GetProjectsValueCurrentValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number(), z.boolean()]);
-
 /** @internal */
 export type GetProjectsValueCurrentValue$Outbound = string | number | boolean;
 
@@ -13679,19 +10661,6 @@ export const GetProjectsValueCurrentValue$outboundSchema: z.ZodType<
   GetProjectsValueCurrentValue
 > = z.union([z.string(), z.number(), z.boolean()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsValueCurrentValue$ {
-  /** @deprecated use `GetProjectsValueCurrentValue$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsValueCurrentValue$inboundSchema;
-  /** @deprecated use `GetProjectsValueCurrentValue$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsValueCurrentValue$outboundSchema;
-  /** @deprecated use `GetProjectsValueCurrentValue$Outbound` instead. */
-  export type Outbound = GetProjectsValueCurrentValue$Outbound;
-}
-
 export function getProjectsValueCurrentValueToJSON(
   getProjectsValueCurrentValue: GetProjectsValueCurrentValue,
 ): string {
@@ -13701,7 +10670,6 @@ export function getProjectsValueCurrentValueToJSON(
     ),
   );
 }
-
 export function getProjectsValueCurrentValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsValueCurrentValue, SDKValidationError> {
@@ -13721,7 +10689,6 @@ export const GetProjectsValue4$inboundSchema: z.ZodType<
   previousValue: z.union([z.string(), z.number(), z.boolean()]),
   currentValue: z.union([z.string(), z.number(), z.boolean()]),
 });
-
 /** @internal */
 export type GetProjectsValue4$Outbound = {
   previousValue: string | number | boolean;
@@ -13738,19 +10705,6 @@ export const GetProjectsValue4$outboundSchema: z.ZodType<
   currentValue: z.union([z.string(), z.number(), z.boolean()]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsValue4$ {
-  /** @deprecated use `GetProjectsValue4$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsValue4$inboundSchema;
-  /** @deprecated use `GetProjectsValue4$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsValue4$outboundSchema;
-  /** @deprecated use `GetProjectsValue4$Outbound` instead. */
-  export type Outbound = GetProjectsValue4$Outbound;
-}
-
 export function getProjectsValue4ToJSON(
   getProjectsValue4: GetProjectsValue4,
 ): string {
@@ -13758,7 +10712,6 @@ export function getProjectsValue4ToJSON(
     GetProjectsValue4$outboundSchema.parse(getProjectsValue4),
   );
 }
-
 export function getProjectsValue4FromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsValue4, SDKValidationError> {
@@ -13780,7 +10733,6 @@ export const GetProjectsValue$inboundSchema: z.ZodType<
   z.number(),
   z.boolean(),
 ]);
-
 /** @internal */
 export type GetProjectsValue$Outbound =
   | GetProjectsValue4$Outbound
@@ -13800,19 +10752,6 @@ export const GetProjectsValue$outboundSchema: z.ZodType<
   z.boolean(),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsValue$ {
-  /** @deprecated use `GetProjectsValue$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsValue$inboundSchema;
-  /** @deprecated use `GetProjectsValue$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsValue$outboundSchema;
-  /** @deprecated use `GetProjectsValue$Outbound` instead. */
-  export type Outbound = GetProjectsValue$Outbound;
-}
-
 export function getProjectsValueToJSON(
   getProjectsValue: GetProjectsValue,
 ): string {
@@ -13820,7 +10759,6 @@ export function getProjectsValueToJSON(
     GetProjectsValue$outboundSchema.parse(getProjectsValue),
   );
 }
-
 export function getProjectsValueFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsValue, SDKValidationError> {
@@ -13849,7 +10787,6 @@ export const GetProjectsDismissedToasts$inboundSchema: z.ZodType<
     ]),
   ),
 });
-
 /** @internal */
 export type GetProjectsDismissedToasts$Outbound = {
   key: string;
@@ -13877,19 +10814,6 @@ export const GetProjectsDismissedToasts$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsDismissedToasts$ {
-  /** @deprecated use `GetProjectsDismissedToasts$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsDismissedToasts$inboundSchema;
-  /** @deprecated use `GetProjectsDismissedToasts$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsDismissedToasts$outboundSchema;
-  /** @deprecated use `GetProjectsDismissedToasts$Outbound` instead. */
-  export type Outbound = GetProjectsDismissedToasts$Outbound;
-}
-
 export function getProjectsDismissedToastsToJSON(
   getProjectsDismissedToasts: GetProjectsDismissedToasts,
 ): string {
@@ -13897,7 +10821,6 @@ export function getProjectsDismissedToastsToJSON(
     GetProjectsDismissedToasts$outboundSchema.parse(getProjectsDismissedToasts),
   );
 }
-
 export function getProjectsDismissedToastsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsDismissedToasts, SDKValidationError> {
@@ -14045,11 +10968,11 @@ export const GetProjectsProjects$inboundSchema: z.ZodType<
       z.lazy(() => GetProjectsInternalRoutes2$inboundSchema),
     ]),
   ).optional(),
+  hasDeployments: z.boolean().optional(),
   dismissedToasts: z.array(
     z.lazy(() => GetProjectsDismissedToasts$inboundSchema),
   ).optional(),
 });
-
 /** @internal */
 export type GetProjectsProjects$Outbound = {
   accountId: string;
@@ -14165,6 +11088,7 @@ export type GetProjectsProjects$Outbound = {
       GetProjectsInternalRoutes1$Outbound | GetProjectsInternalRoutes2$Outbound
     >
     | undefined;
+  hasDeployments?: boolean | undefined;
   dismissedToasts?: Array<GetProjectsDismissedToasts$Outbound> | undefined;
 };
 
@@ -14305,23 +11229,11 @@ export const GetProjectsProjects$outboundSchema: z.ZodType<
       z.lazy(() => GetProjectsInternalRoutes2$outboundSchema),
     ]),
   ).optional(),
+  hasDeployments: z.boolean().optional(),
   dismissedToasts: z.array(
     z.lazy(() => GetProjectsDismissedToasts$outboundSchema),
   ).optional(),
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsProjects$ {
-  /** @deprecated use `GetProjectsProjects$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsProjects$inboundSchema;
-  /** @deprecated use `GetProjectsProjects$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsProjects$outboundSchema;
-  /** @deprecated use `GetProjectsProjects$Outbound` instead. */
-  export type Outbound = GetProjectsProjects$Outbound;
-}
 
 export function getProjectsProjectsToJSON(
   getProjectsProjects: GetProjectsProjects,
@@ -14330,7 +11242,6 @@ export function getProjectsProjectsToJSON(
     GetProjectsProjects$outboundSchema.parse(getProjectsProjects),
   );
 }
-
 export function getProjectsProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsProjects, SDKValidationError> {
@@ -14350,7 +11261,6 @@ export const Pagination1$inboundSchema: z.ZodType<
   count: z.number(),
   next: z.nullable(z.string()),
 });
-
 /** @internal */
 export type Pagination1$Outbound = {
   count: number;
@@ -14367,23 +11277,9 @@ export const Pagination1$outboundSchema: z.ZodType<
   next: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Pagination1$ {
-  /** @deprecated use `Pagination1$inboundSchema` instead. */
-  export const inboundSchema = Pagination1$inboundSchema;
-  /** @deprecated use `Pagination1$outboundSchema` instead. */
-  export const outboundSchema = Pagination1$outboundSchema;
-  /** @deprecated use `Pagination1$Outbound` instead. */
-  export type Outbound = Pagination1$Outbound;
-}
-
 export function pagination1ToJSON(pagination1: Pagination1): string {
   return JSON.stringify(Pagination1$outboundSchema.parse(pagination1));
 }
-
 export function pagination1FromJSON(
   jsonString: string,
 ): SafeParseResult<Pagination1, SDKValidationError> {
@@ -14403,7 +11299,6 @@ export const GetProjectsPagination$inboundSchema: z.ZodType<
   Pagination$inboundSchema,
   z.lazy(() => Pagination1$inboundSchema),
 ]);
-
 /** @internal */
 export type GetProjectsPagination$Outbound =
   | Pagination$Outbound
@@ -14419,19 +11314,6 @@ export const GetProjectsPagination$outboundSchema: z.ZodType<
   z.lazy(() => Pagination1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsPagination$ {
-  /** @deprecated use `GetProjectsPagination$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsPagination$inboundSchema;
-  /** @deprecated use `GetProjectsPagination$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsPagination$outboundSchema;
-  /** @deprecated use `GetProjectsPagination$Outbound` instead. */
-  export type Outbound = GetProjectsPagination$Outbound;
-}
-
 export function getProjectsPaginationToJSON(
   getProjectsPagination: GetProjectsPagination,
 ): string {
@@ -14439,7 +11321,6 @@ export function getProjectsPaginationToJSON(
     GetProjectsPagination$outboundSchema.parse(getProjectsPagination),
   );
 }
-
 export function getProjectsPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsPagination, SDKValidationError> {
@@ -14462,7 +11343,6 @@ export const GetProjectsResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => Pagination1$inboundSchema),
   ]),
 });
-
 /** @internal */
 export type GetProjectsResponseBody$Outbound = {
   projects: Array<GetProjectsProjects$Outbound>;
@@ -14482,19 +11362,6 @@ export const GetProjectsResponseBody$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectsResponseBody$ {
-  /** @deprecated use `GetProjectsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetProjectsResponseBody$inboundSchema;
-  /** @deprecated use `GetProjectsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetProjectsResponseBody$outboundSchema;
-  /** @deprecated use `GetProjectsResponseBody$Outbound` instead. */
-  export type Outbound = GetProjectsResponseBody$Outbound;
-}
-
 export function getProjectsResponseBodyToJSON(
   getProjectsResponseBody: GetProjectsResponseBody,
 ): string {
@@ -14502,7 +11369,6 @@ export function getProjectsResponseBodyToJSON(
     GetProjectsResponseBody$outboundSchema.parse(getProjectsResponseBody),
   );
 }
-
 export function getProjectsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectsResponseBody, SDKValidationError> {

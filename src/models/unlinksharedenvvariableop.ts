@@ -38,7 +38,6 @@ export const UnlinkSharedEnvVariableRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type UnlinkSharedEnvVariableRequest$Outbound = {
   id: string;
@@ -59,19 +58,6 @@ export const UnlinkSharedEnvVariableRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnlinkSharedEnvVariableRequest$ {
-  /** @deprecated use `UnlinkSharedEnvVariableRequest$inboundSchema` instead. */
-  export const inboundSchema = UnlinkSharedEnvVariableRequest$inboundSchema;
-  /** @deprecated use `UnlinkSharedEnvVariableRequest$outboundSchema` instead. */
-  export const outboundSchema = UnlinkSharedEnvVariableRequest$outboundSchema;
-  /** @deprecated use `UnlinkSharedEnvVariableRequest$Outbound` instead. */
-  export type Outbound = UnlinkSharedEnvVariableRequest$Outbound;
-}
-
 export function unlinkSharedEnvVariableRequestToJSON(
   unlinkSharedEnvVariableRequest: UnlinkSharedEnvVariableRequest,
 ): string {
@@ -81,7 +67,6 @@ export function unlinkSharedEnvVariableRequestToJSON(
     ),
   );
 }
-
 export function unlinkSharedEnvVariableRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UnlinkSharedEnvVariableRequest, SDKValidationError> {
@@ -100,7 +85,6 @@ export const UnlinkSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type UnlinkSharedEnvVariableResponseBody$Outbound = {
   id: string;
@@ -115,21 +99,6 @@ export const UnlinkSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UnlinkSharedEnvVariableResponseBody$ {
-  /** @deprecated use `UnlinkSharedEnvVariableResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UnlinkSharedEnvVariableResponseBody$inboundSchema;
-  /** @deprecated use `UnlinkSharedEnvVariableResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UnlinkSharedEnvVariableResponseBody$outboundSchema;
-  /** @deprecated use `UnlinkSharedEnvVariableResponseBody$Outbound` instead. */
-  export type Outbound = UnlinkSharedEnvVariableResponseBody$Outbound;
-}
-
 export function unlinkSharedEnvVariableResponseBodyToJSON(
   unlinkSharedEnvVariableResponseBody: UnlinkSharedEnvVariableResponseBody,
 ): string {
@@ -139,7 +108,6 @@ export function unlinkSharedEnvVariableResponseBodyToJSON(
     ),
   );
 }
-
 export function unlinkSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UnlinkSharedEnvVariableResponseBody, SDKValidationError> {

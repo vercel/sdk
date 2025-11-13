@@ -48,22 +48,10 @@ export class DomainNotFound extends VercelError {
 export const DomainNotFoundCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotFoundCode
 > = z.nativeEnum(DomainNotFoundCode);
-
 /** @internal */
 export const DomainNotFoundCode$outboundSchema: z.ZodNativeEnum<
   typeof DomainNotFoundCode
 > = DomainNotFoundCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotFoundCode$ {
-  /** @deprecated use `DomainNotFoundCode$inboundSchema` instead. */
-  export const inboundSchema = DomainNotFoundCode$inboundSchema;
-  /** @deprecated use `DomainNotFoundCode$outboundSchema` instead. */
-  export const outboundSchema = DomainNotFoundCode$outboundSchema;
-}
 
 /** @internal */
 export const DomainNotFound$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const DomainNotFound$outboundSchema: z.ZodType<
     code: DomainNotFoundCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotFound$ {
-  /** @deprecated use `DomainNotFound$inboundSchema` instead. */
-  export const inboundSchema = DomainNotFound$inboundSchema;
-  /** @deprecated use `DomainNotFound$outboundSchema` instead. */
-  export const outboundSchema = DomainNotFound$outboundSchema;
-  /** @deprecated use `DomainNotFound$Outbound` instead. */
-  export type Outbound = DomainNotFound$Outbound;
-}

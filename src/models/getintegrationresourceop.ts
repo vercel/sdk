@@ -127,7 +127,6 @@ export const GetIntegrationResourceRequest$inboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
   resourceId: z.string(),
 });
-
 /** @internal */
 export type GetIntegrationResourceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -144,19 +143,6 @@ export const GetIntegrationResourceRequest$outboundSchema: z.ZodType<
   resourceId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationResourceRequest$ {
-  /** @deprecated use `GetIntegrationResourceRequest$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationResourceRequest$inboundSchema;
-  /** @deprecated use `GetIntegrationResourceRequest$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationResourceRequest$outboundSchema;
-  /** @deprecated use `GetIntegrationResourceRequest$Outbound` instead. */
-  export type Outbound = GetIntegrationResourceRequest$Outbound;
-}
-
 export function getIntegrationResourceRequestToJSON(
   getIntegrationResourceRequest: GetIntegrationResourceRequest,
 ): string {
@@ -166,7 +152,6 @@ export function getIntegrationResourceRequestToJSON(
     ),
   );
 }
-
 export function getIntegrationResourceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationResourceRequest, SDKValidationError> {
@@ -181,22 +166,10 @@ export function getIntegrationResourceRequestFromJSON(
 export const GetIntegrationResourceStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceStatus
 > = z.nativeEnum(GetIntegrationResourceStatus);
-
 /** @internal */
 export const GetIntegrationResourceStatus$outboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceStatus
 > = GetIntegrationResourceStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationResourceStatus$ {
-  /** @deprecated use `GetIntegrationResourceStatus$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationResourceStatus$inboundSchema;
-  /** @deprecated use `GetIntegrationResourceStatus$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationResourceStatus$outboundSchema;
-}
 
 /** @internal */
 export const Experimentation$inboundSchema: z.ZodType<
@@ -208,7 +181,6 @@ export const Experimentation$inboundSchema: z.ZodType<
   edgeConfigId: z.string().optional(),
   edgeConfigTokenId: z.string().optional(),
 });
-
 /** @internal */
 export type Experimentation$Outbound = {
   edgeConfigSyncingEnabled?: boolean | undefined;
@@ -227,25 +199,11 @@ export const Experimentation$outboundSchema: z.ZodType<
   edgeConfigTokenId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Experimentation$ {
-  /** @deprecated use `Experimentation$inboundSchema` instead. */
-  export const inboundSchema = Experimentation$inboundSchema;
-  /** @deprecated use `Experimentation$outboundSchema` instead. */
-  export const outboundSchema = Experimentation$outboundSchema;
-  /** @deprecated use `Experimentation$Outbound` instead. */
-  export type Outbound = Experimentation$Outbound;
-}
-
 export function experimentationToJSON(
   experimentation: Experimentation,
 ): string {
   return JSON.stringify(Experimentation$outboundSchema.parse(experimentation));
 }
-
 export function experimentationFromJSON(
   jsonString: string,
 ): SafeParseResult<Experimentation, SDKValidationError> {
@@ -264,7 +222,6 @@ export const ProtocolSettings$inboundSchema: z.ZodType<
 > = z.object({
   experimentation: z.lazy(() => Experimentation$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ProtocolSettings$Outbound = {
   experimentation?: Experimentation$Outbound | undefined;
@@ -279,19 +236,6 @@ export const ProtocolSettings$outboundSchema: z.ZodType<
   experimentation: z.lazy(() => Experimentation$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProtocolSettings$ {
-  /** @deprecated use `ProtocolSettings$inboundSchema` instead. */
-  export const inboundSchema = ProtocolSettings$inboundSchema;
-  /** @deprecated use `ProtocolSettings$outboundSchema` instead. */
-  export const outboundSchema = ProtocolSettings$outboundSchema;
-  /** @deprecated use `ProtocolSettings$Outbound` instead. */
-  export type Outbound = ProtocolSettings$Outbound;
-}
-
 export function protocolSettingsToJSON(
   protocolSettings: ProtocolSettings,
 ): string {
@@ -299,7 +243,6 @@ export function protocolSettingsToJSON(
     ProtocolSettings$outboundSchema.parse(protocolSettings),
   );
 }
-
 export function protocolSettingsFromJSON(
   jsonString: string,
 ): SafeParseResult<ProtocolSettings, SDKValidationError> {
@@ -314,22 +257,10 @@ export function protocolSettingsFromJSON(
 export const GetIntegrationResourceLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceLevel
 > = z.nativeEnum(GetIntegrationResourceLevel);
-
 /** @internal */
 export const GetIntegrationResourceLevel$outboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceLevel
 > = GetIntegrationResourceLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationResourceLevel$ {
-  /** @deprecated use `GetIntegrationResourceLevel$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationResourceLevel$inboundSchema;
-  /** @deprecated use `GetIntegrationResourceLevel$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationResourceLevel$outboundSchema;
-}
 
 /** @internal */
 export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
@@ -342,7 +273,6 @@ export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
   message: z.string().optional(),
   href: z.string().optional(),
 });
-
 /** @internal */
 export type GetIntegrationResourceNotification$Outbound = {
   level: string;
@@ -363,20 +293,6 @@ export const GetIntegrationResourceNotification$outboundSchema: z.ZodType<
   href: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationResourceNotification$ {
-  /** @deprecated use `GetIntegrationResourceNotification$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationResourceNotification$inboundSchema;
-  /** @deprecated use `GetIntegrationResourceNotification$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationResourceNotification$outboundSchema;
-  /** @deprecated use `GetIntegrationResourceNotification$Outbound` instead. */
-  export type Outbound = GetIntegrationResourceNotification$Outbound;
-}
-
 export function getIntegrationResourceNotificationToJSON(
   getIntegrationResourceNotification: GetIntegrationResourceNotification,
 ): string {
@@ -386,7 +302,6 @@ export function getIntegrationResourceNotificationToJSON(
     ),
   );
 }
-
 export function getIntegrationResourceNotificationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationResourceNotification, SDKValidationError> {
@@ -410,7 +325,6 @@ export const GetIntegrationResourceMetadata$inboundSchema: z.ZodType<
   z.array(z.string()),
   z.array(z.number()),
 ]);
-
 /** @internal */
 export type GetIntegrationResourceMetadata$Outbound =
   | string
@@ -432,19 +346,6 @@ export const GetIntegrationResourceMetadata$outboundSchema: z.ZodType<
   z.array(z.number()),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationResourceMetadata$ {
-  /** @deprecated use `GetIntegrationResourceMetadata$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationResourceMetadata$inboundSchema;
-  /** @deprecated use `GetIntegrationResourceMetadata$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationResourceMetadata$outboundSchema;
-  /** @deprecated use `GetIntegrationResourceMetadata$Outbound` instead. */
-  export type Outbound = GetIntegrationResourceMetadata$Outbound;
-}
-
 export function getIntegrationResourceMetadataToJSON(
   getIntegrationResourceMetadata: GetIntegrationResourceMetadata,
 ): string {
@@ -454,7 +355,6 @@ export function getIntegrationResourceMetadataToJSON(
     ),
   );
 }
-
 export function getIntegrationResourceMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationResourceMetadata, SDKValidationError> {
@@ -490,7 +390,6 @@ export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
     ]),
   ).optional(),
 });
-
 /** @internal */
 export type GetIntegrationResourceResponseBody$Outbound = {
   id: string;
@@ -532,20 +431,6 @@ export const GetIntegrationResourceResponseBody$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationResourceResponseBody$ {
-  /** @deprecated use `GetIntegrationResourceResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationResourceResponseBody$inboundSchema;
-  /** @deprecated use `GetIntegrationResourceResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationResourceResponseBody$outboundSchema;
-  /** @deprecated use `GetIntegrationResourceResponseBody$Outbound` instead. */
-  export type Outbound = GetIntegrationResourceResponseBody$Outbound;
-}
-
 export function getIntegrationResourceResponseBodyToJSON(
   getIntegrationResourceResponseBody: GetIntegrationResourceResponseBody,
 ): string {
@@ -555,7 +440,6 @@ export function getIntegrationResourceResponseBodyToJSON(
     ),
   );
 }
-
 export function getIntegrationResourceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationResourceResponseBody, SDKValidationError> {

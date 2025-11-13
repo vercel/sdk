@@ -25,7 +25,6 @@ export type GetIntegrationLogDrainsRequest = {
 export const GetIntegrationLogDrainsDeliveryFormat = {
   Json: "json",
   Ndjson: "ndjson",
-  Syslog: "syslog",
   Protobuf: "protobuf",
 } as const;
 /**
@@ -180,7 +179,6 @@ export const GetIntegrationLogDrainsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetIntegrationLogDrainsRequest$Outbound = {
   teamId?: string | undefined;
@@ -197,19 +195,6 @@ export const GetIntegrationLogDrainsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsRequest$ {
-  /** @deprecated use `GetIntegrationLogDrainsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationLogDrainsRequest$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationLogDrainsRequest$outboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsRequest$Outbound` instead. */
-  export type Outbound = GetIntegrationLogDrainsRequest$Outbound;
-}
-
 export function getIntegrationLogDrainsRequestToJSON(
   getIntegrationLogDrainsRequest: GetIntegrationLogDrainsRequest,
 ): string {
@@ -219,7 +204,6 @@ export function getIntegrationLogDrainsRequestToJSON(
     ),
   );
 }
-
 export function getIntegrationLogDrainsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsRequest, SDKValidationError> {
@@ -235,106 +219,42 @@ export const GetIntegrationLogDrainsDeliveryFormat$inboundSchema:
   z.ZodNativeEnum<typeof GetIntegrationLogDrainsDeliveryFormat> = z.nativeEnum(
     GetIntegrationLogDrainsDeliveryFormat,
   );
-
 /** @internal */
 export const GetIntegrationLogDrainsDeliveryFormat$outboundSchema:
   z.ZodNativeEnum<typeof GetIntegrationLogDrainsDeliveryFormat> =
     GetIntegrationLogDrainsDeliveryFormat$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsDeliveryFormat$ {
-  /** @deprecated use `GetIntegrationLogDrainsDeliveryFormat$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationLogDrainsDeliveryFormat$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsDeliveryFormat$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationLogDrainsDeliveryFormat$outboundSchema;
-}
-
 /** @internal */
 export const GetIntegrationLogDrainsSources$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationLogDrainsSources
 > = z.nativeEnum(GetIntegrationLogDrainsSources);
-
 /** @internal */
 export const GetIntegrationLogDrainsSources$outboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationLogDrainsSources
 > = GetIntegrationLogDrainsSources$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsSources$ {
-  /** @deprecated use `GetIntegrationLogDrainsSources$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationLogDrainsSources$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsSources$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationLogDrainsSources$outboundSchema;
-}
-
 /** @internal */
 export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> = z
   .nativeEnum(CreatedFrom);
-
 /** @internal */
 export const CreatedFrom$outboundSchema: z.ZodNativeEnum<typeof CreatedFrom> =
   CreatedFrom$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreatedFrom$ {
-  /** @deprecated use `CreatedFrom$inboundSchema` instead. */
-  export const inboundSchema = CreatedFrom$inboundSchema;
-  /** @deprecated use `CreatedFrom$outboundSchema` instead. */
-  export const outboundSchema = CreatedFrom$outboundSchema;
-}
 
 /** @internal */
 export const GetIntegrationLogDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationLogDrainsEnvironments
 > = z.nativeEnum(GetIntegrationLogDrainsEnvironments);
-
 /** @internal */
 export const GetIntegrationLogDrainsEnvironments$outboundSchema:
   z.ZodNativeEnum<typeof GetIntegrationLogDrainsEnvironments> =
     GetIntegrationLogDrainsEnvironments$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsEnvironments$ {
-  /** @deprecated use `GetIntegrationLogDrainsEnvironments$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationLogDrainsEnvironments$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsEnvironments$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationLogDrainsEnvironments$outboundSchema;
-}
-
 /** @internal */
 export const SourceKind$inboundSchema: z.ZodNativeEnum<typeof SourceKind> = z
   .nativeEnum(SourceKind);
-
 /** @internal */
 export const SourceKind$outboundSchema: z.ZodNativeEnum<typeof SourceKind> =
   SourceKind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SourceKind$ {
-  /** @deprecated use `SourceKind$inboundSchema` instead. */
-  export const inboundSchema = SourceKind$inboundSchema;
-  /** @deprecated use `SourceKind$outboundSchema` instead. */
-  export const outboundSchema = SourceKind$outboundSchema;
-}
 
 /** @internal */
 export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
@@ -348,7 +268,6 @@ export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
   integrationId: z.string(),
   integrationConfigurationId: z.string(),
 });
-
 /** @internal */
 export type GetIntegrationLogDrainsSource2$Outbound = {
   kind: string;
@@ -371,19 +290,6 @@ export const GetIntegrationLogDrainsSource2$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsSource2$ {
-  /** @deprecated use `GetIntegrationLogDrainsSource2$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationLogDrainsSource2$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsSource2$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationLogDrainsSource2$outboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsSource2$Outbound` instead. */
-  export type Outbound = GetIntegrationLogDrainsSource2$Outbound;
-}
-
 export function getIntegrationLogDrainsSource2ToJSON(
   getIntegrationLogDrainsSource2: GetIntegrationLogDrainsSource2,
 ): string {
@@ -393,7 +299,6 @@ export function getIntegrationLogDrainsSource2ToJSON(
     ),
   );
 }
-
 export function getIntegrationLogDrainsSource2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsSource2, SDKValidationError> {
@@ -408,21 +313,9 @@ export function getIntegrationLogDrainsSource2FromJSON(
 export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
   Kind,
 );
-
 /** @internal */
 export const Kind$outboundSchema: z.ZodNativeEnum<typeof Kind> =
   Kind$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Kind$ {
-  /** @deprecated use `Kind$inboundSchema` instead. */
-  export const inboundSchema = Kind$inboundSchema;
-  /** @deprecated use `Kind$outboundSchema` instead. */
-  export const outboundSchema = Kind$outboundSchema;
-}
 
 /** @internal */
 export const GetIntegrationLogDrainsSource1$inboundSchema: z.ZodType<
@@ -432,7 +325,6 @@ export const GetIntegrationLogDrainsSource1$inboundSchema: z.ZodType<
 > = z.object({
   kind: Kind$inboundSchema,
 });
-
 /** @internal */
 export type GetIntegrationLogDrainsSource1$Outbound = {
   kind: string;
@@ -447,19 +339,6 @@ export const GetIntegrationLogDrainsSource1$outboundSchema: z.ZodType<
   kind: Kind$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsSource1$ {
-  /** @deprecated use `GetIntegrationLogDrainsSource1$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationLogDrainsSource1$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsSource1$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationLogDrainsSource1$outboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsSource1$Outbound` instead. */
-  export type Outbound = GetIntegrationLogDrainsSource1$Outbound;
-}
-
 export function getIntegrationLogDrainsSource1ToJSON(
   getIntegrationLogDrainsSource1: GetIntegrationLogDrainsSource1,
 ): string {
@@ -469,7 +348,6 @@ export function getIntegrationLogDrainsSource1ToJSON(
     ),
   );
 }
-
 export function getIntegrationLogDrainsSource1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsSource1, SDKValidationError> {
@@ -489,7 +367,6 @@ export const GetIntegrationLogDrainsSource$inboundSchema: z.ZodType<
   z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
   z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
 ]);
-
 /** @internal */
 export type GetIntegrationLogDrainsSource$Outbound =
   | GetIntegrationLogDrainsSource2$Outbound
@@ -505,19 +382,6 @@ export const GetIntegrationLogDrainsSource$outboundSchema: z.ZodType<
   z.lazy(() => GetIntegrationLogDrainsSource1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsSource$ {
-  /** @deprecated use `GetIntegrationLogDrainsSource$inboundSchema` instead. */
-  export const inboundSchema = GetIntegrationLogDrainsSource$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsSource$outboundSchema` instead. */
-  export const outboundSchema = GetIntegrationLogDrainsSource$outboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsSource$Outbound` instead. */
-  export type Outbound = GetIntegrationLogDrainsSource$Outbound;
-}
-
 export function getIntegrationLogDrainsSourceToJSON(
   getIntegrationLogDrainsSource: GetIntegrationLogDrainsSource,
 ): string {
@@ -527,7 +391,6 @@ export function getIntegrationLogDrainsSourceToJSON(
     ),
   );
 }
-
 export function getIntegrationLogDrainsSourceFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsSource, SDKValidationError> {
@@ -567,7 +430,6 @@ export const GetIntegrationLogDrainsResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
   ]),
 });
-
 /** @internal */
 export type GetIntegrationLogDrainsResponseBody$Outbound = {
   clientId?: string | undefined;
@@ -621,21 +483,6 @@ export const GetIntegrationLogDrainsResponseBody$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationLogDrainsResponseBody$ {
-  /** @deprecated use `GetIntegrationLogDrainsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationLogDrainsResponseBody$inboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationLogDrainsResponseBody$outboundSchema;
-  /** @deprecated use `GetIntegrationLogDrainsResponseBody$Outbound` instead. */
-  export type Outbound = GetIntegrationLogDrainsResponseBody$Outbound;
-}
-
 export function getIntegrationLogDrainsResponseBodyToJSON(
   getIntegrationLogDrainsResponseBody: GetIntegrationLogDrainsResponseBody,
 ): string {
@@ -645,7 +492,6 @@ export function getIntegrationLogDrainsResponseBodyToJSON(
     ),
   );
 }
-
 export function getIntegrationLogDrainsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetIntegrationLogDrainsResponseBody, SDKValidationError> {

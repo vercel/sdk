@@ -39,7 +39,6 @@ export const RemoveTeamMemberRequest$inboundSchema: z.ZodType<
   newDefaultTeamId: z.string().optional(),
   teamId: z.string(),
 });
-
 /** @internal */
 export type RemoveTeamMemberRequest$Outbound = {
   uid: string;
@@ -58,19 +57,6 @@ export const RemoveTeamMemberRequest$outboundSchema: z.ZodType<
   teamId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveTeamMemberRequest$ {
-  /** @deprecated use `RemoveTeamMemberRequest$inboundSchema` instead. */
-  export const inboundSchema = RemoveTeamMemberRequest$inboundSchema;
-  /** @deprecated use `RemoveTeamMemberRequest$outboundSchema` instead. */
-  export const outboundSchema = RemoveTeamMemberRequest$outboundSchema;
-  /** @deprecated use `RemoveTeamMemberRequest$Outbound` instead. */
-  export type Outbound = RemoveTeamMemberRequest$Outbound;
-}
-
 export function removeTeamMemberRequestToJSON(
   removeTeamMemberRequest: RemoveTeamMemberRequest,
 ): string {
@@ -78,7 +64,6 @@ export function removeTeamMemberRequestToJSON(
     RemoveTeamMemberRequest$outboundSchema.parse(removeTeamMemberRequest),
   );
 }
-
 export function removeTeamMemberRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveTeamMemberRequest, SDKValidationError> {
@@ -97,7 +82,6 @@ export const RemoveTeamMemberResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type RemoveTeamMemberResponseBody$Outbound = {
   id: string;
@@ -112,19 +96,6 @@ export const RemoveTeamMemberResponseBody$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveTeamMemberResponseBody$ {
-  /** @deprecated use `RemoveTeamMemberResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveTeamMemberResponseBody$inboundSchema;
-  /** @deprecated use `RemoveTeamMemberResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveTeamMemberResponseBody$outboundSchema;
-  /** @deprecated use `RemoveTeamMemberResponseBody$Outbound` instead. */
-  export type Outbound = RemoveTeamMemberResponseBody$Outbound;
-}
-
 export function removeTeamMemberResponseBodyToJSON(
   removeTeamMemberResponseBody: RemoveTeamMemberResponseBody,
 ): string {
@@ -134,7 +105,6 @@ export function removeTeamMemberResponseBodyToJSON(
     ),
   );
 }
-
 export function removeTeamMemberResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveTeamMemberResponseBody, SDKValidationError> {

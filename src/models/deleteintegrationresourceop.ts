@@ -21,7 +21,6 @@ export const DeleteIntegrationResourceRequest$inboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
   resourceId: z.string(),
 });
-
 /** @internal */
 export type DeleteIntegrationResourceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -38,19 +37,6 @@ export const DeleteIntegrationResourceRequest$outboundSchema: z.ZodType<
   resourceId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteIntegrationResourceRequest$ {
-  /** @deprecated use `DeleteIntegrationResourceRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteIntegrationResourceRequest$inboundSchema;
-  /** @deprecated use `DeleteIntegrationResourceRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteIntegrationResourceRequest$outboundSchema;
-  /** @deprecated use `DeleteIntegrationResourceRequest$Outbound` instead. */
-  export type Outbound = DeleteIntegrationResourceRequest$Outbound;
-}
-
 export function deleteIntegrationResourceRequestToJSON(
   deleteIntegrationResourceRequest: DeleteIntegrationResourceRequest,
 ): string {
@@ -60,7 +46,6 @@ export function deleteIntegrationResourceRequestToJSON(
     ),
   );
 }
-
 export function deleteIntegrationResourceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteIntegrationResourceRequest, SDKValidationError> {

@@ -164,7 +164,6 @@ export const GetDomainsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetDomainsRequest$Outbound = {
   limit?: number | undefined;
@@ -187,19 +186,6 @@ export const GetDomainsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainsRequest$ {
-  /** @deprecated use `GetDomainsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDomainsRequest$inboundSchema;
-  /** @deprecated use `GetDomainsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDomainsRequest$outboundSchema;
-  /** @deprecated use `GetDomainsRequest$Outbound` instead. */
-  export type Outbound = GetDomainsRequest$Outbound;
-}
-
 export function getDomainsRequestToJSON(
   getDomainsRequest: GetDomainsRequest,
 ): string {
@@ -207,7 +193,6 @@ export function getDomainsRequestToJSON(
     GetDomainsRequest$outboundSchema.parse(getDomainsRequest),
   );
 }
-
 export function getDomainsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainsRequest, SDKValidationError> {
@@ -230,7 +215,6 @@ export const GetDomainsCreator$inboundSchema: z.ZodType<
   isDomainReseller: z.boolean().optional(),
   id: z.string(),
 });
-
 /** @internal */
 export type GetDomainsCreator$Outbound = {
   username: string;
@@ -253,19 +237,6 @@ export const GetDomainsCreator$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainsCreator$ {
-  /** @deprecated use `GetDomainsCreator$inboundSchema` instead. */
-  export const inboundSchema = GetDomainsCreator$inboundSchema;
-  /** @deprecated use `GetDomainsCreator$outboundSchema` instead. */
-  export const outboundSchema = GetDomainsCreator$outboundSchema;
-  /** @deprecated use `GetDomainsCreator$Outbound` instead. */
-  export type Outbound = GetDomainsCreator$Outbound;
-}
-
 export function getDomainsCreatorToJSON(
   getDomainsCreator: GetDomainsCreator,
 ): string {
@@ -273,7 +244,6 @@ export function getDomainsCreatorToJSON(
     GetDomainsCreator$outboundSchema.parse(getDomainsCreator),
   );
 }
-
 export function getDomainsCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainsCreator, SDKValidationError> {
@@ -288,43 +258,19 @@ export function getDomainsCreatorFromJSON(
 export const GetDomainsRegistrar$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsRegistrar
 > = z.nativeEnum(GetDomainsRegistrar);
-
 /** @internal */
 export const GetDomainsRegistrar$outboundSchema: z.ZodNativeEnum<
   typeof GetDomainsRegistrar
 > = GetDomainsRegistrar$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainsRegistrar$ {
-  /** @deprecated use `GetDomainsRegistrar$inboundSchema` instead. */
-  export const inboundSchema = GetDomainsRegistrar$inboundSchema;
-  /** @deprecated use `GetDomainsRegistrar$outboundSchema` instead. */
-  export const outboundSchema = GetDomainsRegistrar$outboundSchema;
-}
-
 /** @internal */
 export const GetDomainsServiceType$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsServiceType
 > = z.nativeEnum(GetDomainsServiceType);
-
 /** @internal */
 export const GetDomainsServiceType$outboundSchema: z.ZodNativeEnum<
   typeof GetDomainsServiceType
 > = GetDomainsServiceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainsServiceType$ {
-  /** @deprecated use `GetDomainsServiceType$inboundSchema` instead. */
-  export const inboundSchema = GetDomainsServiceType$inboundSchema;
-  /** @deprecated use `GetDomainsServiceType$outboundSchema` instead. */
-  export const outboundSchema = GetDomainsServiceType$outboundSchema;
-}
 
 /** @internal */
 export const GetDomainsDomains$inboundSchema: z.ZodType<
@@ -351,7 +297,6 @@ export const GetDomainsDomains$inboundSchema: z.ZodType<
   transferStartedAt: z.number().optional(),
   userId: z.string(),
 });
-
 /** @internal */
 export type GetDomainsDomains$Outbound = {
   verified: boolean;
@@ -400,19 +345,6 @@ export const GetDomainsDomains$outboundSchema: z.ZodType<
   userId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainsDomains$ {
-  /** @deprecated use `GetDomainsDomains$inboundSchema` instead. */
-  export const inboundSchema = GetDomainsDomains$inboundSchema;
-  /** @deprecated use `GetDomainsDomains$outboundSchema` instead. */
-  export const outboundSchema = GetDomainsDomains$outboundSchema;
-  /** @deprecated use `GetDomainsDomains$Outbound` instead. */
-  export type Outbound = GetDomainsDomains$Outbound;
-}
-
 export function getDomainsDomainsToJSON(
   getDomainsDomains: GetDomainsDomains,
 ): string {
@@ -420,7 +352,6 @@ export function getDomainsDomainsToJSON(
     GetDomainsDomains$outboundSchema.parse(getDomainsDomains),
   );
 }
-
 export function getDomainsDomainsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainsDomains, SDKValidationError> {
@@ -440,7 +371,6 @@ export const GetDomainsResponseBody$inboundSchema: z.ZodType<
   domains: z.array(z.lazy(() => GetDomainsDomains$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-
 /** @internal */
 export type GetDomainsResponseBody$Outbound = {
   domains: Array<GetDomainsDomains$Outbound>;
@@ -457,19 +387,6 @@ export const GetDomainsResponseBody$outboundSchema: z.ZodType<
   pagination: Pagination$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainsResponseBody$ {
-  /** @deprecated use `GetDomainsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetDomainsResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetDomainsResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainsResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainsResponseBody$Outbound;
-}
-
 export function getDomainsResponseBodyToJSON(
   getDomainsResponseBody: GetDomainsResponseBody,
 ): string {
@@ -477,7 +394,6 @@ export function getDomainsResponseBodyToJSON(
     GetDomainsResponseBody$outboundSchema.parse(getDomainsResponseBody),
   );
 }
-
 export function getDomainsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainsResponseBody, SDKValidationError> {

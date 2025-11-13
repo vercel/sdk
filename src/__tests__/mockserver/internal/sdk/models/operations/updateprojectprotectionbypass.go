@@ -72,8 +72,8 @@ type UpdateProjectProtectionBypassRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                                  `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody UpdateProjectProtectionBypassRequestBody `request:"mediaType=application/json"`
+	Slug *string                                  `queryParam:"style=form,explode=true,name=slug"`
+	Body UpdateProjectProtectionBypassRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateProjectProtectionBypassRequest) GetIDOrName() string {
@@ -97,11 +97,11 @@ func (o *UpdateProjectProtectionBypassRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateProjectProtectionBypassRequest) GetRequestBody() UpdateProjectProtectionBypassRequestBody {
+func (o *UpdateProjectProtectionBypassRequest) GetBody() UpdateProjectProtectionBypassRequestBody {
 	if o == nil {
 		return UpdateProjectProtectionBypassRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateProjectProtectionBypassScopeAutomationBypass string

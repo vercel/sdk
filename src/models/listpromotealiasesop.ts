@@ -75,7 +75,6 @@ export const ListPromoteAliasesRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ListPromoteAliasesRequest$Outbound = {
   projectId: string;
@@ -102,19 +101,6 @@ export const ListPromoteAliasesRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPromoteAliasesRequest$ {
-  /** @deprecated use `ListPromoteAliasesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListPromoteAliasesRequest$inboundSchema;
-  /** @deprecated use `ListPromoteAliasesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListPromoteAliasesRequest$outboundSchema;
-  /** @deprecated use `ListPromoteAliasesRequest$Outbound` instead. */
-  export type Outbound = ListPromoteAliasesRequest$Outbound;
-}
-
 export function listPromoteAliasesRequestToJSON(
   listPromoteAliasesRequest: ListPromoteAliasesRequest,
 ): string {
@@ -122,7 +108,6 @@ export function listPromoteAliasesRequestToJSON(
     ListPromoteAliasesRequest$outboundSchema.parse(listPromoteAliasesRequest),
   );
 }
-
 export function listPromoteAliasesRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPromoteAliasesRequest, SDKValidationError> {
@@ -143,7 +128,6 @@ export const ResponseBodyAliases$inboundSchema: z.ZodType<
   alias: z.string(),
   id: z.string(),
 });
-
 /** @internal */
 export type ResponseBodyAliases$Outbound = {
   status: string;
@@ -162,19 +146,6 @@ export const ResponseBodyAliases$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyAliases$ {
-  /** @deprecated use `ResponseBodyAliases$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyAliases$inboundSchema;
-  /** @deprecated use `ResponseBodyAliases$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyAliases$outboundSchema;
-  /** @deprecated use `ResponseBodyAliases$Outbound` instead. */
-  export type Outbound = ResponseBodyAliases$Outbound;
-}
-
 export function responseBodyAliasesToJSON(
   responseBodyAliases: ResponseBodyAliases,
 ): string {
@@ -182,7 +153,6 @@ export function responseBodyAliasesToJSON(
     ResponseBodyAliases$outboundSchema.parse(responseBodyAliases),
   );
 }
-
 export function responseBodyAliasesFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyAliases, SDKValidationError> {
@@ -202,7 +172,6 @@ export const ListPromoteAliasesResponseBody2$inboundSchema: z.ZodType<
   aliases: z.array(z.lazy(() => ResponseBodyAliases$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-
 /** @internal */
 export type ListPromoteAliasesResponseBody2$Outbound = {
   aliases: Array<ResponseBodyAliases$Outbound>;
@@ -219,19 +188,6 @@ export const ListPromoteAliasesResponseBody2$outboundSchema: z.ZodType<
   pagination: Pagination$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPromoteAliasesResponseBody2$ {
-  /** @deprecated use `ListPromoteAliasesResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = ListPromoteAliasesResponseBody2$inboundSchema;
-  /** @deprecated use `ListPromoteAliasesResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = ListPromoteAliasesResponseBody2$outboundSchema;
-  /** @deprecated use `ListPromoteAliasesResponseBody2$Outbound` instead. */
-  export type Outbound = ListPromoteAliasesResponseBody2$Outbound;
-}
-
 export function listPromoteAliasesResponseBody2ToJSON(
   listPromoteAliasesResponseBody2: ListPromoteAliasesResponseBody2,
 ): string {
@@ -241,7 +197,6 @@ export function listPromoteAliasesResponseBody2ToJSON(
     ),
   );
 }
-
 export function listPromoteAliasesResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListPromoteAliasesResponseBody2, SDKValidationError> {
@@ -258,7 +213,6 @@ export const ListPromoteAliasesResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ListPromoteAliasesResponseBody1$Outbound = {};
 
@@ -269,19 +223,6 @@ export const ListPromoteAliasesResponseBody1$outboundSchema: z.ZodType<
   ListPromoteAliasesResponseBody1
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPromoteAliasesResponseBody1$ {
-  /** @deprecated use `ListPromoteAliasesResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = ListPromoteAliasesResponseBody1$inboundSchema;
-  /** @deprecated use `ListPromoteAliasesResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = ListPromoteAliasesResponseBody1$outboundSchema;
-  /** @deprecated use `ListPromoteAliasesResponseBody1$Outbound` instead. */
-  export type Outbound = ListPromoteAliasesResponseBody1$Outbound;
-}
-
 export function listPromoteAliasesResponseBody1ToJSON(
   listPromoteAliasesResponseBody1: ListPromoteAliasesResponseBody1,
 ): string {
@@ -291,7 +232,6 @@ export function listPromoteAliasesResponseBody1ToJSON(
     ),
   );
 }
-
 export function listPromoteAliasesResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListPromoteAliasesResponseBody1, SDKValidationError> {
@@ -311,7 +251,6 @@ export const ListPromoteAliasesResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListPromoteAliasesResponseBody2$inboundSchema),
   z.lazy(() => ListPromoteAliasesResponseBody1$inboundSchema),
 ]);
-
 /** @internal */
 export type ListPromoteAliasesResponseBody$Outbound =
   | ListPromoteAliasesResponseBody2$Outbound
@@ -327,19 +266,6 @@ export const ListPromoteAliasesResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => ListPromoteAliasesResponseBody1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListPromoteAliasesResponseBody$ {
-  /** @deprecated use `ListPromoteAliasesResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListPromoteAliasesResponseBody$inboundSchema;
-  /** @deprecated use `ListPromoteAliasesResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ListPromoteAliasesResponseBody$outboundSchema;
-  /** @deprecated use `ListPromoteAliasesResponseBody$Outbound` instead. */
-  export type Outbound = ListPromoteAliasesResponseBody$Outbound;
-}
-
 export function listPromoteAliasesResponseBodyToJSON(
   listPromoteAliasesResponseBody: ListPromoteAliasesResponseBody,
 ): string {
@@ -349,7 +275,6 @@ export function listPromoteAliasesResponseBodyToJSON(
     ),
   );
 }
-
 export function listPromoteAliasesResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListPromoteAliasesResponseBody, SDKValidationError> {

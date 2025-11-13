@@ -149,9 +149,9 @@ func (o *RenewDomainRequestBody) GetContactInformation() *RenewDomainContactInfo
 }
 
 type RenewDomainRequest struct {
-	Domain      string                 `pathParam:"style=simple,explode=false,name=domain"`
-	TeamID      *string                `queryParam:"style=form,explode=true,name=teamId"`
-	RequestBody RenewDomainRequestBody `request:"mediaType=application/json"`
+	Domain string                 `pathParam:"style=simple,explode=false,name=domain"`
+	TeamID *string                `queryParam:"style=form,explode=true,name=teamId"`
+	Body   RenewDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *RenewDomainRequest) GetDomain() string {
@@ -168,11 +168,11 @@ func (o *RenewDomainRequest) GetTeamID() *string {
 	return o.TeamID
 }
 
-func (o *RenewDomainRequest) GetRequestBody() RenewDomainRequestBody {
+func (o *RenewDomainRequest) GetBody() RenewDomainRequestBody {
 	if o == nil {
 		return RenewDomainRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type RenewDomainMethod string

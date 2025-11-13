@@ -6,9 +6,9 @@
 import { GetDrainsDelivery3 } from "@vercel/sdk/models/getdrainsop.js";
 
 let value: GetDrainsDelivery3 = {
-  type: "syslog",
+  type: "clickhouse",
   endpoint: "<value>",
-  secret: "<value>",
+  table: "<value>",
 };
 ```
 
@@ -18,4 +18,4 @@ let value: GetDrainsDelivery3 = {
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `type`                                                                                         | [models.GetDrainsDeliveryDrainsResponseType](../models/getdrainsdeliverydrainsresponsetype.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `endpoint`                                                                                     | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `secret`                                                                                       | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `table`                                                                                        | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |

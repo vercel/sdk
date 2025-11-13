@@ -34,7 +34,6 @@ export const RemoveCertRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type RemoveCertRequest$Outbound = {
   id: string;
@@ -53,19 +52,6 @@ export const RemoveCertRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveCertRequest$ {
-  /** @deprecated use `RemoveCertRequest$inboundSchema` instead. */
-  export const inboundSchema = RemoveCertRequest$inboundSchema;
-  /** @deprecated use `RemoveCertRequest$outboundSchema` instead. */
-  export const outboundSchema = RemoveCertRequest$outboundSchema;
-  /** @deprecated use `RemoveCertRequest$Outbound` instead. */
-  export type Outbound = RemoveCertRequest$Outbound;
-}
-
 export function removeCertRequestToJSON(
   removeCertRequest: RemoveCertRequest,
 ): string {
@@ -73,7 +59,6 @@ export function removeCertRequestToJSON(
     RemoveCertRequest$outboundSchema.parse(removeCertRequest),
   );
 }
-
 export function removeCertRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveCertRequest, SDKValidationError> {
@@ -90,7 +75,6 @@ export const RemoveCertResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type RemoveCertResponseBody$Outbound = {};
 
@@ -101,19 +85,6 @@ export const RemoveCertResponseBody$outboundSchema: z.ZodType<
   RemoveCertResponseBody
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveCertResponseBody$ {
-  /** @deprecated use `RemoveCertResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveCertResponseBody$inboundSchema;
-  /** @deprecated use `RemoveCertResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveCertResponseBody$outboundSchema;
-  /** @deprecated use `RemoveCertResponseBody$Outbound` instead. */
-  export type Outbound = RemoveCertResponseBody$Outbound;
-}
-
 export function removeCertResponseBodyToJSON(
   removeCertResponseBody: RemoveCertResponseBody,
 ): string {
@@ -121,7 +92,6 @@ export function removeCertResponseBodyToJSON(
     RemoveCertResponseBody$outboundSchema.parse(removeCertResponseBody),
   );
 }
-
 export function removeCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveCertResponseBody, SDKValidationError> {

@@ -39,7 +39,6 @@ export const CheckDomainStatusRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type CheckDomainStatusRequest$Outbound = {
   name: string;
@@ -58,19 +57,6 @@ export const CheckDomainStatusRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDomainStatusRequest$ {
-  /** @deprecated use `CheckDomainStatusRequest$inboundSchema` instead. */
-  export const inboundSchema = CheckDomainStatusRequest$inboundSchema;
-  /** @deprecated use `CheckDomainStatusRequest$outboundSchema` instead. */
-  export const outboundSchema = CheckDomainStatusRequest$outboundSchema;
-  /** @deprecated use `CheckDomainStatusRequest$Outbound` instead. */
-  export type Outbound = CheckDomainStatusRequest$Outbound;
-}
-
 export function checkDomainStatusRequestToJSON(
   checkDomainStatusRequest: CheckDomainStatusRequest,
 ): string {
@@ -78,7 +64,6 @@ export function checkDomainStatusRequestToJSON(
     CheckDomainStatusRequest$outboundSchema.parse(checkDomainStatusRequest),
   );
 }
-
 export function checkDomainStatusRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CheckDomainStatusRequest, SDKValidationError> {
@@ -97,7 +82,6 @@ export const CheckDomainStatusResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   available: z.boolean(),
 });
-
 /** @internal */
 export type CheckDomainStatusResponseBody$Outbound = {
   available: boolean;
@@ -112,19 +96,6 @@ export const CheckDomainStatusResponseBody$outboundSchema: z.ZodType<
   available: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDomainStatusResponseBody$ {
-  /** @deprecated use `CheckDomainStatusResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CheckDomainStatusResponseBody$inboundSchema;
-  /** @deprecated use `CheckDomainStatusResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CheckDomainStatusResponseBody$outboundSchema;
-  /** @deprecated use `CheckDomainStatusResponseBody$Outbound` instead. */
-  export type Outbound = CheckDomainStatusResponseBody$Outbound;
-}
-
 export function checkDomainStatusResponseBodyToJSON(
   checkDomainStatusResponseBody: CheckDomainStatusResponseBody,
 ): string {
@@ -134,7 +105,6 @@ export function checkDomainStatusResponseBodyToJSON(
     ),
   );
 }
-
 export function checkDomainStatusResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CheckDomainStatusResponseBody, SDKValidationError> {

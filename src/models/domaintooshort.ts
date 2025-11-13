@@ -48,22 +48,10 @@ export class DomainTooShort extends VercelError {
 export const DomainTooShortCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainTooShortCode
 > = z.nativeEnum(DomainTooShortCode);
-
 /** @internal */
 export const DomainTooShortCode$outboundSchema: z.ZodNativeEnum<
   typeof DomainTooShortCode
 > = DomainTooShortCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainTooShortCode$ {
-  /** @deprecated use `DomainTooShortCode$inboundSchema` instead. */
-  export const inboundSchema = DomainTooShortCode$inboundSchema;
-  /** @deprecated use `DomainTooShortCode$outboundSchema` instead. */
-  export const outboundSchema = DomainTooShortCode$outboundSchema;
-}
 
 /** @internal */
 export const DomainTooShort$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const DomainTooShort$outboundSchema: z.ZodType<
     code: DomainTooShortCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainTooShort$ {
-  /** @deprecated use `DomainTooShort$inboundSchema` instead. */
-  export const inboundSchema = DomainTooShort$inboundSchema;
-  /** @deprecated use `DomainTooShort$outboundSchema` instead. */
-  export const outboundSchema = DomainTooShort$outboundSchema;
-  /** @deprecated use `DomainTooShort$Outbound` instead. */
-  export type Outbound = DomainTooShort$Outbound;
-}

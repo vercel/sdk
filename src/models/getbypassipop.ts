@@ -86,7 +86,6 @@ export const GetBypassIpRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetBypassIpRequest$Outbound = {
   projectId: string;
@@ -115,19 +114,6 @@ export const GetBypassIpRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBypassIpRequest$ {
-  /** @deprecated use `GetBypassIpRequest$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpRequest$inboundSchema;
-  /** @deprecated use `GetBypassIpRequest$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpRequest$outboundSchema;
-  /** @deprecated use `GetBypassIpRequest$Outbound` instead. */
-  export type Outbound = GetBypassIpRequest$Outbound;
-}
-
 export function getBypassIpRequestToJSON(
   getBypassIpRequest: GetBypassIpRequest,
 ): string {
@@ -135,7 +121,6 @@ export function getBypassIpRequestToJSON(
     GetBypassIpRequest$outboundSchema.parse(getBypassIpRequest),
   );
 }
-
 export function getBypassIpRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBypassIpRequest, SDKValidationError> {
@@ -150,22 +135,10 @@ export function getBypassIpRequestFromJSON(
 export const GetBypassIpAction$inboundSchema: z.ZodNativeEnum<
   typeof GetBypassIpAction
 > = z.nativeEnum(GetBypassIpAction);
-
 /** @internal */
 export const GetBypassIpAction$outboundSchema: z.ZodNativeEnum<
   typeof GetBypassIpAction
 > = GetBypassIpAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBypassIpAction$ {
-  /** @deprecated use `GetBypassIpAction$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpAction$inboundSchema;
-  /** @deprecated use `GetBypassIpAction$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpAction$outboundSchema;
-}
 
 /** @internal */
 export const GetBypassIpResult$inboundSchema: z.ZodType<
@@ -205,7 +178,6 @@ export const GetBypassIpResult$inboundSchema: z.ZodType<
     "ExpiresAt": "expiresAt",
   });
 });
-
 /** @internal */
 export type GetBypassIpResult$Outbound = {
   OwnerId: string;
@@ -263,19 +235,6 @@ export const GetBypassIpResult$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBypassIpResult$ {
-  /** @deprecated use `GetBypassIpResult$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpResult$inboundSchema;
-  /** @deprecated use `GetBypassIpResult$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpResult$outboundSchema;
-  /** @deprecated use `GetBypassIpResult$Outbound` instead. */
-  export type Outbound = GetBypassIpResult$Outbound;
-}
-
 export function getBypassIpResultToJSON(
   getBypassIpResult: GetBypassIpResult,
 ): string {
@@ -283,7 +242,6 @@ export function getBypassIpResultToJSON(
     GetBypassIpResult$outboundSchema.parse(getBypassIpResult),
   );
 }
-
 export function getBypassIpResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBypassIpResult, SDKValidationError> {
@@ -308,7 +266,6 @@ export const GetBypassIpPagination$inboundSchema: z.ZodType<
     "Id": "id",
   });
 });
-
 /** @internal */
 export type GetBypassIpPagination$Outbound = {
   OwnerId: string;
@@ -330,19 +287,6 @@ export const GetBypassIpPagination$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBypassIpPagination$ {
-  /** @deprecated use `GetBypassIpPagination$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpPagination$inboundSchema;
-  /** @deprecated use `GetBypassIpPagination$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpPagination$outboundSchema;
-  /** @deprecated use `GetBypassIpPagination$Outbound` instead. */
-  export type Outbound = GetBypassIpPagination$Outbound;
-}
-
 export function getBypassIpPaginationToJSON(
   getBypassIpPagination: GetBypassIpPagination,
 ): string {
@@ -350,7 +294,6 @@ export function getBypassIpPaginationToJSON(
     GetBypassIpPagination$outboundSchema.parse(getBypassIpPagination),
   );
 }
-
 export function getBypassIpPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBypassIpPagination, SDKValidationError> {
@@ -370,7 +313,6 @@ export const GetBypassIpResponseBody$inboundSchema: z.ZodType<
   result: z.array(z.lazy(() => GetBypassIpResult$inboundSchema)),
   pagination: z.lazy(() => GetBypassIpPagination$inboundSchema).optional(),
 });
-
 /** @internal */
 export type GetBypassIpResponseBody$Outbound = {
   result: Array<GetBypassIpResult$Outbound>;
@@ -387,19 +329,6 @@ export const GetBypassIpResponseBody$outboundSchema: z.ZodType<
   pagination: z.lazy(() => GetBypassIpPagination$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBypassIpResponseBody$ {
-  /** @deprecated use `GetBypassIpResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetBypassIpResponseBody$inboundSchema;
-  /** @deprecated use `GetBypassIpResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetBypassIpResponseBody$outboundSchema;
-  /** @deprecated use `GetBypassIpResponseBody$Outbound` instead. */
-  export type Outbound = GetBypassIpResponseBody$Outbound;
-}
-
 export function getBypassIpResponseBodyToJSON(
   getBypassIpResponseBody: GetBypassIpResponseBody,
 ): string {
@@ -407,7 +336,6 @@ export function getBypassIpResponseBodyToJSON(
     GetBypassIpResponseBody$outboundSchema.parse(getBypassIpResponseBody),
   );
 }
-
 export function getBypassIpResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBypassIpResponseBody, SDKValidationError> {

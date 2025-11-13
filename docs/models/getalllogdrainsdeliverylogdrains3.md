@@ -6,9 +6,9 @@
 import { GetAllLogDrainsDeliveryLogDrains3 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
 let value: GetAllLogDrainsDeliveryLogDrains3 = {
-  type: "syslog",
+  type: "clickhouse",
   endpoint: "<value>",
-  secret: "<value>",
+  table: "<value>",
 };
 ```
 
@@ -18,4 +18,4 @@ let value: GetAllLogDrainsDeliveryLogDrains3 = {
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `type`                                                                                           | [models.GetAllLogDrainsDeliveryLogDrainsType](../models/getalllogdrainsdeliverylogdrainstype.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
 | `endpoint`                                                                                       | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `secret`                                                                                         | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `table`                                                                                          | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |

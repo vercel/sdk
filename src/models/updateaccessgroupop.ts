@@ -113,22 +113,10 @@ export type UpdateAccessGroupResponseBody = {
 export const UpdateAccessGroupRole$inboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupRole
 > = z.nativeEnum(UpdateAccessGroupRole);
-
 /** @internal */
 export const UpdateAccessGroupRole$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupRole
 > = UpdateAccessGroupRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccessGroupRole$ {
-  /** @deprecated use `UpdateAccessGroupRole$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccessGroupRole$inboundSchema;
-  /** @deprecated use `UpdateAccessGroupRole$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccessGroupRole$outboundSchema;
-}
 
 /** @internal */
 export const Projects$inboundSchema: z.ZodType<
@@ -139,7 +127,6 @@ export const Projects$inboundSchema: z.ZodType<
   projectId: z.string(),
   role: z.nullable(UpdateAccessGroupRole$inboundSchema),
 });
-
 /** @internal */
 export type Projects$Outbound = {
   projectId: string;
@@ -156,23 +143,9 @@ export const Projects$outboundSchema: z.ZodType<
   role: z.nullable(UpdateAccessGroupRole$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Projects$ {
-  /** @deprecated use `Projects$inboundSchema` instead. */
-  export const inboundSchema = Projects$inboundSchema;
-  /** @deprecated use `Projects$outboundSchema` instead. */
-  export const outboundSchema = Projects$outboundSchema;
-  /** @deprecated use `Projects$Outbound` instead. */
-  export type Outbound = Projects$Outbound;
-}
-
 export function projectsToJSON(projects: Projects): string {
   return JSON.stringify(Projects$outboundSchema.parse(projects));
 }
-
 export function projectsFromJSON(
   jsonString: string,
 ): SafeParseResult<Projects, SDKValidationError> {
@@ -194,7 +167,6 @@ export const UpdateAccessGroupRequestBody$inboundSchema: z.ZodType<
   membersToAdd: z.array(z.string()).optional(),
   membersToRemove: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type UpdateAccessGroupRequestBody$Outbound = {
   name?: string | undefined;
@@ -215,19 +187,6 @@ export const UpdateAccessGroupRequestBody$outboundSchema: z.ZodType<
   membersToRemove: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccessGroupRequestBody$ {
-  /** @deprecated use `UpdateAccessGroupRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccessGroupRequestBody$inboundSchema;
-  /** @deprecated use `UpdateAccessGroupRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccessGroupRequestBody$outboundSchema;
-  /** @deprecated use `UpdateAccessGroupRequestBody$Outbound` instead. */
-  export type Outbound = UpdateAccessGroupRequestBody$Outbound;
-}
-
 export function updateAccessGroupRequestBodyToJSON(
   updateAccessGroupRequestBody: UpdateAccessGroupRequestBody,
 ): string {
@@ -237,7 +196,6 @@ export function updateAccessGroupRequestBodyToJSON(
     ),
   );
 }
-
 export function updateAccessGroupRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccessGroupRequestBody, SDKValidationError> {
@@ -263,7 +221,6 @@ export const UpdateAccessGroupRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateAccessGroupRequest$Outbound = {
   idOrName: string;
@@ -288,19 +245,6 @@ export const UpdateAccessGroupRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccessGroupRequest$ {
-  /** @deprecated use `UpdateAccessGroupRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccessGroupRequest$inboundSchema;
-  /** @deprecated use `UpdateAccessGroupRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccessGroupRequest$outboundSchema;
-  /** @deprecated use `UpdateAccessGroupRequest$Outbound` instead. */
-  export type Outbound = UpdateAccessGroupRequest$Outbound;
-}
-
 export function updateAccessGroupRequestToJSON(
   updateAccessGroupRequest: UpdateAccessGroupRequest,
 ): string {
@@ -308,7 +252,6 @@ export function updateAccessGroupRequestToJSON(
     UpdateAccessGroupRequest$outboundSchema.parse(updateAccessGroupRequest),
   );
 }
-
 export function updateAccessGroupRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccessGroupRequest, SDKValidationError> {
@@ -323,22 +266,10 @@ export function updateAccessGroupRequestFromJSON(
 export const UpdateAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupEntitlements
 > = z.nativeEnum(UpdateAccessGroupEntitlements);
-
 /** @internal */
 export const UpdateAccessGroupEntitlements$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupEntitlements
 > = UpdateAccessGroupEntitlements$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccessGroupEntitlements$ {
-  /** @deprecated use `UpdateAccessGroupEntitlements$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccessGroupEntitlements$inboundSchema;
-  /** @deprecated use `UpdateAccessGroupEntitlements$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccessGroupEntitlements$outboundSchema;
-}
 
 /** @internal */
 export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
@@ -357,7 +288,6 @@ export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
   teamRoles: z.array(z.string()).optional(),
   teamPermissions: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type UpdateAccessGroupResponseBody$Outbound = {
   entitlements: Array<string>;
@@ -390,19 +320,6 @@ export const UpdateAccessGroupResponseBody$outboundSchema: z.ZodType<
   teamPermissions: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAccessGroupResponseBody$ {
-  /** @deprecated use `UpdateAccessGroupResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateAccessGroupResponseBody$inboundSchema;
-  /** @deprecated use `UpdateAccessGroupResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateAccessGroupResponseBody$outboundSchema;
-  /** @deprecated use `UpdateAccessGroupResponseBody$Outbound` instead. */
-  export type Outbound = UpdateAccessGroupResponseBody$Outbound;
-}
-
 export function updateAccessGroupResponseBodyToJSON(
   updateAccessGroupResponseBody: UpdateAccessGroupResponseBody,
 ): string {
@@ -412,7 +329,6 @@ export function updateAccessGroupResponseBodyToJSON(
     ),
   );
 }
-
 export function updateAccessGroupResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateAccessGroupResponseBody, SDKValidationError> {

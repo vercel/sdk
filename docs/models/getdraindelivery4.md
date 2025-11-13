@@ -6,9 +6,8 @@
 import { GetDrainDelivery4 } from "@vercel/sdk/models/getdrainop.js";
 
 let value: GetDrainDelivery4 = {
-  type: "clickhouse",
-  endpoint: "<value>",
-  table: "<value>",
+  type: "internal",
+  target: "vercel-otel-traces-db",
 };
 ```
 
@@ -17,5 +16,4 @@ let value: GetDrainDelivery4 = {
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `type`                                                                                             | [models.GetDrainDeliveryDrainsResponse200Type](../models/getdraindeliverydrainsresponse200type.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `endpoint`                                                                                         | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `table`                                                                                            | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `target`                                                                                           | [models.GetDrainDeliveryTarget](../models/getdraindeliverytarget.md)                               | :heavy_check_mark:                                                                                 | N/A                                                                                                |

@@ -6225,16 +6225,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "resources": [
-                  {
-                    "partnerId": "\u003cid\u003e",
-                    "internalId": "\u003cid\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "productId": "\u003cid\u003e"
-                  }
-                ]
-              }
+              {"resources":[{"partnerId":"<id>","internalId":"<id>","name":"<value>","productId":"<id>"}]}
             type: simple
     x-speakeasy-test-group: marketplace
     x-speakeasy-test-rebuild: true
@@ -6254,12 +6245,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "id": "\u003cid\u003e",
-                "internalId": "\u003cid\u003e",
-                "name": "\u003cvalue\u003e",
-                "productId": "\u003cid\u003e"
-              }
+              {"id":"<id>","internalId":"<id>","name":"<value>","productId":"<id>"}
             type: simple
     x-speakeasy-test-group: marketplace
     x-speakeasy-test-rebuild: true
@@ -6282,17 +6268,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "products": [],
-                "integration": {
-                  "id": "\u003cid\u003e",
-                  "slug": "\u003cvalue\u003e",
-                  "name": "\u003cvalue\u003e"
-                },
-                "configuration": {
-                  "id": "\u003cid\u003e"
-                }
-              }
+              {"products":[],"integration":{"id":"<id>","slug":"<value>","name":"<value>"},"configuration":{"id":"<id>"}}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -6363,32 +6339,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "store": {
-                  "projectsMetadata": [
-                    {
-                      "id": "\u003cid\u003e",
-                      "projectId": "\u003cid\u003e",
-                      "name": "\u003cvalue\u003e",
-                      "environments": [],
-                      "envVarPrefix": "\u003cvalue\u003e",
-                      "environmentVariables": [
-                        "\u003cvalue 1\u003e",
-                        "\u003cvalue 2\u003e"
-                      ]
-                    }
-                  ],
-                  "usageQuotaExceeded": true,
-                  "status": "available",
-                  "externalResourceId": "\u003cid\u003e",
-                  "product": {
-                    "value": {
-                      "__@BRAND@8790": {}
-                    }
-                  },
-                  "secrets": []
-                }
-              }
+              {"store":{"projectsMetadata":[{"id":"<id>","projectId":"<id>","name":"<value>","environments":[],"envVarPrefix":"<value>","environmentVariables":["<value 1>","<value 2>"]}],"usageQuotaExceeded":true,"status":"available","externalResourceId":"<id>","product":{"value":{"__@BRAND@8797":{}}},"secrets":[]}}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -6414,18 +6365,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "plans": [
-                  {
-                    "type": "prepayment",
-                    "description": "outside fatally ultimate limply upon especially hm jellyfish expostulate",
-                    "id": "\u003cid\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "scope": "installation",
-                    "paymentMethodRequired": false
-                  }
-                ]
-              }
+              {"plans":[{"type":"prepayment","description":"outside fatally ultimate limply upon especially hm jellyfish expostulate","id":"<id>","name":"<value>","scope":"installation","paymentMethodRequired":false}]}
             type: simple
     x-speakeasy-test-group: integrations
     x-speakeasy-test-rebuild: true
@@ -6448,13 +6388,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "deleted": 2417.01,
-                "ids": [
-                  "\u003cvalue 1\u003e",
-                  "\u003cvalue 2\u003e"
-                ]
-              }
+              {"deleted":2417.01,"ids":["<value 1>","<value 2>"]}
             type: simple
     x-speakeasy-test-group: projects
     x-speakeasy-test-rebuild: true
@@ -6484,11 +6418,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "updated": false,
-                "origin": "\u003cvalue\u003e",
-                "certId": "\u003cid\u003e"
-              }
+              {"updated":false,"origin":"<value>","certId":"<id>"}
             type: simple
     x-speakeasy-test-group: projects
     x-speakeasy-test-rebuild: true
@@ -6501,10 +6431,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              [
-                "\u003cvalue 1\u003e",
-                "\u003cvalue 2\u003e"
-              ]
+              ["<value 1>","<value 2>"]
             type: simple
         parameters:
           - name: teamId
@@ -6528,12 +6455,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "years": 8935.16,
-                "purchasePrice": 6287.26,
-                "renewalPrice": 7886.17,
-                "transferPrice": 1743.63
-              }
+              {"years":8935.16,"purchasePrice":6287.26,"renewalPrice":7886.17,"transferPrice":1743.63}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6553,9 +6475,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "available": false
-              }
+              {"available":false}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6575,12 +6495,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "years": 40.44,
-                "purchasePrice": 7574.42,
-                "renewalPrice": 1523.71,
-                "transferPrice": 2786.9
-              }
+              {"years":40.44,"purchasePrice":7574.42,"renewalPrice":1523.71,"transferPrice":2786.9}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6598,9 +6513,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "results": []
-              }
+              {"results":[]}
             type: simple
         parameters:
           - name: teamId
@@ -6624,9 +6537,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "authCode": "\u003cvalue\u003e"
-              }
+              {"authCode":"<value>"}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6662,15 +6573,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "orderId": "\u003cid\u003e",
-                "_links": {
-                  "key": {
-                    "href": "\u003cvalue\u003e",
-                    "method": "GET"
-                  }
-                }
-              }
+              {"orderId":"<id>","_links":{"key":{"href":"<value>","method":"GET"}}}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6697,10 +6600,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "orderId": "\u003cid\u003e",
-                "_links": {}
-              }
+              {"orderId":"<id>","_links":{}}
             type: simple
         parameters:
           - name: teamId
@@ -6741,10 +6641,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "orderId": "\u003cid\u003e",
-                "_links": {}
-              }
+              {"orderId":"<id>","_links":{}}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6764,9 +6661,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "status": "pending_transfer"
-              }
+              {"status":"pending_transfer"}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6791,10 +6686,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "orderId": "\u003cid\u003e",
-                "_links": {}
-              }
+              {"orderId":"<id>","_links":{}}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6834,19 +6726,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "orderId": "\u003cid\u003e",
-                "domains": [
-                  {
-                    "purchaseType": "renewal",
-                    "years": 3271.32,
-                    "domainName": "annual-atrium.biz",
-                    "status": "refunded",
-                    "price": 5522.99
-                  }
-                ],
-                "status": "purchasing"
-              }
+              {"orderId":"<id>","domains":[{"purchaseType":"renewal","years":3271.32,"domainName":"annual-atrium.biz","status":"refunded","price":5522.99}],"status":"purchasing"}
             type: simple
     x-speakeasy-test-group: domains-registrar
     x-speakeasy-test-rebuild: true
@@ -6903,9 +6783,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "name": "\u003cvalue\u003e"
-              }
+              {"name":"<value>"}
             type: simple
     x-speakeasy-test-group: marketplace
     x-speakeasy-test-rebuild: true
@@ -6922,9 +6800,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "actions": []
-              }
+              {"actions":[]}
             type: simple
     x-speakeasy-test-group: security
     x-speakeasy-test-rebuild: true
@@ -6970,20 +6846,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "drains": [
-                  {
-                    "id": "\u003cid\u003e",
-                    "ownerId": "\u003cid\u003e",
-                    "name": "\u003cvalue\u003e",
-                    "createdAt": 7495.57,
-                    "updatedAt": 4759.82,
-                    "source": {
-                      "kind": "self-served"
-                    }
-                  }
-                ]
-              }
+              {"drains":[{"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7495.57,"updatedAt":4759.82,"source":{"kind":"self-served"}}]}
             type: simple
     x-speakeasy-test-group: logDrains
     x-speakeasy-test-rebuild: true
@@ -7029,16 +6892,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "id": "\u003cid\u003e",
-                "ownerId": "\u003cid\u003e",
-                "name": "\u003cvalue\u003e",
-                "createdAt": 3665.73,
-                "updatedAt": 3681.88,
-                "source": {
-                  "kind": "self-served"
-                }
-              }
+              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":3665.73,"updatedAt":3681.88,"source":{"kind":"self-served"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -7061,9 +6915,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "drains": []
-              }
+              {"drains":[]}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -7086,18 +6938,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "id": "\u003cid\u003e",
-                "ownerId": "\u003cid\u003e",
-                "name": "\u003cvalue\u003e",
-                "createdAt": 1182.63,
-                "updatedAt": 7579.11,
-                "source": {
-                  "kind": "integration",
-                  "integrationId": "\u003cid\u003e",
-                  "integrationConfigurationId": "\u003cid\u003e"
-                }
-              }
+              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":1182.63,"updatedAt":7579.11,"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -7120,18 +6961,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "id": "\u003cid\u003e",
-                "ownerId": "\u003cid\u003e",
-                "name": "\u003cvalue\u003e",
-                "createdAt": 7781.81,
-                "updatedAt": 8087.89,
-                "source": {
-                  "kind": "integration",
-                  "integrationId": "\u003cid\u003e",
-                  "integrationConfigurationId": "\u003cid\u003e"
-                }
-              }
+              {"id":"<id>","ownerId":"<id>","name":"<value>","createdAt":7781.81,"updatedAt":8087.89,"source":{"kind":"integration","integrationId":"<id>","integrationConfigurationId":"<id>"}}
             type: simple
     x-speakeasy-test-group: drains
     x-speakeasy-test-rebuild: true
@@ -7179,10 +7009,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "created": [],
-                "failed": []
-              }
+              {"created":[],"failed":[]}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -7220,14 +7047,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "data": [],
-                "pagination": {
-                  "count": 20,
-                  "next": 1540095775951,
-                  "prev": 1540095775951
-                }
-              }
+              {"data":[],"pagination":{"count":20,"next":1540095775951,"prev":1540095775951}}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -7251,17 +7071,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "updated": [],
-                "failed": [
-                  {
-                    "error": {
-                      "code": "\u003cvalue\u003e",
-                      "message": "\u003cvalue\u003e"
-                    }
-                  }
-                ]
-              }
+              {"updated":[],"failed":[{"error":{"code":"<value>","message":"<value>"}}]}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -7287,20 +7097,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "deleted": [
-                  "\u003cvalue 1\u003e",
-                  "\u003cvalue 2\u003e"
-                ],
-                "failed": [
-                  {
-                    "error": {
-                      "code": "\u003cvalue\u003e",
-                      "message": "\u003cvalue\u003e"
-                    }
-                  }
-                ]
-              }
+              {"deleted":["<value 1>","<value 2>"],"failed":[{"error":{"code":"<value>","message":"<value>"}}]}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -7323,26 +7120,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "created": "2021-02-10T13:11:49.180Z",
-                "key": "my-api-key",
-                "ownerId": "team_LLHUOMOoDlqOp8wPE4kFo9pE",
-                "id": "env_XCG7t7AIHuO2SBA8667zNUiM",
-                "createdBy": "2qDDuGFTWXBLDNnqZfWPDp1A",
-                "deletedBy": "2qDDuGFTWXBLDNnqZfWPDp1A",
-                "updatedBy": "2qDDuGFTWXBLDNnqZfWPDp1A",
-                "createdAt": 1609492210000,
-                "deletedAt": 1609492210000,
-                "updatedAt": 1609492210000,
-                "projectId": [
-                  "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-                  "prj_2WjyKQmM8ZnGcJsPWMrasEFg"
-                ],
-                "type": "encrypted",
-                "target": [
-                  "production"
-                ]
-              }
+              {"created":"2021-02-10T13:11:49.180Z","key":"my-api-key","ownerId":"team_LLHUOMOoDlqOp8wPE4kFo9pE","id":"env_XCG7t7AIHuO2SBA8667zNUiM","createdBy":"2qDDuGFTWXBLDNnqZfWPDp1A","deletedBy":"2qDDuGFTWXBLDNnqZfWPDp1A","updatedBy":"2qDDuGFTWXBLDNnqZfWPDp1A","createdAt":1609492210000,"deletedAt":1609492210000,"updatedAt":1609492210000,"projectId":["prj_2WjyKQmM8ZnGcJsPWMrHRHrE","prj_2WjyKQmM8ZnGcJsPWMrasEFg"],"type":"encrypted","target":["production"]}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -7368,9 +7146,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "id": "\u003cid\u003e"
-              }
+              {"id":"<id>"}
             type: simple
     x-speakeasy-test-group: environment
     x-speakeasy-test-rebuild: true
@@ -7398,16 +7174,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              [
-                {
-                  "envId": "\u003cid\u003e",
-                  "connectConfigurationId": "\u003cid\u003e",
-                  "passive": true,
-                  "buildsEnabled": false,
-                  "createdAt": 5943.97,
-                  "updatedAt": 7734.38
-                }
-              ]
+              [{"envId":"<id>","connectConfigurationId":"<id>","passive":true,"buildsEnabled":false,"createdAt":5943.97,"updatedAt":7734.38}]
             type: simple
     x-speakeasy-test-group: connect
     x-speakeasy-test-rebuild: true
@@ -7430,9 +7197,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "clientCerts": []
-              }
+              {"clientCerts":[]}
             type: simple
     x-speakeasy-test-group: projects
     x-speakeasy-test-rebuild: true
@@ -7458,10 +7223,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "origin": "\u003cvalue\u003e",
-                "certId": "\u003cid\u003e"
-              }
+              {"origin":"<value>","certId":"<id>"}
             type: simple
     x-speakeasy-test-group: projects
     x-speakeasy-test-rebuild: true
@@ -7484,18 +7246,7 @@ workflows:
           - condition: $response.header.Content-Type == application/json
           - context: $response.body
             condition: |
-              {
-                "uid": "kr1PsOIzqEL5Xg6M4VZcZosf",
-                "username": "john-doe",
-                "email": "john@user.co",
-                "role": "MEMBER",
-                "teamRoles": [
-                  "MEMBER"
-                ],
-                "teamPermissions": [
-                  "CreateProject"
-                ]
-              }
+              {"uid":"kr1PsOIzqEL5Xg6M4VZcZosf","username":"john-doe","email":"john@user.co","role":"MEMBER","teamRoles":["MEMBER"],"teamPermissions":["CreateProject"]}
             type: simple
     x-speakeasy-test-group: teams
     x-speakeasy-test-rebuild: true

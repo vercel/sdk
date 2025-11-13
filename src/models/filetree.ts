@@ -58,21 +58,9 @@ export type FileTree = {
 export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
   Type,
 );
-
 /** @internal */
 export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
   Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
-}
 
 /** @internal */
 export const FileTree$inboundSchema: z.ZodType<
@@ -87,7 +75,6 @@ export const FileTree$inboundSchema: z.ZodType<
   contentType: z.string().optional(),
   mode: z.number(),
 });
-
 /** @internal */
 export type FileTree$Outbound = {
   name: string;
@@ -112,23 +99,9 @@ export const FileTree$outboundSchema: z.ZodType<
   mode: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileTree$ {
-  /** @deprecated use `FileTree$inboundSchema` instead. */
-  export const inboundSchema = FileTree$inboundSchema;
-  /** @deprecated use `FileTree$outboundSchema` instead. */
-  export const outboundSchema = FileTree$outboundSchema;
-  /** @deprecated use `FileTree$Outbound` instead. */
-  export type Outbound = FileTree$Outbound;
-}
-
 export function fileTreeToJSON(fileTree: FileTree): string {
   return JSON.stringify(FileTree$outboundSchema.parse(fileTree));
 }
-
 export function fileTreeFromJSON(
   jsonString: string,
 ): SafeParseResult<FileTree, SDKValidationError> {

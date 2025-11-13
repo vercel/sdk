@@ -188,7 +188,6 @@ export const ListSharedEnvVariableRequest$inboundSchema: z.ZodType<
     "exclude-projectIdQueryParameter1": "excludeProjectIdQueryParameter1",
   });
 });
-
 /** @internal */
 export type ListSharedEnvVariableRequest$Outbound = {
   search?: string | undefined;
@@ -226,19 +225,6 @@ export const ListSharedEnvVariableRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSharedEnvVariableRequest$ {
-  /** @deprecated use `ListSharedEnvVariableRequest$inboundSchema` instead. */
-  export const inboundSchema = ListSharedEnvVariableRequest$inboundSchema;
-  /** @deprecated use `ListSharedEnvVariableRequest$outboundSchema` instead. */
-  export const outboundSchema = ListSharedEnvVariableRequest$outboundSchema;
-  /** @deprecated use `ListSharedEnvVariableRequest$Outbound` instead. */
-  export type Outbound = ListSharedEnvVariableRequest$Outbound;
-}
-
 export function listSharedEnvVariableRequestToJSON(
   listSharedEnvVariableRequest: ListSharedEnvVariableRequest,
 ): string {
@@ -248,7 +234,6 @@ export function listSharedEnvVariableRequestToJSON(
     ),
   );
 }
-
 export function listSharedEnvVariableRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSharedEnvVariableRequest, SDKValidationError> {
@@ -263,43 +248,19 @@ export function listSharedEnvVariableRequestFromJSON(
 export const ListSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableType
 > = z.nativeEnum(ListSharedEnvVariableType);
-
 /** @internal */
 export const ListSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableType
 > = ListSharedEnvVariableType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSharedEnvVariableType$ {
-  /** @deprecated use `ListSharedEnvVariableType$inboundSchema` instead. */
-  export const inboundSchema = ListSharedEnvVariableType$inboundSchema;
-  /** @deprecated use `ListSharedEnvVariableType$outboundSchema` instead. */
-  export const outboundSchema = ListSharedEnvVariableType$outboundSchema;
-}
-
 /** @internal */
 export const ListSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableTarget
 > = z.nativeEnum(ListSharedEnvVariableTarget);
-
 /** @internal */
 export const ListSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableTarget
 > = ListSharedEnvVariableTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSharedEnvVariableTarget$ {
-  /** @deprecated use `ListSharedEnvVariableTarget$inboundSchema` instead. */
-  export const inboundSchema = ListSharedEnvVariableTarget$inboundSchema;
-  /** @deprecated use `ListSharedEnvVariableTarget$outboundSchema` instead. */
-  export const outboundSchema = ListSharedEnvVariableTarget$outboundSchema;
-}
 
 /** @internal */
 export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
@@ -324,7 +285,6 @@ export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
     comment: z.string().optional(),
     lastEditedByDisplayName: z.string().optional(),
   });
-
 /** @internal */
 export type Data$Outbound = {
   created?: string | undefined;
@@ -370,23 +330,9 @@ export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
     lastEditedByDisplayName: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
-}
-
 export function dataToJSON(data: Data): string {
   return JSON.stringify(Data$outboundSchema.parse(data));
 }
-
 export function dataFromJSON(
   jsonString: string,
 ): SafeParseResult<Data, SDKValidationError> {
@@ -406,7 +352,6 @@ export const ListSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   data: z.array(z.lazy(() => Data$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-
 /** @internal */
 export type ListSharedEnvVariableResponseBody$Outbound = {
   data: Array<Data$Outbound>;
@@ -423,20 +368,6 @@ export const ListSharedEnvVariableResponseBody$outboundSchema: z.ZodType<
   pagination: Pagination$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListSharedEnvVariableResponseBody$ {
-  /** @deprecated use `ListSharedEnvVariableResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListSharedEnvVariableResponseBody$inboundSchema;
-  /** @deprecated use `ListSharedEnvVariableResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    ListSharedEnvVariableResponseBody$outboundSchema;
-  /** @deprecated use `ListSharedEnvVariableResponseBody$Outbound` instead. */
-  export type Outbound = ListSharedEnvVariableResponseBody$Outbound;
-}
-
 export function listSharedEnvVariableResponseBodyToJSON(
   listSharedEnvVariableResponseBody: ListSharedEnvVariableResponseBody,
 ): string {
@@ -446,7 +377,6 @@ export function listSharedEnvVariableResponseBodyToJSON(
     ),
   );
 }
-
 export function listSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListSharedEnvVariableResponseBody, SDKValidationError> {

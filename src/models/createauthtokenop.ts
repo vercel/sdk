@@ -54,7 +54,6 @@ export const CreateAuthTokenRequestBody$inboundSchema: z.ZodType<
   name: z.string(),
   expiresAt: z.number().optional(),
 });
-
 /** @internal */
 export type CreateAuthTokenRequestBody$Outbound = {
   name: string;
@@ -71,19 +70,6 @@ export const CreateAuthTokenRequestBody$outboundSchema: z.ZodType<
   expiresAt: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAuthTokenRequestBody$ {
-  /** @deprecated use `CreateAuthTokenRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateAuthTokenRequestBody$inboundSchema;
-  /** @deprecated use `CreateAuthTokenRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateAuthTokenRequestBody$outboundSchema;
-  /** @deprecated use `CreateAuthTokenRequestBody$Outbound` instead. */
-  export type Outbound = CreateAuthTokenRequestBody$Outbound;
-}
-
 export function createAuthTokenRequestBodyToJSON(
   createAuthTokenRequestBody: CreateAuthTokenRequestBody,
 ): string {
@@ -91,7 +77,6 @@ export function createAuthTokenRequestBodyToJSON(
     CreateAuthTokenRequestBody$outboundSchema.parse(createAuthTokenRequestBody),
   );
 }
-
 export function createAuthTokenRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAuthTokenRequestBody, SDKValidationError> {
@@ -116,7 +101,6 @@ export const CreateAuthTokenRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateAuthTokenRequest$Outbound = {
   teamId?: string | undefined;
@@ -139,19 +123,6 @@ export const CreateAuthTokenRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAuthTokenRequest$ {
-  /** @deprecated use `CreateAuthTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateAuthTokenRequest$inboundSchema;
-  /** @deprecated use `CreateAuthTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateAuthTokenRequest$outboundSchema;
-  /** @deprecated use `CreateAuthTokenRequest$Outbound` instead. */
-  export type Outbound = CreateAuthTokenRequest$Outbound;
-}
-
 export function createAuthTokenRequestToJSON(
   createAuthTokenRequest: CreateAuthTokenRequest,
 ): string {
@@ -159,7 +130,6 @@ export function createAuthTokenRequestToJSON(
     CreateAuthTokenRequest$outboundSchema.parse(createAuthTokenRequest),
   );
 }
-
 export function createAuthTokenRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAuthTokenRequest, SDKValidationError> {
@@ -179,7 +149,6 @@ export const CreateAuthTokenResponseBody$inboundSchema: z.ZodType<
   token: AuthToken$inboundSchema,
   bearerToken: z.string(),
 });
-
 /** @internal */
 export type CreateAuthTokenResponseBody$Outbound = {
   token: AuthToken$Outbound;
@@ -196,19 +165,6 @@ export const CreateAuthTokenResponseBody$outboundSchema: z.ZodType<
   bearerToken: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAuthTokenResponseBody$ {
-  /** @deprecated use `CreateAuthTokenResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateAuthTokenResponseBody$inboundSchema;
-  /** @deprecated use `CreateAuthTokenResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreateAuthTokenResponseBody$outboundSchema;
-  /** @deprecated use `CreateAuthTokenResponseBody$Outbound` instead. */
-  export type Outbound = CreateAuthTokenResponseBody$Outbound;
-}
-
 export function createAuthTokenResponseBodyToJSON(
   createAuthTokenResponseBody: CreateAuthTokenResponseBody,
 ): string {
@@ -218,7 +174,6 @@ export function createAuthTokenResponseBodyToJSON(
     ),
   );
 }
-
 export function createAuthTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAuthTokenResponseBody, SDKValidationError> {

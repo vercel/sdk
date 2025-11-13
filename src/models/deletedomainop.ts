@@ -39,7 +39,6 @@ export const DeleteDomainRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteDomainRequest$Outbound = {
   domain: string;
@@ -58,19 +57,6 @@ export const DeleteDomainRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDomainRequest$ {
-  /** @deprecated use `DeleteDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteDomainRequest$inboundSchema;
-  /** @deprecated use `DeleteDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteDomainRequest$outboundSchema;
-  /** @deprecated use `DeleteDomainRequest$Outbound` instead. */
-  export type Outbound = DeleteDomainRequest$Outbound;
-}
-
 export function deleteDomainRequestToJSON(
   deleteDomainRequest: DeleteDomainRequest,
 ): string {
@@ -78,7 +64,6 @@ export function deleteDomainRequestToJSON(
     DeleteDomainRequest$outboundSchema.parse(deleteDomainRequest),
   );
 }
-
 export function deleteDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDomainRequest, SDKValidationError> {
@@ -97,7 +82,6 @@ export const DeleteDomainResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   uid: z.string(),
 });
-
 /** @internal */
 export type DeleteDomainResponseBody$Outbound = {
   uid: string;
@@ -112,19 +96,6 @@ export const DeleteDomainResponseBody$outboundSchema: z.ZodType<
   uid: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteDomainResponseBody$ {
-  /** @deprecated use `DeleteDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteDomainResponseBody$inboundSchema;
-  /** @deprecated use `DeleteDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteDomainResponseBody$outboundSchema;
-  /** @deprecated use `DeleteDomainResponseBody$Outbound` instead. */
-  export type Outbound = DeleteDomainResponseBody$Outbound;
-}
-
 export function deleteDomainResponseBodyToJSON(
   deleteDomainResponseBody: DeleteDomainResponseBody,
 ): string {
@@ -132,7 +103,6 @@ export function deleteDomainResponseBodyToJSON(
     DeleteDomainResponseBody$outboundSchema.parse(deleteDomainResponseBody),
   );
 }
-
 export function deleteDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteDomainResponseBody, SDKValidationError> {

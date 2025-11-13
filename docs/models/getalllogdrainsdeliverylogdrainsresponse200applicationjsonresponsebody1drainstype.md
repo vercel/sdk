@@ -9,11 +9,11 @@ import {
 
 let value:
   GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONResponseBody1DrainsType =
-    "clickhouse";
+    "http";
 ```
 
 ## Values
 
 ```typescript
-"clickhouse"
+"http"
 ```

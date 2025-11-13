@@ -78,7 +78,6 @@ export const UpdateDomainAutoRenewRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   autoRenew: z.boolean(),
 });
-
 /** @internal */
 export type UpdateDomainAutoRenewRequestBody$Outbound = {
   autoRenew: boolean;
@@ -93,19 +92,6 @@ export const UpdateDomainAutoRenewRequestBody$outboundSchema: z.ZodType<
   autoRenew: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainAutoRenewRequestBody$ {
-  /** @deprecated use `UpdateDomainAutoRenewRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateDomainAutoRenewRequestBody$inboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateDomainAutoRenewRequestBody$outboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewRequestBody$Outbound` instead. */
-  export type Outbound = UpdateDomainAutoRenewRequestBody$Outbound;
-}
-
 export function updateDomainAutoRenewRequestBodyToJSON(
   updateDomainAutoRenewRequestBody: UpdateDomainAutoRenewRequestBody,
 ): string {
@@ -115,7 +101,6 @@ export function updateDomainAutoRenewRequestBodyToJSON(
     ),
   );
 }
-
 export function updateDomainAutoRenewRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDomainAutoRenewRequestBody, SDKValidationError> {
@@ -140,7 +125,6 @@ export const UpdateDomainAutoRenewRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateDomainAutoRenewRequest$Outbound = {
   domain: string;
@@ -163,19 +147,6 @@ export const UpdateDomainAutoRenewRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainAutoRenewRequest$ {
-  /** @deprecated use `UpdateDomainAutoRenewRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateDomainAutoRenewRequest$inboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateDomainAutoRenewRequest$outboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewRequest$Outbound` instead. */
-  export type Outbound = UpdateDomainAutoRenewRequest$Outbound;
-}
-
 export function updateDomainAutoRenewRequestToJSON(
   updateDomainAutoRenewRequest: UpdateDomainAutoRenewRequest,
 ): string {
@@ -185,7 +156,6 @@ export function updateDomainAutoRenewRequestToJSON(
     ),
   );
 }
-
 export function updateDomainAutoRenewRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDomainAutoRenewRequest, SDKValidationError> {
@@ -203,7 +173,6 @@ export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
-
 /** @internal */
 export type UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound =
   | NotAuthorizedForScope$Outbound
@@ -217,22 +186,6 @@ export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema:
     unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainAutoRenewDomainsRegistrarResponseBody$ {
-  /** @deprecated use `UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateDomainAutoRenewDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound =
-    UpdateDomainAutoRenewDomainsRegistrarResponseBody$Outbound;
-}
-
 export function updateDomainAutoRenewDomainsRegistrarResponseBodyToJSON(
   updateDomainAutoRenewDomainsRegistrarResponseBody:
     UpdateDomainAutoRenewDomainsRegistrarResponseBody,
@@ -243,7 +196,6 @@ export function updateDomainAutoRenewDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function updateDomainAutoRenewDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -271,7 +223,6 @@ export const UpdateDomainAutoRenewResponseBody$inboundSchema: z.ZodType<
   DomainNotRegistered$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
-
 /** @internal */
 export type UpdateDomainAutoRenewResponseBody$Outbound =
   | DomainAlreadyRenewing$Outbound
@@ -291,20 +242,6 @@ export const UpdateDomainAutoRenewResponseBody$outboundSchema: z.ZodType<
   HttpApiDecodeError$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDomainAutoRenewResponseBody$ {
-  /** @deprecated use `UpdateDomainAutoRenewResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateDomainAutoRenewResponseBody$inboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateDomainAutoRenewResponseBody$outboundSchema;
-  /** @deprecated use `UpdateDomainAutoRenewResponseBody$Outbound` instead. */
-  export type Outbound = UpdateDomainAutoRenewResponseBody$Outbound;
-}
-
 export function updateDomainAutoRenewResponseBodyToJSON(
   updateDomainAutoRenewResponseBody: UpdateDomainAutoRenewResponseBody,
 ): string {
@@ -314,7 +251,6 @@ export function updateDomainAutoRenewResponseBodyToJSON(
     ),
   );
 }
-
 export function updateDomainAutoRenewResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateDomainAutoRenewResponseBody, SDKValidationError> {

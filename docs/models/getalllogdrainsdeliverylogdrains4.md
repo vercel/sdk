@@ -6,9 +6,8 @@
 import { GetAllLogDrainsDeliveryLogDrains4 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
 let value: GetAllLogDrainsDeliveryLogDrains4 = {
-  type: "clickhouse",
-  endpoint: "<value>",
-  table: "<value>",
+  type: "internal",
+  target: "vercel-otel-traces-db",
 };
 ```
 
@@ -17,5 +16,4 @@ let value: GetAllLogDrainsDeliveryLogDrains4 = {
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `type`                                                                                                           | [models.GetAllLogDrainsDeliveryLogDrainsResponseType](../models/getalllogdrainsdeliverylogdrainsresponsetype.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `endpoint`                                                                                                       | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
-| `table`                                                                                                          | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `target`                                                                                                         | [models.GetAllLogDrainsDeliveryLogDrainsTarget](../models/getalllogdrainsdeliverylogdrainstarget.md)             | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

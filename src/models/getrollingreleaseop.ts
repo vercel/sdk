@@ -389,21 +389,9 @@ export type GetRollingReleaseResponseBody = {
 export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
   State,
 );
-
 /** @internal */
 export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
   State$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace State$ {
-  /** @deprecated use `State$inboundSchema` instead. */
-  export const inboundSchema = State$inboundSchema;
-  /** @deprecated use `State$outboundSchema` instead. */
-  export const outboundSchema = State$outboundSchema;
-}
 
 /** @internal */
 export const GetRollingReleaseRequest$inboundSchema: z.ZodType<
@@ -416,7 +404,6 @@ export const GetRollingReleaseRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetRollingReleaseRequest$Outbound = {
   idOrName: string;
@@ -437,19 +424,6 @@ export const GetRollingReleaseRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseRequest$ {
-  /** @deprecated use `GetRollingReleaseRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseRequest$inboundSchema;
-  /** @deprecated use `GetRollingReleaseRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseRequest$outboundSchema;
-  /** @deprecated use `GetRollingReleaseRequest$Outbound` instead. */
-  export type Outbound = GetRollingReleaseRequest$Outbound;
-}
-
 export function getRollingReleaseRequestToJSON(
   getRollingReleaseRequest: GetRollingReleaseRequest,
 ): string {
@@ -457,7 +431,6 @@ export function getRollingReleaseRequestToJSON(
     GetRollingReleaseRequest$outboundSchema.parse(getRollingReleaseRequest),
   );
 }
-
 export function getRollingReleaseRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseRequest, SDKValidationError> {
@@ -472,85 +445,37 @@ export function getRollingReleaseRequestFromJSON(
 export const GetRollingReleaseState$inboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseState
 > = z.nativeEnum(GetRollingReleaseState);
-
 /** @internal */
 export const GetRollingReleaseState$outboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseState
 > = GetRollingReleaseState$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseState$ {
-  /** @deprecated use `GetRollingReleaseState$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseState$inboundSchema;
-  /** @deprecated use `GetRollingReleaseState$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseState$outboundSchema;
-}
-
 /** @internal */
 export const GetRollingReleaseTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseTarget
 > = z.nativeEnum(GetRollingReleaseTarget);
-
 /** @internal */
 export const GetRollingReleaseTarget$outboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseTarget
 > = GetRollingReleaseTarget$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseTarget$ {
-  /** @deprecated use `GetRollingReleaseTarget$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseTarget$inboundSchema;
-  /** @deprecated use `GetRollingReleaseTarget$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseTarget$outboundSchema;
-}
-
 /** @internal */
 export const GetRollingReleaseSource$inboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseSource
 > = z.nativeEnum(GetRollingReleaseSource);
-
 /** @internal */
 export const GetRollingReleaseSource$outboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseSource
 > = GetRollingReleaseSource$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseSource$ {
-  /** @deprecated use `GetRollingReleaseSource$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseSource$inboundSchema;
-  /** @deprecated use `GetRollingReleaseSource$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseSource$outboundSchema;
-}
-
 /** @internal */
 export const GetRollingReleaseReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseReadyState
 > = z.nativeEnum(GetRollingReleaseReadyState);
-
 /** @internal */
 export const GetRollingReleaseReadyState$outboundSchema: z.ZodNativeEnum<
   typeof GetRollingReleaseReadyState
 > = GetRollingReleaseReadyState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseReadyState$ {
-  /** @deprecated use `GetRollingReleaseReadyState$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseReadyState$inboundSchema;
-  /** @deprecated use `GetRollingReleaseReadyState$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseReadyState$outboundSchema;
-}
 
 /** @internal */
 export const CurrentDeployment$inboundSchema: z.ZodType<
@@ -567,7 +492,6 @@ export const CurrentDeployment$inboundSchema: z.ZodType<
   readyState: GetRollingReleaseReadyState$inboundSchema,
   readyStateAt: z.number().optional(),
 });
-
 /** @internal */
 export type CurrentDeployment$Outbound = {
   id: string;
@@ -596,19 +520,6 @@ export const CurrentDeployment$outboundSchema: z.ZodType<
   readyStateAt: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CurrentDeployment$ {
-  /** @deprecated use `CurrentDeployment$inboundSchema` instead. */
-  export const inboundSchema = CurrentDeployment$inboundSchema;
-  /** @deprecated use `CurrentDeployment$outboundSchema` instead. */
-  export const outboundSchema = CurrentDeployment$outboundSchema;
-  /** @deprecated use `CurrentDeployment$Outbound` instead. */
-  export type Outbound = CurrentDeployment$Outbound;
-}
-
 export function currentDeploymentToJSON(
   currentDeployment: CurrentDeployment,
 ): string {
@@ -616,7 +527,6 @@ export function currentDeploymentToJSON(
     CurrentDeployment$outboundSchema.parse(currentDeployment),
   );
 }
-
 export function currentDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<CurrentDeployment, SDKValidationError> {
@@ -632,71 +542,29 @@ export const GetRollingReleaseRollingReleaseTarget$inboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseTarget> = z.nativeEnum(
     GetRollingReleaseRollingReleaseTarget,
   );
-
 /** @internal */
 export const GetRollingReleaseRollingReleaseTarget$outboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseTarget> =
     GetRollingReleaseRollingReleaseTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseRollingReleaseTarget$ {
-  /** @deprecated use `GetRollingReleaseRollingReleaseTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseRollingReleaseTarget$inboundSchema;
-  /** @deprecated use `GetRollingReleaseRollingReleaseTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseRollingReleaseTarget$outboundSchema;
-}
 
 /** @internal */
 export const GetRollingReleaseRollingReleaseSource$inboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseSource> = z.nativeEnum(
     GetRollingReleaseRollingReleaseSource,
   );
-
 /** @internal */
 export const GetRollingReleaseRollingReleaseSource$outboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseSource> =
     GetRollingReleaseRollingReleaseSource$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseRollingReleaseSource$ {
-  /** @deprecated use `GetRollingReleaseRollingReleaseSource$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseRollingReleaseSource$inboundSchema;
-  /** @deprecated use `GetRollingReleaseRollingReleaseSource$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseRollingReleaseSource$outboundSchema;
-}
-
 /** @internal */
 export const GetRollingReleaseRollingReleaseReadyState$inboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseReadyState> = z
     .nativeEnum(GetRollingReleaseRollingReleaseReadyState);
-
 /** @internal */
 export const GetRollingReleaseRollingReleaseReadyState$outboundSchema:
   z.ZodNativeEnum<typeof GetRollingReleaseRollingReleaseReadyState> =
     GetRollingReleaseRollingReleaseReadyState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseRollingReleaseReadyState$ {
-  /** @deprecated use `GetRollingReleaseRollingReleaseReadyState$inboundSchema` instead. */
-  export const inboundSchema =
-    GetRollingReleaseRollingReleaseReadyState$inboundSchema;
-  /** @deprecated use `GetRollingReleaseRollingReleaseReadyState$outboundSchema` instead. */
-  export const outboundSchema =
-    GetRollingReleaseRollingReleaseReadyState$outboundSchema;
-}
 
 /** @internal */
 export const CanaryDeployment$inboundSchema: z.ZodType<
@@ -714,7 +582,6 @@ export const CanaryDeployment$inboundSchema: z.ZodType<
   readyState: GetRollingReleaseRollingReleaseReadyState$inboundSchema,
   readyStateAt: z.number().optional(),
 });
-
 /** @internal */
 export type CanaryDeployment$Outbound = {
   id: string;
@@ -744,19 +611,6 @@ export const CanaryDeployment$outboundSchema: z.ZodType<
   readyStateAt: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CanaryDeployment$ {
-  /** @deprecated use `CanaryDeployment$inboundSchema` instead. */
-  export const inboundSchema = CanaryDeployment$inboundSchema;
-  /** @deprecated use `CanaryDeployment$outboundSchema` instead. */
-  export const outboundSchema = CanaryDeployment$outboundSchema;
-  /** @deprecated use `CanaryDeployment$Outbound` instead. */
-  export type Outbound = CanaryDeployment$Outbound;
-}
-
 export function canaryDeploymentToJSON(
   canaryDeployment: CanaryDeployment,
 ): string {
@@ -764,7 +618,6 @@ export function canaryDeploymentToJSON(
     CanaryDeployment$outboundSchema.parse(canaryDeployment),
   );
 }
-
 export function canaryDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<CanaryDeployment, SDKValidationError> {
@@ -779,22 +632,10 @@ export function canaryDeploymentFromJSON(
 export const AdvancementType$inboundSchema: z.ZodNativeEnum<
   typeof AdvancementType
 > = z.nativeEnum(AdvancementType);
-
 /** @internal */
 export const AdvancementType$outboundSchema: z.ZodNativeEnum<
   typeof AdvancementType
 > = AdvancementType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AdvancementType$ {
-  /** @deprecated use `AdvancementType$inboundSchema` instead. */
-  export const inboundSchema = AdvancementType$inboundSchema;
-  /** @deprecated use `AdvancementType$outboundSchema` instead. */
-  export const outboundSchema = AdvancementType$outboundSchema;
-}
 
 /** @internal */
 export const GetRollingReleaseStages$inboundSchema: z.ZodType<
@@ -809,7 +650,6 @@ export const GetRollingReleaseStages$inboundSchema: z.ZodType<
   duration: z.nullable(z.number()),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type GetRollingReleaseStages$Outbound = {
   index: number;
@@ -834,19 +674,6 @@ export const GetRollingReleaseStages$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseStages$ {
-  /** @deprecated use `GetRollingReleaseStages$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseStages$inboundSchema;
-  /** @deprecated use `GetRollingReleaseStages$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseStages$outboundSchema;
-  /** @deprecated use `GetRollingReleaseStages$Outbound` instead. */
-  export type Outbound = GetRollingReleaseStages$Outbound;
-}
-
 export function getRollingReleaseStagesToJSON(
   getRollingReleaseStages: GetRollingReleaseStages,
 ): string {
@@ -854,7 +681,6 @@ export function getRollingReleaseStagesToJSON(
     GetRollingReleaseStages$outboundSchema.parse(getRollingReleaseStages),
   );
 }
-
 export function getRollingReleaseStagesFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseStages, SDKValidationError> {
@@ -878,7 +704,6 @@ export const ActiveStage$inboundSchema: z.ZodType<
   duration: z.nullable(z.number()),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type ActiveStage$Outbound = {
   index: number;
@@ -903,23 +728,9 @@ export const ActiveStage$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActiveStage$ {
-  /** @deprecated use `ActiveStage$inboundSchema` instead. */
-  export const inboundSchema = ActiveStage$inboundSchema;
-  /** @deprecated use `ActiveStage$outboundSchema` instead. */
-  export const outboundSchema = ActiveStage$outboundSchema;
-  /** @deprecated use `ActiveStage$Outbound` instead. */
-  export type Outbound = ActiveStage$Outbound;
-}
-
 export function activeStageToJSON(activeStage: ActiveStage): string {
   return JSON.stringify(ActiveStage$outboundSchema.parse(activeStage));
 }
-
 export function activeStageFromJSON(
   jsonString: string,
 ): SafeParseResult<ActiveStage, SDKValidationError> {
@@ -943,7 +754,6 @@ export const NextStage$inboundSchema: z.ZodType<
   duration: z.nullable(z.number()),
   linearShift: z.boolean().optional(),
 });
-
 /** @internal */
 export type NextStage$Outbound = {
   index: number;
@@ -968,23 +778,9 @@ export const NextStage$outboundSchema: z.ZodType<
   linearShift: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NextStage$ {
-  /** @deprecated use `NextStage$inboundSchema` instead. */
-  export const inboundSchema = NextStage$inboundSchema;
-  /** @deprecated use `NextStage$outboundSchema` instead. */
-  export const outboundSchema = NextStage$outboundSchema;
-  /** @deprecated use `NextStage$Outbound` instead. */
-  export type Outbound = NextStage$Outbound;
-}
-
 export function nextStageToJSON(nextStage: NextStage): string {
   return JSON.stringify(NextStage$outboundSchema.parse(nextStage));
 }
-
 export function nextStageFromJSON(
   jsonString: string,
 ): SafeParseResult<NextStage, SDKValidationError> {
@@ -1012,7 +808,6 @@ export const GetRollingReleaseRollingRelease$inboundSchema: z.ZodType<
   startedAt: z.number(),
   updatedAt: z.number(),
 });
-
 /** @internal */
 export type GetRollingReleaseRollingRelease$Outbound = {
   state: string;
@@ -1045,19 +840,6 @@ export const GetRollingReleaseRollingRelease$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseRollingRelease$ {
-  /** @deprecated use `GetRollingReleaseRollingRelease$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseRollingRelease$inboundSchema;
-  /** @deprecated use `GetRollingReleaseRollingRelease$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseRollingRelease$outboundSchema;
-  /** @deprecated use `GetRollingReleaseRollingRelease$Outbound` instead. */
-  export type Outbound = GetRollingReleaseRollingRelease$Outbound;
-}
-
 export function getRollingReleaseRollingReleaseToJSON(
   getRollingReleaseRollingRelease: GetRollingReleaseRollingRelease,
 ): string {
@@ -1067,7 +849,6 @@ export function getRollingReleaseRollingReleaseToJSON(
     ),
   );
 }
-
 export function getRollingReleaseRollingReleaseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseRollingRelease, SDKValidationError> {
@@ -1088,7 +869,6 @@ export const GetRollingReleaseResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => GetRollingReleaseRollingRelease$inboundSchema),
   ),
 });
-
 /** @internal */
 export type GetRollingReleaseResponseBody$Outbound = {
   rollingRelease: GetRollingReleaseRollingRelease$Outbound | null;
@@ -1105,19 +885,6 @@ export const GetRollingReleaseResponseBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRollingReleaseResponseBody$ {
-  /** @deprecated use `GetRollingReleaseResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetRollingReleaseResponseBody$inboundSchema;
-  /** @deprecated use `GetRollingReleaseResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetRollingReleaseResponseBody$outboundSchema;
-  /** @deprecated use `GetRollingReleaseResponseBody$Outbound` instead. */
-  export type Outbound = GetRollingReleaseResponseBody$Outbound;
-}
-
 export function getRollingReleaseResponseBodyToJSON(
   getRollingReleaseResponseBody: GetRollingReleaseResponseBody,
 ): string {
@@ -1127,7 +894,6 @@ export function getRollingReleaseResponseBodyToJSON(
     ),
   );
 }
-
 export function getRollingReleaseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRollingReleaseResponseBody, SDKValidationError> {

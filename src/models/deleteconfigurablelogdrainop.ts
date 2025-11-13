@@ -29,7 +29,6 @@ export const DeleteConfigurableLogDrainRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteConfigurableLogDrainRequest$Outbound = {
   id: string;
@@ -48,20 +47,6 @@ export const DeleteConfigurableLogDrainRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteConfigurableLogDrainRequest$ {
-  /** @deprecated use `DeleteConfigurableLogDrainRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteConfigurableLogDrainRequest$inboundSchema;
-  /** @deprecated use `DeleteConfigurableLogDrainRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteConfigurableLogDrainRequest$outboundSchema;
-  /** @deprecated use `DeleteConfigurableLogDrainRequest$Outbound` instead. */
-  export type Outbound = DeleteConfigurableLogDrainRequest$Outbound;
-}
-
 export function deleteConfigurableLogDrainRequestToJSON(
   deleteConfigurableLogDrainRequest: DeleteConfigurableLogDrainRequest,
 ): string {
@@ -71,7 +56,6 @@ export function deleteConfigurableLogDrainRequestToJSON(
     ),
   );
 }
-
 export function deleteConfigurableLogDrainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteConfigurableLogDrainRequest, SDKValidationError> {

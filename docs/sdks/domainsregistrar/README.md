@@ -503,17 +503,18 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.DomainNotRegistered   | 400                          | application/json             |
-| models.HttpApiDecodeError    | 400                          | application/json             |
-| models.Unauthorized          | 401                          | application/json             |
-| models.NotAuthorizedForScope | 403                          | application/json             |
-| models.Forbidden             | 403                          | application/json             |
-| models.DomainNotFound        | 404                          | application/json             |
-| models.TooManyRequests       | 429                          | application/json             |
-| models.InternalServerError   | 500                          | application/json             |
-| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| models.DomainNotRegistered              | 400                                     | application/json                        |
+| models.HttpApiDecodeError               | 400                                     | application/json                        |
+| models.Unauthorized                     | 401                                     | application/json                        |
+| models.NotAuthorizedForScope            | 403                                     | application/json                        |
+| models.Forbidden                        | 403                                     | application/json                        |
+| models.DomainNotFound                   | 404                                     | application/json                        |
+| models.DomainCannotBeTransferedOutUntil | 409                                     | application/json                        |
+| models.TooManyRequests                  | 429                                     | application/json                        |
+| models.InternalServerError              | 500                                     | application/json                        |
+| models.SDKError                         | 4XX, 5XX                                | \*/\*                                   |
 
 ## buySingleDomain
 

@@ -176,7 +176,6 @@ export const CreateCheckRequestBody$inboundSchema: z.ZodType<
   externalId: z.string().optional(),
   rerequestable: z.boolean().optional(),
 });
-
 /** @internal */
 export type CreateCheckRequestBody$Outbound = {
   name: string;
@@ -201,19 +200,6 @@ export const CreateCheckRequestBody$outboundSchema: z.ZodType<
   rerequestable: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckRequestBody$ {
-  /** @deprecated use `CreateCheckRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckRequestBody$inboundSchema;
-  /** @deprecated use `CreateCheckRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckRequestBody$outboundSchema;
-  /** @deprecated use `CreateCheckRequestBody$Outbound` instead. */
-  export type Outbound = CreateCheckRequestBody$Outbound;
-}
-
 export function createCheckRequestBodyToJSON(
   createCheckRequestBody: CreateCheckRequestBody,
 ): string {
@@ -221,7 +207,6 @@ export function createCheckRequestBodyToJSON(
     CreateCheckRequestBody$outboundSchema.parse(createCheckRequestBody),
   );
 }
-
 export function createCheckRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckRequestBody, SDKValidationError> {
@@ -247,7 +232,6 @@ export const CreateCheckRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateCheckRequest$Outbound = {
   deploymentId: string;
@@ -272,19 +256,6 @@ export const CreateCheckRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckRequest$ {
-  /** @deprecated use `CreateCheckRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckRequest$inboundSchema;
-  /** @deprecated use `CreateCheckRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckRequest$outboundSchema;
-  /** @deprecated use `CreateCheckRequest$Outbound` instead. */
-  export type Outbound = CreateCheckRequest$Outbound;
-}
-
 export function createCheckRequestToJSON(
   createCheckRequest: CreateCheckRequest,
 ): string {
@@ -292,7 +263,6 @@ export function createCheckRequestToJSON(
     CreateCheckRequest$outboundSchema.parse(createCheckRequest),
   );
 }
-
 export function createCheckRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckRequest, SDKValidationError> {
@@ -307,64 +277,28 @@ export function createCheckRequestFromJSON(
 export const CreateCheckStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreateCheckStatus
 > = z.nativeEnum(CreateCheckStatus);
-
 /** @internal */
 export const CreateCheckStatus$outboundSchema: z.ZodNativeEnum<
   typeof CreateCheckStatus
 > = CreateCheckStatus$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckStatus$ {
-  /** @deprecated use `CreateCheckStatus$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckStatus$inboundSchema;
-  /** @deprecated use `CreateCheckStatus$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckStatus$outboundSchema;
-}
-
 /** @internal */
 export const CreateCheckConclusion$inboundSchema: z.ZodNativeEnum<
   typeof CreateCheckConclusion
 > = z.nativeEnum(CreateCheckConclusion);
-
 /** @internal */
 export const CreateCheckConclusion$outboundSchema: z.ZodNativeEnum<
   typeof CreateCheckConclusion
 > = CreateCheckConclusion$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckConclusion$ {
-  /** @deprecated use `CreateCheckConclusion$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckConclusion$inboundSchema;
-  /** @deprecated use `CreateCheckConclusion$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckConclusion$outboundSchema;
-}
-
 /** @internal */
 export const CreateCheckSource$inboundSchema: z.ZodNativeEnum<
   typeof CreateCheckSource
 > = z.nativeEnum(CreateCheckSource);
-
 /** @internal */
 export const CreateCheckSource$outboundSchema: z.ZodNativeEnum<
   typeof CreateCheckSource
 > = CreateCheckSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckSource$ {
-  /** @deprecated use `CreateCheckSource$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckSource$inboundSchema;
-  /** @deprecated use `CreateCheckSource$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckSource$outboundSchema;
-}
 
 /** @internal */
 export const CreateCheckFCP$inboundSchema: z.ZodType<
@@ -376,7 +310,6 @@ export const CreateCheckFCP$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: CreateCheckSource$inboundSchema,
 });
-
 /** @internal */
 export type CreateCheckFCP$Outbound = {
   value: number | null;
@@ -395,23 +328,9 @@ export const CreateCheckFCP$outboundSchema: z.ZodType<
   source: CreateCheckSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckFCP$ {
-  /** @deprecated use `CreateCheckFCP$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckFCP$inboundSchema;
-  /** @deprecated use `CreateCheckFCP$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckFCP$outboundSchema;
-  /** @deprecated use `CreateCheckFCP$Outbound` instead. */
-  export type Outbound = CreateCheckFCP$Outbound;
-}
-
 export function createCheckFCPToJSON(createCheckFCP: CreateCheckFCP): string {
   return JSON.stringify(CreateCheckFCP$outboundSchema.parse(createCheckFCP));
 }
-
 export function createCheckFCPFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckFCP, SDKValidationError> {
@@ -426,22 +345,10 @@ export function createCheckFCPFromJSON(
 export const CreateCheckChecksSource$inboundSchema: z.ZodNativeEnum<
   typeof CreateCheckChecksSource
 > = z.nativeEnum(CreateCheckChecksSource);
-
 /** @internal */
 export const CreateCheckChecksSource$outboundSchema: z.ZodNativeEnum<
   typeof CreateCheckChecksSource
 > = CreateCheckChecksSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckChecksSource$ {
-  /** @deprecated use `CreateCheckChecksSource$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckChecksSource$inboundSchema;
-  /** @deprecated use `CreateCheckChecksSource$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckChecksSource$outboundSchema;
-}
 
 /** @internal */
 export const CreateCheckLCP$inboundSchema: z.ZodType<
@@ -453,7 +360,6 @@ export const CreateCheckLCP$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: CreateCheckChecksSource$inboundSchema,
 });
-
 /** @internal */
 export type CreateCheckLCP$Outbound = {
   value: number | null;
@@ -472,23 +378,9 @@ export const CreateCheckLCP$outboundSchema: z.ZodType<
   source: CreateCheckChecksSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckLCP$ {
-  /** @deprecated use `CreateCheckLCP$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckLCP$inboundSchema;
-  /** @deprecated use `CreateCheckLCP$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckLCP$outboundSchema;
-  /** @deprecated use `CreateCheckLCP$Outbound` instead. */
-  export type Outbound = CreateCheckLCP$Outbound;
-}
-
 export function createCheckLCPToJSON(createCheckLCP: CreateCheckLCP): string {
   return JSON.stringify(CreateCheckLCP$outboundSchema.parse(createCheckLCP));
 }
-
 export function createCheckLCPFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckLCP, SDKValidationError> {
@@ -503,22 +395,10 @@ export function createCheckLCPFromJSON(
 export const CreateCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
   typeof CreateCheckChecksResponseSource
 > = z.nativeEnum(CreateCheckChecksResponseSource);
-
 /** @internal */
 export const CreateCheckChecksResponseSource$outboundSchema: z.ZodNativeEnum<
   typeof CreateCheckChecksResponseSource
 > = CreateCheckChecksResponseSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckChecksResponseSource$ {
-  /** @deprecated use `CreateCheckChecksResponseSource$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckChecksResponseSource$inboundSchema;
-  /** @deprecated use `CreateCheckChecksResponseSource$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckChecksResponseSource$outboundSchema;
-}
 
 /** @internal */
 export const CreateCheckCLS$inboundSchema: z.ZodType<
@@ -530,7 +410,6 @@ export const CreateCheckCLS$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: CreateCheckChecksResponseSource$inboundSchema,
 });
-
 /** @internal */
 export type CreateCheckCLS$Outbound = {
   value: number | null;
@@ -549,23 +428,9 @@ export const CreateCheckCLS$outboundSchema: z.ZodType<
   source: CreateCheckChecksResponseSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckCLS$ {
-  /** @deprecated use `CreateCheckCLS$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckCLS$inboundSchema;
-  /** @deprecated use `CreateCheckCLS$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckCLS$outboundSchema;
-  /** @deprecated use `CreateCheckCLS$Outbound` instead. */
-  export type Outbound = CreateCheckCLS$Outbound;
-}
-
 export function createCheckCLSToJSON(createCheckCLS: CreateCheckCLS): string {
   return JSON.stringify(CreateCheckCLS$outboundSchema.parse(createCheckCLS));
 }
-
 export function createCheckCLSFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckCLS, SDKValidationError> {
@@ -580,23 +445,10 @@ export function createCheckCLSFromJSON(
 export const CreateCheckChecksResponse200Source$inboundSchema: z.ZodNativeEnum<
   typeof CreateCheckChecksResponse200Source
 > = z.nativeEnum(CreateCheckChecksResponse200Source);
-
 /** @internal */
 export const CreateCheckChecksResponse200Source$outboundSchema: z.ZodNativeEnum<
   typeof CreateCheckChecksResponse200Source
 > = CreateCheckChecksResponse200Source$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckChecksResponse200Source$ {
-  /** @deprecated use `CreateCheckChecksResponse200Source$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckChecksResponse200Source$inboundSchema;
-  /** @deprecated use `CreateCheckChecksResponse200Source$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCheckChecksResponse200Source$outboundSchema;
-}
 
 /** @internal */
 export const CreateCheckTBT$inboundSchema: z.ZodType<
@@ -608,7 +460,6 @@ export const CreateCheckTBT$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: CreateCheckChecksResponse200Source$inboundSchema,
 });
-
 /** @internal */
 export type CreateCheckTBT$Outbound = {
   value: number | null;
@@ -627,23 +478,9 @@ export const CreateCheckTBT$outboundSchema: z.ZodType<
   source: CreateCheckChecksResponse200Source$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckTBT$ {
-  /** @deprecated use `CreateCheckTBT$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckTBT$inboundSchema;
-  /** @deprecated use `CreateCheckTBT$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckTBT$outboundSchema;
-  /** @deprecated use `CreateCheckTBT$Outbound` instead. */
-  export type Outbound = CreateCheckTBT$Outbound;
-}
-
 export function createCheckTBTToJSON(createCheckTBT: CreateCheckTBT): string {
   return JSON.stringify(CreateCheckTBT$outboundSchema.parse(createCheckTBT));
 }
-
 export function createCheckTBTFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckTBT, SDKValidationError> {
@@ -658,24 +495,10 @@ export function createCheckTBTFromJSON(
 export const CreateCheckChecksResponse200ApplicationJSONSource$inboundSchema:
   z.ZodNativeEnum<typeof CreateCheckChecksResponse200ApplicationJSONSource> = z
     .nativeEnum(CreateCheckChecksResponse200ApplicationJSONSource);
-
 /** @internal */
 export const CreateCheckChecksResponse200ApplicationJSONSource$outboundSchema:
   z.ZodNativeEnum<typeof CreateCheckChecksResponse200ApplicationJSONSource> =
     CreateCheckChecksResponse200ApplicationJSONSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckChecksResponse200ApplicationJSONSource$ {
-  /** @deprecated use `CreateCheckChecksResponse200ApplicationJSONSource$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateCheckChecksResponse200ApplicationJSONSource$inboundSchema;
-  /** @deprecated use `CreateCheckChecksResponse200ApplicationJSONSource$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCheckChecksResponse200ApplicationJSONSource$outboundSchema;
-}
 
 /** @internal */
 export const CreateCheckVirtualExperienceScore$inboundSchema: z.ZodType<
@@ -687,7 +510,6 @@ export const CreateCheckVirtualExperienceScore$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: CreateCheckChecksResponse200ApplicationJSONSource$inboundSchema,
 });
-
 /** @internal */
 export type CreateCheckVirtualExperienceScore$Outbound = {
   value: number | null;
@@ -706,20 +528,6 @@ export const CreateCheckVirtualExperienceScore$outboundSchema: z.ZodType<
   source: CreateCheckChecksResponse200ApplicationJSONSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckVirtualExperienceScore$ {
-  /** @deprecated use `CreateCheckVirtualExperienceScore$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckVirtualExperienceScore$inboundSchema;
-  /** @deprecated use `CreateCheckVirtualExperienceScore$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCheckVirtualExperienceScore$outboundSchema;
-  /** @deprecated use `CreateCheckVirtualExperienceScore$Outbound` instead. */
-  export type Outbound = CreateCheckVirtualExperienceScore$Outbound;
-}
-
 export function createCheckVirtualExperienceScoreToJSON(
   createCheckVirtualExperienceScore: CreateCheckVirtualExperienceScore,
 ): string {
@@ -729,7 +537,6 @@ export function createCheckVirtualExperienceScoreToJSON(
     ),
   );
 }
-
 export function createCheckVirtualExperienceScoreFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckVirtualExperienceScore, SDKValidationError> {
@@ -761,7 +568,6 @@ export const CreateCheckMetrics$inboundSchema: z.ZodType<
     "TBT": "tbt",
   });
 });
-
 /** @internal */
 export type CreateCheckMetrics$Outbound = {
   FCP: CreateCheckFCP$Outbound;
@@ -795,19 +601,6 @@ export const CreateCheckMetrics$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckMetrics$ {
-  /** @deprecated use `CreateCheckMetrics$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckMetrics$inboundSchema;
-  /** @deprecated use `CreateCheckMetrics$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckMetrics$outboundSchema;
-  /** @deprecated use `CreateCheckMetrics$Outbound` instead. */
-  export type Outbound = CreateCheckMetrics$Outbound;
-}
-
 export function createCheckMetricsToJSON(
   createCheckMetrics: CreateCheckMetrics,
 ): string {
@@ -815,7 +608,6 @@ export function createCheckMetricsToJSON(
     CreateCheckMetrics$outboundSchema.parse(createCheckMetrics),
   );
 }
-
 export function createCheckMetricsFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckMetrics, SDKValidationError> {
@@ -834,7 +626,6 @@ export const CreateCheckOutput$inboundSchema: z.ZodType<
 > = z.object({
   metrics: z.lazy(() => CreateCheckMetrics$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CreateCheckOutput$Outbound = {
   metrics?: CreateCheckMetrics$Outbound | undefined;
@@ -849,19 +640,6 @@ export const CreateCheckOutput$outboundSchema: z.ZodType<
   metrics: z.lazy(() => CreateCheckMetrics$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckOutput$ {
-  /** @deprecated use `CreateCheckOutput$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckOutput$inboundSchema;
-  /** @deprecated use `CreateCheckOutput$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckOutput$outboundSchema;
-  /** @deprecated use `CreateCheckOutput$Outbound` instead. */
-  export type Outbound = CreateCheckOutput$Outbound;
-}
-
 export function createCheckOutputToJSON(
   createCheckOutput: CreateCheckOutput,
 ): string {
@@ -869,7 +647,6 @@ export function createCheckOutputToJSON(
     CreateCheckOutput$outboundSchema.parse(createCheckOutput),
   );
 }
-
 export function createCheckOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckOutput, SDKValidationError> {
@@ -903,7 +680,6 @@ export const CreateCheckResponseBody$inboundSchema: z.ZodType<
   completedAt: z.number().optional(),
   rerequestable: z.boolean().optional(),
 });
-
 /** @internal */
 export type CreateCheckResponseBody$Outbound = {
   id: string;
@@ -948,19 +724,6 @@ export const CreateCheckResponseBody$outboundSchema: z.ZodType<
   rerequestable: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCheckResponseBody$ {
-  /** @deprecated use `CreateCheckResponseBody$inboundSchema` instead. */
-  export const inboundSchema = CreateCheckResponseBody$inboundSchema;
-  /** @deprecated use `CreateCheckResponseBody$outboundSchema` instead. */
-  export const outboundSchema = CreateCheckResponseBody$outboundSchema;
-  /** @deprecated use `CreateCheckResponseBody$Outbound` instead. */
-  export type Outbound = CreateCheckResponseBody$Outbound;
-}
-
 export function createCheckResponseBodyToJSON(
   createCheckResponseBody: CreateCheckResponseBody,
 ): string {
@@ -968,7 +731,6 @@ export function createCheckResponseBodyToJSON(
     CreateCheckResponseBody$outboundSchema.parse(createCheckResponseBody),
   );
 }
-
 export function createCheckResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateCheckResponseBody, SDKValidationError> {

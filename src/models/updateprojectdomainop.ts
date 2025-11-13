@@ -95,22 +95,10 @@ export type UpdateProjectDomainResponseBody = {
 export const RedirectStatusCode$inboundSchema: z.ZodNativeEnum<
   typeof RedirectStatusCode
 > = z.nativeEnum(RedirectStatusCode);
-
 /** @internal */
 export const RedirectStatusCode$outboundSchema: z.ZodNativeEnum<
   typeof RedirectStatusCode
 > = RedirectStatusCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RedirectStatusCode$ {
-  /** @deprecated use `RedirectStatusCode$inboundSchema` instead. */
-  export const inboundSchema = RedirectStatusCode$inboundSchema;
-  /** @deprecated use `RedirectStatusCode$outboundSchema` instead. */
-  export const outboundSchema = RedirectStatusCode$outboundSchema;
-}
 
 /** @internal */
 export const UpdateProjectDomainRequestBody$inboundSchema: z.ZodType<
@@ -122,7 +110,6 @@ export const UpdateProjectDomainRequestBody$inboundSchema: z.ZodType<
   redirect: z.nullable(z.string()).optional(),
   redirectStatusCode: z.nullable(RedirectStatusCode$inboundSchema).optional(),
 });
-
 /** @internal */
 export type UpdateProjectDomainRequestBody$Outbound = {
   gitBranch?: string | null | undefined;
@@ -141,19 +128,6 @@ export const UpdateProjectDomainRequestBody$outboundSchema: z.ZodType<
   redirectStatusCode: z.nullable(RedirectStatusCode$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectDomainRequestBody$ {
-  /** @deprecated use `UpdateProjectDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectDomainRequestBody$inboundSchema;
-  /** @deprecated use `UpdateProjectDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectDomainRequestBody$outboundSchema;
-  /** @deprecated use `UpdateProjectDomainRequestBody$Outbound` instead. */
-  export type Outbound = UpdateProjectDomainRequestBody$Outbound;
-}
-
 export function updateProjectDomainRequestBodyToJSON(
   updateProjectDomainRequestBody: UpdateProjectDomainRequestBody,
 ): string {
@@ -163,7 +137,6 @@ export function updateProjectDomainRequestBodyToJSON(
     ),
   );
 }
-
 export function updateProjectDomainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectDomainRequestBody, SDKValidationError> {
@@ -190,7 +163,6 @@ export const UpdateProjectDomainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateProjectDomainRequest$Outbound = {
   idOrName: string;
@@ -217,19 +189,6 @@ export const UpdateProjectDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectDomainRequest$ {
-  /** @deprecated use `UpdateProjectDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectDomainRequest$inboundSchema;
-  /** @deprecated use `UpdateProjectDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectDomainRequest$outboundSchema;
-  /** @deprecated use `UpdateProjectDomainRequest$Outbound` instead. */
-  export type Outbound = UpdateProjectDomainRequest$Outbound;
-}
-
 export function updateProjectDomainRequestToJSON(
   updateProjectDomainRequest: UpdateProjectDomainRequest,
 ): string {
@@ -237,7 +196,6 @@ export function updateProjectDomainRequestToJSON(
     UpdateProjectDomainRequest$outboundSchema.parse(updateProjectDomainRequest),
   );
 }
-
 export function updateProjectDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectDomainRequest, SDKValidationError> {
@@ -259,7 +217,6 @@ export const UpdateProjectDomainVerification$inboundSchema: z.ZodType<
   value: z.string(),
   reason: z.string(),
 });
-
 /** @internal */
 export type UpdateProjectDomainVerification$Outbound = {
   type: string;
@@ -280,19 +237,6 @@ export const UpdateProjectDomainVerification$outboundSchema: z.ZodType<
   reason: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectDomainVerification$ {
-  /** @deprecated use `UpdateProjectDomainVerification$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectDomainVerification$inboundSchema;
-  /** @deprecated use `UpdateProjectDomainVerification$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectDomainVerification$outboundSchema;
-  /** @deprecated use `UpdateProjectDomainVerification$Outbound` instead. */
-  export type Outbound = UpdateProjectDomainVerification$Outbound;
-}
-
 export function updateProjectDomainVerificationToJSON(
   updateProjectDomainVerification: UpdateProjectDomainVerification,
 ): string {
@@ -302,7 +246,6 @@ export function updateProjectDomainVerificationToJSON(
     ),
   );
 }
-
 export function updateProjectDomainVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectDomainVerification, SDKValidationError> {
@@ -333,7 +276,6 @@ export const UpdateProjectDomainResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => UpdateProjectDomainVerification$inboundSchema),
   ).optional(),
 });
-
 /** @internal */
 export type UpdateProjectDomainResponseBody$Outbound = {
   name: string;
@@ -370,19 +312,6 @@ export const UpdateProjectDomainResponseBody$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectDomainResponseBody$ {
-  /** @deprecated use `UpdateProjectDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateProjectDomainResponseBody$inboundSchema;
-  /** @deprecated use `UpdateProjectDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateProjectDomainResponseBody$outboundSchema;
-  /** @deprecated use `UpdateProjectDomainResponseBody$Outbound` instead. */
-  export type Outbound = UpdateProjectDomainResponseBody$Outbound;
-}
-
 export function updateProjectDomainResponseBodyToJSON(
   updateProjectDomainResponseBody: UpdateProjectDomainResponseBody,
 ): string {
@@ -392,7 +321,6 @@ export function updateProjectDomainResponseBodyToJSON(
     ),
   );
 }
-
 export function updateProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectDomainResponseBody, SDKValidationError> {

@@ -38,7 +38,6 @@ export const GetAuthTokenRequest$inboundSchema: z.ZodType<
 > = z.object({
   tokenId: z.string(),
 });
-
 /** @internal */
 export type GetAuthTokenRequest$Outbound = {
   tokenId: string;
@@ -53,19 +52,6 @@ export const GetAuthTokenRequest$outboundSchema: z.ZodType<
   tokenId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAuthTokenRequest$ {
-  /** @deprecated use `GetAuthTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAuthTokenRequest$inboundSchema;
-  /** @deprecated use `GetAuthTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAuthTokenRequest$outboundSchema;
-  /** @deprecated use `GetAuthTokenRequest$Outbound` instead. */
-  export type Outbound = GetAuthTokenRequest$Outbound;
-}
-
 export function getAuthTokenRequestToJSON(
   getAuthTokenRequest: GetAuthTokenRequest,
 ): string {
@@ -73,7 +59,6 @@ export function getAuthTokenRequestToJSON(
     GetAuthTokenRequest$outboundSchema.parse(getAuthTokenRequest),
   );
 }
-
 export function getAuthTokenRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAuthTokenRequest, SDKValidationError> {
@@ -92,7 +77,6 @@ export const GetAuthTokenResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   token: AuthToken$inboundSchema,
 });
-
 /** @internal */
 export type GetAuthTokenResponseBody$Outbound = {
   token: AuthToken$Outbound;
@@ -107,19 +91,6 @@ export const GetAuthTokenResponseBody$outboundSchema: z.ZodType<
   token: AuthToken$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAuthTokenResponseBody$ {
-  /** @deprecated use `GetAuthTokenResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetAuthTokenResponseBody$inboundSchema;
-  /** @deprecated use `GetAuthTokenResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetAuthTokenResponseBody$outboundSchema;
-  /** @deprecated use `GetAuthTokenResponseBody$Outbound` instead. */
-  export type Outbound = GetAuthTokenResponseBody$Outbound;
-}
-
 export function getAuthTokenResponseBodyToJSON(
   getAuthTokenResponseBody: GetAuthTokenResponseBody,
 ): string {
@@ -127,7 +98,6 @@ export function getAuthTokenResponseBodyToJSON(
     GetAuthTokenResponseBody$outboundSchema.parse(getAuthTokenResponseBody),
   );
 }
-
 export function getAuthTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAuthTokenResponseBody, SDKValidationError> {

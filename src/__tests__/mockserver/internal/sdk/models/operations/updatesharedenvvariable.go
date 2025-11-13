@@ -170,8 +170,8 @@ type UpdateSharedEnvVariableRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                             `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *UpdateSharedEnvVariableRequestBody `request:"mediaType=application/json"`
+	Slug *string                             `queryParam:"style=form,explode=true,name=slug"`
+	Body *UpdateSharedEnvVariableRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateSharedEnvVariableRequest) GetTeamID() *string {
@@ -188,11 +188,11 @@ func (o *UpdateSharedEnvVariableRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateSharedEnvVariableRequest) GetRequestBody() *UpdateSharedEnvVariableRequestBody {
+func (o *UpdateSharedEnvVariableRequest) GetBody() *UpdateSharedEnvVariableRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // UpdatedType - The type of this cosmos doc instance, if blank, assume secret.

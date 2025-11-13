@@ -24,8 +24,8 @@ type BatchRemoveProjectEnvRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                           `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *BatchRemoveProjectEnvRequestBody `request:"mediaType=application/json"`
+	Slug *string                           `queryParam:"style=form,explode=true,name=slug"`
+	Body *BatchRemoveProjectEnvRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *BatchRemoveProjectEnvRequest) GetIDOrName() string {
@@ -49,11 +49,11 @@ func (o *BatchRemoveProjectEnvRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *BatchRemoveProjectEnvRequest) GetRequestBody() *BatchRemoveProjectEnvRequestBody {
+func (o *BatchRemoveProjectEnvRequest) GetBody() *BatchRemoveProjectEnvRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type BatchRemoveProjectEnvResponseBody struct {

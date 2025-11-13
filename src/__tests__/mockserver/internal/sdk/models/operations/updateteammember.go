@@ -121,9 +121,9 @@ func (o *UpdateTeamMemberRequestBody) GetJoinedFrom() *UpdateTeamMemberJoinedFro
 
 type UpdateTeamMemberRequest struct {
 	// The ID of the member.
-	UID         string                      `pathParam:"style=simple,explode=false,name=uid"`
-	TeamID      string                      `pathParam:"style=simple,explode=false,name=teamId"`
-	RequestBody UpdateTeamMemberRequestBody `request:"mediaType=application/json"`
+	UID    string                      `pathParam:"style=simple,explode=false,name=uid"`
+	TeamID string                      `pathParam:"style=simple,explode=false,name=teamId"`
+	Body   UpdateTeamMemberRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateTeamMemberRequest) GetUID() string {
@@ -140,11 +140,11 @@ func (o *UpdateTeamMemberRequest) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *UpdateTeamMemberRequest) GetRequestBody() UpdateTeamMemberRequestBody {
+func (o *UpdateTeamMemberRequest) GetBody() UpdateTeamMemberRequestBody {
 	if o == nil {
 		return UpdateTeamMemberRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // UpdateTeamMemberResponseBody - Successfully updated the membership.

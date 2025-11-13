@@ -412,44 +412,6 @@ func (o *UpdateDrainSchemasRequest) GetVersion() string {
 	return o.Version
 }
 
-type UpdateDrainDeliveryRequest3 struct {
-	Type     string `json:"type"`
-	Endpoint string `json:"endpoint"`
-	Secret   string `json:"secret"`
-}
-
-func (u UpdateDrainDeliveryRequest3) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateDrainDeliveryRequest3) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "endpoint", "secret"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateDrainDeliveryRequest3) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
-}
-
-func (o *UpdateDrainDeliveryRequest3) GetEndpoint() string {
-	if o == nil {
-		return ""
-	}
-	return o.Endpoint
-}
-
-func (o *UpdateDrainDeliveryRequest3) GetSecret() string {
-	if o == nil {
-		return ""
-	}
-	return o.Secret
-}
-
 type UpdateDrainEndpointRequest struct {
 	Traces string `json:"traces"`
 }
@@ -712,13 +674,11 @@ type UpdateDrainDeliveryRequestUnionType string
 const (
 	UpdateDrainDeliveryRequestUnionTypeUpdateDrainDeliveryRequest1 UpdateDrainDeliveryRequestUnionType = "updateDrain_delivery_request_1"
 	UpdateDrainDeliveryRequestUnionTypeUpdateDrainDeliveryRequest2 UpdateDrainDeliveryRequestUnionType = "updateDrain_delivery_request_2"
-	UpdateDrainDeliveryRequestUnionTypeUpdateDrainDeliveryRequest3 UpdateDrainDeliveryRequestUnionType = "updateDrain_delivery_request_3"
 )
 
 type UpdateDrainDeliveryRequestUnion struct {
 	UpdateDrainDeliveryRequest1 *UpdateDrainDeliveryRequest1 `queryParam:"inline"`
 	UpdateDrainDeliveryRequest2 *UpdateDrainDeliveryRequest2 `queryParam:"inline"`
-	UpdateDrainDeliveryRequest3 *UpdateDrainDeliveryRequest3 `queryParam:"inline"`
 
 	Type UpdateDrainDeliveryRequestUnionType
 }
@@ -741,15 +701,6 @@ func CreateUpdateDrainDeliveryRequestUnionUpdateDrainDeliveryRequest2(updateDrai
 	}
 }
 
-func CreateUpdateDrainDeliveryRequestUnionUpdateDrainDeliveryRequest3(updateDrainDeliveryRequest3 UpdateDrainDeliveryRequest3) UpdateDrainDeliveryRequestUnion {
-	typ := UpdateDrainDeliveryRequestUnionTypeUpdateDrainDeliveryRequest3
-
-	return UpdateDrainDeliveryRequestUnion{
-		UpdateDrainDeliveryRequest3: &updateDrainDeliveryRequest3,
-		Type:                        typ,
-	}
-}
-
 func (u *UpdateDrainDeliveryRequestUnion) UnmarshalJSON(data []byte) error {
 
 	var updateDrainDeliveryRequest1 UpdateDrainDeliveryRequest1 = UpdateDrainDeliveryRequest1{}
@@ -766,13 +717,6 @@ func (u *UpdateDrainDeliveryRequestUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateDrainDeliveryRequest3 UpdateDrainDeliveryRequest3 = UpdateDrainDeliveryRequest3{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryRequest3, "", true, nil); err == nil {
-		u.UpdateDrainDeliveryRequest3 = &updateDrainDeliveryRequest3
-		u.Type = UpdateDrainDeliveryRequestUnionTypeUpdateDrainDeliveryRequest3
-		return nil
-	}
-
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDrainDeliveryRequestUnion", string(data))
 }
 
@@ -783,10 +727,6 @@ func (u UpdateDrainDeliveryRequestUnion) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateDrainDeliveryRequest2 != nil {
 		return utils.MarshalJSON(u.UpdateDrainDeliveryRequest2, "", true)
-	}
-
-	if u.UpdateDrainDeliveryRequest3 != nil {
-		return utils.MarshalJSON(u.UpdateDrainDeliveryRequest3, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateDrainDeliveryRequestUnion: all fields are null")
@@ -1234,8 +1174,8 @@ type UpdateDrainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                 `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *UpdateDrainRequestBody `request:"mediaType=application/json"`
+	Slug *string                 `queryParam:"style=form,explode=true,name=slug"`
+	Body *UpdateDrainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateDrainRequest) GetID() string {
@@ -1259,11 +1199,11 @@ func (o *UpdateDrainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateDrainRequest) GetRequestBody() *UpdateDrainRequestBody {
+func (o *UpdateDrainRequest) GetBody() *UpdateDrainRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateDrainCreatedFrom2 string
@@ -1531,67 +1471,6 @@ func (o *UpdateDrainDeliveryClickhouse2) GetTable() string {
 	return o.Table
 }
 
-type UpdateDrainTypeSyslog2 string
-
-const (
-	UpdateDrainTypeSyslog2Syslog UpdateDrainTypeSyslog2 = "syslog"
-)
-
-func (e UpdateDrainTypeSyslog2) ToPointer() *UpdateDrainTypeSyslog2 {
-	return &e
-}
-func (e *UpdateDrainTypeSyslog2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "syslog":
-		*e = UpdateDrainTypeSyslog2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainTypeSyslog2: %v", v)
-	}
-}
-
-type UpdateDrainDeliverySyslog2 struct {
-	Type     UpdateDrainTypeSyslog2 `json:"type"`
-	Endpoint string                 `json:"endpoint"`
-	Secret   string                 `json:"secret"`
-}
-
-func (u UpdateDrainDeliverySyslog2) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateDrainDeliverySyslog2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "endpoint", "secret"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateDrainDeliverySyslog2) GetType() UpdateDrainTypeSyslog2 {
-	if o == nil {
-		return UpdateDrainTypeSyslog2("")
-	}
-	return o.Type
-}
-
-func (o *UpdateDrainDeliverySyslog2) GetEndpoint() string {
-	if o == nil {
-		return ""
-	}
-	return o.Endpoint
-}
-
-func (o *UpdateDrainDeliverySyslog2) GetSecret() string {
-	if o == nil {
-		return ""
-	}
-	return o.Secret
-}
-
 type UpdateDrainTypeOtlphttp2 string
 
 const (
@@ -1663,12 +1542,120 @@ func (e *UpdateDrainEncodingResponse4) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateDrainSecretKind4 string
+
+const (
+	UpdateDrainSecretKind4IntegrationSecret UpdateDrainSecretKind4 = "INTEGRATION_SECRET"
+)
+
+func (e UpdateDrainSecretKind4) ToPointer() *UpdateDrainSecretKind4 {
+	return &e
+}
+func (e *UpdateDrainSecretKind4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = UpdateDrainSecretKind4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainSecretKind4: %v", v)
+	}
+}
+
+type UpdateDrainSecretIntegrationSecret4 struct {
+	Kind UpdateDrainSecretKind4 `json:"kind"`
+}
+
+func (u UpdateDrainSecretIntegrationSecret4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDrainSecretIntegrationSecret4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateDrainSecretIntegrationSecret4) GetKind() UpdateDrainSecretKind4 {
+	if o == nil {
+		return UpdateDrainSecretKind4("")
+	}
+	return o.Kind
+}
+
+type UpdateDrainSecretUnion4Type string
+
+const (
+	UpdateDrainSecretUnion4TypeStr                                 UpdateDrainSecretUnion4Type = "str"
+	UpdateDrainSecretUnion4TypeUpdateDrainSecretIntegrationSecret4 UpdateDrainSecretUnion4Type = "updateDrain_secret_IntegrationSecret_4"
+)
+
+type UpdateDrainSecretUnion4 struct {
+	Str                                 *string                              `queryParam:"inline"`
+	UpdateDrainSecretIntegrationSecret4 *UpdateDrainSecretIntegrationSecret4 `queryParam:"inline"`
+
+	Type UpdateDrainSecretUnion4Type
+}
+
+func CreateUpdateDrainSecretUnion4Str(str string) UpdateDrainSecretUnion4 {
+	typ := UpdateDrainSecretUnion4TypeStr
+
+	return UpdateDrainSecretUnion4{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateDrainSecretUnion4UpdateDrainSecretIntegrationSecret4(updateDrainSecretIntegrationSecret4 UpdateDrainSecretIntegrationSecret4) UpdateDrainSecretUnion4 {
+	typ := UpdateDrainSecretUnion4TypeUpdateDrainSecretIntegrationSecret4
+
+	return UpdateDrainSecretUnion4{
+		UpdateDrainSecretIntegrationSecret4: &updateDrainSecretIntegrationSecret4,
+		Type:                                typ,
+	}
+}
+
+func (u *UpdateDrainSecretUnion4) UnmarshalJSON(data []byte) error {
+
+	var updateDrainSecretIntegrationSecret4 UpdateDrainSecretIntegrationSecret4 = UpdateDrainSecretIntegrationSecret4{}
+	if err := utils.UnmarshalJSON(data, &updateDrainSecretIntegrationSecret4, "", true, nil); err == nil {
+		u.UpdateDrainSecretIntegrationSecret4 = &updateDrainSecretIntegrationSecret4
+		u.Type = UpdateDrainSecretUnion4TypeUpdateDrainSecretIntegrationSecret4
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateDrainSecretUnion4TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDrainSecretUnion4", string(data))
+}
+
+func (u UpdateDrainSecretUnion4) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.UpdateDrainSecretIntegrationSecret4 != nil {
+		return utils.MarshalJSON(u.UpdateDrainSecretIntegrationSecret4, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateDrainSecretUnion4: all fields are null")
+}
+
 type UpdateDrainDeliveryOtlphttp2 struct {
 	Type     UpdateDrainTypeOtlphttp2     `json:"type"`
 	Endpoint UpdateDrainEndpointResponse2 `json:"endpoint"`
 	Encoding UpdateDrainEncodingResponse4 `json:"encoding"`
 	Headers  map[string]string            `json:"headers"`
-	Secret   *string                      `json:"secret,omitempty"`
+	Secret   *UpdateDrainSecretUnion4     `json:"secret,omitempty"`
 }
 
 func (u UpdateDrainDeliveryOtlphttp2) MarshalJSON() ([]byte, error) {
@@ -1710,7 +1697,7 @@ func (o *UpdateDrainDeliveryOtlphttp2) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *UpdateDrainDeliveryOtlphttp2) GetSecret() *string {
+func (o *UpdateDrainDeliveryOtlphttp2) GetSecret() *UpdateDrainSecretUnion4 {
 	if o == nil {
 		return nil
 	}
@@ -1792,13 +1779,121 @@ func (e *UpdateDrainCompressionResponse2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateDrainSecretKind3 string
+
+const (
+	UpdateDrainSecretKind3IntegrationSecret UpdateDrainSecretKind3 = "INTEGRATION_SECRET"
+)
+
+func (e UpdateDrainSecretKind3) ToPointer() *UpdateDrainSecretKind3 {
+	return &e
+}
+func (e *UpdateDrainSecretKind3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = UpdateDrainSecretKind3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainSecretKind3: %v", v)
+	}
+}
+
+type UpdateDrainSecretIntegrationSecret3 struct {
+	Kind UpdateDrainSecretKind3 `json:"kind"`
+}
+
+func (u UpdateDrainSecretIntegrationSecret3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDrainSecretIntegrationSecret3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateDrainSecretIntegrationSecret3) GetKind() UpdateDrainSecretKind3 {
+	if o == nil {
+		return UpdateDrainSecretKind3("")
+	}
+	return o.Kind
+}
+
+type UpdateDrainSecretUnion3Type string
+
+const (
+	UpdateDrainSecretUnion3TypeStr                                 UpdateDrainSecretUnion3Type = "str"
+	UpdateDrainSecretUnion3TypeUpdateDrainSecretIntegrationSecret3 UpdateDrainSecretUnion3Type = "updateDrain_secret_IntegrationSecret_3"
+)
+
+type UpdateDrainSecretUnion3 struct {
+	Str                                 *string                              `queryParam:"inline"`
+	UpdateDrainSecretIntegrationSecret3 *UpdateDrainSecretIntegrationSecret3 `queryParam:"inline"`
+
+	Type UpdateDrainSecretUnion3Type
+}
+
+func CreateUpdateDrainSecretUnion3Str(str string) UpdateDrainSecretUnion3 {
+	typ := UpdateDrainSecretUnion3TypeStr
+
+	return UpdateDrainSecretUnion3{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateDrainSecretUnion3UpdateDrainSecretIntegrationSecret3(updateDrainSecretIntegrationSecret3 UpdateDrainSecretIntegrationSecret3) UpdateDrainSecretUnion3 {
+	typ := UpdateDrainSecretUnion3TypeUpdateDrainSecretIntegrationSecret3
+
+	return UpdateDrainSecretUnion3{
+		UpdateDrainSecretIntegrationSecret3: &updateDrainSecretIntegrationSecret3,
+		Type:                                typ,
+	}
+}
+
+func (u *UpdateDrainSecretUnion3) UnmarshalJSON(data []byte) error {
+
+	var updateDrainSecretIntegrationSecret3 UpdateDrainSecretIntegrationSecret3 = UpdateDrainSecretIntegrationSecret3{}
+	if err := utils.UnmarshalJSON(data, &updateDrainSecretIntegrationSecret3, "", true, nil); err == nil {
+		u.UpdateDrainSecretIntegrationSecret3 = &updateDrainSecretIntegrationSecret3
+		u.Type = UpdateDrainSecretUnion3TypeUpdateDrainSecretIntegrationSecret3
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateDrainSecretUnion3TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDrainSecretUnion3", string(data))
+}
+
+func (u UpdateDrainSecretUnion3) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.UpdateDrainSecretIntegrationSecret3 != nil {
+		return utils.MarshalJSON(u.UpdateDrainSecretIntegrationSecret3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateDrainSecretUnion3: all fields are null")
+}
+
 type UpdateDrainDeliveryHTTP2 struct {
 	Type        UpdateDrainTypeHTTP2             `json:"type"`
 	Endpoint    string                           `json:"endpoint"`
 	Encoding    UpdateDrainEncodingResponse3     `json:"encoding"`
 	Compression *UpdateDrainCompressionResponse2 `json:"compression,omitempty"`
 	Headers     map[string]string                `json:"headers"`
-	Secret      *string                          `json:"secret,omitempty"`
+	Secret      *UpdateDrainSecretUnion3         `json:"secret,omitempty"`
 }
 
 func (u UpdateDrainDeliveryHTTP2) MarshalJSON() ([]byte, error) {
@@ -1847,7 +1942,7 @@ func (o *UpdateDrainDeliveryHTTP2) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *UpdateDrainDeliveryHTTP2) GetSecret() *string {
+func (o *UpdateDrainDeliveryHTTP2) GetSecret() *UpdateDrainSecretUnion3 {
 	if o == nil {
 		return nil
 	}
@@ -1859,7 +1954,6 @@ type UpdateDrainDeliveryResponseUnion2Type string
 const (
 	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryHTTP2               UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_HTTP_2"
 	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryOtlphttp2           UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_Otlphttp_2"
-	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliverySyslog2             UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_Syslog_2"
 	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryClickhouse2         UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_Clickhouse_2"
 	UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliveryVercelOtelTracesDb2 UpdateDrainDeliveryResponseUnion2Type = "updateDrain_delivery_VercelOtelTracesDb_2"
 )
@@ -1867,7 +1961,6 @@ const (
 type UpdateDrainDeliveryResponseUnion2 struct {
 	UpdateDrainDeliveryHTTP2               *UpdateDrainDeliveryHTTP2               `queryParam:"inline"`
 	UpdateDrainDeliveryOtlphttp2           *UpdateDrainDeliveryOtlphttp2           `queryParam:"inline"`
-	UpdateDrainDeliverySyslog2             *UpdateDrainDeliverySyslog2             `queryParam:"inline"`
 	UpdateDrainDeliveryClickhouse2         *UpdateDrainDeliveryClickhouse2         `queryParam:"inline"`
 	UpdateDrainDeliveryVercelOtelTracesDb2 *UpdateDrainDeliveryVercelOtelTracesDb2 `queryParam:"inline"`
 
@@ -1889,15 +1982,6 @@ func CreateUpdateDrainDeliveryResponseUnion2UpdateDrainDeliveryOtlphttp2(updateD
 	return UpdateDrainDeliveryResponseUnion2{
 		UpdateDrainDeliveryOtlphttp2: &updateDrainDeliveryOtlphttp2,
 		Type:                         typ,
-	}
-}
-
-func CreateUpdateDrainDeliveryResponseUnion2UpdateDrainDeliverySyslog2(updateDrainDeliverySyslog2 UpdateDrainDeliverySyslog2) UpdateDrainDeliveryResponseUnion2 {
-	typ := UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliverySyslog2
-
-	return UpdateDrainDeliveryResponseUnion2{
-		UpdateDrainDeliverySyslog2: &updateDrainDeliverySyslog2,
-		Type:                       typ,
 	}
 }
 
@@ -1935,13 +2019,6 @@ func (u *UpdateDrainDeliveryResponseUnion2) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateDrainDeliverySyslog2 UpdateDrainDeliverySyslog2 = UpdateDrainDeliverySyslog2{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliverySyslog2, "", true, nil); err == nil {
-		u.UpdateDrainDeliverySyslog2 = &updateDrainDeliverySyslog2
-		u.Type = UpdateDrainDeliveryResponseUnion2TypeUpdateDrainDeliverySyslog2
-		return nil
-	}
-
 	var updateDrainDeliveryClickhouse2 UpdateDrainDeliveryClickhouse2 = UpdateDrainDeliveryClickhouse2{}
 	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryClickhouse2, "", true, nil); err == nil {
 		u.UpdateDrainDeliveryClickhouse2 = &updateDrainDeliveryClickhouse2
@@ -1966,10 +2043,6 @@ func (u UpdateDrainDeliveryResponseUnion2) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateDrainDeliveryOtlphttp2 != nil {
 		return utils.MarshalJSON(u.UpdateDrainDeliveryOtlphttp2, "", true)
-	}
-
-	if u.UpdateDrainDeliverySyslog2 != nil {
-		return utils.MarshalJSON(u.UpdateDrainDeliverySyslog2, "", true)
 	}
 
 	if u.UpdateDrainDeliveryClickhouse2 != nil {
@@ -3527,67 +3600,6 @@ func (o *UpdateDrainDeliveryClickhouse1) GetTable() string {
 	return o.Table
 }
 
-type UpdateDrainTypeSyslog1 string
-
-const (
-	UpdateDrainTypeSyslog1Syslog UpdateDrainTypeSyslog1 = "syslog"
-)
-
-func (e UpdateDrainTypeSyslog1) ToPointer() *UpdateDrainTypeSyslog1 {
-	return &e
-}
-func (e *UpdateDrainTypeSyslog1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "syslog":
-		*e = UpdateDrainTypeSyslog1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateDrainTypeSyslog1: %v", v)
-	}
-}
-
-type UpdateDrainDeliverySyslog1 struct {
-	Type     UpdateDrainTypeSyslog1 `json:"type"`
-	Endpoint string                 `json:"endpoint"`
-	Secret   string                 `json:"secret"`
-}
-
-func (u UpdateDrainDeliverySyslog1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateDrainDeliverySyslog1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"type", "endpoint", "secret"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UpdateDrainDeliverySyslog1) GetType() UpdateDrainTypeSyslog1 {
-	if o == nil {
-		return UpdateDrainTypeSyslog1("")
-	}
-	return o.Type
-}
-
-func (o *UpdateDrainDeliverySyslog1) GetEndpoint() string {
-	if o == nil {
-		return ""
-	}
-	return o.Endpoint
-}
-
-func (o *UpdateDrainDeliverySyslog1) GetSecret() string {
-	if o == nil {
-		return ""
-	}
-	return o.Secret
-}
-
 type UpdateDrainTypeOtlphttp1 string
 
 const (
@@ -3659,12 +3671,120 @@ func (e *UpdateDrainEncodingResponse2) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateDrainSecretKind2 string
+
+const (
+	UpdateDrainSecretKind2IntegrationSecret UpdateDrainSecretKind2 = "INTEGRATION_SECRET"
+)
+
+func (e UpdateDrainSecretKind2) ToPointer() *UpdateDrainSecretKind2 {
+	return &e
+}
+func (e *UpdateDrainSecretKind2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = UpdateDrainSecretKind2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainSecretKind2: %v", v)
+	}
+}
+
+type UpdateDrainSecretIntegrationSecret2 struct {
+	Kind UpdateDrainSecretKind2 `json:"kind"`
+}
+
+func (u UpdateDrainSecretIntegrationSecret2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDrainSecretIntegrationSecret2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateDrainSecretIntegrationSecret2) GetKind() UpdateDrainSecretKind2 {
+	if o == nil {
+		return UpdateDrainSecretKind2("")
+	}
+	return o.Kind
+}
+
+type UpdateDrainSecretUnion2Type string
+
+const (
+	UpdateDrainSecretUnion2TypeStr                                 UpdateDrainSecretUnion2Type = "str"
+	UpdateDrainSecretUnion2TypeUpdateDrainSecretIntegrationSecret2 UpdateDrainSecretUnion2Type = "updateDrain_secret_IntegrationSecret_2"
+)
+
+type UpdateDrainSecretUnion2 struct {
+	Str                                 *string                              `queryParam:"inline"`
+	UpdateDrainSecretIntegrationSecret2 *UpdateDrainSecretIntegrationSecret2 `queryParam:"inline"`
+
+	Type UpdateDrainSecretUnion2Type
+}
+
+func CreateUpdateDrainSecretUnion2Str(str string) UpdateDrainSecretUnion2 {
+	typ := UpdateDrainSecretUnion2TypeStr
+
+	return UpdateDrainSecretUnion2{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateDrainSecretUnion2UpdateDrainSecretIntegrationSecret2(updateDrainSecretIntegrationSecret2 UpdateDrainSecretIntegrationSecret2) UpdateDrainSecretUnion2 {
+	typ := UpdateDrainSecretUnion2TypeUpdateDrainSecretIntegrationSecret2
+
+	return UpdateDrainSecretUnion2{
+		UpdateDrainSecretIntegrationSecret2: &updateDrainSecretIntegrationSecret2,
+		Type:                                typ,
+	}
+}
+
+func (u *UpdateDrainSecretUnion2) UnmarshalJSON(data []byte) error {
+
+	var updateDrainSecretIntegrationSecret2 UpdateDrainSecretIntegrationSecret2 = UpdateDrainSecretIntegrationSecret2{}
+	if err := utils.UnmarshalJSON(data, &updateDrainSecretIntegrationSecret2, "", true, nil); err == nil {
+		u.UpdateDrainSecretIntegrationSecret2 = &updateDrainSecretIntegrationSecret2
+		u.Type = UpdateDrainSecretUnion2TypeUpdateDrainSecretIntegrationSecret2
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateDrainSecretUnion2TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDrainSecretUnion2", string(data))
+}
+
+func (u UpdateDrainSecretUnion2) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.UpdateDrainSecretIntegrationSecret2 != nil {
+		return utils.MarshalJSON(u.UpdateDrainSecretIntegrationSecret2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateDrainSecretUnion2: all fields are null")
+}
+
 type UpdateDrainDeliveryOtlphttp1 struct {
 	Type     UpdateDrainTypeOtlphttp1     `json:"type"`
 	Endpoint UpdateDrainEndpointResponse1 `json:"endpoint"`
 	Encoding UpdateDrainEncodingResponse2 `json:"encoding"`
 	Headers  map[string]string            `json:"headers"`
-	Secret   *string                      `json:"secret,omitempty"`
+	Secret   *UpdateDrainSecretUnion2     `json:"secret,omitempty"`
 }
 
 func (u UpdateDrainDeliveryOtlphttp1) MarshalJSON() ([]byte, error) {
@@ -3706,7 +3826,7 @@ func (o *UpdateDrainDeliveryOtlphttp1) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *UpdateDrainDeliveryOtlphttp1) GetSecret() *string {
+func (o *UpdateDrainDeliveryOtlphttp1) GetSecret() *UpdateDrainSecretUnion2 {
 	if o == nil {
 		return nil
 	}
@@ -3788,13 +3908,121 @@ func (e *UpdateDrainCompressionResponse1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type UpdateDrainSecretKind1 string
+
+const (
+	UpdateDrainSecretKind1IntegrationSecret UpdateDrainSecretKind1 = "INTEGRATION_SECRET"
+)
+
+func (e UpdateDrainSecretKind1) ToPointer() *UpdateDrainSecretKind1 {
+	return &e
+}
+func (e *UpdateDrainSecretKind1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INTEGRATION_SECRET":
+		*e = UpdateDrainSecretKind1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for UpdateDrainSecretKind1: %v", v)
+	}
+}
+
+type UpdateDrainSecretIntegrationSecret1 struct {
+	Kind UpdateDrainSecretKind1 `json:"kind"`
+}
+
+func (u UpdateDrainSecretIntegrationSecret1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDrainSecretIntegrationSecret1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"kind"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateDrainSecretIntegrationSecret1) GetKind() UpdateDrainSecretKind1 {
+	if o == nil {
+		return UpdateDrainSecretKind1("")
+	}
+	return o.Kind
+}
+
+type UpdateDrainSecretUnion1Type string
+
+const (
+	UpdateDrainSecretUnion1TypeStr                                 UpdateDrainSecretUnion1Type = "str"
+	UpdateDrainSecretUnion1TypeUpdateDrainSecretIntegrationSecret1 UpdateDrainSecretUnion1Type = "updateDrain_secret_IntegrationSecret_1"
+)
+
+type UpdateDrainSecretUnion1 struct {
+	Str                                 *string                              `queryParam:"inline"`
+	UpdateDrainSecretIntegrationSecret1 *UpdateDrainSecretIntegrationSecret1 `queryParam:"inline"`
+
+	Type UpdateDrainSecretUnion1Type
+}
+
+func CreateUpdateDrainSecretUnion1Str(str string) UpdateDrainSecretUnion1 {
+	typ := UpdateDrainSecretUnion1TypeStr
+
+	return UpdateDrainSecretUnion1{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateDrainSecretUnion1UpdateDrainSecretIntegrationSecret1(updateDrainSecretIntegrationSecret1 UpdateDrainSecretIntegrationSecret1) UpdateDrainSecretUnion1 {
+	typ := UpdateDrainSecretUnion1TypeUpdateDrainSecretIntegrationSecret1
+
+	return UpdateDrainSecretUnion1{
+		UpdateDrainSecretIntegrationSecret1: &updateDrainSecretIntegrationSecret1,
+		Type:                                typ,
+	}
+}
+
+func (u *UpdateDrainSecretUnion1) UnmarshalJSON(data []byte) error {
+
+	var updateDrainSecretIntegrationSecret1 UpdateDrainSecretIntegrationSecret1 = UpdateDrainSecretIntegrationSecret1{}
+	if err := utils.UnmarshalJSON(data, &updateDrainSecretIntegrationSecret1, "", true, nil); err == nil {
+		u.UpdateDrainSecretIntegrationSecret1 = &updateDrainSecretIntegrationSecret1
+		u.Type = UpdateDrainSecretUnion1TypeUpdateDrainSecretIntegrationSecret1
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = UpdateDrainSecretUnion1TypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateDrainSecretUnion1", string(data))
+}
+
+func (u UpdateDrainSecretUnion1) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.UpdateDrainSecretIntegrationSecret1 != nil {
+		return utils.MarshalJSON(u.UpdateDrainSecretIntegrationSecret1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UpdateDrainSecretUnion1: all fields are null")
+}
+
 type UpdateDrainDeliveryHTTP1 struct {
 	Type        UpdateDrainTypeHTTP1             `json:"type"`
 	Endpoint    string                           `json:"endpoint"`
 	Encoding    UpdateDrainEncodingResponse1     `json:"encoding"`
 	Compression *UpdateDrainCompressionResponse1 `json:"compression,omitempty"`
 	Headers     map[string]string                `json:"headers"`
-	Secret      *string                          `json:"secret,omitempty"`
+	Secret      *UpdateDrainSecretUnion1         `json:"secret,omitempty"`
 }
 
 func (u UpdateDrainDeliveryHTTP1) MarshalJSON() ([]byte, error) {
@@ -3843,7 +4071,7 @@ func (o *UpdateDrainDeliveryHTTP1) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *UpdateDrainDeliveryHTTP1) GetSecret() *string {
+func (o *UpdateDrainDeliveryHTTP1) GetSecret() *UpdateDrainSecretUnion1 {
 	if o == nil {
 		return nil
 	}
@@ -3855,7 +4083,6 @@ type UpdateDrainDeliveryResponseUnion1Type string
 const (
 	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryHTTP1               UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_HTTP_1"
 	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryOtlphttp1           UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_Otlphttp_1"
-	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliverySyslog1             UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_Syslog_1"
 	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryClickhouse1         UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_Clickhouse_1"
 	UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliveryVercelOtelTracesDb1 UpdateDrainDeliveryResponseUnion1Type = "updateDrain_delivery_VercelOtelTracesDb_1"
 )
@@ -3863,7 +4090,6 @@ const (
 type UpdateDrainDeliveryResponseUnion1 struct {
 	UpdateDrainDeliveryHTTP1               *UpdateDrainDeliveryHTTP1               `queryParam:"inline"`
 	UpdateDrainDeliveryOtlphttp1           *UpdateDrainDeliveryOtlphttp1           `queryParam:"inline"`
-	UpdateDrainDeliverySyslog1             *UpdateDrainDeliverySyslog1             `queryParam:"inline"`
 	UpdateDrainDeliveryClickhouse1         *UpdateDrainDeliveryClickhouse1         `queryParam:"inline"`
 	UpdateDrainDeliveryVercelOtelTracesDb1 *UpdateDrainDeliveryVercelOtelTracesDb1 `queryParam:"inline"`
 
@@ -3885,15 +4111,6 @@ func CreateUpdateDrainDeliveryResponseUnion1UpdateDrainDeliveryOtlphttp1(updateD
 	return UpdateDrainDeliveryResponseUnion1{
 		UpdateDrainDeliveryOtlphttp1: &updateDrainDeliveryOtlphttp1,
 		Type:                         typ,
-	}
-}
-
-func CreateUpdateDrainDeliveryResponseUnion1UpdateDrainDeliverySyslog1(updateDrainDeliverySyslog1 UpdateDrainDeliverySyslog1) UpdateDrainDeliveryResponseUnion1 {
-	typ := UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliverySyslog1
-
-	return UpdateDrainDeliveryResponseUnion1{
-		UpdateDrainDeliverySyslog1: &updateDrainDeliverySyslog1,
-		Type:                       typ,
 	}
 }
 
@@ -3931,13 +4148,6 @@ func (u *UpdateDrainDeliveryResponseUnion1) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var updateDrainDeliverySyslog1 UpdateDrainDeliverySyslog1 = UpdateDrainDeliverySyslog1{}
-	if err := utils.UnmarshalJSON(data, &updateDrainDeliverySyslog1, "", true, nil); err == nil {
-		u.UpdateDrainDeliverySyslog1 = &updateDrainDeliverySyslog1
-		u.Type = UpdateDrainDeliveryResponseUnion1TypeUpdateDrainDeliverySyslog1
-		return nil
-	}
-
 	var updateDrainDeliveryClickhouse1 UpdateDrainDeliveryClickhouse1 = UpdateDrainDeliveryClickhouse1{}
 	if err := utils.UnmarshalJSON(data, &updateDrainDeliveryClickhouse1, "", true, nil); err == nil {
 		u.UpdateDrainDeliveryClickhouse1 = &updateDrainDeliveryClickhouse1
@@ -3962,10 +4172,6 @@ func (u UpdateDrainDeliveryResponseUnion1) MarshalJSON() ([]byte, error) {
 
 	if u.UpdateDrainDeliveryOtlphttp1 != nil {
 		return utils.MarshalJSON(u.UpdateDrainDeliveryOtlphttp1, "", true)
-	}
-
-	if u.UpdateDrainDeliverySyslog1 != nil {
-		return utils.MarshalJSON(u.UpdateDrainDeliverySyslog1, "", true)
 	}
 
 	if u.UpdateDrainDeliveryClickhouse1 != nil {

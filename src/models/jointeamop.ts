@@ -50,7 +50,6 @@ export const JoinTeamRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   inviteCode: z.string().optional(),
 });
-
 /** @internal */
 export type JoinTeamRequestBody$Outbound = {
   inviteCode?: string | undefined;
@@ -65,19 +64,6 @@ export const JoinTeamRequestBody$outboundSchema: z.ZodType<
   inviteCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JoinTeamRequestBody$ {
-  /** @deprecated use `JoinTeamRequestBody$inboundSchema` instead. */
-  export const inboundSchema = JoinTeamRequestBody$inboundSchema;
-  /** @deprecated use `JoinTeamRequestBody$outboundSchema` instead. */
-  export const outboundSchema = JoinTeamRequestBody$outboundSchema;
-  /** @deprecated use `JoinTeamRequestBody$Outbound` instead. */
-  export type Outbound = JoinTeamRequestBody$Outbound;
-}
-
 export function joinTeamRequestBodyToJSON(
   joinTeamRequestBody: JoinTeamRequestBody,
 ): string {
@@ -85,7 +71,6 @@ export function joinTeamRequestBodyToJSON(
     JoinTeamRequestBody$outboundSchema.parse(joinTeamRequestBody),
   );
 }
-
 export function joinTeamRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<JoinTeamRequestBody, SDKValidationError> {
@@ -109,7 +94,6 @@ export const JoinTeamRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type JoinTeamRequest$Outbound = {
   teamId: string;
@@ -130,25 +114,11 @@ export const JoinTeamRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JoinTeamRequest$ {
-  /** @deprecated use `JoinTeamRequest$inboundSchema` instead. */
-  export const inboundSchema = JoinTeamRequest$inboundSchema;
-  /** @deprecated use `JoinTeamRequest$outboundSchema` instead. */
-  export const outboundSchema = JoinTeamRequest$outboundSchema;
-  /** @deprecated use `JoinTeamRequest$Outbound` instead. */
-  export type Outbound = JoinTeamRequest$Outbound;
-}
-
 export function joinTeamRequestToJSON(
   joinTeamRequest: JoinTeamRequest,
 ): string {
   return JSON.stringify(JoinTeamRequest$outboundSchema.parse(joinTeamRequest));
 }
-
 export function joinTeamRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<JoinTeamRequest, SDKValidationError> {
@@ -170,7 +140,6 @@ export const JoinTeamResponseBody$inboundSchema: z.ZodType<
   name: z.string(),
   from: z.string(),
 });
-
 /** @internal */
 export type JoinTeamResponseBody$Outbound = {
   teamId: string;
@@ -191,19 +160,6 @@ export const JoinTeamResponseBody$outboundSchema: z.ZodType<
   from: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JoinTeamResponseBody$ {
-  /** @deprecated use `JoinTeamResponseBody$inboundSchema` instead. */
-  export const inboundSchema = JoinTeamResponseBody$inboundSchema;
-  /** @deprecated use `JoinTeamResponseBody$outboundSchema` instead. */
-  export const outboundSchema = JoinTeamResponseBody$outboundSchema;
-  /** @deprecated use `JoinTeamResponseBody$Outbound` instead. */
-  export type Outbound = JoinTeamResponseBody$Outbound;
-}
-
 export function joinTeamResponseBodyToJSON(
   joinTeamResponseBody: JoinTeamResponseBody,
 ): string {
@@ -211,7 +167,6 @@ export function joinTeamResponseBodyToJSON(
     JoinTeamResponseBody$outboundSchema.parse(joinTeamResponseBody),
   );
 }
-
 export function joinTeamResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<JoinTeamResponseBody, SDKValidationError> {

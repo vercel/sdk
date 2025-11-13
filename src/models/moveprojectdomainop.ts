@@ -76,7 +76,6 @@ export const MoveProjectDomainRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string(),
 });
-
 /** @internal */
 export type MoveProjectDomainRequestBody$Outbound = {
   projectId: string;
@@ -91,19 +90,6 @@ export const MoveProjectDomainRequestBody$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoveProjectDomainRequestBody$ {
-  /** @deprecated use `MoveProjectDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = MoveProjectDomainRequestBody$inboundSchema;
-  /** @deprecated use `MoveProjectDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = MoveProjectDomainRequestBody$outboundSchema;
-  /** @deprecated use `MoveProjectDomainRequestBody$Outbound` instead. */
-  export type Outbound = MoveProjectDomainRequestBody$Outbound;
-}
-
 export function moveProjectDomainRequestBodyToJSON(
   moveProjectDomainRequestBody: MoveProjectDomainRequestBody,
 ): string {
@@ -113,7 +99,6 @@ export function moveProjectDomainRequestBodyToJSON(
     ),
   );
 }
-
 export function moveProjectDomainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<MoveProjectDomainRequestBody, SDKValidationError> {
@@ -141,7 +126,6 @@ export const MoveProjectDomainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type MoveProjectDomainRequest$Outbound = {
   idOrName: string;
@@ -169,19 +153,6 @@ export const MoveProjectDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoveProjectDomainRequest$ {
-  /** @deprecated use `MoveProjectDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = MoveProjectDomainRequest$inboundSchema;
-  /** @deprecated use `MoveProjectDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = MoveProjectDomainRequest$outboundSchema;
-  /** @deprecated use `MoveProjectDomainRequest$Outbound` instead. */
-  export type Outbound = MoveProjectDomainRequest$Outbound;
-}
-
 export function moveProjectDomainRequestToJSON(
   moveProjectDomainRequest: MoveProjectDomainRequest,
 ): string {
@@ -189,7 +160,6 @@ export function moveProjectDomainRequestToJSON(
     MoveProjectDomainRequest$outboundSchema.parse(moveProjectDomainRequest),
   );
 }
-
 export function moveProjectDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<MoveProjectDomainRequest, SDKValidationError> {
@@ -211,7 +181,6 @@ export const MoveProjectDomainVerification$inboundSchema: z.ZodType<
   value: z.string(),
   reason: z.string(),
 });
-
 /** @internal */
 export type MoveProjectDomainVerification$Outbound = {
   type: string;
@@ -232,19 +201,6 @@ export const MoveProjectDomainVerification$outboundSchema: z.ZodType<
   reason: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoveProjectDomainVerification$ {
-  /** @deprecated use `MoveProjectDomainVerification$inboundSchema` instead. */
-  export const inboundSchema = MoveProjectDomainVerification$inboundSchema;
-  /** @deprecated use `MoveProjectDomainVerification$outboundSchema` instead. */
-  export const outboundSchema = MoveProjectDomainVerification$outboundSchema;
-  /** @deprecated use `MoveProjectDomainVerification$Outbound` instead. */
-  export type Outbound = MoveProjectDomainVerification$Outbound;
-}
-
 export function moveProjectDomainVerificationToJSON(
   moveProjectDomainVerification: MoveProjectDomainVerification,
 ): string {
@@ -254,7 +210,6 @@ export function moveProjectDomainVerificationToJSON(
     ),
   );
 }
-
 export function moveProjectDomainVerificationFromJSON(
   jsonString: string,
 ): SafeParseResult<MoveProjectDomainVerification, SDKValidationError> {
@@ -285,7 +240,6 @@ export const MoveProjectDomainResponseBody$inboundSchema: z.ZodType<
     z.lazy(() => MoveProjectDomainVerification$inboundSchema),
   ).optional(),
 });
-
 /** @internal */
 export type MoveProjectDomainResponseBody$Outbound = {
   name: string;
@@ -322,19 +276,6 @@ export const MoveProjectDomainResponseBody$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MoveProjectDomainResponseBody$ {
-  /** @deprecated use `MoveProjectDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = MoveProjectDomainResponseBody$inboundSchema;
-  /** @deprecated use `MoveProjectDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = MoveProjectDomainResponseBody$outboundSchema;
-  /** @deprecated use `MoveProjectDomainResponseBody$Outbound` instead. */
-  export type Outbound = MoveProjectDomainResponseBody$Outbound;
-}
-
 export function moveProjectDomainResponseBodyToJSON(
   moveProjectDomainResponseBody: MoveProjectDomainResponseBody,
 ): string {
@@ -344,7 +285,6 @@ export function moveProjectDomainResponseBodyToJSON(
     ),
   );
 }
-
 export function moveProjectDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<MoveProjectDomainResponseBody, SDKValidationError> {

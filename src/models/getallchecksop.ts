@@ -147,7 +147,6 @@ export const GetAllChecksRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetAllChecksRequest$Outbound = {
   deploymentId: string;
@@ -166,19 +165,6 @@ export const GetAllChecksRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksRequest$ {
-  /** @deprecated use `GetAllChecksRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksRequest$inboundSchema;
-  /** @deprecated use `GetAllChecksRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksRequest$outboundSchema;
-  /** @deprecated use `GetAllChecksRequest$Outbound` instead. */
-  export type Outbound = GetAllChecksRequest$Outbound;
-}
-
 export function getAllChecksRequestToJSON(
   getAllChecksRequest: GetAllChecksRequest,
 ): string {
@@ -186,7 +172,6 @@ export function getAllChecksRequestToJSON(
     GetAllChecksRequest$outboundSchema.parse(getAllChecksRequest),
   );
 }
-
 export function getAllChecksRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksRequest, SDKValidationError> {
@@ -201,43 +186,19 @@ export function getAllChecksRequestFromJSON(
 export const GetAllChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksConclusion
 > = z.nativeEnum(GetAllChecksConclusion);
-
 /** @internal */
 export const GetAllChecksConclusion$outboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksConclusion
 > = GetAllChecksConclusion$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksConclusion$ {
-  /** @deprecated use `GetAllChecksConclusion$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksConclusion$inboundSchema;
-  /** @deprecated use `GetAllChecksConclusion$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksConclusion$outboundSchema;
-}
-
 /** @internal */
 export const GetAllChecksSource$inboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksSource
 > = z.nativeEnum(GetAllChecksSource);
-
 /** @internal */
 export const GetAllChecksSource$outboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksSource
 > = GetAllChecksSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksSource$ {
-  /** @deprecated use `GetAllChecksSource$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksSource$inboundSchema;
-  /** @deprecated use `GetAllChecksSource$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksSource$outboundSchema;
-}
 
 /** @internal */
 export const GetAllChecksFCP$inboundSchema: z.ZodType<
@@ -249,7 +210,6 @@ export const GetAllChecksFCP$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: GetAllChecksSource$inboundSchema,
 });
-
 /** @internal */
 export type GetAllChecksFCP$Outbound = {
   value: number | null;
@@ -268,25 +228,11 @@ export const GetAllChecksFCP$outboundSchema: z.ZodType<
   source: GetAllChecksSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksFCP$ {
-  /** @deprecated use `GetAllChecksFCP$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksFCP$inboundSchema;
-  /** @deprecated use `GetAllChecksFCP$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksFCP$outboundSchema;
-  /** @deprecated use `GetAllChecksFCP$Outbound` instead. */
-  export type Outbound = GetAllChecksFCP$Outbound;
-}
-
 export function getAllChecksFCPToJSON(
   getAllChecksFCP: GetAllChecksFCP,
 ): string {
   return JSON.stringify(GetAllChecksFCP$outboundSchema.parse(getAllChecksFCP));
 }
-
 export function getAllChecksFCPFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksFCP, SDKValidationError> {
@@ -301,22 +247,10 @@ export function getAllChecksFCPFromJSON(
 export const GetAllChecksChecksSource$inboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksChecksSource
 > = z.nativeEnum(GetAllChecksChecksSource);
-
 /** @internal */
 export const GetAllChecksChecksSource$outboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksChecksSource
 > = GetAllChecksChecksSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksChecksSource$ {
-  /** @deprecated use `GetAllChecksChecksSource$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksChecksSource$inboundSchema;
-  /** @deprecated use `GetAllChecksChecksSource$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksChecksSource$outboundSchema;
-}
 
 /** @internal */
 export const GetAllChecksLCP$inboundSchema: z.ZodType<
@@ -328,7 +262,6 @@ export const GetAllChecksLCP$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: GetAllChecksChecksSource$inboundSchema,
 });
-
 /** @internal */
 export type GetAllChecksLCP$Outbound = {
   value: number | null;
@@ -347,25 +280,11 @@ export const GetAllChecksLCP$outboundSchema: z.ZodType<
   source: GetAllChecksChecksSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksLCP$ {
-  /** @deprecated use `GetAllChecksLCP$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksLCP$inboundSchema;
-  /** @deprecated use `GetAllChecksLCP$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksLCP$outboundSchema;
-  /** @deprecated use `GetAllChecksLCP$Outbound` instead. */
-  export type Outbound = GetAllChecksLCP$Outbound;
-}
-
 export function getAllChecksLCPToJSON(
   getAllChecksLCP: GetAllChecksLCP,
 ): string {
   return JSON.stringify(GetAllChecksLCP$outboundSchema.parse(getAllChecksLCP));
 }
-
 export function getAllChecksLCPFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksLCP, SDKValidationError> {
@@ -380,22 +299,10 @@ export function getAllChecksLCPFromJSON(
 export const GetAllChecksChecksResponseSource$inboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksChecksResponseSource
 > = z.nativeEnum(GetAllChecksChecksResponseSource);
-
 /** @internal */
 export const GetAllChecksChecksResponseSource$outboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksChecksResponseSource
 > = GetAllChecksChecksResponseSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksChecksResponseSource$ {
-  /** @deprecated use `GetAllChecksChecksResponseSource$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksChecksResponseSource$inboundSchema;
-  /** @deprecated use `GetAllChecksChecksResponseSource$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksChecksResponseSource$outboundSchema;
-}
 
 /** @internal */
 export const GetAllChecksCLS$inboundSchema: z.ZodType<
@@ -407,7 +314,6 @@ export const GetAllChecksCLS$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: GetAllChecksChecksResponseSource$inboundSchema,
 });
-
 /** @internal */
 export type GetAllChecksCLS$Outbound = {
   value: number | null;
@@ -426,25 +332,11 @@ export const GetAllChecksCLS$outboundSchema: z.ZodType<
   source: GetAllChecksChecksResponseSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksCLS$ {
-  /** @deprecated use `GetAllChecksCLS$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksCLS$inboundSchema;
-  /** @deprecated use `GetAllChecksCLS$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksCLS$outboundSchema;
-  /** @deprecated use `GetAllChecksCLS$Outbound` instead. */
-  export type Outbound = GetAllChecksCLS$Outbound;
-}
-
 export function getAllChecksCLSToJSON(
   getAllChecksCLS: GetAllChecksCLS,
 ): string {
   return JSON.stringify(GetAllChecksCLS$outboundSchema.parse(getAllChecksCLS));
 }
-
 export function getAllChecksCLSFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksCLS, SDKValidationError> {
@@ -459,24 +351,10 @@ export function getAllChecksCLSFromJSON(
 export const GetAllChecksChecksResponse200Source$inboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksChecksResponse200Source
 > = z.nativeEnum(GetAllChecksChecksResponse200Source);
-
 /** @internal */
 export const GetAllChecksChecksResponse200Source$outboundSchema:
   z.ZodNativeEnum<typeof GetAllChecksChecksResponse200Source> =
     GetAllChecksChecksResponse200Source$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksChecksResponse200Source$ {
-  /** @deprecated use `GetAllChecksChecksResponse200Source$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAllChecksChecksResponse200Source$inboundSchema;
-  /** @deprecated use `GetAllChecksChecksResponse200Source$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAllChecksChecksResponse200Source$outboundSchema;
-}
 
 /** @internal */
 export const GetAllChecksTBT$inboundSchema: z.ZodType<
@@ -488,7 +366,6 @@ export const GetAllChecksTBT$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: GetAllChecksChecksResponse200Source$inboundSchema,
 });
-
 /** @internal */
 export type GetAllChecksTBT$Outbound = {
   value: number | null;
@@ -507,25 +384,11 @@ export const GetAllChecksTBT$outboundSchema: z.ZodType<
   source: GetAllChecksChecksResponse200Source$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksTBT$ {
-  /** @deprecated use `GetAllChecksTBT$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksTBT$inboundSchema;
-  /** @deprecated use `GetAllChecksTBT$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksTBT$outboundSchema;
-  /** @deprecated use `GetAllChecksTBT$Outbound` instead. */
-  export type Outbound = GetAllChecksTBT$Outbound;
-}
-
 export function getAllChecksTBTToJSON(
   getAllChecksTBT: GetAllChecksTBT,
 ): string {
   return JSON.stringify(GetAllChecksTBT$outboundSchema.parse(getAllChecksTBT));
 }
-
 export function getAllChecksTBTFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksTBT, SDKValidationError> {
@@ -540,24 +403,10 @@ export function getAllChecksTBTFromJSON(
 export const GetAllChecksChecksResponse200ApplicationJSONSource$inboundSchema:
   z.ZodNativeEnum<typeof GetAllChecksChecksResponse200ApplicationJSONSource> = z
     .nativeEnum(GetAllChecksChecksResponse200ApplicationJSONSource);
-
 /** @internal */
 export const GetAllChecksChecksResponse200ApplicationJSONSource$outboundSchema:
   z.ZodNativeEnum<typeof GetAllChecksChecksResponse200ApplicationJSONSource> =
     GetAllChecksChecksResponse200ApplicationJSONSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksChecksResponse200ApplicationJSONSource$ {
-  /** @deprecated use `GetAllChecksChecksResponse200ApplicationJSONSource$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAllChecksChecksResponse200ApplicationJSONSource$inboundSchema;
-  /** @deprecated use `GetAllChecksChecksResponse200ApplicationJSONSource$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAllChecksChecksResponse200ApplicationJSONSource$outboundSchema;
-}
 
 /** @internal */
 export const GetAllChecksVirtualExperienceScore$inboundSchema: z.ZodType<
@@ -569,7 +418,6 @@ export const GetAllChecksVirtualExperienceScore$inboundSchema: z.ZodType<
   previousValue: z.number().optional(),
   source: GetAllChecksChecksResponse200ApplicationJSONSource$inboundSchema,
 });
-
 /** @internal */
 export type GetAllChecksVirtualExperienceScore$Outbound = {
   value: number | null;
@@ -588,20 +436,6 @@ export const GetAllChecksVirtualExperienceScore$outboundSchema: z.ZodType<
   source: GetAllChecksChecksResponse200ApplicationJSONSource$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksVirtualExperienceScore$ {
-  /** @deprecated use `GetAllChecksVirtualExperienceScore$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksVirtualExperienceScore$inboundSchema;
-  /** @deprecated use `GetAllChecksVirtualExperienceScore$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAllChecksVirtualExperienceScore$outboundSchema;
-  /** @deprecated use `GetAllChecksVirtualExperienceScore$Outbound` instead. */
-  export type Outbound = GetAllChecksVirtualExperienceScore$Outbound;
-}
-
 export function getAllChecksVirtualExperienceScoreToJSON(
   getAllChecksVirtualExperienceScore: GetAllChecksVirtualExperienceScore,
 ): string {
@@ -611,7 +445,6 @@ export function getAllChecksVirtualExperienceScoreToJSON(
     ),
   );
 }
-
 export function getAllChecksVirtualExperienceScoreFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksVirtualExperienceScore, SDKValidationError> {
@@ -644,7 +477,6 @@ export const GetAllChecksMetrics$inboundSchema: z.ZodType<
     "TBT": "tbt",
   });
 });
-
 /** @internal */
 export type GetAllChecksMetrics$Outbound = {
   FCP: GetAllChecksFCP$Outbound;
@@ -678,19 +510,6 @@ export const GetAllChecksMetrics$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksMetrics$ {
-  /** @deprecated use `GetAllChecksMetrics$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksMetrics$inboundSchema;
-  /** @deprecated use `GetAllChecksMetrics$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksMetrics$outboundSchema;
-  /** @deprecated use `GetAllChecksMetrics$Outbound` instead. */
-  export type Outbound = GetAllChecksMetrics$Outbound;
-}
-
 export function getAllChecksMetricsToJSON(
   getAllChecksMetrics: GetAllChecksMetrics,
 ): string {
@@ -698,7 +517,6 @@ export function getAllChecksMetricsToJSON(
     GetAllChecksMetrics$outboundSchema.parse(getAllChecksMetrics),
   );
 }
-
 export function getAllChecksMetricsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksMetrics, SDKValidationError> {
@@ -717,7 +535,6 @@ export const GetAllChecksOutput$inboundSchema: z.ZodType<
 > = z.object({
   metrics: z.lazy(() => GetAllChecksMetrics$inboundSchema).optional(),
 });
-
 /** @internal */
 export type GetAllChecksOutput$Outbound = {
   metrics?: GetAllChecksMetrics$Outbound | undefined;
@@ -732,19 +549,6 @@ export const GetAllChecksOutput$outboundSchema: z.ZodType<
   metrics: z.lazy(() => GetAllChecksMetrics$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksOutput$ {
-  /** @deprecated use `GetAllChecksOutput$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksOutput$inboundSchema;
-  /** @deprecated use `GetAllChecksOutput$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksOutput$outboundSchema;
-  /** @deprecated use `GetAllChecksOutput$Outbound` instead. */
-  export type Outbound = GetAllChecksOutput$Outbound;
-}
-
 export function getAllChecksOutputToJSON(
   getAllChecksOutput: GetAllChecksOutput,
 ): string {
@@ -752,7 +556,6 @@ export function getAllChecksOutputToJSON(
     GetAllChecksOutput$outboundSchema.parse(getAllChecksOutput),
   );
 }
-
 export function getAllChecksOutputFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksOutput, SDKValidationError> {
@@ -767,22 +570,10 @@ export function getAllChecksOutputFromJSON(
 export const GetAllChecksStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksStatus
 > = z.nativeEnum(GetAllChecksStatus);
-
 /** @internal */
 export const GetAllChecksStatus$outboundSchema: z.ZodNativeEnum<
   typeof GetAllChecksStatus
 > = GetAllChecksStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksStatus$ {
-  /** @deprecated use `GetAllChecksStatus$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksStatus$inboundSchema;
-  /** @deprecated use `GetAllChecksStatus$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksStatus$outboundSchema;
-}
 
 /** @internal */
 export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
@@ -802,7 +593,6 @@ export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
     status: GetAllChecksStatus$inboundSchema,
     updatedAt: z.number(),
   });
-
 /** @internal */
 export type Checks$Outbound = {
   completedAt?: number | undefined;
@@ -843,23 +633,9 @@ export const Checks$outboundSchema: z.ZodType<
   updatedAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Checks$ {
-  /** @deprecated use `Checks$inboundSchema` instead. */
-  export const inboundSchema = Checks$inboundSchema;
-  /** @deprecated use `Checks$outboundSchema` instead. */
-  export const outboundSchema = Checks$outboundSchema;
-  /** @deprecated use `Checks$Outbound` instead. */
-  export type Outbound = Checks$Outbound;
-}
-
 export function checksToJSON(checks: Checks): string {
   return JSON.stringify(Checks$outboundSchema.parse(checks));
 }
-
 export function checksFromJSON(
   jsonString: string,
 ): SafeParseResult<Checks, SDKValidationError> {
@@ -878,7 +654,6 @@ export const GetAllChecksResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   checks: z.array(z.lazy(() => Checks$inboundSchema)),
 });
-
 /** @internal */
 export type GetAllChecksResponseBody$Outbound = {
   checks: Array<Checks$Outbound>;
@@ -893,19 +668,6 @@ export const GetAllChecksResponseBody$outboundSchema: z.ZodType<
   checks: z.array(z.lazy(() => Checks$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAllChecksResponseBody$ {
-  /** @deprecated use `GetAllChecksResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetAllChecksResponseBody$inboundSchema;
-  /** @deprecated use `GetAllChecksResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetAllChecksResponseBody$outboundSchema;
-  /** @deprecated use `GetAllChecksResponseBody$Outbound` instead. */
-  export type Outbound = GetAllChecksResponseBody$Outbound;
-}
-
 export function getAllChecksResponseBodyToJSON(
   getAllChecksResponseBody: GetAllChecksResponseBody,
 ): string {
@@ -913,7 +675,6 @@ export function getAllChecksResponseBodyToJSON(
     GetAllChecksResponseBody$outboundSchema.parse(getAllChecksResponseBody),
   );
 }
-
 export function getAllChecksResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAllChecksResponseBody, SDKValidationError> {

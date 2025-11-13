@@ -1084,7 +1084,6 @@ export const RemoveProjectEnvRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type RemoveProjectEnvRequest$Outbound = {
   idOrName: string;
@@ -1107,19 +1106,6 @@ export const RemoveProjectEnvRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvRequest$ {
-  /** @deprecated use `RemoveProjectEnvRequest$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvRequest$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvRequest$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvRequest$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvRequest$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvRequest$Outbound;
-}
-
 export function removeProjectEnvRequestToJSON(
   removeProjectEnvRequest: RemoveProjectEnvRequest,
 ): string {
@@ -1127,7 +1113,6 @@ export function removeProjectEnvRequestToJSON(
     RemoveProjectEnvRequest$outboundSchema.parse(removeProjectEnvRequest),
   );
 }
-
 export function removeProjectEnvRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvRequest, SDKValidationError> {
@@ -1142,47 +1127,19 @@ export function removeProjectEnvRequestFromJSON(
 export const RemoveProjectEnvTargetProjectsResponse2$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse2> = z
     .nativeEnum(RemoveProjectEnvTargetProjectsResponse2);
-
 /** @internal */
 export const RemoveProjectEnvTargetProjectsResponse2$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse2> =
     RemoveProjectEnvTargetProjectsResponse2$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvTargetProjectsResponse2$ {
-  /** @deprecated use `RemoveProjectEnvTargetProjectsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvTargetProjectsResponse2$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvTargetProjectsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvTargetProjectsResponse2$outboundSchema;
-}
-
 /** @internal */
 export const RemoveProjectEnvTargetProjectsResponse1$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse1> = z
     .nativeEnum(RemoveProjectEnvTargetProjectsResponse1);
-
 /** @internal */
 export const RemoveProjectEnvTargetProjectsResponse1$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse1> =
     RemoveProjectEnvTargetProjectsResponse1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvTargetProjectsResponse1$ {
-  /** @deprecated use `RemoveProjectEnvTargetProjectsResponse1$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvTargetProjectsResponse1$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvTargetProjectsResponse1$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvTargetProjectsResponse1$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema:
@@ -1194,7 +1151,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema:
     z.array(RemoveProjectEnvTargetProjectsResponse1$inboundSchema),
     RemoveProjectEnvTargetProjectsResponse2$inboundSchema,
   ]);
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsResponseTarget$Outbound =
   | Array<string>
@@ -1211,22 +1167,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponseTarget$outboundSchema:
     RemoveProjectEnvTargetProjectsResponse2$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsResponseTarget$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseTarget$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseTarget$Outbound` instead. */
-  export type Outbound =
-    RemoveProjectEnvResponseBodyProjectsResponseTarget$Outbound;
-}
-
 export function removeProjectEnvResponseBodyProjectsResponseTargetToJSON(
   removeProjectEnvResponseBodyProjectsResponseTarget:
     RemoveProjectEnvResponseBodyProjectsResponseTarget,
@@ -1237,7 +1177,6 @@ export function removeProjectEnvResponseBodyProjectsResponseTargetToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1258,24 +1197,10 @@ export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
 export const RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> = z
     .nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseType);
-
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> =
     RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsResponseType$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$inboundSchema:
@@ -1284,26 +1209,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse15$inboundSchema:
@@ -1316,7 +1227,6 @@ export const RemoveProjectEnvContentHintProjectsResponse15$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody315Type$inboundSchema,
     projectId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse15$Outbound = {
   type: string;
@@ -1335,21 +1245,6 @@ export const RemoveProjectEnvContentHintProjectsResponse15$outboundSchema:
     projectId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse15$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse15$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse15$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse15$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse15$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse15$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse15$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse15ToJSON(
   removeProjectEnvContentHintProjectsResponse15:
     RemoveProjectEnvContentHintProjectsResponse15,
@@ -1360,7 +1255,6 @@ export function removeProjectEnvContentHintProjectsResponse15ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse15FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1384,26 +1278,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody314Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse14$inboundSchema:
@@ -1419,7 +1299,6 @@ export const RemoveProjectEnvContentHintProjectsResponse14$inboundSchema:
     integrationProductId: z.string(),
     integrationConfigurationId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse14$Outbound = {
   type: string;
@@ -1444,21 +1323,6 @@ export const RemoveProjectEnvContentHintProjectsResponse14$outboundSchema:
     integrationConfigurationId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse14$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse14$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse14$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse14$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse14$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse14$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse14$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse14ToJSON(
   removeProjectEnvContentHintProjectsResponse14:
     RemoveProjectEnvContentHintProjectsResponse14,
@@ -1469,7 +1333,6 @@ export function removeProjectEnvContentHintProjectsResponse14ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse14FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1493,26 +1356,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse13$inboundSchema:
@@ -1525,7 +1374,6 @@ export const RemoveProjectEnvContentHintProjectsResponse13$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody313Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse13$Outbound = {
   type: string;
@@ -1544,21 +1392,6 @@ export const RemoveProjectEnvContentHintProjectsResponse13$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse13$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse13$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse13$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse13$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse13$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse13$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse13$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse13ToJSON(
   removeProjectEnvContentHintProjectsResponse13:
     RemoveProjectEnvContentHintProjectsResponse13,
@@ -1569,7 +1402,6 @@ export function removeProjectEnvContentHintProjectsResponse13ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse13FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1593,26 +1425,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse12$inboundSchema:
@@ -1625,7 +1443,6 @@ export const RemoveProjectEnvContentHintProjectsResponse12$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody312Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse12$Outbound = {
   type: string;
@@ -1644,21 +1461,6 @@ export const RemoveProjectEnvContentHintProjectsResponse12$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse12$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse12$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse12$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse12$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse12$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse12$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse12$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse12ToJSON(
   removeProjectEnvContentHintProjectsResponse12:
     RemoveProjectEnvContentHintProjectsResponse12,
@@ -1669,7 +1471,6 @@ export function removeProjectEnvContentHintProjectsResponse12ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse12FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1693,26 +1494,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse11$inboundSchema:
@@ -1725,7 +1512,6 @@ export const RemoveProjectEnvContentHintProjectsResponse11$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody311Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse11$Outbound = {
   type: string;
@@ -1744,21 +1530,6 @@ export const RemoveProjectEnvContentHintProjectsResponse11$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse11$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse11$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse11$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse11$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse11$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse11$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse11$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse11ToJSON(
   removeProjectEnvContentHintProjectsResponse11:
     RemoveProjectEnvContentHintProjectsResponse11,
@@ -1769,7 +1540,6 @@ export function removeProjectEnvContentHintProjectsResponse11ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse11FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1793,26 +1563,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse10$inboundSchema:
@@ -1825,7 +1581,6 @@ export const RemoveProjectEnvContentHintProjectsResponse10$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody310Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse10$Outbound = {
   type: string;
@@ -1844,21 +1599,6 @@ export const RemoveProjectEnvContentHintProjectsResponse10$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse10$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse10$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse10$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse10$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse10$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse10$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse10$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse10ToJSON(
   removeProjectEnvContentHintProjectsResponse10:
     RemoveProjectEnvContentHintProjectsResponse10,
@@ -1869,7 +1609,6 @@ export function removeProjectEnvContentHintProjectsResponse10ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse10FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1893,26 +1632,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse9$inboundSchema:
@@ -1925,7 +1650,6 @@ export const RemoveProjectEnvContentHintProjectsResponse9$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody39Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse9$Outbound = {
   type: string;
@@ -1944,21 +1668,6 @@ export const RemoveProjectEnvContentHintProjectsResponse9$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse9$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse9$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse9$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse9$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse9$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse9$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse9$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse9ToJSON(
   removeProjectEnvContentHintProjectsResponse9:
     RemoveProjectEnvContentHintProjectsResponse9,
@@ -1969,7 +1678,6 @@ export function removeProjectEnvContentHintProjectsResponse9ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse9FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1993,26 +1701,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse8$inboundSchema:
@@ -2025,7 +1719,6 @@ export const RemoveProjectEnvContentHintProjectsResponse8$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody38Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse8$Outbound = {
   type: string;
@@ -2044,21 +1737,6 @@ export const RemoveProjectEnvContentHintProjectsResponse8$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse8$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse8$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse8$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse8$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse8$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse8$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse8$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse8ToJSON(
   removeProjectEnvContentHintProjectsResponse8:
     RemoveProjectEnvContentHintProjectsResponse8,
@@ -2069,7 +1747,6 @@ export function removeProjectEnvContentHintProjectsResponse8ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse8FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2093,26 +1770,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse7$inboundSchema:
@@ -2125,7 +1788,6 @@ export const RemoveProjectEnvContentHintProjectsResponse7$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody37Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse7$Outbound = {
   type: string;
@@ -2144,21 +1806,6 @@ export const RemoveProjectEnvContentHintProjectsResponse7$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse7$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse7$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse7$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse7$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse7$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse7$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse7$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse7ToJSON(
   removeProjectEnvContentHintProjectsResponse7:
     RemoveProjectEnvContentHintProjectsResponse7,
@@ -2169,7 +1816,6 @@ export function removeProjectEnvContentHintProjectsResponse7ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse7FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2193,26 +1839,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse6$inboundSchema:
@@ -2225,7 +1857,6 @@ export const RemoveProjectEnvContentHintProjectsResponse6$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody36Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse6$Outbound = {
   type: string;
@@ -2244,21 +1875,6 @@ export const RemoveProjectEnvContentHintProjectsResponse6$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse6$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse6$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse6$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse6$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse6$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse6$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse6$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse6ToJSON(
   removeProjectEnvContentHintProjectsResponse6:
     RemoveProjectEnvContentHintProjectsResponse6,
@@ -2269,7 +1885,6 @@ export function removeProjectEnvContentHintProjectsResponse6ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse6FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2293,26 +1908,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse5$inboundSchema:
@@ -2325,7 +1926,6 @@ export const RemoveProjectEnvContentHintProjectsResponse5$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody35Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse5$Outbound = {
   type: string;
@@ -2344,21 +1944,6 @@ export const RemoveProjectEnvContentHintProjectsResponse5$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse5$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse5$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse5$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse5$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse5$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse5$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse5$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse5ToJSON(
   removeProjectEnvContentHintProjectsResponse5:
     RemoveProjectEnvContentHintProjectsResponse5,
@@ -2369,7 +1954,6 @@ export function removeProjectEnvContentHintProjectsResponse5ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse5FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2393,26 +1977,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse4$inboundSchema:
@@ -2425,7 +1995,6 @@ export const RemoveProjectEnvContentHintProjectsResponse4$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody34Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse4$Outbound = {
   type: string;
@@ -2444,21 +2013,6 @@ export const RemoveProjectEnvContentHintProjectsResponse4$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse4$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse4$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse4$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse4$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse4$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse4$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse4$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse4ToJSON(
   removeProjectEnvContentHintProjectsResponse4:
     RemoveProjectEnvContentHintProjectsResponse4,
@@ -2469,7 +2023,6 @@ export function removeProjectEnvContentHintProjectsResponse4ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse4FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2493,26 +2046,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse3$inboundSchema:
@@ -2525,7 +2064,6 @@ export const RemoveProjectEnvContentHintProjectsResponse3$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody33Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse3$Outbound = {
   type: string;
@@ -2544,21 +2082,6 @@ export const RemoveProjectEnvContentHintProjectsResponse3$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse3$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse3$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse3$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse3$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse3$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse3$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse3$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse3ToJSON(
   removeProjectEnvContentHintProjectsResponse3:
     RemoveProjectEnvContentHintProjectsResponse3,
@@ -2569,7 +2092,6 @@ export function removeProjectEnvContentHintProjectsResponse3ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse3FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2593,26 +2115,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse2$inboundSchema:
@@ -2625,7 +2133,6 @@ export const RemoveProjectEnvContentHintProjectsResponse2$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody32Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse2$Outbound = {
   type: string;
@@ -2644,21 +2151,6 @@ export const RemoveProjectEnvContentHintProjectsResponse2$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse2$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse2$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse2$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse2$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse2$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse2$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse2$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse2ToJSON(
   removeProjectEnvContentHintProjectsResponse2:
     RemoveProjectEnvContentHintProjectsResponse2,
@@ -2669,7 +2161,6 @@ export function removeProjectEnvContentHintProjectsResponse2ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2693,26 +2184,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse1$inboundSchema:
@@ -2725,7 +2202,6 @@ export const RemoveProjectEnvContentHintProjectsResponse1$inboundSchema:
       RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody3Type$inboundSchema,
     storeId: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjectsResponse1$Outbound = {
   type: string;
@@ -2744,21 +2220,6 @@ export const RemoveProjectEnvContentHintProjectsResponse1$outboundSchema:
     storeId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse1$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse1$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse1$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse1$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse1$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse1$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjectsResponse1$Outbound;
-}
-
 export function removeProjectEnvContentHintProjectsResponse1ToJSON(
   removeProjectEnvContentHintProjectsResponse1:
     RemoveProjectEnvContentHintProjectsResponse1,
@@ -2769,7 +2230,6 @@ export function removeProjectEnvContentHintProjectsResponse1ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjectsResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2809,7 +2269,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$inboundSche
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse13$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$inboundSchema),
   ]);
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsResponseContentHint$Outbound =
   | RemoveProjectEnvContentHintProjectsResponse14$Outbound
@@ -2852,22 +2311,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$outboundSch
     z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$outboundSchema),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsResponseContentHint$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseContentHint$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseContentHint$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseContentHint$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseContentHint$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseContentHint$Outbound` instead. */
-  export type Outbound =
-    RemoveProjectEnvResponseBodyProjectsResponseContentHint$Outbound;
-}
-
 export function removeProjectEnvResponseBodyProjectsResponseContentHintToJSON(
   removeProjectEnvResponseBodyProjectsResponseContentHint:
     RemoveProjectEnvResponseBodyProjectsResponseContentHint,
@@ -2877,7 +2320,6 @@ export function removeProjectEnvResponseBodyProjectsResponseContentHintToJSON(
       .parse(removeProjectEnvResponseBodyProjectsResponseContentHint),
   );
 }
-
 export function removeProjectEnvResponseBodyProjectsResponseContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2900,26 +2342,12 @@ export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type
   > = z.nativeEnum(
     RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type
   > =
     RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inboundSchema:
@@ -2932,7 +2360,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inb
       RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson3Type$inboundSchema,
     encryptedValue: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$Outbound =
   {
@@ -2952,22 +2379,6 @@ export const RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$out
     encryptedValue: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$Outbound` instead. */
-  export type Outbound =
-    RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$Outbound;
-}
-
 export function removeProjectEnvResponseBodyProjectsResponseInternalContentHintToJSON(
   removeProjectEnvResponseBodyProjectsResponseInternalContentHint:
     RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint,
@@ -2977,7 +2388,6 @@ export function removeProjectEnvResponseBodyProjectsResponseInternalContentHintT
       .parse(removeProjectEnvResponseBodyProjectsResponseInternalContentHint),
   );
 }
-
 export function removeProjectEnvResponseBodyProjectsResponseInternalContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3045,7 +2455,6 @@ export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type RemoveProjectEnvResponseBody3$Outbound = {
   target?: Array<string> | string | undefined;
@@ -3155,19 +2564,6 @@ export const RemoveProjectEnvResponseBody3$outboundSchema: z.ZodType<
   customEnvironmentIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBody3$ {
-  /** @deprecated use `RemoveProjectEnvResponseBody3$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvResponseBody3$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody3$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvResponseBody3$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody3$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvResponseBody3$Outbound;
-}
-
 export function removeProjectEnvResponseBody3ToJSON(
   removeProjectEnvResponseBody3: RemoveProjectEnvResponseBody3,
 ): string {
@@ -3177,7 +2573,6 @@ export function removeProjectEnvResponseBody3ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody3, SDKValidationError> {
@@ -3192,43 +2587,19 @@ export function removeProjectEnvResponseBody3FromJSON(
 export const RemoveProjectEnvTargetProjects2$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects2
 > = z.nativeEnum(RemoveProjectEnvTargetProjects2);
-
 /** @internal */
 export const RemoveProjectEnvTargetProjects2$outboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects2
 > = RemoveProjectEnvTargetProjects2$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvTargetProjects2$ {
-  /** @deprecated use `RemoveProjectEnvTargetProjects2$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvTargetProjects2$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvTargetProjects2$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvTargetProjects2$outboundSchema;
-}
-
 /** @internal */
 export const RemoveProjectEnvTargetProjects1$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects1
 > = z.nativeEnum(RemoveProjectEnvTargetProjects1);
-
 /** @internal */
 export const RemoveProjectEnvTargetProjects1$outboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects1
 > = RemoveProjectEnvTargetProjects1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvTargetProjects1$ {
-  /** @deprecated use `RemoveProjectEnvTargetProjects1$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvTargetProjects1$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvTargetProjects1$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvTargetProjects1$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsTarget$inboundSchema:
@@ -3237,7 +2608,6 @@ export const RemoveProjectEnvResponseBodyProjectsTarget$inboundSchema:
       z.array(RemoveProjectEnvTargetProjects1$inboundSchema),
       RemoveProjectEnvTargetProjects2$inboundSchema,
     ]);
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsTarget$Outbound =
   | Array<string>
@@ -3254,21 +2624,6 @@ export const RemoveProjectEnvResponseBodyProjectsTarget$outboundSchema:
     RemoveProjectEnvTargetProjects2$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsTarget$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsTarget$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsTarget$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsTarget$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsTarget$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvResponseBodyProjectsTarget$Outbound;
-}
-
 export function removeProjectEnvResponseBodyProjectsTargetToJSON(
   removeProjectEnvResponseBodyProjectsTarget:
     RemoveProjectEnvResponseBodyProjectsTarget,
@@ -3279,7 +2634,6 @@ export function removeProjectEnvResponseBodyProjectsTargetToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -3300,24 +2654,10 @@ export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
 export const RemoveProjectEnvResponseBodyProjectsType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> = z
     .nativeEnum(RemoveProjectEnvResponseBodyProjectsType);
-
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsType$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> =
     RemoveProjectEnvResponseBodyProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsType$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsType$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsType$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$inboundSchema:
@@ -3326,26 +2666,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
@@ -3357,7 +2683,6 @@ export const RemoveProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody215Type$inboundSchema,
   projectId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects15$Outbound = {
   type: string;
@@ -3375,21 +2700,6 @@ export const RemoveProjectEnvContentHintProjects15$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects15$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects15$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects15$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects15$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects15$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects15$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects15$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects15ToJSON(
   removeProjectEnvContentHintProjects15: RemoveProjectEnvContentHintProjects15,
 ): string {
@@ -3399,7 +2709,6 @@ export function removeProjectEnvContentHintProjects15ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects15FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects15, SDKValidationError> {
@@ -3418,26 +2727,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody214Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
@@ -3452,7 +2747,6 @@ export const RemoveProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
   integrationProductId: z.string(),
   integrationConfigurationId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects14$Outbound = {
   type: string;
@@ -3476,21 +2770,6 @@ export const RemoveProjectEnvContentHintProjects14$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects14$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects14$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects14$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects14$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects14$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects14$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects14$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects14ToJSON(
   removeProjectEnvContentHintProjects14: RemoveProjectEnvContentHintProjects14,
 ): string {
@@ -3500,7 +2779,6 @@ export function removeProjectEnvContentHintProjects14ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects14FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects14, SDKValidationError> {
@@ -3519,26 +2797,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
@@ -3550,7 +2814,6 @@ export const RemoveProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody213Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects13$Outbound = {
   type: string;
@@ -3568,21 +2831,6 @@ export const RemoveProjectEnvContentHintProjects13$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects13$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects13$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects13$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects13$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects13$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects13$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects13$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects13ToJSON(
   removeProjectEnvContentHintProjects13: RemoveProjectEnvContentHintProjects13,
 ): string {
@@ -3592,7 +2840,6 @@ export function removeProjectEnvContentHintProjects13ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects13FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects13, SDKValidationError> {
@@ -3611,26 +2858,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
@@ -3642,7 +2875,6 @@ export const RemoveProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody212Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects12$Outbound = {
   type: string;
@@ -3660,21 +2892,6 @@ export const RemoveProjectEnvContentHintProjects12$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects12$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects12$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects12$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects12$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects12$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects12$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects12$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects12ToJSON(
   removeProjectEnvContentHintProjects12: RemoveProjectEnvContentHintProjects12,
 ): string {
@@ -3684,7 +2901,6 @@ export function removeProjectEnvContentHintProjects12ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects12FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects12, SDKValidationError> {
@@ -3703,26 +2919,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
@@ -3734,7 +2936,6 @@ export const RemoveProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody211Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects11$Outbound = {
   type: string;
@@ -3752,21 +2953,6 @@ export const RemoveProjectEnvContentHintProjects11$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects11$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects11$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects11$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects11$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects11$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects11$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects11$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects11ToJSON(
   removeProjectEnvContentHintProjects11: RemoveProjectEnvContentHintProjects11,
 ): string {
@@ -3776,7 +2962,6 @@ export function removeProjectEnvContentHintProjects11ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects11FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects11, SDKValidationError> {
@@ -3795,26 +2980,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
@@ -3826,7 +2997,6 @@ export const RemoveProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody210Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects10$Outbound = {
   type: string;
@@ -3844,21 +3014,6 @@ export const RemoveProjectEnvContentHintProjects10$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects10$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects10$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects10$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects10$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects10$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects10$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects10$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects10ToJSON(
   removeProjectEnvContentHintProjects10: RemoveProjectEnvContentHintProjects10,
 ): string {
@@ -3868,7 +3023,6 @@ export function removeProjectEnvContentHintProjects10ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects10FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects10, SDKValidationError> {
@@ -3887,26 +3041,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
@@ -3918,7 +3058,6 @@ export const RemoveProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody29Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects9$Outbound = {
   type: string;
@@ -3936,21 +3075,6 @@ export const RemoveProjectEnvContentHintProjects9$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects9$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects9$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects9$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects9$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects9$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects9$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects9$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects9ToJSON(
   removeProjectEnvContentHintProjects9: RemoveProjectEnvContentHintProjects9,
 ): string {
@@ -3960,7 +3084,6 @@ export function removeProjectEnvContentHintProjects9ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects9FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects9, SDKValidationError> {
@@ -3979,26 +3102,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
@@ -4010,7 +3119,6 @@ export const RemoveProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody28Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects8$Outbound = {
   type: string;
@@ -4028,21 +3136,6 @@ export const RemoveProjectEnvContentHintProjects8$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects8$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects8$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects8$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects8$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects8$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects8$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects8$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects8ToJSON(
   removeProjectEnvContentHintProjects8: RemoveProjectEnvContentHintProjects8,
 ): string {
@@ -4052,7 +3145,6 @@ export function removeProjectEnvContentHintProjects8ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects8FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects8, SDKValidationError> {
@@ -4071,26 +3163,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
@@ -4102,7 +3180,6 @@ export const RemoveProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody27Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects7$Outbound = {
   type: string;
@@ -4120,21 +3197,6 @@ export const RemoveProjectEnvContentHintProjects7$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects7$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects7$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects7$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects7$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects7$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects7$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects7$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects7ToJSON(
   removeProjectEnvContentHintProjects7: RemoveProjectEnvContentHintProjects7,
 ): string {
@@ -4144,7 +3206,6 @@ export function removeProjectEnvContentHintProjects7ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects7FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects7, SDKValidationError> {
@@ -4163,26 +3224,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects6$inboundSchema: z.ZodType<
@@ -4194,7 +3241,6 @@ export const RemoveProjectEnvContentHintProjects6$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody26Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects6$Outbound = {
   type: string;
@@ -4212,21 +3258,6 @@ export const RemoveProjectEnvContentHintProjects6$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects6$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects6$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects6$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects6$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects6$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects6$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects6$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects6ToJSON(
   removeProjectEnvContentHintProjects6: RemoveProjectEnvContentHintProjects6,
 ): string {
@@ -4236,7 +3267,6 @@ export function removeProjectEnvContentHintProjects6ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects6FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects6, SDKValidationError> {
@@ -4255,26 +3285,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects5$inboundSchema: z.ZodType<
@@ -4286,7 +3302,6 @@ export const RemoveProjectEnvContentHintProjects5$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody25Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects5$Outbound = {
   type: string;
@@ -4304,21 +3319,6 @@ export const RemoveProjectEnvContentHintProjects5$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects5$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects5$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects5$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects5$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects5$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects5$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects5$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects5ToJSON(
   removeProjectEnvContentHintProjects5: RemoveProjectEnvContentHintProjects5,
 ): string {
@@ -4328,7 +3328,6 @@ export function removeProjectEnvContentHintProjects5ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects5FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects5, SDKValidationError> {
@@ -4347,26 +3346,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects4$inboundSchema: z.ZodType<
@@ -4378,7 +3363,6 @@ export const RemoveProjectEnvContentHintProjects4$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody24Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects4$Outbound = {
   type: string;
@@ -4396,21 +3380,6 @@ export const RemoveProjectEnvContentHintProjects4$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects4$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects4$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects4$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects4$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects4$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects4$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects4$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects4ToJSON(
   removeProjectEnvContentHintProjects4: RemoveProjectEnvContentHintProjects4,
 ): string {
@@ -4420,7 +3389,6 @@ export function removeProjectEnvContentHintProjects4ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects4FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects4, SDKValidationError> {
@@ -4439,26 +3407,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects3$inboundSchema: z.ZodType<
@@ -4470,7 +3424,6 @@ export const RemoveProjectEnvContentHintProjects3$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody23Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects3$Outbound = {
   type: string;
@@ -4488,21 +3441,6 @@ export const RemoveProjectEnvContentHintProjects3$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects3$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects3$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects3$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects3$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects3$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects3$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects3$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects3ToJSON(
   removeProjectEnvContentHintProjects3: RemoveProjectEnvContentHintProjects3,
 ): string {
@@ -4512,7 +3450,6 @@ export function removeProjectEnvContentHintProjects3ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects3FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects3, SDKValidationError> {
@@ -4531,26 +3468,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects2$inboundSchema: z.ZodType<
@@ -4562,7 +3485,6 @@ export const RemoveProjectEnvContentHintProjects2$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody22Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects2$Outbound = {
   type: string;
@@ -4580,21 +3502,6 @@ export const RemoveProjectEnvContentHintProjects2$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects2$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects2$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects2$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects2$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects2$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects2$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects2$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects2ToJSON(
   removeProjectEnvContentHintProjects2: RemoveProjectEnvContentHintProjects2,
 ): string {
@@ -4604,7 +3511,6 @@ export function removeProjectEnvContentHintProjects2ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects2FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects2, SDKValidationError> {
@@ -4623,26 +3529,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjects1$inboundSchema: z.ZodType<
@@ -4654,7 +3546,6 @@ export const RemoveProjectEnvContentHintProjects1$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody2Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHintProjects1$Outbound = {
   type: string;
@@ -4672,21 +3563,6 @@ export const RemoveProjectEnvContentHintProjects1$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjects1$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjects1$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjects1$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects1$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjects1$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjects1$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHintProjects1$Outbound;
-}
-
 export function removeProjectEnvContentHintProjects1ToJSON(
   removeProjectEnvContentHintProjects1: RemoveProjectEnvContentHintProjects1,
 ): string {
@@ -4696,7 +3572,6 @@ export function removeProjectEnvContentHintProjects1ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHintProjects1FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHintProjects1, SDKValidationError> {
@@ -4731,7 +3606,6 @@ export const RemoveProjectEnvResponseBodyProjectsContentHint$inboundSchema:
     z.lazy(() => RemoveProjectEnvContentHintProjects13$inboundSchema),
     z.lazy(() => RemoveProjectEnvContentHintProjects15$inboundSchema),
   ]);
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsContentHint$Outbound =
   | RemoveProjectEnvContentHintProjects14$Outbound
@@ -4774,22 +3648,6 @@ export const RemoveProjectEnvResponseBodyProjectsContentHint$outboundSchema:
     z.lazy(() => RemoveProjectEnvContentHintProjects15$outboundSchema),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsContentHint$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsContentHint$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsContentHint$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsContentHint$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsContentHint$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsContentHint$Outbound` instead. */
-  export type Outbound =
-    RemoveProjectEnvResponseBodyProjectsContentHint$Outbound;
-}
-
 export function removeProjectEnvResponseBodyProjectsContentHintToJSON(
   removeProjectEnvResponseBodyProjectsContentHint:
     RemoveProjectEnvResponseBodyProjectsContentHint,
@@ -4800,7 +3658,6 @@ export function removeProjectEnvResponseBodyProjectsContentHintToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBodyProjectsContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4821,24 +3678,10 @@ export function removeProjectEnvResponseBodyProjectsContentHintFromJSON(
 export const RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponse200Type> =
     z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponse200Type);
-
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponse200Type$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponse200Type> =
     RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsResponse200Type$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponse200Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSchema:
@@ -4850,7 +3693,6 @@ export const RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSche
     type: RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema,
     encryptedValue: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyProjectsInternalContentHint$Outbound = {
   type: string;
@@ -4868,22 +3710,6 @@ export const RemoveProjectEnvResponseBodyProjectsInternalContentHint$outboundSch
     encryptedValue: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsInternalContentHint$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsInternalContentHint$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsInternalContentHint$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsInternalContentHint$Outbound` instead. */
-  export type Outbound =
-    RemoveProjectEnvResponseBodyProjectsInternalContentHint$Outbound;
-}
-
 export function removeProjectEnvResponseBodyProjectsInternalContentHintToJSON(
   removeProjectEnvResponseBodyProjectsInternalContentHint:
     RemoveProjectEnvResponseBodyProjectsInternalContentHint,
@@ -4893,7 +3719,6 @@ export function removeProjectEnvResponseBodyProjectsInternalContentHintToJSON(
       .parse(removeProjectEnvResponseBodyProjectsInternalContentHint),
   );
 }
-
 export function removeProjectEnvResponseBodyProjectsInternalContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -4962,7 +3787,6 @@ export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type RemoveProjectEnvResponseBody2$Outbound = {
   system?: boolean | undefined;
@@ -5062,19 +3886,6 @@ export const RemoveProjectEnvResponseBody2$outboundSchema: z.ZodType<
   customEnvironmentIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBody2$ {
-  /** @deprecated use `RemoveProjectEnvResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvResponseBody2$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvResponseBody2$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody2$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvResponseBody2$Outbound;
-}
-
 export function removeProjectEnvResponseBody2ToJSON(
   removeProjectEnvResponseBody2: RemoveProjectEnvResponseBody2,
 ): string {
@@ -5084,7 +3895,6 @@ export function removeProjectEnvResponseBody2ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody2, SDKValidationError> {
@@ -5099,43 +3909,19 @@ export function removeProjectEnvResponseBody2FromJSON(
 export const RemoveProjectEnvTarget2$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget2
 > = z.nativeEnum(RemoveProjectEnvTarget2);
-
 /** @internal */
 export const RemoveProjectEnvTarget2$outboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget2
 > = RemoveProjectEnvTarget2$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvTarget2$ {
-  /** @deprecated use `RemoveProjectEnvTarget2$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvTarget2$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvTarget2$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvTarget2$outboundSchema;
-}
-
 /** @internal */
 export const RemoveProjectEnvTarget1$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget1
 > = z.nativeEnum(RemoveProjectEnvTarget1);
-
 /** @internal */
 export const RemoveProjectEnvTarget1$outboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget1
 > = RemoveProjectEnvTarget1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvTarget1$ {
-  /** @deprecated use `RemoveProjectEnvTarget1$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvTarget1$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvTarget1$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvTarget1$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyTarget$inboundSchema: z.ZodType<
@@ -5146,7 +3932,6 @@ export const RemoveProjectEnvResponseBodyTarget$inboundSchema: z.ZodType<
   z.array(RemoveProjectEnvTarget1$inboundSchema),
   RemoveProjectEnvTarget2$inboundSchema,
 ]);
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyTarget$Outbound =
   | Array<string>
@@ -5162,20 +3947,6 @@ export const RemoveProjectEnvResponseBodyTarget$outboundSchema: z.ZodType<
   RemoveProjectEnvTarget2$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyTarget$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyTarget$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvResponseBodyTarget$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyTarget$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyTarget$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyTarget$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvResponseBodyTarget$Outbound;
-}
-
 export function removeProjectEnvResponseBodyTargetToJSON(
   removeProjectEnvResponseBodyTarget: RemoveProjectEnvResponseBodyTarget,
 ): string {
@@ -5185,7 +3956,6 @@ export function removeProjectEnvResponseBodyTargetToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBodyTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBodyTarget, SDKValidationError> {
@@ -5201,22 +3971,10 @@ export function removeProjectEnvResponseBodyTargetFromJSON(
 export const RemoveProjectEnvResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvResponseBodyType
 > = z.nativeEnum(RemoveProjectEnvResponseBodyType);
-
 /** @internal */
 export const RemoveProjectEnvResponseBodyType$outboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvResponseBodyType
 > = RemoveProjectEnvResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyType$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvResponseBodyType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema:
@@ -5225,26 +3983,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint15$inboundSchema: z.ZodType<
@@ -5256,7 +4000,6 @@ export const RemoveProjectEnvContentHint15$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody115Type$inboundSchema,
   projectId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint15$Outbound = {
   type: string;
@@ -5274,19 +4017,6 @@ export const RemoveProjectEnvContentHint15$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint15$ {
-  /** @deprecated use `RemoveProjectEnvContentHint15$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint15$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint15$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint15$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint15$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint15$Outbound;
-}
-
 export function removeProjectEnvContentHint15ToJSON(
   removeProjectEnvContentHint15: RemoveProjectEnvContentHint15,
 ): string {
@@ -5296,7 +4026,6 @@ export function removeProjectEnvContentHint15ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint15FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint15, SDKValidationError> {
@@ -5314,26 +4043,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody114Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint14$inboundSchema: z.ZodType<
@@ -5348,7 +4063,6 @@ export const RemoveProjectEnvContentHint14$inboundSchema: z.ZodType<
   integrationProductId: z.string(),
   integrationConfigurationId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint14$Outbound = {
   type: string;
@@ -5372,19 +4086,6 @@ export const RemoveProjectEnvContentHint14$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint14$ {
-  /** @deprecated use `RemoveProjectEnvContentHint14$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint14$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint14$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint14$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint14$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint14$Outbound;
-}
-
 export function removeProjectEnvContentHint14ToJSON(
   removeProjectEnvContentHint14: RemoveProjectEnvContentHint14,
 ): string {
@@ -5394,7 +4095,6 @@ export function removeProjectEnvContentHint14ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint14FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint14, SDKValidationError> {
@@ -5412,26 +4112,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint13$inboundSchema: z.ZodType<
@@ -5443,7 +4129,6 @@ export const RemoveProjectEnvContentHint13$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody113Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint13$Outbound = {
   type: string;
@@ -5461,19 +4146,6 @@ export const RemoveProjectEnvContentHint13$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint13$ {
-  /** @deprecated use `RemoveProjectEnvContentHint13$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint13$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint13$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint13$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint13$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint13$Outbound;
-}
-
 export function removeProjectEnvContentHint13ToJSON(
   removeProjectEnvContentHint13: RemoveProjectEnvContentHint13,
 ): string {
@@ -5483,7 +4155,6 @@ export function removeProjectEnvContentHint13ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint13FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint13, SDKValidationError> {
@@ -5501,26 +4172,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint12$inboundSchema: z.ZodType<
@@ -5532,7 +4189,6 @@ export const RemoveProjectEnvContentHint12$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody112Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint12$Outbound = {
   type: string;
@@ -5550,19 +4206,6 @@ export const RemoveProjectEnvContentHint12$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint12$ {
-  /** @deprecated use `RemoveProjectEnvContentHint12$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint12$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint12$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint12$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint12$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint12$Outbound;
-}
-
 export function removeProjectEnvContentHint12ToJSON(
   removeProjectEnvContentHint12: RemoveProjectEnvContentHint12,
 ): string {
@@ -5572,7 +4215,6 @@ export function removeProjectEnvContentHint12ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint12FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint12, SDKValidationError> {
@@ -5590,26 +4232,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint11$inboundSchema: z.ZodType<
@@ -5621,7 +4249,6 @@ export const RemoveProjectEnvContentHint11$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody111Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint11$Outbound = {
   type: string;
@@ -5639,19 +4266,6 @@ export const RemoveProjectEnvContentHint11$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint11$ {
-  /** @deprecated use `RemoveProjectEnvContentHint11$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint11$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint11$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint11$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint11$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint11$Outbound;
-}
-
 export function removeProjectEnvContentHint11ToJSON(
   removeProjectEnvContentHint11: RemoveProjectEnvContentHint11,
 ): string {
@@ -5661,7 +4275,6 @@ export function removeProjectEnvContentHint11ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint11FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint11, SDKValidationError> {
@@ -5679,26 +4292,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint10$inboundSchema: z.ZodType<
@@ -5710,7 +4309,6 @@ export const RemoveProjectEnvContentHint10$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody110Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint10$Outbound = {
   type: string;
@@ -5728,19 +4326,6 @@ export const RemoveProjectEnvContentHint10$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint10$ {
-  /** @deprecated use `RemoveProjectEnvContentHint10$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint10$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint10$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint10$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint10$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint10$Outbound;
-}
-
 export function removeProjectEnvContentHint10ToJSON(
   removeProjectEnvContentHint10: RemoveProjectEnvContentHint10,
 ): string {
@@ -5750,7 +4335,6 @@ export function removeProjectEnvContentHint10ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint10FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint10, SDKValidationError> {
@@ -5768,26 +4352,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint9$inboundSchema: z.ZodType<
@@ -5799,7 +4369,6 @@ export const RemoveProjectEnvContentHint9$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody19Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint9$Outbound = {
   type: string;
@@ -5817,19 +4386,6 @@ export const RemoveProjectEnvContentHint9$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint9$ {
-  /** @deprecated use `RemoveProjectEnvContentHint9$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint9$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint9$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint9$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint9$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint9$Outbound;
-}
-
 export function removeProjectEnvContentHint9ToJSON(
   removeProjectEnvContentHint9: RemoveProjectEnvContentHint9,
 ): string {
@@ -5839,7 +4395,6 @@ export function removeProjectEnvContentHint9ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint9FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint9, SDKValidationError> {
@@ -5857,26 +4412,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint8$inboundSchema: z.ZodType<
@@ -5888,7 +4429,6 @@ export const RemoveProjectEnvContentHint8$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody18Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint8$Outbound = {
   type: string;
@@ -5906,19 +4446,6 @@ export const RemoveProjectEnvContentHint8$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint8$ {
-  /** @deprecated use `RemoveProjectEnvContentHint8$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint8$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint8$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint8$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint8$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint8$Outbound;
-}
-
 export function removeProjectEnvContentHint8ToJSON(
   removeProjectEnvContentHint8: RemoveProjectEnvContentHint8,
 ): string {
@@ -5928,7 +4455,6 @@ export function removeProjectEnvContentHint8ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint8FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint8, SDKValidationError> {
@@ -5946,26 +4472,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint7$inboundSchema: z.ZodType<
@@ -5977,7 +4489,6 @@ export const RemoveProjectEnvContentHint7$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBody1Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint7$Outbound = {
   type: string;
@@ -5995,19 +4506,6 @@ export const RemoveProjectEnvContentHint7$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint7$ {
-  /** @deprecated use `RemoveProjectEnvContentHint7$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint7$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint7$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint7$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint7$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint7$Outbound;
-}
-
 export function removeProjectEnvContentHint7ToJSON(
   removeProjectEnvContentHint7: RemoveProjectEnvContentHint7,
 ): string {
@@ -6017,7 +4515,6 @@ export function removeProjectEnvContentHint7ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint7FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint7, SDKValidationError> {
@@ -6035,26 +4532,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONRespon
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint6$inboundSchema: z.ZodType<
@@ -6066,7 +4549,6 @@ export const RemoveProjectEnvContentHint6$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint6$Outbound = {
   type: string;
@@ -6084,19 +4566,6 @@ export const RemoveProjectEnvContentHint6$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint6$ {
-  /** @deprecated use `RemoveProjectEnvContentHint6$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint6$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint6$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint6$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint6$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint6$Outbound;
-}
-
 export function removeProjectEnvContentHint6ToJSON(
   removeProjectEnvContentHint6: RemoveProjectEnvContentHint6,
 ): string {
@@ -6106,7 +4575,6 @@ export function removeProjectEnvContentHint6ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint6FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint6, SDKValidationError> {
@@ -6124,26 +4592,12 @@ export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$i
   > = z.nativeEnum(
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType,
   );
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType
   > =
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint5$inboundSchema: z.ZodType<
@@ -6155,7 +4609,6 @@ export const RemoveProjectEnvContentHint5$inboundSchema: z.ZodType<
     RemoveProjectEnvContentHintProjectsResponse200ApplicationJSONType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint5$Outbound = {
   type: string;
@@ -6173,19 +4626,6 @@ export const RemoveProjectEnvContentHint5$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint5$ {
-  /** @deprecated use `RemoveProjectEnvContentHint5$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint5$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint5$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint5$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint5$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint5$Outbound;
-}
-
 export function removeProjectEnvContentHint5ToJSON(
   removeProjectEnvContentHint5: RemoveProjectEnvContentHint5,
 ): string {
@@ -6195,7 +4635,6 @@ export function removeProjectEnvContentHint5ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint5FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint5, SDKValidationError> {
@@ -6210,24 +4649,10 @@ export function removeProjectEnvContentHint5FromJSON(
 export const RemoveProjectEnvContentHintProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvContentHintProjectsResponse200Type> = z
     .nativeEnum(RemoveProjectEnvContentHintProjectsResponse200Type);
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponse200Type$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvContentHintProjectsResponse200Type> =
     RemoveProjectEnvContentHintProjectsResponse200Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponse200Type$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200Type$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200Type$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponse200Type$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponse200Type$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint4$inboundSchema: z.ZodType<
@@ -6238,7 +4663,6 @@ export const RemoveProjectEnvContentHint4$inboundSchema: z.ZodType<
   type: RemoveProjectEnvContentHintProjectsResponse200Type$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint4$Outbound = {
   type: string;
@@ -6255,19 +4679,6 @@ export const RemoveProjectEnvContentHint4$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint4$ {
-  /** @deprecated use `RemoveProjectEnvContentHint4$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint4$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint4$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint4$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint4$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint4$Outbound;
-}
-
 export function removeProjectEnvContentHint4ToJSON(
   removeProjectEnvContentHint4: RemoveProjectEnvContentHint4,
 ): string {
@@ -6277,7 +4688,6 @@ export function removeProjectEnvContentHint4ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint4FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint4, SDKValidationError> {
@@ -6292,24 +4702,10 @@ export function removeProjectEnvContentHint4FromJSON(
 export const RemoveProjectEnvContentHintProjectsResponseType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvContentHintProjectsResponseType> = z
     .nativeEnum(RemoveProjectEnvContentHintProjectsResponseType);
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsResponseType$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvContentHintProjectsResponseType> =
     RemoveProjectEnvContentHintProjectsResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsResponseType$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsResponseType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsResponseType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint3$inboundSchema: z.ZodType<
@@ -6320,7 +4716,6 @@ export const RemoveProjectEnvContentHint3$inboundSchema: z.ZodType<
   type: RemoveProjectEnvContentHintProjectsResponseType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint3$Outbound = {
   type: string;
@@ -6337,19 +4732,6 @@ export const RemoveProjectEnvContentHint3$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint3$ {
-  /** @deprecated use `RemoveProjectEnvContentHint3$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint3$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint3$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint3$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint3$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint3$Outbound;
-}
-
 export function removeProjectEnvContentHint3ToJSON(
   removeProjectEnvContentHint3: RemoveProjectEnvContentHint3,
 ): string {
@@ -6359,7 +4741,6 @@ export function removeProjectEnvContentHint3ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint3FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint3, SDKValidationError> {
@@ -6374,24 +4755,10 @@ export function removeProjectEnvContentHint3FromJSON(
 export const RemoveProjectEnvContentHintProjectsType$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvContentHintProjectsType> = z
     .nativeEnum(RemoveProjectEnvContentHintProjectsType);
-
 /** @internal */
 export const RemoveProjectEnvContentHintProjectsType$outboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvContentHintProjectsType> =
     RemoveProjectEnvContentHintProjectsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintProjectsType$ {
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsType$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvContentHintProjectsType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintProjectsType$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvContentHintProjectsType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint2$inboundSchema: z.ZodType<
@@ -6402,7 +4769,6 @@ export const RemoveProjectEnvContentHint2$inboundSchema: z.ZodType<
   type: RemoveProjectEnvContentHintProjectsType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint2$Outbound = {
   type: string;
@@ -6419,19 +4785,6 @@ export const RemoveProjectEnvContentHint2$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint2$ {
-  /** @deprecated use `RemoveProjectEnvContentHint2$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint2$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint2$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint2$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint2$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint2$Outbound;
-}
-
 export function removeProjectEnvContentHint2ToJSON(
   removeProjectEnvContentHint2: RemoveProjectEnvContentHint2,
 ): string {
@@ -6441,7 +4794,6 @@ export function removeProjectEnvContentHint2ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint2FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint2, SDKValidationError> {
@@ -6456,22 +4808,10 @@ export function removeProjectEnvContentHint2FromJSON(
 export const RemoveProjectEnvContentHintType$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvContentHintType
 > = z.nativeEnum(RemoveProjectEnvContentHintType);
-
 /** @internal */
 export const RemoveProjectEnvContentHintType$outboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvContentHintType
 > = RemoveProjectEnvContentHintType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHintType$ {
-  /** @deprecated use `RemoveProjectEnvContentHintType$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHintType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHintType$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHintType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvContentHint1$inboundSchema: z.ZodType<
@@ -6482,7 +4822,6 @@ export const RemoveProjectEnvContentHint1$inboundSchema: z.ZodType<
   type: RemoveProjectEnvContentHintType$inboundSchema,
   storeId: z.string(),
 });
-
 /** @internal */
 export type RemoveProjectEnvContentHint1$Outbound = {
   type: string;
@@ -6499,19 +4838,6 @@ export const RemoveProjectEnvContentHint1$outboundSchema: z.ZodType<
   storeId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvContentHint1$ {
-  /** @deprecated use `RemoveProjectEnvContentHint1$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvContentHint1$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint1$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvContentHint1$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvContentHint1$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvContentHint1$Outbound;
-}
-
 export function removeProjectEnvContentHint1ToJSON(
   removeProjectEnvContentHint1: RemoveProjectEnvContentHint1,
 ): string {
@@ -6521,7 +4847,6 @@ export function removeProjectEnvContentHint1ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvContentHint1FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvContentHint1, SDKValidationError> {
@@ -6554,7 +4879,6 @@ export const RemoveProjectEnvResponseBodyContentHint$inboundSchema: z.ZodType<
   z.lazy(() => RemoveProjectEnvContentHint13$inboundSchema),
   z.lazy(() => RemoveProjectEnvContentHint15$inboundSchema),
 ]);
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyContentHint$Outbound =
   | RemoveProjectEnvContentHint14$Outbound
@@ -6596,21 +4920,6 @@ export const RemoveProjectEnvResponseBodyContentHint$outboundSchema: z.ZodType<
   z.lazy(() => RemoveProjectEnvContentHint15$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyContentHint$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyContentHint$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyContentHint$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyContentHint$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyContentHint$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyContentHint$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvResponseBodyContentHint$Outbound;
-}
-
 export function removeProjectEnvResponseBodyContentHintToJSON(
   removeProjectEnvResponseBodyContentHint:
     RemoveProjectEnvResponseBodyContentHint,
@@ -6621,7 +4930,6 @@ export function removeProjectEnvResponseBodyContentHintToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBodyContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6645,26 +4953,12 @@ export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$
   > = z.nativeEnum(
     RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType,
   );
-
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$outboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType
   > =
     RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$outboundSchema;
-}
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema:
@@ -6677,7 +4971,6 @@ export const RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema:
       RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema,
     encryptedValue: z.string(),
   });
-
 /** @internal */
 export type RemoveProjectEnvResponseBodyInternalContentHint$Outbound = {
   type: string;
@@ -6696,22 +4989,6 @@ export const RemoveProjectEnvResponseBodyInternalContentHint$outboundSchema:
     encryptedValue: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBodyInternalContentHint$ {
-  /** @deprecated use `RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema` instead. */
-  export const inboundSchema =
-    RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyInternalContentHint$outboundSchema` instead. */
-  export const outboundSchema =
-    RemoveProjectEnvResponseBodyInternalContentHint$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBodyInternalContentHint$Outbound` instead. */
-  export type Outbound =
-    RemoveProjectEnvResponseBodyInternalContentHint$Outbound;
-}
-
 export function removeProjectEnvResponseBodyInternalContentHintToJSON(
   removeProjectEnvResponseBodyInternalContentHint:
     RemoveProjectEnvResponseBodyInternalContentHint,
@@ -6722,7 +4999,6 @@ export function removeProjectEnvResponseBodyInternalContentHintToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBodyInternalContentHintFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -6789,7 +5065,6 @@ export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   customEnvironmentIds: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type RemoveProjectEnvResponseBody1$Outbound = {
   target?: Array<string> | string | undefined;
@@ -6887,19 +5162,6 @@ export const RemoveProjectEnvResponseBody1$outboundSchema: z.ZodType<
   customEnvironmentIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBody1$ {
-  /** @deprecated use `RemoveProjectEnvResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvResponseBody1$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvResponseBody1$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody1$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvResponseBody1$Outbound;
-}
-
 export function removeProjectEnvResponseBody1ToJSON(
   removeProjectEnvResponseBody1: RemoveProjectEnvResponseBody1,
 ): string {
@@ -6909,7 +5171,6 @@ export function removeProjectEnvResponseBody1ToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody1, SDKValidationError> {
@@ -6930,7 +5191,6 @@ export const RemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => RemoveProjectEnvResponseBody3$inboundSchema),
   z.array(z.lazy(() => RemoveProjectEnvResponseBody1$inboundSchema)),
 ]);
-
 /** @internal */
 export type RemoveProjectEnvResponseBody$Outbound =
   | RemoveProjectEnvResponseBody2$Outbound
@@ -6948,19 +5208,6 @@ export const RemoveProjectEnvResponseBody$outboundSchema: z.ZodType<
   z.array(z.lazy(() => RemoveProjectEnvResponseBody1$outboundSchema)),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoveProjectEnvResponseBody$ {
-  /** @deprecated use `RemoveProjectEnvResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RemoveProjectEnvResponseBody$inboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RemoveProjectEnvResponseBody$outboundSchema;
-  /** @deprecated use `RemoveProjectEnvResponseBody$Outbound` instead. */
-  export type Outbound = RemoveProjectEnvResponseBody$Outbound;
-}
-
 export function removeProjectEnvResponseBodyToJSON(
   removeProjectEnvResponseBody: RemoveProjectEnvResponseBody,
 ): string {
@@ -6970,7 +5217,6 @@ export function removeProjectEnvResponseBodyToJSON(
     ),
   );
 }
-
 export function removeProjectEnvResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RemoveProjectEnvResponseBody, SDKValidationError> {

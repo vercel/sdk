@@ -111,21 +111,9 @@ export type GetDomainConfigResponseBody = {
 /** @internal */
 export const Strict$inboundSchema: z.ZodNativeEnum<typeof Strict> = z
   .nativeEnum(Strict);
-
 /** @internal */
 export const Strict$outboundSchema: z.ZodNativeEnum<typeof Strict> =
   Strict$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Strict$ {
-  /** @deprecated use `Strict$inboundSchema` instead. */
-  export const inboundSchema = Strict$inboundSchema;
-  /** @deprecated use `Strict$outboundSchema` instead. */
-  export const outboundSchema = Strict$outboundSchema;
-}
 
 /** @internal */
 export const GetDomainConfigRequest$inboundSchema: z.ZodType<
@@ -139,7 +127,6 @@ export const GetDomainConfigRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetDomainConfigRequest$Outbound = {
   domain: string;
@@ -162,19 +149,6 @@ export const GetDomainConfigRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainConfigRequest$ {
-  /** @deprecated use `GetDomainConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDomainConfigRequest$inboundSchema;
-  /** @deprecated use `GetDomainConfigRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDomainConfigRequest$outboundSchema;
-  /** @deprecated use `GetDomainConfigRequest$Outbound` instead. */
-  export type Outbound = GetDomainConfigRequest$Outbound;
-}
-
 export function getDomainConfigRequestToJSON(
   getDomainConfigRequest: GetDomainConfigRequest,
 ): string {
@@ -182,7 +156,6 @@ export function getDomainConfigRequestToJSON(
     GetDomainConfigRequest$outboundSchema.parse(getDomainConfigRequest),
   );
 }
-
 export function getDomainConfigRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainConfigRequest, SDKValidationError> {
@@ -196,42 +169,18 @@ export function getDomainConfigRequestFromJSON(
 /** @internal */
 export const ConfiguredBy$inboundSchema: z.ZodNativeEnum<typeof ConfiguredBy> =
   z.nativeEnum(ConfiguredBy);
-
 /** @internal */
 export const ConfiguredBy$outboundSchema: z.ZodNativeEnum<typeof ConfiguredBy> =
   ConfiguredBy$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConfiguredBy$ {
-  /** @deprecated use `ConfiguredBy$inboundSchema` instead. */
-  export const inboundSchema = ConfiguredBy$inboundSchema;
-  /** @deprecated use `ConfiguredBy$outboundSchema` instead. */
-  export const outboundSchema = ConfiguredBy$outboundSchema;
-}
 
 /** @internal */
 export const AcceptedChallenges$inboundSchema: z.ZodNativeEnum<
   typeof AcceptedChallenges
 > = z.nativeEnum(AcceptedChallenges);
-
 /** @internal */
 export const AcceptedChallenges$outboundSchema: z.ZodNativeEnum<
   typeof AcceptedChallenges
 > = AcceptedChallenges$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptedChallenges$ {
-  /** @deprecated use `AcceptedChallenges$inboundSchema` instead. */
-  export const inboundSchema = AcceptedChallenges$inboundSchema;
-  /** @deprecated use `AcceptedChallenges$outboundSchema` instead. */
-  export const outboundSchema = AcceptedChallenges$outboundSchema;
-}
 
 /** @internal */
 export const RecommendedIPv4$inboundSchema: z.ZodType<
@@ -242,7 +191,6 @@ export const RecommendedIPv4$inboundSchema: z.ZodType<
   rank: z.number(),
   value: z.array(z.string()),
 });
-
 /** @internal */
 export type RecommendedIPv4$Outbound = {
   rank: number;
@@ -259,25 +207,11 @@ export const RecommendedIPv4$outboundSchema: z.ZodType<
   value: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RecommendedIPv4$ {
-  /** @deprecated use `RecommendedIPv4$inboundSchema` instead. */
-  export const inboundSchema = RecommendedIPv4$inboundSchema;
-  /** @deprecated use `RecommendedIPv4$outboundSchema` instead. */
-  export const outboundSchema = RecommendedIPv4$outboundSchema;
-  /** @deprecated use `RecommendedIPv4$Outbound` instead. */
-  export type Outbound = RecommendedIPv4$Outbound;
-}
-
 export function recommendedIPv4ToJSON(
   recommendedIPv4: RecommendedIPv4,
 ): string {
   return JSON.stringify(RecommendedIPv4$outboundSchema.parse(recommendedIPv4));
 }
-
 export function recommendedIPv4FromJSON(
   jsonString: string,
 ): SafeParseResult<RecommendedIPv4, SDKValidationError> {
@@ -297,7 +231,6 @@ export const RecommendedCNAME$inboundSchema: z.ZodType<
   rank: z.number(),
   value: z.string(),
 });
-
 /** @internal */
 export type RecommendedCNAME$Outbound = {
   rank: number;
@@ -314,19 +247,6 @@ export const RecommendedCNAME$outboundSchema: z.ZodType<
   value: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RecommendedCNAME$ {
-  /** @deprecated use `RecommendedCNAME$inboundSchema` instead. */
-  export const inboundSchema = RecommendedCNAME$inboundSchema;
-  /** @deprecated use `RecommendedCNAME$outboundSchema` instead. */
-  export const outboundSchema = RecommendedCNAME$outboundSchema;
-  /** @deprecated use `RecommendedCNAME$Outbound` instead. */
-  export type Outbound = RecommendedCNAME$Outbound;
-}
-
 export function recommendedCNAMEToJSON(
   recommendedCNAME: RecommendedCNAME,
 ): string {
@@ -334,7 +254,6 @@ export function recommendedCNAMEToJSON(
     RecommendedCNAME$outboundSchema.parse(recommendedCNAME),
   );
 }
-
 export function recommendedCNAMEFromJSON(
   jsonString: string,
 ): SafeParseResult<RecommendedCNAME, SDKValidationError> {
@@ -357,7 +276,6 @@ export const GetDomainConfigResponseBody$inboundSchema: z.ZodType<
   recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema)),
   misconfigured: z.boolean(),
 });
-
 /** @internal */
 export type GetDomainConfigResponseBody$Outbound = {
   configuredBy: string | null;
@@ -380,19 +298,6 @@ export const GetDomainConfigResponseBody$outboundSchema: z.ZodType<
   misconfigured: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainConfigResponseBody$ {
-  /** @deprecated use `GetDomainConfigResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetDomainConfigResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainConfigResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetDomainConfigResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainConfigResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainConfigResponseBody$Outbound;
-}
-
 export function getDomainConfigResponseBodyToJSON(
   getDomainConfigResponseBody: GetDomainConfigResponseBody,
 ): string {
@@ -402,7 +307,6 @@ export function getDomainConfigResponseBodyToJSON(
     ),
   );
 }
-
 export function getDomainConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainConfigResponseBody, SDKValidationError> {

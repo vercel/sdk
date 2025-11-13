@@ -192,7 +192,6 @@ export const RenewDomainContactInformation$inboundSchema: z.ZodType<
   companyName: z.string().optional(),
   fax: z.string().optional(),
 });
-
 /** @internal */
 export type RenewDomainContactInformation$Outbound = {
   firstName: string;
@@ -229,19 +228,6 @@ export const RenewDomainContactInformation$outboundSchema: z.ZodType<
   fax: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainContactInformation$ {
-  /** @deprecated use `RenewDomainContactInformation$inboundSchema` instead. */
-  export const inboundSchema = RenewDomainContactInformation$inboundSchema;
-  /** @deprecated use `RenewDomainContactInformation$outboundSchema` instead. */
-  export const outboundSchema = RenewDomainContactInformation$outboundSchema;
-  /** @deprecated use `RenewDomainContactInformation$Outbound` instead. */
-  export type Outbound = RenewDomainContactInformation$Outbound;
-}
-
 export function renewDomainContactInformationToJSON(
   renewDomainContactInformation: RenewDomainContactInformation,
 ): string {
@@ -251,7 +237,6 @@ export function renewDomainContactInformationToJSON(
     ),
   );
 }
-
 export function renewDomainContactInformationFromJSON(
   jsonString: string,
 ): SafeParseResult<RenewDomainContactInformation, SDKValidationError> {
@@ -273,7 +258,6 @@ export const RenewDomainRequestBody$inboundSchema: z.ZodType<
   contactInformation: z.lazy(() => RenewDomainContactInformation$inboundSchema)
     .optional(),
 });
-
 /** @internal */
 export type RenewDomainRequestBody$Outbound = {
   years: number;
@@ -293,19 +277,6 @@ export const RenewDomainRequestBody$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainRequestBody$ {
-  /** @deprecated use `RenewDomainRequestBody$inboundSchema` instead. */
-  export const inboundSchema = RenewDomainRequestBody$inboundSchema;
-  /** @deprecated use `RenewDomainRequestBody$outboundSchema` instead. */
-  export const outboundSchema = RenewDomainRequestBody$outboundSchema;
-  /** @deprecated use `RenewDomainRequestBody$Outbound` instead. */
-  export type Outbound = RenewDomainRequestBody$Outbound;
-}
-
 export function renewDomainRequestBodyToJSON(
   renewDomainRequestBody: RenewDomainRequestBody,
 ): string {
@@ -313,7 +284,6 @@ export function renewDomainRequestBodyToJSON(
     RenewDomainRequestBody$outboundSchema.parse(renewDomainRequestBody),
   );
 }
-
 export function renewDomainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RenewDomainRequestBody, SDKValidationError> {
@@ -338,7 +308,6 @@ export const RenewDomainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type RenewDomainRequest$Outbound = {
   domain: string;
@@ -361,19 +330,6 @@ export const RenewDomainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainRequest$ {
-  /** @deprecated use `RenewDomainRequest$inboundSchema` instead. */
-  export const inboundSchema = RenewDomainRequest$inboundSchema;
-  /** @deprecated use `RenewDomainRequest$outboundSchema` instead. */
-  export const outboundSchema = RenewDomainRequest$outboundSchema;
-  /** @deprecated use `RenewDomainRequest$Outbound` instead. */
-  export type Outbound = RenewDomainRequest$Outbound;
-}
-
 export function renewDomainRequestToJSON(
   renewDomainRequest: RenewDomainRequest,
 ): string {
@@ -381,7 +337,6 @@ export function renewDomainRequestToJSON(
     RenewDomainRequest$outboundSchema.parse(renewDomainRequest),
   );
 }
-
 export function renewDomainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<RenewDomainRequest, SDKValidationError> {
@@ -399,7 +354,6 @@ export const RenewDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([NotAuthorizedForScope$inboundSchema, Forbidden$inboundSchema]);
-
 /** @internal */
 export type RenewDomainDomainsRegistrarResponseResponseBody$Outbound =
   | NotAuthorizedForScope$Outbound
@@ -413,22 +367,6 @@ export const RenewDomainDomainsRegistrarResponseResponseBody$outboundSchema:
     unknown
   > = z.union([NotAuthorizedForScope$outboundSchema, Forbidden$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainDomainsRegistrarResponseResponseBody$ {
-  /** @deprecated use `RenewDomainDomainsRegistrarResponseResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    RenewDomainDomainsRegistrarResponseResponseBody$inboundSchema;
-  /** @deprecated use `RenewDomainDomainsRegistrarResponseResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    RenewDomainDomainsRegistrarResponseResponseBody$outboundSchema;
-  /** @deprecated use `RenewDomainDomainsRegistrarResponseResponseBody$Outbound` instead. */
-  export type Outbound =
-    RenewDomainDomainsRegistrarResponseResponseBody$Outbound;
-}
-
 export function renewDomainDomainsRegistrarResponseResponseBodyToJSON(
   renewDomainDomainsRegistrarResponseResponseBody:
     RenewDomainDomainsRegistrarResponseResponseBody,
@@ -439,7 +377,6 @@ export function renewDomainDomainsRegistrarResponseResponseBodyToJSON(
     ),
   );
 }
-
 export function renewDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -470,7 +407,6 @@ export const RenewDomainDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   TldNotSupported$inboundSchema,
   HttpApiDecodeError$inboundSchema,
 ]);
-
 /** @internal */
 export type RenewDomainDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
@@ -496,21 +432,6 @@ export const RenewDomainDomainsRegistrarResponseBody$outboundSchema: z.ZodType<
   HttpApiDecodeError$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainDomainsRegistrarResponseBody$ {
-  /** @deprecated use `RenewDomainDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    RenewDomainDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `RenewDomainDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    RenewDomainDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `RenewDomainDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound = RenewDomainDomainsRegistrarResponseBody$Outbound;
-}
-
 export function renewDomainDomainsRegistrarResponseBodyToJSON(
   renewDomainDomainsRegistrarResponseBody:
     RenewDomainDomainsRegistrarResponseBody,
@@ -521,7 +442,6 @@ export function renewDomainDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function renewDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -542,22 +462,10 @@ export function renewDomainDomainsRegistrarResponseBodyFromJSON(
 export const RenewDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof RenewDomainMethod
 > = z.nativeEnum(RenewDomainMethod);
-
 /** @internal */
 export const RenewDomainMethod$outboundSchema: z.ZodNativeEnum<
   typeof RenewDomainMethod
 > = RenewDomainMethod$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainMethod$ {
-  /** @deprecated use `RenewDomainMethod$inboundSchema` instead. */
-  export const inboundSchema = RenewDomainMethod$inboundSchema;
-  /** @deprecated use `RenewDomainMethod$outboundSchema` instead. */
-  export const outboundSchema = RenewDomainMethod$outboundSchema;
-}
 
 /** @internal */
 export const RenewDomainLinks$inboundSchema: z.ZodType<
@@ -568,7 +476,6 @@ export const RenewDomainLinks$inboundSchema: z.ZodType<
   href: z.string(),
   method: RenewDomainMethod$inboundSchema,
 });
-
 /** @internal */
 export type RenewDomainLinks$Outbound = {
   href: string;
@@ -585,19 +492,6 @@ export const RenewDomainLinks$outboundSchema: z.ZodType<
   method: RenewDomainMethod$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainLinks$ {
-  /** @deprecated use `RenewDomainLinks$inboundSchema` instead. */
-  export const inboundSchema = RenewDomainLinks$inboundSchema;
-  /** @deprecated use `RenewDomainLinks$outboundSchema` instead. */
-  export const outboundSchema = RenewDomainLinks$outboundSchema;
-  /** @deprecated use `RenewDomainLinks$Outbound` instead. */
-  export type Outbound = RenewDomainLinks$Outbound;
-}
-
 export function renewDomainLinksToJSON(
   renewDomainLinks: RenewDomainLinks,
 ): string {
@@ -605,7 +499,6 @@ export function renewDomainLinksToJSON(
     RenewDomainLinks$outboundSchema.parse(renewDomainLinks),
   );
 }
-
 export function renewDomainLinksFromJSON(
   jsonString: string,
 ): SafeParseResult<RenewDomainLinks, SDKValidationError> {
@@ -629,7 +522,6 @@ export const RenewDomainResponseBody$inboundSchema: z.ZodType<
     "_links": "links",
   });
 });
-
 /** @internal */
 export type RenewDomainResponseBody$Outbound = {
   orderId: string;
@@ -650,19 +542,6 @@ export const RenewDomainResponseBody$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RenewDomainResponseBody$ {
-  /** @deprecated use `RenewDomainResponseBody$inboundSchema` instead. */
-  export const inboundSchema = RenewDomainResponseBody$inboundSchema;
-  /** @deprecated use `RenewDomainResponseBody$outboundSchema` instead. */
-  export const outboundSchema = RenewDomainResponseBody$outboundSchema;
-  /** @deprecated use `RenewDomainResponseBody$Outbound` instead. */
-  export type Outbound = RenewDomainResponseBody$Outbound;
-}
-
 export function renewDomainResponseBodyToJSON(
   renewDomainResponseBody: RenewDomainResponseBody,
 ): string {
@@ -670,7 +549,6 @@ export function renewDomainResponseBodyToJSON(
     RenewDomainResponseBody$outboundSchema.parse(renewDomainResponseBody),
   );
 }
-
 export function renewDomainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<RenewDomainResponseBody, SDKValidationError> {

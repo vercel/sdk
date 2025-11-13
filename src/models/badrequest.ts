@@ -42,22 +42,10 @@ export class BadRequest extends VercelError {
 export const BadRequestCode$inboundSchema: z.ZodNativeEnum<
   typeof BadRequestCode
 > = z.nativeEnum(BadRequestCode);
-
 /** @internal */
 export const BadRequestCode$outboundSchema: z.ZodNativeEnum<
   typeof BadRequestCode
 > = BadRequestCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BadRequestCode$ {
-  /** @deprecated use `BadRequestCode$inboundSchema` instead. */
-  export const inboundSchema = BadRequestCode$inboundSchema;
-  /** @deprecated use `BadRequestCode$outboundSchema` instead. */
-  export const outboundSchema = BadRequestCode$outboundSchema;
-}
 
 /** @internal */
 export const BadRequest$inboundSchema: z.ZodType<
@@ -99,16 +87,3 @@ export const BadRequest$outboundSchema: z.ZodType<
     code: BadRequestCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BadRequest$ {
-  /** @deprecated use `BadRequest$inboundSchema` instead. */
-  export const inboundSchema = BadRequest$inboundSchema;
-  /** @deprecated use `BadRequest$outboundSchema` instead. */
-  export const outboundSchema = BadRequest$outboundSchema;
-  /** @deprecated use `BadRequest$Outbound` instead. */
-  export type Outbound = BadRequest$Outbound;
-}

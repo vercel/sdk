@@ -48,22 +48,10 @@ export class DuplicateDomains extends VercelError {
 export const DuplicateDomainsCode$inboundSchema: z.ZodNativeEnum<
   typeof DuplicateDomainsCode
 > = z.nativeEnum(DuplicateDomainsCode);
-
 /** @internal */
 export const DuplicateDomainsCode$outboundSchema: z.ZodNativeEnum<
   typeof DuplicateDomainsCode
 > = DuplicateDomainsCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DuplicateDomainsCode$ {
-  /** @deprecated use `DuplicateDomainsCode$inboundSchema` instead. */
-  export const inboundSchema = DuplicateDomainsCode$inboundSchema;
-  /** @deprecated use `DuplicateDomainsCode$outboundSchema` instead. */
-  export const outboundSchema = DuplicateDomainsCode$outboundSchema;
-}
 
 /** @internal */
 export const DuplicateDomains$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const DuplicateDomains$outboundSchema: z.ZodType<
     code: DuplicateDomainsCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DuplicateDomains$ {
-  /** @deprecated use `DuplicateDomains$inboundSchema` instead. */
-  export const inboundSchema = DuplicateDomains$inboundSchema;
-  /** @deprecated use `DuplicateDomains$outboundSchema` instead. */
-  export const outboundSchema = DuplicateDomains$outboundSchema;
-  /** @deprecated use `DuplicateDomains$Outbound` instead. */
-  export type Outbound = DuplicateDomains$Outbound;
-}

@@ -105,7 +105,6 @@ export const Revoke$inboundSchema: z.ZodType<Revoke, z.ZodTypeDef, unknown> = z
     secret: z.string(),
     regenerate: z.boolean(),
   });
-
 /** @internal */
 export type Revoke$Outbound = {
   secret: string;
@@ -122,23 +121,9 @@ export const Revoke$outboundSchema: z.ZodType<
   regenerate: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Revoke$ {
-  /** @deprecated use `Revoke$inboundSchema` instead. */
-  export const inboundSchema = Revoke$inboundSchema;
-  /** @deprecated use `Revoke$outboundSchema` instead. */
-  export const outboundSchema = Revoke$outboundSchema;
-  /** @deprecated use `Revoke$Outbound` instead. */
-  export type Outbound = Revoke$Outbound;
-}
-
 export function revokeToJSON(revoke: Revoke): string {
   return JSON.stringify(Revoke$outboundSchema.parse(revoke));
 }
-
 export function revokeFromJSON(
   jsonString: string,
 ): SafeParseResult<Revoke, SDKValidationError> {
@@ -157,7 +142,6 @@ export const Generate$inboundSchema: z.ZodType<
 > = z.object({
   secret: z.string().optional(),
 });
-
 /** @internal */
 export type Generate$Outbound = {
   secret?: string | undefined;
@@ -172,23 +156,9 @@ export const Generate$outboundSchema: z.ZodType<
   secret: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Generate$ {
-  /** @deprecated use `Generate$inboundSchema` instead. */
-  export const inboundSchema = Generate$inboundSchema;
-  /** @deprecated use `Generate$outboundSchema` instead. */
-  export const outboundSchema = Generate$outboundSchema;
-  /** @deprecated use `Generate$Outbound` instead. */
-  export type Outbound = Generate$Outbound;
-}
-
 export function generateToJSON(generate: Generate): string {
   return JSON.stringify(Generate$outboundSchema.parse(generate));
 }
-
 export function generateFromJSON(
   jsonString: string,
 ): SafeParseResult<Generate, SDKValidationError> {
@@ -208,7 +178,6 @@ export const UpdateProjectProtectionBypassRequestBody$inboundSchema: z.ZodType<
   revoke: z.lazy(() => Revoke$inboundSchema).optional(),
   generate: z.lazy(() => Generate$inboundSchema).optional(),
 });
-
 /** @internal */
 export type UpdateProjectProtectionBypassRequestBody$Outbound = {
   revoke?: Revoke$Outbound | undefined;
@@ -225,21 +194,6 @@ export const UpdateProjectProtectionBypassRequestBody$outboundSchema: z.ZodType<
   generate: z.lazy(() => Generate$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassRequestBody$ {
-  /** @deprecated use `UpdateProjectProtectionBypassRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassRequestBody$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassRequestBody$outboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassRequestBody$Outbound` instead. */
-  export type Outbound = UpdateProjectProtectionBypassRequestBody$Outbound;
-}
-
 export function updateProjectProtectionBypassRequestBodyToJSON(
   updateProjectProtectionBypassRequestBody:
     UpdateProjectProtectionBypassRequestBody,
@@ -250,7 +204,6 @@ export function updateProjectProtectionBypassRequestBodyToJSON(
     ),
   );
 }
-
 export function updateProjectProtectionBypassRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -284,7 +237,6 @@ export const UpdateProjectProtectionBypassRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateProjectProtectionBypassRequest$Outbound = {
   idOrName: string;
@@ -311,21 +263,6 @@ export const UpdateProjectProtectionBypassRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassRequest$ {
-  /** @deprecated use `UpdateProjectProtectionBypassRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassRequest$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassRequest$outboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassRequest$Outbound` instead. */
-  export type Outbound = UpdateProjectProtectionBypassRequest$Outbound;
-}
-
 export function updateProjectProtectionBypassRequestToJSON(
   updateProjectProtectionBypassRequest: UpdateProjectProtectionBypassRequest,
 ): string {
@@ -335,7 +272,6 @@ export function updateProjectProtectionBypassRequestToJSON(
     ),
   );
 }
-
 export function updateProjectProtectionBypassRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateProjectProtectionBypassRequest, SDKValidationError> {
@@ -352,25 +288,11 @@ export const UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundS
   z.ZodNativeEnum<
     typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope
   > = z.nativeEnum(UpdateProjectProtectionBypassProtectionBypassProjectsScope);
-
 /** @internal */
 export const UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateProjectProtectionBypassProtectionBypassProjectsScope
   > = UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassProtectionBypassProjectsScope$ {
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema;
-}
 
 /** @internal */
 export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
@@ -384,7 +306,6 @@ export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
     scope:
       UpdateProjectProtectionBypassProtectionBypassProjectsScope$inboundSchema,
   });
-
 /** @internal */
 export type UpdateProjectProtectionBypassProtectionBypass2$Outbound = {
   createdAt: number;
@@ -405,22 +326,6 @@ export const UpdateProjectProtectionBypassProtectionBypass2$outboundSchema:
       UpdateProjectProtectionBypassProtectionBypassProjectsScope$outboundSchema,
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassProtectionBypass2$ {
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass2$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassProtectionBypass2$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass2$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassProtectionBypass2$outboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass2$Outbound` instead. */
-  export type Outbound =
-    UpdateProjectProtectionBypassProtectionBypass2$Outbound;
-}
-
 export function updateProjectProtectionBypassProtectionBypass2ToJSON(
   updateProjectProtectionBypassProtectionBypass2:
     UpdateProjectProtectionBypassProtectionBypass2,
@@ -431,7 +336,6 @@ export function updateProjectProtectionBypassProtectionBypass2ToJSON(
     ),
   );
 }
-
 export function updateProjectProtectionBypassProtectionBypass2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -452,24 +356,10 @@ export function updateProjectProtectionBypassProtectionBypass2FromJSON(
 export const UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProtectionBypassScope> = z
     .nativeEnum(UpdateProjectProtectionBypassProtectionBypassScope);
-
 /** @internal */
 export const UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema:
   z.ZodNativeEnum<typeof UpdateProjectProtectionBypassProtectionBypassScope> =
     UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassProtectionBypassScope$ {
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassProtectionBypassScope$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassProtectionBypassScope$outboundSchema;
-}
 
 /** @internal */
 export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
@@ -484,7 +374,6 @@ export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
     integrationId: z.string(),
     configurationId: z.string(),
   });
-
 /** @internal */
 export type UpdateProjectProtectionBypassProtectionBypass1$Outbound = {
   createdAt: number;
@@ -508,22 +397,6 @@ export const UpdateProjectProtectionBypassProtectionBypass1$outboundSchema:
     configurationId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassProtectionBypass1$ {
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass1$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassProtectionBypass1$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass1$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassProtectionBypass1$outboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass1$Outbound` instead. */
-  export type Outbound =
-    UpdateProjectProtectionBypassProtectionBypass1$Outbound;
-}
-
 export function updateProjectProtectionBypassProtectionBypass1ToJSON(
   updateProjectProtectionBypassProtectionBypass1:
     UpdateProjectProtectionBypassProtectionBypass1,
@@ -534,7 +407,6 @@ export function updateProjectProtectionBypassProtectionBypass1ToJSON(
     ),
   );
 }
-
 export function updateProjectProtectionBypassProtectionBypass1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -561,7 +433,6 @@ export const UpdateProjectProtectionBypassProtectionBypass$inboundSchema:
     z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$inboundSchema),
     z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$inboundSchema),
   ]);
-
 /** @internal */
 export type UpdateProjectProtectionBypassProtectionBypass$Outbound =
   | UpdateProjectProtectionBypassProtectionBypass1$Outbound
@@ -578,21 +449,6 @@ export const UpdateProjectProtectionBypassProtectionBypass$outboundSchema:
     z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$outboundSchema),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassProtectionBypass$ {
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassProtectionBypass$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassProtectionBypass$outboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassProtectionBypass$Outbound` instead. */
-  export type Outbound = UpdateProjectProtectionBypassProtectionBypass$Outbound;
-}
-
 export function updateProjectProtectionBypassProtectionBypassToJSON(
   updateProjectProtectionBypassProtectionBypass:
     UpdateProjectProtectionBypassProtectionBypass,
@@ -603,7 +459,6 @@ export function updateProjectProtectionBypassProtectionBypassToJSON(
     ),
   );
 }
-
 export function updateProjectProtectionBypassProtectionBypassFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -637,7 +492,6 @@ export const UpdateProjectProtectionBypassResponseBody$inboundSchema: z.ZodType<
     ]),
   ).optional(),
 });
-
 /** @internal */
 export type UpdateProjectProtectionBypassResponseBody$Outbound = {
   protectionBypass?: {
@@ -666,21 +520,6 @@ export const UpdateProjectProtectionBypassResponseBody$outboundSchema:
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateProjectProtectionBypassResponseBody$ {
-  /** @deprecated use `UpdateProjectProtectionBypassResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateProjectProtectionBypassResponseBody$inboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateProjectProtectionBypassResponseBody$outboundSchema;
-  /** @deprecated use `UpdateProjectProtectionBypassResponseBody$Outbound` instead. */
-  export type Outbound = UpdateProjectProtectionBypassResponseBody$Outbound;
-}
-
 export function updateProjectProtectionBypassResponseBodyToJSON(
   updateProjectProtectionBypassResponseBody:
     UpdateProjectProtectionBypassResponseBody,
@@ -691,7 +530,6 @@ export function updateProjectProtectionBypassResponseBodyToJSON(
     ),
   );
 }
-
 export function updateProjectProtectionBypassResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

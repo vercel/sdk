@@ -37,8 +37,8 @@ type UpdateAttackChallengeModeRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                              `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody UpdateAttackChallengeModeRequestBody `request:"mediaType=application/json"`
+	Slug *string                              `queryParam:"style=form,explode=true,name=slug"`
+	Body UpdateAttackChallengeModeRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateAttackChallengeModeRequest) GetTeamID() *string {
@@ -55,11 +55,11 @@ func (o *UpdateAttackChallengeModeRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateAttackChallengeModeRequest) GetRequestBody() UpdateAttackChallengeModeRequestBody {
+func (o *UpdateAttackChallengeModeRequest) GetBody() UpdateAttackChallengeModeRequestBody {
 	if o == nil {
 		return UpdateAttackChallengeModeRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateAttackChallengeModeResponseBody struct {

@@ -110,8 +110,8 @@ type AcceptProjectTransferRequestRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                                  `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *AcceptProjectTransferRequestRequestBody `request:"mediaType=application/json"`
+	Slug *string                                  `queryParam:"style=form,explode=true,name=slug"`
+	Body *AcceptProjectTransferRequestRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *AcceptProjectTransferRequestRequest) GetCode() string {
@@ -135,11 +135,11 @@ func (o *AcceptProjectTransferRequestRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *AcceptProjectTransferRequestRequest) GetRequestBody() *AcceptProjectTransferRequestRequestBody {
+func (o *AcceptProjectTransferRequestRequest) GetBody() *AcceptProjectTransferRequestRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type AcceptProjectTransferRequestResponseBody2 struct {

@@ -48,22 +48,10 @@ export class DNSSECEnabled extends VercelError {
 export const DNSSECEnabledCode$inboundSchema: z.ZodNativeEnum<
   typeof DNSSECEnabledCode
 > = z.nativeEnum(DNSSECEnabledCode);
-
 /** @internal */
 export const DNSSECEnabledCode$outboundSchema: z.ZodNativeEnum<
   typeof DNSSECEnabledCode
 > = DNSSECEnabledCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DNSSECEnabledCode$ {
-  /** @deprecated use `DNSSECEnabledCode$inboundSchema` instead. */
-  export const inboundSchema = DNSSECEnabledCode$inboundSchema;
-  /** @deprecated use `DNSSECEnabledCode$outboundSchema` instead. */
-  export const outboundSchema = DNSSECEnabledCode$outboundSchema;
-}
 
 /** @internal */
 export const DNSSECEnabled$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const DNSSECEnabled$outboundSchema: z.ZodType<
     code: DNSSECEnabledCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DNSSECEnabled$ {
-  /** @deprecated use `DNSSECEnabled$inboundSchema` instead. */
-  export const inboundSchema = DNSSECEnabled$inboundSchema;
-  /** @deprecated use `DNSSECEnabled$outboundSchema` instead. */
-  export const outboundSchema = DNSSECEnabled$outboundSchema;
-  /** @deprecated use `DNSSECEnabled$Outbound` instead. */
-  export type Outbound = DNSSECEnabled$Outbound;
-}

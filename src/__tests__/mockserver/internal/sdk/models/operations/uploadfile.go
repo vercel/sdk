@@ -22,8 +22,8 @@ type UploadFileRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string    `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *io.Reader `request:"mediaType=application/octet-stream"`
+	Slug *string    `queryParam:"style=form,explode=true,name=slug"`
+	Body *io.Reader `request:"mediaType=application/octet-stream"`
 }
 
 func (o *UploadFileRequest) GetContentLength() *float64 {
@@ -68,11 +68,11 @@ func (o *UploadFileRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UploadFileRequest) GetRequestBody() *io.Reader {
+func (o *UploadFileRequest) GetBody() *io.Reader {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UploadFileResponseBody2 struct {

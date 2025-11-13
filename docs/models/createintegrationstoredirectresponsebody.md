@@ -13,7 +13,7 @@ let value: CreateIntegrationStoreDirectResponseBody = {
     externalResourceId: "<id>",
     product: {
       value: {
-        atBRANDAt8790: {},
+        atBRANDAt8797: {},
       },
     },
     secrets: [],

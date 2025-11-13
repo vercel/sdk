@@ -97,7 +97,7 @@ type UpdateResourceSecretsRequest struct {
 	IntegrationConfigurationID string                           `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	IntegrationProductIDOrSlug string                           `pathParam:"style=simple,explode=false,name=integrationProductIdOrSlug"`
 	ResourceID                 string                           `pathParam:"style=simple,explode=false,name=resourceId"`
-	RequestBody                UpdateResourceSecretsRequestBody `request:"mediaType=application/json"`
+	Body                       UpdateResourceSecretsRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateResourceSecretsRequest) GetIntegrationConfigurationID() string {
@@ -121,11 +121,11 @@ func (o *UpdateResourceSecretsRequest) GetResourceID() string {
 	return o.ResourceID
 }
 
-func (o *UpdateResourceSecretsRequest) GetRequestBody() UpdateResourceSecretsRequestBody {
+func (o *UpdateResourceSecretsRequest) GetBody() UpdateResourceSecretsRequestBody {
 	if o == nil {
 		return UpdateResourceSecretsRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateResourceSecretsResponse struct {

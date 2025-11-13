@@ -81,7 +81,7 @@ func (o *SubmitPrepaymentBalancesRequestBody) GetBalances() []Balance {
 
 type SubmitPrepaymentBalancesRequest struct {
 	IntegrationConfigurationID string                               `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
-	RequestBody                *SubmitPrepaymentBalancesRequestBody `request:"mediaType=application/json"`
+	Body                       *SubmitPrepaymentBalancesRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *SubmitPrepaymentBalancesRequest) GetIntegrationConfigurationID() string {
@@ -91,11 +91,11 @@ func (o *SubmitPrepaymentBalancesRequest) GetIntegrationConfigurationID() string
 	return o.IntegrationConfigurationID
 }
 
-func (o *SubmitPrepaymentBalancesRequest) GetRequestBody() *SubmitPrepaymentBalancesRequestBody {
+func (o *SubmitPrepaymentBalancesRequest) GetBody() *SubmitPrepaymentBalancesRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type SubmitPrepaymentBalancesResponse struct {

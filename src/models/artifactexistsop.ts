@@ -32,7 +32,6 @@ export const ArtifactExistsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ArtifactExistsRequest$Outbound = {
   hash: string;
@@ -51,19 +50,6 @@ export const ArtifactExistsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ArtifactExistsRequest$ {
-  /** @deprecated use `ArtifactExistsRequest$inboundSchema` instead. */
-  export const inboundSchema = ArtifactExistsRequest$inboundSchema;
-  /** @deprecated use `ArtifactExistsRequest$outboundSchema` instead. */
-  export const outboundSchema = ArtifactExistsRequest$outboundSchema;
-  /** @deprecated use `ArtifactExistsRequest$Outbound` instead. */
-  export type Outbound = ArtifactExistsRequest$Outbound;
-}
-
 export function artifactExistsRequestToJSON(
   artifactExistsRequest: ArtifactExistsRequest,
 ): string {
@@ -71,7 +57,6 @@ export function artifactExistsRequestToJSON(
     ArtifactExistsRequest$outboundSchema.parse(artifactExistsRequest),
   );
 }
-
 export function artifactExistsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ArtifactExistsRequest, SDKValidationError> {

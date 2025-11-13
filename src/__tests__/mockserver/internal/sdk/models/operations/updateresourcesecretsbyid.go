@@ -96,7 +96,7 @@ func (o *UpdateResourceSecretsByIDRequestBody) GetPartial() *bool {
 type UpdateResourceSecretsByIDRequest struct {
 	IntegrationConfigurationID string                                `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
 	ResourceID                 string                                `pathParam:"style=simple,explode=false,name=resourceId"`
-	RequestBody                *UpdateResourceSecretsByIDRequestBody `request:"mediaType=application/json"`
+	Body                       *UpdateResourceSecretsByIDRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateResourceSecretsByIDRequest) GetIntegrationConfigurationID() string {
@@ -113,11 +113,11 @@ func (o *UpdateResourceSecretsByIDRequest) GetResourceID() string {
 	return o.ResourceID
 }
 
-func (o *UpdateResourceSecretsByIDRequest) GetRequestBody() *UpdateResourceSecretsByIDRequestBody {
+func (o *UpdateResourceSecretsByIDRequest) GetBody() *UpdateResourceSecretsByIDRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateResourceSecretsByIDResponse struct {

@@ -35,7 +35,6 @@ export const Pagination$inboundSchema: z.ZodType<
   next: z.nullable(z.number()),
   prev: z.nullable(z.number()),
 });
-
 /** @internal */
 export type Pagination$Outbound = {
   count: number;
@@ -54,23 +53,9 @@ export const Pagination$outboundSchema: z.ZodType<
   prev: z.nullable(z.number()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Pagination$ {
-  /** @deprecated use `Pagination$inboundSchema` instead. */
-  export const inboundSchema = Pagination$inboundSchema;
-  /** @deprecated use `Pagination$outboundSchema` instead. */
-  export const outboundSchema = Pagination$outboundSchema;
-  /** @deprecated use `Pagination$Outbound` instead. */
-  export type Outbound = Pagination$Outbound;
-}
-
 export function paginationToJSON(pagination: Pagination): string {
   return JSON.stringify(Pagination$outboundSchema.parse(pagination));
 }
-
 export function paginationFromJSON(
   jsonString: string,
 ): SafeParseResult<Pagination, SDKValidationError> {

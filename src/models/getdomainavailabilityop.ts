@@ -28,7 +28,6 @@ export const GetDomainAvailabilityRequest$inboundSchema: z.ZodType<
   domain: z.string(),
   teamId: z.string().optional(),
 });
-
 /** @internal */
 export type GetDomainAvailabilityRequest$Outbound = {
   domain: string;
@@ -45,19 +44,6 @@ export const GetDomainAvailabilityRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainAvailabilityRequest$ {
-  /** @deprecated use `GetDomainAvailabilityRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDomainAvailabilityRequest$inboundSchema;
-  /** @deprecated use `GetDomainAvailabilityRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDomainAvailabilityRequest$outboundSchema;
-  /** @deprecated use `GetDomainAvailabilityRequest$Outbound` instead. */
-  export type Outbound = GetDomainAvailabilityRequest$Outbound;
-}
-
 export function getDomainAvailabilityRequestToJSON(
   getDomainAvailabilityRequest: GetDomainAvailabilityRequest,
 ): string {
@@ -67,7 +53,6 @@ export function getDomainAvailabilityRequestToJSON(
     ),
   );
 }
-
 export function getDomainAvailabilityRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainAvailabilityRequest, SDKValidationError> {
@@ -86,7 +71,6 @@ export const GetDomainAvailabilityResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   available: z.boolean(),
 });
-
 /** @internal */
 export type GetDomainAvailabilityResponseBody$Outbound = {
   available: boolean;
@@ -101,20 +85,6 @@ export const GetDomainAvailabilityResponseBody$outboundSchema: z.ZodType<
   available: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainAvailabilityResponseBody$ {
-  /** @deprecated use `GetDomainAvailabilityResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetDomainAvailabilityResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainAvailabilityResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDomainAvailabilityResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainAvailabilityResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainAvailabilityResponseBody$Outbound;
-}
-
 export function getDomainAvailabilityResponseBodyToJSON(
   getDomainAvailabilityResponseBody: GetDomainAvailabilityResponseBody,
 ): string {
@@ -124,7 +94,6 @@ export function getDomainAvailabilityResponseBodyToJSON(
     ),
   );
 }
-
 export function getDomainAvailabilityResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainAvailabilityResponseBody, SDKValidationError> {

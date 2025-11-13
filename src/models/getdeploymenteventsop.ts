@@ -354,21 +354,9 @@ export type GetDeploymentEventsResponse =
 /** @internal */
 export const Direction$inboundSchema: z.ZodNativeEnum<typeof Direction> = z
   .nativeEnum(Direction);
-
 /** @internal */
 export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> =
   Direction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Direction$ {
-  /** @deprecated use `Direction$inboundSchema` instead. */
-  export const inboundSchema = Direction$inboundSchema;
-  /** @deprecated use `Direction$outboundSchema` instead. */
-  export const outboundSchema = Direction$outboundSchema;
-}
 
 /** @internal */
 export const StatusCode$inboundSchema: z.ZodType<
@@ -376,7 +364,6 @@ export const StatusCode$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.number(), z.string()]);
-
 /** @internal */
 export type StatusCode$Outbound = number | string;
 
@@ -387,23 +374,9 @@ export const StatusCode$outboundSchema: z.ZodType<
   StatusCode
 > = z.union([z.number(), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StatusCode$ {
-  /** @deprecated use `StatusCode$inboundSchema` instead. */
-  export const inboundSchema = StatusCode$inboundSchema;
-  /** @deprecated use `StatusCode$outboundSchema` instead. */
-  export const outboundSchema = StatusCode$outboundSchema;
-  /** @deprecated use `StatusCode$Outbound` instead. */
-  export type Outbound = StatusCode$Outbound;
-}
-
 export function statusCodeToJSON(statusCode: StatusCode): string {
   return JSON.stringify(StatusCode$outboundSchema.parse(statusCode));
 }
-
 export function statusCodeFromJSON(
   jsonString: string,
 ): SafeParseResult<StatusCode, SDKValidationError> {
@@ -433,7 +406,6 @@ export const GetDeploymentEventsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetDeploymentEventsRequest$Outbound = {
   idOrUrl: string;
@@ -470,19 +442,6 @@ export const GetDeploymentEventsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsRequest$ {
-  /** @deprecated use `GetDeploymentEventsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentEventsRequest$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentEventsRequest$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsRequest$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsRequest$Outbound;
-}
-
 export function getDeploymentEventsRequestToJSON(
   getDeploymentEventsRequest: GetDeploymentEventsRequest,
 ): string {
@@ -490,7 +449,6 @@ export function getDeploymentEventsRequestToJSON(
     GetDeploymentEventsRequest$outboundSchema.parse(getDeploymentEventsRequest),
   );
 }
-
 export function getDeploymentEventsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsRequest, SDKValidationError> {
@@ -514,7 +472,6 @@ export const ResponseBodyInfo$inboundSchema: z.ZodType<
   step: z.string().optional(),
   readyState: z.string().optional(),
 });
-
 /** @internal */
 export type ResponseBodyInfo$Outbound = {
   type: string;
@@ -539,19 +496,6 @@ export const ResponseBodyInfo$outboundSchema: z.ZodType<
   readyState: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyInfo$ {
-  /** @deprecated use `ResponseBodyInfo$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyInfo$inboundSchema;
-  /** @deprecated use `ResponseBodyInfo$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyInfo$outboundSchema;
-  /** @deprecated use `ResponseBodyInfo$Outbound` instead. */
-  export type Outbound = ResponseBodyInfo$Outbound;
-}
-
 export function responseBodyInfoToJSON(
   responseBodyInfo: ResponseBodyInfo,
 ): string {
@@ -559,7 +503,6 @@ export function responseBodyInfoToJSON(
     ResponseBodyInfo$outboundSchema.parse(responseBodyInfo),
   );
 }
-
 export function responseBodyInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyInfo, SDKValidationError> {
@@ -575,46 +518,20 @@ export const GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchem
   z.ZodNativeEnum<
     typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
   > = z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType);
-
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema:
   z.ZodNativeEnum<
     typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
   > = GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyDeploymentsResponseType$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyDeploymentsResponseType$outboundSchema;
-}
-
 /** @internal */
 export const ResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyLevel
 > = z.nativeEnum(ResponseBodyLevel);
-
 /** @internal */
 export const ResponseBodyLevel$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyLevel
 > = ResponseBodyLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyLevel$ {
-  /** @deprecated use `ResponseBodyLevel$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyLevel$inboundSchema;
-  /** @deprecated use `ResponseBodyLevel$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyLevel$outboundSchema;
-}
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
@@ -633,7 +550,6 @@ export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
     type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
     level: ResponseBodyLevel$inboundSchema.optional(),
   });
-
 /** @internal */
 export type GetDeploymentEventsResponseBodyDeployments2$Outbound = {
   created: number;
@@ -665,21 +581,6 @@ export const GetDeploymentEventsResponseBodyDeployments2$outboundSchema:
     level: ResponseBodyLevel$outboundSchema.optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyDeployments2$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyDeployments2$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyDeployments2$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments2$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponseBodyDeployments2$Outbound;
-}
-
 export function getDeploymentEventsResponseBodyDeployments2ToJSON(
   getDeploymentEventsResponseBodyDeployments2:
     GetDeploymentEventsResponseBodyDeployments2,
@@ -690,7 +591,6 @@ export function getDeploymentEventsResponseBodyDeployments2ToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBodyDeployments2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -711,24 +611,10 @@ export function getDeploymentEventsResponseBodyDeployments2FromJSON(
 export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
     .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
-
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> =
     GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyDeploymentsType$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyDeploymentsType$outboundSchema;
-}
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
@@ -743,7 +629,6 @@ export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
   step: z.string().optional(),
   readyState: z.string().optional(),
 });
-
 /** @internal */
 export type GetDeploymentEventsResponseBodyInfo$Outbound = {
   type: string;
@@ -768,21 +653,6 @@ export const GetDeploymentEventsResponseBodyInfo$outboundSchema: z.ZodType<
   readyState: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyInfo$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyInfo$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyInfo$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyInfo$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyInfo$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyInfo$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponseBodyInfo$Outbound;
-}
-
 export function getDeploymentEventsResponseBodyInfoToJSON(
   getDeploymentEventsResponseBodyInfo: GetDeploymentEventsResponseBodyInfo,
 ): string {
@@ -792,7 +662,6 @@ export function getDeploymentEventsResponseBodyInfoToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBodyInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBodyInfo, SDKValidationError> {
@@ -808,43 +677,19 @@ export function getDeploymentEventsResponseBodyInfoFromJSON(
 export const ResponseBodyVercelCache$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyVercelCache
 > = z.nativeEnum(ResponseBodyVercelCache);
-
 /** @internal */
 export const ResponseBodyVercelCache$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyVercelCache
 > = ResponseBodyVercelCache$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyVercelCache$ {
-  /** @deprecated use `ResponseBodyVercelCache$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyVercelCache$inboundSchema;
-  /** @deprecated use `ResponseBodyVercelCache$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyVercelCache$outboundSchema;
-}
-
 /** @internal */
 export const ResponseBodyWafAction$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyWafAction
 > = z.nativeEnum(ResponseBodyWafAction);
-
 /** @internal */
 export const ResponseBodyWafAction$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyWafAction
 > = ResponseBodyWafAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyWafAction$ {
-  /** @deprecated use `ResponseBodyWafAction$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyWafAction$inboundSchema;
-  /** @deprecated use `ResponseBodyWafAction$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyWafAction$outboundSchema;
-}
 
 /** @internal */
 export const ResponseBodyProxy$inboundSchema: z.ZodType<
@@ -872,7 +717,6 @@ export const ResponseBodyProxy$inboundSchema: z.ZodType<
   wafAction: ResponseBodyWafAction$inboundSchema.optional(),
   wafRuleId: z.string().optional(),
 });
-
 /** @internal */
 export type ResponseBodyProxy$Outbound = {
   timestamp: number;
@@ -923,19 +767,6 @@ export const ResponseBodyProxy$outboundSchema: z.ZodType<
   wafRuleId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyProxy$ {
-  /** @deprecated use `ResponseBodyProxy$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyProxy$inboundSchema;
-  /** @deprecated use `ResponseBodyProxy$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyProxy$outboundSchema;
-  /** @deprecated use `ResponseBodyProxy$Outbound` instead. */
-  export type Outbound = ResponseBodyProxy$Outbound;
-}
-
 export function responseBodyProxyToJSON(
   responseBodyProxy: ResponseBodyProxy,
 ): string {
@@ -943,7 +774,6 @@ export function responseBodyProxyToJSON(
     ResponseBodyProxy$outboundSchema.parse(responseBodyProxy),
   );
 }
-
 export function responseBodyProxyFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyProxy, SDKValidationError> {
@@ -972,7 +802,6 @@ export const ResponseBodyPayload$inboundSchema: z.ZodType<
   requestId: z.string().optional(),
   proxy: z.lazy(() => ResponseBodyProxy$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ResponseBodyPayload$Outbound = {
   deploymentId: string;
@@ -1006,19 +835,6 @@ export const ResponseBodyPayload$outboundSchema: z.ZodType<
   proxy: z.lazy(() => ResponseBodyProxy$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyPayload$ {
-  /** @deprecated use `ResponseBodyPayload$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyPayload$inboundSchema;
-  /** @deprecated use `ResponseBodyPayload$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyPayload$outboundSchema;
-  /** @deprecated use `ResponseBodyPayload$Outbound` instead. */
-  export type Outbound = ResponseBodyPayload$Outbound;
-}
-
 export function responseBodyPayloadToJSON(
   responseBodyPayload: ResponseBodyPayload,
 ): string {
@@ -1026,7 +842,6 @@ export function responseBodyPayloadToJSON(
     ResponseBodyPayload$outboundSchema.parse(responseBodyPayload),
   );
 }
-
 export function responseBodyPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyPayload, SDKValidationError> {
@@ -1048,7 +863,6 @@ export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
     created: z.number(),
     payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
   });
-
 /** @internal */
 export type GetDeploymentEventsResponseBodyDeployments1$Outbound = {
   type: string;
@@ -1068,21 +882,6 @@ export const GetDeploymentEventsResponseBodyDeployments1$outboundSchema:
     payload: z.lazy(() => ResponseBodyPayload$outboundSchema),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyDeployments1$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyDeployments1$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyDeployments1$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeployments1$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponseBodyDeployments1$Outbound;
-}
-
 export function getDeploymentEventsResponseBodyDeployments1ToJSON(
   getDeploymentEventsResponseBodyDeployments1:
     GetDeploymentEventsResponseBodyDeployments1,
@@ -1093,7 +892,6 @@ export function getDeploymentEventsResponseBodyDeployments1ToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBodyDeployments1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1119,7 +917,6 @@ export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
 ]);
-
 /** @internal */
 export type GetDeploymentEventsResponseBody$Outbound =
   | GetDeploymentEventsResponseBodyDeployments2$Outbound
@@ -1135,19 +932,6 @@ export const GetDeploymentEventsResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBody$ {
-  /** @deprecated use `GetDeploymentEventsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentEventsResponseBody$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentEventsResponseBody$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBody$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponseBody$Outbound;
-}
-
 export function getDeploymentEventsResponseBodyToJSON(
   getDeploymentEventsResponseBody: GetDeploymentEventsResponseBody,
 ): string {
@@ -1157,7 +941,6 @@ export function getDeploymentEventsResponseBodyToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBody, SDKValidationError> {
@@ -1178,7 +961,6 @@ export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
     step: z.string().optional(),
     readyState: z.string().optional(),
   });
-
 /** @internal */
 export type Info$Outbound = {
   type: string;
@@ -1200,23 +982,9 @@ export const Info$outboundSchema: z.ZodType<Info$Outbound, z.ZodTypeDef, Info> =
     readyState: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Info$ {
-  /** @deprecated use `Info$inboundSchema` instead. */
-  export const inboundSchema = Info$inboundSchema;
-  /** @deprecated use `Info$outboundSchema` instead. */
-  export const outboundSchema = Info$outboundSchema;
-  /** @deprecated use `Info$Outbound` instead. */
-  export type Outbound = Info$Outbound;
-}
-
 export function infoToJSON(info: Info): string {
   return JSON.stringify(Info$outboundSchema.parse(info));
 }
-
 export function infoFromJSON(
   jsonString: string,
 ): SafeParseResult<Info, SDKValidationError> {
@@ -1231,48 +999,20 @@ export function infoFromJSON(
 export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEventsResponseBodyType
 > = z.nativeEnum(GetDeploymentEventsResponseBodyType);
-
 /** @internal */
 export const GetDeploymentEventsResponseBodyType$outboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyType> =
     GetDeploymentEventsResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyType$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyType$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyLevel$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> = z.nativeEnum(
     GetDeploymentEventsResponseBodyLevel,
   );
-
 /** @internal */
 export const GetDeploymentEventsResponseBodyLevel$outboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> =
     GetDeploymentEventsResponseBodyLevel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyLevel$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyLevel$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyLevel$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyLevel$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyLevel$outboundSchema;
-}
 
 /** @internal */
 export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
@@ -1290,7 +1030,6 @@ export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
   type: GetDeploymentEventsResponseBodyType$inboundSchema,
   level: GetDeploymentEventsResponseBodyLevel$inboundSchema.optional(),
 });
-
 /** @internal */
 export type GetDeploymentEventsResponseBody2$Outbound = {
   created: number;
@@ -1321,19 +1060,6 @@ export const GetDeploymentEventsResponseBody2$outboundSchema: z.ZodType<
   level: GetDeploymentEventsResponseBodyLevel$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBody2$ {
-  /** @deprecated use `GetDeploymentEventsResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentEventsResponseBody2$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentEventsResponseBody2$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBody2$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponseBody2$Outbound;
-}
-
 export function getDeploymentEventsResponseBody2ToJSON(
   getDeploymentEventsResponseBody2: GetDeploymentEventsResponseBody2,
 ): string {
@@ -1343,7 +1069,6 @@ export function getDeploymentEventsResponseBody2ToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBody2, SDKValidationError> {
@@ -1358,22 +1083,10 @@ export function getDeploymentEventsResponseBody2FromJSON(
 export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyType
 > = z.nativeEnum(ResponseBodyType);
-
 /** @internal */
 export const ResponseBodyType$outboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyType
 > = ResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyType$ {
-  /** @deprecated use `ResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyType$inboundSchema;
-  /** @deprecated use `ResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
@@ -1389,7 +1102,6 @@ export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
     step: z.string().optional(),
     readyState: z.string().optional(),
   });
-
 /** @internal */
 export type GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound = {
   type: string;
@@ -1415,22 +1127,6 @@ export const GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema:
     readyState: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyDeploymentsInfo$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyDeploymentsInfo$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound` instead. */
-  export type Outbound =
-    GetDeploymentEventsResponseBodyDeploymentsInfo$Outbound;
-}
-
 export function getDeploymentEventsResponseBodyDeploymentsInfoToJSON(
   getDeploymentEventsResponseBodyDeploymentsInfo:
     GetDeploymentEventsResponseBodyDeploymentsInfo,
@@ -1441,7 +1137,6 @@ export function getDeploymentEventsResponseBodyDeploymentsInfoToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1461,40 +1156,16 @@ export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
 /** @internal */
 export const VercelCache$inboundSchema: z.ZodNativeEnum<typeof VercelCache> = z
   .nativeEnum(VercelCache);
-
 /** @internal */
 export const VercelCache$outboundSchema: z.ZodNativeEnum<typeof VercelCache> =
   VercelCache$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VercelCache$ {
-  /** @deprecated use `VercelCache$inboundSchema` instead. */
-  export const inboundSchema = VercelCache$inboundSchema;
-  /** @deprecated use `VercelCache$outboundSchema` instead. */
-  export const outboundSchema = VercelCache$outboundSchema;
-}
-
 /** @internal */
 export const WafAction$inboundSchema: z.ZodNativeEnum<typeof WafAction> = z
   .nativeEnum(WafAction);
-
 /** @internal */
 export const WafAction$outboundSchema: z.ZodNativeEnum<typeof WafAction> =
   WafAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WafAction$ {
-  /** @deprecated use `WafAction$inboundSchema` instead. */
-  export const inboundSchema = WafAction$inboundSchema;
-  /** @deprecated use `WafAction$outboundSchema` instead. */
-  export const outboundSchema = WafAction$outboundSchema;
-}
 
 /** @internal */
 export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
@@ -1519,7 +1190,6 @@ export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
     wafAction: WafAction$inboundSchema.optional(),
     wafRuleId: z.string().optional(),
   });
-
 /** @internal */
 export type Proxy$Outbound = {
   timestamp: number;
@@ -1570,23 +1240,9 @@ export const Proxy$outboundSchema: z.ZodType<
   wafRuleId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Proxy$ {
-  /** @deprecated use `Proxy$inboundSchema` instead. */
-  export const inboundSchema = Proxy$inboundSchema;
-  /** @deprecated use `Proxy$outboundSchema` instead. */
-  export const outboundSchema = Proxy$outboundSchema;
-  /** @deprecated use `Proxy$Outbound` instead. */
-  export type Outbound = Proxy$Outbound;
-}
-
 export function proxyToJSON(proxy: Proxy): string {
   return JSON.stringify(Proxy$outboundSchema.parse(proxy));
 }
-
 export function proxyFromJSON(
   jsonString: string,
 ): SafeParseResult<Proxy, SDKValidationError> {
@@ -1616,7 +1272,6 @@ export const GetDeploymentEventsResponseBodyPayload$inboundSchema: z.ZodType<
   requestId: z.string().optional(),
   proxy: z.lazy(() => Proxy$inboundSchema).optional(),
 });
-
 /** @internal */
 export type GetDeploymentEventsResponseBodyPayload$Outbound = {
   deploymentId: string;
@@ -1651,21 +1306,6 @@ export const GetDeploymentEventsResponseBodyPayload$outboundSchema: z.ZodType<
   proxy: z.lazy(() => Proxy$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBodyPayload$ {
-  /** @deprecated use `GetDeploymentEventsResponseBodyPayload$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsResponseBodyPayload$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyPayload$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsResponseBodyPayload$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBodyPayload$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponseBodyPayload$Outbound;
-}
-
 export function getDeploymentEventsResponseBodyPayloadToJSON(
   getDeploymentEventsResponseBodyPayload:
     GetDeploymentEventsResponseBodyPayload,
@@ -1676,7 +1316,6 @@ export function getDeploymentEventsResponseBodyPayloadToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBodyPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBodyPayload, SDKValidationError> {
@@ -1698,7 +1337,6 @@ export const GetDeploymentEventsResponseBody1$inboundSchema: z.ZodType<
   created: z.number(),
   payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
 });
-
 /** @internal */
 export type GetDeploymentEventsResponseBody1$Outbound = {
   type: string;
@@ -1717,19 +1355,6 @@ export const GetDeploymentEventsResponseBody1$outboundSchema: z.ZodType<
   payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponseBody1$ {
-  /** @deprecated use `GetDeploymentEventsResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentEventsResponseBody1$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentEventsResponseBody1$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponseBody1$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponseBody1$Outbound;
-}
-
 export function getDeploymentEventsResponseBody1ToJSON(
   getDeploymentEventsResponseBody1: GetDeploymentEventsResponseBody1,
 ): string {
@@ -1739,7 +1364,6 @@ export function getDeploymentEventsResponseBody1ToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponseBody1, SDKValidationError> {
@@ -1757,7 +1381,6 @@ export const GetDeploymentEventsDeploymentsResponseBody$inboundSchema:
       z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
       z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
     ]);
-
 /** @internal */
 export type GetDeploymentEventsDeploymentsResponseBody$Outbound =
   | GetDeploymentEventsResponseBody2$Outbound
@@ -1774,21 +1397,6 @@ export const GetDeploymentEventsDeploymentsResponseBody$outboundSchema:
     z.lazy(() => GetDeploymentEventsResponseBody1$outboundSchema),
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsDeploymentsResponseBody$ {
-  /** @deprecated use `GetDeploymentEventsDeploymentsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDeploymentEventsDeploymentsResponseBody$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsDeploymentsResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDeploymentEventsDeploymentsResponseBody$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsDeploymentsResponseBody$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsDeploymentsResponseBody$Outbound;
-}
-
 export function getDeploymentEventsDeploymentsResponseBodyToJSON(
   getDeploymentEventsDeploymentsResponseBody:
     GetDeploymentEventsDeploymentsResponseBody,
@@ -1799,7 +1407,6 @@ export function getDeploymentEventsDeploymentsResponseBodyToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsDeploymentsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -1835,7 +1442,6 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
     ),
   ]),
 ]);
-
 /** @internal */
 export type GetDeploymentEventsResponse$Outbound =
   | Array<
@@ -1866,19 +1472,6 @@ export const GetDeploymentEventsResponse$outboundSchema: z.ZodType<
   ]),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentEventsResponse$ {
-  /** @deprecated use `GetDeploymentEventsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentEventsResponse$inboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentEventsResponse$outboundSchema;
-  /** @deprecated use `GetDeploymentEventsResponse$Outbound` instead. */
-  export type Outbound = GetDeploymentEventsResponse$Outbound;
-}
-
 export function getDeploymentEventsResponseToJSON(
   getDeploymentEventsResponse: GetDeploymentEventsResponse,
 ): string {
@@ -1888,7 +1481,6 @@ export function getDeploymentEventsResponseToJSON(
     ),
   );
 }
-
 export function getDeploymentEventsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentEventsResponse, SDKValidationError> {

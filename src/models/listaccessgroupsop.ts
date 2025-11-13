@@ -113,7 +113,6 @@ export const ListAccessGroupsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type ListAccessGroupsRequest$Outbound = {
   projectId?: string | undefined;
@@ -142,19 +141,6 @@ export const ListAccessGroupsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupsRequest$ {
-  /** @deprecated use `ListAccessGroupsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupsRequest$inboundSchema;
-  /** @deprecated use `ListAccessGroupsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupsRequest$outboundSchema;
-  /** @deprecated use `ListAccessGroupsRequest$Outbound` instead. */
-  export type Outbound = ListAccessGroupsRequest$Outbound;
-}
-
 export function listAccessGroupsRequestToJSON(
   listAccessGroupsRequest: ListAccessGroupsRequest,
 ): string {
@@ -162,7 +148,6 @@ export function listAccessGroupsRequestToJSON(
     ListAccessGroupsRequest$outboundSchema.parse(listAccessGroupsRequest),
   );
 }
-
 export function listAccessGroupsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupsRequest, SDKValidationError> {
@@ -193,7 +178,6 @@ export const AccessGroups$inboundSchema: z.ZodType<
   projectsCount: z.number(),
   teamRoles: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type AccessGroups$Outbound = {
   members?: Array<string> | undefined;
@@ -232,23 +216,9 @@ export const AccessGroups$outboundSchema: z.ZodType<
   teamRoles: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AccessGroups$ {
-  /** @deprecated use `AccessGroups$inboundSchema` instead. */
-  export const inboundSchema = AccessGroups$inboundSchema;
-  /** @deprecated use `AccessGroups$outboundSchema` instead. */
-  export const outboundSchema = AccessGroups$outboundSchema;
-  /** @deprecated use `AccessGroups$Outbound` instead. */
-  export type Outbound = AccessGroups$Outbound;
-}
-
 export function accessGroupsToJSON(accessGroups: AccessGroups): string {
   return JSON.stringify(AccessGroups$outboundSchema.parse(accessGroups));
 }
-
 export function accessGroupsFromJSON(
   jsonString: string,
 ): SafeParseResult<AccessGroups, SDKValidationError> {
@@ -268,7 +238,6 @@ export const ResponseBodyPagination$inboundSchema: z.ZodType<
   count: z.number(),
   next: z.nullable(z.string()),
 });
-
 /** @internal */
 export type ResponseBodyPagination$Outbound = {
   count: number;
@@ -285,19 +254,6 @@ export const ResponseBodyPagination$outboundSchema: z.ZodType<
   next: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyPagination$ {
-  /** @deprecated use `ResponseBodyPagination$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyPagination$inboundSchema;
-  /** @deprecated use `ResponseBodyPagination$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyPagination$outboundSchema;
-  /** @deprecated use `ResponseBodyPagination$Outbound` instead. */
-  export type Outbound = ResponseBodyPagination$Outbound;
-}
-
 export function responseBodyPaginationToJSON(
   responseBodyPagination: ResponseBodyPagination,
 ): string {
@@ -305,7 +261,6 @@ export function responseBodyPaginationToJSON(
     ResponseBodyPagination$outboundSchema.parse(responseBodyPagination),
   );
 }
-
 export function responseBodyPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyPagination, SDKValidationError> {
@@ -325,7 +280,6 @@ export const ListAccessGroupsResponseBody2$inboundSchema: z.ZodType<
   accessGroups: z.array(z.lazy(() => AccessGroups$inboundSchema)),
   pagination: z.lazy(() => ResponseBodyPagination$inboundSchema),
 });
-
 /** @internal */
 export type ListAccessGroupsResponseBody2$Outbound = {
   accessGroups: Array<AccessGroups$Outbound>;
@@ -342,19 +296,6 @@ export const ListAccessGroupsResponseBody2$outboundSchema: z.ZodType<
   pagination: z.lazy(() => ResponseBodyPagination$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupsResponseBody2$ {
-  /** @deprecated use `ListAccessGroupsResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupsResponseBody2$inboundSchema;
-  /** @deprecated use `ListAccessGroupsResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupsResponseBody2$outboundSchema;
-  /** @deprecated use `ListAccessGroupsResponseBody2$Outbound` instead. */
-  export type Outbound = ListAccessGroupsResponseBody2$Outbound;
-}
-
 export function listAccessGroupsResponseBody2ToJSON(
   listAccessGroupsResponseBody2: ListAccessGroupsResponseBody2,
 ): string {
@@ -364,7 +305,6 @@ export function listAccessGroupsResponseBody2ToJSON(
     ),
   );
 }
-
 export function listAccessGroupsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupsResponseBody2, SDKValidationError> {
@@ -381,7 +321,6 @@ export const ListAccessGroupsResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ListAccessGroupsResponseBody1$Outbound = {};
 
@@ -392,19 +331,6 @@ export const ListAccessGroupsResponseBody1$outboundSchema: z.ZodType<
   ListAccessGroupsResponseBody1
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupsResponseBody1$ {
-  /** @deprecated use `ListAccessGroupsResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupsResponseBody1$inboundSchema;
-  /** @deprecated use `ListAccessGroupsResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupsResponseBody1$outboundSchema;
-  /** @deprecated use `ListAccessGroupsResponseBody1$Outbound` instead. */
-  export type Outbound = ListAccessGroupsResponseBody1$Outbound;
-}
-
 export function listAccessGroupsResponseBody1ToJSON(
   listAccessGroupsResponseBody1: ListAccessGroupsResponseBody1,
 ): string {
@@ -414,7 +340,6 @@ export function listAccessGroupsResponseBody1ToJSON(
     ),
   );
 }
-
 export function listAccessGroupsResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupsResponseBody1, SDKValidationError> {
@@ -434,7 +359,6 @@ export const ListAccessGroupsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ListAccessGroupsResponseBody2$inboundSchema),
   z.lazy(() => ListAccessGroupsResponseBody1$inboundSchema),
 ]);
-
 /** @internal */
 export type ListAccessGroupsResponseBody$Outbound =
   | ListAccessGroupsResponseBody2$Outbound
@@ -450,19 +374,6 @@ export const ListAccessGroupsResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => ListAccessGroupsResponseBody1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAccessGroupsResponseBody$ {
-  /** @deprecated use `ListAccessGroupsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ListAccessGroupsResponseBody$inboundSchema;
-  /** @deprecated use `ListAccessGroupsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ListAccessGroupsResponseBody$outboundSchema;
-  /** @deprecated use `ListAccessGroupsResponseBody$Outbound` instead. */
-  export type Outbound = ListAccessGroupsResponseBody$Outbound;
-}
-
 export function listAccessGroupsResponseBodyToJSON(
   listAccessGroupsResponseBody: ListAccessGroupsResponseBody,
 ): string {
@@ -472,7 +383,6 @@ export function listAccessGroupsResponseBodyToJSON(
     ),
   );
 }
-
 export function listAccessGroupsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ListAccessGroupsResponseBody, SDKValidationError> {

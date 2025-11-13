@@ -19,8 +19,8 @@ func (o *JoinTeamRequestBody) GetInviteCode() *string {
 }
 
 type JoinTeamRequest struct {
-	TeamID      string              `pathParam:"style=simple,explode=false,name=teamId"`
-	RequestBody JoinTeamRequestBody `request:"mediaType=application/json"`
+	TeamID string              `pathParam:"style=simple,explode=false,name=teamId"`
+	Body   JoinTeamRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *JoinTeamRequest) GetTeamID() string {
@@ -30,11 +30,11 @@ func (o *JoinTeamRequest) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *JoinTeamRequest) GetRequestBody() JoinTeamRequestBody {
+func (o *JoinTeamRequest) GetBody() JoinTeamRequestBody {
 	if o == nil {
 		return JoinTeamRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // JoinTeamResponseBody - Successfully joined a team.

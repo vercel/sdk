@@ -29,7 +29,6 @@ export const DeleteConfigurationRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteConfigurationRequest$Outbound = {
   id: string;
@@ -48,19 +47,6 @@ export const DeleteConfigurationRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteConfigurationRequest$ {
-  /** @deprecated use `DeleteConfigurationRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteConfigurationRequest$inboundSchema;
-  /** @deprecated use `DeleteConfigurationRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteConfigurationRequest$outboundSchema;
-  /** @deprecated use `DeleteConfigurationRequest$Outbound` instead. */
-  export type Outbound = DeleteConfigurationRequest$Outbound;
-}
-
 export function deleteConfigurationRequestToJSON(
   deleteConfigurationRequest: DeleteConfigurationRequest,
 ): string {
@@ -68,7 +54,6 @@ export function deleteConfigurationRequestToJSON(
     DeleteConfigurationRequest$outboundSchema.parse(deleteConfigurationRequest),
   );
 }
-
 export function deleteConfigurationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteConfigurationRequest, SDKValidationError> {

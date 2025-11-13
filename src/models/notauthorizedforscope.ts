@@ -44,22 +44,10 @@ export class NotAuthorizedForScope extends VercelError {
 export const NotAuthorizedForScopeCode$inboundSchema: z.ZodNativeEnum<
   typeof NotAuthorizedForScopeCode
 > = z.nativeEnum(NotAuthorizedForScopeCode);
-
 /** @internal */
 export const NotAuthorizedForScopeCode$outboundSchema: z.ZodNativeEnum<
   typeof NotAuthorizedForScopeCode
 > = NotAuthorizedForScopeCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotAuthorizedForScopeCode$ {
-  /** @deprecated use `NotAuthorizedForScopeCode$inboundSchema` instead. */
-  export const inboundSchema = NotAuthorizedForScopeCode$inboundSchema;
-  /** @deprecated use `NotAuthorizedForScopeCode$outboundSchema` instead. */
-  export const outboundSchema = NotAuthorizedForScopeCode$outboundSchema;
-}
 
 /** @internal */
 export const NotAuthorizedForScope$inboundSchema: z.ZodType<
@@ -101,16 +89,3 @@ export const NotAuthorizedForScope$outboundSchema: z.ZodType<
     code: NotAuthorizedForScopeCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotAuthorizedForScope$ {
-  /** @deprecated use `NotAuthorizedForScope$inboundSchema` instead. */
-  export const inboundSchema = NotAuthorizedForScope$inboundSchema;
-  /** @deprecated use `NotAuthorizedForScope$outboundSchema` instead. */
-  export const outboundSchema = NotAuthorizedForScope$outboundSchema;
-  /** @deprecated use `NotAuthorizedForScope$Outbound` instead. */
-  export type Outbound = NotAuthorizedForScope$Outbound;
-}

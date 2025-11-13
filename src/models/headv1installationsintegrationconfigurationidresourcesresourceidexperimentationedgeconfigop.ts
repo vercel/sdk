@@ -53,7 +53,6 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     integrationConfigurationId: z.string(),
     resourceId: z.string(),
   });
-
 /** @internal */
 export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$Outbound =
   {
@@ -72,22 +71,6 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
     resourceId: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$ {
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$inboundSchema;
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$outboundSchema;
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$Outbound` instead. */
-  export type Outbound =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest$Outbound;
-}
-
 export function headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestToJSON(
   headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest:
     HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequest,
@@ -99,7 +82,6 @@ export function headV1InstallationsIntegrationConfigurationIdResourcesResourceId
       ),
   );
 }
-
 export function headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -122,26 +104,12 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
   > = z.nativeEnum(
     HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose,
   );
-
 /** @internal */
 export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema:
   z.ZodNativeEnum<
     typeof HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose
   > =
     HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$ {
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema` instead. */
-  export const inboundSchema =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema;
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema` instead. */
-  export const outboundSchema =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$outboundSchema;
-}
 
 /** @internal */
 export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema:
@@ -157,7 +125,6 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
       HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigPurpose$inboundSchema
         .optional(),
   });
-
 /** @internal */
 export type HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound =
   {
@@ -182,22 +149,6 @@ export const HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExp
         .optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$ {
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$inboundSchema;
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$outboundSchema;
-  /** @deprecated use `HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound` instead. */
-  export type Outbound =
-    HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody$Outbound;
-}
-
 export function headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBodyToJSON(
   headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody:
     HeadV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBody,
@@ -209,7 +160,6 @@ export function headV1InstallationsIntegrationConfigurationIdResourcesResourceId
       ),
   );
 }
-
 export function headV1InstallationsIntegrationConfigurationIdResourcesResourceIdExperimentationEdgeConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

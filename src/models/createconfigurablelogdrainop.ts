@@ -85,60 +85,24 @@ export type CreateConfigurableLogDrainResponseBody = {};
 export const DeliveryFormat$inboundSchema: z.ZodNativeEnum<
   typeof DeliveryFormat
 > = z.nativeEnum(DeliveryFormat);
-
 /** @internal */
 export const DeliveryFormat$outboundSchema: z.ZodNativeEnum<
   typeof DeliveryFormat
 > = DeliveryFormat$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeliveryFormat$ {
-  /** @deprecated use `DeliveryFormat$inboundSchema` instead. */
-  export const inboundSchema = DeliveryFormat$inboundSchema;
-  /** @deprecated use `DeliveryFormat$outboundSchema` instead. */
-  export const outboundSchema = DeliveryFormat$outboundSchema;
-}
-
 /** @internal */
 export const Sources$inboundSchema: z.ZodNativeEnum<typeof Sources> = z
   .nativeEnum(Sources);
-
 /** @internal */
 export const Sources$outboundSchema: z.ZodNativeEnum<typeof Sources> =
   Sources$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Sources$ {
-  /** @deprecated use `Sources$inboundSchema` instead. */
-  export const inboundSchema = Sources$inboundSchema;
-  /** @deprecated use `Sources$outboundSchema` instead. */
-  export const outboundSchema = Sources$outboundSchema;
-}
-
 /** @internal */
 export const Environments$inboundSchema: z.ZodNativeEnum<typeof Environments> =
   z.nativeEnum(Environments);
-
 /** @internal */
 export const Environments$outboundSchema: z.ZodNativeEnum<typeof Environments> =
   Environments$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Environments$ {
-  /** @deprecated use `Environments$inboundSchema` instead. */
-  export const inboundSchema = Environments$inboundSchema;
-  /** @deprecated use `Environments$outboundSchema` instead. */
-  export const outboundSchema = Environments$outboundSchema;
-}
 
 /** @internal */
 export const CreateConfigurableLogDrainRequestBody$inboundSchema: z.ZodType<
@@ -156,7 +120,6 @@ export const CreateConfigurableLogDrainRequestBody$inboundSchema: z.ZodType<
   samplingRate: z.number().optional(),
   name: z.string().optional(),
 });
-
 /** @internal */
 export type CreateConfigurableLogDrainRequestBody$Outbound = {
   deliveryFormat: string;
@@ -187,21 +150,6 @@ export const CreateConfigurableLogDrainRequestBody$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateConfigurableLogDrainRequestBody$ {
-  /** @deprecated use `CreateConfigurableLogDrainRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateConfigurableLogDrainRequestBody$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateConfigurableLogDrainRequestBody$outboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainRequestBody$Outbound` instead. */
-  export type Outbound = CreateConfigurableLogDrainRequestBody$Outbound;
-}
-
 export function createConfigurableLogDrainRequestBodyToJSON(
   createConfigurableLogDrainRequestBody: CreateConfigurableLogDrainRequestBody,
 ): string {
@@ -211,7 +159,6 @@ export function createConfigurableLogDrainRequestBodyToJSON(
     ),
   );
 }
-
 export function createConfigurableLogDrainRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConfigurableLogDrainRequestBody, SDKValidationError> {
@@ -239,7 +186,6 @@ export const CreateConfigurableLogDrainRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateConfigurableLogDrainRequest$Outbound = {
   teamId?: string | undefined;
@@ -264,20 +210,6 @@ export const CreateConfigurableLogDrainRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateConfigurableLogDrainRequest$ {
-  /** @deprecated use `CreateConfigurableLogDrainRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateConfigurableLogDrainRequest$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateConfigurableLogDrainRequest$outboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainRequest$Outbound` instead. */
-  export type Outbound = CreateConfigurableLogDrainRequest$Outbound;
-}
-
 export function createConfigurableLogDrainRequestToJSON(
   createConfigurableLogDrainRequest: CreateConfigurableLogDrainRequest,
 ): string {
@@ -287,7 +219,6 @@ export function createConfigurableLogDrainRequestToJSON(
     ),
   );
 }
-
 export function createConfigurableLogDrainRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConfigurableLogDrainRequest, SDKValidationError> {
@@ -304,7 +235,6 @@ export const CreateConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type CreateConfigurableLogDrainResponseBody$Outbound = {};
 
@@ -314,21 +244,6 @@ export const CreateConfigurableLogDrainResponseBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateConfigurableLogDrainResponseBody
 > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateConfigurableLogDrainResponseBody$ {
-  /** @deprecated use `CreateConfigurableLogDrainResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateConfigurableLogDrainResponseBody$inboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateConfigurableLogDrainResponseBody$outboundSchema;
-  /** @deprecated use `CreateConfigurableLogDrainResponseBody$Outbound` instead. */
-  export type Outbound = CreateConfigurableLogDrainResponseBody$Outbound;
-}
 
 export function createConfigurableLogDrainResponseBodyToJSON(
   createConfigurableLogDrainResponseBody:
@@ -340,7 +255,6 @@ export function createConfigurableLogDrainResponseBodyToJSON(
     ),
   );
 }
-
 export function createConfigurableLogDrainResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateConfigurableLogDrainResponseBody, SDKValidationError> {

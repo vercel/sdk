@@ -891,8 +891,8 @@ type CreateProjectRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                   `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *CreateProjectRequestBody `request:"mediaType=application/json"`
+	Slug *string                   `queryParam:"style=form,explode=true,name=slug"`
+	Body *CreateProjectRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateProjectRequest) GetTeamID() *string {
@@ -909,11 +909,11 @@ func (o *CreateProjectRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateProjectRequest) GetRequestBody() *CreateProjectRequestBody {
+func (o *CreateProjectRequest) GetBody() *CreateProjectRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type CreateProjectAnalytics struct {
@@ -6477,6 +6477,7 @@ type CreateProjectPermissions struct {
 	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
 	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
 	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectFlagsProduction                   []components.ACLAction `json:"projectFlagsProduction,omitempty"`
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
 	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
@@ -7852,6 +7853,13 @@ func (o *CreateProjectPermissions) GetProjectFlags() []components.ACLAction {
 		return nil
 	}
 	return o.ProjectFlags
+}
+
+func (o *CreateProjectPermissions) GetProjectFlagsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlagsProduction
 }
 
 func (o *CreateProjectPermissions) GetProjectFromV0() []components.ACLAction {
@@ -11459,6 +11467,7 @@ type CreateProjectResponseBody struct {
 	V0                                   *bool                                         `json:"v0,omitempty"`
 	Abuse                                *CreateProjectAbuse                           `json:"abuse,omitempty"`
 	InternalRoutes                       []CreateProjectInternalRouteUnion             `json:"internalRoutes,omitempty"`
+	HasDeployments                       *bool                                         `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []CreateProjectDismissedToast                 `json:"dismissedToasts,omitempty"`
 }
 
@@ -11999,6 +12008,13 @@ func (o *CreateProjectResponseBody) GetInternalRoutes() []CreateProjectInternalR
 		return nil
 	}
 	return o.InternalRoutes
+}
+
+func (o *CreateProjectResponseBody) GetHasDeployments() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasDeployments
 }
 
 func (o *CreateProjectResponseBody) GetDismissedToasts() []CreateProjectDismissedToast {

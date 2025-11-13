@@ -77,22 +77,10 @@ export type UpdateInstallationRequest = {
 export const UpdateInstallationType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateInstallationType
 > = z.nativeEnum(UpdateInstallationType);
-
 /** @internal */
 export const UpdateInstallationType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateInstallationType
 > = UpdateInstallationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateInstallationType$ {
-  /** @deprecated use `UpdateInstallationType$inboundSchema` instead. */
-  export const inboundSchema = UpdateInstallationType$inboundSchema;
-  /** @deprecated use `UpdateInstallationType$outboundSchema` instead. */
-  export const outboundSchema = UpdateInstallationType$outboundSchema;
-}
 
 /** @internal */
 export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
@@ -100,7 +88,6 @@ export const Details$inboundSchema: z.ZodType<Details, z.ZodTypeDef, unknown> =
     label: z.string(),
     value: z.string().optional(),
   });
-
 /** @internal */
 export type Details$Outbound = {
   label: string;
@@ -117,23 +104,9 @@ export const Details$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Details$ {
-  /** @deprecated use `Details$inboundSchema` instead. */
-  export const inboundSchema = Details$inboundSchema;
-  /** @deprecated use `Details$outboundSchema` instead. */
-  export const outboundSchema = Details$outboundSchema;
-  /** @deprecated use `Details$Outbound` instead. */
-  export type Outbound = Details$Outbound;
-}
-
 export function detailsToJSON(details: Details): string {
   return JSON.stringify(Details$outboundSchema.parse(details));
 }
-
 export function detailsFromJSON(
   jsonString: string,
 ): SafeParseResult<Details, SDKValidationError> {
@@ -153,7 +126,6 @@ export const HighlightedDetails$inboundSchema: z.ZodType<
   label: z.string(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type HighlightedDetails$Outbound = {
   label: string;
@@ -170,19 +142,6 @@ export const HighlightedDetails$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HighlightedDetails$ {
-  /** @deprecated use `HighlightedDetails$inboundSchema` instead. */
-  export const inboundSchema = HighlightedDetails$inboundSchema;
-  /** @deprecated use `HighlightedDetails$outboundSchema` instead. */
-  export const outboundSchema = HighlightedDetails$outboundSchema;
-  /** @deprecated use `HighlightedDetails$Outbound` instead. */
-  export type Outbound = HighlightedDetails$Outbound;
-}
-
 export function highlightedDetailsToJSON(
   highlightedDetails: HighlightedDetails,
 ): string {
@@ -190,7 +149,6 @@ export function highlightedDetailsToJSON(
     HighlightedDetails$outboundSchema.parse(highlightedDetails),
   );
 }
-
 export function highlightedDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<HighlightedDetails, SDKValidationError> {
@@ -222,7 +180,6 @@ export const BillingPlan$inboundSchema: z.ZodType<
   "additionalProperties",
   true,
 );
-
 /** @internal */
 export type BillingPlan$Outbound = {
   id: string;
@@ -263,23 +220,9 @@ export const BillingPlan$outboundSchema: z.ZodType<
   };
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BillingPlan$ {
-  /** @deprecated use `BillingPlan$inboundSchema` instead. */
-  export const inboundSchema = BillingPlan$inboundSchema;
-  /** @deprecated use `BillingPlan$outboundSchema` instead. */
-  export const outboundSchema = BillingPlan$outboundSchema;
-  /** @deprecated use `BillingPlan$Outbound` instead. */
-  export type Outbound = BillingPlan$Outbound;
-}
-
 export function billingPlanToJSON(billingPlan: BillingPlan): string {
   return JSON.stringify(BillingPlan$outboundSchema.parse(billingPlan));
 }
-
 export function billingPlanFromJSON(
   jsonString: string,
 ): SafeParseResult<BillingPlan, SDKValidationError> {
@@ -294,21 +237,9 @@ export function billingPlanFromJSON(
 export const Level$inboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
   Level,
 );
-
 /** @internal */
 export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> =
   Level$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Level$ {
-  /** @deprecated use `Level$inboundSchema` instead. */
-  export const inboundSchema = Level$inboundSchema;
-  /** @deprecated use `Level$outboundSchema` instead. */
-  export const outboundSchema = Level$outboundSchema;
-}
 
 /** @internal */
 export const Notification1$inboundSchema: z.ZodType<
@@ -321,7 +252,6 @@ export const Notification1$inboundSchema: z.ZodType<
   message: z.string().optional(),
   href: z.string().optional(),
 });
-
 /** @internal */
 export type Notification1$Outbound = {
   level: string;
@@ -342,23 +272,9 @@ export const Notification1$outboundSchema: z.ZodType<
   href: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Notification1$ {
-  /** @deprecated use `Notification1$inboundSchema` instead. */
-  export const inboundSchema = Notification1$inboundSchema;
-  /** @deprecated use `Notification1$outboundSchema` instead. */
-  export const outboundSchema = Notification1$outboundSchema;
-  /** @deprecated use `Notification1$Outbound` instead. */
-  export type Outbound = Notification1$Outbound;
-}
-
 export function notification1ToJSON(notification1: Notification1): string {
   return JSON.stringify(Notification1$outboundSchema.parse(notification1));
 }
-
 export function notification1FromJSON(
   jsonString: string,
 ): SafeParseResult<Notification1, SDKValidationError> {
@@ -375,7 +291,6 @@ export const Notification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.lazy(() => Notification1$inboundSchema), z.string()]);
-
 /** @internal */
 export type Notification$Outbound = Notification1$Outbound | string;
 
@@ -386,23 +301,9 @@ export const Notification$outboundSchema: z.ZodType<
   Notification
 > = z.union([z.lazy(() => Notification1$outboundSchema), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Notification$ {
-  /** @deprecated use `Notification$inboundSchema` instead. */
-  export const inboundSchema = Notification$inboundSchema;
-  /** @deprecated use `Notification$outboundSchema` instead. */
-  export const outboundSchema = Notification$outboundSchema;
-  /** @deprecated use `Notification$Outbound` instead. */
-  export type Outbound = Notification$Outbound;
-}
-
 export function notificationToJSON(notification: Notification): string {
   return JSON.stringify(Notification$outboundSchema.parse(notification));
 }
-
 export function notificationFromJSON(
   jsonString: string,
 ): SafeParseResult<Notification, SDKValidationError> {
@@ -423,7 +324,6 @@ export const UpdateInstallationRequestBody$inboundSchema: z.ZodType<
   notification: z.union([z.lazy(() => Notification1$inboundSchema), z.string()])
     .optional(),
 });
-
 /** @internal */
 export type UpdateInstallationRequestBody$Outbound = {
   billingPlan?: BillingPlan$Outbound | undefined;
@@ -443,19 +343,6 @@ export const UpdateInstallationRequestBody$outboundSchema: z.ZodType<
   ]).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateInstallationRequestBody$ {
-  /** @deprecated use `UpdateInstallationRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateInstallationRequestBody$inboundSchema;
-  /** @deprecated use `UpdateInstallationRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateInstallationRequestBody$outboundSchema;
-  /** @deprecated use `UpdateInstallationRequestBody$Outbound` instead. */
-  export type Outbound = UpdateInstallationRequestBody$Outbound;
-}
-
 export function updateInstallationRequestBodyToJSON(
   updateInstallationRequestBody: UpdateInstallationRequestBody,
 ): string {
@@ -465,7 +352,6 @@ export function updateInstallationRequestBodyToJSON(
     ),
   );
 }
-
 export function updateInstallationRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateInstallationRequestBody, SDKValidationError> {
@@ -490,7 +376,6 @@ export const UpdateInstallationRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateInstallationRequest$Outbound = {
   integrationConfigurationId: string;
@@ -512,19 +397,6 @@ export const UpdateInstallationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateInstallationRequest$ {
-  /** @deprecated use `UpdateInstallationRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateInstallationRequest$inboundSchema;
-  /** @deprecated use `UpdateInstallationRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateInstallationRequest$outboundSchema;
-  /** @deprecated use `UpdateInstallationRequest$Outbound` instead. */
-  export type Outbound = UpdateInstallationRequest$Outbound;
-}
-
 export function updateInstallationRequestToJSON(
   updateInstallationRequest: UpdateInstallationRequest,
 ): string {
@@ -532,7 +404,6 @@ export function updateInstallationRequestToJSON(
     UpdateInstallationRequest$outboundSchema.parse(updateInstallationRequest),
   );
 }
-
 export function updateInstallationRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateInstallationRequest, SDKValidationError> {

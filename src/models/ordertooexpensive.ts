@@ -48,22 +48,10 @@ export class OrderTooExpensive extends VercelError {
 export const OrderTooExpensiveCode$inboundSchema: z.ZodNativeEnum<
   typeof OrderTooExpensiveCode
 > = z.nativeEnum(OrderTooExpensiveCode);
-
 /** @internal */
 export const OrderTooExpensiveCode$outboundSchema: z.ZodNativeEnum<
   typeof OrderTooExpensiveCode
 > = OrderTooExpensiveCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrderTooExpensiveCode$ {
-  /** @deprecated use `OrderTooExpensiveCode$inboundSchema` instead. */
-  export const inboundSchema = OrderTooExpensiveCode$inboundSchema;
-  /** @deprecated use `OrderTooExpensiveCode$outboundSchema` instead. */
-  export const outboundSchema = OrderTooExpensiveCode$outboundSchema;
-}
 
 /** @internal */
 export const OrderTooExpensive$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const OrderTooExpensive$outboundSchema: z.ZodType<
     code: OrderTooExpensiveCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OrderTooExpensive$ {
-  /** @deprecated use `OrderTooExpensive$inboundSchema` instead. */
-  export const inboundSchema = OrderTooExpensive$inboundSchema;
-  /** @deprecated use `OrderTooExpensive$outboundSchema` instead. */
-  export const outboundSchema = OrderTooExpensive$outboundSchema;
-  /** @deprecated use `OrderTooExpensive$Outbound` instead. */
-  export type Outbound = OrderTooExpensive$Outbound;
-}

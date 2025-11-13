@@ -39,7 +39,6 @@ export const PatchEdgeConfigSchemaRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   definition: z.any().optional(),
 });
-
 /** @internal */
 export type PatchEdgeConfigSchemaRequestBody$Outbound = {
   definition?: any | undefined;
@@ -54,19 +53,6 @@ export const PatchEdgeConfigSchemaRequestBody$outboundSchema: z.ZodType<
   definition: z.any().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigSchemaRequestBody$ {
-  /** @deprecated use `PatchEdgeConfigSchemaRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigSchemaRequestBody$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigSchemaRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigSchemaRequestBody$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigSchemaRequestBody$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigSchemaRequestBody$Outbound;
-}
-
 export function patchEdgeConfigSchemaRequestBodyToJSON(
   patchEdgeConfigSchemaRequestBody: PatchEdgeConfigSchemaRequestBody,
 ): string {
@@ -76,7 +62,6 @@ export function patchEdgeConfigSchemaRequestBodyToJSON(
     ),
   );
 }
-
 export function patchEdgeConfigSchemaRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigSchemaRequestBody, SDKValidationError> {
@@ -103,7 +88,6 @@ export const PatchEdgeConfigSchemaRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type PatchEdgeConfigSchemaRequest$Outbound = {
   edgeConfigId: string;
@@ -130,19 +114,6 @@ export const PatchEdgeConfigSchemaRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigSchemaRequest$ {
-  /** @deprecated use `PatchEdgeConfigSchemaRequest$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigSchemaRequest$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigSchemaRequest$outboundSchema` instead. */
-  export const outboundSchema = PatchEdgeConfigSchemaRequest$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigSchemaRequest$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigSchemaRequest$Outbound;
-}
-
 export function patchEdgeConfigSchemaRequestToJSON(
   patchEdgeConfigSchemaRequest: PatchEdgeConfigSchemaRequest,
 ): string {
@@ -152,7 +123,6 @@ export function patchEdgeConfigSchemaRequestToJSON(
     ),
   );
 }
-
 export function patchEdgeConfigSchemaRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigSchemaRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const PatchEdgeConfigSchemaResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type PatchEdgeConfigSchemaResponseBody$Outbound = {};
 
@@ -180,20 +149,6 @@ export const PatchEdgeConfigSchemaResponseBody$outboundSchema: z.ZodType<
   PatchEdgeConfigSchemaResponseBody
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchEdgeConfigSchemaResponseBody$ {
-  /** @deprecated use `PatchEdgeConfigSchemaResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PatchEdgeConfigSchemaResponseBody$inboundSchema;
-  /** @deprecated use `PatchEdgeConfigSchemaResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchEdgeConfigSchemaResponseBody$outboundSchema;
-  /** @deprecated use `PatchEdgeConfigSchemaResponseBody$Outbound` instead. */
-  export type Outbound = PatchEdgeConfigSchemaResponseBody$Outbound;
-}
-
 export function patchEdgeConfigSchemaResponseBodyToJSON(
   patchEdgeConfigSchemaResponseBody: PatchEdgeConfigSchemaResponseBody,
 ): string {
@@ -203,7 +158,6 @@ export function patchEdgeConfigSchemaResponseBodyToJSON(
     ),
   );
 }
-
 export function patchEdgeConfigSchemaResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchEdgeConfigSchemaResponseBody, SDKValidationError> {

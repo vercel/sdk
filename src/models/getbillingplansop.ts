@@ -85,7 +85,6 @@ export const GetBillingPlansRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetBillingPlansRequest$Outbound = {
   integrationIdOrSlug: string;
@@ -108,19 +107,6 @@ export const GetBillingPlansRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBillingPlansRequest$ {
-  /** @deprecated use `GetBillingPlansRequest$inboundSchema` instead. */
-  export const inboundSchema = GetBillingPlansRequest$inboundSchema;
-  /** @deprecated use `GetBillingPlansRequest$outboundSchema` instead. */
-  export const outboundSchema = GetBillingPlansRequest$outboundSchema;
-  /** @deprecated use `GetBillingPlansRequest$Outbound` instead. */
-  export type Outbound = GetBillingPlansRequest$Outbound;
-}
-
 export function getBillingPlansRequestToJSON(
   getBillingPlansRequest: GetBillingPlansRequest,
 ): string {
@@ -128,7 +114,6 @@ export function getBillingPlansRequestToJSON(
     GetBillingPlansRequest$outboundSchema.parse(getBillingPlansRequest),
   );
 }
-
 export function getBillingPlansRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBillingPlansRequest, SDKValidationError> {
@@ -143,43 +128,19 @@ export function getBillingPlansRequestFromJSON(
 export const GetBillingPlansType$inboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansType
 > = z.nativeEnum(GetBillingPlansType);
-
 /** @internal */
 export const GetBillingPlansType$outboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansType
 > = GetBillingPlansType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBillingPlansType$ {
-  /** @deprecated use `GetBillingPlansType$inboundSchema` instead. */
-  export const inboundSchema = GetBillingPlansType$inboundSchema;
-  /** @deprecated use `GetBillingPlansType$outboundSchema` instead. */
-  export const outboundSchema = GetBillingPlansType$outboundSchema;
-}
-
 /** @internal */
 export const GetBillingPlansScope$inboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansScope
 > = z.nativeEnum(GetBillingPlansScope);
-
 /** @internal */
 export const GetBillingPlansScope$outboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansScope
 > = GetBillingPlansScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBillingPlansScope$ {
-  /** @deprecated use `GetBillingPlansScope$inboundSchema` instead. */
-  export const inboundSchema = GetBillingPlansScope$inboundSchema;
-  /** @deprecated use `GetBillingPlansScope$outboundSchema` instead. */
-  export const outboundSchema = GetBillingPlansScope$outboundSchema;
-}
 
 /** @internal */
 export const GetBillingPlansDetails$inboundSchema: z.ZodType<
@@ -190,7 +151,6 @@ export const GetBillingPlansDetails$inboundSchema: z.ZodType<
   label: z.string(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type GetBillingPlansDetails$Outbound = {
   label: string;
@@ -207,19 +167,6 @@ export const GetBillingPlansDetails$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBillingPlansDetails$ {
-  /** @deprecated use `GetBillingPlansDetails$inboundSchema` instead. */
-  export const inboundSchema = GetBillingPlansDetails$inboundSchema;
-  /** @deprecated use `GetBillingPlansDetails$outboundSchema` instead. */
-  export const outboundSchema = GetBillingPlansDetails$outboundSchema;
-  /** @deprecated use `GetBillingPlansDetails$Outbound` instead. */
-  export type Outbound = GetBillingPlansDetails$Outbound;
-}
-
 export function getBillingPlansDetailsToJSON(
   getBillingPlansDetails: GetBillingPlansDetails,
 ): string {
@@ -227,7 +174,6 @@ export function getBillingPlansDetailsToJSON(
     GetBillingPlansDetails$outboundSchema.parse(getBillingPlansDetails),
   );
 }
-
 export function getBillingPlansDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBillingPlansDetails, SDKValidationError> {
@@ -247,7 +193,6 @@ export const GetBillingPlansHighlightedDetails$inboundSchema: z.ZodType<
   label: z.string(),
   value: z.string().optional(),
 });
-
 /** @internal */
 export type GetBillingPlansHighlightedDetails$Outbound = {
   label: string;
@@ -264,20 +209,6 @@ export const GetBillingPlansHighlightedDetails$outboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBillingPlansHighlightedDetails$ {
-  /** @deprecated use `GetBillingPlansHighlightedDetails$inboundSchema` instead. */
-  export const inboundSchema = GetBillingPlansHighlightedDetails$inboundSchema;
-  /** @deprecated use `GetBillingPlansHighlightedDetails$outboundSchema` instead. */
-  export const outboundSchema =
-    GetBillingPlansHighlightedDetails$outboundSchema;
-  /** @deprecated use `GetBillingPlansHighlightedDetails$Outbound` instead. */
-  export type Outbound = GetBillingPlansHighlightedDetails$Outbound;
-}
-
 export function getBillingPlansHighlightedDetailsToJSON(
   getBillingPlansHighlightedDetails: GetBillingPlansHighlightedDetails,
 ): string {
@@ -287,7 +218,6 @@ export function getBillingPlansHighlightedDetailsToJSON(
     ),
   );
 }
-
 export function getBillingPlansHighlightedDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBillingPlansHighlightedDetails, SDKValidationError> {
@@ -304,7 +234,6 @@ export const Quote$inboundSchema: z.ZodType<Quote, z.ZodTypeDef, unknown> = z
     line: z.string(),
     amount: z.string(),
   });
-
 /** @internal */
 export type Quote$Outbound = {
   line: string;
@@ -321,23 +250,9 @@ export const Quote$outboundSchema: z.ZodType<
   amount: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Quote$ {
-  /** @deprecated use `Quote$inboundSchema` instead. */
-  export const inboundSchema = Quote$inboundSchema;
-  /** @deprecated use `Quote$outboundSchema` instead. */
-  export const outboundSchema = Quote$outboundSchema;
-  /** @deprecated use `Quote$Outbound` instead. */
-  export type Outbound = Quote$Outbound;
-}
-
 export function quoteToJSON(quote: Quote): string {
   return JSON.stringify(Quote$outboundSchema.parse(quote));
 }
-
 export function quoteFromJSON(
   jsonString: string,
 ): SafeParseResult<Quote, SDKValidationError> {
@@ -372,7 +287,6 @@ export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
     effectiveDate: z.string().optional(),
     disabled: z.boolean().optional(),
   });
-
 /** @internal */
 export type Plans$Outbound = {
   type: string;
@@ -424,23 +338,9 @@ export const Plans$outboundSchema: z.ZodType<
   disabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Plans$ {
-  /** @deprecated use `Plans$inboundSchema` instead. */
-  export const inboundSchema = Plans$inboundSchema;
-  /** @deprecated use `Plans$outboundSchema` instead. */
-  export const outboundSchema = Plans$outboundSchema;
-  /** @deprecated use `Plans$Outbound` instead. */
-  export type Outbound = Plans$Outbound;
-}
-
 export function plansToJSON(plans: Plans): string {
   return JSON.stringify(Plans$outboundSchema.parse(plans));
 }
-
 export function plansFromJSON(
   jsonString: string,
 ): SafeParseResult<Plans, SDKValidationError> {
@@ -459,7 +359,6 @@ export const GetBillingPlansResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   plans: z.array(z.lazy(() => Plans$inboundSchema)),
 });
-
 /** @internal */
 export type GetBillingPlansResponseBody$Outbound = {
   plans: Array<Plans$Outbound>;
@@ -474,19 +373,6 @@ export const GetBillingPlansResponseBody$outboundSchema: z.ZodType<
   plans: z.array(z.lazy(() => Plans$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBillingPlansResponseBody$ {
-  /** @deprecated use `GetBillingPlansResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetBillingPlansResponseBody$inboundSchema;
-  /** @deprecated use `GetBillingPlansResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetBillingPlansResponseBody$outboundSchema;
-  /** @deprecated use `GetBillingPlansResponseBody$Outbound` instead. */
-  export type Outbound = GetBillingPlansResponseBody$Outbound;
-}
-
 export function getBillingPlansResponseBodyToJSON(
   getBillingPlansResponseBody: GetBillingPlansResponseBody,
 ): string {
@@ -496,7 +382,6 @@ export function getBillingPlansResponseBodyToJSON(
     ),
   );
 }
-
 export function getBillingPlansResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBillingPlansResponseBody, SDKValidationError> {

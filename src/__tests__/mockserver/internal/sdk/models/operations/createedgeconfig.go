@@ -33,8 +33,8 @@ type CreateEdgeConfigRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                     `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateEdgeConfigRequestBody `request:"mediaType=application/json"`
+	Slug *string                     `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateEdgeConfigRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateEdgeConfigRequest) GetTeamID() *string {
@@ -51,11 +51,11 @@ func (o *CreateEdgeConfigRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateEdgeConfigRequest) GetRequestBody() CreateEdgeConfigRequestBody {
+func (o *CreateEdgeConfigRequest) GetBody() CreateEdgeConfigRequestBody {
 	if o == nil {
 		return CreateEdgeConfigRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 // CreateEdgeConfigTransfer - Keeps track of the current state of the Edge Config while it gets transferred.

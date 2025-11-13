@@ -44,7 +44,6 @@ export const GetProjectClientCertsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetProjectClientCertsRequest$Outbound = {
   idOrName: string;
@@ -63,19 +62,6 @@ export const GetProjectClientCertsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectClientCertsRequest$ {
-  /** @deprecated use `GetProjectClientCertsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetProjectClientCertsRequest$inboundSchema;
-  /** @deprecated use `GetProjectClientCertsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetProjectClientCertsRequest$outboundSchema;
-  /** @deprecated use `GetProjectClientCertsRequest$Outbound` instead. */
-  export type Outbound = GetProjectClientCertsRequest$Outbound;
-}
-
 export function getProjectClientCertsRequestToJSON(
   getProjectClientCertsRequest: GetProjectClientCertsRequest,
 ): string {
@@ -85,7 +71,6 @@ export function getProjectClientCertsRequestToJSON(
     ),
   );
 }
-
 export function getProjectClientCertsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectClientCertsRequest, SDKValidationError> {
@@ -105,7 +90,6 @@ export const ClientCerts$inboundSchema: z.ZodType<
   origin: z.string(),
   id: z.string(),
 });
-
 /** @internal */
 export type ClientCerts$Outbound = {
   origin: string;
@@ -122,23 +106,9 @@ export const ClientCerts$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClientCerts$ {
-  /** @deprecated use `ClientCerts$inboundSchema` instead. */
-  export const inboundSchema = ClientCerts$inboundSchema;
-  /** @deprecated use `ClientCerts$outboundSchema` instead. */
-  export const outboundSchema = ClientCerts$outboundSchema;
-  /** @deprecated use `ClientCerts$Outbound` instead. */
-  export type Outbound = ClientCerts$Outbound;
-}
-
 export function clientCertsToJSON(clientCerts: ClientCerts): string {
   return JSON.stringify(ClientCerts$outboundSchema.parse(clientCerts));
 }
-
 export function clientCertsFromJSON(
   jsonString: string,
 ): SafeParseResult<ClientCerts, SDKValidationError> {
@@ -157,7 +127,6 @@ export const GetProjectClientCertsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   clientCerts: z.array(z.lazy(() => ClientCerts$inboundSchema)),
 });
-
 /** @internal */
 export type GetProjectClientCertsResponseBody$Outbound = {
   clientCerts: Array<ClientCerts$Outbound>;
@@ -172,20 +141,6 @@ export const GetProjectClientCertsResponseBody$outboundSchema: z.ZodType<
   clientCerts: z.array(z.lazy(() => ClientCerts$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetProjectClientCertsResponseBody$ {
-  /** @deprecated use `GetProjectClientCertsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetProjectClientCertsResponseBody$inboundSchema;
-  /** @deprecated use `GetProjectClientCertsResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetProjectClientCertsResponseBody$outboundSchema;
-  /** @deprecated use `GetProjectClientCertsResponseBody$Outbound` instead. */
-  export type Outbound = GetProjectClientCertsResponseBody$Outbound;
-}
-
 export function getProjectClientCertsResponseBodyToJSON(
   getProjectClientCertsResponseBody: GetProjectClientCertsResponseBody,
 ): string {
@@ -195,7 +150,6 @@ export function getProjectClientCertsResponseBodyToJSON(
     ),
   );
 }
-
 export function getProjectClientCertsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetProjectClientCertsResponseBody, SDKValidationError> {

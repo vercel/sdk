@@ -129,7 +129,6 @@ export const SubmitInvoicePeriod$inboundSchema: z.ZodType<
   start: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   end: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type SubmitInvoicePeriod$Outbound = {
   start: string;
@@ -146,19 +145,6 @@ export const SubmitInvoicePeriod$outboundSchema: z.ZodType<
   end: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitInvoicePeriod$ {
-  /** @deprecated use `SubmitInvoicePeriod$inboundSchema` instead. */
-  export const inboundSchema = SubmitInvoicePeriod$inboundSchema;
-  /** @deprecated use `SubmitInvoicePeriod$outboundSchema` instead. */
-  export const outboundSchema = SubmitInvoicePeriod$outboundSchema;
-  /** @deprecated use `SubmitInvoicePeriod$Outbound` instead. */
-  export type Outbound = SubmitInvoicePeriod$Outbound;
-}
-
 export function submitInvoicePeriodToJSON(
   submitInvoicePeriod: SubmitInvoicePeriod,
 ): string {
@@ -166,7 +152,6 @@ export function submitInvoicePeriodToJSON(
     SubmitInvoicePeriod$outboundSchema.parse(submitInvoicePeriod),
   );
 }
-
 export function submitInvoicePeriodFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitInvoicePeriod, SDKValidationError> {
@@ -196,7 +181,6 @@ export const SubmitInvoiceItems$inboundSchema: z.ZodType<
   units: z.string(),
   total: z.string(),
 });
-
 /** @internal */
 export type SubmitInvoiceItems$Outbound = {
   resourceId?: string | undefined;
@@ -229,19 +213,6 @@ export const SubmitInvoiceItems$outboundSchema: z.ZodType<
   total: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitInvoiceItems$ {
-  /** @deprecated use `SubmitInvoiceItems$inboundSchema` instead. */
-  export const inboundSchema = SubmitInvoiceItems$inboundSchema;
-  /** @deprecated use `SubmitInvoiceItems$outboundSchema` instead. */
-  export const outboundSchema = SubmitInvoiceItems$outboundSchema;
-  /** @deprecated use `SubmitInvoiceItems$Outbound` instead. */
-  export type Outbound = SubmitInvoiceItems$Outbound;
-}
-
 export function submitInvoiceItemsToJSON(
   submitInvoiceItems: SubmitInvoiceItems,
 ): string {
@@ -249,7 +220,6 @@ export function submitInvoiceItemsToJSON(
     SubmitInvoiceItems$outboundSchema.parse(submitInvoiceItems),
   );
 }
-
 export function submitInvoiceItemsFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitInvoiceItems, SDKValidationError> {
@@ -276,7 +246,6 @@ export const SubmitInvoiceDiscounts$inboundSchema: z.ZodType<
   details: z.string().optional(),
   amount: z.string(),
 });
-
 /** @internal */
 export type SubmitInvoiceDiscounts$Outbound = {
   resourceId?: string | undefined;
@@ -303,19 +272,6 @@ export const SubmitInvoiceDiscounts$outboundSchema: z.ZodType<
   amount: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitInvoiceDiscounts$ {
-  /** @deprecated use `SubmitInvoiceDiscounts$inboundSchema` instead. */
-  export const inboundSchema = SubmitInvoiceDiscounts$inboundSchema;
-  /** @deprecated use `SubmitInvoiceDiscounts$outboundSchema` instead. */
-  export const outboundSchema = SubmitInvoiceDiscounts$outboundSchema;
-  /** @deprecated use `SubmitInvoiceDiscounts$Outbound` instead. */
-  export type Outbound = SubmitInvoiceDiscounts$Outbound;
-}
-
 export function submitInvoiceDiscountsToJSON(
   submitInvoiceDiscounts: SubmitInvoiceDiscounts,
 ): string {
@@ -323,7 +279,6 @@ export function submitInvoiceDiscountsToJSON(
     SubmitInvoiceDiscounts$outboundSchema.parse(submitInvoiceDiscounts),
   );
 }
-
 export function submitInvoiceDiscountsFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitInvoiceDiscounts, SDKValidationError> {
@@ -337,21 +292,9 @@ export function submitInvoiceDiscountsFromJSON(
 /** @internal */
 export const Result$inboundSchema: z.ZodNativeEnum<typeof Result> = z
   .nativeEnum(Result);
-
 /** @internal */
 export const Result$outboundSchema: z.ZodNativeEnum<typeof Result> =
   Result$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Result$ {
-  /** @deprecated use `Result$inboundSchema` instead. */
-  export const inboundSchema = Result$inboundSchema;
-  /** @deprecated use `Result$outboundSchema` instead. */
-  export const outboundSchema = Result$outboundSchema;
-}
 
 /** @internal */
 export const Test$inboundSchema: z.ZodType<Test, z.ZodTypeDef, unknown> = z
@@ -359,7 +302,6 @@ export const Test$inboundSchema: z.ZodType<Test, z.ZodTypeDef, unknown> = z
     validate: z.boolean().optional(),
     result: Result$inboundSchema.optional(),
   });
-
 /** @internal */
 export type Test$Outbound = {
   validate?: boolean | undefined;
@@ -373,23 +315,9 @@ export const Test$outboundSchema: z.ZodType<Test$Outbound, z.ZodTypeDef, Test> =
     result: Result$outboundSchema.optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Test$ {
-  /** @deprecated use `Test$inboundSchema` instead. */
-  export const inboundSchema = Test$inboundSchema;
-  /** @deprecated use `Test$outboundSchema` instead. */
-  export const outboundSchema = Test$outboundSchema;
-  /** @deprecated use `Test$Outbound` instead. */
-  export type Outbound = Test$Outbound;
-}
-
 export function testToJSON(test: Test): string {
   return JSON.stringify(Test$outboundSchema.parse(test));
 }
-
 export function testFromJSON(
   jsonString: string,
 ): SafeParseResult<Test, SDKValidationError> {
@@ -417,7 +345,6 @@ export const SubmitInvoiceRequestBody$inboundSchema: z.ZodType<
     .optional(),
   test: z.lazy(() => Test$inboundSchema).optional(),
 });
-
 /** @internal */
 export type SubmitInvoiceRequestBody$Outbound = {
   externalId?: string | undefined;
@@ -445,19 +372,6 @@ export const SubmitInvoiceRequestBody$outboundSchema: z.ZodType<
   test: z.lazy(() => Test$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitInvoiceRequestBody$ {
-  /** @deprecated use `SubmitInvoiceRequestBody$inboundSchema` instead. */
-  export const inboundSchema = SubmitInvoiceRequestBody$inboundSchema;
-  /** @deprecated use `SubmitInvoiceRequestBody$outboundSchema` instead. */
-  export const outboundSchema = SubmitInvoiceRequestBody$outboundSchema;
-  /** @deprecated use `SubmitInvoiceRequestBody$Outbound` instead. */
-  export type Outbound = SubmitInvoiceRequestBody$Outbound;
-}
-
 export function submitInvoiceRequestBodyToJSON(
   submitInvoiceRequestBody: SubmitInvoiceRequestBody,
 ): string {
@@ -465,7 +379,6 @@ export function submitInvoiceRequestBodyToJSON(
     SubmitInvoiceRequestBody$outboundSchema.parse(submitInvoiceRequestBody),
   );
 }
-
 export function submitInvoiceRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitInvoiceRequestBody, SDKValidationError> {
@@ -489,7 +402,6 @@ export const SubmitInvoiceRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type SubmitInvoiceRequest$Outbound = {
   integrationConfigurationId: string;
@@ -510,19 +422,6 @@ export const SubmitInvoiceRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitInvoiceRequest$ {
-  /** @deprecated use `SubmitInvoiceRequest$inboundSchema` instead. */
-  export const inboundSchema = SubmitInvoiceRequest$inboundSchema;
-  /** @deprecated use `SubmitInvoiceRequest$outboundSchema` instead. */
-  export const outboundSchema = SubmitInvoiceRequest$outboundSchema;
-  /** @deprecated use `SubmitInvoiceRequest$Outbound` instead. */
-  export type Outbound = SubmitInvoiceRequest$Outbound;
-}
-
 export function submitInvoiceRequestToJSON(
   submitInvoiceRequest: SubmitInvoiceRequest,
 ): string {
@@ -530,7 +429,6 @@ export function submitInvoiceRequestToJSON(
     SubmitInvoiceRequest$outboundSchema.parse(submitInvoiceRequest),
   );
 }
-
 export function submitInvoiceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitInvoiceRequest, SDKValidationError> {
@@ -551,7 +449,6 @@ export const SubmitInvoiceResponseBody$inboundSchema: z.ZodType<
   test: z.boolean().optional(),
   validationErrors: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type SubmitInvoiceResponseBody$Outbound = {
   invoiceId?: string | undefined;
@@ -570,19 +467,6 @@ export const SubmitInvoiceResponseBody$outboundSchema: z.ZodType<
   validationErrors: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SubmitInvoiceResponseBody$ {
-  /** @deprecated use `SubmitInvoiceResponseBody$inboundSchema` instead. */
-  export const inboundSchema = SubmitInvoiceResponseBody$inboundSchema;
-  /** @deprecated use `SubmitInvoiceResponseBody$outboundSchema` instead. */
-  export const outboundSchema = SubmitInvoiceResponseBody$outboundSchema;
-  /** @deprecated use `SubmitInvoiceResponseBody$Outbound` instead. */
-  export type Outbound = SubmitInvoiceResponseBody$Outbound;
-}
-
 export function submitInvoiceResponseBodyToJSON(
   submitInvoiceResponseBody: SubmitInvoiceResponseBody,
 ): string {
@@ -590,7 +474,6 @@ export function submitInvoiceResponseBodyToJSON(
     SubmitInvoiceResponseBody$outboundSchema.parse(submitInvoiceResponseBody),
   );
 }
-
 export function submitInvoiceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<SubmitInvoiceResponseBody, SDKValidationError> {

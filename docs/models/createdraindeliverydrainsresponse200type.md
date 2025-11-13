@@ -5,11 +5,11 @@
 ```typescript
 import { CreateDrainDeliveryDrainsResponse200Type } from "@vercel/sdk/models/createdrainop.js";
 
-let value: CreateDrainDeliveryDrainsResponse200Type = "internal";
+let value: CreateDrainDeliveryDrainsResponse200Type = "http";
 ```
 
 ## Values
 
 ```typescript
-"internal"
+"http"
 ```

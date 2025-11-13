@@ -31,7 +31,6 @@ export const DeleteAccessGroupProjectRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteAccessGroupProjectRequest$Outbound = {
   accessGroupIdOrName: string;
@@ -52,19 +51,6 @@ export const DeleteAccessGroupProjectRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAccessGroupProjectRequest$ {
-  /** @deprecated use `DeleteAccessGroupProjectRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteAccessGroupProjectRequest$inboundSchema;
-  /** @deprecated use `DeleteAccessGroupProjectRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteAccessGroupProjectRequest$outboundSchema;
-  /** @deprecated use `DeleteAccessGroupProjectRequest$Outbound` instead. */
-  export type Outbound = DeleteAccessGroupProjectRequest$Outbound;
-}
-
 export function deleteAccessGroupProjectRequestToJSON(
   deleteAccessGroupProjectRequest: DeleteAccessGroupProjectRequest,
 ): string {
@@ -74,7 +60,6 @@ export function deleteAccessGroupProjectRequestToJSON(
     ),
   );
 }
-
 export function deleteAccessGroupProjectRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteAccessGroupProjectRequest, SDKValidationError> {

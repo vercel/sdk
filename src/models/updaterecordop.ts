@@ -124,22 +124,10 @@ export type UpdateRecordResponseBody = {
 export const UpdateRecordType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordType
 > = z.nativeEnum(UpdateRecordType);
-
 /** @internal */
 export const UpdateRecordType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordType
 > = UpdateRecordType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRecordType$ {
-  /** @deprecated use `UpdateRecordType$inboundSchema` instead. */
-  export const inboundSchema = UpdateRecordType$inboundSchema;
-  /** @deprecated use `UpdateRecordType$outboundSchema` instead. */
-  export const outboundSchema = UpdateRecordType$outboundSchema;
-}
 
 /** @internal */
 export const Srv$inboundSchema: z.ZodType<Srv, z.ZodTypeDef, unknown> = z
@@ -149,7 +137,6 @@ export const Srv$inboundSchema: z.ZodType<Srv, z.ZodTypeDef, unknown> = z
     port: z.nullable(z.number().int()),
     priority: z.nullable(z.number().int()),
   });
-
 /** @internal */
 export type Srv$Outbound = {
   target: string | null;
@@ -167,23 +154,9 @@ export const Srv$outboundSchema: z.ZodType<Srv$Outbound, z.ZodTypeDef, Srv> = z
     priority: z.nullable(z.number().int()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Srv$ {
-  /** @deprecated use `Srv$inboundSchema` instead. */
-  export const inboundSchema = Srv$inboundSchema;
-  /** @deprecated use `Srv$outboundSchema` instead. */
-  export const outboundSchema = Srv$outboundSchema;
-  /** @deprecated use `Srv$Outbound` instead. */
-  export type Outbound = Srv$Outbound;
-}
-
 export function srvToJSON(srv: Srv): string {
   return JSON.stringify(Srv$outboundSchema.parse(srv));
 }
-
 export function srvFromJSON(
   jsonString: string,
 ): SafeParseResult<Srv, SDKValidationError> {
@@ -201,7 +174,6 @@ export const Https$inboundSchema: z.ZodType<Https, z.ZodTypeDef, unknown> = z
     target: z.nullable(z.string()),
     params: z.nullable(z.string()).optional(),
   });
-
 /** @internal */
 export type Https$Outbound = {
   priority: number | null;
@@ -220,23 +192,9 @@ export const Https$outboundSchema: z.ZodType<
   params: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Https$ {
-  /** @deprecated use `Https$inboundSchema` instead. */
-  export const inboundSchema = Https$inboundSchema;
-  /** @deprecated use `Https$outboundSchema` instead. */
-  export const outboundSchema = Https$outboundSchema;
-  /** @deprecated use `Https$Outbound` instead. */
-  export type Outbound = Https$Outbound;
-}
-
 export function httpsToJSON(https: Https): string {
   return JSON.stringify(Https$outboundSchema.parse(https));
 }
-
 export function httpsFromJSON(
   jsonString: string,
 ): SafeParseResult<Https, SDKValidationError> {
@@ -262,7 +220,6 @@ export const UpdateRecordRequestBody$inboundSchema: z.ZodType<
   https: z.nullable(z.lazy(() => Https$inboundSchema)).optional(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateRecordRequestBody$Outbound = {
   name?: string | null | undefined;
@@ -291,19 +248,6 @@ export const UpdateRecordRequestBody$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRecordRequestBody$ {
-  /** @deprecated use `UpdateRecordRequestBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateRecordRequestBody$inboundSchema;
-  /** @deprecated use `UpdateRecordRequestBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateRecordRequestBody$outboundSchema;
-  /** @deprecated use `UpdateRecordRequestBody$Outbound` instead. */
-  export type Outbound = UpdateRecordRequestBody$Outbound;
-}
-
 export function updateRecordRequestBodyToJSON(
   updateRecordRequestBody: UpdateRecordRequestBody,
 ): string {
@@ -311,7 +255,6 @@ export function updateRecordRequestBodyToJSON(
     UpdateRecordRequestBody$outboundSchema.parse(updateRecordRequestBody),
   );
 }
-
 export function updateRecordRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRecordRequestBody, SDKValidationError> {
@@ -337,7 +280,6 @@ export const UpdateRecordRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateRecordRequest$Outbound = {
   recordId: string;
@@ -362,19 +304,6 @@ export const UpdateRecordRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRecordRequest$ {
-  /** @deprecated use `UpdateRecordRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateRecordRequest$inboundSchema;
-  /** @deprecated use `UpdateRecordRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateRecordRequest$outboundSchema;
-  /** @deprecated use `UpdateRecordRequest$Outbound` instead. */
-  export type Outbound = UpdateRecordRequest$Outbound;
-}
-
 export function updateRecordRequestToJSON(
   updateRecordRequest: UpdateRecordRequest,
 ): string {
@@ -382,7 +311,6 @@ export function updateRecordRequestToJSON(
     UpdateRecordRequest$outboundSchema.parse(updateRecordRequest),
   );
 }
-
 export function updateRecordRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRecordRequest, SDKValidationError> {
@@ -396,42 +324,18 @@ export function updateRecordRequestFromJSON(
 /** @internal */
 export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
   .nativeEnum(RecordType);
-
 /** @internal */
 export const RecordType$outboundSchema: z.ZodNativeEnum<typeof RecordType> =
   RecordType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RecordType$ {
-  /** @deprecated use `RecordType$inboundSchema` instead. */
-  export const inboundSchema = RecordType$inboundSchema;
-  /** @deprecated use `RecordType$outboundSchema` instead. */
-  export const outboundSchema = RecordType$outboundSchema;
-}
 
 /** @internal */
 export const UpdateRecordDnsType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordDnsType
 > = z.nativeEnum(UpdateRecordDnsType);
-
 /** @internal */
 export const UpdateRecordDnsType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordDnsType
 > = UpdateRecordDnsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRecordDnsType$ {
-  /** @deprecated use `UpdateRecordDnsType$inboundSchema` instead. */
-  export const inboundSchema = UpdateRecordDnsType$inboundSchema;
-  /** @deprecated use `UpdateRecordDnsType$outboundSchema` instead. */
-  export const outboundSchema = UpdateRecordDnsType$outboundSchema;
-}
 
 /** @internal */
 export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
@@ -450,7 +354,6 @@ export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
   value: z.string(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type UpdateRecordResponseBody$Outbound = {
   createdAt?: number | null | undefined;
@@ -483,19 +386,6 @@ export const UpdateRecordResponseBody$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateRecordResponseBody$ {
-  /** @deprecated use `UpdateRecordResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UpdateRecordResponseBody$inboundSchema;
-  /** @deprecated use `UpdateRecordResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UpdateRecordResponseBody$outboundSchema;
-  /** @deprecated use `UpdateRecordResponseBody$Outbound` instead. */
-  export type Outbound = UpdateRecordResponseBody$Outbound;
-}
-
 export function updateRecordResponseBodyToJSON(
   updateRecordResponseBody: UpdateRecordResponseBody,
 ): string {
@@ -503,7 +393,6 @@ export function updateRecordResponseBodyToJSON(
     UpdateRecordResponseBody$outboundSchema.parse(updateRecordResponseBody),
   );
 }
-
 export function updateRecordResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateRecordResponseBody, SDKValidationError> {

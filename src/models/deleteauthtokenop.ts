@@ -32,7 +32,6 @@ export const DeleteAuthTokenRequest$inboundSchema: z.ZodType<
 > = z.object({
   tokenId: z.string(),
 });
-
 /** @internal */
 export type DeleteAuthTokenRequest$Outbound = {
   tokenId: string;
@@ -47,19 +46,6 @@ export const DeleteAuthTokenRequest$outboundSchema: z.ZodType<
   tokenId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAuthTokenRequest$ {
-  /** @deprecated use `DeleteAuthTokenRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteAuthTokenRequest$inboundSchema;
-  /** @deprecated use `DeleteAuthTokenRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteAuthTokenRequest$outboundSchema;
-  /** @deprecated use `DeleteAuthTokenRequest$Outbound` instead. */
-  export type Outbound = DeleteAuthTokenRequest$Outbound;
-}
-
 export function deleteAuthTokenRequestToJSON(
   deleteAuthTokenRequest: DeleteAuthTokenRequest,
 ): string {
@@ -67,7 +53,6 @@ export function deleteAuthTokenRequestToJSON(
     DeleteAuthTokenRequest$outboundSchema.parse(deleteAuthTokenRequest),
   );
 }
-
 export function deleteAuthTokenRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteAuthTokenRequest, SDKValidationError> {
@@ -86,7 +71,6 @@ export const DeleteAuthTokenResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   tokenId: z.string(),
 });
-
 /** @internal */
 export type DeleteAuthTokenResponseBody$Outbound = {
   tokenId: string;
@@ -101,19 +85,6 @@ export const DeleteAuthTokenResponseBody$outboundSchema: z.ZodType<
   tokenId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAuthTokenResponseBody$ {
-  /** @deprecated use `DeleteAuthTokenResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteAuthTokenResponseBody$inboundSchema;
-  /** @deprecated use `DeleteAuthTokenResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteAuthTokenResponseBody$outboundSchema;
-  /** @deprecated use `DeleteAuthTokenResponseBody$Outbound` instead. */
-  export type Outbound = DeleteAuthTokenResponseBody$Outbound;
-}
-
 export function deleteAuthTokenResponseBodyToJSON(
   deleteAuthTokenResponseBody: DeleteAuthTokenResponseBody,
 ): string {
@@ -123,7 +94,6 @@ export function deleteAuthTokenResponseBodyToJSON(
     ),
   );
 }
-
 export function deleteAuthTokenResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteAuthTokenResponseBody, SDKValidationError> {

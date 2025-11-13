@@ -63,7 +63,6 @@ export const UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema:
     preview: z.string().optional(),
     production: z.string().optional(),
   });
-
 /** @internal */
 export type UpdateResourceSecretsByIdEnvironmentOverrides$Outbound = {
   development?: string | undefined;
@@ -83,21 +82,6 @@ export const UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema:
     production: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsByIdEnvironmentOverrides$ {
-  /** @deprecated use `UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdEnvironmentOverrides$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsByIdEnvironmentOverrides$Outbound;
-}
-
 export function updateResourceSecretsByIdEnvironmentOverridesToJSON(
   updateResourceSecretsByIdEnvironmentOverrides:
     UpdateResourceSecretsByIdEnvironmentOverrides,
@@ -108,7 +92,6 @@ export function updateResourceSecretsByIdEnvironmentOverridesToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsByIdEnvironmentOverridesFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -138,7 +121,6 @@ export const UpdateResourceSecretsByIdSecrets$inboundSchema: z.ZodType<
     UpdateResourceSecretsByIdEnvironmentOverrides$inboundSchema
   ).optional(),
 });
-
 /** @internal */
 export type UpdateResourceSecretsByIdSecrets$Outbound = {
   name: string;
@@ -163,19 +145,6 @@ export const UpdateResourceSecretsByIdSecrets$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsByIdSecrets$ {
-  /** @deprecated use `UpdateResourceSecretsByIdSecrets$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceSecretsByIdSecrets$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdSecrets$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceSecretsByIdSecrets$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdSecrets$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsByIdSecrets$Outbound;
-}
-
 export function updateResourceSecretsByIdSecretsToJSON(
   updateResourceSecretsByIdSecrets: UpdateResourceSecretsByIdSecrets,
 ): string {
@@ -185,7 +154,6 @@ export function updateResourceSecretsByIdSecretsToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsByIdSecretsFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceSecretsByIdSecrets, SDKValidationError> {
@@ -207,7 +175,6 @@ export const UpdateResourceSecretsByIdRequestBody$inboundSchema: z.ZodType<
   ),
   partial: z.boolean().optional(),
 });
-
 /** @internal */
 export type UpdateResourceSecretsByIdRequestBody$Outbound = {
   secrets: Array<UpdateResourceSecretsByIdSecrets$Outbound>;
@@ -226,21 +193,6 @@ export const UpdateResourceSecretsByIdRequestBody$outboundSchema: z.ZodType<
   partial: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsByIdRequestBody$ {
-  /** @deprecated use `UpdateResourceSecretsByIdRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateResourceSecretsByIdRequestBody$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateResourceSecretsByIdRequestBody$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdRequestBody$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsByIdRequestBody$Outbound;
-}
-
 export function updateResourceSecretsByIdRequestBodyToJSON(
   updateResourceSecretsByIdRequestBody: UpdateResourceSecretsByIdRequestBody,
 ): string {
@@ -250,7 +202,6 @@ export function updateResourceSecretsByIdRequestBodyToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsByIdRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceSecretsByIdRequestBody, SDKValidationError> {
@@ -277,7 +228,6 @@ export const UpdateResourceSecretsByIdRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UpdateResourceSecretsByIdRequest$Outbound = {
   integrationConfigurationId: string;
@@ -301,19 +251,6 @@ export const UpdateResourceSecretsByIdRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateResourceSecretsByIdRequest$ {
-  /** @deprecated use `UpdateResourceSecretsByIdRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateResourceSecretsByIdRequest$inboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateResourceSecretsByIdRequest$outboundSchema;
-  /** @deprecated use `UpdateResourceSecretsByIdRequest$Outbound` instead. */
-  export type Outbound = UpdateResourceSecretsByIdRequest$Outbound;
-}
-
 export function updateResourceSecretsByIdRequestToJSON(
   updateResourceSecretsByIdRequest: UpdateResourceSecretsByIdRequest,
 ): string {
@@ -323,7 +260,6 @@ export function updateResourceSecretsByIdRequestToJSON(
     ),
   );
 }
-
 export function updateResourceSecretsByIdRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UpdateResourceSecretsByIdRequest, SDKValidationError> {

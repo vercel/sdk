@@ -42,7 +42,6 @@ export const GetAccountInfoRequest$inboundSchema: z.ZodType<
 > = z.object({
   integrationConfigurationId: z.string(),
 });
-
 /** @internal */
 export type GetAccountInfoRequest$Outbound = {
   integrationConfigurationId: string;
@@ -57,19 +56,6 @@ export const GetAccountInfoRequest$outboundSchema: z.ZodType<
   integrationConfigurationId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountInfoRequest$ {
-  /** @deprecated use `GetAccountInfoRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAccountInfoRequest$inboundSchema;
-  /** @deprecated use `GetAccountInfoRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAccountInfoRequest$outboundSchema;
-  /** @deprecated use `GetAccountInfoRequest$Outbound` instead. */
-  export type Outbound = GetAccountInfoRequest$Outbound;
-}
-
 export function getAccountInfoRequestToJSON(
   getAccountInfoRequest: GetAccountInfoRequest,
 ): string {
@@ -77,7 +63,6 @@ export function getAccountInfoRequestToJSON(
     GetAccountInfoRequest$outboundSchema.parse(getAccountInfoRequest),
   );
 }
-
 export function getAccountInfoRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountInfoRequest, SDKValidationError> {
@@ -94,7 +79,6 @@ export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
     email: z.string(),
     name: z.string().optional(),
   });
-
 /** @internal */
 export type Contact$Outbound = {
   email: string;
@@ -111,23 +95,9 @@ export const Contact$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Contact$ {
-  /** @deprecated use `Contact$inboundSchema` instead. */
-  export const inboundSchema = Contact$inboundSchema;
-  /** @deprecated use `Contact$outboundSchema` instead. */
-  export const outboundSchema = Contact$outboundSchema;
-  /** @deprecated use `Contact$Outbound` instead. */
-  export type Outbound = Contact$Outbound;
-}
-
 export function contactToJSON(contact: Contact): string {
   return JSON.stringify(Contact$outboundSchema.parse(contact));
 }
-
 export function contactFromJSON(
   jsonString: string,
 ): SafeParseResult<Contact, SDKValidationError> {
@@ -148,7 +118,6 @@ export const GetAccountInfoResponseBody$inboundSchema: z.ZodType<
   url: z.string(),
   contact: z.nullable(z.lazy(() => Contact$inboundSchema)),
 });
-
 /** @internal */
 export type GetAccountInfoResponseBody$Outbound = {
   name?: string | undefined;
@@ -167,19 +136,6 @@ export const GetAccountInfoResponseBody$outboundSchema: z.ZodType<
   contact: z.nullable(z.lazy(() => Contact$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAccountInfoResponseBody$ {
-  /** @deprecated use `GetAccountInfoResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetAccountInfoResponseBody$inboundSchema;
-  /** @deprecated use `GetAccountInfoResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetAccountInfoResponseBody$outboundSchema;
-  /** @deprecated use `GetAccountInfoResponseBody$Outbound` instead. */
-  export type Outbound = GetAccountInfoResponseBody$Outbound;
-}
-
 export function getAccountInfoResponseBodyToJSON(
   getAccountInfoResponseBody: GetAccountInfoResponseBody,
 ): string {
@@ -187,7 +143,6 @@ export function getAccountInfoResponseBodyToJSON(
     GetAccountInfoResponseBody$outboundSchema.parse(getAccountInfoResponseBody),
   );
 }
-
 export function getAccountInfoResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAccountInfoResponseBody, SDKValidationError> {

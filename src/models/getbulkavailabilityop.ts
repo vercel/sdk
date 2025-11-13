@@ -40,7 +40,6 @@ export const GetBulkAvailabilityRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   domains: z.array(z.string()),
 });
-
 /** @internal */
 export type GetBulkAvailabilityRequestBody$Outbound = {
   domains: Array<string>;
@@ -55,19 +54,6 @@ export const GetBulkAvailabilityRequestBody$outboundSchema: z.ZodType<
   domains: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBulkAvailabilityRequestBody$ {
-  /** @deprecated use `GetBulkAvailabilityRequestBody$inboundSchema` instead. */
-  export const inboundSchema = GetBulkAvailabilityRequestBody$inboundSchema;
-  /** @deprecated use `GetBulkAvailabilityRequestBody$outboundSchema` instead. */
-  export const outboundSchema = GetBulkAvailabilityRequestBody$outboundSchema;
-  /** @deprecated use `GetBulkAvailabilityRequestBody$Outbound` instead. */
-  export type Outbound = GetBulkAvailabilityRequestBody$Outbound;
-}
-
 export function getBulkAvailabilityRequestBodyToJSON(
   getBulkAvailabilityRequestBody: GetBulkAvailabilityRequestBody,
 ): string {
@@ -77,7 +63,6 @@ export function getBulkAvailabilityRequestBodyToJSON(
     ),
   );
 }
-
 export function getBulkAvailabilityRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBulkAvailabilityRequestBody, SDKValidationError> {
@@ -101,7 +86,6 @@ export const GetBulkAvailabilityRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type GetBulkAvailabilityRequest$Outbound = {
   teamId?: string | undefined;
@@ -122,19 +106,6 @@ export const GetBulkAvailabilityRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBulkAvailabilityRequest$ {
-  /** @deprecated use `GetBulkAvailabilityRequest$inboundSchema` instead. */
-  export const inboundSchema = GetBulkAvailabilityRequest$inboundSchema;
-  /** @deprecated use `GetBulkAvailabilityRequest$outboundSchema` instead. */
-  export const outboundSchema = GetBulkAvailabilityRequest$outboundSchema;
-  /** @deprecated use `GetBulkAvailabilityRequest$Outbound` instead. */
-  export type Outbound = GetBulkAvailabilityRequest$Outbound;
-}
-
 export function getBulkAvailabilityRequestToJSON(
   getBulkAvailabilityRequest: GetBulkAvailabilityRequest,
 ): string {
@@ -142,7 +113,6 @@ export function getBulkAvailabilityRequestToJSON(
     GetBulkAvailabilityRequest$outboundSchema.parse(getBulkAvailabilityRequest),
   );
 }
-
 export function getBulkAvailabilityRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBulkAvailabilityRequest, SDKValidationError> {
@@ -159,7 +129,6 @@ export const Results$inboundSchema: z.ZodType<Results, z.ZodTypeDef, unknown> =
     domain: z.string(),
     available: z.boolean(),
   });
-
 /** @internal */
 export type Results$Outbound = {
   domain: string;
@@ -176,23 +145,9 @@ export const Results$outboundSchema: z.ZodType<
   available: z.boolean(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Results$ {
-  /** @deprecated use `Results$inboundSchema` instead. */
-  export const inboundSchema = Results$inboundSchema;
-  /** @deprecated use `Results$outboundSchema` instead. */
-  export const outboundSchema = Results$outboundSchema;
-  /** @deprecated use `Results$Outbound` instead. */
-  export type Outbound = Results$Outbound;
-}
-
 export function resultsToJSON(results: Results): string {
   return JSON.stringify(Results$outboundSchema.parse(results));
 }
-
 export function resultsFromJSON(
   jsonString: string,
 ): SafeParseResult<Results, SDKValidationError> {
@@ -211,7 +166,6 @@ export const GetBulkAvailabilityResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   results: z.array(z.lazy(() => Results$inboundSchema)),
 });
-
 /** @internal */
 export type GetBulkAvailabilityResponseBody$Outbound = {
   results: Array<Results$Outbound>;
@@ -226,19 +180,6 @@ export const GetBulkAvailabilityResponseBody$outboundSchema: z.ZodType<
   results: z.array(z.lazy(() => Results$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetBulkAvailabilityResponseBody$ {
-  /** @deprecated use `GetBulkAvailabilityResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetBulkAvailabilityResponseBody$inboundSchema;
-  /** @deprecated use `GetBulkAvailabilityResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetBulkAvailabilityResponseBody$outboundSchema;
-  /** @deprecated use `GetBulkAvailabilityResponseBody$Outbound` instead. */
-  export type Outbound = GetBulkAvailabilityResponseBody$Outbound;
-}
-
 export function getBulkAvailabilityResponseBodyToJSON(
   getBulkAvailabilityResponseBody: GetBulkAvailabilityResponseBody,
 ): string {
@@ -248,7 +189,6 @@ export function getBulkAvailabilityResponseBodyToJSON(
     ),
   );
 }
-
 export function getBulkAvailabilityResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetBulkAvailabilityResponseBody, SDKValidationError> {

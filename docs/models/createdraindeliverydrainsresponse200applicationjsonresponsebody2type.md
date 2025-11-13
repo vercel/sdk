@@ -7,11 +7,11 @@ import { CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type } 
 
 let value:
   CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody2Type =
-    "syslog";
+    "internal";
 ```
 
 ## Values
 
 ```typescript
-"syslog"
+"internal"
 ```

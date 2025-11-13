@@ -22,8 +22,8 @@ type IssueCertRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string               `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody *IssueCertRequestBody `request:"mediaType=application/json"`
+	Slug *string               `queryParam:"style=form,explode=true,name=slug"`
+	Body *IssueCertRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *IssueCertRequest) GetTeamID() *string {
@@ -40,11 +40,11 @@ func (o *IssueCertRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *IssueCertRequest) GetRequestBody() *IssueCertRequestBody {
+func (o *IssueCertRequest) GetBody() *IssueCertRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type IssueCertResponseBody struct {

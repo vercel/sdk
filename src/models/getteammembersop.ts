@@ -299,22 +299,10 @@ export type GetTeamMembersResponseBody = {
 export const QueryParamRole$inboundSchema: z.ZodNativeEnum<
   typeof QueryParamRole
 > = z.nativeEnum(QueryParamRole);
-
 /** @internal */
 export const QueryParamRole$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamRole
 > = QueryParamRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryParamRole$ {
-  /** @deprecated use `QueryParamRole$inboundSchema` instead. */
-  export const inboundSchema = QueryParamRole$inboundSchema;
-  /** @deprecated use `QueryParamRole$outboundSchema` instead. */
-  export const outboundSchema = QueryParamRole$outboundSchema;
-}
 
 /** @internal */
 export const GetTeamMembersRequest$inboundSchema: z.ZodType<
@@ -330,7 +318,6 @@ export const GetTeamMembersRequest$inboundSchema: z.ZodType<
   excludeProject: z.string().optional(),
   eligibleMembersForProjectId: z.string().optional(),
 });
-
 /** @internal */
 export type GetTeamMembersRequest$Outbound = {
   limit?: number | undefined;
@@ -357,19 +344,6 @@ export const GetTeamMembersRequest$outboundSchema: z.ZodType<
   eligibleMembersForProjectId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersRequest$ {
-  /** @deprecated use `GetTeamMembersRequest$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersRequest$inboundSchema;
-  /** @deprecated use `GetTeamMembersRequest$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersRequest$outboundSchema;
-  /** @deprecated use `GetTeamMembersRequest$Outbound` instead. */
-  export type Outbound = GetTeamMembersRequest$Outbound;
-}
-
 export function getTeamMembersRequestToJSON(
   getTeamMembersRequest: GetTeamMembersRequest,
 ): string {
@@ -377,7 +351,6 @@ export function getTeamMembersRequestToJSON(
     GetTeamMembersRequest$outboundSchema.parse(getTeamMembersRequest),
   );
 }
-
 export function getTeamMembersRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersRequest, SDKValidationError> {
@@ -396,7 +369,6 @@ export const GetTeamMembersGithub$inboundSchema: z.ZodType<
 > = z.object({
   login: z.string().optional(),
 });
-
 /** @internal */
 export type GetTeamMembersGithub$Outbound = {
   login?: string | undefined;
@@ -411,19 +383,6 @@ export const GetTeamMembersGithub$outboundSchema: z.ZodType<
   login: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersGithub$ {
-  /** @deprecated use `GetTeamMembersGithub$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersGithub$inboundSchema;
-  /** @deprecated use `GetTeamMembersGithub$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersGithub$outboundSchema;
-  /** @deprecated use `GetTeamMembersGithub$Outbound` instead. */
-  export type Outbound = GetTeamMembersGithub$Outbound;
-}
-
 export function getTeamMembersGithubToJSON(
   getTeamMembersGithub: GetTeamMembersGithub,
 ): string {
@@ -431,7 +390,6 @@ export function getTeamMembersGithubToJSON(
     GetTeamMembersGithub$outboundSchema.parse(getTeamMembersGithub),
   );
 }
-
 export function getTeamMembersGithubFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersGithub, SDKValidationError> {
@@ -450,7 +408,6 @@ export const GetTeamMembersGitlab$inboundSchema: z.ZodType<
 > = z.object({
   login: z.string().optional(),
 });
-
 /** @internal */
 export type GetTeamMembersGitlab$Outbound = {
   login?: string | undefined;
@@ -465,19 +422,6 @@ export const GetTeamMembersGitlab$outboundSchema: z.ZodType<
   login: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersGitlab$ {
-  /** @deprecated use `GetTeamMembersGitlab$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersGitlab$inboundSchema;
-  /** @deprecated use `GetTeamMembersGitlab$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersGitlab$outboundSchema;
-  /** @deprecated use `GetTeamMembersGitlab$Outbound` instead. */
-  export type Outbound = GetTeamMembersGitlab$Outbound;
-}
-
 export function getTeamMembersGitlabToJSON(
   getTeamMembersGitlab: GetTeamMembersGitlab,
 ): string {
@@ -485,7 +429,6 @@ export function getTeamMembersGitlabToJSON(
     GetTeamMembersGitlab$outboundSchema.parse(getTeamMembersGitlab),
   );
 }
-
 export function getTeamMembersGitlabFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersGitlab, SDKValidationError> {
@@ -504,7 +447,6 @@ export const GetTeamMembersBitbucket$inboundSchema: z.ZodType<
 > = z.object({
   login: z.string().optional(),
 });
-
 /** @internal */
 export type GetTeamMembersBitbucket$Outbound = {
   login?: string | undefined;
@@ -519,19 +461,6 @@ export const GetTeamMembersBitbucket$outboundSchema: z.ZodType<
   login: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersBitbucket$ {
-  /** @deprecated use `GetTeamMembersBitbucket$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersBitbucket$inboundSchema;
-  /** @deprecated use `GetTeamMembersBitbucket$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersBitbucket$outboundSchema;
-  /** @deprecated use `GetTeamMembersBitbucket$Outbound` instead. */
-  export type Outbound = GetTeamMembersBitbucket$Outbound;
-}
-
 export function getTeamMembersBitbucketToJSON(
   getTeamMembersBitbucket: GetTeamMembersBitbucket,
 ): string {
@@ -539,7 +468,6 @@ export function getTeamMembersBitbucketToJSON(
     GetTeamMembersBitbucket$outboundSchema.parse(getTeamMembersBitbucket),
   );
 }
-
 export function getTeamMembersBitbucketFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersBitbucket, SDKValidationError> {
@@ -554,43 +482,19 @@ export function getTeamMembersBitbucketFromJSON(
 export const GetTeamMembersRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersRole
 > = z.nativeEnum(GetTeamMembersRole);
-
 /** @internal */
 export const GetTeamMembersRole$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersRole
 > = GetTeamMembersRole$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersRole$ {
-  /** @deprecated use `GetTeamMembersRole$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersRole$inboundSchema;
-  /** @deprecated use `GetTeamMembersRole$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersRole$outboundSchema;
-}
-
 /** @internal */
 export const GetTeamMembersOrigin$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersOrigin
 > = z.nativeEnum(GetTeamMembersOrigin);
-
 /** @internal */
 export const GetTeamMembersOrigin$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersOrigin
 > = GetTeamMembersOrigin$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersOrigin$ {
-  /** @deprecated use `GetTeamMembersOrigin$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersOrigin$inboundSchema;
-  /** @deprecated use `GetTeamMembersOrigin$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersOrigin$outboundSchema;
-}
 
 /** @internal */
 export const GetTeamMembersGitUserId$inboundSchema: z.ZodType<
@@ -598,7 +502,6 @@ export const GetTeamMembersGitUserId$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
-
 /** @internal */
 export type GetTeamMembersGitUserId$Outbound = string | number;
 
@@ -609,19 +512,6 @@ export const GetTeamMembersGitUserId$outboundSchema: z.ZodType<
   GetTeamMembersGitUserId
 > = z.union([z.string(), z.number()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersGitUserId$ {
-  /** @deprecated use `GetTeamMembersGitUserId$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersGitUserId$inboundSchema;
-  /** @deprecated use `GetTeamMembersGitUserId$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersGitUserId$outboundSchema;
-  /** @deprecated use `GetTeamMembersGitUserId$Outbound` instead. */
-  export type Outbound = GetTeamMembersGitUserId$Outbound;
-}
-
 export function getTeamMembersGitUserIdToJSON(
   getTeamMembersGitUserId: GetTeamMembersGitUserId,
 ): string {
@@ -629,7 +519,6 @@ export function getTeamMembersGitUserIdToJSON(
     GetTeamMembersGitUserId$outboundSchema.parse(getTeamMembersGitUserId),
   );
 }
-
 export function getTeamMembersGitUserIdFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersGitUserId, SDKValidationError> {
@@ -658,7 +547,6 @@ export const GetTeamMembersJoinedFrom$inboundSchema: z.ZodType<
   dsyncUserId: z.string().optional(),
   dsyncConnectedAt: z.number().optional(),
 });
-
 /** @internal */
 export type GetTeamMembersJoinedFrom$Outbound = {
   origin: string;
@@ -693,19 +581,6 @@ export const GetTeamMembersJoinedFrom$outboundSchema: z.ZodType<
   dsyncConnectedAt: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersJoinedFrom$ {
-  /** @deprecated use `GetTeamMembersJoinedFrom$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersJoinedFrom$inboundSchema;
-  /** @deprecated use `GetTeamMembersJoinedFrom$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersJoinedFrom$outboundSchema;
-  /** @deprecated use `GetTeamMembersJoinedFrom$Outbound` instead. */
-  export type Outbound = GetTeamMembersJoinedFrom$Outbound;
-}
-
 export function getTeamMembersJoinedFromToJSON(
   getTeamMembersJoinedFrom: GetTeamMembersJoinedFrom,
 ): string {
@@ -713,7 +588,6 @@ export function getTeamMembersJoinedFromToJSON(
     GetTeamMembersJoinedFrom$outboundSchema.parse(getTeamMembersJoinedFrom),
   );
 }
-
 export function getTeamMembersJoinedFromFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersJoinedFrom, SDKValidationError> {
@@ -728,22 +602,10 @@ export function getTeamMembersJoinedFromFromJSON(
 export const GetTeamMembersTeamsResponseRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsResponseRole
 > = z.nativeEnum(GetTeamMembersTeamsResponseRole);
-
 /** @internal */
 export const GetTeamMembersTeamsResponseRole$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsResponseRole
 > = GetTeamMembersTeamsResponseRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersTeamsResponseRole$ {
-  /** @deprecated use `GetTeamMembersTeamsResponseRole$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersTeamsResponseRole$inboundSchema;
-  /** @deprecated use `GetTeamMembersTeamsResponseRole$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersTeamsResponseRole$outboundSchema;
-}
 
 /** @internal */
 export const GetTeamMembersProjects$inboundSchema: z.ZodType<
@@ -755,7 +617,6 @@ export const GetTeamMembersProjects$inboundSchema: z.ZodType<
   id: z.string(),
   role: GetTeamMembersTeamsResponseRole$inboundSchema.optional(),
 });
-
 /** @internal */
 export type GetTeamMembersProjects$Outbound = {
   name: string;
@@ -774,19 +635,6 @@ export const GetTeamMembersProjects$outboundSchema: z.ZodType<
   role: GetTeamMembersTeamsResponseRole$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersProjects$ {
-  /** @deprecated use `GetTeamMembersProjects$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersProjects$inboundSchema;
-  /** @deprecated use `GetTeamMembersProjects$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersProjects$outboundSchema;
-  /** @deprecated use `GetTeamMembersProjects$Outbound` instead. */
-  export type Outbound = GetTeamMembersProjects$Outbound;
-}
-
 export function getTeamMembersProjectsToJSON(
   getTeamMembersProjects: GetTeamMembersProjects,
 ): string {
@@ -794,7 +642,6 @@ export function getTeamMembersProjectsToJSON(
     GetTeamMembersProjects$outboundSchema.parse(getTeamMembersProjects),
   );
 }
-
 export function getTeamMembersProjectsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersProjects, SDKValidationError> {
@@ -827,7 +674,6 @@ export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   projects: z.array(z.lazy(() => GetTeamMembersProjects$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type GetTeamMembersMembers$Outbound = {
   avatar?: string | undefined;
@@ -869,19 +715,6 @@ export const GetTeamMembersMembers$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersMembers$ {
-  /** @deprecated use `GetTeamMembersMembers$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersMembers$inboundSchema;
-  /** @deprecated use `GetTeamMembersMembers$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersMembers$outboundSchema;
-  /** @deprecated use `GetTeamMembersMembers$Outbound` instead. */
-  export type Outbound = GetTeamMembersMembers$Outbound;
-}
-
 export function getTeamMembersMembersToJSON(
   getTeamMembersMembers: GetTeamMembersMembers,
 ): string {
@@ -889,7 +722,6 @@ export function getTeamMembersMembersToJSON(
     GetTeamMembersMembers$outboundSchema.parse(getTeamMembersMembers),
   );
 }
-
 export function getTeamMembersMembersFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersMembers, SDKValidationError> {
@@ -904,85 +736,37 @@ export function getTeamMembersMembersFromJSON(
 export const GetTeamMembersTeamsRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsRole
 > = z.nativeEnum(GetTeamMembersTeamsRole);
-
 /** @internal */
 export const GetTeamMembersTeamsRole$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsRole
 > = GetTeamMembersTeamsRole$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersTeamsRole$ {
-  /** @deprecated use `GetTeamMembersTeamsRole$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersTeamsRole$inboundSchema;
-  /** @deprecated use `GetTeamMembersTeamsRole$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersTeamsRole$outboundSchema;
-}
-
 /** @internal */
 export const GetTeamMembersTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamRoles
 > = z.nativeEnum(GetTeamMembersTeamRoles);
-
 /** @internal */
 export const GetTeamMembersTeamRoles$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamRoles
 > = GetTeamMembersTeamRoles$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersTeamRoles$ {
-  /** @deprecated use `GetTeamMembersTeamRoles$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersTeamRoles$inboundSchema;
-  /** @deprecated use `GetTeamMembersTeamRoles$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersTeamRoles$outboundSchema;
-}
-
 /** @internal */
 export const GetTeamMembersTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamPermissions
 > = z.nativeEnum(GetTeamMembersTeamPermissions);
-
 /** @internal */
 export const GetTeamMembersTeamPermissions$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamPermissions
 > = GetTeamMembersTeamPermissions$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersTeamPermissions$ {
-  /** @deprecated use `GetTeamMembersTeamPermissions$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersTeamPermissions$inboundSchema;
-  /** @deprecated use `GetTeamMembersTeamPermissions$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersTeamPermissions$outboundSchema;
-}
-
 /** @internal */
 export const GetTeamMembersTeamsProjects$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsProjects
 > = z.nativeEnum(GetTeamMembersTeamsProjects);
-
 /** @internal */
 export const GetTeamMembersTeamsProjects$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsProjects
 > = GetTeamMembersTeamsProjects$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersTeamsProjects$ {
-  /** @deprecated use `GetTeamMembersTeamsProjects$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersTeamsProjects$inboundSchema;
-  /** @deprecated use `GetTeamMembersTeamsProjects$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersTeamsProjects$outboundSchema;
-}
 
 /** @internal */
 export const EmailInviteCodes$inboundSchema: z.ZodType<
@@ -1003,7 +787,6 @@ export const EmailInviteCodes$inboundSchema: z.ZodType<
   projects: z.record(GetTeamMembersTeamsProjects$inboundSchema).optional(),
   entitlements: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type EmailInviteCodes$Outbound = {
   accessGroups?: Array<string> | undefined;
@@ -1039,19 +822,6 @@ export const EmailInviteCodes$outboundSchema: z.ZodType<
   entitlements: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmailInviteCodes$ {
-  /** @deprecated use `EmailInviteCodes$inboundSchema` instead. */
-  export const inboundSchema = EmailInviteCodes$inboundSchema;
-  /** @deprecated use `EmailInviteCodes$outboundSchema` instead. */
-  export const outboundSchema = EmailInviteCodes$outboundSchema;
-  /** @deprecated use `EmailInviteCodes$Outbound` instead. */
-  export type Outbound = EmailInviteCodes$Outbound;
-}
-
 export function emailInviteCodesToJSON(
   emailInviteCodes: EmailInviteCodes,
 ): string {
@@ -1059,7 +829,6 @@ export function emailInviteCodesToJSON(
     EmailInviteCodes$outboundSchema.parse(emailInviteCodes),
   );
 }
-
 export function emailInviteCodesFromJSON(
   jsonString: string,
 ): SafeParseResult<EmailInviteCodes, SDKValidationError> {
@@ -1081,7 +850,6 @@ export const GetTeamMembersPagination$inboundSchema: z.ZodType<
   next: z.nullable(z.number()),
   prev: z.nullable(z.number()),
 });
-
 /** @internal */
 export type GetTeamMembersPagination$Outbound = {
   hasNext: boolean;
@@ -1102,19 +870,6 @@ export const GetTeamMembersPagination$outboundSchema: z.ZodType<
   prev: z.nullable(z.number()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersPagination$ {
-  /** @deprecated use `GetTeamMembersPagination$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersPagination$inboundSchema;
-  /** @deprecated use `GetTeamMembersPagination$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersPagination$outboundSchema;
-  /** @deprecated use `GetTeamMembersPagination$Outbound` instead. */
-  export type Outbound = GetTeamMembersPagination$Outbound;
-}
-
 export function getTeamMembersPaginationToJSON(
   getTeamMembersPagination: GetTeamMembersPagination,
 ): string {
@@ -1122,7 +877,6 @@ export function getTeamMembersPaginationToJSON(
     GetTeamMembersPagination$outboundSchema.parse(getTeamMembersPagination),
   );
 }
-
 export function getTeamMembersPaginationFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersPagination, SDKValidationError> {
@@ -1144,7 +898,6 @@ export const GetTeamMembersResponseBody$inboundSchema: z.ZodType<
     .optional(),
   pagination: z.lazy(() => GetTeamMembersPagination$inboundSchema),
 });
-
 /** @internal */
 export type GetTeamMembersResponseBody$Outbound = {
   members: Array<GetTeamMembersMembers$Outbound>;
@@ -1164,19 +917,6 @@ export const GetTeamMembersResponseBody$outboundSchema: z.ZodType<
   pagination: z.lazy(() => GetTeamMembersPagination$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetTeamMembersResponseBody$ {
-  /** @deprecated use `GetTeamMembersResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetTeamMembersResponseBody$inboundSchema;
-  /** @deprecated use `GetTeamMembersResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetTeamMembersResponseBody$outboundSchema;
-  /** @deprecated use `GetTeamMembersResponseBody$Outbound` instead. */
-  export type Outbound = GetTeamMembersResponseBody$Outbound;
-}
-
 export function getTeamMembersResponseBodyToJSON(
   getTeamMembersResponseBody: GetTeamMembersResponseBody,
 ): string {
@@ -1184,7 +924,6 @@ export function getTeamMembersResponseBodyToJSON(
     GetTeamMembersResponseBody$outboundSchema.parse(getTeamMembersResponseBody),
   );
 }
-
 export function getTeamMembersResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetTeamMembersResponseBody, SDKValidationError> {

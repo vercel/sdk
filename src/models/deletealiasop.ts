@@ -45,7 +45,6 @@ export const DeleteAliasRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteAliasRequest$Outbound = {
   aliasId: string;
@@ -64,19 +63,6 @@ export const DeleteAliasRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAliasRequest$ {
-  /** @deprecated use `DeleteAliasRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteAliasRequest$inboundSchema;
-  /** @deprecated use `DeleteAliasRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteAliasRequest$outboundSchema;
-  /** @deprecated use `DeleteAliasRequest$Outbound` instead. */
-  export type Outbound = DeleteAliasRequest$Outbound;
-}
-
 export function deleteAliasRequestToJSON(
   deleteAliasRequest: DeleteAliasRequest,
 ): string {
@@ -84,7 +70,6 @@ export function deleteAliasRequestToJSON(
     DeleteAliasRequest$outboundSchema.parse(deleteAliasRequest),
   );
 }
-
 export function deleteAliasRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteAliasRequest, SDKValidationError> {
@@ -99,22 +84,10 @@ export function deleteAliasRequestFromJSON(
 export const DeleteAliasStatus$inboundSchema: z.ZodNativeEnum<
   typeof DeleteAliasStatus
 > = z.nativeEnum(DeleteAliasStatus);
-
 /** @internal */
 export const DeleteAliasStatus$outboundSchema: z.ZodNativeEnum<
   typeof DeleteAliasStatus
 > = DeleteAliasStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAliasStatus$ {
-  /** @deprecated use `DeleteAliasStatus$inboundSchema` instead. */
-  export const inboundSchema = DeleteAliasStatus$inboundSchema;
-  /** @deprecated use `DeleteAliasStatus$outboundSchema` instead. */
-  export const outboundSchema = DeleteAliasStatus$outboundSchema;
-}
 
 /** @internal */
 export const DeleteAliasResponseBody$inboundSchema: z.ZodType<
@@ -124,7 +97,6 @@ export const DeleteAliasResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   status: DeleteAliasStatus$inboundSchema,
 });
-
 /** @internal */
 export type DeleteAliasResponseBody$Outbound = {
   status: string;
@@ -139,19 +111,6 @@ export const DeleteAliasResponseBody$outboundSchema: z.ZodType<
   status: DeleteAliasStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAliasResponseBody$ {
-  /** @deprecated use `DeleteAliasResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteAliasResponseBody$inboundSchema;
-  /** @deprecated use `DeleteAliasResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteAliasResponseBody$outboundSchema;
-  /** @deprecated use `DeleteAliasResponseBody$Outbound` instead. */
-  export type Outbound = DeleteAliasResponseBody$Outbound;
-}
-
 export function deleteAliasResponseBodyToJSON(
   deleteAliasResponseBody: DeleteAliasResponseBody,
 ): string {
@@ -159,7 +118,6 @@ export function deleteAliasResponseBodyToJSON(
     DeleteAliasResponseBody$outboundSchema.parse(deleteAliasResponseBody),
   );
 }
-
 export function deleteAliasResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteAliasResponseBody, SDKValidationError> {

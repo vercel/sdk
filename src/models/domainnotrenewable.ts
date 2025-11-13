@@ -48,22 +48,10 @@ export class DomainNotRenewable extends VercelError {
 export const DomainNotRenewableCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotRenewableCode
 > = z.nativeEnum(DomainNotRenewableCode);
-
 /** @internal */
 export const DomainNotRenewableCode$outboundSchema: z.ZodNativeEnum<
   typeof DomainNotRenewableCode
 > = DomainNotRenewableCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotRenewableCode$ {
-  /** @deprecated use `DomainNotRenewableCode$inboundSchema` instead. */
-  export const inboundSchema = DomainNotRenewableCode$inboundSchema;
-  /** @deprecated use `DomainNotRenewableCode$outboundSchema` instead. */
-  export const outboundSchema = DomainNotRenewableCode$outboundSchema;
-}
 
 /** @internal */
 export const DomainNotRenewable$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const DomainNotRenewable$outboundSchema: z.ZodType<
     code: DomainNotRenewableCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainNotRenewable$ {
-  /** @deprecated use `DomainNotRenewable$inboundSchema` instead. */
-  export const inboundSchema = DomainNotRenewable$inboundSchema;
-  /** @deprecated use `DomainNotRenewable$outboundSchema` instead. */
-  export const outboundSchema = DomainNotRenewable$outboundSchema;
-  /** @deprecated use `DomainNotRenewable$Outbound` instead. */
-  export type Outbound = DomainNotRenewable$Outbound;
-}

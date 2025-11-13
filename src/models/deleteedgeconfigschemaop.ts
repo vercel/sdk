@@ -29,7 +29,6 @@ export const DeleteEdgeConfigSchemaRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteEdgeConfigSchemaRequest$Outbound = {
   edgeConfigId: string;
@@ -48,19 +47,6 @@ export const DeleteEdgeConfigSchemaRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteEdgeConfigSchemaRequest$ {
-  /** @deprecated use `DeleteEdgeConfigSchemaRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteEdgeConfigSchemaRequest$inboundSchema;
-  /** @deprecated use `DeleteEdgeConfigSchemaRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteEdgeConfigSchemaRequest$outboundSchema;
-  /** @deprecated use `DeleteEdgeConfigSchemaRequest$Outbound` instead. */
-  export type Outbound = DeleteEdgeConfigSchemaRequest$Outbound;
-}
-
 export function deleteEdgeConfigSchemaRequestToJSON(
   deleteEdgeConfigSchemaRequest: DeleteEdgeConfigSchemaRequest,
 ): string {
@@ -70,7 +56,6 @@ export function deleteEdgeConfigSchemaRequestToJSON(
     ),
   );
 }
-
 export function deleteEdgeConfigSchemaRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteEdgeConfigSchemaRequest, SDKValidationError> {

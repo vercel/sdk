@@ -75,7 +75,6 @@ export const GetDomainPriceRequest$inboundSchema: z.ZodType<
   years: z.string().optional(),
   teamId: z.string().optional(),
 });
-
 /** @internal */
 export type GetDomainPriceRequest$Outbound = {
   domain: string;
@@ -94,19 +93,6 @@ export const GetDomainPriceRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainPriceRequest$ {
-  /** @deprecated use `GetDomainPriceRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDomainPriceRequest$inboundSchema;
-  /** @deprecated use `GetDomainPriceRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDomainPriceRequest$outboundSchema;
-  /** @deprecated use `GetDomainPriceRequest$Outbound` instead. */
-  export type Outbound = GetDomainPriceRequest$Outbound;
-}
-
 export function getDomainPriceRequestToJSON(
   getDomainPriceRequest: GetDomainPriceRequest,
 ): string {
@@ -114,7 +100,6 @@ export function getDomainPriceRequestToJSON(
     GetDomainPriceRequest$outboundSchema.parse(getDomainPriceRequest),
   );
 }
-
 export function getDomainPriceRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainPriceRequest, SDKValidationError> {
@@ -134,7 +119,6 @@ export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
       TldNotSupported$inboundSchema,
       HttpApiDecodeError$inboundSchema,
     ]);
-
 /** @internal */
 export type GetDomainPriceDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
@@ -155,21 +139,6 @@ export const GetDomainPriceDomainsRegistrarResponseBody$outboundSchema:
     HttpApiDecodeError$outboundSchema,
   ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainPriceDomainsRegistrarResponseBody$ {
-  /** @deprecated use `GetDomainPriceDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDomainPriceDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainPriceDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDomainPriceDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainPriceDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainPriceDomainsRegistrarResponseBody$Outbound;
-}
-
 export function getDomainPriceDomainsRegistrarResponseBodyToJSON(
   getDomainPriceDomainsRegistrarResponseBody:
     GetDomainPriceDomainsRegistrarResponseBody,
@@ -180,7 +149,6 @@ export function getDomainPriceDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function getDomainPriceDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -208,7 +176,6 @@ export const GetDomainPriceResponseBody$inboundSchema: z.ZodType<
   renewalPrice: z.nullable(z.number()),
   transferPrice: z.nullable(z.number()),
 });
-
 /** @internal */
 export type GetDomainPriceResponseBody$Outbound = {
   years: number;
@@ -229,19 +196,6 @@ export const GetDomainPriceResponseBody$outboundSchema: z.ZodType<
   transferPrice: z.nullable(z.number()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDomainPriceResponseBody$ {
-  /** @deprecated use `GetDomainPriceResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetDomainPriceResponseBody$inboundSchema;
-  /** @deprecated use `GetDomainPriceResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetDomainPriceResponseBody$outboundSchema;
-  /** @deprecated use `GetDomainPriceResponseBody$Outbound` instead. */
-  export type Outbound = GetDomainPriceResponseBody$Outbound;
-}
-
 export function getDomainPriceResponseBodyToJSON(
   getDomainPriceResponseBody: GetDomainPriceResponseBody,
 ): string {
@@ -249,7 +203,6 @@ export function getDomainPriceResponseBodyToJSON(
     GetDomainPriceResponseBody$outboundSchema.parse(getDomainPriceResponseBody),
   );
 }
-
 export function getDomainPriceResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDomainPriceResponseBody, SDKValidationError> {

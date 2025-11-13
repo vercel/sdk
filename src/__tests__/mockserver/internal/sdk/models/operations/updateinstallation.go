@@ -243,59 +243,59 @@ func (o *UpdateInstallationNotification) GetHref() *string {
 	return o.Href
 }
 
-type NotificationType string
+type UpdateInstallationNotificationUnionType string
 
 const (
-	NotificationTypeUpdateInstallationNotification NotificationType = "update_installation_notification"
-	NotificationTypeStr                            NotificationType = "str"
+	UpdateInstallationNotificationUnionTypeUpdateInstallationNotification UpdateInstallationNotificationUnionType = "update_installation_notification"
+	UpdateInstallationNotificationUnionTypeStr                            UpdateInstallationNotificationUnionType = "str"
 )
 
-// Notification - A notification to display to your customer. Send `null` to clear the current notification.
-type Notification struct {
+// UpdateInstallationNotificationUnion - A notification to display to your customer. Send `null` to clear the current notification.
+type UpdateInstallationNotificationUnion struct {
 	UpdateInstallationNotification *UpdateInstallationNotification `queryParam:"inline"`
 	Str                            *string                         `queryParam:"inline"`
 
-	Type NotificationType
+	Type UpdateInstallationNotificationUnionType
 }
 
-func CreateNotificationUpdateInstallationNotification(updateInstallationNotification UpdateInstallationNotification) Notification {
-	typ := NotificationTypeUpdateInstallationNotification
+func CreateUpdateInstallationNotificationUnionUpdateInstallationNotification(updateInstallationNotification UpdateInstallationNotification) UpdateInstallationNotificationUnion {
+	typ := UpdateInstallationNotificationUnionTypeUpdateInstallationNotification
 
-	return Notification{
+	return UpdateInstallationNotificationUnion{
 		UpdateInstallationNotification: &updateInstallationNotification,
 		Type:                           typ,
 	}
 }
 
-func CreateNotificationStr(str string) Notification {
-	typ := NotificationTypeStr
+func CreateUpdateInstallationNotificationUnionStr(str string) UpdateInstallationNotificationUnion {
+	typ := UpdateInstallationNotificationUnionTypeStr
 
-	return Notification{
+	return UpdateInstallationNotificationUnion{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func (u *Notification) UnmarshalJSON(data []byte) error {
+func (u *UpdateInstallationNotificationUnion) UnmarshalJSON(data []byte) error {
 
 	var updateInstallationNotification UpdateInstallationNotification = UpdateInstallationNotification{}
 	if err := utils.UnmarshalJSON(data, &updateInstallationNotification, "", true, nil); err == nil {
 		u.UpdateInstallationNotification = &updateInstallationNotification
-		u.Type = NotificationTypeUpdateInstallationNotification
+		u.Type = UpdateInstallationNotificationUnionTypeUpdateInstallationNotification
 		return nil
 	}
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = NotificationTypeStr
+		u.Type = UpdateInstallationNotificationUnionTypeStr
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Notification", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UpdateInstallationNotificationUnion", string(data))
 }
 
-func (u Notification) MarshalJSON() ([]byte, error) {
+func (u UpdateInstallationNotificationUnion) MarshalJSON() ([]byte, error) {
 	if u.UpdateInstallationNotification != nil {
 		return utils.MarshalJSON(u.UpdateInstallationNotification, "", true)
 	}
@@ -304,13 +304,13 @@ func (u Notification) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type Notification: all fields are null")
+	return nil, errors.New("could not marshal union type UpdateInstallationNotificationUnion: all fields are null")
 }
 
 type UpdateInstallationRequestBody struct {
 	BillingPlan *UpdateInstallationBillingPlan `json:"billingPlan,omitempty"`
 	// A notification to display to your customer. Send `null` to clear the current notification.
-	Notification *Notification `json:"notification,omitempty"`
+	Notification *UpdateInstallationNotificationUnion `json:"notification,omitempty"`
 }
 
 func (o *UpdateInstallationRequestBody) GetBillingPlan() *UpdateInstallationBillingPlan {
@@ -320,7 +320,7 @@ func (o *UpdateInstallationRequestBody) GetBillingPlan() *UpdateInstallationBill
 	return o.BillingPlan
 }
 
-func (o *UpdateInstallationRequestBody) GetNotification() *Notification {
+func (o *UpdateInstallationRequestBody) GetNotification() *UpdateInstallationNotificationUnion {
 	if o == nil {
 		return nil
 	}
@@ -329,7 +329,7 @@ func (o *UpdateInstallationRequestBody) GetNotification() *Notification {
 
 type UpdateInstallationRequest struct {
 	IntegrationConfigurationID string                         `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
-	RequestBody                *UpdateInstallationRequestBody `request:"mediaType=application/json"`
+	Body                       *UpdateInstallationRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateInstallationRequest) GetIntegrationConfigurationID() string {
@@ -339,11 +339,11 @@ func (o *UpdateInstallationRequest) GetIntegrationConfigurationID() string {
 	return o.IntegrationConfigurationID
 }
 
-func (o *UpdateInstallationRequest) GetRequestBody() *UpdateInstallationRequestBody {
+func (o *UpdateInstallationRequest) GetBody() *UpdateInstallationRequestBody {
 	if o == nil {
 		return nil
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateInstallationResponse struct {

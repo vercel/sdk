@@ -48,22 +48,10 @@ export class TooManyDomains extends VercelError {
 export const TooManyDomainsCode$inboundSchema: z.ZodNativeEnum<
   typeof TooManyDomainsCode
 > = z.nativeEnum(TooManyDomainsCode);
-
 /** @internal */
 export const TooManyDomainsCode$outboundSchema: z.ZodNativeEnum<
   typeof TooManyDomainsCode
 > = TooManyDomainsCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TooManyDomainsCode$ {
-  /** @deprecated use `TooManyDomainsCode$inboundSchema` instead. */
-  export const inboundSchema = TooManyDomainsCode$inboundSchema;
-  /** @deprecated use `TooManyDomainsCode$outboundSchema` instead. */
-  export const outboundSchema = TooManyDomainsCode$outboundSchema;
-}
 
 /** @internal */
 export const TooManyDomains$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const TooManyDomains$outboundSchema: z.ZodType<
     code: TooManyDomainsCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TooManyDomains$ {
-  /** @deprecated use `TooManyDomains$inboundSchema` instead. */
-  export const inboundSchema = TooManyDomains$inboundSchema;
-  /** @deprecated use `TooManyDomains$outboundSchema` instead. */
-  export const outboundSchema = TooManyDomains$outboundSchema;
-  /** @deprecated use `TooManyDomains$Outbound` instead. */
-  export type Outbound = TooManyDomains$Outbound;
-}

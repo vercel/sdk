@@ -48,22 +48,10 @@ export class TldNotSupported extends VercelError {
 export const TldNotSupportedCode$inboundSchema: z.ZodNativeEnum<
   typeof TldNotSupportedCode
 > = z.nativeEnum(TldNotSupportedCode);
-
 /** @internal */
 export const TldNotSupportedCode$outboundSchema: z.ZodNativeEnum<
   typeof TldNotSupportedCode
 > = TldNotSupportedCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TldNotSupportedCode$ {
-  /** @deprecated use `TldNotSupportedCode$inboundSchema` instead. */
-  export const inboundSchema = TldNotSupportedCode$inboundSchema;
-  /** @deprecated use `TldNotSupportedCode$outboundSchema` instead. */
-  export const outboundSchema = TldNotSupportedCode$outboundSchema;
-}
 
 /** @internal */
 export const TldNotSupported$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const TldNotSupported$outboundSchema: z.ZodType<
     code: TldNotSupportedCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TldNotSupported$ {
-  /** @deprecated use `TldNotSupported$inboundSchema` instead. */
-  export const inboundSchema = TldNotSupported$inboundSchema;
-  /** @deprecated use `TldNotSupported$outboundSchema` instead. */
-  export const outboundSchema = TldNotSupported$outboundSchema;
-  /** @deprecated use `TldNotSupported$Outbound` instead. */
-  export type Outbound = TldNotSupported$Outbound;
-}

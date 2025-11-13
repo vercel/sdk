@@ -51,7 +51,6 @@ export const ArtifactQueryRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   hashes: z.array(z.string()),
 });
-
 /** @internal */
 export type ArtifactQueryRequestBody$Outbound = {
   hashes: Array<string>;
@@ -66,19 +65,6 @@ export const ArtifactQueryRequestBody$outboundSchema: z.ZodType<
   hashes: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ArtifactQueryRequestBody$ {
-  /** @deprecated use `ArtifactQueryRequestBody$inboundSchema` instead. */
-  export const inboundSchema = ArtifactQueryRequestBody$inboundSchema;
-  /** @deprecated use `ArtifactQueryRequestBody$outboundSchema` instead. */
-  export const outboundSchema = ArtifactQueryRequestBody$outboundSchema;
-  /** @deprecated use `ArtifactQueryRequestBody$Outbound` instead. */
-  export type Outbound = ArtifactQueryRequestBody$Outbound;
-}
-
 export function artifactQueryRequestBodyToJSON(
   artifactQueryRequestBody: ArtifactQueryRequestBody,
 ): string {
@@ -86,7 +72,6 @@ export function artifactQueryRequestBodyToJSON(
     ArtifactQueryRequestBody$outboundSchema.parse(artifactQueryRequestBody),
   );
 }
-
 export function artifactQueryRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ArtifactQueryRequestBody, SDKValidationError> {
@@ -111,7 +96,6 @@ export const ArtifactQueryRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type ArtifactQueryRequest$Outbound = {
   teamId?: string | undefined;
@@ -134,19 +118,6 @@ export const ArtifactQueryRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ArtifactQueryRequest$ {
-  /** @deprecated use `ArtifactQueryRequest$inboundSchema` instead. */
-  export const inboundSchema = ArtifactQueryRequest$inboundSchema;
-  /** @deprecated use `ArtifactQueryRequest$outboundSchema` instead. */
-  export const outboundSchema = ArtifactQueryRequest$outboundSchema;
-  /** @deprecated use `ArtifactQueryRequest$Outbound` instead. */
-  export type Outbound = ArtifactQueryRequest$Outbound;
-}
-
 export function artifactQueryRequestToJSON(
   artifactQueryRequest: ArtifactQueryRequest,
 ): string {
@@ -154,7 +125,6 @@ export function artifactQueryRequestToJSON(
     ArtifactQueryRequest$outboundSchema.parse(artifactQueryRequest),
   );
 }
-
 export function artifactQueryRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<ArtifactQueryRequest, SDKValidationError> {
@@ -173,7 +143,6 @@ export const ResponseBodyError$inboundSchema: z.ZodType<
 > = z.object({
   message: z.string(),
 });
-
 /** @internal */
 export type ResponseBodyError$Outbound = {
   message: string;
@@ -188,19 +157,6 @@ export const ResponseBodyError$outboundSchema: z.ZodType<
   message: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyError$ {
-  /** @deprecated use `ResponseBodyError$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyError$inboundSchema;
-  /** @deprecated use `ResponseBodyError$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyError$outboundSchema;
-  /** @deprecated use `ResponseBodyError$Outbound` instead. */
-  export type Outbound = ResponseBodyError$Outbound;
-}
-
 export function responseBodyErrorToJSON(
   responseBodyError: ResponseBodyError,
 ): string {
@@ -208,7 +164,6 @@ export function responseBodyErrorToJSON(
     ResponseBodyError$outboundSchema.parse(responseBodyError),
   );
 }
-
 export function responseBodyErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyError, SDKValidationError> {
@@ -227,7 +182,6 @@ export const ResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   error: z.lazy(() => ResponseBodyError$inboundSchema),
 });
-
 /** @internal */
 export type ResponseBody2$Outbound = {
   error: ResponseBodyError$Outbound;
@@ -242,23 +196,9 @@ export const ResponseBody2$outboundSchema: z.ZodType<
   error: z.lazy(() => ResponseBodyError$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBody2$ {
-  /** @deprecated use `ResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody2$inboundSchema;
-  /** @deprecated use `ResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody2$outboundSchema;
-  /** @deprecated use `ResponseBody2$Outbound` instead. */
-  export type Outbound = ResponseBody2$Outbound;
-}
-
 export function responseBody2ToJSON(responseBody2: ResponseBody2): string {
   return JSON.stringify(ResponseBody2$outboundSchema.parse(responseBody2));
 }
-
 export function responseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody2, SDKValidationError> {
@@ -279,7 +219,6 @@ export const ResponseBody1$inboundSchema: z.ZodType<
   taskDurationMs: z.number(),
   tag: z.string().optional(),
 });
-
 /** @internal */
 export type ResponseBody1$Outbound = {
   size: number;
@@ -298,23 +237,9 @@ export const ResponseBody1$outboundSchema: z.ZodType<
   tag: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBody1$ {
-  /** @deprecated use `ResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody1$inboundSchema;
-  /** @deprecated use `ResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody1$outboundSchema;
-  /** @deprecated use `ResponseBody1$Outbound` instead. */
-  export type Outbound = ResponseBody1$Outbound;
-}
-
 export function responseBody1ToJSON(responseBody1: ResponseBody1): string {
   return JSON.stringify(ResponseBody1$outboundSchema.parse(responseBody1));
 }
-
 export function responseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody1, SDKValidationError> {
@@ -334,7 +259,6 @@ export const ResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => ResponseBody1$inboundSchema),
   z.lazy(() => ResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type ResponseBody$Outbound =
   | ResponseBody1$Outbound
@@ -350,23 +274,9 @@ export const ResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => ResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBody$ {
-  /** @deprecated use `ResponseBody$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody$inboundSchema;
-  /** @deprecated use `ResponseBody$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody$outboundSchema;
-  /** @deprecated use `ResponseBody$Outbound` instead. */
-  export type Outbound = ResponseBody$Outbound;
-}
-
 export function responseBodyToJSON(responseBody: ResponseBody): string {
   return JSON.stringify(ResponseBody$outboundSchema.parse(responseBody));
 }
-
 export function responseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody, SDKValidationError> {

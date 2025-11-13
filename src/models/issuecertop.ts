@@ -43,7 +43,6 @@ export const IssueCertRequestBody$inboundSchema: z.ZodType<
 > = z.object({
   cns: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type IssueCertRequestBody$Outbound = {
   cns?: Array<string> | undefined;
@@ -58,19 +57,6 @@ export const IssueCertRequestBody$outboundSchema: z.ZodType<
   cns: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssueCertRequestBody$ {
-  /** @deprecated use `IssueCertRequestBody$inboundSchema` instead. */
-  export const inboundSchema = IssueCertRequestBody$inboundSchema;
-  /** @deprecated use `IssueCertRequestBody$outboundSchema` instead. */
-  export const outboundSchema = IssueCertRequestBody$outboundSchema;
-  /** @deprecated use `IssueCertRequestBody$Outbound` instead. */
-  export type Outbound = IssueCertRequestBody$Outbound;
-}
-
 export function issueCertRequestBodyToJSON(
   issueCertRequestBody: IssueCertRequestBody,
 ): string {
@@ -78,7 +64,6 @@ export function issueCertRequestBodyToJSON(
     IssueCertRequestBody$outboundSchema.parse(issueCertRequestBody),
   );
 }
-
 export function issueCertRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<IssueCertRequestBody, SDKValidationError> {
@@ -103,7 +88,6 @@ export const IssueCertRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type IssueCertRequest$Outbound = {
   teamId?: string | undefined;
@@ -126,19 +110,6 @@ export const IssueCertRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssueCertRequest$ {
-  /** @deprecated use `IssueCertRequest$inboundSchema` instead. */
-  export const inboundSchema = IssueCertRequest$inboundSchema;
-  /** @deprecated use `IssueCertRequest$outboundSchema` instead. */
-  export const outboundSchema = IssueCertRequest$outboundSchema;
-  /** @deprecated use `IssueCertRequest$Outbound` instead. */
-  export type Outbound = IssueCertRequest$Outbound;
-}
-
 export function issueCertRequestToJSON(
   issueCertRequest: IssueCertRequest,
 ): string {
@@ -146,7 +117,6 @@ export function issueCertRequestToJSON(
     IssueCertRequest$outboundSchema.parse(issueCertRequest),
   );
 }
-
 export function issueCertRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<IssueCertRequest, SDKValidationError> {
@@ -169,7 +139,6 @@ export const IssueCertResponseBody$inboundSchema: z.ZodType<
   autoRenew: z.boolean(),
   cns: z.array(z.string()),
 });
-
 /** @internal */
 export type IssueCertResponseBody$Outbound = {
   id: string;
@@ -192,19 +161,6 @@ export const IssueCertResponseBody$outboundSchema: z.ZodType<
   cns: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IssueCertResponseBody$ {
-  /** @deprecated use `IssueCertResponseBody$inboundSchema` instead. */
-  export const inboundSchema = IssueCertResponseBody$inboundSchema;
-  /** @deprecated use `IssueCertResponseBody$outboundSchema` instead. */
-  export const outboundSchema = IssueCertResponseBody$outboundSchema;
-  /** @deprecated use `IssueCertResponseBody$Outbound` instead. */
-  export type Outbound = IssueCertResponseBody$Outbound;
-}
-
 export function issueCertResponseBodyToJSON(
   issueCertResponseBody: IssueCertResponseBody,
 ): string {
@@ -212,7 +168,6 @@ export function issueCertResponseBodyToJSON(
     IssueCertResponseBody$outboundSchema.parse(issueCertResponseBody),
   );
 }
-
 export function issueCertResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<IssueCertResponseBody, SDKValidationError> {

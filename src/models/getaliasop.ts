@@ -313,7 +313,6 @@ export const GetAliasRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetAliasRequest$Outbound = {
   from?: number | undefined;
@@ -340,25 +339,11 @@ export const GetAliasRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasRequest$ {
-  /** @deprecated use `GetAliasRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAliasRequest$inboundSchema;
-  /** @deprecated use `GetAliasRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAliasRequest$outboundSchema;
-  /** @deprecated use `GetAliasRequest$Outbound` instead. */
-  export type Outbound = GetAliasRequest$Outbound;
-}
-
 export function getAliasRequestToJSON(
   getAliasRequest: GetAliasRequest,
 ): string {
   return JSON.stringify(GetAliasRequest$outboundSchema.parse(getAliasRequest));
 }
-
 export function getAliasRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasRequest, SDKValidationError> {
@@ -379,7 +364,6 @@ export const GetAliasCreator$inboundSchema: z.ZodType<
   email: z.string(),
   username: z.string(),
 });
-
 /** @internal */
 export type GetAliasCreator$Outbound = {
   uid: string;
@@ -398,25 +382,11 @@ export const GetAliasCreator$outboundSchema: z.ZodType<
   username: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasCreator$ {
-  /** @deprecated use `GetAliasCreator$inboundSchema` instead. */
-  export const inboundSchema = GetAliasCreator$inboundSchema;
-  /** @deprecated use `GetAliasCreator$outboundSchema` instead. */
-  export const outboundSchema = GetAliasCreator$outboundSchema;
-  /** @deprecated use `GetAliasCreator$Outbound` instead. */
-  export type Outbound = GetAliasCreator$Outbound;
-}
-
 export function getAliasCreatorToJSON(
   getAliasCreator: GetAliasCreator,
 ): string {
   return JSON.stringify(GetAliasCreator$outboundSchema.parse(getAliasCreator));
 }
-
 export function getAliasCreatorFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasCreator, SDKValidationError> {
@@ -437,7 +407,6 @@ export const GetAliasDeployment$inboundSchema: z.ZodType<
   url: z.string(),
   meta: z.string().optional(),
 });
-
 /** @internal */
 export type GetAliasDeployment$Outbound = {
   id: string;
@@ -456,19 +425,6 @@ export const GetAliasDeployment$outboundSchema: z.ZodType<
   meta: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasDeployment$ {
-  /** @deprecated use `GetAliasDeployment$inboundSchema` instead. */
-  export const inboundSchema = GetAliasDeployment$inboundSchema;
-  /** @deprecated use `GetAliasDeployment$outboundSchema` instead. */
-  export const outboundSchema = GetAliasDeployment$outboundSchema;
-  /** @deprecated use `GetAliasDeployment$Outbound` instead. */
-  export type Outbound = GetAliasDeployment$Outbound;
-}
-
 export function getAliasDeploymentToJSON(
   getAliasDeployment: GetAliasDeployment,
 ): string {
@@ -476,7 +432,6 @@ export function getAliasDeploymentToJSON(
     GetAliasDeployment$outboundSchema.parse(getAliasDeployment),
   );
 }
-
 export function getAliasDeploymentFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasDeployment, SDKValidationError> {
@@ -491,24 +446,10 @@ export function getAliasDeploymentFromJSON(
 export const GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema:
   z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponse200Scope> = z
     .nativeEnum(GetAliasProtectionBypassAliasesResponse200Scope);
-
 /** @internal */
 export const GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema:
   z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponse200Scope> =
     GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasProtectionBypassAliasesResponse200Scope$ {
-  /** @deprecated use `GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema;
-  /** @deprecated use `GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema;
-}
 
 /** @internal */
 export const ProtectionBypass4$inboundSchema: z.ZodType<
@@ -521,7 +462,6 @@ export const ProtectionBypass4$inboundSchema: z.ZodType<
   lastUpdatedBy: z.string(),
   scope: GetAliasProtectionBypassAliasesResponse200Scope$inboundSchema,
 });
-
 /** @internal */
 export type ProtectionBypass4$Outbound = {
   createdAt: number;
@@ -542,19 +482,6 @@ export const ProtectionBypass4$outboundSchema: z.ZodType<
   scope: GetAliasProtectionBypassAliasesResponse200Scope$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProtectionBypass4$ {
-  /** @deprecated use `ProtectionBypass4$inboundSchema` instead. */
-  export const inboundSchema = ProtectionBypass4$inboundSchema;
-  /** @deprecated use `ProtectionBypass4$outboundSchema` instead. */
-  export const outboundSchema = ProtectionBypass4$outboundSchema;
-  /** @deprecated use `ProtectionBypass4$Outbound` instead. */
-  export type Outbound = ProtectionBypass4$Outbound;
-}
-
 export function protectionBypass4ToJSON(
   protectionBypass4: ProtectionBypass4,
 ): string {
@@ -562,7 +489,6 @@ export function protectionBypass4ToJSON(
     ProtectionBypass4$outboundSchema.parse(protectionBypass4),
   );
 }
-
 export function protectionBypass4FromJSON(
   jsonString: string,
 ): SafeParseResult<ProtectionBypass4, SDKValidationError> {
@@ -577,24 +503,10 @@ export function protectionBypass4FromJSON(
 export const GetAliasProtectionBypassAliasesResponseScope$inboundSchema:
   z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponseScope> = z
     .nativeEnum(GetAliasProtectionBypassAliasesResponseScope);
-
 /** @internal */
 export const GetAliasProtectionBypassAliasesResponseScope$outboundSchema:
   z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesResponseScope> =
     GetAliasProtectionBypassAliasesResponseScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasProtectionBypassAliasesResponseScope$ {
-  /** @deprecated use `GetAliasProtectionBypassAliasesResponseScope$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAliasProtectionBypassAliasesResponseScope$inboundSchema;
-  /** @deprecated use `GetAliasProtectionBypassAliasesResponseScope$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAliasProtectionBypassAliasesResponseScope$outboundSchema;
-}
 
 /** @internal */
 export const ProtectionBypass3$inboundSchema: z.ZodType<
@@ -606,7 +518,6 @@ export const ProtectionBypass3$inboundSchema: z.ZodType<
   createdBy: z.string(),
   scope: GetAliasProtectionBypassAliasesResponseScope$inboundSchema,
 });
-
 /** @internal */
 export type ProtectionBypass3$Outbound = {
   createdAt: number;
@@ -625,19 +536,6 @@ export const ProtectionBypass3$outboundSchema: z.ZodType<
   scope: GetAliasProtectionBypassAliasesResponseScope$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProtectionBypass3$ {
-  /** @deprecated use `ProtectionBypass3$inboundSchema` instead. */
-  export const inboundSchema = ProtectionBypass3$inboundSchema;
-  /** @deprecated use `ProtectionBypass3$outboundSchema` instead. */
-  export const outboundSchema = ProtectionBypass3$outboundSchema;
-  /** @deprecated use `ProtectionBypass3$Outbound` instead. */
-  export type Outbound = ProtectionBypass3$Outbound;
-}
-
 export function protectionBypass3ToJSON(
   protectionBypass3: ProtectionBypass3,
 ): string {
@@ -645,7 +543,6 @@ export function protectionBypass3ToJSON(
     ProtectionBypass3$outboundSchema.parse(protectionBypass3),
   );
 }
-
 export function protectionBypass3FromJSON(
   jsonString: string,
 ): SafeParseResult<ProtectionBypass3, SDKValidationError> {
@@ -660,46 +557,20 @@ export function protectionBypass3FromJSON(
 export const ProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
   typeof ProtectionBypassAccess
 > = z.nativeEnum(ProtectionBypassAccess);
-
 /** @internal */
 export const ProtectionBypassAccess$outboundSchema: z.ZodNativeEnum<
   typeof ProtectionBypassAccess
 > = ProtectionBypassAccess$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProtectionBypassAccess$ {
-  /** @deprecated use `ProtectionBypassAccess$inboundSchema` instead. */
-  export const inboundSchema = ProtectionBypassAccess$inboundSchema;
-  /** @deprecated use `ProtectionBypassAccess$outboundSchema` instead. */
-  export const outboundSchema = ProtectionBypassAccess$outboundSchema;
-}
 
 /** @internal */
 export const GetAliasProtectionBypassAliasesScope$inboundSchema:
   z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesScope> = z.nativeEnum(
     GetAliasProtectionBypassAliasesScope,
   );
-
 /** @internal */
 export const GetAliasProtectionBypassAliasesScope$outboundSchema:
   z.ZodNativeEnum<typeof GetAliasProtectionBypassAliasesScope> =
     GetAliasProtectionBypassAliasesScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasProtectionBypassAliasesScope$ {
-  /** @deprecated use `GetAliasProtectionBypassAliasesScope$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAliasProtectionBypassAliasesScope$inboundSchema;
-  /** @deprecated use `GetAliasProtectionBypassAliasesScope$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAliasProtectionBypassAliasesScope$outboundSchema;
-}
 
 /** @internal */
 export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
@@ -713,7 +584,6 @@ export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
   access: ProtectionBypassAccess$inboundSchema,
   scope: GetAliasProtectionBypassAliasesScope$inboundSchema,
 });
-
 /** @internal */
 export type GetAliasProtectionBypass2$Outbound = {
   createdAt: number;
@@ -736,19 +606,6 @@ export const GetAliasProtectionBypass2$outboundSchema: z.ZodType<
   scope: GetAliasProtectionBypassAliasesScope$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasProtectionBypass2$ {
-  /** @deprecated use `GetAliasProtectionBypass2$inboundSchema` instead. */
-  export const inboundSchema = GetAliasProtectionBypass2$inboundSchema;
-  /** @deprecated use `GetAliasProtectionBypass2$outboundSchema` instead. */
-  export const outboundSchema = GetAliasProtectionBypass2$outboundSchema;
-  /** @deprecated use `GetAliasProtectionBypass2$Outbound` instead. */
-  export type Outbound = GetAliasProtectionBypass2$Outbound;
-}
-
 export function getAliasProtectionBypass2ToJSON(
   getAliasProtectionBypass2: GetAliasProtectionBypass2,
 ): string {
@@ -756,7 +613,6 @@ export function getAliasProtectionBypass2ToJSON(
     GetAliasProtectionBypass2$outboundSchema.parse(getAliasProtectionBypass2),
   );
 }
-
 export function getAliasProtectionBypass2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasProtectionBypass2, SDKValidationError> {
@@ -771,22 +627,10 @@ export function getAliasProtectionBypass2FromJSON(
 export const GetAliasProtectionBypassScope$inboundSchema: z.ZodNativeEnum<
   typeof GetAliasProtectionBypassScope
 > = z.nativeEnum(GetAliasProtectionBypassScope);
-
 /** @internal */
 export const GetAliasProtectionBypassScope$outboundSchema: z.ZodNativeEnum<
   typeof GetAliasProtectionBypassScope
 > = GetAliasProtectionBypassScope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasProtectionBypassScope$ {
-  /** @deprecated use `GetAliasProtectionBypassScope$inboundSchema` instead. */
-  export const inboundSchema = GetAliasProtectionBypassScope$inboundSchema;
-  /** @deprecated use `GetAliasProtectionBypassScope$outboundSchema` instead. */
-  export const outboundSchema = GetAliasProtectionBypassScope$outboundSchema;
-}
 
 /** @internal */
 export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
@@ -799,7 +643,6 @@ export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
   scope: GetAliasProtectionBypassScope$inboundSchema,
   expires: z.number().optional(),
 });
-
 /** @internal */
 export type GetAliasProtectionBypass1$Outbound = {
   createdAt: number;
@@ -820,19 +663,6 @@ export const GetAliasProtectionBypass1$outboundSchema: z.ZodType<
   expires: z.number().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasProtectionBypass1$ {
-  /** @deprecated use `GetAliasProtectionBypass1$inboundSchema` instead. */
-  export const inboundSchema = GetAliasProtectionBypass1$inboundSchema;
-  /** @deprecated use `GetAliasProtectionBypass1$outboundSchema` instead. */
-  export const outboundSchema = GetAliasProtectionBypass1$outboundSchema;
-  /** @deprecated use `GetAliasProtectionBypass1$Outbound` instead. */
-  export type Outbound = GetAliasProtectionBypass1$Outbound;
-}
-
 export function getAliasProtectionBypass1ToJSON(
   getAliasProtectionBypass1: GetAliasProtectionBypass1,
 ): string {
@@ -840,7 +670,6 @@ export function getAliasProtectionBypass1ToJSON(
     GetAliasProtectionBypass1$outboundSchema.parse(getAliasProtectionBypass1),
   );
 }
-
 export function getAliasProtectionBypass1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasProtectionBypass1, SDKValidationError> {
@@ -862,7 +691,6 @@ export const GetAliasProtectionBypass$inboundSchema: z.ZodType<
   z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
   z.lazy(() => ProtectionBypass3$inboundSchema),
 ]);
-
 /** @internal */
 export type GetAliasProtectionBypass$Outbound =
   | GetAliasProtectionBypass2$Outbound
@@ -882,19 +710,6 @@ export const GetAliasProtectionBypass$outboundSchema: z.ZodType<
   z.lazy(() => ProtectionBypass3$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasProtectionBypass$ {
-  /** @deprecated use `GetAliasProtectionBypass$inboundSchema` instead. */
-  export const inboundSchema = GetAliasProtectionBypass$inboundSchema;
-  /** @deprecated use `GetAliasProtectionBypass$outboundSchema` instead. */
-  export const outboundSchema = GetAliasProtectionBypass$outboundSchema;
-  /** @deprecated use `GetAliasProtectionBypass$Outbound` instead. */
-  export type Outbound = GetAliasProtectionBypass$Outbound;
-}
-
 export function getAliasProtectionBypassToJSON(
   getAliasProtectionBypass: GetAliasProtectionBypass,
 ): string {
@@ -902,7 +717,6 @@ export function getAliasProtectionBypassToJSON(
     GetAliasProtectionBypass$outboundSchema.parse(getAliasProtectionBypass),
   );
 }
-
 export function getAliasProtectionBypassFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasProtectionBypass, SDKValidationError> {
@@ -921,7 +735,6 @@ export const DefaultApp$inboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string(),
 });
-
 /** @internal */
 export type DefaultApp$Outbound = {
   projectId: string;
@@ -936,23 +749,9 @@ export const DefaultApp$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultApp$ {
-  /** @deprecated use `DefaultApp$inboundSchema` instead. */
-  export const inboundSchema = DefaultApp$inboundSchema;
-  /** @deprecated use `DefaultApp$outboundSchema` instead. */
-  export const outboundSchema = DefaultApp$outboundSchema;
-  /** @deprecated use `DefaultApp$Outbound` instead. */
-  export type Outbound = DefaultApp$Outbound;
-}
-
 export function defaultAppToJSON(defaultApp: DefaultApp): string {
   return JSON.stringify(DefaultApp$outboundSchema.parse(defaultApp));
 }
-
 export function defaultAppFromJSON(
   jsonString: string,
 ): SafeParseResult<DefaultApp, SDKValidationError> {
@@ -976,7 +775,6 @@ export const Applications3$inboundSchema: z.ZodType<
   branchAlias: z.string().optional(),
   projectId: z.string(),
 });
-
 /** @internal */
 export type Applications3$Outbound = {
   deploymentId?: string | undefined;
@@ -1001,23 +799,9 @@ export const Applications3$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Applications3$ {
-  /** @deprecated use `Applications3$inboundSchema` instead. */
-  export const inboundSchema = Applications3$inboundSchema;
-  /** @deprecated use `Applications3$outboundSchema` instead. */
-  export const outboundSchema = Applications3$outboundSchema;
-  /** @deprecated use `Applications3$Outbound` instead. */
-  export type Outbound = Applications3$Outbound;
-}
-
 export function applications3ToJSON(applications3: Applications3): string {
   return JSON.stringify(Applications3$outboundSchema.parse(applications3));
 }
-
 export function applications3FromJSON(
   jsonString: string,
 ): SafeParseResult<Applications3, SDKValidationError> {
@@ -1038,7 +822,6 @@ export const Applications2$inboundSchema: z.ZodType<
   branchAlias: z.string(),
   projectId: z.string(),
 });
-
 /** @internal */
 export type Applications2$Outbound = {
   fallbackHost: string;
@@ -1057,23 +840,9 @@ export const Applications2$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Applications2$ {
-  /** @deprecated use `Applications2$inboundSchema` instead. */
-  export const inboundSchema = Applications2$inboundSchema;
-  /** @deprecated use `Applications2$outboundSchema` instead. */
-  export const outboundSchema = Applications2$outboundSchema;
-  /** @deprecated use `Applications2$Outbound` instead. */
-  export type Outbound = Applications2$Outbound;
-}
-
 export function applications2ToJSON(applications2: Applications2): string {
   return JSON.stringify(Applications2$outboundSchema.parse(applications2));
 }
-
 export function applications2FromJSON(
   jsonString: string,
 ): SafeParseResult<Applications2, SDKValidationError> {
@@ -1093,7 +862,6 @@ export const Applications1$inboundSchema: z.ZodType<
   fallbackHost: z.string(),
   projectId: z.string(),
 });
-
 /** @internal */
 export type Applications1$Outbound = {
   fallbackHost: string;
@@ -1110,23 +878,9 @@ export const Applications1$outboundSchema: z.ZodType<
   projectId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Applications1$ {
-  /** @deprecated use `Applications1$inboundSchema` instead. */
-  export const inboundSchema = Applications1$inboundSchema;
-  /** @deprecated use `Applications1$outboundSchema` instead. */
-  export const outboundSchema = Applications1$outboundSchema;
-  /** @deprecated use `Applications1$Outbound` instead. */
-  export type Outbound = Applications1$Outbound;
-}
-
 export function applications1ToJSON(applications1: Applications1): string {
   return JSON.stringify(Applications1$outboundSchema.parse(applications1));
 }
-
 export function applications1FromJSON(
   jsonString: string,
 ): SafeParseResult<Applications1, SDKValidationError> {
@@ -1147,7 +901,6 @@ export const Applications$inboundSchema: z.ZodType<
   z.array(z.lazy(() => Applications2$inboundSchema)),
   z.array(z.lazy(() => Applications3$inboundSchema)),
 ]);
-
 /** @internal */
 export type Applications$Outbound =
   | Array<Applications1$Outbound>
@@ -1165,23 +918,9 @@ export const Applications$outboundSchema: z.ZodType<
   z.array(z.lazy(() => Applications3$outboundSchema)),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Applications$ {
-  /** @deprecated use `Applications$inboundSchema` instead. */
-  export const inboundSchema = Applications$inboundSchema;
-  /** @deprecated use `Applications$outboundSchema` instead. */
-  export const outboundSchema = Applications$outboundSchema;
-  /** @deprecated use `Applications$Outbound` instead. */
-  export type Outbound = Applications$Outbound;
-}
-
 export function applicationsToJSON(applications: Applications): string {
   return JSON.stringify(Applications$outboundSchema.parse(applications));
 }
-
 export function applicationsFromJSON(
   jsonString: string,
 ): SafeParseResult<Applications, SDKValidationError> {
@@ -1205,7 +944,6 @@ export const GetAliasMicrofrontends$inboundSchema: z.ZodType<
     z.array(z.lazy(() => Applications3$inboundSchema)),
   ]),
 });
-
 /** @internal */
 export type GetAliasMicrofrontends$Outbound = {
   defaultApp: DefaultApp$Outbound;
@@ -1229,19 +967,6 @@ export const GetAliasMicrofrontends$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasMicrofrontends$ {
-  /** @deprecated use `GetAliasMicrofrontends$inboundSchema` instead. */
-  export const inboundSchema = GetAliasMicrofrontends$inboundSchema;
-  /** @deprecated use `GetAliasMicrofrontends$outboundSchema` instead. */
-  export const outboundSchema = GetAliasMicrofrontends$outboundSchema;
-  /** @deprecated use `GetAliasMicrofrontends$Outbound` instead. */
-  export type Outbound = GetAliasMicrofrontends$Outbound;
-}
-
 export function getAliasMicrofrontendsToJSON(
   getAliasMicrofrontends: GetAliasMicrofrontends,
 ): string {
@@ -1249,7 +974,6 @@ export function getAliasMicrofrontendsToJSON(
     GetAliasMicrofrontends$outboundSchema.parse(getAliasMicrofrontends),
   );
 }
-
 export function getAliasMicrofrontendsFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasMicrofrontends, SDKValidationError> {
@@ -1288,7 +1012,6 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
   ).optional(),
   microfrontends: z.lazy(() => GetAliasMicrofrontends$inboundSchema).optional(),
 });
-
 /** @internal */
 export type GetAliasResponseBody$Outbound = {
   alias: string;
@@ -1343,19 +1066,6 @@ export const GetAliasResponseBody$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAliasResponseBody$ {
-  /** @deprecated use `GetAliasResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetAliasResponseBody$inboundSchema;
-  /** @deprecated use `GetAliasResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetAliasResponseBody$outboundSchema;
-  /** @deprecated use `GetAliasResponseBody$Outbound` instead. */
-  export type Outbound = GetAliasResponseBody$Outbound;
-}
-
 export function getAliasResponseBodyToJSON(
   getAliasResponseBody: GetAliasResponseBody,
 ): string {
@@ -1363,7 +1073,6 @@ export function getAliasResponseBodyToJSON(
     GetAliasResponseBody$outboundSchema.parse(getAliasResponseBody),
   );
 }
-
 export function getAliasResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAliasResponseBody, SDKValidationError> {

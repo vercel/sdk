@@ -48,22 +48,10 @@ export class DomainAlreadyOwned extends VercelError {
 export const DomainAlreadyOwnedCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainAlreadyOwnedCode
 > = z.nativeEnum(DomainAlreadyOwnedCode);
-
 /** @internal */
 export const DomainAlreadyOwnedCode$outboundSchema: z.ZodNativeEnum<
   typeof DomainAlreadyOwnedCode
 > = DomainAlreadyOwnedCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainAlreadyOwnedCode$ {
-  /** @deprecated use `DomainAlreadyOwnedCode$inboundSchema` instead. */
-  export const inboundSchema = DomainAlreadyOwnedCode$inboundSchema;
-  /** @deprecated use `DomainAlreadyOwnedCode$outboundSchema` instead. */
-  export const outboundSchema = DomainAlreadyOwnedCode$outboundSchema;
-}
 
 /** @internal */
 export const DomainAlreadyOwned$inboundSchema: z.ZodType<
@@ -105,16 +93,3 @@ export const DomainAlreadyOwned$outboundSchema: z.ZodType<
     code: DomainAlreadyOwnedCode$outboundSchema,
     message: z.string(),
   }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomainAlreadyOwned$ {
-  /** @deprecated use `DomainAlreadyOwned$inboundSchema` instead. */
-  export const inboundSchema = DomainAlreadyOwned$inboundSchema;
-  /** @deprecated use `DomainAlreadyOwned$outboundSchema` instead. */
-  export const outboundSchema = DomainAlreadyOwned$outboundSchema;
-  /** @deprecated use `DomainAlreadyOwned$Outbound` instead. */
-  export type Outbound = DomainAlreadyOwned$Outbound;
-}

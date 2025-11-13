@@ -130,8 +130,8 @@ type BuyDomainRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string              `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody BuyDomainRequestBody `request:"mediaType=application/json"`
+	Slug *string              `queryParam:"style=form,explode=true,name=slug"`
+	Body BuyDomainRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *BuyDomainRequest) GetTeamID() *string {
@@ -148,11 +148,11 @@ func (o *BuyDomainRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *BuyDomainRequest) GetRequestBody() BuyDomainRequestBody {
+func (o *BuyDomainRequest) GetBody() BuyDomainRequestBody {
 	if o == nil {
 		return BuyDomainRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type BuyDomainDomain2 struct {

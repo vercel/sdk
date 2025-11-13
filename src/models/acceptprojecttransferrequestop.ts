@@ -98,7 +98,6 @@ export const PaidFeatures$inboundSchema: z.ZodType<
   passwordProtection: z.nullable(z.boolean()).optional(),
   previewDeploymentSuffix: z.nullable(z.boolean()).optional(),
 });
-
 /** @internal */
 export type PaidFeatures$Outbound = {
   concurrentBuilds?: number | null | undefined;
@@ -117,23 +116,9 @@ export const PaidFeatures$outboundSchema: z.ZodType<
   previewDeploymentSuffix: z.nullable(z.boolean()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PaidFeatures$ {
-  /** @deprecated use `PaidFeatures$inboundSchema` instead. */
-  export const inboundSchema = PaidFeatures$inboundSchema;
-  /** @deprecated use `PaidFeatures$outboundSchema` instead. */
-  export const outboundSchema = PaidFeatures$outboundSchema;
-  /** @deprecated use `PaidFeatures$Outbound` instead. */
-  export type Outbound = PaidFeatures$Outbound;
-}
-
 export function paidFeaturesToJSON(paidFeatures: PaidFeatures): string {
   return JSON.stringify(PaidFeatures$outboundSchema.parse(paidFeatures));
 }
-
 export function paidFeaturesFromJSON(
   jsonString: string,
 ): SafeParseResult<PaidFeatures, SDKValidationError> {
@@ -159,7 +144,6 @@ export const AcceptedPolicies$inboundSchema: z.ZodType<
   "additionalProperties",
   true,
 );
-
 /** @internal */
 export type AcceptedPolicies$Outbound = {
   eula: string;
@@ -186,19 +170,6 @@ export const AcceptedPolicies$outboundSchema: z.ZodType<
   };
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptedPolicies$ {
-  /** @deprecated use `AcceptedPolicies$inboundSchema` instead. */
-  export const inboundSchema = AcceptedPolicies$inboundSchema;
-  /** @deprecated use `AcceptedPolicies$outboundSchema` instead. */
-  export const outboundSchema = AcceptedPolicies$outboundSchema;
-  /** @deprecated use `AcceptedPolicies$Outbound` instead. */
-  export type Outbound = AcceptedPolicies$Outbound;
-}
-
 export function acceptedPoliciesToJSON(
   acceptedPolicies: AcceptedPolicies,
 ): string {
@@ -206,7 +177,6 @@ export function acceptedPoliciesToJSON(
     AcceptedPolicies$outboundSchema.parse(acceptedPolicies),
   );
 }
-
 export function acceptedPoliciesFromJSON(
   jsonString: string,
 ): SafeParseResult<AcceptedPolicies, SDKValidationError> {
@@ -228,7 +198,6 @@ export const AcceptProjectTransferRequestRequestBody$inboundSchema: z.ZodType<
   acceptedPolicies: z.record(z.lazy(() => AcceptedPolicies$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type AcceptProjectTransferRequestRequestBody$Outbound = {
   newProjectName?: string | undefined;
@@ -248,21 +217,6 @@ export const AcceptProjectTransferRequestRequestBody$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestRequestBody$ {
-  /** @deprecated use `AcceptProjectTransferRequestRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestRequestBody$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestRequestBody$outboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestRequestBody$Outbound` instead. */
-  export type Outbound = AcceptProjectTransferRequestRequestBody$Outbound;
-}
-
 export function acceptProjectTransferRequestRequestBodyToJSON(
   acceptProjectTransferRequestRequestBody:
     AcceptProjectTransferRequestRequestBody,
@@ -273,7 +227,6 @@ export function acceptProjectTransferRequestRequestBodyToJSON(
     ),
   );
 }
-
 export function acceptProjectTransferRequestRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -307,7 +260,6 @@ export const AcceptProjectTransferRequestRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type AcceptProjectTransferRequestRequest$Outbound = {
   code: string;
@@ -334,21 +286,6 @@ export const AcceptProjectTransferRequestRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestRequest$ {
-  /** @deprecated use `AcceptProjectTransferRequestRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestRequest$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestRequest$outboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestRequest$Outbound` instead. */
-  export type Outbound = AcceptProjectTransferRequestRequest$Outbound;
-}
-
 export function acceptProjectTransferRequestRequestToJSON(
   acceptProjectTransferRequestRequest: AcceptProjectTransferRequestRequest,
 ): string {
@@ -358,7 +295,6 @@ export function acceptProjectTransferRequestRequestToJSON(
     ),
   );
 }
-
 export function acceptProjectTransferRequestRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<AcceptProjectTransferRequestRequest, SDKValidationError> {
@@ -376,7 +312,6 @@ export const AcceptProjectTransferRequestResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type AcceptProjectTransferRequestResponseBody2$Outbound = {};
 
@@ -388,21 +323,6 @@ export const AcceptProjectTransferRequestResponseBody2$outboundSchema:
     AcceptProjectTransferRequestResponseBody2
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestResponseBody2$ {
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody2$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestResponseBody2$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestResponseBody2$outboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody2$Outbound` instead. */
-  export type Outbound = AcceptProjectTransferRequestResponseBody2$Outbound;
-}
-
 export function acceptProjectTransferRequestResponseBody2ToJSON(
   acceptProjectTransferRequestResponseBody2:
     AcceptProjectTransferRequestResponseBody2,
@@ -413,7 +333,6 @@ export function acceptProjectTransferRequestResponseBody2ToJSON(
     ),
   );
 }
-
 export function acceptProjectTransferRequestResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -434,24 +353,10 @@ export function acceptProjectTransferRequestResponseBody2FromJSON(
 export const AcceptProjectTransferRequestResponseBodyStatus$inboundSchema:
   z.ZodNativeEnum<typeof AcceptProjectTransferRequestResponseBodyStatus> = z
     .nativeEnum(AcceptProjectTransferRequestResponseBodyStatus);
-
 /** @internal */
 export const AcceptProjectTransferRequestResponseBodyStatus$outboundSchema:
   z.ZodNativeEnum<typeof AcceptProjectTransferRequestResponseBodyStatus> =
     AcceptProjectTransferRequestResponseBodyStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestResponseBodyStatus$ {
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestResponseBodyStatus$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestResponseBodyStatus$outboundSchema;
-}
 
 /** @internal */
 export const AcceptProjectTransferRequestResponseBodyError$inboundSchema:
@@ -460,7 +365,6 @@ export const AcceptProjectTransferRequestResponseBodyError$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({});
-
 /** @internal */
 export type AcceptProjectTransferRequestResponseBodyError$Outbound = {};
 
@@ -472,21 +376,6 @@ export const AcceptProjectTransferRequestResponseBodyError$outboundSchema:
     AcceptProjectTransferRequestResponseBodyError
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestResponseBodyError$ {
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyError$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestResponseBodyError$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyError$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestResponseBodyError$outboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyError$Outbound` instead. */
-  export type Outbound = AcceptProjectTransferRequestResponseBodyError$Outbound;
-}
-
 export function acceptProjectTransferRequestResponseBodyErrorToJSON(
   acceptProjectTransferRequestResponseBodyError:
     AcceptProjectTransferRequestResponseBodyError,
@@ -497,7 +386,6 @@ export function acceptProjectTransferRequestResponseBodyErrorToJSON(
     ),
   );
 }
-
 export function acceptProjectTransferRequestResponseBodyErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -527,7 +415,6 @@ export const AcceptProjectTransferRequestResponseBodyResult$inboundSchema:
     ).optional(),
     code: z.string().optional(),
   });
-
 /** @internal */
 export type AcceptProjectTransferRequestResponseBodyResult$Outbound = {
   status: string;
@@ -549,22 +436,6 @@ export const AcceptProjectTransferRequestResponseBodyResult$outboundSchema:
     code: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestResponseBodyResult$ {
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyResult$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestResponseBodyResult$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyResult$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestResponseBodyResult$outboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBodyResult$Outbound` instead. */
-  export type Outbound =
-    AcceptProjectTransferRequestResponseBodyResult$Outbound;
-}
-
 export function acceptProjectTransferRequestResponseBodyResultToJSON(
   acceptProjectTransferRequestResponseBodyResult:
     AcceptProjectTransferRequestResponseBodyResult,
@@ -575,7 +446,6 @@ export function acceptProjectTransferRequestResponseBodyResultToJSON(
     ),
   );
 }
-
 export function acceptProjectTransferRequestResponseBodyResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -604,7 +474,6 @@ export const PartnerCalls$inboundSchema: z.ZodType<
     AcceptProjectTransferRequestResponseBodyResult$inboundSchema
   ),
 });
-
 /** @internal */
 export type PartnerCalls$Outbound = {
   installationId: string;
@@ -625,23 +494,9 @@ export const PartnerCalls$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PartnerCalls$ {
-  /** @deprecated use `PartnerCalls$inboundSchema` instead. */
-  export const inboundSchema = PartnerCalls$inboundSchema;
-  /** @deprecated use `PartnerCalls$outboundSchema` instead. */
-  export const outboundSchema = PartnerCalls$outboundSchema;
-  /** @deprecated use `PartnerCalls$Outbound` instead. */
-  export type Outbound = PartnerCalls$Outbound;
-}
-
 export function partnerCallsToJSON(partnerCalls: PartnerCalls): string {
   return JSON.stringify(PartnerCalls$outboundSchema.parse(partnerCalls));
 }
-
 export function partnerCallsFromJSON(
   jsonString: string,
 ): SafeParseResult<PartnerCalls, SDKValidationError> {
@@ -658,7 +513,6 @@ export const ResourceTransferErrors$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type ResourceTransferErrors$Outbound = {};
 
@@ -669,19 +523,6 @@ export const ResourceTransferErrors$outboundSchema: z.ZodType<
   ResourceTransferErrors
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResourceTransferErrors$ {
-  /** @deprecated use `ResourceTransferErrors$inboundSchema` instead. */
-  export const inboundSchema = ResourceTransferErrors$inboundSchema;
-  /** @deprecated use `ResourceTransferErrors$outboundSchema` instead. */
-  export const outboundSchema = ResourceTransferErrors$outboundSchema;
-  /** @deprecated use `ResourceTransferErrors$Outbound` instead. */
-  export type Outbound = ResourceTransferErrors$Outbound;
-}
-
 export function resourceTransferErrorsToJSON(
   resourceTransferErrors: ResourceTransferErrors,
 ): string {
@@ -689,7 +530,6 @@ export function resourceTransferErrorsToJSON(
     ResourceTransferErrors$outboundSchema.parse(resourceTransferErrors),
   );
 }
-
 export function resourceTransferErrorsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResourceTransferErrors, SDKValidationError> {
@@ -712,7 +552,6 @@ export const AcceptProjectTransferRequestResponseBody1$inboundSchema: z.ZodType<
   ),
   transferredStoreIds: z.array(z.string()),
 });
-
 /** @internal */
 export type AcceptProjectTransferRequestResponseBody1$Outbound = {
   partnerCalls: Array<PartnerCalls$Outbound>;
@@ -734,21 +573,6 @@ export const AcceptProjectTransferRequestResponseBody1$outboundSchema:
     transferredStoreIds: z.array(z.string()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestResponseBody1$ {
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody1$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestResponseBody1$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody1$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestResponseBody1$outboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody1$Outbound` instead. */
-  export type Outbound = AcceptProjectTransferRequestResponseBody1$Outbound;
-}
-
 export function acceptProjectTransferRequestResponseBody1ToJSON(
   acceptProjectTransferRequestResponseBody1:
     AcceptProjectTransferRequestResponseBody1,
@@ -759,7 +583,6 @@ export function acceptProjectTransferRequestResponseBody1ToJSON(
     ),
   );
 }
-
 export function acceptProjectTransferRequestResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -785,7 +608,6 @@ export const AcceptProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => AcceptProjectTransferRequestResponseBody1$inboundSchema),
   z.lazy(() => AcceptProjectTransferRequestResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type AcceptProjectTransferRequestResponseBody$Outbound =
   | AcceptProjectTransferRequestResponseBody1$Outbound
@@ -801,21 +623,6 @@ export const AcceptProjectTransferRequestResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => AcceptProjectTransferRequestResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AcceptProjectTransferRequestResponseBody$ {
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    AcceptProjectTransferRequestResponseBody$inboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    AcceptProjectTransferRequestResponseBody$outboundSchema;
-  /** @deprecated use `AcceptProjectTransferRequestResponseBody$Outbound` instead. */
-  export type Outbound = AcceptProjectTransferRequestResponseBody$Outbound;
-}
-
 export function acceptProjectTransferRequestResponseBodyToJSON(
   acceptProjectTransferRequestResponseBody:
     AcceptProjectTransferRequestResponseBody,
@@ -826,7 +633,6 @@ export function acceptProjectTransferRequestResponseBodyToJSON(
     ),
   );
 }
-
 export function acceptProjectTransferRequestResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<

@@ -36,7 +36,6 @@ export const DeleteRollingReleaseConfigRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type DeleteRollingReleaseConfigRequest$Outbound = {
   idOrName: string;
@@ -55,20 +54,6 @@ export const DeleteRollingReleaseConfigRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteRollingReleaseConfigRequest$ {
-  /** @deprecated use `DeleteRollingReleaseConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteRollingReleaseConfigRequest$inboundSchema;
-  /** @deprecated use `DeleteRollingReleaseConfigRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteRollingReleaseConfigRequest$outboundSchema;
-  /** @deprecated use `DeleteRollingReleaseConfigRequest$Outbound` instead. */
-  export type Outbound = DeleteRollingReleaseConfigRequest$Outbound;
-}
-
 export function deleteRollingReleaseConfigRequestToJSON(
   deleteRollingReleaseConfigRequest: DeleteRollingReleaseConfigRequest,
 ): string {
@@ -78,7 +63,6 @@ export function deleteRollingReleaseConfigRequestToJSON(
     ),
   );
 }
-
 export function deleteRollingReleaseConfigRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteRollingReleaseConfigRequest, SDKValidationError> {
@@ -97,7 +81,6 @@ export const DeleteRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   rollingRelease: z.nullable(z.any()).optional(),
 });
-
 /** @internal */
 export type DeleteRollingReleaseConfigResponseBody$Outbound = {
   rollingRelease?: any | null | undefined;
@@ -112,21 +95,6 @@ export const DeleteRollingReleaseConfigResponseBody$outboundSchema: z.ZodType<
   rollingRelease: z.nullable(z.any()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteRollingReleaseConfigResponseBody$ {
-  /** @deprecated use `DeleteRollingReleaseConfigResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteRollingReleaseConfigResponseBody$inboundSchema;
-  /** @deprecated use `DeleteRollingReleaseConfigResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteRollingReleaseConfigResponseBody$outboundSchema;
-  /** @deprecated use `DeleteRollingReleaseConfigResponseBody$Outbound` instead. */
-  export type Outbound = DeleteRollingReleaseConfigResponseBody$Outbound;
-}
-
 export function deleteRollingReleaseConfigResponseBodyToJSON(
   deleteRollingReleaseConfigResponseBody:
     DeleteRollingReleaseConfigResponseBody,
@@ -137,7 +105,6 @@ export function deleteRollingReleaseConfigResponseBodyToJSON(
     ),
   );
 }
-
 export function deleteRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<DeleteRollingReleaseConfigResponseBody, SDKValidationError> {

@@ -33,7 +33,6 @@ export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> = z
     path: z.array(PropertyKey$inboundSchema),
     message: z.string(),
   });
-
 /** @internal */
 export type Issue$Outbound = {
   path: Array<PropertyKey$Outbound>;
@@ -50,23 +49,9 @@ export const Issue$outboundSchema: z.ZodType<
   message: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Issue$ {
-  /** @deprecated use `Issue$inboundSchema` instead. */
-  export const inboundSchema = Issue$inboundSchema;
-  /** @deprecated use `Issue$outboundSchema` instead. */
-  export const outboundSchema = Issue$outboundSchema;
-  /** @deprecated use `Issue$Outbound` instead. */
-  export type Outbound = Issue$Outbound;
-}
-
 export function issueToJSON(issue: Issue): string {
   return JSON.stringify(Issue$outboundSchema.parse(issue));
 }
-
 export function issueFromJSON(
   jsonString: string,
 ): SafeParseResult<Issue, SDKValidationError> {

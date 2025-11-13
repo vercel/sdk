@@ -42,7 +42,6 @@ export const GetDeploymentFileContentsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetDeploymentFileContentsRequest$Outbound = {
   id: string;
@@ -65,19 +64,6 @@ export const GetDeploymentFileContentsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDeploymentFileContentsRequest$ {
-  /** @deprecated use `GetDeploymentFileContentsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDeploymentFileContentsRequest$inboundSchema;
-  /** @deprecated use `GetDeploymentFileContentsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDeploymentFileContentsRequest$outboundSchema;
-  /** @deprecated use `GetDeploymentFileContentsRequest$Outbound` instead. */
-  export type Outbound = GetDeploymentFileContentsRequest$Outbound;
-}
-
 export function getDeploymentFileContentsRequestToJSON(
   getDeploymentFileContentsRequest: GetDeploymentFileContentsRequest,
 ): string {
@@ -87,7 +73,6 @@ export function getDeploymentFileContentsRequestToJSON(
     ),
   );
 }
-
 export function getDeploymentFileContentsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDeploymentFileContentsRequest, SDKValidationError> {

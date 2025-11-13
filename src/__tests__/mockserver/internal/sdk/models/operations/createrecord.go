@@ -1418,8 +1418,8 @@ type CreateRecordRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                 `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody CreateRecordRequestBody `request:"mediaType=application/json"`
+	Slug *string                 `queryParam:"style=form,explode=true,name=slug"`
+	Body CreateRecordRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *CreateRecordRequest) GetDomain() string {
@@ -1443,11 +1443,11 @@ func (o *CreateRecordRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *CreateRecordRequest) GetRequestBody() CreateRecordRequestBody {
+func (o *CreateRecordRequest) GetBody() CreateRecordRequestBody {
 	if o == nil {
 		return CreateRecordRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type CreateRecordResponseBody2 struct {

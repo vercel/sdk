@@ -33,7 +33,6 @@ export const EdgeConfigToken$inboundSchema: z.ZodType<
   edgeConfigId: z.string(),
   createdAt: z.number(),
 });
-
 /** @internal */
 export type EdgeConfigToken$Outbound = {
   token: string;
@@ -56,25 +55,11 @@ export const EdgeConfigToken$outboundSchema: z.ZodType<
   createdAt: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EdgeConfigToken$ {
-  /** @deprecated use `EdgeConfigToken$inboundSchema` instead. */
-  export const inboundSchema = EdgeConfigToken$inboundSchema;
-  /** @deprecated use `EdgeConfigToken$outboundSchema` instead. */
-  export const outboundSchema = EdgeConfigToken$outboundSchema;
-  /** @deprecated use `EdgeConfigToken$Outbound` instead. */
-  export type Outbound = EdgeConfigToken$Outbound;
-}
-
 export function edgeConfigTokenToJSON(
   edgeConfigToken: EdgeConfigToken,
 ): string {
   return JSON.stringify(EdgeConfigToken$outboundSchema.parse(edgeConfigToken));
 }
-
 export function edgeConfigTokenFromJSON(
   jsonString: string,
 ): SafeParseResult<EdgeConfigToken, SDKValidationError> {

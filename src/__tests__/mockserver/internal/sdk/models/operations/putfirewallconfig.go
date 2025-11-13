@@ -1517,8 +1517,8 @@ type PutFirewallConfigRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                      `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody PutFirewallConfigRequestBody `request:"mediaType=application/json"`
+	Slug *string                      `queryParam:"style=form,explode=true,name=slug"`
+	Body PutFirewallConfigRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *PutFirewallConfigRequest) GetProjectID() string {
@@ -1542,11 +1542,11 @@ func (o *PutFirewallConfigRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *PutFirewallConfigRequest) GetRequestBody() PutFirewallConfigRequestBody {
+func (o *PutFirewallConfigRequest) GetBody() PutFirewallConfigRequestBody {
 	if o == nil {
 		return PutFirewallConfigRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type ActiveSdAction string

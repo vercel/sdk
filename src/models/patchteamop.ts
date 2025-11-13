@@ -297,7 +297,6 @@ export const PatchTeamRoles2$inboundSchema: z.ZodType<
 > = z.object({
   accessGroupId: z.string(),
 });
-
 /** @internal */
 export type PatchTeamRoles2$Outbound = {
   accessGroupId: string;
@@ -312,25 +311,11 @@ export const PatchTeamRoles2$outboundSchema: z.ZodType<
   accessGroupId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamRoles2$ {
-  /** @deprecated use `PatchTeamRoles2$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamRoles2$inboundSchema;
-  /** @deprecated use `PatchTeamRoles2$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamRoles2$outboundSchema;
-  /** @deprecated use `PatchTeamRoles2$Outbound` instead. */
-  export type Outbound = PatchTeamRoles2$Outbound;
-}
-
 export function patchTeamRoles2ToJSON(
   patchTeamRoles2: PatchTeamRoles2,
 ): string {
   return JSON.stringify(PatchTeamRoles2$outboundSchema.parse(patchTeamRoles2));
 }
-
 export function patchTeamRoles2FromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamRoles2, SDKValidationError> {
@@ -345,22 +330,10 @@ export function patchTeamRoles2FromJSON(
 export const PatchTeamRoles1$inboundSchema: z.ZodNativeEnum<
   typeof PatchTeamRoles1
 > = z.nativeEnum(PatchTeamRoles1);
-
 /** @internal */
 export const PatchTeamRoles1$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamRoles1
 > = PatchTeamRoles1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamRoles1$ {
-  /** @deprecated use `PatchTeamRoles1$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamRoles1$inboundSchema;
-  /** @deprecated use `PatchTeamRoles1$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamRoles1$outboundSchema;
-}
 
 /** @internal */
 export const PatchTeamRoles$inboundSchema: z.ZodType<
@@ -371,7 +344,6 @@ export const PatchTeamRoles$inboundSchema: z.ZodType<
   z.lazy(() => PatchTeamRoles2$inboundSchema),
   PatchTeamRoles1$inboundSchema,
 ]);
-
 /** @internal */
 export type PatchTeamRoles$Outbound = PatchTeamRoles2$Outbound | string;
 
@@ -385,23 +357,9 @@ export const PatchTeamRoles$outboundSchema: z.ZodType<
   PatchTeamRoles1$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamRoles$ {
-  /** @deprecated use `PatchTeamRoles$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamRoles$inboundSchema;
-  /** @deprecated use `PatchTeamRoles$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamRoles$outboundSchema;
-  /** @deprecated use `PatchTeamRoles$Outbound` instead. */
-  export type Outbound = PatchTeamRoles$Outbound;
-}
-
 export function patchTeamRolesToJSON(patchTeamRoles: PatchTeamRoles): string {
   return JSON.stringify(PatchTeamRoles$outboundSchema.parse(patchTeamRoles));
 }
-
 export function patchTeamRolesFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamRoles, SDKValidationError> {
@@ -426,7 +384,6 @@ export const PatchTeamSaml$inboundSchema: z.ZodType<
     ]),
   ).optional(),
 });
-
 /** @internal */
 export type PatchTeamSaml$Outbound = {
   enforced?: boolean | undefined;
@@ -448,23 +405,9 @@ export const PatchTeamSaml$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamSaml$ {
-  /** @deprecated use `PatchTeamSaml$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamSaml$inboundSchema;
-  /** @deprecated use `PatchTeamSaml$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamSaml$outboundSchema;
-  /** @deprecated use `PatchTeamSaml$Outbound` instead. */
-  export type Outbound = PatchTeamSaml$Outbound;
-}
-
 export function patchTeamSamlToJSON(patchTeamSaml: PatchTeamSaml): string {
   return JSON.stringify(PatchTeamSaml$outboundSchema.parse(patchTeamSaml));
 }
-
 export function patchTeamSamlFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamSaml, SDKValidationError> {
@@ -483,7 +426,6 @@ export const PatchTeamRemoteCaching$inboundSchema: z.ZodType<
 > = z.object({
   enabled: z.boolean().optional(),
 });
-
 /** @internal */
 export type PatchTeamRemoteCaching$Outbound = {
   enabled?: boolean | undefined;
@@ -498,19 +440,6 @@ export const PatchTeamRemoteCaching$outboundSchema: z.ZodType<
   enabled: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamRemoteCaching$ {
-  /** @deprecated use `PatchTeamRemoteCaching$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamRemoteCaching$inboundSchema;
-  /** @deprecated use `PatchTeamRemoteCaching$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamRemoteCaching$outboundSchema;
-  /** @deprecated use `PatchTeamRemoteCaching$Outbound` instead. */
-  export type Outbound = PatchTeamRemoteCaching$Outbound;
-}
-
 export function patchTeamRemoteCachingToJSON(
   patchTeamRemoteCaching: PatchTeamRemoteCaching,
 ): string {
@@ -518,7 +447,6 @@ export function patchTeamRemoteCachingToJSON(
     PatchTeamRemoteCaching$outboundSchema.parse(patchTeamRemoteCaching),
   );
 }
-
 export function patchTeamRemoteCachingFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamRemoteCaching, SDKValidationError> {
@@ -533,22 +461,10 @@ export function patchTeamRemoteCachingFromJSON(
 export const PatchTeamDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentType
 > = z.nativeEnum(PatchTeamDeploymentType);
-
 /** @internal */
 export const PatchTeamDeploymentType$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentType
 > = PatchTeamDeploymentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamDeploymentType$ {
-  /** @deprecated use `PatchTeamDeploymentType$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamDeploymentType$inboundSchema;
-  /** @deprecated use `PatchTeamDeploymentType$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamDeploymentType$outboundSchema;
-}
 
 /** @internal */
 export const PatchTeamPasswordProtection$inboundSchema: z.ZodType<
@@ -559,7 +475,6 @@ export const PatchTeamPasswordProtection$inboundSchema: z.ZodType<
   deploymentType: PatchTeamDeploymentType$inboundSchema,
   password: z.nullable(z.string()).optional(),
 });
-
 /** @internal */
 export type PatchTeamPasswordProtection$Outbound = {
   deploymentType: string;
@@ -576,19 +491,6 @@ export const PatchTeamPasswordProtection$outboundSchema: z.ZodType<
   password: z.nullable(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamPasswordProtection$ {
-  /** @deprecated use `PatchTeamPasswordProtection$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamPasswordProtection$inboundSchema;
-  /** @deprecated use `PatchTeamPasswordProtection$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamPasswordProtection$outboundSchema;
-  /** @deprecated use `PatchTeamPasswordProtection$Outbound` instead. */
-  export type Outbound = PatchTeamPasswordProtection$Outbound;
-}
-
 export function patchTeamPasswordProtectionToJSON(
   patchTeamPasswordProtection: PatchTeamPasswordProtection,
 ): string {
@@ -598,7 +500,6 @@ export function patchTeamPasswordProtectionToJSON(
     ),
   );
 }
-
 export function patchTeamPasswordProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamPasswordProtection, SDKValidationError> {
@@ -613,22 +514,10 @@ export function patchTeamPasswordProtectionFromJSON(
 export const PatchTeamTeamsDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof PatchTeamTeamsDeploymentType
 > = z.nativeEnum(PatchTeamTeamsDeploymentType);
-
 /** @internal */
 export const PatchTeamTeamsDeploymentType$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamTeamsDeploymentType
 > = PatchTeamTeamsDeploymentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamTeamsDeploymentType$ {
-  /** @deprecated use `PatchTeamTeamsDeploymentType$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamTeamsDeploymentType$inboundSchema;
-  /** @deprecated use `PatchTeamTeamsDeploymentType$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamTeamsDeploymentType$outboundSchema;
-}
 
 /** @internal */
 export const PatchTeamSsoProtection$inboundSchema: z.ZodType<
@@ -638,7 +527,6 @@ export const PatchTeamSsoProtection$inboundSchema: z.ZodType<
 > = z.object({
   deploymentType: PatchTeamTeamsDeploymentType$inboundSchema.default("preview"),
 });
-
 /** @internal */
 export type PatchTeamSsoProtection$Outbound = {
   deploymentType: string;
@@ -655,19 +543,6 @@ export const PatchTeamSsoProtection$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamSsoProtection$ {
-  /** @deprecated use `PatchTeamSsoProtection$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamSsoProtection$inboundSchema;
-  /** @deprecated use `PatchTeamSsoProtection$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamSsoProtection$outboundSchema;
-  /** @deprecated use `PatchTeamSsoProtection$Outbound` instead. */
-  export type Outbound = PatchTeamSsoProtection$Outbound;
-}
-
 export function patchTeamSsoProtectionToJSON(
   patchTeamSsoProtection: PatchTeamSsoProtection,
 ): string {
@@ -675,7 +550,6 @@ export function patchTeamSsoProtectionToJSON(
     PatchTeamSsoProtection$outboundSchema.parse(patchTeamSsoProtection),
   );
 }
-
 export function patchTeamSsoProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamSsoProtection, SDKValidationError> {
@@ -698,7 +572,6 @@ export const PatchTeamDefaultDeploymentProtection$inboundSchema: z.ZodType<
   ssoProtection: z.nullable(z.lazy(() => PatchTeamSsoProtection$inboundSchema))
     .optional(),
 });
-
 /** @internal */
 export type PatchTeamDefaultDeploymentProtection$Outbound = {
   passwordProtection?: PatchTeamPasswordProtection$Outbound | null | undefined;
@@ -718,21 +591,6 @@ export const PatchTeamDefaultDeploymentProtection$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamDefaultDeploymentProtection$ {
-  /** @deprecated use `PatchTeamDefaultDeploymentProtection$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchTeamDefaultDeploymentProtection$inboundSchema;
-  /** @deprecated use `PatchTeamDefaultDeploymentProtection$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchTeamDefaultDeploymentProtection$outboundSchema;
-  /** @deprecated use `PatchTeamDefaultDeploymentProtection$Outbound` instead. */
-  export type Outbound = PatchTeamDefaultDeploymentProtection$Outbound;
-}
-
 export function patchTeamDefaultDeploymentProtectionToJSON(
   patchTeamDefaultDeploymentProtection: PatchTeamDefaultDeploymentProtection,
 ): string {
@@ -742,7 +600,6 @@ export function patchTeamDefaultDeploymentProtectionToJSON(
     ),
   );
 }
-
 export function patchTeamDefaultDeploymentProtectionFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamDefaultDeploymentProtection, SDKValidationError> {
@@ -757,84 +614,36 @@ export function patchTeamDefaultDeploymentProtectionFromJSON(
 /** @internal */
 export const Expiration$inboundSchema: z.ZodNativeEnum<typeof Expiration> = z
   .nativeEnum(Expiration);
-
 /** @internal */
 export const Expiration$outboundSchema: z.ZodNativeEnum<typeof Expiration> =
   Expiration$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Expiration$ {
-  /** @deprecated use `Expiration$inboundSchema` instead. */
-  export const inboundSchema = Expiration$inboundSchema;
-  /** @deprecated use `Expiration$outboundSchema` instead. */
-  export const outboundSchema = Expiration$outboundSchema;
-}
 
 /** @internal */
 export const ExpirationProduction$inboundSchema: z.ZodNativeEnum<
   typeof ExpirationProduction
 > = z.nativeEnum(ExpirationProduction);
-
 /** @internal */
 export const ExpirationProduction$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationProduction
 > = ExpirationProduction$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExpirationProduction$ {
-  /** @deprecated use `ExpirationProduction$inboundSchema` instead. */
-  export const inboundSchema = ExpirationProduction$inboundSchema;
-  /** @deprecated use `ExpirationProduction$outboundSchema` instead. */
-  export const outboundSchema = ExpirationProduction$outboundSchema;
-}
-
 /** @internal */
 export const ExpirationCanceled$inboundSchema: z.ZodNativeEnum<
   typeof ExpirationCanceled
 > = z.nativeEnum(ExpirationCanceled);
-
 /** @internal */
 export const ExpirationCanceled$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationCanceled
 > = ExpirationCanceled$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExpirationCanceled$ {
-  /** @deprecated use `ExpirationCanceled$inboundSchema` instead. */
-  export const inboundSchema = ExpirationCanceled$inboundSchema;
-  /** @deprecated use `ExpirationCanceled$outboundSchema` instead. */
-  export const outboundSchema = ExpirationCanceled$outboundSchema;
-}
-
 /** @internal */
 export const ExpirationErrored$inboundSchema: z.ZodNativeEnum<
   typeof ExpirationErrored
 > = z.nativeEnum(ExpirationErrored);
-
 /** @internal */
 export const ExpirationErrored$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationErrored
 > = ExpirationErrored$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExpirationErrored$ {
-  /** @deprecated use `ExpirationErrored$inboundSchema` instead. */
-  export const inboundSchema = ExpirationErrored$inboundSchema;
-  /** @deprecated use `ExpirationErrored$outboundSchema` instead. */
-  export const outboundSchema = ExpirationErrored$outboundSchema;
-}
 
 /** @internal */
 export const PatchTeamDefaultExpirationSettings$inboundSchema: z.ZodType<
@@ -847,7 +656,6 @@ export const PatchTeamDefaultExpirationSettings$inboundSchema: z.ZodType<
   expirationCanceled: ExpirationCanceled$inboundSchema.optional(),
   expirationErrored: ExpirationErrored$inboundSchema.optional(),
 });
-
 /** @internal */
 export type PatchTeamDefaultExpirationSettings$Outbound = {
   expiration?: string | undefined;
@@ -868,20 +676,6 @@ export const PatchTeamDefaultExpirationSettings$outboundSchema: z.ZodType<
   expirationErrored: ExpirationErrored$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamDefaultExpirationSettings$ {
-  /** @deprecated use `PatchTeamDefaultExpirationSettings$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamDefaultExpirationSettings$inboundSchema;
-  /** @deprecated use `PatchTeamDefaultExpirationSettings$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchTeamDefaultExpirationSettings$outboundSchema;
-  /** @deprecated use `PatchTeamDefaultExpirationSettings$Outbound` instead. */
-  export type Outbound = PatchTeamDefaultExpirationSettings$Outbound;
-}
-
 export function patchTeamDefaultExpirationSettingsToJSON(
   patchTeamDefaultExpirationSettings: PatchTeamDefaultExpirationSettings,
 ): string {
@@ -891,7 +685,6 @@ export function patchTeamDefaultExpirationSettingsToJSON(
     ),
   );
 }
-
 export function patchTeamDefaultExpirationSettingsFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamDefaultExpirationSettings, SDKValidationError> {
@@ -930,7 +723,6 @@ export const PatchTeamRequestBody$inboundSchema: z.ZodType<
     PatchTeamDefaultExpirationSettings$inboundSchema
   ).optional(),
 });
-
 /** @internal */
 export type PatchTeamRequestBody$Outbound = {
   avatar?: string | undefined;
@@ -983,19 +775,6 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamRequestBody$ {
-  /** @deprecated use `PatchTeamRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamRequestBody$inboundSchema;
-  /** @deprecated use `PatchTeamRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamRequestBody$outboundSchema;
-  /** @deprecated use `PatchTeamRequestBody$Outbound` instead. */
-  export type Outbound = PatchTeamRequestBody$Outbound;
-}
-
 export function patchTeamRequestBodyToJSON(
   patchTeamRequestBody: PatchTeamRequestBody,
 ): string {
@@ -1003,7 +782,6 @@ export function patchTeamRequestBodyToJSON(
     PatchTeamRequestBody$outboundSchema.parse(patchTeamRequestBody),
   );
 }
-
 export function patchTeamRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamRequestBody, SDKValidationError> {
@@ -1028,7 +806,6 @@ export const PatchTeamRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type PatchTeamRequest$Outbound = {
   teamId: string;
@@ -1051,19 +828,6 @@ export const PatchTeamRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchTeamRequest$ {
-  /** @deprecated use `PatchTeamRequest$inboundSchema` instead. */
-  export const inboundSchema = PatchTeamRequest$inboundSchema;
-  /** @deprecated use `PatchTeamRequest$outboundSchema` instead. */
-  export const outboundSchema = PatchTeamRequest$outboundSchema;
-  /** @deprecated use `PatchTeamRequest$Outbound` instead. */
-  export type Outbound = PatchTeamRequest$Outbound;
-}
-
 export function patchTeamRequestToJSON(
   patchTeamRequest: PatchTeamRequest,
 ): string {
@@ -1071,7 +835,6 @@ export function patchTeamRequestToJSON(
     PatchTeamRequest$outboundSchema.parse(patchTeamRequest),
   );
 }
-
 export function patchTeamRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<PatchTeamRequest, SDKValidationError> {

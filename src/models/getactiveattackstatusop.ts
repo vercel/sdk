@@ -70,7 +70,6 @@ export const GetActiveAttackStatusRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetActiveAttackStatusRequest$Outbound = {
   projectId: string;
@@ -91,19 +90,6 @@ export const GetActiveAttackStatusRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetActiveAttackStatusRequest$ {
-  /** @deprecated use `GetActiveAttackStatusRequest$inboundSchema` instead. */
-  export const inboundSchema = GetActiveAttackStatusRequest$inboundSchema;
-  /** @deprecated use `GetActiveAttackStatusRequest$outboundSchema` instead. */
-  export const outboundSchema = GetActiveAttackStatusRequest$outboundSchema;
-  /** @deprecated use `GetActiveAttackStatusRequest$Outbound` instead. */
-  export type Outbound = GetActiveAttackStatusRequest$Outbound;
-}
-
 export function getActiveAttackStatusRequestToJSON(
   getActiveAttackStatusRequest: GetActiveAttackStatusRequest,
 ): string {
@@ -113,7 +99,6 @@ export function getActiveAttackStatusRequestToJSON(
     ),
   );
 }
-
 export function getActiveAttackStatusRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetActiveAttackStatusRequest, SDKValidationError> {
@@ -143,7 +128,6 @@ export const AnomalyAlerts$inboundSchema: z.ZodType<
     "stddev_requests": "stddevRequests",
   });
 });
-
 /** @internal */
 export type AnomalyAlerts$Outbound = {
   at_minute: string;
@@ -173,23 +157,9 @@ export const AnomalyAlerts$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnomalyAlerts$ {
-  /** @deprecated use `AnomalyAlerts$inboundSchema` instead. */
-  export const inboundSchema = AnomalyAlerts$inboundSchema;
-  /** @deprecated use `AnomalyAlerts$outboundSchema` instead. */
-  export const outboundSchema = AnomalyAlerts$outboundSchema;
-  /** @deprecated use `AnomalyAlerts$Outbound` instead. */
-  export type Outbound = AnomalyAlerts$Outbound;
-}
-
 export function anomalyAlertsToJSON(anomalyAlerts: AnomalyAlerts): string {
   return JSON.stringify(AnomalyAlerts$outboundSchema.parse(anomalyAlerts));
 }
-
 export function anomalyAlertsFromJSON(
   jsonString: string,
 ): SafeParseResult<AnomalyAlerts, SDKValidationError> {
@@ -209,7 +179,6 @@ export const DdosAlerts$inboundSchema: z.ZodType<
   atMinute: z.string(),
   totalReqs: z.number(),
 });
-
 /** @internal */
 export type DdosAlerts$Outbound = {
   atMinute: string;
@@ -226,23 +195,9 @@ export const DdosAlerts$outboundSchema: z.ZodType<
   totalReqs: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DdosAlerts$ {
-  /** @deprecated use `DdosAlerts$inboundSchema` instead. */
-  export const inboundSchema = DdosAlerts$inboundSchema;
-  /** @deprecated use `DdosAlerts$outboundSchema` instead. */
-  export const outboundSchema = DdosAlerts$outboundSchema;
-  /** @deprecated use `DdosAlerts$Outbound` instead. */
-  export type Outbound = DdosAlerts$Outbound;
-}
-
 export function ddosAlertsToJSON(ddosAlerts: DdosAlerts): string {
   return JSON.stringify(DdosAlerts$outboundSchema.parse(ddosAlerts));
 }
-
 export function ddosAlertsFromJSON(
   jsonString: string,
 ): SafeParseResult<DdosAlerts, SDKValidationError> {
@@ -262,7 +217,6 @@ export const AffectedHostMap$inboundSchema: z.ZodType<
   anomalyAlerts: z.record(z.lazy(() => AnomalyAlerts$inboundSchema)).optional(),
   ddosAlerts: z.record(z.lazy(() => DdosAlerts$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type AffectedHostMap$Outbound = {
   anomalyAlerts?: { [k: string]: AnomalyAlerts$Outbound } | undefined;
@@ -280,25 +234,11 @@ export const AffectedHostMap$outboundSchema: z.ZodType<
   ddosAlerts: z.record(z.lazy(() => DdosAlerts$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AffectedHostMap$ {
-  /** @deprecated use `AffectedHostMap$inboundSchema` instead. */
-  export const inboundSchema = AffectedHostMap$inboundSchema;
-  /** @deprecated use `AffectedHostMap$outboundSchema` instead. */
-  export const outboundSchema = AffectedHostMap$outboundSchema;
-  /** @deprecated use `AffectedHostMap$Outbound` instead. */
-  export type Outbound = AffectedHostMap$Outbound;
-}
-
 export function affectedHostMapToJSON(
   affectedHostMap: AffectedHostMap,
 ): string {
   return JSON.stringify(AffectedHostMap$outboundSchema.parse(affectedHostMap));
 }
-
 export function affectedHostMapFromJSON(
   jsonString: string,
 ): SafeParseResult<AffectedHostMap, SDKValidationError> {
@@ -323,7 +263,6 @@ export const Anomalies$inboundSchema: z.ZodType<
   state: z.string().optional(),
   affectedHostMap: z.record(z.lazy(() => AffectedHostMap$inboundSchema)),
 });
-
 /** @internal */
 export type Anomalies$Outbound = {
   projectId: string;
@@ -350,23 +289,9 @@ export const Anomalies$outboundSchema: z.ZodType<
   affectedHostMap: z.record(z.lazy(() => AffectedHostMap$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Anomalies$ {
-  /** @deprecated use `Anomalies$inboundSchema` instead. */
-  export const inboundSchema = Anomalies$inboundSchema;
-  /** @deprecated use `Anomalies$outboundSchema` instead. */
-  export const outboundSchema = Anomalies$outboundSchema;
-  /** @deprecated use `Anomalies$Outbound` instead. */
-  export type Outbound = Anomalies$Outbound;
-}
-
 export function anomaliesToJSON(anomalies: Anomalies): string {
   return JSON.stringify(Anomalies$outboundSchema.parse(anomalies));
 }
-
 export function anomaliesFromJSON(
   jsonString: string,
 ): SafeParseResult<Anomalies, SDKValidationError> {
@@ -385,7 +310,6 @@ export const GetActiveAttackStatusResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   anomalies: z.array(z.lazy(() => Anomalies$inboundSchema)),
 });
-
 /** @internal */
 export type GetActiveAttackStatusResponseBody2$Outbound = {
   anomalies: Array<Anomalies$Outbound>;
@@ -400,20 +324,6 @@ export const GetActiveAttackStatusResponseBody2$outboundSchema: z.ZodType<
   anomalies: z.array(z.lazy(() => Anomalies$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetActiveAttackStatusResponseBody2$ {
-  /** @deprecated use `GetActiveAttackStatusResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetActiveAttackStatusResponseBody2$inboundSchema;
-  /** @deprecated use `GetActiveAttackStatusResponseBody2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetActiveAttackStatusResponseBody2$outboundSchema;
-  /** @deprecated use `GetActiveAttackStatusResponseBody2$Outbound` instead. */
-  export type Outbound = GetActiveAttackStatusResponseBody2$Outbound;
-}
-
 export function getActiveAttackStatusResponseBody2ToJSON(
   getActiveAttackStatusResponseBody2: GetActiveAttackStatusResponseBody2,
 ): string {
@@ -423,7 +333,6 @@ export function getActiveAttackStatusResponseBody2ToJSON(
     ),
   );
 }
-
 export function getActiveAttackStatusResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetActiveAttackStatusResponseBody2, SDKValidationError> {
@@ -441,7 +350,6 @@ export const GetActiveAttackStatusResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type GetActiveAttackStatusResponseBody1$Outbound = {};
 
@@ -452,20 +360,6 @@ export const GetActiveAttackStatusResponseBody1$outboundSchema: z.ZodType<
   GetActiveAttackStatusResponseBody1
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetActiveAttackStatusResponseBody1$ {
-  /** @deprecated use `GetActiveAttackStatusResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = GetActiveAttackStatusResponseBody1$inboundSchema;
-  /** @deprecated use `GetActiveAttackStatusResponseBody1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetActiveAttackStatusResponseBody1$outboundSchema;
-  /** @deprecated use `GetActiveAttackStatusResponseBody1$Outbound` instead. */
-  export type Outbound = GetActiveAttackStatusResponseBody1$Outbound;
-}
-
 export function getActiveAttackStatusResponseBody1ToJSON(
   getActiveAttackStatusResponseBody1: GetActiveAttackStatusResponseBody1,
 ): string {
@@ -475,7 +369,6 @@ export function getActiveAttackStatusResponseBody1ToJSON(
     ),
   );
 }
-
 export function getActiveAttackStatusResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<GetActiveAttackStatusResponseBody1, SDKValidationError> {
@@ -496,7 +389,6 @@ export const GetActiveAttackStatusResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetActiveAttackStatusResponseBody2$inboundSchema),
   z.lazy(() => GetActiveAttackStatusResponseBody1$inboundSchema),
 ]);
-
 /** @internal */
 export type GetActiveAttackStatusResponseBody$Outbound =
   | GetActiveAttackStatusResponseBody2$Outbound
@@ -512,20 +404,6 @@ export const GetActiveAttackStatusResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => GetActiveAttackStatusResponseBody1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetActiveAttackStatusResponseBody$ {
-  /** @deprecated use `GetActiveAttackStatusResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetActiveAttackStatusResponseBody$inboundSchema;
-  /** @deprecated use `GetActiveAttackStatusResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetActiveAttackStatusResponseBody$outboundSchema;
-  /** @deprecated use `GetActiveAttackStatusResponseBody$Outbound` instead. */
-  export type Outbound = GetActiveAttackStatusResponseBody$Outbound;
-}
-
 export function getActiveAttackStatusResponseBodyToJSON(
   getActiveAttackStatusResponseBody: GetActiveAttackStatusResponseBody,
 ): string {
@@ -535,7 +413,6 @@ export function getActiveAttackStatusResponseBodyToJSON(
     ),
   );
 }
-
 export function getActiveAttackStatusResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetActiveAttackStatusResponseBody, SDKValidationError> {

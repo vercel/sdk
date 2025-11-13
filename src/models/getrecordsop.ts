@@ -140,7 +140,6 @@ export const GetRecordsRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetRecordsRequest$Outbound = {
   domain: string;
@@ -165,19 +164,6 @@ export const GetRecordsRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRecordsRequest$ {
-  /** @deprecated use `GetRecordsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetRecordsRequest$inboundSchema;
-  /** @deprecated use `GetRecordsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetRecordsRequest$outboundSchema;
-  /** @deprecated use `GetRecordsRequest$Outbound` instead. */
-  export type Outbound = GetRecordsRequest$Outbound;
-}
-
 export function getRecordsRequestToJSON(
   getRecordsRequest: GetRecordsRequest,
 ): string {
@@ -185,7 +171,6 @@ export function getRecordsRequestToJSON(
     GetRecordsRequest$outboundSchema.parse(getRecordsRequest),
   );
 }
-
 export function getRecordsRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRecordsRequest, SDKValidationError> {
@@ -200,22 +185,10 @@ export function getRecordsRequestFromJSON(
 export const GetRecordsResponseBodyDnsType$inboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyDnsType
 > = z.nativeEnum(GetRecordsResponseBodyDnsType);
-
 /** @internal */
 export const GetRecordsResponseBodyDnsType$outboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyDnsType
 > = GetRecordsResponseBodyDnsType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRecordsResponseBodyDnsType$ {
-  /** @deprecated use `GetRecordsResponseBodyDnsType$inboundSchema` instead. */
-  export const inboundSchema = GetRecordsResponseBodyDnsType$inboundSchema;
-  /** @deprecated use `GetRecordsResponseBodyDnsType$outboundSchema` instead. */
-  export const outboundSchema = GetRecordsResponseBodyDnsType$outboundSchema;
-}
 
 /** @internal */
 export const ResponseBodyRecords$inboundSchema: z.ZodType<
@@ -238,7 +211,6 @@ export const ResponseBodyRecords$inboundSchema: z.ZodType<
   ttl: z.number().optional(),
   comment: z.string().optional(),
 });
-
 /** @internal */
 export type ResponseBodyRecords$Outbound = {
   id: string;
@@ -279,19 +251,6 @@ export const ResponseBodyRecords$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBodyRecords$ {
-  /** @deprecated use `ResponseBodyRecords$inboundSchema` instead. */
-  export const inboundSchema = ResponseBodyRecords$inboundSchema;
-  /** @deprecated use `ResponseBodyRecords$outboundSchema` instead. */
-  export const outboundSchema = ResponseBodyRecords$outboundSchema;
-  /** @deprecated use `ResponseBodyRecords$Outbound` instead. */
-  export type Outbound = ResponseBodyRecords$Outbound;
-}
-
 export function responseBodyRecordsToJSON(
   responseBodyRecords: ResponseBodyRecords,
 ): string {
@@ -299,7 +258,6 @@ export function responseBodyRecordsToJSON(
     ResponseBodyRecords$outboundSchema.parse(responseBodyRecords),
   );
 }
-
 export function responseBodyRecordsFromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBodyRecords, SDKValidationError> {
@@ -319,7 +277,6 @@ export const ResponseBody3$inboundSchema: z.ZodType<
   records: z.array(z.lazy(() => ResponseBodyRecords$inboundSchema)),
   pagination: Pagination$inboundSchema,
 });
-
 /** @internal */
 export type ResponseBody3$Outbound = {
   records: Array<ResponseBodyRecords$Outbound>;
@@ -336,23 +293,9 @@ export const ResponseBody3$outboundSchema: z.ZodType<
   pagination: Pagination$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseBody3$ {
-  /** @deprecated use `ResponseBody3$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody3$inboundSchema;
-  /** @deprecated use `ResponseBody3$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody3$outboundSchema;
-  /** @deprecated use `ResponseBody3$Outbound` instead. */
-  export type Outbound = ResponseBody3$Outbound;
-}
-
 export function responseBody3ToJSON(responseBody3: ResponseBody3): string {
   return JSON.stringify(ResponseBody3$outboundSchema.parse(responseBody3));
 }
-
 export function responseBody3FromJSON(
   jsonString: string,
 ): SafeParseResult<ResponseBody3, SDKValidationError> {
@@ -367,22 +310,10 @@ export function responseBody3FromJSON(
 export const GetRecordsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyType
 > = z.nativeEnum(GetRecordsResponseBodyType);
-
 /** @internal */
 export const GetRecordsResponseBodyType$outboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyType
 > = GetRecordsResponseBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRecordsResponseBodyType$ {
-  /** @deprecated use `GetRecordsResponseBodyType$inboundSchema` instead. */
-  export const inboundSchema = GetRecordsResponseBodyType$inboundSchema;
-  /** @deprecated use `GetRecordsResponseBodyType$outboundSchema` instead. */
-  export const outboundSchema = GetRecordsResponseBodyType$outboundSchema;
-}
 
 /** @internal */
 export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
@@ -402,7 +333,6 @@ export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
     ttl: z.number().optional(),
     comment: z.string().optional(),
   });
-
 /** @internal */
 export type Records$Outbound = {
   id: string;
@@ -443,23 +373,9 @@ export const Records$outboundSchema: z.ZodType<
   comment: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Records$ {
-  /** @deprecated use `Records$inboundSchema` instead. */
-  export const inboundSchema = Records$inboundSchema;
-  /** @deprecated use `Records$outboundSchema` instead. */
-  export const outboundSchema = Records$outboundSchema;
-  /** @deprecated use `Records$Outbound` instead. */
-  export type Outbound = Records$Outbound;
-}
-
 export function recordsToJSON(records: Records): string {
   return JSON.stringify(Records$outboundSchema.parse(records));
 }
-
 export function recordsFromJSON(
   jsonString: string,
 ): SafeParseResult<Records, SDKValidationError> {
@@ -478,7 +394,6 @@ export const GetRecordsResponseBody2$inboundSchema: z.ZodType<
 > = z.object({
   records: z.array(z.lazy(() => Records$inboundSchema)),
 });
-
 /** @internal */
 export type GetRecordsResponseBody2$Outbound = {
   records: Array<Records$Outbound>;
@@ -493,19 +408,6 @@ export const GetRecordsResponseBody2$outboundSchema: z.ZodType<
   records: z.array(z.lazy(() => Records$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRecordsResponseBody2$ {
-  /** @deprecated use `GetRecordsResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = GetRecordsResponseBody2$inboundSchema;
-  /** @deprecated use `GetRecordsResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = GetRecordsResponseBody2$outboundSchema;
-  /** @deprecated use `GetRecordsResponseBody2$Outbound` instead. */
-  export type Outbound = GetRecordsResponseBody2$Outbound;
-}
-
 export function getRecordsResponseBody2ToJSON(
   getRecordsResponseBody2: GetRecordsResponseBody2,
 ): string {
@@ -513,7 +415,6 @@ export function getRecordsResponseBody2ToJSON(
     GetRecordsResponseBody2$outboundSchema.parse(getRecordsResponseBody2),
   );
 }
-
 export function getRecordsResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<GetRecordsResponseBody2, SDKValidationError> {
@@ -534,7 +435,6 @@ export const GetRecordsResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => GetRecordsResponseBody2$inboundSchema),
   z.string(),
 ]);
-
 /** @internal */
 export type GetRecordsResponseBody$Outbound =
   | ResponseBody3$Outbound
@@ -552,19 +452,6 @@ export const GetRecordsResponseBody$outboundSchema: z.ZodType<
   z.string(),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetRecordsResponseBody$ {
-  /** @deprecated use `GetRecordsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetRecordsResponseBody$inboundSchema;
-  /** @deprecated use `GetRecordsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetRecordsResponseBody$outboundSchema;
-  /** @deprecated use `GetRecordsResponseBody$Outbound` instead. */
-  export type Outbound = GetRecordsResponseBody$Outbound;
-}
-
 export function getRecordsResponseBodyToJSON(
   getRecordsResponseBody: GetRecordsResponseBody,
 ): string {
@@ -572,7 +459,6 @@ export function getRecordsResponseBodyToJSON(
     GetRecordsResponseBody$outboundSchema.parse(getRecordsResponseBody),
   );
 }
-
 export function getRecordsResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetRecordsResponseBody, SDKValidationError> {

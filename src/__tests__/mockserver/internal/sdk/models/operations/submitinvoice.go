@@ -338,7 +338,7 @@ func (o *SubmitInvoiceRequestBody) GetTest() *Test {
 
 type SubmitInvoiceRequest struct {
 	IntegrationConfigurationID string                   `pathParam:"style=simple,explode=false,name=integrationConfigurationId"`
-	RequestBody                SubmitInvoiceRequestBody `request:"mediaType=application/json"`
+	Body                       SubmitInvoiceRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *SubmitInvoiceRequest) GetIntegrationConfigurationID() string {
@@ -348,11 +348,11 @@ func (o *SubmitInvoiceRequest) GetIntegrationConfigurationID() string {
 	return o.IntegrationConfigurationID
 }
 
-func (o *SubmitInvoiceRequest) GetRequestBody() SubmitInvoiceRequestBody {
+func (o *SubmitInvoiceRequest) GetBody() SubmitInvoiceRequestBody {
 	if o == nil {
 		return SubmitInvoiceRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type SubmitInvoiceResponseBody struct {

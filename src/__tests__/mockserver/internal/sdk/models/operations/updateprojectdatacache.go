@@ -28,8 +28,8 @@ type UpdateProjectDataCacheRequest struct {
 	// The Team identifier to perform the request on behalf of.
 	TeamID *string `queryParam:"style=form,explode=true,name=teamId"`
 	// The Team slug to perform the request on behalf of.
-	Slug        *string                           `queryParam:"style=form,explode=true,name=slug"`
-	RequestBody UpdateProjectDataCacheRequestBody `request:"mediaType=application/json"`
+	Slug *string                           `queryParam:"style=form,explode=true,name=slug"`
+	Body UpdateProjectDataCacheRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateProjectDataCacheRequest) GetProjectID() string {
@@ -53,11 +53,11 @@ func (o *UpdateProjectDataCacheRequest) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *UpdateProjectDataCacheRequest) GetRequestBody() UpdateProjectDataCacheRequestBody {
+func (o *UpdateProjectDataCacheRequest) GetBody() UpdateProjectDataCacheRequestBody {
 	if o == nil {
 		return UpdateProjectDataCacheRequestBody{}
 	}
-	return o.RequestBody
+	return o.Body
 }
 
 type UpdateProjectDataCacheAnalytics struct {
@@ -5621,6 +5621,7 @@ type UpdateProjectDataCachePermissions struct {
 	ProjectEnvVarsProduction                 []components.ACLAction `json:"projectEnvVarsProduction,omitempty"`
 	ProjectEnvVarsUnownedByIntegration       []components.ACLAction `json:"projectEnvVarsUnownedByIntegration,omitempty"`
 	ProjectFlags                             []components.ACLAction `json:"projectFlags,omitempty"`
+	ProjectFlagsProduction                   []components.ACLAction `json:"projectFlagsProduction,omitempty"`
 	ProjectFromV0                            []components.ACLAction `json:"projectFromV0,omitempty"`
 	ProjectID                                []components.ACLAction `json:"projectId,omitempty"`
 	ProjectIntegrationConfiguration          []components.ACLAction `json:"projectIntegrationConfiguration,omitempty"`
@@ -6996,6 +6997,13 @@ func (o *UpdateProjectDataCachePermissions) GetProjectFlags() []components.ACLAc
 		return nil
 	}
 	return o.ProjectFlags
+}
+
+func (o *UpdateProjectDataCachePermissions) GetProjectFlagsProduction() []components.ACLAction {
+	if o == nil {
+		return nil
+	}
+	return o.ProjectFlagsProduction
 }
 
 func (o *UpdateProjectDataCachePermissions) GetProjectFromV0() []components.ACLAction {
@@ -10602,6 +10610,7 @@ type UpdateProjectDataCacheResponseBody struct {
 	V0                                   *bool                                                  `json:"v0,omitempty"`
 	Abuse                                *UpdateProjectDataCacheAbuse                           `json:"abuse,omitempty"`
 	InternalRoutes                       []UpdateProjectDataCacheInternalRouteUnion             `json:"internalRoutes,omitempty"`
+	HasDeployments                       *bool                                                  `json:"hasDeployments,omitempty"`
 	DismissedToasts                      []UpdateProjectDataCacheDismissedToast                 `json:"dismissedToasts,omitempty"`
 }
 
@@ -11142,6 +11151,13 @@ func (o *UpdateProjectDataCacheResponseBody) GetInternalRoutes() []UpdateProject
 		return nil
 	}
 	return o.InternalRoutes
+}
+
+func (o *UpdateProjectDataCacheResponseBody) GetHasDeployments() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HasDeployments
 }
 
 func (o *UpdateProjectDataCacheResponseBody) GetDismissedToasts() []UpdateProjectDataCacheDismissedToast {

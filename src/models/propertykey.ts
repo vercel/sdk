@@ -26,21 +26,9 @@ export type PropertyKey = PropertyKey3 | string | number;
 
 /** @internal */
 export const Tag$inboundSchema: z.ZodNativeEnum<typeof Tag> = z.nativeEnum(Tag);
-
 /** @internal */
 export const Tag$outboundSchema: z.ZodNativeEnum<typeof Tag> =
   Tag$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Tag$ {
-  /** @deprecated use `Tag$inboundSchema` instead. */
-  export const inboundSchema = Tag$inboundSchema;
-  /** @deprecated use `Tag$outboundSchema` instead. */
-  export const outboundSchema = Tag$outboundSchema;
-}
 
 /** @internal */
 export const PropertyKey3$inboundSchema: z.ZodType<
@@ -55,7 +43,6 @@ export const PropertyKey3$inboundSchema: z.ZodType<
     "_tag": "tag",
   });
 });
-
 /** @internal */
 export type PropertyKey3$Outbound = {
   _tag: string;
@@ -76,23 +63,9 @@ export const PropertyKey3$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertyKey3$ {
-  /** @deprecated use `PropertyKey3$inboundSchema` instead. */
-  export const inboundSchema = PropertyKey3$inboundSchema;
-  /** @deprecated use `PropertyKey3$outboundSchema` instead. */
-  export const outboundSchema = PropertyKey3$outboundSchema;
-  /** @deprecated use `PropertyKey3$Outbound` instead. */
-  export type Outbound = PropertyKey3$Outbound;
-}
-
 export function propertyKey3ToJSON(propertyKey3: PropertyKey3): string {
   return JSON.stringify(PropertyKey3$outboundSchema.parse(propertyKey3));
 }
-
 export function propertyKey3FromJSON(
   jsonString: string,
 ): SafeParseResult<PropertyKey3, SDKValidationError> {
@@ -109,7 +82,6 @@ export const PropertyKey$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.lazy(() => PropertyKey3$inboundSchema), z.string(), z.number()]);
-
 /** @internal */
 export type PropertyKey$Outbound = PropertyKey3$Outbound | string | number;
 
@@ -124,23 +96,9 @@ export const PropertyKey$outboundSchema: z.ZodType<
   z.number(),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertyKey$ {
-  /** @deprecated use `PropertyKey$inboundSchema` instead. */
-  export const inboundSchema = PropertyKey$inboundSchema;
-  /** @deprecated use `PropertyKey$outboundSchema` instead. */
-  export const outboundSchema = PropertyKey$outboundSchema;
-  /** @deprecated use `PropertyKey$Outbound` instead. */
-  export type Outbound = PropertyKey$Outbound;
-}
-
 export function propertyKeyToJSON(propertyKey: PropertyKey): string {
   return JSON.stringify(PropertyKey$outboundSchema.parse(propertyKey));
 }
-
 export function propertyKeyFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertyKey, SDKValidationError> {

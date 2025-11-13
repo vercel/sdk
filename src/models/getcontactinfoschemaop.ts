@@ -45,7 +45,6 @@ export const GetContactInfoSchemaRequest$inboundSchema: z.ZodType<
   domain: z.string(),
   teamId: z.string().optional(),
 });
-
 /** @internal */
 export type GetContactInfoSchemaRequest$Outbound = {
   domain: string;
@@ -62,19 +61,6 @@ export const GetContactInfoSchemaRequest$outboundSchema: z.ZodType<
   teamId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetContactInfoSchemaRequest$ {
-  /** @deprecated use `GetContactInfoSchemaRequest$inboundSchema` instead. */
-  export const inboundSchema = GetContactInfoSchemaRequest$inboundSchema;
-  /** @deprecated use `GetContactInfoSchemaRequest$outboundSchema` instead. */
-  export const outboundSchema = GetContactInfoSchemaRequest$outboundSchema;
-  /** @deprecated use `GetContactInfoSchemaRequest$Outbound` instead. */
-  export type Outbound = GetContactInfoSchemaRequest$Outbound;
-}
-
 export function getContactInfoSchemaRequestToJSON(
   getContactInfoSchemaRequest: GetContactInfoSchemaRequest,
 ): string {
@@ -84,7 +70,6 @@ export function getContactInfoSchemaRequestToJSON(
     ),
   );
 }
-
 export function getContactInfoSchemaRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetContactInfoSchemaRequest, SDKValidationError> {
@@ -102,7 +87,6 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([BadRequest$inboundSchema, HttpApiDecodeError$inboundSchema]);
-
 /** @internal */
 export type GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound =
   | BadRequest$Outbound
@@ -116,22 +100,6 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema:
     unknown
   > = z.union([BadRequest$outboundSchema, HttpApiDecodeError$outboundSchema]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetContactInfoSchemaDomainsRegistrarResponseBody$ {
-  /** @deprecated use `GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema;
-  /** @deprecated use `GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetContactInfoSchemaDomainsRegistrarResponseBody$outboundSchema;
-  /** @deprecated use `GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound` instead. */
-  export type Outbound =
-    GetContactInfoSchemaDomainsRegistrarResponseBody$Outbound;
-}
-
 export function getContactInfoSchemaDomainsRegistrarResponseBodyToJSON(
   getContactInfoSchemaDomainsRegistrarResponseBody:
     GetContactInfoSchemaDomainsRegistrarResponseBody,
@@ -142,7 +110,6 @@ export function getContactInfoSchemaDomainsRegistrarResponseBodyToJSON(
     ),
   );
 }
-
 export function getContactInfoSchemaDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -165,7 +132,6 @@ export const GetContactInfoSchemaResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type GetContactInfoSchemaResponseBody$Outbound = {};
 
@@ -176,19 +142,6 @@ export const GetContactInfoSchemaResponseBody$outboundSchema: z.ZodType<
   GetContactInfoSchemaResponseBody
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetContactInfoSchemaResponseBody$ {
-  /** @deprecated use `GetContactInfoSchemaResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetContactInfoSchemaResponseBody$inboundSchema;
-  /** @deprecated use `GetContactInfoSchemaResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetContactInfoSchemaResponseBody$outboundSchema;
-  /** @deprecated use `GetContactInfoSchemaResponseBody$Outbound` instead. */
-  export type Outbound = GetContactInfoSchemaResponseBody$Outbound;
-}
-
 export function getContactInfoSchemaResponseBodyToJSON(
   getContactInfoSchemaResponseBody: GetContactInfoSchemaResponseBody,
 ): string {
@@ -198,7 +151,6 @@ export function getContactInfoSchemaResponseBodyToJSON(
     ),
   );
 }
-
 export function getContactInfoSchemaResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetContactInfoSchemaResponseBody, SDKValidationError> {

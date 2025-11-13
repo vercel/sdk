@@ -87,7 +87,6 @@ export const UploadFileRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type UploadFileRequest$Outbound = {
   "Content-Length"?: number | undefined;
@@ -132,19 +131,6 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadFileRequest$ {
-  /** @deprecated use `UploadFileRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadFileRequest$inboundSchema;
-  /** @deprecated use `UploadFileRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadFileRequest$outboundSchema;
-  /** @deprecated use `UploadFileRequest$Outbound` instead. */
-  export type Outbound = UploadFileRequest$Outbound;
-}
-
 export function uploadFileRequestToJSON(
   uploadFileRequest: UploadFileRequest,
 ): string {
@@ -152,7 +138,6 @@ export function uploadFileRequestToJSON(
     UploadFileRequest$outboundSchema.parse(uploadFileRequest),
   );
 }
-
 export function uploadFileRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadFileRequest, SDKValidationError> {
@@ -169,7 +154,6 @@ export const UploadFileResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
 /** @internal */
 export type UploadFileResponseBody2$Outbound = {};
 
@@ -180,19 +164,6 @@ export const UploadFileResponseBody2$outboundSchema: z.ZodType<
   UploadFileResponseBody2
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadFileResponseBody2$ {
-  /** @deprecated use `UploadFileResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = UploadFileResponseBody2$inboundSchema;
-  /** @deprecated use `UploadFileResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = UploadFileResponseBody2$outboundSchema;
-  /** @deprecated use `UploadFileResponseBody2$Outbound` instead. */
-  export type Outbound = UploadFileResponseBody2$Outbound;
-}
-
 export function uploadFileResponseBody2ToJSON(
   uploadFileResponseBody2: UploadFileResponseBody2,
 ): string {
@@ -200,7 +171,6 @@ export function uploadFileResponseBody2ToJSON(
     UploadFileResponseBody2$outboundSchema.parse(uploadFileResponseBody2),
   );
 }
-
 export function uploadFileResponseBody2FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadFileResponseBody2, SDKValidationError> {
@@ -219,7 +189,6 @@ export const UploadFileResponseBody1$inboundSchema: z.ZodType<
 > = z.object({
   urls: z.array(z.string()),
 });
-
 /** @internal */
 export type UploadFileResponseBody1$Outbound = {
   urls: Array<string>;
@@ -234,19 +203,6 @@ export const UploadFileResponseBody1$outboundSchema: z.ZodType<
   urls: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadFileResponseBody1$ {
-  /** @deprecated use `UploadFileResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = UploadFileResponseBody1$inboundSchema;
-  /** @deprecated use `UploadFileResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = UploadFileResponseBody1$outboundSchema;
-  /** @deprecated use `UploadFileResponseBody1$Outbound` instead. */
-  export type Outbound = UploadFileResponseBody1$Outbound;
-}
-
 export function uploadFileResponseBody1ToJSON(
   uploadFileResponseBody1: UploadFileResponseBody1,
 ): string {
@@ -254,7 +210,6 @@ export function uploadFileResponseBody1ToJSON(
     UploadFileResponseBody1$outboundSchema.parse(uploadFileResponseBody1),
   );
 }
-
 export function uploadFileResponseBody1FromJSON(
   jsonString: string,
 ): SafeParseResult<UploadFileResponseBody1, SDKValidationError> {
@@ -274,7 +229,6 @@ export const UploadFileResponseBody$inboundSchema: z.ZodType<
   z.lazy(() => UploadFileResponseBody1$inboundSchema),
   z.lazy(() => UploadFileResponseBody2$inboundSchema),
 ]);
-
 /** @internal */
 export type UploadFileResponseBody$Outbound =
   | UploadFileResponseBody1$Outbound
@@ -290,19 +244,6 @@ export const UploadFileResponseBody$outboundSchema: z.ZodType<
   z.lazy(() => UploadFileResponseBody2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadFileResponseBody$ {
-  /** @deprecated use `UploadFileResponseBody$inboundSchema` instead. */
-  export const inboundSchema = UploadFileResponseBody$inboundSchema;
-  /** @deprecated use `UploadFileResponseBody$outboundSchema` instead. */
-  export const outboundSchema = UploadFileResponseBody$outboundSchema;
-  /** @deprecated use `UploadFileResponseBody$Outbound` instead. */
-  export type Outbound = UploadFileResponseBody$Outbound;
-}
-
 export function uploadFileResponseBodyToJSON(
   uploadFileResponseBody: UploadFileResponseBody,
 ): string {
@@ -310,7 +251,6 @@ export function uploadFileResponseBodyToJSON(
     UploadFileResponseBody$outboundSchema.parse(uploadFileResponseBody),
   );
 }
-
 export function uploadFileResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<UploadFileResponseBody, SDKValidationError> {

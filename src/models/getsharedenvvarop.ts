@@ -135,7 +135,6 @@ export const GetSharedEnvVarRequest$inboundSchema: z.ZodType<
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
-
 /** @internal */
 export type GetSharedEnvVarRequest$Outbound = {
   id: string;
@@ -154,19 +153,6 @@ export const GetSharedEnvVarRequest$outboundSchema: z.ZodType<
   slug: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSharedEnvVarRequest$ {
-  /** @deprecated use `GetSharedEnvVarRequest$inboundSchema` instead. */
-  export const inboundSchema = GetSharedEnvVarRequest$inboundSchema;
-  /** @deprecated use `GetSharedEnvVarRequest$outboundSchema` instead. */
-  export const outboundSchema = GetSharedEnvVarRequest$outboundSchema;
-  /** @deprecated use `GetSharedEnvVarRequest$Outbound` instead. */
-  export type Outbound = GetSharedEnvVarRequest$Outbound;
-}
-
 export function getSharedEnvVarRequestToJSON(
   getSharedEnvVarRequest: GetSharedEnvVarRequest,
 ): string {
@@ -174,7 +160,6 @@ export function getSharedEnvVarRequestToJSON(
     GetSharedEnvVarRequest$outboundSchema.parse(getSharedEnvVarRequest),
   );
 }
-
 export function getSharedEnvVarRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSharedEnvVarRequest, SDKValidationError> {
@@ -189,43 +174,19 @@ export function getSharedEnvVarRequestFromJSON(
 export const GetSharedEnvVarType$inboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarType
 > = z.nativeEnum(GetSharedEnvVarType);
-
 /** @internal */
 export const GetSharedEnvVarType$outboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarType
 > = GetSharedEnvVarType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSharedEnvVarType$ {
-  /** @deprecated use `GetSharedEnvVarType$inboundSchema` instead. */
-  export const inboundSchema = GetSharedEnvVarType$inboundSchema;
-  /** @deprecated use `GetSharedEnvVarType$outboundSchema` instead. */
-  export const outboundSchema = GetSharedEnvVarType$outboundSchema;
-}
-
 /** @internal */
 export const GetSharedEnvVarTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarTarget
 > = z.nativeEnum(GetSharedEnvVarTarget);
-
 /** @internal */
 export const GetSharedEnvVarTarget$outboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarTarget
 > = GetSharedEnvVarTarget$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSharedEnvVarTarget$ {
-  /** @deprecated use `GetSharedEnvVarTarget$inboundSchema` instead. */
-  export const inboundSchema = GetSharedEnvVarTarget$inboundSchema;
-  /** @deprecated use `GetSharedEnvVarTarget$outboundSchema` instead. */
-  export const outboundSchema = GetSharedEnvVarTarget$outboundSchema;
-}
 
 /** @internal */
 export const GetSharedEnvVarResponseBody$inboundSchema: z.ZodType<
@@ -253,7 +214,6 @@ export const GetSharedEnvVarResponseBody$inboundSchema: z.ZodType<
   comment: z.string().optional(),
   lastEditedByDisplayName: z.string().optional(),
 });
-
 /** @internal */
 export type GetSharedEnvVarResponseBody$Outbound = {
   created?: string | undefined;
@@ -302,19 +262,6 @@ export const GetSharedEnvVarResponseBody$outboundSchema: z.ZodType<
   lastEditedByDisplayName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetSharedEnvVarResponseBody$ {
-  /** @deprecated use `GetSharedEnvVarResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetSharedEnvVarResponseBody$inboundSchema;
-  /** @deprecated use `GetSharedEnvVarResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetSharedEnvVarResponseBody$outboundSchema;
-  /** @deprecated use `GetSharedEnvVarResponseBody$Outbound` instead. */
-  export type Outbound = GetSharedEnvVarResponseBody$Outbound;
-}
-
 export function getSharedEnvVarResponseBodyToJSON(
   getSharedEnvVarResponseBody: GetSharedEnvVarResponseBody,
 ): string {
@@ -324,7 +271,6 @@ export function getSharedEnvVarResponseBodyToJSON(
     ),
   );
 }
-
 export function getSharedEnvVarResponseBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<GetSharedEnvVarResponseBody, SDKValidationError> {

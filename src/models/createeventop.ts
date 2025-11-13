@@ -54,22 +54,10 @@ export type CreateEventRequest = {
 export const CreateEventEventType$inboundSchema: z.ZodNativeEnum<
   typeof CreateEventEventType
 > = z.nativeEnum(CreateEventEventType);
-
 /** @internal */
 export const CreateEventEventType$outboundSchema: z.ZodNativeEnum<
   typeof CreateEventEventType
 > = CreateEventEventType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEventEventType$ {
-  /** @deprecated use `CreateEventEventType$inboundSchema` instead. */
-  export const inboundSchema = CreateEventEventType$inboundSchema;
-  /** @deprecated use `CreateEventEventType$outboundSchema` instead. */
-  export const outboundSchema = CreateEventEventType$outboundSchema;
-}
 
 /** @internal */
 export const Event2$inboundSchema: z.ZodType<Event2, z.ZodTypeDef, unknown> = z
@@ -78,7 +66,6 @@ export const Event2$inboundSchema: z.ZodType<Event2, z.ZodTypeDef, unknown> = z
     productId: z.string().optional(),
     resourceId: z.string(),
   });
-
 /** @internal */
 export type Event2$Outbound = {
   type: string;
@@ -97,23 +84,9 @@ export const Event2$outboundSchema: z.ZodType<
   resourceId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event2$ {
-  /** @deprecated use `Event2$inboundSchema` instead. */
-  export const inboundSchema = Event2$inboundSchema;
-  /** @deprecated use `Event2$outboundSchema` instead. */
-  export const outboundSchema = Event2$outboundSchema;
-  /** @deprecated use `Event2$Outbound` instead. */
-  export type Outbound = Event2$Outbound;
-}
-
 export function event2ToJSON(event2: Event2): string {
   return JSON.stringify(Event2$outboundSchema.parse(event2));
 }
-
 export function event2FromJSON(
   jsonString: string,
 ): SafeParseResult<Event2, SDKValidationError> {
@@ -127,21 +100,9 @@ export function event2FromJSON(
 /** @internal */
 export const EventType$inboundSchema: z.ZodNativeEnum<typeof EventType> = z
   .nativeEnum(EventType);
-
 /** @internal */
 export const EventType$outboundSchema: z.ZodNativeEnum<typeof EventType> =
   EventType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventType$ {
-  /** @deprecated use `EventType$inboundSchema` instead. */
-  export const inboundSchema = EventType$inboundSchema;
-  /** @deprecated use `EventType$outboundSchema` instead. */
-  export const outboundSchema = EventType$outboundSchema;
-}
 
 /** @internal */
 export const Event1$inboundSchema: z.ZodType<Event1, z.ZodTypeDef, unknown> = z
@@ -149,7 +110,6 @@ export const Event1$inboundSchema: z.ZodType<Event1, z.ZodTypeDef, unknown> = z
     type: EventType$inboundSchema,
     billingPlanId: z.string().optional(),
   });
-
 /** @internal */
 export type Event1$Outbound = {
   type: string;
@@ -166,23 +126,9 @@ export const Event1$outboundSchema: z.ZodType<
   billingPlanId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event1$ {
-  /** @deprecated use `Event1$inboundSchema` instead. */
-  export const inboundSchema = Event1$inboundSchema;
-  /** @deprecated use `Event1$outboundSchema` instead. */
-  export const outboundSchema = Event1$outboundSchema;
-  /** @deprecated use `Event1$Outbound` instead. */
-  export type Outbound = Event1$Outbound;
-}
-
 export function event1ToJSON(event1: Event1): string {
   return JSON.stringify(Event1$outboundSchema.parse(event1));
 }
-
 export function event1FromJSON(
   jsonString: string,
 ): SafeParseResult<Event1, SDKValidationError> {
@@ -202,7 +148,6 @@ export const CreateEventEvent$inboundSchema: z.ZodType<
   z.lazy(() => Event2$inboundSchema),
   z.lazy(() => Event1$inboundSchema),
 ]);
-
 /** @internal */
 export type CreateEventEvent$Outbound = Event2$Outbound | Event1$Outbound;
 
@@ -216,19 +161,6 @@ export const CreateEventEvent$outboundSchema: z.ZodType<
   z.lazy(() => Event1$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEventEvent$ {
-  /** @deprecated use `CreateEventEvent$inboundSchema` instead. */
-  export const inboundSchema = CreateEventEvent$inboundSchema;
-  /** @deprecated use `CreateEventEvent$outboundSchema` instead. */
-  export const outboundSchema = CreateEventEvent$outboundSchema;
-  /** @deprecated use `CreateEventEvent$Outbound` instead. */
-  export type Outbound = CreateEventEvent$Outbound;
-}
-
 export function createEventEventToJSON(
   createEventEvent: CreateEventEvent,
 ): string {
@@ -236,7 +168,6 @@ export function createEventEventToJSON(
     CreateEventEvent$outboundSchema.parse(createEventEvent),
   );
 }
-
 export function createEventEventFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEventEvent, SDKValidationError> {
@@ -258,7 +189,6 @@ export const CreateEventRequestBody$inboundSchema: z.ZodType<
     z.lazy(() => Event1$inboundSchema),
   ]),
 });
-
 /** @internal */
 export type CreateEventRequestBody$Outbound = {
   event: Event2$Outbound | Event1$Outbound;
@@ -276,19 +206,6 @@ export const CreateEventRequestBody$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEventRequestBody$ {
-  /** @deprecated use `CreateEventRequestBody$inboundSchema` instead. */
-  export const inboundSchema = CreateEventRequestBody$inboundSchema;
-  /** @deprecated use `CreateEventRequestBody$outboundSchema` instead. */
-  export const outboundSchema = CreateEventRequestBody$outboundSchema;
-  /** @deprecated use `CreateEventRequestBody$Outbound` instead. */
-  export type Outbound = CreateEventRequestBody$Outbound;
-}
-
 export function createEventRequestBodyToJSON(
   createEventRequestBody: CreateEventRequestBody,
 ): string {
@@ -296,7 +213,6 @@ export function createEventRequestBodyToJSON(
     CreateEventRequestBody$outboundSchema.parse(createEventRequestBody),
   );
 }
-
 export function createEventRequestBodyFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEventRequestBody, SDKValidationError> {
@@ -320,7 +236,6 @@ export const CreateEventRequest$inboundSchema: z.ZodType<
     "RequestBody": "requestBody",
   });
 });
-
 /** @internal */
 export type CreateEventRequest$Outbound = {
   integrationConfigurationId: string;
@@ -341,19 +256,6 @@ export const CreateEventRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateEventRequest$ {
-  /** @deprecated use `CreateEventRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateEventRequest$inboundSchema;
-  /** @deprecated use `CreateEventRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateEventRequest$outboundSchema;
-  /** @deprecated use `CreateEventRequest$Outbound` instead. */
-  export type Outbound = CreateEventRequest$Outbound;
-}
-
 export function createEventRequestToJSON(
   createEventRequest: CreateEventRequest,
 ): string {
@@ -361,7 +263,6 @@ export function createEventRequestToJSON(
     CreateEventRequest$outboundSchema.parse(createEventRequest),
   );
 }
-
 export function createEventRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateEventRequest, SDKValidationError> {
